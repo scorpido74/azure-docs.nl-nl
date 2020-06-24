@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e030bd1124a93c667070a2b58f2f0e1c10c7d3a6
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683070"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718553"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -146,7 +146,7 @@ Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om de Azure Cosm
 
 Voer de volgende acties uit om het inrichten van een Cosmos DB-exemplaar in uw abonnement met door de klant beheerde sleutels in te scha kelen:
 
-* Registreer de Azure Machine Learning-en Azure Cosmos DB resource providers in uw abonnement, als u dit nog niet hebt gedaan.
+* Registreer de resource providers micro soft. MachineLearning en Microsoft.DocumentDB in uw abonnement, als u dit nog niet hebt gedaan.
 
 * Machtig de Machine Learning-app (in identiteits-en toegangs beheer) met Inzender machtigingen voor uw abonnement.
 
@@ -219,7 +219,7 @@ Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssyst
 
 Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 
 Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning micro services te beveiligen. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
 

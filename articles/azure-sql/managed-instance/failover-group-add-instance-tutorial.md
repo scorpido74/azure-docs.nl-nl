@@ -1,9 +1,9 @@
 ---
-title: 'Zelf studie: een beheerd exemplaar van een SQL-beheerd exemplaar toevoegen aan een failovergroep'
+title: 'Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep'
 titleSuffix: Azure SQL Managed Instance
-description: In deze zelf studie maakt u twee beheerde exemplaren als een primair en secundair en voegt u deze vervolgens toe aan een groep met automatische failover.
+description: In deze zelf studie leert u hoe u een failovergroep maakt tussen een primair en secundair Azure SQL-beheerd exemplaar.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 3b132fb5c718346462e43d161e4d85f07223df09
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667740"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718883"
 ---
-# <a name="tutorial-add-a-managed-instance-of-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een beheerd exemplaar van een SQL-beheerd exemplaar toevoegen aan een failovergroep
+# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Beheerde exemplaren van een Azure SQL Managed instance toevoegen aan een failovergroep. In dit artikel leert u het volgende:
@@ -393,13 +393,13 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep. | 
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een routetabel. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet-configuratie voor een virtueel netwerk bijgewerkt.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep opgehaald. |
-| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie aan een virtueel netwerk toe.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee haalt u een netwerkbeveiligingsgroep op. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u de configuratie van een netwerkbeveiligingsregel toe aan een netwerkbeveiligingsgroep. |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee werkt u een netwerkbeveiligingsgroep bij.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route toe aan een routetabel. |
+| [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een routetabel bij.  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar.  |
 
 ---
@@ -723,13 +723,13 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep. | 
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een routetabel. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet-configuratie voor een virtueel netwerk bijgewerkt.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep opgehaald. |
-| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie aan een virtueel netwerk toe.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee haalt u een netwerkbeveiligingsgroep op. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u de configuratie van een netwerkbeveiligingsregel toe aan een netwerkbeveiligingsgroep. |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee werkt u een netwerkbeveiligingsgroep bij.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route toe aan een routetabel. |
+| [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een routetabel bij.  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar.  |
 
 ---
@@ -821,7 +821,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie aan een virtueel netwerk toe. | 
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerk gateway. |
@@ -902,7 +902,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Hiermee haalt u een virtueel netwerk op in een resourcegroep. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie aan een virtueel netwerk toe. | 
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerk gateway. |
@@ -965,7 +965,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerk gateways.   |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerkgateways.   |
 
 ---
 
@@ -1007,7 +1007,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failovergroep voor Azure SQL Managed instance.  |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failovergroep voor Azure SQL Managed Instance.  |
 
 
 ---
@@ -1073,8 +1073,8 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee worden failover-groepen voor SQL Managed instance opgehaald of weer gegeven.| 
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee wordt een failover uitgevoerd van een failovergroep voor een SQL-beheerd exemplaar. | 
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee haalt u failovergroepen voor Azure SQL Managed Instance op of vermeldt u deze.| 
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee voert u een nieuwe failover uit voor een failovergroep voor SQL Managed Instance. | 
 
 ---
 
@@ -1092,7 +1092,7 @@ U kunt resources opschonen door eerst de beheerde instanties, het virtuele clust
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-U moet de resourcegroep twee keer verwijderen. Als u de resource groep de eerste keer verwijdert, worden de beheerde exemplaren en virtuele clusters verwijderd, maar wordt het fout bericht niet meer weer gegeven `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Voer de opdracht Remove-AzResourceGroup een tweede keer uit om eventuele resterende resources en de resource groep te verwijderen.
+U moet de resourcegroep twee keer verwijderen. Als u de resource groep de eerste keer verwijdert, worden de beheerde exemplaren en virtuele clusters verwijderd, maar wordt het fout bericht niet meer weer gegeven `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Voer de opdracht Remove-AzResourceGroup een tweede keer uit om eventuele resterende resources en de resourcegroep te verwijderen.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -1105,7 +1105,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep. |
 
 ---
 
@@ -1125,23 +1125,23 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u een netwerkbeveiligingsgroep. | 
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Hiermee maakt u een routetabel. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee wordt een subnet-configuratie voor een virtueel netwerk bijgewerkt.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee wordt een virtueel netwerk bijgewerkt.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep opgehaald. |
-| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Hiermee voegt u een subnetconfiguratie aan een virtueel netwerk toe.  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Hiermee haalt u een netwerkbeveiligingsgroep op. |
+| [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u de configuratie van een netwerkbeveiligingsregel toe aan een netwerkbeveiligingsgroep. |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee werkt u een netwerkbeveiligingsgroep bij.  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route toe aan een routetabel. |
+| [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een routetabel bij.  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar.  |
-| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Retourneert informatie over Azure SQL Managed instance. |
+| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Hiermee retourneert u informatie over een met Azure SQL beheerd exemplaar. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerk gateway. |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerk gateway. |
-| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerk gateways.   |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerkgateways.   |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failover-groep voor een SQL-beheerd exemplaar.  |
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee worden failover-groepen voor SQL Managed instance opgehaald of weer gegeven.| 
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee wordt een failover uitgevoerd van een failovergroep voor een SQL-beheerd exemplaar. | 
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep. | 
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee haalt u failovergroepen voor Azure SQL Managed Instance op of vermeldt u deze.| 
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee voert u een nieuwe failover uit voor een failovergroep voor SQL Managed Instance. | 
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep. | 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 

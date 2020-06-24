@@ -3,8 +3,8 @@ title: Een virtueel netwerk maken
 titleSuffix: Azure SQL Managed Instance
 description: In dit artikel wordt beschreven hoe u een virtueel netwerk maakt dat is geconfigureerd ter ondersteuning van de implementatie van Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 4cbcad991da6a7517ca2914cfd99b8517853c0e4
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: d6458794b8d3c5ba68109dbc90a075d6a2a577b9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657923"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711320"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Een virtueel netwerk maken voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

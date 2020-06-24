@@ -5,29 +5,29 @@ description: Meer informatie over het gebruik van Azure DDoS Protection standaar
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182936"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711507"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure DDoS Protection Standard beheren met de Azure Portal
 
 Meer informatie over het in-en uitschakelen van DDoS-beveiliging (Distributed Denial of service) en het gebruik van telemetrie om een DDoS-aanval met Azure DDoS Protection Standard te verhelpen. DDoS Protection Standard beveiligt Azure-resources, zoals virtuele machines, load balancers en toepassings gateways waaraan een [openbaar IP-adres](virtual-network-public-ip-address.md) van Azure is toegewezen. Zie [DDoS Protection Standard Overview](ddos-protection-overview.md)(Engelstalig) voor meer informatie over DDoS Protection Standard en de mogelijkheden ervan.
 
-Voordat u de stappen in deze zelf studie voltooit, meldt u https://portal.azure.com zich aan bij de Azure Portal met een account dat is toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
+Voordat u de stappen in deze zelf studie voltooit, meldt u zich aan bij de Azure Portal https://portal.azure.com met een account dat is toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -71,9 +71,9 @@ U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of e
 2. Selecteer in de linkerbovenhoek van het Azure Portal **een resource maken** .
 3. Voer de naam in van het virtuele netwerk waarvoor u DDoS Protection standaard wilt inschakelen in het **vak resources, services en documenten zoeken** bovenaan de portal. Wanneer de naam van het virtuele netwerk wordt weer gegeven in de zoek resultaten, selecteert u dit.
 4. Selecteer **DDoS Protection**onder **instellingen**.
-5. Selecteer **standaard**. Selecteer onder **DDoS-beschermings plan**een bestaand DDoS-beveiligings plan of het plan dat u hebt gemaakt in stap 1 en selecteer vervolgens **Opslaan**. Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.
+5. selecteer **Standaard**. Selecteer onder **DDoS-beschermings plan**een bestaand DDoS-beveiligings plan of het plan dat u hebt gemaakt in stap 1 en selecteer vervolgens **Opslaan**. Het plan dat u selecteert, kan zich in hetzelfde of een ander abonnement bevindt dan het virtuele netwerk, maar beide abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.
 
-**Opdrachten** 
+**Opdracht** 
 - Azure CLI: [AZ Network DDoS-Protection Create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
 - Power shell: [New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0)
  
@@ -84,7 +84,7 @@ U kunt een virtueel netwerk niet verplaatsen naar een andere resource groep of e
 2. Selecteer **DDoS Protection**onder **instellingen**.
 3. Selecteer **basis** onder **DDoS-beschermings plan** en selecteer vervolgens **Opslaan**.
 
-**Opdrachten** 
+**Opdracht** 
 - Azure CLI: [AZ Network DDoS-Protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
 - Power shell: [Remove-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/remove-azddosprotectionplan?view=azps-3.2.0)
 
@@ -230,7 +230,7 @@ De waarschuwingen bevatten algemene informatie over het open bare IP-adres dat w
 
 Als u wilt werken met DDoS-beveiligings plannen, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                            | Naam                                     |
+| Bewerking                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Micro soft. Network/ddosProtectionPlans/lezen        | Een DDoS-beschermings plan lezen              |
 | Micro soft. Network/ddosProtectionPlans/schrijven       | Een DDoS-beschermings plan maken of bijwerken  |

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254480"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711711"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Update 1,1 installeren op de virtuele StorSimple-matrix
 
@@ -66,7 +66,7 @@ Voer de volgende stappen uit om update 1,1 te downloaden uit de Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>De update of hotfix downloaden
 
-1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Als u de Microsoft Update catalogus voor de eerste keer op deze computer gebruikt, klikt u op **installeren** wanneer u wordt gevraagd de invoeg toepassing Microsoft Update catalogus te installeren.
 
@@ -76,7 +76,7 @@ Voer de volgende stappen uit om update 1,1 te downloaden uit de Microsoft Update
    
     ![Catalogus doorzoeken](./media/storsimple-virtual-array-install-update-11/download1.png)
 
-4. Klik op **downloaden**.
+4. Klik op **Downloaden**.
 
 5. Down load de twee bestanden naar een map. U kunt de map ook kopiëren naar een netwerk share die bereikbaar is vanaf het apparaat.
 
@@ -85,8 +85,8 @@ Voer de volgende stappen uit om update 1,1 te downloaden uit de Microsoft Update
     ![Bestanden in het pakket](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     U ziet twee bestanden:
-    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64`. Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
-    - Een bestand dat cumulatieve updates voor juni `Windows8.1-KB4284815-x64`bevat. Ga naar [maandelijkse Security Rollup van juni](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815)voor meer informatie over wat er in dit pakket is opgenomen.
+    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64` . Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
+    - Een bestand dat cumulatieve updates voor juni bevat `Windows8.1-KB4284815-x64` . Ga naar [maandelijkse Security Rollup van juni](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815)voor meer informatie over wat er in dit pakket is opgenomen.
 
 ### <a name="install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
@@ -99,7 +99,7 @@ Deze procedure duurt circa 4 minuten. Voer de volgende stappen uit om de update 
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
-1. Ga in de lokale web-UI naar **onderhouds** > **Software-update**. Noteer de software versie die u uitvoert. **Ga alleen verder met deze update als u update 1 (10.0.10296.0) uitvoert. Als u update 0,6 uitvoert, installeer dan eerst [Update 1](storsimple-virtual-array-install-update-1.md) op uw apparaat en pas vervolgens Update 1,1 toe.**
+1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**. Noteer de software versie die u uitvoert. **Ga alleen verder met deze update als u update 1 (10.0.10296.0) uitvoert. Als u update 0,6 uitvoert, installeer dan eerst [Update 1](storsimple-virtual-array-install-update-1.md) op uw apparaat en pas vervolgens Update 1,1 toe.**
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
@@ -115,14 +115,14 @@ Deze procedure duurt circa 4 minuten. Voer de volgende stappen uit om de update 
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds** > **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10307** zijn voor update 1,1.
+5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10307** zijn voor update 1,1.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10307** en de Azure Portal rapport **10.0.10307.0** voor dezelfde versie.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Herhaal stap 2-4 om de Windows-beveiligings oplossing met behulp van bestand `Windows8.1-KB4284815-x64`te installeren. De virtuele matrix wordt opnieuw opgestart na de installatie en u moet zich aanmelden bij de lokale webgebruikersinterface.
+6. Herhaal stap 2-4 om de Windows-beveiligings oplossing met behulp van bestand te installeren `Windows8.1-KB4284815-x64` . De virtuele matrix wordt opnieuw opgestart na de installatie en u moet zich aanmelden bij de lokale webgebruikersinterface.
 
 
 ## <a name="next-steps"></a>Volgende stappen

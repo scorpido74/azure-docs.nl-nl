@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251204"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712391"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Een autorisatie beleid voor de inhouds sleutel configureren
 
@@ -51,7 +51,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 * De key delivery service slaat ContentKeyAuthorizationPolicy en de bijbehorende objecten (beleids opties en-beperkingen) gedurende 15 minuten op. U kunt ContentKeyAuthorizationPolicy maken en opgeven dat u een token beperking wilt gebruiken, deze wilt testen en vervolgens het beleid wilt bijwerken naar de beperking open. Dit proces duurt ongeveer 15 minuten voordat het beleid overschakelt naar de open-versie van het beleid.
 * Als u het leveringsbeleid voor uw asset toevoegt of bijwerkt, moet u een eventuele locator verwijderen en een nieuwe locator maken.
 * Op dit moment kunt u geen progressieve down loads versleutelen.
-* Een Media Services streaming-eind punt stelt de waarde in van de CORS ' Access-Control-Allow-Origin ' in het Preflight-antwoord\*als het Joker teken. Deze waarde is goed geschikt voor de meeste spelers, waaronder Azure Media Player, Roku en JWPlayer, en andere. Sommige spelers die gebruikmaken van dashjs werken echter niet omdat, waarbij de referenties modus is ingesteld op ' include ', XMLHttpRequest in hun dashjs geen joker teken\*' ' als waarde van ' toegangs beheer-allow-Origin ' toestaat. Als tijdelijke oplossing voor deze beperking in dashjs, als u uw client vanuit één domein host, kan Media Services dat domein opgeven in de kopregel van het Preflight-antwoord. Open een ondersteunings ticket via de Azure Portal voor hulp.
+* Een Media Services streaming-eind punt stelt de waarde in van de CORS ' Access-Control-Allow-Origin ' in het Preflight-antwoord als het Joker teken \* . Deze waarde is goed geschikt voor de meeste spelers, waaronder Azure Media Player, Roku en JWPlayer, en andere. Sommige spelers die gebruikmaken van dashjs werken echter niet omdat, waarbij de referenties modus is ingesteld op ' include ', XMLHttpRequest in hun dashjs geen joker teken ' \* ' als waarde van ' toegangs beheer-allow-Origin ' toestaat. Als tijdelijke oplossing voor deze beperking in dashjs, als u uw client vanuit één domein host, kan Media Services dat domein opgeven in de kopregel van het Preflight-antwoord. Open een ondersteunings ticket via de Azure Portal voor hulp.
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 dynamische versleuteling
 ### <a name="open-restriction"></a>Beperking openen

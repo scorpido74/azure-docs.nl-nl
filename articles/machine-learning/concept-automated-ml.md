@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cec4213cc9b4d40707607b00ef96761e69438ee2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119089"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210249"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -37,7 +37,7 @@ Gegevens wetenschappers, analisten en ontwikkel aars in verschillende branches k
 
 Classificatie is een algemene machine learning taak. Classificatie is een soort gecontroleerde lessen waarin modellen informatie leren met behulp van trainings gegevens en deze informatie kan Toep assen op nieuwe gegevens. Azure Machine Learning biedt featurizations specifiek voor deze taken, zoals diepe Neural featurizers voor de classificatie van netwerk tekst. Meer informatie over [parametrisatie-opties](how-to-configure-auto-features.md#featurization). 
 
-Het belangrijkste doel van classificatie modellen is om te voors pellen welke categorieën nieuwe gegevens zijn op basis van de informatie van de trainings gegevens. Voor beelden van veelvoorkomende classificaties zijn fraude detectie, handschrift herkenning en object detectie.  Meer informatie en een voor beeld van [classificatie met automatische machine learning](tutorial-train-models-with-aml.md).
+Het belangrijkste doel van classificatie modellen is om te voors pellen welke categorieën nieuwe gegevens zijn op basis van de informatie van de trainings gegevens. Voor beelden van veelvoorkomende classificaties zijn fraude detectie, handschrift herkenning en object detectie. Meer informatie en een voor beeld bekijken van [een classificatie model maken met automatische milliliters](tutorial-first-experiment-automated-ml.md).
 
 Zie voor beelden van classificatie en geautomatiseerde machine learning in deze python-notebooks: [fraude detectie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [marketing voorspelling](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)en [gegevens classificatie van nieuws groep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
@@ -97,6 +97,10 @@ In het volgende diagram ziet u dit proces.
 U kunt ook de informatie over geregistreerde uitvoeringen controleren, die de [metrische gegevens bevat](how-to-understand-automated-ml.md) die tijdens de uitvoering zijn verzameld. De trainings uitvoering produceert een met python geserialiseerd object ( `.pkl` bestand) dat het model en de voor verwerking van gegevens bevat.
 
 Hoewel het bouwen van modellen geautomatiseerd is, kunt u ook [zien hoe belang rijke of relevante functies](how-to-configure-auto-train.md#explain) voor de gegenereerde modellen zijn.
+
+Meer informatie over het gebruik van een [extern Compute-doel](how-to-auto-train-remote.md).
+
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
@@ -267,17 +271,30 @@ De ONNX-runtime biedt ook ondersteuning voor C#, zodat u het model dat automatis
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk voor beelden en leer hoe u modellen bouwt met geautomatiseerde machine learning:
+Er zijn meerdere resources waarmee u aan de slag kunt met AutoML. 
 
-+ De instellingen voor automatische training-experiment configureren:
-  + In Azure Machine Learning Studio [gaat u](how-to-use-automated-ml-for-ml-models.md)als volgt te werk.
-  + Gebruik de python-SDK om de [volgende stappen uit te voeren](how-to-configure-auto-train.md).
+### <a name="tutorials-how-tos"></a>Zelf studie/uitleg
+Zelf studies zijn end-to-end inleidende voor beelden van AutoML-scenario's.
++ **Voor een code-eerste ervaring**volgt u de [zelf studie: automatisch een regressie model trainen met Azure machine learning python SDK](tutorial-auto-train-models.md).
 
-+ Meer informatie over het gebruik van een [extern Compute-doel](how-to-auto-train-remote.md)
+ + **Voor een weinig of geen code**kunt u de [zelf studie: Maak Automatische ml-classificatie modellen met Azure machine learning Studio](tutorial-first-experiment-automated-ml.md).
 
-+ Volg de [zelf studie: automatisch een regressie model trainen met Azure machine learning](tutorial-auto-train-models.md) 
+Artikelen bevatten aanvullende details over de functionaliteit die AutoML biedt. Bijvoorbeeld: 
 
-+ Meer informatie over het automatisch trainen van Time Series-gegevens met behulp van [deze stappen](how-to-auto-train-forecast.md).
++ De instellingen voor automatische trainings experimenten configureren
+    + In Azure Machine Learning Studio [gaat u](how-to-use-automated-ml-for-ml-models.md)als volgt te werk. 
+    + Gebruik de python-SDK om de [volgende stappen uit te voeren](how-to-configure-auto-train.md).
 
-+ [Jupyter notebook voor beelden uitproberen voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-* Automatische ML is ook beschikbaar in andere micro soft-oplossingen, zoals [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) en [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
++  Meer informatie over het automatisch trainen van Time Series-gegevens met behulp [van deze stappen](how-to-auto-train-forecast.md).
+
+### <a name="jupyter-notebook-samples"></a>Voor beelden van Jupyter-notebook 
+
+Bekijk gedetailleerde code voorbeelden en gebruik cases in de [github-notebook opslagplaats voor automatische machine learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)-voor beelden.
+
+### <a name="python-sdk-reference"></a>Naslaginformagtie over de Python-SDK 
+
+Verdiep uw expertise over SDK-ontwerp patronen en klassen specificaties met de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)van de AutoML-klasse. 
+
+> [!Note]
+> Geautomatiseerde machine learning mogelijkheden zijn ook beschikbaar in andere micro soft-oplossingen, zoals [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) en [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
+

@@ -3,17 +3,17 @@ title: Problemen vaststellen en oplossen Azure Cosmos DB Java SDK v4
 description: Gebruik functies als logboek registratie aan client zijde en andere hulpprogram ma's van derden voor het identificeren, vaststellen en oplossen van problemen met Azure Cosmos DB in Java SDK v4.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/11/2020
+ms.date: 06/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: 2deec6f6753a03ab46260432c6faceab009e2911
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4663839ffa85af0be1de93e2834e1c89e97e95c7
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651865"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718033"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Problemen oplossen met Azure Cosmos DB Java SDK v4 met SQL API-accounts
 
@@ -24,7 +24,7 @@ ms.locfileid: "83651865"
 > 
 
 > [!IMPORTANT]
-> In dit artikel wordt alleen beschreven hoe u problemen oplost voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4- [opmerkingen](sql-api-sdk-java-v4.md), [maven opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en [Tips voor betere prestaties](performance-tips-java-sdk-v4-sql.md) voor meer informatie. Als u momenteel een oudere versie dan V4 gebruikt, raadpleegt u de [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -hand leiding voor hulp bij het upgraden naar v4.
+> In dit artikel wordt alleen beschreven hoe u problemen oplost voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4- [opmerkingen](sql-api-sdk-java-v4.md), [maven opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en [Tips voor betere prestaties](performance-tips-java-sdk-v4-sql.md) voor meer informatie. Als u momenteel een oudere versie dan v4 gebruikt, raadpleegt u de gids [Migreren naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) voor hulp om te upgraden naar v4.
 >
 
 Dit artikel heeft betrekking op veelvoorkomende problemen, tijdelijke oplossingen, diagnostische stappen en hulpprogram ma's voor het gebruik van Azure Cosmos DB Java SDK v4 met Azure Cosmos DB SQL API-accounts.
@@ -93,59 +93,22 @@ De Netty-IO-threads zijn alleen bedoeld voor gebruik voor niet-blokkerende Netty
 
 Bekijk bijvoorbeeld het volgende code fragment waarmee items worden toegevoegd aan een container ( [hier](create-sql-api-java.md) vindt u informatie over het instellen van de data base en de container.) U kunt langdurige werkzaamheden uitvoeren die meer dan een paar milliseconden in de Netty-thread duren. Als dat het geval is, kunt u uiteindelijk een status krijgen waarin geen Netty IO-thread aanwezig is om IO-werk te verwerken. Als gevolg hiervan krijgt u een ReadTimeoutException-fout.
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-readtimeout"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-readtimeout"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
-```java
-@Test
-public void badCodeWithReadTimeoutException() throws Exception {
-  int requestTimeoutInSeconds = 10;
-  ConnectionPolicy policy = new ConnectionPolicy();
-  policy.setRequestTimeout(Duration.ofMillis(requestTimeoutInSeconds * 1000));
-  AtomicInteger failureCount = new AtomicInteger();
-  // Max number of concurrent item inserts is # CPU cores + 1
-  Flux<Family> familyPub = 
-      Flux.just(Families.getAndersenFamilyItem(), Families.getWitherspoonFamilyItem(), Families.getCarltonFamilyItem());
-  familyPub.flatMap(family -> {
-      return container.createItem(family);
-  }).flatMap(r -> {
-      try {
-          // Time-consuming work is, for example,
-          // writing to a file, computationally heavy work, or just sleep.
-          // Basically, it's anything that takes more than a few milliseconds.
-          // Doing such operations on the IO Netty thread
-          // without a proper scheduler will cause problems.
-          // The subscriber will get a ReadTimeoutException failure.
-          TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
-      } catch (Exception e) {
-      }
-      return Mono.empty();
-  }).doOnError(Exception.class, exception -> {
-      failureCount.incrementAndGet();
-  }).blockLast();
-  assert(failureCount.get() > 0);
-}
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootNeedsSchedulerAsync)]
 
 De tijdelijke oplossing is om de thread te wijzigen waarop u werk uitvoert die tijd kost. Definieer een singleton-exemplaar van de Scheduler voor uw app.
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
-```java
-// Have a singleton instance of an executor and a scheduler.
-ExecutorService ex  = Executors.newFixedThreadPool(30);
-Scheduler customScheduler = Schedulers.fromExecutor(ex);
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootCustomSchedulerAsync)]
+
 Mogelijk moet u werk doen die tijd kost, bijvoorbeeld reken kundige, zware werk of het blok keren van IO. In dit geval kunt u de thread overschakelen naar een werk nemer die is voorzien van `customScheduler` de `.publishOn(customScheduler)` API.
 
-### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
-```java
-container.createItem(family)
-    .publishOn(customScheduler) // Switches the thread.
-    .subscribe(
-        // ...
-    );
-```
+[!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TroubleshootPublishOnSchedulerAsync)]
+
 Met `publishOn(customScheduler)` kunt u de NETTY io-thread vrijgeven en overschakelen naar uw eigen aangepaste thread van de aangepaste planner. Met deze wijziging wordt het probleem opgelost. Er wordt geen `io.netty.handler.timeout.ReadTimeoutException` fout meer weer geven.
 
 ### <a name="request-rate-too-large"></a>Aanvraag frequentie te groot
@@ -165,7 +128,7 @@ De Azure Cosmos DB Java SDK haalt een aantal afhankelijkheden op; in het algemee
 
 De tijdelijke oplossing voor dit probleem is om te bepalen welke van de Project afhankelijkheden in de oude versie worden geplaatst en de transitieve afhankelijkheid uit te sluiten van die oudere versie en Azure Cosmos DB Java SDK in staat te stellen de nieuwere versie te halen.
 
-Voer de volgende opdracht uit voor het project pom. XML-bestand om te bepalen welke van de Project afhankelijkheden een oudere versie hebben van iets waarvan Azure Cosmos DB Java SDK afhankelijk is:
+Voer de volgende opdracht uit voor uw project pom.xml bestand om te bepalen welke van de Project afhankelijkheden in een oudere versie van iets worden geplaatst waarvan Azure Cosmos DB Java SDK afhankelijk is:
 ```bash
 mvn dependency:tree
 ```

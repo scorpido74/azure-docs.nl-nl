@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257990"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710232"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager
 
@@ -44,8 +44,8 @@ Daarnaast bevat het specifieke voor beeld dat in dit artikel wordt beschreven, d
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Stap 1: Meld u aan bij uw Azure-account
 
-1. Open een Power shell-console en voer deze opdracht uit om u aan te melden bij uw Azure-account. Met de cmdlet wordt u gevraagd om uw account referenties op te vragen: `Connect-AzAccount`.
-   - U kunt ook uw account referenties als een para meter in de `Connect-AzAccount` cmdlet toevoegen met behulp van de para meter **Credential** .
+1. Open een Power shell-console en voer deze opdracht uit om u aan te melden bij uw Azure-account. Met de cmdlet wordt u gevraagd om uw account referenties op te vragen: `Connect-AzAccount` .
+   - U kunt ook uw account referenties als een para meter in de cmdlet toevoegen `Connect-AzAccount` met behulp van de para meter **Credential** .
    - Als u een CSP-partner bent die namens een Tenant werkt, geeft u de klant op als een Tenant met behulp van de naam van een tenantID of Tenant primaire domein. Bijvoorbeeld: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account meerdere abonnementen kan hebben:
 
@@ -79,7 +79,7 @@ Daarnaast bevat het specifieke voor beeld dat in dit artikel wordt beschreven, d
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
    ```
 
-1. Voer de `Get-AzResourceGroup` cmdlet uit om een lijst met resource groepen in uw abonnement te verkrijgen.
+1. Voer de cmdlet uit om een lijst met resource groepen in uw abonnement te verkrijgen `Get-AzResourceGroup` .
 1. Maak als volgt een nieuwe Azure Recovery Services-kluis:
 
    ```azurepowershell
@@ -130,7 +130,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 Als u een Hyper-V-kern server gebruikt, downloadt u het installatie bestand en voert u de volgende stappen uit:
 
-1. Pak de bestanden uit _AzureSiteRecoveryProvider. exe_ uit naar een lokale map door deze opdracht uit te voeren:
+1. Pak de bestanden uit _AzureSiteRecoveryProvider.exe_ naar een lokale map door deze opdracht uit te voeren:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -241,8 +241,8 @@ Voordat u begint, moet het opgegeven opslag account zich in dezelfde Azure-regio
 >
 > 1. Failover naar beheerde schijven inschakelen door de VM-eigenschappen bij te werken
 > 1. De `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet gebruiken om de schijf-id op te halen voor elke schijf van het beveiligde item
-> 1. Maak een Dictionary-object `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` met behulp van de cmdlet om de toewijzing van de schijf-id aan de schijf versleuteling in te stellen. Deze schijf versleutelings sets moeten vooraf door u worden gemaakt in de doel regio.
-> 1. Werk de VM-eigenschappen `Set-AzRecoveryServicesAsrReplicationProtectedItem` bij met behulp van de cmdlet door het object Dictionary in de para meter **DiskIdToDiskEncryptionSetMap** door te geven.
+> 1. Maak een Dictionary-object met behulp `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` van de cmdlet om de toewijzing van de schijf-id aan de schijf versleuteling in te stellen. Deze schijf versleutelings sets moeten vooraf door u worden gemaakt in de doel regio.
+> 1. Werk de VM-eigenschappen bij met behulp `Set-AzRecoveryServicesAsrReplicationProtectedItem` van de cmdlet door het object Dictionary in de para meter **DiskIdToDiskEncryptionSetMap** door te geven.
 
 ## <a name="step-8-run-a-test-failover"></a>Stap 8: een testfailover uitvoeren
 

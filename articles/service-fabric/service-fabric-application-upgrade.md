@@ -4,11 +4,11 @@ description: Dit artikel bevat een inleiding tot het upgraden van een Service Fa
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259043"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710317"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade van toepassing Service Fabric
 Een Azure Service Fabric-toepassing is een verzameling van services. Tijdens een upgrade vergelijkt Service Fabric het nieuwe [toepassings manifest](service-fabric-application-and-service-manifests.md) met de vorige versie en bepaalt u welke services in de toepassing moeten worden bijgewerkt. Service Fabric vergelijkt de versie nummers in de service manifesten met de versie nummers in de vorige versie. Als een service niet is gewijzigd, wordt die service niet geüpgraded.
@@ -49,7 +49,7 @@ Wanneer een upgrade van een toepassing wordt teruggedraaid, worden de standaard 
 > De [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) -cluster configuratie-instelling moet *waar* zijn om regels 2 en 3) hierboven in te scha kelen (standaard service bijwerken en verwijderen). Deze functie wordt ondersteund vanaf Service Fabric versie 5,5.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Meerdere toepassingen met HTTPS-eind punten upgraden
-U moet ervoor zorgen dat u niet **dezelfde poort** gebruikt voor verschillende exemplaren van dezelfde toepassing wanneer u http**S**gebruikt. De reden hiervoor is dat Service Fabric het certificaat niet kan upgraden voor een van de toepassings exemplaren. Als bijvoorbeeld toepassing 1 of toepassing 2 beide zijn certificaat 1 wilt upgraden naar certificaat 2. Wanneer de upgrade plaatsvindt, heeft Service Fabric mogelijk de registratie van certificaat 1 met http. sys opschonen, zelfs als de andere toepassing deze nog gebruikt. Om dit te voor komen, Service Fabric detecteert dat er al een ander toepassings exemplaar is geregistreerd op de poort met het certificaat (vanwege http. sys) en de bewerking niet kan worden uitgevoerd.
+U moet ervoor zorgen dat u niet **dezelfde poort** gebruikt voor verschillende exemplaren van dezelfde toepassing wanneer u http**S**gebruikt. De reden hiervoor is dat Service Fabric het certificaat niet kan upgraden voor een van de toepassings exemplaren. Als bijvoorbeeld toepassing 1 of toepassing 2 beide zijn certificaat 1 wilt upgraden naar certificaat 2. Wanneer de upgrade wordt uitgevoerd, heeft Service Fabric mogelijk de registratie van certificaat 1 verwijderd met http.sys, zelfs al wordt de andere toepassing nog steeds gebruikt. Om dit te voor komen, Service Fabric detecteert dat er al een ander toepassings exemplaar is geregistreerd op de poort met het certificaat (vanwege http.sys) en de bewerking niet kan worden uitgevoerd.
 
 Daarom biedt Service Fabric geen ondersteuning voor het upgraden van twee verschillende services met **dezelfde poort** in verschillende exemplaren van de toepassing. Met andere woorden, u kunt niet hetzelfde certificaat gebruiken op verschillende services op dezelfde poort. Als u een gedeeld certificaat op dezelfde poort moet hebben, moet u ervoor zorgen dat de services op verschillende computers worden geplaatst met plaatsings beperkingen. Of overweeg Service Fabric dynamische poorten, indien mogelijk, te gebruiken voor elke service in elk toepassings exemplaar. 
 

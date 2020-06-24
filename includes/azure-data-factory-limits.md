@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 217e48ab21439f03e0b52c894c9aace5b51b1502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086136"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754636"
 ---
 Azure Data Factory is een service met meerdere tenants met de volgende standaard limieten om ervoor te zorgen dat klant abonnementen worden beschermd tegen de werk belastingen van elkaar. Neem contact op met de ondersteuning als u de limieten wilt verhogen tot het maximum voor uw abonnement.
 
@@ -22,7 +22,7 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 | Resource | Standaardlimiet | Maximumaantal |
 | -------- | ------------- | ------------- |
 | Gegevens fabrieken in een Azure-abonnement | 800 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Het totale aantal entiteiten, zoals pijp lijnen, gegevens sets, triggers, gekoppelde services en Integration runtimes, binnen een data factory | 5.000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Het totale aantal entiteiten, zoals pijp lijnen, gegevens sets, triggers, gekoppelde services en Integration runtimes, binnen een data factory | 5\.000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Totale CPU-kernen voor Azure-SSIS-integratie-runtime onder één abonnement | 256 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige pijplijn uitvoeringen per data factory die worden gedeeld tussen alle pijp lijnen in de fabriek | 10.000  | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige uitvoeringen van externe activiteiten per abonnement per [Azure Integration runtime regio](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Externe activiteiten worden beheerd op integratie-runtime, maar worden uitgevoerd op gekoppelde services, waaronder Databricks, opgeslagen procedure, HDInsights, Internet en anderen.</small> | 3000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
@@ -46,7 +46,7 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 | Bewakings query's per minuut | 1000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | RUWE bewerkingen entiteit per minuut | 50 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximale tijd voor fout opsporing van gegevens stromen | 8 uur | 8 uur |
-| Gelijktijdige aantal gegevens stromen per Factory | 50 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gelijktijdige aantal gegevens stromen per Integration runtime | 50 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige aantal gegevens stroom fout opsporing sessies per gebruiker per Factory | 3 | 3 |
 | TTL-limiet Azure IR data flow | 4 uur | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 
@@ -64,10 +64,10 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 
 ### <a name="version-1"></a>Versie 1
 
-| **Resource** | **Standaardlimiet** | **Maximum limiet** |
+| **Resource** | **Standaardlimiet** | **Maximumlimiet** |
 | --- | --- | --- |
 | Pijp lijnen in een data factory |2500 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gegevens sets binnen een data factory |5.000 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gegevens sets binnen een data factory |5\.000 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige segmenten per gegevensset |10 |10 |
 | Bytes per object voor pijplijn objecten<sup>1</sup> |200 KB |200 KB |
 | Bytes per object voor gegevens verzameling en gekoppelde service objecten<sup>1</sup> |100 kB |2.000 KB |

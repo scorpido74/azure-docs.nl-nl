@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77498382"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051724"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Een index opnieuw samen stellen in azure Cognitive Search
 
@@ -21,7 +21,17 @@ In dit artikel wordt uitgelegd hoe u een Azure Cognitive Search-index opnieuw bo
 
 Een *Rebuild* verwijst naar het weghalen en opnieuw maken van de fysieke gegevens structuren die zijn gekoppeld aan een index, inclusief alle op velden gebaseerde omgekeerde indexen. In azure Cognitive Search kunt u geen afzonderlijke velden meer verwijderen en opnieuw maken. Als u een index opnieuw wilt samen stellen, moet u alle veld opslag verwijderen, opnieuw maken op basis van een bestaand of gereviseerd index schema en vervolgens opnieuw gevuld met gegevens die naar de index zijn gepusht of uit externe bronnen worden gehaald. 
 
-Het is gebruikelijk om indexen tijdens de ontwikkeling opnieuw samen te stellen, maar mogelijk moet u ook een index op productie niveau opnieuw samen stellen voor structurele wijzigingen, zoals het toevoegen van complexe typen of het toevoegen van velden aan Voorst Ellen.
+Het is gebruikelijk om indexen tijdens de ontwikkeling opnieuw op te bouwen wanneer u het index ontwerp doorloopt, maar u moet mogelijk ook een index op productie niveau opnieuw samen stellen voor structurele wijzigingen, zoals het toevoegen van complexe typen of het toevoegen van velden aan Voorst Ellen.
+
+## <a name="rebuild-versus-refresh"></a>"Opnieuw samen stellen" versus "vernieuwen"
+
+Opnieuw opbouwen moet niet worden verward met het vernieuwen van de inhoud van een index met nieuwe, gewijzigde of verwijderde documenten. Het vernieuwen van een zoek verzameling is bijna een gegeven in elke zoek-app, met een aantal scenario's waarbij updates zijn vereist (bijvoorbeeld wanneer een zoek verzameling inventaris wijzigingen in een online verkoop-app moet weer spie gelen).
+
+Zolang u de structuur van de index niet wijzigt, kunt u een index vernieuwen met behulp van dezelfde technieken die u hebt gebruikt om de index in eerste instantie te laden:
+
+* Voor het indexeren van de push-modus roept u het [toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) aan om de wijzigingen naar een index te pushen.
+
+* Voor Indexeer functies kunt u de [uitvoering van de Indexeer functie plannen](search-howto-schedule-indexers.md) en wijzigingen bijhouden of tijds tempels gebruiken om de Delta te identificeren. Als updates sneller moeten worden doorgevoerd dan wat een scheduler kan beheren, kunt u in plaats daarvan het indexeren van push-modus gebruiken.
 
 ## <a name="rebuild-conditions"></a>Voor waarden opnieuw samen stellen
 

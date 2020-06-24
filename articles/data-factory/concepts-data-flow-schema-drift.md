@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606101"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886632"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schema-drift in toewijzing van gegevens stroom
 
@@ -37,7 +37,7 @@ Deze video bevat een inleiding tot een aantal van de complexe oplossingen die u 
 
 ## <a name="schema-drift-in-source"></a>Schema-drift in bron
 
-Kolommen die worden opgenomen in uw gegevens stroom van uw bron definitie worden gedefinieerd als ' overgelopen ' wanneer ze niet aanwezig zijn in de bron projectie. U kunt de bron projectie bekijken op het tabblad projectie van de bron transformatie. Wanneer u een gegevensset voor uw bron selecteert, neemt ADF automatisch het schema uit de gegevensset en maakt een project van die schema definitie van de gegevensset.
+Kolommen die worden opgenomen in uw gegevens stroom van uw bron definitie worden gedefinieerd als ' overgelopen ' wanneer ze niet aanwezig zijn in de bron projectie. U kunt de bron projectie bekijken op het tabblad projectie van de bron transformatie. Wanneer u een gegevensset voor uw bron selecteert, neemt ADF automatisch het schema uit de gegevensset en maakt deze een projectie van die schema definitie van de gegevensset.
 
 In een bron transformatie wordt schema-drift gedefinieerd als het lezen van kolommen die uw gegevensset-schema niet definiëren. Als u schema-drift wilt inschakelen, schakelt u **schema-drift toestaan** in uw bron transformatie in.
 
@@ -59,7 +59,7 @@ Als schema-drift is ingeschakeld, zorgt u ervoor dat de schuif regelaar **automa
 
 Wanneer de gegevens stroom een geplaatste kolom heeft, kunt u deze in uw trans formaties gebruiken met de volgende methoden:
 
-* Gebruik de `byPosition` and `byName` -expressies om expliciet te verwijzen naar een kolom met de naam of het positie nummer.
+* Gebruik de `byPosition` and- `byName` expressies om expliciet te verwijzen naar een kolom met de naam of het positie nummer.
 * Een kolom patroon toevoegen aan een afgeleide kolom of aggregatie transformatie die overeenkomt met een combi natie van naam, stroom, positie of type
 * Op een regel gebaseerde toewijzing in een SELECT-of sink-trans formatie toevoegen om gedrijfte kolommen te vergelijken met kolommen aliassen via een patroon
 
@@ -71,7 +71,7 @@ Als u expliciete verwijzingen naar gerefereerde kolommen wilt maken, kunt u snel
 
 ![Toegewezen kaart](media/data-flow/mapdrifted1.png "Toegewezen kaart")
 
-In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Nadat u hebt geklikt **, wordt movieId** gedefinieerd in de afgeleide `toInteger(byName('movieId'))` kolom als en opgenomen in schema weergaven in downstream-trans formaties.
+In de gegenereerde afgeleide kolom transformatie wordt elke geplaatste kolom toegewezen aan de gedetecteerde naam en het gegevens type. In het bovenstaande voor beeld van de gegevens wordt de kolom ' movieId ' gedetecteerd als een geheel getal. Nadat u hebt geklikt **, wordt movieId** gedefinieerd in de afgeleide kolom als `toInteger(byName('movieId'))` en opgenomen in schema weergaven in downstream-trans formaties.
 
 ![Toegewezen kaart](media/data-flow/mapdrifted2.png "Toegewezen kaart")
 

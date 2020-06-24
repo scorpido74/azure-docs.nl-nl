@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930485"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710436"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
 
@@ -28,9 +28,9 @@ Normaal gesp roken moet u een apparaat registreren in uw toepassing voordat u ve
 
 IoT Central maakt gebruik van de [Azure IOT hub Device Provisioning-Service (DPS)](../../iot-dps/about-iot-dps.md) om het verbindings proces te beheren. Een apparaat maakt eerst verbinding met een DPS-eind punt om de informatie op te halen die nodig is om verbinding te maken met uw toepassing. Intern gebruikt uw IoT Central-toepassing een IoT-hub voor het afhandelen van connectiviteit met apparaten. Met DPS kunt u het volgende doen:
 
-- IoT Central voor het ondersteunen van onboarding en het verbinden van apparaten op schaal.
-- U kunt de referenties van het apparaat genereren en de apparaten offline configureren zonder de apparaten te registreren via IoT Central-gebruikers interface.
-- U kunt uw eigen apparaat-Id's gebruiken om apparaten te registreren in IoT Central. Het gebruik van uw eigen apparaat-Id's vereenvoudigt de integratie met bestaande back-office-systemen.
+- IoT Central voor het ondersteunen van onboarding en op schaal verbinding van apparaten.
+- U kunt de referenties van het apparaat genereren en de apparaten offline configureren zonder de apparaten te registreren via IoT Central-gebruikersinterface.
+- U kunt uw eigen apparaat-id's gebruiken om apparaten te registreren in IoT Central. Het gebruik van uw eigen apparaat-id's vereenvoudigt de integratie met bestaande back-officesystemen.
 - Een enkele, consistente manier om apparaten te verbinden met IoT Central.
 
 IoT Central ondersteunt zowel Shared Access signatures (SAS) als X. 509-certificaten om de communicatie tussen een apparaat en uw toepassing te beveiligen. X. 509-certificaten worden aanbevolen in productie omgevingen.
@@ -50,7 +50,7 @@ Deze aanpak is nuttig wanneer u experimenteert met IoT Central of apparaten test
 
 ![SAS-sleutels voor een afzonderlijk apparaat](./media/concepts-get-connected/single-device-sas.png)
 
-Zie voor meer informatie de zelf studie [een node. js-client toepassing maken en verbinden met uw Azure IOT Central-toepassing](./tutorial-connect-device-nodejs.md) .
+Zie voor meer informatie de zelf studie [een Node.js-client toepassing maken en verbinden met uw Azure IOT Central-toepassing](./tutorial-connect-device-nodejs.md) .
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Apparaten op schaal aansluiten met SAS
 
@@ -93,11 +93,11 @@ Als u een inbreuk op de beveiliging hebt of als uw primaire certificaat is inges
 
 Als u apparaten bulksgewijs wilt verbinden met X. 509-certificaten, moet u eerst de apparaten in uw toepassing registreren met behulp van een CSV-bestand om [de apparaat-id's en apparaatnamen te importeren](howto-manage-devices.md#import-devices). De apparaat-Id's moeten in kleine letters worden gereduceerd.
 
-Genereer X. 509-blad certificaten voor uw apparaten met het geüploade basis certificaat Gebruik de **apparaat-id** als `CNAME` de waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
+Genereer X. 509-blad certificaten voor uw apparaten met het geüploade basis certificaat Gebruik de **apparaat-id** als de `CNAME` waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
 
 #### <a name="sample-device-code"></a>Voorbeeld code van apparaat
 
-In het volgende voor beeld van de [Azure IOT node. js-SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) ziet u hoe een node. js-Apparaatclient een X. 509-blad certificaat en DPS gebruikt om zich te registreren bij een IOT Central-toepassing:
+In het volgende voor beeld van de [Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) ziet u hoe een Node.js Apparaatclient een X. 509-Leaf-certificaat en DPS gebruikt om zich te registreren bij een IOT Central-toepassing:
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -107,7 +107,7 @@ Zie [prov_dev_client_sample. C](https://github.com/Azure/azure-iot-sdk-c/blob/ma
 
 Voor alleen testen kunt u de volgende hulpprogram ma's gebruiken om basis-, tussenliggende en apparaat certificaten te genereren:
 
-- [Hulpprogram ma's voor de apparaat-SDK van Azure IOT Device Provisioning](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): een verzameling node. js-hulpprogram ma's die u kunt gebruiken om X. 509-certificaten en-sleutels te genereren en te controleren.
+- [Hulpprogram ma's voor de Azure IOT Device Provisioning apparaat SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): een verzameling Node.js-hulpprogram ma's die u kunt gebruiken om X. 509-certificaten en-sleutels te genereren en te controleren.
 - Als u een DevKit-apparaat gebruikt, wordt met dit [opdracht regel programma](https://aka.ms/iotcentral-docs-dicetool) een CA-certificaat gegenereerd dat u aan uw IOT Central-toepassing kunt toevoegen om de certificaten te controleren.
 - [Testen van CA-certificaten voor voor beelden en zelf studies beheren](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): een verzameling Power shell-en bash-scripts voor het volgende:
   - Maak een certificaat keten.
@@ -148,7 +148,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 1. [Voeg en verifieer een basis-of tussenliggende X. 509-certificaat](#connect-devices-using-x509-certificates) aan uw IOT Central-toepassing.
 
-1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine-case apparaat-Id's als `CNAME` de in de Blade certificaten.
+1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine-case apparaat-Id's als de `CNAME` in de Blade certificaten.
 
 1. De OEM knippert elk apparaat met een apparaat-ID, een gegenereerde Leaf X. 509-certificaat en de waarde voor het bereik van de toepassings **-id** .
 
@@ -180,7 +180,7 @@ IoT Central ondersteunt de volgende Attestation-mechanismen voor individuele ins
 - **X. 509-certificaten:** Als u een afzonderlijke registratie met X. 509-certificaten wilt maken, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **certificaten (X. 509)** als mechanisme. Voor apparaats certificaten die worden gebruikt met een afzonderlijke inschrijvings vermelding is vereist dat de certificaat verlener en het onderwerp CN worden ingesteld op de apparaat-ID.
 
     > [!TIP]
-    > Voor het testen kunt u [Hulpprogram ma's voor de Azure IOT Device Provisioning Device SDK voor node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) gebruiken om een zelfondertekend certificaat te genereren:`node create_test_cert.js device "mytestdevice"`
+    > Voor het testen kunt u [Hulpprogram ma's gebruiken voor de Azure IOT Device Provisioning Device SDK voor Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) om een zelfondertekend certificaat te genereren:`node create_test_cert.js device "mytestdevice"`
 
 - **Attestation van trusted platform module (TPM):** Een [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) is een type hardware Security module. Het gebruik van een TPM is een van de veiligste manieren om verbinding te maken met een apparaat. In dit artikel wordt ervan uitgegaan dat u een afzonderlijke, firmware of geïntegreerde TPM gebruikt. Software geëmuleerde Tpm's zijn goed geschikt voor het maken van prototypen of tests, maar bieden geen hetzelfde beveiligings niveau als discrete, firmware of geïntegreerde Tpm's. Gebruik geen software-Tpm's in productie. Als u een afzonderlijke inschrijving wilt maken die gebruikmaakt van een TPM, opent u de pagina **verbinding met apparaat** , selecteert u **afzonderlijke inschrijving** als de verbindings methode en **TPM** als mechanisme. Voer de TPM-goedkeurings sleutel in en sla de verbindings gegevens van het apparaat op.
 
@@ -261,7 +261,7 @@ De volgende tabel bevat een overzicht van de manier waarop functies van Azure Io
 | Eigenschap (schrijfbaar) | Dubbele gewenste en gerapporteerde eigenschappen van het apparaat |
 | Opdracht | Directe methoden |
 
-Zie voor meer informatie over het gebruik van de apparaat-Sdk's [een DevDiv Kit-apparaat verbinden met uw Azure IOT Central-toepassing](howto-connect-devkit.md) voor voorbeeld code.
+Zie voor meer informatie over het gebruik van de apparaat-Sdk's [een MXChip IOT DevKit-apparaat verbinden met uw Azure IOT Central-toepassing](howto-connect-devkit.md) voor voorbeeld code.
 
 ### <a name="protocols"></a>Protocollen
 

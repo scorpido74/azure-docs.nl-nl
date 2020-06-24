@@ -3,27 +3,27 @@ title: Problemen bij het aanmelden bij de galerij-app voor eenmalige aanmelding 
 description: Richt lijnen voor de specifieke fouten bij het aanmelden bij een toepassing die u hebt geconfigureerd voor op SAML gebaseerde federatieve eenmalige aanmelding met Azure AD
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/18/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c2dc73038151297952dc208031b4a3b6dbcf146
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367899"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759314"
 ---
-# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemen bij het aanmelden bij een galerie toepassing die is geconfigureerd voor federatieve eenmalige aanmelding
+# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemen met aanmelden bij een galerietoepassing die is geconfigureerd voor gefedereerde eenmalige aanmelding
 
 Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze suggestie te volgen om betere diagnose te krijgen en de oplossings stappen te automatiseren:
 
@@ -33,15 +33,15 @@ Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze s
 
 ## <a name="application-not-found-in-directory"></a>Kan de toepassing niet vinden in de map
 
-*Fout AADSTS70001: de toepassing met de id https\/:/contoso.com is niet gevonden in de map*.
+*Fout AADSTS70001: de toepassing met de id https: \/ /contoso.com is niet gevonden in de map*.
 
 **Mogelijke oorzaak**
 
 Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD wordt verzonden in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in azure AD.
 
-**Afsluiting**
+**Oplossing**
 
-Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Zorg ervoor dat het `Issuer` kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 
@@ -63,15 +63,15 @@ Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-w
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Het antwoord adres komt niet overeen met de antwoord adressen die voor de toepassing zijn geconfigureerd
 
-*Fout AADSTS50011: het antwoord adres ' https:\//contoso.com ' komt niet overeen met de antwoord adressen die zijn geconfigureerd voor de toepassing*
+*Fout AADSTS50011: het antwoord adres ' https: \/ /contoso.com ' komt niet overeen met de antwoord adressen die zijn geconfigureerd voor de toepassing*
 
 **Mogelijke oorzaak**
 
 De `AssertionConsumerServiceURL` waarde in de SAML-aanvraag komt niet overeen met de antwoord-URL-waarde of het patroon dat is geconfigureerd in azure AD. De `AssertionConsumerServiceURL` waarde in de SAML-aanvraag is de URL die u in de fout ziet.
 
-**Afsluiting**
+**Oplossing**
 
-Zorg ervoor dat `AssertionConsumerServiceURL` de waarde in de SAML-aanvraag overeenkomt met de antwoord-URL-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Zorg ervoor dat de `AssertionConsumerServiceURL` waarde in de SAML-aanvraag overeenkomt met de antwoord-URL-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 
@@ -87,19 +87,19 @@ Zorg ervoor dat `AssertionConsumerServiceURL` de waarde in de SAML-aanvraag over
 
 1.  Selecteer de toepassing die u wilt configureren voor eenmalige aanmelding.
 
-1.  Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of werk de waarde in het tekstvak antwoord-URL in op `AssertionConsumerServiceURL` overeenkomst met de waarde in de SAML-aanvraag.    
+1.  Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of werk de waarde in het tekstvak antwoord-URL in op overeenkomst met de `AssertionConsumerServiceURL` waarde in de SAML-aanvraag.    
     
 Nadat u de waarde voor de antwoord-URL in azure AD hebt bijgewerkt en deze overeenkomt met de waarde die door de toepassing in de SAML-aanvraag is verzonden, moet u zich kunnen aanmelden bij de toepassing.
 
 ## <a name="user-not-assigned-a-role"></a>Gebruiker heeft geen rol toegewezen
 
-*Fout AADSTS50105: de aangemelde gebruiker ' brian\@contoso.com ' is niet toegewezen aan een rol voor de toepassing*.
+*Fout AADSTS50105: de aangemelde gebruiker ' brian \@ contoso.com ' is niet toegewezen aan een rol voor de toepassing*.
 
 **Mogelijke oorzaak**
 
 De gebruiker heeft in Azure AD geen toegang gekregen tot de toepassing.
 
-**Afsluiting**
+**Oplossing**
 
 Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijzen aan een toepassing. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
@@ -148,7 +148,7 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die met de toepassing is
 -   Ontbrekende vereiste velden in de SAML-aanvraag
 -   Gecodeerde methode voor SAML-aanvraag
 
-**Afsluiting**
+**Oplossing**
 
 1. Leg de SAML-aanvraag vast. Volg de zelf studie voor het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md) voor meer informatie over het vastleggen van de SAML-aanvraag.
 
@@ -168,9 +168,9 @@ De leverancier van de toepassing moet valideren dat de Azure AD SAML-implementat
 
 Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de SAML-aanvraag komt niet overeen met de id-waarde die is geconfigureerd voor de toepassing in azure AD.
 
-**Afsluiting**
+**Oplossing**
 
-Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
+Zorg ervoor dat het `Issuer` kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../azuread-dev/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
 
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 
@@ -197,7 +197,7 @@ Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-w
 
 Het toepassings object is beschadigd en het certificaat dat is geconfigureerd voor de toepassing wordt niet herkend door Azure AD.
 
-**Afsluiting**
+**Oplossing**
 
 Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken:
 
@@ -233,7 +233,7 @@ Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken
 
 Azure AD kan de SAML-aanvraag niet identificeren binnen de URL-para meters in de HTTP-aanvraag. Dit kan gebeuren als de toepassing geen gebruik maakt van een binding voor HTTP-omleiding bij het verzenden van de SAML-aanvraag naar Azure AD.
 
-**Afsluiting**
+**Oplossing**
 
 De toepassing moet de SAML-aanvraag die is gecodeerd naar de locatie header verzenden met behulp van binding van HTTP-omleiding. Lees de sectie over binding voor HTTP-omleidingen in het [specificatiedocument over het SAML-protocol](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -241,11 +241,11 @@ De toepassing moet de SAML-aanvraag die is gecodeerd naar de locatie header verz
 
 **Mogelijke oorzaak**
 
-Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-URL (assertion Consumer Service-URL) bevat, selecteert Azure AD een van de geconfigureerde vertrouwens-Url's voor die toepassing. Zelfs als de toepassing een expliciete antwoord-URL heeft geconfigureerd, kan de gebruiker worden omgeleid https://127.0.0.1:444. 
+Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-URL (assertion Consumer Service-URL) bevat, selecteert Azure AD een van de geconfigureerde vertrouwens-Url's voor die toepassing. Zelfs als de toepassing een expliciete antwoord-URL heeft geconfigureerd, kan de gebruiker worden omgeleid https://127.0.0.1:444 . 
 
 Toen de toepassing werd toegevoegd als niet-galerie-app, is deze antwoord-URL in Azure Active Directory gemaakt als standaardwaarde. Dit gedrag is gewijzigd en deze URL wordt niet meer standaard toegevoegd in Azure Active Directory. 
 
-**Afsluiting**
+**Oplossing**
 
 Verwijder de ongebruikte antwoord-Url's die voor de toepassing zijn geconfigureerd.
 

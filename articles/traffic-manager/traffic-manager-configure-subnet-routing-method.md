@@ -4,20 +4,19 @@ description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureert v
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: rohink
-ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938739"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711779"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Verkeer naar specifieke eindpunten routeren met Traffic Manager op basis van subnets van gebruiker
 
@@ -47,7 +46,7 @@ In dit gedeelte maakt u twee website-instanties die de twee service-eindpunten v
 #### <a name="create-vms-for-running-websites"></a>Virtuele machines maken voor het uitvoeren van websites
 In deze sectie maakt u twee Vm's *myEndpointVMEastUS* en *MYENDPOINTVMWEUROPE* in het **VS-Oost** en **Europa-West** Azure-regio's.
 
-1. Selecteer op de linkerbovenhoek van de Azure Portal **een resource** > **Compute** > **Windows Server 2016 VM**maken.
+1. Selecteer op de linkerbovenhoek van de Azure Portal **een resource**  >  **Compute**  >  **Windows Server 2016 VM**maken.
 2. Voer de volgende informatie voor **Basisinformatie** in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Maken**:
 
     |Instelling|Waarde|
@@ -56,7 +55,7 @@ In deze sectie maakt u twee Vm's *myEndpointVMEastUS* en *MYENDPOINTVMWEUROPE* i
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Resourcegroep| Selecteer **Nieuw** en typ vervolgens *myResourceGroupTM1*.|
-    |Locatie| Selecteer **VS Oost**.|
+    |Locatie| Selecteer **VS - oost**.|
     |||
 
 4. Selecteer een VM-grootte onder **Kies een grootte**.
@@ -87,14 +86,14 @@ In deze sectie maakt u twee Vm's *myEndpointVMEastUS* en *MYENDPOINTVMWEUROPE* i
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>IIS installeren en de standaardwebpagina aanpassen
 
-In deze sectie installeert u de IIS-server op de twee vm's- *myIISVMEastUS*  & *myIISVMWEurope*en werkt u vervolgens de pagina standaard website bij. De aangepaste websitepagina geeft de naam weer van de virtuele machine waarmee u verbinding maakt als u de website in een webbrowser bezoekt.
+In deze sectie installeert u de IIS-server op de twee vm's- *myIISVMEastUS*   &  *myIISVMWEurope*en werkt u vervolgens de pagina standaard website bij. De aangepaste websitepagina geeft de naam weer van de virtuele machine waarmee u verbinding maakt als u de website in een webbrowser bezoekt.
 
 1. Selecteer in het linkermenu **Alle resources** en klik in de lijst met resources op *myIISVMEastUS*, die zich in de resourcegroep *myresourceGroupTM1* bevindt.
 2. Klik op de pagina **Overzicht** op **Verbinding maken** en selecteer vervolgens in **Verbinding maken met virtuele machine** de optie **RDP-bestand downloaden**.
 3. Open het gedownloade RDP-bestand. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine. Mogelijk moet u **Meer opties** en vervolgens **Een ander account gebruiken** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM.
 4. Selecteer **OK**.
 5. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als u de waarschuwing ontvangt, selecteert u **Ja** of **Doorgaan** om door te gaan met de verbinding.
-6. Navigeer op het bureau blad van de server naar **beheer hulpprogramma's**>van Windows**Serverbeheer**.
+6. Navigeer op het bureau blad van de server naar **beheer hulpprogramma's van Windows** > **Serverbeheer**.
 7. Start Windows Power shell op *myIISVMEastUS* en gebruik de volgende opdrachten om de IIS-server te installeren en het standaard htm-bestand bij te werken.
     ```powershell-interactive
     # Install IIS
@@ -133,7 +132,7 @@ Traffic Manager routeert gebruikersverkeer op basis van de DNS-naam van de servi
 
 In deze sectie maakt u een virtuele machine (*mVMEastUS* en *myVMWestEurope*) in elke Azure-regio (**VS-Oost** en **Europa-West**. U zult deze virtuele machines gebruiken om te testen hoe Traffic Manager verkeer naar de dichtstbijzijnde IIS-server routeert als u de website bezoekt.
 
-1. Selecteer op de linkerbovenhoek van de Azure Portal **een resource** > **Compute** > **Windows Server 2016 VM**maken.
+1. Selecteer op de linkerbovenhoek van de Azure Portal **een resource**  >  **Compute**  >  **Windows Server 2016 VM**maken.
 2. Voer de volgende informatie voor **Basisinformatie** in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Maken**:
 
     |Instelling|Waarde|
@@ -170,7 +169,7 @@ In deze sectie maakt u een virtuele machine (*mVMEastUS* en *myVMWestEurope*) in
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 Maak een Traffic Manager-profiel waarmee u specifieke eindpunten kunt retourneren op basis van het bron-IP-adres van de aanvraag.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource** > **netwerk** > **Traffic Manager profiel** > **maken**.
+1. Selecteer in de linkerbovenhoek van het scherm **een resource maken**  >  **netwerk**  >  **Traffic Manager profiel**  >  **maken**.
 2. Voer in ** Traffic Manager-profiel maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Maken**:
 
     | Instelling                 | Waarde                                              |
@@ -186,7 +185,7 @@ Maak een Traffic Manager-profiel waarmee u specifieke eindpunten kunt retournere
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-eindpunten toevoegen
 
-Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWEurope* toe om gebruikers verkeer te routeren op basis van het subnet van de query van de gebruiker.
+Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS*  &  *myIISVMWEurope* toe om gebruikers verkeer te routeren op basis van het subnet van de query van de gebruiker.
 
 1. Zoek in de zoekbalk van de portal de naam van het Traffic Manager-profiel dat u in de vorige sectie hebt gemaakt en selecteer het profiel in de weergegeven resultaten.
 2. Klik in **Traffic Manager-profiel**, in de sectie **Instellingen**, op **Eindpunten** en vervolgens op **Toevoegen**.
@@ -195,7 +194,7 @@ Voeg de twee virtuele machines met de IIS-servers- *myIISVMEastUS* & *myIISVMWEu
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Azure-eindpunt                                   |
-    | Naam           | myTestWebSiteEndpoint                                        |
+    | Name           | myTestWebSiteEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
     | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in VS - oost.|
     |  Instellingen voor subnetroutering    |   Voeg het IP-adres van de *myVMEastUS* -test-VM toe. Alle gebruikers query's die afkomstig zijn van deze VM, worden omgeleid naar de *myTestWebSiteEndpoint*.    |

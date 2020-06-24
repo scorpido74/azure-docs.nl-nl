@@ -3,25 +3,25 @@ title: Het laden van een toepassings proxy toepassing duurt te lang Microsoft Do
 description: Problemen met de prestaties van pagina's oplossen met de Azure AD-toepassingsproxy
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: bff9873742d5d660f563eebcb58ff9bcca940d24
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65782649"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760169"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Het laden van een toepassings proxy toepassing duurt te lang
 
@@ -35,7 +35,7 @@ Naast de netwerk topologie zijn er momenteel geen verdere aanbevelingen voor het
 De data centers met de Application proxy-service kunnen worden gevonden met het [test programma voor connector poorten](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Feedback over de locaties van het Data Center van de toepassings proxy 
-Er kunnen Azure-data centers zijn die nog geen toepassings proxy bevatten, maar dit kan leiden tot een geweldige latentie verbetering voor u. De locatie van het Data Center aadapfeedback@microsoft.comverzenden naar. Micro soft gebruikt uw feedback voor uitbreidings abonnementen.
+Er kunnen Azure-data centers zijn die nog geen toepassings proxy bevatten, maar dit kan leiden tot een geweldige latentie verbetering voor u. De locatie van het Data Center verzenden naar aadapfeedback@microsoft.com . Micro soft gebruikt uw feedback voor uitbreidings abonnementen.
 
 Micro soft werkt aan aanvullende mogelijkheden om de latentie te verbeteren. Zodra deze verbeteringen beschikbaar zijn, wordt de documentatie bijgewerkt.
 

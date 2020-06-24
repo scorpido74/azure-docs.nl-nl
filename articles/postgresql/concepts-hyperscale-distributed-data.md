@@ -8,18 +8,18 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243651"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710351"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Gedistribueerde gegevens in Azure Database for PostgreSQL – grootschalige (Citus)
 
 Dit artikel bevat een overzicht van de drie tabel typen in Azure Database for PostgreSQL – grootschalige (Citus).
 U ziet hoe gedistribueerde tabellen worden opgeslagen als Shards en hoe Shards op knoop punten worden geplaatst.
 
-## <a name="table-types"></a>Tabel typen
+## <a name="table-types"></a>Tabeltypen
 
 Er zijn drie typen tabellen in een grootschalige-Server groep (Citus), die voor verschillende doel einden worden gebruikt.
 
@@ -64,11 +64,11 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Als het coördinator knooppunt wil bepalen welke Shard een rij bevat `github_events`, wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk\'Shard s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
+Als het coördinator knooppunt wil bepalen welke Shard een rij bevat `github_events` , wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk Shard \' s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
 
 ### <a name="shard-placements"></a>Shard plaatsen
 
-Stel dat Shard 102027 is gekoppeld aan de betreffende rij. De rij wordt in een tabel met de naam `github_events_102027` in een van de werk rollen gelezen of geschreven. Welke werk nemer? Dat wordt volledig bepaald door de meta gegevens tabellen. De toewijzing van Shard aan worker wordt de Shard-plaatsing genoemd.
+Stel dat Shard 102027 is gekoppeld aan de betreffende rij. De rij wordt in een tabel met `github_events_102027` de naam in een van de werk rollen gelezen of geschreven. Welke werk nemer? Dat wordt volledig bepaald door de meta gegevens tabellen. De toewijzing van Shard aan worker wordt de Shard-plaatsing genoemd.
 
 Het coördinator knooppunt schrijft query's opnieuw in fragmenten die verwijzen naar de specifieke tabellen zoals `github_events_102027` en voert deze fragmenten uit op de juiste werk rollen. Hier volgt een voor beeld van een query die wordt uitgevoerd achter de schermen om het knoop punt te vinden dat Shard ID 102027.
 

@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281000"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710861"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Zelf studie: publiceren, lokaal abonneren op gebeurtenissen
 
@@ -39,7 +39,7 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 
 ### <a name="select-your-iot-edge-device"></a>Uw IoT Edge-apparaat selecteren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Navigeer naar uw IoT Hub.
 1. Selecteer **IOT Edge** in het menu van het gedeelte **Automatic Device Management** . 
 1. Klik op de ID van het doel apparaat in de lijst met apparaten
@@ -77,7 +77,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
           }
         }
     ```    
- 1. Klik op **Opslaan**
+ 1. Klik op **Opslaan**.
  1. Ga verder met de volgende sectie om de Azure Event Grid Subscriber module toe te voegen voordat u ze samen implementeert.
 
     >[!IMPORTANT]
@@ -99,7 +99,7 @@ In deze sectie wordt beschreven hoe u een andere IoT-module implementeert die al
    * **Naam**: abonnee
    * **Afbeeldings-URI**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Opties**voor het maken van containers: geen
-1. Klik op **Opslaan**
+1. Klik op **Opslaan**.
 1. Klik op **volgende** om door te gaan naar de sectie routes
 
  ### <a name="setup-routes"></a>Installatie routes
@@ -118,7 +118,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
 
 Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. In Azure Event Grid verwijst een onderwerp naar een eind punt waarnaar uitgevers gebeurtenissen naar kunnen verzenden.
 
-1. Maak topic. json met de volgende inhoud. Zie onze [API-documentatie](api.md)voor meer informatie over de payload.
+1. Maak topic.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md)voor meer informatie over de payload.
 
     ```json
         {
@@ -129,7 +129,7 @@ Als uitgever van een gebeurtenis moet u een event grid-onderwerp maken. In Azure
         }
     ```
 
-1. Voer de volgende opdracht uit om een event grid-onderwerp te maken. Controleer of u de HTTP-status code ziet `200 OK`.
+1. Voer de volgende opdracht uit om een event grid-onderwerp te maken. Controleer of u de HTTP-status code ziet `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -163,7 +163,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Maak Subscription. json met de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
+1. Maak subscription.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md) voor meer informatie over de payload.
 
     ```json
         {
@@ -180,7 +180,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
     >[!NOTE]
     > De eigenschap **endpointType** geeft aan dat de abonnee een **webhook**is.  De **endpointUrl** geeft de URL aan waar de abonnee naar gebeurtenissen luistert. Deze URL komt overeen met het voor beeld van Azure Subscriber dat u eerder hebt geïmplementeerd.
-2. Voer de volgende opdracht uit om een abonnement voor het onderwerp te maken. Controleer of u de HTTP-status code ziet `200 OK`.
+2. Voer de volgende opdracht uit om een abonnement voor het onderwerp te maken. Controleer of u de HTTP-status code ziet `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +212,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 
 ## <a name="publish-an-event"></a>Een gebeurtenis publiceren
 
-1. Maak Event. json met de volgende inhoud. Zie onze [API-documentatie](api.md)voor meer informatie over de payload.
+1. Maak event.jsmet de volgende inhoud. Zie onze [API-documentatie](api.md)voor meer informatie over de payload.
 
     ```json
         [

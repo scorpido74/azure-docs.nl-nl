@@ -7,23 +7,23 @@ author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382712"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724914"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Pakket opnames beheren met Azure Network Watcher met behulp van de Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
-> - [Zo](network-watcher-packet-capture-manage-powershell.md)
+> - [Azure-portal](network-watcher-packet-capture-manage-portal.md)
+> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure-CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
@@ -68,7 +68,7 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>Stap 2
 
-Om ervoor te zorgen dat de agent is geïnstalleerd, `vm extension show` voert u de opdracht uit en geeft u de naam van de resource groep en de virtuele machine door. Controleer de resulterende lijst om te controleren of de agent is geïnstalleerd.
+Om ervoor te zorgen dat de agent is geïnstalleerd, voert u de `vm extension show` opdracht uit en geeft u de naam van de resource groep en de virtuele machine door. Controleer de resulterende lijst om te controleren of de agent is geïnstalleerd.
 
 Voor virtuele Windows-machines:
 
@@ -124,7 +124,7 @@ U bent nu klaar om een pakket opname te maken.  Eerst gaan we de para meters bek
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Het volgende voor beeld is de verwachte uitvoer van het `az network watcher packet-capture create` uitvoeren van de opdracht.
+Het volgende voor beeld is de verwachte uitvoer van het uitvoeren van de `az network watcher packet-capture create` opdracht.
 
 ```json
 {
@@ -179,13 +179,13 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>Pakket opname ophalen
 
-Als u `az network watcher packet-capture show-status` de opdracht uitvoert, wordt de status opgehaald van een actieve of voltooide pakket opname.
+Als u de `az network watcher packet-capture show-status` opdracht uitvoert, wordt de status opgehaald van een actieve of voltooide pakket opname.
 
 ```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Het volgende voor beeld is de uitvoer van `az network watcher packet-capture show-status` de opdracht. Het volgende voor beeld is wanneer de opname wordt gestopt met een StopReason van TimeExceeded.
+Het volgende voor beeld is de uitvoer van de `az network watcher packet-capture show-status` opdracht. Het volgende voor beeld is wanneer de opname wordt gestopt met een StopReason van TimeExceeded.
 
 ```
 {

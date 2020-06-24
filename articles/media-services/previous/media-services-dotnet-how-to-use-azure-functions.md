@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251165"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712493"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions ontwikkelen met Media Services
 
@@ -54,7 +54,7 @@ De functie die in dit artikel is gedefinieerd, veronderstelt dat u de volgende o
 
 **AMSClientSecret**: client geheim van Azure AD-toepassing.
 
-**StorageConnection**: opslag verbinding van het account dat is gekoppeld aan het Media Services-account. Deze waarde wordt gebruikt in het bestand **Function. json** en **Run. CSX** (zie hieronder).
+**StorageConnection**: opslag verbinding van het account dat is gekoppeld aan het Media Services-account. Deze waarde wordt gebruikt in de **function.jsvoor** het bestand file en **Run. CSX** (zie hieronder).
 
 ## <a name="create-a-function"></a>Een functie maken
 
@@ -70,22 +70,22 @@ Als uw functie-app is geïmplementeerd, kunt u deze vinden in **App Services** A
 
     ![bestanden](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. Klik op **maken**. 
+4. Klik op **Create**. 
 
-## <a name="files"></a>Bestanden
+## <a name="files"></a>Files
 
-Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie, **Function. json** en **Run. CSX** te maken, worden voor u gemaakt. U moet een **project. json** -bestand toevoegen of uploaden. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
+Uw Azure-functie is gekoppeld aan code bestanden en andere bestanden die in deze sectie worden beschreven. Wanneer u de Azure Portal gebruikt om een functie te maken, **function.js** voor u gemaakt en **uitgevoerd. CSX** . U moet eenproject.jstoevoegen of uploaden **voor** het bestand. In de rest van deze sectie vindt u een korte uitleg van elk bestand en worden de bijbehorende definities weer gegeven.
 
 ![bestanden](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-Het bestand function. json definieert de functie bindingen en andere configuratie-instellingen. De runtime gebruikt dit bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe de uitvoering van de functie kan worden geretourneerd. Zie [Azure functions http en webhook-bindingen](../../azure-functions/functions-reference.md#function-code)voor meer informatie.
+De function.jsin het bestand definieert de functie bindingen en andere configuratie-instellingen. De runtime gebruikt dit bestand om te bepalen welke gebeurtenissen moeten worden bewaakt en hoe gegevens moeten worden door gegeven en hoe de uitvoering van de functie kan worden geretourneerd. Zie [Azure functions http en webhook-bindingen](../../azure-functions/functions-reference.md#function-code)voor meer informatie.
 
 >[!NOTE]
 >Stel de eigenschap **disabled** in op **True** om te voor komen dat de functie wordt uitgevoerd. 
 
-Vervang de inhoud van het bestaande function. JSON-bestand door de volgende code:
+Vervang de inhoud van de bestaande function.jsin het bestand door de volgende code:
 
 ```json
 {
@@ -102,11 +102,11 @@ Vervang de inhoud van het bestaande function. JSON-bestand door de volgende code
 }
 ```
 
-### <a name="projectjson"></a>project. json
+### <a name="projectjson"></a>project.jsop
 
-Het bestand project. json bevat afhankelijkheden. Hier volgt een voor beeld van het bestand **project. json** dat de vereiste .net Azure Media Services-pakketten van Nuget bevat. Houd er rekening mee dat de versie nummers worden gewijzigd met de meest recente updates voor de pakketten. Daarom moet u de meest recente versies bevestigen. 
+De project.jsin het bestand bevat afhankelijkheden. Hier volgt een voor beeld van **project.jsin** een bestand dat de vereiste .net Azure Media Services-pakketten bevat van Nuget. Houd er rekening mee dat de versie nummers worden gewijzigd met de meest recente updates voor de pakketten. Daarom moet u de meest recente versies bevestigen. 
 
-Voeg de volgende definitie toe aan project. json. 
+Voeg de volgende definitie toe aan project.jsop. 
 
 ```json
 {

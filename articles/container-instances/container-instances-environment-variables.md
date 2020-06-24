@@ -4,15 +4,15 @@ description: Meer informatie over het instellen van omgevings variabelen in de c
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247226"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686729"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Omgevings variabelen instellen in container instanties
 
-Door omgevingsvariabelen in uw containerinstanties in te stellen, kunt u dynamische configuratie mogelijk maken van de toepassing die of het script dat door de container wordt uitgevoerd. Dit is vergelijkbaar met het `--env` opdracht regel argument tot `docker run`. 
+Door omgevingsvariabelen in uw containerinstanties in te stellen, kunt u dynamische configuratie mogelijk maken van de toepassing die of het script dat door de container wordt uitgevoerd. Dit is vergelijkbaar met het `--env` opdracht regel argument tot `docker run` . 
 
 Als u omgevings variabelen in een container wilt instellen, geeft u ze op wanneer u een container exemplaar maakt. In dit artikel worden voor beelden gegeven van het instellen van omgevings variabelen wanneer u een container start met de [Azure cli](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)en de [Azure Portal](#azure-portal-example). 
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Als u de uitvoer wilt wijzigen, start u een tweede `--environment-variables` container waarbij het argument is toegevoegd, waarbij u waarden opgeeft voor de variabelen *NumWords* en *MinLength* . (In dit voor beeld wordt ervan uitgegaan dat u de CLI uitvoert in een bash-shell of Azure Cloud Shell. Als u de Windows-opdracht prompt gebruikt, geeft u de variabelen op met dubbele aanhalings `--environment-variables "NumWords"="5" "MinLength"="8"`tekens, zoals.)
+Als u de uitvoer wilt wijzigen, start u een tweede container waarbij het `--environment-variables` argument is toegevoegd, waarbij u waarden opgeeft voor de variabelen *NumWords* en *MinLength* . (In dit voor beeld wordt ervan uitgegaan dat u de CLI uitvoert in een bash-shell of Azure Cloud Shell. Als u de Windows-opdracht prompt gebruikt, geeft u de variabelen op met dubbele aanhalings tekens, zoals `--environment-variables "NumWords"="5" "MinLength"="8"` .)
 
 ```azurecli-interactive
 az container create \
@@ -83,7 +83,7 @@ In de uitvoer van de containers ziet u hoe u het script gedrag van de tweede con
 
 ## <a name="azure-powershell-example"></a>Azure PowerShell-voor beeld
 
-Het instellen van omgevings variabelen in Power shell is vergelijkbaar met de CLI `-EnvironmentVariable` , maar gebruikt het opdracht regel argument.
+Het instellen van omgevings variabelen in Power shell is vergelijkbaar met de CLI, maar gebruikt het `-EnvironmentVariable` opdracht regel argument.
 
 Start eerst de container [ACI-WordCount][aci-wordcount] in de standaard configuratie met de opdracht [New-AzContainerGroup][new-Azcontainergroup] :
 
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Voer nu de volgende opdracht [AzContainerGroup][new-Azcontainergroup] uit. Hiermee geeft u de variabelen *NumWords* en *MinLength* -omgeving op `envVars`nadat u een matrix variabele hebt gevuld:
+Voer nu de volgende opdracht [AzContainerGroup][new-Azcontainergroup] uit. Hiermee geeft u de variabelen *NumWords* en *MinLength* -omgeving op nadat u een matrix variabele hebt gevuld `envVars` :
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -144,7 +144,7 @@ Azure:\
 Als u omgevings variabelen wilt instellen wanneer u een container in de Azure Portal start, geeft u deze op op de pagina **Geavanceerd** wanneer u de container maakt.
 
 1. Stel op de pagina **Geavanceerd** het **beleid voor opnieuw opstarten** in *op bij fout*
-2. Onder **omgevings variabelen**voert `NumWords` u een waarde in `5` voor de eerste variabele en voert `MinLength` u een waarde in `8` voor de tweede variabele. 
+2. Onder **omgevings variabelen**voert u `NumWords` een waarde in `5` voor de eerste variabele en voert u `MinLength` een waarde in `8` voor de tweede variabele. 
 1. Selecteer **controleren + maken** om de container te controleren en vervolgens te implementeren.
 
 ![Portal pagina met de knop voor het inschakelen van de omgevings variabele en tekst vakken][portal-env-vars-01]
@@ -159,7 +159,7 @@ Objecten met beveiligde waarden zijn bedoeld om gevoelige informatie te bewaren,
 
 Omgevings variabelen met beveiligde waarden zijn niet zichtbaar in de eigenschappen van uw container. hun waarden kunnen alleen worden geopend vanuit de container. Container eigenschappen die in de Azure Portal of in azure CLI worden weer gegeven, geven bijvoorbeeld alleen de naam van een beveiligde variabele weer, niet de waarde.
 
-Stel een beveiligde omgevings variabele in door `secureValue` de eigenschap op te geven `value` in plaats van de reguliere waarde voor het type variabele. De twee variabelen die in de volgende YAML zijn gedefinieerd, worden de twee typen variabelen gedemonstreerd.
+Stel een beveiligde omgevings variabele in door de eigenschap op te geven `secureValue` in plaats van de reguliere waarde `value` voor het type variabele. De twee variabelen die in de volgende YAML zijn gedefinieerd, worden de twee typen variabelen gedemonstreerd.
 
 ### <a name="yaml-deployment"></a>YAML-implementatie
 
@@ -229,7 +229,7 @@ Met de opdracht [AZ container exec][az-container-exec] , waarmee u een opdracht 
 az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
 ```
 
-Zodra u een interactieve shell in de container hebt geopend, hebt u toegang tot `SECRET` de waarde van de variabele:
+Zodra u een interactieve shell in de container hebt geopend, hebt u toegang tot de `SECRET` waarde van de variabele:
 
 ```console
 root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET

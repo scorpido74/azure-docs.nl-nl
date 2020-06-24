@@ -4,15 +4,15 @@ description: Meer informatie over het configureren van Azure Active Directory-ve
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059485"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753950"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory-verificatie voor gebruikers-VPN configureren
 
@@ -44,7 +44,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 * Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adres bereik dat u voor de hub opgeeft, mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding maakt. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u niet bekend bent met de IP-adresbereiken die zich in uw on-premises netwerk configuratie bevinden, coördineert u met iemand die deze gegevens voor u kan opgeven.
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
 ## <a name="create-a-virtual-wan"></a><a name="wan"></a>Een virtueel WAN maken
 
@@ -54,7 +54,7 @@ Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan
 2. Selecteer **virtueel WAN** in de resultaten. Klik op de pagina virtueel WAN op **maken** om de pagina WAN maken te openen.
 3. Vul op de pagina **WAN maken** op het tabblad **basis beginselen** de volgende velden in:
 
-   ![Virtuele WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
+   ![Virtual WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
    * **Resource groep** : nieuwe maken of bestaande gebruiken.
@@ -125,7 +125,7 @@ Gebruik het VPN-profiel om uw clients te configureren.
 Als u verbinding wilt maken, moet u de Azure VPN-client downloaden en het VPN-client profiel importeren dat in de vorige stappen is gedownload op elke computer die verbinding wil maken met het VNet.
 
 > [!NOTE]
-> Azure AD-verificatie wordt alleen ondersteund voor&reg; openvpn-protocol verbindingen.
+> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN- &reg; Protocol verbindingen.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>De Azure VPN-client downloaden

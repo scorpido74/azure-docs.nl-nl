@@ -4,15 +4,15 @@ description: Gebruik een sjabloon om de open bare IP-configuratie van Azure van 
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235398"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711473"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>De open bare IP-configuratie van Azure naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -45,7 +45,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 2. Zoek de resource groep die de open bare bron-IP bevat en klik erop.
 3. Selecteer > **instellingen**  >  **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon**  >  **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+5. Klik op **sjabloon**  >  **bewerken para meters** om de **parameters.jsin** het bestand in de online-editor te openen.
 8. Als u de para meter van de open bare IP-naam wilt bewerken, wijzigt u de eigenschap onder **parameter**  >  **waarde** van de naam van het open bare IP-bron adres in de naam van het open bare IP-adres. Controleer of de naam tussen aanhalings tekens is:
 
     ```json
@@ -62,7 +62,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
     ```
 8.  Klik op **Opslaan** in de editor.
 
-9.  Klik **op sjabloon**  >  **bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
+9.  Klik **op sjabloon**  >  **bewerken sjabloon** om de **template.js** te openen in het bestand in de online-editor.
 
 10. Als u de doel regio wilt bewerken waar het open bare IP-adres wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
 
@@ -94,7 +94,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU**-  >  **naam** te wijzigen in het bestand **sjabloon. json** :
+    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU**  >  **name** te wijzigen in de **template.jsin** het bestand:
 
         ```json
           "resources": [

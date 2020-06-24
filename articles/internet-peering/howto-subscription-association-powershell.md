@@ -5,15 +5,15 @@ description: Peer-ASN koppelen aan een Azure-abonnement met behulp van Power she
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0ad9ae885a458da5df8975d5d13018fd92bbdaf
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75908988"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710776"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Peer-ASN koppelen aan een Azure-abonnement met behulp van Power shell
 
@@ -91,7 +91,7 @@ Type            : Microsoft.Peering/peerAsns
 ## <a name="modify-peerasn"></a>PeerAsn wijzigen
 U kunt NOC elke contact gegevens op elk gewenst moment wijzigen.
 
-Hieronder ziet u een voor beeld:
+Hieronder ziet u een voorbeeld:
 
 ```powershell
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"

@@ -3,14 +3,14 @@ title: Runbooks in Azure Automation beheren
 description: In dit artikel leest u hoe u runbooks beheert in Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 93b34af0baed89fd312948aeffe8ea4ac8ef806c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834693"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718305"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbooks in Azure Automation beheren
 
@@ -46,7 +46,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Een runbook importeren
 
-U kunt een Power shell-of Power shell workflow-script (**. ps1**), een grafisch runbook (**. graphrunbook**) of een python 2-script (**. py**) importeren om uw eigen runbook te maken.  U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, waarbij rekening wordt gehouden met de volgende overwegingen.
+U kunt een Power shell-of Power shell workflow-script (**. ps1**), een grafisch runbook (**. graphrunbook**) of een python 2-script (**. py**) importeren om uw eigen runbook te maken. U moet het [type runbook](automation-runbook-types.md) opgeven dat tijdens het importeren wordt gemaakt, waarbij rekening wordt gehouden met de volgende overwegingen.
 
 * U kunt een **. ps1** -bestand importeren dat geen werk stroom bevat in een [Power shell-Runbook](automation-runbook-types.md#powershell-runbooks) of een [Power shell workflow-runbook](automation-runbook-types.md#powershell-workflow-runbooks). Als u deze importeert in een Power shell workflow-runbook, wordt dit geconverteerd naar een werk stroom. In dit geval worden opmerkingen in het runbook opgenomen om de aangebrachte wijzigingen te beschrijven.
 
@@ -54,7 +54,7 @@ U kunt een Power shell-of Power shell workflow-script (**. ps1**), een grafisch 
 
 * Importeer geen **. ps1** -bestand met een Power shell-werk stroom in een [Power shell-runbook](automation-runbook-types.md#powershell-runbooks), omdat het niet door de Power shell-script engine kan worden herkend.
 
-* Importeer alleen een **. graphrunbook** -bestand in een nieuw [grafisch runbook](automation-runbook-types.md#graphical-runbooks). 
+* Importeer alleen een **. graphrunbook** -bestand in een nieuw [grafisch runbook](automation-runbook-types.md#graphical-runbooks).
 
 ### <a name="import-a-runbook-from-the-azure-portal"></a>Een runbook importeren vanuit de Azure Portal
 
@@ -64,12 +64,12 @@ U kunt de volgende procedure gebruiken om een script bestand te importeren in Az
 > U kunt een **. ps1** -bestand alleen importeren in een Power shell workflow-runbook met behulp van de portal.
 
 1. Open uw Automation-account in Azure Portal.
-2. Selecteer **runbooks** onder **proces automatisering** om de lijst met Runbooks te openen.
+2. Selecteer **Runbooks** onder **Procesautomatisering** om de lijst van runbooks te openen.
 3. Klik op **een Runbook importeren**.
 4. Klik op **Runbook-bestand** en selecteer het bestand dat u wilt importeren.
 5. Als het veld **naam** is ingeschakeld, kunt u de naam van het runbook wijzigen. De naam moet beginnen met een letter en mag letters, cijfers, onderstrepings tekens en streepjes bevatten.
 6. Het [runbook-type](automation-runbook-types.md) wordt automatisch geselecteerd, maar u kunt het type wijzigen nadat u de toepasselijke beperkingen in het account hebt genomen.
-7. Klik op **Maken**. Het nieuwe runbook wordt weer gegeven in de lijst met runbooks voor het Automation-account.
+7. Klik op **Create**. Het nieuwe runbook wordt weer gegeven in de lijst met runbooks voor het Automation-account.
 8. U moet [het runbook publiceren](#publish-a-runbook) voordat u het kunt uitvoeren.
 
 > [!NOTE]
@@ -161,7 +161,7 @@ $connection = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 -ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
 
-$AzContext = Select-AzSubscription -SubscriptionId $connection.SubscriptionID
+$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
 $runbookName = "<RunbookName>"
@@ -192,7 +192,7 @@ Als uw runbook normaal gesp roken binnen een tijds beperking wordt uitgevoerd, l
 
 ## <a name="work-with-multiple-subscriptions"></a>Met meerdere abonnementen werken
 
-Uw runbook moet kunnen werken met [abonnementen](automation-runbook-execution.md#subscriptions). Als u bijvoorbeeld meerdere abonnementen wilt verwerken, gebruikt het runbook de cmdlet [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) . Met deze cmdlet zorgt u ervoor dat de verificatie context niet wordt opgehaald uit een ander runbook dat wordt uitgevoerd in dezelfde sandbox. Het runbook gebruikt ook de `AzContext` para meter in de AZ module-cmdlets en geeft deze de juiste context.
+Uw runbook moet kunnen werken met [abonnementen](automation-runbook-execution.md#subscriptions). Als u bijvoorbeeld meerdere abonnementen wilt verwerken, gebruikt het runbook de cmdlet [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) . Met deze cmdlet zorgt u ervoor dat de verificatie context niet wordt opgehaald uit een ander runbook dat wordt uitgevoerd in dezelfde sandbox. Het runbook gebruikt ook de `Get-AzContext` cmdlet om de context van de huidige sessie op te halen en deze toe te wijzen aan de variabele `$AzureContext` .
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -204,7 +204,7 @@ Connect-AzAccount -ServicePrincipal `
 -ApplicationId $Conn.ApplicationID `
 -CertificateThumbprint $Conn.CertificateThumbprint
 
-$context = Get-AzContext
+$AzureContext = Get-AzContext
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
@@ -214,7 +214,7 @@ Start-AzAutomationRunbook `
     -ResourceGroupName $ResourceGroupName `
     -AutomationAccountName $AutomationAccountName `
     -Name $ChildRunbookName `
-    -DefaultProfile $context
+    -DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>Werken met een aangepast script
@@ -241,7 +241,7 @@ De procedure voor het testen [van elk type runbook](automation-runbook-types.md)
 1. Klik op **testen** om de pagina test te openen.
 1. Als het runbook para meters heeft, worden deze weer gegeven in het linkerdeel venster, waar u waarden kunt opgeven die moeten worden gebruikt voor de test.
 1. Als u de test wilt uitvoeren op een [Hybrid Runbook worker](automation-hybrid-runbook-worker.md), wijzigt u de instellingen voor het **uitvoeren** van de **Hybrid worker** en selecteert u de naam van de doel groep.  Als dat niet het geval is, moet u de test in de Cloud uitvoeren met de standaard **Azure** .
-1. Klik op **starten** om de test te starten.
+1. Klik op **Start** om de test te starten.
 1. U kunt de knoppen onder het deel venster uitvoer gebruiken om een [Power shell-werk stroom](automation-runbook-types.md#powershell-workflow-runbooks) of [grafisch](automation-runbook-types.md#graphical-runbooks) runbook te stoppen of te onderbreken tijdens het testen. Wanneer u het runbook onderbreekt, wordt de huidige activiteit voltooid voordat het runbook wordt onderbroken. Als het runbook is onderbroken, kunt u het stoppen of opnieuw starten.
 1. Controleer de uitvoer van het runbook in het deel venster uitvoer.
 

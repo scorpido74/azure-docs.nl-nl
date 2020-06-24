@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282417"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712187"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Inleiding tot de statuscontrole Service Fabric
 Azure Service Fabric introduceert een status model dat voorziet in uitgebreide, flexibele en uitbreid bare status-en rapportage doeleinden. Het model staat bijna realtime bewaking toe van de status van het cluster en de services die hierop worden uitgevoerd. U kunt eenvoudig status informatie verkrijgen en mogelijke problemen corrigeren voordat ze trapsgewijs worden gecascaded en aanzienlijke storingen veroorzaken. In het typische model verzenden Services rapporten op basis van hun lokale weer gaven en wordt deze informatie geaggregeerd om een algemene weer gave op cluster niveau te bieden.
@@ -101,7 +101,7 @@ Het volgende voor beeld is een fragment uit een cluster manifest. Als u vermeldi
 ```
 
 ### <a name="application-health-policy"></a>Beleid voor toepassings status
-Het [beleid voor toepassings status](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) beschrijft hoe de evaluatie van gebeurtenissen en aggregatie van de onderliggende status wordt uitgevoerd voor toepassingen en hun kinderen. Het kan worden gedefinieerd in het toepassings manifest **ApplicationManifest. XML**in het toepassings pakket. Als er geen beleid is opgegeven, wordt door Service Fabric aangenomen dat de entiteit een slechte status heeft als deze een status rapport of een onderliggend item met de waarschuwings-of fout status bevat.
+Het [beleid voor toepassings status](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) beschrijft hoe de evaluatie van gebeurtenissen en aggregatie van de onderliggende status wordt uitgevoerd voor toepassingen en hun kinderen. Het kan worden gedefinieerd in het toepassings manifest **ApplicationManifest.xml**, in het toepassings pakket. Als er geen beleid is opgegeven, wordt door Service Fabric aangenomen dat de entiteit een slechte status heeft als deze een status rapport of een onderliggend item met de waarschuwings-of fout status bevat.
 De Configureer bare beleids regels zijn:
 
 * [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Hiermee geeft u op of waarschuwing status rapporten moeten worden behandeld als fouten tijdens de status evaluatie. Standaard: onwaar.
@@ -179,7 +179,7 @@ Nadat de Health Store alle onderliggende items heeft geëvalueerd, worden de sta
 ## <a name="health-reporting"></a>Status rapportage
 Systeem onderdelen, systeem infrastructuur toepassingen en interne/externe watchdog kunnen rapporteren aan Service Fabric entiteiten. De rapporten maken *lokale* bepalingen van de status van de bewaakte entiteiten, op basis van de voor waarden die ze volgen. Ze hoeven geen globale staats-of aggregatie gegevens te bekijken. Het gewenste gedrag is om eenvoudige rapporten te hebben, en geen complexe organismen die een groot aantal dingen moeten bekijken om te bepalen welke gegevens moeten worden verzonden.
 
-Een rapporter moet de betrokken entiteit identificeren en een status rapport maken om status gegevens naar het Health Store te verzenden. Als u het rapport wilt verzenden, gebruikt u de API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , rapporteert u `Partition` de `CodePackageActivationContext` status-api's die worden weer gegeven in de objecten, Power shell-cmdlets of de rest.
+Een rapporter moet de betrokken entiteit identificeren en een status rapport maken om status gegevens naar het Health Store te verzenden. Als u het rapport wilt verzenden, gebruikt u de API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , rapporteert u de status-api's die worden weer gegeven in de `Partition` `CodePackageActivationContext` objecten, Power shell-cmdlets of de rest.
 
 ### <a name="health-reports"></a>Status rapporten
 De [status rapporten](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) voor elk van de entiteiten in het cluster bevatten de volgende informatie:

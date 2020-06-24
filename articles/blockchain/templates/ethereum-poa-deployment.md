@@ -2,14 +2,14 @@
 title: Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 description: Gebruik de Ethereum proof-of-Authority consortium-oplossing voor het implementeren en configureren van een consortium Ethereum Network voor meerdere leden op Azure
 ms.date: 06/04/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434362"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210113"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 
@@ -535,7 +535,7 @@ Het adres van elke validator wordt automatisch toegewezen via het [identiteits a
 
 ![Controles](./media/ethereum-poa-deployment/governance-dapp-validators.png)
 
-### <a name="consortium-name"></a>Consortium naam
+### <a name="consortium-name"></a>Consortium-naam
 
 Elke beheerder kan de naam van het consortium bijwerken.  Selecteer het tandwiel pictogram in de linkerbovenhoek om de naam van het consortium bij te werken.
 
@@ -558,13 +558,13 @@ In het volgende voor beeld maakt u een eenvoudig slim contract. U gebruikt Truff
 #### <a name="prerequisites"></a>Vereisten
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)installeren. Python is vereist voor Truffle en web3. Selecteer de optie installeren om python op te laten voegen in uw pad.
-* Installeer Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vereist verschillende hulpprogram ma's die moeten worden geïnstalleerd, waaronder [node. js](https://nodejs.org), [Git](https://git-scm.com/). Zie [Truffle-documentatie](https://github.com/trufflesuite/truffle)voor meer informatie.
+* Installeer Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vereist dat er verschillende hulpprogram ma's worden geïnstalleerd, waaronder [Node.js](https://nodejs.org), [Git](https://git-scm.com/). Zie [Truffle-documentatie](https://github.com/trufflesuite/truffle)voor meer informatie.
 
 ### <a name="create-truffle-project"></a>Truffle-project maken
 
 Voordat u een slim contract kunt compileren en implementeren, moet u een Truffle-project maken.
 
-1. Open een opdracht prompt of shell.
+1. Open een opdrachtprompt of shell.
 1. Maak een map met de naam `HelloWorld`.
 1. Wijzig de map naar de nieuwe `HelloWorld` map.
 1. Initialiseer een nieuw Truffle-project met behulp van de opdracht `truffle init` .
@@ -648,7 +648,7 @@ Truffle maakt gebruik van migratie scripts om slimme contracten te implementeren
 Nu uw slimme contract is geïmplementeerd, kunt u een trans actie verzenden om een functie aan te roepen.
 
 1. Maak in de projectmap Truffle een nieuw bestand met de naam `sendtransaction.js` .
-1. Voeg de volgende inhoud toe aan **sendtransaction. js**.
+1. Voeg de volgende inhoud toe aan **sendtransaction.js**.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -723,7 +723,7 @@ Ethereum-test-of-Authority ondersteunt nu web-sockets.  Controleer de implementa
 
 Voor nieuws voer Azure Blockchain gaat u naar de [Azure Blockchain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van aanbiedingen van blockchainservices en informatie van het technische team van Azure Blockchain.
 
-Als u productfeedback wilt geven of nieuwe functies wilt aanvragen, kunt u een idee krijgen van het [Azure-feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+Als u feedback over producten wilt geven of nieuwe functies wilt aanvragen, kunt u een idee plaatsen of erop stemmen via het [Azure-feedbackforum voor blockchain](https://aka.ms/blockchainuservoice).
 
 ### <a name="community-support"></a>Ondersteuning voor community
 

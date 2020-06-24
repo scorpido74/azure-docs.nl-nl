@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282560"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710691"
 ---
 # <a name="scaling-in-service-fabric"></a>Schalen in Service Fabric
 Azure Service Fabric maakt het eenvoudig om schaal bare toepassingen te bouwen door de services, partities en replica's op de knoop punten van een cluster te beheren. Door veel werk belastingen op dezelfde hardware uit te voeren, is het mogelijk om Maxi maal het resource gebruik te maken, maar biedt ook flexibiliteit voor het schalen van uw workloads. In deze Channel 9-video wordt beschreven hoe u schaal bare micro Services-toepassingen kunt bouwen:
@@ -27,7 +27,7 @@ Het schalen van Service Fabric wordt op verschillende manieren uitgevoerd:
 6. Schalen met behulp van de metrische gegevens van cluster resource manager
 
 ## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Schalen door stateless service instanties te maken of te verwijderen
-Een van de eenvoudigste manieren om te schalen binnen Service Fabric werkt met stateless Services. Wanneer u een stateless service maakt, krijgt u de mogelijkheid om een `InstanceCount`te definiëren. `InstanceCount`Hiermee definieert u hoeveel exemplaren van de code van de service worden gemaakt wanneer de service wordt gestart. Stel bijvoorbeeld dat er 100-knoop punten in het cluster zijn. U kunt er ook voor zorgen dat een service wordt gemaakt `InstanceCount` met een van de 10. Tijdens runtime kunnen deze 10 uitgevoerde exemplaren van de code bezet raken (of er is niet genoeg bezet). Een manier om de werk belasting te schalen, is om het aantal exemplaren te wijzigen. Een voor beeld: sommige bewakings-of beheer code kunnen het bestaande aantal exemplaren wijzigen in 50 of op 5, afhankelijk van of de werk belasting moet worden in-of uitgeschaald op basis van de belasting. 
+Een van de eenvoudigste manieren om te schalen binnen Service Fabric werkt met stateless Services. Wanneer u een stateless service maakt, krijgt u de mogelijkheid om een te definiëren `InstanceCount` . `InstanceCount`Hiermee definieert u hoeveel exemplaren van de code van de service worden gemaakt wanneer de service wordt gestart. Stel bijvoorbeeld dat er 100-knoop punten in het cluster zijn. U kunt er ook voor zorgen dat een service wordt gemaakt met een `InstanceCount` van de 10. Tijdens runtime kunnen deze 10 uitgevoerde exemplaren van de code bezet raken (of er is niet genoeg bezet). Een manier om de werk belasting te schalen, is om het aantal exemplaren te wijzigen. Een voor beeld: sommige bewakings-of beheer code kunnen het bestaande aantal exemplaren wijzigen in 50 of op 5, afhankelijk van of de werk belasting moet worden in-of uitgeschaald op basis van de belasting. 
 
 C#
 
@@ -63,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Schalen door nieuwe benoemde services te maken of te verwijderen
 Een benoemd service-exemplaar is een specifiek exemplaar van een service type (Zie [service Fabric levens cyclus](service-fabric-application-lifecycle.md)van de toepassing) binnen een benoemd toepassings exemplaar in het cluster. 
 
-Nieuwe benoemde service-exemplaren kunnen worden gemaakt (of verwijderd) omdat services meer of minder bezet worden. Hierdoor kunnen aanvragen worden gespreid over meer service-exemplaren, waardoor het mogelijk is dat de belasting van bestaande services afneemt. Wanneer u Services maakt, plaatst de Service Fabric cluster resource manager de services in het cluster op gedistribueerde wijze. De exacte beslissingen gelden voor de [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md) in het cluster en andere plaatsings regels. Services kunnen op verschillende manieren worden gemaakt, maar het meest voorkomende is door beheer acties zoals iemand die u [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)aanroept of door middel [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)van het aanroepen van code. `CreateServiceAsync`kan zelfs worden aangeroepen binnen andere services die in het cluster worden uitgevoerd.
+Nieuwe benoemde service-exemplaren kunnen worden gemaakt (of verwijderd) omdat services meer of minder bezet worden. Hierdoor kunnen aanvragen worden gespreid over meer service-exemplaren, waardoor het mogelijk is dat de belasting van bestaande services afneemt. Wanneer u Services maakt, plaatst de Service Fabric cluster resource manager de services in het cluster op gedistribueerde wijze. De exacte beslissingen gelden voor de [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md) in het cluster en andere plaatsings regels. Services kunnen op verschillende manieren worden gemaakt, maar het meest voorkomende is door beheer acties zoals iemand die u aanroept [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) of door middel van het aanroepen van code [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync`kan zelfs worden aangeroepen binnen andere services die in het cluster worden uitgevoerd.
 
 Het dynamisch maken van Services kan worden gebruikt in allerlei scenario's en is een gemeen schappelijk patroon. Denk bijvoorbeeld aan een stateful service die een bepaalde werk stroom vertegenwoordigt. Oproepen die werk vertegenwoordigen, worden weer gegeven aan deze service. deze service gaat door met het uitvoeren van de stappen voor die werk stroom en bij het registreren van de voortgang. 
 

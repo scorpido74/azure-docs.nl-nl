@@ -4,18 +4,18 @@ description: Meer informatie over de functie voor Cloud lagen van Azure File Syn
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ad222c5fb5554698b6166b0b10a52221a31b360
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549164"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886214"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
-Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand met de Azure File Sync bestandssysteem filter (StorageSync. sys) vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
+Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
  
 Wanneer een gebruiker een gelaagd bestand opent, Azure File Sync de bestands gegevens naadloos terugroepen van Azure Files zonder dat de gebruiker moet weten dat het bestand is opgeslagen in Azure. 
  
@@ -53,7 +53,7 @@ Wanneer er meer dan één server eindpunt op een volume is, is de limiet voor de
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hoe werkt het opslaglaagbeleid voor datums in combinatie met het opslaglaagbeleid voor beschikbare volumeruimte? 
 Wanneer u Cloud Tiering inschakelt op een server eindpunt, stelt u een volume beschik bare ruimte beleid in. Het heeft altijd voor rang op elk ander beleid, inclusief het datum beleid. U kunt desgewenst een datum beleid inschakelen voor elk server eindpunt op dat volume. Dit beleid beheert dat alleen de bestanden die zijn geopend (dat wil zeggen, gelezen of beschreven) binnen het bereik van dagen dat dit beleid wordt beschreven, lokaal worden bewaard. Bestanden die niet toegankelijk zijn met het opgegeven aantal dagen, worden trapsgewijs gelaagd. 
 
-Cloud lagen maakt gebruik van de tijd van laatste toegang om te bepalen welke bestanden moeten worden gelaagd. Het filter stuur programma voor de Cloud lagen (storagesync. sys) traceert de tijd van de laatste toegang en registreert de informatie in de opslag van de Cloud-laag. U kunt de opslag voor hitte bekijken met een lokale Power shell-cmdlet.
+Cloud lagen maakt gebruik van de tijd van laatste toegang om te bepalen welke bestanden moeten worden gelaagd. Het filter stuur programma voor Cloud lagen (storagesync.sys) traceert de tijd van laatste toegang en registreert de informatie in de opslag van de Cloud-laag. U kunt de opslag voor hitte bekijken met een lokale Power shell-cmdlet.
 
 ```powershell
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
@@ -89,10 +89,10 @@ Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-be
         
         | Kenmerk letter | Kenmerk | Definitie |
         |:----------------:|-----------|------------|
-        | A | Archiveren | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
+        | A | Archief | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
         | P | Sparse-bestand | Geeft aan dat het bestand een sparse-bestand is. Een sparse-bestand is een speciaal type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijf stroom grotendeels leeg is. Azure File Sync maakt gebruik van verspreide bestanden omdat een bestand volledig is gelaagd of gedeeltelijk wordt ingetrokken. In een volledig gelaagd bestand wordt de bestands stroom opgeslagen in de Cloud. Het deel van het bestand bevindt zich al op schijf in een gedeeltelijk ingetrokken bestand. Als een bestand volledig wordt ingetrokken, wordt Azure File Sync geconverteerd van een sparse-bestand naar een gewoon bestand. Dit kenmerk wordt alleen ingesteld op Windows Server 2016 en ouder.|
         | M | Gegevens toegang intrekken | Geeft aan dat de gegevens van het bestand niet volledig aanwezig zijn in de lokale opslag. Als u het bestand leest, wordt er ten minste een deel van de bestands inhoud opgehaald van een Azure-bestands share waarop het server-eind punt is aangesloten. Dit kenmerk wordt alleen ingesteld op Windows Server 2019. |
-        | L | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale verwijzing voor gebruik door een bestandssysteem filter. Azure File Sync maakt gebruik van reparsepunten om te definiëren dat de Azure File Sync bestandssysteem filter (StorageSync. sys) de locatie van de Cloud waar het bestand is opgeslagen. Dit biedt ondersteuning voor naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in de Azure-bestands share. Wanneer een bestand volledig wordt ingetrokken, verwijdert Azure File Sync het reparsepunt uit het bestand. |
+        | L | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale verwijzing voor gebruik door een bestandssysteem filter. Azure File Sync maakt gebruik van reparsepunten om te definiëren of het Azure File Sync bestandssysteem filter (StorageSync.sys) de locatie van de Cloud waar het bestand is opgeslagen. Dit biedt ondersteuning voor naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in de Azure-bestands share. Wanneer een bestand volledig wordt ingetrokken, verwijdert Azure File Sync het reparsepunt uit het bestand. |
         | O | Offline | Geeft aan dat sommige of alle inhoud van het bestand niet op de schijf worden opgeslagen. Wanneer een bestand volledig is ingetrokken, Azure File Sync dit kenmerk verwijdert. |
 
         ![Het dialoog venster Eigenschappen voor een bestand, met het tabblad Details geselecteerd](media/storage-files-faq/azure-file-sync-file-attributes.png)
@@ -100,7 +100,7 @@ Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-be
         U kunt de kenmerken van alle bestanden in een map weer geven door het veld **kenmerken** toe te voegen aan de tabel weergave van bestanden Verkenner. Als u dit wilt doen, klikt u met de rechter muisknop op een bestaande kolom (bijvoorbeeld **grootte**), selecteert u **meer**en selecteert u vervolgens **kenmerken** in de vervolg keuzelijst.
         
    * **Gebruiken `fsutil` om te controleren op reparsepunten voor een bestand.**
-       Zoals beschreven in de voor gaande optie, bevat een gelaagd bestand altijd een reparsepunt set. Een reparse-wijzer is een speciale verwijzing voor het Azure File Sync bestandssysteem filter (StorageSync. sys). Voer het `fsutil` hulp programma uit om te controleren of een bestand een reparsepunt heeft, in een opdracht prompt met verhoogde bevoegdheid of een Power shell-venster:
+       Zoals beschreven in de voor gaande optie, bevat een gelaagd bestand altijd een reparsepunt set. Een reparse-wijzer is een speciale verwijzing voor de Azure File Sync File System filter (StorageSync.sys). Voer het hulp programma uit om te controleren of een bestand een reparsepunt heeft, in een opdracht prompt met verhoogde bevoegdheid of een Power shell-venster `fsutil` :
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
@@ -112,9 +112,8 @@ Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-be
         > De `fsutil reparsepoint` opdracht voor het hulp programma heeft ook de mogelijkheid om een reparsepunt te verwijderen. Voer deze opdracht niet uit, tenzij het Azure File Sync technisch team u vraagt. Als u deze opdracht uitvoert, kan dit leiden tot gegevens verlies. 
 
 <a id="afs-recall-file"></a>
-
 ### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>Een bestand dat ik wil gebruiken, is gelaagd. Hoe kan ik het bestand intrekken op schijf om het lokaal te gebruiken?
-De eenvoudigste manier om een bestand in te trekken op schijf is door het bestand te openen. Het Azure File Sync bestandssysteem filter (StorageSync. sys) downloadt het bestand naadloos van uw Azure-bestands share zonder uw eigen werk. Voor bestands typen die gedeeltelijk kunnen worden gelezen uit, zoals multi media-of zip-bestanden, wordt het hele bestand niet gedownload door een bestand te openen.
+De eenvoudigste manier om een bestand in te trekken op schijf is door het bestand te openen. Het Azure File Sync bestandssysteem filter (StorageSync.sys) downloadt het bestand naadloos van uw Azure-bestands share zonder uw eigen werk. Voor bestands typen die gedeeltelijk kunnen worden gelezen uit, zoals multi media-of zip-bestanden, wordt het hele bestand niet gedownload door een bestand te openen.
 
 U kunt Power shell ook gebruiken om te forceren dat een bestand wordt ingetrokken. Deze optie kan nuttig zijn als u meerdere bestanden tegelijk wilt intrekken, bijvoorbeeld alle bestanden in een map. Open een Power shell-sessie met het server knooppunt waar Azure File Sync is geïnstalleerd en voer vervolgens de volgende Power shell-opdrachten uit:
     
@@ -123,13 +122,22 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 Optionele para meters:
-* `-Order CloudTieringPolicy`worden de meest recent gewijzigde bestanden eerst ingetrokken.  
+* `-Order CloudTieringPolicy`roept eerst de meest recent gewijzigde of geopende bestanden aan en is toegestaan door het huidige laag beleid. 
+    * Als het volume beschik bare ruimte beleid is geconfigureerd, worden de bestanden ingetrokken totdat de beleids instelling volume beschik bare ruimte is bereikt. Als de waarde voor het gratis volume beleid bijvoorbeeld 20% is, wordt intrekken gestopt zodra de beschik bare ruimte van het volume 20% bedraagt.  
+    * Als volume beschik bare ruimte en datum beleid is geconfigureerd, worden de bestanden ingetrokken totdat de instelling volume beschik bare ruimte of datum beleid is bereikt. Als de instelling voor het volume gratis beleid bijvoorbeeld 20% is en het datum beleid 7 dagen is, wordt intrekken gestopt zodra de beschik bare ruimte van het volume 20% bedraagt of alle bestanden die worden geopend of gewijzigd binnen 7 dagen, lokaal zijn.
 * `-ThreadCount`Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
 * `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
 * `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
 
+Voorbeeld:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCount 8 -Order CloudTieringPolicy -PerFileRetryCount 3 -PerFileRetryDelaySeconds 10
+``` 
+
 > [!Note]  
-> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde `Invoke-StorageSyncFileRecall` gegevens in te trekken, mislukt de cmdlet.  
+> - De cmdlet invoke-StorageSyncFileRecall kan ook worden gebruikt om de prestaties van het bestand te downloaden wanneer u een nieuw server eindpunt toevoegt aan een bestaande synchronisatie groep.  
+>- Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, `Invoke-StorageSyncFileRecall` mislukt de cmdlet.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Waarom wordt de eigenschap *grootte op schijf* voor een bestand niet overeenkomen met de eigenschap *grootte* na gebruik van Azure file sync? 
@@ -137,6 +145,10 @@ In Windows Verkenner worden twee eigenschappen beschikbaar gesteld om de grootte
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hoe kan ik moet een bestand of map geforceerd worden getierd?
+
+> [!NOTE]
+> Wanneer u een map selecteert die u wilt gelaagd, worden alleen de bestanden die zich momenteel in de directory bevinden gelaagd gelaagd. Bestanden die zijn gemaakt na die tijd, worden niet automatisch gelaagd.
+
 Wanneer de functie voor Cloud lagen is ingeschakeld, worden bestanden in Cloud lagen automatisch gelaagd op basis van de laatste toegangs-en wijzigings tijden om het percentage beschik bare ruimte op het Cloud eindpunt te verkrijgen. Soms wilt u een bestand op laag hand matig geforceerd afdwingen. Dit kan handig zijn als u een groot bestand opslaat dat u niet langer wilt gebruiken gedurende een lange periode en u de beschik bare ruimte op uw volume nu wilt gebruiken voor andere bestanden en mappen. U kunt de lagen afdwingen met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
@@ -149,6 +161,15 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 Voor gelaagde bestanden zijn miniaturen en voor beelden niet zichtbaar op het server eindpunt. Dit gedrag wordt verwacht omdat de functie van de miniatuur cache in Windows het lezen van bestanden met het kenmerk offline overs Laan. Als Cloud lagen zijn ingeschakeld, kan de Lees bewerking door gelaagde bestanden worden gedownload (ingetrokken).
 
 Dit gedrag is niet specifiek voor Azure File Sync. in Windows Verkenner wordt een ' grijze X ' weer gegeven voor bestanden waarvoor het kenmerk offline is ingesteld. Het pictogram X wordt weer geven bij het openen van bestanden via SMB. Raadpleeg voor een gedetailleerde uitleg van dit gedrag[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
+
+<a id="afs-tiering-disabled"></a>
+### <a name="i-have-cloud-tiering-disabled-why-are-there-tiered-files-in-the-server-endpoint-location"></a>Ik heb Cloud lagen uitgeschakeld, waarom zijn er gelaagde bestanden op de locatie van het server eindpunt?
+
+Er zijn twee redenen waarom gelaagde bestanden zich op de locatie van het server eindpunt bevinden:
+
+- Wanneer een nieuw server-eind punt aan een bestaande synchronisatie groep wordt toegevoegd, worden de meta gegevens eerst gesynchroniseerd met de server en worden de bestanden vervolgens op de achtergrond gedownload naar de server. De bestanden worden weer gegeven als gelaagd totdat ze lokaal worden gedownload. Als u de prestaties van het bestand wilt downloaden wanneer u een nieuwe server aan een synchronisatie groep toevoegt, gebruikt u de cmdlet [invoke-StorageSyncFileRecall](storage-sync-cloud-tiering.md#afs-recall-file) .
+
+- Als Cloud lagen zijn ingeschakeld op het server eindpunt en vervolgens is uitgeschakeld, blijven de bestanden gelaagd totdat ze worden geopend.
 
 
 ## <a name="next-steps"></a>Volgende stappen

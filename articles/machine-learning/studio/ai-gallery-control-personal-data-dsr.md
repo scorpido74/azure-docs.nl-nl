@@ -5,18 +5,18 @@ description: U kunt de gebruikers gegevens van uw product exporteren en verwijde
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 429ba2ae44788430bfa9d308b8de5daff25954d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204542"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711167"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Gebruikers gegevens in een product weer geven en verwijderen uit Azure AI Gallery
 
@@ -38,7 +38,7 @@ U kunt items weer geven die u hebt gepubliceerd via de gebruikers interface van 
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>De AI Gallery Catalog-API gebruiken om uw gegevens weer te geven
 
-U kunt de gegevens die zijn verzameld via de AI Gallery Catalog-API weer geven, die https://catalog.cortanaanalytics.com/entitiestoegankelijk zijn op. Als u gegevens wilt weer geven, hebt u de auteur-ID nodig. Als u niet-vermelde entiteiten wilt weer geven via de catalogus-API, hebt u een toegangs token nodig.
+U kunt de gegevens die zijn verzameld via de AI Gallery Catalog-API weer geven, die toegankelijk zijn op https://catalog.cortanaanalytics.com/entities . Als u gegevens wilt weer geven, hebt u de auteur-ID nodig. Als u niet-vermelde entiteiten wilt weer geven via de catalogus-API, hebt u een toegangs token nodig.
 
 Catalogus reacties worden geretourneerd in JSON-indeling.
 
@@ -47,7 +47,7 @@ De auteur-ID is gebaseerd op het e-mail adres dat wordt gebruikt bij het publice
 
 1.    Meld u aan bij [Azure AI Gallery](https://gallery.azure.ai/).
 2.    Klik op de profiel afbeelding in de rechter bovenhoek en vervolgens op de naam van het account om uw profiel pagina te laden.
-3.    De URL in de adres balk bevat de alfanumerieke ID `authorId=`die volgt. Bijvoorbeeld voor de URL:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.    De URL in de adres balk bevat de alfanumerieke ID die volgt `authorId=` . Bijvoorbeeld voor de URL:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Auteur-ID:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -61,11 +61,11 @@ Als u een toegangs token wilt ophalen, moet u de `DataLabAccessToken` header van
 2.    Klik op de profiel afbeelding in de rechter bovenhoek en vervolgens op de naam van het account om uw profiel pagina te laden.
 3.    Open het deel venster browser Ontwikkelhulpprogramma's door op F12 te drukken, selecteer het tabblad netwerk en vernieuw de pagina. 
 4. Filter aanvragen op de teken reeks *catalogus* door te typen in het tekstvak filter.
-5.    Zoek in aanvragen naar de `https://catalog.cortanaanalytics.com/entities`URL een GET-aanvraag en selecteer het tabblad *headers* . Schuif omlaag naar de sectie *aanvraag headers* .
+5.    Zoek in aanvragen naar de URL `https://catalog.cortanaanalytics.com/entities` een GET-aanvraag en selecteer het tabblad *headers* . Schuif omlaag naar de sectie *aanvraag headers* .
 6.    Onder de header `DataLabAccessToken` bevindt zich het alfanumerieke token. Om uw gegevens veilig te houden, deelt u dit token niet.
 
 ### <a name="view-user-information"></a>Gebruikers gegevens weer geven
-Bekijk in de volgende URL de informatie in het profiel `[AuthorId]` van een gebruiker met behulp van de auteur-id die u in de vorige stappen hebt gekregen:
+Bekijk in de volgende URL de informatie in het profiel van een gebruiker met behulp van de auteur-ID die u in de vorige stappen hebt gekregen `[AuthorId]` :
 
     https://catalog.cortanaanalytics.com/users/[AuthorID]
 
@@ -82,7 +82,7 @@ Retourneert een antwoord zoals:
 
 De catalogus-API slaat informatie over gepubliceerde entiteiten op in de Azure AI Gallery die u ook rechtstreeks kunt bekijken op de website van de [AI-galerie](https://gallery.azure.ai/). 
 
-Als u gepubliceerde entiteiten wilt weer geven, gaat u naar `[AuthorId]` de volgende URL en vervangt u deze door de auteur-id die is verkregen in [een Auteur-id ophalen](#get-an-author-id) hierboven.
+Als u gepubliceerde entiteiten wilt weer geven, gaat u naar de volgende URL en vervangt u deze door `[AuthorId]` de auteur-id die is verkregen in [een Auteur-id ophalen](#get-an-author-id) hierboven.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
@@ -95,7 +95,7 @@ Bijvoorbeeld:
 Met deze query worden alleen open bare entiteiten weer gegeven. Als u al uw entiteiten, inclusief ongelijsteerde, wilt weer geven, geeft u het toegangs token op dat u hebt verkregen uit de vorige sectie.
 
 1.    Maak met een hulp programma zoals [postman](https://www.getpostman.com)een HTTP GET-aanvraag naar de catalogus-URL, zoals wordt beschreven in [uw toegangs Token ophalen](#get-your-access-token).
-2.    Maak een HTTP-aanvraag header `DataLabAccessToken`met de naam, waarbij de waarde is ingesteld op het toegangs token.
+2.    Maak een HTTP-aanvraag header `DataLabAccessToken` met de naam, waarbij de waarde is ingesteld op het toegangs token.
 3.    Verzend de HTTP-aanvraag.
 
 > [!TIP]

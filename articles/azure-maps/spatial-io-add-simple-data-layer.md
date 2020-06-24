@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804483"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885962"
 ---
 # <a name="add-a-simple-data-layer"></a>Een eenvoudige gegevenslaag toevoegen
 
-De ruimtelijke IO-module biedt `SimpleDataLayer` een klasse. Deze klasse maakt het eenvoudig om stijl functies op de kaart weer te geven. Het kan zelfs gegevens sets weer geven met stijl eigenschappen en gegevens sets die gemengde geometrie typen bevatten. De eenvoudige gegevenslaag bereikt deze functionaliteit door meerdere weergave lagen te verpakken en stijl expressies te gebruiken. De stijl expressies zoeken naar algemene stijl eigenschappen van de functies in deze ingepakte lagen. De `atlas.io.read` functie en de `atlas.io.write` functie gebruiken deze eigenschappen om stijlen in een ondersteunde bestands indeling te lezen en te schrijven. Wanneer u de eigenschappen aan een ondersteunde bestands indeling hebt toegevoegd, kan het bestand voor verschillende doel einden worden gebruikt. Het bestand kan bijvoorbeeld worden gebruikt om de stijl functies op de kaart weer te geven.
+De ruimtelijke IO-module biedt een `SimpleDataLayer` klasse. Deze klasse maakt het eenvoudig om stijl functies op de kaart weer te geven. Het kan zelfs gegevens sets weer geven met stijl eigenschappen en gegevens sets die gemengde geometrie typen bevatten. De eenvoudige gegevenslaag bereikt deze functionaliteit door meerdere weergave lagen te verpakken en stijl expressies te gebruiken. De stijl expressies zoeken naar algemene stijl eigenschappen van de functies in deze ingepakte lagen. De `atlas.io.read` functie en de `atlas.io.write` functie gebruiken deze eigenschappen om stijlen in een ondersteunde bestands indeling te lezen en te schrijven. Wanneer u de eigenschappen aan een ondersteunde bestands indeling hebt toegevoegd, kan het bestand voor verschillende doel einden worden gebruikt. Het bestand kan bijvoorbeeld worden gebruikt om de stijl functies op de kaart weer te geven.
 
-Naast opmaak functies biedt het `SimpleDataLayer` een ingebouwde pop-upfunctie met een pop-upsjabloon. De pop-up wordt weer gegeven wanneer er op een functie wordt geklikt. De standaard pop-upfunctie kan, indien gewenst, worden uitgeschakeld. Deze laag biedt ook ondersteuning voor geclusterde gegevens. Wanneer er op een cluster wordt geklikt, wordt de kaart inzoomen op het cluster en wordt deze uitgebreid naar afzonderlijke punten en subclusteren.
+Naast opmaak functies `SimpleDataLayer` biedt het een ingebouwde pop-upfunctie met een pop-upsjabloon. De pop-up wordt weer gegeven wanneer er op een functie wordt geklikt. De standaard pop-upfunctie kan, indien gewenst, worden uitgeschakeld. Deze laag biedt ook ondersteuning voor geclusterde gegevens. Wanneer er op een cluster wordt geklikt, wordt de kaart inzoomen op het cluster en wordt deze uitgebreid naar afzonderlijke punten en subclusteren.
 
 De `SimpleDataLayer` klasse is bedoeld om te worden gebruikt voor grote gegevens sets met veel geometrie typen en veel stijlen die zijn toegepast op de functies. Bij gebruik van deze klasse wordt een overhead toegevoegd van zes lagen met stijl expressies. Er zijn dus gevallen waarin het efficiënter is om de kern weergave lagen te gebruiken. Gebruik bijvoorbeeld een kern laag om een aantal geometrie typen en enkele stijlen van een functie weer te geven
 
@@ -37,7 +37,7 @@ var layer = new atlas.layer.SimpleDataLayer(datasource);
 map.layers.add(layer);
 ```
 
-Functies toevoegen aan de gegevens bron. Vervolgens wordt met de eenvoudige gegevenslaag aangegeven hoe de functies het beste kunnen worden weer gegeven. Stijlen voor afzonderlijke functies kunnen worden ingesteld als eigenschappen voor de functie. De volgende code toont een functie van een geojson- `color` punt waarvoor een `red`eigenschap is ingesteld op. 
+Functies toevoegen aan de gegevens bron. Vervolgens wordt met de eenvoudige gegevenslaag aangegeven hoe de functies het beste kunnen worden weer gegeven. Stijlen voor afzonderlijke functies kunnen worden ingesteld als eigenschappen voor de functie. De volgende code toont een functie van een geojson-punt waarvoor een `color` eigenschap is ingesteld op `red` . 
 
 ```json
 {
@@ -56,7 +56,7 @@ Met de volgende code wordt de functie van het bovenstaande punt weer gegeven met
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="De Simple data layer gebruiken" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Ga naar de pen en <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Gebruik de eenvoudige gegevenslaag</a> door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="De Simple data layer gebruiken" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Ga naar de pen en <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Gebruik de eenvoudige gegevenslaag</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 De effectieve kracht van de eenvoudige gegevenslaag is als volgt:
@@ -69,7 +69,7 @@ Als u bijvoorbeeld XML-gegevensfeeds wilt parseren, weet u mogelijk niet de exac
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Opties voor eenvoudige gegevenslaag" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Zie de <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>eenvoudige gegevenslaag opties</a> voor Pen door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Opties voor eenvoudige gegevenslaag" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Zie de <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>eenvoudige gegevenslaag opties</a> voor Pen door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -79,7 +79,7 @@ Als u bijvoorbeeld XML-gegevensfeeds wilt parseren, weet u mogelijk niet de exac
 > - Alle scripts, formulieren, aanwijzer vergrendeling en de bovenste navigatie functionaliteit zijn uitgeschakeld. Koppelingen mogen worden geopend op een nieuw tabblad wanneer erop wordt geklikt. 
 > - Oudere browsers die de `srcdoc` para meter niet op iframes ondersteunen, zijn beperkt tot het renderen van een kleine hoeveelheid inhoud.
 > 
-> Als u de gegevens die in pop-upvensters worden geladen, vertrouwt en u wilt dat deze scripts die in pop-upvensters worden geladen, toegang hebben tot `sandboxContent` uw toepassing, kunt u dit uitschakelen door de optie pop-upsjablonen in te stellen op false. 
+> Als u de gegevens die in pop-upvensters worden geladen, vertrouwt en u wilt dat deze scripts die in pop-upvensters worden geladen, toegang hebben tot uw toepassing, kunt u dit uitschakelen door de optie pop-upsjablonen `sandboxContent` in te stellen op false. 
 
 ## <a name="default-supported-style-properties"></a>Standaard ondersteunde stijl eigenschappen
 
@@ -89,11 +89,11 @@ Azure Maps-en GitHub stijl eigenschappen zijn de twee belangrijkste sets met ond
 
 Als de lezer over een minder algemene stijl eigenschap komt, wordt deze geconverteerd naar de dichtstbijzijnde Azure Maps stijl eigenschap. Daarnaast kunnen de standaard stijl expressies worden overschreven door gebruik te maken `getLayers` van de functie van de eenvoudige gegevenslaag en het bijwerken van de opties op een van de lagen.
 
-De volgende secties bevatten informatie over de standaard stijl eigenschappen die worden ondersteund door de laag Simple data. De volg orde van de ondersteunde eigenschaps naam is ook de prioriteit van de eigenschap. Als twee stijl eigenschappen voor dezelfde laag optie zijn gedefinieerd, heeft het eerste item in de lijst een hogere prioriteit.
+De volgende secties bevatten informatie over de standaard stijl eigenschappen die worden ondersteund door de laag Simple data. De volg orde van de ondersteunde eigenschaps naam is ook de prioriteit van de eigenschap. Als twee stijl eigenschappen voor dezelfde laag optie zijn gedefinieerd, heeft het eerste item in de lijst een hogere prioriteit. Kleuren kunnen elke CSS3 kleur waarde zijn. HEX-, RGB-, RGBA-, HSL-, HSLA-of benoemde kleur waarde.
 
 ### <a name="bubble-layer-style-properties"></a>Eigenschappen van de laag stijl
 
-Als een `Point` functie een of een `MultiPoint`is en de functie geen `image` eigenschap heeft die als een aangepast pictogram wordt gebruikt om het punt als een symbool weer te geven, wordt de functie weer gegeven met een. `BubbleLayer`
+Als een functie een `Point` of een is `MultiPoint` en de functie geen `image` eigenschap heeft die als een aangepast pictogram wordt gebruikt om het punt als een symbool weer te geven, wordt de functie weer gegeven met een `BubbleLayer` .
 
 | Laag optie | Ondersteunde eigenschaps naam (en) | Standaardwaarde |
 |--------------|----------------------------|---------------|
@@ -101,9 +101,9 @@ Als een `Point` functie een of een `MultiPoint`is en de functie geen `image` eig
 | `radius` | `size`<sup>1</sup>, `marker-size` <sup>2</sup>, `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1\] de `size` waarden `scale` en worden beschouwd als scalaire waarden en worden vermenigvuldigd met`8`
+\[1 \] de `size` waarden en worden `scale` beschouwd als scalaire waarden en worden vermenigvuldigd met`8`
 
-\[2\] als de optie `marker-size` github is opgegeven, worden de volgende waarden gebruikt voor de RADIUS.
+\[2 \] als de `marker-size` optie github is opgegeven, worden de volgende waarden gebruikt voor de RADIUS.
 
 | Grootte van markering | Radius |
 |-------------|--------|
@@ -111,7 +111,7 @@ Als een `Point` functie een of een `MultiPoint`is en de functie geen `image` eig
 | `medium`    | `8`    |
 | `large`     | `12`   |
 
-Clusters worden ook weer gegeven met behulp van de laag bubble. De RADIUS van een cluster is standaard ingesteld op `16`. De kleur van het cluster is afhankelijk van het aantal punten in het cluster, zoals hieronder wordt beschreven:
+Clusters worden ook weer gegeven met behulp van de laag bubble. De RADIUS van een cluster is standaard ingesteld op `16` . De kleur van het cluster is afhankelijk van het aantal punten in het cluster, zoals hieronder wordt beschreven:
 
 | aantal punten | Kleur    |
 |-------------|----------|
@@ -121,7 +121,7 @@ Clusters worden ook weer gegeven met behulp van de laag bubble. De RADIUS van ee
 
 ### <a name="symbol-style-properties"></a>Eigenschappen van symbool stijl
 
-Als een `Point` functie a of a `MultiPoint`is en de functie en een `image` eigenschap heeft die als een aangepast pictogram wordt gebruikt om het punt als een symbool weer te geven, wordt de functie weer gegeven met een. `SymbolLayer`
+Als een functie a `Point` of a is `MultiPoint` en de functie en een eigenschap heeft `image` die als een aangepast pictogram wordt gebruikt om het punt als een symbool weer te geven, wordt de functie weer gegeven met een `SymbolLayer` .
 
 | Laag optie | Ondersteunde eigenschaps naam (en) | Standaardwaarde |
 |--------------|----------------------------|---------------|
@@ -131,7 +131,7 @@ Als een `Point` functie a of a `MultiPoint`is en de functie en een `image` eigen
 | `offset` | `offset` | `[0, 0]` |
 | `anchor` | `anchor` | `'bottom'` |
 
-\[1\] als de optie `marker-size` github is opgegeven, worden de volgende waarden gebruikt voor de optie voor de pictogram grootte.
+\[1 \] als de `marker-size` optie github is opgegeven, worden de volgende waarden gebruikt voor de optie voor de pictogram grootte.
 
 | Grootte van markering | Grootte van symbool |
 |-------------|-------------|
@@ -139,11 +139,11 @@ Als een `Point` functie a of a `MultiPoint`is en de functie en een `image` eigen
 | `medium`    | `1`         |
 | `large`     | `2`         |
 
-Als de punt functie een cluster is, wordt `point_count_abbreviated` de eigenschap weer gegeven als een tekst label. Er wordt geen afbeelding weer gegeven.
+Als de punt functie een cluster is, `point_count_abbreviated` wordt de eigenschap weer gegeven als een tekst label. Er wordt geen afbeelding weer gegeven.
 
 ### <a name="line-style-properties"></a>Eigenschappen van lijn stijl
 
-Als de `LineString`functie een, `MultiLineString`, `Polygon`of `MultiPolygon`is, wordt de functie weer gegeven met een. `LineLayer`
+Als de functie een `LineString` , `MultiLineString` , of is `Polygon` `MultiPolygon` , wordt de functie weer gegeven met een `LineLayer` .
 
 | Laag optie | Ondersteunde eigenschaps naam (en) | Standaardwaarde |
 |--------------|----------------------------|---------------|
@@ -153,7 +153,7 @@ Als de `LineString`functie een, `MultiLineString`, `Polygon`of `MultiPolygon`is,
 
 ### <a name="polygon-style-properties"></a>Eigenschappen van polygoon stijl
 
-Als `Polygon` de functie een of een `MultiPolygon`is en de functie geen `height` eigenschap heeft of de `height` eigenschap is ingesteld op nul, wordt de functie weer gegeven met een. `PolygonLayer`
+Als de functie een `Polygon` of een is `MultiPolygon` en de functie geen `height` eigenschap heeft of de `height` eigenschap is ingesteld op nul, wordt de functie weer gegeven met een `PolygonLayer` .
 
 | Laag optie | Ondersteunde eigenschaps naam (en) | Standaardwaarde |
 |--------------|----------------------------|---------------|
@@ -162,7 +162,7 @@ Als `Polygon` de functie een of een `MultiPolygon`is en de functie geen `height`
 
 ### <a name="extruded-polygon-style-properties"></a>Eigenschappen van geëxtrudeerde polygoon stijl
 
-Als de `Polygon` functie een of een `MultiPolygon`is en een `height` eigenschap heeft met een waarde die groter is dan 0, wordt de functie weer gegeven met een `PolygonExtrusionLayer`.
+Als de functie een `Polygon` of een is `MultiPolygon` en een eigenschap heeft `height` met een waarde die groter is dan 0, wordt de functie weer gegeven met een `PolygonExtrusionLayer` .
 
 | Laag optie | Ondersteunde eigenschaps naam (en) | Standaardwaarde |
 |--------------|----------------------------|---------------|
@@ -186,13 +186,13 @@ Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan 
 > [Ruimtelijke gegevens lezen en schrijven](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [Een OGC-kaartLaag toevoegen](spatial-io-add-ogc-map-layer.md)
+> [Een OGC-kaartlaag toevoegen](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met een WFS-service](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Kern bewerkingen gebruiken](spatial-io-core-operations.md)
+> [Kernbewerkingen gebruiken](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Details van ondersteunde gegevens indeling](spatial-io-supported-data-format-details.md)
+> [Details van ondersteunde gegevensindeling](spatial-io-supported-data-format-details.md)

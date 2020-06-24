@@ -5,26 +5,25 @@ description: Meer informatie over het gebruik van de functie verbinding oplossen
 services: network-watcher
 documentationcenter: na
 author: damendo
-manager: twooley
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa5d7efed1ce1f41ebb67e2ec377e862ad14ed7a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842832"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725032"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problemen met de verbinding met Azure Network Watcher oplossen met Power shell
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
-> - [Zo](network-watcher-connectivity-powershell.md)
+> - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure-CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -39,7 +38,7 @@ Meer informatie over het gebruik van verbindings problemen oplossen om te contro
 * Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Verbindings problemen oplossen vereist dat de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie is geïnstalleerd op de VM die u wilt oplossen `AzureNetworkWatcherExtension` . Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Controleer de verbinding met een virtuele machine
 
@@ -64,7 +63,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker `NetworkSecurityRule` geconfigureerde **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
+Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker geconfigureerde `NetworkSecurityRule` **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +154,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende voor beeld wordt `ConnectionStatus` de wordt weer gegeven als **onbereikbaar**. In de `Hops` Details kunt u zien `Issues` dat het verkeer is geblokkeerd vanwege een. `UserDefinedRoute` 
+In het volgende voor beeld `ConnectionStatus` wordt de wordt weer gegeven als **onbereikbaar**. In de `Hops` Details kunt u zien `Issues` dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute` . 
 
 ```
 ConnectionStatus : Unreachable
@@ -219,7 +218,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende antwoord ziet u dat de `ConnectionStatus` weer gave kan worden weer gegeven als **bereikbaar**. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
+In het volgende antwoord ziet u `ConnectionStatus` dat de weer gave kan worden weer gegeven als **bereikbaar**. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
 
 ```
 ConnectionStatus : Reachable

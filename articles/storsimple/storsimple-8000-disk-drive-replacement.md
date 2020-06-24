@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267909"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711762"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Schijfstation vervangen van apparaat uit StorSimple 8000-serie
 
@@ -103,7 +103,7 @@ Nadat een station op uw StorSimple-apparaat is mislukt en u het hebt verwijderd,
     **Afbeelding 6**  De transporteur naar het chassis schuiven
 3. Sluit de expediteur van het station dat u hebt toegevoegd, terwijl u doorgaat met het pushen van de draaggolf van het station naar het chassis, totdat de vervoerders afhandelt in een vergrendelde positie.
 4. Gebruik de Lock-toets die door micro soft is verschaft (tamperproof Torx draaier) om de draag kracht te beveiligen door de vergren deling van een kwart lijn op de klok in te scha kelen.
-5. Controleer of de vervanging is geslaagd en of het station operationeel is. Ga naar de Azure Portal en navigeer naar **Apparaatinstellingen** > **Hardware Health**. Onder **gedeelde onderdelen** of **gedeelde EBOD-onderdelen**moet de status van het station groen zijn om aan te geven dat dit in orde is.
+5. Controleer of de vervanging is geslaagd en of het station operationeel is. Ga naar de Azure Portal en navigeer naar **Apparaatinstellingen**  >  **Hardware Health**. Onder **gedeelde onderdelen** of **gedeelde EBOD-onderdelen**moet de status van het station groen zijn om aan te geven dat dit in orde is.
 
    
    > [!NOTE]

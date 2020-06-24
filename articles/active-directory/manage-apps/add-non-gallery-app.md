@@ -2,22 +2,22 @@
 title: Een niet-galerie toepassing toevoegen-micro soft Identity-platform | Microsoft Docs
 description: Voeg een niet-galerie toepassing toe aan uw Azure AD-Tenant.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063608"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760317"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Een niet-gevermeldde (niet-Gallery) toepassing toevoegen aan uw Azure AD-organisatie
 
@@ -34,7 +34,7 @@ In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com/) met behulp van uw micro soft Identity platform Administrator-account.
 
-2. Selecteer**nieuwe toepassing** **bedrijfs toepassingen** > .
+2. Selecteer **Enterprise Applications**  >  **nieuwe toepassing**bedrijfs toepassingen.
 
 3. (Optioneel, maar aanbevolen) Voer in het zoekvak **Bladeren in azure AD galerie** de weergave naam van de toepassing in. 
 

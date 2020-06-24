@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420549"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711490"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Voor voegsel van een openbaar IPv6-adres reserveren
 Met IPv6 voor Azure Virtual Network (VNet) kunt u toepassingen in azure hosten met IPv6-en IPv4-connectiviteit, zowel binnen een virtueel netwerk als vanaf het internet. Naast het reserveren van afzonderlijke IPv6-adressen, kunt u aaneengesloten bereiken van Azure IPv6-adressen (IP-voor voegsel) voor uw gebruik behouden. In deze artikelen wordt beschreven hoe u open bare IPv6-IP-adressen en adresbereiken maakt met behulp van Azure PowerShell en CLI.
@@ -87,7 +87,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
 
- U maakt een statisch IPv6-openbaar IP-adres van een gereserveerd voor `-PublicIpPrefix` voegsel door het argument toe te voegen bij het maken van het open bare IP-adres met Azure PowerShell. In het volgende voor beeld wordt ervan uitgegaan dat er een voor voegsel is gemaakt en opgeslagen in een Power shell-variabele met de naam: *$MyOwnIPv 6prefix*.
+ U maakt een statisch IPv6-openbaar IP-adres van een gereserveerd voor voegsel door het argument toe te voegen `-PublicIpPrefix` bij het maken van het open bare IP-adres met Azure PowerShell. In het volgende voor beeld wordt ervan uitgegaan dat er een voor voegsel is gemaakt en opgeslagen in een Power shell-variabele met de naam: *$MyOwnIPv 6prefix*.
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \

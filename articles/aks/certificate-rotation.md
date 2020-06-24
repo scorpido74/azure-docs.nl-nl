@@ -4,12 +4,12 @@ description: Meer informatie over het draaien van uw certificaten in een Azure K
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: ae85b544409cbf4532c221a2a7ca27940ae6f369
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465606"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817450"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten in azure Kubernetes service (AKS) draaien
 
@@ -39,8 +39,7 @@ AKS genereert en gebruikt de volgende certificaten, certificerings instanties en
 > 
 > Daarnaast kunt u de verval datum van het certificaat van uw cluster controleren. Met de volgende opdracht worden bijvoorbeeld de certificaat gegevens voor het *myAKSCluster* -cluster weer gegeven.
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>Uw cluster certificaten draaien

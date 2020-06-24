@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257964"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710674"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Een DR-analyse uitvoeren voor virtuele Hyper-V-machines naar een secundaire site
 
@@ -43,7 +43,7 @@ U voert een testfailover uit van de primaire naar de secundaire site. Als u alle
 
 Wanneer u een testfailover uitvoert, wordt u gevraagd om de netwerk instellingen voor de test replica-machines te selecteren, zoals in de tabel wordt beschreven.
 
-| **Optie** | **Nadere** | |
+| **Optie** | **Details** | |
 | --- | --- | --- |
 | **Geen** | De test-VM wordt gemaakt op de host waarop de replica-VM zich bevindt. Deze is niet toegevoegd aan de Cloud en is niet verbonden met een netwerk.<br/><br/> U kunt de computer verbinden met een VM-netwerk nadat deze is gemaakt.| |
 | **Bestaande gebruiken** | De test-VM wordt gemaakt op de host waarop de replica-VM zich bevindt. Deze wordt niet toegevoegd aan de Cloud.<br/><br/>Maak een VM-netwerk dat is geïsoleerd van uw productie netwerk.<br/><br/>Als u een netwerk op basis van VLAN gebruikt, raden we u aan om voor dit doel een afzonderlijk logisch netwerk (niet gebruikt in productie) te maken in VMM. Dit logische netwerk wordt gebruikt voor het maken van VM-netwerken voor testfailover.<br/><br/>Het logische netwerk moet worden gekoppeld aan ten minste een van de netwerk adapters van alle Hyper-V-servers die als host fungeren voor virtuele machines.<br/><br/>Voor logische VLAN-netwerken moeten de netwerk sites die u aan het logische netwerk toevoegt, worden geïsoleerd.<br/><br/>Als u een logisch netwerk op basis van Windows-Netwerkvirtualisatie gebruikt, maakt Azure Site Recovery automatisch geïsoleerde VM-netwerken. | |
@@ -119,7 +119,7 @@ Maak als volgt een DNS-server voor de testfailover:
 
 In deze procedure wordt beschreven hoe u een testfailover uitvoert voor een herstel plan. U kunt ook de failover uitvoeren voor één virtuele machine op het tabblad **virtual machines** .
 
-1. Selecteer **herstel plannen** > *recoveryplan_name*.  > **Test Failover**Klik **op failover testfailover**.
+1. Selecteer **herstel plannen**  >  *recoveryplan_name*. Klik **op failover testfailover**  >  **Test Failover**.
 2. Geef op de Blade **testfailover** op hoe replica-vm's moeten worden verbonden met netwerken na de testfailover.
 3. Volg de voortgang van de failover op het tabblad **taken** .
 4. Nadat de failover is voltooid, controleert u of de Vm's zijn gestart.

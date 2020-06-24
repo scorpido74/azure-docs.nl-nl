@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258562"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710742"
 ---
 # <a name="replicas-and-instances"></a>Replica's en exemplaren 
 Dit artikel geeft een overzicht van de levens cyclus van replica's van stateful Services en instanties van stateless Services.
@@ -37,7 +37,7 @@ In de sluitings status is Azure Service Fabric bezig met het afsluiten van het e
 In de status verwijderd wordt het exemplaar niet meer uitgevoerd op het knoop punt. Op dit punt bewaart Service Fabric de meta gegevens over deze instantie, die uiteindelijk ook worden verwijderd.
 
 > [!NOTE]
-> U kunt overstappen van elke status naar de status verwijderd met behulp **ForceRemove** van de ForceRemove `Remove-ServiceFabricReplica`-optie op.
+> U kunt overstappen van elke status naar de status verwijderd met behulp van de **ForceRemove** -optie op `Remove-ServiceFabricReplica` .
 >
 
 ## <a name="replicas-of-stateful-services"></a>Replica's van stateful Services
@@ -101,7 +101,7 @@ De replica-rol is niet relevant voor de status stand-by.
 >
 
 > [!NOTE]
-> Het is mogelijk om van een wille keurige status over te stappen naar **ForceRemove** de status verwijderd `Remove-ServiceFabricReplica`met behulp van de ForceRemove-optie op.
+> Het is mogelijk om van een wille keurige status over te stappen naar de status verwijderd met behulp van de **ForceRemove** -optie op `Remove-ServiceFabricReplica` .
 >
 
 ## <a name="replica-role"></a>Replica-rol 

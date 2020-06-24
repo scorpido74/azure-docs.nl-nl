@@ -2,19 +2,28 @@
 title: Stoppen met het bewaken van uw hybride Kubernetes-cluster | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de bewaking van uw hybride Kubernetes-cluster met Azure Monitor voor containers kunt stoppen.
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f2f3a8671c1f2baf60d399cc87f2f843dfee4f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196216"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885853"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Het bewaken van uw hybride cluster stoppen
 
-Nadat u de bewaking van uw Kubernetes-cluster met behulp van Azure Stack of on-premises hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster met Azure Monitor voor containers als u besluit dat u het niet meer wilt bewaken. Dit artikel laat u zien hoe u dit kunt doen.  
+Nadat u de bewaking van uw Kubernetes-cluster hebt ingeschakeld, kunt u stoppen met het bewaken van het cluster met Azure Monitor voor containers als u besluit dat u het niet meer wilt controleren. In dit artikel wordt beschreven hoe u dit kunt doen voor de volgende omgevingen:
+
+- AKS-engine op Azure en Azure Stack
+- Open Shift versie 4 en hoger
+- Kubernetes met Azure Arc (preview)
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>Bewaking stoppen met helm
+
+De volgende stappen zijn van toepassing op de volgende omgevingen:
+
+- AKS-engine op Azure en Azure Stack
+- Open Shift versie 4 en hoger
 
 1. Voer de volgende helm-opdracht uit als u eerst de Azure Monitor voor de helm-grafiek release van containers op uw cluster wilt identificeren.
 
@@ -39,13 +48,75 @@ Nadat u de bewaking van uw Kubernetes-cluster met behulp van Azure Stack of on-p
 
     `helm delete azmon-containers-release-1`
 
-    Hiermee wordt de release uit het cluster verwijderd. U kunt dit controleren door de `helm list` opdracht uit te voeren:
+    Hiermee wordt de release uit het cluster verwijderd. U kunt dit controleren door de opdracht uit te voeren `helm list` :
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw releases registreert, zelfs nadat u ze hebt verwijderd, kunt u de geschiedenis van een cluster controleren en zelfs een release verwijderen `helm rollback`met.
+Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw releases registreert, zelfs nadat u ze hebt verwijderd, kunt u de geschiedenis van een cluster controleren en zelfs een release verwijderen met `helm rollback` .
+
+## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>Bewaking stoppen voor Kubernetes met Arc ingeschakeld
+
+### <a name="using-powershell"></a>PowerShell gebruiken
+
+1. Down load het script en sla het op in een lokale map die uw cluster configureert met de invoeg toepassing voor bewaking met behulp van de volgende opdrachten:
+
+    ```powershell
+    wget https://aka.ms/disable-monitoring-powershell-script -OutFile disable-monitoring.ps1
+    ```
+
+2. Configureer de `$azureArcClusterResourceId` variabele door de bijbehorende waarden in te stellen voor `subscriptionId` `resourceGroupName` en `clusterName` de resource-id van uw Azure Arc-Kubernetes-cluster resource weer te geven.
+
+    ```powershell
+    $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+    ```
+
+3. Configureer de `$kubeContext` variabele met de **uitvoeren-context** van uw cluster door de opdracht uit te voeren `kubectl config get-contexts` . Als u de huidige context wilt gebruiken, stelt u de waarde in op `""` .
+
+    ```powershell
+    $kubeContext = "<kubeContext name of your k8s cluster>"
+    ```
+
+4. Voer de volgende opdracht uit om het bewaken van het cluster te stoppen.
+
+    ```powershell
+    .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
+    ```
+
+### <a name="using-bash"></a>Bash gebruiken
+
+1. Down load het script en sla het op in een lokale map die uw cluster configureert met de invoeg toepassing voor bewaking met behulp van de volgende opdrachten:
+
+    ```bash
+    curl -o disable-monitoring.sh -L https://aka.ms/disable-monitoring-bash-script
+    ```
+
+2. Configureer de `azureArcClusterResourceId` variabele door de bijbehorende waarden in te stellen voor `subscriptionId` `resourceGroupName` en `clusterName` de resource-id van uw Azure Arc-Kubernetes-cluster resource weer te geven.
+
+    ```bash
+    export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+    ```
+
+3. Configureer de `kubeContext` variabele met de **uitvoeren-context** van uw cluster door de opdracht uit te voeren `kubectl config get-contexts` .
+
+    ```bash
+    export kubeContext="<kubeContext name of your k8s cluster>"
+    ```
+
+4. Als u het cluster niet meer wilt bewaken, zijn er verschillende opdrachten beschikbaar op basis van uw implementatie scenario.
+
+    Voer de volgende opdracht uit om het bewaken van het cluster te stoppen met de huidige context.
+
+    ```bash
+    bash disable-monitoring.sh --resource-id $azureArcClusterResourceId
+    ```
+
+    Voer de volgende opdracht uit om het bewaken van het cluster te stoppen door een context op te geven
+
+    ```bash
+    bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
+    ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

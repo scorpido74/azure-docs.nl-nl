@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 62c7a3ecec3f941971cad552af2e36f63ab67c60
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 1fee761c8377824773fa56ba25edd2a779c33547
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485110"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710215"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -32,14 +32,13 @@ Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren 
 
 **Server** | **Vereisten** | **Details**
 --- | --- | ---
-Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de meest recente updates (inclusief Server Core-installatie van deze besturings systemen) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen.
-Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (inclusief Server Core-installatie van deze besturings systemen) | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.
+Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de nieuwste updates (inclusief Server Core-installatie van deze besturings systemen, met uitzonde ring van Windows Server 2019) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen.
+Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (inclusief Server Core-installatie van deze besturings systemen, met uitzonde ring van Virtual Machine Manager 2019) | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.
 
 > [!NOTE]
 >
 > - Zorg ervoor dat .NET Framework 4.6.2 of hoger aanwezig is op de on-premises server.
-> - Failback wordt niet ondersteund voor Windows Server 2019 server core-versie.
-> - Failback naar een alternatieve locatie wordt niet ondersteund voor Windows Server 2019-hosts.
+> - Failover en failback naar een alternatieve locatie of oorspronkelijke locatie, met of zonder Virtual Machine Manager, wordt niet ondersteund voor Windows Server 2019 server core-versie.
 
 ## <a name="replicated-vms"></a>Gerepliceerde Vm's
 
@@ -69,7 +68,7 @@ Hostcluster: IPv4 | Ja | Ja
 Hostnetwerkadapter: IPv6 | Nee | Nee
 VM-netwerk van de gast: NIC-koppeling | Nee | Nee
 VM-netwerk van gast: IPv4 | Ja | Ja
-VM-netwerk van de gast: IPv6 | Nee | Ja
+VM-netwerk van de gast: IPv6 | No | Yes
 VM-netwerk van de gast: statisch IP-adres (Windows) | Ja | Ja
 VM-netwerk van de gast: statisch IP-adres (Linux) | Nee | Nee
 VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
@@ -140,7 +139,7 @@ Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijv
 Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies

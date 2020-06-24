@@ -4,15 +4,15 @@ description: Met dit leer traject kunt u aan de slag met het overdragen van een 
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
-ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937713"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712544"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Een Azure DNS subdomein delegeren met behulp van Azure PowerShell
 
@@ -23,7 +23,7 @@ Als u wilt, kunt u een subdomein delegeren met behulp van [Azure Portal](delegat
 > [!NOTE]
 > Contoso.com wordt in dit artikel als voor beeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -66,7 +66,7 @@ $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupN
 
 Gebruik Nslookup om de overdracht te testen.
 
-1. Open een PowerShell-venster.
+1. Open een Powershell-venster.
 2. Typ bij opdracht prompt`nslookup www.engineering.contoso.com.`
 3. U ontvangt een niet-bindend antwoord met het adres **10.10.10.10**.
 

@@ -5,20 +5,23 @@ services: automation
 ms.subservice: update-management
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/11/2019
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2bcf2518ab7f4e5a3648b508e42868fd5bb1a863
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013194"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817208"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Updatebeheer integreren met Windows-eind punt Configuration Manager
 
 Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager om Pc's, servers en mobiele apparaten te beheren, zijn ook afhankelijk van de kracht en de verval datum van het beheer van software-updates als onderdeel van hun software-update beheer cyclus.
 
 U kunt beheerde Windows-servers rapporteren en bijwerken door software-update-implementaties te maken en voor te bereiden in Windows endpoint Configuration Manager en gedetailleerde status van voltooide update-implementaties te krijgen met behulp van [updatebeheer](automation-update-management.md). Als u Windows endpoint Configuration Manager gebruikt voor het rapporteren van update vereisten, maar niet voor het beheren van update-implementaties met uw Windows-servers, kunt u door gaan met de rapportage aan Configuration Manager terwijl beveiligings updates worden beheerd met Azure Automation Updatebeheer.
+
+>[!NOTE]
+>Hoewel Updatebeheer update-evaluatie en patching van Windows Server 2008 R2 ondersteunt, biedt het geen ondersteuning voor clients die worden beheerd door het eind punt Configuration Manager het uitvoeren van dit besturings systeem.
 
 ## <a name="prerequisites"></a>Vereisten
 

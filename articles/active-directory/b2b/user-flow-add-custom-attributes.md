@@ -1,37 +1,39 @@
 ---
-title: Aangepaste kenmerken toevoegen voor Azure AD-gebruikers stromen
+title: Aangepaste kenmerken toevoegen aan self-service registratie stromen-Azure AD
 description: Meer informatie over het aanpassen van de kenmerken voor uw Self-service registratie gebruikers stromen.
 services: active-directory
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b0acd84112e9fd997cb0d60a914da9528cffd9a
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: fbf5b758059dc44f17afba191e49fc170e38feef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673034"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886419"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Aangepaste kenmerken definiëren voor gebruikers stromen (preview-versie)
-|     |
-| --- |
-| De functie aangepaste gebruikers kenmerken is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.|
-|     |
+
+|      |
+| ---- |
+| De functie aangepaste gebruikers kenmerken is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews. |
+|      |
 
 Voor elke toepassing hebt u mogelijk verschillende vereisten voor de gegevens die u wilt verzamelen tijdens de registratie. Azure AD wordt geleverd met een ingebouwde set met informatie die is opgeslagen in kenmerken, zoals de naam, de voor waarde, de plaats en de post code. Met Azure AD kunt u de set met kenmerken die zijn opgeslagen op een gast account uitbreiden wanneer de externe gebruiker zich aanmeldt via een gebruikers stroom.
 
-U kunt aangepaste kenmerken in de Azure Portal maken en deze gebruiken in uw eigen service-aanmeld gebruikers stromen. U kunt deze kenmerken ook lezen en schrijven met behulp van de [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). Microsoft Graph-API ondersteunt het maken en bijwerken van een gebruiker met extensie kenmerken. Extensie kenmerken in de Graph API worden genoemd met behulp van de Conventie `extension_<aad-extensions-app-id>_attributename` . Bijvoorbeeld:
+U kunt aangepaste kenmerken in de Azure Portal maken en deze gebruiken in uw eigen service-aanmeld gebruikers stromen. U kunt deze kenmerken ook lezen en schrijven met behulp van de [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). Microsoft Graph-API ondersteunt het maken en bijwerken van een gebruiker met extensie kenmerken. Extensie kenmerken in de Graph API worden genoemd met behulp van de Conventie `extension_<extensions-app-id>_attributename` . Bijvoorbeeld:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-De `<aad-extensions-app-id>` is specifiek voor uw Tenant. Om deze id te vinden, gaat u naar Azure Active Directory > App-registraties > alle toepassingen. Zoek de app die begint met ' Aad-Extensions-app ' en selecteer deze. Op de overzichts pagina van de app ziet u de toepassings-ID (client).
+De `<extensions-app-id>` is specifiek voor uw Tenant. Om deze id te vinden, gaat u naar Azure Active Directory > App-registraties > alle toepassingen. Zoek de app die begint met ' Aad-Extensions-app ' en selecteer deze. Op de overzichts pagina van de app ziet u de toepassings-ID (client).
 
 ## <a name="create-a-custom-attribute"></a>Een aangepast kenmerk maken
 

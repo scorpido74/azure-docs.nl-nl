@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267961"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711796"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>CHAP configureren voor uw StorSimple-apparaat
 
@@ -127,7 +127,7 @@ In bidirectionele verificatie verifieert het doel de initiator en vervolgens ver
       
        ![wederzijds CHAP-geheim van iSCSI-initiator](./media/storsimple-configure-chap/IC740949.png)
 5. Klik op het tabblad **doelen** .
-6. Klik op de knop **verbinding maken** . 
+6. Klik op de knop **Verbinding maken**. 
 7. Klik in het dialoog venster **verbinding maken met doel** op **Geavanceerd**.
 8. In het dialoog venster **Geavanceerde eigenschappen** :
    

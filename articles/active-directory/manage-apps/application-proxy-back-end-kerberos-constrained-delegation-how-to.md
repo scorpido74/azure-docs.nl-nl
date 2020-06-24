@@ -3,25 +3,25 @@ title: Problemen oplossen met beperkte Kerberos-overdracht-app proxy
 description: Problemen met Kerberos-beperkte overdrachts configuraties voor toepassings proxy oplossen
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275682"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760436"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problemen met Kerberos-beperkte overdrachts configuraties voor toepassings proxy oplossen
 
@@ -66,7 +66,7 @@ Beide installatie kopieën tonen hetzelfde symptoom: SSO-fout. Gebruikers toegan
 
 Hoe u problemen oplost, hangt af van het probleem en de symptomen die u ziet. Bekijk de volgende artikelen voordat u verder gaat. Ze bieden nuttige informatie over het oplossen van problemen:
 
-- [Problemen met toepassings proxy en fout berichten oplossen](application-proxy-troubleshoot.md)
+- [Problemen en foutberichten met Application Proxy oplossen](application-proxy-troubleshoot.md)
 - [Kerberos-fouten en-symptomen](application-proxy-troubleshoot.md#kerberos-errors)
 - [Werken met SSO wanneer on-premises en Cloud-identiteiten niet identiek zijn](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
@@ -86,7 +86,7 @@ Zoals eerder vermeld, biedt de browser fout berichten een aantal goede aanwijzin
 
 ![Voor beeld: onjuiste KCD-configuratie fout](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-De corresponderende vermeldingen in het gebeurtenis logboek worden weer gegeven als gebeurtenis 13019 of 12027. De gebeurtenis logboeken van de connector in **toepassingen en services zoeken,** &gt; **wordt de micro soft** &gt; **AadApplicationProxy** &gt; - **connector** &gt; - **beheerder**geregistreerd.
+De corresponderende vermeldingen in het gebeurtenis logboek worden weer gegeven als gebeurtenis 13019 of 12027. De gebeurtenis logboeken van de connector in **toepassingen en services zoeken,** &gt; **wordt de micro soft** &gt; **AadApplicationProxy** - &gt; **connector** - &gt; **beheerder**geregistreerd.
 
 ![Gebeurtenis 13019 van het gebeurtenis logboek van de toepassings proxy](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 

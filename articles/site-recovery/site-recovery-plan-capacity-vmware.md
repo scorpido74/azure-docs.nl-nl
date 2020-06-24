@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257613"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710708"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Capaciteit en schaling plannen voor nood herstel van VMware naar Azure
 
@@ -124,7 +124,7 @@ Als u uw implementatie met meer dan 200 bron machines uitschaalt of als u een to
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Machines migreren voor het gebruik van de nieuwe proces server
 
-1. Selecteer **instellingen** > **site Recovery servers**. Selecteer de configuratie server en vouw vervolgens **proces servers**uit.
+1. Selecteer **instellingen**  >  **site Recovery servers**. Selecteer de configuratie server en vouw vervolgens **proces servers**uit.
 
     ![Scherm afbeelding van het dialoog venster proces server](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
 2. Klik met de rechter muisknop op de proces server die momenteel in gebruik is en selecteer **Switch**.
@@ -144,12 +144,12 @@ Zie [een Linux-hoofddoel server voor failback installeren](vmware-azure-install-
 
 Een hoofddoel server voor een op Windows gebaseerde virtuele machine toevoegen:
 
-1. Ga naar **Recovery Services kluis** > **site Recovery infrastructuur** > **configuratie servers**.
+1. Ga naar **Recovery Services kluis**  >  **site Recovery infrastructuur**  >  **configuratie servers**.
 2. Selecteer de vereiste configuratie server en selecteer vervolgens **hoofddoel server**.
 
     ![Scherm opname van de knop Master doel server toevoegen](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. Down load het Unified Setup-bestand en voer het bestand op de virtuele machine uit om de hoofddoel server in te stellen.
-4. Selecteer > **volgende** **hoofd doel installeren**.
+4. Selecteer **volgende hoofd doel installeren**  >  **Next**.
 
     ![Scherm afbeelding van de optie voor het installeren van een hoofddoel doel](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
 5. Selecteer de standaard installatie locatie en selecteer **installeren**.
@@ -163,7 +163,7 @@ Een hoofddoel server voor een op Windows gebaseerde virtuele machine toevoegen:
     ![Scherm opname van de locatie waar het IP-adres en de wachtwoordzin voor de configuratie server moeten worden ingevoerd](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
 8. Selecteer **Registreren**. Wanneer de registratie is voltooid, selecteert u **volt ooien**.
 
-Wanneer de registratie is voltooid, wordt de server weer gegeven in het Azure Portal op **Recovery Services kluis** >  > **configuratie servers**voor**infra structuur site Recovery**in de hoofddoel servers van de configuratie server.
+Wanneer de registratie is voltooid, wordt de server weer gegeven in het Azure Portal op **Recovery Services kluis**  >  configuratie servers voor**infra structuur site Recovery**  >  **Configuration servers**in de hoofddoel servers van de configuratie server.
 
  > [!NOTE]
  > Down load de meest recente versie van het [Unified Setup-bestand van de Master doel server voor Windows](https://aka.ms/latestmobsvc).

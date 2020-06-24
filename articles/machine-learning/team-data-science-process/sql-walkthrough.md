@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251581"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710470"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Het proces van de team data Science in actie: met behulp van SQL Server
 In deze zelf studie doorloopt u het proces van het bouwen en implementeren van een machine learning model met behulp van SQL Server en een openbaar beschik bare gegevensset, de NYC-gegevensset voor de [taxi-trips](https://www.andresmh.com/nyctaxitrips/) . De procedure volgt een standaard werk stroom voor data technologie: de gegevens opnemen en verkennen, functies van de engineer om leren te vergemakkelijken, en vervolgens een model bouwen en implementeren.
@@ -41,13 +41,13 @@ De NYC-gegevens over de taxi zijn ongeveer 20 GB aan gecomprimeerde CSV-bestande
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-De unieke sleutel voor deelname aan\_reis gegevens en\_reis tarief bestaat uit de velden: Medallion, Hack\_-licentie en\_datum/tijd van ophalen.
+De unieke sleutel voor deelname aan reis \_ gegevens en reis \_ tarief bestaat uit de velden: Medallion, Hack- \_ licentie en \_ datum/tijd van ophalen.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Voor beelden van voorspellings taken
-We zullen drie Voorspellings problemen formuleren op basis van *de\_Tip-hoeveelheid*, namelijk:
+We zullen drie Voorspellings problemen formuleren op basis van de *Tip- \_ hoeveelheid*, namelijk:
 
-* Binaire classificatie: voor spelt of er voor een reis een tip is betaald, dat wil zeggen *een\_fooiwaarde* van meer dan $0 is een positief voor beeld, terwijl *een\_tip-bedrag* van $0 een negatief voor beeld is.
-* Classificatie met verschillende klassen: om het bereik van fooien voor de reis te voors pellen. We delen het *fooien\_bedrag* in vijf bakken of klassen:
+* Binaire classificatie: voor spelt of er voor een reis een tip is betaald, dat wil zeggen *een \_ fooiwaarde* van meer dan $0 is een positief voor beeld, terwijl een *tip- \_ bedrag* van $0 een negatief voor beeld is.
+* Classificatie met verschillende klassen: om het bereik van fooien voor de reis te voors pellen. We delen het *fooien \_ bedrag* in vijf bakken of klassen:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -66,7 +66,7 @@ In deze zelf studie wordt gebruikgemaakt van de parallelle bulkimportbewerking v
 
 Uw Azure data Science-omgeving instellen:
 
-1. [Create a storage account](../../storage/common/storage-account-create.md)
+1. [Een opslagaccount maken](../../storage/common/storage-account-create.md)
 2. [Een Azure Machine Learning-werk ruimte maken](../studio/create-workspace.md)
 3. [Richt een Data Science virtual machine](../data-science-virtual-machine/setup-sql-server-virtual-machine.md)in dat een SQL Server en een IPython notebook server biedt.
    
@@ -79,7 +79,7 @@ Uw Azure data Science-omgeving instellen:
    > 
    > 
 
-Dit scenario is gebaseerd op de grootte van de gegevensset, de locatie van de gegevens bron en de geselecteerde Azure-doel omgeving en is vergelijkbaar met [scenario \#5: grote gegevensset in een lokale bestanden, doel SQL Server in azure VM](plan-sample-scenarios.md#largelocaltodb).
+Dit scenario is gebaseerd op de grootte van de gegevensset, de locatie van de gegevens bron en de geselecteerde Azure-doel omgeving en is vergelijkbaar met [scenario \# 5: grote gegevensset in een lokale bestanden, doel SQL Server in azure VM](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="get-the-data-from-public-source"></a><a name="getdata"></a>De gegevens ophalen uit de open bare bron
 Als u de [NYC](https://www.andresmh.com/nyctaxitrips/) van een taxi wilt ophalen uit de open bare locatie, kunt u een van de methoden die worden beschreven in [gegevens verplaatsen van en naar Azure Blob Storage](move-azure-blob.md) gebruiken om de gegevens naar de nieuwe virtuele machine te kopiëren.
@@ -92,8 +92,8 @@ De gegevens kopiëren met behulp van AzCopy:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
    
-    Wanneer de AzCopy is voltooid, moet in de map Data een totaal van 24 gecomprimeerde CSV\_-bestanden (12 voor\_reis gegevens en 12 voor reis tarief) worden uitgevoerd.
-4. De gedownloade bestanden uitpakken. Noteer de map waarin de niet-gecomprimeerde bestanden zich bevinden. In deze map wordt het <\_pad naar\_gegevens\_bestanden\>genoemd.
+    Wanneer de AzCopy is voltooid, moet in de map Data een totaal van 24 gecomprimeerde CSV-bestanden (12 voor reis \_ gegevens en 12 voor reis \_ tarief) worden uitgevoerd.
+4. De gedownloade bestanden uitpakken. Noteer de map waarin de niet-gecomprimeerde bestanden zich bevinden. In deze map wordt het <pad \_ naar \_ gegevens \_ bestanden genoemd \> .
 
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>Gegevens bulksgewijs importeren in SQL Server Data Base
 De prestaties van het laden/overbrengen van grote hoeveel heden gegevens naar een SQL Database en volgende query's kunnen worden verbeterd door *gepartitioneerde tabellen en weer gaven*te gebruiken. In deze sectie volgen we de instructies die worden beschreven in [parallelle bulksgewijze gegevens import met behulp van SQL-partitie tabellen](parallel-load-sql-partitioned-tables.md) om een nieuwe Data Base te maken en de gegevens parallel in gepartitioneerde tabellen te laden.
@@ -102,7 +102,7 @@ De prestaties van het laden/overbrengen van grote hoeveel heden gegevens naar ee
 2. Verbinding maken met behulp van Windows-verificatie.
    
     ![SSMS Connect][12]
-3. Als u de SQL Server-verificatie modus nog niet hebt gewijzigd en een nieuwe SQL-aanmeldings gebruiker hebt gemaakt, opent u het script bestand met de naam **\_Change auth. SQL** in de map **sample scripts** . Wijzig de standaard gebruikers naam en-wacht woord. Klik op **uitvoeren** in de werk balk om het script uit te voeren.
+3. Als u de SQL Server-verificatie modus nog niet hebt gewijzigd en een nieuwe SQL-aanmeldings gebruiker hebt gemaakt, opent u het script bestand met de naam **Change \_ auth. SQL** in de map **sample scripts** . Wijzig de standaard gebruikers naam en-wacht woord. Klik op **uitvoeren** in de werk balk om het script uit te voeren.
    
     ![Script uitvoeren][13]
 4. Controleer en/of wijzig de SQL Server standaard database-en logboek mappen om ervoor te zorgen dat nieuwe data bases worden opgeslagen op een gegevens schijf. De SQL Server VM-installatie kopie die is geoptimaliseerd voor het laden van gegevens opslag is vooraf geconfigureerd met gegevens-en logboek schijven. Als uw virtuele machine geen gegevens schijf bevat en u tijdens het installatie proces van de VM nieuwe virtuele harde schijven hebt toegevoegd, wijzigt u de standaard mappen als volgt:
@@ -114,37 +114,37 @@ De prestaties van het laden/overbrengen van grote hoeveel heden gegevens naar ee
    * Controleer en/of wijzig de **standaard locaties van de data base** naar de locatie van de **gegevens schijf** van uw keuze. Deze locatie is waar nieuwe data bases zich bevinden als ze worden gemaakt met de standaard instellingen.
      
        ![SQL Database standaard instellingen][15]  
-5. Als u een nieuwe data base en een set bestands groepen wilt maken voor de gepartitioneerde tabellen, opent u het voorbeeld script **Create\_DB\_default. SQL**. Met het script wordt een nieuwe data base gemaakt met de naam **TaxiNYC** en 12 bestands groepen in de standaard locatie van gegevens. Elke bestands groep bevat één maand aan reis\_gegevens en gegevens\_over reis ritbedrag. Wijzig de database naam, indien gewenst. Klik op **uitvoeren** om het script uit te voeren.
-6. Maak vervolgens twee partitie tabellen, een voor de reis\_gegevens en een andere voor het reis\_tarief. Open het voorbeeld script **\_gepartitioneerde\_tabel maken. SQL.** dit kan:
+5. Als u een nieuwe data base en een set bestands groepen wilt maken voor de gepartitioneerde tabellen, opent u het voorbeeld script **Create \_ DB \_ default. SQL**. Met het script wordt een nieuwe data base gemaakt met de naam **TaxiNYC** en 12 bestands groepen in de standaard locatie van gegevens. Elke bestands groep bevat één maand aan reis \_ gegevens en gegevens over reis \_ ritbedrag. Wijzig de database naam, indien gewenst. Klik op **uitvoeren** om het script uit te voeren.
+6. Maak vervolgens twee partitie tabellen, een voor de reis \_ gegevens en een andere voor het reis \_ tarief. Open het voorbeeld script ** \_ gepartitioneerde \_ tabel maken. SQL.** dit kan:
    
    * Maak een partitie functie om de gegevens op maand te splitsen.
    * Maak een partitie schema om de gegevens van elke maand toe te wijzen aan een andere bestands groep.
-   * Maak twee gepartitioneerde tabellen die zijn toegewezen aan het partitie schema: **nyctaxie\_trip** bevat de reis\_gegevens en de **\_nyctaxi-ritbedrag** houdt rekening met de reis\_ritbedrag-gegevens.
+   * Maak twee gepartitioneerde tabellen die zijn toegewezen aan het partitie schema: **nyctaxie \_ trip** bevat de reis \_ gegevens en de **nyctaxi- \_ ritbedrag** houdt rekening met de reis \_ ritbedrag-gegevens.
      
      Klik op **uitvoeren** om het script uit te voeren en de gepartitioneerde tabellen te maken.
 7. In de map **voorbeeld scripts** zijn er twee voor beelden van Power shell-scripts voor het demonstreren van parallelle bulk invoer van gegevens aan SQL Server tabellen.
    
-   * **BCP\_parallel\_generic. ps1** is een algemeen script voor het parallel importeren van gegevens in een tabel. Wijzig dit script om de invoer-en doel variabelen in te stellen zoals aangegeven in de opmerkings regels in het script.
-   * **BCP\_parallel\_nyctaxi. ps1** is een vooraf geconfigureerde versie van het algemene script en kan worden gebruikt om beide tabellen te laden voor de gegevens van de NYCe taxi-reizen.  
-8. Klik met de rechter muisknop op de script naam **BCP\_parallel\_nyctaxi. ps1** en klik op **bewerken** om deze te openen in Power shell. Controleer de vooraf ingestelde variabelen en wijzig deze op basis van de geselecteerde database naam, invoer gegevensbestand, doelmap voor het doel logboek en de paden naar de voorbeeld bestanden **nyctaxi_trip. XML** en **\_nyctaxi ritbedrag. XML** (in de map voor **beeld scripts** ).
+   * **BCP \_ parallel \_generic.ps1** is een algemeen script voor het parallel importeren van gegevens in een tabel. Wijzig dit script om de invoer-en doel variabelen in te stellen zoals aangegeven in de opmerkings regels in het script.
+   * **BCP \_ parallel \_nyctaxi.ps1** is een vooraf geconfigureerde versie van het algemene script en kan worden gebruikt om beide tabellen te laden voor de gegevens van de NYC taxi-reizen.  
+8. Klik met de rechter muisknop op de script naam **BCP \_ parallel \_nyctaxi.ps1** en klik op **bewerken** om deze te openen in Power shell. Controleer de vooraf ingestelde variabelen en wijzig deze op basis van de geselecteerde database naam, invoer gegevensbestand, doelmap voor het doel logboek en de paden naar de voorbeeld bestanden **nyctaxi_trip.xml** en **nyctaxi \_fare.xml** (in de map **voorbeeld scripts** ).
    
     ![Gegevens bulksgewijs importeren][16]
    
     U kunt ook de verificatie modus selecteren, standaard is Windows-verificatie. Klik op de groene pijl in de werk balk om uit te voeren. Met het script worden 24 bulk import bewerkingen parallel uitgevoerd, 12 voor elke gepartitioneerde tabel. U kunt de voortgang van het importeren van gegevens controleren door de SQL Server standaardmap data-map te openen, zoals hierboven is ingesteld.
 9. Het Power shell-script rapporteert de begin-en eind tijd. Wanneer alle bulk import is voltooid, wordt de eind tijd gerapporteerd. Controleer de doelmap van het logboek om te controleren of de bulk invoer is geslaagd, dat wil zeggen dat er geen fouten worden gerapporteerd in de doelmap van het logboek.
-10. Uw data base is nu klaar voor onderzoek, functie techniek en andere bewerkingen, zoals gewenst. Omdat de tabellen zijn gepartitioneerd op basis van het veld **datum/tijd van\_ophalen** , hebben query's met de voor waarden voor de leverings **\_datum** in de component **where** voor deel van het partitie schema.
-11. Bekijk in **SQL Server Management Studio**de **voorbeeld\_query's**van het voorbeeld script. SQL. Als u een van de voorbeeld query's wilt uitvoeren, markeert u de query regels en klikt u op in de werk balk op **uitvoeren** .
-12. De NYC-gegevens over taxi reizen worden geladen in twee afzonderlijke tabellen. Voor het verbeteren van de koppelings bewerkingen wordt het ten zeerste aanbevolen om de tabellen te indexeren. In het voorbeeld script wordt een **gepartitioneerde\_\_index gemaakt. SQL** maakt gepartitioneerde indexen voor de samengestelde samenvoegings sleutel **Medallion, Hack\_License en datum/tijd van ophalen\_**.
+10. Uw data base is nu klaar voor onderzoek, functie techniek en andere bewerkingen, zoals gewenst. Omdat de tabellen zijn gepartitioneerd op basis van het veld ** \_ datum/tijd van ophalen** , hebben query's met de voor waarden voor de leverings ** \_ datum** in de component **where** voor deel van het partitie schema.
+11. Bekijk in **SQL Server Management Studio**de voorbeeld query's van het voorbeeld script ** \_ . SQL**. Als u een van de voorbeeld query's wilt uitvoeren, markeert u de query regels en klikt u op in de werk balk op **uitvoeren** .
+12. De NYC-gegevens over taxi reizen worden geladen in twee afzonderlijke tabellen. Voor het verbeteren van de koppelings bewerkingen wordt het ten zeerste aanbevolen om de tabellen te indexeren. In het voorbeeld script wordt een ** \_ gepartitioneerde \_ index gemaakt. SQL** maakt gepartitioneerde indexen voor de samengestelde samenvoegings sleutel **Medallion, Hack \_ License en \_ datum/tijd van ophalen**.
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>Het verkennen van gegevens en functies in SQL Server
-In deze sectie wordt het verkennen van gegevens en het genereren van onderdelen uitgevoerd door SQL-query's rechtstreeks uit te voeren in het **SQL Server Management Studio** met behulp van de SQL Server-Data Base die u eerder hebt gemaakt. Een voorbeeld script met de naam **\_voorbeeld query's. SQL** is te zien in de map **voorbeeld scripts** . Wijzig het script om de naam van de data base te wijzigen als deze afwijkt van de standaard waarde: **TaxiNYC**.
+In deze sectie wordt het verkennen van gegevens en het genereren van onderdelen uitgevoerd door SQL-query's rechtstreeks uit te voeren in het **SQL Server Management Studio** met behulp van de SQL Server-Data Base die u eerder hebt gemaakt. Een voorbeeld script met de naam **voorbeeld \_ query's. SQL** is te zien in de map **voorbeeld scripts** . Wijzig het script om de naam van de data base te wijzigen als deze afwijkt van de standaard waarde: **TaxiNYC**.
 
 In deze oefening gaan we het volgende doen:
 
 * Maak verbinding met **SQL Server Management Studio** met behulp van Windows-verificatie of met behulp van SQL-verificatie en de SQL-aanmeldings naam en het wacht woord.
 * Verken gegevens distributies van een paar velden in verschillende tijd Vensters.
 * Onderzoek de kwaliteit van de gegevens van de velden lengte graad en breedte graad.
-* Genereer binaire en classificatie labels voor multi klassen op basis van het **fooien\_bedrag**.
+* Genereer binaire en classificatie labels voor multi klassen op basis van het **fooien \_ bedrag**.
 * Maak functies en bereken/vergelijk de retour waarden voor de reis.
 * Voeg de twee tabellen samen en extraheer een wille keurig voor beeld die wordt gebruikt om modellen te maken.
 
@@ -164,7 +164,7 @@ Voor een snelle controle van het aantal rijen en kolommen in de tabellen dat eer
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Exploratie: reis distributie per Medallion
-In dit voor beeld wordt de Medallion (taxi getallen) geïdentificeerd met meer dan 100 trips binnen een bepaalde periode. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de **datum van ophalen\_**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
+In dit voor beeld wordt de Medallion (taxi getallen) geïdentificeerd met meer dan 100 trips binnen een bepaalde periode. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de ** \_ datum van ophalen**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
 
     SELECT medallion, COUNT(*)
     FROM nyctaxi_fare
@@ -233,7 +233,7 @@ In dit voor beeld worden de lengte van de ophaling en de dropoff en de breedte g
 De query's voor het genereren van labels en geografie conversie kunnen ook worden gebruikt voor het genereren van labels/functies door het onderdeel tellen te verwijderen. Aanvullende technische SQL-voor beelden voor functies vindt u in de sectie [gegevens verkennen en functie in IPython notebook](#ipnb) . Het is efficiënter om de query's voor het genereren van functies uit te voeren op de volledige gegevensset of een grote subset hiervan met behulp van SQL-query's die rechtstreeks worden uitgevoerd op het SQL Server Data Base-exemplaar. De query's kunnen worden uitgevoerd in **SQL Server Management Studio**, IPython notebook of een ontwikkel hulpprogramma of omgeving dat lokaal of op afstand toegang heeft tot de data base.
 
 #### <a name="preparing-data-for-model-building"></a>Gegevens voorbereiden voor het maken van modellen
-Met de volgende query wordt de **nyctaxi\_-reis** -en **nyctaxi\_-ritbedrag** tabellen toegevoegd, wordt een binaire classificatie label met een classificatie **\_klasse**met meerdere klassen **gekanteld**en wordt een wille keurige steek proef van 1% geëxtraheerd uit de verzameling met volledige joins. Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio](https://studio.azureml.net) [gegevens importeren][import-data] worden geplakt voor directe gegevens opname vanuit het SQL Server Data Base-exemplaar in Azure. De query sluit records met onjuiste (0, 0) coördinaten toe.
+Met de volgende query wordt de **nyctaxi- \_ reis** -en **nyctaxi- \_ ritbedrag** tabellen toegevoegd, wordt een binaire classificatie label met een classificatie ** \_ klasse**met meerdere klassen **gekanteld**en wordt een wille keurige steek proef van 1% geëxtraheerd uit de verzameling met volledige joins. Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio](https://studio.azureml.net) [gegevens importeren][import-data] worden geplakt voor directe gegevens opname vanuit het SQL Server Data Base-exemplaar in Azure. De query sluit records met onjuiste (0, 0) coördinaten toe.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -324,7 +324,7 @@ De tijd voor het lezen van de voorbeeld tabel is 6,492000 seconden
 Het aantal opgehaalde rijen en kolommen = (84952, 21)
 
 #### <a name="descriptive-statistics"></a>Beschrijvende statistieken
-Nu bent u klaar om de voorbeeld gegevens te verkennen. We beginnen **met het bekijken\_** van de beschrijvende statistieken voor de volgende veld (en):
+Nu bent u klaar om de voorbeeld gegevens te verkennen. We beginnen met het bekijken van de beschrijvende statistieken voor de volgende **veld (en \_ ** ):
 
     df1['trip_distance'].describe()
 
@@ -363,25 +363,25 @@ We kunnen de bovenstaande bin-verdeling in een staaf-of lijn diagram zoals hiero
 ![#4 afzetten][4]
 
 #### <a name="visualization-scatterplot-example"></a>Visualisatie: scatterplot-voor beeld
-Er wordt een spreidings diagram weer gegeven tussen de **duur van de reis\_tijd\_in\_seconden** en **reis\_afstand** om te zien of er een correlatie is
+Er wordt een spreidings diagram weer gegeven tussen de ** \_ duur van de reis tijd \_ in \_ seconden** en **reis \_ afstand** om te zien of er een correlatie is
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![#6 afzetten][6]
 
-Op dezelfde manier kunnen we de relatie **tussen\_tarief code** en **reis\_afstand**controleren.
+Op dezelfde manier kunnen we de relatie tussen **tarief \_ code** en **reis \_ afstand**controleren.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
 ![#8 afzetten][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>Subsampling van de gegevens in SQL
-Wanneer u gegevens voorbereidt voor het maken van modellen in [Azure machine learning Studio](https://studio.azureml.net), kunt u ervoor kiezen **om de SQL-query rechtstreeks te gebruiken in de module gegevens importeren** of de ontworpen en voorbeeld gegevens in een nieuwe tabel te bewaren, die u in de module [gegevens importeren][import-data] kunt gebruiken met een eenvoudige **Select * van <de\_nieuwe\_tabel\_naam>**.
+Wanneer u gegevens voorbereidt voor het maken van modellen in [Azure machine learning Studio](https://studio.azureml.net), kunt u ervoor kiezen **om de SQL-query rechtstreeks te gebruiken in de module gegevens importeren** of de ontworpen en voorbeeld gegevens in een nieuwe tabel te bewaren, die u in de module [gegevens importeren][import-data] kunt gebruiken met een eenvoudige **Select * van <de \_ nieuwe \_ tabel \_ naam>**.
 
 In deze sectie maakt u een nieuwe tabel voor de bemonsterde en engineerde gegevens. Een voor beeld van een rechtstreekse SQL-query voor het maken van modellen is te vinden in de sectie [voor het verkennen van gegevens en functies in SQL Server](#dbexplore) .
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Maak een voorbeeld tabel en vul 1% van de gekoppelde tabellen in. Verwijder eerst de tabel als deze bestaat.
-In deze sectie voegen we de **nyctaxi\_-reis** -en nyctaxi **\_-ritbedrag**van de tabellen toe, extraheert u een wille keurig voor beeld van 1% en bewaart u de voorbeeld gegevens in een nieuwe tabel naam **\_nyctaxi een\_percentage**:
+In deze sectie voegen we de **nyctaxi- \_ reis** -en **nyctaxi- \_ ritbedrag**van de tabellen toe, extraheert u een wille keurig voor beeld van 1% en bewaart u de voorbeeld gegevens in een nieuwe tabel naam **nyctaxi \_ een \_ percentage**:
 
     cursor = conn.cursor()
 
@@ -405,7 +405,7 @@ In deze sectie voegen we de **nyctaxi\_-reis** -en nyctaxi **\_-ritbedrag**van d
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Gegevens verkennen met behulp van SQL-Query's in IPython notebook
-In deze sectie verkennen we gegevens distributies met behulp van de 1% voorbeeld gegevens die zijn opgeslagen in de nieuwe tabel die hierboven is gemaakt. Vergelijk bare exploratie kan worden uitgevoerd met behulp van de oorspronkelijke tabellen, eventueel met behulp van **TABLESAMPLE** om het voorbereidings voorbeeld te beperken of door de resultaten te beperken tot een bepaalde periode met de time-out voor het **\_ophalen** van [SQL Server gegevens](#dbexplore) .
+In deze sectie verkennen we gegevens distributies met behulp van de 1% voorbeeld gegevens die zijn opgeslagen in de nieuwe tabel die hierboven is gemaakt. Vergelijk bare exploratie kan worden uitgevoerd met behulp van de oorspronkelijke tabellen, eventueel met behulp van **TABLESAMPLE** om het voorbereidings voorbeeld te beperken of door de resultaten te beperken tot een bepaalde periode met de time-out voor het ** \_ ophalen** van [SQL Server gegevens](#dbexplore) .
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Exploratie: dagelijkse distributie van reizen
     query = '''
@@ -432,7 +432,7 @@ In deze sectie genereren we rechtstreeks nieuwe labels en functies met behulp va
 In het volgende voor beeld genereren we twee sets labels die moeten worden gebruikt voor model lering:
 
 1. Binaire klassen labels worden **gekanteld** (voor speld als er een tip wordt gegeven)
-2. Klasse van de **Tip\_** van verschillende klassen (voor speling van de tip bin of het bereik)
+2. Klasse van de **Tip \_ ** van verschillende klassen (voor speling van de tip bin of het bereik)
    
         nyctaxi_one_percent_add_col = '''
             ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
@@ -586,7 +586,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 ![Azure Machine Learning Train][10]
 
 > [!IMPORTANT]
-> In de voor beelden van model gegevens extractie en bemonsterings query's in de vorige secties **zijn alle labels voor de drie model oefeningen opgenomen in de query**. Een belang rijke (vereiste) stap in elk van de modellerings oefeningen is het **uitsluiten** van de overbodige labels voor de andere twee problemen en eventuele andere **doel lekkages**. Als u bijvoorbeeld een binaire classificatie gebruikt, gebruikt u **het label en** sluit u de velden **Tip\_-klasse**, **Tip\_-hoeveelheid**en **totaal\_bedrag**uit. Deze laatste zijn doelwit lekkages, omdat ze de fooi hebben betaald.
+> In de voor beelden van model gegevens extractie en bemonsterings query's in de vorige secties **zijn alle labels voor de drie model oefeningen opgenomen in de query**. Een belang rijke (vereiste) stap in elk van de modellerings oefeningen is het **uitsluiten** van de overbodige labels voor de andere twee problemen en eventuele andere **doel lekkages**. Als u bijvoorbeeld een binaire classificatie gebruikt, gebruikt u **het label en** sluit u de velden **Tip- \_ klasse**, **Tip- \_ hoeveelheid**en **totaal \_ bedrag**uit. Deze laatste zijn doelwit lekkages, omdat ze de fooi hebben betaald.
 > 
 > Als u onnodige kolommen en/of doel lekkages wilt uitsluiten, kunt u de module [kolommen selecteren in gegevensset][select-columns] of de [meta gegevens bewerken][edit-metadata]gebruiken. Zie [kolommen selecteren in gegevensset][select-columns] en referentie pagina's voor [meta gegevens bewerken][edit-metadata] voor meer informatie.
 > 
@@ -619,9 +619,9 @@ Een voor beeld van een score experiment vindt u in de afbeelding hieronder. Wann
 In deze walkthrough-zelf studie hebt u een Azure data Science-omgeving gemaakt met een grote open bare gegevensset die de gegevens verwervingt voor het model leren van de training en het implementeren van een Azure Machine Learning-webservice.
 
 ### <a name="license-information"></a>Licentie gegevens
-Deze voorbeeld walkthrough en de bijbehorende scripts en IPython-Notebook (s) worden door micro soft gedeeld onder de MIT-licentie. Controleer het bestand LICENSE. txt in de map van de voorbeeld code op GitHub voor meer informatie.
+Deze voorbeeld walkthrough en de bijbehorende scripts en IPython-Notebook (s) worden door micro soft gedeeld onder de MIT-licentie. Controleer het LICENSE.txt-bestand in de map van de voorbeeld code op GitHub voor meer informatie.
 
-### <a name="references"></a>Verwijzingen
+### <a name="references"></a>Referenties
 • [Download pagina voor Andrés Monroy NYCe taxi](https://www.andresmh.com/nyctaxitrips/)  
 • [De taxi-reis gegevens van NYC door Chris Whong te folie](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC van de taxi en limousine](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) van de Commissie

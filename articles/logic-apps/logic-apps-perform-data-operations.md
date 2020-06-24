@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283938"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710368"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Gegevens bewerkingen uitvoeren in Azure Logic Apps
 
@@ -34,7 +34,7 @@ Deze acties helpen u bij het werken met gegevens in matrices.
 | [**CSV-tabel maken**](#create-csv-table-action) | Een tabel met door komma's gescheiden waarden (CSV) maken op basis van een matrix. |
 | [**HTML-tabel maken**](#create-html-table-action) | Een HTML-tabel maken op basis van een matrix. |
 | [**Matrix filteren**](#filter-array-action) | Maak een matrix subset van een matrix op basis van het opgegeven filter of voor waarde. |
-| [**Jointypen**](#join-action) | Maak een teken reeks van alle items in een matrix en scheid elk item met het opgegeven teken. |
+| [**Koppelen**](#join-action) | Maak een teken reeks van alle items in een matrix en scheid elk item met het opgegeven teken. |
 | [**Selecteer**](#select-action) | Een matrix maken op basis van de opgegeven eigenschappen voor alle items in een andere matrix. |
 ||| 
 
@@ -44,7 +44,7 @@ Deze acties helpen u bij het werken met gegevens in de indeling van JavaScript O
 
 | Bewerking | Beschrijving |
 |--------|-------------|
-| [**Compose**](#compose-action) | Maak een bericht of teken reeks van meerdere invoer die verschillende gegevens typen kan hebben. U kunt deze teken reeks vervolgens als één invoer gebruiken, in plaats van dezelfde invoer herhaaldelijk in te voeren. U kunt bijvoorbeeld één JSON-bericht maken van verschillende invoer. |
+| [**Opstellen**](#compose-action) | Maak een bericht of teken reeks van meerdere invoer die verschillende gegevens typen kan hebben. U kunt deze teken reeks vervolgens als één invoer gebruiken, in plaats van dezelfde invoer herhaaldelijk in te voeren. U kunt bijvoorbeeld één JSON-bericht maken van verschillende invoer. |
 | [**JSON parseren**](#parse-json-action) | Maak gebruikers vriendelijke gegevens tokens voor eigenschappen in JSON-inhoud zodat u de eigenschappen in uw Logic apps gemakkelijker kunt gebruiken. |
 |||
 
@@ -90,9 +90,9 @@ Volg deze stappen met behulp van de ontwerp functie voor logische apps als u een
 
      ![Selecteer nieuwe stap voor de actie opstellen](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `compose` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **opstellen** .
+1. Voer onder **Kies een actie**in het zoekvak in `compose` als uw filter. Selecteer in de lijst acties de actie **opstellen** .
 
    ![Actie ' opstellen ' selecteren](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -148,9 +148,9 @@ Als u liever met de code weergave-editor werkt, kunt u het voor beeld voor het m
 
      ![Selecteer nieuwe stap voor de actie CSV-tabel maken](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `create csv table` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **CSV-tabel maken** .
+1. Voer onder **Kies een actie**in het zoekvak in `create csv table` als uw filter. Selecteer in de lijst acties de actie **CSV-tabel maken** .
 
    ![Selecteer de actie CSV-tabel maken](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -219,11 +219,11 @@ In de actie moet u de kolom **koptekst** leeg laten. Op elke rij in de kolom **w
 
 #### <a name="work-in-code-view"></a>Werken in de code weergave
 
-Stel in de JSON-definitie van de actie `columns` binnen de matrix de `header` eigenschap in op een lege teken reeks. Voor elke `value` eigenschap de verwijzing van elke matrix eigenschap die u wilt.
+Stel in de JSON-definitie van de actie binnen de `columns` matrix de `header` eigenschap in op een lege teken reeks. Voor elke `value` eigenschap de verwijzing van elke matrix eigenschap die u wilt.
 
 1. Selecteer de **code weergave**op de werk balk van de ontwerp functie.
 
-1. Voeg in de code-editor in de matrix `columns` van de actie de eigenschap `header` Empty en deze `value` expressie toe voor elke kolom met matrix waarden die u wilt:
+1. Voeg in de code-editor in de matrix van de actie `columns` de `header` eigenschap Empty en deze `value` expressie toe voor elke kolom met matrix waarden die u wilt:
 
    ```json
    {
@@ -299,9 +299,9 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
      ![Selecteer ' nieuwe stap ' voor de actie ' HTML-tabel maken '](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `create html table` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **HTML-tabel maken** .
+1. Voer onder **Kies een actie**in het zoekvak in `create html table` als uw filter. Selecteer in de lijst acties de actie **HTML-tabel maken** .
 
    ![Selecteer een actie voor het maken van een HTML-tabel](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -370,11 +370,11 @@ In de actie moet u de kolom **koptekst** leeg laten. Op elke rij in de kolom **w
 
 #### <a name="work-in-code-view"></a>Werken in de code weergave
 
-Stel in de JSON-definitie van de actie `columns` binnen de matrix de `header` eigenschap in op een lege teken reeks. Voor elke `value` eigenschap de verwijzing van elke matrix eigenschap die u wilt.
+Stel in de JSON-definitie van de actie binnen de `columns` matrix de `header` eigenschap in op een lege teken reeks. Voor elke `value` eigenschap de verwijzing van elke matrix eigenschap die u wilt.
 
 1. Selecteer de **code weergave**op de werk balk van de ontwerp functie.
 
-1. Voeg in de code-editor in de matrix `columns` van de actie de eigenschap `header` Empty en deze `value` expressie toe voor elke kolom met matrix waarden die u wilt:
+1. Voeg in de code-editor in de matrix van de actie `columns` de `header` eigenschap Empty en deze `value` expressie toe voor elke kolom met matrix waarden die u wilt:
 
    ```json
    {
@@ -464,9 +464,9 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u de voorbeeld *
 
      ![Selecteer ' nieuwe stap ' voor de actie ' filter matrix '](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `filter array` in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **matrix filteren** .
+1. Voer in het zoekvak in `filter array` als uw filter. Selecteer in de lijst acties de actie **matrix filteren** .
 
    ![Selecteer de actie filter matrix](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -478,7 +478,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u de voorbeeld *
 
 1. Voor de voor waarde geeft u de matrix items op die u wilt vergelijken, selecteert u de vergelijkings operator en geeft u de vergelijkings waarde op.
 
-   In dit voor beeld `item()` wordt de functie gebruikt voor het openen van elk item in de matrix terwijl de actie **filter matrix** zoekt naar matrix items waarvan de waarde groter is dan een:
+   In dit voor beeld wordt de `item()` functie gebruikt voor het openen van elk item in de matrix terwijl de actie **filter matrix** zoekt naar matrix items waarvan de waarde groter is dan een:
 
    ![Het voor beeld van een actie ' filter matrix ' is voltooid](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
@@ -526,9 +526,9 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
      ![SSelect ' nieuwe stap ' voor de actie ' samen voegen '](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `join` in het zoekvak in als uw filter. Selecteer in de lijst acties deze actie: **koppelen**
+1. Voer in het zoekvak in `join` als uw filter. Selecteer in de lijst acties deze actie: **koppelen**
 
    ![Selecteer actie samen voegen](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
@@ -586,9 +586,9 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
      ![Selecteer nieuwe stap voor de actie JSON parseren](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `parse json` in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **JSON parseren** .
+1. Voer in het zoekvak in `parse json` als uw filter. Selecteer in de lijst acties de actie **JSON parseren** .
 
    ![Selecteer de actie JSON parseren](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -661,9 +661,9 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
      ![Selecteer ' nieuwe stap ' voor de actie ' selecteren '](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat**+** het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de verbindings pijl zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer `select` in het zoekvak in als uw filter. Selecteer in de lijst acties de actie **selecteren** .
+1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `select` als uw filter. Selecteer in de lijst acties de actie **selecteren** .
 
    ![Selecteer de actie ' selecteren '](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -675,7 +675,7 @@ Als u liever aan de slag gaat met de code weergave-editor, kunt u het voor beeld
 
 1. Geef in de linkerkolom van de **kaart** de naam op van de eigenschap die u wilt toewijzen aan elke waarde in de bron matrix. Geef in de rechter kolom een expressie op die de waarde vertegenwoordigt die u wilt toewijzen aan de eigenschap.
 
-   In dit voor beeld wordt ' Product_ID ' opgegeven als eigenschaps naam om elke waarde in de gehele matrix toe `item()` te wijzen met behulp van de functie in een expressie waarmee elk matrix item wordt geopend. 
+   In dit voor beeld wordt ' Product_ID ' opgegeven als eigenschaps naam om elke waarde in de gehele matrix toe te wijzen met behulp van de `item()` functie in een expressie waarmee elk matrix item wordt geopend. 
 
    ![JSON-object eigenschap en-waarden opgeven om matrix te maken](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
@@ -697,7 +697,7 @@ Als u wilt controleren of met de actie **Select** de verwachte resultaten worden
 
    `@actionBody('Select')`
 
-   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en worden de uitvoer `@actionBody('Select')` van de expressie in de hoofd tekst van het e-mail bericht opgenomen:
+   In dit voor beeld wordt de actie Office 365 Outlook **een E-mail verzenden** gebruikt en worden de uitvoer van de `@actionBody('Select')` expressie in de hoofd tekst van het e-mail bericht opgenomen:
 
    ![Actie uitvoer van de actie ' selecteren '](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 

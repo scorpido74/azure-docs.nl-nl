@@ -3,25 +3,25 @@ title: Problemen bij het aanmelden bij een micro soft-toepassing | Microsoft Doc
 description: Algemene problemen oplossen die zich voordoen bij het aanmelden bij micro soft-toepassingen van de eerste partij met behulp van Azure AD (zoals Office 365)
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 69edf8e8dc51f8a8841ceed94221ed44786e280d
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67108301"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759280"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemen bij het aanmelden bij een micro soft-toepassing
 
@@ -512,19 +512,19 @@ Toegang tot toepassingen kan worden geblokkeerd omdat de machtiging voor de juis
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Bewerking op beheerders niveau uitvoeren voor elke toepassing
 
--   Alleen voor toepassingen die zijn **ontwikkeld met behulp van het v1-toepassings model**kunt u toestemming geven voor dit beheer niveau door '**?\_prompt = Administrator toestemming**' toe te voegen aan het einde van de aanmeldings-URL van de toepassing.
+-   Alleen voor toepassingen die zijn **ontwikkeld met behulp van het v1-toepassings model**kunt u toestemming geven voor dit beheer niveau door '**? prompt = Administrator \_ toestemming**' toe te voegen aan het einde van de aanmeldings-URL van de toepassing.
 
 -   Voor **elke toepassing die is ontwikkeld met behulp van het v2-toepassings model**, kunt u deze toestemming op beheerders niveau afdwingen met behulp van de instructies in de sectie **machtigingen aanvragen van een Directory-beheerder** van [het bestemmings eindpunt van de](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)beheerder.
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Toestemming op beheerders niveau uitvoeren voor een toepassing met één Tenant
 
--   Voor **toepassingen met één Tenant** die machtigingen aanvragen (zoals de ontwikkelings-of eigenaar van uw organisatie), kunt u een **toestemmings bewerking op beheer niveau** uitvoeren namens alle gebruikers door u aan te melden als globale beheerder en te klikken op de knop **machtigingen verlenen** boven aan het **toepassings register&gt; -alle toepassingen&gt; -Selecteer een deel&gt; venster voor app-vereiste machtigingen** .
+-   Voor **toepassingen met één Tenant** die machtigingen aanvragen (zoals de ontwikkelings-of eigenaar van uw organisatie), kunt u een **toestemmings bewerking op beheer niveau** uitvoeren namens alle gebruikers door u aan te melden als globale beheerder en te klikken op de knop **machtigingen verlenen** boven aan het **toepassings register- &gt; alle toepassingen-Selecteer een deel venster voor &gt; app- &gt; vereiste machtigingen** .
 
 -   Voor **elke toepassing die is ontwikkeld met behulp van het v1-of v2-toepassings model**, kunt u deze toestemming op beheerders niveau afdwingen met behulp van de instructies in de sectie **machtigingen aanvragen van een Directory-beheerder** van [het beheerders toestemming-eind punt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)te volgen.
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Toestemming op beheerders niveau uitvoeren voor een toepassing met meerdere tenants
 
--   Voor **toepassingen met meerdere tenants** die machtigingen aanvragen (zoals een toepassing die door derden wordt uitgevoerd of micro soft zich ontwikkelt), kunt u een **toestemmings bewerking op beheer niveau** uitvoeren. Meld u aan als globale beheerder en klik op de **knop machtigingen verlenen** onder **bedrijfs toepassingen&gt; -alle toepassingen-&gt; Selecteer een app-&gt; machtigingen** venster (binnenkort beschikbaar).
+-   Voor **toepassingen met meerdere tenants** die machtigingen aanvragen (zoals een toepassing die door derden wordt uitgevoerd of micro soft zich ontwikkelt), kunt u een **toestemmings bewerking op beheer niveau** uitvoeren. Meld u aan als globale beheerder en klik op de knop **machtigingen verlenen** onder **bedrijfs toepassingen- &gt; alle toepassingen- &gt; Selecteer een app- &gt; machtigingen** venster (binnenkort beschikbaar).
 
 -   U kunt deze toestemming op beheerders niveau ook afdwingen met behulp van de instructies in de sectie **machtigingen aanvragen van een Directory-beheerder** van [het gebruik van het afstemmings eindpunt van de](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)beheerder.
 

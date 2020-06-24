@@ -1,22 +1,22 @@
 ---
-title: API-connectors voor aangepaste goedkeurings werk stromen in externe identiteiten self-service aanmelden-Azure AD
+title: Aangepaste goed keuringen toevoegen aan self-service-aanmeld stromen-Azure AD
 description: API-connectors toevoegen voor aangepaste goedkeurings werk stromen in externe identiteiten self-service Sign-up-Azure Active Directory (Azure AD)
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172f2041e7339a69648bfb84c0955eec15a0bc6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 45a08ff8d1f796cec2d4562ae64392253a539416
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680061"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886497"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Een aangepaste goedkeurings werk stroom toevoegen aan self-service registratie
 
@@ -34,7 +34,7 @@ U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Ten
 1. Meld u als een Azure AD-administrator aan bij de [Azure Portal](https://portal.azure.com).
 2. Onder **Azure-Services**selecteert u **Azure Active Directory**.
 3. Selecteer in het menu links **app-registraties**en selecteer vervolgens **nieuwe registratie**.
-4. Voer een **naam** in voor de toepassing, bijvoorbeeld *goed keuringen voor registratie*.
+4. Voer een **naam** in voor de toepassing, bijvoorbeeld _goed keuringen voor registratie_.
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -46,11 +46,11 @@ U moet uw goedkeurings systeem registreren als een toepassing in uw Azure AD-Ten
 7. Selecteer op de pagina **API-machtigingen voor aanvragen** de optie **Microsoft Graph**en selecteer vervolgens **toepassings machtigingen**.
 8. Onder **machtigingen selecteren**, vouwt u **gebruiker**en vervolgens het selectie vakje **gebruiker. readwrite. all** in. Met deze machtiging kan het goedkeurings systeem de gebruiker maken na goed keuring. Selecteer vervolgens **machtigingen toevoegen**.
 
-    ![Een toepassings pagina registreren](media/self-service-sign-up-add-approvals/request-api-permissions.png)
+   ![Een toepassings pagina registreren](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
 9. Selecteer op de pagina **API-machtigingen** de optie **beheerder toestemming geven voor (uw Tenant naam)** en selecteer vervolgens **Ja**.
 10. Selecteer onder **beheren** in het linkermenu **certificaten & geheimen**en selecteer vervolgens **Nieuw client geheim**.
-11. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld *goed keuringen client geheim*, en selecteer de duur voor wanneer het client geheim **verloopt**. Selecteer vervolgens **toevoegen**.
+11. Voer een **Beschrijving** in voor het geheim, bijvoorbeeld _goed keuringen client geheim_, en selecteer de duur voor wanneer het client geheim **verloopt**. Selecteer vervolgens **Toevoegen**.
 12. Kopieer de waarde van het client geheim.
 
     ![Het client geheim kopiëren voor gebruik in het goedkeurings systeem](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -63,11 +63,11 @@ Vervolgens maakt u [de API-connectors](self-service-sign-up-add-api-connector.md
 
 - **Goedkeurings status controleren**. Een oproep verzenden naar het goedkeurings systeem direct nadat een gebruiker zich heeft aangemeld met een id-provider om te controleren of de gebruiker een bestaande goedkeurings aanvraag heeft of al is geweigerd. Als uw goedkeurings systeem alleen automatische goedkeurings beslissingen heeft, is deze API-connector mogelijk niet nodig. Hier volgt een voor beeld van de API-connector ' goedkeurings status controleren '.
 
-   ![De configuratie van de goedkeurings status API-connector controleren](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
+  ![De configuratie van de goedkeurings status API-connector controleren](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
 - **Goed keuring aanvragen** : een aanroep naar het goedkeurings systeem verzenden nadat een gebruiker de pagina kenmerk verzameling heeft voltooid, maar voordat het gebruikers account is gemaakt, om goed keuring aan te vragen. De goedkeurings aanvraag kan automatisch worden verleend of hand matig worden gecontroleerd. Hier volgt een voor beeld van een API-connector voor het goed keuren van aanvragen. Selecteer **claims om te verzenden** dat het goedkeurings systeem een goedkeurings beslissing moet nemen.
 
-   ![Configuratie van API-connector voor goed keuring aanvragen](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
+  ![Configuratie van API-connector voor goed keuring aanvragen](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
 Als u deze connectors wilt maken, volgt u de stappen in [een API-connector maken](self-service-sign-up-add-api-connector.md#create-an-api-connector).
 
@@ -80,8 +80,9 @@ Nu voegt u de API-Connect oren toe aan een self-service voor het aanmelden van e
 3. Selecteer in het linkermenu **externe identiteiten**.
 4. Selecteer **gebruikers stromen (preview)** en selecteer vervolgens de gebruikers stroom waarvoor u de API-connector wilt inschakelen.
 5. Selecteer **API-connectors**en selecteer vervolgens de API-eind punten die u wilt aanroepen met de volgende stappen in de gebruikers stroom:
-   - **Nadat u zich hebt aangemeld met een id-provider**: Selecteer uw goedkeurings status API-connector, bijvoorbeeld *goedkeurings status controleren*.
-   - **Voordat u de gebruiker maakt**: Selecteer de API-connector voor de goedkeurings aanvraag, bijvoorbeeld *goed keuring aanvragen*.
+
+   - **Nadat u zich hebt aangemeld met een id-provider**: Selecteer uw goedkeurings status API-connector, bijvoorbeeld _goedkeurings status controleren_.
+   - **Voordat u de gebruiker maakt**: Selecteer de API-connector voor de goedkeurings aanvraag, bijvoorbeeld _goed keuring aanvragen_.
 
    ![Api's toevoegen aan de gebruikers stroom](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -182,7 +183,7 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -191,7 +192,7 @@ Content-type: application/json
 
 Het API-eind punt voor het **goed keuren van aanvragen** moet een vervolg reactie retour neren als:
 
-- De gebruiker kan ***automatisch worden goedgekeurd***.
+- De gebruiker kan **_automatisch worden goedgekeurd_**.
 
 Hier volgt een voor beeld van het vervolg antwoord:
 
@@ -273,7 +274,7 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -298,19 +299,19 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value"
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value"
 }
 ```
 
-| Parameter  | Vereist | Beschrijving |
-|---|---|---|
-| userPrincipalName | Ja | Kan worden gegenereerd door de `email_address` claim te verzenden naar de API, het teken te vervangen door `@` `_` en vooraf in behandeling te nemen tot `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled  | Ja  | Moet worden ingesteld op `true` .  |
-| mail  | Ja | Gelijk aan de `email_address` claim die wordt verzonden naar de API. |
-| User type | Ja | Moet zijn `Guest` . Hiermee wordt deze gebruiker aangeduid als een gast gebruiker. |
-| identiteit  | Ja  | De gegevens voor federatieve identiteiten. |
-| \<otherBuiltInAttribute>  | Nee  | Andere ingebouwde kenmerken `displayName` , zoals, `city` en anderen. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.|
-| \<extension_\<aad-extensions-app-id>\_CustomAttribute> | Nee | Aangepaste kenmerken van de gebruiker. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector. |
+| Parameter                                           | Vereist | Beschrijving                                                                                                                                                            |
+| --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPrincipalName                                   | Yes      | Kan worden gegenereerd door de `email_address` claim te verzenden naar de API, het teken te vervangen door `@` `_` en vooraf in behandeling te nemen tot `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Yes      | Moet worden ingesteld op `true` .                                                                                                                                                 |
+| mail                                                | Yes      | Gelijk aan de `email_address` claim die wordt verzonden naar de API.                                                                                                               |
+| User type                                            | Yes      | Moet zijn `Guest` . Hiermee wordt deze gebruiker aangeduid als een gast gebruiker.                                                                                                                 |
+| identiteit                                          | Yes      | De gegevens voor federatieve identiteiten.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | No       | Andere ingebouwde kenmerken `displayName` , zoals, `city` en anderen. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Aangepaste kenmerken van de gebruiker. Parameter namen zijn hetzelfde als de para meters die worden verzonden door de API-connector.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Voor een federatieve Azure Active Directory gebruiker
 
@@ -326,7 +327,7 @@ Content-type: application/json
  "email_address": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -334,11 +335,11 @@ Content-type: application/json
 2. Het goedkeurings systeem maakt de uitnodiging met behulp van de `email_address` API-connector.
 
 ```http
-POST https://graph.microsoft.com/v1.0/invitations 
+POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com", 
+    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
     "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
@@ -366,11 +367,11 @@ Content-type: application/json
 {
     "displayName": "John Smith",
     "city": "Redmond",
-    "extension_<aad-extensions-app-id>_AttributeName": "custom attribute value"
+    "extension_<extensions-app-id>_AttributeName": "custom attribute value"
 }
 ```
 
-<!-- ## Next steps -->
-<!-- - See an example approval system with the [Woodgrove self-service sign-up for guest users sample](code-samples-self-service-sign-up.md#custom-approval-system).  -->
-<!--TODO: link to sample-->
+## <a name="next-steps"></a>Volgende stappen
 
+- Ga aan de slag met onze voor [beelden van Azure function Quick](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)start.
+- Het afhandelen [van de self-service registratie voor gast gebruikers met hand matige goed keuring voor beeld](code-samples-self-service-sign-up.md#custom-approval-workflows). 

@@ -4,27 +4,27 @@ description: Een Azure DNS alias record gebruiken om de web-apps met taak verdel
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937370"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710538"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Host load balanced Azure web apps op de zone Apex
 
-Het DNS-protocol voor komt dat de toewijzing van iets anders dan een A-of AAAA-record bij de zone Apex. Een voor beeld van een zone Apex is contoso.com. Deze beperking geeft een probleem met de eigen aren van toepassingen die achter Traffic Manager toepassingen met taak verdeling hebben. Het is niet mogelijk om te verwijzen naar het Traffic Manager profiel in de zone Apex-record. Als gevolg hiervan moeten toepassings eigenaren gebruikmaken van een tijdelijke oplossing. Een omleiding op de toepassingslaag moet worden omgeleid van de zone naar een ander domein. Een voor beeld is een omleiding van contoso.com\.naar www contoso.com. Deze indeling bevat een Single Point of Failure voor de omleidings functie.
+Het DNS-protocol voor komt dat de toewijzing van iets anders dan een A-of AAAA-record bij de zone Apex. Een voor beeld van een zone Apex is contoso.com. Deze beperking geeft een probleem met de eigen aren van toepassingen die achter Traffic Manager toepassingen met taak verdeling hebben. Het is niet mogelijk om te verwijzen naar het Traffic Manager profiel in de zone Apex-record. Als gevolg hiervan moeten toepassings eigenaren gebruikmaken van een tijdelijke oplossing. Een omleiding op de toepassingslaag moet worden omgeleid van de zone naar een ander domein. Een voor beeld is een omleiding van contoso.com naar www \. contoso.com. Deze indeling bevat een Single Point of Failure voor de omleidings functie.
 
 Met alias records bestaat dit probleem niet meer. Toepassings eigenaren kunnen nu de Apex-record van de zone naar een Traffic Manager profiel met externe eind punten aanwijzen. Toepassings eigenaren kunnen verwijzen naar hetzelfde Traffic Manager-profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone.
 
-Contoso.com en www\.contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Traffic Manager-profiel. Dit is het geval zolang het Traffic Manager profiel alleen externe eind punten heeft geconfigureerd.
+Contoso.com en www \. contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Traffic Manager-profiel. Dit is het geval zolang het Traffic Manager profiel alleen externe eind punten heeft geconfigureerd.
 
 In dit artikel leert u hoe u een alias record kunt maken voor uw domein Apex en hoe u de eind punten van uw Traffic Manager-profiel kunt configureren voor uw web-apps.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -43,7 +43,7 @@ Een resource groep maken voor het opslaan van alle resources die in dit artikel 
 Maak twee Web App Service-abonnementen in uw resource groep met behulp van de volgende tabel voor configuratie-informatie. Zie [een app service-abonnement beheren in azure](../app-service/app-service-plan-manage.md)voor meer informatie over het maken van een app service-abonnement.
 
 
-|Naam  |Besturingssysteem  |Locatie  |Prijscategorie  |
+|Name  |Besturingssysteem  |Locatie  |Prijscategorie  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|VS - oost|Dev/test D1-gedeeld|
 |ASP-02     |Windows|VS - centraal|Dev/test D1-gedeeld|
@@ -58,7 +58,7 @@ Maak twee web-apps, één in elk App Service-abonnement.
 4. Selecteer **Maken**.
 5. Accepteer de standaard waarden en gebruik de volgende tabel om de twee web-apps te configureren:
 
-   |Naam<br>(moet uniek zijn binnen. azurewebsites.net)|Resourcegroep |Runtimestack|Regio|Abonnement/locatie App Service
+   |Name<br>(moet uniek zijn binnen. azurewebsites.net)|Resourcegroep |Runtimestack|Regio|Abonnement/locatie App Service
    |---------|---------|-|-|-------|
    |App-01|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - oost|ASP-01 (D1)|
    |App-02|Bestaande gebruiken<br>Uw resourcegroep selecteren|.NET Core 2.2|VS - centraal|ASP-02 (D1)|
@@ -87,10 +87,10 @@ U kunt nu de eind punten voor de twee web-apps maken.
 3. Selecteer **Toevoegen**.
 4. Gebruik de volgende tabel om de eind punten te configureren:
 
-   |Type  |Naam  |Doel  |Locatie  |Instellingen voor aangepaste header|
+   |Type  |Name  |Doel  |Locatie  |Instellingen voor aangepaste header|
    |---------|---------|---------|---------|---------|
-   |Extern eind punt     |End-01|IP-adres dat u hebt genoteerd voor app-01|VS - oost|host:\<de URL die u hebt vastgelegd voor app-01\><br>Voor beeld: **host: app-01.azurewebsites.net**|
-   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|VS - centraal|host:\<de URL die u voor app-02 hebt vastgelegd\><br>Voor beeld: **host: app-02.azurewebsites.net**
+   |Extern eind punt     |End-01|IP-adres dat u hebt genoteerd voor app-01|VS - oost|hostsite\<the URL you recorded for App-01\><br>Voor beeld: **host: app-01.azurewebsites.net**|
+   |Extern eind punt     |End-02|IP-adres dat u hebt vastgelegd voor app-02|VS - centraal|hostsite\<the URL you recorded for App-02\><br>Voor beeld: **host: app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS-zone maken
 
@@ -134,7 +134,7 @@ Voeg nu een alias record toe voor de zone Apex.
 
    |Naam  |Type  |Alias records instellen  |Alias type  |Azure-resource|
    |---------|---------|---------|---------|-----|
-   |@     |A|Ja|Azure-resource|Traffic Manager-uw profiel|
+   |@     |A|Yes|Azure-resource|Traffic Manager-uw profiel|
 
 
 ## <a name="test-your-web-apps"></a>Uw Web-Apps testen

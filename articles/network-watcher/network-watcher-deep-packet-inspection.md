@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152921"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725052"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Pakket inspectie met Azure Network Watcher
 
@@ -77,7 +77,7 @@ In dit voor beeld bekijken we een eerder uitgevoerde pakket opname voor ongewens
 
 ### <a name="step-1"></a>Stap 1
 
-Als u dezelfde vastleg ging in het vorige scenario wilt gebruiken, klikt u op **Statistieken** > **protocol hiërarchie**
+Als u dezelfde vastleg ging in het vorige scenario wilt gebruiken, klikt u op **Statistieken**  >  **protocol hiërarchie**
 
 ![menu Protocol hiërarchie][2]
 
@@ -93,7 +93,7 @@ Meer informatie over de typen verkeer, de eind punten en de door gegeven poorten
 
 ### <a name="step-1"></a>Stap 1
 
-Klik op **Statistieken** > **IPv4-statistieken** > **doelen en poorten** met dezelfde vastleg ging in het vorige scenario
+Klik op **Statistieken**  >  **IPv4-statistieken**  >  **doelen en poorten** met dezelfde vastleg ging in het vorige scenario
 
 ![pakket opname venster][4]
 

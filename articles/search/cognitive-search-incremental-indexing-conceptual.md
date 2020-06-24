@@ -1,5 +1,5 @@
 ---
-title: Incrementele verrijking (preview-versie)
+title: Incrementele uitgebreide concepten (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Sla tussenliggende inhoud op in de cache en incrementele wijzigingen van de AI-verrijkings pijplijn in Azure Storage om de investeringen in bestaande verwerkte documenten te behouden. Deze functie is momenteel beschikbaar als openbare preview-versie.
 manager: nitinme
@@ -7,20 +7,32 @@ author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 0fa152a2edc55067aa8a15a90766a9ad5f66149e
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77024140"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052060"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inleiding tot incrementele verrijking en caching in azure Cognitive Search
+# <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Incrementele verrijking en caching in azure Cognitive Search
 
 > [!IMPORTANT] 
-> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
+> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
 
-Incrementele verrijking voegt caching en statefulness toe aan een verrijkings pijplijn, waardoor uw investering in bestaande uitvoer behouden blijft, terwijl alleen de documenten worden gewijzigd die worden beïnvloed door een bepaalde wijziging. Dit betekent niet alleen uw monetaire investering in verwerking (met name OCR en verwerking van afbeeldingen), maar is ook een efficiëntere systeem. Wanneer structuren en inhoud in de cache zijn opgeslagen, kan een Indexeer functie bepalen welke vaardig heden zijn gewijzigd en alleen de aangepaste vaardig heden uitvoeren. 
+*Incrementele verrijking* is een functie die gericht is op [vaardig heden](cognitive-search-working-with-skillsets.md). Het maakt gebruik van Azure Storage om de verwerkings uitvoer die door een verrijkings pijplijn wordt gegenereerd, op te slaan voor hergebruik in toekomstige Indexeer functies. Waar mogelijk gebruikt de Indexeer functie een in cache opgeslagen uitvoer die nog geldig is. 
+
+Bij een incrementele verrijking wordt niet alleen de monetaire investering in verwerking behouden (met name voor OCR-en afbeeldings verwerking), maar dit is ook een efficiënter systeem. Wanneer structuren en inhoud in de cache zijn opgeslagen, kan een Indexeer functie bepalen welke vaardig heden zijn gewijzigd en alleen de aangepaste vaardig heden uitvoeren. 
+
+Een werk stroom die gebruikmaakt van incrementele caching, omvat de volgende stappen:
+
+1. [Maak of Identificeer een Azure-opslag account](../storage/common/storage-account-create.md) om de cache op te slaan.
+1. [Schakel incrementele verrijking](search-howto-incremental-index.md) in de Indexeer functie in.
+1. [Maak een Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -plus een [vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) -om de pijp lijn aan te roepen. Tijdens de verwerking worden de stadia van verrijking opgeslagen voor elk document in Blob Storage voor toekomstig gebruik.
+1. Test uw code en gebruik nadat u wijzigingen hebt aangebracht, [vaardig heden bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-skillset) om een definitie te wijzigen.
+1. [Voer Indexeer functie uit](https://docs.microsoft.com/rest/api/searchservice/run-indexer) om de pijp lijn aan te roepen en de uitvoer in de cache op te halen voor snellere en rendabele verwerking.
+
+Zie [incrementele verrijking instellen](search-howto-incremental-index.md)voor meer informatie over de stappen en overwegingen bij het werken met een bestaande indexer.
 
 ## <a name="indexer-cache"></a>Indexeer functie cache
 
@@ -65,13 +77,13 @@ Hoewel incrementele verrijking is ontworpen om wijzigingen zonder tussen komst v
 
 Stel de `enableReprocessing` eigenschap in op het beheren van de verwerking van inkomende documenten die al in de cache worden weer gegeven. Wanneer `true` (standaard) worden documenten die al in de cache staan, opnieuw verwerkt wanneer u de Indexeer functie opnieuw uitvoeren, ervan uitgaande dat uw vaardigheids update van invloed is op dat document. 
 
-Wanneer `false`worden bestaande documenten niet opnieuw verwerkt, waardoor er in feite nieuwe, binnenkomende inhoud in de bestaande inhoud wordt geplaatst. U dient alleen op `enableReprocessing` tijdelijke `false` basis in te stellen. Om consistentie tussen de verzameling te `enableReprocessing` garanderen, `true` moet het grootste deel van de tijd zijn, zodat alle documenten, zowel nieuwe als bestaande, geldig zijn volgens de huidige definitie van de vaardig heden.
+Wanneer `false` worden bestaande documenten niet opnieuw verwerkt, waardoor er in feite nieuwe, binnenkomende inhoud in de bestaande inhoud wordt geplaatst. U dient alleen `enableReprocessing` `false` op tijdelijke basis in te stellen. Om consistentie tussen de verzameling te garanderen, `enableReprocessing` moet het `true` grootste deel van de tijd zijn, zodat alle documenten, zowel nieuwe als bestaande, geldig zijn volgens de huidige definitie van de vaardig heden.
 
 ### <a name="bypass-skillset-evaluation"></a>Beoordeling van vaardig heden overs Laan
 
 Het aanpassen van een vaardig heden en het opnieuw verwerken van die vaardig heden gaat doorgaans hand matig. Sommige wijzigingen in een vaardig heden moeten echter niet worden verwerkt (bijvoorbeeld het implementeren van een aangepaste vaardigheid naar een nieuwe locatie of met een nieuwe toegangs sleutel). Dit zijn waarschijnlijk een rand wijziging die geen legitieme invloed heeft op de stof van de vaardig heden zelf. 
 
-Als u weet dat een wijziging in de vaardig heden inderdaad Opper vlakking is, moet u de vaardig heden-evaluatie `disableCacheReprocessingChangeDetection` overschrijven door `true`de para meter in te stellen op:
+Als u weet dat een wijziging in de vaardig heden inderdaad Opper vlakking is, moet u de vaardig heden-evaluatie overschrijven door de `disableCacheReprocessingChangeDetection` para meter in te stellen op `true` :
 
 1. Update vaardig heden bijwerken en de definitie van de vaardig heden wijzigen.
 1. Voeg de `disableCacheReprocessingChangeDetection=true` para meter toe aan de aanvraag.
@@ -87,7 +99,7 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 
 ### <a name="bypass-data-source-validation-checks"></a>Validatie controles van gegevens bronnen overs Laan
 
-Bij de meeste wijzigingen in een gegevens bron definitie wordt de cache ongeldig. Voor scenario's waarin u echter weet dat een wijziging de cache niet ongeldig moet maken, zoals het wijzigen van een connection string of het draaien van de sleutel op het opslag account,`ignoreResetRequirement` voegt u de para meter toe aan de update van de gegevens bron. Door deze para meter `true` in te stellen, kan de door voer worden door lopen zonder dat er een reset-voor waarde wordt geactiveerd, waardoor alle objecten opnieuw worden opgebouwd en volledig worden gevuld.
+Bij de meeste wijzigingen in een gegevens bron definitie wordt de cache ongeldig. Voor scenario's waarin u echter weet dat een wijziging de cache niet ongeldig moet maken, zoals het wijzigen van een connection string of het draaien van de sleutel op het opslag account, voegt u de `ignoreResetRequirement` para meter toe aan de update van de gegevens bron. Door deze para meter in te stellen `true` , kan de door voer worden door lopen zonder dat er een reset-voor waarde wordt geactiveerd, waardoor alle objecten opnieuw worden opgebouwd en volledig worden gevuld.
 
 ```http
 PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
@@ -148,7 +160,7 @@ REST API versie `2019-05-06-Preview` voorziet in incrementele verrijking via ext
 
 + [Vaardigheden opnieuw instellen (api-versie=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet `true` worden ingesteld op wanneer de cache niet door de update actie moet worden gevalideerd. 
++ Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet worden ingesteld op `true` wanneer de cache niet door de update actie moet worden gevalideerd. 
 
   Gebruik **ignoreResetRequirement** spaarzaam, omdat dit kan leiden tot onbedoelde inconsistentie in uw gegevens die niet eenvoudig kunnen worden gedetecteerd.
 

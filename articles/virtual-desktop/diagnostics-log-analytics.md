@@ -4,46 +4,46 @@ description: Log Analytics gebruiken met de Windows-functie diagnostische gegeve
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b18b596e0be0e410f1d868f405e2a30105276d8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456450"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209382"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Het virtuele bureau blad van Windows maakt gebruik van [Azure monitor](../azure-monitor/overview.md) voor bewaking en waarschuwingen, zoals veel andere Azure-Services. Hiermee kunnen beheerders problemen identificeren via één interface. De service maakt activiteiten logboeken voor zowel gebruikers-als beheer acties. Elk activiteiten logboek valt onder de volgende categorieën:  
+Het virtuele bureau blad van Windows maakt gebruik van [Azure monitor](../azure-monitor/overview.md) voor bewaking en waarschuwingen, zoals veel andere Azure-Services. Hiermee kunnen beheerders problemen identificeren via één interface. De service maakt activiteiten logboeken voor zowel gebruikers-als beheer acties. Elk activiteiten logboek valt onder de volgende categorieën:
 
 - Beheer activiteiten:
     - Controleren of er wordt geprobeerd Windows virtueel-bureaublad objecten te wijzigen met behulp van Api's of Power shell. Kan iemand bijvoorbeeld een hostgroep maken met behulp van Power shell?
-- Voerder 
-    - Kunnen gebruikers zich abonneren op werk ruimten? 
+- Voerder
+    - Kunnen gebruikers zich abonneren op werk ruimten?
     - Zien gebruikers alle resources die zijn gepubliceerd in de Extern bureaublad-client?
-- Verbindingen: 
-    - Wanneer gebruikers verbindingen met de service initiëren en volt ooien. 
-- Registratie van de host: 
+- Verbindingen:
+    - Wanneer gebruikers verbindingen met de service initiëren en volt ooien.
+- Registratie van de host:
     - Is de sessiehost geregistreerd bij de service bij het verbinden?
-- Bufferoverschrijdingsfouten 
+- Bufferoverschrijdingsfouten
     - Ondervinden gebruikers problemen met specifieke activiteiten? Met deze functie kan een tabel worden gegenereerd die de activiteit gegevens voor u registreert, zolang de gegevens worden gekoppeld aan de activiteiten.
-- Controle punten  
+- Controle punten
     - Specifieke stappen in de levens duur van een activiteit die is bereikt. Tijdens een sessie is een gebruiker bijvoorbeeld gelijkmatig verdeeld over een bepaalde host. vervolgens is de gebruiker aangemeld tijdens een verbinding, enzovoort.
 
 Verbindingen die zich niet in het virtuele bureau blad van Windows bevinden, worden niet weer gegeven in de resultaten van diagnostische gegevens omdat de functie Service diagnostiek zelf deel uitmaakt van Windows virtueel bureau blad. Er kunnen problemen met de Windows-verbinding met virtueel bureau blad optreden wanneer de gebruiker problemen met de netwerk verbinding ondervindt.
 
-Met Azure Monitor kunt u gegevens van Windows virtueel bureau blad analyseren en de prestatie meter items van virtuele machines (VM) controleren, allemaal binnen hetzelfde hulp programma. In dit artikel vindt u meer informatie over het inschakelen van diagnostische gegevens voor uw virtuele Windows-desktop omgeving. 
+Met Azure Monitor kunt u gegevens van Windows virtueel bureau blad analyseren en de prestatie meter items van virtuele machines (VM) controleren, allemaal binnen hetzelfde hulp programma. In dit artikel vindt u meer informatie over het inschakelen van diagnostische gegevens voor uw virtuele Windows-desktop omgeving.
 
->[!NOTE] 
+>[!NOTE]
 >Zie [Azure virtual machines bewaken met Azure monitor](../azure-monitor/insights/monitor-vm-azure.md)voor meer informatie over het bewaken van uw Vm's in Azure. Zorg er ook voor dat u [de drempel waarden voor prestatie meter items bekijkt](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) voor een beter inzicht in uw gebruikers ervaring op de sessiehost.
 
 ## <a name="before-you-get-started"></a>Voordat u aan de slag gaat
@@ -60,7 +60,7 @@ Nadat u uw werk ruimte hebt gemaakt, volgt u de instructies in [Windows-computer
 
 U hebt deze gegevens later nodig in het installatie proces.
 
-Zorg ervoor dat u het machtigings beheer voor Azure Monitor controleert om gegevens toegang in te scha kelen voor degenen die uw virtuele Windows-desktop omgeving controleren en onderhouden. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](../azure-monitor/platform/roles-permissions-security.md)voor meer informatie. 
+Zorg ervoor dat u het machtigings beheer voor Azure Monitor controleert om gegevens toegang in te scha kelen voor degenen die uw virtuele Windows-desktop omgeving controleren en onderhouden. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](../azure-monitor/platform/roles-permissions-security.md)voor meer informatie.
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Diagnostische gegevens naar uw werk ruimte pushen
 
@@ -68,27 +68,27 @@ U kunt Diagnostische gegevens van uw virtuele bureau blad-objecten van Windows n
 
 Log Analytics instellen voor een nieuw object:
 
-1. Meld u aan bij de Azure Portal en ga naar het **virtuele bureau blad van Windows**. 
+1. Meld u aan bij de Azure Portal en ga naar het **virtuele bureau blad van Windows**.
 
-2. Navigeer naar het object (zoals een hostgroep, app-groep of werk ruimte) waarvoor u Logboeken en gebeurtenissen wilt vastleggen. 
+2. Navigeer naar het object (zoals een hostgroep, app-groep of werk ruimte) waarvoor u Logboeken en gebeurtenissen wilt vastleggen.
 
-3. Selecteer **Diagnostische instellingen** in het menu aan de linkerkant van het scherm. 
+3. Selecteer **Diagnostische instellingen** in het menu aan de linkerkant van het scherm.
 
-4. Selecteer **Diagnostische instelling toevoegen** in het menu dat wordt weer gegeven aan de rechter kant van het scherm. 
-   
+4. Selecteer **Diagnostische instelling toevoegen** in het menu dat wordt weer gegeven aan de rechter kant van het scherm.
+
     De opties die worden weer gegeven op de pagina Diagnostische instellingen variëren, afhankelijk van het soort object dat u bewerkt.
 
-    Wanneer u bijvoorbeeld diagnostische gegevens inschakelt voor een app-groep, ziet u opties voor het configureren van controle punten, fouten en beheer. Voor werk ruimten configureren deze categorieën een feed om te volgen wanneer gebruikers zich abonneren op de lijst met apps. Zie voor meer informatie over diagnostische instellingen [Diagnostische instelling maken om bron logboeken en metrische gegevens in azure te verzamelen](../azure-monitor/platform/diagnostic-settings.md). 
+    Wanneer u bijvoorbeeld diagnostische gegevens inschakelt voor een app-groep, ziet u opties voor het configureren van controle punten, fouten en beheer. Voor werk ruimten configureren deze categorieën een feed om te volgen wanneer gebruikers zich abonneren op de lijst met apps. Zie voor meer informatie over diagnostische instellingen [Diagnostische instelling maken om bron logboeken en metrische gegevens in azure te verzamelen](../azure-monitor/platform/diagnostic-settings.md).
 
-     >[!IMPORTANT] 
-     >Vergeet niet om diagnostische gegevens in te scha kelen voor elk Azure Resource Manager object dat u wilt bewaken. Er zijn gegevens beschikbaar voor activiteiten nadat de diagnose is ingeschakeld. Het kan enkele uren duren voordat de eerste keer is ingesteld.  
+     >[!IMPORTANT]
+     >Vergeet niet om diagnostische gegevens in te scha kelen voor elk Azure Resource Manager object dat u wilt bewaken. Er zijn gegevens beschikbaar voor activiteiten nadat de diagnose is ingeschakeld. Het kan enkele uren duren voordat de eerste keer is ingesteld.
 
 5. Voer een naam in voor de configuratie van uw instellingen en selecteer vervolgens **verzenden naar log Analytics**. De naam die u gebruikt, mag geen spaties bevatten en moet voldoen aan de [naamgevings conventies van Azure](../azure-resource-manager/management/resource-name-rules.md). Als onderdeel van de logboeken kunt u alle opties selecteren die u wilt toevoegen aan uw Log Analytics, zoals controle punt, fout, beheer, enzovoort.
 
 6. Selecteer **Opslaan**.
 
 >[!NOTE]
->Log Analytics biedt u de mogelijkheid om gegevens te streamen naar [Event hubs](../event-hubs/event-hubs-about.md) of deze te archiveren in een opslag account. Zie [Azure-bewakings gegevens streamen naar een event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) en [Azure-resource logboeken archiveren in een opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)voor meer informatie over deze functie. 
+>Log Analytics biedt u de mogelijkheid om gegevens te streamen naar [Event hubs](../event-hubs/event-hubs-about.md) of deze te archiveren in een opslag account. Zie [Azure-bewakings gegevens streamen naar een event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) en [Azure-resource logboeken archiveren in een opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)voor meer informatie over deze functie.
 
 ## <a name="how-to-access-log-analytics"></a>Toegang tot Log Analytics
 
@@ -98,23 +98,23 @@ U hebt toegang tot Log Analytics-werk ruimten op het Azure Portal of Azure Monit
 
 1. Meld u aan bij Azure Portal.
 
-2. Zoeken naar **log Analytics-werk ruimte**. 
+2. Zoeken naar **log Analytics-werk ruimte**.
 
-3. Onder Services selecteert u **log Analytics werk ruimten**. 
-   
+3. Onder Services selecteert u **log Analytics werk ruimten**.
+
 4. Selecteer in de lijst de werk ruimte die u hebt geconfigureerd voor het virtueel-bureaublad object van Windows.
 
-5. Selecteer **Logboeken**in uw werk ruimte. U kunt de menu lijst filteren met de functie **zoeken** . 
+5. Selecteer **Logboeken**in uw werk ruimte. U kunt de menu lijst filteren met de functie **zoeken** .
 
 ### <a name="access-log-analytics-on-azure-monitor"></a>Toegang tot Log Analytics op Azure Monitor
 
 1. Aanmelden bij Azure Portal
 
-2. Zoek en selecteer **monitor**. 
+2. Zoek en selecteer **monitor**.
 
 3. Selecteer **Logboeken**.
 
-4. Volg de instructies op de pagina logboek registratie om het bereik van uw query in te stellen.  
+4. Volg de instructies op de pagina logboek registratie om het bereik van uw query in te stellen.
 
 5. U kunt een query uitvoeren op diagnostische gegevens. Alle diagnostische tabellen hebben het voor voegsel ' WVD '.
 
@@ -138,114 +138,114 @@ De volgende voorbeeld query's laten zien hoe de diagnostische functie een rappor
 Voer de volgende cmdlet uit om een lijst op te halen met de verbindingen die uw gebruikers hebben gemaakt:
 
 ```kusto
-WVDConnections 
-| project-away TenantId,SourceSystem 
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
-| join kind=leftouter ( 
-    WVDErrors 
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId 
-    ) on CorrelationId     
-| join kind=leftouter ( 
-   WVDCheckpoints 
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId 
-   | mv-apply Checkpoints on 
-    ( 
-        order by todatetime(Checkpoints['Time']) asc 
-        | summarize Checkpoints=makelist(Checkpoints) 
-    ) 
-   ) on CorrelationId 
-| project-away CorrelationId1, CorrelationId2 
-| order by  TimeGenerated desc 
+WVDConnections
+| project-away TenantId,SourceSystem
+| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
+| join kind=leftouter (
+    WVDErrors
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
+    ) on CorrelationId
+| join kind=leftouter (
+   WVDCheckpoints
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
+   | mv-apply Checkpoints on
+    (
+        order by todatetime(Checkpoints['Time']) asc
+        | summarize Checkpoints=makelist(Checkpoints)
+    )
+   ) on CorrelationId
+| project-away CorrelationId1, CorrelationId2
+| order by  TimeGenerated desc
 ```
 
 De feed-activiteit van uw gebruikers weer geven:
 
 ```kusto
-WVDFeeds  
-| project-away TenantId,SourceSystem  
-| join kind=leftouter (  
-    WVDErrors  
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
-    ) on CorrelationId      
-| join kind=leftouter (  
-   WVDCheckpoints  
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
-   | mv-apply Checkpoints on  
-    (  
-        order by todatetime(Checkpoints['Time']) asc  
-        | summarize Checkpoints=makelist(Checkpoints)  
-    )  
-   ) on CorrelationId  
-| project-away CorrelationId1, CorrelationId2  
-| order by  TimeGenerated desc 
+WVDFeeds
+| project-away TenantId,SourceSystem
+| join kind=leftouter (
+    WVDErrors
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
+    ) on CorrelationId
+| join kind=leftouter (
+   WVDCheckpoints
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
+   | mv-apply Checkpoints on
+    (
+        order by todatetime(Checkpoints['Time']) asc
+        | summarize Checkpoints=makelist(Checkpoints)
+    )
+   ) on CorrelationId
+| project-away CorrelationId1, CorrelationId2
+| order by  TimeGenerated desc
 ```
 
-Alle verbindingen voor één gebruiker zoeken: 
+Alle verbindingen voor één gebruiker zoeken:
 
 ```kusto
 WVDConnections
-|where UserName == "userupn" 
-|take 100 
-|sort by TimeGenerated asc, CorrelationId 
+|where UserName == "userupn"
+|take 100
+|sort by TimeGenerated asc, CorrelationId
 ```
- 
+
 
 Zoeken naar het aantal keren dat een gebruiker is verbonden per dag:
 
 ```kusto
-WVDConnections 
-|where UserName == "userupn" 
-|take 100 
-|sort by TimeGenerated asc, CorrelationId 
-|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d) 
+WVDConnections
+|where UserName == "userupn"
+|take 100
+|sort by TimeGenerated asc, CorrelationId
+|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
- 
+
 
 Sessie duur zoeken op gebruiker:
 
 ```kusto
-let Events = WVDConnections | where UserName == "userupn" ; 
-Events 
-| where State == "Connected" 
-| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated 
-| join (Events 
-| where State == "Completed" 
-| project EndTime=TimeGenerated, CorrelationId) 
-on CorrelationId 
-| project Duration = EndTime - StartTime, ResourceAlias 
-| sort by Duration asc 
+let Events = WVDConnections | where UserName == "userupn" ;
+Events
+| where State == "Connected"
+| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated
+| join (Events
+| where State == "Completed"
+| project EndTime=TimeGenerated, CorrelationId)
+on CorrelationId
+| project Duration = EndTime - StartTime, ResourceAlias
+| sort by Duration asc
 ```
 
 Fouten voor een specifieke gebruiker zoeken:
 
 ```kusto
 WVDErrors
-| where UserName == "userupn" 
+| where UserName == "userupn"
 |take 100
 ```
 
 Nagaan of er een specifieke fout is opgetreden:
 
 ```kusto
-WVDErrors 
-| where CodeSymbolic =="ErrorSymbolicCode" 
-| summarize count(UserName) by CodeSymbolic 
+WVDErrors
+| where CodeSymbolic =="ErrorSymbolicCode"
+| summarize count(UserName) by CodeSymbolic
 ```
 
 Zoeken naar een fout voor alle gebruikers:
 
 ```kusto
-WVDErrors 
-| where ServiceError =="false" 
-| summarize usercount = count(UserName) by CodeSymbolic 
+WVDErrors
+| where ServiceError =="false"
+| summarize usercount = count(UserName) by CodeSymbolic
 | sort by usercount desc
-| render barchart 
+| render barchart
 ```
 
 Voer de volgende query uit om query's uit te voeren op apps:
 
 ```kusto
-WVDCheckpoints 
+WVDCheckpoints
 | where TimeGenerated > ago(7d)
 | where Name == "LaunchExecutable"
 | extend App = parse_json(Parameters).filename
@@ -259,6 +259,6 @@ WVDCheckpoints
 >- De tabel WVDErrors toont u beheer fouten, registratie problemen voor hosts en andere problemen die zich voordoen wanneer de gebruiker zich abonneert op een lijst met apps of Bureau bladen.
 >- WVDErrors helpt u bij het identificeren van problemen die door beheer taken kunnen worden opgelost. De waarde op ServiceError geeft altijd ' false ' aan voor dit soort problemen. Als ServiceError = "True", moet u het probleem escaleren naar micro soft. Zorg ervoor dat u de CorrelationID opgeeft voor de fouten die u wilt escaleren.
 
-## <a name="next-steps"></a>Volgende stappen 
+## <a name="next-steps"></a>Volgende stappen
 
 Zie [problemen identificeren en diagnosticeren](diagnostics-role-service.md#common-error-scenarios)als u veelvoorkomende fout scenario's wilt bekijken die door de diagnostische functie kunnen worden geïdentificeerd.

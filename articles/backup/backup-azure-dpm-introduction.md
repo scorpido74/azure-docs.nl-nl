@@ -2,13 +2,13 @@
 title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273460"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718322"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -48,7 +48,7 @@ Ondersteunde bestandstypen | Er kan een back-up van deze bestands typen worden g
 Niet-ondersteunde bestands typen | Servers op hoofdletter gevoelige bestands systemen; vaste koppelingen (overgeslagen); reparsepunten (overgeslagen); versleuteld en gecomprimeerd (overgeslagen); versleuteld en verspreid (overgeslagen); Gecomprimeerde stroom; de stroom wordt geparseerd.
 Lokale opslag | Elke machine waarvan u een back-up wilt maken, moet over lokale vrije opslag beschikken die ten minste 5% van de grootte van de gegevens waarvan een back-up wordt gemaakt. Voor het maken van een back-up van 100 GB aan gegevens is bijvoorbeeld mini maal 5 GB beschik bare ruimte op de Scratch locatie vereist.
 Kluis opslag | Er is geen limiet voor de hoeveelheid gegevens waarvan u een back-up kunt maken naar een Azure Backup kluis, maar de grootte van een gegevens bron (bijvoorbeeld een virtuele machine of data base) mag niet groter zijn dan 54.400 GB.
-Azure ExpressRoute | Als Azure ExpressRoute is geconfigureerd met persoonlijke of micro soft-peering, kan het niet worden gebruikt voor het maken van een back-up van de gegevens in Azure.<br/><br/> Als Azure ExpressRoute is geconfigureerd met open bare peering, kan dit worden gebruikt om een back-up te maken van de gegevens in Azure.<br/><br/> **Opmerking:** Open bare peering is afgeschaft voor nieuwe circuits.
+Azure ExpressRoute | U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.<br/><br/> **Met open bare peering**: Zorg ervoor dat u toegang hebt tot de volgende domeinen/adressen:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> Selecteer **bij micro soft-peering**de volgende services/regio's en relevante Community-waarden:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)<br/><br/>-Azure Storage (op basis van de locatie van uw Recovery Services kluis)<br/><br/>Zie [ExpressRoute Routing requirements](https://docs.microsoft.com/azure/expressroute/expressroute-routing)(Engelstalig) voor meer informatie.<br/><br/>**Opmerking**: open bare peering is afgeschaft voor nieuwe circuits.
 Azure Backup-agent | Als DPM wordt uitgevoerd op System Center 2012 SP1, installeert u Rollup 2 of hoger voor DPM SP1. Dit is vereist voor de installatie van de agent.<br/><br/> In dit artikel wordt beschreven hoe u de nieuwste versie van de Azure Backup-Agent, ook wel de MARS-agent (Microsoft Azure Recovery Service), implementeert. Als u een eerdere versie hebt geïmplementeerd, werkt u bij naar de nieuwste versie om te controleren of de back-up naar verwachting werkt.
 
 Voordat u begint, hebt u een Azure-account nodig waarop de functie Azure Backup is ingeschakeld. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Meer informatie over [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/).
@@ -103,9 +103,9 @@ Down load het kluis referentie bestand als volgt naar een lokale computer:
 
     ![Het menu Kluis openen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. Klik in **Eigenschappen** > **back-upreferenties**op **downloaden**. De portal genereert het kluis referentie bestand met behulp van een combi natie van de kluis naam en de huidige datum, en maakt deze beschikbaar voor downloaden.
+4. Klik in **Eigenschappen**  >  **back-upreferenties**op **downloaden**. De portal genereert het kluis referentie bestand met behulp van een combi natie van de kluis naam en de huidige datum, en maakt deze beschikbaar voor downloaden.
 
-    ![Download](./media/backup-azure-dpm-introduction/vault-credentials.png)
+    ![Downloaden](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
 5. Klik op **Opslaan** om de kluis referenties naar de map te downloaden of op te **slaan als** en een locatie op te geven. Het duurt Maxi maal een minuut voordat het bestand is gegenereerd.
 
@@ -119,9 +119,9 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
     ![Het menu Kluis openen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. Down load de Azure Backup-Agent op de pagina **Eigenschappen** .
 
-    ![Download](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
+    ![Downloaden](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-4. Na het downloaden voert u MARSAgentInstaller. exe uit. de agent op de DPM-computer installeren.
+4. Na het downloaden voert u MARSAgentInstaller.exe uit. de agent op de DPM-computer installeren.
 5. Selecteer een installatiemap en cachemap voor de agent. De beschik bare ruimte voor de cache locatie moet ten minste 5% van de back-upgegevens zijn.
 6. Als u een proxy server gebruikt om verbinding te maken met internet, voert u in het scherm **proxy configuratie** de gegevens van de proxy server in. Als u een geverifieerde proxy gebruikt, voert u in dit scherm de gebruikers naam en het wacht woord in.
 7. De Azure Backup Agent installeert .NET Framework 4,5 en Windows Power shell (als deze niet zijn geïnstalleerd) om de installatie te volt ooien.

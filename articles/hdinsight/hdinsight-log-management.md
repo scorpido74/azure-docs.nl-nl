@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272303"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709246"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Logboeken beheren voor een HDInsight-cluster
 
@@ -87,11 +87,11 @@ Met de Ambari-gebruikers interface kunt u de configuratie voor alle (of alle) se
 
 ### <a name="view-the-script-action-logs"></a>De script actie logboeken weer geven
 
-Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts uitgevoerd op een cluster, hetzij hand matig of indien opgegeven. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Script actie logboeken kunnen inzicht geven in fouten die zijn opgetreden tijdens de installatie van het cluster, en ook wijzigingen in de configuratie-instellingen die van invloed kunnen zijn op de prestaties en beschik baarheid van het cluster.  Als u de status van een script actie wilt zien, selecteert u de knop **OPS** in uw Ambari-gebruikers interface of opent u de status Logboeken in het standaard opslag account. De opslag logboeken zijn beschikbaar `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`op.
+Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts uitgevoerd op een cluster, hetzij hand matig of indien opgegeven. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Script actie logboeken kunnen inzicht geven in fouten die zijn opgetreden tijdens de installatie van het cluster, en ook wijzigingen in de configuratie-instellingen die van invloed kunnen zijn op de prestaties en beschik baarheid van het cluster.  Als u de status van een script actie wilt zien, selecteert u de knop **OPS** in uw Ambari-gebruikers interface of opent u de status Logboeken in het standaard opslag account. De opslag logboeken zijn beschikbaar op `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE` .
 
 ### <a name="view-ambari-alerts-status-logs"></a>Status logboeken van Ambari-waarschuwingen weer geven
 
-Met Apache Ambari wordt de waarschuwings status `ambari-alerts.log`gewijzigd in. Het volledige pad is `/var/log/ambari-server/ambari-alerts.log`. Als u fout opsporing wilt inschakelen voor het logboek, wijzigt `/etc/ambari-server/conf/log4j.properties.` u een eigenschap in `# Log alert state changes` Change en selecteert u onder van:
+Met Apache Ambari wordt de waarschuwings status gewijzigd in `ambari-alerts.log` . Het volledige pad is `/var/log/ambari-server/ambari-alerts.log` . Als u fout opsporing wilt inschakelen voor het logboek, wijzigt u een eigenschap in `/etc/ambari-server/conf/log4j.properties.` Change en selecteert u onder `# Log alert state changes` van:
 
 ```
 log4j.logger.alerts=INFO,alerts
@@ -131,7 +131,7 @@ De geaggregeerde logboeken zijn niet direct leesbaar, omdat ze zijn geschreven i
 
 #### <a name="yarn-cli-tools"></a>Hulp middelen voor garen-CLI
 
-Als u de hulpprogram ma's voor garen-CLI wilt gebruiken, moet u eerst met SSH verbinding maken met het HDInsight-cluster. Geef de `<applicationId>`gegevens `<user-who-started-the-application>`, `<containerId>`, en `<worker-node-address>` op bij het uitvoeren van deze opdrachten. U kunt de logboeken weer geven als tekst zonder opmaak met een van de volgende opdrachten:
+Als u de hulpprogram ma's voor garen-CLI wilt gebruiken, moet u eerst met SSH verbinding maken met het HDInsight-cluster. Geef de `<applicationId>` `<user-who-started-the-application>` gegevens,, `<containerId>` en op `<worker-node-address>` bij het uitvoeren van deze opdrachten. U kunt de logboeken weer geven als tekst zonder opmaak met een van de volgende opdrachten:
 
 ```bash
 yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
@@ -171,7 +171,7 @@ U kunt de .NET SDK voor Hadoop gebruiken om de logboek bestanden te controleren 
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>De grootte en het aantal back-upindexen voor oude logboek bestanden bepalen
 
-Als u de grootte en het aantal logboek bestanden dat moet worden behouden wilt beheren, stelt `RollingFileAppender`u de volgende eigenschappen in:
+Als u de grootte en het aantal logboek bestanden dat moet worden behouden wilt beheren, stelt u de volgende eigenschappen in `RollingFileAppender` :
 
 * `maxFileSize`is de kritieke grootte van het bestand, waarboven het bestand wordt getotaliseerd. De standaard waarde is 10 MB.
 * `maxBackupIndex`Hiermee geeft u het aantal back-upbestanden dat moet worden gemaakt, standaard 1.

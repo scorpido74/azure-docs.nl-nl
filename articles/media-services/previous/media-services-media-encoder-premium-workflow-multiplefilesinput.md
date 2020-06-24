@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250996"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712340"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Meerdere invoer bestanden en onderdeel eigenschappen gebruiken met Premium encoder
 ## <a name="overview"></a>Overzicht
@@ -97,7 +97,7 @@ Voorbeeld:
 ```
 
 ### <a name="property-with-an-xml-value"></a>Eigenschap met een XML-waarde
-Als u een eigenschap wilt instellen die een XML-waarde verwacht, inkapselen met behulp `<![CDATA[ and ]]>`van.
+Als u een eigenschap wilt instellen die een XML-waarde verwacht, inkapselen met behulp van `<![CDATA[ and ]]>` .
 
 Voorbeeld:
 
@@ -131,7 +131,7 @@ Voorbeeld:
 ```
 
 > [!NOTE]
-> Zorg ervoor dat u geen regel terugloop hoeft op te `<![CDATA[`geven.
+> Zorg ervoor dat u geen regel terugloop hoeft op te geven `<![CDATA[` .
 
 ### <a name="propertypath-value"></a>waarde propertyPath
 In de vorige voor beelden was het propertyPath "/media file input/filename" of "/inactiveTimeout" of "clipListXml".
@@ -272,10 +272,10 @@ Met aanvullende frame-nauw keurige bijsnijden:
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Voor beeld 1: een afbeelding bovenop de video bedekken
 
 ### <a name="presentation"></a>Stijl
-Bekijk een voor beeld waarin u een logo afbeelding wilt bedekken op de invoer video terwijl de video is gecodeerd. In dit voor beeld heet de invoer video ' Microsoft_HoloLens_Possibilities_816p24. MP4 ' en heet het logo ' logo. png '. Voer de volgende stappen uit:
+Bekijk een voor beeld waarin u een logo afbeelding wilt bedekken op de invoer video terwijl de video is gecodeerd. In dit voor beeld heeft de invoer video de naam Microsoft_HoloLens_Possibilities_816p24.mp4 en het logo heeft de naam logo.png. Voer de volgende stappen uit:
 
 * Maak een werk stroom-activum met het werk stroom bestand (Zie het volgende voor beeld).
-* Maak een Media-Asset dat twee bestanden bevat: MyInputVideo. MP4 als het primaire bestand en MyLogo. png.
+* Maak een media-activum dat twee bestanden bevat: MyInputVideo.mp4 als het primaire bestand en MyLogo.png.
 * Verzend een taak naar de Media Encoder Premium Workflow-media processor met de bovenstaande invoer assets en geef de volgende configuratie teken reeks op.
 
 Configuratie:
@@ -299,7 +299,7 @@ In het bovenstaande voor beeld wordt de naam van het video bestand verzonden naa
 ### <a name="step-by-step-workflow-creation"></a>Stapsgewijze werk stroom maken
 Hier volgen de stappen voor het maken van een werk stroom die twee bestanden als invoer accepteert: een video en een afbeelding. De afbeelding wordt boven op de video bedekt.
 
-Open **Workflow Designer** en selecteer **bestand** > **nieuwe werk ruimte** > trans code trans**blauw**.
+Open **Workflow Designer** en selecteer **bestand**  >  **nieuwe werk ruimte**trans code trans  >  **blauw**.
 
 In de nieuwe werk stroom worden drie elementen weer gegeven:
 
@@ -442,7 +442,7 @@ Voer de volgende stappen uit om te coderen:
 * Maak een Media Services-Asset met het MXF-bestand en de audio bestanden (0 tot 18 audio bestanden).
 * Controleer of het MXF-bestand is ingesteld als een primair bestand.
 * Maak een taak en een taak met behulp van de Premium workflow encoder-processor. Gebruik de meegeleverde werk stroom (MultiMP4-1080p-19audio-v1. workflow).
-* De setruntime. XML-gegevens door geven aan de taak (als u Azure Media Services Explorer gebruikt, gebruikt u de knop XML-gegevens door geven aan de werk stroom).
+* Geef de setruntime.xml gegevens door aan de taak (als u Azure Media Services Explorer gebruikt, gebruikt u de knop XML-gegevens door geven aan de werk stroom).
   * Werk de XML-gegevens bij om de juiste bestands namen en talen Tags op te geven.
   * De werk stroom bevat audio-onderdelen met de naam audio 1 op audio 18.
   * RFC5646 wordt ondersteund voor de taal code.

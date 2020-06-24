@@ -7,17 +7,17 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270522"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712442"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Voor beelden van gegevens bewerkings code voor Azure Logic Apps
 
 Hier volgen de code voorbeelden voor de actie definities van de gegevens bewerking in het artikel, [uitvoeren van gegevens bewerkingen](../logic-apps/logic-apps-perform-data-operations.md). U kunt deze voor beelden gebruiken als u de voor beeld wilt uitproberen met de onderliggende werk stroom definitie, Azure-abonnement en API-verbindingen van uw eigen logische app. Kopieer en plak deze actie definities in de code weergave-editor voor de werk stroom definitie van uw logische app en wijzig vervolgens de definities voor uw specifieke werk stroom. 
 
-Op basis van JavaScript Object Notation (JSON)-standaarden worden deze actie definities in alfabetische volg orde weer gegeven. In de ontwerp functie voor logische apps wordt elke definitie echter in de juiste volg orde in de werk stroom weer gegeven, `runAfter` omdat de eigenschaps definitie van elke actie de uitvoerings volgorde aangeeft.
+Op basis van JavaScript Object Notation (JSON)-standaarden worden deze actie definities in alfabetische volg orde weer gegeven. In de ontwerp functie voor logische apps wordt elke definitie echter in de juiste volg orde in de werk stroom weer gegeven, omdat de eigenschaps definitie van elke actie `runAfter` de uitvoerings volgorde aangeeft.
 
 <a name="compose-action-example"></a>
 

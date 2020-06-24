@@ -4,11 +4,11 @@ description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstel
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252452"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687426"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server data bases herstellen op virtuele Azure-machines
 
@@ -95,7 +95,7 @@ Herstel als volgt:
 
 ### <a name="restore-and-overwrite"></a>Herstellen en overschrijven
 
-1. Selecteer in het menu **configuratie herstellen** onder **herstel van herstellen**de optie **Data Base** > overschrijven**OK**.
+1. Selecteer in het menu **configuratie herstellen** onder **herstel van herstellen**de optie **Data Base overschrijven**  >  **OK**.
 
     ![DB overschrijven selecteren](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -114,7 +114,7 @@ Als u de back-upgegevens wilt herstellen als. bak-bestanden in plaats van een Da
 
     >Als u de back-upbestanden van de Data Base wilt herstellen op een Azure-bestands share die is gekoppeld aan de geregistreerde virtuele machine van het doel, zorgt u ervoor dat NT AUTHORITY\SYSTEM toegang heeft tot de bestands share. U kunt de onderstaande stappen uitvoeren om de machtigingen lezen/schrijven toe te kennen aan de AFS die is gekoppeld aan de virtuele machine:
     >
-    >- Voer `PsExec -s cmd` uit om in te voeren in de NT AUTHORITY\SYSTEM-shell
+    >- Voer uit `PsExec -s cmd` om in te voeren in de NT AUTHORITY\SYSTEM-shell
     >   - Voer `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>` uit
     >   - Toegang controleren met`dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- Een terugzet bewerking starten als bestanden van de back-upkluis naar `\\<storageacct>.file.core.windows.net\<filesharename>` het pad<BR>

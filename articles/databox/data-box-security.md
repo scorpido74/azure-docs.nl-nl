@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77911724"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817720"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box-beveiliging en -gegevensbescherming
 
@@ -45,7 +45,6 @@ Data Box biedt een veilige oplossing voor gegevensbescherming door te garanderen
 Het Data Box-apparaat wordt door de volgende functies beschermd:
 
 - Een robuuste apparaatbehuizing die bestand is tegen schokken, nadelig transport en milieuomstandigheden. 
-- Speciale verzegeling die eventuele onrechtmatig gebruik tijdens transport aangeeft.
 - Detectie van onrechtmatig gebruik van de hard- en software die verder gebruik van het apparaat voorkomt.
 - Kan alleen worden uitgevoerd met Data Box-specifieke software.
 - Wordt in vergrendelde toestand opgestart.
@@ -57,7 +56,7 @@ Het Data Box-apparaat wordt door de volgende functies beschermd:
 De gegevens die in en uit de Data Box stromen, worden door de volgende functies beschermd:
 
 - AES 256-bits versleuteling voor data-at-rest.
-- Versleutelde protocollen kunnen worden gebruikt voor data-in-flight.
+- Versleutelde protocollen kunnen worden gebruikt voor data-in-flight. U wordt aangeraden SMB 3,0 met versleuteling te gebruiken om gegevens te beveiligen wanneer u deze kopieert van uw gegevens servers.
 - Veilige verwijdering van gegevens van apparaat zodra ze naar Azure zijn geüpload. Gegevens verwijdering is conform richt lijnen in [bijlage A voor ATA harde schijven in de 88r1-standaarden van NIST](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). De gebeurtenis voor gegevens verwijdering wordt vastgelegd in de [order geschiedenis](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Data Box-servicebescherming

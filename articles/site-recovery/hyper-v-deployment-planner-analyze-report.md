@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257899"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710266"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Het Azure Site Recovery Deployment Planner rapport analyseren
 In dit artikel worden de werkbladen in het Excel-rapport behandeld dat door de Azure Site Recovery-implementatieplanner voor Hyper-V naar Azure is gegenereerd.
@@ -179,7 +179,7 @@ Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner 
 
 **VM-naam**: de naam van de virtuele machine, die wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VHD's) die aan de virtuele machines zijn gekoppeld. De namen zijn onder andere de namen van de Hyper-V-hosts waar de virtuele machines zijn geplaatst toen ze door het hulpprogramma werden gedetecteerd tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja**\*. **Ja** \* is voor exemplaren waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Hier past het geprofileerde hoge verloop of IOPS bij een grotere Premium-schijfgrootte dan bij de grootte die is toegewezen aan de schijf. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte: 
+**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja**\*. **Ja** \* is voor instanties waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Hier past het geprofileerde hoge verloop of IOPS bij een grotere Premium-schijfgrootte dan bij de grootte die is toegewezen aan de schijf. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte: 
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15.
 * 256 GB tot 512 GB is een P20.
@@ -187,7 +187,7 @@ Het Excel-rapport dat is gegenereerd door de Site Recovery-implementatieplanner 
 * 1025 GB tot 2048 GB is een P40.
 * 2049 GB tot 4095 GB is een P50.
 
-Als bijvoorbeeld de eigenschappen van de werk belasting van een schijf in de categorie P20 of P30 worden geplaatst, maar de grootte ervan wordt toegewezen aan een lager type Premium-opslag schijf, markeert het hulp programma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
+Als bijvoorbeeld de eigenschappen van de werk belasting van een schijf in de categorie P20 of P30 worden geplaatst, maar de grootte ervan wordt toegewezen aan een lager type Premium-opslag schijf, markeert het hulp programma die virtuele machine als **Ja** \* . Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
 **Opslagtype**: Standard of Premium.
 

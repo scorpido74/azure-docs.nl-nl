@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259004"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712459"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodieke back-ups maken en herstellen in een Azure Service Fabric-cluster
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Service Fabric biedt een reeks Api's om de volgende functionaliteit te bieden me
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Zorg ervoor dat het cluster is verbonden met `Connect-SFCluster` behulp van de opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
+* Zorg ervoor dat het cluster is verbonden met behulp van de `Connect-SFCluster` opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
 
 ```powershell
 
@@ -68,7 +68,7 @@ Service Fabric biedt een reeks Api's om de volgende functionaliteit te bieden me
 
 ### <a name="using-azure-portal"></a>Azure Portal gebruiken
 
-Schakel `Include backup restore service` het selectie vakje `+ Show optional settings` in `Cluster Configuration` op het tabblad.
+Schakel `Include backup restore service` het selectie vakje in `+ Show optional settings` op het `Cluster Configuration` tabblad.
 
 ![Service voor het terugzetten van back-ups inschakelen met de portal][1]
 
@@ -88,7 +88,7 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
     }
     ```
 
-2. Schakel nu de _Service back-up en herstel_ in door `addonFeatures` de volgende `properties` sectie toe te voegen onder sectie, zoals wordt weer gegeven in het volgende code fragment: 
+2. Schakel nu de _Service back-up en herstel_ in door de volgende sectie toe te voegen `addonFeatures` onder `properties` sectie, zoals wordt weer gegeven in het volgende code fragment: 
 
     ```json
         "properties": {
@@ -99,7 +99,7 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
         }
 
     ```
-3. Het X. 509-certificaat configureren voor het versleutelen van referenties. Dit is belang rijk om ervoor te zorgen dat de referenties die zijn verschaft om verbinding te maken met de opslag, worden versleuteld voordat ze worden bewaard. Configureer het versleutelings certificaat door `BackupRestoreService` de volgende `fabricSettings` sectie toe te voegen onder sectie, zoals wordt weer gegeven in het volgende code fragment: 
+3. Het X. 509-certificaat configureren voor het versleutelen van referenties. Dit is belang rijk om ervoor te zorgen dat de referenties die zijn verschaft om verbinding te maken met de opslag, worden versleuteld voordat ze worden bewaard. Configureer het versleutelings certificaat door de volgende sectie toe te voegen `BackupRestoreService` onder `fabricSettings` sectie, zoals wordt weer gegeven in het volgende code fragment: 
 
     ```json
     "properties": {
@@ -121,18 +121,18 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Periodieke back-ups inschakelen voor betrouw bare stateful service en Reliable Actors
 We gaan stappen uitvoeren om periodieke back-ups in te scha kelen voor betrouw bare stateful service en Reliable Actors. Bij deze stappen wordt ervan uitgegaan
 - Of het cluster is ingesteld met behulp van X. 509-beveiliging met _Backup-en Restore-service_.
-- Een betrouw bare stateful service wordt op het cluster geïmplementeerd. Voor het doel van deze Snelstartgids is `fabric:/SampleApp` de toepassings-URI en de URI voor een betrouw bare stateful service die deel uitmaakt `fabric:/SampleApp/MyStatefulService`van deze toepassing. Deze service wordt geïmplementeerd met één partitie en de partitie-ID is `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
-- Het client certificaat met de rol beheerder wordt geïnstalleerd in de archief naam _mijn_ (persoonlijk _) van het_ adres archief op de computer waar de onderstaande scripts worden aangeroepen._Personal_ In dit voor `1b7ebe2174649c45474a4819dafae956712c31d3` beeld wordt als vinger afdruk van dit certificaat gebruikt. Zie op [rollen gebaseerd toegangs beheer voor service Fabric-clients](service-fabric-cluster-security-roles.md)voor meer informatie over client certificaten.
+- Een betrouw bare stateful service wordt op het cluster geïmplementeerd. Voor het doel van deze Snelstartgids is de toepassings-URI `fabric:/SampleApp` en de URI voor een betrouw bare stateful service die deel uitmaakt van deze toepassing `fabric:/SampleApp/MyStatefulService` . Deze service wordt geïmplementeerd met één partitie en de partitie-ID is `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
+- Het client certificaat met de rol beheerder wordt geïnstalleerd in de archief naam _mijn_ (persoonlijk _) van het_ adres archief op de computer waar de onderstaande scripts worden aangeroepen._Personal_ In dit voor beeld wordt `1b7ebe2174649c45474a4819dafae956712c31d3` als vinger afdruk van dit certificaat gebruikt. Zie op [rollen gebaseerd toegangs beheer voor service Fabric-clients](service-fabric-cluster-security-roles.md)voor meer informatie over client certificaten.
 
 ### <a name="create-backup-policy"></a>Back-upbeleid maken
 
 De eerste stap is het maken van een back-upbeleid met een beschrijving van back-upschema, doel opslag voor back-upgegevens, beleids naam en maximale incrementele back-ups die moeten worden toegestaan voordat het volledige back-up-en bewaar beleid voor back-upopslag wordt geactiveerd. 
 
-Gebruik voor back-upopslag het Azure Storage account dat hierboven is gemaakt. De `backup-container` container is geconfigureerd voor het opslaan van back-ups. Er wordt een container met deze naam gemaakt, als deze nog niet bestaat, tijdens het uploaden van back-ups. Vul `ConnectionString` een geldig Connection String voor het Azure Storage-account in, `account-name` Vervang door de naam van uw opslag `account-key` account en met de sleutel van uw opslag account.
+Gebruik voor back-upopslag het Azure Storage account dat hierboven is gemaakt. De container `backup-container` is geconfigureerd voor het opslaan van back-ups. Er wordt een container met deze naam gemaakt, als deze nog niet bestaat, tijdens het uploaden van back-ups. Vul `ConnectionString` een geldig Connection String voor het Azure Storage-account in, vervang `account-name` door de naam van uw opslag account en `account-key` met de sleutel van uw opslag account.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Power shell met behulp van de module micro soft. ServiceFabric. Power shell. http
 
-Voer de volgende Power shell-cmdlets uit om een nieuw back-upbeleid te maken. Vervang `account-name` door de naam van uw opslag account `account-key` en met de sleutel van uw opslag account.
+Voer de volgende Power shell-cmdlets uit om een nieuw back-upbeleid te maken. Vervang door `account-name` de naam van uw opslag account en `account-key` met de sleutel van uw opslag account.
 
 ```powershell
 
@@ -142,7 +142,7 @@ New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrem
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen om een nieuw beleid te maken. Vervang `account-name` door de naam van uw opslag account `account-key` en met de sleutel van uw opslag account.
+Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen om een nieuw beleid te maken. Vervang door `account-name` de naam van uw opslag account en `account-key` met de sleutel van uw opslag account.
 
 ```powershell
 $StorageInfo = @{
@@ -198,7 +198,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen `BackupPolicy1` om het back-upbeleid `SampleApp`te koppelen aan de bovenstaande stap met de toepassing.
+Voer het volgende Power shell-script uit om de vereiste REST API aan te roepen om het back-upbeleid te koppelen aan de `BackupPolicy1` bovenstaande stap met de toepassing `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -241,7 +241,7 @@ Get-SFApplicationBackupList -ApplicationId WordCount
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-Voer de volgende Power shell-script uit om de HTTP API aan te roepen om de back-ups te `SampleApp` inventariseren die zijn gemaakt voor alle partities in de toepassing.
+Voer de volgende Power shell-script uit om de HTTP API aan te roepen om de back-ups te inventariseren die zijn gemaakt voor alle partities in de `SampleApp` toepassing.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

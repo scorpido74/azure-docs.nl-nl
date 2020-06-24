@@ -3,8 +3,8 @@ title: Beveiligings overwegingen voor Azure AD-toepassingsproxy | Microsoft Docs
 description: Behandelt beveiligings overwegingen voor het gebruik van Azure AD-toepassingsproxy
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739965"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759883"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Beveiligings overwegingen voor het extern openen van apps met Azure AD-toepassingsproxy
 
@@ -31,7 +31,7 @@ In het volgende diagram ziet u hoe Azure AD veilige externe toegang tot uw on-pr
 
  ![Diagram van beveiligde externe toegang via Azure AD-toepassingsproxy](./media/application-proxy-security/secure-remote-access.png)
 
-## <a name="security-benefits"></a>Beveiligings voordelen
+## <a name="security-benefits"></a>Beveiligingsvoordelen
 
 Azure AD-toepassingsproxy biedt de volgende beveiligings voordelen:
 
@@ -77,9 +77,9 @@ Veel van deze rapporten en gebeurtenissen zijn al beschikbaar via een API voor i
 
 U hoeft zich geen zorgen te maken over het onderhouden en patchen van on-premises servers.
 
-Niet-gepatched software-accounts voor een groot aantal aanvallen. Azure AD-toepassingsproxy is een Internet-Scale-service die micro soft eigenaar is, zodat u altijd de meest recente beveiligings patches en upgrades krijgt.
+Niet-gepatchte software-accounts voor een groot aantal aanvallen. Azure AD-toepassingsproxy is een Internet-Scale-service die micro soft eigenaar is, zodat u altijd de meest recente beveiligings patches en upgrades krijgt.
 
-Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door Azure AD-toepassingsproxy, blok keren we het robots van webcrawlers van het indexeren en archiveren van uw toepassingen. Telkens wanneer een webcrawler robot probeert de robot instellingen voor een gepubliceerde app op te halen, reageert de toepassings proxy met een robots. txt-bestand dat bevat `User-agent: * Disallow: /` .
+Ter verbetering van de beveiliging van toepassingen die zijn gepubliceerd door Azure AD-toepassingsproxy, blok keren we het robots van webcrawlers van het indexeren en archiveren van uw toepassingen. Telkens wanneer een webcrawler robot probeert de robot instellingen voor een gepubliceerde app op te halen, reageert de toepassings proxy met een robots.txt-bestand dat de inhoud bevat `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Service
 

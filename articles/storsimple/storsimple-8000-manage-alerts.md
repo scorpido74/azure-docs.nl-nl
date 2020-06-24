@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267818"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711932"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van StorSimple-waarschuwingen
 
@@ -48,11 +48,11 @@ U kunt kiezen of u per e-mail wilt worden geïnformeerd over waarschuwings voorw
 > [!NOTE]
 > U kunt Maxi maal 20 e-mail adressen per apparaat invoeren.
 
-Nadat u e-mail meldingen voor een apparaat hebt ingeschakeld, ontvangen leden van de lijst met meldingen een e-mail bericht telkens wanneer een kritieke waarschuwing wordt weer gegeven. De berichten worden verzonden via *storsimple-Alerts\@-mail.windowsazure.com* en de waarschuwings voorwaarde wordt beschreven. Ontvangers kunnen klikken op **Afmelden** om zichzelf te verwijderen uit de lijst met e-mail meldingen.
+Nadat u e-mail meldingen voor een apparaat hebt ingeschakeld, ontvangen leden van de lijst met meldingen een e-mail bericht telkens wanneer een kritieke waarschuwing wordt weer gegeven. De berichten worden verzonden via *storsimple-Alerts- \@ mail.windowsazure.com* en de waarschuwings voorwaarde wordt beschreven. Ontvangers kunnen klikken op **Afmelden** om zichzelf te verwijderen uit de lijst met e-mail meldingen.
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>E-mail meldingen van waarschuwingen voor een apparaat inschakelen
 1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer in de lijst met apparaten en klik op het apparaat dat u wilt configureren.
-2. Ga naar **instellingen** > **Algemeen** voor het apparaat.
+2. Ga naar **instellingen**  >  **Algemeen** voor het apparaat.
 
    ![Blade waarschuwingen](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ Nadat u e-mail meldingen voor een apparaat hebt ingeschakeld, ontvangen leden va
    
    1. Selecteer **Ja**in het veld **e-mail melding verzenden** .
    2. Selecteer in het veld **e-mail Service Administrators** de optie **Ja** om de service beheerder en alle mede beheerders de waarschuwings meldingen te laten ontvangen.
-   3. Voer in het veld **andere e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer de namen in de *indeling\@iemand somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per apparaat configureren. 
+   3. Voer in het veld **andere e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer de namen in de indeling *iemand \@ somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per apparaat configureren. 
       
 3. Als u een melding voor een test bericht wilt verzenden, klikt u op **test bericht verzenden**. In de StorSimple-Apparaatbeheer service worden status berichten weer gegeven wanneer de test melding wordt doorgestuurd.
 
@@ -152,13 +152,13 @@ Als de verbinding met de Cloud op uw StorSimple-productie apparaat mislukt, kunn
 | Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |Andere/onbekende oorzaak. |Als er een groot aantal waarschuwingen wordt weer geven, neemt u contact op met Microsoft Ondersteuning. Nadat het probleem is opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
 | Een kritieke status van de service rapporten van apparaten als mislukt. |DataPath-service fout. |Neem contact op met Microsoft Ondersteuning voor hulp. |
 | Het virtuele IP-adres voor de netwerk interface <*gegevens #*> de status van het rapport is mislukt. |Andere/onbekende oorzaak. |Soms kunnen tijdelijke voor waarden deze waarschuwingen veroorzaken. Als dit het geval is, wordt deze waarschuwing na enige tijd automatisch gewist. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
-| Het virtuele IP-adres voor de netwerk interface <*gegevens #*> de status van het rapport is mislukt. |Interface naam: <*gegevens #*> IP- `<IP address>` adres kan niet online worden gebracht omdat er een dubbel IP-adres op het netwerk is gedetecteerd. |Zorg ervoor dat het dubbele IP-adres is verwijderd van het netwerk of configureer de interface opnieuw met een ander IP-adres. |
+| Het virtuele IP-adres voor de netwerk interface <*gegevens #*> de status van het rapport is mislukt. |Interface naam: <*gegevens #*> IP-adres `<IP address>` kan niet online worden gebracht omdat er een dubbel IP-adres op het netwerk is gedetecteerd. |Zorg ervoor dat het dubbele IP-adres is verwijderd van het netwerk of configureer de interface opnieuw met een ander IP-adres. |
 
 ### <a name="disaster-recovery-alerts"></a>Waarschuwingen voor herstel na nood gevallen
 
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| De herstel bewerkingen kunnen niet alle instellingen voor deze service herstellen. De configuratie gegevens van het apparaat hebben een inconsistente status voor sommige apparaten. |Er is een inconsistentie gedetecteerd in de gegevens na een nood herstel. |Versleutelde gegevens op de service zijn niet gesynchroniseerd met die op het apparaat. Autoriseer het apparaat <*apparaatnaam*> van StorSimple Apparaatbeheer om het synchronisatie proces te starten. Gebruik de Windows Power shell-interface voor StorSimple om `Restore-HcsmEncryptedServiceData` de-cmdlet op apparaat <*apparaatnaam*> uit te voeren, waarbij u het oude wacht woord opgeeft als invoer voor deze cmdlet om het beveiligings profiel te herstellen. Voer vervolgens de `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet uit om de versleutelings sleutel voor de service gegevens bij te werken. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
+| De herstel bewerkingen kunnen niet alle instellingen voor deze service herstellen. De configuratie gegevens van het apparaat hebben een inconsistente status voor sommige apparaten. |Er is een inconsistentie gedetecteerd in de gegevens na een nood herstel. |Versleutelde gegevens op de service zijn niet gesynchroniseerd met die op het apparaat. Autoriseer het apparaat <*apparaatnaam*> van StorSimple Apparaatbeheer om het synchronisatie proces te starten. Gebruik de Windows Power shell-interface voor StorSimple om de `Restore-HcsmEncryptedServiceData` -cmdlet op apparaat <*apparaatnaam*> uit te voeren, waarbij u het oude wacht woord opgeeft als invoer voor deze cmdlet om het beveiligings profiel te herstellen. Voer vervolgens de `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet uit om de versleutelings sleutel voor de service gegevens bij te werken. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
 
 ### <a name="hardware-alerts"></a>Waarschuwingen voor hardware
 
@@ -192,9 +192,9 @@ Als de verbinding met de Cloud op uw StorSimple-productie apparaat mislukt, kunn
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
 | Kan de StorSimple-service (s) niet starten. |DataPath-fout |Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
-| Er is een dubbel IP-adres gedetecteerd voor ' Data0 '. | |Het systeem heeft een conflict gevonden voor het IP-adres 10.0.0.1. De netwerk resource ' Data0 ' op het apparaat * \<device1>* is offline. Zorg ervoor dat dit IP-adres niet wordt gebruikt door een andere entiteit in dit netwerk. Als u netwerk problemen wilt oplossen, gaat u naar [problemen oplossen met de cmdlet Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Neem contact op met uw netwerk beheerder om dit probleem op te lossen. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
-| Het IPv4-of IPv6-adres voor Data0 is offline. | |De netwerk resource Data0 met het IP-adres 10.0.0.1. de lengte van het voor voegsel ' 22 ' op het apparaat * \<device1>* offline is. Zorg ervoor dat de switch poorten waarmee deze interface is verbonden, operationeel zijn. Als u netwerk problemen wilt oplossen, gaat u naar [problemen oplossen met de cmdlet Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Kan geen verbinding maken met de verificatie service. |DataPath-fout |De URLthat wordt gebruikt om te verifiëren is niet bereikbaar. Zorg ervoor dat de firewall regels de URL-patronen bevatten die zijn opgegeven voor het StorSimple-apparaat. Ga naar https:\//aka.MS/SS-8000-Network-reqs voor meer informatie over URL-patronen in azure Portal. Als u Azure Government Cloud gebruikt, gaat u naar de URL-patronen\/in https:/aka.MS/ss8000-gov-Network-reqs.|
+| Er is een dubbel IP-adres gedetecteerd voor ' Data0 '. | |Het systeem heeft een conflict gevonden voor het IP-adres 10.0.0.1. De netwerk bron ' Data0 ' op het apparaat *\<device1>* is offline. Zorg ervoor dat dit IP-adres niet wordt gebruikt door een andere entiteit in dit netwerk. Als u netwerk problemen wilt oplossen, gaat u naar [problemen oplossen met de cmdlet Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Neem contact op met uw netwerk beheerder om dit probleem op te lossen. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
+| Het IPv4-of IPv6-adres voor Data0 is offline. | |De netwerk resource Data0 met het IP-adres 10.0.0.1. de lengte van het voor voegsel ' 22 ' op het apparaat *\<device1>* is offline. Zorg ervoor dat de switch poorten waarmee deze interface is verbonden, operationeel zijn. Als u netwerk problemen wilt oplossen, gaat u naar [problemen oplossen met de cmdlet Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Kan geen verbinding maken met de verificatie service. |DataPath-fout |De URLthat wordt gebruikt om te verifiëren is niet bereikbaar. Zorg ervoor dat de firewall regels de URL-patronen bevatten die zijn opgegeven voor het StorSimple-apparaat. Ga naar https:/aka.ms/ss-8000-network-reqs voor meer informatie over URL-patronen in Azure Portal \/ . Als u Azure Government Cloud gebruikt, gaat u naar de URL-patronen in https: \/ /aka.MS/ss8000-gov-Network-reqs.|
 
 ### <a name="performance-alerts"></a>Prestatie waarschuwingen
 
@@ -211,7 +211,7 @@ Als de verbinding met de Cloud op uw StorSimple-productie apparaat mislukt, kunn
 | Het wacht woord voor <*element*> verloopt over <*tijds duur*>. |Het verlopen van het wacht woord is bijna bereikt. |Wijzig uw wacht woord voordat dit verloopt. |
 | Er ontbreken gegevens over de beveiligings configuratie voor de <*element-ID*>. | |De volumes die aan deze volume container zijn gekoppeld, kunnen niet worden gebruikt om uw StorSimple-configuratie te repliceren. Om ervoor te zorgen dat uw gegevens veilig worden opgeslagen, raden we u aan om de volume container en de volumes die aan de volume container zijn gekoppeld, te verwijderen. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
 | <*aantal*> aanmeldings pogingen mislukt voor <*element-id*>. |Meerdere mislukte aanmeldings pogingen. |Uw apparaat wordt mogelijk aangevallen of een gemachtigde gebruiker probeert verbinding te maken met een onjuist wacht woord.<ul><li>Neem contact op met uw gemachtigde gebruikers en controleer of deze pogingen van een legitieme bron zijn. Als u een groot aantal mislukte aanmeldings pogingen blijft zien, kunt u overwegen om extern beheer uit te scha kelen en contact op te nemen met de netwerk beheerder. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen.</li><li>Controleer of uw Snapshot Manager exemplaren zijn geconfigureerd met het juiste wacht woord. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen.</li></ul>Ga voor meer informatie naar [een verlopen apparaatwachtwoord wijzigen](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password). |
-| Er zijn een of meer fouten opgetreden tijdens het wijzigen van de versleutelings sleutel voor de service gegevens. | |Er zijn fouten opgetreden tijdens het wijzigen van de versleutelings sleutel voor de service gegevens. Nadat u de fout voorwaarden hebt opgelost, voert u `Invoke-HcsmServiceDataEncryptionKeyChange` de cmdlet uit vanuit de Windows Power shell-interface voor StorSimple op uw apparaat om de service bij te werken. Neem contact op met micro soft ondersteuning als dit probleem zich blijft voordoen. Nadat u het probleem hebt opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
+| Er zijn een of meer fouten opgetreden tijdens het wijzigen van de versleutelings sleutel voor de service gegevens. | |Er zijn fouten opgetreden tijdens het wijzigen van de versleutelings sleutel voor de service gegevens. Nadat u de fout voorwaarden hebt opgelost, voert u de `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet uit vanuit de Windows Power shell-interface voor StorSimple op uw apparaat om de service bij te werken. Neem contact op met micro soft ondersteuning als dit probleem zich blijft voordoen. Nadat u het probleem hebt opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
 
 ### <a name="support-package-alerts"></a>Ondersteunings pakket waarschuwingen
 

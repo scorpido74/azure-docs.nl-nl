@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233530"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886108"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management implementeren (PIM)
 
@@ -52,7 +52,8 @@ Als u Privileged Identity Management wilt gebruiken, moet uw directory over een 
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+- Microsoft 365 Education A5
+- Microsoft 365 Enterprise E5
 
 Zie [licentie vereisten voor het gebruik van privileged Identity Management](subscription-requirements.md)voor meer informatie.
 
@@ -99,7 +100,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure AD-rollen
 
-| Naam | Rol | Bewerking |
+| Name | Rol | Bewerking |
 | --- | --- | --- |
 | Naam en e-mail adres | **Identiteits architect of Azure Global-beheerder**<br/>Een vertegenwoordiger van het team voor identiteits beheer dat verantwoordelijk is voor het bepalen van de manier waarop deze wijziging wordt afgestemd op de infra structuur voor identiteits beheer in uw organisatie. | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van service/regel beheer**<br/>Een vertegenwoordiger van de IT-eigen aars van een service of een groep services. Ze zijn belang rijk voor het nemen van beslissingen en het helpen bij het inrollen van Privileged Identity Management voor hun team. | SO/R/I |
@@ -109,7 +110,7 @@ De volgende sectie helpt u bij het identificeren van alle belanghebbenden die be
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Belanghebbenden: Privileged Identity Management voor Azure-resource rollen
 
-| Naam | Rol | Bewerking |
+| Name | Rol | Bewerking |
 | --- | --- | --- |
 | Naam en e-mail adres | **Eigenaar van abonnement/resource**<br/>Een vertegenwoordiger van de IT-eigen aars van elk abonnement of resource dat u wilt implementeren Privileged Identity Management voor | SO/R/I |
 | Naam en e-mail adres | **Eigenaar van beveiliging**<br/>Een vertegenwoordiger van het beveiligings team dat zich kan afmelden dat het plan voldoet aan de beveiligings vereisten van uw organisatie. | SO/R |
@@ -179,7 +180,7 @@ Het is belang rijk om de beveiliging van Azure AD-rollen met het grootste aantal
 
 1. Globale beheerder
 1. Beveiligingsbeheerder
-1. Gebruikers beheerder
+1. Gebruikersbeheerder
 1. Exchange-beheerder
 1. SharePoint-beheerder
 1. Intune-beheerder
