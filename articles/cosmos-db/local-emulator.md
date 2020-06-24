@@ -2,16 +2,16 @@
 title: Lokaal ontwikkelen met Azure Cosmos Emulator
 description: Met behulp van Azure Cosmos Emulator kunt u uw toepassing lokaal ontwikkelen en testen, kosteloos en zonder dat u een Azure-abonnement hoeft te nemen.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849005"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262426"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Azure Cosmos Emulator gebruiken voor lokaal ontwikkelen en testen
 
@@ -76,7 +76,7 @@ Azure Cosmos Emulator wordt standaard geïnstalleerd in `C:\Program Files\Azure 
 
 Als Azure Cosmos Emulator wordt gestart, wordt automatisch Azure Cosmos Data Explorer geopend in uw browser. Het adres wordt weergegeven als `https://localhost:8081/_explorer/index.html`. Als u de explorer sluit en later opnieuw wilt openen, kunt u de URL in uw browser openen of deze starten vanuit Azure Cosmos Emulator in het Windows-systeemvak, zoals hieronder wordt weergegeven.
 
-![Startprogramma voor Data Explorer van lokale Azure Cosmos Emulator](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Startprogramma voor Data Explorer van lokale Azure Cosmos Emulator":::
 
 ## <a name="checking-for-updates"></a>Controleren op updates
 
@@ -243,38 +243,38 @@ Typ `Microsoft.Azure.Cosmos.Emulator.exe /?` bij de opdrachtprompt om een lijst 
 |[Help] |Toont de lijst met ondersteunde opdrachtregelargumenten.|Microsoft.Azure.Cosmos.Emulator.exe /? | |
 | GetStatus |Vraagt de status op van Azure Cosmos Emulator. De status wordt aangegeven door de afsluitcode: 1 = starten, 2 = wordt uitgevoerd, 3 = gestopt. Een negatieve afsluitcode geeft aan dat er een fout is opgetreden. Er wordt geen andere uitvoer geproduceerd. | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
 | Afsluiten| Sluit Azure Cosmos Emulator af.| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
-|DataPath | Specificeert het pad waarin de gegevensbestanden worden opgeslagen. De standaardwaarde is %LocalAppdata%\CosmosDBEmulator. | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<gegevenspad\> | \<gegevenspad\>: Een toegankelijk pad |
-|Poort | Specificeert het poortnummer dat moet worden gebruikt voor de emulator. De standaardwaarde is 8081. |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<poort\> | \<poort\>: Enkel poortnummer |
-| ComputePort | Specificeert het poortnummer dat moet worden gebruikt voor de Compute Interop Gateway-service. De testpoort voor het HTTP-eindpunt de gateway wordt berekend als ComputePort + 79. Daarom moeten ComputePort en ComputePort + 79 open en beschikbaar zijn. De standaardwaarde is 8900. | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>: Enkel poortnummer |
+|DataPath | Specificeert het pad waarin de gegevensbestanden worden opgeslagen. De standaardwaarde is %LocalAppdata%\CosmosDBEmulator. | Microsoft.Azure.Cosmos.Emulator.exe/DataPath =\<datapath\> | \<datapath\>: Een toegankelijk pad |
+|Poort | Specificeert het poortnummer dat moet worden gebruikt voor de emulator. De standaardwaarde is 8081. |Microsoft.Azure.Cosmos.Emulator.exe/Port =\<port\> | \<port\>: Enkel poort nummer |
+| ComputePort | Specificeert het poortnummer dat moet worden gebruikt voor de Compute Interop Gateway-service. De testpoort voor het HTTP-eindpunt de gateway wordt berekend als ComputePort + 79. Daarom moeten ComputePort en ComputePort + 79 open en beschikbaar zijn. De standaardwaarde is 8900. | Microsoft.Azure.Cosmos.Emulator.exe/ComputePort =\<computeport\> | \<computeport\>: Enkel poort nummer |
 | EnableMongoDbEndpoint=3.2 | Schakelt MongoDB API 3.2 in | Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint=3.2 | |
 | EnableMongoDbEndpoint=3.6 | Schakelt MongoDB API 3.6 in | Microsoft.Azure.Cosmos.Emulator.exe /EnableMongoDbEndpoint=3.6 | |
-| MongoPort | Specificeert het poortnummer dat moet worden gebruikt MongoDB compatibiliteit-API. De standaardwaarde is 10255. |Microsoft.Azure.Cosmos.Emulator.exe /MongoPort=\<mongopoort\>|\<mongopoort\>: Enkel poortnummer|
+| MongoPort | Specificeert het poortnummer dat moet worden gebruikt MongoDB compatibiliteit-API. De standaardwaarde is 10255. |Microsoft.Azure.Cosmos.Emulator.exe/MongoPort =\<mongoport\>|\<mongoport\>: Enkel poort nummer|
 | EnableCassandraEndpoint | Schakelt Cassandra-API in | Microsoft.Azure.Cosmos.Emulator.exe /EnableCassandraEndpoint | |
-| CassandraPort | Specificeert het poortnummer dat moet worden gebruikt voor het Cassandra-eindpunt. De standaardwaarde is 10350. | Microsoft.Azure.Cosmos.Emulator.exe /CassandraPort=\<cassandrapoort\> | \<cassandrapoort\>: Enkel poortnummer |
+| CassandraPort | Specificeert het poortnummer dat moet worden gebruikt voor het Cassandra-eindpunt. De standaardwaarde is 10350. | Microsoft.Azure.Cosmos.Emulator.exe/CassandraPort =\<cassandraport\> | \<cassandraport\>: Enkel poort nummer |
 | EnableGremlinEndpoint | Schakelt Gremlin-API in | Microsoft.Azure.Cosmos.Emulator.exe /EnableGremlinEndpoint | |
-| GremlinPort | Het poortnummer dat moet worden gebruikt voor het Gremlin-eindpunt. De standaardwaarde is 8901. | Microsoft.Azure.Cosmos.Emulator.exe /GremlinPort=\<poort\> | \<poort\>: Enkel poortnummer |
+| GremlinPort | Het poortnummer dat moet worden gebruikt voor het Gremlin-eindpunt. De standaardwaarde is 8901. | Microsoft.Azure.Cosmos.Emulator.exe/GremlinPort =\<port\> | \<port\>: Enkel poort nummer |
 |EnableTableEndpoint | Schakelt Azure Table-API in | Microsoft.Azure.Cosmos.Emulator.exe /EnableTableEndpoint | |
-|TablePort | Het poortnummer dat moet worden gebruikt voor het Azure Table-eindpunt. De standaardwaarde is 8902. | Microsoft.Azure.Cosmos.Emulator.exe /TablePort=\<poort\> | \<poort\>: Enkel poortnummer|
-| KeyFile | Leest de autorisatiesleutel uit het opgegeven bestand. Gebruik de optie /GenKeyFile om een keyfile te genereren | Microsoft.Azure.Cosmos.Emulator.exe /KeyFile=\<bestandsnaam\> | \<bestandsnaam\>: Pad naar het bestand |
-| ResetDataPath | Verwijdert recursief alle bestanden in het opgegeven pad. Als u geen pad opgeeft, wordt standaard %LOCALAPPDATA%\CosmosDbEmulator gebruikt. | Microsoft.Azure.Cosmos.Emulator.exe /ResetDataPath=\<pad> | \<pad\>: Bestandspad  |
+|TablePort | Het poortnummer dat moet worden gebruikt voor het Azure Table-eindpunt. De standaardwaarde is 8902. | Microsoft.Azure.Cosmos.Emulator.exe/TablePort =\<port\> | \<port\>: Enkel poort nummer|
+| KeyFile | Leest de autorisatiesleutel uit het opgegeven bestand. Gebruik de optie /GenKeyFile om een keyfile te genereren | Microsoft.Azure.Cosmos.Emulator.exe/KeyFile =\<file_name\> | \<file_name\>: Pad naar het bestand |
+| ResetDataPath | Verwijdert recursief alle bestanden in het opgegeven pad. Als u geen pad opgeeft, wordt standaard %LOCALAPPDATA%\CosmosDbEmulator gebruikt. | Microsoft.Azure.Cosmos.Emulator.exe/ResetDataPath =\<path> | \<path\>: Bestandspad  |
 | StartTraces  |  Start het verzamelen van logboeken voor foutopsporing met behulp van LOGMAN. | Microsoft.Azure.Cosmos.Emulator.exe /StartTraces | |
 | StopTraces     | Stopt het verzamelen van logboeken voor foutopsporing met behulp van LOGMAN. | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  Start het verzamelen van logboeken voor foutopsporing met behulp van het hulpprogramma Windows Performance Recorder. | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | Stopt het verzamelen van logboeken voor foutopsporing met behulp van het hulpprogramma Windows Performance Recorder. | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
 |FailOnSslCertificateNameMismatch | De emulator genereert het zelfondertekende TLS/SSL-certificaat standaard opnieuw als het SAN van het certificaat de domeinnaam van de emulator-host, het lokale IPv4-adres, 'localhost' en '127.0.0.1' niet bevat. Met deze optie kan de emulator dan niet worden gestart. Vervolgens moet u de optie /GenCert gebruiken om een nieuw zelfondertekend TLS/SSL-certificaat te maken en te installeren. | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Genereert en installeert een nieuw zelfondertekend TLS/SSL-certificaat. Voeg eventueel een door komma's gescheiden lijst met extra DNS-namen toe om toegang tot de emulator te krijgen via het netwerk. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-namen\> |\<dns-namen\>: Optionele, door komma's gescheiden lijst met extra DNS-namen  |
-| DirectPorts |Specificeert de poorten die worden gebruikt voor rechtstreekse connectiviteit. Standaardwaarden zijn 10251,10252,10253,10254. | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>: Door komma's gescheiden lijst met 4 poorten |
-| Sleutel |De autorisatiesleutel voor de emulator. De sleutel moet de base 64-codering zijn van een 64-byte-vector. | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<sleutel\> | \<sleutel\>: De sleutel moet de base 64-codering zijn van een 64-byte-vector|
+| GenCert | Genereert en installeert een nieuw zelfondertekend TLS/SSL-certificaat. Voeg eventueel een door komma's gescheiden lijst met extra DNS-namen toe om toegang tot de emulator te krijgen via het netwerk. | Microsoft.Azure.Cosmos.Emulator.exe/GenCert =\<dns-names\> |\<dns-names\>: Optionele, door komma's gescheiden lijst met extra DNS-namen  |
+| DirectPorts |Specificeert de poorten die worden gebruikt voor rechtstreekse connectiviteit. Standaardwaarden zijn 10251,10252,10253,10254. | Microsoft.Azure.Cosmos.Emulator.exe/DirectPorts:\<directports\> | \<directports\>: Door komma's gescheiden lijst met 4 poorten |
+| Sleutel |De autorisatiesleutel voor de emulator. De sleutel moet de base 64-codering zijn van een 64-byte-vector. | Microsoft.Azure.Cosmos.Emulator.exe/Key:\<key\> | \<key\>: Sleutel moet de base-64-code ring van een 64-byte-vector zijn|
 | EnableRateLimiting | Geeft aan dat het beperkingsgedrag van de aanvraagsnelheid is ingeschakeld. |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |Geeft aan dat het beperkingsgedrag van de aanvraagsnelheid is uitgeschakeld. |Microsoft.Azure.Cosmos.Emulator.exe /DisableRateLimiting | |
 | NoUI | De gebruikersinterface van de emulator niet weergeven. | Microsoft.Azure.Cosmos.Emulator.exe /NoUI | |
 | NoExplorer | Geen Data Explorer weergeven bij het opstarten. |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
-| PartitionCount | Specificeert het maximum aantal gepartitioneerde containers. Zie [Het aantal containers wijzigen](#set-partitioncount) voor meer informatie. | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<aantal partities\> | \<aantal partities\>: Het maximum aantal toegestane containers met één partitie. De standaardwaarde is 25. Maximaal toegestaan is 250.|
-| DefaultPartitionCount| Specificeert het standaardaantal partities voor een gepartitioneerde container. | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<standaardaantalpartities\> | \<standaardaantal partities\> De standaardwaarde is 25.|
-| AllowNetworkAccess | Geeft toegang tot de emulator via een netwerk. U moet ook /Key=\<sleutelreeks\> of /KeyFile=\<bestandsnaam\> doorgeven om netwerktoegang in te schakelen. | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<sleutelreeks\> of Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<bestandsnaam\>| |
+| PartitionCount | Specificeert het maximum aantal gepartitioneerde containers. Zie [Het aantal containers wijzigen](#set-partitioncount) voor meer informatie. | Microsoft.Azure.Cosmos.Emulator.exe/PartitionCount =\<partitioncount\> | \<partitioncount\>: Maximum aantal toegestane containers met één partitie. De standaardwaarde is 25. Maximaal toegestaan is 250.|
+| DefaultPartitionCount| Specificeert het standaardaantal partities voor een gepartitioneerde container. | Microsoft.Azure.Cosmos.Emulator.exe/DefaultPartitionCount =\<defaultpartitioncount\> | \<defaultpartitioncount\>De standaard waarde is 25.|
+| AllowNetworkAccess | Geeft toegang tot de emulator via een netwerk. U moet ook/Key = \<key_string\> of/keyfile = door geven \<file_name\> om netwerk toegang in te scha kelen. | Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/Key = \<key_string\> of Microsoft.Azure.Cosmos.Emulator.exe/AllowNetworkAccess/keyfile =\<file_name\>| |
 | NoFirewall | Firewallregels niet aanpassen wanneer de optie /AllowNetworkAccess wordt gebruikt. |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
-| GenKeyFile | Een nieuwe autorisatiesleutel genereren en opslaan in het opgegeven bestand. De gegenereerde sleutel kan worden gebruikt met de opties/Key of/KeyFile. | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<pad naar sleutelbestand\> | |
-| Consistentie | Het standaard consistentieniveau voor het account instellen. | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistentie\> | \<consistentie\>: De waarde moet een van de volgende [consistentieniveaus](consistency-levels.md) zijn: Sessie, Sterk, Mogelijk of Gebonden veroudering. De standaardwaarde is Sessie. |
+| GenKeyFile | Een nieuwe autorisatiesleutel genereren en opslaan in het opgegeven bestand. De gegenereerde sleutel kan worden gebruikt met de opties/Key of/KeyFile. | Microsoft.Azure.Cosmos.Emulator.exe/GenKeyFile =\<path to key file\> | |
+| Consistentie | Het standaard consistentieniveau voor het account instellen. | Microsoft.Azure.Cosmos.Emulator.exe/Consistency =\<consistency\> | \<consistency\>: De waarde moet een van de volgende [consistentie niveaus](consistency-levels.md)zijn: sessie, sterk, uiteindelijk of BoundedStaleness. De standaardwaarde is Sessie. |
 | ? | Het helpbericht weergeven.| | |
 
 ## <a name="change-the-number-of-containers"></a><a id="set-partitioncount"></a>Het aantal containers wijzigen
@@ -482,7 +482,7 @@ Voer de volgende stappen uit als u werkt met een Mac:
 
 1. Open het contextmenu voor dat specifieke item, selecteer *Toon info* en selecteer bij *Vertrouw* > *Gebruik bij dit certificaat* de optie *Vertrouw altijd*. 
 
-   ![Open het contextmenu voor dat specifieke item, selecteer Toon info en selecteer bij Vertrouw > Gebruik bij dit certificaat de optie Vertrouw altijd](./media/local-emulator/mac-trust-certificate.png)
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Open het contextmenu voor dat specifieke item, selecteer Toon info en selecteer bij Vertrouw &gt; Gebruik bij dit certificaat de optie Vertrouw altijd":::
 
 Als u deze stappen hebt uitgevoerd, wordt het certificaat dat door de emulator wordt gebruikt, vertrouwd in uw omgeving bij het verbinden met het IP-adres dat wordt weergegeven door `/AllowNetworkAccess`.
 

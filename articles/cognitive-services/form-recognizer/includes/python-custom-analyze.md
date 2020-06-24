@@ -5,21 +5,21 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 426158945e609b2bb46dd9fbbbbe378f25cd93f1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446416"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206225"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Formulieren analyseren voor sleutel-waardeparen en tabellen
 
-Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een document en het extra heren van sleutel-waardeparen en tabellen. Roep de **[analyse formulier](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** -API aan door de volgende code uit te voeren in een nieuw python-script. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
+Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een document en het extra heren van sleutel-waardeparen en tabellen. Roep de **[analyse formulier](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)** -API aan door de volgende code uit te voeren in een nieuw python-script. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang `<file path>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.PDF). Dit kan ook de URL zijn van een extern bestand. Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
-1. Vervang `<model_id>` door de model-id die u in de vorige sectie hebt ontvangen.
-1. Vervang `<endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang `<file type>` door het bestands type. Ondersteunde typen: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. Vervang door `<file path>` het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.pdf). Dit kan ook de URL zijn van een extern bestand. Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
+1. Vervang door `<model_id>` de model-id die u in de vorige sectie hebt ontvangen.
+1. Vervang door `<endpoint>` het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
+1. Vervang door `<file type>` het bestands type. Ondersteunde typen: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
     ```python
@@ -32,7 +32,7 @@ Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een documen
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.0/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True
@@ -62,7 +62,7 @@ Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een documen
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-analyze.py`.
 
-Wanneer u de **analyse formulier** -API aanroept, ontvangt u `201 (Success)` een antwoord met een **bewerkings locatie-** header. De waarde van deze header is een ID die u gebruikt om de resultaten van de analyse bewerking bij te houden. Het bovenstaande script drukt de waarde van deze header af naar de-console.
+Wanneer u de **analyse formulier** -API aanroept, ontvangt u een `201 (Success)` antwoord met een **bewerkings locatie-** header. De waarde van deze header is een ID die u gebruikt om de resultaten van de analyse bewerking bij te houden. Het bovenstaande script drukt de waarde van deze header af naar de-console.
 
 ## <a name="get-the-analyze-results"></a>De resultaten analyseren
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529889"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206407"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
@@ -47,7 +47,7 @@ De [indelings-API](#layout-api) wordt gebruikt voor de lay-out van het formulier
 
 ## <a name="prebuilt-receipt-model"></a>Gebaseerd ontvangst model
 
-Formulier herkenning bevat ook een model voor het lezen van Engelse verkoop bewijzen vanuit het Verenigde Staten&mdash;het type dat wordt gebruikt door restaurants, stations, detail handel, enzovoort (voor beeld van een[kwitantie](./media/contoso-receipt-small.png)). Dit model extraheert belang rijke informatie zoals de tijd en datum van de trans actie, zakelijke informatie, bedragen van belastingen en totalen en meer. Daarnaast wordt het vooraf gedefinieerde ontvangstbewijs model getraind om alle tekst op een kwitantie te herkennen en te retour neren.
+Formulier herkenning bevat ook een model voor het lezen van Engelse verkoop bewijzen vanuit het Verenigde Staten &mdash; het type dat wordt gebruikt door restaurants, stations, detail handel, enzovoort (voor beeld van een[kwitantie](./media/contoso-receipt-small.png)). Dit model extraheert belang rijke informatie zoals de tijd en datum van de trans actie, zakelijke informatie, bedragen van belastingen en totalen en meer. Daarnaast wordt het vooraf gedefinieerde ontvangstbewijs model getraind om alle tekst op een kwitantie te herkennen en te retour neren.
 
 ## <a name="layout-api"></a>Indelings-API
 
@@ -76,12 +76,12 @@ U gebruikt de volgende Api's om modellen te trainen en gestructureerde gegevens 
 
 |Naam |Beschrijving |
 |---|---|
-| **Aangepast model trainen**| Train een nieuw model om uw formulieren te analyseren met behulp van vijf soorten formulieren van hetzelfde type. Stel de _useLabelFile_ para meter useLabelFile `true` in op om met hand matig gelabelde gegevens te trainen. |
+| **Aangepast model trainen**| Train een nieuw model om uw formulieren te analyseren met behulp van vijf soorten formulieren van hetzelfde type. Stel de para meter _useLabelFile_ in op `true` om met hand matig gelabelde gegevens te trainen. |
 | **Formulier analyseren** |Analyseer één document dat is door gegeven als een stroom voor het extra heren van tekst, sleutel-waardeparen en tabellen uit het formulier met uw aangepaste model.  |
 | **Toename analyseren** |Analyseer één ontvangst document voor het extra heren van belang rijke informatie en andere ontvangst tekst.|
 | **Indeling analyseren** |Analyseer de indeling van een formulier om tekst-en tabel structuur op te halen.|
 
-Bekijk de [rest API referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) voor meer informatie. Als u bekend bent met een eerdere versie van de API, raadpleegt u het artikel [Wat is er nieuw](./whats-new.md) ? voor meer informatie over recente wijzigingen.
+Bekijk de [rest API referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm) voor meer informatie. Als u bekend bent met een eerdere versie van de API, raadpleegt u het artikel [Wat is er nieuw](./whats-new.md) ? voor meer informatie over recente wijzigingen.
 
 ## <a name="input-requirements"></a>Invoer vereisten
 ### <a name="custom-model"></a>Aangepast model
@@ -100,8 +100,8 @@ De invoer vereisten voor het ontvangstbewijs model zijn iets anders.
 
 ## <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging
 
-Deze service wordt aangeboden als een [Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) van een Azure-service onder de [voor waarden van de online service](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Net als bij alle cognitieve services moeten ontwikkel aars die gebruikmaken van de Form Recognizer-service op de hoogte zijn van het micro soft-beleid voor klant gegevens. Zie de [pagina Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) (Engelstalig) in het Microsoft Trust Center voor meer informatie.
+Net als bij alle cognitieve services moeten ontwikkel aars die gebruikmaken van de Form Recognizer-service op de hoogte zijn van het micro soft-beleid voor klant gegevens. Zie de [pagina Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) (Engelstalig) in het Microsoft Trust Center voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).
+Voer een [Snelstartgids](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [API voor formulier herkenning](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm).

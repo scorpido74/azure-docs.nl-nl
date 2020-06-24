@@ -54,8 +54,12 @@
       href: expressroute-global-reach.md
     - name: Over ExpressRoute-versleuteling
       href: expressroute-about-encryption.md
-    - name: Beveiligingsmaatregelen
-      href: expressroute-security-controls.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
+        - name: Beveiligingskenmerken
+          href: expressroute-security-controls.md
     - name: Over virtuele netwerkgateways
       href: expressroute-about-virtual-network-gateways.md
     - name: Azure verbinden met openbare cloud
@@ -210,7 +214,7 @@
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

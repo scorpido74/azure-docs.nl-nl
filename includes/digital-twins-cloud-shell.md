@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 76480959d94b9e2a2e04857c85b7359105e73e4f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611471"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296964"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>Cloud Shell sessie instellen
 
-Nadat u een Cloud Shell venster hebt geopend, moet u zich aanmelden en de shell context voor deze sessie instellen op uw abonnement. 
+Nadat u een Cloud Shell venster hebt geopend, moet u zich aanmelden en de shell context voor deze sessie instellen op uw abonnement. Voer deze opdrachten uit in uw Cloud Shell:
 
 ```azurecli
 az login
@@ -29,16 +29,18 @@ Als dit de eerste keer is dat u dit abonnement met Azure Digital Apparaatdubbels
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-Voer vervolgens de volgende opdracht in uw Cloud Shell-exemplaar uit om de Microsoft Azure IoT-extensie voor Azure CLI toe te voegen.
+Vervolgens voegt u de [**Microsoft Azure IOT-extensie voor Azure cli**](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) toe aan uw Cloud shell om opdrachten in te scha kelen voor interactie met Azure Digital apparaatdubbels en andere IOT-Services. Gebruik deze opdracht om de extensie toe te voegen:
 
    ```azurecli-interactive
    az extension add --name azure-iot
    ```
 
-> [!NOTE]
-> In dit artikel wordt gebruikgemaakt van de nieuwste versie van de Azure IoT-extensie, die wordt genoemd `azure-iot` . De verouderde versie wordt aangeroepen `azure-iot-cli-ext` . Er mag slechts één versie tegelijk zijn geïnstalleerd. U kunt de opdracht gebruiken `az extension list` om de geïnstalleerde uitbrei dingen te valideren.
-> Gebruik `az extension remove --name azure-cli-iot-ext` om de verouderde versie van de uitbrei ding te verwijderen.
-> Gebruiken `az extension add --name azure-iot` om de nieuwe versie van de uitbrei ding toe te voegen. Gebruik voor meer informatie over de uitbrei dingen die u hebt geïnstalleerd `az extension list` .
+Als u de uitbrei ding in het verleden hebt geïnstalleerd, kan de uitvoer zeggen dat "extensie" Azure-IOT "al is geïnstalleerd." Als dit het geval is, voert u de volgende handelingen uit om ervoor te zorgen dat u over de meest recente update beschikt: 
 
-> [!TIP]
-> U kunt uitvoeren `az dt -h` om de Azure Digital apparaatdubbels-opdrachten op het hoogste niveau weer te geven.
+   ```azurecli-interactive
+   az extension update --name azure-iot
+   ```
+
+U bent nu klaar om te gaan werken met Azure Digital Apparaatdubbels in de Cloud Shell.
+
+U kunt dit controleren door uit `az dt -h` te voeren op elk gewenst moment om een lijst weer te geven van de Azure Digital apparaatdubbels-opdrachten op het hoogste niveau die beschikbaar zijn.
