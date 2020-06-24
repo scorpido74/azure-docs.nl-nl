@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186383"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203092"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -23,7 +23,7 @@ ms.locfileid: "78186383"
 
 Een aangepast beleid wordt weer gegeven als een of meer XML-indelings bestanden die naar elkaar in een hiërarchische keten verwijzen. Met de XML-elementen worden elementen van het beleid gedefinieerd, zoals het claim schema, claim transformaties, inhouds definities, claim providers, technische profielen, gebruikers traject en indelings stappen. Elk beleids bestand wordt gedefinieerd in het **TrustFrameworkPolicy** -element van het hoogste niveau van een beleids bestand.
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -40,13 +40,13 @@ Het **TrustFrameworkPolicy** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Ja | De schema versie die moet worden gebruikt om het beleid uit te voeren. De waarde moet`0.3.0.0` |
-| TenantObjectId | Nee | De unieke object-id van de Azure Active Directory B2C (Azure AD B2C)-Tenant. |
-| TenantId | Ja | De unieke id van de Tenant waartoe dit beleid behoort. |
-| PolicyId | Ja | De unieke id voor het beleid. Deze id moet worden voorafgegaan door *B2C_1A_* |
-| PublicPolicyUri | Ja | De URI voor het beleid, dat een combi natie is van de Tenant-ID en de beleids-ID. |
-| Als Deployment mode | Nee | Mogelijke waarden: `Production`, of `Development`. `Production` is de standaardwaarde. Gebruik deze eigenschap om fouten in uw beleid op te sporen. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
-| UserJourneyRecorderEndpoint | Nee | Het eind punt dat wordt gebruikt wanneer **als Deployment mode** is ingesteld `Development`op. De waarde moet zijn `urn:journeyrecorder:applicationinsights`. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
+| PolicySchemaVersion | Yes | De schema versie die moet worden gebruikt om het beleid uit te voeren. De waarde moet`0.3.0.0` |
+| TenantObjectId | No | De unieke object-id van de Azure Active Directory B2C (Azure AD B2C)-Tenant. |
+| TenantId | Yes | De unieke id van de Tenant waartoe dit beleid behoort. |
+| PolicyId | Yes | De unieke id voor het beleid. Deze id moet worden voorafgegaan door *B2C_1A_* |
+| PublicPolicyUri | Yes | De URI voor het beleid, dat een combi natie is van de Tenant-ID en de beleids-ID. |
+| Als Deployment mode | No | Mogelijke waarden: `Production` , of `Development` . `Production` is de standaardwaarde. Gebruik deze eigenschap om fouten in uw beleid op te sporen. Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
+| UserJourneyRecorderEndpoint | No | Het eind punt dat wordt gebruikt wanneer **als Deployment mode** is ingesteld op `Development` . De waarde moet zijn `urn:journeyrecorder:applicationinsights` . Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md)voor meer informatie. |
 
 
 In het volgende voor beeld ziet u hoe u het **TrustFrameworkPolicy** -element opgeeft:
@@ -122,7 +122,7 @@ In het RP-beleids bestand geeft u het element **DefaultUserJourney** op dat verw
 
 B2C_1A_signup_signin beleid:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -130,7 +130,7 @@ B2C_1A_signup_signin beleid:
 
 B2C_1A_TrustFrameWorkBase of B2C_1A_TrustFrameworkExtensionPolicy:
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...

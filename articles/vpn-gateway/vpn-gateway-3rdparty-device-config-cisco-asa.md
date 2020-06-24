@@ -4,15 +4,15 @@ description: Dit artikel bevat een voorbeeld configuratie voor het verbinden van
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75778079"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986101"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Voorbeeld configuratie: Cisco ASA-apparaat (IKEv2/geen BGP)
 In dit artikel vindt u voor beelden van configuraties voor het koppelen van Cisco Adaptive Security Appliance-apparaten (ASA) aan Azure VPN-gateways. Het voor beeld is van toepassing op Cisco ASA-apparaten met IKEv2 zonder de Border Gateway Protocol (BGP). 
@@ -27,7 +27,7 @@ In dit artikel vindt u voor beelden van configuraties voor het koppelen van Cisc
 | Getest model           | ASA 5505                          |
 | Geteste versie         | 9,2                               |
 | IKE-versie            | IKEv2                             |
-| BGP                    | Nee                                |
+| BGP                    | No                                |
 | Azure VPN-gateway type | Op route gebaseerde VPN-gateway           |
 |                        |                                   |
 
@@ -53,7 +53,7 @@ Zie [Single VPN tunnel Setup](vpn-gateway-3rdparty-device-config-overview.md#sin
 ### <a name="virtual-network-and-vpn-gateway-information"></a>Informatie over virtuele netwerk-en VPN-gateway
 In deze sectie vindt u de para meters voor het voor beeld.
 
-| **Bepaalde**                | **Waarde**                    |
+| **Parameter**                | **Waarde**                    |
 | ---                          | ---                          |
 | Adres voorvoegsels van virtuele netwerken        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN-gateway-IP         | Azure_Gateway_Public_IP      |
@@ -287,7 +287,7 @@ Gebruik de volgende ASA-opdrachten voor fout opsporing:
     debug crypto ikev2 platform <level>
     debug crypto ikev2 protocol <level>
     ```
-    Met `debug` de opdrachten kan aanzienlijke uitvoer op de console worden gegenereerd.
+    `debug`Met de opdrachten kan aanzienlijke uitvoer op de console worden gegenereerd.
 
 * De huidige configuraties op het apparaat weer geven:
     ```

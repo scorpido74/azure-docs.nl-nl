@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261331"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692089"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect synchronisatie: een tweede keer uitvoeren van de installatie wizard
 De eerste keer dat u de Azure AD Connect-installatie wizard uitvoert, wordt u begeleid bij het configureren van de installatie. Als u de installatie wizard opnieuw uitvoert, biedt het opties voor onderhoud.

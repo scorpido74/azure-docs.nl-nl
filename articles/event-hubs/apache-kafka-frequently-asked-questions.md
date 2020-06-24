@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 0186b90e1d75c5dba6e1ca26e4ba079a3456cea4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd4306fd4a3b6dd308b0d62945ae264dfb6ce8ff
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606741"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298324"
 ---
 # <a name="frequently-asked-questions---event-hubs-for-apache-kafka"></a>Veelgestelde vragen-Event Hubs voor Apache Kafka 
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over het migreren naar Event Hubs voor Apache Kafka.
@@ -39,7 +39,7 @@ Wat is het verschil tussen een event hub-Consumer groep en een Kafka-Consumer gr
 
 - Deze worden gemaakt.  Kafka groepen kunnen worden beheerd via de Api's van de Kafka-Consumer groep.
 - Ze kunnen offsets in de Event Hubs-service opslaan.
-- Ze worden gebruikt als sleutels in wat een offset-waarde voor sleutel waarden is. Voor een uniek paar `group.id` en `topic-partition`worden er in azure Storage een offset (3x-replicatie) opgeslagen. Event Hubs gebruikers geen extra opslag kosten in rekening brengen bij het opslaan van Kafka-offsets. Offsets worden manipulable via de Kafka-Api's van de gebruikers groep, maar de offset opslag *accounts* zijn niet direct zichtbaar of Manipulable voor Event hub-gebruikers.  
+- Ze worden gebruikt als sleutels in wat een offset-waarde voor sleutel waarden is. Voor een uniek paar `group.id` en `topic-partition` worden er in azure Storage een offset (3x-replicatie) opgeslagen. Event Hubs gebruikers geen extra opslag kosten in rekening brengen bij het opslaan van Kafka-offsets. Offsets worden manipulable via de Kafka-Api's van de gebruikers groep, maar de offset opslag *accounts* zijn niet direct zichtbaar of Manipulable voor Event hub-gebruikers.  
 - Ze omvatten een naam ruimte. Als u dezelfde Kafka-groeps naam gebruikt voor meerdere toepassingen op meerdere onderwerpen, worden alle toepassingen en hun Kafka-clients opnieuw gebalanceerd wanneer slechts één toepassing opnieuw moet worden gebalanceerd.  Kies de namen van uw groepen.
 - Ze zijn volledig onderscheiden van Event Hubs consumenten groepen. U hoeft ' $Default ' **niet** te gebruiken en u hoeft zich geen zorgen te maken over Kafka-clients die de AMQP-workloads belemmeren.
 - Ze zijn niet zichtbaar in de Azure Portal. Informatie over de gebruikers groep is toegankelijk via Kafka-Api's.

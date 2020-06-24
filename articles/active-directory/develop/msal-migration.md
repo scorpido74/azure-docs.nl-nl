@@ -9,33 +9,70 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/27/2020
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3af18eb09fd9906a0caaebda0b786795400467f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 451615ae5a642260a596ee93dc27f04cfa4b644e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164930"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298154"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Toepassingen migreren naar micro soft Authentication Library (MSAL)
 
-Zowel micro soft Authentication Library (MSAL) als Azure AD Authentication Library (ADAL) worden gebruikt voor het verifiëren van Azure AD-entiteiten en het aanvragen van tokens van Azure AD. Tot nu toe hebben de meeste ontwikkel aars met Azure AD voor ontwikkel aars platform (v 1.0) gewerkt voor het verifiëren van Azure AD-identiteiten (werk-en school accounts) door tokens aan te vragen met behulp van Azure AD Authentication Library (ADAL). MSAL gebruiken:
+Veel ontwikkel aars hebben toepassingen gebouwd en geïmplementeerd met behulp van de actieve Active Directory Authentication Library (ADAL). We raden u nu aan de micro soft Authentication Library (MSAL) te gebruiken voor verificatie en autorisatie van Azure AD-entiteiten.
 
-- U kunt een bredere set met micro soft-identiteiten (Azure AD-identiteiten en micro soft-accounts en sociale en lokale accounts via Azure AD B2C) verifiëren, zoals het micro soft Identity platform-eind punt gebruikt.
+Met behulp van MSAL in plaats van ADAL:
+
+- U kunt een uitgebreidere set identiteiten verifiëren:
+  - Azure AD-identiteiten
+  - Micro soft-accounts
+  - Sociale en lokale accounts met behulp van Azure AD B2C
 - Uw gebruikers krijgen de beste ervaring voor eenmalige aanmelding.
-- Uw toepassing kan stapsgewijze toestemming bieden en het ondersteunen van voorwaardelijke toegang is eenvoudiger.
-- U profiteert van de innovatie.
+- Uw toepassing kan stapsgewijze toestemming bieden.
+- Het ondersteunen van voorwaardelijke toegang is eenvoudiger.
+- U profiteert van innovatie. Omdat alle ontwikkelings inspanningen van micro soft nu gericht zijn op MSAL, worden er geen nieuwe functies geïmplementeerd in ADAL.
 
-**MSAL is nu de aanbevolen verificatie bibliotheek voor gebruik met het micro soft Identity-platform**. Er worden geen nieuwe functies geïmplementeerd op ADAL. De inspanningen zijn gericht op het verbeteren van MSAL.
+**MSAL is nu de aanbevolen verificatie bibliotheek voor gebruik met het micro soft Identity-platform**.
 
-In de volgende artikelen worden de verschillen tussen de MSAL-en ADAL-bibliotheken beschreven en kunt u migreren naar MSAL:
-- [Migreren naar MSAL.NET](msal-net-migration.md)
-- [Migreren naar MSAL.js](msal-compare-msal-js-and-adal-js.md)
+## <a name="migration-guidance"></a>Migratierichtlijnen
+
+De volgende artikelen kunnen u helpen bij het migreren naar MSAL:
+
 - [Migreren naar MSAL.Android](migrate-android-adal-msal.md)
 - [Migreren naar MSAL.iOS/macOS](migrate-objc-adal-msal.md)
+- [Migreren naar MSAL Java](migrate-adal-msal-java.md)
+- [Migreren naar MSAL.js](msal-compare-msal-js-and-adal-js.md)
+- [Migreren naar MSAL.NET](msal-net-migration.md)
 - [Migreren naar MSAL Python](migrate-python-adal-msal.md)
-- [Migreren naar MSAL voor Java](migrate-adal-msal-java.md)
 - [Xamarin-apps migreren met behulp van brokers naar MSAL.NET](msal-net-migration-ios-broker.md)
+
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+
+__V: wordt ADAL verouderd?__  
+A: Ja. Vanaf 30 juni 2020 worden nieuwe functies niet meer toegevoegd aan ADAL. We zullen tot en met 30 juni 2022 essentiële beveiligingsfixes blijven toevoegen aan ADAL.
+
+__V: Hoe kan ik weet ik welke van mijn apps ADAL gebruiken?__  
+A: als u de bron code voor de toepassing hebt, kunt u verwijzen naar de bovenstaande migratie handleidingen om te helpen bepalen welke bibliotheek de app gebruikt en hoe u deze migreert naar MSAL. Als u geen toegang hebt tot de bron code van uw toepassing, kunt u [een ondersteunings aanvraag openen](developer-support-help-options.md#open-a-support-request) om een lijst op te halen van uw geregistreerde toepassingen en de bibliotheek die door elke toepassing wordt gebruikt.
+
+__V: zullen mijn bestaande ADAL-apps blijven werken?__ A: uw bestaande apps blijven werken zonder te worden gewijzigd. Als u van plan bent om deze te bewaren na 30 juni 2022, kunt u overwegen om deze bij te werken naar MSAL om ze te beveiligen, maar het migreren naar MSAL is niet vereist voor het onderhouden van de bestaande functionaliteit.
+
+__V: Waarom moet ik investeren in overstappen op MSAL?__  
+A: MSAL bevat nieuwe functies die zich niet in ADAL bevinden, zoals incrementele toestemming, eenmalige aanmelding en Token cache beheer. Maar in tegens telling tot ADAL zal MSAL nog steeds beveiligings patches ontvangen van meer dan 30 juni 2022. [Meer informatie](msal-overview.md).
+
+__V: maakt u een hulp programma waarmee ik mijn apps kan verplaatsen van ADAL naar MSAL?__  
+A: Nee. Verschillen tussen de bibliotheken vereisen dat resources worden gebruikt voor het ontwikkelen en onderhouden van het hulp programma dat anders zou worden besteed aan het verbeteren van MSAL. We bieden echter de voor gaande set migratie handleidingen om u te helpen de vereiste wijzigingen in uw toepassing aan te brengen.
+
+__V: Hoe werkt MSAL samen met AD FS?__  
+A: MSAL.NET ondersteunt bepaalde scenario's voor het verifiëren van AD FS 2019. Als uw app tokens rechtstreeks uit een eerdere versie van AD FS moet verkrijgen, blijft u op ADAL. [Meer informatie](msal-net-adfs-support.md).
+
+__V: Hoe kan ik hulp krijgen bij het migreren van mijn toepassing?__  
+A: Zie de sectie [migratie richtlijnen](#migration-guidance) van dit artikel. Als u na het lezen van de hand leiding voor het platform van uw app nog meer vragen hebt, kunt u op Stack Overflow plaatsen met de tag `[adal-deprecation]` of een probleem in de GitHub-opslag plaats van de bibliotheek openen. Zie de sectie [talen en frameworks](msal-overview.md#languages-and-frameworks) van het artikel overzicht van MSAL voor koppelingen naar de opslag plaats van elke bibliotheek.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- [Werk uw toepassingen bij om micro soft-verificatie bibliotheek en Microsoft Graph-API te gebruiken](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
+- [Meer informatie over micro soft Identity platform (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
+- [Bekijk onze MSAL-code voorbeelden](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)

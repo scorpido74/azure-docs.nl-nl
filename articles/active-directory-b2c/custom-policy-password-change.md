@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b978e6335aaf6927fe070285f2255910b31b7ffa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189171"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202616"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord wijzigingen configureren met aangepast beleid in Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](cu
 
 ## <a name="add-the-elements"></a>De elementen toevoegen
 
-1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element toe `oldPassword` met een id van aan het [ClaimsSchema](claimsschema.md) -element:
+1. Open uw *TrustframeworkExtensions.xml* -bestand en voeg het volgende **claim** type-element toe met een id van `oldPassword` aan het element [ClaimsSchema](claimsschema.md) :
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="oldPassword">
@@ -47,7 +47,7 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](cu
 
 2. Een [ClaimsProvider](claimsproviders.md) -element bevat het technische profiel waarmee de gebruiker wordt geverifieerd. Voeg de volgende claim providers toe aan het **ClaimsProviders** -element:
 
-    ```XML
+    ```xml
     <ClaimsProviders>
       <ClaimsProvider>
         <DisplayName>Local Account SignIn</DisplayName>
@@ -121,11 +121,11 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](cu
     </ClaimsProviders>
     ```
 
-    Vervang `IdentityExperienceFrameworkAppId` door de toepassings-id van de IdentityExperienceFramework-toepassing die u hebt gemaakt in de hand leiding voor vereisten. Vervang `ProxyIdentityExperienceFrameworkAppId` door de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u eerder hebt gemaakt.
+    Vervang door `IdentityExperienceFrameworkAppId` de toepassings-id van de IdentityExperienceFramework-toepassing die u hebt gemaakt in de hand leiding voor vereisten. Vervang door `ProxyIdentityExperienceFrameworkAppId` de toepassings-id van de ProxyIdentityExperienceFramework-toepassing die u eerder hebt gemaakt.
 
-3. Het [UserJourney](userjourneys.md) -element definieert het pad dat de gebruiker nodig heeft bij interactie met uw toepassing. Voeg het **UserJourneys** -element toe als het niet bestaat **UserJourney** met de UserJourney `PasswordChange`geïdentificeerd als:
+3. Het [UserJourney](userjourneys.md) -element definieert het pad dat de gebruiker nodig heeft bij interactie met uw toepassing. Voeg het **UserJourneys** -element toe als het niet bestaat met de **UserJourney** geïdentificeerd als `PasswordChange` :
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
@@ -151,8 +151,8 @@ Voer de stappen in aan de [slag met aangepast beleid in Active Directory B2C](cu
     </UserJourneys>
     ```
 
-4. Sla het bestand *TrustFrameworkExtensions. XML* op.
-5. Kopieer het *ProfileEdit. XML-* bestand dat u met het eerste pakket hebt gedownload en noem dit *ProfileEditPasswordChange. XML*.
+4. Sla het *TrustFrameworkExtensions.xml* -beleids bestand op.
+5. Kopieer het *ProfileEdit.xml* bestand dat u met het eerste pakket hebt gedownload en geef het de naam *ProfileEditPasswordChange.xml*.
 6. Open het nieuwe bestand en werk het kenmerk **PolicyId** bij met een unieke waarde. Deze waarde is de naam van uw beleid. Bijvoorbeeld *B2C_1A_profile_edit_password_change*.
 7. Wijzig het kenmerk **ReferenceId** in `<DefaultUserJourney>` zodat dit overeenkomt met de id van de nieuwe gebruikers traject die u hebt gemaakt. Bijvoorbeeld *PasswordChange*.
 8. Sla uw wijzigingen op.
@@ -161,23 +161,23 @@ U kunt [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-polic
 
 ## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te retour neren om `https://jwt.ms` de claims daarin te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat door in het bovenste menu te klikken op het filter **Map en abonnement** en de map te kiezen waarin de tenant zich bevindt.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
 5. Klik op het tabblad Aangepaste beleids regels op **beleid uploaden**.
-6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het bestand *TrustframeworkExtensions. XML* .
+6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het *TrustframeworkExtensions.xml* bestand.
 7. Klik op **Uploaden**.
-8. Herhaal stap 5 tot en met 7 voor het Relying Party bestand, zoals *ProfileEditPasswordChange. XML*.
+8. Herhaal stap 5 tot en met 7 voor het Relying Party bestand, zoals *ProfileEditPasswordChange.xml*.
 
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
 1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_profile_edit_password_change*.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de **antwoord-URL** worden weer gegeven `https://jwt.ms` .
 3. Klik op **Nu uitvoeren**. Meld u aan met de acouunt die u eerder hebt gemaakt. U hebt nu de mogelijkheid om het wacht woord te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen

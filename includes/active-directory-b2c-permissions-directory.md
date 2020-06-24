@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
-ms.openlocfilehash: dfe35eecfec5a12395ac3d9973a651e033aeea73
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672516"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85200164"
 ---
 #### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/) 
 
@@ -24,8 +24,7 @@ ms.locfileid: "84672516"
     * **Beleid**  >  **Policy. readwrite. TrustFramework**: voor continue integratie/continue levering (CI/cd)-scenario's. Bijvoorbeeld aangepaste beleids implementatie met Azure-pijp lijnen.
 1. Selecteer **Machtigingen toevoegen**. Wacht, zoals aangegeven, een paar minuten voordat u verdergaat met de volgende stap.
 1. Selecteer **Beheerderstoestemming verlenen voor (naam van uw tenant)** .
-1. Selecteer het momenteel aangemelde beheerdersaccount, of meld u aan met een account in de Azure AD B2C-tenant waaraan minstens de rol *Cloudtoepassingsbeheerder* is toegewezen.
-1. Selecteer **Accepteren**.
+1. Als u momenteel niet bent aangemeld met het account van de globale beheerder, meldt u zich aan met een account in uw Azure AD B2C-Tenant waaraan ten minste de rol van *Cloud toepassings beheerder* is toegewezen en selecteert u **beheerder toestemming geven voor (uw Tenant naam)**.
 1. Selecteer **vernieuwen**en controleer vervolgens of ' verleend voor... ' wordt weer gegeven onder **status**. Het kan enkele minuten duren voordat de machtigingen zijn doorgegeven.
 
 #### <a name="applications-legacy"></a>[Toepassingen (verouderd)](#tab/applications-legacy/)

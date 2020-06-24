@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met SQL Server of Azure SQL Database
+title: Verbinding maken met SQL Server, Azure SQL Database of Azure SQL Managed instance
 description: Automatiseer taken voor SQL-data bases on-premises of in de Cloud met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
@@ -7,14 +7,14 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: 4a10cd279961944bf46f4e6b433226eddafd1c53
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449063"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255497"
 ---
-# <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
+# <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor een SQL database met behulp van Azure Logic Apps
 
 In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen of werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De SQL Server-connector werkt zowel voor [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md) en [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
 
@@ -26,9 +26,9 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database) of [Azure-SQL database](../azure-sql/database/single-database-create-quickstart.md)
+* Een [SQL Server-Data Base](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database), [Azure SQL database](../azure-sql/database/single-database-create-quickstart.md)of [Azure SQL Managed instance](../azure-sql/managed-instance/instance-create-quickstart.md).
 
-  Uw tabellen moeten gegevens bevatten zodat uw logische app resultaten kan retour neren wanneer bewerkingen worden aangeroepen. Als u een Azure SQL Database maakt, kunt u voorbeeld databases gebruiken die zijn opgenomen.
+  Uw tabellen moeten gegevens bevatten zodat uw logische app resultaten kan retour neren wanneer bewerkingen worden aangeroepen. Als u Azure SQL Database gebruikt, kunt u voorbeeld databases gebruiken die zijn opgenomen.
 
 * De naam van uw SQL-Server, de database naam, uw gebruikers naam en uw wacht woord. U hebt deze referenties nodig zodat u uw logica kunt machtigen om toegang te krijgen tot uw SQL Server.
 
@@ -65,16 +65,16 @@ Ga nu verder met de volgende stappen:
 
 <a name="connect-azure-sql-db"></a>
 
-### <a name="connect-to-cloud-based-azure-sql-database-or-managed-instance"></a>Verbinding maken met een Cloud Azure SQL Database of een beheerd exemplaar
+### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Verbinding maken met Azure SQL Database of een beheerd exemplaar
 
 De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sql-action)toevoegt en u nog geen verbinding hebt gemaakt met uw data base, wordt u gevraagd om de volgende stappen uit te voeren:
 
-1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld op uw Azure SQL database of het beheerde exemplaar:
+1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld in uw data base in Azure SQL database of Azure SQL Managed instance:
 
    | Verificatie | Beschrijving |
    |----------------|-------------|
-   | [**Geïntegreerd met Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige identiteit in Azure Active Directory (Azure AD) die toegang heeft tot uw Azure-SQL database. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-geïntegreerde Azure AD-verificatie](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw Azure-SQL database. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**Geïntegreerd met Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige identiteit in Azure Active Directory (Azure AD) die toegang heeft tot uw data base. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-geïntegreerde Azure AD-verificatie](../azure-sql/database/authentication-aad-overview.md) |
+   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw data base. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    Dit voor beeld gaat verder met **Azure AD Integrated**:
@@ -83,13 +83,13 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
 1. Nadat u **Azure AD Integrated**hebt geselecteerd, selecteert u **Aanmelden**. Selecteer uw gebruikers referenties voor verificatie op basis van het feit of u Azure SQL Database of Azure SQL Managed instance gebruikt.
 
-1. Selecteer deze waarden voor uw Azure SQL database:
+1. Selecteer deze waarden voor uw Data Base:
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
-   | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
-   | **Tabelnaam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld`SalesLT.Customer` |
+   | **Databasenaam** | Yes | De naam voor uw SQL database, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
+   | **Tabelnaam** | Yes | De tabel die u wilt gebruiken, bijvoorbeeld`SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -99,7 +99,7 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    In dit voor beeld ziet u hoe deze waarden eruit kunnen zien:
 
-   ![Verbinding maken met Azure SQL database](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   ![Verbinding maken met SQL database](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
 1. Ga nu verder met de stappen die u nog niet hebt voltooid in [een SQL-trigger toevoegen](#add-sql-trigger) of [een SQL-actie toevoegen](#add-sql-action).
 
@@ -129,10 +129,10 @@ De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sq
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **SQL Server-naam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL database naam** | Ja | De naam voor uw SQL Server-Data Base, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
-   | **Gebruikers** | Ja | Uw gebruikers naam voor de SQL-Server en-data base |
-   | **Wachtwoord** | Ja | Uw wacht woord voor de SQL-Server en-data base |
+   | **SQL Server-naam** | Yes | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL database naam** | Yes | De naam voor uw SQL Server-Data Base, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
+   | **Gebruikersnaam** | Yes | Uw gebruikers naam voor de SQL-Server en-data base |
+   | **Wachtwoord** | Yes | Uw wacht woord voor de SQL-Server en-data base |
    | **Abonnement** |  Ja, voor Windows-verificatie | Het Azure-abonnement voor de gegevens gateway resource die u eerder hebt gemaakt in azure |
    | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)correct hebt ingesteld. |
    |||

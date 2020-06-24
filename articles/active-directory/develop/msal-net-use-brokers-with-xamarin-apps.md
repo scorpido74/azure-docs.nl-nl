@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262787"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692322"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator of Intune-bedrijfsportal gebruiken in Xamarin-toepassingen
 
@@ -27,7 +27,7 @@ Op Android en iOS kunnen brokers als Microsoft Authenticator en de Android-speci
 - **Apparaat-id**: de Broker heeft toegang tot het certificaat van het apparaat. Dit certificaat wordt gemaakt op het apparaat wanneer het is gekoppeld aan de werk plek.
 - **Verificatie**van de toepassings-id: wanneer een toepassing de Broker aanroept, wordt de omleidings-URL door gegeven. De Broker verifieert de URL.
 
-Als u een van deze functies wilt inschakelen, `WithBroker()` gebruikt u de para meter `PublicClientApplicationBuilder.CreateApplication` wanneer u de-methode aanroept. De `.WithBroker()` para meter is standaard ingesteld op True. 
+Als u een van deze functies wilt inschakelen, gebruikt `WithBroker()` u de para meter wanneer u de-methode aanroept `PublicClientApplicationBuilder.CreateApplication` . De `.WithBroker()` para meter is standaard ingesteld op True. 
 
 U kunt ook de instructies in de volgende secties gebruiken om brokered-verificatie in te stellen voor [IOS](#brokered-authentication-for-ios) -toepassingen of [Android](#brokered-authentication-for-android) -toepassingen.
 
@@ -36,7 +36,7 @@ U kunt ook de instructies in de volgende secties gebruiken om brokered-verificat
 Gebruik de volgende stappen om uw Xamarin. iOS-app in te scha kelen voor communicatie met de app [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) .
 
 ### <a name="step-1-enable-broker-support"></a>Stap 1: ondersteuning voor Broker inschakelen
-U moet Broker ondersteuning inschakelen voor afzonderlijke exemplaren van `PublicClientApplication`. Ondersteuning is standaard uitgeschakeld. Wanneer u maakt `PublicClientApplication` via `PublicClientApplicationBuilder`, gebruikt u `WithBroker()` de para meter zoals in het volgende voor beeld wordt getoond. De `WithBroker()` para meter is standaard ingesteld op True.
+U moet Broker ondersteuning inschakelen voor afzonderlijke exemplaren van `PublicClientApplication` . Ondersteuning is standaard uitgeschakeld. Wanneer u maakt `PublicClientApplication` via `PublicClientApplicationBuilder` , gebruikt u de `WithBroker()` para meter zoals in het volgende voor beeld wordt getoond. De `WithBroker()` para meter is standaard ingesteld op True.
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -61,7 +61,7 @@ var builder = PublicClientApplicationBuilder
 Zie [toegang tot sleutel hanger inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)voor meer informatie.
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Stap 3: AppDelegate bijwerken voor het afhandelen van de call back
-Wanneer micro soft Authentication Library voor .NET (MSAL.NET) de Broker aanroept, wordt de Broker teruggebeld naar uw `OpenUrl` toepassing via de `AppDelegate` methode van de klasse. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken om MSAL.NET terug aan te roepen. Als u deze samen werking wilt inschakelen `AppDelegate.cs` , werkt u het bestand bij om de volgende methode te overschrijven.
+Wanneer micro soft Authentication Library voor .NET (MSAL.NET) de Broker aanroept, wordt de Broker teruggebeld naar uw toepassing via de `OpenUrl` methode van de `AppDelegate` klasse. Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing samen werken om MSAL.NET terug aan te roepen. Als u deze samen werking wilt inschakelen, werkt u het `AppDelegate.cs` bestand bij om de volgende methode te overschrijven.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
@@ -86,14 +86,14 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 Deze methode wordt aangeroepen telkens wanneer de toepassing wordt gestart. Het wordt gebruikt als een kans om de reactie van de Broker te verwerken en het verificatie proces te volt ooien dat MSAL.NET is gestart.
 
 ### <a name="step-4-set-uiviewcontroller"></a>Stap 4: set UIViewController ()
-U moet nog `AppDelegate.cs` steeds in het bestand een object venster instellen. Normaal gesp roken hoeft u voor Xamarin iOS het object venster niet in te stellen. Maar u hebt wel een object venster nodig voor het verzenden en ontvangen van antwoorden van de Broker. 
+U moet nog steeds in het `AppDelegate.cs` bestand een object venster instellen. Normaal gesp roken hoeft u voor Xamarin iOS het object venster niet in te stellen. Maar u hebt wel een object venster nodig voor het verzenden en ontvangen van antwoorden van de Broker. 
 
 Het object venster instellen: 
-1. Stel `AppDelegate.cs` `App.RootViewController` in het bestand in op een nieuw `UIViewController()`. Deze toewijzing zorgt ervoor dat de aanroep naar de Broker `UIViewController`bevat. Als deze instelling onjuist is toegewezen, kan deze fout optreden:
+1. Stel in het `AppDelegate.cs` bestand in `App.RootViewController` op een nieuw `UIViewController()` . Deze toewijzing zorgt ervoor dat de aanroep naar de Broker bevat `UIViewController` . Als deze instelling onjuist is toegewezen, kan deze fout optreden:
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
-1. `AcquireTokenInteractive` Gebruik `.WithParentActivityOrWindow(App.RootViewController)` en klik vervolgens in de verwijzing naar het object venster dat u wilt gebruiken.
+1. `AcquireTokenInteractive`Gebruik `.WithParentActivityOrWindow(App.RootViewController)` en klik vervolgens in de verwijzing naar het object venster dat u wilt gebruiken.
 
     In `App.cs`:
 
@@ -117,11 +117,11 @@ Het object venster instellen:
     ```
 
 ### <a name="step-5-register-a-url-scheme"></a>Stap 5: een URL-schema registreren
-MSAL.NET maakt gebruik van Url's om de Broker aan te roepen en vervolgens het Broker-antwoord te retour neren aan uw app. Als u de retour ronding wilt volt ooien, registreert u een URL `Info.plist` -schema voor uw app in het bestand.
+MSAL.NET maakt gebruik van Url's om de Broker aan te roepen en vervolgens het Broker-antwoord te retour neren aan uw app. Als u de retour ronding wilt volt ooien, registreert u een URL-schema voor uw app in het `Info.plist` bestand.
 
-De `CFBundleURLSchemes` naam moet als `msauth.` voor voegsel bevatten. Volg het voor voegsel `CFBundleURLName`met. 
+De `CFBundleURLSchemes` naam moet `msauth.` als voor voegsel bevatten. Volg het voor voegsel met `CFBundleURLName` . 
 
-In het URL-schema `BundleId` is de unieke identificatie van de `$"msauth.(BundleId)"`app:. Als `BundleId` dat zo `com.yourcompany.xforms`is, is `msauth.com.yourcompany.xforms`het URL-schema.
+In het URL-schema is `BundleId` de unieke identificatie van de app: `$"msauth.(BundleId)"` . Als dat zo `BundleId` is `com.yourcompany.xforms` , is het URL-schema `msauth.com.yourcompany.xforms` .
 
 > [!NOTE]
 > Dit URL-schema wordt onderdeel van de omleidings-URI waarmee uw app uniek wordt geïdentificeerd wanneer de reactie van de Broker wordt ontvangen.
@@ -144,9 +144,9 @@ In het URL-schema `BundleId` is de unieke identificatie van de `$"msauth.(Bundle
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Stap 6: de Broker-id toevoegen aan de sectie LSApplicationQueriesSchemes
 
-MSAL wordt `–canOpenURL:` gebruikt om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 heeft Apple de schema's vergrendeld die een toepassing kan opvragen. 
+MSAL wordt gebruikt `–canOpenURL:` om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 heeft Apple de schema's vergrendeld die een toepassing kan opvragen. 
 
-Voeg `msauthv2` toe aan `LSApplicationQueriesSchemes` de sectie van `Info.plist` het bestand, zoals in het volgende voor beeld:
+Voeg toe `msauthv2` aan de `LSApplicationQueriesSchemes` sectie van het `Info.plist` bestand, zoals in het volgende voor beeld:
 
 ```XML
 <key>LSApplicationQueriesSchemes</key>
@@ -170,7 +170,7 @@ Hier volgt een voorbeeld:
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
 
-U ziet dat de omleidings `CFBundleURLSchemes` -URI overeenkomt met de `Info.plist` naam die u in het bestand hebt opgenomen.
+U ziet dat de omleidings-URI overeenkomt met de `CFBundleURLSchemes` naam die u in het bestand hebt opgenomen `Info.plist` .
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>Stap 8: Zorg ervoor dat de omleidings-URI is geregistreerd bij uw app
 
@@ -180,7 +180,7 @@ De portal voor app-registratie biedt een nieuwe ervaring om u te helpen bij het 
 
 De omleidings-URI berekenen:
 
-1. Kies in de app-registratie Portal de optie **verificatie** > **proberen de nieuwe ervaring**.
+1. Kies in de app-registratie Portal de optie **verificatie**  >  **proberen de nieuwe ervaring**.
 
    ![De nieuwe app-registratie-ervaring uitproberen](media/msal-net-use-brokers-with-xamarin-apps/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
@@ -204,7 +204,7 @@ Wanneer u klaar bent met de stappen, wordt de omleidings-URI voor u berekend.
 
 ### <a name="step-1-enable-broker-support"></a>Stap 1: ondersteuning voor Broker inschakelen
 
-Broker-ondersteuning is ingeschakeld per PublicClientApplication. Het is standaard uitgeschakeld. Gebruik de `WithBroker()` para meter (standaard ingesteld op True) bij het maken `IPublicClientApplication` van de `PublicClientApplicationBuilder`via.
+Broker-ondersteuning is ingeschakeld per PublicClientApplication. Het is standaard uitgeschakeld. Gebruik de `WithBroker()` para meter (standaard ingesteld op True) bij het maken van de `IPublicClientApplication` via `PublicClientApplicationBuilder` .
 
 ```CSharp
 var app = PublicClientApplicationBuilder
@@ -217,7 +217,7 @@ var app = PublicClientApplicationBuilder
 ### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>Stap 2: AppDelegate bijwerken voor het afhandelen van de call back
 
 Wanneer MSAL.NET de Broker aanroept, roept de Broker op zijn beurt terug naar uw toepassing met de methode OnActivityResult (). Omdat MSAL wacht op het antwoord van de Broker, moet uw toepassing het resultaat routeren naar MSAL.NET.
-Dit kan worden bereikt door het resultaat door te sturen `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` naar de door de methode OnActivityResult () te overschrijven, zoals hieronder wordt weer gegeven
+Dit kan worden bereikt door het resultaat door te sturen naar de `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` door de methode OnActivityResult () te overschrijven, zoals hieronder wordt weer gegeven
 
 ```CSharp
 protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -256,7 +256,7 @@ De omleidings-URI die nodig is voor uw toepassing, is afhankelijk van het certif
 Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
 ```
 
-Het laatste deel van de URI, `hgbUYHVBYUTvuvT&Y6tr554365466=`, is de hand tekening waarmee de APK is ondertekend, base64-gecodeerd.
+Het laatste deel van de URI, `hgbUYHVBYUTvuvT&Y6tr554365466=` , is de hand tekening waarmee de APK is ondertekend, base64-gecodeerd.
 Als u echter tijdens de ontwikkelings fase van uw toepassing met Visual Studio fouten opspoort in uw code zonder de APK te ondertekenen met een specifiek certificaat, wordt de APK door Visual Studio voor u voor fout opsporing ondertekend, waardoor de APK een unieke hand tekening geeft voor de machine waarop deze is gebaseerd. Telkens wanneer u uw app op een andere machine bouwt, moet u de omleidings-URI in de code van de toepassing bijwerken en de registratie van de toepassing in de Azure Portal om te verifiëren met MSAL. 
 
 Tijdens het opsporen van fouten kan er een MSAL-uitzonde ring (of logboek bericht) worden weer gegeven met de mede deling dat de omleidings-URI onjuist is. **Deze uitzonde ring geeft u ook de omleidings-URI die u moet gebruiken** met de huidige machine waarvoor u fouten wilt opsporen. U kunt deze omleidings-URI gebruiken om te blijven ontwikkelen voor de tijd.

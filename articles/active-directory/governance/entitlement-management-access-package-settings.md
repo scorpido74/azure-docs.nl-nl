@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea90032b1f0cfe598ffdb3d35448a996f3111036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a29f0a0231cdea5a73b7798088002e63ec93324
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968765"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078556"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Koppeling delen om een toegangs pakket aan te vragen in het beheer van rechten van Azure AD
 
@@ -41,7 +41,7 @@ Zolang de catalogus voor het toegangs pakket is [ingeschakeld voor externe gebru
 
     ![Overzicht van toegangs pakketten-koppeling naar mijn Access-Portal](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    Het is belang rijk dat u de volledige koppeling naar de portal van mijn Access kopieert wanneer u deze naar een interne zakelijke partner verzendt. Dit zorgt ervoor dat de partner toegang krijgt tot de portal van uw Directory om de aanvraag te doen. De koppeling begint met `myaccess`, bevat een directory-hint en eindigt met een toegangs pakket-id.  (Voor de Amerikaanse overheid is het domein in de koppeling naar de portal van `myaccess.microsoft.us`mijn toegang.)
+    Het is belang rijk dat u de volledige koppeling naar de portal van mijn Access kopieert wanneer u deze naar een interne zakelijke partner verzendt. Dit zorgt ervoor dat de partner toegang krijgt tot de portal van uw Directory om de aanvraag te doen. De koppeling begint met `myaccess` , bevat een directory-hint en eindigt met een toegangs pakket-id.  (Voor de Amerikaanse overheid is het domein in de koppeling naar de portal van mijn toegang `myaccess.microsoft.us` .)
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

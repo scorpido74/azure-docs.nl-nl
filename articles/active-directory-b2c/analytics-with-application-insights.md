@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25e62e7c6865f91daa242a33a0f491f8015be41a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688bf4526ad287955231358ab0b64036e5480713
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80672520"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201426"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Gebruikers gedrag bijhouden in Azure Active Directory B2C met behulp van Application Insights
 
@@ -46,11 +46,11 @@ Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar ee
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zorg ervoor dat u de map met uw Azure-abonnement gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw abonnement bevat. Deze Tenant is niet uw Azure AD B2C-Tenant.
 3. Kies **een resource maken** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **Application Insights**.
-4. Klik op **maken**.
+4. Klik op **Create**.
 5. Voer een **naam** in voor de resource.
 6. Selecteer voor **toepassings Type** **ASP.NET-webtoepassing**.
 7. Voor **resource groep**selecteert u een bestaande groep of voert u een naam in voor een nieuwe groep.
-8. Klik op **maken**.
+8. Klik op **Create**.
 4. Nadat u de Application Insights resource hebt gemaakt, opent u deze, vouwt u de **essentiële**elementen uit en kopieert u de instrumentatie sleutel.
 
 ![Application Insights overzicht en instrumentatie sleutel](./media/analytics-with-application-insights/app-insights.png)
@@ -59,7 +59,7 @@ Wanneer u Application Insights met Azure AD B2C gebruikt, hoeft u alleen maar ee
 
 Een claim biedt een tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. Het [claim schema](claimsschema.md) is de plaats waar u uw claims declareert.
 
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
 1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
 1. Voeg de volgende claims toe aan het **ClaimsSchema** -element. 
@@ -107,11 +107,11 @@ Technische profielen kunnen worden beschouwd als functies in het Framework voor 
 | Technisch profiel | Taak |
 | ----------------- | -----|
 | AppInsights-algemeen | De algemene set para meters die moeten worden opgenomen in alle technische profielen van Azure Insights. |
-| AppInsights-SignInRequest | Registreert `SignInRequest` een gebeurtenis met een set claims wanneer een aanmeldings aanvraag is ontvangen. |
-| AppInsights-UserSignUp | Registreert `UserSignUp` een gebeurtenis wanneer de gebruiker de registratie optie activeert in een traject voor registreren/aanmelden. |
-| AppInsights-SignInComplete | Registreert `SignInComplete` een gebeurtenis wanneer een verificatie is voltooid, wanneer er een token naar de Relying Party-toepassing is verzonden. |
+| AppInsights-SignInRequest | Registreert een `SignInRequest` gebeurtenis met een set claims wanneer een aanmeldings aanvraag is ontvangen. |
+| AppInsights-UserSignUp | Registreert een `UserSignUp` gebeurtenis wanneer de gebruiker de registratie optie activeert in een traject voor registreren/aanmelden. |
+| AppInsights-SignInComplete | Registreert een `SignInComplete` gebeurtenis wanneer een verificatie is voltooid, wanneer er een token naar de Relying Party-toepassing is verzonden. |
 
-Voeg de profielen toe aan het bestand *TrustFrameworkExtensions. XML* van het Starter Pack. Deze elementen toevoegen aan het **ClaimsProviders** -element:
+Voeg de profielen toe aan het *TrustFrameworkExtensions.xml* -bestand van het Starter Pack. Deze elementen toevoegen aan het **ClaimsProviders** -element:
 
 ```xml
 <ClaimsProvider>
@@ -171,14 +171,14 @@ Aanroep `AppInsights-SignInRequest` als Orchestration-stap 2 om bij te houden da
 
 ```xml
 <!-- Track that we have received a sign in request -->
-<OrchestrationStep Order="1" Type="ClaimsExchange">
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   <ClaimsExchanges>
     <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AppInsights-SignInRequest" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
-Voeg *before* onmiddellijk vóór `SendClaims` de Orchestration-stap een nieuwe stap toe die aanroept `AppInsights-UserSignup`. Het wordt geactiveerd wanneer de gebruiker de registratie knop selecteert in een traject voor registreren/aanmelden.
+Voeg onmiddellijk *vóór* de `SendClaims` Orchestration-stap een nieuwe stap toe die aanroept `AppInsights-UserSignup` . Het wordt geactiveerd wanneer de gebruiker de registratie knop selecteert in een traject voor registreren/aanmelden.
 
 ```xml
 <!-- Handles the user clicking the sign up link in the local account sign in page -->
@@ -200,7 +200,7 @@ Voeg *before* onmiddellijk vóór `SendClaims` de Orchestration-stap een nieuwe 
 </OrchestrationStep>
 ```
 
-Bel `AppInsights-SignInComplete`direct na `SendClaims` de Orchestration-stap. In deze stap ziet u dat de reis is voltooid.
+Bel direct na de `SendClaims` Orchestration-stap `AppInsights-SignInComplete` . In deze stap ziet u dat de reis is voltooid.
 
 ```xml
 <!-- Track that we have successfully sent a token -->
@@ -217,10 +217,10 @@ Bel `AppInsights-SignInComplete`direct na `SendClaims` de Orchestration-stap. In
 
 ## <a name="upload-your-file-run-the-policy-and-view-events"></a>Upload uw bestand, voer het beleid uit en Bekijk gebeurtenissen
 
-Sla het bestand *TrustFrameworkExtensions. XML* op en upload het. Roep vervolgens het Relying Party-beleid aan vanuit uw toepassing of gebruik **nu uitvoeren** in de Azure Portal. In enkele seconden zijn uw gebeurtenissen beschikbaar in Application Insights.
+Sla het *TrustFrameworkExtensions.xml* bestand op en upload het. Roep vervolgens het Relying Party-beleid aan vanuit uw toepassing of gebruik **nu uitvoeren** in de Azure Portal. In enkele seconden zijn uw gebeurtenissen beschikbaar in Application Insights.
 
 1. Open de **Application Insights** -resource in uw Azure Active Directory-Tenant.
-2. Selecteer **gebruiks** > **gebeurtenissen**.
+2. Selecteer **gebruiks**  >  **gebeurtenissen**.
 3. Stel **in** op **vorig uur** en **met** **3 minuten**.  Mogelijk moet u **vernieuwen** selecteren om de resultaten weer te geven.
 
 ![Application Insights gebruik: gebeurtenissen blase](./media/analytics-with-application-insights/app-ins-graphic.png)
@@ -230,10 +230,10 @@ Sla het bestand *TrustFrameworkExtensions. XML* op en upload het. Roep vervolgen
 Voeg claim typen en gebeurtenissen toe aan uw gebruikers traject, zodat deze aan uw behoeften voldoen. U kunt [claim resolvers](claim-resolver-overview.md) of een teken reeks claim type gebruiken, de claims toevoegen door een **invoer claim** element toe te voegen aan de Application Insights gebeurtenis of aan het AppInsights-algemeen technische profiel.
 
 - **ClaimTypeReferenceId** is de verwijzing naar een claim type.
-- **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}`, waarbij `NAME` de eigenschap wordt toegevoegd aan de gebeurtenis.
+- **PartnerClaimType** is de naam van de eigenschap die wordt weer gegeven in azure Insights. Gebruik de syntaxis van `{property:NAME}` , waarbij de `NAME` eigenschap wordt toegevoegd aan de gebeurtenis.
 - **DefaultValue** gebruik een wille keurige teken reeks waarde of de claim resolver.
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 <InputClaim ClaimTypeReferenceId="language" PartnerClaimType="{property:language}" DefaultValue="{Culture:RFC5646}" />

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189783"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201205"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor het transformeren van claims definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -26,11 +26,11 @@ Met een technisch profiel voor het transformeren van claims kunt u uitvoer claim
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`Azure AD B2C:.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary` . Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
 In het volgende voor beeld wordt een technische profiel voor het transformeren van claims weer gegeven:
 
-```XML
+```xml
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -50,9 +50,9 @@ Het **OutputClaims** -element is verplicht. U moet ten minste één uitvoer clai
 
 ## <a name="output-claims-transformations"></a>Trans formaties uitvoer claims
 
-Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt om claims te wijzigen of nieuwe te genereren. Met het volgende technische profiel wordt de **RemoveAlternativeSecurityIdByIdentityProvider** -claim transformatie aangeroepen. Deze claim transformatie verwijdert een sociale identificatie uit de verzameling van **AlternativeSecurityIds**. De uitvoer claims van dit technische profiel zijn **identityProvider2**, die zijn ingesteld op `facebook.com`, en **AlternativeSecurityIds**, die de lijst met sociale identiteiten bevat die aan deze gebruiker zijn gekoppeld nadat de Facebook.com-identiteit is verwijderd.
+Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt om claims te wijzigen of nieuwe te genereren. Met het volgende technische profiel wordt de **RemoveAlternativeSecurityIdByIdentityProvider** -claim transformatie aangeroepen. Deze claim transformatie verwijdert een sociale identificatie uit de verzameling van **AlternativeSecurityIds**. De uitvoer claims van dit technische profiel zijn **identityProvider2**, die zijn ingesteld op `facebook.com` , en **AlternativeSecurityIds**, die de lijst met sociale identiteiten bevat die aan deze gebruiker zijn gekoppeld nadat de Facebook.com-identiteit is verwijderd.
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -84,7 +84,7 @@ TransformationClaimType="collection" />
 
 Met het technische profiel voor claim transformatie kunt u een claim transformatie uitvoeren vanuit de Orchestration-stap van elke gebruiker. In het volgende voor beeld roept de Orchestration-stap een van de technische profielen ontkoppelen, zoals **Unlink-Facebook-OAUTH**. Met dit technische profiel wordt het technische profiel voor de claim transformatie **RemoveAlternativeSecurityIdByIdentityProvider**, waarmee een nieuwe **AlternativeSecurityIds2** -claim wordt gegenereerd die de lijst met sociale identiteiten van gebruikers bevat, terwijl de Facebook-identiteit uit de verzamelingen wordt verwijderd.
 
-```XML
+```xml
 <UserJourney Id="AccountUnLink">
   <OrchestrationSteps>
     ...
@@ -104,13 +104,13 @@ Met het technische profiel voor claim transformatie kunt u een claim transformat
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false`  (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in `true`op. |
+| IncludeClaimResolvingInClaimsHandling  | No | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true` , of `false`   (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true` . |
 
 ## <a name="use-a-validation-technical-profile"></a>Een technische validatie profiel gebruiken
 
 Een trans formatie van een technische profiel voor claims kan worden gebruikt om gegevens te valideren. In het volgende voor beeld vraagt het [zelf bevestigde technische profiel](self-asserted-technical-profile.md) met de naam **LocalAccountSignUpWithLogonEmail** de gebruiker twee keer het e-mail adres in te voeren. vervolgens wordt het [validatie technische profiel](validation-technical-profile.md) met de naam **Validate e-mail** aangeroepen om de e-mail berichten te valideren. Met het technische profiel **valideren-e-mail** wordt het **AssertEmailAreEqual** van de claims-trans formatie aangeroepen om de twee claims **-e-mail** en **emailRepeat**te vergelijken en een uitzonde ring te genereren als deze niet gelijk zijn aan de opgegeven vergelijking.
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="AssertEmailAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
     <InputClaims>
@@ -126,7 +126,7 @@ Een trans formatie van een technische profiel voor claims kan worden gebruikt om
 
 Met het technische profiel voor de claim transformatie wordt de **AssertEmailAreEqual** -claim transformatie aangeroepen, waarin wordt bevestigd dat de e-mail berichten van de gebruiker hetzelfde zijn.
 
-```XML
+```xml
 <TechnicalProfile Id="Validate-Email">
   <DisplayName>Unlink Facebook</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -145,7 +145,7 @@ Met het technische profiel voor de claim transformatie wordt de **AssertEmailAre
 
 Een zelf-bevestigd technisch profiel kan het technische profiel voor validatie aanroepen en het fout bericht weer geven zoals opgegeven in de meta gegevens van de **UserMessageIfClaimsTransformationStringsAreNotEqual** .
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>User ID signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

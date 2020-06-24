@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 14ce04e992cdbf121bcb1518b6a95c09ec421872
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324416"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078985"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -27,7 +27,7 @@ Hier vindt u meer informatie over het Azure Migrate-apparaat:
 
 - Het apparaat wordt on-premises geïmplementeerd als een VM of fysieke machine.
 - Het apparaat detecteert on-premises machines en verstuurt continu de meta gegevens en prestatie gegevens van de computer naar Azure Migrate.
-- De detectie van het apparaat is zonder agent. Er wordt niets geïnstalleerd op gedetecteerde computers.
+- De detectie van apparaten verloopt zonder agent. Er wordt niets geïnstalleerd op gedetecteerde machines.
 
 Meer [informatie](migrate-appliance.md) over het apparaat.
 
@@ -107,7 +107,7 @@ Ja. U kunt zowel het Azure Migrate apparaat (gebruikt voor de distributie en de 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hoeveel Vm's of servers kan ik vinden met een apparaat?
 
-U kunt Maxi maal 10.000 VMware-Vm's, Maxi maal 5.000 virtuele Hyper-V-machines en Maxi maal 250 fysieke servers op één apparaat detecteren. Als u meer computers in uw on-premises omgeving hebt, leest u over [het schalen van een Hyper-V-beoordeling](scale-hyper-v-assessment.md), [het schalen van een VMware-evaluatie](scale-vmware-assessment.md)en [het schalen van een fysieke server beoordeling](scale-physical-assessment.md).
+U kunt Maxi maal 10.000 VMware-Vm's, Maxi maal 5.000 virtuele Hyper-V-machines en Maxi maal 1000 fysieke servers op één apparaat detecteren. Als u meer computers in uw on-premises omgeving hebt, leest u over [het schalen van een Hyper-V-beoordeling](scale-hyper-v-assessment.md), [het schalen van een VMware-evaluatie](scale-vmware-assessment.md)en [het schalen van een fysieke server beoordeling](scale-physical-assessment.md).
 
 ## <a name="can-i-delete-an-appliance"></a>Kan ik een apparaat verwijderen?
 

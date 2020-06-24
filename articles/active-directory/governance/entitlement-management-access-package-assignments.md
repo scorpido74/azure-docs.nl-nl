@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631747"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078831"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Toewijzingen voor een toegangs pakket in azure AD-rechts beheer weer geven, toevoegen en verwijderen
 
@@ -58,7 +58,7 @@ Als u het rechten beheer van Azure AD wilt gebruiken en gebruikers wilt toewijze
 
 ### <a name="viewing-assignments-programmatically"></a>Toewijzingen weer geven via een programma
 
-U kunt ook toewijzingen in een toegangs pakket ophalen met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om de [lijst accessPackageAssignments te vermelden](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+U kunt ook toewijzingen in een toegangs pakket ophalen met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen om de [lijst accessPackageAssignments te vermelden](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
 ## <a name="directly-assign-a-user"></a>Een gebruiker rechtstreeks toewijzen
 
@@ -90,7 +90,7 @@ In sommige gevallen wilt u mogelijk rechtstreeks specifieke gebruikers toewijzen
 
 ### <a name="directly-assigning-users-programmatically"></a>Gebruikers rechtstreeks via een programma toewijzen
 
-U kunt ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [een accessPackageAssignmentRequest te maken](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+U kunt ook rechtstreeks een gebruiker toewijzen aan een toegangs pakket met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen om [een accessPackageAssignmentRequest te maken](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Een toewijzing verwijderen
 

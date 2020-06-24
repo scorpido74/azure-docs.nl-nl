@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c66ccb8ae9db46ca8e94d9c73e9c61b64119dd0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187658"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201783"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Java script-voor beelden voor gebruik in Azure Active Directory B2C
 
@@ -41,16 +41,16 @@ In dit artikel wordt beschreven hoe u het aangepaste beleid kunt wijzigen om het
 
 * Selecteer een [pagina-indeling](contentdefinitions.md#select-a-page-layout) voor de elementen van de gebruikers interface van uw toepassing.
 
-    Als u van plan bent java script te gebruiken, moet u een versie van de pagina `contract` - [indeling definiëren](contentdefinitions.md#migrating-to-page-layout) met de pagina versie voor *alle* inhouds definities in uw aangepaste beleid.
+    Als u van plan bent java script te gebruiken, moet u [een versie van de pagina-indeling definiëren](contentdefinitions.md#migrating-to-page-layout) met `contract` de pagina versie voor *alle* inhouds definities in uw aangepaste beleid.
 
 ## <a name="add-the-scriptexecution-element"></a>Het element ScriptExecution toevoegen
 
 U kunt het uitvoeren van scripts inschakelen door het element **ScriptExecution** toe te voegen aan het element [RelyingParty](relyingparty.md) .
 
-1. Open uw aangepaste beleids bestand. Bijvoorbeeld *SignUpOrSignin. XML*.
+1. Open uw aangepaste beleids bestand. Bijvoorbeeld *SignUpOrSignin.xml*.
 2. Voeg het element **ScriptExecution** toe aan het element **UserJourneyBehaviors** van **RelyingParty**:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="B2CSignUpOrSignInWithPassword" />
       <UserJourneyBehaviors>
@@ -138,7 +138,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-Vervang `termsOfUseUrl` in de code door de koppeling naar uw gebruiksrecht overeenkomst. Maak voor uw Directory een nieuw gebruikers kenmerk met de naam **termsOfUse** en voeg vervolgens **termsOfUse** als een gebruikers kenmerk toe.
+Vervang in de code door `termsOfUseUrl` de koppeling naar uw gebruiksrecht overeenkomst. Maak voor uw Directory een nieuw gebruikers kenmerk met de naam **termsOfUse** en voeg vervolgens **termsOfUse** als een gebruikers kenmerk toe.
 
 ## <a name="next-steps"></a>Volgende stappen
 

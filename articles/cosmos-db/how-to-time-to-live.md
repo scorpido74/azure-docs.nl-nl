@@ -3,15 +3,15 @@ title: Time to Live configureren en beheren in Azure Cosmos DB
 description: Meer informatie over het configureren en beheren van time to Live voor een container en een item in Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbddcb8627c78544d603e1ea3ca33bc410419da1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124122"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263619"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Time to Live configureren in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Gebruik de volgende stappen om Time to Live in te schakelen op een container zon
    * Selecteer **On (no default)** of **Aan** en stel een TTL-waarde in
    * Klik op **Opslaan** om de wijzigingen op te slaan.
 
-   ![Time to Live configureren in de Azure-portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
+   :::image type="content" source="./media/how-to-time-to-live/how-to-time-to-live-portal.png" alt-text="Time to Live configureren in de Azure-portal":::
 
 * Als DefaultTimeToLive leeg is, is uw Time to Live uitgeschakeld
 * Als DefaultTimeToLive is ingesteld op-1, is de instelling van uw Time to Live ingeschakeld (geen standaard waarde)
@@ -53,7 +53,7 @@ Als u TTL wilt maken of inschakelen voor een container, raadpleegt u
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (micro soft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and without any expiration value
@@ -119,7 +119,7 @@ Als u de Time to Live voor een container wilt instellen, dient u een positief ge
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (micro soft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Create a new container with TTL enabled and a 90 day expiration
@@ -353,7 +353,7 @@ U kunt Time to Live opnieuw voor een item instellen door een schrijf- of bijwerk
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (micro soft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -427,7 +427,7 @@ Als Time to Live voor een item is ingesteld en u wilt dat item niet langer laten
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (micro soft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // This examples leverages the Sales Order class above.
@@ -502,7 +502,7 @@ Als u Time to Live voor een container wilt uitschakelen en het achtergrondproces
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-.NET SDK v2 (micro soft. Azure. DocumentDB)
+.NET SDK v2 (Microsoft.Azure.DocumentDB)
 
 ```csharp
 // Get the container, update DefaultTimeToLive to null

@@ -4,15 +4,15 @@ description: Meer informatie over hoe u Azure-toepassing gateway kunt integreren
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: a214dae7c80cbc520fc6aff5a492466a77261167
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743702"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255361"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-beëindiging met Key Vault certificaten
 
@@ -52,7 +52,7 @@ Voor de integratie van Application Gateway met Key Vault is een configuratie pro
    > [!NOTE]
    > Als u de toepassings gateway via een ARM-sjabloon implementeert door gebruik te maken van de Azure CLI of Power shell of via een Azure-toepassing die is geïmplementeerd vanuit het Azure Portal, wordt het SSL-certificaat opgeslagen in de sleutel kluis als een base64-gecodeerd PFX-bestand. U moet de stappen in [Use Azure Key Vault volt ooien om de waarde van Secure para meter door te geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md). 
    >
-   > Het is met name belang rijk `enabledForTemplateDeployment` om `true`in te stellen op. Het certificaat is mogelijk geen wacht woord of het kan een wacht woord hebben. In het geval van een certificaat met een wacht woord toont het volgende voor beeld een mogelijke configuratie voor `sslCertificates` de vermelding in `properties` de voor de arm-sjabloon configuratie voor een app-gateway. De waarden van `appGatewaySSLCertificateData` en `appGatewaySSLCertificatePassword` worden opgezocht uit de sleutel kluis, zoals beschreven in de sectie [referentie geheimen met een dynamische id](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Volg de verwijzingen `parameters('secretName')` naar achter om te zien hoe de zoek actie plaatsvindt. Als het certificaat geen wacht woord is, laat `password` u het item weg.
+   > Het is met name belang rijk om `enabledForTemplateDeployment` in te stellen op `true` . Het certificaat is mogelijk geen wacht woord of het kan een wacht woord hebben. In het geval van een certificaat met een wacht woord toont het volgende voor beeld een mogelijke configuratie voor de `sslCertificates` vermelding in de `properties` voor de arm-sjabloon configuratie voor een app-gateway. De waarden van `appGatewaySSLCertificateData` en `appGatewaySSLCertificatePassword` worden opgezocht uit de sleutel kluis, zoals beschreven in de sectie [referentie geheimen met een dynamische id](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Volg de verwijzingen naar achter `parameters('secretName')` om te zien hoe de zoek actie plaatsvindt. Als het certificaat geen wacht woord is, laat u het `password` item weg.
    >   
    > ```
    > "sslCertificates": [

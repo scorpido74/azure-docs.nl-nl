@@ -8,7 +8,7 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47546ae5ae964d1ed915ee42b1a2cafec58a805a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025906"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727633"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Licentie toewijzingen voor een gebruiker of groep in Azure Active Directory wijzigen
 
@@ -46,7 +46,7 @@ Voordat u de licentie toewijzingen bijwerkt, is het belang rijk om te controlere
 Als u ziet dat sommige selectie vakjes niet beschikbaar zijn op de pagina **licentie toewijzingen bijwerken** , worden de Services aangegeven die niet kunnen worden gewijzigd omdat ze zijn overgenomen van een groeps licentie.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een licentie beheerders account in uw Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** > **gebruikers**en open vervolgens de **profiel** pagina voor een gebruiker.
+1. Selecteer **Azure Active Directory**  >  **gebruikers**en open vervolgens de **profiel** pagina voor een gebruiker.
 1. Selecteer **licenties**.
 1. Selecteer **toewijzingen** om de licentie toewijzing voor de gebruiker of groep te bewerken. Op de pagina **toewijzingen** kunt u conflicten met licentie toewijzingen oplossen.
 1. Schakel het selectie vakje voor Office 366 E3 in en zorg ervoor dat er mini maal alle E1-services die aan de gebruiker zijn toegewezen, zijn geselecteerd.
@@ -61,7 +61,7 @@ In azure AD worden de nieuwe licenties toegepast en worden de oude licenties teg
 ## <a name="change-group-license-assignments"></a>Toewijzing van groeps licenties wijzigen
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een licentie beheerders account in uw Azure AD-organisatie.
-1. Selecteer **Azure Active Directory** > **groepen**en open vervolgens de pagina **overzicht** voor een groep.
+1. Selecteer **Azure Active Directory**  >  **groepen**en open vervolgens de pagina **overzicht** voor een groep.
 1. Selecteer **licenties**.
 1. Selecteer de opdracht **toewijzingen** om de licentie toewijzing voor de gebruiker of groep te bewerken.
 1. Schakel het selectie vakje voor Office 366 E3 in. Als u de continuïteit van de service wilt behouden, moet u alle E1-services selecteren die al aan de gebruiker zijn toegewezen.

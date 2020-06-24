@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 60c2330578ef4b8e3e40dc3e37a0c8b1eb291e2f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449291"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255548"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Schema beheren in een SaaS-toepassing met behulp van het data base-per-Tenant patroon met Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,10 +62,10 @@ De bron code-en beheer scripts van de toepassing zijn beschikbaar in de [Wingtip
 
 Voor deze zelf studie moet u Power shell gebruiken om een taak agent en de data base van de back-uptaak van de-agent te maken. De data base van de taak agent bevat taak definities, taak status en geschiedenis. Zodra de taak agent en de bijbehorende data base zijn gemaakt, kunt u taken direct maken en bewaken.
 
-1. Open **in Power shell ISE**.. \\ . Learning modules \\ schema beheer \\ *demo-SchemaManagement. ps1*.
+1. Open **in Power shell ISE**.. \\ .Demo-SchemaManagement.ps1voor het schema beheer van learning modules \\ \\ * *.
 1. Druk op **F5** om het script uit te voeren.
 
-Met het script *demo-SchemaManagement. ps1* wordt het script *Deploy-SchemaManagement. ps1* aangeroepen om een SQL database met de naam *osagent* te maken op de catalogus server. Vervolgens wordt de taak agent gemaakt met behulp van de-Data Base als een para meter.
+Het *Demo-SchemaManagement.ps1* script roept het *Deploy-SchemaManagement.ps1* script aan om een Data Base met de naam *osagent* te maken op de catalogus server. Vervolgens wordt de taak agent gemaakt met behulp van de-Data Base als een para meter.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Een taak maken om nieuwe referentiegegevens te implementeren voor alle tenants
 

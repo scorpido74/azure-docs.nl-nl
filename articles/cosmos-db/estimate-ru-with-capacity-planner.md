@@ -3,15 +3,15 @@ title: Kosten ramen met behulp van de capaciteits planner voor Azure Cosmos DB
 description: Met de Azure Cosmos DB capacity planner kunt u een schatting maken van de door Voer (RU/s) die vereist zijn en de kosten voor uw werk belasting. In dit artikel wordt beschreven hoe u de nieuwe versie van de capaciteits planner gebruikt om de door Voer en de vereiste kosten te ramen.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: f10ace47f774e31b586f7736f5fb8e5dfea0c948
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68707628"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261848"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Een raming van RU/s met behulp van de Azure Cosmos DB capaciteit planner
 
@@ -41,7 +41,7 @@ Als u een snelle schatting wilt maken voor uw werk belasting met behulp van de b
 
 Nadat u de vereiste gegevens hebt ingevuld, selecteert u **berekenen**. Op het tabblad **kosten raming** worden de totale kosten voor opslag en ingerichte door Voer weer gegeven. U kunt de koppeling **Details weer geven** op dit tabblad uitsplitsing van de door Voer die is vereist voor lees-en schrijf aanvragen. Telkens wanneer u de waarde van een veld wijzigt, selecteert u **berekenen** om de geschatte kosten opnieuw te berekenen. 
 
-![Basis modus voor capaciteits planner](./media/estimate-ru-with-capacity-planner/basic-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Basis modus voor capaciteits planner":::
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-advanced-mode"></a>Ingerichte door Voer en kosten ramen met geavanceerde modus
 
@@ -62,7 +62,7 @@ Nadat u zich hebt aangemeld, ziet u aanvullende velden vergeleken met de velden 
 
 U kunt ook de knop **schatting opslaan** gebruiken om een CSV-bestand met de huidige schatting te downloaden. 
 
-![Geavanceerde modus voor capaciteits planner](./media/estimate-ru-with-capacity-planner/advanced-mode.png)
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Geavanceerde modus voor capaciteits planner":::
 
 De prijzen die in de Azure Cosmos DB capaciteits planner worden weer gegeven, zijn schattingen op basis van de open bare prijs tarieven voor door Voer en opslag. Alle prijzen worden weer gegeven in Amerikaanse dollars. Raadpleeg de [pagina met prijzen voor Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) om alle tarieven per regio weer te geven.  
 

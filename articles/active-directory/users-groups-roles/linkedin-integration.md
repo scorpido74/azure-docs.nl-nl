@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582642"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727191"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn-account verbindingen integreren in Azure Active Directory
 
@@ -40,7 +40,7 @@ U kunt gebruikers in uw organisatie in staat stellen om toegang te krijgen tot h
 U kunt LinkedIn-account verbindingen inschakelen voor alleen de gebruikers die u toegang wilt geven, vanuit uw hele organisatie tot alleen geselecteerde gebruikers in uw organisatie.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com/) met een account dat een globale beheerder is voor de Azure AD-organisatie.
-1. Selecteer **Gebruikers**.
+1. Selecteer **gebruikers**.
 1. Op de pagina **gebruikers** selecteert u **gebruikers instellingen**.
 1. Onder **LinkedIn-account verbindingen**kunnen gebruikers hun accounts verbinden voor toegang tot hun LinkedIn-verbindingen binnen sommige micro soft-apps. Er worden geen gegevens gedeeld wanneer gebruikers toestemming hebben om verbinding te maken met hun accounts.
 
@@ -91,7 +91,7 @@ Als u de groep uit stap 2 wilt gebruiken als de geselecteerde groep in de instel
 1. De [Office 2016-beheer sjabloon bestanden (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) downloaden
 1. Pak de **ADMX** -bestanden uit en kopieer deze naar uw centrale opslag.
 1. Open Groepsbeleidsbeheer.
-1. Maak een Groepsbeleid-object met de volgende instelling: **gebruikers configuratie** > **Beheersjablonen** > **Microsoft Office 2016** > **diverse** > **LinkedIn-functies weer geven in Office-toepassingen**.
+1. Maak een Groepsbeleid-object met de volgende instelling: **gebruikers configuratie**  >  **Beheersjablonen**  >  **Microsoft Office 2016**  >  **diverse**  >  **LinkedIn-functies weer geven in Office-toepassingen**.
 1. Selecteer **ingeschakeld** of **uitgeschakeld**.
   
    Status | Effect

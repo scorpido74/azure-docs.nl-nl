@@ -3,15 +3,15 @@ title: Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB p
 description: Meer informatie over het gebruik van ingebouwde opdrachten en functies voor het uitvoeren van algemene bewerkingen met behulp van de ingebouwde python-notebooks van Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: d455490f6eed0f928dc69c8f51f8d335a1dfe145
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c35c34d5ffe3f3349430f17e71ad8192f4d8256e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321322"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263361"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB python-notebooks (preview)
 
@@ -140,7 +140,7 @@ pd.options.display.max_rows = None
 
 df_cosmos.groupby("Item").size()
 ```
-![nteract Data Explorer](media/use-notebook-features-and-commands/nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/nteract-built-in-chart.png" alt-text="nteract Data Explorer":::
 
 ## <a name="use-the-built-in-python-sdk"></a>De ingebouwde python-SDK gebruiken
 Versie 4 van de [Azure Cosmos DB PYTHON SDK voor SQL API](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos) is geïnstalleerd en opgenomen in de notebook-omgeving voor het Azure Cosmos-account.
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Werk ruimte notitie blokken opnieuw instellen
 Als u de werk ruimte notitie blokken opnieuw wilt instellen op de standaard instellingen, selecteert u **werk ruimte opnieuw instellen** op de opdracht balk. Hiermee worden alle aangepaste geïnstalleerde pakketten verwijderd en wordt de Jupyter-server opnieuw gestart. Uw notitie blokken, bestanden en Azure Cosmos-resources worden niet beïnvloed.  
 
-![Werk ruimte notitie blokken opnieuw instellen](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Werk ruimte notitie blokken opnieuw instellen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

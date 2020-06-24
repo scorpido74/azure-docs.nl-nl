@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2040d4521f655a0043987f2363e520abcc6c5d3a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185757"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203171"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Taal aanpassing in Azure Active Directory B2C
 
-Door de taal aanpassing in Azure Active Directory B2C (Azure AD B2C) kan uw gebruikers stroom voorzien in verschillende talen die aan de behoeften van uw klant voldoen. Micro soft biedt de vertalingen voor [36 talen](#supported-languages), maar u kunt ook uw eigen vertalingen voor elke taal opgeven. Zelfs als uw ervaring slechts voor één taal wordt gegeven, kunt u tekst op de pagina's aanpassen.
+Door de taal aanpassing in Azure Active Directory B2C (Azure AD B2C) kan uw gebruikers stroom voorzien in verschillende talen die aan de behoeften van uw klant voldoen. Micro soft biedt de vertalingen voor [36 talen](#supported-languages), maar u kunt ook uw eigen vertalingen voor elke taal opgeven. Zelfs als uw ervaring is bedoeld voor slechts één taal, kunt u tekst op de pagina's aanpassen.
 
 ## <a name="how-language-customization-works"></a>De werking van taal aanpassing
 
-U gebruikt taal aanpassing om te selecteren in welke talen uw gebruikers stroom beschikbaar is. Nadat de functie is ingeschakeld, kunt u de query teken reeks parameter opgeven `ui_locales`, vanuit uw toepassing. Wanneer u Azure AD B2C aanroept, wordt uw pagina vertaald naar de land instellingen die u hebt opgegeven. Dit type configuratie geeft u volledige controle over de talen in uw gebruikers stroom en negeert de taal instellingen van de browser van de klant.
+U gebruikt taal aanpassing om te selecteren in welke talen uw gebruikers stroom beschikbaar is. Nadat de functie is ingeschakeld, kunt u de query teken reeks parameter opgeven, `ui_locales` vanuit uw toepassing. Wanneer u Azure AD B2C aanroept, wordt uw pagina vertaald naar de land instellingen die u hebt opgegeven. Dit type configuratie geeft u volledige controle over de talen in uw gebruikers stroom en negeert de taal instellingen van de browser van de klant.
 
 Mogelijk hebt u niet het controle niveau nodig over de talen die uw klant ziet. Als u geen `ui_locales` para meter opgeeft, wordt de gebruikers ervaring bepaald door de instellingen van de browser. U kunt nog steeds bepalen in welke talen uw gebruikers stroom wordt vertaald door deze toe te voegen als een ondersteunde taal. Als de browser van een klant is ingesteld om een taal weer te geven die u niet wilt ondersteunen, wordt in plaats daarvan de taal weer gegeven die u als standaard waarde hebt geselecteerd in ondersteunde cult uren.
 
 * **gebruikers interface-land instellingen opgegeven taal**: nadat u de taal aanpassing hebt ingeschakeld, wordt uw gebruikers stroom vertaald naar de taal die u hier opgeeft.
-* Door **browser aangevraagde taal**: `ui_locales` als er geen para meter is opgegeven, wordt uw gebruikers stroom vertaald naar de door de browser aangevraagde taal, *als de taal wordt ondersteund*.
+* Door **browser aangevraagde taal**: als er geen `ui_locales` para meter is opgegeven, wordt uw gebruikers stroom vertaald naar de door de browser aangevraagde taal, *als de taal wordt ondersteund*.
 * **Standaard taal van beleid**: als in de browser geen taal is opgegeven of als er een niet wordt ondersteund, wordt de gebruikers stroom vertaald naar de standaard taal van de gebruikers stroom.
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Mogelijk hebt u niet het controle niveau nodig over de talen die uw klant ziet. 
 
 Beleids regels die zijn gemaakt voor de algemene Beschik baarheid van taal aanpassing, moeten deze functie eerst inschakelen. Beleids regels en gebruikers stromen die zijn gemaakt nadat de taal aanpassing standaard is ingeschakeld.
 
-Wanneer u taal aanpassing inschakelt voor een gebruikers stroom, kunt u de taal van de gebruikers stroom beheren door `ui_locales` de para meter toe te voegen.
+Wanneer u taal aanpassing inschakelt voor een gebruikers stroom, kunt u de taal van de gebruikers stroom beheren door de para meter toe te voegen `ui_locales` .
 
 1. Selecteer in uw Azure AD B2C-Tenant **gebruikers stromen**.
 1. Klik op de gebruikers stroom die u wilt inschakelen voor vertalingen.
@@ -47,7 +47,7 @@ Wanneer u taal aanpassing inschakelt voor een gebruikers stroom, kunt u de taal 
 
 ## <a name="select-which-languages-in-your-user-flow-are-enabled"></a>Selecteren welke talen in uw gebruikers stroom zijn ingeschakeld
 
-Schakel een set talen in voor uw gebruikers stroom die moet worden omgezet naar wanneer dit wordt aangevraagd door de `ui_locales` browser zonder de para meter.
+Schakel een set talen in voor uw gebruikers stroom die moet worden omgezet naar wanneer dit wordt aangevraagd door de browser zonder de `ui_locales` para meter.
 
 1. Zorg ervoor dat de taal aanpassing van uw gebruikers stroom is ingeschakeld vanuit de vorige instructies.
 1. Selecteer op de pagina **talen** voor de gebruikers stroom een taal die u wilt ondersteunen.
@@ -72,19 +72,19 @@ Deze stappen geven u een JSON-bestand dat u kunt gebruiken om te beginnen met he
 ### <a name="change-any-string-on-the-page"></a>Een wille keurige teken reeks op de pagina wijzigen
 
 1. Open het JSON-bestand dat u hebt gedownload van de vorige instructies in een JSON-editor.
-1. Zoek het element dat u wilt wijzigen. U kunt zoeken `StringId` naar de teken reeks die u zoekt, of zoeken naar het `Value` kenmerk dat u wilt wijzigen.
+1. Zoek het element dat u wilt wijzigen. U kunt zoeken naar `StringId` de teken reeks die u zoekt, of zoeken naar het `Value` kenmerk dat u wilt wijzigen.
 1. Werk het `Value` kenmerk bij met wat u wilt weer geven.
-1. Voor elke teken reeks die u wilt wijzigen in, `Override` wijzigt `true`u in.
+1. Voor elke teken reeks die u wilt wijzigen in, wijzigt u `Override` in `true` .
 1. Sla het bestand op en upload uw wijzigingen. (U kunt het upload beheer vinden op dezelfde locatie als waar u het JSON-bestand hebt gedownload.)
 
 > [!IMPORTANT]
-> Als u een teken reeks moet overschrijven, moet u ervoor zorgen dat `Override` u de `true`waarde instelt op. Als de waarde niet wordt gewijzigd, wordt de vermelding genegeerd.
+> Als u een teken reeks moet overschrijven, moet u ervoor zorgen dat u de `Override` waarde instelt op `true` . Als de waarde niet wordt gewijzigd, wordt de vermelding genegeerd.
 
 ### <a name="change-extension-attributes"></a>Extensie kenmerken wijzigen
 
 Als u de teken reeks voor een aangepast gebruikers kenmerk wilt wijzigen of een wilt toevoegen aan de JSON, heeft dit de volgende notatie:
 
-```JSON
+```json
 {
   "LocalizedStrings": [
     {
@@ -98,15 +98,15 @@ Als u de teken reeks voor een aangepast gebruikers kenmerk wilt wijzigen of een 
 }
 ```
 
-Vervang `<ExtensionAttribute>` door de naam van uw aangepaste gebruikers kenmerk.
+Vervang door `<ExtensionAttribute>` de naam van uw aangepaste gebruikers kenmerk.
 
-Vervang `<ExtensionAttributeValue>` door de nieuwe teken reeks die moet worden weer gegeven.
+Vervang door `<ExtensionAttributeValue>` de nieuwe teken reeks die moet worden weer gegeven.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Een lijst met waarden opgeven met behulp van LocalizedCollections
 
-Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedCollections` kenmerk maken. `LocalizedCollections`is een matrix van `Name` en `Value` -paren. De volg orde van de items is de volg orde waarin ze worden weer gegeven. Gebruik de `LocalizedCollections`volgende indeling om toe te voegen:
+Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedCollections` kenmerk maken. `LocalizedCollections`is een matrix van `Name` en- `Value` paren. De volg orde van de items is de volg orde waarin ze worden weer gegeven. Gebruik de volgende indeling om toe te voegen `LocalizedCollections` :
 
-```JSON
+```json
 {
   "LocalizedStrings": [...],
   "LocalizedCollections": [{
@@ -145,15 +145,15 @@ De wijzigingen worden automatisch opgeslagen in de stroom van uw gebruikers.
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>De pagina gebruikers interface aanpassen met behulp van taal aanpassing
 
-Er zijn twee manieren om uw HTML-inhoud te lokaliseren. Een manier is om [taal aanpassing](user-flow-language-customization.md)in te scha kelen. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect `ui-locales`Connect-para meter, naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om aangepaste HTML-pagina's te bieden die specifiek zijn voor een specifieke taal.
+Er zijn twee manieren om uw HTML-inhoud te lokaliseren. Een manier is om [taal aanpassing](user-flow-language-customization.md)in te scha kelen. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter, `ui-locales` naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om aangepaste HTML-pagina's te bieden die specifiek zijn voor een specifieke taal.
 
-U kunt ook inhoud vanaf verschillende locaties ophalen op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, kunt u een mapstructuur instellen om inhoud voor specifieke talen te hosten. U belt het juiste nummer als u de Joker teken waarde `{Culture:RFC5646}`gebruikt. Stel dat dit uw aangepaste pagina-URI is:
+U kunt ook inhoud vanaf verschillende locaties ophalen op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, kunt u een mapstructuur instellen om inhoud voor specifieke talen te hosten. U belt het juiste nummer als u de Joker teken waarde gebruikt `{Culture:RFC5646}` . Stel dat dit uw aangepaste pagina-URI is:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
 ```
 
-U kunt de pagina laden in `fr`. Wanneer de pagina HTML-en CSS-inhoud haalt, wordt deze opgehaald uit:
+U kunt de pagina laden in `fr` . Wanneer de pagina HTML-en CSS-inhoud haalt, wordt deze opgehaald uit:
 
 ```
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
@@ -191,7 +191,7 @@ Micro soft biedt momenteel geen ondersteuning voor talen die van rechts naar lin
 
 ### <a name="social-identity-provider-translations"></a>Vertalingen van de sociale ID-provider
 
-Micro soft biedt `ui_locales` de para meter OIDC aan sociale aanmeldingen. Maar sommige aanbieders van sociale identiteiten, waaronder Facebook en Google, voldoen niet aan deze providers.
+Micro soft biedt de `ui_locales` para meter OIDC aan sociale aanmeldingen. Maar sommige aanbieders van sociale identiteiten, waaronder Facebook en Google, voldoen niet aan deze providers.
 
 ### <a name="browser-behavior"></a>Browser gedrag
 
@@ -236,7 +236,7 @@ Azure AD B2C biedt ondersteuning voor de volgende talen. De talen van de gebruik
 | Maleisisch                 | Mevrouw            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Noors Bokmål      | NB            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Nederlands                 | nl            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
-| Norwegian             | nee            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
+| Noors             | nee            | ![nee](./media/user-flow-language-customization/no.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Punjabi               | PA            | ![ja](./media/user-flow-language-customization/yes.png) | ![nee](./media/user-flow-language-customization/no.png) |
 | Pools                | pl            | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |
 | Portuguese - Brazil   | pt-br         | ![ja](./media/user-flow-language-customization/yes.png) | ![ja](./media/user-flow-language-customization/yes.png) |

@@ -3,15 +3,15 @@ title: Containerdoorvoer inrichten in Azure Cosmos DB
 description: Meer informatie over het inrichten van de door Voer op het niveau van de container in Azure Cosmos DB met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6ade9baaf7dc125bac6738b44134ee496b8a2be4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: e6b4126d3d1c2a7413a43779e0da0cd3f5347a5a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265927"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263700"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Standaard doorvoer (hand matig) door Voer voor een Azure Cosmos-container
 
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) kunt inr
    * Voer een door Voer in die u wilt inrichten (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    ![Schermopname van Data Explorer met Nieuwe verzameling gemarkeerd](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="Schermopname van Data Explorer met Nieuwe verzameling gemarkeerd":::
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI of Power shell
 

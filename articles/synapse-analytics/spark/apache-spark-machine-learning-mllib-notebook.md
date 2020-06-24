@@ -6,14 +6,15 @@ author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f00df1bc204e4d271f1c903ec50759cba3c56774
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 402b479280f0cb7655b68cc00a0ea7fbe55b8c15
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235872"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194651"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
@@ -224,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Nu er twee DataFrames zijn, bestaat de volgende taak uit het maken van de model formule en voert u deze uit met de training data frame en valideert u vervolgens op basis van de test data frame. Experimenteer met verschillende versies van de model formule om de impact van verschillende combi Naties te bekijken.
 
 > [!Note]
-> Als u het model wilt opslaan, hebt u de Azure Storage Blob de RBAC-rol data contributor nodig. Navigeer onder uw opslag account naar Access Control (IAM) en selecteer roltoewijzing toevoegen. Wijs de RBAC-rol Storage BLOB data Inzender toe aan uw SQL Database-Server. Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor verschillende ingebouwde rollen voor Azure-resources.
+> Als u het model wilt opslaan, hebt u de Azure Storage Blob de RBAC-rol data contributor nodig. Navigeer onder uw opslagaccount naar Access Control (IAM) en selecteer Roltoewijzing toevoegen. Wijs de RBAC-rol Storage BLOB data Inzender toe aan uw SQL Database-Server. Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor verschillende ingebouwde rollen voor Azure-resources.
 
 ```python
 ## Create a new LR object for the model

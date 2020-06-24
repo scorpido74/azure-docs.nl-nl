@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6f3418d73496ae25782b57a43e3357dc0bc7131a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660033"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201698"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Ontwerp richtlijnen voor het gebruik van gerepliceerde tabellen in de Synapse SQL-pool
 
@@ -126,7 +126,7 @@ We maken `DimDate` en `DimSalesTerritory` als gerepliceerde tabellen opnieuw en 
 
 De SQL-Groep implementeert een gerepliceerde tabel door een hoofd versie van de tabel te onderhouden. Hiermee wordt de hoofd versie gekopieerd naar de eerste distributie database op elk reken knooppunt. Wanneer er een wijziging is, wordt de hoofd versie eerst bijgewerkt, daarna worden de tabellen op elk reken knooppunt opnieuw opgebouwd. Het opnieuw opbouwen van een gerepliceerde tabel omvat het kopiëren van de tabel naar elk reken knooppunt en vervolgens het samen stellen van de indexen.  Bijvoorbeeld, een gerepliceerde tabel op een DW2000c heeft 5 kopieën van de gegevens.  Een hoofd kopie en een volledige kopie op elk reken knooppunt.  Alle gegevens worden opgeslagen in distributie databases. De SQL-groep gebruikt dit model om snellere instructies voor het wijzigen van gegevens en flexibele schaal bewerkingen te ondersteunen.
 
-Opnieuw opbouwen is vereist na:
+Asynchrone opnieuw opgebouwden worden door de eerste query geactiveerd op basis van de gerepliceerde tabel na:
 
 - Gegevens worden geladen of gewijzigd
 - Het Synapse SQL-exemplaar is geschaald naar een ander niveau

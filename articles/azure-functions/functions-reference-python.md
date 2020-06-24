@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660593"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730744"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
@@ -189,7 +189,7 @@ def main(req: func.HttpRequest,
 Wanneer de functie wordt aangeroepen, wordt de HTTP-aanvraag door gegeven aan de functie als `req` . Er wordt een item opgehaald uit de Azure-Blob Storage op basis van de id in de route _-_ URL en beschikbaar gemaakt als `obj` in de hoofd tekst van de functie.  Hier is het opgegeven opslag account het connection string gevonden in de app-instelling AzureWebJobsStorage. Dit is hetzelfde opslag account dat wordt gebruikt door de functie-app.
 
 
-## <a name="outputs"></a>Uitvoer
+## <a name="outputs"></a>Uitvoerwaarden
 
 Output kan worden uitgedrukt in retour waarde en uitvoer parameters. Als er slechts één uitvoer is, raden we u aan de retour waarde te gebruiken. Voor meerdere uitvoer moet u uitvoer parameters gebruiken.
 
@@ -263,7 +263,7 @@ Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie over 
 
 ## <a name="http-trigger-and-bindings"></a>HTTP-trigger en bindingen
 
-De HTTP-trigger wordt gedefinieerd in het bestand function. Jon. De `name` van de binding moet overeenkomen met de benoemde para meter in de functie.
+De HTTP-trigger wordt gedefinieerd in de function.jsin het bestand. De `name` van de binding moet overeenkomen met de benoemde para meter in de functie.
 In de vorige voor beelden wordt een bindings naam `req` gebruikt. Deze para meter is een [HttpRequest] -object en er wordt een [HttpResponse] -object geretourneerd.
 
 Vanuit het object [HttpRequest] kunt u aanvraag headers, query parameters, route parameters en de bericht tekst ophalen.
@@ -650,11 +650,11 @@ Voor de functie python Worker is een specifieke set bibliotheken vereist. U kunt
 
 ### <a name="azure-functions-python-library"></a>Python-bibliotheek Azure Functions
 
-Elke python worker-update bevat een nieuwe versie van [Azure functions python-bibliotheek (Azure. functions)](https://github.com/Azure/azure-functions-python-library). De versie van de runtime bibliotheek wordt opgelost door Azure en kan niet worden overschreven door requirements.txt. De `azure-functions` invoer in requirements.txt is alleen voor linting en klant bewustzijn.
+Elke python worker-update bevat een nieuwe versie van [Azure functions python-bibliotheek (Azure. functions)](https://github.com/Azure/azure-functions-python-library). Deze aanpak maakt het eenvoudiger om uw python-functie-apps bij te werken, omdat elke update achterwaarts compatibel is. Een lijst met versies van deze bibliotheek vindt u in [Azure-functions PyPi](https://pypi.org/project/azure-functions/#history).
 
-De reden van het nemen van deze beslissing is voor het gemak van doorlopende update in Azure Functions python-apps. De update van de python-bibliotheek moet niet klant bewust zijn omdat elke update achterwaarts compatibel is. Een lijst met release van de bibliotheek vindt u in [Azure-functions PyPi](https://pypi.org/project/azure-functions/#history).
+De versie van de runtime bibliotheek wordt opgelost door Azure en kan niet worden overschreven door requirements.txt. De `azure-functions` invoer in requirements.txt is alleen voor linting en klant bewustzijn. 
 
-U kunt de huidige versie van de python-functies bibliotheek in uw runtime bijhouden met de volgende regel:
+Gebruik de volgende code om de daad werkelijke versie van de python-functies bibliotheek in uw runtime bij te houden:
 
 ```python
 getattr(azure.functions, '__version__', '< 1.2.1')
@@ -663,10 +663,11 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 ### <a name="runtime-system-libraries"></a>Runtime systeem bibliotheken
 
 Volg de onderstaande koppelingen voor een lijst met vooraf geïnstalleerde systeem bibliotheken in python worker-installatie kopieën:
+
 |  Functions runtime  | Debian-versie | Python-versies |
 |------------|------------|------------|
-| Versie 2. x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| Versie 3. x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| Versie 2. x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3,7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| Versie 3. x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3,7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>Cross-origin-resources delen
 
@@ -688,7 +689,7 @@ Zie de volgende bronnen voor meer informatie:
 
 * [Documentatie over de API voor Azure Functions-pakketten](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
-* [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
+* [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 * [Blob Storage-bindingen](functions-bindings-storage-blob.md)
 * [HTTP-en webhook-bindingen](functions-bindings-http-webhook.md)
 * [Wachtrij opslag bindingen](functions-bindings-storage-queue.md)

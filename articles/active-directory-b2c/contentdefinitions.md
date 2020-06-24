@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051494"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202854"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -30,7 +30,7 @@ Het **ContentDefinitions** -element bevat URL'S naar HTML5-sjablonen die kunnen 
 
 In het volgende voor beeld ziet u de definitie-id van de inhoud en de definitie van gelokaliseerde bronnen:
 
-```XML
+```xml
 <ContentDefinition Id="api.localaccountsignup">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -46,7 +46,7 @@ In het volgende voor beeld ziet u de definitie-id van de inhoud en de definitie 
 
 De meta gegevens van het zelfondertekende technische profiel van **LocalAccountSignUpWithLogonEmail** bevatten de inhouds definitie-id **ContentDefinitionReferenceId** ingesteld op`api.localaccountsignup`
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -63,21 +63,21 @@ Het element **ContentDefinition** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id voor een inhouds definitie. De waarde is één opgegeven in de sectie **inhouds definitie-id's** verderop op deze pagina. |
+| Id | Yes | Een id voor een inhouds definitie. De waarde is één opgegeven in de sectie **inhouds definitie-id's** verderop op deze pagina. |
 
 Het **ContentDefinition** -element bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Een teken reeks die de URL van de HTML5-pagina voor de inhouds definitie bevat. |
-| RecoveryUri | 1:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. De waarde moet momenteel niet worden `~/common/default_page_error.html`gebruikt. |
+| RecoveryUri | 1:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. De waarde moet momenteel niet worden gebruikt `~/common/default_page_error.html` . |
 | DataUri | 1:1 | Een teken reeks die de relatieve URL bevat van een HTML-bestand dat de gebruikers ervaring biedt voor het aanroepen van de stap. |
 | Metagegevens | 0:1 | Een verzameling sleutel-waardeparen die de meta gegevens bevat die worden gebruikt door de inhouds definitie. |
 | LocalizedResourcesReferences | 0:1 | Een verzameling gelokaliseerde bronnen verwijzingen. Gebruik dit element om de lokalisatie van een gebruikers interface en claims-kenmerk aan te passen. |
 
 ### <a name="datauri"></a>DataUri
 
-Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version`. De volgende tabel geeft een lijst van de pagina-id's die u kunt gebruiken.
+Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version` . De volgende tabel geeft een lijst van de pagina-id's die u kunt gebruiken.
 
 | Pagina-id | Beschrijving |
 | ----- | ----------- |
@@ -90,13 +90,13 @@ Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C
 
 ### <a name="select-a-page-layout"></a>Selecteer een pagina-indeling
 
-U kunt [Java script-client-side code](javascript-samples.md) inschakelen `contract` door `elements` tussen en het pagina Type in te voegen. Bijvoorbeeld `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+U kunt [Java script-client-side code](javascript-samples.md) inschakelen door `contract` tussen `elements` en het pagina Type in te voegen. Bijvoorbeeld `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Het [versie](page-layout.md) gedeelte van de `DataUri` specificeert het pakket inhoud met HTML, CSS en Java script voor de elementen van de gebruikers interface in uw beleid. Als u van plan bent om Java script-client code in te scha kelen, moeten de elementen waarop u uw Java script baseert, onveranderbaar zijn. Als ze niet onveranderbaar zijn, kunnen wijzigingen op de pagina's van uw gebruikers onverwacht gedrag veroorzaken. Als u deze problemen wilt voor komen, dwingt u het gebruik van een pagina-indeling af en geeft u een versie van de pagina-indeling op. Zo zorgt u ervoor dat alle inhouds definities die u op uw Java script hebt gebaseerd, onveranderbaar zijn. Zelfs als u Java script niet wilt inschakelen, moet u nog steeds de versie van de pagina-indeling opgeven voor uw pagina's.
 
-In `selfasserted` het volgende voor beeld ziet u de `1.2.0` **DataUri** -versie:
+In het volgende voor beeld ziet u de **DataUri** - `selfasserted` versie `1.2.0` :
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -111,7 +111,7 @@ In `selfasserted` het volgende voor beeld ziet u de `1.2.0` **DataUri** -versie:
 
 #### <a name="migrating-to-page-layout"></a>Migreren naar pagina-indeling
 
-De notatie van de waarde moet het woord `contract`: _urn: com: micro soft: AAD: B2C: elementen:**contract**:p Age-name: Version_bevatten. Als u een pagina-indeling wilt opgeven in uw aangepaste beleids regels die gebruikmaken van een oude **DataUri** -waarde, gebruikt u de volgende tabel om te migreren naar de nieuwe indeling.
+De notatie van de waarde moet het woord `contract` : _urn: com: micro soft: AAD: B2C: elementen:**contract**:p Age-name: Version_bevatten. Als u een pagina-indeling wilt opgeven in uw aangepaste beleids regels die gebruikmaken van een oude **DataUri** -waarde, gebruikt u de volgende tabel om te migreren naar de nieuwe indeling.
 
 | Oude DataUri-waarde | Nieuwe DataUri-waarde |
 | ----------------- | ----------------- |
@@ -139,7 +139,7 @@ Het element **item** van het **META** gegevenselement bevat de volgende kenmerke
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Sleutel | Ja | De meta gegevens sleutel.  |
+| Sleutel | Yes | De meta gegevens sleutel.  |
 
 #### <a name="metadata-keys"></a>Meta gegevens sleutels
 
@@ -147,7 +147,7 @@ De inhouds definitie ondersteunt de volgende meta gegevens items:
 
 | Sleutel | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| DisplayName | Nee | Een teken reeks die de naam van de inhouds definitie bevat. |
+| DisplayName | No | Een teken reeks die de naam van de inhouds definitie bevat. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -161,12 +161,12 @@ Het **LocalizedResourcesReference** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Taal | Ja | Een teken reeks die een ondersteunde taal voor het beleid bevat per RFC 5646-Tags voor het identificeren van talen. |
-| LocalizedResourcesReferenceId | Ja | De id van het **LocalizedResources** -element. |
+| Taal | Yes | Een teken reeks die een ondersteunde taal voor het beleid bevat per RFC 5646-Tags voor het identificeren van talen. |
+| LocalizedResourcesReferenceId | Yes | De id van het **LocalizedResources** -element. |
 
 In het volgende voor beeld wordt een registratie-of aanmeldings definitie weer gegeven met een verwijzing naar lokalisatie voor Engels, Frans en Spaans:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>

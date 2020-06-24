@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 04/29/2020
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0524e8756e86771ab555eaa853e3955fe69c8549
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582706"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727650"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licenties toewijzen aan gebruikers per groepslid maatschap in Azure Active Directory
 
@@ -59,7 +59,7 @@ Wanneer u licenties aan een groep toewijst, worden alle bestaande leden van die 
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Stap 2: controleren of de eerste toewijzing is voltooid
 
-1. Ga naar **Azure Active Directory** > **groepen**. Selecteer de groep waaraan de licenties zijn toegewezen.
+1. Ga naar **Azure Active Directory**  >  **groepen**. Selecteer de groep waaraan de licenties zijn toegewezen.
 
 1. Selecteer op de pagina groep de optie **licenties**. Zo kunt u snel controleren of licenties volledig zijn toegewezen aan gebruikers en of er fouten zijn die u moet zoeken. De volgende informatie is beschikbaar:
 
@@ -71,17 +71,17 @@ Wanneer u licenties aan een groep toewijst, worden alle bestaande leden van die 
 
    ![licentie fouten en licentie status](./media/licensing-groups-assign/assignment-errors.png)
 
-1. Meer gedetailleerde informatie over de licentie verwerking onder **Azure Active Directory** > **gebruikers en groepen** > *groeps naam* > **controle logboeken**. Controleer de volgende activiteiten:
+1. Meer gedetailleerde informatie over de licentie verwerking onder **Azure Active Directory**  >  **gebruikers en groepen**  >  *groeps naam*  >  **controle logboeken**. Controleer de volgende activiteiten:
 
-   - Activiteit: `Start applying group based license to users`. Dit wordt geregistreerd wanneer het systeem de wijziging van de licentie toewijzing ophaalt voor de groep en op alle gebruikers leden wordt toegepast. Het bevat informatie over de wijziging die is aangebracht.
+   - Activiteit: `Start applying group based license to users` . Dit wordt geregistreerd wanneer het systeem de wijziging van de licentie toewijzing ophaalt voor de groep en op alle gebruikers leden wordt toegepast. Het bevat informatie over de wijziging die is aangebracht.
 
-   - Activiteit: `Finish applying group based license to users`. Dit wordt geregistreerd wanneer het systeem klaar is met de verwerking van alle gebruikers in de groep. Het bevat een samen vatting van het aantal gebruikers dat is verwerkt en aan hoeveel gebruikers geen groeps licenties kunnen worden toegewezen.
+   - Activiteit: `Finish applying group based license to users` . Dit wordt geregistreerd wanneer het systeem klaar is met de verwerking van alle gebruikers in de groep. Het bevat een samen vatting van het aantal gebruikers dat is verwerkt en aan hoeveel gebruikers geen groeps licenties kunnen worden toegewezen.
 
    [Lees deze sectie](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) voor meer informatie over hoe audit logboeken kunnen worden gebruikt voor het analyseren van wijzigingen die zijn aangebracht door op groep gebaseerde licentie verlening.
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Stap 3: controleren op licentie problemen en deze oplossen
 
-1. Ga naar **Azure Active Directory** > **groepen**en zoek de groep waaraan de licenties zijn toegewezen.
+1. Ga naar **Azure Active Directory**  >  **groepen**en zoek de groep waaraan de licenties zijn toegewezen.
 1. Selecteer op de pagina groep de optie **licenties**. In de melding boven op de pagina ziet u dat er 10 gebruikers zijn waaraan geen licenties kunnen worden toegewezen. Open het om een lijst met alle gebruikers met een licentie fout status voor deze groep weer te geven.
 1. In de kolom **Mislukte toewijzingen** wordt aangegeven dat beide product licenties niet aan de gebruikers kunnen worden toegewezen. De **eerste reden voor de fout** kolom bevat de oorzaak van de fout. In dit geval zijn er **conflicterende service plannen**.
 

@@ -3,16 +3,16 @@ title: Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB C
 description: Meer informatie over het gebruik van ingebouwde opdrachten en functies voor het uitvoeren van algemene bewerkingen met behulp van de ingebouwde C#-notebooks van Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.custom: tracking-python
-ms.openlocfilehash: 46420aeb635bd4cd7b84698b7eb5d522177b443a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561767"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263412"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB C#-notitie blokken (preview-versie)
 
@@ -115,14 +115,14 @@ U kunt de ingebouwde [nteract Data Explorer](https://blog.nteract.io/designing-t
 
 In het *GetingStarted_Csharp. ipynb* -voor beeld kunnen we de variabele afdrukken met het resultaat, de ``telemetryEvents`` . Zie de [GettingStarted_Csharp. ipynb-notebook](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb) voor het hele voor beeld. 
 
-![Cel csharp query](media/use-notebook-features-and-commands/csharp-query-cell.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Cel csharp query":::
 
-![nteract Data Explorer](media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract Data Explorer":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>Ingebouwde woordenlijst viewer gebruiken
 U kunt de ingebouwde woordenlijst viewer gebruiken om een variabele weer te geven. In een cel plaatst u de variabele die u wilt visualiseren in de laatste regel, die automatisch wordt weer gegeven wanneer de cel wordt uitgevoerd.
 
-![Ingebouwde woordenlijst viewer](media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="Ingebouwde woordenlijst viewer":::
 
 ## <a name="upload-json-items-to-a-container"></a>JSON-items uploaden naar een container
 U kunt de ``%%upload`` opdracht Magic gebruiken om gegevens van een JSON-bestand te uploaden naar een opgegeven Azure Cosmos-container. Gebruik de volgende opdracht om de items te uploaden:
@@ -160,7 +160,7 @@ Vervang door ``{notebookName}`` de naam van het notitie blok dat u wilt uitvoere
 ## <a name="reset-notebooks-workspace"></a>Werk ruimte notitie blokken opnieuw instellen
 Als u de werk ruimte notitie blokken opnieuw wilt instellen op de standaard instellingen, selecteert u **werk ruimte opnieuw instellen** op de opdracht balk. Hiermee worden alle aangepaste geïnstalleerde pakketten verwijderd en wordt de Jupyter-server opnieuw gestart. Uw notitie blokken, bestanden en Azure Cosmos-resources worden niet beïnvloed.  
 
-![Werk ruimte notitie blokken opnieuw instellen](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Werk ruimte notitie blokken opnieuw instellen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

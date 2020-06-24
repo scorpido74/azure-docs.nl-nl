@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 04/28/2020
+ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: b9b4f505e7d3bdfec4bb689dcb8e08c82111ba1e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558445"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298239"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Met de functie voor automatische ML van Azure Machine Learning kunt u hoogwaardi
 
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).  
+* Een Azure Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).  
 
 * Basis kennis van het [geautomatiseerde machine learning](concept-automated-ml.md) van Azure en [machine learning pijp lijnen](concept-ml-pipelines.md) en-SDK.
 
@@ -69,7 +69,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-De code meldt zich eerst aan bij de Azure Machine Learning werkruimte die is gedefinieerd in **config. json** (Zie [zelf studie: aan de slag met het maken van uw eerste ml-experiment met de python-SDK](tutorial-1st-experiment-sdk-setup.md)). Als er nog geen gegevensset met de naam `'titanic_ds'` geregistreerd is, wordt er een gemaakt. Met de code worden CSV-gegevens van het web gedownload, worden deze gebruikt voor het instantiëren van een `TabularDataset` en wordt de gegevensset vervolgens geregistreerd bij de werk ruimte. Ten slotte wijst de functie `Dataset.get_by_name()` de `Dataset` aan toe `titanic_ds` . 
+De code meldt zich eerst aan bij de Azure Machine Learning werk ruimte die in **config.js** is gedefinieerd (Zie [zelf studie: aan de slag met het maken van uw eerste ml-experiment met de python-SDK](tutorial-1st-experiment-sdk-setup.md)) voor meer informatie. Als er nog geen gegevensset met de naam `'titanic_ds'` geregistreerd is, wordt er een gemaakt. Met de code worden CSV-gegevens van het web gedownload, worden deze gebruikt voor het instantiëren van een `TabularDataset` en wordt de gegevensset vervolgens geregistreerd bij de werk ruimte. Ten slotte wijst de functie `Dataset.get_by_name()` de `Dataset` aan toe `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Uw opslag en het reken doel configureren
 
@@ -111,18 +111,27 @@ De volgende stap zorgt ervoor dat de uitvoering van de externe training alle afh
 ```python
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-aml_run_config.environment.python.user_managed_dependencies = False
 
-# Add some packages relied on by data prep step
-aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-    conda_packages=['pandas','scikit-learn'], 
-    pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
-    pin_sdk_version=False)
+USE_CURATED_ENV = True
+if USE_CURATED_ENV :
+    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    aml_run_config.environment = curated_environment
+else:
+    aml_run_config.environment.python.user_managed_dependencies = False
+    
+    # Add some packages relied on by data prep step
+    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+        conda_packages=['pandas','scikit-learn'], 
+        pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
+        pin_sdk_version=False)
 ```
+
+De bovenstaande code bevat twee opties voor het afhandelen van afhankelijkheden. Zoals weer gegeven, `USE_CURATED_ENV = True` is de configuratie gebaseerd op een gecuratore omgeving. Met de geprebakedeerde omgevingen is de gemeen schappelijke onderlinge Interdependent-tape wisselaars en kunnen ze aanzienlijk sneller online worden gebracht. In de [micro soft-container Registry](https://hub.docker.com/publishers/microsoftowner)hebben geconstrueerde omgevingen vooraf ingebouwde docker-installatie kopieën. Het pad dat u hebt gemaakt `USE_CURATED_ENV` , `False` wordt weer gegeven met het patroon voor het expliciet instellen van afhankelijkheden. In dat scenario wordt een nieuwe aangepaste docker-installatie kopie gemaakt en geregistreerd in een Azure Container Registry binnen de resource groep (Zie [Inleiding tot privé-docker-container registers in azure](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). Het maken en registreren van deze installatie kopie kan enkele minuten duren. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Gegevens voorbereiden voor automatische machine learning
 

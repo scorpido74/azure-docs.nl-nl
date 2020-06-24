@@ -3,15 +3,15 @@ title: Opgeslagen procedures en triggers schrijven met behulp van de Java script
 description: Leer opgeslagen procedures en triggers schrijven met de JavaScript-query-API in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: bc92a1276232506d291e367f74a9dcf8d58d7e07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 620b05b306622a0102a4fd932c013bdb9574c35c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982323"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262851"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Opgeslagen procedures en triggers schrijven in Azure Cosmos DB met de JavaScript-query-API
 
@@ -19,7 +19,7 @@ In Azure Cosmos DB kunt u geoptimaliseerde query's uitvoeren door gebruik te mak
 
 ## <a name="stored-procedure-using-the-javascript-query-api"></a><a id="stored-procedures"></a>Opgeslagen procedure met behulp van de JavaScript-query-API
 
-Het volgende codevoorbeeld geeft aan hoe de JavaScript-query-API wordt gebruikt in de context van een opgeslagen procedure. Met de opgeslagen procedure wordt een Azure Cosmos-item ingevoegd dat is opgegeven door een invoer parameter en wordt een meta gegevens document `__.filter()` bijgewerkt met behulp van de methode, met MinSize, MaxSize en totalSize op basis van de eigenschap Size van het invoer item.
+Het volgende codevoorbeeld geeft aan hoe de JavaScript-query-API wordt gebruikt in de context van een opgeslagen procedure. Met de opgeslagen procedure wordt een Azure Cosmos-item ingevoegd dat is opgegeven door een invoer parameter en wordt een meta gegevens document bijgewerkt met behulp van de `__.filter()` methode, met minSize, maxSize en totalSize op basis van de eigenschap Size van het invoer item.
 
 > [!NOTE]
 > `__` (dubbele onderstreping) is een alias naar `getContext().getCollection()` bij gebruik van de JavaScript-query-API.

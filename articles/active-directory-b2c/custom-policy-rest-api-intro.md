@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41db591b8abdaaa58461b2782d93f7aa745cfdc6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447914"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202531"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API claim uitwisselingen integreren in uw aangepaste beleid voor Azure AD B2C
 
@@ -52,7 +52,7 @@ De interactie bevat een claim uitwisseling van informatie tussen de REST API cla
   - Claims valideren en aangepaste fout berichten genereren die worden teruggestuurd naar de toepassing.
   - Teruggestuurde claims van de REST API naar volgende Orchestration-stappen.
 
-U kunt een REST API-aanroep toevoegen aan elke stap in de gebruikers reis die is gedefinieerd door een aangepast beleid. U kunt bijvoorbeeld een REST API aanroepen:
+U kunt aan elke stap in de gebruikersbeleving die is gedefinieerd door een aangepast beleid, een aanroep van een REST-API toevoegen. U kunt bijvoorbeeld een REST-API aanroepen:
 
 - Tijdens het aanmelden, net voordat Azure AD B2C de referenties valideert.
 - Direct na het aanmelden.
@@ -145,7 +145,7 @@ Uw REST API kan worden gebaseerd op elk platform en worden geschreven in elke pr
 ## <a name="localize-the-rest-api"></a>De REST API lokaliseren
 In een onderliggend technisch profiel wilt u mogelijk de taal/land instelling van de huidige sessie verzenden en zo nodig een gelokaliseerd fout bericht genereren. Met de [claim resolver](claim-resolver-overview.md)kunt u een contextuele claim verzenden, zoals de gebruikers taal. In het volgende voor beeld ziet u een onderliggend technisch profiel met een demonstratie van dit scenario.
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -165,7 +165,7 @@ In een onderliggend technisch profiel wilt u mogelijk de taal/land instelling va
 
 ## <a name="handling-error-messages"></a>Fout berichten verwerken
 
-Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie). Zie het [rest technische profiel](restful-technical-profile.md#returning-error-message)voor meer informatie.
+Uw REST API moet mogelijk een fout bericht retour neren, zoals ' de gebruiker is niet gevonden in het CRM-systeem '. Als er een fout optreedt, moet de REST API een HTTP 409-fout bericht retour neren (status code voor de conflict reactie). Zie het [rest technische profiel](restful-technical-profile.md#returning-validation-error-message)voor meer informatie.
 
 Dit kan alleen worden bereikt door een REST API technisch profiel aan te roepen vanuit een validatie technische profiel. Hiermee kan de gebruiker de gegevens op de pagina corrigeren en de validatie opnieuw uitvoeren bij het verzenden van de pagina.
 
