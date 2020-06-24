@@ -3,27 +3,28 @@ title: 'Toepassings beheer: Aanbevolen procedures en aanbevelingen | Microsoft D
 description: Lees de aanbevolen procedures en aanbevelingen voor het beheren van toepassingen in Azure Active Directory. Meer informatie over het gebruik van automatische inrichting en het publiceren van on-premises apps met toepassings proxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6534efb6fcd07ee3b9f3979cabf2feb77496a8b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74085289"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760266"
 ---
 # <a name="application-management-best-practices"></a>Aanbevolen procedures voor toepassings beheer
+
 Dit artikel bevat aanbevelingen en aanbevolen procedures voor het beheren van toepassingen in Azure Active Directory (Azure AD), het gebruik van automatische inrichting en publiceren van on-premises apps met toepassings proxy.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Aanbevelingen voor Cloud-apps en eenmalige aanmelding

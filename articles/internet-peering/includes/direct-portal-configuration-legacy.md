@@ -37,7 +37,7 @@ ms.locfileid: "81678833"
     > Als u aanvullende peering-verbindingen wilt toevoegen met micro soft in de geselecteerde **metro** locatie, selecteert u **nieuwe maken**. Zie [direct peering maken of wijzigen met behulp van de portal](../howto-direct-portal.md)voor meer informatie.
     >
 
-1. Selecteer **controleren + maken**. De portal voert basis validatie uit van de gegevens die u hebt ingevoerd. In een lint bovenaan wordt het bericht weer gegeven dat de *laatste validatie uitvoert...*.
+1. Selecteer **Controleren + maken**. De portal voert basis validatie uit van de gegevens die u hebt ingevoerd. In een lint bovenaan wordt het bericht weer gegeven dat de *laatste validatie uitvoert...*.
 
     > [!div class="mx-imgBorder"]
     > ![Tabblad validatie van peering](../media/setup-direct-review-tab-validation.png)

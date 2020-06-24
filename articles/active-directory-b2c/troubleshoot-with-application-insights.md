@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc227081af4f306a27b77eb727ea96467f94fa2e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186264"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203109"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C-logboeken met Application Insights verzamelen
 
@@ -42,28 +42,28 @@ Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abo
 
 ## <a name="configure-the-custom-policy"></a>Het aangepaste beleid configureren
 
-1. Open het Relying Party (RP)-bestand, bijvoorbeeld *SignUpOrSignin. XML*.
-1. Voeg de volgende kenmerken toe aan `<TrustFrameworkPolicy>` het element:
+1. Open het Relying Party (RP)-bestand, bijvoorbeeld *SignUpOrSignin.xml*.
+1. Voeg de volgende kenmerken toe aan het `<TrustFrameworkPolicy>` element:
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Als deze nog niet bestaat, voegt u `<UserJourneyBehaviors>` een onderliggend `<RelyingParty>` knoop punt toe aan het knoop punt. Deze moet direct na `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`worden geplaatst.
-1. Voeg het volgende knoop punt toe als onderliggend item van het `<UserJourneyBehaviors>` element. Zorg ervoor dat u `{Your Application Insights Key}` vervangt door de Application Insights **instrumentatie sleutel** die u eerder hebt vastgelegd.
+1. Als deze nog niet bestaat, voegt `<UserJourneyBehaviors>` u een onderliggend knoop punt toe aan het `<RelyingParty>` knoop punt. Deze moet direct na worden geplaatst `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` .
+1. Voeg het volgende knoop punt toe als onderliggend item van het `<UserJourneyBehaviors>` element. Zorg ervoor dat u vervangt door `{Your Application Insights Key}` de Application Insights **instrumentatie sleutel** die u eerder hebt vastgelegd.
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
     * `DeveloperMode="true"`vertelt ApplicationInsights om de telemetrie te versnellen door de verwerkings pijplijn. Goed voor ontwikkeling, maar beperkt op hoge volumes.
-    * `ClientEnabled="true"`Hiermee wordt het ApplicationInsights-client script verzonden voor het bijhouden van de pagina weergave en fouten aan de client zijde. U kunt deze weer geven in de tabel **browserTimings** in de Application Insights Portal. Als u `ClientEnabled= "true"`deze instelling inschakelt, voegt u Application Insights toe aan uw pagina script en krijgt u een tijds duur van het laden van PAGINA'S en Ajax-aanroepen, tellingen, Details van browser uitzonderingen en Ajax-fouten, en het aantal gebruikers en sessies. Dit veld is **optioneel**en is standaard ingesteld op `false` .
+    * `ClientEnabled="true"`Hiermee wordt het ApplicationInsights-client script verzonden voor het bijhouden van de pagina weergave en fouten aan de client zijde. U kunt deze weer geven in de tabel **browserTimings** in de Application Insights Portal. Als u deze instelling inschakelt `ClientEnabled= "true"` , voegt u Application Insights toe aan uw pagina script en krijgt u een tijds duur van het laden van pagina's en Ajax-aanroepen, tellingen, Details van browser uitzonderingen en Ajax-fouten, en het aantal gebruikers en sessies. Dit veld is **optioneel**en is standaard ingesteld op `false` .
     * `ServerEnabled="true"`Hiermee wordt de bestaande UserJourneyRecorder-JSON als aangepaste gebeurtenis verzonden naar Application Insights.
 
     Bijvoorbeeld:
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"

@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/26/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02f44543f78789284e7b8d39471d1346ca7b8e74
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120189"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078377"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Beheer van toegang tot catalogussen van de maker van het Azure AD-recht
 
@@ -45,7 +45,7 @@ Volg deze stappen om een gebruiker toe te wijzen aan de maker van de catalogus.
 
 1. Klik in de sectie bevoegdheids **beheer voor gemachtigden** op **catalogus makers toevoegen** om de gebruikers of groepen te selecteren aan wie u deze rechten wilt delegeren.
 
-1. Klik op **selecteren**.
+1. Klik op **Selecteren**.
 
 1. Klik op **Opslaan**.
 

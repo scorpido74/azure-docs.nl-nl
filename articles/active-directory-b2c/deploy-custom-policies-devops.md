@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f17bbe1a19b969fec681082df50be754f5d6034b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188746"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202361"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Aangepaste beleids regels implementeren met Azure-pijp lijnen
 
@@ -29,7 +29,7 @@ Er zijn drie primaire stappen vereist om Azure-pijp lijnen in te scha kelen voor
 1. Een Azure-pijp lijn configureren
 
 > [!IMPORTANT]
-> Het beheren van Azure AD B2C aangepaste beleids regels met een Azure- **preview** pijp lijn maakt momenteel gebruik van preview `/beta` -bewerkingen die beschikbaar zijn op het Microsoft Graph API-eind punt. Het gebruik van deze API's in productie-apps wordt niet ondersteund. Zie voor meer informatie de [referentie over het Microsoft Graph rest API bèta-eind punt](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
+> Het beheren van Azure AD B2C aangepaste beleids regels met een Azure-pijp lijn maakt momenteel gebruik van **Preview** -bewerkingen die beschikbaar zijn op het Microsoft Graph API- `/beta` eind punt. Het gebruik van deze API's in productie-apps wordt niet ondersteund. Zie voor meer informatie de [referentie over het Microsoft Graph rest API bèta-eind punt](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,7 +46,7 @@ Het scenario dat hier wordt beschreven, maakt gebruik van service-to-service-aan
 
 Zoals vermeld in [vereisten](#prerequisites), hebt u een toepassings registratie nodig die uw Power shell-scripts heeft uitgevoerd door Azure-pijp lijnen. Dit kan worden gebruikt voor toegang tot de resources in uw Tenant.
 
-Als u al een toepassings registratie hebt die u voor Automation-taken gebruikt, zorg er dan voor dat de **Microsoft Graph** > **beleid** > beleid **. readwrite. TrustFramework** is toegestaan binnen de **API-machtigingen** van de app-registratie.
+Als u al een toepassings registratie hebt die u voor Automation-taken gebruikt, zorg er dan voor dat de **Microsoft Graph**  >  **beleid**beleid  >  **. readwrite. TrustFramework** is toegestaan binnen de **API-machtigingen** van de app-registratie.
 
 Zie [Azure AD B2C beheren met Microsoft Graph](microsoft-graph-get-started.md)voor instructies voor het registreren van een beheer toepassing.
 
@@ -58,9 +58,9 @@ Als een beheer toepassing is geregistreerd, kunt u een opslag plaats voor uw bel
 1. [Maak een nieuw project][devops-create-project] of selecteer een bestaand project.
 1. Ga in uw project naar **opslag plaatsen** en selecteer de pagina **bestanden** . Selecteer een bestaande opslag plaats of maak er een voor deze oefening.
 1. Maak een map met de naam *B2CAssets*. Geef het vereiste *README.MD* een naam en **Voer** het bestand uit. U kunt dit bestand later verwijderen, indien gewenst.
-1. Voeg uw Azure AD B2C-beleids bestanden toe aan de map *B2CAssets* . Dit omvat de *TrustFrameworkBase. XML*, *TrustFrameWorkExtensions. XML*, *SignUpOrSignin. XML*, *ProfileEdit. XML*, *PasswordReset. XML*en andere beleids regels die u hebt gemaakt. Noteer de bestands naam van elk Azure AD B2C-beleids bestand dat u in een latere stap kunt gebruiken (ze worden gebruikt als Power shell-script argumenten).
-1. Maak een map met de naam *scripts* in de hoofdmap van de opslag plaats, geef het tijdelijke bestand de naam *DeployToB2c. ps1*. Sla het bestand op dit moment niet door. dit doet u in een latere stap.
-1. Plak het volgende Power shell-script in *DeployToB2c. ps1*en **Voer het bestand** uit. Het script verkrijgt een token van Azure AD en roept de Microsoft Graph-API om het beleid in de map *B2CAssets* naar uw Azure AD B2C Tenant te uploaden.
+1. Voeg uw Azure AD B2C-beleids bestanden toe aan de map *B2CAssets* . Dit omvat de *TrustFrameworkBase.xml*, *TrustFrameWorkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*en andere beleids regels die u hebt gemaakt. Noteer de bestands naam van elk Azure AD B2C-beleids bestand dat u in een latere stap kunt gebruiken (ze worden gebruikt als Power shell-script argumenten).
+1. Maak een map met de naam *scripts* in de hoofdmap van de opslag plaats, geef een naam op voor het tijdelijke bestand *DeployToB2c.ps1*. Sla het bestand op dit moment niet door. dit doet u in een latere stap.
+1. Plak het volgende Power shell-script in *DeployToB2c.ps1*en **Voer het bestand** uit. Het script verkrijgt een token van Azure AD en roept de Microsoft Graph-API om het beleid in de map *B2CAssets* naar uw Azure AD B2C Tenant te uploaden.
 
     ```PowerShell
     [Cmdletbinding()]
@@ -114,7 +114,7 @@ Als uw opslag plaats is geïnitialiseerd en gevuld met uw aangepaste beleids bes
 ### <a name="create-pipeline"></a>Pijplijn maken
 
 1. Meld u aan bij uw Azure DevOps Services-organisatie en navigeer naar uw project.
-1. Selecteer in uw project **pijp lijnen** > **Releases** > **nieuwe pijp lijn**.
+1. Selecteer in uw project **pijp lijnen**  >  **Releases**  >  **nieuwe pijp lijn**.
 1. Selecteer onder **Selecteer een sjabloon de**optie **lege taak**.
 1. Voer een **naam**in voor het stadium, bijvoorbeeld *DeployCustomPolicies*, en sluit vervolgens het deel venster.
 1. Selecteer **een artefact toevoegen**en selecteer onder **bron type**Azure- **opslag plaats**.
@@ -131,7 +131,7 @@ Als uw opslag plaats is geïnitialiseerd en gevuld met uw aangepaste beleids bes
 1. Selecteer het tabblad **variabelen** .
 1. Voeg de volgende variabelen onder **pijplijn variabelen** toe en stel de waarden in zoals opgegeven:
 
-    | Naam | Waarde |
+    | Name | Waarde |
     | ---- | ----- |
     | `clientId` | **Toepassings-id (client)** van de toepassing die u eerder hebt geregistreerd. |
     | `clientSecret` | De waarde van het **client geheim** dat u eerder hebt gemaakt. <br /> Wijzig het variabele type in **geheim** (Selecteer het vergrendelings pictogram). |
@@ -144,17 +144,17 @@ Als uw opslag plaats is geïnitialiseerd en gevuld met uw aangepaste beleids bes
 Voeg vervolgens een taak toe om een beleids bestand te implementeren.
 
 1. Selecteer het tabblad **taken** .
-1. Selecteer **Agent taak**en selecteer vervolgens het plus teken (**+**) om een taak aan de agent taak toe te voegen.
+1. Selecteer **Agent taak**en selecteer vervolgens het plus teken ( **+** ) om een taak aan de agent taak toe te voegen.
 1. Zoek en selecteer **Power shell**. Selecteer niet Azure PowerShell, Power shell op de doel computers of een andere Power shell-vermelding.
 1. Selecteer de zojuist toegevoegde **Power shell-script** taak.
 1. Voer de volgende waarden in voor de Power shell-script taak:
     * **Taak versie**: 2. *
     * **Weergave naam**: de naam van het beleid dat met deze taak moet worden geüpload. Bijvoorbeeld *B2C_1A_TrustFrameworkBase*.
     * **Type**: bestandspad
-    * **Pad naar script**: Selecteer het weglatings teken (***...***), navigeer naar de map *scripts* en selecteer vervolgens het bestand *DeployToB2C. ps1* .
+    * **Scriptpad**: Selecteer het weglatings teken (***...***), navigeer naar de map *scripts* en selecteer vervolgens het *DeployToB2C.ps1* bestand.
     * **Opmerkingen**
 
-        Voer de volgende waarden in voor **argumenten**. Vervang `{alias-name}` door de alias die u in de vorige sectie hebt opgegeven.
+        Voer de volgende waarden in voor **argumenten**. Vervang door `{alias-name}` de alias die u in de vorige sectie hebt opgegeven.
 
         ```PowerShell
         # Before
@@ -176,7 +176,7 @@ Als de taak is voltooid, voegt u implementatie taken toe door de voor gaande sta
 
 De `PolicyId` is een waarde die aan het begin van een XML-beleids bestand in het knoop punt TrustFrameworkPolicy is gevonden. De `PolicyId` in de volgende beleids-XML is bijvoorbeeld *B2C_1A_TrustFrameworkBase*:
 
-```XML
+```xml
 <TrustFrameworkPolicy
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -189,11 +189,11 @@ PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 
 Wanneer de agents worden uitgevoerd en de beleids bestanden worden geüpload, moet u ervoor zorgen dat ze in deze volg orde worden geüpload:
 
-1. *TrustFrameworkBase. XML*
-1. *TrustFrameworkExtensions. XML*
-1. *SignUpOrSignin. XML*
-1. *ProfileEdit. XML*
-1. *PasswordReset. XML*
+1. *TrustFrameworkBase.xml*
+1. *TrustFrameworkExtensions.xml*
+1. *SignUpOrSignin.xml*
+1. *ProfileEdit.xml*
+1. *PasswordReset.xml*
 
 Het Framework voor identiteits ervaring dwingt deze volg orde af als de bestands structuur is gebaseerd op een hiërarchische keten.
 

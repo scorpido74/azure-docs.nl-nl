@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559678"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753542"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Uitbrei ding van NVIDIA GPU-stuur programma voor Linux
 
@@ -72,7 +72,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Micro soft. HpcCompute | tekenreeks |
@@ -146,8 +146,7 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.3 \
-  }'
+  --version 1.3 
 ```
 
 In het volgende voor beeld worden ook twee optionele aangepaste instellingen toegevoegd als voor beeld voor een niet-standaard installatie van een stuur programma. Met name wordt de kernel van het besturings systeem bijgewerkt naar de meest recente versie en wordt een specifiek stuur programma van de CUDA Toolkit geïnstalleerd. Let op: de instellingen zijn optioneel en standaard. Houd er rekening mee dat het bijwerken van de kernel de installatie tijden van de extensie kan verhogen. Ook is het kiezen van een specifieke (oudere) CUDA tolkit-versie mogelijk niet altijd compatibel met nieuwere kernels.

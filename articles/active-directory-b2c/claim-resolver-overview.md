@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 83e1e11fe38a21bbd7c44139fac562342bcab866
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229643"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201172"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Over claim resolvers in Azure Active Directory B2C aangepast beleid
 
@@ -24,9 +24,9 @@ Claim resolvers in Azure Active Directory B2C (Azure AD B2C) [aangepaste beleids
 
 Als u een claim resolver wilt gebruiken in een invoer-of uitvoer claim, definieert u een teken reeks **claim**type onder het element [ClaimsSchema](claimsschema.md) en stelt u de **DefaultValue** in op de claim resolver in het element input of output claim. Azure AD B2C leest de waarde van de claim resolver en gebruikt de waarde in het technische profiel.
 
-In het volgende voor beeld wordt een claim type `correlationId` met de naam gedefinieerd met het `string` **gegevens type** van.
+In het volgende voor beeld wordt een claim type met `correlationId` de naam gedefinieerd met het **gegevens type** van `string` .
 
-```XML
+```xml
 <ClaimType Id="correlationId">
   <DisplayName>correlationId</DisplayName>
   <DataType>string</DataType>
@@ -36,7 +36,7 @@ In het volgende voor beeld wordt een claim type `correlationId` met de naam gede
 
 Wijs in het technische profiel de claim resolver toe aan het claim type. Azure AD B2C vult de waarde van de claim resolver `{Context:CorrelationId}` in de claim `correlationId` en verzendt de claim naar het technische profiel.
 
-```XML
+```xml
 <InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
@@ -70,7 +70,7 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 | {OIDC: ClientId} |De `client_id` query teken reeks parameter. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |De `domain_hint` query teken reeks parameter. | facebook.com |
 | {OIDC: LoginHint} |  De `login_hint` query teken reeks parameter. | someone@contoso.com |
-| {OIDC: MaxAge} | De `max_age`. | N.v.t. |
+| {OIDC: MaxAge} | De `max_age` . | N.v.t. |
 | {OIDC: nonce} |De `Nonce` query teken reeks parameter. | defaultNonce |
 | {OIDC: wacht woord}| Het wacht woord van de gebruiker van het [wacht woord voor de resource-eigenaar loopt](ropc-custom.md) .| Wachtwoord1| 
 | {OIDC: prompt} | De `prompt` query teken reeks parameter. | aanmelding |
@@ -88,18 +88,18 @@ De volgende secties bevatten een lijst met beschik bare claim resolvers.
 | {Context: DateTimeInUtc} |De datum en tijd in UTC.  | 10/10/2018 12:00:00 UUR |
 | {Context: als Deployment mode} |De implementatie modus voor beleid.  | Productie |
 | {Context: IPAddress} | Het IP-adres van de gebruiker. | 11.111.111.11 |
-| {Context: KMSI} | Hiermee wordt aangegeven of het selectie vakje [aangemeld blijven](custom-policy-keep-me-signed-in.md) is geselecteerd. |  waar |
+| {Context: KMSI} | Hiermee wordt aangegeven of het selectie vakje [aangemeld blijven](custom-policy-keep-me-signed-in.md) is geselecteerd. |  true |
 
 ### <a name="claims"></a>Claims 
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------- | --------|
-| {Claim: claim type} | Een id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand.  Bijvoorbeeld: `{Claim:displayName}`, of `{Claim:objectId}`. | Een claim type waarde.|
+| {Claim: claim type} | Een id van een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleids bestand of het bovenliggende beleids bestand.  Bijvoorbeeld: `{Claim:displayName}` , of `{Claim:objectId}` . | Een claim type waarde.|
 
 
 ### <a name="oauth2-key-value-parameters"></a>OAuth2 sleutel-waarde-para meters
 
-Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden toegewezen aan een claim in de gebruikers traject. De aanvraag van de toepassing kan bijvoorbeeld een query teken reeks parameter bevatten met de naam `app_session`, `loyalty_number`of een aangepaste query teken reeks.
+Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden toegewezen aan een claim in de gebruikers traject. De aanvraag van de toepassing kan bijvoorbeeld een query teken reeks parameter bevatten met de naam `app_session` , `loyalty_number` of een aangepaste query teken reeks.
 
 | Claim | Beschrijving | Voorbeeld |
 | ----- | ----------------------- | --------|
@@ -121,7 +121,7 @@ Een parameter naam die deel uitmaakt van een OIDC-of OAuth2-aanvraag kan worden 
 | ----- | ----------- | --------|
 | {SAML: AuthnContextClassReferences} | De `AuthnContextClassRef` element waarde, van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 2.0: AC: klassen: PasswordProtectedTransport |
 | {SAML: NameIdPolicyFormat} | Het `Format` kenmerk, van het `NameIDPolicy` element van de SAML-aanvraag. | urn: Oasis: names: TC: SAML: 1.1: NameID-indeling: emailAddress |
-| {SAML: verlener} |  De SAML `Issuer` -element waarde van de SAML-aanvraag.| `https://contoso.com` |
+| {SAML: verlener} |  De SAML- `Issuer` element waarde van de SAML-aanvraag.| `https://contoso.com` |
 | {SAML: AllowCreate} | De `AllowCreate` kenmerk waarde, van het `NameIDPolicy` element van de SAML-aanvraag. | True |
 | {SAML: ForceAuthn} | De `ForceAuthN` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag. | True |
 | {SAML: ProviderName} | De `ProviderName` kenmerk waarde, van het `AuthnRequest` element van de SAML-aanvraag.| Contoso.com |
@@ -146,8 +146,8 @@ U kunt claim resolvers gebruiken met de volgende elementen:
 |Technisch profiel voor [RelyingParty](relyingparty.md#technicalprofile)| `OutputClaim`| 2 |
 
 Instellingen:
-1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld `true`op.
-1. Het kenmerk `AlwaysUseDefaultValue` voor invoer of uitvoer claims moet worden ingesteld `true`op.
+1. De `IncludeClaimResolvingInClaimsHandling` meta gegevens moeten worden ingesteld op `true` .
+1. Het kenmerk voor invoer of uitvoer claims `AlwaysUseDefaultValue` moet worden ingesteld op `true` .
 
 ## <a name="claim-resolvers-samples"></a>Voor beelden van claim oplossingen
 
@@ -157,7 +157,7 @@ In een [RESTful](restful-technical-profile.md) onderliggend technisch profiel wi
 
 In het volgende voor beeld ziet u een onderliggend technisch profiel met dit scenario:
 
-```XML
+```xml
 <TechnicalProfile Id="REST">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -185,9 +185,9 @@ Met behulp van claim resolvers kunt u de aanmeldings naam of de directe aanmeldi
 
 Met Azure AD B2C kunt u query reeks parameters door geven aan uw HTML-inhouds definitie-eind punten om de pagina-inhoud dynamisch weer te geven. Met deze functie kunt u bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een aangepaste para meter die u doorgeeft vanuit uw web-of mobiele toepassing. Zie voor meer informatie [de gebruikers interface dynamisch configureren met behulp van aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). U kunt ook uw HTML-pagina lokaliseren op basis van een taal parameter, of u kunt de inhoud wijzigen op basis van de client-ID.
 
-In het volgende voor beeld wordt de query teken reeks **campaignId** parameter met de naam campaignId `Hawaii`met de waarde, een `en-US` **taal** code en een **app** die de client-id vertegenwoordigt:
+In het volgende voor beeld wordt de query teken reeks parameter met de naam **campaignId** met de waarde `Hawaii` , een **taal** code `en-US` en een **app** die de client-id vertegenwoordigt:
 
-```XML
+```xml
 <UserJourneyBehaviors>
   <ContentDefinitionParameters>
     <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
@@ -205,9 +205,9 @@ Als gevolg hiervan worden Azure AD B2C de bovenstaande para meters naar de pagin
 
 ### <a name="content-definition"></a>Inhouds definitie
 
-In een [ContentDefinition](contentdefinitions.md) `LoadUri`kunt u claim resolvers verzenden om inhoud vanaf verschillende locaties te halen, op basis van de gebruikte para meters.
+In een [ContentDefinition](contentdefinitions.md) `LoadUri` kunt u claim resolvers verzenden om inhoud vanaf verschillende locaties te halen, op basis van de gebruikte para meters.
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
@@ -218,7 +218,7 @@ In een [ContentDefinition](contentdefinitions.md) `LoadUri`kunt u claim resolver
 
 Met Azure-toepassing inzichten en claim resolvers kunt u inzicht krijgen in het gedrag van gebruikers. In het Application Insights technische profiel verzendt u invoer claims die persistent zijn voor Azure-toepassing inzichten. Zie voor meer informatie [gebruikers gedrag bijhouden in azure AD B2C trajecten met behulp van Application Insights](analytics-with-application-insights.md). In het volgende voor beeld worden de beleids-ID, de correlatie-ID, de taal en de client-ID naar Azure-toepassing inzichten verzonden.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureInsights-Common">
   <DisplayName>Alternate Email</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -236,7 +236,7 @@ Met Azure-toepassing inzichten en claim resolvers kunt u inzicht krijgen in het 
 
 In het technische profiel van een [Relying Party](relyingparty.md) beleid wilt u mogelijk de Tenant-id of correlatie-id verzenden naar de Relying Party toepassing binnen de JWT.
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <TechnicalProfile Id="PolicyProfile">

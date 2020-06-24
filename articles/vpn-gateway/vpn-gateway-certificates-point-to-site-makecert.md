@@ -4,15 +4,15 @@ description: Maak een zelfondertekend basis certificaat, Exporteer de open bare 
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7903dc7f614d16380626f27579363b1529665cc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75833975"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988125"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Certificaten voor punt-naar-site-verbindingen genereren en exporteren met MakeCert
 
@@ -27,7 +27,7 @@ We raden u aan om de [Windows 10 Power shell-stappen](vpn-gateway-certificates-p
 De volgende stappen laten zien hoe u een zelfondertekend certificaat maakt met behulp van MakeCert. Deze stappen zijn niet specifiek voor het implementatie model. Ze zijn geldig voor Resource Manager en klassiek.
 
 1. Down load en Installeer [makecert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. Na de installatie kunt u het hulp programma Makecert. exe onder dit pad vinden: C:\Program Files (x86) \Windows Kits\10\bin\<Arch>. Het is echter wel mogelijk dat het is geïnstalleerd op een andere locatie. Open een opdracht prompt als beheerder en navigeer naar de locatie van het hulp programma MakeCert. U kunt het volgende voor beeld gebruiken om de juiste locatie aan te passen:
+2. Na de installatie kunt u het hulp programma makecert.exe in dit pad vinden: C:\Program Files (x86) \Windows Kits\10\bin \<arch> . Het is echter wel mogelijk dat het is geïnstalleerd op een andere locatie. Open een opdracht prompt als beheerder en navigeer naar de locatie van het hulp programma MakeCert. U kunt het volgende voor beeld gebruiken om de juiste locatie aan te passen:
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64

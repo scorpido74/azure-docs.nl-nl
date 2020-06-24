@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f6af5e8e1cfadd302eadfedf189a6710ac4aeca
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3841f4c4f068fd597bd537288a45dd188c7d1a2f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966595"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203332"
 ---
 # <a name="configure-session-behavior-using-custom-policies-in-azure-active-directory-b2c"></a>Sessie gedrag configureren met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ U kunt de volgende eigenschappen gebruiken voor het beheren van sessies van webt
 
 Als u uw sessie-en SSO-configuraties wilt wijzigen, voegt u een **UserJourneyBehaviors** -element toe in het element [RelyingParty](relyingparty.md) .  Het **UserJourneyBehaviors** -element moet direct volgen op de **DefaultUserJourney**. Het **UserJourneyBehavors** -element moet er als volgt uitzien:
 
-```XML
+```xml
 <UserJourneyBehaviors>
    <SingleSignOn Scope="Application" />
    <SessionExpiryType>Absolute</SessionExpiryType>
@@ -48,9 +48,9 @@ Als u uw sessie-en SSO-configuraties wilt wijzigen, voegt u een **UserJourneyBeh
 
 ### <a name="configure-the-applications"></a>De toepassingen configureren
 
-Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding (voor zowel OAuth2-als SAML-protocollen), Azure AD B2C de gebruikers sessie wissen uit de browser.  Als u [eenmalige afmelding](session-overview.md#single-sign-out)wilt toestaan, `LogoutUrl` stelt u de toepassing in op de Azure portal:
+Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding (voor zowel OAuth2-als SAML-protocollen), Azure AD B2C de gebruikers sessie wissen uit de browser.  Als u [eenmalige afmelding](session-overview.md#single-sign-out)wilt toestaan, stelt u de `LogoutUrl` toepassing in op de Azure portal:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 1. Kies uw Azure AD B2C Directory door te klikken op uw account in de rechter bovenhoek van de pagina.
 1. Kies in het menu links de optie **Azure AD B2C**, selecteer **app-registraties**en selecteer vervolgens uw toepassing.
 1. Selecteer **instellingen**, selecteer **Eigenschappen**en zoek het tekstvak **afmeldings-URL** . 
@@ -60,7 +60,7 @@ Wanneer u de gebruiker omleidt naar het eind punt van de Azure AD B2C-afmelding 
 Voor de ondersteuning van eenmalige afmelding moeten voor de token Uitgever technische profielen voor zowel JWT als SAML worden opgegeven:
 
 - De protocol naam, zoals`<Protocol Name="OpenIdConnect" />`
-- De verwijzing naar het profiel voor technische sessie, zoals `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />`.
+- De verwijzing naar het profiel voor technische sessie, zoals `UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />` .
 
 In het volgende voor beeld ziet u de JWT-en SAML-token verleners met eenmalige afmelding:
 

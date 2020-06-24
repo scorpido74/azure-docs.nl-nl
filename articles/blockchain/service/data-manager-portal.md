@@ -2,14 +2,14 @@
 title: Block Chain configureren Data Manager met behulp van Azure Portal-Azure Block Chain-Service
 description: Block Chain Data Manager voor de Azure Block Chain-service maken en beheren met behulp van de Azure Portal.
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260595"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200678"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Blockchain Data Manager configureren met behulp van Azure Portal
 
@@ -76,7 +76,7 @@ In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wo
 
     Het contract ABI wordt gekopieerd naar het klem bord.
 
-1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *Abi. json*. U gebruikt het bestand in een latere stap.
+1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *abi.jsop*. U gebruikt het bestand in een latere stap.
 
 Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U gebruikt de Azure Block Chain Development Kit-extensie om de byte code naar het klem bord te kopiëren.
 
@@ -88,11 +88,11 @@ Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme 
 
     De byte code wordt gekopieerd naar het klem bord.
 
-1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. U gebruikt het bestand in een latere stap.
+1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld *bytecode.jsop*. U gebruikt het bestand in een latere stap.
 
-In het volgende voor beeld ziet u de bestanden *Abi. json* en *byte code. json* die zijn geopend in de VS code-editor. Uw bestanden moeten er ongeveer als volgt uitzien.
+In het volgende voor beeld ziet u *abi.jsop* en *bytecode.jsvoor* bestanden die zijn geopend in de VS code-editor. Uw bestanden moeten er ongeveer als volgt uitzien.
 
-![Voor beeld van Abi. json en byte code. json-bestanden](./media/data-manager-portal/contract-files.png)
+![Voor beeld van abi.jsop en bytecode.jsop bestanden](./media/data-manager-portal/contract-files.png)
 
 ### <a name="create-contract-abi-and-bytecode-url"></a>Een contract-ABI en byte code-URL maken
 

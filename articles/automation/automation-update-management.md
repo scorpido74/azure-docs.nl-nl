@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Updatebeheer
 description: Dit artikel bevat een overzicht van de functie Updatebeheer die updates implementeert voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 06/03/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fcc34f8d5a07354b31880ebfa605012e05ec3a20
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 85b724cacc9c878f39de62e91e18713a1817933d
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342949"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817232"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -29,7 +29,7 @@ U kunt Updatebeheer voor virtuele machines op de volgende manieren inschakelen:
 Er is een [Azure Resource Manager sjabloon](automation-update-management-deploy-template.md) beschikbaar om u te helpen bij het implementeren van updatebeheer op een nieuw of bestaand Automation-account en log Analytics werk ruimte in uw abonnement.
 
 > [!NOTE]
-> U kunt een computer die is geconfigureerd met Updatebeheer niet gebruiken om aangepaste scripts uit Azure Automation uit te voeren. Op deze computer kan alleen het door micro soft ondertekende update script worden uitgevoerd. 
+> U kunt een computer die is geconfigureerd met Updatebeheer niet gebruiken om aangepaste scripts uit Azure Automation uit te voeren. Op deze computer kan alleen het door micro soft ondertekende update script worden uitgevoerd.
 
 ## <a name="about-update-management"></a>Over Updatebeheer
 
@@ -68,21 +68,22 @@ Bij het definiëren van een implementatie moet u ook een schema opgeven dat u wi
 Updates worden geïnstalleerd door runbooks in Azure Automation. U kunt deze runbooks niet weer geven en er is geen configuratie vereist. Wanneer een update-implementatie wordt gemaakt, wordt er een planning gemaakt waarmee een Master update-runbook wordt gestart op het opgegeven tijdstip voor de inbegrepen computers. Het hoofd-runbook start een onderliggend runbook op elke agent om de vereiste updates te installeren.
 
 Op de datum en tijd die zijn opgegeven in de update-implementatie, wordt de implementatie parallel uitgevoerd op de doel computers. Voorafgaand aan de installatie wordt een scan uitgevoerd om te controleren of de updates nog steeds vereist zijn. Voor WSUS-client computers, als de updates niet zijn goedgekeurd in WSUS, mislukt de update-implementatie.
+
 Het is niet mogelijk om een computer te registreren voor Updatebeheer in meer dan één Log Analytics-werk ruimte (ook wel multihoming genoemd).
 
 ## <a name="clients"></a>Clients
 
 ### <a name="supported-client-types"></a>Ondersteunde client typen
 
-De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties. Voor patching is een Hybrid Runbook Worker vereist. Zie een [Windows-Hybrid Runbook worker implementeren](automation-windows-hrw-install.md) en een [Linux-Hybrid Runbook worker implementeren](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
+De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor update-evaluaties en patches. Voor patching is een Hybrid Runbook Worker vereist. Zie een [Windows-Hybrid Runbook worker implementeren](automation-windows-hrw-install.md) en een [Linux-Hybrid Runbook worker implementeren](automation-linux-hrw-install.md)voor meer informatie over Hybrid Runbook worker vereisten.
 
 > [!NOTE]
 > Update-evaluatie van Linux-machines wordt alleen ondersteund in bepaalde regio's, zoals vermeld in het Automation-account en de tabel Log Analytics werkruimte [toewijzingen](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings). 
 
-|Besturingssysteem  |Opmerkingen  |
+|Besturingssysteem  |Notities  |
 |---------|---------|
-|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer ondersteunt alleen evaluaties voor dit besturings systeem. Patching wordt niet ondersteund omdat de [Hybrid Runbook worker](automation-windows-hrw-install.md) niet wordt ondersteund voor Windows Server 2008 R2. |
+|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer ondersteunt evaluaties en patches voor dit besturings systeem. De [Hybrid Runbook worker](automation-windows-hrw-install.md) wordt ondersteund voor Windows Server 2008 R2. |
 |CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een update opslagplaats. Voor op classificaties gebaseerde patches moeten `yum` beveiligings gegevens worden geretourneerd die CentOS niet hebben in de RTM-releases. Zie [Update classificaties in Linux](automation-view-update-assessments.md#linux-2)voor meer informatie over op CentOS gebaseerde patches op basis van classificatie.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een update opslagplaats.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een update opslagplaats.        |
@@ -95,7 +96,7 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor u
 
 De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
-|Besturingssysteem  |Opmerkingen  |
+|Besturingssysteem  |Notities  |
 |---------|---------|
 |Windows-client     | Client besturingssystemen (zoals Windows 7 en Windows 10) worden niet ondersteund.<br> Voor Azure Windows virtueel bureau blad (WVD), de aanbevolen methode<br> voor het beheren van updates is [Windows Update voor Business](https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb) for Windows 10 client machine patch management. |
 |Windows Server 2016 Nano Server     | Niet ondersteund.       |
@@ -103,7 +104,7 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
 ### <a name="client-requirements"></a>Clientvereisten
 
-De volgende informatie beschrijft specifieke client vereisten voor het besturings systeem. Zie [netwerk planning](#ports)voor meer informatie.  Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
+De volgende informatie beschrijft specifieke client vereisten voor het besturings systeem. Zie [netwerk planning](#ports)voor meer informatie. Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
 #### <a name="windows"></a>Windows
 
@@ -152,7 +153,7 @@ Als uw Operations Manager-beheer groep is [verbonden met een log Analytics-werk 
 * Implementatie MP bijwerken
 
 > [!NOTE]
-> Als u een Operations Manager 1807-of 2019-beheer groep hebt verbonden met een Log Analytics-werk ruimte met agents die zijn geconfigureerd in de beheer groep om logboek gegevens te verzamelen, moet u de para meter overschrijven `IsAutoRegistrationEnabled` en instellen op waar in de regel **Microsoft. intelligence packs. AzureAutomation. HybridAgent. init** .
+> Als u een Operations Manager 1807-of 2019-beheer groep hebt verbonden met een Log Analytics-werk ruimte met agents die zijn geconfigureerd in de beheer groep om logboek gegevens te verzamelen, moet u de para meter overschrijven `IsAutoRegistrationEnabled` en instellen op waar in de **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** -regel.
 
 Zie [Connect Operations Manager to Azure monitor logs](../azure-monitor/platform/om-agents.md)(Engelstalig) voor meer informatie over updates voor Management Packs.
 
@@ -167,9 +168,9 @@ De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
-| Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
-| Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
+| Windows-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
+| Linux-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
+| Beheergroep Operations Manager |Yes |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep.<br/><br/>Een directe verbinding van de Operations Manager agent naar Azure Monitor-Logboeken is niet vereist. Gegevens worden doorgestuurd van de beheer groep naar de Log Analytics-werk ruimte. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -187,10 +188,10 @@ De volgende adressen zijn specifiek vereist voor Updatebeheer. Communicatie met 
 
 |Openbare Azure-peering  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *. azure-automation.us|
+|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+|`*.azure-automation.net` | `*.azure-automation.us`|
 
 Voor Windows-computers moet u ook verkeer toestaan voor eind punten die vereist zijn voor Windows Update. U kunt een bijgewerkte lijst met vereiste eind punten vinden in [kwesties met betrekking tot http/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Als u een lokale [Windows Update server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)hebt, moet u ook verkeer toestaan naar de server die is opgegeven in uw [WSUS-sleutel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
 

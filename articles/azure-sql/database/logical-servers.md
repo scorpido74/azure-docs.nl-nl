@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 596967a918dc3a94061ce907848e7e502660b97c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c587af529831c4fb8cdb15b50b2a0b16a868efe3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324365"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255378"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Wat is een logische SQL-Server in Azure SQL Database en Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ U kunt de resource groep voor een server van tevoren of tijdens het maken van de
 
 Als u een server (zonder een Data Base, elastische pool of Data Warehouse-data base) wilt maken met behulp van de [Azure Portal](https://portal.azure.com), gaat u naar een leeg SQL Server-formulier (logische SQL-Server).
 
-### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Een leeg of voor beeld-SQL database maken in Azure SQL Database
+### <a name="create-a-blank-or-sample-database-in-azure-sql-database"></a>Een lege of voorbeeld database maken in Azure SQL Database
 
 Als u een data base in SQL Database wilt maken met behulp van de [Azure Portal](https://portal.azure.com), gaat u naar een leeg SQL database formulier en geeft u de gevraagde informatie op. U kunt de resource groep en de server van tevoren maken of tijdens het maken van de data base zelf. U kunt een lege data base maken of een voorbeeld database maken op basis van Adventure Works LT.
 
@@ -128,7 +128,7 @@ Als u servers, data bases en firewalls wilt maken en beheren met de [Azure cli](
 |[AZ SQL Server show](/cli/azure/sql/server#az-sql-server-show)|Hiermee wordt een server opgehaald|
 |[AZ SQL Server Update](/cli/azure/sql/server#az-sql-server-update)|Hiermee wordt een server bijgewerkt|
 |[AZ SQL Server Delete](/cli/azure/sql/server#az-sql-server-delete)|Hiermee wordt een server verwijderd|
-|[AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Hiermee maakt u een server firewall regel|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Hiermee maakt u een server firewall regel|
 |[AZ SQL Server firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Een lijst met firewall regels op een server|
 |[AZ SQL Server firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Toont de details van een firewall regel|
 |[AZ SQL Server firewall-Rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Hiermee wordt een firewall regel bijgewerkt|

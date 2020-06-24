@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20f11b14c0393f27a81710218d630f052775e1c3
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137285"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078965"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -32,26 +32,26 @@ Hieronder vindt u een moment opname van de huidige versies van alle programmeer 
 
 | Interfaces | Meest recente primaire versie | Status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
+| [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
 | [.NET SDK preview](https://aka.ms/search-sdk-preview) |8,0-Preview |Preview, uitgebracht: april 2019 |
 | [Service REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Algemeen beschikbaar |
 | [Service REST API 2019-05-06-preview](search-api-preview.md) |2019-05-06-preview |Preview |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Algemeen beschikbaar |
 | [REST-API voor beheer](https://docs.microsoft.com/rest/api/searchmanagement/) |2020-03-13|Algemeen beschikbaar |
 
-Voor de REST Api's, met inbegrip van de `api-version` op elke aanroep is vereist. Met `api-version` behulp hiervan kunt u eenvoudig een specifieke versie instellen, zoals een preview-API. In het volgende voor beeld ziet u `api-version` hoe de para meter wordt opgegeven:
+Voor de REST Api's, met inbegrip `api-version` van de op elke aanroep is vereist. Met behulp `api-version` hiervan kunt u eenvoudig een specifieke versie instellen, zoals een preview-API. In het volgende voor beeld ziet u hoe de `api-version` para meter wordt opgegeven:
 
     GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
-> Hoewel elke aanvraag een `api-version`heeft, raden we u aan dezelfde versie te gebruiken voor alle API-aanvragen. Dit geldt met name wanneer nieuwe API-versies kenmerken of bewerkingen introduceren die niet worden herkend door eerdere versies. Het mixen van API-versies kan onbedoelde gevolgen hebben en moet worden vermeden.
+> Hoewel elke aanvraag een heeft `api-version` , raden we u aan dezelfde versie te gebruiken voor alle API-aanvragen. Dit geldt met name wanneer nieuwe API-versies kenmerken of bewerkingen introduceren die niet worden herkend door eerdere versies. Het mixen van API-versies kan onbedoelde gevolgen hebben en moet worden vermeden.
 >
 > De service REST API en het beheer REST API afzonderlijk van elkaar zijn geversied. Eventuele gelijkenisën met versie nummers zijn bijkomend.
 
 Algemeen beschik bare Api's (of GA) kunnen worden gebruikt in productie en zijn onderworpen aan Azure Service Level Agreements. Preview-versies hebben experimentele functies die niet altijd worden gemigreerd naar een GA-versie. **U wordt ten zeerste geadviseerd om Preview-Api's te gebruiken in productie toepassingen.**
 
 ## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>Update naar de nieuwste versie van de REST API op 15 oktober 2020
-De volgende versies van de Azure Cognitive Search REST API worden buiten gebruik gesteld en worden niet meer ondersteund vanaf 15 oktober 2020: **2014-07-31-preview**, **2014-10-20-preview**, **2015-02-28-preview**en **2015-02-28**. Daarnaast worden versies van de Azure Cognitive Search .NET SDK die ouder zijn dan **3.0.0-RC** ook buiten gebruik gesteld, omdat ze een van deze rest API versies richten. Na deze datum zullen toepassingen die gebruikmaken van een van de afgeschafte REST API-of SDK-versies niet meer werken en moeten ze worden bijgewerkt. Net als bij elke wijziging van dit type, geven we de kennisgeving van 12 maanden, zodat u voldoende tijd hebt om aan te passen.  Als u Azure Cognitive Search wilt blijven gebruiken, moet u de bestaande code migreren die de [rest API](search-api-migration.md) voor [rest API versie 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) of hoger of de .net SDK naar [versie 3,0](search-dotnet-sdk-migration.md) of hoger op 15 oktober 2020.  Als u vragen hebt over het bijwerken van de nieuwste versie, stuurt u een e-mail azuresearch_contact@microsoft.com naar 15 mei 2020 om ervoor te zorgen dat u voldoende tijd hebt om uw code bij te werken.
+De volgende versies van de Azure Cognitive Search REST API worden buiten gebruik gesteld en worden niet meer ondersteund vanaf 15 oktober 2020: **2014-07-31-preview**, **2014-10-20-preview**, **2015-02-28-preview**en **2015-02-28**. Daarnaast worden versies van de Azure Cognitive Search .NET SDK die ouder zijn dan **3.0.0-RC** ook buiten gebruik gesteld, omdat ze een van deze rest API versies richten. Na deze datum zullen toepassingen die gebruikmaken van een van de afgeschafte REST API-of SDK-versies niet meer werken en moeten ze worden bijgewerkt. Net als bij elke wijziging van dit type, geven we de kennisgeving van 12 maanden, zodat u voldoende tijd hebt om aan te passen.  Als u Azure Cognitive Search wilt blijven gebruiken, moet u de bestaande code migreren die de [rest API](search-api-migration.md) voor [rest API versie 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) of hoger of de .net SDK naar [versie 3,0](search-dotnet-sdk-migration.md) of hoger op 15 oktober 2020.  Als u vragen hebt over het bijwerken van de nieuwste versie, stuurt u een e-mail naar azuresearch_contact@microsoft.com 15 mei 2020 om ervoor te zorgen dat u voldoende tijd hebt om uw code bij te werken.
 
 ## <a name="about-preview-and-generally-available-versions"></a>Over een preview-versie en algemeen beschik bare versies
 Met Azure Cognitive Search worden eerst experimentele functies vooraf vrijgegeven via de REST API en vervolgens via voorlopige versies van de .NET SDK.

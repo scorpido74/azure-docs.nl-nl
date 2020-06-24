@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4824b64236270c422f22809e9eeb191ee3be27fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926116"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202565"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Sessie beheer voor eenmalige aanmelding in Azure Active Directory B2C
 
@@ -57,7 +57,7 @@ De `<OutputClaims>` wordt gebruikt voor het ophalen van claims uit de sessie.
 
 Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebruikt om SSO-gedrag voor een specifiek technisch profiel te onderdrukken. Het volgende `SM-Noop` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Noop">
   <DisplayName>Noop Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.NoopSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -68,7 +68,7 @@ Zoals de naam bepaalt, heeft deze provider niets. Deze provider kan worden gebru
 
 Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er wordt doorgaans verwezen naar deze provider in een technisch profiel dat wordt gebruikt voor het beheren van lokale en federatieve accounts. Het volgende `SM-AAD` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-AAD">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -89,7 +89,7 @@ Deze provider kan worden gebruikt voor het opslaan van claims in een sessie. Er 
 
 Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa` . Dit technische profiel beheert de multi-factor Authentication-sessie.
 
-```XML
+```xml
 <TechnicalProfile Id="SM-MFA">
   <DisplayName>Session Mananagement Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.DefaultSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -106,7 +106,7 @@ Het volgende `SM-MFA` technische profiel is opgenomen in het [aangepaste beleids
 
 Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukken en af te melden bij een federatieve id-provider. Er wordt meestal verwezen naar een technisch profiel dat is geconfigureerd voor een federatieve id-provider, zoals Facebook of Azure Active Directory. Het volgende `SM-SocialLogin` technische profiel is opgenomen in het [aangepaste beleids Starter Pack](custom-policy-get-started.md#custom-policy-starter-pack).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-SocialLogin">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.ExternalLoginSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -123,7 +123,7 @@ Deze provider wordt gebruikt om het scherm ' ID-provider kiezen ' te onderdrukke
 
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Nee | Momenteel niet gebruikt, kan worden genegeerd. |
+| AlwaysFetchClaimsFromProvider | No | Momenteel niet gebruikt, kan worden genegeerd. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -140,7 +140,7 @@ Deze provider wordt gebruikt voor het beheren van de Azure AD B2C sessies tussen
 
 Deze provider wordt gebruikt voor het beheren van de Azure AD B2C SAML-sessies tussen een Relying Party toepassing of een federatieve SAML-ID-provider. Wanneer u de SSO-provider gebruikt voor het opslaan van een SAML ID-provider sessie, `RegisterServiceProviders` moet u deze instellen op `false` . Het volgende `SM-Saml-idp` technische profiel wordt gebruikt door het [technische profiel van de SAML-identiteits provider](saml-identity-provider-technical-profile.md).
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -154,7 +154,7 @@ Wanneer u de provider gebruikt voor het opslaan van de B2C SAML-sessie, `Registe
 
 Het volgende `SM-Saml-issuer` technische profiel wordt gebruikt door een [SAML-Uitgever technisch profiel](saml-issuer-technical-profile.md)
 
-```XML
+```xml
 <TechnicalProfile Id="SM-Saml-issuer">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -165,8 +165,8 @@ Het volgende `SM-Saml-issuer` technische profiel wordt gebruikt door een [SAML-U
 
 | Kenmerk | Vereist | Beschrijving|
 | --- | --- | --- |
-| IncludeSessionIndex | Nee | Momenteel niet gebruikt, kan worden genegeerd.|
-| RegisterServiceProviders | Nee | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false` .|
+| IncludeSessionIndex | No | Momenteel niet gebruikt, kan worden genegeerd.|
+| RegisterServiceProviders | No | Geeft aan dat de provider alle SAML-service providers moet registreren waarvoor een bevestiging is verleend. Mogelijke waarden: `true` (standaard) of `false` .|
 
 
 ## <a name="next-steps"></a>Volgende stappen

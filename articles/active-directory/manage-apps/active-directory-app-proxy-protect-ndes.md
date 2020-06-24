@@ -3,22 +3,22 @@ title: Integreren met AD-toepassingsproxy op een NDES-server
 titleSuffix: Azure Active Directory
 description: Richt lijnen voor het implementeren van een Azure Active Directory-toepassingsproxy voor het beveiligen van uw NDES-server.
 services: active-directory
-author: CelesteDG
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/17/2020
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77032255"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760793"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integreren met Azure AD-toepassingsproxy op een server met een registratie service voor netwerk apparaten (NDES)
 
@@ -45,18 +45,18 @@ Azure AD-toepassingsproxy is gebaseerd op Azure. Het biedt u een enorme hoeveelh
 1. Lees de servicevoorwaarden. Wanneer u klaar bent, selecteert u **voor waarden accepteren & downloaden**.
 1. Kopieer het installatie bestand voor de Azure AD-toepassingsproxy-connector naar de NDES-server. 
    > U kunt de connector installeren op elke server in uw bedrijfs netwerk met toegang tot NDES. U hoeft deze niet te installeren op de NDES-server zelf.
-1. Voer het installatie bestand uit, zoals *AADApplicationProxyConnectorInstaller. exe*. Ga akkoord met de licentie voorwaarden van de software.
+1. Voer het installatie bestand uit, zoals *AADApplicationProxyConnectorInstaller.exe*. Ga akkoord met de licentie voorwaarden van de software.
 1. Tijdens de installatie wordt u gevraagd de connector te registreren bij de toepassings proxy in uw Azure AD-adres lijst.
    * Geef de referenties voor een globale of toepassings beheerder op in uw Azure AD-adres lijst. De globale gegevens van de Azure AD-of toepassings beheerder kunnen afwijken van uw Azure-referenties in de portal.
 
         > [!NOTE]
         > Het globale of toepassings beheerders account dat wordt gebruikt om de connector te registreren, moet deel uitmaken van dezelfde map waar u de Application proxy-service inschakelt.
         >
-        > Als het Azure AD-domein bijvoorbeeld *contoso.com*is, moet de beheerder van de globale groep/ `admin@contoso.com` toepassing een andere geldige alias hebben op dat domein.
+        > Als het Azure AD-domein bijvoorbeeld *contoso.com*is, moet de beheerder van de globale groep/toepassing `admin@contoso.com` een andere geldige alias hebben op dat domein.
 
    * Als verbeterde beveiliging van Internet Explorer is ingeschakeld voor de server waarop u de connector installeert, is het registratie scherm mogelijk geblokkeerd. Als u toegang wilt toestaan, volgt u de instructies in het fout bericht of schakelt u de verbeterde beveiliging van Internet Explorer uit tijdens het installatie proces.
    * Zie [problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)als de registratie van de connector mislukt.
-1. Aan het einde van de installatie wordt een notitie weer gegeven voor omgevingen met een uitgaande proxy. Als u de Azure AD-toepassingsproxy-connector wilt configureren om te werken via de uitgaande proxy, voert u het `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`meegeleverde script uit, zoals.
+1. Aan het einde van de installatie wordt een notitie weer gegeven voor omgevingen met een uitgaande proxy. Als u de Azure AD-toepassingsproxy-connector wilt configureren om te werken via de uitgaande proxy, voert u het meegeleverde script uit, zoals `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` .
 1. Op de pagina Toepassings proxy in de Azure Portal wordt de nieuwe connector weer gegeven met de status *actief*, zoals wordt weer gegeven in het volgende voor beeld:
 
     ![De nieuwe Azure AD-toepassingsproxy-connector wordt weer gegeven als actief in de Azure Portal](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
@@ -83,7 +83,7 @@ Azure AD-toepassingsproxy is gebaseerd op Azure. Het biedt u een enorme hoeveelh
 
 1. Test of u toegang hebt tot de NDES-server via de Azure AD-toepassings proxy door de koppeling die u in stap 10 hebt gekopieerd, in een browser te plakken. Er wordt een standaard welkomst pagina van IIS weer geven.
 
-1. Als laatste test voegt u het pad *MSCEP. dll* toe aan de bestaande URL die u in de vorige stap hebt geplakt:
+1. Als laatste test voegt u het *mscep.dll* pad toe aan de bestaande URL die u in de vorige stap hebt geplakt:
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 

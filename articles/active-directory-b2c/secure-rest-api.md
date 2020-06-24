@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1028707a63f720f814c90b1376caf7b745a76224
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826669"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203466"
 ---
 # <a name="secure-your-restful-services"></a>Uw REST-services beveiligen 
 
@@ -67,7 +67,7 @@ Als u een REST API technisch profiel met HTTP-basis verificatie wilt configurere
 
 Nadat u de benodigde sleutels hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar de referenties.
 
-1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions.xml).
 1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile` of `REST-GetProfile` .
 1. Zoek het `<Metadata>` element op.
 1. Wijzig de *AuthenticationType* in `Basic` .
@@ -114,7 +114,7 @@ Verificatie van client certificaten is een wederzijdse verificatie op basis van 
 Als u nog geen certificaat hebt, kunt u voor niet-productie omgevingen een zelfondertekend certificaat gebruiken. In Windows kunt u de cmdlet [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) van Power shell gebruiken voor het genereren van een certificaat.
 
 1. Voer deze Power shell-opdracht uit om een zelfondertekend certificaat te genereren. Wijzig het `-Subject` argument naar wens voor uw toepassing en Azure AD B2C Tenant naam. U kunt ook de `-NotAfter` datum aanpassen om een andere verloop tijd voor het certificaat op te geven.
-    ```PowerShell
+    ```powershell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
         -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
@@ -148,7 +148,7 @@ Als u nog geen certificaat hebt, kunt u voor niet-productie omgevingen een zelfo
 
 Nadat u de benodigde sleutel hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar het client certificaat.
 
-1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions.xml).
 1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile` of `REST-GetProfile` .
 1. Zoek het `<Metadata>` element op.
 1. Wijzig de *AuthenticationType* in `ClientCertificate` .
@@ -264,7 +264,7 @@ Vervang uw-Tenant naam voor de ServiceUrl door de naam van uw Azure AD-Tenant. Z
 
 Als u Bearer-token verificatie wilt ondersteunen in uw aangepaste beleid, wijzigt u het technische profiel van REST API met de volgende opties:
 
-1. Open in uw werkmap het extensie beleids bestand *TrustFrameworkExtensions. XML* .
+1. Open in uw werkmap het *TrustFrameworkExtensions.xml* extensie beleids bestand.
 1. Zoek het `<TechnicalProfile>` knoop punt dat bevat `Id="REST-API-SignUp"` .
 1. Zoek het `<Metadata>` element op.
 1. Wijzig de *AuthenticationType* als *volgt*:
@@ -285,7 +285,7 @@ Als u Bearer-token verificatie wilt ondersteunen in uw aangepaste beleid, wijzig
 
 Nadat u de bovenstaande fragmenten hebt toegevoegd, moet uw technische profiel eruitzien zoals in de volgende XML-code:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
@@ -329,7 +329,7 @@ Maak een beleids sleutel om de token waarde van de Bearer op te slaan.
 
 Nadat u de benodigde sleutel hebt gemaakt, moet u de meta gegevens van uw REST API technische profiel configureren om te verwijzen naar het Bearer-token.
 
-1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions. XML).
+1. Open in uw werkmap het extensie beleids bestand (TrustFrameworkExtensions.xml).
 1. Zoek het technische profiel van REST API. Bijvoorbeeld `REST-ValidateProfile` of `REST-GetProfile` .
 1. Zoek het `<Metadata>` element op.
 1. Wijzig de *AuthenticationType* in `Bearer` .

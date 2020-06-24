@@ -2,21 +2,22 @@
 title: Koppelingen op de pagina werken niet voor een toepassings proxy toepassing
 description: Problemen oplossen met verbroken koppelingen in toepassings proxy toepassingen die u hebt geïntegreerd met Azure AD
 services: active-directory
-author: msmimart
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430248"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760198"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Koppelingen op de pagina werken niet voor een toepassings proxy toepassing
 
@@ -33,7 +34,7 @@ Er zijn drie manieren om dit probleem op te lossen. De onderstaande opties worde
 
 1.  Zorg ervoor dat de interne URL een hoofdmap is die alle relevante koppelingen voor de toepassing bevat. Hierdoor kunnen alle koppelingen worden omgezet als inhoud die binnen dezelfde toepassing wordt gepubliceerd.
 
-    Als u de interne URL wijzigt, maar de landings pagina voor gebruikers niet wilt wijzigen, wijzigt u de URL van de start pagina in de eerder gepubliceerde interne URL. U kunt dit doen door te gaan naar ' Azure Active Directory '&gt; -app-registraties:&gt; Selecteer de&gt; toepassing-branding. In de sectie huis stijl ziet u het veld "URL van start pagina", die u kunt aanpassen aan de gewenste landings pagina. Als u nog steeds de verouderde App-registraties ervaring gebruikt, wordt op het tabblad Eigenschappen de informatie ' start pagina-URL ' weer gegeven. 
+    Als u de interne URL wijzigt, maar de landings pagina voor gebruikers niet wilt wijzigen, wijzigt u de URL van de start pagina in de eerder gepubliceerde interne URL. U kunt dit doen door te gaan naar ' Azure Active Directory '- &gt; app-registraties: &gt; Selecteer de toepassing- &gt; branding. In de sectie huis stijl ziet u het veld "URL van start pagina", die u kunt aanpassen aan de gewenste landings pagina. Als u nog steeds de verouderde App-registraties ervaring gebruikt, wordt op het tabblad Eigenschappen de informatie ' start pagina-URL ' weer gegeven. 
     
     > [!IMPORTANT]
     > Als u de bovenstaande wijzigingen wilt aanbrengen, moet u rechten hebben om toepassings objecten in azure AD te wijzigen. De gebruiker moet de rol van [toepassings beheerder](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) toewijzen die toepassings Modificaion in azure AD verleent aan de gebruiker.

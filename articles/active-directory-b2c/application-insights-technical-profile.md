@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f50373b0841b7626bc405f121015c15ae1587a97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77bb53e2605913fcee6999284acb04616efc53af
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108573"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201409"
 ---
 # <a name="define-an-application-insights-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een Application Insights technisch profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) ondersteunt het rechtstreeks verzenden
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C voor Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary` . Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C voor Application Insights:`Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 In het volgende voor beeld wordt het algemene Application Insights technische profiel weer gegeven. Andere Application Insights technische profielen bevatten de AzureInsights-common om de configuratie ervan te benutten.  
 
@@ -45,9 +45,9 @@ In het volgende voor beeld wordt het algemene Application Insights technische pr
 
 ## <a name="input-claims"></a>Invoer claims
 
-Het **InputClaims** -element bevat een lijst met claims die moeten worden verzonden naar Application Insights. U kunt de naam van uw claim ook toewijzen aan een naam die u wilt weer geven in Application Insights. In het volgende voor beeld ziet u hoe u teleelementen naar Application Insights verzendt. De eigenschappen van een gebeurtenis worden toegevoegd via de `{property:NAME}`syntaxis, waarbij de naam van de eigenschap wordt toegevoegd aan de gebeurtenis. DefaultValue kan een statische waarde zijn of een waarde die wordt opgelost door een van de ondersteunde [claim-resolvers](claim-resolver-overview.md).
+Het **InputClaims** -element bevat een lijst met claims die moeten worden verzonden naar Application Insights. U kunt de naam van uw claim ook toewijzen aan een naam die u wilt weer geven in Application Insights. In het volgende voor beeld ziet u hoe u teleelementen naar Application Insights verzendt. De eigenschappen van een gebeurtenis worden toegevoegd via de syntaxis `{property:NAME}` , waarbij de naam van de eigenschap wordt toegevoegd aan de gebeurtenis. DefaultValue kan een statische waarde zijn of een waarde die wordt opgelost door een van de ondersteunde [claim-resolvers](claim-resolver-overview.md).
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
   <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
@@ -75,12 +75,12 @@ Het element CryptographicKeys wordt niet gebruikt.
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| InstrumentationKey| Ja | De Application Insights [instrumentatie sleutel](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), die wordt gebruikt voor het registreren van de gebeurtenissen. | 
-| DeveloperMode| Nee | Een Booleaanse waarde die aangeeft of de ontwikkelaars modus is ingeschakeld. Mogelijke waarden: `true` of `false` (standaard). Deze meta gegevens bepalen hoe gebeurtenissen worden gebufferd. In een ontwikkel omgeving met mini maal gebeurtenis volume is het inschakelen van de ontwikkelaars modus tot gevolg dat gebeurtenissen direct naar Application Insights worden verzonden.|  
-|DisableTelemetry |Nee |Een Booleaanse waarde die aangeeft of telemetrie moet worden ingeschakeld of niet. Mogelijke waarden: `true` of `false` (standaard).| 
+| InstrumentationKey| Yes | De Application Insights [instrumentatie sleutel](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key), die wordt gebruikt voor het registreren van de gebeurtenissen. | 
+| DeveloperMode| No | Een Booleaanse waarde die aangeeft of de ontwikkelaars modus is ingeschakeld. Mogelijke waarden: `true` of `false` (standaard). Deze meta gegevens bepalen hoe gebeurtenissen worden gebufferd. In een ontwikkel omgeving met mini maal gebeurtenis volume is het inschakelen van de ontwikkelaars modus tot gevolg dat gebeurtenissen direct naar Application Insights worden verzonden.|  
+|DisableTelemetry |No |Een Booleaanse waarde die aangeeft of telemetrie moet worden ingeschakeld of niet. Mogelijke waarden: `true` of `false` (standaard).| 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een Application Insights-resource maken](../azure-monitor/app/create-new-resource.md)
+- [Create an Application Insights resource](../azure-monitor/app/create-new-resource.md) (Een Application Insights-resource maken)
 - Meer informatie over het [bijhouden van gebruikers gedrag in azure Active Directory B2C met behulp van Application Insights](analytics-with-application-insights.md)

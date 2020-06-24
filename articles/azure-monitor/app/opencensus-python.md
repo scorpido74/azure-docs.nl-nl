@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553856"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079123"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -342,36 +342,10 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
     > [!NOTE]
     > `traces`in deze context is niet hetzelfde als `Tracing` . `traces`verwijst naar het type telemetrie dat u in Azure Monitor kunt zien wanneer u de gebruikt `AzureLogHandler` . `Tracing`verwijst naar een concept in opentellingen en is gekoppeld aan [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
 
-5. Als u uw logboek berichten wilt Format teren, kunt u gebruiken `formatters` in de ingebouwde python- [logboek registratie-API](https://docs.python.org/3/library/logging.html#formatter-objects).
+    > [!NOTE]
+    > De hoofd logboek registratie is geconfigureerd met niveau waarschuwing. Dit betekent dat de logboeken die u verzendt met een minder ernst, worden genegeerd en niet worden verzonden naar Azure Monitor. Raadpleeg deze [documentatie](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel) voor meer informatie.
 
-    ```python
-    import logging
-    from opencensus.ext.azure.log_exporter import AzureLogHandler
-    
-    logger = logging.getLogger(__name__)
-    
-    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
-    date_format = '%Y-%m-%d %H:%M:%S'
-    formatter = logging.Formatter(format_str, date_format)
-    # TODO: replace the all-zero GUID with your instrumentation key.
-    handler = AzureLogHandler(
-        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    
-    def valuePrompt():
-        line = input("Enter a value: ")
-        logger.warning(line)
-    
-    def main():
-        while True:
-            valuePrompt()
-    
-    if __name__ == "__main__":
-        main()
-    ```
-
-6. U kunt ook aangepaste eigenschappen toevoegen aan uw logboek berichten in het argument *extra* tref woord met behulp van het veld custom_dimensions. Deze worden weer gegeven als sleutel-waardeparen in `customDimensions` in azure monitor.
+5. U kunt ook aangepaste eigenschappen toevoegen aan uw logboek berichten in het argument *extra* tref woord met behulp van het veld custom_dimensions. Deze worden weer gegeven als sleutel-waardeparen in `customDimensions` in azure monitor.
     > [!NOTE]
     > Als u deze functie wilt gebruiken, moet u een woorden lijst door geven aan het veld custom_dimensions. Als u argumenten van elk ander type doorgeeft, worden deze door de logboeken genegeerd.
 
@@ -390,6 +364,39 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
 
     # Use properties in logging statements
     logger.warning('action', extra=properties)
+    ```
+
+#### <a name="configure-logging-for-django-applications"></a>Logboek registratie configureren voor Django-toepassingen
+
+U kunt logboek registratie expliciet configureren in uw toepassings code zoals hierboven voor uw django-toepassingen, maar u kunt het ook opgeven in de registratie configuratie van Django. Met deze code kunt u het bestand dat u gebruikt voor de configuratie van de Django-instellingen. Zie [Django-instellingen](https://docs.djangoproject.com/en/3.0/topics/settings/) voor het configureren van Django-instellingen en [Django-logboek registratie](https://docs.djangoproject.com/en/3.0/topics/logging/) voor meer informatie over het configureren van logboek registratie.
+
+    ```python
+    LOGGING = {
+        "handlers": {
+            "azure": {
+                "level": "DEBUG",
+                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+                "instrumentation_key": "<your-ikey-here>",
+            },
+            "console": {
+                "level": "DEBUG",
+                "class": "logging.StreamHandler",
+                "stream": sys.stdout,
+            },
+        },
+        "loggers": {
+            "logger_name": {"handlers": ["azure", "console"]},
+        },
+    }
+    ```
+
+Zorg ervoor dat u het logboek gebruikt met de naam die is opgegeven in uw configuratie.
+
+    ```python
+    import logging
+        
+    logger = logging.getLogger("logger_name")
+    logger.warning("this will be tracked")
     ```
 
 #### <a name="sending-exceptions"></a>Uitzonde ringen verzenden
@@ -428,6 +435,21 @@ Zie voor meer informatie over het verrijken van uw logboeken met tracerings cont
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 
 Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat deze wordt verzonden naar Azure Monitor, de python- [telemetrie-processors](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)van opentellingen.
+
+## <a name="configure-azure-monitor-exporters"></a>Azure Monitor-Exporters configureren
+
+Zoals hierboven wordt weer gegeven, zijn er drie verschillende Azure Monitor Exporters die opentellingen ondersteunen en die elk verschillende soorten telemetrie naar Azure Monitor verzenden. Zie hieronder om te zien welke typen telemetrie elke exporteur verzendt.
+
+Elke exporteur accepteert dezelfde argumenten voor de configuratie, door gegeven via de constructors. Hieronder vindt u meer informatie over elk van deze.
+
+1. `connection_string`-De connection string die wordt gebruikt om verbinding te maken met uw Azure Monitor resource. Krijgt voor rang op `instrumentation_key` .
+2. `enable_standard_metrics`-Gebruikt voor `AzureMetricsExporter` . Geeft de export functie de metrische gegevens van het [prestatie meter item](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) automatisch naar Azure monitor verzenden. Wordt standaard ingesteld op `True` .
+3. `export_interval`-Wordt gebruikt om de frequentie in seconden van het exporteren op te geven.
+4. `instrumentation_key`-De instrumentatie sleutel die wordt gebruikt om verbinding te maken met uw Azure Monitor-resource.
+5. `logging_sampling_rate`-Gebruikt voor `AzureLogHandler` . Geeft een sampling frequentie [0, 1.0] voor het exporteren van Logboeken. De standaard waarde is 1,0.
+6. `max_batch_size`-Hiermee geeft u de maximale grootte van de telemetrie die tegelijk worden geëxporteerd.
+7. `proxies`-Hiermee geeft u een reeks proxy's op die moet worden gebruikt voor het verzenden van gegevens naar Azure Monitor. Zie [proxy's](https://requests.readthedocs.io/en/master/user/advanced/#proxies) voor meer informatie.
+8. `storage_path`-Een pad naar de locatie van de lokale opslagmap (niet-verzonden telemetrie). Vanaf `opencensus-ext-azure` v 1.0.3 is het standaardpad de tijdelijke map van het besturings systeem en `opencensus-python`  +  `your-ikey` . Voor pre v-1.0.3 is het standaardpad $USER + `.opencensus`  +  `.azure`  +  `python-file-name` .
 
 ## <a name="view-your-data-with-queries"></a>Uw gegevens weer geven met query's
 

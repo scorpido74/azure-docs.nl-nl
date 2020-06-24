@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebbf789d804ab903489c809fc96f1514d6c4f577
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8e0a4a3cac51f54d0bb4e5b23d0b44052d1e89a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658083"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202480"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -219,13 +219,13 @@ Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land in
 
 Uw aangepaste pagina-URI kan er bijvoorbeeld als volgt uitzien:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 U kunt de pagina in het Frans laden door inhoud op te halen uit:
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 

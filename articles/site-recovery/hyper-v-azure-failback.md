@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
 ms.openlocfilehash: 4b005ae308576db6fd26fcf079161430b266ec3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281780"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710249"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Een failback uitvoeren voor Hyper-V-VM's
 
@@ -36,7 +36,7 @@ In dit artikel wordt beschreven hoe u back-ups maakt van virtuele Azure-machines
 
 Als u virtuele Hyper-V-machines in azure wilt herstellen naar de oorspronkelijke on-premises VM, voert u de volgende geplande failover uit van Azure naar de on-premises site:
 
-1. Selecteer de virtuele machine in de kluis > **gerepliceerde items**. Klik met de rechter muisknop op de virtuele machine > **geplande failover**. Als u een herstel plan niet meer wilt herstellen, selecteert u de naam van het plan en klikt u op **failover** > **geplande**failover.
+1. Selecteer de virtuele machine in de kluis > **gerepliceerde items**. Klik met de rechter muisknop op de virtuele machine > **geplande failover**. Als u een herstel plan niet meer wilt herstellen, selecteert u de naam van het plan en klikt u op **failover**  >  **geplande**failover.
 2. Kies in **geplande failover bevestigen**de bron-en doel locatie. Let op de richting van de failover. Als de failover van de primaire naar verwachting werkt en alle virtuele machines zich op de secundaire locatie bevinden, is dit alleen ter informatie.
 3. Selecteer een optie bij **gegevens synchronisatie**:
     - **Gegevens synchroniseren vóór de failover (alleen Delta wijzigingen synchroniseren)**: met deze optie wordt de uitval tijd voor virtuele machines geminimaliseerd wanneer deze worden gesynchroniseerd zonder dat ze worden afgesloten.
@@ -64,7 +64,7 @@ Als volgt een failback naar een alternatieve locatie:
 
 1. Als u nieuwe hardware wilt instellen, installeert u een [ondersteunde versie van Windows](hyper-v-azure-support-matrix.md#replicated-vms)en de Hyper-V-rol op de computer.
 2. Maak een virtuele netwerk switch met dezelfde naam als die van de oorspronkelijke server.
-3. Selecteer in **beveiligde items** > **beveiligings groep** > \<ProtectionGroupName>- \<> VirtualMachineName> de virtuele machine waarvoor u een failback wilt uitvoeren en selecteer vervolgens **geplande failover**.
+3. Selecteer in beveiligings groep **beveiligde items**  >  **Protection Group**  >  \<ProtectionGroupName>  ->  \<VirtualMachineName> de virtuele machine waarvoor u een failback wilt uitvoeren en selecteer vervolgens **geplande failover**.
 4. In **geplande failover bevestigen**s kiest **u on-premises virtuele machine maken als deze niet bestaat**.
 5. In **hostnaam**selecteert u de nieuwe Hyper-V-hostserver waarop u de virtuele machine wilt plaatsen.
 6. Bij het **synchroniseren van gegevens**wordt u aangeraden om de optie voor het synchroniseren van de gegevens voor de failover te selecteren. Hiermee wordt de uitval tijd voor Vm's geminimaliseerd wanneer deze worden gesynchroniseerd zonder dat ze worden afgesloten. Dit doet het volgende:
@@ -72,7 +72,7 @@ Als volgt een failback naar een alternatieve locatie:
     - **Fase 2**: Hiermee wordt de virtuele machine van Azure afgesloten, zodat er geen nieuwe wijzigingen worden uitgevoerd. De laatste set wijzigingen wordt overgedragen naar de on-premises server en de on-premises virtuele machine wordt gestart.
     
 7. Klik op het vinkje om de failover (failback) te starten.
-8. Nadat de initiële synchronisatie is voltooid en u klaar bent om de Azure VM af te sluiten, klikt u op **taken** > \<geplande failover-taak> > **failover volt ooien**. Hiermee wordt de Azure-machine afgesloten, worden de meest recente wijzigingen overgedragen naar de on-premises VM en wordt de computer gestart.
+8. Wanneer de initiële synchronisatie is voltooid en u klaar bent om de Azure VM af te sluiten, klikt u op **taken**  >  \<planned failover job>  >  **voltooid failover**. Hiermee wordt de Azure-machine afgesloten, worden de meest recente wijzigingen overgedragen naar de on-premises VM en wordt de computer gestart.
 9. U kunt zich aanmelden bij de on-premises VM om te controleren of alles werkt zoals verwacht.
 10. Klik op **door voeren** om de failover te volt ooien. Door voeren worden de virtuele machine en schijven van Azure verwijderd en wordt de on-premises VM voor bereid om opnieuw te worden beveiligd.
 10. Klik op **achterwaartse replicatie** om te beginnen met het repliceren van de on-premises VM naar Azure. Alleen de Delta wijzigingen sinds de VM is uitgeschakeld in Azure worden gerepliceerd.

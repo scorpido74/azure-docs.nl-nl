@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128422"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078133"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Rapporten en logboeken weer geven in het beheer van rechten van Azure AD
 
@@ -79,17 +79,17 @@ Met dit rapport kunt u de resources weer geven die momenteel aan een gebruiker z
 
 ## <a name="determine-the-status-of-a-users-request"></a>De status van de aanvraag van een gebruiker bepalen
 
-Als u meer wilt weten over de manier waarop een gebruiker toegang tot een toegangs pakket heeft aangevraagd en gekregen, kunt u het Azure AD-controle logboek gebruiken. U kunt met name de logboek records in de `EntitlementManagement` categorieën en `UserManagement` gebruiken om meer informatie te krijgen over de verwerkings stappen voor elke aanvraag.  
+Als u meer wilt weten over de manier waarop een gebruiker toegang tot een toegangs pakket heeft aangevraagd en gekregen, kunt u het Azure AD-controle logboek gebruiken. U kunt met name de logboek records in de `EntitlementManagement` Categorieën en gebruiken `UserManagement` om meer informatie te krijgen over de verwerkings stappen voor elke aanvraag.  
 
 1. Klik op **Azure Active Directory** en klik vervolgens op **audit logboeken**.
 
-1. Wijzig bovenaan de **categorie** in ofwel `EntitlementManagement` of `UserManagement`, afhankelijk van de controle record die u zoekt.  
+1. Wijzig bovenaan de **categorie** in ofwel `EntitlementManagement` of `UserManagement` , afhankelijk van de controle record die u zoekt.  
 
 1. Klik op **Toepassen**.
 
 1. Klik op **downloaden**om de logboeken te downloaden.
 
-Wanneer Azure AD een nieuwe aanvraag ontvangt, wordt een controle record geschreven waarin de **categorie** is `EntitlementManagement` en de **activiteit** doorgaans `User requests access package assignment`.  In het geval van een directe toewijzing die in de Azure Portal is gemaakt **Activity** , is `Administrator directly assigns user to access package`het veld activiteit van de controle record en wordt de gebruiker die de toewijzing uitvoert geïdentificeerd door de **ActorUserPrincipalName**.
+Wanneer Azure AD een nieuwe aanvraag ontvangt, wordt een controle record geschreven waarin de **categorie** is `EntitlementManagement` en de **activiteit** doorgaans `User requests access package assignment` .  In het geval van een directe toewijzing die in de Azure Portal is gemaakt, is het veld **activiteit** van de controle record `Administrator directly assigns user to access package` en wordt de gebruiker die de toewijzing uitvoert geïdentificeerd door de **ActorUserPrincipalName**.
 
 Azure AD schrijft extra audit records tijdens de uitvoering van de aanvraag, waaronder:
 
@@ -101,11 +101,11 @@ Azure AD schrijft extra audit records tijdens de uitvoering van de aanvraag, waa
 | `EntitlementManagement` | `Approve access package assignment request` | Aanvraag goedgekeurd |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |Aanvraag goedgekeurd of vereist geen goed keuring |
 
-Wanneer een gebruiker toegang toegewezen krijgt, schrijft Azure AD een controle record voor de `EntitlementManagement` categorie met **activiteit** `Fulfill access package assignment`.  De gebruiker die de toegang heeft ontvangen, wordt aangeduid met het veld **ActorUserPrincipalName** .
+Wanneer een gebruiker toegang toegewezen krijgt, schrijft Azure AD een controle record voor de `EntitlementManagement` categorie met **activiteit** `Fulfill access package assignment` .  De gebruiker die de toegang heeft ontvangen, wordt aangeduid met het veld **ActorUserPrincipalName** .
 
-Als er geen toegang is toegewezen, schrijft Azure AD een controle record voor de `EntitlementManagement` categorie met **activiteiten** `Deny access package assignment request`als de aanvraag is geweigerd door een fiatteur of `Access package assignment request timed out (no approver action taken)`als er een time-out is opgetreden voor de aanvraag voordat een fiatteur kan goed keuren.
+Als er geen toegang is toegewezen, schrijft Azure AD een controle record voor de `EntitlementManagement` categorie met **activiteiten** `Deny access package assignment request` als de aanvraag is geweigerd door een fiatteur of `Access package assignment request timed out (no approver action taken)` als er een time-out is opgetreden voor de aanvraag voordat een fiatteur kan goed keuren.
 
-Wanneer de toewijzing van het toegangs pakket van de gebruiker verloopt, wordt geannuleerd door de gebruiker of door een beheerder wordt verwijderd, schrijft Azure AD een controle record `EntitlementManagement` voor de categorie met `Remove access package assignment`de **activiteit** van.
+Wanneer de toewijzing van het toegangs pakket van de gebruiker verloopt, wordt geannuleerd door de gebruiker of door een beheerder wordt verwijderd, schrijft Azure AD een controle record voor de `EntitlementManagement` categorie met de **activiteit** van `Remove access package assignment` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

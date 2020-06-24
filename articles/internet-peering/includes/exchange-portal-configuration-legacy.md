@@ -31,7 +31,7 @@ ms.locfileid: "81678583"
         > U kunt de instellingen voor verouderde peering-verbindingen niet wijzigen. Als u aanvullende peering-verbindingen wilt toevoegen met micro soft in de geselecteerde **metro** locatie, selecteert u **nieuwe maken**. Zie [een Exchange-peering maken of wijzigen met behulp van de portal](../howto-exchange-portal.md)voor meer informatie.
         >
 
-1. Selecteer **controleren + maken**. De portal voert basis validatie uit van de gegevens die u hebt ingevoerd. In een lint bovenaan wordt het bericht weer gegeven dat de *laatste validatie uitvoert...*.
+1. Selecteer **Controleren + maken**. De portal voert basis validatie uit van de gegevens die u hebt ingevoerd. In een lint bovenaan wordt het bericht weer gegeven dat de *laatste validatie uitvoert...*.
 
     > [!div class="mx-imgBorder"]
     > ![Tabblad validatie van peering](../media/setup-direct-review-tab-validation.png)

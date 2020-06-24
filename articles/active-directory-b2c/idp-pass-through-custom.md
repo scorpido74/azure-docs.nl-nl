@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7307d047861a4fd6ba2065d231fde8040a383cfb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187783"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201834"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een aangepast beleid voor uw toepassing in Azure Active Directory B2C
 
@@ -30,9 +30,9 @@ Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](a
 
 ## <a name="add-the-claim-elements"></a>De claim elementen toevoegen
 
-1. Open uw *TrustframeworkExtensions. XML-* bestand en voeg het volgende **claim** type-element toe `identityProviderAccessToken` met een id van aan het **ClaimsSchema** -element:
+1. Open uw *TrustframeworkExtensions.xml* -bestand en voeg het volgende **claim** type-element toe met een id van `identityProviderAccessToken` aan het element **ClaimsSchema** :
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -47,7 +47,7 @@ Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](a
 
 2. Voeg het **output claim** -element toe aan het **TechnicalProfile** -element voor elke OAuth 2,0-ID-provider waarvoor u het toegangs token voor wilt gebruiken. In het volgende voor beeld ziet u het element dat is toegevoegd aan het technische profiel voor Facebook:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -61,10 +61,10 @@ Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](a
     </ClaimsProvider>
     ```
 
-3. Sla het bestand *TrustframeworkExtensions. XML* op.
-4. Open uw Relying Party-beleids bestand, zoals *SignUpOrSignIn. XML*, en voeg het element **output claim** toe aan de **TechnicalProfile**:
+3. Sla het *TrustframeworkExtensions.xml* bestand op.
+4. Open uw Relying Party-beleids bestand, zoals *SignUpOrSignIn.xml*, en voeg het element **output claim** toe aan de **TechnicalProfile**:
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">
@@ -80,7 +80,7 @@ Azure AD B2C ondersteunt het door geven van het toegangs token van [OAuth 2,0](a
 
 ## <a name="test-your-policy"></a>Uw beleid testen
 
-Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims daarin te kunnen bekijken.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te retour neren om `https://jwt.ms` de claims daarin te kunnen bekijken.
 
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
@@ -89,14 +89,14 @@ Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Az
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
 5. Klik op het tabblad Aangepaste beleids regels op **beleid uploaden**.
-6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het bestand *TrustframeworkExtensions. XML* .
+6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het *TrustframeworkExtensions.xml* bestand.
 7. Selecteer **Uploaden**.
-8. Herhaal stap 5 tot en met 7 voor het Relying Party bestand, zoals *SignUpOrSignIn. XML*.
+8. Herhaal stap 5 tot en met 7 voor het Relying Party bestand, zoals *SignUpOrSignIn.xml*.
 
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
 1. Open het beleid dat u hebt gewijzigd. Bijvoorbeeld *B2C_1A_signup_signin*.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de **antwoord-URL** worden weer gegeven `https://jwt.ms` .
 3. Selecteer **nu uitvoeren**.
 
     Het volgende voor beeld ziet er ongeveer uit:

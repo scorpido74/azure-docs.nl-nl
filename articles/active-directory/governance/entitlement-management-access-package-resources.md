@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa110dac1ede9c3ef46bafcca0f4a59d956e3ae9
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261890"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078652"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
@@ -86,7 +86,7 @@ Zie groepen en [Office 365-groepen en micro soft teams](https://docs.microsoft.c
 
     ![Toegangs pakket-resource rollen toevoegen-groepen selecteren](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. Klik op **selecteren**.
+1. Klik op **Selecteren**.
 
     Wanneer u de groep of het team selecteert, wordt in de kolom **subtype** een van de volgende subtypen weer geven:
 
@@ -128,7 +128,7 @@ Hier volgen enkele overwegingen bij het selecteren van een toepassing:
 
     ![Toegangs pakket-resource rollen toevoegen-toepassingen selecteren](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. Klik op **selecteren**.
+1. Klik op **Selecteren**.
 
 1. Selecteer een toepassingsrol in de lijst met **rollen** .
 
@@ -148,7 +148,7 @@ Azure AD kan gebruikers automatisch toegang geven tot een share point online-sit
 
     ![Toegangs pakket-resource rollen toevoegen-share point online-sites selecteren](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. Klik op **selecteren**.
+1. Klik op **Selecteren**.
 
 1. Selecteer in de lijst **rol** een share point online-site functie.
 

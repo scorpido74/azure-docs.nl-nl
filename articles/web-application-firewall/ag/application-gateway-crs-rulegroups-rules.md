@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730561"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052019"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-regel groepen en-regels voor Web Application firewall
 
@@ -39,6 +39,9 @@ De WAF beveiligt tegen de volgende webproblemen:
 ### <a name="owasp-crs-31"></a>OWASP CRS 3,1
 
 CRS 3,1 bevat 13 regel groepen, zoals wordt weer gegeven in de volgende tabel. Elke groep bevat meerdere regels die kunnen worden uitgeschakeld.
+
+> [!NOTE]
+> CRS 3,1 is alleen beschikbaar op de WAF_v2 SKU.
 
 |Regelgroep|Beschrijving|
 |---|---|

@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 36662a0089fef34a539788cfac667b5086a10c78
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194271"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255531"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De Azure-SSIS Integration Runtime configureren voor hoge prestaties
 
@@ -150,7 +150,7 @@ Hier volgen de richt lijnen voor het instellen van de juiste waarde voor de eige
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** is de prijs categorie voor de SSIS-catalogus database (SSISDB) op een Azure-SQL database. Deze instelling is van invloed op het maximum aantal werk rollen in het IR-exemplaar, de snelheid waarmee een pakket kan worden uitgevoerd en de snelheid waarmee het uitvoerings logboek kan worden geladen.
+**SSISDBPricingTier** is de prijs categorie voor de SSIS-catalogus database (SSISDB) in Azure SQL database. Deze instelling is van invloed op het maximum aantal werk rollen in het IR-exemplaar, de snelheid waarmee een pakket kan worden uitgevoerd en de snelheid waarmee het uitvoerings logboek kan worden geladen.
 
 -   Als u geen zorgen hebt over de snelheid waarmee de uitvoering van het wachtrij pakket wordt uitgevoerd en het uitvoerings logboek kan worden geladen, kunt u de laagste prijs categorie voor de data base kiezen. Azure SQL Database met Basic-prijzen ondersteunt 8 werk nemers in een Integration runtime-exemplaar.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792068"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751637"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
 
@@ -218,7 +218,7 @@ U kunt ook gebruikmaken van ingebouwde beleids definities met betrekking tot het
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
-**Richt lijnen**: als u de Azure Storage-logboeken wilt bekijken, zijn er de gebruikelijke opties zoals query's via de log Analytics-aanbieding en een unieke optie om de logboek bestanden rechtstreeks weer te geven. In Azure Storage worden de Logboeken opgeslagen in blobs die rechtstreeks toegankelijk moeten zijn op http://accountname.blob.core.windows.net/$logs (de map voor logboek registratie is standaard verborgen, zodat u rechtstreeks naar een andere moet navigeren. Het wordt niet weer gegeven in lijst opdrachten.) 
+**Richt lijnen**: als u de Azure Storage-logboeken wilt bekijken, zijn er de gebruikelijke opties zoals query's via de log Analytics-aanbieding en een unieke optie om de logboek bestanden rechtstreeks weer te geven. In Azure Storage worden de Logboeken opgeslagen in blobs die rechtstreeks toegankelijk moeten zijn op http://accountname.blob.core.windows.net/ $logs (de map voor logboek registratie is standaard verborgen, zodat u rechtstreeks naar een andere moet navigeren. Het wordt niet weer gegeven in lijst opdrachten.) 
 
 Schakel ook geavanceerde beveiliging tegen bedreigingen in voor uw Azure Storage-account. Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag waarmee ongebruikelijke en mogelijk schadelijke pogingen voor het openen of exploiteren van opslag accounts worden gedetecteerd. Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met Azure Security Center en worden ook via e-mail verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. 
 
@@ -462,7 +462,7 @@ Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -785,7 +785,10 @@ Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren 
 
 **Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Storage ' om aangepaste beleids regels te maken om de configuratie van uw opslag account-exemplaren te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities voor Azure Storage account gebruiken, zoals: 
 
-Onbeperkte netwerk toegang controleren tot opslag accounts geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager bronnen beveiligde overdracht naar opslag accounts moet worden ingeschakeld 
+Onbeperkte netwerktoegang tot opslagaccounts controleren  
+Advanced Threat Protection implementeren voor opslagaccounts  
+Opslagaccounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources  
+Beveiligde overdracht naar opslagaccounts moet zijn ingeschakeld  
 
 Gebruik aanbevelingen van Azure Security Center als een veilige configuratie basislijn voor uw opslag accounts. 
 

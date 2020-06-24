@@ -4,19 +4,19 @@ description: Stappen voor het configureren van OpenVPN-clients voor Azure Virtua
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 133ce2f735344bb636015ec5bc261e661045afc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f955b5347bc5a2c0fe1fd8a93e14badab1f354c8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80108885"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753277"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Een OpenVPN-Client voor Azure Virtual WAN configureren
 
-Dit artikel helpt u bij het configureren van **openvpn &reg; -protocol** -clients.
+Dit artikel helpt u bij het configureren van **openvpn- &reg; protocol** -clients.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

@@ -4,20 +4,20 @@ description: Office installeren en aanpassen op basis van een installatie kopie 
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 3e213ac7a4d0436cf904a8104cea7e76eabaece4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672694"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200525"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Office installeren op een master-VHD-installatiekopie
 
-In dit artikel leest u hoe u Office 365 ProPlus, OneDrive en andere algemene toepassingen op een master-image van een virtuele harde schijf (VHD) installeert voor het uploaden naar Azure. Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen (line-of-Business), raden wij u aan deze te installeren nadat u de instructies in dit artikel hebt voltooid.
+In dit artikel leest u hoe u Microsoft 365-apps voor Enter prise, OneDrive en andere algemene toepassingen op een master-image van een virtuele harde schijf (VHD) installeert voor het uploaden naar Azure. Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen (line-of-Business), raden wij u aan deze te installeren nadat u de instructies in dit artikel hebt voltooid.
 
 In dit artikel wordt ervan uitgegaan dat u al een virtuele machine (VM) hebt gemaakt. Als dat niet het geval is, raadpleegt u [een VHD-master installatie kopie voorbereiden en aanpassen](set-up-customize-master-image.md#create-a-vm)
 
@@ -28,29 +28,30 @@ In dit artikel wordt ervan uitgegaan dat u toegang hebt tot verhoogde bevoegdhed
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Office installeren in de activerings modus gedeelde computer
 
-Met activering via een gedeelde computer kunt u Office 365 ProPlus implementeren op een computer in uw organisatie die toegankelijk is voor meerdere gebruikers. Zie [overzicht van gedeelde computer activering voor Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)voor meer informatie over het activeren van gedeelde computers.
+Met de activering van gedeelde computers kunt u Microsoft 365-apps voor ondernemingen implementeren op een computer in uw organisatie die wordt geopend door meerdere gebruikers. Zie [overzicht van gedeelde computer activering voor Microsoft 365-apps](/deployoffice/overview-shared-computer-activation)voor meer informatie over het activeren van gedeelde computers.
 
 Gebruik het [hulp programma voor implementatie van Office](https://www.microsoft.com/download/details.aspx?id=49117) om Office te installeren. Windows 10 Enter prise multi-session ondersteunt alleen de volgende versies van Office:
-- Office 365 ProPlus
-- Office 365-bedrijf dat wordt geleverd met een Microsoft 365 Business-abonnement
+
+   - Microsoft 365-apps voor ondernemingen
+   - Microsoft 365-apps voor bedrijven die worden geleverd met een Microsoft 365 Business Premium-abonnement
 
 Voor het Office Deployment Tool is een XML-configuratie bestand vereist. Als u het volgende voor beeld wilt aanpassen, raadpleegt u de [configuratie opties voor het hulp programma Office-implementatie](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Deze XML-voorbeeld configuratie heeft de volgende kenmerken:
 
-- • Installeer Office vanuit het maandelijkse bedrijfs kanaal en lever updates van het maandelijkse bedrijfs kanaal wanneer ze worden uitgevoerd.
-- Gebruik de x64-architectuur.
-- Automatische updates uitschakelen.
-- Verwijder alle bestaande installaties van Office en migreer de instellingen.
-- Activering van gedeelde computer inschakelen.
+   - Installeer Office vanuit het maandelijkse bedrijfs kanaal en lever updates via het maandelijkse bedrijfs kanaal.
+   - Gebruik de x64-architectuur.
+   - Automatische updates uitschakelen.
+   - Verwijder alle bestaande installaties van Office en migreer de instellingen.
+   - Activering van gedeelde computer inschakelen.
 
 >[!NOTE]
 >De functie voor het zoeken naar het stencil van Visio werkt mogelijk niet zoals verwacht in Windows virtueel bureau blad.
 
 Dit is de XML-voorbeeld configuratie:
 
-- Skype voor bedrijven installeren
-- Installeer OneDrive in de modus per gebruiker. Zie voor meer informatie [OneDrive installeren in de modus per computer](#install-onedrive-in-per-machine-mode).
+   - Skype voor bedrijven installeren
+   - Installeer OneDrive in de modus per gebruiker. Zie voor meer informatie [OneDrive installeren in de modus per computer](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
 >Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich in **computer configuratie \\ beleid \\ Beheersjablonen de licentie- \\ \\ instellingen voor Microsoft Office 2016 (computer)**
@@ -121,7 +122,7 @@ U kunt als volgt OneDrive installeren in de modus per computer:
 2. Down load OneDriveSetup.exe naar uw gefaseerde locatie met deze koppeling:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Als u Office hebt geïnstalleerd met OneDrive door niets **\<ExcludeApp ID="OneDrive" /\>** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
-    
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -160,7 +161,7 @@ U kunt als volgt OneDrive installeren in de modus per computer:
 
 Het virtuele bureau blad van Windows biedt geen ondersteuning voor Skype voor bedrijven.
 
-Voor hulp bij het installeren van micro soft teams raadpleegt [u micro soft teams gebruiken op virtuele Windows-bureau blad](teams-on-wvd.md).
+Voor hulp bij het installeren van micro soft teams raadpleegt [u micro soft teams gebruiken op virtuele Windows-bureau blad](teams-on-wvd.md). Media optimalisatie voor micro soft teams op het virtuele bureau blad van Windows is beschikbaar als preview-versie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

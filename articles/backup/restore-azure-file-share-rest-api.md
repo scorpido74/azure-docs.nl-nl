@@ -4,11 +4,11 @@ description: Meer informatie over het gebruik van REST API om Azure-bestands sha
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252504"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710572"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-bestands shares herstellen met behulp van REST API
 
@@ -378,7 +378,7 @@ Raadpleeg het [document trigger Restore rest API](https://docs.microsoft.com/res
 
 ### <a name="restore-to-original-location"></a>Herstellen naar de oorspronkelijke locatie
 
-De volgende aanvraag tekst is het herstellen van het *Restoretest. txt* -bestand in de *Azure files* -bestands share in het *afsaccount* -opslag account.
+De volgende aanvraag tekst is het herstellen van het *Restoretest.txt* -bestand in de *Azure files* -bestands share in de *afsaccount* -opslag account.
 
 Hoofd tekst van aanvraag maken
 
@@ -404,7 +404,7 @@ Hoofd tekst van aanvraag maken
 
 ### <a name="restore-to-alternate-location"></a>Herstellen naar alternatieve locatie
 
-De volgende aanvraag tekst is het herstellen van het *Restoretest. txt* -bestand in de *Azure files* -bestands share in het opslag account *afsaccount* naar de map *restoredata* van de *azurefiles1* -bestands share in het *afaccount1* -opslag account.
+De volgende aanvraag tekst is het herstellen van het *Restoretest.txt* -bestand in de *Azure files* -bestands share in de *afsaccount* -opslag account naar de map *restoredata* van de bestands share *azurefiles1* in het *afaccount1* -opslag account.
 
 Hoofd tekst van aanvraag maken
 

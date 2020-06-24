@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481565"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202990"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische validatie profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Een technische validatie profiel is een normaal technisch profiel van elk protocol, zoals [Azure Active Directory](active-directory-technical-profile.md) of een [rest API](restful-technical-profile.md). Het technische profiel voor validatie retourneert uitvoer claims of retourneert 4xx HTTP-status code, met de volgende gegevens. Zie voor meer informatie [retour neren fout bericht](restful-technical-profile.md#returning-error-message)
+Een technische validatie profiel is een normaal technisch profiel van elk protocol, zoals [Azure Active Directory](active-directory-technical-profile.md) of een [rest API](restful-technical-profile.md). Het technische profiel voor validatie retourneert uitvoer claims of retourneert 4xx HTTP-status code, met de volgende gegevens. Zie voor meer informatie [retour neren fout bericht](restful-technical-profile.md#returning-validation-error-message)
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -55,9 +55,9 @@ Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
-|ContinueOnError|Nee| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (de verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
-|ContinueOnSuccess | Nee | Hiermee wordt aangegeven of de validatie van de volgende validatie profielen moet worden voortgezet als het technische profiel voor de validatie is geslaagd. Mogelijke waarden: `true` of `false`. De standaard waarde `true`is, wat inhoudt dat de verwerking van verdere validatie profielen zal worden voortgezet. |
+| ReferenceId | Yes | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
+|ContinueOnError|No| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (de verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
+|ContinueOnSuccess | No | Hiermee wordt aangegeven of de validatie van de volgende validatie profielen moet worden voortgezet als het technische profiel voor de validatie is geslaagd. Mogelijke waarden: `true` of `false` . De standaard waarde is `true` , wat inhoudt dat de verwerking van verdere validatie profielen zal worden voortgezet. |
 
 Het element **ValidationTechnicalProfile** bevat het volgende element:
 
@@ -69,25 +69,25 @@ Het element **voor waarde** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. Ofwel `ClaimsExist` wordt opgegeven om ervoor te zorgen dat acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de `ClaimEquals` gebruiker, of dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
-| `ExecuteActionsIf` | Ja | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
+| `Type` | Yes | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. Ofwel `ClaimsExist` wordt opgegeven om ervoor te zorgen dat acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker, of `ClaimEquals` dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
+| `ExecuteActionsIf` | Yes | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
 
 Het element **voor waarde** bevat de volgende elementen:
 
 | Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| Waarde | 1: n | De gegevens die worden gebruikt door de controle. Als het type van deze controle is `ClaimsExist`, geeft dit veld een ClaimTypeReferenceId op die moet worden opgevraagd. Als het type controle is `ClaimEquals`, specificeert dit veld een ClaimTypeReferenceId om op te vragen. Een ander value-element bevat de waarde die moet worden gecontroleerd.|
-| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** wordt ingesteld op `SkipThisValidationTechnicalProfile`. Hiermee geeft u op dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |
+| Waarde | 1: n | De gegevens die worden gebruikt door de controle. Als het type van deze controle is `ClaimsExist` , geeft dit veld een ClaimTypeReferenceId op die moet worden opgevraagd. Als het type controle is `ClaimEquals` , specificeert dit veld een ClaimTypeReferenceId om op te vragen. Een ander value-element bevat de waarde die moet worden gecontroleerd.|
+| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** wordt ingesteld op `SkipThisValidationTechnicalProfile` . Hiermee geeft u op dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |
 
 ### <a name="example"></a>Voorbeeld
 
 In het volgende voor beeld worden deze technische profielen voor validatie gebruikt:
 
 1. Het eerste validatie profiel controleert de gebruikers referenties en gaat niet verder als er een fout optreedt, zoals een ongeldige gebruikers naam of een onjuist wacht woord.
-2. Het volgende validatie technische profiel wordt niet uitgevoerd als de User type-claim niet bestaat of als de waarde van de User type is `Partner`. Het technische profiel voor validatie probeert het gebruikers profiel te lezen uit de interne klanten database en door te gaan als er een fout optreedt, zoals REST API service niet beschikbaar of een interne fout.
-3. Het laatste validatie-technische profiel wordt niet uitgevoerd als de User type-claim niet bestaat of als de waarde van de User type is `Customer`. Het validatie technische profiel probeert het gebruikers profiel te lezen uit de interne partner database en gaat door als er een fout optreedt, zoals REST API service niet beschikbaar of een interne fout.
+2. Het volgende validatie technische profiel wordt niet uitgevoerd als de User type-claim niet bestaat of als de waarde van de User type is `Partner` . Het technische profiel voor validatie probeert het gebruikers profiel te lezen uit de interne klanten database en door te gaan als er een fout optreedt, zoals REST API service niet beschikbaar of een interne fout.
+3. Het laatste validatie-technische profiel wordt niet uitgevoerd als de User type-claim niet bestaat of als de waarde van de User type is `Customer` . Het validatie technische profiel probeert het gebruikers profiel te lezen uit de interne partner database en gaat door als er een fout optreedt, zoals REST API service niet beschikbaar of een interne fout.
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >

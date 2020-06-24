@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262007"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078940"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -119,7 +119,7 @@ Afhankelijk van wie u dit toegangs pakket wilt kunnen aanvragen, voert u de stap
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Controleren en maken
+## <a name="review--create"></a>Beoordelen en maken
 
 Op het tabblad **controleren en maken** kunt u uw instellingen controleren en controleren of er validatie fouten zijn.
 
@@ -133,7 +133,7 @@ Op het tabblad **controleren en maken** kunt u uw instellingen controleren en co
 
 ## <a name="creating-an-access-package-programmatically"></a>Een toegangs pakket programmatisch maken
 
-U kunt ook een toegangs pakket maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen naar
+U kunt ook een toegangs pakket maken met behulp van Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de API aanroepen naar
 
 1. [Vermeld de accessPackageResources in de catalogus](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) en [Maak een accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) voor alle resources die nog niet in de catalogus staan.
 1. [Vermeld de accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta) van elke accessPackageResource in een accessPackageCatalog. Deze lijst met rollen wordt vervolgens gebruikt voor het selecteren van een rol, wanneer u vervolgens een accessPackageResourceRoleScope maakt.

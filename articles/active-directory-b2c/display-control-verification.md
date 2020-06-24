@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188780"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202311"
 ---
 # <a name="verification-display-control"></a>Besturings element voor verificatie weergave
 
@@ -40,12 +40,12 @@ Het besturings element voor controle weergave bestaat uit twee stappen (acties):
 
 De **VerificationControl** moet de volgende elementen bevatten:
 
-- Het type `DisplayControl` is `VerificationControl`.
+- Het type `DisplayControl` is `VerificationControl` .
 - `DisplayClaims`
   - **Verzenden naar** -een of meer claims waarmee wordt aangegeven waarnaar de verificatie code moet worden verzonden. Bijvoorbeeld *e-mail adres* of *land code* en *telefoon nummer*.
-  - **Verificatie code** -de claim van de verificatie code die door de gebruiker wordt verstrekt nadat de code is verzonden. Deze claim moet worden ingesteld als vereist en `ControlClaimType` moet worden ingesteld op. `VerificationCode`
+  - **Verificatie code** -de claim van de verificatie code die door de gebruiker wordt verstrekt nadat de code is verzonden. Deze claim moet worden ingesteld als vereist en `ControlClaimType` moet worden ingesteld op `VerificationCode` .
 - Uitvoer claim (optioneel) die moet worden geretourneerd naar de zelfbevestigende pagina nadat het verificatie proces door de gebruiker is voltooid. Bijvoorbeeld *e-mail adres* of *land code* en *telefoon nummer*. Het zelfondertekende technische profiel gebruikt de claims om de gegevens op te slaan of de uitvoer claims samen te stellen aan de volgende Orchestration-stap.
-- Twee `Action`s met de volgende namen:
+- Twee `Action` s met de volgende namen:
   - **SendCode** : stuurt een code naar de gebruiker. Deze actie bevat doorgaans twee technische validatie profielen, waarmee een code kan worden gegenereerd en verzonden.
   - **VerifyCode** : verifieert de code. Deze actie bevat meestal een technische profiel voor validatie.
 
@@ -53,7 +53,7 @@ In het onderstaande voor beeld wordt een tekstvak voor **e-mail** op de pagina w
 
 Vervolgens voert de gebruiker de **verificationCode** in en selecteert **VerifyCode** om de **VerifyCode** -actie in de back-end te activeren. Als alle validaties worden door gegeven, wordt de **VerificationControl** beschouwd als voltooid en kan de gebruiker door gaan met de volgende stap.
 
-```XML
+```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="email"  Required="true" />

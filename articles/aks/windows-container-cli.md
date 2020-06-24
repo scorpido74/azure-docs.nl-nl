@@ -4,12 +4,12 @@ description: Meer informatie over hoe u snel een Kubernetes-cluster maakt, een t
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 70dbe927c3d106e6a853f215f93c51bd7e547150
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658515"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886962"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Azure CLI
 
@@ -86,7 +86,6 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.16.9 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -95,8 +94,6 @@ az aks create \
 ```
 
 > [!NOTE]
-> Als u het AKS-cluster niet kunt maken omdat de versie niet wordt ondersteund in deze regio, gebruikt u de opdracht [AZ AKS get-version--location eastus] om de lijst met ondersteunde versies te vinden voor deze regio.
->  
 > Als er een fout is opgetreden bij het valideren van het wacht woord, probeert u de resource groep te maken in een andere regio.
 > Probeer vervolgens het cluster te maken met de nieuwe resource groep.
 
@@ -112,8 +109,7 @@ az aks nodepool add \
     --cluster-name myAKSCluster \
     --os-type Windows \
     --name npwin \
-    --node-count 1 \
-    --kubernetes-version 1.16.9
+    --node-count 1
 ```
 
 Met de bovenstaande opdracht maakt u een nieuwe knooppunt groep met de naam *npwin* en voegt u deze toe aan de *myAKSCluster*. Bij het maken van een knooppunt groep voor het uitvoeren van Windows Server-containers, wordt de standaard waarde voor de *grootte van knoop punt-vm* *Standard_D2s_v3*. Als u de para meter van het *knoop punt-VM-grootte* wilt instellen, controleert u de lijst met [beperkte VM-grootten][restricted-vm-sizes]. De minimale aanbevolen grootte is *Standard_D2s_v3*. De bovenstaande opdracht gebruikt ook het standaard-subnet in de standaard-vnet dat is gemaakt tijdens het uitvoeren `az aks create` .

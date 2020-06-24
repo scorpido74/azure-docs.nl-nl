@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/27/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261721"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078101"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer
 
@@ -43,7 +43,7 @@ De eerste stap voor het goed keuren of weigeren van toegangs aanvragen is het zo
 
 Als u het e-mail bericht niet hebt, kunt u de toegangs aanvragen vinden die in behandeling zijn door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de portal van mijn [https://myaccess.microsoft.com](https://myaccess.microsoft.com)toegang op.  (Voor de Amerikaanse overheid is het domein in de koppeling naar de portal van `myaccess.microsoft.us`mijn toegang.)
+1. Meld u aan bij de portal van mijn toegang op [https://myaccess.microsoft.com](https://myaccess.microsoft.com) .  (Voor de Amerikaanse overheid is het domein in de koppeling naar de portal van mijn toegang `myaccess.microsoft.us` .)
 
 1. Klik in het linkermenu op **goed keuringen** om een lijst weer te geven met toegangs aanvragen die in behandeling zijn.
 

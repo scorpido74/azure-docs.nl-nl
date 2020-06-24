@@ -3,23 +3,23 @@ title: Azure AD-app proxy en Qlik Sense | Microsoft Docs
 description: Schakel toepassings proxy in het Azure Portal in en installeer de connectors voor de omgekeerde proxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9696d48db7d051f3a8bdf16f93438fb71f025dc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037000"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760045"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Toepassings proxy en Qlik Sense 
 Azure Active Directory-toepassingsproxy en Qlik Sense kunnen samen worden gebruikt om ervoor te zorgen dat u eenvoudig een toepassings proxy kunt gebruiken om externe toegang te bieden voor uw Qlik Sense-implementatie.  
@@ -38,7 +38,7 @@ Volg deze stappen om uw app te publiceren. Zie [toepassingen publiceren met Azur
 
 
 1. Meld u aan bij de Azure Portal als globale beheerder. 
-2. Selecteer **Azure Active Directory** > **bedrijfs toepassingen**. 
+2. Selecteer **Azure Active Directory**  >  **bedrijfs toepassingen**. 
 3. Selecteer **toevoegen** boven aan de Blade. 
 4. Selecteer **on-premises toepassing**. 
 5. Vul de vereiste velden in met informatie over uw nieuwe app. Gebruik de volgende richt lijnen voor de instellingen: 

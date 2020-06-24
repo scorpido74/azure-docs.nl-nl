@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 716fbafb444985a9c47635f944f6c9c7078c9aa6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636265"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202650"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalisatie van de gebruikers interface van uw toepassing met behulp van een aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Door de taal aanpassing in Azure Active Directory B2C (Azure AD B2C) kunt u verschillende talen aanpassen aan de behoeften van uw klant. Micro soft biedt de vertalingen voor [36 talen](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages), maar u kunt ook uw eigen vertalingen voor elke taal opgeven. Zelfs als uw ervaring slechts voor één taal wordt gegeven, kunt u tekst op de pagina's aanpassen. 
+Door de taal aanpassing in Azure Active Directory B2C (Azure AD B2C) kunt u verschillende talen aanpassen aan de behoeften van uw klant. Micro soft biedt de vertalingen voor [36 talen](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages), maar u kunt ook uw eigen vertalingen voor elke taal opgeven. Zelfs als uw ervaring is bedoeld voor slechts één taal, kunt u tekst op de pagina's aanpassen. 
 
 In dit artikel wordt beschreven hoe u meerdere land instellingen of talen in het beleid voor gebruikers ritten ondersteunt. Lokalisatie vereist drie stappen: Stel de expliciete lijst met ondersteunde talen in, geef taalspecifieke teken reeksen en verzamelingen op en bewerk de [inhouds definitie](contentdefinitions.md) voor de pagina. 
 
@@ -33,7 +33,7 @@ Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccoun
 1. Voeg het- `Localization` element toe met de ondersteunde talen: Engels (standaard) en Spaans.  
 
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
     <SupportedLanguage>en</SupportedLanguage>
@@ -51,7 +51,7 @@ U configureert gelokaliseerde bronnen elementen voor de inhouds definitie en all
 > [!NOTE]
 > In het volgende voor beeld is het hekje `#` -symbool toegevoegd aan het Begging van elke regel, zodat u de gelokaliseerde labels op het scherm kunt easly vinden.
 
-```XML
+```xml
 <!--Local account sign-up or sign-in page English-->
 <LocalizedResources Id="api.signuporsignin.en">
   <LocalizedStrings>
@@ -218,7 +218,7 @@ Plak de volledige inhoud van het ContentDefinitions-element dat u hebt gekopieer
 
 In het volgende voor beeld worden de aangepaste teken reeksen Engels (en) en Spaans (ES) toegevoegd aan de registratie pagina voor aanmelden of aanmelden en op de registratie pagina van het lokale account. De **LocalizedResourcesReferenceId** voor elke **LocalizedResourcesReference** is hetzelfde als de land instelling, maar u kunt elke wille keurige teken reeks als de id gebruiken. Voor elke combi natie van taal en pagina wijst u de overeenkomende **LocalizedResources** aan die u eerder hebt gemaakt.
 
-```XML
+```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.signuporsignin">
     <LocalizedResourcesReferences MergeBehavior="Prepend">
@@ -241,7 +241,7 @@ In het volgende voor beeld worden de aangepaste teken reeksen Engels (en) en Spa
 ### <a name="upload-the-custom-policy"></a>Het aangepaste beleid uploaden
 
 1. Sla het bestand met extensies op.
-1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat door in het bovenste menu te klikken op het filter **Map en abonnement** en de map te kiezen waarin de tenant zich bevindt.
 1. Zoek en selecteer **Azure AD B2C**.
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **aangepast beleid uploaden**.

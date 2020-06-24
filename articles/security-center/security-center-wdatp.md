@@ -12,21 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: a741fb76827327c1231890d71ee1da79e052ed50
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232407"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257530"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
-Azure Security Center is een uitbrei ding van de beveiligings platforms voor Cloud werkbelasting die worden aangeboden door te integreren met [micro soft Defender Advanced Threat Protection](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) (ATP).
-Met deze wijziging komen uitgebreide mogelijkheden voor EDR (Endpoint Detection and Response) beschikbaar. Met micro soft Defender ATP-integratie kunt u afwijkingen herkennen. U kunt ook geavanceerde aanvallen detecteren en erop reageren op server-eind punten die worden bewaakt door Azure Security Center.
+Azure Security Center integreert met [micro soft Defender Advanced Threat Protection (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) om uitgebreide functionaliteit voor het detecteren en beantwoorden van eind punten te bieden.
 
 ## <a name="microsoft-defender-atp-features-in-security-center"></a>Micro soft Defender ATP-functies in Security Center
 
-Wanneer u micro soft Defender ATP gebruikt, krijgt u het volgende:
+Micro soft Defender ATP biedt:
 
 - **Geavanceerde detectie Sens oren**: micro soft Defender ATP Sens oren voor Windows-servers verzamelen een grote reeks gedrags signalen.
 
@@ -34,19 +33,18 @@ Wanneer u micro soft Defender ATP gebruikt, krijgt u het volgende:
 
 - **Bedreigings informatie**: micro soft Defender ATP genereert waarschuwingen wanneer de aanvaller hulpprogram ma's, technieken en procedures identificeert. Het maakt gebruik van gegevens die zijn gegenereerd door micro soft Threat jagers en beveiligings teams, uitgebreid door Intelligence van partners.
 
-De volgende mogelijkheden zijn nu beschikbaar in Azure Security Center:
 
-- **Automatische**voor bereiding: de micro soft Defender ATP-sensor wordt automatisch ingeschakeld voor Windows-servers die worden voorAzure Security Centerd (met uitzonde ring van de computers waarop Windows Server 2019 wordt uitgevoerd).
+Door Defender ATP te integreren met Azure Security Center, kunt u ook profiteren van de volgende aanvullende mogelijkheden:
 
-- **Eén venster glas**: de Azure Security Center-console geeft micro soft Defender ATP-waarschuwingen weer.
+- **Automatische**voor bereiding: de integratie schakelt automatisch de micro soft Defender ATP-sensor in voor Windows-servers die worden bewaakt door Azure Security Center (tenzij ze Windows Server 2019 worden uitgevoerd).
 
-Gebruik micro soft Defender ATP om verder te onderzoeken. Micro soft Defender ATP biedt aanvullende informatie, zoals de structuur van het waarschuwings proces en de incidenten grafiek. U kunt ook een gedetailleerde computer tijdlijn bekijken waarin elk gedrag wordt weer gegeven voor een historische periode van Maxi maal zes maanden.
+- **Eén venster glas**: de Azure Security Center-console geeft micro soft Defender ATP-waarschuwingen weer. Gebruik micro soft Defender ATP om verder te onderzoeken. Micro soft Defender ATP biedt aanvullende informatie, zoals de structuur van het waarschuwings proces en de incidenten grafiek. U kunt ook een gedetailleerde computer tijdlijn bekijken waarin elk gedrag wordt weer gegeven voor een historische periode van Maxi maal zes maanden.
 
-![Micro soft Defender ATP-pagina met gedetailleerde informatie over een waarschuwing](media/security-center-wdatp/image3.png)
+    ![Micro soft Defender ATP-pagina met gedetailleerde informatie over een waarschuwing](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Platformondersteuning
 
-Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016, 2012 R2 en 2008 R2 SP1, voor virtuele machines van Azure hebt u een Standard-laag abonnement en voor niet-Azure-Vm's hebt u alleen een Standard-laag op het niveau van de werk ruimte nodig.
+Micro soft Defender ATP in Security Center ondersteunt detectie op Windows Server 2016, 2012 R2 en 2008 R2 SP1. Voor virtuele machines van Azure hebt u een Standard-laag abonnement en voor virtuele machines die niet van Azure zijn, hebt u alleen een Standard-laag op het niveau van de werk ruimte nodig.
 
 > [!NOTE]
 > Wanneer u Azure Security Center gebruikt voor het bewaken van servers, wordt automatisch een micro soft Defender ATP-Tenant gemaakt en worden de micro soft Defender ATP-gegevens standaard in Europa opgeslagen. Als u uw gegevens naar een andere locatie wilt verplaatsen, moet u contact opnemen met Microsoft Ondersteuning om de Tenant opnieuw in te stellen. Het gebruik van de server eindpunt bewaking die gebruikmaakt van deze integratie is uitgeschakeld voor Office 365 GCC-klanten.
@@ -66,7 +64,7 @@ Als u servers wilt Security Center, klikt u op **Ga naar Azure Security Center v
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Micro soft Defender ATP-integratie inschakelen
 
-Als u wilt weer geven of micro soft Defender ATP Integration is ingeschakeld, selecteert u de prijzen voor **Security Center** > **& instellingen** > klikt u op uw abonnement.
+Als u wilt weer geven of micro soft Defender ATP Integration is ingeschakeld, selecteert u de prijzen voor **Security Center**  >  **& instellingen** > klikt u op uw abonnement.
 Hier ziet u de integraties die momenteel zijn ingeschakeld.
 
   ![Azure Security Center pagina instellingen voor detectie van bedreigingen met micro soft Defender ATP-integratie ingeschakeld](media/security-center-wdatp/enable-integrations.png)
@@ -81,11 +79,9 @@ Hier ziet u de integraties die momenteel zijn ingeschakeld.
 
 ## <a name="access-to-the-microsoft-defender-atp-portal"></a>Toegang tot de micro soft Defender ATP-Portal
 
-Volg de instructies in [gebruikers toegang toewijzen aan de portal](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Volg de instructies in [gebruikers toegang toewijzen aan de portal](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
-## <a name="set-the-firewall-configuration"></a>De firewall configuratie instellen
-
-Als u een proxy of firewall hebt die anonieme verkeer blokkeert, wordt een micro soft Defender ATP-sensor waarmee een verbinding wordt gemaakt vanuit de systeem context, ervoor zorgen dat anoniem verkeer is toegestaan. Volg de instructies in [toegang tot de url's van micro soft Defender ATP-service inschakelen in de proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
+1. Controleer of u een proxy of firewall hebt die anonieme verkeer blokkeert. De Defender ATP-sensor maakt verbinding vanaf de systeem context, zodat anonieme verkeer moet worden toegestaan. Volg de instructies in [Enable Access to to micro soft Defender ATP service URLs in the proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server)om een onbelemmerde toegang tot de micro soft Defender ATP-portal te garanderen.
 
 ## <a name="test-the-feature"></a>De functie testen
 
@@ -93,7 +89,7 @@ Een goed aardige micro soft Defender ATP-test waarschuwing genereren:
 
 1. Maak een map ' C:\test-MDATP-test '.
 
-1. Gebruik Extern bureaublad om toegang te krijgen tot een virtuele machine met Windows Server 2012 R2 of een virtuele machine met Windows Server 2016. Open een opdracht regel venster.
+1. Gebruik Extern bureaublad om toegang te krijgen tot een virtuele machine met Windows Server 2012 R2 of een virtuele machine met Windows Server 2016. Open een opdrachtregelvenster.
 
 1. Kopieer de volgende opdracht bij de prompt en voer deze uit. Het opdracht prompt venster wordt automatisch gesloten.
 
@@ -105,7 +101,7 @@ Een goed aardige micro soft Defender ATP-test waarschuwing genereren:
 
 1. Als de opdracht is geslaagd, ziet u een nieuwe waarschuwing in het dash board van Azure Security Center en de micro soft Defender ATP-Portal. Het kan enkele minuten duren voordat deze waarschuwing wordt weer gegeven.
 
-1. Als u de waarschuwing in Security Center wilt bekijken, gaat u naar **beveiligings waarschuwingen** > **verdachte Power shell**-opdracht regel.
+1. Als u de waarschuwing in Security Center wilt bekijken, gaat u naar **beveiligings waarschuwingen**  >  **verdachte Power shell**-opdracht regel.
 
 1. Selecteer in het venster onderzoek de koppeling om naar de micro soft Defender ATP-portal te gaan.
 

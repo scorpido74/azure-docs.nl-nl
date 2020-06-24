@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309665"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079046"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -201,16 +201,37 @@ Wanneer u een AKS-cluster maakt, worden er automatisch een netwerk beveiligings 
 
 Met kubenet moet er een route tabel bestaan op de subnetten van het cluster. AKS ondersteunt uw eigen bestaande subnet en route tabel.
 
-Als uw aangepaste subnet geen route tabel bevat, wordt er door AKS een voor u gemaakt en worden er regels aan toegevoegd. Als uw aangepaste subnet een route tabel bevat wanneer u uw cluster maakt, erkent AKS de bestaande route tabel tijdens cluster bewerkingen en worden de regels dienovereenkomstig bijgewerkt voor Cloud provider bewerkingen.
+Als uw aangepaste subnet geen route tabel bevat, wordt er door AKS een voor u gemaakt en worden er regels aan toegevoegd tijdens de levens cyclus van het cluster. Als uw aangepaste subnet een route tabel bevat wanneer u uw cluster maakt, erkent AKS de bestaande route tabel tijdens cluster bewerkingen en worden regels toegevoegd/bijgewerkt overeenkomstig de bewerkingen van de Cloud provider.
+
+> [!WARNING]
+> Aangepaste regels kunnen worden toegevoegd aan de aangepaste route tabel en worden bijgewerkt. Regels worden echter toegevoegd door de Cloud provider Kubernetes, die niet moet worden bijgewerkt of verwijderd. Regels, zoals 0.0.0.0/0, moeten altijd voor komen in een bepaalde route tabel en worden toegewezen aan het doel van uw Internet gateway, zoals een NVA of een andere uitgangs gateway. Wees voorzichtig wanneer u regels bijwerkt waarvoor alleen uw aangepaste regels worden gewijzigd.
+
+Meer informatie over het instellen van een [aangepaste route tabel][custom-route-table].
+
+Voor Kubenet-netwerken zijn geordende route tabel regels nodig om aanvragen te routeren. Vanwege dit ontwerp moeten routerings tabellen zorgvuldig worden bewaard voor elk cluster dat afhankelijk is van de tabel. Meerdere clusters kunnen geen route tabel delen, omdat pod-CIDRs uit verschillende clusters elkaar overlappen, waardoor onverwachte en verbroken route ring wordt veroorzaakt. Bij het configureren van meerdere clusters op hetzelfde virtuele netwerk of het reserveren van een virtueel netwerk voor elk cluster, moet u rekening houden met de volgende beperkingen.
 
 Beperkingen:
 
 * Machtigingen moeten worden toegewezen voordat het cluster kan worden gemaakt. Controleer of u een Service-Principal gebruikt met schrijf machtigingen voor uw aangepaste subnet en aangepaste route tabel.
 * Beheerde identiteiten worden momenteel niet ondersteund met aangepaste route tabellen in kubenet.
-* Een aangepaste route tabel moet aan het subnet zijn gekoppeld voordat u het AKS-cluster maakt. Deze route tabel kan niet worden bijgewerkt en alle routerings regels moeten worden toegevoegd aan of verwijderd uit de eerste route tabel voordat u het AKS-cluster maakt.
-* Alle subnetten in een virtueel AKS-netwerk moeten worden gebruikt om te worden gekoppeld aan dezelfde route tabel.
-* Elk AKS-cluster moet een unieke route tabel gebruiken. U kunt een route tabel niet opnieuw gebruiken met meerdere clusters.
+* Een aangepaste route tabel moet aan het subnet zijn gekoppeld voordat u het AKS-cluster maakt.
+* De gekoppelde resource van de route tabel kan niet worden bijgewerkt nadat het cluster is gemaakt. De resource van de route tabel kan niet worden bijgewerkt, maar aangepaste regels kunnen worden gewijzigd in de route tabel.
+* Elk AKS-cluster moet één unieke route tabel gebruiken voor alle subnetten die aan het cluster zijn gekoppeld. U kunt een route tabel met meerdere clusters niet opnieuw gebruiken vanwege de mogelijkheid om overlappende pod-CIDRs en conflicterende routerings regels op te halen.
 
+Nadat u een aangepaste route tabel hebt gemaakt en deze aan uw subnet in het virtuele netwerk hebt gekoppeld, kunt u een nieuw AKS-cluster maken dat gebruikmaakt van uw route tabel.
+U moet de subnet-ID gebruiken waarvoor u van plan bent uw AKS-cluster te implementeren. Dit subnet moet ook worden gekoppeld aan uw aangepaste route tabel.
+
+```azurecli-interactive
+# Find your subnet ID
+az network vnet subnet list --resource-group
+                            --vnet-name
+                            [--subscription]
+```
+
+```azurecli-interactive
+# Create a kubernetes cluster with with a custom subnet preconfigured with a route table
+az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -238,3 +259,4 @@ Als er een AKS-cluster in uw bestaande subnet van het virtuele netwerk is geïmp
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
+[custom-route-table]: ../virtual-network/manage-route-table.md

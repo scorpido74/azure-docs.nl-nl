@@ -4,15 +4,15 @@ description: Meer informatie over het maken van aliassen voor Azure Analysis Ser
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 42055762c9c0a642b3efd05af841d70f3f91413c
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698982"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816870"
 ---
 # <a name="alias-server-names"></a>Alias server namen
 
@@ -37,7 +37,7 @@ Wanneer u verbinding maakt vanaf een client, wordt de naam van de alias server i
 
 Als u een alias eindpunt wilt maken, kunt u elke methode gebruiken die een geldige Azure Analysis Services server naam retourneert. Bijvoorbeeld een verwijzing naar een bestand in Azure Blob Storage met de echte naam van de server of het maken en publiceren van een ASP.NET Web Forms-toepassing.
 
-In dit voor beeld wordt een ASP.NET Web Forms-toepassing gemaakt in Visual Studio. De verwijzing naar de hoofd pagina en het gebruikers besturings element worden verwijderd van de pagina default. aspx. De inhoud van default. aspx is gewoon de volgende pagina-instructie:
+In dit voor beeld wordt een ASP.NET Web Forms-toepassing gemaakt in Visual Studio. De pagina verwijzing en het gebruikers besturings element worden verwijderd van de pagina default. aspx. De inhoud van default. aspx is gewoon de volgende pagina-instructie:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>

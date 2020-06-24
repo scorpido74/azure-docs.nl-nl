@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: bc312964b9afe5c025b6e13657ccf2725aff3bd8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0d8f6069193607d19e10c013f3d9cb1cf00a7de6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552400"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816725"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving configureren voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Het Azure Machine Learning [Compute-exemplaar (preview)](concept-compute-instanc
 
 Er is niets om te installeren of te configureren voor een reken instantie.  Maak een wille keurig moment in uw Azure Machine Learning-werk ruimte. Geef een naam op en geef een Azure VM-type op. Probeer het nu met deze [zelf studie: omgeving en werk ruimte voor installatie](tutorial-1st-experiment-sdk-setup.md).
 
-Meer informatie over [Compute-exemplaren](concept-compute-instance.md).
+Zie [Compute instances](concept-compute-instance.md)voor meer informatie over reken instanties, inclusief het installeren van pakketten.
 
 Als u de reken kosten wilt stoppen, [stopt u het reken exemplaar](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
@@ -243,7 +243,7 @@ Deze onderdelen in uw Jupyter Notebook omgeving inschakelen:
 
 1. Als u de Jupyter Notebook wilt configureren voor het gebruik van uw Azure Machine Learning-werk ruimte, gaat u naar de sectie [een werkruimte configuratie bestand maken](#workspace) .
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio code
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio code is een zeer populaire code-editor voor meerdere platforms die een uitgebreide set programmeer talen en hulpprogram ma's ondersteunt door middel van uitbrei dingen die beschikbaar zijn in de [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). De [uitbrei ding Azure machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) installeert de [python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor het coderen van alle typen python-omgevingen (virtueel, Anaconda, enzovoort). Daarnaast bevat het hulp programma functies voor het werken met Azure Machine Learning-resources en het uitvoeren van Azure Machine Learning experimenten, zonder dat u Visual Studio code hoeft te verlaten.
 
@@ -345,7 +345,7 @@ Uitproberen:
 
 ## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>Een configuratie bestand voor een werk ruimte maken
 
-Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK vertelt hoe er met uw Azure Machine Learning-werk ruimte moet worden gecommuniceerd. Het bestand heeft de naam *config. json*en heeft de volgende indeling:
+Het configuratie bestand van de werk ruimte is een JSON-bestand dat de SDK vertelt hoe er met uw Azure Machine Learning-werk ruimte moet worden gecommuniceerd. Het bestand heeft de naam *config.jsop*en heeft de volgende indeling:
 
 ```json
 {
@@ -361,9 +361,9 @@ Gebruik om dit bestand uit uw code te gebruiken `ws=Workspace.from_config()` . M
 
 U kunt het configuratie bestand op drie manieren maken:
 
-* **Gebruik [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: om een bestand *config. json* te schrijven. Het bestand bevat de configuratie gegevens voor uw werk ruimte. U kunt het *bestand config. json* downloaden of kopiëren naar andere ontwikkel omgevingen.
+* **Gebruik [ws. write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)**: om een *config.jsin* het bestand te schrijven. Het bestand bevat de configuratie gegevens voor uw werk ruimte. U kunt de *config.jsin* naar andere ontwikkel omgevingen downloaden of kopiëren.
 
-* **Down load het bestand**: In de [Azure Portal](https://ms.portal.azure.com)selecteert u **config. json downloaden** in het gedeelte **overzicht** van uw werk ruimte.
+* **Down load het bestand**: In de [Azure Portal](https://ms.portal.azure.com)selecteert u **config.jsdownloaden** in het gedeelte **overzicht** van uw werk ruimte.
 
      ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
@@ -384,7 +384,7 @@ U kunt het configuratie bestand op drie manieren maken:
         print('Workspace not found')
     ```
 
-    Met deze code wordt het configuratie bestand naar het bestand *. azureml/config. json* geschreven.
+    Met deze code wordt het configuratie bestand naar de *. azureml/config.jsgeschreven voor* het bestand.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -13,15 +13,15 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260525"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710147"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens verplaatsen van Amazon Redshift met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-amazon-redshift-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-amazon-redshift-connector.md)
 > * [Versie 2 (huidige versie)](../connector-amazon-redshift.md)
 
 > [!NOTE]
@@ -61,12 +61,12 @@ De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn 
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| **voert** |Deze eigenschap moet worden ingesteld op **AmazonRedshift**. |Ja |
-| **naam** |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Ja |
+| **type** |Deze eigenschap moet worden ingesteld op **AmazonRedshift**. |Yes |
+| **naam** |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Yes |
 | **Importeer** |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee (de standaard waarde is 5439) |
-| **enddatabase** |De naam van de Amazon Redshift-data base. |Ja |
-| **gebruikers** |De naam van de gebruiker die toegang heeft tot de data base. |Ja |
-| **wachtwoord** |Het wacht woord voor het gebruikers account. |Ja |
+| **enddatabase** |De naam van de Amazon Redshift-data base. |Yes |
+| **gebruikers** |De naam van de gebruiker die toegang heeft tot de data base. |Yes |
+| **wachtwoord** |Het wacht woord voor het gebruikers account. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
@@ -87,7 +87,7 @@ Voor kopieer activiteit, wanneer de bron van het type **AmazonRedshiftSource**is
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | **ophalen** | Gebruik de aangepaste query om de gegevens te lezen. |Nee (als de eigenschap **TableName** van een gegevensset is opgegeven) |
-| **redshiftUnloadSettings** | Bevat de eigenschappen groep wanneer de Redshift **Unload** opdracht wordt gebruikt. | Nee |
+| **redshiftUnloadSettings** | Bevat de eigenschappen groep wanneer de Redshift **Unload** opdracht wordt gebruikt. | No |
 | **s3LinkedServiceName** | Amazon S3 om te gebruiken als een tijdelijke opslag. De gekoppelde service wordt opgegeven met behulp van een Azure Data Factory naam van het type **awsaccesskey worden**. | Vereist wanneer de eigenschap **redshiftUnloadSettings** wordt gebruikt |
 | **Bucket** | Hiermee wordt de Bucket van Amazon S3 aangegeven die moet worden gebruikt om de tussenliggende gegevens op te slaan. Als deze eigenschap niet wordt gegeven, wordt door de Kopieer activiteit automatisch een Bucket gegenereerd. | Vereist wanneer de eigenschap **redshiftUnloadSettings** wordt gebruikt |
 
@@ -333,8 +333,8 @@ De volgende toewijzingen worden gebruikt wanneer Kopieer activiteit de gegevens 
 | INTEGER |Int32 |
 | BIGINT |Int64 |
 | KOMMA |Decimal |
-| REAL |Enkel |
-| DUBBELE PRECISIE |Double |
+| REAL |Enkelvoudig |
+| DUBBELE PRECISIE |Dubbel |
 | True |Tekenreeks |
 | CHAR |Tekenreeks |
 | VARCHAR |Tekenreeks |

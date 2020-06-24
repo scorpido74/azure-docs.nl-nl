@@ -3,25 +3,25 @@ title: Installatie op de achtergrond Azure AD-app proxy connector | Microsoft Do
 description: In dit artikel wordt beschreven hoe u een installatie zonder toezicht van Azure AD-toepassingsproxy-connector uitvoert om veilige externe toegang tot uw on-premises apps te bieden.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae3cd491db03fd036869a8d86aeb646e3175b59
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0b959649074e68d50a266f05841ce4c87e2b3e20
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609966"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760011"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Een script voor installatie zonder toezicht maken voor de Azure AD-toepassingsproxy-connector
 
@@ -53,13 +53,13 @@ Er zijn twee methoden die u kunt gebruiken om de connector te registreren:
 * De connector registreren met een token dat offline is gemaakt
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>De connector registreren met een Windows Power shell-referentie object
-1. Maak een Windows Power shell- `$cred` referentie object dat een beheerders naam en-wacht woord voor uw directory bevat. Voer de volgende opdracht uit en * \<Vervang\> de gebruikers naam* en * \<het wacht woord\>*:
+1. Maak een Windows Power shell-referentie object `$cred` dat een beheerders naam en-wacht woord voor uw directory bevat. Voer de volgende opdracht uit, vervang *\<username\>* en *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Ga naar de **map C:\Program Files\Microsoft Aad app proxy connector** en voer het volgende script `$cred` uit met behulp van het object dat u hebt gemaakt:
+2. Ga naar de **map C:\Program Files\Microsoft Aad app proxy connector** en voer het volgende script uit met behulp van het `$cred` object dat u hebt gemaakt:
 
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
@@ -175,7 +175,7 @@ Er zijn twee methoden die u kunt gebruiken om de connector te registreren:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Voer de volgende Windows Power shell-opdracht \<uit en\> Vervang de Tenant-GUID door de map-id:
+3. Voer de volgende Windows Power shell-opdracht uit en vervang \<tenant GUID\> door de map-id:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 

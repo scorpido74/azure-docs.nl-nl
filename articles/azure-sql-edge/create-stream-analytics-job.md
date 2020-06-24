@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 931511a44e19bfe094791a3ee9b9ca30e03648cb
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669655"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255412"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Een Azure Stream Analytics-taak in Azure SQL Edge maken (preview) 
 
@@ -33,7 +33,7 @@ T-SQL streaming maakt gebruik van de functionaliteit van de externe gegevens bro
 
 - [EXTERNE STREAM maken (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Als Azure SQL Edge, SQL Server of Azure SQL Database als een uitvoer stroom wordt gebruikt, hebt u de [Data Base scoped CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)nodig. Deze T-SQL-opdracht definieert de referenties voor toegang tot de SQL database.
+Als Azure SQL Edge, SQL Server of Azure SQL Database als een uitvoer stroom wordt gebruikt, hebt u de [Data Base scoped CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)nodig. Deze T-SQL-opdracht definieert de referenties voor toegang tot de data base.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Ondersteunde gegevens bronnen voor invoer en uitvoer stroom
 
@@ -42,7 +42,7 @@ Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als inv
 | Gegevens bron type | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
-| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De SQL database kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
+| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De data base kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
 | Azure Blob Storage | N | J | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
 | Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel-of AMD-versies van Azure SQL Edge. Het is niet beschikbaar voor de ARM64-versie van Azure SQL Edge.|
 
@@ -201,7 +201,7 @@ De streaming-taak kan een van de volgende statussen hebben:
 |--------| ------------|
 | Gemaakt | De streaming-taak is gemaakt, maar is nog niet gestart. |
 | Starten | De streaming-taak bevindt zich in de begin fase. |
-| Actieve | De streaming-taak wordt uitgevoerd, maar er is geen invoer om te verwerken. |
+| Niet-actief | De streaming-taak wordt uitgevoerd, maar er is geen invoer om te verwerken. |
 | Wordt verwerkt | De streaming-taak wordt uitgevoerd en verwerkt de invoer. Deze status geeft aan dat de streaming-taak een goede status heeft. |
 | Verminderd beschikbaar | De streaming-taak wordt uitgevoerd, maar er zijn enkele niet-fatale fouten opgetreden tijdens de invoer verwerking. De invoer taak wordt nog steeds uitgevoerd, maar gaat weg van invoer die fouten tegen komt. |
 | Gestopt | De streaming-taak is gestopt. |

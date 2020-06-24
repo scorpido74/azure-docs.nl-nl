@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254798"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883988"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostische logboeken in Azure
 
@@ -27,7 +27,7 @@ Met Diagnostische logboeken van Azure kunt u kern analyses bekijken en deze opsl
 
  - Azure Storage-account
  - Azure Event Hubs
- - [Log Analytics-werkruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Log Analytics werk ruimte](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Deze functie is beschikbaar voor CDN-eind punten voor alle prijs categorieën. 
 
@@ -87,7 +87,7 @@ Als u een opslag account wilt gebruiken om de logboeken op te slaan, voert u de 
 
 5. Wanneer u klaar bent met het vastleggen van de diagnostische logboek instellingen, selecteert u **Opslaan**.
 
-### <a name="logging-with-azure-monitor"></a>Loggen met Azure Monitor
+### <a name="logging-with-azure-monitor"></a>Registreren met Azure Monitor
 
 Volg deze stappen om Azure Monitor te gebruiken om de logboeken op te slaan:
 
@@ -117,7 +117,7 @@ Volg deze stappen om Azure Monitor te gebruiken om de logboeken op te slaan:
 
 5. Selecteer bij **abonnement**een bestaand abonnement in de vervolg keuzelijst. 
 
-6. Maak voor de **resource groep**een nieuwe resource groep of selecteer een bestaande.
+6. Geef voor **Resourcegroep** een nieuwe resourcegroep op of selecteer een bestaande.
 
 7. Selecteer voor **locatie**een locatie in de lijst.
 
@@ -176,8 +176,8 @@ Voordat u toegang kunt krijgen tot de kern gegevens van een Azure-opslag account
 2.  Zoek het opslag account
 3.  Vouw het knoop punt **BLOB containers** onder dit opslag account uit.
 4.  Selecteer de container met de naam *Insights-logs-coreanalytics*.
-5.  Resultaten worden weer gegeven in het rechterdeel venster, te beginnen met het eerste niveau, als *resourceId =*. Ga door met het selecteren van elk niveau totdat u het bestand *PT1H. json*vindt. Zie [indeling van BLOB-pad](cdn-azure-diagnostic-logs.md#blob-path-format)voor een uitleg van het pad.
-6.  Elk BLOB *PT1H. json* -bestand vertegenwoordigt de analyse logboeken gedurende één uur voor een specifiek CDN-eind punt of het aangepaste domein.
+5.  Resultaten worden weer gegeven in het rechterdeel venster, te beginnen met het eerste niveau, als *resourceId =*. Ga door met het selecteren van elk niveau totdat u het bestand hebt gevonden *PT1H.js*. Zie [indeling van BLOB-pad](cdn-azure-diagnostic-logs.md#blob-path-format)voor een uitleg van het pad.
+6.  Elke BLOB- *PT1H.jsin* het bestand vertegenwoordigt de analyse logboeken gedurende één uur voor een specifiek CDN-eind punt of het aangepaste domein.
 7.  Het schema van de inhoud van dit JSON-bestand wordt beschreven in het sectie schema van de logboeken van de kern analyse.
 
 
@@ -196,9 +196,9 @@ Kern analyse logboeken worden elk uur gegenereerd en de gegevens worden verzamel
 |Profile Name (Profielnaam) |Naam van het CDN-profiel|
 |Naam van eind punt |Naam van het CDN-eind punt|
 |Jaar|  Weer gave van vier cijfers van het jaar, bijvoorbeeld 2017|
-|Month| Weer gave van twee cijfers van het maand nummer. 01 = januari... 12 = december|
+|Maand| Weer gave van twee cijfers van het maand nummer. 01 = januari... 12 = december|
 |Dag|   Weer gave van twee cijfers van de dag van de maand|
-|PT1H. json| Het daad werkelijke JSON-bestand waarin de Analytics-gegevens worden opgeslagen|
+|PT1H.jsop| Het daad werkelijke JSON-bestand waarin de Analytics-gegevens worden opgeslagen|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>De kern analyse gegevens exporteren naar een CSV-bestand
 
@@ -331,16 +331,16 @@ In de volgende tabel ziet u een lijst met metrische gegevens die beschikbaar zij
 | RequestCountHttpStatus4xx | Het aantal aanvragen dat heeft geleid tot een 4xx HTTP-code (bijvoorbeeld 400, 404). | Ja | Ja |Ja |
 | RequestCountHttpStatus5xx | Het aantal aanvragen dat heeft geleid tot een 5xx HTTP-code (bijvoorbeeld 500, 504). | Ja | Ja |Ja |
 | RequestCountHttpStatusOthers | Aantal andere HTTP-codes (buiten 2xx-5xx). | Ja | Ja |Ja |
-| RequestCountHttpStatus200 | Het aantal aanvragen dat heeft geleid tot een 200 HTTP-code antwoord. | Ja | Nee  |Ja |
-| RequestCountHttpStatus206 | Het aantal aanvragen dat heeft geleid tot een 206 HTTP-code antwoord. | Ja | Nee  |Ja |
-| RequestCountHttpStatus302 | Het aantal aanvragen dat heeft geleid tot een 302 HTTP-code antwoord. | Ja | Nee  |Ja |
-| RequestCountHttpStatus304 | Het aantal aanvragen dat heeft geleid tot een 304 HTTP-code antwoord. | Ja | Nee  |Ja |
-| RequestCountHttpStatus404 | Het aantal aanvragen dat heeft geleid tot een 404 HTTP-code antwoord. | Ja | Nee  |Ja |
+| RequestCountHttpStatus200 | Het aantal aanvragen dat heeft geleid tot een 200 HTTP-code antwoord. | Yes | Nee  |Yes |
+| RequestCountHttpStatus206 | Het aantal aanvragen dat heeft geleid tot een 206 HTTP-code antwoord. | Yes | Nee  |Yes |
+| RequestCountHttpStatus302 | Het aantal aanvragen dat heeft geleid tot een 302 HTTP-code antwoord. | Yes | Nee  |Yes |
+| RequestCountHttpStatus304 | Het aantal aanvragen dat heeft geleid tot een 304 HTTP-code antwoord. | Yes | Nee  |Yes |
+| RequestCountHttpStatus404 | Het aantal aanvragen dat heeft geleid tot een 404 HTTP-code antwoord. | Yes | Nee  |Yes |
 | RequestCountCacheHit | Het aantal aanvragen dat heeft geleid tot een cache-treffer. De Asset werd rechtstreeks vanuit de POP naar de client geleverd. | Ja | Ja | Nee  |
 | RequestCountCacheMiss | Het aantal aanvragen dat heeft geleid tot een Missing in de cache. Een cache-Misser betekent dat de Asset niet is gevonden op de POP die het dichtst bij de client ligt en daarom is opgehaald van de oorsprong. | Ja | Ja | Nee |
 | RequestCountCacheNoCache | Het aantal aanvragen voor een Asset dat niet in de cache kan worden opgeslagen vanwege een gebruikers configuratie aan de rand. | Ja | Ja | Nee |
 | RequestCountCacheUncacheable | Het aantal aanvragen voor activa dat voor komt dat het in de cache wordt opgeslagen door de cache-Control en Expires van het Asset, waarmee wordt aangegeven dat deze niet in de cache moeten worden opgeslagen in een POP of de HTTP-client. | Ja | Ja | Nee |
-| RequestCountCacheOthers | Aantal aanvragen met een cache status die niet onder bovenstaande vallen. | Nee | Ja | Nee  |
+| RequestCountCacheOthers | Aantal aanvragen met een cache status die niet onder bovenstaande vallen. | Nee | Yes | Nee  |
 | EgressTotal | Uitgaande gegevens overdracht in GB | Ja |Ja |Ja |
 | EgressHttpStatus2xx | Uitgaande gegevens overdracht * voor antwoorden met 2xx HTTP-status codes in GB. | Ja | Ja | Nee  |
 | EgressHttpStatus3xx | Uitgaande gegevens overdracht voor antwoorden met 3xx HTTP-status codes in GB. | Ja | Ja | Nee  |
@@ -351,7 +351,7 @@ In de volgende tabel ziet u een lijst met metrische gegevens die beschikbaar zij
 | EgressCacheMiss. | Uitgaande gegevens overdracht voor antwoorden die niet zijn gevonden op de dichtstbijzijnde POP-server en die is opgehaald van de oorspronkelijke server. | Ja | Ja | Nee |
 | EgressCacheNoCache | Uitgaande gegevens overdracht voor activa die niet in de cache worden opgeslagen vanwege een gebruikers configuratie aan de rand. | Ja | Ja | Nee |
 | EgressCacheUncacheable | Uitgaande gegevens overdracht voor activa die niet in de cache worden opgeslagen door de cache-Control en/of expires-headers van het Asset. Geeft aan dat deze niet in de cache moet worden opgeslagen in een POP of door de HTTP-client. | Ja | Ja | Nee |
-| EgressCacheOthers | Uitgaande gegevens overdracht voor andere cache scenario's. | Nee | Ja | Nee |
+| EgressCacheOthers | Uitgaande gegevens overdracht voor andere cache scenario's. | Nee | Yes | Nee |
 
 * Uitgaande gegevens overdracht verwijst naar verkeer dat van CDN POP-servers naar de client wordt geleverd.
 

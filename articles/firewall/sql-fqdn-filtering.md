@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3085e664b75e404e14ba0992a286d33cbf3ef771
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015961"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077832"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall toepassings regels met SQL-FQDN configureren
 
@@ -24,7 +24,7 @@ Met SQL-FQDN-naam kunt u verkeer filteren:
 - Van on-premises naar Azure SQL Managed instances of SQL IaaS die worden uitgevoerd in uw VNets.
 - Van spoke-naar-spoke tot Azure SQL Managed instances of SQL IaaS die worden uitgevoerd in uw VNets.
 
-SQL FQDN-filtering wordt alleen ondersteund in de [proxy modus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (poort 1433). Als u SQL in de standaard omleidings modus gebruikt, kunt u de toegang filteren met behulp van de SQL-service-tag als onderdeel van de [netwerk regels](overview.md#network-traffic-filtering-rules).
+SQL FQDN-filtering wordt alleen ondersteund in de [proxy modus](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) (poort 1433). Als u SQL in de standaard omleidings modus gebruikt, kunt u de toegang filteren met behulp van de SQL-service-tag als onderdeel van de [netwerk regels](features.md#network-traffic-filtering-rules).
 Als u niet-standaard poorten gebruikt voor SQL IaaS-verkeer, kunt u die poorten configureren in de toepassings regels van de firewall.
 
 ## <a name="configure-using-azure-cli"></a>Configureren met behulp van Azure CLI

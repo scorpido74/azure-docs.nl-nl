@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: eeea35b3564bc2407a2458a43c8349937a4cd845
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638567"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203517"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure Active Directory B2C met behulp van een aangepast beleid
 
@@ -36,10 +36,10 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 ##  <a name="create-a-resource-owner-policy"></a>Een beleid voor de eigenaar van een resource maken
 
-1. Open het bestand *TrustFrameworkExtensions. XML* .
+1. Open het *TrustFrameworkExtensions.xml* -bestand.
 2. Als deze nog niet bestaat, voegt u een **ClaimsSchema** -element en de onderliggende elementen toe als het eerste element onder het element **BuildingBlocks** :
 
-    ```XML
+    ```xml
     <ClaimsSchema>
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -62,7 +62,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 3. Voeg na **ClaimsSchema**een **ClaimsTransformations** -element en de onderliggende elementen toe aan het **BuildingBlocks** -element:
 
-    ```XML
+    ```xml
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateSubjectClaimFromObjectID" TransformationMethod="CreateStringClaim">
         <InputParameters>
@@ -88,7 +88,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 4. Zoek het **ClaimsProvider** -element met een **DisplayName** van `Local Account SignIn` en voeg het volgende technische profiel toe:
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
       <DisplayName>Local Account SignIn</DisplayName>
       <Protocol Name="OpenIdConnect" />
@@ -128,7 +128,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 5. Voeg de volgende **ClaimsProvider** -elementen met hun technische profielen toe aan het **ClaimsProviders** -element:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -182,7 +182,7 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
 
 6. Voeg een **UserJourneys** -element en de onderliggende elementen toe aan het element **TrustFrameworkPolicy** :
 
-    ```XML
+    ```xml
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
       <OrchestrationSteps>
@@ -218,19 +218,19 @@ Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B
     ```
 
 7. Selecteer op de pagina **aangepaste beleids regels** in uw Azure AD B2C-Tenant de optie **beleid uploaden**.
-8. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *TrustFrameworkExtensions. XML-* bestand.
+8. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *TrustFrameworkExtensions.xml* bestand.
 9. Klik op **Uploaden**.
 
 ## <a name="create-a-relying-party-file"></a>Een Relying Party-bestand maken
 
 Werk vervolgens het Relying Party bestand bij dat de door u gemaakte gebruikers traject initieert:
 
-1. Maak een kopie van het bestand *SignUpOrSignin. XML* in de werkmap en wijzig de naam in *ROPC_Auth. XML*.
+1. Maak een kopie van *SignUpOrSignin.xml* -bestand in uw werkmap en wijzig de naam ervan in *ROPC_Auth.xml*.
 2. Open het nieuwe bestand en wijzig de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** in een unieke waarde. De beleids-ID is de naam van uw beleid. Bijvoorbeeld **B2C_1A_ROPC_Auth**.
 3. Wijzig de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** in `ResourceOwnerPasswordCredentials` .
 4. Wijzig het element **OutputClaims** zodat het de volgende claims bevat:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
     <OutputClaim ClaimTypeReferenceId="displayName" DefaultValue="" />
@@ -239,7 +239,7 @@ Werk vervolgens het Relying Party bestand bij dat de door u gemaakte gebruikers 
     ```
 
 5. Selecteer op de pagina **aangepaste beleids regels** in uw Azure AD B2C-Tenant de optie **beleid uploaden**.
-6. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *ROPC_Auth. XML-* bestand.
+6. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *ROPC_Auth.xml* bestand.
 7. Klik op **Uploaden**.
 
 ## <a name="test-the-policy"></a>Het beleid testen
@@ -267,7 +267,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 
 De werkelijke POST-aanvraag ziet er ongeveer uit als in het volgende voor beeld:
 
-```HTTPS
+```https
 POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -277,7 +277,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Een geslaagde reactie met offline toegang lijkt op het volgende voor beeld:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
     "token_type": "Bearer",
@@ -309,7 +309,7 @@ Een POST-aanroep maken zoals deze wordt weer gegeven. Gebruik de informatie in d
 
 Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhT...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQn...",

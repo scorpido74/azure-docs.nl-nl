@@ -7,15 +7,15 @@ ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309715"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85257411"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Gegevens uit Azure Cosmos DB Cassandra-API tabellen lezen met Spark
 
@@ -105,7 +105,7 @@ readBooksDF.show
 
 De sectie PushedFilters van het fysieke plan bevat het GreaterThan-push filter. 
 
-![partitions](./media/cassandra-spark-read-ops/pushdown-predicates.png)
+:::image type="content" source="./media/cassandra-spark-read-ops/pushdown-predicates.png" alt-text="Partition":::
 
 ## <a name="rdd-api"></a>RDD-API
 

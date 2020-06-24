@@ -9,17 +9,17 @@ editor: amsriva
 ms.assetid: caa8eb19-825a-4031-8b49-18fbf3ebc04e
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: c1a75630c6419816b048495ee87d24c81979af16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064764"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988034"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migratie van klassieke en Resource Manager VPN Gateway
 VPN-gateways kunnen nu worden gemigreerd van het klassieke naar het Resource Manager-implementatie model. U kunt meer lezen over Azure Resource Manager [functies en voor delen](../azure-resource-manager/management/overview.md). In dit artikel wordt beschreven hoe u migreert van klassieke implementaties naar het nieuwere model op basis van Resource Manager. 

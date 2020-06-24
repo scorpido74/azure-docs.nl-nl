@@ -4,11 +4,11 @@ description: Meer informatie over het gebruik van REST API voor het maken van ba
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248097"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710606"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
@@ -38,7 +38,7 @@ De kluis moet alle Azure Storage-accounts in het abonnement detecteren met besta
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-De post-URI `{subscriptionId}`heeft `{vaultName}`de `{vaultresourceGroupName}`para meters,, en `{fabricName}` . In ons voor beeld is de waarde voor de verschillende para meters als volgt:
+De post-URI heeft de `{subscriptionId}` `{vaultName}` `{vaultresourceGroupName}` `{fabricName}` para meters,, en. In ons voor beeld is de waarde voor de verschillende para meters als volgt:
 
 - `{fabricName}`is *Azure*
 

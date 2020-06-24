@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265569"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686168"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Maak HDInsight-clusters met Azure Data Lake Storage Gen1 met behulp van de Azure Portal
 
@@ -51,7 +51,7 @@ Een HDInsight-cluster met een Data Lake Storage Gen1-account maken als het stand
 
     ![Service-Principal toevoegen aan HDInsight-cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Service-Principal toevoegen aan HDInsight-cluster")
 
-    * **Selecteer data Lake Store account**: Selecteer een bestaand data Lake Storage gen1-account. Er is een bestaand Data Lake Storage Gen1 account vereist.  Zie [vereisten](#prerequisites).
+    * **Selecteer data Lake Store account**: Selecteer een bestaand data Lake Storage gen1-account. Er is een bestaand Data Lake Storage Gen1 account vereist.  Zie [Vereisten](#prerequisites).
     * **Pad naar hoofdmap**: Voer een pad in waar de cluster-specifieke bestanden moeten worden opgeslagen. Op de scherm opname is de __/clusters/myhdiadlcluster/__, waarin de __/clusters__ -map moet bestaan, en de portal maakt de map *myhdicluster* .  De *myhdicluster* is de cluster naam.
     * **Data Lake Store toegang**: Configureer de toegang tussen het data Lake Storage gen1-account en het HDInsight-cluster. Zie voor instructies [Data Lake Storage gen1 toegang configureren](#configure-data-lake-storage-gen1-access).
     * **Extra opslag accounts**: Voeg Azure Storage-accounts toe als extra opslag accounts voor het cluster. U kunt extra Data Lake Storage Gen1 accounts toevoegen door de cluster machtigingen te geven op gegevens in meer Data Lake Storage Gen1 accounts tijdens het configureren van een Data Lake Storage Gen1-account als primair opslag type. Zie [Data Lake Storage gen1 toegang configureren](#configure-data-lake-storage-gen1-access).
@@ -130,7 +130,7 @@ Om machtigingen toe te wijzen op het hoofd niveau van het Data Lake Storage Gen1
 
 1. Klik op **selecteren** onder aan de pagina.
 1. Selecteer **uitvoeren** om machtigingen toe te wijzen.
-1. Selecteer **Done**.
+1. Selecteer **Voltooid**.
 
 Machtigingen toewijzen op het basis niveau van het HDInsight-cluster:
 
@@ -140,7 +140,7 @@ Machtigingen toewijzen op het basis niveau van het HDInsight-cluster:
 1. Stel de machtigingen voor de map in.  Standaard zijn lezen, schrijven en uitvoeren geselecteerd.
 1. Klik op **selecteren** onder aan de pagina.
 1. Selecteer **Uitvoeren**.
-1. Selecteer **Done**.
+1. Selecteer **Voltooid**.
 
 Als u Data Lake Storage Gen1 als extra opslag gebruikt, moet u alleen machtigingen toewijzen voor de mappen die u wilt openen vanuit het HDInsight-cluster. In de onderstaande scherm afbeelding hebt u bijvoorbeeld alleen toegang tot de map **mynewfolder** in een Data Lake Storage gen1-account.
 

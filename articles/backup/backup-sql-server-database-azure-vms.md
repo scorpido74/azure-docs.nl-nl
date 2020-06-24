@@ -1,15 +1,14 @@
 ---
 title: Back-ups maken van SQL Server-databases in virtuele Azure-machines
 description: In dit artikel vindt u informatie over het maken van een back-up van SQL Server-data bases op virtuele machines van Azure met Azure Backup.
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: faf5ffd65f9b3133c504413201d58aee988af71a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248104"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817538"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -34,9 +33,10 @@ In dit artikel leert u het volgende:
 Controleer de volgende criteria voordat u een back-up maakt van een SQL Server Data Base:
 
 1. Identificeer of maak een [Recovery Services kluis](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in dezelfde regio en hetzelfde abonnement als de virtuele machine die als host fungeert voor het SQL Server exemplaar.
-2. Controleer of de virtuele machine [verbinding](backup-sql-server-database-azure-vms.md#establish-network-connectivity)heeft met het netwerk.
-3. Zorg ervoor dat de SQL Server-data bases voldoen [aan de richt lijnen voor de naamgeving van data bases voor Azure backup](#database-naming-guidelines-for-azure-backup).
-4. Controleer of er geen andere back-upoplossingen zijn ingeschakeld voor de data base. Schakel alle andere SQL Server back-ups uit voordat u een back-up van de data base maakt.
+1. Controleer of de virtuele machine [verbinding](backup-sql-server-database-azure-vms.md#establish-network-connectivity)heeft met het netwerk.
+1. Zorg ervoor dat de SQL Server-data bases voldoen [aan de richt lijnen voor de naamgeving van data bases voor Azure backup](#database-naming-guidelines-for-azure-backup).
+1. Zorg ervoor dat de gecombineerde lengte van de naam van de SQL Server VM en de naam van de resource groep niet langer is dan 84 tekens voor Azure Resource Manager (ARM) Vm's (of 77 tekens voor klassieke Vm's). Deze beperking is omdat sommige tekens zijn gereserveerd door de service.
+1. Controleer of er geen andere back-upoplossingen zijn ingeschakeld voor de data base. Schakel alle andere SQL Server back-ups uit voordat u een back-up van de data base maakt.
 
 > [!NOTE]
 > U kunt Azure Backup inschakelen voor een virtuele machine van Azure en ook voor een SQL Server-Data Base die op de virtuele machine wordt uitgevoerd zonder conflict.
@@ -49,15 +49,15 @@ De volgende tabel geeft een lijst van de verschillende alternatieven die u kunt 
 
 | **Optie**                        | **Voordelen**                                               | **Nadelen**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Privé-eind punten                 | Back-ups via privé-IP-adressen in het virtuele netwerk toestaan  <br><br>   Nauw keurig beheer van het netwerk en de kluis zijde bieden | Standaard [kosten](https://azure.microsoft.com/pricing/details/private-link/) voor privé-eind punten |
-| NSG-service Tags                  | Eenvoudiger te beheren als bereik wijzigingen worden automatisch samengevoegd   <br><br>   Geen extra kosten | Kan alleen worden gebruikt met Nsg's  <br><br>    Biedt toegang tot de volledige service |
+| Privé-eindpunten                 | Back-ups via privé-IP-adressen in het virtuele netwerk toestaan  <br><br>   Nauw keurig beheer van het netwerk en de kluis zijde bieden | Standaard [kosten](https://azure.microsoft.com/pricing/details/private-link/) voor privé-eind punten |
+| NSG-service Tags                  | Eenvoudiger om te beheren omdat veranderingen in het bereik automatisch worden samengevoegd   <br><br>   Geen extra kosten | Kan alleen worden gebruikt met NSG's  <br><br>    Biedt toegang tot de gehele service |
 | Azure Firewall FQDN-Tags          | Eenvoudiger te beheren omdat de vereiste FQDN-s automatisch worden beheerd | Kan alleen worden gebruikt met Azure Firewall                         |
 | Toegang tot FQDN/Ip's van service toestaan | Geen extra kosten   <br><br>  Werkt met alle netwerk beveiligings apparaten en firewalls | Er is mogelijk een groot aantal IP-adressen of FQDN-namen vereist om toegang te krijgen   |
-| Een HTTP-proxy gebruiken                 | Eén toegangs punt voor Internet toegang tot Vm's                       | Aanvullende kosten voor het uitvoeren van een virtuele machine met de proxy software         |
+| Een HTTP-proxy gebruiken                 | Eén internettoegangspunt voor virtuele machines                       | Extra kosten voor het uitvoeren van een virtuele machine met de proxysoftware         |
 
 Meer informatie over het gebruik van deze opties vindt u hieronder:
 
-#### <a name="private-endpoints"></a>Privé-eind punten
+#### <a name="private-endpoints"></a>Privé-eindpunten
 
 Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-Address ruimte voor uw kluis. Het netwerk verkeer tussen uw resources binnen het virtuele netwerk en de kluis wordt verplaatst naar het virtuele netwerk en een privé-koppeling in het micro soft backbone-netwerk. Dit elimineert de bloot stelling van het open bare Internet. Lees [hier](https://docs.microsoft.com/azure/backup/private-endpoints)meer over privé-eind punten voor Azure backup.
 
@@ -65,11 +65,11 @@ Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een v
 
 Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -servicetag om uitgaande toegang tot Azure backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) te maken voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces beschreven voor het maken van een regel voor de Azure Backup-tag:
 
-1. In **alle services**gaat u naar **netwerk beveiligings groepen** en selecteert u de netwerk beveiligings groep.
+1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 
-1. Selecteer **uitgaande beveiligings regels** onder **instellingen**.
+1. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
 
-1. Selecteer **Toevoegen**. Voer alle vereiste gegevens voor het maken van een nieuwe regel in, zoals beschreven in de instellingen van de [beveiligings regel](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
+1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
 
 1. Klik op **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
@@ -95,7 +95,7 @@ U kunt ook de volgende FQDN-namen gebruiken om toegang te verlenen tot de vereis
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Een HTTP-proxy server gebruiken om verkeer te routeren
 
-Wanneer u een back-up maakt van een SQL Server Data Base op een virtuele machine van Azure, gebruikt de back-upextensie op de VM de HTTPS-Api's om beheer opdrachten te verzenden naar Azure Backup en gegevens naar Azure Storage. Voor de back-upextensie wordt ook Azure AD gebruikt voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. Gebruik de lijst met IP-adressen en FQDN-namen die hierboven worden genoemd om toegang tot de vereiste services toe te staan. Geverifieerde proxy servers worden niet ondersteund.
+Wanneer u een back-up maakt van een SQL Server Data Base op een virtuele machine van Azure, gebruikt de back-upextensie op de VM de HTTPS-Api's om beheer opdrachten te verzenden naar Azure Backup en gegevens naar Azure Storage. De back-upextensie maakt ook gebruik van Azure AD voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. Gebruik de lijst met IP-adressen en FQDN-namen die hierboven worden genoemd om toegang tot de vereiste services toe te staan. Geverifieerde proxy servers worden niet ondersteund.
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Richt lijnen voor database naamgeving voor Azure Backup
 
@@ -215,7 +215,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
    ![Een beleidstype voor het nieuwe back-upbeleid kiezen](./media/backup-azure-sql-database/policy-type-details.png)
 
 3. Geef bij **Beleidsnaam** een naam voor het nieuwe beleid op.
-4. Selecteer een **back-upfrequentie**in het **beleid volledige back-up**. Kies **dagelijks** of **wekelijks**.
+4. In **Beleid voor volledige back-ups** selecteert u een **Back-upfrequentie**. Kies **dagelijks** of **wekelijks**.
 
    * Als u **Dagelijks** kiest, selecteert u het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart.
    * Als u **Wekelijks** kiest, selecteert u de dag van de week, het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart.
@@ -264,7 +264,7 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
 U kunt automatische beveiliging inschakelen om automatisch een back-up te maken van alle bestaande en toekomstige data bases naar een zelfstandig SQL Server exemplaar of naar een AlwaysOn-beschikbaarheids groep.
 
-* Er is geen limiet voor het aantal data bases dat u tegelijk voor automatische beveiliging kunt selecteren.
+* Er is geen limiet voor het aantal data bases dat u per keer voor automatische beveiliging kunt selecteren. Detectie wordt doorgaans elke acht uur uitgevoerd. U kunt echter direct nieuwe data bases detecteren en beveiligen als u hand matig een detectie uitvoert door de optie **db's opnieuw detecteren** te selecteren.
 * U kunt data bases niet selectief beveiligen of uitsluiten van beveiliging in een exemplaar op het moment dat u automatische beveiliging inschakelt.
 * Als uw exemplaar al beveiligde data bases bevat, blijven ze beschermd onder hun respectieve beleid, zelfs nadat u automatische beveiliging hebt ingeschakeld. Alle niet-beveiligde data bases die later worden toegevoegd, hebben slechts één beleid dat u definieert op het moment van het inschakelen van automatische beveiliging, vermeld onder **back-up configureren**. U kunt echter later het beleid wijzigen dat is gekoppeld aan een automatisch beveiligde data base.  
 

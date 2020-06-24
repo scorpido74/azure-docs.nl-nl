@@ -1,7 +1,7 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 titleSuffix: Azure
-description: Include-bestand
+description: bestand opnemen
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "82587881"
 ---
-De Power shell **-cmdlet Get-AzPeeringLocation** retourneert een lijst met peering locaties met de `Kind`verplichte para meter, die u in latere stappen zult gebruiken.
+De Power shell **-cmdlet Get-AzPeeringLocation** retourneert een lijst met peering locaties met de verplichte para meter `Kind` , die u in latere stappen zult gebruiken.
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
@@ -24,7 +24,7 @@ Get-AzPeeringLocation -Kind "Exchange"
 Exchange-peering locaties bevatten de volgende velden:
 * Exchangenaam
 * PeeringLocation
-* Land
+* Land/regio
 * PeeringDBFacilityId
 * PeeringDBFacilityLink
 * MicrosoftIPv4Address

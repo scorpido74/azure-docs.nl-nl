@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189766"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201256"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -23,7 +23,7 @@ ms.locfileid: "78189766"
 
 Een claim provider bevat een set [technische profielen](technicalprofiles.md). Elke claim provider moet een of meer technische profielen hebben die de eind punten bepalen en de protocollen die nodig zijn om te communiceren met de claim provider. Een claim provider kan meerdere technische profielen hebben. Er kunnen bijvoorbeeld meerdere technische profielen worden gedefinieerd, omdat de claim provider meerdere protocollen, verschillende eind punten met verschillende mogelijkheden ondersteunt of verschillende claims op verschillende verzekerings niveaus uitgeeft. Het kan acceptabel zijn om gevoelige claims te vrijgeven in één gebruikers traject, maar niet in een andere.
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <Domain>Domain name</Domain>
@@ -57,7 +57,7 @@ Het **ClaimsProvider** -element bevat de volgende onderliggende elementen:
 
 **ClaimsProvider** organiseert hoe uw technische profielen verband houden met de claim provider. In het volgende voor beeld ziet u de Azure Active Directory claim provider met de Azure Active Directory technische profielen:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Azure Active Directory</DisplayName>
   <TechnicalProfiles>
@@ -95,7 +95,7 @@ Het **ClaimsProvider** -element bevat de volgende onderliggende elementen:
 
 In het volgende voor beeld wordt de Facebook-claim provider weer gegeven met het **Facebook-OAUTH-** technische profiel.
 
-```XML
+```xml
 <ClaimsProvider>
   <Domain>facebook.com</Domain>
   <DisplayName>Facebook</DisplayName>

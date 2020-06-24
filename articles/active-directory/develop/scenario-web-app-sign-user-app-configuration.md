@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: fe4dec0d1223468126723a19d5218d6e93707f50
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558816"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052229"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-app die gebruikers aanmeldt: code configuratie
 
@@ -29,7 +29,7 @@ De bibliotheken die worden gebruikt voor het beveiligen van een web-app (en een 
 
 | Platform | Bibliotheek | Beschrijving |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_net.png) | [Identiteits model-uitbrei dingen voor .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Micro soft Identity model-extensies voor .NET, die rechtstreeks worden gebruikt door ASP.NET en ASP.NET Core, stelt een reeks dll-bestanden voor die worden uitgevoerd op zowel .NET Framework als .NET core. Vanuit een ASP.NET-of ASP.NET Core-Web-App kunt u de token validatie controleren met behulp van de **TokenValidationParameters** -klasse (met name in sommige partner scenario's). |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [Identiteits model-uitbrei dingen voor .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Micro soft Identity model-extensies voor .NET, die rechtstreeks worden gebruikt door ASP.NET en ASP.NET Core, stelt een reeks dll-bestanden voor die worden uitgevoerd op zowel .NET Framework als .NET core. Vanuit een ASP.NET-of ASP.NET Core-Web-App kunt u de token validatie controleren met behulp van de **TokenValidationParameters** -klasse (met name in sommige partner scenario's). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Ondersteuning voor Java-webtoepassingen |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Ondersteuning voor python-webtoepassingen |
 
@@ -73,7 +73,7 @@ Soms kunnen toepassingen worden parametrized door `Authority` , dat wil zeggen e
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.NET Core bevinden deze instellingen zich in het bestand [appSettings. json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) , in de sectie ' AzureAd '.
+In ASP.NET Core bevinden deze instellingen zich in het [appsettings.js](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) in het bestand, in de sectie ' AzureAd '.
 
 ```Json
 {
@@ -95,12 +95,12 @@ In ASP.NET Core bevinden deze instellingen zich in het bestand [appSettings. jso
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
     "CallbackPath": "/signin-oidc",
-    "SignedOutCallbackPath ": "/signout-callback-oidc"
+    "SignedOutCallbackPath ": "/signout-oidc"
   }
 }
 ```
 
-In ASP.NET Core bevat een ander bestand ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) de URL ( `applicationUrl` ) en de TLS/SSL-poort ( `sslPort` ) voor uw toepassing en verschillende profielen.
+In ASP.NET Core bevat een ander bestand ([properties\launchSettings.jsop](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) de URL ( `applicationUrl` ) en de TLS/SSL-poort ( `sslPort` ) voor uw toepassing en verschillende profielen.
 
 ```Json
 {
@@ -134,11 +134,11 @@ In ASP.NET Core bevat een ander bestand ([properties\launchSettings.json](https:
 
 In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met deze url's. Voor de twee voorafgaande configuratie bestanden zouden ze zijn `https://localhost:44321/signin-oidc` . De reden hiervoor is `applicationUrl` `http://localhost:3110` , maar `sslPort` is opgegeven (44321). `CallbackPath`is `/signin-oidc` , zoals gedefinieerd in `appsettings.json` .
 
-Op dezelfde manier wordt de afmeldings-URI ingesteld op `https://localhost:44321/signout-callback-oidc` .
+Op dezelfde manier wordt de afmeldings-URI ingesteld op `https://localhost:44321/signout-oidc` .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-In ASP.NET wordt de toepassing geconfigureerd via het bestand [Web. config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) , regels van 12 tot en met 15.
+In ASP.NET wordt de toepassing geconfigureerd via het [Web.config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) bestand, regels van 12 tot en met 15.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

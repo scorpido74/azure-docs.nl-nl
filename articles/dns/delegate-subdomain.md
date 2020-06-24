@@ -4,15 +4,15 @@ description: Met dit leer traject kunt u aan de slag gaan met het delegeren van 
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
-ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937435"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710878"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Een Azure DNS subdomein delegeren
 
@@ -36,7 +36,7 @@ Maak eerst de zone voor het **technische** subdomein.
 3. Selecteer **Maken**.
 4. Typ **engineering.contoso.com** in het tekstvak **naam** in het deel venster **DNS-zone maken** .
 5. Selecteer de resource groep voor uw zone. Mogelijk wilt u dezelfde resource groep gebruiken als de bovenliggende zone om Vergelijk bare resources samen te brengen.
-6. Klik op **maken**.
+6. Klik op **Create**.
 7. Nadat de implementatie is voltooid, gaat u naar de nieuwe zone.
 
 ## <a name="note-the-name-servers"></a>Noteer de naam servers
@@ -64,7 +64,7 @@ Maak vervolgens een NS-record (naam server) voor de **technische** zone.
 
 Gebruik Nslookup om de overdracht te testen.
 
-1. Open een PowerShell-venster.
+1. Open een Powershell-venster.
 2. Typ bij opdracht prompt`nslookup www.engineering.contoso.com.`
 3. U ontvangt een niet-bindend antwoord met het adres **10.10.10.10**.
 

@@ -3,12 +3,12 @@ title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 225a7f7725762c6887858366b134a7ad9a7b8eb6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402377"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052687"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -61,6 +61,10 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 - Gebruik de [back-upverkenner](../../backup/monitor-azure-backup-with-backup-explorer.md) voor het weer geven van operationele gegevens van back-upitems (inclusief Azure-resources die nog niet zijn geconfigureerd voor back-up) en controle-informatie (taken en waarschuwingen) voor gedelegeerde abonnementen. Backup Explorer is momenteel alleen beschikbaar voor Azure VM-gegevens.
 - Gebruik [back-uprapporten](../../backup/configure-reports.md) over gedelegeerde abonnementen om historische trends bij te houden, het verbruik van back-ups te analyseren en back-ups te controleren en te herstellen.
 
+[Azure Cost Management en facturering](../../cost-management-billing/index.yml):
+
+- Van de Tenant beheren, CSP-partners kunnen de kosten voor het gebruik van de belasting (niet inclusief aankopen) bekijken, beheren en analyseren voor klanten die onder het Azure-abonnement vallen. De kosten zijn gebaseerd op de tarieven van de detail handel en de toegang tot Azure RBAC die de partner heeft voor het abonnement van de klant.
+
 [Azure Kubernetes service (AKS)](../../aks/index.yml):
 
 - Gehoste Kubernetes-omgevingen beheren en toepassingen in containers implementeren en beheren binnen de tenants van de klant
@@ -99,7 +103,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
   - Continue naleving van regelgeving over meerdere klanten in één weer gave
   - Bewaak, sorteren en prioriteit geven aan bruikbare beveiligings aanbevelingen met een beveiligde score berekening
 - Beheer van cross-Tenant beveiliging postuur
-  - Beveiligings beleid beheren
+  - Beveiligingsbeleid beheren
   - Onderneem actie ondernemen voor bronnen die niet meer compatibel zijn met voor actie bare beveiligings aanbevelingen
   - Aan beveiliging gerelateerde gegevens verzamelen en opslaan
 - Bedreigings detectie en-beveiliging tussen tenants
@@ -143,7 +147,6 @@ Houd bij alle scenario's rekening met de volgende beperkingen:
 - Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](../../role-based-access-control/built-in-roles.md)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar of ingebouwde rollen met [DataActions](../../role-based-access-control/role-definitions.md#dataactions) -machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 - Hoewel u abonnementen kunt opdoen die gebruikmaken van Azure Databricks, kunnen gebruikers in de Tenant beheren Azure Databricks werk ruimten op dit moment niet starten.
 - U kunt abonnementen en resource groepen voor Azure delegated resource management zonder resource vergrendeling voor komen. deze vergren delingen verhinderen niet dat de acties worden uitgevoerd door gebruikers in de Tenant beheren. [Weiger toewijzingen](../../role-based-access-control/deny-assignments.md) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).
-- Gebruikers in de Tenant beheren hebben geen toegang tot het weer geven van facturerings gegevens voor een gehoste klant abonnement, zelfs als ze een ingebouwde rol hebben die normaal gesp roken toegang zou toestaan. De reden hiervoor is dat de toegang tot facturerings gegevens extra stappen vereist die momenteel alleen worden ondersteund voor gebruikers binnen dezelfde Tenant.
 
 ## <a name="next-steps"></a>Volgende stappen
 

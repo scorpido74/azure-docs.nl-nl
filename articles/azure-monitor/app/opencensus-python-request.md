@@ -6,12 +6,12 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 10d54088859332ad986dc642247c6af96b378978
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c9d69c0f39d9cad52dc86c3ab33d202c88131ab0
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553892"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753215"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Inkomende aanvragen bijhouden met opentellingen python
 
@@ -33,7 +33,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     )
     ```
 
-3. Zorg ervoor dat AzureExporter op de juiste wijze is geconfigureerd `settings.py` `OPENCENSUS` .
+3. Zorg ervoor dat AzureExporter op de juiste wijze is geconfigureerd `settings.py` `OPENCENSUS` . Voor aanvragen van url's die u niet wilt bijhouden, voegt u deze toe aan `BLACKLIST_PATHS` .
 
     ```python
     OPENCENSUS = {
@@ -42,20 +42,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-        }
-    }
-    ```
-
-4. U kunt ook url's toevoegen `settings.py` onder `BLACKLIST_PATHS` voor aanvragen die u niet wilt bijhouden.
-
-    ```python
-    OPENCENSUS = {
-        'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
-            'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                connection_string="InstrumentationKey=<your-ikey-here>",
-            )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -87,7 +74,7 @@ Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen 
     
     ```
 
-2. U kunt uw `flask` middleware rechtstreeks in de code configureren. Voor aanvragen van url's die u niet wilt bijhouden, voegt u deze toe aan `BLACKLIST_PATHS` .
+2. U kunt uw toepassing ook configureren `flask` via `app.config` . Voor aanvragen van url's die u niet wilt bijhouden, voegt u deze toe aan `BLACKLIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {

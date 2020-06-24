@@ -5,15 +5,16 @@ author: mamccrea
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: fcac7e47570cf10388891f2e9b81da896acc5c02
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f71d231f01f2f19bd63fb9ec8c32b98fcb3e9aee
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699340"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194719"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>.NET gebruiken voor Apache Spark met Azure Synapse Analytics
 
@@ -70,6 +71,6 @@ De volgende functies zijn beschikbaar wanneer u .NET for Apache Spark gebruikt i
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 * [.NET interactief](https://devblogs.microsoft.com/dotnet/creating-interactive-net-documentation/)

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429211"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194991"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
@@ -28,7 +28,7 @@ Apache Spark geschiedenis server is de webgebruikersinterface voor voltooide en 
 
 ### <a name="open-the-spark-history-server-web-ui-from-apache-spark-applications-node"></a>De Web-UI van de Spark-geschiedenis server openen vanuit het knoop punt Apache Spark-toepassingen
 
-1. Open [Azure Synapse Analytics](https://web.azuresynapse.net/).
+1. [Azure Synapse Analytics](https://web.azuresynapse.net/) openen.
 
 2. Klik op **bewaken**en selecteer vervolgens **Apache Spark toepassingen**.
 
@@ -123,7 +123,7 @@ Selecteer **afspelen**om de taak af te spelen. U kunt op elk gewenst moment **st
 |Kleur|Betekenis|
 |-|-|
 |Groen|Geslaagd: de taak is voltooid.|
-|Orange|Opnieuw geprobeerd: exemplaren van taken die zijn mislukt, maar die geen invloed hebben op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.|
+|Oranje|Opnieuw geprobeerd: exemplaren van taken die zijn mislukt, maar die geen invloed hebben op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.|
 |Blauw|Uitvoeren: de taak wordt uitgevoerd.|
 |Wit|Wachtend of overgeslagen: de taak wacht op het uitvoeren of het stadium is overgeslagen.|
 |Rood|Mislukt: de taak is mislukt.|
@@ -239,5 +239,5 @@ Invoer-en uitvoer gegevens met behulp van robuuste gedistribueerde gegevens sets
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 

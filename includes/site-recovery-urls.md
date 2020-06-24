@@ -15,7 +15,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "67176560"
 ---
-Naam | Commerciële URL | Overheids-URL | Beschrijving
+Name | Commerciële URL | Overheids-URL | Description
 --- | --- | --- | ---
 Azure Active Directory | ``login.microsoftonline.com`` | ``login.microsoftonline.us`` | Wordt gebruikt voor toegangs beheer en identiteits beheer met behulp van Azure Active Directory. 
 Backup | ``*.backup.windowsazure.com`` | ``*.backup.windowsazure.us`` | Wordt gebruikt voor overdracht en coördinatie van replicatiegegevens.

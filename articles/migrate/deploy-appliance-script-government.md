@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen in Azure Government
 description: Meer informatie over het instellen van een Azure Migrate apparaat in Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: a7a2e90b718c50cb86fdca9911e7535d434e7afa
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331998"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052478"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Een apparaat instellen in Azure Government 
 
@@ -33,19 +33,19 @@ Als u het apparaat voor VMware wilt instellen, downloadt u een zip-bestand van d
 
 ### <a name="download-the-script"></a>Het script downloaden
 
-1.  In **migratie doelen**  >  **servers**  >  **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2.  Zijn uw machines in **Discover-computers**  >  **gevirtualiseerd?**, selecteert u **Ja, met VMware vSphere Hyper Visor**.
+1.  In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
+2.  In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met VMWare vSphere-hypervisor**.
 3.  Klik op **downloaden**om het zip-bestand te downloaden. 
 
 
 ### <a name="verify-file-security"></a>Bestands beveiliging controleren
 
-Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
+Controleer of het zip-bestand veilig is voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
 3. Controleer de meest recente versie van het apparaat en de hash-waarde:
 
@@ -68,10 +68,10 @@ Wat gebeurt er met het script:
 
 Het script uitvoeren:
 
-1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate apparaat.
+1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate-apparaat.
 2. Start Power shell op de computer met Administrator bevoegdheden (met verhoogde bevoegdheden).
 3. Wijzig de Power shell-map in de map met de inhoud die is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script **AzureMigrateInstaller. ps1**als volgt uit:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+4. Voer het script **AzureMigrateInstaller.ps1**als volgt uit:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
 5. Nadat het script is uitgevoerd, wordt de web-app voor het toestel gestart, zodat u het apparaat kunt instellen. Als u problemen ondervindt, controleert u de script logboeken op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log.
 
 ### <a name="verify-access"></a>Toegang controleren
@@ -85,19 +85,19 @@ Als u het apparaat voor Hyper-V wilt instellen, downloadt u een zip-bestand van 
 
 ### <a name="download-the-script"></a>Het script downloaden
 
-1.  In **migratie doelen**  >  **servers**  >  **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2.  In **Discover-machines**  >  **zijn uw machines gevirtualiseerd?**, selecteert u **Ja, met Hyper-V**.
+1.  In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
+2.  In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met Hyper-V**.
 3.  Klik op **downloaden**om het zip-bestand te downloaden. 
 
 
 ### <a name="verify-file-security"></a>Bestands beveiliging controleren
 
-Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
+Controleer of het zip-bestand veilig is voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
 3. Controleer de meest recente versie van het apparaat en de hash-waarde:
 
@@ -121,10 +121,10 @@ Wat gebeurt er met het script:
 
 Het script uitvoeren:
 
-1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate apparaat.
+1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate-apparaat.
 2. Start Power shell op de computer met Administrator bevoegdheden (met verhoogde bevoegdheden).
 3. Wijzig de Power shell-map in de map met de inhoud die is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script **AzureMigrateInstaller. ps1**als volgt uit:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
+4. Voer het script **AzureMigrateInstaller.ps1**als volgt uit:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
 5. Nadat het script is uitgevoerd, wordt de web-app voor het toestel gestart, zodat u het apparaat kunt instellen. Als u problemen ondervindt, controleert u de script logboeken op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log.
 
 ### <a name="verify-access"></a>Toegang controleren
@@ -138,25 +138,25 @@ Als u het apparaat voor VMware wilt instellen, downloadt u een zip-bestand van d
 
 ### <a name="download-the-script"></a>Het script downloaden
 
-1.  In **migratie doelen**  >  **servers**  >  **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
+1.  In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
 2.  In **Discover-machines**  >  **zijn uw machines gevirtualiseerd?**, selecteer **niet gevirtualiseerd/Overig**.
 3.  Klik op **downloaden**om het zip-bestand te downloaden. 
 
 
 ### <a name="verify-file-security"></a>Bestands beveiliging controleren
 
-Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
+Controleer of het zip-bestand veilig is voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
 3. Controleer de meest recente versie van het apparaat en de hash-waarde:
 
-    **Scenario** | **Update*** | **Hash-waarde**
+    **Scenario** | **Downloaden*** | **Hash-waarde**
     --- | --- | ---
-    Fysiek (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
+    Fysiek (63.1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>Het script uitvoeren
@@ -173,10 +173,10 @@ Wat gebeurt er met het script:
 
 Het script uitvoeren:
 
-1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate apparaat.
+1. Pak het zip-bestand uit naar een map op de computer die als host moet fungeren voor het apparaat. Zorg ervoor dat u het script niet uitvoert op een machine op een bestaand Azure Migrate-apparaat.
 2. Start Power shell op de computer met Administrator bevoegdheden (met verhoogde bevoegdheden).
 3. Wijzig de Power shell-map in de map met de inhoud die is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script **AzureMigrateInstaller. ps1**als volgt uit:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+4. Voer het script **AzureMigrateInstaller.ps1**als volgt uit:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 5. Nadat het script is uitgevoerd, wordt de web-app voor het toestel gestart, zodat u het apparaat kunt instellen. Als u problemen ondervindt, controleert u de script logboeken op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log.
 
 ### <a name="verify-access"></a>Toegang controleren

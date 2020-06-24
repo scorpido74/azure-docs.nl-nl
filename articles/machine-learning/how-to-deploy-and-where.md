@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/28/2020
+ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: c0cf361cc00466a8ddf098b52bfaacc2fa63dad4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559440"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817982"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -255,9 +255,34 @@ file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'skl
 ```
 
 **Voor beeld van meerdere modellen**
+
+In dit scenario worden twee modellen geregistreerd bij de werk ruimte:
+
+* `my_first_model`: Bevat één bestand ( `my_first_model.pkl` ) en er is slechts één versie ( `1` ).
+* `my_second_model`: Bevat één bestand ( `my_second_model.pkl` ) en er zijn twee versies, `1` en `2` .
+
+Wanneer de service is geïmplementeerd, worden beide modellen in de implementatie bewerking weer gegeven:
+
+```python
+first_model = Model(ws, name="my_first_model", version=1)
+second_model = Model(ws, name="my_second_model", version=2)
+service = Model.deploy(ws, "myservice", [first_model, second_model], inference_config, deployment_config)
+```
+
+In de docker-installatie kopie die als host fungeert voor de service, `AZUREML_MODEL_DIR` bevat de omgevings variabele de map waarin de modellen zich bevinden.
+In deze map bevindt elk model zich in een mappad van `MODEL_NAME/VERSION` . Waarbij de `MODEL_NAME` naam is van het geregistreerde model en `VERSION` de versie van het model is. De bestanden waaruit het geregistreerde model bestaan, worden opgeslagen in deze mappen.
+
+In dit voor beeld zijn de paden `$AZUREML_MODEL_DIR/my_first_model/1/my_first_model.pkl` en `$AZUREML_MODEL_DIR/my_second_model/2/my_second_model.pkl` .
+
+
 ```python
 # Example when the model is a file, and the deployment contains multiple models
-model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')
+first_model_name = 'my_first_model'
+first_model_version = '1'
+first_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), first_model_name, first_model_version, 'my_first_model.pkl')
+second_model_name = 'my_second_model'
+second_model_version = '2'
+second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_name, second_model_version, 'my_second_model.pkl')
 ```
 
 ##### <a name="get_model_path"></a>get_model_path
@@ -322,6 +347,8 @@ def run(data):
         return error
 ```
 
+##### <a name="power-bi-compatible-endpoint"></a>Power BI compatibel eind punt 
+
 In het volgende voor beeld ziet u hoe u de invoer gegevens definieert als een `<key: value>` woorden lijst met behulp van een data frame. Deze methode wordt ondersteund voor het gebruik van de geïmplementeerde webservice van Power BI. (Meer[informatie over het gebruik van de webservice van Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
@@ -358,8 +385,9 @@ input_sample = pd.DataFrame(data=[{
 # This is an integer type sample. Use the data type that reflects the expected result.
 output_sample = np.array([0])
 
-
-@input_schema('data', PandasParameterType(input_sample))
+# To indicate that we support a variable length of data input,
+# set enforce_shape=False
+@input_schema('data', PandasParameterType(input_sample, enforce_shape=False))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
@@ -578,11 +606,11 @@ In de volgende tabel worden de verschillende service statussen beschreven:
 
 | Status van webservice | Beschrijving | Eind status?
 | ----- | ----- | ----- |
-| Overstappen | De service is in het implementatie proces. | Nee |
-| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | Nee |
-| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | Nee |
-| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Ja |
-| In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
+| Overstappen | De service is in het implementatie proces. | No |
+| Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | No |
+| Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | No |
+| Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Yes |
+| In orde | De service is in orde en het eind punt is beschikbaar. | Yes |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Compute instance web service (dev/test)
 
@@ -925,13 +953,18 @@ output = service.run(input_payload)
 print(output)
 ```
 
-Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf opgebouwde sklearn-deinterferentie-container:
+Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf gemaakte scikit:
 
 ```yaml
+    - dill
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
     - numpy
+    - joblib
+    - pandas
+    - scipy
+    - sklearn_pandas
 ```
 
 ## <a name="package-models"></a>Pakket modellen
@@ -1129,7 +1162,7 @@ import requests
 # Load image data
 data = open('example.jpg', 'rb').read()
 # Post raw data to scoring URI
-res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+res = requests.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
 ```
 
 <a id="cors"></a>

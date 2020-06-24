@@ -3,25 +3,25 @@ title: Browser extensie voor het toegangs venster voor toepassingen installeren-
 description: Veelvoorkomende fouten oplossen die zijn opgetreden tijdens de installatie van de browser uitbreiding van het toegangs venster.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 05/04/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2046c24220079a604792d07f3ebc3f6ef11e9c8a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275858"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761082"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>De browser uitbreiding van het toegangs venster installeren
 
@@ -67,7 +67,7 @@ U kunt de uitbrei ding voor Chrome en micro soft Edge ook rechtstreeks downloade
 - [Firefox-extensie](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>De beveiligde aanmeldings extensie voor mijn apps gebruiken
-* Als u een andere URL gebruikt dan `https://myapps.microsoft.com`, moet u uw standaard-URL configureren door het volgende te doen:
+* Als u een andere URL gebruikt dan `https://myapps.microsoft.com` , moet u uw standaard-URL configureren door het volgende te doen:
    1. Terwijl u *niet* bent aangemeld bij de extensie, klikt u met de rechter muisknop op het pictogram extensie.
    2. Selecteer in het menu **mijn apps-URL**.
    3. Selecteer uw standaard-URL.
@@ -128,4 +128,4 @@ Open een ondersteunings ticket met de volgende informatie als dit beschikbaar is
 -   Fiddler traceringen
 
 ## <a name="next-steps"></a>Volgende stappen
-[Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](what-is-single-sign-on.md)
+[What is application access and single sign-on with Azure Active Directory?](what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
