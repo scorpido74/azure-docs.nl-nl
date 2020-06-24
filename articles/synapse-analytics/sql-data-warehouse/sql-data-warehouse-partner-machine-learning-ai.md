@@ -23,7 +23,7 @@ ms.locfileid: "85306924"
 In dit artikel worden micro soft-partners beschreven met machine learning en kunst matige intelligentie tools en oplossingen die Azure Synapse Analytics ondersteunen.
 
 ## <a name="machine-learning-and-ai-partners"></a>Machine learning-en AI-partners
-| Partner | Beschrijving | Website/product koppeling |
+| Partner | Description | Website/product koppeling |
 | ------- | ----------- | -------------------- |
 | ![Dataiku](./media/sql-data-warehouse-partner-machine-learning-and-ai/dataiku-logo.png) |**Dataiku**<br>Dataiku is het gecentraliseerde gegevens platform waarmee bedrijven worden verplaatst naar hun gegevens vanuit Analytics op schaal naar Enter prise AI, self-service analyses en de uitoefening van machine learning modellen in productie. |[Product pagina](https://www.dataiku.com/partners/microsoft/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dataiku-data-science-studio)<br> |
 | ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole biedt een Cloud-systeem eigen platform waarmee gebruikers ETL, analyses en AI/ML-workloads kunnen uitvoeren. Het ondersteunt verschillende soorten open source-engines: Apache Spark, tensor flow, Presto, lucht flow, Hadoop, Hive en meer. Het biedt gebruiks vriendelijke hulpprogram ma's voor eind gebruikers voor gegevens verwerking van SQL-query hulpprogramma's, voor notebooks en dash boards die gebruikmaken van krachtige open-source engines.|[Product pagina](https://www.qubole.com/company/partners/partners-microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) 

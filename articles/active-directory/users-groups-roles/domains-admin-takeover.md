@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582989"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732647"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
@@ -28,9 +28,9 @@ In dit artikel worden twee manieren beschreven om een DNS-domein naam te nemen i
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Bepaal hoe u wilt overnemen van een niet-beheerde map
 Tijdens het proces van overname door een beheerder kunt u eigendom bewijzen, zoals beschreven in [Een aangepaste domeinnaam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md). In de volgende secties wordt de ervaring voor de beheerder gedetailleerder uitgelegd, maar hier volgt een samenvatting:
 
-* Wanneer u een ['interne' beheerdersovername](#internal-admin-takeover) van een niet-beheerde Azure-adreslijst uitvoert, wordt u als globale beheerder van de niet-beheerde adreslijst toegevoegd. Er worden geen gebruikers, domeinen of serviceabonnementen gemigreerd naar een andere adreslijst die u beheert.
+* Wanneer u een ["interne" beheerders overname](#internal-admin-takeover) van een onbeheerde Azure-Directory uitvoert, wordt u als globale beheerder van de niet-beheerde Directory toegevoegd. Er worden geen gebruikers, domeinen of serviceabonnementen gemigreerd naar een andere adreslijst die u beheert.
 
-* Wanneer u een ['externe' beheerdersovername](#external-admin-takeover) uitvoert van een niet-beheerde Azure-adreslijst, voegt u de naam van het DNS-domein van de niet-beheerde adreslijst toe aan uw beheerde Azure-adreslijst. Wanneer u de domeinnaam toevoegt, wordt een toewijzing van gebruikers aan bronnen gemaakt in uw beheerde Azure-adreslijst, zodat gebruikers zonder onderbreking toegang houden tot services. 
+* Wanneer u een [externe beheerder](#external-admin-takeover) van een onbeheerde Azure-Directory uitvoert, voegt u de DNS-domein naam van de niet-beheerde map toe aan uw beheerde Azure-Directory. Wanneer u de domeinnaam toevoegt, wordt een toewijzing van gebruikers aan bronnen gemaakt in uw beheerde Azure-adreslijst, zodat gebruikers zonder onderbreking toegang houden tot services. 
 
 ## <a name="internal-admin-takeover"></a>Interne beheerder overname
 
@@ -38,7 +38,7 @@ Sommige producten die share point en OneDrive bevatten, zoals Office 365, bieden
 
 1. Maak een gebruikers context in de onbeheerde organisatie door u aan te melden voor Power BI. Voor het gemak van deze stappen wordt ervan uitgegaan dat het pad.
 
-2. Open de [Power bi-site](https://powerbi.com) en selecteer **gratis starten**. Voer een gebruikers account in dat gebruikmaakt van de domein naam voor de organisatie. bijvoorbeeld `admin@fourthcoffee.xyz`. Nadat u de verificatie code hebt ingevoerd, controleert u uw e-mail op de bevestigings code.
+2. Open de [Power bi-site](https://powerbi.com) en selecteer **gratis starten**. Voer een gebruikers account in dat gebruikmaakt van de domein naam voor de organisatie. bijvoorbeeld `admin@fourthcoffee.xyz` . Nadat u de verificatie code hebt ingevoerd, controleert u uw e-mail op de bevestigings code.
 
 3. Selecteer **Ja**in het bevestigings bericht van Power bi.
 
@@ -57,13 +57,13 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>De domein naam toevoegen aan een beheerde organisatie in azure AD
 
 1. Open het [Microsoft 365-beheer centrum](https://admin.microsoft.com).
-2. Selecteer **gebruikers** tabblad en maak een nieuw gebruikers account met een naam als *gebruiker\@fourthcoffeexyz.onmicrosoft.com* die geen gebruik maakt van de aangepaste domein naam. 
+2. Selecteer **gebruikers** tabblad en maak een nieuw gebruikers account met een naam als *gebruiker \@ fourthcoffeexyz.onmicrosoft.com* die geen gebruik maakt van de aangepaste domein naam. 
 3. Zorg ervoor dat het nieuwe gebruikers account globale beheerders rechten heeft voor de Azure AD-organisatie.
 4. Open het tabblad **domeinen** in het Microsoft 365-beheer centrum, selecteer de domein naam en selecteer **verwijderen**. 
   
    ![de domein naam verwijderen uit Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
-5. Als u gebruikers of groepen in Office 365 hebt die verwijzen naar de verwijderde domein naam, moet u de naam ervan wijzigen in het domein. onmicrosoft.com. Als u de domein naam geforceerd verwijdert, worden alle gebruikers automatisch hernoemd, in dit voor beeld *naar\@gebruikers fourthcoffeexyz.onmicrosoft.com*.
+5. Als u gebruikers of groepen in Office 365 hebt die verwijzen naar de verwijderde domein naam, moet u de naam ervan wijzigen in het domein. onmicrosoft.com. Als u de domein naam geforceerd verwijdert, worden alle gebruikers automatisch hernoemd, in dit voor beeld naar *gebruikers \@ fourthcoffeexyz.onmicrosoft.com*.
   
 6. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat de globale beheerder is voor de Azure AD-organisatie.
   
@@ -72,7 +72,7 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
    ![het domein is geverifieerd als toegevoegd aan Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Gebruikers van Power BI-of Azure Rights Management-service met licenties die zijn toegewezen in de Office 365-organisatie, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam zoals *de\@gebruiker fourthcoffeexyz.onmicrosoft.com* in plaats van de *gebruiker\@fourthcoffee. xyz*.
+> Gebruikers van Power BI-of Azure Rights Management-service met licenties die zijn toegewezen in de Office 365-organisatie, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam zoals de *gebruiker \@ fourthcoffeexyz.onmicrosoft.com* in plaats van de *gebruiker \@ fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Externe beheerder overname
 

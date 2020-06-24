@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271900"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700494"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm topologieën implementeren en beheren in azure HDInsight
 
@@ -40,11 +40,11 @@ U kunt de Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken om C#-of hybri
 
 1. Start Visual Studio.
 
-1. Selecteer in het **Start** venster **een nieuw project maken**.
+1. Selecteer in het **Startvenster** de optie **Een nieuw project maken**.
 
-1. In het venster **een nieuw project maken** selecteert u het zoekvak en voert `Storm`u in. Kies vervolgens **Storm** -voor beeld in de lijst met resultaten en selecteer **volgende**.
+1. In het venster **een nieuw project maken** selecteert u het zoekvak en voert u in `Storm` . Kies vervolgens **Storm** -voor beeld in de lijst met resultaten en selecteer **volgende**.
 
-1. Voer in het venster **uw nieuwe project configureren** een **project naam**in en ga naar of maak een **locatie** om het nieuwe project in op te slaan. Selecteer vervolgens **maken**.
+1. Voer in het venster **uw nieuwe project configureren** een **project naam**in en ga naar of maak een **locatie** om het nieuwe project in op te slaan. Selecteer vervolgens **Maken**.
 
     ![Het nieuwe project venster configureren, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -74,9 +74,9 @@ U kunt de Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken om C#-of hybri
     Met deze opdracht wordt de WordCount-voorbeeldtopologie gestart op het cluster. Deze topologie genereert wille keurig zinnen en telt vervolgens het exemplaar van elk woord in de zinnen.
 
     > [!NOTE]  
-    > Wanneer u een topologie indient naar het cluster, moet u eerst het jar-bestand met het cluster kopiëren `storm` voordat u de opdracht gebruikt. U kunt de `scp` opdracht gebruiken om het bestand naar het cluster te kopiëren. Geef bijvoorbeeld `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` op.
+    > Wanneer u een topologie indient naar het cluster, moet u eerst het jar-bestand met het cluster kopiëren voordat u de `storm` opdracht gebruikt. U kunt de opdracht gebruiken om het bestand naar het cluster te kopiëren `scp` . Voer bijvoorbeeld `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` in.
     >
-    > Het *WordCount* -voor beeld en andere Storm starter-voor beelden zijn al opgenomen in uw `/usr/hdp/current/storm-client/contrib/storm-starter/`cluster op.
+    > Het *WordCount* -voor beeld en andere Storm starter-voor beelden zijn al opgenomen in uw cluster op `/usr/hdp/current/storm-client/contrib/storm-starter/` .
 
 ## <a name="submit-a-topology-programmatically"></a>Een topologie via een programma verzenden
 
@@ -89,7 +89,7 @@ Wanneer u een topologie verzendt met behulp van Visual Studio, wordt het venster
 ![Topologie bewaken, weergave venster Storm topologieën, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> U kunt Storm- **topologieën** ook bekijken vanuit **Server Explorer**. Vouw **Azure** > **HDInsight**uit, klik met de rechter muisknop op een storm op HDInsight-cluster en selecteer vervolgens **Storm-topologieën weer geven**.
+> U kunt Storm- **topologieën** ook bekijken vanuit **Server Explorer**. Vouw **Azure**  >  **HDInsight**uit, klik met de rechter muisknop op een storm op HDInsight-cluster en selecteer vervolgens **Storm-topologieën weer geven**.
 
 Selecteer de vorm voor de spouts of bouten om informatie over deze onderdelen weer te geven. Er wordt een knop info met onderdeel informatie weer gegeven voor het geselecteerde item.
 
@@ -112,7 +112,7 @@ Storm-topologieën blijven actief totdat ze zijn gestopt of het cluster is verwi
 
 ## <a name="monitor-and-manage-a-topology-using-ssh-and-the-storm-command"></a>Een topologie bewaken en beheren met SSH en de Storm-opdracht
 
-Met `storm` het hulp programma kunt u met het uitvoeren van topologieën werken vanaf de opdracht regel. Gebruiken `storm -h` voor een volledige lijst met opdrachten.
+Met het `storm` hulp programma kunt u met het uitvoeren van topologieën werken vanaf de opdracht regel. Gebruiken `storm -h` voor een volledige lijst met opdrachten.
 
 ### <a name="list-topologies"></a>Topologieën weer geven
 
@@ -163,7 +163,7 @@ storm rebalance TOPOLOGYNAME
 
 ## <a name="monitor-and-manage-a-topology-using-the-storm-ui"></a>Een topologie controleren en beheren met behulp van de Storm-gebruikers interface
 
-De Storm-UI biedt een webinterface voor het werken met actieve topologieën en is opgenomen in uw HDInsight-cluster. Als u de Storm-gebruikers interface wilt weer geven, gebruikt `https://CLUSTERNAME.azurehdinsight.net/stormui`u een webbrowser om te openen, waarbij *clustername* de naam van uw cluster is.
+De Storm-UI biedt een webinterface voor het werken met actieve topologieën en is opgenomen in uw HDInsight-cluster. Als u de Storm-gebruikers interface wilt weer geven, gebruikt u een webbrowser om te openen `https://CLUSTERNAME.azurehdinsight.net/stormui` , waarbij *clustername* de naam van uw cluster is.
 
 > [!NOTE]  
 > Als u wordt gevraagd om een gebruikers naam en wacht woord op te geven, voert u de naam van de Cluster beheerder en het wacht woord in die u hebt gebruikt bij het maken van het cluster.
@@ -172,7 +172,7 @@ De Storm-UI biedt een webinterface voor het werken met actieve topologieën en i
 
 De hoofd pagina van de Storm-gebruikers interface bevat de volgende informatie:
 
-| Sectie | Beschrijving |
+| Sectie | Description |
 | --- | --- |
 | Clusteroverzicht| Basis informatie over het Storm-cluster. |
 | Nimbus-samen vatting | Een lijst met basis informatie over Nimbus. |
@@ -188,7 +188,7 @@ De hoofd pagina van de Storm-gebruikers interface ziet er ongeveer als volgt uit
 
 Als u een koppeling selecteert in het gedeelte **topologie overzicht** , wordt de volgende informatie over de topologie weer gegeven:
 
-| Sectie | Beschrijving |
+| Sectie | Description |
 | --- | --- |
 | Topologie samenvatting | Basis informatie over de topologie. |
 | Topologie acties| Beheer acties die u kunt uitvoeren voor de topologie. De beschik bare acties worden verderop in deze sectie beschreven. |
@@ -205,7 +205,7 @@ De pagina overzicht van Storm-topologie ziet er ongeveer als volgt uit:
 
 In het gedeelte **topologie acties** kunt u de volgende knoppen selecteren om een actie uit te voeren:
 
-| Knop | Beschrijving |
+| Knop | Description |
 | --- | --- |
 | Activeren | Hervat de verwerking van een gedeactiveerde topologie. |
 | Deactiveren | Hiermee wordt een actieve topologie onderbroken. |
@@ -219,7 +219,7 @@ In het gedeelte **topologie acties** kunt u de volgende knoppen selecteren om ee
 
 Als u een Spout selecteert in de secties **Spouts** of **Bouts** , wordt de volgende informatie over het geselecteerde item weer gegeven:
 
-| Sectie | Beschrijving |
+| Sectie | Description |
 | --- | --- |
 | Onderdeel overzicht | Basis informatie over de Spout of bout. |
 | Onderdeel acties | **Debug** -en **Stop** -knoppen voor fout opsporing. |
@@ -245,14 +245,14 @@ Zie [Apache Storm UI rest API](https://storm.apache.org/releases/current/STORM-U
 
 ### <a name="base-uri"></a>Basis-URI
 
-De basis-URI voor de REST API op op Linux gebaseerde HDInsight-clusters is beschikbaar op `https://HEADNODEFQDN:8744/api/v1/`URL-adres, waar u *HEADNODEFQDN* vervangt door het hoofd knooppunt. De domein naam van het hoofd knooppunt wordt gegenereerd tijdens het maken van het cluster en is niet statisch.
+De basis-URI voor de REST API op op Linux gebaseerde HDInsight-clusters is beschikbaar op URL `https://HEADNODEFQDN:8744/api/v1/` -adres, waar u *HEADNODEFQDN* vervangt door het hoofd knooppunt. De domein naam van het hoofd knooppunt wordt gegenereerd tijdens het maken van het cluster en is niet statisch.
 
 U kunt de Fully Qualified Domain Name (FQDN) voor het hoofd knooppunt van het cluster op verschillende manieren vinden:
 
-| FQDN-detectie methode | Beschrijving |
+| FQDN-detectie methode | Description |
 | --- | --- |
 | SSH-sessie | Gebruik de opdracht `headnode -f` van een SSH-sessie naar het cluster. |
-| Ambari-Web | Selecteer op de webpagina van het Ambari`https://CLUSTERNAME.azurehdinsight.net`-cluster () **Services** boven aan de pagina en selecteer vervolgens **Storm**. Selecteer op het tabblad **samen vatting** de optie **Storm-gebruikers interface Server**. De FQDN van het knoop punt dat als host fungeert voor de Storm-gebruikers interface en REST API wordt boven aan de pagina weer gegeven. |
+| Ambari-Web | Selecteer op de webpagina van het Ambari-cluster ( `https://CLUSTERNAME.azurehdinsight.net` ) **Services** boven aan de pagina en selecteer vervolgens **Storm**. Selecteer op het tabblad **samen vatting** de optie **Storm-gebruikers interface Server**. De FQDN van het knoop punt dat als host fungeert voor de Storm-gebruikers interface en REST API wordt boven aan de pagina weer gegeven. |
 | Ambari REST API | Gebruik de opdracht `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` om informatie op te halen over het knoop punt waarop de Storm-gebruikers interface en de rest API worden uitgevoerd. Vervang de twee exemplaren van *clustername* door de naam van het cluster. Wanneer u hierom wordt gevraagd, voert u het wacht woord voor het gebruikers account (beheer) in. In het antwoord bevat de vermelding ' host_name ' van de JSON-uitvoer de FQDN-naam van het knoop punt. |
 
 ### <a name="authentication"></a>Verificatie

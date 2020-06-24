@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 22d1b6e2344256b52cfdbc48720a680a770a4216
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d2cd98a9af75b5f3a6ca084dbfd4c144e06643d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77132170"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733786"
 ---
 # <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met de beveiliging van de LDAP-verbinding met een Azure Active Directory Domain Services beheerd domein oplossen
 
@@ -24,20 +24,20 @@ Toepassingen en services die gebruikmaken van Lightweight Directory Access Proto
 
 Dit artikel helpt u bij het oplossen van problemen met beveiligde LDAP-toegang in azure AD DS.
 
-## <a name="common-connection-issues"></a>Veelvoorkomende verbindings problemen
+## <a name="common-connection-issues"></a>Algemene verbindingsproblemen
 
-Raadpleeg de volgende stappen voor probleem oplossing als u problemen ondervindt bij het maken van verbinding met een met Azure AD DS beheerd domein met behulp van secure LDAP. Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met het Azure AD DS beheerde domein:
+Raadpleeg de volgende stappen voor probleem oplossing als u problemen ondervindt bij het maken van verbinding met een met Azure AD DS beheerd domein met behulp van secure LDAP. Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken met het beheerde domein:
 
 * De uitgevers keten van het beveiligde LDAP-certificaat moet worden vertrouwd op de client. U kunt de basis certificerings instantie (CA) toevoegen aan het vertrouwde basis certificaat archief op de client om de vertrouwens relatie tot stand te brengen.
     * Zorg ervoor dat u [het certificaat exporteert en toepast op client computers][client-cert].
 * Controleer of het beveiligde LDAP-certificaat voor uw beheerde domein de DNS-naam in het *onderwerp* of het kenmerk *alternatieve namen voor onderwerp* bevat.
     * Bekijk de [vereisten voor het beveiligde LDAP-certificaat][certs-prereqs] en maak indien nodig een vervangend certificaat.
-* Controleer of de LDAP-client, zoals *Ldp. exe* , verbinding maakt met het beveiligde LDAP-eind punt met behulp van een DNS-naam, niet op het IP-adres.
-    * Het certificaat dat wordt toegepast op de Azure AD DS Managed Domain bevat niet de IP-adressen van de service, alleen de DNS-namen.
-* Controleer de DNS-naam waarmee de LDAP-client verbinding maakt. Het moet worden omgezet in het open bare IP-adres voor beveiligde LDAP op het door Azure AD DS beheerde domein.
+* Controleer of de LDAP-client, zoals *ldp.exe* , verbinding maakt met het beveiligde LDAP-eind punt met behulp van een DNS-naam, niet op het IP-adres.
+    * Het certificaat dat wordt toegepast op het beheerde domein bevat niet de IP-adressen van de service, alleen de DNS-namen.
+* Controleer de DNS-naam waarmee de LDAP-client verbinding maakt. Het moet worden omgezet in het open bare IP-adres voor beveiligde LDAP op het beheerde domein.
     * Als de DNS-naam wordt omgezet naar het interne IP-adres, werkt u de DNS-record bij om om te zetten naar het externe IP-adres.
 * Voor externe connectiviteit moet de netwerk beveiligings groep een regel bevatten waarmee het verkeer naar de TCP-poort 636 van Internet wordt toegestaan.
-    * Als u verbinding kunt maken met het Azure AD DS beheerde domein met behulp van beveiligde LDAP van resources die rechtstreeks zijn verbonden met het virtuele netwerk, maar niet met externe verbindingen, moet u [een regel voor de netwerk beveiligings groep maken om beveiligd LDAP-verkeer toe te staan][ldaps-nsg].
+    * Als u verbinding kunt maken met het beheerde domein met behulp van beveiligde LDAP van resources die rechtstreeks zijn verbonden met het virtuele netwerk, maar niet met externe verbindingen, moet u [een regel voor de netwerk beveiligings groep maken om beveiligd LDAP-verkeer toe te staan][ldaps-nsg].
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4468025f6389d31269d9e587fca25390f19bdbbc
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 269cc52f1e96a6864de55f729fe39a5f609d35c9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200318"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902497"
 ---
 Azure Ultra disks biedt hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor Azure IaaS virtual machines (Vm's). Deze nieuwe aanbieding biedt de hoogste prestaties van de lijn op dezelfde beschikbaarheids niveaus als onze bestaande schijven. Een belang rijk voor deel van ultra schijven is de mogelijkheid om de prestaties van de SSD in combi natie met uw workloads dynamisch te wijzigen zonder dat u uw Vm's opnieuw hoeft op te starten. Ultraschijven zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, databases in de bovenste laag en workloads met veel transacties.
 
@@ -30,11 +30,11 @@ Als u ultra disks wilt gebruiken, moet u bepalen in welke beschikbaarheids zone 
 #### <a name="cli"></a>CLI
 
 ```azurecli
-subscription = "<yourSubID>"
+subscription="<yourSubID>"
 # example value is southeastasia
-region = "<yourLocation>"
+region="<yourLocation>"
 # example value is Standard_E64s_v3
-vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -65,10 +65,10 @@ Nu u weet in welke zone u wilt implementeren, volgt u de implementatie stappen i
 Ultra-schijven die zijn geïmplementeerd in het VS-West, moeten nu zonder enige redundantie opties worden geïmplementeerd. Niet elke schijf grootte die ondersteuning biedt voor Ultra schijven, kan echter wel deel uitmaken van deze regio. U kunt een van de volgende code fragmenten gebruiken om te bepalen welke van de VS-West-rom's ondersteunen. Zorg ervoor dat u de `vmSize` waarden en het `subscription` eerst vervangt:
 
 ```azurecli
-subscription = "<yourSubID>"
-region = "westus"
+subscription="<yourSubID>"
+region="westus"
 # example value is Standard_E64s_v3
-vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -132,12 +132,12 @@ In deze sectie wordt beschreven hoe u een virtuele machine implementeert met een
 - Vul de resterende items in met de selecties van uw keuze.
 - Selecteer **Schijven**.
 
-![Create-Ultra-Disk-enabled-VM. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+![create-ultra-disk-enabled-vm.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
 - Selecteer op de Blade schijven de optie **Ja** voor het **inschakelen van ultra Disk-compatibiliteit**.
 - Selecteer **maken en koppel een nieuwe schijf** om nu een ultra schijf te koppelen.
 
-![Enable-and-attach-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+![enable-and-attach-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
 - Voer op de Blade **een nieuwe schijf maken** een naam in en selecteer vervolgens **grootte wijzigen**.
 - Wijzig het **account type** in **Ultra Disk**.
@@ -145,36 +145,36 @@ In deze sectie wordt beschreven hoe u een virtuele machine implementeert met een
 - Selecteer **OK** in beide Blades.
 - Ga verder met de implementatie van de virtuele machine. Dit is dezelfde manier als bij het implementeren van een andere VM.
 
-![Create-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+![create-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
 
 ## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>Een ultra schijf koppelen met behulp van de Azure Portal
 
 Als uw bestaande virtuele machine zich in een regio/beschikbaarheids zone bevindt die geschikt is voor het gebruik van ultra schijven, kunt u ook gebruikmaken van ultra schijven zonder dat u een nieuwe virtuele machine hoeft te maken. Door Ultra schijven op uw bestaande virtuele machine in te scha kelen en vervolgens als gegevens schijven te koppelen.
 
 - Navigeer naar uw VM en selecteer **schijven**.
-- Selecteer **bewerken**.
+- Selecteer **Bewerken**.
 
-![Options-selector-Ultra-disks. png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+![options-selector-ultra-disks.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
 - Selecteer **Ja** als u **Ultra Disk-compatibiliteit wilt inschakelen**.
 
-![Ultra-Options-Yes-Enable. png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+![ultra-options-yes-enable.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
 - Selecteer **Opslaan**.
 - Selecteer **gegevens schijf toevoegen** en selecteer in de vervolg keuzelijst voor **naam** de optie **schijf maken**.
 
-![Create-and-attach-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+![create-and-attach-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
 - Vul een naam in voor de nieuwe schijf en selecteer vervolgens **grootte wijzigen**.
 - Wijzig het **account type** in **Ultra Disk**.
 - Wijzig de waarden van **aangepaste schijf grootte (GIB)**, **schijf-IOPS**en **schijf doorvoer** naar keuze.
 - Selecteer **OK** en selecteer vervolgens **maken**.
 
-![Making-a-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+![making-a-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
 
 - Wanneer u terugkeert naar de Blade van uw schijf, selecteert u **Opslaan**.
 
-![Saving-and-Attaching-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![saving-and-attaching-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>De prestaties van een ultra schijf aanpassen met behulp van de Azure Portal
 
@@ -183,12 +183,12 @@ Ultra disks bieden een unieke mogelijkheid waarmee u de prestaties ervan kunt aa
 - Navigeer naar uw VM en selecteer **schijven**.
 - Selecteer de ultra schijf waarvan u de prestaties wilt wijzigen.
 
-![selecting-Ultra-disk-to-Modify. png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+![selecting-ultra-disk-to-modify.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - Selecteer **configuratie** en breng vervolgens de gewenste wijzigingen aan.
 - Selecteer **Opslaan**.
 
-![Configuring-Ultra-Disk-Performance-and-size. png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+![configuring-ultra-disk-performance-and-size.png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>Een ultra schijf implementeren met behulp van CLI
 
@@ -244,10 +244,10 @@ az disk create `
 Als uw bestaande virtuele machine zich in een regio/beschikbaarheids zone bevindt die geschikt is voor het gebruik van ultra schijven, kunt u ook gebruikmaken van ultra schijven zonder dat u een nieuwe virtuele machine hoeft te maken.
 
 ```azurecli
-rgName = "<yourResourceGroupName>"
-vmName = "<yourVMName>"
-diskName = "<yourDiskName>"
-subscriptionId = "<yourSubscriptionID>"
+rgName="<yourResourceGroupName>"
+vmName="<yourVMName>"
+diskName="<yourDiskName>"
+subscriptionId="<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```
