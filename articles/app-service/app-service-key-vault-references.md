@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce11e806c514aa4a2074d120cb64ecdce222528
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453724"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735605"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Gebruik Key Vault verwijzingen voor App Service en Azure Functions
 
@@ -35,19 +35,23 @@ Als u geheimen van Key Vault wilt lezen, moet er een kluis zijn gemaakt en moet 
 
 ## <a name="reference-syntax"></a>Verwijzings syntaxis
 
-Een Key Vault verwijzing is van het formulier `@Microsoft.KeyVault({referenceString})`, waarbij `{referenceString}` wordt vervangen door een van de volgende opties:
+Een Key Vault verwijzing is van het formulier `@Microsoft.KeyVault({referenceString})` , waarbij `{referenceString}` wordt vervangen door een van de volgende opties:
 
 > [!div class="mx-tdBreakAll"]
-> | Verwijzings reeks                                                            | Beschrijving                                                                                                                                                                                 |
+> | Verwijzings reeks                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeldhttps://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De **naam van het doel** geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
 
-Een volledige referentie met versie zou er bijvoorbeeld als volgt uitzien:
+> [!NOTE] 
+> Er zijn momenteel versies vereist. Bij het draaien van geheimen moet u de versie in de configuratie van de toepassing bijwerken.
+
+Een volledige verwijzing ziet er bijvoorbeeld als volgt uit:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 U kunt ook het volgende doen:
 
 ```

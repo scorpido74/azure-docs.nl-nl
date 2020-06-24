@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 23355abdced3a4073cf90ccf60c14af088a4e564
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324161"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126158"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Expressies bouwen in gegevens stroom toewijzen
 
@@ -129,6 +129,10 @@ Als u milliseconden wilt converteren van epoche naar een datum of tijds tempel, 
 ```toTimestamp(1574127407*1000l)```
 
 De eerste ' l ' aan het einde van de vorige expressie geeft een conversie naar een lang type als inline syntaxis.
+
+## <a name="find-time-from-epoch-or-unix-time"></a>Zoek tijd van epoche of Unix-tijd
+
+toLong (currentTimestamp ()-toTimestamp (' 1970-01-01 00:00:00.000 ', ' JJJJ-MM-DD uu: mm: SS. SSS) * 1000
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -2,21 +2,21 @@
 title: Een automatische implementatie van gebruikers inrichten plannen voor Azure Active Directory
 description: Richt lijnen voor het plannen en uitvoeren van automatische gebruikers inrichting
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593536"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781630"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -71,7 +71,7 @@ In dit artikel worden de volgende termen gebruikt:
 | Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
 | Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Online cursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
-| Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
+| Books| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
 | Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](../saas-apps/tutorial-list.md). |
 | Veelgestelde vragen| [Veelgestelde vragen](../app-provisioning/user-provisioning.md) over het automatisch inrichten van gebruikers |
 
@@ -217,7 +217,7 @@ Houd rekening met het volgende om problemen na de implementatie te verminderen:
 
 * Toepassingen kunnen specifieke beperkingen en/of vereisten hebben waaraan moet worden voldaan om de gebruikers inrichting correct te laten werken. Met een toegestane vertraging worden bijvoorbeeld waarden voor bepaalde kenmerken afgekapt. Raadpleeg de [zelf studies voor automatische gebruikers inrichting](../saas-apps/tutorial-list.md) die specifiek zijn voor elke toepassing.
 
-* Controleer de schema consistentie tussen de bron-en doel systemen. Veelvoorkomende problemen zijn kenmerken zoals UPN of e-mail die niet overeenkomt. Bijvoorbeeld: UPN in azure AD is *john_smith@contoso.com* *jsmith@contoso.com*ingesteld als en in de app. Zie de [verwijzing naar het gebruikers-en groeps schema](../app-provisioning/use-scim-to-provision-users-and-groups.md)voor meer informatie.
+* Controleer de schema consistentie tussen de bron-en doel systemen. Veelvoorkomende problemen zijn kenmerken zoals UPN of e-mail die niet overeenkomt. Bijvoorbeeld: UPN in azure AD is ingesteld als *john_smith@contoso.com* en in de app *jsmith@contoso.com* . Zie de [verwijzing naar het gebruikers-en groeps schema](../app-provisioning/use-scim-to-provision-users-and-groups.md)voor meer informatie.
 
 ## <a name="plan-testing-and-security"></a>Testen en beveiliging plannen
 

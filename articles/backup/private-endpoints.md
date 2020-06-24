@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 9158ad23bf05bf52f879afb1f1d25d2f4ba42cfb
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323634"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124252"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -21,10 +21,11 @@ In dit artikel vindt u informatie over het proces van het maken van privé-eind 
 - Privé-eind punten kunnen alleen worden gemaakt voor nieuwe Recovery Services kluizen (waarvoor geen items zijn geregistreerd bij de kluis). Daarom moeten persoonlijke eind punten worden gemaakt voordat u items op de kluis probeert te beveiligen.
 - Eén virtueel netwerk kan persoonlijke eind punten voor meerdere Recovery Services kluizen bevatten. Daarnaast kan een Recovery Services kluis persoonlijke eind punten in meerdere virtuele netwerken hebben. Het maximum aantal privé-eind punten dat voor een kluis kan worden gemaakt, is echter 12.
 - Zodra een persoonlijk eind punt is gemaakt voor een kluis, wordt de kluis vergrendeld. Het is niet toegankelijk (voor back-ups en herstel bewerkingen) van netwerken van een locatie die een persoonlijk eind punt voor de kluis bevatten. Als alle persoonlijke eind punten voor de kluis worden verwijderd, is de kluis toegankelijk vanuit alle netwerken.
+- Een VPN-verbinding voor back-up gebruikt in totaal 11 privé Ip's in uw subnet. Dit aantal kan hoger zijn (Maxi maal 15) voor bepaalde Azure-regio's. Daarom raden we aan dat u voldoende privé Ip's hebt die beschikbaar zijn wanneer u persoonlijke eind punten voor back-ups probeert te maken.
 - Hoewel een Recovery Services kluis wordt gebruikt door (beide) Azure Backup en Azure Site Recovery, wordt in dit artikel alleen het gebruik van privé-eind punten voor Azure Backup besproken.
 - Azure Active Directory biedt momenteel geen ondersteuning voor persoonlijke eind punten. IP-adressen en FQDN-namen die vereist zijn voor de Azure Active Directory om in een regio te werken, moeten dus uitgaande toegang hebben tot het beveiligde netwerk wanneer ze back-ups maken van data bases in azure-Vm's en-back-ups met behulp van de MARS-agent. U kunt ook NSG Tags en Azure Firewall Tags gebruiken om toegang te verlenen tot Azure AD, zoals van toepassing.
 - Virtuele netwerken met netwerk beleidsregels worden niet ondersteund voor privé-eind punten. U moet netwerk beleid uitschakelen voordat u doorgaat.
-- U moet de Recovery Services resource provider bij het abonnement opnieuw registreren als u deze vóór 1 mei 2020 hebt geregistreerd. Als u de provider opnieuw wilt registreren, gaat u naar uw abonnement in het Azure Portal, gaat u naar **resource provider** in de linkernavigatiebalk en selecteert u vervolgens **micro soft. Recovery Services** en klikt u op **opnieuw registreren**.
+- U moet de Recovery Services resource provider bij het abonnement opnieuw registreren als u deze vóór 1 2020 mei hebt geregistreerd. Als u de provider opnieuw wilt registreren, gaat u naar uw abonnement in het Azure Portal, gaat u naar **resource provider** in de linkernavigatiebalk en selecteert u vervolgens **micro soft. Recovery Services** en klikt u op **opnieuw registreren**.
 
 ## <a name="recommended-and-supported-scenarios"></a>Aanbevolen en ondersteunde scenario's
 
@@ -41,9 +42,6 @@ In deze sectie vindt u informatie over de stappen voor het maken en gebruiken va
 
 >[!IMPORTANT]
 > Het wordt ten zeerste aangeraden om de stappen uit te voeren in dezelfde volg orde als vermeld in dit document. Als u dit niet doet, kan dit ertoe leiden dat de kluis niet compatibel is met het gebruik van privé-eind punten en dat u het proces opnieuw moet starten met een nieuwe kluis.
-
->[!NOTE]
-> Bepaalde elementen van de Azure Portal ervaring zijn mogelijk momenteel niet beschikbaar. Raadpleeg de alternatieve ervaringen in dergelijke scenario's voor volledige Beschik baarheid in uw regio.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -345,7 +343,7 @@ U kunt een van de volgende methoden gebruiken om rollen met de vereiste machtigi
 
 Maak de volgende JSON-bestanden en gebruik de Power shell-opdracht aan het einde van de sectie om rollen te maken:
 
-PrivateEndpointContributorRoleDef. json
+PrivateEndpointContributorRoleDef.jsop
 
 ```json
 {
@@ -363,7 +361,7 @@ PrivateEndpointContributorRoleDef. json
 }
 ```
 
-NetworkInterfaceReaderRoleDef. json
+NetworkInterfaceReaderRoleDef.jsop
 
 ```json
 {
@@ -381,7 +379,7 @@ NetworkInterfaceReaderRoleDef. json
 }
 ```
 
-PrivateEndpointSubnetContributorRoleDef. json
+PrivateEndpointSubnetContributorRoleDef.jsop
 
 ```json
 {

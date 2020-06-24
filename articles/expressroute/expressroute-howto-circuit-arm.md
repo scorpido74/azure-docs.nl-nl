@@ -4,22 +4,22 @@ description: Een ExpressRoute-circuit maken, inrichten, controleren, bijwerken, 
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: ab44d5358154c17622eef68205ac2326e81377a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3a0166a5ffb05cff6a38984549db45dbe71d8d7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75770965"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736353"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Een ExpressRoute-circuit maken en wijzigen met behulp van PowerShell
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sjabloon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [Power shell (klassiek)](expressroute-howto-circuit-classic.md)
 >
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 Controleer of uw connectiviteits provider daar wordt vermeld. Noteer de volgende informatie, die u later nodig hebt bij het maken van een circuit:
 
-* Naam
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -119,7 +119,7 @@ Het antwoord ziet er ongeveer uit als in het volgende voor beeld:
     ServiceKey                        : **************************************
     Peerings                          : []
 
-U kunt deze informatie op elk gewenst moment ophalen met behulp van de `Get-AzExpressRouteCircuit` -cmdlet. Als u de aanroep zonder para meters aanroept, worden alle circuits weer gegeven. Uw service sleutel wordt weer gegeven in het veld *ServiceKey* :
+U kunt deze informatie op elk gewenst moment ophalen met behulp van de- `Get-AzExpressRouteCircuit` cmdlet. Als u de aanroep zonder para meters aanroept, worden alle circuits weer gegeven. Uw service sleutel wordt weer gegeven in het veld *ServiceKey* :
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

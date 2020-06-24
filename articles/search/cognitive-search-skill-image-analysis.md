@@ -40,7 +40,7 @@ Parameters zijn hoofdlettergevoelig.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Beschrijving                                          |
+| Invoer naam      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een andere waarde dan ```none``` . Zie het voor [beeld](#sample-output) voor meer informatie.|
 
@@ -512,7 +512,7 @@ U kunt uitvoer veld toewijzingen definiëren voor eigenschappen op lagere niveau
 ## <a name="error-cases"></a>Fout cases
 In de volgende gevallen worden er geen elementen geëxtraheerd.
 
-| Foutcode | Beschrijving |
+| Foutcode | Description |
 |------------|-------------|
 | `NotSupportedLanguage` | De gegeven taal wordt niet ondersteund. |
 | `InvalidImageUrl` | De afbeeldings-URL heeft een ongeldige indeling of is niet toegankelijk.|

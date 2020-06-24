@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e2113df2db89e204fd5d2c0a62234e0c1f7b16cc
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192545"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125665"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -29,7 +29,7 @@ We weten dat de veiligheid taak in de Cloud is en hoe belang rijk het is dat u n
 In dit artikel vindt u een uitgebreid overzicht van de beveiliging die beschikbaar is met Azure.
 
 ### <a name="azure-platform"></a>Azure-platform
-Azure is een openbaar Cloud service platform dat ondersteuning biedt voor een groot aantal besturings systemen, programmeer talen, frameworks, hulpprogram ma's, data bases en apparaten. Het kan Linux-containers uitvoeren met docker-integratie; bouw apps met Java script, Python, .NET, PHP, Java en node. js; Maak back-ends voor iOS-, Android-en Windows-apparaten.
+Azure is een openbaar Cloud service platform dat ondersteuning biedt voor een groot aantal besturings systemen, programmeer talen, frameworks, hulpprogram ma's, data bases en apparaten. Het kan Linux-containers uitvoeren met docker-integratie; bouw apps met Java script, Python, .NET, PHP, Java en Node.js; Maak back-ends voor iOS-, Android-en Windows-apparaten.
 
 Open bare Cloud Services van Azure bieden ondersteuning voor miljoenen ontwikkel aars en IT-professionals die al gebruikmaken van en vertrouwen. Wanneer u de IT-activa bouwt op of migreert naar, een open bare Cloud serviceprovider die u vertrouwt over de mogelijkheden van die organisatie om uw toepassingen en gegevens te beschermen met de services en de besturings elementen die ze bieden om de beveiliging van uw cloud-gebaseerde assets te beheren.
 
@@ -60,7 +60,7 @@ Afhankelijk van het Cloud service model, is er een variabele verantwoordelijkhei
 
 De ingebouwde mogelijkheden zijn ingedeeld in zes functionele gebieden: bewerkingen, toepassingen, opslag, netwerken, compute en identiteit. Meer details over de functies en mogelijkheden die beschikbaar zijn in het Azure-platform in deze zes gebieden worden verstrekt via samenvattings informatie.
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 Deze sectie bevat aanvullende informatie over belang rijke functies in beveiligings bewerkingen en overzichts informatie over deze mogelijkheden.
 
 ### <a name="security-and-audit-dashboard"></a>Beveiliging en audit dash board
@@ -101,7 +101,7 @@ De sectie bevat aanvullende informatie over de belangrijkste functies in toepass
 ### <a name="web-application-vulnerability-scanning"></a>Scan voor beveiligings problemen webtoepassing
 Een van de eenvoudigste manieren om aan de slag te gaan met het testen op beveiligings problemen in uw [app service-app](../../app-service/overview.md) is het gebruik van de [integratie met Tinfoil-beveiliging](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) om met één klik een beveiligingslek in uw app te scannen. U kunt de test resultaten weer geven in een eenvoudig te begrijpen rapport en meer informatie over het oplossen van elk beveiligings probleem met stapsgewijze instructies.
 
-### <a name="penetration-testing"></a>Indringings tests
+### <a name="penetration-testing"></a>Penetratietesten
 Als u liever uw eigen indringings tests uitvoert of een ander scanner pakket of een andere provider wilt gebruiken, moet u het [goedkeurings proces voor Azure indringings tests](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) volgen en voorafgaand goed keuring aanvragen om de gewenste indringings tests uit te voeren.
 
 ### <a name="web-application-firewall"></a>Web Application firewall
@@ -147,7 +147,7 @@ U kunt uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC
 ### <a name="shared-access-signature"></a>Shared Access Signature
 Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. De SAS betekent dat u een client beperkte machtigingen kunt verlenen voor objecten in uw opslag account voor een opgegeven periode en met een opgegeven set machtigingen. U kunt deze beperkte machtigingen verlenen zonder dat u de toegangs sleutels van uw account hoeft te delen.
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling in transit
 Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wanneer deze via netwerken worden verzonden. Met Azure Storage kunt u gegevens beveiligen met behulp van:
 -   [Versleuteling op transport niveau](../../storage/blobs/security-recommendations.md), zoals https wanneer u gegevens overbrengt naar of van Azure Storage.
 
@@ -223,7 +223,7 @@ Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) 
 
 ![ExpressRoute](./media/overview/azure-security-fig1.png)
 
-Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en CRM Online. Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding.
+Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Microsoft Azure, Microsoft 365 en CRM Online. Via een connectiviteitsprovider in een co-locatiefaciliteit is connectiviteit mogelijk vanuit een any-to-any (IP VPN) netwerk, een point-to-point Ethernet-netwerk of een virtuele overlappende verbinding.
 
 ExpressRoute-verbindingen gaan niet via het open bare Internet en kunnen worden beschouwd als veiliger dan op VPN gebaseerde oplossingen. Daardoor zijn ExpressRoute-verbindingen betrouwbaarder en sneller en hebben ze lagere latenties en betere beveiliging dan gewone verbindingen via internet.
 
@@ -285,7 +285,7 @@ U kunt de volgende diagnostische logboek categorieën inschakelen voor Nsg's:
 
 -   Regel teller: bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan.
 
-### <a name="security-center"></a>Security Center
+### <a name="security-center"></a>Beveiligingscentrum
 [Azure Security Center](../../security-center/security-center-intro.md) de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er [aanbevelingen](../../security-center/security-center-recommendations.md) gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
 
 ## <a name="compute"></a>Compute

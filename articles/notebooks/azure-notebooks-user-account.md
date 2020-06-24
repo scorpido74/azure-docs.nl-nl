@@ -3,12 +3,12 @@ title: Meld u aan Azure Notebooks preview
 description: Configureer uw gebruikers account voor Azure Notebooks met behulp van een Microsoft-account of een werk-of school account.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a19803ec0a621b981fa9198766c58376ba50534
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646293"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125835"
 ---
 # <a name="your-user-account-for-azure-notebooks-preview"></a>Uw gebruikers account voor Azure Notebooks preview
 
@@ -43,7 +43,7 @@ Voor onderliggende accounts is de toegang tot Azure Notebooks standaard geblokke
 
 Als u toegang wilt inschakelen, moet een bovenliggend item de volgende stappen uitvoeren:
 
-1. Ga `https://account.live.com/mk` naar en meld u aan met een bovenliggend account.
+1. Ga naar `https://account.live.com/mk` en meld u aan met een bovenliggend account.
 1. Selecteer in de sectie voor het onderliggende item de optie de **toegang van dit kind beheren voor apps**van derden.
 1. Selecteer op de volgende pagina **toegang inschakelen**.
 1. Wanneer het onderliggende account wordt gebruikt om u aan te melden bij Azure Notebooks, selecteert u **Ja** in de machtigings prompt die wordt weer gegeven.
@@ -53,7 +53,7 @@ Als u toegang wilt inschakelen, moet een bovenliggend item de volgende stappen u
 
 ## <a name="work-or-school-accounts"></a>Werk- of schoolaccounts
 
-Een werk-of school account wordt gemaakt door de beheerder van een organisatie om een lid van de organisatie toegang te geven tot Cloud Services van micro soft, zoals Office 365, en ook als een account om zich aan te melden bij Windows op een computer die lid is van een domein. Een werk-of school account gebruikt meestal een organisatie-e-mail adres any-user@contoso.com, zoals.
+Een werk-of school account wordt gemaakt door de beheerder van een organisatie om een lid van de organisatie toegang te geven tot Cloud Services van micro soft, zoals Microsoft 365, en ook als een account om zich aan te melden bij Windows op een computer die lid is van een domein. Een werk-of school account gebruikt meestal een organisatie-e-mail adres, zoals any-user@contoso.com .
 
 Als u zich aanmeldt bij Azure Notebooks met een werk-of school account, is het mogelijk dat toestemming van de beheerder nodig is omdat Azure Notebooks de gegevens van het e-mail adres van het account en de browser gegevens van de gebruiker verzamelt of gebruikt. (Browser gegevens worden gebruikt voor het optimaliseren van functies op basis van het populaire gebruik.)
 

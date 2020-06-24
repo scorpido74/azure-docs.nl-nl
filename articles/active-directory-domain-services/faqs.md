@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2020
+ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926966"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734772"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -58,6 +58,8 @@ Ja. Zie [Azure AD Domain Services inschakelen in azure CSP-abonnementen](csp.md)
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>Kan ik Azure AD Domain Services inschakelen in een federatieve Azure AD-adres lijst? Ik Synchroniseer geen wacht woord-hashes naar Azure AD. Kan ik Azure AD Domain Services voor deze map inschakelen?
 Nee. Azure AD Domain Services moet toegang hebben tot de wacht woord-hashes van gebruikers accounts om gebruikers te verifiëren via NTLM of Kerberos. In een federatieve map worden wacht woord-hashes niet opgeslagen in de Azure AD-adres lijst. Azure AD Domain Services werkt daarom niet met deze Azure AD-mappen.
 
+Als u echter Azure AD Connect gebruikt voor het synchroniseren van wacht woord-hashes, kunt u Azure AD Domain Services gebruiken omdat de wacht woord-hash-waarden zijn opgeslagen in azure AD.
+
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Kan ik Azure AD Domain Services beschikbaar maken in meerdere virtuele netwerken binnen mijn abonnement?
 De service zelf biedt geen rechtstreekse ondersteuning voor dit scenario. Uw beheerde domein is slechts in één virtueel netwerk tegelijk beschikbaar. U kunt echter de verbinding tussen meerdere virtuele netwerken configureren om Azure AD Domain Services naar andere virtuele netwerken beschikbaar te maken. Zie [verbinding maken met virtuele netwerken in azure met behulp van VPN-gateways](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) of [peering op het virtuele netwerk](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
 
@@ -74,7 +76,7 @@ Nee. Het door Azure AD Domain Services verschafte domein is een beheerd domein. 
 Nee. Gast gebruikers die zijn uitgenodigd voor uw Azure AD-adres lijst met het [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) -invite-proces, worden gesynchroniseerd met uw Azure AD Domain Services beheerde domein. Wacht woorden voor deze gebruikers worden echter niet opgeslagen in uw Azure AD-adres lijst. Daarom heeft Azure AD Domain Services geen manier om NTLM-en Kerberos-hashes te synchroniseren voor deze gebruikers in uw beheerde domein. Dergelijke gebruikers kunnen zich niet aanmelden of computers toevoegen aan het beheerde domein.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Kan ik een bestaand Azure AD Domain Services beheerd domein verplaatsen naar een ander abonnement, een andere resource groep, een andere regio of een virtueel netwerk?
-Nee. Nadat u een Azure AD Domain Services beheerd domein hebt gemaakt, kunt u het exemplaar niet verplaatsen naar een andere resource groep, een virtueel netwerk, een abonnement, enzovoort. Zorg ervoor dat u het meest geschikte abonnement, de resource groep, de regio en het virtuele netwerk selecteert wanneer u het Azure AD DS-exemplaar implementeert.
+Nee. Nadat u een Azure AD Domain Services beheerd domein hebt gemaakt, kunt u het beheerde domein niet verplaatsen naar een andere resource groep, een virtueel netwerk, een abonnement, enzovoort. Zorg ervoor dat u het meest geschikte abonnement, de resource groep, de regio en het virtuele netwerk selecteert wanneer u het beheerde domein implementeert.
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Bevat Azure AD Domain Services opties voor hoge Beschik baarheid?
 
@@ -97,7 +99,7 @@ Ja. Elk Azure AD Domain Services beheerd domein bevat twee domein controllers. U
 Nee. U bent niet gemachtigd om verbinding te maken met domein controllers voor het beheerde domein met behulp van Extern bureaublad. Leden van de groep *Aad DC-Administrators* kunnen het beheerde domein beheren met AD-beheer Programma's zoals het Active Directory Administration Center (ADAC) of AD Power shell. Deze hulpprogram ma's worden geïnstalleerd met behulp van de functie *Remote Server Administration Tools* op een Windows-Server die is gekoppeld aan het beheerde domein. Zie [een beheer-VM maken voor het configureren en beheren van een Azure AD Domain Services beheerd domein](tutorial-create-management-vm.md)voor meer informatie.
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>Ik heb Azure AD Domain Services ingeschakeld. Welk gebruikers account moet ik gebruiken om computers toe te voegen aan dit domein?
-Elk gebruikers account dat deel uitmaakt van het door Azure AD DS beheerde domein, kan deel nemen aan een virtuele machine. Leden van de groep *Aad DC-Administrators* krijgen toegang tot extern bureau blad voor computers die zijn toegevoegd aan het beheerde domein.
+Elk gebruikers account dat deel uitmaakt van het beheerde domein, kan deel nemen aan een virtuele machine. Leden van de groep *Aad DC-Administrators* krijgen toegang tot extern bureau blad voor computers die zijn toegevoegd aan het beheerde domein.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Heb ik domein beheerders rechten voor het beheerde domein dat wordt meegeleverd door Azure AD Domain Services?
 Nee. U hebt geen beheerders bevoegdheden verleend voor het beheerde domein. De bevoegdheden *domein beheerder* en *ondernemings Administrator* zijn niet beschikbaar voor gebruik binnen het domein. Leden van de groep domein Administrators of ondernemings Administrators in uw on-premises Active Directory zijn ook geen machtigingen voor domein/ondernemings Administrator verleend voor het beheerde domein.
@@ -158,4 +160,4 @@ Raadpleeg de [hand leiding](troubleshoot.md) voor het oplossen van problemen met
 
 Zie [Wat is Azure Active Directory Domain Services?](overview.md)voor meer informatie over Azure AD Domain Services.
 
-Zie [een Azure Active Directory Domain Services-exemplaar maken en configureren](tutorial-create-instance.md)om aan de slag te gaan.
+Zie [een door Azure Active Directory Domain Services beheerd domein maken en configureren](tutorial-create-instance.md)om aan de slag te gaan.

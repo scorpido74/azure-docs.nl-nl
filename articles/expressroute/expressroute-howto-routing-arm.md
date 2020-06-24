@@ -4,23 +4,23 @@ description: Dit artikel begeleidt u stapsgewijs door de procedure voor het make
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab20ae00fd9f275d21bc818e07bdc868944ee689
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264841"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735265"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Peering voor een ExpressRoute-circuit maken en wijzigen met behulp van Power shell
 
 Dit artikel helpt u bij het maken en beheren van routerings configuratie voor een ExpressRoute-circuit in het Resource Manager-implementatie model met behulp van Power shell. U kunt ook de status van peerings voor een ExpressRoute-circuit controleren, bijwerken of verwijderen en de inrichting ongedaan maken. Als u een andere methode wilt gebruiken om met uw circuit te werken, selecteert u een artikel in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
-> * [Zo](expressroute-howto-routing-arm.md)
+> * [Azure-portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure-CLI](howto-routing-cli.md)
 > * [Open bare peering](about-public-peering.md)
 > * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -183,7 +183,7 @@ In deze sectie leert u hoe u de persoonlijke Azure-peering-configuratie voor een
    Install-Module Az
    ```
 
-   Importeer alle AZ.\* modules binnen het bereik van de bekende semantische versie.
+   Importeer alle AZ. \* modules binnen het bereik van de bekende semantische versie.
 
    ```azurepowershell-interactive
    Import-Module Az

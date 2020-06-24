@@ -394,30 +394,64 @@
       items:
         - name: Wat is een spraakassistent?
           href: voice-assistants.md
-    - name: Aangepaste opdrachten (preview)
+    - name: Aangepaste opdrachten
       items:
         - name: Wat zijn aangepaste opdrachten?
           href: custom-commands.md
         - name: Snelstartgidsen
           items:
-            - name: Een app voor aangepaste opdrachten maken
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: Een aangepaste opdracht maken met parameters
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: Aangepaste opdrachten gebruiken met Custom Voice
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: Aangepaste opdrachten gebruiken met de Speech-SDK
-              href: quickstart-custom-speech-commands-speech-sdk.md
+            - name: Een apps voor aangepaste opdrachten maken
+              href: quickstart-custom-commands-application.md
         - name: Instructiegidsen
           items:
-            - name: Opdrachten uitvoeren vanuit een client
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: Validatie van parameter toevoegen
-              href: how-to-custom-speech-commands-validations.md
-            - name: Een bevestiging toevoegen
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: Een correctie met één stap toevoegen
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: Ontwikkelen
+              items:
+                - name: Toepassing met eenvoudige opdrachten maken
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: Parameters toevoegen aan opdrachten
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: Configuraties toevoegen aan opdrachtparameters
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: Interactieregels toevoegen
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: Taalgeneratiesjablonen toevoegen voor spraakreacties
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: Integreren
+              items:
+                - name: Integreren met een client-app met de Speech-SDK
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: Activiteit verzenden naar een clienttoepassing
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: Webeindpunten instellen
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: Implementeren
+              items:
+                - name: Continue implementatie met Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: Testen
+              items:
+                - name: Uw app met aangepaste opdrachten testen
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: Fouten opsporen
+              items:
+                - name: Fouten opsporen wanneer u de app ontwerpt
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Fouten opsporen wanneer u de app uitvoert
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: Verwijzingen
+              items:
+                - name: Concepten van aangepaste opdrachten
+                  href: custom-commands-references.md
+        - name: Resources
+          items:
+            - name: Voorbeelden van aangepaste opdrachten (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: Voorbeelden van Spraakassistent (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: Veelgestelde vragen over spraakassistenten
+              href: faq-voice-assistants.md
+            - name: Speech-SDK
+              href: speech-sdk.md
     - name: Direct Line-spraak
       items:
         - name: Wat is Direct Line-spraak?

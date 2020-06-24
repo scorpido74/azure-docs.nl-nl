@@ -6,34 +6,30 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 8a7ba3c3b9c19b2084b6892b55ac417da38ab047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc4426fc08efff44bc46ba37eb6fbc6fe31f356b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278892"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735435"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Quota's en service plannen voor Azure lente-Cloud
 
-Alle Azure-Services hebben standaard limieten en-quota ingesteld voor resources en functies.  Tijdens de preview-periode biedt Azure lente-Cloud slechts één service plan.
+Alle Azure-Services hebben standaard limieten en-quota ingesteld voor resources en functies.   Azure lente-Cloud biedt twee prijs Categorieën: Basic en Standard. In dit artikel worden de limieten voor beide lagen weer gegeven.
 
-In dit artikel vindt u informatie over de service quota's die tijdens de huidige preview-periode beschikbaar worden gesteld.
+## <a name="azure-spring-cloud-service-tiers-and-limits"></a>Azure lente-Cloud service lagen en-limieten
 
-## <a name="azure-spring-cloud-service-tiers-and-quotas"></a>Azure lente-Cloud service lagen en-quota's
+| Resource | Basic | Standard
+------- | ------- | -------
+vCPU | 1 per service-exemplaar | 4 per service-exemplaar
+Geheugen | 2 GB per service-exemplaar | 8 GB per service-exemplaar
+Azure veer Cloud service-instanties per regio per abonnement | 10 | 10
+Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 25 | 500
+Permanente volumes | 1 GB/app x 10 apps | 50 GB/app x 10-apps
 
-Tijdens de preview-periode biedt Azure lente-Cloud slechts één servicelaag.
 
-Resource | Aantal
-------- | -------
-vCPU | 4 per service-exemplaar
-Geheugen | 8 GBytes per service-exemplaar
-Azure veer Cloud service-instanties per regio per abonnement | 10
-Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 500
-Totaal aantal app-exemplaren per lente toepassing | 20
-Permanente volumes | 10 x 50 GBytes
-
-Wanneer u een quotum bereikt, ontvangt u een 400-fout die lees bewerkingen: ' quotum overschrijdt de limiet voor het abonnement op *uw abonnement* in regio regio *waar uw Azure lente-Cloud service wordt gemaakt*.
+Tijdens de preview-periode biedt Azure lente-Cloud slechts één servicelaag. Wanneer u een limiet bereikt, ontvangt u een 400-fout die lees bewerkingen: ' quotum overschrijdt de limiet voor het abonnement op *uw abonnement* in regio regio *waar uw Azure lente-Cloud service wordt gemaakt*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als voor uw resource een verhoging is vereist, [maakt u een ondersteunings aanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Enkele standaard limieten kunnen worden verhoogd. Als uw installatie een verhoging vereist, [maakt u een ondersteunings aanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).

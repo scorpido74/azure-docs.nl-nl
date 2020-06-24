@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: iainfou
-ms.openlocfilehash: 29d7772ef688134e8fc9009ec32cffacc3f23ca7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 837ca3afaf014c41fded09fa8342eed1c13e5dcf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014448"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734925"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>De voor delen van de migratie van het klassieke naar het Resource Manager-implementatie model in Azure Active Directory Domain Services
 
-Met Azure Active Directory Domain Services (AD DS) kunt u een bestaand beheerd domein migreren dat gebruikmaakt van het klassieke implementatie model naar het Resource Manager-implementatie model. Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model bieden extra functies, zoals een verfijnd wachtwoord beleid, audit logboeken en beveiliging tegen account vergrendeling.
+Met Azure Active Directory Domain Services (Azure AD DS) kunt u een bestaand beheerd domein migreren dat gebruikmaakt van het klassieke implementatie model naar het Resource Manager-implementatie model. Azure AD DS beheerde domeinen die gebruikmaken van het Resource Manager-implementatie model bieden extra functies, zoals een verfijnd wachtwoord beleid, audit logboeken en beveiliging tegen account vergrendeling.
 
 In dit artikel vindt u een overzicht van de voor delen voor migratie. Zie [Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager][howto-migrate]om aan de slag te gaan.
 
@@ -30,7 +30,7 @@ In dit artikel vindt u een overzicht van de voor delen voor migratie. Zie [Azure
 
 ## <a name="migration-benefits"></a>Migratie voordelen
 
-Bij het migratie proces wordt een bestaand exemplaar van Azure AD DS gebruikt dat gebruikmaakt van het klassieke implementatie model en wordt verplaatst naar het Resource Manager-implementatie model. Wanneer u een Azure AD DS beheerd domein migreert van het klassieke naar het Resource Manager-implementatie model, voor komt u dat de computers opnieuw lid moeten worden van het beheerde domein of het Azure AD DS-exemplaar verwijderen en een volledig nieuwe maken. Vm's blijven aan het eind van het migratie proces lid worden van de Azure AD DS beheerde domein.
+Het migratie proces haalt een bestaand beheerd domein op dat gebruikmaakt van het klassieke implementatie model en verplaatst het Resource Manager-implementatie model. Wanneer u een beheerd domein migreert van het klassieke naar het Resource Manager-implementatie model, voor komt u dat de computers opnieuw lid moeten worden van het beheerde domein of het beheerde domein verwijderen en een volledig nieuwe maken. Vm's blijven aan het eind van het migratie proces lid worden van het beheerde domein.
 
 Na de migratie biedt Azure AD DS veel functies die alleen beschikbaar zijn voor domeinen die gebruikmaken van het Resource Manager-implementatie model, zoals de volgende:
 
@@ -46,7 +46,7 @@ Na de migratie biedt Azure AD DS veel functies die alleen beschikbaar zijn voor 
 * Ondersteuning heeft toegang tot meer telemetrie en kan helpen om effectiever problemen op te lossen.
 * Versleuteling bij rest met behulp van [Azure Managed disks][managed-disks] voor de gegevens op de beheerde domein controllers.
 
-Met Azure AD DS beheerde domeinen die gebruikmaken van een Resource Manager-implementatie model, kunt u up-to-date blijven met de nieuwste nieuwe functies. Er zijn geen nieuwe functies beschikbaar voor Azure AD DS beheerde domeinen die gebruikmaken van het klassieke implementatie model.
+Beheerde domeinen die gebruikmaken van een Resource Manager-implementatie model helpen u up-to-date te blijven met de nieuwste nieuwe functies. Er zijn geen nieuwe functies beschikbaar voor beheerde domeinen die gebruikmaken van het klassieke implementatie model.
 
 ## <a name="next-steps"></a>Volgende stappen
 

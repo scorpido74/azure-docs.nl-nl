@@ -4,23 +4,23 @@ description: Dit artikel begeleidt u stapsgewijs door de stappen voor het contro
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931965"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736319"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Een ExpressRoute-circuit wijzigen met behulp van Power shell (klassiek)
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sjabloon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [Power shell (klassiek)](expressroute-howto-circuit-classic.md)
 >
@@ -39,7 +39,7 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het controleren van de 
 
 ## <a name="get-the-status-of-a-circuit"></a>De status van een circuit ophalen
 
-U kunt deze informatie op elk gewenst moment ophalen met behulp van de `Get-AzureCircuit` -cmdlet. Als u de aanroep zonder para meters, worden alle circuits vermeld.
+U kunt deze informatie op elk gewenst moment ophalen met behulp van de- `Get-AzureCircuit` cmdlet. Als u de aanroep zonder para meters, worden alle circuits vermeld.
 
 ```powershell
 Get-AzureDedicatedCircuit

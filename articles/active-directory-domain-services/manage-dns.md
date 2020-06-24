@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 0c0ae6a96a303c1c9d2887e6ed4dfb0d1fed4453
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7841db3138af2f8cb1efc03508b9e7c0bdb71324
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672575"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734636"
 ---
-# <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>DNS beheren en voorwaardelijke doorstuur servers maken in een Azure AD Domain Services beheerd domein
+# <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>DNS beheren en voorwaardelijke doorstuur servers maken in een Azure Active Directory Domain Services beheerd domein
 
 In Azure Active Directory Domain Services (Azure AD DS) is een belang rijk onderdeel van DNS (Domain Name Resolution). Azure AD DS bevat een DNS-server die naam omzetting voor het beheerde domein biedt. Deze DNS-server bevat ingebouwde DNS-records en-updates voor de belangrijkste onderdelen waarmee de service kan worden uitgevoerd.
 
@@ -36,10 +36,10 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Connectiviteit vanuit uw Azure AD DS virtuele netwerk naar de locatie waar uw andere DNS-naam ruimten worden gehost.
     * Deze connectiviteit kan worden gegeven met een [Azure ExpressRoute][expressroute] -of [Azure VPN gateway][vpn-gateway] -verbinding.
-* Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
+* Een Windows Server Management-VM die is gekoppeld aan het beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een Windows Server-VM en voegt u deze toe aan een beheerd domein][create-join-windows-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
@@ -63,17 +63,17 @@ Als u DNS-records wilt maken en wijzigen in azure AD DS, moet u de DNS-server hu
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>De DNS-beheer console openen voor het beheren van DNS
 
-Als u de hulpprogram ma's voor DNS-server hebt geïnstalleerd, kunt u DNS-records beheren op het door Azure AD DS beheerde domein.
+Als u de hulpprogram ma's voor DNS-server hebt geïnstalleerd, kunt u DNS-records beheren op het beheerde domein.
 
 > [!NOTE]
-> Als u DNS wilt beheren in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
+> Als u DNS in een beheerd domein wilt beheren, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven, inclusief **DNS** die in de vorige sectie is geïnstalleerd. Selecteer **DNS** om de DNS-beheer console te starten.
 1. Selecteer in het dialoog venster **verbinding maken met DNS-server** **de volgende computer**en voer vervolgens de DNS-domein naam in van het beheerde domein, zoals *aaddscontoso.com*:
 
-    ![Verbinding maken met het beheerde domein van Azure AD DS in de DNS-console](./media/manage-dns/connect-dns-server.png)
+    ![Verbinding maken met het beheerde domein in de DNS-console](./media/manage-dns/connect-dns-server.png)
 
-1. De DNS-console maakt verbinding met het opgegeven Azure AD DS beheerde domein. Vouw de zone voor **Forward lookup** of **zones voor reverse lookup** uit om de vereiste DNS-vermeldingen te maken of bewerk bestaande records als dat nodig is.
+1. De DNS-console maakt verbinding met het opgegeven beheerde domein. Vouw de zone voor **Forward lookup** of **zones voor reverse lookup** uit om de vereiste DNS-vermeldingen te maken of bewerk bestaande records als dat nodig is.
 
     ![DNS-console-domein beheren](./media/manage-dns/dns-manager.png)
 
@@ -82,13 +82,13 @@ Als u de hulpprogram ma's voor DNS-server hebt geïnstalleerd, kunt u DNS-record
 
 ## <a name="create-conditional-forwarders"></a>Voorwaardelijke doorstuur servers maken
 
-Een Azure AD DS DNS-zone mag alleen de zone en records voor het beheerde domein zelf bevatten. Maak geen extra zones in azure AD DS om benoemde resources in andere DNS-naam ruimten op te lossen. Gebruik in plaats daarvan voorwaardelijke doorstuur servers in het door Azure AD DS beheerde domein om de DNS-server te laten weten waar ze moeten worden geplaatst om adressen voor die resources op te lossen.
+Een Azure AD DS DNS-zone mag alleen de zone en records voor het beheerde domein zelf bevatten. Maak geen extra zones in azure AD DS om benoemde resources in andere DNS-naam ruimten op te lossen. Gebruik in plaats daarvan voorwaardelijke doorstuur servers in het beheerde domein om de DNS-server te laten weten waar deze moet worden geplaatst om adressen voor die resources op te lossen.
 
-Voorwaardelijke doorstuur servers is een configuratie optie in een DNS-server waarmee u een DNS-domein, zoals *contoso.com*, kunt definiëren om query's door te sturen naar. In plaats van de lokale DNS-server die query's voor records in dat domein probeert op te lossen, worden DNS-query's doorgestuurd naar de geconfigureerde DNS voor dat domein. Deze configuratie zorgt ervoor dat de juiste DNS-records worden geretourneerd, omdat u geen lokale DNS-zone maakt met dubbele records in het Azure AD DS beheerde domein om deze resources weer te geven.
+Voorwaardelijke doorstuur servers is een configuratie optie in een DNS-server waarmee u een DNS-domein, zoals *contoso.com*, kunt definiëren om query's door te sturen naar. In plaats van de lokale DNS-server die query's voor records in dat domein probeert op te lossen, worden DNS-query's doorgestuurd naar de geconfigureerde DNS voor dat domein. Deze configuratie zorgt ervoor dat de juiste DNS-records worden geretourneerd, omdat u geen lokale DNS-zone met dubbele records in het beheerde domein maakt om deze resources weer te geven.
 
-Voer de volgende stappen uit om een voorwaardelijke doorstuur server te maken in uw Azure AD DS beheerde domein:
+Als u een voorwaardelijke doorstuur server in uw beheerde domein wilt maken, voert u de volgende stappen uit:
 
-1. Selecteer de DNS-zone van Azure AD DS, zoals *aaddscontoso.com*. VB
+1. Selecteer uw DNS-zone, bijvoorbeeld *aaddscontoso.com*.
 1. Selecteer **voorwaardelijke doorstuur servers**, klik met de rechter muisknop en kies **nieuwe voorwaardelijke doorstuur server...**
 1. Voer uw andere **DNS-domein**in, bijvoorbeeld *contoso.com*, en voer vervolgens de IP-adressen van de DNS-servers voor die naam ruimte in, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om een voorwaardelijke doorstuur server te maken in
 
 1. Selecteer **OK**om de voorwaardelijke doorstuur server te maken.
 
-Naam omzetting van de resources in andere naam ruimten van Vm's die zijn verbonden met het Azure AD DS beheerde domein moeten nu correct worden omgezet. Query's voor het DNS-domein dat is geconfigureerd in de voorwaardelijke doorstuur server worden door gegeven aan de relevante DNS-servers.
+Naam omzetting van de resources in andere naam ruimten van Vm's die zijn verbonden met het beheerde domein moeten nu correct worden omgezet. Query's voor het DNS-domein dat is geconfigureerd in de voorwaardelijke doorstuur server worden door gegeven aan de relevante DNS-servers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
