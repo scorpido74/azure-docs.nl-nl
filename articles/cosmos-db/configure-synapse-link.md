@@ -3,15 +3,15 @@ title: Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (p
 description: Meer informatie over het inschakelen van Synapse-koppeling voor Azure Cosmos-accounts, het maken van een container met een analytische opslag, het verbinden van de Azure Cosmos-data base in Synapse-werk ruimte en het uitvoeren van query's.
 author: SriChintala
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: e1e43579782e204dae027b1771b9013a72843489
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: d2a10d064bed3e2e2e798d16ce72ccf55c965f8d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456569"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262035"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Synapse-koppeling voor Azure Cosmos DB configureren en gebruiken (preview)
 
@@ -40,11 +40,11 @@ Gebruik de volgende stappen om analytische query's uit te voeren met de Synapse-
 
 1. Selecteer **Synapse link** in de lijst met functies.
 
-   ![Preview-functie voor Synapse link zoeken](./media/configure-synapse-link/find-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Preview-functie voor Synapse link zoeken":::
 
 1. Vervolgens wordt u gevraagd om de Synapse-koppeling in te scha kelen voor uw account. Selecteer Inschakelen.
 
-   ![Synapse-koppelings functie inschakelen](./media/configure-synapse-link/enable-synapse-link-feature.png)
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Synapse-koppelings functie inschakelen":::
 
 1. Uw account is nu ingeschakeld voor het gebruik van de Synapse-koppeling. Zie voor meer informatie over het maken van containers voor analytische opslag om automatisch te beginnen met het repliceren van uw operationele gegevens uit het transactionele archief naar de analytische opslag.
 
@@ -67,7 +67,7 @@ U kunt de analytische opslag inschakelen op een Azure Cosmos-container tijdens h
 
 1. Selecteer **nieuwe container** en voer een naam in voor uw data base, container, partitie sleutel en gegevens doorvoer. Schakel de optie voor de **analytische opslag** in. Nadat u het analytische archief hebt ingeschakeld, maakt het een container waarvan `AnalyicalTTL` de eigenschap is ingesteld op de standaard waarde-1 (oneindige retentie). Dit analytische archief behoudt alle historische versies van records.
 
-   ![Analytische opslag inschakelen voor Azure Cosmos-container](./media/configure-synapse-link/create-container-analytical-store.png)
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Analytische opslag inschakelen voor Azure Cosmos-container":::
 
 1. Als u de Synapse-koppeling voor dit account nog niet hebt ingeschakeld, wordt u gevraagd dit te doen omdat het een vereiste is om een container voor een analytische opslag te maken. Selecteer **Synapse-koppeling inschakelen**als u hierom wordt gevraagd.
 
@@ -142,7 +142,7 @@ container = client.CreateContainer(db['_self'], container_definition, options)
 
 ### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a>De time-outwaarde voor het analytische archief bijwerken
 
-Nadat de analytische opslag met een bepaalde TTL-waarde is ingeschakeld, kunt u deze later bijwerken naar een andere geldige waarde. U kunt de waarde bijwerken met behulp van de Azure Portal of Sdk's. Zie voor meer informatie over de verschillende configuratie opties voor de analyse-TTL het artikel [analytische TTL-waarden](analytical-store-introduction.md#analytical-ttl) .
+Nadat de analytische opslag met een bepaalde TTL-waarde is ingeschakeld, kunt u deze later bijwerken naar een andere geldige waarde. U kunt de waarde bijwerken met behulp van de Azure-portal of SDK's. Zie voor meer informatie over de verschillende configuratie opties voor de analyse-TTL het artikel [analytische TTL-waarden](analytical-store-introduction.md#analytical-ttl) .
 
 #### <a name="azure-portal"></a>Azure Portal
 

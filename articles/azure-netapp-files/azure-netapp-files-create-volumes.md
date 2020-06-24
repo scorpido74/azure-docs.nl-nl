@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/01/2019
 ms.author: b-juche
 ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274084"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691778"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Een NFS-volume maken voor Azure NetApp Files
 
@@ -65,12 +65,12 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
         Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
 
-        U kunt niet `default` gebruiken als de volume naam.
+        U kunt niet gebruiken `default` als de volume naam.
 
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.
 
-    * **Quotum**  
+    * **Quota**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
 
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.  
@@ -80,7 +80,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
         Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. De Azure NetApp Files-service is alleen toegankelijk vanuit hetzelfde VNet, of vanuit een VNet in dezelfde regio als het volume via VNet-peering. U kunt het volume ook openen vanuit uw on-premises netwerk via een snelle route.   
 
-    * **Subnetrouter**  
+    * **Subnet**  
         Geef het subnet op dat u wilt gebruiken voor het volume.  
         Het opgegeven subnet moet zijn gedelegeerd aan Azure NetApp Files. 
         
@@ -90,15 +90,15 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     
         ![Subnet maken](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Klik op **protocol**en voer de volgende acties uit:  
-    * Selecteer **NFS** als protocol type voor het volume.   
+4. Klik op **Protocol** en voer de volgende acties uit:  
+    * Selecteer **NFS** als protocoltype voor het volume.   
     * Geef het **bestandspad op dat wordt** gebruikt voor het maken van het exportpad voor het nieuwe volume. Het exportpad wordt gebruikt om het volume te koppelen en benaderen.
 
         Het bestandspad mag alleen letters, cijfers en afbreekstreepjes ('-') bevatten. Het bestandspad moet tussen de 16 en 40 tekens lang zijn. 
 
         Het bestandspad moet uniek zijn binnen elk abonnement en elke regio. 
 
-    * Selecteer de NFS-versie (**NFSv3** of **nfsv 4.1**) voor het volume.  
+    * Selecteer de NFS-versie (**NFSv3** of**NFSv4.1**) voor het volume.  
     * Optioneel kunt [u het export beleid configureren voor het NFS-volume](azure-netapp-files-configure-export-policy.md).
 
     ![NFS-protocol opgeven](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)

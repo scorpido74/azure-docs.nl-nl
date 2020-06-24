@@ -4,15 +4,15 @@ description: Meer informatie over het model leren van een grafiek database met b
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898315"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261814"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph data modellering voor Azure Cosmos DB Gremlin-API
 
@@ -45,7 +45,7 @@ De [Apache Tinkerpop-eigenschap Graph Standard](https://tinkerpop.apache.org/doc
 
 Hieronder volgen de aanbevolen procedures voor de eigenschappen in de grafiek objecten:
 
-| Object | Eigenschap | Type | Opmerkingen |
+| Object | Eigenschap | Type | Notities |
 | --- | --- | --- |  --- |
 | Shad | Id | Tekenreeks | Uniek afgedwongen per partitie. Als er bij het invoegen geen waarde wordt opgegeven, wordt een automatisch gegenereerde GUID opgeslagen. |
 | Shad | label | Tekenreeks | Deze eigenschap wordt gebruikt om het type entiteit te definiëren dat door het hoek punt wordt vertegenwoordigd. Als er geen waarde wordt opgegeven, wordt er een standaard waarde ' vertex ' gebruikt. |
@@ -73,11 +73,11 @@ Een algemene Pitfall is het toewijzen van eigenschappen van één entiteit als a
 
 * **Eigenschappen op basis van vertex**: in deze benadering gebruikt de entiteit drie afzonderlijke hoek punten en twee randen om de eigenschappen ervan te beschrijven. Hoewel deze aanpak de redundantie kan verminderen, wordt de model complexiteit verbeterd. Een toename van de model complexiteit kan leiden tot extra latentie, query complexiteit en reken kosten. Dit model kan ook uitdagingen opleveren voor partitioneren.
 
-![Entiteits model met hoek punten voor eigenschappen.](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="Entiteits model met hoek punten voor eigenschappen." border="false":::
 
 * Met **Eigenschappen Inge sloten hoek punten**: deze benadering maakt gebruik van de lijst met sleutel waarden om alle eigenschappen van de entiteit binnen een hoek punt weer te geven. Deze benadering biedt een gereduceerde model complexiteit, die leidt tot eenvoudigere query's en rendabelere trans acties.
 
-![Entiteits model met hoek punten voor eigenschappen.](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="Entiteits model met hoek punten voor eigenschappen." border="false":::
 
 > [!NOTE]
 > In de bovenstaande voor beelden ziet u een vereenvoudigd grafiek model waarmee alleen de vergelijking tussen de twee manieren van het delen van entiteits eigenschappen wordt weer gegeven.
@@ -90,11 +90,11 @@ Er zijn echter scenario's waarin het verwijzen naar een eigenschap mogelijk voor
 
 Nadat de hoek punten zijn gemodelleerd, kunnen de randen worden toegevoegd om de relaties tussen de hoeken aan te duiden. Het eerste aspect dat moet worden geëvalueerd, is de **richting van de relatie**. 
 
-Rand objecten hebben een standaard richting, gevolgd door een passage bij het gebruik van de `out()` or `outE()` -functie. Het gebruik van deze natuurlijke richting resulteert in een efficiënte bewerking, omdat alle hoek punten worden opgeslagen met hun uitgaande randen. 
+Rand objecten hebben een standaard richting, gevolgd door een passage bij het gebruik van de `out()` or- `outE()` functie. Het gebruik van deze natuurlijke richting resulteert in een efficiënte bewerking, omdat alle hoek punten worden opgeslagen met hun uitgaande randen. 
 
-Door over te gaan in de tegenovergestelde richting van een rand, met behulp van de functie, resulteert dit `in()` altijd in een query tussen partities. Meer informatie over [Graph-partitionering](graph-partitioning.md). Als de `in()` functie voortdurend moet worden door lopen, is het raadzaam om in beide richtingen randen toe te voegen.
+Door over te gaan in de tegenovergestelde richting van een rand, met behulp van de `in()` functie, resulteert dit altijd in een query tussen partities. Meer informatie over [Graph-partitionering](graph-partitioning.md). Als de functie voortdurend moet worden door lopen `in()` , is het raadzaam om in beide richtingen randen toe te voegen.
 
-U kunt de richting van de rand bepalen door `.to()` de `.from()` -of-predikaten `.addE()` te gebruiken voor de Gremlin-stap. Of gebruik de bulk-uitvoerder [bibliotheek voor de Gremlin-API](bulk-executor-graph-dotnet.md).
+U kunt de richting van de rand bepalen door de- `.to()` of- `.from()` predikaten te gebruiken voor de `.addE()` Gremlin-stap. Of gebruik de bulk-uitvoerder [bibliotheek voor de Gremlin-API](bulk-executor-graph-dotnet.md).
 
 > [!NOTE]
 > Rand objecten hebben standaard een richting.
@@ -105,7 +105,7 @@ Het gebruik van beschrijvende relatielabels kan de efficiëntie van Edge-resolut
 * Gebruik niet-algemene voor waarden om een relatie te labelen.
 * Koppel het label van het bron hoekpunt aan het label van het doel hoekpunt met de naam van de relatie.
 
-![Voor beelden van relatie labelen.](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Voor beelden van relatie labelen." border="false":::
 
 Hoe meer specifiek het label wordt gebruikt voor het filteren van de randen, hoe beter. Deze beslissing kan ook een grote invloed hebben op de query kosten. U kunt de query kosten op elk gewenst moment evalueren [met behulp van de executionProfile-stap](graph-execution-profile.md).
 

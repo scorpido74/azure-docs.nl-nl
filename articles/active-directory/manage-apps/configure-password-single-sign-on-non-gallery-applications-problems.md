@@ -3,24 +3,24 @@ title: Problemen met het configureren van SSO van wacht woord voor een niet-gale
 description: Veelvoorkomende problemen die zich voordoen wanneer u eenmalige aanmelding voor een wacht woord (SSO) configureert voor aangepaste apps die zich niet in de Azure AD-toepassings galerie bevinden.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274135"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763445"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problemen met het configureren van eenmalige aanmelding met een wacht woord voor een toepassing buiten de galerie
 
@@ -42,7 +42,7 @@ Over het algemeen kunt u de optie hand matig gebruiken als het vastleggen van au
 
 Voer de volgende stappen uit om eenmalige aanmelding op basis van een wacht woord te configureren met behulp van automatische registratie van het registratie veld:
 
-1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
+1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 
 2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 
@@ -75,7 +75,7 @@ Zie de sectie [de browser uitbreiding van het toegangs venster installeren](#ins
 
 Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren voor een app door gebruik te maken van hand matige registratie van het registratie veld:
 
-1. Open de [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
+1. Open [Azure Portal](https://portal.azure.com/). Meld u aan als globale beheerder of co-beheerder.
 
 2. Selecteer in het navigatie deel venster aan de linkerkant **alle services** om de Azure AD-extensie te openen.
 
@@ -96,7 +96,7 @@ Voer de volgende stappen uit om SSO op basis van een wacht woord te configureren
 
 9. Voer de **aanmeldings-URL**in. Dit is de pagina waar gebruikers hun gebruikers naam en wacht woord invoeren om zich aan te melden. *Zorg ervoor dat de aanmeldings velden op de pagina worden weer gegeven voor de URL die u opgeeft*.
 
-10. Selecteer **instellingen * &lt;&gt; * voor wacht woord voor eenmalige aanmelding configureren**.
+10. Selecteer **instellingen * &lt; &gt; * voor wacht woord voor eenmalige aanmelding configureren**.
 
 11. Selecteer **aanmeldings velden hand matig detecteren**.
 
@@ -140,7 +140,7 @@ Als u een van deze problemen ondervindt, doet u het volgende:
 
 - Probeer het hand matige vastleg proces opnieuw. Zorg ervoor dat de rode markeringen zich in de juiste velden bevinden.
 
-- Als het hand matige vastleg proces niet meer reageert of als de aanmeldings pagina niet reageert, kunt u het hand matige vastleg proces opnieuw proberen. Maar deze keer, na het volt ooien van het proces, drukt u op de F12-toets om de ontwikkelaars console van uw browser te openen. Selecteer het tabblad **console** . Typ **Window. Location = "*&lt;de aanmeldings-URL die u hebt opgegeven bij het configureren van&gt;de app*"** en druk op ENTER. Hiermee wordt een omleiding van pagina's afgedwongen waarmee het proces wordt beëindigd en worden de opgenomen velden opgeslagen.
+- Als het hand matige vastleg proces niet meer reageert of als de aanmeldings pagina niet reageert, kunt u het hand matige vastleg proces opnieuw proberen. Maar deze keer, na het volt ooien van het proces, drukt u op de F12-toets om de ontwikkelaars console van uw browser te openen. Selecteer het tabblad **console** . Typ **Window. Location = "* &lt; de aanmeldings-URL die u hebt opgegeven bij het configureren van &gt; de app*"** en druk op ENTER. Hiermee wordt een omleiding van pagina's afgedwongen waarmee het proces wordt beëindigd en worden de opgenomen velden opgeslagen.
 
 ### <a name="contact-support"></a>Contact opnemen met ondersteuning
 
@@ -219,7 +219,7 @@ De volgende informatie legt uit wat elk meldings item betekent en biedt voor bee
 
 - **UPN**: de gebruiker die de bewerking heeft uitgevoerd.
 
-    Voor beeld *:\@tperkins f128.info*
+    Voor beeld: *tperkins \@ f128.info*
 
 - **Tenant-id**: de unieke id van de Tenant waarvan de gebruiker die de bewerking heeft uitgevoerd, lid is.
 
@@ -245,7 +245,7 @@ De volgende informatie legt uit wat elk meldings item betekent en biedt voor bee
 
 - **Details**: de gedetailleerde beschrijving van wat er is gebeurd als gevolg van de bewerking.
 
-    Voor beeld: *interne URL<https://bing.com/>' ' is ongeldig omdat deze al in gebruik is.*
+    Voor beeld: *interne URL ' <https://bing.com/> ' is ongeldig omdat deze al in gebruik is.*
 
 - **Kopieer fout**: Hiermee kunt u het **Kopieer pictogram** rechts van het tekstvak **Kopieer fout** selecteren om de details van de melding te kopiëren om de ondersteuning te helpen.
 

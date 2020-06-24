@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085736"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987476"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Aangepaste entiteit opzoeken cognitieve vaardigheid (preview-versie)
 
 > [!IMPORTANT] 
-> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Deze vaardigheid is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
-De **Zoek vaardigheid voor aangepaste entiteiten** zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Met deze lijst worden alle documenten met alle overeenkomende entiteiten labeld. De vaardigheid ondersteunt ook een mate van fuzzy matching die kan worden toegepast om overeenkomsten te vinden die vergelijkbaar zijn, maar niet helemaal precies.  
+De **Zoek vaardigheid voor aangepaste entiteiten** zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Aan de hand van deze lijst worden alle documenten met overeenkomende entiteiten gelabeld. De vaardigheid ondersteunt ook het zoeken naar fuzzy overeenkomsten, waarmee overeenkomsten worden gevonden die vergelijkbaar zijn, maar niet helemaal exact.  
 
 Deze vaardigheid is niet gebonden aan een Cognitive Services-API en kan gratis worden gebruikt tijdens de preview-periode. U moet nog steeds [een Cognitive Services resource koppelen](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)om de dagelijkse verrijkings limiet te onderdrukken. De dagelijkse limiet is van toepassing op gratis toegang tot Cognitive Services wanneer deze via Azure Cognitive Search wordt geopend.
 
@@ -38,17 +38,17 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| entitiesDefinitionUri    | Pad naar een JSON-of CSV-bestand met alle doel tekst die moet worden vergeleken. Deze entiteits definitie wordt gelezen aan het begin van het uitvoeren van een Indexeer functie. eventuele updates van dit bestand worden uitgevoerd totdat de volgende keer wordt uitgevoerd. Deze configuratie moet toegankelijk zijn via HTTPS. Zie de aangepaste indeling voor de [entiteits definitie](#custom-entity-definition-format) hieronder voor het verwachte CSV-of JSON-schema.|
-|inlineEntitiesDefinition | Definities van de inline JSON-entiteit. Deze para meter vervangt de para meter entitiesDefinitionUri indien aanwezig. Er kan niet meer dan 10 KB aan configuratie worden meegeleverd. Zie de definitie van de [aangepaste entiteit](#custom-entity-definition-format) hieronder voor het verwachte JSON-schema. |
-|defaultLanguageCode |    Beschrijving De taal code van de invoer tekst die wordt gebruikt voor het Tokenize en afbakenen van invoer tekst. De volgende talen worden ondersteund: `da, de, en, es, fi, fr, it, ko, pt`. De standaard waarde is English`en`(). Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.  |
+| `entitiesDefinitionUri`    | Pad naar een JSON-of CSV-bestand met alle doel tekst die moet worden vergeleken. Deze entiteits definitie wordt gelezen aan het begin van het uitvoeren van een Indexeer functie. eventuele updates van dit bestand worden uitgevoerd totdat de volgende keer wordt uitgevoerd. Deze configuratie moet toegankelijk zijn via HTTPS. Zie de aangepaste indeling voor de [entiteits definitie](#custom-entity-definition-format) hieronder voor het verwachte CSV-of JSON-schema.|
+|`inlineEntitiesDefinition` | Definities van de inline JSON-entiteit. Deze para meter vervangt de para meter entitiesDefinitionUri indien aanwezig. Er kan niet meer dan 10 KB aan configuratie worden meegeleverd. Zie de definitie van de [aangepaste entiteit](#custom-entity-definition-format) hieronder voor het verwachte JSON-schema. |
+|`defaultLanguageCode` |    Beschrijving De taal code van de invoer tekst die wordt gebruikt voor het Tokenize en afbakenen van invoer tekst. De volgende talen worden ondersteund: `da, de, en, es, fi, fr, it, ko, pt` . De standaard waarde is English ( `en` ). Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.  |
 
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
 | Invoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
-| tekst          | De tekst die moet worden geanalyseerd.          |
-| languageCode    | Optioneel. De standaardwaarde is `"en"`.  |
+| `text`          | De tekst die moet worden geanalyseerd.          |
+| `languageCode`    | Optioneel. De standaardwaarde is `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
@@ -56,7 +56,7 @@ Parameters zijn hoofdlettergevoelig.
 
 | Uitvoer naam      | Beschrijving                   |
 |---------------|-------------------------------|
-| Rijg | Een matrix met objecten die informatie bevatten over de gevonden overeenkomsten en gerelateerde meta gegevens. Elk van de geïdentificeerde entiteiten bevat mogelijk de volgende velden:  <ul> <li> *naam*: de entiteit op het hoogste niveau dat is geïdentificeerd. De entiteit vertegenwoordigt het ' genormaliseerde ' formulier. </li> <li> *id*: een unieke id voor de entiteit zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *Beschrijving*: beschrijving van de entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit. </li> <li> *type:* Entiteits type zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *subtype:* Subtype van entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit.</li>  <li> *matchs*: verzameling waarmee de overeenkomsten voor die entiteit worden beschreven op de bron tekst. Elke overeenkomst heeft de volgende leden: </li> <ul> <li> *tekst*: de onbewerkte tekst komt overeen met het bron document. </li> <li> *Offset*: de locatie waar de overeenkomst is gevonden in de tekst. </li> <li> *Length*: de lengte van de overeenkomende tekst. </li> <li> *matchDistance*: het aantal tekens dat anders is dan dit komt overeen met de oorspronkelijke entiteits naam of-alias.  </li> </ul> </ul>
+| `entities` | Een matrix met objecten die informatie bevatten over de gevonden overeenkomsten en gerelateerde meta gegevens. Elk van de geïdentificeerde entiteiten bevat mogelijk de volgende velden:  <ul> <li> *naam*: de entiteit op het hoogste niveau dat is geïdentificeerd. De entiteit vertegenwoordigt het ' genormaliseerde ' formulier. </li> <li> *id*: een unieke id voor de entiteit zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *Beschrijving*: beschrijving van de entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit. </li> <li> *type:* Entiteits type zoals gedefinieerd door de gebruiker in de aangepaste entiteits definitie-indeling.</li> <li> *subtype:* Subtype van entiteit zoals gedefinieerd door de gebruiker in de definitie-indeling aangepaste entiteit.</li>  <li> *matchs*: verzameling waarmee de overeenkomsten voor die entiteit worden beschreven op de bron tekst. Elke overeenkomst heeft de volgende leden: </li> <ul> <li> *tekst*: de onbewerkte tekst komt overeen met het bron document. </li> <li> *Offset*: de locatie waar de overeenkomst is gevonden in de tekst. </li> <li> *Length*: de lengte van de overeenkomende tekst. </li> <li> *matchDistance*: het aantal tekens dat anders is dan dit komt overeen met de oorspronkelijke entiteits naam of-alias.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Indeling aangepaste entiteits definitie
@@ -145,22 +145,22 @@ De onderstaande tabellen bevatten meer informatie over de verschillende configur
 
 |  Veldnaam  |        Beschrijving  |
 |--------------|----------------------|
-| name | De entiteits descriptor op het hoogste niveau. Overeenkomsten in de vaardigheids uitvoer worden gegroepeerd op basis van deze naam en moeten de "genormaliseerde" vorm vertegenwoordigen van de tekst die wordt gevonden.  |
-| description  | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
-| type | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
-| subtype | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
-| id | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
-| caseSensitive | Beschrijving De standaard waarde is False. Booleaanse waarde waarmee wordt aangegeven of vergelijkingen met de naam van de entiteit gevoelig zijn voor teken behuizing. Voor beelden van niet-hoofdletter gevoelige overeenkomsten van micro soft zijn: micro soft, micro soft, micro soft |
-| fuzzyEditDistance | Beschrijving De standaard waarde is 0. De maximum waarde van 5. Hiermee wordt het toegestane aantal uiteenlopende tekens aangegeven dat nog steeds overeenkomt met de naam van de entiteit. De kleinste mogelijke overeenkomst voor elk gegeven resultaat wordt geretourneerd.  Als de bewerkings afstand is ingesteld op 3, zou Windows 10 nog steeds overeenkomen met ' Windows ', ' Windows10 ' en ' Windows 7 '. <br/> Wanneer hoofdletter gevoeligheid is ingesteld op ONWAAR, worden de verschillen in de overeenkomst niet meegeteld bij de tolerantie, maar anderszins. |
-| defaultCaseSensitive | Beschrijving Hiermee wijzigt u de standaard waarde voor hoofdletter gevoeligheid voor deze entiteit. Het wordt gebruikt om de standaard waarde van alle aliassen caseSensitive waarden te wijzigen. |
-| defaultFuzzyEditDistance | Beschrijving Wijzigt de standaard waarde voor het bewerken van fuzzy voor deze entiteit. Het kan worden gebruikt om de standaard waarde van alle aliassen fuzzyEditDistance waarden te wijzigen. |
-| aliassen | Beschrijving Een matrix met complexe objecten die kunnen worden gebruikt om alternatieve spellingen of synoniemen op te geven voor de naam van de hoofd entiteit. |
+| `name` | De entiteits descriptor op het hoogste niveau. Overeenkomsten in de vaardigheids uitvoer worden gegroepeerd op basis van deze naam en moeten de "genormaliseerde" vorm vertegenwoordigen van de tekst die wordt gevonden.  |
+| `description`  | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
+| `type` | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
+| `subtype` | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
+| `id` | Beschrijving Dit veld kan worden gebruikt als passthrough voor aangepaste meta gegevens over de overeenkomende tekst (en). De waarde van dit veld wordt weer gegeven bij elke overeenkomst van de entiteit in de vaardigheids uitvoer. |
+| `caseSensitive` | Beschrijving De standaard waarde is False. Booleaanse waarde waarmee wordt aangegeven of vergelijkingen met de naam van de entiteit gevoelig zijn voor teken behuizing. Voor beelden van niet-hoofdletter gevoelige overeenkomsten van micro soft zijn: micro soft, micro soft, micro soft |
+| `fuzzyEditDistance` | Beschrijving De standaard waarde is 0. De maximum waarde van 5. Hiermee wordt het toegestane aantal uiteenlopende tekens aangegeven dat nog steeds overeenkomt met de naam van de entiteit. De kleinste mogelijke overeenkomst voor elk gegeven resultaat wordt geretourneerd.  Als de bewerkings afstand is ingesteld op 3, zou Windows 10 nog steeds overeenkomen met ' Windows ', ' Windows10 ' en ' Windows 7 '. <br/> Wanneer hoofdletter gevoeligheid is ingesteld op ONWAAR, worden de verschillen in de overeenkomst niet meegeteld bij de tolerantie, maar anderszins. |
+| `defaultCaseSensitive` | Beschrijving Hiermee wijzigt u de standaard waarde voor hoofdletter gevoeligheid voor deze entiteit. Het wordt gebruikt om de standaard waarde van alle aliassen caseSensitive waarden te wijzigen. |
+| `defaultFuzzyEditDistance` | Beschrijving Wijzigt de standaard waarde voor het bewerken van fuzzy voor deze entiteit. Het kan worden gebruikt om de standaard waarde van alle aliassen fuzzyEditDistance waarden te wijzigen. |
+| `aliases` | Beschrijving Een matrix met complexe objecten die kunnen worden gebruikt om alternatieve spellingen of synoniemen op te geven voor de naam van de hoofd entiteit. |
 
 | Alias eigenschappen | Beschrijving |
 |------------------|-------------|
-| tekst  | De alternatieve spelling of weer gave van de naam van een doel entiteit.  |
-| caseSensitive | Beschrijving Fungeert hetzelfde als de hoofd entiteit ' caseSensitive-para meter hierboven, maar is alleen van toepassing op deze ene alias. |
-| fuzzyEditDistance | Beschrijving Fungeert hetzelfde als de hoofd entiteit ' fuzzyEditDistance-para meter hierboven, maar is alleen van toepassing op deze ene alias. |
+| `text`  | De alternatieve spelling of weer gave van de naam van een doel entiteit.  |
+| `caseSensitive` | Beschrijving Fungeert hetzelfde als de hoofd entiteit ' caseSensitive-para meter hierboven, maar is alleen van toepassing op deze ene alias. |
+| `fuzzyEditDistance` | Beschrijving Fungeert hetzelfde als de hoofd entiteit ' fuzzyEditDistance-para meter hierboven, maar is alleen van toepassing op deze ene alias. |
 
 
 ### <a name="inline-format"></a>Inline-indeling
@@ -188,7 +188,7 @@ Een voor beeld van een vaardigheids definitie die gebruikmaakt van een inline-in
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +208,7 @@ Een voor beeld van een vaardigheids definitie die gebruikmaakt van een inline-in
     ]
   }
 ```
-Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op te geven, wordt hieronder een voor beeld van een vaardigheids definitie met de entitiesDefinitionUri-indeling weer gegeven:
+Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op te geven, wordt hieronder een voor beeld vaardigheids definitie met de `entitiesDefinitionUri` indeling weer gegeven:
 
 ```json
   {
@@ -240,7 +240,7 @@ Als u besluit om een verwijzing naar het definitie bestand van de entiteiten op 
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }

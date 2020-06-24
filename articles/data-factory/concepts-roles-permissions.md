@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833503"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263242"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
 
@@ -82,9 +82,9 @@ Hier volgen enkele voor beelden van hoe u met aangepaste rollen kunt profiteren:
   1. Wijs de ingebouwde rol **Inzender** op het Data Factory niveau toe.
   2. Maak een aangepaste rol met de machtiging **micro soft. resources/Deployments/**. Wijs deze aangepaste rol toe aan de gebruiker op het niveau van de resource groep.
 
-- Hiermee kan een gebruiker alleen de verbinding in een gekoppelde service testen
+- Hiermee kan een gebruiker de verbinding in een gekoppelde service testen of een voor beeld van de gegevens in een gegevensset bekijken
 
-    Maak een aangepaste rol met machtigingen voor de volgende acties: **micro soft. DataFactory/factorions/getFeatureValue/Read** en **micro soft. DataFactory/factoryes/getDataPlaneAccess/lezen**. Wijs deze aangepaste rol toe aan de data factory resource voor de gebruiker.
+    Maak een aangepaste rol met machtigingen voor de volgende acties: **micro soft. DataFactory/factorions/getFeatureValue/Read** en **micro soft. DataFactory/factories/getDataPlaneAccess/Action**. Wijs deze aangepaste rol toe aan de data factory resource voor de gebruiker.
 
 - Laat een gebruiker een data factory bijwerken vanuit Power shell of de SDK, maar niet in de Azure Portal.
 

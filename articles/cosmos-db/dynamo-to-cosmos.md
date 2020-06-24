@@ -3,15 +3,15 @@ title: Uw toepassing migreren van Amazon DynamoDB naar Azure Cosmos DB
 description: Meer informatie over het migreren van uw .NET-toepassing vanuit de DynamoDB van Amazon naar Azure Cosmos DB
 author: manishmsfte
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: b30ebf7dae1d43b5f841677f98831fc4817a9b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664891"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261865"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Uw toepassing migreren van Amazon DynamoDB naar Azure Cosmos DB
 

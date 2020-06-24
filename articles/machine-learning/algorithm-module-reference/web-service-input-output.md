@@ -1,5 +1,5 @@
 ---
-title: Invoer/uitvoer van weservice
+title: 'Web Service input/output: module-verwijzing'
 description: Meer informatie over de webservice-modules in Azure Machine Learning Designer (preview)
 titleSuffix: Azure Machine Learning
 services: machine-learning
@@ -9,44 +9,45 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: be940e3ba693270707e22ffc7b9377dbea1df5f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81462085"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751108"
 ---
-# <a name="web-service-inputoutput"></a>Invoer/uitvoer van weservice
+# <a name="web-service-input-and-web-service-output-modules"></a>Webservices-invoer en-webservice-uitvoer modules
 
-In dit artikel worden de module voor het **invoeren van webservices** en de module **webservice-uitvoer** beschreven in azure machine learning Designer (preview).
+In dit artikel worden de modules web service input en webservice-uitvoer beschreven in Azure Machine Learning Designer (preview).
 
-De module voor het **invoeren van webservices** kan alleen verbinding maken met de invoer poort van het type **DataFrameDirectory**. De module voor het **uitvoeren van webservice-Services** kan alleen worden verbonden vanuit een uitvoer poort met het type **DataFrameDirectory**. De twee modules vindt u in de module structuur onder **Web Service** Category. 
+De module Web Service input kan alleen verbinding maken met een invoer poort met het type **DataFrameDirectory**. De module webservice-uitvoer kan alleen worden verbonden vanaf een uitvoer poort met het type **DataFrameDirectory**. U kunt de twee modules vinden in de module structuur, onder de categorie **Web Service** . 
 
-De module **Web Service-invoer** wordt gebruikt om aan te geven waar de gebruikers gegevens de pijp lijn en de **webservice-uitvoer** module invoeren, worden gebruikt om aan te geven waar de gebruikers gegevens worden geretourneerd in een real-time pipeline-pijp lijn.
+De web service-invoer module geeft aan waar de gebruikers gegevens de pijp lijn invoeren. De module voor het uitvoeren van webservices geeft aan waar de gebruikers gegevens worden geretourneerd in een real-time pipeline-pijp lijn.
 
-## <a name="how-to-use-web-service-inputoutput"></a>Het gebruik van web service-invoer/-uitvoer
+## <a name="how-to-use-web-service-input-and-output"></a>De invoer en uitvoer van webservices gebruiken
 
-- Wanneer u een real-time pijp lijn van de trainings pijplijn maakt, worden de **Web Service-invoer** en de **webservice-uitvoer** module automatisch toegevoegd om aan te geven waar de gebruikers gegevens de pijp lijn binnenkomen en waar gegevens worden geretourneerd. 
+Wanneer u [een real-time pijp lijn](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline) van uw trainings pijplijn maakt, worden de webservices-invoer en de webservice-uitvoer modules automatisch toegevoegd om aan te geven waar de gebruikers gegevens de pijp lijn binnenkomen en waar gegevens worden geretourneerd. 
 
-    Meer informatie over [het maken van een real-time pipeline-pijp lijn](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline).
+> [!NOTE]
+> Het automatisch genereren van een real-time pipeline-pijp lijn is een op regels gebaseerd proces voor de beste werk belasting. Er is geen garantie voor de juistheid. 
 
-    > [!NOTE]
-    > Het automatisch genereren van een real-time pipeline-pijp lijn is een op regels gebaseerd proces voor Best effort, er is geen garantie voor de juistheid. U kunt hand matig modules voor **Web Service-invoer/uitvoer** toevoegen of verwijderen om te voldoen aan uw vereisten. Zorg ervoor dat er ten minste één **webservice-invoer** module en één **webservice-uitvoer** module in uw realtime-uitstel pijplijn. Als u meerdere **webservice-invoer** of **Web Service-uitvoer** modules hebt, moet u ervoor zorgen dat ze unieke namen hebben, die u de naam in het rechterdeel venster van de module kunt invoeren.
+U kunt hand matig de webservices-invoer en webservice-uitvoer modules toevoegen of verwijderen om te voldoen aan uw vereisten. Zorg ervoor dat uw realtime-pijp lijn ten minste één invoer module voor de webservice en één webservice-uitvoer module heeft. Als u meerdere webservice-invoer of web service-uitvoer modules hebt, moet u ervoor zorgen dat ze unieke namen hebben. U kunt de naam opgeven in het rechterdeel venster van de module.
 
-- U kunt ook hand matig een real-time pijp lijn maken door de modules **Web Service input** en **Web Service output** toe te voegen aan uw niet-verzonden pijp lijn.
+U kunt ook hand matig een real-time pijp lijn maken door de modules web service input en web service output toe te voegen aan uw niet-verzonden pijp lijn.
 
-    > [!NOTE]
-    >  Het type pijp lijn wordt bepaald wanneer u het voor het eerst verzendt. Zorg er daarom voor dat u de module **webservice-invoer** en **webservice-uitvoer** toevoegt voordat u voor de eerste keer verzendt als u een real-time pijp lijn wilt maken.
+> [!NOTE]
+> Het type pijp lijn wordt bepaald wanneer u het voor het eerst verzendt. Zorg ervoor dat u de web service-invoer en webservice-uitvoer modules toevoegt voordat u voor de eerste keer verzendt.
 
-   In het onderstaande voor beeld ziet u hoe u hand matig een real-time-pijp lijn kunt maken op basis van de script module voor het **uitvoeren van python** . 
+In het volgende voor beeld ziet u hoe u hand matig een real-time-pijp lijn kunt maken op basis van de script module voor het uitvoeren van python. 
 
-   ![Voorbeeld](media/module/web-service-input-output-example.png)
+![Voorbeeld](media/module/web-service-input-output-example.png)
    
-   Nadat u de pijp lijn hebt verzonden en de uitvoering is voltooid, kunt u het real-time-eind punt implementeren.
+Nadat u de pijp lijn hebt verzonden en de uitvoering is voltooid, kunt u het real-time-eind punt implementeren.
    
-   > [!NOTE]
-   >  In het bovenstaande voor beeld geeft u **gegevens hand matig** op voor het gegevens schema voor de invoer van de webservice. Dit is nodig voor de implementatie van het real-time-eind punt. Over het algemeen moet u altijd een module of gegevensset verbinden met de poort waarmee de invoer van de **webservice** is verbonden om het gegevens schema op te geven.
+> [!NOTE]
+>  Voer in het voor gaande voor beeld **hand matig gegevens** in voor de webservice-invoer en is nodig voor het implementeren van het real-time-eind punt. Over het algemeen moet u altijd een module of gegevensset verbinden met de poort waarop de **webservice-invoer** is verbonden om het gegevens schema op te geven.
    
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over [het implementeren van het real-time-eind punt](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint).
+
 Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning.

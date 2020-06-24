@@ -5,31 +5,55 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/18/2020
 ms.author: dsindona
-ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 70515ca04e870fa435f8e9f46122a8e0dcb9b588
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858084"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691353"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-fulfillment-Api's in micro soft Commercial Marketplace
 
-Met de SaaS-fulfillment-Api's kunnen onafhankelijke software leveranciers (Isv's) hun SaaS-toepassingen integreren in Microsoft AppSource en Azure Marketplace. Met deze Api's kunnen ISV-toepassingen deel nemen aan alle commerce ingeschakelde kanalen: directe, partner-LED (wederverkoper) en veld-LED. Ze zijn verplicht om transactable SaaS-aanbiedingen in Microsoft AppSource en Azure Marketplace weer te geven.
+Met de SaaS-fulfillment-Api's kunnen uitgevers, ook wel onafhankelijke software leveranciers (Isv's), hun SaaS-toepassingen publiceren en verkopen in Microsoft AppSource, Azure Marketplace en Azure Portal. Met deze Api's kunnen ISV-toepassingen deel nemen aan alle commerce ingeschakelde kanalen: directe, partner-LED (wederverkoper) en veld-LED.  Integreren met deze Api's is een vereiste voor het maken en publiceren van een transactable SaaS-aanbieding in het partner centrum.
 
-> [!WARNING]
-> De huidige versie van deze API is versie 2, die moet worden gebruikt voor alle nieuwe SaaS-aanbiedingen.  Versie 1 van de API is afgeschaft en wordt onderhouden ter ondersteuning van bestaande aanbiedingen.
+Isv's moeten de volgende API-stromen implementeren door toe te voegen aan hun SaaS-service code om dezelfde abonnements status voor zowel Isv's als micro soft te behouden:
 
-## <a name="business-model-support"></a>Business model-ondersteuning
+* Overloop pagina stroom: micro soft waarschuwt de uitgever dat de SaaS-aanbieding van de uitgever is gekocht door een klant in de Marketplace.
+* Activerings stroom: Publisher waarschuwt micro soft dat een nieuw ingekochte SaaS-account is geconfigureerd op de kant van de uitgever.
+* Update stroom: wijziging van het aangeschafte plan en/of het aantal gekochte seats.
+* Stroom onderbreken en opnieuw plaatsen: de aangeschafte SaaS-aanbieding wordt onderbroken als de betalings methode van de klant niet meer geldig is. De schorsings aanbieding kan worden hersteld wanneer het probleem met de betalings methode is opgelost.
+* Webhook-stromen: micro soft waarschuwt de uitgever over de wijzigingen van SaaS-abonnementen en de annulering die door de klant van micro soft is geactiveerd.
 
-Deze API biedt ondersteuning voor de volgende mogelijkheden voor bedrijfs modellen. U kunt:
+Voor de annulering van het aangeschafte SaaS-abonnement is integratie optioneel, omdat deze door de klant van micro soft kan worden uitgevoerd.
 
-* Geef meerdere plannen op voor een aanbieding. Deze abonnementen hebben verschillende functionaliteit en kunnen op verschillende manieren worden geprijsd.
-* Geef een aanbieding op per site of op basis van een facturerings model per gebruiker.
-* Betaal opties voor maandelijks en jaarlijks (betaalde voor zijde).
-* Bied persoonlijke prijzen aan een klant op basis van een onderhandelde zakelijke overeenkomst.
+De juiste integratie met SaaS-fulfillment-Api's is van cruciaal belang om ervoor te zorgen dat
 
+* de eind gebruikers die de SaaS-aanbieding van de uitgever hebben gekocht, worden correct gefactureerd door micro soft.
+* de eind klanten krijgen de juiste gebruikers ervaring aan het kopen, configureren, gebruiken en beheren van SaaS-abonnementen die zijn gekocht op Marketplace.
+
+Deze Api's zorgen ervoor dat de aanbiedingen van de uitgever kunnen deel nemen aan alle commerce ingeschakelde kanalen:
+
+* via
+* partner-LED (wederverkoper, CSP)
+* LED voor veld
+
+In het-scenario van de wederverkoper (CSP), wordt de SaaS-aanbieding door een CSP in rekening worden gekocht namens de eind klant. Een klant verwacht de SaaS-aanbieding te gebruiken, maar de CSP is de entiteit die het volgende doet:
+
+* de klant factureren
+* abonnements plannen/aantal aangeschafte seats wijzigen
+* de abonnementen annuleren
+
+De uitgever is niet verplicht om een van de API-aanroep stromen anders te implementeren voor dit scenario.
+
+Raadpleeg voor meer informatie over CSP https://partner.microsoft.com/en-us/licensing .
+
+>[!Warning]
+>De huidige versie van deze API is versie 2, die moet worden gebruikt voor alle nieuwe SaaS-aanbiedingen. Versie 1 van de API is afgeschaft en wordt onderhouden ter ondersteuning van bestaande aanbiedingen.
+
+>[!Note]
+>De SaaS-fulfillment-Api's zijn alleen bedoeld om te worden aangeroepen vanuit een back-end-service van de uitgever. Integratie met de Api's rechtstreeks vanaf de webpagina van de uitgever wordt niet ondersteund. Er moet alleen een service-to-service-verificatie stroom worden gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

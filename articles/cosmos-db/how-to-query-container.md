@@ -3,15 +3,15 @@ title: Query's uitvoeren op containers in Azure Cosmos DB
 description: Meer informatie over het opvragen van containers in Azure Cosmos DB met behulp van in-Partition en kruis partitie query's
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131398"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261253"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Query’s uitvoeren op een Azure Cosmos-container
 
@@ -21,13 +21,13 @@ In dit artikel wordt uitgelegd hoe u query's kunt uitvoeren op containers (colle
 
 Wanneer u gegevens opvraagt uit containers en de query een partitie sleutel filter heeft opgegeven, wordt de query automatisch geoptimaliseerd door Azure Cosmos DB. De query wordt doorgestuurd naar de [fysieke partities](partition-data.md#physical-partitions) die overeenkomen met de partitie sleutel waarden die zijn opgegeven in het filter.
 
-Denk bijvoorbeeld aan de onderstaande query met een gelijkheids filter op `DeviceId`. Als deze query wordt uitgevoerd op een container die is gepartitioneerd op `DeviceId`, wordt met deze query gefilterd op één fysieke partitie.
+Denk bijvoorbeeld aan de onderstaande query met een gelijkheids filter op `DeviceId` . Als deze query wordt uitgevoerd op een container die is gepartitioneerd op `DeviceId` , wordt met deze query gefilterd op één fysieke partitie.
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
-Net als bij het vorige voor beeld wordt deze query ook gefilterd op één partitie. Het toevoegen van het extra `Location` filter op heeft deze wijziging niet:
+Net als bij het vorige voor beeld wordt deze query ook gefilterd op één partitie. Het toevoegen van het extra filter op `Location` heeft deze wijziging niet:
 
 ```sql
     SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
@@ -41,7 +41,7 @@ Hier volgt een query met een bereik filter op de partitie sleutel en wordt het b
 
 ## <a name="cross-partition-query"></a>Partitieoverkoepelende query
 
-De volgende query heeft geen filter op de partitie sleutel (`DeviceId`). Daarom moet het uitwaaieren naar alle fysieke partities waar het wordt uitgevoerd op de index van elke partitie:
+De volgende query heeft geen filter op de partitie sleutel ( `DeviceId` ). Daarom moet het uitwaaieren naar alle fysieke partities waar het wordt uitgevoerd op de index van elke partitie:
 
 ```sql
     SELECT * FROM c WHERE c.Location = 'Seattle`
@@ -57,7 +57,7 @@ De Cosmos DB-SDK's 1.9.0 en hoger bieden ondersteuning voor opties voor parallel
 
 U kunt parallelle queryuitvoering beheren door de volgende parameters af te stemmen:
 
-- **MaxConcurrency**: Hiermee stelt u het maximum aantal gelijktijdige netwerk verbindingen met de partitie van de container in. Als u deze eigenschap instelt op `-1`, wordt de mate van parallelle uitvoering beheerd door de SDK. Als de `MaxConcurrency` instelling is `0`ingesteld op, is er één netwerk verbinding met de partities van de container.
+- **MaxConcurrency**: Hiermee stelt u het maximum aantal gelijktijdige netwerk verbindingen met de partitie van de container in. Als u deze eigenschap instelt op `-1` , wordt de mate van parallelle uitvoering beheerd door de SDK. Als de  `MaxConcurrency` instelling is ingesteld op `0` , is er één netwerk verbinding met de partities van de container.
 
 - **MaxBufferedItemCount**: hiermee wordt de latentie van de query ingewisseld voor het geheugengebruik aan de clientzijde. Als deze optie wordt weggelaten of ingesteld op -1, wordt het aantal items dat in de buffer opgeslagen tijdens parallelle query-uitvoering, beheerd door de SDK.
 

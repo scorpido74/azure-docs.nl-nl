@@ -7,44 +7,47 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 06/23/2020
+ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592040"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260981"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Zoeken op gedeeltelijke termen en patronen met speciale tekens (Joker teken, regex, patronen)
 
-Een *gedeeltelijke zoek opdracht* verwijst naar query's die bestaan uit termen fragmenten, in plaats van een hele term, u hebt alleen het begin, het midden of het einde van de term (ook wel voor voegsel-, infix-of achtervoegsel query's genoemd). Een *patroon* kan een combi natie van fragmenten zijn, vaak met speciale tekens, zoals streepjes of slashes die deel uitmaken van de query teken reeks. Veelvoorkomend gebruik: cases bevatten query's voor delen van een telefoon nummer, URL, persoon of product code of samengestelde woorden.
+Een *gedeeltelijke zoek opdracht* verwijst naar query's die bestaan uit termen fragmenten, in plaats van een hele term, u hebt alleen het begin, het midden of het einde van de term (ook wel voor voegsel-, infix-of achtervoegsel query's genoemd). Een gedeeltelijke term zoeken kan een combi natie van fragmenten bevatten, vaak met speciale tekens, zoals streepjes of slashes die deel uitmaken van de query reeks. Veelvoorkomend gebruik: cases bevatten onderdelen van een telefoon nummer, URL, codes of afgebroken samengestelde woorden.
 
-Gedeeltelijke Zoek opdrachten en patronen kunnen problematisch zijn als de index geen termen in de verwachte indeling heeft. Tijdens de [lexicale analyse fase](search-lucene-query-architecture.md#stage-2-lexical-analysis) van het indexeren (uitgaande van de standaard-Analyzer) worden speciale tekens verwijderd, samengestelde en samengestelde teken reeksen worden opgesplitst en wordt witruimte verwijderd; het enige wat kan leiden tot het mislukken van patroon query's wanneer er geen overeenkomst wordt gevonden. Bijvoorbeeld: een telefoon nummer `+1 (425) 703-6214` zoals (tokend as `"1"`, `"425"`, `"703"`, `"6214"`) wordt niet weer gegeven in een `"3-62"` query omdat die inhoud niet echt in de index voor komt. 
+Zoeken op gedeeltelijke termen en query teken reeksen die speciale tekens bevatten, kunnen problematisch zijn als de index geen tokens in de verwachte indeling heeft. Tijdens de [lexicale analyse fase](search-lucene-query-architecture.md#stage-2-lexical-analysis) van het indexeren (uitgaande van de standaard-Analyzer) worden speciale tekens verwijderd, worden samengestelde woorden opsplitst en wordt witruimte gewist. Dit kan ertoe leiden dat query's mislukken wanneer er geen overeenkomst wordt gevonden. Bijvoorbeeld: een telefoon nummer zoals `+1 (425) 703-6214` (tokend as `"1"` ,, `"425"` `"703"` ,) wordt `"6214"` niet weer gegeven in een `"3-62"` query omdat die inhoud niet echt in de index voor komt. 
 
-De oplossing is het aanroepen van een Analyzer waarbij een volledige teken reeks wordt bewaard, inclusief spaties en speciale tekens, zodat u op gedeeltelijke termen en patronen kunt zoeken. Het maken van een aanvullend veld voor een ingrijpende teken reeks, plus het gebruik van een analyse functie voor content behoud, vormt de basis van de oplossing.
+De oplossing is het aanroepen van een Analyzer tijdens het indexeren waarbij een volledige teken reeks wordt bewaard, inclusief spaties en speciale tekens, zodat u de spaties en tekens in de query teken reeks kunt opnemen. Op dezelfde manier kunt u met een volledige teken reeks die niet is getokend in kleinere delen, patroon vergelijking voor ' begint met ' of ' eindigt met '-query's, waarbij het patroon dat u opgeeft kan worden geëvalueerd op basis van een term die niet door lexicale analyse wordt getransformeerd. Het maken van een aanvullend veld voor een onvolledige teken reeks, plus het gebruik van een analyse voor het behoud van inhoud die volledige-termijn tokens levert, is de oplossing voor zowel patroon vergelijking als voor overeenkomende query reeksen die speciale tekens bevatten.
 
 > [!TIP]
-> Bekend met de Api's postman en REST? [Down load de verzameling query voorbeelden voor het](https://github.com/Azure-Samples/azure-search-postman-samples/) opvragen van gedeeltelijke voor waarden en speciale tekens die in dit artikel worden beschreven.
+> Als u bekend bent met postman en REST Api's, [downloadt u de query-voor beelden-verzameling voor het](https://github.com/Azure-Samples/azure-search-postman-samples/) opvragen van gedeeltelijke voor waarden en speciale tekens die in dit artikel worden beschreven.
 
-## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Wat is een gedeeltelijke zoek opdracht in azure Cognitive Search
+## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>Wat is het zoeken naar een gedeeltelijke term in azure Cognitive Search
 
-In azure Cognitive Search zijn gedeeltelijke zoek acties en patronen beschikbaar in de volgende formulieren:
+Azure Cognitive Search scans voor hele tokens in de index en er wordt geen overeenkomst met een gedeeltelijke term gevonden tenzij u de tijdelijke aanduidingen voor joker tekens (en) opneemt `*` `?` , of de query opmaken als een reguliere expressie. Gedeeltelijke voor waarden zijn opgegeven met behulp van de volgende technieken:
 
-+ [Zoek opdracht voor voegsel](query-simple-syntax.md#prefix-search), `search=cap*`zoals, overeenkomt met ' Cap'n Jack afgebakend Inn ' of ' gacc Capital '. U kunt de eenvoudige query syntaxis of de volledige lucene-query syntaxis gebruiken voor het zoeken naar voor voegsels.
++ [Reguliere-expressie query's](query-lucene-syntax.md#bkmk_regex) kunnen een reguliere expressie zijn die geldig is onder Apache Lucene. 
 
-+ [Zoek opdrachten met Joker tekens](query-lucene-syntax.md#bkmk_wildcard) of [reguliere expressies](query-lucene-syntax.md#bkmk_regex) die naar een patroon of delen van een Inge sloten teken reeks zoeken. Joker tekens en reguliere expressies vereisen de volledige lucene-syntaxis. Achtervoegsel-en index query's worden geformuleerd als een reguliere expressie.
++ [Joker operators met voorvoegsel matching](query-simple-syntax.md#prefix-search) verwijzen naar een algemeen herkend patroon dat het begin van een term, gevolgd door `*` of `?` achtervoegsel Opera tors bevat, zoals `search=cap*` overeenkomt met ' Cap'n Jack afgebakend Inn ' of ' gacc Capital '. Het voor voegsel voor het vergelijken van voor voegsels wordt ondersteund in de eenvoudige en volledige lucene-query syntaxis.
 
-  Enkele voor beelden van zoek opdrachten op de gedeeltelijke term zijn: Voor een suffix query, op basis van de term ' alfanumeriek ', gebruikt u een zoek opdracht`search=/.*numeric.*/`voor joker tekens () om een overeenkomst te vinden. Voor een gedeeltelijke term met inbegrip van interne tekens, zoals een URL-fragment, moet u mogelijk escape tekens toevoegen. In JSON wordt een slash `/` met een back slash `\`met een escape-teken. Als zodanig is `search=/.*microsoft.com\/azure\/.*/` de syntaxis voor het URL-fragment "Microsoft.com/azure/".
++ [Met het Joker teken met infix en achtervoegsel](query-lucene-syntax.md#bkmk_wildcard) `*` worden de `?` Opera tors in of aan het begin van een term geplaatst en wordt een reguliere expressie syntaxis vereist (waarbij de expressie wordt Inge sloten met slashes). De query teken reeks ( `search=/.*numeric*./` ) retourneert bijvoorbeeld resultaten op ' alfanumeriek ' en ' alfanumeriek ' als achtervoegsel-en infix-overeenkomsten.
 
-Zoals is vermeld, is voor alle bovenstaande onderdelen vereist dat de index teken reeksen bevat in een indeling die wordt gebruikt voor het vergelijken van patronen, wat de standaard-Analyzer niet biedt. Door de stappen in dit artikel te volgen, kunt u ervoor zorgen dat de benodigde inhoud bestaat ter ondersteuning van deze scenario's.
+Voor een gedeeltelijke term of patroon zoekopdracht en enkele andere query formulieren zoals fuzzy zoeken, worden analyse functies niet gebruikt op het moment van de query. Voor deze query formulieren, die door de parser wordt gedetecteerd door de aanwezigheid van Opera tors en scheidings tekens, wordt de query teken reeks door gegeven aan de engine zonder lexicale analyse. Voor deze query formulieren wordt de analyse functie die is opgegeven voor het veld genegeerd.
+
+> [!NOTE]
+> Wanneer een gedeeltelijke query reeks tekens bevat, zoals slashes in een URL-fragment, moet u mogelijk escape tekens toevoegen. In JSON wordt een slash `/` met een back slash met een escape-teken `\` . Als zodanig `search=/.*microsoft.com\/azure\/.*/` is de syntaxis voor het URL-fragment "Microsoft.com/azure/".
 
 ## <a name="solving-partialpattern-search-problems"></a>Problemen met zoeken in een deel/patroon oplossen
 
-Als u wilt zoeken naar fragmenten of patronen of speciale tekens, kunt u de standaard-Analyzer vervangen door een aangepaste analyse functie die onder eenvoudigere regels voor tokens maakt, waarbij de hele teken reeks behouden blijft. Als u een stap terug neemt, ziet de benadering er als volgt uit:
+Als u wilt zoeken naar fragmenten of patronen of speciale tekens, kunt u de standaard-Analyzer vervangen door een aangepaste analyse functie die onder eenvoudigere token regels wordt uitgevoerd, waarbij de hele teken reeks in de index wordt bewaard. Als u een stap terug neemt, ziet de benadering er als volgt uit:
 
-+ Een veld definiëren voor het opslaan van een onbeschadigde versie van de teken reeks (ervan uitgaande dat u wilt analyseren en niet-geanalyseerde tekst)
-+ Een vooraf gedefinieerde analyse functie kiezen of een aangepaste Analyzer definiëren voor het uitvoeren van een niet-geanalyseerde teken reeks
-+ Wijs de aangepaste Analyzer toe aan het veld
++ Een veld definiëren voor het opslaan van een onbeschadigde versie van de teken reeks (ervan uitgaande dat u de query tijd wilt analyseren en niet-analyseerde tekst)
++ Evalueer en kies uit de verschillende analyse functies die tokens op het juiste niveau van granulariteit genereren
++ De analyse functie toewijzen aan het veld
 + De index maken en testen
 
 > [!TIP]
@@ -52,7 +55,7 @@ Als u wilt zoeken naar fragmenten of patronen of speciale tekens, kunt u de stan
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Dubbele velden voor verschillende scenario's
 
-Analyse functies worden per veld toegewezen, wat betekent dat u velden in uw index kunt maken om te optimaliseren voor verschillende scenario's. U kunt met name "featureCode" en "featureCodeRegex" definiëren voor het ondersteunen van normale Zoek opdrachten in volledige tekst op het eerste en geavanceerde patroon vergelijking op de tweede.
+Analyseerers bepalen hoe termen worden getokend in een index. Omdat analyse functies per veld worden toegewezen, kunt u velden in uw index maken om te optimaliseren voor verschillende scenario's. U kunt bijvoorbeeld ' featureCode ' en ' featureCodeRegex ' definiëren voor het ondersteunen van normale Zoek opdrachten in volledige tekst op het eerste en geavanceerde patroon dat op het tweede punt overeenkomt. De analyse functies toegewezen aan elk veld bepalen hoe de inhoud van elk veld wordt getokend in de index.  
 
 ```json
 {
@@ -84,9 +87,9 @@ Bij het kiezen van een analyse functie die volledige-termijn tokens produceert, 
 
 Als u een web-API-test programma zoals postman gebruikt, kunt u de [rest-aanroep van Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) toevoegen om de getokende uitvoer te controleren.
 
-U moet een bestaande index hebben om te kunnen werken. Als u een bestaande index en een veld met streepjes of gedeeltelijke voor waarden hebt opgegeven, kunt u verschillende analyse functies op basis van specifieke termen uitproberen om te zien welke tokens worden verzonden.  
+U moet een gevulde index hebben om te kunnen werken met. Als u een bestaande index en een veld met streepjes of gedeeltelijke voor waarden hebt opgegeven, kunt u verschillende analyse functies op basis van specifieke termen uitproberen om te zien welke tokens worden verzonden.  
 
-1. Raadpleeg de Standard Analyzer om te zien hoe de termen standaard worden getokend.
+1. Controleer eerst de standaard analyse om te zien hoe de termen standaard worden getokend.
 
    ```json
    {
@@ -95,7 +98,7 @@ U moet een bestaande index hebben om te kunnen werken. Als u een bestaande index
    }
     ```
 
-1. Evalueer het antwoord om te zien hoe de tekst binnen de index wordt getokend. U ziet dat elke term in kleine letters en uitsplitsing is.
+1. Evalueer het antwoord om te zien hoe de tekst binnen de index wordt getokend. U ziet dat elke term in kleine letters en uitsplitsing is. Alleen de query's die met deze tokens overeenkomen, retour neren dit document in de resultaten. Een query die "10 of" bevat, mislukt.
 
     ```json
     {
@@ -121,7 +124,7 @@ U moet een bestaande index hebben om te kunnen werken. Als u een bestaande index
         ]
     }
     ```
-1. Wijzig de aanvraag om de `whitespace` or `keyword` Analyzer te gebruiken:
+1. Wijzig nu de aanvraag om de `whitespace` or Analyzer te gebruiken `keyword` :
 
     ```json
     {
@@ -130,7 +133,7 @@ U moet een bestaande index hebben om te kunnen werken. Als u een bestaande index
     }
     ```
 
-1. Het antwoord bestaat nu uit één token, hoofd letters, met streepjes die als onderdeel van de teken reeks zijn bewaard. Als u op een patroon of gedeeltelijke term wilt zoeken, heeft de query-engine nu de basis voor het zoeken naar een overeenkomst.
+1. Het antwoord bestaat nu uit één token, hoofd letters, met streepjes die als onderdeel van de teken reeks zijn bewaard. Als u wilt zoeken op een patroon of een gedeeltelijke term zoals "10-en", heeft de query-engine nu de basis voor het zoeken naar een overeenkomst.
 
 
     ```json
@@ -147,7 +150,7 @@ U moet een bestaande index hebben om te kunnen werken. Als u een bestaande index
     }
     ```
 > [!Important]
-> Houd er rekening mee dat query parsers vaak kleine letters in een zoek expressie bij het samen stellen van de query-structuur. Als u een analyse functie gebruikt die geen kleine letters bevat, en u niet de verwachte resultaten krijgt, kan dit de reden zijn. De oplossing is het toevoegen van een token filter met een lagere case, zoals beschreven in de sectie ' aangepaste analyse functies gebruiken ' hieronder.
+> Houd er rekening mee dat query parsers vaak kleine letters in een zoek expressie bij het samen stellen van de query-structuur. Als u een analyse functie gebruikt die tijdens het indexeren geen kleine letters voor tekst invoer bevat en u niet de verwachte resultaten krijgt, kan dit de reden zijn. De oplossing is het toevoegen van een token filter met een lagere case, zoals beschreven in de sectie ' aangepaste analyse functies gebruiken ' hieronder.
 
 ## <a name="configure-an-analyzer"></a>Een analyse functie configureren
  
@@ -211,7 +214,7 @@ In het volgende voor beeld ziet u een aangepaste analyse functie die het tref wo
 ```
 
 > [!NOTE]
-> Het `keyword_v2` tokenizer- `lowercase` en Token filter zijn bekend bij het systeem en met behulp van de standaard configuraties. Daarom kunt u ernaar verwijzen met de naam zonder dat u ze eerst hoeft te definiëren.
+> Het `keyword_v2` tokenizer `lowercase` -en Token filter zijn bekend bij het systeem en met behulp van de standaard configuraties. Daarom kunt u ernaar verwijzen met de naam zonder dat u ze eerst hoeft te definiëren.
 
 ## <a name="build-and-test"></a>Bouwen en testen
 
@@ -229,17 +232,17 @@ In de vorige secties is de logica uitgelegd. In deze sectie wordt elke API besch
 
 + In [documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) wordt uitgelegd hoe u een query aanvraag opbouwt met behulp van [eenvoudige syntaxis](query-simple-syntax.md) of de [volledige lucene-syntaxis](query-lucene-syntax.md) voor joker tekens en reguliere expressies.
 
-  Voor gedeeltelijke term query's, zoals het opvragen van ' 3-6214 ' om een overeenkomst op ' + 1 (425) 703-6214 ' te vinden, kunt u de eenvoudige syntaxis gebruiken `search=3-6214&queryType=simple`:.
+  Voor gedeeltelijke term query's, zoals het opvragen van ' 3-6214 ' om een overeenkomst op ' + 1 (425) 703-6214 ' te vinden, kunt u de eenvoudige syntaxis gebruiken: `search=3-6214&queryType=simple` .
 
   Voor infix-en achtervoegsel query's, zoals het opvragen van ' num ' of ' numeriek ' om een overeenkomst te vinden op ' alfanumeriek ', gebruikt u de syntaxis Full lucene en een reguliere expressie:`search=/.*num.*/&queryType=full`
 
-## <a name="tips-and-best-practices"></a>Tips en best practices
-
-### <a name="tune-query-performance"></a>Queryprestaties afstemmen
+## <a name="tune-query-performance"></a>Queryprestaties afstemmen
 
 Als u de aanbevolen configuratie implementeert die het keyword_v2 tokenizer-en het kleine-case-token filter bevat, ziet u mogelijk een afname in de query prestaties vanwege de extra token filter verwerking voor bestaande tokens in uw index. 
 
-In het volgende voor beeld wordt een [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) toegevoegd om het voor voegsel sneller te laten overeenkomen. Er worden extra tokens gegenereerd voor de 2-25-teken combinaties die tekens bevatten: (niet alleen MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/VK, MSFT/SQL). Zoals u kunt Voorst Ellen, resulteert de extra tokening in een grotere index.
+In het volgende voor beeld wordt een [EdgeNGramTokenFilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html) toegevoegd om het voor voegsel sneller te laten overeenkomen. Er worden extra tokens gegenereerd voor de 2-25-teken combinaties die tekens bevatten: (niet alleen MS, MSF, MSFT, MSFT/, MSFT/S, MSFT/VK, MSFT/SQL). 
+
+Zoals u kunt Voorst Ellen, resulteert de extra tokening in een grotere index. Als u voldoende capaciteit hebt voor de grotere index, kan deze benadering met de snellere reactie tijd een betere oplossing zijn.
 
 ```json
 {
@@ -276,20 +279,6 @@ In het volgende voor beeld wordt een [EdgeNGramTokenFilter](https://lucene.apach
   "side": "front"
   }
 ]
-```
-
-### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>Verschillende analyse functies gebruiken voor het verwerken van indexen en query's
-
-Analyse functies worden aangeroepen tijdens het indexeren en tijdens de uitvoering van query's. Het is gebruikelijk om dezelfde Analyzer voor beide te gebruiken, maar u kunt voor elke werk belasting aangepaste analyse functies configureren. Analyzer-onderdrukkingen worden opgegeven in de [index definitie](https://docs.microsoft.com/rest/api/searchservice/create-index) in een `analyzers` sectie en vervolgens naar specifieke velden wordt verwezen. 
-
-Wanneer aangepaste analyse alleen is vereist tijdens het indexeren, kunt u de aangepaste Analyzer Toep assen om alleen de standaard-lucene Analyzer (of een andere analyse) voor query's te indexeren en te blijven gebruiken.
-
-Als u een Role-specifieke analyse wilt opgeven, kunt u eigenschappen instellen voor het veld voor elk `indexAnalyzer` van `searchAnalyzer` de instellingen, in `analyzer` plaats van de standaard eigenschap.
-
-```json
-"name": "featureCode",
-"indexAnalyzer":"my_customanalyzer",
-"searchAnalyzer":"standard",
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

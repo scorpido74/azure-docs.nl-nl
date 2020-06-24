@@ -4,15 +4,15 @@ description: Op deze pagina vindt u instructies voor het ophalen van de ARP-tabe
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/30/2017
 ms.author: charwen
-ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3947d9906b789ede4183cade3c71aa26c011cf0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618628"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727157"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>ARP-tabellen ophalen in het klassieke implementatie model
 > [!div class="op_single_selector"]

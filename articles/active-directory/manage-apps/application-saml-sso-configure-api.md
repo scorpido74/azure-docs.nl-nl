@@ -3,20 +3,20 @@ title: Microsoft Graph-Api's gebruiken om eenmalige aanmelding op basis van SAML
 titleSuffix: Azure Active Directory
 description: Moet u eenmalige aanmelding op basis van SAML instellen voor meerdere exemplaren van een toepassing? Meer informatie over hoe u tijd kunt besparen door gebruik te maken van de Microsoft Graph Api's om de configuratie van eenmalige aanmelding op basis van SAML te automatiseren.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 3443ed3f4f0ad8bb5500a31f9a5da2cac5afa6d5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: c766fb84fa14eab09143cfb5b71f7aefc9f51d24
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84463702"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077767"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Configuratie van op SAML gebaseerde SSO-app automatiseren met Microsoft Graph-API
 
@@ -424,7 +424,7 @@ Content-type: claimsMappingPolicies/json
   "name": "servicePrincipals"
 }-->
 ```msgraph-interactive
-POST https://graph.microsoft.com/v1.0/servicePrincipals/f47a6776-bca7-4f2e-bc6c-eec59d058e3e/claimsMappingPolicies/$ref
+POST https://graph.microsoft.com/beta/servicePrincipals/f47a6776-bca7-4f2e-bc6c-eec59d058e3e/claimsMappingPolicies/$ref
 
 Content-type: claimsMappingPolicies/json
 
@@ -594,7 +594,7 @@ HTTP/1.1 204
 
 Wijs de volgende gebruiker toe aan de Service-Principal en wijs de AWS_Role1 toe. 
 
-| Naam  | Id  |
+| Name  | Id  |
 |---------|---------|
 | Gebruikers-ID (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Type (principalType) | Gebruiker |

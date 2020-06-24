@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311663"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205455"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Informatie over het lokale configuratie bestand (C#-agent)
 
@@ -30,9 +30,9 @@ De beveiligings agent leest het configuratie bestand eenmaal wanneer de agent wo
 
 De C#-beveiligings agent gebruikt meerdere configuratie bestanden:
 
-- **Algemeen. config** -gerelateerde configuraties van agent.
-- **Verificatie. config** -gerelateerde configuratie van authenticatie (inclusief verificatie gegevens).
-- Configuratie van **SecurityIotInterface. config** -gerelateerde IOT.
+- Configuraties met betrekking tot **General.config** agent.
+- Configuratie met betrekking tot **Authentication.config** verificatie (inclusief verificatie gegevens).
+- **SecurityIotInterface.config** -IOT-gerelateerde configuraties.
 
 De configuratie bestanden bevatten de standaard configuratie. Verificatie configuratie wordt ingevuld tijdens de installatie van de agent en wijzigingen in het configuratie bestand worden gemaakt wanneer de agent opnieuw wordt gestart.
 
@@ -40,13 +40,13 @@ De configuratie bestanden bevatten de standaard configuratie. Verificatie config
 
 Voor Linux:
 
-- Configuratie bestanden voor het besturings systeem bevinden zich in `/var/ASCIoTAgent`.
+- Configuratie bestanden voor het besturings systeem bevinden zich in `/var/ASCIoTAgent` .
 
 Voor Windows:
 
 - Configuratie bestanden voor het besturings systeem bevinden zich in de map van de beveiligings agent.
 
-### <a name="generalconfig-configurations"></a>Algemene configuratie configuraties
+### <a name="generalconfig-configurations"></a>General.config configuraties
 
 | Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
@@ -62,9 +62,9 @@ Voor Windows:
 | logFilePath | Pad naar bestand | Als fileLogLevel > uit, worden logboeken naar dit bestand geschreven. |
 | defaultEventPriority | ' Hoog ', ' laag ', ' uit ' | Standaard prioriteit van gebeurtenis. |
 
-### <a name="generalconfig-example"></a>Algemeen. config-voor beeld
+### <a name="generalconfig-example"></a>General.config-voor beeld
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -81,7 +81,7 @@ Voor Windows:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Verificatie. config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
@@ -96,9 +96,9 @@ Voor Windows:
 | Registratie | tekenreeks  | Registratie-ID van DPS-apparaat. |
 |
 
-### <a name="authenticationconfig-example"></a>Verificatie. config-voor beeld
+### <a name="authenticationconfig-example"></a>Authentication.config-voor beeld
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -113,16 +113,16 @@ Voor Windows:
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
 | Transport type | "Ampq" "Mqtt" | Transport type IoT Hub. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>Voor beeld van SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config-voor beeld
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

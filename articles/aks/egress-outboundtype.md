@@ -4,12 +4,12 @@ description: Meer informatie over het definiëren van een aangepaste uitgangs ro
 services: container-service
 ms.topic: article
 ms.date: 06/05/2020
-ms.openlocfilehash: 03b18a9cb8fa28d54952a77bf8721c63dd56a9ad
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 10555b9c6e9d1d9670ae3bee488a60d782d267bf
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416780"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205812"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
@@ -103,7 +103,7 @@ DEVSUBNET_NAME="${PREFIX}dev"
 
 Stel vervolgens abonnement-Id's in.
 
-```azure-cli
+```azurecli
 
 # NOTE: Update Subscription Name
 # Set Default Azure Subscription to be Used via Subscription ID
@@ -123,7 +123,7 @@ Richt een virtueel netwerk in met drie afzonderlijke subnetten, één voor het c
 
 Maak een resource groep om alle resources te bewaren.
 
-```azure-cli
+```azurecli
 # Create Resource Group
 
 az group create --name $RG --location $LOC
@@ -166,12 +166,12 @@ Azure Firewall binnenkomende en uitgaande regels moeten worden geconfigureerd. H
 
 Maak een open bare IP-resource voor een standaard-SKU die wordt gebruikt als het front-Azure Firewall front-end-adres.
 
-```azure-cli
+```azurecli
 az network public-ip create -g $RG -n $FWPUBLICIP_NAME -l $LOC --sku "Standard"
 ```
 
 Registreer de preview cli-extensie om een Azure Firewall te maken.
-```azure-cli
+```azurecli
 # Install Azure Firewall preview CLI extension
 
 az extension add --name azure-firewall
@@ -187,7 +187,7 @@ Het eerder gemaakte IP-adres kan nu worden toegewezen aan de firewall-frontend.
 > 
 > Als er herhaaldelijk fouten worden ontvangen, verwijdert u de bestaande firewall en het open bare IP-adres en richt u het open bare IP-adres en het Azure Firewall in via de portal.
 
-```azure-cli
+```azurecli
 # Configure Firewall IP Config
 
 az network firewall ip-config create -g $RG -f $FWNAME -n $FWIPCONFIG_NAME --public-ip-address $FWPUBLICIP_NAME --vnet-name $VNET_NAME
@@ -214,7 +214,7 @@ Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en
 
 Maak een lege route tabel die moet worden gekoppeld aan een bepaald subnet. In de route tabel wordt de volgende hop gedefinieerd als de hierboven gemaakte Azure Firewall. Elk subnet kan zijn gekoppeld aan geen enkele of één routetabel.
 
-```azure-cli
+```azurecli
 # Create UDR and add a route for Azure Firewall
 
 az network route-table create -g $RG --name $FWROUTE_TABLE_NAME
@@ -267,7 +267,7 @@ Raadpleeg de [documentatie van Azure firewall](https://docs.microsoft.com/azure/
 
 Als u het cluster wilt koppelen aan de firewall, moet het toegewezen subnet voor het subnet van het cluster verwijzen naar de route tabel die hierboven is gemaakt. U kunt de koppeling doen door een opdracht uit te geven aan het virtuele netwerk dat zowel het cluster als de firewall heeft om de route tabel van het subnet van het cluster bij te werken.
 
-```azure-cli
+```azurecli
 # Associate route table with next hop to Firewall to the AKS subnet
 
 az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NAME --route-table $FWROUTE_TABLE_NAME
@@ -283,7 +283,7 @@ Nu kan een AKS-cluster worden geïmplementeerd in het bestaande virtuele netwerk
 
 Een service-principal wordt door AKS gebruikt om cluster bronnen te maken. De service-principal die wordt door gegeven tijdens het maken, wordt gebruikt voor het maken van onderliggende AKS-resources, zoals Vm's, opslag en load balancers die worden gebruikt door AKS. Als er te weinig machtigingen worden verleend, kan er geen AKS-cluster worden ingericht.
 
-```azure-cli
+```azurecli
 # Create SP and Assign Permission to Virtual Network
 
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
@@ -291,7 +291,7 @@ az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 
 Vervang nu de `APPID` en `PASSWORD` onderstaande door de Service Principal AppID en het Service Principal-wacht woord dat automatisch wordt gegenereerd door de vorige opdracht uitvoer. We verwijzen naar de VNET-Resource-ID om machtigingen toe te kennen aan de Service-Principal zodat AKS hierin resources kan implementeren.
 
-```azure-cli
+```azurecli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
 PASSWORD="<SERVICEPRINCIPAL_PASSWORD_GOES_HERE>"
 VNETID=$(az network vnet show -g $RG --name $VNET_NAME --query id -o tsv)
@@ -319,7 +319,7 @@ De AKS-functie voor door de [API server geautoriseerde IP-adresbereiken](api-ser
 > [!TIP]
 > Extra functies kunnen worden toegevoegd aan de cluster implementatie, zoals (private cluster) []. Wanneer u gemachtigde IP-bereiken gebruikt, is er een JumpBox vereist in het cluster netwerk om toegang te krijgen tot de API-server.
 
-```azure-cli
+```azurecli
 az aks create -g $RG -n $AKS_NAME -l $LOC \
   --node-count 3 \
   --network-plugin azure --generate-ssh-keys \
@@ -351,7 +351,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
  Gebruik de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] om `kubectl` te configureren om verbinding te maken met het zojuist gemaakte Kubernetes-cluster. 
 
- ```azure-cli
+ ```azurecli
  az aks get-credentials -g $RG -n $AKS_NAME
  ```
 
@@ -504,7 +504,7 @@ azure-vote-front   LoadBalancer   192.168.19.183   100.64.2.5    80:32106/TCP   
 kubernetes         ClusterIP      192.168.0.1      <none>        443/TCP        4d3h
 ```
 
-```azure-cli
+```azurecli
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address <INSERT IP OF K8s SERVICE>
 ```
 
@@ -515,7 +515,7 @@ az network firewall nat-rule create --collection-name exampleset --destination-a
 
 Als u Azure-resources wilt opschonen, verwijdert u de resource groep AKS.
 
-```azure-cli
+```azurecli
 az group delete -g $RG
 ```
 

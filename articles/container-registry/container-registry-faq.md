@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 005c035468a4225f96e8ef69b2ef31a82bf7eedb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682824"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205421"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -187,7 +187,7 @@ az acr login -n MyRegistry
 Schakel TLS 1,2 in met behulp van een recente docker-client (versie 18.03.0 en hoger). 
 
 > [!IMPORTANT]
-> Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld.
+> Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen TLS 1.2 gebruiken. Ondersteuning voor TLS 1.0 en 1.1 wordt buiten gebruik gesteld.
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Ondersteunt Azure Container Registry inhoud vertrouwen?
 
@@ -220,7 +220,7 @@ ACR ondersteunt [aangepaste rollen](container-registry-roles.md) die verschillen
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  Of wijs de rol toe aan een service beginsel dat wordt geïdentificeerd door de toepassings-ID:
+  Of wijs de rol toe aan een service-principal die wordt geïdentificeerd door de toepassings-ID:
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -438,6 +438,7 @@ Hier volgen enkele scenario's waarin bewerkingen mogelijk niet zijn toegestaan:
 * Klassieke registers worden niet meer ondersteund. Voer een upgrade uit naar [een ondersteunde servicelaag](https://aka.ms/acr/skus) met [AZ ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) of de Azure Portal.
 * De installatie kopie of opslag plaats is mogelijk vergrendeld zodat deze niet kan worden verwijderd of bijgewerkt. U kunt de opdracht [AZ ACR show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) gebruiken om de huidige kenmerken weer te geven.
 * Sommige bewerkingen zijn niet toegestaan als de installatie kopie zich in quarantaine bevindt. Meer informatie over [quarantaine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
+* Het REGI ster heeft mogelijk de [opslag limiet](container-registry-skus.md#service-tier-features-and-limits)bereikt.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hoe kan ik u http-traceringen verzamelen in Windows?
 
@@ -495,8 +496,8 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 |---|---|---|---|
 | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Ja |
 | Azure-opslagplaatsen | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ja | Ja |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Nee |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ja | Nee |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Nee |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Nee |
 
 ## <a name="run-error-message-troubleshooting"></a>Problemen met het uitvoeren van fout berichten oplossen
 

@@ -3,7 +3,7 @@ title: 'Power shell: enable-your-own-Key (BYOK) TDE'
 titleSuffix: Azure SQL Managed Instance
 description: Meer informatie over het configureren van een Azure SQL Managed instance om met behulp van Power shell (BYOK) Transparent Data Encryption (TDE) te gaan gebruiken voor versleuteling-at-rest.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 348b69933ae6b3706cf16642a138f1b00247cb5a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219193"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708430"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparent Data Encryption in SQL Managed instance met uw eigen sleutel vanuit Azure Key Vault
 
@@ -45,6 +45,6 @@ Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure PowerShell-documentatie](/powershell/azure/overview)voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
 
-Extra Power shell-script voorbeelden voor SQL Managed instance vindt u in [Azure SQL Managed instance Power shell-scripts](../../database/powershell-script-content-guide.md).
+Extra PowerShell-voorbeeldscripts voor SQL Managed Instance vindt u in [PowerShell-scripts voor Azure SQL Managed Instance](../../database/powershell-script-content-guide.md).

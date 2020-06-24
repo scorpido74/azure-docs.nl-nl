@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70071705"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205744"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management-beleid instellen of bewerken
 
@@ -41,7 +41,7 @@ Voer de volgende stappen uit om een beleid in te stellen of te bewerken:
 7. Selecteer het **</>** pictogram (code-editor) in de sectie **binnenkomende verwerking** of **uitgaande verwerking** .
 8. Plak de gewenste beleids code in een van de juiste blokken.
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />
@@ -69,7 +69,7 @@ Beleids bereiken worden in de volgende volg orde geëvalueerd:
 3. API-bereik
 4. Bewerkings bereik
 
-De instructies binnen het beleid worden geëvalueerd op basis van de plaatsing `base` van het element, indien aanwezig. Globaal beleid heeft geen bovenliggend beleid en gebruikt het `<base>` element hierin geen effect.
+De instructies binnen het beleid worden geëvalueerd op basis van de plaatsing van het `base` element, indien aanwezig. Globaal beleid heeft geen bovenliggend beleid en gebruikt het `<base>` element hierin geen effect.
 
 Als u het beleid in het huidige bereik in de beleids editor wilt zien, klikt u op **effectief beleid opnieuw berekenen voor geselecteerd bereik**.
 

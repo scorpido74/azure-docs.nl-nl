@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593903"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887707"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Prestaties van edge nod analyseren in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -91,7 +91,7 @@ Het doel van deze metrische gegevens is om te zien of de efficiëntie van de cac
 | % van externe bytes-geen cache configuratie |Hiermee wordt het percentage verkeer aangegeven dat vanaf de oorspronkelijke servers is uitgevoerd naar de CDN (Edge-servers) die niet in de cache worden opgeslagen als resultaat van de functie bypass cache (HTTP-regels-engine). |
 | % van externe bytes-verlopen cache |Hiermee wordt het percentage verkeer aangegeven dat vanaf de oorspronkelijke servers aan het CDN (Edge-servers) is geleverd als gevolg van hervalidatie van verouderde inhoud. |
 
-#### <a name="usage-metrics"></a>Metrische gebruiksgegevens
+#### <a name="usage-metrics"></a>Metrische gegevens over gebruik
 Het doel van deze metrische gegevens is om inzicht te krijgen in de volgende kostenbesparende metingen:
 
 * Het minimaliseren van de operationele kosten via het CDN.
@@ -171,7 +171,7 @@ Elk rapport in deze module bevat een diagram en statistieken over band breedte e
 | Gebruikers agent |Bevat een staaf diagram met de tien belangrijkste gebruikers agenten om uw inhoud via ons CDN aan te vragen. Normaal gesp roken is een gebruikers agent een webbrowser, een media speler of een mobiele telefoon browser. Statistieken voor de meest 100 gebruikers agenten worden direct onder deze grafiek weer gegeven. |
 | Verwijzende sites |Bevat een staaf grafiek met de Top 10 van verwijzende personen naar inhoud die toegankelijk is via onze CDN. Normaal gesp roken is een verwijzing naar de URL van de webpagina of de resource die aan uw inhoud is gekoppeld. Gedetailleerde informatie vindt u onder de grafiek voor de Top 100-verwijzende personen. |
 | Compressie typen |Bevat een ring diagram waarmee aangevraagde assets worden opgesplitst door onze edge-servers te comprimeren. Het percentage van de gecomprimeerde activa wordt uitgesplitst op basis van het type compressie dat wordt gebruikt. Gedetailleerde informatie wordt weer gegeven onder de grafiek voor elk compressie type en-status. |
-| Bestands typen |Bevat een staaf diagram waarin de tien belangrijkste bestands typen worden weer gegeven die via onze CDN voor uw account zijn aangevraagd. Voor de doel einden van dit rapport wordt een bestands type gedefinieerd door de bestands extensie van de Asset en het type Internet media (bijvoorbeeld. HTML \[tekst/HTML\],. htm \[text/HTML\],. aspx \[-tekst/\]HTML, enzovoort). Gedetailleerde informatie vindt u onder de grafiek voor de meeste bestands typen van 100. |
+| Bestands typen |Bevat een staaf diagram waarin de tien belangrijkste bestands typen worden weer gegeven die via onze CDN voor uw account zijn aangevraagd. Voor de doel einden van dit rapport wordt een bestands type gedefinieerd door de bestands extensie van de Asset en het type Internet media (bijvoorbeeld. HTML \[ tekst/HTML \] ,. htm \[ text/HTML \] ,. aspx- \[ tekst/HTML, \] enzovoort). Gedetailleerde informatie vindt u onder de grafiek voor de meeste bestands typen van 100. |
 | Unieke bestanden |Bevat een grafiek die het totale aantal unieke assets dat is aangevraagd op een bepaalde dag gedurende een opgegeven periode. |
 | Samen vatting van token verificatie |Bevat een cirkel diagram met een kort overzicht van de vraag of de gevraagde assets zijn beveiligd door authenticatie op basis van tokens. Beveiligde assets worden weer gegeven in de grafiek volgens de resultaten van de verificatie. |
 | Details van deny-token auth |Bevat een staaf diagram waarmee u de tien belangrijkste aanvragen kunt weer geven die zijn geweigerd vanwege verificatie op basis van tokens. |

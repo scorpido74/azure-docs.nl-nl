@@ -4,15 +4,15 @@ description: Met de regel engine kunt u aanpassen hoe HTTP-aanvragen worden verw
 services: cdn
 author: asudbring
 ms.service: azure-cdn
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253472"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887425"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-gedrag negeren met behulp van de Azure CDN van de Verizon Premium-regel engine
 
@@ -22,7 +22,7 @@ ms.locfileid: "81253472"
 
 Met de engine voor Azure CDN regels kunt u aanpassen hoe HTTP-aanvragen worden verwerkt. Bijvoorbeeld: het blok keren van de levering van bepaalde inhouds typen, het definiëren van een cache beleid of het wijzigen van een HTTP-header. In deze zelf studie wordt gedemonstreerd hoe u een regel maakt waarmee het cache gedrag van CDN-assets wordt gewijzigd. Zie voor meer informatie over de syntaxis van de regel engine de [referentie voor Azure CDN regels-engine](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Toegang
+## <a name="access"></a>Access
 
 Voor toegang tot de regel engine moet u eerst **beheren** selecteren vanaf de bovenkant van de pagina **CDN-profiel** om toegang te krijgen tot de Azure CDN-beheer pagina. Afhankelijk van of uw eind punt is geoptimaliseerd voor dynamische site versnelling (DSA), opent u de regel engine met de regels die geschikt zijn voor uw type eind punt:
 
@@ -73,7 +73,7 @@ Voor toegang tot de regel engine moet u eerst **beheren** selecteren vanaf de bo
    >
    >
 
-5. Als u een nieuwe functie wilt toevoegen, **+** selecteert u de knop naast **functies**.  Selecteer in de vervolg keuzelijst aan de linkerkant de optie **interne Max. leeftijd forceren**.  Typ **300**in het tekstvak dat wordt weer gegeven. Wijzig de resterende standaard waarden niet.
+5. Als u een nieuwe functie wilt toevoegen, selecteert u de **+** knop naast **functies**.  Selecteer in de vervolg keuzelijst aan de linkerkant de optie **interne Max. leeftijd forceren**.  Typ **300**in het tekstvak dat wordt weer gegeven. Wijzig de resterende standaard waarden niet.
    
    ![CDN-regel functie](./media/cdn-rules-engine/cdn-new-feature.png)
    
@@ -97,7 +97,7 @@ Voor toegang tot de regel engine moet u eerst **beheren** selecteren vanaf de bo
 
 - [Overzicht van Azure CDN](cdn-overview.md)
 - [Referentie voor regels-engine](cdn-verizon-premium-rules-engine-reference.md)
-- [Overeenkomende voor waarden voor regel engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
-- [Voorwaardelijke expressies van regel engine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Functies van de engine voor regels](cdn-verizon-premium-rules-engine-reference-features.md)
+- [Criteria voor overeenkomst in de regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Voorwaardelijke expressies in de regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
+- [Functies van de regelengine](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Azure vrijdag: de krachtige nieuwe Premium-functies van Azure CDN](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)

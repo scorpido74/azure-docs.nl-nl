@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299655"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260879"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
 
@@ -229,6 +229,10 @@ Als u de Log Analytics-agent wilt toestaan om oplossings pakketten te downloaden
 |Openbare Azure-peering     | scadvisor.blob.core.windows.net         | 443 | Uitgaand
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Uitgaand
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Uitgaand
+
+### <a name="browser-dns-settings"></a>DNS-instellingen van browser
+
+Als u via een persoonlijke koppeling verbinding maakt met uw Azure Monitor-resources, moet het verkeer naar deze bron worden via het persoonlijke eind punt dat in uw netwerk is geconfigureerd. Als u het persoonlijke eind punt wilt inschakelen, werkt u de DNS-instellingen bij, zoals wordt uitgelegd in [verbinding maken met een persoonlijk eind punt](#connect-to-a-private-endpoint). Sommige browsers gebruiken hun eigen DNS-instellingen in plaats van degene die u instelt. De browser kan proberen verbinding te maken met Azure Monitor open bare eind punten en de persoonlijke koppeling volledig over te slaan. Controleer of uw browser instellingen geen oude DNS-instellingen overschrijven of in de cache opslaan. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

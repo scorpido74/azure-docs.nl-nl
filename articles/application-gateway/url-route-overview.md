@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b2e8148586ec58ea6a7a033099e726920857b6
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145358"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987931"
 ---
 # <a name="url-path-based-routing-overview"></a>Overzicht van op URL-pad gebaseerde routering
 
@@ -24,7 +24,7 @@ In het volgende voorbeeld verzorgt de toepassingsgateway het verkeer voor contos
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Aanvragen voor http\://contoso.com/video/* worden doorgestuurd naar video server pool en http\://contoso.com/images/* worden doorgestuurd naar image server pool. Als geen van de padpatronen overeenkomen, wordt DefaultServerPool geselecteerd.
+Aanvragen voor http \: //contoso.com/video/* worden doorgestuurd naar video server pool en http \: //contoso.com/images/* worden doorgestuurd naar image server pool. Als geen van de padpatronen overeenkomen, wordt DefaultServerPool geselecteerd.
 
 > [!IMPORTANT]
 > Voor de V1-SKU worden regels verwerkt in de volg orde waarin ze worden weer gegeven in de portal. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt. Voor de v2-SKU hebben exacte overeenkomsten een hogere prioriteit. Het wordt echter nadrukkelijk aanbevolen om eerst multi-site listeners te configureren voordat u een eenvoudige listener gaat configureren. Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid.
@@ -75,7 +75,7 @@ Padregels zijn niet hoofdletter gevoelig.
 |v1-pad patroon  |Wordt ondersteund?  |
 |---------|---------|
 |`/images/*`     |ja|
-|`/images*`     |nee|
+|`/images*`     |ja|
 |`/images/*.jpg`     |nee|
 |`/*.jpg`     |nee|
 |`/Repos/*/Comments/*`     |nee|

@@ -7,36 +7,66 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 6199b2a322bc22f85d6fb8b422ea49c5f35f080e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616194"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753012"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Documentatie bronnen voor AI-verrijking in azure Cognitive Search
 
-AI-verrijking is een mogelijkheid van Azure Cognitive Search indexeren waarmee latente informatie in niet-tekst bronnen en niet-gedifferentieerde tekst wordt getransformeerd in volledige tekst Doorzoek bare inhoud in azure Cognitive Search.
+AI-verrijking is een invoeg toepassing voor indexering op basis van indexeringen waarmee latente informatie in niet-tekst bronnen en niet-gedifferentieerde tekst wordt getransformeerd in volledige tekst Doorzoek bare inhoud in azure Cognitive Search. 
 
-De volgende artikelen zijn de volledige documentatie voor AI-verrijking.
+Voor ingebouwde verwerking worden de vooraf getrainde AI-modellen in Cognitive Services intern aangeroepen om de analyses uit te voeren. U kunt aangepaste modellen ook integreren met behulp van Azure Machine Learning, Azure Functions of andere benaderingen.
 
-## <a name="getting-started"></a>Aan de slag
-+ [Inleiding tot AI in azure Cognitive Search](cognitive-search-concept-intro.md)
+Hier volgt een geconsolideerde lijst van de documentatie voor AI-verrijking.
+
+## <a name="concepts"></a>Concepten
+
++ [AI-verrijkingen](cognitive-search-concept-intro.md)
++ [Vaardighedensets](cognitive-search-working-with-skillsets.md)
++ [Foutopsporingssessies](cognitive-search-debug-session.md)
++ [Knowledge Stores](knowledge-store-concept-intro.md)
++ [Projecties](knowledge-store-projection-overview.md)
++ [Incrementele verrijking (hergebruik van een in cache opgeslagen verrijkt document)](cognitive-search-incremental-indexing-conceptual.md)
+
+## <a name="hands-on-walkthroughs"></a>Praktische instructies
+
 + [Snelstartgids: een cognitieve vaardigheids maken in de Azure Portal](cognitive-search-quickstart-blob.md)
 + [Zelf studie: verrijkte indexering met AI](cognitive-search-tutorial-blob.md)
-+ [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md)
++ [Zelf studie: wijzigingen in uw vaardig heden vaststellen, herstellen en door voeren met debug-sessies](cognitive-search-tutorial-debug-sessions.md)
+
+## <a name="knowledge-stores"></a>Knowledge Stores
+
++ [Snelstartgids: een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md)
++ [Maak een kennis archief met behulp van REST en postman](knowledge-store-create-rest.md)
++ [Een kennis archief met Storage Explorer weer geven](knowledge-store-view-storage-explorer.md)
++ [Verbinding maken met een kennis archief met Power BI](knowledge-store-connect-power-bi.md)
++ [Voor beelden van projectie (verrijkingen vorm geven en exporteren)](knowledge-store-projections-examples.md)
+
+## <a name="custom-skills-advanced"></a>Aangepaste vaardig heden (Geavanceerd)
+
++ [Een aangepaste vaardigheden Interface definiëren](cognitive-search-custom-skill-interface.md)
++ [Voor beeld: een aangepaste vaardigheid maken met behulp van Azure Functions (en Bing Entity Search Api's)](cognitive-search-create-custom-skill-example.md)
++ [Voor beeld: een aangepaste vaardigheid maken met behulp van python](cognitive-search-custom-skill-python.md)
++ [Voor beeld: een aangepaste vaardigheid maken met behulp van de formulier Recognizer](cognitive-search-custom-skill-form.md) 
++ [Voor beeld: een aangepaste vaardigheid maken met behulp van Azure Machine Learning](cognitive-search-tutorial-aml-custom-skill.md) 
 
 ## <a name="how-to-guidance"></a>Instructies
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Verwijzen naar aantekeningen in een vaardighedenset](cognitive-search-concept-annotations-syntax.md)
-+ [Velden toewijzen aan een index](cognitive-search-output-field-mapping.md)
-+ [Informatie over het verwerken en extra heren van installatie kopieën](cognitive-search-concept-image-scenarios.md)
-+ [Een Azure Cognitive Search-index opnieuw samen stellen](search-howto-reindex.md)
-+ [Een aangepaste vaardigheden Interface definiëren](cognitive-search-custom-skill-interface.md)
-+ [Tips voor probleemoplossing](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Naslaginformatie
++ [Een Cognitive Services-resource toevoegen](cognitive-search-attach-cognitive-services.md)
++ [Een set vaardigheden definiëren](cognitive-search-defining-skillset.md)
++ [verwijzen naar aantekeningen in een vaardig heden](cognitive-search-concept-annotations-syntax.md)
++ [Velden toewijzen aan een index](cognitive-search-output-field-mapping.md)
++ [Informatie uit installatiekopieën verwerken en extraheren](cognitive-search-concept-image-scenarios.md)
++ [Caching configureren voor incrementele verrijking](search-howto-incremental-index.md)
++ [Een Azure Cognitive Search-index opnieuw samen stellen](search-howto-reindex.md)
++ [Ontwerptips](cognitive-search-concept-troubleshooting.md)
++ [Veelvoorkomende fouten en waarschuwingen](cognitive-search-common-errors-warnings.md)
+
+## <a name="skills-reference"></a>Verwijzingen voor vaardigheden
 
 + [Ingebouwde vaardigheden](cognitive-search-predefined-skills.md)
   + [Micro soft. skills. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -50,16 +80,19 @@ De volgende artikelen zijn de volledige documentatie voor AI-verrijking.
   + [Micro soft. skills. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Micro soft. skills. Vision. OcrSkill](cognitive-search-skill-ocr.md)
   + [Micro soft. skills. util. ConditionalSkill](cognitive-search-skill-conditional.md)
-  + [Micro soft. skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
+  + [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Micro soft. skills. util. ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Aangepaste vaardigheden
+  + [Micro soft. skills. custom. AmlSkill](cognitive-search-aml-skill.md)
   + [Micro soft. skills. custom. WebApiSkill](cognitive-search-custom-skill-web-api.md)
 
 + [Afgeschafte vaardigheden](cognitive-search-skill-deprecated.md)
   + [Micro soft. skills. Text. NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
 
-+ [REST-API](https://docs.microsoft.com/rest/api/searchservice/)
+## <a name="apis"></a>API's
+
++ [REST API](https://docs.microsoft.com/rest/api/searchservice/)
   + [Vaardig heden maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Indexeer functie maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

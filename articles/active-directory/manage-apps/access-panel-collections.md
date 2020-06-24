@@ -3,27 +3,27 @@ title: Verzamelingen maken voor mijn apps-portals in Azure Active Directory | Mi
 description: Gebruik mijn apps-verzamelingen om mijn apps pagina's aan te passen voor een eenvoudiger mijn apps-ervaring voor uw eind gebruikers. Organiseer toepassingen in groepen met afzonderlijke tabbladen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61cc4c5d718b9588da97d60b070259d6bc6e3058
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120093"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761269"
 ---
-# <a name="create-collections-on-the-my-apps-portal"></a>Verzamelingen maken in de portal mijn apps
+# <a name="create-collections-on-the-my-apps-portal"></a>Verzamelingen maken in de portal Mijn apps
 
 Uw gebruikers kunnen de portal mijn apps gebruiken om de Cloud toepassingen te bekijken en te starten waartoe ze toegang hebben. Standaard worden alle toepassingen die een gebruiker kan openen, op één pagina weer gegeven. Als u een Azure AD Premium P1-of P2-licentie hebt, kunt u deze pagina beter indelen voor uw gebruikers en verzamelingen instellen. Met een verzameling kunt u toepassingen die verwant zijn (bijvoorbeeld op basis van de functie, taak of project) groeperen en weer geven op een afzonderlijk tabblad. Een verzameling past in feite een filter toe op de toepassingen waartoe een gebruiker al toegang heeft, zodat de gebruiker alleen de toepassingen ziet in de verzameling die aan hen zijn toegewezen.
 
@@ -34,7 +34,7 @@ Uw gebruikers kunnen de portal mijn apps gebruiken om de Cloud toepassingen te b
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als gebruikers beheerder of globale beheerder.
 
-2. Ga naar **Azure Active Directory** > **gebruikers instellingen**.
+2. Ga naar **Azure Active Directory**  >  **gebruikers instellingen**.
 
 3. Onder preview- **functies voor gebruikers onderdelen**selecteert u de **voor beeld-instellingen voor gebruikers onderdelen beheren**.
 
@@ -43,7 +43,7 @@ Uw gebruikers kunnen de portal mijn apps gebruiken om de Cloud toepassingen te b
    * **Alle** : Hiermee schakelt u de functies voor alle gebruikers in.
 
 > [!NOTE]
-> Gebruikers kunnen de portal mijn apps openen door de koppeling `https://myapps.microsoft.com` of de aangepaste koppeling voor uw organisatie te gebruiken, zoals. `https://myapps.microsoft.com/contoso.com` Nadat u de nieuwe ervaring voor mijn apps hebt ingeschakeld, wordt de banner **update mijn toepassingen is beschikbaar** weer gegeven aan de bovenkant van de pagina mijn apps en kunnen gebruikers **proberen** de nieuwe ervaring weer te geven. Gebruikers kunnen de nieuwe ervaring niet meer gebruiken door **Ja** te selecteren in het vaandel nieuwe ervaring aan de bovenkant van de pagina te **laten staan** .
+> Gebruikers kunnen de portal mijn apps openen door de koppeling `https://myapps.microsoft.com` of de aangepaste koppeling voor uw organisatie te gebruiken, zoals `https://myapps.microsoft.com/contoso.com` . Nadat u de nieuwe ervaring voor mijn apps hebt ingeschakeld, wordt de banner **update mijn toepassingen is beschikbaar** weer gegeven aan de bovenkant van de pagina mijn apps en kunnen gebruikers **proberen** de nieuwe ervaring weer te geven. Gebruikers kunnen de nieuwe ervaring niet meer gebruiken door **Ja** te selecteren in het vaandel nieuwe ervaring aan de bovenkant van de pagina te **laten staan** .
 
 ## <a name="create-a-collection"></a>Een verzameling maken
 
@@ -51,7 +51,7 @@ Als u een verzameling wilt maken, moet u een Azure AD Premium P1 of P2-licentie 
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als beheerder met een Azure AD Premium P1-of P2-licentie.
 
-2. Ga naar **Azure Active Directory** > **Enter prise-toepassingen**.
+2. Ga naar **Azure Active Directory**  >  **Enter prise-toepassingen**.
 
 3. Selecteer onder **beheren**de optie **verzamelingen**.
 
@@ -85,17 +85,17 @@ In de audit logboeken worden de verzamelings bewerkingen van mijn apps vastgeleg
 * Self-service toepassing toevoegen (eind gebruiker)
 * Self-service toepassing verwijderen (eind gebruiker)
 
-U kunt de controle Logboeken openen in de [Azure Portal](https://portal.azure.com) door **Azure Active Directory** > **bedrijfs toepassingen** > **audit logboeken** te selecteren in de sectie activiteit. Voor de **service**selecteert u **mijn apps**.
+U kunt de controle Logboeken openen in de [Azure Portal](https://portal.azure.com) door **Azure Active Directory**  >  **bedrijfs toepassingen**  >  **audit logboeken** te selecteren in de sectie activiteit. Voor de **service**selecteert u **mijn apps**.
 
 ## <a name="get-support-for-my-account-pages"></a>Ondersteuning voor mijn account pagina's ophalen
 
-Op de pagina mijn apps kan een gebruiker **mijn** > account selecteren om mijn account**weer te geven** om de account instellingen te openen. Op de pagina Azure AD- **Mijn account** kunnen gebruikers hun beveiligings gegevens, apparaten, wacht woorden en meer beheren. Ze hebben ook toegang tot hun Office-account instellingen.
+Op de pagina mijn apps kan een gebruiker **mijn**account selecteren om mijn account  >  **weer te geven** om de account instellingen te openen. Op de pagina Azure AD- **Mijn account** kunnen gebruikers hun beveiligings gegevens, apparaten, wacht woorden en meer beheren. Ze hebben ook toegang tot hun Office-account instellingen.
 
 Als u een ondersteunings aanvraag wilt indienen voor een probleem met de pagina Azure AD-account of de pagina Office-account, voert u de volgende stappen uit zodat uw aanvraag correct wordt gerouteerd: 
 
-* Open een ondersteunings aanvraag in het Azure Portal voor problemen met de pagina **Mijn account van Azure AD** . Ga naar **Azure Portal** > **Azure Active Directory** > **nieuwe ondersteunings aanvraag**.
+* Open een ondersteunings aanvraag in het Azure Portal voor problemen met de pagina **Mijn account van Azure AD** . Ga naar **Azure Portal**  >  **Azure Active Directory**  >  **nieuwe ondersteunings aanvraag**.
 
-* Voor problemen met de pagina **Mijn account in Office** opent u een ondersteunings aanvraag vanuit het Microsoft 365-beheer centrum. Ga naar de**ondersteuning**van **Microsoft 365-beheer centrum** > . 
+* Voor problemen met de pagina **Mijn account in Office** opent u een ondersteunings aanvraag vanuit het Microsoft 365-beheer centrum. Ga naar de ondersteuning van **Microsoft 365-beheer centrum**  >  **Support**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 [Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory](end-user-experiences.md)

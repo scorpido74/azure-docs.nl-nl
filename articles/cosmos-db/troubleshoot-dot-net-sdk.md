@@ -3,17 +3,17 @@ title: Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NE
 description: Gebruik functies als logboek registratie aan client zijde en andere hulpprogram ma's van derden voor het identificeren, diagnosticeren en Azure Cosmos DB oplossen van problemen met het gebruik van .NET SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c0f40b3c79c16046ef61e89cad72c714346d2674
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b24c0b045bc7d894496a59eda00f0e8835ea6a8d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672626"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887365"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -113,9 +113,11 @@ Als u het volgende fout bericht van 401 hebt ontvangen: de MAC-hand tekening in 
 
 1. De sleutel is gedraaid en voldoet niet aan de [Aanbevolen procedures](secure-access-to-data.md#key-rotation). Dit is meestal het geval. Het kan een paar seconden duren voordat de draaiing van de account sleutel van Cosmos DB kan worden uitgevoerd, afhankelijk van de grootte van het Cosmos DB-account.
    1. 401 MAC-hand tekening wordt kort na het draaien van een sleutel weer gegeven en stopt uiteindelijk zonder wijzigingen. 
-2. De sleutel is onjuist geconfigureerd op de toepassing, zodat de sleutel niet overeenkomt met het account.
+1. De sleutel is onjuist geconfigureerd op de toepassing, zodat de sleutel niet overeenkomt met het account.
    1. 401 MAC-handtekening probleem is consistent en gebeurt voor alle aanroepen
-3. Er is een race voorwaarde bij het maken van een container. Een instantie van de toepassing probeert toegang te krijgen tot de container voordat het maken van de container is voltooid. Het meest voorkomende scenario als de toepassing wordt uitgevoerd, en de container wordt verwijderd en opnieuw gemaakt met dezelfde naam terwijl de toepassing wordt uitgevoerd. De SDK probeert de nieuwe container te gebruiken, maar het maken van de container wordt nog uitgevoerd, zodat deze de sleutels niet bevat.
+1. De toepassing gebruikt de [alleen-lezen sleutels](secure-access-to-data.md#master-keys) voor schrijf bewerkingen.
+   1. 401 MAC-handtekening probleem treedt alleen op wanneer de toepassing schrijf aanvragen uitvoert, maar lees aanvragen worden voltooid.
+1. Er is een race voorwaarde bij het maken van een container. Een instantie van de toepassing probeert toegang te krijgen tot de container voordat het maken van de container is voltooid. Het meest voorkomende scenario als de toepassing wordt uitgevoerd, en de container wordt verwijderd en opnieuw gemaakt met dezelfde naam terwijl de toepassing wordt uitgevoerd. De SDK probeert de nieuwe container te gebruiken, maar het maken van de container wordt nog uitgevoerd, zodat deze de sleutels niet bevat.
    1. 401 MAC-handtekening probleem wordt kort weer gegeven na het maken van een container en pas nadat het maken van de container is voltooid.
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP-fout 400. De grootte van de aanvraag headers is te lang.

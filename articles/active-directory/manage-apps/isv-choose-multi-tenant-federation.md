@@ -2,22 +2,22 @@
 title: Kies het juiste federatieve protocol voor multi tenant-toepassing
 description: Richt lijnen voor onafhankelijke software leveranciers op het integreren met Azure Active Directory
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b3edbbe037c3874d639476e516b3732b7573d9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7dc40d0e4736b4fef8012b08737cbd07bc36bf
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443378"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763292"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Kies het juiste Federatie protocol voor uw multi tenant-toepassing
 

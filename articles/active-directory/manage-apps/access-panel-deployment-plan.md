@@ -2,25 +2,25 @@
 title: Een Azure Active Directory implementatie van het toegangs paneel plannen
 description: Richt lijnen voor het implementeren van het Azure Active Directory toegangs venster
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeffcfc919a6aeeae61ed79286d613d72c6b183c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897071"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761167"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory implementatie van het toegangs paneel plannen
 
@@ -63,7 +63,7 @@ Het toegangs venster is gratis en er zijn geen licenties nodig om op basis nivea
 
 * [Groepslid maatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [Self-service voor wachtwoordherstel](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [Self-service voor wacht woord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
@@ -81,10 +81,10 @@ Voer de volgende vereisten uit voordat u met dit project begint:
 
 De volgende tabel geeft een overzicht van de belangrijkste use cases voor een implementatie van het toegangs paneel:
 
-| Onderwerp| Beschrijving |
+| Gebied| Beschrijving |
 | - | - |
-| Toegang| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
-|Toegang | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
+| Access| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
+|Access | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
 | Controleren| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
 | Beheer| De levens cyclus van de gebruikers toewijzingen aan toepassingen en groepen die zijn verbonden met Azure AD, wordt gedefinieerd en bewaakt. |
 | Beveiliging| Toegang tot bronnen wordt geregeld via gebruikers-en groeps toewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot resources beheren. |
@@ -105,7 +105,7 @@ De functionaliteit van het toegangs venster kan geleidelijk worden ingeschakeld.
    * Microsoft Office 365-integratie
 
 1. Detectie van self-service app
-   * Self-service voor wachtwoordherstel
+   * Self-service voor wachtwoord opnieuw instellen
    * Multi-Factor Authentication instellingen
    * Apparaatbeheer
    * Gebruiksvoorwaarden
@@ -127,11 +127,11 @@ De volgende tabel bevat een overzicht van een aantal belang rijke configuraties 
 | De test groepen bepalen| Identificeer de Azure AD-beveiligings groep die moet worden gebruikt en zorg ervoor dat alle leden van de test groep deel uitmaken. |
 | Bepaal welke groep of groepen moeten worden ingeschakeld voor productie.| Identificeer de Azure AD-beveiligings groepen of de Active Directory groepen die zijn gesynchroniseerd met Azure AD om te worden gebruikt. Zorg ervoor dat alle leden van de pilot deel uitmaken van de groep. |
 | Gebruikers toestaan om SSO te gebruiken voor bepaalde typen toepassingen| Federatieve SSO, OAuth, wacht woord-SSO, app proxy |
-| Gebruikers toestaan self-service voor wachtwoord herstel te gebruiken | Ja |
-| Gebruikers toestaan om Multi-Factor Authentication te gebruiken| Ja |
+| Gebruikers toestaan self-service voor wachtwoord herstel te gebruiken | Yes |
+| Gebruikers toestaan om Multi-Factor Authentication te gebruiken| Yes |
 | Gebruikers toestaan om beheer van selfservice groepen te gebruiken voor bepaalde typen groepen| Beveiligings groepen, Office 365-groepen |
-| Gebruikers toestaan self-service app-beheer te gebruiken| Ja |
-| Gebruikers toestaan om toegangs beoordelingen te gebruiken| Ja |
+| Gebruikers toestaan self-service app-beheer te gebruiken| Yes |
+| Gebruikers toestaan om toegangs beoordelingen te gebruiken| Yes |
 
 ### <a name="plan-consent-strategy"></a>Strategie voor het plannen van toestemming
 
@@ -193,7 +193,7 @@ Zie voor meer informatie over het implementeren en configureren van uw SaaS-toep
 
 Wanneer gebruikers zich aanmelden bij SSO-toepassingen op basis van wacht woorden, moeten ze de uitbrei ding voor beveiligde aanmelding van mijn apps installeren en gebruiken. De uitbrei ding voert een script uit dat het wacht woord verzendt naar het aanmeld formulier van de toepassing. Gebruikers wordt gevraagd de uitbrei ding te installeren wanneer ze de SSO-toepassing op basis van een wacht woord voor het eerst starten. Meer informatie over de uitbrei ding vindt u in deze documentatie over [het installeren van de browser uitbreiding van het toegangs venster](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav).
 
-Als u SSO-toepassingen op basis van wacht woorden moet integreren, moet u een mechanisme definiëren om de uitbrei ding op schaal te implementeren met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Een aantal opties:
+Als u SSO-toepassingen op basis van wacht woorden moet integreren, moet u een mechanisme definiëren om de uitbrei ding op schaal te implementeren met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Opties zijn onder andere:
 
 * [groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
@@ -215,7 +215,7 @@ Een browser die is beveiligd met intune-beleid (micro soft Edge of Intune Manage
 
 ## <a name="plan-your-my-apps-deployment"></a>Uw implementatie van mijn apps plannen
 
-De basis van het toegangs venster is het start programma voor toepassingen van [https://myapps.microsoft.com](https://myapps.microsoft.com/)mijn apps, waarmee gebruikers toegang hebben. Met de pagina's van mijn apps hebben gebruikers één plek om hun werk te starten en naar hun benodigde toepassingen te gaan. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
+De basis van het toegangs venster is het start programma voor toepassingen van mijn apps, waarmee gebruikers toegang hebben [https://myapps.microsoft.com](https://myapps.microsoft.com/) . Met de pagina's van mijn apps hebben gebruikers één plek om hun werk te starten en naar hun benodigde toepassingen te gaan. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
 
 ![Een scherm opname van het deel venster apps](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 

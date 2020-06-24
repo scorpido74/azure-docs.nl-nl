@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269729"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708328"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Dynamische AES-128-versleuteling en de sleutelleveringsservice gebruiken
 > [!div class="op_single_selector"]
@@ -141,7 +141,7 @@ U kunt de [Azure Media Services Player](https://aka.ms/azuremediaplayer) gebruik
 In de vorige stap hebt u de URL die naar een manifest bestand verwijst, samengesteld. Uw client moet de benodigde gegevens uit de streaming-manifest bestanden ophalen om een aanvraag voor de key delivery-service te maken.
 
 ### <a name="manifest-files"></a>Manifest bestanden
-De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest bestand extra heren. De client probeert vervolgens de versleutelings sleutel op te halen van de key delivery service. De client moet ook de waarde voor de IV extra heren en gebruiken om de stroom te ontsleutelen. Het volgende code fragment toont `<Protection>` het element van het Smooth streaming-manifest:
+De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest bestand extra heren. De client probeert vervolgens de versleutelings sleutel op te halen van de key delivery service. De client moet ook de waarde voor de IV extra heren en gebruiken om de stroom te ontsleutelen. Het volgende code fragment toont het `<Protection>` element van het Smooth streaming-manifest:
 
 ```xml
     <Protection>
@@ -159,7 +159,7 @@ De client moet de URL (die ook inhoud sleutel-ID [Kid] bevat) uit het manifest b
 
 In het geval van HLS wordt het basis manifest onderverdeeld in segment bestanden. 
 
-Het basis manifest is bijvoorbeeld: http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Het bevat een lijst met de bestands namen van het segment.
+Het basis manifest is bijvoorbeeld: http: \/ /test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/manifest (Format = M3U8-AAPL). Het bevat een lijst met de bestands namen van het segment.
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ Het basis manifest is bijvoorbeeld: http:\//test001.Origin.mediaservices.Windows
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-Als u een van de segment bestanden in een tekst editor opent (bijvoorbeeld http:\//test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), bevat deze een #EXT-X-sleutel. Dit geeft aan dat het bestand is versleuteld.
+Als u een van de segment bestanden in een tekst editor opent (bijvoorbeeld http: \/ /test001.Origin.mediaservices.Windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ISM/QualityLevels (514369)/manifest (video, Format = M3U8-AAPL), bevat deze een #EXT-X-sleutel. Dit geeft aan dat het bestand is versleuteld.
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -239,14 +239,14 @@ De volgende code laat zien hoe u een aanvraag verzendt naar de Media Services ke
 
 1. Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md).
 
-2. Voeg de volgende elementen toe aan appSettings, zoals gedefinieerd in het bestand app. config:
+2. Voeg de volgende elementen toe aan appSettings, zoals gedefinieerd in uw app.config-bestand:
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Voorbeeld
+### <a name="example"></a><a id="example"></a>Hierbij
 
 Overschrijf de code in uw Program.cs-bestand met de code die wordt weergegeven in deze sectie.
  

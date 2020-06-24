@@ -4,16 +4,16 @@ description: Meer informatie over het bewaken van de prestaties en beschik baarh
 author: bwren
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: a31636e4e56ddeb9f48cd8c955dc4415dacdc178
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0d675bd53eac728918c951b1db0dae0188f75df1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234934"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262783"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Bewakings Azure Cosmos DB
 
@@ -27,11 +27,11 @@ U kunt uw gegevens bewaken met metrieken aan de client zijde en aan de server zi
 
 * **Controleren met Diagnostische logboeken in azure monitor:** U kunt de logboeken van uw Azure Cosmos-account bewaken en dash boards maken op basis van de Azure Monitor. Telemetrie, zoals gebeurtenissen en traceringen die worden uitgevoerd bij een tweede granulatie, worden opgeslagen als Logboeken. Als bijvoorbeeld de door Voer van een container verandert, worden de eigenschappen van een Cosmos-account gewijzigd, worden deze gebeurtenissen vastgelegd in de logboeken. U kunt deze logboeken analyseren door query's uit te voeren op de verzamelde gegevens. Zie de sectie [logboek gegevens analyseren](#analyze-log-data) in dit artikel voor meer informatie.
 
-* **Bewaakt programmatisch met sdk's:** U kunt uw Azure Cosmos-account programmatisch controleren met behulp van de .NET-, Java-, Python-, node. js-Sdk's en de headers in REST API. Zie de sectie [bewaking Azure Cosmos DB via een programma](#monitor-cosmosdb-programmatically) in dit artikel voor meer informatie.
+* **Bewaakt programmatisch met sdk's:** U kunt uw Azure Cosmos-account programmatisch controleren met behulp van de .NET-, Java-, Python-, Node.js Sdk's en de headers in REST API. Zie de sectie [bewaking Azure Cosmos DB via een programma](#monitor-cosmosdb-programmatically) in dit artikel voor meer informatie.
 
 In de volgende afbeelding ziet u verschillende opties die beschikbaar zijn voor het bewaken van Azure Cosmos DB-account via Azure Portal:
 
-![Beschik bare bewakings opties in Azure Portal](media/monitor-cosmos-db/monitoring-options-portal.png)
+:::image type="content" source="media/monitor-cosmos-db/monitoring-options-portal.png" alt-text="Beschik bare bewakings opties in Azure Portal" border="false":::
 
 Wanneer u Azure Cosmos DB gebruikt, kunt u aan de client zijde de details verzamelen voor aanvraag kosten, activiteits-ID, uitzonde ring/stack tracerings informatie, HTTP-status/substatuscode, diagnostische teken reeks om een probleem op te lossen dat zich kan voordoen. Deze informatie is ook vereist als u contact moet opdoen met het ondersteunings team van Azure Cosmos DB.  
 
@@ -62,7 +62,7 @@ Azure Cosmos DB worden dezelfde soorten bewakings gegevens verzameld als andere 
 
 De **overzichts** pagina in de Azure portal voor elke Azure Cosmos-Data Base bevat een korte weer gave van het database gebruik, inclusief de aanvraag en het facturerings gebruik per uur. Dit is nuttige informatie, maar slechts een kleine hoeveelheid beschik bare bewakings gegevens. Sommige van deze gegevens worden automatisch verzameld en beschikbaar voor analyse zodra u de data base maakt terwijl u extra gegevens verzameling kunt inschakelen met een bepaalde configuratie.
 
-![Overzichts pagina](media/monitor-cosmos-db/overview-page.png)
+:::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="Overzichts pagina":::
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>Metrische gegevens analyseren
 
@@ -82,27 +82,27 @@ U kunt metrische gegevens voor Azure Cosmos DB met metrische gegevens uit andere
 
 1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 
-   ![Deel venster metrische gegevens in Azure Monitor](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
 
-   ![Kies een Cosmos DB account om de metrische gegevens weer te geven](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+   :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Kies een Cosmos DB account om de metrische gegevens weer te geven":::
 
 1. Vervolgens kunt u een metriek selecteren in de lijst met beschik bare metrische gegevens. U kunt metrische gegevens selecteren die specifiek zijn voor aanvraag eenheden, opslag, latentie, Beschik baarheid, Cassandra en andere. Zie het artikel [metrische gegevens per categorie](monitor-cosmos-db-reference.md) voor meer informatie over alle beschik bare metrische gegevens in deze lijst. In dit voor beeld selecteren we **aanvraag eenheden** en **Gem** als de aggregatie waarde.
 
    Naast deze details kunt u ook het **tijds bereik** en de **tijd granulatie** van de metrische gegevens selecteren. U kunt Maxi maal de metrische gegevens weer geven voor de afgelopen 30 dagen.  Nadat u het filter hebt toegepast, wordt een grafiek weer gegeven op basis van het filter. U kunt het gemiddelde aantal verbruikte aanvraag eenheden per minuut voor de geselecteerde periode bekijken.  
 
-   ![Kies een waarde in het Azure Portal](./media/monitor-cosmos-db/metric-types.png)
+   :::image type="content" source="./media/monitor-cosmos-db/metric-types.png" alt-text="Kies een waarde in het Azure Portal":::
 
 ### <a name="add-filters-to-metrics"></a>Filters toevoegen aan metrische gegevens
 
 U kunt ook de metrische gegevens en de grafiek die worden weer gegeven met een specifieke **verzamelingnaam**, **DATABASENAME**, **OperationType**, **Region**en **status**code filteren. Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en kiest u de vereiste eigenschap, zoals **OperationType** , en selecteert u een waarde zoals **query**. In de grafiek worden vervolgens de verbruikte aanvraag eenheden voor de query bewerking voor de geselecteerde periode weer gegeven. De bewerkingen die zijn uitgevoerd via een opgeslagen procedure, worden niet geregistreerd, zodat ze niet beschikbaar zijn onder de metrische waarde voor OperationType.
 
-![Een filter toevoegen om de metrische granulatie te selecteren](./media/monitor-cosmos-db/add-metrics-filter.png)
+:::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Een filter toevoegen om de metrische granulatie te selecteren":::
 
 U kunt metrische gegevens groeperen met behulp van de optie **splitsing Toep assen** . U kunt bijvoorbeeld de aanvraag eenheden per bewerkings type groeperen en de grafiek voor alle bewerkingen tegelijk bekijken, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Splitsings filter Toep assen toevoegen](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+:::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="Splitsings filter Toep assen toevoegen":::
 
 ## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>Logboek gegevens analyseren
 

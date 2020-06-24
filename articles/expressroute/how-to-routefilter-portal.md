@@ -4,20 +4,20 @@ description: In dit artikel wordt beschreven hoe u route filters configureert vo
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54674be0010bd062cfe6263db4167a24805a9e5a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618554"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727123"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Route filters voor micro soft-peering configureren: Azure Portal
 > [!div class="op_single_selector"]
-> * [Azure-Portal](how-to-routefilter-portal.md)
+> * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure-CLI](how-to-routefilter-cli.md)
 > 
@@ -26,7 +26,7 @@ Met routefilters kunt u een subset van ondersteunde services gebruiken via Micro
 
 Office 365-services zoals Exchange Online, share point online en Skype voor bedrijven, en Azure-Services, zoals Storage en SQL DB, zijn toegankelijk via micro soft-peering. Wanneer micro soft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voor voegsels die betrekking hebben op deze services, geadverteerd via de BGP-sessies die zijn ingesteld. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie [BGP-community's](expressroute-routing.md#bgp)voor een lijst met de waarden van de BGP-Community en de services waaraan ze zijn toegewezen.
 
-Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt het volgende doen:
+Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt:
 
 - Ongewenste voor voegsels uitfilteren door route filters op BGP-community's toe te passen. Dit is een standaard netwerk praktijk en wordt meestal gebruikt in veel netwerken.
 
@@ -86,7 +86,7 @@ Maak een lijst met de [BGP-Community-waarden](expressroute-routing.md#bgp) die u
 Een route filter kan slechts één regel bevatten en de regel moet van het type toestaan zijn. Aan deze regel kan een lijst met BGP Community-waarden zijn gekoppeld.
 
 ### <a name="1-create-a-route-filter"></a>1. een route filter maken
-U kunt een route filter maken door de optie voor het maken van een nieuwe resource te selecteren. Klik op **een resource** > maken**netwerk** > -**RouteFilter**, zoals wordt weer gegeven in de volgende afbeelding:
+U kunt een route filter maken door de optie voor het maken van een nieuwe resource te selecteren. Klik op **een resource maken**  >  **netwerk**  >  -**RouteFilter**, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Een route filter maken](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 

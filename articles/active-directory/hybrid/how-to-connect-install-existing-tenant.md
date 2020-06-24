@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2d8117e00b5da47dd489983f5fe1494cf814e07
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71336822"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886145"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: wanneer u een bestaande Tenant hebt
 In de meeste onderwerpen over het gebruik van Azure AD Connect wordt ervan uitgegaan dat u begint met een nieuwe Azure AD-Tenant en dat er geen gebruikers of andere objecten zijn. Maar als u bent begonnen met een Azure AD-Tenant, deze hebt gevuld met gebruikers en andere objecten en nu verbinding maken wilt gebruiken, is dit onderwerp voor u.
@@ -34,7 +34,7 @@ U kunt on-premises en andere gebruikers in de Cloud beheren. Een veelvoorkomend 
 Als u gebruikers in azure AD wilt beheren die zich ook in on-premises AD bevinden en later verbinding willen gebruiken, zijn er enkele extra zaken die u moet overwegen.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Synchroniseren met bestaande gebruikers in azure AD
-Wanneer u Azure AD Connect installeert en u begint met het synchroniseren, voert de Azure AD Sync-Service (in azure AD) een controle uit op elk nieuw object en probeert een bestaand object te vinden dat u wilt vergelijken. Er worden drie kenmerken gebruikt voor dit proces: **userPrincipalName**, **proxyAddresses**en **Source Anchor**/**immutableID**. Een overeenkomst op **userPrincipalName** en **proxyAddresses** wordt aangeduid als een **zachte overeenkomst**. Een overeenkomst op **Source Anchor** wordt aangeduid als **hard match**. Voor het kenmerk **proxyAddresses** wordt alleen de waarde met **SMTP:**, het primaire e-mail adres, gebruikt voor de evaluatie.
+Wanneer u Azure AD Connect installeert en u begint met het synchroniseren, voert de Azure AD Sync-Service (in azure AD) een controle uit op elk nieuw object en wordt geprobeerd een bestaand object te vinden dat u wilt vergelijken. Er worden drie kenmerken gebruikt voor dit proces: **userPrincipalName**, **proxyAddresses**en **Source Anchor** / **immutableID**. Een overeenkomst op **userPrincipalName** en **proxyAddresses** wordt aangeduid als een **zachte overeenkomst**. Een overeenkomst op **Source Anchor** wordt aangeduid als **hard match**. Voor het kenmerk **proxyAddresses** wordt alleen de waarde met **SMTP:**, het primaire e-mail adres, gebruikt voor de evaluatie.
 
 De overeenkomst wordt alleen geëvalueerd voor nieuwe objecten die afkomstig zijn van verbinding maken. Als u een bestaand object wijzigt zodat dit overeenkomt met een van deze kenmerken, ziet u in plaats daarvan een fout.
 

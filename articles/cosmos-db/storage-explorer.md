@@ -3,16 +3,16 @@ title: Azure Cosmos DB-resources beheren met Azure Storage Explorer
 description: Meer informatie over het maken van verbinding met Azure Cosmos DB en het beheren van de resources met behulp van Azure Storage Explorer.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a43e49ab29780e718139b677b780443e5e31e2ab
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982765"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262239"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Werken met gegevens in Azure Storage Explorer
 
@@ -31,23 +31,23 @@ Installeer hier de nieuwste Azure Storage Explorer-bits: [Azure Storage Explorer
 
 1. Klik nadat u **Azure Storage Explorer** heb geïnstalleerd op het **invoegtoepassing**pictogram aan de linkerkant, zoals in de volgende afbeelding:
 
-   ![Pictogram invoegtoepassing](./media/storage-explorer/plug-in-icon.png)
+   :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="Pictogram invoegtoepassing":::
 
 2. Selecteer **Een Azure-account toevoegen** en klik op **Aanmelden**.
 
-   ![Verbinding maken met Azure-abonnement](./media/storage-explorer/connect-to-azure-subscription.png)
+   :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="Verbinding maken met Azure-abonnement":::
 
 2. Selecteer **Aanmelden** in het **aanmeldingsvenster van Azure** en voer uw Azure-referenties in.
 
-    ![Hier](./media/storage-explorer/sign-in.png)
+    :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="Aanmelden":::
 
 3. Selecteer uw abonnement in de lijst en klik op **Toepassen**.
 
-    ![Toepassen](./media/storage-explorer/apply-subscription.png)
+    :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="Toep assen":::
 
     Het Verkenner-venster wordt bijgewerkt en de accounts in het geselecteerde abonnement worden weergegeven.
 
-    ![Lijst met accounts](./media/storage-explorer/account-list.png)
+    :::image type="content" source="./media/storage-explorer/account-list.png" alt-text="Lijst met accounts":::
 
     U hebt uw **Cosmos DB-account** gekoppeld aan uw Azure-abonnement.
 
@@ -57,11 +57,11 @@ Een andere manier van verbinding maken met een Azure Cosmos DB is het gebruik va
 
 1. Ga naar **Lokaal en gekoppeld** in het linkerdeelvenster, klik met de rechtermuisknop op **Cosmos DB-accounts** en kies **Verbinding maken met Cosmos DB...**
 
-    ![Verbinding maken met Cosmos DB met een verbindingsreeks](./media/storage-explorer/connect-to-db-by-connection-string.png)
+    :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Verbinding maken met Cosmos DB met een verbindingsreeks":::
 
 2. Momenteel is er alleen ondersteuning voor de SQL- en Table-API. Kies een API, plak uw **verbindingsreeks**, voer het **accountlabel** in, klik op **Volgende** om het overzicht te controleren en klik vervolgens op **Verbinden** om verbinding te maken met de Azure Cosmos DB-account. Zie [de Connection String ophalen](manage-with-powershell.md#list-keys)voor informatie over het ophalen van de primaire Connection String.
 
-    ![Verbindingsreeks](./media/storage-explorer/connection-string.png)
+    :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Verbindings reeks":::
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>Verbinding maken met Azure Cosmos DB met behulp van een lokale emulator
 
@@ -71,11 +71,11 @@ Gebruik de volgende stappen uit om verbinding te maken met een Cosmos Azure DB v
 
 2. Ga naar **Lokaal en gekoppeld** in het linkerdeelvenster, klik met de rechtermuisknop op **Cosmos DB-accounts** en kies **Verbinding maken met Cosmos DB Emulator...**
 
-    ![Verbinding maken met Cosmos DB Emulator](./media/storage-explorer/emulator-entry.png)
+    :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Verbinding maken met Cosmos DB Emulator":::
 
 3. Momenteel is er alleen ondersteuning voor de SQL-API. Plak uw **verbindingsreeks**, voer het **accountlabel** in, klik op **Volgende** om het overzicht te controleren en klik vervolgens op **Verbinden** om verbinding te maken met de Azure Cosmos DB-account. Zie [de Connection String ophalen](manage-with-powershell.md#list-keys)voor informatie over het ophalen van de primaire Connection String.
 
-    ![Het dialoogvenster Verbinding maken met Cosmos DB Emulator](./media/storage-explorer/emulator-dialog.png)
+    :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="Het dialoogvenster Verbinding maken met Cosmos DB Emulator":::
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB-resourcebeheer
@@ -95,52 +95,52 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 
 * Klik met de rechtermuisknop op een Azure Cosmos DB-account of een database. U kunt **Openen in Portal** kiezen en de bron beheren in de browser op de Azure-portal.
 
-     ![Openen in portal](./media/storage-explorer/open-in-portal.png)
+     :::image type="content" source="./media/storage-explorer/open-in-portal.png" alt-text="Openen in portal":::
 
 * U kunt ook Azure Cosmos DB-account, database, verzameling toevoegen aan **Snelle toegang**.
 * Met **Zoeken vanaf hier** kunt u naar sleutelwoorden zoeken onder het geselecteerde pad.
 
-    ![zoeken vanaf hier](./media/storage-explorer/search-from-here.png)
+    :::image type="content" source="./media/storage-explorer/search-from-here.png" alt-text="zoeken vanaf hier":::
 
 ### <a name="database-and-collection-management"></a>Database- en verzamelingbeheer
 #### <a name="create-a-database"></a>Een database maken
 -   Klik met de rechtermuisknop op het Azure Cosmos DB-account, kies **Database maken**, voer de naam van de database in en druk op **Enter**.
 
-    ![Database maken](./media/storage-explorer/create-database.png)
+    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="Database maken":::
 
 #### <a name="delete-a-database"></a>Een database verwijderen
 - Klik met de rechtermuisknop op de database, klik op **Database verwijderen **en klik in het pop-upvenster op **Ja**. Het databaseknooppunt wordt verwijderd en het Azure Cosmos DB die Cosmos-account wordt automatisch vernieuwd.
 
-    ![Database1 verwijderen](./media/storage-explorer/delete-database1.png)
+    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="Database1 verwijderen":::
 
-    ![Database2 verwijderen](./media/storage-explorer/delete-database2.png)
+    :::image type="content" source="./media/storage-explorer/delete-database2.png" alt-text="Database2 verwijderen":::
 
 #### <a name="create-a-collection"></a>Een verzameling maken
 1. Klik met de rechter muisknop op uw data base, kies **verzameling maken**en geef de volgende informatie op, zoals **verzamelings-id**, **opslag capaciteit**, enzovoort. Klik op **OK** om te volt ooien.
 
-    ![Verzameling1 maken](./media/storage-explorer/create-collection.png)
+    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Verzameling1 maken":::
 
-    ![Verzameling2 maken](./media/storage-explorer/create-collection2.png)
+    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Verzameling2 maken":::
 
 2. Selecteer **Onbeperkt** om de partitiesleutel te kunnen opgeven. Klik vervolgens op **OK** om te voltooien.
 
     Als bij het maken van een verzameling een partitiesleutel wordt gebruikt, kan de partitiesleutelwaarde van de verzameling niet meer worden gewijzigd.
 
-    ![Partitiesleutel](./media/storage-explorer/partitionkey.png)
+    :::image type="content" source="./media/storage-explorer/partitionkey.png" alt-text="Partitiesleutel":::
 
 #### <a name="delete-a-collection"></a>Een verzameling verwijderen
 - Klik met de rechtermuisknop op de verzameling, klik op **Verzameling verwijderen**en klik vervolgens op **Ja** in het pop-upvenster.
 
     Het verzamelingsknooppunt wordt verwijderd en de database wordt automatisch vernieuwd.
 
-    ![Verzameling verwijderen](./media/storage-explorer/delete-collection.png)
+    :::image type="content" source="./media/storage-explorer/delete-collection.png" alt-text="Verzameling verwijderen":::
 
 ### <a name="document-management"></a>Documentbeheer
 
 #### <a name="create-and-modify-documents"></a>Documenten maken en wijzigen
 - Als u een nieuw document wilt maken, opent u **Documenten** in het linker venster, klikt u op **Nieuw document**, bewerkt u de inhoud in het rechter deelvenster en klikt u vervolgens op **Opslaan**. U kunt ook een bestaand document bijwerken en vervolgens op **Opslaan** klikken. Wijzigingen kunnen worden genegeerd door op **Negeren** te klikken.
 
-    ![Document](./media/storage-explorer/document.png)
+    :::image type="content" source="./media/storage-explorer/document.png" alt-text="Document":::
 
 #### <a name="delete-a-document"></a>Een document verwijderen
 - Klik op de knop **Verwijderen** om het geselecteerde document te verwijderen.
@@ -148,7 +148,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 #### <a name="query-for-documents"></a>Query voor documenten
 - Bewerk het documentfilter door een [SQL query](how-to-sql-query.md) in te voeren en op **Toepassen** te klikken.
 
-    ![Documentfilter](./media/storage-explorer/document-filter.png)
+    :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Documentfilter":::
 
 
 
@@ -158,7 +158,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 1. Als u een nieuw hoekpunt wilt maken, opent u **Grafiek** vanuit het linkervenster, klikt u op **Nieuw hoekpunt**, bewerkt u de inhoud en klikt u vervolgens op **OK**.
 2. Als u een bestaand hoekpunt wilt wijzigen, klikt u op het penpictogram in het rechterdeelvenster.
 
-    ![Graph](./media/storage-explorer/vertex.png)
+    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Graph":::
 
 #### <a name="delete-a-graph"></a>Een grafiek verwijderen
 - Als u een hoekpunt wilt verwijderen, klikt u op het prullenbakpictogram naast de naam van het hoekpunt.
@@ -166,7 +166,7 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 #### <a name="filter-for-graph"></a>Filteren op grafiek
 - Bewerk het grafiekfilter door een [Gremlin-query](gremlin-support.md) in te voeren en op **Filter toepassen** te klikken.
 
-    ![Grafiekfilter](./media/storage-explorer/graph-filter.png)
+    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="Grafiekfilter":::
 
 ### <a name="table-management"></a>Tabelbeheer
 
@@ -174,29 +174,29 @@ Door met de rechtermuisknop op een abonnement in het deelvenster Verkenner te kl
 1. Ga als volgt te werk om een nieuwe tabel te maken: open **Entiteiten** vanuit het linkerdeelvenster, klik op **Toevoegen**, bewerk de inhoud in **Entiteit toevoegen**, voeg een eigenschap toe door te klikken op de knop **Eigenschap toevoegen** en klik vervolgens op **Invoegen**.
 2. Als u een tabel wilt wijzigen, klikt u op **Bewerken**, wijzigt u de inhoud en klikt u vervolgens op **Bijwerken**.
 
-    ![Tabel](./media/storage-explorer/table.png)
+    :::image type="content" source="./media/storage-explorer/table.png" alt-text="Tabel":::
 
 #### <a name="import-and-export-table"></a>Tabel importeren en exporteren
 1. Als u wilt importeren, klikt u op de knop **Importeren** en kiest u een bestaande tabel.
 2. Als u wilt exporteren, klikt u op de knop **Exporteren** en kiest u een bestemming.
 
-    ![Tabel importeren en exporteren](./media/storage-explorer/table-import-export.png)
+    :::image type="content" source="./media/storage-explorer/table-import-export.png" alt-text="Tabel importeren en exporteren":::
 
 #### <a name="delete-entities"></a>Entiteiten verwijderen
 - Selecteer de entiteiten en klik op knop **Verwijderen**.
 
-    ![Tabel verwijderen](./media/storage-explorer/table-delete.png)
+    :::image type="content" source="./media/storage-explorer/table-delete.png" alt-text="Tabel verwijderen":::
 
 #### <a name="query-table"></a>Een query uitvoeren op een tabel
 - Klik op de knop **Query**, voer queryvoorwaarden in en klik op de knop **Query uitvoeren**. Sluit het queryvenster door te klikken op de knop **Query sluiten**.
 
-    ![Query uitvoeren op tabel](./media/storage-explorer/table-query.png)
+    :::image type="content" source="./media/storage-explorer/table-query.png" alt-text="Query uitvoeren op tabel":::
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Opgeslagen procedures, triggers en UDF's beheren
 * Als u een opgeslagen procedure wilt maken, klikt u met de rechtermuisknop in de linkerboomstructuur op **Opgeslagen procedure**, kiest u **Opgeslagen procedure maken**, voert u links een naam in, typt u de opgeslagen-procedurescripts in het rechter venster en klikt u vervolgens op **Maken**.
 * U kunt ook bestaande opgeslagen procedures bewerken door erop te dubbelklikken, de procedure te bewerken en op **Bijwerken** te klikken om de wijzigingen op te slaan of op **Negeren** om de wijziging te annuleren.
 
-    ![Opgeslagen procedure](./media/storage-explorer/stored-procedure.png)
+    :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Opgeslagen procedure":::
 * De bewerkingen voor **triggers** en **UDF** zijn vergelijkbaar met die voor **opgeslagen procedures**.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
@@ -228,7 +228,7 @@ Wanneer Storage Explorer een van deze zelfondertekende certificaten tegenkomt, k
 3. Voer `s_client -showcerts -connect microsoft.com:443` uit
 4. Zoek naar zelfondertekende certificaten. Als u niet zeker weet welke certificaten zelfondertekend zijn, zoek dan overal waar het onderwerp ('s:') en de certificaatverlener ('i') hetzelfde zijn.
 5.  Als u zelfondertekende certificaten hebt gevonden, kopieert en plakt u alles vanaf **---BEGIN CERTIFICATE---** tot en met **---END CERTIFICATE---** naar een nieuw .cer-bestand. Doe dit voor elk certificaat.
-6.  Open Storage Explorer en ga vervolgens naar**certificaten**voor het importeren van**SSL-certificaten** >  **bewerken** > . Gebruik de bestandskiezer en zoek, selecteer en open de cer-bestanden die u hebt gemaakt.
+6.  Open Storage Explorer en ga vervolgens naar certificaten voor het importeren van SSL-certificaten **bewerken**  >  **SSL Certificates**  >  **Import Certificates**. Gebruik de bestandskiezer en zoek, selecteer en open de cer-bestanden die u hebt gemaakt.
 
 Als u met behulp van de bovenstaande stappen geen zelfondertekende certificaten kunt vinden, stuur ons dan feedback, zodat we u verder kunnen helpen.
 
@@ -246,7 +246,7 @@ Als u uw abonnementen niet kunt ophalen nadat u zich hebt aangemeld:
   - .extaccounts
 - Bekijk tijdens het aanmelden de console voor ontwikkelhulpprogramma's (F12) voor eventuele foutberichten
 
-![console](./media/storage-explorer/console.png)
+:::image type="content" source="./media/storage-explorer/console.png" alt-text="module":::
 
 #### <a name="unable-to-see-the-authentication-page"></a>Kan de verificatiepagina niet zien
 
@@ -279,19 +279,19 @@ U kunt Microsoft Azure Cosmos DB-knooppunten in het linkerdeelvenster niet weerg
 
 Er is geen reactie na klikken op het knooppunt 'Ontwikkeling' onder het knooppunt 'Lokaal en gekoppeld' in het linkerdeelvenster.  Dit gedrag is verwacht. De lokale emulator van Microsoft Azure Cosmos DB wordt in de volgende release ondersteund.
 
-![Knooppunt 'Ontwikkeling'](./media/storage-explorer/development.png)
+:::image type="content" source="./media/storage-explorer/development.png" alt-text="Knooppunt 'Ontwikkeling'":::
 
 ### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>Fout met toevoegen van Microsoft Azure Cosmos DB-account in het knooppunt 'Lokaal en gekoppeld'
 
 Als u onderstaande fout ziet na het toevoegen van een Microsoft Azure Cosmos DB-account in het knooppunt 'Lokaal en gekoppeld', controleert u of u de juiste verbindingsreeks gebruikt.
 
-![Fout met toevoegen van Microsoft Azure Cosmos DB-account in 'Lokaal en gekoppeld'](./media/storage-explorer/attached-error.png)
+:::image type="content" source="./media/storage-explorer/attached-error.png" alt-text="Fout met toevoegen van Microsoft Azure Cosmos DB-account in 'Lokaal en gekoppeld'":::
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Fout met uitvouwen van Azure-Cosmos DB-knooppunt
 
 Mogelijk ziet u onderstaande fout tijdens een poging de structuurknooppunten links uit te vouwen.
 
-![Uitvouwfout](./media/storage-explorer/expand-error.png)
+:::image type="content" source="./media/storage-explorer/expand-error.png" alt-text="Uitvouwfout":::
 
 Probeer de volgende suggesties:
 
@@ -300,7 +300,7 @@ Probeer de volgende suggesties:
 
 ## <a name="contact-us"></a>Contact opnemen
 
-Als geen van de oplossingen voor u werkt, stuurt u een e-mail naar Azure Cosmos DB dev tool ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) met informatie over het probleem om de problemen op te lossen.
+Als geen van de oplossingen voor u werkt, stuurt u een e-mail naar Azure Cosmos DB dev tool ( [cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com) ) met informatie over het probleem om de problemen op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

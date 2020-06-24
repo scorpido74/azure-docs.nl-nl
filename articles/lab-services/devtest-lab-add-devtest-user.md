@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284276"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691676"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Eigen aren en gebruikers toevoegen in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -40,7 +40,7 @@ In de volgende tabel ziet u de acties die kunnen worden uitgevoerd door gebruike
 | **Acties die gebruikers in deze rol kunnen uitvoeren** | **DevTest Labs-gebruiker** | **Eigenaar** | **Inzender** |
 | --- | --- | --- | --- |
 | **Lab-taken** | | | |
-| Gebruikers toevoegen aan een Lab |Nee |Ja |Nee |
+| Gebruikers toevoegen aan een Lab |Nee |Yes |Nee |
 | Instellingen voor update kosten |Nee |Ja |Ja |
 | **VM-basis taken** | | | |
 | Aangepaste installatie kopieën toevoegen en verwijderen |Nee |Ja |Ja |
@@ -81,7 +81,7 @@ De volgende stappen leiden u door het proces van het toevoegen van een eigenaar 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Naast het toevoegen van gebruikers in de Azure Portal, kunt u een externe gebruiker aan uw Lab toevoegen met behulp van een Power shell-script. In het volgende voor beeld wijzigt u de parameter waarden onder de opmerking **waarden die moeten worden gewijzigd** .
-U kunt de `subscriptionId`waarden, `labResourceGroup`en `labName` , ophalen van de Blade Lab in de Azure Portal.
+U kunt de `subscriptionId` waarden, `labResourceGroup` en, ophalen `labName` van de Blade lab in de Azure Portal.
 
 > [!NOTE]
 > In het voorbeeld script wordt ervan uitgegaan dat de opgegeven gebruiker is toegevoegd als een gast aan de Active Directory en mislukt als dat niet het geval is. Als u een gebruiker wilt toevoegen die niet aan een Lab Active Directory, gebruikt u de Azure Portal om de gebruiker aan een rol toe te wijzen, zoals aangegeven in de sectie, [een eigenaar of gebruiker toevoegen op het niveau van het lab](#add-an-owner-or-user-at-the-lab-level).   
@@ -131,7 +131,7 @@ Voer de volgende stappen uit om een eigenaar aan een Azure-abonnement toe te voe
 6. Selecteer op de Blade **een rol selecteren** de optie **eigenaar**.
 7. Voer op de Blade **gebruikers toevoegen** het e-mail adres of de naam in van de gebruiker die u wilt toevoegen als een eigenaar. Als de gebruiker niet kan worden gevonden, wordt er een fout bericht weer gegeven waarin het probleem wordt uitgelegd. Als de gebruiker wordt gevonden, wordt die gebruiker weer gegeven in het tekstvak **gebruiker** .
 8. Selecteer de gevonden gebruikers naam.
-9. Kies **Selecteren**.
+9. Selecteer **Selecteren**.
 10. Selecteer **OK** om de Blade **toegang toevoegen** te sluiten.
 11. Wanneer u terugkeert naar de Blade **gebruikers** , is de gebruiker toegevoegd als een eigenaar. Deze gebruiker is nu een eigenaar van alle Labs die in dit abonnement is gemaakt, en kan dus eigenaars taken uitvoeren. 
 

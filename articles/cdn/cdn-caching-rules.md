@@ -10,15 +10,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2019
 ms.author: allensu
-ms.openlocfilehash: 874ec75fb9173b6cee50bf8880510464fa13e9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f30943eb0cc72f677785d1228b47b65764c1e7d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254237"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887854"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Cachinggedrag in Azure CDN beheren met regels voor opslaan in cache
 
@@ -75,7 +75,7 @@ Voor globale en aangepaste cache regels kunt u de verloop duur van de cache opge
 
 Voor aangepaste cache regels zijn twee match-voor waarden beschikbaar:
  
-- **Pad**: deze voor waarde komt overeen met het pad van de URL, met uitzonde ring van de domein naam\*, en ondersteunt het Joker teken (). Bijvoorbeeld, _/MyFile.html_, _/mijn/map/*_ en _/My/images/*. jpg_. De maximale lengte is 260 tekens.
+- **Pad**: deze voor waarde komt overeen met het pad van de URL, met uitzonde ring van de domein naam, en ondersteunt het Joker teken ( \* ). Bijvoorbeeld _/myfile.html_, _/mijn/map/*_ en _/My/images/*. jpg_. De maximale lengte is 260 tekens.
 
 - **Extensie**: deze voor waarde komt overeen met de bestands extensie van het aangevraagde bestand. U kunt een lijst met door komma's gescheiden bestands extensies opgeven. Bijvoorbeeld _. jpg_, _. mp3_of _. png_. Het maximum aantal uitbrei dingen is 50 en het maximum aantal tekens per uitbrei ding is 16. 
 
@@ -103,7 +103,7 @@ Globale en aangepaste regels voor opslaan in cache worden in de volgende volg or
    - Cache gedrag: **instellen als ontbreekt**
    - Verloop tijd van cache: 3 dagen
 
-Wanneer deze regels zijn ingesteld, wordt een aanvraag voor _ &lt;eind&gt;punt-hostnaam_. azureedge.net/Home/index.html activeert de aangepaste cache regel #2, die is ingesteld op: **instellen als ontbrekend** en 3 dagen. Als het bestand *index. html* ook `Expires` http- `Cache-Control` headers bevat, worden deze gehonoreerd. Als deze headers niet zijn ingesteld, wordt het bestand drie dagen in de cache opgeslagen.
+Wanneer deze regels zijn ingesteld, wordt een aanvraag voor _ &lt; eind &gt; punt-hostnaam_. azureedge.net/Home/index.html activeert de regel voor aangepaste caching #2, ingesteld op: **set if Missing** en 3 dagen. Als de *index.html* `Cache-Control` -bestand of `Expires` http-headers zijn, worden deze daarom gehonoreerd. als deze headers niet zijn ingesteld, wordt het bestand drie dagen in de cache opgeslagen.
 
 > [!NOTE] 
 > Bestanden die in de cache worden opgeslagen voordat een regel wijziging de waarde voor de oorspronkelijke cache duur behouden. Als u de cache duur opnieuw wilt instellen, moet u [het bestand leegmaken](cdn-purge-endpoint.md). 

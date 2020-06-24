@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: d6217d9616293cb4d541c9b05511d8cbd318ef20
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597910"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205703"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faseringsomgevingen in Azure App Service instellen
 <a name="Overview"></a>
@@ -38,7 +38,7 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
     ![Zoeken naar App Services](./media/web-sites-staged-publishing/search-for-app-services.png)
    
 
-2. Selecteer in het linkerdeel venster **implementatie sleuven** > **toevoegen sleuf**.
+2. Selecteer in het linkerdeel venster **implementatie sleuven**  >  **toevoegen sleuf**.
    
     ![Een nieuwe implementatiesite toevoegen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
@@ -58,7 +58,7 @@ De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde
    
     ![Titel implementatie site](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    De faserings sleuf heeft een beheer pagina net als andere App Service-apps. U kunt de configuratie van de sleuf wijzigen. Om u eraan te herinneren dat u de implementatie site bekijkt, wordt de naam van de app weer gegeven als ** \<app\<-naam>/sleuf naam>** en is het app-type **app service (sleuf)**. U kunt de sleuf ook als een afzonderlijke app in de resource groep weer geven, met dezelfde ontwerps.
+    De faserings sleuf heeft een beheer pagina net als andere App Service-apps. U kunt de configuratie van de sleuf wijzigen. Om u eraan te herinneren dat u de implementatie site bekijkt, wordt de naam van de app weer gegeven als **\<app-name>/\<slot-name>** en is het app-type **app service (sleuf)**. U kunt de sleuf ook als een afzonderlijke app in de resource groep weer geven, met dezelfde ontwerps.
 
 6. Selecteer de URL van de app op de resource pagina van de sleuf. De implementatie site heeft een eigen hostnaam en is ook een live app. Zie [Azure app service IP-beperkingen](app-service-ip-restrictions.md)voor het beperken van open bare toegang tot de implementatie site.
 
@@ -151,7 +151,7 @@ Wisselen met preview:
 
 2. Wanneer u klaar bent om de wisseling te starten, selecteert u **Start swap**.
 
-    Als fase 1 is voltooid, ontvangt u een melding in het dialoog venster. Bekijk een voor beeld van de wisseling in de bron `https://<app_name>-<source-slot-name>.azurewebsites.net`sleuf door naar te gaan. 
+    Als fase 1 is voltooid, ontvangt u een melding in het dialoog venster. Bekijk een voor beeld van de wisseling in de bron sleuf door naar te gaan `https://<app_name>-<source-slot-name>.azurewebsites.net` . 
 
 3. Wanneer u klaar bent om de wisseling in behandeling te volt ooien, selecteert u **volledig wisselen** in **wissel actie** en selecteert u **volledig wisselen**.
 
@@ -183,7 +183,7 @@ Met automatisch wisselen worden Azure DevOps-scenario's gestroomlijnd waarbij u 
 
 Automatisch wisselen configureren:
 
-1. Ga naar de resource pagina van uw app. Selecteer **implementatie sleuven** > *\<gewenste bron sleuf>*  >  **configuratie** > **algemene instellingen**.
+1. Ga naar de resource pagina van uw app. Selecteer **Deployment slots**  >  *\<desired source slot>*  >  **Configuration**  >  **algemene instellingen**voor configuratie van implementatie sites.
    
 2. Selecteer **aan**om **automatisch te scha kelen**. Selecteer vervolgens de gewenste doel sleuf voor de **implementatie sleuf voor automatisch wisselen**en selecteer **Opslaan** op de opdracht balk. 
    
@@ -197,7 +197,7 @@ Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
 
 ## <a name="specify-custom-warm-up"></a>Aangepaste warme voor bereiding opgeven
 
-Voor sommige apps zijn mogelijk aangepaste opwarm acties vereist voordat de wisseling kan worden uitgevoerd. Met `applicationInitialization` het configuratie-element in web. config kunt u aangepaste initialisatie acties opgeven. Tijdens de [wissel bewerking](#AboutConfiguration) wordt gewacht tot deze aangepaste warme start is voltooid voordat u met de doel sleuf kunt wisselen. Hier volgt een voor beeld van een web. config-fragment.
+Voor sommige apps zijn mogelijk aangepaste opwarm acties vereist voordat de wisseling kan worden uitgevoerd. `applicationInitialization`Met het configuratie-element in web.config kunt u aangepaste initialisatie acties opgeven. Tijdens de [wissel bewerking](#AboutConfiguration) wordt gewacht tot deze aangepaste warme start is voltooid voordat u met de doel sleuf kunt wisselen. Hier volgt een voor beeld web.config fragment.
 
     <system.webServer>
         <applicationInitialization>
@@ -206,12 +206,12 @@ Voor sommige apps zijn mogelijk aangepaste opwarm acties vereist voordat de wiss
         </applicationInitialization>
     </system.webServer>
 
-Zie voor meer informatie over het `applicationInitialization` aanpassen van het element de [meest voorkomende fouten in de implementatie sleuf en hoe u deze kunt oplossen](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+Zie voor meer informatie over het aanpassen van het `applicationInitialization` element de [meest voorkomende fouten in de implementatie sleuf en hoe u deze kunt oplossen](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
 U kunt ook het opwarm gedrag aanpassen met een of beide van de volgende [app-instellingen](configure-common.md):
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Het pad naar de ping voor het opwarmen van uw site. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaardwaarde is `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld `200,202` is. Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld is `200,202` . Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
 
 > [!NOTE]
 > Het `<applicationInitialization>` configuratie-element maakt deel uit van elke app die wordt opgestart, terwijl de twee app-instellingen voor het opwarmen van gedrag alleen van toepassing zijn op sleuven swaps.
@@ -224,11 +224,11 @@ Als de [wissel bewerking](#AboutConfiguration) veel tijd in beslag neemt, kunt u
 
 Selecteer op de resource pagina van de app in de portal in het linkerdeel venster het **activiteiten logboek**.
 
-Een wissel bewerking wordt weer gegeven in de logboek `Swap Web App Slots`query als. U kunt deze uitbreiden en een van de subbewerkingen of fouten selecteren om de details weer te geven.
+Een wissel bewerking wordt weer gegeven in de logboek query als `Swap Web App Slots` . U kunt deze uitbreiden en een van de subbewerkingen of fouten selecteren om de details weer te geven.
 
 ## <a name="route-traffic"></a>Verkeer routeren
 
-Standaard worden alle client aanvragen naar de productie-URL (`http://<app_name>.azurewebsites.net`) van de app doorgestuurd naar de productie site. U kunt een deel van het verkeer naar een andere sleuf routeren. Deze functie is handig als u gebruikers feedback voor een nieuwe update nodig hebt, maar u deze niet wilt vrijgeven voor productie.
+Standaard worden alle client aanvragen naar de productie-URL () van de app `http://<app_name>.azurewebsites.net` doorgestuurd naar de productie site. U kunt een deel van het verkeer naar een andere sleuf routeren. Deze functie is handig als u gebruikers feedback voor een nieuwe update nodig hebt, maar u deze niet wilt vrijgeven voor productie.
 
 ### <a name="route-production-traffic-automatically"></a>Productie verkeer automatisch omleiden
 
@@ -242,7 +242,7 @@ Productie verkeer automatisch omleiden:
 
 Nadat de instelling is opgeslagen, wordt het opgegeven percentage clients wille keurig doorgestuurd naar de niet-productie site. 
 
-Nadat een client automatisch naar een specifieke sleuf is doorgestuurd, wordt deze voor de levens duur van die client sessie vastgemaakt aan die sleuf. Op de client browser kunt u zien op welke sleuf uw sessie is vastgemaakt door te kijken naar `x-ms-routing-name` de cookie in uw HTTP-headers. Een aanvraag die wordt doorgestuurd naar de staging-sleuf, heeft de cookie `x-ms-routing-name=staging`. Een aanvraag die wordt doorgestuurd naar de productie site, heeft de cookie `x-ms-routing-name=self`.
+Nadat een client automatisch naar een specifieke sleuf is doorgestuurd, wordt deze voor de levens duur van die client sessie vastgemaakt aan die sleuf. Op de client browser kunt u zien op welke sleuf uw sessie is vastgemaakt door te kijken naar de `x-ms-routing-name` cookie in uw HTTP-headers. Een aanvraag die wordt doorgestuurd naar de staging-sleuf, heeft de cookie `x-ms-routing-name=staging` . Een aanvraag die wordt doorgestuurd naar de productie site, heeft de cookie `x-ms-routing-name=self` .
 
    > [!NOTE]
    > Naast de Azure Portal kunt u ook de [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) opdracht in de Azure CLI gebruiken om de routerings percentages van CI/cd-hulpprogram ma's, zoals DevOps-pijp lijnen of andere automatiserings systemen, in te stellen.
@@ -250,15 +250,15 @@ Nadat een client automatisch naar een specifieke sleuf is doorgestuurd, wordt de
 
 ### <a name="route-production-traffic-manually"></a>Productie verkeer hand matig omleiden
 
-Naast automatische verkeers routering kunnen App Service aanvragen naar een specifieke sleuf routeren. Dit is handig wanneer u wilt dat uw gebruikers zich kunnen aanmelden bij of afmelden bij uw bèta-app. Als u productie verkeer hand matig wilt door sturen `x-ms-routing-name` , gebruikt u de query parameter.
+Naast automatische verkeers routering kunnen App Service aanvragen naar een specifieke sleuf routeren. Dit is handig wanneer u wilt dat uw gebruikers zich kunnen aanmelden bij of afmelden bij uw bèta-app. Als u productie verkeer hand matig wilt door sturen, gebruikt u de `x-ms-routing-name` query parameter.
 
 Als u gebruikers wilt laten deel nemen aan uw bèta-app, kunt u deze koppeling bijvoorbeeld op de webpagina plaatsen:
 
-```HTML
+```html
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-De teken `x-ms-routing-name=self` reeks geeft u de productie sleuf op. Nadat de client browser de koppeling heeft geopend, wordt deze omgeleid naar de productie site. Elke volgende aanvraag heeft de `x-ms-routing-name=self` cookie die de sessie vastspelt aan de productie site.
+De teken reeks `x-ms-routing-name=self` geeft u de productie sleuf op. Nadat de client browser de koppeling heeft geopend, wordt deze omgeleid naar de productie site. Elke volgende aanvraag heeft de `x-ms-routing-name=self` cookie die de sessie vastspelt aan de productie site.
 
 Als u gebruikers wilt laten kiezen voor uw bèta-app, stelt u dezelfde query parameter in op de naam van de niet-productie sleuf. Hier volgt een voorbeeld:
 
@@ -266,13 +266,13 @@ Als u gebruikers wilt laten kiezen voor uw bèta-app, stelt u dezelfde query par
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Standaard krijgen nieuwe sleuven een routerings regel van `0%`, die grijs wordt weer gegeven. Wanneer u deze waarde expliciet instelt op `0%` (wordt weer gegeven in zwarte tekst), kunnen uw gebruikers de faserings sleuf hand matig `x-ms-routing-name` openen met behulp van de query-para meter. Maar ze worden niet automatisch doorgestuurd naar de sleuf, omdat het routerings percentage is ingesteld op 0. Dit is een geavanceerd scenario waarbij u de faserings sleuf van het publiek kunt verbergen terwijl interne teams wijzigingen in de sleuf kunnen testen.
+Standaard krijgen nieuwe sleuven een routerings regel van `0%` , die grijs wordt weer gegeven. Wanneer u deze waarde expliciet instelt op `0%` (wordt weer gegeven in zwarte tekst), kunnen uw gebruikers de faserings sleuf hand matig openen met behulp van de `x-ms-routing-name` query-para meter. Maar ze worden niet automatisch doorgestuurd naar de sleuf, omdat het routerings percentage is ingesteld op 0. Dit is een geavanceerd scenario waarbij u de faserings sleuf van het publiek kunt verbergen terwijl interne teams wijzigingen in de sleuf kunnen testen.
 
 <a name="Delete"></a>
 
 ## <a name="delete-a-slot"></a>Een sleuf verwijderen
 
-Zoek en selecteer uw app. Selecteer sleuf voor **implementatie sleuven** > *\<om>*  >  **overzicht**te verwijderen. Het app-type wordt weer gegeven als **app service (sleuf)** om u eraan te herinneren dat u een implementatie site bekijkt. Selecteer **verwijderen** op de opdracht balk.  
+Zoek en selecteer uw app. Selecteer overzicht van **implementatie sites**  >  *\<slot to delete>*  >  **Overview**. Het app-type wordt weer gegeven als **app service (sleuf)** om u eraan te herinneren dat u een implementatie site bekijkt. Selecteer **verwijderen** op de opdracht balk.  
 
 ![Een implementatie site verwijderen](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -336,7 +336,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 [Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met behulp van Resource Manager-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
 
 - `buildVersion`: dit is een teken reeks eigenschap die de huidige versie vertegenwoordigt van de app die in de sleuf is geïmplementeerd. Bijvoorbeeld: "v1", "1.0.0.1" of "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: dit is een teken reeks eigenschap die aangeeft `buildVersion` wat de sleuf moet hebben. Als de targetBuildVersion niet gelijk is aan de `buildVersion`huidige, wordt de wissel bewerking geactiveerd door de opgegeven `buildVersion`sleuf te vinden.
+- `targetBuildVersion`: dit is een teken reeks eigenschap die aangeeft wat `buildVersion` de sleuf moet hebben. Als de targetBuildVersion niet gelijk is aan de huidige `buildVersion` , wordt de wissel bewerking geactiveerd door de opgegeven sleuf te vinden `buildVersion` .
 
 ### <a name="example-resource-manager-template"></a>Voor beeld van Resource Manager-sjabloon
 
@@ -384,7 +384,7 @@ De volgende Resource Manager-sjabloon werkt de `buildVersion` faserings sleuf bi
 }
 ```
 
-Deze Resource Manager-sjabloon is idempotent, wat inhoudt dat deze regel matig kan worden uitgevoerd en dezelfde status van de sleuven produceert. Na de eerste uitvoering komt `targetBuildVersion` er overeen met de `buildVersion`huidige, waardoor een wissel niet wordt geactiveerd.
+Deze Resource Manager-sjabloon is idempotent, wat inhoudt dat deze regel matig kan worden uitgevoerd en dezelfde status van de sleuven produceert. Na de eerste uitvoering komt `targetBuildVersion` er overeen met de huidige `buildVersion` , waardoor een wissel niet wordt geactiveerd.
 
 <!-- ======== Azure CLI =========== -->
 
@@ -396,7 +396,7 @@ Zie [AZ webapp Deployment sleuf](/cli/azure/webapp/deployment/slot)voor [Azure c
 
 ## <a name="troubleshoot-swaps"></a>Problemen met swaps oplossen
 
-Als er een fout optreedt tijdens het wisselen van een [sleuf](#AboutConfiguration), wordt deze geregistreerd in *D:\home\LogFiles\eventlog.XML*. Het wordt ook vastgelegd in het logboek voor toepassings specifieke fouten.
+Als er een fout optreedt tijdens het wisselen van een [sleuf](#AboutConfiguration), wordt deze *D:\home\LogFiles\eventlog.xml*aangemeld. Het wordt ook vastgelegd in het logboek voor toepassings specifieke fouten.
 
 Hier volgen enkele veelvoorkomende wissel fouten:
 
@@ -404,7 +404,7 @@ Hier volgen enkele veelvoorkomende wissel fouten:
 
 - De initialisatie van de lokale cache kan mislukken wanneer de inhoud van de app het lokale schijf quotum overschrijdt dat is opgegeven voor de lokale cache. Zie [overzicht van lokale cache](overview-local-cache.md)voor meer informatie.
 
-- Tijdens [aangepaste warm-up](#Warm-up)worden de HTTP-aanvragen intern gemaakt (zonder de externe URL te passeren). Ze kunnen mislukken met bepaalde regels voor het herschrijven van URL'S in *Web. config*. Regels voor het omleiden van domein namen of het afdwingen van HTTPS kunnen bijvoorbeeld voor komen dat warme aanvragen de app-code bereiken. U kunt dit probleem omzeilen door de regels voor herschrijven te wijzigen door de volgende twee voor waarden toe te voegen:
+- Tijdens [aangepaste warm-up](#Warm-up)worden de HTTP-aanvragen intern gemaakt (zonder de externe URL te passeren). Ze kunnen mislukken met bepaalde regels voor het herschrijven van URL'S in *Web.config*. Regels voor het omleiden van domein namen of het afdwingen van HTTPS kunnen bijvoorbeeld voor komen dat warme aanvragen de app-code bereiken. U kunt dit probleem omzeilen door de regels voor herschrijven te wijzigen door de volgende twee voor waarden toe te voegen:
 
     ```xml
     <conditions>
@@ -421,7 +421,7 @@ Hier volgen enkele veelvoorkomende wissel fouten:
       ...
     </conditions>
     ```
-- Sommige [IP-beperkings regels](app-service-ip-restrictions.md) kunnen voor komen dat de wissel bewerking HTTP-aanvragen naar uw app verzendt. IPv4-adresbereiken die beginnen `10.` met `100.` en intern zijn voor uw implementatie. U moet hen toestaan om verbinding te maken met uw app.
+- Sommige [IP-beperkings regels](app-service-ip-restrictions.md) kunnen voor komen dat de wissel bewerking HTTP-aanvragen naar uw app verzendt. IPv4-adresbereiken die beginnen met `10.` en `100.` intern zijn voor uw implementatie. U moet hen toestaan om verbinding te maken met uw app.
 
 - Na het wisselen van sleuven kan de app onverwachte opnieuw opstarten ondervinden. Dit komt doordat de bindings configuratie van de hostnaam na een swap niet meer synchroon is, wat zelf niet tot gevolg heeft dat de computer opnieuw wordt opgestart. Bepaalde onderliggende opslag gebeurtenissen (zoals failovers van het opslag volume) kunnen deze verschillen echter detecteren en alle werk processen afdwingen om opnieuw op te starten. Als u deze typen opnieuw opstarten wilt minimaliseren, stelt u de [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app-instelling](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) in op *Alle sleuven*. Deze app-instelling werkt echter *niet* met Windows Communication Foundation WCF-apps.
 

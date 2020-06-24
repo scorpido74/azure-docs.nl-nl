@@ -3,15 +3,15 @@ title: Bewerkingen van Azure Cosmos DB Control-vlak controleren
 description: Meer informatie over het controleren van de besturings vlak bewerkingen, zoals het toevoegen van een regio, het bijwerken van de door Voer, de regionale failover, het toevoegen van een VNet, enzovoort in Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735348"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262647"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
 
@@ -29,7 +29,7 @@ Hier volgen enkele voor beelden van scenario's waarbij acties voor het beheren v
 
 Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#preventing-changes-from-cosmos-sdk) voor meer informatie over het instellen van deze eigenschap. 
 
-Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure Power shell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` onwaar wijzigt in plaats van waar.
+Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure Power shell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` Onwaar wijzigt in plaats van waar.
 
 Houd rekening met de volgende punten wanneer u de schrijf toegang voor meta gegevens uitschakelt:
 
@@ -51,7 +51,7 @@ Gebruik de volgende stappen om logboek registratie in te scha kelen voor bewerki
 
 U kunt de logboeken ook opslaan in een opslag account of stream naar een Event Hub. In dit artikel wordt beschreven hoe u logboeken naar log Analytics verzendt en er query's op uitvoert. Nadat u hebt ingeschakeld, duurt het enkele minuten voordat de diagnostische logboeken van kracht worden. Alle bewerkingen voor het beheer vlak die na dat punt worden uitgevoerd, kunnen worden bijgehouden. De volgende scherm afbeelding laat zien hoe u de logboeken voor besturings elementen kunt inschakelen:
 
-![Registratie van aanvragen voor beheer vlak inschakelen](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/enable-control-plane-requests-logs.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
 
 ## <a name="view-the-control-plane-operations"></a>De bewerkingen van het besturings vlak weer geven
 
@@ -69,17 +69,17 @@ Nadat u logboek registratie hebt ingeschakeld, gebruikt u de volgende stappen om
 
 De volgende scherm afbeeldingen vastleggen Logboeken wanneer een consistentie niveau wordt gewijzigd voor een Azure Cosmos-account:
 
-![Besturings vlak Logboeken wanneer een VNet wordt toegevoegd](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Besturings vlak Logboeken wanneer een VNet wordt toegevoegd":::
 
 De volgende scherm afbeeldingen vastleggen Logboeken wanneer de door Voer van een Cassandra-tabel wordt bijgewerkt:
 
-![Besturings vlak Logboeken wanneer de door Voer wordt bijgewerkt](./media/audit-control-plane-logs/throughput-update-logs.png)
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Besturings vlak Logboeken wanneer de door Voer wordt bijgewerkt":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>De identiteit identificeren die aan een specifieke bewerking is gekoppeld
 
 Als u meer fouten wilt opsporen, kunt u een specifieke bewerking in het **activiteiten logboek** identificeren met behulp van de activiteits-id of door de tijds tempel van de bewerking. Tijds tempel wordt gebruikt voor sommige Resource Manager-clients waarbij de activiteits-ID niet expliciet is door gegeven. Het activiteiten logboek bevat details over de identiteit waarmee de bewerking is gestart. De volgende scherm afbeelding laat zien hoe u de activiteit-ID gebruikt en de bewerkingen vindt die hieraan zijn gekoppeld in het activiteiten logboek:
 
-![De activiteit-ID gebruiken en de bewerkingen vinden](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="De activiteit-ID gebruiken en de bewerkingen vinden":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Bewerkingen voor het beheer vlak voor Azure Cosmos-account
 
@@ -147,7 +147,7 @@ Voor API-specifieke bewerkingen wordt de bewerking benoemd met de volgende indel
 * Soort + ApiKindResourceType + OperationType + start/volt ooien
 * Soort + ApiKindResourceType + "door Voer" + operationType + start/volt ooien
 
-**Voorbeeld** 
+**Hierbij** 
 
 * CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
 * CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete

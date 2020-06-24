@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193419"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888070"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs (preview-versie)
 
@@ -44,7 +44,7 @@ Nadat u object replicatie hebt geconfigureerd, wordt door Azure Storage de wijzi
 
 Wanneer u object replicatie configureert, wordt er een replicatie beleid gemaakt voor zowel het bron account als het doel account via de Azure Storage Resource provider. Het replicatie beleid wordt geïdentificeerd door een beleids-ID. Het beleid voor de bron-en doel accounts moet dezelfde beleids-ID hebben zodat de replicatie kan worden uitgevoerd.
 
-Een opslag account kan fungeren als het bron account voor Maxi maal twee doel accounts. De bron-en doel account kunnen zich allemaal in verschillende regio's bevinden. U kunt afzonderlijke replicatie beleidsregels configureren om gegevens naar elk van de doel accounts te repliceren.
+Een opslag account kan fungeren als het bron account voor Maxi maal twee doel accounts. En een doel account kan niet meer dan twee bron accounts bevatten. De bron- en doelaccounts kunnen zich allemaal in verschillende regio's bevinden. U kunt afzonderlijke replicatie beleidsregels configureren om gegevens naar elk van de doel accounts te repliceren.
 
 ### <a name="replication-rules"></a>Replicatie regels
 
@@ -54,7 +54,7 @@ Wanneer u een replicatie regel maakt, worden standaard alleen de nieuwe blok-blo
 
 U kunt ook een of meer filters opgeven als onderdeel van een replicatie regel voor het filteren van blok-blobs op voor voegsel. Wanneer u een voor voegsel opgeeft, worden alleen blobs die overeenkomen met het voor voegsel in de bron container gekopieerd naar de doel container.
 
-De bron-en doel containers moeten beide bestaan voordat u ze in een regel kunt opgeven. Nadat u het replicatie beleid hebt gemaakt, wordt de doel container alleen-lezen. Pogingen om naar de doel container te schrijven, mislukken met fout code 409 (conflict). U kunt echter de bewerking [BLOB-laag instellen](/rest/api/storageservices/set-blob-tier) aanroepen op een BLOB in de doel container om deze naar de laag archief te verplaatsen. Zie voor meer informatie over de laag archief [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](storage-blob-storage-tiers.md#archive-access-tier).
+De bron-en doel containers moeten beide bestaan voordat u ze in een regel kunt opgeven. Nadat u het replicatiebeleid hebt gemaakt, wordt de doelcontainer alleen-lezen. Pogingen om naar de doelcontainer te schrijven, mislukken met foutcode 409 (Conflict). U kunt echter de bewerking [BLOB-laag instellen](/rest/api/storageservices/set-blob-tier) aanroepen op een BLOB in de doel container om deze naar de laag archief te verplaatsen. Zie voor meer informatie over de laag archief [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>Over de preview-versie
 
@@ -71,7 +71,7 @@ Tijdens de preview zijn er geen extra kosten verbonden aan het repliceren van ge
 > [!IMPORTANT]
 > De preview van object replicatie is alleen bedoeld voor gebruik in niet-productie. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
 
-### <a name="prerequisites-for-object-replication"></a>Vereisten voor object replicatie
+### <a name="prerequisites-for-object-replication"></a>Vereisten voor objectreplicatie
 
 Voor object replicatie moeten de volgende Azure Storage-functies zijn ingeschakeld: 
 - [Feed wijzigen](storage-blob-change-feed.md)

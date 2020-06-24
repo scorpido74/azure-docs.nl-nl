@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2c16c40ba7ed97f933516811432c3d4768bd0c62
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977639"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888494"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
@@ -50,7 +50,9 @@ Een enkel IP-adres van de front-end heeft geen zone storingen. Het front-end-IP-
 
 Het IP-adres van de frontend wordt tegelijkertijd bediend door meerdere onafhankelijke infrastructuur implementaties in meerdere beschikbaarheids zones. Nieuwe pogingen of het opnieuw inbrengen van wijzigingen in andere zones die niet worden beïnvloed door de fout in de zone. 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="Zone redundant" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
 
 *Afbeelding: redundante zone load balancer*
 
@@ -60,7 +62,12 @@ U kunt ervoor kiezen een front-end te garanderen voor één zone, die wordt aang
 
 Daarnaast wordt het gebruik van zonegebonden-frontends rechtstreeks voor eind punten met gelijke taak verdeling binnen elke zone ondersteund. U kunt deze configuratie gebruiken voor het weer geven van eind punten met gelijke taak verdeling voor elke zone afzonderlijk te bewaken. Voor open bare eind punten kunt u ze integreren met een product voor DNS-taak verdeling, zoals [Traffic Manager](../traffic-manager/traffic-manager-overview.md) en één DNS-naam gebruiken.
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="Zone redundant" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+</p>
+
+*Afbeelding: zonegebonden redundante load balancer*
 
 Als u deze concepten (zone-redundante en zonegebonden voor dezelfde back-end) wilt laten door lopen, bekijkt u [meerdere frontends voor Azure Load Balancer](load-balancer-multivip-overview.md).
 
@@ -116,14 +123,14 @@ Eén belang rijk onderdeel van uw toepassing kan van invloed zijn op uw hele toe
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * Het IP-adres
+    * IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze worden geconfigureerd in zone 1 en zone 2. Wanneer zone 1 mislukt, wordt uw service niet bewaard. Vermijd zones met zonegebonden-scenario's tenzij u zeker weet dat u een potentieel gevaarlijke fout modus maakt. Dit scenario mag flexibiliteit bieden.
 
 - Als uw toepassing twee onderdelen heeft:
 
-    * Het IP-adres
+    * IP-adres
     * Virtuele machine met beheerde schijf
 
 Ze zijn geconfigureerd voor zone-redundantie en zone 1. Uw service blijft de zone fout van zone 2, zone 3 of beide, tenzij zone 1 is mislukt. U verliest echter een mogelijke reden om de status van uw service te controleren als u er zeker van bent dat u de beschik baarheid van de front-end kunt bereiken.  Overweeg het ontwikkelen van een uitgebreidere status-en capaciteits model.  U kunt zone-redundante en zonegebonden-concepten samen gebruiken om inzicht en beheer baarheid uit te breiden.

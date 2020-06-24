@@ -2,22 +2,22 @@
 title: Genormaliseerde RU/s voor een Azure Cosmos-container of-account bewaken
 description: Meer informatie over het controleren van het gebruik van de genormaliseerde aanvraag eenheid van een bewerking in Azure Cosmos DB. Eigen aren van een Azure Cosmos DB-account kunnen begrijpen welke bewerkingen meer aanvraag eenheden gebruiken.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 05/10/2020
-ms.openlocfilehash: 23001bdaab0732dbeb088ebadefa90a27e622b19
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7a7428d3445d1d5846618bfd84c47121dc9a4bc1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118840"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262749"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Genormaliseerde RU/s voor een Azure Cosmos-container of-account bewaken
 
 Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren.
 
-De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien hoe goed verzadigd de replica's filters zijn voor het verbruik van de aanvraag eenheden in de partitie sleutel bereik. Azure Cosmos DB distribueert de door Voer gelijkmatig over alle fysieke partities. Deze metrische gegevens bieden een per seconde weer gave van het maximale doorvoer gebruik binnen een replicaset. Als u deze metrische gegevens ziet, moet u de door Voer verhogen om te voldoen aan de behoeften van uw werk belasting.
+De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien hoe goed verzadigde replica's zijn met betrekking tot het verbruik van aanvraag eenheden in de partitie sleutel bereik. Azure Cosmos DB distribueert de door Voer gelijkmatig over alle fysieke partities. Deze metrische gegevens bieden een per seconde weer gave van het maximale doorvoer gebruik binnen een replicaset. Als u deze metrische gegevens ziet, moet u de door Voer verhogen om te voldoen aan de behoeften van uw werk belasting.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Wat u kunt verwachten en wanneer genormaliseerde RU/s hoger is
 
@@ -33,21 +33,21 @@ De **genormaliseerde** metrische gegevens over het gebruik van ru worden ook geb
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>De metrische gegevens over het verbruik van de genormaliseerde aanvraag eenheden weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 
-   ![Deel venster metrische gegevens in Azure Monitor](./media/monitor-normalized-request-units/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 3. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
 
-   ![Kies een Azure Cosmos-account om de metrische gegevens weer te geven](./media/monitor-normalized-request-units/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Kies een Azure Cosmos-account om de metrische gegevens weer te geven":::
 
 4. Vervolgens kunt u een metriek selecteren in de lijst met beschik bare metrische gegevens. U kunt metrische gegevens selecteren die specifiek zijn voor aanvraag eenheden, opslag, latentie, Beschik baarheid, Cassandra en andere. Zie het artikel [metrische gegevens per categorie](monitor-cosmos-db-reference.md) voor meer informatie over alle beschik bare metrische gegevens in deze lijst. In dit voor beeld selecteren we **genormaliseerde** metrische gegevens van ru-verbruik en **Max** als de aggregatie waarde.
 
    Naast deze details kunt u ook het **tijds bereik** en de **tijd granulatie** van de metrische gegevens selecteren. U kunt Maxi maal de metrische gegevens weer geven voor de afgelopen 30 dagen.  Nadat u het filter hebt toegepast, wordt een grafiek weer gegeven op basis van het filter.
 
-   ![Kies een waarde in het Azure Portal](./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Kies een waarde in het Azure Portal":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Filters voor genormaliseerd verbruik van aanvraag eenheden
 
@@ -57,7 +57,7 @@ U kunt metrische gegevens groeperen met behulp van de optie **splitsing Toep ass
 
 De genormaliseerde metrische aanvraag eenheden voor elke container worden weer gegeven, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Filters toep assen op genormaliseerde metrische aanvraag eenheden verbruik](./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png)
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Filters toep assen op genormaliseerde metrische aanvraag eenheden verbruik":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

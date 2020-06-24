@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/30/2020
+ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de10534cb00c66ad914b2c64ac2547b0e3fe03b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 33d946c47a17bb537c7644937547ad479b4637e5
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611062"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077928"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Toegang tot groepen of toepassingen in azure AD-toegangs beoordelingen bekijken
 
@@ -43,7 +43,7 @@ De eerste stap voor het uitvoeren van een toegangs beoordeling is het zoeken en 
 
 Als u de e-mail niet hebt, kunt u uw openstaande toegangs beoordelingen vinden door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de portal voor mijn [https://myapps.microsoft.com](https://myapps.microsoft.com)apps op.
+1. Meld u aan bij de portal voor mijn apps op [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![Mijn apps-Portal bevat apps waarvoor u machtigingen hebt](./media/review-your-access/myapps-access-panel.png)
 
@@ -88,7 +88,7 @@ U kunt de nieuwe ervaring proberen met de bijgewerkte gebruikers interface in mi
 
 ### <a name="my-apps-portal"></a>Portal van mijn apps
 
-1. Meld u aan bij de portal voor mijn [https://myapps.microsoft.com](https://myapps.microsoft.com)apps op.
+1. Meld u aan bij de portal voor mijn apps op [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
     ![Mijn apps-Portal bevat apps waarvoor u machtigingen hebt](./media/review-your-access/myapps-access-panel.png)
 

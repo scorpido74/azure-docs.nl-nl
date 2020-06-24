@@ -3,15 +3,15 @@ title: Opgeslagen procedures, triggers en Udf's in Azure Cosmos DB schrijven
 description: Meer informatie over het definiëren van opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies in Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/07/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: tisande
-ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e9ebd8de956437273246d08821fc87838089a256
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982289"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262868"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -52,21 +52,42 @@ Wanneer u een item maakt met behulp van een opgeslagen procedure, wordt het item
 
 De opgeslagen procedure bevat ook een parameter voor het instellen van de beschrijving, het is een Booleaanse waarde. Als de parameter is ingesteld op true en de beschrijving ontbreekt, genereert de opgeslagen procedure een uitzondering. Anders gaat de uitvoering van de rest van de opgeslagen procedure verder.
 
-In het volgende voor beeld wordt een nieuw Azure Cosmos-item als invoer gebruikt, ingevoegd in de Azure Cosmos-container en wordt de ID voor het zojuist gemaakte item geretourneerd. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstart .NET SQL-API](create-sql-api-dotnet.md)
+In het volgende voor beeld wordt een matrix met nieuwe Azure Cosmos-items gebruikt als invoer, wordt deze ingevoegd in de Azure Cosmos-container en wordt het aantal ingevoegde items geretourneerd. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstart .NET SQL-API](create-sql-api-dotnet.md)
 
 ```javascript
-function createToDoItem(itemToCreate) {
+function createToDoItems(items) {
+    var collection = getContext().getCollection();
+    var collectionLink = collection.getSelfLink();
+    var count = 0;
 
-    var context = getContext();
-    var container = context.getCollection();
+    if (!items) throw new Error("The array is undefined or null.");
 
-    var accepted = container.createDocument(container.getSelfLink(),
-        itemToCreate,
-        function (err, itemCreated) {
-            if (err) throw new Error('Error' + err.message);
-            context.getResponse().setBody(itemCreated.id)
-        });
-    if (!accepted) return;
+    var numItems = items.length;
+
+    if (numItems == 0) {
+        getContext().getResponse().setBody(0);
+        return;
+    }
+
+    tryCreate(items[count], callback);
+
+    function tryCreate(item, callback) {
+        var options = { disableAutomaticIdGeneration: false };
+
+        var isAccepted = collection.createDocument(collectionLink, item, options, callback);
+
+        if (!isAccepted) getContext().getResponse().setBody(count);
+    }
+
+    function callback(err, item, options) {
+        if (err) throw err;
+        count++;
+        if (count >= numItems) {
+            getContext().getResponse().setBody(count);
+        } else {
+            tryCreate(items[count], callback);
+        }
+    }
 }
 ```
 
@@ -262,7 +283,7 @@ function async_sample() {
 
 Azure Cosmos DB biedt ondersteuning aan pre-triggers en post-triggers. Pre-triggers worden uitgevoerd voordat een database-item wordt gewijzigd en post-triggers worden uitgevoerd nadat een database-item wordt gewijzigd.
 
-### <a name="pre-triggers"></a><a id="pre-triggers"></a>Pre-triggers
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Pretriggers
 
 In het volgende voor beeld ziet u hoe een pretrigger wordt gebruikt voor het valideren van de eigenschappen van een Azure Cosmos-item dat wordt gemaakt. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstartgids .NET SQL-API](create-sql-api-dotnet.md) om een timestamp-eigenschap toe te voegen aan een nieuw toegevoegd item als deze er geen bevat.
 
@@ -366,7 +387,7 @@ Zie het artikel [Door de gebruiker gedefinieerde functies gebruiken in Azure Cos
 
 ## <a name="logging"></a>Logboekregistratie 
 
-Wanneer u opgeslagen procedure, triggers of door de gebruiker gedefinieerde functies gebruikt, kunt u de stappen vastleggen `console.log()` met behulp van de opdracht. Met deze opdracht wordt een teken reeks voor fout `EnableScriptLogging` opsporing geconcentreerd wanneer is ingesteld op True, zoals wordt weer gegeven in het volgende voor beeld:
+Wanneer u opgeslagen procedure, triggers of door de gebruiker gedefinieerde functies gebruikt, kunt u de stappen vastleggen met behulp van de `console.log()` opdracht. Met deze opdracht wordt een teken reeks voor fout opsporing geconcentreerd wanneer `EnableScriptLogging` is ingesteld op True, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

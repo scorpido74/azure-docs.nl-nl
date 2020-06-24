@@ -8,25 +8,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582672"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727327"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Power shell en Graph-voor beelden voor op groepen gebaseerde licentie verlening in azure AD
 
 De volledige functionaliteit voor op groepen gebaseerde licentie verlening is beschikbaar via de [Azure Portal](https://portal.azure.com), en de ondersteuning voor Power shell en Microsoft Graph is beperkt tot alleen-lezen bewerkingen. Er zijn echter enkele nuttige taken die kunnen worden uitgevoerd met behulp van de bestaande [MSOnline Power shell-cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) en Microsoft Graph. In dit document vindt u voor beelden van wat er mogelijk is.
 
 > [!NOTE]
-> Voordat u begint met het uitvoeren van cmdlets, moet u eerst verbinding maken met uw organisatie door `Connect-MsolService`  de cmdlet uit te voeren.
+> Voordat u begint met het uitvoeren van cmdlets, moet u eerst verbinding maken met uw organisatie door de cmdlet uit te voeren `Connect-MsolService`   .
 
 > [!WARNING]
 > Deze code wordt als voor beeld gegeven voor demonstratie doeleinden. Als u het wilt gebruiken in uw omgeving, kunt u het beste eerst op een kleine schaal of in een afzonderlijke test organisatie testen. Mogelijk moet u de code aanpassen om te voldoen aan de specifieke behoeften van uw omgeving.
@@ -617,7 +617,7 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Werk de waarden voor de variabelen `$skuId` bij en `$groupId`  die worden bedoeld voor het verwijderen van directe licenties conform uw test omgeving voordat u het bovenstaande script uitvoert. 
+> Werk de waarden voor de variabelen bij `$skuId` en `$groupId`   die worden bedoeld voor het verwijderen van directe licenties conform uw test omgeving voordat u het bovenstaande script uitvoert. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

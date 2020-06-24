@@ -6,14 +6,14 @@ ms.author: sivethe
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
-ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afdbd1c44170344be6edee8b8b2ee38c9853f81c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410008"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263072"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Lees bewerkingen globaal distribueren met behulp van de API van Azure Cosmos DB voor MongoDB
 
@@ -51,7 +51,7 @@ cd mean
 npm install
 node index.js
 ```
-De toepassing probeert verbinding te maken met een MongoDB-bron en mislukt omdat de connection string ongeldig is. Volg de stappen in het Leesmij-bestand om de `url`Connection String bij te werken. Werk ook de `readFromRegion` naar een lees regio in uw Cosmos-account bij. De volgende instructies zijn afkomstig uit het NodeJS-voor beeld:
+De toepassing probeert verbinding te maken met een MongoDB-bron en mislukt omdat de connection string ongeldig is. Volg de stappen in het Leesmij-bestand om de connection string bij te werken `url` . Werk ook de `readFromRegion` naar een lees regio in uw Cosmos-account bij. De volgende instructies zijn afkomstig uit het NodeJS-voor beeld:
 
 ```
 * Next, substitute the `url`, `readFromRegion` in App.Config with your Cosmos account's values. 
@@ -110,7 +110,7 @@ Op dezelfde manier ziet u in het volgende code fragment hoe u de SECONDARY_PREFE
   });
 ```
 
-De Lees voorkeur kan ook worden ingesteld door als `readPreference` een para meter door te geven in de Connection String URI-opties:
+De Lees voorkeur kan ook worden ingesteld door `readPreference` als een para meter door te geven in de Connection String URI-opties:
 
 ```javascript
 const MongoClient = require('mongodb').MongoClient;

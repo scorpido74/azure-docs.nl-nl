@@ -9,20 +9,20 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 5de9fe7c81059c56c99a55ca066e186cbf83c50f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796978"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887882"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Een schaalset maken met behulp van een gespecialiseerde installatie kopie versie met de Azure CLI
 
-Een schaalset maken op basis van een [gespecialiseerde afbeeldings versie](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) die is opgeslagen in een galerie met gedeelde afbeeldingen. Zie [een virtuele machine maken op basis van een gegeneraliseerde installatie](instance-generalized-image-version-cli.md)kopie-versie als u een schaalset met een gegeneraliseerde installatie kopie wilt maken.
+Een schaalset maken op basis van een [gespecialiseerde afbeeldings versie](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) die is opgeslagen in een galerie met gedeelde afbeeldingen. Zie [een schaalset maken op basis van een gegeneraliseerde afbeelding](instance-generalized-image-version-cli.md)als u een schaalset wilt maken met behulp van een gegeneraliseerde installatie kopie.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van de Azure CLI-versie 2.4.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.4.0 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Vervang resource namen naar behoefte in dit voor beeld. 
+Vervang resourcenamen naar behoefte in dit voorbeeld. 
 
 De afbeeldings definities in een galerie weer geven met behulp van [AZ sig Image List-definitie lijst](/cli/azure/sig/image-definition#az-sig-image-definition-list) om de naam en id van de definities weer te geven.
 
@@ -36,9 +36,9 @@ az sig image-definition list \
    --output tsv
 ```
 
-Een schaalset maken met [`az vmss create`](/cli/azure/vmss#az-vmss-create) behulp `--specialized` van de para meter om aan te geven dat de afbeelding een gespecialiseerde afbeelding is.
+Een schaalset maken met [`az vmss create`](/cli/azure/vmss#az-vmss-create) behulp van de `--specialized` para meter om aan te geven dat de afbeelding een gespecialiseerde afbeelding is.
 
-Gebruik de definitie-ID van `--image` de installatie kopie om de instanties van de schaalset te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt ook instanties van een schaalset maken op basis van een specifieke versie door de versie-ID `--image`van de installatie kopie op te geven voor. Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
+Gebruik de definitie-ID van de installatie kopie `--image` om de instanties van de schaalset te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt ook instanties van een schaalset maken op basis van een specifieke versie door de versie-ID van de installatie kopie op te geven voor `--image` . Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
 
 In dit voor beeld maken we instanties van de nieuwste versie van de *myImageDefinition* -installatie kopie.
 

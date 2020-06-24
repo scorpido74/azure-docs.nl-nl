@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 05/20/2020
-ms.openlocfilehash: 9a80adbbeda2754f9f08a4d2f16b8caf9263b087
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/11/2020
+ms.openlocfilehash: 6e3a4b61c86d476a9e5c5a0392c51a72f06f048d
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340845"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84761328"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -29,7 +29,7 @@ Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage ve
 
 Met CMK kunt u de toegang tot uw gegevens beheren en deze op elk gewenst moment intrekken. Azure Monitor Storage respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur. De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
-De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw white list voor uw abonnement op te halen voordat u begint met het configureren van CMK.
+De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we de vereiste capaciteit hebben in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon om uw abonnement op te halen voordat u begint met het configureren van CMK.
 
 Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)   maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
 
@@ -69,16 +69,16 @@ De volgende regels zijn van toepassing:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-inrichtings procedure
 
-1. Abonnements white list: de CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw micro soft-contact persoon om uw abonnements white list te ontvangen
+1. Abonnement toestaan: de CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we de vereiste capaciteit hebben in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon om uw abonnement te laten zijn toegestaan.
 2. Azure Key Vault maken en de sleutel opslaan
 3. Een *cluster* bron maken
 4. Machtigingen verlenen aan uw Key Vault
 5. Log Analytics werk ruimten koppelen
 
-De procedure wordt momenteel niet ondersteund in de gebruikers interface en het inrichtings proces wordt uitgevoerd via REST API.
+De procedure wordt niet ondersteund in Azure Portal en het inrichten wordt uitgevoerd via Power shell of REST-aanvragen.
 
 > [!IMPORTANT]
-> Elke API-aanvraag moet een Bearer-autorisatie token in de aanvraag header bevatten.
+> Alle REST-aanvragen moeten een Bearer-autorisatie token in de aanvraag header bevatten.
 
 Bijvoorbeeld:
 
@@ -100,12 +100,12 @@ U kunt het token verkrijgen met een van de volgende methoden:
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynchrone bewerkingen en status controle
 
-Sommige bewerkingen in deze configuratie procedure worden asynchroon uitgevoerd, omdat deze niet snel kunnen worden voltooid. Met het antwoord voor asynchrone bewerking wordt in eerste instantie een HTTP-status code 200 (OK) en koptekst met de *Azure-AsyncOperation-* eigenschap geretourneerd wanneer deze wordt geaccepteerd:
+Sommige bewerkingen in deze configuratie procedure worden asynchroon uitgevoerd, omdat deze niet snel kunnen worden voltooid. Wanneer REST-aanvragen in de configuratie worden gebruikt, retourneert de reactie in eerste instantie een HTTP-status code 200 (OK) en koptekst met de eigenschap *Azure-AsyncOperation* wanneer deze wordt geaccepteerd:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
-U kunt de status van de asynchrone bewerking controleren door een GET-aanvraag te verzenden naar de waarde van de *Azure-AsyncOperation-* header:
+Vervolgens kunt u de status van de asynchrone bewerking controleren door een GET-aanvraag te verzenden naar de waarde van de *Azure-AsyncOperation-* header:
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
@@ -172,9 +172,9 @@ Bewerking is mislukt
 }
 ```
 
-### <a name="subscription-whitelisting"></a>White list abonnement
+### <a name="allowing-subscription-for-cmk-deployment"></a>Het abonnement voor de implementatie van CMK toestaan
 
-De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters.Om te controleren of we over de vereiste capaciteit in uw regio beschikken, moeten we uw abonnement vooraf white list. Gebruik uw contact personen in micro soft om uw abonnementen-Id's op te geven.
+De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters.Om te controleren of we de vereiste capaciteit hebben in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw contact personen in micro soft om uw abonnementen-Id's op te geven.
 
 > [!IMPORTANT]
 > De functionaliteit van CMK is regionaal. Uw Azure Key Vault, *cluster* bron en gekoppelde log Analytics-werk ruimten moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
@@ -191,7 +191,7 @@ Deze instellingen zijn beschikbaar via CLI en Power shell:
 
 ### <a name="create-cluster-resource"></a>*Cluster* bron maken
 
-Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw Log Analytics-werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn white list, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden.
+Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw Log Analytics-werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn toegestaan, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden.
 
 U moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan binnen het bereik van 1.000 tot 2.000 GB per dag liggen en kan worden bijgewerkt in stappen van 100 later. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 2.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
@@ -200,11 +200,21 @@ De eigenschap *billingType* bepaalt het facturerings kenmerk voor de *cluster* b
 - *Werk ruimten* : de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster, waarbij een deel *van het gebruik* wordt gefactureerd als de totale opgenomen gegevens voor de dag onder de capaciteits reservering vallen. Zie [log Analytics toegewezen clusters](manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over het prijs model van het cluster. 
 
 > [!NOTE]
-> Nadat u de *cluster* bron hebt gemaakt, kunt u deze bijwerken met *SKU*, *keyVaultProperties* of *BILLINGTYPE* met behulp van een patch rest-aanvraag.
+> * Nadat u de *cluster* bron hebt gemaakt, kunt u deze bijwerken met *SKU*, *keyVaultProperties* of *BILLINGTYPE* met behulp van een patch rest-aanvraag.
+> * U kunt *billingType* op dit moment bijwerken met behulp van rest-aanvraag. dit wordt niet ondersteund in Power shell
 
-**Maken**
+Deze bewerking is asynchroon en kan enige tijd worden voltooid.
 
-Deze aanvraag voor Resource Manager is een asynchrone bewerking.
+> [!IMPORTANT]
+> Kopieer het antwoord en sla het op, omdat u de details in de volgende stappen nodig hebt.
+> 
+**PowerShell**
+
+```powershell
+New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -Location {region-name} -SkuCapacity {daily-ingestion-gigabyte} 
+```
+
+**REST**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -242,9 +252,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-> [!IMPORTANT]
-> Kopieer het antwoord en sla het op, omdat u de details in de volgende stappen nodig hebt.
-
 **Beantwoord**
 
 ```json
@@ -261,7 +268,6 @@ Authorization: Bearer <token>
     },
   "properties": {
     "provisioningState": "ProvisioningAccount",
-    "clusterType": "LogAnalytics",
     "billingType": "cluster",
     "clusterId": "cluster-id"
     },
@@ -276,10 +282,10 @@ De GUID ' principalId ' wordt gegenereerd door de beheerde identiteits service v
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault machtigingen verlenen
 
-Werk uw Key Vault bij met een nieuw toegangs beleid dat machtigingen verleent aan uw *cluster* bron. Deze machtigingen worden gebruikt door de aan Azure Monitor opslag voor gegevens versleuteling. Open uw Key Vault in Azure Portal en klik vervolgens op toegangs beleid en vervolgens op toegangs beleid toevoegen om een beleid te maken met de volgende instellingen:
+Werk uw Key Vault bij met een nieuw toegangs beleid om machtigingen te verlenen aan uw *cluster* bron. Deze machtigingen worden gebruikt door de aan Azure Monitor opslag voor gegevens versleuteling. Open uw Key Vault in Azure Portal en klik vervolgens op toegangs beleid en vervolgens op toegangs beleid toevoegen om een beleid te maken met de volgende instellingen:
 
 - Belang rijke machtigingen: Selecteer Get, terugloop sleutel en de machtigingen voor de uitpakken sleutel.
-- Selecteer Principal: Voer de waarde van de principal-id in die is geretourneerd in het antwoord in de vorige stap.
+- Selecteer Principal: Voer de naam van de *cluster* resource of de principal-id in die in de vorige stap is geretourneerd.
 
 ![Key Vault machtigingen verlenen](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -295,12 +301,18 @@ Als u de *cluster* bron met de details van de Key Vault *sleutel-id* wilt bijwer
 
 Werk de *cluster* bron-KeyVaultProperties bij met sleutel-id-Details.
 
-**Bijwerken**
+Deze bewerking is asynchroon wanneer de sleutel-id-Details worden bijgewerkt en kan enige tijd duren. Het is synchroon bij het bijwerken van de capaciteits waarde.
 
-Deze aanvraag van een resource manager is een asynchrone bewerking bij het bijwerken van sleutel-id-Details, terwijl deze synchroon is tijdens het bijwerken van de capaciteits waarde.
+**PowerShell**
+
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -KeyVaultUri {key-uri} -KeyName {key-name} -KeyVersion {key-version}
+```
+
+**REST**
 
 > [!NOTE]
-> U kunt een gedeeltelijke hoofd tekst opgeven in *cluster* resource om een *SKU*, *keyVaultProperties* of *billingType*bij te werken.
+> U kunt de *cluster* resource- *SKU*, *keyVaultProperties* of *billingType* bijwerken met behulp van patch.
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -357,7 +369,6 @@ Een antwoord op de GET-aanvraag voor de *cluster* bron moet er als volgt uitzien
       "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
     "billingType": "cluster",
     "clusterId": "cluster-id"
   },
@@ -378,9 +389,16 @@ U moet schrijf machtigingen hebben voor uw werk ruimte en *cluster* resource om 
 > [!IMPORTANT]
 > Deze stap moet pas worden uitgevoerd nadat de inrichting van het Log Analytics cluster is voltooid. Als u werk ruimten en opname gegevens koppelt vóór het inrichten, worden opgenomen gegevens verwijderd en kunnen deze niet worden hersteld.
 
-**Een werk ruimte koppelen**
+Deze bewerking is asynchroon en kan enige tijd worden voltooid.
 
-Deze aanvraag voor Resource Manager is een asynchrone bewerking.
+**PowerShell**
+
+```powershell
+$clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}).id
+Set-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId
+```
+
+**REST**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -457,6 +475,14 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 ## <a name="cmk-manage"></a>CMK beheren
 
 - **Alle *cluster* resources voor een resource groep ophalen**
+  
+  **PowerShell**
+
+  ```powershell
+  Get-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name}
+  ```
+
+  **REST**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -486,7 +512,6 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
               "keyVersion": "current-version"
               },
           "provisioningState": "Succeeded",
-          "clusterType": "LogAnalytics", 
           "billingType": "cluster",
           "clusterId": "cluster-id"
         },
@@ -500,6 +525,14 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
   ```
 
 - **Alle *cluster* resources voor een abonnement ophalen**
+  
+  **PowerShell**
+
+  ```powershell
+  Get-AzOperationalInsightsCluster
+  ```
+
+  **REST**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -514,8 +547,19 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
   Wanneer het gegevens volume naar uw gekoppelde werk ruimten in de loop van de tijd verandert en u het capaciteits reserverings niveau op de juiste wijze wilt bijwerken. Volg de [Update *cluster* bron](#update-cluster-resource-with-key-identifier-details) en geef uw nieuwe capaciteits waarde op. Dit kan binnen het bereik van 1.000 tot 2.000 GB per dag zijn en in stappen van 100. Voor een niveau hoger dan 2.000 GB per dag, bereikt u uw micro soft-contact persoon om dit in te scha kelen. Houd er rekening mee dat u de volledige REST-aanvraag tekst niet hoeft op te geven en moet de SKU bevatten:
 
-  **organen**
-  ```json
+  **PowerShell**
+
+  ```powershell
+  Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -SkuCapacity {daily-ingestion-gigabyte}
+  ```
+
+  **REST**
+   
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "sku": {
       "name": "capacityReservation",
@@ -532,8 +576,11 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
   
   Volg de [Update *cluster* resource](#update-cluster-resource-with-key-identifier-details) en geef de nieuwe billingType-waarde op. Houd er rekening mee dat u de volledige REST-aanvraag tekst niet hoeft op te geven en moet de *billingType*bevatten:
 
-  **organen**
-  ```json
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "properties": {
       "billingType": "cluster",
@@ -545,7 +592,15 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
   U moet schrijf machtigingen hebben voor de werk ruimte en *cluster* resource om deze bewerking uit te voeren. U kunt een werk ruimte op elk gewenst moment loskoppelen van uw *cluster* bron. Nieuwe opgenomen gegevens na de ontkoppelings bewerking worden opgeslagen in Log Analytics opslag en versleuteld met de micro soft-sleutel. U kunt een query uitvoeren op gegevens die zijn opgenomen in uw werk ruimte vóór en na de loskoppeling, zolang de *cluster* bron is ingericht en geconfigureerd met een geldige Key Vault sleutel.
 
-  Deze aanvraag voor Resource Manager is een asynchrone bewerking.
+  Deze bewerking is asynchroon en kan enige tijd worden voltooid.
+
+  **PowerShell**
+
+  ```powershell
+  Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -Name {workspace-name} -LinkedServiceName cluster
+  ```
+
+  **REST**
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
@@ -561,10 +616,28 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
   1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
   2. Een [werk ruimte verzenden: aanvraag ophalen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de niet-gekoppelde werk ruimte heeft niet de *clusterResourceId* onder *functies*.
 
+- **Status van werkruimte koppeling controleren** Een Get-bewerking uitvoeren op de werk ruimte en controleren of *clusterId* aanwezig is in de reactie. De bijbehorende werk ruimte heeft de eigenschap *clusterId* .
+
+  **PowerShell**
+
+  ```powershell
+  Get-AzOperationalInsightsWorkspace -ResourceGroupName {resource-group-name} -Name {workspace-name}
+  ```
+
 - **De *cluster* bron verwijderen**
 
-  U hebt schrijf machtigingen voor de *cluster* bron nodig om deze bewerking uit te voeren. Er wordt een bewerking voor zacht verwijderen uitgevoerd om het herstellen van uw *cluster* bron met gegevens binnen 14 dagen mogelijk te maken, of het verwijderen per ongeluk of opzettelijk is geslaagd. De *cluster* bron naam blijft gereserveerd tijdens de tijdelijke periode en u kunt geen nieuw cluster met die naam maken. Na de periode van de tijdelijke verwijdering wordt de *cluster* bron naam vrijgegeven, worden uw *cluster* bron en-gegevens permanent verwijderd en kunnen ze niet worden hersteld. De gekoppelde werk ruimte wordt ontkoppeling van de *cluster* resource bij het verwijderen. Nieuwe opgenomen gegevens worden opgeslagen in Log Analytics Storage en versleuteld met de micro soft-sleutel. De bewerking van de werk ruimten is asynchroon en kan tot 90 minuten duren.
+  U hebt schrijf machtigingen voor de *cluster* bron nodig om deze bewerking uit te voeren. Er wordt een bewerking voor zacht verwijderen uitgevoerd om het herstellen van uw *cluster* bron met gegevens binnen 14 dagen mogelijk te maken, of het verwijderen per ongeluk of opzettelijk is geslaagd. De *cluster* bron naam blijft gereserveerd tijdens de tijdelijke periode en u kunt geen nieuw cluster met die naam maken. Na de periode van de tijdelijke verwijdering wordt de *cluster* bron naam vrijgegeven, worden uw *cluster* bron en-gegevens permanent verwijderd en kunnen ze niet worden hersteld. De gekoppelde werk ruimte wordt ontkoppeling van de *cluster* resource bij het verwijderen. Nieuwe opgenomen gegevens worden opgeslagen in Log Analytics Storage en versleuteld met de micro soft-sleutel. 
+  
+  De bewerking van de werk ruimten is asynchroon en kan tot 90 minuten duren.
 
+  **PowerShell**
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name}
+  ```
+
+  **REST**
+  
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
@@ -590,8 +663,10 @@ Al uw gegevens blijven toegankelijk na de bewerking voor het wijzigen van de sle
 
 -CMK-versleuteling is van toepassing op nieuwe opgenomen gegevens na de CMK-      configuratie.Gegevens die zijn opgenomen vóór de CMK      -Configuratie, blijven versleuteld met micro soft-sleutel.U kunt een query uitvoeren op gegevens die zijn opgenomen      voor en na de CMK-configuratie naadloos.
 
--De Azure Key Vault moet worden geconfigureerd als herstelbaar.Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI of Power shell: de functie    - voor  [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)moet zijn ingeschakeld 
-         -  [Purge protection](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)   om de beveiliging op te heffen tegen het afdwingen van het verwijderen van het geheim of de kluis, zelfs na het verwijderen van de software.
+-De Azure Key Vault moet worden geconfigureerd als herstelbaar.Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI of Power shell:
+
+  - [Voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
+      moet zijn ingeschakeld    - om de beveiliging op te  [schonen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)moet   worden ingeschakeld om te beschermen tegen het verwijderen van het geheim of de kluis, zelfs na het verwijderen van de software.
 
 - *Cluster*   resource verplaatsing naar een andere resource groep of een ander abonnement      wordt momenteel niet ondersteund.
 

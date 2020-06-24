@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877624"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887524"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark taken uitvoeren op AKS
 
-[Apache Spark][apache-spark] is een snelle engine voor grootschalige gegevens verwerking. Vanaf de [Spark 2.3.0-release][spark-latest-release]ondersteunt Apache Spark systeem eigen integratie met Kubernetes-clusters. Azure Kubernetes service (AKS) is een beheerde Kubernetes-omgeving die wordt uitgevoerd in Azure. Dit document bevat informatie over het voorbereiden en uitvoeren van Apache Spark taken op een AKS-cluster (Azure Kubernetes service).
+[Apache Spark][apache-spark] is een snelle engine voor grootschalige gegevens verwerking. Vanaf de [Spark 2.3.0-release][spark-kubernetes-earliest-version]ondersteunt Apache Spark systeem eigen integratie met Kubernetes-clusters. Azure Kubernetes service (AKS) is een beheerde Kubernetes-omgeving die wordt uitgevoerd in Azure. Dit document bevat informatie over het voorbereiden en uitvoeren van Apache Spark taken op een AKS-cluster (Azure Kubernetes service).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,12 +25,13 @@ Als u de stappen in dit artikel wilt uitvoeren, hebt u het volgende nodig.
 * [Docker hub][docker-hub] -account of een [Azure container Registry][acr-create].
 * Azure CLI is [geïnstalleerd][azure-cli] op uw ontwikkel systeem.
 * [Jdk 8][java-install] geïnstalleerd op uw systeem.
+* [Apache Maven][maven-install] geïnstalleerd op uw systeem.
 * SBT ([scala Build Tool][sbt-install]) dat op uw systeem is geïnstalleerd.
 * Git-opdracht regel Programma's die op uw systeem zijn geïnstalleerd.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Spark wordt gebruikt voor grootschalige gegevens verwerking en vereist dat de grootte van de Kubernetes-knoop punten voldoet aan de vereisten van de Spark-resources. U kunt het beste een minimale `Standard_D3_v2` grootte van de AKS-knoop punten (Azure Kubernetes service) aanraden.
+Spark wordt gebruikt voor grootschalige gegevens verwerking en vereist dat de grootte van de Kubernetes-knoop punten voldoet aan de vereisten van de Spark-resources. U kunt het beste een minimale grootte van `Standard_D3_v2` de AKS-knoop punten (Azure Kubernetes service) aanraden.
 
 Als u een AKS-cluster nodig hebt dat voldoet aan deze minimale aanbeveling, voert u de volgende opdrachten uit.
 
@@ -46,7 +47,7 @@ Maak een service-principal voor het cluster. Nadat deze is gemaakt, hebt u de Se
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Maak het AKS-cluster met knoop punten met een `Standard_D3_v2`grootte, en de waarden van de AppID en het wacht woord dat is door gegeven als Service-Principal-en client-geheime para meters.
+Maak het AKS-cluster met knoop punten met een grootte `Standard_D3_v2` , en de waarden van de AppID en het wacht woord dat is door gegeven als Service-Principal-en client-geheime para meters.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -77,7 +78,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Als er meerdere JDK-versies zijn geïnstalleerd, `JAVA_HOME` stelt u in dat versie 8 moet worden gebruikt voor de huidige sessie.
+Als er meerdere JDK-versies zijn geïnstalleerd, stelt u `JAVA_HOME` in dat versie 8 moet worden gebruikt voor de huidige sessie.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -89,7 +90,7 @@ Voer de volgende opdracht uit om de Spark-bron code te maken met Kubernetes-onde
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Met de volgende opdrachten maakt u de Spark-container installatie kopie en pusht u deze naar een container installatie kopie register. Vervang `registry.example.com` door de naam van het container register en `v1` met het label dat u wilt gebruiken. Als docker hub wordt gebruikt, is deze waarde de register naam. Als u Azure Container Registry (ACR) gebruikt, is deze waarde de naam van de ACR-aanmeldings server.
+Met de volgende opdrachten maakt u de Spark-container installatie kopie en pusht u deze naar een container installatie kopie register. Vervang door `registry.example.com` de naam van het container register en `v1` met het label dat u wilt gebruiken. Als docker hub wordt gebruikt, is deze waarde de register naam. Als u Azure Container Registry (ACR) gebruikt, is deze waarde de naam van de ACR-aanmeldings server.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -108,7 +109,7 @@ Push de container installatie kopie naar het REGI ster van de container installa
 
 ## <a name="prepare-a-spark-job"></a>Een Spark-taak voorbereiden
 
-Vervolgens moet u een Spark-taak voorbereiden. Een jar-bestand wordt gebruikt om de Spark-taak te bewaren en is nodig `spark-submit` voor het uitvoeren van de opdracht. Het jar kan toegankelijk worden gemaakt via een open bare URL of vooraf verpakt in een container installatie kopie. In dit voor beeld wordt een jar-voorbeeld gemaakt om de waarde van pi te berekenen. Dit jar wordt vervolgens geüpload naar Azure Storage. Als u een bestaand jar hebt, kunt u vervangen
+Vervolgens moet u een Spark-taak voorbereiden. Een jar-bestand wordt gebruikt om de Spark-taak te bewaren en is nodig voor het uitvoeren van de `spark-submit` opdracht. Het jar kan toegankelijk worden gemaakt via een open bare URL of vooraf verpakt in een container installatie kopie. In dit voor beeld wordt een jar-voorbeeld gemaakt om de waarde van pi te berekenen. Dit jar wordt vervolgens geüpload naar Azure Storage. Als u een bestaand jar hebt, kunt u vervangen
 
 Maak een map waarin u het project voor een Spark-taak wilt maken.
 
@@ -224,7 +225,7 @@ kubectl create serviceaccount spark
 kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
 ```
 
-Verzend de taak met `spark-submit`behulp van.
+Verzend de taak met behulp van `spark-submit` .
 
 ```bash
 ./bin/spark-submit \
@@ -258,7 +259,7 @@ Terwijl de taak wordt uitgevoerd, kunt u ook toegang krijgen tot de Spark-gebrui
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Als u toegang wilt krijgen tot de Spark `127.0.0.1:4040` -gebruikers interface, opent u het adres in een browser.
+Als u toegang wilt krijgen tot de Spark-gebruikers interface, opent u het adres `127.0.0.1:4040` in een browser.
 
 ![Spark-gebruikers interface](media/aks-spark-job/spark-ui.png)
 
@@ -293,9 +294,9 @@ Pi is roughly 3.152155760778804
 
 In het bovenstaande voor beeld is het Spark jar-bestand geüpload naar Azure Storage. Een andere mogelijkheid is om het jar-bestand te verpakken in aangepaste docker-installatie kopieën.
 
-Als u dit wilt doen, `dockerfile` zoekt u naar de Spark- `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` installatie kopie die zich in de map bevindt. Een `ADD` instructie voor de Spark-taak `jar` ergens tussen `WORKDIR` en `ENTRYPOINT` -declaraties toevoegen.
+Als u dit wilt doen, zoekt u naar de `dockerfile` Spark-installatie kopie die zich in de map bevindt `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` . Een `ADD` instructie voor de Spark-taak `jar` ergens tussen `WORKDIR` en- `ENTRYPOINT` declaraties toevoegen.
 
-Werk het jar-pad bij naar de locatie `SparkPi-assembly-0.1.0-SNAPSHOT.jar` van het bestand in uw ontwikkel systeem. U kunt ook uw eigen aangepaste JAR-bestand gebruiken.
+Werk het jar-pad bij naar de locatie van het `SparkPi-assembly-0.1.0-SNAPSHOT.jar` bestand in uw ontwikkel systeem. U kunt ook uw eigen aangepaste JAR-bestand gebruiken.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -312,7 +313,7 @@ Bouw en push de installatie kopie met de meegeleverde Spark-scripts.
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-Bij het uitvoeren van de taak kan het `local://` schema worden gebruikt met het pad naar het jar-bestand in de docker-installatie kopie, in plaats van een externe Jar-URL aan te duiden.
+Bij het uitvoeren van de taak `local://` kan het schema worden gebruikt met het pad naar het jar-bestand in de docker-installatie kopie, in plaats van een externe Jar-URL aan te duiden.
 
 ```bash
 ./bin/spark-submit \
@@ -340,9 +341,10 @@ Raadpleeg de Spark-documentatie voor meer informatie.
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 

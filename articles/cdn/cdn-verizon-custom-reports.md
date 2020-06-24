@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: allensu
-ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259745"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888710"
 ---
 # <a name="custom-reports-from-verizon"></a>Aangepaste rapporten van Verizon
 
@@ -75,13 +75,13 @@ U kunt de gegevens in Excel-indeling exporteren door rechts van de knop **Ga** o
 | 4xx                       | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een 4xx HTTP-status code (bijvoorbeeld 400 ongeldige aanvraag, 403 verboden of 404 niet gevonden). |
 | 5xx                       | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een 5xx HTTP-status code (bijvoorbeeld 500 interne server fout of 502 ongeldige gateway). |
 | Percentage cache treffers               | Hiermee wordt het percentage van cache aanvragen aangegeven dat rechtstreeks vanuit de cache naar de aanvrager is verzonden. |
-| Cache treffers                | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een cache treffer (bijvoorbeeld TCP_EXPIRED_HIT, TCP_HIT of TCP_PARTIAL_HIT). Er treedt een cache treffer op wanneer een versie van de aangevraagde inhoud in de cache wordt gevonden. |
+| Cachetreffers                | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een cache treffer (bijvoorbeeld TCP_EXPIRED_HIT, TCP_HIT of TCP_PARTIAL_HIT). Er treedt een cache treffer op wanneer een versie van de aangevraagde inhoud in de cache wordt gevonden. |
 | Overgedragen gegevens (MB)     | Hiermee wordt de totale hoeveelheid verzonden gegevens (MB) van de Edge-servers naar HTTP-clients (webbrowsers) voor de Edge CNAME aangegeven. De hoeveelheid overgedragen gegevens wordt berekend door de HTTP-antwoord headers toe te voegen aan de hoofd tekst van het antwoord. Als gevolg hiervan is de hoeveelheid gegevens die voor elke Asset wordt overgedragen groter dan de werkelijke bestands grootte. |
 | Beschrijving               | Identificeert een Edge CNAME op basis van de hostnaam |
 | Treffers                      | Hiermee wordt het totale aantal aanvragen voor de rand-CNAME aangegeven |
 | Missers                    | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) voor de rand-CNAME aangegeven dat resulteert in een Missing in een cache (bijvoorbeeld TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS of TCP_MISS). Er treedt een cache-Misser op wanneer de aangevraagde inhoud niet is opgeslagen in de cache op de rand server die de aanvraag heeft geaccepteerd. | 
 | Geen cache                  | Hiermee wordt het totale aantal aanvragen of overgedragen gegevens (MB) aangegeven voor de Edge CNAME die resulteert in een CONFIG_NOCACHE cache-status code.  |
-| Overige                     | Hiermee wordt het totale aantal aanvragen of overgedragen gegevens (MB) aangegeven voor de Edge CNAME aangegeven dat resulteert in een HTTP-status code die buiten het bereik van de 2xx-5xx valt. |
+| Anders                     | Hiermee wordt het totale aantal aanvragen of overgedragen gegevens (MB) aangegeven voor de Edge CNAME aangegeven dat resulteert in een HTTP-status code die buiten het bereik van de 2xx-5xx valt. |
 | Platform                  | Hiermee wordt het platform aangegeven dat het Edge CNAME-verkeer afhandelt. |
 | Niet toegewezen               | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) aangegeven voor de Edge CNAME waarvoor de cache status code of de gegevens van de HTTP-status code niet zijn geregistreerd.  |
 | Niet in cache               | Hiermee wordt het totale aantal verzonden aanvragen of gegevens (MB) aangegeven voor de Edge CNAME die resulteert in een niet-CACHE geheugen status code.  |

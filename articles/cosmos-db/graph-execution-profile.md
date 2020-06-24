@@ -6,21 +6,21 @@ author: luisbosquez
 manager: kfile
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: 5705ef4fb6aa895009d554617c968543cc3fcd63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441853"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261797"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>De stap met het uitvoeringsprofiel gebruiken om de Gremlin-query's te evalueren
 
 Dit artikel bevat een overzicht van het gebruik van de stap met het uitvoeringsprofiel voor grafiekdatabases van Azure Cosmos DB Gremlin API. Deze stap biedt relevante informatie voor het oplossen van problemen en het optimaliseren van query's, en is compatibel met Gremlin-query's die kunnen worden uitgevoerd voor een Cosmos DB Gremlin API-account.
 
-Als u deze stap wilt gebruiken, voegt `executionProfile()` u de functie aanroep toe aan het einde van uw Gremlin-query. **Uw Gremlin-query wordt uitgevoerd** en het resultaat van de bewerking retourneert een JSON-antwoord object met het uitvoerings profiel voor de query.
+Als u deze stap wilt gebruiken, voegt u de `executionProfile()` functie aanroep toe aan het einde van uw Gremlin-query. **Uw Gremlin-query wordt uitgevoerd** en het resultaat van de bewerking retourneert een JSON-antwoord object met het uitvoerings profiel voor de query.
 
 Bijvoorbeeld:
 
@@ -32,7 +32,7 @@ Bijvoorbeeld:
     g.V('mary').out().executionProfile()
 ```
 
-Na het aanroepen van de `executionProfile()` stap is het antwoord een JSON-object dat de uitgevoerde Gremlin-stap bevat, de totale tijd die nodig was en een matrix van de Cosmos DB runtime-Opera tors die de instructie heeft opgeleverd.
+Na het aanroepen `executionProfile()` van de stap is het antwoord een JSON-object dat de uitgevoerde Gremlin-stap bevat, de totale tijd die nodig was en een matrix van de Cosmos DB runtime-Opera tors die de instructie heeft opgeleverd.
 
 > [!NOTE]
 > Deze implementatie voor het uitvoerings profiel is niet gedefinieerd in de Apache Tinkerpop-specificatie. Het is specifiek voor de implementatie van de Gremlin-API van Azure Cosmos DB.
@@ -134,7 +134,7 @@ Hieronder ziet u een voor beeld van de uitvoer die wordt geretourneerd:
 ```
 
 > [!NOTE]
-> In de stap executionProfile wordt de Gremlin-query uitgevoerd. Dit omvat de `addV` of `addE`-stappen, wat resulteert in het maken en de wijzigingen doorvoert die zijn opgegeven in de query. Als gevolg hiervan worden er ook kosten in rekening gebracht voor de aanvraag eenheden die zijn gegenereerd door de Gremlin-query.
+> In de stap executionProfile wordt de Gremlin-query uitgevoerd. Dit omvat de `addV` of `addE` -stappen, wat resulteert in het maken en de wijzigingen doorvoert die zijn opgegeven in de query. Als gevolg hiervan worden er ook kosten in rekening gebracht voor de aanvraag eenheden die zijn gegenereerd door de Gremlin-query.
 
 ## <a name="execution-profile-response-objects"></a>Reactie objecten uitvoerings profiel
 
@@ -219,17 +219,17 @@ Stel dat de volgende uitvoerings profiel reactie van een **gepartitioneerde graf
 ```
 
 De volgende conclusies kunnen worden gemaakt:
-- De query is een enkelvoudige ID-zoek opdracht, omdat de Gremlin- `g.V('id')`instructie het patroon volgt.
+- De query is een enkelvoudige ID-zoek opdracht, omdat de Gremlin-instructie het patroon volgt `g.V('id')` .
 - Beoordelings van de `time` metriek lijkt de latentie van deze query hoog te zijn, omdat het [meer is dan 10 MS voor één punt-Lees bewerking](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Als `storeOps` we het object bekijken, kunnen we zien dat `fanoutFactor` de is `5`. Dit betekent dat er [vijf partities](https://docs.microsoft.com/azure/cosmos-db/partition-data) zijn geopend door deze bewerking.
+- Als we het object bekijken `storeOps` , kunnen we zien dat de `fanoutFactor` is `5` . Dit betekent dat er [vijf partities](https://docs.microsoft.com/azure/cosmos-db/partition-data) zijn geopend door deze bewerking.
 
-Als gevolg van deze analyse kunnen we bepalen dat de eerste query toegang krijgt tot meer partities dan nodig is. Dit kan worden verholpen door de partitie sleutel in de query als een predikaat op te geven. Dit leidt tot minder latentie en minder kosten per query. Meer informatie over [Graph-partitionering](graph-partitioning.md). Een meer optimale query zou zijn `g.V('tt0093640').has('partitionKey', 't1001')`.
+Als gevolg van deze analyse kunnen we bepalen dat de eerste query toegang krijgt tot meer partities dan nodig is. Dit kan worden verholpen door de partitie sleutel in de query als een predikaat op te geven. Dit leidt tot minder latentie en minder kosten per query. Meer informatie over [Graph-partitionering](graph-partitioning.md). Een meer optimale query zou zijn `g.V('tt0093640').has('partitionKey', 't1001')` .
 
 ### <a name="unfiltered-query-patterns"></a>Niet-gefilterde query patronen
 
 Vergelijk de volgende twee uitvoerings profiel reacties. Voor de eenvoud gebruiken deze voor beelden één gepartitioneerde grafiek.
 
-Met deze eerste query worden alle hoek punten opgehaald `tweet` met het label en worden vervolgens de naburige hoek punten verkregen:
+Met deze eerste query worden alle hoek punten opgehaald met het label `tweet` en worden vervolgens de naburige hoek punten verkregen:
 
 ```json
 [
@@ -306,7 +306,7 @@ Met deze eerste query worden alle hoek punten opgehaald `tweet` met het label en
 ]
 ```
 
-Let op het profiel van dezelfde query, maar nu met een extra filter, `has('lang', 'en')`voordat de aangrenzende hoek punten worden geverkennen:
+Let op het profiel van dezelfde query, maar nu met een extra filter, `has('lang', 'en')` voordat de aangrenzende hoek punten worden geverkennen:
 
 ```json
 [

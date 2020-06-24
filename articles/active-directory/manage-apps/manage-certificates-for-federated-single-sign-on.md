@@ -3,8 +3,8 @@ title: Federatie certificaten beheren in azure AD | Microsoft Docs
 description: Meer informatie over het aanpassen van de verval datum voor uw Federatie certificaten en het vernieuwen van certificaten die binnenkort verlopen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159026"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763207"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Certificaten beheren voor federatieve eenmalige aanmelding in Azure Active Directory
 
@@ -30,7 +30,7 @@ Dit artikel is alleen relevant voor apps die zijn geconfigureerd voor het gebrui
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automatisch gegenereerd certificaat voor galerie-en niet-galerie toepassingen
 
-Wanneer u een nieuwe toepassing uit de galerie toevoegt en een op SAML gebaseerde aanmelding configureert (door de**SAML** van **eenmalige aanmelding** > te selecteren op de overzichts pagina van de toepassing), genereert Azure AD een certificaat voor de toepassing dat drie jaar geldig is. Als u het actieve certificaat wilt downloaden als een beveiligings certificaat bestand (**. CER**), gaat u terug naar die pagina (op**SAML gebaseerde aanmelding**) en selecteert u een download koppeling in de kop **SAML-handtekening certificaat** . U kunt kiezen tussen het onbewerkte (binaire) certificaat of het Base64-certificaat (basis 64-gecodeerd tekst). Voor galerie toepassingen kan deze sectie ook een koppeling weer geven om het certificaat te downloaden als XML voor federatieve meta gegevens (een **. XML** -bestand), afhankelijk van de vereiste van de toepassing.
+Wanneer u een nieuwe toepassing uit de galerie toevoegt en een op SAML gebaseerde aanmelding configureert (door de SAML van **eenmalige aanmelding**te selecteren op  >  **SAML** de overzichts pagina van de toepassing), genereert Azure AD een certificaat voor de toepassing dat drie jaar geldig is. Als u het actieve certificaat wilt downloaden als een beveiligings certificaat bestand (**. CER**), gaat u terug naar die pagina (op**SAML gebaseerde aanmelding**) en selecteert u een download koppeling in de kop **SAML-handtekening certificaat** . U kunt kiezen tussen het onbewerkte (binaire) certificaat of het Base64-certificaat (basis 64-gecodeerd tekst). Voor galerie toepassingen kan deze sectie ook een koppeling weer geven om het certificaat te downloaden als XML voor federatieve meta gegevens (een **. XML** -bestand), afhankelijk van de vereiste van de toepassing.
 
 ![Download opties voor het SAML-actieve handtekening certificaat](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
@@ -90,7 +90,7 @@ Azure AD verzendt een e-mail melding 60, 30 en 7 dagen voordat het SAML-certific
 1. Voor elk e-mail adres dat u wilt verwijderen, selecteert u het **Verwijder** pictogram (een schoner) naast het e-mail adres.
 1. Selecteer **Opslaan**.
 
-U ontvangt de e-mail melding aadnotification@microsoft.comvan. Als u wilt voor komen dat het e-mail bericht naar uw spam locatie gaat, voegt u deze e-mail toe aan uw contact personen.
+U ontvangt de e-mail melding van aadnotification@microsoft.com . Als u wilt voor komen dat het e-mail bericht naar uw spam locatie gaat, voegt u deze e-mail toe aan uw contact personen.
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Een certificaat vernieuwen dat binnenkort verloopt
 
@@ -111,4 +111,4 @@ Als een certificaat bijna verloopt, kunt u het vernieuwen met behulp van een pro
 - [Tutorials for integrating SaaS applications with Azure Active Directory](../saas-apps/tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 - [Toepassingsbeheer met Azure Active Directory](what-is-application-management.md)
 - [Eenmalige aanmelding bij toepassingen in Azure Active Directory](what-is-single-sign-on.md)
-- [Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Foutopsporing uitvoeren in op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

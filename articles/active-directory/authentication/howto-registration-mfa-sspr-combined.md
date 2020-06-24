@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798285"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260845"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Registratie van gecombineerde beveiligings gegevens inschakelen in Azure Active Directory
 
@@ -48,6 +48,9 @@ Als u de lijst site toewijzing met zone hebt geconfigureerd in Internet Explorer
 ## <a name="conditional-access-policies-for-combined-registration"></a>Beleid voor voorwaardelijke toegang voor gecombineerde registratie
 
 Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Authentication en self-service voor wacht woord opnieuw instellen is nu mogelijk met gebruikers acties in het beleid voor voorwaardelijke toegang. Deze functie is beschikbaar voor organisaties die de functie voor [gecombineerde registratie](../authentication/concept-registration-mfa-sspr-combined.md)hebben ingeschakeld. Deze functionaliteit kan worden ingeschakeld in organisaties waar gebruikers moeten registreren voor Azure Multi-Factor Authentication en SSPR vanaf een centrale locatie, zoals een vertrouwde netwerk locatie tijdens het uitvoeren van een HR-systeem.
+
+> [!NOTE]
+> Dit beleid is alleen van toepassing wanneer een gebruiker toegang heeft tot een gecombineerde registratie pagina. Dit beleid dwingt geen MFA-inschrijving af wanneer een gebruiker toegang heeft tot andere toepassingen. U kunt een MFA-registratie beleid maken met behulp van [Azure Identity Protection-MFA-beleid configureren](../identity-protection/howto-identity-protection-configure-mfa-policy.md).
 
 Zie het artikel [Wat is de locatie voorwaarde in azure Active Directory voorwaardelijke toegang?](../conditional-access/location-condition.md#named-locations) voor meer informatie over het maken van vertrouwde locaties in voorwaardelijke toegang.
 

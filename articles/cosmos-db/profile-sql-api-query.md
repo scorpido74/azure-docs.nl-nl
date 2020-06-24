@@ -4,15 +4,15 @@ description: Meer informatie over het ophalen van metrische gegevens voor SQL-qu
 author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
-ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bec102064d6269964cb917d745af206acf948ad
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70998371"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262545"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Metrische gegevens over SQL-query uitvoering ophalen en query prestaties analyseren met behulp van .NET SDK
 
@@ -22,7 +22,7 @@ In dit artikel wordt uitgelegd hoe u de prestaties van SQL-query's in Azure Cosm
 
 Alle Overloads voor [DocumentClient. CreateDocumentQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx) nemen in een optionele [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) -para meter. Met deze optie kan het uitvoeren van query's worden afgestemd en de para meters worden uitgevoerd. 
 
-Als u de metrische gegevens voor de uitvoering van SQL-query's wilt verzamelen, moet u [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) de para `true`meter [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) in de FeedOptions in te stellen op. Als `PopulateQueryMetrics` deze optie is ingesteld op True, wordt `FeedResponse` de relevante `QueryMetrics`waarde in het bestand opgenomen. 
+Als u de metrische gegevens voor de uitvoering van SQL-query's wilt verzamelen, moet u de para meter [PopulateQueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) in de [FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx) in te stellen op `true` . Als deze optie is ingesteld op True, wordt de `PopulateQueryMetrics` relevante waarde in het bestand `FeedResponse` opgenomen `QueryMetrics` . 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>Metrische query gegevens ophalen met AsDocumentQuery ()
 In het volgende code voorbeeld ziet u hoe u metrische gegevens kunt ophalen met behulp van de methode [AsDocumentQuery ()](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) :
@@ -62,7 +62,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>QueryMetrics samen voegen
 
-In de vorige sectie ziet u dat er meerdere aanroepen naar de methode [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) zijn. Elke aanroep heeft een `FeedResponse` object geretourneerd met een woorden lijst `QueryMetrics`van; een voor elke voortzetting van de query. In het volgende voor beeld ziet u hoe `QueryMetrics` u deze samenvoegt met behulp van LINQ:
+In de vorige sectie ziet u dat er meerdere aanroepen naar de methode [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) zijn. Elke aanroep heeft een `FeedResponse` object geretourneerd met een woorden lijst van `QueryMetrics` ; één voor elke voortzetting van de query. In het volgende voor beeld ziet u hoe u deze samenvoegt `QueryMetrics` met behulp van LINQ:
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -84,7 +84,7 @@ Console.WriteLine(aggregatedQueryMetrics);
 
 ## <a name="grouping-query-metrics-by-partition-id"></a>Metrische query gegevens groeperen op partitie-ID
 
-U kunt de `QueryMetrics` partitie-id groeperen. Door te groeperen op partitie-ID kunt u zien of een specifieke partitie prestatie problemen veroorzaakt in vergelijking met andere. In het volgende voor beeld ziet u `QueryMetrics` hoe u groepeert met LINQ:
+U kunt de `QueryMetrics` partitie-id groeperen. Door te groeperen op partitie-ID kunt u zien of een specifieke partitie prestatie problemen veroorzaakt in vergelijking met andere. In het volgende voor beeld ziet u hoe u groepeert `QueryMetrics` met LINQ:
 
 ```csharp
 List<KeyValuePair<string, QueryMetrics>> partitionedQueryMetrics = new List<KeyValuePair<string, QueryMetrics>>();
@@ -115,7 +115,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>LINQ op DocumentQuery
 
-U kunt ook een LINQ `FeedResponse` -query ophalen met behulp `AsDocumentQuery()` van de-methode:
+U kunt ook `FeedResponse` een LINQ-query ophalen met behulp van de- `AsDocumentQuery()` methode:
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Dure Query's
 
-U kunt de door elke query verbruikte aanvraag eenheden vastleggen voor het onderzoeken van dure query's of query's die hoge door Voer gebruiken. U kunt de aanvraag kosten ophalen met behulp [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) van de eigenschap `FeedResponse`RequestCharge in. Zie het artikel over de [aanvraag eenheid zoeken](find-request-unit-charge.md) voor meer informatie over het verkrijgen van de aanvraag kosten met behulp van de Azure Portal en verschillende sdk's.
+U kunt de door elke query verbruikte aanvraag eenheden vastleggen voor het onderzoeken van dure query's of query's die hoge door Voer gebruiken. U kunt de aanvraag kosten ophalen met behulp van de eigenschap [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) in `FeedResponse` . Zie het artikel over de [aanvraag eenheid zoeken](find-request-unit-charge.md) voor meer informatie over het verkrijgen van de aanvraag kosten met behulp van de Azure Portal en verschillende sdk's.
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -148,7 +148,7 @@ while (documentQuery.HasMoreResults)
 
 ## <a name="get-the-query-execution-time"></a>De uitvoerings tijd van de query ophalen
 
-Bij het berekenen van de tijd die nodig is om een query aan client zijde uit te voeren, moet u ervoor zorgen dat `ExecuteNextAsync` u alleen de tijd voor het aanroepen van de methode en niet andere onderdelen van de code basis opneemt. Alleen deze oproepen helpen u bij het berekenen van hoe lang de uitvoering van de query heeft geduurd, zoals wordt weer gegeven in het volgende voor beeld:
+Bij het berekenen van de tijd die nodig is om een query aan client zijde uit te voeren, moet u ervoor zorgen dat u alleen de tijd voor het aanroepen `ExecuteNextAsync` van de methode en niet andere onderdelen van de code basis opneemt. Alleen deze oproepen helpen u bij het berekenen van hoe lang de uitvoering van de query heeft geduurd, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -221,7 +221,7 @@ Total Query Execution Time               :        4,500.34 milliseconds
 
 Dit betekent dat de query 4,5 seconden duurde om uit te voeren (en dat er maar één voortzetting was).
 
-Vermijd het gebruik van boven in het filter om deze voorbeeld query te optimaliseren. In plaats daarvan moeten de `c.description` waarden worden ingevoegd in hoofd letters wanneer er documenten worden gemaakt of bijgewerkt. De query wordt vervolgens: 
+Vermijd het gebruik van boven in het filter om deze voorbeeld query te optimaliseren. In plaats daarvan `c.description` moeten de waarden worden ingevoegd in hoofd letters wanneer er documenten worden gemaakt of bijgewerkt. De query wordt vervolgens: 
 
 ```sql
 SELECT VALUE c.description 
@@ -233,12 +233,12 @@ Deze query kan nu vanuit de index worden geleverd.
 
 Zie het artikel [afstemmen op query prestaties](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) voor meer informatie over het afstemmen van query prestaties.
 
-## <a name="references"></a><a id="References"></a>Verwijzingen
+## <a name="references"></a><a id="References"></a>Referenties
 
 - [SQL-specificatie voor Azure Cosmos DB](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
-- [TO](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
+- [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 
 ## <a name="next-steps"></a>Volgende stappen
 

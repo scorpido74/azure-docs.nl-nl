@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 473636dc95d96ea348a42ec0f1090029bf3a7728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0255d7f47c8f9c63a2943830fa323a2e11994a9e
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260433"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887552"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Azure CDN optimaliseren voor het type inhouds levering
 
@@ -45,7 +45,7 @@ Dit artikel bevat een overzicht van de verschillende optimalisatie functies en w
 
 * [Algemene Internet levering](#general-web-delivery). Deze optimalisatie wordt ook gebruikt voor mediastreaming en grote bestanden downloaden.
 
-* [Dynamische site versnelling](#dynamic-site-acceleration) 
+* [Dynamische siteversnelling](#dynamic-site-acceleration) 
 
 
 **Azure CDN standaard van Akamai** profielen ondersteunen de volgende optimalisaties:
@@ -58,7 +58,7 @@ Dit artikel bevat een overzicht van de verschillende optimalisatie functies en w
 
 * [Grote bestanden downloaden](#large-file-download)
 
-* [Dynamische site versnelling](#dynamic-site-acceleration) 
+* [Dynamische siteversnelling](#dynamic-site-acceleration) 
 
 Micro soft raadt u aan prestatie verschillen tussen verschillende providers te testen om de optimale provider voor uw levering te selecteren.
 

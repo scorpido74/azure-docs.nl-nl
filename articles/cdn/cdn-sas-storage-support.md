@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260170"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887042"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Azure CDN gebruiken met SAS
 
@@ -35,7 +35,7 @@ De volgende drie opties worden aanbevolen voor het gebruik van SAS met Azure CDN
 ### <a name="prerequisites"></a>Vereisten
 Maak een opslag account en genereer vervolgens een SAS voor uw asset om te starten. U kunt twee typen opgeslagen toegangs handtekeningen genereren: een service-SAS of een account-SAS. Zie [typen Shared Access signatures](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures)voor meer informatie.
 
-Nadat u een SAS-token hebt gegenereerd, kunt u toegang krijgen tot uw Blob Storage- `?sv=<SAS token>` bestand door toe te voegen aan uw URL. Deze URL heeft de volgende indeling: 
+Nadat u een SAS-token hebt gegenereerd, kunt u toegang krijgen tot uw Blob Storage-bestand door toe te voegen `?sv=<SAS token>` aan uw URL. Deze URL heeft de volgende indeling: 
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
@@ -65,7 +65,7 @@ Deze optie is het eenvoudigste en maakt gebruik van één SAS-token, dat wordt d
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    
-3. Verfijn de cache duur door gebruik te maken van cache regels of door headers `Cache-Control` toe te voegen op de oorspronkelijke server. Omdat Azure CDN het SAS-token als een gewone query teken reeks behandelt, als een best practice u moet een cache duur instellen die verloopt op of vóór de SAS-verval tijd. Als een bestand in de cache gedurende een langere periode wordt opgeslagen dan de SAS actief is, is het bestand mogelijk toegankelijk vanaf de bron server Azure CDN nadat de SAS-verval tijd is verstreken. Als deze situatie zich voordoet en u het bestand in de cache ontoegankelijk wilt maken, moet u een opschoon bewerking op het bestand uitvoeren om het uit de cache te verwijderen. Voor informatie over het instellen van de cache duur op Azure CDN, Zie [beheer Azure CDN caching met cache regels](cdn-caching-rules.md).
+3. Verfijn de cache duur door gebruik te maken van cache regels of door headers toe te voegen `Cache-Control` op de oorspronkelijke server. Omdat Azure CDN het SAS-token als een gewone query teken reeks behandelt, als een best practice u moet een cache duur instellen die verloopt op of vóór de SAS-verval tijd. Als een bestand in de cache gedurende een langere periode wordt opgeslagen dan de SAS actief is, is het bestand mogelijk toegankelijk vanaf de bron server Azure CDN nadat de SAS-verval tijd is verstreken. Als deze situatie zich voordoet en u het bestand in de cache ontoegankelijk wilt maken, moet u een opschoon bewerking op het bestand uitvoeren om het uit de cache te verwijderen. Voor informatie over het instellen van de cache duur op Azure CDN, Zie [beheer Azure CDN caching met cache regels](cdn-caching-rules.md).
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Optie 2: verborgen CDN SAS-token met behulp van een herschrijf regel
  
@@ -86,8 +86,8 @@ Deze optie is alleen beschikbaar voor **Azure CDN Premium van Verizon** -profiel
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![Regel voor het opnieuw schrijven van de](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN-URL-links CDN URL herschrijven regel-rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![Regel voor het opnieuw schrijven van de CDN-URL-links ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+    ![ CDN URL herschrijven regel-rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. Nadat de nieuwe regel actief wordt, heeft iedereen toegang tot bestanden in de opgegeven container op het CDN-eind punt, ongeacht of ze een SAS-token in de URL gebruiken. Dit is de indeling:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
@@ -95,7 +95,7 @@ Deze optie is alleen beschikbaar voor **Azure CDN Premium van Verizon** -profiel
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
-3. Verfijn de cache duur door gebruik te maken van cache regels of door headers `Cache-Control` toe te voegen op de oorspronkelijke server. Omdat Azure CDN het SAS-token als een gewone query teken reeks behandelt, als een best practice u moet een cache duur instellen die verloopt op of vóór de SAS-verval tijd. Als een bestand in de cache gedurende een langere periode wordt opgeslagen dan de SAS actief is, is het bestand mogelijk toegankelijk vanaf de bron server Azure CDN nadat de SAS-verval tijd is verstreken. Als deze situatie zich voordoet en u het bestand in de cache ontoegankelijk wilt maken, moet u een opschoon bewerking op het bestand uitvoeren om het uit de cache te verwijderen. Voor informatie over het instellen van de cache duur op Azure CDN, Zie [beheer Azure CDN caching met cache regels](cdn-caching-rules.md).
+3. Verfijn de cache duur door gebruik te maken van cache regels of door headers toe te voegen `Cache-Control` op de oorspronkelijke server. Omdat Azure CDN het SAS-token als een gewone query teken reeks behandelt, als een best practice u moet een cache duur instellen die verloopt op of vóór de SAS-verval tijd. Als een bestand in de cache gedurende een langere periode wordt opgeslagen dan de SAS actief is, is het bestand mogelijk toegankelijk vanaf de bron server Azure CDN nadat de SAS-verval tijd is verstreken. Als deze situatie zich voordoet en u het bestand in de cache ontoegankelijk wilt maken, moet u een opschoon bewerking op het bestand uitvoeren om het uit de cache te verwijderen. Voor informatie over het instellen van de cache duur op Azure CDN, Zie [beheer Azure CDN caching met cache regels](cdn-caching-rules.md).
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Optie 3: gebruik de verificatie van het CDN-beveiligings token met een regel voor herschrijven
 
@@ -124,8 +124,8 @@ Als u Azure CDN verificatie van beveiligings tokens wilt gebruiken, moet u een *
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![Regel voor het opnieuw schrijven van de](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN-URL-links CDN URL herschrijven regel-rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![Regel voor het opnieuw schrijven van de CDN-URL-links ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+    ![ CDN URL herschrijven regel-rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. Als u de SAS verlengt, moet u ervoor zorgen dat u de regel voor het herschrijven van de URL bijwerkt met de nieuwe SAS-token. 
 

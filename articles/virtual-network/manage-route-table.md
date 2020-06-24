@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: b30c912319104726069ae98920f0bc825d7358cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e694f29bb6f8e7c78c36ad2b8ee90d507529444f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182851"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708260"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Een route tabel maken, wijzigen of verwijderen
 
@@ -25,15 +25,15 @@ Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Voer vervolgens een van deze taken uit voordat u begint met de stappen in een van de volgende secties:
+Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Voer vervolgens een van deze taken uit voordat u begint met de stappen in een van de volgende secties:
 
 - **Portal gebruikers**: Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
 
 - **Power shell-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/powershell)of voer Power shell uit vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Zoek de vervolg keuzelijst **omgeving selecteren** op het tabblad Azure Cloud shell browser en kies vervolgens **Power shell** als deze optie nog niet is geselecteerd.
 
-    Als u Power shell lokaal uitvoert, gebruikt u Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az.Network` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Voer ook `Connect-AzAccount` uit om een verbinding te maken met Azure.
+    Als u Power shell lokaal uitvoert, gebruikt u Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az.Network` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Voer ook uit `Connect-AzAccount` om een verbinding te maken met Azure.
 
-- **Azure-opdracht regel interface (CLI)-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/bash)of voer de CLI uit vanaf uw computer. Gebruik Azure CLI versie 2.0.31 of hoger als u de Azure CLI lokaal uitvoert. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Voer ook `az login` uit om een verbinding te maken met Azure.
+- **Azure-opdracht regel interface (CLI)-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/bash)of voer de CLI uit vanaf uw computer. Gebruik Azure CLI versie 2.0.31 of hoger als u de Azure CLI lokaal uitvoert. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Voer ook uit `az login` om een verbinding te maken met Azure.
 
 Het account waarmee u zich aanmeldt of verbinding maakt met Azure, moet worden toegewezen aan de [rol netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
@@ -52,7 +52,7 @@ Er is een limiet voor het aantal route tabellen dat u per Azure-locatie en-abonn
     1. Voer een **naam** in voor de route tabel.
     1. Kies uw **abonnement**.
     1. Kies een bestaande **resource groep** of selecteer **nieuwe maken** om een nieuwe resource groep te maken.
-    1. Kies een **Locatie**.
+    1. Kies een **locatie**.
     1. Als u van plan bent om de route tabel te koppelen aan een subnet in een virtueel netwerk dat is verbonden met uw on-premises netwerk via een VPN-gateway en u uw on-premises routes niet wilt door geven aan de netwerk interfaces in het subnet, stelt u de **doorgifte van Gateway routes van het virtuele netwerk** in op **uitgeschakeld**.
 
 1. Selecteer **maken** om uw nieuwe route tabel te maken.
@@ -111,7 +111,7 @@ De meest voorkomende wijzigingen zijn het [toevoegen](#create-a-route) van route
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
 | Azure CLI | [AZ Network Route-Table Update](/cli/azure/network/route-table#az-network-route-table-update) |
-| PowerShell | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
+| PowerShell | [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Een routetabel aan een subnet koppelen
 
@@ -186,7 +186,7 @@ Er is een limiet voor het aantal routes per route tabel dat per Azure-locatie en
 
 1. Kies in de lijst route tabel de route tabel waaraan u een route wilt toevoegen.
 
-1. Kies **routes** > **toevoegen**in de menu balk van de route tabel.
+1. Kies **routes**toevoegen in de menu balk van de route tabel  >  **Add**.
 
 1. Voer een unieke **route naam** in voor de route in de route tabel.
 
@@ -333,7 +333,7 @@ Na een korte wacht tijd geeft Azure u het type van de volgende hop en de ID van 
 
 Om taken uit te voeren op route tabellen en routes, moet uw account worden toegewezen aan de [rol netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties in de volgende tabel worden toegewezen:
 
-| Bewerking                                                          |   Naam                                                  |
+| Bewerking                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Micro soft. Network/routeTables/lezen                              |   Een route tabel lezen                                    |
 | Micro soft. Network/routeTables/schrijven                             |   Een route tabel maken of bijwerken                        |

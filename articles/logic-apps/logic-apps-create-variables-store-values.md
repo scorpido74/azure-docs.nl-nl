@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456695"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753257"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Waarden opslaan en beheren met behulp van variabelen in Azure Logic Apps
 
@@ -22,7 +22,7 @@ U kunt variabelen maken voor gegevens typen, zoals een geheel getal, een float, 
 * De waarde van de variabele ophalen of ernaar verwijzen.
 * Verhoog of verlaag de variabele met een constante waarde, ook wel *verhoogd* en *verlagen*.
 * Wijs een andere waarde toe aan de variabele.
-* De waarde van de variabele invoegen of *toevoegen* als laatste keer in een teken reeks of matrix.
+* De waarde van de variabele invoegen of *toevoegen* als laatste item in een teken reeks of matrix.
 
 Variabelen bestaan en alleen globaal in het logische app-exemplaar dat ze maakt. Ze blijven ook behouden in alle lus-iteraties binnen een logische app-instantie. Wanneer u verwijst naar een variabele, gebruikt u de naam van de variabele als het token, niet de naam van de actie. Dit is de gebruikelijke manier om te verwijzen naar de uitvoer van een actie.
 
@@ -57,9 +57,9 @@ U kunt een variabele maken en het gegevens type en de oorspronkelijke waarde dec
 
      ![Actie toevoegen](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl om verbinding te**+** maken zodat het plus teken () wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
+   * Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl om verbinding te maken zodat het plus teken ( **+** ) wordt weer gegeven. Selecteer het plus teken en selecteer vervolgens **een actie toevoegen**.
 
-1. Voer `variables` onder **Kies een actie**in het zoekvak in als uw filter. Selecteer in de lijst acties de optie **variabele initialiseren**.
+1. Voer onder **Kies een actie**in het zoekvak in `variables` als uw filter. Selecteer in de lijst acties de optie **variabele initialiseren**.
 
    ![Actie selecteren](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
@@ -67,9 +67,9 @@ U kunt een variabele maken en het gegevens type en de oorspronkelijke waarde dec
 
    | Eigenschap | Vereist | Waarde |  Beschrijving |
    |----------|----------|-------|--------------|
-   | **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden verhoogd |
-   | **Type** | Ja | <*variabele-type*> | Het gegevens type voor de variabele |
-   | **Waarde** | Nee | <*begin waarde*> | De beginwaarde van uw variabele <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd de begin waarde voor de variabele kent. |
+   | **Naam** | Yes | <*variabele-naam*> | De naam van de variabele die moet worden verhoogd |
+   | **Type** | Yes | <*variabele-type*> | Het gegevens type voor de variabele |
+   | **Waarde** | No | <*begin waarde*> | De beginwaarde van uw variabele <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd de begin waarde voor de variabele kent. |
    |||||
 
    Bijvoorbeeld:
@@ -179,7 +179,7 @@ Hier volgen enkele voor beelden van andere typen variabelen:
 
 Als u de inhoud van een variabele wilt ophalen of ernaar wilt verwijzen, kunt u ook de [functie Varia BLES ()](../logic-apps/workflow-definition-language-functions-reference.md#variables) in de Logic app Designer en de code weergave-editor gebruiken. Bij het verwijzen naar een variabele gebruikt u de naam van de variabele als het token, niet de naam van de actie. Dit is de gebruikelijke manier om te verwijzen naar de uitvoer van een actie.
 
-Met deze expressie worden bijvoorbeeld de items opgehaald uit de matrix variabele die [eerder in dit artikel is gemaakt](#append-value) met `variables()` behulp van de functie. De `string()` functie retourneert de inhoud van de variabele in teken reeks notatie:`"1, 2, 3, red"`
+Met deze expressie worden bijvoorbeeld de items opgehaald uit de matrix variabele die [eerder in dit artikel is gemaakt](#append-value) met behulp van de `variables()` functie. De `string()` functie retourneert de inhoud van de variabele in teken reeks notatie:`"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -207,8 +207,8 @@ Als u een variabele wilt verg Roten *of verhogen met een constante* waarde, voeg
 
    | Eigenschap | Vereist | Waarde |  Beschrijving |
    |----------|----------|-------|--------------|
-   | **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden verhoogd |
-   | **Waarde** | Nee | <*Increment-waarde*> | De waarde die wordt gebruikt voor het verhogen van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd weet wat de specifieke waarde is voor het verhogen van de variabele. |
+   | **Naam** | Yes | <*variabele-naam*> | De naam van de variabele die moet worden verhoogd |
+   | **Waarde** | No | <*Increment-waarde*> | De waarde die wordt gebruikt voor het verhogen van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in op best practice zodat u altijd weet wat de specifieke waarde is voor het verhogen van de variabele. |
    ||||
 
    Bijvoorbeeld:
@@ -247,7 +247,7 @@ Variabelen worden vaak gebruikt voor het tellen van het aantal keren dat een lus
 
    ![Controleren op bijlagen en deze toevoegen](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-1. Voeg de [actie **variabele initialiseren** ](#create-variable)toe. Maak een variabele met een `Count` geheel getal met de naam die een begin waarde van nul heeft.
+1. Voeg de [actie **variabele initialiseren** ](#create-variable)toe. Maak een variabele `Count` met een geheel getal met de naam die een begin waarde van nul heeft.
 
    ![Actie toevoegen voor ' variabele initialiseren '](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -255,7 +255,7 @@ Variabelen worden vaak gebruikt voor het tellen van het aantal keren dat een lus
 
    1. Selecteer **nieuwe stap**onder de actie **variabele initialiseren** .
 
-   1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer `for each` in het zoekvak in als uw zoek filter en selecteer **voor elk**.
+   1. Selecteer onder **Kies een actie de**optie **ingebouwd**. Voer in het zoekvak in `for each` als uw zoek filter en selecteer **voor elk**.
 
       ![Een lus voor elke toevoegen](./media/logic-apps-create-variables-store-values/add-loop.png)
 
@@ -328,8 +328,8 @@ Dit zijn de eigenschappen voor de actie **variabele verlagen** :
 
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden verminderd | 
-| **Waarde** | Nee | <*Increment-waarde*> | De waarde voor decrementing van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in als een Best Practice, zodat u altijd weet wat de specifieke waarde voor decrementing uw variabele is. |
+| **Naam** | Yes | <*variabele-naam*> | De naam van de variabele die moet worden verminderd | 
+| **Waarde** | No | <*Increment-waarde*> | De waarde voor decrementing van de variabele. De standaard waarde is één. <p><p>**Tip**: Hoewel dit optioneel is, stelt u deze waarde in als een Best Practice, zodat u altijd weet wat de specifieke waarde voor decrementing uw variabele is. |
 ||||| 
 
 Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele verlagen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling.
@@ -361,8 +361,8 @@ Dit zijn de eigenschappen voor de actie **variabele instellen** :
 
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
-| **Waarde** | Ja | <*nieuwe waarde*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
+| **Naam** | Yes | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
+| **Waarde** | Yes | <*nieuwe waarde*> | De waarde die u wilt toewijzen aan de variabele. Beide moeten hetzelfde gegevens type hebben. |
 ||||| 
 
 > [!NOTE]
@@ -374,7 +374,7 @@ Dit zijn de eigenschappen voor de actie **variabele instellen** :
 >
 > 3. Sleep de schuif regelaar **van de parallelle graad** naar **1**.
 
-Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele instellen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling. In dit voor beeld `Count` wordt de huidige waarde van de variabele gewijzigd in een andere waarde.
+Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **variabele instellen** wordt weer gegeven in de definitie van de logische app, in JSON-indeling. In dit voor beeld wordt de `Count` huidige waarde van de variabele gewijzigd in een andere waarde.
 
 ```json
 "actions": {
@@ -419,8 +419,8 @@ Dit zijn de eigenschappen voor de acties **toevoegen aan..** .:
 
 | Eigenschap | Vereist | Waarde |  Beschrijving |
 |----------|----------|-------|--------------|
-| **Naam** | Ja | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
-| **Waarde** | Ja | <*toegevoegde waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
+| **Naam** | Yes | <*variabele-naam*> | De naam van de variabele die moet worden gewijzigd |
+| **Waarde** | Yes | <*toegevoegde waarde*> | De waarde die u wilt toevoegen, die elk type kan hebben |
 |||||
 
 Als u overschakelt van de ontwerp functie naar de code weergave-editor, is dit de manier waarop de actie **toevoegen aan matrix variabele** wordt weer gegeven in de definitie van de logische app, in JSON-indeling. In dit voor beeld wordt een matrix variabele gemaakt en wordt een andere waarde toegevoegd als het laatste item in de matrix. Het resultaat is een bijgewerkte variabele die deze matrix bevat:`[1,2,3,"red"]`

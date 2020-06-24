@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 538baee092ea6e11469f7d0331cc1b89eaf9a161
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672711"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887330"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
 
@@ -126,7 +126,7 @@ Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegev
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -276,20 +276,20 @@ Voer in het vak **naam van abonnement** een naam in voor dit abonnement. Klanten
 
 Op dit tabblad kunt u kiezen in welke Clouds het plan beschikbaar is. Uw antwoorden op dit tabblad bepalen welke velden op andere tabbladen worden weer gegeven.
 
-#### <a name="cloud-availability"></a>Beschik baarheid in de Cloud
+#### <a name="azure-regions"></a>Azure-regio's
 
 Alle abonnementen voor Azure-container aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global**.  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van de commerciële Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
 
-Selecteer de optie [**Azure Government Cloud**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).
+Selecteer de optie [**Azure Government**](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten).
 
 Voordat u naar Azure Government [publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Vraag een proef account aan [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/)om uw oplossing te maken en te testen.
 
 > [!NOTE]
-> Nadat uw plan is gepubliceerd en beschikbaar is in een specifieke Cloud, kunt u die Cloud niet verwijderen.
+> Nadat uw plan is gepubliceerd en beschikbaar is in een specifieke regio, kunt u die regio niet verwijderen.
 
-#### <a name="azure-government-cloud-certifications"></a>Cloud certificeringen Azure Government
+#### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie kan alleen worden gezien als **Azure Government Cloud** is geselecteerd onder **Beschik baarheid**in de Cloud.
+Deze optie kan alleen worden gezien als **Azure Government** is geselecteerd onder **Beschik baarheid**in de Cloud.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS.
 
@@ -331,7 +331,7 @@ Als u uw gepubliceerde aanbieding wilt verbergen zodat klanten deze niet kunnen 
 
 Dit veld wordt gebruikt wanneer:
 
-- De aanbieding is bedoeld om indirect te worden gebruikt wanneer naar een andere toepassing wordt verwezen.
+- De aanbieding is bedoeld om indirect te worden gebruikt wanneer ernaar wordt verwezen via een andere toepassing.
 - De aanbieding mag niet afzonderlijk worden gekocht.
 - Het plan werd gebruikt voor de eerste test en is niet meer relevant.
 - Het abonnement werd gebruikt voor tijdelijke of seizoen aanbiedingen en kan niet meer worden aangeboden.

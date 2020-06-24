@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275761"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692016"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Momentopnamen voor foutopsporing over uitzonderingen in .NET-apps
-Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op in uw toepassing en configureer optioneel verzamelings parameters in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
+Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in uw toepassing op en Configureer eventueel verzamelings parameters in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
 
 U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Open moment opnamen met Visual Studio 2019 Enter prise voor een krachtigere fout opsporing met de bron code. In Visual Studio kunt u Snappoints zo [instellen dat er interactief moment opnamen worden](https://aka.ms/snappoint) gemaakt zonder dat er wordt gewacht op een uitzonde ring.
 
@@ -46,7 +46,7 @@ Toegang tot moment opnamen wordt beveiligd door middel van op rollen gebaseerd t
 Abonnements eigenaren moeten de `Application Insights Snapshot Debugger` rol toewijzen aan gebruikers die moment opnamen zullen inspecteren. Deze rol kan worden toegewezen aan afzonderlijke gebruikers of groepen op abonnements eigenaren voor het doel Application Insights bron of de resource groep of het abonnement.
 
 1. Navigeer naar de Application Insights-resource in de Azure Portal.
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 1. Klik op de knop **+ roltoewijzing toevoegen** .
 1. Selecteer **Application Insights snapshot debugger** in de vervolg keuzelijst **rollen** .
 1. Zoek en voer een naam in voor de gebruiker die u wilt toevoegen.
@@ -70,10 +70,10 @@ In de momentopname weergave voor fout opsporing ziet u een deel venster aanroep 
 
 ![Moment opname van fout opsporing weer geven in de portal](./media/snapshot-debugger/open-snapshot-portal.png)
 
-Moment opnamen kunnen gevoelige informatie bevatten en zijn standaard niet zichtbaar. Als u moment opnamen wilt weer geven, moet `Application Insights Snapshot Debugger` u de rol hebben die aan u is toegewezen.
+Moment opnamen kunnen gevoelige informatie bevatten en zijn standaard niet zichtbaar. Als u moment opnamen wilt weer geven, moet u de `Application Insights Snapshot Debugger` rol hebben die aan u is toegewezen.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Moment opnamen weer geven in Visual Studio 2017 Enter prise of hoger
-1. Klik op de knop **moment opname downloaden** om `.diagsession` een bestand te downloaden dat door Visual Studio Enter prise kan worden geopend.
+1. Klik op de knop **moment opname downloaden** om een bestand te downloaden `.diagsession` dat door Visual Studio Enter prise kan worden geopend.
 
 2. Als u het `.diagsession` bestand wilt openen, moet u het onderdeel snapshot debugger Visual Studio geïnstalleerd hebben. Het Snapshot Debugger onderdeel is een vereist onderdeel van de ASP.net-werk belasting in Visual Studio en kan worden geselecteerd in de lijst met afzonderlijke onderdelen in het Visual Studio-installatie programma. Als u een versie van Visual Studio gebruikt die ouder is dan Visual Studio 2017 versie 15,5, moet u de uitbrei ding installeren vanuit de [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
 
@@ -98,8 +98,8 @@ Het belangrijkste proces blijft het uitvoeren en verwerken van verkeer naar gebr
 > - Een proces momentopname is een gesuspendeerde kloon van het proces dat wordt uitgevoerd.
 > - Het maken van de moment opname neemt ongeveer 10 tot 20 milliseconden in beslag.
 > - De standaard waarde voor `ThresholdForSnapshotting` is 1. Dit is ook de minimum waarde. Uw app moet daarom dezelfde uitzonde ring **twee keer** activeren voordat een moment opname wordt gemaakt.
-> - Stel `IsEnabledInDeveloperMode` deze waarde in op True als u moment opnamen wilt genereren tijdens fout opsporing in Visual Studio.
-> - Het aanmaak tempo van de moment opname `SnapshotsPerTenMinutesLimit` wordt beperkt door de instelling. Standaard is de limiet één moment opname elke tien minuten.
+> - Stel deze `IsEnabledInDeveloperMode` waarde in op True als u moment opnamen wilt genereren tijdens fout opsporing in Visual Studio.
+> - Het aanmaak tempo van de moment opname wordt beperkt door de `SnapshotsPerTenMinutesLimit` instelling. Standaard is de limiet één moment opname elke tien minuten.
 > - Er kunnen niet meer dan 50 moment opnamen per dag worden geüpload.
 
 ## <a name="limitations"></a>Beperkingen
@@ -108,13 +108,13 @@ De standaard Bewaar periode voor gegevens is 15 dagen. Voor elke Application Ins
 
 ### <a name="publish-symbols"></a>Symbolen publiceren
 De Snapshot Debugger vereist symbool bestanden op de productie server om variabelen te decoderen en om een fout opsporing in Visual Studio te bieden.
-Met versie 15,2 (of hoger) van Visual Studio 2017 worden symbolen voor release builds standaard gepubliceerd wanneer deze naar App Service worden gepubliceerd. In eerdere versies moet u de volgende regel toevoegen aan het bestand met het publicatie `.pubxml` profiel, zodat de symbolen in de release modus worden gepubliceerd:
+Met versie 15,2 (of hoger) van Visual Studio 2017 worden symbolen voor release builds standaard gepubliceerd wanneer deze naar App Service worden gepubliceerd. In eerdere versies moet u de volgende regel toevoegen aan het bestand met het publicatie profiel `.pubxml` , zodat de symbolen in de release modus worden gepubliceerd:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Voor Azure Compute en andere typen zorgt u ervoor dat de symbool bestanden zich in dezelfde map bevinden als de hoofd toepassing. dll ( `wwwroot/bin`normaal) of beschikbaar zijn in het huidige pad.
+Voor Azure Compute en andere typen zorgt u ervoor dat de symbool bestanden zich in dezelfde map bevinden als de hoofd toepassing. dll (normaal `wwwroot/bin` ) of beschikbaar zijn in het huidige pad.
 
 > [!NOTE]
 > Raadpleeg de [documentatie van Visual Studio](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output

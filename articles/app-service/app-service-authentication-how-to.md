@@ -4,12 +4,12 @@ description: Meer informatie over het aanpassen van de functie voor verificatie 
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280831"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205642"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -33,9 +33,9 @@ Configureer eerst op de pagina **verificatie/autorisatie** in de Azure Portal el
 
 Selecteer **anonieme aanvragen toestaan (geen actie)** **wanneer de aanvraag niet is geverifieerd in actie om uit te voeren**.
 
-Voeg op de aanmeldings pagina of in de navigatie balk of op een andere locatie van uw app een aanmeldings koppeling toe aan elk van de providers die u hebt ingeschakeld (`/.auth/login/<provider>`). Bijvoorbeeld:
+Voeg op de aanmeldings pagina of in de navigatie balk of op een andere locatie van uw app een aanmeldings koppeling toe aan elk van de providers die u hebt ingeschakeld ( `/.auth/login/<provider>` ). Bijvoorbeeld:
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -45,9 +45,9 @@ Voeg op de aanmeldings pagina of in de navigatie balk of op een andere locatie v
 
 Wanneer de gebruiker op een van de koppelingen klikt, wordt de betreffende aanmeldings pagina geopend om zich aan te melden bij de gebruiker.
 
-Als u de aanmelding van een gebruiker naar een aangepaste URL wilt door sturen, gebruikt `post_login_redirect_url` u de query teken reeks parameter (niet met de omleidings-URI in de configuratie van de ID-provider). Gebruik bijvoorbeeld de volgende HTML-code om `/Home/Index` door de gebruiker te navigeren naar na het aanmelden:
+Als u de aanmelding van een gebruiker naar een aangepaste URL wilt door sturen, gebruikt u de `post_login_redirect_url` query teken reeks parameter (niet met de omleidings-URI in de configuratie van de ID-provider). Gebruik bijvoorbeeld de volgende HTML-code om door de gebruiker te navigeren naar `/Home/Index` na het aanmelden:
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -55,7 +55,7 @@ Als u de aanmelding van een gebruiker naar een aangepaste URL wilt door sturen, 
 
 In een client gerichte aanmelding meldt de toepassing de gebruiker hand matig aan bij de provider en verzendt het verificatie token naar App Service voor validatie (Zie [verificatie stroom](overview-authentication-authorization.md#authentication-flow)). Met deze validatie wordt u geen toegang verleend tot de gewenste app-resources, maar een geslaagde validatie geeft u een sessie token dat u kunt gebruiken voor toegang tot app-resources. 
 
-Als u het provider token wilt valideren, moet App Service app eerst worden geconfigureerd met de gewenste provider. Tijdens runtime, na het ophalen van het verificatie token van uw provider, plaatst u het `/.auth/login/<provider>` token voor validatie. Bijvoorbeeld: 
+Als u het provider token wilt valideren, moet App Service app eerst worden geconfigureerd met de gewenste provider. Tijdens runtime, na het ophalen van het verificatie token van uw provider, plaatst u het token voor `/.auth/login/<provider>` validatie. Bijvoorbeeld: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -69,7 +69,7 @@ De token indeling is enigszins afhankelijk van de provider. Raadpleeg de volgend
 | Provider waarde | Vereist in de hoofd tekst van de aanvraag | Opmerkingen |
 |-|-|-|
 | `aad` | `{"access_token":"<access_token>"}` | |
-| `microsoftaccount` | `{"access_token":"<token>"}` | De `expires_in` eigenschap is optioneel. <br/>Bij het aanvragen van het token van Live Services vraagt u `wl.basic` het bereik altijd aan. |
+| `microsoftaccount` | `{"access_token":"<token>"}` | De `expires_in` eigenschap is optioneel. <br/>Bij het aanvragen van het token van Live Services vraagt u het bereik altijd aan `wl.basic` . |
 | `google` | `{"id_token":"<id_token>"}` | De `authorization_code` eigenschap is optioneel. Indien opgegeven, kan deze eventueel ook vergezeld gaan van de `redirect_uri` eigenschap. |
 | `facebook`| `{"access_token":"<user_access_token>"}` | Gebruik een geldig [token voor gebruikers toegang](https://developers.facebook.com/docs/facebook-login/access-tokens) van Facebook. |
 | `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
@@ -86,7 +86,7 @@ Als het provider token is gevalideerd, wordt de API geretourneerd met een `authe
 }
 ```
 
-Zodra u dit sessie token hebt, kunt u toegang krijgen tot beveiligde app-bronnen `X-ZUMO-AUTH` door de header toe te voegen aan uw HTTP-aanvragen. Bijvoorbeeld: 
+Zodra u dit sessie token hebt, kunt u toegang krijgen tot beveiligde app-bronnen door de header toe te voegen `X-ZUMO-AUTH` aan uw HTTP-aanvragen. Bijvoorbeeld: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -95,7 +95,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 ## <a name="sign-out-of-a-session"></a>Afmelden bij een sessie
 
-Gebruikers kunnen een afmelding initiëren door een `GET` aanvraag naar het eind punt van `/.auth/logout` de app te verzenden. De `GET` aanvraag doet het volgende:
+Gebruikers kunnen een afmelding initiëren door een `GET` aanvraag naar het eind punt van de app te verzenden `/.auth/logout` . De `GET` aanvraag doet het volgende:
 
 - Hiermee wist u de verificatie cookies van de huidige sessie.
 - Hiermee verwijdert u de tokens van de huidige gebruiker uit de token opslag.
@@ -103,17 +103,17 @@ Gebruikers kunnen een afmelding initiëren door een `GET` aanvraag naar het eind
 
 Dit is een voorbeeld van een eenvoudige afmeldingskoppeling op een webpagina:
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Standaard wordt de client door een geslaagde aanmelding omgeleid naar de URL `/.auth/logout/done`. U kunt de omleidings pagina voor het afmelden van berichten wijzigen `post_logout_redirect_uri` door de query parameter toe te voegen. Bijvoorbeeld:
+Standaard wordt de client door een geslaagde aanmelding omgeleid naar de URL `/.auth/logout/done` . U kunt de omleidings pagina voor het afmelden van berichten wijzigen door de query parameter toe te voegen `post_logout_redirect_uri` . Bijvoorbeeld:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-Het is raadzaam om de [encode](https://wikipedia.org/wiki/Percent-encoding) waarde van `post_logout_redirect_uri`te coderen.
+Het is raadzaam om de [encode](https://wikipedia.org/wiki/Percent-encoding) waarde van te coderen `post_logout_redirect_uri` .
 
 Wanneer u Fully Qualified Url's gebruikt, moet de URL ofwel worden gehost in hetzelfde domein of worden geconfigureerd als een toegestane externe omleidings-URL voor uw app. In het volgende voor beeld wordt een omleiding naar `https://myexternalurl.com` die niet gehost in hetzelfde domein:
 
@@ -129,9 +129,9 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>URL-fragmenten behouden
 
-Wanneer gebruikers zich aanmelden bij uw app, willen ze meestal worden omgeleid naar hetzelfde gedeelte van dezelfde pagina, zoals `/wiki/Main_Page#SectionZ`. Omdat URL- [fragmenten](https://wikipedia.org/wiki/Fragment_identifier) `#SectionZ`echter nooit naar de server worden verzonden, worden ze niet standaard bewaard nadat de OAuth-aanmelding is voltooid en weer omgeleid naar uw app. Gebruikers krijgen dan een optimale ervaring wanneer ze opnieuw naar het gewenste anker moeten navigeren. Deze beperking is van toepassing op alle verificatie oplossingen aan de server zijde.
+Wanneer gebruikers zich aanmelden bij uw app, willen ze meestal worden omgeleid naar hetzelfde gedeelte van dezelfde pagina, zoals `/wiki/Main_Page#SectionZ` . Omdat URL- [fragmenten](https://wikipedia.org/wiki/Fragment_identifier) echter `#SectionZ` nooit naar de server worden verzonden, worden ze niet standaard bewaard nadat de OAuth-aanmelding is voltooid en weer omgeleid naar uw app. Gebruikers krijgen dan een optimale ervaring wanneer ze opnieuw naar het gewenste anker moeten navigeren. Deze beperking is van toepassing op alle verificatie oplossingen aan de server zijde.
 
-Bij App Service-verificatie kunt u URL-fragmenten behouden over de OAuth-aanmelding. Als u dit wilt doen, stelt `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` u een app `true`-instelling in op. U kunt dit doen in de [Azure Portal](https://portal.azure.com)of gewoon de volgende opdracht uitvoeren in de [Azure Cloud shell](../cloud-shell/quickstart.md):
+Bij App Service-verificatie kunt u URL-fragmenten behouden over de OAuth-aanmelding. Als u dit wilt doen, stelt u een app-instelling `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` in op `true` . U kunt dit doen in de [Azure Portal](https://portal.azure.com)of gewoon de volgende opdracht uitvoeren in de [Azure Cloud shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
@@ -146,7 +146,7 @@ App Service gebruikers claims door gegeven aan uw toepassing met behulp van spec
 
 Code die is geschreven in een wille keurige taal of elk Framework, kan de informatie die nodig is van deze headers ophalen. Voor ASP.NET 4,6-apps wordt de **claimsprincipal is** automatisch ingesteld met de juiste waarden. ASP.NET Core biedt echter geen middleware voor authenticatie die kan worden geïntegreerd met App Service gebruikers claims. Zie [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)voor een tijdelijke oplossing.
 
-Uw toepassing kan ook aanvullende details over de geverifieerde gebruiker verkrijgen door `/.auth/me`aan te roepen. De Sdk's van de Mobile Apps server bieden hulp methoden om met deze gegevens te werken. Zie [de Azure Mobile apps node. js SDK gebruiken](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)en [werken met de .net back-end server sdk voor Azure Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)voor meer informatie.
+Uw toepassing kan ook aanvullende details over de geverifieerde gebruiker verkrijgen door aan te roepen `/.auth/me` . De Sdk's van de Mobile Apps server bieden hulp methoden om met deze gegevens te werken. Zie [How to use the Azure Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)(Engelstalig) voor meer informatie en [samen werken met de .net back-end-server-sdk voor Azure Mobile apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Tokens ophalen in app-code
 
@@ -161,24 +161,24 @@ Vanuit uw server code worden de providerspecifieke tokens in de aanvraag header 
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Verzend vanuit uw client code (zoals een mobiele app of een Java script in de browser) een HTTP `GET` -aanvraag `/.auth/me`naar. De geretourneerde JSON heeft de providerspecifieke tokens.
+Verzend vanuit uw client code (zoals een mobiele app of een Java script in de browser) een HTTP- `GET` aanvraag naar `/.auth/me` . De geretourneerde JSON heeft de providerspecifieke tokens.
 
 > [!NOTE]
 > Toegangs tokens zijn voor toegang tot bronnen van de provider, zodat ze alleen aanwezig zijn als u uw provider configureert met een client geheim. Zie toegangs tokens vernieuwen voor meer informatie over het verkrijgen van vernieuwings tokens.
 
 ## <a name="refresh-identity-provider-tokens"></a>ID-provider tokens vernieuwen
 
-Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-session-token-expiration-grace-period)) verloopt, moet u de gebruiker opnieuw verifiëren voordat u het token opnieuw gebruikt. U kunt de verval datum van tokens `GET` voor komen door `/.auth/refresh` een aanroep naar het eind punt van uw toepassing te maken. Wanneer wordt aangeroepen App Service de toegangs tokens in de token opslag voor de geverifieerde gebruiker automatisch vernieuwd. Bij volgende aanvragen voor tokens door uw app-code worden de vernieuwde tokens opgehaald. Het vernieuwen van tokens werkt echter alleen als de token opslag [vernieuwings tokens](https://auth0.com/learn/refresh-tokens/) voor uw provider bevat. De manier om vernieuwings tokens op te halen, wordt door elke provider gedocumenteerd, maar de volgende lijst is een korte samen vatting:
+Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-session-token-expiration-grace-period)) verloopt, moet u de gebruiker opnieuw verifiëren voordat u het token opnieuw gebruikt. U kunt de verval datum van tokens voor komen door een `GET` aanroep naar het `/.auth/refresh` eind punt van uw toepassing te maken. Wanneer wordt aangeroepen App Service de toegangs tokens in de token opslag voor de geverifieerde gebruiker automatisch vernieuwd. Bij volgende aanvragen voor tokens door uw app-code worden de vernieuwde tokens opgehaald. Het vernieuwen van tokens werkt echter alleen als de token opslag [vernieuwings tokens](https://auth0.com/learn/refresh-tokens/) voor uw provider bevat. De manier om vernieuwings tokens op te halen, wordt door elke provider gedocumenteerd, maar de volgende lijst is een korte samen vatting:
 
-- **Google**: een `access_type=offline` query reeks parameter toevoegen aan de `/.auth/login/google` API-aanroep. Als u de Mobile Apps SDK gebruikt, kunt u de para meter toevoegen aan een `LogicAsync` van de Overloads (Zie [tokens voor Google-vernieuwing](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Google**: een `access_type=offline` query reeks parameter toevoegen aan de `/.auth/login/google` API-aanroep. Als u de Mobile Apps SDK gebruikt, kunt u de para meter toevoegen aan een van de `LogicAsync` Overloads (Zie [tokens voor Google-vernieuwing](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: biedt geen vernieuwings tokens. Tokens met een lange levens duur verlopen over 60 dagen (Zie het [verloop van Facebook en de uitbrei ding van toegangs tokens](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: toegangs tokens verlopen niet (Zie [Veelgestelde vragen over Twitter OAuth](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Micro soft-account**: Selecteer het bereik bij het `wl.offline_access` [configureren van verificatie-instellingen voor micro soft-accounts](configure-authentication-provider-microsoft.md).
-- **Azure Active Directory**: in [https://resources.azure.com](https://resources.azure.com)voert u de volgende stappen uit:
+- **Micro soft-account**: Selecteer het bereik bij het [configureren van verificatie-instellingen voor micro soft-accounts](configure-authentication-provider-microsoft.md) `wl.offline_access` .
+- **Azure Active Directory**: in [https://resources.azure.com](https://resources.azure.com) voert u de volgende stappen uit:
     1. Selecteer boven aan de pagina **lezen/schrijven**.
-    2. Navigeer in de linkernavigatiebalk naar **abonnementen** > **_\<abonnements\_naam_****resourceGroups** > **_\<\_resourceGroups resource\_groep naam>_** **providers** >  > **authsettings****sites** >   >  **config****Microsoft.Web** > soft. web**_sites\<app\_name>config authsettings. _**  >  >  
+    2. Navigeer in de linkernavigatiebalk naar **abonnementen** > * *_ \<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **providers**  >  **micro soft.**  >  **websites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
     3. Klik op **Bewerken**.
-    4. Wijzig de volgende eigenschap. Vervang _ \<de\_app-id>_ door de Azure Active Directory-toepassings-id van de service die u wilt openen.
+    4. Wijzig de volgende eigenschap. Vervang door _\<app\_id>_ de Azure Active Directory-toepassings-id van de service die u wilt openen.
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -188,9 +188,9 @@ Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-sess
 
 Zodra uw provider is geconfigureerd, kunt u [het vernieuwings token en de verloop tijd voor het toegangs token vinden](#retrieve-tokens-in-app-code) in de token opslag. 
 
-Als u uw toegangs token op elk gewenst moment wilt vernieuwen `/.auth/refresh` , kunt u gewoon een wille keurige taal aanroepen. Het volgende code fragment gebruikt jQuery om uw toegangs tokens van een Java script-client te vernieuwen.
+Als u uw toegangs token op elk gewenst moment wilt vernieuwen, kunt u gewoon `/.auth/refresh` een wille keurige taal aanroepen. Het volgende code fragment gebruikt jQuery om uw toegangs tokens van een Java script-client te vernieuwen.
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -201,7 +201,7 @@ function refreshTokens() {
 }
 ```
 
-Als een gebruiker de machtigingen intrekt die aan uw app zijn verleend, `/.auth/me` kan de aanroep mislukken `403 Forbidden` met een antwoord. Raadpleeg uw toepassings logboeken voor meer informatie over het vaststellen van fouten.
+Als een gebruiker de machtigingen intrekt die aan uw app zijn verleend, `/.auth/me` kan de aanroep mislukken met een `403 Forbidden` antwoord. Raadpleeg uw toepassings logboeken voor meer informatie over het vaststellen van fouten.
 
 ## <a name="extend-session-token-expiration-grace-period"></a>Respijt periode van verloop sessie token uitbreiden
 
@@ -221,11 +221,11 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Het domein van aanmeldings accounts beperken
 
-Met zowel het micro soft-account als de Azure Active Directory kunt u zich vanuit meerdere domeinen aanmelden. Micro soft-account staat bijvoorbeeld _Outlook.com_-, _live.com_-en _Hotmail.com_ -accounts toe. Azure AD biedt een wille keurig aantal aangepaste domeinen voor de aanmeldings accounts. U kunt uw gebruikers echter ook rechtstreeks naar uw eigen Azure AD-aanmeldings pagina (zoals `contoso.com`) versnellen. Voer de volgende stappen uit om de domein naam van de aanmeldings accounts voor te stellen.
+Met zowel het micro soft-account als de Azure Active Directory kunt u zich vanuit meerdere domeinen aanmelden. Micro soft-account staat bijvoorbeeld _Outlook.com_-, _live.com_-en _Hotmail.com_ -accounts toe. Azure AD biedt een wille keurig aantal aangepaste domeinen voor de aanmeldings accounts. U kunt uw gebruikers echter ook rechtstreeks naar uw eigen Azure AD-aanmeldings pagina (zoals `contoso.com` ) versnellen. Voer de volgende stappen uit om de domein naam van de aanmeldings accounts voor te stellen.
 
-Ga [https://resources.azure.com](https://resources.azure.com)in naar **abonnementen** > **_\<abonnements\_naam_** >  > **authsettings** **providers**  >  **config****resourceGroups**  >  > **sites****_resourceGroups\<resource\_groep\_naam>_** providers**micro soft. Web**sites > **_app\_>config authsettings.\< _** >  >  
+[https://resources.azure.com](https://resources.azure.com)Ga in naar **abonnementen** > * *_ \<subscription\_name_** > **resourceGroups** > * *_ \<resource\_group\_name> _* * > **providers**  >  **micro soft.**  >  **websites** > * *_ \<app\_name> _ * * > **config**  >  **authsettings**. 
 
-Klik op **bewerken**, wijzig de volgende eigenschap en klik vervolgens op **put**. Vervang _ \<de\_domein naam>_ door het domein dat u wilt.
+Klik op **bewerken**, wijzig de volgende eigenschap en klik vervolgens op **put**. Zorg ervoor dat u vervangt door _\<domain\_name>_ het domein dat u wilt.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -247,13 +247,13 @@ Hoewel App Service de eenvoudigste autorisatie aanvraag verkrijgt (dat wil zegge
 
 ### <a name="server-level-windows-apps-only"></a>Server niveau (alleen Windows-apps)
 
-Voor elke Windows-app kunt u autorisatie gedrag van de IIS-webserver definiëren door het bestand *Web. config* te bewerken. Linux-apps gebruiken geen IIS en kunnen niet worden geconfigureerd via *Web. config*.
+Voor elke Windows-app kunt u autorisatie gedrag van de IIS-webserver definiëren door het *Web.config* -bestand te bewerken. Linux-apps gebruiken IIS niet en kunnen niet worden geconfigureerd via *Web.config*.
 
-1. Ga naar`https://<app-name>.scm.azurewebsites.net/DebugConsole`
+1. Ga naar `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. Ga in de browser Verkenner van uw App Service-bestanden naar *site/wwwroot*. Als er geen *Web. config* bestaat, maakt u het door **+**  >  **nieuw bestand**te selecteren. 
+1. Ga in de browser Verkenner van uw App Service-bestanden naar *site/wwwroot*. Als een *Web.config* niet bestaat, maakt u het door **+**  >  **nieuw bestand**te selecteren. 
 
-1. Selecteer het potlood voor *Web. config* om het te bewerken. Voeg de volgende configuratie code toe en klik op **Opslaan**. Als *Web. config* al bestaat, kunt u het `<authorization>` element gewoon toevoegen met alles. Voeg de accounts toe die u wilt toestaan in `<allow>` het-element.
+1. Selecteer het potlood voor *Web.config* om het te bewerken. Voeg de volgende configuratie code toe en klik op **Opslaan**. Als *Web.config* al bestaat, kunt u het `<authorization>` element gewoon toevoegen met alles. Voeg de accounts toe die u wilt toestaan in het- `<allow>` element.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -281,5 +281,5 @@ Als een van de andere niveaus niet de autorisatie biedt die u nodig hebt, of als
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: gebruikers een end-to-end-zelf studie (Windows)](app-service-web-tutorial-auth-aad.md)
-> verifiëren en autoriseren[: gebruikers verifiëren en autoriseren-end-to-end (Linux)](containers/tutorial-auth-aad.md)
+> [Zelf studie: gebruikers end-to-end verifiëren en autoriseren (Windows)](app-service-web-tutorial-auth-aad.md) 
+>  [Zelf studie: gebruikers end-to-end verifiëren en autoriseren (Linux)](containers/tutorial-auth-aad.md)

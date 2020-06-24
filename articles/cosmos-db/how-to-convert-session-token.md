@@ -3,15 +3,15 @@ title: Sessie-token indelingen converteren in .NET SDK-Azure Cosmos DB
 description: Meer informatie over het converteren van sessie token indelingen om compatibiliteit tussen verschillende .NET SDK-versies te garanderen
 author: vinhms
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
-ms.openlocfilehash: 377d8e3e923d6a8fa3b1722cee6451a696ce2490
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 1f5609eae106e04928bc2c49bd84aa651b224611
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796900"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261576"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Sessie-token indelingen converteren in .NET SDK
 
@@ -26,8 +26,8 @@ In dit artikel wordt uitgelegd hoe u de verschillende indelingen van sessie toke
 ## <a name="session-token-formats"></a>Sessie token indelingen
 
 Er zijn twee notaties voor sessie tokens: **eenvoudig** en **Vector**.  Deze twee indelingen zijn niet uitwisselbaar. de indeling moet daarom worden geconverteerd wanneer aan de client toepassing met verschillende versies wordt door gegeven.
-- De indeling van het **eenvoudige** sessie token wordt gebruikt door de .NET SDK v1 (micro soft. Azure. DocumentDB-versie 1. x)
-- De indeling van het **Vector** sessie token wordt gebruikt door de .NET SDK v2 (micro soft. Azure. DocumentDB-versie 2. x)
+- De indeling van het **eenvoudige** sessie token wordt gebruikt door de .NET SDK V1 (Microsoft.Azure.DocumentDB-versie 1. x)
+- De indeling van het **Vector** sessie token wordt gebruikt door de .NET SDK V2 (Microsoft.Azure.DocumentDB-versie 2. x)
 
 ### <a name="simple-session-token"></a>Eenvoudig sessie token
 

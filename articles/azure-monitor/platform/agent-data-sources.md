@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249098"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708872"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Gegevens bronnen van agents in Azure Monitor
 De gegevens die Azure Monitor verzameld van agents, worden gedefinieerd door de gegevens bronnen die u configureert.  De gegevens van agents worden opgeslagen als [logboek gegevens](data-platform-logs.md) met een set records.  Elke gegevens bron maakt records van een bepaald type met elk type met een eigen set eigenschappen.
@@ -44,7 +44,7 @@ U configureert gegevens bronnen vanuit het menu **Data** in **Geavanceerde inste
 4. Volg de koppeling naar de documentatie voor elke gegevens bron in de bovenstaande tabel voor meer informatie over de configuratie.
 
 
-## <a name="data-collection"></a>Gegevens verzamelen
+## <a name="data-collection"></a>Gegevensverzameling
 Gegevens bron configuraties worden geleverd aan agents die rechtstreeks zijn verbonden met Azure Monitor binnen een paar minuten.  De opgegeven gegevens worden verzameld van de agent en direct bezorgd bij Azure Monitor met intervallen die specifiek zijn voor elke gegevens bron.  Zie de documentatie voor elke gegevens bron voor deze specifieke informatie.
 
 Voor System Center Operations Manager agents in een verbonden beheer groep worden de gegevens bron configuraties omgezet in Management Packs en standaard elke vijf minuten aan de beheer groep geleverd.  De agent downloadt de management pack zoals de andere en verzamelt de opgegeven gegevens. Afhankelijk van de gegevens bron, worden de gegevens verzonden naar een beheer server die de gegevens doorstuurt naar de Azure Monitor, of de agent verzendt de gegevens naar Azure Monitor zonder via de beheer server te gaan. Zie [Details over het verzamelen van gegevens voor het controleren van oplossingen in azure](../insights/solutions-inventory.md) voor meer informatie.  U vindt meer informatie over het verbinden van Operations Manager en Azure Monitor en het wijzigen van de frequentie die de configuratie wordt geleverd bij het [configureren van de integratie met System Center Operations Manager](om-agents.md).

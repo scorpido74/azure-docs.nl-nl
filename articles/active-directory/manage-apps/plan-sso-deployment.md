@@ -2,23 +2,23 @@
 title: Een Azure Active Directory implementatie van eenmalige aanmelding plannen
 description: Hulp bij het plannen, implementeren en beheren van eenmalige aanmelding in uw organisatie.
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197873"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763071"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
 
@@ -50,7 +50,7 @@ Er zijn twee primaire manieren waarop u uw gebruikers in staat kunt stellen om e
 
 - **Met federatieve eenmalige aanmelding** Azure AD verifieert de gebruiker aan de toepassing met behulp van hun Azure AD-account. Deze methode wordt ondersteund voor toepassingen die ondersteuning bieden voor protocollen zoals SAML 2,0, WS-Federation of OpenID Connect Connect, en is de uitgebreide modus van eenmalige aanmelding. U kunt het beste federatieve SSO met Azure AD gebruiken wanneer een toepassing dit ondersteunt, in plaats van SSO-en ADFS-aanmelding op basis van wacht woorden.
 
-- **Wanneer gebruikers met een wacht woord** zijn aangemeld bij de toepassing met een gebruikers naam en wacht woord, krijgen ze de eerste keer toegang. Na de eerste aanmelding levert Azure AD de gebruikers naam en het wacht woord voor de toepassing. Met eenmalige aanmelding op basis van wacht woorden kan beveiligde toepassings wachtwoorden worden opgeslagen en opnieuw worden afgespeeld met een webbrowser extensie of een mobiele app. Deze optie maakt gebruik van het bestaande aanmeldings proces dat wordt meegeleverd met de toepassing, stelt een beheerder in staat om de wacht woorden te beheren en vereist niet dat de gebruiker het wacht woord kent.
+- **Wanneer gebruikers met een wacht woord** zijn aangemeld bij de toepassing met een gebruikers naam en wacht woord, krijgen ze de eerste keer toegang. Na de eerste aanmelding levert Azure AD de gebruikersnaam en het wachtwoord voor de toepassing. Met eenmalige aanmelding op basis van wacht woorden kan beveiligde toepassings wachtwoorden worden opgeslagen en opnieuw worden afgespeeld met een webbrowser extensie of een mobiele app. Deze optie maakt gebruik van het bestaande aanmeldings proces dat wordt meegeleverd met de toepassing, stelt een beheerder in staat om de wacht woorden te beheren en vereist niet dat de gebruiker het wacht woord kent.
 
 ### <a name="considerations-for-federation-based-sso"></a>Overwegingen voor SSO op basis van Federatie
 
@@ -147,7 +147,7 @@ Zie [Microsoft Cloud app Security-overzicht](https://docs.microsoft.com/cloud-ap
 
 Met voorwaardelijke toegang kunt u op criteria gebaseerde beslissingen over toegangs beheer voor uw Cloud-apps automatiseren.
 
-Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de eerste-factor Authentication is voltooid. Daarom is voorwaardelijke toegang niet bedoeld als een eerste verdedigings linie voor scenario's als DoS-aanvallen (Denial-of-service), maar kunnen signalen van deze gebeurtenissen gebruiken om de toegang te bepalen. Bijvoorbeeld: het risico niveau van de aanmelding, de locatie van de aanvraag, enzovoort kan worden gebruikt. Zie [overzicht](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) en het [implementatie plan](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)voor meer informatie over voorwaardelijke toegang.
+Beleid voor voorwaardelijke toegang wordt afgedwongen nadat de verificatie van de eerste factor is voltooid. Daarom is voorwaardelijke toegang niet bedoeld als een eerste verdedigings linie voor scenario's als DoS-aanvallen (Denial-of-service), maar kunnen signalen van deze gebeurtenissen gebruiken om de toegang te bepalen. Bijvoorbeeld: het risico niveau van de aanmelding, de locatie van de aanvraag, enzovoort kan worden gebruikt. Zie [overzicht](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) en het [implementatie plan](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)voor meer informatie over voorwaardelijke toegang.
 
 ## <a name="azure-sso-technical-requirements"></a>Technische vereisten voor Azure SSO
 

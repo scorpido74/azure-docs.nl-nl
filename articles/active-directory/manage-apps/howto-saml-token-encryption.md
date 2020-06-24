@@ -3,9 +3,8 @@ title: SAML-token versleuteling in Azure Active Directory
 description: Meer informatie over het configureren van Azure Active Directory SAML-token versleuteling.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
-editor: ''
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 779d1b73f45f9be5b4bd00d546987b7c1e0b6a43
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79365863"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763343"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Procedure: Azure AD SAML-token versleuteling configureren
 
@@ -87,7 +86,7 @@ U kunt het open bare certificaat toevoegen aan de configuratie van uw toepassing
 
 ## <a name="configure-saml-token-encryption-using-graph-api-powershell-or-app-manifest"></a>SAML-token versleuteling configureren met behulp van Graph API, Power shell of app-manifest
 
-Versleutelings certificaten worden opgeslagen op het toepassings object in azure AD `encrypt` met een gebruiks label. U kunt meerdere versleutelings certificaten configureren en de certificerings instanties die actief zijn voor het versleutelen `tokenEncryptionKeyID` van tokens, wordt geïdentificeerd door het-kenmerk.
+Versleutelings certificaten worden opgeslagen op het toepassings object in azure AD met een `encrypt` gebruiks label. U kunt meerdere versleutelings certificaten configureren en de certificerings instanties die actief zijn voor het versleutelen van tokens, wordt geïdentificeerd door het- `tokenEncryptionKeyID` kenmerk.
 
 U hebt de object-ID van de toepassing nodig voor het configureren van token versleuteling met behulp van Microsoft Graph-API of Power shell. U kunt deze waarde programmatisch vinden, of door naar de **Eigenschappen** pagina van de toepassing in de Azure portal te gaan en de **object-id-** waarde te gebruiken.
 

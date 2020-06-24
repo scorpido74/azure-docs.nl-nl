@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476420"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888699"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problemen met CDN-bestandscompressie oplossen
 Dit artikel helpt u bij het oplossen van problemen met [CDN-bestands compressie](cdn-improve-performance.md).
@@ -30,7 +30,7 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 Compressie voor uw eind punt is ingeschakeld, maar er worden niet-gecomprimeerde bestanden geretourneerd.
 
 > [!TIP]
-> Als u wilt controleren of uw bestanden worden geretourneerd, moet u een hulp programma gebruiken zoals [Fiddler](https://www.telerik.com/fiddler) of de [ontwikkel hulpprogramma's](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)van uw browser.  Controleer de HTTP-antwoord headers die zijn geretourneerd met uw CDN-inhoud in de cache.  Als er een header is met `Content-Encoding` de naam met de waarde **gzip**, **bzip2**of **Deflate**, wordt uw inhoud gecomprimeerd.
+> Als u wilt controleren of uw bestanden worden geretourneerd, moet u een hulp programma gebruiken zoals [Fiddler](https://www.telerik.com/fiddler) of de [ontwikkel hulpprogramma's](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)van uw browser.  Controleer de HTTP-antwoord headers die zijn geretourneerd met uw CDN-inhoud in de cache.  Als er een header is met de naam `Content-Encoding` met de waarde **gzip**, **bzip2**of **Deflate**, wordt uw inhoud gecomprimeerd.
 > 
 > ![Content-Encoding-header](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -53,7 +53,7 @@ Er zijn verschillende mogelijke oorzaken, zoals:
 ### <a name="verify-the-request"></a>De aanvraag verifiëren
 Eerst moet u een snelle Sanity-controle uitvoeren op de aanvraag.  U kunt de [ontwikkel hulpprogramma's](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) van uw browser gebruiken om de aanvragen weer te geven die worden gemaakt.
 
-* Controleer of de aanvraag wordt verzonden naar uw eind punt- `<endpointname>.azureedge.net`URL, en niet uw oorsprong.
+* Controleer of de aanvraag wordt verzonden naar uw eind punt-URL, `<endpointname>.azureedge.net` en niet uw oorsprong.
 * Controleer of de aanvraag een **Accept-Encoding-** header bevat en of de waarde voor die kop **gzip**, **Deflate**of **bzip2**bevat.
 
 > [!NOTE]

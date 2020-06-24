@@ -1,0 +1,44 @@
+---
+title: 'Azure Lab Services: ondersteunings informatie instellen (eigenaar van het lab-account)'
+description: Hierin wordt beschreven hoe de eigenaar van een Lab-account ondersteuning kan instellen voor contact gegevens. Lab-makers en Lab-gebruikers kunnen deze weer geven en gebruiken om hulp te krijgen.
+author: spelluru
+ms.author: spelluru
+ms.date: 05/15/2020
+ms.topic: how-to
+ms.service: lab-services
+ms.openlocfilehash: fca414c6220ddf5a8481ee616d669581d14bff83
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84895757"
+---
+# <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Ondersteunings informatie instellen (eigenaar van het lab-account in Azure Lab Services)
+In dit artikel wordt uitgelegd hoe u (als eigenaar van een Lab-account) ondersteunings gegevens kunt opgeven die Lab-makers (docenten) en Lab-gebruikers (studenten) kunnen gebruiken om hulp te krijgen bij technische problemen met het gebruik van het lab-account of Lab. 
+
+De ondersteunings informatie omvat:
+
+- URL
+- E-mail
+- Telefoon
+- Aanvullende instructies 
+
+## <a name="specify-support-information"></a>Ondersteunings informatie opgeven
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Voer in de zoek balk **Lab-Services**in en selecteer **Lab-Services** in de zoek resultaten. 
+3. Selecteer uw Lab-account in de lijst met Lab-accounts. 
+4. Ga naar de pagina **interne ondersteuning** en voer de volgende stappen uit:
+    1. Voer de **ondersteunings-URL**in. 
+     2. Voer het **e-mail adres voor ondersteuning**in. 
+     3. Voer het **telefoon nummer voor ondersteuning**in.
+     4. Voer gedetailleerde **ondersteunings instructies** in (optioneel). Lab-eigen aars en gebruikers zien deze tekst samen met de contact gegevens voor ondersteuning. Url's worden automatisch omgezet in koppelingen. 
+     5. Selecteer **Opslaan** op de werkbalk.
+
+         ![Interne ondersteunings pagina](./media/lab-account-owner-support-information/internal-support-page.png)      
+
+
+## <a name="next-steps"></a>Volgende stappen
+Zie de volgende artikelen:
+
+- [Contact gegevens weer geven (Lab Creator)](lab-creator-support-information.md)
+- [Contact gegevens weer geven (Lab-gebruiker)](lab-user-support-information.md)

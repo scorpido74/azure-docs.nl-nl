@@ -3,24 +3,24 @@ title: Gebruikers toewijzen aan toepassingen | Microsoft Docs
 description: Inzicht krijgen in hoe gebruikers worden toegewezen aan een toepassing in uw Tenant
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b818fe1d8b6bbc9d2d8c5b460b4d71dccdd39366
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65825975"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762952"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Gebruikers toewijzen aan toepassingen
 

@@ -3,15 +3,15 @@ title: De start tijd voor de wijzigings invoer processor configureren-Azure Cosm
 description: Meer informatie over het configureren van de processor voor wijzigings invoer om te beginnen met lezen vanaf een specifieke datum en tijd
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3d9af1b8cbda3f0fa2ff4650fef4602f7812f79
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77586271"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261712"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>De start tijd voor de wijzigings invoer van de processor configureren
 
@@ -23,7 +23,7 @@ Wanneer een wijzigings verwerkings processor de eerste keer wordt gestart, wordt
 
 ## <a name="reading-from-a-previous-date-and-time"></a>Lezen van een vorige datum en tijd
 
-Het is mogelijk om de Change feed-processor te initialiseren om wijzigingen te lezen die beginnen op een **specifieke datum en tijd**, door een `DateTime` exemplaar van `WithStartTime` een te geven aan de uitbrei ding van de opbouw functie:
+Het is mogelijk om de Change feed-processor te initialiseren om wijzigingen te lezen die beginnen op een **specifieke datum en tijd**, door een exemplaar van een `DateTime` te geven aan de `WithStartTime` uitbrei ding van de opbouw functie:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -31,7 +31,7 @@ De Change feed-processor wordt geïnitialiseerd voor die specifieke datum en tij
 
 ## <a name="reading-from-the-beginning"></a>Lezen vanaf het begin
 
-In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container**. Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, `DateTime.MinValue.ToUniversalTime()`maar door geven, waardoor de UTC-weer gave `DateTime` van de minimum waarde zou worden gegenereerd, zoals:
+In andere scenario's, zoals gegevens migraties of het analyseren van de volledige geschiedenis van een container, moeten we de wijzigings feed lezen vanaf **het begin van de levens duur van die container**. Hiervoor kunnen we gebruiken `WithStartTime` op de uitbrei ding van de opbouw functie, maar door geven `DateTime.MinValue.ToUniversalTime()` , waardoor de UTC-weer gave van de minimum `DateTime` waarde zou worden gegenereerd, zoals:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

@@ -3,15 +3,15 @@ title: Verplaats Azure externe Load Balancer naar een andere Azure-regio met beh
 description: Gebruik Azure Resource Manager sjabloon om externe Azure-Load Balancer van een Azure-regio naar een andere te verplaatsen met behulp van Azure PowerShell.
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be1971c9184d0b2b406b669ae9d1ea61598b201f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75644814"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809434"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Externe Azure-Load Balancer verplaatsen naar een andere regio met behulp van Azure PowerShell
 
@@ -60,7 +60,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name>. json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name> . json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -116,7 +116,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
     ```
 8. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > **name** te wijzigen in het ** \<bestand resource-group-name>. json** :
+    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU**  >  **name** in het ** \<resource-group-name> JSON** -bestand te wijzigen:
 
          ```json
             "resources": [
@@ -161,14 +161,14 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         Zie [een openbaar IP-adres maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)voor meer informatie over de toewijzings methoden en de time-outwaarden voor inactiviteit.
 
 
-9. Sla het bestand ** \<met de resource-group-name>. json** op.
+9. Sla het ** \<resource-group-name> JSON** -bestand op.
 
 10. Maak een resource groep in de doel regio voor het open bare doel-IP-adres dat moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0).
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Implementeer het bewerkte ** \<resource-group-name>. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Implementeer het bewerkte ** \<resource-group-name> . json** -bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 
@@ -209,7 +209,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
    ```
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name>. json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name> . json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -232,7 +232,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
 
     ```
 
-6.  Als u de waarde van de open bare doel-IP die hierboven is verplaatst, wilt bewerken, moet u eerst de resource-id ophalen en deze vervolgens kopiëren en plakken in het bestand met de naam van de ** \<resource groep>. json** .  Gebruik [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)om de id te verkrijgen:
+6.  Als u de waarde van de open bare doel-IP die hierboven is verplaatst, wilt bewerken, moet u eerst de resource-ID ophalen en deze vervolgens kopiëren en plakken in het ** \<resource-group-name> JSON** -bestand.  Gebruik [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0)om de id te verkrijgen:
 
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -244,7 +244,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
     /subscriptions/7668d659-17fc-4ffd-85ba-9de61fe977e8/resourceGroups/myResourceGroupLB-Move/providers/Microsoft.Network/publicIPAddresses/myPubIP-in-move
     ```
 
-7.  Plak in het ** \<bestand resource-group-name>. json** de **resource-id** uit de variabele in plaats van de **DefaultValue** in de tweede para meter voor de externe ID van het open bare IP-adres en zorg ervoor dat u het pad tussen aanhalings tekens plaatst:
+7.  Plak in het ** \<resource-group-name> JSON** -bestand de **resource-id** uit de variabele in plaats van de **DefaultValue** in de tweede para meter voor de externe ID van het open bare IP-adres en zorg ervoor dat u het pad tussen aanhalings tekens plaatst:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -261,7 +261,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
 
     ```
 
-8.  Als u uitgaande NAT en regels voor uitgaande verbindingen voor de load balancer hebt geconfigureerd, wordt in dit bestand een derde vermelding weer gegeven voor de externe ID voor het uitgaande open bare IP-adres.  Herhaal de bovenstaande stappen in de **doel regio** om de id voor het uitgaande open bare IP-adres op te halen en plak die vermelding in de ** \<resource-group-name>. json-** bestand:
+8.  Als u uitgaande NAT en regels voor uitgaande verbindingen voor de load balancer hebt geconfigureerd, wordt in dit bestand een derde vermelding weer gegeven voor de externe ID voor het uitgaande open bare IP-adres.  Herhaal de bovenstaande stappen in de **doel regio** om de id voor het uitgaande open bare iP-adres te verkrijgen en plak die vermelding in het ** \<resource-group-name> JSON** -bestand:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -282,7 +282,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         },
     ```
 
-10. Als u de doel regio wilt bewerken waar de configuratie van de externe Load Balancer wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het ** \<bestand resource-group-name>. json** :
+10. Als u de doel regio wilt bewerken waar de configuratie van de externe load balancer wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het ** \<resource-group-name> JSON** -bestand:
 
     ```json
         "resources": [
@@ -306,7 +306,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
     ```
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
     
-    * **SKU** : u kunt de SKU van de externe Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in de ** \<resource-group-name>. json-** bestand:
+    * **SKU** : u kunt de SKU-naam van de externe Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU**  >  **name** in het ** \<resource-group-name> JSON** -bestand te wijzigen:
 
         ```json
         "resources": [
@@ -322,7 +322,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         ```
       Zie [overzicht van Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) voor meer informatie over de verschillen tussen de Basic-en Standard SKU load balancers
 
-    * Taakverdelings **regels** : u kunt taakverdelings regels toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van de ** \<resource-group-name>. json-** bestand:
+    * Taakverdelings **regels** : u kunt regels voor taak verdeling toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van het ** \<resource-group-name> JSON** -bestand:
 
         ```json
         "loadBalancingRules": [
@@ -354,7 +354,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         ```
        Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over taakverdelings regels.
 
-    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het ** \<bestand resource-group-name>. json** :
+    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het ** \<resource-group-name> JSON** -bestand:
 
         ```json
         "probes": [
@@ -374,7 +374,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         ```
        Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) (Engelstalig) voor meer informatie over Azure Load Balancer status tests
 
-    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van de ** \<resource-group-name>. json-** bestand:
+    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van het ** \<resource-group-name> JSON** -bestand:
 
         ```json
         "inboundNatRules": [
@@ -396,7 +396,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
                     }
                 ]
         ```
-        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van de ** \<resource-group-name>. json-** bestand:
+        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van het ** \<resource-group-name> JSON** -bestand:
 
         ```json
         {
@@ -422,7 +422,7 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
         ```
         Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over binnenkomende NAT-regels.
 
-    * **Regels voor uitgaande verbindingen** : u kunt in de configuratie uitgaande regels toevoegen of verwijderen door de eigenschap **outboundRules** in het ** \<bestand resource-group-name>. json** te bewerken:
+    * **Regels voor uitgaande verbindingen** : u kunt uitgaande regels toevoegen aan of verwijderen uit de configuratie door de eigenschap **outboundRules** in het ** \<resource-group-name> JSON** -bestand te bewerken:
 
         ```json
         "outboundRules": [
@@ -450,14 +450,14 @@ De volgende stappen laten zien hoe u de externe load balancer voorbereidt voor d
 
          Zie [Load Balancer regels voor uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) voor meer informatie over uitgaande regels
 
-13. Sla het bestand ** \<met de resource-group-name>. json** op.
+13. Sla het ** \<resource-group-name> JSON** -bestand op.
     
 10. Maak of een resource groep in de doel regio voor de externe doel load balancer die moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0). De bestaande resource groep van boven kan ook opnieuw worden gebruikt als onderdeel van dit proces:
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Implementeer het bewerkte ** \<resource-group-name>. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Implementeer het bewerkte ** \<resource-group-name> . json** -bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

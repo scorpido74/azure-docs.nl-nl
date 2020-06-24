@@ -3,8 +3,8 @@ title: Azure Access Panel-extensie voor Internet Explorer implementeren met behu
 description: Groeps beleid gebruiken voor het implementeren van de invoeg toepassing Internet Explorer voor de portal mijn apps.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67807688"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763428"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Procedure: de uitbrei ding van het toegangs paneel voor Internet Explorer implementeren met behulp van groeps beleid
 
@@ -44,12 +44,12 @@ Eerst moet u het installatie pakket op een netwerk locatie plaatsen die toeganke
 
     ![Bestanden en opslag Services openen](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. Ga naar het tabblad **shares** . Klik vervolgens op **taken** > **nieuwe share...**
+1. Ga naar het tabblad **shares** . Klik vervolgens op **taken**  >  **nieuwe share...**
 
     ![Scherm afbeelding laat zien waar een nieuwe share kan worden gevonden vanuit het scherm taken](./media/deploy-access-panel-browser-extension/shares.png)
 
 1. Voltooi de **wizard Nieuwe share** en stel machtigingen in om ervoor te zorgen dat deze toegankelijk zijn vanaf de computers van uw gebruikers. [Meer informatie over shares.](https://technet.microsoft.com/library/cc753175.aspx)
-1. Down load het volgende Microsoft Windows Installer-pakket (MSI-bestand): [toegangs venster extensie. msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+1. Down load het volgende Microsoft Windows Installer-pakket (MSI-bestand): [toegangs venster Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Kopieer het installatie pakket naar een gewenste locatie op de share.
 
     ![Het MSI-bestand kopiëren naar de share](./media/deploy-access-panel-browser-extension/copy-package.png)
@@ -59,14 +59,14 @@ Eerst moet u het installatie pakket op een netwerk locatie plaatsen die toeganke
 ## <a name="step-2-create-the-group-policy-object"></a>Stap 2: het groeps beleidsobject maken
 
 1. Meld u aan bij de server die als host fungeert voor uw Active Directory Domain Services (AD DS)-installatie.
-1. Ga in Serverbeheer naar **hulpprogram ma's** > **Groepsbeleid beheer**.
+1. Ga in Serverbeheer naar **hulpprogram ma's**  >  **Groepsbeleid beheer**.
 
     ![Ga naar Hulpprogram Ma's > groepsbeleid beheer](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
 1. Bekijk in het linkerdeel venster van het venster **Groepsbeleid beheer** de hiërarchie van uw organisatie-eenheid (OE) en bepaal op welk bereik u het groeps beleid wilt Toep assen. U kunt bijvoorbeeld kiezen voor een kleine organisatie-eenheid om te implementeren voor een aantal gebruikers om te testen, of u kunt een OE op het hoogste niveau kiezen om te implementeren in uw hele organisatie.
 
    > [!NOTE]
-   > Als u uw organisatie-eenheden (ou's) wilt maken of bewerken, schakelt u terug naar de Serverbeheer en gaat u naar **hulpprogram ma's** > **Active Directory gebruikers en computers**.
+   > Als u uw organisatie-eenheden (ou's) wilt maken of bewerken, schakelt u terug naar de Serverbeheer en gaat u naar **hulpprogram ma's**  >  **Active Directory gebruikers en computers**.
 
 1. Wanneer u een OE hebt geselecteerd, klikt u er met de rechter muisknop op en selecteert u **een groeps beleidsobject in dit domein maken en koppelt u deze hier...**
 
@@ -83,7 +83,7 @@ Eerst moet u het installatie pakket op een netwerk locatie plaatsen die toeganke
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
 
-1. Klik met de rechter muisknop op **Software-installatie**en selecteer **Nieuw** > **pakket...**
+1. Klik met de rechter muisknop op **Software-installatie**en selecteer **Nieuw**  >  **pakket...**
 1. Ga naar de gedeelde map met het installatie pakket uit [stap 1: Maak het distributie punt](#step-1-create-the-distribution-point), selecteer het. msi-bestand en klik op **openen**.
 
    > [!IMPORTANT]

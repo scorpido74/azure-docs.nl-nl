@@ -4,15 +4,15 @@ description: Snel leren hoe u een VPN Gateway maakt met behulp van CLI
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 121790fce220874babedf67cd72471caa7e92ae6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241092"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987691"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Een op een route gebaseerde VPN-gateway maken met behulp van CLI
 
@@ -22,7 +22,7 @@ In de stappen in dit artikel wordt een VNet, een subnet, een gateway-subnet en e
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -74,7 +74,7 @@ az network public-ip create \
 
 Maak de VPN Gateway met behulp van de opdracht [az network vnet-gateway create](/cli/azure/group).
 
-Als u deze opdracht uitvoert met behulp `--no-wait` van de-para meter, worden er geen feedback of uitvoer weer gegeven. Met `--no-wait` de para meter kan de gateway op de achtergrond worden gemaakt. Dit betekent niet dat de VPN-gateway onmiddellijk wordt gemaakt.
+Als u deze opdracht uitvoert met behulp van de `--no-wait` -para meter, worden er geen feedback of uitvoer weer gegeven. `--no-wait`Met de para meter kan de gateway op de achtergrond worden gemaakt. Dit betekent niet dat de VPN-gateway onmiddellijk wordt gemaakt.
 
 ```azurecli-interactive
 az network vnet-gateway create \
