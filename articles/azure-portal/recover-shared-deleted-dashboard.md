@@ -5,23 +5,23 @@ services: azure-portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/21/2020
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b3cc088a87731d2a118a4fe5183831e4d1bd6cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77133292"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763972"
 ---
-# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Een verwijderd dash board in het Azure Portal herstellen
+# <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Een verwijderd dashboard in de Azure-portal herstellen
 
 Als u zich in de open bare Azure-Cloud bevindt en u een _gepubliceerd_ dash board in de Azure Portal verwijdert, kunt u dat dash board binnen 14 dagen na de verwijdering herstellen. Als u zich in een Azure Government-Cloud bevindt of als het dash board niet is gepubliceerd, kunt u het niet herstellen en moet u het opnieuw bouwen. Zie [dash board publiceren](azure-portal-dashboard-share-access.md#publish-dashboard)voor meer informatie over het publiceren van een dash board. Volg deze stappen om een gepubliceerd dash board te herstellen:
 
 1. Selecteer **resource groepen**in het menu Azure Portal en selecteer vervolgens de resource groep waar u het dash board hebt gepubliceerd (standaard **Dash boards**genoemd).
 
-1. Vouw onder **activiteiten logboek**de bewerking **dash board verwijderen** uit. Selecteer het tabblad **wijzigings overzicht** en selecteer ** \<vervolgens verwijderde\>resource**.
+1. Vouw onder **activiteiten logboek**de bewerking **dash board verwijderen** uit. Selecteer het tabblad **wijzigings overzicht** en selecteer **\<deleted resource\>** .
 
     ![Scherm afbeelding van het tabblad wijzigings overzicht](media/recover-shared-deleted-dashboard/change-history-tab.png)
 

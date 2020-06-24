@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 06/22/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b56fab132b36b63dae39d32f3ab9979b3d00a828
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 60d2f8017454cd73e91bb022bab79a48b0af8a36
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021191"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209586"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -284,9 +284,9 @@ ms.locfileid: "84021191"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
+[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
+[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -391,7 +391,7 @@ In [dit artikel][azure-resource-manager/management/azure-subscription-service-li
 ## <a name="possible-scenarios"></a>Mogelijke Scenario's
 SAP wordt vaak gezien als een van de meest essentiële toepassingen binnen ondernemingen. De architectuur en bewerkingen van deze toepassingen zijn voornamelijk complex en zorgen ervoor dat u voldoet aan de vereisten op het niveau van Beschik baarheid en prestaties van belang.
 
-Daarom moeten bedrijven zorgvuldig nadenken over de Cloud provider om te kiezen voor het uitvoeren van dergelijke bedrijfs kritieke bedrijfs processen op. Azure is het ideale open bare Cloud platform voor zakelijke essentiële SAP-toepassingen en bedrijfs processen. Gezien de grote verscheidenheid aan Azure-infra structuur, kunnen bijna alle bestaande SAP NetWeaver en S/4HANA-systemen worden gehost in Azure. Azure biedt Vm's met veel terabyte geheugen en meer dan 200 Cpu's. Verder biedt Azure [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), waardoor het opschalen van Hana-implementaties van Maxi maal 24TB en SAP Hana scale-out implementaties van Maxi maal slaat 120 TB mogelijk is. Een van de statussen kan vandaag al zijn dat vrijwel alle on-premises SAP-scenario's in azure ook kunnen worden uitgevoerd. 
+Daarom moeten bedrijven zorgvuldig nadenken over de Cloud provider om te kiezen voor het uitvoeren van dergelijke bedrijfs kritieke bedrijfs processen op. Azure is het ideale open bare Cloud platform voor zakelijke essentiële SAP-toepassingen en bedrijfs processen. Gezien de grote verscheidenheid aan Azure-infra structuur, kunnen bijna alle bestaande SAP NetWeaver en S/4HANA-systemen worden gehost in Azure. Azure biedt Vm's met veel terabyte geheugen en meer dan 200 Cpu's. Verder biedt Azure [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture), waarmee u Hana-implementaties van Maxi maal 24 TB kunt uitbreiden en SAP Hana scale-out implementaties van maxi maal 120 TB. Een van de statussen kan vandaag al zijn dat vrijwel alle on-premises SAP-scenario's in azure ook kunnen worden uitgevoerd. 
 
 Zie voor een ruwe beschrijving van de scenario's en enkele scenario's die niet worden ondersteund, de [SAP-workload van het document op ondersteunde scenario's voor virtuele Azure-machines](./sap-planning-supported-configurations.md).
 
@@ -449,6 +449,9 @@ Het principe van de beschikbaarheidsset en gerelateerde update en het fout domei
 > [!IMPORTANT]
 > De concepten van Azure-beschikbaarheidszones-en Azure-beschikbaarheids sets sluiten elkaar wederzijds uit. Dit betekent dat u een paar of meerdere Vm's kunt implementeren in een specifieke beschikbaarheids zone of een Azure-beschikbaarheidsset. Maar niet beide.
 
+### <a name="azure-paired-regions"></a>Gekoppelde Azure-regio's
+Azure biedt Azure-regio paren waarin de replicatie van bepaalde gegevens tussen deze vaste regio paren is ingeschakeld. De regio koppeling wordt beschreven in het artikel [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Zoals beschreven in het artikel, is de replicatie van gegevens gebonden Azure-opslag typen die kunnen worden geconfigureerd door u te repliceren naar de gekoppelde regio. Zie ook de [redundantie van het artikel opslag in een secundaire regio](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region). De opslag typen die dergelijke replicatie toestaan, zijn opslag typen, die niet geschikt zijn voor de DBMS-werk belasting. Omdat de bruikbaarheid van de Azure storage-replicatie beperkt is tot Azure Blob-opslag (zoals voor back-updoeleinden) of andere opslag scenario's met hoge latentie. Wanneer u controleert op gekoppelde regio's en de services die u wilt gebruiken als uw primaire of secundaire regio, kunnen er situaties optreden waarbij Azure-Services en/of VM-typen die u wilt gebruiken in uw primaire regio, niet beschikbaar zijn in de gekoppelde regio. Het is ook mogelijk dat er een situatie optreedt waarbij de gekoppelde Azure-regio niet wordt geaccepteerd vanwege de naleving van de gegevens. In dergelijke gevallen moet u een niet-gekoppelde regio gebruiken als secundaire/nood herstel regio. In dat geval moet u nadenken over de replicatie van een deel van de gegevens die door Azure zelf zouden worden gerepliceerd. Een voor beeld van het repliceren van uw Active Directory en DNS naar uw nood herstel regio wordt beschreven in het artikel herstel [na nood geval instellen voor Active Directory en DNS](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory)
+ 
 
 ## <a name="azure-virtual-machine-services"></a>Azure virtual machine-Services
 Azure biedt een groot aantal verschillende virtuele machines die u kunt selecteren om te implementeren. Er zijn geen technologieën van voor-en infra structuur nodig. De Azure VM service-aanbieding vereenvoudigt het onderhoud en de exploitatie van toepassingen met behulp van Compute en opslag op aanvraag om webtoepassingen en verbonden toepassingen te hosten, te schalen en te beheren. Infrastructuur beheer is geautomatiseerd met een platform dat is ontworpen voor hoge Beschik baarheid en dynamisch schalen om gebruik te kunnen afstemmen op de behoeften van verschillende prijs modellen.
@@ -468,7 +471,7 @@ Voor SAP-workload is de selectie beperkt tot verschillende VM-families die gesch
 > [!NOTE]
 > De VM-typen die zijn gecertificeerd voor SAP-werk belasting, er is geen overinrichting van CPU-en geheugen bronnen.
 
-Naast de selectie van uitsluitend ondersteunde Vm's, moet u ook controleren of deze beschikbaar zijn in een bepaalde regio op basis van de [beschik bare site producten per regio](https://azure.microsoft.com/global-infrastructure/services/). Maar belang rijker u moet evalueren of:
+Naast de geselecteerde VM-typen die worden ondersteund, moet u ook controleren of deze VM-typen beschikbaar zijn in een bepaalde regio op basis van de site [producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/). Maar belang rijker u moet evalueren of:
 
 - CPU-en geheugen resources van verschillende VM-typen 
 - Band breedte voor IOPS van verschillende VM-typen
@@ -496,57 +499,16 @@ Lees het artikel [Azure spot virtual machines](https://azure.microsoft.com/prici
 Daarnaast biedt Azure de concepten van een specifieke host. Het speciale host-concept geeft u meer controle over patch-cycli die door Azure worden uitgevoerd. U kunt de patch op basis van uw eigen planningen laten duren. Deze aanbieding is specifiek gericht op klanten met werk belasting die mogelijk niet de normale werk belasting volgen. Lees voor meer informatie over de concepten van voor Azure exclusieve host aanbiedingen het artikel [Azure dedicated host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Het gebruik van deze aanbieding wordt ondersteund voor SAP-werk belasting en wordt gebruikt door verschillende SAP-klanten die meer controle moeten hebben over patching van de infra structuur en uiteindelijk onderhouds plannen van micro soft. Lees het artikel [onderhoud voor virtuele machines in azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)voor meer informatie over de manier waarop micro soft de Azure-infra structuur die als host fungeert voor virtuele machines, kan lezen en onderhouden.
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>Virtuele machines van de eerste en tweede generatie
-De Hyper Visor van micro soft kan twee verschillende generaties virtuele machines verwerken. Deze indelingen worden **generatie 1** en **generatie 2**genoemd. **Generatie 2** is geïntroduceerd in het jaar 2012 met Windows Server 2012 Hyper Visor. Azure is gestart met virtuele machines van de eerste generatie. Wanneer u virtuele machines van Azure implementeert, is de standaard nog steeds de indeling van de eerste generatie. Ondertussen kunt u ook VM-indelingen van de tweede generatie implementeren. In het artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) worden de Azure VM-families weer gegeven die kunnen worden geïmplementeerd als virtuele machine van de tweede generatie. Dit artikel bevat ook een overzicht van de belangrijkste functionele verschillen van virtuele machines van de 2e generatie, zoals ze kunnen worden uitgevoerd in de privécloud van Hyper-V en Azure. Meer belang rijker dit artikel bevat ook functionele verschillen tussen virtuele machines van de eerste generatie en Vm's van de tweede generatie, omdat deze worden uitgevoerd in Azure. 
+De Hyper Visor van micro soft kan twee verschillende generaties virtuele machines verwerken. Deze indelingen worden **generatie 1** en **generatie 2**genoemd. **Generatie 2** is geïntroduceerd in het jaar 2012 met Windows Server 2012 Hyper Visor. Azure is gestart met virtuele machines van de eerste generatie. Wanneer u virtuele machines van Azure implementeert, is de standaard nog steeds de indeling van de eerste generatie. Ondertussen kunt u ook VM-indelingen van de tweede generatie implementeren. In het artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) worden de Azure VM-families weer gegeven die kunnen worden geïmplementeerd als virtuele machine van de tweede generatie. Dit artikel bevat ook een overzicht van de belangrijkste functionele verschillen van virtuele machines van de 2e generatie, zoals ze kunnen worden uitgevoerd op de privécloud van Hyper-V en Azure. Meer belang rijker dit artikel bevat ook functionele verschillen tussen virtuele machines van de eerste generatie en Vm's van de tweede generatie, omdat deze worden uitgevoerd in Azure. 
 
 > [!NOTE]
 > Er zijn functionele verschillen tussen virtuele machines van de eerste en tweede generatie die worden uitgevoerd in Azure. Lees de artikel [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) om een lijst met deze verschillen te bekijken.  
  
-Het is niet mogelijk om een bestaande virtuele machine van de ene generatie naar de andere generatie te verplaatsen. Als u de generatie van de virtuele machine wilt wijzigen, moet u een nieuwe VM van de gewenste generatie implementeren en de software die u uitvoert opnieuw installeren op de virtuele machine van de generatie. Dit is alleen van invloed op de VHD-basis installatie kopie van de virtuele machine en heeft geen invloed op de gegevens schijven of gekoppelde NFS-of SMB-shares. Gegevens schijven, NFS of SMB-shares die oorspronkelijk zijn toegewezen aan, bijvoorbeeld op een virtuele machine van de eerste generatie
+Het is niet mogelijk om een bestaande virtuele machine van de ene generatie naar de andere generatie te verplaatsen. Als u de generatie van virtuele machines wilt wijzigen, moet u een nieuwe VM van de gewenste generatie implementeren en de software die u uitvoert opnieuw installeren op de virtuele machine van de generatie. Deze wijziging is alleen van invloed op de VHD-basis installatie kopie van de virtuele machine en heeft geen invloed op de gegevens schijven of gekoppelde NFS-of SMB-shares. Gegevens schijven, NFS of SMB-shares die oorspronkelijk zijn toegewezen aan, bijvoorbeeld op een virtuele machine van de eerste generatie. 
 
 > [!NOTE]
 > Het implementeren van de virtuele machines van Mv1 VM-serie als generatie 2 Vm's zijn mogelijk vanaf het begin van mei 2020. Met een schijnbaar lager en overweeg tussen Mv1 en Mv2-serie Vm's is mogelijk.
-
-
-#### <a name="quotas-in-azure-virtual-machine-services"></a>Quota in azure virtual machine-Services
-Azure-opslag en netwerk infrastructuur worden gedeeld tussen virtuele machines met verschillende services in de Azure-infra structuur. En net als in uw eigen data centers is het voor de inrichting van een deel van de infrastructuur resources over een zekere graad. Het Microsoft Azure-platform gebruikt schijf, CPU, netwerk en andere quota's om het Resource verbruik te beperken en om consistente en deterministische prestaties te behouden. De verschillende VM-typen en-families (E32s_v3, D64s_v3 enz.) hebben verschillende quota voor het aantal schijven, CPU, RAM en netwerk.
-
-> [!NOTE]
-> De CPU-en geheugen resources van de VM-typen die worden ondersteund door SAP, worden vooraf toegewezen op de host-knoop punten. Dit betekent dat als de virtuele machine is geïmplementeerd, de bronnen op de host beschikbaar zijn zoals gedefinieerd in het VM-type.
-
-
-Bij het plannen en aanpassen van SAP on Azure oplossingen, moeten de quota's voor elke grootte van de virtuele machine worden overwogen. De VM-quota worden [hier (Linux)][virtual-machines-sizes-linux] en [hier (Windows)][virtual-machines-sizes-windows]beschreven. 
-
-Naast CPU-en geheugen resource quota, hebben andere quota's die zijn gedefinieerd voor VM-Sku's betrekking op:
-
-- Door Voer van netwerk verkeer naar de virtuele machine
-- IOPS voor opslag verkeer
-- Door Voer voor netwerk verkeer
-
-De doorvoer limieten voor opslag van een netwerk worden gedefinieerd, waardoor de ruis in de buur kan worden beperkt tot een absoluut minimum. Het quotum voor opslag dat is gerelateerd aan een virtuele machine, overschrijft de quota's van de samengevoegde schijven die zijn gekoppeld (Zie ook later in het gedeelte opslag). Of met andere woorden, als u opslag schijven koppelt die bij accumulatie het quotum voor door Voer en IOPS overschrijden van de virtuele machine, hebben de limieten voor de VM-quota prioriteit.
-
-#### <a name="rough-sizing-of-vms-for-sap"></a>Ruwe grootte van Vm's voor SAP 
-
-Als een ruwe beslissings structuur om te bepalen of een SAP-systeem in azure virtual machine-Services en de mogelijkheden ervan past, of of een bestaand systeem anders moet worden geconfigureerd om het systeem in azure te kunnen implementeren, kan de onderstaande beslissings structuur worden gebruikt:
-
-![Beslissings structuur om te bepalen of u SAP on Azure wilt implementeren][planning-guide-figure-700]
-
-**Stap 1**: de belangrijkste informatie die u moet starten, is de sap's-vereiste voor een bepaald SAP-systeem. De SAP'S-vereisten moeten worden gescheiden in het DBMS-onderdeel en het SAP-toepassings deel, zelfs als het SAP-systeem al on-premises is geïmplementeerd in een configuratie met twee lagen. Voor bestaande systemen kan de SAP'S die betrekking heeft op de hardware die vaak wordt gebruikt, worden bepaald of geschat op basis van bestaande SAP-benchmarks. De resultaten vindt u hier: <https://sap.com/about/benchmark.html> .
-Voor nieuw geïmplementeerde SAP-systemen hebt u een schaal oefening nodig om de SAP'S-vereisten van het systeem te bepalen.
-Zie ook deze blog en bijgevoegd document voor SAP-grootte op Azure:<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
-
-**Stap 2**: voor bestaande systemen moet het i/o-volume en i/o-bewerkingen per seconde op de DBMS-server worden gemeten. Voor nieuwe geplande systemen moet de grootte van het nieuwe systeem ook een ruwe ideeën geven van de I/O-vereisten aan de DBMS-zijde. Als dat niet het geval is, moet u uiteindelijk het concept testen.
-
-**Stap 3**: de sap's-vereiste voor de DBMS-server vergelijken met de sap's de verschillende VM-typen van Azure kunnen bieden. De informatie over de SAP'S van de verschillende Azure VM-typen wordt beschreven in SAP Note [1928533]. De focus moet eerst op de DBMS-VM worden uitgevoerd, omdat de laag van de data base de laag is in een SAP NetWeaver-systeem dat niet kan worden uitgeschaald in het meren deel van de implementaties. De SAP-toepassingslaag daarentegen kan worden uitgeschaald. Als geen van de door SAP ondersteunde Azure VM-typen de vereiste SAP'S kan leveren, kan de werk belasting van het geplande SAP-systeem niet worden uitgevoerd op Azure. U moet het systeem on-premises implementeren of u moet het werkbelasting volume voor het systeem wijzigen.
-
-**Stap 4**: zoals hier is beschreven [(Linux)][virtual-machines-sizes-linux] en [hier (Windows)][virtual-machines-sizes-windows], dwingt Azure een IOPS-quotum per schijf onafhankelijk af of u gebruikmaakt van standaard opslag of Premium Storage. Afhankelijk van het type virtuele machine, is het aantal gegevens schijven dat kan worden gekoppeld, afhankelijk van elkaar. Als gevolg hiervan kunt u een maximum aantal IOPS berekenen dat kan worden behaald met elk van de verschillende VM-typen. Afhankelijk van de bestands indeling van de Data Base kunt u schijven verwijderen om één volume in het gast besturingssysteem te worden. Als het huidige IOPS-volume van een geïmplementeerd SAP-systeem echter de berekende limieten overschrijdt van het grootste VM-type van Azure en als er geen kans is om te compenseren met meer geheugen, kan de werk belasting van het SAP-systeem ernstig worden beïnvloed. In dergelijke gevallen kunt u een punt aanraken waar u het systeem niet in azure moet implementeren.
-
-**Stap 5**: met name in SAP-systemen, die on-premises zijn geïmplementeerd in configuraties met twee lagen, is de kans groot dat het systeem mogelijk moet worden geconfigureerd op Azure in een configuratie met drie lagen. In deze stap moet u controleren of er een onderdeel is in de SAP-toepassingslaag, die niet kan worden geschaald en niet in de CPU en het geheugen bronnen van de verschillende typen Azure VM-Services passen. Als er inderdaad een dergelijk onderdeel is, kan het SAP-systeem en de werk belasting niet in Azure worden geïmplementeerd. Maar als u de onderdelen van de SAP-toepassing in meerdere virtuele machines van Azure kunt schalen, kan het systeem in Azure worden geïmplementeerd.
-
-**Stap 6**: als de onderdelen DBMS en SAP Application Layer kunnen worden uitgevoerd in virtuele machines van Azure, moet de configuratie worden gedefinieerd met betrekking tot:
-
-* Aantal virtuele Azure-machines
-* VM-typen voor de afzonderlijke onderdelen
-* Aantal Vhd's in DBMS-VM om voldoende IOPS te bieden 
+ 
 
 ### <a name="storage-microsoft-azure-storage-and-data-disks"></a><a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Opslag: Microsoft Azure Storage en gegevens schijven
 Microsoft Azure Virtual Machines gebruik verschillende opslag typen. Wanneer u SAP on Azure virtuele machine Services implementeert, is het belang rijk om inzicht te krijgen in de verschillen tussen deze twee hoofd typen opslag:
@@ -567,86 +529,35 @@ Azure Vm's bieden niet-permanente schijven nadat een virtuele machine is geïmpl
 > 
 > 
 
----
+#### <a name="azure-storage-accounts"></a>Azure Storage-accounts
 
-Microsoft Azure Storage biedt permanente opslag en het typische beveiligings niveau en de redundantie op SAN-opslag. Schijven op basis van Azure Storage zijn virtuele harde schijven (Vhd's) die zich in de Azure Storage-services bevinden. De lokale besturingssysteem schijf (Windows C: \, Linux/dev/sda1) wordt opgeslagen op de Azure Storage en er worden ook extra volumes/schijven opgeslagen die zijn gekoppeld aan de VM.
+Bij het implementeren van services of Vm's in azure, worden de implementatie van Vhd's en VM-installatie kopieën ingedeeld in eenheden die Azure Storage accounts worden genoemd. [Azure Storage-accounts](https://docs.microsoft.com/azure/storage/common/storage-account-overview) hebben beperkingen in IOPS, door Voer of grootten die kunnen bevatten. In de eerder genoemde beperkingen, die worden beschreven in: 
 
-Het is mogelijk om een bestaande VHD van on-premises te uploaden of leeg te maken in Azure en deze Vhd's te koppelen aan geïmplementeerde Vm's.
+- [Schaalbaarheids doelen voor standaard opslag accounts](../../../storage/common/scalability-targets-standard-account.md)
+- [Schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts](../../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
-Nadat u een VHD hebt gemaakt of geüpload naar Azure Storage, kunt u deze koppelen en koppelen aan een bestaande virtuele machine en bestaande (niet-gekoppelde) VHD kopiëren.
+speelt een belang rijke rol bij het plannen van een SAP-implementatie in Azure. U kunt het aantal permanente schijven in een opslag account beheren. U moet de opslag accounts beheren en uiteindelijk nieuwe opslag accounts maken om meer persistente schijven te maken. 
 
-Omdat deze Vhd's persistent zijn, zijn gegevens en wijzigingen in die Vhd's veilig wanneer een exemplaar van de virtuele machine opnieuw wordt opgestart en opnieuw wordt gemaakt. Zelfs als een exemplaar wordt verwijderd, blijven deze Vhd's veilig en kunnen ze opnieuw worden geïmplementeerd of in het geval van niet-besturingssysteem schijven kunnen worden gekoppeld aan andere Vm's.
+In de afgelopen jaren heeft de introductie van [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) u van deze taken ontheven. De aanbeveling voor SAP-implementaties is om gebruik te maken van Azure Managed disks in plaats van Azure Storage-accounts zelf te beheren. Met Azure Managed disks worden schijven verdeeld over verschillende opslag accounts, zodat de limieten van de afzonderlijke opslag accounts niet worden overschreden.
 
-Meer informatie over Azure Storage vindt u hier:
+Binnen een opslag account hebt u een type map met de naam containers die kan worden gebruikt om bepaalde schijven te groeperen in specifieke containers.
 
-* <https://azure.microsoft.com/documentation/services/storage/>
-* <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>
-* <https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview.aspx>
-
-#### <a name="azure-standard-storage"></a>Azure Standard Storage
-Azure Standard-opslag is het type opslag dat beschikbaar is toen Azure IaaS werd uitgebracht. Er zijn IOPS-quota's per enkele schijf afgedwongen. De latentie bevindt zich niet in dezelfde klasse als SAN/NAS-apparaten die doorgaans worden geïmplementeerd voor hoogwaardige SAP-systemen die on-premises worden gehost. Niettemin is de Azure Standard-opslag voldoende bewezen voor veel honderden SAP-systemen die ondertussen in azure zijn geïmplementeerd.
-
-Schijven die zijn opgeslagen in azure Standard-opslag accounts worden in rekening gebracht op basis van de werkelijke gegevens die zijn opgeslagen, het volume van de opslag transacties, uitgaande gegevens overdracht en de gekozen redundantie optie. Veel schijven kunnen worden gemaakt met een maximale grootte van 1 TB, maar zolang er geen kosten in rekening worden gebracht. Als u vervolgens één VHD opvult met 100 GB, worden er kosten in rekening gebracht voor de opslag van 100 GB en niet voor de nominale grootte van de VHD die is gemaakt met.
-
-#### <a name="azure-premium-storage"></a><a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Premium Storage
-Azure Premium Storage is geïntroduceerd met het doel om het volgende te bieden:
-
-* Betere I/O-latentie.
-* Betere door voer.
-* Minder variabiliteit in I/O-latentie.
-
-Hiervoor zijn veel wijzigingen geïntroduceerd waarvan de twee belangrijkste zijn:
-
-* Gebruik van SSD-schijven in de Azure Storage knooppunten
-* Een nieuwe Lees cache die wordt ondersteund door de lokale SSD van een Azure Compute-knoop punt
-
-In tegens telling tot standaard opslag waarbij mogelijkheden niet afhankelijk zijn van de grootte van de schijf (of VHD), heeft Premium Storage momenteel drie verschillende schijf categorieën, die in dit artikel worden weer gegeven:<https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
-
-U ziet dat IOPS/schijf en schijf doorvoer/schijf afhankelijk zijn van de categorie grootte van de schijven
-
-De kostprijs basis in het geval van Premium Storage is niet het werkelijke gegevens volume dat op dergelijke schijven is opgeslagen, maar de grootte categorie van een dergelijke schijf, onafhankelijk van de hoeveelheid gegevens die op de schijf is opgeslagen.
-
-U kunt ook schijven maken op Premium Storage die niet rechtstreeks worden toegewezen in de weer gegeven grootte categorieën. Dit kan het geval zijn, vooral bij het kopiëren van schijven uit de standaard opslag naar Premium Storage. In dergelijke gevallen wordt een toewijzing met de volgende grootste Premium Storage schijf optie uitgevoerd.
-
-De meeste Azure VM-families die zijn gecertificeerd met SAP, kunnen werken met Premium Storage en of een combi natie van Azure Standard en Premium Storage.
-
-Als u het deel van de Vm's van de DS-serie in [dit artikel (Linux)][virtual-machines-sizes-linux] en [dit artikel (Windows)][virtual-machines-sizes-windows]uitcheckt, realiseert u zich dat er gegevens volume beperkingen zijn voor het Premium Storage van schijven op de granulatie van het niveau van de virtuele machine. Verschillende Vm's van de DS-serie of GS-serie hebben ook verschillende beperkingen in het aantal gegevens schijven dat kan worden gekoppeld. Deze limieten worden ook beschreven in het eerder genoemde artikel. Maar in wezen betekent dit dat als u bijvoorbeeld 32 x P30-schijven koppelt aan één DS14-VM, de maximale door Voer van een P30-schijf niet kan worden 32 verkregen. In plaats daarvan wordt de maximale door Voer op VM-niveau zoals beschreven in het artikel, beperkt de gegevens doorvoer.
-
-Meer informatie over Premium Storage vindt u hier:<https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
-
-#### <a name="azure-storage-accounts"></a>Azure Storage accounts
-
-Bij het implementeren van services of Vm's in azure kunnen de implementatie van Vhd's en VM-installatie kopieën worden ingedeeld in eenheden die Azure Storage accounts worden genoemd. Bij het plannen van een Azure-implementatie moet u de beperkingen van Azure aandachtig door nemen. Aan de één zijde is er een beperkt aantal opslag accounts per Azure-abonnement. Hoewel elk Azure Storage-account een groot aantal VHD-bestanden kan bevatten, geldt er een vaste limiet voor het totale aantal IOPS per opslag account. Wanneer u honderden SAP-Vm's implementeert met DBMS-systemen die aanzienlijke IO-aanroepen maken, wordt u aangeraden hoge IOPS-DBMS-Vm's te distribueren tussen meerdere Azure Storage accounts. De huidige limiet van Azure Storage accounts per abonnement mag niet worden overschreden. Omdat opslag een belang rijk onderdeel is van de implementatie van de Data Base voor een SAP-systeem, wordt dit concept uitgebreid beschreven in de [DBMS-implementatie handleiding][dbms-guide]al waarnaar wordt verwezen.
-
-Meer informatie over Azure Storage accounts vindt u in de [schaalbaarheids doelen voor standaard opslag accounts](../../../storage/common/scalability-targets-standard-account.md) en [schaalbaarheids doelen voor Premium-pagina-Blob-opslag accounts](../../../storage/blobs/scalability-targets-premium-page-blobs.md). Als u deze artikelen leest, beseft u dat er verschillen zijn in de beperkingen tussen Azure Standard-opslag accounts en Premium Storage accounts. Belang rijke verschillen zijn het volume aan gegevens dat kan worden opgeslagen in een dergelijk opslag account. In de standaard opslag is het volume groter dan met Premium Storage. Aan de andere kant is het standaard opslag account ernstig beperkt in IOPS (Zie het **Totaal aantal aanvragen**voor de kolom), terwijl de Azure Premium Storage-account deze beperking niet heeft. We bespreken Details en resultaten van deze verschillen bij het bespreken van de implementaties van SAP-systemen, met name de DBMS-servers.
-
-Binnen een opslag account hebt u de mogelijkheid om verschillende containers te maken voor het organiseren en categoriseren van verschillende Vhd's. Deze containers worden gebruikt voor bijvoorbeeld afzonderlijke Vhd's van verschillende Vm's. Het gebruik van slechts één container of meerdere containers onder één Azure Storage account heeft geen invloed op de prestaties.
-
-In azure wordt een VHD-naam gevolgd door de volgende naam verbinding die een unieke naam moet opgeven voor de VHD in Azure:
+In azure volgt een schijf/VHD-naam de volgende naam verbinding die een unieke naam moet opgeven voor de VHD in Azure:
 
     http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
 
-De bovenstaande teken reeks moet een unieke identificatie vormen van de VHD die is opgeslagen op Azure Storage.
+De bovenstaande teken reeks moet een unieke identificatie hebben van de schijf/VHD die is opgeslagen op Azure Storage.
+
 
 #### <a name="managed-disks"></a><a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Managed Disks
 
-Managed Disks zijn een nieuw resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage-accounts. Managed Disks wordt automatisch uitgelijnd met de beschikbaarheidsset van de virtuele machine waaraan deze zijn gekoppeld, waardoor de beschik baarheid van de virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)voor meer informatie.
+Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks wordt automatisch uitgelijnd met de beschikbaarheidsset van de virtuele machine waaraan deze zijn gekoppeld, waardoor de beschik baarheid van de virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)voor meer informatie.
 
-We raden u aan om beheerde schijven te gebruiken, omdat de implementatie en het beheer van uw virtuele machines worden vereenvoudigd.
-SAP ondersteunt momenteel alleen Premium-Managed Disks. Lees SAP-opmerking [1928533]voor meer informatie.
-
-#### <a name="microsoft-azure-storage-resiliency"></a>Microsoft Azure Storage tolerantie
-
-Microsoft Azure Storage slaat de basis-VHD (met OS) en de gekoppelde schijven of BLOBs op ten minste drie afzonderlijke opslag knooppunten. Dit feit wordt lokale redundante opslag (LRS) genoemd. LRS is standaard voor alle typen opslag in Azure. 
-
-Er zijn diverse redundante methoden, die allemaal worden beschreven in het artikel [Azure storage replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
-
-> [!NOTE]
->Vanaf Azure Premium Storage: dit is het aanbevolen type opslag voor DBMS-Vm's en schijven die data bases opslaan en logboek bestanden vastleggen en opnieuw uitvoeren, de enige beschik bare methode is LRS. Als gevolg hiervan moet u database methoden configureren, zoals SQL Server always on, Oracle Data Guard of HANA System Replication om database gegevens replicatie in te scha kelen in een andere Azure-regio of een andere Azure-beschikbaarheids zone.
+We raden u aan Azure Managed disks te gebruiken, omdat de implementatie en het beheer van uw virtuele machines worden vereenvoudigd.
 
 
-> [!NOTE]
-> Voor DBMS-implementaties wordt het gebruik van geo-redundante opslag als beschikbaar met Azure Standard-opslag niet aanbevolen, omdat het een ernstige invloed heeft op de prestaties van het systeem en de schrijf volgorde niet kan garanderen voor verschillende Vhd's die aan een virtuele machine zijn gekoppeld. Het feit dat het niet voldoet aan de schrijf volgorde voor verschillende Vhd's, draagt bij aan een hoge kans op inconsistente data bases aan de zijde van het replicatie doel als de data base-en logboek-en herbewerkings bestanden zijn verdeeld over meerdere Vhd's (vooral het geval) op de bron-VM.
+#### <a name="azure-persisted-storage-types"></a>Persistente opslag typen van Azure
+Azure biedt een verscheidenheid aan permanente opslag optie die kan worden gebruikt voor SAP-workload en specifieke onderdelen van de SAP-stack. Lees voor meer informatie het document [Azure Storage voor SAP-workloads](./planning-guide-storage.md).
 
 
 ### <a name="microsoft-azure-networking"></a><a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure netwerken
@@ -766,6 +677,33 @@ Dit hoofd stuk bevat veel belang rijke punten over Azure-netwerken. Hier volgt e
 * Als u een site-naar-site-of punt-naar-site-verbinding wilt instellen, moet u eerst een Azure-Virtual Network maken
 * Nadat een virtuele machine is geïmplementeerd, is het niet meer mogelijk om de Virtual Network die aan de VM zijn toegewezen, te wijzigen
 
+### <a name="quotas-in-azure-virtual-machine-services"></a>Quota in azure virtual machine-Services
+We moeten duidelijk zijn dat de opslag-en netwerk infrastructuur wordt gedeeld tussen Vm's met een verscheidenheid aan services in de Azure-infra structuur. Net als bij de eigen data centers van de klant is het over een zekere mate van het inrichten van een deel van de infrastructuur resources van kracht. Het Microsoft Azure-platform gebruikt schijf, CPU, netwerk en andere quota's om het Resource verbruik te beperken en om consistente en deterministische prestaties te behouden.  De verschillende VM-typen (A5, A6, enzovoort) hebben verschillende quota voor het aantal schijven, CPU, RAM en netwerk.
+
+> [!NOTE]
+> De CPU-en geheugen resources van de VM-typen die worden ondersteund door SAP, worden vooraf toegewezen op de host-knoop punten. Dit betekent dat als de virtuele machine is geïmplementeerd, de bronnen op de host beschikbaar zijn zoals gedefinieerd in het VM-type.
+>
+>
+
+Bij het plannen en aanpassen van SAP on Azure oplossingen, moeten de quota's voor elke grootte van de virtuele machine worden overwogen. De VM-quota worden [hier (Linux)][virtual-machines-sizes-linux] en [hier (Windows)][virtual-machines-sizes-windows]beschreven.
+
+De beschreven quota's vertegenwoordigen de theoretische maximum waarden.  De limiet voor IOPS per schijf kan worden bereikt met kleine I/O's (8 KB), maar mogelijk niet met een grote hoeveelheid I/O's (1 MB).  De limiet voor IOPS wordt afgedwongen voor de granulatie van één schijf.
+
+Als een ruwe beslissings structuur om te bepalen of een SAP-systeem in azure virtual machine-Services en de mogelijkheden ervan past, of of een bestaand systeem anders moet worden geconfigureerd om het systeem in azure te kunnen implementeren, kan de onderstaande beslissings structuur worden gebruikt:
+
+![Beslissings structuur om te bepalen of u SAP on Azure wilt implementeren][planning-guide-figure-700]
+
+1. De belangrijkste informatie om mee te beginnen is de SAP'S-vereiste voor een bepaald SAP-systeem. De SAP'S-vereisten moeten worden gescheiden in het DBMS-onderdeel en het SAP-toepassings deel, zelfs als het SAP-systeem al on-premises is geïmplementeerd in een configuratie met twee lagen. Voor bestaande systemen kan de SAP'S die betrekking heeft op de hardware die vaak wordt gebruikt, worden bepaald of geschat op basis van bestaande SAP-benchmarks. De resultaten vindt u [hier](https://sap.com/about/benchmark.html). Voor nieuw geïmplementeerde SAP-systemen hebt u een schaal oefening nodig om de SAP'S-vereisten van het systeem te bepalen. Zie ook deze blog en bijgevoegd document voor [SAP-grootte op Azure](https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx)
+1. Voor bestaande systemen moet het I/O-volume en I/O-bewerkingen per seconde op de DBMS-server worden gemeten. Voor nieuwe geplande systemen moet de grootte van het nieuwe systeem ook een ruwe ideeën geven van de I/O-vereisten aan de DBMS-zijde. Als dat niet het geval is, moet u uiteindelijk het concept testen.
+1. Vergelijk de SAP'S-vereiste voor de DBMS-server met de SAP'S de verschillende VM-typen van Azure kunnen bieden. De informatie over de SAP'S van de verschillende Azure VM-typen wordt beschreven in SAP Note [1928533]. De focus moet eerst op de DBMS-VM worden uitgevoerd, omdat de laag van de data base de laag is in een SAP NetWeaver-systeem dat niet kan worden uitgeschaald in het meren deel van de implementaties. De SAP-toepassingslaag daarentegen kan worden uitgeschaald. Als geen van de door SAP ondersteunde Azure VM-typen de vereiste SAP'S kan leveren, kan de werk belasting van het geplande SAP-systeem niet worden uitgevoerd op Azure. U moet het systeem on-premises implementeren of u moet het werkbelasting volume voor het systeem wijzigen.
+1. Zoals hier wordt beschreven [(Linux)][virtual-machines-sizes-linux] en [hier (Windows)][virtual-machines-sizes-windows], DWINGt Azure een IOPS-quotum per schijf onafhankelijk af of u gebruikmaakt van standaard opslag of Premium Storage. Afhankelijk van het type virtuele machine, is het aantal gegevens schijven dat kan worden gekoppeld, afhankelijk van elkaar. Als gevolg hiervan kunt u een maximum aantal IOPS berekenen dat kan worden behaald met elk van de verschillende VM-typen. Afhankelijk van de bestands indeling van de Data Base kunt u schijven verwijderen om één volume in het gast besturingssysteem te worden. Als het huidige IOPS-volume van een geïmplementeerd SAP-systeem echter de berekende limieten overschrijdt van het grootste VM-type van Azure en als er geen kans is om te compenseren met meer geheugen, kan de werk belasting van het SAP-systeem ernstig worden beïnvloed. In dergelijke gevallen kunt u een punt aanraken waar u het systeem niet in azure moet implementeren.
+1. Met name in SAP-systemen, die on-premises worden geïmplementeerd in configuraties met twee lagen, is de kans groot dat het systeem mogelijk moet worden geconfigureerd op Azure in een configuratie met drie lagen. In deze stap moet u controleren of er een onderdeel is in de SAP-toepassingslaag, die niet kan worden geschaald en niet in de CPU en het geheugen bronnen van de verschillende typen Azure VM-Services passen. Als er inderdaad een dergelijk onderdeel is, kan het SAP-systeem en de werk belasting niet in Azure worden geïmplementeerd. Maar als u de onderdelen van de SAP-toepassing in meerdere virtuele machines van Azure kunt schalen, kan het systeem in Azure worden geïmplementeerd.
+
+Als de onderdelen DBMS en SAP Application Layer kunnen worden uitgevoerd in virtuele machines van Azure, moet de configuratie worden gedefinieerd met betrekking tot:
+
+* Aantal virtuele Azure-machines
+* VM-typen voor de afzonderlijke onderdelen
+* Aantal Vhd's in DBMS-VM om voldoende IOPS te bieden
 
 ## <a name="managing-azure-assets"></a>Azure-assets beheren
 
@@ -874,7 +812,7 @@ Een veelvoorkomende implementatie methode is het verplaatsen van een bestaande v
 
 De vereisten voor het voorbereiden van uw eigen Azure VM-schijf zijn:
 
-* Oorspronkelijk kan de VHD met het besturings systeem een maximale grootte van 127GB hebben. Deze beperking is eind maart 2015. De VHD met het besturings systeem kan nu Maxi maal 1 TB groot zijn als andere Azure Storage gehoste VHD.
+* Oorspronkelijk kan de VHD met het besturings systeem een maximum grootte hebben van 127 GB. Deze beperking is eind maart 2015. De VHD met het besturings systeem kan nu Maxi maal 1 TB groot zijn als andere Azure Storage gehoste VHD.
 * Deze moet de vaste VHD-indeling hebben. Dynamische Vhd's of Vhd's in VHDx-indeling worden nog niet ondersteund in Azure. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
 * Vhd's die zijn gekoppeld aan de virtuele machine en in azure opnieuw moeten worden gekoppeld aan de virtuele machine moeten ook een vaste VHD-indeling hebben. Lees [dit artikel (Linux)](../../linux/managed-disks-overview.md) en [dit artikel (Windows)](../../windows/managed-disks-overview.md)) voor maximale grootte van gegevens schijven. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
 * Voeg nog een lokaal account met beheerders bevoegdheden toe, dat kan worden gebruikt door micro soft-ondersteuning of dat kan worden toegewezen als context voor services en toepassingen om uit te voeren totdat de virtuele machine wordt geïmplementeerd en er meer geschikte gebruikers kunnen worden gebruikt.
@@ -901,7 +839,7 @@ VHD-bestanden met een gegeneraliseerd besturings systeem worden opgeslagen in co
 
 De vereisten voor het voorbereiden van uw eigen Azure VM-installatie kopie zijn:
 
-* Oorspronkelijk kan de VHD met het besturings systeem een maximale grootte van 127GB hebben. Deze beperking is eind maart 2015. De VHD met het besturings systeem kan nu Maxi maal 1 TB groot zijn als andere Azure Storage gehoste VHD.
+* Oorspronkelijk kan de VHD met het besturings systeem een maximum grootte hebben van 127 GB. Deze beperking is eind maart 2015. De VHD met het besturings systeem kan nu Maxi maal 1 TB groot zijn als andere Azure Storage gehoste VHD.
 * Deze moet de vaste VHD-indeling hebben. Dynamische Vhd's of Vhd's in VHDx-indeling worden nog niet ondersteund in Azure. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
 * Vhd's die zijn gekoppeld aan de virtuele machine en in azure opnieuw moeten worden gekoppeld aan de virtuele machine moeten ook een vaste VHD-indeling hebben. Lees [dit artikel (Linux)](../../windows/managed-disks-overview.md) en [dit artikel (Windows)](../../linux/managed-disks-overview.md) voor maximale grootte van gegevens schijven. Dynamische Vhd's worden geconverteerd naar statische Vhd's wanneer u de VHD uploadt met Power shell Commandlets of CLI
 * Voeg andere lokale accounts toe, omdat deze mogelijk nodig zijn voor het specifieke implementatie scenario.
@@ -928,7 +866,7 @@ Als de virtuele machine voldoende is voor het algemeen en uiteindelijk onafhanke
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> De laatste stap bestaat uit het aanmelden bij een virtuele machine met een beheerders account. Open een Windows-opdracht venster als *beheerder*. Ga naar%windir%\Windows\System32\Sysprep en voer Sysprep. exe uit.
+> De laatste stap bestaat uit het aanmelden bij een virtuele machine met een beheerders account. Open een Windows-opdracht venster als *beheerder*. Ga naar%windir%\Windows\System32\Sysprep en voer sysprep.exe uit.
 > Er wordt een klein venster weer gegeven. Het is belang rijk om de optie **generalize** te controleren (de standaard instelling is uitgeschakeld) en de afsluit optie te wijzigen van de standaard waarde voor opnieuw opstarten in afsluiten. Bij deze procedure wordt ervan uitgegaan dat het Sysprep-proces on-premises wordt uitgevoerd in het gast besturingssysteem van een virtuele machine.
 > Als u de procedure wilt uitvoeren met een virtuele machine die al in azure wordt uitgevoerd, volgt u de stappen die in [dit artikel](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)worden beschreven.
 >
@@ -1191,7 +1129,7 @@ az storage blob show --name <target blob name> --container <target container nam
 
 In het ideale geval is de verwerking van de structuur van een virtuele machine en de bijbehorende schijven eenvoudig. Bij on-premises installaties ontwikkelde klanten veel manieren voor het structureren van een server installatie.
 
-* Eén basis schijf, die het besturings systeem en alle binaire bestanden van het DBMS en/of SAP bevat. Sinds 2015 maart kan deze schijf Maxi maal 1 TB groot zijn in plaats van eerdere beperkingen die het aantal 127GB.
+* Eén basis schijf, die het besturings systeem en alle binaire bestanden van het DBMS en/of SAP bevat. Sinds 2015 maart kan deze schijf Maxi maal 1 TB groot zijn in plaats van eerder ingestelde beperkingen tot 127 GB.
 * Een of meer schijven, die het DBMS-logboek bestand van de SAP-data base en het logboek bestand van het tijdelijke DBMS-opslag gebied bevatten (als het DBMS dit ondersteunt). Als de vereisten voor IOPS van het database logboek hoog zijn, moet u meerdere schijven verwijderen om het IOPS-volume te bereiken dat vereist is.
 * Een aantal schijven met een of twee database bestanden van de SAP-data base en de tijdelijke DBMS-gegevens bestanden ook (als het DBMS dit ondersteunt).
 
@@ -1222,7 +1160,7 @@ Als u de wijzigingen wilt activeren, moet u de Linux-agent opnieuw starten met
 sudo service waagent restart
 ```
 
-Raadpleeg SAP Note [1597355] voor meer informatie over de aanbevolen wissel bestands grootte
+Lees SAP-opmerking [1597355] voor meer informatie over de aanbevolen wissel bestands grootte
 
 ---
 Het aantal schijven dat wordt gebruikt voor de DBMS-gegevens bestanden en het type Azure Storage deze schijven worden gehost op, moet worden bepaald door de IOPS-vereisten en de vereiste latentie. In [dit artikel (Linux)][virtual-machines-sizes-linux] en [dit artikel (Windows)][virtual-machines-sizes-windows]worden exacte quota's beschreven.
@@ -1240,14 +1178,13 @@ Ervaar de ervaring van SAP-implementaties in de afgelopen twee jaar. Dit zijn en
 >
 > * [Software-RAID op Linux configureren][virtual-machines-linux-configure-raid]
 > * [LVM configureren op een virtuele Linux-machine in azure][virtual-machines-linux-configure-lvm]
-> * [Azure Storage geheimen en Linux I/O-optimalisaties](https://docs.microsoft.com/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 >
 >
 
 ---
 * Premium Storage worden aanzienlijk betere prestaties weer gegeven, met name voor het schrijven van kritieke transactie Logboeken. Voor SAP-scenario's die naar verwachting productie leveren, zoals prestaties, is het raadzaam om gebruik te maken van VM-serie die gebruikmaakt van Azure Premium Storage.
 
-Houd er wel voor dat de schijf, die het besturings systeem bevat, wordt aanbevolen, de binaire bestanden van SAP en de data base (basis-VM) ook niet meer beperkt zijn tot 127GB. Het kan nu Maxi maal 1 TB groot zijn. Dit moet voldoende ruimte zijn om alle benodigde bestanden op te slaan, waaronder bijvoorbeeld SAP batch-taak Logboeken.
+Houd er wel van uit dat de schijf, die het besturings systeem bevat, wordt aanbevolen, de binaire bestanden van SAP en de data base (basis-VM) ook niet langer beperkt tot 127 GB. Het kan nu Maxi maal 1 TB groot zijn. Dit moet voldoende ruimte zijn om alle benodigde bestanden op te slaan, waaronder bijvoorbeeld SAP batch-taak Logboeken.
 
 Raadpleeg de [DBMS-implementatie handleiding][dbms-guide] voor meer suggesties en meer informatie, met name voor DBMS-vm's.
 
@@ -1294,7 +1231,7 @@ Azure geo-replicatie werkt lokaal op elke VHD in een VM en repliceert het I/O's 
 > Voor virtuele machines die worden gemaakt op basis van eigen installatie kopieën of schijven, is het nodig om de automount-para meter in te checken en mogelijk in te stellen. Door deze para meter in te stellen, kan de virtuele machine na een herstart of opnieuw worden geïmplementeerd in azure om de gekoppelde/gekoppelde stations automatisch te koppelen.
 > De para meter is ingesteld voor de installatie kopieën van micro soft in de Azure Marketplace.
 >
-> Raadpleeg de documentatie van het uitvoer bare bestand DiskPart. exe van de opdracht regel om automatisch koppelen in te stellen:
+> Als u de automatisch koppelen wilt instellen, raadpleegt u de documentatie van het uitvoer bare bestand van de opdracht regel diskpart.exe hier:
 >
 > * [Opdracht regel opties voor Disk Part](https://technet.microsoft.com/library/bb490893.aspx)
 > * [Automount](https://technet.microsoft.com/library/cc753703.aspx)
@@ -1332,7 +1269,7 @@ Bekijk het architectuur verschil tussen het klassieke model en de ARM zoals besc
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Configuratie van SAP-en SAP-GUI-connectiviteit via Internet
 
-Raadpleeg dit artikel voor meer informatie over dit onderwerp:<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+Zie dit artikel, waarin de details van dit onderwerp worden beschreven:<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Firewall instellingen in VM wijzigen
 
@@ -1349,7 +1286,7 @@ Het kan nodig zijn om de firewall op uw virtuele machines te configureren om ink
 > * In de volgende wizard hebt gekozen voor het maken van een nieuwe **poort** regel.
 > * In de volgende stap van de wizard, sluit u de instelling op TCP en typt u het poort nummer dat u wilt openen. Omdat onze SAP-exemplaar-ID 00 is, hebben we 3200 geduurd. Als uw exemplaar een ander exemplaar nummer heeft, moet de poort die u eerder hebt gedefinieerd op basis van het exemplaar nummer worden geopend.
 > * In het volgende deel van de wizard moet u het item de optie **verbinding toestaan** controleren laten staan.
-> * In de volgende stap van de wizard moet u opgeven of de regel van toepassing is op domein, privé en openbaar netwerk. Pas dit zo nodig aan uw behoeften aan. Als u echter via het open bare netwerk verbinding maakt met SAP-gebruikers interface, moet u de regel Toep assen op het open bare netwerk.
+> * In de volgende stap van de wizard moet u opgeven of de regel van toepassing is op domein, privé en openbaar netwerk. Pas het zo nodig aan uw behoeften aan. Als u echter via het open bare netwerk verbinding maakt met SAP-gebruikers interface, moet u de regel Toep assen op het open bare netwerk.
 > * Geef in de laatste stap van de wizard de regel een naam en sla op door op **volt ooien**te klikken.
 >
 > De regel wordt direct van kracht.
@@ -1597,7 +1534,7 @@ U kunt de voorbeeld sjablonen gebruiken in de opslag plaats Azure-Quick Start-sj
 
 Dit niet-hybride scenario is een typisch scenario voor training en demonstratie doeleinden, waarbij de software die het demo-en trainings scenario vertegenwoordigt over meerdere Vm's wordt verspreid. De verschillende onderdelen die zijn geïnstalleerd op de verschillende Vm's, moeten met elkaar communiceren. In dit scenario is er geen on-premises netwerk communicatie of cross-premises scenario nodig.
 
-Dit scenario is een uitbrei ding van de installatie die wordt beschreven in hoofd stuk [Single VM met SAP NetWeaver-scenario voor demonstratie/training][planning-guide-7.1] van dit document. In dat geval worden er meer virtuele machines toegevoegd aan een bestaande resource groep. In het volgende voor beeld bestaat het landschap van de training uit een SAP-ASCS/SCS-VM, een virtuele machine met een DBMS en een SAP-exemplaar-VM van het toepassings server.
+Dit scenario is een uitbrei ding van de installatie die wordt beschreven in hoofd stuk [Single VM met SAP NetWeaver-scenario voor demonstratie/training][planning-guide-7.1] van dit document. In dit geval worden er meer virtuele machines toegevoegd aan een bestaande resource groep. In het volgende voor beeld bestaat het landschap van de training uit een SAP-ASCS/SCS-VM, een virtuele machine met een DBMS en een SAP-exemplaar-VM van het toepassings server.
 
 Voordat u dit scenario bouwt, moet u nadenken over de basis instellingen die al eerder in het scenario zijn uitgeoefend.
 
@@ -1903,7 +1840,7 @@ Een ander belang rijk infrastructuur element voor hoge Beschik baarheid is opsla
 
 In plaats van alle Vm's in één Azure Storage account te plaatsen, kunt u ook specifieke opslag accounts voor elke virtuele machine gebruiken, en op deze manier de totale Beschik baarheid van de virtuele machine en de SAP-toepassing verhogen met behulp van meerdere onafhankelijke Azure Storage-accounts.
 
-Azure-Managed Disks worden automatisch geplaatst in het fout domein van de virtuele machine waaraan ze zijn gekoppeld. Als u twee virtuele machines in een beschikbaarheidsset plaatst en Managed Disks gebruikt, zal het platform er ook voor zorgen dat de Managed Disks naar verschillende fout domeinen worden gedistribueerd. Als u van plan bent Premium Storage te gebruiken, raden wij u ten zeerste aan om ook beheer schijven te gebruiken.
+Azure Managed disks worden automatisch geplaatst in het fout domein van de virtuele machine waaraan ze zijn gekoppeld. Als u twee virtuele machines in een beschikbaarheidsset plaatst en Managed Disks gebruikt, zal het platform er ook voor zorgen dat de Managed Disks naar verschillende fout domeinen worden gedistribueerd. Als u van plan bent Premium Storage te gebruiken, raden wij u ten zeerste aan om ook beheer schijven te gebruiken.
 
 Een voor beeld van een architectuur van een SAP NetWeaver-systeem dat gebruikmaakt van Azure-infrastructuur HA en opslag accounts, ziet er als volgt uit:
 
@@ -1972,7 +1909,7 @@ Alleen niet-beheerde schijven: de concepten zoals hieronder uitgelegd, moeten mo
 
 De volgende Azure-constructs worden gebruikt voor het SAP NetWeaver-systeem om de impact te minimaliseren door problemen met de infra structuur en host-patching:
 
-* Het volledige systeem wordt geïmplementeerd op Azure (vereist: DBMS Layer, (A) SCS-exemplaar en de volledige toepassingslaag moeten op dezelfde locatie worden uitgevoerd).
+* Het volledige systeem wordt geïmplementeerd op Azure (vereist-DBMS-laag, (A) SCS-exemplaar en het volt ooien van de toepassingslaag moet op dezelfde locatie worden uitgevoerd).
 * Het volledige systeem wordt binnen één Azure-abonnement uitgevoerd (vereist).
 * Het volledige systeem wordt binnen één Azure-Virtual Network uitgevoerd (vereist).
 * De virtuele machines van een SAP-systeem kunnen niet worden gescheiden in drie beschikbaarheids sets, zelfs met alle virtuele machines die deel uitmaken van hetzelfde Virtual Network.
@@ -2017,7 +1954,7 @@ Aspecten van een hoge Beschik baarheid van SAP-configuraties met drie lagen kome
 #### <a name="location-of-3-tier-sap-configurations"></a>Locatie van de 3-tier SAP-configuraties
 Het wordt niet ondersteund om de toepassingslaag zelf of de toepassing en de DBMS-laag te splitsen tussen on-premises en Azure. Een SAP-systeem is volledig geïmplementeerd op locatie of in Azure. Het is ook niet mogelijk om sommige toepassings servers on-premises en andere in azure uit te voeren. Dat is het begin punt van de discussie. We ondersteunen ook niet dat de DBMS-onderdelen van een SAP-systeem en de SAP Application Server-laag in twee verschillende Azure-regio's zijn geïmplementeerd. Bijvoorbeeld: DBMS in VS-West en SAP-toepassingslaag in VS-midden. De reden voor het niet ondersteunen van dergelijke configuraties is de latentie gevoeligheid van de SAP NetWeaver-architectuur.
 
-In de loop van de afgelopen jaren hebben partners van data centers echter co-locaties ontwikkeld naar Azure-regio's. Deze co-locaties zijn vaak dicht bij de fysieke Azure-data centers in een Azure-regio. De korte afstand en verbinding van assets in de co-locatie via ExpressRoute in azure kan resulteren in een latentie die kleiner is dan 2ms. In dergelijke gevallen is het mogelijk om de DBMS-laag (inclusief opslag-SAN/NAS) in een dergelijke co-locatie en de SAP-toepassingslaag in azure te vinden. [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
+In de loop van de afgelopen jaren hebben partners van data centers echter co-locaties ontwikkeld naar Azure-regio's. Deze co-locaties zijn vaak dicht bij de fysieke Azure-data centers in een Azure-regio. De korte afstand en verbinding van assets in de co-locatie via ExpressRoute in azure kan resulteren in een latentie van minder dan 2 milliseconden. In dergelijke gevallen is het mogelijk om de DBMS-laag (inclusief opslag-SAN/NAS) in een dergelijke co-locatie en de SAP-toepassingslaag in azure te vinden. [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
 
 ### <a name="offline-backup-of-sap-systems"></a>Offline back-up van SAP-systemen
 Afhankelijk van de gekozen SAP-configuratie (2 of 3 lagen) moet er een back-up worden gemaakt. De inhoud van de virtuele machine zelf plus een back-up van de data base. De DBMS-gerelateerde back-ups worden naar verwachting uitgevoerd met database methoden. Een gedetailleerde beschrijving van de verschillende data bases vindt u in de [DBMS-hand leiding][dbms-guide]. Aan de andere kant kunt u een back-up maken van de SAP-gegevens, zoals wordt beschreven in deze sectie of online, zoals wordt beschreven in de volgende sectie.

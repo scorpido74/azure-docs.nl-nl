@@ -3,15 +3,15 @@ title: Azure Kubernetes gebruiken met Azure Cosmos DB
 description: Meer informatie over het Boots trapen van een Kubernetes-cluster op Azure dat gebruikmaakt van Azure Cosmos DB (preview-versie)
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70093733"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262630"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes gebruiken met Azure Cosmos DB (preview-versie)
 
@@ -27,13 +27,13 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Installeer de nieuwste versie van [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest). U kunt Azure CLI specifiek voor uw besturings systeem downloaden en installeren.
+1. Installeer de nieuwste versie van [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). U kunt Azure CLI specifiek voor uw besturings systeem downloaden en installeren.
 
 1. Installeer de [nieuwste versie](https://github.com/Azure/aks-engine/releases) van de Azure Kubernetes-engine. De installatie-instructies voor verschillende besturings systemen zijn beschikbaar op de pagina [Azure Kubernetes engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) . U hebt alleen de stappen nodig van de sectie **AKS-Engine installeren** van het gekoppelde document. Pak het zip-bestand uit nadat het is gedownload.
 
    De Azure Kubernetes-Engine (**AKS-engine**) genereert Azure Resource Manager sjablonen voor Kubernetes-clusters in Azure. De invoer voor AKS-engine is een cluster definitie bestand waarin het gewenste cluster wordt beschreven, met inbegrip van orchestrator, functies en agents. De structuur van de invoer bestanden is vergelijkbaar met de open bare API voor de Azure Kubernetes-service.
 
-1. De etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Meld u aan voor gebruik van de preview- https://aka.ms/cosmosetcdapi-signupversie op:. Nadat u het formulier hebt verzonden, wordt uw abonnement white list om de Azure Cosmos etcd-API te gebruiken. 
+1. De etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Meld u aan voor gebruik van de preview-versie op: https://aka.ms/cosmosetcdapi-signup . Nadat u het formulier hebt verzonden, wordt uw abonnement white list om de Azure Cosmos etcd-API te gebruiken. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Het cluster implementeren met Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
    cd "\aks-engine-v0.36.3-windows-amd64\aks-engine-v0.36.3-windows-amd64"
    ```
 
-1. Open een tekst editor naar keuze en definieer een resource manager-sjabloon die het Azure Kubernetes-cluster implementeert met Azure Cosmos DB etcd-API. Kopieer de volgende JSON-definitie naar uw tekst editor en sla het bestand `apiModel.json`op als:
+1. Open een tekst editor naar keuze en definieer een resource manager-sjabloon die het Azure Kubernetes-cluster implementeert met Azure Cosmos DB etcd-API. Kopieer de volgende JSON-definitie naar uw tekst editor en sla het bestand op als `apiModel.json` :
 
    ```json
 

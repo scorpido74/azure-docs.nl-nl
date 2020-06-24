@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9c573e6ea3f80369f9b5cced66302caf12d727a4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744208"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206357"
 ---
 # <a name="using-file-metadata-in-queries"></a>Meta gegevens van bestanden in query's gebruiken
 
@@ -26,9 +26,9 @@ U kunt de functie gebruiken `filepath` en `filename` bestands namen en/of het pa
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron die verwijst naar het opslag account. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron die verwijst naar het opslag account. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 
 ### <a name="filename"></a>Bestands
 

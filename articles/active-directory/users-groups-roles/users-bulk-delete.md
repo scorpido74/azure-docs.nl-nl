@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203340"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731494"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Gebruikers bulksgewijs verwijderen in Azure Active Directory
 
@@ -35,7 +35,7 @@ Down load en vul de CSV-sjabloon in om Azure AD-gebruikers bulksgewijs te kunnen
 De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 
 - **Versie nummer**: de eerste rij met het versie nummer moet worden opgenomen in de upload CSV.
-- **Kolom koppen**: de indeling van de kolom koppen is &lt;de *item naam* &gt; [propertyname] &lt; *vereist of leeg*&gt;. Bijvoorbeeld `User name [userPrincipalName] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
+- **Kolom koppen**: de indeling van de kolom koppen is de &lt; *item naam* &gt; [propertyname] &lt; *vereist of leeg* &gt; . Bijvoorbeeld `User name [userPrincipalName] Required`. Sommige oudere versies van de sjabloon hebben mogelijk een kleine variatie.
 - **Voor beelden van rij**: we hebben in de sjabloon een rij met voor beelden van geldige waarden voor elke kolom opgenomen. U moet de voor beelden van de rij verwijderen en vervangen door uw eigen vermeldingen.
 
 ### <a name="additional-guidance"></a>Aanvullende richtlijnen
@@ -48,7 +48,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 ## <a name="to-bulk-delete-users"></a>Gebruikers bulksgewijs verwijderen
 
 1. [Meld u aan bij uw Azure AD-organisatie](https://aad.portal.azure.com) met een account dat een gebruikers beheerder in de organisatie is.
-1. Selecteer in azure AD de optie **gebruikers** > **bulksgewijs verwijderen**.
+1. Selecteer in azure AD de optie **gebruikers**  >  **bulksgewijs verwijderen**.
 1. Selecteer op de pagina **bulksgewijs verwijderen gebruiker** **downloaden** om een geldig CSV-bestand met gebruikers eigenschappen te ontvangen.
 
    ![Selecteer een lokaal CSV-bestand waarin de gebruikers die u wilt verwijderen, worden vermeld](./media/users-bulk-delete/bulk-delete.png)
@@ -76,7 +76,7 @@ Vervolgens kunt u controleren of de gebruikers die u hebt verwijderd, bestaan in
 
 1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
 1. Selecteer **Azure Active Directory**in het navigatie deel venster.
-1. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer onder **Beheren** de optie **Gebruikers**.
 1. Onder **weer geven**selecteert u alleen **alle gebruikers** en controleert u of de gebruikers die u hebt verwijderd, niet meer worden weer gegeven.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Verwijderde gebruikers controleren met Power shell

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1e08c449f5da81f38c4134cfceceecab2b08150d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672150"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116074"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Werken met een Azure Cosmos-account
 
@@ -29,7 +29,7 @@ Azure Cosmos-container is de fundamentele eenheid voor schaal baarheid. U kunt v
 
 Op dit moment kunt u een maximum van 100 Azure Cosmos-accounts maken onder een Azure-abonnement. Met één Azure Cosmos-account kunt u een onbeperkte hoeveelheid gegevens en ingerichte door Voer beheren. Als u uw gegevens en de ingerichte door voer wilt beheren, kunt u een of meer Azure Cosmos-data bases maken onder uw account en binnen die data base, kunt u een of meer containers maken. In de volgende afbeelding ziet u de hiërarchie van elementen in een Azure Cosmos-account:
 
-![Hiërarchie van een Azure Cosmos-account](./media/account-overview/hierarchy.png)
+:::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Hiërarchie van een Azure Cosmos-account" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

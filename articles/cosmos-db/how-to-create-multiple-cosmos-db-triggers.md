@@ -3,21 +3,21 @@ title: Meerdere onafhankelijke Azure Functions triggers maken voor Cosmos DB
 description: Meer informatie over het configureren van meerdere onafhankelijke Azure Functions triggers voor Cosmos DB voor het maken van op gebeurtenissen gebaseerde architecturen.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604941"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261593"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Meerdere Azure Functions triggers maken voor Cosmos DB
 
 In dit artikel wordt beschreven hoe u meerdere Azure Functions-triggers zo kunt configureren dat Cosmos DB parallel werkt en onafhankelijk reageert op wijzigingen.
 
-![Functies die zijn gebaseerd op gebeurtenissen op basis van een server werken met de Azure Functions trigger voor het Cosmos DB en delen van een lease-container](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="Functies die zijn gebaseerd op gebeurtenissen op basis van een server werken met de Azure Functions trigger voor het Cosmos DB en delen van een lease-container" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>Architectuur vereisten op basis van gebeurtenissen
 
@@ -38,13 +38,13 @@ Het doel van dit artikel is om u te helpen bij het uitvoeren van de tweede optie
 
 ## <a name="configuring-a-shared-leases-container"></a>Een gedeelde lease-container configureren
 
-Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te `LeaseCollectionPrefix` maken, het [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) toe te voegen als u C# of `leaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) gebruikt als u Java script gebruikt. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
+Als u de container gedeelde leases wilt configureren, is de enige extra configuratie die u nodig hebt om uw triggers te maken, het kenmerk toe te voegen `LeaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) als u C# of `leaseCollectionPrefix` [kenmerk](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) gebruikt als u Java script gebruikt. De waarde van het kenmerk moet een logische descriptor zijn van wat de betreffende trigger is.
 
-Als u bijvoorbeeld drie triggers hebt: een die e-mail berichten verzendt, een die een aggregatie maakt om een gerealiseerde weer gave te maken, en een die de wijzigingen naar een andere opslag verzendt, kunt u voor latere `LeaseCollectionPrefix` analyses de e-mail berichten toewijzen aan de eerste, ' materialed ', en ' Analytics ' aan de derde.
+Als u bijvoorbeeld drie triggers hebt: een die e-mail berichten verzendt, een die een aggregatie maakt om een gerealiseerde weer gave te maken, en een die de wijzigingen naar een andere opslag verzendt, kunt u voor latere analyses de `LeaseCollectionPrefix` e-mail berichten toewijzen aan de eerste, ' materialed ', en ' Analytics ' aan de derde.
 
 Het belang rijk deel is dat alle drie **de triggers dezelfde container configuratie voor leases** (account, data base en container naam) kunnen gebruiken.
 
-Een eenvoudige code voorbeelden die gebruikmaken van `LeaseCollectionPrefix` het kenmerk in C#, ziet er als volgt uit:
+Een eenvoudige code voorbeelden die gebruikmaken `LeaseCollectionPrefix` van het kenmerk in C#, ziet er als volgt uit:
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-En voor Java script kunt u de configuratie Toep assen op `function.json` het bestand, met `leaseCollectionPrefix` het kenmerk:
+En voor Java script kunt u de configuratie Toep assen op het `function.json` bestand, met het `leaseCollectionPrefix` kenmerk:
 
 ```json
 {

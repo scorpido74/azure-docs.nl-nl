@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2800119f1a88172ea7c329fc53359bf1565a0705
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685239"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731270"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Verwijderde gebruikers bulksgewijs herstellen in Azure Active Directory
 
@@ -76,7 +76,7 @@ Vervolgens kunt u controleren of de gebruikers die u hebt hersteld, bestaan in d
 
 1. [Meld u aan bij het Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een gebruikers beheerder in de organisatie is.
 1. Selecteer **Azure Active Directory**in het navigatie deel venster.
-1. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer onder **Beheren** de optie **Gebruikers**.
 1. Selecteer onder **weer geven** **alle gebruikers** en controleer of de gebruikers die u hebt hersteld, worden weer gegeven.
 
 ### <a name="view-users-with-powershell"></a>Gebruikers weer geven met Power shell

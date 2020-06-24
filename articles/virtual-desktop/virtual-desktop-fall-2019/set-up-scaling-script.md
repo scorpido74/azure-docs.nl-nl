@@ -4,21 +4,21 @@ description: Windows Virtual Desktop Session hosts automatisch schalen met Azure
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745717"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209790"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 U kunt de totale kosten voor het implementeren van virtuele Windows-Bureau bladen verlagen door uw virtuele machines (Vm's) te schalen. Dit betekent dat de virtuele machines van de host worden afgesloten en opnieuw worden toegewezen tijdens gebruiks uren en vervolgens weer worden ingeschakeld en opnieuw worden toegewezen tijdens piek uren.
 
@@ -33,14 +33,14 @@ Probleem rapporten voor het hulp programma voor schalen worden momenteel verwerk
 Het hulp programma voor schalen biedt een voordelige automatiserings optie voor klanten die hun host-VM-kosten voor hun sessie willen optimaliseren.
 
 U kunt het hulp programma schalen gebruiken voor het volgende:
- 
+
 - Plan Vm's om te starten en stoppen op basis van pieken en kantoor uren.
 - Uitschalen van Vm's op basis van het aantal sessies per CPU-kern.
 - Schaal in Vm's tijdens rustige uren, waardoor het minimale aantal actieve host-Vm's wordt uitgevoerd.
 
 Het hulp programma voor schalen maakt gebruik van een combi natie van Azure Automation Power shell-runbooks, webhooks en Azure Logic Apps om te werken. Wanneer het hulp programma wordt uitgevoerd, wordt door Azure Logic Apps een webhook aangeroepen om het Azure Automation runbook te starten. Het runbook maakt vervolgens een taak.
 
-Tijdens de piek duur van het gebruik controleert de taak het huidige aantal sessies en de VM-capaciteit van de huidige actieve sessiehost voor elke hostgroep. Deze informatie wordt gebruikt om te berekenen of de actieve host-Vm's bestaande sessies kunnen ondersteunen op basis van de para meter *SessionThresholdPerCPU* die is gedefinieerd voor het bestand **createazurelogicapp. ps1** . Als de virtuele machines van de sessiehost geen bestaande sessies kunnen ondersteunen, start de taak extra host-Vm's in de hostgroep.
+Tijdens de piek duur van het gebruik controleert de taak het huidige aantal sessies en de VM-capaciteit van de huidige actieve sessiehost voor elke hostgroep. Deze informatie wordt gebruikt om te berekenen of de actieve host-Vm's bestaande sessies kunnen ondersteunen op basis van de para meter *SessionThresholdPerCPU* die voor het **createazurelogicapp.ps1** bestand is gedefinieerd. Als de virtuele machines van de sessiehost geen bestaande sessies kunnen ondersteunen, start de taak extra host-Vm's in de hostgroep.
 
 >[!NOTE]
 >*SessionThresholdPerCPU* beperkt het aantal sessies op de virtuele machine niet. Deze para meter bepaalt alleen wanneer nieuwe Vm's moeten worden gestart om de verbindingen te verdelen. Als u het aantal sessies wilt beperken, moet u de instructies [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) volgen om de *MaxSessionLimit* -para meter dienovereenkomstig te configureren.
@@ -67,7 +67,7 @@ Voordat u begint met het instellen van het hulp programma voor schalen, moet u d
 - Vm's van de hostgroep zijn geconfigureerd en geregistreerd bij de virtuele bureau blad-service van Windows
 - Een gebruiker met [toegang tot Inzender](../../role-based-access-control/role-assignments-portal.md) op Azure-abonnement
 
-De computer die u gebruikt om het hulp programma te implementeren, moet beschikken over: 
+De computer die u gebruikt om het hulp programma te implementeren, moet beschikken over:
 
 - Windows Power shell 5,1 of hoger
 - De micro soft AZ Power shell-module
@@ -78,7 +78,7 @@ Als u alles klaar hebt, kunt u aan de slag.
 
 Eerst hebt u een Azure Automation-account nodig om het Power shell-runbook uit te voeren. U kunt als volgt uw account instellen:
 
-1. Open Windows PowerShell als administrator.
+1. Open Windows PowerShell als beheerder.
 2. Voer de volgende cmdlet uit om u aan te melden bij uw Azure-account.
 
      ```powershell
@@ -120,7 +120,7 @@ Elke gebruiker die lid is van de rol abonnements beheerders en mede beheerder va
 
 Een uitvoeren als-account maken in uw Azure-account:
 
-1. Selecteer in het Azure Portal **alle services**. In de lijst met resources voert u **Automation-accounts**in en selecteert u deze.
+1. Selecteer in de Azure-portal de optie **Alle services**. In de lijst met resources voert u **Automation-accounts**in en selecteert u deze.
 
 2. Selecteer op de pagina **Automation-accounts** de naam van uw Automation-account.
 
@@ -132,11 +132,11 @@ Een uitvoeren als-account maken in uw Azure-account:
 
 6. Wanneer het proces is voltooid, wordt er een Asset gemaakt met de naam AzureRunAsConnection in het opgegeven Automation-account. Het verbindings element bevat de toepassings-ID, Tenant-ID, abonnements-ID en vinger afdruk van het certificaat. Onthoud de toepassings-ID omdat u deze later gebruikt.
 
-### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Een roltoewijzing maken in het virtuele bureau blad van Windows
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Een roltoewijzing maken in Windows Virtual Desktop
 
 Vervolgens moet u een roltoewijzing maken zodat AzureRunAsConnection kan communiceren met het virtuele bureau blad van Windows. Zorg ervoor dat u Power shell gebruikt om u aan te melden met een account dat is gemachtigd om roltoewijzingen te maken.
 
-Down load en Importeer eerst de [Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Voer de volgende Power shell-cmdlets uit om verbinding te maken met het virtuele bureau blad van Windows en uw tenants weer te geven.
+Down load en Importeer eerst de [Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan. Voer de volgende PowerShell-cmdlets uit om verbinding te maken met Windows Virtual Desktop en uw tenants weer te geven.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -162,7 +162,7 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
      Login-AzAccount
      ```
 
-3. Voer de volgende cmdlet uit om het script bestand createazurelogicapp. ps1 op de lokale computer te downloaden.
+3. Voer de volgende cmdlet uit om het createazurelogicapp.ps1-script bestand op uw lokale computer te downloaden.
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -180,21 +180,21 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +204,12 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 

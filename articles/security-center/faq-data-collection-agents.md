@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 022942778b714d5d66ce6eeb2c29351b11c66e40
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996241"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261389"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -39,6 +39,25 @@ Zie [Security Center prijzen](https://azure.microsoft.com/pricing/details/securi
 > De prijs categorie voor log Analytics van werk ruimten die zijn gemaakt door Security Center heeft geen invloed op Security Center facturering.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>Wat is de Log Analytics-agent?
+
+Azure Security Center is afhankelijk van de [log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) -dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service om te controleren op beveiligings problemen en bedreigingen. 
+
+De agent wordt soms ook wel micro soft Monitoring Agent (of ' MMA ' genoemd). 
+
+De agent verzamelt diverse beveiligings configuratie details en gebeurtenis logboeken van verbonden computers en kopieert vervolgens de gegevens naar uw Log Analytics-werk ruimte voor verdere analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker.
+
+Zorg ervoor dat op de computers een van de ondersteunde besturings systemen voor de agent wordt uitgevoerd, zoals wordt beschreven op de volgende pagina's:
+
+* [Log Analytics-agent voor door Windows ondersteunde besturings systemen](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [Besturings systemen die worden ondersteund door Log Analytics-agent voor Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+Meer informatie over de [gegevens die worden verzameld door de log Analytics-agent](security-center-enable-data-collection.md).
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Wat is een virtuele machine die in aanmerking komt voor het automatisch inrichten van de Log Analytics agent-installatie?

@@ -3,15 +3,15 @@ title: Gebruikers toegang tot gegevens bewerkingen beperken met Azure Cosmos DB
 description: Meer informatie over het beperken van toegang tot gegevens bewerkingen met Azure Cosmos DB
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980372"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261219"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Gebruikerstoegang beperken tot alleen gegevensbewerkingen
 
@@ -19,7 +19,9 @@ In Azure Cosmos DB zijn er twee manieren om uw interacties te verifiëren met de
 - het gebruik van uw Azure Active Directory identiteit bij het communiceren met de Azure Portal,
 - het gebruik van Azure Cosmos DB [sleutels](secure-access-to-data.md#master-keys) of [bron tokens](secure-access-to-data.md#resource-tokens) bij het uitgeven van aanroepen van api's en sdk's.
 
-Elke verificatie methode biedt toegang tot verschillende sets bewerkingen, met enige overlap ping: ![bewerkingen per verificatie type](./media/how-to-restrict-user-data/operations.png)
+Elke verificatie methode biedt toegang tot verschillende sets bewerkingen, met een overlap ping:
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="Splitsing van bewerkingen per verificatie type" border="false":::
 
 In sommige gevallen wilt u mogelijk bepaalde gebruikers van uw organisatie beperken tot het uitvoeren van gegevens bewerkingen (dat wil zeggen ruwe aanvragen en query's). Dit is meestal het geval voor ontwikkel aars die geen resources hoeven te maken of verwijderen, of de ingerichte door Voer van de containers waarmee ze werken, wijzigen.
 
@@ -36,7 +38,7 @@ Vervang in de Power shell-scripts in de volgende secties de volgende tijdelijke 
 - `$MySubscriptionId`-De abonnements-ID die het Azure Cosmos-account bevat waarvoor u de machtigingen wilt beperken. Bijvoorbeeld: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
 - `$MyResourceGroupName`-De resource groep met het Azure Cosmos-account. Bijvoorbeeld: `myresourcegroup`.
 - `$MyAzureCosmosDBAccountName`-De naam van uw Azure Cosmos-account. Bijvoorbeeld: `mycosmosdbsaccount`.
-- `$MyUserName`-De aanmelding (username@domain) van de gebruiker voor wie u de toegang wilt beperken. Bijvoorbeeld: `cosmosdbuser@contoso.com`.
+- `$MyUserName`-De aanmelding ( username@domain ) van de gebruiker voor wie u de toegang wilt beperken. Bijvoorbeeld: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>selecteer uw Azure-abonnement
 
@@ -49,9 +51,9 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>De aangepaste Azure Active Directory rol maken
 
-Met het volgende script maakt u een Azure Active Directory roltoewijzing met ' alleen sleutel toegang voor Azure Cosmos-accounts. De rol is gebaseerd op [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md) en [granulaire acties voor Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Deze rollen en acties maken deel uit van `Microsoft.DocumentDB` de Azure Active Directory naam ruimte.
+Met het volgende script maakt u een Azure Active Directory roltoewijzing met ' alleen sleutel toegang voor Azure Cosmos-accounts. De rol is gebaseerd op [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md) en [granulaire acties voor Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Deze rollen en acties maken deel uit van de `Microsoft.DocumentDB` Azure Active Directory naam ruimte.
 
-1. Maak eerst een JSON-document met `AzureCosmosKeyOnlyAccess.json` de naam met de volgende inhoud:
+1. Maak eerst een JSON-document `AzureCosmosKeyOnlyAccess.json` met de naam met de volgende inhoud:
 
     ```
     {

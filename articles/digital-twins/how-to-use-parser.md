@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6346c1d2adca697649ebe879b97766672a23ae29
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cc6451d9be6c125d1b01bc5bb33fd553ce789f31
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613066"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263191"
 ---
 # <a name="dtdl-client-side-parser-library"></a>Parser-bibliotheek aan client zijde DTDL
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 [Modellen](concepts-models.md) in azure Digital apparaatdubbels worden gedefinieerd met behulp van de op JSON gebaseerde Digital apparaatdubbels Definition Language (DTDL). Voor gevallen waarin het handig is om uw modellen te parseren, wordt een DTDL-bibliotheek voor het parseren van NuGet.org als een bibliotheek aan client zijde: [micro soft. Azure. DigitalTwins. parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/).
 
@@ -39,7 +42,7 @@ De mogelijkheden van de parser zijn onder andere:
 
 ## <a name="use-the-dtdl-validator-sample"></a>Het voor beeld van de DTDL-validator gebruiken
 
-Er is voorbeeld code beschikbaar die model documenten kan valideren om ervoor te zorgen dat de DTDL geldig is. Het is gebouwd op de DTDL parser-bibliotheek en is taal-neutraal. Vind het hier: [DTDL validator](https://github.com/Azure-Samples/DTDL-Validator)-voor beeld.
+Er is voorbeeld code beschikbaar die model documenten kan valideren om ervoor te zorgen dat de DTDL geldig is. Het is gebouwd op de DTDL parser-bibliotheek en is taal-neutraal. Vind het hier: [DTDL validator](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
 
 Het validator-voor beeld kan worden gebruikt als een opdracht regel programma voor het valideren van een mapstructuur van DTDL-bestanden. Het biedt ook een interactieve modus. De bron code bevat voor beelden voor het gebruik van de parser-bibliotheek.
 
@@ -169,4 +172,4 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 ## <a name="next-steps"></a>Volgende stappen
 
 Wanneer u klaar bent met het schrijven van uw modellen, raadpleegt u de DigitalTwinsModels-Api's om ze te uploaden (en andere beheer bewerkingen uit te voeren):
-* [Instructies: een twee ledig model beheren](how-to-manage-model.md)
+* [Uitleg: Een dubbel model beheren](how-to-manage-model.md)

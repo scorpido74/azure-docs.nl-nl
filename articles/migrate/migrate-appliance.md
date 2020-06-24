@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 8d385e956aaa2888d72d711571fa8e7cb91da772
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: a57ca67c89078143eba42d94e8d96e004200041a
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323804"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106574"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -47,8 +47,8 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Ondersteunde implementatie** | Implementeren als VMware-VM met behulp van de eicellen-sjabloon.<br/><br/> Implementeren als een VMware-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
-**EICELLEN-sjabloon** | Downloaden van portal of van https://aka.ms/migrate/appliance/vmware .<br/><br/> De download grootte is 11,2 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
-**PowerShell-script** | [Downloaden](https://go.microsoft.com/fwlink/?linkid=2105112)van script.<br/><br/> 
+**EICELLEN-sjabloon** | Downloaden van portal of van https://aka.ms/migrate/appliance/vmware .<br/><br/> De download grootte is 10,9 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**PowerShell-script** | Raadpleeg dit [artikel](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een virtuele VMware-machine uitvoert, hebt u voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen die aan de vereisten voldoet.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.
 **VMware-vereisten** | Als u het apparaat als een virtuele VMware-machine implementeert, moet dit worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> vCenter Server met 5,5, 6,0, 6,5 of 6,7.
 **VDDK (migratie zonder agent)** | Als u het apparaat als een virtuele VMware-machine implementeert en u een migratie zonder agent uitvoert, moet de VMware vSphere-VDDK op de apparaat-VM zijn geïnstalleerd.
@@ -68,8 +68,8 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan tot 5000 Hyper-V-Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
 **VHD-sjabloon** | Gezipte map inclusief VHD. Downloaden van portal of van https://aka.ms/migrate/appliance/hyperv .<br/><br/> Download grootte is 10 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
-**PowerShell-script** | [Downloaden](https://go.microsoft.com/fwlink/?linkid=2105112)van script.<br/><br/> 
-**Software/hardware***   |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat uitvoert als een Hyper-V-VM, hebt u voldoende resources op de Hyper-V-host nodig om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de toestel-VM.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
+**PowerShell-script** | Raadpleeg dit [artikel](https://docs.microsoft.com/azure/migrate/deploy-appliance-script#set-up-the-appliance-for-hyper-v).<br/><br/> 
+**Software/hardware***   |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat uitvoert als een Hyper-V-VM, hebt u voldoende resources op de Hyper-V-host nodig om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de toestel-VM.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
 **Vereisten voor Hyper-V** | Als u het apparaat met de VHD-sjabloon implementeert, is de virtuele machine van het apparaat van Azure Migrate Hyper-V VM versie 5,0.<br/><br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd. 
 **Hashwaarde-VHD** | [Controleer](tutorial-assess-hyper-v.md#verify-security) de hash-waarden van de VHD-sjabloon.
 **Hash-waarde-Power shell-script** | [Controleer](deploy-appliance-script.md#verify-file-security) de hash-waarden van het Power shell-script.
@@ -83,9 +83,9 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Toestel onderdelen** | Het apparaat heeft de volgende onderdelen: <br/><br/> - **Beheer-app**: dit is een web-app voor gebruikers invoer tijdens de implementatie van het apparaat. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/> - **Detectie agent**: de agent verzamelt computer configuratie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Beoordelings agent**: de agent verzamelt prestatie gegevens. Wordt gebruikt bij de beoordeling van computers voor migratie naar Azure.<br/>- **Service voor automatische updates**: updates van de onderdelen van het apparaat (elke 24 uur wordt uitgevoerd).
 **Ondersteunde implementatie** | Implementeren als een toegewezen fysieke machine, of een VM, met behulp van een Power shell-installatie script. Het script kan vanuit de portal worden gedownload.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
-**Detectie limieten** | Een apparaat kan Maxi maal 250 fysieke servers detecteren.
-**PowerShell-script** | Down load het script (AzureMigrateInstaller. ps1) in een gezipte map vanuit de portal. [Meer informatie](tutorial-assess-physical.md#set-up-the-appliance). U kunt ook [rechtstreeks downloaden](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> De download grootte is 59,7 MB.
-**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/> Het apparaat wordt niet ondersteund op een computer met Windows Server 2019.
+**Detectie limieten** | Een apparaat kan Maxi maal 1000 fysieke servers detecteren.
+**PowerShell-script** | Down load het script (AzureMigrateInstaller.ps1) in een gezipte map vanuit de portal. [Meer informatie](tutorial-assess-physical.md#set-up-the-appliance). U kunt ook [rechtstreeks downloaden](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> De download grootte is 63,1 MB.
+**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/> Het apparaat wordt niet ondersteund op een computer met Windows Server 2019.
 **Hash-waarde** | [Controleer](deploy-appliance-script.md#verify-file-security) de hash-waarden van het Power shell-script.
 
 ## <a name="url-access"></a>URL-toegang
@@ -148,18 +148,18 @@ Hier ziet u de volledige lijst met virtuele VMware-VM-meta gegevens die door het
 **GEGEVENS** | **ITEM**
 --- | --- 
 **Computer Details** | 
-VM-id | VM. Config. InstanceUuid 
-VM-naam | VM. Config.Name
+VM-id | vm.Config. InstanceUuid 
+VM-naam | vm.Config. Naam
 vCenter Server-ID | VMwareClient. instance. uuid
-VM-beschrijving | VM. Summary. config. annotatie
+VM-beschrijving | vm.Summary.Config. Aantekening
 Licentie product naam | VM. Client. ServiceContent. about. LicenseProductName
 Besturingssysteemtype | VM. SummaryConfig.GuestFullName
-Opstart type | VM. Config. firmware
-Aantal kerngeheugens | VM. Config. hardware. NumCPU
-Geheugen (MB) | VM. Config. hardware. MemoryMB
-Aantal schijven | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk). Count
-Lijst met schijf grootte | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk)
-Lijst met netwerk adapters | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualEthernet). Count
+Opstart type | vm.Config. Firmware
+Aantal kerngeheugens | vm.Config. Hardware. NumCPU
+Geheugen (MB) | vm.Config. Hardware. MemoryMB
+Aantal schijven | vm.Config. Hardware. device. ToList (). FindAll (x => is VirtualDisk). Count
+Lijst met schijf grootte | vm.Config. Hardware. device. ToList (). FindAll (x => is VirtualDisk)
+Lijst met netwerk adapters | vm.Config. Hardware. device. ToList (). FindAll (x => is VirtualEthernet). Count
 CPU-gebruik | CPU. usage. Average
 Geheugen gebruik |mem. usage. Average
 **Details per schijf** | 
@@ -180,7 +180,7 @@ IPv6-adressen | VM. Guest.Net
 Lees doorvoer (MB per seconde) | net. received. Average
 Schrijf doorvoer (MB per seconde) | net. verzonden. gemiddeld
 **Details van configuratiepad** | 
-Naam | verpakking. GetType (). Naam
+Name | verpakking. GetType (). Naam
 Type onderliggend object | verpakking. ChildType
 Referentie Details | verpakking. MoRef
 Details van bovenliggend item | Container. Parent
@@ -227,7 +227,7 @@ Dit zijn de functies die het apparaat verzamelt van elke virtuele machine die is
 
 **Gegevens**  | **Power shell-cmdlet** | **Eigenschap**
 --- | --- | ---
-Naam  | Get-WindowsFeature  | Naam
+Name  | Get-WindowsFeature  | Name
 Onderdeel type | Get-WindowsFeature  | FeatureType
 Bovenliggend  | Get-WindowsFeature  | Bovenliggend
 
@@ -237,7 +237,7 @@ Dit zijn de SQL Server-meta gegevens die het apparaat verzamelt van Vm's waarop 
 
 **Gegevens**  | **Registerlocatie**  | **Prestatie**
 --- | --- | ---
-Naam  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Editie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Editie 
 Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
 Versie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Versie 
@@ -248,7 +248,7 @@ Hier ziet u de gegevens van het besturings systeem die door het apparaat worden 
 
 Gegevens  | WMI-klasse  | WMI-klasse-eigenschap
 --- | --- | ---
-Naam  | Win32_operatingsystem  | Caption
+Name  | Win32_operatingsystem  | Caption
 Versie  | Win32_operatingsystem  | Versie
 Architectuur  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van
 
 Gegevens  | Opdracht
 --- | --- 
-Naam | rpm, met dpkg-query, uitlijnen
+Name | rpm, met dpkg-query, uitlijnen
 Versie | rpm, met dpkg-query, uitlijnen
 Provider | rpm, met dpkg-query, uitlijnen
 
@@ -268,7 +268,7 @@ Hier ziet u de gegevens van het besturings systeem die door het apparaat worden 
 
 **Gegevens**  | **Opdracht** 
 --- | --- | ---
-Naam <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architectuur | uname
 
 
@@ -388,9 +388,9 @@ Toegewezen geheugen | Win32_ComputerSystem | TotalPhysicalMemory
 BIOS-serie nummer | Win32_ComputerSystemProduct | Nummer
 BIOS-GUID | Win32_ComputerSystemProduct | MEE
 Opstart type | Win32_DiskPartition | Controleren op partitie met type = **GPT: systeem** voor EFI/BIOS
-Naam van besturings systeem | Win32_OperatingSystem | Caption
+Naam van besturingssysteem | Win32_OperatingSystem | Caption
 Besturingssysteemversie |Win32_OperatingSystem | Versie
-Architectuur van besturings systeem | Win32_OperatingSystem | OSArchitecture
+Architectuur van besturingssysteem | Win32_OperatingSystem | OSArchitecture
 Aantal schijven | Win32_DiskDrive | Model, grootte, DeviceID, media type, naam
 Schijfgrootte | Win32_DiskDrive | Grootte
 NIC-lijst | Win32_NetworkAdapterConfiguration | Beschrijving, index
@@ -410,7 +410,7 @@ BIOS-serie nummer | lshw \| grep "serieel:" \| Head-N1 \| awk {print $2} " <br/>
 BIOS-GUID | kat/sys/class/DMI/id/product_uuid
 Opstart type | [-d/sys/firmware/EFI]  && ECHO EFI- \| \| echo BIOS
 Naam/versie van besturings systeem | We hebben toegang tot deze bestanden voor de versie van het besturings systeem en de naam:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
-Architectuur van besturings systeem | Uname-m
+Architectuur van besturingssysteem | Uname-m
 Aantal schijven | fdisk-l \| egrep ' Disk. * bytes ' \| awk ' {Print $2} ' \| knippen-F1-d ': '
 Opstart schijf | DF/boot \| sed-n 2p \| awk {print $1}
 Schijfgrootte | fdisk-l \| egrep ' Disk. * bytes ' \| egrep $disk: \| awk ' {Print $5} '
@@ -505,8 +505,8 @@ Controleren in het configuratie scherm:
 
 Als u een oudere versie voor een van de onderdelen uitvoert, moet u de service verwijderen en hand matig bijwerken naar de nieuwste versie.
 
-1. [Down load](https://aka.ms/latestapplianceservices) het bestand LatestComponents. json om te controleren op de nieuwste versies van de service van het apparaat.
-2.    Na het downloaden opent u het bestand LatestComponents. json in Klad blok.
+1. Als u de meest recente versie van de service voor apparaten wilt controleren, moet u de LatestComponents.jsin het bestand [downloaden](https://aka.ms/latestapplianceservices) .
+2.    Nadat u hebt gedownload, opent u het LatestComponents.jsbestand in Klad blok.
 3. Zoek de nieuwste service versie in het bestand en de download koppeling hiervoor. Bijvoorbeeld:
 
     "Naam": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "versie": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
@@ -514,7 +514,7 @@ Als u een oudere versie voor een van de onderdelen uitvoert, moet u de service v
 4.    Down load de nieuwste versie van een verouderde service met behulp van de download koppeling in het bestand.
 5. Nadat u hebt gedownload, voert u de volgende opdracht uit in een Administrator-opdracht venster om de integriteit van de gedownloade MSI te controleren.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Bijvoorbeeld: C: \> certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Bijvoorbeeld: C: \> certutil-HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
 
 5. Controleer of de uitvoer van de opdracht overeenkomt met de invoer van de hashwaarde voor de service in het bestand (bijvoorbeeld de bovenstaande MD5-hash-waarde).
 6. Voer nu het MSI-bestand uit om de service te installeren. Het is een stille installatie en het installatie venster wordt gesloten nadat het is uitgevoerd.

@@ -3,16 +3,16 @@ title: Azure Cosmos DB gegevens herstellen vanuit een back-up
 description: In dit artikel wordt beschreven hoe u Azure Cosmos DB gegevens terugzet vanuit een back-up, hoe u contact opneemt met de ondersteuning van Azure om gegevens te herstellen, stappen die u moet uitvoeren nadat de gegevens zijn hersteld.
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70240762"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261729"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Gegevens herstellen vanuit een back-up in Azure Cosmos DB 
 
@@ -43,11 +43,11 @@ Als de gegevens zijn beschadigd en als de documenten in een container worden gew
 
 In de volgende scherm afbeelding ziet u hoe u een ondersteunings aanvraag voor een container (verzameling/grafiek/tabel) kunt maken om gegevens te herstellen met behulp van Azure Portal. Geef aanvullende informatie op, zoals het type gegevens, het doel van de herstel tijd, het tijdstip waarop de gegevens zijn verwijderd om ons te helpen bij het bepalen van de prioriteit van de aanvraag.
 
-![Een verzoek tot ondersteuning voor back-ups maken met behulp van Azure Portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="Een verzoek tot ondersteuning voor back-ups maken met behulp van Azure Portal":::
 
 ## <a name="post-restore-actions"></a>Acties na herstel
 
-Nadat u de gegevens hebt hersteld, ontvangt u een melding over de naam van het nieuwe account (meestal in de indeling `<original-name>-restored1`) en het tijdstip waarop het account is hersteld. Het herstelde account heeft dezelfde ingerichte door Voer, het indexerings beleid en het bevindt zich in dezelfde regio als het oorspronkelijke account. Een gebruiker die de abonnements beheerder of een cobeheerder is, kan het herstelde account zien.
+Nadat u de gegevens hebt hersteld, ontvangt u een melding over de naam van het nieuwe account (meestal in de indeling `<original-name>-restored1` ) en het tijdstip waarop het account is hersteld. Het herstelde account heeft dezelfde ingerichte door Voer, het indexerings beleid en het bevindt zich in dezelfde regio als het oorspronkelijke account. Een gebruiker die de abonnements beheerder of een cobeheerder is, kan het herstelde account zien.
 
 Nadat de gegevens zijn hersteld, moet u de gegevens in het herstelde account controleren en valideren en ervoor zorgen dat deze de versie bevat die u verwacht. Als alles goed lijkt, migreert u de gegevens terug naar uw oorspronkelijke account met [Azure Cosmos DB wijzigings feed](change-feed.md) of [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 

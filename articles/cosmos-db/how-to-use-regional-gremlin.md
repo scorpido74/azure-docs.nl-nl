@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897867"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263592"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale eind punten voor Azure Cosmos DB Graph-account
 Azure Cosmos DB Graph-data base is [wereld wijd gedistribueerd](distribute-data-globally.md) zodat toepassingen meerdere Lees eindpunten kunnen gebruiken. Toepassingen waarvoor schrijf toegang op meerdere locaties nodig is, moeten mogelijkheden voor [meerdere masters](how-to-multi-master.md) inschakelen.
@@ -27,7 +27,7 @@ De vereiste voor **gegevens locatie** wordt bereikt door Azure Resource Manager 
 
 Cosmos DB Graph-data base-engine wordt uitgevoerd in meerdere regio's, die elk meerdere clusters bevatten. Elk cluster heeft honderden computers. Cosmos DB Graph-account DNS CNAME *AccountName.Gremlin.Cosmos.Azure.com* wordt omgezet in DNS a-record van een cluster. Eén IP-adres van een Load Balancer verbergt de interne cluster topologie.
 
-Er wordt een regionale DNS CNAME-record gemaakt voor elke regio van Cosmos DB Graph-account. De indeling van het regionale eind punt is *AccountName-Region.Gremlin.Cosmos.Azure.com*. Regio segment van regionaal eind punt wordt verkregen door alle spaties uit de [Azure-regio](https://azure.microsoft.com/global-infrastructure/regions) naam te verwijderen. De `"East US 2"` regio voor `"contoso"` het globale database account zou bijvoorbeeld een DNS CNAME- *Contoso-eastus2.Gremlin.Cosmos.Azure.com* hebben
+Er wordt een regionale DNS CNAME-record gemaakt voor elke regio van Cosmos DB Graph-account. De indeling van het regionale eind punt is *AccountName-Region.Gremlin.Cosmos.Azure.com*. Regio segment van regionaal eind punt wordt verkregen door alle spaties uit de [Azure-regio](https://azure.microsoft.com/global-infrastructure/regions) naam te verwijderen. `"East US 2"`De regio voor `"contoso"` het globale database account zou bijvoorbeeld een DNS CNAME- *Contoso-eastus2.Gremlin.Cosmos.Azure.com* hebben
 
 TinkerPop Gremlin-client is ontworpen voor gebruik met één server. De toepassing kan globale Beschrijf bare DNS CNAME gebruiken voor lees-en schrijf verkeer. Regio-bewuste toepassingen moeten regionaal eind punt gebruiken voor het lezen van verkeer. Gebruik regionaal eind punt voor het schrijven van verkeer alleen als specifieke regio is geconfigureerd voor het accepteren van schrijf bewerkingen. 
 
@@ -43,7 +43,7 @@ Het globale database account CNAME wijst altijd naar een geldige schrijf regio. 
 
 De eenvoudigste manier om de lijst met regio's te verkrijgen voor Azure Cosmos DB Graph-account is overzicht Blade in Azure Portal. Het werkt voor toepassingen die regio's niet vaak wijzigen of een manier hebben om de lijst bij te werken via toepassings configuratie.
 
-![Regio's van Cosmos DB Graph-account ophalen uit de portal](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="Regio's van Cosmos DB Graph-account ophalen uit de portal":::
 
 Hieronder ziet u een voor beeld van algemene principes van toegang tot het regionale Gremlin-eind punt. De toepassing moet het aantal regio's overwegen om het verkeer naar en het aantal overeenkomende Gremlin-clients te kunnen worden gezonden.
 

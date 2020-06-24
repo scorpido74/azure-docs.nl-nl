@@ -3,16 +3,16 @@ title: Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra-API met behul
 description: Meer informatie over het migreren van gegevens uit Oracle Data Base naar Azure Cosmos DB Cassandra-API met behulp van Blitzz.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546269"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262460"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Gegevens migreren van Oracle naar Azure Cosmos DB Cassandra-API-account met behulp van Blitzz
 
@@ -54,11 +54,11 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
 1. OE kan de Blitzz-installatie en de binaire bestanden ophalen door een demo op de [Blitzz-website](https://www.blitzz.io)aan te vragen. U kunt ook een [e-mail](mailto:success@blitzz.io) verzenden naar het team.
 
-   ![Blitzz Replicant-hulp programma downloaden](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz Replicant-hulp programma downloaden":::
 
-   ![Blitzz Replicant-bestanden](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz Replicant-bestanden":::
 
-1. Stel in de CLI-Terminal de configuratie van de bron database in. Open het configuratie bestand met **`vi conf/conn/oracle.yml`** behulp van de opdracht en voeg een door komma's gescheiden lijst met IP-adressen van de Oracle-knoop punten, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste gegevens toe. De volgende code toont een voor beeld van een configuratie bestand:
+1. Stel in de CLI-Terminal de configuratie van de bron database in. Open het configuratie bestand met behulp van de **`vi conf/conn/oracle.yml`** opdracht en voeg een door komma's gescheiden lijst met IP-adressen van de Oracle-knoop punten, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste gegevens toe. De volgende code toont een voor beeld van een configuratie bestand:
 
    ```bash
    type: ORACLE
@@ -75,13 +75,13 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
    use-ssl: false
    ```
 
-   ![Oracle-verbindings editor openen](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="Oracle-verbindings editor openen":::
 
-   ![Configuratie van Oracle-verbinding](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Configuratie van Oracle-verbinding":::
 
    Sla het bestand op en sluit het als u de configuratie gegevens hebt ingevuld.
 
-1. Desgewenst kunt u het filter bestand van de bron database instellen. Het filter bestand geeft aan welke schema's of tabellen moeten worden gemigreerd. Open het configuratie bestand met **`vi filter/oracle_filter.yml`** behulp van de opdracht en voer de volgende configuratie gegevens in:
+1. Desgewenst kunt u het filter bestand van de bron database instellen. Het filter bestand geeft aan welke schema's of tabellen moeten worden gemigreerd. Open het configuratie bestand met behulp van **`vi filter/oracle_filter.yml`** de opdracht en voer de volgende configuratie gegevens in:
 
    ```bash
 
@@ -96,13 +96,13 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
 1. Voordat u de gegevens migreert, verhoogt u de doorvoer capaciteit van de container naar de hoeveelheid die de toepassing nodig heeft om snel te migreren. U kunt de door Voer bijvoorbeeld verhogen naar 100000 RUs. Wanneer u de door Voer hebt geschaald voordat u de migratie start, helpt u om uw gegevens in minder tijd te migreren. 
 
-   ![Azure Cosmos-container schalen in](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Azure Cosmos-container schalen in":::
 
    U moet de door Voer verminderen nadat de migratie is voltooid. Op basis van de hoeveelheid opgeslagen gegevens en RUs die is vereist voor elke bewerking, kunt u een schatting maken van de door Voer die is vereist na de gegevens migratie. Zie voor meer informatie over het maken van een schatting van het RUs-vereiste [door Voer inrichten voor containers en data bases](set-throughput.md) en [een schatting van ru/s met behulp van de artikelen van de Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md) .
 
 1. Haal het **contact punt, de poort, de gebruikers naam**en het **primaire wacht woord** van uw Azure Cosmos-account op in het deel venster **verbindings reeks** . U gebruikt deze waarden in het configuratie bestand.
 
-1. Stel in de CLI-Terminal de configuratie van de doel database in. Open het configuratie bestand met **`vi conf/conn/cosmosdb.yml`** behulp van de opdracht en voeg een door komma's gescheiden lijst toe met de URI, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste para meters. Hier volgt een voor beeld van de inhoud van het configuratie bestand:
+1. Stel in de CLI-Terminal de configuratie van de doel database in. Open het configuratie bestand met behulp **`vi conf/conn/cosmosdb.yml`** van de opdracht en voeg een door komma's gescheiden lijst toe met de URI, het poort nummer, de gebruikers naam, het wacht woord en andere vereiste para meters. Hier volgt een voor beeld van de inhoud van het configuratie bestand:
 
    ```bash
    type: COSMOSDB
@@ -134,7 +134,7 @@ In deze sectie worden de stappen beschreven die nodig zijn voor het instellen va
 
    De Replicant-gebruikers interface toont de voortgang van de replicatie. Zodra de schema migratie en de momentopname bewerking zijn uitgevoerd, wordt in de voortgang 100% weer gegeven. Nadat de migratie is voltooid, kunt u de gegevens valideren in de Azure Cosmos-doel database.
 
-   ![Uitvoer van Oracle-gegevens migratie](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Uitvoer van Oracle-gegevens migratie":::
 
 1. Omdat u de volledige modus voor migratie hebt gebruikt, kunt u bewerkingen uitvoeren zoals het invoegen, bijwerken of verwijderen van gegevens in de Oracle-bron database. U kunt later controleren of ze realtime worden gerepliceerd in de Azure Cosmos-doel database. Na de migratie moet u de door Voer die is geconfigureerd voor de Azure Cosmos-container verlagen.
 

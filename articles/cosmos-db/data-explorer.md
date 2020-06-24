@@ -3,15 +3,15 @@ title: Azure Cosmos DB Explorer gebruiken voor het beheren van uw gegevens
 description: Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interface waarmee u de gegevens kunt bekijken en beheren die zijn opgeslagen in Azure Cosmos DB.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096816"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261882"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Werken met gegevens in Azure Cosmos Explorer 
 
@@ -29,7 +29,7 @@ Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interface waarmee u d
 
 2. Ga vanuit **alle resources**naar uw Azure Cosmos DB-account, selecteer sleutels en kopieer de **primaire verbindings reeks**.  
 
-3. Ga naar https://cosmos.azure.com/, plak de Connection String en selecteer **verbinding maken**. Als u de connection string gebruikt, hebt u zonder enige tijd toegang tot de Azure Cosmos DB Explorer.  
+3. Ga naar https://cosmos.azure.com/ , plak de Connection String en selecteer **verbinding maken**. Als u de connection string gebruikt, hebt u zonder enige tijd toegang tot de Azure Cosmos DB Explorer.  
 
    Als u tijdelijke gebruikers toegang wilt geven tot uw Azure Cosmos DB-account, kunt u dit doen met behulp van de Url's voor lezen en schrijven en lees toegang. 
 
@@ -41,7 +41,7 @@ Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interface waarmee u d
 
    Kies het type toegang waarmee u het account wilt openen en klik op **openen**. Nadat u de Explorer hebt geopend, is de ervaring hetzelfde als bij de Data Explorer tabblad in Azure Portal.   
 
-   ![Azure Cosmos DB Explorer openen](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer openen":::
 
 ## <a name="known-issues"></a>Bekende problemen
 

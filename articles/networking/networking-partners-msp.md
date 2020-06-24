@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 0db3d46edf1b6bb0b425235654824e26293eb4a9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ed94ff96d926630280b379c8c0c3eefb0c12f2ae
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800496"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209433"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informatie over MSP-partners voor Azure-netwerken
 
@@ -28,9 +28,9 @@ Klanten kunnen MSP-Managed Services-aanbiedingen kopen op de Azure Marketplace o
 
 Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud netwerk services die worden aangeboden door Azure Networking MSP-partners. Als uw Cloud Network Services-partner niet wordt vermeld in de onderstaande sectie, laat u de provider contact met ons opnemen. Ze kunnen contact met ons opnemen door een e-mail te verzenden naar ManagedVirtualWAN@microsoft.com . 
 
-| **MSP** | **Transformatie Services voor Cloud netwerken** | **Beheerde ExpressRoute** | **Beheerd virtueel WAN** |
-| ---| ---| ---| ---|
-|[ANT groep UK](https://www.ans.co.uk/)|[Azure Managed SVC + ant glas 10wk-implementatie](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+| **MSP** | **Transformatie Services voor Cloud netwerken** | **Beheerde ExpressRoute** | **Beheerd virtueel WAN** | **Beheerde persoonlijke-rand zones**|
+| ---| ---| ---| ---| ---|
+|[ANT groep UK](https://www.ans.co.uk/)|[Azure Managed SVC + ant glas 10wk-implementatie](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|[ExpressRoute &-connectiviteit: evaluatie van 2 weken](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_er)|[Azure Virtual WAN + Fortinet: evaluatie van 2 weken](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.ans_vw)|||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure Virtual WAN](https://azuremarketplace.microsoft.com/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview) | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Netwerk transformatie Consulting: 1-HR-evaluatie](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting); [BT-Cloud verbinding maken met Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)|[BT-Cloud verbinding maken met Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-003?tab=Overview)|[BT-Cloud verbinding maken met Azure VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-002?tab=Overview)|||
 |[Coontwikkeling](https://www.coevolve.com/services/azure-networking-services/)|||[Beheerde VMware SD-WAN-rand](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
@@ -48,10 +48,11 @@ Gebruik de koppelingen in deze sectie voor meer informatie over beheerde Cloud n
 |[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure Network Consulting Service: 1-WK-evaluatie](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure-evaluatie service: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure-migratie: evaluatie van 3 weken](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
 |[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Beheerde Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Beheerd virtueel WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
+|[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)|[E2E beheerde netwerk oplossingen](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Azure private LTE MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
 |[Vigilant](https://vigilant.it/manage-cloud-service/)|[Azure-status controle: evaluatie van 5 dagen](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: implementatie van 5 dagen](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Beheerde ExpressRoute Vandis](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Door Vandis beheerde VWAN aangedreven door Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis Managed VWAN powereded by Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace biedt ook nieuwe beheerde beveiligings Services en beheerde MEC services van de volgende Azure-netwerken MSP-partners zijn op ons schema: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX bereik](https://www.ixreach.com/services/sdn-cloud-connect/);  [Intercloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federatief draadloos](https://www.federatedwireless.com/caas/)
+Azure Marketplace biedt ook nieuwe beheerde beveiligings Services en beheerde MEC services van de volgende Azure-netwerken MSP-partners zijn op ons schema: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);  [Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX bereik](https://www.ixreach.com/services/sdn-cloud-connect/);  [Intercloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Federatief draadloos](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute-partners
 

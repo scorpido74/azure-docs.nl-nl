@@ -2,14 +2,14 @@
 title: Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 description: Het Hyperledger Fabric consortium-netwerk implementeren en configureren op de Azure Kubernetes-service
 ms.date: 06/04/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 98d89905c89156d05fd61389693ad8d5765ba9e1
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434330"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209705"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -423,7 +423,7 @@ kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 Voor nieuws voer Azure Blockchain gaat u naar de [Azure Blockchain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van aanbiedingen van blockchainservices en informatie van het technische team van Azure Blockchain.
 
-Als u productfeedback wilt geven of nieuwe functies wilt aanvragen, kunt u een idee krijgen van het [Azure-feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+Als u feedback over producten wilt geven of nieuwe functies wilt aanvragen, kunt u een idee plaatsen of erop stemmen via het [Azure-feedbackforum voor blockchain](https://aka.ms/blockchainuservoice).
 
 ### <a name="community-support"></a>Ondersteuning voor community
 

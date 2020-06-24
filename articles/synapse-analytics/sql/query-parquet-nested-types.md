@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d5a10e3fe2803c7b9a10abe9bf959a694030cc8c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f1bb24b840da9b28584b6b2d265dcdc43824a5a3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235443"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207529"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Parquet geneste typen doorzoeken met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -22,7 +22,7 @@ In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (pr
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron waarnaar wordt verwezen. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron waarnaar wordt verwezen. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 ## <a name="project-nested-or-repeated-data"></a>Geneste of herhaalde gegevens projecteren
 
@@ -39,7 +39,7 @@ FROM
     ) AS [r];
 ```
 
-## <a name="access-elements-from-nested-columns"></a>Toegang tot elementen vanuit geneste kolommen
+## <a name="access-elements-from-nested-columns"></a>Elementen benaderen vanuit geneste kolommen
 
 Met de volgende query wordt het bestand *structExample. Parquet* gelezen en wordt weer gegeven hoe u de Opper vlakken van een geneste kolom laat zien. U hebt twee manieren om te verwijzen naar een geneste waarde:
 - Opgeven van de geneste waarde Path-expressie na type specificatie.
@@ -69,7 +69,7 @@ FROM
     ) AS [r];
 ```
 
-## <a name="access-elements-from-repeated-columns"></a>Toegang tot elementen van herhaalde kolommen
+## <a name="access-elements-from-repeated-columns"></a>Elementen benaderen vanuit herhaalde kolommen
 
 De volgende query leest het bestand *justSimpleArray. Parquet* en gebruikt [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) om een **scalair** element op te halen in een herhaalde kolom, zoals een matrix of kaart:
 

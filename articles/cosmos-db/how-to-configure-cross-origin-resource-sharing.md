@@ -3,21 +3,21 @@ title: Cross-Origin Resource Sharing (CORS) in Azure Cosmos DB
 description: In dit artikel wordt beschreven hoe u een CORS (cross-Origin Resource Sharing) configureert in Azure Cosmos DB met behulp van Azure Portal-en Azure Resource Manager-sjablonen.
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 7a487cb10965a379a0a418efaa061be88c5d10dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 331b78737000a51b09d393160f07150f81058412
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77082991"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261644"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Configureren van cross-Origin-resource delen (CORS)
 
 Cross-Origin Resource Sharing (CORS) is een HTTP-functie waarmee een webtoepassing die wordt uitgevoerd onder het ene domein toegang kan krijgen tot bronnen in een ander domein. Webbrowsers implementeren een beveiligings beperking die bekend staat als hetzelfde-Origin-beleid dat voor komt dat een webpagina Api's in een ander domein aanroept. CORS biedt echter een veilige manier om het domein van de oorsprong te laten aanroepen van Api's in een ander domein. De core-API (SQL) in Azure Cosmos DB ondersteunt nu het gebruik van CORS (cross-Origin Resource Sharing) door de header ' allowedOrigins ' te gebruiken. Nadat u de CORS-ondersteuning voor uw Azure Cosmos-account hebt ingeschakeld, worden alleen geverifieerde aanvragen geëvalueerd om te bepalen of ze zijn toegestaan volgens de regels die u hebt opgegeven.
 
-U kunt de instelling voor het delen van cross-Origin-resources (CORS) configureren vanuit het Azure Portal of van een Azure Resource Manager sjabloon. Voor Cosmos-accounts die gebruikmaken van de core-API (SQL), ondersteunt Azure Cosmos DB een Java script-bibliotheek die werkt in node. js en op browser gebaseerde omgevingen. Deze bibliotheek kan nu profiteren van CORS-ondersteuning wanneer u de gateway modus gebruikt. Er is geen configuratie aan de client zijde nodig om deze functie te gebruiken. Met CORS-ondersteuning kunnen resources van een browser rechtstreeks toegang krijgen tot Azure Cosmos DB via de [Java script-bibliotheek](https://www.npmjs.com/package/@azure/cosmos) of rechtstreeks vanuit de [rest API](https://docs.microsoft.com/rest/api/cosmos-db/) voor eenvoudige bewerkingen.
+U kunt de instelling voor het delen van cross-Origin-resources (CORS) configureren vanuit het Azure Portal of van een Azure Resource Manager sjabloon. Voor Cosmos-accounts die gebruikmaken van de core-API (SQL), ondersteunt Azure Cosmos DB een Java script-bibliotheek die in zowel Node.js als op browser gebaseerde omgevingen werkt. Deze bibliotheek kan nu profiteren van CORS-ondersteuning wanneer u de gateway modus gebruikt. Er is geen configuratie aan de client zijde nodig om deze functie te gebruiken. Met CORS-ondersteuning kunnen resources van een browser rechtstreeks toegang krijgen tot Azure Cosmos DB via de [Java script-bibliotheek](https://www.npmjs.com/package/@azure/cosmos) of rechtstreeks vanuit de [rest API](https://docs.microsoft.com/rest/api/cosmos-db/) voor eenvoudige bewerkingen.
 
 > [!NOTE]
 > CORS-ondersteuning is alleen van toepassing op en wordt ondersteund voor de Azure Cosmos DB core-API (SQL). Het is niet van toepassing op de Azure Cosmos DB-Api's voor Cassandra, Gremlin of MongoDB, aangezien deze protocollen geen gebruik maken van HTTP voor client-server communicatie.
@@ -28,12 +28,12 @@ Gebruik de volgende stappen om cross-Origin resource sharing in te scha kelen me
 
 1. Navigeer naar uw Azure Cosmos DB-account. Open de Blade **CORS** .
 
-2. Geef een door komma's gescheiden lijst van oorsprongen die cross-Origin-aanroepen naar uw Azure Cosmos DB-account kunnen maken. Bijvoorbeeld `https://www.mydomain.com`,, `https://mydomain.com`,. `https://api.mydomain.com` U kunt ook een Joker teken\*gebruiken om alle oorsprong toe te staan en **verzenden**te selecteren. 
+2. Geef een door komma's gescheiden lijst van oorsprongen die cross-Origin-aanroepen naar uw Azure Cosmos DB-account kunnen maken. Bijvoorbeeld,, `https://www.mydomain.com` `https://mydomain.com` , `https://api.mydomain.com` . U kunt ook een Joker teken gebruiken \* om alle oorsprong toe te staan en **verzenden**te selecteren. 
 
    > [!NOTE]
-   > Op dit moment kunt u geen joker tekens gebruiken als onderdeel van de domein naam. Een voor `https://*.mydomain.net` beeld van een indeling wordt nog niet ondersteund. 
+   > Op dit moment kunt u geen joker tekens gebruiken als onderdeel van de domein naam. Een voor beeld van een `https://*.mydomain.net` indeling wordt nog niet ondersteund. 
 
-   ![Cross-Origin resource delen inschakelen met behulp van Azure Portal](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+   :::image type="content" source="./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png" alt-text="Cross-Origin resource delen inschakelen met behulp van Azure Portal":::
 
 ## <a name="enable-cors-support-from-resource-manager-template"></a>CORS-ondersteuning inschakelen voor de Resource Manager-sjabloon
 
@@ -61,7 +61,7 @@ Als u CORS wilt inschakelen met behulp van een resource manager-sjabloon, voegt 
 
 ## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>De Azure Cosmos DB java script-bibliotheek gebruiken vanuit een browser
 
-Momenteel heeft de Azure Cosmos DB java script-bibliotheek alleen de CommonJS-versie van de bibliotheek geleverd met het pakket. Als u deze bibliotheek vanuit de browser wilt gebruiken, moet u een hulp programma zoals Rollup of webpack gebruiken om een met browsers compatibele bibliotheek te maken. Voor bepaalde node. JS-bibliotheken moet de browser worden gesimuleerd. Hier volgt een voor beeld van een webpack-configuratie bestand met de benodigde model instellingen.
+Momenteel heeft de Azure Cosmos DB java script-bibliotheek alleen de CommonJS-versie van de bibliotheek geleverd met het pakket. Als u deze bibliotheek vanuit de browser wilt gebruiken, moet u een hulp programma zoals Rollup of webpack gebruiken om een met browsers compatibele bibliotheek te maken. Voor bepaalde Node.js bibliotheken moeten browser modellen worden gesimuleerd. Hier volgt een voor beeld van een webpack-configuratie bestand met de benodigde model instellingen.
 
 ```javascript
 const path = require("path");

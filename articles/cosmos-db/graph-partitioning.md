@@ -5,15 +5,15 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623379"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261763"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Gepartitioneerde graaf gebruiken in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Een van de belangrijkste functies van de Gremlin-API in Azure Cosmos DB is de mo
 
 **Partitioneren is vereist** als de container wordt verwacht meer dan 20 GB op te slaan of als u meer dan 10.000 aanvraag eenheden per seconde (RUs) wilt toewijzen. Dezelfde algemene principes van het [Azure Cosmos DB partitioneren-mechanisme](partition-data.md) zijn van toepassing met een aantal grafische specifieke optimalisaties die hieronder worden beschreven.
 
-![Graph-partitionering.](./media/graph-partitioning/graph-partitioning.png)
+:::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Graph-partitionering." border="false":::
 
 ## <a name="graph-partitioning-mechanism"></a>Mechanisme voor het partitioneren van grafieken
 
@@ -29,18 +29,18 @@ De volgende richt lijnen beschrijven hoe de strategie voor partitioneren in Azur
 
 - **Beide hoek punten en randen worden opgeslagen als JSON-documenten**.
 
-- Voor **hoek punten is een partitie sleutel vereist**. Met deze sleutel wordt bepaald in welke partitie het hoek punt wordt opgeslagen met een hash-algoritme. De naam van de partitie sleutel eigenschap wordt gedefinieerd bij het maken van een nieuwe container en heeft `/partitioning-key-name`de volgende indeling:.
+- Voor **hoek punten is een partitie sleutel vereist**. Met deze sleutel wordt bepaald in welke partitie het hoek punt wordt opgeslagen met een hash-algoritme. De naam van de partitie sleutel eigenschap wordt gedefinieerd bij het maken van een nieuwe container en heeft de volgende indeling: `/partitioning-key-name` .
 
-- **Randen worden opgeslagen met hun bron hoekpunt**. Met andere woorden, voor elk hoek punt is de partitie sleutel gedefinieerd waar ze samen met de uitgaande randen worden opgeslagen. Deze optimalisatie wordt uitgevoerd om cross-Partition query's te voor komen bij `out()` het gebruik van de kardinaliteit in Graph-query's.
+- **Randen worden opgeslagen met hun bron hoekpunt**. Met andere woorden, voor elk hoek punt is de partitie sleutel gedefinieerd waar ze samen met de uitgaande randen worden opgeslagen. Deze optimalisatie wordt uitgevoerd om cross-Partition query's te voor komen bij het gebruik `out()` van de kardinaliteit in Graph-query's.
 
-- **Randen bevatten verwijzingen naar de hoek punten waarnaar ze verwijzen**. Alle randen worden opgeslagen met de partitie sleutels en de Id's van de hoek punten waarnaar ze verwijzen. Met deze berekening worden `out()` alle query's in de richting altijd een gepartitioneerde, niet-verwerkte query en niet een blinde Kruis partitie query. 
+- **Randen bevatten verwijzingen naar de hoek punten waarnaar ze verwijzen**. Alle randen worden opgeslagen met de partitie sleutels en de Id's van de hoek punten waarnaar ze verwijzen. Met deze berekening worden alle query's in de `out()` richting altijd een gepartitioneerde, niet-verwerkte query en niet een blinde Kruis partitie query. 
 
 - **Graph-query's moeten een partitie sleutel opgeven**. Als u optimaal wilt profiteren van de horizontale partitionering in Azure Cosmos DB, moet de partitie sleutel worden opgegeven wanneer één hoek punt wordt geselecteerd, wanneer dit mogelijk is. Hieronder vindt u query's waarmee u een of meer hoek punten in een gepartitioneerde grafiek selecteert:
 
-    - `/id`en `/label` worden niet ondersteund als partitie sleutels voor een container in de GREMLIN-API.
+    - `/id`en `/label` worden niet ondersteund als partitie sleutels voor een container in de Gremlin-API.
 
 
-    - Selecteer een hoek punt op ID en **gebruik vervolgens `.has()` de stap om de eigenschap van de partitie sleutel op te geven**: 
+    - Selecteer een hoek punt op ID en **gebruik vervolgens de `.has()` stap om de eigenschap van de partitie sleutel op te geven**: 
     
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
@@ -76,7 +76,7 @@ Gebruik de volgende richt lijnen om te zorgen voor prestaties en schaal baarheid
 
 - **Geef altijd de partitie sleutel waarde op bij het uitvoeren van een query op een hoek punt**. Het verkrijgen van hoekpunt van een bekende partitie is een manier om prestaties te behalen. Alle volgende bewerkings belendings zijn altijd binnen het bereik van een partitie, aangezien randen de verwijzings-ID en partitie sleutel naar hun doel hoekpunten bevatten.
 
-- **Gebruik de uitgaande richting bij het uitvoeren van een query op randen wanneer dat mogelijk is**. Zoals hierboven vermeld, worden randen opgeslagen met hun bron hoekpunten in de uitgaande richting. De kans om query's op meerdere partities te maken, wordt dus geminimaliseerd wanneer de gegevens en query's zijn ontworpen met dit patroon. De `in()` query is in tegens telling tot altijd een dure ventilator-out-query.
+- **Gebruik de uitgaande richting bij het uitvoeren van een query op randen wanneer dat mogelijk is**. Zoals hierboven vermeld, worden randen opgeslagen met hun bron hoekpunten in de uitgaande richting. De kans om query's op meerdere partities te maken, wordt dus geminimaliseerd wanneer de gegevens en query's zijn ontworpen met dit patroon. De query is in tegens telling tot `in()` altijd een dure ventilator-out-query.
 
 - **Kies een partitie sleutel waarmee gegevens gelijkmatig over de partities kunnen worden verdeeld**. Deze beslissing is sterk afhankelijk van het gegevens model van de oplossing. Lees meer over het maken van een juiste partitie sleutel in [partitioneren en schalen in azure Cosmos DB](partition-data.md).
 

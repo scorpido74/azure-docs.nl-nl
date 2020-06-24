@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261565"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692169"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS bewaken met Azure AD Connect Health
 De volgende documentatie is specifiek voor het bewaken van uw Azure AD FS-infrastructuur met Azure AD Connect Health. Zie voor meer informatie over het controleren van Azure AD Connect (Sync) met Azure AD Connect Health, [Azure AD Connect Health gebruiken voor synchronisatie](how-to-connect-health-sync.md). Zie [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md)voor meer informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
@@ -51,7 +51,7 @@ Om aanvullende gegevens te selecteren geeft u een tijdsperiode op, of klikt u me
 
 |Groeperen op | Wat houdt de groepering in en waarom heeft dit zin? |
 | --- | --- |
-| Alle | Geeft het berekende totale aantal verzoeken weer dat door alle AD FS-servers is verwerkt.|
+| Alles | Geeft het berekende totale aantal verzoeken weer dat door alle AD FS-servers is verwerkt.|
 | Toepassing | Hiermee worden alle verzoeken gegroepeerd op basis van de beoogde Relying Party. Dankzij deze groep krijgt u meer inzicht in de percentages van al het verkeer die worden verwerkt per toepassing. |
 |  server |Hiermee worden alle verzoeken gegroepeerd op basis van de server die het verzoek heeft verwerkt. Met deze groepering kunt u zien hoe de belasting van al het verkeer is verdeeld.
 | Werkplek koppelen |Hiermee worden alle verzoeken gegroepeerd op verzoeken die worden verzonden door apparaten die aan de werkplek gekoppeld (bekend) zijn of niet. Deze groepering is nuttig wanneer uw resources worden geopend met behulp van apparaten die niet bekend zijn in uw infrastructuur voor identiteiten. |
@@ -72,7 +72,7 @@ Om aanvullende gegevens te selecteren geeft u een tijdsperiode op, of klikt u me
 
 |Groeperen op | Wat houdt de groepering in en waarom heeft dit zin? |
 | --- | --- |
-|Alle |Hiermee ziet u het gemiddelde aantal gebruikers die gebruikmaken van de federatieve service in het geselecteerde tijdvak. De gebruikers zijn niet gegroepeerd. <br>Het gemiddelde is afhankelijk van de geselecteerde tijdsperiode. |
+|Alles |Hiermee ziet u het gemiddelde aantal gebruikers die gebruikmaken van de federatieve service in het geselecteerde tijdvak. De gebruikers zijn niet gegroepeerd. <br>Het gemiddelde is afhankelijk van de geselecteerde tijdsperiode. |
 | Toepassing |Hiermee wordt het gemiddelde gebruikersaantal gegroepeerd op basis van de beoogde applicatie (Relying Party). Zo kunt u zien hoeveel gebruikers gebruikmaken van elke toepassing. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Prestatiebewaking voor AD FS

@@ -2,13 +2,13 @@
 title: Overzicht van sjablonen
 description: Beschrijft de voor delen van het gebruik van Azure Resource Manager sjablonen voor het implementeren van resources.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: 4cdd0751feea6a3ade7183311831c7ed2b0f1b70
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086331"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210215"
 ---
 # <a name="what-are-arm-templates"></a>Wat zijn ARM-sjablonen?
 
@@ -56,7 +56,7 @@ Als u probeert te kiezen tussen het gebruik van ARM-sjablonen en een van de ande
 
 * **Hulp middelen voor ontwerpen**: u kunt sjablonen ontwerpen met [Visual Studio code](use-vs-code-to-create-template.md) en de extensie van het sjabloon programma. U krijgt IntelliSense, syntaxis markering, in line Help en veel andere taal functies. Naast Visual Studio code kunt u ook [Visual Studio](create-visual-studio-deployment-project.md)gebruiken.
 
-## <a name="template-file"></a>Sjabloon bestand
+## <a name="template-file"></a>Sjabloonbestand
 
 Binnen uw sjabloon kunt u [sjabloon expressies](template-expressions.md) schrijven waarmee de mogelijkheden van JSON worden uitgebreid. Deze expressies maken gebruik van de [functies](template-functions.md) van Resource Manager.
 
@@ -129,3 +129,4 @@ Zie [Using linked templates with Azure Resource Manager](linked-templates.md) (G
 * Zie [zelf studie: uw eerste arm-sjabloon maken en implementeren](template-tutorial-create-first-template.md)voor een stapsgewijze zelf studie waarin u door het proces van het maken van een sjabloon wordt geleid.
 * Zie [inzicht krijgen in de structuur en syntaxis van arm-sjablonen](template-syntax.md)voor meer informatie over de eigenschappen in sjabloon bestanden.
 * Voor meer informatie over het exporteren van sjablonen raadpleegt u [Quick Start: arm-sjablonen maken en implementeren met behulp van de Azure Portal](quickstart-create-templates-use-the-portal.md).
+* Zie [Veelgestelde vragen over arm-sjablonen](frequently-asked-questions.md)voor antwoorden op veelgestelde vragen.

@@ -3,16 +3,16 @@ title: Unieke sleutels voor een Azure Cosmos-container definiëren
 description: Meer informatie over het definiëren van unieke sleutels voor een Azure Cosmos-container met behulp van Azure Portal, Power shell, .net, Java en diverse andere Sdk's.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: tracking-python
-ms.openlocfilehash: bb1fc927b52f9b59c1a71cdc4369bdea428f4586
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561143"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261542"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Unieke sleutels voor een Azure Cosmos-container definiëren
 
@@ -34,7 +34,7 @@ In dit artikel worden de verschillende manieren beschreven waarop u [unieke sleu
 
 1. Voeg, indien nodig, meer unieke sleutel vermeldingen toe door te klikken op **+ unieke sleutel toevoegen**
 
-    ![Scherm opname van de vermelding van een unieke-sleutel beperking op Azure Portal](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Scherm opname van de vermelding van een unieke-sleutel beperking op Azure Portal":::
 
 ## <a name="use-powershell"></a>Power shell gebruiken
 
@@ -117,9 +117,9 @@ container.setUniqueKeyPolicy(uniqueKeyPolicy);
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```
 
-## <a name="use-the-nodejs-sdk"></a>De node. js-SDK gebruiken
+## <a name="use-the-nodejs-sdk"></a>De Node.js SDK gebruiken
 
-Wanneer u een nieuwe container maakt met behulp van de [node. js-SDK](https://www.npmjs.com/package/@azure/cosmos), `UniqueKeyPolicy` kan een object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
+Wanneer u een nieuwe container maakt met behulp van de [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos), `UniqueKeyPolicy` kan een object worden gebruikt voor het definiëren van unieke sleutel beperkingen.
 
 ```javascript
 client.database('database').containers.create({

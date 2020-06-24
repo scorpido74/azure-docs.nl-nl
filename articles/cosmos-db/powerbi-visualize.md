@@ -3,15 +3,15 @@ title: Power BI zelf studie voor Azure Cosmos DB-connector
 description: Gebruik deze Power BI zelf studie voor het importeren van JSON, het maken van imgezichts rapporten en het visualiseren van gegevens met behulp van de Azure Cosmos DB en Power BI connector.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89d7e46563182bf7808eb118f4526571c631fa23
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69616812"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262511"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-gegevens visualiseren met behulp van de Power BI-connector 
 
@@ -46,7 +46,7 @@ Voordat u de instructies in deze Power BI zelf studie volgt, moet u ervoor zorge
 
       * **Door Voer van verzameling:** 1000 
 
-Als u uw rapporten wilt delen in PowerBI.com, moet u een account hebben in PowerBI.com.  Zie [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)voor meer informatie over Power BI en Power bi Pro.
+Als u uw rapporten wilt delen in PowerBI.com, moet u een account hebben in PowerBI.com.  Zie voor meer informatie over Power BI en Power BI Pro [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) .
 
 ## <a name="lets-get-started"></a>Laten we aan de slag
 In deze zelf studie stel u voor dat u een geologiste Volcanoes over de hele wereld bent. De Volcano-gegevens worden opgeslagen in een Azure Cosmos DB-account en de JSON-document indeling is als volgt:
@@ -120,7 +120,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
     ![Power BI zelf studie voor Azure Cosmos DB Power BI connector-coördinaten lijst](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. Als u de coördinaten matrix wilt samen voegen, maakt u een **aangepaste kolom** met de naam LatLong.  Selecteer het lint **kolom toevoegen** en klik op **aangepaste kolom**.  Het venster **aangepaste kolom** wordt weer gegeven.
 8. Geef een naam op voor de nieuwe kolom, bijvoorbeeld LatLong.
-9. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`gegeven, met behulp van de volgende formule:. Klik op **OK**.
+9. Geef vervolgens de aangepaste formule voor de nieuwe kolom op.  In ons voor beeld voegen we de breedte-en lengte waarden, gescheiden door een komma, toe, zoals hieronder wordt weer gegeven, met behulp van de volgende formule: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klik op **OK**.
    
     Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
@@ -132,7 +132,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
     
     Als er een fout in de nieuwe kolom wordt weer gegeven, moet u ervoor zorgen dat de toegepaste stappen onder query-instellingen overeenkomen met de volgende afbeelding:
     
-    ![Toegepaste stappen moeten bron, navigatie, uitgevouwen document, uitgevouwen document. locatie, aangepast zijn toegevoegd](./media/powerbi-visualize/power-bi-applied-steps.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Toegepaste stappen moeten bron, navigatie, uitgevouwen document, uitgevouwen document. locatie, aangepast zijn toegevoegd":::
     
     Als uw stappen verschillen, verwijdert u de extra stappen en probeert u de aangepaste kolom opnieuw toe te voegen. 
 
@@ -179,11 +179,11 @@ Nu u een rapport hebt, kunt u dit delen op PowerBI.com
 
 Wanneer u uw rapport publiceert van Power BI Desktop naar PowerBI.com, genereert het een **rapport** en een **gegevensset** in uw PowerBI.com-Tenant. Nadat u bijvoorbeeld een rapport met de naam **PowerBITutorial** hebt gepubliceerd naar PowerBI.com, ziet u PowerBITutorial in de secties **rapporten** en **gegevens sets** op PowerBI.com.
 
-   ![Scherm afbeelding van het nieuwe rapport en de gegevensset in PowerBI.com](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Scherm afbeelding van het nieuwe rapport en de gegevensset in PowerBI.com":::
 
 Als u een deelbaar dash board wilt maken, klikt u op de knop **Live-pagina vastzetten** in uw PowerBI.com-rapport.
 
-   ![Scherm afbeelding van het nieuwe rapport en de gegevensset in PowerBI.com](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Scherm afbeelding van het nieuwe rapport en de gegevensset in PowerBI.com":::
 
 Volg vervolgens de instructies in [een tegel van een rapport](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) vastmaken om een nieuw dash board te creëren. 
 
@@ -194,13 +194,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

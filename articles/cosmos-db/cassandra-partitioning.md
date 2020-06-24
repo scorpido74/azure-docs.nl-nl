@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2f62af434a49d11cdc1acfc4a09b5bffbd69140b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 566be788066db54f827bb4d6e46f0d832755ce26
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316703"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115668"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitioneren in Azure Cosmos DB Cassandra-API
 
@@ -53,7 +53,7 @@ CREATE TABLE uprofile.user (
 
 In dit ontwerp hebben we het `id` veld als primaire sleutel gedefinieerd. De primaire sleutel fungeert als de id voor de record in de tabel en wordt ook gebruikt als partitie sleutel in Azure Cosmos DB. Als de primaire sleutel is gedefinieerd in de eerder beschreven manier, is er slechts één record in elke partitie. Dit leidt tot een perfecte horizontale en schaal bare distributie bij het schrijven van gegevens naar de data base en is ideaal voor het gebruik van aanvragen voor sleutel waarden. De toepassing moet de primaire sleutel geven bij het lezen van gegevens uit de tabel om de Lees prestaties te maximaliseren. 
 
-![partitions](./media/cassandra-partitioning/cassandra-partitioning.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning.png" alt-text="Partition" border="false":::
 
 
 ## <a name="compound-primary-key"></a>Samengestelde primaire sleutel
@@ -83,11 +83,11 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 Wanneer gegevens worden geretourneerd, wordt deze door de cluster sleutel gesorteerd zoals verwacht in Apache Cassandra:
 
-![partitions](./media/cassandra-partitioning/select-from-pk.png)
+:::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="Partition":::
 
 Met gegevens die op deze manier zijn gemodelleerd, kunnen meerdere records worden toegewezen aan elke partitie, gegroepeerd op gebruiker. We kunnen een query die op een efficiënte manier wordt gerouteerd door de `partition key` (in dit geval `user` ), om alle berichten van een bepaalde gebruiker te verkrijgen. 
 
-![partitions](./media/cassandra-partitioning/cassandra-partitioning2.png)
+:::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="Partition" border="false":::
 
 
 ## <a name="composite-partition-key"></a>Samengestelde partitie sleutel

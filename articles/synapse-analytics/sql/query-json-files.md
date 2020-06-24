@@ -5,24 +5,24 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7a8c9083ecbadbf63cf0ac65dc1803b478e939fe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 5d02736e9cb0a612e434dc5a79a73d7a62785728
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873390"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207648"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Een query uitvoeren op JSON-bestanden met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
-In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden. Ondersteunde indelingen worden weer gegeven in [OPENrowset](develop-openrowset.md).
+In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics. Het doel van de query is het lezen van JSON-bestanden. De ondersteunde indelingen worden weergegeven in [OPENROWSET](develop-openrowset.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap bestaat uit het **maken van een Data Base** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap bestaat uit het **maken van een database** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 ## <a name="sample-json-files"></a>Voor beeld van JSON-bestanden
 
@@ -46,7 +46,7 @@ De volgende sectie bevat voorbeeld scripts voor het lezen van JSON-bestanden. Be
 
 ## <a name="read-json-files"></a>JSON-bestanden lezen
 
-Als u JSON-bestanden wilt verwerken met JSON_VALUE en [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), moet u het JSON-bestand lezen uit de opslag als één kolom. Met het volgende script wordt het bestand *book1. json* als één kolom gelezen:
+Als u JSON-bestanden wilt verwerken met JSON_VALUE en [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), moet u het JSON-bestand lezen uit de opslag als één kolom. Met het volgende script wordt debook1.jsals een enkele kolom gelezen *in* het bestand:
 
 ```sql
 SELECT

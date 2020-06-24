@@ -3,12 +3,12 @@ title: Resource Manager en klassieke implementatie
 description: Lees hier wat de verschillen zijn tussen het implementatiemodel van Resource Manager en het klassieke implementatiemodel (of Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2deddfff595feee429aa1be942e2f4651700f54
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064509"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763785"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vergeleken met klassieke implementatie: implementatiemodellen en de status van uw resources begrijpen
 
@@ -78,6 +78,8 @@ In het volgende diagram ziet u de reken-, netwerk- en opslagresources die zijn g
 
 ![Architectuur van Resource Manager](./media/deployment-models/arm_arch3.png)
 
+SRP: opslag Resource provider, CRP: Compute resource provider, NRP: Network resource provider
+
 Dit zijn de verschillende relaties tussen de resources:
 
 * Alle resources bestaan binnen een resourcegroep.
@@ -103,7 +105,7 @@ In de volgende tabel wordt beschreven wat er is veranderd aan de interactie tuss
 | --- | --- | --- |
 | Cloudservice voor virtuele machines |Cloudservice was een container voor de opslag van de virtuele machines waarvoor de beschikbaarheid van het platform en taakverdeling vereist was. |Cloudservice is niet langer een object dat is vereist voor het maken van een virtuele machine met het nieuwe model. |
 | Virtuele netwerken |Een virtueel netwerk is optioneel voor de virtuele machine. Indien opgenomen, kan het virtuele netwerk niet worden geïmplementeerd met Resource Manager. |Een virtuele machine vereist een virtueel netwerk dat is geïmplementeerd met Resource Manager. |
-| Opslagaccounts |De virtuele machine vereist een opslag account voor het opslaan van de virtuele harde schijven voor het besturings systeem, tijdelijke en aanvullende gegevens schijven. |De virtuele machine vereist een opslagaccount voor het opslaan van de schijven in de blob-opslag. |
+| Storage Accounts |De virtuele machine vereist een opslag account voor het opslaan van de virtuele harde schijven voor het besturings systeem, tijdelijke en aanvullende gegevens schijven. |De virtuele machine vereist een opslagaccount voor het opslaan van de schijven in de blob-opslag. |
 | Beschikbaarheidssets |De beschikbaarheid van het platform werd aangegeven door de configuratie van dezelfde "AvailabilitySetName" op de virtuele machines. Het maximumaantal foutdomeinen was 2. |Beschikbaarheidsset is een resource die beschikbaar wordt gesteld door Microsoft.Compute-provider. Virtuele machines die uiterst beschikbaar moeten zijn, worden opgenomen in de beschikbaarheidsset. Het maximumaantal foutdomeinen is nu 3. |
 | Affiniteitsgroepen |Voor het maken van virtuele netwerken waren affiniteitsgroepen vereist. Met de introductie van regionale virtuele netwerken is dit echter niet meer vereist. |Het concept van affiniteitsgroepen bestaat niet meer in de API's die via Azure Resource Manager beschikbaar worden gesteld. |
 | Taakverdeling |Bij het maken van een cloudservice wordt een impliciete load balancer voor de geïmplementeerde virtuele machines aangemaakt. |De load balancer is een resource die beschikbaar wordt gesteld door de Microsoft.Compute-provider. De primaire netwerkinterface van de virtuele machines waarvoor de taken moeten worden verdeeld moet verwijzen naar de load balancer. Load balancers kunnen intern of extern zijn. Een instantie van de load balancer verwijst naar de back-endpool van IP-adressen met daarin de NIC van een virtuele machine (optioneel) en het openbare of particuliere IP-adres (optioneel) van een load balancer. |

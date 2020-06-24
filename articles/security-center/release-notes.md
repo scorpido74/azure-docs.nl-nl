@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2020
+ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 688f04ecf951265b9015b9516d63cf3399adcdc1
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: f41b87f50dfac15c6228398a2c9d1c6ae470903d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655448"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260930"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -28,6 +28,64 @@ Azure-beveiliging is in actieve ontwikkeling en ontvangt voortdurend verbetering
 - Afgeschafte functionaliteit
 
 Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Security Center](release-notes-archive.md).
+
+
+## <a name="june-2020"></a>Juni 2020
+
+### <a name="secure-score-api-preview"></a>Secure Score-API (preview-versie)
+
+U hebt nu toegang tot uw score via de [API voor beveiligde scores](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (momenteel als preview-versie). De API-methoden bieden de flexibiliteit om query's uit te voeren op de gegevens en uw eigen rapportage mechanisme te bouwen van uw beveiligde scores in de loop van de tijd. U kunt bijvoorbeeld de API **beveiligde scores** gebruiken om de score voor een specifiek abonnement op te halen. Daarnaast kunt u de API **besturings elementen voor beveiligde scores** gebruiken om de beveiligings controles en de huidige Score van uw abonnementen weer te geven.
+
+Voor voor beelden van externe hulpprogram ma's die mogelijk zijn gemaakt met de API voor beveiligde scores, raadpleegt u [het beveiligde Score gebied van onze github-Community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score).
+
+Meer informatie over [beveiligde scores en beveiligings controles in azure Security Center](secure-score-security-controls.md).
+
+
+
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>Geavanceerde gegevens beveiliging voor SQL-machines (Azure, andere Clouds en on-premises) (preview)
+
+De geavanceerde gegevens beveiliging van Azure Security Center voor SQL-machines beveiligt nu SQL-servers die worden gehost in azure, op andere Cloud omgevingen en zelfs on-premises machines. Hiermee worden de beveiligingen voor uw Azure-systeem eigen SQL-servers uitgebreid om hybride omgevingen volledig te ondersteunen.
+
+Geavanceerde gegevens beveiliging biedt evaluatie van beveiligings problemen en geavanceerde beveiliging tegen bedreigingen voor uw SQL-machines, waar ze zich ook bevinden.
+
+Setup bestaat uit twee stappen:
+
+1. De Log Analytics-agent implementeren op de hostcomputer van uw SQL Server om verbinding te maken met het Azure-account.
+
+1. Het inschakelen van de optionele bundel op de pagina prijzen en instellingen van Security Center.
+
+Meer informatie over [geavanceerde gegevens beveiliging voor SQL-machines](security-center-iaas-advanced-data.md).
+
+
+
+### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>Twee nieuwe aanbevelingen voor het implementeren van de Log Analytics agent op Azure Arc-machines (preview)
+
+Er zijn twee nieuwe aanbevelingen toegevoegd om de Log Analytics- [agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) te implementeren op uw Azure-Arc-machines en ervoor te zorgen dat ze worden beveiligd door Azure Security Center:
+
+- **Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-machines (preview)**
+- **Log Analytics agent moet worden geïnstalleerd op uw op Linux gebaseerde Azure-Arc-machines (preview)**
+
+Deze nieuwe aanbevelingen worden weer gegeven in dezelfde vier beveiligings controles als de bestaande (verwante) aanbeveling, de **bewakings agent moet op uw computers worden geïnstalleerd**: beveiligings configuraties herstellen, adaptief toepassings beheer Toep assen, systeem updates Toep assen en Endpoint Protection inschakelen.
+
+De aanbevelingen omvatten ook de mogelijkheid tot snel oplossen om het implementatie proces te versnellen. 
+
+Meer informatie over deze twee nieuwe aanbevelingen vindt u in de tabel met [berekenings-en app-aanbevelingen](recommendations-reference.md#recs-computeapp) .
+
+Meer informatie over hoe Azure Security Center de agent gebruikt in [Wat is de log Analytics-agent?](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent).
+
+Meer informatie over [uitbrei dingen voor Azure Arc-machines](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
+
+
+### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>Nieuwe aanbeveling voor het gebruik van Nsg's om niet-Internet gerichte virtuele machines te beveiligen
+
+Het beveiligings beheer voor best practices voor beveiliging bevat nu de volgende nieuwe aanbeveling:
+
+- **Niet-Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen**
+
+Een bestaande aanbeveling, **Internet gerichte virtuele machines moeten worden beveiligd met netwerk beveiligings groepen**, heeft geen onderscheid gemaakt tussen virtuele machines met Internet gerichte en niet-Internet. Voor beide is een aanbeveling met een hoge urgentie gegenereerd als een virtuele machine niet aan een netwerk beveiligings groep is toegewezen. Deze nieuwe aanbeveling scheidt de niet-Internet gerichte machines van elkaar om de fout-positieven te reduceren en onnodige waarschuwingen met hoge urgentie te voor komen.
+
+Meer informatie vindt u in de tabel met [netwerk aanbevelingen](recommendations-reference.md#recs-network) .
+
 
 
 ## <a name="may-2020"></a>Mei 2020
@@ -119,7 +177,7 @@ De twee nieuwe aanbevelingen die aan het besturings element worden toegevoegd, z
 
 Meer informatie over Windows Defender exploit Guard in [een exploit Guard-beleid maken en implementeren](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
 
-Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
+Meer informatie over beveiligings controles in [Enhanced Secure Score (preview)](secure-score-security-controls.md).
 
 
 

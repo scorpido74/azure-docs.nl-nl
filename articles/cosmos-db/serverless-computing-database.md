@@ -3,15 +3,15 @@ title: Serverloze data base Computing met Azure Cosmos DB en Azure Functions
 description: Meer informatie over hoe Azure Cosmos DB en Azure Functions kunnen worden gebruikt voor het maken van op gebeurtenissen gebaseerde serverloze computing-apps.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985249"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263257"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloze database Computing met Azure Cosmos DB en Azure Functions
 
@@ -33,7 +33,7 @@ Met Azure Cosmos DB en Azure Functions kunt u uw data bases en serverloze apps o
 
 Het volgende diagram illustreert elk van deze drie integraties: 
 
-![Hoe Azure Cosmos DB en Azure Functions worden geïntegreerd](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-azure-functions-integration.png" alt-text="Hoe Azure Cosmos DB en Azure Functions worden geïntegreerd" border="false":::
 
 De Azure Functions trigger, invoer binding en uitvoer binding voor Azure Cosmos DB kunnen worden gebruikt in de volgende combi Naties:
 
@@ -61,7 +61,7 @@ In IoT-implementaties kunt u een functie aanroepen wanneer het lampje van de con
 
 In de volgende afbeelding ziet u de code die is geschreven in de Azure Portal voor deze trigger.
 
-![Een Azure Functions trigger maken voor Cosmos DB in de Azure Portal](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Een Azure Functions trigger maken voor Cosmos DB in de Azure Portal":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Financiële gebruiks Case-timer trigger en invoer binding
 
@@ -75,13 +75,13 @@ In financiële implementaties kunt u een functie aanroepen wanneer een saldo van
 
 De volgende afbeeldingen tonen de code in de Azure Portal voor dit scenario.
 
-![Index. js-bestand voor een timer trigger voor een financieel scenario](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Index.js-bestand voor een timer trigger voor een financieel scenario":::
 
-![Het. CSX-bestand uitvoeren voor een timer trigger voor een financieel scenario](./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png)
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Het. CSX-bestand uitvoeren voor een timer trigger voor een financieel scenario":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Gebruiks voorbeeld van games-Azure Functions trigger-en uitvoer binding voor Cosmos DB 
 
-Wanneer een nieuwe gebruiker is gemaakt in gaming, kunt u zoeken naar andere gebruikers die deze kunnen kennen met behulp van de [Azure Cosmos DB GREMLIN API](graph-introduction.md). U kunt de resultaten vervolgens naar een [Azure Cosmos DB SQL database] schrijven om het eenvoudig op te halen.
+Wanneer een nieuwe gebruiker is gemaakt in gaming, kunt u zoeken naar andere gebruikers die deze kunnen kennen met behulp van de [Azure Cosmos DB GREMLIN API](graph-introduction.md). U kunt de resultaten vervolgens naar een [Azure Cosmos DB of SQL database]() schrijven om het eenvoudig op te halen.
 
 **Implementatie:** Een Azure Functions trigger en uitvoer binding gebruiken voor Cosmos DB
 

@@ -1,5 +1,5 @@
 ---
-title: Op programmatische wijze Azure-dashboards maken
+title: Programmatisch Azure-Dash boards maken
 description: Gebruik een dash board in de Azure Portal als sjabloon om programmatisch Azure-Dash boards te maken. Bevat een JSON-verwijzing.
 services: azure-portal
 documentationcenter: ''
@@ -7,19 +7,19 @@ author: adamabmsft
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461307"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764040"
 ---
-# <a name="programmatically-create-azure-dashboards"></a>Op programmatische wijze Azure-dashboards maken
+# <a name="programmatically-create-azure-dashboards"></a>Programmatisch Azure-Dash boards maken
 
 Dit artikel begeleidt u stapsgewijs door het proces van het programmatisch maken en publiceren van Azure-Dash boards. In het volgende voor beeld wordt in het document verwezen naar het dash board.
 
@@ -125,7 +125,7 @@ U moet de vereiste meta gegevens van de sjabloon en de para meters boven aan de 
 Nadat u uw sjabloon hebt geconfigureerd, implementeert u deze met een van de volgende methoden:
 
 * [REST-API’s](/rest/api/resources/deployments)
-* [Zo](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure-CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [De pagina implementatie van Azure Portal sjabloon](https://portal.azure.com/#create/Microsoft.Template)
 
@@ -387,7 +387,7 @@ Dit voor beeld laat zien wat u kunt verwachten als u dit artikel hebt gevolgd. D
 
 ### <a name="template-representation-of-our-example-dashboard"></a>Sjabloon weergave van het dash board van ons voor beeld
 
-In de sjabloon versie van het dash board zijn drie para `virtualMachineName`meters met de naam, `virtualMachineResourceGroup`en `dashboardName`gedefinieerd.  Met de para meters kunt u dit dash board op een andere virtuele Azure-machine laten wijzen elke keer dat u implementeert. Dit dash board kan via een programma worden geconfigureerd en geïmplementeerd om te verwijzen naar elke virtuele machine van Azure. Als u deze functie wilt testen, kopieert u de volgende sjabloon en plakt u deze in de [pagina implementatie van Azure Portal sjabloon](https://portal.azure.com/#create/Microsoft.Template).
+In de sjabloon versie van het dash board zijn drie para meters met de naam `virtualMachineName` , `virtualMachineResourceGroup` en gedefinieerd `dashboardName` .  Met de para meters kunt u dit dash board op een andere virtuele Azure-machine laten wijzen elke keer dat u implementeert. Dit dash board kan via een programma worden geconfigureerd en geïmplementeerd om te verwijzen naar elke virtuele machine van Azure. Als u deze functie wilt testen, kopieert u de volgende sjabloon en plakt u deze in de [pagina implementatie van Azure Portal sjabloon](https://portal.azure.com/#create/Microsoft.Template).
 
 In dit voor beeld wordt een dash board op zichzelf geïmplementeerd, maar met de sjabloon taal kunt u meerdere resources implementeren en een of meer Dash boards naast elkaar bundelen.
 

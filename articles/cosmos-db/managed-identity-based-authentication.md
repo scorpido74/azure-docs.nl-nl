@@ -3,16 +3,16 @@ title: Een door het systeem toegewezen beheerde identiteit gebruiken om toegang 
 description: Meer informatie over het configureren van een door Azure Active Directory het systeem toegewezen beheerde identiteit (beheerde service-identiteit voor Azure AD) voor het verkrijgen van toegang tot sleutels van Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b277ae91dbdd747aba012d6e7302ed6cba61d938
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641236"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262264"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
 
@@ -28,13 +28,13 @@ In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan
 
 1. Open in het [Azure Portal](https://portal.azure.com/)het deel venster **Azure** en ga naar uw functie-app. 
 
-1. Open het tabblad**identiteit** van **platform functies** > : 
+1. Open het tabblad identiteit van **platform functies**  >  **Identity** : 
 
-   ![Scherm opname van platform functies en identiteits opties voor de functie-app.](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
 1. Schakel op het tabblad **identiteit** de **status** van de systeem identiteit **in** en selecteer **Opslaan**. Het **identiteits** venster moet er als volgt uitzien:  
 
-   ![Scherm afbeelding met de status van de systeem identiteit ingesteld op aan.](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Scherm afbeelding met de status van de systeem identiteit ingesteld op aan.":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Toegang verlenen tot uw Azure Cosmos-account
 
@@ -55,19 +55,19 @@ In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijf
 
 1. Meld u aan bij de Azure Portal en ga naar uw Azure Cosmos DB-account. Open het deel venster **toegangs beheer (IAM)** en vervolgens het tabblad **roltoewijzingen** :
 
-   ![Scherm opname van het deel venster toegangs beheer en het tabblad roltoewijzingen.](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Scherm opname van het deel venster toegangs beheer en het tabblad roltoewijzingen.":::
 
-1. Selecteer **+** > **functie toewijzing toevoegen**toevoegen.
+1. Selecteer **+ Toevoegen** > **Roltoewijzing toevoegen**.
 
 1. Het deel venster **roltoewijzing toevoegen** wordt aan de rechter kant geopend:
 
-   ![Scherm opname van het deel venster toewijzing van rol toevoegen.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Scherm opname van het deel venster toewijzing van rol toevoegen.":::
 
    * **Rol**: Selecteer **Inzender** voor het DocumentDB-account
    * **Toegang toewijzen aan**: Selecteer onder de Subsectie door het **systeem toegewezen beheerde identiteit selecteren** de optie **functie-app**.
    * **Selecteren**: het deel venster wordt gevuld met alle functie-apps in uw abonnement die een **beheerde systeem identiteit**hebben. In dit geval selecteert u de functie-app **FishTankTemperatureService** : 
 
-      ![Scherm opname waarin het deel venster roltoewijzing toevoegen is ingevuld met voor beelden.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Scherm opname waarin het deel venster roltoewijzing toevoegen is ingevuld met voor beelden.":::
 
 1. Nadat u de functie-app hebt geselecteerd, selecteert u **Opslaan**.
 
@@ -80,7 +80,7 @@ In dit voor beeld wordt de [List Keys API](https://docs.microsoft.com/rest/api/c
 > [!IMPORTANT] 
 > Als u de rol van [de Cosmos DB-account lezer wilt toewijzen](#grant-access-to-your-azure-cosmos-account) , moet u de [API lijst met alleen-lezen sleutels](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)gebruiken. Hiermee worden alleen-lezen sleutels gevuld.
 
-De List Keys-API retourneert `DatabaseAccountListKeysResult` het object. Dit type is niet gedefinieerd in de C#-bibliotheken. De volgende code toont de implementatie van deze klasse:  
+De List Keys-API retourneert het `DatabaseAccountListKeysResult` object. Dit type is niet gedefinieerd in de C#-bibliotheken. De volgende code toont de implementatie van deze klasse:  
 
 ```csharp 
 namespace Monitor 
@@ -112,7 +112,7 @@ namespace Monitor
 }
 ```
 
-U gebruikt de bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) om het door het systeem toegewezen beheerde identiteits token op te halen. Zie het artikel [service-naar-service-verificatie](../key-vault/general/service-to-service-authentication.md) voor meer informatie over andere `Microsoft.Azure.Service.AppAuthentication` manieren om het token op te halen en meer te weten te komen over de-bibliotheek.
+U gebruikt de bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) om het door het systeem toegewezen beheerde identiteits token op te halen. `Microsoft.Azure.Service.AppAuthentication`Zie het artikel [service-naar-service-verificatie](../key-vault/general/service-to-service-authentication.md) voor meer informatie over andere manieren om het token op te halen en meer te weten te komen over de-bibliotheek.
 
 
 ```csharp

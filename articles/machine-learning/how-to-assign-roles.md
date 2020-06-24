@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: eaa78637a2a88c1fceddf5b7ac9cd928ed8a444a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434679"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261474"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Een Azure Machine Learning-werk ruimte is een Azure-resource. Net als bij andere
 
 | Rol | Toegangsniveau |
 | --- | --- |
-| **Lezer** | Alleen-lezen acties in de werk ruimte. Lezers kunnen assets in een werk ruimte vermelden en weer geven, maar kunnen deze assets niet maken of bijwerken. |
+| **Lezer** | Alleen-lezen acties in de werk ruimte. Lezers kunnen assets in een werk ruimte opnemen en weer geven (inclusief [Data Store](how-to-access-data.md) -referenties), maar kunnen deze assets niet maken of bijwerken. |
 | **Inzender** | Activa in een werk ruimte weer geven, maken, bewerken of verwijderen (indien van toepassing). Inzenders kunnen bijvoorbeeld een experiment maken, een berekenings cluster maken of koppelen, een run verzenden en een webservice implementeren. |
 | **Eigenaar** | Volledige toegang tot de werk ruimte, met inbegrip van de mogelijkheid om activa in een werk ruimte weer te geven, te maken, te bewerken of te verwijderen (indien van toepassing). Daarnaast kunt u roltoewijzingen wijzigen. |
 
@@ -58,6 +58,9 @@ Het `user` veld is het e-mail adres van een bestaande gebruiker in het exemplaar
 ```azurecli-interactive 
 az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
+
+> [!NOTE]
+> de opdracht AZ ml Workspace share werkt niet voor een federatief account door Azure Active Directory B2B. Gebruik de Azure UI-Portal in plaats van de opdracht.
 
 ## <a name="create-custom-role"></a>Aangepast rol maken
 

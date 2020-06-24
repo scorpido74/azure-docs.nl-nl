@@ -3,19 +3,19 @@ title: Azure Cosmos DB-resources beheren met Azure CLI
 description: Gebruik Azure CLI voor het beheren van uw Azure Cosmos DB-account,-data base en-containers.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 86045ee05e4acb15e2268dce4f68387b1527e4b6
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: fe348c2bbd901934c6365be6efefafb44ef8d875
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509522"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262392"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-resources beheren met Azure CLI
 
-In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het automatiseren van het beheer van Azure Cosmos DB-accounts, -databases en -containers, met behulp van Azure CLI. Referentie pagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [Naslag informatie voor Azure cli](https://docs.microsoft.com/cli/azure/cosmosdb). U kunt ook meer voor beelden vinden in [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md), met inbegrip van het maken en beheren van Cosmos DB accounts, data bases en containers voor MongoDb, Gremlin, Cassandra en Table-API.
+In de volgende handleiding worden veelvoorkomende opdrachten beschreven voor het automatiseren van het beheer van Azure Cosmos DB-accounts, -databases en -containers, met behulp van Azure CLI. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). U kunt ook meer voor beelden vinden in [Azure CLI-voor beelden voor Azure Cosmos DB](cli-samples.md), met inbegrip van het maken en beheren van Cosmos DB accounts, data bases en containers voor MongoDb, Gremlin, Cassandra en Table-API.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897848"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263558"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB-bron tokens gebruiken met de Gremlin-SDK
 
@@ -24,13 +24,13 @@ De Apache TinkerPop Gremlin SDK heeft geen API voor het maken van bron tokens. D
 
 De hiërarchie object model boven bron tokens wordt geïllustreerd in het volgende overzicht:
 
-- **Azure Cosmos DB account** : de entiteit op het hoogste niveau waaraan een DNS is gekoppeld (bijvoorbeeld `contoso.gremlin.cosmos.azure.com`).
+- **Azure Cosmos DB account** : de entiteit op het hoogste niveau waaraan een DNS is gekoppeld (bijvoorbeeld `contoso.gremlin.cosmos.azure.com` ).
   - **Azure Cosmos DB-Data Base**
     - **Gebruiker**
       - **Machtiging**
         - **Token** : een eigenschap van het machtigings object waarmee wordt aangegeven welke acties worden toegestaan of geweigerd.
 
-Een bron token gebruikt de volgende indeling: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Deze teken reeks is ondoorzichtig voor de clients en moet worden gebruikt als, zonder aanpassing of interpretatie.
+Een bron token gebruikt de volgende indeling: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` . Deze teken reeks is ondoorzichtig voor de clients en moet worden gebruikt als, zonder aanpassing of interpretatie.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.

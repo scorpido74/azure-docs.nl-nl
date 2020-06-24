@@ -6,16 +6,16 @@ keywords: Favorieten, portal
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310812"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764125"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Favorieten toevoegen, verwijderen en opnieuw ordenen
 
@@ -23,7 +23,7 @@ Items toevoegen aan of verwijderen uit uw lijst met **Favorieten** , zodat u sne
 
 ## <a name="add-a-favorite"></a>Een favoriet toevoegen
 
-Items die worden vermeld onder **Favorieten** , worden geselecteerd in **alle services**. Beweeg de muis aanwijzer over een service naam om informatie en resources met betrekking tot de service weer te geven. ![Een gevuld ster pictogram met het ster](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) pictogram dat naast de service naam wordt weer gegeven, geeft aan dat het item voor komt in de lijst met **Favorieten** . Selecteer het ster pictogram om een service toe te voegen aan de lijst met **Favorieten** .
+Items die worden vermeld onder **Favorieten** , worden geselecteerd in **alle services**. Beweeg de muis aanwijzer over een service naam om informatie en resources met betrekking tot de service weer te geven. Een gevuld ster pictogram ![ ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) met het ster pictogram dat naast de service naam wordt weer gegeven, geeft aan dat het item voor komt in de lijst met **Favorieten** . Selecteer het ster pictogram om een service toe te voegen aan de lijst met **Favorieten** .
 
 ### <a name="add-cost-management--billing-to-favorites"></a>Cost Management en facturering toevoegen aan favorieten
 

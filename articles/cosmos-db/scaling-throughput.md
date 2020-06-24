@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873502"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113599"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Wereldwijd schalen van ingerichte doorvoer 
 
 In Azure Cosmos DB wordt ingerichte door Voer weer gegeven als aanvraag eenheden per seconde (RU/s of de meervouds vorm RUs). RUs meet de kosten van zowel lees-als schrijf bewerkingen voor uw Cosmos-container, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Aanvraageenheden](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="Aanvraag eenheden" border="false":::
 
 U kunt RUs inrichten op een Cosmos-container of een Cosmos-data base. RUs dat is ingericht voor een container is uitsluitend beschikbaar voor de bewerkingen die in die container worden uitgevoerd. RUs dat is ingericht voor een Data Base, wordt gedeeld tussen alle containers in die data base (met uitzonde ring van containers met uitsluitend toegewezen RUs).
 

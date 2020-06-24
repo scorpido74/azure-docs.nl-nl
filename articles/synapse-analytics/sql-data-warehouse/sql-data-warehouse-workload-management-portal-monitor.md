@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 31533eefbfae63e0eb4049d2eabaf6b853340636
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4f46ed1890bb62acc92eea28c55bf9abd6153e8b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590244"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208685"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics-werk belasting Beheerportal bewaking
 
@@ -26,7 +26,7 @@ Er zijn twee verschillende categorieën met metrische gegevens over werkbelastin
 
 ## <a name="workload-management-metric-definitions"></a>Metrische definities van workload Management
 
-|Metrische naam                    |Beschrijving  |Aggregatietype |
+|Naam meetwaarde                    |Beschrijving  |Aggregatietype |
 |-------------------------------|-------------|-----------------|
 |Effectief cap-resource percentage | *Effectief cap resource percent* is een vaste limiet voor het percentage resources dat door de werkbelasting groep toegankelijk is, waarbij rekening wordt gehouden met een *effectief min resource percentage* dat is toegewezen aan andere werkbelasting groepen. De *werkelijke Cap-resource procentwaarde* wordt geconfigureerd met behulp `CAP_PERCENTAGE_RESOURCE` van de para meter in de syntaxis voor het maken van een [werkbelasting groep](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  De geldige waarde wordt hier beschreven.<br><br>Als een werkbelasting groep bijvoorbeeld `DataLoads` is gemaakt met `CAP_PERCENTAGE_RESOURCE` = 100 en een andere werkbelasting groep wordt gemaakt met een effectief min resource percentage van 25%, is het percentage van de *effectief cap-resource* voor de `DataLoads` werkbelasting groep 75%.<br><br>Het *resource percentage van de effectief cap* bepaalt de bovengrens van gelijktijdigheid (en dus mogelijk door Voer) die een werkbelasting groep kan behalen.  Als er nog een extra door Voer is vereist dan wat momenteel wordt gerapporteerd door het *effectiefste Cap-percentage voor resources* , verhoogt u de `CAP_PERCENTAGE_RESOURCE` , verlaagt u de `MIN_PERCENTAGE_RESOURCE` andere werkbelasting groepen of verkleint u het exemplaar om meer resources toe te voegen.  Het verminderen van de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kan gelijktijdigheid verhogen, maar kan de algemene door Voer niet verhogen.| Min, Gem, Max |
 |Effectief min resource percentage |*Effectief min resource percentage* is het minimale percentage resources dat voor de werkbelasting groep is gereserveerd en geïsoleerd, waarbij rekening wordt gehouden met het minimum service niveau.  De werkelijke minimale resource procentuele waarde wordt geconfigureerd met behulp `MIN_PERCENTAGE_RESOURCE` van de para meter in de syntaxis [groep maken](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  De geldige waarde wordt [hier](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)beschreven.<br><br>Gebruik het aggregatie type Sum wanneer deze metriek niet is gefilterd en ongesplitst om de totale isolatie van de werk belasting te bewaken die op het systeem is geconfigureerd.<br><br>Het *werkelijke minimale resource percentage* bepaalt de laagste grens van gegarandeerde gelijktijdigheid (en dus gegarandeerde door Voer) die een werkbelasting groep kan belasten.  Als er extra gegarandeerde resources nodig zijn dan wordt gerapporteerd door de *werkelijke minimale resource procentuele* waarde, verhoogt u de `MIN_PERCENTAGE_RESOURCE` para meter die is geconfigureerd voor de werkbelasting groep.  Het verminderen van de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kan gelijktijdigheid verhogen, maar kan de algemene door Voer niet verhogen. |Min, Gem, Max|
@@ -59,7 +59,7 @@ De onderstaande grafiek wordt als volgt geconfigureerd:<br>
 Metriek 1: *effectief min resource percentage* (gem. aggregatie `blue line` )<br>
 Metriek 2: *toewijzing van werkbelasting groepen op systeem percentage* (gem. aggregatie `purple line` )<br>
 Filter: [werkbelasting groep] =`wgPriority`<br>
-![underutilized-WG. png ](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) in de grafiek ziet u dat er gemiddeld 10% wordt gebruikt voor de isolatie van 25%.  In dit geval kan de `MIN_PERCENTAGE_RESOURCE` waarde van de para meter worden verlaagd tot 10 of 15 en kunnen andere werk belastingen op het systeem de bronnen gebruiken.
+![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) in de grafiek ziet u dat er gemiddeld 10% wordt gebruikt voor de isolatie van 25%.  In dit geval kan de `MIN_PERCENTAGE_RESOURCE` waarde van de para meter worden verlaagd tot 10 of 15 en kunnen andere werk belastingen op het systeem de bronnen gebruiken.
 
 ### <a name="workload-group-bottleneck"></a>Bottleneck van werkbelasting groep
 
@@ -85,7 +85,7 @@ Filter: [werkbelasting groep] =`wgDataAnalyst`<br>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids: werk belasting isolatie configureren met T-SQL](quickstart-configure-workload-isolation-tsql.md)<br>
+- [Quickstart: Isolatie van werkbelastingen configureren met behulp van T-SQL](quickstart-configure-workload-isolation-tsql.md)<br>
 - [Werkbelasting groep maken (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br>
 - [CLASSIFICATIE van werk belasting maken (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)<br>
 - [Resource gebruik bewaken](sql-data-warehouse-concept-resource-utilization-query-activity.md)

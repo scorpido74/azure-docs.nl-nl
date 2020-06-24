@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190231"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207495"
 ---
 # <a name="create-a-data-source"></a>Een gegevensbron maken
 
@@ -22,11 +22,52 @@ De Azure Maps Web-SDK slaat gegevens op in gegevens bronnen. Het gebruik van geg
 
 **Geojson-gegevens bron**
 
-Met een geojson gebaseerde gegevens bron worden gegevens lokaal geladen en opgeslagen `DataSource` met behulp van de-klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De `DataSource` klasse biedt functies voor het importeren van lokale of externe geojson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De `DataSource` klasse biedt functionaliteit voor cluster-punt gegevens. En kunnen gegevens eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de `DataSource` -klasse.
+Met een geojson gebaseerde gegevens bron worden gegevens lokaal geladen en opgeslagen met behulp van de- `DataSource` klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De `DataSource` klasse biedt functies voor het importeren van lokale of externe GEOjson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De `DataSource` klasse biedt functionaliteit voor cluster-punt gegevens. En kunnen gegevens eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de- `DataSource` klasse. De volgende code laat zien hoe geojson-gegevens kunnen worden gemaakt in Azure Maps.
 
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
+
+//Create GeoJSON using helper classes (less error prone).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
+
+Zodra u deze hebt gemaakt, kunt u gegevens bronnen toevoegen aan de kaart via de `map.sources` eigenschap. Dit is een [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). De volgende code laat zien hoe u een maakt en hoe u `DataSource` deze toevoegt aan de kaart.
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+```
+
+De volgende code toont de verschillende manieren waarop geojson-gegevens kunnen worden toegevoegd aan een `DataSource` .
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
 
 > [!TIP]
-> Stel dat u wilt dat alle gegevens in een `DataSource`worden overschreven. Als u aanroepen naar de `clear` then `add` -functies, kan de kaart twee keer opnieuw worden weer gegeven. Dit kan een beetje vertraging veroorzaken. Gebruik in plaats `setShapes` daarvan de functie, waarmee alle gegevens in de gegevens bron worden verwijderd en vervangen en slechts één weer gave van de kaart wordt geactiveerd.
+> Stel dat u wilt dat alle gegevens in een worden overschreven `DataSource` . Als u aanroepen naar de `clear` then `add` -functies, kan de kaart twee keer opnieuw worden weer gegeven. Dit kan een beetje vertraging veroorzaken. Gebruik in plaats daarvan de `setShapes` functie, waarmee alle gegevens in de gegevens bron worden verwijderd en vervangen en slechts één weer gave van de kaart wordt geactiveerd.
 
 **Bron van vector tegel**
 
@@ -38,14 +79,6 @@ Een vector tegel bron beschrijft hoe een vector tegel laag kan worden geopend. G
  - Omdat de gegevens in een vector vorm worden geleverd, is er minder server-side verwerking vereist om de gegevens voor te bereiden. Als gevolg hiervan kunnen de nieuwere gegevens sneller beschikbaar worden gemaakt.
 
 Alle lagen die gebruikmaken van een vector bron moeten een `sourceLayer` waarde opgeven.
-
-Zodra u deze hebt gemaakt, kunt u gegevens bronnen toevoegen aan de `map.sources` kaart via de eigenschap. Dit is een [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). De volgende code laat zien hoe u een `DataSource` maakt en hoe u deze toevoegt aan de kaart.
-
-```javascript
-//Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
-```
 
 Azure Maps voldoet aan de [tegel specificatie Mapbox vector](https://github.com/mapbox/vector-tile-spec), een open standaard.
 

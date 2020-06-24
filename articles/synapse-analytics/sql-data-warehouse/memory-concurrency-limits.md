@@ -6,17 +6,17 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 443ac9ee1c2f05cf90e866793449220d71e37b89
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636397"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210658"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Geheugen-en gelijktijdigheids limieten voor Azure Synapse Analytics
 
@@ -30,7 +30,7 @@ In de volgende tabellen ziet u de maximale capaciteit voor het Data Warehouse op
 
 De service niveaus variëren van DW100c tot DW30000c.
 
-| Prestatie niveau | Rekenknooppunten | Distributies per reken knooppunt | Geheugen per Data Warehouse (GB) |
+| Prestatieniveau | Rekenknooppunten | Distributies per reken knooppunt | Geheugen per Data Warehouse (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW100c            | 1             | 60                             |    60                          |
 | DW200c            | 1             | 60                             |   120                          |

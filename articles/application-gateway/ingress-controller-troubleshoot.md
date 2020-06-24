@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het oplossen van veelvoorkomende 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/4/2019
+ms.topic: troubleshooting
+ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: a64a9ce5e080308674893273e90a0e83686e339e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795517"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207852"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Veelvoorkomende vragen of problemen met de ingangs controller oplossen
 
@@ -76,22 +76,22 @@ spec:
 EOF
 ```
 
-Kopieer en plak alle regels vanuit het bovenstaande script in een [Azure Cloud shell](https://shell.azure.com/). Zorg ervoor dat de volledige opdracht is gekopieerd, beginnend `cat` met en met inbegrip van de laatste `EOF`.
+Kopieer en plak alle regels vanuit het bovenstaande script in een [Azure Cloud shell](https://shell.azure.com/). Zorg ervoor dat de volledige opdracht is gekopieerd, beginnend met `cat` en met inbegrip van de laatste `EOF` .
 
 ![toepassen](./media/application-gateway-ingress-controller-troubleshooting/tsg--apply-config.png)
 
 Nadat een geslaagde implementatie van de app boven uw AKS-cluster een nieuwe Pod, dienst en ingang heeft.
 
-De lijst met peulen ophalen [Cloud Shell](https://shell.azure.com/)met Cloud shell `kubectl get pods -o wide`:.
+De lijst met peulen ophalen met [Cloud shell](https://shell.azure.com/): `kubectl get pods -o wide` .
 Er wordt verwacht dat er een pod met de naam ' test-agic-app-pod ' is gemaakt. Het heeft een IP-adres. Dit adres moet zich binnen het VNET van de Application Gateway bevindt, dat wordt gebruikt met AKS.
 
 ![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
-De lijst met services ophalen: `kubectl get services -o wide`. Verwacht wordt dat er een service met de naam ' test-agic-app-service ' wordt weer geven.
+De lijst met services ophalen: `kubectl get services -o wide` . Verwacht wordt dat er een service met de naam ' test-agic-app-service ' wordt weer geven.
 
 ![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
-De lijst met ingresses ophalen: `kubectl get ingress`. Er wordt verwacht dat een ingangs bron met de naam ' test-agic-app-ingang ' is gemaakt. De resource heeft de hostnaam ' test.agic.contoso.com '.
+De lijst met ingresses ophalen: `kubectl get ingress` . Er wordt verwacht dat een ingangs bron met de naam ' test-agic-app-ingang ' is gemaakt. De resource heeft de hostnaam ' test.agic.contoso.com '.
 
 ![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
@@ -102,17 +102,17 @@ I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied
 I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ```
 
-U kunt ook vanaf [Cloud shell](https://shell.azure.com/) alleen de regels ophalen met een geslaagde Application Gateway configuratie met `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'`, waarbij `<ingress-azure....>` u de exacte naam van de AGIC pod.
+U kunt ook vanaf [Cloud shell](https://shell.azure.com/) alleen de regels ophalen met een geslaagde Application Gateway configuratie met `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'` , waarbij u `<ingress-azure....>` de exacte naam van de AGIC pod.
 
 Application Gateway wordt de volgende configuratie toegepast:
 
-- Listener: ![listener](./media/application-gateway-ingress-controller-troubleshooting/tsg--listeners.png)
+- Listener: ![ listener](./media/application-gateway-ingress-controller-troubleshooting/tsg--listeners.png)
 
-- Routerings regel ![: routing_rule](./media/application-gateway-ingress-controller-troubleshooting/tsg--rule.png)
+- Routerings regel: ![ routing_rule](./media/application-gateway-ingress-controller-troubleshooting/tsg--rule.png)
 
 - Back-end-groep:
-  - Er is één IP-adres in de back-endadresgroep en dit komt overeen met het IP-adres van de pod die eerder `kubectl get pods -o wide` 
- ![zijn waargenomen met backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
+  - Er is één IP-adres in de back-endadresgroep en dit komt overeen met het IP-adres van de pod die eerder zijn waargenomen met `kubectl get pods -o wide` 
+ ![ backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
 
 
 Ten slotte kunt u de `cURL` opdracht vanuit [Cloud shell](https://shell.azure.com/) gebruiken om een http-verbinding tot stand te brengen met de zojuist geïmplementeerde app:
@@ -122,7 +122,7 @@ Ten slotte kunt u de `cURL` opdracht vanuit [Cloud shell](https://shell.azure.co
 
 ![gehele](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
-Als gevolg hiervan `HTTP/1.1 200 OK` wordt aangegeven dat Application Gateway het AKS + AGIC-systeem werkt zoals verwacht.
+Als gevolg hiervan wordt `HTTP/1.1 200 OK` aangegeven dat Application Gateway het AKS + AGIC-systeem werkt zoals verwacht.
 
 
 ## <a name="inspect-kubernetes-installation"></a>Kubernetes-installatie controleren
@@ -133,7 +133,7 @@ Application Gateway ingangs controller (AGIC) bewaakt voortdurend de volgende Ku
 
 Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
   1. AKS moet een of **meer goeden**hebben.
-     Controleer dit op [Cloud Shell](https://shell.azure.com/) basis van `kubectl get pods -o wide --show-labels` Cloud shell als u een pod hebt met `apsnetapp`een, kan uw uitvoer er als volgt uitzien:
+     Controleer dit op basis van [Cloud shell](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` Als u een pod hebt met een `apsnetapp` , kan uw uitvoer er als volgt uitzien:
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
 
@@ -141,7 +141,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Een of meer **Services**, die verwijzen naar de bovenstaande treffers `selector` via overeenkomende labels.
+  2. Een of meer **Services**, die verwijzen naar de bovenstaande treffers via overeenkomende `selector` labels.
      Controleer dit in [Cloud shell](https://shell.azure.com/) met`kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -150,7 +150,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. Inkomend **, met** `kubernetes.io/ingress.class: azure/application-gateway`een verwijzing naar de service hierboven verifiëren dit van [Cloud shell](https://shell.azure.com/) met`kubectl get ingress -o wide --show-labels`
+  3. Inkomend **, met** `kubernetes.io/ingress.class: azure/application-gateway` een verwijzing naar de service hierboven verifiëren dit van [Cloud shell](https://shell.azure.com/) met`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -158,7 +158,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
      aspnetapp   *                 80      17h   <none>
      ```
 
-  4. Bekijk de aantekeningen van de bovenstaande ingangen `kubectl get ingress aspnetapp -o yaml` : ( `aspnetapp` Vervang door de naam van uw ingang)
+  4. Bekijk de aantekeningen van de bovenstaande ingangen: `kubectl get ingress aspnetapp -o yaml` (Vervang `aspnetapp` door de naam van uw ingang)
      ```bash
      delyan@Azure:~$ kubectl get ingress aspnetapp -o yaml
 
@@ -174,7 +174,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
          servicePort: 80
      ```
 
-     Aan `kubernetes.io/ingress.class: azure/application-gateway`de ingangs bron moet aantekeningen worden toegevoegd.
+     Aan de ingangs bron moet aantekeningen worden toegevoegd `kubernetes.io/ingress.class: azure/application-gateway` .
  
 
 ### <a name="verify-observed-namespace"></a>Waargenomen naam ruimte controleren
@@ -190,7 +190,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
     ```
 
 
-* De AGIC-pod moet zich in `default` de naam ruimte bevinden (Zie de kolom `NAMESPACE`). In de `Running` `STATUS` kolom is een gezonde pod. Er moet ten minste één AGIC-pod zijn.
+* De AGIC-pod moet zich in de `default` naam ruimte bevinden (Zie de kolom `NAMESPACE` ). `Running`In de kolom is een gezonde pod `STATUS` . Er moet ten minste één AGIC-pod zijn.
 
     ```bash
     # Get a list of the Application Gateway Ingress Controller pods
@@ -198,7 +198,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
     ```
 
 
-* Als de AGIC pod niet in orde is`STATUS` (de kolom van de bovenstaande opdracht `Running`is niet):
+* Als de AGIC pod niet in orde is (de `STATUS` kolom van de bovenstaande opdracht is niet `Running` ):
   - Logboeken ophalen om te begrijpen waarom:`kubectl logs <pod-name>`
   - voor het vorige exemplaar van de Pod:`kubectl logs <pod-name> --previous`
   - Beschrijf de pod om meer context te krijgen:`kubectl describe pod <pod-name>`
@@ -215,7 +215,7 @@ Het volgende moet worden uitgevoerd om AGIC te laten werken zoals verwacht:
     ```
 
 
-* Maakt uw [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) inkomen aantekeningen met: `kubernetes.io/ingress.class: azure/application-gateway`? AGIC controleert alleen op Kubernetes ingangs resources die deze aantekening hebben.
+* Maakt uw [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) inkomen aantekeningen met: `kubernetes.io/ingress.class: azure/application-gateway` ? AGIC controleert alleen op Kubernetes ingangs resources die deze aantekening hebben.
     
     ```bash
     # Get the YAML definition of a particular ingress resource
@@ -244,60 +244,60 @@ De Kubernetes-Community heeft negen niveaus voor logboek registratie vastgesteld
 
 
 De uitbreidings niveaus zijn aanpasbaar via de `verbosityLevel` variabele in het bestand [helm-config. yaml](#sample-helm-config-file) . Verhoog het niveau uitgebreid tot `5` om de JSON-configuratie te verkrijgen die wordt verzonden naar [arm](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview):
-  - op `verbosityLevel: 5` een regel zelfstandig toevoegen in [helm-config. yaml](#sample-helm-config-file) en opnieuw installeren
+  - `verbosityLevel: 5`op een regel zelfstandig toevoegen in [helm-config. yaml](#sample-helm-config-file) en opnieuw installeren
   - Logboeken ophalen met`kubectl logs <pod-name>`
 
 ### <a name="sample-helm-config-file"></a>Voor beeld van helm-configuratie bestand
 ```yaml
-    # This file contains the essential configs for the ingress controller helm chart
+# This file contains the essential configs for the ingress controller helm chart
 
-    # Verbosity level of the App Gateway Ingress Controller
-    verbosityLevel: 3
-    
-    ################################################################################
-    # Specify which application gateway the ingress controller will manage
-    #
-    appgw:
-        subscriptionId: <subscriptionId>
-        resourceGroup: <resourceGroupName>
-        name: <applicationGatewayName>
-    
-        # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
-        # This prohibits AGIC from applying config for any host/path.
-        # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
-        shared: false
-    
-    ################################################################################
-    # Specify which kubernetes namespace the ingress controller will watch
-    # Default value is "default"
-    # Leaving this variable out or setting it to blank or empty string would
-    # result in Ingress Controller observing all acessible namespaces.
-    #
-    # kubernetes:
-    #   watchNamespace: <namespace>
-    
-    ################################################################################
-    # Specify the authentication with Azure Resource Manager
-    #
-    # Two authentication methods are available:
-    # - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
-    armAuth:
-        type: aadPodIdentity
-        identityResourceID: <identityResourceId>
-        identityClientID:  <identityClientId>
-    
-    ## Alternatively you can use Service Principal credentials
-    # armAuth:
-    #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
-    
-    ################################################################################
-    # Specify if the cluster is RBAC enabled or not
-    rbac:
-        enabled: false # true/false
-    
-    # Specify aks cluster related information. THIS IS BEING DEPRECATED.
-    aksClusterConfiguration:
-        apiServerAddress: <aks-api-server-address>
-    ```
+# Verbosity level of the App Gateway Ingress Controller
+verbosityLevel: 3
+
+################################################################################
+# Specify which application gateway the ingress controller will manage
+#
+appgw:
+    subscriptionId: <subscriptionId>
+    resourceGroup: <resourceGroupName>
+    name: <applicationGatewayName>
+
+    # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
+    # This prohibits AGIC from applying config for any host/path.
+    # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
+    shared: false
+
+################################################################################
+# Specify which kubernetes namespace the ingress controller will watch
+# Default value is "default"
+# Leaving this variable out or setting it to blank or empty string would
+# result in Ingress Controller observing all acessible namespaces.
+#
+# kubernetes:
+#   watchNamespace: <namespace>
+
+################################################################################
+# Specify the authentication with Azure Resource Manager
+#
+# Two authentication methods are available:
+# - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
+armAuth:
+    type: aadPodIdentity
+    identityResourceID: <identityResourceId>
+    identityClientID:  <identityClientId>
+
+## Alternatively you can use Service Principal credentials
+# armAuth:
+#    type: servicePrincipal
+#    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+
+################################################################################
+# Specify if the cluster is RBAC enabled or not
+rbac:
+    enabled: false # true/false
+
+# Specify aks cluster related information. THIS IS BEING DEPRECATED.
+aksClusterConfiguration:
+    apiServerAddress: <aks-api-server-address>
+```
 

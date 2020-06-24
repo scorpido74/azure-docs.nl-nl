@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
 ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258081"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691200"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Netwerk toewijzing en IP-adres Sering instellen voor VNets
 
@@ -73,7 +73,7 @@ Het IP-adres voor elke NIC op een virtuele doel machine wordt als volgt geconfig
 
 ## <a name="ip-address-assignment-during-failover"></a>Toewijzing van IP-adres tijdens failover
 
-**Bron-en doel-subnetten** | **Nadere**
+**Bron-en doel-subnetten** | **Details**
 --- | ---
 Dezelfde adres ruimte | IP-adres van de bron-VM-NIC is ingesteld als het IP-adres van de doel-VM-NIC.<br/><br/> Als het adres niet beschikbaar is, wordt het volgende beschik bare IP-adres ingesteld als het doel.
 Andere adres ruimte | Het volgende beschik bare IP-adres in het doel-subnet wordt ingesteld als het doel-VM NIC-adres.
@@ -82,7 +82,7 @@ Andere adres ruimte | Het volgende beschik bare IP-adres in het doel-subnet word
 
 ## <a name="ip-address-assignment-during-test-failover"></a>Toewijzing van IP-adressen tijdens testfailover
 
-**Doelnet netwerk** | **Nadere**
+**Doelnet netwerk** | **Details**
 --- | ---
 Het doelnet netwerk is het failover-VNet | -Het doel-IP-adres is statisch met hetzelfde IP-adres. <br/><br/>  -Als er al een IP-adres is toegewezen, is het IP-adres het volgende beschik bare aan het einde van het subnet-bereik. Bijvoorbeeld: als het IP-adres van de bron 10.0.0.19 is en het failover-netwerk het bereik 10.0.0.0/24 gebruikt, is het volgende IP-adres dat is toegewezen aan de doel-VM 10.0.0.254.
 Het doelnet netwerk is geen failover-VNet | -Het doel-IP-adres is statisch met hetzelfde IP-adres.<br/><br/>  -Als er al een IP-adres is toegewezen, is het IP-adres het volgende beschik bare aan het einde van het subnet-bereik.<br/><br/> Bijvoorbeeld: als het statische IP-adres van de bron 10.0.0.19 is en failover zich op een netwerk bevindt dat niet het failovercluster is, met het bereik 10.0.0.0/24, dan wordt het statische IP-adres van het doel 10.0.0.0.19 als dit beschikbaar is, en is het ook 10.0.0.254.

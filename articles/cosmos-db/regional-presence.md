@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 95b9a9804fe1a9473d226912f178284f701a1547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f02c07932c6a058ba4fa27289640b7efd56169
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72753233"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113667"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Regionale aanwezigheid met Azure Cosmos DB
 
 Azure Cosmos DB is een Foundational service in Azure en is standaard altijd beschikbaar in alle regio's, waar Azure beschikbaar is. Azure is momenteel beschikbaar in [54 regio's](https://azure.microsoft.com/global-infrastructure/regions/) wereld wijd. 
 
-[![Regio's waar Azure Cosmos DB beschikbaar is](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
+:::image type="content" source="./media/regional-presence/regional-presence.png" alt-text="Regio's waar Azure Cosmos DB beschikbaar is" lightbox="./media/regional-presence/regional-presence.png" border="false":::
 
 Cosmos DB is beschikbaar in alle vijf verschillende Azure-Cloud omgevingen die beschikbaar zijn voor klanten:
 

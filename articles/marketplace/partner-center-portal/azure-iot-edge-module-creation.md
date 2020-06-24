@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 14bbbb3cdbaa0074eaedaea81d273331fbd5abcd
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9129eb905bbdc7d9be24f403f3b3bf318d6d6a6f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672592"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211359"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Een IoT Edge module-aanbod maken, configureren en publiceren in azure Marketplace
 
@@ -111,7 +111,7 @@ Als u het standaard contract wilt gebruiken, schakelt u het selectie vakje **het
 > [!NOTE]
 > Nadat u een aanbieding hebt gepubliceerd met het standaard contract voor micro soft Commercial Marketplace, kunt u uw eigen aangepaste voor waarden niet gebruiken. U kunt uw oplossing aanbieden onder het Standard-contract of onder uw eigen voor waarden.
 
-![Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.](./media/iot-edge-module-creation/iot-edge-module-standard-contract-checkbox.png)
+![Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.](media//iot-edge-module-standard-contract-checkbox.png)
 
 ##### <a name="your-own-terms-and-conditions"></a>Uw eigen voor waarden
 
@@ -144,7 +144,7 @@ Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang
 
 Geef een gedetailleerdere beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -165,7 +165,7 @@ Voer het webadres in van het privacybeleid van uw organisatie. U bent verantwoor
 Bied aanvullende online documenten over uw aanbieding. U kunt Maxi maal 25 koppelingen toevoegen. Selecteer **+ een koppeling toevoegen** en vul vervolgens de volgende velden in om een koppeling toe te voegen:
 
 - **Titel** : klanten zien de titel op de pagina met details van de aanbieding.
-- **Koppeling (URL)** : Voer een koppeling voor klanten in om uw online document weer te geven. De koppeling moet beginnen met http://of https://.
+- **Koppeling (URL)** : Voer een koppeling voor klanten in om uw online document weer te geven. De koppeling moet beginnen met `http://` of `https://` .
 
 Zorg ervoor dat u ten minste één koppeling naar uw documentatie en een koppeling naar de compatibele IoT Edge apparaten toevoegt vanuit de [Azure IOT-apparaatinstantie](https://catalog.azureiotsolutions.com/).
 
@@ -194,7 +194,7 @@ Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef. PNG-bestanden van het logo van uw aanbieding in elk van de volgende vier pixel grootten:
+Bied PNG-bestanden van het logo van uw aanbieding in elk van de volgende vier pixel grootten:
 
 - **Klein (48 x 48)**
 - **Gemiddeld (90 x 90)**
@@ -205,33 +205,63 @@ Alle vier de logo's zijn vereist en worden gebruikt op verschillende plaatsen in
 
 #### <a name="screenshots-optional"></a>Scherm afbeeldingen (optioneel)
 
-Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot zijn en de indeling. png.
+Voeg Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot en in PNG-indeling zijn.
 
 #### <a name="videos-optional"></a>Video's (optioneel)
 
-Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de video, het webadres en een miniatuur. PNG-afbeelding van de video in op 1280 x 720 pixels.
+Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de video, het webadres en een miniatuur van de PNG-afbeelding van de video in op 1280 x 720 pixels.
 
-#### <a name="offer-examples"></a>Voorbeelden van aanbieding
+#### <a name="marketplace--examples"></a>Marketplace-voor beelden
 
-In de volgende voor beelden ziet u hoe de velden van het aanbod lijst worden weer gegeven op verschillende plaatsen van de aanbieding.
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in azure Marketplace:
 
-Deze scherm afbeelding toont de **aanbiedings** pagina in azure Marketplace.
+:::image type="content" source="media/example-iot-azure-marketplace-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-offer-listing-page.png" alt-text="Illustreert de aanbiedings pagina in azure Marketplace.":::
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
-Deze scherm afbeelding toont de zoek resultaten in azure Marketplace:
+1. Groot logo
+2. Categorieën
+3. Ondersteunings adres (koppeling)
+4. Voorwaarden
+5. Adres van privacybeleid (koppeling)
+6. Name
+7. Samenvatting
+8. Beschrijving
+9. Handige koppelingen
+10. Scherm afbeeldingen/Video's
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-search-results.png" alt-text="Illustreert de zoek resultaten in azure Marketplace.":::
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de zoek resultaten van Azure Marketplace:
 
-In deze scherm afbeelding ziet u de pagina aanbiedings **vermelding** in de Azure Portal.
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de zoek resultaten voor Azure Marketplace.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-listing-page-azure-portal.png" alt-text="Illustreert de aanbiedings pagina van de aanbieding in Azure Portal.":::
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
-Deze scherm afbeelding toont de zoek resultaten in de Azure Portal.
+1. Klein logo
+2. Naam van aanbieding
+3. Samen vatting van zoek resultaten
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-search-results.png" alt-text="Illustreert de aanbiedings pagina van de aanbieding in Azure Portal.":::
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
 
-Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, voor beeld.
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Naam
+2. Beschrijving
+3. Handige koppelingen
+4. Schermopnamen
+
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal Zoek resultaten:
+
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal Zoek resultaten.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Klein logo
+2. Naam van aanbieding
+3. Samen vatting van zoek resultaten
+
+<br>Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, voor beeld.
 
 ## <a name="preview"></a>Preview
 
@@ -286,18 +316,18 @@ Selecteer **Maken**.
 
 Op dit tabblad kunt u configureren in welke Clouds het plan beschikbaar is. Uw antwoorden op dit tabblad bepalen welke velden op andere tabbladen worden weer gegeven.
 
-#### <a name="cloud-availability"></a>Beschik baarheid in de Cloud
+#### <a name="azure-regions"></a>Azure-regio's
 
 Alle plannen voor IoT Edge module aanbiedingen worden automatisch beschikbaar gemaakt in **Azure Global**.  Uw abonnement kan door klanten worden gebruikt in alle wereld wijde Azure-regio's die gebruikmaken van Marketplace. Zie [geografische Beschik baarheid en valuta ondersteuning](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)voor meer informatie.
 
-Selecteer de optie [Azure Government Cloud](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten). Voordat u naar Azure Government [publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Als u uw oplossing wilt klaarzetten en testen, vraagt u een proef account aan bij [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/).
+Selecteer de optie [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) om uw oplossing hier weer te geven. Dit is een community-Cloud met gecontroleerde toegang voor klanten van de Amerikaanse federale, staats-en lokale of tribale overheids instanties en partners die in aanmerking komen voor de overheid. Als uitgever bent u verantwoordelijk voor nalevings controles, beveiligings maatregelen en aanbevolen procedures voor deze Cloud community. Azure Government maakt gebruik van fysiek geïsoleerde data centers en netwerken (alleen in de Verenigde Staten). Voordat u naar Azure Government [publiceert](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) , moet u de oplossing in dat gebied testen en bevestigen, omdat de resultaten mogelijk verschillend zijn. Als u uw oplossing wilt klaarzetten en testen, vraagt u een proef account aan bij [Microsoft Azure Government proef versie](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
-> Nadat uw plan is gepubliceerd en beschikbaar is in een specifieke Cloud, kunt u die Cloud niet verwijderen.
+> Nadat uw plan is gepubliceerd en beschikbaar is in een specifieke regio, kunt u die regio niet verwijderen.
 
-#### <a name="azure-government-cloud-certifications"></a>Cloud certificeringen Azure Government
+#### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie is alleen zichtbaar als **Azure Government Cloud** is geselecteerd onder **Beschik baarheid**in de Cloud.
+Deze optie is alleen zichtbaar als **Azure Government** is geselecteerd onder **Beschik baarheid**in de Cloud.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS. Als u uw certificeringen voor deze Program ma's wilt behalen, kunt u Maxi maal 100 koppelingen opgeven die uw certificeringen beschrijven. Dit kunnen koppelingen zijn naar uw aanbiedingen op het programma, rechtstreeks of op uw eigen website. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
@@ -307,7 +337,7 @@ Dit tabblad bevat specifieke informatie voor elk abonnement binnen dezelfde aanb
 
 ### <a name="plan-name"></a>Plan naam
 
-Dit is vooraf ingevuld met de naam die u hebt opgegeven bij het maken van het abonnement. U kunt deze naam, indien nodig, wijzigen. Het kan Maxi maal 50 tekens lang zijn. Deze naam wordt weer gegeven als de titel van dit plan in azure Marketplace en Azure Portal. De naam wordt als de standaard modulenaam gebruikt nadat het plan gereed is om te worden gebruikt.
+Dit is vooraf ingevuld met de naam die u hebt opgegeven bij het maken van het abonnement. U kunt deze naam, indien nodig, wijzigen. Het kan Maxi maal 50 tekens lang zijn. Deze naam wordt weer gegeven als de titel van dit plan in azure Marketplace en de Azure Portal. De naam wordt als de standaard modulenaam gebruikt nadat het plan gereed is om te worden gebruikt.
 
 ### <a name="plan-summary"></a>Samen vatting plannen
 
@@ -321,15 +351,25 @@ Selecteer **concept opslaan** nadat u deze velden hebt voltooid.
 
 #### <a name="plan-examples"></a>Voor beelden plannen
 
-In de volgende voor beelden ziet u hoe de velden van het plan vermelding worden weer gegeven in verschillende weer gaven.
+Hier volgt een voor beeld van de details van het Azure Marketplace-plan (alle prijzen in de lijst zijn alleen bedoeld als voor beeld van de werkelijke kosten):
 
-Dit zijn de velden in azure Marketplace wanneer u de details van het abonnement bekijkt:
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Illustreert Details van het Azure Marketplace-abonnement.":::
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-marketplace-plan-details.png" alt-text="Illustreert de velden die u ziet wanneer u de details van het plan bekijkt in azure Marketplace.":::
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
-Dit zijn de details van het abonnement op de Azure Portal:
+1. Naam van aanbieding
+2. Plan naam
+3. Plan beschrijving
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-azure-portal-plan-details.png" alt-text="Illustreert Details van het abonnement op de Azure Portal.":::
+<br>Hier volgt een voor beeld van de details van het Azure Portal plan (alle prijzen in de lijst zijn alleen bedoeld als voor beeld van de werkelijke kosten):
+
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Illustreert de details van het Azure Portal plan.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Naam van aanbieding
+2. Plan naam
+3. Plan beschrijving
 
 ## <a name="availability"></a>Beschikbaarheid
 
@@ -364,11 +404,21 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 
 **Gebruikers naam van de beheerder voor de Azure container Registry**: Geef de [gebruikers naam](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account) van de beheerder op die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap met **beheerders** rechten in op **True** met behulp van de Azure-opdracht regel interface (CLI). U kunt desgewenst **beheerder** instellen om in te **scha kelen** in de Azure Portal.
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="Illustreert het dialoog venster update container Registry.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Illustreert het dialoog venster update container Registry.":::
 
-**Wacht woord voor de Azure container Registry**: Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
+#### <a name="call-out-description"></a>Beschrijving van aanroep
 
-:::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="Illustreert het toegangs sleutel scherm in Azure Portal.":::
+1. Beheerder
+
+<br>**Wacht woord voor de Azure container Registry**: Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
+
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Illustreert het scherm toegangs sleutel in de Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Toegangssleutels
+2. Gebruikersnaam
+3. Wachtwoord
 
 **De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **pagina container Registry opslagplaatsen**te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)voor meer informatie. Houd er rekening mee dat de naam niet kan worden gewijzigd nadat deze is ingesteld. Gebruik een unieke naam voor elke aanbieding in uw account.
 

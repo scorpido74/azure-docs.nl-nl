@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839199"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116295"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Georuimtelijke gegevens indexeren met Azure Cosmos DB
 
@@ -34,13 +34,13 @@ U kunt scha kelen tussen het ruimtelijke type **geografie** en **geometrie** in 
 
 U kunt als volgt de **georuimtelijke configuratie** instellen in **Data Explorer** in het Azure portal:
 
-![Georuimtelijke configuratie instellen](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="Georuimtelijke configuratie instellen":::
 
 U kunt ook de `geospatialConfig` in de .NET SDK aanpassen om de **georuimtelijke configuratie**aan te passen:
 
-Als u niets opgeeft, `geospatialConfig` wordt de standaard waarde ingesteld op het gegevens type geografie. Wanneer u de `geospatialConfig`wijzigt, worden alle bestaande georuimtelijke gegevens in de container opnieuw geïndexeerd.
+Als u niets opgeeft, `geospatialConfig` wordt de standaard waarde ingesteld op het gegevens type geografie. Wanneer u de wijzigt `geospatialConfig` , worden alle bestaande georuimtelijke gegevens in de container opnieuw geïndexeerd.
 
-Hier volgt een voor beeld van het wijzigen van het georuimtelijke gegevens type `geospatialConfig` naar door de eigenschap in te stellen en een **boundingBox**toe te `geometry` voegen:
+Hier volgt een voor beeld van het wijzigen van het georuimtelijke gegevens type naar `geometry` door de eigenschap in te stellen `geospatialConfig` en een **boundingBox**toe te voegen:
 
 ```csharp
     //Retrieve the container's details
@@ -107,7 +107,7 @@ U kunt het [indexerings beleid ook wijzigen](how-to-manage-indexing-policy.md) m
 
 ## <a name="geometry-data-indexing-examples"></a>Voor beelden van geometrie gegevens indexeren
 
-Met het gegevens type **geometrie** , vergelijkbaar met het gegevens type geografie, moet u relevante paden en typen opgeven die u wilt indexeren. Daarnaast moet u ook een `boundingBox` binnen het indexerings beleid opgeven om het gewenste gebied aan te geven dat voor dat specifieke pad moet worden geïndexeerd. Elk georuimtelijke pad vereist eigen`boundingBox`.
+Met het gegevens type **geometrie** , vergelijkbaar met het gegevens type geografie, moet u relevante paden en typen opgeven die u wilt indexeren. Daarnaast moet u ook een `boundingBox` binnen het indexerings beleid opgeven om het gewenste gebied aan te geven dat voor dat specifieke pad moet worden geïndexeerd. Elk georuimtelijke pad vereist eigen `boundingBox` .
 
 Het selectie kader bestaat uit de volgende eigenschappen:
 
@@ -120,7 +120,7 @@ Een selectie kader is vereist omdat geometrische gegevens een vlieg tuig in besl
 
 Maak een selectie kader dat alle (of de meeste) gegevens bevat. Alleen bewerkingen die zijn berekend op de objecten die zich volledig binnen het begrenzingsvak bevinden, kunnen de ruimtelijke index gebruiken. Als het selectie vakje groter is dan nodig is, heeft dit een negatieve invloed op de query prestaties.
 
-Hier volgt een voor beeld van een indexerings beleid waarmee **geometrie** gegevens worden `geometry`geïndexeerd waarbij **geospatialConfig** is ingesteld op:
+Hier volgt een voor beeld van een indexerings beleid waarmee **geometrie** gegevens worden geïndexeerd waarbij **geospatialConfig** is ingesteld op `geometry` :
 
 ```json
  {
@@ -159,7 +159,7 @@ Hier volgt een voor beeld van een indexerings beleid waarmee **geometrie** gegev
 Het bovenstaande indexerings beleid heeft een **boundingBox** van (-10, 10) voor x-coördinaten en (-20, 20) voor y-coördinaten. De container met het bovenstaande indexerings beleid indexeert alle punten, veelhoeken, multiveelhoeken en line strings toe die volledig binnen deze regio vallen.
 
 > [!NOTE]
-> Als u probeert een indexerings beleid met een **boundingBox** toe te voegen aan `geography` een container met gegevens type, zal dit mislukken. Wijzig de **geospatialConfig** van de container naar `geometry` voordat u een **boundingBox**toevoegt. U kunt gegevens toevoegen en de rest van uw indexerings beleid (zoals de paden en typen) wijzigen vóór of na het selecteren van het georuimtelijke gegevens type voor de container.
+> Als u probeert een indexerings beleid met een **boundingBox** toe te voegen aan een container met `geography` gegevens type, zal dit mislukken. Wijzig de **geospatialConfig** van de container naar voordat u `geometry` een **boundingBox**toevoegt. U kunt gegevens toevoegen en de rest van uw indexerings beleid (zoals de paden en typen) wijzigen vóór of na het selecteren van het georuimtelijke gegevens type voor de container.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,15 +3,15 @@ title: Niet-gepartitioneerde Azure Cosmos-containers migreren naar gepartitionee
 description: Meer informatie over het migreren van alle bestaande niet-gepartitioneerde containers in gepartitioneerde containers.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623354"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263480"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
 
@@ -24,7 +24,7 @@ De niet-gepartitioneerde containers zijn verouderd en u moet uw bestaande niet-g
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Container migreren met de door het systeem gedefinieerde partitie sleutel
 
-Ter ondersteuning van de migratie bevat Azure Cosmos DB een door het systeem gedefinieerde partitie `/_partitionkey` sleutel met de naam op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit:
+Ter ondersteuning van de migratie bevat Azure Cosmos DB een door het systeem gedefinieerde partitie sleutel met `/_partitionkey` de naam op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit:
 
 ```json
 {
@@ -95,7 +95,7 @@ Zie de GitHub-opslag plaats voor [.net][1] -voor beelden voor het volledige voor
                       
 ## <a name="migrate-the-documents"></a>De documenten migreren
 
-Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat het pad naar de `/_partitionKey` eigenschap van de systeem partitie sleutel niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en ze terug te schrijven naar `_partitionKey` de eigenschap in de documenten.
+Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat het pad naar de eigenschap van de systeem partitie sleutel `/_partitionKey` niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en ze terug te schrijven naar `_partitionKey` de eigenschap in de documenten.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Toegang tot documenten die geen partitie sleutel hebben
 
@@ -122,9 +122,9 @@ Als een gemigreerde container wordt gebruikt door de nieuwste/V3-versie van de S
 
 **Voor het tellen van items die zijn ingevoegd zonder een partitie sleutel met behulp van de V3 SDK is mogelijk een hoger doorvoer verbruik vereist**
 
-Als u een query uitvoert vanuit de V3 SDK voor de items die worden ingevoegd met behulp van v2 SDK of de items die zijn ingevoegd met `PartitionKey.None` behulp van de V3 SDK met de para meter, kan de `PartitionKey.None` aantal query's meer ru/s verbruiken als de para meter wordt opgegeven in de FeedOptions. We raden u aan de `PartitionKey.None` para meter niet op te geven als er geen andere items zijn ingevoegd met een partitie sleutel.
+Als u een query uitvoert vanuit de V3 SDK voor de items die worden ingevoegd met behulp van v2 SDK of de items die zijn ingevoegd met behulp van de V3 SDK met de `PartitionKey.None` para meter, kan de aantal query's meer ru/s verbruiken als de `PartitionKey.None` para meter wordt opgegeven in de FeedOptions. We raden u aan de `PartitionKey.None` para meter niet op te geven als er geen andere items zijn ingevoegd met een partitie sleutel.
 
-Als er nieuwe items worden ingevoegd met verschillende waarden voor de partitie sleutel, telt het uitvoeren van een query op dergelijke items door het `FeedOptions` door geven van de juiste sleutel in zullen geen problemen ondervinden. Als u na het invoegen van nieuwe documenten met de partitie sleutel een query wilt uitvoeren op alleen het aantal documenten zonder de partitie sleutel waarde, kan deze query meer dan RU/s hebben die vergelijkbaar is met de reguliere gepartitioneerde verzamelingen.
+Als er nieuwe items worden ingevoegd met verschillende waarden voor de partitie sleutel, telt het uitvoeren van een query op dergelijke items door het door geven van de juiste sleutel in `FeedOptions` zullen geen problemen ondervinden. Als u na het invoegen van nieuwe documenten met de partitie sleutel een query wilt uitvoeren op alleen het aantal documenten zonder de partitie sleutel waarde, kan deze query meer dan RU/s hebben die vergelijkbaar is met de reguliere gepartitioneerde verzamelingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

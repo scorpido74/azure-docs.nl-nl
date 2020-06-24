@@ -6,15 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618756"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262664"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-sleutels beveiligen met Azure Key Vault 
 
@@ -38,7 +38,7 @@ De volgende stappen zijn vereist om Azure Cosmos DB toegangs sleutels op te slaa
 3. Geef in de sectie **Sleutelkluis maken** de volgende gegevens op:  
    * **Naam:** Geef een unieke naam op voor de Key Vault.  
    * **Abonnement:** Kies het abonnement dat u gaat gebruiken.  
-   * Kies **Nieuw** bij **Resourcegroep** en voer de naam van een resourcegroep in.  
+   * Klik onder **resource groep** op **nieuwe maken** en voer een naam voor de resource groep in.  
    * Kies een locatie in de vervolgkeuzelijst Locatie.  
    * Wijzig de standaard instellingen van de andere opties.  
 4. Selecteer na het opgeven van de bovenstaande gegevens **Maken**.  
@@ -51,7 +51,7 @@ De volgende stappen zijn vereist om Azure Cosmos DB toegangs sleutels op te slaa
    * Geef een **naam** op voor uw geheim
    * Geef de connection string van uw Cosmos DB-account op in het veld **waarde** . En selecteer vervolgens **Maken**.
 
-   ![Een geheim maken](./media/access-secrets-from-keyvault/create-a-secret.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Een geheim maken":::
 
 4. Nadat het geheim is gemaakt, opent u het en kopieert u de geheime id * * in de volgende indeling. U gebruikt deze id in de volgende sectie. 
 
@@ -70,11 +70,11 @@ De volgende stappen zijn vereist om Azure Cosmos DB toegangs sleutels op te slaa
 
 5. Zodra de toepassing is geïmplementeerd. Ga vanuit het Azure Portal naar de web-app die u hebt geïmplementeerd en schakel de **beheerde service-identiteit** van deze toepassing in.  
 
-   ![Beheerde service-identiteit](./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Beheerde service-identiteit":::
 
 Als u de toepassing nu wilt uitvoeren, wordt de volgende fout weer gegeven, omdat u geen machtiging hebt gekregen voor deze toepassing in Key Vault.
 
-![App geïmplementeerd zonder toegang](./media/access-secrets-from-keyvault/app-deployed-without-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="App geïmplementeerd zonder toegang":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>De toepassing registreren & machtigingen verlenen om de Key Vault te lezen
 
@@ -84,11 +84,11 @@ In deze sectie registreert u de toepassing met Azure Active Directory en geeft u
 
 2. Open **toegangs beleid**, selecteer **+ nieuwe** zoeken de web-app die u hebt geïmplementeerd, selecteer machtigingen en selecteer **OK**.  
 
-   ![Toegangs beleid toevoegen](./media/access-secrets-from-keyvault/add-access-policy.png)
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Toegangs beleid toevoegen":::
 
 Als u de toepassing nu uitvoert, kunt u het geheim lezen van Key Vault.
 
-![App geïmplementeerd met geheim](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="App geïmplementeerd met geheim":::
  
 Op dezelfde manier kunt u een gebruiker toevoegen voor toegang tot de sleutel kluis. U moet uzelf toevoegen aan de Key Vault door **toegangs beleid** te selecteren en vervolgens alle machtigingen te verlenen die u nodig hebt om de toepassing uit te voeren vanuit Visual Studio. Wanneer deze toepassing wordt uitgevoerd vanaf uw bureau blad, neemt u uw identiteit in beslag.
 

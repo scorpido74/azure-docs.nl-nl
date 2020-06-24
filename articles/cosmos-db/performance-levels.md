@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d9e9ed1a65265a119f59edee7da1b8f244e2f7f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623329"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112732"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Het buiten gebruik stellen van de prestatieniveaus S1, S2 en S3
 
@@ -76,7 +76,7 @@ In elk van deze gevallen kunt u, nadat u de verzameling hebt gemigreerd, uw door
 
 Ervan uitgaande dat u 10 S1-verzamelingen hebt, 1 GB aan opslag voor elke, in de regio VS Oost en migreert u deze 10 S1-verzamelingen naar tien enkelvoudige partitie verzamelingen op 400 RU/SEC (het minimale niveau). Uw factuur ziet er als volgt uit als u de tien afzonderlijke partitie verzamelingen voor een volledige maand wilt houden:
 
-![Hoe S1 prijzen voor 10 verzamelingen vergelijkt met 10 verzamelingen met prijzen voor een enkele partitie verzameling](./media/performance-levels/s1-vs-standard-pricing.png)
+:::image type="content" source="./media/performance-levels/s1-vs-standard-pricing.png" alt-text="Hoe S1 prijzen voor 10 verzamelingen vergelijkt met 10 verzamelingen met prijzen voor een enkele partitie verzameling" border="false":::
 
 <a name="more-storage-needed"></a>
 

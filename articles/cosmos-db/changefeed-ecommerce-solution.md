@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe wijzigings invoer door een reta
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513489"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263004"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
 
@@ -28,7 +28,7 @@ Bekijk de volgende video voor meer informatie over het bekijken van een video ov
 ## <a name="solution-components"></a>Oplossingsonderdelen
 Het volgende diagram geeft de gegevens stroom en onderdelen die bij de oplossing horen:
 
-![Project-visueel element](./media/changefeed-ecommerce-solution/project-visual.png)
+:::image type="content" source="./media/changefeed-ecommerce-solution/project-visual.png" alt-text="Project-visueel element" border="false":::
  
 1. **Gegevens genereren:** Data Simulator wordt gebruikt voor het genereren van Retail gegevens die gebeurtenissen vertegenwoordigen, zoals een gebruiker die een item bekijkt, een item toevoegt aan hun mandje en een item koopt. U kunt een grote set voorbeeld gegevens genereren met behulp van de gegevens generator. De gegenereerde voorbeeld gegevens bevatten documenten met de volgende indeling:
    
@@ -78,9 +78,9 @@ Maak de Azure-resources-Azure Cosmos DB,-opslag account, Event hub Stream Analyt
    Set-ExecutionPolicy Unrestricted 
    ```
 
-2. Ga vanuit de GitHub-opslag plaats die u in de vorige stap hebt gedownload naar de map **Azure Resource Manager** en open het bestand met de naam **para meters. json** .  
+2. Ga vanuit de GitHub-opslag plaats die u in de vorige stap hebt gedownload naar de map **Azure Resource Manager** en open het bestand met de naam **parameters.jsin** het bestand.  
 
-3. Geef waarden op voor de cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, para meters zoals aangegeven in het bestand **para meters. json** . U moet de namen die u aan uw resources verstrekt, later gebruiken.  
+3. Geef waarden op voor de cosmosdbaccount_name, eventhubnamespace_name, storageaccount_name, para meters zoals aangegeven in **parameters.jsin** het bestand. U moet de namen die u aan uw resources verstrekt, later gebruiken.  
 
 4. Ga vanuit **Windows Power shell**naar de map **Azure Resource Manager** en voer de volgende opdracht uit:
 
@@ -149,7 +149,7 @@ Wanneer een nieuw document wordt gemaakt of een huidig document is gewijzigd in 
 
 2. Klik met de rechter muisknop op het bestand met de naam **ChangeFeedLabSolution. SLN** en selecteer **openen met Visual Studio**.  
 
-3. Navigeer naar **Local. settings. json** in Visual Studio. Gebruik vervolgens de waarden die u eerder hebt vastgelegd om de lege velden in te vullen.  
+3. Ga in Visual Studio naar **local.settings.js** . Gebruik vervolgens de waarden die u eerder hebt vastgelegd om de lege velden in te vullen.  
 
 4. Navigeer naar **ChangeFeedProcessor.cs**. Voer de volgende acties uit in de para meters voor de functie **Run** :  
 
@@ -165,11 +165,11 @@ Als u wilt zien hoe wijzigingen in de feed nieuwe acties op een e-commerce-site 
 
 1. Ga terug naar de opslag plaats in Verkenner en klik met de rechter muisknop op **ChangeFeedFunction. SLN** om het opnieuw te openen in een nieuw Visual Studio-venster.  
 
-2. Navigeer naar het bestand **app. config** . Voeg binnen `<appSettings>` het blok het eind punt en de unieke **primaire sleutel** toe van uw Azure Cosmos DB account dat u eerder hebt opgehaald.  
+2. Navigeer naar het **App.config** -bestand. Voeg binnen het `<appSettings>` blok het eind punt en de unieke **primaire sleutel** toe van uw Azure Cosmos DB account dat u eerder hebt opgehaald.  
 
 3. Voeg de namen van de **verzameling** en de **Data Base** toe. (Deze namen moeten **changefeedlabcollection** en **changefeedlabdatabase** zijn, tenzij u een andere naam wilt opgeven.)
 
-   ![Verbindings reeksen bijwerken](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="Verbindings reeksen bijwerken":::
  
 4. Sla de wijzigingen op in alle bestanden die zijn bewerkt.  
 
@@ -179,7 +179,7 @@ Als u wilt zien hoe wijzigingen in de feed nieuwe acties op een e-commerce-site 
 
 7. Als u naar [Azure Portal](https://portal.azure.com/) navigeert, vervolgens naar het Cosmos DB-account in de resource groep en vervolgens naar **Data Explorer**, ziet u de wille keurige gegevens die in uw **changefeedlabcollection** zijn geïmporteerd.
  
-   ![Gegevens die in de portal worden gegenereerd](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="Gegevens die in de portal worden gegenereerd":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>Een stream Analytics-taak instellen
 
@@ -189,7 +189,7 @@ Azure Stream Analytics is een volledig beheerde Cloud service voor realtime-verw
 
 2. Selecteer de **invoer** zoals hieronder wordt geïllustreerd.  
 
-   ![Invoer maken](./media/changefeed-ecommerce-solution/create-input.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="Invoer maken":::
 
 3. Selecteer **+ stroom invoer toevoegen**. Selecteer vervolgens **Event hub** in de vervolg keuzelijst.  
 
@@ -221,7 +221,7 @@ Azure Stream Analytics is een volledig beheerde Cloud service voor realtime-verw
 
 8. Ga vervolgens terug naar **streamjob1** en selecteer **query bewerken**.
 
-   ![Query bewerken](./media/changefeed-ecommerce-solution/edit-query.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="Query bewerken":::
  
 9. Plak de volgende query in het query venster. De **gemiddelde prijs** query berekent de gemiddelde prijs van alle items die worden weer gegeven door gebruikers, de gemiddelde prijs van alle items die worden toegevoegd aan de manden van gebruikers en de gemiddelde prijs van alle items die door gebruikers worden gekocht. Met deze metriek kunnen e-commerce-bedrijven helpen bij het bepalen van de prijzen voor het verkopen van artikelen op en de inventarisatie in. Als de gemiddelde prijs van items die worden weer gegeven, bijvoorbeeld veel hoger is dan de gemiddelde prijs van de gekochte artikelen, kan een bedrijf ervoor kiezen minder dure artikelen toe te voegen aan de inventaris.
 
@@ -314,7 +314,7 @@ Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kun
 
    Zo ziet een voorbeeld dashboard eruit met deze grafieken:
 
-   ![visualisaties](./media/changefeed-ecommerce-solution/visualizations.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="visualisaties":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optioneel: visualiseren met een E-commerce-site
 
@@ -322,19 +322,19 @@ U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken o
 
 1. Ga terug naar de [Azure Portal](https://portal.azure.com/), vervolgens naar uw **Cosmos DB account**en vervolgens naar **Data Explorer**.  
 
-   Voeg twee verzamelingen onder **changefeedlabdatabase** - -**producten** en- **Categorieën** met vaste opslag capaciteit toe.
+   Voeg twee verzamelingen onder **changefeedlabdatabase**-  -  **producten** en- **Categorieën** met vaste opslag capaciteit toe.
 
    Voeg een andere verzameling toe onder **changefeedlabdatabase** met de naam **topItems** en **/item** als de partitie sleutel.
 
 2. Selecteer de **topItems** -verzameling en stel onder **schaal en instellingen** de **time to Live** in op **30 seconden** zodat topItems elke 30 seconden wordt bijgewerkt.
 
-   ![Time To Live](./media/changefeed-ecommerce-solution/time-to-live.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Time To Live":::
 
 3. Als u de **topItems** verzameling met de meest gekochte items wilt vullen, gaat u terug naar **streamjob1** en voegt u een nieuwe **uitvoer**toe. Selecteer **Cosmos DB**.
 
 4. Vul de vereiste velden in zoals hieronder wordt beschreven.
 
-   ![Cosmos uitvoer](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos uitvoer":::
  
 5. Als u de optionele TOP 5-query in het vorige deel van het Lab hebt toegevoegd, gaat u verder met deel 5a. Als dat niet het geval is, gaat u verder met stap 5.
 
@@ -374,15 +374,15 @@ U ziet nu hoe u het nieuwe hulp programma voor gegevens analyse kunt gebruiken o
    FROM arrayselect
    ```
 
-6. Open **EcommerceWebApp. SLN** en navigeer naar het bestand **Web. config** in de **Solution Explorer**.  
+6. Open **EcommerceWebApp. SLN** en navigeer naar het **Web.config** bestand in de **Solution Explorer**.  
 
-7. Voeg binnen `<appSettings>` het blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij **uw URI hier** en **uw primaire sleutel**worden vermeld. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)
+7. Voeg binnen het `<appSettings>` blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij **uw URI hier** en **uw primaire sleutel**worden vermeld. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)
 
    Vul de naam van uw **producten verzameling**, de **verzamelings naam**van de categorie en de **verzamelings naam van de bovenste items** in zoals aangegeven. (Deze namen moeten **producten, categorieën en topItems** zijn, tenzij u een andere naam hebt gekozen.)  
 
-8. Navigeer naar en open de **map Checkout** in **EcommerceWebApp. SLN.** Open vervolgens het bestand **Web. config** in die map.  
+8. Navigeer naar en open de **map Checkout** in **EcommerceWebApp. SLN.** Open vervolgens het **Web.config** -bestand in die map.  
 
-9. Voeg binnen `<appSettings>` het blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij u hebt opgegeven. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)  
+9. Voeg binnen het `<appSettings>` blok de **URI** en **primaire sleutel** toe die u eerder hebt opgeslagen, waarbij u hebt opgegeven. Voeg vervolgens de naam van uw **Data Base** en **verzamelings naam** toe zoals aangegeven. (Deze namen moeten **changefeedlabdatabase** en **changefeedlabcollection** zijn, tenzij u ervoor hebt gekozen om een andere naam te noemen.)  
 
 10. Klik boven aan de pagina op **Start** om het programma uit te voeren.  
 

@@ -2,22 +2,22 @@
 title: Azure Block Chain service beheren met Azure CLI
 description: Azure Block Chain service beheren met Azure CLI
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455578"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208158"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure Block Chain service beheren met Azure CLI
 
 Naast de Azure Portal, kunt u Azure CLI gebruiken voor het beheren van Block Chain leden en transactie knooppunten voor uw Azure Block Chain-service.
 
-Zorg ervoor dat u de nieuwste [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account in `az login`met.
+Zorg ervoor dat u de nieuwste [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account in met `az login` .
 
-Vervang `<parameter names>` in de volgende voor beelden door uw eigen waarden.
+Vervang in de volgende voor beelden door `<parameter names>` uw eigen waarden.
 
 ## <a name="create-blockchain-member"></a>Block Chain-lid maken
 
@@ -37,7 +37,7 @@ az resource create \
 | **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam wordt gebruikt voor het adres van het open bare eind punt. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`. |
 | **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. |
-| **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord van het lid-account wordt gebruikt voor de verificatie van het open bare eind punt van het block Chain-lid met behulp van basis verificatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote (\`), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
+| **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord van het lid-account wordt gebruikt voor de verificatie van het open bare eind punt van het block Chain-lid met behulp van basis verificatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
 | **Protocolsubstatus** | Open bare preview ondersteunt quorum. |
 | **verband** | Naam van het consortium dat u wilt toevoegen of maken. |
 | **consortiumManagementAccountPassword** | Het consortium beheer wachtwoord. Het wacht woord wordt gebruikt voor deelname aan een consortium. |
@@ -63,7 +63,7 @@ az resource update \
 |---------|-------------|
 | **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
-| **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote (\`), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
+| **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
 
 ## <a name="create-transaction-node"></a>Transactie knooppunt maken
 
@@ -83,7 +83,7 @@ az resource create \
 | **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
 | **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. |
-| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote (\`), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
+| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
 | **ruleName** | Regel naam voor white list een IP-adres bereik. Optionele para meter voor firewall regels. |
 | **startIpAddress** | Begin van het IP-adres bereik voor white list. Optionele para meter voor firewall regels. |
 | **u** | Het einde van het IP-adres bereik voor white list. Optionele para meter voor firewall regels.|
@@ -104,7 +104,7 @@ az resource update \
 |---------|-------------|
 | **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
-| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote (\`), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
+| **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
 
 ## <a name="change-consortium-management-account-password"></a>Wacht woord van consortium beheer account wijzigen
 
@@ -123,7 +123,7 @@ az resource update \
 |---------|-------------|
 | **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
-| **consortiumManagementAccountPassword** | Het account wachtwoord voor het consortium beheer. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote (\`), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
+| **consortiumManagementAccountPassword** | Het account wachtwoord voor het consortium beheer. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
   
 ## <a name="update-firewall-rules"></a>Firewall regels bijwerken
 
@@ -178,7 +178,7 @@ az resource invoke-action \
 |---------|-------------|
 | **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
-| **keyName** | Vervang \<de waarde\> van de eigenschap door Key1 of Key2. |
+| **keyName** | Vervang door \<keyValue\> key1 of Key2. |
 
 ## <a name="delete-a-transaction-node"></a>Een transactie knooppunt verwijderen
 
@@ -229,7 +229,7 @@ az role assignment create \
 | **toegewezen gebruiker** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
 | **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
-**Hierbij**
+**Voorbeeld:**
 
 Toegang tot knoop punten verlenen aan block Chain- **lid**van Azure AD-gebruiker:
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Hierbij**
+**Voorbeeld:**
 
 Toegang tot knoop punten verlenen voor Azure AD-gebruiker aan block Chain- **transactie knooppunt**:
 
@@ -265,7 +265,7 @@ az role assignment create \
 | **toegewezen gebruiker-object-id** | Groeps-ID of toepassings-ID van Azure AD. |
 | **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
-**Hierbij**
+**Voorbeeld:**
 
 Toegang tot knoop punten **verlenen voor toepassingsrol**
 

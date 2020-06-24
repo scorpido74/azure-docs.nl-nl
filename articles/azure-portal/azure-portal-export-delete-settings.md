@@ -5,17 +5,17 @@ services: azure-portal
 keywords: ''
 author: santhoshsomayajula
 ms.date: 01/29/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248c643c5f1865451abbe201e7033efedb8a7e39
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76900744"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763938"
 ---
 # <a name="export-or-delete-user-settings"></a>Gebruikersinstellingen exporteren of verwijderen
 
@@ -33,7 +33,7 @@ Het is een goed idee om uw instellingen te exporteren en te controleren voordat 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-1. Selecteer ![in de koptekst van de Portal instellingen pictogram](media/azure-portal-export-delete-settings/settings-icon.png) **instellingen**.
+1. Selecteer in de koptekst van de portal ![ Instellingen pictogram ](media/azure-portal-export-delete-settings/settings-icon.png) **instellingen**.
 
 1. Selecteer **alle instellingen exporteren** of **alle instellingen en persoonlijke Dash boards verwijderen**.
 

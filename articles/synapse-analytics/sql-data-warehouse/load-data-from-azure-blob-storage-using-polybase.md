@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5f2d1d517db9ab0e4ccfbfff1cef3a5a0de738c9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c4dbc63e8829d8a9ca3a3820fbb6675da4fad357
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267772"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207546"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
@@ -40,15 +40,15 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 ## <a name="log-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database"></a>Een lege database maken
 
-Een SQL-groep wordt gemaakt met een gedefinieerde set [reken resources](memory-concurrency-limits.md). De data base wordt gemaakt in een [Azure-resource groep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische SQL-Server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Een Azure SQL-pool wordt gemaakt met een gedefinieerde set [compute-resources](memory-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische SQL-server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
-Volg deze stappen om een lege data base te maken.
+Volg deze stappen om een lege database te maken.
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
+1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** .
 
 2. Selecteer **data bases** op de pagina **Nieuw** en selecteer **Azure Synapse Analytics** onder **Aanbevolen** op de pagina **Nieuw** .
 
@@ -58,9 +58,9 @@ Volg deze stappen om een lege data base te maken.
 
    | Instelling            | Voorgestelde waarde       | Beschrijving                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
-   | *Naam**            | mySampleDataWarehouse | Zie [Data Base-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor geldige database namen. |
+   | *Naam**            | mySampleDataWarehouse | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor geldige databasenamen. |
    | **Abonnement**   | Uw abonnement     | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | myResourceGroup       | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
+   | **Resourcegroep** | myResourceGroup       | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
    | **Bron selecteren**  | Lege database        | Geeft aan dat er een lege database wordt gemaakt. Opmerking: een datawarehouse is een type database. |
 
     ![datawarehouse maken](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -70,13 +70,13 @@ Volg deze stappen om een lege data base te maken.
     | Instelling                | Voorgestelde waarde          | Beschrijving                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
     | **Servernaam**        | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige servernamen. |
-    | **Aanmelding bij de server beheerder** | Een geldige naam           | Zie [Data Base-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor geldige aanmeldings namen. |
+    | **Aanmeldgegevens van serverbeheerder** | Een geldige naam           | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) voor geldige aanmeldingsnamen. |
     | **Wachtwoord**           | Een geldig wachtwoord       | Uw wachtwoord moet uit minstens acht tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
-    | **Locatie**           | Een geldige locatie       | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor meer informatie over regio's. |
+    | **Locatie**           | Een geldige locatie       | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |
 
     ![server maken](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Kies **Selecteren**.
+5. Selecteer **Selecteren**.
 
 6. Selecteer **prestatie niveau** om op te geven of het Data Warehouse gen1 of Gen2 is en het aantal data warehouse-eenheden.
 
@@ -89,7 +89,7 @@ Volg deze stappen om een lege data base te maken.
 
 10. Nu u het formulier hebt ingevuld, selecteert u **maken** om de data base in te richten. De inrichting duurt een paar minuten.
 
-11. Selecteer op de werk balk **meldingen** om het implementatie proces te bewaken.
+11. Selecteer **Meldingen** op de werkbalk om het implementatieproces te bewaken.
   
      ![melding](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
@@ -98,7 +98,7 @@ Volg deze stappen om een lege data base te maken.
 Een firewall op server niveau die voor komt dat externe toepassingen en hulpprogram ma's verbinding maken met de server of data bases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld.  Volg deze stappen om een [firewallregel op serverniveau](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
-> SQL Database Warehouse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. Als dat het geval is, kunt u geen verbinding maken met uw server tenzij uw IT-afdeling poort 1433 opent.
+> SQL Database Warehouse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 1433 openstelt.
 
 1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu aan de linkerkant en selecteert u vervolgens **mySampleDatabase** op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie.
 
@@ -110,15 +110,15 @@ Een firewall op server niveau die voor komt dat externe toepassingen en hulpprog
 
     ![serverinstellingen](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. Selecteer **firewall instellingen weer geven**. De pagina **firewall-instellingen** voor de server wordt geopend.
+4. Selecteer **Firewallinstellingen weergeven**. De pagina **Firewallinstellingen** voor de server wordt geopend.
 
     ![serverfirewallregel](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
 5. Selecteer **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe firewallregel toe te voegen. Een firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
 
-6. Selecteer **Opslaan**. Er wordt een firewall regel op server niveau gemaakt voor uw huidige IP-adres en poort 1433 wordt geopend op de server.
+6. Selecteer **Opslaan**. Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres, waarbij poort 1433 wordt geopend op de server.
 
-7. Selecteer **OK** en sluit de pagina **Firewallinstellingen**.
+7. Selecteer **OK** en sluit vervolgens de pagina **firewall instellingen** .
 
 U kunt nu verbinding maken met de server en de bijbehorende data warehouses met behulp van dit IP-adres. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.  
 
@@ -127,9 +127,9 @@ U kunt nu verbinding maken met de server en de bijbehorende data warehouses met 
 
 ## <a name="get-the-fully-qualified-server-name"></a>De volledig gekwalificeerde servernaam ophalen
 
-Haal de volledig gekwalificeerde server naam voor uw server op in de Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het maken van verbinding met de server.
+Haal de volledig gekwalificeerde servernaam van uw server op uit de Azure-portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het maken van verbinding met de server.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **Azure Synapse Analytics** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **Azure Synapse Analytics** .
 3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voor beeld is de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net.
 
@@ -137,7 +137,7 @@ Haal de volledig gekwalificeerde server naam voor uw server op in de Azure Porta
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Als serverbeheerder verbinding maken met de server
 
-In deze sectie wordt gebruikgemaakt van [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) om een verbinding met uw server tot stand te brengen.
+In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio) om een verbinding tot stand te brengen met de server.
 
 1. Open SQL Server Management Studio.
 
@@ -153,7 +153,7 @@ In deze sectie wordt gebruikgemaakt van [SQL Server Management Studio](/sql/ssms
 
     ![verbinding maken met server](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Selecteer **Verbinding maken**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
+3. Selecteer **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
 4. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
@@ -204,7 +204,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC20** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC20.
 
-3. Selecteer **Verbinding maken**.
+3. Selecteer **Verbinden**.
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als MedRCLogin.
 
@@ -505,13 +505,13 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
     ![Resources opschonen](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Selecteer de knop **pause** om de berekening te onderbreken. Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Selecteer **Start**om de compute te hervatten.
+2. Als u het berekenen wilt onderbreken, selecteert u de knop **Onderbreken**. Als het datawarehouse is onderbroken, ziet u de knop **Start**.  Selecteer **Start**om de compute te hervatten.
 
 3. Selecteer **verwijderen**om het Data Warehouse te verwijderen, zodat er geen kosten in rekening worden gebracht voor berekenen of opslag.
 
 4. Als u de server die u hebt gemaakt, wilt verwijderen, selecteert u **mynewserver-20180430.database.Windows.net** in de vorige installatie kopie en selecteert u vervolgens **verwijderen**.  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
-5. Als u de resource groep wilt verwijderen, selecteert u **myResourceGroup**en selecteert u **resource groep verwijderen**.
+5. Als u de resourcegroep wilt verwijderen, selecteert u **myResourceGroup**. Selecteer vervolgens **Resourcegroep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,15 +3,15 @@ title: Toegang op basis van virtueel netwerk configureren voor een Azure Cosmos-
 description: In dit document worden de stappen beschreven die nodig zijn voor het instellen van een service-eind punt voor een virtueel netwerk voor Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 904b976b5e5c811912df9421dc64be1617b30b44
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: a061676714c35b4e8868ce3df9c71be05297ba99
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431714"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261661"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken (VNet) configureren
 
@@ -42,11 +42,11 @@ In de volgende secties wordt beschreven hoe u een service-eind punt voor een vir
 
 1. Selecteer het **abonnement** waarvan u een virtueel Azure-netwerk wilt toevoegen. Selecteer de virtuele Azure- **netwerken** en **subnetten** die u toegang wilt verlenen tot uw Azure Cosmos DB-account. Selecteer vervolgens **inschakelen** om geselecteerde netwerken met Service-eind punten in te scha kelen voor ' micro soft. AzureCosmosDB '. Wanneer het is voltooid, selecteert u **toevoegen**.
 
-   ![Virtueel netwerk en subnet selecteren](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="Virtueel netwerk en subnet selecteren":::
 
 1. Nadat het Azure Cosmos DB-account is ingeschakeld voor toegang vanuit een virtueel netwerk, is verkeer alleen toegestaan vanuit het gekozen subnet. Het virtuele netwerk en het subnet dat u hebt toegevoegd, moeten worden weer gegeven zoals in de volgende scherm afbeelding:
 
-   ![Het virtuele netwerk en het subnet zijn geconfigureerd](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png" alt-text="Het virtuele netwerk en het subnet zijn geconfigureerd":::
 
 > [!NOTE]
 > Als u service-eind punten voor virtuele netwerken wilt inschakelen, hebt u de volgende abonnements machtigingen nodig:
@@ -66,7 +66,7 @@ Hier vindt u de instructies voor het registreren van een abonnement bij een reso
 
 1. Geef de vereiste gegevens op voor het maken van een nieuw virtueel netwerk en selecteer vervolgens **maken**. Het subnet wordt gemaakt met een service-eind punt voor ' micro soft. AzureCosmosDB ' ingeschakeld.
 
-   ![Een virtueel netwerk en subnet selecteren voor een nieuw virtueel netwerk](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="Een virtueel netwerk en subnet selecteren voor een nieuw virtueel netwerk":::
 
 Als uw Azure Cosmos DB-account wordt gebruikt door andere Azure-Services zoals Azure Cognitive Search, of als het is geopend vanuit stream Analytics of Power BI, kunt u toegang toestaan door verbindingen accepteren te selecteren in de **wereld wijde Azure-data centers**.
 
@@ -80,7 +80,7 @@ Om ervoor te zorgen dat u toegang hebt tot Azure Cosmos DB metrische gegevens ui
 
 1. Als u een virtuele netwerk-of subnet-regel wilt verwijderen, selecteert u **...** naast het virtuele netwerk of subnet en selecteert u **verwijderen**.
 
-   ![Een virtueel netwerk verwijderen](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
+   :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="Een virtueel netwerk verwijderen":::
 
 1. Klik op **Opslaan** om uw wijzigingen toe te passen.
 

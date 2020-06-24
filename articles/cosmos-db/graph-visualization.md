@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75500017"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261780"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Grafiek gegevens visualiseren die zijn opgeslagen in Azure Cosmos DB Gremlin API met oplossingen voor gegevens visualisatie
 
@@ -20,17 +20,17 @@ U kunt gegevens die zijn opgeslagen in Azure Cosmos DB Gremlin-API visualiseren 
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enter prise
 
-![Linkurious-logo](./media/graph-visualization/linkurious-logo.jpg)
+:::image type="content" source="./media/graph-visualization/linkurious-logo.jpg" alt-text="Linkurious-logo" border="false":::
 
 [Linkurious Enter prise](https://linkurio.us/product/) maakt gebruik van grafiek technologie en gegevens visualisatie om complexe gegevens sets in interactieve Visual-netwerken te zetten. Het platform maakt verbinding met uw gegevens bronnen en stelt onderzoekers in staat om naadloos te navigeren in miljarden entiteiten en relaties. Het resultaat is een nieuwe mogelijkheid om verdachte relaties te detecteren zonder Juggling met query's of tabellen.
 
 De interactieve interface van Linkurious Enter prise biedt een eenvoudige manier om complexe gegevens te onderzoeken. U kunt zoeken naar specifieke entiteiten, verbindingen uitbreiden om verborgen relaties op te slaan en indelingen van uw keuze Toep assen op Untangle complexe netwerken. Linkurious Enter prise is nu compatibel met Azure Cosmos DB Gremlin-API. Het is geschikt voor end-to-end grafiek visualisatie scenario's en ondersteunt Lees-en schrijf mogelijkheden van de gebruikers interface. U kunt een [demo van Linkurious aanvragen met Azure Cosmos DB](https://linkurio.us/contact/)
 
-![Linkurious-demo](./media/graph-visualization/linkurious-demo.gif)
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious-demo" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge Intelligence
 
-![Cambridge Intelligence-logo](./media/graph-visualization/ci-logo.png)
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence-logo" border="false":::
 
 [De Cambridge](https://cambridge-intelligence.com/products/) -werkset voor Graph-visualisaties ondersteunen nu Azure Cosmos db. De volgende twee visualisatie toolers worden ondersteund door Azure Cosmos DB:
 
@@ -38,11 +38,11 @@ De interactieve interface van Linkurious Enter prise biedt een eenvoudige manier
 
 - [Opnieuw Grapheren voor het reageren van ontwikkel aars](https://cambridge-intelligence.com/regraph/)
 
-![Cambridge Intelligence-demo](./media/graph-visualization/ci-demo-2.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Cambridge Intelligence-demo" border="false":::
 
 Met deze Toolkit kunt u grafische visualisatie-en analyse toepassingen met hoge prestaties ontwerpen voor uw gebruik. Ze bieden een krachtige WebGL-rendering (Web graphics library) en zorgvuldig ontwikkelde code om gebruikers een snelle en indrukwekkende visualisatie ervaring te geven. Deze hulpprogram ma's zijn compatibel met elke browser, apparaat, server of Data Base, en worden geleverd met stapsgewijze zelf studies, volledig gedocumenteerde Api's en interactieve demo's.
 
-![Cambridge Intelligence-demo](./media/graph-visualization/ci-demo-1.gif)
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Cambridge Intelligence-demo" border="false":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282040"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692577"
 ---
 # <a name="testability-actions"></a>Test acties
 Voor het simuleren van een onbetrouwbare infra structuur biedt Azure Service Fabric u, de ontwikkelaar, de mogelijkheid om verschillende oorzaken van Real-World en status overgangen te simuleren. Deze worden weer gegeven als test taken. De acties zijn de Api's op laag niveau die een specifieke fout injectie, status overgang of validatie veroorzaken. Door deze acties te combi neren, kunt u uitgebreide test scenario's voor uw services schrijven.
 
 Service Fabric biedt enkele algemene test scenario's die bestaan uit deze acties. We raden u ten zeerste aan gebruik te maken van deze ingebouwde scenario's, die zorgvuldig worden gekozen om algemene status overgangen en fout cases te testen. Acties kunnen echter worden gebruikt voor het maken van aangepaste test scenario's wanneer u een dekking wilt toevoegen voor scenario's die niet onder de ingebouwde scenario's vallen of die aangepast zijn aan uw toepassing.
 
-C#-implementaties van de acties vindt u in de System. Fabric. dll-assembly. De System Fabric Power shell-module vindt u in de assembly micro soft. ServiceFabric. Power shell. dll. Als onderdeel van de installatie van runtime wordt de Power shell-module ServiceFabric geïnstalleerd om gebruiks gemak te kunnen gebruiken.
+C#-implementaties van de acties vindt u in de System.Fabric.dll-assembly. De System Fabric Power shell-module is te vinden in de Microsoft.ServiceFabric.Powershell.dll-assembly. Als onderdeel van de installatie van runtime wordt de Power shell-module ServiceFabric geïnstalleerd om gebruiks gemak te kunnen gebruiken.
 
 ## <a name="graceful-vs-ungraceful-fault-actions"></a>Gefeliciteerd versus probleem acties zonder uitstel
 Test acties worden ingedeeld in twee grote buckets:
@@ -46,7 +46,7 @@ Voor een betere kwaliteits validatie voert u de service en de zakelijke werk bel
 | ValidateService |Valideert de beschik baarheid en de status van een Service Fabric service, meestal nadat er een storing in het systeem is opgetreden. |ValidateServiceAsync |Test-ServiceFabricService |Niet van toepassing |
 
 ## <a name="running-a-testability-action-using-powershell"></a>Een test actie uitvoeren met Power shell
-Deze zelf studie laat zien hoe u een test baarheid kunt uitvoeren met behulp van Power shell. U leert hoe u een test actie kunt uitvoeren op een lokaal (een) cluster of in een Azure-cluster. Micro soft. Fabric. Power shell. dll--de Service Fabric Power shell-module--wordt automatisch geïnstalleerd wanneer u de micro soft Service Fabric MSI installeert. De module wordt automatisch geladen wanneer u een Power shell-prompt opent.
+Deze zelf studie laat zien hoe u een test baarheid kunt uitvoeren met behulp van Power shell. U leert hoe u een test actie kunt uitvoeren op een lokaal (een) cluster of in een Azure-cluster. Microsoft.Fabric.Powershell.dll--de module Service Fabric Power shell--wordt automatisch geïnstalleerd wanneer u de micro soft Service Fabric MSI installeert. De module wordt automatisch geladen wanneer u een Power shell-prompt opent.
 
 Zelfstudie segmenten:
 
@@ -75,7 +75,7 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-**Restart-ServiceFabricNode** moet worden gebruikt om een service Fabric knoop punt in een cluster opnieuw op te starten. Hiermee wordt het Fabric. exe-proces gestopt, waardoor alle systeem service-en gebruikers Service replica's die worden gehost op dat knoop punt opnieuw worden gestart. Als u deze API gebruikt om uw service te testen, kunt u fouten opsporen op basis van de herstel paden voor failover. Het helpt knooppunt fouten in het cluster te simuleren.
+**Restart-ServiceFabricNode** moet worden gebruikt om een service Fabric knoop punt in een cluster opnieuw op te starten. Hiermee wordt het Fabric.exe proces gestopt, waardoor alle systeem service-en gebruikers Service replica's die worden gehost op dat knoop punt opnieuw worden gestart. Als u deze API gebruikt om uw service te testen, kunt u fouten opsporen op basis van de herstel paden voor failover. Het helpt knooppunt fouten in het cluster te simuleren.
 
 De volgende scherm afbeelding toont de test baarheids opdracht **restart-ServiceFabricNode** in actie.
 

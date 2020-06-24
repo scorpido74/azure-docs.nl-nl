@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769990"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261338"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -46,10 +46,10 @@ Als u toepassings logboeken wilt inschakelen voor Windows-apps in de [Azure Port
 
 Selecteer **aan** voor **toepassings Logboeken (bestands systeem)** of **toepassings Logboeken (BLOB)** of beide. 
 
-De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schakelt zichzelf in 12 uur uit. De **BLOB** -optie is voor langdurige logboek registratie en er is een BLOB storage-container nodig om logboeken naar te schrijven.  De **BLOB** -optie bevat ook aanvullende informatie in de logboek berichten, zoals de id van de oorspronkelijke VM-instantie van het logboek bericht`InstanceId`(), de thread`Tid`-id () en een gedetailleerdere[`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)tijds tempel ().
+De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schakelt zichzelf in 12 uur uit. De **BLOB** -optie is voor langdurige logboek registratie en er is een BLOB storage-container nodig om logboeken naar te schrijven.  De **BLOB** -optie bevat ook aanvullende informatie in de logboek berichten, zoals de id van de oorspronkelijke VM-instantie van het logboek bericht ( `InstanceId` ), de thread-id ( `Tid` ) en een gedetailleerdere tijds tempel ( [`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks) ).
 
 > [!NOTE]
-> Momenteel kunnen alleen .NET-toepassings logboeken worden geschreven naar de Blob-opslag. Java, PHP, node. js, python-toepassings logboeken kunnen alleen worden opgeslagen op het App Service-bestands systeem (zonder code wijzigingen voor het schrijven van logboeken naar externe opslag).
+> Momenteel kunnen alleen .NET-toepassings logboeken worden geschreven naar de Blob-opslag. Java, PHP, Node.js, python-toepassings logboeken kunnen alleen worden opgeslagen op het App Service bestands systeem (zonder code wijzigingen voor het schrijven van logboeken naar externe opslag).
 >
 > Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-create-storage-account.md), moet u ook de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte toegangs sleutels te gebruiken. Om dit te doen:
 >
@@ -62,10 +62,10 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 
 | Niveau | Opgenomen categorieën |
 |-|-|
-|**Geblokkeerd** | Geen |
+|**Uitgeschakeld** | Geen |
 |**Fout** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
-|**Informatie** | Info, waarschuwing, fout, kritiek|
+|**Gegevens** | Info, waarschuwing, fout, kritiek|
 |**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
 
 Wanneer u klaar bent, selecteert u **Opslaan**.
@@ -171,7 +171,7 @@ Voor Windows-apps bevat het ZIP-bestand de inhoud van de *D:\Home\LogFiles* -map
 | **Toepassings logboeken** |*/LogFiles/Application/* | Bevat een of meer tekst bestanden. De indeling van de logboek berichten is afhankelijk van de logboek registratie provider die u gebruikt. |
 | **Traceringen van mislukte aanvragen** | */LogFiles/W3SVC#########/* | Bevat XML-bestanden en een XSL-bestand. U kunt de opgemaakte XML-bestanden weer geven in de browser. |
 | **Gedetailleerde fouten logboeken** | */LogFiles/DetailedErrors/* | Bevat HTM-fout bestanden. U kunt de HTM-bestanden weer geven in de browser.<br/>Een andere manier om de traceringen van mislukte aanvragen weer te geven, is door naar de app-pagina in de portal te navigeren. Selecteer in het linkermenu **problemen vaststellen en oplossen**, zoek naar **Logboeken voor tracering van mislukte aanvragen**en klik vervolgens op het pictogram om de gewenste tracering weer te geven. |
-| **Webserver logboeken** | */LogFiles/http/RawLogs/* | Bevat tekst bestanden die zijn ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met een tekst editor of een hulp programma zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App service biedt geen ondersteuning `s-computername`voor `s-ip`de velden `cs-version` , of. |
+| **Webserver logboeken** | */LogFiles/http/RawLogs/* | Bevat tekst bestanden die zijn ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met een tekst editor of een hulp programma zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service biedt geen ondersteuning voor de `s-computername` `s-ip` velden, of `cs-version` . |
 | **Implementatie logboeken** | */Logfiles/Git/* en */Deployments/* | Logboeken bevatten die zijn gegenereerd door de interne implementatie processen, evenals logboeken voor git-implementaties. |
 
 ## <a name="send-logs-to-azure-monitor-preview"></a>Logboeken naar Azure Monitor verzenden (preview-versie)
@@ -187,12 +187,14 @@ De volgende tabel bevat de ondersteunde logboek typen en beschrijvingen:
 
 | Logboek type | Windows-ondersteuning | Linux-ondersteuning (docker) | Beschrijving |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Ja | Standaard uitvoer en standaard fout |
+| AppServiceConsoleLogs | TBA | Yes | Standaard uitvoer en standaard fout |
 | AppServiceHTTPLogs | Ja | Ja | Webserver logboeken |
 | AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service Environment: schalen, configuratie wijzigingen en status logboeken|
 | AppServiceAuditLogs | Ja | Ja | Aanmeldings activiteiten via FTP en kudu |
-| AppServiceFileAuditLogs | Ja | NOG TE BEPALEN | Bestands wijzigingen via FTP en kudu |
+| AppServiceFileAuditLogs | Yes | NOG TE BEPALEN | Bestands wijzigingen via FTP en kudu |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | Toepassings logboeken |
+| AppServiceIPSecAuditLogs  | Ja | Ja | Aanvragen van IP-regels |
+| AppServicePlatformLogs  | TBA | Yes | Container logboeken |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Volgende stappen
 * [Query's uitvoeren op Logboeken met Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

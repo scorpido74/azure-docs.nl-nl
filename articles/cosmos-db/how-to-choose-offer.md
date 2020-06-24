@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: b8c4fd3804bfa02b86f62912641eb936ff8cd15e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664429"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116805"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Kiezen tussen standaard (hand matig) en ingerichte door Voer voor automatisch schalen 
 
@@ -29,7 +29,7 @@ In de volgende tabel ziet u een vergelijking op hoog niveau tussen standaard (ha
 |Beschrijving|Standaard (hand matig)|Automatisch schalen|
 |-------------|------|-------|
 |Geschikt voor|Workloads met constant of voorspelbaar verkeer|Werk belastingen met variabele of onvoorspelbaar verkeer. Zie [use cases of automatisch schalen](provision-throughput-autoscale.md#use-cases-of-autoscale).|
-|Hoe het werkt|U voorziet in een vaste hoeveelheid RU/s `T` die gedurende een bepaalde periode statisch is, tenzij u deze hand matig wijzigt. Elke seconde kunt u de `T` door Voer tot ru/s gebruiken. <br/><br/>Als u bijvoorbeeld standaard (hand matig) 400 RU/s instelt, blijft de door Voer op 400 RU/s.|U stelt het hoogste of maximum aantal RU/s `Tmax` in dat u niet meer wilt voor het systeem. Het systeem schaalt de door Voer `T` zo automatisch `0.1* Tmax <= T <= Tmax` . <br/><br/>Als u bijvoorbeeld automatisch schalen instelt voor het maximum aantal RU/s 4000 RU/s, wordt het systeem geschaald tussen 400-4000 RU/s.|
+|Hoe werkt het?|U voorziet in een vaste hoeveelheid RU/s `T` die gedurende een bepaalde periode statisch is, tenzij u deze hand matig wijzigt. Elke seconde kunt u de `T` door Voer tot ru/s gebruiken. <br/><br/>Als u bijvoorbeeld standaard (hand matig) 400 RU/s instelt, blijft de door Voer op 400 RU/s.|U stelt het hoogste of maximum aantal RU/s `Tmax` in dat u niet meer wilt voor het systeem. Het systeem schaalt de door Voer `T` zo automatisch `0.1* Tmax <= T <= Tmax` . <br/><br/>Als u bijvoorbeeld automatisch schalen instelt voor het maximum aantal RU/s 4000 RU/s, wordt het systeem geschaald tussen 400-4000 RU/s.|
 |Wanneer te gebruiken|U wilt uw doorvoer capaciteit (RU/s) hand matig beheren en zelf schalen.<br/><br/>U hebt een hoog, consistent gebruik van ingerichte RU/s. Als u de ingerichte RU/s hebt ingesteld `T` en het volledige bedrag voor 66% van de uren of meer wilt gebruiken, kunt u het beste besparen met standaard (hand matig) ingerichte ru/s.<br/><br/>Dit is gebaseerd op een vergelijking tussen instelling `T` in standaard (hand matig) en hetzelfde bedrag `Tmax` in automatisch schalen. |U wilt dat Azure Cosmos DB uw doorvoer capaciteit (RU/s) en schalen op basis van gebruik beheert.<br/><br/>U hebt RU/s-gebruik dat variabel of moeilijk te voors pellen is. Als u het maximum aantal RU/s hebt ingesteld voor automatisch schalen `Tmax` en het volledige bedrag `Tmax` voor 66% van de uren gebruikt, kunt u het beste besparen met automatisch schalen.<br/><br/>Dit is gebaseerd op een vergelijking tussen het instellen van automatisch schalen `Tmax` en dezelfde hoeveelheid `T` in de standaard doorvoer (hand matig).|
 |Factureringsmodel|Facturering geschiedt per uur voor de ingerichte RU/s, ongeacht het aantal verbruikte i/o's.<br/><br/>Voorbeeld: <li>400 RU/s inrichten</li><li>Uur 1: geen aanvragen</li><li>Aantal uur 2:400 RU/s aanvragen</li><br/><br/>Voor zowel uur 1 als 2 wordt 400 RU/s gefactureerd voor beide uren met de [standaard tarieven (hand matig)](https://azure.microsoft.com/pricing/details/cosmos-db/).|Facturering geschiedt per uur voor de hoogste RU/s waarmee het systeem in het uur is geschaald. <br/><br/>Voorbeeld: <li>Automatisch schalen inrichten Max. RU/s van 4000 RU/s (schalen tussen 400-4000 RU/s)</li><li>Uur 1: systeem geschaald tot hoogste waarde van 3500 RU/s</li><li>Uur 2: systeem omlaag geschaald naar mini maal 400 RU/s (altijd 10% van `Tmax` ), omdat er geen gebruik is</li><br/><br/>Er worden kosten in rekening gebracht voor 3500 RU/s in uur 1 en 400 RU/s in uur 2 bij de [ingerichte doorvoer tarieven voor automatisch schalen](https://azure.microsoft.com/pricing/details/cosmos-db/). Het automatisch schalen per RU/s is 1,5 * de standaard tarieven (hand matig).
 |Wat gebeurt er als u de ingerichte RU/s overschrijdt|De RU/s blijven statisch bij wat is ingericht. Alle aanvragen die in een seconde buiten het ingerichte RUs worden gebruikt, zijn beperkt tot een bepaald aantal, met een reactie die een tijd moet wachten voordat het opnieuw wordt geprobeerd. U kunt de RU/s hand matig Verg Roten of verkleinen als dat nodig is.| Het systeem schaalt de RU/s tot het maximum aantal RU/s voor automatisch schalen. Aanvragen die buiten het automatisch schalen worden gebruikt, zijn in een tweede beperkt tot een bepaald aantal, met een reactie die een wacht tijd moet wachten voordat het opnieuw wordt geprobeerd.|
@@ -61,7 +61,7 @@ Nadat u het type door Voer hebt gekozen, moet u de toepassing na verloop van tij
 
 Wanneer u automatisch schalen gebruikt, gebruikt u Azure Monitor om het ingerichte maximum aantal RU/s voor automatische schaal baarheid te bekijken (**maximale door Voer voor automatisch schalen**) en de ru/s waarmee het systeem op dit moment is geschaald (**ingerichte door Voer**). Hieronder ziet u een voor beeld van een variabele of onvoorspelbare werk belasting met automatisch schalen. Opmerking: wanneer er geen verkeer is, wordt de RU/s door het systeem geschaald naar het minimum van 10% van het maximum aantal RU/s, in dit geval 5000 RU/s en 50.000 RU/s. 
 
-![Voor beeld van een workload met automatisch schalen](media/how-to-choose-offer/autoscale-metrics-azure-monitor.png)
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Voor beeld van een workload met automatisch schalen":::
 
 > [!NOTE]
 > Wanneer u standaard (hand matig) ingerichte door Voer gebruikt, verwijst de **ingerichte doorvoer** metriek naar wat u als gebruiker hebt ingesteld. Wanneer u de door Voer van automatisch schalen gebruikt, verwijst deze waarde naar de RU/s waarop het systeem momenteel is geschaald.

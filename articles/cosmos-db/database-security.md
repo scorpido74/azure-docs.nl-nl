@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0c8b984801a0db2af648b0711d95de34bc9386f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273508"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114806"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Beveiliging in Azure Cosmos DB - overzicht
 
@@ -25,7 +25,7 @@ Versleuteling op rest is nu beschikbaar voor documenten en back-ups die zijn opg
 
 Gegevens beveiliging is een gedeelde verantwoordelijkheid tussen u, de klant en uw database provider. Afhankelijk van de database provider die u kiest, kan de hoeveelheid verantwoordelijkheid die u hebt, verschillen. Als u een on-premises oplossing kiest, moet u alles van de beveiliging van het eind punt op de fysieke beveiliging van uw hardware bieden. Dit is geen eenvoudige taak. Als u een PaaS hebt gekozen, zoals Azure Cosmos DB, is uw gebied van bezorgdheid aanzienlijk kleiner. De volgende afbeelding, uitgeleend van de gedeelde verantwoordelijkheden van micro soft voor het technisch document van [Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) , laat zien hoe uw verantwoordelijkheid afneemt met een Paas-provider zoals Azure Cosmos db.
 
-![Verantwoordelijkheden van klanten en database providers](./media/database-security/nosql-database-security-responsibilities.png)
+:::image type="content" source="./media/database-security/nosql-database-security-responsibilities.png" alt-text="Verantwoordelijkheden van klanten en database providers":::
 
 In het voor gaande diagram worden Cloud beveiligings onderdelen van hoog niveau weer gegeven, maar welke items hebt u nodig om specifiek voor uw database oplossing te zorgen? En hoe kunt u oplossingen met elkaar vergelijken?
 
@@ -73,13 +73,13 @@ Laten we een voor een gedetailleerde beschrijving zien.
 |Reageren op aanvallen|Wanneer u contact hebt opgenomen met de ondersteuning van Azure om een mogelijke aanval te melden, wordt een respons proces van 5 stappen gestart. Het doel van het proces van vijf stappen is om zo snel mogelijk de normale service beveiliging en-bewerkingen te herstellen nadat een probleem is gedetecteerd en een onderzoek wordt gestart.<br><br>Meer informatie vindt u in [Microsoft Azure Security Response in de Cloud](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Geoomheining|Azure Cosmos DB garandeert dat data governance voor soevereine regio's (bijvoorbeeld Duitsland, China, US Gov).|
 |Beveiligde faciliteiten|Gegevens in Azure Cosmos DB worden opgeslagen op Ssd's in de beveiligde data centers van Azure.<br><br>Meer informatie in [micro soft Global Data Centers](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
-|HTTPS/SSL/TLS-versleuteling|Alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1,2.<br>Het is mogelijk om een minimale TLS-versie aan de server zijde af te dwingen. Als u dit wilt doen, [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)neemt u contact op met.|
+|HTTPS/SSL/TLS-versleuteling|Alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1,2.<br>Het is mogelijk om een minimale TLS-versie aan de server zijde af te dwingen. Als u dit wilt doen, neemt u contact op met [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com) .|
 |Versleuteling 'at rest'|Alle gegevens die zijn opgeslagen in Azure Cosmos DB, worden op rest versleuteld. Meer informatie over [Azure Cosmos DB versleuteling in rust](./database-encryption-at-rest.md)|
 |Patched servers|Als beheerde data base, Azure Cosmos DB u geen servers meer hoeft te beheren en te patchen, die automatisch voor u worden uitgevoerd.|
 |Beheerders accounts met sterke wacht woorden|Het is moeilijk om te geloven dat deze vereiste wordt vermeld, maar in tegens telling tot enkele van onze concurrenten is het niet mogelijk om een beheerders account zonder wacht woord te hebben in Azure Cosmos DB.<br><br> Beveiliging via TLS en op HMAC-geheim gebaseerde verificatie is standaard geïntegreerde.|
 |Certificeringen voor beveiliging en gegevens bescherming| Voor de meest recente lijst met certificeringen raadpleegt u de algemene Azure- [nalevings site](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) , evenals het meest recente [Azure-nalevings document](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) met alle certificeringen (zoek naar Cosmos). Lees voor meer informatie lezen van de 25 april 2018 post [Azure #CosmosDB: Secure, private, conform SOCS 1/2 type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High en veel andere.
 
-De volgende scherm afbeelding laat zien hoe u controle logboeken en activiteiten Logboeken kunt gebruiken om ![uw account te bewaken: activiteiten logboeken voor Azure Cosmos db](./media/database-security/nosql-database-security-application-logging.png)
+De volgende scherm afbeelding laat zien hoe u controle logboeken en activiteiten Logboeken kunt gebruiken om uw account te bewaken: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="activiteiten logboeken voor Azure Cosmos DB":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

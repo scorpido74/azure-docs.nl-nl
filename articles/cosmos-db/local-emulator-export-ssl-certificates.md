@@ -2,23 +2,23 @@
 title: De Azure Cosmos DB Emulator-certificaten exporteren
 description: Bij het ontwikkelen in talen en runtimes die geen gebruikmaken van het Windows-certificaat archief, moet u de TLS/SSL-certificaten exporteren en beheren. Dit bericht bevat stapsgewijze instructies.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
 ms.custom: tracking-python
-ms.openlocfilehash: 89d91a3c5c8a4209489ed427067a90e7e2d0b880
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a20d6bdb3a2d6070e81dfca84c851003f6ff4ca2
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561165"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262834"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>De Azure Cosmos DB Emulator-certificaten exporteren voor gebruik met Java, Python en Node.js
 
 [**De emulator downloaden**](https://aka.ms/cosmosdb-emulator)
 
-De Azure Cosmos DB-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor ontwikkelings doeleinden emuleert, met inbegrip van het gebruik van TLS-verbindingen. Dit bericht laat zien hoe u de TLS/SSL-certificaten exporteert voor gebruik in talen en runtimes die niet worden geïntegreerd met het Windows-certificaat archief, zoals Java, dat gebruikmaakt van een eigen [certificaat archief](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) en python dat gebruikmaakt van [socket-wrappers](https://docs.python.org/2/library/ssl.html) en node. js, dat gebruikmaakt van [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Meer informatie over de emulator vindt u in [Azure Cosmos DB Emulator gebruiken voor ontwikkeling en tests](./local-emulator.md).
+De Azure Cosmos DB-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor ontwikkelings doeleinden emuleert, met inbegrip van het gebruik van TLS-verbindingen. Dit bericht laat zien hoe u de TLS/SSL-certificaten exporteert voor gebruik in talen en runtimes die niet worden geïntegreerd met het Windows-certificaat archief, zoals Java, dat gebruikmaakt van een eigen [certificaat archief](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) en python dat gebruikmaakt van [socket-wrappers](https://docs.python.org/2/library/ssl.html) en Node.js die gebruikmaken van [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Meer informatie over de emulator vindt u in [Azure Cosmos DB Emulator gebruiken voor ontwikkeling en tests](./local-emulator.md).
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -33,41 +33,41 @@ Certificaten in Azure Cosmos DB Local Emulator worden gegenereerd wanneer de emu
 
 Beide certificaten kunnen opnieuw worden gegenereerd door te klikken op **Gegevens herstellen**, zoals hieronder wordt weergegeven, vanuit Azure Cosmos DB Emulator dat actief is in het Windows-systeemvak. Als u de certificaten opnieuw genereert en deze hebt geïnstalleerd in het Java-certificaatarchief of ze ergens anders gebruikt, moet u deze bijwerken. Anders maakt de toepassing geen verbinding meer met de lokale emulator.
 
-![Gegevens herstellen met de lokale emulator van Azure Cosmos DB](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Gegevens herstellen met de lokale emulator van Azure Cosmos DB":::
 
 ## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>Het Azure Cosmos DB TLS/SSL-certificaat exporteren
 
 1. Start het Windows-certificaatbeheer door certlm.msc uit te voeren en ga naar de map Persoonlijk->Certificaten om het certificaat met de beschrijvende naam **DocumentDbEmulatorCertificate** te openen.
 
-    ![Stap 1 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 2. Klik op **Details** en klik op **OK**.
 
-    ![Stap 2 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Stap 2 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 3. Klik op **Kopiëren naar bestand... **.
 
-    ![Stap 3 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Stap 3 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 4. Klik op **Volgende**.
 
-    ![Stap 4 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Stap 4 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 5. Klik op **Nee, persoonlijke sleutel niet exporteren** en klik op **Volgende**.
 
-    ![Stap 5 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Stap 5 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 6. Klik op **Base-64 encoded X.509 (.CER)** en klik op **Volgende**.
 
-    ![Stap 6 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Stap 6 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 7. Geef het certificaat een naam, in dit geval **documentdbemulatorcert**, en klik op **Volgende**.
 
-    ![Stap 7 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Stap 7 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 8. Klik op **Voltooien**.
 
-    ![Stap 8 van exporteren met lokale Azure DB Cosmos-emulator](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Stap 8 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Het certificaat gebruiken in Java
 
@@ -83,7 +83,7 @@ Standaard wordt de [python-SDK (versie 2.0.0 of hoger)](sql-api-sdk-python.md) v
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Het certificaat gebruiken in Node.js
 
-Standaard wordt de [node. js SDK (versie 1.10.1 of hoger)](sql-api-sdk-node.md) voor de SQL-API gebruikt om niet te proberen het TLS/SSL-certificaat te gebruiken wanneer u verbinding maakt met de lokale emulator. Als u echter TLS-validatie wilt gebruiken, kunt u de voor beelden in de [node. js-documentatie](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)volgen.
+Standaard wordt de [Node.js SDK (versie 1.10.1 of hoger)](sql-api-sdk-node.md) voor de SQL-API gebruikt om niet te proberen het TLS/SSL-certificaat te gebruiken wanneer u verbinding maakt met de lokale emulator. Als u echter TLS-validatie wilt gebruiken, kunt u de voor beelden in de [Node.js documentatie](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)volgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

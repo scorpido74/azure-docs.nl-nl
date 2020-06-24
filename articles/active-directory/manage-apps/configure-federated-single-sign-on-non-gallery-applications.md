@@ -3,8 +3,8 @@ title: Federatieve eenmalige aanmelding configureren voor een niet-galerie-app
 description: Federatieve eenmalige aanmelding configureren voor een aangepaste niet-galerie toepassing die u wilt integreren met Azure AD
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274598"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763547"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Federatieve eenmalige aanmelding configureren voor een toepassing buiten de galerie
 
@@ -79,7 +79,7 @@ Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor
 
     2. Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
 
-14. Klik **op &lt;toepassings naam&gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u Azure AD-Url's en een certificaat vereist voor de toepassing.
+14. Klik **op &lt; toepassings naam &gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u Azure AD-Url's en een certificaat vereist voor de toepassing.
 
 15. [Gebruikers toewijzen aan de toepassing.](#assign-users-to-the-application)
 
@@ -140,7 +140,7 @@ Volg de onderstaande stappen om de meta gegevens van de toepassing of het certif
 
 8. Ga naar de sectie **SAML-handtekening certificaat** en klik vervolgens op kolom waarde **downloaden** . Afhankelijk van wat de toepassing nodig heeft om eenmalige aanmelding te configureren, ziet u de optie voor het downloaden van de meta gegevens-XML of het certificaat.
 
-Azure AD biedt ook een URL om de meta gegevens op te halen. Volg dit patroon om de meta gegevens-URL op te halen die `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`specifiek is voor de toepassing:.
+Azure AD biedt ook een URL om de meta gegevens op te halen. Volg dit patroon om de meta gegevens-URL op te halen die specifiek is voor de toepassing: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
 ## <a name="assign-users-to-the-application"></a>Gebruikers toewijzen aan een toepassing
 

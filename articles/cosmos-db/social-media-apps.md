@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73827300"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116430"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociaal met Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Hoe slaat u deze gegevens op en waar?
 
 Mogelijk hebt u ervaring met SQL-data bases of hebt u een begrip van [relationele gegevens modellering](https://en.wikipedia.org/wiki/Relational_model). U kunt op de volgende manier beginnen met het tekenen van iets:
 
-![Diagram dat een relatief relationeel model illustreert](./media/social-media-apps/social-media-apps-sql.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-sql.png" alt-text="Diagram dat een relatief relationeel model illustreert" border="false":::
 
 Een perfecte genormaliseerde en mooie gegevens structuur... dat wordt niet geschaald.
 
@@ -157,7 +157,7 @@ Laten we de gebruikers gegevens als voor beeld aannemen:
 
 Door deze informatie te bekijken, kunt u snel detecteren wat essentiële informatie is en wat niet het geval is, dus het maken van een ' ladder ':
 
-![Diagram van een ladder patroon](./media/social-media-apps/social-media-apps-ladder.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="Diagram van een ladder patroon" border="false":::
 
 De kleinste stap wordt een UserChunk genoemd, de minimale hoeveelheid informatie die een gebruiker identificeert en wordt gebruikt voor het dupliceren van gegevens. Door de gedupliceerde gegevens grootte alleen te beperken tot de gegevens die u wilt weer geven, vermindert u de mogelijkheid van massale updates.
 
@@ -188,7 +188,7 @@ En een bericht zou er als volgt uitzien:
         }
     }
 
-Wanneer een bewerking zich voordoet wanneer een segment kenmerk wordt beïnvloed, kunt u de betrokken documenten eenvoudig vinden. Gebruik alleen query's die verwijzen naar de geïndexeerde kenmerken, zoals `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`en werk vervolgens de segmenten bij.
+Wanneer een bewerking zich voordoet wanneer een segment kenmerk wordt beïnvloed, kunt u de betrokken documenten eenvoudig vinden. Gebruik alleen query's die verwijzen naar de geïndexeerde kenmerken, zoals `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"` en werk vervolgens de segmenten bij.
 
 ## <a name="the-search-box"></a>Het zoekvak
 
@@ -230,7 +230,7 @@ Cosmos DB worden uw query's (inclusief [aggregaties](https://azure.microsoft.com
 
 Met tijd groeit u uiteindelijk in verkeer en neemt het Resource verbruik (gemeten in [RUs](request-units.md)of aanvraag eenheden) toe. U leest en schrijft vaker als uw gebruikers database groeit. De gebruikers database begint met het maken en lezen van meer inhoud. De mogelijkheid om **uw door voer te schalen** is daarom essentieel. Het is eenvoudig om uw RUs te verg Roten. U kunt dit doen met een paar klikken op de Azure Portal of door [opdrachten uit te geven via de API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
 
-![Omhoog schalen en definiëren van een partitie sleutel](./media/social-media-apps/social-media-apps-scaling.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Omhoog schalen en definiëren van een partitie sleutel":::
 
 Wat gebeurt er als de dingen beter blijven? Stel dat gebruikers uit een andere regio, land of continenten uw platform zien en gaan gebruiken. Wat een geweldig!
 
@@ -240,13 +240,13 @@ Met Cosmos DB kunt u [uw gegevens wereld wijd](../cosmos-db/tutorial-global-dist
 
 Wanneer u uw gegevens wereld wijd repliceert, moet u ervoor zorgen dat uw clients hiervan gebruik kunnen maken. Als u een web-frontend gebruikt of Api's van mobiele clients opent, kunt u [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) implementeren en uw Azure app service op alle gewenste regio's klonen met behulp van een prestatie configuratie ter ondersteuning van uw uitgebreide wereld wijde dekking. Wanneer uw clients toegang hebben tot uw frontend of Api's, worden ze doorgestuurd naar de dichtstbijzijnde App Service, die op zijn beurt verbinding maakt met de lokale Cosmos DB replica.
 
-![Wereld wijde dekking toevoegen aan uw sociale platform](./media/social-media-apps/social-media-apps-global-replicate.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Wereld wijde dekking toevoegen aan uw sociale platform" border="false":::
 
 ## <a name="conclusion"></a>Conclusie
 
 In dit artikel wordt een licht niveau in de alternatieven voor het maken van sociale netwerken volledig op Azure uitgeschreven met goedkope Services. het levert resultaten op door het gebruik van een opslag oplossing met meerdere lagen en gegevens distributie genaamd "ladder" te stimuleren.
 
-![Diagram van interactie tussen Azure-Services voor sociale netwerken](./media/social-media-apps/social-media-apps-azure-solution.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Diagram van interactie tussen Azure-Services voor sociale netwerken" border="false":::
 
 De waarheid is dat er geen zilver opsommings teken is voor dit soort scenario's. Het is de synergie die is gemaakt door de combi natie van fantastische services waarmee we fantastische ervaringen kunnen bouwen: de snelheid en vrijheid van Azure Cosmos DB om een goede sociale toepassing te bieden, de intelligentie achter een zoek oplossing voor de eerste klasse zoals Azure Cognitive Search, de flexibiliteit van Azure-app Services om niet-neutraal toepassingen te hosten, maar krachtige achtergrond processen en de uitbreid bare Azure Storage en Azure SQL Database voor het opslaan van enorme hoeveel heden gegevens en de analyse kracht van Azure machine Leer hoe u kennis en intelligentie maakt waarmee u feedback kunt geven over uw processen en ons de mogelijkheid biedt de juiste inhoud aan de juiste gebruikers te leveren.
 

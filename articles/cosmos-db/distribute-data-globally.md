@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982120"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114738"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globale gegevensdistributie met Azure Cosmos DB - overzicht
 
@@ -23,7 +23,7 @@ U kunt uw data bases zo configureren dat deze globaal worden gedistribueerd en b
 
 Met Azure Cosmos DB kunt u op elk gewenst moment de regio's toevoegen of verwijderen die aan uw account zijn gekoppeld. Uw toepassing hoeft niet te worden onderbroken of opnieuw te worden geïmplementeerd om een regio toe te voegen of te verwijderen. Het blijft altijd Maxi maal beschikbaar als gevolg van de mogelijkheden voor multi-multihoming die de service systeem eigen heeft.
 
-![Implementatie topologie met hoge Beschik baarheid](./media/distribute-data-globally/deployment-topology.png)
+:::image type="content" source="./media/distribute-data-globally/deployment-topology.png" alt-text="Implementatie topologie met hoge Beschik baarheid" border="false":::
 
 ## <a name="key-benefits-of-global-distribution"></a>Belangrijkste voor delen van wereld wijde distributie
 

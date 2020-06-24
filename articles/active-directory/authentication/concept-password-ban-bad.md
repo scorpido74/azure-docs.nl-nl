@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef127d120b32f5344bce0f68d79f48401087f0ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263996"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691058"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Onjuiste wachtwoorden uit uw organisatie verwijderen
 
@@ -111,7 +111,7 @@ Normalisatie bestaat uit twee delen.  Als eerste worden alle hoofd letters gewij
 | '$'  | maatschappij |
 | '\@'  | één |
 
-Voor beeld: Stel dat het wacht woord ' leeg ' is verboden en dat een gebruiker het wacht woord wil wijzigenBl@nKin ' '. Hoewel "Bl@nk" niet specifiek is verboden, wordt dit wacht woord door het normalisatie proces geconverteerd naar "blank", een verboden wacht woord.
+Voor beeld: Stel dat het wacht woord ' leeg ' is verboden en dat een gebruiker het wacht woord wil wijzigen in ' Bl@nK '. Hoewel " Bl@nk " niet specifiek is verboden, wordt dit wacht woord door het normalisatie proces geconverteerd naar "blank", een verboden wacht woord.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>Stap 2: controleren of het wacht woord wordt beschouwd als verboden
 
@@ -147,7 +147,7 @@ Na normalisatie wordt dit wacht woord "contosoblank12". Het overeenkomende proce
 
 [contoso] + [lege] + [1] + [2] = 4 punten omdat dit wacht woord minder is dan vijf (5) punten, wordt het geweigerd.
 
-Voor beeld: een gebruiker wijzigt het wacht woordContoS0Bl@nkf9in "!".
+Voor beeld: een gebruiker wijzigt het wacht woord in " ContoS0Bl@nkf9 !".
 
 Na normalisatie wordt dit wacht woord "contosoblankf9!". Het overeenkomende proces vindt dat dit wacht woord twee verboden wacht woorden bevat: contoso en blank. Dit wacht woord krijgt vervolgens een score:
 

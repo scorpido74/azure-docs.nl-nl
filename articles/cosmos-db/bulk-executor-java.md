@@ -5,16 +5,16 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: fec11b930be0487a7fbc0968c3c8a8003a2fb911
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559271"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260590"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
@@ -133,7 +133,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
-   Met de functie voor bulk import worden een nieuwe data base en een verzameling gemaakt met de database naam, de naam van de verzameling en de doorvoer waarden die zijn opgegeven in het bestand app. config. 
+   De functie voor bulk import maakt een nieuwe data base en een verzameling met de database naam, de naam van de verzameling en de doorvoer waarden die zijn opgegeven in het App.config-bestand. 
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Gegevens bulksgewijs bijwerken in Azure Cosmos DB
 

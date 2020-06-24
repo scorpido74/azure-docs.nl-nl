@@ -4,15 +4,15 @@ description: Meer informatie over het instrumenteren en opsporen van fouten in d
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5183591133b6892f6f57db45cf1936851784a45a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69614818"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262052"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Queryprestaties afstemmen met Azure Cosmos DB
 
@@ -32,11 +32,11 @@ Een kort overzicht van partitionering: u definieert een partitie sleutel zoals '
 Wanneer u een query naar Azure Cosmos DB geeft, voert de SDK de volgende logische stappen uit:
 
 * Parseer de SQL-query om het uitvoerings plan voor query's te bepalen. 
-* Als de query een filter op basis van de partitie sleutel bevat `SELECT * FROM c WHERE c.city = "Seattle"`, wordt deze doorgestuurd naar één partitie. Als de query geen filter op partitie sleutel heeft, wordt deze uitgevoerd in alle partities en worden de resultaten samengevoegd.
+* Als de query een filter op basis van de partitie sleutel bevat, `SELECT * FROM c WHERE c.city = "Seattle"` wordt deze doorgestuurd naar één partitie. Als de query geen filter op partitie sleutel heeft, wordt deze uitgevoerd in alle partities en worden de resultaten samengevoegd.
 * De query wordt uitgevoerd binnen elke partitie in een serie of parallel, op basis van de client configuratie. Binnen elke partitie kan de query een of meer retouren maken, afhankelijk van de complexiteit van de query, de geconfigureerde pagina grootte en de ingerichte door Voer van de verzameling. Elke uitvoering retourneert het aantal verbruikte [aanvraag eenheden](request-units.md) tijdens het uitvoeren van query's en optioneel statistieken voor het uitvoeren van query's. 
-* De SDK voert een samen vatting uit van de query resultaten voor alle partities. Als de query bijvoorbeeld een ORDER op basis van meerdere partities omvat, worden de resultaten van de afzonderlijke partities samen voegen, gesorteerd om de resultaten in de wereld wijd gesorteerde volg orde te retour neren. Als de query een aggregatie is zoals `COUNT`, worden de aantallen van afzonderlijke partities opgeteld om het totale aantal te produceren.
+* De SDK voert een samen vatting uit van de query resultaten voor alle partities. Als de query bijvoorbeeld een ORDER op basis van meerdere partities omvat, worden de resultaten van de afzonderlijke partities samen voegen, gesorteerd om de resultaten in de wereld wijd gesorteerde volg orde te retour neren. Als de query een aggregatie is zoals `COUNT` , worden de aantallen van afzonderlijke partities opgeteld om het totale aantal te produceren.
 
-De Sdk's bieden verschillende opties voor het uitvoeren van query's. In .NET zijn deze opties bijvoorbeeld beschikbaar in de `FeedOptions` -klasse. In de volgende tabel worden deze opties beschreven en hoe deze van invloed zijn op de uitvoerings tijd van query's. 
+De Sdk's bieden verschillende opties voor het uitvoeren van query's. In .NET zijn deze opties bijvoorbeeld beschikbaar in de- `FeedOptions` klasse. In de volgende tabel worden deze opties beschreven en hoe deze van invloed zijn op de uitvoerings tijd van query's. 
 
 | Optie | Beschrijving |
 | ------ | ----------- |
@@ -49,7 +49,7 @@ De Sdk's bieden verschillende opties voor het uitvoeren van query's. In .NET zij
 | `RequestContinuation` | U kunt de uitvoering van query's hervatten door door te geven in het dekkende vervolg token dat door een wille keurige query wordt geretourneerd. Het vervolg token inkapselt alle status die is vereist voor het uitvoeren van query's. |
 | `ResponseContinuationTokenLimitInKb` | U kunt de maximale grootte van het voortzettings token dat door de server wordt geretourneerd, beperken. Mogelijk moet u dit instellen als uw toepassingshost limieten heeft voor de grootte van de reactie header. Als u dit instelt, kan de totale duur en het RUs-verbruik voor de query worden verhoogd.  |
 
-Laten we bijvoorbeeld een voorbeeld query uitvoeren op de partitie sleutel die is aangevraagd voor een verzameling `/city` met als de partitie sleutel en ingericht met 100.000 ru/s van door voer. U vraagt deze query `CreateDocumentQuery<T>` op in .net, zoals in het volgende:
+Laten we bijvoorbeeld een voorbeeld query uitvoeren op de partitie sleutel die is aangevraagd voor een verzameling met `/city` als de partitie sleutel en ingericht met 100.000 ru/s van door voer. U vraagt deze query `CreateDocumentQuery<T>` op in .net, zoals in het volgende:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -93,7 +93,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-Elke pagina voor het uitvoeren van query's komt `POST` overeen met `Accept: application/query+json` een rest API met de koptekst en de SQL-query in de hoofd tekst. Elke query maakt een of meer Retouren naar de server met `x-ms-continuation` het token dat is geechot tussen de client en de server om de uitvoering te hervatten. De configuratie opties in FeedOptions worden door gegeven aan de server in de vorm van aanvraag headers. Bijvoorbeeld, `MaxItemCount` komt overeen met `x-ms-max-item-count`. 
+Elke pagina voor het uitvoeren van query's komt overeen met een REST API `POST` met de `Accept: application/query+json` koptekst en de SQL-query in de hoofd tekst. Elke query maakt een of meer Retouren naar de server met het `x-ms-continuation` token dat is geechot tussen de client en de server om de uitvoering te hervatten. De configuratie opties in FeedOptions worden door gegeven aan de server in de vorm van aanvraag headers. Bijvoorbeeld, `MaxItemCount` komt overeen met `x-ms-max-item-count` . 
 
 De aanvraag retourneert het volgende (afgekapt voor de Lees baarheid):
 
@@ -126,9 +126,9 @@ De belangrijkste reactie headers die worden geretourneerd door de query zijn ond
 
 | Optie | Beschrijving |
 | ------ | ----------- |
-| `x-ms-item-count` | Het aantal items dat in het antwoord is geretourneerd. Dit is afhankelijk van de opgegeven `x-ms-max-item-count`waarde, het aantal items dat kan worden aangepast binnen de maximale grootte van de nettolading, de ingerichte door Voer en de uitvoerings tijd van de query. |  
+| `x-ms-item-count` | Het aantal items dat in het antwoord is geretourneerd. Dit is afhankelijk van de opgegeven `x-ms-max-item-count` waarde, het aantal items dat kan worden aangepast binnen de maximale grootte van de nettolading, de ingerichte door Voer en de uitvoerings tijd van de query. |  
 | `x-ms-continuation:` | Het vervolg token om de uitvoering van de query te hervatten als er aanvullende resultaten beschikbaar zijn. | 
-| `x-ms-documentdb-query-metrics` | De query statistieken voor de uitvoering. Dit is een gescheiden teken reeks met statistieken over de tijd die wordt besteed aan de verschillende fasen van het uitvoeren van query's. Geretourneerd als `x-ms-documentdb-populatequerymetrics` is ingesteld op `True`. | 
+| `x-ms-documentdb-query-metrics` | De query statistieken voor de uitvoering. Dit is een gescheiden teken reeks met statistieken over de tijd die wordt besteed aan de verschillende fasen van het uitvoeren van query's. Geretourneerd als `x-ms-documentdb-populatequerymetrics` is ingesteld op `True` . | 
 | `x-ms-request-charge` | Het aantal [aanvraag eenheden](request-units.md) dat door de query wordt verbruikt. | 
 
 Zie [Query's uitvoeren op resources met behulp van de rest API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)voor meer informatie over de rest API aanvraag headers en opties.
@@ -211,7 +211,7 @@ Raadpleeg [SQL-sdk's](sql-api-sdk-dotnet.md) voor SDK-release opmerkingen en inf
 ### <a name="network-latency"></a>Netwerklatentie
 Zie [Azure Cosmos DB globale distributie](tutorial-global-distribution-sql-api.md) voor informatie over het instellen van globale distributie en het maken van verbinding met de dichtstbijzijnde regio. Netwerk latentie heeft een grote invloed op de query prestaties wanneer u meerdere retouren wilt maken of een grote resultatenset wilt ophalen uit de query. 
 
-In het gedeelte over metrische gegevens voor het uitvoeren van query's wordt uitgelegd hoe u de server uitvoerings `totalExecutionTimeInMs`tijd van query's () ophaalt, zodat u onderscheid kunt maken tussen de tijd die wordt besteed aan de uitvoering van query's en de tijd die wordt besteed aan netwerk doorvoer.
+In het gedeelte over metrische gegevens voor het uitvoeren van query's wordt uitgelegd hoe u de server uitvoerings tijd van query's () ophaalt `totalExecutionTimeInMs` , zodat u onderscheid kunt maken tussen de tijd die wordt besteed aan de uitvoering van query's en de tijd die wordt besteed aan netwerk doorvoer.
 
 ### <a name="indexing-policy"></a>Indexeringsbeleid
 Zie het configureren van het [indexerings beleid](index-policy.md) voor het indexeren van paden, typen en modi, en hoe deze van invloed zijn op de uitvoering van query's. Het indexerings beleid maakt standaard gebruik van hash-indexering voor teken reeksen, die effectief zijn voor gelijkheids query's, maar niet voor bereik query's/order by-query's. Als u bereik query's voor teken reeksen nodig hebt, kunt u het beste het index type van het bereik opgeven voor alle teken reeksen. 
@@ -219,7 +219,7 @@ Zie het configureren van het [indexerings beleid](index-policy.md) voor het inde
 Azure Cosmos DB wordt standaard automatisch geïndexeerd toegepast op alle gegevens. Overweeg het uitsluiten van paden voor scenario's met hoge prestaties, omdat hierdoor de RU-kosten voor elke invoeg bewerking worden verminderd. 
 
 ## <a name="query-execution-metrics"></a>Metrische gegevens voor query uitvoering
-U kunt gedetailleerde gegevens over het uitvoeren van query's verkrijgen door door te geven `x-ms-documentdb-populatequerymetrics` in de`FeedOptions.PopulateQueryMetrics` optionele header (in de .NET SDK). De geretourneerde waarde `x-ms-documentdb-query-metrics` in heeft de volgende sleutel-waardeparen die bedoeld zijn voor geavanceerde probleem oplossing bij het uitvoeren van query's. 
+U kunt gedetailleerde gegevens over het uitvoeren van query's verkrijgen door door te geven in de optionele `x-ms-documentdb-populatequerymetrics` header ( `FeedOptions.PopulateQueryMetrics` in de .NET SDK). De geretourneerde waarde in `x-ms-documentdb-query-metrics` heeft de volgende sleutel-waardeparen die bedoeld zijn voor geavanceerde probleem oplossing bij het uitvoeren van query's. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -255,20 +255,20 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `writeOutputTimeInMs` | milliseconden | Uitvoerings tijd van de query in milliseconden | 
 | `indexUtilizationRatio` | ratio (<= 1) | Verhouding van aantal documenten dat overeenkomt met het filter tot het aantal geladen documenten  | 
 
-De client-Sdk's kunnen intern meerdere query bewerkingen uitvoeren om de query binnen elke partitie te leveren. De client maakt meer dan één aanroep per partitie als de totale resultaten groter `x-ms-max-item-count`worden, als de query de ingerichte door Voer voor de partitie overschrijdt, of als de query lading de maximum grootte per pagina bereikt of als de query de time-outlimiet van het toegewezen systeem bereikt. Elke gedeeltelijke query-uitvoering retourneert `x-ms-documentdb-query-metrics` een voor die pagina. 
+De client-Sdk's kunnen intern meerdere query bewerkingen uitvoeren om de query binnen elke partitie te leveren. De client maakt meer dan één aanroep per partitie als de totale resultaten groter `x-ms-max-item-count` worden, als de query de ingerichte door Voer voor de partitie overschrijdt, of als de query lading de maximum grootte per pagina bereikt of als de query de time-outlimiet van het toegewezen systeem bereikt. Elke gedeeltelijke query-uitvoering retourneert een `x-ms-documentdb-query-metrics` voor die pagina. 
 
 Hier volgen enkele voor beelden van query's en het interpreteren van enkele metrische gegevens die worden geretourneerd door de uitvoering van query's: 
 
 | Query’s uitvoeren | Voorbeeld metriek | Beschrijving | 
 | ------ | -----| ----------- |
-| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Het aantal opgehaalde documenten is 100 + 1 om overeen te komen met de component TOP. De query tijd wordt meestal gebruikt `WriteOutputTime` in `DocumentLoadTime` en omdat het een scan is. | 
+| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Het aantal opgehaalde documenten is 100 + 1 om overeen te komen met de component TOP. De query tijd wordt meestal gebruikt in `WriteOutputTime` en `DocumentLoadTime` omdat het een scan is. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount is nu hoger (500 + 1 zodat dit overeenkomt met de TOP-component). | 
-| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Ongeveer 0,9 MS wordt in IndexLookupTime uitgegeven voor een sleutel zoekactie, omdat het een opzoek index is `/N/?`. | 
-| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Iets meer tijd (1,7 MS) besteed aan IndexLookupTime over een bereik scan, omdat het een zoek opdracht op `/N/?`index is. | 
-| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | De tijd `DocumentLoadTime` die wordt besteed aan eerdere query's, maar `WriteOutputTime` lager omdat er slechts één eigenschap wordt geprojecteerd. | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Ongeveer 213 MS wordt besteed aan `UserDefinedFunctionExecutionTime` het uitvoeren van de UDF op elke waarde `c.N`van. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Ongeveer 0,6 MS wordt uitgegeven in `IndexLookupTime` op `/Name/?`. De meeste uitvoer tijd van de query (~ 7 MS) `SystemFunctionExecutionTime`in. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | De query wordt uitgevoerd als een scan omdat deze `LOWER`wordt gebruikt en er 500 van 2491 opgehaalde documenten worden geretourneerd. |
+| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Ongeveer 0,9 MS wordt in IndexLookupTime uitgegeven voor een sleutel zoekactie, omdat het een opzoek index is `/N/?` . | 
+| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Iets meer tijd (1,7 MS) besteed aan IndexLookupTime over een bereik scan, omdat het een zoek opdracht op index is `/N/?` . | 
+| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | De tijd `DocumentLoadTime` die wordt besteed aan eerdere query's, maar lager `WriteOutputTime` omdat er slechts één eigenschap wordt geprojecteerd. | 
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Ongeveer 213 MS wordt besteed aan `UserDefinedFunctionExecutionTime` het uitvoeren van de UDF op elke waarde van `c.N` . |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Ongeveer 0,6 MS wordt uitgegeven in `IndexLookupTime` op `/Name/?` . De meeste uitvoer tijd van de query (~ 7 MS) in `SystemFunctionExecutionTime` . |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | De query wordt uitgevoerd als een scan omdat deze wordt gebruikt `LOWER` en er 500 van 2491 opgehaalde documenten worden geretourneerd. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

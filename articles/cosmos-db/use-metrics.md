@@ -5,14 +5,14 @@ author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: b65bc6097d4841c79a68d4313ac7a3f89f6d1dbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 735c68a3aec4d7bbb5626497de445f61e375b34b
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065938"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263395"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ In dit artikel worden algemene use cases beschreven en wordt uitgelegd hoe Azure
 
 1. Open het deel venster **metrische gegevens** . Standaard toont het deel venster metrieken de metrische gegevens over de opslag, index en aanvraag eenheden voor alle data bases in uw Azure Cosmos-account. U kunt deze metrische gegevens per data base, container of regio filteren. U kunt de metrische gegevens ook filteren op een specifieke tijd granulariteit. Meer informatie over de metrische gegevens voor door Voer, opslag, Beschik baarheid, latentie en consistentie is beschikbaar op afzonderlijke tabbladen. 
 
-   ![Meet gegevens voor prestaties Cosmos DB in Azure Portal](./media/use-metrics/performance-metrics.png)
+   :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Meet gegevens voor prestaties Cosmos DB in Azure Portal":::
 
 De volgende metrische gegevens zijn beschikbaar in het deel venster **metrische gegevens** : 
 
@@ -50,7 +50,7 @@ Als u aan de slag wilt gaan, gaat u naar de [Azure Portal](https://portal.azure.
 
 De meest voorkomende fout status code is 429 (beperking of beperking). Deze fout betekent dat aanvragen voor Azure Cosmos DB meer zijn dan de ingerichte door voer. De meest voorkomende oplossing voor dit probleem is het [opschalen van het RUs](./set-throughput.md) voor de gegeven verzameling.
 
-![Aantal aanvragen per minuut](media/use-metrics/metrics-12.png)
+:::image type="content" source="media/use-metrics/metrics-12.png" alt-text="Aantal aanvragen per minuut":::
 
 ## <a name="determine-the-throughput-distribution-across-partitions"></a>De doorvoer distributie voor alle partities bepalen
 
@@ -64,11 +64,11 @@ Een ongelijke doorvoer distributie kan leiden tot *dynamische* partities, wat ka
 
 Een goede kardinaliteit van uw partitie is essentieel voor elke schaal bare toepassing. Als u de opslag distributie wilt bepalen van een gepartitioneerde container die is onderverdeeld in partities, kop naar de Blade metrische gegevens in de [Azure Portal](https://portal.azure.com). Op het tabblad opslag wordt de opslag specificatie weer gegeven in de grafiek gegevens en index opslag die worden gebruikt door de bovenste partitie sleutels. In de volgende afbeelding ziet u een slechte distributie van gegevens opslag, zoals wordt weer gegeven door de gescheefe partitie helemaal links.
 
-![Voor beeld van slechte gegevens distributie](media/use-metrics/metrics-07.png)
+:::image type="content" source="media/use-metrics/metrics-07.png" alt-text="Voor beeld van slechte gegevens distributie":::
 
 U kunt de hoofd oorzaak van de partitie sleutel scheef trekken door te klikken op de partitie in de grafiek.
 
-![De partitie sleutel verscheeft de distributie](media/use-metrics/metrics-05.png)
+:::image type="content" source="media/use-metrics/metrics-05.png" alt-text="De partitie sleutel verscheeft de distributie":::
 
 Nadat u hebt vastgesteld welke partitie sleutel het hellen van de verdeling veroorzaakt, moet u de container wellicht opnieuw partitioneren met een meer gedistribueerde partitie sleutel. Zie [partitioneren en schalen in azure Cosmos DB](./partition-data.md)voor meer informatie over partitioneren in azure Cosmos db.
 

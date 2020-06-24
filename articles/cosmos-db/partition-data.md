@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 19e4c61ba930bb9b127e2401174bcea3fd240dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57417a80ea83005c01b6f2a17206d46e6c049719
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234203"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112775"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionering en horizontaal schalen in Azure Cosmos DB
 
@@ -19,11 +19,11 @@ In dit artikel wordt de relatie tussen logische en fysieke partities uitgelegd. 
 
 ## <a name="logical-partitions"></a>Logische partities
 
-Een logische partitie bestaat uit een set items die dezelfde partitie sleutel hebben. In een container die bijvoorbeeld gegevens bevat over voedsel voeding, bevatten alle items een `foodGroup` eigenschap. U kunt gebruiken `foodGroup` als de partitie sleutel voor de container. Groepen van items waarvoor specifieke waarden zijn opgegeven `foodGroup`voor, zoals `Beef Products`,`Baked Products`en `Sausages and Luncheon Meats`, vormen afzonderlijke logische partities. U hoeft zich geen zorgen te maken over het verwijderen van een logische partitie wanneer de onderliggende gegevens worden verwijderd.
+Een logische partitie bestaat uit een set items die dezelfde partitie sleutel hebben. In een container die bijvoorbeeld gegevens bevat over voedsel voeding, bevatten alle items een `foodGroup` eigenschap. U kunt gebruiken `foodGroup` als de partitie sleutel voor de container. Groepen van items waarvoor specifieke waarden zijn opgegeven voor `foodGroup` , zoals `Beef Products` , `Baked Products` en `Sausages and Luncheon Meats` , vormen afzonderlijke logische partities. U hoeft zich geen zorgen te maken over het verwijderen van een logische partitie wanneer de onderliggende gegevens worden verwijderd.
 
 Een logische partitie definieert ook het bereik van database transacties. U kunt items binnen een logische partitie bijwerken met behulp van een [trans actie met snap shot-isolatie](database-transactions-optimistic-concurrency.md). Wanneer nieuwe items worden toegevoegd aan een container, worden nieuwe logische partities transparant gemaakt door het systeem.
 
-Er is geen limiet voor het aantal logische partities in de container. Elke logische partitie kan Maxi maal 20 GB aan gegevens bevatten. Goede opties voor de partitie sleutel hebben een breed scala aan mogelijke waarden. Bijvoorbeeld, in een container waarin alle items een `foodGroup`eigenschap bevatten, kunnen de gegevens in de `Beef Products` logische partitie tot 20 GB groeien. Als [u een partitie sleutel selecteert](partitioning-overview.md#choose-partitionkey) met een breed scala aan mogelijke waarden, zorgt u ervoor dat de container kan worden geschaald.
+Er is geen limiet voor het aantal logische partities in de container. Elke logische partitie kan Maxi maal 20 GB aan gegevens bevatten. Goede opties voor de partitie sleutel hebben een breed scala aan mogelijke waarden. Bijvoorbeeld, in een container waarin alle items een eigenschap bevatten `foodGroup` , kunnen de gegevens in de `Beef Products` logische partitie tot 20 GB groeien. Als [u een partitie sleutel selecteert](partitioning-overview.md#choose-partitionkey) met een breed scala aan mogelijke waarden, zorgt u ervoor dat de container kan worden geschaald.
 
 ## <a name="physical-partitions"></a>Fysieke partities
 
@@ -40,11 +40,11 @@ De door Voer die is ingericht voor een container, wordt gelijkmatig verdeeld ove
 
 U kunt de fysieke partities van uw container bekijken in de sectie **opslag** van de **Blade metrische gegevens** van de Azure portal:
 
-[![Aantal fysieke partities](./media/partition-data/view-partitions-zoomed-out.png) weer geven](./media/partition-data/view-partitions-zoomed-in.png#lightbox)
+:::image type="content" source="./media/partition-data/view-partitions-zoomed-out.png" alt-text="Aantal fysieke partities weer geven" lightbox="./media/partition-data/view-partitions-zoomed-in.png" ::: 
 
-In dit voor beeld waarin we hebben gekozen `/foodGroup` als onze partitie sleutel, vertegenwoordigen elk van de drie rechthoeken een fysieke partitie. In de installatie kopie is het **partitie sleutel bereik** hetzelfde als een fysieke partitie. De geselecteerde fysieke partitie bevat drie logische partities: `Beef Products`, `Vegetable and Vegetable Products`en `Soups, Sauces, and Gravies`.
+In dit voor beeld waarin we hebben gekozen `/foodGroup` als onze partitie sleutel, vertegenwoordigen elk van de drie rechthoeken een fysieke partitie. In de installatie kopie is het **partitie sleutel bereik** hetzelfde als een fysieke partitie. De geselecteerde fysieke partitie bevat drie logische partities: `Beef Products` , `Vegetable and Vegetable Products` en `Soups, Sauces, and Gravies` .
 
-Als we een door Voer van 18.000 aanvraag eenheden per seconde (RU/s) inrichten, kan elk van de drie fysieke partities 1/3 van de totale ingerichte door Voer gebruiken. Binnen de geselecteerde fysieke partitie, de logische partitie sleutels `Beef Products`, `Vegetable and Vegetable Products`en `Soups, Sauces, and Gravies` kan gezamenlijk de 6.000 ingerichte ru/s van de fysieke partitie gebruiken. Omdat de ingerichte door Voer gelijkmatig is verdeeld over de fysieke partities van uw container, is het belang rijk om een partitie sleutel te kiezen waarmee het doorvoer verbruik gelijkmatig kan worden verdeeld door [de juiste logische partitie sleutel te kiezen](partitioning-overview.md#choose-partitionkey). Als u een partitie sleutel kiest die het doorvoer verbruik gelijkmatig distribueert over logische partities, zorgt u ervoor dat het doorvoer verbruik over fysieke partities evenwichtig is.
+Als we een door Voer van 18.000 aanvraag eenheden per seconde (RU/s) inrichten, kan elk van de drie fysieke partities 1/3 van de totale ingerichte door Voer gebruiken. Binnen de geselecteerde fysieke partitie, de logische partitie sleutels `Beef Products` , `Vegetable and Vegetable Products` en `Soups, Sauces, and Gravies` kan gezamenlijk de 6.000 ingerichte ru/s van de fysieke partitie gebruiken. Omdat de ingerichte door Voer gelijkmatig is verdeeld over de fysieke partities van uw container, is het belang rijk om een partitie sleutel te kiezen waarmee het doorvoer verbruik gelijkmatig kan worden verdeeld door [de juiste logische partitie sleutel te kiezen](partitioning-overview.md#choose-partitionkey). Als u een partitie sleutel kiest die het doorvoer verbruik gelijkmatig distribueert over logische partities, zorgt u ervoor dat het doorvoer verbruik over fysieke partities evenwichtig is.
 
 ## <a name="replica-sets"></a>Replica sets
 
@@ -54,7 +54,7 @@ Voor de meeste kleine Cosmos-containers is slechts één fysieke partitie vereis
 
 In de volgende afbeelding ziet u hoe logische partities worden toegewezen aan fysieke partities die globaal worden gedistribueerd:
 
-![Een afbeelding die Azure Cosmos DB partitionering demonstreert](./media/partition-data/logical-partitions.png)
+:::image type="content" source="./media/partition-data/logical-partitions.png" alt-text="Een afbeelding die Azure Cosmos DB partitionering demonstreert" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

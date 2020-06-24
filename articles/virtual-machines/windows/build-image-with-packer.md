@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 219685b1f82cea3e85a6d45023e913141345e685
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773318"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106515"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Hoe kan ik met behulp van Packer installatie kopieën voor virtuele Windows-machines maken in azure?
 Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Windows-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor het meest voorkomende besturings systeem en de toepassingen omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure kunt definiëren en bouwen.
 
-Dit artikel is voor het laatst getest op 2/21/2019 met behulp van de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) versie 1.3.0 en de versie 1.3.4 van de [Packer](https://www.packer.io/docs/install/index.html) .
+Dit artikel is voor het laatst getest op 2/21/2019 met behulp van de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/install-az-ps) versie 1.3.0 en de versie 1.3.4 van de [Packer](https://www.packer.io/docs/install) .
 
 > [!NOTE]
 > Azure heeft nu een service, Azure Image Builder (preview), voor het definiëren en maken van uw eigen aangepaste installatie kopieën. Azure Image Builder is gebaseerd op Packer, dus u kunt zelfs uw bestaande scripts voor de inrichtings functie van de pakket shell gebruiken. Zie [een Windows-VM maken met Azure Image Builder](image-builder.md)om aan de slag te gaan met Azure Image Builder.
@@ -26,7 +26,7 @@ Dit artikel is voor het laatst getest op 2/21/2019 met behulp van de [AZ Power s
 ## <a name="create-azure-resource-group"></a>Een Azure-resource groep maken
 Tijdens het bouw proces maakt verpakker tijdelijke Azure-resources tijdens het maken van de bron-VM. Als u wilt dat de bron-VM als een installatie kopie wordt gebruikt, moet u een resource groep definiëren. De uitvoer van het pakket voor het maken van pakketten wordt opgeslagen in deze resource groep.
 
-Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -64,7 +64,7 @@ Get-AzSubscription
 ## <a name="define-packer-template"></a>Pakket sjabloon definiëren
 Als u installatie kopieën wilt maken, maakt u een sjabloon als een JSON-bestand. In de sjabloon definieert u bouwers en inrichtings die het werkelijke bouw proces uitvoeren. Verpakker heeft een [Builder voor Azure](https://www.packer.io/docs/builders/azure.html) waarmee u Azure-resources kunt definiëren, zoals de referenties van de service-principal die in de voor gaande stap zijn gemaakt.
 
-Maak een bestand met de naam *Windows. json* en plak de volgende inhoud. Voer uw eigen waarden in voor het volgende:
+Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw eigen waarden in voor het volgende:
 
 | Parameter                           | Waar u kunt verkrijgen |
 |-------------------------------------|----------------------------------------------------|

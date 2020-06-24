@@ -3,15 +3,15 @@ title: Migreren van de bibliotheek voor het wijzigen van de feed-processor naar 
 description: Meer informatie over hoe u uw toepassing kunt migreren met behulp van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB SDK v3
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9640800bb53fe2fd5b27cb6e232e09c72158f8da
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588880"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261406"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor het wijzigen van de feed-processor naar de Azure Cosmos DB .NET v3 SDK
 
@@ -22,9 +22,9 @@ In dit artikel worden de vereiste stappen beschreven voor het migreren van de co
 De .NET v3 SDK heeft verschillende belang rijke wijzigingen, de volgende zijn de belangrijkste stappen voor het migreren van uw toepassing:
 
 1. Converteer de `DocumentCollectionInfo` instanties naar `Container` verwijzingen voor de containers bewaakt en leases.
-1. Aanpassingen die worden gebruikt `WithProcessorOptions` , moeten worden bijgewerkt voor `WithLeaseConfiguration` gebruik `WithPollInterval` en voor intervallen, `WithStartTime` [voor begin tijd](how-to-configure-change-feed-start-time.md)en `WithMaxItems` het definiëren van het maximum aantal items.
-1. Stel de `processorName` op `GetChangeFeedProcessorBuilder` in op overeenkomen met de `ChangeFeedProcessorOptions.LeasePrefix`waarde die is `string.Empty` geconfigureerd op of gebruik anders.
-1. De wijzigingen worden niet meer geleverd als een `IReadOnlyList<Document>`in plaats daarvan, maar het `IReadOnlyCollection<T>` `T` is een type dat u moet definiëren. er is geen klasse van het basis item meer.
+1. Aanpassingen die worden gebruikt, `WithProcessorOptions` moeten worden bijgewerkt voor gebruik `WithLeaseConfiguration` en `WithPollInterval` voor intervallen, `WithStartTime` [voor begin tijd](how-to-configure-change-feed-start-time.md)en `WithMaxItems` het definiëren van het maximum aantal items.
+1. Stel de `processorName` op in op `GetChangeFeedProcessorBuilder` overeenkomen met de waarde die is geconfigureerd op `ChangeFeedProcessorOptions.LeasePrefix` of gebruik `string.Empty` anders.
+1. De wijzigingen worden niet meer geleverd als een `IReadOnlyList<Document>` in plaats daarvan, maar het `IReadOnlyCollection<T>` `T` is een type dat u moet definiëren. er is geen klasse van het basis item meer.
 1. Als u de wijzigingen wilt afhandelen, hebt u geen implementatie meer nodig. in plaats daarvan moet u [een gemachtigde definiëren](change-feed-processor.md#implementing-the-change-feed-processor). De gemachtigde kan een statische functie zijn of, als u de status van de uitvoeringen wilt hand haven, uw eigen klasse maken en een instantie methode door geven als gemachtigde.
 
 Als de oorspronkelijke code voor het bouwen van de wijzigings verwerkings processor er bijvoorbeeld als volgt uitziet:

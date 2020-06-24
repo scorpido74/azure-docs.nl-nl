@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
-ms.topic: article
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 791f2e9bf825bb0a1d1ce555c9fbd879106213df
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 40d1efd5d5e8dc5fed07bf5b9ab1cfa70927b5cf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995831"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732579"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Uw gebruikers beheren met mijn personeel (preview)
 
@@ -54,7 +54,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 Zodra u AUs hebt geconfigureerd, kunt u dit bereik Toep assen op uw gebruikers die toegang hebben tot mijn personeel. Alleen gebruikers aan wie een beheerdersrol is toegewezen, hebben toegang tot mijn personeel. Als u mijn personeel wilt inschakelen, voert u de volgende stappen uit:
 
 1. Meld u aan bij de Azure Portal als een gebruikers beheerder.
-2. Blader naar **Azure Active Directory** > **gebruikers instellingen** > **previews** > **voor de preview-functie van gebruikers onderdelen beheren**.
+2. Blader naar **Azure Active Directory**gebruikers  >  **instellingen**  >  **previews**  >  **voor de preview-functie van gebruikers onderdelen beheren**.
 3. Onder **beheerders hebben toegang tot mijn personeel**. u kunt ervoor kiezen om in te scha kelen voor alle gebruikers, geselecteerde gebruikers of geen gebruikers toegang.
 
 > [!Note]
@@ -80,7 +80,7 @@ We raden u ten zeerste aan om mijn personeel te beschermen met het [beleid voor 
 
 ## <a name="using-my-staff"></a>Mijn personeel gebruiken
 
-Wanneer een gebruiker naar mijn personeel gaat, worden de namen weer gegeven van de [beheer eenheden](directory-administrative-units.md) waarvoor ze beheerders machtigingen hebben. In de [gebruikers documentatie van mijn personeel](../user-help/my-staff-team-manager.md)gebruiken we de term ' locatie ' om te verwijzen naar beheer eenheden. Als de machtigingen van een beheerder geen AU-bereik hebben, gelden de machtigingen voor de hele organisatie. Nadat mijn mede werkers zijn ingeschakeld, hebben de gebruikers die zijn ingeschakeld en aan wie een beheerdersrol is toegewezen, toegang [https://mystaff.microsoft.com](https://mystaff.microsoft.com)tot het netwerk via. Ze kunnen een AU selecteren om de gebruikers in die AU weer te geven en een gebruiker selecteren om zijn of haar profiel te openen.
+Wanneer een gebruiker naar mijn personeel gaat, worden de namen weer gegeven van de [beheer eenheden](directory-administrative-units.md) waarvoor ze beheerders machtigingen hebben. In de [gebruikers documentatie van mijn personeel](../user-help/my-staff-team-manager.md)gebruiken we de term ' locatie ' om te verwijzen naar beheer eenheden. Als de machtigingen van een beheerder geen AU-bereik hebben, gelden de machtigingen voor de hele organisatie. Nadat mijn mede werkers zijn ingeschakeld, hebben de gebruikers die zijn ingeschakeld en aan wie een beheerdersrol is toegewezen, toegang tot het netwerk via [https://mystaff.microsoft.com](https://mystaff.microsoft.com) . Ze kunnen een AU selecteren om de gebruikers in die AU weer te geven en een gebruiker selecteren om zijn of haar profiel te openen.
 
 ## <a name="reset-a-users-password"></a>Het wachtwoord van een gebruiker opnieuw instellen
 
@@ -90,7 +90,7 @@ De volgende rollen zijn gemachtigd om het wacht woord van een gebruiker opnieuw 
 - [Beheerder voor geprivilegieerde authenticatie](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globale beheerder](directory-assign-admin-roles.md#global-administrator--company-administrator)
 - [Helpdesk beheerder](directory-assign-admin-roles.md#helpdesk-administrator)
-- [Gebruikers beheerder](directory-assign-admin-roles.md#user-administrator)
+- [Gebruikersbeheerder](directory-assign-admin-roles.md#user-administrator)
 - [Wachtwoordbeheerder](directory-assign-admin-roles.md#password-administrator)
 
 Open vanuit **mijn personeel**het profiel van een gebruiker. Selecteer **wacht woord opnieuw instellen**.
@@ -130,5 +130,5 @@ U kunt audit logboeken bekijken voor acties die in mijn personeel in de Azure Ac
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Documentatie voor de gebruikers documentatie](../user-help/my-staff-team-manager.md)
-[Administrative units documentation](directory-administrative-units.md) van mijn personeel
+Documentatie voor gebruikers van [mijn personeel](../user-help/my-staff-team-manager.md) 
+ [Documentatie over administratieve eenheden](directory-administrative-units.md)

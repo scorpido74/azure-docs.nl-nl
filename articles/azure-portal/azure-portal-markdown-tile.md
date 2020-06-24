@@ -6,15 +6,15 @@ keywords: ''
 author: mgblythe
 ms.author: mblythe
 ms.date: 01/08/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 338135561a462fec3b0bfc619a3518cb420908f0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310710"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763989"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Een tegel met korting op Azure-Dash boards gebruiken om aangepaste inhoud weer te geven
 
@@ -57,7 +57,7 @@ U kunt een tegel met korting toevoegen aan uw Azure-Dash boards om aangepaste st
 
 U kunt elke combi natie van de syntaxis voor tekst zonder opmaak en de inhoud van een HTML-bestand gebruiken op de tegel prijs verlaging. De Azure Portal gebruikt een open-source bibliotheek met de naam _gemarkeerd_ om uw inhoud te TRANSFORMEREN in HTML die wordt weer gegeven op de tegel. De HTML-code die wordt geproduceerd door _gemarkeerd_ , wordt vooraf verwerkt door de portal voordat deze wordt weer gegeven. Met deze stap zorgt u ervoor dat uw aanpassing geen invloed heeft op de beveiliging of indeling van de portal. Tijdens deze vooraf-verwerking wordt elk deel van de HTML dat een mogelijke bedreiging vormt, verwijderd. De volgende typen inhoud zijn niet toegestaan door de portal:
 
-* Java script `<script>` : Tags en inline java script-evaluaties worden verwijderd.
+* Java script: `<script>` Tags en inline java script-evaluaties worden verwijderd.
 * iframes: `<iframe>` Tags worden verwijderd.
 * Style- `<style>` Tags worden verwijderd. Inline stijl kenmerken voor HTML-elementen worden niet officieel ondersteund. Het kan voor komen dat sommige inline-stijl elementen werken voor u, maar als deze de indeling van de portal beïnvloeden, kunnen ze op elk gewenst moment niet meer werken. De tegel prijs verlaging is bedoeld voor basis statische inhoud die gebruikmaakt van de standaard stijlen van de portal.
 

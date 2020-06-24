@@ -4,15 +4,15 @@ description: In dit artikel worden de stappen beschreven die nodig zijn om Azure
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67985552"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263344"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbind Qlik Sense om uw gegevens te Azure Cosmos DB en te visualiseren
 
@@ -54,7 +54,7 @@ Voordat u de instructies in dit artikel volgt, moet u ervoor zorgen dat u de vol
 
 1. Open Qlik Sense en selecteer **nieuwe app maken**. Geef een naam op voor uw app en selecteer **maken**.
 
-   ![Een nieuwe Qlik Sense-app maken](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Een nieuwe Qlik Sense-app maken":::
 
 2. Nadat de nieuwe app is gemaakt, selecteert u **app openen** en kiest u **gegevens toevoegen uit bestanden en andere bronnen**. 
 
@@ -62,15 +62,15 @@ Voordat u de instructies in dit artikel volgt, moet u ervoor zorgen dat u de vol
 
 4. Schakel over naar de **gebruikers-DSN** en kies de ODBC-verbinding die u eerder hebt gemaakt. Geef een naam op voor de verbinding en selecteer **maken**. 
 
-   ![Een nieuwe verbinding maken](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Een nieuwe verbinding maken":::
 
 5. Nadat u de verbinding hebt gemaakt, kunt u de data base kiezen, verzamelen waar de video game gegevens zich bevinden en vervolgens een voor beeld bekijken.
 
-   ![De data base en verzameling kiezen](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="De data base en verzameling kiezen"::: 
 
 6. Selecteer vervolgens **gegevens toevoegen** om de gegevens naar Qlik Sense te laden. Nadat u gegevens naar Qlik Sense hebt geladen, kunt u inzichten genereren en analyses uitvoeren op de gegevens. U kunt de inzichten gebruiken of uw eigen app bouwen met het verkennen van de omzet voor video games. In de volgende afbeelding ziet u 
 
-   ![Gegevens visualiseren](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Gegevens visualiseren":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>Beperkingen bij het maken van verbinding met ODBC 
 

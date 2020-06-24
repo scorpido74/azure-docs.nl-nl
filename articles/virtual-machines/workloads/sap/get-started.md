@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/10/2020
+ms.date: 06/22/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe61c7e461d6598277aa9b38eafc16194b08bf1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f79eabd960238b52c146d89af8aef050aab427c3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672116"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207172"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -112,6 +112,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 06/22/2020: Voeg installatie stappen voor nieuwe VM-extensie voor SAP toe aan de [implementatie handleiding](deployment-guide.md)
+- 06/16/2020: wijziging in [open bare-eindpunt connectiviteit voor vm's met behulp van Azure Standard ILB in SAP ha-scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) om een koppeling toe te voegen aan SuSE open bare Cloud Infrastructure 101-documentatie 
 - 06/10/2020: nieuwe HLI-Sku's toevoegen aan [beschik bare sku's voor HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) en [SAP Hana (grote exemplaren) opslag architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture)
 - 05/21/2020: wijziging in het [instellen van pacemaker op sles in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) en het [instellen van pacemaker op RHEL in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) om een koppeling toe te voegen aan [open bare-eindpunt connectiviteit voor Vm's met behulp van Azure Standard ILB in SAP ha-scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)  
 - 05/19/2020: belang rijk bericht toevoegen dat geen hoofd volume groep mag gebruiken bij gebruik van LVM voor HANA-gerelateerde volumes in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
