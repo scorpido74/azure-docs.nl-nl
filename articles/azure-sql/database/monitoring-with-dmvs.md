@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4aaf62af01933b24e666a3a1d626b666869d07e5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193919"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117366"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Prestaties bewaken Microsoft Azure SQL Database en Azure SQL Managed instance met dynamische beheer weergaven
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -257,7 +257,7 @@ Bij het identificeren van i/o-prestatie problemen, zijn de meest voorkomende wac
 Voor TempDB-conflicten is een gemeen schappelijke methode het verminderen of herschrijven van toepassings code die afhankelijk is van `tempdb` .  Algemene `tempdb` gebruiks gebieden zijn:
 
 - Tijdelijke tabellen
-- Tabel variabelen
+- Tabelvariabelen
 - Tabelwaardeparameter
 - Gebruik van versie opslag (specifiek gekoppeld aan langlopende trans acties)
 - Query's met query plannen die gebruikmaken van sorteringen, hash-samen voegingen en spools
@@ -364,7 +364,7 @@ GROUP BY wait_type
 ORDER BY SUM(wait_time) DESC;
 ```
 
-### <a name="identity-high-memory-consuming-statements"></a>Identiteits hoge geheugen-verbruiks instructies
+### <a name="identify-high-memory-consuming-statements"></a>Hoge geheugen-verbruiks instructies identificeren
 
 Gebruik de volgende query om hoge geheugen-verbruiks instructies te identificeren:
 

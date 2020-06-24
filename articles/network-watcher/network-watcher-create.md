@@ -7,21 +7,21 @@ author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191183"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737543"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Een Azure Network Watcher-exemplaar maken
 
-Network Watcher is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op het niveau van een netwerk scenario in, naar en Azure. Met bewaking op scenario niveau kunt u problemen met een end-to-end netwerk niveau weergave vaststellen. Met behulp van de hulpprogram ma's voor netwerk diagnose en visualisatie die beschikbaar zijn bij Network Watcher, kunt u uw netwerk in azure begrijpen, vaststellen en er inzicht in krijgen. Network Watcher wordt ingeschakeld door het maken van een Network Watcher resource. Met deze resource kunt u Network Watcher mogelijkheden gebruiken.
+Network Watcher is een regionale service waarmee u voorwaarden op het niveau van netwerkscenario's in, naar en vanaf Azure kunt controleren en onderzoeken. Via controle op het scenarioniveau kunt u problemen analyseren met behulp van een weergave op het niveau van een end-to-end netwerk. U kunt de beschikbare diagnostische en visualisatiehulpprogramma's voor netwerken in Network Watcher gebruiken om uw netwerk in Azure te begrijpen, te analyseren en inzichten voor uw netwerk te verkrijgen. Network Watcher wordt ingeschakeld door het maken van een Network Watcher resource. Met deze resource kunt u Network Watcher mogelijkheden gebruiken.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -49,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>Een Network Watcher maken in de portal
 
-Ga naar **alle services** > **netwerk** > **Network Watcher**. U kunt alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie maakt u een Network Watcher in elke regio die beschikbaar is.
+Ga naar **alle services**  >  **netwerk**  >  **Network Watcher**. U kunt alle abonnementen selecteren waarvoor u Network Watcher wilt inschakelen. Met deze actie maakt u een Network Watcher in elke regio die beschikbaar is.
 
 ![een netwerk-Watcher maken](./media/network-watcher-create/figure1.png)
 
@@ -103,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Een Network Watcher in de Portal verwijderen
 
-Ga naar **alle services** > **netwerk** > **Network Watcher**.
+Ga naar **alle services**  >  **netwerk**  >  **Network Watcher**.
 
 Selecteer het tabblad Overzicht als u dat nog niet hebt gedaan. Gebruik de vervolg keuzelijst om het abonnement te selecteren waarvoor u de Network Watcher wilt uitschakelen.
 Vouw de lijst met regio's voor het gekozen abonnement uit door op de pijl te klikken. Gebruik voor elke gegeven de drie punten aan de rechter kant om het context menu te openen.

@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 4737b8f13a3a4a1e65c4c7812bd514f76a24d2e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127755"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119023"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problemen met Azure Stream Analytics oplossen met behulp van resource logboeken
 
@@ -59,23 +59,23 @@ Activiteiten logboeken zijn standaard ingeschakeld en geven inzichten op hoog ni
 
 Het inschakelen van bron logboeken en het verzenden van deze naar Azure Monitor Logboeken wordt sterk aanbevolen. Ze zijn standaard **uitgeschakeld** . Als u deze wilt inschakelen, voert u de volgende stappen uit:
 
-1.  Meld u aan bij de Azure Portal en navigeer naar uw Stream Analytics-taak. Onder **bewaking**selecteert u **Diagnostische logboeken**. Selecteer vervolgens **Diagnostische gegevens inschakelen**.
+1.  [Maak een log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) als u er nog geen hebt. Het is raadzaam om uw Log Analytics-werk ruimte in dezelfde regio als uw Stream Analytics-taak te hebben.
+
+2.  Meld u aan bij de Azure Portal en navigeer naar uw Stream Analytics-taak. Onder **bewaking**selecteert u **Diagnostische logboeken**. Selecteer vervolgens **Diagnostische gegevens inschakelen**.
 
     ![Blade navigatie naar resource logboeken](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Maak een **naam** in de **Diagnostische instellingen** en schakel het selectie vakje naast **verzenden naar log Analytics**in. Voeg vervolgens een bestaande **werk ruimte voor logboek analyse**toe of maak een nieuwe. Schakel de selectie vakjes in voor **uitvoering** en **ontwerpen** onder **logboek**en **AllMetrics** onder **metrische gegevens**. Klik op **Opslaan**. Het is raadzaam om een Log Analytics-werk ruimte te gebruiken in dezelfde Azure-regio als uw Stream Analytics-taak om extra kosten te voor komen.
+2.  Geef een **naam** op in de naam van de **Diagnostische instellingen** en schakel de selectie vakjes in voor **uitvoering** en **ontwerp** onder **logboek**en **AllMetrics** onder **metrische gegevens**. Selecteer vervolgens **verzenden naar log Analytics** en kies uw werk ruimte. Klik op **Opslaan**.
 
-    ![Instellingen voor bronnen logboeken](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
+    ![Instellingen voor bronnen logboeken](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Wanneer uw Stream Analytics-taak wordt gestart, worden bron logboeken gerouteerd naar uw Log Analytics-werk ruimte. Als u de resource logboeken voor uw taak wilt weer geven, selecteert u **Logboeken** onder de sectie **bewaking** .
 
    ![Bron Logboeken onder bewaking](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
-4. Stream Analytics biedt vooraf gedefinieerde query's waarmee u eenvoudig naar de logboeken kunt zoeken waarin u geïnteresseerd bent. De drie categorieën zijn **Algemeen**, **fouten in de invoer gegevens** en **uitvoer gegevens**. Als u bijvoorbeeld een samen vatting van alle fouten van uw taak in de afgelopen 7 dagen wilt zien, kunt u **uitvoeren** van de juiste vooraf gedefinieerde query selecteren. 
+4. Stream Analytics biedt vooraf gedefinieerde query's waarmee u eenvoudig naar de logboeken kunt zoeken waarin u geïnteresseerd bent. U kunt alle vooraf gedefinieerde query's in het linkerdeel venster selecteren en vervolgens **uitvoeren**selecteren. De resultaten van de query worden weer geven in het onderste deel venster. 
 
-   ![Bron Logboeken onder bewaking](./media/stream-analytics-job-diagnostic-logs/logs-categories.png)
-
-   ![Resultaten van Logboeken](./media/stream-analytics-job-diagnostic-logs/logs-result.png)
+   ![Bron Logboeken onder bewaking](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Resource logboek Categorieën
 

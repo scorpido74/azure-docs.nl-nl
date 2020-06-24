@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714556"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117910"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Voordat u deze hand leiding leest, moet u rekening houden met veelvoorkomende SD
 
 - Volg deze [Tips voor prestaties](performance-tips.md)voor de beste prestaties.
     > [!NOTE]
-    > Voor betere prestaties raden we u aan Windows 64-bits host te verwerken. De SQL SDK bevat een systeem eigen ServiceInterop. dll om query's lokaal te parseren en te optimaliseren. ServiceInterop. dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop. dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen.
+    > Voor betere prestaties raden we u aan Windows 64-bits host te verwerken. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen.
 - Met de SDK kunt `MaxItemCount` u een voor uw query's instellen, maar u kunt geen minimum aantal items opgeven.
     - Code moet elk pagina formaat afhandelen van 0 tot en met `MaxItemCount` .
     - Het aantal items op een pagina is altijd minder of gelijk aan het opgegeven `MaxItemCount` . Is echter `MaxItemCount` een strikt maximum en er kunnen minder resultaten zijn dan deze hoeveelheid.
@@ -47,7 +47,7 @@ Voordat u deze hand leiding leest, moet u rekening houden met veelvoorkomende SD
 
 Wanneer u een query in Azure Cosmos DB optimaliseert, is de eerste stap altijd om [de metrische gegevens van de query](profile-sql-api-query.md) voor uw query op te halen. Deze metrische gegevens zijn ook beschikbaar via de Azure Portal. Zodra u de query in de Data Explorer hebt uitgevoerd, zijn de metrische gegevens van de query zichtbaar naast het tabblad **resultaten** :
 
-[![Metrische query gegevens ](./media/troubleshoot-query-performance/obtain-query-metrics.png) ophalen](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="Metrische query gegevens ophalen" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 Nadat u de metrische gegevens van de query hebt opgehaald, vergelijkt u het **opgehaalde aantal documenten** met het **aantal uitvoer documenten** voor uw query. Gebruik deze vergelijking om de relevante secties te identificeren die u in dit artikel kunt controleren.
 

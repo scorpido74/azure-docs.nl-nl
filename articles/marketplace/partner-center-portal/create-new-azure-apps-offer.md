@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848784"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213840"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -38,7 +38,7 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 
 * Quickstarts:
 
-    * [Azure-quickstartsjablonen](https://azure.microsoft.com/documentation/templates/)
+    * [Azure-quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure Quick Start-sjablonen](https://github.com/azure/azure-quickstart-templates)
     * [Toepassingsdefinitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Servicecatalogus-app implementeren](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
@@ -92,9 +92,9 @@ Er zijn twee soorten Azure-toepassings abonnementen: oplossings sjablonen en beh
 
 Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van een `.zip` Archief:
 
-* Een resource manager-sjabloon bestand met de naam [mainTemplate. json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een resource manager-sjabloon bestand [met de naammainTemplate.jsop](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Met deze sjabloon worden de resources gedefinieerd die moeten worden geïmplementeerd in het Azure-abonnement van de klant. Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/resources/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
 
-* Een gebruikersinterface definitie voor de Azure-app voor het maken van toepassingen met de naam [createUiDefinition. json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
+* Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
 
 Alle nieuwe aanbiedingen van Azure Application moeten een [GUID voor gebruiks toewijzing](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)van een Azure-partner bevatten. 
 
@@ -161,16 +161,43 @@ Selecteer ten minste één en Maxi maal drie categorieën om uw aanbieding te pl
 
 ## <a name="offer-listing"></a>Aanbieding weer geven
 
-Op deze pagina kunt u de kopie en afbeeldingen voor uw aanbieding voor commerciële Marketplace beheren. 
+Op deze pagina kunt u de kopie en afbeeldingen voor uw aanbieding voor commerciële Marketplace beheren.
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
 > [!NOTE]
 > De inhoud van het aanbiedings aanbod (zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden) is niet vereist voor het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in azure Marketplace (alle prijzen zijn bijvoorbeeld alleen bedoeld voor de werkelijke kosten):
+
+:::image type="content" source="media/example-azure-marketplace-app.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Logo
+2. Categorieën
+3. Ondersteunings adres (koppeling)
+4. Gebruiksvoorwaarden
+5. Adres van privacybeleid (koppeling)
+6. Naam van aanbieding
+7. Samenvatting
+8. Beschrijving
+9. Scherm afbeeldingen/Video's
+
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Titel
+2. Beschrijving
+3. Handige koppelingen
+4. Schermopnamen
+
 #### <a name="name"></a>Name
 
-De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
+De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
 #### <a name="search-results-summary"></a>Samen vatting van zoek resultaten
 
@@ -265,7 +292,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 De technische configuratie definieert de Details (Tenant-ID en App-ID) die worden gebruikt voor het identificeren van uw service, waardoor er metings gebeurtenissen voor een beheerde toepassing worden gemaakt met behulp van de [Marketplace meter service-api's](./marketplace-metering-service-apis.md).  Geef de identiteit op die uw service gebruikt voor het verzenden van meter gebeurtenissen.
 
-* **Azure AD-Tenant-id** (vereist): in azure Portal moet u [een Azure Active Directory (AD)-app maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) zodat we kunnen valideren dat de verbinding tussen de twee services zich achter een geverifieerde communicatie bevindt. Als u de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+* **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u de [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)wilt vinden, gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 * **Azure AD-App-ID** (vereist): u hebt ook uw [toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) en een verificatie sleutel nodig. Als u deze waarden wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). Ga naar **instellingen** en selecteer **sleutels**om de verificatie sleutel te vinden. U moet een beschrijving en een duur opgeven, en vervolgens een numerieke waarde.
 
 >[!Note]
@@ -421,8 +448,8 @@ Op dit tabblad kunt u de concept versie van uw technische configuratie bewerken.
 
 Alle Azure Application plan-pakketten moeten deze twee bestanden in de hoofdmap van een `.zip` Archief bevatten:
 
-* Een resource manager-sjabloon bestand met de naam [mainTemplate. json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
-* Een gebruikersinterface definitie voor de Azure-app voor het maken van toepassingen met de naam [createUiDefinition. json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+* Een resource manager-sjabloon bestand [met de naammainTemplate.jsop](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Met deze sjabloon wordt de implementatie van resources in het Azure-abonnement van klanten geautomatiseerd.  Voor voor beelden van Resource Manager-sjablonen raadpleegt u de [Azure Quick Start-sjablonen galerie](https://azure.microsoft.com/documentation/templates/) of de bijbehorende [github: Azure Resource Manager Quick](https://github.com/azure/azure-quickstart-templates) start-sjablonen opslag plaats.
+* Een definitie van de gebruikers interface voor de Azure-toepassing voor het maken van toepassingen met de naam [createUiDefinition.jsop](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
 De maximale bestands grootte die wordt ondersteund zijn:
 
@@ -505,7 +532,7 @@ Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test 
 
 ### <a name="test-drive-technical-configuration"></a>Technische configuratie van test station
 
-- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties**en zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties**en zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
 #### <a name="deployment-subscription-details"></a>Details van implementatie abonnement
 
@@ -531,7 +558,7 @@ Beschrijf de test drive ervaring.
 * **Video's: Video's toevoegen** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, met inbegrip van de manier waarop u de functies van uw aanbieding kunt gebruiken en inzicht kunt krijgen in de voor delen.
   * **Naam** (vereist)
   * **Adres** (alleen YouTube of Vimeo; vereist)
-  * **Miniatuur** (het afbeeldings bestand moet de PNG-indeling hebben en 533 x 324 px).
+  * **Miniatuur** (het afbeeldings bestand moet de PNG-indeling hebben en 533 x 324 pixels).
 
 Selecteer **concept opslaan** voordat u doorgaat.
 

@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42421f745759d9aee75b285c3fbc6ea7217ba5c0
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152581"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112698"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Kosten plannen en beheren voor Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Gebruik de [Azure Cosmos DB capaciteits Calculator](https://cosmos.azure.com/cap
 
 In de volgende scherm afbeelding ziet u de schatting van de door Voer en de kosten met behulp van de capaciteits Calculator:
 
-![Kosten raming in Azure Cosmos DB capaciteits Calculator](./media/plan-manage-costs/capacity-calculator-cost-estimate.png)
+:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Kosten raming in Azure Cosmos DB capaciteits Calculator":::
 
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>Geschatte kosten van de Azure Portal controleren
 
@@ -41,7 +41,7 @@ Wanneer u Azure Cosmos DB resources van Azure Portal maakt, worden de geschatte 
 1. Maak een nieuwe container, zoals een grafiek container.
 1. Voer de door Voer die vereist is voor uw werk belasting, zoals 400 RU/s. Nadat u de doorvoer waarde hebt ingevoerd, ziet u de prijs schatting zoals weer gegeven op de volgende scherm afbeelding:
 
-   ![Kosten raming in Azure Portal](./media/plan-manage-costs/cost-estimate-portal.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Kosten raming in Azure Portal":::
 
 Als uw Azure-abonnement een bestedings limiet heeft, voor komt u dat u kunt bestedingen over uw tegoed. Wanneer u Azure-resources maakt en gebruikt, worden uw tegoeden gebruikt. Wanneer u de krediet limiet bereikt, worden de resources die u hebt geïmplementeerd, uitgeschakeld voor de rest van die facturerings periode. U kunt uw krediet limiet niet wijzigen, maar wel verwijderen. Zie [Azure bestedings limiet](../billing/billing-spending-limit.md)voor meer informatie over bestedings limieten.
 
@@ -55,7 +55,7 @@ Als u resources met Azure Cosmos DB gebruikt, worden er kosten in rekening gebra
 
 Wanneer u kosten analyse gebruikt, kunt u de kosten voor de Azure Cosmos DB in grafieken en tabellen weer geven voor verschillende tijds intervallen. Enkele voor beelden zijn dag, actueel, voor gaande maand en jaar. U kunt ook kosten weer geven op basis van budgetten en geraamde kosten. Door over te scha kelen naar langere weer gaven kunt u uitgaven trends helpen identificeren en zien waar overuitgave mogelijk is gebeurd. Als u budgetten hebt gemaakt, kunt u ook eenvoudig zien waar ze zijn overschreden. Azure Cosmos DB kosten voor de kosten analyse weer geven:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Open het venster **Cost Management en facturering** , selecteer **kosten beheer** in het menu en selecteer vervolgens **kosten analyse**. U kunt vervolgens het bereik voor een specifiek abonnement wijzigen in de vervolg keuzelijst **bereik** .
 
@@ -63,7 +63,7 @@ Wanneer u kosten analyse gebruikt, kunt u de kosten voor de Azure Cosmos DB in g
 
 1. Als u de kosten voor één service, zoals Azure Cosmos DB, wilt beperken, selecteert u **filter toevoegen** en selecteert u vervolgens **service naam**. Kies vervolgens **Azure Cosmos DB** in de lijst. Hier volgt een voor beeld van de kosten voor alleen Azure Cosmos DB:
  
-   ![Het deel venster kosten bewaken met kosten analyse](./media/plan-manage-costs/cost-analysis-pane.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Het deel venster kosten bewaken met kosten analyse":::
 
 In het vorige voor beeld ziet u de huidige kosten voor Azure Cosmos DB voor de maand feb. De grafieken bevatten ook Azure Cosmos DB kosten per locatie en per resource groep.
 

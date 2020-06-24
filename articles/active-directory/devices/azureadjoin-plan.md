@@ -4,19 +4,19 @@ description: Hierin worden de stappen beschreven die nodig zijn voor het impleme
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17e6660548084d64fce38617ba4e80ccf197f3d3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672699"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253066"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -61,7 +61,7 @@ Azure AD-deelname werkt met zowel beheerde als federatieve omgevingen.
 
 Een beheerde omgeving kan worden geïmplementeerd via een [wachtwoord-hash-synchronisatie](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) of door [middel van verificatie](/azure/active-directory/hybrid/how-to-connect-pta-quick-start) met naadloze eenmalige aanmelding.
 
-Voor deze scenario's is het niet nodig om een Federatie server te configureren voor authenticatie.
+Voor deze scenario's is het niet nodig om een federatieve server te configureren voor authenticatie.
 
 ### <a name="federated-environment"></a>Federatieve omgeving
 
@@ -70,7 +70,7 @@ Een gefedereerde omgeving moet een id-provider hebben die zowel WS-Trust-als WS-
 - **WS-voeder:** Dit protocol is vereist om een apparaat toe te voegen aan Azure AD.
 - **WS-Trust:** Dit protocol is vereist om u aan te melden bij een toegevoegd Azure AD-apparaat.
 
-Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen:`/adfs/services/trust/2005/usernamemixed`
+Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen: `/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
@@ -104,7 +104,7 @@ Azure AD-deelname:
 
 - Is alleen van toepassing op Windows 10-apparaten. 
 - Is niet van toepassing op eerdere versies van Windows of andere besturings systemen. Als u Windows 7/8.1-apparaten hebt, moet u een upgrade uitvoeren naar Windows 10 voor het implementeren van Azure AD-deelname.
-- Wordt niet ondersteund op apparaten met TPM in de FIPS-modus.
+- Wordt ondersteund voor FIPS-compatibele TPM 2,0, maar wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning.
  
 **Aanbeveling:** Gebruik altijd de nieuwste Windows 10-versie om te profiteren van bijgewerkte functies.
 
@@ -181,9 +181,11 @@ Apparaten die zijn toegevoegd aan Azure AD, bieden geen ondersteuning voor on-pr
 
 **Aanbeveling:** Overweeg deze toepassingen buiten gebruik te stellen en te verplaatsen naar hun moderne alternatieven.
 
-### <a name="remote-desktop-services"></a>Externe bureaubladservices
+### <a name="remote-desktop-services"></a>Extern bureaublad-services
 
 Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
+
+De Windows 10 2004-update wordt gestart, kunnen gebruikers extern bureau blad ALO gebruiken vanaf een Azure AD-geregistreerd Windows 10-apparaat naar een aan Azure AD toegevoegd apparaat. 
 
 ## <a name="understand-your-provisioning-options"></a>Inzicht in uw inrichtings opties
 
@@ -200,8 +202,8 @@ Hier volgt een vergelijking van deze drie benaderingen
 | Gebruikers interactie vereist voor het instellen van | Ja | Ja | Nee |
 | IT-inspanningen vereisen | Nee | Ja | Ja |
 | Toepasselijke stromen | OOBE-&-instellingen | Alleen OOBE | Alleen OOBE |
-| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureerbaar | Nee |
-| OEM-ondersteuning van apparaat vereisen | Nee | Ja | Nee |
+| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureerbaar | No |
+| OEM-ondersteuning van apparaat vereisen | Nee | Yes | Nee |
 | Ondersteunde versies | 1511 + | 1709 + | 1703 + |
  
 Kies uw implementatie benadering of benaderingen door de bovenstaande tabel te controleren en de volgende aandachtspunten voor het aannemen van een van beide benaderingen te controleren:  
@@ -217,7 +219,7 @@ Kies uw implementatie benadering of benaderingen door de bovenstaande tabel te c
 
 ## <a name="configure-your-device-settings"></a>Apparaatinstellingen configureren
 
-Met de Azure Portal kunt u de implementatie van aan Azure AD gekoppelde apparaten in uw organisatie beheren. Als u de gerelateerde instellingen wilt configureren, selecteert `Devices > Device settings`u op de **pagina Azure Active Directory**.
+Met de Azure Portal kunt u de implementatie van aan Azure AD gekoppelde apparaten in uw organisatie beheren. Als u de gerelateerde instellingen wilt configureren, selecteert u op de **pagina Azure Active Directory** `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Gebruikers kunnen apparaten toevoegen aan Azure AD
 
@@ -243,7 +245,7 @@ Voordat u uw mobiliteits instellingen kunt configureren, moet u mogelijk eerst e
 
 **Een MDM-provider toevoegen**:
 
-1. Klik op de **pagina Azure Active Directory**in de sectie **beheren** op `Mobility (MDM and MAM)`. 
+1. Klik op de **pagina Azure Active Directory**in de sectie **beheren** op `Mobility (MDM and MAM)` . 
 1. Klik op **toepassing toevoegen**.
 1. Selecteer uw MDM-provider in de lijst.
 
@@ -295,8 +297,8 @@ U kunt deze implementatie gebruiken om [beheerde apparaten te vereisen voor toeg
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een nieuw Windows 10-apparaat toevoegen aan Azure ad tijdens een eerste uitvoering](azuread-joined-devices-frx.md)
-> [uw werk apparaat toevoegen aan het netwerk van uw organisatie](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Een nieuw Windows 10-apparaat toevoegen aan Azure ad tijdens een eerste uitvoering](azuread-joined-devices-frx.md) 
+>  [Uw werk apparaat toevoegen aan het netwerk van uw organisatie](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e80ff74ad1dec25c815a9dd28a04133502b82085
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84012905"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213547"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Resource gebruik en query activiteit bewaken in azure Synapse Analytics
 
@@ -26,13 +26,13 @@ Azure Synapse Analytics biedt een uitgebreide bewakings ervaring in het Azure Po
 
 De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor Synapse SQL. Deze metrische gegevens worden geoppereerd via [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
-| Metrische naam             | Beschrijving                                                  | Aggregatietype |
+| Naam meetwaarde             | Beschrijving                                                  | Aggregatietype |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU-percentage          | CPU-gebruik in alle knoop punten voor het Data Warehouse      | Gem, min, Max    |
 | Gegevens-I/O-percentage      | IO-gebruik over alle knoop punten voor het Data Warehouse       | Gem, min, Max    |
 | Geheugen percentage       | Geheugen gebruik (SQL Server) op alle knoop punten voor het Data Warehouse | Gem, min, Max   |
-| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Som              |
-| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Som              |
+| Actieve Query's          | Aantal actieve query's dat op het systeem wordt uitgevoerd             | Sum              |
+| Query's in de wachtrij          | Aantal query's in de wachtrij dat wacht om te worden uitgevoerd          | Sum              |
 | Geslaagde verbindingen  | Aantal geslaagde verbindingen (aanmeldingen) voor de data base | Som, aantal       |
 | Mislukte verbindingen      | Aantal mislukte verbindingen (aanmeldingen) voor de data base | Som, aantal       |
 | Geblokkeerd door de firewall     | Aantal aanmeldingen bij het data warehouse dat is geblokkeerd     | Som, aantal       |
@@ -42,9 +42,9 @@ De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor Synapse 
 | Percentage cache treffers    | (cache treffers/cache-missers) * 100 waarbij treffers in cache de som zijn van alle treffers in de lokale SSD-cache en de cache-Misser is de column Store-segmenten in de lokale SSD-cache die is opgeteld voor alle knoop punten | Gem, min, Max    |
 | Percentage gebruikt cache   | (cache capaciteit gebruikt/cache) * 100 waarbij gebruikte cache de som is van alle bytes in de lokale SSD-cache op alle knoop punten en de cache capaciteit is de som van de opslag capaciteit van de lokale SSD-cache op alle knoop punten | Gem, min, Max    |
 | Lokaal TempDB-percentage | Lokaal TempDB-gebruik voor alle reken knooppunten: de waarden worden elke vijf minuten verzonden | Gem, min, Max    |
-| Grootte van gegevens opslag (GB) | De totale grootte van de data base. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de data base om de prestaties van query's en laden te optimaliseren. | Som |
-| Grootte van nood herstel (GB) | Totale grootte van de geo-back-up die elke 24 uur wordt gemaakt | Som |
-| Grootte van de opslag voor moment opnamen (GB) | Totale grootte van moment opnamen die zijn gemaakt om database herstel punten op te geven. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde moment opnamen. | Som |
+| Grootte van gegevens opslag (GB) | De totale grootte van de data base. Dit omvat gebruikte, gereserveerde en niet-toegewezen ruimte. Niet-toegewezen ruimte wordt bewaard voor de data base om de prestaties van query's en laden te optimaliseren. | Sum |
+| Grootte van nood herstel (GB) | Totale grootte van de geo-back-up die elke 24 uur wordt gemaakt | Sum |
+| Grootte van de opslag voor moment opnamen (GB) | Totale grootte van moment opnamen die zijn gemaakt om database herstel punten op te geven. Dit omvat geautomatiseerde en door de gebruiker gedefinieerde moment opnamen. | Sum |
 
 Aandachtspunten bij het weer geven van metrische gegevens en het instellen van waarschuwingen:
 

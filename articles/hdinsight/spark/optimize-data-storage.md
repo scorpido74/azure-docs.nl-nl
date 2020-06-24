@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5728a8e254074cd96ae1f13cb053220f347e3983
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791041"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737628"
 ---
-# <a name="data-storage-optimization"></a>Optimalisatie van gegevens opslag
+# <a name="data-storage-optimization-for-apache-spark"></a>Optimalisatie van gegevens opslag voor Apache Spark
 
 In dit artikel worden strategieën beschreven voor het optimaliseren van gegevens opslag voor efficiënte Apache Spark uitvoering van taken op Azure HDInsight.
 
@@ -54,13 +54,13 @@ Eerdere Spark-versies gebruiken Rdd's tot abstracte gegevens, Spark 1,3 en 1,6, 
 
 Wanneer u een nieuw Spark-cluster maakt, kunt u Azure Blob Storage of Azure Data Lake Storage als de standaard opslag van uw cluster selecteren. Beide opties bieden u het voor deel van lange termijn opslag voor tijdelijke clusters. Uw gegevens worden dus niet automatisch verwijderd wanneer u uw cluster verwijdert. U kunt een tijdelijk cluster opnieuw maken en toch toegang krijgen tot uw gegevens.
 
-| Winkeltype | Bestandssysteem | Snelheid | Wijk | Use cases |
+| Winkeltype | Bestandssysteem | Snelheid | Wijk | Gebruiksscenario's |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standaard** | Ja | Tijdelijk cluster |
-| Azure Blob Storage (beveiligd) | **wasbs:**//URL/ | **Standaard** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage gen 1| **ADL:**//URL/ | **Gereed** | Ja | Tijdelijk cluster |
-| Lokale HDFS | **hdfs:**//URL/ | **Snelste** | Nee | Interactive 24/7-cluster |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Tijdelijk cluster |
+| Azure Blob Storage (beveiligd) | **wasbs:**//URL/ | **Standard** | Yes | Tijdelijk cluster |
+| Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gereed** | Yes | Tijdelijk cluster |
+| Azure Data Lake Storage gen 1| **ADL:**//URL/ | **Gereed** | Yes | Tijdelijk cluster |
+| Lokale HDFS | **hdfs:**//URL/ | **Snelste** | No | Interactive 24/7-cluster |
 
 Zie [opslag opties vergelijken voor gebruik met Azure HDInsight-clusters](../hdinsight-hadoop-compare-storage-options.md)voor een volledige beschrijving van opslag opties.
 

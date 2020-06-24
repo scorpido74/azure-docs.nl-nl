@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32b310a2e74fc6f120dce90047da08380b776879
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ff012dc78f3981b6fb5fdbd8a5bde45083dd997b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680229"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699427"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services verplaatsen naar een andere regio
 
@@ -45,7 +45,7 @@ Voordat u een server naar een andere regio verplaatst, is het raadzaam om een ge
 > In dit artikel wordt beschreven hoe u een back-up van een Data Base naar een doel server terugzet vanuit een opslag container in de regio van de bron server. In sommige gevallen kan het herstellen van back-ups vanuit een andere regio slechte prestaties hebben, met name voor grote data bases. Voor de beste prestaties tijdens het herstellen van de Data Base kunt u een nieuwe opslag container in de doel server regio migreren of maken. Kopieer de ABF-back-upbestanden van de bron regio opslag container naar de doel regio opslag container voordat u de Data Base naar de doel server herstelt. In het kader van dit artikel, in sommige gevallen, met name bij zeer grote data bases, wordt het uitvoeren van een Data Base op de doel server, het opnieuw maken en vervolgens verwerken van database gegevens, mogelijk rendabeler dan met back-up/herstel.
 
 > [!NOTE]
-> Als u een on-premises gegevens gateway gebruikt om verbinding te maken met gegevens bronnen, moet u ook de gateway bron verplaatsen naar de doel server regio. Zie [een on-premises gegevens gateway installeren en configureren](analysis-services-gateway-install.md)voor meer informatie.
+> Als u een on-premises gegevens gateway gebruikt om verbinding te maken met gegevens bronnen, moet u de gateway bron ook verplaatsen naar de doel server regio. Zie [een on-premises gegevens gateway installeren en configureren](analysis-services-gateway-install.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 

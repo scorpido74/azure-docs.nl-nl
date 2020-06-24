@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d77b82b30411bd5b423f903c25392fd8e09e44
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73847524"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080957"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade uitvoeren naar Azure Cognitive Search .NET SDK versie 10
 
-Als u versie 9,0 of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 10.
+Als u versie 9,0 of ouder van de [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel bij het upgraden van uw toepassing tot het gebruik van versie 10.
 
 De naam van Azure Search is gewijzigd in azure Cognitive Search in versie 10, maar naam ruimten en pakket namen blijven onveranderd. Eerdere versies van de SDK (9,0 en eerder) blijven de oude naam gebruiken. Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](search-howto-dotnet-sdk.md)voor meer informatie over het gebruik van de SDK, met inbegrip van voor beelden.
 
-Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar hetzelfde functionaliteits niveau als de meest recente versie van de REST API `2019-05-06`versie. In gevallen waarin een wijziging bestaande code verbreekt, wordt u begeleid bij de [stappen die nodig zijn om het probleem op te lossen](#UpgradeSteps).
+Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar hetzelfde functionaliteits niveau als de meest recente versie van de REST API versie `2019-05-06` . In gevallen waarin een wijziging bestaande code verbreekt, wordt u begeleid bij de [stappen die nodig zijn om het probleem op te lossen](#UpgradeSteps).
 
 > [!NOTE]
 > Als u versie 8,0-Preview of ouder gebruikt, moet u eerst een upgrade uitvoeren naar versie 9 en vervolgens een upgrade uitvoeren naar versie 10. Zie [upgraden naar de Azure Search .NET SDK versie 9](search-dotnet-sdk-migration-version-9.md) voor instructies.
@@ -32,7 +32,7 @@ Versie 10 voegt diverse functies en probleem oplossingen toe en brengt deze naar
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>Wat is er nieuw in versie 10
-Versie 10 van de Azure Cognitive Search .NET SDK is gericht op de meest recente, algemeen beschik`2019-05-06`bare versie van de rest API () met deze updates:
+Versie 10 van de Azure Cognitive Search .NET SDK is gericht op de meest recente, algemeen beschik bare versie van de REST API ( `2019-05-06` ) met deze updates:
 
 * Introductie van twee nieuwe vaardig heden- [voorwaardelijke](cognitive-search-skill-conditional.md) vaardig heden en [tekst vertalingen](cognitive-search-skill-text-translation.md).
 * [Shaper-vaardigheids](cognitive-search-skill-shaper.md) invoer is herstructureeerd om consolidatie van geneste contexten mogelijk te houden. Zie voor meer informatie dit [voor beeld van JSON-definitie](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
@@ -40,14 +40,14 @@ Versie 10 van de Azure Cognitive Search .NET SDK is gericht op de meest recente,
     - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
     - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
 * In bepaalde gevallen kunnen fouten en waarschuwingen die worden weer gegeven in de [uitvoerings status van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) extra informatie bevatten over fout opsporing. `IndexerExecutionResult`is bijgewerkt om dit gedrag weer te geven.
-* Afzonderlijke vaardig heden die zijn gedefinieerd binnen een [vakkennisset](cognitive-search-defining-skillset.md) kunnen eventueel worden geïdentificeerd door `name` een eigenschap op te geven.
+* Afzonderlijke vaardig heden die zijn gedefinieerd binnen een [vakkennisset](cognitive-search-defining-skillset.md) kunnen eventueel worden geïdentificeerd door een eigenschap op te geven `name` .
 * `ServiceLimits`toont de limieten voor [complexe typen](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) en `IndexerExecutionInfo` toont de relevante limieten/quota's voor de Indexeer functie.
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
 
-1. Werk uw NuGet-verwijzing `Microsoft.Azure.Search` bij voor het gebruik van de NuGet Package Manager-console of klik met de rechter muisknop op uw project verwijzingen en selecteer vervolgens NuGet-pakketten beheren... in Visual Studio.
+1. Werk uw NuGet-verwijzing bij voor `Microsoft.Azure.Search` het gebruik van de NuGet Package Manager-console of klik met de rechter muisknop op uw project verwijzingen en selecteer vervolgens NuGet-pakketten beheren... in Visual Studio.
 
 2. Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. 
 
@@ -68,9 +68,9 @@ Er zijn verschillende belang rijke wijzigingen in versie 10 waarvoor code wijzig
 
 De definitie van de [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) is onjuist opgegeven in versie 9 en ouder. 
 
-Het model dat `WebApiSkill` is `HttpHeaders` opgegeven als een object eigenschap die een woorden boek _bevat_ . Als u een vaardig heden maakt `WebApiSkill` die op deze manier zijn gebouwd, wordt een uitzonde ring veroorzaakt, omdat het rest API de aanvraag zou beschouwen als een ongeldige indeling. Dit probleem is opgelost door `HttpHeaders` **een woordenboek eigenschap op het hoogste niveau** in het `WebApiSkill` model zelf te maken, die als een geldige aanvraag van de rest API wordt beschouwd.
+Het model `WebApiSkill` dat is opgegeven `HttpHeaders` als een object eigenschap die een woorden boek _bevat_ . Als u een vaardig heden maakt die `WebApiSkill` op deze manier zijn gebouwd, wordt een uitzonde ring veroorzaakt, omdat het rest API de aanvraag zou beschouwen als een ongeldige indeling. Dit probleem is opgelost door `HttpHeaders` **een woordenboek eigenschap op het hoogste niveau** in het model zelf te maken, `WebApiSkill` die als een geldige aanvraag van de rest API wordt beschouwd.
 
-Als u bijvoorbeeld eerder hebt geprobeerd een exemplaar van een `WebApiSkill` te maken, doet u het volgende:
+Als u bijvoorbeeld eerder hebt geprobeerd een exemplaar van een te maken, doet u het volgende `WebApiSkill` :
 
 ```csharp
 
@@ -109,12 +109,12 @@ var webApiSkill = new WebApiSkill(
 
 ## <a name="shaper-skill-allows-nested-context-consolidation"></a>Shaper-vaardigheid staat geneste context consolidatie toe
 
-Shaper-vaardigheid kan nu invoer samenvoeging van geneste contexten toestaan. Om deze wijziging in te scha kelen `InputFieldMappingEntry` , zijn we gewijzigd zodat deze kan worden geïnstantieerd door alleen `Source` een eigenschap op te geven `SourceContext` , `Inputs` of zowel de als-eigenschappen.
+Shaper-vaardigheid kan nu invoer samenvoeging van geneste contexten toestaan. Om deze wijziging in te scha kelen, zijn we gewijzigd `InputFieldMappingEntry` zodat deze kan worden geïnstantieerd door alleen een `Source` eigenschap op te geven, of zowel de `SourceContext` als- `Inputs` Eigenschappen.
 
 Waarschijnlijk hoeft u geen code wijzigingen aan te brengen. Houd er echter rekening mee dat slechts één van deze twee combi Naties is toegestaan. Dit betekent:
 
-- Het is `InputFieldMappingEntry` niet toegestaan `Source` om een geïnitialiseerde te maken.
-- Het maken `InputFieldMappingEntry` van een `SourceContext` waar `Inputs` alleen en is geïnitialiseerd, is geldig.
+- Het `InputFieldMappingEntry` `Source` is niet toegestaan om een geïnitialiseerde te maken.
+- Het maken van een `InputFieldMappingEntry` waar alleen `SourceContext` en `Inputs` is geïnitialiseerd, is geldig.
 - Alle andere Combi Naties waarbij deze drie eigenschappen zijn betrokken, zijn ongeldig.
 
 Als u besluit het gebruik van deze nieuwe mogelijkheid te maken, moet u ervoor zorgen dat al uw clients zijn bijgewerkt met versie 10 eerst voordat u die wijziging uitvoerde. Anders is het mogelijk dat een update door een client (met behulp van een oudere versie van de SDK) naar de shaper-vaardigheid kan leiden tot validatie fouten.
@@ -124,7 +124,7 @@ Als u besluit het gebruik van deze nieuwe mogelijkheid te maken, moet u ervoor z
 
 ## <a name="skills-can-be-identified-by-a-name"></a>Vaardig heden kunnen worden geïdentificeerd aan de hand van een naam
 
-Elke vaardigheid binnen een vaardig heden heeft nu een nieuwe eigenschap `Name`, die in uw code kan worden geïnitialiseerd om de vaardigheid te identificeren. Dit is optioneel: als u niets opgeeft (dit is de standaard instelling, als er geen expliciete code wijziging is aangebracht), wordt er een standaard naam toegewezen met de op 1 gebaseerde index van de vaardigheid in de vaardig heden, voorafgegaan door het teken ' # '. In de volgende definitie van de vaardig heden (de meeste initialisaties worden overgeslagen voor de boog):
+Elke vaardigheid binnen een vaardig heden heeft nu een nieuwe eigenschap `Name` , die in uw code kan worden geïnitialiseerd om de vaardigheid te identificeren. Dit is optioneel: als u niets opgeeft (dit is de standaard instelling, als er geen expliciete code wijziging is aangebracht), wordt er een standaard naam toegewezen met de op 1 gebaseerde index van de vaardigheid in de vaardig heden, voorafgegaan door het teken ' # '. In de volgende definitie van de vaardig heden (de meeste initialisaties worden overgeslagen voor de boog):
 
 ```csharp
 var skillset = new Skillset()
@@ -139,9 +139,9 @@ var skillset = new Skillset()
 }
 ```
 
-`SentimentSkill`wordt toegewezen aan een `#1`naam `WebApiSkill` , wordt `#2`toegewezen `ShaperSkill` , wordt `#3` toegewezen, enzovoort.
+`SentimentSkill`wordt toegewezen aan een naam `#1` , wordt toegewezen, wordt toegewezen `WebApiSkill` , enzovoort `#2` `ShaperSkill` `#3` .
 
-Als u ervoor kiest om de vaardig heden te identificeren met een aangepaste naam, moet u ervoor zorgen dat alle exemplaren van uw clients eerst worden bijgewerkt naar versie 10 van de SDK. Anders is het mogelijk dat een client die gebruikmaakt van een oudere versie van de SDK, `null` de `Name` eigenschap van een vaardigheid zou kunnen gebruiken, waardoor de client terugvalt op het standaard naamgevings schema.
+Als u ervoor kiest om de vaardig heden te identificeren met een aangepaste naam, moet u ervoor zorgen dat alle exemplaren van uw clients eerst worden bijgewerkt naar versie 10 van de SDK. Anders is het mogelijk dat een client die gebruikmaakt van een oudere versie van de SDK `null` `Name` , de eigenschap van een vaardigheid zou kunnen gebruiken, waardoor de client terugvalt op het standaard naamgevings schema.
 
 ## <a name="details-about-errors-and-warnings"></a>Details over fouten en waarschuwingen
 

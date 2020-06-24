@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845981"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119267"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Advanced Threat Protection voor Azure Cosmos DB (preview-versie)
 
@@ -48,7 +48,7 @@ U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren con
 
 2. Selecteer vanuit het Azure Cosmos DB-account in het menu **instellingen** de optie **geavanceerde beveiliging**.
 
-    ![ATP instellen](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="ATP instellen":::
 
 3. Op de Blade **Geavanceerde beveiligings** configuratie:
 
@@ -81,16 +81,16 @@ Gebruik een Azure Policy om geavanceerde bedreigingen beveiliging in te scha kel
 
 1. Start de pagina Azure **Policy-Definitions** en zoek naar het **Cosmos DBS beleid Deploying Advanced Threat Protection** .
 
-    ![Zoek beleid](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Zoek beleid"::: 
 
 1. Klik op het beleid **geavanceerde beveiliging tegen bedreigingen implementeren voor CosmosDB** en klik vervolgens op **toewijzen**.
 
-    ![Abonnement of groep selecteren](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Abonnement of groep selecteren":::
 
 
 1. Klik in het veld **bereik** op de drie puntjes, selecteer een Azure-abonnement of resource groep en klik vervolgens op **selecteren**.
 
-    ![Pagina beleids definities](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Pagina beleids definities":::
 
 
 1. Voer de andere para meters in en klik op **toewijzen**.
@@ -104,11 +104,11 @@ Wanneer Azure Cosmos DB afwijkende activiteiten optreden, wordt een beveiligings
 
  Vanuit Azure Security Center kunt u uw huidige [beveiligings waarschuwingen](../security-center/security-center-alerts-overview.md)controleren en beheren.  Klik op een specifieke waarschuwing in [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) om mogelijke oorzaken en aanbevolen acties te bekijken om de mogelijke dreiging te onderzoeken en te verhelpen. In de volgende afbeelding ziet u een voor beeld van waarschuwings details die zijn opgenomen in Security Center.
 
- ![Details van bedreiging](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Details van bedreiging":::
 
 Er wordt ook een e-mail melding met de waarschuwings Details en aanbevolen acties verzonden. De volgende afbeelding toont een voor beeld van een e-mail waarschuwing.
 
- ![Meldingsdetails](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Meldingsdetails":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP-waarschuwingen
 

@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7d5a7d82aceae6902ad953e314434f1a3736a5e1
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610301"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117536"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -524,7 +524,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | naam ruimten | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | naam ruimten | internationaal | 6-50 | Alfanumerieke tekens en afbreek streepjes<br><br>Begin met letter. Eindigen met een alfanumerieke teken. |
 > | naam ruimten/AuthorizationRules | naamruimte | 1-256 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Begin alfanumerieke tekens. |
 > | naam ruimten/notification hubs | naamruimte | 1-260 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Begin alfanumerieke tekens. |
 > | naam ruimten/notification hubs/AuthorizationRules | Notification hub | 1-256 | Alfanumerieken, punten, afbreek streepjes en onderstrepings tekens.<br><br>Begin alfanumerieke tekens. |

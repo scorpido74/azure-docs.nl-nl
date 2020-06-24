@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9131ce9b211a33fe45ef571f3a274b4ddc81739f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/19/2020
+ms.openlocfilehash: f22ef4d1ebd9c4d3c226556c4ef28a873edd80ea
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430389"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119253"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 De Azure Machine Learning-werk ruimte is afhankelijk van de volgende Azure-Services of-entiteiten:
 
 > [!IMPORTANT]
-> Als u geen bestaande Azure-service opgeeft, wordt er automatisch een gemaakt tijdens het maken van de werk ruimte. U moet altijd een resource groep opgeven.
+> Als u geen bestaande Azure-service opgeeft, wordt er automatisch een gemaakt tijdens het maken van de werk ruimte. U moet altijd een resource groep opgeven. Wanneer u uw eigen opslag account koppelt, moet u ervoor zorgen dat zowel Azure Blob-als Azure-bestands mogelijkheden zijn ingeschakeld en dat hiërarchische naam ruimte (ADLS gen 2) is uitgeschakeld. U kunt altijd uw eigen opslag account koppelen nadat de werk ruimte is gemaakt als gegevens opslag.
 
 | Service | Para meter om een bestaand exemplaar op te geven |
 | ---- | ---- |
@@ -317,7 +317,7 @@ Zie voor meer informatie de documentatie bij [AZ ml-werkruimte share](https://do
 
 ## <a name="sync-keys-for-dependent-resources"></a>Sleutels voor afhankelijke Resources synchroniseren
 
-Als u de toegangs sleutels voor een van de resources die worden gebruikt door uw werk ruimte wijzigt, gebruikt u de volgende opdracht om de nieuwe sleutels te synchroniseren met de werk ruimte:
+Als u de toegangs sleutels voor een van de resources die worden gebruikt door uw werk ruimte wijzigt, duurt het ongeveer een uur voordat de werk ruimte wordt gesynchroniseerd met de nieuwe sleutel. Gebruik de volgende opdracht om ervoor te zorgen dat de werk ruimte onmiddellijk de nieuwe sleutels synchroniseert:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

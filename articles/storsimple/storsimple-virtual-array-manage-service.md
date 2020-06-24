@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267454"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698934"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>De StorSimple Apparaatbeheer-service voor de virtuele StorSimple-matrix implementeren
 
@@ -73,7 +73,7 @@ Voer de volgende stappen uit om een service te verwijderen.
 1. Ga naar **Alle resources**. Zoek naar uw StorSimple-Apparaatbeheer service. Selecteer de service die u wilt verwijderen.
    
     ![Selecteer de service die u wilt verwijderen](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. Ga naar uw service dashboard om te controleren of er geen apparaten zijn verbonden met de service. Als er geen apparaten zijn geregistreerd bij deze service, wordt er ook een banner bericht weer gegeven voor het effect. Klik op **verwijderen**.
+2. Ga naar uw service dashboard om te controleren of er geen apparaten zijn verbonden met de service. Als er geen apparaten zijn geregistreerd bij deze service, wordt er ook een banner bericht weer gegeven voor het effect. Klik op **Verwijderen**.
    
     ![Service verwijderen](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 

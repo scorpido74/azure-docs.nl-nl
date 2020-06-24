@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586181"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119151"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Een Azure Cosmos DB Cassandra-API account elastisch schalen
 
@@ -19,11 +19,11 @@ Er zijn diverse opties voor het verkennen van de elastische aard van de Azure Co
 
 Voor de Cassandra-API kunt u de kosten voor aanvraag eenheden ophalen voor afzonderlijke query's met behulp van de [.net-en Java-sdk's](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api). Dit is handig bij het bepalen van de hoeveelheid RU/s die u moet inrichten in de service.
 
-![Database bewerkingen gebruiken aanvraag eenheden](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="Database bewerkingen gebruiken aanvraag eenheden" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>Beperking van de verwerkings frequentie (429 fouten)
 
-Azure Cosmos DB retourneert een frequentie-Limited (429) fouten als clients meer bronnen (RU/s) verbruiken dan de hoeveelheid die u hebt ingericht. Met de Cassandra-API in Azure Cosmos DB worden deze uitzonde ringen omgezet in overbelaste fouten op het Cassandra systeem eigen protocol. 
+Azure Cosmos DB retourneert een frequentie-Limited (429) fouten als clients meer bronnen (RU/s) verbruiken dan de hoeveelheid die u hebt ingericht. Met de Cassandra-API in Azure Cosmos DB worden deze uitzonderingen vertaald in overbelastfouten in het systeemeigen Cassandra-protocol. 
 
 Als uw systeem niet gevoelig is voor latentie, kan het voldoende zijn om de doorvoer snelheid te verwerken door nieuwe pogingen te gebruiken. Zie het voor [beeld van Java-code](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) voor het transparant afhandelen met behulp van de [Azure Cosmos DB extensie](https://github.com/Azure/azure-cosmos-cassandra-extensions) voor Cassandra-beleid voor [opnieuw proberen](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) in Java. U kunt ook de [Spark-extensie](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) gebruiken om de frequentie limiet te verwerken.
 

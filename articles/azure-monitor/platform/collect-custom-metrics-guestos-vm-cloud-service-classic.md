@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655787"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124456"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de klassieke Azure Monitor voor metrische gegevens Cloud Services 
 
@@ -46,7 +46,7 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen voor prestatie mete
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken 
 
-Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies in de [Portal gebruiken om een Azure Active Directory-toepassing en-SPN te maken die toegang heeft tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Let op het volgende tijdens dit proces: 
+Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies in de [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang heeft tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Let op het volgende tijdens dit proces: 
 
 - U kunt een wille keurige URL voor de aanmeldings-URL plaatsen.  
 - Maak een nieuw client geheim voor deze app.  

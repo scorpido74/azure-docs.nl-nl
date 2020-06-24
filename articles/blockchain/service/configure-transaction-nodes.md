@@ -2,14 +2,14 @@
 title: Azure Block Chain Service-transactie knooppunten configureren
 description: Service transactie knooppunten van Azure Block Chain configureren
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876926"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212561"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Block Chain Service-transactie knooppunten configureren
 
@@ -20,7 +20,7 @@ Details van het standaard transactie knooppunt weer geven:
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Navigeer naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten**.
 
-    ![Standaard transactie knooppunt selecteren](./media/configure-transaction-nodes/nodes.png)
+    ![Standaardtransactieknooppunt selecteren](./media/configure-transaction-nodes/nodes.png)
 
     Overzichts gegevens zijn open bare eindpunt adressen en open bare sleutel.
 
@@ -89,7 +89,7 @@ U kunt de eindpunt Details van de basis verificatie van een transactie knooppunt
 
 De gebruikers naam is de naam van het knoop punt en kan niet worden gewijzigd.
 
-Als u de URL wilt gebruiken \<,\> vervangt u wacht woord door het wacht woord dat is ingesteld wanneer het knoop punt is ingericht. U kunt het wacht woord bijwerken door **wacht woord opnieuw instellen**te selecteren.
+Als u de URL wilt gebruiken, vervangt u door \<password\> de wachtwoordset wanneer het knoop punt is ingericht. U kunt het wacht woord bijwerken door **wacht woord opnieuw instellen**te selecteren.
 
 ### <a name="access-keys"></a>Toegangssleutels
 

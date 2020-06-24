@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfff2a1278bc31dc9bc130941985aed2cfb74362
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72793007"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080623"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 9
 
-Als u versie 7,0-Preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 9.
+Als u versie 7,0-Preview of ouder van de [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 9.
 
 > [!NOTE]
 > Als u versie 8,0-Preview wilt gebruiken om functies te evalueren die nog niet algemeen beschikbaar zijn, kunt u ook de instructies in dit artikel volgen om een upgrade uit te voeren naar 8,0-Preview van eerdere versies.
@@ -50,13 +50,13 @@ Versie 8,0-Preview van de Azure Search .NET SDK doelen API-versie 2017-11-11-pre
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
-Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
+Werk eerst uw NuGet-verwijzing bij voor `Microsoft.Azure.Search` het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
 
 Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat het geval is, bent u klaar om aan de slag te gaan.
 
 Als uw build is mislukt, moet u elke compilatie fout herstellen. Zie belang rijke [wijzigingen in versie 9](#ListOfChanges) voor meer informatie over het oplossen van elke mogelijke build-fout.
 
-Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de eigenschap `DataSourceType.DocumentDb` , wordt een waarschuwing weer gegeven met de tekst ' dit lid is afgeschaft. Gebruik in plaats daarvan CosmosDb.
+Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de `DataSourceType.DocumentDb` eigenschap, wordt een waarschuwing weer gegeven met de tekst ' dit lid is afgeschaft. Gebruik in plaats daarvan CosmosDb.
 
 Wanneer u eventuele build-fouten of-waarschuwingen hebt opgelost, kunt u wijzigingen aanbrengen in uw toepassing om te profiteren van de nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 9](#WhatsNew).
 
@@ -93,14 +93,14 @@ De volgende `bool` eigenschappen zijn nu null-baar:
   - `IsRetrievable`
   - `IsKey`
 
-Dit komt doordat deze eigenschappen nu in het `null` geval van complexe velden moeten zijn. Als u code hebt die deze eigenschappen leest, moet deze worden voor bereid om te `null`worden verwerkt. Houd er rekening mee dat alle `Field` andere eigenschappen van al dan niet zijn toegestaan, en dat sommige daarvan ook in het geval `null` van complexe velden worden weer geven, met name het volgende:
+Dit komt doordat deze eigenschappen nu `null` in het geval van complexe velden moeten zijn. Als u code hebt die deze eigenschappen leest, moet deze worden voor bereid om te worden verwerkt `null` . Houd er rekening mee dat alle andere eigenschappen van al `Field` dan niet zijn toegestaan, en dat sommige daarvan ook `null` in het geval van complexe velden worden weer geven, met name het volgende:
 
   - `Analyzer`
   - `SearchAnalyzer`
   - `IndexAnalyzer`
   - `SynonymMaps`
 
-De constructor zonder para meters `Field` van is gemaakt `internal`. Vanaf nu moet elk `Field` een expliciete naam en gegevens type zijn op het moment van de bouw.
+De constructor zonder para meters van `Field` is gemaakt `internal` . Vanaf nu `Field` moet elk een expliciete naam en gegevens type zijn op het moment van de bouw.
 
 ### <a name="simplified-batch-and-results-types"></a>Vereenvoudigde batch-en resultaat typen
 
@@ -113,13 +113,13 @@ In versie 7,0-Preview en eerder zijn de verschillende klassen die groepen docume
   -  `SearchResult`en `SearchResult<T>` overgenomen van`SearchResultBase`
   -  `SuggestResult`en `SuggestResult<T>` overgenomen van`SuggestResultBase`
 
-De afgeleide typen zonder een generieke type parameter zijn bedoeld om te worden gebruikt in ' dynamisch getypte ' scenario's `Document` en aangenomen gebruik van het type.
+De afgeleide typen zonder een generieke type parameter zijn bedoeld om te worden gebruikt in ' dynamisch getypte ' scenario's en aangenomen gebruik van het `Document` type.
 
-Vanaf versie 8,0-Preview zijn de basis klassen en niet-algemene afgeleide klassen allemaal verwijderd. Voor scenario's met dynamisch typen kunt u, `IndexBatch<Document>` `DocumentSearchResult<Document>`,, enzovoort, gebruiken.
+Vanaf versie 8,0-Preview zijn de basis klassen en niet-algemene afgeleide klassen allemaal verwijderd. Voor scenario's met dynamisch typen kunt u `IndexBatch<Document>` ,,, enzovoort, gebruiken `DocumentSearchResult<Document>` .
  
 ### <a name="removed-extensibleenum"></a>ExtensibleEnum verwijderd
 
-De `ExtensibleEnum` basis klasse is verwijderd. Alle klassen die hiervan zijn afgeleid, zijn nu structs, zoals `AnalyzerName`, `DataType`, en `DataSourceType` bijvoorbeeld. De `Create` methoden zijn ook verwijderd. U kunt alleen aanroepen naar `Create` verwijderen omdat deze typen impliciet zijn geconverteerd vanuit teken reeksen. Als dat resulteert in Compileer fouten, kunt u de conversie operator expliciet aanroepen via Casting naar dubbel zinnigheid types. U kunt bijvoorbeeld code als volgt wijzigen:
+De `ExtensibleEnum` basis klasse is verwijderd. Alle klassen die hiervan zijn afgeleid, zijn nu structs, zoals `AnalyzerName` , `DataType` , en `DataSourceType` bijvoorbeeld. De `Create` methoden zijn ook verwijderd. U kunt alleen aanroepen naar verwijderen `Create` omdat deze typen impliciet zijn geconverteerd vanuit teken reeksen. Als dat resulteert in Compileer fouten, kunt u de conversie operator expliciet aanroepen via Casting naar dubbel zinnigheid types. U kunt bijvoorbeeld code als volgt wijzigen:
 
 ```csharp
 var index = new Index()
@@ -151,7 +151,7 @@ Eigenschappen die optionele waarden van deze typen behouden, worden nu expliciet
 
 ### <a name="removed-facetresults-and-hithighlights"></a>FacetResults en HitHighlights zijn verwijderd
 
-De `FacetResults` klassen `HitHighlights` en zijn verwijderd. Facet resultaten worden nu getypt `IDictionary<string, IList<FacetResult>>` als en worden gemarkeerd `IDictionary<string, IList<string>>`als. Een snelle manier om Build-fouten op te lossen die door deze `using` wijziging worden geïntroduceerd, is door aliassen toe te voegen aan het begin van elk bestand dat gebruikmaakt van het verwijderde type. Bijvoorbeeld:
+De `FacetResults` `HitHighlights` klassen en zijn verwijderd. Facet resultaten worden nu getypt als `IDictionary<string, IList<FacetResult>>` en worden gemarkeerd als `IDictionary<string, IList<string>>` . Een snelle manier om Build-fouten op te lossen die door deze wijziging worden geïntroduceerd, is door aliassen toe te voegen aan `using` het begin van elk bestand dat gebruikmaakt van het verwijderde type. Bijvoorbeeld:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
@@ -160,17 +160,17 @@ using HitHighlights = System.Collections.Generic.IDictionary<string, System.Coll
 
 ### <a name="change-to-synonymmap"></a>Wijzigen in SynonymMap 
 
-De `SynonymMap` constructor heeft geen `enum` para meter meer voor `SynonymMapFormat`. Deze enum heeft slechts één waarde en is daarom overbodig. Als er fouten in de build worden weer geven, verwijder dan de verwijzingen naar de `SynonymMapFormat` para meter.
+De `SynonymMap` constructor heeft geen `enum` para meter meer voor `SynonymMapFormat` . Deze enum heeft slechts één waarde en is daarom overbodig. Als er fouten in de build worden weer geven, verwijder dan de verwijzingen naar de `SynonymMapFormat` para meter.
 
 ### <a name="miscellaneous-model-class-changes"></a>Wijzigingen in diverse model klassen
 
-De `AutocompleteMode` eigenschap van `AutocompleteParameters` is niet meer Null-waarden. Als u code hebt waarmee deze eigenschap wordt toegewezen `null`, kunt u deze eenvoudigweg verwijderen en wordt de eigenschap automatisch geïnitialiseerd op de standaard waarde.
+De `AutocompleteMode` eigenschap van `AutocompleteParameters` is niet meer Null-waarden. Als u code hebt waarmee deze eigenschap wordt toegewezen `null` , kunt u deze eenvoudigweg verwijderen en wordt de eigenschap automatisch geïnitialiseerd op de standaard waarde.
 
-De volg orde van de para meters voor de `IndexAction` constructor is gewijzigd, nu deze constructor automatisch wordt gegenereerd. In plaats van de constructor te gebruiken, raden we u aan de `IndexAction.Upload`fabrieks methoden, `IndexAction.Merge`, enzovoort, te gebruiken.
+De volg orde van de para meters voor de `IndexAction` constructor is gewijzigd, nu deze constructor automatisch wordt gegenereerd. In plaats van de constructor te gebruiken, raden we u aan de fabrieks methoden,, enzovoort, te gebruiken `IndexAction.Upload` `IndexAction.Merge` .
 
 ### <a name="removed-preview-features"></a>De preview-functies zijn verwijderd
 
-Als u een upgrade uitvoert van versie 8,0-Preview naar versie 9, moet u er rekening mee houden dat versleuteling met door de klant beheerde sleutels is verwijderd omdat deze functie nog in preview is. Met name de `EncryptionKey` eigenschappen van `Index` en `SynonymMap` zijn verwijderd.
+Als u een upgrade uitvoert van versie 8,0-Preview naar versie 9, moet u er rekening mee houden dat versleuteling met door de klant beheerde sleutels is verwijderd omdat deze functie nog in preview is. Met name de `EncryptionKey` Eigenschappen van `Index` en `SynonymMap` zijn verwijderd.
 
 Als uw toepassing een vaste afhankelijkheid heeft van deze functie, kunt u geen upgrade uitvoeren naar versie 9 van de Azure Search .NET SDK. U kunt versie 8,0-Preview blijven gebruiken. Bedenk echter dat het **gebruik van preview-sdk's in productie toepassingen niet wordt aangeraden**. Preview-functies zijn alleen voor evaluatie en kunnen worden gewijzigd.
 
@@ -179,7 +179,7 @@ Als uw toepassing een vaste afhankelijkheid heeft van deze functie, kunt u geen 
 
 ### <a name="behavioral-change-in-data-retrieval"></a>Gedrags wijziging in het ophalen van gegevens
 
-Als u gebruikmaakt van de "dynamisch getypeerde" `Search`, `Suggest`of `Get` api's die exemplaren van het type `Document`retour neren, moet u er rekening mee houden dat er nu lege JSON- `object[]` matrices worden `string[]`gedeserialiseerd in plaats van.
+Als u gebruikmaakt van de "dynamisch getypeerde" `Search` , `Suggest` of `Get` api's die exemplaren van het type retour neren `Document` , moet u er rekening mee houden dat er nu lege JSON-matrices worden gedeserialiseerd in `object[]` plaats van `string[]` .
 
 ## <a name="conclusion"></a>Conclusie
 Als u meer informatie wilt over het gebruik van de Azure Search .NET SDK, raadpleegt u de [.net How-to](search-howto-dotnet-sdk.md).

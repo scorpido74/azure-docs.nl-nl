@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 3d04a60b8bab5ba764818eab341ac08836b0dfd1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116732"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130395"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -25,6 +25,7 @@ In dit artikel vindt u informatie over het oplossen van problemen bij het config
   >Alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. U kunt [Dit script](scripts/backup-powershell-script-find-recovery-services-vault.md) gebruiken om de Recovery Services-kluis te vinden waar uw opslag account is geregistreerd.
 
 - Zorg ervoor dat de bestands share niet aanwezig is in een van de niet-ondersteunde opslag accounts. Raadpleeg de [ondersteunings matrix voor Azure file share backup](azure-file-share-support-matrix.md) om ondersteunde opslag accounts te vinden.
+- Zorg ervoor dat de gecombineerde lengte van de naam van het opslag account en de naam van de resource groep niet langer is dan 84 tekens 77 in het geval van klassieke opslag accounts. 
 - Controleer de firewall-instellingen van het opslag account om ervoor te zorgen dat de optie voor het toestaan van vertrouwde micro soft-Services voor toegang tot het opslag account is ingeschakeld.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Fout in de portal geeft aan dat de detectie van opslagaccounts is mislukt

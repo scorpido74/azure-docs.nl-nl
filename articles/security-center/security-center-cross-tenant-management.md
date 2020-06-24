@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919478"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782809"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Beheer van meerdere tenants in Security Center
 
@@ -43,10 +43,10 @@ Klik op het filter pictogram in de bovenste menu balk en selecteer de abonnement
 
   ![Tenants filteren](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-De weer gaven en acties zijn in principe hetzelfde. Hier volgen enkele voorbeelden:
+De weer gaven en acties zijn in principe hetzelfde. Enkele voorbeelden:
 
 - **Beveiligings beleid beheren**: vanuit de ene weer gave kunt u de beveiligings postuur van veel resources met [beleids regels](tutorial-security-policy.md)beheren, acties uitvoeren met aanbevelingen voor beveiliging en beveiligings gegevens verzamelen en beheren.
-- **Verbeter de beveiligde Score-en nalevings postuur**: door de zicht baarheid van meerdere tenants kunt u de algemene beveiligings-postuur van al uw tenants bekijken en waar en hoe u de [beveiligde Score](security-center-secure-score.md) en de [nalevings postuur](security-center-compliance-dashboard.md) voor elk van hen het beste kunt verbeteren.
+- **Verbeter de beveiligde Score-en nalevings postuur**: door de zicht baarheid van meerdere tenants kunt u de algemene beveiligings-postuur van al uw tenants bekijken en waar en hoe u de [beveiligde Score](secure-score-security-controls.md) en de [nalevings postuur](security-center-compliance-dashboard.md) voor elk van hen het beste kunt verbeteren.
 - **Aanbevelingen herstellen**: bewaak en herstel een [aanbeveling](security-center-recommendations.md) voor veel resources van verschillende tenants tegelijk. Vervolgens kunt u de beveiligings problemen die het hoogst mogelijke risico op alle tenants Voorst Ellen, direct aanpakken.
 - **Waarschuwingen beheren**: [waarschuwingen](security-center-alerts-overview.md) detecteren in de verschillende tenants. Onderneem actie op resources die niet compatibel zijn met herstels [tappen](security-center-managing-and-responding-alerts.md)waarvoor actie kan worden ondernomen.
 

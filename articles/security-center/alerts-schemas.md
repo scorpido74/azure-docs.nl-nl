@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062956"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126209"
 ---
 # <a name="security-alerts-schemas"></a>Schema's voor beveiligings waarschuwingen
 
@@ -150,7 +150,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 |**rubriek**|De subvelden value en localizedValue zijn constant-' Security '|
 |**eventTimestamp**|UTC-tijds tempel voor het moment waarop de waarschuwing is gegenereerd|
 |**id**|De volledig gekwalificeerde waarschuwings-ID|
-|**afvlakking**|Constante, ' informatief '|
+|**niveau**|Constante, ' informatief '|
 |**operationId**|Zie correlationId|
 |**operationName**|Het veld waarde is constant: ' micro soft. Security/locations/Alerts/Activate/Action ' en de gelokaliseerde waarde is ' waarschuwing activeren ' (de gebruiker kan mogelijk worden gelokaliseerd pari)|
 |**resourceGroupName**|Bevat de naam van de resource groep|
@@ -171,7 +171,7 @@ U kunt de gebeurtenissen voor beveiligings waarschuwingen in het activiteiten lo
 
 ### <a name="ms-graph-api"></a>[MS Graph API](#tab/schema-graphapi)
 
-Microsoft Graph is de gateway naar gegevens en intelligentie in Microsoft 365. Het biedt een uniform programmeerbaar model dat u kunt gebruiken voor toegang tot de enorme hoeveelheid gegevens in Office 365, Windows 10 en Enterprise Mobility + Security. Gebruik de schat aan gegevens in Microsoft Graph om apps te bouwen voor organisaties en consumenten die met miljoenen gebruikers communiceren.
+Microsoft Graph is de gateway naar gegevens en intelligentie in Microsoft 365. Het biedt een uniform programmeerbaar model dat u kunt gebruiken voor toegang tot de enorme hoeveelheid gegevens in Microsoft 365, Windows 10 en Enterprise Mobility + Security. Gebruik de schat aan gegevens in Microsoft Graph om apps te bouwen voor organisaties en consumenten die met miljoenen gebruikers communiceren.
 
 Het schema en een JSON-weer gave voor beveiligings waarschuwingen die naar MS Graph worden verzonden, zijn beschikbaar in [de Microsoft Graph documentatie](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0).
 

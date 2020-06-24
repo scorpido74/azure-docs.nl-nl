@@ -7,17 +7,17 @@ author: asudbring
 manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: a7b1e7471f7850f71596317c7e2c38db367bfd3a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 03a619a647da247347492076e9fd36414565bf33
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790096"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703140"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Een virtuele machine met een statisch openbaar IP-adres maken met behulp van Power shell
 
@@ -29,14 +29,14 @@ U kunt een virtuele machine maken met een statisch openbaar IP-adres. Met een op
 
 U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van de Azure Cloud Shell. Als u de lokale computer wilt gebruiken, controleert u of de [Azure PowerShell zijn geïnstalleerd](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Als u de Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van een wille keurig opdracht venster. De Cloud Shell meldt u aan bij Azure.
 
-1. Als u de Cloud Shell gebruikt, gaat u verder met stap 2. Open een opdracht sessie en meld u aan bij `Connect-AzAccount`Azure met.
+1. Als u de Cloud Shell gebruikt, gaat u verder met stap 2. Open een opdracht sessie en meld u aan bij Azure met `Connect-AzAccount` .
 2. Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep gemaakt in de regio VS Oost Azure:
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name myResourceGroup -Location EastUS
    ```
 
-3. Maak een virtuele machine met de opdracht [New-AzVM](/powershell/module/az.Compute/New-azVM) . Met `-AllocationMethod "Static"` deze optie wordt een statisch openbaar IP-adres toegewezen aan de virtuele machine. In het volgende voor beeld wordt een virtuele Windows Server-machine gemaakt met een statisch, een openbaar IP-adres met de naam *myPublicIpAddress*. Wanneer u hierom wordt gevraagd, geeft u een gebruikers naam en wacht woord op die moeten worden gebruikt als aanmeldings referenties voor de virtuele machine:
+3. Maak een virtuele machine met de opdracht [New-AzVM](/powershell/module/az.Compute/New-azVM) . `-AllocationMethod "Static"`Met deze optie wordt een statisch openbaar IP-adres toegewezen aan de virtuele machine. In het volgende voor beeld wordt een virtuele Windows Server-machine gemaakt met een statisch, een openbaar IP-adres met de naam *myPublicIpAddress*. Wanneer u hierom wordt gevraagd, geeft u een gebruikers naam en wacht woord op die moeten worden gebruikt als aanmeldings referenties voor de virtuele machine:
 
    ```azurepowershell-interactive
    New-AzVm `

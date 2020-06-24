@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bea6d01a8363dd68cff33435335391e0fb0f76c7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849787"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118590"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexeren in Azure Cosmos DB: een overzicht
 
@@ -41,7 +41,7 @@ Bekijk bijvoorbeeld dit item:
 
 Deze wordt weer gegeven in de volgende structuur:
 
-![Het vorige item wordt weer gegeven als een boom structuur](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="Het vorige item wordt weer gegeven als een boom structuur" border="false":::
 
 U ziet hoe matrices worden gecodeerd in de boom structuur: elke vermelding in een matrix haalt een tussenliggend knoop punt op dat is gelabeld met de index van die vermelding in de matrix (0, 1 enz.).
 
@@ -181,7 +181,7 @@ De paden die worden geëxtraheerd bij het indexeren van gegevens, maken het gema
 
 Bekijk bijvoorbeeld de volgende query: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Het query predicaat (filteren op items, waarbij een wille keurige locatie ' Frank rijk ' heeft als land/regio) zou overeenkomen met het pad dat in rood is gemarkeerd:
 
-![Een specifiek pad binnen een structuur zoeken](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Een specifiek pad binnen een structuur zoeken" border="false":::
 
 > [!NOTE]
 > Een `ORDER BY` component waarbij orders met één eigenschap *altijd* een bereik index nodig heeft en mislukt als het pad waarnaar wordt verwezen, niet is opgenomen. Op dezelfde manier `ORDER BY` heeft een query die door meerdere eigenschappen orders *altijd* een samengestelde index nodig.

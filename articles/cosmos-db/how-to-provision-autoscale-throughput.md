@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 16fad7f57d3054c193da2571f1b33cfd77fdd51c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664758"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118726"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Automatisch schalen door Voer in te richten op Data Base of container in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe u de door Voer van automatisch schalen kunt i
 
 1. Selecteer **nieuwe container.** Voer een naam in voor uw data base, container en partitie sleutel. Selecteer onder **door Voer**de optie voor **automatisch schalen** en stel de [maximale door Voer (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) in waarvan u wilt dat de data base of container moet worden geschaald.
 
-   ![Een container maken en door Voer ingericht voor automatisch schalen configureren](./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Een container maken en door Voer ingericht voor automatisch schalen configureren":::
 
 1. Selecteer **OK**.
 
@@ -45,7 +45,7 @@ Als u automatisch schalen wilt inrichten voor een gedeelde doorvoer database, se
 
 1. Onder **schalen**selecteert u de optie voor **automatisch schalen** en **slaat**u deze op.
 
-   ![Automatisch schalen inschakelen voor een bestaande container](./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png)
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Automatisch schalen inschakelen voor een bestaande container":::
 
 > [!NOTE]
 > Wanneer u automatisch schalen inschakelt voor een bestaande data base of container, wordt de begin waarde voor het maximale aantal RU/s bepaald door het systeem, op basis van uw huidige hand matige ingerichte instellingen voor de door Voer en opslag. Nadat de bewerking is voltooid, kunt u indien nodig het maximum aantal RU/s wijzigen. [Meer informatie.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -110,7 +110,7 @@ U kunt [versie 4,0 of hoger](https://mvnrepository.com/artifact/com.azure/azure-
 
 ### <a name="create-database-with-shared-throughput"></a>Data base maken met gedeelde door Voer
 
-#### <a name="async"></a>[Asynchroon](#tab/api-async)
+#### <a name="async"></a>[Async](#tab/api-async)
 
 ```java
 // Create instance of CosmosClient
@@ -127,7 +127,7 @@ ThroughputProperties autoscaleThroughputProperties = ThroughputProperties.create
 CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThroughputProperties).block().getDatabase();
 ```
 
-#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+#### <a name="sync"></a>[Sync](#tab/api-sync)
 
 ```java
 // Create instance of CosmosClient
@@ -148,7 +148,7 @@ CosmosDatabase database = client.createDatabase(databaseName, autoscaleThroughpu
 
 ### <a name="create-container-with-dedicated-throughput"></a>Container maken met specifieke door Voer
 
-#### <a name="async"></a>[Asynchroon](#tab/api-async)
+#### <a name="async"></a>[Async](#tab/api-async)
 
 ```java
 // Get reference to database that container will be created in
@@ -164,7 +164,7 @@ CosmosAsyncContainer container = database.createContainer(autoscaleContainerProp
                                 .getContainer();
 ```
 
-#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+#### <a name="sync"></a>[Sync](#tab/api-sync)
 
 ```java
 // Get reference to database that container will be created in
@@ -183,7 +183,7 @@ CosmosContainer container = database.createContainer(autoscaleContainerPropertie
 
 ### <a name="read-the-current-throughput-rus"></a>De huidige door Voer (RU/s) lezen
 
-#### <a name="async"></a>[Asynchroon](#tab/api-async)
+#### <a name="async"></a>[Async](#tab/api-async)
 
 ```java
 // Get a reference to the resource
@@ -199,7 +199,7 @@ int autoscaleMaxThroughput = autoscaleContainerThroughput.getAutoscaleMaxThrough
 int currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
-#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+#### <a name="sync"></a>[Sync](#tab/api-sync)
 
 ```java
 // Get a reference to the resource
@@ -219,14 +219,14 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 
 ### <a name="change-the-autoscale-max-throughput-rus"></a>De maximale door Voer (RU/s) voor automatisch schalen wijzigen
 
-#### <a name="async"></a>[Asynchroon](#tab/api-async)
+#### <a name="async"></a>[Async](#tab/api-async)
 
 ```java
 // Change the autoscale max throughput (RU/s)
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput)).block();
 ```
 
-#### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+#### <a name="sync"></a>[Sync](#tab/api-sync)
 
 ```java
 // Change the autoscale max throughput (RU/s)

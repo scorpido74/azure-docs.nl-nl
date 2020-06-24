@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680386"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783007"
 ---
 # <a name="material-mapping-for-model-formats"></a>Materiaaltoewijzing voor modelindelingen
 
@@ -47,14 +47,13 @@ Elk bitmappatroon in glTF kan een `texCoord` waarde hebben, die ook wordt onders
 
 ### <a name="embedded-textures"></a>Inge sloten structuren
 
-Structuren die zijn Inge sloten in * \*bin* -of * \*GLB* -bestanden worden ondersteund.
+Structuren die zijn Inge sloten in * \* bin* -of * \* GLB* -bestanden worden ondersteund.
 
 ### <a name="supported-gltf-extension"></a>Ondersteunde glTF-extensie
 
 Naast de basis functieset, ondersteunt Azure remote rendering de volgende glTF-extensies:
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
 * [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md): komt overeen met [kleur materialen](../overview/features/color-materials.md). Voor *emissive* -materialen is het raadzaam om deze uitbrei ding te gebruiken.
 * [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md): in plaats van metallic textures kunt u glossiness-structuren (diffuus en onscherp) bieden. De implementatie van Azure remote rendering volgt direct de conversie formules van de uitbrei ding.
 
@@ -102,17 +101,17 @@ De bovenstaande toewijzing is het meest complexe deel van de materiaal conversie
 Hieronder worden enkele definities gebruikt:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular`. Groen ∗ 0,7154 + `Specular`. Blue ∗ 0,0721
-* `DiffuseBrightness`= 0,299 * `Diffuse`. Red<sup>2</sup> + 0,587 * `Diffuse`. Groen<sup>2</sup> + 0,114 * `Diffuse`. Blauw<sup>2</sup>
-* `SpecularBrightness`= 0,299 * `Specular`. Red<sup>2</sup> + 0,587 * `Specular`. Groen<sup>2</sup> + 0,114 * `Specular`. Blauw<sup>2</sup>
-* `SpecularStrength`= Max (`Specular`. Rood, `Specular`. Groen, `Specular`. Meng
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 + `Specular` . Groen ∗ 0,7154 + `Specular` . Blue ∗ 0,0721
+* `DiffuseBrightness`= 0,299 * `Diffuse` . Red<sup>2</sup> + 0,587 * `Diffuse` . Groen<sup>2</sup> + 0,114 * `Diffuse` . Blauw<sup>2</sup>
+* `SpecularBrightness`= 0,299 * `Specular` . Red<sup>2</sup> + 0,587 * `Specular` . Groen<sup>2</sup> + 0,114 * `Specular` . Blauw<sup>2</sup>
+* `SpecularStrength`= Max ( `Specular` . Rood, `Specular` . Groen, `Specular` . Meng
 
 De formule SpecularIntensity wordt [hier](https://en.wikipedia.org/wiki/Luma_(video))opgehaald.
 De formule voor de helderheid wordt in deze [specificatie](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)beschreven.
 
 ### <a name="roughness"></a>Ruw
 
-`Roughness`wordt berekend op `Specular` basis `ShininessExponent` van en [deze formule](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)wordt gebruikt. De formule is een benadering van de grove-exponent van de Phong:
+`Roughness`wordt berekend op basis van `Specular` en `ShininessExponent` [deze formule](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)wordt gebruikt. De formule is een benadering van de grove-exponent van de Phong:
 
 ```Cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
@@ -120,7 +119,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 
 ### <a name="metalness"></a>Metaal
 
-`Metalness`wordt berekend op `Diffuse` basis `Specular` van en met behulp [van deze formule uit de glTF-specificatie](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
+`Metalness`wordt berekend op basis van `Diffuse` en `Specular` met behulp [van deze formule uit de glTF-specificatie](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js).
 
 Het idee hier is dat we de vergelijking oplossen: AX<sup>2</sup> + BX + C = 0.
 In principe worden dielectric-Opper vlakken weer gegeven rond 4% licht op een reflecterend manier en is de rest diffuus. Metalen Opper vlakken geven geen licht op een diffuse manier, maar allemaal op een manier.
@@ -139,10 +138,10 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`wordt berekend op basis `Diffuse`van `Specular`, en `Metalness`.
+`Albedo`wordt berekend op basis van `Diffuse` , `Specular` en `Metalness` .
 
 Zoals beschreven in de sectie van de Metaaling, weer spie gelen dielectric Opper vlakken rond 4% licht.  
-Het idee hier is om lineair interpoleren tussen `Dielectric` en `Metal` kleuren met `Metalness` waarde als factor. Als de metaaling `0.0`is, is het afhankelijk van het moment dat deze een donkere kleur heeft (als reflecteel hoog is) of diffuus niet verandert (als er geen reflecterend is). Als de metaaling een grote waarde is, verdwijnt de diffuse kleur ten opzichte van de spiegel kleur.
+Het idee hier is om lineair interpoleren tussen `Dielectric` en `Metal` kleuren met `Metalness` waarde als factor. Als de metaaling is `0.0` , is het afhankelijk van het moment dat deze een donkere kleur heeft (als reflecteel hoog is) of diffuus niet verandert (als er geen reflecterend is). Als de metaaling een grote waarde is, verdwijnt de diffuse kleur ten opzichte van de spiegel kleur.
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -156,22 +155,22 @@ AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 
 `AlbedoRGB`is berekend met de bovenstaande formule, maar het Alfa kanaal vereist extra berekeningen. De FBX-indeling is vague over transparantie en heeft verschillende manieren om deze te definiëren. Verschillende hulp middelen voor inhoud gebruiken verschillende methoden. Het is hier een idee om ze in één formule samen te voegen. Sommige assets worden onjuist weer gegeven als transparant, maar als ze niet op een gemeen schappelijke manier worden gemaakt.
 
-Dit wordt berekend op basis `TransparentColor`van `TransparencyFactor`, `Opacity`,:
+Dit wordt berekend op basis van `TransparentColor` , `TransparencyFactor` , `Opacity` :
 
-Als `Opacity` is gedefinieerd, gebruikt u het vervolgens rechtstreeks `AlbedoAlpha`  =  `Opacity` : Else  
-Als `TransparencyColor` is gedefinieerd, dan `AlbedoAlpha` = 1,0-((`TransparentColor`). Rood + `TransparentColor`. Groen + `TransparentColor`. Blauw)/3,0) anders  
-If `TransparencyFactor`, then `AlbedoAlpha` = 1,0-`TransparencyFactor`
+Als `Opacity` is gedefinieerd, gebruikt u het vervolgens rechtstreeks: `AlbedoAlpha`  =  `Opacity` else  
+Als `TransparencyColor` is gedefinieerd, dan `AlbedoAlpha` = 1,0-(() `TransparentColor` . Rood + `TransparentColor` . Groen + `TransparentColor` . Blauw)/3,0) anders  
+If `TransparencyFactor` , then `AlbedoAlpha` = 1,0-`TransparencyFactor`
 
-De uiteindelijke `Albedo` kleur heeft vier kanalen, waarbij de `AlbedoRGB` wordt gecombineerd `AlbedoAlpha`met.
+De uiteindelijke `Albedo` kleur heeft vier kanalen, waarbij de wordt gecombineerd `AlbedoRGB` met `AlbedoAlpha` .
 
 ### <a name="summary"></a>Samenvatting
 
-Als `Albedo` `Specular` u hier wilt samenvatten, wordt de oorspronkelijke dichtheid in de buurt van het origineel `Diffuse`weer gegeven. Anders wordt het Opper vlak weer gegeven als een metallisch Opper vlak en verliest de diffuse kleur. Het Opper vlak ziet er mooi en reflectie uit als `ShininessExponent` het groot genoeg is en `Specular` helder is. Als dat niet het geval is, ziet u dat het Opper vlak er onveranderd en nauwelijks in de omgeving
+Als u hier wilt samenvatten, `Albedo` wordt de oorspronkelijke dichtheid in de buurt van het origineel weer gegeven `Diffuse` `Specular` . Anders wordt het Opper vlak weer gegeven als een metallisch Opper vlak en verliest de diffuse kleur. Het Opper vlak ziet er mooi en reflectie uit als het `ShininessExponent` groot genoeg is en `Specular` helder is. Als dat niet het geval is, ziet u dat het Opper vlak er onveranderd en nauwelijks in de omgeving
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* De huidige formule werkt niet goed voor een eenvoudige gekleurde geometrie. Als `Specular` dat helder genoeg is, worden alle geometrieën reflecterende metalen Opper vlakken zonder kleur. De tijdelijke oplossing is hier om `Specular` te verlagen tot 30% van de oorspronkelijke of om de conversie-instelling [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)te gebruiken.
-* PBR-materialen zijn onlangs toegevoegd `Maya` aan `3DS Max` en hulpprogram ma's voor het maken van inhoud. Ze gebruiken aangepaste, door de gebruiker gedefinieerde zwarte box-eigenschappen om deze door te geven aan FBX. Deze aanvullende eigenschappen worden niet door Azure rendering gelezen omdat deze niet zijn gedocumenteerd en de indeling is gesloten.
+* De huidige formule werkt niet goed voor een eenvoudige gekleurde geometrie. Als dat `Specular` helder genoeg is, worden alle geometrieën reflecterende metalen Opper vlakken zonder kleur. De tijdelijke oplossing is hier om `Specular` te verlagen tot 30% van de oorspronkelijke of om de conversie-instelling [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)te gebruiken.
+* PBR-materialen zijn onlangs toegevoegd aan `Maya` en `3DS Max` hulpprogram ma's voor het maken van inhoud. Ze gebruiken aangepaste, door de gebruiker gedefinieerde zwarte box-eigenschappen om deze door te geven aan FBX. Deze aanvullende eigenschappen worden niet door Azure rendering gelezen omdat deze niet zijn gedocumenteerd en de indeling is gesloten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

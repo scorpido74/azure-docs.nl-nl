@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243495"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124048"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Best practices voor gegevensbeveiliging en -versleuteling in Azure
 In dit artikel worden aanbevolen procedures beschreven voor gegevens beveiliging en-versleuteling.
@@ -121,7 +121,7 @@ U wilt e-mail berichten, documenten en gevoelige gegevens die u deelt buiten uw 
 
 Classificatie kan te allen tijde worden geïdentificeerd, ongeacht waar de gegevens worden opgeslagen of met wie ze worden gedeeld. De labels bevatten visuele markeringen, zoals een koptekst, voettekst of watermerk. Metagegevens worden als ongecodeerde tekst aan bestanden en koppen van e-mails toegevoegd. De Lees bare tekst zorgt ervoor dat andere services, zoals oplossingen om gegevens verlies te voor komen, de classificatie kunnen identificeren en passende maat regelen te nemen.
 
-De beveiligings technologie maakt gebruik van Azure Rights Management (Azure RMS). Deze technologie is geïntegreerd met andere Microsoft-cloudservices en -toepassingen, zoals Office 365 en Azure Active Directory. Deze beveiligingstechnologie maakt gebruik van beleidsregels voor versleuteling, identiteit en verificatie. Beveiliging die wordt toegepast via Azure RMS blijft met de documenten en e-mail berichten, onafhankelijk van de locatie, binnen of buiten uw organisatie, netwerken, bestands servers en toepassingen.
+De beveiligings technologie maakt gebruik van Azure Rights Management (Azure RMS). Deze technologie is geïntegreerd met andere micro soft-Cloud Services en-toepassingen, zoals Microsoft 365 en Azure Active Directory. Deze beveiligingstechnologie maakt gebruik van beleidsregels voor versleuteling, identiteit en verificatie. Beveiliging die wordt toegepast via Azure RMS blijft met de documenten en e-mail berichten, onafhankelijk van de locatie, binnen of buiten uw organisatie, netwerken, bestands servers en toepassingen.
 
 Met deze oplossing voor gegevens beveiliging blijft u de controle over uw gegevens, zelfs wanneer deze met andere personen worden gedeeld. U kunt Azure RMS ook gebruiken met uw eigen line-of-business-toepassingen en oplossingen voor gegevens beveiliging van software leveranciers, ongeacht of deze toepassingen en oplossingen on-premises of in de Cloud zijn.
 

@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282222"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735333"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverse proxy in azure Service Fabric
 Met omgekeerde proxy die in azure Service Fabric is ingebouwd, kunnen micro services die worden uitgevoerd in een Service Fabric cluster worden gedetecteerd en gecommuniceerd met andere services met http-eind punten.
@@ -78,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** Hiermee wordt aangegeven hoe de doel replica of-instantie moet worden geselecteerd.
   * Wanneer de doel service stateful is, kan de TargetReplicaSelector een van de volgende zijn: ' PrimaryReplica ', ' RandomSecondaryReplica ' of ' RandomReplica '. Als deze para meter niet wordt opgegeven, is de standaard waarde ' PrimaryReplica '.
   * Wanneer de doel service stateless is, pickt reverse proxy een wille keurig exemplaar van de service partitie om de aanvraag door te sturen naar.
-* **Time-out:**  Hiermee geeft u de time-out op voor de HTTP-aanvraag die is gemaakt door de omgekeerde proxy naar de service namens de client aanvraag. De standaard waarde is 60 seconden. Dit is een optionele para meter.
+* **Time-out:**  Hiermee geeft u de time-out op voor de HTTP-aanvraag die is gemaakt door de omgekeerde proxy naar de service namens de client aanvraag. De standaard waarde is 120 seconden. Dit is een optionele para meter.
 
 ### <a name="example-usage"></a>Gebruiksvoorbeelden
 Als voor beeld gaat u naar de service *Fabric:/MyApp/MyService* waarmee een HTTP-listener wordt geopend op de volgende URL:
@@ -115,7 +115,7 @@ De gateway stuurt deze aanvragen vervolgens door naar de URL van de service:
 ## <a name="special-handling-for-port-sharing-services"></a>Speciale verwerking voor services voor het delen van poorten
 De Service Fabric reverse-proxy probeert een service adres opnieuw op te lossen en voer de aanvraag opnieuw uit wanneer een service niet kan worden bereikt. Over het algemeen geldt dat als een service niet kan worden bereikt, het service-exemplaar of de replica is verplaatst naar een ander knoop punt als onderdeel van de normale levens cyclus. Als dit gebeurt, kan de omgekeerde proxy een netwerk verbindings fout ontvangen die aangeeft dat een eind punt niet meer is geopend op het oorspronkelijk opgeloste adres.
 
-Replica's of service-exemplaren kunnen echter een hostproces delen en kunnen ook een poort delen wanneer deze wordt gehost door een http. sys-gebaseerde webserver, waaronder:
+Replica's of service-exemplaren kunnen echter een hostproces delen en kunnen ook een poort delen als deze wordt gehost door een webserver op basis van http.sys, waaronder:
 
 * [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
 * [Weblistener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
@@ -139,7 +139,7 @@ Deze HTTP-antwoord header duidt op een normale HTTP 404-situatie waarin de aange
 
 ## <a name="special-handling-for-services-running-in-containers"></a>Speciale verwerking voor services die in containers worden uitgevoerd
 
-Voor services die in containers worden uitgevoerd, kunt u de omgevings `Fabric_NodeIPOrFQDN` variabele gebruiken om de [omgekeerde proxy-URL](#uri-format-for-addressing-services-by-using-the-reverse-proxy) te maken, zoals in de volgende code:
+Voor services die in containers worden uitgevoerd, kunt u de omgevings variabele gebruiken `Fabric_NodeIPOrFQDN` om de [omgekeerde proxy-URL](#uri-format-for-addressing-services-by-using-the-reverse-proxy) te maken, zoals in de volgende code:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");

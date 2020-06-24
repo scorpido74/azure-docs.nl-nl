@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656652"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116023"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
@@ -44,7 +44,7 @@ Analytische werk belastingen omvatten doorgaans aggregaties en sequentiële scan
 
 Als uw operationele tabellen bijvoorbeeld de volgende indeling hebben:
 
-![Voor beeld van operationele tabel](./media/analytical-store-introduction/sample-operational-data-table.png)
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="Voor beeld van operationele tabel" border="false":::
 
 In het rij-archief worden de bovenstaande gegevens opgeslagen in een geserialiseerde indeling, per rij, op de schijf. Met deze indeling kunnen transactionele Lees bewerkingen, schrijf bewerkingen en operationele query's sneller worden uitgevoerd, zoals ' retour informatie over Product1 '. Omdat de gegevensset echter groot groeit en als u complexe analytische query's wilt uitvoeren op de gegevens, kan het kostbaar zijn. Als u bijvoorbeeld ' de verkoop trends voor een product onder de categorie ' apparatuur ' over verschillende bedrijfs eenheden en maanden wilt krijgen, moet u een complexe query uitvoeren. Grote scans op deze gegevensset kunnen duur verkrijgen in termen van ingerichte door Voer en kunnen ook van invloed zijn op de prestaties van de transactionele workloads die uw realtime-toepassingen en-services inschakelen.
 
@@ -52,7 +52,7 @@ Analytische opslag, een column Store, is beter geschikt voor dergelijke query's,
 
 De volgende afbeelding toont transactionele rijen Store versus analytisch kolom archief in Azure Cosmos DB:
 
-![Transactionele rij-archief versus analytisch kolom archief in Azure Cosmos DB](./media/analytical-store-introduction/transactional-analytical-data-stores.png)
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Transactionele rij-archief versus analytisch kolom archief in Azure Cosmos DB" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Ontkoppelde prestaties voor analytische werk belastingen
 
@@ -168,8 +168,8 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 * [Azure Synapse-koppeling voor Azure Cosmos DB](synapse-link.md)
 
-* [Aan de slag met Azure Synapse-koppeling voor Azure Cosmos DB](configure-synapse-link.md)
+* [Aan de slag met Azure Synapse Link voor Azure Cosmos DB](configure-synapse-link.md)
 
 * [Veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
-* [Azure Synapse-koppeling voor Azure Cosmos DB use cases](synapse-link-use-cases.md)
+* [Use cases voor Azure Synapse Link voor Azure Cosmos DB](synapse-link-use-cases.md)

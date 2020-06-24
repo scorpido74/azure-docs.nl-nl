@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267584"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699104"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Uw StorSimple 8100-apparaat uitpakken, aan het rek koppelen en bekabelen
 
@@ -27,7 +27,7 @@ De volgende stappen bevatten duidelijke, gedetailleerde instructies voor het uit
 ### <a name="prepare-to-unpack-your-device"></a>Voorbereiden op het uitpakken van uw apparaat
 Lees de volgende informatie voordat u uw apparaat uitpakt.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![Waarschuwing pictogram pictogram voor ](./media/storsimple-safety/IC740879.png)![ zwaar gewicht ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **.**
 
 1. Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht van de behuizing als u deze hand matig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 2. Leg de doos op een vlak, horizontaal oppervlak.
@@ -83,7 +83,7 @@ Het apparaat moet worden geïnstalleerd in een standaard 19-inch rack met zowel 
 2. Controleer of de site waar u wilt instellen, een standaard AC van een onafhankelijke bron of een PDU (netstroom distributie-eenheid) met een nood voeding (UPS) heeft.
 3. Zorg ervoor dat er één 2U-sleuf beschikbaar is in het rek waarin u het apparaat wilt koppelen.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![Waarschuwing pictogram pictogram voor ](./media/storsimple-safety/IC740879.png)![ zwaar gewicht ](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **.**
 
 Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht als u de apparaat-installatie hand matig uitvoert. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 

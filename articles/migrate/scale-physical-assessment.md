@@ -7,18 +7,18 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294368"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081070"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Een groot aantal fysieke servers beoordelen voor migratie naar Azure
 
 In dit artikel wordt beschreven hoe u een groot aantal on-premises fysieke servers kunt beoordelen voor migratie naar Azure, met behulp van het hulp programma voor het evalueren van Azure Migrate-servers.
 
-[Azure migrate](migrate-services-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden. 
+[Azure Migrate](migrate-services-overview.md) biedt een hub aan hulpprogramma's waarmee u apps, infrastructuur en workloads op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogramma's en externe aanbiedingen van onafhankelijke softwareleveranciers (ISV’s). 
 
 
 In dit artikel leert u het volgende:
@@ -47,8 +47,8 @@ Gebruik de limieten in deze tabel voor de planning.
 **Planning** | **Limieten**
 --- | --- 
 **Azure Migrate projecten** | Evalueer Maxi maal 35.000 servers in een project.
-**Azure Migrate-apparaat** | Een apparaat kan Maxi maal 250 servers detecteren.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/> Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
-**Groep** | U kunt Maxi maal 35.000 servers in één groep toevoegen.
+**Azure Migrate-apparaat** | Een apparaat kan Maxi maal 1000 servers detecteren.<br/> Een apparaat kan alleen worden gekoppeld aan één Azure Migrate project.<br/> Een wille keurig aantal apparaten kan worden gekoppeld aan één Azure Migrate project. <br/><br/> 
+**Gegroepeerd** | U kunt Maxi maal 35.000 servers in één groep toevoegen.
 **Azure Migrate beoordeling** | U kunt Maxi maal 35.000 servers in één evaluatie evalueren.
 
 

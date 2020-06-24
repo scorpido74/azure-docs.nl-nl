@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b5208d2da3635e822049859cae9c8f17b6105a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464246"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130429"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection meldingen
 
@@ -31,7 +31,11 @@ In dit artikel vindt u een overzicht van beide e-mail meldingen.
 
 Als reactie op een gedetecteerd account dat risico loopt, genereert Azure AD Identity Protection een e-mail waarschuwing met **gebruikers die risico lopen** als onderwerp. Het e-mail bericht bevat een koppeling naar de gebruikers die zijn **[gemarkeerd voor een risico](../reports-monitoring/concept-user-at-risk.md)** rapport. Als best practice moet u onmiddellijk de gebruikers op risico onderzoeken.
 
-Met de configuratie voor deze waarschuwing kunt u opgeven op welk gebruikers risico niveau u de waarschuwing wilt genereren. Het e-mail adres wordt gegenereerd wanneer het risico niveau van de gebruiker de opgegeven waarde bereikt. Er worden echter geen nieuwe gebruikers meer ontvangen die waarschuwingen hebben gevonden voor deze gebruiker nadat ze zijn overgezet naar dit risico niveau. Als u het beleid bijvoorbeeld instelt op een waarschuwing over gemiddeld risico van gebruikers en uw gebruiker John verplaatst naar gemiddeld risico, ontvangt u de gebruikers die risico lopen voor John. Er wordt echter geen waarschuwing weer gegeven dat de tweede gebruiker risico loopt als John vervolgens overgaat op een hoog risico of extra risico detecties heeft.
+Met de configuratie voor deze waarschuwing kunt u opgeven op welk gebruikers risico niveau u de waarschuwing wilt genereren. Het e-mail adres wordt gegenereerd wanneer het risico niveau van de gebruiker de opgegeven waarde bereikt. Als u het beleid bijvoorbeeld instelt op waarschuwing bij gemiddeld gebruikers risico en de Score van de gebruiker van John van de gebruiker wordt verplaatst naar het gemiddeld risico als gevolg van een realtime-aanmeldings risico, ontvangt u de gebruikers die risico lopen. Als de gebruiker daaropvolgende risico detecties heeft die ervoor zorgen dat de berekening van het gebruikers risico niveau het opgegeven risico niveau is (of hoger), ontvangt u een extra gebruiker tegen risico gedetecteerde e-mail berichten wanneer de risico Score van de gebruiker opnieuw wordt berekend. Als een gebruiker bijvoorbeeld op 1 januari op gemiddeld risico wordt verplaatst, ontvangt u een e-mail melding als uw instellingen zijn ingesteld op waarschuwing over gemiddeld risico. Als dezelfde gebruiker vervolgens een andere risico detectie heeft op 5 januari die ook een gemiddeld risico is, en de risico Score van de gebruiker opnieuw wordt berekend en nog steeds gemiddeld is, ontvangt u een e-mail melding. 
+
+Er wordt echter alleen een extra e-mail melding verzonden als het tijdstip waarop de risico detectie is opgetreden (die de wijziging in het risico niveau van gebruikers heeft veroorzaakt) recenter is dan wanneer de laatste e-mail is verzonden. Bijvoorbeeld: een gebruiker aanmeldingen op 1 januari om 5 uur en er is geen realtime risico (betekent dat er geen e-mail bericht zou worden gegenereerd als gevolg van die aanmelding). Tien minuten later meldt dezelfde gebruiker 5:10 zich opnieuw aan en heeft dit een hoog realtime risico, waardoor het risico niveau van de gebruiker wordt overgezet naar hoog en een e-mail bericht dat wordt verzonden. Vervolgens wordt bij 5:15 uur de offline risico score voor de oorspronkelijke aanmelding bij 5 AM gewijzigd in een hoog risico als gevolg van een offline risico verwerking. Een extra gemarkeerde gebruiker voor de risico-e-mail wordt niet verzonden, omdat het tijdstip van de eerste aanmelding vóór de tweede aanmelding was die al een e-mail melding heeft geactiveerd.
+
+Als u een overbelasting van e-mails wilt voor komen, ontvangt u binnen een periode van vijf seconden slechts één gebruiker met een risico per seconde. Dit betekent dat als meerdere gebruikers tijdens dezelfde periode van vijf seconden naar het gespecificeerde risico niveau worden verplaatst, één e-mail bericht wordt geaggregeerd en verzonden om de wijziging van het risico niveau voor al hen te vertegenwoordigen.
 
 ![Gebruikers met een risico voor een gedetecteerd e-mail bericht](./media/howto-identity-protection-configure-notifications/01.png)
 

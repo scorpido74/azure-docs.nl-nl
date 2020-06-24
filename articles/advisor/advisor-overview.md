@@ -3,30 +3,30 @@ title: Inleiding tot Azure Advisor
 description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854428"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117774"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor
 
 Meer informatie over de belangrijkste mogelijkheden van Azure Advisor en antwoorden op veelgestelde vragen.
 
 ## <a name="what-is-advisor"></a>Wat is Advisor?
-Advisor is een persoonlijke Cloud consultant die u helpt bij het volgen van de aanbevolen procedures voor het optimaliseren van uw Azure-implementaties. Het analyseert uw resourceconfiguratie en gebruikstelemetrie, en raadt vervolgens oplossingen aan die u kunnen helpen de kosteneffectiviteit, prestaties, hoge beschikbaarheid en beveiliging van uw Azure-resources te verbeteren.
+Advisor is een persoonlijke Cloud consultant die u helpt bij het volgen van de aanbevolen procedures voor het optimaliseren van uw Azure-implementaties. U kunt hiermee uw resource configuratie en-telemetrie analyseren en vervolgens oplossingen aanraden die u kunnen helpen bij het verbeteren van de kosten effectiviteit, prestaties, betrouw baarheid (voorheen hoge Beschik baarheid) en beveiliging van uw Azure-resources.
 
 Met Advisor kunt u het volgende doen:
 * Proactieve, bruikbare en aan uw voorkeuren aangepaste aanbevelingen voor best practice ontvangen. 
-* Verbeter de prestaties, beveiliging en hoge Beschik baarheid van uw resources, naarmate u uw verkoop kansen identificeert om uw totale Azure-uitgaven te verminderen.
+* Verbeter de prestaties, beveiliging en betrouw baarheid van uw resources, naarmate u uw verkoop kansen identificeert om uw totale Azure-uitgaven te verminderen.
 * Aanbevelingen ontvangen met voorgestelde acties inline.
 
 U hebt toegang tot Advisor via de [Azure Portal](https://aka.ms/azureadvisordashboard). Meld u aan bij de [Portal](https://portal.azure.com), zoek **Advisor** in het navigatie menu of zoek ernaar in het menu **alle services** .
 
 In het Advisor-dash board worden persoonlijke aanbevelingen voor al uw abonnementen weer gegeven.  U kunt filters toep assen om aanbevelingen voor specifieke abonnementen en resource typen weer te geven.  De aanbevelingen zijn onderverdeeld in vijf categorieën: 
 
-* **Hoge Beschik baarheid**: om de continuïteit van uw bedrijfs kritieke toepassingen te garanderen en te verbeteren. Zie [aanbevelingen voor hoge Beschik baarheid voor Advisor](advisor-high-availability-recommendations.md)voor meer informatie.
+* **Betrouw baarheid (voorheen hoge Beschik baarheid genoemd)**: om de continuïteit van uw bedrijfs kritieke toepassingen te garanderen en te verbeteren. Zie aanbevelingen voor de [betrouw baarheid van Advisor](advisor-high-availability-recommendations.md)voor meer informatie.
 * **Beveiliging**: voor het detecteren van bedreigingen en beveiligings problemen die kunnen leiden tot inbreuk op de beveiliging. Zie [Advisor Security aanbevelingen](advisor-security-recommendations.md)voor meer informatie.
 * **Prestaties**: om de snelheid van uw toepassingen te verbeteren. Zie aanbevelingen voor Advisor- [prestaties](advisor-performance-recommendations.md)voor meer informatie.
 * **Kosten**: om uw totale Azure-uitgaven te optimaliseren en te verlagen. Zie aanbevelingen voor Advisor- [kosten](advisor-cost-recommendations.md)voor meer informatie.
@@ -68,7 +68,7 @@ Als u een aanbeveling wilt uitstellen of verwijderen, klikt u op de koppeling **
 Zie voor meer informatie over Advisor-aanbevelingen:
 
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)
+* [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)

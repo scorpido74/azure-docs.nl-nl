@@ -2,21 +2,21 @@
 title: Bekende problemen met SCIM 2,0-protocol compatibiliteit-Azure AD
 description: Veelvoorkomende problemen met protocol compatibiliteit oplossen bij het toevoegen van een niet-galerie toepassing die ondersteuning biedt voor SCIM 2,0 in azure AD
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/03/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 00551eb6c9d5d6fab9dc1d698a7a25bb6872901b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594029"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782259"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
 
@@ -33,10 +33,10 @@ In dit artikel worden huidige en eerdere problemen beschreven met betrekking tot
 
 | **Compatibiliteits probleem met SCIM 2,0** |  **Vaste?** | **Datum herstellen**  |  
 |---|---|---|
-| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Ja  |  18 december 2018 | 
-| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Ja  | 18 december 2018  | 
-|  Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Ja  |  18 december 2018  | 
-|  Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Ja  |  18 december 2018  |  
+| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Yes  |  18 december 2018 | 
+| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Yes  | 18 december 2018  | 
+|  Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Yes  |  18 december 2018  | 
+|  Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Yes  |  18 december 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zijn de Services opgelost die worden beschreven die automatisch worden toegepast op mijn al bestaande SCIM-app?
 
@@ -53,10 +53,10 @@ Ja. Als u dit exemplaar van de toepassing al gebruikt voor eenmalige aanmelding 
 > [!NOTE]
 > Als uw toepassing nog steeds in ontwikkeling is en nog niet is geïmplementeerd voor eenmalige aanmelding of gebruikers inrichting, is het eenvoudig om de vermelding van de toepassing te verwijderen in het gedeelte **Azure Active Directory > Enter prise** van de Azure Portal en een nieuwe vermelding voor de toepassing toe te voegen met de optie **toepassing maken > niet-galerie** . Dit is een alternatief voor het uitvoeren van de onderstaande procedure.
  
-1. Meld u aan bij de https://portal.azure.comAzure Portal op.
+1. Meld u aan bij de Azure Portal op https://portal.azure.com .
 2. Zoek en selecteer uw bestaande SCIM-toepassing in de sectie **Azure Active Directory > Enter prise Applications** van de Azure Portal.
 3. Kopieer de **object-id**in het gedeelte **Eigenschappen** van uw bestaande scim-app.
-4. In een nieuw browser venster gaat u naar en https://developer.microsoft.com/graph/graph-explorer meldt u zich aan als beheerder voor de Azure AD-Tenant waar uw app is toegevoegd.
+4. In een nieuw browser venster gaat u naar https://developer.microsoft.com/graph/graph-explorer en meldt u zich aan als beheerder voor de Azure AD-Tenant waar uw app is toegevoegd.
 5. Voer in de Graph Explorer de onderstaande opdracht uit om de ID van uw inrichtings taak te vinden. Vervang ' [object-id] ' door de Service-Principal-ID (object-ID) die uit de derde stap is gekopieerd.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -93,10 +93,10 @@ Ja. Als u dit exemplaar van de toepassing al gebruikt voor eenmalige aanmelding 
 
 Ja. Als u een toepassing hebt gecodeerd voor het oude gedrag dat vóór de oplossingen bestond en een nieuw exemplaar hiervan moet implementeren, volgt u de onderstaande procedure. In deze procedure wordt beschreven hoe u de Microsoft Graph-API en de Microsoft Graph API Explorer kunt gebruiken om een SCIM-inrichtings taak te maken die het oude gedrag vertoont.
  
-1. Meld u aan bij de https://portal.azure.comAzure Portal op.
+1. Meld u aan bij de Azure Portal op https://portal.azure.com .
 2. Maak een nieuwe **niet-galerie** toepassing in de **Azure Active Directory > bedrijfs toepassingen > toepassings sectie maken** van de Azure Portal.
 3. Kopieer de **object-id**in het gedeelte **Eigenschappen** van de nieuwe aangepaste app.
-4. In een nieuw browser venster gaat u naar en https://developer.microsoft.com/graph/graph-explorer meldt u zich aan als beheerder voor de Azure AD-Tenant waar uw app is toegevoegd.
+4. In een nieuw browser venster gaat u naar https://developer.microsoft.com/graph/graph-explorer en meldt u zich aan als beheerder voor de Azure AD-Tenant waar uw app is toegevoegd.
 5. Voer in de Graph Explorer de onderstaande opdracht uit om de inrichtings configuratie voor uw app te initialiseren.
    Vervang ' [object-id] ' door de Service-Principal-ID (object-ID) die uit de derde stap is gekopieerd.
 

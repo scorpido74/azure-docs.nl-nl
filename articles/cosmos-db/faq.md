@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5ef03689a6374dc1cf945a787f9f82b9979a1e0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834903"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213088"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -70,7 +70,7 @@ U kunt ook de [Azure Cosmos DB-emulator](local-emulator.md) gebruiken om uw toep
 
 Als u een technische vraag wilt stellen, kunt u een bericht plaatsen op een van deze twee vraag-en antwoord forums:
 
-* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 Als u nieuwe functies wilt aanvragen, maakt u een nieuwe aanvraag voor [gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -138,7 +138,7 @@ Er zijn [SDK's](sql-api-sdk-dotnet.md) beschikbaar voor .NET, Python, Node.js, J
 
 ### <a name="can-i-access-some-ready-made-samples-to-get-a-head-start"></a>Kan ik een aantal kant-en-klare voor beelden gebruiken om aan de slag te gaan?
 
-Voor beelden voor de SQL API [.net](sql-api-dotnet-samples.md)-, [Java](https://github.com/Azure/azure-documentdb-java)-, [node. js](sql-api-nodejs-samples.md)-en [python](sql-api-python-samples.md) -sdk's zijn beschikbaar op github.
+Voor beelden voor de SQL API [.net](sql-api-dotnet-samples.md)-, [Java](https://github.com/Azure/azure-documentdb-java)-, [Node.js](sql-api-nodejs-samples.md)-en [python](sql-api-python-samples.md) -sdk's zijn beschikbaar op github.
 
 ### <a name="does-the-sql-api-database-support-schema-free-data"></a>Ondersteunt de SQL API-data base schema-vrije gegevens?
 
@@ -152,7 +152,7 @@ Ja, de SQL-API ondersteunt cross-document transacties, uitgedrukt in Java script
 
 Een container is een groep documenten en de bijbehorende java script-toepassings logica. Een container is een factureer bare entiteit, waarbij de [kosten](performance-levels.md) worden bepaald door de door Voer en de gebruikte opslag. Containers kunnen een of meer partities of servers omvatten en kunnen worden geschaald om vrijwel onbeperkte volumes van opslag of door voer te verwerken.
 
-* Voor de SQL-API wordt een container toegewezen aan een container.
+* Voor de SQL-API wordt de resource een container genoemd.
 * Voor de API van Cosmos DB voor MongoDB-accounts wordt een container toegewezen aan een verzameling.
 * Voor Cassandra-en Table-API-accounts wordt een container toegewezen aan een tabel.
 * Voor Gremlin-API-accounts wordt een container toegewezen aan een grafiek.

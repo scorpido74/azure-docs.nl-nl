@@ -4,14 +4,14 @@ description: Veelvoorkomende problemen met Azure Monitor metrische waarschuwinge
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 06/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 605d1f550335417a26340b6ee54736321ad69f80
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300760"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130735"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -112,7 +112,7 @@ Voor het toegestane aantal metrische waarschuwings regels per abonnement gelden 
 Als u de quotumlimiet hebt bereikt, kunt u de volgende stappen uitvoeren om het probleem op te lossen:
 1. Probeer regels voor metrische waarschuwingen te verwijderen of uit te scha kelen die niet meer worden gebruikt.
 
-2. Overschakelen naar het gebruik van regels voor metrische waarschuwingen voor het bewaken van meerdere resources. Met deze mogelijkheid kan één waarschuwings regel meerdere resources bewaken met slechts één waarschuwings regel die bij het quotum wordt geteld. Zie [meerdere](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)voor meer informatie over deze functie en de ondersteunde resource typen.
+2. Overschakelen naar het gebruik van regels voor metrische waarschuwingen voor het bewaken van meerdere resources. Met deze mogelijkheid kan één waarschuwings regel meerdere resources bewaken met slechts één waarschuwings regel die bij het quotum wordt geteld. Zie [hier](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)voor meer informatie over deze functie en de ondersteunde resourcetypen.
 
 3. Als de quotum limiet moet worden verhoogd, opent u een ondersteunings aanvraag en geeft u de volgende informatie op:
 
@@ -191,6 +191,33 @@ Als u een waarschuwings regel voor metrische gegevens wilt maken, moet u over de
 - Lees machtiging voor de doel resource van de waarschuwings regel
 - Schrijf machtiging voor de resource groep waarin de waarschuwings regel is gemaakt (als u de waarschuwings regel maakt op basis van de Azure Portal, wordt de waarschuwings regel gemaakt in dezelfde resource groep waarin de doel resource zich bevindt)
 - Lees machtiging voor elke actie groep die is gekoppeld aan de waarschuwings regel (indien van toepassing)
+
+
+## <a name="naming-restrictions-for-metric-alert-rules"></a>Naamgevings beperkingen voor metrische waarschuwings regels
+
+Houd rekening met de volgende beperkingen voor de naam van de regel voor metrische waarschuwingen:
+
+- De namen van de waarschuwings regels voor metrische gegevens kunnen niet worden gewijzigd (hernoemd) nadat deze is gemaakt
+- De naam van de metrische waarschuwings regel moet uniek zijn binnen een resource groep
+- De naam van de regel voor metrische waarschuwingen mag niet de volgende tekens bevatten: * # & +:  < > ? @ % { } \ / 
+- De namen van regels voor metrische waarschuwingen kunnen niet eindigen op het volgende teken:.
+
+
+## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Beperkingen bij het gebruik van dimensies in een metrische waarschuwings regel met meerdere voor waarden
+
+Metrische waarschuwingen ondersteunen waarschuwingen over multidimensionale metrische gegevens en bieden ondersteuning voor het definiëren van meerdere voor waarden (Maxi maal 5 voor waarden per waarschuwings regel).
+
+Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwings regel die meerdere voor waarden bevat:
+1. U kunt binnen elke voor waarde slechts één waarde per dimensie selecteren.
+2. U kunt de optie ' alle huidige en toekomstige waarden selecteren ' (selecteren) niet gebruiken \* .
+3. Wanneer de metrische gegevens die in verschillende voor waarden zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante omstandigheden).
+Bijvoorbeeld:
+    - Houd rekening met een metrische waarschuwings regel die is gedefinieerd in een opslag account en controleert twee voor waarden:
+        * Totaal aantal **trans acties** > 5
+        * Gemiddeld **SuccessE2ELatency** > 250 MS
+    - Ik wil de eerste voor waarde bijwerken en alleen trans acties bewaken waarbij de dimensie **ApiName** gelijk is aan *' GetBlob '*
+    - Omdat zowel de metrische gegevens van de **trans acties** als de **SuccessE2ELatency** een **ApiName** -dimensie ondersteunen, moet ik beide voor waarden bijwerken en beide de dimensie **ApiName** opgeven met de waarde *' GetBlob '* .
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

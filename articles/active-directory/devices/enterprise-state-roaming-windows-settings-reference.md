@@ -4,19 +4,19 @@ description: Instellingen die worden geroamd of waarvan een back-up wordt gemaak
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672632"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252964"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Naslaginformatie over roaminginstellingen voor Windows 10
 
@@ -26,12 +26,12 @@ Hier volgt een lijst met de instellingen die worden geroamd of waarvan een back-
 
 Raadpleeg de volgende tabel voor een overzicht van de apparaten en account typen die worden ondersteund door het Framework Sync, backup en Restore in Windows 10.
 
-| Account type en-bewerking | Desktop | Mobiele telefoon |
+| Account type en-bewerking | Bureaublad | Mobiel |
 | --- | --- | --- |
-| Azure Active Directory: synchroniseren |Ja |Nee |
+| Azure Active Directory: synchroniseren |Yes |No |
 | Azure Active Directory: back-up/herstellen |Nee |Nee |
 | Microsoft-account: synchroniseren |Ja |Ja |
-| Microsoft-account: back-up/herstellen |Nee |Ja |
+| Microsoft-account: back-up/herstellen |No |Yes |
 
 ## <a name="what-is-backup"></a>Wat is een back-up?
 
@@ -69,13 +69,13 @@ In de volgende tabel verwijzen andere vermeldingen in de kolom instellingen groe
 Interne vermeldingen in de kolom instellingen groep verwijzen naar instellingen en apps die alleen kunnen worden uitgeschakeld voor synchronisatie binnen de app zelf of door synchronisatie uit te scha kelen voor het hele apparaat met behulp van Mobile Device Management (MDM) of groepsbeleid instellingen.
 Instellingen die niet worden geroamd of gesynchroniseerd, behoren niet tot een groep.
 
-| Instellingen | Desktop | Mobiele telefoon | Groep |
+| Instellingen | Bureaublad | Mobiel | Groep |
 | --- | --- | --- | --- |
 | **Accounts**: account afbeelding |synchroniseren |X |Thema |
 | **Accounts**: andere account instellingen |X |X | |
 | **Geavanceerde mobiele breedband**: netwerk naam voor delen van Internet verbinding (automatische detectie van mobiele Wi-Fi-HOTS pots via Bluetooth inschakelen) |X |X |Wachtwoorden |
 | **App-gegevens**: individuele apps kunnen gegevens synchroniseren |back-up synchroniseren |back-up synchroniseren |binnen |
-| **App-lijst**: lijst met geïnstalleerde apps |X |Back-up |Overige |
+| **App-lijst**: lijst met geïnstalleerde apps |X |Back-up |Anders |
 | **Bluetooth**: alle Bluetooth-instellingen |X |X | |
 | **Opdracht prompt**: instellingen voor opdracht prompt "defaults" |synchroniseren |X |binnen |
 | **Referenties**: referentie kluis |synchroniseren |synchroniseren |wachtwoord |

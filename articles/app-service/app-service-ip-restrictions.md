@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639272"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207121"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Toegangs beperkingen Azure App Service
 
@@ -30,7 +30,7 @@ De mogelijkheid om de toegang tot uw web-app vanuit een Azure Virtual Network (V
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Toegangs beperkings regels toevoegen en bewerken in de portal ##
 
-Als u een toegangs beperkings regel wilt toevoegen aan uw app, gebruikt u het menu om beperkingen voor **netwerk**>**toegang** te openen en klikt u op **toegangs beperkingen configureren**
+Als u een toegangs beperkings regel wilt toevoegen aan uw app, gebruikt u het menu om beperkingen voor **netwerk** > **toegang** te openen en klikt u op **toegangs beperkingen configureren**
 
 ![App Service-netwerk opties](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -59,6 +59,10 @@ Met Service-eind punten kunt u de toegang tot geselecteerde subnetten van het vi
 Service-eind punten kunnen niet worden gebruikt om de toegang te beperken tot apps die worden uitgevoerd in een App Service Environment. Wanneer uw app zich in een App Service Environment bevindt, kunt u de toegang tot uw app beheren met de IP-toegangs regels. 
 
 Met Service-eind punten kunt u uw app configureren met toepassings gateways of andere WAF-apparaten. U kunt ook toepassingen met meerdere lagen configureren met beveiligde back-endservers. Lees voor meer informatie over sommige mogelijkheden [netwerk functies en app service](networking-features.md) en [Application Gateway integratie met Service-eind punten](networking/app-gateway-with-service-endpoints.md).
+
+> [!NOTE]
+> Service-eind punten worden momenteel niet ondersteund voor web-apps die gebruikmaken van IP SSL virtueel IP-adres (VIP). 
+>
 
 ## <a name="managing-access-restriction-rules"></a>Toegangs beperkings regels beheren
 

@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7c7358dc405b3db2b3f014bb99a96fa56580314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742688"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213921"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Partitioneren van tabellen in Synapse SQL-pool
 
@@ -125,7 +125,7 @@ Als u wilt scha kelen tussen partities tussen twee tabellen, moet u ervoor zorge
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Een partitie splitsen die gegevens bevat
 
-De meest efficiënte methode voor het splitsen van een partitie die al gegevens bevat, is `CTAS` het gebruik van een-instructie. Als de gepartitioneerde tabel een geclusterde column Store is, moet de tabel partitie leeg zijn voordat deze kan worden gesplitst.
+De meest efficiënte methode voor het splitsen van een partitie die al gegevens bevat, is het gebruik van een- `CTAS` instructie. Als de gepartitioneerde tabel een geclusterde column Store is, moet de tabel partitie leeg zijn voordat deze kan worden gesplitst.
 
 In het volgende voor beeld wordt een gepartitioneerde column Store-tabel gemaakt. Er wordt één rij in elke partitie ingevoegd:
 
@@ -157,7 +157,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Met de volgende query wordt het aantal rijen gezocht met `sys.partitions` behulp van de catalogus weergave:
+Met de volgende query wordt het aantal rijen gezocht met behulp van de `sys.partitions` Catalogus weergave:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-U kunt de gegevens het beste uitlijnen met de nieuwe partitie grenzen met `CTAS`en de gegevens vervolgens weer omzetten in de hoofd tabel.
+U kunt de gegevens het beste uitlijnen met de nieuwe partitie grenzen met `CTAS` en de gegevens vervolgens weer omzetten in de hoofd tabel.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -237,7 +237,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Nieuwe gegevens laden in partities die gegevens in één stap bevatten
 
-Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, `ALTER TABLE` moet u hiervoor een vereiste gebruiken om de gegevens te deactiveren.  Daarna was `ALTER TABLE` een andere nood zakelijk om te scha kelen in de nieuwe gegevens.  In Synapse SQL pool wordt de `TRUNCATE_TARGET` optie ondersteund in de `ALTER TABLE` opdracht.  Met `TRUNCATE_TARGET` de `ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld `CTAS` waarin wordt gebruikt om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
+Het laden van gegevens in partities met partitie wisseling is een handige manier om nieuwe gegevens in een tabel te plaatsen die niet zichtbaar zijn voor gebruikers de switch in de nieuwe gegevens.  Het kan lastig zijn om te omgaan met de vergren deling van de vergrendelings conflicten die zijn gekoppeld aan het overschakelen van de partitie.  Als u de bestaande gegevens in een partitie wilt verwijderen, moet u hiervoor een `ALTER TABLE` vereiste gebruiken om de gegevens te deactiveren.  Daarna was een andere `ALTER TABLE` nood zakelijk om te scha kelen in de nieuwe gegevens.  In Synapse SQL pool wordt de `TRUNCATE_TARGET` optie ondersteund in de `ALTER TABLE` opdracht.  Met `TRUNCATE_TARGET` de `ALTER TABLE` opdracht worden bestaande gegevens in de partitie overschreven met nieuwe gegevens.  Hieronder ziet u een voor beeld waarin wordt gebruikt `CTAS` om een nieuwe tabel te maken met de bestaande gegevens, nieuwe gegevens in te voegen en vervolgens alle gegevens weer te scha kelen in de doel tabel, waarbij de bestaande gegevens worden overschreven.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

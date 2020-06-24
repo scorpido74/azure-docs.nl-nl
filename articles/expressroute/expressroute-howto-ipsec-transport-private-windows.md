@@ -4,16 +4,16 @@ description: IPsec-transport modus inschakelen tussen Azure Windows-Vm's en on-p
 services: expressroute
 author: fabferri
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74022013"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737254"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>IPsec-transport modus configureren voor persoonlijke ExpressRoute-peering
 
@@ -132,7 +132,7 @@ Om het groeps beleidsobject toe te passen op de OE, mag het GPO niet alleen word
 3. Klik in de **wizard filter actie voor IP-beveiliging**op **volgende**.
 
    [![17]][17]
-4. Noem de filter actie een intuïtieve naam, zodat u deze later kunt vinden. In dit voor beeld heeft de filter actie de naam **myEncryption**. U kunt ook een beschrijving toevoegen. Klik vervolgens op **volgende**.
+4. Noem de filter actie een intuïtieve naam, zodat u deze later kunt vinden. In dit voor beeld heeft de filter actie de naam **myEncryption**. U kunt ook een beschrijving toevoegen. Klik op **Volgende**.
 
    [![18]][18]
 5. Met **onderhandelen over beveiliging** kunt u het gedrag definiëren als IPSec niet kan worden ingesteld met een andere computer. Selecteer **onderhandelen over beveiliging**en klik vervolgens op **volgende**.
@@ -158,10 +158,10 @@ Maak een filter lijst die versleuteld HTTP-verkeer opgeeft met doel poort 8080.
 1. Gebruik een **IP-filter lijst**om te kwalificeren welke typen verkeer moeten worden versleuteld. Klik op het tabblad **IP-filter lijsten beheren** op **toevoegen** om een nieuwe IP-filter lijst toe te voegen.
 
    [![24]][24]
-2. Typ in het veld **naam:** een naam voor de IP-filter lijst. Bijvoorbeeld **Azure-on-HTTP8080**. Klik vervolgens op **Toevoegen**.
+2. Typ in het veld **naam:** een naam voor de IP-filter lijst. Bijvoorbeeld **Azure-on-HTTP8080**. Klik vervolgens op **toevoegen**.
 
    [![25]][25]
-3. Selecteer op de pagina **Beschrijving en gespiegelde eigenschappen van IP-filter** de optie **gespiegeld**. De gespiegelde instelling komt overeen met pakketten die in beide richtingen worden verzonden, waardoor communicatie in twee richtingen mogelijk is. Klik vervolgens op **Volgende**.
+3. Selecteer op de pagina **Beschrijving en gespiegelde eigenschappen van IP-filter** de optie **gespiegeld**. De gespiegelde instelling komt overeen met pakketten die in beide richtingen worden verzonden, waardoor communicatie in twee richtingen mogelijk is. Klik op **Volgende**.
 
    [![26]][26]
 4. Kies op de pagina **IP-verkeer bron** , uit de vervolg keuzelijst **bron adres:** **een specifiek IP-adres of subnet**. 
@@ -170,13 +170,13 @@ Maak een filter lijst die versleuteld HTTP-verkeer opgeeft met doel poort 8080.
 5. Geef het **IP-adres of subnet** van het bron adres op: van het IP-verkeer en klik vervolgens op **volgende**.
 
    [![28]][28]
-6. Geef het **doel adres op:** IP-adres of subnet. Klik vervolgens op **volgende**.
+6. Geef het **doel adres op:** IP-adres of subnet. Klik op **Volgende**.
 
    [![29]][29]
-7. Selecteer op de pagina **IP-protocol type** de optie **TCP**. Klik vervolgens op **volgende**.
+7. Selecteer op de pagina **IP-protocol type** de optie **TCP**. Klik op **Volgende**.
 
    [![30]][30]
-8. Selecteer op de pagina **IP-protocol poort** **een van de poorten** en **tot deze poort:**. Typ **8080** in het tekstvak. Deze instellingen geven alleen het HTTP-verkeer op de doel poort 8080 wordt versleuteld. Klik vervolgens op **volgende**.
+8. Selecteer op de pagina **IP-protocol poort** **een van de poorten** en **tot deze poort:**. Typ **8080** in het tekstvak. Deze instellingen geven alleen het HTTP-verkeer op de doel poort 8080 wordt versleuteld. Klik op **Volgende**.
 
    [![31]][31]
 9. De IP-filter lijst weer geven.  De configuratie van de IP-filter lijst **Azure-on-HTTP8080** activeert versleuteling voor al het verkeer dat voldoet aan de volgende criteria:
@@ -214,7 +214,7 @@ Maak een IPsec-beleid met beveiligings regels.
 1. Selecteer het **IPSecurity-beleid op Active Directory** dat is gekoppeld aan de organisatie-eenheid. Klik met de rechter muisknop en selecteer **IP-beveiligings beleid maken**.
 
    [![37]][37]
-2. Geef het beveiligings beleid een naam. Bijvoorbeeld **beleid: Azure-on**. Klik vervolgens op **volgende**.
+2. Geef het beveiligings beleid een naam. Bijvoorbeeld **beleid: Azure-on**. Klik op **Volgende**.
 
    [![38]][38]
 3. Klik op **volgende** zonder het selectie vakje in te scha kelen.

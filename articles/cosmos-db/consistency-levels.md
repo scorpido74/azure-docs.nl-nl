@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 640884168aef13ef3a8d751c211bf16756ff350f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 5b80a0b03959ec3fba90ed21e291c1fd021916c2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417885"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119287"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Consistentie niveaus in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Azure Cosmos DB consistentie van gegevens als een breed scala aan opties in plaa
 
 Met Azure Cosmos DB kunnen ontwikkel aars kiezen uit vijf goed gedefinieerde consistentie niveaus op het consistentie spectrum. Dit zijn de niveaus *sterk*, *gebonden veroudering*, *sessie*, *consistent voor voegsel*en *uiteindelijke* consistentie. De niveaus zijn goed gedefinieerd en intuïtief en kunnen worden gebruikt voor specifieke praktijk scenario's. Elk niveau biedt [Beschik baarheid en prestatie afwegingen](consistency-levels-tradeoffs.md) en wordt ondersteund door service overeenkomsten. In de volgende afbeelding ziet u de verschillende consistentie niveaus als een spectrum.
 
-![Consistentie als een spectrum](./media/consistency-levels/five-consistency-levels.png)
+:::image type="content" source="./media/consistency-levels/five-consistency-levels.png" alt-text="Consistentie als een spectrum" border="false" :::
 
 De consistentie niveaus zijn neutraal en worden gegarandeerd voor alle bewerkingen, ongeacht de regio van waaruit de lees-en schrijf bewerkingen worden uitgevoerd, het aantal regio's dat aan uw Azure Cosmos-account is gekoppeld, of of uw account is geconfigureerd met één of meerdere schrijf regio's.
 
@@ -43,9 +43,9 @@ De semantiek van de vijf consistentie niveaus worden hier beschreven:
 
   In de volgende afbeelding ziet u de sterke consistentie met muzikale notities. Wanneer u de gegevens van andere regio's hebt geschreven naar de regio vs-West 2, krijgt u de meest recente waarde:
 
-  ![Video](media/consistency-levels/strong-consistency.gif)
+  :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="video":::
 
-- **Gebonden veroudering**: de Lees bewerkingen worden gegarandeerd de consistentie van het voor voegsel garanderen. De Lees bewerkingen kunnen vertraging oplopen bij schrijf bewerkingen door Maxi maal *"K"* -versies (dat wil zeggen "updates") van een item of op een *T* -outinterval. Met andere woorden, wanneer u de gebonden veroudering kiest, kan de ' verouderd ' op twee manieren worden geconfigureerd:
+- **Gebonden veroudering**: de Lees bewerkingen worden gegarandeerd de consistentie van het voor voegsel garanderen. De Lees bewerkingen kunnen vertraging oplopen bij schrijf bewerkingen door de meeste *"K"* -versies (dat wil zeggen "updates") van een item of door een *T* -outinterval, afhankelijk van wat het eerst wordt bereikt. Met andere woorden, wanneer u de gebonden veroudering kiest, kan de ' verouderd ' op twee manieren worden geconfigureerd:
 
 - Het aantal versies (*K*) van het item
 - Het tijds interval (*T*) waarmee de Lees bewerkingen kunnen worden vertraagd achter de schrijf bewerkingen
@@ -61,7 +61,7 @@ Binnen het verouderde venster biedt gebonden veroudering de volgende consistenti
 
   Gebonden verouderd wordt vaak gekozen door wereld wijd gedistribueerde toepassingen die weinig schrijf latentie verwachten, maar die de totale garantie voor de globale bestelling vereisen. Gebonden verouderd is handig voor toepassingen met groeps samenwerking en delen, aandelen tikker, publiceren/abonneren/wachtrij, enzovoort. In de volgende afbeelding ziet u de gebonden consistentie van veroudering met muzikale notities. Nadat de gegevens zijn geschreven naar de regio vs-West 2, lezen de regio's ' vs Oost 2 ' en ' Australië-oost ' de geschreven waarde op basis van de geconfigureerde maximale vertragings tijd of het maximum aantal bewerkingen:
 
-  ![Video](media/consistency-levels/bounded-staleness-consistency.gif)
+  :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="video":::
 
 - **Sessie**: in een enkele client sessie Lees bewerkingen worden gegarandeerd het consistente voor voegsel, monotone Lees bewerkingen, monotone schrijf bewerkingen, lees-uw-schrijf bewerkingen en lees-en schrijf bewerkingen. Hierbij wordt ervan uitgegaan dat u één schrijver-sessie hebt of het sessie token deelt voor meerdere schrijvers.
 
@@ -74,7 +74,7 @@ Clients buiten de sessie die schrijf bewerkingen uitvoeren, zien de volgende gar
 
   Sessie consistentie is het meest gebruikte consistentie niveau voor zowel de ene regio als wereld wijd gedistribueerde toepassingen. Het biedt schrijf latentie, Beschik baarheid en lees doorvoer die vergelijkbaar zijn met die van uiteindelijke consistentie, maar biedt ook de consistentie garanties die van toepassing zijn op de behoeften van toepassingen die zijn geschreven om te kunnen worden gebruikt in de context van een gebruiker. In de volgende afbeelding ziet u de consistentie van de sessie met muzikale notities. De "West US 2 Writer" en de "West US 2 Reader" gebruiken dezelfde sessie (sessie A), zodat ze beide dezelfde gegevens op hetzelfde moment lezen. Terwijl de regio ' Australië-oost ' gebruikmaakt van ' sessie B ', worden gegevens later ontvangen, maar in dezelfde volg orde als de schrijf bewerkingen.
 
-  ![Video](media/consistency-levels/session-consistency.gif)
+  :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="video":::
 
 - **Consistent voor voegsel**: updates die worden geretourneerd, bevatten een voor voegsel van alle updates, zonder onderbrekingen. Consistent consistentie niveau van het voor voegsel zorgt ervoor dat lees bewerkingen die nooit worden uitgevoerd, niet worden weer gegeven.
 
@@ -89,12 +89,12 @@ Hieronder vindt u de consistentie garanties voor consistent voor voegsel:
 
 In de volgende afbeelding ziet u de consistentie van het consistentie voorvoegsel met muzikale notities. In alle regio's zien de Lees bewerkingen nooit buiten de juiste volg orde:
 
-  ![Video](media/consistency-levels/consistent-prefix.gif)
+  :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
 
 - **Uiteindelijk**: er is geen garantie voor lees bewerkingen. Als er verder geen schrijf bewerkingen worden uitgevoerd, convergeren de replica's uiteindelijk.  
 Uiteindelijke consistentie is de zwakke vorm van consistentie, omdat een client de waarden kan lezen die ouder zijn dan de waarde die het eerder had gelezen. Uiteindelijke consistentie is ideaal wanneer de toepassing geen garantie voor het ordenen van de toepassingen vereist. Voor beelden zijn het aantal retweeten, leuk of niet-threaded opmerkingen. In de volgende afbeelding ziet u de uiteindelijke consistentie met muzikale notities.
 
-  ![Video](media/consistency-levels/eventual-consistency.gif)
+  :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::
 
 ## <a name="additional-reading"></a>Aanvullende Lees bewerkingen
 

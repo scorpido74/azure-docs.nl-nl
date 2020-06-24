@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: be9e396a778b81e730906e4a6971505e164dfa43
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 06/11/2020
+ms.openlocfilehash: 48e23aa8cf20dd1225d3d7774d9703b960e0155a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636713"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737883"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -32,6 +32,9 @@ De functie voor het lezen van replica's maakt gebruik van asynchrone PostgreSQL-
 
 ## <a name="cross-region-replication"></a>Replicatie tussen regio's
 U kunt een lees replica maken in een andere regio dan de hoofd server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.
+
+>[!NOTE]
+> Basic-laag servers ondersteunen alleen replicatie met dezelfde regio.
 
 U kunt een hoofd server in een [Azure database for PostgreSQL regio](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)hebben. Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's. In de onderstaande afbeelding ziet u welke replica regio's er beschikbaar zijn, afhankelijk van de hoofd regio.
 
@@ -171,6 +174,9 @@ PostgreSQL vereist dat de waarde van de `max_connections` para meter op de Lees 
 Als u de hierboven beschreven server waarden wilt bijwerken, maar niet aan de limieten wilt voldoen, treedt er een fout op.
 
 Firewall regels, regels voor virtuele netwerken en parameter instellingen worden niet overgenomen van de hoofd server naar de replica wanneer de replica wordt gemaakt of daarna.
+
+### <a name="basic-tier"></a>Basislaag
+Basic-laag servers ondersteunen alleen replicatie met dezelfde regio.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
 [Postgresql vereist](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van de `max_prepared_transactions` para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. Als u wijzigingen wilt aanbrengen `max_prepared_transactions` op de Master, wijzigt u deze eerst op de replica's.

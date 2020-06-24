@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 2f59bbb4711d79fdcb59e39378c25c031ac68af8
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 71c5c5881ab34dd9bc1a4da9e097b46ec21dcea1
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249056"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124218"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Ondersteuning voor het verplaatsen van Azure-resources in verschillende regio's
 
@@ -32,7 +32,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. Azureworden](#microsoftazuredata)
 > - [Micro soft. AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Micro soft. BatchAI](#microsoftbatchai)
+> - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Micro soft. BizTalkServices](#microsoftbiztalkservices)
 > - [Micro soft. Block Chain](#microsoftblockchain)
@@ -43,7 +43,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Micro soft. ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Micro soft. container](#microsoftcontainer)
@@ -249,17 +249,17 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | batchaccounts |  Ja (met behulp van sjabloon)<br/><br/> [Batch-account verplaatsen tussen regio's](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
+> | batchaccounts |  Batch-accounts kunnen niet rechtstreeks worden verplaatst van de ene regio naar een andere, maar u kunt een sjabloon gebruiken om een sjabloon te exporteren, deze te wijzigen en de sjabloon te implementeren in de nieuwe regio. <br/><br/> Meer informatie over [het verplaatsen van een batch-account in meerdere regio's](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
-## <a name="microsoftbatchai"></a>Micro soft. BatchAI
+## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | clusters | No | 
+> | clusters | No <br/><br/> De Azure Batch AI-service is [buiten gebruik gesteld](https://docs.microsoft.com/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
 > | fileservers | No | 
 > | functies | No | 
-> | werkruimten | No | 
+> | workspaces | No | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -280,7 +280,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | blockchainmembers | No |
+> | blockchainmembers | No <br/><br/> Het block chain-netwerk kan geen knoop punten in verschillende regio's hebben. 
 > | Volg | No | 
 
 ## <a name="microsoftblueprint"></a>Micro soft. blauw druk
@@ -327,7 +327,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | domein naam | No |  
+> | domein naam | Er is geen werk gepland voor klassieke Services.
 > | informatie | No | 
 
 
@@ -337,11 +337,11 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | networksecuritygroups | No |
+> | networksecuritygroups | Er is geen werk gepland voor klassieke Services.
 > | reservedips | No | 
 > | virtualnetworks | No | 
 
-## <a name="microsoftclassicstorage"></a>Micro soft. ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
@@ -355,7 +355,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | accounts | No | 
-> | Cognitive Search | Ja (met behulp van sjabloon)<br/><br/> [Uw Cognitive Search-service verplaatsen naar een andere regio](../../search/search-howto-move-across-regions.md)
+> | Cognitive Search | Wordt ondersteund met hand matige stappen.<br/><br/> Meer informatie over [het verplaatsen van uw Azure Cognitive Search-service naar een andere regio](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -410,7 +410,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | containerservices | No | 
+> | containerservices | Nee.<br/><br/> De service is [buiten gebruik gesteld](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/).
 > | managedclusters | No | 
 > | openshiftmanagedclusters | No | 
 
@@ -468,7 +468,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | werkruimten | No | 
+> | workspaces | No | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -543,7 +543,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Server | No |  
+> | Server | Als de service is ingericht met geografisch redundante back-upopslag, kunt u geo-herstel gebruiken om in andere regio's te herstellen. [Meer informatie](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
 
 ## <a name="microsoftdbformysql"></a>Micro soft. DBforMySQL
 
@@ -578,9 +578,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | elasticpools | No | 
-> | elasticpools / iothubtenants | No | 
-> | iothubs | Yes | 
+> | elasticpools | Nee. De resource is niet beschikbaar.
+> | elasticpools / iothubtenants | Nee. De resource is niet beschikbaar.
+> | iothubs | Ja. [Meer informatie](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | No | 
 
 ## <a name="microsoftdevspaces"></a>Micro soft. DevSpaces
@@ -715,7 +715,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | checknameavailability |  No
+> | checknameavailability |  Nee.<br/><br/> IoT Central werkt met geographs en geen regio's.
 > | Graph | No
 
 ## <a name="microsoftiothub"></a>Micro soft. IoTHub
@@ -768,7 +768,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts | No | 
+> | accounts | Nee, het is een wereld wijde service.
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -788,7 +788,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | commitmentplans |  No | 
 > | webservices |  No | 
-> | werkruimten |  No | 
+> | workspaces |  No | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Micro soft. MachineLearningCompute
 
@@ -828,7 +828,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | werkruimten | No | 
+> | workspaces | No | 
 
 ## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
 
@@ -842,14 +842,14 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | accounts |  No |  
+> | accounts |  Nee, Azure Maps is een georuimtelijke service. 
 
 ## <a name="microsoftmarketplaceapps"></a>Micro soft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | classicdevservices | No | 
+> | classicdevservices | Er is geen werk gepland voor klassieke Services 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -952,7 +952,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | werkruimten |  No | 
+> | workspaces |  No | 
 
 
 
@@ -1011,7 +1011,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | kluizen | Nee. [Kluis uitschakelen en opnieuw maken](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) voor site Recovery  | 
+> | kluizen | Nee.<br/><br/> Het is niet mogelijk om Recovery Services kluizen voor Azure Backup over Azure-regio's te verplaatsen.<br/><br/> In Recovery Services kluizen voor Azure Site Recovery kunt u de kluis in de doel regio [uitschakelen en opnieuw maken](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) . | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1289,7 +1289,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | applicationgroups | No | 
 > | hostpools | No | 
-> | werkruimten | No | 
+> | workspaces | No | 
 
 ## <a name="third-party-services"></a>Services van derden
 

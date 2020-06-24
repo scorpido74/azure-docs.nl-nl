@@ -6,18 +6,18 @@ documentationcenter: ''
 author: damendo
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 39f81731f20566d1a39f3f0931ff52c4e8b43ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521380"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737900"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>De relatieve latentie naar Azure-regio's vanuit specifieke locatie weergeven
 
@@ -59,10 +59,10 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> De regio die u in de vorige opdracht opgeeft, hoeft niet hetzelfde te zijn als de regio die u hebt opgegeven tijdens het ophalen van de Network Watcher. De vorige opdracht vereist alleen dat u een bestaande netwerk-Watcher opgeeft. De netwerk-Watcher kan zich in een wille keurige regio bevinden. Als u waarden opgeeft voor `-Country` en `-State`, moeten deze geldig zijn. De waarden zijn hoofdletter gevoelig. Gegevens zijn beschikbaar voor een beperkt aantal landen/regio's, provincies en steden. Voer de opdrachten in [beschik bare landen/regio's, Staten, steden en providers](#view-available) uit om een lijst met beschik bare landen/regio's, steden en statussen weer te geven die u met de vorige opdracht kunt gebruiken. 
+> De regio die u in de vorige opdracht opgeeft, hoeft niet hetzelfde te zijn als de regio die u hebt opgegeven tijdens het ophalen van de Network Watcher. De vorige opdracht vereist alleen dat u een bestaande netwerk-Watcher opgeeft. De netwerk-Watcher kan zich in een wille keurige regio bevinden. Als u waarden opgeeft voor `-Country` en `-State` , moeten deze geldig zijn. De waarden zijn hoofdletter gevoelig. Gegevens zijn beschikbaar voor een beperkt aantal landen/regio's, provincies en steden. Voer de opdrachten in [beschik bare landen/regio's, Staten, steden en providers](#view-available) uit om een lijst met beschik bare landen/regio's, steden en statussen weer te geven die u met de vorige opdracht kunt gebruiken. 
 
 > [!WARNING]
-> U moet een datum opgeven in de afgelopen 30 dagen voor `-StartTime` en `-EndTime`. Als u een eerdere datum opgeeft, worden er geen gegevens geretourneerd.
+> U moet een datum opgeven in de afgelopen 30 dagen voor `-StartTime` en `-EndTime` . Als u een eerdere datum opgeeft, worden er geen gegevens geretourneerd.
 
 De uitvoer van de vorige opdracht volgt:
 
@@ -108,7 +108,7 @@ In de geretourneerde uitvoer is de waarde voor **Score** de relatieve latentie t
 
 ## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Relatieve netwerk latentie vergelijken tussen Azure-regio's vanaf een specifieke locatie
 
-Als u in plaats van de relatieve wacht tijden opgeeft tussen een specifieke locatie en een specifieke Azure `-Location`-regio met, wilt u de relatieve latenties op alle Azure-regio's van een specifieke fysieke locatie bepalen. u kunt dit ook doen. Met de volgende opdracht kunt u bijvoorbeeld evalueren in welke Azure-regio u een service wilt implementeren als uw primaire gebruikers Comcast-gebruikers zijn die zich in de staat Washington bevinden:
+Als u in plaats van de relatieve wacht tijden opgeeft tussen een specifieke locatie en een specifieke Azure `-Location` -regio met, wilt u de relatieve latenties op alle Azure-regio's van een specifieke fysieke locatie bepalen. u kunt dit ook doen. Met de volgende opdracht kunt u bijvoorbeeld evalueren in welke Azure-regio u een service wilt implementeren als uw primaire gebruikers Comcast-gebruikers zijn die zich in de staat Washington bevinden:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `

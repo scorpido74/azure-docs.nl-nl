@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729723"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203245"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection-claim transformaties
 
@@ -28,7 +28,7 @@ In dit artikel vindt u voor beelden voor het gebruik van de teken reeks voor het
 
 Voegt een teken reeks claim toe aan een nieuwe unieke waarde stringCollection claim.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | item | tekenreeks | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
 | Input claim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
@@ -38,7 +38,7 @@ Gebruik deze claim transformatie om een teken reeks toe te voegen aan een nieuwe
 
 De volgende claim transformatie voegt het **e-mail** claim type toe aan **otherMails** claim type.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -53,24 +53,24 @@ De volgende claim transformatie voegt het **e-mail** claim type toe aan **otherM
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **verzameling**: ["someone@outlook.com"]
-  - **item**:admin@contoso.com
+  - **verzameling**: [" someone@outlook.com "]
+  - **item**: admin@contoso.com
 - Uitvoer claims:
-  - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
+  - **verzameling**: [" someone@outlook.com ", " admin@contoso.com "]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
 Voegt een teken reeks parameter toe aan een nieuwe unieke waarde stringCollection claim.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | verzameling | stringCollection | Beschrijving Als deze optie is opgegeven, worden de items uit deze verzameling gekopieerd en wordt het item toegevoegd aan het einde van de claim van de verzameling van de uitvoer. |
 | Parameter | item | tekenreeks | De waarde die moet worden toegevoegd aan de uitvoer claim. |
 | Output claim | verzameling | stringCollection | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen, met de waarde die is opgegeven in de invoer parameter. |
 
-Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant eadmin@contoso.com-mail adres () aan de claim **otherMails** toegevoegd.
+Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een nieuwe of bestaande stringCollection. In het volgende voor beeld wordt een constant e-mail adres ( admin@contoso.com ) aan de claim **otherMails** toegevoegd.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -87,24 +87,24 @@ Gebruik deze claim transformatie om een teken reeks waarde toe te voegen aan een
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **verzameling**: ["someone@outlook.com"]
+  - **verzameling**: [" someone@outlook.com "]
 - Invoer parameters
-  - **item**:admin@contoso.com
+  - **item**: admin@contoso.com
 - Uitvoer claims:
-  - **verzameling**: ["someone@outlook.com", "admin@contoso.com"]
+  - **verzameling**: [" someone@outlook.com ", " admin@contoso.com "]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
 Hiermee wordt het eerste item opgehaald uit de gegeven teken reeks verzameling.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | verzameling | stringCollection | De ClaimTypes die worden gebruikt door de claim transformatie om het item op te halen. |
 | Output claim | extractedItem | tekenreeks | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Het eerste item in de verzameling. |
 
 In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het eerste item in de **e-mail** claim geretourneerd.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -118,25 +118,25 @@ In het volgende voor beeld wordt de **otherMails** -claim gelezen en wordt het e
 ### <a name="example"></a>Voorbeeld
 
 - Invoer claims:
-  - **verzameling**: ["someone@outlook.com", "someone@contoso.com"]
+  - **verzameling**: [" someone@outlook.com ", " someone@contoso.com "]
 - Uitvoer claims:
-  - **extractedItem**: "someone@outlook.com"
+  - **extractedItem**: " someone@outlook.com "
 
 
 ## <a name="stringcollectioncontains"></a>StringCollectionContains
 
 Hiermee wordt gecontroleerd of een StringCollection claim type een-element bevat
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim | stringCollection | Het claim type dat moet worden doorzocht. |
 |Parameter|item|tekenreeks|De waarde waarnaar moet worden gezocht.|
 |Parameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
 | Output claim | Output claim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de verzameling een dergelijke teken reeks bevat |
 
-In het volgende voor beeld `roles` wordt gecontroleerd of het stringCollection-claim type de waarde **admin**bevat.
+In het volgende voor beeld wordt gecontroleerd of het `roles` stringCollection-claim type de waarde **admin**bevat.
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -163,16 +163,16 @@ In het volgende voor beeld `roles` wordt gecontroleerd of het stringCollection-c
 
 Hiermee wordt gecontroleerd of een StringCollection claim type een claim waarde bevat.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | verzameling | stringCollection | Het claim type dat moet worden doorzocht. |
 | Input claim | item|tekenreeks| Het claim type met de waarde die moet worden gezocht.|
 |Parameter|ignoreCase|tekenreeks|Hiermee geeft u op of deze vergelijking het hoofdletter gebruik moet negeren van de teken reeksen die worden vergeleken.|
 | Output claim | Output claim | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. Een Booleaanse indicator als de verzameling een dergelijke teken reeks bevat |
 
-In het volgende voor beeld `roles` wordt gecontroleerd of het claim type stringCollection de `role` waarde van het claim type bevat.
+In het volgende voor beeld wordt gecontroleerd of het `roles` claim type stringCollection de waarde van het `role` claim type bevat.
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />

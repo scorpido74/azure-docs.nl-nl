@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce95e760dd9faf2130a81dff3f0611c27f99551d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851366"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118896"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Op gebeurtenissen gebaseerde architecturen met serverloze architectuur met Azure Cosmos DB en Azure Functions
 
 Azure Functions biedt de eenvoudigste manier om verbinding te maken met de [wijzigings feed](change-feed.md). U kunt kleine reactieve Azure Functions maken die automatisch worden geactiveerd voor elke nieuwe gebeurtenis in de wijzigings feed van de Azure Cosmos-container.
 
-![Functies zonder server gebeurtenis op basis van gebeurtenissen die werken met de Azure Functions trigger voor Cosmos DB](./media/change-feed-functions/functions.png)
+:::image type="content" source="./media/change-feed-functions/functions.png" alt-text="Functies zonder server gebeurtenis op basis van gebeurtenissen die werken met de Azure Functions trigger voor Cosmos DB" border="false":::
 
 Met de [Azure functions trigger voor Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)kunt u gebruikmaken van de schaal baarheid en betrouw bare gebeurtenis detectie functionaliteit van de [feed-processor](./change-feed-processor.md)zonder dat er een [werk infrastructuur](./change-feed-processor.md)hoeft te worden onderhouden. Focus op de logica van uw Azure-functie zonder dat u zich zorgen hoeft te maken over de rest van de pijp lijn voor gebeurtenis bronnen. U kunt de trigger zelfs combi neren met andere [Azure functions bindingen](../azure-functions/functions-triggers-bindings.md#supported-bindings).
 

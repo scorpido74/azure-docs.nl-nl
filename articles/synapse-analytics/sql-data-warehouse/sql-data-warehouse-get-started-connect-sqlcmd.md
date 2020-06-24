@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 02157ca0d32d2347e50cc84a5c52e9c47b0f33b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745200"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212136"
 ---
 # <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Verbinding maken met de Synapse SQL-groep met Sqlcmd
 
@@ -25,23 +25,23 @@ ms.locfileid: "80745200"
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
 Gebruik het opdracht regel programma [Sqlcmd] [Sqlcmd] om verbinding te maken met en een query uit te zoeken op een SQL-groep.  
 
-## <a name="1-connect"></a>1. verbinding maken
+## <a name="1-connect"></a>1. Verbinding maken
 
 Om aan de slag te gaan met [Sqlcmd] [Sqlcmd], opent u de opdracht prompt en voert u **Sqlcmd** in, gevolgd door de Connection String voor de data base van uw SQL-groep. De verbindingstekenreeks moet de volgende parameters bevatten:
 
-* **Server (-S):** server in de notatie `<`servernaam`>`.database.windows.net
-* **Database (-d):** databasenaam.
+* **Server (-S):** Server in de notatie `<`Servernaam`>`.database.windows.net
+* **Data Base (-d):** Database naam.
 * **Id's van aanhalings tekens inschakelen (-I):** Id's tussen aanhalings tekens moeten zijn ingeschakeld om verbinding te maken met een exemplaar van een SQL-groep.
 
 Als u gebruik wilt maken van SQL Server-verificatie, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
 
-* **Gebruiker (-U):** servergebruiker in de notatie `<`gebruiker`>`
-* **Wachtwoord (-P):** wachtwoord dat is gekoppeld aan de gebruiker.
+* **Gebruiker (-U):** Gebruiker van de server in de notatie `<`Gebruiker`>`
+* **Wacht woord (-P):** Het wacht woord dat is gekoppeld aan de gebruiker.
 
 Een voorbeeld: uw verbindingstekenreeks kan er als volgt uitzien:
 
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > U moet [Azure Active Directory Authentication inschakelen](sql-data-warehouse-authentication.md) om te verifiëren met Active Directory.
 
-## <a name="2-query"></a>2. query
+## <a name="2-query"></a>2. Query’s uitvoeren
 
 Wanneer verbinding is gemaakt, kunt u elke ondersteunde Transact-SQL-instructie voor het exemplaar uitvoeren.  In dit voorbeeld worden query's in de interactieve modus verzonden.
 

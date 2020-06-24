@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 1385b20847cf90c212a13591389dfb6cda08432a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 295a622397d686ab70bd3f687cde9dd9729aff6f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169636"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783262"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Multi-VM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen
 
@@ -52,13 +52,13 @@ Als een van de best practices met infrastructuur codes en configuratie-as-code, 
 
 Er zijn verschillende regels die moeten worden gevolgd om uw Azure Resource Manager sjablonen in een opslag plaats in te delen:
 
-- U moet de naam van het hoofd sjabloon bestand *azuredeploy. json*.
+- U moet de naam van het hoofd sjabloon bestand *azuredeploy.jsop*.
 
-- Als u parameter waarden wilt gebruiken die zijn gedefinieerd in een parameter bestand, moet het parameter bestand de naam *azuredeploy. para meters. json*hebben.
+- Als u parameter waarden wilt gebruiken die zijn gedefinieerd in een parameter bestand, moet het parameter bestand de naam *azuredeploy.parameters.jsaan*hebben.
 
-  U kunt de para `_artifactsLocation` meters `_artifactsLocationSasToken` gebruiken en de parametersLink URI-waarde maken, zodat DevTest Labs automatisch geneste sjablonen kan beheren. Zie [geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md)voor meer informatie.
+  U kunt de para meters gebruiken `_artifactsLocation` en `_artifactsLocationSasToken` de parametersLink URI-waarde maken, zodat DevTest Labs automatisch geneste sjablonen kan beheren. Zie [geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md)voor meer informatie.
 
-- U kunt meta gegevens opgeven om de weergave naam en beschrijving van de sjabloon op te geven in een bestand met de naam *meta data. json*, als volgt:
+- U kunt meta gegevens opgeven om de weergave naam en beschrijving van de sjabloon op te geven in een bestand met de naam *metadata.jsop*, als volgt:
 
   ```json
   {
@@ -92,8 +92,8 @@ Nadat u de opslag plaats hebt gemaakt en geconfigureerd, kunt u deze toevoegen a
    - **Git-kloon-URL**: Voer de Git https-kloon-URL in van github of Azure opslag plaatsen.
    - **Vertakking** (optioneel): Voer de naam van de vertakking in om toegang te krijgen tot uw Azure Resource Manager sjabloon definities.
    - **Persoonlijk toegangs token**: Voer het persoonlijke toegangs token in dat wordt gebruikt voor een veilige toegang tot uw opslag plaats.
-     - Als u uw token wilt ophalen uit Azure opslag plaatsen, selecteert u onder uw profiel de**Security** > optie **gebruikers instellingen** > **persoonlijke toegangs tokens**.
-     - Als u uw token wilt ophalen uit github, selecteert u onder uw profiel **instellingen** > **voor ontwikkelaars instellingen** > **persoonlijke toegangs tokens**.
+     - Als u uw token wilt ophalen uit Azure opslag plaatsen, selecteert u onder uw profiel de optie **gebruikers instellingen**  >  **Security**  >  **persoonlijke toegangs tokens**.
+     - Als u uw token wilt ophalen uit github, selecteert u onder uw profiel **instellingen**voor  >  **ontwikkelaars instellingen**  >  **persoonlijke toegangs tokens**.
    - **Mappaden**: Voer het mappad in dat relatief is ten opzichte van uw Git-kloon-URI voor uw artefact definities of uw Azure Resource Manager sjabloon definities.
 
 1. Selecteer **Opslaan**.
@@ -134,7 +134,7 @@ Zodra u een Azure Resource Manager sjabloon aan het Lab hebt toegevoegd, kunnen 
 
 1. Voer in het deel venster **toevoegen** een waarde in voor de **omgevings naam** die moet worden weer gegeven voor omgevings gebruikers.
 
-   De sjabloon Azure Resource Manager definieert de rest van de invoer velden. Als het bestand sjabloon *azuredeploy. para meter. json* standaard waarden definieert, worden deze waarden weer gegeven in de invoer velden.
+   De sjabloon Azure Resource Manager definieert de rest van de invoer velden. Als de sjabloon *azuredeploy.parameter.jsin* het bestand standaard waarden definieert, worden deze waarden weer gegeven in de invoer velden.
 
    Voor para meters van het type *beveiligde teken reeks*kunt u geheimen van uw Azure Key Vault gebruiken. Zie [geheimen opslaan in azure Key Vault](devtest-lab-store-secrets-in-key-vault.md)voor meer informatie over het opslaan van geheimen in een sleutel kluis en het gebruik ervan bij het maken van Lab-resources.  
 
@@ -173,7 +173,7 @@ Voordat u doorgaat, moet u ervoor zorgen dat u een Azure Resource Manager-sjablo
 
 Met het volgende voorbeeld script maakt u een omgeving in uw Lab. De opmerkingen helpen u het script beter te begrijpen.
 
-1. Sla het volgende Power shell-voorbeeld script op uw harde schijf op als *deployenv. ps1*.
+1. Sla het volgende Power shell-voorbeeld script op uw harde schijf op als *deployenv.ps1*.
 
    [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -281,13 +281,11 @@ U kunt ook Azure CLI gebruiken om resources te implementeren met Resource Manage
 
 Houd rekening met deze beperkingen bij het gebruik van Resource Manager-sjablonen in DevTest Labs:
 
-- Resource Manager-sjablonen kunnen niet verwijzen naar de meeste bestaande resources. Ze kunnen alleen nieuwe resources maken. Als u Resource Manager-sjablonen hebt die u buiten DevTest Labs gebruikt en die naar bestaande resources verwijzen, kunt u deze niet gebruiken in DevTest Labs. De enige uitzonde ring hierop is dat u kunt verwijzen naar een bestaand virtueel netwerk.
-
 - U kunt geen formules of aangepaste installatie kopieën maken van Lab-Vm's die zijn gemaakt op basis van een resource manager-sjabloon.
 
 - De meeste beleids regels worden niet geëvalueerd wanneer u Resource Manager-sjablonen implementeert.
 
-  Zo kunt u bijvoorbeeld een Lab-beleid hebben dat een gebruiker slechts vijf Vm's kan maken. Een gebruiker kan echter een resource manager-sjabloon implementeren waarmee tien tallen virtuele machines worden gemaakt. Beleids regels die niet worden geëvalueerd, zijn onder andere:
+Zo kunt u bijvoorbeeld een Lab-beleid hebben dat een gebruiker slechts vijf Vm's kan maken. Een gebruiker kan echter een resource manager-sjabloon implementeren waarmee tien tallen virtuele machines worden gemaakt. Beleids regels die niet worden geëvalueerd, zijn onder andere:
 
   - Aantal Vm's per gebruiker
 

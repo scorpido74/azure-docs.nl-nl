@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: a850f7ceaeb57678738084cb14f383b46c7dfe84
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660641"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207399"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -201,7 +201,6 @@ ms.locfileid: "84660641"
 [planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (Upgrade domeinen)
 [planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure-beschikbaarheids sets)
 [planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Concept van Microsoft Azure virtuele machines)
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
 [planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (Een virtuele machine verplaatsen van on-premises naar Azure met een niet-gegeneraliseerde schijf)
 [planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (Een VM implementeren met een klantspecifieke installatie kopie)
 [planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (Voor bereiding voor het verplaatsen van een virtuele machine van on-premises naar Azure met een niet-gegeneraliseerde schijf)
@@ -215,7 +214,6 @@ ms.locfileid: "84660641"
 [planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (Eén virtuele machine met SAP NetWeaver demo/training-scenario)
 [planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Concepten van de implementatie van SAP-instanties in de Cloud)
 [planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure-bewakings oplossing voor SAP)
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
 [planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
@@ -443,7 +441,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
    * **Locatie**: waar de nieuwe virtuele machine moet worden geïmplementeerd. Als u de virtuele machine wilt verbinden met uw on-premises netwerk, moet u ervoor zorgen dat u de locatie van het virtuele netwerk selecteert waarmee Azure verbinding maakt met uw on-premises netwerk. Zie voor meer informatie [Microsoft Azure netwerken][planning-guide-microsoft-azure-networking] in [Azure virtual machines planning en implementatie van SAP net-Weaver][planning-guide].
 1. **Grootte**:
 
-     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie voor meer informatie [opslag: Microsoft Azure Storage en gegevens schijven][planning-guide-storage-microsoft-azure-storage-and-data-disks] en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
+     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie voor meer informatie [opslag: Microsoft Azure Storage en gegevens schijven][planning-guide-storage-microsoft-azure-storage-and-data-disks] en [Azure Storage voor SAP-workloads](./planning-guide-storage.md) in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
 
 1. **Instellingen**:
    * **Storage**
@@ -456,7 +454,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
      * **Netwerk beveiligings groep**: Zie [netwerk verkeer beheren met netwerk beveiligings groepen][virtual-networks-nsg]voor meer informatie.
    * **Extensies**: u kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft geen uitbrei dingen toe te voegen in deze stap. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de Azure-extensie voor SAP configureren][deployment-guide-4.5] in deze hand leiding.
    * **Hoge Beschik baarheid**: Selecteer een beschikbaarheidsset of voer de para meters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheids sets][planning-guide-3.2.3]voor meer informatie.
-   * **Controleren**
+   * **Bewaking**
      * **Diagnostische gegevens over opstarten**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over opstarten.
      * **Diagnostische gegevens van het gast besturingssysteem**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over bewaking.
 
@@ -583,7 +581,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
    * **Locatie**: waar de nieuwe virtuele machine moet worden geïmplementeerd. Als u de virtuele machine wilt verbinden met uw on-premises netwerk, moet u ervoor zorgen dat u de locatie van het virtuele netwerk selecteert waarmee Azure verbinding maakt met uw on-premises netwerk. Zie voor meer informatie [Microsoft Azure netwerken][planning-guide-microsoft-azure-networking] in [Azure virtual machines planning en implementatie van SAP net-Weaver][planning-guide].
 1. **Grootte**:
 
-     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie voor meer informatie [opslag: Microsoft Azure Storage en gegevens schijven][planning-guide-storage-microsoft-azure-storage-and-data-disks] en [Azure Premium Storage][planning-guide-azure-premium-storage] in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
+     Zie SAP Note [1928533]voor een lijst met ondersteunde VM-typen. Zorg ervoor dat u het juiste VM-type selecteert als u Azure Premium Storage wilt gebruiken. Niet alle VM-typen ondersteunen Premium Storage. Zie voor meer informatie [opslag: Microsoft Azure Storage en gegevens schijven][planning-guide-storage-microsoft-azure-storage-and-data-disks] en [Azure Storage voor SAP-workloads](./planning-guide-storage.md) in [Azure virtual machines planning en implementatie van SAP NetWeaver][planning-guide].
 
 1. **Instellingen**:
    * **Storage**
@@ -595,7 +593,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
      * **Netwerk beveiligings groep**: Zie [netwerk verkeer beheren met netwerk beveiligings groepen][virtual-networks-nsg]voor meer informatie.
    * **Extensies**: u kunt virtuele-machine uitbreidingen installeren door ze toe te voegen aan de implementatie. U hoeft in deze stap geen extensie toe te voegen. De uitbrei dingen die zijn vereist voor SAP-ondersteuning, worden later geïnstalleerd. Zie hoofd stuk [de Azure-extensie voor SAP configureren][deployment-guide-4.5] in deze hand leiding.
    * **Hoge Beschik baarheid**: Selecteer een beschikbaarheidsset of voer de para meters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheids sets][planning-guide-3.2.3]voor meer informatie.
-   * **Controleren**
+   * **Bewaking**
      * **Diagnostische gegevens over opstarten**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over opstarten.
      * **Diagnostische gegevens van het gast besturingssysteem**: u kunt **uitschakelen** selecteren voor diagnostische gegevens over bewaking.
 
@@ -833,7 +831,7 @@ Als u een virtuele machine implementeert vanuit Azure Marketplace, is deze stap 
 
 Er is geen interactie van de gebruiker vereist om de Azure VM-agent bij te werken. De VM-agent wordt automatisch bijgewerkt en het opnieuw opstarten van de VM is niet vereist.
 
-#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Spreek
+#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
 
 Gebruik de volgende opdrachten om de VM-agent voor Linux te installeren:
 
@@ -1030,6 +1028,11 @@ De nieuwe VM-extensie voor SAP maakt gebruik van een beheerde identiteit die is 
 
 Het proces wordt geautomatiseerd in de volgende versie van Azure PowerShell (> 4.2.0). Dit artikel wordt bijgewerkt zodra de nieuwe versie beschikbaar is. Tot slot voert u deze stappen uit om de extensie hand matig te installeren.
 
+> [!NOTE]
+> Voor de volgende stappen zijn eigenaars rechten vereist voor de resource groep of afzonderlijke resources (virtuele machine, gegevens schijven, enzovoort).
+
+1. Zorg ervoor dat u SAP host agent 7,21 PL 47 of hoger gebruikt.
+1. Zorg ervoor dat u de huidige versie van de VM-extensie voor SAP verwijdert. Het is niet mogelijk om beide versies van de VM-extensie voor SAP op dezelfde virtuele machine te installeren.
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd. Zie [deploying Azure PowerShell cmdlets][deployment-guide-4.1](Engelstalig) voor meer informatie.
 1. Volg de stappen in het artikel [beheerde identiteiten voor Azure-resources configureren op een Azure VM met Power shell][qs-configure-powershell-windows-vm] om een door het systeem toegewezen beheerde identiteit in te scha kelen voor de virtuele machine. Door de gebruiker toegewezen beheerde identiteiten worden niet ondersteund door de VM-extensie voor SAP. U kunt echter zowel een door het systeem toegewezen als een door de gebruiker toegewezen identiteit inschakelen.
     
@@ -1067,6 +1070,11 @@ Het proces wordt geautomatiseerd in de volgende versie van Azure PowerShell (> 4
 
 De nieuwe VM-extensie voor SAP maakt gebruik van een beheerde identiteit die is toegewezen aan de virtuele machine om toegang te krijgen tot de bewakings-en configuratie gegevens van de virtuele machine. Als u de nieuwe Azure-extensie voor SAP wilt installeren met behulp van Azure CLI, moet u eerst een dergelijke identiteit toewijzen aan de virtuele machine en die identiteit toegang verlenen tot alle resources die worden gebruikt door die VM, bijvoorbeeld schijven en netwerk interfaces.
 
+> [!NOTE]
+> Voor de volgende stappen zijn eigenaars rechten vereist voor de resource groep of afzonderlijke resources (virtuele machine, gegevens schijven, enzovoort).
+
+1. Zorg ervoor dat u SAP host agent 7,21 PL 47 of hoger gebruikt.
+1. Zorg ervoor dat u de huidige versie van de VM-extensie voor SAP verwijdert. Het is niet mogelijk om beide versies van de VM-extensie voor SAP op dezelfde virtuele machine te installeren.
 1. Installeer Azure CLI 2,0, zoals beschreven in [Azure cli 2,0 installeren][azure-cli-2].
 
 1. Meld u aan met uw Azure-account:
@@ -1420,7 +1428,7 @@ De extensie is niet geïnstalleerd. Bepaal of dit een proxy probleem is (zoals e
 
 Het AzureEnhancedMonitoring Windows-proces verzamelt prestatie gegevens in Azure. Het proces haalt gegevens uit verschillende bronnen op. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Monitor.
 
-Als u problemen wilt oplossen met SAP Note [1999351], opent u een sap-klant bericht voor ondersteuning op de component BC-op-NT-AZR voor Windows of BC-op-LNX-AZR voor een virtuele Linux-machine.
+Als u het probleem niet kunt oplossen met SAP Note [1999351] , opent u een sap-klant ondersteunings bericht in component BC-op-NT-AZR voor Windows of BC-op-LNX-AZR voor een virtuele Linux-machine. Koppel het logboek bestand C: \\ pakketten \\ invoeg toepassingen \\ micro soft. AzureCAT. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt;>\\logapp.txt aan het incident.
 
 #### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
@@ -1442,7 +1450,7 @@ De metrische gegevens over prestaties in Azure worden verzameld door een daemon.
 
 Voor een volledige en bijgewerkte lijst met bekende problemen raadpleegt u SAP Note [1999351], die extra informatie over probleem oplossing voor Azure extension for SAP bevat.
 
-Als u het probleem niet kunt oplossen met SAP Note [1999351] , installeert u de extensie opnieuw zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.
+Als u het probleem niet kunt oplossen met SAP Note [1999351] , installeert u de extensie opnieuw zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine. Sluit het logboek bestand/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux- &lt; versie>/logapp.txt aan het incident.
 
 ## <a name="azure-extension-error-codes"></a>Fout codes voor Azure-extensies
 

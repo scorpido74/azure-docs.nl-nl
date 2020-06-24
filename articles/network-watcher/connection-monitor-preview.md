@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: d926a9f686f0f4c39203b8a217a7c608cfad926e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52d33e7292ebe7b27eede2b89aa605780f826392
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548108"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737611"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bewaking van netwerk connectiviteit met verbindings monitor (preview-versie)
 
@@ -402,9 +402,9 @@ Als u in de Azure Portal een test groep wilt maken in een verbindings monitor, g
    
        U kunt inzoomen op het abonnements niveau tot andere niveaus in de hiërarchie:
 
-      **Abonnements** > **resource groepen** > **VNETs**VNETs > **Subnets**subnetten > **vm's met agents**
+      **Abonnement**  >  **Resource groepen**  >  **VNETs**  >  **Subnetten**  >  **Vm's met agents**
 
-      U kunt ook de waarde van het veld **groeperen op** wijzigen om de structuur te starten vanaf een ander niveau. Als u bijvoorbeeld per virtueel netwerk groepeert, ziet u de virtuele machines die agents hebben in de hiërarchie **VNETs** > **subnetten** > **vm's met agents**.
+      U kunt ook de waarde van het veld **groeperen op** wijzigen om de structuur te starten vanaf een ander niveau. Als u bijvoorbeeld per virtueel netwerk groepeert, ziet u de virtuele machines die agents hebben in de hiërarchie **VNETs**  >  **subnetten**  >  **vm's met agents**.
 
       ![Scherm opname van de verbindings monitor, met het paneel bronnen toevoegen en het tabblad Azure agents](./media/connection-monitor-2-preview/add-azure-sources.png)
 
@@ -444,7 +444,7 @@ Als u in de Azure Portal een test groep wilt maken in een verbindings monitor, g
 
     * **Naam** : Geef de configuratie van de test op.
     * **Protocol** : Kies TCP, ICMP of http. Als u HTTP-naar-HTTPS wilt wijzigen, selecteert u **http** als protocol en selecteert u **443** als poort.
-        * **Test configuratie voor het netwerk maken** : dit selectie vakje wordt alleen weer gegeven als u **http** in het veld **protocol** selecteert. Schakel dit selectie vakje in om een andere test configuratie te maken die gebruikmaakt van dezelfde bronnen en bestemmingen die u elders hebt opgegeven in uw configuratie. De zojuist gemaakte test configuratie heet `<the name of your test configuration>_networkTestConfig`.
+        * **Test configuratie voor het netwerk maken** : dit selectie vakje wordt alleen weer gegeven als u **http** in het veld **protocol** selecteert. Schakel dit selectie vakje in om een andere test configuratie te maken die gebruikmaakt van dezelfde bronnen en bestemmingen die u elders hebt opgegeven in uw configuratie. De zojuist gemaakte test configuratie heet `<the name of your test configuration>_networkTestConfig` .
         * **Traceroute uitschakelen** : dit veld is van toepassing op test groepen waarvan het protocol TCP of ICMP is. Schakel dit selectie vakje in om te voor komen dat bronnen worden gedetecteerd voor de detectie van de topologie en de hop-by-Hop-RTT.
     * **Doel poort** – u kunt dit veld aanpassen met een doel poort van uw keuze.
     * **Test frequentie** : gebruik dit veld om te kiezen hoe vaak bronnen worden gepingd op het door u opgegeven protocol en poort. U kunt kiezen uit 30 seconden, 1 minuut, 5 minuten, 15 minuten of 30 minuten. Bronnen testen de connectiviteit met bestemmingen op basis van de waarde die u kiest.  Als u bijvoorbeeld 30 seconden selecteert, wordt de verbinding met de bestemming ten minste eenmaal in een periode van 30 seconden gecontroleerd.
@@ -573,7 +573,7 @@ De trends in de RTT en het percentage mislukte controles voor een verbindings mo
 
 1. Wijzig het tijds interval om meer gegevens weer te geven.
 1. Wijzig de weer gave om bronnen, doelen of test configuraties weer te geven. 
-1. Kies een bron op basis van mislukte testen en onderzoek de vijf mislukte testen. Kies bijvoorbeeld **weer geven per** > **bronnen** en **weer geven op** > **bestemmingen** om de relevante tests in de verbindings monitor te onderzoeken.
+1. Kies een bron op basis van mislukte testen en onderzoek de vijf mislukte testen. Kies bijvoorbeeld **weer geven per**  >  **bronnen** en **weer geven op**  >  **bestemmingen** om de relevante tests in de verbindings monitor te onderzoeken.
 
    ![Scherm opname van de prestatie gegevens voor de top vijf mislukte tests](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
@@ -616,7 +616,7 @@ In verbindings monitors die zijn gemaakt vóór de ervaring van de verbindings m
 
 Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro soft. Network/networkWatchers/connectionMonitors
 
-| Gegevens | Weergavenaam | Eenheid | Aggregatietype | Beschrijving | Dimensies |
+| Gegevens | Weergavenaam | Eenheid | Type aggregatie | Beschrijving | Dimensies |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Tests mislukt | Percentage | Average | Het percentage van de connectiviteits controle tests is mislukt. | Geen dimensies |
 | AverageRoundtripMs | Gem. retour tijd (MS) | Milliseconden | Average | Gemiddelde netwerk-RTT voor connectiviteits controle tests die zijn verzonden tussen de bron en de bestemming. |             Geen dimensies |

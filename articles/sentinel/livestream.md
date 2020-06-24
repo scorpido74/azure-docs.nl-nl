@@ -9,25 +9,20 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582123"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783160"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Jacht Livestream in azure Sentinel gebruiken om bedreigingen te detecteren
-
-> [!IMPORTANT]
-> Jacht Livestream in azure Sentinel is momenteel beschikbaar als open bare preview-versie en wordt geleidelijk geïmplementeerd naar tenants.
-> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 
 Gebruik jacht Livestream om interactieve sessies te maken waarmee u nieuw gemaakte query's kunt testen wanneer er gebeurtenissen optreden, meldingen van de sessies ontvangen wanneer een overeenkomst wordt gevonden en indien nodig onderzoek starten. U kunt snel een livestream-sessie maken met behulp van een Log Analytics-query.
 
@@ -48,42 +43,42 @@ Gebruik jacht Livestream om interactieve sessies te maken waarmee u nieuw gemaak
 
 U kunt een livestream-sessie maken op basis van een bestaande zoek opdracht of een volledig nieuwe sessie maken.
 
-1. Navigeer in het Azure Portal naar **Sentinel** > **Threat Management** > -**jacht**.
+1. Navigeer in het Azure Portal naar **Sentinel**  >  **Threat Management**-  >  **jacht**.
 
-2. Een livestream-sessie maken op basis van een zoek opdracht:
+1. Een livestream-sessie maken op basis van een zoek opdracht:
     
     1. Ga op het tabblad **query's** naar de zoek opdracht die u wilt gebruiken.
-    2. Klik met de rechter muisknop op de query en selecteer **toevoegen aan Livestream**. Bijvoorbeeld:
+    1. Klik met de rechter muisknop op de query en selecteer **toevoegen aan Livestream**. Bijvoorbeeld:
     
     > [!div class="mx-imgBorder"]
     > ![een livestream-sessie maken vanuit de Azure-query voor de Sentinel-jacht](./media/livestream/livestream-from-query.png)
 
-3. Een volledig nieuwe Livestream-sessie maken: 
+1. Een volledig nieuwe Livestream-sessie maken: 
     
     1. Selecteer het tabblad **Livestream**
-    2. Selecteer **Ga naar livestream**.
+    1. Klik op **+ nieuwe Livestream**.
     
-4. In het deel venster **Livestream** :
+1. In het deel venster **Livestream** :
     
     - Als u Livestream van een query hebt gestart, controleert u de query en brengt u de gewenste wijzigingen aan.
     - Als u Livestream helemaal niet hebt gestart, maakt u de query. 
 
-5. Selecteer **afspelen** in de opdracht balk.
+1. Selecteer **afspelen** in de opdracht balk.
     
     De status balk onder de opdracht balk geeft aan of uw Livestream-sessie actief of onderbroken is. In het volgende voor beeld wordt de sessie uitgevoerd:
     
     > [!div class="mx-imgBorder"]
     > ![een livestream-sessie maken vanuit een Azure Sentinel-jacht](./media/livestream/livestream-session.png)
 
-6. Selecteer **Opslaan** vanaf de opdracht balk.
+1. Selecteer **Opslaan** vanaf de opdracht balk.
     
     Tenzij u **onderbreken**selecteert, blijft de sessie actief totdat u bent afgemeld bij de Azure Portal.
 
 ## <a name="view-your-livestream-sessions"></a>Uw Livestream-sessies weer geven
 
-1. Ga in het Azure Portal naar de**Livestream** -tabblad voor **Sentinel** > **Threat Management** > -**jacht** > .
+1. Ga in het Azure Portal naar de Livestream-tabblad voor **Sentinel**  >  **Threat Management**-  >  **jacht**  >  **Livestream** .
 
-2. Selecteer de Livestream-sessie die u wilt weer geven of bewerken. Bijvoorbeeld:
+1. Selecteer de Livestream-sessie die u wilt weer geven of bewerken. Bijvoorbeeld:
     
     > [!div class="mx-imgBorder"]
     > ![een livestream-sessie maken vanuit de Azure-query voor de Sentinel-jacht](./media/livestream/livestream-tab.png)
@@ -109,7 +104,7 @@ Met deze actie wordt de wizard voor het maken van regels geopend. deze wordt voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u de jacht Livestream in azure Sentinel kunt gebruiken. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
+In dit artikel hebt u geleerd hoe u de jacht Livestream in azure Sentinel kunt gebruiken. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
 
 - [Proactief zoeken naar bedreigingen](hunting.md)
 - [Notitie blokken gebruiken voor het uitvoeren van geautomatiseerde jacht-campagnes](notebooks.md)

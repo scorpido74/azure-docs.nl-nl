@@ -3,33 +3,38 @@ title: Een Windows-VM met Azure Image Builder maken (preview)
 description: Een Windows-VM maken met de Azure Image Builder.
 author: cynthn
 ms.author: cynthn
-ms.date: 07/31/2019
+ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 269b2f4674f2c99fc438c1a7be65e5660ca58d08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869497"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119185"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Voor beeld: een Windows-VM maken met Azure Image Builder
 
 In dit artikel wordt uitgelegd hoe u een aangepaste installatie kopie van Windows kunt maken met behulp van de opbouw functie voor installatie kopieën van Azure VM. In het voor beeld in dit artikel worden [aanpassingen](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) gebruikt voor het aanpassen van de installatie kopie:
 - Power shell (ScriptUri): down load en voer een [Power shell-script](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)uit.
 - Windows opnieuw starten: Hiermee wordt de virtuele machine opnieuw opgestart.
-- Power shell (inline)-een specifieke opdracht uitvoeren. In dit voor beeld maakt het een map op de VM met `mkdir c:\\buildActions`behulp van.
-- Bestand: Kopieer een bestand van GitHub naar de virtuele machine. In dit voor [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) beeld wordt `c:\buildArtifacts\index.html` index.MD naar op de VM gekopieerd.
+- Power shell (inline)-een specifieke opdracht uitvoeren. In dit voor beeld maakt het een map op de VM met behulp van `mkdir c:\\buildActions` .
+- Bestand: Kopieer een bestand van GitHub naar de virtuele machine. In dit voor beeld wordt [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) naar `c:\buildArtifacts\index.html` op de VM gekopieerd.
+- buildTimeoutInMinutes: Verhoog een build-tijd zodat er meer builds kunnen worden uitgevoerd. de standaard waarde is 240 minuten en u kunt een buildtijd verhogen zodat er meer builds meer worden uitgevoerd.
+- vmProfile: een vmSize en netwerk eigenschappen opgeven
+- osDiskSizeGB: u kunt de grootte van de installatie kopie verg Roten
+- identiteit: een identiteit bieden voor Azure Image Builder die tijdens de build moet worden gebruikt
 
-U kunt ook een `buildTimeoutInMinutes`opgeven. De standaard waarde is 240 minuten en u kunt een build-tijd verg Roten zodat er meer builds meer worden uitgevoerd.
 
-Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateWin. json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+U kunt ook een opgeven `buildTimeoutInMinutes` . De standaard waarde is 240 minuten en u kunt een build-tijd verg Roten zodat er meer builds meer worden uitgevoerd.
+
+Er wordt een voor beeld van een JSON-sjabloon gebruikt voor het configureren van de installatie kopie. Het JSON-bestand dat we gebruiken, is hier: [helloImageTemplateWin.jsop](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
 > Azure Image Builder is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 
 ## <a name="register-the-features"></a>De functies registreren
@@ -50,7 +55,8 @@ Controleer uw registratie.
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -58,9 +64,11 @@ Als ze niet zijn geregistreerd, voert u de volgende handelingen uit:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
+
 
 ## <a name="set-variables"></a>Variabelen instellen
 
@@ -80,7 +88,7 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id`.
+Maak een variabele voor uw abonnements-ID. U kunt dit doen met `az account show | grep id` .
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -93,18 +101,41 @@ Deze resource groep wordt gebruikt voor het opslaan van het sjabloon artefact va
 az group create -n $imageResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>Machtigingen voor de resource groep instellen
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Een door de gebruiker toegewezen identiteit maken en machtigingen instellen voor de resource groep
+De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) voor het injecteren van de installatie kopie in de resource groep. In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
 
-Geef de machtiging Inzender om de afbeelding in de resource groep te maken. Als dit niet het geval is, mislukt het maken van de installatie kopie. 
+## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Door de gebruiker toegewezen beheerde identiteit maken en machtigingen verlenen 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $idenityName
 
-De `--assignee` waarde is de app-registratie-id voor de Image Builder-service. 
+# get identity id
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
 
-```azurecli-interactive
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# download preconfigured role definition example
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$imageResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
+
 
 
 ## <a name="download-the-image-configuration-template-example"></a>Het voor beeld van een installatie kopie configuratie sjabloon downloaden
@@ -119,18 +150,19 @@ sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateWin.json
 sed -i -e "s/<region>/$location/g" helloImageTemplateWin.json
 sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateWin.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateWin.json
 
 ```
 
-U kunt dit voor beeld wijzigen in de Terminal met een tekst editor zoals `vi`.
+U kunt dit voor beeld wijzigen in de Terminal met een tekst editor zoals `vi` .
 
 ```azurecli-interactive
-vi helloImageTemplateLinux.json
+vi helloImageTemplateWin.json
 ```
 
 > [!NOTE]
-> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt deze `latest`niet gebruiken.
-> Als u de resource groep waaraan de afbeelding is gedistribueerd toevoegt of wijzigt, moet u de [machtigingen instellen](#set-permissions-on-the-resource-group) voor de resource groep.
+> Voor de bron installatie kopie moet u altijd [een versie opgeven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure). u kunt deze niet gebruiken `latest` .
+> Als u de resource groep waaraan de afbeelding is gedistribueerd toevoegt of wijzigt, moet u de [machtigingen instellen](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group) voor de resource groep.
  
 ## <a name="create-the-image"></a>De installatiekopie maken
 
@@ -145,7 +177,7 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Als u klaar bent, wordt er een bericht weer gegeven dat de console is voltooid en `Image Builder Configuration Template` maakt u `$imageResourceGroup`een in de. Als u verborgen typen weer geven inschakelt, ziet u deze resource in de resource groep in de Azure Portal.
+Als u klaar bent, wordt er een bericht weer gegeven dat de console is voltooid en maakt u een `Image Builder Configuration Template` in de `$imageResourceGroup` . Als u verborgen typen weer geven inschakelt, ziet u deze resource in de resource groep in de Azure Portal.
 
 Op de achtergrond maakt de opbouw functie voor installatie kopieën ook een staging-resource groep in uw abonnement. Deze resource groep wordt gebruikt voor het bouwen van de installatie kopie. Deze heeft de volgende indeling:`IT_<DestinationResourceGroup>_<TemplateName>`
 
@@ -181,7 +213,7 @@ Als er fouten optreden, raadpleegt u deze [probleemoplossings](https://github.co
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak de virtuele machine met behulp van de installatie kopie die u hebt gemaakt. Vervang * \<wachtwoord>* door uw eigen wacht woord voor `aibuser` de virtuele machine.
+Maak de virtuele machine met behulp van de installatie kopie die u hebt gemaakt. Vervang door *\<password>* uw eigen wacht woord voor de `aibuser` op de virtuele machine.
 
 ```azurecli-interactive
 az vm create \
@@ -216,6 +248,18 @@ az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
     -n helloImageTemplateWin01
+```
+
+### <a name="delete-the-role-assignment-role-definition-and-user-identity"></a>Verwijder de roltoewijzing, roldefinitie en gebruikers identiteit.
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
 ### <a name="delete-the-image-resource-group"></a>De resource groep voor de installatie kopie verwijderen

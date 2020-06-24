@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fdf298357370415c1b3af95dd9ed22ad8539786
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278127"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125477"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET
 
@@ -31,7 +31,7 @@ Dit artikel richt zich voornamelijk op de op klassen gebaseerde syntaxis, aangez
  
 ## <a name="defining-entity-classes"></a>Entiteits klassen definiëren
 
-Het volgende voor beeld is een implementatie van `Counter` een entiteit die één waarde van het type integer opslaat, en vier bewerkingen `Add`, `Reset`, `Get`, en `Delete`.
+Het volgende voor beeld is een implementatie van een `Counter` entiteit die één waarde van het type integer opslaat, en vier bewerkingen `Add` , `Reset` , `Get` , en `Delete` .
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -67,10 +67,10 @@ public class Counter
 }
 ```
 
-De `Run` functie bevat de standaard die is vereist voor het gebruik van de op klassen gebaseerde syntaxis. Dit moet een *statische* Azure-functie zijn. Deze wordt eenmaal uitgevoerd voor elk bewerkings bericht dat door de entiteit wordt verwerkt. Wanneer `DispatchAsync<T>` wordt aangeroepen en de entiteit nog niet in het geheugen is, wordt er een object van `T` type gemaakt en worden de bijbehorende velden gevuld van de laatste persistente JSON die in de opslag is gevonden (indien van toepassing). Vervolgens wordt de-methode aangeroepen met de overeenkomende naam.
+De `Run` functie bevat de standaard die is vereist voor het gebruik van de op klassen gebaseerde syntaxis. Dit moet een *statische* Azure-functie zijn. Deze wordt eenmaal uitgevoerd voor elk bewerkings bericht dat door de entiteit wordt verwerkt. Wanneer `DispatchAsync<T>` wordt aangeroepen en de entiteit nog niet in het geheugen is, wordt er een object van type gemaakt `T` en worden de bijbehorende velden gevuld van de laatste persistente JSON die in de opslag is gevonden (indien van toepassing). Vervolgens wordt de-methode aangeroepen met de overeenkomende naam.
 
 > [!NOTE]
-> De status van een entiteit op basis van een klasse wordt **impliciet gemaakt** voordat de entiteit een bewerking verwerkt en kan **expliciet worden verwijderd** in een bewerking door aan `Entity.Current.DeleteState()`te roepen.
+> De status van een entiteit op basis van een klasse wordt **impliciet gemaakt** voordat de entiteit een bewerking verwerkt en kan **expliciet worden verwijderd** in een bewerking door aan te roepen `Entity.Current.DeleteState()` .
 
 ### <a name="class-requirements"></a>Klasse-vereisten
  
@@ -82,7 +82,7 @@ Entiteits klassen zijn POCOs (gewone, verouderde CLR-objecten) waarvoor geen spe
 Daarnaast moet de methode die is bedoeld om te worden aangeroepen als een bewerking, voldoen aan aanvullende vereisten:
 
 - Een bewerking mag Maxi maal één argument hebben en mag geen Overloads of algemene type argumenten hebben.
-- Een bewerking die zou moeten worden aangeroepen vanuit een indeling met behulp van een `Task` interface `Task<T>`, moet retour neren of.
+- Een bewerking die zou moeten worden aangeroepen vanuit een indeling met behulp van een interface, moet retour neren `Task` of `Task<T>` .
 - Argumenten en retour waarden moeten serialiseerbare waarden of objecten zijn.
 
 ### <a name="what-can-operations-do"></a>Wat kunnen bewerkingen doen?
@@ -103,9 +103,9 @@ We kunnen de entiteit teller bijvoorbeeld zodanig wijzigen dat een indeling word
 ```csharp
     public void Add(int amount) 
     {
-        if (this.Value < 100 && this.Value + amount > 100)
+        if (this.Value < 100 && this.Value + amount >= 100)
         {
-            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId)
+            Entity.Current.StartNewOrchestration("MilestoneReached", Entity.Current.EntityId);
         }
         this.Value += amount;      
     }
@@ -153,7 +153,7 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> Het object dat wordt `ReadEntityStateAsync` geretourneerd door, is alleen een lokale kopie, dat wil zeggen een moment opname van de entiteits status van een eerder tijdstip. Dit kan met name verlopen en het wijzigen van dit object heeft geen invloed op de werkelijke entiteit. 
+> Het object `ReadEntityStateAsync` dat wordt geretourneerd door, is alleen een lokale kopie, dat wil zeggen een moment opname van de entiteits status van een eerder tijdstip. Dit kan met name verlopen en het wijzigen van dit object heeft geen invloed op de werkelijke entiteit. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity"></a>Voor beeld: Orchestration-eerste signalen en vervolgens entiteit aanroepen
 
@@ -203,7 +203,7 @@ Naast het leveren van type controle zijn interfaces handig voor een betere schei
 
 ### <a name="example-client-signals-entity-through-interface"></a>Voor beeld: client signaleert entiteit via interface
 
-Client code kan worden `SignalEntityAsync<TEntityInterface>` gebruikt om signalen te verzenden naar entiteiten `TEntityInterface`die implementeren. Bijvoorbeeld:
+Client code kan `SignalEntityAsync<TEntityInterface>` worden gebruikt om signalen te verzenden naar entiteiten die implementeren `TEntityInterface` . Bijvoorbeeld:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -218,15 +218,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-In dit voor beeld is `proxy` de para meter een dynamisch gegenereerd exemplaar `ICounter`van, dat intern de aanroep naar `Delete` een signaal vertaalt.
+In dit voor beeld `proxy` is de para meter een dynamisch gegenereerd exemplaar van `ICounter` , dat intern de aanroep naar een signaal vertaalt `Delete` .
 
 > [!NOTE]
-> De `SignalEntityAsync` api's kunnen alleen worden gebruikt voor eenrichtings bewerkingen. Zelfs als een bewerking wordt `Task<T>`geretourneerd, is de waarde `T` van de para meter altijd Null `default`of, niet het werkelijke resultaat.
-Het is bijvoorbeeld niet zinvol de `Get` bewerking aan te geven, omdat er geen waarde wordt geretourneerd. In plaats daarvan kunnen clients gebruiken `ReadStateAsync` om rechtstreeks toegang te krijgen tot de status van het item, of kan een Orchestrator- `Get` functie worden gestart die de bewerking aanroept. 
+> De `SignalEntityAsync` api's kunnen alleen worden gebruikt voor eenrichtings bewerkingen. Zelfs als een bewerking wordt geretourneerd `Task<T>` , is de waarde van de `T` para meter altijd Null of `default` , niet het werkelijke resultaat.
+Het is bijvoorbeeld niet zinvol de bewerking aan te geven `Get` , omdat er geen waarde wordt geretourneerd. In plaats daarvan kunnen clients gebruiken `ReadStateAsync` om rechtstreeks toegang te krijgen tot de status van het item, of kan een Orchestrator-functie worden gestart die de bewerking aanroept `Get` . 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Voor beeld: Orchestration-eerste signalen en vervolgens entiteit aanroepen via proxy
 
-Om een entiteit vanuit een indeling aan te roepen of te Signa `CreateEntityProxy` leren, kan worden gebruikt, samen met het interface type, om een proxy voor de entiteit te genereren. Deze proxy kan vervolgens worden gebruikt om bewerkingen uit te voeren of te Signa leren:
+Om een entiteit vanuit een indeling aan te roepen of te Signa leren, `CreateEntityProxy` kan worden gebruikt, samen met het interface type, om een proxy voor de entiteit te genereren. Deze proxy kan vervolgens worden gebruikt om bewerkingen uit te voeren of te Signa leren:
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -246,7 +246,7 @@ public static async Task<int> Run(
 }
 ```
 
-Impliciet, alle bewerkingen die worden geretourneerd `void` , worden gesignaleerd en alle bewerkingen die `Task` worden `Task<T>` geretourneerd of aangeroepen. Eén kan dit standaard gedrag wijzigen en signaal bewerkingen, zelfs als ze een taak retour neren met behulp van de `SignalEntity<IInterfaceType>` methode expliciet.
+Impliciet, alle bewerkingen die worden geretourneerd `void` , worden gesignaleerd en alle bewerkingen die `Task` worden geretourneerd of `Task<T>` aangeroepen. Eén kan dit standaard gedrag wijzigen en signaal bewerkingen, zelfs als ze een taak retour neren met behulp van de `SignalEntity<IInterfaceType>` methode expliciet.
 
 ### <a name="shorter-option-for-specifying-the-target"></a>Kortere optie voor het opgeven van het doel
 
@@ -257,7 +257,7 @@ context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-Als alleen de entiteits sleutel is opgegeven en tijdens runtime geen unieke implementatie kan worden gevonden `InvalidOperationException` , wordt het gegenereerd. 
+Als alleen de entiteits sleutel is opgegeven en tijdens runtime geen unieke implementatie kan worden gevonden, `InvalidOperationException` wordt het gegenereerd. 
 
 ### <a name="restrictions-on-entity-interfaces"></a>Beperkingen voor entiteits interfaces
 
@@ -267,12 +267,12 @@ Daarnaast worden enkele extra regels afgedwongen:
 * Entiteits interfaces moeten alleen methoden definiëren.
 * Entiteits interfaces mogen geen generieke para meters bevatten.
 * De methoden van de entity-interface mogen niet meer dan één para meter hebben.
-* De methoden van de entity `void`- `Task`interface moeten retour neren, of`Task<T>` 
+* De methoden van de entity-interface moeten retour neren `void` , `Task` of`Task<T>` 
 
-Als een van deze regels wordt geschonden, wordt tijdens `InvalidOperationException` runtime een gegenereerd wanneer de interface wordt gebruikt als een type argument voor `SignalEntity` of. `CreateProxy` In het uitzonderings bericht wordt uitgelegd welke regel is verbroken.
+Als een van deze regels wordt geschonden, wordt tijdens `InvalidOperationException` runtime een gegenereerd wanneer de interface wordt gebruikt als een type argument voor `SignalEntity` of `CreateProxy` . In het uitzonderings bericht wordt uitgelegd welke regel is verbroken.
 
 > [!NOTE]
-> Interface methoden die `void` worden geretourneerd, kunnen alleen worden gesignaleerd (eenrichtings), niet aangeroepen (twee richtings). Interface methoden die `Task` worden `Task<T>` geretourneerd of kunnen worden aangeroepen of gedeponeerd zijn. Als deze wordt aangeroepen, retour neren ze het resultaat van de bewerking of genereren ze uitzonde ringen die door de bewerking zijn gegenereerd. Als ze echter worden geresulteerd, retour neren ze niet het werkelijke resultaat of de uitzonde ring van de bewerking, maar alleen de standaard waarde.
+> Interface methoden die `void` worden geretourneerd, kunnen alleen worden gesignaleerd (eenrichtings), niet aangeroepen (twee richtings). Interface methoden die `Task` worden geretourneerd of `Task<T>` kunnen worden aangeroepen of gedeponeerd zijn. Als deze wordt aangeroepen, retour neren ze het resultaat van de bewerking of genereren ze uitzonde ringen die door de bewerking zijn gegenereerd. Als ze echter worden geresulteerd, retour neren ze niet het werkelijke resultaat of de uitzonde ring van de bewerking, maar alleen de standaard waarde.
 
 ## <a name="entity-serialization"></a>Serialisatie van entiteit
 
@@ -310,10 +310,10 @@ public class User
 ### <a name="serialization-attributes"></a>Serialisatie kenmerken
 
 In het bovenstaande voor beeld hebben we gekozen om verschillende kenmerken op te nemen om de onderliggende serialisatie meer zichtbaar te maken:
-- We nemen aantekeningen aan de klasse `[JsonObject(MemberSerialization.OptIn)]` met om ons eraan te herinneren dat de klasse serialiseerbaar moet zijn en om alleen leden te blijven die expliciet zijn GEMARKEERD als JSON-eigenschappen.
+- We nemen aantekeningen aan de klasse met `[JsonObject(MemberSerialization.OptIn)]` om ons eraan te herinneren dat de klasse serialiseerbaar moet zijn en om alleen leden te blijven die expliciet zijn gemarkeerd als JSON-eigenschappen.
 -  We geven aantekeningen aan de velden die moeten worden bewaard `[JsonProperty("name")]` om eraan te herinneren dat een veld deel uitmaakt van de persistente entiteits status en om de naam van de eigenschap voor de JSON-weer gave te specificeren.
 
-Deze kenmerken zijn echter niet vereist. andere conventies of kenmerken zijn toegestaan zolang ze met Json.NET werken. U kunt bijvoorbeeld kenmerken gebruiken `[DataContract]` of helemaal geen kenmerken:
+Deze kenmerken zijn echter niet vereist. andere conventies of kenmerken zijn toegestaan zolang ze met Json.NET werken. U kunt bijvoorbeeld `[DataContract]` kenmerken gebruiken of helemaal geen kenmerken:
 
 ```csharp
 [DataContract]
@@ -331,11 +331,11 @@ public class Counter
 }
 ```
 
-De naam van de klasse wordt standaard *niet* opgeslagen als onderdeel van de JSON-weer gave: dat wil zeggen dat de `TypeNameHandling.None` standaard instelling wordt gebruikt. Dit standaard gedrag kan worden genegeerd met `JsonObject` of `JsonProperty` -kenmerken.
+De naam van de klasse wordt standaard *niet* opgeslagen als onderdeel van de JSON-weer gave: dat wil zeggen dat de `TypeNameHandling.None` standaard instelling wordt gebruikt. Dit standaard gedrag kan worden genegeerd met `JsonObject` of- `JsonProperty` kenmerken.
 
 ### <a name="making-changes-to-class-definitions"></a>Wijzigingen aanbrengen in klassen definities
 
-Let op wanneer u wijzigingen aanbrengt in een klassen definitie nadat een toepassing is uitgevoerd, omdat het opgeslagen JSON-object mogelijk niet meer overeenkomt met de nieuwe klassedefinitie. Het is echter vaak mogelijk om goed te kunnen omgaan met veranderende gegevens indelingen, zolang het deserialisatie proces dat wordt gebruikt door `JsonConvert.PopulateObject`wordt begrepen.
+Let op wanneer u wijzigingen aanbrengt in een klassen definitie nadat een toepassing is uitgevoerd, omdat het opgeslagen JSON-object mogelijk niet meer overeenkomt met de nieuwe klassedefinitie. Het is echter vaak mogelijk om goed te kunnen omgaan met veranderende gegevens indelingen, zolang het deserialisatie proces dat wordt gebruikt door wordt begrepen `JsonConvert.PopulateObject` .
 
 Hier volgen enkele voor beelden van wijzigingen en hun effect:
 
@@ -345,7 +345,7 @@ Hier volgen enkele voor beelden van wijzigingen en hun effect:
 1. Als het type van een eigenschap wordt gewijzigd zodat deze niet meer kan worden gedeserialiseerd van de opgeslagen JSON, wordt een uitzonde ring gegenereerd.
 1. Als het type van een eigenschap wordt gewijzigd, maar het kan nog steeds worden gedeserialiseerd van de opgeslagen JSON, wordt dit gedaan.
 
-Er zijn veel opties beschikbaar voor het aanpassen van het gedrag van Json.NET. Als u bijvoorbeeld een uitzonde ring wilt afdwingen als de opgeslagen JSON een veld bevat dat niet aanwezig is in de-klasse `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`, geeft u het kenmerk op. Het is ook mogelijk om aangepaste code te schrijven voor deserialisatie, waardoor JSON kan worden gelezen die in wille keurige indelingen is opgeslagen.
+Er zijn veel opties beschikbaar voor het aanpassen van het gedrag van Json.NET. Als u bijvoorbeeld een uitzonde ring wilt afdwingen als de opgeslagen JSON een veld bevat dat niet aanwezig is in de-klasse, geeft u het kenmerk op `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)` . Het is ook mogelijk om aangepaste code te schrijven voor deserialisatie, waardoor JSON kan worden gelezen die in wille keurige indelingen is opgeslagen.
 
 ## <a name="entity-construction"></a>Entiteits constructie
 
@@ -353,7 +353,7 @@ Soms willen we meer controle uitoefenen over hoe entiteits objecten worden samen
 
 ### <a name="custom-initialization-on-first-access"></a>Aangepaste initialisatie bij eerste toegang
 
-Af en toe moeten we enige speciale initialisatie uitvoeren voordat een bewerking wordt verzonden naar een entiteit die nooit is geopend of die is verwijderd. Als u dit gedrag wilt opgeven, kunt u een voorwaardelijke actie `DispatchAsync`toevoegen vóór de:
+Af en toe moeten we enige speciale initialisatie uitvoeren voordat een bewerking wordt verzonden naar een entiteit die nooit is geopend of die is verwijderd. Als u dit gedrag wilt opgeven, kunt u een voorwaardelijke actie toevoegen vóór de `DispatchAsync` :
 
 ```csharp
 [FunctionName(nameof(Counter))]
@@ -369,9 +369,9 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="bindings-in-entity-classes"></a>Bindingen in entiteits klassen
 
-In tegens telling tot reguliere functies hebben entity class-methoden geen directe toegang tot invoer-en uitvoer bindingen. In plaats daarvan moeten bindings gegevens worden vastgelegd in de declaratie van de invoer punt functie en vervolgens `DispatchAsync<T>` worden door gegeven aan de-methode. Objecten die worden door `DispatchAsync<T>` gegeven aan, worden automatisch door gegeven aan de constructor van de entiteits klasse als een argument.
+In tegens telling tot reguliere functies hebben entity class-methoden geen directe toegang tot invoer-en uitvoer bindingen. In plaats daarvan moeten bindings gegevens worden vastgelegd in de declaratie van de invoer punt functie en vervolgens worden door gegeven aan de- `DispatchAsync<T>` methode. Objecten die worden door gegeven aan `DispatchAsync<T>` , worden automatisch door gegeven aan de constructor van de entiteits klasse als een argument.
 
-In het volgende voor beeld ziet `CloudBlobContainer` u hoe een verwijzing van de [BLOB-invoer binding](../functions-bindings-storage-blob-input.md) beschikbaar kan worden gemaakt voor een entiteit op basis van klasse.
+In het volgende voor beeld ziet u hoe een `CloudBlobContainer` verwijzing van de [BLOB-invoer binding](../functions-bindings-storage-blob-input.md) beschikbaar kan worden gemaakt voor een entiteit op basis van klasse.
 
 ```csharp
 public class BlobBackedEntity
@@ -402,7 +402,7 @@ Zie de documentatie voor [Azure functions triggers en bindingen](../functions-tr
 
 ### <a name="dependency-injection-in-entity-classes"></a>Afhankelijkheids injectie in entiteits klassen
 
-Entiteits klassen ondersteunen [Azure functions afhankelijkheids injectie](../functions-dotnet-dependency-injection.md). In het volgende voor beeld ziet u hoe u `IHttpClientFactory` een service registreert in een entiteit op basis van een klasse.
+Entiteits klassen ondersteunen [Azure functions afhankelijkheids injectie](../functions-dotnet-dependency-injection.md). In het volgende voor beeld ziet u hoe u een service registreert `IHttpClientFactory` in een entiteit op basis van een klasse.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -450,7 +450,7 @@ public class HttpEntity
 > Als u problemen met serialisatie wilt voor komen, moet u ervoor zorgen dat velden die bedoeld zijn voor het opslaan van geïnjecteerde waarden uit de serialisatie uitsluiten.
 
 > [!NOTE]
-> In tegens telling tot het gebruik van constructor-injecties in reguliere .NET-Azure Functions, *moeten* de toegangs punt methode functions worden `static`gedeclareerd voor op klassen gebaseerde entiteiten. Het declareren van een niet-statisch functie-ingangs punt kan conflicten veroorzaken tussen de normale Azure Functions voor object initialisatie en de initialisatie functie voor het object van duurzame entiteiten.
+> In tegens telling tot het gebruik van constructor-injecties in reguliere .NET-Azure Functions, *moeten* de toegangs punt methode functions worden gedeclareerd voor op klassen gebaseerde entiteiten `static` . Het declareren van een niet-statisch functie-ingangs punt kan conflicten veroorzaken tussen de normale Azure Functions voor object initialisatie en de initialisatie functie voor het object van duurzame entiteiten.
 
 ## <a name="function-based-syntax"></a>Syntaxis op basis van functies
 
@@ -482,7 +482,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="the-entity-context-object"></a>Het context object entiteit
 
-U kunt toegang krijgen tot entiteit-specifieke functionaliteit via een context object `IDurableEntityContext`van het type. Dit context object is beschikbaar als een para meter voor de functie entity en via de eigenschap `Entity.Current`async-local.
+U kunt toegang krijgen tot entiteit-specifieke functionaliteit via een context object van het type `IDurableEntityContext` . Dit context object is beschikbaar als een para meter voor de functie entity en via de eigenschap async-Local `Entity.Current` .
 
 De volgende leden bieden informatie over de huidige bewerking en kunnen we een retour waarde opgeven. 
 
@@ -500,7 +500,7 @@ De volgende leden beheren de status van de entiteit (maken, lezen, bijwerken, ve
 * `SetState(arg)`: Hiermee wordt de status van de entiteit gemaakt of bijgewerkt.
 * `DeleteState()`: Hiermee verwijdert u de status van de entiteit, als deze bestaat. 
 
-Als de status geretourneerd door `GetState` een object is, kan deze rechtstreeks worden gewijzigd door de toepassings code. Het is niet nodig om aan `SetState` het einde aan te roepen (maar ook geen schade). Als `GetState<TState>` wordt meerdere keren aangeroepen, moet hetzelfde type worden gebruikt.
+Als de status geretourneerd door `GetState` een object is, kan deze rechtstreeks worden gewijzigd door de toepassings code. Het is niet nodig om `SetState` aan het einde aan te roepen (maar ook geen schade). Als `GetState<TState>` wordt meerdere keren aangeroepen, moet hetzelfde type worden gebruikt.
 
 Ten slotte worden de volgende leden gebruikt om andere entiteiten te Signa leren, of om nieuwe integraties te starten:
 

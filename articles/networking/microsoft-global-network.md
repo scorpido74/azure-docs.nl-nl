@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982799"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125818"
 ---
 # <a name="microsoft-global-network"></a>Wereldwijd Microsoft-netwerk
 
@@ -38,7 +38,7 @@ Ongeacht of u verbinding maakt tussen Londen en Tokyo of van Washington DC naar 
 
 Als een gebruiker in Londen bijvoorbeeld probeert toegang te krijgen tot een service in Tokyo, voert het Internet verkeer een van onze randen in Londen in, gaat u naar micro soft WAN via Frank rijk, onze trans-Arabië-paden tussen Europa en India en vervolgens naar Japan waar de service wordt gehost. Antwoord verkeer is symmetrisch. Dit wordt soms aangeduid als ' [koude-aardappel routering](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing) ', wat betekent dat het verkeer zo lang mogelijk op het micro soft-netwerk blijft voordat we het hand matig uitvallen.  
   
-Dat betekent dat alle verkeer als u gebruikmaakt van micro soft-Services? Ja, elk verkeer tussen data centers, binnen Microsoft Azure of tussen micro soft-Services, zoals Virtual Machines, Office 365, XBox, SQL Db's, opslag en virtuele netwerken, worden gerouteerd binnen het wereld wijde netwerk en nooit via het open bare Internet, om optimale prestaties en integriteit te garanderen.  
+Dat betekent dat alle verkeer als u gebruikmaakt van micro soft-Services? Ja, elk verkeer tussen data centers binnen Microsoft Azure of tussen micro soft-Services, zoals Virtual Machines, Microsoft 365, XBox, SQL Db's, opslag en virtuele netwerken, worden gerouteerd binnen het wereld wijde netwerk en nooit via het open bare Internet, om optimale prestaties en integriteit te garanderen.  
  
 Grote investeringen in de glasvezel capaciteit en diversiteit in de verschillende metro-, terrestrische en onderzeese-paden zijn van cruciaal belang om het consistente en hoge service niveau te hand haven, terwijl de extreme groei van onze Cloud en onlineservices wordt gebrand. Recente toevoegingen aan ons wereld wijde netwerk zijn onze [Marea](https://www.submarinecablemap.com/#/submarine-cable/marea) onderzeese-kabel, het eerste open line-systeem (OLS) van de industrie over Subsea, tussen Bilbao, Spanje en Virginia-strand, Virginia, VS, evenals de [AEC-ECHO](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) tussen New York, VS en Dublin, Ierland en [New Cross Pacific (NCP)](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) tussen Tokyo, Japan en Port land, Oregon, USA. 
  

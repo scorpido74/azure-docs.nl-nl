@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858610"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736931"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Problemen met de activering van virtuele Microsoft Azure-machines oplossen
 
@@ -92,7 +92,7 @@ Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie 
 4. Controleer met behulp van Psping of er connectiviteit is met de KMS-server. Ga naar de map waarin u het gedownloade bestand Pstools.zip hebt uitgepakt en voer vervolgens het volgende uit:
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    Controleer op de tweede tot laatste regel van de uitvoer of u ziet: verzonden = 4, ontvangen = 4, verloren = 0 (0% verlies).
 

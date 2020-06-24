@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840567"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737526"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>De topologie van een virtueel Azure-netwerk weer geven
 
@@ -84,7 +84,7 @@ Het account dat u gebruikt, moet over de vereiste [machtigingen](required-rbac-p
 
 U kunt de opdrachten uitvoeren in de volgende stappen:
 - In de Azure Cloud Shell, door het **selectie vakje** in de rechter bovenhoek van elke opdracht te selecteren. De Azure Cloud Shell is een gratis interactieve shell met algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd en geconfigureerd voor gebruik met uw account.
-- Door Power shell uit te voeren vanaf uw computer. Als u Power shell vanaf uw computer uitvoert, is voor dit artikel `Az` de module Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+- Door Power shell uit te voeren vanaf uw computer. Als u Power shell vanaf uw computer uitvoert, is voor dit artikel de module Azure PowerShell vereist `Az` . Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 Het account dat u gebruikt, moet over de vereiste [machtigingen](required-rbac-permissions.md)beschikken.
 

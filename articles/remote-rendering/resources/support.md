@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 04/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8c471687579dfe30b913197c6f080a450f5f3449
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 082148ecfd4332abb42f96afcd94032d428069ce
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82107444"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782514"
 ---
 # <a name="azure-remote-rendering-support-options"></a>Ondersteunings opties voor Azure remote rendering
 
@@ -24,7 +24,7 @@ Een technische ondersteunings ticket openen binnen de Azure Portal voor de exter
 
     ![Help en ondersteuning Azure Portal](media/portal-help.png)
 
-1. Selecteer een **nieuwe ondersteunings aanvraag**.
+1. Selecteer **Nieuwe ondersteuningsaanvraag**.
 
     ![Nieuwe ondersteunings aanvraag Azure Portal](media/portal-new-request.png)
 
@@ -52,6 +52,11 @@ Op de onderkant van elk documentatie artikel kunt u een GitHub-probleem openen o
 ## <a name="provide-product-feedback"></a>Productfeedback geven
 
 Als u feedback wilt geven, deelt u een idee of suggestie voor de externe rendering van Azure of stem u af op de ideeën die anderen hebben ingediend, gaat u naar het [Feedback forum voor externe rendering van Azure](https://feedback.azure.com/forums/928696-azure-remote-rendering).
+
+
+## <a name="microsoft-qa"></a>Microsoft Q&A
+
+Voor snelle en betrouw bare antwoorden op uw technische product vragen van micro soft-technici, Azure Most Valuable Professionals (Mvp's) of onze expert Community, kunt u contact met ons opnemen op [micro soft Q&A](https://docs.microsoft.com/answers/topics/azure-remote-rendering.html), het voorkeurs doel van Azure voor ondersteuning van de community.
 
 ## <a name="next-steps"></a>Volgende stappen
 
