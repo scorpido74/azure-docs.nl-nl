@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611990"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735095"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over Windows 10 Enterprise met meerdere sessies
+# <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
 In dit artikel vindt u antwoorden op veelgestelde vragen en worden aanbevolen procedures voor Windows 10 Enter prise multi-session beschreven.
  
@@ -53,7 +53,7 @@ Windows 10 Enter prise multi-session wordt momenteel ondersteund als hybride Azu
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Waar vind ik de Windows 10 Enter prise-installatie kopie voor meerdere sessies?
 
-Windows 10 Enter prise multi-session bevindt zich in de Azure Gallery. Om het te vinden, gaat u naar de Azure Portal en zoekt u naar de release van Windows 10 Enter prise voor virtuele Bureau bladen. Voor een installatie kopie die is geïntegreerd met Office Pro Plus, gaat u naar de Azure Portal en zoekt u naar micro soft Windows 10 + Office 365 ProPlus.
+Windows 10 Enter prise multi-session bevindt zich in de Azure Gallery. Om het te vinden, gaat u naar de Azure Portal en zoekt u naar de release van Windows 10 Enter prise voor virtuele Bureau bladen. Voor een installatie kopie die is geïntegreerd met Microsoft 365-apps voor bedrijven, gaat u naar de Azure Portal en zoekt u naar **micro soft Windows 10 + Microsoft 365 apps voor bedrijven**.
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>Welke Windows 10 Enter prise-afbeelding voor meerdere sessies moet ik gebruiken?
 
@@ -92,7 +92,7 @@ U kunt de app Microsoft Store uitschakelen om ervoor te zorgen dat gebruikers ge
 De Store-app uitschakelen:
 
 1. Maak een nieuwe groepsbeleid.
-2. Selecteer **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen**.
+2. Selecteer **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**.
 3. Selecteer **Store**.
 4. Selecteer **Store-toepassing**.
 5. Selecteer **uitgeschakeld**en selecteer **OK**.

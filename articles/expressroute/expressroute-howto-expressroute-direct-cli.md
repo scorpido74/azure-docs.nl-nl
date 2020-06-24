@@ -4,15 +4,15 @@ description: Dit artikel helpt u bij het configureren van ExpressRoute direct me
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 343b63f960ccc458b1b1603f924b890366982477
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481973"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736268"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute direct configureren met behulp van de Azure CLI
 
@@ -276,7 +276,7 @@ Gebruik dit proces om een laag 1-test uit te voeren. Zorg ervoor dat elke Kruis 
    }
    ```
 
-   Gebruik dezelfde procedure om de poorten te verlagen met behulp `AdminState = "Disabled"`van.
+   Gebruik dezelfde procedure om de poorten te verlagen met behulp van `AdminState = "Disabled"` .
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Een circuit maken
 

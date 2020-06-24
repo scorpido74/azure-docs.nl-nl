@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257925"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699903"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
 
@@ -29,7 +29,7 @@ Deze zelf studie laat zien hoe u herstel na nood gevallen instelt voor on-premis
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
 - Zorg ervoor dat u bekend bent met de [architectuur en onderdelen](physical-azure-architecture.md) voor dit scenario.
 - Raadpleeg de [ondersteuningsvereisten](vmware-physical-secondary-support-matrix.md) voor alle onderdelen.
@@ -98,14 +98,14 @@ De Mobility-service moet worden geïnstalleerd op elke server die u wilt replice
 Selecteer wat u wilt repliceren en waarnaar u het wilt repliceren.
 
 1. Klik op **Recovery Services-kluizen** > kluis.
-2. Klik in het menu resource op **site Recovery** > doel**infrastructuur** > **beveiliging**voorbereiden.
-3. Selecteer **in doel van beveiliging**de optie **naar Azure** > **niet gevirtualiseerd/Overig**.
+2. Klik in het menu resource op **site Recovery**  >  **Prepare Infrastructure**  >  **doel infrastructuur beveiliging**voorbereiden.
+3. Selecteer in **doel van beveiliging**de optie **naar Azure**  >  **niet gevirtualiseerd/Overig**.
 
 ## <a name="set-up-the-source-environment"></a>De bronomgeving instellen
 
 Stel de configuratie server in, Registreer deze in de kluis en ontdek Vm's.
 
-1. Klik op **site Recovery** > **bron**voor het voorbereiden van de**infra structuur** > .
+1. Klik op **site Recovery**bron voor het voorbereiden van de  >  **infra structuur**  >  **Source**.
 2. Als u geen configuratie server hebt, klikt u op **+ Configuratie server**.
 3. Controleer in **server toevoegen**of de **Configuratie server** wordt weer gegeven bij **server type**.
 4. Down load het installatie bestand voor de Site Recovery Unified Setup.
@@ -136,13 +136,13 @@ Voer Unified Setup uit als een lokale beheerder om de configuratie server te ins
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Nadat de registratie is voltooid, wordt de configuratie server weer gegeven op de pagina **instellingen** > **servers** in de kluis.
+Nadat de registratie is voltooid, wordt de configuratie server weer gegeven op de pagina **instellingen**  >  **servers** in de kluis.
 
 ## <a name="set-up-the-target-environment"></a>De doelomgeving instellen
 
 Selecteer en controleer doelbronnen.
 
-1. Klik op **infra structuur** > voorbereiden**doel**en selecteer het Azure-abonnement dat u wilt gebruiken.
+1. Klik op **infra structuur voorbereiden**  >  **doel**en selecteer het Azure-abonnement dat u wilt gebruiken.
 2. Geef het doel implementatie model op.
 3. Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt.
 
@@ -151,7 +151,7 @@ Selecteer en controleer doelbronnen.
 
 ## <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
 
-1. Als u een nieuw replicatie beleid wilt maken, klikt u op **site Recovery infrastructuur** > **Replication Policies** > beleid voor replicatie en**beleid**voor replicatie.
+1. Als u een nieuw replicatie beleid wilt maken, klikt u op **site Recovery infrastructuur**beleid voor replicatie en beleid voor replicatie  >  **Replication Policies**  >  **+Replication Policy**.
 2. Geef in **Replicatiebeleid maken** een beleidsnaam op.
 3. Geef in **RPO-drempelwaarde** de limiet van de Recovery Point Objective (RPO) op. Met deze waarde wordt bepaald hoe vaak gegevens herstel punten worden gemaakt. Wanneer de continue replicatie deze limiet overschrijdt, wordt er een waarschuwing gegenereerd.
 4. Geef in **Bewaarperiode van het herstelpunt** op hoelang (in uren) de bewaarperiode voor elk herstelpunt is. Gerepliceerde VM’s kunnen worden hersteld naar een willekeurig punt in een tijdvenster. Voor computers die worden gerepliceerd naar Premium Storage, wordt een bewaarperiode van maximaal 24 uur ondersteund, en 72 uur voor computers die naar Standard Storage worden gerepliceerd.
@@ -169,7 +169,7 @@ Schakel replicatie in voor elke server.
 - De Mobility-service wordt door Site Recovery geïnstalleerd wanneer replicatie is ingeschakeld.
 - Wanneer u replicatie voor een server inschakelt, kan het 15 minuten of langer duren voordat de wijzigingen van kracht worden en worden weer gegeven in de portal.
 
-1. Klik op **toepassings** > **bron**repliceren.
+1. Klik op **toepassings**  >  **bron**repliceren.
 2. Selecteer in **Bron** de configuratieserver.
 3. Selecteer in **machine type**de optie **fysieke machines**.
 4. Selecteer de proces server (de configuratie server). Klik vervolgens op **OK**.
@@ -178,12 +178,12 @@ Schakel replicatie in voor elke server.
 7. Selecteer het Azure-netwerk en -subnet waarmee virtuele Azure-machines verbinding maken wanneer ze na een failover worden gemaakt.
 8. Selecteer **nu configureren voor geselecteerde machines**om de netwerk instelling toe te passen op alle machines die u voor beveiliging selecteert. Selecteer **later configureren** om het Azure-netwerk per computer te selecteren. 
 9. Op **fysieke computers**en klik op **+ fysieke machine**. Geef de naam en het IP-adres op. Selecteer het besturings systeem van de computer die u wilt repliceren. Het duurt enkele minuten voordat de servers zijn gedetecteerd en worden weer gegeven. 
-10. Selecteer in **Eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
-11. Controleer in **replicatie-instellingen** > **replicatie-instellingen configureren**of het juiste replicatie beleid is geselecteerd. 
-12. Klik op **Replicatie inschakelen**. U kunt de voortgang van de taak **beveiliging inschakelen** volgen via **instellingen** > **taken** > **site Recovery taken**. Nadat de taak **beveiliging volt ooien** is uitgevoerd, is de machine klaar voor failover.
+10. Selecteer in **Eigenschappen**  >  **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
+11. Controleer in **replicatie-instellingen**  >  **replicatie-instellingen configureren**of het juiste replicatie beleid is geselecteerd. 
+12. Klik op **Replicatie inschakelen**. U kunt de voortgang van de taak **beveiliging inschakelen** volgen via **instellingen**  >  **taken**  >  **site Recovery taken**. Nadat de taak **beveiliging volt ooien** is uitgevoerd, is de machine klaar voor failover.
 
 
-Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tijd voor ze controleren in **configuratie servers** > **laatste contact op**. Als u computers wilt toevoegen zonder te wachten op een geplande detectie tijd, markeert u de configuratie server (klik er niet op) en klikt u op **vernieuwen**.
+Als u de servers die u toevoegt wilt bewaken, kunt u de laatst gedetecteerde tijd voor ze controleren in **configuratie servers**  >  **laatste contact op**. Als u computers wilt toevoegen zonder te wachten op een geplande detectie tijd, markeert u de configuratie server (klik er niet op) en klikt u op **vernieuwen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254727"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699019"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>De Web-UI gebruiken voor het beheren van uw virtuele StorSimple-matrix
 ![proces stroom instellen](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -40,7 +40,7 @@ Er wordt een versleutelings sleutel voor service gegevens gegenereerd wanneer u 
 Als u uw versleutelings sleutel voor service gegevens verkeerd hebt gehaald en deze moet ophalen, voert u de volgende stappen uit in de lokale web-UI van het apparaat dat is geregistreerd bij uw service.
 
 #### <a name="to-get-the-service-data-encryption-key"></a>De versleutelings sleutel voor service gegevens ophalen
-1. Verbinding maken met de lokale web-UI. Ga naar **configuratie** > -**Cloud instellingen**.
+1. Verbinding maken met de lokale web-UI. Ga naar **configuratie**-  >  **Cloud instellingen**.
 2. Klik onder aan de pagina op **versleutelings sleutel voor service gegevens ophalen**. Er wordt een sleutel weer gegeven. Kopieer deze sleutel en sla deze op.
    
     ![versleutelings sleutel voor service gegevens ophalen 1](./media/storsimple-ova-web-ui-admin/image27.png)
@@ -49,7 +49,7 @@ Als u uw versleutelings sleutel voor service gegevens verkeerd hebt gehaald en d
 In sommige gevallen wanneer u het apparaat configureert via de lokale web-UI, worden er mogelijk fouten optreden. Als u dergelijke fouten wilt vaststellen en oplossen, kunt u de diagnostische tests uitvoeren.
 
 #### <a name="to-run-the-diagnostic-tests"></a>De diagnostische tests uitvoeren
-1. Ga in de lokale web-UI naar **probleemoplossings** > **testen**.
+1. Ga in de lokale web-UI naar **probleemoplossings**  >  **testen**.
    
     ![Diagnostische gegevens uitvoeren 1](./media/storsimple-ova-web-ui-admin/image29.png)
 2. Klik onder aan de pagina op **diagnostische tests uitvoeren**. Hiermee worden tests gestart om mogelijke problemen met uw netwerk, apparaat, webproxy, tijd of Cloud instellingen te diagnosticeren. Er wordt een melding weer gegeven dat er tests worden uitgevoerd op het apparaat.
@@ -61,7 +61,7 @@ In sommige gevallen wanneer u het apparaat configureert via de lokale web-UI, wo
 Een logboek pakket bestaat uit alle relevante logboeken die Microsoft Ondersteuning kunnen helpen bij het oplossen van problemen met apparaten. In deze release kan een logboek pakket worden gegenereerd via de lokale webgebruikersinterface.
 
 #### <a name="to-generate-the-log-package"></a>Het logboek pakket genereren
-1. Ga in de lokale web-UI naar**systeem logboeken**voor **probleem oplossing** > .
+1. Ga in de lokale web-UI naar **Troubleshooting**  >  **systeem logboeken**voor probleem oplossing.
    
     ![logboek pakket 1 genereren](./media/storsimple-ova-web-ui-admin/image31.png)
 2. Klik onder aan de pagina op **logboek pakket maken**. Er wordt een pakket van de systeem logboeken gemaakt. Dit kan enkele minuten duren.
@@ -80,7 +80,7 @@ Een logboek pakket bestaat uit alle relevante logboeken die Microsoft Ondersteun
 U kunt het virtuele apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. U kunt het beste de volumes of shares offline halen op de host en vervolgens het apparaat. Hierdoor is de kans op gegevens beschadiging beperkt. 
 
 #### <a name="to-shut-down-your-virtual-device"></a>Het virtuele apparaat afsluiten
-1. Ga in de lokale webinterface naar **onderhoud** > **energie-instellingen**.
+1. Ga in de lokale webinterface naar **onderhoud**  >  **energie-instellingen**.
 2. Klik onder aan de pagina op **Afsluiten**.
    
     ![apparaat afsluiten 1](./media/storsimple-ova-web-ui-admin/image36.png)
@@ -95,7 +95,7 @@ U kunt het virtuele apparaat afsluiten of opnieuw opstarten met behulp van de lo
     Het apparaat wordt nu afgesloten. Als u uw apparaat wilt starten, moet u dit doen via Hyper-V-beheer.
 
 #### <a name="to-restart-your-virtual-device"></a>Het virtuele apparaat opnieuw opstarten
-1. Ga in de lokale webinterface naar **onderhoud** > **energie-instellingen**.
+1. Ga in de lokale webinterface naar **onderhoud**  >  **energie-instellingen**.
 2. Klik onder aan de pagina op **opnieuw opstarten**.
    
     ![apparaat opnieuw opstarten](./media/storsimple-ova-web-ui-admin/image36.png)

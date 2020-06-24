@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 manager: ''
 ms.author: spelluru
-ms.date: 03/31/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7486c251784b345351669bda6f0eb2309977728
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729632"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297457"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs
 Dit artikel bevat koppelingen naar artikelen waarin wordt beschreven hoe u uw Apache Kafka-toepassingen integreert met Azure Event Hubs. 
@@ -33,7 +33,7 @@ Raadpleeg de volgende Quick starts in de **Azure-Event-hubs-for-Kafka** -opslag 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en er verbinding mee kunt maken met behulp van een voorbeeld producent en een consument die is geschreven in Java. |
 | [Node.js](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/node) | <p>In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en er verbinding mee kunt maken met behulp van een voorbeeld producent en een consument die is geschreven in het</p><p>In dit voor beeld wordt de [node-rdkafka-](https://github.com/Blizzard/node-rdkafka) bibliotheek gebruikt. </p>| 
 | [Python](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/python) | <p>In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van een voorbeeld producent en een consument die in python is geschreven.</p><p>Dit voor beeld is gebaseerd op [confluente Apache Kafka python-client](https://github.com/confluentinc/confluent-kafka-python), gewijzigd voor gebruik met Event hubs voor Kafka.</p>|
-| [OK](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go) | <p>In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van een voor beeld van een producent en een consument die in go is geschreven.</p><p>Dit voor beeld is gebaseerd op [confluente Apache Kafka Golang-client](https://github.com/confluentinc/confluent-kafka-go), gewijzigd voor gebruik met Event hubs voor Kafka.</p>| 
+| [Go](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go) | <p>In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van een voor beeld van een producent en een consument die in go is geschreven.</p><p>Dit voor beeld is gebaseerd op [confluente Apache Kafka Golang-client](https://github.com/confluentinc/confluent-kafka-go), gewijzigd voor gebruik met Event hubs voor Kafka.</p>| 
 | [Sarama Kafka go](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go-sarama-client) | In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van een voorbeeld producent en een consument die in go is geschreven met behulp van de [Sarama Kafka-client](https://github.com/Shopify/sarama) bibliotheek. |
 | [Kafka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafka-cli) | In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van de CLI die is gebundeld met de Apache Kafka-distributie.| 
 | [Kafkacat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafkacat) | kafkacat is een niet-JVM opdracht regel verbruiker en producent op basis van librdkafka, populair vanwege de snelheid en de geringe footprint. Deze Snelstartgids bevat een voor beeld van een configuratie en enkele eenvoudige voor beelden van kafkacat-opdrachten. | 
@@ -53,7 +53,7 @@ Zie de volgende zelf studies op GitHub:
 | [Verbinden](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Dit document helpt u bij het integreren van Kafka Connect met Azure Event Hubs en het implementeren van basis-FileStreamSource en FileStreamSink-connectors. Hoewel deze connectors niet bestemd zijn voor productie gebruik, demonstreren ze een end-to-end Kafka Connect-scenario waarbij Azure Event Hubs maskers als een Kafka-Broker.| 
 | [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | In dit document wordt stapsgewijs uitgelegd hoe u Filebeat en Event Hubs integreert via de Kafka-uitvoer van Filebeat. | 
 | [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | In deze zelf studie wordt uitgelegd hoe u verbinding kunt maken met Apache flink met Kafka Event Hubs zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. | 
-| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | In dit document wordt uitgelegd hoe u gepasseerde en Event Hubs kunt `out_kafka` integreren met behulp van de uitvoer-invoeg toepassing. |
+| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | In dit document wordt uitgelegd hoe u gepasseerde en Event Hubs kunt integreren met behulp `out_kafka` van de uitvoer-invoeg toepassing. |
 | [Interop](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | In deze zelf studie leert u hoe u gebeurtenissen tussen consumenten en producenten uitwisselt met behulp van verschillende protocollen. |
 | [Logstash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | Deze zelf studie begeleidt u bij het integreren van Logstash met Kafka-ingeschakeld Event Hubs met Logstash Kafka-invoeg toepassingen voor invoer/uitvoer. | 
 | [MirrorMaker](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | In deze zelf studie ziet u hoe een Event Hub-en Kafka-MirrorMaker een bestaande Kafka-pijp lijn kan integreren in azure door de Kafka-invoer stroom te spie gelen in de Event Hubs-service. |

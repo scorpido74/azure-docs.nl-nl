@@ -26,7 +26,7 @@ Azure Synapse Analytics biedt een uitgebreide bewakings ervaring in het Azure Po
 
 De volgende metrische gegevens zijn beschikbaar in de Azure Portal voor Synapse SQL. Deze metrische gegevens worden geoppereerd via [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
-| Naam meetwaarde             | Beschrijving                                                  | Aggregatietype |
+| Naam meetwaarde             | Description                                                  | Aggregatietype |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU-percentage          | CPU-gebruik in alle knoop punten voor het Data Warehouse      | Gem, min, Max    |
 | Gegevens-I/O-percentage      | IO-gebruik over alle knoop punten voor het Data Warehouse       | Gem, min, Max    |

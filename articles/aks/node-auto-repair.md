@@ -3,17 +3,17 @@ title: De knoop punten van de Azure Kubernetes-service (AKS) automatisch herstel
 description: Meer informatie over de functionaliteit voor automatisch herstel van knoop punten en hoe AKS de gebroken werk knooppunten herstelt.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 9bf9df69a0a6bfa4d9f4029278d2a146811980c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 91384461567634faabaaa1dd588d6e7ec6ece60e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80284837"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735622"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Automatische reparatie van het knoop punt Azure Kubernetes service (AKS)
 
-AKS controleert voortdurend de status van worker-knoop punten en voert automatisch herstel van de knoop punten uit als deze een slechte status hebben. In deze documentatie wordt beschreven hoe u met Azure Kubernetes service (AKS) werk knooppunten bewaakt en beschadigde werk knooppunten herstelt.  De documentatie is om AKS-Opera tors te informeren over het gedrag van de functionaliteit voor het herstellen van knoop punten. Het is ook belang rijk te weten dat het Azure-platform [onderhoud uitvoert op virtual machines][vm-updates] die problemen ondervinden. AKS en Azure werken samen om service onderbrekingen voor uw clusters te minimaliseren.
+AKS controleert voortdurend de status van worker-knoop punten en voert automatisch herstel van de knoop punten uit als deze een slechte status hebben. In dit document worden Opera tors geïnformeerd over de werking van de automatische functionaliteit voor knooppunt reparatie. Naast de reparaties van AKS, voert het Azure VM-platform [onderhoud uit op virtual machines][vm-updates] dat ook problemen ondervindt. AKS en Azure-Vm's werken samen om service onderbrekingen voor clusters te minimaliseren.
 
 > [!Important]
 > De functionaliteit voor automatisch herstellen van knoop punten wordt momenteel niet ondersteund voor Windows Server-knooppunt groepen.
@@ -23,7 +23,7 @@ AKS controleert voortdurend de status van worker-knoop punten en voert automatis
 > [!Note]
 > AKS neemt reparatie actie op knoop punten met het gebruikers account **AKS-** herstel bewerking.
 
-AKS gebruikt regels om te bepalen of een knoop punt een slechte status heeft en moet worden hersteld. AKS maakt gebruik van de volgende regels om te bepalen of automatisch herstel nodig is.
+AKS gebruikt regels om te bepalen of een knoop punt slecht is en moet worden hersteld. AKS maakt gebruik van de volgende regels om te bepalen of automatisch herstel nodig is.
 
 * Het knoop punt rapporteert de status van een **loopvlak** bij opeenvolgende controles binnen een periode van tien minuten
 * Het knoop punt rapporteert geen status binnen 10 minuten
@@ -37,16 +37,11 @@ kubectl get nodes
 ## <a name="how-automatic-repair-works"></a>Hoe werkt automatisch herstellen?
 
 > [!Note]
-> AKS neemt reparatie actie op knoop punten met het gebruikers account **AKS-** herstel bewerking.
+> AKS initieert herstel bewerkingen met het gebruikers account **AKS-** herstellen.
 
-Dit gedrag is voor **Virtual Machine Scale sets**.  Automatisch herstel neemt verschillende stappen uit om een beschadigd knoop punt te herstellen.  Als een knoop punt wordt beschouwd als een slechte status, probeert AKS verschillende herbemiddelings stappen.  De stappen worden in deze volg orde uitgevoerd:
-
-1. Nadat de container runtime gedurende tien minuten niet meer reageert, worden de mislukte runtime services opnieuw gestart op het knoop punt.
-2. Als het knoop punt niet binnen tien minuten is voltooid, wordt het knoop punt opnieuw opgestart.
-3. Als het knoop punt niet binnen 30 minuten klaar is, wordt de installatie kopie van het knoop punt hersteld.
-
-> [!Note]
-> Als meerdere knoop punten een slechte status hebben, worden ze één voor één gerepareerd
+Automatisch herstellen wordt standaard ondersteund voor clusters met het type **Virtual Machine Scale sets**van een VM-set. Als een knoop punt wordt vastgesteld dat de status niet in orde is op basis van de bovenstaande regels, wordt het knoop punt door AKS opnieuw opgestart na 10 opeenvolgende slechte minuten. Als de knoop punten niet meer in orde zijn na de eerste herstel bewerking, worden extra herstel bewerkingen door AKS engineers onderzocht.
+  
+Als er tijdens een status controle meerdere knoop punten zijn beschadigd, wordt elk knoop punt afzonderlijk hersteld voordat een andere herstel bewerking wordt gestart.
 
 ## <a name="next-steps"></a>Volgende stappen
 

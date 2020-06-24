@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d179697707b8190515e8c0e6dee2defa8881c03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65c6045378c72722f5adc2262bf7bd644e8fe387
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137719"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251832"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -23,14 +23,14 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
 * Een Azure-bestands share in dezelfde regio die u wilt implementeren Azure File Sync. Zie voor meer informatie:
     - [Beschik baarheid](storage-sync-files-planning.md#azure-file-sync-region-availability) van de regio voor Azure file sync.
     - [Maak een bestands share](storage-how-to-create-file-share.md) voor een stapsgewijze beschrijving van het maken van een bestands share.
-* Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [interoperabiliteit met Windows Server](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie over ondersteunde versies van Windows Server.
+* Ten minste één ondersteund exemplaar van Windows Server of Windows Server-cluster om te synchroniseren met Azure File Sync. Zie [overwegingen voor Windows-bestands servers](storage-sync-files-planning.md#windows-file-server-considerations)voor meer informatie over ondersteunde versies van Windows Server en aanbevolen systeem bronnen.
 * U kunt de AZ Power shell-module gebruiken met Power shell 5,1 of Power shell 6 +. U kunt de AZ Power shell-module voor Azure File Sync gebruiken op elk ondersteund systeem, met inbegrip van niet-Windows-systemen, maar de cmdlet Server registratie moet altijd worden uitgevoerd op het Windows Server-exemplaar dat u registreert (dit kan rechtstreeks of via Power shell Remoting worden uitgevoerd). In Windows Server 2012 R2 kunt u controleren of u ten minste Power shell 5,1 uitvoert. \* door te kijken naar de waarde van de eigenschap **PSVersion** van het object **$PSVersionTable** :
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    Als uw PSVersion-waarde lager is dan 5,1. \*, zoals het geval is bij de meeste nieuwe installaties van Windows Server 2012 R2, kunt u eenvoudig bijwerken door [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)te downloaden en te installeren. Het juiste pakket om te downloaden en te installeren voor Windows Server 2012 R2 is **win 8.1 andw2k12r2\*\*\*\*\*\*\*-KB-x64. MSU**. 
+    Als uw PSVersion-waarde lager is dan 5,1. \* , zoals het geval is bij de meeste nieuwe installaties van Windows Server 2012 R2, kunt u eenvoudig bijwerken door [Windows Management Framework (WMF) 5,1](https://www.microsoft.com/download/details.aspx?id=54616)te downloaden en te installeren. Het juiste pakket om te downloaden en te installeren voor Windows Server 2012 R2 is **win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64. MSU**. 
 
     Power shell 6 + kan worden gebruikt met elk ondersteund systeem en kan worden gedownload via de [github-pagina](https://github.com/PowerShell/PowerShell#get-powershell). 
 
@@ -40,7 +40,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
 * Als u hebt aangegeven dat u Power shell 5,1 wilt gebruiken, moet u ervoor zorgen dat er ten minste .NET 4.7.2 is geïnstalleerd. Meer informatie over [.NET Framework versies en afhankelijkheden](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) op uw systeem.
 
     > [!Important]  
-    > Als u .NET 4.7.2 + installeert op Windows Server Core, moet u installeren met de `quiet` vlaggen en `norestart` , anders mislukt de installatie. Als u bijvoorbeeld .NET 4,8 installeert, ziet de opdracht er als volgt uit:
+    > Als u .NET 4.7.2 + installeert op Windows Server Core, moet u installeren met de `quiet` vlaggen en, anders `norestart` mislukt de installatie. Als u bijvoorbeeld .NET 4,8 installeert, ziet de opdracht er als volgt uit:
     > ```PowerShell
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
@@ -65,7 +65,7 @@ Schakel de **Verbeterde beveiliging van Internet Explorer**uit voor elke server 
 4. Selecteer in het dialoog venster **Verbeterde beveiliging van Internet Explorer** de optie **uitschakelen** voor **beheerders** en **gebruikers**:  
     ![Het pop-upvenster Verbeterde beveiliging van Internet Explorer met de optie Uit geselecteerd](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Als u de verbeterde beveiliging van Internet Explorer wilt uitschakelen, voert u het volgende uit vanuit een Power shell-sessie met verhoogde bevoegdheid:
 
 ```powershell
@@ -108,8 +108,8 @@ Voer de volgende gegevens in in het deelvenster dat verschijnt:
 
 Wanneer u klaar bent, selecteert u **maken** om de opslag synchronisatie service te implementeren.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
-Vervang `<Az_Region>`, `<RG_Name>`en `<my_storage_sync_service>` met uw eigen waarden en gebruik vervolgens de volgende opdrachten om een opslag synchronisatie service te maken en te implementeren:
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Vervang `<Az_Region>` , `<RG_Name>` en `<my_storage_sync_service>` met uw eigen waarden en gebruik vervolgens de volgende opdrachten om een opslag synchronisatie service te maken en te implementeren:
 
 ```powershell
 $hostType = (Get-Host).Name
@@ -172,7 +172,7 @@ U wordt aangeraden het volgende te doen:
 
 Wanneer de installatie van de Azure File Sync agent is voltooid, wordt de gebruikers interface voor Server registratie automatisch geopend. U moet een opslag synchronisatie service hebben voordat u zich kunt registreren. Zie de volgende sectie voor het maken van een opslag synchronisatie service.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Voer de volgende Power shell-code uit om de juiste versie van de Azure File Sync-agent voor uw besturings systeem te downloaden en op uw systeem te installeren.
 
 > [!Important]  
@@ -229,7 +229,7 @@ Nadat u zich hebt aangemeld, wordt u gevraagd de volgende gegevens op te vragen:
 
 Nadat u de benodigde gegevens hebt geselecteerd, selecteert u **registreren** om de server registratie te volt ooien. Als deel van het registratieproces wordt u gevraagd u nogmaals aan te melden.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
@@ -256,7 +256,7 @@ Voer in het deelvenster dat verschijnt de volgende gegevens in om een synchronis
 - **Opslag account**: als u **opslag account selecteren**selecteert, wordt er een ander deel venster weer gegeven waarin u het opslag account kunt selecteren dat de Azure-bestands share heeft waarmee u wilt synchroniseren.
 - **Azure-bestands share**: de naam van de Azure-bestands share waarmee u wilt synchroniseren.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Als u de synchronisatie groep wilt maken, voert u de volgende Power shell uit. Vergeet niet door `<my-sync-group>` de gewenste naam van de synchronisatie groep te vervangen.
 
 ```powershell
@@ -264,7 +264,7 @@ $syncGroupName = "<my-sync-group>"
 $syncGroup = New-AzStorageSyncGroup -ParentObject $storageSync -Name $syncGroupName
 ```
 
-Zodra de synchronisatie groep is gemaakt, kunt u uw Cloud-eind punt maken. Vervang `<my-storage-account>` en `<my-file-share>` door de verwachte waarden.
+Zodra de synchronisatie groep is gemaakt, kunt u uw Cloud-eind punt maken. Vervang `<my-storage-account>` en door `<my-file-share>` de verwachte waarden.
 
 ```powershell
 # Get or create a storage account with desired name
@@ -320,7 +320,7 @@ Voer in het deelvenster **Servereindpunt toevoegen** de volgende gegevens in om 
 
 Selecteer **maken**om het server eindpunt toe te voegen. Uw bestanden worden nu gesynchroniseerd op de Azure-bestands share en Windows-Server. 
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Voer de volgende Power shell-opdrachten uit om het server eindpunt te maken en vervang `<your-server-endpoint-path>` en `<your-volume-free-space>` door de gewenste waarden.
 
 ```powershell

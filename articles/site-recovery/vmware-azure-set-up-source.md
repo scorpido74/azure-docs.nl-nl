@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257054"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699546"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>De bron omgeving instellen voor de replicatie van VMware naar Azure
 
@@ -31,7 +31,7 @@ In het artikel wordt ervan uitgegaan dat u al hebt:
 
 1. Selecteer de naam van de kluis in **Recovery Services-kluizen**. We gebruiken **ContosoVMVault** voor dit scenario.
 2. Selecteer in **Aan de slag** Site Recovery. Selecteer vervolgens **Infrastructuur voorbereiden**.
-3. Selecteer **on-premises**in het **beveiligings doel** > **waar uw machines zich bevinden**.
+3. **Protection goal**  >  Selecteer **on-premises**in het beveiligings doel**waar uw machines zich bevinden**.
 4. In **Waarnaartoe wilt u de machines repliceren** selecteert u **Naar Azure**.
 5. In **Zijn de machines gevirtualiseerd** selecteert **Ja, met VMware vSphere Hypervisor**. Selecteer vervolgens **OK**.
 

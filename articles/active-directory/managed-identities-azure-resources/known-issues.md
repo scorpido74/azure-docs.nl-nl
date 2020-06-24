@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: d29689b088759b73465b24d06d4341571b599782
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 971ec1fcda87a9db61147133604dd0e28cc4d102
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714046"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976163"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Veelgestelde vragen en bekende problemen met beheerde identiteiten voor Azure-resources
 
@@ -32,6 +32,24 @@ ms.locfileid: "83714046"
 
 > [!NOTE]
 > Beheerde identiteiten voor Azure-resources is de nieuwe naam voor de service die eerder de naam Managed Service Identity (MSI) had.
+
+
+### <a name="how-can-you-find-resources-that-have-a-managed-identity"></a>Hoe kunt u resources vinden die een beheerde identiteit hebben?
+
+U kunt de lijst met resources die een door het systeem toegewezen beheerde identiteit hebben, vinden met behulp van de volgende Azure CLI-opdracht: 
+
+`az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table`
+
+
+
+
+### <a name="do-managed-identities-have-a-backing-app-object"></a>Hebben beheerde identiteiten een object voor een back-uptoepassing?
+
+Nee. Beheerde identiteiten en Azure AD-app registraties zijn niet hetzelfde als in de Directory. 
+
+App-registraties hebben twee onderdelen: een toepassings object + een Service-Principal-object. Beheerde identiteiten voor Azure-resources hebben slechts een van deze onderdelen: een Service-Principal-object. 
+
+Beheerde identiteiten hebben geen toepassings object in de map, wat vaak wordt gebruikt om app-machtigingen voor MS Graph te verlenen. In plaats daarvan moeten de MS Graph-machtigingen voor beheerde identiteiten rechtstreeks aan de service-principal worden verleend.  
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Werken beheerde identiteiten voor Azure-resources met Azure Cloud Services?
 

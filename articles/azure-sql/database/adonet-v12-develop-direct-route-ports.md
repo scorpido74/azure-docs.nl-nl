@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: MightyPen
-ms.author: genemi
-ms.reviewer: sstein
-ms.date: 04/03/2019
-ms.openlocfilehash: 867db23521ea08641f538efe5279408343373336
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+author: stevestein
+ms.author: sstein
+ms.reviewer: genemi
+ms.date: 06/11/2020
+ms.openlocfilehash: 85d8d288a8b2d0f256294b0c8975afc367e6e381
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047893"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736047"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Poorten boven 1433 voor ADO.NET 4.5
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -52,7 +52,7 @@ Zorg ervoor dat de poortbereiken van 11000-11999 op uw Azure-client machine besc
 * In het bijzonder moeten poorten in het bereik vrij van andere uitgaande blok keringen zijn.
 * Op uw virtuele Azure-machine beheert de **Windows Firewall met geavanceerde beveiliging** de poort instellingen.
   
-  * U kunt de [gebruikers interface van de firewall](https://msdn.microsoft.com/library/cc646023.aspx) gebruiken om een regel toe te voegen waarvoor u het **TCP** -protocol en een poort bereik opgeeft met de syntaxis zoals **11000-11999**.
+  * U kunt de [gebruikers interface van de firewall](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access) gebruiken om een regel toe te voegen waarvoor u het **TCP** -protocol en een poort bereik opgeeft met de syntaxis zoals **11000-11999**.
 
 ## <a name="version-clarifications"></a>Versie-uitleg
 
@@ -81,6 +81,6 @@ Deze sectie verduidelijkt de monikers die verwijzen naar de product versies. Er 
 
 * Verbinding maken met Azure SQL Database V12 via omleidinghttps://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
-* [Lijst met TDS-protocol versies](https://www.freetds.org/userguide/tdshistory.htm)
+* [Lijst met TDS-protocol versies](https://www.freetds.org/)
 * [Overzicht van SQL Database ontwikkeling](develop-overview.md)
 * [Azure SQL Database firewall](firewall-configure.md)

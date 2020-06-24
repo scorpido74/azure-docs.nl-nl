@@ -480,7 +480,7 @@ Zie voor een volledig voor beeld het [voor beeld](#example)van de trigger.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `HttpTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Description|
 |---------|---------|----------------------|
 | **type** | N.v.t.| Vereist: moet worden ingesteld op `httpTrigger` . |
 | **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |

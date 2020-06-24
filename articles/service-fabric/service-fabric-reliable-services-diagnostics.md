@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282261"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699805"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunctionaliteit voor Stateful Reliable Services
 De Azure Service Fabric stateful Reliable Services StatefulServiceBase-klasse verzendt [Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -gebeurtenissen die kunnen worden gebruikt om fouten in de service op te sporen, inzicht te krijgen in hoe de runtime werkt en om te helpen bij het oplossen van problemen.
@@ -56,26 +56,26 @@ De [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.
 Een cluster met een groot aantal betrouw bare Services of betrouw bare service partities beschikt over een groot aantal instanties voor transactionele Replicator-prestatie meter items. Dit is ook het geval voor prestatie meter items voor TStore, maar wordt ook vermenigvuldigd met het aantal betrouw bare woorden lijsten en de gebruikte betrouw bare wacht rijen. De instantie namen van het prestatie meter item kunnen helpen bij het identificeren van de specifieke [partitie](service-fabric-concepts-partitioning.md), service replica en State-provider in het geval van TStore, waaraan het prestatie meter exemplaar is gekoppeld.
 
 #### <a name="service-fabric-transactional-replicator-category"></a>Categorie transactionele Replicator Service Fabric
-De namen van `Service Fabric Transactional Replicator`de tellers voor de categorie hebben de volgende indeling:
+De namen van de tellers voor de categorie `Service Fabric Transactional Replicator` hebben de volgende indeling:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks weergave wordt gegenereerd [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) via de indelings specificatie "D".
+*ServiceFabricPartitionId* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks weergave wordt gegenereerd via de [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) indelings specificatie "D".
 
 *ServiceFabricReplicaId* is de id die is gekoppeld aan een bepaalde replica van een betrouw bare service. De replica-ID is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere prestatie meter exemplaren die worden gegenereerd door dezelfde partitie. Meer informatie over replica's en hun rol in reliable Services vindt u [hier](service-fabric-concepts-replica-lifecycle.md).
 
-De naam van het volgende item exemplaar is gebruikelijk voor een teller `Service Fabric Transactional Replicator` onder de categorie:
+De naam van het volgende item exemplaar is gebruikelijk voor een teller onder de `Service Fabric Transactional Replicator` Categorie:
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571`
 
-In het vorige voor beeld `00d0126d-3e36-4d68-98da-cc4f7195d85e` is de teken reeks representatie van de service Fabric partitie-id `131652217797162571` en de replica-id.
+In het vorige voor beeld `00d0126d-3e36-4d68-98da-cc4f7195d85e` is de teken reeks representatie van de service Fabric partitie-id en `131652217797162571` de replica-id.
 
 #### <a name="service-fabric-tstore-category"></a>Service Fabric categorie TStore
-De namen van `Service Fabric TStore`de tellers voor de categorie hebben de volgende indeling:
+De namen van de tellers voor de categorie `Service Fabric TStore` hebben de volgende indeling:
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks weergave wordt gegenereerd [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) via de indelings specificatie "D".
+*ServiceFabricPartitionId* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks weergave wordt gegenereerd via de [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) indelings specificatie "D".
 
 *ServiceFabricReplicaId* is de id die is gekoppeld aan een bepaalde replica van een betrouw bare service. De replica-ID is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere prestatie meter exemplaren die worden gegenereerd door dezelfde partitie. Meer informatie over replica's en hun rol in reliable Services vindt u [hier](service-fabric-concepts-replica-lifecycle.md).
 
@@ -85,17 +85,17 @@ De namen van `Service Fabric TStore`de tellers voor de categorie hebben de volge
 
 *StateProviderName* is de naam die is gekoppeld aan een State-provider binnen een betrouw bare service. De naam van de State-provider is opgenomen in de exemplaar naam van het prestatie meter item waarmee gebruikers eenvoudig kunnen worden geïdentificeerd welke status het biedt.
 
-De naam van het volgende item exemplaar is gebruikelijk voor een teller `Service Fabric TStore` onder de categorie:
+De naam van het volgende item exemplaar is gebruikelijk voor een teller onder de `Service Fabric TStore` Categorie:
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-In het vorige voor beeld `00d0126d-3e36-4d68-98da-cc4f7195d85e` is de teken reeks representatie van de service Fabric partitie- `131652217797162571` ID, de replica- `142652217797162571` ID, de status provider-id `1337` en de instantie van het prestatie meter item onderscheid. `urn:MyReliableDictionary/dataStore`is de naam van de State-provider die gegevens opslaat voor de verzameling `urn:MyReliableDictionary`met de naam.
+In het vorige voor beeld `00d0126d-3e36-4d68-98da-cc4f7195d85e` is de teken reeks representatie van de service Fabric partitie-id, `131652217797162571` de replica-id, `142652217797162571` de status provider-id en `1337` de instantie van het prestatie meter item onderscheid. `urn:MyReliableDictionary/dataStore`is de naam van de State-provider die gegevens opslaat voor de verzameling met de naam `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>Prestatie meter items voor transactionele Replicator
 
 De Reliable Services runtime verzendt de volgende gebeurtenissen onder de `Service Fabric Transactional Replicator` categorie
 
- Naam van het meteritem | Beschrijving |
+ Naam van het meteritem | Description |
 | --- | --- |
 | Begin trans actie bewerkingen per seconde | Het aantal nieuwe schrijf transacties dat per seconde wordt gemaakt.|
 | Trans actie bewerkingen per seconde | Het aantal bewerkingen voor toevoegen/bijwerken/verwijderen dat is uitgevoerd op betrouw bare verzamelingen per seconde.|
@@ -108,7 +108,7 @@ De Reliable Services runtime verzendt de volgende gebeurtenissen onder de `Servi
 
 De Reliable Services runtime verzendt de volgende gebeurtenissen onder de `Service Fabric TStore` categorie
 
- Naam van het meteritem | Beschrijving |
+ Naam van het meteritem | Description |
 | --- | --- |
 | Aantal items | Het aantal items in de Store.|
 | Schijfgrootte | De totale schijf grootte, in bytes, van controlepunt bestanden voor de Store.|

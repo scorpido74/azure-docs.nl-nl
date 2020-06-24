@@ -3,8 +3,8 @@ title: Een Azure Active Directory-toepassingsproxy-implementatie plannen
 description: Een end-to-end-hand leiding voor het plannen van de implementatie van toepassings proxy in uw organisatie
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: kenwith
+ms.openlocfilehash: a1cf2b57665cad4dd09639579b42b29a288eeca1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169505"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975568"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Een Azure AD-toepassingsproxy-implementatie plannen
 
@@ -133,7 +132,7 @@ Hier volgen enkele gebieden waarvoor u de zakelijke vereisten van uw organisatie
 
 * Gebruikers weten hoe ze toegang krijgen tot hun toepassingen met behulp van vertrouwde bedrijfs-Url's op elk platform.
 
-**Controleren**
+**Controle**
 * Beheerders kunnen de activiteit van de gebruikers toegang controleren.
 
 
@@ -254,7 +253,7 @@ Lees [eenmalige aanmelding bij toepassingen in azure AD](what-is-single-sign-on.
 
 ###  <a name="working-with-other-types-of-applications"></a>Werken met andere soorten toepassingen
 
-Azure AD-toepassingsproxy kan ook toepassingen ondersteunen die zijn ontwikkeld voor gebruik van de micro soft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Het ondersteunt native client-apps door Azure AD uitgegeven tokens te gebruiken die worden ontvangen in de header gegevens van de client aanvraag om verificatie vooraf namens de gebruikers uit te voeren.
+Azure AD-toepassingsproxy kan ook toepassingen ondersteunen die zijn ontwikkeld voor gebruik van de [micro soft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview). Het ondersteunt native client-apps door Azure AD uitgegeven tokens te gebruiken die worden ontvangen in de header gegevens van de client aanvraag om verificatie vooraf namens de gebruikers uit te voeren.
 
 Lees de [publicatie van systeem eigen en mobiele client-apps](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) en [op claims gebaseerde toepassingen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) voor meer informatie over de beschik bare configuraties van de toepassings proxy.
 

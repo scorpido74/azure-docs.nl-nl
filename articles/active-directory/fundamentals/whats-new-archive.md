@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8fa352d81a6df70634c00978a3db155d5fb0d7e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d2242dc3a80287b36554298fa1a15afb894c9ac1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217009"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976197"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -369,7 +369,7 @@ Het menu nieuwe **beveiliging** bevat:
 
 - Voorwaardelijke toegang
 - Identiteitsbeveiliging
-- Security Center
+- Beveiligingscentrum
 - Identiteits veilige Score
 - Verificatiemethoden
 - MFA
@@ -2095,8 +2095,6 @@ Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Act
 
 Met onze update van de OpenID connect verbinding maken met het OAuth 2,0 code Grant-protocol voor ons pre-verificatie protocol, hoeft u geen aanvullende configuratie meer te doen voor het gebruik van tableau met toepassings proxy. Deze protocol wijziging helpt ook toepassings proxy om meer moderne apps te ondersteunen door alleen HTTP-omleidingen te gebruiken, die algemeen worden ondersteund in Java script en HTML-tags.
 
-Voor meer informatie over onze systeem eigen ondersteuning voor tableau raadpleegt u [Azure AD-toepassingsproxy nu met native tableau-ondersteuning](https://blogs.technet.microsoft.com/applicationproxyblog/2018/08/14/azure-ad-application-proxy-now-with-native-tableau-support).
-
 ---
 
 ### <a name="new-support-to-add-google-as-an-identity-provider-for-b2b-guest-users-in-azure-active-directory-preview"></a>Nieuwe ondersteuning voor het toevoegen van Google als een id-provider voor B2B-gast gebruikers in Azure Active Directory (preview-versie)
@@ -3032,7 +3030,7 @@ Deze release bevat de volgende updates en wijzigingen:
 
 - Er is een fout opgelost waarbij certificaten met SAN-joker tekens niet voldoen aan de vereisten controle.
 
-- Er is een fout opgelost die ervoor zorgt dat MIIServer. exe vastloopt tijdens het exporteren van de AAD-connector.
+- Er is een fout opgelost die ervoor zorgt dat miiserver.exe vastloopt tijdens het exporteren van de AAD-connector.
 
 - Er is een fout opgelost waarbij een onjuist wacht woord wordt geregistreerd op de domein controller tijdens het uitvoeren van de AAD Connect-wizard om de configuratie te wijzigen
 
@@ -3387,7 +3385,7 @@ De volgende voor waarden en besturings elementen zijn nu beschikbaar voor gebrui
 
 **Toegangsbeheer**
 
-- Goedgekeurde client-app vereisen
+- Goedgekeurde client-apps vereisen
 
 Zie [voorwaardelijke toegang op basis van apps voor Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)voor meer informatie.
 

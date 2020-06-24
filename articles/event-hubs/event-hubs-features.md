@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c16dd4345e62fa9e826e657cce9a752186ec1b82
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: bca8ccaf06fb63b9029b93a8c59a6304139c8ff1
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628654"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976877"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
 
@@ -49,14 +49,14 @@ De keuze om AMQP of HTTPS te gebruiken, geldt specifiek voor het gebruiksscenari
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Anders treedt er een fout op.
+Event Hubs zorgt ervoor dat alle gebeurtenissen met een partitiesleutelwaarde op volgorde en aan dezelfde partitie worden geleverd. De identiteit van de uitgever en de waarde van de partitiesleutel moeten overeenkomen als er partitiesleutels met uitgeversbeleid worden gebruikt. Als deze niet overeenkomen, treedt er een fout op.
 
 ### <a name="publisher-policy"></a>Uitgeversbeleid
 
 In Event Hubs kunt u gebeurtenisuitgevers nauwkeurig beheren met behulp van *uitgeversbeleid*. Uitgeversbeleid bestaat uit runtimefuncties die zijn ontworpen om grote aantallen onafhankelijke gebeurtenisuitgevers mogelijk te maken. Als u uitgeversbeleid implementeert, gebruikt elke uitgever zijn eigen unieke id bij het publiceren van gebeurtenissen naar een Event Hub. Hierbij wordt het volgende mechanisme gebruikt:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
+//<my namespace>.servicebus.windows.net/<event hub name>/publishers/<my publisher name>
 ```
 
 Het is niet nodig om van tevoren uitgeversnamen te maken. De namen moeten echter wel overeenkomen met het SAS-token dat wordt gebruikt wanneer een gebeurtenis wordt gepubliceerd. Hiermee wordt voor onafhankelijke uitgeversidentiteiten gezorgd. Als u uitgeversbeleid gebruikt, is de waarde **Partitiesleutel** ingesteld op de naam van de uitgever. Voor een goede werking moeten deze waarden overeenkomen.
@@ -85,12 +85,13 @@ In een architectuur waarin de stroom wordt verwerkt, is elke downstream-toepassi
 
 Er kunnen Maxi maal vijf gelijktijdige lezers op een partitie per consumenten groep zijn. **het is echter raadzaam dat er slechts één actieve ontvanger is op een partitie per Consumer groep**. Binnen één partitie ontvangt elke lezer alle berichten. Als u meerdere lezers op dezelfde partitie hebt, verwerkt u dubbele berichten. U moet dit in uw code afhandelen. Dit is mogelijk niet gelastig. Het is echter een geldige benadering in sommige scenario's.
 
+Sommige clients die door de Azure-Sdk's worden aangeboden, zijn intelligente consumenten agenten die automatisch de details beheren om ervoor te zorgen dat elke partitie één lezer heeft en dat alle partities voor een Event Hub worden gelezen. Hierdoor kan uw code zich richten op het verwerken van de gebeurtenissen die worden gelezen van de Event Hub zodat er veel details van de partities kunnen worden genegeerd. Zie [verbinding maken met een partitie](#connect-to-a-partition)voor meer informatie.
 
-Dit zijn voorbeelden van de URI-conventie voor consumergroepen:
+In de volgende voor beelden ziet u de URI-Conventie voor de Consumer groep:
 
 ```http
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #1]
-//[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #1>
+//<my namespace>.servicebus.windows.net/<event hub name>/<Consumer Group #2>
 ```
 
 In de volgende afbeelding ziet u de architectuur voor de verwerking van stromen van Event Hubs:
@@ -122,7 +123,12 @@ Alle Event Hubs consumenten maken verbinding via een AMQP 1,0-sessie, een status
 
 #### <a name="connect-to-a-partition"></a>Verbinding maken met een partitie
 
-Het is gebruikelijk om een leasemechanisme te gebruiken wanneer u verbinding maakt met partities, zodat u het verbinden van lezers aan specifieke partities kunt coördineren. Op deze manier maakt u het mogelijk dat elke partitie in een consumergroep slechts één actieve lezer heeft. Het plaatsen van controlepunten voor en het leasen en beheren van lezers wordt vereenvoudigd door toepassing van de [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)-klasse voor .NET-clients. De Event Processor Host is een intelligente consumeragent.
+Wanneer u verbinding maakt met partities, is het gebruikelijk om een lease mechanisme te gebruiken voor het coördineren van lezers verbindingen met specifieke partities. Op deze manier is het mogelijk dat elke partitie in een Consumer groep slechts één actieve lezer heeft. Controle punten, leasing en beheer van lezers worden vereenvoudigd door gebruik te maken van de clients in de Event Hubs Sdk's, die fungeren als intelligente consumenten agenten. Dit zijn:
+
+- De [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient) voor .net
+- De [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient) voor Java
+- De [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient) voor python
+- De [EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient) voor Java script/type script
 
 #### <a name="read-events"></a>Gebeurtenissen lezen
 
@@ -142,13 +148,11 @@ U bent verantwoordelijk voor het beheer van de offset.
 Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
 
 - Aan de slag met Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [.NET](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Programmeer handleiding voor Event Hubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
-* [Event Hubs-voor beelden][]
-
-[Event Hubs-voor beelden]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+* [Event Hubs-voor beelden](event-hubs-samples.md)
