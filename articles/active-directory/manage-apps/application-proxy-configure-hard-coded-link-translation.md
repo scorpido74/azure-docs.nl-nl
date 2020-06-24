@@ -3,25 +3,25 @@ title: Koppelingen en Url's vertalen Azure AD-app proxy | Microsoft Docs
 description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69533696"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764839"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Hardcoded koppelingen omleiden voor apps die zijn gepubliceerd met Azure AD-toepassingsproxy
 
@@ -75,7 +75,7 @@ Wanneer koppelings vertalingen is ingeschakeld, zoekt de Application proxy-servi
 
 Na verificatie, wanneer de proxy server de toepassings gegevens door geven aan de gebruiker, scant de toepassings proxy de toepassing op vastgelegde koppelingen en worden deze vervangen door hun respectieve, gepubliceerde externe Url's.
 
-Toepassings proxy gaat ervan uit dat toepassingen zijn gecodeerd in UTF-8. Als dat niet het geval is, geeft u het type code ring op in een http- `Content-Type:text/html;charset=utf-8`antwoord header, zoals.
+Toepassings proxy gaat ervan uit dat toepassingen zijn gecodeerd in UTF-8. Als dat niet het geval is, geeft u het type code ring op in een HTTP-antwoord header, zoals `Content-Type:text/html;charset=utf-8` .
 
 ### <a name="which-links-are-affected"></a>Welke koppelingen worden getroffen?
 
@@ -83,8 +83,8 @@ De functie voor het omzetten van koppelingen zoekt alleen naar koppelingen in co
 
 Er zijn twee algemene typen interne koppelingen in on-premises toepassingen:
 
-- **Relatieve interne koppelingen** die verwijzen naar een gedeelde bron in een lokale bestands structuur, `/claims/claims.html`zoals. Deze koppelingen werken automatisch in apps die zijn gepubliceerd via toepassings proxy en blijven werken met of zonder koppelings conversie. 
-- **Hardcoded interne koppelingen** naar andere on-premises apps `http://expenses` zoals of gepubliceerde bestanden `http://expenses/logo.jpg`zoals. De functie voor het vertalen van koppelingen werkt op hardcoded interne koppelingen en wijzigt deze zodat ze verwijzen naar de externe Url's die externe gebruikers nodig hebben om door te gaan.
+- **Relatieve interne koppelingen** die verwijzen naar een gedeelde bron in een lokale bestands structuur, zoals `/claims/claims.html` . Deze koppelingen werken automatisch in apps die zijn gepubliceerd via toepassings proxy en blijven werken met of zonder koppelings conversie. 
+- **Hardcoded interne koppelingen** naar andere on-premises apps zoals `http://expenses` of gepubliceerde bestanden zoals `http://expenses/logo.jpg` . De functie voor het vertalen van koppelingen werkt op hardcoded interne koppelingen en wijzigt deze zodat ze verwijzen naar de externe Url's die externe gebruikers nodig hebben om door te gaan.
 
 De volledige lijst met HTML-code tags die toepassings proxy ondersteunt koppelings vertalingen voor zijn onder andere:
 * a
@@ -107,7 +107,7 @@ De volledige lijst met HTML-code tags die toepassings proxy ondersteunt koppelin
 * uit
 * source
 * bijhouden
-* video
+* Video
 
 Daarnaast wordt het URL-kenmerk ook omgezet in CSS.
 
@@ -137,7 +137,7 @@ Als u een van deze twee scenario's wilt ondersteunen, moet u dezelfde interne en
 Aan de slag met koppelings vertalingen is net zo eenvoudig als het klikken op een knop:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-2. Ga naar **Azure Active Directory** > **Enter prise-toepassingen** > **alle toepassingen** > Selecteer de app die u wilt beheren > **toepassings proxy**.
+2. Ga naar **Azure Active Directory**  >  **Enter prise-toepassingen**  >  **alle toepassingen** > Selecteer de app die u wilt beheren > **toepassings proxy**.
 3. Zet **url's in de hoofd tekst van de toepassing om in** **Ja**.
 
    ![Selecteer Ja om de Url's in de hoofd tekst van de toepassing te vertalen](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)

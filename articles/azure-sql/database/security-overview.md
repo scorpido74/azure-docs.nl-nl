@@ -12,25 +12,25 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 6204600cde1b9776e5edbbe129d550065cebf331
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 78af56e0b6f9e8e195ab77fdc57da336dd170c25
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322104"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255055"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Een overzicht van de beveiligings mogelijkheden van Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In dit artikel vindt u een overzicht van de basis principes van het beveiligen van de gegevenslaag van een toepassing met behulp van [Azure SQL database](sql-database-paas-overview.md) en [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md). De beschreven beveiligings strategie volgt de gelaagde ingrijpende aanpak zoals wordt weer gegeven in de onderstaande afbeelding, en verplaatst van de buiten kant naar:
 
-![SQL-Security-Layer. png](./media/security-overview/sql-security-layer.png)
+![sql-security-layer.png](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
 Microsoft Azure SQL Database en SQL Managed instance bieden een relationele database service voor Cloud-en bedrijfs toepassingen. Om klant gegevens te helpen beschermen, worden netwerk toegang tot de server voor komen door firewalls, totdat de toegang expliciet wordt verleend op basis van het IP-adres of de oorsprong van het virtuele netwerk verkeer van Azure.
 
-### <a name="ip-firewall-rules"></a>IP-firewall regels
+### <a name="ip-firewall-rules"></a>IP-firewallregels
 
 IP-firewall regels verlenen toegang tot data bases op basis van het oorspronkelijke IP-adres van elke aanvraag. Zie [overzicht van de firewall regels voor Azure SQL database en Azure Synapse Analytics](firewall-configure.md)voor meer informatie.
 
@@ -54,7 +54,7 @@ Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Databas
 
 - **SQL-verificatie**:
 
-    SQL database-verificatie verwijst naar de verificatie van een gebruiker bij het maken van verbinding met Azure SQL Database of een door Azure SQL beheerd exemplaar met behulp van de gebruikers naam en het wacht woord. Een **Server beheerder** meldt zich aan met een gebruikers naam en wacht woord wanneer de server wordt gemaakt. Met deze referenties kan een **Server beheerder** zich verifiëren bij elke Data Base op die server of instantie als de eigenaar van de data base. Daarna kunnen extra SQL-aanmeldingen en-gebruikers worden gemaakt door de server beheerder, waarmee gebruikers verbinding maken met behulp van de gebruikers naam en het wacht woord.
+    SQL-verificatie verwijst naar de verificatie van een gebruiker wanneer er verbinding wordt gemaakt met Azure SQL Database of een door Azure SQL beheerd exemplaar met behulp van de gebruikers naam en het wacht woord. Een **Server beheerder** meldt zich aan met een gebruikers naam en wacht woord wanneer de server wordt gemaakt. Met deze referenties kan een **Server beheerder** zich verifiëren bij elke Data Base op die server of instantie als de eigenaar van de data base. Daarna kunnen extra SQL-aanmeldingen en-gebruikers worden gemaakt door de server beheerder, waarmee gebruikers verbinding maken met behulp van de gebruikers naam en het wacht woord.
 
 - **Azure Active Directory-verificatie**:
 
@@ -75,9 +75,9 @@ Maak als best practice aangepaste rollen wanneer dat nodig is. Voeg gebruikers t
 
 ### <a name="row-level-security"></a>Beveiliging op rijniveau
 
-Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een database tabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslid maatschap of uitvoerings context). Beveiliging op rijniveau kan ook worden gebruikt voor het implementeren van op aangepaste labels gebaseerde beveiligings concepten. Zie [Beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) voor meer informatie.
+Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een database tabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslid maatschap of uitvoerings context). Beveiliging op rijniveau kan ook worden gebruikt voor het implementeren van op aangepaste labels gebaseerde beveiligings concepten. Zie [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security)voor meer informatie.
 
-![Azure-database-RLS. png](./media/security-overview/azure-database-rls.png)
+![azure-database-rls.png](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Threat Protection
 
@@ -91,7 +91,7 @@ SQL Database en SQL Managed instance audit traceert database activiteiten en hel
 
 Geavanceerde beveiliging tegen bedreigingen is een analyse van uw logboeken om ongebruikelijk gedrag en mogelijk schadelijke pogingen om toegang te krijgen tot data bases te detecteren Er worden waarschuwingen gemaakt voor verdachte activiteiten, zoals SQL-injectie, mogelijke gegevens infiltratie en beveiligings aanvallen, of voor afwijkingen in toegangs patronen om escalaties van bevoegdheden te ondervangen en gekraakte referenties te gebruiken. Er worden waarschuwingen weer gegeven uit de [Azure Security Center](https://azure.microsoft.com/services/security-center/), waar de details van de verdachte activiteiten worden verstrekt en aanbevelingen voor verder onderzoek worden gegeven, samen met acties voor het beperken van de dreiging. Geavanceerde beveiliging tegen bedreigingen kan per server worden ingeschakeld voor extra kosten. Zie [aan de slag met SQL database Advanced Threat Protection](threat-detection-configure.md)voor meer informatie.
 
-![Azure-database-TD. jpg](./media/security-overview/azure-database-td.jpg)
+![azure-database-td.jpg](./media/security-overview/azure-database-td.jpg)
 
 ## <a name="information-protection-and-encryption"></a>Gegevens beveiliging en-versleuteling
 
@@ -122,13 +122,13 @@ Met [Bring your own Key](transparent-data-encryption-byok-overview.md) -onderste
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (versleuteling-in-gebruik)
 
-![Azure-database-AE. png](./media/security-overview/azure-database-ae.png)
+![azure-database-ae.png](./media/security-overview/azure-database-ae.png)
 
 [Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) is een functie die is ontworpen om gevoelige gegevens die zijn opgeslagen in specifieke database kolommen, te beveiligen tegen toegang (bijvoorbeeld creditcard nummers, nationale identificatie nummers of gegevens die op basis van _kennis moeten worden_ genoteerd). Dit zijn onder andere database beheerders of andere bevoegde gebruikers die gemachtigd zijn om toegang te krijgen tot de data base om beheer taken uit te voeren, maar geen toegang hebben tot de specifieke gegevens in de versleutelde kolommen. De gegevens worden altijd versleuteld, wat betekent dat de versleutelde gegevens alleen worden ontsleuteld voor verwerking door client toepassingen met toegang tot de versleutelings sleutel. De versleutelings sleutel wordt nooit blootgesteld aan SQL Database of een door SQL beheerd exemplaar en kan worden opgeslagen in het [Windows-certificaat archief](always-encrypted-certificate-store-configure.md) of in [Azure Key Vault](always-encrypted-azure-key-vault-configure.md).
 
 ### <a name="dynamic-data-masking"></a>Dynamische gegevensmaskering
 
-![Azure-database-DDM. png](./media/security-overview/azure-database-ddm.png)
+![azure-database-ddm.png](./media/security-overview/azure-database-ddm.png)
 
 Dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-bevoegde gebruikers. Met dynamische gegevens maskering worden mogelijk gevoelige gegevens in Azure SQL Database en SQL Managed instance automatisch gedetecteerd en kunnen actie-aanbevelingen worden gemaskeerd om deze velden te maskeren, met minimale impact op de toepassingslaag. Dit werkt als volgt: de gevoelige gegevens in de resultatenset van een query die is uitgevoerd op toegewezen databasevelden, worden bedekt, terwijl de gegevens in de database niet worden gewijzigd. Zie [aan de slag met SQL database en SQL Managed instance Dynamic Data masking](dynamic-data-masking-overview.md)(Engelstalig) voor meer informatie.
 

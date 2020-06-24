@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63a2b462fe08cb37ca655aa91474601decce8000
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671634"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202837"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Aangepaste e-mail verificatie in Azure Active Directory B2C
 
@@ -41,10 +41,10 @@ Sla vervolgens de SendGrid API-sleutel op in een Azure AD B2C-beleids sleutel vo
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies **Options** `Manual`voor opties.
-1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `SendGridSecret`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Kies voor **Opties** `Manual` .
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `SendGridSecret`. Het voor voegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
-1. Selecteer `Signature`voor **sleutel gebruik**.
+1. Selecteer voor **sleutel gebruik** `Signature` .
 1. Selecteer **Maken**.
 
 ## <a name="create-sendgrid-template"></a>SendGrid-sjabloon maken
@@ -55,7 +55,7 @@ Als er een SendGrid-account is gemaakt en een SendGrid-API-sleutel die is opgesl
 1. Voer een unieke sjabloon naam in `Verification email` , zoals en selecteer vervolgens **Opslaan**.
 1. Selecteer **versie toevoegen**om te beginnen met het bewerken van de nieuwe sjabloon.
 1. Selecteer **code-editor** en **Ga vervolgens door**.
-1. Plak in de HTML-editor de volgende HTML-sjabloon of gebruik uw eigen. De `{{otp}}` para `{{email}}` meters en worden dynamisch vervangen door de waarde voor eenmalig wacht woord en het e-mail adres van de gebruiker.
+1. Plak in de HTML-editor de volgende HTML-sjabloon of gebruik uw eigen. De `{{otp}}` `{{email}}` para meters en worden dynamisch vervangen door de waarde voor eenmalig wacht woord en het e-mail adres van de gebruiker.
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,18 +151,18 @@ Als er een SendGrid-account is gemaakt en een SendGrid-API-sleutel die is opgesl
     </html>
     ```
 
-1. Vouw **instellingen** aan de linkerkant uit en voer `{{subject}}`voor **e-mail onderwerp**in.
+1. Vouw **instellingen** aan de linkerkant uit en voer voor **e-mail onderwerp**in `{{subject}}` .
 1. Selecteer **sjabloon opslaan**.
 1. Ga terug naar de pagina **transactionele sjablonen** door de pijl-terug te selecteren.
 1. Noteer de **id** van de sjabloon die u hebt gemaakt voor gebruik in een latere stap. Bijvoorbeeld `d-989077fbba9746e89f3f6411f596fb96`. U geeft deze ID op wanneer u [de claim transformatie toevoegt](#add-the-claims-transformation).
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Azure AD B2C claim typen toevoegen
 
-Voeg in uw beleid de volgende claim typen toe aan het `<ClaimsSchema>` -element `<BuildingBlocks>`binnen.
+Voeg in uw beleid de volgende claim typen toe aan het- `<ClaimsSchema>` element binnen `<BuildingBlocks>` .
 
 Deze claim typen zijn nodig voor het genereren en verifiëren van het e-mail adres met een OTP-code (eenmalig wacht woord).
 
-```XML
+```xml
 <ClaimType Id="Otp">
   <DisplayName>Secondary One-time password</DisplayName>
   <DataType>string</DataType>
@@ -185,13 +185,13 @@ Vervolgens hebt u een claim transformatie nodig voor het uitvoeren van een JSON-
 
 De structuur van het JSON-object wordt gedefinieerd door de Id's in punt notatie van de invoer parameters en de TransformationClaimTypes van de InputClaims. Getallen in de punt notatie impliceren matrices. De waarden zijn afkomstig van de waarden van de InputClaims en de waarde van de eigenschap input parameters. Zie voor meer informatie over JSON-claim transformaties [JSON-claim transformaties](json-transformations.md).
 
-Voeg de volgende claim transformatie toe aan `<ClaimsTransformations>` het- `<BuildingBlocks>`element binnen. Voer de volgende updates uit voor de XML van de claim transformatie:
+Voeg de volgende claim transformatie toe aan het- `<ClaimsTransformations>` element binnen `<BuildingBlocks>` . Voer de volgende updates uit voor de XML van de claim transformatie:
 
 * Werk de `template_id` waarde input parameter bij met de id van de SendGrid-transactionele sjabloon die u eerder hebt gemaakt in [SendGrid-sjabloon maken](#create-sendgrid-template).
 * Werk de `from.email` adres waarde bij. Gebruik een geldig e-mail adres om te voor komen dat de verificatie-e-mail als spam wordt gemarkeerd.
 * Werk de waarde van de `personalizations.0.dynamic_template_data.subject` invoer parameter voor de regel onderwerp bij met een onderwerpregel die geschikt is voor uw organisatie.
 
-```XML
+```xml
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
@@ -213,9 +213,9 @@ Voeg de volgende claim transformatie toe aan `<ClaimsTransformations>` het- `<Bu
 
 ## <a name="add-datauri-content-definition"></a>Definitie van DataUri-inhoud toevoegen
 
-Voeg onder de claim transformaties `<BuildingBlocks>`binnen de volgende [ContentDefinition](contentdefinitions.md) toe om te verwijzen naar de gegevens-URI van versie 2.0.0:
+Voeg onder de claim transformaties binnen de `<BuildingBlocks>` volgende [ContentDefinition](contentdefinitions.md) toe om te verwijzen naar de gegevens-URI van versie 2.0.0:
 
-```XML
+```xml
 <ContentDefinitions>
  <ContentDefinition Id="api.localaccountsignup">
     <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
@@ -231,14 +231,14 @@ Dit voor beeld wordt weer gegeven met de volgende instellingen:
 
 1. Verzamel het `email` adres claim type van de gebruiker.
 1. Wacht totdat de gebruiker het `verificationCode` claim type heeft verstrekt met de code die naar de gebruiker wordt verzonden.
-1. `email` Ga terug naar het zelfondertekende technische profiel dat een verwijzing naar dit weergave besturings element bevat.
-1. Genereer `SendCode` een otp-code met behulp van de actie en verzend een e-mail met de otp-code naar de gebruiker.
+1. Ga terug `email` naar het zelfondertekende technische profiel dat een verwijzing naar dit weergave besturings element bevat.
+1. `SendCode`Genereer een otp-code met behulp van de actie en verzend een e-mail met de otp-code naar de gebruiker.
 
 ![E-mail actie voor verificatie code verzenden](media/custom-email/display-control-verification-email-action-01.png)
 
-Voeg onder inhouds definities nog steeds `<BuildingBlocks>`de volgende [DisplayControl](display-controls.md) van het type [VerificationControl](display-control-verification.md) toe aan uw beleid.
+Voeg onder inhouds definities nog steeds `<BuildingBlocks>` de volgende [DisplayControl](display-controls.md) van het type [VerificationControl](display-control-verification.md) toe aan uw beleid.
 
-```XML
+```xml
 <DisplayControls>
   <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
     <DisplayClaims>
@@ -269,9 +269,9 @@ Voeg onder inhouds definities nog steeds `<BuildingBlocks>`de volgende [DisplayC
 
 Het `GenerateOtp` technische profiel genereert een code voor het e-mail adres. Het `VerifyOtp` technische profiel controleert de code die is gekoppeld aan het e-mail adres. U kunt de configuratie van de indeling en de verval datum van het eenmalige wacht woord wijzigen. Zie [een eenmalig wacht woord technische profiel definiëren](one-time-password-technical-profile.md)voor meer informatie over technische otp-profielen.
 
-Voeg de volgende technische profielen toe aan `<ClaimsProviders>` het-element.
+Voeg de volgende technische profielen toe aan het- `<ClaimsProviders>` element.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>One time password technical profiles</DisplayName>
   <TechnicalProfiles>
@@ -313,9 +313,9 @@ Voeg de volgende technische profielen toe aan `<ClaimsProviders>` het-element.
 
 In dit REST API technische profiel wordt de e-mail inhoud gegenereerd (met de SendGrid-indeling). Zie een onderliggend [technisch profiel definiëren](restful-technical-profile.md)voor meer informatie over onderhouds technische profielen.
 
-Net als bij de technische profielen voor OTP, voegt u de volgende technische `<ClaimsProviders>` profielen toe aan het-element.
+Net als bij de technische profielen voor OTP, voegt u de volgende technische profielen toe aan het- `<ClaimsProviders>` element.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>RestfulProvider</DisplayName>
   <TechnicalProfiles>
@@ -344,11 +344,11 @@ Net als bij de technische profielen voor OTP, voegt u de volgende technische `<C
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Een verwijzing naar de DisplayControl maken
 
-In de laatste stap voegt u een verwijzing toe naar het DisplayControl dat u hebt gemaakt. Vervang uw bestaande `LocalAccountSignUpWithLogonEmail` , zelfondertekende technische profiel met het volgende als u een eerdere versie van Azure AD B2C-beleid hebt gebruikt. Dit technische profiel wordt `DisplayClaims` gebruikt met een verwijzing naar de DisplayControl.
+In de laatste stap voegt u een verwijzing toe naar het DisplayControl dat u hebt gemaakt. Vervang uw bestaande, `LocalAccountSignUpWithLogonEmail` zelfondertekende technische profiel met het volgende als u een eerdere versie van Azure AD B2C-beleid hebt gebruikt. Dit technische profiel wordt gebruikt `DisplayClaims` met een verwijzing naar de DisplayControl.
 
 Zie voor meer informatie [het zelf beweringen technisch profiel](restful-technical-profile.md) en weer [gave](display-controls.md).
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -397,12 +397,12 @@ Zie voor meer informatie [het zelf beweringen technisch profiel](restful-technic
 
 Als u het e-mail bericht wilt lokaliseren, moet u gelokaliseerde teken reeksen verzenden naar SendGrid of uw e-mail provider. Bijvoorbeeld voor het lokaliseren van het e-mail onderwerp, de hoofd tekst, het code bericht of de hand tekening van de e-mail. Hiervoor kunt u de [GetLocalizedStringsTransformation](string-transformations.md) -claim transformatie gebruiken om gelokaliseerde teken reeksen te kopiëren naar claim typen. In de `GenerateSendGridRequestBody` claim transformatie, waarmee de JSON-nettolading wordt gegenereerd, gebruikt invoer claims die de gelokaliseerde teken reeksen bevatten.
 
-1. Definieer in uw beleid de volgende teken reeks claims: onderwerp, bericht, codeIntro en hand tekening.
+1. In uw beleid definieert u de volgende teken reeks claims: onderwerp, bericht, codeIntro en hand tekening.
 1. Definieer een [GetLocalizedStringsTransformation](string-transformations.md) -claim transformatie om gelokaliseerde teken reeks waarden in de claims uit stap 1 te vervangen.
 1. Wijzig de `GenerateSendGridRequestBody` claim transformatie voor het gebruik van invoer claims met het volgende XML-code fragment.
 1. Werk uw SendGrind-sjabloon bij om dynamische para meters te gebruiken in plaats van alle teken reeksen die worden gelokaliseerd door Azure AD B2C.
 
-```XML
+```xml
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />

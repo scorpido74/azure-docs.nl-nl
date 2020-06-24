@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf9c333af48e1c148dcd20ccf5ce91b284bd728b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189868"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201222"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189868"
 
 Het element **BuildingBlocks** wordt toegevoegd aan het element [TrustFrameworkPolicy](trustframeworkpolicy.md) .
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -70,7 +70,7 @@ Het element **BuildingBlocks** bevat de volgende elementen die moeten worden opg
   - Vergelijken van twee claims en het retour neren van een claim met de waarde True, wat aangeeft dat de claims overeenkomen, anders false.
   - Er wordt een teken reeks claim gemaakt op basis van de gegeven para meter in het beleid.
   - Een wille keurige teken reeks maken met de generator voor wille keurige getallen.
-  - Het format teren van een claim volgens de gegeven teken reeks voor opmaak. Deze trans formatie maakt gebruik `String.Format` van de C#-methode.
+  - Het format teren van een claim volgens de gegeven teken reeks voor opmaak. Deze trans formatie maakt gebruik van de C#- `String.Format` methode.
 
 - InputValidation: met dit element kunt u Booleaanse aggregaties uitvoeren die vergelijkbaar zijn met *en* en *of*.
 

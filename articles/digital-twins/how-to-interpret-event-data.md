@@ -1,5 +1,5 @@
 ---
-title: Gebeurtenis gegevens interpreteren
+title: Gebeurtenisgegevens interpreteren
 titleSuffix: Azure Digital Twins
 description: Zie verschillende gebeurtenis typen en de verschillende meldings berichten interpreteren.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4c95e686de23654688d0d7c3182c6565a907b750
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612961"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299429"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Verschillende gebeurtenissen in azure Digital Apparaatdubbels maken **meldingen**, waardoor de back-end van de oplossing op de hoogte kan worden wanneer er verschillende acties plaatsvinden. Deze worden vervolgens [doorgestuurd](concepts-route-events.md) naar verschillende locaties binnen en buiten Azure Digital apparaatdubbels die deze informatie kunnen gebruiken om actie te ondernemen.
 
@@ -103,7 +106,7 @@ Meldingen over de levens cyclus worden geactiveerd wanneer:
 
 Dit zijn de velden in de hoofd tekst van een melding voor levens cyclus.
 
-| Naam | Waarde |
+| Name | Waarde |
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis. |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -189,7 +192,7 @@ Hier volgt nog een voor beeld van een digitale dubbele. Deze is gebaseerd op een
 
 Dit zijn de velden in de hoofd tekst van een melding voor een wijziging van de rand.
 
-| Naam    | Waarde |
+| Name    | Waarde |
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | De naam van het Azure Digital Apparaatdubbels-exemplaar, zoals *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -233,46 +236,6 @@ Hier volgt een voor beeld van een melding voor het maken of verwijderen van een 
 }
 ```
 
-### <a name="digital-twin-model-change-notifications"></a>Meldingen over wijziging van digitaal dubbel model
-
-**Wijzigings meldingen voor modellen** worden geactiveerd wanneer een DTDL- [model](concepts-models.md) (Digital apparaatdubbels Definition Language) wordt geüpload, opnieuw geladen, gerepareerd, uit bedrijf genomen of verwijderd.
-
-#### <a name="properties"></a>Eigenschappen
-
-Dit zijn de velden in de hoofd tekst van een wijzigings melding van een model.
-
-| Naam    | Waarde |
-| --- | --- |
-| `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
-| `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Model.Upload`<br>`Microsoft.DigitalTwins.Model.Reload`(Hub-specifiek)<br>`Microsoft.DigitalTwins.Model.Patch`(Hub-specifiek)<br>`Microsoft.DigitalTwins.Model.Decom`<br>`Microsoft.DigitalTwins.Model.Delete` |
-| `datacontenttype` | application/json |
-| `subject` | ID van het model in de vorm`dtmi:<domain>:<unique model identifier>;<model version number>` |
-| `time` | Tijds tempel voor wanneer de bewerking is opgetreden in het model |
-| `sequence` | Waarde waarmee de positie van de gebeurtenis wordt uitgedrukt in een grotere geordende reeks gebeurtenissen. Services moeten een Volg nummer toevoegen aan alle meldingen om de volg orde aan te geven of hun eigen ordening op een andere manier te onderhouden. Het Volg nummer wordt met elk bericht verhoogd. De waarde wordt ingesteld op 1 als het object wordt verwijderd en opnieuw wordt gemaakt met dezelfde ID. |
-| `sequencetype` | Meer informatie over hoe het volgorde veld wordt gebruikt. Met deze eigenschap kan bijvoorbeeld worden opgegeven dat de waarde een ondertekend 32-bits geheel getal moet zijn, dat begint bij 1 en telkens 1 keer wordt verhoogd. |
-| `modelstatus` | De oplossings status voor het omzetten van een model. Mogelijke waarden: geslaagd/NotFound/mislukt (alleen IoT Hub) | 
-| `updatereason` | Model reden bijwerken in het schema. Mogelijke waarden: maken/opnieuw instellen/overschrijven (alleen IoT Hub) | 
-
-#### <a name="body-details"></a>Details van hoofd tekst
-
-Er is geen bericht tekst voor de acties voor het uploaden, opnieuw laden en het repareren van modellen. De gebruiker moet een `GET` aanroep doen om de model inhoud op te halen. 
-
-`Model.Decom`De hoofd tekst van de patch heeft de indeling van de JSON-patch, zoals alle andere patch-api's in het Azure Digital APPARAATDUBBELS API-Opper vlak. Voor het buiten gebruik stellen van een model gebruikt u daarom:
-
-```json
-[
-  {
-    "op": "replace",
-    "path": "/decommissionedState",
-    "value": true
-  }
-]
-```
-
-Voor `Model.Delete` is de aanvraag tekst hetzelfde als een `GET` aanvraag en krijgt deze de meest recente status voordat deze wordt verwijderd.
-
 ### <a name="digital-twin-change-notifications"></a>Digitale dubbele wijzigings meldingen
 
 Er worden **digitale dubbele wijzigings meldingen** geactiveerd wanneer er een digitale twee worden bijgewerkt, zoals:
@@ -283,7 +246,7 @@ Er worden **digitale dubbele wijzigings meldingen** geactiveerd wanneer er een d
 
 Dit zijn de velden in de hoofd tekst van een digitale, dubbele wijzigings melding.
 
-| Naam    | Waarde |
+| Name    | Waarde |
 | --- | --- |
 | `id` | Id van de melding, zoals een UUID of een item dat door de service wordt onderhouden. `source` + `id`is uniek voor elke afzonderlijke gebeurtenis |
 | `source` | Naam van het IoT hub-of Azure Digital Apparaatdubbels-exemplaar, zoals *myhub.Azure-devices.net* of *mydigitaltwins.westus2.azuredigitaltwins.net*

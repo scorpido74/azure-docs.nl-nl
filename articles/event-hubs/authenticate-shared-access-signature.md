@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d29fef42fb875c6ed55ac1d879b9c398490e1700
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676361"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298817"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Event Hubs resources verifiëren met behulp van Shared Access signatures (SAS)
 Shared Access Signature (SAS) biedt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de Shared Access Signature hebben. Hier volgen enkele van de besturings elementen die u in een SAS kunt instellen: 
@@ -63,13 +63,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Het token bevat de niet-gehashte waarden, zodat de ontvanger de hash opnieuw kan berekenen met dezelfde para meters, zodat u kunt controleren of de uitgever in het bezit is van een geldige ondertekeningssleutel.
 
-De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld http://<namespace>. servicebus.Windows.net/<entityPath> of `sb://<namespace>.servicebus.windows.net/<entityPath>;` dat wil. `http://contoso.servicebus.windows.net/eventhubs/eh1`
+De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld http:// <namespace> . servicebus.Windows.net/ <entityPath> of `sb://<namespace>.servicebus.windows.net/<entityPath>;` dat wil `http://contoso.servicebus.windows.net/eventhubs/eh1` .
 
 De URI moet een percentage zijn gecodeerd.
 
 De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/eventhubs/eh1` of `http://contoso.servicebus.windows.net` in het vorige voor beeld.
 
-Een SAS-token is geldig voor alle resources die worden voorafgegaan <resourceURI> door de gebruikt in de teken reeks voor hand tekening.
+Een SAS-token is geldig voor alle resources die worden voorafgegaan door de <resourceURI> gebruikt in de teken reeks voor hand tekening.
 
 > [!NOTE]
 > U genereert een toegangs token voor Event Hubs met behulp van het beleid voor gedeelde toegang. Zie voor meer informatie [verificatie beleid voor gedeelde toegang](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
@@ -187,7 +187,7 @@ Aan elke Event Hubs-client wordt een uniek token toegewezen, dat wordt geüpload
 
 Alle tokens worden toegewezen met SAS-sleutels. Normaal gesp roken zijn alle tokens met dezelfde sleutel ondertekend. Clients zijn niet op de hoogte van de sleutel, waardoor clients geen productie tokens meer kunnen produceren. Clients werken op dezelfde tokens totdat ze verlopen.
 
-U moet bijvoorbeeld een regel voor het verzenden van een autorisatie definiëren om autorisatie regels op te geven die zijn beperkt tot het verzenden/publiceren naar Event Hubs. Dit kan worden gedaan op het niveau van de naam ruimte of een nauw keurigere Scope geven aan een bepaalde entiteit (Event hubs-instantie of een onderwerp). Een client of een toepassing die met een dergelijke gedetailleerde toegang is gericht, wordt Event Hubs Publisher genoemd. Hiervoor volgt u de volgende stappen:
+U moet bijvoorbeeld een regel voor het verzenden van een autorisatie definiëren om autorisatie regels op te geven die zijn beperkt tot het verzenden/publiceren naar Event Hubs. Dit kan worden gedaan op het niveau van de naam ruimte of een nauw keurigere Scope geven aan een bepaalde entiteit (Event hubs-instantie of een onderwerp). Een client of een toepassing die met een dergelijke gedetailleerde toegang is gericht, wordt Event Hubs Publisher genoemd. Voer hiervoor de volgende stappen uit:
 
 1. Maak een SAS-sleutel voor de entiteit die u wilt publiceren om de **Verzend** Scope hierop toe te wijzen. Zie [Shared Access Authorization Policies](authorize-access-shared-access-signature.md#shared-access-authorization-policies)(Engelstalig) voor meer informatie.
 2. Genereer een SAS-token met een verloop tijd voor een specifieke uitgever met behulp van de sleutel die is gegenereerd in stap 1-4.

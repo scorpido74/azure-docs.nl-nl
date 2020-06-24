@@ -2,21 +2,21 @@
 title: Eenmalige aanmelding met een wacht woord configureren voor Azure AD-apps | Microsoft Docs
 description: Eenmalige aanmelding met een wacht woord configureren voor uw Azure AD-zakelijke toepassingen in micro soft Identity platform (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063523"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763496"
 ---
 # <a name="configure-password-single-sign-on"></a>Eenmalige aanmelding met een wacht woord configureren
 
@@ -44,7 +44,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een g
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
-2. Ga naar **Azure Active Directory** > **bedrijfs toepassingen**. Een wille keurig voor beeld van de toepassingen in uw Azure AD-Tenant wordt weer gegeven. 
+2. Ga naar **Azure Active Directory**  >  **bedrijfs toepassingen**. Een wille keurig voor beeld van de toepassingen in uw Azure AD-Tenant wordt weer gegeven. 
 
 3. Selecteer in het menu **toepassings type** **alle toepassingen**en selecteer vervolgens **Toep assen**.
 
@@ -68,7 +68,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een g
 
 Als het parseren van de Azure AD-poging mislukt, kunt u hand matig aanmelden configureren.
 
-1. Selecteer onder ** \<toepassings naam> configuratie**de **optie \<toepassings naam> wacht woord instellingen voor eenmalige aanmelding configureren** om de **aanmeldings** pagina te openen. 
+1. Onder ** \<application name> configuratie**selecteert u ** \<application name> instellingen voor eenmalige aanmelding met een wacht woord configureren** om de aanmeldings pagina **configureren** weer te geven. 
 
 2. Selecteer **aanmeldings velden hand matig detecteren**. Aanvullende instructies voor het beschrijven van de hand matige detectie van aanmeldings velden worden weer gegeven.
 

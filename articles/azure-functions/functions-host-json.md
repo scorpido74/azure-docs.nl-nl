@@ -1,35 +1,35 @@
 ---
-title: host. json-verwijzing voor Azure Functions 2. x
-description: Referentie documentatie voor het Azure Functions host. JSON-bestand met v2 runtime.
+title: host.jsbij verwijzing voor Azure Functions 2. x
+description: Referentie documentatie voor de Azure Functions host.jsin het bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690886"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298494"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host. json-verwijzing voor Azure Functions 2. x en hoger 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.jsbij verwijzing voor Azure Functions 2. x en hoger 
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1](functions-host-json-v1.md)
+> * [Versie 1:](functions-host-json-v1.md)
 > * [Versie 2 +](functions-host-json.md)
 
-Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u een lijst met de instellingen die vanaf versie 2. x van de Azure Functions runtime beschikbaar zijn.  
+De *host.jsvan* het meta gegevensbestand bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u een lijst met de instellingen die vanaf versie 2. x van de Azure Functions runtime beschikbaar zijn.  
 
 > [!NOTE]
-> Dit artikel is voor Azure Functions 2. x en latere versies.  Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Dit artikel is voor Azure Functions 2. x en latere versies.  Zie [host.jsbij verwijzing voor Azure functions 1. x](functions-host-json-v1.md)voor een referentie van host.jsin in functions 1. x.
 
-Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md) (voor geïmplementeerde apps) of het bestand [Local. settings. json](functions-run-local.md#local-settings-file) (voor lokale ontwikkeling).
+Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md) (voor geïmplementeerde apps) of uw [local.settings.js](functions-run-local.md#local-settings-file) bestand (voor lokale ontwikkeling).
 
-Configuraties in host. json die betrekking hebben op bindingen, worden op dezelfde manier toegepast op elke functie in de functie-app. 
+Configuraties in host.jsmet betrekking tot bindingen worden op dezelfde manier toegepast op elke functie in de functie-app. 
 
 U kunt ook [instellingen per omgeving negeren of Toep assen](#override-hostjson-values) met behulp van toepassings instellingen.
 
-## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
+## <a name="sample-hostjson-file"></a>Voorbeeld host.jsvoor het bestand
 
-In het volgende voor beeld van een *host. json* -bestand voor versie 2. x + zijn alle mogelijke opties opgegeven (exclusief voor intern gebruik).
+In het volgende voor beeld *host.js* bestand voor versie 2. x + zijn alle mogelijke opties opgegeven (exclusief voor intern gebruik).
 
 ```json
 {
@@ -140,26 +140,26 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging).
 
 Opties voor de Application Insights, met inbegrip van [bemonsterings opties](./functions-monitoring.md#configure-sampling).
 
-Zie het eerder volgende voor beeld van een [host. JSON-bestand](#sample-hostjson-file)voor de volledige JSON-structuur.
+Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#sample-hostjson-file).
 
 > [!NOTE]
-> Het vastleggen van logboeken kan ertoe leiden dat sommige uitvoeringen niet worden weer gegeven op de Blade Application Insights monitor. Voeg `excludedTypes: "Request"` toe aan de `samplingSettings` waarde om te voor komen dat u Logboeken kunt bemonsteren.
+> Het vastleggen van logboeken kan ertoe leiden dat sommige uitvoeringen niet worden weer gegeven op de Blade Application Insights monitor. Voeg toe aan de waarde om te voor komen dat u Logboeken kunt bemonsteren `excludedTypes: "Request"` `samplingSettings` .
 
 | Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| samplingSettings | n.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
-| enableLiveMetrics | waar | Hiermee wordt de verzameling Live Metrics ingeschakeld. |
-| enableDependencyTracking | waar | Hiermee schakelt u het bijhouden van afhankelijkheden in. |
-| enablePerformanceCountersCollection | waar | Hiermee schakelt u de verzameling kudu-prestatie meter items. |
+| samplingSettings | N.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| enableLiveMetrics | true | Hiermee wordt de verzameling Live Metrics ingeschakeld. |
+| enableDependencyTracking | true | Hiermee schakelt u het bijhouden van afhankelijkheden in. |
+| enablePerformanceCountersCollection | true | Hiermee schakelt u de verzameling kudu-prestatie meter items. |
 | liveMetricsInitializationDelay | 00:00:15 | Alleen voor intern gebruik. |
-| httpAutoCollectionOptions | n.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | n.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | N.v.t. | Zie [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | N.v.t. | Zie [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| isEnabled | waar | Hiermee worden steek proeven in-of uitgeschakeld. | 
+| isEnabled | true | Hiermee worden steek proeven in-of uitgeschakeld. | 
 | maxTelemetryItemsPerSecond | 20 | Het doel aantal telemetriegegevens dat per seconde op elke server host is geregistreerd. Als uw app op meerdere hosts wordt uitgevoerd, vermindert u deze waarde zodat deze binnen het totale doel tempo van het verkeer blijft. | 
 | evaluationInterval | 01:00:00 | Het interval waarmee de huidige frequentie van de telemetrie opnieuw wordt geëvalueerd. De evaluatie wordt uitgevoerd als een zwevend gemiddelde. Mogelijk wilt u dit interval verkorten als uw telemetrie op plotselinge bursts is. |
 | initialSamplingPercentage| 1.0 | Het eerste bemonsterings percentage dat aan het begin van het bemonsterings proces wordt toegepast om het percentage dynamisch te variëren. Verminder de waarde niet tijdens het opsporen van fouten. |
@@ -168,16 +168,16 @@ Zie het eerder volgende voor beeld van een [host. JSON-bestand](#sample-hostjson
 | minSamplingPercentage | 0.1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het minimale toegestane sampling percentage. |
 | maxSamplingPercentage | 0.1 | Als het steekproef percentage varieert, bepaalt deze eigenschap het Maxi maal toegestane steekproef percentage. |
 | movingAverageRatio | 1.0 | Bij het berekenen van het zwevend gemiddelde wordt het gewicht toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen. |
-| excludedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen `Dependency`zijn `Event`: `Exception`, `PageView`, `Request`,, `Trace`en. Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet worden opgegeven, worden steek proeven gegeven. |
-| includedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken; een lege lijst impliceert alle typen. Typ in `excludedTypes` het veld overschrijvings typen die hier worden vermeld. De herkende typen `Dependency`zijn `Event`: `Exception`, `PageView`, `Request`,, `Trace`en. Voor exemplaren van de opgegeven typen wordt een steek proef gegeven; de typen die niet worden opgegeven of geïmpliceerd, worden zonder steek proeven verzonden. |
+| excludedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u geen steek proef wilt maken. De herkende typen zijn: `Dependency` ,, `Event` ,, `Exception` `PageView` `Request` en `Trace` . Alle exemplaren van de opgegeven typen worden verzonden. voor de typen die niet worden opgegeven, worden steek proeven gegeven. |
+| includedTypes | null | Een door punt komma's gescheiden lijst met typen waarvan u een steek proef wilt maken; een lege lijst impliceert alle typen. Typ in het `excludedTypes` veld overschrijvings typen die hier worden vermeld. De herkende typen zijn: `Dependency` ,, `Event` ,, `Exception` `PageView` `Request` en `Trace` . Voor exemplaren van de opgegeven typen wordt een steek proef gegeven; de typen die niet worden opgegeven of geïmpliceerd, worden zonder steek proeven verzonden. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
-| enableHttpTriggerExtendedInfoCollection | waar | Hiermee schakelt u uitgebreide informatie over HTTP-aanvragen in of uit voor HTTP-triggers: inkomende aanvraag correlatie headers, ondersteuning voor meerdere instrumentatie sleutels, HTTP-methode, pad en antwoord. |
-| enableW3CDistributedTracing | waar | Hiermee wordt ondersteuning van het W3C-protocol voor gedistribueerde tracering (en het verouderde correlatie schema ingeschakeld) in-of uitgeschakeld. Standaard ingeschakeld als `enableHttpTriggerExtendedInfoCollection` is ingesteld op True. Als `enableHttpTriggerExtendedInfoCollection` is ingesteld op False, is deze vlag alleen van toepassing op uitgaande aanvragen, niet op inkomende aanvragen. |
-| enableResponseHeaderInjection | waar | Hiermee wordt de injectie van correlatie headers met meerdere onderdelen in-of uitgeschakeld. Door injectie in te scha kelen, kunt Application Insights een toepassings toewijzing maken wanneer er meerdere instrumentatie sleutels worden gebruikt. Standaard ingeschakeld als `enableHttpTriggerExtendedInfoCollection` is ingesteld op True. Deze instelling is niet van `enableHttpTriggerExtendedInfoCollection` toepassing als is ingesteld op false. |
+| enableHttpTriggerExtendedInfoCollection | true | Hiermee schakelt u uitgebreide informatie over HTTP-aanvragen in of uit voor HTTP-triggers: inkomende aanvraag correlatie headers, ondersteuning voor meerdere instrumentatie sleutels, HTTP-methode, pad en antwoord. |
+| enableW3CDistributedTracing | true | Hiermee wordt ondersteuning van het W3C-protocol voor gedistribueerde tracering (en het verouderde correlatie schema ingeschakeld) in-of uitgeschakeld. Standaard ingeschakeld als is ingesteld op `enableHttpTriggerExtendedInfoCollection` True. Als `enableHttpTriggerExtendedInfoCollection` is ingesteld op False, is deze vlag alleen van toepassing op uitgaande aanvragen, niet op inkomende aanvragen. |
+| enableResponseHeaderInjection | true | Hiermee wordt de injectie van correlatie headers met meerdere onderdelen in-of uitgeschakeld. Door injectie in te scha kelen, kunt Application Insights een toepassings toewijzing maken wanneer er meerdere instrumentatie sleutels worden gebruikt. Standaard ingeschakeld als is ingesteld op `enableHttpTriggerExtendedInfoCollection` True. Deze instelling is niet van toepassing als is ingesteld op `enableHttpTriggerExtendedInfoCollection` False. |
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
 
@@ -186,22 +186,22 @@ Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op u
 |Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Het eind punt dat wordt gebruikt om verbinding te maken met de Application Insights Snapshot Debugger-service. Als de waarde Null is, wordt een standaard eindpunt gebruikt. |
-| captureSnapshotMemoryWeight | 0.5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0,5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | De limiet voor het aantal mislukte aanvragen voor het aanvragen van moment opnamen voordat de telemetrie-processor wordt uitgeschakeld.|
-| handleUntrackedExceptions | waar | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
-| isEnabled | waar | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 
-| isEnabledInDeveloperMode | onjuist | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
-| isEnabledWhenProfiling | waar | Hiermee wordt het maken van een moment opname in-of uitgeschakeld, zelfs als er een gedetailleerde profilerings sessie wordt verzameld door de Application Insights Profiler. |
-| isExceptionSnappointsEnabled | onjuist | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
-| isLowPrioritySnapshotUploader | waar | Hiermee wordt bepaald of het SnapshotUploader-proces op de normale prioriteit moet worden uitgevoerd. |
+| handleUntrackedExceptions | true | Hiermee wordt het bijhouden van uitzonde ringen die niet worden bijgehouden door Application Insights telemetrie, in-of uitgeschakeld. |
+| isEnabled | true | Hiermee wordt de momentopname verzameling in-of uitgeschakeld | 
+| isEnabledInDeveloperMode | false | Hiermee wordt de momentopname verzameling ingeschakeld of uitgeschakeld in de ontwikkelaars modus. |
+| isEnabledWhenProfiling | true | Hiermee wordt het maken van een moment opname in-of uitgeschakeld, zelfs als er een gedetailleerde profilerings sessie wordt verzameld door de Application Insights Profiler. |
+| isExceptionSnappointsEnabled | false | Hiermee wordt het filteren van uitzonde ringen in-of uitgeschakeld. |
+| isLowPrioritySnapshotUploader | true | Hiermee wordt bepaald of het SnapshotUploader-proces op de normale prioriteit moet worden uitgevoerd. |
 | maximumCollectionPlanSize | 50 | Het maximum aantal problemen dat kan worden gevolgd op elk gewenst moment in een bereik van 1 tot en met 9999. |
-| maximumSnapshotsRequired | 3 | Het maximum aantal moment opnamen dat voor één probleem wordt verzameld, in een bereik van 1 tot 999. Een probleem kan worden beschouwd als een afzonderlijke instructie throw in uw toepassing. Zodra het aantal moment opnamen dat voor een probleem is verzameld deze waarde bereikt, worden er geen moment opnamen meer verzameld voor dat probleem totdat de probleem tellers opnieuw `problemCounterResetInterval`zijn ingesteld ( `thresholdForSnapshotting` Zie) en de limiet opnieuw wordt bereikt. |
-| problemCounterResetInterval | 24:00:00 | Hoe vaak de probleem tellers in een bereik van één minuut tot zeven dagen opnieuw moeten worden ingesteld. Als dit interval wordt bereikt, worden alle probleem aantallen opnieuw ingesteld op nul. Bestaande problemen die de drempel voor het uitvoeren van moment opnamen al hebben bereikt, maar nog niet het aantal moment opnamen in `maximumSnapshotsRequired`hebben gegenereerd, blijven actief. |
-| provideAnonymousTelemetry | waar | Hiermee wordt bepaald of anoniem gebruik en fout-telemetrie naar micro soft moet worden verzonden. Deze telemetrie kan worden gebruikt als u contact opneemt met micro soft om problemen met de Snapshot Debugger op te lossen. Het wordt ook gebruikt om gebruiks patronen te bewaken. |
+| maximumSnapshotsRequired | 3 | Het maximum aantal moment opnamen dat voor één probleem wordt verzameld, in een bereik van 1 tot 999. Een probleem kan worden beschouwd als een afzonderlijke instructie throw in uw toepassing. Zodra het aantal moment opnamen dat voor een probleem is verzameld deze waarde bereikt, worden er geen moment opnamen meer verzameld voor dat probleem totdat de probleem tellers opnieuw zijn ingesteld (Zie `problemCounterResetInterval` ) en de `thresholdForSnapshotting` limiet opnieuw wordt bereikt. |
+| problemCounterResetInterval | 24:00:00 | Hoe vaak de probleem tellers in een bereik van één minuut tot zeven dagen opnieuw moeten worden ingesteld. Als dit interval wordt bereikt, worden alle probleem aantallen opnieuw ingesteld op nul. Bestaande problemen die de drempel voor het uitvoeren van moment opnamen al hebben bereikt, maar nog niet het aantal moment opnamen in hebben gegenereerd `maximumSnapshotsRequired` , blijven actief. |
+| provideAnonymousTelemetry | true | Hiermee wordt bepaald of anoniem gebruik en fout-telemetrie naar micro soft moet worden verzonden. Deze telemetrie kan worden gebruikt als u contact opneemt met micro soft om problemen met de Snapshot Debugger op te lossen. Het wordt ook gebruikt om gebruiks patronen te bewaken. |
 | reconnectInterval | 00:15:00 | Hoe vaak opnieuw verbinding wordt gemaakt met het Snapshot Debugger-eind punt. Het toegestane bereik is één minuut op een dag. |
 | shadowCopyFolder | null | Hiermee geeft u de map op die moet worden gebruikt voor binaire bestanden voor kopiëren van schaduw kopieën. Als dit niet het geval is, worden de mappen die zijn opgegeven door de volgende omgevings variabelen, in volg orde geprobeerd: Fabric_Folder_App_Temp, LOCALAPPDATA, APPDATA, TEMP. |
-| shareUploaderProcess | waar | Als deze eigenschap waar is, worden met slechts één instantie van SnapshotUploader moment opnamen verzameld en geüpload voor meerdere apps die de InstrumentationKey delen. Als deze eigenschap is ingesteld op False, wordt de SnapshotUploader uniek voor elke tuple (verwerkings naam, InstrumentationKey). |
-| snapshotInLowPriorityThread | waar | Hiermee wordt bepaald of moment opnamen moeten worden verwerkt in een thread met een lage IO-prioriteit. Het maken van een moment opname is een snelle bewerking, maar om een moment opname te uploaden naar de Snapshot Debugger-service, moet deze eerst naar de schijf worden geschreven als een mini dump. Dat gebeurt in het SnapshotUploader-proces. Als u deze waarde instelt op True, wordt IO met lage prioriteit gebruikt voor het schrijven van het mini dump, dat niet kan concurreren met uw toepassing voor resources. Als u deze waarde instelt op ONWAAR, versnelt u het maken van een mini maal in de kosten van het vertragen van uw toepassing. |
+| shareUploaderProcess | true | Als deze eigenschap waar is, worden met slechts één instantie van SnapshotUploader moment opnamen verzameld en geüpload voor meerdere apps die de InstrumentationKey delen. Als deze eigenschap is ingesteld op False, wordt de SnapshotUploader uniek voor elke tuple (verwerkings naam, InstrumentationKey). |
+| snapshotInLowPriorityThread | true | Hiermee wordt bepaald of moment opnamen moeten worden verwerkt in een thread met een lage IO-prioriteit. Het maken van een moment opname is een snelle bewerking, maar om een moment opname te uploaden naar de Snapshot Debugger-service, moet deze eerst naar de schijf worden geschreven als een mini dump. Dat gebeurt in het SnapshotUploader-proces. Als u deze waarde instelt op True, wordt IO met lage prioriteit gebruikt voor het schrijven van het mini dump, dat niet kan concurreren met uw toepassing voor resources. Als u deze waarde instelt op ONWAAR, versnelt u het maken van een mini maal in de kosten van het vertragen van uw toepassing. |
 | snapshotsPerDayLimit | 30 | Het maximum aantal moment opnamen dat is toegestaan in één dag (24 uur). Deze limiet wordt ook afgedwongen aan de kant van de Application Insights service. Uploads zijn beperkt tot 50 per dag per toepassing (dat wil zeggen, per instrumentatie sleutel). Deze waarde helpt te voor komen dat er extra moment opnamen worden gemaakt die uiteindelijk tijdens het uploaden worden afgewezen. Met de waarde 0 wordt de limiet volledig verwijderd, wat niet wordt aanbevolen. |
 | snapshotsPerTenMinutesLimit | 1 | Het maximum aantal moment opnamen dat is toegestaan in 10 minuten. Hoewel er geen bovengrens is voor deze waarde, is het belang rijk om deze te verhogen op productie werkbelastingen, omdat dit de prestaties van uw toepassing kan beïnvloeden. Het maken van een moment opname is snel, maar het maken van een mini dump van de moment opname en het uploaden naar de Snapshot Debugger-service is een veel langzamere bewerking die zal concurreren met uw toepassing voor resources (zowel CPU als I/O). |
 | tempFolder | null | Hiermee geeft u de map voor het schrijven van minidumps-en Uploader-logboek bestanden. Als deze niet is ingesteld, wordt *%temp%\Dumps* gebruikt. |
@@ -242,11 +242,16 @@ Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat a
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Hiermee wordt de duur van de time-out voor alle functies aangegeven. Het volgt de teken reeks notatie time span. In een serverloze verbruiks abonnement is het geldige bereik van 1 seconde tot 10 minuten en de standaard waarde is 5 minuten.  
+Hiermee wordt de duur van de time-out voor alle functies aangegeven. Het volgt de teken reeks notatie time span. 
 
-In het Premium-abonnement ligt het geldige bereik van 1 seconde tot 60 minuten en is de standaard waarde 30 minuten.
+| Type abonnement | Standaard (min.) | Maximum (min.) |
+| -- | -- | -- |
+| Verbruik | 5 | 10 |
+| Premium<sup>1</sup> | 30 | -1 (niet-gebonden)<sup>2</sup> |
+| Toegewezen (App Service) | 30 | -1 (niet-gebonden)<sup>2</sup> |
 
-In een speciaal (App Service)-abonnement is er geen algemene limiet, en de standaard waarde is 30 minuten. De waarde `-1` geeft aan dat de uitvoering niet is gebonden, maar een vaste bovengrens wordt aanbevolen.
+<sup>1</sup> Premium-plan uitvoering is alleen gegarandeerd gedurende 60 minuten, maar technisch niet gebonden.   
+<sup>2</sup> de waarde `-1` geeft aan dat er een niet-gebonden uitvoering is, maar het behouden van een vaste bovengrens wordt aanbevolen.
 
 ```json
 {
@@ -272,9 +277,9 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|enabled|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
-|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie `healthCheckThreshold` met de instelling.| 
+|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie met de `healthCheckThreshold` instelling.| 
 |healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
 |counterThreshold|0,80|De drempel waarde waarbij een prestatie meter item wordt beschouwd als een slechte status.| 
 
@@ -304,10 +309,10 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always`, `debugOnly`. |
-|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
-|console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
-|applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
+|fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never` , `always` , `debugOnly` . |
+|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
+|applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -327,11 +332,11 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|onjuist|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
-Managed dependency is een functie die momenteel alleen wordt ondersteund met Power shell-functies. Hierdoor kunnen afhankelijkheden automatisch worden beheerd door de service. Wanneer de `enabled` eigenschap is ingesteld op `true`, wordt `requirements.psd1` het bestand verwerkt. Afhankelijkheden worden bijgewerkt wanneer er secundaire versies worden vrijgegeven. Zie [beheerde afhankelijkheden](functions-reference-powershell.md#dependency-management) in het Power shell-artikel voor meer informatie.
+Managed dependency is een functie die momenteel alleen wordt ondersteund met Power shell-functies. Hierdoor kunnen afhankelijkheden automatisch worden beheerd door de service. Wanneer de `enabled` eigenschap is ingesteld op `true` , `requirements.psd1` wordt het bestand verwerkt. Afhankelijkheden worden bijgewerkt wanneer er secundaire versies worden vrijgegeven. Zie [beheerde afhankelijkheden](functions-reference-powershell.md#dependency-management) in het Power shell-artikel voor meer informatie.
 
 ```json
 {
@@ -375,11 +380,11 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="version"></a>versie
 
-Deze waarde geeft de schema versie van host. json aan. De versie teken `"version": "2.0"` reeks is vereist voor een functie-app die is gericht op de v2-runtime of een latere versie. Er zijn geen host. json-schema wijzigingen tussen v2 en v3.
+Met deze waarde wordt de schema versie van host.jsop aangegeven. De versie teken reeks `"version": "2.0"` is vereist voor een functie-app die is gericht op de v2-runtime of een latere versie. Er zijn geen host.jsvoor schema wijzigingen tussen v2 en v3.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
@@ -391,11 +396,11 @@ Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories
 }
 ```
 
-## <a name="override-hostjson-values"></a>Host. json-waarden opheffen
+## <a name="override-hostjson-values"></a>host.jsop waarden opheffen
 
-Het kan voor komen dat u specifieke instellingen in een host. JSON-bestand wilt configureren of wijzigen voor een specifieke omgeving, zonder het bestand host. json zelf te wijzigen.  U kunt specifieke host. json-waarden overschrijven om een equivalente waarde te maken als een toepassings instelling. Wanneer de runtime een toepassings instelling in de indeling `AzureFunctionsJobHost__path__to__setting`vindt, wordt de overeenkomende host. json-instelling die zich in de `path.to.setting` JSON bevindt, overschreven. Wanneer wordt uitgedrukt als een toepassings instelling, wordt de`.`punt () die wordt gebruikt om de JSON-hiërarchie aan te`__`geven, vervangen door een dubbel streepje (). 
+Het kan voor komen dat u specifieke instellingen wilt configureren of wijzigen in een host.jsin het bestand voor een specifieke omgeving, zonder dat u de host.jsin het bestand zelf wijzigt.  U kunt specifieke host.jsvoor waarden negeren om een equivalente waarde te maken als een toepassings instelling. Wanneer de runtime een toepassings instelling in de indeling vindt `AzureFunctionsJobHost__path__to__setting` , wordt de overeenkomende host.jsvoor de instelling die zich `path.to.setting` in in de JSON bevindt, overschreven. Wanneer wordt uitgedrukt als een toepassings instelling, wordt de punt ( `.` ) die wordt gebruikt om de JSON-hiërarchie aan te geven, vervangen door een dubbel streepje ( `__` ). 
 
-Stel bijvoorbeeld dat u inzicht in de voorbeeld toepassing van toepassingen wilt uitschakelen wanneer u lokaal uitvoert. Als u het bestand local host. json hebt gewijzigd om Application Insights uit te scha kelen, wordt deze wijziging mogelijk tijdens de implementatie naar uw productie-app gepusht. De veiligste manier om dit te doen is door in plaats daarvan een `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` toepassings instelling `local.settings.json` te maken die zich in het bestand bevindt. U kunt dit zien in het volgende `local.settings.json` bestand, dat niet wordt gepubliceerd:
+Stel bijvoorbeeld dat u inzicht in de voorbeeld toepassing van toepassingen wilt uitschakelen wanneer u lokaal uitvoert. Als u de lokale host.jsop het bestand hebt gewijzigd om Application Insights uit te scha kelen, kan deze wijziging tijdens de implementatie naar uw productie-app worden gepusht. De veiligste manier om dit te doen is door in plaats daarvan een toepassings instelling te maken die zich `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` in het bestand bevindt `local.settings.json` . U kunt dit zien in het volgende `local.settings.json` bestand, dat niet wordt gepubliceerd:
 
 ```json
 {
@@ -411,7 +416,7 @@ Stel bijvoorbeeld dat u inzicht in de voorbeeld toepassing van toepassingen wilt
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het bijwerken van het bestand host. json](functions-reference.md#fileupdate)
+> [Meer informatie over het bijwerken van de host.jsvoor het bestand](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
 > [Algemene instellingen in omgevings variabelen weer geven](functions-app-settings.md)

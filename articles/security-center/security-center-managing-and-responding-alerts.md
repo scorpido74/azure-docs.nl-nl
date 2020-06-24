@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398407"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769766"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center
 
@@ -58,21 +58,26 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 1. Nadat u de informatie hebt bekeken, klikt u op een bron die is aangevallen.
 
+    In het linkerdeel venster van de pagina beveiligings waarschuwing wordt informatie op hoog niveau weer gegeven met betrekking tot de beveiligings waarschuwing: titel, Ernst, status, activiteit tijd, beschrijving van de verdachte activiteit en de betrokken resource. Naast de betreffende resource bevinden de Azure-Tags die relevant zijn voor de resource. Gebruik deze om de organisatie context van de resource af te leiden bij het onderzoeken van de waarschuwing.
+
+    Het rechterdeel venster bevat het tabblad **waarschuwings Details** met meer details over de waarschuwing die u kan helpen bij het onderzoeken van het probleem: IP-adressen, bestanden, processen en meer.
+     
     ![Suggesties voor wat u moet doen over beveiligings waarschuwingen](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    De sectie **algemene informatie** kan inzicht bieden in wat de beveiligings waarschuwing heeft geactiveerd. Hierin worden gegevens weer gegeven, zoals de doel resource, het bron-IP-adres (indien van toepassing), als de waarschuwing nog steeds actief is en aanbevelingen voor het oplossen van problemen.  
+    In het rechterdeel venster vindt u ook het tabblad **actie ondernemen** . Gebruik dit tabblad om verdere acties te ondernemen met betrekking tot de beveiligings waarschuwing. Acties zoals:
+    - *De dreiging verminderen* : Hiermee worden hand matige herstel stappen voor deze beveiligings waarschuwing geboden
+    - *Toekomstige aanvallen voor komen* : bevat aanbevelingen voor beveiliging om de kwets baarheid te verminderen, de beveiliging postuur te verbeteren en toekomstige aanvallen te voor komen
+    - *Automatische reactie activeren* : biedt de mogelijkheid om een logische app te activeren als reactie op deze beveiligings waarschuwing
+    - *Vergelijk bare waarschuwingen onderdrukken* : biedt de mogelijkheid om toekomstige waarschuwingen met vergelijk bare kenmerken te onderdrukken als de waarschuwing niet relevant is voor uw organisatie
 
-    > [!NOTE]
-    >In sommige gevallen is het bron-IP-adres niet beschikbaar. sommige logboeken voor Windows-beveiligings gebeurtenissen bevatten niet het IP-adres.
+    ![Tabblad actie uitvoeren](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. De herstelstappen die door Security Center worden voorgesteld, verschillen per beveiligingswaarschuwing. Volg deze voor elke waarschuwing. 
 
-    In sommige gevallen moet u, om een beveiligings waarschuwing te verminderen, mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren. 
+
 
 ## <a name="see-also"></a>Zie ook
 
-In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over Security Center:
+In dit document hebt u geleerd hoe u beveiligings waarschuwingen kunt weer geven. Raadpleeg de volgende pagina's voor gerelateerde materialen:
 
-- [De Microsoft Learn-module voor het gebruik van de waarschuwings mogelijkheden van Azure Security Center om bedreigingen te bekijken en te reageren](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
-* [Beveiligings incidenten afhandelen](security-center-incident.md)
+- [Regels voor het onderdrukken van waarschuwingen configureren](alerts-suppression-rules.md)
+- [Automatische reacties op waarschuwingen en aanbevelingen automatiseren met werk stroom automatisering](workflow-automation.md)

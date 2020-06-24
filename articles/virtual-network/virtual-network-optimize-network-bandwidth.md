@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86785ada1d5b55a1eaa7c81243dd0b6c39087e1c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75690891"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695960"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Netwerk doorvoer optimaliseren voor virtuele Azure-machines
 
@@ -29,7 +29,7 @@ Azure virtual machines (VM) hebben standaard netwerk instellingen die verder kun
 
 Als uw Windows-VM [versneld netwerken](create-vm-accelerated-networking-powershell.md)ondersteunt, is het inschakelen van deze functie de optimale configuratie voor door voer. Voor alle andere Windows-Vm's kan het gebruik van schalen aan de ontvangst zijde (RSS) een hogere maximale door Voer bereiken dan een virtuele machine zonder RSS. RSS is mogelijk standaard uitgeschakeld in een Windows-VM. Voer de volgende stappen uit om te bepalen of RSS is ingeschakeld en schakel deze in als deze momenteel is uitgeschakeld:
 
-1. Controleer of RSS is ingeschakeld voor een netwerk adapter met de `Get-NetAdapterRss` Power shell-opdracht. In het volgende voor beeld van de uitvoer `Get-NetAdapterRss`die wordt geretourneerd door, is RSS niet ingeschakeld.
+1. Controleer of RSS is ingeschakeld voor een netwerk adapter met de `Get-NetAdapterRss` Power shell-opdracht. In het volgende voor beeld van de uitvoer die wordt geretourneerd door `Get-NetAdapterRss` , is RSS niet ingeschakeld.
 
     ```powershell
     Name                    : Ethernet

@@ -3,24 +3,24 @@ title: Automatische versnelling bij het aanmelden configureren met behulp van Ho
 description: Meer informatie over het configureren van beleid voor het detecteren van basis-Realms voor Azure Active Directory authenticatie voor federatieve gebruikers, met inbegrip van automatische versnelling en domein hints.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690507"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763581"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory aanmeldings gedrag configureren voor een toepassing met behulp van een beleid voor het detecteren van een thuis domein
 
@@ -81,8 +81,8 @@ Zie de [Enterprise Mobility + Security Blog](https://cloudblogs.microsoft.com/en
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Beleid voor het detecteren van basis-Realms voor automatische versnelling
 Sommige toepassingen bieden geen manier om de verificatie aanvraag te configureren die ze verzenden. In dergelijke gevallen is het niet mogelijk domein hints te gebruiken voor het beheren van automatische versnelling. Automatische versnelling kan via het beleid worden geconfigureerd om hetzelfde gedrag te krijgen.  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>Directe verificatie inschakelen voor oudere toepassingen
-De aanbevolen procedure is voor toepassingen om AAD-bibliotheken en interactieve aanmelding te gebruiken om gebruikers te verifiëren. De bibliotheken zorgen voor de federatieve gebruikers stromen.  Soms worden verouderde toepassingen niet geschreven om de Federatie te begrijpen. Ze voeren geen Home realm-detectie uit en werken niet met het juiste federatieve eind punt om een gebruiker te verifiëren. Als u wilt, kunt u HRD-beleid gebruiken om specifieke verouderde toepassingen in te scha kelen waarmee gebruikers naam/wacht woord referenties worden ingediend om rechtstreeks met Azure Active Directory te verifiëren. Wachtwoord hash-synchronisatie moet zijn ingeschakeld. 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Directe ROPC-verificatie van federatieve gebruikers inschakelen voor oudere toepassingen
+De aanbevolen procedure is voor toepassingen om AAD-bibliotheken en interactieve aanmelding te gebruiken om gebruikers te verifiëren. De bibliotheken zorgen voor de federatieve gebruikers stromen.  Soms worden verouderde toepassingen, met name die van ROPC-subsidies, de gebruikers naam en het wacht woord rechtstreeks naar Azure AD verzenden en worden ze niet geschreven om de Federatie te begrijpen. Ze voeren geen Home realm-detectie uit en werken niet met het juiste federatieve eind punt om een gebruiker te verifiëren. Als u wilt, kunt u HRD-beleid gebruiken om specifieke verouderde toepassingen in te scha kelen die referenties voor gebruikers naam/wacht woord indienen met behulp van de ROPC-toekenning om rechtstreeks met Azure Active Directory te verifiëren. Wachtwoord hash-synchronisatie moet zijn ingeschakeld. 
 
 > [!IMPORTANT]
 > Schakel directe verificatie alleen in als wachtwoord-hash-synchronisatie is ingeschakeld en u weet dat u deze toepassing kunt verifiëren zonder dat er beleids regels worden geïmplementeerd door uw on-premises IdP. Als u wacht woord-hash synchronisatie uitschakelt of Directory synchronisatie met AD Connect uit te scha kelen om welke reden dan ook, moet u dit beleid verwijderen om te voor komen dat u direct verificatie kunt gebruiken met behulp van een verouderde hash van het wacht woord.
@@ -110,7 +110,7 @@ Hier volgt een voor beeld van een HRD-beleids definitie:
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

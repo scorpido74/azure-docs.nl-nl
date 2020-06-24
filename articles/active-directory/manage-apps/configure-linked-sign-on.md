@@ -2,22 +2,22 @@
 title: Gekoppelde aanmelding voor Azure AD-apps-micro soft Identity-platform
 description: Gekoppelde eenmalige aanmelding (SSO) configureren voor uw Azure AD-zakelijke toepassingen in micro soft Identity platform (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063540"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763479"
 ---
 # <a name="configure-linked-sign-on"></a>Gekoppelde aanmelding configureren
 
@@ -31,7 +31,7 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een g
 
 1. Meld u bij [Azure Portal](https://portal.azure.com) aan als beheerder van de cloudtoepassing of als toepassingsbeheerder voor uw Azure Active Directory-tenant.
 
-1. Ga naar **Azure Active Directory** > **bedrijfs toepassingen**. Een wille keurig voor beeld van de toepassingen in uw Azure AD-Tenant wordt weer gegeven. 
+1. Ga naar **Azure Active Directory**  >  **bedrijfs toepassingen**. Een wille keurig voor beeld van de toepassingen in uw Azure AD-Tenant wordt weer gegeven. 
 
 1. Selecteer in het menu **toepassings type** **alle toepassingen**en selecteer vervolgens **Toep assen**.
 

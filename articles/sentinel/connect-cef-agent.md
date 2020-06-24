@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731649"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298987"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Stap 1: de logboek-doorstuur server implementeren
 
@@ -69,13 +69,13 @@ Kies een syslog-daemon om de juiste beschrijving te bekijken.
 
 1. **De syslog-daemon configureren:**
 
-    1. Opent poort 514 voor TCP-communicatie met het syslog- `/etc/rsyslog.conf`configuratie bestand.
+    1. Opent poort 514 voor TCP-communicatie met het syslog-configuratie bestand `/etc/rsyslog.conf` .
 
-    1. Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 `security-config-omsagent.conf` door een speciaal configuratie bestand `/etc/rsyslog.d/`in te voegen in de map syslog daemon.
+    1. Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 door een speciaal configuratie bestand in te voegen `security-config-omsagent.conf` in de map syslog daemon `/etc/rsyslog.d/` .
 
         Inhoud van het `security-config-omsagent.conf` bestand:
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. **Syslog-daemon opnieuw starten**
@@ -101,9 +101,9 @@ Kies een syslog-daemon om de juiste beschrijving te bekijken.
 
 1. **De syslog-daemon configureren:**
 
-    1. Opent poort 514 voor TCP-communicatie met het syslog- `/etc/syslog-ng/syslog-ng.conf`configuratie bestand.
+    1. Opent poort 514 voor TCP-communicatie met het syslog-configuratie bestand `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 `security-config-omsagent.conf` door een speciaal configuratie bestand `/etc/syslog-ng/conf.d/`in te voegen in de map syslog daemon.
+    1. Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 door een speciaal configuratie bestand in te voegen `security-config-omsagent.conf` in de map syslog daemon `/etc/syslog-ng/conf.d/` .
 
         Inhoud van het `security-config-omsagent.conf` bestand:
 
@@ -127,7 +127,7 @@ Kies een syslog-daemon om de juiste beschrijving te bekijken.
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u de Log Analytics-agent implementeert voor het verbinden van CEF-apparaten met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+In dit document hebt u geleerd hoe u de Log Analytics-agent implementeert voor het verbinden van CEF-apparaten met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
 

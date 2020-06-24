@@ -2,22 +2,22 @@
 title: De beheerder-werk stroom voor het beheer van toestemming configureren-Azure Active Directory | Microsoft Docs
 description: Informatie over het configureren van een manier voor eind gebruikers om toegang aan te vragen voor toepassingen waarvoor beheerders toestemming nodig is.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430202"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763615"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>De beheerder toestemming werk stroom configureren (preview-versie)
 
@@ -131,7 +131,7 @@ In de onderstaande tabel ziet u een overzicht van de scenario's en controle waar
 
 **Ik heb deze werk stroom ingeschakeld, maar bij het testen van de functionaliteit kan ik de nieuwe vraag ' goed keuring is vereist ' niet zien zodat ik toegang kan aanvragen?**
 
-Nadat de functie is ingeschakeld, kan het tot 60 minuten duren voordat eind gebruikers de update zien. U kunt controleren of de configuratie correct is uitgevoerd door de waarde **EnableAdminConsentRequests** in de `https://graph.microsoft.com/beta/settings` API weer te geven.
+Nadat de functie is ingeschakeld, kan het tot 60 minuten duren voordat eind gebruikers de update zien. U kunt controleren of de configuratie correct is uitgevoerd door de waarde **EnableAdminConsentRequests** in de API weer te geven `https://graph.microsoft.com/beta/settings` .
 
 **Als revisor, waarom kan ik niet alle aanvragen zien die in behandeling zijn?**
 
@@ -153,9 +153,9 @@ Als u zich zorgen maakt over het verlenen van beheerders toestemming en het toes
 
 Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.md)voor meer informatie over het inzenden van toepassingen.
 
-[Configureren hoe eind gebruikers toestemming geven voor toepassingen](configure-user-consent.md)
+[Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
 
-[Toestemming van de beheerder voor de hele Tenant verlenen aan een toepassing](grant-admin-consent.md)
+[Een toepassing beheerderstoestemming verlenen voor de hele tenant](grant-admin-consent.md)
 
 [Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
 

@@ -2,45 +2,44 @@
 title: Afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server
 description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 68c95c74768f9d9628f92b061754c942b080565c
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 6/08/2020
+ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659977"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771373"
 ---
-# <a name="set-up-agentless-dependency-visualization"></a>Visualisatie van de afhankelijkheid van agents instellen 
+# <a name="analyze-machine-dependencies-agentless"></a>Machine-afhankelijkheden analyseren (zonder agents)
 
-In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden instelt in Azure Migrate: Server Assessment. [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren en begrijpen van afhankelijkheden tussen computers die u wilt beoordelen en die u wilt migreren naar Azure.
+In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden instelt in Azure Migrate: Server Assessment. [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren en begrijpen van afhankelijkheden tussen machines voor evaluatie en migratie naar Azure.
 
 
 > [!IMPORTANT]
-> Visualisatie van de afhankelijkheid van agents is momenteel alleen beschikbaar als preview-versie voor VMware-Vm's, gedetecteerd met het Azure Migrate: Server assessment tool.
+> Visualisatie van de afhankelijkheid van agents is momenteel beschikbaar als Preview voor VMware-Vm's die zijn gedetecteerd met het Azure Migrate: Server assessment tool.
 > Functies zijn mogelijk beperkt of onvolledig.
 > Deze preview wordt gedekt door de klant ondersteuning en kan worden gebruikt voor werk belastingen voor de productie.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
+## <a name="current-limitations"></a>Huidige beperkingen
 
+- In de weer gave afhankelijkheids analyse kunt u op dit moment geen server toevoegen aan of verwijderen uit een groep.
+- Een afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
+- De afhankelijkheids gegevens kunnen niet worden gedownload in de indeling tabellair.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- [Meer informatie over](concepts-dependency-visualization.md#agentless-analysis) afhankelijkheids analyse zonder agent.
-- [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) de vereisten voor en ondersteuning voor het instellen van de visualisatie van agentloze afhankelijkheden voor virtuele VMware-machines
-- Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-- Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
-- Zorg ervoor dat u een [Azure migrate apparaat](migrate-appliance.md) hebt ingesteld om uw on-premises machines te detecteren. Meer informatie over het instellen van een apparaat voor [VMware](how-to-set-up-appliance-vmware.md) -vm's. Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie.
+- [Bekijk](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) ondersteunde besturings systemen en de vereiste machtigingen.
+- Zorg ervoor dat:
+    - Een Azure Migrate project hebben. Als u dit niet doet, [maakt](how-to-add-tool-first-time.md) u er nu een.
+    - Controleer of u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) aan het project.
+    - Stel een [Azure migrate apparaat](migrate-appliance.md) in om on-premises machines te detecteren. [Stel een apparaat](how-to-set-up-appliance-vmware.md) in voor VMware-vm's. Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie.
+- Controleer of VMware-Hulpprogram Ma's (hoger dan 10,2) is geïnstalleerd op elke virtuele machine die u wilt analyseren.
 
-
-## <a name="current-limitations"></a>Huidige beperkingen
-
-- Nu kunt u een server niet toevoegen aan of verwijderen uit een groep in de weer gave afhankelijkheids analyse.
-- Een afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
-- De afhankelijkheids gegevens kunnen momenteel niet worden gedownload in de indeling tabellair.
 
 ## <a name="create-a-user-account-for-discovery"></a>Een gebruikers account maken voor detectie
 
-Stel een gebruikers account in zodat de server evaluatie toegang kan krijgen tot de virtuele machine voor detectie. [Meer informatie](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) over account vereisten.
+Stel een gebruikers account in zodat de server evaluatie toegang kan krijgen tot de virtuele machine om afhankelijkheden te detecteren. [Meer informatie](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) over de account vereisten voor virtuele Windows-en Linux-machines.
 
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Het gebruikers account toevoegen aan het apparaat
@@ -105,6 +104,25 @@ De afhankelijkheids gegevens worden geëxporteerd en gedownload in CSV-indeling.
 
 ![Afhankelijkheden exporteren](./media/how-to-create-group-machine-dependencies-agentless/export.png)
 
+### <a name="dependency-information"></a>Afhankelijkheids gegevens
+
+Elke rij in het geëxporteerde CSV komt overeen met een afhankelijkheid in de opgegeven tijds periode. 
+
+De volgende tabel bevat een overzicht van de velden in het geëxporteerde CSV-bestand. Houd er rekening mee dat Server naam-, toepassings-en proces velden alleen worden ingevuld voor servers waarop de afhankelijkheids analyse zonder agent is ingeschakeld.
+
+**Veldnaam** | **Details**
+--- | --- 
+Timeslot | De timeslot waarin de afhankelijkheid is waargenomen. <br/> Er worden momenteel afhankelijkheids gegevens vastgelegd in sleuven van zes uur.
+Naam van bron server | Naam van de bron machine 
+Bron toepassing | Naam van de toepassing op de bron machine 
+Bron proces | De naam van het proces op de bron machine 
+Naam van de doel server | Naam van de doel computer
+Doel-IP | IP-adres van de doel computer
+Doel toepassing | Naam van de toepassing op de doel computer
+Doel proces | De naam van het proces op de doel computer 
+Doelpoort | Poort nummer op de doel computer
+
+
 ## <a name="stop-dependency-discovery"></a>Detectie van afhankelijkheid stoppen
 
 Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
@@ -119,4 +137,4 @@ Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Groepeert de machines](how-to-create-a-group.md) voor evaluatie.
+[Groep machines](how-to-create-a-group.md) voor evaluatie.

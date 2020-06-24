@@ -5,17 +5,17 @@ description: Meer informatie over het ontwerpen en implementeren van een aangepa
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 90e654255691686225ddab3c294dcd62877d4622
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208428"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696402"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Aangepaste R-modules voor Azure Machine Learning Studio definiëren (klassiek)
 
@@ -34,10 +34,10 @@ Een aangepaste R-module wordt gedefinieerd door een zip-bestand met ten minste t
 Aanvullende hulp bestanden kunnen ook worden opgenomen in het zip-bestand dat de functionaliteit biedt die toegankelijk is vanuit de aangepaste module. Deze optie wordt beschreven in het gedeelte **argumenten** van de sectie met referentie **-elementen in het XML-definitie bestand** volgens het Snelstartgids-voor beeld.
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Voor beeld van Snelstartgids: een aangepaste R-module definiëren, inpakken en registreren
-In dit voor beeld ziet u hoe u de bestanden bouwt die vereist zijn voor een aangepaste R-module, ze inpakken in een zip-bestand en de module vervolgens registreren in uw Machine Learning-werk ruimte. Het voorbeeld bestand zip-pakket en voorbeeld bestanden kunnen worden gedownload van [CustomAddRows. zip](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+In dit voor beeld ziet u hoe u de bestanden bouwt die vereist zijn voor een aangepaste R-module, ze inpakken in een zip-bestand en de module vervolgens registreren in uw Machine Learning-werk ruimte. Het voorbeeld bestand zip-pakket en voorbeeld bestanden kunnen worden gedownload van een [gedownload CustomAddRows.zip](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>Het bron bestand
-Bekijk het voor beeld van een aangepaste module voor het **toevoegen van rijen** waarmee de standaard implementatie van de module **rijen toevoegen** wordt gebruikt voor het samen voegen van rijen (waarnemingen) van twee gegevens sets (Data frames). In de Standard-module **Rows toevoegen** worden de rijen van de tweede invoer-gegevensset toegevoegd aan het einde van de eerste invoer `rbind` gegevensset met behulp van de algoritme. De aangepaste `CustomAddRows` functie accepteert op dezelfde manier twee gegevens sets, maar accepteert ook een para meter voor een Boole-swap als extra invoer. Als de para meter swap is ingesteld op **False**, wordt dezelfde gegevensset geretourneerd als de standaard implementatie. Maar als de para meter swap **True**is, voegt de functie rijen van de eerste invoer-gegevensset toe aan het einde van de tweede gegevensset in plaats daarvan. Het bestand CustomAddRows. R dat de implementatie bevat van de R `CustomAddRows` -functie die wordt weer gegeven door de module **aangepaste add rows** , heeft de volgende R-code.
+Bekijk het voor beeld van een aangepaste module voor het **toevoegen van rijen** waarmee de standaard implementatie van de module **rijen toevoegen** wordt gebruikt voor het samen voegen van rijen (waarnemingen) van twee gegevens sets (Data frames). In de Standard-module **Rows toevoegen** worden de rijen van de tweede invoer-gegevensset toegevoegd aan het einde van de eerste invoer gegevensset met behulp van de `rbind` algoritme. De aangepaste `CustomAddRows` functie accepteert op dezelfde manier twee gegevens sets, maar accepteert ook een para meter voor een Boole-swap als extra invoer. Als de para meter swap is ingesteld op **False**, wordt dezelfde gegevensset geretourneerd als de standaard implementatie. Maar als de para meter swap **True**is, voegt de functie rijen van de eerste invoer-gegevensset toe aan het einde van de tweede gegevensset in plaats daarvan. Het bestand CustomAddRows. R dat de implementatie bevat van de R-functie die wordt `CustomAddRows` weer gegeven door de module **aangepaste add rows** , heeft de volgende R-code.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -52,7 +52,7 @@ Bekijk het voor beeld van een aangepaste module voor het **toevoegen van rijen**
     } 
 
 ### <a name="the-xml-definition-file"></a>Het XML-definitie bestand
-Als u deze `CustomAddRows` functie beschikbaar wilt maken als de module Azure machine learning Studio (klassiek), moet er een XML-definitie bestand worden gemaakt om op te geven hoe de module **aangepaste rijen toevoegen** eruit moet zien en zich gedraagt. 
+Als u deze functie beschikbaar wilt `CustomAddRows` maken als de module Azure machine learning Studio (klassiek), moet er een XML-definitie bestand worden gemaakt om op te geven hoe de module **aangepaste rijen toevoegen** eruit moet zien en zich gedraagt. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -92,7 +92,7 @@ Het is belang rijk om te weten dat de waarde van de **id-** kenmerken van de **i
 Het kenmerk **id** voor het element **output** komt daarentegen niet overeen met een van de variabelen in het R-script. Als er meer dan één uitvoer vereist is, retourneert eenvoudigweg een lijst van de R-functie met *de resultaten die in dezelfde volg orde* zijn geplaatst als **uitvoer** elementen die in het XML-bestand worden gedefinieerd.
 
 ### <a name="package-and-register-the-module"></a>De module inpakken en registreren
-Sla deze twee bestanden op als *CustomAddRows. R* en *CustomAddRows. XML* en voer de twee bestanden vervolgens samen in een *CustomAddRows. zip* -bestand.
+Sla deze twee bestanden op als *CustomAddRows. R* en *CustomAddRows.xml* en voer de twee bestanden vervolgens samen in een *CustomAddRows.zip* bestand.
 
 Als u deze wilt registreren in uw Machine Learning-werk ruimte, gaat u naar uw werk ruimte in Azure Machine Learning Studio (klassiek), klikt u op de knop **+ Nieuw** aan de onderkant en kiest u **module-> van zip-pakket** om de nieuwe aangepaste module voor het **toevoegen van rijen** te uploaden.
 
@@ -176,7 +176,7 @@ Voor aangepaste R-modules moet de ID voor een zip-poort niet overeenkomen met de
 
 Voor uitvoer in aangepaste R-modules hoeft de waarde van het kenmerk id niet overeen te komen met iets in het R **-** script, maar dit moet uniek zijn. Voor een enkele module-uitvoer moet de retour waarde van de functie R een *Data. frame*zijn. Als u meer dan één object van een ondersteund gegevens type wilt uitvoeren, moeten de juiste uitvoer poorten worden opgegeven in het XML-definitie bestand en moeten de objecten als een lijst worden geretourneerd. De uitvoer objecten worden toegewezen aan uitvoer poorten van links naar rechts, waarbij de volg orde wordt weer gegeven waarin de objecten in de geretourneerde lijst worden geplaatst.
 
-Als u bijvoorbeeld de module **aangepaste rijen toevoegen** wilt wijzigen in uitvoer van de oorspronkelijke twee gegevens sets, *dataset1* en *dataset2*, naast de nieuwe gekoppelde gegevensset, *gegevensset*(in een volg orde, van links naar rechts, zoals: *DataSet*, *dataset1*, *Dataset2*), definieert u als volgt de uitvoer poorten in het bestand CustomAddRows. XML:
+Als u bijvoorbeeld de module **aangepaste rijen toevoegen** wilt wijzigen in uitvoer van de oorspronkelijke twee gegevens sets, *dataset1* en *dataset2*, naast de nieuwe gekoppelde gegevensset, *gegevensset*(in een volg orde, van links naar rechts, zoals: *DataSet*, *dataset1*, *dataset2*), definieert u de uitvoer poorten in het CustomAddRows.xml-bestand als volgt:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -281,13 +281,13 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
   * **allowedTypes** : Hiermee filtert u de kolom typen waaruit u kunt kiezen. Geldige waarden zijn: 
     
     * Numeriek
-    * Booleaans
+    * Boolean
     * Categorische gegevens
     * Tekenreeks
     * Label
     * Functie
     * Score
-    * Alle
+    * Alles
   * **standaard** -geldige standaard selecties voor de kolom kiezer zijn onder andere: 
     
     * Geen
@@ -310,7 +310,7 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     * AllLabel
     * AllFeature
     * AllScore
-    * Alle
+    * Alles
 
 **Dropdown**: een door de gebruiker opgegeven lijst met opsommings (vervolg keuzelijst). De vervolg keuzelijst items worden opgegeven in het **Eigenschappen** element met behulp van een **item** -element. De **id** voor elk **item** moet uniek zijn en een geldige R-variabele zijn. De waarde van de **naam** van een **item** fungeert als de tekst die u ziet en de waarde die wordt door gegeven aan de functie R.
 
@@ -356,7 +356,7 @@ U kunt het hulp bestand RemoveDupNARows. R in de CustomAddRows-functie als bron 
         return (dataset)
     }
 
-Upload vervolgens een zip-bestand met ' CustomAddRows. R ', ' CustomAddRows. XML ' en ' RemoveDupNARows. R ' als een aangepaste R-module.
+Upload vervolgens een zip-bestand met ' CustomAddRows. R ', ' CustomAddRows.xml ' en ' RemoveDupNARows. R ' als een aangepaste R-module.
 
 ## <a name="execution-environment"></a>Uitvoerings omgeving
 De uitvoerings omgeving voor het R-script maakt gebruik van dezelfde versie van R als de **script module Execute r** en kan dezelfde standaard pakketten gebruiken. U kunt ook extra R-pakketten toevoegen aan uw aangepaste module door deze op te nemen in het aangepaste module zip-pakket. Laad ze in uw R-script net zoals u dat in uw eigen R-omgeving zou doen. 

@@ -3,25 +3,25 @@ title: Een toegewezen toepassing wordt niet weer gegeven in het toegangs venster
 description: Problemen oplossen met een toepassing die niet wordt weer gegeven in het toegangs venster
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69f5196484b841e8f0de72ce52ae48e00963f6f5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67272758"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760992"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Een toegewezen toepassing wordt niet weer gegeven in het toegangs venster
 
@@ -135,7 +135,7 @@ Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor
 
     2. Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
 
-13. Klik **op &lt;toepassings naam&gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u de Url's voor meta gegevens en het certificaat dat vereist is voor het instellen van SSO met de toepassing.
+13. Klik **op &lt; toepassings naam &gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u de Url's voor meta gegevens en het certificaat dat vereist is voor het instellen van SSO met de toepassing.
 
 14. Klik op **Opslaan** om de configuratie op te slaan.
 
@@ -252,7 +252,7 @@ Volg de onderstaande stappen voor het configureren van eenmalige aanmelding voor
 
     2. Klik op **opslaan.** U kunt het nieuwe kenmerk in de tabel zien.
 
-14. Klik **op &lt;toepassings naam&gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u Azure AD-Url's en-certificaten die vereist zijn voor de toepassing.
+14. Klik **op &lt; toepassings naam &gt; configureren** voor toegang tot documentatie over het configureren van eenmalige aanmelding in de toepassing. Daarnaast hebt u Azure AD-Url's en-certificaten die vereist zijn voor de toepassing.
 
 #### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Gebruikers-id selecteren en gebruikers kenmerken toevoegen die naar de toepassing moeten worden verzonden
 

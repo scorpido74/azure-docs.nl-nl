@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87f1fcfa08ef2b7d2e4f72588eff8576c5ace146
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548683"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254290"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection-flexibele oplossingen ontwerpen
 
@@ -30,6 +30,7 @@ Naast de core DDoS-beveiliging in het platform biedt [Azure DDoS Protection Stan
 
 ![De rol van Azure DDoS Protection bij het beveiligen van klanten en een virtueel netwerk van een aanvaller](./media/ddos-best-practices/image1.png)
 
+Zie de [Azure-beveiligings basislijn voor DDoS Protection](ddos-protection-security-baseline.md)voor beveiligings aanbevelingen met betrekking tot deze technologie.
 
 ## <a name="fundamental-best-practices"></a>Best practices voor de basis
 
@@ -97,7 +98,7 @@ DDoS Protection Standard maakt voor de duur van een DDoS-aanval uitgebreide tele
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS-beperkings beleid
 
-Selecteer in de Azure Portal**metrische gegevens** **controleren** > . Selecteer de resource groep in het deel venster **metrische gegevens** , selecteer een resource type voor het **open bare IP-adres**en selecteer uw open bare Azure IP-adres. DDoS-metrische gegevens worden weer gegeven in het deel venster **beschik bare metrische gegevens** .
+Selecteer in de Azure Portal **Monitor**  >  **metrische gegevens**controleren. Selecteer de resource groep in het deel venster **metrische gegevens** , selecteer een resource type voor het **open bare IP-adres**en selecteer uw open bare Azure IP-adres. DDoS-metrische gegevens worden weer gegeven in het deel venster **beschik bare metrische gegevens** .
 
 DDoS Protection Standard geldt voor elk openbaar IP-adres van de beveiligde bron, in het virtuele netwerk waarop DDoS is ingeschakeld, drie opties voor het beperken van de oplossing (TCP SYN, TCP en UDP). U kunt de drempel waarden voor het beleid weer geven door de metrische **inkomende pakketten te selecteren om de DDoS-beperking te activeren**.
 
@@ -235,7 +236,7 @@ In deze architectuur is DDoS Protection standaard ingeschakeld op het virtuele n
 
 #### <a name="paas-web-application"></a>PaaS-webtoepassing
 
-Deze referentie architectuur laat zien hoe een Azure App Service-toepassing wordt uitgevoerd in één regio. Deze architectuur bevat een reeks beproefde procedures voor een webtoepassing die gebruikmaakt van [Azure app service](https://azure.microsoft.com/documentation/services/app-service/) en [Azure SQL database](https://azure.microsoft.com/documentation/services/sql-database/).
+Deze referentie architectuur laat zien hoe een Azure App Service-toepassing wordt uitgevoerd in één regio. Deze architectuur bevat een reeks beproefde procedures voor een webtoepassing die gebruikmaakt van [Azure app service](https://azure.microsoft.com/documentation/services/app-service/)   en [Azure SQL database](https://azure.microsoft.com/documentation/services/sql-database/).
 Er is een stand-by-regio ingesteld voor failover-scenario's.
 
 ![Diagram van de referentie architectuur voor een PaaS-webtoepassing](./media/ddos-best-practices/image11.png)
@@ -268,8 +269,7 @@ Meer informatie over deze referentie architectuur kunt u vinden in de documentat
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Azure-beveiligings basislijn voor DDoS Protection](ddos-protection-security-baseline.md)
 * [Gedeelde verantwoordelijkheid in de cloud](shared-responsibility.md)
-
 * [Azure DDoS Protection product pagina](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Documentatie over Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)

@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 12ddc5fa74b7a1b42bbd64fde9ec3410b1c1e425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 588f01e84405cfa82afd84971dbcf06a958bf89d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606728"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299361"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Gids voor het oplossen van problemen met Apache Kafka voor Event Hubs
 In dit artikel vindt u tips voor het oplossen van problemen die kunnen optreden bij het gebruik van Event Hubs voor Apache Kafka. 
 
 ## <a name="server-busy-exception"></a>Uitzonde ring voor server bezet
-U kunt uitzonde ring op de server ontvangen vanwege Kafka-beperking. Met AMQP-clients retourneert Event Hubs onmiddellijk een **Server** -uitzonde ring bij het beperken van services. Het is gelijk aan het bericht ' Probeer het later opnieuw '. In Kafka worden berichten uitgesteld voordat ze worden voltooid. De lengte van de vertraging wordt geretourneerd in milliseconden, zoals `throttle_time_ms` in het antwoord maken/ophalen. In de meeste gevallen worden deze vertraagde aanvragen niet geregistreerd als ServerBusy-uitzonde ringen op Event Hubs Dash boards. In plaats daarvan moet de `throttle_time_ms` waarde van het antwoord worden gebruikt als een indicator die het ingerichte quotum heeft overschreden.
+U kunt uitzonde ring op de server ontvangen vanwege Kafka-beperking. Met AMQP-clients retourneert Event Hubs onmiddellijk een **Server** -uitzonde ring bij het beperken van services. Het is gelijk aan het bericht ' Probeer het later opnieuw '. In Kafka worden berichten uitgesteld voordat ze worden voltooid. De lengte van de vertraging wordt geretourneerd in milliseconden, zoals `throttle_time_ms` in het antwoord maken/ophalen. In de meeste gevallen worden deze vertraagde aanvragen niet geregistreerd als ServerBusy-uitzonde ringen op Event Hubs Dash boards. In plaats daarvan moet de waarde van het antwoord `throttle_time_ms` worden gebruikt als een indicator die het ingerichte quotum heeft overschreden.
 
 Als het verkeer buitensporig is, heeft de service het volgende gedrag:
 
@@ -35,11 +35,11 @@ Als het verkeer buitensporig is, heeft de service het volgende gedrag:
 ## <a name="no-records-received"></a>Er zijn geen records ontvangen
 U ziet mogelijk dat consumenten geen records ontvangen en voortdurend worden gebalanceerd. In dit scenario krijgen consumenten geen records en worden ze voortdurend opnieuw gebalanceerd. Er is geen uitzonde ring of fout opgetreden wanneer deze zich voordoet, maar in de Kafka-Logboeken wordt aangegeven dat de gebruikers zijn vastgelopen om de groep opnieuw samen te voegen en partities toe te wijzen. Er zijn enkele mogelijke oorzaken:
 
-- Zorg ervoor dat u `request.timeout.ms` ten minste de aanbevolen waarde 60000 hebt en dat u `session.timeout.ms` ten minste de aanbevolen waarde van 30000 hebt. Als deze instellingen te laag zijn, kunnen er time-outs voor de consumers optreden, waardoor er vervolgens herverdelingen worden ingesteld (waardoor vervolgens meer time-outs ontstaan, waardoor meer gespreiding wordt veroorzaakt, enzovoort) 
+- Zorg ervoor dat u ten `request.timeout.ms` minste de aanbevolen waarde 60000 hebt en dat u ten `session.timeout.ms` minste de aanbevolen waarde van 30000 hebt. Als deze instellingen te laag zijn, kunnen er time-outs voor de consumers optreden, waardoor er vervolgens herverdelingen worden ingesteld (waardoor vervolgens meer time-outs ontstaan, waardoor meer gespreiding wordt veroorzaakt, enzovoort) 
 - Als uw configuratie overeenkomt met de aanbevolen waarden en u nog steeds constante herverdeling ziet, kunt u een probleem openen (zorg ervoor dat u uw volledige configuratie in het probleem opneemt, zodat u de fout opsporing kunt uitvoeren).
 
 ## <a name="compressionmessage-format-version-issue"></a>Versie probleem compressie/bericht indeling
-Kafka ondersteunt compressie en Event Hubs voor Kafka momenteel niet. Fouten die een versie van een bericht indeling vermelden (bijvoorbeeld `The message format version on the broker does not support the request.`), worden veroorzaakt wanneer een client gecomprimeerde Kafka-berichten naar onze Brokers probeert te verzenden.
+Kafka ondersteunt compressie en Event Hubs voor Kafka momenteel niet. Fouten die een versie van een bericht indeling vermelden (bijvoorbeeld `The message format version on the broker does not support the request.` ), worden veroorzaakt wanneer een client gecomprimeerde Kafka-berichten naar onze Brokers probeert te verzenden.
 
 Als gecomprimeerde gegevens nood zakelijk zijn, comprimeert u uw gegevens voordat u deze naar de Brokers verzendt en decomprimeren nadat de ontvangst een geldige tijdelijke oplossing is. De bericht tekst is alleen een byte matrix voor de service, waardoor compressie op de client geen problemen ondervindt.
 

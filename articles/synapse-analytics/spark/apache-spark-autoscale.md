@@ -7,13 +7,14 @@ ms.reviewer: euang
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 6a627dfed3886a99a458a67d793c3ebbbdd0fb19
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 86e9b7425c8c75495a17b66af710d2c55e6e59ca
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644877"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194277"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisch schalen van Azure Synapse Analytics Apache Spark Pools
 
@@ -23,7 +24,7 @@ Apache Spark voor de functie automatisch schalen van een Azure Synapse Analytics
 
 Automatisch schalen bewaakt het Spark-exemplaar voortdurend en verzamelt de volgende metrische gegevens:
 
-|Metrisch|Beschrijving|
+|Gegevens|Beschrijving|
 |---|---|
 |Totale CPU in behandeling|Het totale aantal kern geheugens dat nodig is om de uitvoering van alle knoop punten in behandeling te starten.|
 |Totaal geheugen in behandeling|Het totale geheugen (in MB) dat is vereist om de uitvoering van alle knoop punten in behandeling te starten.|

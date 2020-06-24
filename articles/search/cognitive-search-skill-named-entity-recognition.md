@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127155e492b556ce1ce02b67cf0b0846b99ebcd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d7227a0eeaa496dd774eb962946a4ee85e22009
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791937"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080018"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Herkennings vaardigheid van benoemde entiteiten
 
-De **benoemde entiteit herkennings** kwalificatie haalt benoemde entiteiten uit tekst op. Beschik bare entiteiten zijn `person`onder `location` andere `organization`typen en.
+De **benoemde entiteit herkennings** kwalificatie haalt benoemde entiteiten uit tekst op. Beschik bare entiteiten zijn onder andere typen `person` `location` en `organization` .
 
 > [!IMPORTANT]
 > Kwalificatie voor erkenning van benoemde entiteiten wordt nu door [micro soft. skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)vervangen. Ondersteuning gestopt op 15 februari 2019 en de API is verwijderd uit het product op 2 mei 2019. Volg de aanbevelingen in [afgeschafte vaardig heden voor cognitieve zoek acties](cognitive-search-skill-deprecated.md) om naar een ondersteunde vaardigheid te migreren.
@@ -25,14 +25,14 @@ De **benoemde entiteit herkennings** kwalificatie haalt benoemde entiteiten uit 
 > [!NOTE]
 > Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Micro soft. skills. Text. NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)door. Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens moet opsplitsen voordat u deze naar de sleutel woord groep verstuurt, kunt u overwegen de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)te gebruiken.
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 
@@ -40,7 +40,7 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| categorieën    | Matrix van categorieën die moeten worden geëxtraheerd.  Mogelijke categorie typen: `"Person"`, `"Location"`, `"Organization"`. Als er geen categorie wordt opgegeven, worden alle typen geretourneerd.|
+| categorieën    | Matrix van categorieën die moeten worden geëxtraheerd.  Mogelijke categorie typen: `"Person"` , `"Location"` , `"Organization"` . Als er geen categorie wordt opgegeven, worden alle typen geretourneerd.|
 |defaultLanguageCode |  De taal code van de invoer tekst. De volgende talen worden ondersteund:`de, en, es, fr, it`|
 | minimumPrecision  | Een getal tussen 0 en 1. Als de precisie lager is dan deze waarde, wordt de entiteit niet geretourneerd. De standaardwaarde is 0.|
 
@@ -58,7 +58,7 @@ Parameters zijn hoofdlettergevoelig.
 | personen      | Een matrix met teken reeksen waarbij elke teken reeks de naam van een persoon vertegenwoordigt. |
 | locaties  | Een matrix met teken reeksen waarbij elke teken reeks een locatie vertegenwoordigt. |
 | organizations  | Een matrix met teken reeksen waarbij elke teken reeks een organisatie vertegenwoordigt. |
-| Rijg | Een matrix met complexe typen. Elk complex type bevat de volgende velden: <ul><li>categorie (`"person"`, `"organization"`, of `"location"`)</li> <li>waarde (de werkelijke naam van de entiteit)</li><li>offset (de locatie waar deze zich bevindt in de tekst)</li><li>betrouw baarheid (een waarde tussen 0 en 1 die aangeeft dat het vertrouwen van de waarde een werkelijke entiteit is)</li></ul> |
+| Rijg | Een matrix met complexe typen. Elk complex type bevat de volgende velden: <ul><li>categorie ( `"person"` , `"organization"` , of `"location"` )</li> <li>waarde (de werkelijke naam van de entiteit)</li><li>offset (de locatie waar deze zich bevindt in de tekst)</li><li>betrouw baarheid (een waarde tussen 0 en 1 die aangeeft dat het vertrouwen van de waarde een werkelijke entiteit is)</li></ul> |
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie
 

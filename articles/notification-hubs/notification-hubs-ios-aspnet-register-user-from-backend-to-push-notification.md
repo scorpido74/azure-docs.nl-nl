@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71211872"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253865"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>De huidige gebruiker registreren voor push meldingen met behulp van ASP.NET
 
@@ -61,7 +59,7 @@ In dit onderwerp wordt beschreven hoe u registratie van push meldingen met Azure
 
     - (IBAction)login:(id)sender;
     ```
-3. Maak een klasse met `DeviceInfo`de naam en kopieer de volgende code in het gedeelte interface van het bestand DeviceInfo. h:
+3. Maak een klasse `DeviceInfo` met de naam en kopieer de volgende code in het gedeelte interface van het bestand DeviceInfo. h:
 
     ```objc
     @property (readonly, nonatomic) NSString* installationId;
@@ -106,7 +104,7 @@ In dit onderwerp wordt beschreven hoe u registratie van push meldingen met Azure
     ```objc
     @property (strong, nonatomic) DeviceInfo* deviceInfo;
     ```
-6. Voeg de `didFinishLaunchingWithOptions` volgende code toe aan de methode in PushToUserAppDelegate. m:
+6. `didFinishLaunchingWithOptions`Voeg de volgende code toe aan de methode in PushToUserAppDelegate. m:
 
     ```objc
     self.deviceInfo = [[DeviceInfo alloc] init];
@@ -115,7 +113,7 @@ In dit onderwerp wordt beschreven hoe u registratie van push meldingen met Azure
     ```
 
     De eerste regel initialiseert de `DeviceInfo` Singleton. De tweede regel start de registratie voor push meldingen, die al aanwezig is als u de zelf studie [aan de slag met Notification hubs] al hebt voltooid.
-7. In PushToUserAppDelegate. m implementeert u de `didRegisterForRemoteNotificationsWithDeviceToken` methode in uw AppDelegate en voegt u de volgende code toe:
+7. In PushToUserAppDelegate. m implementeert u de methode `didRegisterForRemoteNotificationsWithDeviceToken` in uw AppDelegate en voegt u de volgende code toe:
 
     ```objc
     self.deviceInfo.deviceToken = deviceToken;
@@ -124,9 +122,9 @@ In dit onderwerp wordt beschreven hoe u registratie van push meldingen met Azure
     Hiermee stelt u het apparaat-token in voor de aanvraag.
 
    > [!NOTE]
-   > Op dit moment mogen er in deze methode geen andere code worden gebruikt. Als u al een aanroep hebt van de `registerNativeWithDeviceToken` methode die is toegevoegd tijdens het volt ooien van de zelf studie aan de [slag met Notification hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md) , moet u een opmerking of de aanroep verwijderen.
+   > Op dit moment mogen er in deze methode geen andere code worden gebruikt. Als u al een aanroep hebt van de `registerNativeWithDeviceToken` methode die is toegevoegd toen u de zelf studie [Push meldingen verzenden naar IOS-apps met behulp van Azure notification hubs](ios-sdk-get-started.md) , moet u een opmerking of de aanroep verwijderen.
 
-8. Voeg in `PushToUserAppDelegate.m` het bestand de volgende handler-methode toe:
+8. Voeg in het `PushToUserAppDelegate.m` bestand de volgende handler-methode toe:
 
     ```objc
     * (void) application:(UIApplication *) application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -158,7 +156,7 @@ In dit onderwerp wordt beschreven hoe u registratie van push meldingen met Azure
     Self.installationId.text = deviceInfo.installationId;
     ```
 
-11. Voeg de volgende eigenschappen toe aan de `PushToUserViewController.m`interface in:
+11. Voeg de volgende eigenschappen toe aan de interface in `PushToUserViewController.m` :
 
     ```objc
     @property (readonly) NSOperationQueue* downloadQueue;
@@ -258,4 +256,4 @@ Nu de client-app is bijgewerkt, keert u terug naar de gebruikers op de [hoogte v
 
 <!-- URLs. -->
 [Gebruikers op de hoogte stellen met Notification Hubs]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[Aan de slag met Notification Hubs]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Aan de slag met Notification Hubs]: ios-sdk-get-started.md

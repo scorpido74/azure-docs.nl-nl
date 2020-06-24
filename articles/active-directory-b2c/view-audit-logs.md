@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33fa1b063a2c45af41c0da6450bac3f86683653b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264217"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202973"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Toegang tot Azure AD B2C controle logboeken
 
@@ -53,19 +53,19 @@ Het deel venster activity Details bevat de volgende relevante informatie:
 
 |Sectie|Veld|Beschrijving|
 |-------|-----|-----------|
-| Activiteit | Naam | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
+| Activiteit | Name | Welke activiteit heeft plaatsgevonden. *Geef bijvoorbeeld een id_token voor de toepassing op*, waarmee de werkelijke gebruikers aanmelding wordt beëindigd. |
 | Gestart door (actor) | ObjectId | De **object-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. Deze id is niet zichtbaar in de Azure Portal, maar is toegankelijk via de Microsoft Graph-API. |
 | Gestart door (actor) | SPN | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 | Doel(en) | ObjectId | De **object-id** van de gebruiker die zich aanmeldt. |
 | Aanvullende details | TenantId | De **Tenant-id** van de Azure AD B2C Tenant. |
 | Aanvullende details | PolicyId | De **beleids-id** van de gebruikers stroom (het beleid) dat wordt gebruikt voor het ondertekenen van de gebruiker in. |
-| Aanvullende details | ApplicationId | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
+| Aanvullende details | ApplicationID | De **toepassings-id** van de B2C-toepassing waarbij de gebruiker zich aanmeldt. |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Audit logboeken weer geven in de Azure Portal
 
 De Azure Portal biedt toegang tot de audit logboek gebeurtenissen in uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Ga naar de map die uw Azure AD B2C-Tenant bevat en blader vervolgens naar **Azure AD B2C**.
 1. Selecteer onder **activiteiten** in het linkermenu **audit logboeken**.
 
@@ -100,9 +100,9 @@ Nadat u een toepassing met de juiste machtigingen hebt geregistreerd, raadpleegt
 
 ### <a name="access-the-api"></a>Toegang tot de API
 
-Als u Azure AD B2C controle logboek gebeurtenissen via de API wilt downloaden, filtert u `B2C` de logboeken op de categorie. Als u wilt filteren op categorie, `filter` gebruikt u de query reeks parameter wanneer u het Azure AD Reporting API-eind punt aanroept.
+Als u Azure AD B2C controle logboek gebeurtenissen via de API wilt downloaden, filtert u de logboeken op de `B2C` categorie. Als u wilt filteren op categorie, gebruikt `filter` u de query reeks parameter wanneer u het Azure AD Reporting API-eind punt aanroept.
 
-```HTTP
+```http
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
@@ -158,7 +158,7 @@ if ($oauth.access_token -ne $null) {
 
 Hier volgt een voor beeld van de JSON-weer gave van de gebeurtenis activiteit die eerder in dit artikel is weer gegeven:
 
-```JSON
+```json
 {
     "id": "B2C_DQO3J_4984536",
     "category": "Authentication",

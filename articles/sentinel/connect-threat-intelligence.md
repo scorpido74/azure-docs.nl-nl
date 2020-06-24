@@ -5,25 +5,26 @@ documentationcenter: na
 author: yelevin
 manager: rkarlin
 editor: ''
-ms.service: security-center
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529098"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769870"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verbinding maken met gegevens van Threat Intelligence-providers
 
 > [!IMPORTANT]
 > De Threat Intelligence-gegevens connectors in azure Sentinel zijn momenteel beschikbaar als open bare preview.
-> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Met Azure Sentinel kunt u de bedreigings indicatoren importeren die uw organisatie gebruikt, waardoor de mogelijkheid van uw beveiligings analisten kan worden uitgebreid om bekende bedreigingen te detecteren en te priori teren. Verschillende functies van Azure Sentinel worden beschikbaar of zijn verbeterd:
 
@@ -70,7 +71,7 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 2. [API-machtigingen](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) voor de geregistreerde toepassing configureren: voeg de Microsoft Graph toepassings machtiging **ThreatIndicators. readwrite. OwnedBy** toe aan uw geregistreerde toepassing.
 
-3. Vraag uw Azure Active Directory Tenant beheerder om toestemming van de beheerder te verlenen aan de geregistreerde toepassing voor uw organisatie. Vanuit de Azure portal: **Azure Active Directory** > **app-registraties** > **\<_app-naam_>** > **weer geven API-machtigingen** > **verlenen \<beheerders toestemming voor _Tenant naam_>**.
+3. Vraag uw Azure Active Directory Tenant beheerder om toestemming van de beheerder te verlenen aan de geregistreerde toepassing voor uw organisatie. Vanuit de Azure portal: **Azure Active Directory**  >  **app-registraties**  >  **\<_app name_>**  >  **weer geven van API-machtigingen**  >  **verlenen \<_tenant name_> beheerders toestemming voor **.
 
 4. Configureer uw TIP-product of-app die gebruikmaakt van directe integratie met Microsoft Graph Security tiIndicators API om indica toren naar Azure Sentinel te verzenden door het volgende op te geven:
     
@@ -80,11 +81,11 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
     
     c. Geef voor de actie waarschuwing op.
 
-5. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de connector **Threat Intelligence platforms (preview)** .
+5. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de connector **Threat Intelligence platforms (preview)** .
 
 6. Selecteer de **pagina connector openen**en vervolgens **verbinding maken**.
 
-7. Als u de risico indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken** > **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
+7. Als u de risico indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken**  >  **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure-Sentinel verbinden met TAXII-servers
 
@@ -96,7 +97,7 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 ## <a name="instructions"></a>Instructies
 
-1. Navigeer in het Azure Portal naar **Azure Sentinel** > **Data connectors** en selecteer vervolgens de connector **Threat Intelligence-TAXII (preview)** .
+1. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de connector **Threat Intelligence-TAXII (preview)** .
 
 2. Selecteer de **pagina connector openen**.
 
@@ -106,11 +107,11 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 5. Als u over extra TAXII 2,0-servers beschikt: Herhaal stap 3 en 4.
 
-6. Als u de risico indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken** > **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
+6. Als u de risico indicatoren wilt weer geven die in azure Sentinel zijn geïmporteerd, gaat u naar **Azure Sentinel-logs-logboeken**  >  **SecurityInsights**en vouwt u vervolgens **ThreatIntelligenceIndicator**uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit document hebt u geleerd hoe u uw Threat Intelligence-provider verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over de Azure-Sentinel.
 
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).

@@ -9,11 +9,11 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280181"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695824"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-ondersteuning voor Azure App Service onder Linux
 
@@ -23,7 +23,7 @@ ms.locfileid: "79280181"
 
 U kunt ook rechtstreeks vanuit uw lokale ontwikkel computer verbinding maken met de container via SSH en SFTP.
 
-## <a name="open-ssh-session-in-browser"></a>SSH-sessie openen in browser
+## <a name="open-ssh-session-in-browser"></a>SSH-sessie in de browser openen
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
@@ -41,7 +41,7 @@ Met TCP-tunneling kunt u een netwerk verbinding maken tussen uw ontwikkel comput
 
 Om aan de slag te gaan, moet u [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest)installeren. Open [Azure Cloud shell](../../cloud-shell/overview.md)om te zien hoe het werkt zonder Azure CLI te installeren. 
 
-Open een externe verbinding met uw app met behulp van de opdracht [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . Geef _ \<het abonnement-id>_ \_ \<, _ \<de groeps naam>_ en de>_ van de app-naam op voor uw app.
+Open een externe verbinding met uw app met behulp van de opdracht [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . Geef _\<subscription-id>_ _\<group-name>_ en \_ \<app-name> _ op voor uw app.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -64,7 +64,7 @@ Open een SSH-sessie met uw container met de client van uw keuze, met behulp van 
 ssh root@127.0.0.1 -p <port>
 ```
 
-Wanneer u hierom wordt gevraagd `yes` , typt u om door te gaan met verbinding maken. U wordt vervolgens gevraagd om het wacht woord. Gebruik `Docker!`, dat eerder is weer gegeven.
+Wanneer u hierom wordt gevraagd, typt `yes` u om door te gaan met verbinding maken. U wordt vervolgens gevraagd om het wacht woord. Gebruik `Docker!` , dat eerder is weer gegeven.
 
 ```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -87,7 +87,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 U bent nu verbonden met uw connector.  
 
-Voer de opdracht [boven](https://ss64.com/bash/top.html) uit. U zou het proces van uw app moeten kunnen zien in de lijst proces. In het voor beeld hieronder ziet u de uitvoer `PID 263`.
+Voer de opdracht [boven](https://ss64.com/bash/top.html) uit. U zou het proces van uw app moeten kunnen zien in de lijst proces. In het voor beeld hieronder ziet u de uitvoer `PID 263` .
 
 ```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -117,7 +117,7 @@ U kunt vragen en problemen in het [Azure-forum](https://docs.microsoft.com/answe
 
 Zie voor meer informatie over Web App for Containers:
 
-* [Inleiding tot externe fout opsporing van node. js-apps op Azure App Service van VS code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Introductie van externe fout opsporing van Node.js-apps op Azure App Service van VS code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [Een aangepaste Docker-installatiekopie uitvoeren voor Web App for Containers](quickstart-docker-go.md)
 * [.NET Core gebruiken in Azure App Service onder Linux](quickstart-dotnetcore.md)
 * [Ruby gebruiken in Azure App Service onder Linux](quickstart-ruby.md)

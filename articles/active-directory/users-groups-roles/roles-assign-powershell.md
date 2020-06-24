@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfcb00f56a3cc6f71729fbeaf317ce9447e120ed
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2180451a1d0c377af1e6c3e7377e64d9cb62ef8c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582603"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732052"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Aangepaste rollen met resource bereik toewijzen met behulp van Power shell in Azure Active Directory
 
@@ -52,7 +52,7 @@ U kunt nu beginnen met het gebruik van de cmdlets in de module. Zie voor een vol
 ## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Een rol toewijzen aan een gebruiker of Service-Principal met resource bereik
 
 1. Open de Azure AD preview Power shell-module.
-1. Meld u aan door de opdracht `Connect-AzureAD`uit te voeren.
+1. Meld u aan door de opdracht uit te voeren `Connect-AzureAD` .
 1. Maak een nieuwe rol met behulp van het volgende Power shell-script.
 
 ``` PowerShell

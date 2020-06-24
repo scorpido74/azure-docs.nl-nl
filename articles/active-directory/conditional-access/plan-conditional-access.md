@@ -4,21 +4,21 @@ description: Meer informatie over het ontwerpen van beleid voor voorwaardelijke 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 09/17/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d4ae1c9926c7ea1d18bf5c87fbed837edc2a5d5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ff25cb15257302ac806aa9480d6d7b911eb36d06
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641483"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253287"
 ---
-# <a name="plan--a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
+# <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
 Het plannen van de implementatie van voorwaardelijke toegang is van cruciaal belang om de toegangs strategie van uw organisatie voor apps en resources te bereiken.
 
@@ -28,11 +28,11 @@ Azure Active Directory (Azure AD) voor analyses van voorwaardelijke toegang (CA)
 
 ![Overzicht van voorwaardelijke toegang](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
-Micro soft biedt standaard voorwaardelijke beleids regels met de naam [beveiligings standaard instellingen](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) die een basis beveiligings niveau garanderen. Uw organisatie heeft echter mogelijk meer flexibiliteit nodig dan de standaard instellingen voor de beveiliging. U kunt voorwaardelijke toegang gebruiken voor het aanpassen van de standaard instellingen van de beveiliging met een meer granulariteit en voor het configureren van nieuwe beleids regels die voldoen aan uw vereisten.
+Micro soft biedt standaard voorwaardelijke beleids regels met de naam [beveiligings standaard instellingen](../fundamentals/concept-fundamentals-security-defaults.md) die een basis beveiligings niveau garanderen. Uw organisatie heeft echter mogelijk meer flexibiliteit nodig dan de standaard instellingen voor de beveiliging. U kunt voorwaardelijke toegang gebruiken voor het aanpassen van de standaard instellingen van de beveiliging met een meer granulariteit en voor het configureren van nieuwe beleids regels die voldoen aan uw vereisten.
 
 ## <a name="learn"></a>Learn
 
-Voordat u begint, moet u weten hoe [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) werkt en wanneer u deze moet gebruiken.
+Voordat u begint, moet u weten hoe [voorwaardelijke toegang](overview.md) werkt en wanneer u deze moet gebruiken.
 
 ### <a name="benefits"></a>Voordelen
 
@@ -40,7 +40,7 @@ De voor delen van het implementeren van voorwaardelijke toegang zijn:
 
 * Verhoog de productiviteit. Onderbreek alleen gebruikers met een aanmeldings voorwaarde als MFA wanneer een of meer signalen deze rechtvaardigen. Met CA-beleid kunt u bepalen wanneer gebruikers om een MFA wordt gevraagd, wanneer de toegang wordt geblokkeerd en wanneer ze een vertrouwd apparaat moeten gebruiken.
 
-* Risico's beheren. Het automatiseren van risico analyse met beleids voorwaarden betekent dat Risk ante aanmeldingen eenmaal zijn geïdentificeerd en opgelost of geblokkeerd. Als u voorwaardelijke toegang koppelt met [identiteits beveiliging](https://docs.microsoft.com/azure/active-directory/identity-protection/overview), die afwijkingen en verdachte gebeurtenissen detecteert, kunt u instellen wanneer toegang tot resources wordt geblokkeerd of gegatedd. 
+* Risico's beheren. Het automatiseren van risico analyse met beleids voorwaarden betekent dat Risk ante aanmeldingen eenmaal zijn geïdentificeerd en opgelost of geblokkeerd. Als u voorwaardelijke toegang koppelt met [identiteits beveiliging](../identity-protection/overview-identity-protection.md), die afwijkingen en verdachte gebeurtenissen detecteert, kunt u instellen wanneer toegang tot resources wordt geblokkeerd of gegatedd. 
 
 * Naleving en beheer van adressen. Met voorwaardelijke toegang kunt u de toegang tot toepassingen controleren, gebruiks voorwaarden weer geven voor toestemming en toegang beperken op basis van nalevings beleid.
 
@@ -48,86 +48,83 @@ De voor delen van het implementeren van voorwaardelijke toegang zijn:
 
 ### <a name="license-requirements"></a>Licentievereisten
 
-Zie [licentie vereisten voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+Zie [licentie vereisten voor voorwaardelijke toegang](overview.md).
 
 Als aanvullende functies vereist zijn, hebt u mogelijk ook gerelateerde licenties nodig. Zie [Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)voor meer informatie.
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Een werkende Azure AD-Tenant met Azure AD Premium of een proef licentie ingeschakeld. Maak indien nodig [een gratis versie](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een werkende Azure AD-Tenant met Azure AD Premium of een proef licentie ingeschakeld. [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
 
 * Een account met beheerders bevoegdheden voor voorwaardelijke toegang.
 
-* Een niet-beheerders gebruiker met een wacht woord dat u kent, zoals test User. Als u een gebruiker wilt maken, raadpleegt u [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+* Een niet-beheerders gebruiker met een wacht woord dat u kent, zoals test User. Als u een gebruiker wilt maken, raadpleegt u [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](../fundamentals/add-users-azure-active-directory.md).
 
-* Een groep waarvan de niet-beheerders gebruiker lid is. Als u een groep wilt maken, raadpleegt u [een groep maken en leden toevoegen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal).
+* Een groep waarvan de niet-beheerders gebruiker lid is. Als u een groep wilt maken, raadpleegt u [een groep maken en leden toevoegen in azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md).
 
 ### <a name="training-resources"></a>Trainings bronnen
 
 De volgende bronnen kunnen nuttig zijn als u meer informatie wilt over voorwaardelijke toegang:
 
 
-**Video's**
+#### <a name="videos"></a>Video's
+
 * [Wat is voorwaardelijke toegang?](https://youtu.be/ffMAw2IVO7A)
 * [Hoe kan ik voorwaardelijke toegang implementeren?](https://youtu.be/c_izIRNJNuk)
 * [Hoe kan ik CA-beleid implementeren voor eind gebruikers?](https://youtu.be/0_Fze7Zpyvc)
 * [Voorwaardelijke toegang met apparaatbesturingen](https://youtu.be/NcONUf-jeS4)
 * [Voorwaardelijke toegang met Azure MFA](https://youtu.be/Tbc-SU97G-w)
 * [Voorwaardelijke toegang in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)
-* [Voorwaardelijke toegang op basis van het apparaat](https://in.video.search.yahoo.com/search/video;_ylt=AwrPiBX0yHRcZiMAhFa7HAx.;_ylu=X3oDMTB0N2poMXRwBGNvbG8Dc2czBHBvcwMxBHZ0aWQDBHNlYwNwaXZz?p=conditional+access+videos+microsoft&fr2=piv-web&fr=mcafee)
 
-**Online cursussen op PluralSight**
+
+#### <a name="online-courses-on-pluralsight"></a>Online cursussen op PluralSight
+
 * [Identiteits beheer ontwerpen in Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
 * [Verificatie ontwerpen voor Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
 * [Autorisatie ontwerpen voor Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
 
-**Veelgestelde vragen**
-
-[Veelgestelde vragen over voorwaardelijke toegang voor Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/faqs)
 ## <a name="plan-the-deployment-project"></a>Het implementatie project plannen
 
 Houd rekening met de behoeften van uw organisatie terwijl u de strategie voor deze implementatie in uw omgeving bepaalt.
+
 ### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
+
 Wanneer technologie projecten mislukken, worden ze doorgaans als gevolg van niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de project rollen duidelijk zijn.
 
 ### <a name="plan-communications"></a>De communicatie plannen
+
 Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Communiceer proactief met uw gebruikers hoe hun ervaring verandert, wanneer deze wordt gewijzigd, en hoe u ondersteuning krijgt als u problemen ondervindt.
 
 ### <a name="plan-a-pilot"></a>Een pilot plannen
-Wanneer nieuwe beleids regels gereed zijn voor uw omgeving, implementeert u deze in fasen in de productie omgeving. Pas eerst een beleid toe op een kleine set gebruikers in een test omgeving en controleer of het beleid zich op de verwachte manier gedraagt. Bekijk [Aanbevolen procedures voor een pilot](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans).
+
+Wanneer nieuwe beleids regels gereed zijn voor uw omgeving, implementeert u deze in fasen in de productie omgeving. Pas eerst een beleid toe op een kleine set gebruikers in een test omgeving en controleer of het beleid zich op de verwachte manier gedraagt. Bekijk [Aanbevolen procedures voor een pilot](../fundamentals/active-directory-deployment-plans.md).
 
 > [!NOTE]
 > Voor het implementeren van nieuwe beleids regels die niet specifiek zijn voor beheerders, sluit u alle beheerders uit. Dit zorgt ervoor dat beheerders nog steeds toegang hebben tot het beleid en wijzigingen kunnen aanbrengen of intrekken als er een grote invloed is op de impact. Valideer het beleid altijd met kleinere gebruikers groepen voordat u toepast op alle gebruikers.
 
 ## <a name="understand-ca-policy-components"></a>Informatie over CA-beleids onderdelen
-
-CA-beleid is if-then-instructies: als aan een toegewezen voor waarde is voldaan, past u deze toegangs elementen toe. 
-
-![Overzicht van voorwaardelijke toegang](media/plan-conditional-access/10.png)
+CA-beleid is if-then-instructies: als aan een toewijzing wordt voldaan, past u deze toegangs elementen toe.
 
 Bij het configureren van CA-beleid worden de voor waarden *toewijzingen*genoemd. Met CA-beleid kunt u toegangs beheer op de apps van uw organisatie afdwingen op basis van bepaalde toewijzingen.
 
-![toewijzingen en toegangs beheer ](media/plan-conditional-access/ca-policy-access.png)
 
-
-Zie [buil ding a CA Policy](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies)(Engelstalig) voor meer informatie.
-
-[Toewijzingen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) definiëren de
-
-* [gebruikers en groepen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-users-groups) die door het beleid worden beïnvloed
-
-* [Cloud-apps of-acties](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps) waarop het beleid van toepassing is 
-
-* [voor waarden](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions) waaronder het beleid van toepassing is. 
-<p>
+Zie [buil ding a CA Policy](concept-conditional-access-policies.md)(Engelstalig) voor meer informatie.
 
 ![het scherm beleid maken](media/plan-conditional-access/create-policy.png)
 
-Instellingen voor [toegangs beheer](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) bepalen hoe een beleid wordt afgedwongen:
+[Toewijzingen](concept-conditional-access-policies.md#assignments) definiëren de
 
-* Toegang tot Cloud-apps [verlenen of blok keren](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-grant) .
+* [Gebruikers en groepen](concept-conditional-access-users-groups.md) die door het beleid worden beïnvloed
 
-* [Sessie besturings elementen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) maken beperkte ervaringen mogelijk binnen specifieke Cloud-apps.
+* [Cloud-apps of-acties](concept-conditional-access-cloud-apps.md) waarop het beleid van toepassing is 
+
+* [Voor waarden](concept-conditional-access-conditions.md) waaronder het beleid van toepassing is.
+
+Instellingen voor [toegangs beheer](concept-conditional-access-policies.md) bepalen hoe een beleid wordt afgedwongen:
+
+* Toegang tot Cloud-apps [verlenen of blok keren](concept-conditional-access-grant.md) .
+
+* [Sessie besturings elementen](concept-conditional-access-session.md) maken beperkte ervaringen mogelijk binnen specifieke Cloud-apps.
 
 ### <a name="ask-the-right-questions-to-build-your-policies"></a>Vraag de juiste vragen om uw beleid te bouwen
 
@@ -137,19 +134,19 @@ Documenteer de antwoorden op vragen voor elk beleid voordat u het bouwt.
 
 #### <a name="common-questions-about-assignments"></a>Veelgestelde vragen over toewijzingen
 
-[Gebruikers en groepen](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-users-groups)
+[Gebruikers en groepen](concept-conditional-access-users-groups.md)
 
 * Welke gebruikers en groepen worden opgenomen in of uitgesloten van het beleid?
 
 * Bevat dit beleid alle gebruikers, een specifieke groep gebruikers, Directory rollen of externe gebruikers?
 
-[Cloud-apps of acties](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps)
+[Cloud-apps of acties](concept-conditional-access-cloud-apps.md)
 
 * Op welke toepassing (en) wordt het beleid toegepast?
 
 * Welke gebruikers acties worden onderhevig aan dit beleid?
 
-[Voorwaarden](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions)
+[Voorwaarden](concept-conditional-access-conditions.md)
 
 * Welke platformen worden opgenomen in of uitgesloten van het beleid?
 
@@ -161,25 +158,25 @@ Documenteer de antwoorden op vragen voor elk beleid voordat u het bouwt.
 
 * Hebt u beleids regels die de uitzonde ring met Azure AD gekoppelde apparaten of hybride Azure AD-apparaten uit het beleid kunnen verbreken? 
 
-* Als u [identiteits beveiliging](https://docs.microsoft.com/azure/active-directory/identity-protection/overview)gebruikt, wilt u aanmeldings risico beveiliging opnemen?
+* Als u [identiteits beveiliging](../identity-protection/concept-identity-protection-risks.md)gebruikt, wilt u aanmeldings risico beveiliging opnemen?
 
 #### <a name="common-questions-about-access-controls"></a>Veelgestelde vragen over toegangs beheer
 
-[Verlenen of blok keren](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-grant) 
+[Verlenen of blok keren](concept-conditional-access-grant.md) 
 
 Wilt u toegang verlenen tot resources door een of meer van de volgende handelingen uit te voeren?
 
 * MFA vereisen
 
-* Vereisen dat het apparaat wordt gemarkeerd als compatibel
+* Vereisen dat het apparaat moet worden gemarkeerd als compatibel
 
 * Hybride Azure AD-aangesloten apparaat vereisen
 
-* Goedgekeurde client-app vereisen
+* Goedgekeurde client-apps vereisen
 
 * Beleid voor app-beveiliging vereisen
 
-[Sessie beheer](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)
+[Sessie beheer](concept-conditional-access-session.md)
 
 Wilt u een van de volgende toegangs besturings elementen afdwingen voor Cloud-apps?
 
@@ -197,7 +194,8 @@ Het is belang rijk om te begrijpen hoe toegangs tokens worden uitgegeven.
 
 ![Diagram voor het uitgeven van toegangs tokens](media/plan-conditional-access/CA-policy-token-issuance.png)
 
-**Met name als er geen toewijzing vereist is en er geen CA-beleid van kracht is, is het standaard gedrag om een toegangs token te verlenen**. 
+> [!NOTE]
+> Als er geen toewijzing is vereist en er geen CA-beleid van kracht is, is het standaard gedrag om een toegangs token te verlenen. 
 
 Denk bijvoorbeeld aan een beleid waarbij:
 
@@ -222,7 +220,7 @@ Het maken van een beleid voor elke app is niet efficiënt en leidt tot moeilijk 
 
 ### <a name="set-up-emergency-access-accounts"></a>Accounts voor nood toegang instellen
 
-Als u een beleid hebt geconfigureerd, kan het de organisaties van de Azure Portal vergren delen. Het beperken van de impact van de onbedoelde beheerder vergrendeling door twee of meer [accounts voor toegang tot een nood geval](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access) in uw organisatie te maken.
+Als u een beleid hebt geconfigureerd, kan het de organisaties van de Azure Portal vergren delen. Het beperken van de impact van de onbedoelde beheerder vergrendeling door twee of meer [accounts voor toegang tot een nood geval](../users-groups-roles/directory-emergency-access.md) in uw organisatie te maken.
 
 * Maak een gebruikers account dat is toegewezen aan beleids beheer en uitgesloten is van al uw beleids regels.
 
@@ -242,13 +240,13 @@ Het kan lastig zijn om het aantal en de namen van de gebruikers te voors pellen 
 * MFA vereisen
 * beleid voor aanmeldings Risico's implementeren
 
-Met de [modus alleen rapport](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only) kunnen beheerders de impact van het CA-beleid evalueren voordat ze in hun omgeving worden ingeschakeld.
+Met de [modus alleen rapport](concept-conditional-access-report-only.md) kunnen beheerders de impact van het CA-beleid evalueren voordat ze in hun omgeving worden ingeschakeld.
 
-Meer informatie over het [configureren van de modus alleen rapport voor een CA-beleid](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only).
+Meer informatie over het [configureren van de modus alleen rapport voor een CA-beleid](howto-conditional-access-report-only.md).
 
 ### <a name="plan-for-disruption"></a>Plan voor onderbreking
 
-Als u afhankelijk bent van één toegangs beheer, zoals MFA of een netwerk locatie, bent u gevoelig voor toegang tot fouten als dat ene toegangs beheer niet beschikbaar is of niet goed is geconfigureerd. [Plan strategieën](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls) voor het nemen van uw organisatie om het risico van vergren deling tijdens onvoorziene onderbrekingen te verminderen.
+Als u afhankelijk bent van één toegangs beheer, zoals MFA of een netwerk locatie, bent u gevoelig voor toegang tot fouten als dat ene toegangs beheer niet beschikbaar is of niet goed is geconfigureerd. [Plan strategieën](../authentication/concept-resilient-controls.md) voor het nemen van uw organisatie om het risico van vergren deling tijdens onvoorziene onderbrekingen te verminderen.
 
 ### <a name="set-naming-standards-for-your-policies"></a>Naamgevings standaarden instellen voor uw beleid
 
@@ -274,14 +272,14 @@ Een beschrijvende naam helpt u een overzicht te krijgen van de implementatie van
 
 #### <a name="naming-standards-for-emergency-access-controls"></a>Naamgevings regels voor toegangs beheer voor nood gevallen
 
-Naast uw actieve beleid, implementeert u uitgeschakeld beleid dat fungeert als secundaire, [flexibele toegangs controles in storingen of nood scenario's](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls). De naamgevings standaard voor het beleid voor nood gevallen omvat:
+Naast uw actieve beleid, implementeert u uitgeschakeld beleid dat fungeert als secundaire, [flexibele toegangs controles in storingen of nood scenario's](../authentication/concept-resilient-controls.md). De naamgevings standaard voor het beleid voor nood gevallen omvat:
 * Schakel IN nood gevallen aan het begin IN om de naam onder het andere beleid te laten opvallen.
 
 * De naam van de onderbreking moet van toepassing zijn op.
 
 * Een Volg nummer van een volg orde om de beheerder te helpen weten in welke volg orde het order beleid moet worden ingeschakeld.
 
-**Voorbeeld**
+**Hierbij**
 
 De volgende naam geeft aan dat dit beleid het eerste van vier beleids regels is om in te scha kelen als er sprake is van een MFA-onderbreking:
 
@@ -289,55 +287,61 @@ EM01-inschakelen IN nood gevallen: MFA-onderbreking [1/4]-Exchange share point: 
 
 ### <a name="exclude-countries-from-which-you-never-expect-a-sign-in"></a>Landen uitsluiten van waaruit u geen aanmelding verwacht.
 
-Met Azure Active Directory kunt u [benoemde locaties](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)maken. Maak een benoemde locatie die alle landen bevat van waaruit u nooit een aanmelding zou verwachten. Maak vervolgens een beleid voor alle apps die het aanmelden vanaf die benoemde locatie blok keren. **Zorg ervoor dat uw beheerders van dit beleid worden uitgesloten**.
+Met Azure Active Directory kunt u [benoemde locaties](location-condition.md)maken. Maak een benoemde locatie die alle landen bevat van waaruit u nooit een aanmelding zou verwachten. Maak vervolgens een beleid voor alle apps die het aanmelden vanaf die benoemde locatie blok keren. **Zorg ervoor dat uw beheerders van dit beleid worden uitgesloten**.
 
 ### <a name="plan-your-policy-deployment"></a>De implementatie van uw beleid plannen
 
 Wanneer nieuwe beleids regels gereed zijn voor uw omgeving, moet u elk beleid door nemen voordat u het uitbrengt om ongewenste resultaten te voor komen. Raadpleeg de volgende documentatie voor meer informatie over hoe beleid wordt toegepast en hoe u problemen kunt voor komen
 
-* [Wat u moet weten](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
+* [Wat u moet weten](best-practices.md)
 
-* [Wat u moet vermijden](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
+* [Wat u moet vermijden](best-practices.md)
 
 ## <a name="common-policies"></a>Algemene beleidsregels
 
 Bepaal bij het plannen van uw CA-beleids oplossing of u beleid moet maken om de volgende resultaten te krijgen.
 
+* [MFA vereisen](#require-mfa)
+* [Reageren op mogelijk gemanipuleerde accounts](#respond-to-potentially-compromised-accounts)
+* [Beheerde apparaten vereisen](#require-managed-devices)
+* [Goedgekeurde client toepassingen vereisen](#require-approved-client-apps)
+* [Toegang tot](#block-access)
+
 ### <a name="require-mfa"></a>MFA vereisen
 
 Algemene use cases voor het vereisen van MFA-toegang:
 
-* [Door beheerders](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-admin-mfa)
+* [Door beheerders](howto-conditional-access-policy-admin-mfa.md)
 
-* [Naar specifieke apps](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa)
+* [Naar specifieke apps](app-based-mfa.md)
 
-* [Voor alle gebruikers](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa)
+* [Voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)
 
-* [Vanaf netwerk locaties vertrouwt u niet](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)
+* [Vanaf netwerk locaties vertrouwt u niet](untrusted-networks.md)
 
-* [Voor Azure Management](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-azure-management)
+* [Voor Azure Management](howto-conditional-access-policy-azure-management.md)
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Reageren op mogelijk gemanipuleerde accounts
 
 Met CA-beleid kunt u automatische antwoorden op aanmeldingen implementeren door mogelijk verkraakte identiteiten. De waarschijnlijkheid dat een account wordt aangetast, wordt weer gegeven in de vorm van risico niveaus. Er zijn twee risico niveaus berekend door identiteits beveiliging: aanmeldings risico en gebruikers risico. De volgende drie standaard beleidsregels die kunnen worden ingeschakeld.
 
-* [Vereisen dat alle gebruikers zich registreren voor MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)
+* [Vereisen dat alle gebruikers zich registreren voor MFA](howto-conditional-access-policy-risk.md)
 
-* [Wachtwoord wijziging vereisen voor gebruikers met een hoog risico](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)
+* [Wachtwoord wijziging vereisen voor gebruikers met een hoog risico](howto-conditional-access-policy-risk.md)
 
-* [MFA vereisen voor gebruikers met gemiddeld of hoog aanmeldings risico](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)
+* [MFA vereisen voor gebruikers met gemiddeld of hoog aanmeldings risico](howto-conditional-access-policy-risk.md)
 
 ### <a name="require-managed-devices"></a>Beheerde apparaten vereisen
 
-De verspreiding van ondersteunde apparaten om toegang te krijgen tot uw Cloud bronnen helpt u bij het verbeteren van de productiviteit van uw gebruikers. Waarschijnlijk wilt u niet dat bepaalde resources in uw omgeving toegankelijk zijn voor apparaten met een onbekend beveiligings niveau. Voor deze bronnen [is vereist dat gebruikers alleen toegang tot deze resources hebben via een beheerd apparaat](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices).
+De verspreiding van ondersteunde apparaten om toegang te krijgen tot uw Cloud bronnen helpt u bij het verbeteren van de productiviteit van uw gebruikers. Waarschijnlijk wilt u niet dat bepaalde resources in uw omgeving toegankelijk zijn voor apparaten met een onbekend beveiligings niveau. Voor deze bronnen [is vereist dat gebruikers alleen toegang tot deze resources hebben via een beheerd apparaat](require-managed-devices.md).
 
 ### <a name="require-approved-client-apps"></a>Goedgekeurde client-apps vereisen
 
-Werk nemers gebruiken hun mobiele apparaten voor zowel privé-als werk taken. Voor BYOD-scenario's moet u bepalen of u het hele apparaat of alleen de gegevens erop wilt beheren. Als alleen gegevens en toegang wordt beheerd, kunt u [goedgekeurde Cloud-apps vereisen](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) die uw bedrijfs gegevens kunnen beveiligen. u kunt bijvoorbeeld vereisen dat e-mail berichten alleen toegankelijk zijn via Outlook Mobile en niet via een algemeen e-mail programma.
+Werk nemers gebruiken hun mobiele apparaten voor zowel privé-als werk taken. Voor BYOD-scenario's moet u bepalen of u het hele apparaat of alleen de gegevens erop wilt beheren. Als alleen gegevens en toegang wordt beheerd, kunt u [goedgekeurde Cloud-apps vereisen](app-based-conditional-access.md) die uw bedrijfs gegevens kunnen beveiligen. u kunt bijvoorbeeld vereisen dat e-mail berichten alleen toegankelijk zijn via Outlook Mobile en niet via een algemeen e-mail programma.
 
 ### <a name="block-access"></a>Toegang blokkeren
 
-De optie om [alle toegang te blok keren](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-block-access) , is krachtig. Het kan bijvoorbeeld worden gebruikt wanneer u een app migreert naar Azure AD, maar niet gereed bent voor iedereen om zich nog aan te melden. Toegang blok keren: 
+De optie om [alle toegang te blok keren](howto-conditional-access-policy-block-access.md) , is krachtig. Het kan bijvoorbeeld worden gebruikt wanneer u een app migreert naar Azure AD, maar niet gereed bent voor iedereen om zich nog aan te melden. Toegang blok keren: 
 
 * Onderdrukt alle andere toewijzingen voor een gebruiker
 
@@ -348,9 +352,9 @@ De optie om [alle toegang te blok keren](https://docs.microsoft.com/azure/active
 
 Andere veelvoorkomende scenario's waarin u de toegang tot uw gebruikers kunt blok keren:
 
-* [Bepaalde netwerk locaties blok keren](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location) voor toegang tot uw Cloud-apps. U kunt dit beleid gebruiken om bepaalde landen te blok keren waarvan u weet dat verkeer niet afkomstig mag zijn.
+* [Bepaalde netwerk locaties blok keren](howto-conditional-access-policy-location.md) voor toegang tot uw Cloud-apps. U kunt dit beleid gebruiken om bepaalde landen te blok keren waarvan u weet dat verkeer niet afkomstig mag zijn.
 
-* Azure AD biedt ondersteuning voor verouderde verificatie. Verouderde verificatie biedt echter geen ondersteuning voor MFA en voor veel omgevingen is het niet nodig om identiteits beveiliging te verhelpen. In dit geval kunt u [apps blok keren die gebruikmaken van verouderde verificatie](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication) om toegang te krijgen tot uw Tenant bronnen.
+* Azure AD biedt ondersteuning voor verouderde verificatie. Verouderde verificatie biedt echter geen ondersteuning voor MFA en voor veel omgevingen is het niet nodig om identiteits beveiliging te verhelpen. In dit geval kunt u [apps blok keren die gebruikmaken van verouderde verificatie](block-legacy-authentication.md) om toegang te krijgen tot uw Tenant bronnen.
 
 ## <a name="build-and-test-policies"></a>Beleid voor bouwen en testen
 
@@ -378,16 +382,14 @@ Het test plan is belang rijk voor een vergelijking tussen de verwachte resultate
 
 | Beleid| Scenario| Verwacht resultaat |
 | - | - | - |
-| [MFA vereisen wanneer dat niet aan het werk is](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)| Geautoriseerde gebruiker meldt zich aan bij de app op een vertrouwde locatie/werk| Gebruiker wordt niet gevraagd om MFA |
-| [MFA vereisen wanneer dat niet aan het werk is](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)| Geautoriseerde gebruiker meldt zich aan bij de app, maar niet op een vertrouwde locatie/werk| De gebruiker wordt gevraagd om te MFA en kan zich aanmelden |
-| [MFA vereisen (voor beheerder)](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)| De globale beheerder meldt zich aan bij de app| Beheerder wordt gevraagd om te MFA |
-| [Riskante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| Gebruiker meldt zich aan bij de app met een [Tor-Browser](https://microsoft.sharepoint.com/azure/active-directory/active-directory-identityprotection-playbook)| Beheerder wordt gevraagd om te MFA |
-| [Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)| Geautoriseerde gebruiker probeert zich aan te melden bij een bevoegd apparaat| Toegang verleend |
-| [Apparaatbeheer](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)| Geautoriseerde gebruiker probeert zich aan te melden vanaf een niet-geautoriseerd apparaat| Toegang geblokkeerd |
+| [MFA vereisen wanneer dat niet aan het werk is](untrusted-networks.md)| Geautoriseerde gebruiker meldt zich aan bij de app op een vertrouwde locatie/werk| Gebruiker wordt niet gevraagd om MFA |
+| [MFA vereisen wanneer dat niet aan het werk is](untrusted-networks.md)| Geautoriseerde gebruiker meldt zich aan bij de app, maar niet op een vertrouwde locatie/werk| De gebruiker wordt gevraagd om te MFA en kan zich aanmelden |
+| [MFA vereisen (voor beheerder)](howto-baseline-protect-administrators.md)| De globale beheerder meldt zich aan bij de app| Beheerder wordt gevraagd om te MFA |
+| [Riskante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| Gebruiker meldt zich aan bij de app met een niet-goedgekeurde browser| Beheerder wordt gevraagd om te MFA |
+| [Apparaatbeheer](require-managed-devices.md)| Geautoriseerde gebruiker probeert zich aan te melden bij een bevoegd apparaat| Toegang verleend |
+| [Apparaatbeheer](require-managed-devices.md)| Geautoriseerde gebruiker probeert zich aan te melden vanaf een niet-geautoriseerd apparaat| Toegang geblokkeerd |
 | [Wachtwoord wijziging voor Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| Geautoriseerde gebruiker meldt zich aan met de aangetaste referenties (aanmelden met een hoog risico)| De gebruiker wordt gevraagd om het wacht woord te wijzigen of de toegang wordt geblokkeerd op basis van uw beleid |
 
-
- 
 
 ### <a name="configure-the-test-policy"></a>Het test beleid configureren
 
@@ -401,7 +403,7 @@ Als u meer wilt weten over het maken van CA-beleid, raadpleegt u dit voor beeld:
 
 ### <a name="enable-the-policy-in-report-only-mode"></a>Het beleid in de modus alleen rapport inschakelen
 
-Als u de gevolgen van uw beleid wilt beoordelen, moet u eerst het beleid inschakelen in de [modus alleen rapport](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only). Alleen rapport beleidsregels worden geëvalueerd tijdens het aanmelden, maar granting Controls en sessie besturings elementen worden niet afgedwongen. Wanneer u het beleid opslaat in de modus alleen rapport, ziet u de invloed op real-time aanmeldingen in de aanmeldings Logboeken. Selecteer in de aanmeldings Logboeken een gebeurtenis en navigeer naar het tabblad alleen rapport om het resultaat van elk rapport beleid te bekijken.
+Als u de gevolgen van uw beleid wilt beoordelen, moet u eerst het beleid inschakelen in de [modus alleen rapport](concept-conditional-access-report-only.md). Alleen rapport beleidsregels worden geëvalueerd tijdens het aanmelden, maar granting Controls en sessie besturings elementen worden niet afgedwongen. Wanneer u het beleid opslaat in de modus alleen rapport, ziet u de invloed op real-time aanmeldingen in de aanmeldings Logboeken. Selecteer in de aanmeldings Logboeken een gebeurtenis en navigeer naar het tabblad alleen rapport om het resultaat van elk rapport beleid te bekijken.
 
 
 ![modus alleen rapport ](media/plan-conditional-access/report-only-mode.png)
@@ -410,11 +412,11 @@ Als u het beleid selecteert, kunt u ook zien hoe de toewijzingen en toegangs beh
 
 ### <a name="understand-the-impact-of-your-policies-using-the-insights-and-reporting-workbook"></a>Inzicht in de gevolgen van uw beleid met behulp van de inzichten en de rapportage werkmap
 
-U kunt de cumulatieve impact van uw beleid voor voorwaardelijke toegang bekijken in de werkmap inzichten en rapportage. U hebt een Azure Monitor-abonnement nodig om toegang te krijgen tot de werkmap en u moet [uw aanmeldings logboeken streamen naar een log Analytics-werk ruimte](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics). 
+U kunt de cumulatieve impact van uw beleid voor voorwaardelijke toegang bekijken in de werkmap inzichten en rapportage. U hebt een Azure Monitor-abonnement nodig om toegang te krijgen tot de werkmap en u moet [uw aanmeldings logboeken streamen naar een log Analytics-werk ruimte](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md). 
 
 ### <a name="simulate-sign-ins-using-the-what-if-tool"></a>Aanmeldingen simuleren met het hulp programma What-if
 
-Een andere manier om uw beleid voor voorwaardelijke toegang te valideren, is met behulp van het [hulp programma What-if](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access-what-if), dat simuleert welk beleid van toepassing zou zijn op een gebruiker die zich aanmeldt onder hypothetische omstandigheden. Selecteer de aanmeldings kenmerken die u wilt testen (zoals de gebruiker, toepassing, het platform van het apparaat en de locatie) en bekijk welke beleids regels van toepassing zijn.
+Een andere manier om uw beleid voor voorwaardelijke toegang te valideren, is met behulp van het [hulp programma What-if](troubleshoot-conditional-access-what-if.md), dat simuleert welk beleid van toepassing zou zijn op een gebruiker die zich aanmeldt onder hypothetische omstandigheden. Selecteer de aanmeldings kenmerken die u wilt testen (zoals de gebruiker, toepassing, het platform van het apparaat en de locatie) en bekijk welke beleids regels van toepassing zijn.
 
 > [!NOTE] 
 > Hoewel een gesimuleerde uitvoering u een goed idee krijgt van de impact die een CA-beleid heeft, wordt een daad werkelijk uitgevoerde test niet vervangen.
@@ -451,19 +453,19 @@ Gebruik de volgende opties voor het beheren van uw CA-beleid:
 
 ### <a name="named-locations"></a>Benoemde locaties
 
-Met de voor waarde voor de locatie van een CA-beleid kunt u instellingen voor toegangs beheer koppelen aan de netwerk locaties van uw gebruikers. Met [benoemde locaties](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)kunt u logische groeperingen van IP-adresbereiken of landen en regio's maken.
+Met de voor waarde voor de locatie van een CA-beleid kunt u instellingen voor toegangs beheer koppelen aan de netwerk locaties van uw gebruikers. Met [benoemde locaties](location-condition.md)kunt u logische groeperingen van IP-adresbereiken of landen en regio's maken.
 
 ### <a name="custom-controls"></a>Aangepaste besturingselementen
 
-[Aangepaste besturings elementen](https://docs.microsoft.com/azure/active-directory/conditional-access/controls) omleiden uw gebruikers naar een compatibele service om te voldoen aan de verificatie vereisten buiten Azure AD. Om aan dit besturings element te voldoen, wordt de browser van een gebruiker omgeleid naar de externe service, wordt elke vereiste verificatie uitgevoerd en vervolgens teruggeleid naar Azure AD. Azure AD verifieert de reactie en, als de gebruiker is geverifieerd of gevalideerd, wordt de gebruiker voortgezet in de stroom voor voorwaardelijke toegang.
+[Aangepaste besturings elementen](controls.md) omleiden uw gebruikers naar een compatibele service om te voldoen aan de verificatie vereisten buiten Azure AD. Om aan dit besturings element te voldoen, wordt de browser van een gebruiker omgeleid naar de externe service, wordt elke vereiste verificatie uitgevoerd en vervolgens teruggeleid naar Azure AD. Azure AD verifieert de reactie en, als de gebruiker is geverifieerd of gevalideerd, wordt de gebruiker voortgezet in de stroom voor voorwaardelijke toegang.
 
 ### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
-Voordat u bepaalde Cloud-apps in uw omgeving opent, kunt u toestemming van de gebruikers krijgen door hen de Gebruiksvoorwaarden (gebruiks voorwaarden) te accepteren. Volg deze [Snelstartgids om gebruiks voorwaarden te maken](https://docs.microsoft.com/azure/active-directory/conditional-access/require-tou).
+Voordat u bepaalde Cloud-apps in uw omgeving opent, kunt u toestemming van de gebruikers krijgen door hen de Gebruiksvoorwaarden (gebruiks voorwaarden) te accepteren. Volg deze [Snelstartgids om gebruiks voorwaarden te maken](require-tou.md).
 
 ### <a name="classic-policies"></a>Klassiek beleid
 
-In de [Azure Portal](https://portal.azure.com/)kunt u uw CA-beleid vinden onder Azure Active Directory > beveiliging > voorwaardelijke toegang. Uw organisatie heeft mogelijk ook oudere CA-beleids regels die niet op deze pagina zijn gemaakt. Deze beleids regels worden klassieke beleids regels genoemd. U wordt aangeraden [deze klassieke beleids regels te migreren in de Azure Portal](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices).
+In de [Azure Portal](https://portal.azure.com/)kunt u uw CA-beleid vinden onder Azure Active Directory > beveiliging > voorwaardelijke toegang. Uw organisatie heeft mogelijk ook oudere CA-beleids regels die niet op deze pagina zijn gemaakt. Deze beleids regels worden klassieke beleids regels genoemd. U wordt aangeraden [deze klassieke beleids regels te migreren in de Azure Portal](best-practices.md).
 
 ## <a name="troubleshoot-conditional-access"></a>Problemen met voorwaardelijke toegang oplossen
 
@@ -489,14 +491,14 @@ Als de gebruiker een bericht met een koppeling meer details heeft ontvangen, kun
 
 Wanneer u de gegevens hebt verzameld, raadpleegt u de volgende bronnen:
 
-* [Aanmeld problemen met voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access) : inzicht in onverwachte aanmeldings resultaten die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
+* [Aanmeld problemen met voorwaardelijke toegang](troubleshoot-conditional-access.md) : inzicht in onverwachte aanmeldings resultaten die betrekking hebben op voorwaardelijke toegang met behulp van fout berichten en logboeken van Azure AD-aanmeldingen.
 
-* [Met het hulp programma What-if](https://docs.microsoft.com/azure/active-directory/conditional-access/troubleshoot-conditional-access-what-if) -begrijpt u waarom een beleid is of niet werd toegepast op een gebruiker in een specifieke omstandigheid of als een beleid van toepassing zou zijn op een bekende status.
+* [Met het hulp programma What-if](troubleshoot-conditional-access-what-if.md) -begrijpt u waarom een beleid is of niet werd toegepast op een gebruiker in een specifieke omstandigheid of als een beleid van toepassing zou zijn op een bekende status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+[Meer informatie over multi-factor Authentication](../authentication/concept-mfa-howitworks.md)
 
-[Meer informatie over identiteits beveiliging](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+[Meer informatie over identiteits beveiliging](../identity-protection/overview-identity-protection.md)
 
-[CA-beleid beheren met Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)
+[CA-beleid beheren met Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

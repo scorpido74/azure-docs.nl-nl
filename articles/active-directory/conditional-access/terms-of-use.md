@@ -4,19 +4,19 @@ description: Ga aan de slag met Azure Active Directory gebruiks voorwaarden om i
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480960"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253321"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Gebruiks voorwaarden van Azure Active Directory
 
@@ -92,7 +92,7 @@ Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de
 
 1. Gebruik de instellingen **verloopt op basis van begin datum** en **frequentie** om de planning op te geven voor de gebruiks voorwaarden. In de volgende tabel ziet u het resultaat voor enkele voor beelden van instellingen:
 
-   | Verloopt vanaf | Frequency | Resultaat |
+   | Verloopt vanaf | Frequentie | Resultaat |
    | --- | --- | --- |
    | De datum van vandaag  | Maandelijks | Vanaf vandaag moeten gebruikers de gebruiks voorwaarden accepteren en vervolgens elke maand opnieuw accepteren. |
    | Datum in de toekomst  | Maandelijks | Gebruikers moeten de gebruiks voorwaarden accepteren om vandaag nog te beginnen. Wanneer de datum in de toekomst plaatsvindt, verloopt de toestemmingen en worden de gebruikers elke maand opnieuw geaccepteerd.  |
@@ -129,7 +129,7 @@ Wanneer u het document voor de gebruiks voorwaarden hebt voltooid, gebruikt u de
 
     Met het aangepaste beleid voor voorwaardelijke toegang worden nauw keurige gebruiks voorwaarden ingeschakeld, tot een bepaalde Cloud toepassing of groep gebruikers. Voor meer informatie raadpleegt [u Quick Start: vereisen dat de gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps](require-tou.md).
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
    Als u een aangepaste sjabloon voor voorwaardelijke toegang hebt geselecteerd, wordt er een nieuw scherm weer gegeven waarin u het aangepaste beleid voor voorwaardelijke toegang kunt maken.
 
@@ -253,7 +253,7 @@ Met de optie gebruikers moeten toestemming geven voor **elke Apparaatinstellinge
 Hier volgt een lijst met de ondersteunde platforms en software.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Overige |
+> |  | iOS | Android | Windows 10 | Anders |
 > | --- | --- | --- | --- | --- |
 > | **Systeemeigen app** | Ja | Ja | Ja |  |
 > | **Microsoft Edge** | Ja | Ja | Ja |  |
@@ -387,7 +387,7 @@ A: u kunt [eerder geaccepteerde gebruiks voorwaarden bekijken](#how-users-can-re
 A: als u zowel Azure AD-gebruiks voorwaarden als [intune](/intune/terms-and-conditions-create)-voor waarden hebt geconfigureerd, is de gebruiker verplicht beide te accepteren. Voor meer informatie, zie de [keuze van de oplossing juiste voor waarden voor uw organisatie blog post](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 **V: welke eind punten worden gebruikt voor de voor waarden van het gebruik van de service voor verificatie?**<br />
-A: Gebruiksvoorwaarden gebruikt de volgende eind punten voor verificatie: https://tokenprovider.termsofuse.identitygovernance.azure.com en. https://account.activedirectory.windowsazure.com Als uw organisatie een lijst met Url's voor inschrijving heeft, moet u deze eind punten toevoegen aan de acceptatie lijst, samen met de Azure AD-eind punten voor aanmelding.
+A: Gebruiksvoorwaarden gebruikt de volgende eind punten voor verificatie: https://tokenprovider.termsofuse.identitygovernance.azure.com en https://account.activedirectory.windowsazure.com . Als uw organisatie een lijst met Url's voor inschrijving heeft, moet u deze eind punten toevoegen aan de acceptatie lijst, samen met de Azure AD-eind punten voor aanmelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 

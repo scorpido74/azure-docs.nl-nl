@@ -4,19 +4,19 @@ description: Lijst met services die beheerde identiteiten voor Azure-resources e
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 06/04/2020
+ms.date: 06/11/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 66f3e8b07ecb3bceb2f147aa27b1fb1ad585be91
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 0dc8b77f75cffdd0b2017d8a9b0f7c168fb796cb
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673678"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193767"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
 
@@ -56,6 +56,14 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure App Service te 
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sjabloon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
+### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes met Azure Arc
+
+| Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systeem toegewezen | Preview | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | 
+| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+
+Azure Arc enabled Kubernetes ondersteunt momenteel de [toegewezen identiteit](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#azure-arc-agents-for-kubernetes)van het systeem. Het beheerde service-identiteits certificaat wordt gebruikt door alle Azure Arc enabled Kubernetes-agents voor communicatie met Azure.
 
 ### <a name="azure-blueprints"></a>Azure Blueprints
 
@@ -68,6 +76,14 @@ Raadpleeg de volgende lijst voor het gebruik van een beheerde identiteit met [Az
 
 - [Azure Portal-blauw druk toewijzen](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
 - [REST API-blauw druk toewijzen](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+
+
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systeem toegewezen | ![Beschikbaar][check] | ![Beschikbaar][check] | Niet beschikbaar | ![Beschikbaar][check] |
+| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
@@ -115,6 +131,22 @@ Raadpleeg de volgende lijst voor het configureren van een beheerde identiteit vo
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+
+
+
+### <a name="azure-event-grid"></a>Azure Event Grid 
+
+Type beheerde identiteit |Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systeem toegewezen | Preview | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar  | Niet beschikbaar  | Niet beschikbaar |
+
+
+
+
+
+
+
 
 
 ### <a name="azure-functions"></a>Azure Functions
@@ -255,6 +287,16 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine
 | Gebruiker toegewezen | [Beschikbaar in ondersteunde regio's](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
 Voor meer informatie over het configureren van een beheerde identiteit voor de opbouw functie voor installatie kopieën van Azure VM (in regio's waar beschikbaar), raadpleegt u het [overzicht van Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions).
+### <a name="azure-signalr-service"></a>Azure SignalR Service
+
+Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systeem toegewezen | Preview | Preview | Niet beschikbaar | Preview |
+| Gebruiker toegewezen | Preview | Preview | Niet beschikbaar | Preview |
+
+Raadpleeg de volgende lijst voor het configureren van beheerde identiteit voor de Azure signalerings service (in regio's waar beschikbaar):
+
+- [Azure Resource Manager-sjabloon](../../azure-signalr/howto-use-managed-identity.md)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Services die ondersteuning bieden voor Azure AD-verificatie
 

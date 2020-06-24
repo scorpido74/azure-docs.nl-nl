@@ -1,5 +1,5 @@
 ---
-title: Modellen implementeren in azure Kubernetes service
+title: ML-modellen implementeren in Kubernetes-service
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als een webservice met behulp van de Azure Kubernetes-service.
 services: machine-learning
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 01/16/2020
-ms.openlocfilehash: 69bb5409b6463140bba77f0e78567e6ae98003d6
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/23/2020
+ms.openlocfilehash: bc99b18c4ab4f98945a1b1f85a6eb87772af852f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433927"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298936"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -137,6 +137,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het maken van een AKS-
 
 * [Een AKS-cluster maken (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [Een AKS-cluster maken (Portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [Een AKS-cluster maken (ARM-sjabloon in azure Quick Start-sjablonen)](https://github.com/cloudmelon/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 De volgende voor beelden laten zien hoe u een bestaand AKS-cluster kunt koppelen aan uw werk ruimte:
 
@@ -366,6 +367,8 @@ print(token)
 > U moet een nieuw token aanvragen na de tijd van de token `refresh_by` .
 >
 > Micro soft raadt u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Dit leidt ertoe dat op tokens gebaseerde verificatie niet beschikbaar is totdat de regio van de werk ruimte weer beschikbaar is. Daarnaast is de afstand tussen de regio van uw cluster en de regio van uw werk ruimte groter, hoe langer het duurt om een token op te halen.
+>
+> Als u een token wilt ophalen, moet u de Azure Machine Learning SDK of de opdracht [AZ ml service Get-access-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) gebruiken.
 
 ## <a name="update-the-web-service"></a>De webservice bijwerken
 

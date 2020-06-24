@@ -10,16 +10,16 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254012"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887729"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Een Azure CDN-eind punt maken
 In dit artikel worden alle instellingen beschreven voor het maken van een [Azure Content Delivery Network (CDN)-](cdn-overview.md) eind punt in een bestaand CDN-profiel. Nadat u een profiel en een eind punt hebt gemaakt, kunt u beginnen met het leveren van inhoud aan uw klanten. Voor een Snelstartgids voor het maken van een profiel en een eind punt, Zie [Quick Start: een Azure CDN profiel en een eind punt maken](cdn-create-new-endpoint.md).
@@ -44,7 +44,7 @@ Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com)
    
     ![Eindpunt pagina toevoegen](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. Voer voor **Naam** een unieke naam voor het nieuwe CDN-eindpunt in. Deze naam wordt gebruikt om toegang te krijgen tot uw resources in de cache op het domein _ \<endpointnaam>_. azureedge.net.
+3. Voer voor **Naam** een unieke naam voor het nieuwe CDN-eindpunt in. Deze naam wordt gebruikt om toegang te krijgen tot uw resources in de cache in het domein _\<endpointname>_ . azureedge.net.
 
 4. Kies voor **type oorsprong**een van de volgende oorsprongs typen: 
    - **Opslag** voor Azure Storage
@@ -62,7 +62,7 @@ Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com)
    > Bepaalde oorsprongtypen, zoals Azure Storage en Web Apps, vereisen dat de hostheader overeenkomt met het domein van de oorsprong. Tenzij u een oorsprong hebt waarvoor een andere host-header is vereist dan die van het domein, laat u de standaardwaarde ongewijzigd.
    > 
     
-8. Geef voor **protocol** en **poort van oorsprong**de protocollen en poorten op die moeten worden gebruikt voor toegang tot uw resources op de oorspronkelijke server. Er moet minimaal één protocol (HTTP of HTTPS) worden geselecteerd. Gebruik het door CDN verschafte domein (_\<endpointnaam>_. azureedge.net) voor toegang tot HTTPS-inhoud. 
+8. Geef voor **protocol** en **poort van oorsprong**de protocollen en poorten op die moeten worden gebruikt voor toegang tot uw resources op de oorspronkelijke server. Er moet minimaal één protocol (HTTP of HTTPS) worden geselecteerd. Gebruik het door CDN verschafte domein ( _\<endpointname>_ . azureedge.net) voor toegang tot HTTPS-inhoud. 
    
    > [!NOTE]
    > De **poort waarde oorsprong** bepaalt alleen de poort die door het eind punt wordt gebruikt om informatie op te halen van de oorspronkelijke server. Het eindpunt zelf is alleen beschikbaar voor eindclients op de standaard-HTTP- en -HTTPS-poorten (80 en 443), ongeacht de waarde voor **Poort van oorsprong**.  
@@ -79,14 +79,14 @@ Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com)
 
     - **Azure CDN standaard van Verizon** en **Azure CDN Premium van Verizon** -profielen:
        - [**Algemene Internet levering**](cdn-optimization-overview.md#general-web-delivery)
-       - [**Dynamische site versnelling**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Dynamische siteversnelling**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Azure CDN standaard van Akamai** profielen:
        - [**Algemene Internet levering**](cdn-optimization-overview.md#general-web-delivery)
        - [**Algemene mediastreaming**](cdn-optimization-overview.md#general-media-streaming)
        - [**Video on demand mediastreaming**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Grote bestanden downloaden**](cdn-optimization-overview.md#large-file-download)
-       - [**Dynamische site versnelling**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Dynamische siteversnelling**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
 10. Selecteer **Toevoegen** om het nieuwe eindpunt te maken.
    

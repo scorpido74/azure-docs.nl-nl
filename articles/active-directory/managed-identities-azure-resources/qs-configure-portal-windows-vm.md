@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266661"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693733"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele machine met behulp van de Azure Portal
 
@@ -97,7 +97,7 @@ Op dit moment biedt de Azure Portal geen ondersteuning voor het toewijzen van ee
 Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moet uw account de roltoewijzingen van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en de rollen voor de [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat.
-2. Ga naar de gewenste VM en klik op **identiteit**, **gebruiker toegewezen** en vervolgens ** \+toevoegen**.
+2. Ga naar de gewenste VM en klik op **identiteit**, **gebruiker toegewezen** en vervolgens ** \+ toevoegen**.
 
    ![Door de gebruiker toegewezen beheerde identiteit toevoegen aan VM](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 

@@ -1,9 +1,9 @@
 ---
 title: Beheerde identiteiten configureren voor virtuele-machine schaal sets-Azure CLI-Azure AD
-description: Stapsgewijze instructies voor het configureren van door het systeem en de gebruiker toegewezen beheerde identiteiten op een Azure virtual machine Scale set met behulp van Azure CLI.
+description: Stapsgewijze instructies voor het configureren van door het systeem en de gebruiker toegewezen beheerde identiteiten op een virtuele-machine schaalset van Azure met behulp van Azure CLI.
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: MarkusVi
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2832a8c584c0fbe707f22501809d772c6ffb970b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d310ecfb10393cf6e952cb1ddb72c9bfd1d3745
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430096"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693886"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Beheerde identiteiten configureren voor Azure-resources op een schaalset voor virtuele machines met behulp van Azure CLI
 
@@ -35,9 +35,9 @@ In dit artikel leert u hoe u de volgende beheerde identiteiten voor Azure-bronne
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)**.
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u de beheer bewerkingen in dit artikel wilt uitvoeren, moet uw account de volgende toegangs beheer toewijzingen op basis van Azure-rollen hebben:
+- Als u de beheer bewerkingen in dit artikel wilt uitvoeren, moet uw account beschikken over de volgende toegangs beheer toewijzingen van Azure op basis van rollen:
 
     > [!NOTE]
     > Er zijn geen aanvullende Azure AD Directory-roltoewijzingen vereist.
@@ -75,7 +75,7 @@ Een schaalset voor virtuele machines maken waarbij de door het systeem toegeweze
    az group create --name myResourceGroup --location westus
    ```
 
-3. Maak een schaalset voor virtuele machines met [AZ vmss Create](/cli/azure/vmss/#az-vmss-create) . In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt met de naam *myVMSS* met een door het systeem toegewezen `--assign-identity` beheerde identiteit, zoals aangevraagd door de para meter. Met de parameters `--admin-username` en `--admin-password` worden de naam van de gebruiker met beheerdersrechten en het wachtwoord van het account voor aanmelding bij de virtuele machine opgegeven. Werk deze waarden bij met waarden die geschikt zijn voor uw omgeving: 
+3. Een schaalset voor virtuele machines [maken](/cli/azure/vmss/#az-vmss-create) . In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt met de naam *myVMSS* met een door het systeem toegewezen beheerde identiteit, zoals aangevraagd door de `--assign-identity` para meter. Met de parameters `--admin-username` en `--admin-password` worden de naam van de gebruiker met beheerdersrechten en het wachtwoord van het account voor aanmelding bij de virtuele machine opgegeven. Werk deze waarden bij met waarden die geschikt zijn voor uw omgeving: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -91,7 +91,7 @@ Als u de door het systeem toegewezen beheerde identiteit wilt inschakelen op een
    az login
    ```
 
-2. Gebruik [AZ vmss id Assign](/cli/azure/vmss/identity/#az-vmss-identity-assign) opdracht om een door het systeem toegewezen beheerde identiteit in te scha kelen voor een bestaande virtuele machine:
+2. Een door het systeem toegewezen beheerde identiteit [inschakelen](/cli/azure/vmss/identity/#az-vmss-identity-assign) voor een bestaande virtuele machine:
 
    ```azurecli-interactive
    az vmss identity assign -g myResourceGroup -n myVMSS
@@ -154,7 +154,7 @@ In deze sectie wordt uitgelegd hoe u een schaalset voor virtuele machines en toe
    }
    ```
 
-3. Maak een schaalset voor virtuele machines met [AZ vmss Create](/cli/azure/vmss/#az-vmss-create). In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt die is gekoppeld aan de nieuwe door de gebruiker toegewezen `--assign-identity` beheerde identiteit, zoals opgegeven door de para meter. Vervang de parameterwaarden `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` en `<USER ASSIGNED IDENTITY>` door uw eigen waarden. 
+3. Een schaalset voor virtuele machines [maken](/cli/azure/vmss/#az-vmss-create) . In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt die is gekoppeld aan de nieuwe door de gebruiker toegewezen beheerde identiteit, zoals opgegeven door de `--assign-identity` para meter. Vervang de parameterwaarden `<RESOURCE GROUP>`, `<VMSS NAME>`, `<USER NAME>`, `<PASSWORD>` en `<USER ASSIGNED IDENTITY>` door uw eigen waarden. 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -184,7 +184,7 @@ In deze sectie wordt uitgelegd hoe u een schaalset voor virtuele machines en toe
    }
    ```
 
-2. Wijs de door de gebruiker toegewezen beheerde identiteit toe aan uw schaalset voor virtuele machines met [AZ vmss Identity Assign](/cli/azure/vmss/identity). Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VIRTUAL MACHINE SCALE SET NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY>` is de bron `name` eigenschap van de door de gebruiker toegewezen identiteit, zoals deze is gemaakt in de vorige stap:
+2. [Wijs](/cli/azure/vmss/identity) de door de gebruiker toegewezen beheerde identiteit toe aan de schaalset van de virtuele machine. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VIRTUAL MACHINE SCALE SET NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY>` is de bron eigenschap van de door de gebruiker toegewezen identiteit `name` , zoals deze is gemaakt in de vorige stap:
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
@@ -192,7 +192,7 @@ In deze sectie wordt uitgelegd hoe u een schaalset voor virtuele machines en toe
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een schaalset voor virtuele Azure-machines
 
-Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een schaalset voor virtuele machines gebruik [AZ vmss Identity Remove](/cli/azure/vmss/identity#az-vmss-identity-remove). Als dit de enige door de gebruiker toegewezen beheerde identiteit is toegewezen aan de schaalset van de `UserAssigned` virtuele machine, wordt deze verwijderd uit de waarde voor het identiteits type.  Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VIRTUAL MACHINE SCALE SET NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY>` is de door de gebruiker toegewezen beheerde identiteits `name` eigenschap, die u kunt vinden in de sectie identiteit van de virtuele-machine schaalset `az vmss identity show`met behulp van:
+Een door de gebruiker toegewezen beheerde identiteit [verwijderen](/cli/azure/vmss/identity#az-vmss-identity-remove) uit een gebruik van een virtuele-machine schaalset `az vmss identity remove` . Als dit de enige door de gebruiker toegewezen beheerde identiteit is toegewezen aan de schaalset van de virtuele machine, `UserAssigned` wordt deze verwijderd uit de waarde voor het identiteits type.  Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VIRTUAL MACHINE SCALE SET NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY>` is de door de gebruiker toegewezen beheerde identiteits `name` eigenschap, die u kunt vinden in de sectie identiteit van de virtuele-machine schaalset met behulp van `az vmss identity show` :
 
 ```azurecli-interactive
 az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>

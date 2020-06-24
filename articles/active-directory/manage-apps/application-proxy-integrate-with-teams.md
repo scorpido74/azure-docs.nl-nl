@@ -3,25 +3,25 @@ title: Toegang tot Azure AD-app proxy-apps in teams | Microsoft Docs
 description: Gebruik Azure AD-toepassingsproxy om toegang te krijgen tot uw on-premises toepassing via micro soft teams.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67807760"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764482"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Toegang tot uw on-premises toepassingen via micro soft teams
 
@@ -33,7 +33,7 @@ Uw gebruikers kunnen Cloud-apps toevoegen aan hun teams kanalen [met behulp van 
 
 Als u dat nog niet hebt gedaan, [configureert u de toepassings proxy voor uw Tenant en installeert u de connector](application-proxy-add-on-premises-application.md). Publiceer vervolgens [uw on-premises toepassing](application-proxy-add-on-premises-application.md) voor externe toegang. Wanneer u de app publiceert, noteert u de externe URL, omdat deze wordt gebruikt om de app toe te voegen aan teams.
 
-Als u uw apps al hebt gepubliceerd, maar geen externe Url's meer weet, kunt u deze bekijken in de [Azure Portal](https://portal.azure.com). Meld u aan en ga naar **Azure Active Directory** > **Enter prise-toepassingen** > **alle toepassingen** > Selecteer uw app > **toepassings proxy**.
+Als u uw apps al hebt gepubliceerd, maar geen externe Url's meer weet, kunt u deze bekijken in de [Azure Portal](https://portal.azure.com). Meld u aan en ga naar **Azure Active Directory**  >  **Enter prise-toepassingen**  >  **alle toepassingen** > Selecteer uw app > **toepassings proxy**.
 
 ## <a name="add-your-app-to-teams"></a>Uw app toevoegen aan teams
 

@@ -4,15 +4,16 @@ description: In dit artikel leert u hoe u verbinding kunt maken met uw Azure Syn
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: d217e6d49f33db099d54e6521073c56ec146c0b8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660107"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193869"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Verbinding maken met uw Azure Synapse-werk ruimte met behulp van persoonlijke koppelingen (preview-versie)
 
@@ -20,7 +21,7 @@ In dit artikel leert u hoe u een persoonlijk eind punt maakt in de Azure Synapse
 
 ## <a name="step-1-register-network-resource-provider"></a>Stap 1: netwerk resource provider registreren
 
-Als u dit nog niet hebt gedaan, registreert u de netwerk resource provider. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Kies *micro soft. Network* in de lijst met resource providers wanneer u [zich registreert](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types). Als de netwerk resource provider al is geregistreerd, gaat u verder met stap 2.
+Registreer de resourceprovider van het netwerk, als u dit nog niet hebt gedaan. Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. Kies *Microsoft.Network* in de lijst met resourceproviders tijdens het [registreren](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types). Als de netwerk resource provider al is geregistreerd, gaat u verder met stap 2.
 
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>Stap 2: Open de Azure Synapse-werk ruimte in Azure Portal
@@ -58,6 +59,6 @@ Wanneer de implementatie is voltooid, opent u de Azure Synapse-werk ruimte in Az
 
 Meer informatie over [Managed Workspace VNet](./synapse-workspace-managed-vnet.md)
 
-Meer informatie over [beheerde privé-eind punten](./synapse-workspace-managed-private-endpoints.md)
+Meer informatie over [beheerde privé-eindpunten](./synapse-workspace-managed-private-endpoints.md)
 
-[Beheerde persoonlijke eind punten maken voor uw gegevens bronnen](./how-to-create-managed-private-endpoints.md)
+[Create Managed private endpoint to your data sources](./how-to-create-managed-private-endpoints.md) (Beheerde privé-eindpunten naar uw gegevensbronnen maken)

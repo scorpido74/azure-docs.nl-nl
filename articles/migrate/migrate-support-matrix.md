@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: c1ed127834b826488d02b39304dd943866171441
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 51f797ad80886669a8734af6898164737d16971a
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193577"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770183"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -19,7 +19,7 @@ U kunt de [Azure migrate-service](migrate-overview.md) gebruiken voor het beoord
 
 De tabel bevat een overzicht van de ondersteunde detectie-, evaluatie-en migratie scenario's.
 
-**Implementatie** | **Nadere** 
+**Implementatie** | **Details** 
 --- | --- 
 **App-specifieke detectie** | U kunt apps, rollen en functies ontdekken die worden uitgevoerd op virtuele VMware-machines. Deze functie is momenteel beperkt tot detectie. De evaluatie bevindt zich momenteel op het niveau van de computer. We bieden nog geen app, rol of functie-specifieke evaluatie. 
 **On-premises evaluatie** | Evalueer on-premises workloads en gegevens die worden uitgevoerd op virtuele VMware-machines, virtuele Hyper-V-machines en fysieke servers. Evalueer het gebruik van Azure Migrate server assessment en Microsoft Data Migration Assistant (DMA), evenals andere hulpprogram ma's en ISV-aanbiedingen.
@@ -32,10 +32,10 @@ De tabel bevat een overzicht van de ondersteunde detectie-, evaluatie-en migrati
 
 Specifieke ondersteuning van het hulp programma wordt in de tabel samenvatten.
 
-**Hulpprogramma** | **Vast** | **Migreren** 
+**Hulpprogramma** | **Evalueren** | **Migreren** 
 --- | --- | ---
 Evaluatie van Azure Migrate-server | Evalueer [virtuele VMware-machines](tutorial-prepare-vmware.md), [virtuele Hyper-V-machines](tutorial-prepare-hyper-v.md)en [fysieke servers](tutorial-prepare-physical.md). |  Niet beschikbaar (NA)
-Azure Migrate-servermigratie | NA | Migreer [VMware-vm's](tutorial-migrate-vmware.md), [virtuele Hyper-V-machines](tutorial-migrate-hyper-v.md)en [fysieke servers](tutorial-migrate-physical-virtual-machines.md).
+Migratie van Azure Migrate server | NA | Migreer [VMware-vm's](tutorial-migrate-vmware.md), [virtuele Hyper-V-machines](tutorial-migrate-hyper-v.md)en [fysieke servers](tutorial-migrate-physical-virtual-machines.md).
 [Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen. 
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| Evalueer virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers, werk belastingen voor de open bare Cloud. | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | Evalueer en migreer VMware-Vm's, Hyper-V-Vm's, fysieke servers, open bare Cloud werkbelastingen. |  Migreer VMware-Vm's, virtuele Hyper-V-machines, fysieke servers, open bare Cloud werkbelastingen.
@@ -52,7 +52,7 @@ Azure Migrate-servermigratie | NA | Migreer [VMware-vm's](tutorial-migrate-vmwar
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projecten
 
-**Ondersteuning** | **Nadere**
+**Ondersteuning** | **Details**
 --- | ---
 Abonnement | U kunt meerdere Azure Migrate-projecten in een abonnement hebben.
 Azure-machtigingen | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
@@ -65,10 +65,10 @@ Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bev
 
 Azure Migrate werkt alleen met Azure als u deze machtigingen hebt voordat u computers gaat beoordelen en migreren.
 
-**Taak** | **Machtigingen** | **Nadere**
+**Taak** | **Machtigingen** | **Details**
 --- | --- | ---
 Een Azure Migrate-project maken | Uw Azure-account heeft machtigingen nodig om een project te maken. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-create-project).
-Het Azure Migrate apparaat registreren| Azure Migrate maakt gebruik van een licht gewicht [Azure migrate apparaat](migrate-appliance.md) om computers te beoordelen met de evaluatie van Azure migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Met dit apparaat worden machines gedetecteerd en worden meta gegevens en prestaties naar Azure Migrate verzonden.<br/><br/> Tijdens de registratie worden providers (micro soft. OffAzure, micro soft. migrate en micro soft. de sleutel kluis) geregistreerd bij het abonnement dat is geselecteerd in het apparaat, zodat het abonnement samenwerkt met de resource provider. Als u zich wilt registreren, moet u de toegang tot mede werkers of eigenaar hebben voor het abonnement.<br/><br/> **VMware**: tijdens het voorbereiden van Azure migrate worden twee Azure Active Directory-apps (Azure AD) gemaakt. De eerste app communiceert tussen de apparaat agents en de Azure Migrate service. De app beschikt niet over machtigingen om Azure resource management-aanroepen te maken of om RBAC-toegang voor resources te hebben. De tweede app heeft alleen toegang tot een Azure Key Vault die is gemaakt in het gebruikers abonnement voor VMware-migratie zonder agent. Bij migratie zonder agent maakt Azure Migrate een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Het heeft RBAC-toegang op de Azure Key Vault (in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart.<br/><br/> **Hyper-V**-tijdens onboarding. Azure Migrate maakt een Azure AD-app. De app communiceert tussen de apparaat agents en de Azure Migrate service. De app beschikt niet over machtigingen om Azure resource management-aanroepen te maken of om RBAC-toegang voor resources te hebben. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
+Het Azure Migrate apparaat registreren| Azure Migrate maakt gebruik van een licht gewicht [Azure migrate apparaat](migrate-appliance.md) om computers te beoordelen met de evaluatie van Azure migrate server, en voor het uitvoeren van [agentloze migratie](server-migrate-overview.md) van virtuele VMware-machines met Azure migrate server migratie. Met dit apparaat worden machines gedetecteerd en worden meta gegevens en prestaties naar Azure Migrate verzonden.<br/><br/> Tijdens de registratie worden providers (micro soft. OffAzure, micro soft. migrate en micro soft. de sleutel kluis) geregistreerd bij het abonnement dat is geselecteerd in het apparaat, zodat het abonnement samenwerkt met de resource provider. Als u zich wilt registreren, moet u de toegang tot mede werkers of eigenaar hebben voor het abonnement.<br/><br/> **VMware**: tijdens het voorbereiden van Azure migrate worden twee Azure Active Directory-apps (Azure AD) gemaakt. De eerste app communiceert tussen de apparaat agents en de Azure Migrate service. De app beschikt niet over machtigingen om Azure resource management-aanroepen te maken of om RBAC-toegang voor resources te hebben. De tweede app heeft alleen toegang tot een Azure Key Vault die is gemaakt in het gebruikers abonnement voor VMware-migratie zonder agent. Bij migratie zonder agent maakt Azure Migrate een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Het heeft RBAC-toegang op de Azure Key Vault (in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart.<br/><br/> **Hyper-V**-tijdens onboarding. Azure Migrate maakt een Azure AD-app. De app communiceert tussen de apparaat agents en de Azure Migrate service. De app beschikt niet over machtigingen om Azure resource management-aanroepen te maken of om RBAC-toegang voor resources te hebben. | Ingesteld voor [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps)-, [Hyper-V-](tutorial-prepare-hyper-v.md#assign-permissions-to-create-azure-ad-apps)of [fysieke servers](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance).
 Een sleutel kluis maken voor VMware-agentloze migratie | Als u virtuele VMware-machines wilt migreren met agentloze Azure Migrate server migratie, maakt Azure Migrate een Key Vault voor het beheren van toegangs sleutels voor het replicatie-opslag account in uw abonnement. Als u de kluis wilt maken, stelt u machtigingen (eigenaar of Inzender en beheerder van gebruikers toegang) in voor de resource groep waarin het Azure Migrate project zich bevindt. | [Stel](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) machtigingen in.
 
 ## <a name="supported-geographies-public-cloud"></a>Ondersteunde geographs (open bare Cloud)
@@ -92,7 +92,7 @@ Verenigde Staten | VS-midden, VS-West 2
 
 ## <a name="supported-geographies-azure-government"></a>Ondersteunde geographs (Azure Government)
 
-**Taak** | **Geografie** | **Nadere**
+**Taak** | **Geografie** | **Details**
 --- | --- | ---
 Project maken | Verenigde Staten | Meta gegevens worden opgeslagen in US Gov-Arizona, US Gov-Virginia
 Doel evaluatie | Verenigde Staten | Doel regio's: US Gov-Arizona, US Gov-Virginia, US Gov-Texas
@@ -109,7 +109,7 @@ Doel replicatie | Verenigde Staten | Doel regio's: US DoD-centraal, US DoD-oost,
 
 
 
-## <a name="azure-migrate-versions"></a>Azure Migrate versies
+## <a name="azure-migrate-versions"></a>Versies van Azure Migrate
 
 Er zijn twee versies van de Azure Migrate-service:
 

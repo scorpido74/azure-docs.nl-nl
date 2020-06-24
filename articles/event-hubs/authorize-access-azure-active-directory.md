@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6216b56c8e8f0de4f9cd60306bbf9c5ed49a11ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2c89cee1e315f57998fadff0423747cca599cbe
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025200"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298783"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
 Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -21,7 +21,7 @@ Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) o
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker of een toepassing) probeert toegang te krijgen tot een Event Hubs resource, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://eventhubs.azure.net/`token is. Voor Kafka-clients is `https://<namespace>.servicebus.windows.net`de bron voor het aanvragen van een token.
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een token is `https://eventhubs.azure.net/` . Voor Kafka-clients is de bron voor het aanvragen van een token `https://<namespace>.servicebus.windows.net` .
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Event Hubs-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang tot azure Event hubs-resources verifiëren met Azure Active Directory en beheerde identiteiten voor Azure-resources](authenticate-managed-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit naar Event hubs service worden verzonden. 
@@ -42,7 +42,7 @@ Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot
 - [Gegevens verzender van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): gebruik deze rol om de verzend toegang te geven tot Event hubs-resources.
 - [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): gebruik deze rol om de verbruiks-en ontvangst toegang tot Event hubs resources te geven.
 
-## <a name="resource-scope"></a>Bron bereik 
+## <a name="resource-scope"></a>Resourcebereik 
 Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
 In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Event Hubs resources kunt bereiken, te beginnen met het smalle bereik:

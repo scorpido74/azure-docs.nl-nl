@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271640"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695331"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-architectuur
 
@@ -56,7 +56,7 @@ IoT Central kunt de volgende mogelijkheden voor IoT Edge apparaten:
   - De opdrachten waarop elke module reageert, worden beantwoord.
   - De relaties tussen een IoT Edge functionaliteits model en het functionaliteits model voor het downstream-apparaat.
   - Cloud eigenschappen die niet op het IoT Edge apparaat zijn opgeslagen.
-  - Aanpassingen, Dash boards en formulieren die deel uitmaken van uw IoT Central-toepassing.
+  - Aanpassingen, dashboards en formulieren die deel uitmaken van uw IoT Central-toepassing.
 
   Zie het artikel [Azure IOT edge apparaten verbinden met een Azure IOT Central-toepassing](./concepts-iot-edge.md) voor meer informatie.
 
@@ -108,7 +108,7 @@ Zie voor meer informatie over IoT Hub [Azure IOT hub](https://docs.microsoft.com
 
 Zie [connectiviteit van apparaten](concepts-get-connected.md)voor meer informatie over de connectiviteit van apparaten in azure IOT Central.
 
-## <a name="data-stores"></a>Gegevens archieven
+## <a name="data-stores"></a>Gegevensopslag
 
 In azure IoT Central worden toepassings gegevens opgeslagen in de Cloud. De opgeslagen toepassings gegevens zijn onder andere:
 

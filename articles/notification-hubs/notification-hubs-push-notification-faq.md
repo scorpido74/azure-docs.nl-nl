@@ -5,9 +5,7 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: push melding, Push meldingen, iOS-push meldingen, Android-push meldingen, Ios-push, Android-push
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -17,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307381"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255123"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
 
@@ -65,11 +63,11 @@ Ga naar de **[Azure Portal]**  >  **Notification hubs naam ruimten** of **Notifi
 
 ### <a name="which-server-side-platforms-do-you-support"></a>Welke platformen aan de server zijde ondersteunen u?
 
-Server-Sdk's zijn beschikbaar voor .NET, Java, node. js, PHP en python. Notification Hubs Api's zijn gebaseerd op REST-interfaces, zodat u rechtstreeks met REST-Api's kunt werken als u verschillende platformen gebruikt of geen extra afhankelijkheid wilt. Ga naar de pagina [Notification hubs rest api's] voor meer informatie.
+Server-Sdk's zijn beschikbaar voor .NET, Java, Node.js, PHP en python. Notification Hubs Api's zijn gebaseerd op REST-interfaces, zodat u rechtstreeks met REST-Api's kunt werken als u verschillende platformen gebruikt of geen extra afhankelijkheid wilt. Ga naar de pagina [Notification hubs rest api's] voor meer informatie.
 
 ### <a name="which-client-platforms-do-you-support"></a>Welke client platforms worden ondersteund?
 
-Push meldingen worden ondersteund voor [IOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (via Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([IOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) en Android en [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)). Ga naar de pagina [zelf studies notification hubs aan de slag] voor meer informatie.
+Push meldingen worden ondersteund voor [IOS](ios-sdk-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (via Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin [IOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) en [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)en [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Zie de pagina Notification Hubs aan de slag- [zelf studies](ios-sdk-get-started.md) voor meer informatie.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Ondersteunt u SMS-berichten, e-mail berichten of webmeldingen?
 
@@ -153,7 +151,7 @@ Alle verbindingen, van de afzender naar de Azure-Notification Hubs naar de PNS, 
 
 Als u gevoelige nettoladingen wilt verzenden, kunt u het beste een beveiligd push patroon gebruiken. De afzender levert een ping-melding met een bericht-id aan het apparaat zonder de gevoelige nettolading. Wanneer de app op het apparaat de payload ontvangt, roept de app een beveiligde API rechtstreeks aan om de bericht gegevens op te halen. Ga voor een hand leiding voor het implementeren van dit patroon naar de pagina [veilige push-zelf studie van Notification hubs] .
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Welke ondersteuning wordt geboden voor herstel na nood gevallen?
 
@@ -202,11 +200,10 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 > [!NOTE]
 > Geslaagde meldingen betekenen gewoon dat push meldingen zijn bezorgd bij de externe PNS (bijvoorbeeld APNs voor iOS en macOS of FCM voor Android-apparaten). Het is de verantwoordelijkheid van de PNS om de meldingen te leveren aan doel apparaten. Normaal gesp roken worden door de PNS geen metrische gegevens over levering aan derden blootgesteld.  
 
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 [Notification Hubs prijzen]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Notification Hubs REST-Api's]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Zelf studies Notification Hubs aan de slag]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Hulp bij het registreren van back-end]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Hulp bij het registreren van back-end 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
@@ -215,6 +212,6 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 [Notification Hubs probleem oplossing]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metrische gegevens]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Registraties exporteren/importeren]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure Portal]: https://portal.azure.com
+[Azure-portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

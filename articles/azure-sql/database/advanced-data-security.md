@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 7efcc4a9ec7da2bdd4005c124d5d0e8dd03c4363
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5a732683b52885173a60563f436b6ab01ea00710
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669695"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254103"
 ---
 # <a name="advanced-data-security"></a>Advanced Data Security
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Als u ADS-instellingen wilt weer geven en beheren, gaat u naar **geavanceerde ge
 
 ![Serverinstellingen](./media/advanced-data-security/server_settings.png)
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. ADS-instellingen voor een SQL database beheren
+## <a name="4-manage-ads-settings-for-a-database"></a>4. ADS-instellingen voor een Data Base beheren
 
 Als u ADS-instellingen voor een bepaalde Data Base wilt overschrijven, schakelt u het selectie vakje **geavanceerde gegevens beveiliging inschakelen op database niveau** in. Gebruik deze optie alleen als u een bepaalde vereiste hebt voor het ontvangen van afzonderlijke geavanceerde beveiligings waarschuwingen of evaluatie resultaten van beveiligings problemen voor de afzonderlijke Data Base, in plaats van of naast de waarschuwingen en resultaten voor alle data bases op de server of het beheerde exemplaar.
 

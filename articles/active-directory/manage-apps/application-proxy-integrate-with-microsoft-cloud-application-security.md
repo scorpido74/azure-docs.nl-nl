@@ -1,22 +1,22 @@
 ---
 title: On-premises apps integreren met Cloud App Security-Azure AD
 description: Configureer een on-premises toepassing in Azure Active Directory om te werken met Microsoft Cloud App Security (MCAS). Gebruik de MCAS-App-beheer voor voorwaardelijke toegang om sessies in realtime te bewaken en te beheren op basis van beleid voor voorwaardelijke toegang. U kunt dit beleid Toep assen op on-premises toepassingen die gebruikmaken van toepassings proxy in Azure Active Directory (Azure AD).
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275500"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764567"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Realtime toegangs bewaking voor toepassingen configureren met Microsoft Cloud App Security en Azure Active Directory
 Configureer een on-premises toepassing in Azure Active Directory (Azure AD) voor het gebruik van Microsoft Cloud App Security (MCAS) voor realtime-bewaking. MCAS maakt gebruik van App-beheer voor voorwaardelijke toegang om sessies in realtime te bewaken en te beheren op basis van beleid voor voorwaardelijke toegang. U kunt dit beleid Toep assen op on-premises toepassingen die gebruikmaken van toepassings proxy in Azure Active Directory (Azure AD).

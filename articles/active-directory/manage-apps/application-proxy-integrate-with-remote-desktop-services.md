@@ -3,25 +3,25 @@ title: Extern bureaublad publiceren met Azure AD-app proxy | Microsoft Docs
 description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108468"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764516"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Extern bureaublad publiceren met Azure AD-toepassingsproxy
 
@@ -67,7 +67,7 @@ Nadat u RDS-en Azure-AD-toepassingsproxy voor uw omgeving hebt ingesteld, volgt 
 ### <a name="publish-the-rd-host-endpoint"></a>Het eind punt van de extern bureau blad-host publiceren
 
 1. [Publiceer een nieuwe toepassing voor toepassings proxy](application-proxy-add-on-premises-application.md) met de volgende waarden:
-   - Interne URL: `https://\<rdhost\>.com/`, waarbij `\<rdhost\>` de algemene hoofdmap is die extern bureau blad-web en RD-gateway delen.
+   - Interne URL: `https://\<rdhost\>.com/` , waarbij `\<rdhost\>` de algemene hoofdmap is die extern bureau blad-Web en RD-gateway delen.
    - Externe URL: dit veld wordt automatisch ingevuld op basis van de naam van de toepassing, maar u kunt deze wijzigen. De gebruikers gaan naar deze URL wanneer ze toegang krijgen tot RDS.
    - Methode voor verificatie vooraf: Azure Active Directory
    - URL-headers vertalen: Nee
@@ -75,7 +75,7 @@ Nadat u RDS-en Azure-AD-toepassingsproxy voor uw omgeving hebt ingesteld, volgt 
 3. Wijzig de methode voor eenmalige aanmelding voor de toepassing als **eenmalige aanmelding voor Azure AD is uitgeschakeld**. Uw gebruikers wordt gevraagd één keer te verifiëren bij Azure AD en één keer naar een extern bureau blad, maar moet eenmalige aanmelding worden RD-gateway.
 4. Selecteer **Azure Active Directory**en klik vervolgens op **app-registraties**. Kies uw app in de lijst.
 5. Selecteer onder **beheren**de optie **huis stijl**.
-6. Werk het URL-veld van de **Start pagina** zo aan dat deze naar uw `https://\<rdhost\>.com/RDWeb`extern bureau blad-webeindpunt verwijst (bijvoorbeeld).
+6. Werk het URL-veld van de **Start pagina** zo aan dat deze naar uw extern bureau blad-webeindpunt verwijst (bijvoorbeeld `https://\<rdhost\>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Direct RDS-verkeer naar toepassings proxy
 
@@ -91,7 +91,7 @@ Maak verbinding met de RDS-implementatie als beheerder en wijzig de RD-gateway s
 
    ![Eigenschappen scherm voor de implementatie van RDS](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. Voer deze opdracht uit voor elke verzameling. Vervang * \<yourcollectionname\> * *en \<proxyfrontendurl\> * door uw eigen gegevens. Met deze opdracht maakt u eenmalige aanmelding mogelijk tussen extern bureau blad en RD-gateway en optimaliseert u de prestaties:
+8. Voer deze opdracht uit voor elke verzameling. Vervang *\<yourcollectionname\>* en *\<proxyfrontendurl\>* door uw eigen gegevens. Met deze opdracht maakt u eenmalige aanmelding mogelijk tussen extern bureau blad en RD-gateway en optimaliseert u de prestaties:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

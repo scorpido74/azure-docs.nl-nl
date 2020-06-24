@@ -8,17 +8,17 @@ manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e6eda3b522a5b46cd82ef29ae493891a624d3272
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459284"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764006"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Dasboards maken en delen in Azure Portal
 
@@ -58,7 +58,7 @@ Nu gaan we het dash board bewerken om tegels die uw Azure-resources vertegenwoor
 
 Voer de volgende stappen uit om tegels toe te voegen aan een dash board:
 
-1. Selecteer ![bewerken pictogram](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** in de paginakop tekst.
+1. Selecteer bewerken ![ pictogram ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** in de paginakop tekst.
 
     ![Scherm opname van het markeren van Dash boards bewerken](./media/azure-portal-dashboards/dashboard-edit.png)
 
@@ -79,7 +79,7 @@ Er is een alternatieve manier om tegels aan uw dash board toe te voegen. Veel re
 
 Als u de grootte van een tegel wilt wijzigen of de tegels op een dash board opnieuw wilt rangschikken, volgt u deze stappen:
 
-1. Selecteer ![bewerken pictogram](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** in de paginakop tekst.
+1. Selecteer bewerken ![ pictogram ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** in de paginakop tekst.
 
 1. Selecteer het context menu in de rechter bovenhoek van een tegel. Kies vervolgens een tegel grootte. Tegels die elke grootte ondersteunen, bevatten ook een ' ingang ' in de rechter benedenhoek waarmee u de tegel naar de gewenste grootte kunt slepen.
 
@@ -106,7 +106,7 @@ Elke tegel die moet worden ingesteld, geeft een **tegel banner configureren** we
 
 Gegevens in het dash board geven automatisch activiteiten weer voor de afgelopen 24 uur. Voer de volgende stappen uit om een andere tijds Panne voor alleen deze tegel weer te geven:
 
-1. Selecteer **tegel gegevens aanpassen** in het context menu of het ![filter pictogram](./media/azure-portal-dashboards/dashboard-filter.png) filter in de linkerbovenhoek van de tegel.
+1. Selecteer **tegel gegevens aanpassen** in het context menu of het filter ![ pictogram ](./media/azure-portal-dashboards/dashboard-filter.png) filter in de linkerbovenhoek van de tegel.
 
     ![Scherm opname van context menu voor tegel](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -126,7 +126,7 @@ Voer de volgende stappen uit om een tegel uit een dash board te verwijderen:
 
 * Selecteer het context menu in de rechter bovenhoek van de tegel en selecteer vervolgens **verwijderen in het dash board**. Of
 
-* Selecteer ![pictogram](./media/azure-portal-dashboards/dashboard-edit-icon.png) bewerken **bewerken** om de aanpassings modus in te voeren. Plaats de muis aanwijzer in de rechter bovenhoek van de tegel en selecteer ![vervolgens het](./media/azure-portal-dashboards/dashboard-delete-icon.png) pictogram verwijderen pictogram verwijderen om de tegel te verwijderen uit het dash board.
+* Selecteer ![ pictogram bewerken ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** om de aanpassings modus in te voeren. Plaats de muis aanwijzer in de rechter bovenhoek van de tegel en selecteer vervolgens het pictogram ![ verwijderen pictogram ](./media/azure-portal-dashboards/dashboard-delete-icon.png) verwijderen om de tegel te verwijderen uit het dash board.
 
    ![Scherm afbeelding die laat zien hoe u de tegel van het dash board kunt verwijderen](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
@@ -136,7 +136,7 @@ Ga als volgt te werk om een bestaand dash board als sjabloon te gebruiken voor e
 
 1. Zorg ervoor dat in de dashboard weergave het dash board wordt weer gegeven dat u wilt kopiëren.
 
-1. Selecteer ![in de paginakop tekst kloon pictogram](./media/azure-portal-dashboards/dashboard-clone.png) **klonen**.
+1. Selecteer in de paginakop tekst kloon ![ pictogram ](./media/azure-portal-dashboards/dashboard-clone.png) **klonen**.
 
 1. Een kopie van het dash board, **met de naam kloon van** *uw dashboard naam* , wordt geopend in de bewerkings modus. Gebruik de voor gaande stappen in dit artikel om de naam van het dash board te wijzigen en aan te passen.
 
@@ -170,7 +170,7 @@ Voer de volgende stappen uit om een persoonlijk of gedeeld dash board permanent 
 
 1. Selecteer het dash board dat u wilt verwijderen in de lijst naast de naam van het dash board.
 
-1. Selecteer ![](./media/azure-portal-dashboards/dashboard-delete-icon.png) **pictogram verwijderen verwijderen uit** de paginakop tekst.
+1. Selecteer ![ pictogram verwijderen ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **verwijderen** uit de paginakop tekst.
 
 1. Voor een persoonlijk dash board selecteert u **OK** in het bevestigings venster om het dash board te verwijderen. Voor een gedeeld dash board selecteert u in het bevestigings dialoogvenster het selectie vakje om te bevestigen dat het gepubliceerde dash board niet meer door anderen kan worden weer gegeven. Selecteer vervolgens **OK**.
 
@@ -179,4 +179,4 @@ Voer de volgende stappen uit om een persoonlijk of gedeeld dash board permanent 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure-dashboards delen met behulp van op rollen gebaseerd toegangsbeheer](azure-portal-dashboard-share-access.md)
-* [Programmatisch Azure-Dash boards maken](azure-portal-dashboards-create-programmatically.md)
+* [Op programmatische wijze Azure-dashboards maken](azure-portal-dashboards-create-programmatically.md)

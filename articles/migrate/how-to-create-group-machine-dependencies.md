@@ -2,25 +2,31 @@
 title: Afhankelijkheids analyse op basis van een agent instellen in de evaluatie van Azure Migrate server
 description: In dit artikel wordt beschreven hoe u een afhankelijkheids analyse op basis van een agent instelt in Azure Migrate server-evaluatie.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 6/09/2020
+ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996876"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770574"
 ---
 # <a name="set-up-dependency-visualization"></a>Visualisatie van afhankelijkheid instellen
 
-In dit artikel wordt beschreven hoe u een afhankelijkheids analyse op basis van een agent instelt in Azure Migrate: Server Assessment. [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren en begrijpen van afhankelijkheden tussen computers die u wilt beoordelen en die u wilt migreren naar Azure.
+In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden instelt in Azure Migrate: Server Assessment. [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren en begrijpen van afhankelijkheden tussen computers die u wilt beoordelen en die u wilt migreren naar Azure.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- [Meer informatie over](concepts-dependency-visualization.md#agent-based-analysis) afhankelijkheids analyse op basis van een agent.
-- Bekijk de vereisten voor en ondersteuning voor het instellen van op agents gebaseerde afhankelijkheids visualisatie voor [virtuele VMware-machines](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [fysieke servers](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)en [Hyper-V-vm's](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
-- Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-- Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
-- Zorg ervoor dat u een [Azure migrate apparaat](migrate-appliance.md) hebt ingesteld om uw on-premises machines te detecteren. Meer informatie over het instellen van een apparaat voor [VMware](how-to-set-up-appliance-vmware.md)-, [Hyper-V-](how-to-set-up-appliance-hyper-v.md)of [fysieke servers](how-to-set-up-appliance-physical.md). Het apparaat detecteert on-premises machines en verzendt meta gegevens, prestatie gegevens naar Azure Migrate: Server evaluatie.
+- Bekijk de ondersteunings-en implementatie vereisten voor analyse van afhankelijkheden op basis van een agent voor:
+    - [Virtuele VMware-machines](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [Fysieke servers](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Virtuele Hyper-V-machines](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- Zorg ervoor dat:
+    - Een Azure Migrate project hebben. Als u dit niet doet, [maakt](how-to-add-tool-first-time.md) u er nu een.
+    - Controleer of u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) aan het project.
+    - Stel een [Azure migrate apparaat](migrate-appliance.md) in om on-premises machines te detecteren. Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie. Stel een apparaat in voor:
+        - [VMware](how-to-set-up-appliance-vmware.md) Virtuele.
+        - [Hyper-V](how-to-set-up-appliance-hyper-v.md) Virtuele.
+        - [Fysieke servers](how-to-set-up-appliance-physical.md).
 - Als u afhankelijkheids visualisatie wilt gebruiken, koppelt u een [log Analytics-werk ruimte](../azure-monitor/platform/manage-access.md) aan een Azure migrate project:
     - U kunt een werk ruimte pas toevoegen nadat u het Azure Migrate apparaat hebt ingesteld en de computers in het Azure Migrate-project detecteert.
     - Zorg ervoor dat u een werk ruimte hebt in het abonnement met het Azure Migrate-project.
@@ -32,7 +38,7 @@ In dit artikel wordt beschreven hoe u een afhankelijkheids analyse op basis van 
 
 ## <a name="associate-a-workspace"></a>Een werk ruimte koppelen
 
-1. Nadat u computers voor beoordeling hebt gedetecteerd, klikt u in **servers** > **Azure migrate: Server evaluatie**op **overzicht**.  
+1. Nadat u computers voor beoordeling hebt gedetecteerd, klikt u in **servers**  >  **Azure migrate: Server evaluatie**op **overzicht**.  
 2. Klik in **Azure migrate: Server evaluatie**op **essentiële**elementen.
 3. Klik in de **OMS-werk ruimte**op **configuratie vereist**.
 
@@ -72,7 +78,7 @@ De agent installeren op een Windows-computer:
 1. Dubbelklik op de gedownloade agent.
 2. Klik op de pagina **Welkom** op **Volgende**. Klik op de pagina **licentie voorwaarden** op **Ik ga akkoord** om de licentie te accepteren.
 3. Bewaar of wijzig in **doelmap**de standaardinstallatiemap > **volgende**.
-4. In **installatie opties voor agent**selecteert u **Azure log Analytics** > **volgende**.
+4. In **installatie opties voor agent**selecteert u **Azure log Analytics**  >  **volgende**.
 5. Klik op **toevoegen** om een nieuwe log Analytics-werk ruimte toe te voegen. Plak de werk ruimte-ID en-sleutel die u hebt gekopieerd uit de portal. Klik op **Volgende**.
 
 U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode als Configuration Manager of [Intigua](https://www.intigua.com/intigua-for-azure-migration).

@@ -2,22 +2,22 @@
 title: Ervaringen van eind gebruikers voor toepassingen-Azure Active Directory
 description: Azure Active Directory (Azure AD) biedt verschillende aanpas bare manieren om toepassingen te implementeren voor eind gebruikers in uw organisatie.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ec85af2c954c2189f0df1b407a2c40967f096
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266622"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763394"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory
 
@@ -44,7 +44,7 @@ Zie [Inleiding tot het toegangs venster](../user-help/active-directory-saas-acce
 
 ## <a name="office-365-application-launcher"></a>Office 365-start programma voor toepassingen
 
-Voor organisaties die Office 365 hebben geïmplementeerd, worden toepassingen die zijn toegewezen aan gebruikers via Azure AD ook weer gegeven in de Office [https://portal.office.com/myapps](https://portal.office.com/myapps)365-Portal op. Dit maakt het eenvoudig en handig voor gebruikers in een organisatie om hun apps te starten zonder dat ze een tweede Portal hoeven te gebruiken en is de aanbevolen oplossing voor het starten van apps voor organisaties die Office 365 gebruiken.
+Voor organisaties die Office 365 hebben geïmplementeerd, worden toepassingen die zijn toegewezen aan gebruikers via Azure AD ook weer gegeven in de Office 365-Portal op [https://portal.office.com/myapps](https://portal.office.com/myapps) . Dit maakt het eenvoudig en handig voor gebruikers in een organisatie om hun apps te starten zonder dat ze een tweede Portal hoeven te gebruiken en is de aanbevolen oplossing voor het starten van apps voor organisaties die Office 365 gebruiken.
 
 ![Scherm opname toont de Office 365-Portal](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
@@ -60,7 +60,7 @@ De meeste federatieve toepassingen die ondersteuning bieden voor SAML 2,0, WS-Fe
 
 Azure AD biedt ook ondersteuning voor directe eenmalige aanmelding voor afzonderlijke toepassingen die ondersteuning bieden voor eenmalige aanmelding op basis van wacht woorden, een gekoppelde eenmalige aanmelding en een vorm van federatieve eenmalige aanmelding.
 
-Deze koppelingen zijn speciaal ontworpen Url's die een gebruiker verzenden via het aanmeldings proces van Azure AD voor een specifieke toepassing, zonder dat de gebruiker ze hoeft te starten vanuit het Azure AD-toegangs venster of Office 365. Deze **gebruikers toegang url's** zijn te vinden onder de eigenschappen van beschik bare zakelijke toepassingen. Selecteer **Azure Active Directory** > **bedrijfs toepassingen**in de Azure Portal. Selecteer de toepassing en selecteer vervolgens **Eigenschappen**.
+Deze koppelingen zijn speciaal ontworpen Url's die een gebruiker verzenden via het aanmeldings proces van Azure AD voor een specifieke toepassing, zonder dat de gebruiker ze hoeft te starten vanuit het Azure AD-toegangs venster of Office 365. Deze **gebruikers toegang url's** zijn te vinden onder de eigenschappen van beschik bare zakelijke toepassingen. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de Azure Portal. Selecteer de toepassing en selecteer vervolgens **Eigenschappen**.
 
 ![Voor beeld van de URL voor gebruikers toegang in Twitter-eigenschappen](media/end-user-experiences/direct-sign-on-link.png)
 

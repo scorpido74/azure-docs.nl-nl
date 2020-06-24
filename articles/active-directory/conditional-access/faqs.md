@@ -4,20 +4,20 @@ description: Krijg antwoorden op veelgestelde vragen over voorwaardelijke toegan
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 05/28/2020
+ms.topic: troubleshooting
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1704fb50586168be6f960e62b918019cb67ce4c8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167805"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253236"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Veelgestelde vragen over voorwaardelijke toegang Azure Active Directory
 
@@ -54,6 +54,12 @@ Micro soft teams worden ook afzonderlijk ondersteund als een Cloud-app in beleid
 Micro soft teams bureau blad-clients voor Windows en Mac bieden ondersteuning voor moderne verificatie. Moderne verificatie brengt aanmelden op basis van de Azure Active Directory Authentication Library (ADAL) om client toepassingen te Microsoft Office op verschillende platforms.
 
 Zie het artikel [service afhankelijkheden van voorwaardelijke toegang](service-dependencies.md) voor meer informatie en stel in plaats daarvan het doel beleid toe aan de [Office 365-app](concept-conditional-access-cloud-apps.md#office-365-preview) .
+
+## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Waarom werken sommige tabbladen niet in micro soft teams nadat het beleid voor voorwaardelijke toegang is ingeschakeld?
+
+Nadat u een beleid voor voorwaardelijke toegang hebt ingeschakeld op de Tenant in micro soft teams, werken bepaalde tabbladen mogelijk niet meer in de desktop-client zoals verwacht. De betrokken tabbladen werken echter wanneer u de micro soft teams-webclient gebruikt. De tabbladen kunnen Power BI, formulieren, VSTS, PowerApps en share point-lijsten bevatten.
+
+Als u de betreffende tabbladen wilt zien, moet u de web-client voor teams in Edge, Internet Explorer of Chrome gebruiken waarop de Windows 10-account extensie is geïnstalleerd. Sommige tabbladen zijn afhankelijk van webverificatie, wat niet werkt in de micro soft teams-bureaubladclient als voorwaardelijke toegang is ingeschakeld. Micro soft werkt samen met partners om deze scenario's in te scha kelen. Tot nu toe hebben we scenrarios ingeschakeld waarbij planner, OneNote en stream zijn betrokken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -2,17 +2,17 @@
 title: GitHub acties werk stromen voor statische Web Apps van Azure
 description: Meer informatie over het gebruik van GitHub-opslag plaatsen voor het instellen van continue implementatie naar statische Web Apps van Azure.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.author: cshoe
+ms.openlocfilehash: 4d69bb69081643e0223c23a9029aabb35c8d22ef
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434009"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254715"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub actions-werk stromen voor de preview-versie van Azure static Web Apps
 
@@ -136,9 +136,9 @@ with:
 
 | Eigenschap | Beschrijving | Vereist |
 |---|---|---|
-| `app_location` | Locatie van de toepassings code.<br><br>Voer bijvoorbeeld `/` in als de bron code van uw toepassing zich in de hoofdmap van de opslag plaats bevindt, of `/app` als de code van uw toepassing zich in de map bevindt `app` . | Ja |
-| `api_location` | De locatie van uw Azure Functions-code.<br><br>Voer bijvoorbeeld `/api` in als uw app-code zich in een map met de naam bevindt `api` . Als er geen Azure Functions-app wordt gedetecteerd in de map, mislukt de build, wordt ervan uitgegaan dat u geen API wilt. | Nee |
-| `app_artifact_location` | Locatie van de map voor het build-uitvoer ten opzichte van de `app_location` .<br><br>Bijvoorbeeld, als de bron code van uw toepassing zich in bevindt `/app` en het build-script bestanden naar de `/app/build` map levert, vervolgens `build` als `app_artifact_location` waarde instellen. | Nee |
+| `app_location` | Locatie van de toepassings code.<br><br>Voer bijvoorbeeld `/` in als de bron code van uw toepassing zich in de hoofdmap van de opslag plaats bevindt, of `/app` als de code van uw toepassing zich in de map bevindt `app` . | Yes |
+| `api_location` | De locatie van uw Azure Functions-code.<br><br>Voer bijvoorbeeld `/api` in als uw app-code zich in een map met de naam bevindt `api` . Als er geen Azure Functions-app wordt gedetecteerd in de map, mislukt de build, wordt ervan uitgegaan dat u geen API wilt. | No |
+| `app_artifact_location` | Locatie van de map voor het build-uitvoer ten opzichte van de `app_location` .<br><br>Bijvoorbeeld, als de bron code van uw toepassing zich in bevindt `/app` en het build-script bestanden naar de `/app/build` map levert, vervolgens `build` als `app_artifact_location` waarde instellen. | No |
 
 De `repo_token` `action` waarden, en `azure_static_web_apps_api_token` worden door Azure static web apps voor u ingesteld, niet hand matig worden gewijzigd.
 
@@ -155,13 +155,13 @@ De implementatie aanroept altijd `npm install` vóór een aangepaste opdracht.
 
 ## <a name="route-file-location"></a>Locatie van route bestand
 
-U kunt de werk stroom aanpassen om te zoeken naar de [routes. json](routes.md) in een wille keurige map in uw opslag plaats. De volgende eigenschap kan worden gedefinieerd in de sectie van een taak `with` .
+U kunt de werk stroom aanpassen om te zoeken naar de [routes.js](routes.md) in een wille keurige map in uw opslag plaats. De volgende eigenschap kan worden gedefinieerd in de sectie van een taak `with` .
 
 | Eigenschap            | Beschrijving |
 |---------------------|-------------|
-| `routes_location` | Hiermee definieert u de maplocatie waar het bestand _routes. json_ wordt gevonden. Deze locatie is relatief ten opzichte van de hoofdmap van de opslag plaats. |
+| `routes_location` | Hiermee definieert u de maplocatie waar de _routes.jsin_ het bestand wordt gevonden. Deze locatie is relatief ten opzichte van de hoofdmap van de opslag plaats. |
 
- Expliciete informatie over de locatie van uw _routes. json_ -bestand is met name belang rijk als uw front-end Framework-build-stap dit bestand niet standaard verplaatst naar de `app_artifact_location` .
+ Het is met name belang rijk dat u de locatie van uw _routes.jsop_ het bestand kunt vinden. Dit is vooral handig als uw front-end Framework-build-stap dit bestand niet standaard verplaatst naar de `app_artifact_location` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

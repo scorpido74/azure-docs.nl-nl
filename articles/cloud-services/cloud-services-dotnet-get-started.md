@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310645"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255225"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -104,9 +104,9 @@ In de volgende sectie configureert u de oplossing voor het gebruik van Azure-clo
 U voert de volgende stappen uit voor het uitvoeren van de toepassing in de cloud:
 
 * Een Azure-cloudservice maken.
-* Een Azure SQL-database maken.
+* Maak een data base in Azure SQL Database.
 * Een Azure-opslagaccount maken.
-* De oplossing configureren voor het gebruik van uw Azure SQL-database als deze wordt uitgevoerd in Azure.
+* Configureer de oplossing voor het gebruik van uw data base als deze wordt uitgevoerd in Azure.
 * De oplossing configureren voor het gebruik van uw Azure-opslagaccount als deze wordt uitgevoerd in Azure.
 * Het project implementeren in uw Azure-cloudservice.
 
@@ -130,7 +130,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 
     ![Nieuwe cloudservice](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Een Azure SQL-database maken
+### <a name="create-a-database-in-azure-sql-database"></a>Een database maken in Azure SQL Database
 Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde database.
 
 1. Klik in [Azure Portal](https://portal.azure.com) op **Een resource maken > Databases > SQL Database**.
@@ -182,8 +182,9 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
 
     Op de afbeelding ziet u een opslagaccount met de URL `csvccontosoads.core.windows.net`.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>De oplossing configureren voor het gebruik van uw Azure SQL-database als deze wordt uitgevoerd in Azure
-Het webproject en het werkrolproject hebben elk hun eigen databaseverbindingsreeks. Beide projecten moeten verwijzen naar de Azure SQL-database wanneer de app wordt uitgevoerd in Azure.
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>De oplossing configureren voor het gebruik van uw data base in Azure SQL Database wanneer deze wordt uitgevoerd in azure
+
+Het webproject en het worker-project hebben elk een eigen data base connection string, en elk moet verwijzen naar de data base in Azure SQL Database wanneer de app wordt uitgevoerd in Azure.
 
 U gebruikt een [Web.config-transformatie](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) voor de webrol en een cloudserviceomgevingsinstelling voor de werkrol.
 

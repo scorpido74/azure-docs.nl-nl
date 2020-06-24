@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 73cd8083dc6853e36b05854ab2fd7c0226f99bd6
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791926"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080085"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR cognitieve vaardigheid
 
-De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen van [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in cognitive Services. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
+De vaardigheid van **optische teken herkenning (OCR)** herkent gedrukte en handgeschreven tekst in afbeeldings bestanden. Deze vaardigheid maakt gebruik van de machine learning modellen die door [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v 3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) in cognitive services worden verschaft. De **OCR** -vaardigheid is toegewezen aan de volgende functionaliteit:
 
-+ De [' OCR '](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API wordt gebruikt voor andere talen dan Engels. 
-+ Voor Engels wordt de nieuwe [Lees](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) -API gebruikt.
++ Voor Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlands wordt de nieuwe [Lees](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) -API gebruikt.
++ Voor alle andere talen wordt de ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API gebruikt.
 
 De **OCR** -vaardigheid extraheert tekst uit afbeeldings bestanden. Ondersteunde bestands indelingen zijn onder andere:
 
@@ -34,7 +34,7 @@ De **OCR** -vaardigheid extraheert tekst uit afbeeldings bestanden. Ondersteunde
 > [!NOTE]
 > Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
@@ -43,9 +43,9 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| detectOrientation | Hiermee wordt automatische detectie van de afbeeldings stand ingeschakeld. <br/> Geldige waarden: True/False.|
-|defaultLanguageCode | <p>  De taal code van de invoer tekst. Enkele ondersteunde talen: <br/> zh-Hans (ChineseSimplified) <br/> zh-hant (ChineseTraditional) <br/>CS (Tsjechisch) <br/>da (Deens) <br/>nl (Nederlands) <br/>nl (Engels) <br/>fi (Fins)  <br/>FR (Frans) <br/>  de (Duits) <br/>El (Grieks) <br/> hu (Hong aars) <br/> It (Italiaans) <br/>  Ja (Japans) <br/> ko (Koreaans) <br/> NB (Noors) <br/>   pl (Pools) <br/> PT (Portugees) <br/>  ru (Russisch) <br/>  ES (Spaans) <br/>  SV (Zweeds) <br/>  tr (Turks) <br/> AR (Arabisch) <br/> ro (Roemeens) <br/> SR-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (Slowaaks). <br/>  UNK (onbekend) <br/><br/> Als de taal code niet is opgegeven of null is, wordt de taal ingesteld op Engels. Als de taal expliciet is ingesteld op ' UNK ', wordt de taal automatisch gedetecteerd. </p> |
-|lineEnding | De waarde die moet worden gebruikt tussen elke gedetecteerde regel. Mogelijke waarden: ' spatie ', ' CarriageReturn ', ' regelinvoerteken '.  De standaard waarde is ' spatie ' |
+| `detectOrientation`   | Hiermee wordt automatische detectie van de afbeeldings stand ingeschakeld. <br/> Geldige waarden: True/False.|
+| `defaultLanguageCode` | <p>   De taal code van de invoer tekst. Enkele ondersteunde talen: <br/> zh-Hans (ChineseSimplified) <br/> zh-hant (ChineseTraditional) <br/>CS (Tsjechisch) <br/>da (Deens) <br/>nl (Nederlands) <br/>nl (Engels) <br/>fi (Fins)  <br/>FR (Frans) <br/>  de (Duits) <br/>El (Grieks) <br/> hu (Hong aars) <br/> It (Italiaans) <br/>  Ja (Japans) <br/> ko (Koreaans) <br/> NB (Noors) <br/>   pl (Pools) <br/> PT (Portugees) <br/>  ru (Russisch) <br/>  ES (Spaans) <br/>  SV (Zweeds) <br/>  tr (Turks) <br/> AR (Arabisch) <br/> ro (Roemeens) <br/> SR-Cyrl (SerbianCyrillic) <br/> sr-Latn (SerbianLatin) <br/>  SK (Slowaaks) <br/>  UNK (onbekend) <br/><br/> Als de taal code niet is opgegeven of null is, wordt de taal ingesteld op Engels. Als de taal expliciet is ingesteld op ' UNK ', wordt de taal automatisch gedetecteerd. </p> |
+| `lineEnding` | De waarde die moet worden gebruikt tussen elke gedetecteerde regel. Mogelijke waarden: ' spatie ', ' CarriageReturn ', ' regelinvoerteken '.  De standaard waarde is ' spatie '. |
 
 Voorheen was er een para meter met de naam ' textExtractionAlgorithm ' om aan te geven of de vaardigheid "gedrukte" of "handgeschreven" tekst moet extra heren.  Deze para meter is afgeschaft en niet langer nodig als de meest recente Lees-API-algoritme kan beide typen tekst tegelijk ophalen.  Als uw vaardigheids definitie deze para meter al bevat, hoeft u deze niet te verwijderen, maar deze wordt niet meer gebruikt en beide typen tekst worden uitgepakt, ongeacht waar deze is ingesteld.
 
@@ -53,14 +53,14 @@ Voorheen was er een para meter met de naam ' textExtractionAlgorithm ' om aan te
 
 | Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
-| installatiekopie         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een ```none```andere waarde dan. Zie het voor [beeld](#sample-output) voor meer informatie.|
+| `image`         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een andere waarde dan ```none``` . Zie het voor [beeld](#sample-output) voor meer informatie.|
 
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 | Uitvoer naam     | Beschrijving                   |
 |---------------|-------------------------------|
-| tekst          | Tekst zonder opmaak opgehaald uit de afbeelding.   |
-| layoutText    | Complex type waarmee de geëxtraheerde tekst wordt beschreven en de locatie waar de tekst is gevonden.|
+| `text`            | Tekst zonder opmaak opgehaald uit de afbeelding.   |
+| `layoutText`    | Complex type waarmee de geëxtraheerde tekst wordt beschreven en de locatie waar de tekst is gevonden.|
 
 
 ## <a name="sample-definition"></a>Voorbeeld definitie
@@ -172,18 +172,22 @@ In het volgende voor beeld wordt een *merged_text* veld gemaakt. Dit veld bevat 
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text",
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset"
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset"
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }

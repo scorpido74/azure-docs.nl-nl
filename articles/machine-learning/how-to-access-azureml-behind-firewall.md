@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab2bb3d94a740ca25be15b64895c52d5c038add3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552452"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080232"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
 
 In dit artikel leert u hoe u Azure Firewall kunt configureren voor gebruik met een Azure Machine Learning-werk ruimte.
 
-Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren. Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte.
+Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren. Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte. Er zijn verschillende hostnamen die worden gebruikt door de Azure Machine Learning-werk ruimte, die in dit artikel worden beschreven.
 
 ## <a name="network-rules"></a>Netwerk regels
 
@@ -37,26 +37,28 @@ Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit
 
 De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodig zijn om uw werk ruimte goed te laten functioneren.
 
-| **Hostnaam** | **Functie** |
+| **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Trainings clusters |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | Gebruikt door de Azure Machine Learning Studio |
 | **\*. azureml.ms** | Gebruikt door Azure Machine Learning-Api's |
-| **\*. experiments.azureml.net** | Gebruikt door experimenten die worden uitgevoerd in Azure Machine Learning|
+| **\*. experiments.azureml.net** | Gebruikt door experimenten die worden uitgevoerd in Azure Machine Learning |
 | **\*. modelmanagement.azureml.net** | Wordt gebruikt om modellen te registreren en te implementeren|
 | **mlworkspace.azure.ai** | Wordt gebruikt door de Azure Portal bij het weer geven van een werk ruimte |
 | **\*. aether.ms** | Gebruikt bij het uitvoeren van Azure Machine Learning pijp lijnen |
 | **\*. instances.azureml.net** | Azure Machine Learning Compute-instanties |
+| **\*. instances.azureml.ms** | Azure Machine Learning Compute-instanties waarvoor een persoonlijke koppeling is ingeschakeld voor de werk ruimte |
 | **windows.net** | Azure Blob Storage |
 | **vault.azure.net** | Azure Key Vault |
-| **microsoft.com** | Base docker-installatie kopieën |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | Micro soft Container Registry voor base docker-installatie kopieën |
 
 ## <a name="python-hosts"></a>Python-hosts
 
 De hosts in deze sectie worden gebruikt voor het installeren van Python-pakketten. Ze zijn vereist tijdens de ontwikkeling, training en implementatie. 
 
-| **Hostnaam** | **Functie** |
+| **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **anaconda.com** | Gebruikt bij het installeren van Conda-pakketten |
 | **pypi.org** | Gebruikt bij het installeren van PIP-pakketten |
@@ -68,7 +70,7 @@ De hosts in deze sectie worden gebruikt voor het installeren van R-pakketten. Ze
 > [!IMPORTANT]
 > Intern maakt de R SDK voor Azure Machine Learning gebruik van Python-pakketten. Daarom moet u ook python-hosts via de Firewall toestaan.
 
-| **Hostnaam** | **Functie** |
+| **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **cloud.r-project.org** | Wordt gebruikt bij het installeren van KRANs pakketten. |
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330373"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201511"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een Azure Active Directory technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor het Azure Act
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`van de protocolhandler bevatten.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary` . Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
 De volgende technische profielen van het [standaard beleid voor Starter Packs](custom-policy-get-started.md#custom-policy-starter-pack) van Azure AD bevatten het **Aad-algemene** technische profiel. De technische profielen van Azure AD geven niet het protocol op omdat het protocol is geconfigureerd in het **Aad-algemeen** Technical profiel:
  
@@ -41,7 +41,7 @@ De volgende technische profielen van het [standaard beleid voor Starter Packs](c
 
 In het volgende voor beeld wordt het **Aad-algemene** technische profiel weer gegeven:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -68,7 +68,7 @@ Het [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations
 
 ## <a name="outputclaims"></a>OutputClaims
 
-Het **OutputClaims** -element bevat een lijst met claims die worden geretourneerd door het technische profiel van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory. U kunt ook claims toevoegen die niet worden geretourneerd door de Azure Active Directory, zolang u het `DefaultValue` kenmerk hebt ingesteld.
+Het **OutputClaims** -element bevat een lijst met claims die worden geretourneerd door het technische profiel van Azure AD. Mogelijk moet u de naam van de claim die in uw beleid is gedefinieerd, toewijzen aan de naam die is gedefinieerd in Azure Active Directory. U kunt ook claims toevoegen die niet worden geretourneerd door de Azure Active Directory, zolang u het kenmerk hebt ingesteld `DefaultValue` .
 
 Het [OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -96,7 +96,7 @@ Het **PersistedClaims** -element bevat alle waarden die door Azure AD moeten wor
 
 Het **Aad-UserWriteUsingLogonEmail-** technische profiel, waarmee een nieuw lokaal account wordt gemaakt, houdt rekening met de volgende claims:
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -116,17 +116,17 @@ De naam van de claim is de naam van het kenmerk Azure AD, tenzij het kenmerk **P
 
 - Er moet precies één **input claim** -element aanwezig zijn in de claim verzameling voor alle technische profielen van Azure AD.
 - Het [artikel kenmerken van gebruikers profielen](user-profile-attributes.md) beschrijft de ondersteunde Azure AD B2C gebruikers profiel kenmerken die u kunt gebruiken in de invoer claims, uitvoer claims en permanente claims. 
-- Als de bewerking is `Write` of `DeleteClaims`, moet deze ook worden weer gegeven in een **PersistedClaims** -element.
-- De waarde van de **userPrincipalName** -claim moet de indeling van `user@tenant.onmicrosoft.com`hebben.
+- Als de bewerking is `Write` of `DeleteClaims` , moet deze ook worden weer gegeven in een **PersistedClaims** -element.
+- De waarde van de **userPrincipalName** -claim moet de indeling van hebben `user@tenant.onmicrosoft.com` .
 - De **DisplayName** -claim is vereist en kan geen lege teken reeks zijn.
 
 ## <a name="azure-ad-technical-provider-operations"></a>Bewerkingen voor de technische provider van Azure AD
 
-### <a name="read"></a>Lezen
+### <a name="read"></a>Raadplegen
 
 Met de **Lees** bewerking worden gegevens over één gebruikers account gelezen. Met het volgende technische profiel worden gegevens over een gebruikers account gelezen met de objectId van de gebruiker:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ Met de **Lees** bewerking worden gegevens over één gebruikers account gelezen.
 
 Met de **Schrijf** bewerking wordt één gebruikers account gemaakt of bijgewerkt. Het volgende technische profiel maakt een nieuw sociaal account:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ Met de **Schrijf** bewerking wordt één gebruikers account gemaakt of bijgewerk
 
 Met de bewerking **DeleteClaims** wordt de informatie uit een verstrekte lijst met claims gewist. Met het volgende technische profiel worden claims verwijderd:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ Met de bewerking **DeleteClaims** wordt de informatie uit een verstrekte lijst m
 
 Met de bewerking **DeleteClaimsPrincipal** wordt één gebruikers account uit de map verwijderd. Met het volgende technische profiel wordt een gebruikers account uit de Directory verwijderd met behulp van de user principal name:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ Met de bewerking **DeleteClaimsPrincipal** wordt één gebruikers account uit de
 
 Met het volgende technische profiel wordt een sociaal gebruikers account verwijderd met behulp van **alternativeSecurityId**:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -248,12 +248,12 @@ Met het volgende technische profiel wordt een sociaal gebruikers account verwijd
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Ja | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `Read`, `Write` `DeleteClaims`, of `DeleteClaimsPrincipal`. |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Nee | Een fout veroorzaken als het gebruikers object niet in de map bestaat. Mogelijke waarden: `true` of `false`. |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Nee | Er wordt een fout gegenereerd als het gebruikers object al bestaat. Mogelijke waarden: `true` of `false`.|
-| ApplicationObjectId | Nee | De object-id van de toepassing voor extensie kenmerken. Waarde: ObjectId van een toepassing. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md). |
-| ClientId | Nee | De client-id voor toegang tot de Tenant als derde partij. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Nee | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true`, of `false`  (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in `true`op. |
+| Bewerking | Yes | De bewerking die moet worden uitgevoerd. Mogelijke waarden: `Read` , `Write` , `DeleteClaims` of `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Een fout veroorzaken als het gebruikers object niet in de map bestaat. Mogelijke waarden: `true` of `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Er wordt een fout gegenereerd als het gebruikers object al bestaat. Mogelijke waarden: `true` of `false` .|
+| ApplicationObjectId | No | De object-id van de toepassing voor extensie kenmerken. Waarde: ObjectId van een toepassing. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md). |
+| ClientId | No | De client-id voor toegang tot de Tenant als derde partij. Zie voor meer informatie [aangepaste kenmerken gebruiken in een aangepast profiel beleid bewerken](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | No | Voor invoer-en uitvoer claims geeft u op of [claim omzetting](claim-resolver-overview.md) in het technische profiel is opgenomen. Mogelijke waarden: `true` , of `false`   (standaard). Als u een claim conflict Oplosser wilt gebruiken in het technische profiel, stelt u dit in op `true` . |
 
 ### <a name="ui-elements"></a>UI-elementen
  
@@ -261,8 +261,8 @@ De volgende instellingen kunnen worden gebruikt voor het configureren van het fo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Nee | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Nee | Als er een fout is opgetreden (Zie de beschrijving van het kenmerk RaiseErrorIfClaimsPrincipalDoesNotExist), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object niet bestaat. |
+| UserMessageIfClaimsPrincipalAlreadyExists | No | Als er een fout is opgetreden (zie beschrijving van het RaiseErrorIfClaimsPrincipalAlreadyExists-kenmerk), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object al bestaat. |
+| UserMessageIfClaimsPrincipalDoesNotExist | No | Als er een fout is opgetreden (Zie de beschrijving van het kenmerk RaiseErrorIfClaimsPrincipalDoesNotExist), geeft u het bericht op dat moet worden weer gegeven voor de gebruiker als het gebruikers object niet bestaat. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

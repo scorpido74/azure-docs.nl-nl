@@ -3,24 +3,24 @@ title: Problemen met het configureren van federatieve SSO voor Azure AD Gallery-
 description: Adresseer een aantal veelvoorkomende problemen die kunnen optreden bij het configureren van federatieve eenmalige aanmelding met behulp van SAML voor toepassingen die worden vermeld in de Azure AD-toepassings galerie
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 858e61c6371aac28d709a9016e4b9cbed6befe3f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274645"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763598"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleem bij het configureren van federatieve eenmalige aanmelding voor een toepassing in de Azure AD-galerie
 
@@ -64,17 +64,17 @@ Als u wilt weten welke patronen vooraf zijn geconfigureerd voor de toepassing:
 
 10. Er zijn drie manieren om de ondersteunde patronen voor de toepassing te kennen:
 
-    * In het tekstvak ziet u de ondersteunde patroon (en) als tijdelijke aanduiding *voor beeld:* <https://contoso.com>.
+    * In het tekstvak ziet u de ondersteunde patroon (en) als tijdelijke aanduiding *voor beeld:* <https://contoso.com> .
 
     * Als het patroon niet wordt ondersteund, ziet u een rood uitroep teken wanneer u probeert de waarde in het tekstvak in te voeren. Als u de muis aanwijzer boven het rode uitroep teken houdt, ziet u de ondersteunde patronen.
 
     * In de zelf studie voor de toepassing kunt u ook informatie over de ondersteunde patronen ophalen. Onder de sectie **eenmalige aanmelding voor Azure AD configureren** . Ga naar de stap voor het configureren van de waarden in de sectie **domein en url's** .
 
-Als de waarden niet overeenkomen met de patronen die vooraf zijn geconfigureerd in azure AD. U kunt het volgende doen:
+Als de waarden niet overeenkomen met de patronen die vooraf zijn geconfigureerd in azure AD. U kunt:
 
 -   Werk samen met de leverancier van de toepassing om waarden op te halen die overeenkomen met het patroon dat vooraf is geconfigureerd in azure AD
 
--   U kunt ook contact opnemen met het Azure AD <aadapprequest@microsoft.com> -team of een opmerking in de zelf studie laten staan om de update van de ondersteunde patronen voor de toepassing aan te vragen
+-   U kunt ook contact opnemen met het Azure AD-team <aadapprequest@microsoft.com> of een opmerking in de zelf studie laten staan om de update van de ondersteunde patronen voor de toepassing aan te vragen
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Waar kan ik de EntityID-indeling (gebruikers-id) instellen
 

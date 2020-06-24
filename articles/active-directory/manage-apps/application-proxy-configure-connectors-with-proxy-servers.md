@@ -2,22 +2,22 @@
 title: Werken met bestaande on-premises proxy servers en Azure AD | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u kunt werken met bestaande on-premises proxy servers.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827044"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764924"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -39,7 +39,7 @@ De besturingssysteemonderdelen zoeken een proxyserver door een DNS-zoekactie voo
 
 U kunt de connector configureren om uw on-premises proxy over te slaan, zodat u zeker weet dat de connector rechtstreeks is verbonden met de Azure-services. Dit is de aanbevolen methode zolang deze mogelijk is volgens uw netwerkbeleid, omdat u in dit geval één configuratie minder hoeft te onderhouden.
 
-Als u het uitgaande proxy gebruik voor de connector wilt uitschakelen, bewerkt u het Connector\ApplicationProxyConnectorService.exe.config-bestand voor de C:\Program Files\Microsoft AAD-app-proxy en voegt u de sectie *System.net* toe, zoals weer gegeven in dit code voorbeeld:
+Als u het uitgaande proxy gebruik voor de connector wilt uitschakelen, bewerkt u de map C:\Program Files\Microsoft AAD app-proxy Connector\ApplicationProxyConnectorService.exe.config bestand en voegt u de sectie *System.net* toe, zoals weer gegeven in dit code voorbeeld:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -56,7 +56,7 @@ Als u het uitgaande proxy gebruik voor de connector wilt uitschakelen, bewerkt u
 </configuration>
 ```
 
-Om ervoor te zorgen dat de Connector Updater-service ook de proxy omzeilt, maakt u een vergelijk bare wijziging in het bestand ApplicationProxyConnectorUpdaterService. exe. config. Dit bestand bevindt zich in C:\Program Files\Microsoft AAD app proxy Connector Updater.
+Om ervoor te zorgen dat de Connector Updater-service ook de proxy omzeilt, brengt u een vergelijk bare wijziging aan in het ApplicationProxyConnectorUpdaterService.exe.config bestand. Dit bestand bevindt zich in C:\Program Files\Microsoft AAD app proxy Connector Updater.
 
 Vergeet niet om kopieën van de oorspronkelijke bestanden te maken, in het geval u de .config-bestanden naar de standaardinstellingen moet terugzetten.
 
@@ -77,7 +77,7 @@ Als gevolg van alleen uitgaand verkeer, hoeft u geen inkomende toegang via uw fi
 
 Als WPAD is ingeschakeld in de omgeving en op de juiste wijze is geconfigureerd, detecteert de connector automatisch de uitgaande proxy server en probeert deze te gebruiken. U kunt de connector echter expliciet configureren om door te gaan met een uitgaande proxy.
 
-U doet dit door het Connector\ApplicationProxyConnectorService.exe.config-bestand van de C:\Program Files\Microsoft AAD-app te bewerken en de sectie *System.net* toe te voegen die wordt weer gegeven in dit code voorbeeld. Wijzig *proxy server: 8080* zodat deze overeenkomt met de naam van uw lokale proxy server of IP-adres en de poort waarop deze luistert. De waarde moet het voor voegsel http://bevatten, zelfs als u een IP-adres gebruikt.
+Als u dit wilt doen, bewerkt u de map C:\Program Files\Microsoft AAD app Connector\ApplicationProxyConnectorService.exe.config bestand en voegt u de sectie *System.net* toe, die wordt weer gegeven in dit code voorbeeld. Wijzig *proxy server: 8080* zodat deze overeenkomt met de naam van uw lokale proxy server of IP-adres en de poort waarop deze luistert. De waarde moet het voor voegsel http://bevatten, zelfs als u een IP-adres gebruikt.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -96,7 +96,7 @@ U doet dit door het Connector\ApplicationProxyConnectorService.exe.config-bestan
 </configuration>
 ```
 
-Configureer vervolgens de Connector Updater-Service voor het gebruik van de proxy door een vergelijk bare wijziging aan te brengen in het bestand met de Updater\ApplicationProxyConnectorUpdaterService.exe.config voor de C:\Program Files\Microsoft AAD-app-connector.
+Configureer vervolgens de Connector Updater-Service voor het gebruik van de proxy door een soort gelijke wijziging aan te brengen in de map C:\Program Files\Microsoft AAD app proxy connector Updater\ApplicationProxyConnectorUpdaterService.exe.config bestand.
 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Stap 2: Configureer de proxy zodanig dat verkeer van de connector en gerelateerde services wordt door lopen
 
@@ -152,9 +152,9 @@ Voer de volgende stappen uit om dit in te scha kelen:
 3.  Start een opdracht prompt met verhoogde bevoegdheid met beheerders rechten en voer in `control inetcpl.cpl` .
 4.  Configureer de vereiste proxy instellingen. 
 
-Deze instellingen zorgen ervoor dat de connector dezelfde doorstuur proxy gebruikt voor de communicatie met Azure en de back-end-toepassing. Als voor de communicatie tussen de connector en Azure geen doorstuur proxy of een andere doorstuur proxy nodig is, kunt u dit instellen met het wijzigen van het bestand ApplicationProxyConnectorService. exe. config zoals beschreven in de secties uitgaande proxy's overs Laan of de uitgaande proxy server gebruiken.
+Deze instellingen zorgen ervoor dat de connector dezelfde doorstuur proxy gebruikt voor de communicatie met Azure en de back-end-toepassing. Als voor de communicatie tussen de connector en Azure geen doorstuur proxy of een andere doorstuur proxy nodig is, kunt u dit instellen met het wijzigen van de bestands ApplicationProxyConnectorService.exe.config, zoals beschreven in de secties uitgaande proxy's overs Laan of de uitgaande proxy server gebruiken.
 
-De connector Updater-Service gebruikt ook de computer proxy. Dit gedrag kan worden gewijzigd door het bestand ApplicationProxyConnectorUpdaterService. exe. config te wijzigen.
+De connector Updater-Service gebruikt ook de computer proxy. Dit gedrag kan worden gewijzigd door het bestand ApplicationProxyConnectorUpdaterService.exe.config te wijzigen.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Problemen met Connector proxy en problemen met de service connectiviteit oplossen
 

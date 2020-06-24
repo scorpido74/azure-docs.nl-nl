@@ -4,12 +4,12 @@ description: Overzicht van de architectuur van Azure Block Chain Workbench previ
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324904"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253423"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Architectuur van Azure Blockchain Workbench
 
@@ -43,12 +43,12 @@ Zie de voor [beelden van Azure Block Chain Workbench-client toepassingen op gith
 
 ## <a name="gateway-service-api"></a>Gateway Service-API
 
-Block Chain Workbench bevat een API voor op REST gebaseerde Gateway Service. Wanneer er naar een Block Chain wordt geschreven, genereert en levert de API berichten aan een event Broker. Wanneer gegevens worden aangevraagd door de API, worden er query's verzonden naar de buiten keten SQL database. De SQL database bevat een replica van gegevens en meta gegevens op de keten met informatie over de context en configuratie voor ondersteunde slimme contracten. Query's retour neren de vereiste gegevens van de off-keten replica in een indeling die wordt geïnformeerd over de meta gegevens voor het contract.
+Block Chain Workbench bevat een API voor op REST gebaseerde Gateway Service. Wanneer er naar een Block Chain wordt geschreven, genereert en levert de API berichten aan een event Broker. Wanneer gegevens worden aangevraagd door de API, worden query's verzonden naar de data base uit de buiten keten. De Data Base bevat een replica van gegevens en meta gegevens op de keten met informatie over de context en configuratie voor ondersteunde slimme contracten. Query's retour neren de vereiste gegevens van de off-keten replica in een indeling die wordt geïnformeerd over de meta gegevens voor het contract.
 
 Ontwikkel aars hebben toegang tot de Gateway Service-API om Block chain-oplossingen te bouwen of te integreren zonder dat ze gebruikmaken van Block Chain Workbench-client-apps.
 
 > [!NOTE]
-> Om geverifieerde toegang tot de API in te scha kelen, worden twee client toepassingen geregistreerd in Azure Active Directory. Azure Active Directory vereist afzonderlijke toepassings registraties elk toepassings type (systeem eigen en web). 
+> Om geverifieerde toegang tot de API in te scha kelen, worden twee client toepassingen geregistreerd in Azure Active Directory. Azure Active Directory vereist afzonderlijke toepassings registraties elk toepassings type (systeem eigen en web).
 
 ## <a name="message-broker-for-incoming-messages"></a>Bericht Broker voor inkomende berichten
 
@@ -70,7 +70,7 @@ Distributed Ledger-berichten (DLT) bevatten de meta gegevens voor trans acties d
 
 ### <a name="database-consumer"></a>Database gebruiker
 
-De database gebruiker neemt berichten van Service Bus en duwt de gegevens naar een bijgevoegde data base, zoals SQL database.
+De database gebruiker neemt berichten van Service Bus en duwt de gegevens naar een bijgevoegde data base, zoals een data base in Azure SQL Database.
 
 ### <a name="storage-consumer"></a>Opslag verbruiker
 
@@ -91,11 +91,11 @@ Trans actie routers en groot boeken nemen ondertekende trans acties en sturen ze
 Een Distributed Ledger-Watcher bewaakt gebeurtenissen die plaatsvinden op blok ketens die zijn gekoppeld aan block Chain Workbench.
 Gebeurtenissen geven informatie weer die relevant is voor personen en systemen. Bijvoorbeeld het maken van nieuwe contract instanties, het uitvoeren van trans acties en de status wijzigingen. De gebeurtenissen worden vastgelegd en verzonden naar de uitgaande Message Broker, zodat deze kunnen worden gebruikt door downstream-gebruikers.
 
-De SQL-gebruiker bewaakt bijvoorbeeld gebeurtenissen, gebruikt deze en vult de SQL database met de opgenomen waarden. Met de kopie wordt het maken van een replica van on-keten gegevens in een buiten keten archief mogelijk.
+De SQL-gebruiker bewaakt bijvoorbeeld gebeurtenissen, verbruikt deze en vult de data base met de opgenomen waarden. Met de kopie wordt het maken van een replica van on-keten gegevens in een buiten keten archief mogelijk.
 
-## <a name="azure-sql-database"></a>Azure SQL-database
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-De Azure-SQL database die zijn gekoppeld aan block Chain Workbench, slaat contract definities, meta gegevens over de configuratie en een met SQL toegankelijke replica op van gegevens die zijn opgeslagen in de Block chain. Deze gegevens kunnen eenvoudig worden opgevraagd, gevisualiseerd of geanalyseerd door rechtstreeks toegang te krijgen tot de data base. Ontwikkel aars en andere gebruikers kunnen de-Data Base gebruiken voor rapportages, analyses of andere gegevens gerichte integraties. Gebruikers kunnen bijvoorbeeld transactie gegevens visualiseren met behulp van Power BI.
+De data base die is gekoppeld aan block Chain Workbench slaat contract definities, meta gegevens over de configuratie en een SQL-toegankelijke replica op van gegevens die zijn opgeslagen in de Block chain. Deze gegevens kunnen eenvoudig worden opgevraagd, gevisualiseerd of geanalyseerd door rechtstreeks toegang te krijgen tot de data base. Ontwikkel aars en andere gebruikers kunnen de-Data Base gebruiken voor rapportages, analyses of andere gegevens gerichte integraties. Gebruikers kunnen bijvoorbeeld transactie gegevens visualiseren met behulp van Power BI.
 
 Deze buiten keten opslag biedt bedrijven de mogelijkheid om gegevens in SQL te doorzoeken in plaats van in een Block Chain-groot boek. Daarnaast kunt u met behulp van een standaard schema dat neutraal van Block Chain-technologie stacks wordt genormaliseerd, de niet-keten opslag gebruiken om rapporten en andere artefacten te hergebruiken in projecten, scenario's en organisaties.
 

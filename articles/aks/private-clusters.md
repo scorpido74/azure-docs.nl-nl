@@ -3,13 +3,13 @@ title: Een persoonlijk Azure Kubernetes service-cluster maken
 description: Meer informatie over het maken van een AKS-cluster (private Azure Kubernetes service)
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 6/18/2020
+ms.openlocfilehash: d2705570f6993ecda0c88241d2dc517fac60695c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849685"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194039"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
 
@@ -71,11 +71,11 @@ Het maken van een virtuele machine in hetzelfde VNET als het AKS-cluster is de e
 
 Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonlijke cluster. Als u VNet-peering wilt gebruiken, moet u een koppeling instellen tussen het virtuele netwerk en de privé-DNS-zone.
     
-1. Ga naar de resource groep MC_ * in de Azure Portal.  
+1. Ga naar de resource groep knoop punt in de Azure Portal.  
 2. Selecteer de privé-DNS-zone.   
 3. Selecteer de koppeling **virtueel netwerk** in het linkerdeel venster.  
 4. Maak een nieuwe koppeling om het virtuele netwerk van de VM toe te voegen aan de privé-DNS-zone. Het duurt enkele minuten voordat de koppeling van de DNS-zone beschikbaar wordt.  
-5. Ga terug naar de resource groep MC_ * in de Azure Portal.  
+5. Navigeer in het Azure Portal naar de resource groep die het VNet van het cluster bevat.  
 6. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet- \* *.  
 7. Selecteer **peerings**in het linkerdeel venster.  
 8. Selecteer **toevoegen**, voeg het virtuele netwerk van de VM toe en maak de peering.  
@@ -91,7 +91,7 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 
 2. De privé-DNS-zone wordt alleen gekoppeld aan het VNet waaraan de cluster knooppunten zijn gekoppeld (3). Dit betekent dat het privé-eind punt alleen kan worden omgezet door hosts in het gekoppelde VNet. In scenario's waarin geen aangepaste DNS is geconfigureerd op het VNet (standaard), werkt dit zonder te verlenen als hosts-punt op 168.63.129.16 voor DNS, waarmee records in de privé-DNS-zone kunnen worden omgezet door de koppeling.
 
-3. In scenario's waarin het VNet dat uw cluster bevat aangepaste DNS-instellingen (4) heeft, mislukt de implementatie van het cluster, tenzij de privé-DNS-zone is gekoppeld aan het VNet dat de aangepaste DNS-resolvers (5) bevat. Deze koppeling kan hand matig worden gemaakt nadat de privé zone is gemaakt tijdens het inrichten van een cluster of via Automation wanneer de zone wordt gedetecteerd met behulp van Azure Policy of andere implementatie mechanismen op basis van gebeurtenissen (bijvoorbeeld Azure Event Grid en Azure Functions).
+3. In scenario's waarin het VNet dat uw cluster bevat aangepaste DNS-instellingen (4) heeft, mislukt de implementatie van het cluster, tenzij de privé-DNS-zone is gekoppeld aan het VNet dat de aangepaste DNS-resolvers (5) bevat. Deze koppeling kan hand matig worden gemaakt nadat de privé zone is gemaakt tijdens het inrichten van een cluster of via Automation wanneer de zone wordt gedetecteerd met behulp van implementatie mechanismen op basis van gebeurtenissen (bijvoorbeeld Azure Event Grid en Azure Functions).
 
 ## <a name="dependencies"></a>Afhankelijkheden  
 
@@ -102,7 +102,6 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 * Toegestane IP-bereiken kunnen niet worden toegepast op het eind punt van de persoonlijke API-server, maar zijn alleen van toepassing op de open bare API-server
 * Beschikbaarheidszones momenteel worden ondersteund voor bepaalde regio's, zie het begin van dit document 
 * De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters.
-* Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om persoonlijke Azure Container Instances (ACI) in te draaien in een particulier Azure Virtual Network
 * Geen ondersteuning voor door micro soft gehoste DevOps-agents van Azure met persoonlijke clusters. Overweeg [zelf-hostende agents][devops-agents]te gebruiken. 
 * Voor klanten die Azure Container Registry kunnen gebruiken met persoonlijke AKS, moet het virtuele netwerk Container Registry worden gekoppeld aan het virtuele netwerk van het agent cluster.
 * Geen huidige ondersteuning voor Azure dev Spaces

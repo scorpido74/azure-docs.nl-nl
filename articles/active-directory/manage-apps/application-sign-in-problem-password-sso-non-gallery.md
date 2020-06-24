@@ -3,25 +3,25 @@ title: Eenmalige aanmelding op basis van wacht woorden (SSO) in het toegangs ven
 description: Hierin worden probleem gebieden beschreven die hulp bieden bij het oplossen van problemen met het aanmelden bij Azure AD Gallery-toepassingen die zijn geconfigureerd voor eenmalige aanmelding met een wacht woord.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd4a645038dfb49e7c79995b90b159bdc07bea4f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68381235"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763768"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemen bij het aanmelden bij een Azure AD Gallery-toepassing die is geconfigureerd voor eenmalige aanmelding met een wacht woord
 

@@ -9,36 +9,23 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/11/2020
+ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: be78681ba01cf98f087331a5a9a6c7974f3b1122
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5415237a502116b597c1514f75f35203108237ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560257"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299072"
 ---
-# <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Uw machine learning levenscyclus beveiligen met particuliere virtuele netwerken
+# <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u experimenteren/trainings taken en taken voor het afwijzen van de taak kunt isoleren in Azure Machine Learning binnen een Azure Virtual Network (vnet). Ook vindt u hier informatie over een aantal *Geavanceerde beveiligings instellingen*die niet nodig zijn voor basis-of experimentele gebruiks gevallen.
-
-> [!WARNING]
-> Als uw onderliggende opslag zich in een virtueel netwerk bevindt, kunnen gebruikers de Studio Web Experience van Azure Machine Learning niet gebruiken, met inbegrip van:
-> - ontwerp functie voor slepen en neerzetten
-> - Gebruikers interface voor automatische machine learning
-> - Gebruikers interface voor het labelen van gegevens
-> - Gebruikers interface voor gegevens sets
-> - Notebooks
-> 
-> Als u probeert, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
-
-## <a name="what-is-a-vnet"></a>Wat is een VNET?
+In dit artikel leert u hoe u uw machine learning levenscyclus kunt beveiligen door Azure Machine Learning training te isoleren en taken in een Azure-Virtual Network (vnet) af te leiden. Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources, ook wel [Compute-doelen](concept-compute-target.md)genoemd, om modellen te trainen en te implementeren. De doelen kunnen worden gemaakt in een virtueel netwerk. U kunt bijvoorbeeld Azure Machine Learning Compute gebruiken om een model te trainen en het model vervolgens implementeren in azure Kubernetes service (AKS). 
 
 Een **virtueel netwerk** fungeert als beveiligings grens en isoleert uw Azure-resources van het open bare Internet. U kunt ook een virtueel Azure-netwerk toevoegen aan uw on-premises netwerk. Door netwerken aan te koppelen, kunt u uw modellen veilig trainen en toegang verkrijgen tot uw geïmplementeerde modellen.
 
-Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resources, ook wel [Compute-doelen](concept-compute-target.md)genoemd, om modellen te trainen en te implementeren. De doelen kunnen worden gemaakt in een virtueel netwerk. U kunt bijvoorbeeld Azure Machine Learning Compute gebruiken om een model te trainen en het model vervolgens implementeren in azure Kubernetes service (AKS). 
-
+Als uw **onderliggende opslag zich in een virtueel netwerk bevindt, kunnen gebruikers de Studio-Webervaring van Azure machine learning niet gebruiken**, met inbegrip van de ontwerp functie voor het slepen en neerzetten of de gebruikers interface voor automatische machine learning, gegevens labeling en gegevens sets of geïntegreerde notebooks.  Als u probeert, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende fout:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,7 +35,7 @@ Azure Machine Learning is afhankelijk van andere Azure-Services voor reken resou
 
 + Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources.
 
-## <a name="private-endpoints"></a>Privé-eind punten
+## <a name="private-endpoints"></a>Privé-eindpunten
 
 U kunt ook [persoonlijke Azure-koppelingen inschakelen](how-to-configure-private-link.md) om verbinding te maken met uw werk ruimte met behulp van een persoonlijk eind punt. Het persoonlijke eind punt is een reeks privé-IP-adressen in uw virtuele netwerk. [Meer informatie over het instellen van dit persoonlijke eind punt.](how-to-configure-private-link.md)
 
@@ -77,7 +64,7 @@ U kunt ook [persoonlijke Azure-koppelingen inschakelen](how-to-configure-private
 
 <a id="amlcompute"></a>
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>& exemplaren van compute-clusters
+## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>& exemplaren van compute-clusters 
 
 Als u een [beheerd Azure machine learning **Compute-doel** ](concept-compute-target.md#azure-machine-learning-compute-managed) of een [Azure machine learning COMPUTE- **exemplaar** ](concept-compute-instance.md) in een virtueel netwerk wilt gebruiken, moet aan de volgende netwerk vereisten worden voldaan:
 
@@ -102,7 +89,9 @@ Als u een [beheerd Azure machine learning **Compute-doel** ](concept-compute-tar
 
 ### <a name="required-ports"></a><a id="mlcports"></a>Vereiste poorten
 
-Machine Learning Compute maakt momenteel gebruik van de Azure Batch-service om virtuele machines in het opgegeven virtuele netwerk in te richten. Het subnet moet inkomende communicatie vanuit de batch-service toestaan. U gebruikt deze communicatie om uitvoeringen uit te voeren op de Machine Learning Compute knooppunten en te communiceren met Azure Storage en andere resources. De batch-service voegt netwerk beveiligings groepen (Nsg's) toe op het niveau van netwerk interfaces (Nic's) die zijn gekoppeld aan Vm's. Met deze netwerkbeveiligingsgroepen worden automatisch binnenkomende en uitgaande regels geconfigureerd om het volgende verkeer toe te staan:
+Als u van plan bent het virtuele netwerk te beveiligen door het netwerk verkeer naar/van het open bare Internet te beperken, moet u binnenkomende communicaties van de Azure Batch-service toestaan.
+
+De batch-service voegt netwerk beveiligings groepen (Nsg's) toe op het niveau van netwerk interfaces (Nic's) die zijn gekoppeld aan Vm's. Met deze netwerkbeveiligingsgroepen worden automatisch binnenkomende en uitgaande regels geconfigureerd om het volgende verkeer toe te staan:
 
 - Binnenkomend TCP-verkeer op de poorten 29876 en 29877 van een __service label__ van __BatchNodeManagement__.
 
@@ -116,9 +105,10 @@ Machine Learning Compute maakt momenteel gebruik van de Azure Batch-service om v
 
 - Voor het binnenkomende TCP-verkeer van reken instanties op poort 44224 van een __service-tag__ van __AzureMachineLearning__.
 
-Wees voorzichtig als u binnenkomende of uitgaande regels toevoegt of wijzigt in netwerkbeveiligingsgroepen die door Batch zijn geconfigureerd. Als een NSG communicatie met de reken knooppunten blokkeert, stelt de compute-service de status van de reken knooppunten in op onbruikbaar.
-
-U hoeft Nsg's niet op subnetniveau op te geven omdat de Azure Batch-service zijn eigen Nsg's configureert. Als het opgegeven subnet echter is gekoppeld Nsg's of een firewall, configureert u de regels voor binnenkomende en uitgaande verbindingen zoals eerder beschreven.
+> [!IMPORTANT]
+> Wees voorzichtig als u binnenkomende of uitgaande regels toevoegt of wijzigt in netwerkbeveiligingsgroepen die door Batch zijn geconfigureerd. Als een NSG communicatie met de reken knooppunten blokkeert, stelt de compute-service de status van de reken knooppunten in op onbruikbaar.
+>
+> U hoeft Nsg's niet op subnetniveau op te geven omdat de Azure Batch-service zijn eigen Nsg's configureert. Als er echter een Nsg's of een firewall is gekoppeld aan het subnet met de Azure Machine Learning compute, moet u ook het verkeer toestaan dat hierboven wordt vermeld.
 
 De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende installatie kopieën:
 
@@ -436,6 +426,9 @@ Zie voor meer informatie over het gebruik van de interne load balancer met AKS [
 
 Azure Container Instances worden dynamisch gemaakt bij het implementeren van een model. Als u wilt dat Azure Machine Learning ACI in het virtuele netwerk maakt, moet u __subnet delegering__ inschakelen voor het subnet dat wordt gebruikt door de implementatie.
 
+> [!WARNING]
+> Als u Azure Container Instances in het virtuele netwerk wilt gebruiken, kan het Azure Container Registry (ACR) voor uw werk ruimte zich ook niet in het virtuele netwerk bevinden.
+
 Als u ACI wilt gebruiken in een virtueel netwerk naar uw werk ruimte, gebruikt u de volgende stappen:
 
 1. Als u subnet delegering wilt inschakelen voor het virtuele netwerk, gebruikt u de informatie in het artikel [een subnet delegering toevoegen of verwijderen](../virtual-network/manage-subnet-delegation.md) . U kunt delegeren inschakelen bij het maken van een virtueel netwerk of het toevoegen aan een bestaand netwerk.
@@ -582,7 +575,7 @@ Als u Azure Machine Learning experimenten wilt gebruiken met Azure Key Vault ach
    ![De sectie firewalls en virtuele netwerken in het deel venster Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
 1. Voer op de pagina __firewalls en virtuele netwerken__ de volgende acties uit:
-    - Selecteer onder __toegang toestaan vanuit__de optie __geselecteerde netwerken__.
+    - Selecteer __Geselecteerde netwerken__ onder __Toegang toestaan uit__.
     - Selecteer onder __virtuele netwerken__ __bestaande virtuele netwerken toevoegen__ om het virtuele netwerk toe te voegen waarin uw experimenten worden berekend.
     - Onder __vertrouwde micro soft-Services toestaan deze firewall te omzeilen__, selecteert u __Ja__.
 

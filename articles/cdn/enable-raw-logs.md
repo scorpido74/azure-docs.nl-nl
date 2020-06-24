@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747300"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888643"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Onbewerkte HTTP-logboeken Azure CDN
 Onbewerkte logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Onbewerkte logboeken verschillen van activiteiten Logboeken. Met activiteiten logboeken krijgt u inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Onbewerkte logboeken bieden een overzicht van de bewerkingen van uw resource.
@@ -23,7 +23,7 @@ Onbewerkte logboeken bieden uitgebreide informatie over bewerkingen en fouten di
 > [!IMPORTANT]
 > De functie voor onbewerkte HTTP-Logboeken is beschikbaar voor Azure CDN van micro soft.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -33,7 +33,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren: 
 
-1. Selecteer in het menu Azure Portal **alle resources**  >>  ** \< uw-CDN-profiel>**.
+1. Selecteer **alle resources**in het menu Azure Portal  >>  **\<your-CDN-profile>** .
 
 2. Selecteer onder **Bewaking** de optie **Diagnostische instellingen**.
 

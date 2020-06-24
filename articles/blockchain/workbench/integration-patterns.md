@@ -4,12 +4,12 @@ description: Overzicht van de integratie patronen voor Smart-contracten in azure
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325974"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254630"
 ---
 # <a name="smart-contract-integration-patterns"></a>Integratiepatronen voor slimme contracten
 
@@ -31,7 +31,7 @@ De mogelijkheden van Azure Block Chain Workbench gegenereerde webtoepassingen wo
 
 De REST API wordt voornamelijk gebruikt voor interactieve clients, zoals web-, mobiele en bot-toepassingen.
 
-In deze sectie wordt aandacht besteed aan patronen die gericht zijn op de aspecten van de REST API die trans acties verzenden naar een gedistribueerd groot boek en patronen waarmee gegevens over trans acties uit Azure Block Chain Workbench worden *opgevraagd SQL database.*
+In deze sectie wordt aandacht besteed aan patronen die gericht zijn op de aspecten van de REST API die trans acties verzenden naar een gedistribueerd groot boek en patronen waarmee gegevens over trans acties vanuit Azure Block Chain Workbench uit de *keten* database worden opgevraagd.
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Trans acties vanuit een extern systeem naar een gedistribueerd groot boek verzenden
 
@@ -204,7 +204,7 @@ De gegevens integratie is bekend:
 
 -   Azure Block Chain Workbench slaat meta gegevens over toepassingen, werk stromen, contracten en trans acties op als onderdeel van het normale gedrag van het besturings systeem.
 -   Externe systemen of hulpprogram ma's bieden een of meer dialoog vensters om het verzamelen van informatie over de data base te vergemakkelijken, zoals de naam van de database server, de database naam, het type verificatie, aanmeldings referenties en de database weergaven die moeten worden gebruikt.
--   Query's worden geschreven tegen SQL database weergaven om het downstream-gebruik door externe systemen, services, rapportage, hulpprogram ma's voor ontwikkel aars en hulpprogram ma's voor bedrijfs productiviteit te vergemakkelijken.
+-   Query's worden geschreven op basis van database weergaven om het gebruik door externe systemen, services, rapportage, hulpprogram ma's voor ontwikkel aars en hulpprogram ma's voor bedrijfs productiviteit te vergemakkelijken.
 
 ## <a name="storage-integration"></a>Opslag integratie
 

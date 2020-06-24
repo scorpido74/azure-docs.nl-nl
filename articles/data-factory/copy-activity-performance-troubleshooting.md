@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 6a7c04bec8a794a234f2f0c6fad75dc94c12d291
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d339e68dcf49c74c508029fda3e7eb548ec92588
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668335"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770948"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
 
@@ -57,7 +57,7 @@ In de details van de uitvoering en de duur onder aan de weer gave controle activ
 | --------------- | ------------------------------------------------------------ |
 | Wachtrij           | De verstreken tijd totdat de Kopieer activiteit daad werkelijk wordt gestart op de Integration runtime. |
 | Script vooraf kopiëren | De verstreken tijd tussen de Kopieer activiteit, te beginnen bij de IR-en kopieer activiteit, waarbij het vooraf kopiëren van het script in de Sink-gegevens opslag wordt voltooid. Toep assen wanneer u het script voor het vooraf kopiëren van de data base-sinks configureert, bijvoorbeeld wanneer u gegevens schrijft in Azure SQL Database opschonen voordat nieuwe gegevens worden gekopieerd. |
-| Overdragen        | De verstreken tijd tussen het einde van de vorige stap en de IR waarbij alle gegevens van de bron naar de Sink worden overgebracht. <br/>Let op de substappen onder overdracht parallel uitvoeren en sommige bewerkingen worden nu niet weer gegeven, zoals het parseren/genereren van de bestands indeling.<br><br/>- **Tijd tot eerste byte:** De verstreken tijd tussen het einde van de vorige stap en de tijd waarop de IR de eerste byte van de brongegevens opslag ontvangt. Is van toepassing op bronnen die niet op bestanden zijn gebaseerd.<br>- **Bron van vermelding:** De hoeveelheid tijd die is besteed aan het inventariseren van bron bestanden of gegevens partities. Deze laatste is van toepassing wanneer u partitie opties voor database bronnen configureert, bijvoorbeeld wanneer u gegevens kopieert uit data bases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen van Bron:** De hoeveelheid tijd die is besteed aan het ophalen van gegevens uit de brongegevens opslag.<br/>- **Schrijven naar Sink:** De hoeveelheid tijd die is besteed aan het schrijven van gegevens naar het sink-gegevens archief. |
+| Overdragen        | De verstreken tijd tussen het einde van de vorige stap en de IR waarbij alle gegevens van de bron naar de Sink worden overgebracht. <br/>Let op de substappen onder overdracht parallel uitvoeren en sommige bewerkingen worden nu niet weer gegeven, zoals het parseren/genereren van de bestands indeling.<br><br/>- **Tijd tot eerste byte:** De verstreken tijd tussen het einde van de vorige stap en de tijd waarop de IR de eerste byte van de brongegevens opslag ontvangt. Is van toepassing op bronnen die niet op bestanden zijn gebaseerd.<br>- **Bron van vermelding:** De hoeveelheid tijd die is besteed aan het inventariseren van bron bestanden of gegevens partities. Deze laatste is van toepassing wanneer u partitie opties voor database bronnen configureert, bijvoorbeeld wanneer u gegevens kopieert uit data bases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen van Bron:** De hoeveelheid tijd die is besteed aan het ophalen van gegevens uit de brongegevens opslag.<br/>- **Schrijven naar Sink:** De hoeveelheid tijd die is besteed aan het schrijven van gegevens naar het sink-gegevens archief. Houd er rekening mee dat sommige connectors op het moment niet beschikken over deze metrische gegevens, zoals Azure Cognitive Search, Azure Data Explorer, Azure Table Storage, Oracle, SQL Server, Common Data Service, Dynamics 365, Dynamics CRM, Sales Force/Sales Service Cloud. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Problemen met Kopieer activiteit op Azure IR oplossen
 

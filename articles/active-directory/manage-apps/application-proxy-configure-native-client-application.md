@@ -3,29 +3,29 @@ title: Systeem eigen client-apps publiceren-Azure AD | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u systeem eigen client-apps kunt gebruiken om te communiceren met de Azure AD-toepassingsproxy-connector om veilige externe toegang tot uw on-premises apps te bieden.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647235"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764805"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Systeem eigen client toepassingen inschakelen voor interactie met proxy toepassingen
 
-U kunt Azure Active Directory (Azure AD)-toepassings proxy gebruiken om web-apps te publiceren, maar dit kan ook worden gebruikt voor het publiceren van systeem eigen client toepassingen die zijn geconfigureerd met de micro soft Authentication Library (MSAL). Systeem eigen client toepassingen verschillen van web-apps omdat ze zijn geïnstalleerd op een apparaat, terwijl web apps via een browser worden geopend.
+U kunt Azure Active Directory (Azure AD)-toepassings proxy gebruiken om web-apps te publiceren, maar dit kan ook worden gebruikt voor het publiceren van systeem eigen client toepassingen die zijn geconfigureerd met de micro soft Authentication Library (MSAL). Systeemeigen client toepassingen verschillen van web-apps omdat ze zijn geïnstalleerd op een apparaat, terwijl web-apps via een browser worden geopend.
 
 Voor het ondersteunen van systeem eigen client toepassingen accepteert toepassings proxy Azure AD-uitgegeven tokens die in de header worden verzonden. De toepassings proxy service heeft de verificatie voor de gebruikers. In deze oplossing worden geen toepassings tokens gebruikt voor verificatie.
 
@@ -46,7 +46,7 @@ U moet uw toepassing nu als volgt registreren in azure AD:
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com/). Het **dash board** voor het **Azure Active Directory-beheer centrum** wordt weer gegeven.
 1. Selecteer **Azure Active Directory**in de zijbalk. De pagina overzicht van **Azure Active Directory** wordt weer gegeven.
 1. Selecteer **app-registraties**in de terzijde van Azure AD-overzicht. De lijst met alle app-registraties wordt weer gegeven.
-1. Selecteer **nieuwe registratie**. De pagina **een toepassing registreren** wordt weer gegeven.
+1. Selecteer **Nieuwe registratie**. De pagina **een toepassing registreren** wordt weer gegeven.
 
    ![Een nieuwe app-registratie maken in de Azure Portal](./media/application-proxy-configure-native-client-application/create.png)
 
@@ -113,10 +113,10 @@ De vereiste informatie in de voorbeeld code vindt u als volgt in de Azure AD-por
 
 | Info vereist | Hoe u het kunt vinden in de Azure AD-Portal |
 | --- | --- |
-| \<Tenant-ID> | **Azure Active Directory**  >  **Eigenschappen**  >  **Map-id** |
-| \<App-ID van de systeem eigen app> | **Toepassings registratie**  >  *uw systeem eigen toepassing*  >  **Overzicht**  >  **Toepassings-id** |
-| \<Bereik> | **Toepassings registratie**  >  *uw systeem eigen toepassing*  >  **API-machtigingen** > Klik op de machtigings-api (user_impersonation) > een deel venster met het bijschrift **user_impersonation** aan de rechter kant wordt weer gegeven. > het bereik de URL in het invoervak.
-| \<URL van proxy-app> | de externe URL en het pad naar de API
+| \<Tenant ID> | **Azure Active Directory**  >  **Eigenschappen**  >  **Map-id** |
+| \<App ID of the Native app> | **Toepassings registratie**  >  *uw systeem eigen toepassing*  >  **Overzicht**  >  **Toepassings-id** |
+| \<Scope> | **Toepassings registratie**  >  *uw systeem eigen toepassing*  >  **API-machtigingen** > Klik op de machtigings-api (user_impersonation) > een deel venster met het bijschrift **user_impersonation** aan de rechter kant wordt weer gegeven. > het bereik de URL in het invoervak.
+| \<Proxy App Url> | de externe URL en het pad naar de API
 
 Nadat u de MSAL-code met deze para meters hebt bewerkt, kunnen uw gebruikers zich verifiëren bij native client toepassingen, zelfs als ze zich buiten het bedrijfs netwerk bevinden.
 

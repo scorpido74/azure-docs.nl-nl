@@ -16,11 +16,11 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245432"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695997"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netwerk bandbreedte van virtuele machine
 
@@ -64,7 +64,7 @@ Vandaag ondersteunt de Azure-netwerk stack 250.000 totale netwerk stromen met go
 
 Er zijn metrische gegevens beschikbaar in [Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) om het aantal netwerk stromen en de frequentie van het maken van de stroom op uw virtuele machine-of VMSS-instanties bij te houden.
 
-![Azure-monitor-flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 Het instellen en het beëindigen van de verbinding kan ook invloed hebben op de netwerk prestaties als de verbinding tot stand brengen en het beëindigen van de CPU met pakket verwerkings routines. We raden u aan werk belastingen te laten voldoen aan de verwachte verkeers patronen en de werk belasting adequaat uit te breiden zodat deze overeenkomen met uw prestatie behoeften. 
 

@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb2664cdfccd32e193019a8509f66ba184813ae3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ea26ba489434102cf9c6e2a2220e659147921fd7
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683564"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298290"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics-gegevens beheer partners
 
@@ -31,10 +31,10 @@ Als u een Data Warehouse-oplossing wilt maken met behulp van de Synapse-functie 
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Kyligence is opgericht door de makers van Apache Kylin en is een missie om de productiviteit van haar klanten te versnellen door gegevens beheer, detectie, interactie en inzicht te genereren, zonder obstakels te automatiseren. Kyligence Cloud maakt cluster implementatie mogelijk, verbetert de toegang tot gegevens en versnelt de analyse van gegevens aanzienlijk. Met het AI-uitgebreid-uitgebreide beheer platform van Kyligence maakt u een snel en eenvoudigere taak voor het bouwen van hoogwaardige gegevens op bedrijfs niveau.|[Product pagina](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Gegevensbeheer**<br>Met RedPoint Gegevensbeheer kunnen markt verrichtingen al hun gegevens Toep assen om cross-channel-klant afspraken uit te voeren terwijl gestructureerde en ongestructureerde gegevens beheer wordt uitgevoerd. Door gebruik te maken van Azure Synapse en RedPoint kunt u de waarde van uw gestructureerde en ongestructureerde gegevens maximaliseren om de persoonlijke, contextuele interacties te leveren die nodig zijn om de universeel van de huidige klant te benaderen. Met de interface voor slepen en neerzetten kunt u eenvoudig gegevens beheer processen ontwerpen en uitvoeren. |[Product pagina](http://www.redpoint.net/products/data-management-solutions/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**SentryOne (DW Sentry)**<br>Met het Intelligent Data-verplaatsings dashboard en de evenementen kalender, weet u altijd precies wat het effect heeft op uw werk belasting. Het is ontworpen om u inzicht te geven in uw query's en taken die worden uitgevoerd om uw gegevens te laden, te maken of te herstellen. u hoeft zich geen zorgen te maken over het grootste deel van uw Azure-resources. |[Product pagina](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
-| ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM is een op de cloud gebaseerd hulp programma voor gegevens modellering dat u een eenvoudige en handige manier biedt om uw data base overal op elke browser te ontwikkelen. Alle benodigde database regels en-objecten zoals database sleutels, schema's, indexen, kolom beperkingen en relaties. |[Product pagina](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
+| ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM is een op de cloud gebaseerd hulp programma voor gegevens modellering dat u een eenvoudige en handige manier biedt om uw data base overal op elke browser te ontwikkelen. Alle benodigde database regels en-objecten zoals database sleutels, schema's, indexen, kolom beperkingen en relaties. |[Product pagina](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie partners voor [Business Intelligence](sql-data-warehouse-partner-business-intelligence.md) en [gegevens integratie](sql-data-warehouse-partner-data-integration.md)voor meer informatie over andere partners.
+Zie [Business Intelligence-partners](sql-data-warehouse-partner-business-intelligence.md), [partners voor gegevens integratie](sql-data-warehouse-partner-data-integration.md) en [machine learning-en AI-partners](sql-data-warehouse-partner-machine-learning-ai.md)voor meer informatie over andere partners.
 
 
 

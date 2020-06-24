@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101418"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193495"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in virtuele Azure-machines
 Dit document bevat richt lijnen voor het implementeren van SAP Business One in azure Virtual Machines. De documentatie is geen vervanging voor de installatie documentatie van Business One voor SAP. De documentatie moet betrekking hebben op elementaire plannings-en implementatie richtlijnen voor de Azure-infra structuur voor het uitvoeren van één toepassing op.
@@ -67,17 +67,17 @@ Business One is een toepassing met twee lagen:
 - Een client-laag met een FAT-client
 - Een gegevenslaag die het database schema voor een Tenant bevat
 
-Een beter overzicht van de onderdelen die worden uitgevoerd in het client onderdeel en de onderdelen die worden uitgevoerd in het Server onderdeel, worden beschreven in [SAP Business One Administrator's Guide (Engelstalig](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) ) 
+Een beter overzicht van de onderdelen die worden uitgevoerd in het client onderdeel en de onderdelen die worden uitgevoerd in het Server onderdeel, worden beschreven in [SAP Business One Administrator's Guide (Engelstalig](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf) ) 
 
 Omdat er een belang rijke interactie met de latentie tussen de client tier en de DBMS-laag is, moeten beide lagen zich in azure bevinden tijdens de implementatie in Azure. het is gebruikelijk dat gebruikers vervolgens RDS in een of meer virtuele machines met een RDS-service voor het bedrijf één client onderdelen.
 
 ### <a name="sizing-vms-for-sap-business-one"></a>Vm's aanpassen voor SAP Business One
 
-Met betrekking tot de grootte van de virtuele machine (s) van de client worden de resource vereisten beschreven door SAP in het document [SAP Business One hardware requirements Guide (Engelstalig](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)). Voor Azure moet u zich richten op en berekenen met de vereisten die zijn vermeld in hoofd stuk 2,4 van het document.
+Met betrekking tot de grootte van de virtuele machine (s) van de client worden de resource vereisten beschreven door SAP in het document [SAP Business One hardware requirements Guide (Engelstalig](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)). Voor Azure moet u zich richten op en berekenen met de vereisten die zijn vermeld in hoofd stuk 2,4 van het document.
 
 Als Azure virtual machines voor het hosten van het bedrijf één client onderdelen en de DBMS-host, zijn alleen Vm's toegestaan die worden ondersteund door SAP net-Weaver. Als u de lijst met ondersteunde Azure-Vm's voor SAP NetWeaver wilt vinden, raadpleegt u [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
-SAP HANA als DBMS-back-end voor Business One worden uitgevoerd, worden alleen Vm's, die in de [lijst Hana Certifeid IaaS-platform](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) worden vermeld, ondersteund voor Hana. Het bedrijf One-client onderdelen wordt niet beïnvloed door deze sterkere beperking voor de SAP HANA als DBMS-systeem.
+SAP HANA als DBMS-back-end voor Business One worden uitgevoerd, worden alleen Vm's, die in de [lijst Hana Certified IaaS platform](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) worden vermeld, ondersteund voor Hana. Het bedrijf One-client onderdelen wordt niet beïnvloed door deze sterkere beperking voor de SAP HANA als DBMS-systeem.
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Versies van het besturings systeem die voor SAP Business One worden gebruikt
 

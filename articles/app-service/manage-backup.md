@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45a313318bc8005b433536d1b109f6153bc79e01
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170610"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253440"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -150,7 +150,7 @@ Voer back-ups op dezelfde manier uit als u normaal gesp roken [hand matig](#crea
 ## <a name="how-backups-are-stored"></a>Hoe back-ups worden opgeslagen
 Nadat u een of meer back-ups voor uw app hebt gemaakt, zijn de back-ups zichtbaar op de pagina **containers** van uw opslag account en uw app. In het opslag account bestaat elke back-up uit een `.zip` bestand met de back-upgegevens en een `.xml` bestand dat een manifest van de `.zip` Bestands inhoud bevat. U kunt deze bestanden uitpakken en door bladeren als u toegang wilt krijgen tot uw back-ups zonder een app te herstellen.
 
-De back-up van de Data Base voor de app wordt opgeslagen in de hoofdmap van het zip-bestand. Voor een SQL database is dit een BACPAC-bestand (geen bestands extensie) en kan het worden geïmporteerd. Als u een SQL database wilt maken op basis van de BACPAC-export, raadpleegt [u een BACPAC-bestand importeren om een nieuwe gebruikers database te maken](https://technet.microsoft.com/library/hh710052.aspx).
+De back-up van de Data Base voor de app wordt opgeslagen in de hoofdmap van het zip-bestand. Voor SQL Database is dit een BACPAC-bestand (geen bestands extensie) en kan het worden geïmporteerd. Als u een data base in Azure SQL Database wilt maken op basis van de BACPAC-export, raadpleegt [u een BACPAC-bestand importeren om een Data Base te maken in Azure SQL database](../azure-sql/database/database-import.md).
 
 > [!WARNING]
 > Het wijzigen van een van de bestanden in de **websitebackups** -container kan ertoe leiden dat de back-up ongeldig wordt en daarom niet kan worden herstorable.
@@ -164,7 +164,7 @@ U kunt back-upbeheer automatiseren met scripts met behulp van [Azure cli](/cli/a
 Zie voor voor beelden:
 
 - [Azure CLI-voorbeelden](samples-cli.md)
-- [Azure PowerShell-voor beelden](samples-powershell.md)
+- [Azure PowerShell-voorbeelden](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

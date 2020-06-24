@@ -3,25 +3,25 @@ title: Probleem bij het installeren van de agent connector voor de toepassings p
 description: Problemen oplossen die u mogelijk ondervindt bij het installeren van de agent connector van de toepassings proxy
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172403"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764686"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probleem bij het installeren van de connector voor de toepassingsproxyagent
 
@@ -48,7 +48,7 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 2.  Als een van deze poorten niet is geslaagd, controleert u of de firewall of de back-end-proxy toegang heeft tot de vereiste domeinen en poorten Zie, [uw on-premises omgeving voorbereiden](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Open een browser (tabblad afzonderlijk) en ga naar de volgende webpagina: `https://login.microsoftonline.com`, Controleer of u zich kunt aanmelden bij deze pagina.
+3.  Open een browser (tabblad afzonderlijk) en ga naar de volgende webpagina:, Controleer of `https://login.microsoftonline.com` u zich kunt aanmelden bij deze pagina.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>De ondersteuning voor de machine en back-end-onderdelen controleren voor het certificaat van de toepassings proxy
 
@@ -67,7 +67,7 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 **Het client certificaat verifiëren:**
 
-Controleer de vinger afdruk van het huidige client certificaat. Het certificaat archief bevindt zich in de%ProgramData%\microsoft\Microsoft AAD Application proxy Connector\Config\TrustSettings.xml
+Controleer de vinger afdruk van het huidige client certificaat. Het certificaat archief bevindt zich in de%ProgramData%\microsoft\Microsoft AAD-toepassings proxy Connector\Config\TrustSettings.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,8 +93,8 @@ Volg de stappen om het certificaat te verifiëren:
 
 Volg de stappen om het certificaat te verifiëren:
 
-1. [PSTools. zip](https://docs.microsoft.com/sysinternals/downloads/pstools) downloaden
-2. Extraheer [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) uit het pakket en voer **PsExec-i-u "NT Authority\Network Service" cmd. exe** uit vanaf een opdracht prompt met verhoogde bevoegdheid.
+1. [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools) downloaden
+2. Extraheer [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) uit het pakket en voer **PsExec-i-u ' NT Authority\Network service ' uit cmd.exe** uit vanaf een opdracht prompt met verhoogde bevoegdheid.
 3. **Certmgr. msc** uitvoeren in de zojuist verschenen opdracht prompt
 2. Vouw in de beheer console de persoonlijke container uit en klik op certificaten
 3. Zoek het certificaat dat is uitgegeven door **connectorregistrationca.msappproxy.net**
@@ -120,7 +120,7 @@ Voor meer informatie over de opdracht REGI ster-AppProxyConnector raadpleegt u [
 
 **Controleren of de referenties juist zijn:**
 
-Verbinding maken `https://login.microsoftonline.com` met dezelfde referenties en deze gebruiken. Zorg ervoor dat de aanmelding is geslaagd. U kunt de gebruikersrol controleren door naar **Azure Active Directory**  - &gt; **gebruikers en groepen**  - &gt; **alle gebruikers**te gaan. 
+Verbinding maken met `https://login.microsoftonline.com` dezelfde referenties en deze gebruiken. Zorg ervoor dat de aanmelding is geslaagd. U kunt de gebruikersrol controleren door naar **Azure Active Directory**  - &gt; **gebruikers en groepen**  - &gt; **alle gebruikers**te gaan. 
 
 Selecteer uw gebruikers account en vervolgens ' Directory-rol ' in het resulterende menu. Controleer of de geselecteerde rol ' toepassings beheerder ' is. Als u in deze stappen geen toegang hebt tot een van de pagina's, hebt u niet de vereiste rol.
 

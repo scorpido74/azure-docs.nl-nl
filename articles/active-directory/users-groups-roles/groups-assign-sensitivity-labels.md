@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 32dad942cf79933b2c44d3bc2d23581ead1238d6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582947"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732749"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Gevoeligheids labels toewijzen aan Office 365-groepen in Azure Active Directory (preview)
 
@@ -104,7 +104,7 @@ De groep wordt gemaakt en de site-en groeps instellingen die zijn gekoppeld aan 
 
 ## <a name="using-classic-azure-ad-classifications"></a>Klassieke Azure AD-classificaties gebruiken
 
-Nadat u deze functie hebt ingeschakeld, worden de ' klassieke ' classificaties voor groepen alleen bestaande groepen en sites weer gegeven. u moet ze alleen voor nieuwe groepen gebruiken als u groepen maakt in apps die geen gevoeligheids labels ondersteunen. De beheerder kan deze later indien nodig naar de codelabels van de labels converteren. Klassieke classificaties zijn de oude classificaties die u instelt door waarden te definiëren voor `ClassificationList` de instelling in azure AD Power shell. Als deze functie is ingeschakeld, worden deze classificaties niet toegepast op groepen.
+Nadat u deze functie hebt ingeschakeld, worden de ' klassieke ' classificaties voor groepen alleen bestaande groepen en sites weer gegeven. u moet ze alleen voor nieuwe groepen gebruiken als u groepen maakt in apps die geen gevoeligheids labels ondersteunen. De beheerder kan deze later indien nodig naar de codelabels van de labels converteren. Klassieke classificaties zijn de oude classificaties die u instelt door waarden te definiëren voor de `ClassificationList` instelling in azure AD Power shell. Als deze functie is ingeschakeld, worden deze classificaties niet toegepast op groepen.
 
 ## <a name="troubleshooting-issues"></a>Problemen oplossen
 

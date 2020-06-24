@@ -3,23 +3,23 @@ title: Eenmalige aanmelding bij apps met Azure AD-toepassingsproxy | Microsoft D
 description: Schakel eenmalige aanmelding in voor uw on-premises toepassingen met Azure AD-toepassingsproxy in de Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025738"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764771"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Wachtwoord kluis voor eenmalige aanmelding met toepassings proxy
 
@@ -32,11 +32,11 @@ U moet uw app al hebben gepubliceerd en getest met toepassings proxy. Als dat ni
 ## <a name="set-up-password-vaulting-for-your-application"></a>Wachtwoord kluizen instellen voor uw toepassing
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als beheerder.
-1. Selecteer **Azure Active Directory** > **Enter prise-toepassingen** > **alle toepassingen**.
+1. Selecteer **Azure Active Directory**  >  **Enter prise-toepassingen**  >  **alle toepassingen**.
 1. Selecteer in de lijst de app die u wilt instellen met SSO.  
 1. Selecteer **toepassings proxy**. 
 1. Wijzig het **type verificatie vooraf** in **passthrough** en selecteer **Opslaan**. U kunt later weer overschakelen naar **Azure Active Directory** type. 
-1. Selecteer **eenmalige aanmelding**.
+1. Selecteer **Eenmalige aanmelding**.
 
    ![Eenmalige aanmelding selecteren op de overzichts pagina van de app](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
@@ -51,7 +51,7 @@ U moet uw app al hebben gepubliceerd en getest met toepassings proxy. Als dat ni
 1. Selecteer **gebruikers en groepen**.
 1. Gebruikers toewijzen aan de toepassing met de optie **gebruiker toevoegen**. 
 1. Als u de referenties voor een gebruiker vooraf wilt definiëren, schakelt u het selectie vakje voor de gebruikers naam in en selecteert u **referenties bijwerken**.
-1. Selecteer **Azure Active Directory** > **App registrations** > **alle toepassingen**app-registraties.
+1. Selecteer **Azure Active Directory**  >  **App registrations**  >  **alle toepassingen**app-registraties.
 1. Selecteer in de lijst de app die u hebt geconfigureerd met wacht woord-SSO.
 1. Selecteer **huis stijl**. 
 1. Werk de **URL van de start pagina** bij met de **aanmeldings-URL** op de SSO-pagina van het wacht woord en selecteer **Opslaan**.  

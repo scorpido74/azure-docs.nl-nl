@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b40d9c95cec3e83ff02aa04ca39eb942635ee90d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295385"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202932"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -53,7 +53,7 @@ Er zijn drie belang rijke onderdelen vereist voor dit scenario:
 
 * SAML- **service provider** met de mogelijkheid om SAML-aanvragen te verzenden en te ontvangen, te decoderen en te reageren op SAML-bevestigingen van Azure AD B2C. Dit wordt ook wel de Relying Party genoemd.
 * Openbaar beschikbaar SAML- **eind punt voor meta gegevens** voor uw service provider.
-* [Azure AD B2C Tenant](tutorial-create-tenant.md)
+* [Azure AD B2C-tenant](tutorial-create-tenant.md)
 
 Als u nog geen SAML-service provider en een bijbehorend meta gegevens eindpunt hebt, kunt u deze voor beeld-SAML-toepassing gebruiken die we voor het testen beschikbaar hebben gesteld:
 
@@ -119,7 +119,7 @@ Zoek de `<ClaimsProviders>` sectie en voeg het volgende XML-fragment toe.
 
 U kunt de waarde van de `IssuerUri` meta gegevens wijzigen. Dit is de URI van de verlener die wordt geretourneerd in het SAML-antwoord van Azure AD B2C. Uw Relying Party toepassing moet worden geconfigureerd om een uitgever-URI te accepteren tijdens de validatie van de SAML-bevestiging.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -159,13 +159,13 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 aanmelden of aanmeldings beleid maken
 
-1. Maak een kopie van het *SignUpOrSignin. XML-* bestand in de werkmap van uw starter pakket en sla het op met een nieuwe naam. Bijvoorbeeld *SignUpOrSigninSAML. XML*. Dit is uw Relying Party-beleids bestand.
+1. Maak een kopie van het *SignUpOrSignin.xml* -bestand in de werkmap van uw starter pakket en sla het op met een nieuwe naam. Bijvoorbeeld *SignUpOrSigninSAML.xml*. Dit is uw Relying Party-beleids bestand.
 
-1. Open het bestand *SignUpOrSigninSAML. XML* in de editor van uw voor keur.
+1. Open het *SignUpOrSigninSAML.xml* -bestand in de editor van uw voor keur.
 
 1. Wijzig de `PolicyId` en `PublicPolicyUri` van het beleid in _B2C_1A_signup_signin_saml_ en `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` zoals hieronder wordt weer gegeven.
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
 
 1. Voeg het volgende XML-fragment net vóór het `<RelyingParty>` element toe. Met deze XML wordt de indelings stap nummer 7 van de _SignUpOrSignIn_ -gebruikers traject overschreven. Als u bent begonnen vanuit een andere map in het eerste pakket of als u uw gebruikers traject hebt aangepast door het toevoegen of verwijderen van de indelings stappen, moet u ervoor zorgen dat het aantal (in het `order` element) is uitgelijnd met het nummer dat is opgegeven in de gebruikers traject voor de stap van de uitgever van het token (bijvoorbeeld in de andere Starter Pack-mappen, de stap nummer 4 voor `LocalAccounts` , `SocialAccounts` `SocialAndLocalAccountsWithMfa`
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
 
 1. Vervang het hele `<TechnicalProfile>` element in het `<RelyingParty>` -element door de volgende technische profiel-XML.
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
 
 Het uiteindelijke Relying Party-beleids bestand moet er als volgt uitzien:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -270,7 +270,7 @@ Uw aangepaste beleid en Azure AD B2C Tenant zijn nu gereed. Maak vervolgens een 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
-1. Selecteer **app-registraties**en selecteer vervolgens **nieuwe registratie**.
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *SAMLApp1*.
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**
 1. Onder **omleidings-URI**selecteert u **Web**en voert u in `https://localhost` . U wijzigt deze waarde later in het manifest van de toepassings registratie.
@@ -297,7 +297,7 @@ Als er eigenschappen zijn opgegeven in *zowel* de URL voor SAML-meta gegevens en
 
 Voor deze zelf studie, die gebruikmaakt van de SAML-test toepassing, gebruikt u de volgende waarde voor `samlMetadataUrl` :
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Als u ervoor kiest om de antwoord-URL en afmeldings-URL in het manifest van de t
 
 Voor deze zelf studie, waarin u de SAML-test toepassing gebruikt, stelt u de `url` eigenschap in `replyUrlsWithType` op de waarde die wordt weer gegeven in het volgende JSON-code fragment.
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Deze optionele eigenschap vertegenwoordigt de `Logout` URL ( `SingleLogoutServic
 
 Voor deze zelf studie, waarin de SAML-test toepassing wordt gebruikt, moet `logoutUrl` u instellen op `https://samltestapp2.azurewebsites.net/logout` :
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

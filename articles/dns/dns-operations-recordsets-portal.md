@@ -4,15 +4,15 @@ description: Azure DNS biedt de mogelijkheid om DNS-record sets en-records te be
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 4012b32eb2684126b8dc64b9e86bf35a016e9fba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76936847"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696828"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-records en-record sets beheren met behulp van de Azure Portal
 
@@ -93,7 +93,7 @@ NS-en SOA-records die automatisch worden gemaakt, worden anders beheerd dan ande
 
 ### <a name="modify-soa-records"></a>SOA-records wijzigen
 
-U kunt geen records toevoegen aan of verwijderen uit de automatisch gemaakte SOA-record die is ingesteld op de zone\@Apex (naam = ""). U kunt echter elk van de para meters in de SOA-record (met uitzonde ring van ' host ') en de set-TTL van de record wijzigen.
+U kunt geen records toevoegen aan of verwijderen uit de automatisch gemaakte SOA-record die is ingesteld op de zone Apex (naam = " \@ "). U kunt echter elk van de para meters in de SOA-record (met uitzonde ring van ' host ') en de set-TTL van de record wijzigen.
 
 ### <a name="modify-ns-records-at-the-zone-apex"></a>NS-records in de zone wijzigen Apex
 
@@ -105,7 +105,7 @@ Houd er rekening mee dat dit alleen geldt voor de NS-recordset die is ingesteld 
 
 ### <a name="delete-soa-or-ns-record-sets"></a>SOA-of NS-record sets verwijderen
 
-U kunt de SOA-en NS-record sets niet verwijderen op de zone Apex (\@name = "") die automatisch worden gemaakt wanneer de zone wordt gemaakt. Ze worden automatisch verwijderd wanneer u de zone verwijdert.
+U kunt de SOA-en NS-record sets niet verwijderen op de zone Apex (name = " \@ ") die automatisch worden gemaakt wanneer de zone wordt gemaakt. Ze worden automatisch verwijderd wanneer u de zone verwijdert.
 
 ## <a name="next-steps"></a>Volgende stappen
 

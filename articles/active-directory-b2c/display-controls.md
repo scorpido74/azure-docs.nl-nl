@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188729"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202293"
 ---
 # <a name="display-controls"></a>Besturings elementen weer geven
 
@@ -32,9 +32,9 @@ In de volgende afbeelding ziet u een zelf-bevestigde aanmeldings pagina met twee
 
 ## <a name="prerequisites"></a>Vereisten
 
- In de sectie [meta gegevens](self-asserted-technical-profile.md#metadata) van een [zelf-bevestigde technische profiel](self-asserted-technical-profile.md)moet de [ContentDefinition](contentdefinitions.md) waarnaar wordt verwezen, `DataUri` zijn ingesteld op pagina-contract versie 2.0.0 of hoger. Bijvoorbeeld:
+ In de sectie [meta gegevens](self-asserted-technical-profile.md#metadata) van een [zelf-bevestigde technische profiel](self-asserted-technical-profile.md)moet de [ContentDefinition](contentdefinitions.md) waarnaar wordt verwezen, zijn `DataUri` ingesteld op pagina-contract versie 2.0.0 of hoger. Bijvoorbeeld:
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -48,8 +48,8 @@ Het element **DisplayControl** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor het weergave besturings element. Hiernaar kan worden [verwezen](#referencing-display-controls). |
-| UserInterfaceControlType | Ja | Het type van het weergave besturings element. Momenteel wordt de [VerificationControl](display-control-verification.md) ondersteund |
+| Id | Yes | Een id die wordt gebruikt voor het weergave besturings element. Hiernaar kan worden [verwezen](#referencing-display-controls). |
+| UserInterfaceControlType | Yes | Het type van het weergave besturings element. Momenteel wordt de [VerificationControl](display-control-verification.md) ondersteund |
 
 Het element **DisplayControl** bevat de volgende elementen:
 
@@ -66,7 +66,7 @@ In een besturings element voor weer gave kunt u **InputClaims** -elementen gebru
 
 In het volgende voor beeld wordt het e-mail adres dat is gecontroleerd met het adres dat al aanwezig is, vooraf ingevuld.
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -78,11 +78,11 @@ In het volgende voor beeld wordt het e-mail adres dat is gecontroleerd met het a
 
 Elk type weergave besturings element vereist een andere set weer gave claims, [uitvoer claims](#output-claims)en [acties](#display-control-actions) die moeten worden uitgevoerd.
 
-Net als de **weer gave-claims** die in een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md#display-claims)zijn gedefinieerd, vertegenwoordigen de weer gave claims de claims die moeten worden verzameld van de gebruiker in het besturings element voor weer gave. Voor het element **claim** type waarnaar wordt verwezen, moet het **UserInputType** -element worden opgegeven voor een gebruikers invoer die wordt `TextBox` ondersteund `DropdownSingleSelect`door Azure AD B2C, zoals of. Als een aanvraag waarde voor weer geven vereist is voor een **actie**, stelt u het `true` **vereiste** kenmerk in op om te zorgen dat de gebruiker een waarde voor die specifieke weergave claim opgeeft.
+Net als de **weer gave-claims** die in een niet [-bevestigd technisch profiel](self-asserted-technical-profile.md#display-claims)zijn gedefinieerd, vertegenwoordigen de weer gave claims de claims die moeten worden verzameld van de gebruiker in het besturings element voor weer gave. Voor het element **claim** type waarnaar wordt verwezen, moet het **UserInputType** -element worden opgegeven voor een gebruikers invoer die wordt ondersteund door Azure AD B2C, zoals `TextBox` of `DropdownSingleSelect` . Als een aanvraag waarde voor weer geven vereist is voor een **actie**, stelt u het **vereiste** kenmerk in op `true` om te zorgen dat de gebruiker een waarde voor die specifieke weergave claim opgeeft.
 
 Bepaalde weergave claims zijn vereist voor bepaalde typen weergave besturings elementen. **VerificationCode** is bijvoorbeeld vereist voor het besturings element weer gave van het type **VerificationControl**. Gebruik het kenmerk **ControlClaimType** om op te geven welke DisplayClaim is aangewezen voor die vereiste claim. Bijvoorbeeld:
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ Een actie definieert een lijst met **technische profielen voor validatie**. Ze w
 
 In het volgende voor beeld wordt een code verzonden via e-mail of SMS op basis van de selectie van de **mfaType** claim van de gebruiker.
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -131,7 +131,7 @@ Er wordt verwezen naar weer gave-besturings elementen in de [weer gave claims](s
 
 Bijvoorbeeld:
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

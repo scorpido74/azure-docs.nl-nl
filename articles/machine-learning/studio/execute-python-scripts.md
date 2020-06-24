@@ -5,17 +5,17 @@ description: Meer informatie over het gebruik van de script module python uitvoe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d164a5ab3d1ea9c1b07f11ee074670d3e5124c5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558910"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696300"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Python machine learning scripts uitvoeren in Azure Machine Learning Studio (klassiek)
 
@@ -75,13 +75,13 @@ Bekijk een voor beeld van het bestand Hello.py dat een eenvoudige ' Hello, World
 
 ![Door de gebruiker gedefinieerde functie in het Hello.py-bestand](./media/execute-python-scripts/figure4.png)
 
-Vervolgens maken we een bestand hello. zip dat Hello.py bevat:
+Vervolgens maken we een bestand Hello.zip dat Hello.py bevat:
 
 ![Zip-bestand met door de gebruiker gedefinieerde python-code](./media/execute-python-scripts/figure5.png)
 
-Upload het zip-bestand als een gegevensset in Studio (klassiek). Maak en voer vervolgens een experiment uit dat gebruikmaakt van de python-code in het bestand hello. zip door deze te koppelen aan de derde invoer poort van de script module voor het **uitvoeren van python** , zoals weer gegeven in de volgende afbeelding.
+Upload het zip-bestand als een gegevensset in Studio (klassiek). Maak vervolgens een experiment dat gebruikmaakt van de python-code in het Hello.zip bestand door deze toe te voegen aan de derde invoer poort van de script module voor het **uitvoeren van python** , zoals weer gegeven in de volgende afbeelding.
 
-![Voorbeeld experiment met Hello. zip als invoer voor een python-script module uitvoeren](./media/execute-python-scripts/figure6a.png)
+![Voorbeeld experiment met Hello.zip als invoer voor een script module voor het uitvoeren van een python](./media/execute-python-scripts/figure6a.png)
 
 ![Door de gebruiker gedefinieerde python-code die is geüpload als een zip-bestand](./media/execute-python-scripts/figure6b.png)
 

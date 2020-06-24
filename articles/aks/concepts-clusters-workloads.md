@@ -4,12 +4,12 @@ description: Meer informatie over de basis onderdelen van het cluster en de work
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 13169628aff2fe4bff64fed36db54d18d4f830b8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ddf6543ff0e4313b28c183718b6ac3b2395e0dbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208156"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729968"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
 
@@ -69,7 +69,7 @@ De grootte van de Azure VM voor uw knoop punten bepaalt hoeveel Cpu's, hoeveel g
 
 In AKS is de VM-installatie kopie voor de knoop punten in uw cluster momenteel gebaseerd op Ubuntu Linux of Windows Server 2019. Wanneer u een AKS-cluster maakt of het aantal knoop punten uitbreidt, wordt het aangevraagde aantal Vm's door het Azure-platform gemaakt en geconfigureerd. Er is geen hand matige configuratie die u kunt uitvoeren. Agent knooppunten worden gefactureerd als standaard virtuele machines, dus eventuele kortingen op de VM-grootte die u gebruikt (inclusief [Azure-reserve ringen][reservation-discounts]) worden automatisch toegepast.
 
-Als u een ander host-besturings systeem, container runtime of aangepaste pakketten wilt gebruiken, kunt u uw eigen Kubernetes-cluster implementeren met behulp van [AKS-engine][aks-engine]. De functies van `aks-engine` de upstream releases en bieden configuratie opties voordat ze officieel worden ondersteund in AKS-clusters. Als u bijvoorbeeld een andere container-runtime dan Moby wilt gebruiken, kunt u gebruiken `aks-engine` om een Kubernetes-cluster te configureren en implementeren dat voldoet aan uw huidige behoeften.
+Als u een ander host-besturings systeem, container runtime of aangepaste pakketten wilt gebruiken, kunt u uw eigen Kubernetes-cluster implementeren met behulp van [AKS-engine][aks-engine]. De functies van de upstream `aks-engine` releases en bieden configuratie opties voordat ze officieel worden ondersteund in AKS-clusters. Als u bijvoorbeeld een andere container-runtime dan Moby wilt gebruiken, kunt u gebruiken `aks-engine` om een Kubernetes-cluster te configureren en implementeren dat voldoet aan uw huidige behoeften.
 
 ### <a name="resource-reservations"></a>Resource reserveringen
 
@@ -165,7 +165,7 @@ Voor de meeste stateless toepassingen in AKS moet het implementatie model worden
 
 Als een toepassing een quorum van instanties vereist om altijd beschikbaar te zijn voor het beheer van beslissingen, wilt u niet dat een update proces die mogelijkheid verstoort. *Pod-onderbrekings budgetten* kunnen worden gebruikt om te definiëren hoeveel replica's in een implementatie kunnen worden uitgevoerd tijdens een update of een upgrade van een knoop punt. Als u bijvoorbeeld *vijf* replica's in uw implementatie hebt, kunt u een pod-onderbreking van *4* definiëren, zodat er slechts één replica tegelijk mag worden verwijderd of opnieuw wordt gepland. Net als bij pod-resource limieten bestaat een best practice uit het definiëren van pod-onderbrekings budgetten voor toepassingen waarvoor een minimum aantal replica's vereist is om altijd aanwezig te zijn.
 
-Implementaties worden doorgaans gemaakt en beheerd met `kubectl create` of `kubectl apply`. Als u een implementatie wilt maken, definieert u een manifest bestand in de indeling YAML (YAML Ain't Markup Language). In het volgende voor beeld wordt een basis implementatie van de NGINX-webserver gemaakt. In de implementatie worden *drie* te maken replica's opgegeven en wordt poort *80* geopend op de container. Resource aanvragen en-limieten worden ook gedefinieerd voor de CPU en het geheugen.
+Implementaties worden doorgaans gemaakt en beheerd met `kubectl create` of `kubectl apply` . Als u een implementatie wilt maken, definieert u een manifest bestand in de indeling YAML (YAML Ain't Markup Language). In het volgende voor beeld wordt een basis implementatie van de NGINX-webserver gemaakt. In de implementatie worden *drie* te maken replica's opgegeven en wordt poort *80* geopend op de container. Resource aanvragen en-limieten worden ook gedefinieerd voor de CPU en het geheugen.
 
 ```yaml
 apiVersion: apps/v1
@@ -204,11 +204,7 @@ Zie [Kubernetes-implementaties][kubernetes-deployments]voor meer informatie.
 
 Een veelvoorkomende benadering van het beheren van toepassingen in Kubernetes is met [helm][helm]. U kunt bestaande open bare helm- *grafieken* maken en gebruiken die een verpakte versie van de toepassings code en Kubernetes yaml-manifesten bevatten voor het implementeren van resources. Deze helm-grafieken kunnen lokaal worden opgeslagen of vaak in een externe opslag plaats, zoals een [Azure container Registry helm-grafiek opslag plaats][acr-helm].
 
-Als u helm wilt gebruiken, wordt er een server onderdeel met de naam *Tiller* geïnstalleerd in uw Kubernetes-cluster. De Tiller beheert de installatie van grafieken binnen het cluster. De helm-client zelf is lokaal op uw computer geïnstalleerd of kan worden gebruikt binnen het [Azure Cloud shell][azure-cloud-shell]. U kunt helm-grafieken zoeken of maken met de-client en deze vervolgens installeren op uw Kubernetes-cluster.
-
-![Helm bevat een client onderdeel en een Tiller-onderdeel aan de server zijde dat bronnen in het Kubernetes-cluster maakt](media/concepts-clusters-workloads/use-helm.png)
-
-Zie [Installing Applications with helm in azure Kubernetes service (AKS) (Engelstalig)][aks-helm]voor meer informatie.
+Als u helm wilt gebruiken, installeert u de helm-client op uw computer of gebruikt u de helm-client in de [Azure Cloud shell][azure-cloud-shell]. U kunt helm-grafieken zoeken of maken met de-client en deze vervolgens installeren op uw Kubernetes-cluster. Zie [bestaande toepassingen met helm in AKS installeren][aks-helm]voor meer informatie.
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSets en DaemonSets
 
@@ -223,7 +219,7 @@ Er zijn twee Kubernetes-resources waarmee u deze typen toepassingen kunt beheren
 
 Ontwikkeling van moderne toepassingen is vaak gericht op stateless toepassingen, maar *StatefulSets* kan worden gebruikt voor stateful toepassingen, zoals toepassingen die database onderdelen bevatten. Een StatefulSet is vergelijkbaar met een implementatie in dat een of meer identieke peulen worden gemaakt en beheerd. Replica's in een StatefulSet volgen een gepaste, sequentiële benadering van implementatie, schaal, upgrades en beëindigingen. Met een StatefulSet (omdat replica's opnieuw worden gepland) worden de naamgevings regels, netwerk namen en opslag persistent gemaakt.
 
-U definieert de toepassing in YAML-indeling `kind: StatefulSet`met en de StatefulSet-controller verwerkt vervolgens de implementatie en het beheer van de vereiste replica's. Gegevens worden naar permanente opslag geschreven, die wordt verschaft door Azure Managed Disks of Azure Files. Met StatefulSets blijft de onderliggende permanente opslag behouden, zelfs wanneer de StatefulSet is verwijderd.
+U definieert de toepassing in YAML-indeling met en `kind: StatefulSet` de StatefulSet-controller verwerkt vervolgens de implementatie en het beheer van de vereiste replica's. Gegevens worden naar permanente opslag geschreven, die wordt verschaft door Azure Managed Disks of Azure Files. Met StatefulSets blijft de onderliggende permanente opslag behouden, zelfs wanneer de StatefulSet is verwijderd.
 
 Zie [Kubernetes StatefulSets][kubernetes-statefulsets]voor meer informatie.
 
@@ -235,7 +231,7 @@ Voor specifieke vereisten voor logboek verzameling of-bewaking moet u mogelijk e
 
 De controller van de Daemonset kan in het proces voor het opstarten van het cluster in een vroeg stadium plannen voordat de standaard Kubernetes scheduler is gestart. Op deze manier zorgt u ervoor dat het Peul in een Daemonset wordt gestart voordat het traditionele peul in een implementatie of StatefulSet wordt gepland.
 
-Net als StatefulSets wordt een Daemonset gedefinieerd als onderdeel van een YAML-definitie `kind: DaemonSet`met behulp van.
+Net als StatefulSets wordt een Daemonset gedefinieerd als onderdeel van een YAML-definitie met behulp van `kind: DaemonSet` .
 
 Zie [Kubernetes DaemonSets][kubernetes-daemonset]voor meer informatie.
 
@@ -250,7 +246,7 @@ Kubernetes-resources, zoals peulen en implementaties, worden logisch gegroepeerd
 
 Wanneer u een AKS-cluster maakt, zijn de volgende naam ruimten beschikbaar:
 
-- *standaard* -deze naam ruimte is de standaard instelling voor de meeste en implementaties, wanneer er geen wordt gegeven. In kleinere omgevingen kunt u toepassingen rechtstreeks in de standaard naam ruimte implementeren zonder dat u extra logische schei dingen hoeft te maken. Wanneer u communiceert met de Kubernetes-API, zoals `kubectl get pods`met, wordt de standaard naam ruimte gebruikt wanneer er geen is opgegeven.
+- *standaard* -deze naam ruimte is de standaard instelling voor de meeste en implementaties, wanneer er geen wordt gegeven. In kleinere omgevingen kunt u toepassingen rechtstreeks in de standaard naam ruimte implementeren zonder dat u extra logische schei dingen hoeft te maken. Wanneer u communiceert met de Kubernetes-API, zoals met `kubectl get pods` , wordt de standaard naam ruimte gebruikt wanneer er geen is opgegeven.
 - *uitvoeren-systeem* : deze naam ruimte is de belangrijkste bronnen, zoals netwerk functies, zoals DNS en proxy, of het Kubernetes-dash board. Normaal gesp roken implementeert u uw eigen toepassingen niet in deze naam ruimte.
 - *uitvoeren-Public* : deze naam ruimte wordt meestal niet gebruikt, maar kan worden gebruikt voor resources die zichtbaar zijn in het hele cluster en kunnen worden weer gegeven door elke wille keurige gebruiker.
 

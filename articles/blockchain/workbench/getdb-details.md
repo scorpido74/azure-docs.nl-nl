@@ -2,14 +2,14 @@
 title: Details van Azure Blockchain Workbench-database opvragen
 description: Meer informatie over het ophalen van de voorbeeld database en database server gegevens voor Azure Block Chain Workbench.
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: 2b3190a9d042be8ead1ff3d5ef48d4a2a19e8963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324697"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254647"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Informatie opvragen over uw Azure Blockchain Workbench-database
 
@@ -31,7 +31,7 @@ Verbinding maken met de database:
 1. Meld u aan bij de Azure Portal met een account met **eigenaars** machtigingen voor de Azure Block Chain Workbench-Resources.
 2. Kies **Resourcegroepen** in het linkernavigatievenster.
 3. Kies de naam van de resourcegroep voor uw implementatie van Blockchain Workbench.
-4. Selecteer **Type** om de lijst met resources te sorteren en kies vervolgens uw **SQL-server**. De gesorteerde lijst in de volgende schermafbeelding bevat twee SQL-databases, 'master' en een database die 'lhgn' gebruikt als de waarde voor **Voorvoegsel resource**.
+4. Selecteer **Type** om de lijst met resources te sorteren en kies vervolgens uw **SQL-server**. In de gesorteerde lijst in de volgende scherm opname ziet u twee data bases, ' Master ', en een met ' lhgn ' als **resource voorvoegsel**.
 
    ![Lijst met gesorteerde resources van Azure Blockchain Workbench](./media/getdb-details/sorted-workbench-resource-list.png)
 

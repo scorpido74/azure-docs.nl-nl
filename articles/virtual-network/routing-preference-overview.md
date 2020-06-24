@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598036"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193359"
 ---
 # <a name="what-is-routing-preference-preview"></a>Wat is routerings voorkeur (preview)?
 
@@ -26,7 +26,7 @@ Met de voor keuren voor Azure-route ring kunt u kiezen hoe uw verkeer tussen Azu
 
 > [!IMPORTANT]
 > De voor keuren voor route ring is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="routing-via-microsoft-global-network"></a>Route ring via een wereld wijd netwerk van micro soft
 
@@ -88,7 +88,7 @@ Het prijs verschil tussen beide opties wordt weer gegeven in de prijzen voor geg
 
 Ondersteuning voor route ring van voor keuren is beschikbaar in de volgende regio's voor services, zoals virtuele machines en Internet gerichte load balancer die gebruikmaken van een openbaar IP-adres voor Internet uitgaand verkeer: Europa-noord, Europa-west, Frankrijk-zuid, UK-zuid, VS-Oost, Noord-Centraal VS, Zuid-Centraal VS, VS-West, West-Centraal VS, Azië en Japan-West.
 
-Ondersteuning voor route ring van het opslag account is beschikbaar in de volgende Azure-regio's: Frankrijk-zuid, Noord-Centraal VS en West-Centraal vs.
+Ondersteuning voor route ring van het opslag account is beschikbaar in de volgende Azure-regio's-Frankrijk-zuid, Noord-Centraal VS, West-Centraal VS, Japan-Oost, Japan-West, Duitsland-west-centraal en Zwitserland-west.
 ## <a name="limitations"></a>Beperkingen
 
 * Routerings voorkeur is alleen compatibel met de standaard-SKU van het open bare IP-adres. De basis-SKU van het open bare IP-adres wordt niet ondersteund.

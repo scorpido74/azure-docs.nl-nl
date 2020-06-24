@@ -2,22 +2,22 @@
 title: Cookie-instellingen voor toepassings proxy-Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) heeft toegang en sessie cookies voor toegang tot on-premises toepassingen via toepassings proxy. In dit artikel vindt u informatie over het gebruik en de configuratie van de cookie-instellingen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481361"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764890"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-instellingen voor toegang tot on-premises toepassingen in Azure Active Directory
 
@@ -49,7 +49,7 @@ Als uw back-endtoepassing cookies heeft die beschikbaar moeten zijn in een conte
 De cookie-instellingen instellen met behulp van de Azure Portal:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
-2. Ga naar **Azure Active Directory** > **Enter prise-toepassingen** > **alle toepassingen**.
+2. Ga naar **Azure Active Directory**   >  **Enter prise-toepassingen**   >  **alle toepassingen**.
 3. Selecteer de toepassing waarvoor u een cookie-instelling wilt inschakelen.
 4. Klik op **toepassings proxy**.
 5. Stel onder **extra instellingen**de instelling cookie in op **Ja** of **Nee**.
@@ -65,7 +65,7 @@ Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl *
 
 ## <a name="set-cookie-settings---powershell"></a>Cookie-instellingen instellen-Power shell
 
-In de volgende Power shell- ```<ObjectId>``` opdrachten is de ObjectId van de toepassing. 
+In de volgende Power shell-opdrachten ```<ObjectId>``` is de ObjectId van de toepassing. 
 
 **Cookie met alleen http** 
 

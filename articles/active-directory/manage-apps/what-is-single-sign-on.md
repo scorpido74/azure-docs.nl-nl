@@ -2,22 +2,22 @@
 title: Eenmalige aanmelding bij toepassingen-Azure Active Directory | Microsoft Docs
 description: Meer informatie over het kiezen van een eenmalige aanmeldings methode bij het configureren van toepassingen in Azure Active Directory (Azure AD). Gebruik eenmalige aanmelding zodat gebruikers geen wacht woorden hoeven te onthouden voor elke toepassing en om het beheer van account beheer te vereenvoudigen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2796df048e00d4b9d0bb8e51e1e1875e553862c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366067"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762961"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Eenmalige aanmelding bij toepassingen in Azure Active Directory
 
@@ -46,7 +46,7 @@ De volgende tabel bevat een overzicht van de methoden voor eenmalige aanmelding 
 | [SAML](#saml-sso) | Cloud en on-premises | Kies indien mogelijk SAML voor bestaande toepassingen die geen gebruikmaken van OpenID Connect Connect of OAuth. SAML werkt voor toepassingen die worden geverifieerd met een van de SAML-protocollen.|
 | [Op basis van wacht woorden](#password-based-sso) | Cloud en on-premises | Kies een wacht woord op basis van het tijdstip waarop de toepassing wordt geverifieerd met de gebruikers naam en het wacht woord. Met eenmalige aanmelding op basis van wacht woorden kan beveiligde toepassings wachtwoorden worden opgeslagen en opnieuw worden afgespeeld met een webbrowser extensie of een mobiele app. Deze methode maakt gebruik van het bestaande aanmeldings proces van de toepassing, maar stelt een beheerder in staat om de wacht woorden te beheren. |
 | [Btrieve](#linked-sign-on) | Cloud en on-premises | Kies gekoppelde aanmelding wanneer de toepassing is geconfigureerd voor eenmalige aanmelding in een andere ID-provider service. Met deze optie wordt geen eenmalige aanmelding toegevoegd aan de toepassing. De toepassing heeft echter mogelijk al een eenmalige aanmelding die is geïmplementeerd met een andere service, zoals Active Directory Federation Services.|
-| [Geblokkeerd](#disabled-sso) | Cloud en on-premises | Kies uitgeschakelde eenmalige aanmelding wanneer de app niet gereed is om te worden geconfigureerd voor eenmalige aanmelding. Deze modus is de standaard instelling bij het maken van de app.|
+| [Uitgeschakeld](#disabled-sso) | Cloud en on-premises | Kies uitgeschakelde eenmalige aanmelding wanneer de app niet gereed is om te worden geconfigureerd voor eenmalige aanmelding. Deze modus is de standaard instelling bij het maken van de app.|
 | [Geïntegreerde Windows-verificatie (IWA)](#integrated-windows-authentication-iwa-sso) | alleen on-premises | Kies IWA eenmalige aanmelding voor toepassingen die gebruikmaken van [geïntegreerde Windows-authenticatie (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)of claim bewuste toepassingen. Voor IWA gebruiken de connectors van de toepassings proxy Kerberos-beperkte delegering (KCD) om gebruikers te verifiëren voor de toepassing. |
 | [Op basis van koptekst](#header-based-sso) | alleen on-premises | Gebruik eenmalige aanmelding op basis van een koptekst wanneer de toepassing headers gebruikt voor verificatie. Voor eenmalige aanmelding op basis van een header is PingAccess voor Azure AD vereist. Toepassings proxy gebruikt Azure AD voor de verificatie van de gebruiker en geeft vervolgens verkeer door via de connector service.  |
 
@@ -73,7 +73,7 @@ Eenmalige aanmelding op basis van SAML wordt ondersteund voor toepassingen die g
 
 Als u een SaaS-toepassing wilt configureren voor eenmalige aanmelding op basis van SAML, raadpleegt u [eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md). Daarnaast beschikken veel SaaS-toepassingen (Software as a Service) over een [toepassingsspecifieke zelf studie](../saas-apps/tutorial-list.md) die u door de configuratie voor eenmalige aanmelding op basis van SAML.
 
-Als u een toepassing voor WS-Federation wilt configureren, volgt u dezelfde richt lijnen om de toepassing te configureren voor eenmalige aanmelding op basis van SAML. Zie [op SAML gebaseerde eenmalige aanmelding configureren](configure-single-sign-on-non-gallery-applications.md). In de stap om de toepassing te configureren voor het gebruik van Azure AD, moet u de Azure AD-aanmeldings-URL voor het WS-Federation- `https://login.microsoftonline.com/<tenant-ID>/wsfed`eind punt vervangen.
+Als u een toepassing voor WS-Federation wilt configureren, volgt u dezelfde richt lijnen om de toepassing te configureren voor eenmalige aanmelding op basis van SAML. Zie [op SAML gebaseerde eenmalige aanmelding configureren](configure-single-sign-on-non-gallery-applications.md). In de stap om de toepassing te configureren voor het gebruik van Azure AD, moet u de Azure AD-aanmeldings-URL voor het WS-Federation-eind punt vervangen `https://login.microsoftonline.com/<tenant-ID>/wsfed` .
 
 Als u een on-premises toepassing wilt configureren voor eenmalige aanmelding op basis van SAML, raadpleegt u SSO [eenmalige aanmelding voor on-premises toepassingen met toepassings proxy](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -81,7 +81,7 @@ Zie het [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml
 
 ## <a name="password-based-sso"></a>Eenmalige aanmelding op basis van wacht woorden
 
-Met aanmelden op basis van wacht woorden kunnen gebruikers zich bij de toepassing aanmelden met een gebruikers naam en wacht woord, de eerste keer dat ze deze gebruiken. Na de eerste aanmelding levert Azure AD de gebruikers naam en het wacht woord voor de toepassing.
+Met aanmelden op basis van wacht woorden kunnen gebruikers zich bij de toepassing aanmelden met een gebruikers naam en wacht woord, de eerste keer dat ze deze gebruiken. Na de eerste aanmelding levert Azure AD de gebruikersnaam en het wachtwoord voor de toepassing.
 
 Eenmalige aanmelding op basis van wacht woorden gebruikt het bestaande verificatie proces dat door de toepassing wordt verschaft. Wanneer u eenmalige aanmelding met een wacht woord inschakelt voor een toepassing, worden gebruikers namen en wacht woorden voor de toepassing door Azure AD verzameld en beveiligd. Gebruikers referenties worden opgeslagen in een versleutelde status in de map.
 

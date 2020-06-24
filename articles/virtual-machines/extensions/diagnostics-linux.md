@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677182"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298953"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -23,7 +23,7 @@ In dit document wordt versie 3,0 en nieuwer van de Linux Diagnostic-extensie bes
 > [!IMPORTANT]
 > Zie [dit document](../linux/classic/diagnostic-extension-v2.md)voor meer informatie over versie 2,3 en ouder.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 De diagnostische extensie van Linux helpt gebruikers bij het controleren van de status van een virtuele Linux-machine die wordt uitgevoerd op Microsoft Azure. Het heeft de volgende mogelijkheden:
 
@@ -74,7 +74,12 @@ Ondersteunde distributies en versies:
 
 ### <a name="sample-installation"></a>Voorbeeld installatie
 
-Vul de juiste waarden in voor de variabelen in de eerste sectie voordat u uitvoert:
+> [!NOTE]
+> Vul voor een van de voor beelden de juiste waarden in voor de variabelen in de eerste sectie voordat u uitvoert. 
+
+Met de voorbeeld configuratie die in deze voor beelden is gedownload, wordt een set standaard gegevens verzameld en naar Table Storage verzonden. De URL voor de voorbeeld configuratie en de inhoud ervan kunnen worden gewijzigd. In de meeste gevallen moet u een kopie van het JSON-bestand van de Portal-instellingen downloaden en aanpassen aan uw behoeften. vervolgens moet u de eigen versie van het configuratie bestand gebruiken in plaats van dat elke keer dat URL wordt gedownload.
+
+#### <a name="azure-cli-sample"></a>Voor beeld van Azure CLI
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -103,8 +108,6 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-
-Met de voorbeeld configuratie die in deze voor beelden is gedownload, wordt een set standaard gegevens verzameld en naar Table Storage verzonden. De URL voor de voorbeeld configuratie en de inhoud ervan kunnen worden gewijzigd. In de meeste gevallen moet u een kopie van het JSON-bestand van de Portal-instellingen downloaden en aanpassen aan uw behoeften. vervolgens moet u de eigen versie van het configuratie bestand gebruiken in plaats van dat elke keer dat URL wordt gedownload.
 
 #### <a name="powershell-sample"></a>Voorbeeld van PowerShell
 
@@ -170,7 +173,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Naam | Waarde
+Name | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -439,6 +442,9 @@ U moet ' Table ' of ' sinks ' of beide opgeven.
 
 Hiermee bepaalt u het vastleggen van logboek bestanden. LAD legt nieuwe tekst regels vast wanneer ze naar het bestand worden geschreven en schrijft ze naar tabel rijen en/of naar een opgegeven Sink (JsonBlob of EventHub).
 
+> [!NOTE]
+> fileLogs worden vastgelegd door een subonderdeel van LAD met de naam `omsagent` . Als u fileLogs wilt verzamelen, moet u ervoor zorgen dat de `omsagent` gebruiker lees machtigingen heeft voor de bestanden die u opgeeft, evenals machtigingen voor uitvoeren voor alle mappen in het pad naar dat bestand. U kunt dit controleren door uit te voeren `sudo su omsagent -c 'cat /path/to/file'` nadat Lad is geïnstalleerd.
+
 ```json
 "fileLogs": [
     {
@@ -564,23 +570,36 @@ BytesPerSecond | Aantal gelezen of geschreven bytes per seconde
 
 Geaggregeerde waarden voor alle schijven kunnen worden verkregen door in te stellen `"condition": "IsAggregate=True"` . Als u informatie wilt ophalen voor een specifiek apparaat (bijvoorbeeld/dev/sdf1), stelt u in `"condition": "Name=\\"/dev/sdf1\\""` .
 
-## <a name="installing-and-configuring-lad-30-via-cli"></a>LAD 3.0 via de CLI installeren en configureren
+## <a name="installing-and-configuring-lad-30"></a>LAD 3,0 installeren en configureren
 
-Als uw beveiligde instellingen zich in het bestand bevinden PrivateConfig.jsop en uw open bare configuratie-informatie zich in PublicConfig.jsbevindt, voert u de volgende opdracht uit:
+### <a name="azure-cli"></a>Azure CLI
+
+Als uw beveiligde instellingen zich in het bestand bevinden ProtectedSettings.jsop en uw open bare configuratie-informatie zich in PublicSettings.jsbevindt, voert u de volgende opdracht uit:
 
 ```azurecli
-az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-De opdracht gaat ervan uit dat u gebruikmaakt van de Azure resource management-modus (arm) van de Azure CLI. Als u LAD wilt configureren voor Vm's van het klassieke implementatie model (ASM), schakelt u over naar de modus ASM ( `azure config mode asm` ) en laat u de naam van de resource groep weg in de opdracht. Zie de [documentatie over PLATFORMOVERSCHRIJDENDE cli](https://docs.microsoft.com/azure/xplat-cli-connect)voor meer informatie.
+De opdracht gaat ervan uit dat u gebruikmaakt van de ARM-modus (Azure Resource Management) van de Azure CLI. Als u LAD wilt configureren voor Vm's van het klassieke implementatie model (ASM), schakelt u over naar de modus ASM ( `azure config mode asm` ) en laat u de naam van de resource groep weg in de opdracht. Zie de [documentatie over PLATFORMOVERSCHRIJDENDE cli](https://docs.microsoft.com/azure/xplat-cli-connect)voor meer informatie.
+
+### <a name="powershell"></a>PowerShell
+
+Ervan uitgaande dat uw beveiligde instellingen in de `$protectedSettings` variabele staan en dat uw open bare configuratie gegevens in de `$publicSettings` variabele staan, voert u de volgende opdracht uit:
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+```
 
 ## <a name="an-example-lad-30-configuration"></a>Een voor beeld van een LAD-configuratie van 3,0
 
 Op basis van de voor gaande definities ziet u hier een voor beeld van een LAD-extensie configuratie van 3,0 met enkele uitleg. Als u dit voor beeld wilt Toep assen op uw aanvraag, moet u uw eigen opslag accountnaam, SAS-token voor het account en Event hubs SAS-tokens gebruiken.
 
-### <a name="privateconfigjson"></a>PrivateConfig.jsop
+> [!NOTE]
+> Afhankelijk van of u de Azure CLI of Power shell gebruikt om LAD te installeren, is de methode voor het bieden van open bare en beveiligde instellingen anders. Als u de Azure CLI gebruikt, slaat u de volgende instellingen op ProtectedSettings.jsop en PublicSettings.jsu in om te gebruiken met de bovenstaande voorbeeld opdracht. Als u Power shell gebruikt, slaat u de instellingen op en wilt u deze `$protectedSettings` `$publicSettings` uitvoeren `$protectedSettings = '{ ... }'` .
 
-Deze persoonlijke instellingen configureren:
+### <a name="protected-settings"></a>Beveiligde instellingen
+
+Deze beveiligde instellingen configureren:
 
 * een opslag account
 * een overeenkomend account SAS-token
@@ -628,7 +647,7 @@ Deze persoonlijke instellingen configureren:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig.jsop
+### <a name="public-settings"></a>Open bare instellingen
 
 Deze open bare instellingen veroorzaken LAD:
 

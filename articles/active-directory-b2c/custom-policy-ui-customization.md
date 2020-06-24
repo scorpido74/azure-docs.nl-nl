@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901fb73c58a074a37b410785ed3bb92a4d250c1c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396383"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202506"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -34,11 +34,11 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en de onderliggende elementen van het basis bestand naar het extensie bestand.
 
-1. Open het basis bestand van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>. Dit basis bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Open het basis bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Dit basis bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Zoek en kopieer de volledige inhoud van het **ContentDefinitions** -element.
-1. Open het extensie bestand. Bijvoorbeeld *TrustFrameworkExtensions. XML*. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
+1. Open het extensie bestand. Bijvoorbeeld *TrustFrameworkExtensions.xml*. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
 1. Plak de volledige inhoud van het **ContentDefinitions** -element dat u hebt gekopieerd als onderliggend element van het **Building Blocks** -object.
-1. Zoek naar het **ContentDefinition** -element dat `Id="api.signuporsignin"` zich in de XML bevinden die u hebt gekopieerd.
+1. Zoek naar het **ContentDefinition** -element dat zich `Id="api.signuporsignin"` in de XML bevinden die u hebt gekopieerd.
 1. Wijzig de waarde van **LoadUri** in de URL van het HTML-bestand dat u hebt geüpload naar opslag. Bijvoorbeeld `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
     Het aangepaste beleid moet eruitzien zoals in het volgende code fragment:
@@ -64,7 +64,7 @@ Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en
 
 #### <a name="51-upload-the-custom-policy"></a>5,1 het aangepaste beleid uploaden
 
-1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat door in het bovenste menu te klikken op het filter **Map en abonnement** en de map te kiezen waarin de tenant zich bevindt.
 1. Zoek en selecteer **Azure AD B2C**.
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **aangepast beleid uploaden**.
@@ -79,13 +79,13 @@ Als u de UI-aanpassing wilt configureren, kopieert u de **ContentDefinition** en
 
 ## <a name="configure-dynamic-custom-page-content-uri"></a>URI voor dynamische aangepaste pagina-inhoud configureren
 
-Door Azure AD B2C aangepast beleid te gebruiken, kunt u een para meter verzenden in het URL-pad of een query reeks. Door de parameter door te geven aan uw HTML-eindpunt, kunt u de pagina-inhoud dynamisch wijzigen. U kunt bijvoorbeeld de achtergrondafbeelding op de registratie- of aanmeldingspagina van Azure AD B2C wijzigen, op basis van een parameter die u doorgeeft vanuit uw web- of mobiele toepassing. De para meter kan elke [claim resolver](claim-resolver-overview.md)zijn, zoals de toepassings-id, taal-id of para meter voor de aangepaste query reeks `campaignId`, zoals.
+Door Azure AD B2C aangepast beleid te gebruiken, kunt u een para meter verzenden in het URL-pad of een query reeks. Door de parameter door te geven aan uw HTML-eindpunt, kunt u de pagina-inhoud dynamisch wijzigen. U kunt bijvoorbeeld de achtergrondafbeelding op de registratie- of aanmeldingspagina van Azure AD B2C wijzigen, op basis van een parameter die u doorgeeft vanuit uw web- of mobiele toepassing. De para meter kan elke [claim resolver](claim-resolver-overview.md)zijn, zoals de toepassings-id, taal-id of para meter voor de aangepaste query reeks, zoals `campaignId` .
 
 ### <a name="sending-query-string-parameters"></a>Query teken reeks parameters verzenden
 
-Als u para meters voor query reeksen wilt verzenden, voegt u `ContentDefinitionParameters` in het Relying Party- [beleid](relyingparty.md)een element toe, zoals hieronder wordt weer gegeven.
+Als u para meters voor query reeksen wilt verzenden, voegt u in het [Relying Party-beleid](relyingparty.md)een element toe, `ContentDefinitionParameters` zoals hieronder wordt weer gegeven.
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -99,9 +99,9 @@ Als u para meters voor query reeksen wilt verzenden, voegt u `ContentDefinitionP
 </RelyingParty>
 ```
 
-Wijzig in uw inhouds definitie de waarde van `LoadUri` in. `https://<app_name>.azurewebsites.net/home/unified` Het aangepaste beleid `ContentDefinition` moet eruitzien zoals in het volgende code fragment:
+Wijzig in uw inhouds definitie de waarde van `LoadUri` in `https://<app_name>.azurewebsites.net/home/unified` . Het aangepaste beleid `ContentDefinition` moet eruitzien zoals in het volgende code fragment:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,14 +118,14 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de gebruikte para meters. Stel in het eind punt waarvoor CORS is ingeschakeld een mapstructuur in om inhoud te hosten. U kunt bijvoorbeeld de inhoud in de volgende structuur indelen. Hoofdmap */map per taal/uw HTML-bestanden*. Uw aangepaste pagina-URI kan er bijvoorbeeld als volgt uitzien:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
 </ContentDefinition>
 ```
 
-Azure AD B2C verzendt de ISO-code van twee letters voor de `fr` taal, voor Frans:
+Azure AD B2C verzendt de ISO-code van twee letters voor de taal, `fr` voor Frans:
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html

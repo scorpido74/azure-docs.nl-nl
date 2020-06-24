@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59983678c1b14d6aa87a7b500605e3abeb6a9b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00fdd94e8a8cd4b8769260cd595dfee5ff898039
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533532"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732615"
 ---
 # <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Bulksgewijs downloaden van een lijst met groepen in Azure Active Directory
 
@@ -27,7 +27,7 @@ Met Azure Active Directory-Portal (Azure AD) kunt u de lijst met alle groepen in
 ## <a name="to-download-a-list-of-groups"></a>Een lijst met groepen downloaden
 
 1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een beheerders account in de organisatie.
-1. Selecteer **groepen** > **Download groepen**in azure AD.
+1. Selecteer **groepen**  >  **Download groepen**in azure AD.
 1. Selecteer op de pagina **groepen downloaden** de optie **Start** om een CSV-bestand te ontvangen waarin uw groepen worden weer gegeven.
 
    ![De opdracht groepen downloaden bevindt zich op de pagina alle groepen](./media/groups-bulk-download/bulk-download.png)

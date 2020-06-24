@@ -2,13 +2,13 @@
 title: Overzicht van Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel worden Azure Monitor beschreven voor containers die de AKS-container Insights-oplossing bewaakt en de waarde die wordt geleverd door de status van uw AKS-clusters en Container Instances in azure te controleren.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/21/2020
+ms.openlocfilehash: 709759d1a2b2eb5d8f919ed90e6525c664129f16
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118083"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770812"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Overzicht van Azure Monitor voor containers
 
@@ -19,6 +19,7 @@ Azure Monitor voor containers is een functie die is ontworpen voor het bewaken v
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
 - Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Kubernetes voor Azure-Arc ingeschakeld](../../azure-arc/kubernetes/overview.md) (preview-versie) 
 
 Azure Monitor voor containers ondersteunt clusters met het besturings systeem Linux en Windows Server 2019. 
 
@@ -46,9 +47,11 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
     >De ondersteuning voor Azure Red Hat open Shift is op dit moment een functie in Public Preview.
     >
 
+* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd in azure Arc enabled Kubernetes (preview)](../../azure-arc/kubernetes/overview.md).
+
 De belangrijkste verschillen in het bewaken van een Windows Server-cluster in vergelijking met een Linux-cluster zijn als volgt:
 
-- Windows heeft geen gegevens over de geheugen-RSS en is daarom niet beschikbaar voor Windows-knoop punten en-containers. Werkset is beschikbaar. Meer informatie over [geheugen beheer in Windows](https://docs.microsoft.com/windows/win32/memory/working-set).
+- Windows heeft geen geheugen-RSS-metriek en is daarom niet beschikbaar voor Windows-knoop punten en-containers. De metrische [werkset](https://docs.microsoft.com/windows/win32/memory/working-set) is beschikbaar.
 - Informatie over capaciteit van schijf opslag is niet beschikbaar voor Windows-knoop punten.
 - Container logboeken zijn niet beschikbaar voor containers die worden uitgevoerd in Windows-knoop punten.
 - Ondersteuning voor de functie Live data (preview) is beschikbaar in de uitzonde ring van Windows-container Logboeken.

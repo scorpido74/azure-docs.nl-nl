@@ -1,17 +1,17 @@
 ---
-title: Door het systeem toegewezen beheerde identiteit inschakelen voor Azure lente-Cloud toepassing
+title: Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing
 description: Het inschakelen van door het systeem toegewezen beheerde identiteit voor toepassing.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 81df4364324b03bb624e051fd71b25f0d6cdb049
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c9b9eaf7447d30dfbec6b04ff00010e0e2992c8e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172296"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254528"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Door het systeem toegewezen beheerde identiteit inschakelen voor Azure lente-Cloud toepassing
 Beheerde identiteiten voor Azure-resources bieden een automatisch beheerde identiteit in Azure Active Directory aan een Azure-resource, zoals uw Azure lente-Cloud toepassing. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code.
@@ -53,11 +53,11 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Tokens verkrijgen voor Azure-resources
-Een app kan de beheerde identiteit gebruiken om tokens te verkrijgen voor toegang tot andere bronnen die worden beveiligd door Azure AD, zoals Azure Key Vault. Deze tokens vertegenwoordigen de toepassing die toegang heeft tot de resource, niet een specifieke gebruiker van de toepassing.
+Een app kan de beheerde identiteit gebruiken om tokens te verkrijgen voor toegang tot andere bronnen die worden beveiligd door Azure Active Directory, zoals Azure Key Vault. Deze tokens vertegenwoordigen de toepassing die toegang heeft tot de resource, niet een specifieke gebruiker van de toepassing.
 
 Mogelijk moet u [de doel bron configureren om toegang toe te staan vanuit uw toepassing](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal). Als u bijvoorbeeld een token aanvraagt voor toegang tot Key Vault, moet u ervoor zorgen dat u een toegangs beleid hebt toegevoegd dat de identiteit van uw toepassing bevat. Anders worden uw aanroepen naar Key Vault geweigerd, zelfs als ze het token bevatten. Zie [Azure-Services die ondersteuning bieden voor Azure AD-verificatie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)voor meer informatie over welke bronnen Azure Active Directory-tokens ondersteunen.
 
-Azure lente Cloud deelt hetzelfde eind punt voor het ophalen van tokens met de virtuele machine van Azure. Zie [het gebruik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) van een VM-token voor verschillende code-en script voorbeelden en richt lijnen over belang rijke onderwerpen, zoals het verwerken van token verloopt en HTTP-fouten.
+Azure lente Cloud deelt hetzelfde eind punt voor het ophalen van tokens met de virtuele machine van Azure. We raden u aan om een token op te halen met behulp van Java SDK of lente boot-starters.  Zie [het gebruik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) van een VM-token voor verschillende code-en script voorbeelden en richt lijnen over belang rijke onderwerpen, zoals het verwerken van token verloopt en HTTP-fouten.
 
 Aanbevolen: gebruik de Java-SDK of veer boot starters om tokens op te halen.  Zie de voor beelden in de [volgende stappen](#next-steps).
 
@@ -82,3 +82,4 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>Volgende stappen
 * [Beheerde identiteiten gebruiken met Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Toegang tot Azure Key Vault met beheerde identiteiten in Spring boot starter](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [Gebruik Key Vault van App Service met Managed Service Identity](https://docs.microsoft.com/samples/azure-samples/app-service-msi-keyvault-dotnet/keyvault-msi-appservice-sample/)
