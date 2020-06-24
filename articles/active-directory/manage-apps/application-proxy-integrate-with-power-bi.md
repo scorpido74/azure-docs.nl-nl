@@ -3,25 +3,25 @@ title: Externe toegang tot Power BI met Azure AD-toepassingsproxy inschakelen
 description: Behandelt de basis principes voor het integreren van een on-premises Power BI met Azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 68993a460ba3d6a672a27eb8da5ced85b29d3d12
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610085"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764550"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI - Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -50,7 +50,7 @@ U kunt controleren of de SPN is toegevoegd door de opdracht setspn uit te voeren
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate-verificatie inschakelen
 
-Als u een rapport server wilt inschakelen om Kerberos-verificatie te gebruiken, configureert u het verificatie type van de rapport server in RSWindowsNegotiate. Configureer deze instelling met het bestand Rsreportserver. config.
+Als u een rapport server wilt inschakelen om Kerberos-verificatie te gebruiken, configureert u het verificatie type van de rapport server in RSWindowsNegotiate. Configureer deze instelling met behulp van het rsreportserver.config-bestand.
 
 ```xml
 <AuthenticationTypes>
@@ -63,41 +63,41 @@ Als u een rapport server wilt inschakelen om Kerberos-verificatie te gebruiken, 
 Zie [Een Reporting Services-configuratiebestand wijzigen](https://msdn.microsoft.com/library/bb630448.aspx) en [Windows-verificatie op een rapportserver configureren](https://msdn.microsoft.com/library/cc281253.aspx) voor meer informatie.
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Zorg ervoor dat de connector wordt vertrouwd voor delegering naar de SPN die is toegevoegd aan het account van de groep van toepassingen van de Reporting Services
-Configureer KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteiten kan delegeren aan het account van de groep van toepassingen van de Reporting Services. Configureer KCD door de Application proxy connector in te scha kelen om Kerberos-tickets op te halen voor uw gebruikers die zijn geverifieerd in azure AD. Vervolgens geeft die server de context door aan de doel toepassing of Reporting Services in dit geval.
+Configureer KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteiten kan delegeren aan het account van de groep van toepassingen van de Reporting Services. Configureer KCD zodanig dat de Application Proxy Connector Kerberos-tickets ophaalt voor uw gebruikers die zijn geverifieerd in Azure AD. Vervolgens geeft die server de context door aan de doel toepassing of Reporting Services in dit geval.
 
 Als u KCD wilt configureren, herhaalt u de volgende stappen voor elke connector computer:
 
 1. Meld u aan bij een domein controller als een domein beheerder en open **Active Directory gebruikers en computers**.
 2. Zoek de computer waarop de connector wordt uitgevoerd.
-3. Dubbel klik op de computer en selecteer vervolgens het tabblad **delegering** .
-4. Stel de instellingen voor delegering zo in dat **deze computer alleen kan worden overgedragen aan de opgegeven services**. Selecteer vervolgens **elk verificatie protocol gebruiken**.
-5. Selecteer **toevoegen**en selecteer vervolgens **gebruikers of computers**.
+3. Dubbelklik op de computer en selecteer het tabblad **Delegatie**.
+4. Stel de delegatie-instellingen in op **Deze computer mag alleen delegeren aan de opgegeven services**. Selecteer vervolgens **elk verificatie protocol gebruiken**.
+5. Selecteer **Toevoegen** en vervolgens **Gebruikers of Computers**.
 6. Voer het service account in dat u gebruikt voor Reporting Services. Dit is het account waaraan u de SPN hebt toegevoegd in de Reporting Services-configuratie.
-7. Klik op **OK**. Klik opnieuw op **OK** om de wijzigingen op te slaan.
+7. Klik op **OK**. Klik op **OK** om de wijzigingen op te slaan.
 
 Zie voor meer informatie [Kerberos-beperkte delegatie voor eenmalige aanmelding bij uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md).
 
 ## <a name="step-2-publish-report-services-through-azure-ad-application-proxy"></a>Stap 2: Publiceer Report Services via Azure AD-toepassingsproxy
 
-U bent nu klaar om Azure AD-toepassingsproxy te configureren.
+Nu kunt u Azure AD-toepassingsproxy gaan configureren.
 
-1. Publiceer Report Services via toepassings proxy met de volgende instellingen. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)voor stapsgewijze instructies voor het publiceren van een toepassing via toepassings proxy.
-   - **Interne URL**: Voer de URL naar de rapport server in die de connector kan bereiken in het bedrijfs netwerk. Zorg ervoor dat deze URL bereikbaar is vanaf de server waarop de connector is geïnstalleerd. Een best practice maakt gebruik van een domein op het hoogste niveau `https://servername/` , zoals om problemen te voor komen met subpaden die zijn gepubliceerd via toepassings proxy. Gebruik `https://servername/` bijvoorbeeld en niet `https://servername/reports/` of. `https://servername/reportserver/`
+1. Publiceer Report Services via toepassings proxy met de volgende instellingen. Zie [Toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad) voor stapsgewijze instructies voor het publiceren van een toepassing via een toepassingsproxy.
+   - **Interne URL**: Voer de URL naar de rapport server in die de connector kan bereiken in het bedrijfs netwerk. Zorg dat deze URL bereikbaar is vanaf de server waarop de connector is geïnstalleerd. Een best practice is het gebruik van een domein op het hoogste niveau, zoals `https://servername/`, om problemen te voorkomen met subpaden die zijn gepubliceerd via toepassingsproxy. Gebruik bijvoorbeeld `https://servername/` en niet `https://servername/reports/` of `https://servername/reportserver/`.
      > [!NOTE]
-     > U kunt het beste een beveiligde HTTPS-verbinding met de rapport server gebruiken. Zie [SSL-verbindingen configureren op een rapport server in systeem eigen modus](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) voor meer informatie.
-   - **Externe URL**: Voer de open bare URL in waarmee de Power bi mobiele app verbinding maakt. Het kan bijvoorbeeld lijken `https://reports.contoso.com` alsof er een aangepast domein wordt gebruikt. Als u een aangepast domein wilt gebruiken, uploadt u een certificaat voor het domein en wijst u een DNS-record naar het standaard msappproxy.net-domein voor uw toepassing. Zie [werken met aangepaste domeinen in Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md)voor gedetailleerde stappen.
+     > U kunt het beste een beveiligde HTTPS-verbinding met de rapport server gebruiken. Zie [SSL-verbindingen configureren op een rapportserver in de native modus](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) voor meer informatie over hoe u dit doet.
+   - **Externe URL**: Voer de open bare URL in waarmee de Power bi mobiele app verbinding maakt. Als er een aangepast domein wordt gebruikt, kan het er bijvoorbeeld uitzien als `https://reports.contoso.com`. Als u een aangepast domein wilt gebruiken, uploadt u een certificaat voor het domein en laat u een DNS-record naar het standaarddomein msappproxy.net voor uw toepassing wijzen. Zie [Aangepaste domeinen configureren met Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md) voor gedetailleerde stappen.
 
    - **Methode voor verificatie vooraf**: Azure Active Directory
 
 2. Nadat de app is gepubliceerd, configureert u de instellingen voor eenmalige aanmelding met de volgende stappen:
 
-   a. Selecteer op de pagina toepassing in de portal **eenmalige aanmelding**.
+   a. Selecteer op de toepassingspagina in de Portal de optie **Eenmalige aanmelding**.
 
-   b. Voor de **modus voor eenmalige aanmelding**selecteert u **geïntegreerde Windows-verificatie**.
+   b. Selecteer bij **Modus Eenmalige aanmelding** de optie **Geïntegreerde Windows-verificatie**.
 
-   c. Stel **interne Application SPN** in op de waarde die u eerder hebt ingesteld.
+   c. Stel **SPN voor interne toepassing** in op de waarde die u eerder hebt ingesteld.
 
-   d. Kies de **gedelegeerde aanmeldings-id** voor de connector om namens uw gebruikers te gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)voor meer informatie.
+   d. Kies de **Gedelegeerde aanmeldingsidentiteit** voor de connector die u namens uw gebruikers wilt gebruiken. Zie [Werken met verschillende on-premises en cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities) voor meer informatie.
 
    e. Klik op **Opslaan** om uw wijzigingen op te slaan.
 
@@ -107,10 +107,10 @@ Ga naar **de sectie gebruikers en groepen** en wijs gebruikers toe om toegang te
 
 Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot Report Services, moet u de registratie van de toepassing configureren die automatisch voor u is gemaakt in stap 2.
 
-1. Selecteer op de pagina **overzicht** van Azure Active Directory **app-registraties**.
+1. Selecteer in het **Overzicht** van Azure Active Directory de optie **App-registraties**.
 2. Zoek op het tabblad **alle toepassingen** naar de toepassing die u in stap 2 hebt gemaakt.
-3. Selecteer de toepassing en selecteer vervolgens **verificatie**.
-4. Voeg de volgende omleidings-Uri's toe op basis van het platform dat u gebruikt.
+3. Selecteer de toepassing en vervolgens **Verificatie**.
+4. Voeg de volgende omleidings-URI's toe op basis van het platform dat u gebruikt.
 
    Bij het configureren van de app voor Power BI-Mobiel **IOS**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
@@ -125,7 +125,7 @@ Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot 
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
-   > De omleidings-Uri's moeten worden toegevoegd om de toepassing correct te laten werken. Als u de app configureert voor zowel Power BI-Mobiel iOS als Android, voegt u de volgende omleidings-URI van het type open bare-client (mobiele & bureau blad) toe aan de `urn:ietf:wg:oauth:2.0:oob`lijst met omleidings-uri's die zijn geconfigureerd voor IOS:.
+   > De toepassing werkt alleen correct als de omleidings-URI's zijn toegevoegd. Als u de app configureert voor zowel Power BI-Mobiel iOS als Android, voegt u de volgende omleidings-URI van het type open bare-client (mobiele & bureau blad) toe aan de lijst met omleidings-Uri's die zijn geconfigureerd voor iOS: `urn:ietf:wg:oauth:2.0:oob` .
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Stap 4: verbinding maken vanuit de Power BI-Mobiel-app
 

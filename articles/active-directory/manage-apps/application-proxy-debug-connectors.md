@@ -2,21 +2,21 @@
 title: Fout opsporing voor Application proxy-connectors-Azure Active Directory | Microsoft Docs
 description: Problemen met de connector voor toepassings proxy van Azure Active Directory (Azure AD) oplossen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9254e0ce9f27d95edb01359e53888078c1087381
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72311845"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764650"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Fouten opsporen in connector van toepassingsproxy 
 
@@ -32,7 +32,7 @@ Voor meer informatie over toepassings proxy en het gebruik van de connectors raa
 - [Externe toegang tot on-premises toepassingen via toepassings proxy](application-proxy.md)
 - [Application proxy-connectors](application-proxy-connectors.md)
 - [Een connector installeren en registreren](application-proxy-add-on-premises-application.md)
-- [Problemen met toepassings proxy en fout berichten oplossen](application-proxy-troubleshoot.md)
+- [Problemen en foutberichten met Application Proxy oplossen](application-proxy-troubleshoot.md)
 
 ## <a name="flowchart-for-connector-issues"></a>Stroom diagram voor connector problemen
 

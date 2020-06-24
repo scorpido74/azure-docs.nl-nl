@@ -1,6 +1,6 @@
 ---
-title: Beheerde identiteiten op Azure VMSS configureren met behulp van REST-Azure AD
-description: Stapsgewijze instructies voor het configureren van een door een systeem en de gebruiker toegewezen beheerde identiteiten op een Azure-VMSS met behulp van krul om REST API-aanroepen te maken.
+title: Beheerde identiteiten configureren in azure virtual machine Scale set met behulp van REST-Azure AD
+description: Stapsgewijze instructies voor het configureren van een door een systeem en de gebruiker toegewezen beheerde identiteiten op een Azure virtual machine-schaalset met behulp van krul om REST API aanroepen te maken.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec0744e4a682bd7ef2c9bb6027392eba2bf2322
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253336"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693648"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Beheerde identiteiten configureren voor Azure-resources op een schaalset voor virtuele machines met behulp van REST API-aanroepen
 
@@ -35,7 +35,7 @@ In dit artikel, met behulp van krul om aanroepen naar het Azure Resource Manager
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)**.
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Als u de beheer bewerkingen in dit artikel wilt uitvoeren, moet uw account de volgende toegangs beheer toewijzingen op basis van Azure-rollen hebben:
 
@@ -47,7 +47,7 @@ In dit artikel, met behulp van krul om aanroepen naar het Azure Resource Manager
     - De rol [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) voor het toewijzen en verwijderen van een door de gebruiker toegewezen identiteit van en naar een virtuele-machine schaalset.
 - Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in de Azure Portal.
 - [Installeer de lokale Azure cli-console](/cli/azure/install-azure-cli)als u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of een [Linux-distributie besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)gebruikt.
-- Als u de lokale Azure CLI-console gebruikt, meldt u zich `az login` aan bij Azure met met een account dat is gekoppeld aan het Azure-abonnement waarvoor u systeem-of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
+- Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure met `az login` met een account dat is gekoppeld aan het Azure-abonnement waarvoor u systeem-of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -78,7 +78,7 @@ Als u een schaalset voor virtuele machines wilt maken waarvoor een door het syst
    az account get-access-token
    ``` 
 
-4. Maak een schaalset voor virtuele machines met behulp van krul om het Azure Resource Manager REST-eind punt aan te roepen. In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt met de naam *myVMSS* in de *myResourceGroup* met een door het systeem toegewezen beheerde identiteit, zoals aangegeven `"identity":{"type":"SystemAssigned"}`in de hoofd tekst van de aanvraag. Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token `<SUBSCRIPTION ID>` hebt aangevraagd en de waarde die van toepassing is voor uw omgeving.
+4. Maak een schaalset voor virtuele machines met behulp van krul om het Azure Resource Manager REST-eind punt aan te roepen. In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt met de naam *myVMSS* in de *myResourceGroup* met een door het systeem toegewezen beheerde identiteit, zoals aangegeven in de hoofd tekst van de aanvraag `"identity":{"type":"SystemAssigned"}` . Vervang door `<ACCESS TOKEN>` de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token hebt aangevraagd en de `<SUBSCRIPTION ID>` waarde die van toepassing is voor uw omgeving.
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -170,10 +170,10 @@ Als u door het systeem toegewezen beheerde identiteit wilt inschakelen voor een 
    az account get-access-token
    ```
 
-2. Gebruik de volgende krul opdracht om het Azure Resource Manager REST-eind punt aan te roepen om de door het systeem toegewezen beheerde identiteit in te scha kelen voor de schaalset van de `{"identity":{"type":"SystemAssigned"}` virtuele machine, zoals aangegeven in de hoofd tekst van de aanvraag door de waarde voor een virtuele-machine schaalset met de naam *myVMSS*.  Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token `<SUBSCRIPTION ID>` hebt aangevraagd en de waarde die van toepassing is voor uw omgeving.
+2. Gebruik de volgende krul opdracht om het Azure Resource Manager REST-eind punt aan te roepen om de door het systeem toegewezen beheerde identiteit in te scha kelen voor de schaalset van de virtuele machine, zoals aangegeven in de hoofd tekst van de aanvraag door de waarde `{"identity":{"type":"SystemAssigned"}` voor een virtuele-machine schaalset met de naam *myVMSS*.  Vervang door `<ACCESS TOKEN>` de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token hebt aangevraagd en de `<SUBSCRIPTION ID>` waarde die van toepassing is voor uw omgeving.
    
    > [!IMPORTANT]
-   > Om ervoor te zorgen dat er geen door de gebruiker toegewezen beheerde identiteiten worden verwijderd die zijn toegewezen aan de schaalset voor virtuele machines, moet u de door de gebruiker toegewezen beheerde identiteiten vermelden `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`met behulp van deze krul opdracht:. Als er door de gebruiker toegewezen beheerde identiteiten zijn toegewezen aan de virtuele-machine schaalset, zoals `identity` aangegeven in de waarde in het antwoord, gaat u verder met stap 3 waarin wordt uitgelegd hoe u door de gebruiker toegewezen beheerde identiteiten kunt behouden terwijl de door het systeem toegewezen beheerde identiteit wordt ingeschakeld voor de schaalset van de virtuele machine.
+   > Om ervoor te zorgen dat er geen door de gebruiker toegewezen beheerde identiteiten worden verwijderd die zijn toegewezen aan de schaalset voor virtuele machines, moet u de door de gebruiker toegewezen beheerde identiteiten vermelden met behulp van deze krul opdracht: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Als er door de gebruiker toegewezen beheerde identiteiten zijn toegewezen aan de virtuele-machine schaalset, zoals aangegeven in de `identity` waarde in het antwoord, gaat u verder met stap 3 waarin wordt uitgelegd hoe u door de gebruiker toegewezen beheerde identiteiten kunt behouden terwijl de door het systeem toegewezen beheerde identiteit wordt ingeschakeld voor de schaalset van de virtuele machine.
 
    ```bash
     curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -200,11 +200,11 @@ Als u door het systeem toegewezen beheerde identiteit wilt inschakelen voor een 
     }
    ```
 
-3. Als u door het systeem toegewezen beheerde identiteit wilt inschakelen voor een schaalset voor virtuele machines met bestaande door de gebruiker toegewezen beheerde identiteiten, `type` moet u de waarde toevoegen `SystemAssigned` .  
+3. Als u door het systeem toegewezen beheerde identiteit wilt inschakelen voor een schaalset voor virtuele machines met bestaande door de gebruiker toegewezen beheerde identiteiten, moet u `SystemAssigned` de `type` waarde toevoegen.  
    
-   Als uw schaalset voor virtuele machines bijvoorbeeld de door de gebruiker toegewezen beheerde identiteiten `ID1` heeft `ID2` en eraan is toegewezen, en u wilt aan de door het systeem toegewezen beheerde identiteit toevoegen aan de schaalset van de virtuele machine, gebruikt u de volgende krul oproep. Vervang `<ACCESS TOKEN>` en `<SUBSCRIPTION ID>` door de waarden die van toepassing zijn op uw omgeving.
+   Als uw schaalset voor virtuele machines bijvoorbeeld de door de gebruiker toegewezen beheerde identiteiten heeft `ID1` en eraan is toegewezen `ID2` , en u wilt aan de door het systeem toegewezen beheerde identiteit toevoegen aan de schaalset van de virtuele machine, gebruikt u de volgende krul oproep. Vervang `<ACCESS TOKEN>` en `<SUBSCRIPTION ID>` door de waarden die van toepassing zijn op uw omgeving.
 
-   De API `2018-06-01` -versie slaat door de gebruiker toegewezen beheerde `userAssignedIdentities` identiteiten op in de waarde in een woordenlijst `identityIds` indeling, in plaats van de waarde in een `2017-12-01`matrix indeling die wordt gebruikt in de API-versie.
+   De API `2018-06-01` -versie slaat door de gebruiker toegewezen beheerde identiteiten op in de `userAssignedIdentities` waarde in een woordenlijst indeling, in plaats van de `identityIds` waarde in een matrix indeling die wordt gebruikt in de API-versie `2017-12-01` .
    
    **API-VERSIE 2018-06-01**
 
@@ -273,7 +273,7 @@ Als u door het systeem toegewezen beheerde identiteit wilt inschakelen voor een 
 
 ### <a name="disable-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Door het systeem toegewezen beheerde identiteit uitschakelen vanuit een schaalset voor virtuele machines
 
-Als u een door het systeem toegewezen identiteit wilt uitschakelen voor een bestaande schaalset voor virtuele machines, moet u een toegangs token verkrijgen en vervolgens krul gebruiken om het bron beheer REST-eind punt aan te `None`roepen om het identiteits type bij te werken naar.
+Als u een door het systeem toegewezen identiteit wilt uitschakelen voor een bestaande schaalset voor virtuele machines, moet u een toegangs token verkrijgen en vervolgens krul gebruiken om het bron beheer REST-eind punt aan te roepen om het identiteits type bij te werken naar `None` .
 
 1. Haal een Bearer-toegangs token op, dat u in de volgende stap in de autorisatie-header gaat gebruiken om uw schaalset voor virtuele machines te maken met een door het systeem toegewezen beheerde identiteit.
 
@@ -281,10 +281,10 @@ Als u een door het systeem toegewezen identiteit wilt uitschakelen voor een best
    az account get-access-token
    ```
 
-2. Werk de schaalset voor virtuele machines met krul bij om het Azure Resource Manager REST-eind punt aan te roepen om door het systeem toegewezen beheerde identiteit uit te scha kelen.  In het volgende voor beeld wordt de door het systeem toegewezen beheerde identiteit uitgeschakeld, zoals aangegeven in de hoofd `{"identity":{"type":"None"}}` tekst van de aanvraag door de waarde uit een schaalset voor virtuele machines met de naam *myVMSS*.  Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token `<SUBSCRIPTION ID>` hebt aangevraagd en de waarde die van toepassing is voor uw omgeving.
+2. Werk de schaalset voor virtuele machines met krul bij om het Azure Resource Manager REST-eind punt aan te roepen om door het systeem toegewezen beheerde identiteit uit te scha kelen.  In het volgende voor beeld wordt de door het systeem toegewezen beheerde identiteit uitgeschakeld, zoals aangegeven in de hoofd tekst van de aanvraag door de waarde `{"identity":{"type":"None"}}` uit een schaalset voor virtuele machines met de naam *myVMSS*.  Vervang door `<ACCESS TOKEN>` de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token hebt aangevraagd en de `<SUBSCRIPTION ID>` waarde die van toepassing is voor uw omgeving.
 
    > [!IMPORTANT]
-   > Om ervoor te zorgen dat er geen door de gebruiker toegewezen beheerde identiteiten worden verwijderd die zijn toegewezen aan de schaalset voor virtuele machines, moet u de door de gebruiker toegewezen beheerde identiteiten vermelden `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`met behulp van deze krul opdracht:. Als u een door de gebruiker toegewezen beheerde identiteit hebt die is toegewezen aan de schaalset voor virtuele machines, gaat u naar stap 3 waarin wordt getoond hoe de door de gebruiker toegewezen beheerde identiteiten behouden blijven terwijl de door het systeem toegewezen beheerde identiteit wordt verwijderd uit de schaalset van de virtuele machine.
+   > Om ervoor te zorgen dat er geen door de gebruiker toegewezen beheerde identiteiten worden verwijderd die zijn toegewezen aan de schaalset voor virtuele machines, moet u de door de gebruiker toegewezen beheerde identiteiten vermelden met behulp van deze krul opdracht: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Als u een door de gebruiker toegewezen beheerde identiteit hebt die is toegewezen aan de schaalset voor virtuele machines, gaat u naar stap 3 waarin wordt getoond hoe de door de gebruiker toegewezen beheerde identiteiten behouden blijven terwijl de door het systeem toegewezen beheerde identiteit wordt verwijderd uit de schaalset van de virtuele machine.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -311,7 +311,7 @@ Als u een door het systeem toegewezen identiteit wilt uitschakelen voor een best
     }
    ```
 
-   Als u een door het systeem toegewezen beheerde identiteit wilt verwijderen uit een schaalset voor virtuele machines die `SystemAssigned` door de `{"identity":{"type:" "}}` `UserAssigned` gebruiker toegewezen beheerde identiteiten heeft, verwijdert u de `userAssignedIdentities` waarde en wijzigt u de waarden van de waarde en de woorden lijst als u **API-versie 2018-06-01**gebruikt. Als u **API versie 2017-12-01** of eerder gebruikt, moet u de `identityIds` matrix blijven gebruiken.
+   Als u een door het systeem toegewezen beheerde identiteit wilt verwijderen uit een schaalset voor virtuele machines die door de gebruiker toegewezen beheerde identiteiten heeft, verwijdert `SystemAssigned` `{"identity":{"type:" "}}` u de waarde en wijzigt u de waarden van de `UserAssigned` waarde en de `userAssignedIdentities` woorden lijst als u **API-versie 2018-06-01**gebruikt. Als u **API versie 2017-12-01** of eerder gebruikt, moet u de `identityIds` matrix blijven gebruiken.
 
 ## <a name="user-assigned-managed-identity"></a>Door een gebruiker toegewezen beheerde identiteit
 
@@ -339,7 +339,7 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
 
 4. Maak een door de gebruiker toegewezen beheerde identiteit met behulp van de instructies die hier worden gevonden: [Maak een door de gebruiker toegewezen beheerde identiteit](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Maak een schaalset voor virtuele machines met behulp van krul om het Azure Resource Manager REST-eind punt aan te roepen. In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt met de naam *myVMSS* in de resource groep *myResourceGroup* met `ID1`een door de gebruiker toegewezen beheerde identiteit, zoals aangegeven `"identity":{"type":"UserAssigned"}`in de hoofd tekst van de aanvraag. Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token `<SUBSCRIPTION ID>` hebt aangevraagd en de waarde die van toepassing is voor uw omgeving.
+5. Maak een schaalset voor virtuele machines met behulp van krul om het Azure Resource Manager REST-eind punt aan te roepen. In het volgende voor beeld wordt een schaalset voor virtuele machines gemaakt met de naam *myVMSS* in de resource groep *myResourceGroup* met een door de gebruiker toegewezen beheerde identiteit `ID1` , zoals aangegeven in de hoofd tekst van de aanvraag `"identity":{"type":"UserAssigned"}` . Vervang door `<ACCESS TOKEN>` de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token hebt aangevraagd en de `<SUBSCRIPTION ID>` waarde die van toepassing is voor uw omgeving.
  
    **API-VERSIE 2018-06-01**
 
@@ -523,7 +523,7 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
 
 2.  Een door de gebruiker toegewezen beheerde identiteit maken met behulp van de instructies die hier worden gevonden, maakt u een door de [gebruiker toegewezen beheerde identiteit](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. Om ervoor te zorgen dat bestaande door de gebruiker of het systeem toegewezen beheerde identiteiten die aan de virtuele-machine schaalset zijn toegewezen, niet worden verwijderd, moet u de identiteits typen weer geven die zijn toegewezen aan de schaalset voor virtuele machines met behulp van de volgende krul opdracht. Als u beheerde identiteiten hebt toegewezen aan de schaalset voor virtuele machines, worden deze weer `identity` gegeven in de waarde.
+3. Om ervoor te zorgen dat bestaande door de gebruiker of het systeem toegewezen beheerde identiteiten die aan de virtuele-machine schaalset zijn toegewezen, niet worden verwijderd, moet u de identiteits typen weer geven die zijn toegewezen aan de schaalset voor virtuele machines met behulp van de volgende krul opdracht. Als u beheerde identiteiten hebt toegewezen aan de schaalset voor virtuele machines, worden deze weer gegeven in de `identity` waarde.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -542,7 +542,7 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
 
 4. Als er geen door de gebruiker of het systeem toegewezen beheerde identiteiten zijn toegewezen aan de schaalset van de virtuele machine, gebruikt u de volgende krul opdracht om het Azure Resource Manager REST-eind punt aan te roepen om de eerste door de gebruiker toegewezen beheerde identiteit toe te wijzen aan de schaalset van de virtuele machine.  Als u een door de gebruiker of het systeem toegewezen beheerde identiteit (en) hebt toegewezen aan de schaalset voor virtuele machines, gaat u verder met stap 5 waarin u kunt zien hoe u meerdere door de gebruiker toegewezen beheerde identiteiten aan een schaalset voor virtuele machines toevoegt, terwijl u ook de door het systeem toegewezen beheerde identiteit beheert.
 
-   In het volgende voor beeld wordt een door `ID1` de gebruiker toegewezen beheerde identiteit toegewezen aan een schaalset voor virtuele machines met de naam *myVMSS* in de resource groep *myResourceGroup*.  Vervang `<ACCESS TOKEN>` door de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token `<SUBSCRIPTION ID>` hebt aangevraagd en de waarde die van toepassing is voor uw omgeving.
+   In het volgende voor beeld wordt een door de gebruiker toegewezen beheerde identiteit toegewezen `ID1` aan een schaalset voor virtuele machines met de naam *myVMSS* in de resource groep *myResourceGroup*.  Vervang door `<ACCESS TOKEN>` de waarde die u in de vorige stap hebt ontvangen, wanneer u een Bearer-token hebt aangevraagd en de `<SUBSCRIPTION ID>` waarde die van toepassing is voor uw omgeving.
 
    **API-VERSIE 2018-06-01**
 
@@ -610,9 +610,9 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
    
    **API-VERSIE 2018-06-01**
 
-   Voeg de door de gebruiker toegewezen beheerde identiteit toe `userAssignedIdentities` aan de woordenlijst waarde.
+   Voeg de door de gebruiker toegewezen beheerde identiteit toe aan de `userAssignedIdentities` woordenlijst waarde.
 
-   Bijvoorbeeld als u een door het systeem toegewezen beheerde identiteit en de door de gebruiker toegewezen beheerde identiteit `ID1` hebt die momenteel is toegewezen aan de schaal van de virtuele machine en de door de gebruiker toegewezen `ID2` beheerde identiteit wilt toevoegen:
+   Bijvoorbeeld als u een door het systeem toegewezen beheerde identiteit en de door de gebruiker toegewezen beheerde identiteit hebt die `ID1` momenteel is toegewezen aan de schaal van de virtuele machine en de door de gebruiker toegewezen beheerde identiteit `ID2` wilt toevoegen:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -651,7 +651,7 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
 
    Behoud de door de gebruiker toegewezen beheerde identiteiten die u in de `identityIds` matrix waarde wilt behouden tijdens het toevoegen van de nieuwe door de gebruiker toegewezen beheerde identiteit.
 
-   Bijvoorbeeld, als u een door het systeem toegewezen identiteit hebt en de door de gebruiker toegewezen `ID1` beheerde identiteit die momenteel is toegewezen aan de schaalset voor virtuele machines en u hieraan de door de `ID2` gebruiker toegewezen beheerde identiteit wilt toevoegen:
+   Bijvoorbeeld, als u een door het systeem toegewezen identiteit hebt en de door de gebruiker toegewezen beheerde identiteit `ID1` die momenteel is toegewezen aan de schaalset voor virtuele machines en u hieraan de door de gebruiker toegewezen beheerde identiteit `ID2` wilt toevoegen:
 
     ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -706,13 +706,13 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
    |---------|---------|
    |*Autorisatie*     | Vereist. Ingesteld op een geldig `Bearer` toegangs token. |
    
-   Als u beheerde identiteiten aan de virtuele machine hebt toegewezen, worden deze weer gegeven in het `identity` antwoord in de waarde. 
+   Als u beheerde identiteiten aan de virtuele machine hebt toegewezen, worden deze weer gegeven in het antwoord in de `identity` waarde. 
     
-   Als u bijvoorbeeld beheerde identiteiten `ID1` `ID2` hebt toegewezen aan de schaalset van de virtuele machine en u de toegewezen en behoud van de door het `ID1` systeem toegewezen beheerde identiteit wilt behouden, kunt u het volgende doen:
+   Als u bijvoorbeeld beheerde identiteiten hebt toegewezen `ID1` `ID2` aan de schaalset van de virtuele machine en u `ID1` de toegewezen en behoud van de door het systeem toegewezen beheerde identiteit wilt behouden, kunt u het volgende doen:
 
    **API-VERSIE 2018-06-01**
 
-   Voeg `null` toe aan de door de gebruiker toegewezen beheerde identiteit die u wilt verwijderen:
+   Voeg toe `null` aan de door de gebruiker toegewezen beheerde identiteit die u wilt verwijderen:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":null}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -744,7 +744,7 @@ In deze sectie leert u hoe u door de gebruiker toegewezen beheerde identiteit ku
 
    **API-VERSIE 2017-12-01**
 
-   Bewaar alleen de door de gebruiker toegewezen beheerde identiteiten die u in de `identityIds` matrix wilt behouden:
+   Bewaar alleen de door de gebruiker toegewezen beheerde identiteiten die u in de matrix wilt behouden `identityIds` :
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"

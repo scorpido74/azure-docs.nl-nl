@@ -3,25 +3,25 @@ title: Eenmalige aanmelding via SAML voor on-premises apps met Azure AD-app prox
 description: Meer informatie over het bieden van eenmalige aanmelding voor on-premises toepassingen die zijn beveiligd met SAML-verificatie. Externe toegang bieden tot on-premises apps met toepassings proxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803294"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764822"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Eenmalige aanmelding via SAML voor on-premises toepassingen met toepassings proxy
 
@@ -74,7 +74,7 @@ Voordat u SSO voor on-premises toepassingen kunt bieden, moet u toepassings prox
 
 2. Ga in de pagina **eenmalige aanmelding met SAML instellen** naar de kop basis- **SAML-configuratie** en selecteer het **bewerkings** pictogram (een potlood). Zorg ervoor dat de **externe URL** die u in de toepassings proxy hebt geconfigureerd, is ingevuld in de velden **id**, **antwoord-URL**en **afmeldings-URL** . Deze Url's zijn vereist voor een juiste werking van de toepassings proxy. 
 
-3. Bewerk de **antwoord-URL** die u eerder hebt geconfigureerd zodat het domein bereikbaar is op Internet via de toepassings proxy. Als uw **externe URL** `https://contosotravel-f128.msappproxy.net` bijvoorbeeld is en de oorspronkelijke antwoord- **URL** was `https://contosotravel.com/acs`, moet u de oorspronkelijke **antwoord-URL** bijwerken naar. `https://contosotravel-f128.msappproxy.net/acs`
+3. Bewerk de **antwoord-URL** die u eerder hebt geconfigureerd zodat het domein bereikbaar is op Internet via de toepassings proxy. Als uw **externe URL** bijvoorbeeld is `https://contosotravel-f128.msappproxy.net` en de oorspronkelijke antwoord- **URL** was `https://contosotravel.com/acs` , moet u de oorspronkelijke **antwoord-URL** bijwerken naar `https://contosotravel-f128.msappproxy.net/acs` .
 
     ![Elementaire SAML-configuratie gegevens invoeren](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

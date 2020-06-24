@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: fb493154f81eb5ab63ed9593479356fe89552211
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678253"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694705"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Voor geheugen geoptimaliseerde dv2-en Dsv2-serie
 
-Dv2 en Dsv2-Series, een follow-on voor de oorspronkelijke D-serie, bevat een krachtigere CPU. DSv2-serie-grootten worden uitgevoerd op Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors. De Dv2-serie heeft dezelfde geheugen- en schijfconfiguraties als de D-serie.
+Dv2 en Dsv2-Series, een follow-on voor de oorspronkelijke D-serie, bevat een krachtigere CPU. DSv2-serie grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake), de Intel® Xeon-® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors. De Dv2-serie heeft dezelfde geheugen- en schijfconfiguraties als de D-serie.
 
 ## <a name="dv2-series-11-15"></a>Dv2-serie 11-15
 
-Dv2-serie-grootten worden uitgevoerd op Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors.
+Dv2-serie grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake), de Intel® Xeon-® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors.
 
 ACU: 210 - 250
 
@@ -41,7 +41,7 @@ Premium Storage caching: niet ondersteund
 
 ## <a name="dsv2-series-11-15"></a>DSv2-serie 11-15
 
-DSv2-serie-grootten worden uitgevoerd op Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors.
+DSv2-serie grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake), de Intel® Xeon-® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors.
 
 ACU: 210-250 <sup>1</sup>
 

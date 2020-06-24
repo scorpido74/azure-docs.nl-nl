@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254688"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694838"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple Snapshot Manager gebruiken om verbinding te maken en StorSimple-apparaten te beheren
 ## <a name="overview"></a>Overzicht
@@ -166,7 +166,7 @@ U moet een wacht woord invoeren om een StorSimple-apparaat te verifiëren met St
 
 #### <a name="to-change-the-expired-password"></a>Het verlopen wacht woord wijzigen
 1. Start de StorSimple Manager-service in de klassieke Azure-Portal.
-2. Klik op **apparaten** > **configureren** voor het apparaat.
+2. Klik op **apparaten**  >  **configureren** voor het apparaat.
 3. Schuif omlaag naar de sectie StorSimple Snapshot Manager. Voer een wacht woord in van 14-15 tekens. Zorg ervoor dat het wacht woord een combi natie van hoofd letters, kleine letters, cijfers en speciale tekens bevat.
 4. Voer het wacht woord opnieuw in om dit te bevestigen.
 5. Klik op **Opslaan** onder aan de pagina.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77566320"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764975"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Een query uitvoeren op georuimtelijke gegevens met Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Dit artikel bevat informatie over het opvragen van georuimtelijke gegevens in Az
 
 Hier volgt een lijst met georuimtelijke systeem functies die nuttig zijn voor het uitvoeren van query's in Azure Cosmos DB:
 
-|**Belasting**|**Beschrijving**|
+|**Gebruik**|**Beschrijving**|
 |---|---|
 | ST_DISTANCE (spatial_expr, spatial_expr) | Retourneert de afstand tussen de twee GeoJSON Point-, Polygon- of LineString-expressies.|
 |ST_WITHIN (spatial_expr, spatial_expr) | Retourneert een Booleaanse expressie die aangeeft of het eerste GeoJSON-object (Point, Polygon of LineString) zich bevindt in het tweede GeoJSON-object (punt, Polygon of LineString).|
@@ -29,17 +29,17 @@ Hier volgt een lijst met georuimtelijke systeem functies die nuttig zijn voor he
 |ST_ISVALID| Retourneert een Booleaanse waarde die aangeeft of de opgegeven GeoJSON Point-, Polygon- of LineString-expressie geldig is.|
 | ST_ISVALIDDETAILED| Retourneert een JSON-waarde met een Booleaanse waarde als de opgegeven geojson Point-, veelhoek-of lines Tring-expressie geldig is. Als dit ongeldig is, wordt de reden geretourneerd als een teken reeks waarde.|
 
-Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren op ruimtelijke gegevens. Dit is bijvoorbeeld een query waarmee alle familie documenten worden geretourneerd die binnen 30 km van de opgegeven locatie vallen met behulp `ST_DISTANCE` van de ingebouwde functie.
+Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren op ruimtelijke gegevens. Dit is bijvoorbeeld een query waarmee alle familie documenten worden geretourneerd die binnen 30 km van de opgegeven locatie vallen met behulp van de `ST_DISTANCE` ingebouwde functie.
 
-**Query’s uitvoeren**
+**Query**
 
 ```sql
     SELECT f.id
     FROM Families f
-    WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
+    WHERE ST_DISTANCE(f.location, {"type": "Point", "coordinates":[31.9, -4.8]}) < 30000
 ```
 
-**Resultaten**
+**Results**
 
 ```json
     [{
@@ -53,18 +53,18 @@ Als u ruimtelijke indexeringen opneemt in het indexerings beleid, worden ' query
 
 Veelhoek argumenten in `ST_WITHIN` kunnen slechts één ring bevatten, dat wil zeggen dat de veelhoeken geen gaten mogen bevatten.
 
-**Query’s uitvoeren**
+**Query**
 
 ```sql
     SELECT *
     FROM Families f
     WHERE ST_WITHIN(f.location, {
-        'type':'Polygon',
-        'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
+        "type":"Polygon",
+        "coordinates": [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 ```
 
-**Resultaten**
+**Results**
 
 ```json
     [{
@@ -79,15 +79,15 @@ Veelhoek argumenten in `ST_WITHIN` kunnen slechts één ring bevatten, dat wil z
 
 Azure Cosmos DB biedt ook ondersteuning voor het uitvoeren van inverse query's, dat wil zeggen, u kunt veelhoeken of lijnen indexeren in Azure Cosmos DB en vervolgens een query uitvoeren voor de gebieden die een opgegeven punt bevatten. Dit patroon wordt vaak gebruikt in logistiek om te identificeren, bijvoorbeeld wanneer een truck een aangewezen gebied binnengaat of verlaat.
 
-**Query’s uitvoeren**
+**Query**
 
 ```sql
     SELECT *
     FROM Areas a
-    WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
+    WHERE ST_WITHIN({"type": "Point", "coordinates":[31.9, -4.8]}, a.location)
 ```
 
-**Resultaten**
+**Results**
 
 ```json
     [{
@@ -101,13 +101,13 @@ Azure Cosmos DB biedt ook ondersteuning voor het uitvoeren van inverse query's, 
 
 `ST_ISVALID`en `ST_ISVALIDDETAILED` kan worden gebruikt om te controleren of een ruimtelijk object geldig is. Met de volgende query wordt bijvoorbeeld de geldigheid van een punt met de waarde voor de breedte van een buiten bereik (-132,8) gecontroleerd. `ST_ISVALID`retourneert een Boole-waarde en `ST_ISVALIDDETAILED` retourneert de Boolean en een teken reeks met de reden waarom deze als ongeldig wordt beschouwd.
 
-**Query’s uitvoeren**
+**Query**
 
 ```sql
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ```
 
-**Resultaten**
+**Results**
 
 ```json
     [{
@@ -115,9 +115,9 @@ Azure Cosmos DB biedt ook ondersteuning voor het uitvoeren van inverse query's, 
     }]
 ```
 
-Deze functies kunnen ook worden gebruikt om veelhoeken te valideren. Hier gebruiken `ST_ISVALIDDETAILED` we bijvoorbeeld voor het valideren van een veelhoek die niet is gesloten.
+Deze functies kunnen ook worden gebruikt om veelhoeken te valideren. Hier gebruiken we bijvoorbeeld `ST_ISVALIDDETAILED` voor het valideren van een veelhoek die niet is gesloten.
 
-**Query’s uitvoeren**
+**Query**
 
 ```sql
     SELECT ST_ISVALIDDETAILED({ "type": "Polygon", "coordinates": [[ 
@@ -125,7 +125,7 @@ Deze functies kunnen ook worden gebruikt om veelhoeken te valideren. Hier gebrui
         ]]})
 ```
 
-**Resultaten**
+**Results**
 
 ```json
     [{
@@ -138,9 +138,9 @@ Deze functies kunnen ook worden gebruikt om veelhoeken te valideren. Hier gebrui
 
 ## <a name="linq-querying-in-the-net-sdk"></a>LINQ-query's in de .NET SDK
 
-De SQL .NET SDK heeft ook betrekking op `Distance()` stub `Within()` -methoden en voor gebruik binnen LINQ-expressies. De SQL LINQ-provider zet deze methode om naar de equivalente SQL ingebouwde functie aanroepen (ST_DISTANCE en ST_WITHIN respectievelijk).
+De SQL .NET SDK heeft ook betrekking op stub-methoden `Distance()` en `Within()` voor gebruik binnen LINQ-expressies. De SQL LINQ-provider zet deze methode om naar de equivalente SQL ingebouwde functie aanroepen (ST_DISTANCE en ST_WITHIN respectievelijk).
 
-Hier volgt een voor beeld van een LINQ-query waarmee alle documenten in de Azure Cosmos- `location` container worden gevonden waarvan de waarde binnen een straal van 30 km van het opgegeven punt valt met behulp van LINQ.
+Hier volgt een voor beeld van een LINQ-query waarmee alle documenten in de Azure Cosmos-container worden gevonden waarvan `location` de waarde binnen een straal van 30 km van het opgegeven punt valt met behulp van LINQ.
 
 **LINQ-query voor afstand**
 

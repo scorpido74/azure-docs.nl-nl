@@ -4,15 +4,15 @@ description: Netwerklimiet verhoogd
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76547740"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764262"
 ---
 # <a name="networking-limit-increase"></a>Netwerklimiet verhoogd
 
@@ -37,7 +37,7 @@ Volg de onderstaande instructies om een ondersteunings aanvraag te maken met beh
 
     ![Help en ondersteuning](./media/networking-quota-request/help-plus-support.png)
 
-1. Selecteer een **nieuwe ondersteunings aanvraag**.
+1. Selecteer **Nieuwe ondersteuningsaanvraag**.
 
     ![Nieuw ondersteuningsverzoek](./media/networking-quota-request/new-support-request.png)
 
@@ -69,9 +69,9 @@ Volg de onderstaande instructies om een ondersteunings aanvraag te maken met beh
 
 Volg deze instructies om een ondersteunings aanvraag te maken met behulp van **gebruik en quotum** in de Azure Portal.
 
-1. In https://portal.azure.comkunt u **abonnementen**zoeken en selecteren.
+1. In https://portal.azure.com kunt u **abonnementen**zoeken en selecteren.
 
-    ![Subscriptions](./media/networking-quota-request/search-for-suscriptions.png)
+    ![Abonnementen](./media/networking-quota-request/search-for-suscriptions.png)
 
 1. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
 

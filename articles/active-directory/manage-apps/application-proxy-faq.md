@@ -3,24 +3,24 @@ title: Veelgestelde vragen over Azure AD-toepassingsproxy | Microsoft Docs
 description: Hier vindt u antwoorden op veelgestelde vragen over het gebruik van Azure AD-toepassingsproxy voor het publiceren van interne, on-premises toepassingen naar externe gebruikers.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 454412bc20fef1a10a51e027b52b6d54df52e6c0
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583078"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764601"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -65,7 +65,7 @@ Er is geen reden voor. Een globale beheerder of een beheerders account voor de t
 Er zijn prestatie meter items die samen met de connector worden geïnstalleerd. Als u deze wilt weergeven:  
 
 1. Selecteer **Start**, typ ' perfmon ' en druk op ENTER.
-2. Selecteer **prestatie meter** en klik op het **+** groene pictogram.
+2. Selecteer **prestatie meter** en klik op het groene **+** pictogram.
 3. Voeg de **micro soft Aad Application proxy connector** -items toe die u wilt bewaken.
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Moet de Azure AD-toepassingsproxy-connector zich in hetzelfde subnet bevinden als de resource?
@@ -152,7 +152,7 @@ Nee. Azure AD-toepassingsproxy is ontworpen voor gebruik met Azure AD en voldoet
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>Werkt WebSocket ondersteuning voor andere toepassingen dan QlikSense?
 
-WebSocket-protocol ondersteuning is momenteel nog steeds beschikbaar in de open bare preview-versie en werkt mogelijk niet voor andere toepassingen. Sommige klanten hebben het gebruik van WebSocket-protocol met andere toepassingen gemende. Als u dergelijke scenario's test, zullen we uw resultaten graag horen. Stuur ons uw feedback op aadapfeedback@microsoft.com.
+WebSocket-protocol ondersteuning is momenteel nog steeds beschikbaar in de open bare preview-versie en werkt mogelijk niet voor andere toepassingen. Sommige klanten hebben het gebruik van WebSocket-protocol met andere toepassingen gemende. Als u dergelijke scenario's test, zullen we uw resultaten graag horen. Stuur ons uw feedback op aadapfeedback@microsoft.com .
 
 Functies (gebeurtenis logboeken, Power shell en Extern bureaublad-services) in Windows-beheer centrum (WAC) of Extern bureaublad web client (HTML5) werken niet via Azure AD-toepassingsproxy.
 

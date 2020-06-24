@@ -1,8 +1,8 @@
 ---
-title: Controle van SQL Managed instance
+title: SQL Managed Instance-controle
 description: Meer informatie over hoe u aan de slag kunt met Azure SQL Managed instance auditing met behulp van T-SQL
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 03d296b9525b2f3afb3eb5a1692b72aa8556fd0f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6599963b216409103f72b4e46a30961c6d60e32c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219792"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695552"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Aan de slag met controle van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -40,7 +40,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
       > [!IMPORTANT]
       > - Gebruik een opslag account in dezelfde regio als het beheerde exemplaar om Lees-en schrijf bewerkingen in meerdere regio's te voor komen. 
       > - Als uw opslag account zich achter een Virtual Network of een firewall bevindt, kunt u [toegang verlenen via een virtueel netwerk](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-a-virtual-network).
-      > - Als u de retentie periode van 0 (onbeperkte retentie) wijzigt naar een andere waarde, moet u er rekening mee houden dat bewaren alleen van toepassing is op Logboeken die zijn geschreven nadat de Bewaar waarde is gewijzigd (de logboeken die zijn geschreven tijdens de periode waarin retentie is ingesteld op onbeperkt, blijven behouden, zelfs nadat de retentie is ingeschakeld).
+      > - Als u de retentieperiode van 0 (onbeperkte retentie) wijzigt in een andere waarde, moet u er rekening mee houden dat retentie alleen van toepassing is op logboeken die zijn geschreven nadat de waarde is gewijzigd, (logboeken die zijn geschreven tijdens de periode waarin de retentie was ingesteld op onbeperkt, blijven behouden, zelfs nadat retentie is ingeschakeld).
 
    1. Ga in het opslag account naar **overzicht** en klik op **blobs**.
 

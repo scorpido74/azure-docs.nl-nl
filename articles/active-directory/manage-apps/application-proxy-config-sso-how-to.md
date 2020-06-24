@@ -3,32 +3,32 @@ title: Eenmalige aanmelding configureren voor een toepassings proxy-app
 description: Hoe u eenmalige aanmelding voor uw toepassings proxy toepassing snel kunt configureren
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/12/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589b3e51f27147f0a0432b61c22a024c202e388b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76712015"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764941"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Eenmalige aanmelding configureren voor een toepassings proxy toepassing
 
 Met eenmalige aanmelding (SSO) kunnen uw gebruikers toegang krijgen tot een toepassing zonder dat er meerdere keren worden geverifieerd. Hiermee kan de ene verificatie worden uitgevoerd in de Cloud, op basis van Azure Active Directory, en kan de service of connector de gebruiker imiteren om aanvullende verificatie uitdagingen van de toepassing te volt ooien.
 
 ## <a name="how-to-configure-single-sign-on"></a>Eenmalige aanmelding configureren
-Als u SSO wilt configureren, moet u eerst controleren of uw toepassing is geconfigureerd voor verificatie vooraf via Azure Active Directory. Als u deze configuratie wilt uitvoeren, gaat u naar **Azure Active Directory**  - &gt; **Enter prise-toepassingen**  - &gt; **alle toepassingen**  - &gt; van de toepassings ** - &gt; proxy**van uw toepassing. Op deze pagina ziet u het veld pre-verificatie en zorgt u ervoor dat is ingesteld op Azure Active Directory. 
+Als u SSO wilt configureren, moet u eerst controleren of uw toepassing is geconfigureerd voor verificatie vooraf via Azure Active Directory. Als u deze configuratie wilt uitvoeren, gaat u naar **Azure Active Directory**  - &gt; **Enter prise-toepassingen**  - &gt; **alle toepassingen** van  - &gt; de toepassings ** - &gt; proxy**van uw toepassing. Op deze pagina ziet u het veld pre-verificatie en zorgt u ervoor dat is ingesteld op Azure Active Directory. 
 
 Zie stap 4 van het [app-publicatie document](application-proxy-add-on-premises-application.md)voor meer informatie over de pre-verificatie methoden.
 

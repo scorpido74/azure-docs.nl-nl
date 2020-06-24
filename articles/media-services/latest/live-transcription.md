@@ -12,33 +12,69 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 06/12/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193614"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765009"
 ---
 # <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
 
 De Azure media-service levert video, audio en tekst in verschillende protocollen. Wanneer u uw Live Stream publiceert met MPEG-DASH of HLS/CMAF en vervolgens video en audio, levert onze service de getranscribeerde tekst in IMSC 1.1 compatibele TTML. De levering is verpakt in fragmenten van MPEG-4 Part 30 (ISO/IEC 14496-30). Als u levering via HLS/TS gebruikt, wordt de tekst geleverd als gesegmenteerde VTT.
 
-In dit artikel wordt beschreven hoe u live transcriptie inschakelt bij het streamen van een live-gebeurtenis met Azure Media Services v3. Voordat u doorgaat, moet u ervoor zorgen dat u bekend bent met het gebruik van Media Services v3 REST-Api's (Zie [deze zelf studie](stream-files-tutorial-with-rest.md) voor meer informatie). U moet ook vertrouwd zijn met het concept van [live streamen](live-streaming-overview.md) . Het is raadzaam om de [stroom Live met Media Services](stream-live-tutorial-with-api.md) zelf studie uit te voeren.
+Er worden extra kosten in rekening gebracht wanneer Live transcriptie is ingeschakeld. Bekijk de prijs informatie in het gedeelte live video van de [pagina met Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/).
 
-> [!NOTE]
-> Live transcriptie is momenteel alleen beschikbaar als preview-functie in de regio vs-West 2. Het ondersteunt transcriptie van gesp roken woorden in het Engels naar tekst. De API-verwijzing voor deze functie bevindt zich hieronder: met is in de preview-versie, de details zijn niet beschikbaar met onze REST documenten.
+In dit artikel wordt beschreven hoe u live transcriptie inschakelt bij het streamen van een live-gebeurtenis met Azure Media Services. Voordat u doorgaat, moet u ervoor zorgen dat u bekend bent met het gebruik van Media Services v3 REST-Api's (Zie [deze zelf studie](stream-files-tutorial-with-rest.md) voor meer informatie). U moet ook vertrouwd zijn met het concept van [live streamen](live-streaming-overview.md) . Het is raadzaam om de [stroom Live met Media Services](stream-live-tutorial-with-api.md) zelf studie uit te voeren.
 
-## <a name="creating-the-live-event"></a>De live-gebeurtenis maken
+## <a name="live-transcription-preview-regions-and-languages"></a>Regio's en talen voor de preview-versie van Live transcriptie
 
-Als u de live-gebeurtenis wilt maken, verzendt u de PUT-bewerking naar de 2019-05-01-preview-versie, bijvoorbeeld:
+Live transcriptie is beschikbaar in de volgende regio's:
+
+- Azië - zuidoost
+- Europa -west
+- Europa - noord
+- VS - oost
+- VS - centraal
+- VS - zuid-centraal
+- VS - west 2
+- Brazilië - zuid
+
+Dit is de lijst met beschik bare talen die kunnen worden getranscribeerd. Gebruik de taal code in de API.
+
+| Taal | Taalcode |
+| -------- | ------------- |
+| Catalaans  | ca-ES |
+| Deens (Denemarken) | da-DK |
+| Duits (Duitsland) | de-DE |
+| Engels (Australië) | en-AU |
+| Engels (Canada) | en-CA |
+| Engels (Verenigd Koninkrijk) | en-GB |
+| Engels (India) | en-IN |
+| Engels (Nieuw-Zeeland) | en-NZ |
+| Engels (Verenigde Staten) | nl-NL |
+| Spaans (Spanje) | es-ES |
+| Spaans (Mexico) | es-MX |
+| Fins (Finland) | fi-FI |
+| Frans (Canada) | FR-CA |
+| Frans (Frankrijk) | fr-FR |
+| Italiaans (Italië) | it-IT |
+| Nederlands (Nederland) | nl-NL |
+| Portugees (Brazilië) | pt-BR |
+| Portugees (Portugal) | pt-PT |
+| Zweeds (Zweden) | sv-SE |
+
+## <a name="create-the-live-event-with-live-transcription"></a>De live-gebeurtenis met Live-transcriptie maken
+
+Als u een live gebeurtenis wilt maken waarbij de transcriptie is ingeschakeld, verzendt u de PUT-bewerking met de API-versie 2019-05-01-preview, bijvoorbeeld:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-De bewerking heeft de volgende hoofd tekst (waarbij een Pass-through live-gebeurtenis wordt gemaakt met RTMP als het opname Protocol). Let op de toevoeging van een eigenschap transcripties. De enige toegestane waarde voor de taal en-US.
+De bewerking heeft de volgende hoofd tekst (waarbij een Pass-through live-gebeurtenis wordt gemaakt met RTMP als het opname Protocol). Let op de toevoeging van een eigenschap transcripties.
 
 ```
 {
@@ -88,14 +124,14 @@ De bewerking heeft de volgende hoofd tekst (waarbij een Pass-through live-gebeur
 }
 ```
 
-U kunt de status van de live-gebeurtenis navragen totdat deze wordt uitgevoerd in de status ' running ', wat aangeeft dat u nu een Contribute-bijdrage-feed verzendt. U kunt nu dezelfde stappen volgen als in deze zelf studie, zoals het controleren van de preview-feed en het maken van live uitvoer.
+## <a name="start-or-stop-transcription-after-the-live-event-has-started"></a>Transcriptie starten of stoppen nadat de live-gebeurtenis is gestart
 
-## <a name="start-transcription-after-live-event-has-started"></a>Transcriptie starten na starten van live gebeurtenis
+U kunt live transcriptie starten en stoppen terwijl de live-gebeurtenis actief is. Meer informatie over het starten en stoppen van live events vindt u in de sectie langlopende bewerkingen bij het [ontwikkelen met Media Services v3-api's](media-services-apis-overview.md#long-running-operations).
 
-Live transcriptie kan worden gestart nadat een live gebeurtenis is gestart. Als u live transcripties wilt inschakelen, patcht u de live-gebeurtenis om de eigenschap ' transcripties ' op te slaan. Als u live-transcripties wilt uitschakelen, wordt de eigenschap ' transcripties ' verwijderd uit het Live Event-object.
+Als u live transcripties wilt inschakelen of de transcriptie wilt bijwerken, patcht u de live-gebeurtenis om een eigenschap transcripties toe te voegen. Als u live transcripties wilt uitschakelen, verwijdert u de eigenschap ' transcripties ' uit het Live Event-object.  
 
 > [!NOTE]
-> Het is niet mogelijk om de transcriptie in of uit te scha kelen tijdens de live-gebeurtenis.
+> Het is niet mogelijk om de transcriptie in **of uit te scha kelen tijdens** de live-gebeurtenis.
 
 Dit is de voor beeld-oproep om live-transcripties in te scha kelen.
 
@@ -160,10 +196,8 @@ Raadpleeg het [overzicht van dynamische](dynamic-packaging-overview.md#to-prepar
 
 Voor de preview-versie zijn de volgende bekende problemen met Live-transcriptie:
 
-* De functie is alleen beschikbaar in VS-West 2.
-* Apps moeten de preview-Api's gebruiken, zoals beschreven in de [Media Services v3 OpenAPI-specificatie](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json).
-* De enige ondersteunde taal is Engels (en-US).
-* Met Content Protection wordt alleen AES-envelop versleuteling ondersteund.
+- Apps moeten de preview-Api's gebruiken, zoals beschreven in de [Media Services v3 OpenAPI-specificatie](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json).
+- DRM-beveiliging (Digital Rights Management) is niet van toepassing op de tekst track, alleen AES-envelop versleuteling is mogelijk.
 
 ## <a name="next-steps"></a>Volgende stappen
 

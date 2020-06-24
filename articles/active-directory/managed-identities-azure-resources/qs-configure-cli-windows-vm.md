@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f2efaceefc53b3c0b5dfd899baf9fd30fdf9a76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c2a33da3ca2b9f4416b63066b580d46cb82da85
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244145"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693971"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Beheerde identiteiten configureren voor Azure-resources op een Azure-VM met behulp van Azure CLI
 
@@ -35,7 +35,7 @@ In dit artikel, met behulp van de Azure CLI, leert u hoe u de volgende beheerde 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#managed-identity-types)**.
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 - Als u de CLI-script voorbeelden wilt uitvoeren, hebt u drie opties:
     - Gebruik [Azure Cloud shell](../../cloud-shell/overview.md) van de Azure Portal (zie volgende sectie).
@@ -67,7 +67,7 @@ Als u een Azure-VM wilt maken met de door het systeem toegewezen beheerde identi
    az group create --name myResourceGroup --location westus
    ```
 
-3. Maak een VM met [az vm create](/cli/azure/vm/#az-vm-create). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gemaakt met een door het systeem toegewezen `--assign-identity` beheerde identiteit, zoals aangevraagd door de para meter. Met de parameters `--admin-username` en `--admin-password` worden de naam van de gebruiker met beheerdersrechten en het wachtwoord van het account voor aanmelding bij de virtuele machine opgegeven. Werk deze waarden bij met waarden die geschikt zijn voor uw omgeving: 
+3. Maak een VM met [az vm create](/cli/azure/vm/#az-vm-create). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gemaakt met een door het systeem toegewezen beheerde identiteit, zoals aangevraagd door de `--assign-identity` para meter. Met de parameters `--admin-username` en `--admin-password` worden de naam van de gebruiker met beheerdersrechten en het wachtwoord van het account voor aanmelding bij de virtuele machine opgegeven. Werk deze waarden bij met waarden die geschikt zijn voor uw omgeving: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
@@ -147,7 +147,7 @@ Voor het toewijzen van een door de gebruiker toegewezen identiteit aan een virtu
    }
    ```
 
-3. Maak een VM met [az vm create](/cli/azure/vm/#az-vm-create). In het volgende voor beeld wordt een VM gemaakt die is gekoppeld aan de nieuwe door de gebruiker toegewezen `--assign-identity` identiteit, zoals opgegeven door de para meter. Vervang de parameterwaarden `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` en `<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden. 
+3. Maak een VM met [az vm create](/cli/azure/vm/#az-vm-create). In het volgende voor beeld wordt een VM gemaakt die is gekoppeld aan de nieuwe door de gebruiker toegewezen identiteit, zoals opgegeven door de `--assign-identity` para meter. Vervang de parameterwaarden `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` en `<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden. 
 
    ```azurecli-interactive 
    az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY NAME>
@@ -157,7 +157,7 @@ Voor het toewijzen van een door de gebruiker toegewezen identiteit aan een virtu
 
 Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moet uw account de roltoewijzingen van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en de rollen voor de [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
 
-1. Maak een door de gebruiker toegewezen identiteit met [az identity create](/cli/azure/identity#az-identity-create).  De `-g` para meter geeft de resource groep op waarin de door de gebruiker toegewezen identiteit wordt gemaakt `-n` en de para meter geeft de naam op. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden:
+1. Maak een door de gebruiker toegewezen identiteit met [az identity create](/cli/azure/identity#az-identity-create).  De `-g` para meter geeft de resource groep op waarin de door de gebruiker toegewezen identiteit wordt gemaakt en de `-n` para meter geeft de naam op. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<USER ASSIGNED IDENTITY NAME>` door uw eigen waarden:
 
     > [!IMPORTANT]
     > Het is momenteel niet mogelijk om door de gebruiker toegewezen beheerde identiteiten te maken met speciale tekens (zoals een onderstrepings teken) in de naam. Gebruik alfanumerieke tekens. Controleer later op updates.  Zie [Veelgestelde vragen en bekende problemen](known-issues.md) voor meer informatie
@@ -182,7 +182,7 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
    }
    ```
 
-2. Wijs de door de gebruiker toegewezen identiteit toe aan uw virtuele machine met [AZ VM Identity Assign](/cli/azure/vm). Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VM NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY NAME>` is de eigenschap resource `name` van de door de gebruiker toegewezen beheerde identiteit, zoals deze is gemaakt in de vorige stap:
+2. Wijs de door de gebruiker toegewezen identiteit toe aan uw virtuele machine met [AZ VM Identity Assign](/cli/azure/vm). Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VM NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY NAME>` is de eigenschap resource van de door de gebruiker toegewezen beheerde identiteit `name` , zoals deze is gemaakt in de vorige stap:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
@@ -192,7 +192,7 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
 
 Als u een door de gebruiker toegewezen identiteit wilt verwijderen naar een virtuele machine, moet uw account de roltoewijzing van de [virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben. 
 
-Als dit de enige door de gebruiker toegewezen beheerde identiteit is toegewezen aan de virtuele machine `UserAssigned` , wordt deze verwijderd uit de waarde voor het identiteits type.  Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VM NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY>` is de `name` eigenschap van de door de gebruiker toegewezen identiteit, die u kunt vinden in de sectie identiteit van de virtuele machine `az vm identity show`met behulp van:
+Als dit de enige door de gebruiker toegewezen beheerde identiteit is toegewezen aan de virtuele machine, `UserAssigned` wordt deze verwijderd uit de waarde voor het identiteits type.  Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VM NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY>` is de eigenschap van de door de gebruiker toegewezen identiteit `name` , die u kunt vinden in de sectie identiteit van de virtuele machine met behulp van `az vm identity show` :
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

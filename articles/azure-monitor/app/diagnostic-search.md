@@ -4,11 +4,11 @@ description: Zoek en filter ruwe telemetriegegevens die zijn verzonden door uw w
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275982"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695654"
 ---
 # <a name="using-search-in-application-insights"></a>Zoeken in Application Insights gebruiken
 
@@ -56,12 +56,12 @@ Open de vervolg keuzelijst gebeurtenis typen en kies de gebeurtenis typen die u 
 
 De gebeurtenis typen zijn:
 
-* **Spoor** - [Diagnostische logboeken](../../azure-monitor/app/asp-net-trace-logs.md) op, waaronder TrackTrace-, log4Net-, NLog-en System. Diagnostic. trace-aanroepen.
+* **Traceren**  -  [Diagnostische logboeken](../../azure-monitor/app/asp-net-trace-logs.md) , waaronder TrackTrace-, log4Net-, NLog-en System. Diagnostics. trace-aanroepen.
 * **Aanvraag** -HTTP-aanvragen die door uw server toepassing worden ontvangen, waaronder pagina's, scripts, afbeeldingen, stijl bestanden en gegevens. Deze gebeurtenissen worden gebruikt voor het maken van de aanvraag-en antwoord overzichts diagrammen.
-* **Page View** - [De telemetrie van de pagina weergave die wordt verzonden door de webclient](../../azure-monitor/app/javascript.md), die wordt gebruikt om pagina weergave rapporten te maken.
+* **Pagina weergave**  -  [Telemetrie verzonden door de webclient](../../azure-monitor/app/javascript.md), die wordt gebruikt om pagina weergave rapporten te maken.
 * **Aangepaste gebeurtenis** : als u aanroepen naar track Event () hebt ingevoegd om het [gebruik te controleren](../../azure-monitor/app/api-custom-events-metrics.md), kunt u deze hier zoeken.
 * **Uitzonde ring** -niet-onderschepte [uitzonde ringen in de server](../../azure-monitor/app/asp-net-exceptions.md)en die u registreert met behulp van TrackException ().
-* **Afhankelijkheids** - [aanroepen van uw server toepassing](../../azure-monitor/app/asp-net-dependencies.md) naar andere services, zoals rest api's of data bases en Ajax-aanroepen vanuit uw [client code](../../azure-monitor/app/javascript.md).
+* **Afhankelijkheid**  -  [Aanroepen van uw server toepassing](../../azure-monitor/app/asp-net-dependencies.md) naar andere services, zoals rest api's of data bases en Ajax-aanroepen vanuit uw [client code](../../azure-monitor/app/javascript.md).
 * **Beschik baarheid** -resultaten van [beschikbaarheids testen](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filteren op eigenschaps waarden

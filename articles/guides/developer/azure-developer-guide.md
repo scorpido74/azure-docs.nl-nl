@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245003"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695076"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
@@ -80,7 +80,7 @@ Vanwege het beheer niveau dat u met Vm's hebt, kunt u een groot aantal server we
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (serverloos)
 
-In plaats van dat u zich zorgen hoeft te maken over het bouwen en beheren van een hele toepassing of de infra structuur om uw code uit te voeren, wat als u uw code gewoon zou schrijven en deze laten uitvoeren als reactie op gebeurtenissen of volgens een planning?  [Azure functions](../../azure-functions/functions-overview.md) is een ' serverloze ' aanbieding waarmee u alleen de code kunt schrijven die u nodig hebt. Met functions kunt u code-uitvoering activeren met HTTP-aanvragen, webhooks, Cloud service gebeurtenissen of volgens een planning. U kunt code in uw door u gewenste programmeer taal gebruiken, zoals\#C,\#F, node. js, python of php. Met facturering op basis van verbruik betaalt u alleen voor de tijd dat uw code wordt uitgevoerd en Azure wordt geschaald als dat nodig is.
+In plaats van dat u zich zorgen hoeft te maken over het bouwen en beheren van een hele toepassing of de infra structuur om uw code uit te voeren, wat als u uw code gewoon zou schrijven en deze laten uitvoeren als reactie op gebeurtenissen of volgens een planning?  [Azure functions](../../azure-functions/functions-overview.md) is een ' serverloze ' aanbieding waarmee u alleen de code kunt schrijven die u nodig hebt. Met functions kunt u code-uitvoering activeren met HTTP-aanvragen, webhooks, Cloud service gebeurtenissen of volgens een planning. U kunt code in uw door u gewenste programmeer taal gebruiken, zoals C \# , F \# , Node.js, PYTHON of php. Met facturering op basis van verbruik betaalt u alleen voor de tijd dat uw code wordt uitgevoerd en Azure wordt geschaald als dat nodig is.
 
 > **Wanneer gebruiken**: gebruik Azure functions wanneer u code hebt die wordt geactiveerd door andere Azure-Services, op webgebaseerde gebeurtenissen of op basis van een schema. U kunt ook functies gebruiken wanneer u de overhead van een volledig gehost project niet nodig hebt of wanneer u alleen wilt betalen voor de tijd dat uw code wordt uitgevoerd. Zie [Azure functions-overzicht](../../azure-functions/functions-overview.md)voor meer informatie.
 >
@@ -96,7 +96,7 @@ Azure Service Fabric is een platform voor gedistribueerde systemen. Met dit plat
 * Installeert
 * Bewaking
 * Bijwerken/patchen
-* Verwijder
+* Verwijderen
 
 Apps, die worden uitgevoerd op een gedeelde groep machines, kunnen klein worden gestart en zo nodig worden geschaald naar honderden of duizenden machines.
 
@@ -260,7 +260,7 @@ Naast REST Api's kunt u met veel Azure-Services ook programmatisch resources van
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
--   [OK](https://docs.microsoft.com/azure/go)
+-   [Go](https://docs.microsoft.com/azure/go)
 
 Services als [Mobile apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) en [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) sdk's aan de client zijde om u toegang te geven tot services van web-en mobiele client-apps.
 
