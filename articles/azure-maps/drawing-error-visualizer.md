@@ -3,17 +3,17 @@ title: Fout visualiseren bij het gebruik van Azure Maps-tekening
 description: In dit artikel vindt u informatie over het visualiseren van waarschuwingen en fouten die zijn geretourneerd door de API voor het converteren van ontwikkel aars.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681948"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791113"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Fout visualiseren met behulp van de Azure Maps voor het tekenen van fouten
 
@@ -58,16 +58,16 @@ In deze zelf studie wordt gebruikgemaakt van de toepassing [postman](https://www
 
 In het gedownloade gezipte pakket van de `diagnosticPackageLocation` koppeling vindt u twee bestanden.
 
-* _VisualizationTool. zip_: bevat de bron code, het medium en de webpagina voor de fout visualer voor het tekenen van een tekening.
-* _ConversionWarningsAndErrors. json_: bevat een lijst met waarschuwingen, fouten en aanvullende details die worden gebruikt door de tekening fout visualiseren.
+* _VisualizationTool.zip_: bevat de bron code, de media en de webpagina voor de fout visualer voor het tekenen van een tekening.
+* _ConversionWarningsAndErrors.jsop_: bevat een lijst met waarschuwingen, fouten en aanvullende details die worden gebruikt door de tekening fout visualiseren.
 
-Pak de map _VisualizationTool. zip_ uit. Het bevat de volgende items:
+Unzip de map _VisualizationTool.zip_ . Het bevat de volgende items:
 
 * _assets_ map: bevat afbeeldingen en media bestanden
 * _statische_ map: bron code
-* _index. html-_ bestand: de webtoepassing.
+* _index.html_ -bestand: de webtoepassing.
 
-Open het bestand _index. html_ in een van de onderstaande browsers, met het desbetreffende versie nummer. U kunt een andere versie gebruiken als de versie een even compatibel gedrag biedt als de vermelde versie.
+Open het bestand _index.html_ met een van de volgende browsers, met het desbetreffende versie nummer. U kunt een andere versie gebruiken als de versie een even compatibel gedrag biedt als de vermelde versie.
 
 * Micro soft Edge 80
 * Safari 13
@@ -78,15 +78,15 @@ Open het bestand _index. html_ in een van de onderstaande browsers, met het desb
 
 Nadat u het hulp programma voor het visualiseren van de teken fouten hebt gestart, wordt de upload pagina weer gegeven. De upload pagina bevat een slepen-en-neerzetten-vak. Het selectie vakje slepen & wordt ook functions als knop waarmee een Verkenner-dialoog venster wordt gestart.
 
-![Fout bij het visualiseren van de app-start pagina van de tekening](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="Fout bij het visualiseren van de app-start pagina van de tekening":::
 
-Het bestand _ConversionWarningsAndErrors. json_ bevindt zich in de hoofdmap van de gedownloade map. Als u de _ConversionWarningsAndErrors. json_ wilt laden, kunt u het bestand slepen & neerzetten naar het vak of klikken op het vak, het bestand zoeken in het dialoog venster bestanden Verkenner en het bestand vervolgens uploaden.
+De _ConversionWarningsAndErrors.jsin_ het bestand is geplaatst in de hoofdmap van de gedownloade map. Als u de _ConversionWarningsAndErrors.jsop_ wilt laden, kunt u slepen & het bestand neerzetten op het vak of klikken op het vak, het bestand in het dialoog venster bestanden Verkenner zoeken en het bestand vervolgens uploaden.
 
-![Fout bij het visualiseren van fouten met de app-slepen en neerzetten om gegevens te laden](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Fout bij het visualiseren van fouten met de app-slepen en neerzetten om gegevens te laden":::
 
-Zodra het bestand _ConversionWarningsAndErrors. json_ is geladen, ziet u een lijst met fouten en waarschuwingen in de teken pakketten. Elke fout of waarschuwing wordt opgegeven door de laag, het niveau en een gedetailleerd bericht. U kunt nu naar elke fout navigeren voor meer informatie over het oplossen van de fout.  
+Zodra de _ConversionWarningsAndErrors.jsvoor_ het laden van bestanden wordt weer gegeven, ziet u een lijst met fouten en waarschuwingen in het tekening pakket. Elke fout of waarschuwing wordt opgegeven door de laag, het niveau en een gedetailleerd bericht. Als u gedetailleerde informatie over een fout of waarschuwing wilt weer geven, klikt u op de koppeling **Details** . Een sectie die kan worden tegengevoerd, wordt weer gegeven onder de lijst. U kunt nu naar elke fout navigeren voor meer informatie over het oplossen van de fout.
 
-![Fout bij het visualiseren van problemen met app-fouten en waarschuwingen](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Fout bij het visualiseren van problemen met app-fouten en waarschuwingen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

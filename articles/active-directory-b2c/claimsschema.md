@@ -48,7 +48,7 @@ Het element **claim** type bevat het volgende kenmerk:
 
 Het element **claim** type bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
 | DataType | 1:1 | Het type claim. |
@@ -66,7 +66,7 @@ PredicateValidationReference| 0:1 | Een verwijzing naar een **PredicateValidatio
 
 Het **Data type** -element ondersteunt de volgende waarden:
 
-| Type | Beschrijving |
+| Type | Description |
 | ------- | ----------- |
 |booleaans|Vertegenwoordigt een Booleaanse `true` waarde (of `false` ).|
 |date| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
@@ -84,7 +84,7 @@ Het **Data type** -element ondersteunt de volgende waarden:
 
 De **DefaultPartnerClaimTypes** kan het volgende element bevatten:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Protocol | 1: n | Lijst met protocollen met de standaard type naam van de partner claim. |
 
@@ -171,7 +171,7 @@ Het **beperkings** element kan het volgende kenmerk bevatten:
 
 Het **beperkings** element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Inventarisatie | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
 | Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
@@ -243,7 +243,7 @@ Azure AD B2C ondersteunt diverse invoer typen voor gebruikers, zoals een tekstva
 
 Het **UserInputType** -element beschik bare invoer typen voor gebruikers:
 
-| UserInputType | Ondersteunde claim type | Beschrijving |
+| UserInputType | Ondersteunde claim type | Description |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Vervolg keuzelijst meervoudige selectie. De claim waarde wordt weer gegeven in een komma als scheidings teken reeks van de geselecteerde waarden. |
 |DateTimeDropdown | `date`, `dateTime` |Vervolg keuzelijst om een dag, maand en jaar te selecteren. |

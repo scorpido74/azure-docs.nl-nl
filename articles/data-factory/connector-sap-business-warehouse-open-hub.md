@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418079"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771016"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Gegevens kopiëren van SAP Business Warehouse via open hub met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -53,9 +53,9 @@ SAP BW open hub Destination (OHD) definieert het doel waarnaar de SAP-gegevens w
 
 ## <a name="delta-extraction-flow"></a>Delta-extractie stroom
 
-ADF SAP BW open hub-connector biedt twee optionele eigenschappen `excludeLastRequest` : `baseRequestId` en die kunnen worden gebruikt voor het afhandelen van de Delta belasting van open hub. 
+ADF SAP BW open hub-connector biedt twee optionele eigenschappen: `excludeLastRequest` en `baseRequestId` die kunnen worden gebruikt voor het afhandelen van de Delta belasting van open hub. 
 
-- **excludeLastRequestId**: Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. De standaard waarde is True. 
+- **excludeLastRequestId**: Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. De standaardwaarde is Waar. 
 - **baseRequestId**: de id van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam groter dan die van deze eigenschap. 
 
 Over het algemeen bestaat de extractie van SAP InfoProviders naar Azure Data Factory (ADF) uit twee stappen: 
@@ -107,16 +107,20 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van SAP 
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapOpenHub** | Ja |
-| server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | Ja |
-| systemNumber | Systeem nummer van het SAP BW systeem.<br/>Toegestane waarde: decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja |
-| clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja |
+| type | De eigenschap type moet worden ingesteld op: **SapOpenHub** | Yes |
+| server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | Yes |
+| systemNumber | Systeem nummer van het SAP BW systeem.<br/>Toegestane waarde: decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Yes |
+| messageServer | De hostnaam van de SAP-berichten server.<br/>Gebruiken om verbinding te maken met een SAP-berichten server. | No |
+| messageServerService | De service naam of het poort nummer van de berichten server.<br/>Gebruiken om verbinding te maken met een SAP-berichten server. | No |
+| systemId | De ID van het SAP-systeem waarin de tabel zich bevindt.<br/>Gebruiken om verbinding te maken met een SAP-berichten server. | No |
+| logonGroup | De aanmeldings groep voor het SAP-systeem.<br/>Gebruiken om verbinding te maken met een SAP-berichten server. | No |
+| clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Yes |
 | language | De taal die door het SAP-systeem wordt gebruikt. | Nee (standaard waarde is **en**)|
-| userName | De naam van de gebruiker die toegang heeft tot de SAP-server. | Ja |
-| wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
+| userName | De naam van de gebruiker die toegang heeft tot de SAP-server. | Yes |
+| wachtwoord | Het wachtwoord voor de gebruiker. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Yes |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -149,12 +153,12 @@ Als u gegevens wilt kopiëren van en naar SAP BW geopende hub, stelt u de eigens
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **SapOpenHubTable**.  | Ja |
-| openHubDestinationName | De naam van het open hub-doel waaruit de gegevens moeten worden gekopieerd. | Ja |
+| type | De eigenschap type moet worden ingesteld op **SapOpenHubTable**.  | Yes |
+| openHubDestinationName | De naam van het open hub-doel waaruit de gegevens moeten worden gekopieerd. | Yes |
 
 Als u de instelling `excludeLastRequest` en `baseRequestId` in de gegevensset hebt ingesteld, wordt deze nog steeds ondersteund als-is. u wordt aangeraden het nieuwe model in de activiteit bron te gebruiken.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -183,16 +187,16 @@ Als u gegevens wilt kopiëren van SAP BW geopende hub, worden de volgende eigens
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SapOpenHubSource**. | Ja |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SapOpenHubSource**. | Yes |
 | excludeLastRequest | Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. | Nee (standaard waarde is **waar**) |
-| baseRequestId | De ID van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam **groter dan** die van deze eigenschap.  | Nee |
+| baseRequestId | De ID van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam **groter dan** die van deze eigenschap.  | No |
 
 >[!TIP]
 >Als uw open hub-tabel alleen de gegevens bevat die zijn gegenereerd op basis van een enkele aanvraag-ID, kunt u bijvoorbeeld altijd volledige belasting doen en de bestaande gegevens in de tabel overschrijven, of u kunt de DTP slechts eenmaal uitvoeren voor de test, de optie ' excludeLastRequest ' uitschakelen om de gegevens uit te kunnen kopiëren.
 
-Als u het laden van gegevens wilt versnellen, kunt [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) u de Kopieer activiteit zo instellen dat gegevens van SAP BW hub parallel worden geladen. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, Data Factory gelijktijdig vier rfc's-aanroepen uitvoeren en elke RFC-aanroep haalt een deel van de gegevens op uit uw SAP BW open hub Table gepartitioneerd door de DTP-aanvraag-id en de pakket-id. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + pakket-ID groter is dan de `parallelCopies`waarde van. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het ook opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval zijn de prestaties beter dan het schrijven naar één bestand.
+Als u het laden van gegevens wilt versnellen, kunt u [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) de Kopieer activiteit zo instellen dat gegevens van SAP BW hub parallel worden geladen. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, Data Factory gelijktijdig vier rfc's-aanroepen uitvoeren en elke RFC-aanroep haalt een deel van de gegevens op uit uw SAP BW open hub Table gepartitioneerd door de DTP-aanvraag-id en de pakket-id. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + pakket-ID groter is dan de waarde van `parallelCopies` . Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het ook opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval zijn de prestaties beter dan het schrijven naar één bestand.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -233,7 +237,7 @@ Bij het kopiëren van gegevens uit SAP BW geopende hub, worden de volgende toewi
 |:--- |:--- |
 | C (teken reeks) | Tekenreeks |
 | I (geheel getal) | Int32 |
-| F (float) | Double |
+| F (float) | Dubbel |
 | D (datum) | Tekenreeks |
 | T (tijd) | Tekenreeks |
 | P (door BCD verpakt, valuta, decimaal, hoeveelheid) | Decimal |

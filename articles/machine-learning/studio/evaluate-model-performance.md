@@ -1,35 +1,39 @@
 ---
-title: Model prestaties evalueren
+title: '& modellen van meerdere validaties evalueren'
 titleSuffix: ML Studio (classic) - Azure
-description: Meer informatie over het evalueren van de prestaties van modellen in Azure Machine Learning Studio (klassiek) en over de metrische gegevens die beschikbaar zijn voor deze taak.
+description: Meer informatie over de metrische gegevens die u kunt gebruiken om de model prestaties in Azure Machine Learning Studio (klassiek) te bewaken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bd6c291cd703d56f86dc26c041eb39023bba0578
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118441"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945100"
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Model prestaties in Azure Machine Learning Studio evalueren (klassiek)
+# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Prestaties van model in Azure Machine Learning Studio evalueren (klassiek)
 
-In dit artikel wordt gedemonstreerd hoe u de prestaties van een model in Azure Machine Learning Studio kunt evalueren (klassiek) en geeft u een korte uitleg van de metrische gegevens die voor deze taak beschikbaar zijn. Er worden drie veelvoorkomende leer scenario's weer gegeven: 
+In dit artikel vindt u meer informatie over de metrische gegevens die u kunt gebruiken om de model prestaties in Azure Machine Learning Studio (klassiek) te bewaken.  Het evalueren van de prestaties van een model is een van de belangrijkste fasen in het data Science-proces. Hiermee wordt aangegeven hoe de Score (voor spellingen) van een gegevensset is geslaagd door een getraind model. Azure Machine Learning Studio (klassiek) ondersteunt model evaluatie via twee van de belangrijkste machine learning modules: 
++ [Model evalueren][evaluate-model] 
++ [Model kruislings valideren][cross-validate-model]
 
+Met deze modules kunt u zien hoe uw model presteert volgens een aantal metrische gegevens die vaak worden gebruikt in machine learning en statistieken.
+
+Het evalueren van modellen moet worden overwogen in combi natie met:
++ [Para meters optimaliseren voor algoritmen](algorithm-parameters-optimize.md)
++ [Interpreteerbaarheid van modellen](interpret-model-results.md)
+
+Er worden drie veelvoorkomende leer scenario's weer gegeven: 
 * regressie
 * binaire classificatie 
 * classificatie met meer klassen
 
-
-
-Het evalueren van de prestaties van een model is een van de belangrijkste fasen in het data Science-proces. Hiermee wordt aangegeven hoe de Score (voor spellingen) van een gegevensset is geslaagd door een getraind model. 
-
-Azure Machine Learning Studio (klassiek) ondersteunt model evaluatie via twee van de belangrijkste machine learning modules: [Evalueer model][evaluate-model] en [model voor meerdere validaties][cross-validate-model]. Met deze modules kunt u zien hoe uw model presteert volgens een aantal metrische gegevens die vaak worden gebruikt in machine learning en statistieken.
 
 ## <a name="evaluation-vs-cross-validation"></a>Evaluatie versus Kruis validatie
 Evaluatie en kruis validatie zijn standaard manieren om de prestaties van uw model te meten. Ze genereren zowel evaluatie gegevens die u kunt controleren of vergelijken met die van andere modellen.
@@ -46,7 +50,7 @@ Stel dat we de prijs van een auto willen voors pellen met behulp van functies zo
 ### <a name="creating-the-experiment"></a>Het experiment maken
 Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
-* Prijs gegevens auto Mobile (onbewerkt)
+* Autoprijsgegevens (onbewerkt)
 * [Lineaire regressie][linear-regression]
 * [Model trainen][train-model]
 * [Score Model][score-model]
@@ -88,7 +92,7 @@ In een scenario met een binaire indeling heeft de doel variabele slechts twee mo
 ### <a name="creating-the-experiment"></a>Het experiment maken
 Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
-* Gegevensset opbrengst binaire classificatie volwassene
+* Gegevensset Binaire classificatie voor volwassen Census-inkomen
 * [Logistieke regressie met twee klassen][two-class-logistic-regression]
 * [Model trainen][train-model]
 * [Score Model][score-model]

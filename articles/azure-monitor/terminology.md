@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274136"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691813"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor naamgevings-en terminologie wijzigingen
 Er zijn belang rijke wijzigingen aangebracht in Azure Monitor recent, waarbij verschillende services worden geconsolideerd om de controle van Azure-klanten te vereenvoudigen. In dit artikel worden de recente naam en terminologie wijzigingen in Azure Monitor documentatie beschreven.
@@ -49,7 +49,7 @@ Operations Management Suite (OMS) is een bundeling van de volgende Azure Managem
 - Azure Automation
 - Azure Backup
 - Log Analytics
-- Site Recovery
+- Siteherstel
 
 Er zijn [nieuwe prijzen geïntroduceerd voor deze services](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)en de OMS-bundel is niet langer beschikbaar voor nieuwe klanten. Geen van de services die deel uitmaken van OMS, zijn gewijzigd, met uitzonde ring van de consolidatie in Azure Monitor hierboven beschreven. 
 

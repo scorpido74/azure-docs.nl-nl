@@ -3,12 +3,12 @@ title: Concepten-persoonlijke Clouds en clusters
 description: Meer informatie over de belangrijkste mogelijkheden van Azure VMware-software-gedefinieerde data centers en vSphere-clusters in VMware-oplossing in azure op VMware.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f51b76b654a43d690aa5c97fa9df99fad1f47d7a
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740380"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906986"
 ---
 # <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware-oplossing (AVS) voor beeld van persoonlijke Cloud en cluster concepten
 
@@ -51,7 +51,7 @@ De huidige software versies van de VMware-software die in de automatische AVS-Cl
 | VCSA/vSphere/ESXi |    6,7 U2    | 
 | ESXi                  |    6,7 U2    | 
 | vSAN                  |    6,7 U2    |
-| NSX-T                 |      2,5     |
+| NSX-T                 |      2.5     |
 
 Voor elk nieuw cluster in een privécloud komt de versie van de software overeen met wat er momenteel wordt uitgevoerd in de privécloud. Voor elke nieuwe privécloud in een klant abonnement is de nieuwste versie van de software stack geïnstalleerd.
 
@@ -61,10 +61,10 @@ Het algemene upgrade beleid en de processen voor de software van het AVS-platfor
 
 Host onderhoud en levenscyclus beheer worden uitgevoerd zonder gevolgen voor de capaciteit of prestaties van particuliere cloud clusters. Voor beelden van automatische host onderhoud zijn onder andere firmware-upgrades en reparaties of vervangingen van hardware.
 
-Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T-randen. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van de privécloud van uw AVS bent u verantwoordelijk voor de configuratie van NSX-T SDN, zoals netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
+Micro soft is verantwoordelijk voor het levenscyclus beheer van NSX-T-apparaten, zoals NSX-T-beheer en NSX-T EDGE. Micro soft is ook verantwoordelijk voor het Boots trappen van de netwerk configuratie, zoals het maken van de laag-0-gateway en het inschakelen van Noord-Zuid-route ring. Als beheerder van de privécloud van uw AVS bent u verantwoordelijk voor de configuratie van NSX-T SDN, zoals netwerk segmenten, gedistribueerde firewall regels, laag 1-gateways en load balancers.
 
 > [!IMPORTANT]
-> Een AVS-beheerder mag de configuratie van NSX-T-randen of tier-0-gateway niet wijzigen. Dit kan leiden tot een verlies van de service.
+> Een AVS-beheerder mag de configuratie van NSX-T-rand of tier-0-gateway niet wijzigen. Dit kan leiden tot een verlies van de service.
 
 ## <a name="backup-and-restoration"></a>Back-ups maken en herstellen
 

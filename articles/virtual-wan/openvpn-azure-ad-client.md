@@ -4,17 +4,17 @@ description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met beh
 services: vpn-gateway
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/27/2020
 ms.author: alzam
-ms.openlocfilehash: edb509d43742aeecf74107ae8cb625aeafbccb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b717e4f5f91e22ea3aef818e15be1c93ca06b4f4
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385621"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750464"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocol verbindingen: Azure AD-verificatie
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocolverbindingen: Azure Active Directory-verificatie
 
 Dit artikel helpt u bij het configureren van een VPN-client om verbinding te maken met een virtueel netwerk met behulp van punt-naar-site-VPN en Azure Active Directory-verificatie. Voordat u verbinding kunt maken met en verifiëren met Azure AD, moet u eerst uw Azure AD-Tenant configureren. Zie [een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)voor meer informatie.
 
@@ -56,11 +56,11 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Markeer het VPN-client profiel dat u wilt exporteren, selecteer de **...** en selecteer vervolgens **exporteren**.
 
-    ![gegevensexporttabel](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![exporteren](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Selecteer de locatie waar u dit profiel wilt opslaan, behoud de bestands naam en selecteer vervolgens **Opslaan** om het XML-bestand op te slaan.
 
-    ![gegevensexporttabel](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![exporteren](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>Een client profiel importeren
 
@@ -96,7 +96,7 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Een verbinding maken
 
-1. Selecteer **+** op de pagina en vervolgens **+ toevoegen**.
+1. Selecteer op de pagina **+** en vervolgens **+ toevoegen**.
 
     ![verbinding](./media/openvpn-azure-ad-client/create/create1.jpg)
 
@@ -122,19 +122,19 @@ Met deze stappen kunt u de verbinding configureren om automatisch verbinding te 
 
 1. Selecteer op de start pagina voor uw VPN-client de optie **VPN-instellingen**.
 
-    ![Auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Selecteer **Ja** in het dialoog venster apps overschakelen.
 
-    ![Auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Controleer of de verbinding die u wilt instellen nog niet is verbonden en selecteer vervolgens het profiel en schakel het selectie vakje **automatisch verbinding maken** in.
 
-    ![Auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Selecteer **verbinding maken** om de VPN-verbinding te initiëren.
 
-    ![Auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Problemen met de verbinding vaststellen
 
@@ -158,7 +158,7 @@ Met deze stappen kunt u de verbinding configureren om automatisch verbinding te 
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Hoe kan ik DNS-achtervoegsels toevoegen aan de VPN-client?
 
-U kunt het gedownloade XML-profiel bestand wijzigen en de ** \< \<dnssuffixes>\<dnssufix> \</dnssufix>/dnssuffixes>** -Tags toevoegen
+U kunt het gedownloade XML-profiel bestand wijzigen ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** en de Tags toevoegen
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ U kunt het gedownloade XML-profiel bestand wijzigen en de ** \< \<dnssuffixes>\<
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Hoe kan ik aangepaste DNS-servers toevoegen aan de VPN-client?
 
-U kunt het gedownloade XML-profiel bestand wijzigen en de ** \< \<dnsservers>\<dnsserver> \</dnsserver>/dnsservers>** -Tags toevoegen
+U kunt het gedownloade XML-profiel bestand wijzigen ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** en de Tags toevoegen
 
 ```
 <azvpnprofile>
@@ -192,12 +192,12 @@ U kunt het gedownloade XML-profiel bestand wijzigen en de ** \< \<dnsservers>\<d
 ```
 
 > [!NOTE]
-> De OpenVPN Azure AD-client maakt gebruik van NRPT-vermeldingen (DNS Name Resolution Policy Table), wat betekent dat de DNS-servers niet `ipconfig /all`worden vermeld onder de uitvoer van. Raadpleeg [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in Power shell om uw DNS-instellingen in gebruik te bevestigen.
+> De OpenVPN Azure AD-client maakt gebruik van NRPT-vermeldingen (DNS Name Resolution Policy Table), wat betekent dat de DNS-servers niet worden vermeld onder de uitvoer van `ipconfig /all` . Raadpleeg [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in Power shell om uw DNS-instellingen in gebruik te bevestigen.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hoe kan ik aangepaste routes toevoegen aan de VPN-client?
 
-U kunt het gedownloade XML-profiel bestand wijzigen ** \<en de \<includeroutes>\<route toevoegen \<>doel \<>masker \<>/Destination \<>/Mask \<>/route>/includeroutes>** Tags
+U kunt het gedownloade XML-profiel bestand wijzigen ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** en de Tags toevoegen
 
 ```
 <azvpnprofile>
@@ -215,7 +215,7 @@ U kunt het gedownloade XML-profiel bestand wijzigen ** \<en de \<includeroutes>\
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Hoe kan ik blok keren (uitsluiten) routes van de VPN-client?
 
-U kunt het gedownloade XML-profiel bestand wijzigen ** \<en de \<excluderoutes>\<route toevoegen \<>doel \<>masker \<>/Destination \<>/Mask \<>/route>/excluderoutes>** Tags
+U kunt het gedownloade XML-profiel bestand wijzigen ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** en de Tags toevoegen
 
 ```
 <azvpnprofile>

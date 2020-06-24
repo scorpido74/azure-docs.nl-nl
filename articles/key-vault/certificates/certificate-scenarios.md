@@ -3,19 +3,18 @@ title: Aan de slag gaan met Key Vault-certificaten
 description: De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431941"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765094"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Aan de slag gaan met Key Vault-certificaten
 De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
@@ -97,13 +96,19 @@ Opmerking: dit proces, tot en met stap 3,1, is een eenmalige-bewerking.
 -   De gebruiker kan ook het beleid bewerken, wat functioneel is op het moment van importeren, maar bevat standaard instellingen waar geen informatie is opgegeven bij het importeren. Bijvoorbeeld geen uitgevers gegevens  
 
 ### <a name="formats-of-import-we-support"></a>Indelingen van het importeren die we ondersteunen
+Azure Key Vault ondersteunt. pem-en pfx-certificaat bestanden voor het importeren van certificaten in de sleutel kluis.
 Het volgende type import voor de PEM-bestands indeling wordt ondersteund. Eén PEM-gecodeerd certificaat, samen met een PKCS # 8-gecodeerde, niet-versleutelde sleutel met de volgende
 
 -----BEGIN CERTIFICAAT----------EIND CERTIFICAAT-----
 
 -----BEGIN PERSOONLIJKE SLEUTEL----------LAATSTE PERSOONLIJKE SLEUTEL-----
 
-Bij het samen voegen van certificaten ondersteunen we 2 PEM-gebaseerde notaties. U kunt één PKCS # 8-gecodeerd certificaat of een Base64 Encoded P7B-bestand samen voegen. -----BEGIN CERTIFICAAT----------EIND CERTIFICAAT-----
+Wanneer u het certificaat importeert, moet u ervoor zorgen dat de sleutel is opgenomen in het bestand zelf. Als u de persoonlijke sleutel afzonderlijk in een andere indeling hebt, moet u de sleutel combi neren met het certificaat. Sommige certificerings instanties bieden certificaten in verschillende indelingen, dus voordat u het certificaat importeert, moet u ervoor zorgen dat ze de indeling. pem of. pfx hebben. 
+
+### <a name="formats-of-merge-csr-we-support"></a>Indelingen van het samen voegen van CSR die worden ondersteund
+Azure ondersteunt twee op PEM gebaseerde notaties. U kunt één PKCS # 8-gecodeerd certificaat of een base64-gecodeerd P7B (keten van certificaten die zijn ondertekend door CA) samen voegen 
+
+-----BEGIN CERTIFICAAT----------EIND CERTIFICAAT-----
 
 We ondersteunen momenteel geen EC-sleutels in de PEM-indeling.
 
@@ -123,4 +128,3 @@ We ondersteunen momenteel geen EC-sleutels in de PEM-indeling.
   (4): de gekozen certificerings instantie reageert met een x509-certificaat.  
 
   (5): uw toepassing heeft het maken van het nieuwe certificaat voltooid met een fusie van het x509-certificaat van uw certificerings instantie.
-

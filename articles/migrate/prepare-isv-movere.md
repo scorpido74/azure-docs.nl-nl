@@ -2,13 +2,13 @@
 title: Azure Migrate voorbereiden om met een ISV-hulp programma te werken/overzetten
 description: In dit artikel wordt beschreven hoe u Azure Migrate voorbereidt op samen werking met een ISV-hulp programma of door te verplaatsen, en hoe u het hulp programma kunt gebruiken.
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9513e783d4f9d7be83f1434d4dd9011844af8993
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682647"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770370"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Bereid u voor op het werken met een ISV-hulp programma of-overwerker
 
@@ -37,7 +37,19 @@ Uw account heeft in uw Azure-abonnement **micro soft. Authorization/*/write** Ac
 2. Selecteer het betreffende abonnement. Als u deze niet ziet, selecteert u het **Filter globale abonnementen**. 
 3. Selecteer **Mijn machtigingen**. Selecteer vervolgens **Klik hier om de volledige toegangs gegevens voor dit abonnement weer te geven**.
 4. **Role assignments**  >  Controleer in de**weer gave**roltoewijzingen de machtigingen. Als uw account geen machtigingen heeft, vraagt u de abonnements beheerder om u toe te voegen aan de rol van [beheerder voor gebruikers toegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) of de rol [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) .
- 
+
+## <a name="allow-access-to-urls"></a>Toegang tot URL's toestaan
+
+Toegang tot de open bare Cloud-Url's in de tabel toestaan voor ISV-hulpprogram ma's en Azure data base Migration Assistant. Als u een op URL gebaseerde proxy gebruikt om verbinding te maken met internet, moet u ervoor zorgen dat de proxy alle CNAME-records verhelpt die zijn ontvangen tijdens het opzoeken van de Url's. 
+
+**URL** | **Details**
+--- | ---
+*.portal.azure.com  | Ga naar Azure Portal. 
+*.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *. live.com   | Meld u aan bij uw Azure-abonnement. 
+*.microsoftonline.com<br/> *.microsoftonline-p.com | Maak Azure Active Directory (AD)-apps voor het apparaat om te communiceren met Azure Migrate. 
+management.azure.com | Azure Resource Manager aanroepen naar het Azure Migrate-project maken.
+*.servicebus.windows.net | Communicatie tussen het apparaat en de EventHub voor het verzenden van de berichten.
+
 
 ## <a name="start-using-the-tool"></a>Beginnen met het gebruik van het hulp programma
 

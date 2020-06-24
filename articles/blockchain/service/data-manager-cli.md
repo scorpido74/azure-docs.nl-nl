@@ -79,7 +79,7 @@ Voor beeld van JSON-configuratie voor het maken van een Block chain manager-exem
 }
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 |---------|-------------|
 | location | Regio waar de Watcher-resource moet worden gemaakt |
 | properties | Eigenschappen die moeten worden ingesteld bij het maken van de Watcher-resource |
@@ -147,7 +147,7 @@ Configuratie-JSON-voor beeld voor het maken van een invoer bron in de regio *VS 
 }
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 |---------|-------------|
 | location | De regio waar de invoer bron wordt gemaakt. |
 | Type | Het grootboek type van het lid van de Azure Block Chain-service. Momenteel wordt **Ethereum** ondersteund. |
@@ -219,7 +219,7 @@ Voor beeld van JSON-configuratie om een uitvoer bron te maken in de regio *VS-Oo
 }
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 |---------|-------------|
 | location | De regio waar de uitvoer bron wordt gemaakt. |
 | Type | Type uitvoer. Momenteel wordt **EventGrid** ondersteund. |
@@ -301,7 +301,7 @@ Configuratie-JSON-voor beeld om een toepassings bron te maken in de regio *VS-Oo
 }
 ```
 
-| Element | Beschrijving |
+| Element | Description |
 |---------|-------------|
 | location | De regio waar de toepassings resource moet worden gemaakt. |
 | artifactType | Type toepassing. Momenteel wordt **EthereumSmartContract** ondersteund. |

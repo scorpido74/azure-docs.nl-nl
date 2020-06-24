@@ -1,21 +1,21 @@
 ---
-title: Advisor-gegevens in azure resource Graph
+title: Advisor-gegevens in Azure Resource Graph
 description: Query's voor Advisor-gegevens maken in azure resource Graph
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: f8ad8fd450bc004d9caa2699922717f38d38b482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79502449"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117831"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Query's uitvoeren voor Advisor-gegevens in resource Graph Explorer (Azure resource Graph)
 
 Advisor-resources zijn nu onboarding naar [Azure resource Graph](https://azure.microsoft.com/features/resource-graph/). Dit legt voor een groot aantal klanten scenario's op schaal voor Advisor-aanbevelingen. Er zijn enkele scenario's die niet mogelijk waren voor op de juiste schaal en nu kunnen worden bereikt met resource grafiek:
 * Biedt de mogelijkheid om complexe query's uit te voeren voor al uw abonnementen in Azure Portal
-* Aanbevelingen die worden samenvatten op categorie typen (zoals hoge Beschik baarheid, prestaties) en impact typen (hoog, gemiddeld, laag)
+* Aanbevelingen die worden samenvatten op categorie typen (zoals betrouw baarheid, prestaties) en impact typen (hoog, gemiddeld, laag)
 * Alle aanbevelingen voor een bepaald type aanbeveling
 * Categorie aantal beïnvloede resources per aanbeveling
 
@@ -37,7 +37,8 @@ Deze resource typen worden weer gegeven onder een nieuwe tabel met de naam Advis
 Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Azure Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen van Advisor met betrekking tot kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)

@@ -1,5 +1,5 @@
 ---
-title: Fouten opsporen in een AI-vaardigheidset (preview-versie)
+title: Concepten van debug-sessies (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Het opsporen van sessies, die toegankelijk zijn via de Azure Portal, biedt een IDE-achtige omgeving waarin u fouten kunt identificeren en herstellen, wijzigingen moet valideren en wijzigingen in de vaardig heden in de AI-verrijkings pijplijn naar een andere pusht. Debug-sessies is in preview.
 manager: nitinme
@@ -8,19 +8,19 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664065"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751539"
 ---
-# <a name="debug-sessions"></a>Sessies voor fout opsporing
+# <a name="debug-sessions-in-azure-cognitive-search"></a>Sessies voor fout opsporing in azure Cognitive Search
 
 Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen naar een productie vaardighedenset pushen in de AI-verrijkings pijplijn.
 
 > [!Important]
-> De ondersteuning voor fout opsporing voor Azure Cognitive Search is als een preview-versie beschikbaar [op aanvraag](https://aka.ms/DebugSessions) . Preview-functies zijn beschikbaar zonder service level agreement en worden niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ondersteuning van foutopsporing voor Azure Cognitive Search is beschikbaar [op aanvraag](https://aka.ms/DebugSessions) als preview-versie met beperkte toegang. Preview-functies zijn beschikbaar zonder service level agreement en worden niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
 > Zodra u toegang tot de preview hebt gekregen, kunt u foutopsporingssessie voor de service openen en gebruiken met behulp van de Azure Portal.
 
@@ -72,12 +72,12 @@ Wanneer een mogelijk probleem wordt geïdentificeerd, worden in de uitvoerings g
 
 Wanneer u een aangepaste vaardigheid bouwt of een fout opspoort met een aangepaste vaardigheid, is er een optie voor het genereren van een aanvraag voor het aanroepen van een kwalificatie in de uitvoerings geschiedenis.
 
-## <a name="enriched-data-structure"></a>Verrijkte gegevens structuur
+## <a name="enriched-data-structure"></a>Verrijkte gegevensstructuur
 
 In het deel venster **verrijkte gegevens structuur** worden de verrijkingen van het document via de vaardig heden weer gegeven, met een gedetailleerde beschrijving van de context voor elke verrijking en de oorspronkelijke vaardigheid. De **expressie-evaluator** kan ook worden gebruikt om de inhoud van elke verrijking weer te geven.
 
 > [!div class="mx-imgBorder"]
-> ![Verrijkte gegevens structuur](media/cognitive-search-debug/enriched-data-structure-display.png)
+> ![Verrijkte gegevensstructuur](media/cognitive-search-debug/enriched-data-structure-display.png)
 
 ## <a name="expression-evaluator"></a>Expressie-Evaluator
 

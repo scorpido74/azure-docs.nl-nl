@@ -8,23 +8,23 @@ author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474923"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737356"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Detectie van binnendringing van het netwerk met Network Watcher en open source-hulpprogram ma's uitvoeren
 
 Pakket opnames zijn een belang rijk onderdeel voor het implementeren van indringings detectie systemen (ID'S) voor netwerk beveiliging en het uitvoeren van netwerk beveiligings bewaking (NSM). Er zijn verschillende open source-id-hulpprogram ma's die pakket opnames verwerken en zoeken naar hand tekeningen van mogelijke netwerk indringers en schadelijke activiteiten. Met behulp van de pakket opnames van Network Watcher, kunt u uw netwerk analyseren op schadelijke indringers of beveiligings problemen.
 
-Een dergelijk open source-hulp programma is Suricata, een id-engine die gebruikmaakt van rules om netwerk verkeer te bewaken en waarschuwingen te activeren wanneer er verdachte gebeurtenissen optreden. Suricata biedt een multi thread-engine, wat betekent dat IT netwerk verkeer analyse kan uitvoeren met verhoogde snelheid en efficiëntie. Ga voor meer informatie over Suricata en de mogelijkheden ervan naar hun website https://suricata-ids.org/op.
+Een dergelijk open source-hulp programma is Suricata, een id-engine die gebruikmaakt van rules om netwerk verkeer te bewaken en waarschuwingen te activeren wanneer er verdachte gebeurtenissen optreden. Suricata biedt een multi thread-engine, wat betekent dat IT netwerk verkeer analyse kan uitvoeren met verhoogde snelheid en efficiëntie. Ga voor meer informatie over Suricata en de mogelijkheden ervan naar hun website op https://suricata-ids.org/ .
 
 ## <a name="scenario"></a>Scenario
 
@@ -48,7 +48,7 @@ Voor alle andere installatie methoden gaat u naarhttps://suricata.readthedocs.io
     sudo sudo apt-get install suricata
     ```
 
-1. Als u de installatie wilt controleren, voert `suricata -h` u de opdracht uit om de volledige lijst met opdrachten weer te geven.
+1. Als u de installatie wilt controleren, voert u de opdracht uit `suricata -h` om de volledige lijst met opdrachten weer te geven.
 
 ### <a name="download-the-emerging-threats-ruleset"></a>De Rules voor opkomende bedreigingen downloaden
 
@@ -80,7 +80,7 @@ Hoewel de logboeken die Suricata genereren waardevolle informatie bevatten over 
 
 #### <a name="install-elasticsearch"></a>Elasticsearch installeren
 
-1. Voor de elastische stack van versie 5,0 en hoger is Java 8 vereist. Voer de opdracht `java -version` uit om uw versie te controleren. Als Java niet is geïnstalleerd, raadpleegt u de documentatie op de [Azure-Suppored JDKs](https://aka.ms/azure-jdks).
+1. Voor de elastische stack van versie 5,0 en hoger is Java 8 vereist. Voer de opdracht uit `java -version` om uw versie te controleren. Als Java niet is geïnstalleerd, raadpleegt u de documentatie op de [Azure-Suppored JDKs](https://aka.ms/azure-jdks).
 
 1. Down load het juiste binaire pakket voor uw systeem:
 
@@ -125,13 +125,13 @@ Raadpleeg de pagina- [installatie](https://www.elastic.co/guide/en/elasticsearch
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Vervolgens moet u Logstash configureren om te lezen van de uitvoer van het avond. JSON-bestand. Maak een logstash. conf-bestand met behulp van:
+1. Vervolgens moet u Logstash configureren om de uitvoer van eve.jsin het bestand te lezen. Maak een logstash. conf-bestand met behulp van:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Voeg de volgende inhoud toe aan het bestand (zorg ervoor dat het pad naar het bestand avond. json juist is):
+1. Voeg de volgende inhoud toe aan het bestand (zorg ervoor dat het pad naar de eve.jsin het bestand juist is):
 
     ```ruby
     input {
@@ -203,7 +203,7 @@ Raadpleeg de pagina- [installatie](https://www.elastic.co/guide/en/elasticsearch
     }
     ```
 
-1. Zorg ervoor dat u de juiste machtigingen geeft aan het bestand avond. json, zodat het bestand door Logstash kan worden opgenomen.
+1. Zorg ervoor dat u de juiste machtigingen hebt voor de eve.jsin het bestand, zodat het bestand door Logstash kan worden opgenomen.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json

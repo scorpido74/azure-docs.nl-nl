@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 161927e02782a294165b0304c259a63f8336067c
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872125"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118131"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distributie van globale gegevens met Azure Cosmos DB-onder de motorkap
 
 Azure Cosmos DB is een Foundational service in azure, zodat deze wereld wijd wordt geïmplementeerd in alle Azure-regio's, inclusief de open bare, soevereine, ministerie van defensie (DoD) en overheids Clouds. Binnen een Data Center implementeren en beheren we de Azure Cosmos DB op enorme stem pels computers, elk met speciale lokale opslag. Binnen een Data Center wordt Azure Cosmos DB geïmplementeerd in verschillende clusters, waardoor er mogelijk meerdere hardware-generaties worden uitgevoerd. Computers in een cluster zijn doorgaans verdeeld over 10-20-fout domeinen voor hoge Beschik baarheid binnen een regio. In de volgende afbeelding ziet u de Cosmos DB globale distributie systeem topologie:
 
-![Systeem topologie](./media/global-dist-under-the-hood/distributed-system-topology.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distributed-system-topology.png" alt-text="Systeem topologie" border="false":::
 
 **Wereld wijde distributie in azure Cosmos DB is kant** -en-klare: U kunt op elk gewenst moment, met enkele klikken of programmatisch met één API-aanroep, de geografische regio's toevoegen of verwijderen die zijn gekoppeld aan uw Cosmos-data base. Een Cosmos-data base bestaat op zijn beurt uit een set Cosmos-containers. In Cosmos DB fungeren containers als logische eenheden van distributie en schaal baarheid. De verzamelingen, tabellen en grafieken die u maakt, zijn (intern) slechts Cosmos containers. Containers zijn volledig schema-neutraal en bieden een bereik voor een query. Gegevens in een Cosmos-container worden automatisch geïndexeerd bij opname. Met automatisch indexeren kunnen gebruikers de gegevens opvragen zonder dat er problemen zijn met schema-en index beheer, met name in een wereld wijd gedistribueerde configuratie.  
 
@@ -30,7 +30,7 @@ Wanneer een app die Cosmos DB, elastisch de door Voer op een Cosmos-container sc
 
 Zoals in de volgende afbeelding wordt weer gegeven, worden de gegevens binnen een container verdeeld over twee dimensies: binnen een regio en in verschillende regio's, over het hele land.  
 
-![fysieke partities](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fysieke partities" border="false":::
 
 Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde *replicaset*. Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomen met de fysieke partities worden dynamisch geplaatst en gelijkmatig verdeeld over de computers binnen een cluster en data centers binnen een regio.  
 
@@ -52,7 +52,7 @@ Een fysieke partitie wordt gematerialeerd als een met zichzelf beheerde en dynam
 
 Een groep fysieke partities, één van elk geconfigureerd met de Cosmos-database regio's, bestaat uit het beheren van dezelfde set sleutels die worden gerepliceerd in alle geconfigureerde regio's. Deze hogere coördinatie primitieve wordt een *partitieset* genoemd: een geografisch gedistribueerde dynamische overlay van fysieke partities die een bepaalde set sleutels beheert. Terwijl een bepaalde fysieke partitie (een replicaset) binnen een cluster ligt, kan een partitieset clusters, data centers en geografische regio's omvatten, zoals wordt weer gegeven in de onderstaande afbeelding:  
 
-![Partitie sets](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Partitie sets" border="false":::
 
 U kunt een partitie instellen als een geografisch verspreide ' superreplicaset ', die bestaat uit meerdere replica sets die eigenaar zijn van dezelfde set sleutels. Net als bij een replicaset is het lidmaatschap van een partitieset ook dynamisch. Dit kan worden geschommeld op basis van de impliciete bewerkingen voor fysieke partitie beheer om nieuwe partities toe te voegen aan of te verwijderen uit een bepaalde partitieset (bijvoorbeeld wanneer u de door Voer voor een container uitschaalt, een regio aan uw Cosmos-Data Base toevoegt of eruit verwijdert). Omdat elk van de partities (van een partitieset) het lidmaatschap van de partitieset binnen een eigen replicaset beheert, wordt het lidmaatschap volledig gedecentraliseerd en Maxi maal beschikbaar. Tijdens de herconfiguratie van een partitieset wordt ook de topologie van de overlay tussen fysieke partities tot stand gebracht. De topologie wordt dynamisch geselecteerd op basis van het consistentie niveau, de geografische afstand en de beschik bare netwerk bandbreedte tussen de bron-en doel-fysieke partities.  
 

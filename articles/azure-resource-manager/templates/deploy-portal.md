@@ -3,12 +3,12 @@ title: Resources implementeren met Azure Portal
 description: Gebruik Azure Portal en Azure resource Manage om uw resources te implementeren in een resource groep in uw abonnement.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153434"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255259"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Resources implementeren met ARM-sjablonen en Azure Portal
 
@@ -35,13 +35,13 @@ In dit artikel worden beide methoden weer gegeven.
 
 1. Selecteer of voer de volgende eigenschaps waarden in:
 
-    - **Subscription**: selecteer een Azure-abonnement.
+    - **Abonnement**: Selecteer een Azure-abonnement.
     - **Resource groep**: Geef de resource groep een naam.
     - **Regio**: een Azure-locatie opgeven. Dit is de plaats waar de resource groep meta gegevens over de resources opslaat. Voor nalevings redenen wilt u mogelijk opgeven waar de meta gegevens worden opgeslagen. Over het algemeen is het raadzaam om een locatie op te geven waar de meeste resources zich bevinden. Met dezelfde locatie kan uw sjabloon worden vereenvoudigd.
 
    ![Groeps waarden instellen](./media/deploy-portal/set-group-properties.png)
 
-1. Selecteer **controleren + maken**.
+1. Selecteer **Controleren + maken**.
 1. Controleer de waarden en selecteer vervolgens **maken**.
 1. Selecteer **vernieuwen** voordat u de nieuwe resource groep in de lijst kunt zien.
 
@@ -86,7 +86,7 @@ Als u een implementatie wilt uitvoeren maar geen van de sjablonen in de Marketpl
 1. U ziet een aantal opties voor het maken van een sjabloon:
 
     - **Uw eigen sjabloon bouwen in editor**: een sjabloon maken met de sjabloon editor van de portal.  Met de editor kunt u een resource sjabloon schema toevoegen.
-    - **Algemene sjablonen**: er zijn vier algemene sjablonen voor het maken van een virtuele Linux-machine, een virtuele machine van Windows, een webtoepassing en een Azure-SQL database.
+    - **Algemene sjablonen**: er zijn vier algemene sjablonen voor het maken van een virtuele Linux-machine, een virtuele Windows-machine, een webtoepassing en een data base in Azure SQL database.
     - **Een github Quick Start-sjabloon laden**: gebruik een bestaande [Snelstartgids sjablonen](https://azure.microsoft.com/resources/templates/).
 
    ![Opties weer geven](./media/deploy-portal/see-options.png)
@@ -113,12 +113,12 @@ Als u een implementatie wilt uitvoeren maar geen van de sjablonen in de Marketpl
 1. Selecteer **Opslaan**. Nu ziet u de implementatie-interface van de Portal sjabloon. Let op de twee para meters die u in de sjabloon hebt gedefinieerd.
 1. Voer de eigenschaps waarden in of Selecteer deze:
 
-    - **Subscription**: selecteer een Azure-abonnement.
+    - **Abonnement**: Selecteer een Azure-abonnement.
     - **Resource groep**: Selecteer **nieuwe maken** en geef een naam op.
     - **Locatie**: Selecteer een Azure-locatie.
     - **Type opslag account**: gebruik de standaard waarde.
     - **Locatie**: gebruik de standaard waarde.
-    - **Ik ga akkoord met de bovenstaande voorwaarden**: (selecteren)
+    - **Ik ga akkoord met de bovenstaande voor waarden**: (selecteren)
 
 1. Selecteer **Aankoop**.
 

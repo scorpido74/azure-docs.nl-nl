@@ -5,15 +5,15 @@ description: Meer informatie over Azure Virtual WAN-logboeken en-metrische gegev
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7fa5353449db04184c60be79adece63489de0a74
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 4ce5bc3b4e5ccd26ec3f6b35c995ebe2274042c5
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466201"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749728"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Virtuele WAN-logboeken en-metrische gegevens van Azure
 
@@ -87,7 +87,7 @@ De volgende diagnostische gegevens zijn beschikbaar voor Azure Point-to-site VPN
 * **IKE Diagnostische logboeken** : IKE-specifieke diagnostische gegevens voor IPSec-verbindingen.
 * **Diagnostische logboeken voor P2S** : Dit zijn gebruikers VPN (punt-naar-site) P2S configuratie-en client gebeurtenissen. Ze omvatten client verbinding maken/verbreken, adres toewijzing van VPN-client en andere diagnostische gegevens.
 
-### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>Diagnostische logboeken weer geven
+### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>Diagnostische logboeken weergeven
 
 De volgende stappen helpen u bij het zoeken en weer geven van diagnostische gegevens:
 

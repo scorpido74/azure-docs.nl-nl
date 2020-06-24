@@ -3,12 +3,12 @@ title: Aan de slag met Azure Advisor
 description: Aan de slag met Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: f40aa9d3177f251787d60f3087c5f85b6d982b6e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509114"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117859"
 ---
 # <a name="get-started-with-azure-advisor"></a>Aan de slag met Azure Advisor
 
@@ -27,7 +27,7 @@ Meer informatie over het openen van Advisor via de Azure Portal, het ophalen van
 
 1. In het Advisor-dashboard geeft een samenvatting weer van uw aanbevelingen voor alle geselecteerde abonnementen.  U kunt de abonnementen kiezen waarvoor u aanbevelingen wilt weergeven voor het gebruik van de vervolgkeuzelijst met het abonnementsfilter.
 
-1. Als u aanbevelingen voor een specifieke categorie wilt ontvangen, klikt u op een van de tabbladen: **hoge Beschik baarheid**, **beveiliging**, **prestaties**en **kosten**. 
+1. Als u aanbevelingen voor een specifieke categorie wilt ontvangen, klikt u op een van de tabbladen: **betrouw baarheid**, **beveiliging**, **prestaties**of **kosten**. 
 
    ![Azure Advisor dash board](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ De download optie respecteert alle filters die u hebt toegepast op het Advisor-d
 Zie voor meer informatie over Advisor:
 
 - [Inleiding tot Azure Advisor](advisor-overview.md)
-- [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)
+- [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 - [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 - [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 - [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+- [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)

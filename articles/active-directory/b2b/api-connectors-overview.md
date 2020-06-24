@@ -1,23 +1,22 @@
 ---
-title: API-connectors beheren in self-service registratie stromen
-description: API-connectors gebruiken om uw Self-service registratie gebruikers stromen aan te passen en uit te breiden
+title: Over API-connectors in self-service-aanmeld stromen-Azure AD
+description: Gebruik de API-connectors van Azure Active Directory (Azure AD) om uw selfservice registratie gebruikers stromen aan te passen en uit te breiden met behulp van web-Api's.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bb22f5f6c15e326bed2524fbc541cbdec26a70
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 1c5e546c6eac77c4952a0d32d360f49d4251d49d
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680159"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905174"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>API-connectors gebruiken om de Self-Service-aanmelding aan te passen en uit te breiden 
 
@@ -25,8 +24,7 @@ ms.locfileid: "84680159"
 Als ontwikkelaar of IT-beheerder kunt u API-connectors gebruiken voor het integreren van uw [self-service registratie gebruikers stromen](self-service-sign-up-overview.md) met externe systemen door gebruik te maken van web-api's. U kunt bijvoorbeeld API-connectors gebruiken voor het volgende:
 
 - [**Integreren met een aangepaste goedkeurings werk stroom**](self-service-sign-up-add-approvals.md). Maak verbinding met een aangepast goedkeurings systeem voor het maken van accounts.
-<!-- - [**Perform identity proofing**](code-samples-self-service-sign-up.md#identity-proofing). Use an identity proofing and verification service to add an extra level of security to account creation decisions. -->
-- **Voer identiteits controle uit**. Gebruik een service voor identiteits controle en-verificatie om een extra beveiligings niveau toe te voegen aan beslissingen voor het maken van een account.
+- [**Verificatie van de identiteit uitvoeren**](code-samples-self-service-sign-up.md#identity-verification). Gebruik een service voor identiteits verificatie om een extra beveiligings niveau toe te voegen aan beslissingen voor het maken van een account.
 - **Gebruikers invoer gegevens valideren**. Valideer op basis van ongeldige of ongeldige gebruikers gegevens. U kunt bijvoorbeeld door de gebruiker gegeven gegevens valideren op basis van bestaande gegevens in een extern gegevens archief of een lijst met toegestane waarden. Als dit ongeldig is, kunt u een gebruiker vragen om geldige gegevens op te geven of de gebruiker te blok keren om de registratie stroom voort te zetten.
 - **Gebruikers kenmerken overschrijven**. Een waarde opnieuw Format teren of toewijzen aan een kenmerk dat van de gebruiker wordt verzameld. Als een gebruiker bijvoorbeeld de eerste naam in alle kleine letters of hoofd letters typt, kunt u de naam alleen met de eerste letter in een letter type Format teren. 
 <!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
@@ -56,18 +54,12 @@ Een API-connector in deze stap van het registratie proces wordt aangeroepen na d
 
 - Gebruikers invoer gegevens valideren en een gebruiker vragen om gegevens opnieuw in te dienen.
 - Blok keren dat gebruikers zich registreren op basis van gegevens die door de gebruiker zijn ingevoerd.
-- Voer identiteits controle uit.
+- Verificatie van de identiteit uitvoeren.
 - Een query uitvoeren op externe systemen voor bestaande gegevens over de gebruiker om deze in het toepassings token te retour neren of op te slaan in azure AD.
 
 <!-- > [!IMPORTANT]
 > If an invalid response is returned or another error occurs (for example, a network error), the user will be redirected to the app with the error re -->
 
-## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
-
-### <a name="how-do-i-integrate-with-an-existing-api-endpoint"></a>Hoe kan ik integreren met een bestaand API-eind punt?
-U kunt een [http-trigger in azure functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp) gebruiken als een eenvoudige manier om andere web-api's aan te roepen en aan te roepen.
-
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het [toevoegen van een API-connector aan een gebruikers stroom](self-service-sign-up-add-api-connector.md)
 - Meer informatie over het [toevoegen van een aangepast goedkeurings systeem aan self-service registratie](self-service-sign-up-add-approvals.md)
-<!--#TODO: Make doc, link.-->
