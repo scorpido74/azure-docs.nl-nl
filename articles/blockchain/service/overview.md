@@ -4,12 +4,12 @@ description: Overzicht van Azure Blockchain Service
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 8a73ed45279ce224441ea9c021b565e63bc4fc63
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432235"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214074"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Wat is Azure Blockchain Service?
 
@@ -59,7 +59,7 @@ Acties voor consortiumbeheer, zoals leden toevoegen aan en verwijderen uit een c
 
 ## <a name="develop-using-familiar-development-tools"></a>Ontwikkelen met behulp van vertrouwde ontwikkelprogramma's
 
-Op basis van het opensource-grootboek Quorum Ethereum, kunt u toepassingen voor Azure Blockchain Service op dezelfde manier ontwikkelen als voor bestaande Ethereum-toepassingen. Met de Visual Studio-code-extensie van Azure Blockchain Development Kit kunnen ontwikkelaars samen met toonaangevende partners werken om vertrouwde programma's zoals Truffle Suite inzetten, om slimme contracten te bouwen. Ontwikkelaars kunnen met behulp van de Azure Blockchain Development Kit-extensie een bestaand consortium maken of er verbinding mee maken, zodat u uw slimme contracten vanuit één IDE kunt bouwen en implementeren. Met behulp van de Azure Blockchain Visual Studio-code-extensie kunt u een bestaand consortium maken of er verbinding mee maken zodat u uw slimme contracten vanuit één IDE kunt bouwen en implementeren. Zie [Azure Blockchain Development Kit in de VS Code Marketplace](https://aka.ms/vscodebcextension) en de [gebruikershandleiding voor Azure Blockchain Development Kit](https://aka.ms/vscodebcextensionwiki) voor meer informatie.
+Op basis van het opensource-grootboek Quorum Ethereum, kunt u toepassingen voor Azure Blockchain Service op dezelfde manier ontwikkelen als voor bestaande Ethereum-toepassingen. Met de Visual Studio-code-extensie van Azure Blockchain Development Kit kunnen ontwikkelaars samen met toonaangevende partners werken om vertrouwde programma's zoals Truffle Suite inzetten, om slimme contracten te bouwen. Met behulp van de Azure Blockchain Visual Studio-code-extensie kunt u een bestaand consortium maken of er verbinding mee maken zodat u uw slimme contracten vanuit één IDE kunt bouwen en implementeren. Zie [Azure Blockchain Development Kit in de VS Code Marketplace](https://aka.ms/vscodebcextension) en de [gebruikershandleiding voor Azure Blockchain Development Kit](https://aka.ms/vscodebcextensionwiki) voor meer informatie.
 
 ## <a name="publish-blockchain-data"></a>Blockchain-gegevens publiceren
 

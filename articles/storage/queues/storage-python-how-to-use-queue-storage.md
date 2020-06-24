@@ -7,14 +7,14 @@ ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, tracking-python
-ms.openlocfilehash: 00eb7c1488c90add48e3b6755ca1835d2ce1ff2d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 46d144a95708ac834478871ca27763f0ebd3b201
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657705"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805246"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Azure-wachtrij opslag gebruiken v 2.1 van python
 
@@ -154,7 +154,7 @@ queue_service.delete_queue('taskqueue')
 Nu u de basis principes van wachtrij opslag hebt geleerd, volgt u deze koppelingen voor meer informatie.
 
 * [Azure queues python API-verwijzing](/python/api/azure-storage-queue)
-* [Python-ontwikkelaars centrum](https://azure.microsoft.com/develop/python/)
+* [Python Developer Center](https://azure.microsoft.com/develop/python/)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355)
 
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/

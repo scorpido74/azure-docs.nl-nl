@@ -4,16 +4,16 @@ description: Lees hoe u Azure PowerShell kunt gebruiken om webverkeer op basis v
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ca5c411db5644182f7e87f1ee1c63f3cbc4d2e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fccc7281ed2978ccc63cd7b53a82c8a00b57d3c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73200398"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805999"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webverkeer routeren op basis van de URL met Azure PowerShell
 
@@ -24,7 +24,7 @@ Als u verkeersroutering wilt inschakelen, maakt u [routeringsregels](application
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Listeners, een toewijzing van URL-pad en regels maken
 > * Schaalbare back-endpools maken
 
@@ -414,7 +414,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm`, of `http://52.168.55.24:8080/video/test.htm`.
+Gebruik [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals,, `http://52.168.55.24` `http://52.168.55.24:8080/images/test.htm` of `http://52.168.55.24:8080/video/test.htm` .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -422,11 +422,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Basis-URL testen in de toepassingsgateway](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
 
-Wijzig de URL in http://&lt;IP-adres&gt;: 8080/images/test.htm, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
+Wijzig de URL in http:// &lt; IP-adres &gt; : 8080/images/test.htm, waarbij u het IP-adres voor het &lt; IP-adres vervangt &gt; , en u ziet iets als het volgende voor beeld:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
-Wijzig de URL in http://&lt;IP-adres&gt;: 8080/video/test.htm, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
+Wijzig de URL in http:// &lt; IP-adres &gt; : 8080/video/test.htm, waarbij u het IP-adres voor het &lt; IP-adres vervangt &gt; en u zou er ongeveer als volgt moeten uitzien:
 
 ![Video-URL testen in de toepassingsgateway](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 

@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het gebruik van privé Ip's voor 
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795494"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806787"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>Privé-IP gebruiken voor interne route ring voor een ingangs eindpunt 
 
@@ -24,14 +24,14 @@ Application Gateway met een [persoonlijke IP-configuratie](https://docs.microsof
 Er zijn twee manieren om de controller te configureren voor het gebruik van privé-IP-adressen voor inkomend verkeer,
 
 ## <a name="assign-to-a-particular-ingress"></a>Toewijzen aan een bepaalde inkomend verkeer
-Als u een bepaalde inkomend verkeer via privé-IP beschikbaar wilt [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) maken, gebruikt u aantekening in inkomend verkeer.
+Als u een bepaalde inkomend verkeer via privé-IP beschikbaar wilt maken, gebruikt u aantekening in inkomend verkeer [`appgw.ingress.kubernetes.io/use-private-ip`](./ingress-controller-annotations.md#use-private-ip) .
 
 ### <a name="usage"></a>Gebruik
 ```yaml
 appgw.ingress.kubernetes.io/use-private-ip: "true"
 ```
 
-Voor toepassings gateways zonder een persoonlijk IP-adres wordt Ingresses met `appgw.ingress.kubernetes.io/use-private-ip: "true"` aantekeningen genegeerd. Dit wordt aangegeven in de ingangs gebeurtenis en het AGIC pod-logboek.
+Voor toepassings gateways zonder een persoonlijk IP-adres wordt Ingresses met aantekeningen `appgw.ingress.kubernetes.io/use-private-ip: "true"` genegeerd. Dit wordt aangegeven in de ingangs gebeurtenis en het AGIC pod-logboek.
 
 * Fout zoals aangegeven in de ingangs gebeurtenis
 
@@ -51,7 +51,7 @@ Voor toepassings gateways zonder een persoonlijk IP-adres wordt Ingresses met `a
 
 
 ## <a name="assign-globally"></a>Wereld wijd toewijzen
-In het geval is de vereiste om alle Ingresses te beperken die worden weer gegeven via particulier `appgw.usePrivateIP: true` IP `helm` -gebruik in configuratie.
+In het geval is de vereiste om alle Ingresses te beperken die worden weer gegeven via particulier IP-gebruik `appgw.usePrivateIP: true` in `helm` configuratie.
 
 ### <a name="usage"></a>Gebruik
 ```yaml
@@ -66,4 +66,4 @@ Hiermee wordt het IP-adres geconfigureerd voor een privé-IP bij het configurere
 AGIC gaat in paniek en crashen als `usePrivateIP: true` er geen persoonlijk IP-adres is toegewezen.
 
 > [!NOTE]
-> Voor de SKU van Application Gateway v2 is een openbaar IP-adres vereist. Als u wilt dat Application Gateway privé is, koppelt [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) u een aan het subnet van Application Gateway om het verkeer te beperken.
+> Voor de SKU van Application Gateway v2 is een openbaar IP-adres vereist. Als u wilt dat Application Gateway privé is, koppelt u een [`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) aan het subnet van Application Gateway om het verkeer te beperken.

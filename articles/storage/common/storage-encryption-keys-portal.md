@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ef840e254355e7db34c626f482d86246e6a738
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456478"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805391"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels met Azure Key Vault configureren met behulp van de Azure Portal
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u een Azure Key Vault met door de klant behe
 
 Het gebruik van door de klant beheerde sleutels met Azure Storage versleuteling vereist dat er twee eigenschappen worden ingesteld op de sleutel kluis, de functie **voorlopig verwijderen** en **niet leeg**te maken. Deze eigenschappen zijn niet standaard ingeschakeld, maar kunnen worden ingeschakeld met Power shell of Azure CLI in een nieuwe of bestaande sleutel kluis.
 
-Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaande sleutel kluis raadpleegt u de secties met het **inschakelen van zacht verwijderen** en het **inschakelen van beveiliging opschonen** in een van de volgende artikelen:
+Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaande sleutelkluis raadpleegt u de secties **Voorlopig verwijderen inschakelen** en **Beveiliging tegen leegmaken inschakelen** in een van de volgende artikelen:
 
 - [Voorlopig verwijderen gebruiken met Power shell](../../key-vault/general/soft-delete-powershell.md).
 - [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/soft-delete-cli.md).
@@ -101,5 +101,5 @@ Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw opslag account o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md)
 - [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

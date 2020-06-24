@@ -498,7 +498,7 @@
           items:
             - name: Migreren naar SQL Database
               href: database/migrate-to-database-from-sql-server.md
-            - name: SQL database na migratie beheren
+            - name: SQL Database na migratie beheren
               href: database/manage-data-after-migrating-to-database.md
             - name: Importeren/exporteren (toestaan dat Azure-services zijn uitgeschakeld)
               href: database/database-import-export-azure-services-off.md
@@ -664,12 +664,15 @@
     - name: Snelstartgidsen
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: Maken
+        - name: Door SQL beheerd exemplaar maken
           items:
-            - name: Azure Portal gebruiken
+            - name: Azure Portal
               href: managed-instance/instance-create-quickstart.md
-            - name: PowerShell gebruiken
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM-sjabloon
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: Exemplaargroepen maken
               href: managed-instance/instance-pools-configure.md
         - name: Configureren

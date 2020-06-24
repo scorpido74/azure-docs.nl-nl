@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het bijwerken van een Application
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f20302a4993da1754255254ce6d69c000750d4ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795893"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806779"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>Een upgraden uitvoeren van de controller voor inkomend verkeer van Application Gateway met behulp van Helm 
 
@@ -34,7 +34,7 @@ Voordat u met de upgrade procedure begint, moet u ervoor zorgen dat u de vereist
         https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     ```
 
-## <a name="upgrade"></a>Upgraden
+## <a name="upgrade"></a>Upgrade uitvoeren
 
 1. Vernieuw de AGIC helm-opslag plaats om de nieuwste versie te verkrijgen:
 
@@ -42,7 +42,7 @@ Voordat u met de upgrade procedure begint, moet u ervoor zorgen dat u de vereist
     helm repo update
     ```
 
-1. Beschik bare versies van `application-gateway-kubernetes-ingress` de grafiek weer geven:
+1. Beschik bare versies van de grafiek weer geven `application-gateway-kubernetes-ingress` :
 
     ``` bash
     helm search -l application-gateway-kubernetes-ingress
@@ -71,7 +71,7 @@ Voordat u met de upgrade procedure begint, moet u ervoor zorgen dat u de vereist
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    De helm-grafiek installatie van het bovenstaande voorbeeld antwoord heeft `odd-billygoat`de naam. Deze naam wordt gebruikt voor de rest van de opdrachten. De daad werkelijke implementatie naam kan waarschijnlijk verschillen.
+    De helm-grafiek installatie van het bovenstaande voorbeeld antwoord heeft de naam `odd-billygoat` . Deze naam wordt gebruikt voor de rest van de opdrachten. De daad werkelijke implementatie naam kan waarschijnlijk verschillen.
 
 1. Voer een upgrade uit van de helm-implementatie naar een nieuwe versie:
 
@@ -100,7 +100,7 @@ Als de implementatie van de helm mislukt, kunt u terugdraaien naar een eerdere v
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    Vanuit de voorbeeld uitvoer van de `helm history` opdracht lijkt het alsof de laatste geslaagde implementatie van `odd-billygoat` onze revisie`1`
+    Vanuit de voorbeeld uitvoer van de opdracht lijkt het alsof `helm history` de laatste geslaagde implementatie van onze `odd-billygoat` revisie`1`
 
 1. Herstellen naar de laatste geslaagde revisie:
 

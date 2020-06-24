@@ -4,15 +4,15 @@ description: In dit artikel leert u hoe u verbinding kunt maken met een virtuele
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6ec60dc313c8a4374637adf38ea0e5a7d4ed964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79eb09a005f62846fc2f7e3e7b493d5e366edabc
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597338"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744320"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Verbinding maken met een virtuele Windows-machine met behulp van Azure Bastion
 
@@ -40,7 +40,7 @@ Als u verbinding wilt maken met de Windows-VM, moeten de volgende poorten zijn g
 
 ## <a name="connect"></a><a name="rdp"></a>Verbinding maken
 
-1. Open de [Azure Portal](https://portal.azure.com). Navigeer naar de virtuele machine waarmee u verbinding wilt maken en klik vervolgens op **verbinding maken** en selecteer **Bastion** in de vervolg keuzelijst.
+1. Open [Azure Portal](https://portal.azure.com). Navigeer naar de virtuele machine waarmee u verbinding wilt maken en klik vervolgens op **verbinding maken** en selecteer **Bastion** in de vervolg keuzelijst.
 
    ![VM-verbinding](./media/bastion-connect-vm-rdp/connect.png)
 1. Nadat u op Bastion hebt geklikt, wordt er een zijbalk weer gegeven met drie tabbladen: RDP, SSH en Bastion. Als Bastion is ingericht voor het virtuele netwerk, is het tabblad Bastion standaard actief. Als u Bastion niet hebt ingericht voor het virtuele netwerk, kunt u klikken op de koppeling om Bastion te configureren. Zie [Bastion configureren](bastion-create-host-portal.md)voor configuratie-instructies.

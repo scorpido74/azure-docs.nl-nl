@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het maken van een Azure-toepassin
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173720"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806443"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Een toepassings gateway maken en HTTP-headers opnieuw schrijven
 
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor dit artikel moet u Azure PowerShell lokaal uitvoeren. U moet AZ module version 1.0.0 of later hebben geïnstalleerd. Voer `Import-Module Az` uit en`Get-Module Az` zoek vervolgens naar de versie. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
+Voor dit artikel moet u Azure PowerShell lokaal uitvoeren. U moet AZ module version 1.0.0 of later hebben geïnstalleerd. Voer uit `Import-Module Az` en `Get-Module Az` Zoek vervolgens naar de versie. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

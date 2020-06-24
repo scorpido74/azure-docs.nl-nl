@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het inschakelen van ondersteuning
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c519792bcf9251f926d305c9611320a18b7c346
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279921"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806990"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Ondersteuning van meerdere naam ruimten in een AKS-cluster met Application Gateway ingangs controller inschakelen
 
@@ -21,14 +21,14 @@ Kubernetes- [naam ruimten](https://kubernetes.io/docs/concepts/overview/working-
 
 Vanaf versie 0,7 [Azure-toepassing gateway Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) (AGIC) kan gebeurtenissen opnemen van en meerdere naam ruimten observeren. Als de AKS-beheerder heeft besloten [app gateway](https://azure.microsoft.com/services/application-gateway/) als ingang te gebruiken, gebruiken alle naam ruimten hetzelfde exemplaar van Application Gateway. Met één installatie van de ingangs controller worden toegankelijke naam ruimten gecontroleerd en worden de Application Gateway waaraan deze is gekoppeld, geconfigureerd.
 
-Versie 0,7 van AGIC blijft de `default` naam ruimte gewoon observeren, tenzij dit expliciet wordt gewijzigd in een of meer verschillende naam ruimten in de helm-configuratie (Zie de sectie hieronder).
+Versie 0,7 van AGIC blijft de naam ruimte gewoon observeren `default` , tenzij dit expliciet wordt gewijzigd in een of meer verschillende naam ruimten in de helm-configuratie (Zie de sectie hieronder).
 
 ## <a name="enable-multiple-namespace-support"></a>Ondersteuning voor meerdere naamruimten inschakelen
 Ondersteuning voor meerdere naam ruimten inschakelen:
 1. Wijzig het bestand [helm-config. yaml](#sample-helm-config-file) op een van de volgende manieren:
    - de `watchNamespace` sleutel volledig verwijderen uit [helm-config. yaml](#sample-helm-config-file) -AGIC worden alle naam ruimten
    - ingesteld `watchNamespace` op een lege teken reeks-AGIC krijgt alle naam ruimten
-   - meerdere naam ruimten toevoegen, gescheiden door een komma`watchNamespace: default,secondNamespace`()-AGIC worden deze naam ruimten uitsluitend in rekening gebracht
+   - meerdere naam ruimten toevoegen, gescheiden door een komma ( `watchNamespace: default,secondNamespace` )-AGIC worden deze naam ruimten uitsluitend in rekening gebracht
 2. wijzigingen in de helm-sjabloon Toep assen met:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Wanneer de implementatie is geïmplementeerd met de mogelijkheid om meerdere naam ruimten te bekijken, AGIC:
@@ -44,7 +44,7 @@ Boven aan de hiërarchie- **listeners** (IP-adres, poort en host) en **routering
 
 Op de andere hand paden kunnen back-endservers, HTTP-instellingen en TLS-certificaten door slechts één naam ruimte worden gemaakt en dubbele items worden verwijderd.
 
-Bekijk bijvoorbeeld de volgende dubbele ingangs resources gedefinieerde naam ruimten `staging` en `production` voor: `www.contoso.com`
+Bekijk bijvoorbeeld de volgende dubbele ingangs resources gedefinieerde naam ruimten `staging` en `production` voor `www.contoso.com` :
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -89,15 +89,15 @@ Ondanks de twee bronnen voor `www.contoso.com` binnenkomend verkeer om te worden
   - HTTP-instellingen:`bp-production-contoso-web-service-80-80-websocket-ingress`
   - Status test:`pb-production-contoso-web-service-80-websocket-ingress`
 
-Houd er rekening mee dat de Application Gateway resources die zijn gemaakt, de naam ruimte (`production`) waarvoor ze zijn gemaakt, bevatten, met uitzonde ring van *listener* en *routerings regel*.
+Houd er rekening mee dat de Application Gateway resources die zijn gemaakt, de naam ruimte () waarvoor ze zijn gemaakt, bevatten, met uitzonde ring van *listener* en *routerings regel* `production` .
 
-Als de twee ingangs bronnen op verschillende tijdstippen in het AKS-cluster worden geïntroduceerd, is het waarschijnlijk dat AGIC wordt beëindigd in een scenario waarin het Application Gateway opnieuw wordt geconfigureerd en verkeer van `namespace-B` naar `namespace-A`verzendt.
+Als de twee ingangs bronnen op verschillende tijdstippen in het AKS-cluster worden geïntroduceerd, is het waarschijnlijk dat AGIC wordt beëindigd in een scenario waarin het Application Gateway opnieuw wordt geconfigureerd en verkeer van `namespace-B` naar verzendt `namespace-A` .
 
-Als u bijvoorbeeld eerst hebt `staging` toegevoegd, configureert AGIC Application Gateway om verkeer te routeren naar de back-end-staging-groep. In een later stadium wordt inkomend geïntroduceerd `production` , waardoor de Application Gateway wordt geAGICd, waardoor het verkeer naar de `production` back-end-groep wordt gestart.
+Als u bijvoorbeeld eerst hebt toegevoegd `staging` , CONFIGUREERT AGIC Application Gateway om verkeer te routeren naar de back-end-staging-groep. In een later stadium wordt `production` Inkomend geïntroduceerd, waardoor de Application Gateway wordt GEAGICd, waardoor het verkeer naar de back-end-groep wordt gestart `production` .
 
 ## <a name="restrict-access-to-namespaces"></a>Toegang tot naam ruimten beperken
 Standaard AGIC configureert Application Gateway op basis van inkomende aantekeningen binnen een naam ruimte. Als u dit gedrag wilt beperken, hebt u de volgende opties:
-  - Beperk de naam ruimten door expliciet de definitie van naam ruimten AGIC te zien `watchNamespace` via de yaml [-sleutel in helm-config. yaml](#sample-helm-config-file)
+  - Beperk de naam ruimten door expliciet de definitie van naam ruimten AGIC te zien via de `watchNamespace` yaml [-sleutel in helm-config. yaml](#sample-helm-config-file)
   - [Role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) gebruiken om de AGIC te beperken tot specifieke naam ruimten
 
 ## <a name="sample-helm-config-file"></a>Voor beeld van helm-configuratie bestand

@@ -4,16 +4,16 @@ description: In dit artikel wordt beschreven hoe u webverkeer routeert op basis 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68688176"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805889"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Webverkeer routeren op basis van de URL met behulp van de Azure CLI
 
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel Azure CLI (versie 2.0.4 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>De app-gateway maken met een URL-toewijzing
 
-Gebruik `az network application-gateway create` om een toepassingsgateway met de naam *myAppGateway* te maken. Als u een toepassingsgateway met de Azure CLI maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. De toepassings gateway is toegewezen aan *myAGSubnet* en *myAGPublicIPAddress*.
+Gebruik `az network application-gateway create` om een toepassingsgateway met de naam *myAppGateway* te maken. Als u met de Azure CLI een toepassingsgateway maakt, geeft u configuratiegegevens op, zoals capaciteit, SKU en HTTP-instellingen. De toepassingsgateway wordt toegewezen aan *myAGSubnet* en *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -236,7 +236,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik az network public-ip show om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm`, of `http://40.121.222.19:8080/video/test.htm`.
+Gebruik az network public-ip show om het openbare IP-adres van de toepassingsgateway op te halen. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals,, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` of `http://40.121.222.19:8080/video/test.htm` .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -248,11 +248,11 @@ az network public-ip show \
 
 ![Basis-URL testen in de toepassingsgateway](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Wijzig de URL in http://&lt;IP-adres&gt;: 8080/images/test.html, waarbij u het IP- &lt;adres voor het&gt;IP-adres vervangt. het volgende voor beeld zou er als volgt moeten uitzien:
+Wijzig de URL in http:// &lt; IP-adres &gt; : 8080/images/test.html, waarbij u het IP-adres voor het &lt; IP-adres vervangt &gt; , en u ziet iets als in het volgende voor beeld:
 
 ![Afbeeldingen-URL in toepassingsgateway testen](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Wijzig de URL in http://&lt;IP-adres&gt;: 8080/video/test.html, waarbij u het IP- &lt;adres vervangt door&gt;het IP-adres en het volgende voor beeld wordt weer geven.
+Wijzig de URL in http:// &lt; IP-adres &gt; : 8080/video/test.html en vervang uw IP-adres voor &lt; IP-adres &gt; en u ziet iets als in het volgende voor beeld.
 
 ![Video-URL testen in de toepassingsgateway](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

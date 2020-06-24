@@ -8,20 +8,20 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50d889faa4d5b6659ac5358ba49cc49c8531a914
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456818"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805361"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Door de klant beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling
 
 U kunt uw eigen versleutelings sleutel gebruiken om de gegevens in uw opslag account te beveiligen. Wanneer u een door de klant beheerde sleutel opgeeft, wordt die sleutel gebruikt voor het beveiligen en beheren van de toegang tot de sleutel die uw gegevens versleutelt. Door de klant beheerde sleutels bieden meer flexibiliteit voor het beheren van toegangs beheer.
 
-U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Het opslag account en de sleutel kluis moeten zich in dezelfde regio en in dezelfde Azure Active Directory-Tenant (Azure AD) bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md)voor meer informatie over Azure Key Vault.
+U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. Het opslag account en de sleutel kluis moeten zich in dezelfde regio en in dezelfde Azure Active Directory-Tenant (Azure AD) bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md)voor meer informatie over Azure Key Vault.
 
 ## <a name="about-customer-managed-keys"></a>Over door de klant beheerde sleutels
 
@@ -82,10 +82,10 @@ U kunt de toegang tot het opslag account op elk gewenst moment intrekken voor de
 
 - [Blobs vermelden](/rest/api/storageservices/list-blobs), indien aangeroepen met de `include=metadata` para meter voor de aanvraag-URI
 - [BLOB ophalen](/rest/api/storageservices/get-blob)
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties) (Blob-eigenschappen ophalen)
+- [BLOB-eigenschappen ophalen](/rest/api/storageservices/get-blob-properties)
 - [BLOB-meta gegevens ophalen](/rest/api/storageservices/get-blob-metadata)
 - [BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
-- [Moment opname-BLOB](/rest/api/storageservices/snapshot-blob), wanneer aangeroepen `x-ms-meta-name` met de aanvraag header
+- [Moment opname-BLOB](/rest/api/storageservices/snapshot-blob), wanneer aangeroepen met de `x-ms-meta-name` aanvraag header
 - [BLOB kopiëren](/rest/api/storageservices/copy-blob)
 - [BLOB kopiëren van URL](/rest/api/storageservices/copy-blob-from-url)
 - [Blob-laag instellen](/rest/api/storageservices/set-blob-tier)
@@ -113,4 +113,4 @@ Door de klant beheerde sleutels zijn ook beschikbaar voor het beheren van versle
 - [Door de klant beheerde sleutels configureren met Key Vault voor Azure Storage versleuteling van de Azure Portal](storage-encryption-keys-portal.md)
 - [Door de klant beheerde sleutels configureren met Key Vault voor Azure Storage versleuteling van Power shell](storage-encryption-keys-powershell.md)
 - [Door de klant beheerde sleutels configureren met Key Vault voor Azure Storage versleuteling van Azure CLI](storage-encryption-keys-cli.md)
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md)

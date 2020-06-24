@@ -4,15 +4,15 @@ description: In dit artikel vindt u informatie over het verkrijgen van een certi
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73957972"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807034"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Certificaten gebruiken met LetsEncrypt.org in Application Gateway voor AKS-clusters
 
@@ -58,9 +58,9 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
 
     Een `ClusterIssuer` resource maken. Dit is vereist `cert-manager` om de `Lets Encrypt` certificerings instantie te vertegenwoordigen waar de ondertekende certificaten worden verkregen.
 
-    Met behulp van de niet- `ClusterIssuer` naam ruimte bron, geeft CERT-Manager certificaten uit die kunnen worden gebruikt vanuit meerdere naam ruimten. `Let’s Encrypt`gebruikt het ACME-protocol om te controleren of u een bepaalde domein naam beheert en u een certificaat uitgeeft. Meer informatie over het `ClusterIssuer` configureren van eigenschappen [vindt u hier](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`geeft een `cert-manager` instructie om certificaten uit te `Lets Encrypt` geven met behulp van de faserings omgeving die wordt gebruikt voor het testen (het basis certificaat is niet aanwezig in de browsers/client vertrouwensrelatie archieven).
+    Met behulp van de niet-naam ruimte `ClusterIssuer` bron, geeft CERT-Manager certificaten uit die kunnen worden gebruikt vanuit meerdere naam ruimten. `Let’s Encrypt`gebruikt het ACME-protocol om te controleren of u een bepaalde domein naam beheert en u een certificaat uitgeeft. Meer informatie over het configureren van `ClusterIssuer` eigenschappen [vindt u hier](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`geeft `cert-manager` een instructie om certificaten uit te geven met behulp `Lets Encrypt` van de faserings omgeving die wordt gebruikt voor het testen (het basis certificaat is niet aanwezig in de browsers/client vertrouwensrelatie archieven).
 
-    Het standaard type Challenge in de onderstaande YAML is `http01`. Andere uitdagingen worden beschreven in [letsencrypt.org-vraag typen](https://letsencrypt.org/docs/challenge-types/)
+    Het standaard type Challenge in de onderstaande YAML is `http01` . Andere uitdagingen worden beschreven in [letsencrypt.org-vraag typen](https://letsencrypt.org/docs/challenge-types/)
 
     > [!IMPORTANT] 
     > Update `<YOUR.EMAIL@ADDRESS>` in de onderstaande YAML
@@ -95,10 +95,10 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
 
 3. App implementeren
 
-    Maak een ingangs bron om de `guestbook` toepassing beschikbaar te maken met behulp van de Application Gateway met het certificaat voor het versleutelen van certificaten.
+    Maak een ingangs bron om de toepassing beschikbaar te maken met `guestbook` behulp van de Application Gateway met het certificaat voor het versleutelen van certificaten.
 
-    Zorg ervoor dat u Application Gateway een open bare frontend-IP-configuratie met een DNS-naam `azure.com` hebt (met behulp `Azure DNS Zone` van het standaard domein of een service inricht en uw eigen aangepaste domein toewijst).
-    Let op de aantekening `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`, waarbij CERT-beheer aangeeft dat de gelabelde ingangs bron moet worden verwerkt.
+    Zorg ervoor dat u Application Gateway een open bare frontend-IP-configuratie met een DNS-naam hebt (met behulp van het standaard `azure.com` domein of een service inricht `Azure DNS Zone` en uw eigen aangepaste domein toewijst).
+    Let op de aantekening `certmanager.k8s.io/cluster-issuer: letsencrypt-staging` , waarbij CERT-beheer aangeeft dat de gelabelde ingangs bron moet worden verwerkt.
 
     > [!IMPORTANT] 
     > Update `<PLACEHOLDERS.COM>` in het onderstaande YAML met uw eigen domein (of de Application Gateway, bijvoorbeeld ' KH-AKS-ingress.westeurope.cloudapp.Azure.com ')
@@ -127,15 +127,15 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
     EOF
     ```
 
-    Na een paar seconden kunt u de `guestbook` service openen via de HTTPS-URL van Application Gateway met behulp van het automatisch verleende **staging** `Lets Encrypt` -certificaat.
-    U ontvangt mogelijk een waarschuwing van een ongeldige certificerings instantie in uw browser. Het faserings certificaat wordt uitgegeven `CN=Fake LE Intermediate X1`door. Dit geeft aan dat het systeem werkt zoals verwacht en dat u klaar bent voor uw productie certificaat.
+    Na een paar seconden kunt u de service openen `guestbook` via de HTTPS-URL van Application Gateway met behulp van het automatisch verleende **staging** - `Lets Encrypt` certificaat.
+    U ontvangt mogelijk een waarschuwing van een ongeldige certificerings instantie in uw browser. Het faserings certificaat wordt uitgegeven door `CN=Fake LE Intermediate X1` . Dit geeft aan dat het systeem werkt zoals verwacht en dat u klaar bent voor uw productie certificaat.
 
 4. Productie certificaat
 
     Zodra het faserings certificaat is geïnstalleerd, kunt u overschakelen naar een productie server:
     1. Vervang de tijdelijke aantekening van uw ingangs resource door:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Verwijder de bestaande staging `ClusterIssuer` die u in de vorige stap hebt gemaakt en maak een nieuwe door de Acme-server te vervangen door de ClusterIssuer yaml hierboven met`https://acme-v02.api.letsencrypt.org/directory`
+    1. Verwijder de bestaande staging die `ClusterIssuer` u in de vorige stap hebt gemaakt en maak een nieuwe door de Acme-server te vervangen door de CLUSTERISSUER yaml hierboven met`https://acme-v02.api.letsencrypt.org/directory`
 
 5. Verlopen en verlengen van certificaten
 
-    Voordat het `Lets Encrypt` certificaat verloopt `cert-manager` , wordt het certificaat in het Kubernetes-geheim archief automatisch bijgewerkt. Op dat moment wordt Application Gateway ingangs controller het bijgewerkte geheim toegepast dat wordt vermeld in de binnenkomende resources die worden gebruikt om de Application Gateway te configureren.
+    Voordat het `Lets Encrypt` certificaat verloopt, `cert-manager` wordt het certificaat in het Kubernetes-geheim archief automatisch bijgewerkt. Op dat moment wordt Application Gateway ingangs controller het bijgewerkte geheim toegepast dat wordt vermeld in de binnenkomende resources die worden gebruikt om de Application Gateway te configureren.

@@ -1,6 +1,6 @@
 ---
-title: Beheerde identiteiten op een Azure-VM gebruiken voor aanmelding bij Azure AD
-description: Stapsgewijze instructies en voor beelden voor het gebruik van een door Azure VM beheerde identiteit voor de Azure-service-principal voor het aanmelden bij clients en toegang tot bronnen.
+title: Beheerde identiteiten op een Azure-VM gebruiken voor aanmelding-Azure ADV
+description: Stapsgewijze instructies en voor beelden voor het gebruik van een door Azure VM'S beheerde identiteit voor de Azure-service-principal voor het aanmelden van scripts en toegang tot bronnen.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 1f626b9e6626f5fe74796baf2b591214bfd98c85
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547392"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694175"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Beheerde identiteiten voor Azure-resources gebruiken op een Azure-VM voor aanmelding 
 
@@ -41,7 +41,7 @@ Als u van plan bent de Azure PowerShell of Azure CLI-voor beelden in dit artikel
 
 ## <a name="overview"></a>Overzicht
 
-Beheerde identiteiten voor Azure-resources bieden een [Service-Principal-object](../develop/developer-glossary.md#service-principal-object) , dat wordt [gemaakt bij het inschakelen van beheerde identiteiten voor Azure-resources](overview.md#how-does-the-managed-identities-for-azure-resources-work) op de virtuele machine. De service-principal kan toegang krijgen tot Azure-resources en wordt gebruikt als identiteit door script/opdracht regel clients voor aanmelding en toegang tot bronnen. Traditioneel moet een script-client het volgende doen om toegang te krijgen tot beveiligde resources onder een eigen identiteit:  
+Beheerde identiteiten voor Azure-resources bieden een [Service-Principal-object](../develop/developer-glossary.md#service-principal-object) , dat wordt [gemaakt bij het inschakelen van beheerde identiteiten voor Azure-resources](overview.md) op de virtuele machine. De service-principal kan toegang krijgen tot Azure-resources en wordt gebruikt als identiteit door script/opdracht regel clients voor aanmelding en toegang tot bronnen. Traditioneel moet een script-client het volgende doen om toegang te krijgen tot beveiligde resources onder een eigen identiteit:  
 
    - als vertrouwelijk/webclient-toepassing worden geregistreerd en met Azure AD worden ingestemd
    - Meld u aan onder de bijbehorende service-principal met behulp van de referenties van de app (die waarschijnlijk zijn Inge sloten in het script)
@@ -53,7 +53,7 @@ Met beheerde identiteiten voor Azure-resources hoeft de script-client niet meer 
 Het volgende script laat zien hoe u:
 
 1. Meld u aan bij Azure AD onder de beheerde identiteit van de virtuele machine voor Azure resources Service-Principal  
-2. Roep Azure Resource Manager aan en haal de Service-Principal-ID van de virtuele machine op. CLI zorgt voor het automatisch beheren van token-aanschaf/-gebruik. Zorg ervoor dat u de naam van `<VM-NAME>`uw virtuele machine vervangt door.  
+2. Roep Azure Resource Manager aan en haal de Service-Principal-ID van de virtuele machine op. CLI zorgt voor het automatisch beheren van token-aanschaf/-gebruik. Zorg ervoor dat u de naam van uw virtuele machine vervangt door `<VM-NAME>` .  
 
    ```azurecli
    az login --identity

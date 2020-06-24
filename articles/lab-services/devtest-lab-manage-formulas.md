@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 06/11/2020
 ms.author: spelluru
-ms.openlocfilehash: ce980167cd88adfada1aa294aafa885184565799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4bf2631a39d6d1385e0369692cc0895b2966d7
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641165"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752770"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs formules beheren
 
@@ -48,9 +48,10 @@ De volgende stappen leiden u door het proces van het maken van een formule op ba
 5. Selecteer op de pagina **formules** **+ toevoegen**.
    
     ![Een formule toevoegen](./media/devtest-lab-create-formulas/add-formula.png)
+6. Selecteer op de pagina **Kies een basis** de basis (aangepaste installatie kopie, Marketplace-installatie kopie of een afbeelding van de galerie met gedeelde afbeeldingen) waarvan u de formule wilt maken.
 
-6. Selecteer op de pagina **Kies een basis** de basis (aangepaste installatie kopie of Marketplace-installatie kopie) van waaruit u de formule wilt maken.
-7. Geef op het tabblad **basis instellingen** van de pagina **formule maken** de volgende waarden op:
+    :::image type="content" source="./media/devtest-lab-create-formulas/select-base.png" alt-text="De basis installatie kopie selecteren":::
+1. Geef op het tabblad **basis instellingen** van de pagina **formule maken** de volgende waarden op:
    
     * **Formule naam** : Voer een naam in voor de formule. Deze waarde wordt weer gegeven in de lijst met basis installatie kopieën wanneer u een VM maakt. De naam wordt gevalideerd terwijl u deze typt en als dit niet het geval is, wordt een bericht met de vereisten voor een geldige naam aangeduid.
     - Voer een optionele **Beschrijving** in voor de formule. 
@@ -70,7 +71,10 @@ De volgende stappen leiden u door het proces van het maken van een formule op ba
     - **Verval datum en-tijd** : u kunt dit veld niet bewerken. 
     - **Deze computer claimbaar maken** : het maken van een machine claimbaar betekent dat er geen eigendom wordt toegewezen op het moment van maken. In plaats daarvan kunnen gebruikers met een lab het eigendom (' claim ') op de computer in de test pagina zetten.  
 
-        ![Pagina basis instellingen](./media/devtest-lab-create-formulas/advanced-settings.png)
+        ![De pagina Geavanceerde instellingen](./media/devtest-lab-create-formulas/advanced-settings.png)
+    - Als u een afbeelding van de galerie met gedeelde afbeeldingen als basis hebt geselecteerd, ziet u ook het veld **afbeeldings versie** , waarmee u de versie van de installatie kopie kunt selecteren in de galerie die u als basis wilt gebruiken. 
+
+        ![De pagina Geavanceerde instellingen](./media/devtest-lab-create-formulas/advanced-settings-shared-image-gallery.png)
 8. Selecteer **verzenden** om de formule te maken.
 
 9. Wanneer de formule is gemaakt, wordt deze weer gegeven in de lijst op de pagina **formules** .

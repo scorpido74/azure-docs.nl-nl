@@ -4,15 +4,15 @@ description: In dit artikel leest u hoe u een Azure bastion-host maakt
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520503"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744252"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Een Azure bastion-host maken met behulp van Azure PowerShell
 
@@ -26,7 +26,7 @@ Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt,
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een Bastion-host maken
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een bastion-host maken
 
 Deze sectie helpt u bij het maken van een nieuwe Azure Bastion-resource met behulp van Azure PowerShell.
 

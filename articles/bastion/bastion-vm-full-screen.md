@@ -4,15 +4,15 @@ description: In dit artikel leest u hoe u de weer gave op het volledige scherm k
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 2e72eb9ffc3affa0bf09692ac0780f9310308521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619296"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744218"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Overschakelen naar weer gave volledig scherm voor een VM-sessie: Azure Bastion
 
@@ -22,7 +22,7 @@ Dit artikel helpt u om de weer gave van de virtuele machine te wijzigen in volle
 
 Start tijdens de externe sessie het Bastion klem bord Access Tool-palet door de twee pijlen te selecteren die zich links in de sessie bevinden.
 
-![hulpprogramma's](./media/bastion-vm-manage/left.png)
+![tools](./media/bastion-vm-manage/left.png)
 
 ## <a name="select-full-screen"></a>Volledig scherm selecteren
 

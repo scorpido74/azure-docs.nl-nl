@@ -5,16 +5,16 @@ description: Informatie over het maken van een toepassingsgateway waarop meerder
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e05d84e8e06dbe63a1bc8e8ae1d401f186baac77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b351a828c47058025247a3edd95f31dc6cc84295
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133064"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806185"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Een toepassingsgateway maken waarop meerdere websites worden gehost met behulp van Azure PowerShell
 
@@ -23,7 +23,7 @@ U kunt Azure Powershell gebruiken om [het hosten van meerdere websites te config
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Een toepassingsgateway maken
 > * Back-endlisteners maken
 > * Routeringsregels maken
@@ -284,7 +284,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Voer uw domeinnaam in de adresbalk van de browser in. Zoals http:\//www.contoso.com.
+Voer uw domeinnaam in de adresbalk van de browser in. Zoals http: \/ /www.contoso.com.
 
 ![Contoso-site testen in toepassingsgateway](./media/tutorial-multiple-sites-powershell/application-gateway-iistest.png)
 
