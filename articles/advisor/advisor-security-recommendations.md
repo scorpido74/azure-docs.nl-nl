@@ -3,12 +3,12 @@ title: Resources veiliger maken met Azure Advisor
 description: Gebruik Azure Advisor om de beveiliging van uw Azure-implementaties te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443044"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113854"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Resources veiliger maken met Azure Advisor
 
@@ -29,9 +29,9 @@ Zie [beveiligings aanbevelingen beheren in azure Security Center](https://azure.
 Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
+* [Aanbevelingen van Advisor met betrekking tot kosten](advisor-cost-recommendations.md)
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
-* [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)
+* [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
-
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
  

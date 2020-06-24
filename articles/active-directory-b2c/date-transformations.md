@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476685"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202548"
 ---
 # <a name="date-claims-transformations"></a>Datum claim transformaties
 
@@ -27,7 +27,7 @@ In dit artikel vindt u voor beelden van het gebruik van de datum claim transform
 
 Controleert of een datum-en tijd claim (teken reeks gegevens type) later is dan een tweede datum en tijd claim (teken reeks gegevens type) en genereert een uitzonde ring.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | leftOperand | tekenreeks | Type van de eerste claim, dat later moet zijn dan de tweede claim. |
 | Input claim | rightOperand | tekenreeks | Tweede claim type, dat eerder moet zijn dan de eerste claim. |
@@ -39,9 +39,9 @@ De **AssertDateTimeIsGreaterThan** -claim transformatie wordt altijd uitgevoerd 
 
 ![AssertStringClaimsAreEqual-uitvoering](./media/date-transformations/assert-execution.png)
 
-In het volgende voor beeld wordt `currentDateTime` de claim met `approvedDateTime` de claim vergeleken. Er wordt een fout gegenereerd `currentDateTime` als deze later `approvedDateTime`is dan. De trans formatie behandelt waarden als gelijk als ze binnen vijf minuten (30000 milliseconden) verschillen.
+In het volgende voor beeld wordt de `currentDateTime` claim met de `approvedDateTime` claim vergeleken. Er wordt een fout gegenereerd als deze `currentDateTime` later is dan `approvedDateTime` . De trans formatie behandelt waarden als gelijk als ze binnen vijf minuten (30000 milliseconden) verschillen.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="approvedDateTime" TransformationClaimType="leftOperand" />
@@ -56,7 +56,7 @@ In het volgende voor beeld wordt `currentDateTime` de claim met `approvedDateTim
 ```
 
 Het `login-NonInteractive` validatie technische profiel roept de `AssertApprovedDateTimeLaterThanCurrentDateTime` trans formatie van claims aan.
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -67,7 +67,7 @@ Het `login-NonInteractive` validatie technische profiel roept de `AssertApproved
 
 Het zelfondertekende technische profiel aanroept het technische profiel voor validatie **aanmelding-niet-interactief** .
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="DateTimeGreaterThan">Custom error message if the provided left operand is greater than the right operand.</Item>
@@ -89,14 +89,14 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 
 Hiermee wordt een **datum** claim type geconverteerd naar een datum **/tijd** -claim type. De claim transformatie converteert de tijd notatie en voegt 12:00:00 AM toe aan de datum.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim | date | Het claim type dat moet worden geconverteerd. |
 | Output claim | Output claim | dateTime | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-In het volgende voor beeld wordt de conversie van de `dateOfBirth` claim (datum gegevens type) naar een `dateOfBirthWithTime` andere claim (gegevens type datetime) gedemonstreerd.
+In het volgende voor beeld wordt de conversie van de claim `dateOfBirth` (datum gegevens type) naar een andere claim `dateOfBirthWithTime` (gegevens type datetime) gedemonstreerd.
 
-```XML
+```xml
   <ClaimsTransformation Id="ConvertToDateTime" TransformationMethod="ConvertDateToDateTimeClaim">
     <InputClaims>
       <InputClaim ClaimTypeReferenceId="dateOfBirth" TransformationClaimType="inputClaim" />
@@ -118,14 +118,14 @@ In het volgende voor beeld wordt de conversie van de `dateOfBirth` claim (datum 
 
 Converteert een datum **/tijd** -claim type naar een **date** claim type. De claim transformatie verwijdert de tijd notatie van de datum.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Input claim | dateTime | Het claim type dat moet worden geconverteerd. |
 | Output claim | Output claim | date | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-In het volgende voor beeld wordt de conversie van de `systemDateTime` claim (datetime-gegevens type) naar `systemDate` een andere claim (gegevens type datum) gedemonstreerd.
+In het volgende voor beeld wordt de conversie van de claim `systemDateTime` (datetime-gegevens type) naar een andere claim `systemDate` (gegevens type datum) gedemonstreerd.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="inputClaim" />
@@ -147,11 +147,11 @@ In het volgende voor beeld wordt de conversie van de `systemDateTime` claim (dat
 
 De huidige UTC-datum en-tijd ophalen en de waarde toevoegen aan een claim type.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Output claim | currentDateTime | dateTime | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-```XML
+```xml
 <ClaimsTransformation Id="GetSystemDateTime" TransformationMethod="GetCurrentDateTime">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="systemDateTime" TransformationClaimType="currentDateTime" />
@@ -166,9 +166,9 @@ De huidige UTC-datum en-tijd ophalen en de waarde toevoegen aan een claim type.
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Bepalen of een datum/tijd later, eerder of gelijk aan een andere dateTime is. Het resultaat is een nieuwe Boolean claim type Boole met de waarde `true` of `false`.
+Bepalen of een datum/tijd later, eerder of gelijk aan een andere dateTime is. Het resultaat is een nieuwe Boolean claim type Boole met de waarde `true` of `false` .
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | firstDateTime | dateTime | De eerste datum/tijd om te vergelijken of deze eerder of later is dan de tweede datum/tijd. Null-waarde genereert een uitzonde ring. |
 | Input claim | secondDateTime | dateTime | De tweede datum/tijd om te vergelijken of deze eerder of later is dan de eerste datum/tijd. Null-waarde wordt beschouwd als de huidige datetTime. |
@@ -179,7 +179,7 @@ Bepalen of een datum/tijd later, eerder of gelijk aan een andere dateTime is. He
 Gebruik deze claim transformatie om te bepalen of twee ClaimTypes gelijk zijn aan, later of eerder dan elkaar. U kunt bijvoorbeeld de laatste keer dat een gebruiker uw service voorwaarden heeft geaccepteerd (TOS) opslaan. Na 3 maanden kunt u de gebruiker vragen om opnieuw toegang te krijgen tot de TOS.
 Als u de claim transformatie wilt uitvoeren, moet u eerst de huidige datum/tijd en de laatste keer dat de gebruiker de TOS accepteert, ophalen.
 
-```XML
+```xml
 <ClaimsTransformation Id="CompareLastTOSAcceptedWithCurrentDateTime" TransformationMethod="DateTimeComparison">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="currentDateTime" TransformationClaimType="firstDateTime" />

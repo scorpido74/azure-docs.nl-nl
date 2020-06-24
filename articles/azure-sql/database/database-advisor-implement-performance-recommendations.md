@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 14f304e3846cab25691da347732de50924356540
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5a81ceea151b937b63544cbe51cc22de11d25230
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048873"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254936"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Aanbevelingen voor Database Advisor prestaties voor Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Beschik bare opties voor prestatie aanbeveling in Azure SQL Database zijn:
 | **Aanbevelingen voor Create Index** : Hiermee wordt het maken van indexen aanbevolen die de prestaties van uw werk belasting kunnen verbeteren. | Ja | Nee |
 | **Aanbevelingen voor drop index** : Aanbevolen wordt om dagelijks overbodige en dubbele indexen te verwijderen, met uitzonde ring van unieke indexen en indexen die gedurende een lange periode niet zijn gebruikt (>90 dagen). Houd er rekening mee dat deze optie niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints. Het verwijderen van niet-gebruikte indexen wordt niet ondersteund voor Premium-en Bedrijfskritiek-service lagen. | Ja | Nee |
 | **Aanbevelingen voor para meters query's (preview)** : beveelt geforceerde parameterisering aan wanneer u een of meer query's hebt die voortdurend worden gecompileerd, maar wel met hetzelfde query-uitvoerings plan. | Ja | Nee |
-| **Aanbevelingen voor het oplossen van schema problemen (preview)** : aanbevelingen voor schema correctie worden weer gegeven wanneer Azure SQL database een afwijkings probleem ondervindt in het aantal schema gerelateerde SQL-fouten die zich op uw SQL database voordoen. Micro soft maakt momenteel geen aanbevelingen voor het oplossen van schema problemen. | Ja | Nee |
+| **Aanbevelingen voor het oplossen van schema problemen (preview)** : aanbevelingen voor schema correctie worden weer gegeven wanneer Azure SQL database een afwijkings probleem ondervindt in het aantal aan het schema gerelateerde SQL-fouten dat op uw data base plaatsvindt. Micro soft maakt momenteel geen aanbevelingen voor het oplossen van schema problemen. | Ja | Nee |
 
 ![Prestatie aanbevelingen voor Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -97,11 +97,11 @@ Nadat u deze aanbeveling hebt toegepast, wordt geforceerde parameterisering binn
 > [!IMPORTANT]
 > Micro soft maakt momenteel geen aanbevelingen voor het oplossen van schema problemen. We raden u aan [intelligent Insights](intelligent-insights-overview.md) te gebruiken voor het bewaken van de prestatie problemen met uw data base, zoals schema problemen die eerder zijn besproken in de aanbevelingen voor het oplossen van het schema probleem.
 
-Aanbevelingen voor **schema problemen oplossen** wordt weer gegeven wanneer Azure SQL database een afwijkings probleem ondervindt in het aantal schema-gerelateerde SQL-fouten die zich op uw SQL database voordoen. Deze aanbeveling wordt doorgaans weer gegeven wanneer in uw data base meerdere schema fouten optreden (ongeldige kolom naam, ongeldige object naam, enzovoort) binnen een uur.
+Aanbevelingen voor **schema problemen oplossen** wordt weer gegeven wanneer Azure SQL database een afwijkings probleem ondervindt in het aantal aan het schema gerelateerde SQL-fouten in uw data base. Deze aanbeveling wordt doorgaans weer gegeven wanneer in uw data base meerdere schema fouten optreden (ongeldige kolom naam, ongeldige object naam, enzovoort) binnen een uur.
 
 "Schema problemen" zijn een klasse syntaxis fouten. Ze treden op wanneer de definitie van de SQL-query en de definitie van het database schema niet zijn uitgelijnd. Een van de kolommen die door de query wordt verwacht, ontbreekt mogelijk in de doel tabel of vice versa.
 
-De aanbeveling schema probleem oplossen wordt weer gegeven wanneer Azure SQL Database een afwijkings fout in het aantal schema-gerelateerde SQL-fouten op uw SQL database. De volgende tabel bevat de fouten die betrekking hebben op schema problemen:
+De aanbeveling schema probleem oplossen wordt weer gegeven wanneer Azure SQL Database een afwijking van het aantal aan schema gerelateerde SQL-fouten in de data base ondervindt. De volgende tabel bevat de fouten die betrekking hebben op schema problemen:
 
 | SQL-fout code | Bericht |
 | --- | --- |

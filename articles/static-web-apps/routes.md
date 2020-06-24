@@ -7,30 +7,32 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 84067917a43fc7c84770b8852f11622ffe2af930
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: e6c38f3bc695db0e27547e434a81f95fa556e84b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629313"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85295995"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routes in de preview-versie van statische Web Apps van Azure
 
-Route ring in statische Azure-Web Apps definieert back-end-routerings regels en autorisatie gedrag voor zowel statische inhoud als Api's. De regels worden gedefinieerd als een matrix met regels in het bestand _routes. json_ .
+Route ring in statische Azure-Web Apps definieert back-end-routerings regels en autorisatie gedrag voor zowel statische inhoud als Api's<sup>1</sup>. De regels worden gedefinieerd als een matrix met regels in de _routes.jsvoor_ het bestand.
 
-- Het bestand _routes. json_ moet bestaan in de hoofdmap van de map build artefact van de app.
+- De _routes.jsin_ het bestand moet bestaan in de hoofdmap van de map build artefact van de app.
 - Regels worden uitgevoerd in de volg orde zoals ze worden weer gegeven in de `routes` matrix.
 - De regel evaluatie stopt bij de eerste overeenkomst. Routerings regels worden niet aan elkaar gekoppeld.
-- Rollen worden gedefinieerd in het bestand _routes. json_ en gebruikers zijn gekoppeld aan rollen via [uitnodigingen](authentication-authorization.md).
+- Rollen worden gedefinieerd in de _routes.jsop_ bestand en gebruikers zijn gekoppeld aan rollen via [uitnodigingen](authentication-authorization.md).
 - U hebt volledige controle over de namen van rollen.
 
 Het onderwerp van route ring overlapt aanzienlijk met verificatie-en autorisatie concepten. Lees de hand leiding voor [verificatie en autorisatie](authentication-authorization.md) samen met dit artikel.
 
+Zie het [route bestand voor beeld](#example-route-file) voor meer informatie.
+
 ## <a name="location"></a>Locatie
 
-Het bestand _routes. json_ moet bestaan in de hoofdmap van de map build artefact van de app. Als uw web-app een build-stap bevat waarmee ingebouwde bestanden van een specifieke map naar de map build-artefact worden gekopieerd, moet het bestand _routes. json_ aanwezig zijn in die specifieke map.
+De _routes.jsin_ het bestand moet bestaan in de hoofdmap van de map build artefact van de app. Als uw web-app een build-stap bevat waarmee ingebouwde bestanden van een specifieke map naar de map build-artefact worden gekopieerd, moet de _routes.jsin_ het bestand zich in die specifieke map bevinden.
 
-De volgende tabel bevat de juiste locatie voor het plaatsen van uw _routes. json_ -bestand voor een aantal front-end Java script-frameworks en-bibliotheken.
+De volgende tabel bevat de juiste locatie voor het opslaan van uw _routes.jsin_ het bestand voor een aantal front-end Java script-frameworks en-bibliotheken.
 
 |Framework/bibliotheek | Locatie  |
 |---------|----------|
@@ -41,14 +43,14 @@ De volgende tabel bevat de juiste locatie voor het plaatsen van uw _routes. json
 
 ## <a name="defining-routes"></a>Routes definiëren
 
-Routes worden gedefinieerd in het bestand _routes. json_ als een matrix van route regels voor de `routes` eigenschap. Elke regel bestaat uit een route patroon, samen met een of meer van de optionele regel eigenschappen. Zie het [voor beeld van een routerings bestand](#example-route-file) voor gebruiks voorbeelden.
+Routes worden gedefinieerd in de _routes.jsop_ bestand als een matrix van route regels voor de `routes` eigenschap. Elke regel bestaat uit een route patroon, samen met een of meer van de optionele regel eigenschappen. Zie het [voor beeld van een routerings bestand](#example-route-file) voor gebruiks voorbeelden.
 
 | Regel eigenschap  | Vereist | Standaardwaarde | Opmerking                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ja      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index. html_.</ul>|
-| `serve`        | Nee       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als een `serve` waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. |
-| `allowedRoles` | Nee       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
-| `statusCode`   | Nee       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
+| `route`        | Yes      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index.html_.</ul>|
+| `serve`        | No       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als er `serve` geen waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. Query string-para meters worden niet ondersteund; de `serve` waarden moeten verwijzen naar de werkelijke bestanden.  |
+| `allowedRoles` | No       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
+| `statusCode`   | No       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
 
 ## <a name="securing-routes-with-roles"></a>Routes beveiligen met rollen
 
@@ -88,7 +90,7 @@ Als u bijvoorbeeld routes voor een agenda toepassing wilt implementeren, kunt u 
 }
 ```
 
-Het bestand _Calendar. html_ kan vervolgens client-side routering gebruiken om een andere weer gave te leveren voor URL-variaties zoals `/calendar/january/1` , `/calendar/2020` , en `/calendar/overview` .
+Het bestand _calendar.html_ kan vervolgens client-side route ring gebruiken om een andere weer gave te leveren voor URL-variaties zoals `/calendar/january/1` , `/calendar/2020` , en `/calendar/overview` .
 
 U kunt routes ook beveiligen met Joker tekens. In het volgende voor beeld is voor elk bestand dat is aangevraagd onder het pad van de beheerder, een geverifieerde gebruiker die lid is _van de rol_ _Administrator_ .
 
@@ -126,7 +128,7 @@ De terugval route moet als laatste worden weer gegeven in uw routerings regels, 
 
 U kunt de HTTP-status codes [301](https://en.wikipedia.org/wiki/HTTP_301) en [302](https://en.wikipedia.org/wiki/HTTP_302) gebruiken om aanvragen van de ene route om te leiden naar een andere.
 
-De volgende regel maakt bijvoorbeeld een omleiding van 301 van _Old-page. html_ naar _New-page. html_.
+De volgende regel maakt bijvoorbeeld een omleiding van 301 van _old-page.html_ naar _new-page.html_.
 
 ```json
 {
@@ -148,7 +150,10 @@ Omleidingen werken ook met paden die geen afzonderlijke bestanden definiëren.
 
 ## <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
-Gebruikers kunnen een aantal verschillende situaties tegen komen die ertoe kunnen leiden dat er een fout optreedt. Met de `platformErrorOverrides` matrix kunt u een aangepaste ervaring bieden als reactie op deze fouten. Raadpleeg het [voor beeld-route bestand](#example-route-file) voor plaatsing van de matrix in het bestand _routes. json_ .
+Gebruikers kunnen een aantal verschillende situaties tegen komen die ertoe kunnen leiden dat er een fout optreedt. Met de `platformErrorOverrides` matrix kunt u een aangepaste ervaring bieden als reactie op deze fouten. Raadpleeg het [voor beeld-route bestand](#example-route-file) voor het plaatsen van de matrix in de _routes.jsin_ het bestand.
+
+> [!NOTE]
+> Zodra een aanvraag is overschreven naar het niveau van het platform, worden de route regels niet opnieuw uitgevoerd.
 
 De volgende tabel bevat een overzicht van de beschik bare platform fout onderdrukkingen:
 
@@ -164,7 +169,7 @@ De volgende tabel bevat een overzicht van de beschik bare platform fout onderdru
 
 ## <a name="example-route-file"></a>Voor beeld van een route bestand
 
-In het volgende voor beeld ziet u hoe u routerings regels voor statische inhoud en Api's in een _routes. json_ -bestand bouwt. Sommige routes gebruiken de [systeemmap _/.auth_ ](authentication-authorization.md) die toegang heeft tot de authenticatie-gerelateerde eind punten.
+In het volgende voor beeld ziet u hoe u route regels voor statische inhoud en Api's maakt in een _routes.jsin_ het bestand. Sommige routes gebruiken de [systeemmap _/.auth_ ](authentication-authorization.md) die toegang heeft tot de authenticatie-gerelateerde eind punten.
 
 ```json
 {
@@ -214,7 +219,7 @@ In het volgende voor beeld ziet u hoe u routerings regels voor statische inhoud 
     },
     {
       "errorType": "Unauthenticated",
-      "statusCode": "301",
+      "statusCode": "302",
       "serve": "/login"
     }
   ]
@@ -225,23 +230,27 @@ In de volgende voor beelden wordt beschreven wat er gebeurt wanneer een aanvraag
 
 |Aanvragen naar...  | Resultaat in... |
 |---------|---------|---------|
-| _/profile_ | Geverifieerde gebruikers worden het _/profile/index.html-_ bestand geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
-| _/admin/reports_ | Geverifieerde gebruikers in de rol _Administrators_ worden het _/Admin/Reports/index.html-_ bestand verwerkt. Geverifieerde _gebruikers die niet in de beheerdersrol_ zijn, worden 401-fout<sup>1</sup>geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
+| _/profile_ | Geverifieerde gebruikers worden het _/profile/index.html_ -bestand geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
+| _/admin/reports_ | Geverifieerde gebruikers in de rol _Administrators_ worden het _/Admin/Reports/index.html_ -bestand geleverd. Geverifieerde gebruikers die niet voor komen _in de beheerdersrol_ , worden 401-fout<sup>2</sup>geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
 | _/api/admin_ | Aanvragen van geverifieerde gebruikers in de rol _Administrators_ worden verzonden naar de API. Geverifieerde gebruikers die niet voor komen in de rol _Administrator_ en niet-geverifieerde gebruikers, krijgen een 401-fout. |
-| _/customers/contoso_ | Geverifieerde gebruikers die deel uitmaken van de _ \_ Contoso_ -rollen van de _beheerder_ of klanten, worden het _/Customers/contoso/index.html-_ <sup>bestand.</sup> Geverifieerde gebruikers die geen toegang hebben tot de _ \_ Contoso_ -rollen van de _groep Administrators_ of klanten, worden 401-fouten geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
+| _/customers/contoso_ | Geverifieerde gebruikers die deel uitmaken van de _ \_ Contoso_ -rollen van de _beheerder_ of klanten, worden de _/Customers/contoso/-index.html_ -bestand<sup>2</sup>bediend. Geverifieerde gebruikers die geen toegang hebben tot de _ \_ Contoso_ -rollen van de _groep Administrators_ of klanten, worden 401-fouten geleverd. Niet-geverifieerde gebruikers omgeleid naar _/login_. |
 | _/login_     | Niet-geverifieerde gebruikers worden gevraagd om te verifiëren met GitHub. |
 | _/.auth/login/twitter_     | Autorisatie met Twitter is uitgeschakeld. De server reageert met een 404-fout. |
 | _/logout_     | Gebruikers worden afgemeld bij een verificatie provider. |
-| _/calendar/2020/01_ | De browser wordt het _/Calendar.html_ -bestand geleverd. |
+| _/calendar/2020/01_ | De browser wordt het bestand _/calendar.html_ geleverd. |
 | _/specials_ | De browser wordt omgeleid naar _/deals_. |
-| _/unknown-folder_     | Het _/Custom-404.html_ -bestand wordt geleverd. |
+| _/unknown-folder_     | Het bestand _/custom-404.html_ wordt geleverd. |
 
-<sup>1</sup> u kunt een aangepaste fout pagina opgeven door een `Unauthorized_MissingRoles` regel in de matrix te definiëren `platformErrorOverrides` .
+<sup>1</sup> route regels voor API-functies bieden alleen ondersteuning voor het [omleiden](#redirects) en [beveiligen van routes met rollen](#securing-routes-with-roles).
+
+<sup>2</sup> u kunt een aangepaste fout pagina opgeven door een `Unauthorized_MissingRoles` regel in de matrix te definiëren `platformErrorOverrides` .
 
 ## <a name="restrictions"></a>Beperkingen
 
-- Het bestand _routes. json_ mag niet groter zijn dan 100 KB
-- Het bestand _routes. json_ ondersteunt een maximum van 50 afzonderlijke rollen
+- De _routes.jsvoor_ het bestand mag niet groter zijn dan 100 KB
+- De _routes.jsvoor_ het bestand ondersteunt een maximum van 50 afzonderlijke rollen
+
+Zie het [artikel quota's](quotas.md) voor algemene beperkingen en beperkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

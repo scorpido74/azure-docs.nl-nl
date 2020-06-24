@@ -4,18 +4,18 @@ description: Meer informatie over de invloed die Google-beveiligings-en privacyb
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628705"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194966"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Beleid voor gegevens beveiliging en privacy voor Google connectors in Azure Logic Apps
 
-Vanaf **1 mei 2020**kunnen wijzigingen worden aangebracht door het [beleid voor gegevens beveiliging en privacy](https://www.blog.google/technology/safety-security/project-strobe/) van Google, wat van invloed is op uw logische app-werk stromen die gebruikmaken van de [Gmail-connector](https://docs.microsoft.com/connectors/gmail/). Als uw Logic apps de Gmail-connector gebruiken met een Gmail-consument account (e-mail @gmail.com adres @googlemail.comdat eindigt op of), kunnen uw Logic apps alleen specifieke [door Google goedgekeurde triggers, acties en connectors](#approved-connectors)gebruiken. 
+Vanaf **1 mei 2020**kunnen wijzigingen worden aangebracht door het [beleid voor gegevens beveiliging en privacy](https://www.blog.google/technology/safety-security/project-strobe/) van Google, wat van invloed is op uw logische app-werk stromen die gebruikmaken van de [Gmail-connector](https://docs.microsoft.com/connectors/gmail/). Als uw Logic apps de Gmail-connector gebruiken met een Gmail-consument account (e-mail adres dat eindigt op @gmail.com of @googlemail.com ), kunnen uw Logic apps alleen specifieke [door Google goedgekeurde triggers, acties en connectors](#approved-connectors)gebruiken.
 
 > [!NOTE]
 > Als uw Logic apps de Gmail-connector gebruiken met een G-Suite Business-account (e-mail adres met een aangepast domein), heeft dit geen invloed op uw Logic apps en gelden er geen beperkingen voor het gebruik van de Gmail-connector.
@@ -36,11 +36,31 @@ Wanneer u onder dit beleid een Gmail-Consumer-account gebruikt, kunt u de Gmail-
 
 * Logic Apps ingebouwde triggers en acties: batch, besturings element, gegevens bewerkingen, datum en tijd, plat bestand, vloeistof, aanvraag, schema, variabelen en XML
 
+  Ingebouwde triggers en acties die niet zijn goedgekeurd door Google, zoals HTTP, Azure Functions, Azure Logic Apps en anderen, maken een logische app die niet voldoet aan de Gmail-connector, omdat de app vanaf elke locatie gegevens kan verzenden of ontvangen.
+
 * Google services: Gmail, Google Calendar, Google Contacts, Google Drive, Google spread sheets en Google-taken
 
 * Goedgekeurde micro soft-Services: Dynamics 365, Excel online, micro soft teams, Office 365, OneDrive en share point online
 
 * Connectors voor door de klant beheerde gegevens bronnen: FTP, RSS, SFTP, SMTP en SQL Server
+
+## <a name="non-compliant-examples"></a>Voor beelden die niet voldoen aan het beleid
+
+Hier volgen enkele voor beelden van het gebruik van de Gmail-connector met ingebouwde triggers en acties of beheerde connectors die niet door Google zijn goedgekeurd:
+
+* Deze logische app maakt gebruik van de Gmail-connector met de ingebouwde HTTP-trigger:
+
+  ![Niet-compatibele logische app-voor beeld 1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  De logische app maakt ook gebruik van de Google Calendar Connector, die is goedgekeurd.
+
+* Deze logische app maakt gebruik van de Gmail-connector met de Azure Blob Storage-connector:
+
+  ![Niet-compatibele logische app-voor beeld 2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* Deze logische app maakt gebruik van de Gmail-connector met de Twitter-connector:
+
+  ![Niet-compatibele logische app-voor beeld 3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 Raadpleeg de [technische documentatie van de Gmail-connector](https://docs.microsoft.com/connectors/gmail/)voor de meest recente informatie.
 
@@ -70,7 +90,7 @@ Voer de volgende stappen uit om de client-ID en het client geheim te gebruiken v
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Als u een nieuwe Gmail-trigger of-actie wilt toevoegen en een volledig nieuwe verbinding wilt maken, gaat u verder met de volgende stap. Anders selecteert u in de trigger of actie van Gmail de optie **verbinding** > wijzigen**nieuwe toevoegen**, bijvoorbeeld:
+1. Als u een nieuwe Gmail-trigger of-actie wilt toevoegen en een volledig nieuwe verbinding wilt maken, gaat u verder met de volgende stap. Anders selecteert u in de trigger of actie van Gmail de optie **verbinding wijzigen**  >  **nieuwe toevoegen**, bijvoorbeeld:
 
    ![Selecteer verbinding wijzigen > nieuwe toevoegen](./media/connectors-google-data-security-privacy-policy/change-gmail-connection.png)
 
@@ -81,7 +101,7 @@ Voer de volgende stappen uit om de client-ID en het client geheim te gebruiken v
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Verificatie type** | **Uw eigen toepassing meenemen** | Hiermee geeft u op dat u uw eigen client-app voor verificatie wilt gebruiken. |
-   | **Client-ID** | <*client-ID*> | De client-ID van uw Google client-app |
+   | **Client-id** | <*client-ID*> | De client-ID van uw Google client-app |
    | **Client Secret** | <*client-geheim*> | Het client geheim van uw Google client-app |
    ||||
 

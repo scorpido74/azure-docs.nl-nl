@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233146"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254069"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Azure Stream Analytics-taken gebruiken met SQL Edge
 
@@ -52,7 +52,7 @@ Azure SQL Edge heeft een systeem eigen implementatie van de stream Analytics-run
     |Veld      | Beschrijving |
     |---------------|-------------|
     |Uitvoeralias | De naam van de uitvoer alias.|
-    |Database | De naam van de SQL database. Dit moet een geldige naam zijn van een Data Base die zich op het SQL Edge-exemplaar bevindt.|
+    |Database | De naam van de data base. Dit moet een geldige naam zijn van een Data Base die zich op het SQL Edge-exemplaar bevindt.|
     |Servernaam | Naam (of IP-adres) en Details van het poort nummer voor het SQL-exemplaar. Voor een implementatie van een SQL-Edge kunt u **TCP:., 1433** gebruiken voor de server naam.|
     |Gebruikersnaam | SQL-aanmeldings account met gegevens lezer en gegevens schrijver toegang tot de data base die u eerder hebt opgegeven.|
     |Wachtwoord | Wacht woord voor het SQL-aanmeldings account dat u eerder hebt opgegeven.|

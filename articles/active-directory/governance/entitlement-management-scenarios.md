@@ -10,24 +10,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/28/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d259c6e2a6ac9ced5f9a1c29d4aec08010f4dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190548"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85077794"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Algemene scenario's in het beheer van rechten van Azure AD
 
 Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie kunt configureren. Als u echter net aan de slag gaat, is het handig om inzicht te krijgen in de algemene scenario's voor beheerders, catalogus eigenaars, toegangs pakket managers, goed keurders en aanvragers.
 
-## <a name="delegate"></a>Delegeren
+## <a name="delegate"></a>Gedelegeerde
 
 ### <a name="administrator-delegate-management-of-resources"></a>Beheerder: beheer van resources delegeren
 
@@ -154,7 +154,7 @@ Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie k
 
 ## <a name="programmatic-administration"></a>Programmatisch beheer
 
-U kunt ook toegangs pakketten, catalogi, beleids regels, aanvragen en toewijzingen beheren met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de [rechten beheer-API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)aanroepen.
+U kunt ook toegangs pakketten, catalogi, beleids regels, aanvragen en toewijzingen beheren met Microsoft Graph.  Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde machtiging heeft, `EntitlementManagement.ReadWrite.All` kan de [rechten beheer-API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,17 +11,17 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 3dd62d63216d7694f91c9024e4ee57272070a69c
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321645"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710997"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>IP-adressen voor Azure-netwerkinterfaces toevoegen, wijzigen en verwijderen
 
@@ -54,13 +54,13 @@ U kunt zo nodig zoveel [persoonlijke](#private) en [open bare](#public) [IPv4](#
 
    |Instelling|Vereist?|Details|
    |---|---|---|
-   |Naam|Ja|Moet uniek zijn voor de netwerk interface|
-   |Type|Ja|Omdat u een IP-configuratie toevoegt aan een bestaande netwerk interface en elke netwerk interface moet een [primaire](#primary) IP-configuratie hebben, is de enige optie **secundair**.|
-   |Toewijzings methode voor privé-IP-adres|Ja|[**Dynamisch**](#dynamic): Azure wijst het volgende beschik bare adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd. [**Statisch**](#static): u wijst een ongebruikt adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd.|
-   |Openbaar IP-adres|Nee|**Uitgeschakeld:** Er is momenteel geen open bare IP-adres resource gekoppeld aan de IP-configuratie. **Ingeschakeld:** Selecteer een bestaand openbaar IP-adres voor IPv4 of maak een nieuwe. Lees het artikel [open bare IP-adressen](virtual-network-public-ip-address.md#create-a-public-ip-address) voor meer informatie over het maken van een openbaar IP-adres.|
+   |Name|Yes|Moet uniek zijn voor de netwerk interface|
+   |Type|Yes|Omdat u een IP-configuratie toevoegt aan een bestaande netwerk interface en elke netwerk interface moet een [primaire](#primary) IP-configuratie hebben, is de enige optie **secundair**.|
+   |Toewijzings methode voor privé-IP-adres|Yes|[**Dynamisch**](#dynamic): Azure wijst het volgende beschik bare adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd. [**Statisch**](#static): u wijst een ongebruikt adres toe voor het adres bereik van het subnet waarin de netwerk interface is geïmplementeerd.|
+   |Openbaar IP-adres|No|**Uitgeschakeld:** Er is momenteel geen open bare IP-adres resource gekoppeld aan de IP-configuratie. **Ingeschakeld:** Selecteer een bestaand openbaar IP-adres voor IPv4 of maak een nieuwe. Lees het artikel [open bare IP-adressen](virtual-network-public-ip-address.md#create-a-public-ip-address) voor meer informatie over het maken van een openbaar IP-adres.|
 6. Voeg hand matig secundaire privé-IP-adressen toe aan het besturings systeem van de virtuele machine door de instructies in het artikel [meerdere IP-adressen toewijzen aan virtuele machines te](virtual-network-multiple-ip-addresses-portal.md#os-config) volt ooien. Zie [privé](#private) -IP-adressen voor speciale overwegingen voordat u IP-adressen hand matig toevoegt aan een besturings systeem van een virtuele machine. Voeg geen open bare IP-adressen toe aan het besturings systeem van de virtuele machine.
 
-**Opdrachten**
+**Opdracht**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -81,7 +81,7 @@ Mogelijk moet u de toewijzings methode van een IPv4-adres wijzigen, het statisch
 >[!NOTE]
 >Als de primaire netwerk interface meerdere IP-configuraties heeft en u het privé-IP-adres van de primaire IP-configuratie wijzigt, moet u de primaire en secundaire IP-adressen hand matig opnieuw toewijzen aan de netwerk interface in Windows (niet vereist voor Linux). Zie [meerdere IP-adressen toewijzen aan virtuele machines](virtual-network-multiple-ip-addresses-portal.md#os-config)om hand matig IP-adressen toe te wijzen aan een netwerk interface binnen een besturings systeem. Zie [privé](#private) IP-adressen voor speciale overwegingen voordat u IP-adressen hand matig toevoegt aan een besturings systeem voor een virtuele machine. Voeg geen open bare IP-adressen toe aan het besturings systeem van de virtuele machine.
 
-**Opdrachten**
+**Opdracht**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -97,7 +97,7 @@ U kunt [persoonlijke](#private) en [open bare](#public) IP-adressen verwijderen 
 3. Selecteer onder **instellingen**de optie **IP-configuraties**.
 4. Klik met de rechter muisknop op een [secundaire](#secondary) IP-configuratie (u kunt de [primaire](#primary) configuratie niet verwijderen) die u wilt verwijderen, selecteer **verwijderen**en selecteer vervolgens **Ja**om de verwijdering te bevestigen. Als aan de configuratie een resource met een openbaar IP-adres is gekoppeld, wordt de bron losgekoppeld van de IP-configuratie, maar de bron wordt niet verwijderd.
 
-**Opdrachten**
+**Opdracht**
 
 |Hulpprogramma|Opdracht|
 |---|---|

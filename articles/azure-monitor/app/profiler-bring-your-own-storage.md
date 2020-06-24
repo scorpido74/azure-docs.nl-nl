@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: a185ec4938670519029abaf6fa4d23b7bf5c5399
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 2f928ac2f8772942eb748d68a65662938b1405ed
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466529"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84882513"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Uw eigen opslag (BYOS) configureren voor Application Insights Profiler en Snapshot Debugger
 
@@ -32,7 +32,7 @@ Met uw eigen opslag kunt u deze artefacten uploaden naar een opslag account dat 
 
 ## <a name="prerequisites"></a>Vereisten
 * Zorg ervoor dat u uw opslag account op dezelfde locatie maakt als uw Application Insights-resource. Bijvoorbeeld Als uw Application Insights-bron zich in VS West 2 bevindt, moet uw opslag account ook in VS-West 2. 
-* Ken de rol ' Storage BLOB contributor ' toe aan de AAD-toepassing ' Diagnostische toegang tot vertrouwde opslag ' in uw opslag account via de gebruikers interface van de Access Control (IAM).
+* Verleen de rol ' Storage BLOB data contributor ' aan de AAD-toepassing ' Diagnostic Services Trusted Storage Access ' in uw opslag account via de gebruikers interface van de Access Control (IAM).
 * Als persoonlijke koppeling is ingeschakeld, configureert u de extra instelling om verbinding met onze vertrouwde micro soft-service van uw Virtual Network toe te staan. 
 
 ## <a name="how-to-enable-byos"></a>BYOS inschakelen
@@ -156,7 +156,7 @@ Er zijn twee opties voor het configureren van BYOS voor diagnostische gegevens o
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Configureren met behulp van Azure Resource Manager sjabloon
 
-1. Maak een Azure Resource Manager-sjabloon bestand met de volgende inhoud (BYOS. Temp late. json).
+1. Maak een Azure Resource Manager-sjabloon bestand met de volgende inhoud (byos.template.jsaan).
     ```json
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",

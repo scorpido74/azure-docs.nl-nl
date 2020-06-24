@@ -3,8 +3,8 @@ title: Netwerk configuratie voor Azure App Service synchroniseren
 titleSuffix: Azure SQL Managed Instance
 description: In dit artikel wordt beschreven hoe u uw netwerk configuratie synchroniseert voor Azure App Service hosting abonnement met uw door Azure SQL beheerd exemplaar.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 8aca5a4f76504f1e9c33f55101f697ea6b3b6856
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: a0192f204fdb0797d98947a174bf6d669034b666
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309897"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695450"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>De netwerk configuratie voor het hosten van Azure App Service met Azure SQL Managed instance synchroniseren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

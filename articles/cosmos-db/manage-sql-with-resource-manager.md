@@ -3,15 +3,15 @@ title: Azure Cosmos DB maken en beheren met Resource Manager-sjablonen
 description: Azure Resource Manager sjablonen gebruiken om Azure Cosmos DB te maken en te configureren voor Core-API (SQL)
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: b24998cbfdc037a6ded58fd17801c340c5891073
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3684feff10ee3a09cc07276895496524fd64deee
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684788"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262307"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>Azure Cosmos DB core-API-resources (SQL) beheren met Azure Resource Manager sjablonen
 
@@ -33,7 +33,7 @@ Als u een van de onderstaande Azure Cosmos DB resources wilt maken, kopieert u d
 
 Met deze sjabloon maakt u een Azure Cosmos-account in twee regio's met opties voor consistentie en failover, waarbij de data base en container zijn geconfigureerd voor de door Voer van automatisch schalen waarvoor de meeste beleids opties zijn ingeschakeld. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-[![Implementeren op Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-autoscale/azuredeploy.json":::
 
@@ -43,7 +43,7 @@ Met deze sjabloon maakt u een Azure Cosmos-account in twee regio's met opties vo
 
 Met deze sjabloon maakt u een Azure Cosmos-account in één regio met een container met analytische TTL-functionaliteit en opties voor hand matig of automatisch schalen. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-[![Implementeren op Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-analytical-store/azuredeploy.json":::
 
@@ -53,7 +53,7 @@ Met deze sjabloon maakt u een Azure Cosmos-account in één regio met een contai
 
 Met deze sjabloon maakt u een Azure Cosmos-account in twee regio's met opties voor consistentie en failover, waarbij de data base en container zijn geconfigureerd voor de standaard doorvoer waarvoor de meeste beleids opties zijn ingeschakeld. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-[![Implementeren op Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
@@ -63,7 +63,7 @@ Met deze sjabloon maakt u een Azure Cosmos-account in twee regio's met opties vo
 
 Met deze sjabloon maakt u een Azure Cosmos-account,-data base en-container met een opgeslagen procedure, trigger en door de gebruiker gedefinieerde functie. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-[![Implementeren op Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
@@ -73,7 +73,7 @@ Met deze sjabloon maakt u een Azure Cosmos-account,-data base en-container met e
 
 Met deze sjabloon maakt u een Azure Cosmos-account zonder laag en een Data Base met een gedeelde door Voer die kan worden gedeeld met Maxi maal 25 containers. Deze sjabloon is ook beschikbaar voor één klik op implementeren vanuit de Azure Quick Start-sjablonen galerie.
 
-[![Implementeren op Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-free%2Fazuredeploy.json)
+[![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-free%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-free/azuredeploy.json":::
 
@@ -81,7 +81,7 @@ Met deze sjabloon maakt u een Azure Cosmos-account zonder laag en een Data Base 
 
 Hier volgen enkele aanvullende bronnen:
 
-* [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
+* [Documentatie voor Azure Resource Manager](/azure/azure-resource-manager/)
 * [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
 * [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
 * [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

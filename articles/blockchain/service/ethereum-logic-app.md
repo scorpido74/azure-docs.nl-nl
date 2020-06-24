@@ -2,14 +2,14 @@
 title: Ethereum Block Chain-connector gebruiken met Azure Logic Apps-Azure Block Chain-Service
 description: Gebruik de Ethereum Block Chain-connector met Azure Logic Apps om slimme contract functies te activeren en te reageren op slimme contract gebeurtenissen.
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325224"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200729"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
 
@@ -114,7 +114,7 @@ Met de volgende stappen wordt bijvoorbeeld een op REST gebaseerde micro service 
     De configuratie van de logische app en de code bestanden worden gegenereerd in de **generatedLogicApp** -map.
 
 1. Bekijk de **generatedLogicApp/HelloBlockchain-** map. Er is een JSON-bestand van de logische app voor elke functie, gebeurtenis en eigenschap van een slim contract.
-1. Open de **generatedLogicApp/HelloBlockchain/service/eigenschap. Bestand RequestMessage. logicapp. json** en kopieer de inhoud.
+1. Open het bestand **generatedLogicApp/HelloBlockchain/service/property.RequestMessage.logicapp.js** en kopieer de inhoud.
 
     ![JSON-bestand met te kopiëren code](./media/ethereum-logic-app/requestmessage.png)
 
@@ -132,7 +132,7 @@ Met de volgende stappen wordt bijvoorbeeld een op REST gebaseerde micro service 
 
     ![Deel venster Logic Apps Designer met de HTTP POST-URL](./media/ethereum-logic-app/post-url.png)
 
-1. Gebruik krul om een HTTP POST-aanvraag te maken. Vervang de tijdelijke aanduiding tekst * \<http post\> -URL* door de URL van de vorige stap.
+1. Gebruik krul om een HTTP POST-aanvraag te maken. Vervang de tekst van de tijdelijke aanduiding door *\<HTTP POST URL\>* de URL uit de vorige stap.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -155,7 +155,7 @@ Om u te helpen bij het instellen van een verbinding met een Azure Block Chain se
 
 | Eigenschap | Beschrijving |
 |----------|-------------|
-|**Verbindingsnaam** | De naam van de API-verbinding. Vereist. |
+|**Verbindings naam** | De naam van de API-verbinding. Vereist. |
 |**RPC-eind punt Ethereum** | Het HTTP-adres van het knoop punt van de Azure Block Chain Service-trans actie. Vereist. Zie [het RPC-eind punt ophalen](#get-the-rpc-endpoint)voor meer informatie. |
 |**Persoonlijke sleutel** | Persoonlijke sleutel van het Ethereum-account. De persoonlijke sleutel of het account adres en het wacht woord zijn vereist voor trans acties. Zie [de persoonlijke sleutel ophalen](#get-the-private-key)voor meer informatie. |
 |**Account adres** | Adres van lid van Azure Block Chain Service-account. De persoonlijke sleutel of het account adres en het wacht woord zijn vereist voor trans acties. Zie [het account adres ophalen](#get-the-account-address)voor meer informatie. |
@@ -177,11 +177,11 @@ Het RPC-eindpunt adres van de Azure Block Chain-service is vereist om verbinding
 **Als u de Azure Portal wilt gebruiken:**
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Ga naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
+1. Ga naar het lid van Azure Block Chain Service. Selecteer **Transactieknooppunten** en de koppeling voor het standaardtransactieknooppunt.
 
     ![Pagina transactie knooppunten met de (standaard knooppunt) selectie](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. Selecteer**toegangs sleutels**voor **verbindings reeksen** > .
+1. Selecteer **Connection strings**  >  **toegangs sleutels**voor verbindings reeksen.
 1. Kopieer het eindpunt adres van **https (toegangs sleutel 1)** of **https (toegangs sleutel 2)**.
 
     ![Azure Portal met de connection string toegangs sleutels](./media/ethereum-logic-app/connection-string.png)

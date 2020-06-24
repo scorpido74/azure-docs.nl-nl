@@ -3,24 +3,22 @@ title: bestand opnemen
 description: bestand opnemen
 services: batch
 documentationcenter: ''
-author: LauraBrenner
+author: JnHs
 manager: evansma
 editor: ''
-ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.workload: ''
-ms.date: 04/03/2020
-ms.author: labrenne
+ms.date: 06/16/2020
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb35021ad7e4d735a7dd521e39e4fe5fd102ae01
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80657482"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888359"
 ---
 ### <a name="general-requirements"></a>Algemene vereisten
 
@@ -49,13 +47,13 @@ Aanvullende vereisten voor VNet verschillen, afhankelijk van of de Batch-pool zi
 **Aanvullende netwerkresources**: Batch kent automatisch extra netwerkresources toe aan de resourcegroep met het VNet.
 
 > [!IMPORTANT]
->Voor elke 50 toegewezen knoop punten (of elke 20 knoop punten met een lage prioriteit) wijst batch: één netwerk beveiligings groep (NSG), één openbaar IP-adres en één load balancer. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote Pools moet u mogelijk een quotum verhoging aanvragen voor een of meer van deze resources.
+>Voor elke knoop punt met 100 toegewezen of lage prioriteit wordt de batch: één netwerk beveiligings groep (NSG), één openbaar IP-adres en één load balancer. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote Pools moet u mogelijk een quotum verhoging aanvragen voor een of meer van deze resources.
 
 #### <a name="network-security-groups-batch-default"></a>Netwerk beveiligings groepen: batch-standaard
 
 Het subnet moet inkomende communicatie van de batch-service toestaan om taken te kunnen plannen op de reken knooppunten en uitgaande communicatie om te communiceren met Azure Storage of andere resources, zoals nodig is voor uw werk belasting. Voor Pools in de virtuele-machine configuratie voegt batch Nsg's toe op het niveau van netwerk interfaces (Nic's) dat is gekoppeld aan reken knooppunten. Deze Nsg's zijn geconfigureerd met de volgende aanvullende regels:
 
-* Binnenkomend TCP-verkeer op de poorten 29876 en 29877 van de batch service- `BatchNodeManagement` IP-adressen die overeenkomen met het servicetag.
+* Binnenkomend TCP-verkeer op de poorten 29876 en 29877 van de batch service-IP-adressen die overeenkomen met het servicetag `BatchNodeManagement` .
 * Binnenkomend TCP-verkeer op poort 22 (Linux-knooppunten) of poort 3389 (Windows-knooppunten) om externe toegang te verlenen. Voor bepaalde typen taken met meerdere instanties in Linux (zoals MPI), moet u ook SSH-poort 22 verkeer toestaan voor IP-adressen in het subnet met de batch Compute-knoop punten. Dit kan worden geblokkeerd per NSG-regels op subnetniveau (zie hieronder).
 * Uitgaand verkeer op een willekeurige poort naar het virtuele netwerk. Dit kan worden gewijzigd per NSG-regels op subnetniveau (zie hieronder).
 * Uitgaand verkeer op een wille keurige poort naar Internet. Dit kan worden gewijzigd per NSG-regels op subnetniveau (zie hieronder).
@@ -77,7 +75,7 @@ Configureer inkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u 
 | IP-adressen van gebruikers bronnen voor het op afstand verkrijgen van toegang tot de reken knooppunten en/of het subnet van het reken knooppunt voor Linux-taken voor meerdere exemplaren, indien nodig. | N.v.t. | * | Alle | 3389 (Windows), 22 (Linux) | TCP | Toestaan |
 
 > [!WARNING]
-> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Daarom is het raadzaam om de `BatchNodeManagement` servicetag (of Regional variant) te gebruiken voor NSG-regels. Het is niet raadzaam om NSG regels rechtstreeks met batch service-IP-adressen in te vullen.
+> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Daarom is het raadzaam om de servicetag `BatchNodeManagement` (of Regional variant) te gebruiken voor NSG-regels. Het is niet raadzaam om NSG regels rechtstreeks met batch service-IP-adressen in te vullen.
 
 **Uitgaande beveiligingsregels**
 

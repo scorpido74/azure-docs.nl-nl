@@ -6,15 +6,15 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282482"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712221"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Bewaking en diagnostische gegevens voor Azure Service Fabric
 
-Dit artikel bevat een overzicht van controle en diagnostische gegevens voor Azure Service Fabric. Bewaking en diagnose zijn essentieel voor het ontwikkelen, testen en implementeren van werk belastingen in elke cloud omgeving. U kunt bijvoorbeeld bijhouden hoe uw toepassingen worden gebruikt, de acties die worden uitgevoerd door het Service Fabric platform, het resource gebruik met prestatie meter items en de algehele status van uw cluster. U kunt deze informatie gebruiken om problemen vast te stellen en te verhelpen en te voor komen dat ze in de toekomst optreden. In de volgende gedeelten wordt elk gebied van Service Fabric bewaking in het kort uitgelegd voor productie werkbelastingen. 
+Dit artikel bevat een overzicht van controle en diagnostische gegevens voor Azure Service Fabric. Bewaking en diagnose zijn essentieel voor het ontwikkelen, testen en implementeren van workloads in elke cloudomgeving. U kunt bijvoorbeeld bijhouden hoe uw toepassingen worden gebruikt, de acties die worden uitgevoerd door het Service Fabric platform, het resource gebruik met prestatie meter items en de algehele status van uw cluster. U kunt deze informatie gebruiken om problemen vast te stellen en te verhelpen en te voor komen dat ze in de toekomst optreden. In de volgende gedeelten wordt elk gebied van Service Fabric bewaking in het kort uitgelegd voor productie werkbelastingen. 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -35,13 +35,13 @@ Een gebruiker heeft controle over welke telemetrie afkomstig is van de toepassin
 
 Service Fabric biedt een uitgebreide set gebeurtenissen uit het vak. Deze [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md) zijn toegankelijk via de Event Store of het operationele kanaal (gebeurtenis kanaal dat wordt weer gegeven door het platform). 
 
-* Service Fabric gebeurtenis kanalen: in Windows zijn Service Fabric gebeurtenissen beschikbaar van één ETW-provider met een set relevante `logLevelKeywordFilters` gegevens die worden gebruikt om te kiezen tussen operationele en data & Messa ging channels. Dit is de manier waarop we uitgaande service Fabric gebeurtenissen die moeten worden gefilterd, scheiden. In Linux komen Service Fabric gebeurtenissen via LTTng en worden ze in één opslag tabel geplaatst, van waaruit ze kunnen worden gefilterd als ze nodig zijn. Deze kanalen bevatten gestructureerde, gestructureerde gebeurtenissen die kunnen worden gebruikt om de status van uw cluster beter te begrijpen. Diagnostische gegevens zijn standaard ingeschakeld tijdens het maken van het cluster, waardoor een Azure Storage tabel wordt gemaakt waarin de gebeurtenissen van deze kanalen voor u in de toekomst worden verzonden. 
+* Service Fabric gebeurtenis kanalen: in Windows zijn Service Fabric gebeurtenissen beschikbaar van één ETW-provider met een set relevante `logLevelKeywordFilters` gegevens die worden gebruikt om te kiezen tussen operationele en Data & Messa ging channels. Dit is de manier waarop we uitgaande service Fabric gebeurtenissen die moeten worden gefilterd, scheiden. In Linux komen Service Fabric gebeurtenissen via LTTng en worden ze in één opslag tabel geplaatst, van waaruit ze kunnen worden gefilterd als ze nodig zijn. Deze kanalen bevatten gestructureerde, gestructureerde gebeurtenissen die kunnen worden gebruikt om de status van uw cluster beter te begrijpen. Diagnostische gegevens zijn standaard ingeschakeld tijdens het maken van het cluster, waardoor een Azure Storage tabel wordt gemaakt waarin de gebeurtenissen van deze kanalen voor u in de toekomst worden verzonden. 
 
 * Event Store: de Event Store is een functie die wordt aangeboden door het platform dat Service Fabric platform gebeurtenissen bevat die beschikbaar zijn in de Service Fabric Explorer en via REST API. Op basis van de tijd van de gebeurtenis ziet u een moment opname van wat er in uw cluster gebeurt voor elke entiteit, bijvoorbeeld knoop punt, service, toepassing en query. Meer informatie over de Event Store vindt u in het [overzicht van Event Store](service-fabric-diagnostics-eventstore.md).    
 
 ![Event Store](media/service-fabric-diagnostics-overview/eventstore.png)
 
-De beschik bare diagnostische gegevens bevinden zich in de vorm van een uitgebreide set gebeurtenissen uit het vak. Deze [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md) illustreren acties die door het platform worden uitgevoerd op verschillende entiteiten, zoals knoop punten, toepassingen, services, partities, enzovoort. Als er in het laatste scenario hierboven een knoop punt actief was, zou het platform een `NodeDown` gebeurtenis kunnen genereren en kan hij onmiddellijk op de hoogte worden gesteld door het bewakings programma van Choice. Andere veelvoorkomende voor `ApplicationUpgradeRollbackStarted` beelden `PartitionReconfigured` zijn of tijdens een failover. **Dezelfde gebeurtenissen zijn beschikbaar voor zowel Windows-als Linux-clusters.**
+De beschik bare diagnostische gegevens bevinden zich in de vorm van een uitgebreide set gebeurtenissen uit het vak. Deze [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md) illustreren acties die door het platform worden uitgevoerd op verschillende entiteiten, zoals knoop punten, toepassingen, services, partities, enzovoort. Als er in het laatste scenario hierboven een knoop punt actief was, zou het platform een gebeurtenis kunnen genereren `NodeDown` en kan hij onmiddellijk op de hoogte worden gesteld door het bewakings programma van Choice. Andere veelvoorkomende voor beelden zijn `ApplicationUpgradeRollbackStarted` of `PartitionReconfigured` tijdens een failover. **Dezelfde gebeurtenissen zijn beschikbaar voor zowel Windows-als Linux-clusters.**
 
 De gebeurtenissen worden verzonden via de standaard kanalen in Windows en Linux en kunnen worden gelezen door elk bewakings programma dat deze ondersteunt. De Azure Monitor oplossing is Azure Monitor Logboeken. U kunt meer lezen over de integratie van de [Azure monitor logboeken](service-fabric-diagnostics-event-analysis-oms.md) , met daarin een aangepast operationeel dash board voor uw cluster en enkele voorbeeld query's van waaruit u waarschuwingen kunnen maken. Er zijn meer concepten voor cluster bewaking beschikbaar op [platform niveau gebeurtenis en logboek generatie](service-fabric-diagnostics-event-generation-infra.md).
 

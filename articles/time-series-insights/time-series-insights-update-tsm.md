@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 359837ef5d202cd0e98a6c7cf429a34a38fb7d70
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580599"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052168"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
 
@@ -100,9 +100,9 @@ Instanties worden gedefinieerd door **timeSeriesId**, **typeId**, **name**, **De
 
 | Eigenschap | Beschrijving |
 | --- | ---|
-| timeSeriesId | De UUID van de tijd reeks waaraan het exemplaar is gekoppeld. |
-| typeId | De UUID van het model van de tijd reeks waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
-| name | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
+| timeSeriesId | De unieke ID van de tijd reeks waaraan het exemplaar is gekoppeld. In de meeste gevallen worden instanties uniek geïdentificeerd door een eigenschap zoals deviceId of assetId. In sommige gevallen kan een specifiek samengestelde ID worden gebruikt die Maxi maal drie eigenschappen combineert. |
+| typeId | De hoofdletter gevoelige unieke teken reeks-ID van het tijds reeks model waaraan het exemplaar is gekoppeld. Alle gedetecteerde nieuwe instanties worden standaard gekoppeld aan een standaard type.
+| naam | De eigenschap **name** is optioneel en hoofdletter gevoelig. Als de **naam** niet beschikbaar is, wordt standaard **timeSeriesId**. Als er een naam wordt gegeven, is **timeSeriesId** nog steeds beschikbaar [.](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | Een tekst beschrijving van het exemplaar. |
 | hierarchyIds | Hiermee definieert u de hiërarchieën waarvan het exemplaar deel uitmaakt. |
 | instanceFields | De eigenschappen van een exemplaar en alle statische gegevens waarmee een exemplaar wordt gedefinieerd. Ze definiëren waarden van hiërarchie-of niet-hiërarchie-eigenschappen, terwijl indexeren ook ondersteuning biedt voor het uitvoeren van zoek bewerkingen. |
@@ -149,7 +149,7 @@ Hiërarchieën worden gedefinieerd door de hiërarchie **-id**, **naam**en **bro
 | Eigenschap | Beschrijving |
 | ---| ---|
 | id | De unieke id voor de hiërarchie die wordt gebruikt, bijvoorbeeld wanneer u een exemplaar definieert. |
-| name | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
+| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor de hiërarchie. |
 | source | Hiermee geeft u de organisatie hiërarchie of het pad op. Dit is een bovenliggende en onderliggende volg orde van de hiërarchie die gebruikers willen maken. De bovenliggende/onderliggende eigenschappen van het toewijzings exemplaar velden. |
 
 Hiërarchieën worden weer gegeven in JSON als:
@@ -183,15 +183,15 @@ Hiërarchieën worden weer gegeven in JSON als:
 
 In het vorige voor beeld van JSON:
 
-* `Location`Hiermee definieert u een hiërarchie `states` met bovenliggend `cities`en onderliggend item. Elk `location` kan meerdere `states`hebben, die op zijn beurt meerdere `cities`kunnen bevatten.
-* `ManufactureDate`Hiermee definieert u een hiërarchie `year` met bovenliggend `month`en onderliggend item. Elk `ManufactureDate` kan meerdere `years`hebben, die op zijn beurt meerdere `months`kunnen bevatten.
+* `Location`Hiermee definieert u een hiërarchie met bovenliggend `states` en onderliggend item `cities` . Elk `location` kan meerdere hebben `states` , die op zijn beurt meerdere kunnen bevatten `cities` .
+* `ManufactureDate`Hiermee definieert u een hiërarchie met bovenliggend `year` en onderliggend item `month` . Elk `ManufactureDate` kan meerdere hebben `years` , die op zijn beurt meerdere kunnen bevatten `months` .
 
 > [!TIP]
 > Lees voor Time Series Insights instance API en ruwe ondersteuning het artikel [gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Hiërarchie-voor beeld
 
-Bekijk een voor beeld waarin **H1** hiërarchie H1 `building`, `floor`en `room` als onderdeel van de **instanceFieldNames** -definitie:
+Bekijk een voor beeld waarin **H1** hiërarchie H1 `building` , `floor` en `room` als onderdeel van de **instanceFieldNames** -definitie:
 
 ```JSON
 {
@@ -240,8 +240,8 @@ De typen van de tijd reeks model worden gedefinieerd op basis van **id**, **naam
 
 | Eigenschap | Beschrijving |
 | ---| ---|
-| id | De UUID voor het type. |
-| name | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
+| id | De hoofdletter gevoelige unieke teken reeks-ID voor het type. |
+| naam | Een teken reeks die wordt gebruikt om een naam op te geven voor het type. |
 | description | Een beschrijving van de teken reeks voor het type. |
 | variabelen | Geef de variabelen op die zijn gekoppeld aan het type. |
 

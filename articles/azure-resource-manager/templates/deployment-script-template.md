@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/19/2020
 ms.author: jgao
-ms.openlocfilehash: fb910260c562a41871fe0cd13d5e5e9652b2017d
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 3d9ab41fdb05eca3b39bf1ad222f6d42a3311b77
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417103"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193721"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -139,7 +139,7 @@ Details van eigenschaps waarde:
 - **soort**: Geef het type script op. Momenteel worden Azure PowerShell-en Azure CLI-scripts ondersteund. De waarden zijn **AzurePowerShell** en **AzureCLI**.
 - **updatetag**: als u deze waarde wijzigt tussen de implementaties van een sjabloon, wordt het implementatie script opnieuw uitgevoerd. Gebruik de functie newGuid () of utcNow () die moet worden ingesteld als de defaultValue van een para meter. Zie [script meer dan één keer uitvoeren](#run-script-more-than-once)voor meer informatie.
 - **containerSettings**: Geef de instellingen op om Azure container instance aan te passen.  **containerGroupName** is voor het opgeven van de naam van de container groep.  Als u niets opgeeft, wordt de groeps naam automatisch gegenereerd.
-- **storageAccountSettings**: Geef de instellingen op om een bestaand opslag account te gebruiken. Als u niets opgeeft, wordt er automatisch een opslag account gemaakt. Zie [een bestaand opslag account gebruiken](#use-an-existing-storage-account).
+- **storageAccountSettings**: Geef de instellingen op om een bestaand opslag account te gebruiken. Als u niets opgeeft, wordt er automatisch een opslag account gemaakt. Zie [een bestaand opslag account gebruiken](#use-existing-storage-account).
 - **azPowerShellVersion** / **azCliVersion**: Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
 - **argumenten**: Geef de parameter waarden op. De waarden worden gescheiden door spaties.
 - **omgevings variabelen**: Geef de omgevings variabelen op die moeten worden door gegeven aan het script. Zie [implementatie scripts ontwikkelen](#develop-deployment-scripts)voor meer informatie.
@@ -152,9 +152,9 @@ Details van eigenschaps waarde:
 
 ### <a name="additional-samples"></a>Aanvullende voor beelden
 
-- [een certificaat maken en toewijzen aan een sleutel kluis](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
-
-- [een door de gebruiker toegewezen beheerde identiteit maken en toewijzen aan een resource groep en een implementatie script uitvoeren](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json).
+- Voor [Beeld 1](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json): een sleutel kluis maken en implementatie script gebruiken om een certificaat toe te wijzen aan de sleutel kluis.
+- Voor [Beeld 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): een resource groep maken op abonnements niveau, een sleutel kluis maken in de resource groep en vervolgens het implementatie script gebruiken om een certificaat toe te wijzen aan de sleutel kluis.
+- Voor [Beeld 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): een door de gebruiker toegewezen beheerde identiteit maken, de rol Inzender toewijzen aan de identiteit op het niveau van de resource groep, een sleutel kluis maken en vervolgens het implementatie script gebruiken om een certificaat toe te wijzen aan de sleutel kluis.
 
 > [!NOTE]
 > U kunt het beste een door de gebruiker toegewezen identiteit maken en vooraf machtigingen verlenen. U kunt zich aanmelden en aan machtigingen gerelateerde fouten krijgen als u de identiteit maakt en machtigingen verleent in dezelfde sjabloon waar u implementatie scripts uitvoert. Het duurt enige tijd voordat de machtigingen van kracht worden.
@@ -168,7 +168,7 @@ Voor de volgende sjabloon is één resource gedefinieerd met het `Microsoft.Reso
 > [!NOTE]
 > Omdat de inline-implementatie scripts tussen dubbele aanhalings tekens staan, moeten de teken reeksen in de implementatie scripts worden geescaped met behulp van een **&#92;** of tussen enkele aanhalings tekens staan. U kunt ook overwegen om de teken reeks vervanging te gebruiken zoals deze wordt weer gegeven in het vorige JSON-voor beeld.
 
-Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output`wordt gebruikt voor fout opsporing. Zie [debug Deployment scripts](#debug-deployment-scripts)(Engelstalig) voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjablonen](#sample-templates)voor de beschrijving van de eigenschap.
+Het script neemt één para meter en de waarde van de para meter. **DeploymentScriptOutputs** wordt gebruikt voor het opslaan van uitvoer.  In de sectie outputs ziet u hoe u met de regel **waarde** toegang krijgt tot de opgeslagen waarden. `Write-Output`wordt gebruikt voor fout opsporing. Zie [implementatie scripts bewaken en problemen oplossen](#monitor-and-troubleshoot-deployment-scripts)voor meer informatie over het openen van het uitvoer bestand.  Zie [voorbeeld sjablonen](#sample-templates)voor de beschrijving van de eigenschap.
 
 Als u het script wilt uitvoeren, selecteert u **proberen** de Cloud shell te openen en plakt u de volgende code in het deel venster shell.
 
@@ -244,66 +244,7 @@ Uitvoer van het implementatie script moet worden opgeslagen op de AZ_SCRIPTS_OUT
 
 [JQ](https://stedolan.github.io/jq/) wordt in het vorige voor beeld gebruikt. Het wordt geleverd met de container installatie kopieën. Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
-## <a name="develop-deployment-scripts"></a>Implementatie scripts ontwikkelen
-
-### <a name="handle-non-terminating-errors"></a>Niet-afsluit fouten verwerken
-
-U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de **$ErrorActionPreference** variabele in uw implementatie script. Als de variabele niet in uw implementatie script is ingesteld, gebruikt de script service de standaard waarde **door gaan**.
-
-De script service stelt de inrichtings status van de resource in op **mislukt** wanneer het script een fout tegen komt ondanks de instelling van $ErrorActionPreference.
-
-### <a name="pass-secured-strings-to-deployment-script"></a>Beveiligde teken reeksen door geven aan implementatie script
-
-Als omgevings variabelen (EnvironmentVariable) in uw container instanties worden ingesteld, kunt u een dynamische configuratie opgeven van de toepassing of het script dat door de container wordt uitgevoerd. Met het implementatie script worden niet-beveiligde en beveiligde omgevings variabelen op dezelfde manier verwerkt als Azure container instance. Zie [omgevings variabelen instellen in container instanties](../../container-instances/container-instances-environment-variables.md#secure-values)voor meer informatie.
-
-De Maxi maal toegestane grootte voor omgevings variabelen is 64 kB.
-
-## <a name="debug-deployment-scripts"></a>Fout opsporing voor implementatie scripts
-
-De script service maakt een [opslag account](../../storage/common/storage-account-overview.md) (tenzij u een bestaand opslag account opgeeft) en een [container exemplaar](../../container-instances/container-instances-overview.md) voor het uitvoeren van een script. Als deze resources automatisch worden gemaakt door de script service, hebben beide bronnen het **azscripts** -achtervoegsel in de resource namen.
-
-![Bron namen van Resource Manager-sjabloon implementatie script](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
-
-Het gebruikers script, de uitvoerings resultaten en het stdout-bestand worden opgeslagen in de bestands shares van het opslag account. Er bevindt zich een map met de naam **azscripts**. In de map zijn er twee mappen voor de invoer en de uitvoer bestanden: **azscriptinput** en **azscriptoutput**.
-
-De uitvoermap bevat een **executionresult. json** en het script uitvoer bestand. U kunt het fout bericht voor het uitvoeren van scripts bekijken in **executionresult. json**. Het uitvoer bestand wordt alleen gemaakt wanneer het script is uitgevoerd. De map invoer bevat een script bestand voor het systeem-Power shell en de script bestanden voor de gebruikers implementatie. U kunt het script bestand voor de gebruikers implementatie vervangen door een herziene versie en het implementatie script opnieuw uitvoeren vanuit het Azure container-exemplaar.
-
-U kunt de informatie over de implementatie script bron implementeren op het niveau van de resource groep en het abonnements niveau door gebruik te maken van REST API:
-
-```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
-```
-
-```rest
-/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
-```
-
-In het volgende voor beeld wordt [ARMClient](https://github.com/projectkudu/ARMClient)gebruikt:
-
-```azurepowershell
-armclient login
-armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
-```
-
-De uitvoer is vergelijkbaar met:
-
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
-
-In de uitvoer ziet u de implementatie status en de resource-Id's van het implementatie script.
-
-De volgende REST API retourneert het logboek:
-
-```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
-```
-
-Het werkt alleen als de implementatie script bronnen worden verwijderd.
-
-Als u de deploymentScripts-resource in de portal wilt bekijken, selecteert u **verborgen typen weer geven**:
-
-![Implementatie script van Resource Manager-sjabloon, verborgen typen weer geven, portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
-
-## <a name="use-an-existing-storage-account"></a>Een bestaand opslag account gebruiken
+## <a name="use-existing-storage-account"></a>Bestaand opslag account gebruiken
 
 Een opslag account en een container exemplaar zijn nodig voor het uitvoeren van scripts en het oplossen van problemen. U hebt de opties om een bestaand opslag account op te geven, anders wordt het opslag account samen met het container exemplaar automatisch gemaakt door de script service. De vereisten voor het gebruik van een bestaand opslag account:
 
@@ -347,6 +288,180 @@ Zie [voorbeeld sjablonen](#sample-templates) voor een volledige `Microsoft.Resou
 
 Wanneer een bestaand opslag account wordt gebruikt, maakt de script service een bestands share met een unieke naam. Zie [implementatie script bronnen opschonen](#clean-up-deployment-script-resources) voor de manier waarop de script service de bestands share opschoont.
 
+## <a name="develop-deployment-scripts"></a>Implementatie scripts ontwikkelen
+
+### <a name="handle-non-terminating-errors"></a>Niet-afsluit fouten verwerken
+
+U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de **$ErrorActionPreference** variabele in uw implementatie script. Als de variabele niet in uw implementatie script is ingesteld, gebruikt de script service de standaard waarde **door gaan**.
+
+De script service stelt de inrichtings status van de resource in op **mislukt** wanneer het script een fout tegen komt ondanks de instelling van $ErrorActionPreference.
+
+### <a name="pass-secured-strings-to-deployment-script"></a>Beveiligde teken reeksen door geven aan implementatie script
+
+Als omgevings variabelen (EnvironmentVariable) in uw container instanties worden ingesteld, kunt u een dynamische configuratie opgeven van de toepassing of het script dat door de container wordt uitgevoerd. Met het implementatie script worden niet-beveiligde en beveiligde omgevings variabelen op dezelfde manier verwerkt als Azure container instance. Zie [omgevings variabelen instellen in container instanties](../../container-instances/container-instances-environment-variables.md#secure-values)voor meer informatie.
+
+De Maxi maal toegestane grootte voor omgevings variabelen is 64 kB.
+
+## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Implementatie scripts bewaken en problemen oplossen
+
+De script service maakt een [opslag account](../../storage/common/storage-account-overview.md) (tenzij u een bestaand opslag account opgeeft) en een [container exemplaar](../../container-instances/container-instances-overview.md) voor het uitvoeren van een script. Als deze resources automatisch worden gemaakt door de script service, hebben beide bronnen het **azscripts** -achtervoegsel in de resource namen.
+
+![Bron namen van Resource Manager-sjabloon implementatie script](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
+
+Het gebruikers script, de uitvoerings resultaten en het stdout-bestand worden opgeslagen in de bestands shares van het opslag account. Er bevindt zich een map met de naam **azscripts**. In de map zijn er twee mappen voor de invoer en de uitvoer bestanden: **azscriptinput** en **azscriptoutput**.
+
+De uitvoermap bevat eenexecutionresult.jsen het uitvoer bestand **van** het script. U kunt het fout bericht voor het uitvoeren van scripts zien in **executionresult.jsop**. Het uitvoer bestand wordt alleen gemaakt wanneer het script is uitgevoerd. De map invoer bevat een script bestand voor het systeem-Power shell en de script bestanden voor de gebruikers implementatie. U kunt het script bestand voor de gebruikers implementatie vervangen door een herziene versie en het implementatie script opnieuw uitvoeren vanuit het Azure container-exemplaar.
+
+### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+
+Nadat u een implementatie script bron hebt geïmplementeerd, wordt de resource vermeld onder de resource groep in de Azure Portal. Op de volgende scherm afbeelding ziet u de pagina overzicht van een implementatie script Bron:
+
+![Overzicht van de portal voor de implementatie van Resource Manager-sjablonen](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
+
+Op de pagina overzicht vindt u enkele belang rijke informatie over de resource, zoals de **inrichtings status**, het **opslag account**, de **container instantie**en de **Logboeken**.
+
+Vanuit het menu links kunt u de inhoud van het implementatie script bekijken, de argumenten die zijn door gegeven aan het script en de uitvoer.  U kunt ook een sjabloon voor het implementatie script exporteren, inclusief het implementatie script.
+
+### <a name="use-powershell"></a>PowerShell gebruiken
+
+Met Azure PowerShell kunt u implementatie scripts beheren op basis van het abonnement of het bereik van de resource groep:
+
+- [Get-AzDeploymentScript](/powershell/module/az.resources/get-azdeploymentscript): Hiermee worden de implementatie scripts opgehaald of weer gegeven.
+- [Get-AzDeploymentScriptLog](/powershell/module/az.resources/get-azdeploymentscriptlog): Hiermee wordt het logboek van een uitvoering van een implementatie script opgehaald.
+- [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): Hiermee verwijdert u een implementatie script en de bijbehorende resources.
+- [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): slaat het logboek van een uitvoering van een implementatie script op schijf op.
+
+De Get-AzDeploymentScript-uitvoer is vergelijkbaar met:
+
+```output
+Name                : runPowerShellInlineWithOutput
+Id                  : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput
+ResourceGroupName   : myds0618rg
+Location            : centralus
+SubscriptionId      : 01234567-89AB-CDEF-0123-456789ABCDEF
+ProvisioningState   : Succeeded
+Identity            : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/mydentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami
+ScriptKind          : AzurePowerShell
+AzPowerShellVersion : 3.0
+StartTime           : 6/18/2020 7:46:45 PM
+EndTime             : 6/18/2020 7:49:45 PM
+ExpirationDate      : 6/19/2020 7:49:45 PM
+CleanupPreference   : OnSuccess
+StorageAccountId    : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts
+ContainerInstanceId : /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts
+Outputs             :
+                      Key                 Value
+                      ==================  ==================
+                      text                Hello John Dole
+
+RetentionInterval   : P1D
+Timeout             : PT1H
+```
+
+### <a name="use-azure-cli"></a>Azure CLI gebruiken
+
+Met Azure CLI kunt u implementatie scripts beheren op basis van het abonnement of het bereik van de resource groep:
+
+- [AZ Deployment-scripts delete](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): een implementatie script verwijderen.
+- [AZ Deployment-scripts lijst](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): alle implementatie scripts weer geven.
+- [AZ Deployment-scripts show](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): een implementatie script ophalen.
+- [AZ Deployment-scripts show-log](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): script logboeken van de implementatie weer geven.
+
+De uitvoer van de lijst opdracht ziet er ongeveer als volgt uit:
+
+```json
+[
+  {
+    "arguments": "-name 'John Dole'",
+    "azPowerShellVersion": "3.0",
+    "cleanupPreference": "OnSuccess",
+    "containerSettings": {
+      "containerGroupName": null
+    },
+    "environmentVariables": null,
+    "forceUpdateTag": "20200618T194637Z",
+    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+    "identity": {
+      "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+      "type": "userAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami": {
+          "clientId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+          "principalId": "01234567-89AB-CDEF-0123-456789ABCDEF"
+        }
+      }
+    },
+    "kind": "AzurePowerShell",
+    "location": "centralus",
+    "name": "runPowerShellInlineWithOutput",
+    "outputs": {
+      "text": "Hello John Dole"
+    },
+    "primaryScriptUri": null,
+    "provisioningState": "Succeeded",
+    "resourceGroup": "myds0618rg",
+    "retentionInterval": "1 day, 0:00:00",
+    "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
+    "status": {
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts",
+      "endTime": "2020-06-18T19:49:45.926522+00:00",
+      "error": null,
+      "expirationTime": "2020-06-19T19:49:45.926522+00:00",
+      "startTime": "2020-06-18T19:46:45.667124+00:00",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts"
+    },
+    "supportingScriptUris": null,
+    "systemData": {
+      "createdAt": "2020-06-18T19:46:41.363741+00:00",
+      "createdBy": "someon@contoso.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2020-06-18T19:46:41.363741+00:00",
+      "lastModifiedBy": "someone@contoso.com",
+      "lastModifiedByType": "User"
+    },
+    "tags": null,
+    "timeout": "1:00:00",
+    "type": "Microsoft.Resources/deploymentScripts"
+  },
+```
+
+### <a name="use-rest-api"></a>Rest API gebruiken
+
+U kunt de informatie over de implementatie script bron implementeren op het niveau van de resource groep en het abonnements niveau door gebruik te maken van REST API:
+
+```rest
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
+```
+
+```rest
+/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
+```
+
+In het volgende voor beeld wordt [ARMClient](https://github.com/projectkudu/ARMClient)gebruikt:
+
+```azurepowershell
+armclient login
+armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
+```
+
+De uitvoer is vergelijkbaar met:
+
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
+
+In de uitvoer ziet u de implementatie status en de resource-Id's van het implementatie script.
+
+De volgende REST API retourneert het logboek:
+
+```rest
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
+```
+
+Het werkt alleen als de implementatie script bronnen worden verwijderd.
+
+Als u de deploymentScripts-resource in de portal wilt bekijken, selecteert u **verborgen typen weer geven**:
+
+![Implementatie script van Resource Manager-sjabloon, verborgen typen weer geven, portal](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
+
 ## <a name="clean-up-deployment-script-resources"></a>Implementatie script resources opschonen
 
 Een opslag account en een container exemplaar zijn nodig voor het uitvoeren van scripts en het oplossen van problemen. U hebt de mogelijkheid om een bestaand opslag account op te geven. anders wordt een opslag account samen met een container exemplaar automatisch door de script service gemaakt. De twee automatisch gemaakte resources worden verwijderd door de script service wanneer de uitvoering van het implementatie script wordt uitgevoerd in een Terminal status. Er worden kosten in rekening gebracht voor de resources totdat de resources zijn verwijderd. Zie [container instances prijzen](https://azure.microsoft.com/pricing/details/container-instances/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor de prijs informatie.
@@ -380,17 +495,9 @@ Uitvoering van het implementatie script is een idempotent-bewerking. Als geen va
 
 ## <a name="configure-development-environment"></a>De ontwikkelomgeving configureren
 
-U kunt een vooraf geconfigureerde docker-container installatie kopie gebruiken als uw ontwikkel omgeving voor implementatie scripts. De volgende procedure laat zien hoe u de docker-installatie kopie kunt configureren in Windows. Voor Linux en Mac vindt u de informatie op internet.
+U kunt een vooraf geconfigureerde docker-container installatie kopie gebruiken als uw ontwikkel omgeving voor implementatie scripts. Zie [docker ophalen](https://docs.docker.com/get-docker/)voor meer informatie over het installeren van docker.
+U moet ook het delen van bestanden configureren om de map te koppelen die de implementatie scripts bevat in docker-container.
 
-1. Installeer [docker Desktop](https://www.docker.com/products/docker-desktop) op uw ontwikkel computer.
-1. Open docker Desktop.
-1. Selecteer het pictogram docker bureau blad op de taak balken en selecteer vervolgens **instellingen**.
-1. Selecteer **gedeelde stations**, selecteer een lokaal station dat u beschikbaar wilt maken voor uw containers en selecteer vervolgens **Toep assen** .
-
-    ![Docker-station voor implementatie script van Resource Manager-sjabloon](./media/deployment-script-template/resource-manager-deployment-script-docker-setting-drive.png)
-
-1. Voer uw Windows-referenties in als u hierom wordt gevraagd.
-1. Open een Terminal venster, een opdracht prompt of Windows Power shell (gebruik Power shell ISE niet).
 1. Haal de installatie kopie van de implementatie script container op de lokale computer op:
 
     ```command
@@ -427,12 +534,11 @@ U kunt een vooraf geconfigureerde docker-container installatie kopie gebruiken a
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Selecteer **delen** als u een prompt krijgt.
-1. In de volgende scherm afbeelding ziet u hoe u een Power shell-script uitvoert, aan de hand van een bestand HelloWorld. ps1 in de map d:\docker.
+1. In de volgende scherm afbeelding ziet u hoe u een Power shell-script uitvoert, op voorwaarde dat u een helloworld.ps1 bestand in het gedeelde station hebt.
 
     ![Docker-opdracht voor implementatie script van Resource Manager-sjabloon](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-Nadat het script is getest, kunt u het gebruiken als een implementatie script.
+Nadat het script is getest, kunt u dit als een implementatie script in uw sjablonen gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

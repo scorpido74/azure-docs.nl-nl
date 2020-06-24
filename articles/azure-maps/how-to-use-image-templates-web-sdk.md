@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804806"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207087"
 ---
 # <a name="how-to-use-image-templates"></a>Afbeeldingssjablonen gebruiken
 
@@ -26,13 +26,13 @@ Afbeeldingen kunnen worden gebruikt met HTML-markeringen en verschillende lagen 
 
 Om te zorgen voor goede prestaties met lagen, laadt u de afbeeldingen in de kaart afbeelding sprite resource vóór rendering. De [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions), van de SymbolLayer, laadt standaard een aantal markerings afbeeldingen in een aantal kleuren in de kaart afbeelding sprite. Deze markerings afbeeldingen en meer zijn beschikbaar als SVG-sjablonen. Ze kunnen worden gebruikt voor het maken van installatie kopieën met aangepaste schalen of voor het gebruik van de primaire en secundaire kleur van klanten. In totaal zijn er 42 afbeeldings sjablonen beschikbaar: 27 symbool pictogrammen en 15 veelhoek patronen.
 
-Afbeeldings sjablonen kunnen worden toegevoegd aan de kaart installatie kopie sprite-resources `map.imageSprite.createFromTemplate` met behulp van de functie. Met deze functie kunnen Maxi maal vijf para meters worden door gegeven in;
+Afbeeldings sjablonen kunnen worden toegevoegd aan de kaart installatie kopie sprite-resources met behulp van de `map.imageSprite.createFromTemplate` functie. Met deze functie kunnen Maxi maal vijf para meters worden door gegeven in;
 
 ```javascript
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-De `id` is een unieke id die u maakt. De `id` wordt toegewezen aan de installatie kopie wanneer deze wordt toegevoegd aan de Maps-installatie kopie sprite. Gebruik deze id in de lagen om op te geven welke afbeeldings bron moet worden weer gegeven. Hiermee `templateName` geeft u de afbeeldings sjabloon op die moet worden gebruikt. Met `color` deze optie stelt u de primaire kleur van de afbeelding `secondaryColor` in en met de opties stelt u de secundaire kleur van de afbeelding in. Met `scale` de optie wordt de afbeeldings sjabloon geschaald voordat deze op de afbeelding Sprite wordt toegepast. Wanneer de installatie kopie wordt toegepast op de afbeelding sprite, wordt deze omgezet in een PNG-bestand. Voor een scherpe rendering is het beter om de afbeeldings sjabloon omhoog te schalen voordat u deze toevoegt aan de sprite, dan om deze te schalen in een laag.
+De `id` is een unieke id die u maakt. De `id` wordt toegewezen aan de installatie kopie wanneer deze wordt toegevoegd aan de Maps-installatie kopie sprite. Gebruik deze id in de lagen om op te geven welke afbeeldings bron moet worden weer gegeven. `templateName`Hiermee geeft u de afbeeldings sjabloon op die moet worden gebruikt. `color`Met deze optie stelt u de primaire kleur van de afbeelding in en `secondaryColor` met de opties stelt u de secundaire kleur van de afbeelding in. `scale`Met de optie wordt de afbeeldings sjabloon geschaald voordat deze op de afbeelding Sprite wordt toegepast. Wanneer de installatie kopie wordt toegepast op de afbeelding sprite, wordt deze omgezet in een PNG-bestand. Voor een scherpe rendering is het beter om de afbeeldings sjabloon omhoog te schalen voordat u deze toevoegt aan de sprite, dan om deze te schalen in een laag.
 
 Met deze functie wordt de afbeelding asynchroon geladen in de afbeelding sprite. Daarom wordt er een Promise geretourneerd die u kunt wachten tot deze functie is voltooid.
 
@@ -52,26 +52,26 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="use-an-image-template-with-a-symbol-layer"></a>Een afbeeldings sjabloon met een symbool laag gebruiken
 
-Zodra een afbeeldings sjabloon is geladen in de kaart afbeelding sprite, kan deze worden weer gegeven als een symbool in een symbool-laag door te verwijzen naar de bron- `image` id van de `iconOptions`installatie kopie in de optie van.
+Zodra een afbeeldings sjabloon is geladen in de kaart afbeelding sprite, kan deze worden weer gegeven als een symbool in een symbool-laag door te verwijzen naar de bron-ID van de installatie kopie in de `image` optie van `iconOptions` .
 
-In het volgende voor beeld wordt een symbool laag weer `marker-flat` gegeven met behulp van de afbeeldings sjabloon met een primaire groen kleur en een witte secundaire kleur. 
+In het volgende voor beeld wordt een symbool laag weer gegeven met behulp van de `marker-flat` afbeeldings sjabloon met een primaire groen kleur en een witte secundaire kleur. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Symbool laag met ingebouwde pictogram sjabloon" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de laag met het pictogram voor het Pendikte door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) in de <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>sjabloon met ingebouwde pictogrammen</a> op <a href='https://codepen.io'>CodePen</a>.
+Zie de laag met het pictogram voor het Pendikte door Azure Maps () in de <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>sjabloon met ingebouwde pictogrammen</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>Een afbeeldings sjabloon gebruiken langs een pad naar een regel
 
-Zodra een afbeeldings sjabloon is geladen in de kaart afbeelding sprite, kan deze worden weer gegeven langs het pad van een regel door een Lines Tring toe te voegen aan een gegevens bron en een Symbol `lineSpacing`-laag met een optie te gebruiken en door te verwijzen naar de `image` id van de `iconOptions`afbeeldings bron in de optie van th. 
+Zodra een afbeeldings sjabloon is geladen in de kaart afbeelding sprite, kan deze worden weer gegeven langs het pad van een regel door een Lines Tring toe te voegen aan een gegevens bron en een Symbol-laag met een optie te gebruiken `lineSpacing` en door te verwijzen naar de id van de afbeeldings bron in de `image` optie van th `iconOptions` . 
 
-In het volgende voor beeld wordt een roze lijn op de kaart weer gegeven en wordt een symbool `car` laag gebruikt met de afbeeldings sjabloon met een blauw primaire kleur van Dodger en een witte secundaire kleur. 
+In het volgende voor beeld wordt een roze lijn op de kaart weer gegeven en wordt een symbool laag gebruikt met de `car` afbeeldings sjabloon met een blauw primaire kleur van Dodger en een witte secundaire kleur. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Lijn laag met ingebouwd pictogram sjabloon" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>laag met de ingebouwde pictogram sjabloon met</a> behulp van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>().
+Zie de <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>laag met de ingebouwde pictogram sjabloon met</a> behulp van Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>().
 </iframe>
 
 > [!TIP]
@@ -79,14 +79,14 @@ Zie de <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>laag met de ingebouwde
 
 ## <a name="use-an-image-template-with-a-polygon-layer"></a>Een afbeeldings sjabloon met een polygoon laag gebruiken
 
-Zodra een afbeeldings sjabloon is geladen in de kaart afbeelding sprite, kan deze worden weer gegeven als een opvul patroon in een polygoon laag door te verwijzen naar de bron-ID `fillPattern` van de installatie kopie in de optie van de laag.
+Zodra een afbeeldings sjabloon is geladen in de kaart afbeelding sprite, kan deze worden weer gegeven als een opvul patroon in een polygoon laag door te verwijzen naar de bron-ID van de installatie kopie in de `fillPattern` optie van de laag.
 
-In het volgende voor beeld wordt een polygoon laag weer `dot` gegeven met behulp van de afbeeldings sjabloon met een rode primaire kleur en een transparante secundaire kleur.  
+In het volgende voor beeld wordt een polygoon laag weer gegeven met behulp `dot` van de afbeeldings sjabloon met een rode primaire kleur en een transparante secundaire kleur.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Veelhoek vullen met ingebouwd pictogram sjabloon" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bekijk de pen <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>-opvul veelhoek met de ingebouwde pictogram sjabloon</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Bekijk de pen <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>-opvul veelhoek met de ingebouwde pictogram sjabloon</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -94,21 +94,32 @@ Bekijk de pen <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>-opvul veelhoek
 
 ## <a name="use-an-image-template-with-an-html-marker"></a>Een afbeeldings sjabloon gebruiken met een HTML-markering
 
-U kunt een afbeeldings sjabloon ophalen met behulp van de `altas.getImageTemplate` functie en gebruiken als de inhoud van een HTML-markering. De sjabloon kan worden door gegeven in `htmlContent` de optie van de markering en vervolgens worden aangepast met `color`de `secondaryColor`opties, `text` en.
+U kunt een afbeeldings sjabloon ophalen met behulp `altas.getImageTemplate` van de functie en gebruiken als de inhoud van een HTML-markering. De sjabloon kan worden door gegeven in de `htmlContent` optie van de markering en vervolgens worden aangepast met `color` de `secondaryColor` Opties, en `text` .
 
-In het volgende voor beeld `marker-arrow` wordt de sjabloon gebruikt met een rode primaire kleur, een roze secundaire kleur en een tekst waarde van "00".
+In het volgende voor beeld wordt de `marker-arrow` sjabloon gebruikt met een rode primaire kleur, een roze secundaire kleur en een tekst waarde van "00".
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="HTML-markering met ingebouwde pictogram sjabloon" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de pen met ingebouwde pictogram sjabloon</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+Zie de <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-markering van de pen met ingebouwde pictogram sjabloon</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+
+> [!TIP]
+> Afbeeldings sjablonen kunnen ook worden gebruikt buiten de kaart. De getImageTemplate funciton retourneert een SVG-teken reeks met tijdelijke aanduidingen. `{color}`, `{secondaryColor}`, `{scale}`, `{text}`. Vervang deze waarden voor tijdelijke aanduidingen om een geldige SVG-teken reeks te maken. U kunt de SVG-teken reeks vervolgens rechtstreeks toevoegen aan het HTML DOM of deze converteren naar een gegevens-URI en invoegen in een afbeeldings code. Bijvoorbeeld:
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
 
 ## <a name="create-custom-reusable-templates"></a>Aangepaste herbruikbare sjablonen maken
 
 Als uw toepassing gebruikmaakt van hetzelfde pictogram met verschillende pictogrammen of als u een module maakt waarmee extra afbeeldings sjablonen worden toegevoegd, kunt u deze pictogrammen eenvoudig toevoegen en ophalen uit de Azure Maps Web-SDK. Gebruik de volgende statische functies in de `atlas` naam ruimte.
 
-| Naam | Retour type | Beschrijving | 
+| Name | Retour type | Beschrijving | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Hiermee voegt u een aangepaste SVG-afbeeldings sjabloon toe aan de Atlas-naam ruimte. |
 |  `getImageTemplate(templateName: string, scale?: number)`| tekenreeks | Hiermee wordt een SVG-sjabloon met de naam opgehaald. |
@@ -128,7 +139,7 @@ In het volgende voor beeld ziet u hoe u een SVG-sjabloon maakt en hoe u deze toe
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Aangepaste pictogram sjabloon toevoegen aan de Atlas-naam ruimte" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>aangepaste pictogram sjabloon pen toevoegen aan de Atlas-naam ruimte</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+Zie de <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>aangepaste pictogram sjabloon pen toevoegen aan de Atlas-naam ruimte</a> door Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="list-of-image-templates"></a>Lijst met afbeeldings sjablonen
@@ -176,6 +187,25 @@ Deze tabel bevat alle afbeeldings sjablonen die momenteel beschikbaar zijn in de
 | zigzag | zigzag-zigzag-Vertical | wijzen |  |
 | ![zigzag-/-pictogram](./media/image-templates/zig-zag.png) | ![het pictogram zigzag-zigzag-Vertical](./media/image-templates/zig-zag-vertical.png) | ![pictogram punten](./media/image-templates/dots.png) | |
 
+**Vooraf geladen afbeeldings pictogrammen**
+
+Met de kaart wordt een set pictogrammen geladen in de Maps-installatie kopie sprite met `marker` de `pin` sjablonen, en `pin-round` . De namen van deze pictogrammen en hun kleur waarden worden weer gegeven in de volgende tabel.
+
+| pictogram naam | color | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
+
 ## <a name="try-it-now-tool"></a>Hulp programma nu uitproberen
 
 Met het volgende hulp programma kunt u de verschillende ingebouwde afbeeldings sjablonen op verschillende manieren weer geven en de primaire en secundaire kleuren en schaal aanpassen.
@@ -183,7 +213,7 @@ Met het volgende hulp programma kunt u de verschillende ingebouwde afbeeldings s
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Opties voor pictogram sjablonen" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>sjabloon opties</a> voor het pictogram van de<a href='https://codepen.io/azuremaps'>@azuremaps</a>pen op Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Zie de <a href='https://codepen.io/azuremaps/pen/NQyaaO/'>sjabloon opties</a> voor het pictogram van de Pen op Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

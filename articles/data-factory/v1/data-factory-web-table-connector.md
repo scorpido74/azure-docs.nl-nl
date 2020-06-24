@@ -13,15 +13,15 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265712"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689755"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Gegevens verplaatsen van een bron van een webtabel met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-web-table-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-web-table-connector.md)
 > * [Versie 2 (huidige versie)](../connector-web-table.md)
 
 > [!NOTE]
@@ -36,7 +36,7 @@ Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een w
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze web Table-connector wilt gebruiken, moet u een zelf-hostende Integration Runtime (ook wel Data Management Gateway) instellen en `gatewayName` de eigenschap in de gekoppelde Sink-service configureren. Als u bijvoorbeeld van web Table naar Azure Blob-opslag wilt kopiëren, moet u de Azure Storage gekoppelde service als volgt configureren:
+Als u deze web Table-connector wilt gebruiken, moet u een zelf-hostende Integration Runtime (ook wel Data Management Gateway) instellen en de `gatewayName` eigenschap in de gekoppelde Sink-service configureren. Als u bijvoorbeeld van web Table naar Azure Blob-opslag wilt kopiëren, moet u de Azure Storage gekoppelde service als volgt configureren:
 
 ```json
 {
@@ -72,9 +72,9 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **Web** |Ja |
-| URL |URL naar de webbron |Ja |
-| authenticationType |Toegang. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **Web** |Yes |
+| URL |URL naar de webbron |Yes |
+| authenticationType |Toegang. |Yes |
 
 ### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 
@@ -100,11 +100,11 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
+| type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Yes |
 | path |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
-| TabIndex |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
+| TabIndex |De index van de tabel in de resource. Zie [index ophalen van een tabel in een sectie met een HTML-pagina](#get-index-of-a-table-in-an-html-page) voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Yes |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -163,7 +163,7 @@ In het volgende voor beeld ziet u hoe u gegevens uit een webtabel naar een Azure
 }
 ```
 
-**Azure Storage gekoppelde service**
+**Een gekoppelde Azure Storage-service**
 
 ```json
 {
@@ -288,7 +288,7 @@ Zie Eigenschappen van het webbron type voor de lijst met eigenschappen die worde
 2. Klik op **nieuwe query** op de werk balk, wijs **vanuit andere bronnen** naar en klik op **van web**.
 
     ![Menu Power Query](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. Voer in het dialoog venster **van het web** de **URL** in die u in de gekoppelde service-JSON zou gebruiken https://en.wikipedia.org/wiki/) (bijvoorbeeld: samen met het pad dat u opgeeft voor de gegevensset (bijvoorbeeld: AFI% 27s_100_Years... 100_Movies) en klik op **OK**.
+3. Voer in het dialoog venster **van het web** de **URL** in die u in de gekoppelde service-JSON zou gebruiken (bijvoorbeeld: https://en.wikipedia.org/wiki/) samen met het pad dat u opgeeft voor de gegevensset (bijvoorbeeld: AFI% 27s_100_Years... 100_Movies) en klik op **OK**.
 
     ![Vanuit het dialoog venster Web](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 

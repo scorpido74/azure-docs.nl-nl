@@ -3,24 +3,22 @@ title: Doorvoer eenheden automatisch opschalen-Azure Event Hubs | Microsoft Docs
 description: Schakel automatisch verg Roten in een naam ruimte in om doorvoer eenheden automatisch te schalen.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: dc6edaebebe89b6d4a35ada58d40795f86a935d3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: afd28fa878651b08443f7863c16cd22c1bc96e3d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72264467"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297321"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatisch schalen van Azure Event Hubs doorvoer eenheden
 Azure Event Hubs is een uiterst schaalbaar platform voor het streamen van gegevens. Als zodanig neemt Event Hubs gebruik vaak toe na het starten van de service. Voor dit gebruik moet u de vooraf vastgestelde [doorvoer eenheden](event-hubs-scalability.md#throughput-units) verg Roten om event hubs te schalen en grotere overdrachts snelheden af te handelen. De functie **automatisch verg Roten** van Event hubs wordt automatisch geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik. Het verhogen van doorvoer eenheden voor komt het beperken van scenario's, waarbij:
@@ -76,7 +74,7 @@ U kunt ook de functie voor automatisch verg Roten inschakelen en de instellingen
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Automatisch verg Roten inschakelen met behulp van een Azure Resource Manager sjabloon
 
-U kunt automatisch verg Roten inschakelen tijdens de implementatie van een Azure Resource Manager sjabloon. Stel de eigenschap bijvoorbeeld in `isAutoInflateEnabled` op **True** en stel `maximumThroughputUnits` deze in op 10. Bijvoorbeeld:
+U kunt automatisch verg Roten inschakelen tijdens de implementatie van een Azure Resource Manager sjabloon. Stel de `isAutoInflateEnabled` eigenschap bijvoorbeeld in op **True** en stel deze `maximumThroughputUnits` in op 10. Bijvoorbeeld:
 
 ```json
 "resources": [
@@ -126,5 +124,5 @@ Voor de volledige sjabloon, zie de [Event hubs naam ruimte maken en sjabloon ver
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 

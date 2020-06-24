@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020401"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711082"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Het SQL Information Protection-beleid in Azure Security Center aanpassen (preview-versie)
  
@@ -75,7 +75,11 @@ Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moe
 7. Zorg ervoor dat u in de Blade **Hoofdlabels** op **Opslaan** klikt om al uw wijzigingen toe te passen.
  
 Nadat uw Information Protection-beleid volledig is gedefinieerd en opgeslagen, is dit van toepassing op de classificatie van gegevens op alle Azure SQL-data bases in uw Tenant.
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>SQL Information Protection beheren met Azure PowerShell
+
+- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): haalt het effectief beveiligings beleid voor TENANT-SQL information op.
+- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): Hiermee stelt u het effectief beveiligings beleid voor TENANT-SQL-gegevens in.
  
 ## <a name="next-steps"></a>Volgende stappen
  

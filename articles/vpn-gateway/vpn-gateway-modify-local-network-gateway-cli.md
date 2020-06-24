@@ -4,22 +4,22 @@ description: In dit artikel wordt stapsgewijs beschreven hoe u IP-adres voorvoeg
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: bc051a7e0a19dc54431266cfa5f37131868bdc07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4809c51a59805ac996bd4c5971ec633ae6c2aed
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75864040"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987071"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Instellingen voor lokale netwerk gateway wijzigen met behulp van Azure CLI
 
 Soms worden de instellingen voor het adres voorvoegsel of het IP-adres van de gateway van het lokale netwerk gewijzigd. In dit artikel wordt beschreven hoe u de instellingen van uw lokale netwerk gateway wijzigt. U kunt deze instellingen ook met behulp van een andere methode wijzigen door een andere optie te selecteren in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [Azure-portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >

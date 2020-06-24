@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161687"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114755"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Werken met data bases, containers en items in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Nadat u een [Azure Cosmos DB account](account-overview.md) hebt gemaakt onder uw
 
 In de volgende afbeelding ziet u de hiërarchie van verschillende entiteiten in een Azure Cosmos DB-account:
 
-![Azure Cosmos-account entiteiten](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entiteiten van Azure Cosmos-account" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos-databases
 
@@ -28,7 +28,7 @@ U kunt een of meer Azure Cosmos-data bases maken onder uw account. Een data base
 
 | Azure Cosmos-entiteit | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-data base | Database | Keys Pace | Database | Database | N.v.t. |
+|Azure Cosmos-data base | Database | Keys Pace | Database | Database | NA |
 
 > [!NOTE]
 > Wanneer u uw eerste tabel maakt met Table-API accounts, wordt er automatisch een standaard database gemaakt in uw Azure Cosmos-account.
@@ -39,10 +39,10 @@ U kunt communiceren met een Azure Cosmos-data base met Azure Cosmos-Api's, zoals
 
 | Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
-|Alle data bases opsommen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | N.v.t. | N.v.t. |
-|Data Base lezen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | N.v.t. | N.v.t. |
-|Nieuwe data base maken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | N.v.t. | N.v.t. |
-|Data base bijwerken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Ja | N.v.t. | N.v.t. |
+|Alle data bases opsommen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
+|Data Base lezen| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
+|Nieuwe data base maken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
+|Data base bijwerken| Ja | Ja | Ja (Data Base is toegewezen aan een spatie) | Yes | NA | NA |
 
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-containers
@@ -85,15 +85,15 @@ Een Azure Cosmos-container heeft een reeks door het systeem gedefinieerde eigens
 
 | Door het systeem gedefinieerde eigenschap | Door het systeem gegenereerd of door de gebruiker te configureren | Doel | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Door het systeem gegenereerd | Unieke id van de container | Ja | Nee | Nee | Nee | Nee |
-|\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
-|\_Terminal | Door het systeem gegenereerd | Laatst bijgewerkte tijds tempel van de container | Ja | Nee | Nee | Nee | Nee |
-|\_Online | Door het systeem gegenereerd | Adresseer bare URI van de container | Ja | Nee | Nee | Nee | Nee |
+|\_rid | Door het systeem gegenereerd | Unieke id van de container | Yes | Nee | Nee | Nee | Nee |
+|\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Yes | Nee | Nee | Nee | Nee |
+|\_Terminal | Door het systeem gegenereerd | Laatst bijgewerkte tijds tempel van de container | Yes | Nee | Nee | Nee | Nee |
+|\_Online | Door het systeem gegenereerd | Adresseer bare URI van de container | Yes | Nee | Nee | Nee | Nee |
 |id | Door de gebruiker te configureren | Door de gebruiker gedefinieerde unieke naam van de container | Ja | Ja | Ja | Ja | Ja |
-|indexingPolicy | Door de gebruiker te configureren | Biedt de mogelijkheid om het pad naar de index, het index type en de index modus te wijzigen | Ja | Nee | Nee | Nee | Ja |
-|TimeToLive | Door de gebruiker te configureren | Biedt de mogelijkheid om items automatisch uit een container te verwijderen na een bepaalde periode. Zie [time to Live](time-to-live.md)voor meer informatie. | Ja | Nee | Nee | Nee | Ja |
-|changeFeedPolicy | Door de gebruiker te configureren | Wordt gebruikt om wijzigingen te lezen die zijn aangebracht in items in een container. Zie [Change feed](change-feed.md)voor meer informatie. | Ja | Nee | Nee | Nee | Ja |
-|uniqueKeyPolicy | Door de gebruiker te configureren | Hiermee wordt de uniekheid van een of meer waarden in een logische partitie gegarandeerd. Zie [beperkingen voor unieke sleutels](unique-keys.md)voor meer informatie. | Ja | Nee | Nee | Nee | Ja |
+|indexingPolicy | Door de gebruiker te configureren | Biedt de mogelijkheid om het pad naar de index, het index type en de index modus te wijzigen | Yes | Nee | Nee | Nee | Yes |
+|TimeToLive | Door de gebruiker te configureren | Biedt de mogelijkheid om items automatisch uit een container te verwijderen na een bepaalde periode. Zie [time to Live](time-to-live.md)voor meer informatie. | Yes | Nee | Nee | Nee | Yes |
+|changeFeedPolicy | Door de gebruiker te configureren | Wordt gebruikt om wijzigingen te lezen die zijn aangebracht in items in een container. Zie [Change feed](change-feed.md)voor meer informatie. | Yes | Nee | Nee | Nee | Yes |
+|uniqueKeyPolicy | Door de gebruiker te configureren | Hiermee wordt de uniekheid van een of meer waarden in een logische partitie gegarandeerd. Zie [beperkingen voor unieke sleutels](unique-keys.md)voor meer informatie. | Yes | Nee | Nee | Nee | Yes |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Bewerkingen in een Azure Cosmos-container
 
@@ -101,11 +101,11 @@ Een Azure Cosmos-container ondersteunt de volgende bewerkingen wanneer u een van
 
 | Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Containers in een Data Base opsommen | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
-| Een container lezen | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
-| Een nieuwe container maken | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
-| Een container bijwerken | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
-| Een container verwijderen | Ja | Ja | Ja | Ja | N.v.t. | N.v.t. |
+| Containers in een Data Base opsommen | Ja | Ja | Ja | Ja | NA | NA |
+| Een container lezen | Ja | Ja | Ja | Ja | NA | NA |
+| Een nieuwe container maken | Ja | Ja | Ja | Ja | NA | NA |
+| Een container bijwerken | Ja | Ja | Ja | Ja | NA | NA |
+| Een container verwijderen | Ja | Ja | Ja | Ja | NA | NA |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos-items
 
@@ -121,15 +121,15 @@ Elk Azure Cosmos-item heeft de volgende door het systeem gedefinieerde eigenscha
 
 | Door het systeem gedefinieerde eigenschap | Door het systeem gegenereerd of door de gebruiker te configureren| Doel | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_rid | Door het systeem gegenereerd | De unieke id van het item | Ja | Nee | Nee | Nee | Nee |
-|\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
-|\_Terminal | Door het systeem gegenereerd | Tijds tempel van de laatste update van het item | Ja | Nee | Nee | Nee | Nee |
-|\_Online | Door het systeem gegenereerd | Adresseer bare URI van het item | Ja | Nee | Nee | Nee | Nee |
-|id | Merken | Door de gebruiker gedefinieerde unieke naam in een logische partitie. | Ja | Ja | Ja | Ja | Ja |
-|Wille keurige door de gebruiker gedefinieerde eigenschappen | Door de gebruiker gedefinieerde routes | Door de gebruiker gedefinieerde eigenschappen die worden weer gegeven in API-native representatie (waaronder JSON, BSON en CQL) | Ja | Ja | Ja | Ja | Ja |
+|\_rid | Door het systeem gegenereerd | De unieke id van het item | Yes | Nee | Nee | Nee | Nee |
+|\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Yes | Nee | Nee | Nee | Nee |
+|\_Terminal | Door het systeem gegenereerd | Tijds tempel van de laatste update van het item | Yes | Nee | Nee | Nee | Nee |
+|\_Online | Door het systeem gegenereerd | Adresseer bare URI van het item | Yes | Nee | Nee | Nee | Nee |
+|id | Merken | Door de gebruiker gedefinieerde unieke naam in een logische partitie. | Yes | Ja | Ja | Ja | Ja |
+|Wille keurige door de gebruiker gedefinieerde eigenschappen | Door de gebruiker gedefinieerde routes | Door de gebruiker gedefinieerde eigenschappen die worden weer gegeven in API-native representatie (waaronder JSON, BSON en CQL) | Yes | Ja | Ja | Ja | Ja |
 
 > [!NOTE]
-> De uniekheid van `id` de eigenschap wordt alleen afgedwongen binnen elke logische partitie. Meerdere documenten kunnen dezelfde `id` eigenschap hebben met andere partitie sleutel waarden.
+> De uniekheid van de `id` eigenschap wordt alleen afgedwongen binnen elke logische partitie. Meerdere documenten kunnen dezelfde eigenschap hebben `id` met andere partitie sleutel waarden.
 
 ### <a name="operations-on-items"></a>Bewerkingen op items
 
@@ -137,7 +137,7 @@ Azure Cosmos-items ondersteunen de volgende bewerkingen. U kunt een van de Azure
 
 | Bewerking | Azure CLI | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- |
-| Invoegen, vervangen, verwijderen, Upsert, lezen | Nee | Ja | Ja | Ja | Ja | Ja |
+| Invoegen, vervangen, verwijderen, Upsert, lezen | Nee | Yes | Ja | Ja | Ja | Ja |
 
 ## <a name="next-steps"></a>Volgende stappen
 

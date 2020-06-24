@@ -4,12 +4,12 @@ description: Meer informatie over beveiligings scenario's voor een Azure Service
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324008"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080682"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
 
@@ -41,6 +41,11 @@ Zie voor meer informatie over het instellen van certificaat beveiliging in een c
 
 ### <a name="node-to-node-windows-security"></a>Windows-beveiliging van knoop punt naar knoop punt
 
+> [!NOTE]
+> Windows-verificatie is gebaseerd op Kerberos. NTLM wordt niet ondersteund als verificatie type.
+>
+> Gebruik, indien mogelijk, X. 509-certificaat verificatie voor Service Fabric clusters.
+
 Zie [een zelfstandige cluster in Windows beveiligen met behulp van Windows-beveiliging](service-fabric-windows-cluster-windows-security.md)voor meer informatie over het instellen van Windows-beveiliging voor een zelfstandig Windows Server-cluster.
 
 ## <a name="client-to-node-security"></a>Beveiliging van client naar knoop punt
@@ -49,7 +54,7 @@ Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de c
 
 ![Diagram van client-naar-knoop punt-communicatie][Client-to-Node]
 
-Clusters die worden uitgevoerd op Azure en zelfstandige clusters waarop Windows wordt uitgevoerd, kunnen gebruikmaken van [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx).
+Clusters die worden uitgevoerd op Azure en zelfstandige clusters waarop Windows wordt uitgevoerd, kunnen gebruikmaken van [certificaat beveiliging](https://msdn.microsoft.com/library/ff649801.aspx) of [Windows-beveiliging](https://msdn.microsoft.com/library/ff649396.aspx), hoewel het aanbeveling is om indien mogelijk X. 509-certificaat verificatie te gebruiken.
 
 ### <a name="client-to-node-certificate-security"></a>Client-naar-knoop punt certificaat beveiliging
 
@@ -95,7 +100,7 @@ X. 509-digitale certificaten worden meestal gebruikt voor het verifiëren van cl
 Enkele belang rijke dingen die u moet overwegen:
 
 * Gebruik een correct geconfigureerde Windows Server Certificate Service of een van een goedgekeurde certificerings [instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)om certificaten te maken voor clusters met productie werkbelastingen.
-* Gebruik nooit tijdelijke of test certificaten die u maakt met behulp van hulpprogram ma's zoals MakeCert. exe in een productie omgeving.
+* Gebruik nooit tijdelijke of test certificaten die u maakt met behulp van hulpprogram ma's als MakeCert.exe in een productie omgeving.
 * U kunt een zelfondertekend certificaat gebruiken, maar alleen in een test cluster. Gebruik geen zelfondertekend certificaat in de productie omgeving.
 * Zorg ervoor dat u bij het genereren van de vinger afdruk van het certificaat een SHA1-vinger afdruk genereert. SHA1 is wat wordt gebruikt bij het configureren van de client-en cluster certificaat vingerafdrukken.
 

@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270054"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708005"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine hulpprogram ma's voor gegevens opname
 
@@ -65,7 +65,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Wat is het?   | Hulp programma voor het importeren van gegevens uit verschillende bronnen in Azure Cosmos DB, een NoSQL-data base in de Cloud. Deze bronnen zijn onder andere JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure-tabel opslag, Amazon DynamoDB en Azure Cosmos DB SQL API-verzamelingen.      |
 | Ondersteunde DSVM-versies      | Windows      |
 | Typische toepassingen      | Importeren van bestanden van een virtuele machine naar CosmosDB, importeren van gegevens uit Azure-tabel opslag naar CosmosDB en het importeren van gegevens uit een Microsoft SQL Server-Data Base naar CosmosDB.     |
-|  Hoe kunt u het gebruiken/uitvoeren?    |   Als u de opdracht regel versie wilt gebruiken, opent u een opdracht prompt `dt`en typt u. Als u het hulp programma GUI wilt gebruiken, opent u een `dtui`opdracht prompt en typt u.    |
+|  Hoe kunt u het gebruiken/uitvoeren?    |   Als u de opdracht regel versie wilt gebruiken, opent u een opdracht prompt en typt u `dt` . Als u het hulp programma GUI wilt gebruiken, opent u een opdracht prompt en typt u `dtui` .    |
 | Koppelingen naar voor beelden      | [Gegevens CosmosDB importeren](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
@@ -80,7 +80,7 @@ Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikba
 | Koppelingen naar voor beelden      | [Azure Opslagverkenner](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
-## <a name="bcp"></a>BCP
+## <a name="bcp"></a>bcp
 
 |    |           |
 | ------------- | ------------- |

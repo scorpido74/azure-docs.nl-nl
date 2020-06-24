@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 15118c9c3d2d1a528c62b539ab7bdd8f174c19de
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72791900"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080100"
 ---
 # <a name="sentiment-cognitive-skill"></a>Sentiment cognitieve vaardigheid
 
@@ -22,14 +22,14 @@ De **sentiment** -vaardigheid evalueert ongestructureerde tekst langs een positi
 > [!NOTE]
 > Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Micro soft. skills. Text. SentimentSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 5000 tekens zijn, zoals gemeten [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)door. Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
+De maximale grootte van een record moet 5000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, gebruikt u de functie [tekst splitsen](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
@@ -38,20 +38,20 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam |                      |
 |----------------|----------------------|
-| defaultLanguageCode | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven. <br/> [Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md) weer geven |
+| `defaultLanguageCode` | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven. <br/> [Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md) weer geven |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer 
 
 | Invoer naam | Beschrijving |
 |--------------------|-------------|
-| tekst | De tekst die moet worden geanalyseerd.|
-| languageCode  |  Beschrijving Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/>Bekijk de [volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
+| `text` | De tekst die moet worden geanalyseerd.|
+| `languageCode`    |  Beschrijving Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/>Bekijk de [volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
 | Uitvoer naam | Beschrijving |
 |--------------------|-------------|
-| Score | Een waarde tussen 0 en 1 die de sentiment van de geanalyseerde tekst aangeeft. Waarden die dicht bij 0 liggen, hebben een negatieve sentiment, dicht bij 0,5 hebben neutrale sentiment en waarden die dicht bij 1 staan, hebben een positieve sentiment.|
+| `score` | Een waarde tussen 0 en 1 die de sentiment van de geanalyseerde tekst aangeeft. Waarden die dicht bij 0 liggen, hebben een negatieve sentiment, dicht bij 0,5 hebben neutrale sentiment en waarden die dicht bij 1 staan, hebben een positieve sentiment.|
 
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie
@@ -110,7 +110,7 @@ Parameters zijn hoofdlettergevoelig.
 }
 ```
 
-## <a name="notes"></a>Opmerkingen
+## <a name="notes"></a>Notities
 Als deze leeg is, wordt er geen sentiment-Score geretourneerd voor die records.
 
 ## <a name="error-cases"></a>Fout cases

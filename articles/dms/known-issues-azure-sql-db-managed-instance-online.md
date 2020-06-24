@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 871ea665d23a5fba644448ddb6c596179d47bb3f
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196310"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106402"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure SQL Managed instance
 
@@ -62,6 +62,6 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL
 
 - **Implementaties**
 
-    SQL Managed instance is een PaaS-service met automatische patches en versie-updates. Tijdens de migratie van uw SQL Managed instance zijn niet-essentiële updates een hulp van Maxi maal 36 uur. Daarna (en voor essentiële updates), als de migratie wordt onderbroken, wordt het proces opnieuw ingesteld op een volledige herstel status.
+    SQL Managed instance is een PaaS-service met automatische patches en versie-updates. Tijdens de migratie van uw SQL Managed instance worden niet-essentiële updates gedurende 36 uur bewaard. Daarna (en voor essentiële updates), als de migratie wordt onderbroken, wordt het proces opnieuw ingesteld op een volledige herstel status.
 
     Migratie cutover kan alleen worden aangeroepen nadat de volledige back-up is hersteld en de back-ups van alle logboeken worden onderschept. Als uw productie migratie cutovers wordt beïnvloed, neemt u contact op met de [Azure DMS-feedback alias](mailto:dmsfeedback@microsoft.com).

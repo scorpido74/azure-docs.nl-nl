@@ -3,13 +3,13 @@ title: Service-principals voor AKS (Azure Kubernetes Services)
 description: Een Azure Active Directory-service-principal maken en beheren voor een cluster in AKS (Azure Kubernetes Service)
 services: container-service
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392725"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298545"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Service-principals met AKS (Azure Kubernetes Service)
 
@@ -87,7 +87,10 @@ Als u machtigingen wilt delegeren, maakt u een roltoewijzing met de opdracht [AZ
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-De `--scope` van een resource moet een volledige resource-id zijn, zoals */subscriptions/\<guid\>/resourceGroups/myResourceGroup* of */subscriptions/\<guid \>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+De `--scope` voor een resource moet een volledige resource-id zijn, zoals */Subscriptions/ \<guid\> /ResourceGroups/myResourceGroup* of */Subscriptions/ \<guid\> /resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+
+> [!NOTE]
+> Als u de roltoewijzing van de rol Inzender uit de knooppunt resource groep hebt verwijderd, kunnen de onderstaande bewerkingen mislukken.  
 
 In de volgende secties wordt meer uitleg gegeven over algemene machtigingen die u mogelijk moet afgeven.
 
@@ -106,6 +109,9 @@ U kunt gebruikmaken van geavanceerde netwerkmogelijkheden als het virtuele netwe
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
+  - Als u [aangepaste route tabellen gebruikt in Kubenet-clusters](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) , voegt u de volgende extra machtigingen toe:
+    - *Micro soft. Network/routeTables/schrijven*
+    - *Micro soft. Network/routeTables/lezen*
 - U kunt ook de ingebouwde rol [Inzender voor netwerken][rbac-network-contributor] gebruiken in het subnet of in het virtuele netwerk
 
 ### <a name="storage"></a>Storage
@@ -127,12 +133,12 @@ Houd rekening met het volgende wanneer u werkt met AKS en Azure AD-service-princ
 
 - De service-principal voor Kubernetes is een onderdeel van de configuratie van het cluster. Gebruik echter niet de id voor het implementeren van het cluster.
 - De referenties van de Service-Principal zijn standaard één jaar geldig. U kunt [de referenties van de Service-Principal][update-credentials] op elk gewenst moment bijwerken of draaien.
-- Elke service-principal is gekoppeld aan een Azure AD-toepassing. De service-principal voor een Kubernetes-cluster kan worden gekoppeld aan elke geldige Azure AD-toepassings naam ( *https://www.contoso.org/example*bijvoorbeeld:). De URL van de toepassing hoeft geen echt eindpunt te zijn.
+- Elke service-principal is gekoppeld aan een Azure AD-toepassing. De service-principal voor een Kubernetes-cluster kan worden gekoppeld aan elke geldige Azure AD-toepassings naam (bijvoorbeeld: *https://www.contoso.org/example* ). De URL van de toepassing hoeft geen echt eindpunt te zijn.
 - Gebruik bij het opgeven van de **client-id** van de service-principal de waarde van de `appId`.
 - Op het agent knooppunt Vm's in het Kubernetes-cluster worden de referenties van de Service-Principal opgeslagen in het bestand`/etc/kubernetes/azure.json`
 - Wanneer u de opdracht [az aks create][az-aks-create] gebruikt om de service-principal automatisch te genereren, worden de referenties voor de service-principal naar het bestand `~/.azure/aksServicePrincipal.json` geschreven op de computer die wordt gebruikt om de opdracht uit te voeren.
-- Als u een Service-Principal niet specifiek doorgeeft in extra AKS CLI-opdrachten, `~/.azure/aksServicePrincipal.json` wordt de standaard Service-Principal gebruikt.  
-- U kunt eventueel ook het bestand aksServicePrincipal. json verwijderen en AKS maakt een nieuwe service-principal.
+- Als u een Service-Principal niet specifiek doorgeeft in extra AKS CLI-opdrachten, wordt de standaard Service-Principal `~/.azure/aksServicePrincipal.json` gebruikt.  
+- U kunt desgewenst ook de aksServicePrincipal.jsin het bestand verwijderen en AKS maakt een nieuwe service-principal.
 - Wanneer u een AKS-cluster verwijdert dat is gemaakt met [az aks create][az-aks-create], wordt de automatisch gemaakte service-principal niet verwijderd.
     - Als u de service-principal wilt verwijderen, zoekt u *servicePrincipalProfile.clientId* op met een query. Vervolgens verwijdert u de service-principal met [az ad app delete][az-ad-app-delete]. Vervang de volgende brongroeps- en clusternamen door uw eigen waarden:
 
@@ -156,7 +162,7 @@ Controleer de leeftijd van het referentie bestand met behulp van de volgende opd
 ls -la $HOME/.azure/aksServicePrincipal.json
 ```
 
-De standaard verval tijd voor de referenties van de Service-Principal is één jaar. Als uw *aksServicePrincipal. json* -bestand ouder is dan één jaar, verwijdert u het bestand en probeert u nogmaals een AKS-cluster te implementeren.
+De standaard verval tijd voor de referenties van de Service-Principal is één jaar. Als uw *aksServicePrincipal.jsvoor* het bestand ouder is dan één jaar, verwijdert u het bestand en probeert u opnieuw een AKS-cluster te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3454909707b1f9a8a515ff4432cfb4bf75a20f6e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 26c48c84521946ff748ca960b8060cc973640eb3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509267"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888406"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services authenticatie inschakelen op Azure Files
 
@@ -55,6 +55,10 @@ Voordat u Azure AD over SMB voor Azure-bestands shares inschakelt, moet u ervoor
 1.  **Controleer Azure Files connectiviteit door Azure-bestands shares te koppelen met behulp van de sleutel van het opslag account.**
 
     Als u wilt controleren of de virtuele machine en de bestands share correct zijn geconfigureerd, kunt u de bestands share koppelen met de sleutel van het opslag account. Zie [een Azure-bestands share koppelen en de share openen in Windows](storage-how-to-use-files-windows.md)voor meer informatie.
+
+## <a name="regional-availability"></a>Regionale beschikbaarheid
+
+Azure Files verificatie met Azure AD DS is beschikbaar in [alle open bare Azure-regio's](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview-of-the-workflow"></a>Overzicht van de werk stroom
 

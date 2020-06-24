@@ -3,12 +3,12 @@ title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuel
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248801"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262579"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
@@ -45,7 +45,7 @@ Een hernoemde data base wordt behandeld als een nieuwe data base. Daarom wordt d
 
 Raadpleeg de [vereisten](tutorial-backup-sap-hana-db.md#prerequisites) en [wat het script dat voorafgaat aan het registratie](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) gedeelte.
 
-### <a name="what-permissions-should-be-set-for-azure-to-be-able-to-back-up-sap-hana-databases"></a>Welke machtigingen moeten worden ingesteld voor Azure om een back-up te kunnen maken van SAP HANA-data bases?
+### <a name="what-permissions-should-be-set-so-azure-can-back-up-sap-hana-databases"></a>Welke machtigingen moeten worden ingesteld zodat Azure back-ups kan maken van SAP HANA-data bases?
 
 Als u het script voor voorafgaande registratie uitvoert, worden de vereiste machtigingen ingesteld om Azure back-ups te maken van SAP HANA-data bases. U vindt [hier](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)meer informatie over het script dat vooraf wordt geregistreerd.
 
@@ -55,11 +55,7 @@ Raadpleeg [deze sectie](https://docs.microsoft.com/azure/backup/backup-azure-sap
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Kan Azure HANA-back-ups worden ingesteld voor een virtueel IP-adres (load balancer) en niet op een virtuele machine?
 
-Op dit moment kunnen we de oplossing niet alleen instellen voor een virtueel IP-adres. Er is een virtuele machine nodig om de oplossing uit te voeren.
-
-### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Ik heb een SAP HANA systeem replicatie (HSR). Hoe moet ik een back-up voor deze installatie configureren?
-
-De primaire en secundaire knoop punten van de HSR worden behandeld als twee afzonderlijke, niet-gerelateerde Vm's. U moet een back-up op het primaire knoop punt configureren en wanneer het failover-proces plaatsvindt, moet u een back-up configureren op het secundaire knoop punt (dit wordt nu het primaire knoop punt). Er is geen automatische failover van een back-up naar het andere knoop punt.
+Momenteel beschikken we niet over de mogelijkheid om de oplossing alleen voor een virtueel IP-adres in te stellen. Er is een virtuele machine nodig om de oplossing uit te voeren.
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Hoe kan ik een back-up op aanvraag verplaatsen naar het lokale bestands systeem in plaats van naar de Azure-kluis?
 
@@ -72,6 +68,40 @@ De primaire en secundaire knoop punten van de HSR worden behandeld als twee afzo
 1. Terugkeren naar de vorige instellingen zodat back-ups naar de Azure-kluis kunnen stromen:
     1. Enable_auto_log_backup instellen op **Ja**
     1. Log_backup_using_backint instellen op **waar**
+
+### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Hoe kan ik SAP HANA back-up gebruiken met mijn HANA-replicatie-instellingen?
+
+Momenteel heeft Azure Backup niet de mogelijkheid om een HSR-configuratie te begrijpen. Dit betekent dat de primaire en secundaire knoop punten van de HSR worden behandeld als twee afzonderlijke, niet-gerelateerde Vm's. U moet eerst een back-up configureren op het primaire knoop punt. Wanneer een failover optreedt, moet de back-up worden geconfigureerd op het secundaire knoop punt (dit wordt nu het primaire knoop punt). Er is geen automatische failover van een back-up naar het andere knoop punt.
+
+Als u op een bepaald moment een back-up wilt maken van gegevens van het actieve knoop punt (primair), kunt u de **beveiliging overschakelen** naar het secundaire knoop punt, dat nu wordt ingesteld als primair na een failover.
+
+Voer de volgende stappen uit om deze **Switch beveiliging**uit te voeren:
+
+- [Beveiliging stoppen](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) (met behoud van gegevens) op de primaire
+- Het [pre-registratie script](https://aka.ms/scriptforpermsonhana) uitvoeren op het secundaire knoop punt
+- [De data bases](tutorial-backup-sap-hana-db.md#discover-the-databases) op het secundaire knoop punt detecteren en er [back-ups op configureren](tutorial-backup-sap-hana-db.md#configure-backup)
+
+Deze stappen moeten hand matig worden uitgevoerd na elke failover. U kunt deze stappen uitvoeren via de opdracht regel/HTTP, naast de Azure Portal. Als u deze stappen wilt automatiseren, kunt u een Azure-runbook gebruiken.
+
+Hier volgt een gedetailleerd voor beeld van hoe de **beveiliging van switches** moet worden uitgevoerd:
+
+In dit voor beeld hebt u twee knoop punten: knoop punt 1 (primair) en knoop punt 2 (secundair) in de HSR-configuratie.  Back-ups worden geconfigureerd op knoop punt 1. Zoals hierboven vermeld, probeert u nog geen back-ups te configureren op knoop punt 2.
+
+Wanneer de eerste failover plaatsvindt, wordt knoop punt 2 de primaire. Kies
+
+1. Stop de beveiliging van knoop punt 1 (vorig primair) met de optie gegevens behouden.
+1. Voer het pre-registratie script uit op knoop punt 2 (dit is nu de primaire).
+1. Data bases op knoop punt 2 detecteren, back-upbeleid toewijzen en back-ups configureren.
+
+Vervolgens wordt een eerste volledige back-up geactiveerd op knoop punt 2 en daarna worden logboek back-ups gestart.
+
+Wanneer de volgende failover plaatsvindt, wordt knoop punt 1 primair weer en wordt knoop punt 2 secundair. Herhaal het proces nu:
+
+1. Stop de beveiliging van knoop punt 2 met de optie gegevens behouden.
+1. Het pre-registratie script uitvoeren op het knoop punt 1 (dit is de primaire opnieuw)
+1. Hervat vervolgens de [back-up](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) op het knoop punt 1 met het vereiste beleid (omdat de back-ups eerder zijn gestopt op het knoop punt 1).
+
+Vervolgens wordt de volledige back-up opnieuw geactiveerd op het knoop punt 1 en nadat deze is voltooid, worden logboek back-ups gestart.
 
 ## <a name="restore"></a>Herstellen
 
@@ -87,9 +117,9 @@ Zorg ervoor dat de optie voor **overschrijven afdwingen** is geselecteerd tijden
 
 Raadpleeg de SAP HANA nota [1642148](https://launchpad.support.sap.com/#/notes/1642148) om te zien welke typen herstel bewerkingen momenteel worden ondersteund.
 
-### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Kan ik een back-up van een Data Base die wordt uitgevoerd op SLES gebruiken om terug te zetten naar een RHEL HANA-systeem of andersom?
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-an-rhel-hana-system-or-vice-versa"></a>Kan ik een back-up van een Data Base die wordt uitgevoerd op SLES gebruiken om een RHEL HANA-systeem of andersom te herstellen?
 
-Ja, u kunt streaming-back-ups die zijn geactiveerd in een HANA-data base die wordt uitgevoerd op SLES, gebruiken om deze te herstellen naar een RHEL HANA-systeem en vice versa. Dat wil zeggen dat het terugzetten van meerdere besturings systemen mogelijk is met behulp van streaming-back-ups. U moet er echter voor zorgen dat het HANA-systeem waarnaar u wilt herstellen, en het HANA-systeem dat wordt gebruikt voor herstel, beide compatibel zijn voor herstel volgens SAP. Raadpleeg SAP HANA nota [1642148](https://launchpad.support.sap.com/#/notes/1642148) om te zien welke typen herstel compatibel zijn.
+Ja, u kunt streaming-back-ups die zijn geactiveerd in een HANA-data base die wordt uitgevoerd op SLES, gebruiken om deze te herstellen naar een RHEL HANA-systeem en vice versa. Dat wil zeggen dat het terugzetten van meerdere besturings systemen mogelijk is met behulp van streaming-back-ups. U moet er echter voor zorgen dat het HANA-systeem waarnaar u wilt herstellen en het HANA-systeem dat wordt gebruikt voor herstel, beide compatibel zijn voor herstel volgens SAP. Raadpleeg SAP HANA nota [1642148](https://launchpad.support.sap.com/#/notes/1642148) om te zien welke typen herstel compatibel zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

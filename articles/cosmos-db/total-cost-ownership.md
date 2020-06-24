@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9e3fd4fec8ab2fe9f0c93d46489e67feebe88d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72754793"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116261"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Totale eigendoms kosten (TCO) met Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Het serverloze inrichtings model van Azure Cosmos DB elimineert de nood zaak om 
 
 * **Er is geen NoSQL DevOps-beheer vereist:** Met Azure Cosmos DB één hoeft DevOps niet te worden gebruikt voor het beheren van implementaties, het uitvoeren van onderhoud, schalen of patches. U kunt alle werk belastingen uitvoeren die u zou doen met een OSS NoSQL-cluster dat wordt gehost op locatie of op een Cloud infrastructuur.
 
-![Azure Cosmos DB eigendoms kosten](./media/total-cost-ownership/tco.png)
+:::image type="content" source="./media/total-cost-ownership/tco.png" alt-text="Azure Cosmos DB eigendoms kosten" border="false":::
 
 * **Mogelijkheid om elastisch te schalen:** Azure Cosmos DB door Voer kan omhoog of omlaag worden geschaald, zodat u de eigendoms kosten kunt verlagen tijdens niet-piek tijden. OSS NoSQL-clusters die zijn geïmplementeerd in Cloud Infrastructure bieden beperkte elasticiteit en on-premises implementaties zijn niet elastisch op definitie. Als u in Azure Cosmos DB een meer door Voer inricht, is uw door Voer gegarandeerd lineair te schalen. Voor deze garantie wordt een back-up gemaakt op basis van de financiële Sla's en op het 99e percentiel op elke schaal.
 

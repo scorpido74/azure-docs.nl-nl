@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269885"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708957"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video-en audio bestanden analyseren met Azure Media Services
 
@@ -36,7 +36,7 @@ Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving
 
 Media Services ondersteunt momenteel de volgende ingebouwde Analyzer-voor waarden:  
 
-|**Naam van voor instelling**|**Scenario**|**Nadere**|
+|**Naam van voor instelling**|**Scenario**|**Details**|
 |---|---|---|
 |[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analyseren|De voor instelling past een vooraf gedefinieerde set op AI-gebaseerde analyse bewerkingen toe, waaronder spraak transcriptie. Op dit moment ondersteunt de vooraf ingestelde verwerking van inhoud met één audio track die spraak in één taal bevat. U kunt de taal voor de audio lading in de invoer opgeven met de BCP-47-indeling van de taal code-regio. Ondersteunde talen zijn Engels (' en-US ' en ' en ' en ' en '), Spaans (' es-ES ' en ' es-MX '), Frans (' fr-FR '), Italiaans (' it-IT '), Japans (' ja-JP '), Portugees (' pt-BR '), Chinees (' zh-CN '), Duits (' de '), Arabisch (' ar-EG ' en ' ar-SY '), Russisch (' ru-RU '), Hindi (' Hi-IN ') en Koreaans (' ko-KR ').<br/><br/> Als de taal niet is opgegeven of is ingesteld op NULL, kiest automatische taal detectie de eerst gedetecteerde taal en wordt de geselecteerde taal voor de duur van het bestand voortgezet. De functie voor automatische taal detectie ondersteunt momenteel Engels, Chinees, Frans, Duits, Italiaans, Japans, Spaans, Russisch en Portugees. Het is niet mogelijk om dynamische switches te scha kelen tussen talen nadat de eerste taal is gedetecteerd. De functie voor automatische taal detectie werkt het beste met geluids opnamen met duidelijk waarneembaar spraak. Als de taal niet kan worden gevonden met de automatische taal detectie, valt de transcriptie terug naar Engels.|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio en video analyseren|Extraheert inzichten (Rich meta data) van audio en video en voert een JSON-indelings bestand uit. U kunt opgeven of u alleen geluids inzichten wilt extra heren tijdens het verwerken van een video bestand. Zie [video analyseren](analyze-videos-tutorial-with-api.md)voor meer informatie.|
@@ -61,9 +61,9 @@ Met de voor instelling kunt u meerdere audio-en video inzichten uit een video be
 * **Visuele toezicht op inhoud**: het gedeelte van de Video's dat is gemarkeerd als volwassene of ongepaste.
 * **Aantekening**: een resultaat van het aantekenen van de Video's op basis van een vooraf gedefinieerd object model
 
-## <a name="insightsjson-elements"></a>inzichten. json-elementen
+## <a name="insightsjson-elements"></a>insights.jsop elementen
 
-De uitvoer bevat een JSON-bestand (Insights. json) met alle inzichten die in de video of audio zijn gevonden. De JSON kan de volgende elementen bevatten:
+De uitvoer bevat een JSON-bestand (insights.jsaan) met alle inzichten die in de video of audio zijn gevonden. De JSON kan de volgende elementen bevatten:
 
 ### <a name="transcript"></a>verslag
 
@@ -151,7 +151,7 @@ Voorbeeld:
 |Naam|Beschrijving|
 |---|---|
 |id|De face-ID.|
-|name|De naam van het gezicht. Dit kan ' onbekend #0 ', een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
+|naam|De naam van het gezicht. Dit kan ' onbekend #0 ', een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
 |betrouwbaarheid|De gezichts-id-betrouw baarheid.|
 |description|Een beschrijving van de beroemdheden. |
 |thumbnailId|De ID van de miniatuur van het gezicht.|
@@ -301,7 +301,7 @@ Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatie
 |Naam|Beschrijving|
 |---|---|
 |id|De label-ID.|
-|name|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
+|naam|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
 |language|De naam taal van het label (bij omzetting). BCP-47|
 |vaak|Een lijst met tijds bereiken waar dit label wordt weer gegeven (een label kan meerdere keren voor komen). Elk exemplaar heeft een veld betrouw baarheid. |
 
@@ -405,7 +405,7 @@ Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatie
 
 Het visualContentModeration-blok bevat Peri Oden die Video Indexer mogelijk inhoud voor volwassenen hebben gevonden. Als visualContentModeration leeg is, is er geen inhoud voor volwassenen gevonden.
 
-Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alleen beschikbaar voor de persoonlijke weer gave. Gebruikers kunnen een aanvraag indienen voor een menselijke beoordeling van de inhoud. in dat geval bevat `IsAdult` het kenmerk het resultaat van de menselijke beoordeling.
+Video's die een inhoud van volwassenen of ongepaste bevatten, zijn mogelijk alleen beschikbaar voor de persoonlijke weer gave. Gebruikers kunnen een aanvraag indienen voor een menselijke beoordeling van de inhoud. in dat geval `IsAdult` bevat het kenmerk het resultaat van de menselijke beoordeling.
 
 |Naam|Beschrijving|
 |---|---|

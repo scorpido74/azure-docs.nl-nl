@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3294acecaf98de1f55e1aff8ec97defc1dd13fc7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803157"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202701"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aanmelden (KMSI) inschakelen in Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ Gebruikers moeten deze optie niet inschakelen op open bare computers.
 
 ## <a name="configure-the-page-identifier"></a>De pagina-id configureren
 
-Als u KMSI wilt inschakelen, stelt u `DataUri` het inhouds definitie-element in op [pagina-id](contentdefinitions.md#datauri) `unifiedssp` en [pagina versie](page-layout.md) *1.1.0* of hoger.
+Als u KMSI wilt inschakelen, stelt u het inhouds definitie- `DataUri` element in op [pagina-id](contentdefinitions.md#datauri) `unifiedssp` en [pagina versie](page-layout.md) *1.1.0* of hoger.
 
-1. Open het extensie bestand van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>. Dit extensie bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](custom-policy-get-started.md).
+1. Open het extensie bestand van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> . Dit extensie bestand is een van de beleids bestanden in het aangepaste beleids Starter Pack, die u in de vereiste moet hebben verkregen, aan de [slag met aangepast beleid](custom-policy-get-started.md).
 1. Zoek het element **BuildingBlocks** . Als het element niet bestaat, voegt u het toe.
 1. Voeg het element **ContentDefinitions** toe aan het element **BuildingBlocks** van het beleid.
 
@@ -54,12 +54,12 @@ Als u KMSI wilt inschakelen, stelt u `DataUri` het inhouds definitie-element in 
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>De meta gegevens toevoegen aan het zelf-bebevestigde technische profiel
 
-Als u het selectie vakje KMSI wilt toevoegen aan de registratie-en aanmeldings pagina, stelt u `setting.enableRememberMe` de meta gegevens in op waar. Overschrijf de technische profielen van de SelfAsserted-LocalAccountSignin-e-mail in het extensie bestand.
+Als u het selectie vakje KMSI wilt toevoegen aan de registratie-en aanmeldings pagina, stelt `setting.enableRememberMe` u de meta gegevens in op waar. Overschrijf de technische profielen van de SelfAsserted-LocalAccountSignin-e-mail in het extensie bestand.
 
 1. Zoek het element ClaimsProviders. Als het element niet bestaat, voegt u het toe.
 1. Voeg de volgende claim provider toe aan het ClaimsProviders-element:
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -78,11 +78,11 @@ Als u het selectie vakje KMSI wilt toevoegen aan de registratie-en aanmeldings p
 
 Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers traject wordt gestart.
 
-1. Open uw aangepaste beleids bestand. Bijvoorbeeld *SignUpOrSignin. XML*.
-1. Als deze nog niet bestaat, voegt u `<UserJourneyBehaviors>` een onderliggend `<RelyingParty>` knoop punt toe aan het knoop punt. Het moet direct na `<DefaultUserJourney ReferenceId="User journey Id" />`worden geplaatst, bijvoorbeeld:. `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`
+1. Open uw aangepaste beleids bestand. Bijvoorbeeld *SignUpOrSignin.xml*.
+1. Als deze nog niet bestaat, voegt `<UserJourneyBehaviors>` u een onderliggend knoop punt toe aan het `<RelyingParty>` knoop punt. Het moet direct na worden geplaatst `<DefaultUserJourney ReferenceId="User journey Id" />` , bijvoorbeeld: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` .
 1. Voeg het volgende knoop punt toe als onderliggend item van het `<UserJourneyBehaviors>` element.
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -90,17 +90,17 @@ Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers tr
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** : geeft aan hoe de sessie wordt uitgebreid met de tijd die `SessionExpiryInSeconds` is `KeepAliveInDays`opgegeven in en. De `Rolling` waarde (standaard) geeft aan dat de sessie wordt uitgebreid telkens wanneer de gebruiker verificatie uitvoert. De `Absolute` waarde geeft aan dat de gebruiker na de opgegeven tijds periode opnieuw moet worden geverifieerd.
+    - **SessionExpiryType** : geeft aan hoe de sessie wordt uitgebreid met de tijd die is opgegeven in `SessionExpiryInSeconds` en `KeepAliveInDays` . De `Rolling` waarde (standaard) geeft aan dat de sessie wordt uitgebreid telkens wanneer de gebruiker verificatie uitvoert. De `Absolute` waarde geeft aan dat de gebruiker na de opgegeven tijds periode opnieuw moet worden geverifieerd.
 
-    - **SessionExpiryInSeconds** : de levens duur van sessie cookies wanneer *keep me aangemeld* is niet ingeschakeld, of als een gebruiker niet is geselecteerd als *aangemeld blijven*. De sessie verloopt `SessionExpiryInSeconds` na het verlopen of de browser is gesloten.
+    - **SessionExpiryInSeconds** : de levens duur van sessie cookies wanneer *keep me aangemeld* is niet ingeschakeld, of als een gebruiker niet is geselecteerd als *aangemeld blijven*. De sessie verloopt na het verlopen `SessionExpiryInSeconds` of de browser is gesloten.
 
-    - **KeepAliveInDays** : de levens duur van sessie cookies wanneer *aangemeld blijven* is ingeschakeld en de gebruiker selecteert *aangemeld blijven*.  De waarde van `KeepAliveInDays` heeft voor rang op `SessionExpiryInSeconds` de waarde en dicteert de verloop tijd van de sessie. Als een gebruiker de browser sluit en later opnieuw opent, kan hij of zij zich nog steeds op de achtergrond aanmelden zolang deze zich binnen de KeepAliveInDays-periode bevindt.
+    - **KeepAliveInDays** : de levens duur van sessie cookies wanneer *aangemeld blijven* is ingeschakeld en de gebruiker selecteert *aangemeld blijven*.  De waarde van `KeepAliveInDays` heeft voor rang op de `SessionExpiryInSeconds` waarde en dicteert de verloop tijd van de sessie. Als een gebruiker de browser sluit en later opnieuw opent, kan hij of zij zich nog steeds op de achtergrond aanmelden zolang deze zich binnen de KeepAliveInDays-periode bevindt.
 
     Zie [reis gedrag van gebruikers](relyingparty.md#userjourneybehaviors)voor meer informatie.
 
 We raden u aan de waarde van SessionExpiryInSeconds in te stellen op een korte periode (1200 seconden), terwijl de waarde van KeepAliveInDays kan worden ingesteld op een relatief lange periode (30 dagen), zoals wordt weer gegeven in het volgende voor beeld:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>
@@ -131,7 +131,7 @@ We raden u aan de waarde van SessionExpiryInSeconds in te stellen op een korte p
 1. Als u het aangepaste beleid wilt testen dat u hebt geüpload, gaat u in het Azure Portal naar de pagina beleid en selecteert u **nu uitvoeren**.
 1. Typ uw **gebruikers naam** en **wacht woord**, selecteer **aangemeld blijven**en klik vervolgens op **Aanmelden**.
 1. Ga terug naar Azure Portal. Ga naar de pagina beleid en selecteer **kopiëren** om de AANMELDINGS-URL te kopiëren.
-1. Verwijder in de adres balk van de browser `&prompt=login` de query teken reeks parameter, waardoor de gebruiker de referenties voor deze aanvraag kan invoeren.
+1. Verwijder in de adres balk van de browser de `&prompt=login` query teken reeks parameter, waardoor de gebruiker de referenties voor deze aanvraag kan invoeren.
 1. Klik in de browser op **Go**. Azure AD B2C wordt nu een toegangs token uitgegeven zonder dat u opnieuw wordt gevraagd om u aan te melden. 
 
 ## <a name="next-steps"></a>Volgende stappen

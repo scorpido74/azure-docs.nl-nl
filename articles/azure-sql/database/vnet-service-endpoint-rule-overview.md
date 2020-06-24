@@ -11,20 +11,20 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: fb3246564c7902d1a99c28425ee7ee1789b00354
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 51d7ae8671d4b57e1822aa1c4ee5bf30a5f24cbd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171137"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253984"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuele netwerk service-eind punten en-regels gebruiken voor servers in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Regels voor virtuele netwerken* zijn één firewall beveiligings functie waarmee wordt bepaald of de server voor uw data bases en elastische pools in [Azure SQL database](sql-database-paas-overview.md) of voor uw data bases in [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken. In dit artikel wordt uitgelegd waarom de regel functie van het virtuele netwerk soms de beste optie is voor het veilig toestaan van communicatie met uw Azure SQL database en SQL Data Warehouse.
+*Regels voor virtuele netwerken* zijn één firewall beveiligings functie waarmee wordt bepaald of de server voor uw data bases en elastische pools in [Azure SQL database](sql-database-paas-overview.md) of voor uw data bases in [Azure Synapse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) communicatie accepteert die wordt verzonden vanuit bepaalde subnetten in virtuele netwerken. In dit artikel wordt uitgelegd waarom de regel functie virtuele netwerken soms de beste optie is voor het veilig toestaan van communicatie met uw data base in Azure SQL Database en SQL Data Warehouse.
 
 > [!NOTE]
-> Dit artikel is van toepassing op zowel Azure SQL Database als Azure Synapse Analytics (voorheen SQL Data Warehouse). Ter vereenvoudiging verwijst de term Data Base naar beide data bases in Azure SQL Database en Azure Synapse Analytics. Alle verwijzingen naar ' server ' verwijzen ook naar de [logische SQL-Server](logical-servers.md) die als host fungeert voor Azure SQL database en Azure Synapse Analytics.
+> Dit artikel is van toepassing op zowel Azure SQL Database als Azure Synapse Analytics (voorheen SQL Data Warehouse). Ter vereenvoudiging verwijst de term “database” naar beide databases in Azure SQL Database en Azure Synapse Analytics. Alle verwijzingen naar “server” verwijzen ook naar de [logische SQL Server](logical-servers.md) die als host fungeert voor Azure SQL Database en Azure Synapse Analytics.
 
 Als u een regel voor een virtueel netwerk wilt maken, moet er eerst een [service-eind punt voor het virtuele netwerk][vm-virtual-network-service-endpoints-overview-649d] zijn voor de regel waarnaar moet worden verwezen.
 
@@ -74,7 +74,7 @@ U hebt de mogelijkheid om op [rollen gebaseerd toegangs beheer (RBAC)][rbac-what
 
 Voor Azure SQL Database heeft de functie regels voor virtuele netwerken de volgende beperkingen:
 
-- In de firewall voor uw data base in Azure SQL Database verwijst elke regel van het virtuele netwerk naar een subnet. Al deze subnetten waarnaar wordt verwezen, moeten worden gehost in dezelfde geografische regio die als host fungeert voor de Azure-SQL database.
+- In de firewall voor uw data base in Azure SQL Database verwijst elke regel van het virtuele netwerk naar een subnet. Al deze subnetten waarnaar wordt verwezen, moeten worden gehost in dezelfde geografische regio die de data base host.
 
 - Elke-server kan Maxi maal 128 ACL-vermeldingen hebben voor elk gegeven virtueel netwerk.
 
@@ -110,13 +110,13 @@ Azure Storage heeft dezelfde functie geïmplementeerd waarmee u de connectivitei
 
 ### <a name="azure-synapse-polybase"></a>Azure Synapse poly base
 
-Poly Base wordt vaak gebruikt voor het laden van gegevens in azure Synapse Analytics van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure Synapse Analytics waarmee verbinding wordt gemaakt met Azure Storage dat is beveiligd met VNet:
+PolyBase wordt vaak gebruikt voor het laden van gegevens in Azure Synapse Analytics vanaf Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure Synapse Analytics waarmee verbinding wordt gemaakt met Azure Storage dat is beveiligd met VNet:
 
 #### <a name="prerequisites"></a>Vereisten
 
-- Installeer Azure PowerShell met behulp van deze [hand leiding](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-- U moet **vertrouwde micro soft-Services toegang geven tot dit opslag account** ingeschakeld onder Azure Storage account **firewalls en instellingen voor virtuele netwerken** . Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
+- Installeer Azure PowerShell met behulp van deze [gids](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [gids](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+- U moet **vertrouwde Microsoft-services toegang geven tot dit opslagaccount** ingeschakeld onder het instellingenmenu van uw Azure Storage-account **Firewalls en virtuele netwerken**. Raadpleeg deze [gids](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
 
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
@@ -131,17 +131,17 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in azure Synapse Analy
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. Maak met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)een **v2-opslag account voor algemeen** gebruik.
+1. **Een opslagaccount voor algemeen gebruik v2 maken** met deze [gids](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
    > [!NOTE]
    >
-   > - Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Als u een v1-of blob-opslagaccount voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar de v2** voor algemeen gebruik met behulp van deze [gids](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)voor bekende problemen met Azure data Lake Storage Gen2.
 
-1. Navigeer onder uw opslag account naar **Access Control (IAM)** en selecteer **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
+1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan de server die als host fungeert voor uw Azure Synapse Analytics, die u bij Azure Active Directory (Aad) hebt geregistreerd, zoals in stap #1.
 
    > [!NOTE]
-   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen voor Azure-resources.
+   > Deze stap kan alleen worden uitgevoerd door leden met de bevoegdheid eigenaar van het opslag account. Raadpleeg deze [gids](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor verschillende ingebouwde rollen voor Azure-resources.
   
 1. **Poly base-verbinding met het Azure Storage-account:**
 

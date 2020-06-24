@@ -8,11 +8,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249085"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686661"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Overzicht van Azure Monitor agents
 
@@ -33,7 +33,7 @@ De volgende tabellen bieden een snelle vergelijking van de Azure Monitor agents 
 |:---|:---|:---|:---|
 | Omgevingen worden ondersteund | Azure | Azure<br>Andere Cloud<br>On-premises | Azure<br>Andere Cloud<br>On-premises | 
 | Agent vereisten  | Geen | Geen | Vereist Log Analytics-agent |
-| Verzamelde gegevens | Gebeurtenislogboeken<br>ETW-gebeurtenissen<br>Prestaties<br>Logboeken op basis van bestanden<br>IIS-logboeken<br>.NET-app-logboeken<br>Crashdumps<br>Logboeken met diagnostische gegevens van agent | Gebeurtenislogboeken<br>Prestaties<IIS logs><br>Logboeken op basis van bestanden<br>Inzichten en oplossingen<br>Overige services | Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
+| Verzamelde gegevens | Gebeurtenislogboeken<br>ETW-gebeurtenissen<br>Prestaties<br>Logboeken op basis van bestanden<br>IIS-logboeken<br>.NET-app-logboeken<br>Crashdumps<br>Logboeken met diagnostische gegevens van agent | Gebeurtenislogboeken<br>Prestaties<IIS logs><br>Logboeken op basis van bestanden<br>Inzicht en oplossingen<br>Overige services | Details en afhankelijkheden van het proces<br>Metrische netwerk verbindings gegevens |
 | Gegevens die worden verzonden naar | Azure Storage<br>Azure Monitor metrische gegevens<br>Event Hub | Azure Monitor-logboeken | Azure Monitor-logboeken |
 
 

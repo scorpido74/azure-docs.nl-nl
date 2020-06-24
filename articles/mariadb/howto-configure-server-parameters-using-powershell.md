@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: conceptual
 ms.date: 5/26/2020
-ms.openlocfilehash: d7a6f87b704a2e366e0a4e1fc647e83ed88c486c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53ef9f66034d40e221a9ae4c8647cecdfe709107
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050854"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726868"
 ---
-# <a name="customize-azure-database-for-mariadb-server-parameters-using-powershell"></a>Azure Database for MariaDB server parameters aanpassen met behulp van Power shell
+# <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>Server parameters configureren in Azure Database for MariaDB met behulp van Power shell
 
 U kunt configuratie parameters voor een Azure Database for MariaDB server weer geven, tonen en bijwerken met behulp van Power shell. Een subset van de engine configuraties wordt weer gegeven op server niveau en kan worden gewijzigd.
 
@@ -26,8 +26,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de Power shell-module AZ. MariaDb in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
-> Zodra de Power shell-module AZ. MariaDb algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.MariaDb in preview is, moet u deze afzonderlijk van de Az-module van PowerShell installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
+> Zodra de PowerShell-module Az.MariaDb algemeen beschikbaar is, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 

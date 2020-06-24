@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792697"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106014"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Hoe kan ik met behulp van Packer installatie kopieën voor virtuele Linux-machines maken in azure?
 Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Linux-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor de meeste gang bare distributies en toepassings omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure definieert en bouwt.
@@ -25,7 +25,7 @@ Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie k
 ## <a name="create-azure-resource-group"></a>Een Azure-resource groep maken
 Tijdens het bouw proces maakt verpakker tijdelijke Azure-resources tijdens het maken van de bron-VM. Als u wilt dat de bron-VM als een installatie kopie wordt gebruikt, moet u een resource groep definiëren. De uitvoer van het pakket voor het maken van pakketten wordt opgeslagen in deze resource groep.
 
-Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -63,13 +63,13 @@ In de volgende stap gebruikt u de uitvoer van deze twee opdrachten.
 ## <a name="define-packer-template"></a>Pakket sjabloon definiëren
 Als u installatie kopieën wilt maken, maakt u een sjabloon als een JSON-bestand. In de sjabloon definieert u bouwers en inrichtings die het werkelijke bouw proces uitvoeren. De verpakker heeft een [inrichtings functie voor Azure](https://www.packer.io/docs/builders/azure.html) waarmee u Azure-resources kunt definiëren, zoals de referenties van de service-principal die in de voor gaande stap zijn gemaakt.
 
-Maak een bestand met de naam *Ubuntu. json* en plak de volgende inhoud. Voer uw eigen waarden in voor het volgende:
+Maak een bestand met de naam *ubuntu.jsop* en plak de volgende inhoud. Voer uw eigen waarden in voor het volgende:
 
 | Parameter                           | Waar u kunt verkrijgen |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | Eerste regel van uitvoer van `az ad sp` de opdracht Create- *AppID* |
+| *client_id*                         | Eerste regel van uitvoer van de `az ad sp` opdracht Create- *AppID* |
 | *client_secret*                     | Tweede regel van uitvoer van `az ad sp` opdracht- *wacht woord* maken |
-| *tenant_id*                         | Derde regel van uitvoer van `az ad sp` de opdracht Create- *Tenant* |
+| *tenant_id*                         | Derde regel van uitvoer van de `az ad sp` opdracht Create- *Tenant* |
 | *subscription_id*                   | Uitvoer van `az account show` opdracht |
 | *managed_image_resource_group_name* | De naam van de resource groep die u in de eerste stap hebt gemaakt |
 | *managed_image_name*                | Naam voor de beheerde schijf installatie kopie die wordt gemaakt |
@@ -119,12 +119,12 @@ Maak een bestand met de naam *Ubuntu. json* en plak de volgende inhoud. Voer uw 
 Met deze sjabloon maakt u een installatie kopie van Ubuntu 16,04 LTS, installeert u NGINX en maakt u de voorzieningen van de virtuele machine on.
 
 > [!NOTE]
-> Als u deze sjabloon uitbreidt om gebruikers referenties in te richten, past u de inrichtings opdracht aan waarmee de `-deprovision` Azure- `deprovision+user`agent kan worden gelezen in plaats van.
-> Met `+user` de vlag verwijdert u alle gebruikers accounts van de bron-VM.
+> Als u deze sjabloon uitbreidt om gebruikers referenties in te richten, past u de inrichtings opdracht aan waarmee de Azure-agent kan worden gelezen in `-deprovision` plaats van `deprovision+user` .
+> `+user`Met de vlag verwijdert u alle gebruikers accounts van de bron-VM.
 
 
 ## <a name="build-packer-image"></a>Installatie kopie van Builder
-Als u Packer nog niet op uw lokale computer hebt geïnstalleerd, [volgt u de installatie-instructies van de verpakking](https://www.packer.io/docs/install/index.html).
+Als u Packer nog niet op uw lokale computer hebt geïnstalleerd, [volgt u de installatie-instructies van de verpakking](https://www.packer.io/docs/install).
 
 Bouw de installatie kopie door het pakket sjabloon bestand als volgt op te geven:
 
@@ -197,7 +197,7 @@ Het duurt enkele minuten voordat de virtuele machine door de pakket functie word
 
 
 ## <a name="create-vm-from-azure-image"></a>Een VM maken op basis van een Azure-installatie kopie
-U kunt nu een VM maken op basis van uw installatie kopie met [AZ VM Create](/cli/azure/vm). Geef de installatie kopie op die u `--image` hebt gemaakt met de para meter. In het volgende voor beeld wordt een virtuele machine met de naam *myVM* van *myPackerImage* gemaakt en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
+U kunt nu een VM maken op basis van uw installatie kopie met [AZ VM Create](/cli/azure/vm). Geef de installatie kopie op die u hebt gemaakt met de `--image` para meter. In het volgende voor beeld wordt een virtuele machine met de naam *myVM* van *myPackerImage* gemaakt en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
 
 ```azurecli
 az vm create \

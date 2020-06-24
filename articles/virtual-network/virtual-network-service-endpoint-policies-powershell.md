@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 673431e2ddfc9a641bb1c640891daac79350cb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78253024"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708192"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Gegevens exfiltration beheren om accounts te Azure Storage met het eindpunt beleid van een virtueel netwerk met behulp van Azure PowerShell
 
@@ -370,7 +370,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name X -PSProvider FileSystem -Root "\\notallowedaccount.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-De toegang tot de share is geweigerd en er wordt een `New-PSDrive : Access is denied` fout bericht weer gegeven. De toegang is geweigerd omdat het *notallowedaccount* van het opslag account zich niet in de lijst met toegestane resources in het service-eindpunt beleid bevindt. 
+De toegang tot de share is geweigerd en er wordt een fout bericht weer gegeven `New-PSDrive : Access is denied` . De toegang is geweigerd omdat het *notallowedaccount* van het opslag account zich niet in de lijst met toegestane resources in het service-eindpunt beleid bevindt. 
 
 Sluit de externe bureaubladsessie naar de VM *myVmPublic*.
 

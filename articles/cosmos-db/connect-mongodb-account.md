@@ -5,15 +5,15 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd4d6e1632ba858e709f6d463a6da4779314e64d
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617041"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262018"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Een MongoDB-toepassing verbinden met Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Ontdek hoe u uw MongoDB-app met een Azure Cosmos DB kunt verbinden met behulp va
 
 In deze zelfstudie kunt u op twee manieren gegevens van verbindingsreeksen ophalen:
 
-- [De Quick](#get-the-mongodb-connection-string-by-using-the-quick-start)start-methode, voor gebruik met .net-, node. js-, MongoDb-, Java-en python-Stuur Programma's
+- [De Quick](#get-the-mongodb-connection-string-by-using-the-quick-start)start-methode, voor gebruik met .net-, Node.js-, MongoDb-, Java-en python-Stuur Programma's
 - [De aangepaste Connection String methode](#get-the-mongodb-connection-string-to-customize), voor gebruik met andere Stuur Programma's
 
 ## <a name="prerequisites"></a>Vereisten
@@ -34,7 +34,7 @@ In deze zelfstudie kunt u op twee manieren gegevens van verbindingsreeksen ophal
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)in een Internet browser.
 2. Selecteer op de Blade **Azure Cosmos DB** de API.
 3. Klik in het linkerdeel venster van de Blade account op **Quick Start**.
-4. Kies uw platform (**.net**, **node. js**, **MongoDb shell**, **Java**, **python**). Als uw stuur programma of hulp programma niet wordt weer gegeven, kunt u geen zorgen maken, we maken continu meer code fragmenten voor verbindings codes. Geef hieronder een opmerking over wat u wilt zien. Als u wilt weten hoe u uw eigen verbinding maakt, leest u [de Connection String gegevens van het account ophalen](#get-the-mongodb-connection-string-to-customize).
+4. Kies uw platform (**.net**, **Node.js**, **MongoDb shell**, **Java**, **python**). Als uw stuur programma of hulp programma niet wordt weer gegeven, kunt u geen zorgen maken, we maken continu meer code fragmenten voor verbindings codes. Geef hieronder een opmerking over wat u wilt zien. Als u wilt weten hoe u uw eigen verbinding maakt, leest u [de Connection String gegevens van het account ophalen](#get-the-mongodb-connection-string-to-customize).
 5. Kopieer en plak het code fragment in uw MongoDB-app.
 
     ![Blade snel starten](./media/connect-mongodb-account/QuickStartBlade.png)
@@ -46,7 +46,7 @@ In deze zelfstudie kunt u op twee manieren gegevens van verbindingsreeksen ophal
 3. Klik in het linkerdeel venster van de Blade account op **verbindings reeks**.
 4. De Blade **verbindings reeks** wordt geopend. Het bevat alle informatie die nodig is om verbinding te maken met het account met behulp van een stuur programma voor MongoDB, inclusief een geconstrueerde connection string.
 
-   [![Blade](./media/connect-mongodb-account/ConnectionStringBlade.png) verbindings reeks](./media/connect-mongodb-account/ConnectionStringBlade.png#lightbox)
+   :::image type="content" source="./media/connect-mongodb-account/ConnectionStringBlade.png" alt-text="De blade Verbindingsreeks" lightbox= "./media/connect-mongodb-account/ConnectionStringBlade.png" :::
 
 ## <a name="connection-string-requirements"></a>Vereisten voor de verbindings reeks
 

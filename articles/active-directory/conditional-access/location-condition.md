@@ -4,21 +4,20 @@ description: Meer informatie over hoe u de locatie voorwaarde kunt gebruiken om 
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.workload: identity
-ms.date: 05/28/2020
+ms.topic: conceptual
+ms.date: 06/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 7db7e64840d248b66a61ff310f9441800e1afc31
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605456"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253219"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>De locatie voorwaarde gebruiken in een beleid voor voorwaardelijke toegang 
 
@@ -141,6 +140,30 @@ Deze optie is van toepassing op:
 ### <a name="selected-locations"></a>Geselecteerde locaties
 
 Met deze optie kunt u een of meer benoemde locaties selecteren. Een gebruiker moet verbinding maken vanaf een van de geselecteerde locaties om een beleid met deze instelling toe te passen. Wanneer u op het besturings element benoemde netwerk selectie **selecteren** klikt, wordt de lijst met benoemde netwerken weer gegeven. In de lijst wordt ook weer gegeven als de netwerk locatie is gemarkeerd als vertrouwd. De benoemde locatie met de naam **MFA Trusted ip's** wordt gebruikt voor het toevoegen van de IP-instellingen die kunnen worden geconfigureerd op de instellings pagina van de multi-factor Authentication-service.
+
+## <a name="ipv6-traffic"></a>IPv6-verkeer
+
+Beleid voor voorwaardelijke toegang is standaard van toepassing op alle IPv6-verkeer. Met de [voor beeld van benoemde locatie](#preview-features)kunt u specifieke IPv6-adresbereiken uitsluiten van een beleid voor voorwaardelijke toegang. Deze optie is handig in gevallen waarin u niet wilt dat het beleid wordt afgedwongen voor specifieke IPv6-bereiken. Als u bijvoorbeeld geen beleid wilt afdwingen voor gebruik in uw bedrijfs netwerk en uw bedrijfs netwerk wordt gehost op open bare IPv6-bereiken.  
+
+### <a name="when-will-my-tenant-have-ipv6-traffic"></a>Wanneer heeft mijn Tenant IPv6-verkeer?
+
+Azure Active Directory (Azure AD) biedt momenteel geen ondersteuning voor directe netwerk verbindingen die gebruikmaken van IPv6. Er zijn echter enkele gevallen waarin verificatie verkeer via een andere service wordt geproxyeerd. In deze gevallen wordt het IPv6-adres gebruikt tijdens de beleids evaluatie.
+
+Het grootste deel van het IPv6-verkeer dat via een proxy naar Azure AD wordt verzonden, is van micro soft Exchange Online. Wanneer deze beschikbaar zijn, heeft Exchange voor keur aan IPv6-verbindingen. **Als u dus beleids regels voor voorwaardelijke toegang voor Exchange hebt die zijn geconfigureerd voor specifieke IPv4-bereiken, wilt u er zeker van zijn dat u ook de IPv6-bereiken van uw organisatie hebt toegevoegd.** Het niet opnemen van IPv6-bereiken leidt tot onverwacht gedrag voor de volgende twee gevallen:
+
+- Wanneer een e-mailclient wordt gebruikt om verbinding te maken met Exchange Online met verouderde verificatie, kan Azure AD een IPv6-adres ontvangen. De eerste verificatie aanvraag gaat naar Exchange en stuurt vervolgens een proxy naar Azure AD.
+- Als Outlook Web Access (OWA) wordt gebruikt in de browser, controleert het regel matig of alle beleids regels voor voorwaardelijke toegang aan de voor waarden worden voldaan. Deze controle wordt gebruikt om te voor komen dat een gebruiker van een toegestaan IP-adres naar een nieuwe locatie is verplaatst, zoals in de koffie winkel. Als een IPv6-adres wordt gebruikt en als het IPv6-adres zich niet in een geconfigureerd bereik bevindt, kan de gebruiker de sessie mogelijk onderbreken en terugsturen naar Azure AD om zich opnieuw te verifiëren. 
+
+Dit zijn de meest voorkomende oorzaken voor het configureren van IPv6-bereiken op uw benoemde locaties. Daarnaast kunt u, als u Azure VNets gebruikt, verkeer afkomstig van een IPv6-adres. Als u VNet-verkeer hebt geblokkeerd door een beleid voor voorwaardelijke toegang, controleert u het aanmeld logboek van Azure AD. Zodra u het verkeer hebt geïdentificeerd, kunt u het IPv6-adres dat wordt gebruikt, ophalen en uitsluiten van uw beleid. 
+
+> [!NOTE]
+> Als u een IP-CIDR-bereik voor één adres wilt opgeven, past u het/32-bitmask toe. Als u het IPv6-adres 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74a en wilt uitsluiten van dat ene adres als bereik, gebruikt u 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74a/32.
+
+### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>IPv6-verkeer identificeren in de rapporten van de aanmeldings activiteiten van Azure AD
+
+U kunt IPv6-verkeer in uw Tenant detecteren door de [rapporten van Azure AD-aanmeld activiteiten](../reports-monitoring/concept-sign-ins.md)te bezoeken. Nadat u het activiteiten rapport hebt geopend, voegt u de kolom IP-adres toe. Met deze kolom kunt u het IPv6-verkeer identificeren.
+
+U kunt ook het IP-adres van de client vinden door te klikken op een rij in het rapport en vervolgens naar het tabblad locatie in de details van de aanmeldings activiteit te gaan. 
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 

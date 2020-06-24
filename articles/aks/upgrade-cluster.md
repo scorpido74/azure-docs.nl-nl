@@ -4,12 +4,12 @@ description: Meer informatie over hoe u een AKS-cluster (Azure Kubernetes servic
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 761df8abc60671341fcdd74e7c66111cfeb105ad
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 5f0391c10a99173e7a2d87c1dd08a36852fc0450
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259232"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887979"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes Service) upgraden
 
@@ -105,13 +105,14 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 Met een lijst met beschik bare versies voor uw AKS-cluster gebruikt u de opdracht [AZ AKS upgrade][az-aks-upgrade] . Tijdens het upgrade proces voegt AKS een nieuw knoop punt toe aan het cluster waarop de opgegeven Kubernetes-versie wordt uitgevoerd. vervolgens wordt een van de oude knoop punten door [Cordon en][kubernetes-drain] vertraagd, zodat de onderbreking van de toepassingen tot een minimum wordt beperkt. Wanneer het nieuwe knoop punt is bevestigd als het uitvoeren van de toepassing Peul, wordt het oude knoop punt verwijderd. Dit proces wordt herhaald totdat alle knoop punten in het cluster zijn bijgewerkt.
 
-In het volgende voor beeld wordt een cluster bijgewerkt naar versie *1.13.10*:
-
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
 ```
 
-Het duurt enkele minuten om het cluster bij te werken, afhankelijk van het aantal knoop punten dat u hebt. 
+Het duurt enkele minuten om het cluster bij te werken, afhankelijk van het aantal knoop punten dat u hebt.
 
 > [!NOTE]
 > Er is een totale toegestane tijd voor het volt ooien van een cluster upgrade. Deze tijd wordt berekend door het product van te nemen `10 minutes * total number of nodes in the cluster` . Voor beeld: in een cluster met 20 knoop punten moeten upgrade bewerkingen in 200 minuten slagen of AKS de bewerking mislukken om een onherstelbare cluster status te voor komen. Als u het probleem wilt herstellen tijdens de upgrade, voert u de upgrade bewerking opnieuw uit nadat de time-out is bereikt.

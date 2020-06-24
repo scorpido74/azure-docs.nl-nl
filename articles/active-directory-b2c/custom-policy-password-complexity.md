@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07212f2968ff1db99ef5fee2e6e8eca818ec0e24
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138431"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202633"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Wachtwoord complexiteit configureren met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -31,13 +31,13 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 ## <a name="add-the-elements"></a>De elementen toevoegen
 
-Als u de wachtwoord complexiteit wilt configureren, `newPassword` overschrijft u de `reenterPassword` [claim typen](claimsschema.md) en maakt u een verwijzing naar [predikaten-validaties](predicates.md#predicatevalidations). Met het element PredicateValidations wordt een set predikaten gegroepeerd om een gebruikers invoer validatie te vormen die kan worden toegepast op een claim type. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+Als u de wachtwoord complexiteit wilt configureren, overschrijft `newPassword` u de `reenterPassword` [claim typen](claimsschema.md) en maakt u een verwijzing naar [predikaten-validaties](predicates.md#predicatevalidations). Met het element PredicateValidations wordt een set predikaten gegroepeerd om een gebruikers invoer validatie te vormen die kan worden toegepast op een claim type. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
 1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
-1. Voeg de `newPassword` claims `reenterPassword` en toe aan het **ClaimsSchema** -element.
+1. Voeg de `newPassword` claims en toe `reenterPassword` aan het **ClaimsSchema** -element.
 
-    ```XML
+    ```xml
     <ClaimType Id="newPassword">
       <PredicateValidationReference Id="CustomPassword" />
     </ClaimType>
@@ -46,9 +46,9 @@ Als u de wachtwoord complexiteit wilt configureren, `newPassword` overschrijft u
     </ClaimType>
     ```
 
-1. [Predikaten](predicates.md) definieert een basis validatie om de waarde van een claim type te controleren en retourneert waar of onwaar. De validatie wordt uitgevoerd met behulp van een opgegeven methode-element en een set para meters die relevant zijn voor de methode. Voeg de volgende predikaten toe aan het **BuildingBlocks** -element, direct na het sluiten van `</ClaimsSchema>` het element:
+1. [Predikaten](predicates.md) definieert een basis validatie om de waarde van een claim type te controleren en retourneert waar of onwaar. De validatie wordt uitgevoerd met behulp van een opgegeven methode-element en een set para meters die relevant zijn voor de methode. Voeg de volgende predikaten toe aan het **BuildingBlocks** -element, direct na het sluiten van het `</ClaimsSchema>` element:
 
-    ```XML
+    ```xml
     <Predicates>
       <Predicate Id="LengthRange" Method="IsLengthRange">
         <UserHelpText>The password must be between 6 and 64 characters.</UserHelpText>
@@ -86,7 +86,7 @@ Als u de wachtwoord complexiteit wilt configureren, `newPassword` overschrijft u
 
 1. Voeg de volgende predikaten-validaties toe aan het element **BuildingBlocks** direct na het sluiten van het `</Predicates>` element:
 
-    ```XML
+    ```xml
     <PredicateValidations>
       <PredicateValidation Id="CustomPassword">
         <PredicateGroups>
@@ -111,7 +111,7 @@ Als u de wachtwoord complexiteit wilt configureren, `newPassword` overschrijft u
 
 1. De volgende technische profielen zijn [Active Directory technische profielen](active-directory-technical-profile.md), waarmee gegevens worden gelezen en geschreven naar Azure Active Directory. Vervang deze technische profielen in het extensie bestand. Gebruiken `PersistedClaims` om het beleid voor sterke wacht woorden uit te scha kelen. Zoek het element **ClaimsProviders** .  Voeg de volgende claim providers als volgt toe:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -136,17 +136,17 @@ Als u de wachtwoord complexiteit wilt configureren, `newPassword` overschrijft u
 ### <a name="upload-the-files"></a>De bestanden uploaden
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat door in het bovenste menu te klikken op het filter **Map en abonnement** en de map te kiezen waarin de tenant zich bevindt.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
 5. Klik op het tabblad Aangepaste beleids regels op **beleid uploaden**.
-6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het bestand *TrustFrameworkExtensions. XML* .
+6. Selecteer **het beleid overschrijven als dit bestaat**, en zoek en selecteer het *TrustFrameworkExtensions.xml* bestand.
 7. Klik op **Uploaden**.
 
 ### <a name="run-the-policy"></a>Het beleid uitvoeren
 
 1. Open het registratie-of aanmeldings beleid. Bijvoorbeeld *B2C_1A_signup_signin*.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Om het token weer te geven, moet de **antwoord-URL** worden weer gegeven `https://jwt.ms` .
 3. Klik op **Nu uitvoeren**.
 4. Selecteer **nu aanmelden**, voer een e-mail adres in en voer een nieuw wacht woord in. Richt lijnen worden weer gegeven voor wachtwoord beperkingen. Voer de gebruikers gegevens in en klik vervolgens op **maken**. De inhoud van het geretourneerde token moet worden weer gegeven.
 

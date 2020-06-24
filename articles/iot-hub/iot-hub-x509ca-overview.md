@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284510"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84717797"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Apparaatverificatie met behulp van X. 509 CA-certificaten
 
@@ -50,7 +50,7 @@ De eigenaar van een X. 509 CA-certificaat kan cryptografisch een tussenliggende 
 
 ![img-algemeen-CERT-keten-van-vertrouwen](./media/generic-cert-chain-of-trust.png)
 
-Het certificaat van het apparaat (ook wel een blad certificaat genoemd) moet de *object naam* hebben ingesteld op de **apparaat-id** die is gebruikt bij het registreren van het IOT-apparaat in de Azure-IOT hub. Deze instelling is vereist voor verificatie.
+Het certificaat van het apparaat (ook wel een blad certificaat genoemd) moet de *object naam* hebben ingesteld op de **apparaat-id** ( `CN=deviceId` ) die is gebruikt bij het registreren van het IOT-apparaat in de Azure IOT hub. Deze instelling is vereist voor verificatie.
 
 Hier vindt u informatie over het [maken van een certificaat keten](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) als gereed voor het ondertekenen van apparaten.
 

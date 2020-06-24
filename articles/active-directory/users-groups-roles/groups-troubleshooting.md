@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 8730ac8aa6a6056db67613f2ac8decf11740c467
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582735"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727684"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Problemen met groepen oplossen en oplossen
 
@@ -35,7 +35,7 @@ Het maken van groepen uitschakelen voor gebruikers die geen beheerder zijn in Po
    ```
 
   
-2. Als deze wordt `UsersPermissionToCreateGroupsEnabled : True`geretourneerd, kunnen gebruikers die geen beheerder zijn, groepen maken. U kunt deze functie als volgt uitschakelen:
+2. Als deze wordt geretourneerd `UsersPermissionToCreateGroupsEnabled : True` , kunnen gebruikers die geen beheerder zijn, groepen maken. U kunt deze functie als volgt uitschakelen:
   
 
    ``` 
@@ -68,7 +68,7 @@ Op dit moment is er geen manier om de groep automatisch te activeren om op aanvr
 | --- | --- | --- |
 | Fout: het kenmerk wordt niet ondersteund. |(User. invalidProperty-EQ "waarde") |(User. Department-EQ "waarde")<br/><br/>Zorg ervoor dat het kenmerk voor komt in de [lijst ondersteunde eigenschappen](groups-dynamic-membership.md#supported-properties). |
 | Fout: de operator wordt niet ondersteund voor het kenmerk. |(User. accountEnabled-bevat True) |(User. accountEnabled-EQ True)<br/><br/>De operator die wordt gebruikt, wordt niet ondersteund voor het eigenschaps type (in dit voor beeld kan-contains niet worden gebruikt voor het type Boolean). Gebruik de juiste Opera tors voor het eigenschaps type. |
-| Fout: compilatie fout van de query. | 1. (User. Department-EQ "Sales") (gebruiker. Department-EQ "marketing")<br>2. (User. userPrincipalName-match "*@domain.ext") | 1. de operator ontbreekt. Gebruik-en of-of twee samenvoegings predikaten<br>(User. Department-EQ "Sales") of (User. Department-EQ "marketing")<br>2. fout in reguliere expressie die wordt gebruikt met-match<br>(User. userPrincipalName-match ". *@domain.ext")<br>of: (User. userPrincipalName-match "@domain.ext$") |
+| Fout: compilatie fout van de query. | 1. (User. Department-EQ "Sales") (gebruiker. Department-EQ "marketing")<br>2. (User. userPrincipalName-match "* @domain.ext ") | 1. de operator ontbreekt. Gebruik-en of-of twee samenvoegings predikaten<br>(User. Department-EQ "Sales") of (User. Department-EQ "marketing")<br>2. fout in reguliere expressie die wordt gebruikt met-match<br>(User. userPrincipalName-match ". * @domain.ext ")<br>of: (User. userPrincipalName-match " @domain.ext $") |
 
 ## <a name="next-steps"></a>Volgende stappen
 

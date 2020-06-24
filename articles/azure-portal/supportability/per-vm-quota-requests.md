@@ -4,15 +4,15 @@ description: Een toename van de vCPU-quotum limiet voor een VM-reeks in het Azur
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: de06375dad5999a29691435317e62585a2ea7f64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e00b1cf11b906390335f257b20787d394b3a8ed4
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843714"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117162"
 ---
 # <a name="standard-quota-increase-limits-by-vm-series"></a>Standaard quotum: limieten verhogen per VM-serie
 
@@ -26,7 +26,7 @@ Het standaard vCPU-quotum voor betalen per gebruik en gereserveerde exemplaren v
 * De eerste laag is de *totale regionale vcpu's limiet*, in alle VM-reeksen.
 * De tweede laag is de *limiet voor de serie vcpu's per VM*, zoals de vcpu's van de Dv3-serie.
 
-Wanneer u een nieuwe spot-VM implementeert, mag het totale nieuwe en bestaande vCPU-gebruik voor die VM-reeks niet groter zijn dan het goedgekeurde vCPU-quotum voor die bepaalde VM-reeks. Daarnaast mag het totale aantal nieuwe en bestaande Vcpu's die zijn geïmplementeerd in alle VM-reeksen niet groter zijn dan het totale goedgekeurde regionale vCPU-quotum voor het abonnement. Als een van deze quota wordt overschreden, is de implementatie van de VM niet toegestaan.
+Wanneer u een nieuwe spot-VM implementeert, mag het totale nieuwe en bestaande vCPU-gebruik voor alle exemplaren van de virtuele machine van de VM de goedgekeurde plaatsings vCPU-quotum limiet niet overschrijden. Als het steun quotum wordt overschreden, is de implementatie van de VM met steun niet toegestaan.
 
 U kunt een verhoging van de vCPU-quotum limiet voor de VM-serie aanvragen met behulp van de Azure Portal. Een toename in het quotum van de VM-reeks verhoogt automatisch de totale regionale vCPU limiet met hetzelfde bedrag.
 

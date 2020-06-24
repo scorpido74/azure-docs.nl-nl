@@ -4,12 +4,13 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757752"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207004"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -111,7 +112,7 @@ De runtime levert de `customDimensions.LogLevel` `customDimensions.Category` vel
 
 ## <a name="configure-categories-and-log-levels"></a>Categorieën en logboek niveaus configureren
 
-U kunt Application Insights gebruiken zonder aangepaste configuratie. De standaard configuratie kan leiden tot grote hoeveel heden gegevens. Als u een Visual Studio Azure-abonnement gebruikt, kunt u uw gegevens limiet voor Application Insights hebben bereikt. Verderop in dit artikel vindt u informatie over het configureren en aanpassen van de gegevens die uw functies naar Application Insights verzenden. Voor een functie-app wordt logboek registratie geconfigureerd in het bestand [host. json] .
+U kunt Application Insights gebruiken zonder aangepaste configuratie. De standaard configuratie kan leiden tot grote hoeveel heden gegevens. Als u een Visual Studio Azure-abonnement gebruikt, kunt u uw gegevens limiet voor Application Insights hebben bereikt. Verderop in dit artikel vindt u informatie over het configureren en aanpassen van de gegevens die uw functies naar Application Insights verzenden. Voor een functie-app wordt logboek registratie geconfigureerd in de [host.jsvoor] het bestand.
 
 ### <a name="categories"></a>Categorieën
 
@@ -146,9 +147,9 @@ De Azure Functions logger bevat ook een *logboek niveau* voor elk logboek. [LogL
 
 Logboek niveau `None` wordt uitgelegd in de volgende sectie. 
 
-### <a name="log-configuration-in-hostjson"></a>Logboek configuratie in host. json
+### <a name="log-configuration-in-hostjson"></a>Configuratie van logboek in host.jsop
 
-In het bestand [host. json] wordt geconfigureerd hoeveel logboek registratie van een functie-app naar Application Insights verzendt. Voor elke categorie geeft u het minimale logboek niveau op dat moet worden verzonden. Er zijn twee voor beelden: in het eerste voor beeld is [versie 2. x en hoger](functions-versions.md#version-2x) van de functions runtime (met .net core) en het tweede voor beeld voor de versie 1. x runtime.
+Met de [host.jsin] bestand configureert u hoeveel logboek registratie van een functie-app naar Application Insights verzendt. Voor elke categorie geeft u het minimale logboek niveau op dat moet worden verzonden. Er zijn twee voor beelden: in het eerste voor beeld is [versie 2. x en hoger](functions-versions.md#version-2x) van de functions runtime (met .net core) en het tweede voor beeld voor de versie 1. x runtime.
 
 ### <a name="version-2x-and-higher"></a>Versie 2. x en hoger
 
@@ -188,12 +189,12 @@ Versie v2. x en latere versies van de functions runtime gebruiken de [.net core 
 In dit voor beeld worden de volgende regels ingesteld:
 
 * Voor logboeken met een categorie `Host.Results` of `Function` , alleen `Error` niveau en hierboven verzenden naar Application Insights. Logboeken voor `Warning` niveau en hieronder worden genegeerd.
-* Voor logboeken met categorie `Host.Aggregator` verzendt u alle logboeken naar Application Insights. Het `Trace` logboek niveau is hetzelfde als wat sommige logboeken aanroepen `Verbose` , maar `Trace` in het bestand [host. json] gebruiken.
+* Voor logboeken met categorie `Host.Aggregator` verzendt u alle logboeken naar Application Insights. Het `Trace` logboek niveau is hetzelfde als wat sommige logboeken aanroept `Verbose` , maar wel `Trace` in de [host.jsvoor] het bestand.
 * Voor alle andere logboeken moet `Information` u alleen het niveau en de bovenstaande berichten verzenden naar Application Insights.
 
-De categorie waarde in [host. json] bepaalt de logboek registratie voor alle categorieën die met dezelfde waarde beginnen. `Host`in [host. json] beheert de logboek registratie voor `Host.General` , `Host.Executor` , `Host.Results` , enzovoort.
+De categorie waarde in [host.js] de logboek registratie van besturings elementen voor alle categorieën die met dezelfde waarde beginnen. `Host`in [host.jsover] de logboek registratie voor `Host.General` ,,, enzovoort `Host.Executor` `Host.Results` .
 
-Als [host. json] meerdere categorieën bevat die beginnen met dezelfde teken reeks, worden de langere reeksen eerst vergeleken. Stel dat u wilt dat alles uit de runtime, met uitzonde ring van `Host.Aggregator` logboek op `Error` niveau, maar u wilt `Host.Aggregator` aanmelden op het `Information` niveau:
+Als [host.jsop] meerdere categorieën bevat die met dezelfde teken reeks beginnen, worden de langere typen eerst vergeleken. Stel dat u wilt dat alles uit de runtime, met uitzonde ring van `Host.Aggregator` logboek op `Error` niveau, maar u wilt `Host.Aggregator` aanmelden op het `Information` niveau:
 
 ### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
@@ -232,7 +233,7 @@ Als u alle logboeken voor een categorie wilt onderdrukken, kunt u het logboek ni
 
 ## <a name="configure-the-aggregator"></a>De aggregator configureren
 
-Zoals u in de vorige sectie hebt genoteerd, verzamelt de runtime gegevens over functie-uitvoeringen gedurende een bepaalde periode. De standaard periode is 30 seconden of 1.000 wordt uitgevoerd, afhankelijk van wat het eerste komt. U kunt deze instelling configureren in het bestand [host. json] .  Hier volgt een voorbeeld:
+Zoals u in de vorige sectie hebt genoteerd, verzamelt de runtime gegevens over functie-uitvoeringen gedurende een bepaalde periode. De standaard periode is 30 seconden of 1.000 wordt uitgevoerd, afhankelijk van wat het eerste komt. U kunt deze instelling configureren in het [host.jsop] bestand.  Hier volgt een voorbeeld:
 
 ```json
 {
@@ -245,7 +246,7 @@ Zoals u in de vorige sectie hebt genoteerd, verzamelt de runtime gegevens over f
 
 ## <a name="configure-sampling"></a>Sampling configureren
 
-Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md) functie waarmee u kunt voor komen dat er te veel telemetriegegevens worden geproduceerd tijdens voltooide uitvoeringen op momenten van piek belasting. Wanneer de frequentie van binnenkomende uitvoeringen een opgegeven drempel overschrijdt, wordt Application Insights wille keurig een aantal binnenkomende uitvoeringen negeren. De standaard instelling voor het maximum aantal uitvoeringen per seconde is 20 (vijf in versie 1. x). U kunt steek proeven configureren in [host. json].  Hier volgt een voorbeeld:
+Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md) functie waarmee u kunt voor komen dat er te veel telemetriegegevens worden geproduceerd tijdens voltooide uitvoeringen op momenten van piek belasting. Wanneer de frequentie van binnenkomende uitvoeringen een opgegeven drempel overschrijdt, wordt Application Insights wille keurig een aantal binnenkomende uitvoeringen negeren. De standaard instelling voor het maximum aantal uitvoeringen per seconde is 20 (vijf in versie 1. x). U kunt steek proeven configureren in [host.jsop](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights).  Hier volgt een voorbeeld:
 
 ### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
@@ -255,12 +256,15 @@ Application Insights heeft een [bemonsterings](../azure-monitor/app/sampling.md)
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+In versie 2. x kunt u bepaalde soorten telemetrie uitsluiten van steek proeven. In het bovenstaande voor beeld worden gegevens van het type `Request` uitgesloten van steek proeven. Dit zorgt ervoor dat *alle* functie-uitvoeringen (aanvragen) worden geregistreerd, terwijl andere typen telemetrie aan de steek proef onderworpen blijven.
 
 ### <a name="version-1x"></a>Versie 1. x 
 
@@ -313,7 +317,7 @@ Hier volgt een voor beeld van een JSON-weer gave van `customDimensions` gegevens
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -334,7 +338,7 @@ Deze code is een alternatief voor het aanroepen `TrackMetric` van met behulp van
 
 ## <a name="write-logs-in-javascript-functions"></a>Logboeken schrijven in JavaScript-functies
 
-In node. js-functies gebruikt `context.log` u voor het schrijven van Logboeken. Structured logging is niet ingeschakeld.
+Gebruik in Node.js-functies `context.log` om logboeken te schrijven. Structured logging is niet ingeschakeld.
 
 ```
 context.log('JavaScript HTTP trigger function processed a request.' + context.invocationId);
@@ -342,19 +346,19 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Logboek registratie voor aangepaste metrische gegevens
 
-Wanneer u werkt met [versie 1. x](functions-versions.md#creating-1x-apps) van de functions runtime, kunnen node. js-functies gebruikmaken `context.log.metric` van de methode voor het maken van aangepaste metrische gegevens in Application Insights. Deze methode wordt momenteel niet ondersteund in versie 2. x en hoger. Dit is een voor beeld van een methode aanroep:
+Wanneer u werkt met [versie 1. x](functions-versions.md#creating-1x-apps) van de functions-runtime, kunnen Node.js-functies gebruikmaken `context.log.metric` van de methode voor het maken van aangepaste metrische gegevens in Application Insights. Deze methode wordt momenteel niet ondersteund in versie 2. x en hoger. Dit is een voor beeld van een methode aanroep:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-Deze code is een alternatief voor het aanroepen `trackMetric` van met behulp van de node. js-SDK voor Application Insights.
+Deze code is een alternatief voor het aanroepen `trackMetric` van met behulp van de Node.js SDK voor Application Insights.
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Aangepaste telemetrie voor logboeken in C#-functies
 
 Er is een functie-specifieke versie van de Application Insights SDK waarmee u aangepaste telemetriegegevens van uw functies kunt verzenden naar Application Insights: [micro soft. Azure. webjobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). Gebruik de volgende opdracht vanaf de opdracht prompt om dit pakket te installeren:
 
-# <a name="command"></a>[Cmd](#tab/cmd)
+# <a name="command"></a>[Opdracht](#tab/cmd)
 
 ```cmd
 dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
@@ -533,7 +537,7 @@ Niet instellen `telemetryClient.Context.Operation.Id` . Deze globale instelling 
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Aangepaste telemetrie voor logboeken in JavaScript-functies
 
-Hier volgen enkele voor beelden van code fragmenten die aangepaste telemetrie verzenden met de [Application Insights node. js SDK](https://github.com/microsoft/applicationinsights-node.js):
+Hier volgen enkele voor beelden van code fragmenten die aangepaste telemetrie verzenden met de [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js):
 
 ### <a name="version-2x-and-later"></a>Versie 2. x en hoger
 
@@ -636,7 +640,7 @@ Logboek stromen kunnen zowel in de portal als in de meeste lokale ontwikkel omge
 
 U kunt beide typen logboek stromen weer geven in de portal.
 
-#### <a name="built-in-log-streaming"></a>Ingebouwde logboek streaming
+#### <a name="built-in-log-streaming"></a>Ingebouwde logboekstreaming
 
 Als u streaming-logboeken wilt weer geven in de portal, selecteert u het tabblad **platform functies** in uw functie-app. Klik vervolgens onder **bewaking**op **logboek streaming**.
 
@@ -684,6 +688,28 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
+## <a name="scale-controller-logs"></a>Controller logboeken schalen
+
+De [Azure functions Scale-controller](./functions-scale.md#runtime-scaling) bewaakt de instanties van de functie-host die uw app uitvoeren en nemen beslissingen over het toevoegen of verwijderen van exemplaren van een host van een functie. Als u inzicht wilt krijgen in de beslissingen die de schaal controller in uw toepassing maakt, kunt u deze configureren voor het verzenden van logboeken naar Application Insights of naar Blob Storage.
+
+> [!WARNING]
+> Deze functie is beschikbaar als preview-versie. We raden u aan deze functie niet voor onbepaalde tijd ingeschakeld te laten, en u moet deze in plaats daarvan inschakelen wanneer u de verzamelde informatie nodig hebt en deze vervolgens uitschakelt.
+
+Als u deze functie wilt inschakelen, voegt u een nieuwe toepassings instelling toe met de naam `SCALE_CONTROLLER_LOGGING_ENABLED` . De waarde van deze instelling moet de `{Destination}:{Verbosity}` volgende indeling hebben:
+* `{Destination}`Hiermee geeft u het doel voor de logboeken waarnaar moet worden verzonden en moet ofwel `AppInsights` of zijn `Blob` .
+* `{Verbosity}`Hiermee geeft u het gewenste niveau van de logboek registratie op en moet u een van `None` `Warning` of opgeven `Verbose` .
+
+Als u bijvoorbeeld uitgebreide informatie van de schaal controller wilt registreren voor Application Insights, gebruikt u de waarde `AppInsights:Verbose` .
+
+> [!NOTE]
+> Als u het doel type inschakelt `AppInsights` , moet u ervoor zorgen dat u [Application Insights configureert voor uw functie-app](#enable-application-insights-integration).
+
+Als u de bestemming instelt op `Blob` , worden de logboeken gemaakt in een BLOB-container met de naam in `azure-functions-scale-controller` het opslag account dat is ingesteld in de `AzureWebJobsStorage` toepassings instelling.
+
+Als u de uitgebreidheid instelt op `Verbose` , registreert de schaal controller een reden voor elke wijziging in het aantal werk nemers, evenals informatie over de triggers die deel uitmaken van de beslissingen van de schaal controller. De logboeken bevatten bijvoorbeeld trigger waarschuwingen en de hashes die worden gebruikt door de triggers vóór en nadat de schaal controller wordt uitgevoerd.
+
+Als u logboek registratie van schaal controller wilt uitschakelen, stelt u de waarde van de `{Verbosity}` `None` toepassing in of verwijdert u de `SCALE_CONTROLLER_LOGGING_ENABLED` toepassings instelling.
+
 ## <a name="disable-built-in-logging"></a>Ingebouwde logboek registratie uitschakelen
 
 Als u Application Insights inschakelt, schakelt u de ingebouwde logboek registratie uit die gebruikmaakt van Azure Storage. De ingebouwde logboek registratie is handig voor het testen met lichte werk belastingen, maar is niet bedoeld voor productie gebruik met een hoge belasting. Voor productie bewaking wordt aangeraden Application Insights. Als ingebouwde logboek registratie in productie wordt gebruikt, is de registratie record mogelijk onvolledig vanwege beperking op Azure Storage.
@@ -697,4 +723,4 @@ Zie de volgende bronnen voor meer informatie:
 * [Application Insights](/azure/application-insights/)
 * [ASP.NET Core logboek registratie](/aspnet/core/fundamentals/logging/)
 
-[host. json]: functions-host-json.md
+[host.jsop]: functions-host-json.md

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692129"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194702"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -67,7 +67,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Lijst weergave Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek en selecteer uw opslag account in de Azure Portal. 
 
@@ -88,7 +88,7 @@ Er zijn twee manieren om een beleid toe te voegen via de Azure Portal.
 9. Selecteer **toevoegen** om het nieuwe beleid toe te voegen.
 
 #### <a name="azure-portal-code-view"></a>Code weergave Azure Portal
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek en selecteer uw opslag account in de Azure Portal.
 
@@ -226,17 +226,17 @@ Een levenscyclus beheer beleid is een verzameling regels in een JSON-document:
 
 Een beleid is een verzameling regels:
 
-| Parameternaam | Parameter type | Opmerkingen |
+| Parameternaam | Parameter type | Notities |
 |----------------|----------------|-------|
 | `rules`        | Een matrix van regel objecten | Er is ten minste één regel vereist in een beleid. U kunt Maxi maal 100 regels definiëren in een beleid.|
 
 Elke regel in het beleid heeft verschillende para meters:
 
-| Parameternaam | Parameter type | Opmerkingen | Vereist |
+| Parameternaam | Parameter type | Notities | Vereist |
 |----------------|----------------|-------|----------|
 | `name`         | Tekenreeks |De naam van een regel kan Maxi maal 256 alfanumerieke tekens bevatten. De regel naam is hoofdletter gevoelig.  Het moet uniek zijn binnen een beleid. | True |
-| `enabled`      | Boolean-waarde | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
-| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle`. | True |
+| `enabled`      | Booleaans | Een optionele Booleaanse waarde waarmee een regel tijdelijk kan worden uitgeschakeld. De standaard waarde is True als deze niet is ingesteld. | False | 
+| `type`         | Een Enum-waarde | Het huidige geldige type is `Lifecycle` . | True |
 | `definition`   | Een object dat de levenscyclus regel definieert | Elke definitie bestaat uit een set filters en een Actieset. | True |
 
 ## <a name="rules"></a>Regels
@@ -245,7 +245,7 @@ Elke regel definitie bevat een set filters en een Actieset. Met de [Filterset](#
 
 ### <a name="sample-rule"></a>Voorbeeld regel
 
-Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren `container1` op objecten die `foo`zich in en beginnen met.  
+Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren op objecten die zich in `container1` en beginnen met `foo` .  
 
 >[!NOTE]
 >Levenscyclus beheer ondersteunt alleen het type blok-blob.  
@@ -285,15 +285,15 @@ Met de volgende voorbeeld regel filtert u het account om de acties uit te voeren
 
 ### <a name="rule-filters"></a>Regel filters
 
-Filters beperken regel acties voor een subset van blobs binnen het opslag account. Als er meer dan één filter is gedefinieerd, is `AND` dit een logische uitvoering op alle filters.
+Filters beperken regel acties voor een subset van blobs binnen het opslag account. Als er meer dan één filter is gedefinieerd, is dit een logische `AND` uitvoering op alle filters.
 
 Filters omvatten:
 
-| Bestandsnaam | Filtertype | Opmerkingen | Is vereist |
+| Bestandsnaam | Filtertype | Notities | Is vereist |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob`. | Ja |
-| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is `container1/foo`de prefixMatch. | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | Nee |
-| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is `{"name": "Project","op": "==","value": "Contoso"}`de blobIndexMatch. | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | Nee |
+| blobTypes   | Een matrix met vooraf gedefinieerde Enum-waarden. | De huidige versie ondersteunt `blockBlob` . | Yes |
+| prefixMatch | Een matrix met teken reeksen voor voor voegsels die moeten worden vergeleken. Elke regel kan Maxi maal 10 voor voegsels definiëren. Een voorvoegsel teken reeks moet beginnen met een container naam. Als u bijvoorbeeld wilt zoeken naar alle blobs onder `https://myaccount.blob.core.windows.net/container1/foo/...` een regel, is de prefixMatch `container1/foo` . | Als u prefixMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account.  | No |
+| blobIndexMatch | Een matrix met woordenlijst waarden die bestaan uit BLOB-index Tags sleutel en waarden die moeten worden vergeleken. Elke regel kan Maxi maal 10 BLOB-index code voorwaarde definiëren. Als u bijvoorbeeld alle blobs wilt vergelijken met `Project = Contoso` onder `https://myaccount.blob.core.windows.net/` voor een regel, is de blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Als u blobIndexMatch niet definieert, is de regel van toepassing op alle blobs in het opslag account. | No |
 
 > [!NOTE]
 > BLOB-index bevindt zich in de open bare preview en is beschikbaar in de regio's **Frankrijk-centraal** en **Frankrijk-Zuid** . Zie voor meer informatie over deze functie, samen met bekende problemen en beperkingen, [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
@@ -304,14 +304,14 @@ Acties worden toegepast op de gefilterde blobs wanneer wordt voldaan aan de voor
 
 Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het verwijderen van BLOB-moment opnamen. Definieer ten minste één actie voor elke regel op blobs of BLOB-moment opnamen.
 
-| Actie        | Basis-BLOB                                   | Momentopname      |
+| Bewerking        | Basis-BLOB                                   | Momentopname      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Ondersteuning voor blobs momenteel op warme laag         | Niet ondersteund |
 | tierToArchive | Ondersteuning voor blobs momenteel op warme of koud niveau | Niet ondersteund |
 | delete        | Ondersteund                                   | Ondersteund     |
 
 >[!NOTE]
->Als u meer dan één actie op dezelfde BLOB definieert, past levenscyclus beheer de minst dure actie toe op de blob. Actie `delete` is bijvoorbeeld goed koper dan actie `tierToArchive`. Actie `tierToArchive` is goed koper dan `tierToCool`actie.
+>Als u meer dan één actie op dezelfde BLOB definieert, past levenscyclus beheer de minst dure actie toe op de blob. Actie `delete` is bijvoorbeeld goed koper dan actie `tierToArchive` . Actie `tierToArchive` is goed koper dan actie `tierToCool` .
 
 De uitvoerings voorwaarden zijn gebaseerd op leeftijd. Basis-blobs gebruiken het tijdstip waarop het laatst is gewijzigd voor het bijhouden van leeftijd en de BLOB-moment opnamen maken gebruik van de moment opname voor het bijhouden van leeftijd.
 
@@ -326,7 +326,7 @@ De volgende voor beelden laten zien hoe u veelvoorkomende scenario's met levensc
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Verouderde gegevens naar een koele laag verplaatsen
 
-In dit voor beeld ziet u hoe blok-blobs worden `container1/foo` voorafgegaan `container2/bar`door of. Het beleid overschakelt blobs die gedurende meer dan 30 dagen niet zijn gewijzigd naar koude opslag en blobs die niet zijn gewijzigd in 90 dagen naar de laag van het archief:
+In dit voor beeld ziet u hoe blok-blobs worden voorafgegaan door `container1/foo` of `container2/bar` . Het beleid overschakelt blobs die gedurende meer dan 30 dagen niet zijn gewijzigd naar koude opslag en blobs die niet zijn gewijzigd in 90 dagen naar de laag van het archief:
 
 ```json
 {
@@ -354,10 +354,10 @@ In dit voor beeld ziet u hoe blok-blobs worden `container1/foo` voorafgegaan `co
 
 ### <a name="archive-data-after-ingest"></a>Gegevens archiveren na opname
 
-Sommige gegevens blijven niet actief in de Cloud en worden zelden, indien ooit, geopend. Het volgende levenscyclus beleid is geconfigureerd om gegevens te archiveren zodra deze zijn opgenomen. In dit voor beeld worden blok-blobs in het opslag account `archivecontainer` in de container omgezet in een Archive-laag. De overgang wordt uitgevoerd door op blobs 0 dagen na de laatste wijzigings tijd te handelen:
+Sommige gegevens blijven niet actief in de Cloud en worden zelden, indien ooit, geopend. Het volgende levenscyclus beleid is geconfigureerd om gegevens te archiveren zodra deze zijn opgenomen. In dit voor beeld worden blok-blobs in het opslag account in de container `archivecontainer` omgezet in een Archive-laag. De overgang wordt uitgevoerd door op blobs 0 dagen na de laatste wijzigings tijd te handelen:
 
 > [!NOTE] 
-> Het is raadzaam om uw blobs rechtstreeks naar de archief laag te uploaden om efficiënter te zijn. U kunt de header x-MS-ace's-laag gebruiken voor [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) of [putblock List](https://docs.microsoft.com/rest/api/storageservices/put-block-list) met rest versie 2018-11-09 en nieuwere of onze meest recente client bibliotheken voor Blob Storage. 
+> Het is raadzaam om uw blobs rechtstreeks naar de archief laag te uploaden om efficiënter te zijn. U kunt de header x-MS-Access-tier gebruiken voor [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) of [putblock List](https://docs.microsoft.com/rest/api/storageservices/put-block-list) met rest versie 2018-11-09 en nieuwere of onze meest recente client bibliotheken voor Blob Storage. 
 
 ```json
 {
@@ -410,7 +410,7 @@ Sommige gegevens worden verwacht dagen of maanden na het maken. U kunt een leven
 ```
 
 ### <a name="delete-data-with-blob-index-tags"></a>Gegevens verwijderen met Blob-index Tags
-Sommige gegevens mogen alleen worden verlopen als deze expliciet zijn gemarkeerd voor verwijdering. U kunt een levenscyclus beheer beleid configureren om gegevens te laten verlopen die zijn gelabeld met kenmerken sleutel/waarde van BLOB-index. In het volgende voor beeld ziet u een beleid waarmee alle blok-blobs worden verwijderd die zijn gelabeld met `Project = Contoso`. Zie voor meer informatie over de BLOB-index [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
+Sommige gegevens mogen alleen worden verlopen als deze expliciet zijn gemarkeerd voor verwijdering. U kunt een levenscyclus beheer beleid configureren om gegevens te laten verlopen die zijn gelabeld met kenmerken sleutel/waarde van BLOB-index. In het volgende voor beeld ziet u een beleid waarmee alle blok-blobs worden verwijderd die zijn gelabeld met `Project = Contoso` . Zie voor meer informatie over de BLOB-index [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
 
 ```json
 {
@@ -447,7 +447,7 @@ Sommige gegevens mogen alleen worden verlopen als deze expliciet zijn gemarkeerd
 
 ### <a name="delete-old-snapshots"></a>Oude moment opnamen verwijderen
 
-Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens duur, worden moment opnamen vaak gebruikt voor het bijhouden van oudere versies van de gegevens. U kunt een beleid maken waarmee oude moment opnamen worden verwijderd op basis van de leeftijd van de moment opname. De leeftijd van de moment opname wordt bepaald door de aanmaak tijd van de moment opname te evalueren. Met deze beleids regel worden blok-BLOB-moment `activedata` opnamen binnen een container verwijderd die 90 dagen of ouder zijn nadat het maken van een moment opname is gemaakt.
+Voor gegevens die regel matig worden gewijzigd en geopend gedurende de levens duur, worden moment opnamen vaak gebruikt voor het bijhouden van oudere versies van de gegevens. U kunt een beleid maken waarmee oude moment opnamen worden verwijderd op basis van de leeftijd van de moment opname. De leeftijd van de moment opname wordt bepaald door de aanmaak tijd van de moment opname te evalueren. Met deze beleids regel worden blok-BLOB-moment opnamen binnen een container verwijderd `activedata` die 90 dagen of ouder zijn nadat het maken van een moment opname is gemaakt.
 
 ```json
 {

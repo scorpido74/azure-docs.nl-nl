@@ -4,15 +4,15 @@ description: Meer informatie over het verwerken van complexe gegevens migratie v
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75896634"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261100"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Een-op-weinig relationele gegevens migreren naar Azure Cosmos DB SQL-API-account
 
@@ -25,7 +25,7 @@ Een veelvoorkomende trans formatie is het denormaliseren van gegevens door het i
 We gaan ervan uit dat we de volgende twee tabellen hebben in onze SQL database, orders en OrderDetails.
 
 
-![Bestellingsgegevens](./media/migrate-relational-to-cosmos-sql-api/orders.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/orders.png" alt-text="Bestellingsgegevens" border="false" :::
 
 We willen deze een-op-een-relatie combi neren in één JSON-document tijdens de migratie. Hiervoor kunnen we een T-SQL-query maken met behulp van ' voor JSON ', zoals hieronder wordt beschreven:
 
@@ -91,31 +91,31 @@ SELECT [value] FROM OPENJSON(
 )
 ```
 
-![ADF-kopie](./media/migrate-relational-to-cosmos-sql-api/adf1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf1.png" alt-text="ADF-kopie":::
 
 
-Voor de Sink van de Kopieer activiteit SqlJsonToBlobText kiest u "tekst met scheidings tekens" en wijst u deze naar een specifieke map in Azure Blob Storage met een dynamisch gegenereerde unieke bestands naam (bijvoorbeeld@concat' (pipeline (). RunId, '. json ').
+Voor de Sink van de Kopieer activiteit SqlJsonToBlobText kiest u "tekst met scheidings tekens" en wijst u deze naar een specifieke map in Azure Blob Storage met een dynamisch gegenereerde unieke bestands naam (bijvoorbeeld ' @concat (pipeline (). RunId, '. json ').
 Omdat het tekst bestand niet echt "gescheiden" is en we niet wilt dat het wordt geparseerd in afzonderlijke kolommen met komma's en u de dubbele aanhalings tekens (") wilt behouden, stellen we ' kolom scheidings teken ' in op een tab (' \t '), of een ander teken dat niet in het gegevens-en aanhalings tekens wordt gebruikt voor geen aanhalings teken.
 
-![ADF-kopie](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf2.png" alt-text="ADF-kopie":::
 
 ### <a name="copy-activity-2-blobjsontocosmos"></a>#2 van de Kopieer activiteit: BlobJsonToCosmos
 
 Vervolgens wijzigen we onze ADF-pijp lijn door de tweede Kopieer activiteit toe te voegen die in Azure Blob Storage zoekt naar het tekst bestand dat door de eerste activiteit is gemaakt. Het wordt als ' JSON '-bron verwerkt om Cosmos DB Sink als één document per JSON-rij gevonden in het tekst bestand.
 
-![ADF-kopie](./media/migrate-relational-to-cosmos-sql-api/adf3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf3.png" alt-text="ADF-kopie":::
 
 U kunt eventueel ook een ' delete '-activiteit toevoegen aan de pijp lijn, zodat alle vorige bestanden in de map/orders/vóór elke uitvoering worden verwijderd. Onze ADF-pijp lijn ziet er nu ongeveer als volgt uit:
 
-![ADF-kopie](./media/migrate-relational-to-cosmos-sql-api/adf4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf4.png" alt-text="ADF-kopie":::
 
 Nadat we de pijp lijn hierboven hebben geactiveerd, zien we een bestand dat is gemaakt op onze intermediaire Azure-Blob Storage locatie met één JSON-object per rij:
 
-![ADF-kopie](./media/migrate-relational-to-cosmos-sql-api/adf5.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf5.png" alt-text="ADF-kopie":::
 
 We zien ook bestellingen van documenten met correct Inge sloten OrderDetails die zijn ingevoegd in onze Cosmos DB verzameling:
 
-![ADF-kopie](./media/migrate-relational-to-cosmos-sql-api/adf6.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/adf6.png" alt-text="ADF-kopie":::
 
 
 ## <a name="azure-databricks"></a>Azure Databricks
@@ -128,7 +128,7 @@ We kunnen ook Spark in [Azure Databricks](https://azure.microsoft.com/services/d
 
 Eerst maken en koppelen we de vereiste [SQL-connector](https://docs.databricks.com/data/data-sources/sql-databases-azure.html) en [Azure Cosmos DB connector](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) bibliotheken aan ons Azure Databricks-cluster. Start het cluster opnieuw op om ervoor te zorgen dat de tape wisselaars worden geladen.
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks1.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="Databricks":::
 
 We presen teren nu twee voor beelden, voor scala en python. 
 
@@ -151,7 +151,7 @@ val orders = sqlContext.read.sqlDB(configSql)
 display(orders)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks2.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks2.png" alt-text="Databricks":::
 
 We gaan nu verbinding maken met onze Cosmos DB-Data Base en-verzameling:
 
@@ -208,7 +208,7 @@ display(ordersWithSchema)
 CosmosDBSpark.save(ordersWithSchema, configCosmos)
 ```
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks3.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks3.png" alt-text="Databricks":::
 
 
 ### <a name="python"></a>Python
@@ -338,7 +338,7 @@ pool.map(writeOrder, orderids)
 ```
 In beide gevallen moeten we aan het eind het op de juiste manier opgeslagen Inge sloten OrderDetails binnen elk Bestel document in Cosmos DB verzameling ophalen:
 
-![Databricks](./media/migrate-relational-to-cosmos-sql-api/databricks4.png)
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Databricks":::
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [gegevens modellering in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/modeling-data)

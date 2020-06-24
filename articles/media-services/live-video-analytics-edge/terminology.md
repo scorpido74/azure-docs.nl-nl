@@ -1,14 +1,14 @@
 ---
-title: Terminologie-Azure
+title: Live video Analytics op IoT EDG-terminologie-Azure
 description: Dit artikel bevat een overzicht van live video analyses op IoT Edge terminologie.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 51fcc962f6546d727dbbc5e7ff62dc9c4e5677af
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 58f3d7b54fd0bd19e6bc0a057ef053bb2c74cd97
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261042"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816521"
 ---
 # <a name="terminology"></a>Terminologie
 
@@ -26,7 +26,7 @@ Live video Analytics op IoT Edge kan assets maken en/of gegevens toevoegen aan b
 
 ## <a name="streaming"></a>Streaming
 
-Als u video op een mobiel apparaat hebt bekeken uit services zoals Netflix, YouTube en anderen, hebt u ervaring met het streamen van video. Het afspelen begint binnenkort nadat u ' afspelen ' hebt bereikt (als u voldoende band breedte hebt) en u kunt teruggaan naar de tijd lijn van de video. Met streaming is het verstandig om alleen het gedeelte van de weer te geven video te leveren en de viewer de video te laten afspelen terwijl de gegevens nog steeds van een server naar de Play-client worden overgebracht. In de context van Azure Media Services verwijst [streaming](https://en.wikipedia.org/wiki/Streaming_media) naar het proces van het leveren van Media van [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) aan een streaming-client (bijvoorbeeld Azure Media Player). U kunt Azure Media Services gebruiken om video naar clients te streamen met behulp van industrie standaard, op HTTP gebaseerde protocollen voor mediastreaming zoals [http live streaming (HLS)](https://developer.apple.com/streaming/) en [MPEG-Dash](https://dashif.org/about/). HLS wordt ondersteund door Azure Media Player, en webonderdelen zoals [JW Player](https://www.jwplayer.com/), [HLS. js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), [Google Shake Player](https://github.com/google/shaka-player), of u kunt systeem eigen weer geven in mobiele apps met behulp van de [Exoplayer](https://github.com/google/ExoPlayer) van Android en de [AV Foundation](https://developer.apple.com/av-foundation/)van Ios. MPEG-DASH wordt ook ondersteund door Azure Media Player, [een lijst met clients op deze pagina zoeken](https://dashif.org/clients/). 
+Als u video op een mobiel apparaat hebt bekeken uit services zoals Netflix, YouTube en anderen, hebt u ervaring met het streamen van video. Het afspelen begint binnenkort nadat u ' afspelen ' hebt bereikt (als u voldoende band breedte hebt) en u kunt teruggaan naar de tijd lijn van de video. Met streaming is het verstandig om alleen het gedeelte van de weer te geven video te leveren en de viewer de video te laten afspelen terwijl de gegevens nog steeds van een server naar de Play-client worden overgebracht. In de context van Azure Media Services verwijst [streaming](https://en.wikipedia.org/wiki/Streaming_media) naar het proces van het leveren van Media van [Azure Media Services](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview) aan een streaming-client (bijvoorbeeld Azure Media Player). U kunt Azure Media Services gebruiken om video naar clients te streamen met behulp van industrie standaard, op HTTP gebaseerde protocollen voor mediastreaming zoals [http live streaming (HLS)](https://developer.apple.com/streaming/) en [MPEG-Dash](https://dashif.org/about/). HLS wordt ondersteund door Azure Media Player en webspelers zoals [JW Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), [de Shake-speler van Google](https://github.com/google/shaka-player), of u kunt systeem eigen in mobiele apps weer geven met behulp van de [Exoplayer](https://github.com/google/ExoPlayer) van Android en de [AV Foundation](https://developer.apple.com/av-foundation/)van Ios. MPEG-DASH wordt ook ondersteund door Azure Media Player, [een lijst met clients op deze pagina zoeken](https://dashif.org/clients/). 
 
 Door [Media Graph](#media-graph)s te gebruiken om Video's op te nemen in een asset in azure Media Services, kunt u Media Services streaming-mogelijkheid gebruiken om video-streams in HLS en Dash te leveren. Meer informatie hierover vindt u in het artikel [video afspelen](video-playback-concept.md) .
 
@@ -34,7 +34,7 @@ Door [Media Graph](#media-graph)s te gebruiken om Video's op te nemen in een ass
 
 In de context van een video beheersysteem voor beveiligings camera's verwijst de video-opname naar het proces van het vastleggen van video van de camera's en het opslaan in een bestand (of bestanden) voor de volgende weer gave via mobiele en browser-apps. Video-opname kan worden gecategoriseerd in [doorlopende video-opnamen](continuous-video-recording-concept.md) en [op gebeurtenissen gebaseerde video-opnamen](event-based-video-recording-concept.md). Deze worden gedetailleerd beschreven in de concept pagina voor het [opnemen van video](video-recording-concept.md) .
 
-## <a name="media-graph"></a>Media grafiek
+## <a name="media-graph"></a>Mediagrafiek
 
 Met [Media Graph](media-graph-concept.md) kunt u bepalen waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Hiermee kunt u een grafiek definiëren die bestaat uit bronnen, processors en Sink-knoop punten. Daarom biedt u de mogelijkheid om live video Analytics-toepassingen te bouwen. Media Graph wordt gedetailleerd beschreven op de concept pagina van media Graph.
 

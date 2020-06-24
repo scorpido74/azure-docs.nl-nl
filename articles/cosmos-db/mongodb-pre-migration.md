@@ -4,15 +4,15 @@ description: Dit document bevat een overzicht van de vereisten voor een gegevens
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: a93486e00325e84de655b5b759162fcf63956454
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465674"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263055"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Stappen voorafgaand aan de migratie voor gegevens migraties van MongoDB naar de API van Azure Cosmos DB voor MongoDB
 
@@ -42,7 +42,7 @@ Hieronder vindt u specifieke kenmerken over de API van Azure Cosmos DB voor Mong
 
 De [Azure database Migration service voor Azure Cosmos DB-API voor MongoDb](../dms/tutorial-mongodb-cosmos-db.md) biedt een mechanisme dat de gegevens migratie vereenvoudigt door een volledig beheerd hosting platform, migratie controle opties en automatische beperkings verwerking te bieden. De volledige lijst met opties is als volgt:
 
-|**Type migratie**|**Oplossen**|**Overwegingen**|
+|**Type migratie**|**Oplossing**|**Overwegingen**|
 |---------|---------|---------|
 |Offline|[Hulp programma voor gegevens migratie](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Niet geschikt voor grote gegevens sets.|
 |Offline|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Eenvoudig in te stellen en ondersteunt meerdere bronnen <br/>&bull;Maakt gebruik van de bibliotheek van de Azure Cosmos DB bulk-uitvoerder <br/>&bull;Geschikt voor grote gegevens sets <br/>&bull;Geen controle punten houdt in dat een probleem tijdens de migratie het opnieuw opstarten van het hele migratie proces vereist.<br/>&bull;Geen wachtrij met onbestelbare berichten zou betekenen dat een paar foutieve bestanden het gehele migratie proces zouden kunnen stoppen <br/>&bull;Aangepaste code nodig om de Lees doorvoer voor bepaalde gegevens bronnen te verg Roten|
@@ -84,7 +84,7 @@ Met de API van Azure Cosmos DB voor MongoDB-Server versie 3,6 wordt het `_id` ve
 
 De indexerings mogelijkheden van Azure Cosmos DB zijn onder andere het toevoegen van samengestelde indexen, unieke indexen en TTL-indexen (time-to-Live). De index beheer-interface wordt toegewezen aan de `createIndex()` opdracht. Meer informatie vindt u [in indexering in azure Cosmos DB-API voor MongoDb](mongodb-indexing.md)-artikel.
 
-[Azure database Migration service](../dms/tutorial-mongodb-cosmos-db.md) wordt automatisch MongoDb-verzamelingen met unieke indexen gemigreerd. De unieke indexen moeten echter worden gemaakt vóór de migratie. Azure Cosmos DB biedt geen ondersteuning voor het maken van unieke indexen wanneer er al gegevens in uw verzamelingen aanwezig zijn. Zie [unieke sleutels in azure Cosmos DB](unique-keys.md)voor meer informatie.
+[Azure database Migration service](../dms/tutorial-mongodb-cosmos-db.md) wordt automatisch MongoDb-verzamelingen met unieke indexen gemigreerd. De unieke indexen moeten echter worden gemaakt vóór de migratie. Azure Cosmos DB biedt geen ondersteuning voor het maken van unieke indexen wanneer er al gegevens in uw verzamelingen aanwezig zijn. Zie [Unieke sleutels in Azure Cosmos DB](unique-keys.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Migreer uw MongoDB-gegevens naar Cosmos DB met behulp van de Database Migration Service.](../dms/tutorial-mongodb-cosmos-db.md) 

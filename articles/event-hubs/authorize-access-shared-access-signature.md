@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.reviewer: shvija
+ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69992794"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298749"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Toegang tot Event Hubs resources met hand tekeningen voor gedeelde toegang autoriseren
 Een Shared Access Signature (SAS) biedt een manier om beperkte toegang tot resources in uw Event Hubs-naam ruimte toe te kennen. SAS-beveiligingen hebben toegang tot Event Hubs-resources op basis van autorisatie regels. Deze regels worden geconfigureerd op een naam ruimte of een entiteit (Event Hub of onderwerp). Dit artikel bevat een overzicht van het SAS-model en beoordeelt de aanbevolen procedures voor SAS.
@@ -33,7 +34,7 @@ SAS is een op claims gebaseerd autorisatie mechanisme met behulp van eenvoudige 
 
 ## <a name="shared-access-authorization-policies"></a>Beleid voor gedeelde toegang
 Elke Event Hubs naam ruimte en elke Event Hubs entiteit (een Event Hub exemplaar of een Kafka-onderwerp) heeft een beleid voor gedeelde toegang dat bestaat uit regels. Het beleid op het niveau van de naam ruimte is van toepassing op alle entiteiten in de naam ruimte, ongeacht hun afzonderlijke beleids configuratie.
-Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: naam, bereik en rechten. De naam is een unieke naam in dat bereik. Het bereik is de URI van de betreffende resource. Voor een Event Hubs naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/`.
+Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: naam, bereik en rechten. De naam is een unieke naam in dat bereik. Het bereik is de URI van de betreffende resource. Voor een Event Hubs naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/` .
 
 De rechten van de beleids regel kunnen bestaan uit een combi natie van:
 - **Verzenden** : geeft het recht berichten te verzenden naar de entiteit

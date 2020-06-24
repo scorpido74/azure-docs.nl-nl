@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 03402828720272851f9b74000d5bcb79405885a5
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648828"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117222"
 ---
 # <a name="azure-functions-networking-options"></a>Netwerkopties van Azure Functions
 
@@ -28,13 +28,7 @@ U kunt functie-apps op verschillende manieren hosten:
 
 ## <a name="matrix-of-networking-features"></a>Matrix van netwerk functies
 
-|                |[Verbruiks abonnement](functions-scale.md#consumption-plan)|[Premium-abonnement](functions-scale.md#premium-plan)|[App Service plan](functions-scale.md#app-service-plan)|[App Service-omgeving](../app-service/environment/intro.md)|
-|----------------|-----------|----------------|---------|-----------------------|  
-|[Binnenkomende IP-beperkingen en toegang tot persoonlijke sites](#inbound-ip-restrictions)|✅Ja|✅Ja|✅Ja|✅Ja|
-|[Integratie van virtueel netwerk](#virtual-network-integration)|❌Nee|✅Ja (regionaal)|✅Ja (regionaal en gateway)|✅Ja|
-|[Virtuele netwerk triggers (niet-HTTP)](#virtual-network-triggers-non-http)|❌Nee| ✅Ja |✅Ja|✅Ja|
-|[Hybride verbindingen](#hybrid-connections) (alleen Windows)|❌Nee|✅Ja|✅Ja|✅Ja|
-|[Uitgaande IP-beperkingen](#outbound-ip-restrictions)|❌Nee| ✅Ja|✅Ja|✅Ja|
+[!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
 ## <a name="inbound-ip-restrictions"></a>Binnenkomende IP-beperkingen
 
@@ -139,6 +133,12 @@ Zie de [app service-documentatie voor hybride verbindingen voor](../app-service/
 Uitgaande IP-beperkingen zijn beschikbaar in een Premium-abonnement, App Service plan of App Service Environment. U kunt uitgaande beperkingen configureren voor het virtuele netwerk waar uw App Service Environment wordt geïmplementeerd.
 
 Wanneer u een functie-app integreert in een Premium-abonnement of een App Service plan met een virtueel netwerk, kan de app standaard nog steeds uitgaande oproepen naar Internet maken. Door de toepassings instelling toe `WEBSITE_VNET_ROUTE_ALL=1` te voegen, dwingt u af dat alle uitgaand verkeer naar uw virtuele netwerk moet worden verzonden, waarbij regels voor netwerk beveiligings groepen kunnen worden gebruikt om verkeer te beperken.
+
+## <a name="automation"></a>Automation
+Met de volgende Api's kunt u via programma code regionale virtuele netwerk integraties beheren:
+
++ **Azure cli**: gebruik de [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) opdrachten om regionale virtuele netwerk integraties toe te voegen, weer te geven of te verwijderen.  
++ **Arm-sjablonen**: regionale integratie van virtuele netwerken kan worden ingeschakeld met behulp van een Azure Resource Manager sjabloon. Voor een volledig voor beeld raadpleegt u [de Quick Start-sjabloon van deze functies](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282014"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692475"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Systeemstatusrapporten gebruiken om fouten op te lossen
 Azure Service Fabric-onderdelen bieden systeem status rapporten voor alle entiteiten in het cluster direct uit het vak. Met de [Health Store](service-fabric-health-introduction.md#health-store) worden entiteiten gemaakt en verwijderd op basis van de systeem rapporten. Ook worden deze ingedeeld in een-hiërarchie waarin entiteits interacties worden vastgelegd.
@@ -380,7 +380,7 @@ Voor elke replica bevat het status rapport:
 - Knoop punt waarop de replica wordt uitgevoerd
 - Replica-ID
 
-In het geval van het voor beeld is verder onderzoek nodig. Onderzoek de status van elke afzonderlijke replica, te beginnen met de replica's die `Primary` zijn `Secondary` gemarkeerd als en (131482789658160654 en 131482789688598467) in het vorige voor beeld.
+In het geval van het voor beeld is verder onderzoek nodig. Onderzoek de status van elke afzonderlijke replica, te beginnen met de replica's die zijn gemarkeerd als `Primary` en `Secondary` (131482789658160654 en 131482789688598467) in het vorige voor beeld.
 
 ### <a name="replica-constraint-violation"></a>Schending van replica beperkingen
 **System. PLB** meldt een waarschuwing als er een schending van de replica beperking wordt gedetecteerd en niet alle partitie replica's kunnen worden geplaatst. De rapport Details laten zien welke beperkingen en eigenschappen de replica plaatsing verhinderen.
@@ -428,7 +428,7 @@ Deze waarschuwingen worden gegenereerd nadat de actie lokaal is een aantal keer 
 * **Eigenschap**: **ReplicaOpenStatus**, **ReplicaCloseStatus**en **ReplicaChangeRoleStatus**.
 * **Volgende stappen**: onderzoek de service code of de crash dumps om te bepalen waarom de bewerking mislukt.
 
-`TargetInvocationException` In het volgende voor beeld ziet u de status van een replica die wordt gegenereerd vanuit de open-methode. De beschrijving bevat het punt van de fout, het **IStatefulServiceReplica. Open**, het uitzonderings type **TargetInvocationException**en de stack-tracering.
+In het volgende voor beeld ziet u de status van een replica die wordt gegenereerd `TargetInvocationException` vanuit de open-methode. De beschrijving bevat het punt van de fout, het **IStatefulServiceReplica. Open**, het uitzonderings type **TargetInvocationException**en de stack-tracering.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -639,30 +639,30 @@ HealthEvents          :
 
 De eigenschap en de tekst geven aan welke API is vastgelopen. De volgende stappen voor het uitvoeren van verschillende vastgelopen Api's verschillen. Elke API op de *IStatefulServiceReplica* of *IStatelessServiceInstance* is doorgaans een fout in de service code. In de volgende sectie wordt beschreven hoe deze vertalen naar het [reliable Services model](service-fabric-reliable-services-lifecycle.md):
 
-- **IStatefulServiceReplica. Open**: deze waarschuwing geeft aan dat een aanroep `CreateServiceInstanceListeners`van `ICommunicationListener.OpenAsync`, of als overschreven `OnOpenAsync` is vastgelopen.
+- **IStatefulServiceReplica. Open**: deze waarschuwing geeft aan dat een aanroep van `CreateServiceInstanceListeners` , `ICommunicationListener.OpenAsync` of als overschreven `OnOpenAsync` is vastgelopen.
 
-- **IStatefulServiceReplica. Close** en **IStatefulServiceReplica. abort**: het meest voorkomende geval is een service die het door gegeven annulerings token niet nakomt `RunAsync`. Het kan ook zijn dat `ICommunicationListener.CloseAsync`, of als overschreven, `OnCloseAsync` niet is vastgelopen.
+- **IStatefulServiceReplica. Close** en **IStatefulServiceReplica. abort**: het meest voorkomende geval is een service die het door gegeven annulerings token niet nakomt `RunAsync` . Het kan ook zijn dat `ICommunicationListener.CloseAsync` , of als overschreven, `OnCloseAsync` niet is vastgelopen.
 
-- **IStatefulServiceReplica. ChangeRole (S)** en **IStatefulServiceReplica. ChangeRole (N)**: het meest voorkomende geval is een service die niet voldoet aan het annulerings token `RunAsync`dat is door gegeven aan. In dit scenario is de beste oplossing om de replica opnieuw op te starten.
+- **IStatefulServiceReplica. ChangeRole (S)** en **IStatefulServiceReplica. ChangeRole (N)**: het meest voorkomende geval is een service die niet voldoet aan het annulerings token dat is door gegeven aan `RunAsync` . In dit scenario is de beste oplossing om de replica opnieuw op te starten.
 
-- **IStatefulServiceReplica. ChangeRole (P)**: het meest voorkomende geval is dat de service geen taak heeft geretourneerd van `RunAsync`.
+- **IStatefulServiceReplica. ChangeRole (P)**: het meest voorkomende geval is dat de service geen taak heeft geretourneerd van `RunAsync` .
 
 Andere API-aanroepen die achterblijvend kunnen zijn op de **IReplicator** -interface. Bijvoorbeeld:
 
-- **IReplicator. CatchupReplicaSet**: deze waarschuwing geeft een van de twee dingen aan. Er zijn onvoldoende replica's. Als u wilt zien of dit het geval is, bekijkt u de replica status van de replica's in de partitie of het System.FM status rapport voor een vastgelopen herconfiguratie. Of de replica's zijn geen bevestigings bewerkingen. De Power shell `Get-ServiceFabricDeployedReplicaDetail` -cmdlet kan worden gebruikt om de voortgang van alle replica's te bepalen. Het probleem is afhankelijk van replica's waarvan `LastAppliedReplicationSequenceNumber` de waarde zich achter de primaire `CommittedSequenceNumber` waarde bevindt.
+- **IReplicator. CatchupReplicaSet**: deze waarschuwing geeft een van de twee dingen aan. Er zijn onvoldoende replica's. Als u wilt zien of dit het geval is, bekijkt u de replica status van de replica's in de partitie of het System.FM status rapport voor een vastgelopen herconfiguratie. Of de replica's zijn geen bevestigings bewerkingen. De Power shell-cmdlet `Get-ServiceFabricDeployedReplicaDetail` kan worden gebruikt om de voortgang van alle replica's te bepalen. Het probleem is afhankelijk van replica's waarvan `LastAppliedReplicationSequenceNumber` de waarde zich achter de primaire waarde bevindt `CommittedSequenceNumber` .
 
-- **IReplicator. BuildReplica (\<extern ReplicaID>)**: deze waarschuwing geeft aan dat er een probleem is met het bouw proces. Zie voor meer informatie de [levens cyclus van replica's](service-fabric-concepts-replica-lifecycle.md). Dit wordt mogelijk veroorzaakt door een onjuiste configuratie van het Replicator-adres. Zie [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) en [resources opgeven in een service manifest](service-fabric-service-manifest-resources.md)voor meer informatie. Het is ook mogelijk dat er een probleem is op het externe knoop punt.
+- **IReplicator. BuildReplica ( \<Remote ReplicaId> )**: deze waarschuwing geeft aan dat er een probleem is met het bouw proces. Zie voor meer informatie de [levens cyclus van replica's](service-fabric-concepts-replica-lifecycle.md). Dit wordt mogelijk veroorzaakt door een onjuiste configuratie van het Replicator-adres. Zie [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) en [resources opgeven in een service manifest](service-fabric-service-manifest-resources.md)voor meer informatie. Het is ook mogelijk dat er een probleem is op het externe knoop punt.
 
 ### <a name="replicator-system-health-reports"></a>Replicatie systeem status rapporten
-**De replicatie wachtrij is vol:**
-**System. Replicator** meldt een waarschuwing wanneer de replicatie wachtrij vol is. Op de primaire wordt de replicatie wachtrij doorgaans vol omdat een of meer secundaire replica's langzaam zijn om bewerkingen te bevestigen. Dit gebeurt meestal wanneer de service traag is om de bewerkingen toe te passen. De waarschuwing wordt gewist wanneer de wachtrij niet langer vol is.
+De **replicatie wachtrij is vol:** 
+ **System. Replicator** meldt een waarschuwing wanneer de replicatie wachtrij vol is. Op de primaire wordt de replicatie wachtrij doorgaans vol omdat een of meer secundaire replica's langzaam zijn om bewerkingen te bevestigen. Dit gebeurt meestal wanneer de service traag is om de bewerkingen toe te passen. De waarschuwing wordt gewist wanneer de wachtrij niet langer vol is.
 
 * **SourceId**: System. Replicator
 * **Eigenschap**: **PrimaryReplicationQueueStatus** of **SecondaryReplicationQueueStatus**, afhankelijk van de replica-rol.
 * **Volgende stappen**: als het rapport zich op de primaire lijst bevindt, controleert u de verbinding tussen de knoop punten in het cluster. Als alle verbindingen in orde zijn, kan er ten minste één traag secundair zijn met een hoge latentie van de schijf om bewerkingen toe te passen. Als het rapport op de secundaire staat, controleert u eerst het schijf gebruik en de prestaties van het knoop punt. Controleer vervolgens de uitgaande verbinding van het langzame knoop punt naar de primaire.
 
-**RemoteReplicatorConnectionStatus:**
-**System. Replicator** op de primaire replica meldt een waarschuwing wanneer de verbinding met een secundaire (externe) Replicator niet in orde is. Het adres van de externe replicator wordt weer gegeven in het bericht van het rapport, waardoor het handiger is om te detecteren of de verkeerde configuratie is door gegeven of dat er netwerk problemen zijn tussen de replicaties.
+**RemoteReplicatorConnectionStatus:** 
+ **System. Replicator** op de primaire replica meldt een waarschuwing wanneer de verbinding met een secundaire (externe) Replicator niet in orde is. Het adres van de externe replicator wordt weer gegeven in het bericht van het rapport, waardoor het handiger is om te detecteren of de verkeerde configuratie is door gegeven of dat er netwerk problemen zijn tussen de replicaties.
 
 * **SourceId**: System. Replicator
 * **Eigenschap**: **RemoteReplicatorConnectionStatus**.
@@ -773,7 +773,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Download
+### <a name="download"></a>Downloaden
 System. hosting meldt een fout als het downloaden van het toepassings pakket mislukt.
 
 * **SourceId**: System. hosting
@@ -851,7 +851,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Download
+### <a name="download"></a>Downloaden
 System. hosting meldt een fout als het downloaden van het service pakket mislukt.
 
 * **SourceId**: System. hosting

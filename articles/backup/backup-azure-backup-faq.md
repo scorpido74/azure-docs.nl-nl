@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247662"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255157"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -75,7 +75,7 @@ Ja.
 
 Azure Backup biedt ondersteuning voor deze besturingssystemen voor het maken van back-ups van bestanden en mappen, en apps die worden beveiligd met Azure Backup Server en SCDPM.
 
-**Besturingssysteem** | **SKU** | **Nadere**
+**Besturingssysteem** | **SKU** | **Details**
 --- | --- | ---
 Werkstation | |
 Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
@@ -113,10 +113,10 @@ Azure VM | Zie de [ondersteunings matrix voor Azure VM backup](https://docs.micr
 
 In de volgende tabel wordt uitgelegd hoe de grootte voor elke gegevensbron wordt bepaald.
 
-**Gegevensbron** | **Nadere**
+**Gegevensbron** | **Details**
 --- | ---
 Volume |De hoeveelheid gegevens van één volume-VM waarvan een back-up wordt gemaakt.
-SQL Server-database |Grootte van één SQL-database waarvan een back-up wordt gemaakt.
+SQL Server-database |Grootte van de grootte van één data base waarvan een back-up wordt gemaakt.
 SharePoint | Som van de inhoud en configuratiedatabases in een SharePoint-farm waarvan een back-up wordt gemaakt.
 Exchange |Som van alle Exchange-databases op een Exchange-server waarvan een back-up wordt gemaakt.
 BMR/systeemstatus |Elke afzonderlijke kopie van de BMR of systeemstatus van de machine waarvan een back-up wordt gemaakt.

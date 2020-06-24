@@ -2,21 +2,21 @@
 title: T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 description: In dit artikel worden de verschillen in Transact-SQL (T-SQL) beschreven tussen een door Azure SQL beheerd exemplaar en SQL Server.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 03/11/2020
+ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 3a912e636c8bd8f762b401bda9623f23913047cb
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344523"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298444"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Tijdelijke bekende problemen die worden gedetecteerd in het SQL Managed instance
 
 ## <a name="availability"></a>Beschikbaarheid
 
-### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>AlwaysOn-beschikbaarheids groepen
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>AlwaysOn-beschikbaarheidsgroepen
 
 [Hoge Beschik baarheid](../database/high-availability-sla.md) is ingebouwd in een SQL-beheerd exemplaar en kan niet worden beheerd door gebruikers. De volgende instructies worden niet ondersteund:
 
@@ -103,7 +103,7 @@ Zie voor meer informatie:
 
 - [SERVER CONTROLE MAKEN](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Controleren](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [Controle](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Certificaten
 
@@ -159,7 +159,7 @@ SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografi
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
 
-- Het exporteren/importeren van data bases met behulp van Bacpac-bestanden wordt ondersteund voor Azure AD-gebruikers in een SQL Managed instance met behulp van [SSMS v 18.4 of hoger](/sql/ssms/download-sql-server-management-studio-ssms), of [SQLPackage. exe](/sql/tools/sqlpackage-download).
+- Het exporteren/importeren van een Data Base met Bacpac-bestanden wordt ondersteund voor Azure AD-gebruikers in een SQL Managed instance met behulp van [SSMS v 18.4 of hoger](/sql/ssms/download-sql-server-management-studio-ssms), of [SQLPackage.exe](/sql/tools/sqlpackage-download).
   - De volgende configuraties worden ondersteund met behulp van het Bacpac-bestand van de Data Base: 
     - Een Data Base tussen verschillende beheer exemplaren binnen hetzelfde Azure AD-domein exporteren/importeren.
     - Exporteer een Data Base van een SQL Managed instance en importeer deze in SQL Database binnen hetzelfde Azure AD-domein. 
@@ -168,7 +168,7 @@ SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografi
       - In deze configuratie worden alle Azure AD-gebruikers gemaakt als SQL Server Data Base-principals (gebruikers) zonder aanmeldingen. Het type gebruikers wordt weer gegeven als `SQL` en is zichtbaar als `SQL_USER` in sys. database_principals). De machtigingen en rollen blijven aanwezig in de meta gegevens van de data base van SQL Server en kunnen worden gebruikt voor imitatie. Ze kunnen echter niet worden gebruikt voor toegang tot en aanmelding bij de SQL Server met behulp van hun referenties.
 
 - Alleen de principal-aanmelding op server niveau, die wordt gemaakt door de SQL Managed instance Provisioning proces, leden van de server functies, zoals `securityadmin` of `sysadmin` , of andere aanmeldingen met wijziging van de machtiging Aanmelden op server niveau, kunnen Azure ad server-principals (aanmeldingen) maken in de hoofd database voor SQL Managed instance.
-- Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel uitmaken van de `sysadmin` rol de opdracht Create gebruiken om aanmeldingen voor een Azure ad-account te maken.
+- Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel uitmaken van de rol `sysadmin` de opdracht create gebruiken om aanmeldingen te maken voor een Azure AD-account.
 - De Azure AD-aanmelding moet lid zijn van een Azure AD in dezelfde map die wordt gebruikt voor Azure SQL Managed instance.
 - Azure AD server-principals (aanmeldingen) zijn zichtbaar in Objectverkenner vanaf SQL Server Management Studio 18,0 Preview 5.
 - Het is niet toegestaan Azure AD-server-principals (aanmeldingen) te overlappen met een Azure AD-beheerders account. Azure AD server-principals (aanmeldingen) hebben voor rang op de Azure AD-beheerder wanneer u de principal verhelpt en machtigingen toepast op een SQL Managed instance.
@@ -432,7 +432,7 @@ Zie de volgende zelf studies voor meer informatie over het configureren van tran
   - `FROM URL`(Azure Blob-opslag) is de enige optie die wordt ondersteund.
   - `FROM DISK`/`TAPE`/Backup-apparaat wordt niet ondersteund.
   - Back-upsets worden niet ondersteund.
-- `WITH`opties worden niet ondersteund, zoals Nee `DIFFERENTIAL` of `STATS` .
+- `WITH`opties worden niet ondersteund. Herstel pogingen `WITH` , zoals zoals `DIFFERENTIAL` , `STATS` , `REPLACE` , enzovoort, mislukken.
 - `ASYNC RESTORE`: Het herstellen gaat verder, zelfs als de client verbinding is verbroken. Als de verbinding wordt verbroken, kunt u de `sys.dm_operation_status` weer gave voor de status van een herstel bewerking controleren en voor een Data Base maken en verwijderen. Zie [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 De volgende database opties zijn ingesteld of worden overschreven en kunnen later niet meer worden gewijzigd: 
@@ -490,7 +490,7 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 - `@@SERVERNAME`retourneert een volledige DNS-naam (' connectable '), bijvoorbeeld my-managed-instance.wcus17662feb9ce98.database.windows.net. Zie [@ @SERVERNAME ](/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS`retourneert de volledige DNS-naam ' connectable ', zoals `myinstance.domain.database.windows.net` voor de eigenschappen ' name ' en ' data_source '. Zie [sys. SERVERS](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME`retourneert NULL omdat het concept van de service bestaat voor SQL Server niet van toepassing is op een SQL-beheerd exemplaar. Zie [@ @SERVICENAME ](/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID`wordt ondersteund. Retourneert NULL als de Azure AD-aanmelding zich niet in sys. syslogins bevindt. Zie [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_ID`wordt ondersteund. Er wordt NULL geretourneerd als de Azure AD-aanmelding zich niet in sys.sysaanmeldingen bevindt. Zie [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`wordt niet ondersteund. De verkeerde gegevens worden geretourneerd. Dit is een tijdelijk bekend probleem. Zie [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="environment-constraints"></a><a name="Environment"></a>Omgevings beperkingen

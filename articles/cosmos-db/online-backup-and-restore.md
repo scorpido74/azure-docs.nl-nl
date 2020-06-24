@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ed9e23b178b8eeefbd3c3a690491124e6901180
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240439"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112919"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Met Azure Cosmos DB, niet alleen uw gegevens, maar ook de back-ups van uw gegeve
 
 In de volgende afbeelding ziet u hoe een Azure Cosmos-container met alle drie primaire fysieke partities in West VS een back-up maakt in een extern Azure Blob Storage-account in VS-West en vervolgens wordt gerepliceerd naar VS-Oost:
 
-![Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
+:::image type="content" source="./media/online-backup-and-restore/automatic-backup.png" alt-text="Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage" border="false":::
 
 ## <a name="options-to-manage-your-own-backups"></a>Opties voor het beheren van uw eigen back-ups
 
@@ -62,7 +62,7 @@ Het onbedoeld verwijderen of wijzigen van gegevens kan zich in een van de volgen
 
 * Een Data Base of containers van een gedeeld aanbod binnen een Data Base van het gedeelde aanbod worden verwijderd of beschadigd
 
-Azure Cosmos DB kunt de gegevens in alle bovenstaande scenario's herstellen. Tijdens het herstelproces wordt altijd een nieuw Azure Cosmos-account gemaakt om de herstelde gegevens in te bewaren. De naam van het nieuwe account, indien niet opgegeven, heeft de indeling `<Azure_Cosmos_account_original_name>-restored1`. Het laatste cijfer wordt verhoogd als er meerdere herstel pogingen worden uitgevoerd. U kunt geen gegevens herstellen naar een vooraf gemaakt Azure Cosmos-account.
+Azure Cosmos DB kunt de gegevens in alle bovenstaande scenario's herstellen. Tijdens het herstelproces wordt altijd een nieuw Azure Cosmos-account gemaakt om de herstelde gegevens in te bewaren. De naam van het nieuwe account, indien niet opgegeven, heeft de indeling `<Azure_Cosmos_account_original_name>-restored1` . Het laatste cijfer wordt verhoogd als er meerdere herstel pogingen worden uitgevoerd. U kunt geen gegevens herstellen naar een vooraf gemaakt Azure Cosmos-account.
 
 Wanneer een Azure Cosmos-account wordt verwijderd, kunnen we de gegevens herstellen naar een account met dezelfde naam, op voor waarde dat de account naam niet wordt gebruikt. In dergelijke gevallen is het raadzaam om het account niet opnieuw te maken na het verwijderen, omdat het niet alleen voor komt dat de herstelde gegevens dezelfde naam gebruiken, maar ook het juiste account wordt gedetecteerd om te herstellen van moeilijker. 
 

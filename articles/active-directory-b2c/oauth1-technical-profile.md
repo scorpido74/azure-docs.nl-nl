@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184074"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204078"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een OAuth1 technisch profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C) biedt ondersteuning voor de [OAuth 1,0
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAuth1`. Het protocol voor het technische profiel **Twitter-OAUTH1** is `OAuth1`bijvoorbeeld.
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `OAuth1` . Het protocol voor het technische profiel **Twitter-OAUTH1** is bijvoorbeeld `OAuth1` .
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -54,7 +54,7 @@ In het volgende voor beeld worden de claims weer gegeven die zijn geretourneerd 
 Het technische profiel retourneert ook claims die niet worden geretourneerd door de ID-provider:
 
 - De claim **Identity provider** die de naam van de ID-provider bevat.
-- De **authenticationSource** claim met de standaard waarde van `socialIdpAuthentication`.
+- De **authenticationSource** claim met de standaard waarde van `socialIdpAuthentication` .
 
 ```xml
 <OutputClaims>
@@ -70,13 +70,13 @@ Het technische profiel retourneert ook claims die niet worden geretourneerd door
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| client_id | Ja | De toepassings-id van de ID-provider. |
-| ProviderName | Nee | De naam van de ID-provider. |
-| request_token_endpoint | Ja | De URL van het eind punt van het aanvraag token conform RFC 5849. |
-| authorization_endpoint | Ja | De URL van het autorisatie-eind punt conform RFC 5849. |
-| access_token_endpoint | Ja | De URL van het eind punt van het token conform RFC 5849. |
-| ClaimsEndpoint | Nee | De URL van het eind punt voor gebruikers informatie. |
-| ClaimsResponseFormat | Nee | De claim antwoord indeling.|
+| client_id | Yes | De toepassings-id van de ID-provider. |
+| ProviderName | No | De naam van de ID-provider. |
+| request_token_endpoint | Yes | De URL van het eind punt van het aanvraag token conform RFC 5849. |
+| authorization_endpoint | Yes | De URL van het autorisatie-eind punt conform RFC 5849. |
+| access_token_endpoint | Yes | De URL van het eind punt van het token conform RFC 5849. |
+| ClaimsEndpoint | No | De URL van het eind punt voor gebruikers informatie. |
+| ClaimsResponseFormat | No | De claim antwoord indeling.|
 
 ## <a name="cryptographic-keys"></a>Cryptografische sleutels
 
@@ -84,11 +84,11 @@ Het element **CryptographicKeys** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Het client geheim van de identiteits provider toepassing.   |
+| client_secret | Yes | Het client geheim van de identiteits provider toepassing.   |
 
 ## <a name="redirect-uri"></a>Omleidings-URI
 
-Wanneer u de omleidings-URL van uw ID- `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`provider configureert, voert u in. Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
+Wanneer u de omleidings-URL van uw ID-provider configureert, voert u in `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` . Zorg ervoor dat u de **Tenant** vervangt door de naam van uw Tenant (bijvoorbeeld contosob2c.onmicrosoft.com) en **policyId** met de id van uw beleid (bijvoorbeeld b2c_1a_policy). De omleidings-URI moet in alle kleine letters zijn. Voeg een omleidings-URL toe voor alle beleids regels die gebruikmaken van de aanmelding van de identiteits provider.
 
 Als u het **b2clogin.com** -domein gebruikt in plaats van **login.microsoftonline.com** , moet u ervoor zorgen dat u b2clogin.com gebruikt in plaats van login.microsoftonline.com.
 

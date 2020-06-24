@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582909"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728413"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Een dynamische groep in Azure Active Directory maken of bijwerken
 
@@ -67,7 +67,7 @@ Als de regel die u hebt ingevoerd niet geldig is, wordt uitgelegd waarom de rege
 ## <a name="to-update-an-existing-rule"></a>Een bestaande regel bijwerken
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, groeps beheerder, intune-beheerder of gebruikers beheerder in de Azure AD-organisatie bevindt.
-1. Selecteer **groepen** > **alle groepen**.
+1. Selecteer **groepen**  >  **alle groepen**.
 1. Selecteer een groep om het profiel ervan te openen.
 1. Selecteer op de profiel pagina voor de groep **dynamische lidmaatschaps regels**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
 
@@ -98,7 +98,7 @@ De volgende status berichten kunnen worden weer gegeven voor de **verwerkings st
 
 De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap van de **laatste bijgewerkte** status:
 
-- &lt;**Datum en tijd**&gt;: de laatste keer dat het lidmaatschap is bijgewerkt.
+- &lt;**Datum en tijd** &gt; : de laatste keer dat het lidmaatschap is bijgewerkt.
 - Wordt **uitgevoerd**: updates worden momenteel uitgevoerd.
 - **Onbekend**: de tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
 

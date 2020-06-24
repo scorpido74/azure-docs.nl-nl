@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414009"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204979"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -31,10 +31,10 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Database verbinding |Maximum aantal gelijktijdige open sessies |1024<br/><br/>Het aantal gelijktijdige open sessies varieert op basis van de geselecteerde DWU. DWU600c en hoger ondersteunen Maxi maal 1024 geopende sessies. DWU500c en lager ondersteunen een maximum aantal gelijktijdige open sessies van 512. Opmerking: er gelden limieten voor het aantal query's dat gelijktijdig kan worden uitgevoerd. Wanneer de limiet voor gelijktijdigheid wordt overschreden, wordt de aanvraag in een interne wachtrij geplaatst, waarin wordt gewacht om te worden verwerkt. |
 | Database verbinding |Maxi maal geheugen voor voor bereide instructies |20 MB |
 | [Werklastbeheer](resource-classes-for-workload-management.md) |Maximum aantal gelijktijdige query's |128<br/><br/>  Er worden Maxi maal 128 gelijktijdige query's uitgevoerd en er worden resterende query's in de wachtrij geplaatst.<br/><br/>Het aantal gelijktijdige query's kan afnemen wanneer gebruikers worden toegewezen aan hogere bron klassen of wanneer de instelling van de [Data Warehouse-eenheid](memory-concurrency-limits.md) wordt verlaagd. Sommige query's, zoals DMV-query's, mogen altijd worden uitgevoerd en hebben geen invloed op de limiet voor gelijktijdige query's. Zie het artikel [gelijktijdigheids limieten](memory-concurrency-limits.md) voor meer informatie over het gelijktijdig uitvoeren van query's. |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximum GB |399 GB per DW100c. Daarom heeft TempDB het formaat 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maximum GB |399 GB per DW100c. Op DWU1000c is TempDB kleiner dan 3,99 TB. |
 ||||
 
-## <a name="database-objects"></a>Database objecten
+## <a name="database-objects"></a>Databaseobjecten
 
 | Categorie | Beschrijving | Maximum |
 |:--- |:--- |:--- |
@@ -43,7 +43,7 @@ De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure S
 | Tabel |Tabellen per data base | 100.000 |
 | Tabel |Kolommen per tabel |1024 kolommen |
 | Tabel |Bytes per kolom |Afhankelijk van het [gegevens type](sql-data-warehouse-tables-data-types.md)van de kolom. De limiet is 8000 voor char-gegevens typen, 4000 voor nvarchar of 2 GB voor de maximale gegevens typen. |
-| Tabel |Bytes per rij, gedefinieerde grootte |8060 bytes<br/><br/>Het aantal bytes per rij wordt op dezelfde manier berekend als voor SQL Server met pagina compressie. Net als bij SQL Server wordt opslag voor de rij-overloop ondersteund, waardoor kolommen met een **variabele lengte** buiten rijen kunnen worden geplaatst. Wanneer variabele length-rijen uit de rij worden gepusht, wordt alleen de basis van 24 bytes in de hoofd record opgeslagen. Zie voor meer informatie [rij-overflow gegevens die groter zijn dan 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
+| Tabel |Bytes per rij, gedefinieerde grootte |8060 bytes<br/><br/>Het aantal bytes per rij wordt op dezelfde manier berekend als voor SQL Server met pagina compressie. Net als bij SQL Server wordt opslag voor de rij-overloop ondersteund, waardoor kolommen met een **variabele lengte** buiten rijen kunnen worden geplaatst. Wanneer variabele length-rijen uit de rij worden gepusht, wordt alleen de basis van 24 bytes in de hoofd record opgeslagen. Zie overloop gegevens van meer [dan 8 KB](https://msdn.microsoft.com/library/ms186981.aspx)voor meer informatie. |
 | Tabel |Partities per tabel |15.000<br/><br/>Voor hoge prestaties raden we u aan het aantal partities dat u nodig hebt, te minimaliseren en toch uw bedrijfs vereisten te ondersteunen. Naarmate het aantal partities groeit, neemt de overhead voor DDL (Data Definition Language) en DML-bewerkingen (data manipulatie Language) toe en leidt dit tot tragere prestaties. |
 | Tabel |Tekens per partitie grenswaarde. |4000 |
 | Index |Niet-geclusterde indexen per tabel. |50<br/><br/>Is alleen van toepassing op rowstore-tabellen. |

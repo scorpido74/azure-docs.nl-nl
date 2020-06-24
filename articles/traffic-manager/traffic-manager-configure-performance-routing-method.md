@@ -7,17 +7,17 @@ documentationcenter: ''
 author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
-ms.openlocfilehash: f5e9b7690c28793a35c692a6125a6b11c7a140a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5299c72d96fd7453d7df352ca842b4ede35f41fd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938757"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707664"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>De routerings methode voor prestatie verkeer configureren
 
@@ -32,7 +32,7 @@ Met de methode voor het routerings verkeer van prestaties kunt u verkeer naar he
     1. Voor de **instellingen voor verkeers routerings methode**voor **routerings methode** selecteert u **prestaties**.
     2. Stel de **instellingen voor de eindpunt monitor** identiek voor alle eind punten in dit profiel als volgt in:
         1. Selecteer het juiste **protocol**en geef het **poort** nummer op. 
-        2. Typ **Path** een slash */* voor het pad. Als u eind punten wilt controleren, moet u een pad en bestands naam opgeven. Een slash (/) is een geldige vermelding voor het relatieve pad en impliceert dat het bestand zich in de hoofdmap (standaard) bevindt.
+        2. Typ **Path** een slash voor het pad */* . Als u eind punten wilt controleren, moet u een pad en bestands naam opgeven. Een slash (/) is een geldige vermelding voor het relatieve pad en impliceert dat het bestand zich in de hoofdmap (standaard) bevindt.
         3. Klik boven aan de pagina op **Opslaan**.
 5.  Test de wijzigingen in uw configuratie als volgt:
     1.  Zoek in de zoek balk van de portal naar de naam van het Traffic Manager profiel en klik op het profiel Traffic Manager in de resultaten die worden weer gegeven.

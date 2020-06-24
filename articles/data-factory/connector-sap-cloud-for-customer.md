@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 9544d0298a7aa62d5fd935e8670d02e470ac15e5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418045"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987567"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Gegevens kopiëren uit de SAP-Cloud voor de klant (C4C) met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,16 +50,16 @@ De volgende eigenschappen worden ondersteund voor SAP-Cloud voor door de klant g
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomer**. | Ja |
-| url | De URL van de SAP C4C OData-service. | Ja |
-| gebruikersnaam | Geef de gebruikers naam op om verbinding te maken met de SAP-C4C. | Ja |
-| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomer**. | Yes |
+| URL | De URL van de SAP C4C OData-service. | Yes |
+| gebruikersnaam | Geef de gebruikers naam op om verbinding te maken met de SAP-C4C. | Yes |
+| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee voor bron, ja voor Sink |
 
 >[!IMPORTANT]
 >Als u gegevens wilt kopiëren naar een SAP-Cloud voor de klant, maakt u expliciet [een Azure IR](create-azure-integration-runtime.md#create-azure-ir) met een locatie in de buurt van uw SAP-Cloud voor klant en koppelt u deze aan de gekoppelde service als in het volgende voor beeld:
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -90,10 +90,10 @@ Als u gegevens wilt kopiëren uit de SAP-Cloud voor de klant, stelt u de eigensc
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SapCloudForCustomerResource** |Ja |
-| path | Geef het pad op van de SAP C4C OData-entiteit. |Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SapCloudForCustomerResource** |Yes |
+| path | Geef het pad op van de SAP C4C OData-entiteit. |Yes |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -122,12 +122,13 @@ Als u gegevens wilt kopiëren uit de SAP-Cloud voor de klant, stelt u het bron t
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSource**  | Ja |
-| query | Geef de aangepaste OData-query op om gegevens te lezen. | Nee |
+| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSource**  | Yes |
+| query | Geef de aangepaste OData-query op om gegevens te lezen. | No |
+| httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. Als niet wordt opgegeven, is de standaard waarde **00:30:00** (30 minuten). | No |
 
 Voorbeeld query om gegevens op te halen voor een specifieke dag:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -165,11 +166,11 @@ Als u gegevens wilt kopiëren naar een SAP-Cloud voor de klant, stelt u het sink
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSink**  | Ja |
+| type | De eigenschap type moet worden ingesteld op: **SapCloudForCustomerSink**  | Yes |
 | writeBehavior | Het schrijf gedrag van de bewerking. Kan ' Insert ', ' update ' zijn. | Nee. Standaard invoegen. |
 | writeBatchSize | De Batch grootte van de schrijf bewerking. De Batch grootte voor het verkrijgen van de beste prestaties kan verschillen voor de verschillende tabellen of servers. | Nee. Standaard 10. |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -219,8 +220,8 @@ Bij het kopiëren van gegevens uit de SAP-Cloud voor de klant, worden de volgend
 | EDM. byte | Byte [] |
 | EDM. DateTime | DateTime |
 | EDM. decimaal | Decimal |
-| Edm.Double | Double |
-| EDM. single | Enkel |
+| Edm.Double | Dubbel |
+| EDM. single | Enkelvoudig |
 | EDM. GUID | GUID |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |

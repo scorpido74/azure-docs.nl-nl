@@ -9,17 +9,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: cb101095aa95f9d41f7891bc3c18f7e5bfeb59db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29871f53e0f5accd0a6ec9487c43df902b67c980
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148100"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711065"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure CLI
 
@@ -35,7 +35,7 @@ In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele mac
 
 1. Installeer de [Azure cli](/cli/azure/install-azure-cli) als u deze nog niet hebt geïnstalleerd.
 2. Maak een openbaar en persoonlijk SSH-sleutel paar voor virtuele Linux-machines door de stappen in het [maken van een open bare SSH-en privé sleutel paar voor virtuele Linux-machines](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)uit te voeren.
-3. Meld u vanuit een opdracht shell aan met de `az login` opdracht en selecteer het abonnement dat u gebruikt.
+3. Meld u vanuit een opdracht shell aan met de opdracht `az login` en selecteer het abonnement dat u gebruikt.
 4. Maak de virtuele machine door het script uit te voeren dat volgt op een Linux-of Mac-computer. Met het script maakt u een resource groep, een virtueel netwerk (VNet), één NIC met drie IP-configuraties en een virtuele machine waaraan de twee Nic's zijn gekoppeld. De NIC, het open bare IP-adres, het virtuele netwerk en de VM-resources moeten allemaal aanwezig zijn op dezelfde locatie en hetzelfde abonnement. De resources hoeven echter niet in dezelfde resource groep te bestaan, in het volgende script.
 
 ```bash
@@ -157,11 +157,11 @@ az vm create \
 Naast het maken van een virtuele machine met een NIC met 3 IP-configuraties, maakt het script het volgende:
 
 - Een enkele Premium beheerde schijf standaard, maar u hebt andere opties voor het schijf type dat u kunt maken. Lees de [een Linux-VM maken met behulp van het Azure cli](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -artikel voor meer informatie.
-- Een virtueel netwerk met één subnet en twee open bare IP-adressen. U kunt ook *bestaande* virtuele netwerken, subnetten, NIC of open bare IP-adres bronnen gebruiken. Als u wilt weten hoe u bestaande netwerk bronnen kunt gebruiken in plaats van extra `az vm create -h`resources te maken, voert u in.
+- Een virtueel netwerk met één subnet en twee open bare IP-adressen. U kunt ook *bestaande* virtuele netwerken, subnetten, NIC of open bare IP-adres bronnen gebruiken. Als u wilt weten hoe u bestaande netwerk bronnen kunt gebruiken in plaats van extra resources te maken, voert u in `az vm create -h` .
 
 Open bare IP-adressen hebben een nominale vergoeding. Lees de pagina met [prijzen voor IP-adressen](https://azure.microsoft.com/pricing/details/ip-addresses) voor meer informatie over de prijzen van IP-adressen. Er is een limiet voor het aantal open bare IP-adressen dat kan worden gebruikt in een abonnement. Lees voor meer informatie over de limieten het artikel [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-Nadat de VM is gemaakt, voert u `az network nic show --name MyNic1 --resource-group myResourceGroup` de opdracht in om de NIC-configuratie weer te geven. Voer de `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` in om een lijst weer te geven met de IP-configuraties die zijn gekoppeld aan de NIC.
+Nadat de VM is gemaakt, voert `az network nic show --name MyNic1 --resource-group myResourceGroup` u de opdracht in om de NIC-configuratie weer te geven. Voer de `az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table` in om een lijst weer te geven met de IP-configuraties die zijn gekoppeld aan de NIC.
 
 Voeg de privé-IP-adressen toe aan het VM-besturings systeem door de stappen voor uw besturings systeem in de sectie [IP-adressen toevoegen aan een VM-besturings systeem](#os-config) van dit artikel uit te voeren.
 
@@ -169,7 +169,7 @@ Voeg de privé-IP-adressen toe aan het VM-besturings systeem door de stappen voo
 
 U kunt extra persoonlijke en open bare IP-adressen toevoegen aan een bestaande Azure-netwerk interface door de volgende stappen uit te voeren. De voor beelden zijn gebaseerd op het [scenario](#scenario) dat in dit artikel wordt beschreven.
 
-1. Open een opdracht shell en voltooi de resterende stappen in deze sectie binnen één sessie. Als u Azure CLI nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het [Azure cli-installatie](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel en meldt u zich `az-login` aan bij uw Azure-account met de opdracht.
+1. Open een opdracht shell en voltooi de resterende stappen in deze sectie binnen één sessie. Als u Azure CLI nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het [Azure cli-installatie](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json) artikel en meldt u zich aan bij uw Azure-account met de `az-login` opdracht.
 
 2. Voer de stappen in een van de volgende secties uit, afhankelijk van uw vereisten:
 

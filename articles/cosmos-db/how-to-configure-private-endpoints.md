@@ -3,15 +3,15 @@ title: Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-accou
 description: Meer informatie over het instellen van een persoonlijke Azure-koppeling voor toegang tot een Azure Cosmos-account met behulp van een privé-IP-adres in een virtueel netwerk.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 06/11/2020
 ms.author: thweiss
-ms.openlocfilehash: b05fa32529372a89ff441b953f001dc2ab1b5606
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431647"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261627"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Cosmos-account
 
@@ -31,21 +31,21 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
 
 1. Selecteer **particuliere endpoint-verbindingen** in de lijst met instellingen en selecteer vervolgens **persoonlijk eind punt**:
 
-   ![Selecties voor het maken van een persoonlijk eind punt in de Azure Portal](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   :::image type="content" source="./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png" alt-text="Selecties voor het maken van een persoonlijk eind punt in de Azure Portal":::
 
 1. Voer in het deel venster **een persoonlijk eind punt maken-basis beginselen** de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Project Details** | |
+    | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer een resourcegroep.|
     | **Exemplaar Details** |  |
-    | Naam | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
+    | Name | Voer een naam in voor uw privé-eind punt. Als deze naam wordt gebruikt, maakt u er een. |
     |Regio| Selecteer de regio waar u een persoonlijke koppeling wilt implementeren. Maak het persoonlijke eind punt op de locatie waar het virtuele netwerk zich bevindt.|
     |||
-1. Selecteer **volgende: resource**.
-1. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
+1. Selecteer **Volgende: Resource**.
+1. Typ of selecteer in **Een privé-eindpunt maken – Resource** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -53,10 +53,10 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. AzureCosmosDB/databaseAccounts**. |
     | Resource |Selecteer uw Azure Cosmos-account. |
-    |Doel-subresource |Selecteer het Azure Cosmos DB-API-type dat u wilt toewijzen. Dit wordt standaard ingesteld op slechts één keuze voor de Api's SQL, MongoDB en Cassandra. Voor de Gremlin-en Table-Api's kunt u ook **SQL** kiezen omdat deze api's compatibel zijn met de SQL-API. |
+    |Stel subresource in |Selecteer het Azure Cosmos DB-API-type dat u wilt toewijzen. Dit wordt standaard ingesteld op slechts één keuze voor de Api's SQL, MongoDB en Cassandra. Voor de Gremlin-en Table-Api's kunt u ook **SQL** kiezen omdat deze api's compatibel zijn met de SQL-API. |
     |||
 
-1. Selecteer **volgende: Configuratie**.
+1. Selecteer **Volgende: Configuratie**.
 1. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
@@ -65,12 +65,12 @@ Gebruik de volgende stappen om een persoonlijk eind punt te maken voor een besta
     | Virtueel netwerk| Selecteer uw virtuele netwerk. |
     | Subnet | Selecteer uw subnet. |
     |**Integratie van Privé-DNS**||
-    |Integreren met een privé-DNS-zone |Selecteer **Ja**. <br><br/> Als u privé wilt verbinden met uw persoonlijke eind punt, moet u een DNS-record hebben. We raden u aan uw persoonlijke eind punt te integreren met een privé-DNS-zone. U kunt ook uw eigen DNS-servers gebruiken of DNS-records maken met behulp van de host-bestanden op uw virtuele machines. |
-    |Privé-DNS zone |Selecteer **privatelink.Documents.Azure.com**. <br><br/> De privé-DNS-zone wordt automatisch bepaald. U kunt deze niet wijzigen met behulp van de Azure Portal.|
+    |Integreren met privé-DNS-zone |Selecteer **Ja**. <br><br/> Als u privé wilt verbinden met uw persoonlijke eind punt, moet u een DNS-record hebben. We raden u aan uw persoonlijke eind punt te integreren met een privé-DNS-zone. U kunt ook uw eigen DNS-servers gebruiken of DNS-records maken met behulp van de host-bestanden op uw virtuele machines. |
+    |Privé-DNS-zone |Selecteer **privatelink.documents.Azure.com**. <br><br/> De privé-DNS-zone wordt automatisch bepaald. U kunt deze niet wijzigen met behulp van de Azure Portal.|
     |||
 
 1. Selecteer **Controleren + maken**. Op de pagina **controleren en maken** valideert Azure uw configuratie.
-1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
+1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 Wanneer u een persoonlijke koppeling hebt goedgekeurd voor een Azure Cosmos-account, is de optie **alle netwerken** in het deel venster **firewall en virtuele netwerken** niet beschikbaar in de Azure Portal.
 
@@ -94,7 +94,7 @@ Nadat het persoonlijke eind punt is ingericht, kunt u een query uitvoeren op de 
 1. Zoek naar het persoonlijke eind punt dat u eerder hebt gemaakt. In dit geval is het **cdbPrivateEndpoint3**.
 1. Selecteer het tabblad **overzicht** om de DNS-instellingen en IP-adressen te bekijken.
 
-![Privé-IP-adressen in de Azure Portal](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="Privé-IP-adressen in de Azure Portal":::
 
 Er zijn meerdere IP-adressen gemaakt per particulier eind punt:
 
@@ -263,7 +263,7 @@ az network private-dns record-set a add-record --record-set-name recordSet2 --zo
 
 U kunt een persoonlijke koppeling instellen door een persoonlijk eind punt te maken in een subnet van een virtueel netwerk. U kunt dit doen met behulp van een Azure Resource Manager sjabloon.
 
-Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateEndpoint_template. json ' te maken. Met deze sjabloon maakt u een persoonlijk eind punt voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
+Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateEndpoint_template.jsop ' te maken. Met deze sjabloon maakt u een persoonlijk eind punt voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
 
 ```json
 {
@@ -324,7 +324,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateE
 
 **Definieer het parameter bestand voor de sjabloon**
 
-Maak een parameter bestand voor de sjabloon en geef het de naam PrivateEndpoint_parameters. json. Voeg de volgende code toe aan het parameter bestand:
+Maak een parameter bestand voor de sjabloon en noem het ' PrivateEndpoint_parameters.jsaan '. Voeg de volgende code toe aan het parameter bestand:
 
 ```json
 {
@@ -407,13 +407,13 @@ Voor deze accounts moet u één persoonlijk eind punt maken voor elk API-type. H
 
 Nadat de sjabloon is geïmplementeerd, kunt u een uitvoer zien die vergelijkbaar is met wat er in de volgende afbeelding wordt weer gegeven. De `provisioningState` waarde is `Succeeded` als de persoonlijke eind punten correct zijn ingesteld.
 
-![Implementatie-uitvoer voor de Resource Manager-sjabloon](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
+:::image type="content" source="./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png" alt-text="Implementatie-uitvoer voor de Resource Manager-sjabloon":::
 
 Nadat de sjabloon is geïmplementeerd, worden de privé-IP-adressen in het subnet gereserveerd. De firewall regel van het Azure Cosmos-account is geconfigureerd om alleen verbindingen van het privé-eind punt te accepteren.
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>Het persoonlijke eind punt integreren met een Privé-DNS zone
 
-Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZone_template. json ' te maken. Met deze sjabloon maakt u een privé-DNS-zone voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
+Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZone_template.jsop ' te maken. Met deze sjabloon maakt u een privé-DNS-zone voor een bestaand Azure Cosmos SQL API-account in een bestaand virtueel netwerk.
 
 ```json
 {
@@ -455,7 +455,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
 }
 ```
 
-Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZoneRecords_template. json ' te maken.
+Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZoneRecords_template.jsop ' te maken.
 
 ```json
 {
@@ -489,7 +489,7 @@ Gebruik de volgende code om een resource manager-sjabloon met de naam ' PrivateZ
 
 **Definieer het parameter bestand voor de sjabloon**
 
-Maak het volgende twee parameter bestand voor de sjabloon. Maak de PrivateZone_parameters. json. met de volgende code:
+Maak het volgende twee parameter bestand voor de sjabloon. Maak de PrivateZone_parameters.jsop. met de volgende code:
 
 ```json
 {
@@ -506,7 +506,7 @@ Maak het volgende twee parameter bestand voor de sjabloon. Maak de PrivateZone_p
 }
 ```
 
-Maak de PrivateZoneRecords_parameters. json. met de volgende code:
+Maak de PrivateZoneRecords_parameters.jsop. met de volgende code:
 
 ```json
 {
@@ -645,6 +645,8 @@ U kunt dezelfde stappen gebruiken wanneer u een regio verwijdert. Nadat u de reg
 ## <a name="current-limitations"></a>Huidige beperkingen
 
 De volgende beperkingen zijn van toepassing wanneer u een privé-verbinding met een Azure Cosmos-account gebruikt:
+
+* U kunt niet meer dan 200 persoonlijke eind punten hebben op één Azure Cosmos-account.
 
 * Wanneer u een persoonlijke koppeling met een Azure Cosmos-account via een directe modus verbinding gebruikt, kunt u alleen het TCP-protocol gebruiken. Het HTTP-protocol wordt momenteel niet ondersteund.
 

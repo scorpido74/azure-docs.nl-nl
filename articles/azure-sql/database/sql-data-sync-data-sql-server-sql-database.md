@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 94479bda00e2ea7fa7cf2d0b7cd8001a070a5703
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a6e7e01917ac6499b9836b460077a5513782a4ce
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343265"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254001"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -155,7 +155,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Beperkingen voor service-en database dimensies
 
-| **Dimensies**                                                  | **Limiet**              | **Enkele**              |
+| **Dimensies**                                                  | **Ondergrens**              | **Enkele**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Het maximum aantal synchronisatie groepen waarvan elke Data Base deel kan uitmaken.       | 5                      |                             |
 | Maximum aantal eind punten in één synchronisatie groep              | 30                     |                             |
@@ -218,7 +218,7 @@ Ja. Maak het schema hand matig in de nieuwe Data Base door het uit te schrijven 
 
 Het is niet raadzaam om SQL Data Sync te gebruiken om een back-up van uw gegevens te maken. U kunt geen back-up-en herstel bewerking naar een bepaald punt in de tijd, omdat SQL Data Sync-synchronisaties geen versie hebben. Daarnaast wordt SQL Data Sync geen back-up gemaakt van andere SQL-objecten, zoals opgeslagen procedures, en wordt het equivalent van een herstel bewerking niet snel uitgevoerd.
 
-Zie [een Azure-SQL database kopiëren](database-copy.md)voor een aanbevolen back-uptechniek.
+Zie [een Data Base kopiëren in Azure SQL database](database-copy.md)voor een aanbevolen back-uptechniek.
 
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kan gegevens synchronisatie versleutelde tabellen en kolommen synchroniseren
 
@@ -256,6 +256,6 @@ Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen 
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure SQL Database:
 
-- [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
+- [Overzicht van SQL Database](sql-database-paas-overview.md)
 - [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)
  
