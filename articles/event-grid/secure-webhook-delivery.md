@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: femila
-ms.openlocfilehash: a3d67f3b1217aa7ab4c8122ae958685490a2ad34
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 7caa5a99f2d4ebdbe858c78c6e36be17aeb003ba
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559026"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126073"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar Azure Active Directory beveiligde eind punten
 
@@ -29,7 +29,7 @@ Maak eerst een Azure AD-toepassing voor uw beveiligde eind punt. Zie https://doc
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Event Grid inschakelen voor het gebruik van uw Azure AD-toepassing
 
-Gebruik het onderstaande Power shell-script om een functie-en service principe te maken in uw Azure AD-toepassing. U hebt de Tenant-ID en de object-ID van uw Azure AD-toepassing nodig:
+Gebruik het onderstaande Power shell-script om een rol-en Service-Principal te maken in uw Azure AD-toepassing. U hebt de Tenant-ID en de object-ID van uw Azure AD-toepassing nodig:
 
    > [!NOTE]
    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) om dit script uit te voeren.

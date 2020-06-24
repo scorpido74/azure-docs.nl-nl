@@ -4,15 +4,15 @@ description: Dit artikel begeleidt u bij het configureren van BGP met een Azure 
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d71e8af607ac15c708ff18a2f2a91e11ed36a987
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863611"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987751"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP configureren op een Azure VPN-gateway met behulp van CLI
 
@@ -91,9 +91,9 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Maak de VPN-gateway met het AS-nummer
 
-Maak de gateway van het virtuele netwerk voor TestVNet1. BGP vereist een op route gebaseerde VPN-gateway. U hebt ook de extra para `-Asn` meter nodig om het autonome systeem nummer (ASN) voor TestVNet1 in te stellen. Het maken van een gateway kan enige tijd duren (45 minuten of langer). 
+Maak de gateway van het virtuele netwerk voor TestVNet1. BGP vereist een op route gebaseerde VPN-gateway. U hebt ook de extra para meter nodig `-Asn` om het autonome systeem nummer (ASN) voor TestVNet1 in te stellen. Het maken van een gateway kan enige tijd duren (45 minuten of langer). 
 
-Als u deze opdracht uitvoert met behulp `--no-wait` van de-para meter, worden er geen feedback of uitvoer weer gegeven. Met `--no-wait` de para meter kan de gateway op de achtergrond worden gemaakt. Dit betekent niet dat de VPN-gateway onmiddellijk wordt gemaakt.
+Als u deze opdracht uitvoert met behulp van de `--no-wait` -para meter, worden er geen feedback of uitvoer weer gegeven. `--no-wait`Met de para meter kan de gateway op de achtergrond worden gemaakt. Dit betekent niet dat de VPN-gateway onmiddellijk wordt gemaakt.
 
 ```azurecli
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
@@ -103,7 +103,7 @@ az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP 
 
 Nadat de gateway is gemaakt, moet u het IP-adres van de BGP-peer verkrijgen op de Azure VPN-gateway. Dit adres is nodig voor het configureren van de VPN-gateway als een BGP-peer voor uw on-premises VPN-apparaten.
 
-Voer de volgende opdracht uit en controleer `bgpSettings` de sectie aan de bovenkant van de uitvoer:
+Voer de volgende opdracht uit en controleer de `bgpSettings` sectie aan de bovenkant van de uitvoer:
 
 ```azurecli
 az network vnet-gateway list -g TestBGPRG1 
@@ -133,7 +133,7 @@ Deze oefening gaat verder met het bouwen van de configuratie die in het diagram 
 * Het minimale voor voegsel dat u moet declareren voor de lokale netwerk gateway is het hostadres van het IP-adres van uw BGP-peer op uw VPN-apparaat. In dit geval is het een/32-voor voegsel van 10.51.255.254/32.
 * Als herinnering moet u verschillende BGP-Asn's gebruiken tussen uw on-premises netwerken en het virtuele Azure-netwerk. Als ze hetzelfde zijn, moet u uw VNet-ASN wijzigen als uw on-premises VPN-apparaten het ASN al gebruiken voor peer met andere BGP-neighbors.
 
-Voordat u doorgaat, moet u ervoor zorgen dat u het gedeelte [BGP inschakelen voor uw VPN-gateway](#enablebgp) in deze oefening hebt voltooid en dat u nog steeds bent verbonden met abonnement 1. In dit voor beeld maakt u een nieuwe resource groep. Let ook op de twee extra para meters voor de gateway van `Asn` het `BgpPeerAddress`lokale netwerk: en.
+Voordat u doorgaat, moet u ervoor zorgen dat u het gedeelte [BGP inschakelen voor uw VPN-gateway](#enablebgp) in deze oefening hebt voltooid en dat u nog steeds bent verbonden met abonnement 1. In dit voor beeld maakt u een nieuwe resource groep. Let ook op de twee extra para meters voor de gateway van het lokale netwerk: `Asn` en `BgpPeerAddress` .
 
 ```azurecli
 az group create -n TestBGPRG5 -l eastus2 
@@ -262,7 +262,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 
 ### <a name="step-2-connect-the-testvnet1-and-testvnet2-gateways"></a>Stap 2: verbinding maken met de TestVNet1-en TestVNet2-gateways
 
-In deze stap maakt u de verbinding van TestVNet1 naar site5. Als u BGP wilt inschakelen voor deze verbinding, moet u `--enable-bgp` de para meter opgeven.
+In deze stap maakt u de verbinding van TestVNet1 naar site5. Als u BGP wilt inschakelen voor deze verbinding, moet u de `--enable-bgp` para meter opgeven.
 
 In het volgende voor beeld bevinden de gateway van het virtuele netwerk en de lokale netwerk gateway zich in verschillende resource groepen. Wanneer de gateways zich in verschillende resource groepen bevinden, moet u de volledige Resource-ID van de twee gateways opgeven voor het instellen van een verbinding tussen de virtuele netwerken. 
 

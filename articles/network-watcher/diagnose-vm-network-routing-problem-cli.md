@@ -11,18 +11,18 @@ Customer intent: I need to diagnose virtual machine (VM) network routing problem
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 889db5cdcb1807b859339eaf326e3cec7ea64b84
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382899"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738801"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Een probleem met de netwerk routering van een virtuele machine diagnosticeren-Azure CLI
 
@@ -32,17 +32,17 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om te zien welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt gecontroleerd `az login` , voert u uit om een verbinding te maken met Azure. De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
+Als u ervoor kiest om de Azure CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om na te gaan welke versie er is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Nadat u de Azure CLI-versie hebt gecontroleerd, voert u uit `az login` om een verbinding te maken met Azure. De Azure CLI-opdrachten in dit artikel zijn ingedeeld om te worden uitgevoerd in een bash-shell.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Voordat u een VM kunt maken, maakt u eerst een resourcegroep die de VM bevat. Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een VM met [az vm create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voor beeld wordt een VM gemaakt met de naam *myVm*:
+Maak een virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create). Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. In het volgende voor beeld wordt een VM gemaakt met de naam *myVm*:
 
 ```azurecli-interactive
 az vm create \
@@ -129,9 +129,9 @@ De volgende tekst is opgenomen in de geretourneerde uitvoer:
 },
 ```
 
-Wanneer u de opdracht `az network watcher show-next-hop` hebt gebruikt voor het testen van uitgaande communicatie naar 13.107.21.200 in de [volgende hop](#use-next-hop), is de route met de **addressPrefix** 0.0.0.0/0 * * gebruikt voor het routeren van verkeer naar het adres, omdat geen enkele andere route in de uitvoer het adres bevat. De standaardinstelling is dat alle adressen die niet zijn opgegeven in het adresvoorvoegsel van een andere route, worden doorgestuurd naar internet.
+Wanneer u de opdracht hebt gebruikt `az network watcher show-next-hop` voor het testen van uitgaande communicatie naar 13.107.21.200 in de [volgende hop](#use-next-hop), is de route met de **addressPrefix** 0.0.0.0/0 * * gebruikt voor het routeren van verkeer naar het adres, omdat geen enkele andere route in de uitvoer het adres bevat. De standaardinstelling is dat alle adressen die niet zijn opgegeven in het adresvoorvoegsel van een andere route, worden doorgestuurd naar internet.
 
-Wanneer u de opdracht `az network watcher show-next-hop` hebt gebruikt voor het testen van uitgaande communicatie naar 172.31.0.100, heeft het resultaat gemeld dat er geen type voor de volgende hop is. In de geretourneerde uitvoer ziet u ook de volgende tekst:
+Wanneer u de opdracht hebt gebruikt `az network watcher show-next-hop` voor het testen van uitgaande communicatie naar 172.31.0.100, heeft het resultaat gemeld dat er geen type voor de volgende hop is. In de geretourneerde uitvoer ziet u ook de volgende tekst:
 
 ```
 {
@@ -149,7 +149,7 @@ Wanneer u de opdracht `az network watcher show-next-hop` hebt gebruikt voor het 
 },
 ```
 
-Zoals u kunt zien in de uitvoer van de `az network watcher nic show-effective-route-table` opdracht, is er een standaard route naar het voor voegsel 172.16.0.0/12, dat het 172.31.0.100-adres bevat, de **nextHopType** is **geen**. Azure maakt een standaardroute naar 172.16.0.0/12, maar stelt geen volgend hoptype in, tenzij daar een reden voor is. Als u bijvoorbeeld het adres bereik 172.16.0.0/12 hebt toegevoegd aan de adres ruimte van het virtuele netwerk, wijzigt Azure de **nextHopType** in het **virtuele netwerk** voor de route. Een controle wordt vervolgens het **virtuele netwerk** weer gegeven als de **nextHopType**.
+Zoals u kunt zien in de uitvoer van de `az network watcher nic show-effective-route-table` opdracht, is er een standaard route naar het voor voegsel 172.16.0.0/12, dat het 172.31.0.100-adres bevat, de **NextHopType** is **geen**. Azure maakt een standaardroute naar 172.16.0.0/12, maar stelt geen volgend hoptype in, tenzij daar een reden voor is. Als u bijvoorbeeld het adres bereik 172.16.0.0/12 hebt toegevoegd aan de adres ruimte van het virtuele netwerk, wijzigt Azure de **nextHopType** in het **virtuele netwerk** voor de route. Een controle wordt vervolgens het **virtuele netwerk** weer gegeven als de **nextHopType**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

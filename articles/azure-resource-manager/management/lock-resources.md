@@ -2,19 +2,19 @@
 title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: cf5e2c7d19b9b90be3e9ca9e64e832794cd70c92
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/17/2020
+ms.openlocfilehash: e9591c8b32808c3b11eb478b7f52a171cefc587d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678032"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975602"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
 Als beheerder moet u een ​​abonnement, resourcegroep of resource mogelijk vergrendelen om te voorkomen dat andere gebruikers in uw organisatie per ongeluk kritieke resources verwijderen of wijzigen. U kunt de vergrendeling instellen op **CanNotDelete** of **ReadOnly**. In de portal worden de vergren delingen respectievelijk **verwijderen** en **alleen-lezen** genoemd.
 
-* **CanNotDelete** betekent dat geautoriseerde gebruikers nog steeds een resource kunnen lezen en wijzigen, maar de resource niet kan verwijderen. 
+* **CanNotDelete** betekent dat geautoriseerde gebruikers nog steeds een resource kunnen lezen en wijzigen, maar de resource niet kan verwijderen.
 * **Alleen-lezen** houdt in dat gemachtigde gebruikers een resource kunnen lezen, maar de resource niet kunnen verwijderen of bijwerken. Het Toep assen van deze vergren deling is vergelijkbaar met het beperken van alle gemachtigde gebruikers tot de machtigingen die door de rol van **lezer** worden verleend.
 
 ## <a name="how-locks-are-applied"></a>Hoe vergrendelingen worden toegepast
@@ -87,62 +87,63 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "hostingPlanName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "hostingPlanName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2019-08-01",
+      "name": "[parameters('hostingPlanName')]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "tier": "Free",
+        "name": "f1",
+        "capacity": 0
+      },
+      "properties": {
+        "targetWorkerCount": 1
+      }
     },
-    "variables": {
-        "siteName": "[concat('ExampleSite', uniqueString(resourceGroup().id))]"
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2019-08-01",
+      "name": "[variables('siteName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      ],
+      "properties": {
+        "serverFarmId": "[parameters('hostingPlanName')]"
+      }
     },
-    "resources": [
-        {
-            "apiVersion": "2016-09-01",
-            "type": "Microsoft.Web/serverfarms",
-            "name": "[parameters('hostingPlanName')]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "tier": "Free",
-                "name": "f1",
-                "capacity": 0
-            },
-            "properties": {
-                "targetWorkerCount": 1
-            }
-        },
-        {
-            "apiVersion": "2016-08-01",
-            "name": "[variables('siteName')]",
-            "type": "Microsoft.Web/sites",
-            "location": "[resourceGroup().location]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
-            ],
-            "properties": {
-                "serverFarmId": "[parameters('hostingPlanName')]"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/providers/locks",
-            "apiVersion": "2016-09-01",
-            "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
-            ],
-            "properties": {
-                "level": "CanNotDelete",
-                "notes": "Site should not be deleted."
-            }
-        }
-    ]
+    {
+      "type": "Microsoft.Web/sites/providers/locks",
+      "apiVersion": "2016-09-01",
+      "name": "[concat(variables('siteName'), '/Microsoft.Authorization/siteLock')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('siteName'))]"
+      ],
+      "properties": {
+        "level": "CanNotDelete",
+        "notes": "Site should not be deleted."
+      }
+    }
+  ]
 }
 ```
 
 Zie [een resource groep maken en deze vergren delen](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)voor een voor beeld van het instellen van een vergren deling voor een resource groep.
 
 ## <a name="powershell"></a>PowerShell
+
 U vergrendelt geïmplementeerde resources met Azure PowerShell met behulp van de opdracht [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) .
 
 Als u een resource wilt vergren delen, geeft u de naam van de resource, het resource type en de naam van de resource groep op.
@@ -224,6 +225,7 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST-API
+
 U kunt geïmplementeerde resources vergren delen met de [rest API voor beheer vergrendelingen](https://docs.microsoft.com/rest/api/resources/managementlocks). Met de REST API kunt u vergren delingen maken en verwijderen, en informatie over bestaande vergren delingen ophalen.
 
 Voer de volgende handelingen uit om een vergren deling te maken:
@@ -239,10 +241,10 @@ Neem in de aanvraag een JSON-object op waarmee de eigenschappen voor de vergren 
         "level": "CanNotDelete",
         "notes": "Optional text notes."
       }
-    } 
+    }
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Zie [Tags gebruiken om uw resources te organiseren](tag-resources.md)voor meer informatie over het logisch ordenen van uw resources.
 * U kunt beperkingen en conventies Toep assen op uw abonnement met aangepast beleid. Zie [Wat is Azure Policy?](../../governance/policy/overview.md) voor meer informatie.
 * Voor begeleiding bij de manier waarop ondernemingen Resource Manager effectief kunnen gebruiken voor het beheer van abonnementen, gaat u naar [Azure enterprise-platform - Prescriptieve abonnementsgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).
-

@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8c8d6c1aca81d59b42ceca17ecfb071ee5f13bd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4c3d8fdf4467a1a4c932ab6ec8fd6067d2d2ef34
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014363"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252726"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Uitgebreide kennis van Pass-Through-verificatie Azure Active Directory
 
@@ -106,7 +106,7 @@ De verificatie agenten gebruiken de volgende stappen om zich te registreren bij 
     - De CA wordt alleen gebruikt door de functie Pass-Through-verificatie. De CA wordt alleen gebruikt voor het ondertekenen van Csr's tijdens de registratie van de verificatie agent.
     -  Geen van de andere Azure AD-Services gebruiken deze certificerings instantie.
     - Het onderwerp (Distinguished name of DN) van het certificaat wordt ingesteld op uw Tenant-ID. Deze DN is een unieke GUID waarmee uw Tenant wordt geïdentificeerd. Dit DN-bereik is het certificaat alleen voor gebruik met uw Tenant.
-6. Azure AD slaat de open bare sleutel van de verificatie agent op in een Azure-SQL database, waartoe alleen Azure AD toegang heeft.
+6. In azure AD wordt de open bare sleutel van de verificatie agent opgeslagen in een data base in Azure SQL Database, waartoe alleen Azure AD toegang heeft.
 7. Het certificaat (uitgegeven in stap 5) wordt opgeslagen op de on-premises server in het Windows-certificaat archief (met name op de [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) locatie). Het wordt gebruikt door de verificatie agent en de updater toepassingen.
 
 ### <a name="authentication-agent-initialization"></a>Initialisatie van verificatie agent
@@ -139,7 +139,7 @@ Pass Through-verificatie verwerkt een aanmeldings aanvraag van een gebruiker als
 4. De gebruiker voert de gebruikers naam in op de **aanmeldings pagina van de gebruiker** en selecteert vervolgens de knop **volgende** .
 5. De gebruiker voert zijn wacht woord in op de **aanmeldings pagina van de gebruiker** en selecteert vervolgens de knop **Aanmelden** .
 6. De gebruikers naam en het wacht woord worden verzonden naar Azure AD STS in een HTTPS POST-aanvraag.
-7. Azure AD STS haalt open bare sleutels op voor alle verificatie agenten die zijn geregistreerd op uw Tenant vanuit de Azure-SQL database en versleutelt het wacht woord met behulp van deze.
+7. Azure AD STS haalt open bare sleutels op voor alle verificatie agenten die zijn geregistreerd op uw Tenant van Azure SQL Database en versleutelt het wacht woord met behulp van deze.
     - Hiermee worden ' N ' versleutelde wachtwoord waarden gegenereerd voor ' N ' verificatie agenten die zijn geregistreerd op uw Tenant.
 8. Azure AD STS plaatst de aanvraag voor wachtwoord validatie, die bestaat uit de gebruikers naam en het versleutelde wacht woord, naar de Service Bus wachtrij die specifiek is voor uw Tenant.
 9. Omdat de geïnitialiseerde verificatie agenten permanent zijn verbonden met de Service Bus wachtrij, haalt een van de beschik bare verificatie agenten de aanvraag voor wachtwoord validatie op.
@@ -178,7 +178,7 @@ De vertrouwens relatie van een verificatie agent met Azure AD vernieuwen:
 6. Als het bestaande certificaat is verlopen, verwijdert Azure AD de verificatie agent uit de lijst met geregistreerde verificatie agenten van uw Tenant. Vervolgens moet een globale beheerder een nieuwe verificatie agent hand matig installeren en registreren.
     - Gebruik de Azure AD-basis certificerings instantie om het certificaat te ondertekenen.
     - Stel het onderwerp (DN-naam of DN) van het certificaat in op uw Tenant-ID, een GUID waarmee uw Tenant uniek wordt geïdentificeerd. Het DN-bereik van het certificaat is alleen voor uw Tenant.
-6. In azure AD wordt de nieuwe open bare sleutel van de verificatie agent opgeslagen in een Azure-SQL database dat alleen toegang heeft tot de service. Ook wordt de oude open bare sleutel die is gekoppeld aan de verificatie agent, ongeldig gemaakt.
+6. In azure AD wordt de nieuwe open bare sleutel van de verificatie agent opgeslagen in een data base in Azure SQL Database waartoe alleen toegang is. Ook wordt de oude open bare sleutel die is gekoppeld aan de verificatie agent, ongeldig gemaakt.
 7. Het nieuwe certificaat (uitgegeven in stap 5) wordt vervolgens opgeslagen op de server in het Windows-certificaat archief (met name op de [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) locatie).
     - Omdat de procedure voor het vernieuwen van de vertrouwens relatie niet-interactief plaatsvindt (zonder de aanwezigheid van de globale beheerder), heeft de verificatie agent geen toegang meer om het bestaande certificaat op de CERT_SYSTEM_STORE_LOCAL_MACHINE locatie bij te werken. 
     

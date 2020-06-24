@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: b4bc57bd896eb8d250975ec8e9300d0498d70835
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.date: 6/11/2020
+ms.openlocfilehash: 7b66f227469328767f23c6858fda15803832704b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84604148"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737560"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
 
-In dit artikel wordt beschreven hoe u Replicatie van inkomende gegevens instelt in Azure Database for MySQL door de hoofd-en replica servers te configureren. In dit artikel wordt ervan uitgegaan dat u een eerdere ervaring hebt met MySQL-servers en-data bases.
+In dit artikel wordt beschreven hoe u [replicatie van inkomende gegevens](concepts-data-in-replication.md) instelt in azure database for MySQL door de hoofd-en replica servers te configureren. In dit artikel wordt ervan uitgegaan dat u een eerdere ervaring hebt met MySQL-servers en-data bases.
 
 > [!NOTE]
 > Afwijking-vrije communicatie
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u Replicatie van inkomende gegevens instelt 
 > Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
 >
 
-Voor het maken van een replica in de Azure Database for MySQL-service, Replicatie van inkomende gegevens synchroniseert gegevens van een hoofd-MySQL-server on-premises, in virtuele machines (Vm's) of in Cloud database services.
+Voor het maken van een replica in de Azure Database for MySQL-service, [replicatie van inkomende gegevens](concepts-data-in-replication.md) synchroniseert gegevens van een hoofd-mysql-server on-premises, in virtuele machines (vm's) of in Cloud database services. Replicatie van binnenkomende gegevens is gebaseerd op het binaire logbestand (binlog) met replicatie op basis van positie eigen aan MySQL. Meer informatie over binlog-replicatie vindt u in het [overzicht van MySQL binlog-replicatie](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations-and-considerations) van gegevens replicatie voordat u de stappen in dit artikel uitvoert.
 

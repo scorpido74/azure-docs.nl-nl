@@ -3,13 +3,13 @@ title: Veelvoorkomende problemen met de Azure Kubernetes-service oplossen
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het gebruik van Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.date: 06/20/2020
+ms.openlocfilehash: 36b3f20b866e7bad1d27f9fa92c02601ec21602c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724991"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125426"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -46,6 +46,19 @@ Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kun
 
 Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)voor meer informatie over het oplossen van problemen met Pod.
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>Ik ontvang `TCP timeouts` het gebruik van `kubectl` of andere hulpprogram ma's van derden die verbinding maken met de API-server
+AKS heeft HA-besturings plannen die verticaal schalen op basis van het aantal kernen om de serviceniveau doelstellingen (Slo's) en Service Level Agreements (Sla's) te garanderen. Als u een time-out voor verbindingen ondervindt, controleert u het onderstaande:
+
+- **Is de time-out van alle API-opdrachten consistent of slechts een paar?** Als het slechts enkele is, zijn uw `tunnelfront` Pod of `aks-link` Pod, die verantwoordelijk is voor de communicatie van het beheer vlak van het knoop > punt, mogelijk niet actief. Zorg ervoor dat de knoop punten die deze pod host, niet meer worden gebruikt of niet onder spanning zijn. Overweeg ze te verplaatsen naar hun eigen [ `system` knooppunt groep](use-system-pools.md).
+- **Hebt u alle vereiste poorten, FQDN-namen en IP-adressen die worden vermeld op de [AKS beperken van documenten](limit-egress-traffic.md)voor uitgaand verkeer voor komen?** Anders kunnen verschillende opdrachten aanroepen mislukken.
+- **Wordt het huidige IP-adres gedekt door [API IP-toegestane bereiken](api-server-authorized-ip-ranges.md)?** Als u deze functie gebruikt en uw IP-adres niet is opgenomen in de bereiken, worden uw aanroepen geblokkeerd. 
+- **Hebt u een client of toepassing die aanroepen naar de API-server lekt?** Zorg ervoor dat u controles gebruikt in plaats van frequent Get-aanroepen en dat de toepassingen van derden deze aanroepen niet lekken. Een fout in de Istio-mixer zorgt er bijvoorbeeld voor dat er een nieuwe API Server Watch-verbinding wordt gemaakt telkens wanneer een geheim intern wordt gelezen. Omdat dit gedrag met een regel matig interval plaatsvindt, kijken de verbindingen snel op en wordt de API-server uiteindelijk overbelast, ongeacht het schaal patroon. https://github.com/istio/istio/issues/19481
+- **Hebt u veel releases in uw helm-implementaties?** Dit scenario kan ertoe leiden dat beide Tiller te veel geheugen gebruiken op de knoop punten, evenals een grote hoeveelheid `configmaps` , wat kan leiden tot onnodige pieken op de API-server. Overweeg om te configureren `--history-max` op en gebruik te maken van `helm init` de nieuwe helm 3. Meer informatie over de volgende problemen: 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ik probeer op rollen gebaseerd Access Control (RBAC) in te scha kelen op een bestaand cluster. Hoe kan ik dat doen?
 
 Het inschakelen van op rollen gebaseerd toegangs beheer (RBAC) op bestaande clusters wordt op dit moment niet ondersteund, moet worden ingesteld bij het maken van nieuwe clusters. RBAC is standaard ingeschakeld bij gebruik van CLI, portal of een API-versie die hoger is dan `2020-03-01` .
@@ -53,12 +66,6 @@ Het inschakelen van op rollen gebaseerd toegangs beheer (RBAC) op bestaande clus
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld en nu ziet u veel waarschuwingen op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat moet ik doen?
 
 De reden voor de waarschuwingen is dat RBAC is ingeschakeld voor het cluster en dat toegang tot het dash board is nu standaard beperkt. Over het algemeen is deze aanpak goed, omdat de standaard belichting van het dash board aan alle gebruikers van het cluster kan leiden tot beveiligings Risico's. Als u het dash board nog steeds wilt inschakelen, volgt u de stappen in [dit blog bericht](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dashboard. Wat moet ik doen?
-
-De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster, is om uit te voeren `kubectl proxy` , welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server proxy voor uw service hebben: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/` .
-
-Als u het Kubernetes-dash board niet ziet, controleert u of de `kube-proxy` pod wordt uitgevoerd in de `kube-system` naam ruimte. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat moet ik doen?
 

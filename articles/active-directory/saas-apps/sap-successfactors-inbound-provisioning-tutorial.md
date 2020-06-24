@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249683"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702172"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Zelf studie: SAP SuccessFactors configureren voor het inrichten van Active Directory gebruikers (preview-versie)
 Het doel van deze zelf studie is het weer geven van de stappen die u moet uitvoeren om gebruikers in te richten vanuit SuccessFactors Employee Central in Active Directory (AD) en Azure AD, met een optionele write-back van e-mail adres naar SuccessFactors. Deze integratie is in open bare preview en ondersteunt het ophalen van meer dan [70 + gebruikers kenmerken](../app-provisioning/sap-successfactors-attribute-reference.md) van SuccessFactors Employee Central.
@@ -117,7 +117,7 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
   >[!NOTE]
   >Voor de volledige lijst met kenmerken die zijn opgehaald door deze inrichtings-app, verwijzen wij u naar [SuccessFactors-kenmerk verwijzing](../app-provisioning/sap-successfactors-attribute-reference.md)
 
-* Klik op **gereed**. Klik op **wijzigingen opslaan**.
+* Klik op **gereed**. Klik op **Wijzigingen opslaan**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Een machtigings groep maken voor de API-gebruiker
 
@@ -146,7 +146,7 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 * Controleer de machtigings rol verlenen aan de machtigings groep. 
   > [!div class="mx-imgBorder"]
   > ![Rol en groeps Details van machtiging](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klik op **wijzigingen opslaan**.
+* Klik op **Wijzigingen opslaan**.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>Gebruikers inrichten configureren van SuccessFactors in Active Directory
 
@@ -247,7 +247,7 @@ In deze stap maken we verbinding met SuccessFactors en Active Directory in de Az
 
 1. Voer de sectie **beheerders referenties** als volgt uit:
 
-   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het gebruikers account van de SUCCESSFACTORS-API, waarbij de bedrijfs-id is toegevoegd. Het heeft de volgende indeling **:\@gebruikers naam companyID**
+   * **Gebruikers naam beheerder** : Voer de gebruikers naam in van het gebruikers account van de SUCCESSFACTORS-API, waarbij de bedrijfs-id is toegevoegd. Het heeft de volgende indeling: **gebruikers naam \@ companyID**
 
    * **Beheerders wachtwoord –** Voer het wacht woord van het gebruikers account van de SuccessFactors-API in. 
 
@@ -266,7 +266,7 @@ In deze stap maken we verbinding met SuccessFactors en Active Directory in de Az
 
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de SuccessFactors-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
     >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+    >![Azure-portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing weer gegeven **SuccessFactors-gebruikers synchroniseren met on-premises Active Directory**
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847358"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945406"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
 
@@ -23,7 +23,7 @@ Azure Monitor voor Azure cache voor redis (preview) voor al uw Azure-cache voor 
 
 Dit artikel helpt u bij het begrijpen van de voor delen van deze nieuwe bewakings ervaring. Ook wordt uitgelegd hoe u de ervaring kunt aanpassen en aanpassen aan de unieke behoeften van uw organisatie.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 Voordat u met de ervaring begint, moet u weten hoe Azure Monitor voor Azure cache voor redis visueel informatie weergeeft.
 
@@ -179,6 +179,10 @@ Werkmappen worden opgeslagen in een resource groep in de sectie **mijn rapporten
 Nadat u een aangepaste werkmap hebt opgeslagen, gaat u naar de werkmap galerie om deze te openen.
 
 ![Een opdracht balk met een gemarkeerde galerie](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Raadpleeg het [artikel speciale probleemoplossings problemen](troubleshoot-workbooks.md)op basis van werkmappen voor hulp bij het oplossen van problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

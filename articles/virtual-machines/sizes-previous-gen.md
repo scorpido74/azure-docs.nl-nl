@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 3284db031214dfaa631efa6f9f40e6a069998843
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 6ebd13317940d131facfb36987fb37358260ec05
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677063"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119219"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties virtuele machine grootten
 
@@ -169,7 +169,7 @@ Grootten uit de A8-A11- en H-serie worden ook wel *rekenintensieve exemplaren* g
 
 ### <a name="d-series"></a>D-serie  
 
-**Aanbeveling voor nieuwere grootte**: [Dv3-serie](dv3-dsv3-series.md)
+**Nieuwere grootte aanbeveling**: [Dav4-Series](dav4-dasv4-series.md), [Dv4-serie](dv4-dsv4-series.md) en [Ddv4-serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -190,7 +190,7 @@ Premium Storage caching: niet ondersteund
 
 ### <a name="d-series---memory-optimized"></a>D-Series-geoptimaliseerd voor geheugen  
 
-**Aanbeveling voor nieuwere grootte**: [Dv3-serie](dv3-dsv3-series.md)
+**Nieuwere grootte aanbeveling**: [Dav4-Series](dav4-dasv4-series.md), [Dv4-serie](dv4-dsv4-series.md) en [Ddv4-serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -231,7 +231,7 @@ De DC-serie gebruikt de nieuwste generatie van 3,7 GHz Intel XEON E-2176G-proces
 
 ### <a name="ds-series"></a>DS-serie  
 
-**Aanbeveling voor nieuwere grootte**: [Dsv3-serie](dv3-dsv3-series.md)
+**Nieuwere grootte aanbeveling**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-serie](dv4-dsv4-series.md) en [Ddsv4-serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1</sup>
 
@@ -252,7 +252,7 @@ Premium Storage caching: ondersteund
 
 ### <a name="ds-series---memory-optimized"></a>DS-Series-geoptimaliseerd voor geheugen  
 
-**Aanbeveling voor nieuwere grootte**: [Dsv3-serie](dv3-dsv3-series.md)
+**Nieuwere grootte aanbeveling**: [Dasv4-Series](dav4-dasv4-series.md), [Dsv4-serie](dv4-dsv4-series.md) en [Ddsv4-serie](ddv4-ddsv4-series.md)
 
 ACU: 160-250 <sup>1, 2</sup>
 
@@ -273,6 +273,8 @@ Premium Storage caching: ondersteund
 <br>
 
 ### <a name="ls-series"></a>Ls-serie
+
+**Aanbeveling voor nieuwere grootte**: [Lsv2-serie](lsv2-series.md)
 
 De Ls-serie biedt maximaal 32 vCPU's en maakt gebruik van een [Intel Xeon®-processor uit de E5 v3-familie](https://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). De Ls-serie heeft dezelfde CPU-prestaties als de G/GS-serie en wordt geleverd met 8 GiB geheugen per vCPU.
 
@@ -297,6 +299,8 @@ De maximale schijf doorvoer die mogelijk is met Vm's uit de LS-serie kan worden 
 
 ### <a name="gs-series"></a>GS-serie
 
+**Nieuwere grootte aanbeveling**: [Easv4-serie](eav4-easv4-series.md), [Esv4-Serie](ev4-esv4-series.md), [Edsv4-serie](edv4-edsv4-series.md) en [M-serie](m-series.md)
+
 ACU: 180-240 <sup>1</sup>
 
 Premium Storage: ondersteund
@@ -320,6 +324,8 @@ Premium Storage caching: ondersteund
 <br>
 
 ### <a name="g-series"></a>G-serie
+
+**Nieuwere grootte aanbeveling**: [Eav4-Series](eav4-easv4-series.md), [Ev4-Serie](ev4-esv4-series.md) en [Edv4-](edv4-edsv4-series.md) Series en [M-serie](m-series.md)
 
 ACU: 180 - 240
 

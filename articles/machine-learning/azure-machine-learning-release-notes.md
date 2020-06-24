@@ -367,7 +367,7 @@ U kunt nu machine learning-notitie blokken en bestanden rechtstreeks maken, bewe
 
 Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio:
     
-| Webgebaseerd hulp programma  |     Beschrijving  | Editie | 
+| Webgebaseerd hulp programma  |     Description  | Editie | 
 |---|---|---|
 | Azure ML Studio-notebooks   |     Eerste in-class ontwerpen voor notebook-bestanden en biedt ondersteuning voor alle bewerkingen die beschikbaar zijn in de Azure ML python SDK. | Basis & Enter prise  |   
 
@@ -879,7 +879,7 @@ Vanuit de Studio kunt u Azure Machine Learning assets trainen, testen, implement
 
 Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio:
 
-| Webgebaseerd hulp programma | Beschrijving | Editie |
+| Webgebaseerd hulp programma | Description | Editie |
 |-|-|-|
 | VM van notebook (preview-versie) | Volledig beheerd werk station in de Cloud | Basis & Enter prise |
 | [Automatische machine learning](tutorial-first-experiment-automated-ml.md) (preview-versie) | Geen code-ervaring voor het automatiseren van de ontwikkeling van machine learning modellen | Enterprise |

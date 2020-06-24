@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282885"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692798"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-$filter syntaxis in azure Cognitive Search
 
 In azure Cognitive Search worden [OData-filter expressies](query-odata-filter-orderby-syntax.md) gebruikt om aanvullende criteria toe te passen op een zoek query naast zoek termen in volledige tekst. In dit artikel wordt de syntaxis van filters in detail beschreven. Zie [filters in Azure Cognitive Search](search-filters.md)voor meer algemene informatie over welke filters zijn en hoe u deze kunt gebruiken voor het realiseren van specifieke query scenario's.
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 Een filter in de OData-taal is een booleaanse expressie die op zijn beurt een van de verschillende typen expressies kan zijn, zoals wordt weer gegeven in de volgende EBNF ([uitgebreid Backus-Naur-formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
@@ -60,15 +60,15 @@ Er is ook een interactief syntaxis diagram beschikbaar:
 
 De typen Booleaanse expressies zijn onder andere:
 
-- Verzamelings filter expressies `any` met `all`of. Deze filter criteria Toep assen op verzamelings velden. Zie [OData-verzamelings operatoren in Azure Cognitive Search](search-query-odata-collection-operators.md)voor meer informatie.
-- Logische expressies die andere Boole-expressies combi neren met `and`behulp van de Opera Tors, `or`en `not`. Zie voor meer informatie [OData Logical Opera tors in Azure Cognitive Search](search-query-odata-logical-operators.md).
-- Vergelijkings expressies, waarmee velden of bereik variabelen worden vergeleken met constante waarden `eq`met `ne`behulp van `ge`de Opera `le`Tors, `gt` `lt`,,, en. Zie [OData-vergelijkings operatoren in Azure Cognitive Search](search-query-odata-comparison-operators.md)voor meer informatie. Vergelijkings expressies worden ook gebruikt om de afstand tussen geo-ruimtelijke coördinaten `geo.distance` te vergelijken met behulp van de functie. Zie [geo-ruimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md)voor meer informatie.
-- De letterlijke Booleaanse `true` waarden `false`en. Deze constanten kunnen soms handig zijn bij het programmatisch genereren van filters, maar anders niet in de praktijk.
+- Verzamelings filter expressies met `any` of `all` . Deze filter criteria Toep assen op verzamelings velden. Zie [OData-verzamelings operatoren in Azure Cognitive Search](search-query-odata-collection-operators.md)voor meer informatie.
+- Logische expressies die andere Boole-expressies combi neren met behulp van de Opera tors `and` , `or` en `not` . Zie voor meer informatie [OData Logical Opera tors in Azure Cognitive Search](search-query-odata-logical-operators.md).
+- Vergelijkings expressies, waarmee velden of bereik variabelen worden vergeleken met constante waarden met behulp van de Opera Tors,,,, en `eq` `ne` `gt` `lt` `ge` `le` . Zie [OData-vergelijkings operatoren in Azure Cognitive Search](search-query-odata-comparison-operators.md)voor meer informatie. Vergelijkings expressies worden ook gebruikt om de afstand tussen geo-ruimtelijke coördinaten te vergelijken met behulp van de `geo.distance` functie. Zie [geo-ruimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md)voor meer informatie.
+- De letterlijke Booleaanse waarden `true` en `false` . Deze constanten kunnen soms handig zijn bij het programmatisch genereren van filters, maar anders niet in de praktijk.
 - Aanroepen van Booleaanse functies, waaronder:
   - `geo.intersects`, waarmee wordt getest of een bepaald punt zich in een bepaalde veelhoek bevindt. Zie [geo-ruimtelijke functies van OData in Azure Cognitive Search](search-query-odata-geo-spatial-functions.md)voor meer informatie.
-  - `search.in`Hiermee wordt een veld-of bereik variabele vergeleken met elke waarde in een lijst met waarden. Zie [OData `search.in` -functie in azure Cognitive Search](search-query-odata-search-in-function.md)voor meer informatie.
-  - `search.ismatch`en `search.ismatchscoring`, waarmee Zoek opdrachten in volledige tekst in een filter context worden uitgevoerd. Zie [OData-functies voor zoeken in volledige tekst in Azure Cognitive Search](search-query-odata-full-text-search-functions.md)voor meer informatie.
-- Veld paden of bereik variabelen van het `Edm.Boolean`type. Als uw index bijvoorbeeld een Boole-veld bevat met de `IsEnabled` naam en u wilt alle documenten met dit veld retour neren `true`, kan uw filter expressie alleen de naam `IsEnabled`zijn.
+  - `search.in`Hiermee wordt een veld-of bereik variabele vergeleken met elke waarde in een lijst met waarden. Zie [OData- `search.in` functie in azure Cognitive Search](search-query-odata-search-in-function.md)voor meer informatie.
+  - `search.ismatch`en `search.ismatchscoring` , waarmee Zoek opdrachten in volledige tekst in een filter context worden uitgevoerd. Zie [OData-functies voor zoeken in volledige tekst in Azure Cognitive Search](search-query-odata-full-text-search-functions.md)voor meer informatie.
+- Veld paden of bereik variabelen van het type `Edm.Boolean` . Als uw index bijvoorbeeld een Boole-veld bevat met de naam `IsEnabled` en u wilt alle documenten met dit veld retour neren `true` , kan uw filter expressie alleen de naam zijn `IsEnabled` .
 - Boole-expressies tussen haakjes. Door haakjes te gebruiken kunt u de volg orde van de bewerkingen in een filter expliciet bepalen. Zie de volgende sectie voor meer informatie over de standaard prioriteit van de OData-Opera tors.
 
 ### <a name="operator-precedence-in-filters"></a>Operator prioriteit in filters
@@ -82,7 +82,7 @@ Als u een filter expressie zonder haakjes schrijft rond de bijbehorende subexpre
 | Logische operators | `and` |
 | Logische operators | `or` |
 
-Een operator die hoger in de bovenstaande tabel staat, wordt ' Binder meer ' aan de operanden dan andere opera tors. Een voor beeld `and` is van een hogere prioriteit `or`dan, en vergelijkings operatoren hebben een hogere prioriteit dan een van beide, dus zijn de volgende twee expressies gelijkwaardig:
+Een operator die hoger in de bovenstaande tabel staat, wordt ' Binder meer ' aan de operanden dan andere opera tors. Een voor beeld `and` is van een hogere prioriteit dan `or` , en vergelijkings operatoren hebben een hogere prioriteit dan een van beide, dus zijn de volgende twee expressies gelijkwaardig:
 
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
@@ -95,7 +95,7 @@ Dit fout bericht wordt weer gegeven:
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-Deze fout treedt op omdat de operator is gekoppeld aan alleen `Rating` het veld, van het type `Edm.Int32`en niet met de volledige vergelijkings expressie. De oplossing bestaat uit het plaatsen van `not` de operand tussen haakjes:
+Deze fout treedt op omdat de operator is gekoppeld aan alleen het `Rating` veld, van het type `Edm.Int32` en niet met de volledige vergelijkings expressie. De oplossing bestaat uit het plaatsen van de operand tussen `not` haakjes:
 
     not (Rating gt 5)
 
@@ -106,7 +106,7 @@ Deze fout treedt op omdat de operator is gekoppeld aan alleen `Rating` het veld,
 Er zijn limieten voor de grootte en complexiteit van filter expressies die u kunt verzenden naar Azure Cognitive Search. De limieten zijn ongeveer gebaseerd op het aantal componenten in uw filter expressie. Een goede richt lijn is dat als u honderden componenten hebt, u een risico hebt om de limiet te overschrijden. We raden u aan uw toepassing zodanig te ontwerpen dat er geen filters van een ongebonden grootte worden gegenereerd.
 
 > [!TIP]
-> [Het gebruik `search.in` van de functie](search-query-odata-search-in-function.md) in plaats van lange splitsingen van gelijkheids vergelijkingen kan helpen om de limiet van de filter component te vermijden omdat een functie aanroep als een enkele component telt.
+> Het gebruik van [de `search.in` functie](search-query-odata-search-in-function.md) in plaats van lange splitsingen van gelijkheids vergelijkingen kan helpen om de limiet van de filter component te vermijden omdat een functie aanroep als een enkele component telt.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -134,7 +134,7 @@ Alle hotels zoeken die luxe of parkeren zijn en een classificatie van 5 hebben:
 
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
 
-Alle hotels met het label "WiFi" zoeken in ten minste één ruimte (waarbij elke kamer labels in een `Collection(Edm.String)` veld heeft opgeslagen):  
+Alle hotels met het label "WiFi" zoeken in ten minste één ruimte (waarbij elke kamer labels in een veld heeft opgeslagen `Collection(Edm.String)` ):  
 
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
 
@@ -146,11 +146,11 @@ Alle hotels zoeken die geen kamers hebben:
 
     $filter=not Rooms/any()
 
-Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt ( `Location` waarbij een veld van het `Edm.GeographyPoint`type is):
+Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt (waarbij `Location` een veld van het type is `Edm.GeographyPoint` ):
 
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
 
-Alle hotels in een bepaalde View Port zoeken die worden beschreven als een `Location` veelhoek (waarbij een veld van het type EDM. GeographyPoint) is. De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [De punten moeten ook links in de volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij `Location` een veld van het type EDM. GeographyPoint) is. De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [De punten moeten ook links in de volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
@@ -174,11 +174,11 @@ Zoek een overeenkomst op zinsdelen in een verzameling, zoals ' verwarmd handdoek
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront`.
+Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront` .
 
     $filter=search.ismatchscoring('waterfront')
 
-Vind documenten met het woord ' Hostel ' en classificatie groter of gelijk aan 4, of documenten met het woord ' Motel ' en de classificatie is gelijk aan 5. Deze aanvraag kan niet worden aangegeven zonder `search.ismatchscoring` de functie omdat hiermee zoeken in volledige tekst met filter bewerkingen wordt `or`gecombineerd met.
+Vind documenten met het woord ' Hostel ' en classificatie groter of gelijk aan 4, of documenten met het woord ' Motel ' en de classificatie is gelijk aan 5. Deze aanvraag kan niet worden aangegeven zonder de `search.ismatchscoring` functie omdat hiermee zoeken in volledige tekst met filter bewerkingen wordt gecombineerd met `or` .
 
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
 
@@ -186,7 +186,7 @@ Documenten zonder het woord "luxe" zoeken.
 
     $filter=not search.ismatch('luxury')
 
-Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en. `Description` Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel- `Rating` Hotels met een waarde die gelijk is aan 5. Deze documenten worden geretourneerd met een score die gelijk is aan nul, zodat deze duidelijk wordt gemaakt dat ze niet overeenkomen met een van de gescoorde delen van de expressie.
+Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en `Description` . Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel-hotels met een waarde die `Rating` gelijk is aan 5. Deze documenten worden geretourneerd met een score die gelijk is aan nul, zodat deze duidelijk wordt gemaakt dat ze niet overeenkomen met een van de gescoorde delen van de expressie.
 
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
 

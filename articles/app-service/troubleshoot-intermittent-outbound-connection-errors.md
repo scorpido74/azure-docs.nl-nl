@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80367549"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252437"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Problemen met terugkerende uitgaande verbindings fouten in Azure App Service oplossen
 
@@ -62,7 +62,7 @@ Standaard worden verbindingen voor NodeJS niet actief bewaard. Hieronder vindt u
 HTTP-keepalive
 
 * [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
-* [Documentatie voor node. js v 13.9.0](https://nodejs.org/api/http.html)
+* [Documentatie voorNode.js v 13.9.0](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
@@ -111,7 +111,7 @@ Raadpleeg voor andere omgevingen de provider of stuur programma-specifieke docum
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Keepalives gebruiken om de uitgaande time-out voor inactiviteit opnieuw in te stellen
 
-* Voor het implementeren van keepalives voor node. js-apps, [moet u controleren of de toepassing van mijn knoop punt buitensporige uitgaande oproepen](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)maakt.
+* Voor het implementeren van keepalives voor Node.js-apps, [moet u controleren of de toepassing van mijn knoop punt overmatige uitgaande oproepen](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)maakt.
 
 ### <a name="additional-guidance-specific-to-app-service"></a>Aanvullende richt lijnen die specifiek zijn voor App Service:
 
@@ -160,7 +160,7 @@ TCP-verbindingen en SNAT-poorten zijn niet rechtstreeks gerelateerd. Een gebruik
 
 ### <a name="webjobs-and-database-connections"></a>Webjobs en database verbindingen
  
-Als de SNAT-poorten zijn uitgeput, waarbij webjobs geen verbinding kunnen maken met de Azure-SQL database, is er geen metriek om te laten zien hoeveel verbindingen door elk afzonderlijk webtoepassingsproces worden geopend. Als u de problematische Webtaak wilt vinden, kunt u verschillende webjobs naar een andere App Service plan verplaatsen om te zien of de situatie zich verbetert of als er een probleem in een van de plannen blijft. Herhaal dit proces totdat u de problematische Webtaak hebt gevonden.
+Als de SNAT-poorten uitgeput zijn, waarbij webjobs geen verbinding kunnen maken met SQL Database, is er geen metriek om weer te geven hoeveel verbindingen worden geopend door elk afzonderlijk webtoepassingsproces. Als u de problematische Webtaak wilt vinden, kunt u verschillende webjobs naar een andere App Service plan verplaatsen om te zien of de situatie zich verbetert of als er een probleem in een van de plannen blijft. Herhaal dit proces totdat u de problematische Webtaak hebt gevonden.
 
 ### <a name="using-snat-ports-sooner"></a>Een SNAT-poort gebruiken
 

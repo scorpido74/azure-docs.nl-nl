@@ -1,25 +1,44 @@
 ---
-title: Gebeurtenis schema voor Azure-activiteiten logboek
+title: Azure-gebeurtenisschema in het activiteitenlogboek
 description: Beschrijft het gebeurtenis schema voor elke categorie in het Azure-activiteiten logboek.
 author: bwren
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/04/2019
+ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 25517b48ad7dcddffaaeb4ac2f86397d99e0be2c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017508"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945355"
 ---
-# <a name="azure-activity-log-event-schema"></a>Gebeurtenis schema voor Azure-activiteiten logboek
-Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema voor elke categorie beschreven. 
+# <a name="azure-activity-log-event-schema"></a>Azure-gebeurtenisschema in het activiteitenlogboek
+Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel worden de categorieën en het schema voor activiteiten Logboeken beschreven. 
 
-In de onderstaande voor beelden wordt het schema weer gegeven wanneer u het activiteiten logboek opent vanuit de portal, Power shell, CLI en REST API. Het schema is anders wanneer u [het activiteiten logboek streamt naar Storage of event hubs](resource-logs-stream-event-hubs.md). Aan het einde van het artikel wordt een toewijzing van de eigenschappen aan het [schema van bron logboeken](diagnostic-logs-schema.md) gegeven.
+Het schema is afhankelijk van hoe u het logboek opent:
+ 
+- De schema's die in dit artikel worden beschreven, zijn wanneer u het activiteiten logboek opent vanuit het [rest API](https://docs.microsoft.com/rest/api/monitor/activitylogs). Dit is ook het schema dat wordt gebruikt wanneer u de **JSON** -optie selecteert bij het weer geven van een gebeurtenis in de Azure Portal.
+- Zie het laatste sectie [schema van het opslag account en de Event hubs](#schema-from-storage-account-and-event-hubs) voor het schema wanneer u een [Diagnostische instelling](diagnostic-settings.md) gebruikt om het activiteiten logboek te verzenden naar Azure Storage of Azure Event hubs.
+- Zie [Azure monitor gegevens referentie](https://docs.microsoft.com/azure/azure-monitor/reference/) voor het schema wanneer u een [Diagnostische instelling](diagnostic-settings.md) gebruikt om het activiteiten logboek naar een log Analytics-werk ruimte te verzenden.
 
-## <a name="administrative"></a>Administratief
+
+## <a name="categories"></a>Categorieën
+Elke gebeurtenis in het activiteiten logboek heeft een bepaalde categorie die wordt beschreven in de volgende tabel. Zie de secties hieronder voor meer informatie over elke categorie en het bijbehorende schema wanneer u het activiteiten logboek opent vanuit de portal, Power shell, CLI en REST API. Het schema is anders wanneer u [het activiteiten logboek streamt naar Storage of event hubs](resource-logs-stream-event-hubs.md). In de laatste sectie van het artikel is een toewijzing van de eigenschappen aan het [schema voor bron logboeken](diagnostic-logs-schema.md) opgenomen.
+
+| Categorie | Beschrijving |
+|:---|:---|
+| [Administratief](#administrative-category) | Bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van beheer gebeurtenissen zijn het maken van een _virtuele machine_ en het verwijderen van de _netwerk beveiligings groep_.<br><br>Elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager, is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type _schrijven_, _verwijderen_of _actie_is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. Beheer gebeurtenissen omvatten ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement. |
+| [Status van service](#service-health-category) | Bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van een Service Health gebeurtenis _SQL Azure in VS-Oost_ondervindt downtime. <br><br>Service Health gebeurtenissen zijn beschikbaar in zes rassen: _actie vereist_, _assistentie herstel_, _incident_, _onderhoud_, _informatie_of _beveiliging_. Deze gebeurtenissen worden alleen gemaakt als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
+| [Status van resources](#resource-health-category) | Bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van een Resource Health gebeurtenis is de status van de _virtuele machine is gewijzigd in niet beschikbaar_.<br><br>Resource Health gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: _beschikbaar, niet_ _beschikbaar_, _gedegradeerd_en _onbekend_. Daarnaast kunnen Resource Health gebeurtenissen worden gecategoriseerd als _platform gestart_ of door de _gebruiker gestart_. |
+| [Waarschuwing](#alert-category) | Bevat de registratie van activeringen voor Azure-waarschuwingen. Een voor beeld van een waarschuwings gebeurtenis is _CPU% op myVM heeft de afgelopen vijf minuten meer dan 80_.|
+| [Automatisch schalen](#autoscale-category) | Bevat de record van gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van een automatisch schalen-gebeurtenis is het _Omhoog schalen van de actie voor schalen is mislukt_. |
+| [Aanbeveling](#recommendation-category) | Bevat aanbevelings gebeurtenissen van Azure Advisor. |
+| [Beveiliging](#security-category) | Bevat de record van waarschuwingen die zijn gegenereerd door Azure Security Center. Een voor beeld van een beveiligings gebeurtenis is een _verdacht dubbel extensie bestand_dat wordt uitgevoerd. |
+| [Beleid](#policy-category) | Bevat records van alle bewerkingen voor effect acties die zijn uitgevoerd door Azure Policy. Voor beelden van beleids gebeurtenissen zijn onder andere _controle_ en _weigeren_. Elke actie die wordt uitgevoerd door beleid, wordt gemodelleerd als een bewerking voor een resource. |
+
+## <a name="administrative-category"></a>Beheer categorie
 Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van de typen gebeurtenissen die in deze categorie worden weer gegeven zijn onder andere "virtuele machine maken" en "netwerk beveiligings groep verwijderen" elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type schrijven, verwijderen of actie is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. De beheer categorie bevat ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -137,7 +156,7 @@ Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwi
 | submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
-## <a name="service-health"></a>Status van service
+## <a name="service-health-category"></a>Categorie service status
 Deze categorie bevat de record van alle service status incidenten die zich in azure hebben voorgedaan. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' SQL Azure in VS-Oost ondervindt downtime. ' Service Health-gebeurtenissen zijn beschikbaar in vijf rassen: actie vereist, assistentie herstel, incident, onderhoud, informatie of beveiliging, en alleen als u een resource in het abonnement hebt die van invloed is op de gebeurtenis.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -197,7 +216,7 @@ Deze categorie bevat de record van alle service status incidenten die zich in az
 ```
 Raadpleeg het artikel over [service status meldingen](./../../azure-monitor/platform/service-notifications.md) voor documentatie over de waarden in de eigenschappen.
 
-## <a name="resource-health"></a>Status van resources
+## <a name="resource-health-category"></a>Resource status categorie
 Deze categorie bevat de record van de resource status gebeurtenissen die zijn opgetreden in uw Azure-resources. Een voor beeld van het type gebeurtenis dat in deze categorie wordt weer geven, is de status van de virtuele machine is gewijzigd in niet beschikbaar. Resource Health-gebeurtenissen kunnen een van de vier statussen vertegenwoordigen: beschikbaar, niet beschikbaar, gedegradeerd en onbekend. Daarnaast kunnen resource status gebeurtenissen worden gecategoriseerd als platform gestart of door de gebruiker gestart.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -286,7 +305,7 @@ Deze categorie bevat de record van de resource status gebeurtenissen die zijn op
 | Eigenschappen. oorzaak | Een beschrijving van de oorzaak van de resource status gebeurtenis. ' UserInitiated ' en ' PlatformInitiated '. |
 
 
-## <a name="alert"></a>Waarschuwing
+## <a name="alert-category"></a>Categorie van de waarschuwing
 Deze categorie bevat de registratie van alle activeringen van klassieke Azure-waarschuwingen. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is ' CPU% op myVM is in de afgelopen vijf minuten meer dan 80. ' Een groot aantal Azure-systemen heeft een waarschuwings concept: u kunt een regel van een bepaalde sortering definiëren en een melding ontvangen wanneer de voor waarden overeenkomen met die regel. Telkens wanneer een ondersteund Azure-waarschuwings type ' activeren ' of aan de voor waarden wordt voldaan om een melding te genereren, wordt er ook een record van de activering naar deze categorie van het activiteiten logboek gepusht.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -400,7 +419,7 @@ Het veld eigenschappen bevat verschillende waarden, afhankelijk van de bron van 
 | eigenschappen. MetricName | De metrische naam van de metrische gegevens die wordt gebruikt in de evaluatie van de metrische waarschuwings regel. |
 | eigenschappen. MetricUnit | De metrische eenheid voor de metrische gegevens die wordt gebruikt in de evaluatie van de metrische waarschuwings regel. |
 
-## <a name="autoscale"></a>Automatisch schalen
+## <a name="autoscale-category"></a>Categorie voor automatisch schalen
 Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben op de werking van de engine voor automatisch schalen op basis van de instellingen voor automatisch schalen die u hebt gedefinieerd in uw abonnement. Een voor beeld van het type gebeurtenis dat in deze categorie wordt weer geven, is de actie omhoog schalen naar boven schalen is mislukt. Met automatisch schalen kunt u het aantal exemplaren in een ondersteund bron type, op basis van een tijd van de dag en/of belasting (metrische gegevens), in een door de instelling voor automatisch schalen schalen. Wanneer aan de voor waarden wordt voldaan om omhoog of omlaag te schalen, worden de gebeurtenissen start en geslaagd of mislukt in deze categorie vastgelegd.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -487,7 +506,7 @@ Deze categorie bevat een overzicht van alle gebeurtenissen die betrekking hebben
 | submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
-## <a name="security"></a>Beveiliging
+## <a name="security-category"></a>Beveiligings categorie
 Deze categorie bevat alle waarschuwingen die door Azure Security Center worden gegenereerd. Een voor beeld van het gebeurtenis type dat in deze categorie wordt weer geven, is het ' verdachte dubbele extensie bestand uitgevoerd '.
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -575,7 +594,7 @@ Deze categorie bevat alle waarschuwingen die door Azure Security Center worden g
 | submissionTimestamp |Tijds tempel wanneer de gebeurtenis beschikbaar werd voor het uitvoeren van query's. |
 | subscriptionId |Azure-abonnements-ID. |
 
-## <a name="recommendation"></a>Aanbeveling
+## <a name="recommendation-category"></a>Aanbevelings categorie
 Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services worden gegenereerd. Een voor beeld van een aanbeveling is ' beschikbaarheids sets gebruiken voor verbeterde fout tolerantie. ' Er zijn vier typen Aanbevelings gebeurtenissen die kunnen worden gegenereerd: hoge Beschik baarheid, prestaties, beveiliging en kosten optimalisatie. 
 
 ### <a name="sample-event"></a>Voorbeeld gebeurtenis
@@ -655,7 +674,7 @@ Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services wor
 | Eigenschappen. recommendationImpact| Impact van de aanbeveling. Mogelijke waarden zijn ' hoog ', ' medium ', ' laag ' |
 | Eigenschappen. recommendationRisk| Risico van de aanbeveling. Mogelijke waarden zijn ' error ', ' warning ', ' none ' |
 
-## <a name="policy"></a>Beleid
+## <a name="policy-category"></a>Beleids categorie
 
 Deze categorie bevat records van alle bewerkingen voor effect acties die worden uitgevoerd door [Azure Policy](../../governance/policy/overview.md). Voor beelden van de typen gebeurtenissen die in deze categorie worden weer gegeven, zijn onder andere _controleren_ en _weigeren_. Elke actie die wordt uitgevoerd door beleid, wordt gemodelleerd als een bewerking voor een resource.
 
@@ -774,13 +793,13 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>Schema van opslag account en Event hubs
-Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hub, volgen de gegevens het schema van het [resource logboek](diagnostic-logs-schema.md). De onderstaande tabel bevat een overzicht van eigenschappen van het bovenstaande schema aan het schema voor bron Logboeken.
+Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hub, volgen de gegevens het schema van het [resource logboek](diagnostic-logs-schema.md). De volgende tabel bevat een overzicht van de eigenschappen van de bovenstaande schema's aan het schema voor bron Logboeken.
 
 > [!IMPORTANT]
 > De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](diagnostic-logs-append-blobs.md) voor meer informatie over deze indelings wijziging.
 
 
-| Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
+| Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Notities |
 | --- | --- | --- |
 | tijd | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId, resource type, resourceGroupName zijn alle uitgestelde van de resourceId. |
@@ -807,7 +826,7 @@ Hieronder volgt een voor beeld van een gebeurtenis die gebruikmaakt van dit sche
 {
     "records": [
         {
-            "time": "2015-01-21T22:14:26.9792776Z",
+            "time": "2019-01-21T22:14:26.9792776Z",
             "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
             "operationName": "microsoft.support/supporttickets/write",
             "category": "Write",
@@ -831,7 +850,7 @@ Hieronder volgt een voor beeld van een gebeurtenis die gebruikmaakt van dit sche
                     "nbf": "1421876371",
                     "exp": "1421880271",
                     "ver": "1.0",
-                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "00000000-0000-0000-0000-000000000000",
                     "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
                     "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
                     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",

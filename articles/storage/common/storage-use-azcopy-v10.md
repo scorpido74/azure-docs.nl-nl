@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 60f3e725a4df619e3cc8ed7e8878fe2a5e5c3406
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bf1303c6bb13677fdea73b2a1a707c655c58b7c1
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195181"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945661"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -158,7 +158,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Typ vervolgens de volgende opdracht en druk vervolgens op ENTER.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
+azcopy login --service-principal --certificate-path path-to-certificate-file --application-id application-id --tenant-id=tenant-id
 ```
 
 Vervang de `<application-id>` tijdelijke aanduiding door de toepassings-id van de app-registratie van uw service-principal. Vervang de `<tenant-id>` tijdelijke aanduiding door de Tenant-id van de organisatie waartoe het opslag account behoort. Als u de Tenant-ID wilt vinden, selecteert u **Azure Active Directory > eigenschappen > Directory-id** in het Azure Portal. 

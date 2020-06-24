@@ -7,23 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: dc0aa8e6099a7ec017aead2fe0f16e9712e17936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840720"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738699"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Problemen met Virtual Network-gateway en-verbindingen met Azure Network Watcher Azure CLI oplossen
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
-> - [Zo](network-watcher-troubleshoot-manage-powershell.md)
+> - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure-CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
@@ -79,7 +79,7 @@ Resource-probleem oplossing retourneert gegevens over de status van de resource.
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Probleem oplossing voor Network Watcher resource uitvoeren
 
-U kunt resources oplossen met `az network watcher troubleshooting` de cmdlet. We geven de cmdlet door aan de resource groep, de naam van de Network Watcher, de id van de verbinding, de id van het opslag account en het pad naar de BLOB voor het opslaan van de problemen met de probleem oplossing in.
+U kunt resources oplossen met de `az network watcher troubleshooting` cmdlet. We geven de cmdlet door aan de resource groep, de naam van de Network Watcher, de id van de verbinding, de id van het opslag account en het pad naar de BLOB voor het opslaan van de problemen met de probleem oplossing in.
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}

@@ -7,22 +7,22 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87d076c12a40d84dc99ef5b48454afa3f0ffce0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840788"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738719"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>De beveiliging van uw virtuele machine analyseren met behulp van Power shell
 
 > [!div class="op_single_selector"]
-> - [Zo](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
@@ -43,7 +43,7 @@ In het scenario dat in dit artikel wordt behandeld, worden de geconfigureerde en
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher ophalen
 
-De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan `Get-AzNetworkWatcherSecurityGroupView` de cmdlet.
+De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan de `Get-AzNetworkWatcherSecurityGroupView` cmdlet.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -51,7 +51,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Een virtuele machine ophalen
 
-Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView` cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
+Een virtuele machine is vereist om de cmdlet uit te voeren `Get-AzNetworkWatcherSecurityGroupView` . In het volgende voor beeld wordt een VM-object opgehaald.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

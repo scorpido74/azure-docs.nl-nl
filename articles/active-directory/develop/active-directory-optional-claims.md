@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 06/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 92b3e12cc078326e98df5f42e36fcaddd56bf0c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 79f26d56b79a4622ce99b45f153685f9063b79ad
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993692"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904844"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Procedure: optionele claims voor uw Azure AD-App opgeven
 
@@ -38,7 +38,7 @@ Hoewel optionele claims worden ondersteund in de indelings tokens v 1.0 en v 2.0
 | Accounttype               | v 1.0-tokens | v 2.0-tokens |
 |----------------------------|-------------|-------------|
 | Persoonlijke Microsoft-account | N.v.t.         | Ondersteund   |
-| Microsoft Azure Active Directory-account           | Ondersteund   | Ondersteund   |
+| Azure AD-account           | Ondersteund   | Ondersteund   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>optionele claim sets v 1.0 en v 2.0
 
@@ -49,7 +49,7 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 
 **Tabel 2: v 1.0 en v 2.0 optionele claim sets**
 
-| Naam                       |  Beschrijving   | Token type | Gebruikers type | Opmerkingen  |
+| Naam                       |  Beschrijving   | Token type | Gebruikers type | Notities  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Tijdstip waarop de laatste verificatie van de gebruiker is gestart. Zie OpenID Connect Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | De regio van de resource-Tenant | JWT        |           | |
@@ -69,8 +69,9 @@ Hieronder vindt u de set optionele claims die standaard beschikbaar zijn voor he
 | `ztdid`                    | Nul-touch implementatie-ID | JWT | | De apparaat-id die wordt gebruikt voor [Windows auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
 | `email`                    | De adresseer bare e-mail voor deze gebruiker als de gebruiker er een heeft.  | JWT, SAML | MSA, Azure AD | Deze waarde is standaard opgenomen als de gebruiker een gast in de Tenant is.  Voor beheerde gebruikers (de gebruikers in de Tenant) moet deze worden aangevraagd via deze optionele claim of, alleen op v 2.0, met het OpenID Connect-bereik.  Voor beheerde gebruikers moet het e-mail adres worden ingesteld in de [Office-beheer Portal](https://portal.office.com/adminportal/home#/users).|
 | `groups`| Optionele notatie voor groepclaims |JWT, SAML| |Wordt gebruikt in combi natie met de instelling GroupMembershipClaims in het manifest van de [toepassing](reference-app-manifest.md), die ook moet worden ingesteld. Zie voor meer informatie [groeps claims](#configuring-groups-optional-claims) hieronder. Zie groepclaims [configureren](../hybrid/how-to-connect-fed-group-claims.md) voor meer informatie over groepclaims.
-| `acct`                | Status van gebruikers account in Tenant. | JWT, SAML | | Als de gebruiker lid is van de Tenant, is de waarde `0` . Als ze een gast zijn, is de waarde `1` . |
-| `upn`                      | UserPrincipalName-claim. | JWT, SAML  |           | Hoewel deze claim automatisch wordt opgenomen, kunt u deze opgeven als een optionele claim om extra eigenschappen toe te voegen om het gedrag van de gebruiker te wijzigen.  |
+| `acct`                | Gebruikers account status in Tenant | JWT, SAML | | Als de gebruiker lid is van de Tenant, is de waarde `0` . Als ze een gast zijn, is de waarde `1` . |
+| `upn`                      | UserPrincipalName | JWT, SAML  |           | Hoewel deze claim automatisch wordt opgenomen, kunt u deze opgeven als een optionele claim om extra eigenschappen toe te voegen om het gedrag van de gebruiker te wijzigen.  |
+| `idtyp`                    | Token type   | JWT-toegangs tokens | Speciaal: alleen in alleen-app-toegangs tokens |  De waarde is `app` wanneer het token een token van een app is. Dit is de meest nauw keurige manier om een API te bepalen of een token een app-token of een app + gebruikers token is.|
 
 ## <a name="v20-specific-optional-claims-set"></a>v 2.0-specifieke optionele claim sets
 
@@ -78,7 +79,7 @@ Deze claims zijn altijd opgenomen in de Azure AD-tokens v 1.0, maar zijn niet op
 
 **Tabel 3: alleen optionele claims voor v 2.0**
 
-| JWT-claim     | Naam                            | Beschrijving                                | Opmerkingen |
+| JWT-claim     | Name                            | Beschrijving                                | Notities |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-adres                      | Het IP-adres van de client die is aangemeld bij.   |       |
 | `onprem_sid`  | Lokale beveiligings-id |                                             |       |
@@ -197,7 +198,7 @@ Als dit wordt ondersteund door een specifieke claim, kunt u ook het gedrag van d
 
 **Tabel 6: eigenschappen van OptionalClaim-type**
 
-| Naam                   | Type                    | Description                                                                                                                                                                                                                                                                                                   |
+| Naam                   | Type                    | Beschrijving                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | De naam van de optionele claim.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | De bron (Directory-object) van de claim. Er zijn vooraf gedefinieerde claims en door de gebruiker gedefinieerde claims van extensie-eigenschappen. Als de bron waarde Null is, is de claim een vooraf gedefinieerde optionele claim. Als de bron waarde gebruiker is, is de waarde in de eigenschap naam de extensie-eigenschap van het gebruikers object. |
@@ -233,7 +234,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 
 **Groepen optionele claims configureren via de gebruikers interface:**
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina
 1. **Azure Active Directory** selecteren in het menu aan de linkerkant
 1. Selecteer in de sectie **beheren** de optie **app-registraties**
@@ -246,7 +247,7 @@ In deze sectie worden de configuratie opties beschreven onder optionele claims v
 
 **Groepen optionele claims configureren via het toepassings manifest:**
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina
 1. **Azure Active Directory** selecteren in het menu aan de linkerkant
 1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren
@@ -376,7 +377,7 @@ In het onderstaande voor beeld gebruikt u de gebruikers interface voor **token c
 
 **Configuratie van de gebruikers interface:**
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 
 1. Nadat u bent geverifieerd, kiest u uw Azure AD-Tenant door deze te selecteren in de rechter bovenhoek van de pagina.
 

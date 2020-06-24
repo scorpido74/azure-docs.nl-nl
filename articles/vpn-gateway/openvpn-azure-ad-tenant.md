@@ -4,17 +4,17 @@ description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met beh
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: alzam
-ms.openlocfilehash: 00db2ed05285a1637414aa1e3adbe3b047ff0568
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8658556c152c815b2846f93235e4049c66a7e354
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641352"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987178"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant maken voor P2S OpenVPN-protocol verbindingen
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
 
 Wanneer u verbinding maakt met uw VNet, kunt u verificatie op basis van certificaten of RADIUS-verificatie gebruiken. Wanneer u echter het open VPN-protocol gebruikt, kunt u ook Azure Active Directory-verificatie gebruiken. Dit artikel helpt u bij het instellen van een Azure AD-Tenant voor P2S open VPN-verificatie.
 
@@ -105,7 +105,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
     ```
 
    > [!NOTE]
-   > Zorg ervoor dat u een afsluitende slash aan het einde van `AadIssuerUri` de waarde opneemt. Anders mislukt de opdracht.
+   > Zorg ervoor dat u een afsluitende slash aan het einde van de waarde opneemt `AadIssuerUri` . Anders mislukt de opdracht.
 
 10. Maak en down load het profiel door de volgende opdrachten uit te voeren. Wijzig de waarden voor-ResourceGroupName en-name zodat deze overeenkomen met uw eigen waarde.
 
@@ -122,7 +122,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
 13. Blader naar de map ungezipte ' AzureVPN '.
 
-14. Noteer de locatie van het bestand azurevpnconfig. XML. Azurevpnconfig. XML bevat de instelling voor de VPN-verbinding en kan rechtstreeks in de Azure VPN-client toepassing worden geïmporteerd. U kunt dit bestand ook distribueren naar alle gebruikers die verbinding moeten maken via e-mail of een andere manier. De gebruiker heeft geldige Azure AD-referenties nodig om verbinding te kunnen maken.
+14. Noteer de locatie van het bestand azurevpnconfig.xml. De azurevpnconfig.xml bevat de instelling voor de VPN-verbinding en kan rechtstreeks in de Azure VPN-client toepassing worden geïmporteerd. U kunt dit bestand ook distribueren naar alle gebruikers die verbinding moeten maken via e-mail of een andere manier. De gebruiker heeft geldige Azure AD-referenties nodig om verbinding te kunnen maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

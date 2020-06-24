@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803480"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976062"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 
@@ -76,9 +76,7 @@ Zie [reken resources voor containers beheren][k8s-resource-limits]voor meer info
 
 **Best Practice-richt lijnen** : ontwikkel teams moeten een AKS-cluster implementeren en fouten opsporen met behulp van ontwikkel ruimten. Dit ontwikkel model zorgt ervoor dat op rollen gebaseerde toegangs beheer-, netwerk-of opslag behoeften worden geïmplementeerd voordat de app naar productie wordt geïmplementeerd.
 
-Met Azure dev Spaces kunt u toepassingen rechtstreeks op een AKS-cluster ontwikkelen, fouten opsporen en testen. Ontwikkel aars in een team werken samen om te bouwen en testen gedurende de levens cyclus van de toepassing. U kunt bestaande hulpprogram ma's zoals Visual Studio of Visual Studio code blijven gebruiken. Er wordt een uitbrei ding geïnstalleerd voor dev-ruimten die een optie bieden om de toepassing uit te voeren en fouten op te sporen in een AKS-cluster:
-
-![Fouten opsporen in toepassingen in een AKS-cluster met ontwikkel ruimten](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+Met Azure dev Spaces kunt u toepassingen rechtstreeks op een AKS-cluster ontwikkelen, fouten opsporen en testen. Ontwikkel aars in een team werken samen om te bouwen en testen gedurende de levens cyclus van de toepassing. U kunt bestaande hulpprogram ma's zoals Visual Studio of Visual Studio code blijven gebruiken. Er wordt een uitbrei ding geïnstalleerd voor dev-ruimten die een optie bieden om de toepassing uit te voeren en fouten op te sporen in een AKS-cluster.
 
 Dit geïntegreerde ontwikkelings-en test proces met ontwikkel ruimten vermindert de nood zaak van lokale test omgevingen, zoals [minikube][minikube]. In plaats daarvan ontwikkelt en test u op basis van een AKS-cluster. Dit cluster kan worden beveiligd en geïsoleerd, zoals wordt beschreven in de vorige sectie over het gebruik van naam ruimten om een cluster logisch te isoleren. Wanneer uw apps klaar zijn om te worden geïmplementeerd in productie, kunt u de implementatie van een echt AKS-cluster op vertrouwen uitvoeren.
 
@@ -94,13 +92,13 @@ De [Visual Studio code Extension voor Kubernetes][vscode-kubernetes] helpt u bij
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Regel matig controleren op toepassings problemen met uitvoeren-Advisor
 
-**Richt lijnen voor best practices** : Voer regel matig `kube-advisor` de meest recente versie van het hulp programma voor open source uit om problemen in uw cluster op te sporen. Als u resource quota toepast op een bestaand AKS-cluster, `kube-advisor` voert u eerst uit om een Peul te vinden waarvoor geen resource-aanvragen en-limieten zijn gedefinieerd.
+**Richt lijnen voor best practices** : Voer regel matig de meest recente versie van het `kube-advisor` hulp programma voor open source uit om problemen in uw cluster op te sporen. Als u resource quota toepast op een bestaand AKS-cluster, voert u `kube-advisor` eerst uit om een Peul te vinden waarvoor geen resource-aanvragen en-limieten zijn gedefinieerd.
 
 Het hulp programma [uitvoeren Advisor][kube-advisor] is een gekoppeld AKS open source-project waarmee een Kubernetes-cluster wordt gescand en rapporten worden gevonden over problemen die worden aangetroffen. Een nuttige controle is het identificeren van een Peul dat geen resource-aanvragen en limieten heeft.
 
 Het uitvoeren-hulp programma kan rapporteren over de resource aanvraag en limieten die ontbreken in PodSpecs voor Windows-toepassingen, evenals Linux-toepassingen, maar het hulp programma uitvoeren Advisor zelf moet op een Linux-pod worden gepland. U kunt een pod plannen om uit te voeren op een knooppunt groep met een specifiek besturings systeem met behulp van een [knooppunt kiezer][k8s-node-selector] in de configuratie van de pod.
 
-In een AKS-cluster dat een groot aantal ontwikkel teams en toepassingen host, kan het lastig zijn om de aantallen te volgen zonder deze resource aanvragen en-limieten in te stellen. Als best practice, dat regel matig `kube-advisor` wordt uitgevoerd op uw AKS-clusters.
+In een AKS-cluster dat een groot aantal ontwikkel teams en toepassingen host, kan het lastig zijn om de aantallen te volgen zonder deze resource aanvragen en-limieten in te stellen. Als best practice, dat regel matig wordt uitgevoerd `kube-advisor` op uw AKS-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -119,7 +117,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het implementeren van 
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

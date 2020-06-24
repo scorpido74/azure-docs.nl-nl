@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het herschrijven van HTTP-headers
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64947193"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808259"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>HTTP-aanvraag-en-antwoord headers herschrijven met Azure-toepassing gateway-Azure PowerShell
 
@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-- U moet Azure PowerShell lokaal uitvoeren om de stappen in dit artikel uit te voeren. U moet ook AZ module version 1.0.0 of later hebben geïnstalleerd. Voer `Import-Module Az` uit en `Get-Module Az` Controleer vervolgens de versie die u hebt geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
+- U moet Azure PowerShell lokaal uitvoeren om de stappen in dit artikel uit te voeren. U moet ook AZ module version 1.0.0 of later hebben geïnstalleerd. Voer uit `Import-Module Az` en controleer vervolgens `Get-Module Az` de versie die u hebt geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
 - U moet een SKU-exemplaar van Application Gateway v2 hebben. Het opnieuw schrijven van headers wordt niet ondersteund in de V1-SKU. Als u de v2-SKU niet hebt, maakt u een [Application Gateway v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) -exemplaar voordat u begint.
 
 ## <a name="create-required-objects"></a>Vereiste objecten maken
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>De configuratie van de regel voor het opnieuw schrijven van HTTP-headers opgeven
 
-In dit voor beeld wijzigen we een omleidings-URL door de locatie header te herschrijven in het HTTP-antwoord wanneer de locatie header een verwijzing naar azurewebsites.net bevat. Om dit te doen, voegen we een voor waarde toe om te evalueren of de locatie header in het antwoord azurewebsites.net bevat. We gebruiken het patroon `(https?):\/\/.*azurewebsites\.net(.*)$`. En we gebruiken `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als waarde voor de koptekst. Met deze waarde wordt *azurewebsites.net* vervangen door *contoso.com* in de locatie header.
+In dit voor beeld wijzigen we een omleidings-URL door de locatie header te herschrijven in het HTTP-antwoord wanneer de locatie header een verwijzing naar azurewebsites.net bevat. Om dit te doen, voegen we een voor waarde toe om te evalueren of de locatie header in het antwoord azurewebsites.net bevat. We gebruiken het patroon `(https?):\/\/.*azurewebsites\.net(.*)$` . En we gebruiken `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als waarde voor de koptekst. Met deze waarde wordt *azurewebsites.net* vervangen door *contoso.com* in de locatie header.
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

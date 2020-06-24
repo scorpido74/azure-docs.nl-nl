@@ -140,7 +140,7 @@ Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeve
 6. Privacybeleid
 7. Naam van aanbieding
 8. Samenvatting
-9. Beschrijving
+9. Description
 10. Scherm afbeeldingen/Video's
 11. Documenten
 
@@ -256,7 +256,7 @@ Geef de details op die in Marketplace moeten worden weer gegeven, inclusief besc
 - **Zoek trefwoorden** : Voer Maxi maal drie Zoek trefwoorden in die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace ('s).
 - **Aan de slag-instructies** (vereist): in dit gedeelte wordt uitgelegd hoe u uw app kunt configureren en gebruiken voor potentiële klanten.  Deze Snelstartgids kan koppelingen bevatten naar gedetailleerde online documentatie. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd.
 
-#### <a name="description"></a>Beschrijving
+#### <a name="description"></a>Description
 
 Dit veld is vereist.
 

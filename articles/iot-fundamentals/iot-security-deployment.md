@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f0fbb1214015c088e7e1585840213faba06b59f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284770"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699257"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>De implementatie van uw Internet of Things (IoT) beveiligen
 

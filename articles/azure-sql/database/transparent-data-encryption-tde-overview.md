@@ -11,25 +11,25 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 04/10/2020
-ms.openlocfilehash: 4ea4ad98fcea022a22196e359e24f56cb3d0f4d8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/15/2020
+ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321373"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986940"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparante gegevens versleuteling voor SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) helpt Azure SQL database, Azure SQL Managed instance en Azure Synapse Analytics te beschermen tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. TDE is standaard ingeschakeld voor alle zojuist geïmplementeerde data bases en moet hand matig worden ingeschakeld voor oudere data bases van Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics.
+[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) helpt Azure SQL database, Azure SQL Managed instance en Azure Synapse Analytics te beschermen tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. TDE is standaard ingeschakeld voor alle nieuw geïmplementeerde SQL-data bases en moet hand matig worden ingeschakeld voor oudere data bases van Azure SQL Database, Azure SQL Managed instance. TDE moet hand matig worden ingeschakeld voor Azure Synapse Analytics.
 
 TDE voert realtime-I/O-versleuteling en ontsleuteling van de gegevens op pagina niveau uit. Elke pagina wordt ontsleuteld wanneer deze wordt ingelezen in het geheugen en vervolgens versleuteld voordat deze naar een schijf wordt geschreven. TDE versleutelt de opslag van een volledige data base met behulp van een symmetrische sleutel die de database versleutelings sleutel (DEK) wordt genoemd. Bij het opstarten van de data base wordt de versleutelde DEK ontsleuteld en vervolgens gebruikt voor ontsleuteling en opnieuw versleutelen van de database bestanden in het proces van de SQL Server data base-engine. DEK wordt beveiligd door de TDE-Protector. TDE Protector is een door een service beheerd certificaat (door de service beheerde transparante gegevens versleuteling) of een asymmetrische sleutel die is opgeslagen in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (door de klant beheerde transparante gegevens versleuteling).
 
 Voor Azure SQL Database en Azure Synapse wordt de TDE-Protector ingesteld op [Server](logical-servers.md) niveau en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor Azure SQL Managed instance (BYOK-functie in Preview) wordt de TDE-Protector ingesteld op het niveau van de instantie en overgenomen door alle versleutelde data bases op dat exemplaar. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 
 > [!IMPORTANT]
-> Alle nieuw gemaakte data bases in SQL Database en Azure Synapse worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande data bases van SQL Managed instances die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. SQL Managed instance-data bases die zijn gemaakt via herstellen, nemen versleutelings status van de bron over.
+> Alle nieuw gemaakte data bases in SQL Database worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande data bases van SQL Managed instances die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. SQL Managed instance-data bases die zijn gemaakt via herstellen, nemen versleutelings status van de bron over.
 
 > [!NOTE]
 > TDE kan niet worden gebruikt voor het versleutelen van de **hoofd** database in SQL database.  De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
@@ -61,7 +61,7 @@ U hoeft geen data bases te ontsleutelen voor bewerkingen binnen Azure. De TDE-in
 - Back-upbestand terugzetten naar Azure SQL Managed instance
 
 > [!IMPORTANT]
-> Het maken van een hand matige kopie alleen back-ups van een Data Base die is versleuteld door service beheerde TDE wordt niet ondersteund in Azure SQL Managed instance, omdat het certificaat dat voor versleuteling wordt gebruikt, niet toegankelijk is. Gebruik de functie punt-in-tijd-herstellen om dit type Data Base te verplaatsen naar een ander door SQL beheerd exemplaar.
+> Het hand matig kopiëren van een back-up van een Data Base die is versleuteld met een door de service beheerde TDE wordt niet ondersteund in Azure SQL Managed instance, omdat het certificaat dat voor versleuteling wordt gebruikt, niet toegankelijk is. Gebruik de functie punt-in-tijd-herstellen om dit type Data Base te verplaatsen naar een ander SQL-beheerd exemplaar of om over te scha kelen naar door de klant beheerde sleutel.
 
 Wanneer u een met TDE beveiligde data base exporteert, wordt de geëxporteerde inhoud van de data base niet versleuteld. Deze geëxporteerde inhoud wordt opgeslagen in niet-versleutelde BACPAC-bestanden. Zorg ervoor dat u de BACPAC-bestanden op de juiste wijze beveiligt en TDE na het importeren van de nieuwe Data Base hebt ingeschakeld.
 

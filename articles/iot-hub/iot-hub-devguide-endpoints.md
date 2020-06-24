@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996957"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792082"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -24,7 +24,7 @@ ms.locfileid: "82996957"
 
 ## <a name="iot-hub-names"></a>IoT Hub namen
 
-U kunt de hostnaam van de IoT-hub die als host fungeert voor uw eind punten vinden in de portal op de **overzichts** pagina van uw hub. De DNS-naam van een IoT-hub ziet er standaard uit `{your iot hub name}.azure-devices.net`als:.
+U kunt de hostnaam van de IoT-hub die als host fungeert voor uw eind punten vinden in de portal op de **overzichts** pagina van uw hub. De DNS-naam van een IoT-hub ziet er standaard uit als: `{your iot hub name}.azure-devices.net` .
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>Lijst met ingebouwde IoT Hub-eind punten
 
@@ -85,14 +85,9 @@ IoT Hub ondersteunt momenteel de volgende Azure-Services als extra eind punten:
 
 Zie [quota's en beperken](iot-hub-devguide-quotas-throttling.md)voor de limieten voor het aantal eind punten dat u kunt toevoegen.
 
-U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) gebruiken om de status van de eind punten op te halen. U kunt het beste de [IOT hub metrische gegevens](iot-hub-metrics.md) met betrekking tot de bericht latentie van de route ring gebruiken om fouten op te sporen en op te sporen wanneer de status van het eind punt inactief of beschadigd is, omdat er een latentie wordt verwacht wanneer het eind punt zich in een van deze statussen bevindt.
+## <a name="endpoint-health"></a>Eindpunt status
 
-|Status|Beschrijving|
-|---|---|
-|blijft|Het eind punt accepteert berichten zoals verwacht.|
-|slechte|Het eind punt accepteert geen berichten zoals verwacht en IoT Hub probeert gegevens naar dit eind punt te verzenden. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.|
-|unknown|IoT Hub heeft geen verbinding gemaakt met het eind punt. Er zijn geen berichten van dit eind punt bezorgd aan of afgewezen.|
-|geval|Het eind punt accepteert geen berichten nadat IoT Hub opnieuw hebt geprobeerd berichten te verzenden voor de evaluatie periode.|
+[!INCLUDE [iot-hub-endpoint-health](../../includes/iot-hub-include-endpoint-health.md)]
 
 ## <a name="field-gateways"></a>Veld gateways
 

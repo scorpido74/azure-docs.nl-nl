@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5250a27e6c5fcf012207f1edb95ad46c0aabfe63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b4eef6a992915e934e69a93d440bc6fa60aa690
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536170"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803524"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Power shell
 
@@ -32,7 +32,7 @@ Als u een gebruikers delegering SA'S met Power shell wilt maken, installeert u v
 1. Eerdere installaties van Azure PowerShell verwijderen:
 
     - Verwijder eerdere installaties van Azure PowerShell van Windows met de instelling **Apps & onderdelen** onder **instellingen**.
-    - Verwijder alle **Azure** -modules `%Program Files%\WindowsPowerShell\Modules`uit.
+    - Verwijder alle **Azure** -modules uit `%Program Files%\WindowsPowerShell\Modules` .
 
 1. Zorg ervoor dat de meest recente versie van PowerShellGet is geïnstalleerd. Open een Windows Power shell-venster en voer de volgende opdracht uit om de meest recente versie te installeren:
 
@@ -82,7 +82,7 @@ Als u niet gemachtigd bent om RBAC-rollen toe te wijzen aan een Azure AD-beveili
 
 In het volgende voor beeld wordt de rol **Storage BLOB data Inzender** toegewezen, inclusief de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** . De rol is bereik op het niveau van het opslag account.
 
-Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -98,9 +98,9 @@ Wanneer u een SAS voor gebruikers overdracht met Azure PowerShell maakt, wordt d
 
 Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage `-UseConnectedAccount` context-object maken, waarbij u de para meter opgeeft. De `-UseConnectedAccount` para meter geeft aan dat met de opdracht het context object wordt gemaakt onder het Azure ad-account waarmee u zich hebt aangemeld.
+Als u een gebruikers delegering SAS voor een container of BLOB met Azure PowerShell wilt maken, moet u eerst een nieuw Azure Storage context-object maken, waarbij u de `-UseConnectedAccount` para meter opgeeft. De `-UseConnectedAccount` para meter geeft aan dat met de opdracht het context object wordt gemaakt onder het Azure ad-account waarmee u zich hebt aangemeld.
 
-Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName <storage-account> -UseConnectedAccount
@@ -130,7 +130,7 @@ Het geretourneerde SAS-token voor gebruikers overdracht is vergelijkbaar met:
 
 Als u een SAS-token voor gebruikers overdracht voor een BLOB wilt retour neren, roept u de opdracht [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) aan en geeft u het object Azure Storage context door dat u eerder hebt gemaakt.
 
-De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld `-FullUri` wordt de para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld wordt de `-FullUri` para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `
@@ -154,7 +154,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-
 
 Als u een gebruikers delegering SA'S van Azure PowerShell wilt intrekken, roept u de opdracht **REVOKE-AzStorageAccountUserDelegationKeys** aan. Met deze opdracht worden alle sleutels voor gebruikers overdracht die zijn gekoppeld aan het opgegeven opslag account ingetrokken. Shared Access signatures die zijn gekoppeld aan deze sleutels, worden ongeldig gemaakt.
 
-Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```powershell
 Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `

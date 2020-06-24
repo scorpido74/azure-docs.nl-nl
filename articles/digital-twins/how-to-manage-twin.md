@@ -1,5 +1,5 @@
 ---
-title: Een digitale dubbele
+title: Een digital twin beheren
 titleSuffix: Azure Digital Twins
 description: Zie afzonderlijke apparaatdubbels en relaties ophalen, bijwerken en verwijderen.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d5731b16463f1f298f1ad633225fee95aa1a0bd
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 9acea128313fc440834626dd3a99b117e4b25a8f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612905"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735894"
 ---
 # <a name="manage-digital-twins"></a>Digitale apparaatdubbels beheren
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Entiteiten in uw omgeving worden vertegenwoordigd door [Digital apparaatdubbels](concepts-twins-graph.md). Het beheren van uw digitale apparaatdubbels kan het maken, wijzigen en verwijderen omvatten. Als u deze bewerkingen wilt uitvoeren, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md), de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 

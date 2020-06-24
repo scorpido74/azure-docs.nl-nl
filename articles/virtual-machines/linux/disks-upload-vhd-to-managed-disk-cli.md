@@ -4,16 +4,16 @@ description: Meer informatie over het uploaden van een VHD naar een Azure Manage
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
+ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2802907d9e3ddb1c09c2f94074a977d00d191a84
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658807"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945627"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure CLI
 
@@ -47,6 +47,9 @@ Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestand
 Maak een lege standaard HDD voor het uploaden door zowel de para meter **--for-upload** als de para meter **--Upload-size-bytes** op te geven in een cmdlet voor het maken van een [schijf](/cli/azure/disk#az-disk-create) :
 
 Vervang `<yourdiskname>` , `<yourresourcegroupname>` door `<yourregion>` de waarden van uw keuze. De `--upload-size-bytes` para meter bevat een voorbeeld waarde van `34359738880` , vervang deze door een waarde die voor u van toepassing is.
+
+> [!TIP]
+> Als u een besturingssysteem schijf maakt, voegt u--Hyper-v-generatie <yourGeneration> toe aan `az disk create` .
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -100,6 +103,9 @@ Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stap
 > U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
 Vervang de `<sourceResourceGroupHere>` waarden,,, `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met de waarde en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+
+> [!TIP]
+> Als u een besturingssysteem schijf maakt, voegt u--Hyper-v-generatie <yourGeneration> toe aan `az disk create` .
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

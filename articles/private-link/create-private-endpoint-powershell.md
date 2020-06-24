@@ -4,20 +4,20 @@ description: Meer informatie over persoonlijke Azure-koppelingen
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 83207c70b147e4f0d416f47a6b12f9826f49f2db
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267763"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737373"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Een persoonlijk eind punt maken met Azure PowerShell
-Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. 
+Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren. 
 
-In deze Quick Start leert u hoe u een virtuele machine maakt in een Azure-Virtual Network, een logische SQL-Server met een Azure-privé-eind punt met behulp van Azure PowerShell. Vervolgens kunt u veilig toegang krijgen tot SQL Database via de virtuele machine.
+In deze Quick Start leert u hoe u een virtuele machine maakt in een Azure-Virtual Network, een logische SQL-Server met een Azure-privé-eind punt met behulp van Azure PowerShell. Vervolgens hebt u vanuit de VM veilige toegang tot SQL Database.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,10 +32,10 @@ New-AzResourceGroup `
   -Location westcentralus
 ```
 
-## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+## <a name="create-a-virtual-network"></a>Een Virtual Network maken
 In deze sectie maakt u een virtueel netwerk en een subnet. Vervolgens koppelt u het subnet aan uw Virtual Network.
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Een Virtual Network maken
 
 Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een Virtual Network gemaakt met de naam *MyVirtualNetwork*:
  
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-logical-sql-server"></a>Een logische SQL-Server maken 
+## <a name="create-a-logical-sql-server"></a>Een logische SQL-server maken 
 
-Maak een logische SQL-Server met behulp van de opdracht New-AzSqlServer. Houd er rekening mee dat de naam van uw server uniek moet zijn in azure, dus Vervang de waarde van de tijdelijke aanduiding tussen vier Kante haken door uw eigen unieke waarde:
+Maak een logische SQL-Server met behulp van de opdracht New-AzSqlServer. Houd er rekening mee dat de naam van uw server uniek moet zijn in Azure, dus vervang de tijdelijke aanduiding tussen vierkante haken door uw eigen unieke waarde:
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -141,8 +141,8 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
-## <a name="configure-the-private-dns-zone"></a>De Privé-DNS zone configureren 
-Maak een Privé-DNS-zone voor SQL Database domein, maak een koppelings koppeling met de Virtual Network en maak een DNS-zone groep om het persoonlijke eind punt aan de Privé-DNS zone te koppelen.
+## <a name="configure-the-private-dns-zone"></a>Privé-DNS-zone configureren 
+Maak een Privé-DNS-zone voor SQL Database-domein, maak een koppelingslink met het Virtual Network en maak een DNS-zonegroep om het privé-eindpunt aan de Privé-DNS-zone te koppelen.
 
 ```azurepowershell
 
@@ -187,9 +187,9 @@ mstsc /v:<publicIpAddress>
 3. Selecteer **OK**. 
 4. Er kan een certificaatwaarschuwing worden weergegeven. Als dit het geval is, selecteert u **Ja** of **Doorgaan**. 
 
-## <a name="access-sql-database-privately-from-the-vm"></a>SQL Database privé toegang tot de VM
+## <a name="access-sql-database-privately-from-the-vm"></a>Privé-toegang tot SQL Database vanuit de VM
 
-1. Open Power shell in de Extern bureaublad van myVM.
+1. Open PowerShell in het extern bureaublad van myVM.
 2. Voer `nslookup myserver.database.windows.net` in. Vergeet niet door `myserver` de naam van uw SQL-Server te vervangen.
 
     U ontvangt een bericht dat er ongeveer als volgt uitziet:
@@ -204,19 +204,19 @@ mstsc /v:<publicIpAddress>
     ```
     
 3. Installeer [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
-4. Typ of Selecteer in **verbinding maken met server**de volgende informatie:
+4. Typ of selecteer in **Verbinding maken met server** de volgende gegevens:
 
     | Instelling | Waarde |
     | --- | --- |
-    | Servertype | Database Engine |
+    | Servertype | Data base-engine |
     | Servernaam | myserver.database.windows.net |
     | Gebruikersnaam | Voer de gebruikers naam in die tijdens het maken is opgegeven |
     | Wachtwoord | Voer het wacht woord in dat u hebt opgegeven tijdens het maken |
     | Wacht woord onthouden | Yes |
     
-5. Selecteer **Verbinding maken**.
+5. Selecteer **Verbinden**.
 6. Blader door **data bases** in het menu links. 
-7. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
+7. (Optioneel) U kunt mydatabase maken of er een query op uitvoeren.
 8. Sluit de verbinding met extern bureau blad met *myVM*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
@@ -227,4 +227,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [persoonlijke Azure-koppelingen](private-link-overview.md)
+- Meer informatie over [Azure Private Link](private-link-overview.md)

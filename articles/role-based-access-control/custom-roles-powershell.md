@@ -8,25 +8,25 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734804"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790208"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure PowerShell
 
 > [!IMPORTANT]
 > Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijstt, maakt, bijwerkt of verwijdert met behulp van Azure PowerShell.
 
@@ -72,7 +72,7 @@ Name                     IsCustom
 Virtual Machine Operator     True
 ```
 
-Als het geselecteerde abonnement zich niet in `AssignableScopes` de van de rol bevindt, wordt de aangepaste rol niet weer gegeven.
+Als het geselecteerde abonnement zich niet in de `AssignableScopes` van de rol bevindt, wordt de aangepaste rol niet weer gegeven.
 
 ## <a name="list-a-custom-role-definition"></a>Een aangepaste roldefinitie weer geven
 
@@ -135,7 +135,7 @@ PS C:\> (Get-AzRoleDefinition "Virtual Machine Operator").Actions
 
 ## <a name="create-a-custom-role"></a>Een aangepaste rol maken
 
-Als u een aangepaste rol wilt maken, gebruikt u de opdracht [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) . Er zijn twee methoden voor het structureren van de rol `PSRoleDefinition` , met behulp van een object of een JSON-sjabloon. 
+Als u een aangepaste rol wilt maken, gebruikt u de opdracht [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) . Er zijn twee methoden voor het structureren van de rol, met behulp van `PSRoleDefinition` een object of een JSON-sjabloon. 
 
 ### <a name="get-operations-for-a-resource-provider"></a>Get-bewerkingen voor een resource provider
 
@@ -161,7 +161,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 ### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Een aangepaste rol maken met het PSRoleDefinition-object
 
-Wanneer u Power shell gebruikt om een aangepaste rol te maken, kunt u een van de [ingebouwde rollen](built-in-roles.md) gebruiken als uitgangs punt of u kunt beginnen met het begin. Het eerste voor beeld in deze sectie begint met een ingebouwde rol en past deze vervolgens aan met meer machtigingen. Bewerk de kenmerken om de `Actions`gewenste, `NotActions`of `AssignableScopes` toe te voegen en sla de wijzigingen vervolgens op als een nieuwe rol.
+Wanneer u Power shell gebruikt om een aangepaste rol te maken, kunt u een van de [ingebouwde rollen](built-in-roles.md) gebruiken als uitgangs punt of u kunt beginnen met het begin. Het eerste voor beeld in deze sectie begint met een ingebouwde rol en past deze vervolgens aan met meer machtigingen. Bewerk de kenmerken om de gewenste, of toe te voegen `Actions` `NotActions` `AssignableScopes` en sla de wijzigingen vervolgens op als een nieuwe rol.
 
 Het volgende voor beeld begint met de ingebouwde rol Inzender voor de [virtuele machine](built-in-roles.md#virtual-machine-contributor) voor het maken van een aangepaste rol met de naam *virtuele-machine operator*. De nieuwe rol verleent toegang tot alle Lees bewerkingen van *micro soft. Compute*-, *micro soft. Storage*-en *micro soft. Network* resource providers en verleent toegang om virtuele machines te starten, opnieuw op te starten en te bewaken. De aangepaste rol kan in twee abonnementen worden gebruikt.
 
@@ -187,7 +187,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-In het volgende voor beeld ziet u een andere manier om de aangepaste rol van de *operator virtuele machine* te maken. U begint met het maken van `PSRoleDefinition` een nieuw object. De actie bewerkingen worden opgegeven in de `perms` variabele en ingesteld op de `Actions` eigenschap. De `NotActions` eigenschap wordt ingesteld door de `NotActions` van de ingebouwde rol Inzender voor [virtuele machines](built-in-roles.md#virtual-machine-contributor) te lezen. Omdat de Inzender van de `NotActions` [virtuele machine](built-in-roles.md#virtual-machine-contributor) er geen heeft, is deze regel niet vereist, maar wordt weer gegeven hoe informatie kan worden opgehaald uit een andere rol.
+In het volgende voor beeld ziet u een andere manier om de aangepaste rol van de *operator virtuele machine* te maken. U begint met het maken van een nieuw `PSRoleDefinition` object. De actie bewerkingen worden opgegeven in de `perms` variabele en ingesteld op de `Actions` eigenschap. De `NotActions` eigenschap wordt ingesteld door de `NotActions` van de ingebouwde rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) te lezen. Omdat de Inzender van de [virtuele machine](built-in-roles.md#virtual-machine-contributor) er geen heeft `NotActions` , is deze regel niet vereist, maar wordt weer gegeven hoe informatie kan worden opgehaald uit een andere rol.
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -238,13 +238,13 @@ New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 
 ## <a name="update-a-custom-role"></a>Een aangepaste rol bijwerken
 
-Net als bij het maken van een aangepaste rol, kunt u een bestaande aangepaste rol wijzigen `PSRoleDefinition` met behulp van het object of een JSON-sjabloon.
+Net als bij het maken van een aangepaste rol, kunt u een bestaande aangepaste rol wijzigen met behulp van het `PSRoleDefinition` object of een JSON-sjabloon.
 
 ### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>Een aangepaste rol bijwerken met het PSRoleDefinition-object
 
 Als u een aangepaste rol wilt wijzigen, gebruikt u eerst de opdracht [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) om de functie definitie op te halen. Breng vervolgens de gewenste wijzigingen aan in de functie definitie. Gebruik tot slot de opdracht [set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) om de gewijzigde roldefinitie op te slaan.
 
-In het volgende voor beeld `Microsoft.Insights/diagnosticSettings/*` wordt de bewerking toegevoegd aan de aangepaste rol van de operator van de *virtuele machine* .
+In het volgende voor beeld wordt de `Microsoft.Insights/diagnosticSettings/*` bewerking toegevoegd aan de aangepaste rol van de operator van de *virtuele machine* .
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Operator"
@@ -302,7 +302,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
-In het volgende voor beeld wordt een beheer `AssignableScopes` groep toegevoegd aan de aangepaste rol van de operator van de *virtuele machine* . Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
+In het volgende voor beeld wordt een beheer groep toegevoegd aan `AssignableScopes` de aangepaste rol van de operator van de *virtuele machine* . Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 
 ```azurepowershell
 Get-AzManagementGroup

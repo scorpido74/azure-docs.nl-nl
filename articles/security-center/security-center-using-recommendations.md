@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8039be7b69444cc32e763e9a1fb074e7dda4a5ba
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603285"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783228"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center-aanbevelingen gebruiken om de beveiliging te verbeteren
 U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 
@@ -57,7 +57,7 @@ Als onderdeel van hun dagelijkse bewakings activiteiten houdt Jeff zich aan bij 
 
 2. Jeff controleert de **beveiligde Score** om een beeld te krijgen van hoe veilig de abonnementen zijn en ziet dat de Score 548 is.
 
-3. Jeff moet bepalen welke aanbevelingen het eerst moeten worden verwerkt. In dat geval klikt u op beveiligde Score en begint u met het afhandelen van aanbevelingen op basis van de mate waarin het effect van de [beveiligde Score](security-center-secure-score.md)wordt verbeterd.
+3. Jeff moet bepalen welke aanbevelingen het eerst moeten worden verwerkt. Met Jeff klikt u op beveiligde Score en begint u met het afhandelen van aanbevelingen op basis van de mate waarin de [beveiligde Score](secure-score-security-controls.md)wordt verbeterd.
 
 4. Omdat Jeff een groot aantal aangesloten Vm's en servers heeft, besluit Jeff zich te richten op **Compute en apps**.
 

@@ -9,17 +9,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842900"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737424"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Stroom logboeken van netwerk beveiligings groepen beheren en analyseren in azure met behulp van Network Watcher en Graylog
 
@@ -186,7 +186,7 @@ Nu u een verbinding tot stand hebt gebracht met de stroom logboeken met behulp v
 
    Zorg ervoor dat u de invoer verbindt met het IP-adres waarmee u uw Graylog-server hebt geconfigureerd. Het IP-adres moet overeenkomen met het veld **host** van de UDP-uitvoer van het configuratie bestand Logstash. De standaard poort moet *12201*zijn. Zorg ervoor dat de poort overeenkomt met het **poort** veld in de UDP-uitvoer die is opgegeven in het Logstash-configuratie bestand.
 
-   ![Invoer](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Invoerwaarden](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
    Zodra u de invoer hebt gestart, wordt deze weer gegeven onder de sectie **lokale invoer** , zoals wordt weer gegeven in de volgende afbeelding:
 
@@ -194,7 +194,7 @@ Nu u een verbinding tot stand hebt gebracht met de stroom logboeken met behulp v
 
    Raadpleeg de [documentatie](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs)voor meer informatie over Graylog-bericht invoer.
 
-4. Zodra deze configuraties zijn gemaakt, kunt u Logstash starten om stroom logboeken te lezen met de volgende opdracht: `sudo systemctl start logstash.service`.
+4. Zodra deze configuraties zijn gemaakt, kunt u Logstash starten om stroom logboeken te lezen met de volgende opdracht: `sudo systemctl start logstash.service` .
 
 ### <a name="search-through-graylog-messages"></a>Zoeken in Graylog-berichten
 

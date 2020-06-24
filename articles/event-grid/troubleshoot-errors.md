@@ -18,14 +18,14 @@ ms.locfileid: "85254817"
 Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichten, beschrijvingen en aanbevolen acties die u moet uitvoeren wanneer u deze fouten ontvangt. 
 
 ## <a name="error-code-400"></a>Foutcode 400
-| Foutcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Foutbericht | Description | Aanbeveling |
 | ---------- | ------------- | ----------- | -------------- | 
 | Http status code. onjuiste aanvraag<br/>400 | De naam van het onderwerp moet tussen de 3 en 50 tekens lang zijn. | De naam van het aangepaste onderwerp moet tussen de 3 en 50 tekens lang zijn. Alleen alfanumerieke letters, cijfers en het teken '-' zijn toegestaan in de naam van het onderwerp. De naam mag ook niet beginnen met de volgende gereserveerde woorden: <ul><li>Microsoft</li><li>EventGrid</li><li>Systeem</li></ul> | Kies een andere onderwerpnaam die voldoet aan de vereisten voor de onderwerpnaam. |
 | Http status code. onjuiste aanvraag<br/>400 | De domein naam moet tussen de 3 en 50 tekens lang zijn. | De lengte van de domein naam moet tussen de 3 en 50 tekens lang zijn. Alleen alfanumerieke letters, cijfers en het teken '-' zijn toegestaan in de naam van het onderwerp. De naam mag ook niet beginnen met de volgende gereserveerde woorden:<ul><li>Microsoft</li><li>EventGrid</li><li>Systeem</li> | Kies een andere domein naam die voldoet aan de vereisten voor de domein naam. |
 | Http status code. onjuiste aanvraag<br/>400 | Ongeldige verval tijd. | De verloop tijd voor het gebeurtenis abonnement bepaalt wanneer het gebeurtenis abonnement buiten gebruik wordt gesteld. Deze waarde moet in de toekomst een geldige datum/tijd-waarde zijn.| Zorg ervoor dat de verloop tijd van het gebeurtenis abonnement in een geldige datum-en tijd notatie is ingesteld op de toekomst. |
 
 ## <a name="error-code-409"></a>Fout code: 409
-| Foutcode | Foutbericht | Beschrijving | Aanbevolen actie |
+| Foutcode | Foutbericht | Description | Aanbevolen actie |
 | ---------- | ------------- | ----------- | -------------- | 
 | Http status code. conflict <br/>409 | Er bestaat al een onderwerp met de opgegeven naam. Kies een andere naam voor het onderwerp.   | De naam van het aangepaste onderwerp moet uniek zijn in één Azure-regio om een juiste publicatie bewerking te kunnen garanderen. Dezelfde naam kan worden gebruikt in verschillende Azure-regio's. | Kies een andere naam voor het onderwerp. |
 | Http status code. conflict <br/> 409 | Het domein met de opgegeven bestaat al. Kies een andere domein naam. | De domein naam moet uniek zijn in één Azure-regio om een juiste publicatie bewerking te kunnen garanderen. Dezelfde naam kan worden gebruikt in verschillende Azure-regio's. | Kies een andere naam voor het domein. |
@@ -33,7 +33,7 @@ Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichte
 
 ## <a name="error-code-403"></a>Fout code: 403
 
-| Foutcode | Foutbericht | Beschrijving | Aanbevolen actie |
+| Foutcode | Foutbericht | Description | Aanbevolen actie |
 | ---------- | ------------- | ----------- | ------------------ |
 | Http status code. verboden <br/>403 | Publiceren naar {topic/Domain} door de client {IpAddress} is geweigerd vanwege IP-filter regels. | Voor het onderwerp of het domein zijn IP-firewall regels geconfigureerd en de toegang is beperkt tot geconfigureerde IP-adressen. | Voeg het IP-adres toe aan de IP-firewall regels, Zie [IP-Firewall configureren](configure-firewall.md) |
 | Http status code. verboden <br/> 403 | Publiceren naar {topic/Domain} door de client is geweigerd omdat de aanvraag afkomstig is van een persoonlijk eind punt en er geen overeenkomende persoonlijke eindpunt verbinding is gevonden voor de resource. | Het onderwerp of het domein heeft het geconfigureerde persoonlijke eind punt en de publicatie aanvraag is afkomstig van een persoonlijk eind punt dat niet is geconfigureerd/goedgekeurd. | Een persoonlijk eind punt configureren voor het onderwerp/domein. [Privé-eindpunten configureren](configure-private-endpoints.md) |

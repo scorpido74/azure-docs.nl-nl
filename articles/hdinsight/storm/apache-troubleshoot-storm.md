@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271926"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700362"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Problemen met Apache Storm oplossen met behulp van Azure HDInsight
 
@@ -46,9 +46,9 @@ Wanneer u topologieën ontwikkelt die vanuit Azure Event Hubs worden gelezen met
 
 Controlepunt gegevens voor offsets worden opgeslagen door de Event Hub spout in ZooKeeper in twee hoofd paden:
 
-- Niet-transactionele Spout-controle punten `/eventhubspout`worden opgeslagen in.
+- Niet-transactionele Spout-controle punten worden opgeslagen in `/eventhubspout` .
 
-- Transactionele Spout-controlepunt gegevens worden `/transactional`opgeslagen in.
+- Transactionele Spout-controlepunt gegevens worden opgeslagen in `/transactional` .
 
 ### <a name="how-to-restore"></a>Herstellen
 
@@ -65,7 +65,7 @@ De export opdracht schrijft de meta gegevens naar een Apache Hadoop Distributed 
 #### <a name="export-offset-metadata"></a>Meta gegevens van verschuiving exporteren
 
 1. Gebruik SSH om naar het ZooKeeper-cluster op het cluster te gaan waarvan de offset van het controle punt moet worden geëxporteerd.
-2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om `/stormmetadta/zkdata` ZooKeeper offset-gegevens te exporteren naar het HDFS-pad:
+2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om ZooKeeper offset-gegevens te exporteren naar het `/stormmetadta/zkdata` HDFS-pad:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
@@ -74,7 +74,7 @@ De export opdracht schrijft de meta gegevens naar een Apache Hadoop Distributed 
 #### <a name="import-offset-metadata"></a>Meta gegevens van verschuiving importeren
 
 1. Gebruik SSH om naar het ZooKeeper-cluster op het cluster te gaan waarvan de offset van het controle punt moet worden geïmporteerd.
-2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om ZooKeeper offset `/stormmetadata/zkdata` gegevens van het HDFS-pad naar de ZooKeeper-server op het doel cluster te importeren:
+2. Voer de volgende opdracht uit (nadat u de teken reeks voor de HDP-versie hebt bijgewerkt) om ZooKeeper offset gegevens van het HDFS-pad `/stormmetadata/zkdata` naar de ZooKeeper-server op het doel cluster te importeren:
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
@@ -91,9 +91,9 @@ De export opdracht schrijft de meta gegevens naar een Apache Hadoop Distributed 
 
 ## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Hoe kan ik de binaire Storm-bestanden op een cluster vinden?
 
-De binaire Storm-bestanden voor de huidige HDP `/usr/hdp/current/storm-client`-stack bevinden zich in. De locatie is hetzelfde voor hoofd knooppunten en voor worker-knoop punten.
+De binaire Storm-bestanden voor de huidige HDP-stack bevinden zich in `/usr/hdp/current/storm-client` . De locatie is hetzelfde voor hoofd knooppunten en voor worker-knoop punten.
 
-Er zijn mogelijk meerdere binaire bestanden voor specifieke HDP-versies in/usr/HDP (bijvoorbeeld `/usr/hdp/2.5.0.1233/storm`). De `/usr/hdp/current/storm-client` map is symlinked naar de meest recente versie die op het cluster wordt uitgevoerd.
+Er zijn mogelijk meerdere binaire bestanden voor specifieke HDP-versies in/usr/HDP (bijvoorbeeld `/usr/hdp/2.5.0.1233/storm` ). De `/usr/hdp/current/storm-client` map is symlinked naar de meest recente versie die op het cluster wordt uitgevoerd.
 
 Zie [verbinding maken met een HDInsight-cluster met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) en [Apache Storm](https://storm.apache.org/)voor meer informatie.
 
@@ -157,13 +157,13 @@ Zie [voor beelden](https://github.com/Azure-Samples/hdinsight-java-storm-eventhu
 
 ### <a name="on-head-nodes"></a>Op hoofd knooppunten
 
-De configuratie van `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`de Nimbus log4j wordt gelezen.
+De configuratie van de Nimbus Log4J wordt gelezen `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
 ### <a name="on-worker-nodes"></a>Op worker-knoop punten
 
-De configuratie van `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`de Super Visor log4j wordt gelezen.
+De configuratie van de Super Visor Log4J wordt gelezen `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` .
 
-Het configuratie bestand van `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`de worker-log4j wordt gelezen.
+Het configuratie bestand van de worker-Log4J wordt gelezen `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml` .
 
 Vindt`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
@@ -172,9 +172,9 @@ Vindt`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 
 ## <a name="not-a-leader-exception"></a>Geen uitzonde ring voor Leader
 
-Bij het verzenden van een topologie kan een fout bericht van de gebruiker worden `Topology submission exception, cause not a leader, the current leader is NimbusInfo`weer gegeven die er ongeveer als volgt uitziet:.
+Bij het verzenden van een topologie kan een fout bericht van de gebruiker worden weer gegeven die er ongeveer als volgt uitziet: `Topology submission exception, cause not a leader, the current leader is NimbusInfo` .
 
-Om dit probleem op te lossen moet de gebruiker mogelijk een ticket indienen om de knoop punten opnieuw te starten of opnieuw op te starten. Zie [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)voor meer informatie.
+Om dit probleem op te lossen moet de gebruiker mogelijk een ticket indienen om de knoop punten opnieuw te starten of opnieuw op te starten. Zie voor meer informatie [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) .
 
 ---
 
@@ -184,6 +184,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 - Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

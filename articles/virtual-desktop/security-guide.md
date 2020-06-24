@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5330c427088734b049b2cb4f7735ac0099a52b47
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966673"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736669"
 ---
 # <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 
@@ -31,16 +31,16 @@ Hier vindt u de beveiligings behoeften die u nodig hebt voor de implementatie va
 
 | Beveiligings behoeften | Is de klant hiervoor verantwoordelijk? |
 |---------------|:-------------------------:|
-|Identiteit|Ja|
-|Gebruikers apparaten (Mobile en PC)|Ja|
-|App-beveiliging|Ja|
-|Session Host-besturings systeem|Ja|
-|Implementatie configuratie|Ja|
-|Beveiliging op netwerkniveau|Ja|
-|Besturings vlak voor virtualisatie|Nee|
-|Fysieke hosts|Nee|
-|Fysiek netwerk|Nee|
-|Fysiek Data Center|Nee|
+|Identiteit|Yes|
+|Gebruikers apparaten (Mobile en PC)|Yes|
+|App-beveiliging|Yes|
+|Session Host-besturings systeem|Yes|
+|Implementatie configuratie|Yes|
+|Beveiliging op netwerkniveau|Yes|
+|Besturings vlak voor virtualisatie|No|
+|Fysieke hosts|No|
+|Fysiek netwerk|No|
+|Fysiek Data Center|No|
 
 De beveiligings behoeften die de klant niet verantwoordelijk is voor worden verwerkt door micro soft.
 
@@ -62,7 +62,7 @@ Met Azure Security Center Standard kunt u het volgende doen:
 
 Zie [uw Azure-abonnement op Security Center Standard voorbereiden](../security-center/security-center-get-started.md)voor meer informatie.
 
-### <a name="improve-your-secure-score"></a>Uw beveiligde Score verbeteren
+### <a name="improve-your-secure-score"></a>Uw veiligheidsscore verbeteren
 
 Een beveiligde Score biedt aanbevelingen en best practice advies voor het verbeteren van de beveiliging van uw organisatie. Aan de hand van deze aanbevelingen kunt u kiezen welke u het belangrijkst vindt, en met de opties voor snel oplossen kunt u snel potentiële beveiligings problemen oplossen. Deze aanbevelingen worden ook na verloop van tijd bijgewerkt, zodat u altijd op de hoogte bent van de beste manieren om de beveiliging van uw omgeving te hand haven. Zie [uw beveiligde Score verbeteren in azure Security Center](../security-center/security-center-secure-score.md)voor meer informatie.
 
@@ -70,7 +70,7 @@ Een beveiligde Score biedt aanbevelingen en best practice advies voor het verbet
 
 Virtueel bureau blad van Windows heeft veel ingebouwde beveiligings controles. In deze sectie vindt u meer informatie over beveiligings controles waarmee u uw gebruikers en gegevens veilig kunt blijven gebruiken.
 
-### <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
+### <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication vereisen
 
 Als u multi-factor Authentication vereist voor alle gebruikers en beheerders in het virtuele Windows-bureau blad, wordt de beveiliging van uw volledige implementatie verbeterd. Zie voor meer informatie [Azure multi-factor Authentication inschakelen voor Windows virtueel bureau blad](set-up-mfa.md).
 

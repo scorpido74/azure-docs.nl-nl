@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cdb75c821f45fe7fcf0f455145beb2b9be2a55
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519093"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734857"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Implementatie en beheer van Azure Cloud Solution Providers Azure Active Directory Domain Services
 
@@ -78,11 +78,11 @@ Dit implementatie model is mogelijk geschikt voor scenario's waarbij een ISV een
 
 De volgende belang rijke overwegingen zijn van toepassing wanneer u een beheerd domein beheert in een Azure CSP-abonnement:
 
-* **CSP-beheerders kunnen een beheerd domein inrichten met hun referenties:** Azure AD DS ondersteunt Azure CSP-abonnementen. Gebruikers die deel uitmaken van de groep Administrator-agents van een CSP-partner kunnen een nieuw Azure AD DS beheerd domein inrichten.
+* **CSP-beheerders kunnen een beheerd domein inrichten met hun referenties:** Azure AD DS ondersteunt Azure CSP-abonnementen. Gebruikers die deel uitmaken van de groep Administrator-agents van een CSP-partner kunnen een nieuw beheerd domein inrichten.
 
 * **Met csp's kunnen scripts worden gemaakt van nieuwe beheerde domeinen voor hun klanten met behulp van Power shell:** Zie [Azure AD DS inschakelen met behulp van Power shell](powershell-create-instance.md) voor meer informatie.
 
-* **CSP-Administrator-agents kunnen geen voortdurende beheer taken uitvoeren op het beheerde domein met behulp van hun referenties:** Gebruikers van CSP-beheerder kunnen geen routine beheer taken uitvoeren binnen het beheerde domein met behulp van hun referenties. Deze gebruikers zijn extern voor de Azure AD-Tenant van de klant en hun referenties zijn niet beschikbaar in de Azure AD-Tenant van de klant. Azure AD DS heeft geen toegang tot de Kerberos-en NTLM-wachtwoord-hashes voor deze gebruikers, zodat gebruikers niet kunnen worden geverifieerd in azure AD DS beheerde domeinen.
+* **CSP-Administrator-agents kunnen geen voortdurende beheer taken uitvoeren op het beheerde domein met behulp van hun referenties:** Gebruikers van CSP-beheerder kunnen geen routine beheer taken uitvoeren binnen het beheerde domein met behulp van hun referenties. Deze gebruikers zijn extern voor de Azure AD-Tenant van de klant en hun referenties zijn niet beschikbaar in de Azure AD-Tenant van de klant. Azure AD DS heeft geen toegang tot de Kerberos-en NTLM-wachtwoord-hashes voor deze gebruikers, zodat gebruikers niet kunnen worden geverifieerd in beheerde domeinen.
 
   > [!WARNING]
   > U moet een gebruikers account in de directory van de klant maken om lopende beheer taken uit te voeren op het beheerde domein.

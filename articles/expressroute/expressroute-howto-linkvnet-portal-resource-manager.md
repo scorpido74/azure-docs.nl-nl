@@ -4,20 +4,20 @@ description: Verbind een VNet met een Azure ExpressRoute-circuit. Instructies.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272914"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737067"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Een virtueel netwerk verbinden aan een ExpressRoute-circuit met behulp van de portal
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure-portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-CLI](howto-linkvnet-cli.md)
 > * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -55,7 +55,7 @@ Dit artikel helpt u bij het maken van een verbinding om een virtueel netwerk te 
 1. Zorg ervoor dat uw ExpressRoute-circuit en persoonlijke Azure-peering correct zijn geconfigureerd. Volg de instructies in [een ExpressRoute-circuit maken](expressroute-howto-circuit-arm.md) en [peering maken en wijzigen voor een ExpressRoute-circuit](expressroute-howto-routing-arm.md). Uw ExpressRoute-circuit moet eruitzien zoals in de volgende afbeelding:
 
    [![Scherm opname van ExpressRoute-circuit](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Circuit weer geven")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. U kunt nu beginnen met het inrichten van een verbinding om uw virtuele netwerk gateway te koppelen aan uw ExpressRoute-circuit. Klik op **verbinding** > **toevoegen** om de pagina **verbinding toevoegen** te openen en configureer de waarden.
+2. U kunt nu beginnen met het inrichten van een verbinding om uw virtuele netwerk gateway te koppelen aan uw ExpressRoute-circuit. Klik op **verbinding**  >  **toevoegen** om de pagina **verbinding toevoegen** te openen en configureer de waarden.
 
    [![Scherm opname van verbinding toevoegen](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Scherm opname van verbinding toevoegen")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Nadat de verbinding is geconfigureerd, wordt de informatie voor de verbinding weer gegeven in het verbindings object.
@@ -99,7 +99,7 @@ De eigenaar van het circuit maakt een autorisatie. Dit resulteert in het maken v
    ![Autorisaties](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. Nadat de configuratie is opgeslagen, kopieert u de **resource-id** en de **autorisatie sleutel**.
 
-   ![Autorisatie sleutel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
+   ![Autorisatiesleutel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **Een verbindings autorisatie verwijderen**
 
@@ -120,7 +120,7 @@ De circuit gebruiker heeft de resource-ID en een autorisatie sleutel nodig van d
 3. Zorg ervoor dat het **verbindings type** is ingesteld op ' ExpressRoute '.
 4. Vul de details in en klik op **OK** op de pagina basis beginselen.
 
-   ![De pagina Basisinformatie](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![Pagina Basisinformatie](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. Selecteer op de pagina **instellingen** de **virtuele netwerk gateway** en schakel het selectie vakje **autorisatie inwisselen** in.
 6. Voer de **autorisatie sleutel** en de **URI van het peer circuit** in en geef de verbinding een naam. Klik op **OK**. De **URI van het peer circuit** is de resource-id van het ExpressRoute-circuit (dat u kunt vinden onder het instellingen venster Eigenschappen van het ExpressRoute-circuit).
 

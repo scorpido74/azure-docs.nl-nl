@@ -2,8 +2,8 @@
 title: Wat is Azure SQL Managed instance?
 description: Meer informatie over de manier waarop Azure SQL Managed instance bij de nieuwste data base-engine van SQL Server (Enter prise Edition) bijna 100% biedt.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f7422d01b2058cafed33c9d10118f78d35727df
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: db476d32d3b087e86329f8ed40446caf122c0a00
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337781"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944794"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,7 +43,7 @@ SQL Managed instance combineert de beste functies die beschikbaar zijn in Azure 
 | --- | --- |
 |Geen hardware kopen en beheren <br>Geen beheer overhead voor het beheren van de onderliggende infra structuur <br>Snelle inrichting en service schalen <br>Automatische patching en versie-upgrade <br>Integratie met andere PaaS-gegevens Services |SLA voor 99,99% uptime  <br>Ingebouwde [hoge Beschik baarheid](../database/high-availability-sla.md) <br>Gegevens die worden beveiligd met [automatische back-ups](../database/automated-backups-overview.md) <br>Door de klant Configureer bare Bewaar periode voor back-ups <br>Door de gebruiker geïnitieerde [back-ups](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Herstel mogelijkheid voor tijdgebonden data bases](../database/recovery-using-backups.md#point-in-time-restore) |
 |**Beveiliging en naleving** | **Beheer**|
-|Geïsoleerde omgeving ([VNet-integratie](connectivity-architecture-overview.md), single tenant service, specifieke reken kracht en opslag) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory-verificatie (Azure AD)](../database/authentication-aad-overview.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan nalevings normen hetzelfde als Azure SQL Database <br>[SQL-controle](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure Portal functionaliteit voor het hand matig inrichten en schalen van services <br>Data Migration Service
+|Geïsoleerde omgeving ([VNet-integratie](connectivity-architecture-overview.md), single tenant service, specifieke reken kracht en opslag) <br>[TDE (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory-verificatie (Azure AD)](../database/authentication-aad-overview.md), ondersteuning voor eenmalige aanmelding <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-server-principals (aanmeldingen)</a>  <br>Voldoet aan nalevings normen hetzelfde als Azure SQL Database <br>[SQL-controle](auditing-configure.md) <br>[Advanced Threat Protection](threat-detection-configure.md) |Azure Resource Manager-API voor het automatiseren van het inrichten en schalen van services <br>Azure Portal functionaliteit voor het hand matig inrichten en schalen van services <br>Data Migration Service
 
 > [!IMPORTANT]
 > Azure SQL Managed instance is gecertificeerd op basis van een aantal nalevings standaarden. Zie voor meer informatie de [Microsoft Azure compliance-aanbiedingen](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers), waar u de meest recente lijst kunt vinden met SQL Managed instance compliance certificeringen, vermeld onder **SQL database**.
@@ -53,15 +53,15 @@ De belangrijkste functies van SQL Managed instance worden weer gegeven in de vol
 |Functie | Beschrijving|
 |---|---|
 | Versie/build van SQL Server | SQL Server data base-engine (laatste stabiel) |
-| Beheerde geautomatiseerde back-ups | Ja |
-| Ingebouwde instantie-en database controle en-metrische gegevens | Ja |
-| Automatische software patching | Ja |
-| De nieuwste functies van de data base-engine | Ja |
+| Beheerde geautomatiseerde back-ups | Yes |
+| Ingebouwde instantie-en database controle en-metrische gegevens | Yes |
+| Automatische software patching | Yes |
+| De nieuwste functies van de data base-engine | Yes |
 | Aantal gegevens bestanden (rijen) per data base | Meerdere |
 | Aantal logboek bestanden (logboek) per data base | 1 |
-| VNet-Azure Resource Manager-implementatie | Ja |
-| VNet-klassiek implementatie model | Nee |
-| Portal ondersteuning | Ja|
+| VNet-Azure Resource Manager-implementatie | Yes |
+| VNet-klassiek implementatie model | No |
+| Portal ondersteuning | Yes|
 | SSIS (ingebouwde integratie service) | No-SSIS maakt deel uit van [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | SSAS (ingebouwde Analysis Service) | Nee-SSAS is afzonderlijke [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Ingebouwde Reporting service (SSRS) | Geen gebruik [Power bi gepagineerde rapporten](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een virtuele machine van Azure. SQL Managed instance kan geen SSRS als service uitvoeren, maar kan de SSRS 2019-catalogus databases voor een externe rapport Server hosten met behulp van SQL Server-verificatie. |
@@ -146,7 +146,7 @@ De volgende tabel bevat een overzicht van de bewerkingen en typische totale duur
 |Implementatie |Eerste exemplaar van een andere hardware-generatie in een niet-leeg subnet (bijvoorbeeld eerste generatie 5-exemplaar in een subnet met exemplaren van de generatie 4)|Virtueel cluster maken *|90% van de bewerkingen zijn voltooid over vier uur.|
 |Implementatie |Eerste instantie maken van 4 vCores, in een leeg of niet-leeg subnet|Virtueel cluster maken * *|90% van de bewerkingen zijn voltooid over vier uur.|
 |Implementatie |Het maken van de volgende instantie binnen het niet-lege subnet (2e, 3e, enz.)|Verg Roten/verkleinen van virtueel cluster|90% van de bewerkingen zijn voltooid over 2,5 uur.|
-|**Bijwerken** |Wijziging van instantie-eigenschap (beheerders wachtwoord, Azure AD-aanmelding, Azure Hybrid Benefit vlag)|N.v.t.|Maxi maal 1 minuut.|
+|**Bijwerk** |Wijziging van instantie-eigenschap (beheerders wachtwoord, Azure AD-aanmelding, Azure Hybrid Benefit vlag)|N.v.t.|Maxi maal 1 minuut.|
 |Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen servicelaag)|Database bestanden koppelen|90% van de bewerkingen zijn voltooid over vijf minuten.|
 |Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek servicelaag)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid om 2,5 uur en tijd om alle data bases te seeden (220 GB/uur).|
 |Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen)|-Verg Roten/verkleinen van virtueel cluster<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid over 2,5 uur.|
@@ -165,12 +165,12 @@ De volgende tabel bevat een overzicht van de bewerkingen en typische totale duur
 
 ### <a name="instance-availability-during-management-operations"></a>Beschik baarheid van exemplaren tijdens beheer bewerkingen
 
-SQL Managed instance is niet beschikbaar voor client toepassingen tijdens implementatie-en verwijderings bewerkingen.
-
-SQL Managed instance is beschikbaar tijdens update bewerkingen, met uitzonde ring van een korte downtime die wordt veroorzaakt door de failover die aan het einde van de update plaatsvindt. Het duurt meestal Maxi maal 10 seconden, zelfs in het geval van langdurige langlopende trans acties, dankzij het [versnelde herstel van de data base](../accelerated-database-recovery.md).
+SQL Managed instance **is beschikbaar tijdens update bewerkingen**, met uitzonde ring van een korte downtime die wordt veroorzaakt door de failover die aan het einde van de update plaatsvindt. Het duurt meestal Maxi maal 10 seconden, zelfs in het geval van langdurige langlopende trans acties, dankzij het [versnelde herstel van de data base](../accelerated-database-recovery.md).
 
 > [!IMPORTANT]
 > Het is niet raadzaam om Compute of opslag van een door Azure SQL beheerd exemplaar te schalen of de servicelaag tegelijkertijd te wijzigen met de langlopende trans acties (gegevens importeren, gegevens verwerkings taken, index Rebuild, enzovoort). Voor de data base-failover die aan het einde van de bewerking wordt uitgevoerd, worden alle lopende trans acties geannuleerd.
+
+SQL Managed instance is niet beschikbaar voor client toepassingen tijdens implementatie-en verwijderings bewerkingen.
 
 ### <a name="management-operations-cross-impact"></a>Beheer bewerkingen, cross-effect
 
@@ -191,14 +191,14 @@ De volgende tabel bevat een overzicht van de mogelijkheid om specifieke beheer b
 
 Categorie  |Bewerking  |Geannuleerd  |Geschatte annulerings duur  |
 |---------|---------|---------|---------|
-|Implementatie |Instantie maken |Nee |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |Nee |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Verwijderen |Verwijdering van exemplaar |Nee |  |
-|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |Nee |  |
+|Implementatie |Instantie maken |No |  |
+|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |No |  |
+|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Verwijderen |Verwijdering van exemplaar |No |  |
+|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |No |  |
 
 Als u de beheer bewerking wilt annuleren, gaat u naar de Blade overzicht en klikt u op meldingen venster van de actieve bewerking. Aan de rechter kant verschijnt een scherm met de doorlopende bewerking en er wordt een knop weer gegeven voor het annuleren van de bewerking. Nadat u de eerste keer hebt geklikt, wordt u gevraagd opnieuw te klikken en bevestigen dat u de bewerking wilt annuleren.
 
@@ -265,10 +265,10 @@ Verificatie met SQL Managed instance verwijst naar hoe gebruikers hun identiteit
 
 - **SQL-verificatie**:
 
-  Deze verificatie methode maakt gebruik van een gebruikers naam en wacht woord.
+  Bij deze verificatiemethode wordt een combinatie van gebruikersnaam en wachtwoord gebruikt.
 - **Azure Active Directory-verificatie**:
 
-  Deze verificatie methode maakt gebruik van identiteiten die worden beheerd door Azure Active Directory en wordt ondersteund voor beheerde en geïntegreerde domeinen. Gebruik [waar mogelijk](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)Active Directory verificatie (geïntegreerde beveiliging).
+  Deze verificatie methode maakt gebruik van identiteiten die worden beheerd door Azure Active Directory en wordt ondersteund voor beheerde en geïntegreerde domeinen. Gebruik [waar mogelijk](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode) Active Directory-verificatie (geïntegreerde beveiliging).
 
 ### <a name="authorization"></a>Autorisatie
 

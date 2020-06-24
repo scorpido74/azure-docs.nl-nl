@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9a6fab9b98029eeefdd4649b0949a1a61da8b0c1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168825"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792129"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 
@@ -47,7 +47,7 @@ Hier volgen de stappen die nodig zijn voor het configureren van firewalls en vir
 Zie [Azure Key Vault firewalls en virtuele netwerken configureren](network-security.md)voor meer informatie.
 
 > [!IMPORTANT]
-> Nadat de firewall regels van kracht zijn, kunnen gebruikers alleen Key Vault [gegevensvlak](secure-your-key-vault.md#data-plane-access-control) bewerkingen uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit geldt ook voor toegang tot Key Vault vanuit de Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutel kluis van de Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weer geven als hun client computer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault kiezer door andere Azure-Services. Gebruikers kunnen mogelijk een lijst met sleutel kluizen zien, maar geen lijst met sleutels als firewall regels hun client computer verhinderen.
+> Als de firewallregels van kracht zijn, kunnen gebruikers alleen Key Vault-[gegevenslaagbewerkingen](secure-your-key-vault.md#data-plane-access-control) uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit is tevens van toepassing voor toegang tot Key Vault vanuit Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutelkluis van Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weergeven als hun clientcomputer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault-kiezer door andere Azure-Services. Gebruikers zien mogelijk een lijst met sleutelkluizen, maar geen lijst met sleutels als firewallregels hun clientcomputer weigeren.
 
 
 > [!NOTE]
@@ -71,11 +71,11 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 |Exchange Online & share point online|Toegang tot de klant sleutel toestaan voor de code ring van Azure Storage-service met de code van de [klant](/microsoft-365/compliance/customer-key-overview).|
 |Azure Information Protection|Toegang tot de Tenant sleutel voor [Azure Information Protection toestaan.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Implementeer het Azure web app-certificaat via Key Vault](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL-database|[Transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en het Data Warehouse](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
+|Azure SQL Database|[Transparent Data Encryption met Bring your own Key ondersteuning voor Azure SQL database en het Data Warehouse](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
 |Azure Storage|[Storage service Encryption door de klant beheerde sleutels gebruiken in azure Key Vault](../../storage/common/storage-service-encryption-customer-managed-keys.md).|
 |Azure Data Lake Store|[Versleuteling van gegevens in azure data Lake Store](../../data-lake-store/data-lake-store-encryption.md) met een door de klant beheerde sleutel.|
 |Azure Databricks|[Snelle, eenvoudige en samen werkende, Apache Spark-gebaseerde analyse service](../../azure-databricks/what-is-azure-databricks.md)|
-|Azure API Management|[Certificaten voor een aangepast domein van Key Vault implementeren met behulp van MSI](../../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure API Management|[Certificaten voor een aangepast domein van Key Vault implementeren met behulp van MSI](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|
 |Azure Data Factory|[Referenties voor gegevens opslag ophalen in Key Vault van Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure Event Hubs|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
@@ -87,5 +87,5 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw sleutel kluis beveiligen](secure-your-key-vault.md))
-* [Azure Key Vault firewalls en virtuele netwerken configureren](network-security.md)
+* [Uw sleutelkluis beveiligen](secure-your-key-vault.md))
+* [Azure Key Vault-firewalls en virtuele netwerken configureren](network-security.md)

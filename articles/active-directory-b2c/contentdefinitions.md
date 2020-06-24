@@ -67,7 +67,7 @@ Het element **ContentDefinition** bevat het volgende kenmerk:
 
 Het **ContentDefinition** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Een teken reeks die de URL van de HTML5-pagina voor de inhouds definitie bevat. |
 | RecoveryUri | 1:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. De waarde moet momenteel niet worden gebruikt `~/common/default_page_error.html` . |
@@ -79,7 +79,7 @@ Het **ContentDefinition** -element bevat de volgende elementen:
 
 Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version` . De volgende tabel geeft een lijst van de pagina-id's die u kunt gebruiken.
 
-| Pagina-id | Beschrijving |
+| Pagina-id | Description |
 | ----- | ----------- |
 | `globalexception` | Hiermee wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
 | `providerselection`, `idpselection` | Een lijst met de id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden.  |
@@ -131,7 +131,7 @@ De notatie van de waarde moet het woord `contract` : _urn: com: micro soft: AAD:
 
 Een **META** gegevenselement bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Item | 0: n | De meta gegevens die betrekking hebben op de inhouds definitie. |
 
@@ -153,7 +153,7 @@ De inhouds definitie ondersteunt de volgende meta gegevens items:
 
 Het **LocalizedResourcesReferences** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Een lijst met gelokaliseerde resource verwijzingen voor de inhouds definitie. |
 
@@ -188,7 +188,7 @@ Zie [lokalisatie](localization.md)voor meer informatie over het toevoegen van lo
 
 Het kenmerk ID van het element **ContentDefinition** geeft het type pagina aan dat is gekoppeld aan de inhouds definitie. Het element definieert de context waarin een aangepaste HTML5/CSS-sjabloon wordt toegepast. De volgende tabel beschrijft de set met inhouds definitie-Id's die worden herkend door het Framework voor identiteits ervaring en de pagina typen die aan hen zijn gerelateerd. U kunt uw eigen inhouds definities met een wille keurige ID maken.
 
-| Id | Standaard sjabloon | Beschrijving |
+| Id | Standaard sjabloon | Description |
 | -- | ---------------- | ----------- |
 | **API. error** | [uitzonde ring. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fout pagina** : er wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | Pagina voor het selecteren van de **identiteits provider** : geeft een lijst van id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. De opties zijn doorgaans ondernemings-id-providers, sociale id-providers zoals Facebook en Google + of lokale accounts. |

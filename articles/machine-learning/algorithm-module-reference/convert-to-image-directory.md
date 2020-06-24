@@ -1,5 +1,5 @@
 ---
-title: Converteren naar afbeelding map
+title: Converteren naar afbeeldingsmap
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van de module converteren naar afbeelding om de gegevensset te converteren naar de indeling van de afbeelding.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: dc40e0a644f692b397b1f2107b27b1d940d2b284
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450631"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904589"
 ---
-# <a name="convert-to-image-directory"></a>Converteren naar afbeelding map
+# <a name="convert-to-image-directory"></a>Converteren naar afbeeldingsmap
 
 In dit artikel wordt beschreven hoe u de map converteren naar afbeelding kunt gebruiken om de gegevensset van de afbeelding te converteren naar het gegevens type van de afbeelding. Dit is een gestandaardiseerde gegevens indeling in aan afbeeldingen gerelateerde taken zoals afbeeldings classificatie in Azure Machine Learning Designer (preview).
 
@@ -28,11 +28,21 @@ In dit artikel wordt beschreven hoe u de map converteren naar afbeelding kunt ge
     De volgende indelingen voor gegevensset worden ondersteund:
 
     - Gecomprimeerd bestand in deze extensies: '. zip ', '. tar ', '. gz ', '. bz2 '.
-    - Map met één gecomprimeerd bestand met een geldige extensie. 
-    - Map met installatie kopieën.
+    - Map met installatie kopieën. **Het is raadzaam om deze map eerst te comprimeren en vervolgens het gecomprimeerde bestand als gegevensset te gebruiken**.
 
     > [!NOTE]
-    > De afbeeldings categorie kan worden vastgelegd in module-uitvoer als deze afbeeldings gegevensset is ingedeeld in Torchvision ImageFolder-indeling, raadpleegt u [Torchvision-gegevens sets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) voor meer informatie. Anders worden alleen afbeeldingen opgeslagen.
+    > Als u de gegevensset van de afbeelding in Super visie leren gebruiken, is label vereist.
+    > Voor een afbeeldings classificatie taak kan label worden gegenereerd als afbeelding ' categorie ' in module-uitvoer als deze afbeeldings gegevensset is ingedeeld in Torchvision ImageFolder-indeling. Anders worden alleen afbeeldingen zonder label opgeslagen. Hier volgt een voor beeld van hoe u de afbeeldings-gegevensset kunt ordenen om een label op te halen, de afbeeldings categorie gebruiken als naam voor de submap. Raadpleeg Torchvision- [gegevens sets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) voor meer informatie.
+    >
+    > ```
+    > root/dog/xxx.png
+    > root/dog/xxy.png
+    > root/dog/xxz.png
+    >
+    > root/cat/123.png
+    > root/cat/nsdf3.png
+    > root/cat/asd932_.png
+    > ```
 
 3.  Verzend de pijp lijn.
 

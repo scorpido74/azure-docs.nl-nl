@@ -162,7 +162,7 @@ Het verschil tussen `ConnectionAborted` en is `ConnectionEnded` `ConnectionEnded
 
 De redenen voor afbreken worden weer gegeven in de volgende tabel:
 
-Reden | Beschrijving
+Reden | Description
 ------- | ------- 
 Limiet voor aantal verbindingen bereikt | Het aantal verbindingen heeft de limiet van uw huidige prijs categorie bereikt. Overweeg service-eenheid omhoog te schalen
 Toepassings server heeft de verbinding gesloten | App server activeert de Abortion. Het kan worden beschouwd als een verwacht Abortion

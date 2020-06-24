@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460899"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782769"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Tijd synchronisatie voor virtuele Linux-machines in azure
 
@@ -25,10 +25,10 @@ Tijd synchronisatie is belang rijk voor beveiliging en gebeurtenis correlatie. S
 
 Azure wordt ondersteund door een infra structuur waarop Windows Server 2016 wordt uitgevoerd. Windows Server 2016 heeft verbeterde algoritmen gebruikt voor het corrigeren van tijd en voor waarde dat de lokale klok moet worden gesynchroniseerd met UTC.  De functie Windows Server 2016 nauw keurige tijd is aanzienlijk verbeterd hoe de VMICTimeSync-service die virtuele machines met de host bestuurt voor nauw keurige tijd. Verbeteringen bevatten meer nauw keurige initiële tijd bij het starten van de VM of het herstellen van VM'S en de onderbreking van de latentie. 
 
->[!NOTE]
->Bekijk deze [overzichts video op hoog niveau](https://aka.ms/WS2016TimeVideo)voor een snel overzicht van de Windows Time-service.
+> [!NOTE]
+> Bekijk deze [overzichts video op hoog niveau](https://aka.ms/WS2016TimeVideo)voor een snel overzicht van de Windows Time-service.
 >
-> Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Overzicht
 
@@ -66,7 +66,7 @@ De meeste installatie kopieën van Azure Marketplace voor Linux zijn standaard g
 
 In nieuwere Linux-distributies maakt de VMICTimeSync-service gebruik van het Precision-tijd Protocol (PTP), maar eerdere distributies bieden geen ondersteuning voor PTP en vallen terug naar NTP voor het verkrijgen van tijd van de host.
 
-Voer de `ntpq -p` opdracht uit om te controleren of NTP correct synchroniseert.
+Voer de opdracht uit om te controleren of NTP correct synchroniseert `ntpq -p` .
 
 ### <a name="host-only"></a>Alleen host 
 
@@ -140,13 +140,13 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 Zie [tijd synchronisatie](https://help.ubuntu.com/lts/serverguide/NTP.html)voor meer informatie over Ubuntu en ntp.
 
-Zie [NTP configureren](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)voor meer informatie over Red Hat en ntp. 
+Zie [NTP configureren](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)voor meer informatie over Red Hat en ntp. 
 
-Zie [using chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)(Engelstalig) voor meer informatie over chrony.
+Zie [using chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)(Engelstalig) voor meer informatie over chrony.
 
 Als zowel de chrony-als de TimeSync-bron tegelijk zijn ingeschakeld, kunt u een als voor **keur**markeren, waarmee de andere bron wordt ingesteld als back-up. Omdat de NTP-Services de klok voor grote scheefheden, behalve na een lange periode, niet bijwerken, zal de VMICTimeSync de klok van onderbroken VM-gebeurtenissen veel sneller worden hersteld dan op NTP gebaseerde hulpprogram ma's.
 
-Chronyd versnelt of vertraagt standaard de systeem klok om tijds drift te verhelpen. Als de drift te groot wordt, chrony de drift niet oplossen. Om dit op te lossen, kan de `makestep` para meter in **/etc/chrony.conf** worden gewijzigd om een TimeSync af te dwingen als de drift de opgegeven drempel waarde overschrijdt.
+Chronyd versnelt of vertraagt standaard de systeem klok om tijds drift te verhelpen. Als de drift te groot wordt, chrony de drift niet oplossen. Om dit op te lossen, `makestep` kan de para meter in **/etc/chrony.conf** worden gewijzigd om een TimeSync af te dwingen als de drift de opgegeven drempel waarde overschrijdt.
 
  ```bash
 makestep 1.0 -1
@@ -164,6 +164,6 @@ In SUSE-en Ubuntu-releases vóór 19,10 wordt tijd synchronisatie geconfigureerd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time).
+Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time).
 
 

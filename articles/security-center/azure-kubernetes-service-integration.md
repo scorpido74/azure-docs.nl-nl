@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f58afa41a27427f8deabb945261d96763edb4bc
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436181"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126175"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Integratie van Azure Kubernetes Services met Security Center
 
@@ -61,4 +61,4 @@ Zie voor meer informatie over de beveiligings functies van de container van Secu
 
 * [Integratie met Azure Container Registry](azure-container-registry-integration.md)
 
-* [Gegevens beheer bij micro soft](https://www.microsoft.com/trust-center/privacy/data-management) : beschrijft het gegevens beleid van micro soft-Services (inclusief Azure, intune en Office 365), Details van het gegevens beheer van micro soft en het Bewaar beleid dat van invloed is op uw gegevens
+* [Gegevens beheer bij micro soft](https://www.microsoft.com/trust-center/privacy/data-management) : beschrijft het gegevens beleid van micro soft-Services (inclusief Azure, intune en Microsoft 365), Details van het gegevens beheer van micro soft en het Bewaar beleid dat van invloed is op uw gegevens

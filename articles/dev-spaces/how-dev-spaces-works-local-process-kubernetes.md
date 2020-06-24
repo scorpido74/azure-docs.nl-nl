@@ -1,18 +1,18 @@
 ---
-title: Hoe lokaal proces met Kubernetes werkt
+title: Hoe een lokaal proces met Kubernetes werkt
 services: azure-dev-spaces
 ms.date: 06/02/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven voor het gebruik van lokaal proces met Kubernetes om uw ontwikkel computer te verbinden met uw Kubernetes-cluster
 keywords: Lokaal proces met Kubernetes, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 443783eb7f5359318cf8efbec8b6466a80fa1e85
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: dd126fc55a86b1de115239a31e5adb7b1d264846
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316598"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974395"
 ---
-# <a name="how-local-process-with-kubernetes-works"></a>Hoe lokaal proces met Kubernetes werkt
+# <a name="how-local-process-with-kubernetes-works"></a>Hoe een lokaal proces met Kubernetes werkt
 
 Met het lokale proces met Kubernetes kunt u code op uw ontwikkel computer uitvoeren en fouten opsporen, terwijl u nog steeds met uw Kubernetes-cluster verbonden bent met de rest van uw toepassing of services. Als u bijvoorbeeld een grote micro Services-architectuur hebt met veel onderling afhankelijke services en data bases, kan het repliceren van die afhankelijkheden op uw ontwikkel computer lastig zijn. Daarnaast kan het maken en implementeren van code voor uw Kubernetes-cluster voor elke code wijziging tijdens de interne loop tijd traag, tijdrovend en moeilijk te gebruiken zijn met een fout opsporingsprogramma.
 
@@ -42,6 +42,15 @@ Nadat u een verbinding met uw cluster tot stand hebt gebracht, kunt u de code op
 ## <a name="diagnostics-and-logging"></a>Diagnostische gegevens en logboekregistratie
 
 Wanneer u lokaal proces met Kubernetes gebruikt om verbinding te maken met uw cluster, worden Diagnostische logboeken van uw cluster geregistreerd in de [tijdelijke map][azds-tmp-dir]van uw ontwikkel computer. Met Visual Studio code kunt u ook de opdracht *Diagnostische gegevens weer geven* gebruiken om de huidige omgevings variabelen en DNS-vermeldingen uit uw cluster af te drukken.
+
+## <a name="limitations"></a>Beperkingen
+
+Lokaal proces met Kubernetes heeft de volgende beperkingen:
+
+* Lokaal proces met Kubernetes leidt het verkeer voor een enkele service om naar uw ontwikkel computer. U kunt geen lokaal proces met Kubernetes gebruiken om meerdere services tegelijk om te leiden.
+* Een service moet worden ondersteund door één pod om verbinding te kunnen maken met die service. U kunt geen verbinding maken met een service met meerdere peulen, zoals een service met replica's.
+* Een pod kan slechts één container hebben die in dat pod wordt uitgevoerd voor lokaal proces met Kubernetes om verbinding te maken. Lokaal proces met Kubernetes kan geen verbinding maken met Services met een Peul dat extra containers heeft, zoals zijspan containers die zijn geïnjecteerd door service netten.
+* Lokaal proces met Kubernetes heeft verhoogde machtigingen nodig om te worden uitgevoerd op uw ontwikkel computer om het hosts-bestand te kunnen bewerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

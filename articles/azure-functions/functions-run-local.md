@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
 ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276658"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697235"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -57,9 +57,9 @@ Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions ru
 
 In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's in Windows te installeren. U kunt ook [Choco lade](https://chocolatey.org/)gebruiken. Zie het Leesmij-bestand met [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie.
 
-1. Installeer [node. js], dat NPM omvat.
-    - Voor versie 2. x van de hulpprogram ma's worden alleen node. js 8,5 en latere versies ondersteund.
-    - Voor versie 3. x van de hulpprogram ma's worden alleen node. js 10 en latere versies ondersteund.
+1. Installeer [Node.js], dat NPM omvat.
+    - Voor versie 2. x van de hulpprogram ma's worden alleen Node.js 8,5 en latere versies ondersteund.
+    - Voor versie 3. x van de hulpprogram ma's worden alleen Node.js 10 en latere versies ondersteund.
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
@@ -79,7 +79,7 @@ In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's i
 
 1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u de [.net Core 2. x SDK voor Windows](https://www.microsoft.com/net/download/windows).
 
-# <a name="macos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -157,7 +157,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 ## <a name="create-a-local-functions-project"></a>Een lokaal Functions-project maken
 
-Een project directory functions bevat de bestanden [host. json](functions-host-json.md) en [Local. settings. json](#local-settings-file), samen met submappen die de code voor afzonderlijke functies bevatten. Deze map is het equivalent van een functie-app in Azure. Zie de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md#folder-structure)voor meer informatie over de mapstructuur van de functies.
+Een project directory functions bevat de bestanden [host.jsop](functions-host-json.md) en [local.settings.jsop](#local-settings-file), samen met submappen die de code voor afzonderlijke functies bevatten. Deze map is het equivalent van een functie-app in Azure. Zie de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md#folder-structure)voor meer informatie over de mapstructuur van de functies.
 
 Versie 2. x vereist dat u een standaard taal voor uw project selecteert wanneer deze wordt geïnitialiseerd. In versie 2. x worden alle functies toegevoegd standaard taal sjablonen gebruiken. In versie 1. x geeft u de taal op telkens wanneer u een functie maakt.
 
@@ -193,21 +193,21 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`biedt ondersteuning voor de volgende opties: versie 2. x-only, tenzij anders vermeld.
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Initialiseert een [C#-Class Library-project (. cs)](functions-dotnet-class-library.md). |
-| **`--csx`** | Initialiseert een [C# script-project (. CSX)](functions-reference-csharp.md). U moet in `--csx` volgende opdrachten opgeven. |
-| **`--docker`** | Maak een Dockerfile voor een container met behulp van een basis installatie kopie op basis `--worker-runtime`van de gekozen. Gebruik deze optie wanneer u van plan bent om te publiceren naar een aangepaste Linux-container. |
-| **`--docker-only`** |  Hiermee wordt een Dockerfile toegevoegd aan een bestaand project. Hiermee wordt u gevraagd om de werk nemer-runtime als deze niet is opgegeven of ingesteld in Local. settings. json. Gebruik deze optie wanneer u van plan bent een bestaand project te publiceren naar een aangepaste Linux-container. |
+| **`--csx`** | Initialiseert een [C# script-project (. CSX)](functions-reference-csharp.md). U moet `--csx` in volgende opdrachten opgeven. |
+| **`--docker`** | Maak een Dockerfile voor een container met behulp van een basis installatie kopie op basis van de gekozen `--worker-runtime` . Gebruik deze optie wanneer u van plan bent om te publiceren naar een aangepaste Linux-container. |
+| **`--docker-only`** |  Hiermee wordt een Dockerfile toegevoegd aan een bestaand project. Hiermee wordt u gevraagd om de werk nemer-runtime als deze niet is opgegeven of ingesteld in local.settings.jsop. Gebruik deze optie wanneer u van plan bent een bestaand project te publiceren naar een aangepaste Linux-container. |
 | **`--force`** | Initialiseer het project zelfs wanneer er bestaande bestanden in het project aanwezig zijn. Deze instelling overschrijft bestaande bestanden met dezelfde naam. Andere bestanden in de projectmap worden niet beïnvloed. |
 | **`--java`**  | Initialiseert een [Java-project](functions-reference-java.md). |
 | **`--javascript`**<br/>**`--node`**  | Initialiseert een [Java script-project](functions-reference-node.md). |
 | **`--no-source-control`**<br/>**`-n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 2. x wordt de Git-opslag plaats standaard niet gemaakt. |
 | **`--powershell`**  | Initialiseert een [Power Shell-project](functions-reference-powershell.md). |
 | **`--python`**  | Initialiseert een [python-project](functions-reference-python.md). |
-| **`--source-control`** | Hiermee wordt bepaald of een Git-opslag plaats wordt gemaakt. Een opslag plaats wordt standaard niet gemaakt. Wanneer `true`wordt een opslag plaats gemaakt. |
+| **`--source-control`** | Hiermee wordt bepaald of een Git-opslag plaats wordt gemaakt. Een opslag plaats wordt standaard niet gemaakt. Wanneer `true` wordt een opslag plaats gemaakt. |
 | **`--typescript`**  | Initialiseert een [type script-project](functions-reference-node.md#typescript). |
-| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn: `csharp`, `dotnet`, `java`, `javascript`,`node` (Java script) `powershell`, `python`, en `typescript`. Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
+| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn: `csharp` , `dotnet` , `java` , `javascript` , `node` (Java script), `powershell` , en `python` `typescript` . Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
 
 > [!IMPORTANT]
 > Versie 2. x van de kern Hulpprogramma's maakt standaard functie-app-projecten voor de .NET-runtime als [C#-klassen projecten](functions-dotnet-class-library.md) (. csproj). Deze C#-projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de `--csx` para meter toevoegen wanneer u functies maakt en implementeert.
@@ -216,18 +216,18 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Deze instellingen worden standaard niet automatisch gemigreerd wanneer het project wordt gepubliceerd naar Azure. Gebruik de `--publish-local-settings` switch [Wanneer u publiceert](#publish) om ervoor te zorgen dat deze instellingen worden toegevoegd aan de functie-app in Azure. Houd er rekening mee dat waarden in **Connections Tring** nooit worden gepubliceerd.
+Deze instellingen worden standaard niet automatisch gemigreerd wanneer het project wordt gepubliceerd naar Azure. Gebruik de `--publish-local-settings` Switch [Wanneer u publiceert](#publish) om ervoor te zorgen dat deze instellingen worden toegevoegd aan de functie-app in Azure. Houd er rekening mee dat waarden in **Connections Tring** nooit worden gepubliceerd.
 
 De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen als omgevings variabelen. Zie de sectie omgevings variabelen van deze taalspecifieke naslag onderwerpen voor meer informatie:
 
 * [Vooraf gecompileerde C#](functions-dotnet-class-library.md#environment-variables)
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
-* [Javascript](functions-reference-node.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
-Als er geen geldige opslag connection string is ingesteld [`AzureWebJobsStorage`] voor en de emulator niet wordt gebruikt, wordt het volgende fout bericht weer gegeven:
+Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsStorage`] en de emulator niet wordt gebruikt, wordt het volgende fout bericht weer gegeven:
 
-> Ontbrekende waarde voor AzureWebJobsStorage in Local. settings. json. Dit is vereist voor alle triggers behalve HTTP. U kunt func Azure functionapp fetch-app-Settings \<functionAppName\>uitvoeren of een Connection String in Local. settings. json opgeven.
+> Ontbrekende waarde voor AzureWebJobsStorage in local.settings.jsop. Dit is vereist voor alle triggers behalve HTTP. U kunt func Azure functionapp fetch-app-Settings uitvoeren \<functionAppName\> of een Connection String in local.settings.jsopgeven.
 
 ### <a name="get-your-storage-connection-strings"></a>Uw opslag verbindings reeksen ophalen
 
@@ -266,7 +266,7 @@ Voer de volgende opdracht uit om een functie te maken:
 func new
 ```
 
-In versie 2. x, wanneer u uitvoert `func new` , wordt u gevraagd een sjabloon in de standaard taal van uw functie-app te kiezen. vervolgens wordt u gevraagd om een naam voor de functie te kiezen. In versie 1. x wordt u ook gevraagd om de taal te kiezen.
+In versie 2. x, wanneer u uitvoert, wordt u `func new` gevraagd een sjabloon in de standaard taal van uw functie-app te kiezen. vervolgens wordt u gevraagd om een naam voor de functie te kiezen. In versie 1. x wordt u ook gevraagd om de taal te kiezen.
 
 <pre>
 Select a language: Select a template:
@@ -294,7 +294,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
-| Argument     | Beschrijving                            |
+| Argument     | Description                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Versie 2. x) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
 | **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
@@ -322,7 +322,7 @@ Als u een functions-project wilt uitvoeren, voert u de host functions uit. De ho
 ```
 func start --build
 ```
-# <a name="javascript"></a>[Javascript](#tab/node)
+# <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
 func start
@@ -345,7 +345,7 @@ npm start
 ---
 
 >[!NOTE]  
-> Versie 1. x van de functions runtime vereist `host` de opdracht, zoals in het volgende voor beeld:
+> Versie 1. x van de functions runtime vereist de `host` opdracht, zoals in het volgende voor beeld:
 >
 > ```
 > func host start
@@ -353,20 +353,20 @@ npm start
 
 `func start`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Pas het huidige project niet samen om uit te voeren. Alleen voor dotnet-projecten. De standaard waarde is ingesteld op ONWAAR. Niet ondersteund voor versie 1. x. |
-| **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps`. Niet ondersteund voor versie 1. x. |
+| **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps` . Niet ondersteund voor versie 1. x. |
 | **`--cors-credentials`** | Toestaan dat geauthenticeerde cross-Origin-aanvragen (cookies en de header Authentication) worden niet ondersteund voor versie 1. x. |
 | **`--cors`** | Een door komma's gescheiden lijst met CORS-oorsprong, zonder spaties. |
 | **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Niet ondersteund voor versie 1. x. |
-| **`--nodeDebugPort`**, **`-n`** | De poort voor de node. js-fout opsporing die moet worden gebruikt. Standaard: een waarde van Launch. json of 5858. Alleen versie 1. x. |
-| **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Alleen gebruikt met `--cert`. Niet ondersteund voor versie 1. x. |
+| **`--nodeDebugPort`**, **`-n`** | De poort voor het Node.js-fout opsporingsprogramma dat moet worden gebruikt. Standaard: een waarde van launch.jsop of 5858. Alleen versie 1. x. |
+| **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Alleen gebruikt met `--cert` . Niet ondersteund voor versie 1. x. |
 | **`--port`**, **`-p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
-| **`--script-root`**, **`--prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C#-klassen bibliotheek project bouwt, worden de bestanden host. json, local. settings. json en function. json gegenereerd in een *hoofdmap* met een pad zoals `MyProject/bin/Debug/netstandard2.0`. In dit geval stelt u het voor voegsel `--script-root MyProject/bin/Debug/netstandard2.0`in als. Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
+| **`--script-root`**, **`--prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C#-klassen bibliotheek project bouwt, worden de host.jsop, local.settings.jsaan en function.jsop bestanden gegenereerd in een *hoofdmap* met een pad zoals `MyProject/bin/Debug/netstandard2.0` . In dit geval stelt u het voor voegsel in als `--script-root MyProject/bin/Debug/netstandard2.0` . Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
 | **`--timeout`**, **`-t`** | De time-out voor het starten van de functions-host, in seconden. Standaard: 20 seconden.|
-| **`--useHttps`** | Maak een `https://localhost:{port}` binding aan in `http://localhost:{port}`plaats van aan. Met deze optie wordt standaard een vertrouwd certificaat op uw computer gemaakt.|
+| **`--useHttps`** | Maak een binding aan `https://localhost:{port}` in plaats van aan `http://localhost:{port}` . Met deze optie wordt standaard een vertrouwd certificaat op uw computer gemaakt.|
 
 Wanneer de functie host wordt gestart, wordt de URL van de met HTTP geactiveerde functies uitgevoerd:
 
@@ -379,7 +379,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 </pre>
 
 >[!IMPORTANT]
->Bij lokaal uitvoeren wordt de autorisatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt `authLevel = "anonymous"`als. Zie het artikel over de [http-binding](functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie.
+>Bij lokaal uitvoeren wordt de autorisatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt als `authLevel = "anonymous"` . Zie het artikel over de [http-binding](functions-bindings-http-webhook-trigger.md#authorization-keys)voor meer informatie.
 
 ### <a name="passing-test-data-to-a-function"></a>Test gegevens door geven aan een functie
 
@@ -398,7 +398,7 @@ U roept het volgende eind punt aan om HTTP en door de webhook geactiveerde funct
 
 Zorg ervoor dat u dezelfde server naam en poort gebruikt als waarop de host van de functies luistert. U ziet dit in de uitvoer die wordt gegenereerd bij het starten van de host van de functie. U kunt deze URL aanroepen met de HTTP-methode die wordt ondersteund door de trigger.
 
-Met de volgende krul opdracht wordt `MyHttpTrigger` de Quick Start-functie geactiveerd vanuit een GET-aanvraag met de para meter _name_ door gegeven in de query teken reeks.
+Met de volgende krul opdracht wordt de Quick Start- `MyHttpTrigger` functie geactiveerd vanuit een GET-aanvraag met de para meter _name_ door gegeven in de query teken reeks.
 
 ```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -438,7 +438,7 @@ Als u test gegevens wilt door geven aan het eind punt van de beheerder van een f
 }
 ```
 
-De `<trigger_input>` waarde bevat gegevens in een indeling die door de functie wordt verwacht. Het volgende krul-voor beeld is een POST `QueueTriggerJS` naar een functie. In dit geval is de invoer een teken reeks die overeenkomt met het bericht dat naar verwachting in de wachtrij wordt gevonden.
+De `<trigger_input>` waarde bevat gegevens in een indeling die door de functie wordt verwacht. Het volgende krul-voor beeld is een POST naar een `QueueTriggerJS` functie. In dit geval is de invoer een teken reeks die overeenkomt met het bericht dat naar verwachting in de wachtrij wordt gevonden.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
@@ -459,7 +459,7 @@ In versie 1. x kunt u ook rechtstreeks een functie aanroepen met behulp `func ru
 
 `func run`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Inline-inhoud. |
 | **`--debug`**, **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
@@ -484,13 +484,13 @@ Een projectmap kan taalspecifieke bestanden en mappen bevatten die niet mogen wo
 
 ### <a name="deploy-project-files"></a><a name="project-file-deployment"></a>Project bestanden implementeren
 
-Als u uw lokale code naar een functie-app in azure wilt publiceren `publish` , gebruikt u de opdracht:
+Als u uw lokale code naar een functie-app in azure wilt publiceren, gebruikt u de `publish` opdracht:
 
 ```
 func azure functionapp publish <FunctionAppName>
 ```
 
-Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U krijgt een fout melding als u probeert te publiceren naar een `<FunctionAppName>` die niet voor komt in uw abonnement. Zie [een functie-app maken voor serverloze uitvoering voor](./scripts/functions-cli-create-serverless.md)meer informatie over het maken van een functie-app vanuit de opdracht prompt of het Terminal venster met behulp van de Azure cli. Deze opdracht maakt standaard gebruik van [externe build](functions-deployment-technologies.md#remote-build) en implementeert uw app voor [uitvoering vanuit het implementatie pakket](run-functions-from-deployment-package.md). Als u deze aanbevolen implementatie modus wilt uitschakelen, `--nozip` gebruikt u de optie.
+Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U krijgt een fout melding als u probeert te publiceren naar een `<FunctionAppName>` die niet voor komt in uw abonnement. Zie [een functie-app maken voor serverloze uitvoering voor](./scripts/functions-cli-create-serverless.md)meer informatie over het maken van een functie-app vanuit de opdracht prompt of het Terminal venster met behulp van de Azure cli. Deze opdracht maakt standaard gebruik van [externe build](functions-deployment-technologies.md#remote-build) en implementeert uw app voor [uitvoering vanuit het implementatie pakket](run-functions-from-deployment-package.md). Als u deze aanbevolen implementatie modus wilt uitschakelen, gebruikt u de `--nozip` optie.
 
 >[!IMPORTANT]
 > Wanneer u een functie-app maakt in de Azure Portal, gebruikt deze standaard versie 2. x van de functie-runtime. Volg de instructies in [uitvoeren op versie 1. x](functions-versions.md#creating-1x-apps)om de functie-app versie 1. x van de runtime te laten gebruiken.
@@ -498,21 +498,21 @@ Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U 
 
 De volgende publicatie opties zijn van toepassing voor beide versies, 1. x en 2. x:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Publiceer instellingen in Local. settings. json naar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de Microsoft Azure-opslagemulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
-| **`--overwrite-settings -y`** | De prompt voor het overschrijven van app- `--publish-local-settings -i` instellingen onderdrukken wanneer deze wordt gebruikt.|
+| **`--publish-local-settings -i`** |  Publiceer instellingen in local.settings.jsnaar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de Microsoft Azure-opslagemulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
+| **`--overwrite-settings -y`** | De prompt voor het overschrijven van app-instellingen onderdrukken wanneer deze wordt `--publish-local-settings -i` gebruikt.|
 
 De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
 |**`--list-ignored-files`** | Geeft een lijst weer van bestanden die worden genegeerd tijdens het publiceren, dat is gebaseerd op het. funcignore-bestand. |
 | **`--list-included-files`** | Geeft een lijst weer van bestanden die zijn gepubliceerd, die zijn gebaseerd op het. funcignore-bestand. |
-| **`--nozip`** | Hiermee schakelt u `Run-From-Package` de standaard modus uit. |
+| **`--nozip`** | Hiermee schakelt u de standaard `Run-From-Package` modus uit. |
 | **`--build-native-deps`** | Slaat de map voor het genereren van wielen op tijdens het publiceren van python-functie-apps. |
-| **`--build`**, **`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local`. |
+| **`--build`**, **`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local` . |
 | **`--additional-packages`** | Lijst met pakketten die moeten worden geïnstalleerd bij het bouwen van systeem eigen afhankelijkheden. Bijvoorbeeld: `python3-dev libevent-dev`. |
 | **`--force`** | Verificatie vooraf publiceren in bepaalde scenario's negeren. |
 | **`--csx`** | Publiceer een C# script-project (. CSX). |
@@ -521,7 +521,7 @@ De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 
 ### <a name="deploy-custom-container"></a>Aangepaste container implementeren
 
-Met Azure Functions kunt u uw functie project implementeren in een [aangepaste docker-container](functions-deployment-technologies.md#docker-container). Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md)voor meer informatie. Aangepaste containers moeten een Dockerfile hebben. Als u een app met een Dockerfile wilt maken, gebruikt u de optie- `func init`Dockerfile op.
+Met Azure Functions kunt u uw functie project implementeren in een [aangepaste docker-container](functions-deployment-technologies.md#docker-container). Zie [een functie maken in Linux met behulp van een aangepaste installatie kopie](functions-create-function-linux-custom-image.md)voor meer informatie. Aangepaste containers moeten een Dockerfile hebben. Als u een app met een Dockerfile wilt maken, gebruikt u de optie-Dockerfile op `func init` .
 
 ```
 func deploy
@@ -529,7 +529,7 @@ func deploy
 
 De volgende opties voor de implementatie van de aangepaste container zijn beschikbaar:
 
-| Optie     | Beschrijving                            |
+| Optie     | Description                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | De naam van een docker-REGI ster waarmee de huidige gebruiker zich heeft aangemeld. |
 | **`--platform`** | Hosting platform voor de functie-app. Geldige opties zijn`kubernetes` |
@@ -538,7 +538,7 @@ De volgende opties voor de implementatie van de aangepaste container zijn beschi
 | **`--min`**  | Hiermee stelt u optioneel het minimum aantal functie-app-exemplaren in dat moet worden geïmplementeerd. |
 | **`--config`** | Hiermee stelt u een optioneel implementatie configuratie bestand in. |
 
-## <a name="monitoring-functions"></a>Bewakings functies
+## <a name="monitoring-functions"></a>Functies bewaken
 
 De aanbevolen manier om de uitvoering van uw functies te controleren is door te integreren met Azure-toepassing Insights. U kunt ook uitvoerings logboeken streamen naar uw lokale computer. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
@@ -567,7 +567,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

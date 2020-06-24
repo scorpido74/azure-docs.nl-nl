@@ -5,15 +5,15 @@ description: Meer informatie over het maken van een toepassings gateway die webv
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 6596cdb2df0a916c49086f80466db60b02a81467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6480bdd5139d5bc7a5a1887b80f43c3903bf579
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74047757"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804592"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Een toepassings gateway met externe omleiding maken met behulp van Azure PowerShell
 
@@ -22,7 +22,7 @@ U kunt Azure Power shell gebruiken voor het configureren van het [omleiden van w
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Een listener-en omleidings regel maken
 > * Een toepassingsgateway maken
 
@@ -160,6 +160,6 @@ U ziet dat *Bing.com* worden weer gegeven in uw browser.
 In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Een listener-en omleidings regel maken
 > * Een toepassingsgateway maken
