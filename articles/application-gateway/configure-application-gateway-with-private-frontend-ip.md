@@ -5,15 +5,15 @@ description: Dit artikel bevat informatie over het configureren van Application 
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535584"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808115"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Een toepassings gateway met een ILB-eind punt (interne load balancer) configureren
 
@@ -31,7 +31,7 @@ Meld u aan bij Azure Portal op <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaande gebruiken. In dit voor beeld maakt u een nieuw virtueel netwerk. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt. Application Gateway exemplaren worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
+Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. U kunt een nieuw virtueel netwerk maken of een bestaand gebruiken. In dit voor beeld maakt u een nieuw virtueel netwerk. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt. Instanties van toepassingsgateways worden in afzonderlijke subnetten gemaakt. In dit voorbeeld maakt u twee subnetten: één voor de toepassingsgateway en één voor de back-endservers.
 
 1. Vouw het menu Portal uit en selecteer **een resource maken**.
 2. Selecteer **Netwerken** en vervolgens **Application Gateway** in de lijst Aanbevolen.
@@ -74,18 +74,18 @@ Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maa
 25. Accepteer de resterende standaard waarden en selecteer **toevoegen**.
 26. Selecteer op de pagina **een routerings regel toevoegen** de optie **toevoegen**.
 27. Selecteer **volgende: Tags**.
-28. Selecteer **volgende: controleren + maken**.
+28. Selecteer **Volgende: Controleren en maken**.
 29. Controleer de instellingen op de pagina samen vatting en selecteer vervolgens **maken** om de netwerk resources en de toepassings gateway te maken. Het kan enkele minuten duren om de toepassingsgateway te maken. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
 
-## <a name="add-backend-pool"></a>Back-end-pool toevoegen
+## <a name="add-backend-pool"></a>Back-endgroep toevoegen
 
-De back-end-groep wordt gebruikt voor het routeren van aanvragen naar de back-endservers die de aanvraag behandelen. De back-end kan bestaan uit Nic's, virtuele-machine schaal sets, open bare IP-adressen, interne IP-adressen, FQDN-namen (Fully Qualified Domain names) en back-ends met meerdere tenants, zoals Azure App Service. In dit voor beeld gebruikt u virtuele machines als doel-back-end. U kunt bestaande virtuele machines gebruiken of nieuwe maken. In dit voorbeeld maakt u twee virtuele machines die in Azure worden gebruikt als back-endservers voor de toepassingsgateway.
+De back-endpool word gebruikt om aanvragen te routeren naar de back-endservers die de aanvraag verwerken. De back-end kan bestaan uit Nic's, virtuele-machine schaal sets, open bare IP-adressen, interne IP-adressen, FQDN-namen (Fully Qualified Domain names) en back-ends met meerdere tenants, zoals Azure App Service. In dit voor beeld gebruikt u virtuele machines als doel-back-end. U kunt bestaande virtuele machines gebruiken of nieuwe maken. In dit voorbeeld maakt u twee virtuele machines die in Azure worden gebruikt als back-endservers voor de toepassingsgateway.
 
 Hiervoor gaat u als volgt te werk:
 
 1. Maak twee nieuwe virtuele machines, *myVM* en *myVM2*, die worden gebruikt als back-endservers.
-2. Installeer IIS op de virtuele machines om te controleren of de toepassings gateway is gemaakt.
-3. Voeg de back-endservers toe aan de back-end-groep.
+2. Installeer IIS op de virtuele machines om te controleren of de toepassingsgateway is gemaakt.
+3. Voeg de back-endservers toe aan de back-endpool.
 
 ### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -138,7 +138,7 @@ Hiervoor gaat u als volgt te werk:
 
 3. Maak een tweede virtuele machine en installeer IIS met behulp van de stappen die u zojuist hebt voltooid. Voer myVM2 in als naam en voor VMName in set-AzVMExtension.
 
-### <a name="add-backend-servers-to-backend-pool"></a>Back-endservers toevoegen aan back-end-groep
+### <a name="add-backend-servers-to-backend-pool"></a>Back-endservers toevoegen aan de back-endpool
 
 1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 2. Selecteer **back-endservers**. Selecteer **appGatewayBackendPool**.

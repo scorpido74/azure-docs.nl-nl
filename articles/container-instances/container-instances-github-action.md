@@ -4,14 +4,14 @@ description: Configureer een GitHub-actie waarmee de stappen voor het maken, pus
 ms.topic: article
 ms.date: 03/18/2020
 ms.custom: ''
-ms.openlocfilehash: 13397cee8197afc65b93c587ae1505e59cfdebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80258036"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743997"
 ---
-# <a name="configure-a-github-action-to-create-a-container-instance"></a>Een GitHub-actie configureren voor het maken van een container exemplaar
+# <a name="configure-a-github-action-to-create-a-container-instance"></a>Een GitHub-actie configureren voor het maken van een containerinstantie
 
 [Github-acties](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) is een reeks functies in github voor het automatiseren van uw werk stromen voor software ontwikkeling op dezelfde locatie waar u code opslaat en samen werken aan pull-aanvragen en-problemen.
 
@@ -19,7 +19,7 @@ Gebruik de actie [implementeren naar Azure container instances](https://github.c
 
 In dit artikel wordt beschreven hoe u een werk stroom instelt in een GitHub-opslag plaats die de volgende acties uitvoert:
 
-* Een installatie kopie bouwen op basis van een Dockerfile
+* Een installatiekopie bouwen op basis van een Dockerfile
 * De installatie kopie naar een Azure container Registry pushen
 * De container installatie kopie implementeren in een Azure-container exemplaar
 
@@ -33,8 +33,8 @@ In dit artikel ziet u twee manieren om de werk stroom in te stellen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Github-account** : Maak een account https://github.com op als u er nog geen hebt.
-* **Azure cli** : u kunt de Azure Cloud shell of een lokale installatie van de Azure CLI gebruiken om de stappen van Azure CLI uit te voeren. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+* **Github-account** : Maak een account op https://github.com Als u er nog geen hebt.
+* **Azure cli** : u kunt de Azure Cloud shell of een lokale installatie van de Azure CLI gebruiken om de stappen van Azure CLI uit te voeren. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 * **Azure container Registry** : als u er nog geen hebt, maakt u een Azure-container register in de Basic-laag met behulp van de [Azure cli](../container-registry/container-registry-get-started-azure-cli.md), [Azure Portal](../container-registry/container-registry-get-started-portal.md)of een andere methode. Noteer de resource groep die wordt gebruikt voor de implementatie, die wordt gebruikt voor de GitHub-werk stroom.
 
 ## <a name="set-up-repo"></a>Opslag plaats instellen
@@ -45,7 +45,7 @@ In dit artikel ziet u twee manieren om de werk stroom in te stellen:
 
   ![Schermafbeelding van de knop Fork (gemarkeerd) in GitHub](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* Zorg ervoor dat acties zijn ingeschakeld voor uw opslag plaats. Navigeer naar uw gevorkte opslag plaats en selecteer **instellingen** > **acties**. Zorg ervoor dat in **acties machtigingen** **lokale acties en derden inschakelen voor deze opslag plaats** is geselecteerd.
+* Zorg ervoor dat acties zijn ingeschakeld voor uw opslag plaats. Navigeer naar uw gevorkte opslag plaats en selecteer **instellingen**  >  **acties**. Zorg ervoor dat in **acties machtigingen** **lokale acties en derden inschakelen voor deze opslag plaats** is geselecteerd.
 
 ## <a name="configure-github-workflow"></a>GitHub-werk stroom configureren
 
@@ -53,7 +53,7 @@ In dit artikel ziet u twee manieren om de werk stroom in te stellen:
 
 In de GitHub-werk stroom moet u Azure-referenties opgeven om te verifiëren bij de Azure CLI. In het volgende voor beeld wordt een service-principal gemaakt met de rol Inzender in het bereik van de resource groep voor uw container register.
 
-Haal eerst de resource-ID van de resource groep op. Vervang de naam van uw groep in de volgende opdracht [AZ Group show][az-acr-show] :
+Haal eerst de resource-ID van de resource groep op. Vervang de naam van uw groep in de volgende opdracht [AZ Group show][az-group-show] :
 
 ```azurecli
 groupId=$(az group show \
@@ -87,7 +87,7 @@ De uitvoer ziet er ongeveer zo uit:
 }
 ```
 
-Sla de JSON-uitvoer op omdat deze wordt gebruikt in een latere stap. Let ook op de `clientId`, die u moet uitvoeren om de service-principal bij te werken in de volgende sectie.
+Sla de JSON-uitvoer op omdat deze wordt gebruikt in een latere stap. Let ook `clientId` op de, die u moet uitvoeren om de service-principal bij te werken in de volgende sectie.
 
 ### <a name="update-service-principal-for-registry-authentication"></a>Service-Principal bijwerken voor register verificatie
 
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Referenties opslaan in GitHub opslag plaats
 
-1. Ga in de GitHub-gebruikers interface naar uw gevorkte opslag plaats en selecteer **instellingen** > **geheimen**. 
+1. Ga in de GitHub-gebruikers interface naar uw gevorkte opslag plaats en selecteer **instellingen**  >  **geheimen**. 
 
 1. Selecteer **een nieuw geheim toevoegen** om de volgende geheimen toe te voegen:
 
@@ -126,9 +126,9 @@ az role assignment create \
 
 ### <a name="create-workflow-file"></a>Werk stroom bestand maken
 
-1. Selecteer in de gebruikers interface van github de optie **acties** > **nieuwe werk stroom**.
+1. Selecteer in de gebruikers interface van github de optie **acties**  >  **nieuwe werk stroom**.
 1. Selecteer **zelf een werk stroom instellen**.
-1. Plak in **nieuw bestand bewerken**de volgende YAML-inhoud om de voorbeeld code te overschrijven. Accepteer de standaard bestandsnaam `main.yml`of geef een bestands naam op die u kiest.
+1. Plak in **nieuw bestand bewerken**de volgende YAML-inhoud om de voorbeeld code te overschrijven. Accepteer de standaard bestandsnaam `main.yml` of geef een bestands naam op die u kiest.
 1. Selecteer **door voeren starten**, geef eventueel korte en uitgebreide beschrijvingen van uw door Voer op en selecteer **nieuw bestand door voeren**.
 
 ```yml
@@ -173,7 +173,7 @@ jobs:
 
 ### <a name="validate-workflow"></a>Werk stroom valideren
 
-Nadat u het werk stroom bestand hebt doorgevoerd, wordt de werk stroom geactiveerd. Als u de voortgang van de werk stroom wilt bekijken, gaat u naar **Action** > **workflows**. 
+Nadat u het werk stroom bestand hebt doorgevoerd, wordt de werk stroom geactiveerd. Als u de voortgang van de werk stroom wilt bekijken, gaat u naar **Action**  >  **workflows**. 
 
 ![Werk stroom voortgang weer geven](./media/container-instances-github-action/github-action-progress.png)
 

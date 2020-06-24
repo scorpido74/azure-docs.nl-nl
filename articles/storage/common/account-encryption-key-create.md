@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e47440a54d733d0b5d849123633bf7e067fcd81
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083570"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805699"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Een account maken dat door de klant beheerde sleutels voor tabellen en wacht rijen ondersteunt
 
@@ -138,8 +138,8 @@ Als u Power shell wilt gebruiken voor het maken van een opslag account dat afhan
 
 Maak vervolgens een voor algemeen gebruik v2-opslag account door de opdracht [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) aan te roepen, met de juiste para meters:
 
-- Neem de `-EncryptionKeyTypeForQueue` optie op `Account` en stel de waarde in op om de account versleutelings sleutel te gebruiken voor het versleutelen van gegevens in de wachtrij opslag.
-- Neem de `-EncryptionKeyTypeForTable` optie op `Account` en stel de waarde in op om de account versleutelings sleutel te gebruiken voor het versleutelen van gegevens in de tabel opslag.
+- Neem de `-EncryptionKeyTypeForQueue` optie op en stel de waarde in op om de account versleutelings `Account` sleutel te gebruiken voor het versleutelen van gegevens in de wachtrij opslag.
+- Neem de `-EncryptionKeyTypeForTable` optie op en stel de waarde in op om `Account` de account versleutelings sleutel te gebruiken voor het versleutelen van gegevens in de tabel opslag.
 
 In het volgende voor beeld ziet u hoe u een v2-opslag account voor algemeen gebruik maakt dat is geconfigureerd voor geografisch redundante opslag met lees toegang (RA-GRS) en die gebruikmaakt van de account versleutelings sleutel voor het versleutelen van gegevens voor wachtrij-en tabel opslag. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
@@ -159,8 +159,8 @@ Als u Azure CLI wilt gebruiken om een opslag account te maken dat afhankelijk is
 
 Maak vervolgens een voor algemeen gebruik v2-opslag account door de opdracht [AZ Storage account create](/cli/azure/storage/account#az-storage-account-create) aan te roepen, met de juiste para meters:
 
-- Neem de `--encryption-key-type-for-queue` optie op `Account` en stel de waarde in op om de account versleutelings sleutel te gebruiken voor het versleutelen van gegevens in de wachtrij opslag.
-- Neem de `--encryption-key-type-for-table` optie op `Account` en stel de waarde in op om de account versleutelings sleutel te gebruiken voor het versleutelen van gegevens in de tabel opslag.
+- Neem de `--encryption-key-type-for-queue` optie op en stel de waarde in op om de account versleutelings `Account` sleutel te gebruiken voor het versleutelen van gegevens in de wachtrij opslag.
+- Neem de `--encryption-key-type-for-table` optie op en stel de waarde in op om `Account` de account versleutelings sleutel te gebruiken voor het versleutelen van gegevens in de tabel opslag.
 
 In het volgende voor beeld ziet u hoe u een v2-opslag account voor algemeen gebruik maakt dat is geconfigureerd voor geografisch redundante opslag met lees toegang (RA-GRS) en die gebruikmaakt van de account versleutelings sleutel voor het versleutelen van gegevens voor wachtrij-en tabel opslag. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
@@ -222,11 +222,11 @@ Nadat u een account hebt gemaakt dat afhankelijk is van de versleutelings sleute
 
 ## <a name="verify-the-account-encryption-key"></a>De versleutelings sleutel voor het account controleren
 
-Als u wilt controleren of een service in een opslag account gebruikmaakt van de versleutelings sleutel van het account, roept u de opdracht Azure CLI [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `keyType` veld voor elke service binnen de versleutelings eigenschap en controleer of deze is `Account`ingesteld op.
+Als u wilt controleren of een service in een opslag account gebruikmaakt van de versleutelings sleutel van het account, roept u de opdracht Azure CLI [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `keyType` veld voor elke service binnen de versleutelings eigenschap en controleer of deze is ingesteld op `Account` .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Als u wilt controleren of een service in een opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `KeyType` veld voor elke service in de `Encryption` eigenschap en controleer of deze is ingesteld op `Account`.
+Als u wilt controleren of een service in een opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `KeyType` veld voor elke service in de `Encryption` eigenschap en controleer of deze is ingesteld op `Account` .
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -237,7 +237,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u wilt controleren of een service in een opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `keyType` veld voor elke service binnen de versleutelings eigenschap en controleer of deze is `Account`ingesteld op.
+Als u wilt controleren of een service in een opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het `keyType` veld voor elke service binnen de versleutelings eigenschap en controleer of deze is ingesteld op `Account` .
 
 ```azurecli
 az storage account show /
@@ -253,5 +253,5 @@ N.v.t.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md) 
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md) 
 - [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?

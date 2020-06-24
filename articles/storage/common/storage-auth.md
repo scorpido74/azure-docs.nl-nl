@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8db6140789a9e4f46e368b913cacacd21609ccd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529719"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807616"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Toegang tot gegevens in Azure Storage autoriseren
 
@@ -25,7 +25,7 @@ In de volgende tabel worden de opties beschreven die Azure Storage biedt om toeg
 
 |  |Gedeelde sleutel (sleutel van het opslag account)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |On-premises Active Directory Domain Services (preview-versie) |Anonieme open bare Lees toegang  |
 |---------|---------|---------|---------|---------|---------|
-|Azure-blobs     |[Geboden](/rest/api/storageservices/authorize-with-shared-key/)         |[Geboden](storage-sas-overview.md)         |[Geboden](storage-auth-aad.md)         |Niet ondersteund|[Geboden](../blobs/storage-manage-access-to-resources.md)         |
+|Azure-blobs     |[Geboden](/rest/api/storageservices/authorize-with-shared-key/)         |[Geboden](storage-sas-overview.md)         |[Geboden](storage-auth-aad.md)         |Niet ondersteund|[Ondersteund](../blobs/storage-manage-access-to-resources.md)         |
 |Azure Files (SMB)     |[Geboden](/rest/api/storageservices/authorize-with-shared-key/)         |Niet ondersteund         |[Ondersteund, alleen met AAD Domain Services](../files/storage-files-active-directory-overview.md)         |[Ondersteund, referenties moeten worden gesynchroniseerd met Azure AD](../files/storage-files-active-directory-overview.md)|Niet ondersteund         |
 |Azure Files (REST)     |[Geboden](/rest/api/storageservices/authorize-with-shared-key/)         |[Geboden](storage-sas-overview.md)         |Niet ondersteund         |Niet ondersteund |Niet ondersteund         |
 |Azure-wachtrijen     |[Geboden](/rest/api/storageservices/authorize-with-shared-key/)         |[Geboden](storage-sas-overview.md)         |[Geboden](storage-auth-aad.md)         |Niet ondersteund | Niet ondersteund         |

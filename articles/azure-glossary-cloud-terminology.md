@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276476"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807757"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure verklarende woorden lijst: een woorden lijst met Cloud terminologie op het Azure-platform
 
@@ -31,7 +31,7 @@ De Microsoft Azure verklarende woorden lijst is een korte woorden lijst met Clou
 
 ## <a name="account"></a>account
 Een account dat wordt gebruikt voor toegang tot en beheer van een Azure-abonnement. Dit wordt vaak een Azure-account genoemd, maar een account kan een van de volgende zijn: een bestaand werk, school of persoonlijk Microsoft-account, of een Office 365-gebruikers naam en-wacht woord. U kunt ook een account voor het beheren van een Azure-abonnement maken wanneer u zich aanmeldt voor de [gratis proef versie](https://azure.microsoft.com).  
-Zie [registreren voor een Azure-abonnement met uw Office 365-account](cost-management-billing/manage/office-365-account-for-azure-subscription.md) en- [accounts die u kunt gebruiken om u aan te melden](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Zie [registreren voor een Azure-abonnement met uw Microsoft 365 account](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) en [accounts die u kunt gebruiken om u aan te melden](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-app
 Een andere naam voor de [App app service](#app-service-app).
@@ -69,7 +69,7 @@ Het proces van het automatisch repliceren van inhoud, zoals blobs, tabellen en w
 Zie [actieve geo-replicatie voor Azure SQL database](sql-database/sql-database-geo-replication-overview.md)
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-## <a name="image"></a>installatiekopie
+## <a name="image"></a>image
 Een bestand dat de configuratie van het besturings systeem en de toepassing bevat die kan worden gebruikt om een wille keurig aantal virtuele machines te maken. In azure zijn er twee soorten installatie kopieën: VM-installatie kopie en installatie kopie van besturings systeem. Een VM-installatie kopie bevat een besturings systeem en alle schijven die zijn gekoppeld aan een virtuele machine wanneer de installatie kopie wordt gemaakt. Een besturingssysteem installatie kopie bevat alleen een gegeneraliseerd besturings systeem zonder configuratie van de gegevens schijf.  
 Zie [navigeren en installatie kopieën van virtuele Windows-machines selecteren in azure met Power shell of de CLI](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

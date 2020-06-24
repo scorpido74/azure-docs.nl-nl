@@ -4,15 +4,15 @@ description: Meer informatie over het maken van een voor deur met omgeleid verke
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05699c827af251b890de4c6f195df5872bfbe364
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877997"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743606"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Maak een voor deur met HTTP-naar-HTTPS-omleiding met behulp van de Azure Portal
 
@@ -40,19 +40,19 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
      ![Configuratie ontwerp voor de voor deur](./media/front-door-url-redirect/front-door-designer.png)
 
-6. Klik op het**+** pictogram op de _frontend-hosts_ om een frontend-host te maken, voer een wereld wijd unieke naam in voor de standaard-frontend-`\<**name**\>.azurefd.net`host voor uw front deur (). Klik op **toevoegen** om door te gaan naar de volgende stap.
+6. Klik op het **+** pictogram op de _frontend-hosts_ om een frontend-host te maken, voer een wereld wijd unieke naam in voor de standaard-frontend-host voor uw front deur ( `\<**name**\>.azurefd.net` ). Klik op **toevoegen** om door te gaan naar de volgende stap.
 
      ![Een frontend-host toevoegen](./media/front-door-url-redirect/front-door-create-fehost.png)
 
-7. Klik op het**+** pictogram ' ' op de _back-endservers_ om een back-end-groep te maken. Geef een naam op voor de back-end-pool en klik vervolgens op**een back-end toevoegen**.
+7. Klik op het **+** pictogram ' ' op de _back-endservers_ om een back-end-groep te maken. Geef een naam op voor de back-end-pool en klik vervolgens op**een back-end toevoegen**.
 8. Selecteer het type back-end als _app service_. Selecteer het abonnement waarin uw web-app wordt gehost en selecteer vervolgens de specifieke Web-app in de vervolg keuzelijst voor de **back-end-hostnaam**.
 9. Klik op **toevoegen** om de back-end op te slaan en klik nogmaals op **toevoegen** om de back-end-pool configuratie op te slaan.   ![Een back-end toevoegen aan een back-end-groep](./media/front-door-url-redirect/front-door-create-backendpool.png)
 
-10. Klik op het**+** pictogram in de _routerings regels_ om een route te maken. Geef een naam op voor de route, zeg ' HttpToHttpsRedirect ' en stel het veld _geaccepteerde protocollen_ vervolgens in op **' http only '**. Zorg ervoor dat de juiste _frontend-host_ is geselecteerd.  
+10. Klik op het **+** pictogram in de _routerings regels_ om een route te maken. Geef een naam op voor de route, zeg ' HttpToHttpsRedirect ' en stel het veld _geaccepteerde protocollen_ vervolgens in op **' http only '**. Zorg ervoor dat de juiste _frontend-host_ is geselecteerd.  
 11. Stel in het gedeelte _route Details_ het _route type_ in op **omleiden**, Controleer of _het type omleiding_ is ingesteld op **gevonden (302)** en het _omleidings protocol_ is ingesteld op **alleen https**. 
 12. Klik op toevoegen om de routerings regel voor HTTP-naar-HTTPS-omleiding op te slaan.
      ![Een HTTP-naar-HTTPS-omleidings route toevoegen](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. Voeg nog een regel voor route ring toe voor het verwerken van het HTTPS-verkeer. Klik op het**+**' '-aanmeldings _regels_ en geef een naam op voor de route, zeg ' DefaultForwardingRoute ' en stel het veld _geaccepteerde protocollen_ vervolgens in op **' https only '**. Zorg ervoor dat de juiste _frontend-host_ is geselecteerd.
+13. Voeg nog een regel voor route ring toe voor het verwerken van het HTTPS-verkeer. Klik op het ' **+** '-aanmeldings _regels_ en geef een naam op voor de route, zeg ' DefaultForwardingRoute ' en stel het veld _geaccepteerde protocollen_ vervolgens in op **' https only '**. Zorg ervoor dat de juiste _frontend-host_ is geselecteerd.
 14. Stel in het gedeelte route Details het _route type_ in op **door sturen**, zorg ervoor dat de juiste back-end-pool is geselecteerd en dat het _doorstuur protocol_ alleen is ingesteld op **https**. 
 15. Klik op toevoegen om de routerings regel voor het door sturen van aanvragen op te slaan.
      ![Een doorstuur route voor HTTPS-verkeer toevoegen](./media/front-door-url-redirect/front-door-forward-route-example.png)
@@ -63,13 +63,13 @@ De volgende stappen laten zien hoe u een aangepast domein kunt toevoegen aan een
 
 ### <a name="add-a-custom-domain"></a>Een aangepast domein toevoegen
 
-In dit voor beeld voegt u een CNAME-record toe `www` voor het subdomein (bijvoorbeeld `www.contosonews.com`).
+In dit voor beeld voegt u een CNAME-record toe voor het `www` subdomein (bijvoorbeeld `www.contosonews.com` ).
 
 #### <a name="create-the-cname-record"></a>Het CNAME-record maken
 
-Voeg een CNAME-record toe om een subdomein toe te wijzen aan de standaard frontend-`<name>.azurefd.net`host van `<name>` de front deur (, waarbij de naam is van het voorste deur profiel).
+Voeg een CNAME-record toe om een subdomein toe te wijzen aan de standaard frontend-host van de front deur ( `<name>.azurefd.net` , waarbij `<name>` de naam is van het voorste deur profiel).
 
-Voeg voor `www.contoso.com` het domein, als voor beeld, een CNAME-record toe die de `www` naam `<name>.azurefd.net`toewijst aan.
+Voeg voor het `www.contoso.com` domein, als voor beeld, een CNAME-record toe die de naam toewijst `www` aan `<name>.azurefd.net` .
 
 Nadat u de CNAME toevoegt, lijkt de pagina DNS-records op het volgende voorbeeld:
 
@@ -78,7 +78,7 @@ Nadat u de CNAME toevoegt, lijkt de pagina DNS-records op het volgende voorbeeld
 #### <a name="onboard-the-custom-domain-on-your-front-door"></a>Het aangepaste domein onboarden op de voor deur
 
 1. Klik op het tabblad front deur Designer op het pictogram ' + ' op de sectie frontend-hosts om een nieuw aangepast domein toe te voegen. 
-2. Voer de volledig gekwalificeerde aangepaste DNS-naam in het veld aangepaste hostnaam in, `www.contosonews.com`bijvoorbeeld. 
+2. Voer de volledig gekwalificeerde aangepaste DNS-naam in het veld aangepaste hostnaam in, bijvoorbeeld `www.contosonews.com` . 
 3. Zodra de CNAME-toewijzing van het domein naar uw voor deur is gevalideerd, klikt u op **toevoegen** om het aangepaste domein toe te voegen.
 4. Klik op **Opslaan** om de wijzigingen te verzenden.
 
@@ -94,7 +94,7 @@ Nadat u de CNAME toevoegt, lijkt de pagina DNS-records op het volgende voorbeeld
 4. Klik na een paar minuten op **vernieuwen** en klik vervolgens nogmaals op het aangepaste domein om de voortgang van het inrichten van het certificaat te bekijken. 
 
 > [!WARNING]
-> Het inschakelen van HTTPS voor een aangepast domein kan enkele minuten duren en is ook afhankelijk van de validatie van domein eigendom als de CNAME niet rechtstreeks is toegewezen aan `<name>.azurefd.net`de voor deur van de host. Meer informatie over [het inschakelen van HTTPS voor een aangepast domein](./front-door-custom-domain-https.md).
+> Het inschakelen van HTTPS voor een aangepast domein kan enkele minuten duren en is ook afhankelijk van de validatie van domein eigendom als de CNAME niet rechtstreeks is toegewezen aan de voor deur van de host `<name>.azurefd.net` . Meer informatie over [het inschakelen van HTTPS voor een aangepast domein](./front-door-custom-domain-https.md).
 
 ## <a name="configure-the-routing-rules-for-the-custom-domain"></a>De routerings regels voor het aangepaste domein configureren
 

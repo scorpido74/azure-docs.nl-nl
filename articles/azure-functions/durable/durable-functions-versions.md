@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152887"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807845"
 ---
 # <a name="durable-functions-versions-overview"></a>Overzicht van Durable Functions versies
 
@@ -50,19 +50,19 @@ Installeer versie 2. x van de [uitbrei ding voor de Durable functions bindingen]
 
 Durable Functions 2. x introduceert diverse belang rijke wijzigingen. Durable Functions 1. x-toepassingen zijn niet compatibel met Durable Functions 2. x zonder code wijzigingen. In deze sectie vindt u enkele van de wijzigingen die u moet aanbrengen bij het upgraden van de functies van versie 1. x naar 2. x.
 
-#### <a name="hostjson-schema"></a>Host. json-schema
+#### <a name="hostjson-schema"></a>Host.jsop schema
 
-Durable Functions 2. x maakt gebruik van een nieuw host. json-schema. De belangrijkste wijzigingen van 1. x zijn onder andere:
+Durable Functions 2. x maakt gebruik van een nieuwe host.jsop schema. De belangrijkste wijzigingen van 1. x zijn onder andere:
 
 * `"storageProvider"`(en de `"azureStorage"` Subsectie) voor Storage-specifieke configuratie.
 * `"tracing"`voor configuratie van tracering en logboek registratie.
 * `"notifications"`(en de `"eventGrid"` Subsectie) voor configuratie van gebeurtenis raster meldingen.
 
-Zie de [referentie documentatie voor Durable functions host. json](durable-functions-bindings.md#durable-functions-2-0-host-json) voor meer informatie.
+Zie de [Durable Functions host.jsin referentie documentatie](durable-functions-bindings.md#durable-functions-2-0-host-json) voor meer informatie.
 
 #### <a name="default-taskhub-name-changes"></a>Naam wijzigingen standaard taskhub
 
-Als in versie 1. x de naam van een taak-hub niet is opgegeven in host. json, werd deze standaard ingesteld op ' DurableFunctionsHub '. In versie 2. x is de naam van de standaard taak-hub nu afgeleid van de naam van de functie-app. Als u daarom geen naam van een taak-hub hebt opgegeven bij het upgraden naar 2. x, wordt uw code uitgevoerd met de nieuwe taak hub en worden alle in-Flight-indelingen niet meer verwerkt door een toepassing. U kunt dit probleem omzeilen door de naam van uw taak-hub expliciet in te stellen op de standaard waarde van ' DurableFunctionsHub '. u kunt ook de [implementatie handleiding voor nul-downtime](durable-functions-zero-downtime-deployment.md) volgen voor meer informatie over het afhandelen van belang rijke wijzigingen voor in-Flight-indelingen.
+Als in versie 1. x de naam van een taak-hub niet is opgegeven in host.js, werd deze standaard ingesteld op ' DurableFunctionsHub '. In versie 2. x is de naam van de standaard taak-hub nu afgeleid van de naam van de functie-app. Als u daarom geen naam van een taak-hub hebt opgegeven bij het upgraden naar 2. x, wordt uw code uitgevoerd met de nieuwe taak hub en worden alle in-Flight-indelingen niet meer verwerkt door een toepassing. U kunt dit probleem omzeilen door de naam van uw taak-hub expliciet in te stellen op de standaard waarde van ' DurableFunctionsHub '. u kunt ook de [implementatie handleiding voor nul-downtime](durable-functions-zero-downtime-deployment.md) volgen voor meer informatie over het afhandelen van belang rijke wijzigingen voor in-Flight-indelingen.
 
 #### <a name="public-interface-changes-net-only"></a>Wijzigingen in de open bare interface (alleen .NET)
 
@@ -77,8 +77,12 @@ De volgende tabel bevat de belangrijkste wijzigingen:
 | `DurableActivityContext` of `DurableActivityContextBase` | `IDurableActivityContext` |
 | `OrchestrationClientAttribute` | `DurableClientAttribute` |
 
-Als een abstracte basis klasse virtuele methoden bevatte, zijn deze virtuele methoden vervangen door extensie methoden die zijn gedefinieerd in `DurableContextExtensions`.
+Als een abstracte basis klasse virtuele methoden bevatte, zijn deze virtuele methoden vervangen door extensie methoden die zijn gedefinieerd in `DurableContextExtensions` .
 
-#### <a name="functionjson-changes-javascript-and-c-script"></a>functie. json-wijzigingen (Java script en C#-script)
+#### <a name="functionjson-changes-javascript-and-c-script"></a>function.jsop wijzigingen (Java script en C#-script)
 
-In Durable Functions 1. x gebruikt de Orchestrator-client binding een `type` van. `orchestrationClient` In plaats daarvan wordt versie `durableClient` 2. x gebruikt.
+In Durable Functions 1. x gebruikt de Orchestrator-client binding een `type` van `orchestrationClient` . In plaats daarvan wordt versie 2. x gebruikt `durableClient` .
+
+#### <a name="raise-event-changes"></a>Gebeurtenis wijzigingen verhogen
+
+In Durable Functions 1. x, die de [Raise Event](durable-functions-external-events.md#send-events) -API aanroept en een exemplaar opgeeft dat niet bestaat, resulteerde in een stille fout. Vanaf 2. x, waardoor een gebeurtenis naar een niet-bestaande indeling wordt verhoogd, treedt er een uitzonde ring op.

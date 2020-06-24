@@ -1,33 +1,36 @@
 ---
-title: Controle lijst voor het maken van SaaS-aanbiedingen-commerciële Marketplace voor Azure
-description: De details die u kunt opgeven in het proces voor het maken van SaaS-aanbiedingen. -Commerciële Marketplace voor Azure
+title: Controle lijst voor het maken van SaaS-aanbiedingen in micro soft Commercial Marketplace
+description: De details die u kunt opgeven in het proces voor het maken van SaaS-aanbiedingen in Partner Center.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/08/2020
+ms.openlocfilehash: c34eee74070dfb137311867615f55a7c89522cd5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850008"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708986"
 ---
-# <a name="saas-offer-creation-checklist"></a>Controlelijst voor SaaS-aanbieding maken
+# <a name="saas-offer-creation-checklist-in-partner-center"></a>Controle lijst voor het maken van SaaS-aanbiedingen in partner centrum
 
-Het proces voor het maken van SaaS-aanbiedingen leidt u door meerdere pagina's. Hier vindt u de details die u op elke pagina kunt opgeven, met koppelingen voor meer informatie over elk item.
+Het proces voor het maken van SaaS-aanbiedingen leidt u door meerdere pagina's.  Hier vindt u de details die u op elke pagina kunt opgeven, met koppelingen voor meer informatie over elk item.
 
-De items die u moet opgeven of opgeven, worden hieronder vermeld. Sommige gebieden zijn optioneel of bevatten standaard waarden, die u naar wens kunt wijzigen. U hoeft niet aan deze secties te werken in de volg orde die hier wordt vermeld.
+De items die u moet opgeven of opgeven, worden hieronder vermeld.  Sommige gebieden zijn optioneel of bevatten standaard waarden, die u naar wens kunt wijzigen.  U hoeft niet aan deze secties te werken in de volg orde die hier wordt vermeld.
+
+>[!Note]
+>Als u een voor transactable SaaS-aanbieding maakt, zorg er dan voor dat u integratie implementeert met [SaaS-fulfillment-api's](./pc-saas-fulfillment-apis.md).  Integratie met de Api's is de enige manier om de trans acties op Marketplace goed te laten werken.
 
 | **Item**    | **Doel**  |
 | :---------- | :-------------------|
 | [**Nieuwe aanbieding modaal**](#new-offer-modal) | Verzamelt identiteits gegevens van de aanbieding.  |
 | [Pagina aanbieding instellen](#offer-setup-page) | Met kunt u zich aanmelden voor belang rijke functies en kiezen hoe u uw aanbieding via micro soft wilt verkopen.  |
 | [Eigenschappen pagina](#properties-page) | Definieer de categorieën en industrieën die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, de juridische contracten die uw aanbieding ondersteunen en uw app-versie. |
-| [Aanbiedings pagina](#offer-listing-page) | Definieer de details van de aanbieding die moeten worden weer gegeven op Marketplace, inclusief beschrijvingen van uw aanbieding en marketing assets. |
-| [Voorbeeld pagina](#preview-page) | Definieer een beperkte preview-doel groep voor het vrijgeven van uw aanbieding voordat u uw aanbieding Live publiceert naar de bredere doel groep (en) van de Marketplace. |
-| [Pagina technische configuratie aanbieding](#technical-configuration-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen. Definieer de technische details (URL-pad, webhook, Tenant-ID en App-ID) die worden gebruikt om verbinding te maken met uw aanbieding. |
+| [Aanbiedings pagina](#offer-listing-page) | Definieer de details van de aanbieding die moeten worden weer gegeven op Marketplace, inclusief beschrijvingen van uw aanbieding en marketing assets.|
+| [Voorbeeld pagina](#preview-page) | Definieer een beperkte preview-doel groep voor het vrijgeven van uw aanbieding voordat u uw aanbieding Live publiceert naar de bredere doel groep (en) van de Marketplace.|
+| [Pagina technische configuratie aanbieding](#technical-configuration-page)  |  Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen.  Definieer de technische details (URL van de landings pagina, de URL van de verbindings webhook, de Azure AD-Tenant-ID en de Azure AD-App-ID) die wordt gebruikt door Marketplace om verbinding te maken met uw aanbieding.  Deze para meters zijn vereist om correct te kunnen integreren met SaaS-uitvoering en de Marketplace-Api's met gemeetde facturering.|
 | [**Nieuw plan modaal**](#plan-identity-modal) | Verzamelt informatie over plan identiteit.  |
 | [Aanbiedings pagina plannen](#plan-listing-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen. Definieer de details die worden gebruikt om het abonnement in de Marketplace weer te geven.  |
 | [Pagina met prijs & Beschik baarheid plannen](#plan-pricing--availability-page)  | Alleen beschikbaar als u selecteert om het aanbod via micro soft te verkopen.  Verzamelt de bedrijfs kenmerken (prijs model), de beschik baarheid van de doel groep en de markt voor elk abonnement (versie) van uw aanbieding.  |
@@ -80,7 +83,7 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 | :---------------- | :-----------| 
 | Name  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
-| Beschrijving  | Vereist, Maxi maal 3000 tekens. |
+| Description  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Tref woorden zoeken  | Optioneel, aanbevolen, Maxi maal 3 tref woorden. |
@@ -150,7 +153,7 @@ Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbied
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Beschrijving  | Vereist. |
+| Description  | Vereist. |
 | Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. moet PDF-indeling hebben. |
 | Video naam, URL + miniatuur  | Optioneel, aanbevolen. De miniatuur moet 533 x 324 zijn in JPGP-of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 

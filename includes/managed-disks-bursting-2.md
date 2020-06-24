@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 850ace7af15ab37ab9a4a124d20ed4588771f4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0b278841fc3693d79821d25caf7c9a208341dea1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594407"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242146"
 ---
 ## <a name="common-scenarios"></a>Algemene scenario's
 De volgende scenario's kunnen aanzienlijk van bursting profiteren:
@@ -24,9 +24,11 @@ De volgende scenario's kunnen aanzienlijk van bursting profiteren:
 ## <a name="bursting-flow"></a>Bursting-stroom
 Het bursting-krediet systeem is op dezelfde manier van toepassing op het niveau van de virtuele machine en op het schijf niveau. Uw bron, ofwel een virtuele machine of schijf, begint met volledig in voor Raad gecrediteerd tegoed. Met deze tegoeden kunt u 30 minuten op het maximum aantal bursts bellen. Bursting-tegoeden worden verzameld wanneer uw resource wordt uitgevoerd onder de opslag limieten voor de prestaties van de schijf. Voor alle IOPS en MB/s die door uw resource worden gebruikt, is de prestatie limiet die u begint om tegoed te accumuleren. Als uw resource transitorische tegoeden heeft om te gebruiken voor burstisatie en uw werk belasting de extra prestaties nodig heeft, kan uw resource die tegoeden gebruiken om de prestaties van de schijf te verhalen om aan de vraag te voldoen.
 
+
+
 ![Bucket diagram voor burstisatie](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Een ding om te weten over burst accumulatie is dat deze verschilt voor elke resource, omdat deze is gebaseerd op de ongebruikte IOPS en MB/s onder hun prestatie aantallen. Dit betekent dat hogere prestatie producten met een basis lijn hun burst-bedragen sneller kunnen samen voegen dan lagere basis producten. Bijvoorbeeld: een P1-schijf stationair draaien zonder activiteit zal 120 IOPS per seconde toenemen, terwijl een P20-schijf 2.300 IOPS per seconde toeneemt tijdens het stationair draaien zonder activiteit.
+Volledig aan u om te bepalen hoe u de 30 minuten van de bursting wilt gebruiken. U kunt deze gedurende 30 minuten opeenvolgend of per dag gebruiken. Wanneer het product wordt geïmplementeerd, wordt het voltooid met volledige tegoeden en wanneer het de tegoeden afneemt, neemt het minder dan een dag in beslag. U kunt hun burstse tegoeden verzamelen en best Eden aan uw keuze en de Bucket van 30 minuten hoeft niet opnieuw te worden gevuld naar burst. Een ding om te weten over burst accumulatie is dat deze verschilt voor elke resource, omdat deze is gebaseerd op de ongebruikte IOPS en MB/s onder hun prestatie aantallen. Dit betekent dat hogere prestatie producten met een basis lijn hun burst-bedragen sneller kunnen samen voegen dan lagere basis producten. Bijvoorbeeld: een P1-schijf stationair draaien zonder activiteit zal 120 IOPS per seconde toenemen, terwijl een P20-schijf 2.300 IOPS per seconde toeneemt tijdens het stationair draaien zonder activiteit.
 
 ## <a name="bursting-states"></a>Bursting-statussen
 Er zijn drie statussen die uw resource kan hebben met bursting ingeschakeld:
@@ -70,7 +72,7 @@ Vervolgens moet de toepassing een batch taak verwerken die 192 MB/s vereist. 2 M
 - 2 P10-gegevens schijven 
     - Ingericht (e) MB/s: 250
 
- Na de eerste keer opstarten wordt een toepassing uitgevoerd op de VM en heeft deze een niet-kritieke werk belasting. Voor deze werk belasting is 30 MB/s vereist die gelijkmatig over alle schijven wordt verdeeld ![: bursting machine unburstd Disk Idle niet-inactief](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
+ Na de eerste keer opstarten wordt een toepassing uitgevoerd op de VM en heeft deze een niet-kritieke werk belasting. Voor deze werk belasting is 30 MB/s vereist die gelijkmatig over alle schijven wordt verdeeld: ![ bursting machine unburstd Disk Idle niet-inactief](media/managed-disks-bursting/bursting-vm-nonbursting-disk/burst-vm-nonbursting-disk-normal.jpg)
 
 Vervolgens moet de toepassing een batch taak verwerken die 600 MB/s vereist. De Standard_L8s_v2-bursts om aan deze vraag te voldoen en vervolgens aanvragen naar de schijven gelijkmatig te verdelen over P50 schijven:
 

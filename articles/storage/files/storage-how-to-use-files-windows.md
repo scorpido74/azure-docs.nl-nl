@@ -4,15 +4,15 @@ description: Informatie over hoe u een Azure-bestandsshare gebruikt met Windows 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4fef6102ac2ee69926c1c56af338b6e92670dd71
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 014b980470ee8d0a25df2d6c10f9aa37270d83ab
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773097"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214307"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -30,8 +30,8 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 | Windows 8.1 | SMB 3.0 | Ja | Ja |
 | Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
 | Windows Server 2012 | SMB 3.0 | Ja | Ja |
-| Windows 7<sup>3</sup> | SMB 2.1 | Ja | Nee |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ja | Nee |
+| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Nee |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Nee |
 
 <sup>1</sup> Windows 10, versies 1507, 1607, 1709, 1803, 1809, 1903 en 1909.  
 <sup>2</sup> Windows Server, versies 1809, 1903 en 1909.  
@@ -41,41 +41,8 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 > We raden altijd aan de meest recente KB voor uw versie van Windows te nemen.
 
 ## <a name="prerequisites"></a>Vereisten 
-* **Naam van opslag account**: als u een Azure-bestands share wilt koppelen, hebt u de naam van het opslag account nodig.
 
-* **Sleutel van het opslag account**: voor het koppelen van een Azure-bestands share hebt u de primaire (of secundaire) opslag sleutel nodig. SAS-sleutels worden momenteel niet ondersteund voor koppelen.
-
-* **Zorg ervoor dat poort 445 open is**: het SMB-protocol vereist dat TCP-poort 445 open is; verbindingen mislukken als poort 445 is geblokkeerd. Met de cmdlet `Test-NetConnection` kunt u controleren of uw firewall poort 445 blokkeert. Hier vindt u meer informatie over de verschillende manieren waarop u de [tijdelijke oplossing poort 445 kunt blok keren](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
-
-    In de volgende Power shell-code wordt ervan uitgegaan dat de module Azure PowerShell is geïnstalleerd, raadpleegt u [Azure PowerShell module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie. Vergeet niet om `<your-storage-account-name>` en `<your-resource-group-name>` te vervangen door de betreffende namen van uw opslagaccount.
-
-    ```powershell
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
-
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-    ```
-
-    Als de verbinding is geslaagd, hoort u de volgende uitvoer te zien:
-
-    ```
-    ComputerName     : <storage-account-host-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
-    ```
-
-    > [!Note]  
-    > De bovenstaande opdracht retourneert het huidige IP-adres van het opslagaccount. Dit IP-adres blijft niet noodzakelijkerwijs hetzelfde en kan op elk moment veranderen. Neem dit IP-adres niet op in scripts of in de firewallconfiguratie. 
+Zorg ervoor dat poort 445 open is: het SMB-protocol vereist dat TCP-poort 445 open is; verbindingen mislukken als poort 445 is geblokkeerd. U kunt controleren of de firewall poort 445 blokkeert met de `Test-NetConnection` cmdlet. Zie de sectie [Oorzaak 1: poort 445 is geblokkeerd](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked) van de Windows-probleemoplossings gids voor meer informatie over manieren om een geblokkeerde 445-poort te omzeilen.
 
 ## <a name="using-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 Als u een Azure-bestandsshare met Windows wilt gebruiken, moet u deze koppelen, wat betekent dat u er een stationsletter of koppelingspunt aan moet toewijzen. U kunt ook toegang krijgen tot de share via het [UNC-pad](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
@@ -84,97 +51,31 @@ In dit artikel wordt de sleutel van het opslag account gebruikt om toegang te kr
 
 Een algemeen patroon om Line-Of-Business-toepassingen die een SMB-bestandsshare van Azure verwachten te verplaatsen, is om een Azure-bestandsshare te gebruiken als alternatief voor het uitvoeren van een toegewezen Windows-bestandsserver in een virtuele Azure-machine. Als u een Line-Of-Business-toepassing succesvol wilt migreren zodat deze een Azure-bestandsshare gebruikt, is een belangrijk aandachtspunt dat veel Line-of-Business-toepassingen worden uitgevoerd in de context van een toegewezen serviceaccount met beperkte systeemmachtigingen, in plaats van het beheerdersaccount van de virtuele machine. U moet er daarom voor zorgen dat u de referenties voor de Azure-bestandsshare koppelt/opslaat in de context van een serviceaccount in plaats van uw beheerdersaccount.
 
-### <a name="persisting-azure-file-share-credentials-in-windows"></a>Permanente referenties voor een Azure-bestandsshare in Windows  
-Met het hulpprogramma [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) kunt u de referenties van uw opslagaccount bewaren in Windows. Dit betekent dat wanneer u toegang wilt krijgen tot een Azure-bestandsshare via het UNC-pad of als u de share wilt koppelen, u uw referenties niet hoeft op te geven. Als u de referenties van uw opslagaccount wilt bewaren, voert u de volgende PowerShell-opdrachten uit, waarbij u `<your-storage-account-name>` en `<your-resource-group-name>` vervangt waar dat nodig is.
+### <a name="mount-the-azure-file-share"></a>De Azure-bestands share koppelen
 
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
+De Azure Portal biedt u een script dat u kunt gebruiken om uw bestands share rechtstreeks aan een host te koppelen. Het is raadzaam dit meegeleverde script te gebruiken.
 
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
+Dit script ophalen:
 
-# The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
-# consume the appropriate values from the storage account variables. The value given to the add parameter of the
-# cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
-# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
-# clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
-```
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Navigeer naar het opslag account dat de bestands share bevat die u wilt koppelen.
+1. Selecteer **Bestands shares**.
+1. Selecteer de bestands share die u wilt koppelen.
 
-U kunt controleren of het hulpprogramma cmdkey uw referenties voor het opslagaccount heeft opgeslagen met de lijstparameter:
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="Hierbij":::
 
-```powershell
-cmdkey /list
-```
+1. Selecteer **Verbinden**.
 
-Als de referenties voor uw Azure-bestandsshare succesvol zijn opgeslagen, hoort de verwachte uitvoer er als volgt uit te zien (er kunnen meerdere sleutels worden bewaard in de lijst):
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Scherm afbeelding van het verbindings pictogram voor de bestands share.":::
 
-```
-Currently stored credentials:
+1. Selecteer de stationsletter waaraan u de share wilt koppelen.
+1. Kopieer het meegeleverde script.
 
-Target: Domain:target=<storage-account-host-name>
-Type: Domain Password
-User: AZURE\<your-storage-account-name>
-```
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Voorbeeld tekst":::
 
-U zou nu toegang moeten hebben tot de share of de share moeten kunnen koppelen zonder extra referenties op te geven.
+1. Plak het script in een shell op de host waaraan u de bestands share wilt koppelen en voer dit uit.
 
-#### <a name="advanced-cmdkey-scenarios"></a>Geavanceerde cmdkey-scenario's
-Er kunnen nog twee cmdkey-scenario's worden overwogen: referenties voor een andere gebruiker op de machine opslaan, zoals een serviceaccount, en referenties opslaan op een externe machine met externe toegang via PowerShell.
-
-Het opslaan van de referenties voor een andere gebruiker op de computer is eenvoudig: als u zich aanmeldt bij uw account, voert u gewoon de volgende Power shell-opdracht uit:
-
-```powershell
-$password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "<service-account-username>", $password
-Start-Process -FilePath PowerShell.exe -Credential $credential -LoadUserProfile
-```
-
-Hiermee wordt een nieuw PowerShell-venster in de gebruikerscontext van uw serviceaccount (of gebruikersaccount) geopend. U kunt vervolgens het cmdkey-hulpprogramma gebruiken zoals [hierboven](#persisting-azure-file-share-credentials-in-windows) is beschreven.
-
-De referenties op een externe machine opslaan via externe toegang via Powershell is echter niet mogelijk, omdat cmdkey geen toegang tot de referentieopslag toestaat wanneer de gebruiker zich heeft aangemeld via externe toegang via PowerShell, zelfs niet voor aanvullingen. We raden u aan om u bij de machine aan te melden met [Extern bureaublad](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows).
-
-### <a name="mount-the-azure-file-share-with-powershell"></a>De Azure-bestandsshare koppelen met PowerShell
-Voer de volgende opdrachten uit vanaf een gewone Power shell-sessie (niet een verhoogde bevoegdheid) om de Azure-bestands share te koppelen. Vergeet niet om `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` en `<desired-drive-letter>` te vervangen door de juiste informatie.
-
-```powershell
-$resourceGroupName = "<your-resource-group-name>"
-$storageAccountName = "<your-storage-account-name>"
-$fileShareName = "<your-file-share-name>"
-
-# These commands require you to be logged into your Azure account, run Login-AzAccount if you haven't
-# already logged in.
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName
-$fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object { 
-    $_.Name -eq $fileShareName -and $_.IsSnapshot -eq $false
-}
-
-if ($fileShare -eq $null) {
-    throw [System.Exception]::new("Azure file share not found")
-}
-
-# The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
-# <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
-# used because non-Public Azure regions, such as sovereign clouds or Azure Stack deployments, will have different 
-# hosts for Azure file shares (and other storage resources).
-$password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password
-New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($fileShare.StorageUri.PrimaryUri.Host)\$($fileShare.Name)" -Credential $credential -Persist
-```
-
-> [!Note]  
-> Als u de optie `-Persist` in de cmdlet `New-PSDrive` gebruikt, zorgt dat er alleen voor dat de bestandsshare bij opstarten kan worden ontkoppeld als de referenties zijn bewaard. U kunt de referenties bewaren met de cmdkey, zoals [eerder is beschreven](#persisting-azure-file-share-credentials-in-windows). 
-
-Indien gewenst, kunt u de Azure-bestandsshare ontkoppelen met de volgende PowerShell-cmdlet.
-
-```powershell
-Remove-PSDrive -Name <desired-drive-letter>
-```
+U hebt nu uw Azure-bestands share gekoppeld.
 
 ### <a name="mount-the-azure-file-share-with-file-explorer"></a>De Azure-bestandsshare koppelen met de Verkenner
 > [!Note]  
@@ -182,7 +83,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Open Verkenner. Dit kan worden gedaan door deze te openen vanuit het menu Start of door op de snelkoppeling Win + E te drukken.
 
-1. Ga naar het item **Dit PC** aan de linkerkant van het venster. Hiermee wijzigt u de menu's die beschikbaar zijn in het lint. Selecteer in het menu computer de optie **netwerk station toewijzen**.
+1. Navigeer naar **deze PC** aan de linkerkant van het venster. Hiermee wijzigt u de menu's die beschikbaar zijn in het lint. Selecteer in het menu computer de optie **netwerk station toewijzen**.
     
     ![Een schermafbeelding van de vervolgkeuzelijst 'Netwerkverbinding maken'](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
@@ -201,7 +102,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 1. Wanneer u klaar bent om de Azure-bestandsshare te ontkoppelen, kunt u dit doen door met de rechtermuisknop in de Verkenner op de vermelding voor de share onder **Netwerklocaties** te klikken en **Verbinding verbreken** te selecteren.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Toegang tot momentopnamen van Windows-shares
-Als u een momentopname van een share hebt gemaakt, ofwel handmatig ofwel automatisch met behulp van een script of een service zoals Azure Backup, kunt u eerdere versies van een share, een map of een bepaald bestand op een bestandsshare van Windows bekijken. U kunt een moment opname van een share maken vanuit de [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)en [Azure cli](storage-how-to-use-files-cli.md).
+Als u een momentopname van een share hebt gemaakt, ofwel handmatig ofwel automatisch met behulp van een script of een service zoals Azure Backup, kunt u eerdere versies van een share, een map of een bepaald bestand op een bestandsshare van Windows bekijken. U kunt een moment opname van een share maken met behulp van [Azure PowerShell](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md)of de [Azure Portal](storage-how-to-use-files-portal.md).
 
 #### <a name="list-previous-versions"></a>Vorige versies weergeven
 Blader naar het item of het bovenliggende item dat moet worden teruggezet. Dubbelklik om naar de gewenste map te gaan. Klik er met de rechtermuisknop op en selecteer **Eigenschappen** in het menu.
@@ -299,6 +200,6 @@ Nadat u deze registersleutel hebt gemaakt, moet u uw server opnieuw opstarten om
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
-- [Planning voor de implementatie van Azure Files](storage-files-planning.md)
+- [Implementatie van Azure Files plannen](storage-files-planning.md)
 - [Veelgestelde vragen](../storage-files-faq.md)
 - [Problemen oplossen in Windows](storage-troubleshoot-windows-file-connection-problems.md)      

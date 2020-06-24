@@ -9,18 +9,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9570724fdff3018c1dbcf76c15a9db8db0d68364
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447825"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982659"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Behoud de privacy van gegevens met behulp van differentiële privacy en het WhiteNoise-pakket
 
 Meer informatie over de differentiële privacy en hoe het WhiteNoise-pakket u kan helpen bij het implementeren van differentiatie van een differentieel particulier systeem.
 
 Als de hoeveelheid gegevens die een organisatie voor het verzamelen en gebruiken van analyses toeneemt, is dit van belang voor privacy en beveiliging. Voor analyses zijn gegevens vereist. Normaal gesp roken worden de gegevens die worden gebruikt om modellen te trainen, nauw keuriger. Wanneer persoonlijke gegevens voor deze analyses worden gebruikt, is het met name belang rijk dat de gegevens gedurende het hele gebruik persoonlijk blijven.
+
+> [!NOTE]
+> De naam van de Toolkit wordt gewijzigd en de nieuwe naam wordt in de komende weken geïntroduceerd. 
 
 ## <a name="how-differential-privacy-works"></a>Hoe differentiële privacy werkt
 

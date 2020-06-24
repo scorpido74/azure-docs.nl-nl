@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: e424163a2fc07d92eee110396cf8cce57e686622
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 119f26f8d5a425462382a873d7ca4bcfdd6f3d03
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431698"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214499"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Geautomatiseerde machine learning-resultaten begrijpen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Meer informatie over:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Maak een experiment voor uw geautomatiseerde machine learning uitvoeren, hetzij met de SDK, hetzij in Azure Machine Learning Studio.
 
@@ -76,7 +76,7 @@ Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk class
 
 De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling voor een classificatie taak.
 
-Metrisch|Beschrijving|Berekening|Extra para meters
+Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--
 AUC_Macro| AUC is het gebied onder de ontvanger van het besturings systeem. Macro is het reken kundige gemiddelde van de AUC voor elke klasse.  | [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Gem = "macro"|
 AUC_Micro| AUC is het gebied onder de ontvanger van het besturings systeem. Micro wordt wereld wijd berekend door de werkelijke positieven en onwaare positieven van elke klasse te combi neren.| [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | gemiddelde = "micro"|
@@ -218,7 +218,7 @@ Thee de volgende metrische gegevens en grafieken zijn beschikbaar voor elk regre
 
 De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling voor een regressie-of prognose taak.
 
-|Metrisch|Beschrijving|Berekening|Extra para meters
+|Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--|
 explained_variance|De uitleg afwijking is de verhouding waarmee een wiskundig model account voor de variatie van een bepaalde gegevensset is gedefinieerd. Het is het percentage afname van de oorspronkelijke gegevens tot de variantie van de fouten. Wanneer het gemiddelde van de fouten 0 is, is deze gelijk aan de uitleg afwijking.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Geen|
 r2_score|R2 is de coëfficiënt voor het bepalen van de berekening of het percentage verlaging in kwadratische fouten vergeleken met een basis lijn model dat het gemiddelde uitvoert. |[Berekening](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Geen|
@@ -265,6 +265,9 @@ Een goed model heeft meestal een klok curve of fouten rond nul.
 ## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a>De interpretatie van modellen en de urgentie van het onderdeel
 Automated ML biedt een machine learning interpretable dash board voor uw uitvoeringen.
 Zie voor meer informatie over het inschakelen van functies voor het maken van interpretaties de [procedures](how-to-machine-learning-interpretability-automl.md) voor het inschakelen van de functie voor het maken van interpretiteit in geautomatiseerde ml experimenten.
+
+> [!NOTE]
+> Het ForecastTCN-model wordt momenteel niet ondersteund door de uitleg-client. Dit model retourneert geen uitzonderings dashboard als het wordt geretourneerd als het beste model en biedt geen ondersteuning voor uitleg over de uitvoering van een on-demand.
 
 ## <a name="next-steps"></a>Volgende stappen
 

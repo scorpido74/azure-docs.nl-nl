@@ -7,13 +7,13 @@ author: rohinkoul
 ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
-ms.topic: conceptual
-ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: bd40b3400b2a1c09be8fabd1201bedc7043bf19b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79365165"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709093"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Een DNS-zonebestand importeren en exporteren met de Azure CLI
 
@@ -43,7 +43,7 @@ Als u een zone bestand importeert, wordt er in Azure DNS een nieuwe zone gemaakt
 
 * Standaard worden bestaande en nieuwe record sets samengevoegd. Identieke records in een samengevoegde recordset worden ontdubbeld.
 * Wanneer record sets worden samengevoegd, wordt de TTL (time to Live) van bestaande record sets gebruikt.
-* SOA-para meters (start of Authority `host`) (met uitzonde ring van) worden altijd opgehaald uit het geïmporteerde zone bestand. Voor de naam server record die is ingesteld op de zone Apex, wordt de TTL altijd opgehaald uit het geïmporteerde zone bestand.
+* SOA-para meters (start of Authority) (met uitzonde ring van `host` ) worden altijd opgehaald uit het geïmporteerde zone bestand. Voor de naam server record die is ingesteld op de zone Apex, wordt de TTL altijd opgehaald uit het geïmporteerde zone bestand.
 * Een geïmporteerde CNAME-record vervangt geen bestaande CNAME-record met dezelfde naam.  
 * Als er een conflict optreedt tussen een CNAME-record en een andere record met dezelfde naam, maar een ander type (ongeacht de bestaande of nieuwe), blijft de bestaande record behouden. 
 
@@ -51,11 +51,11 @@ Als u een zone bestand importeert, wordt er in Azure DNS een nieuwe zone gemaakt
 
 De volgende opmerkingen bevatten aanvullende technische details over het importeren van de zone.
 
-* De `$TTL` instructie is optioneel en wordt ondersteund. Als er `$TTL` geen instructie wordt gegeven, worden records zonder expliciete TTL geïmporteerd in een standaard-ttl van 3600 seconden. Wanneer twee records in dezelfde recordset verschillende TTLs opgeven, wordt de lagere waarde gebruikt.
-* De `$ORIGIN` instructie is optioneel en wordt ondersteund. Als er `$ORIGIN` geen is ingesteld, wordt de gebruikte standaard waarde de zone naam die is opgegeven op de opdracht regel (plus het afsluitende '. ').
-* De `$INCLUDE` and `$GENERATE` -instructies worden niet ondersteund.
+* De `$TTL` instructie is optioneel en wordt ondersteund. Als er geen `$TTL` instructie wordt gegeven, worden records zonder expliciete TTL geïmporteerd in een standaard-TTL van 3600 seconden. Wanneer twee records in dezelfde recordset verschillende TTLs opgeven, wordt de lagere waarde gebruikt.
+* De `$ORIGIN` instructie is optioneel en wordt ondersteund. Als er geen `$ORIGIN` is ingesteld, wordt de gebruikte standaard waarde de zone naam die is opgegeven op de opdracht regel (plus het afsluitende '. ').
+* De `$INCLUDE` and- `$GENERATE` instructies worden niet ondersteund.
 * Deze record typen worden ondersteund: A, AAAA, CAA, CNAME, NZ, NS, SOA, SRV en TXT.
-* De SOA-record wordt automatisch gemaakt door Azure DNS wanneer er een zone wordt gemaakt. Wanneer u een zone bestand importeert, worden alle SOA-para meters uit het zone bestand `host` gehaald, *met uitzonde ring* van de para meter. Deze para meter gebruikt de waarde die wordt verschaft door Azure DNS. Dit komt omdat deze para meter moet verwijzen naar de primaire naam server van Azure DNS.
+* De SOA-record wordt automatisch gemaakt door Azure DNS wanneer er een zone wordt gemaakt. Wanneer u een zone bestand importeert, worden alle SOA-para meters uit het zone bestand gehaald, *met uitzonde ring* van de `host` para meter. Deze para meter gebruikt de waarde die wordt verschaft door Azure DNS. Dit komt omdat deze para meter moet verwijzen naar de primaire naam server van Azure DNS.
 * De naam server record die is ingesteld op de zone Apex wordt ook automatisch gemaakt door Azure DNS wanneer de zone wordt gemaakt. Alleen de TTL van deze recordset wordt geïmporteerd. Deze records bevatten de naam server namen die worden verschaft door Azure DNS. De record gegevens worden niet overschreven door de waarden die zijn opgenomen in het geïmporteerde zone bestand.
 * Tijdens de open bare preview ondersteunt Azure DNS alleen TXT-records met één teken reeks. TXT-records met een teken reeks worden samengevoegd tot 255 tekens.
 
@@ -75,7 +75,7 @@ Waarden:
 
 Als er geen zone met deze naam bestaat in de resource groep, wordt deze voor u gemaakt. Als de zone al bestaat, worden de geïmporteerde record sets samengevoegd met bestaande record sets. 
 
-### <a name="step-1-import-a-zone-file"></a>Step 1. Een zone bestand importeren
+### <a name="step-1-import-a-zone-file"></a>Stap 1. Een zone bestand importeren
 
 Een zone bestand voor de zone **contoso.com**importeren.
 
@@ -85,7 +85,7 @@ Een zone bestand voor de zone **contoso.com**importeren.
     az group create --group myresourcegroup -l westeurope
     ```
 
-2. Als u de zone **contoso.com** van het bestand **contoso. com. txt** wilt importeren in een nieuwe DNS-zone in de resource groep **myresourcegroup**, voert u `az network dns zone import`de opdracht uit.<BR>Met deze opdracht wordt het zone bestand geladen en geparseerd. De opdracht voert een reeks opdrachten uit op de Azure DNS-service om de zone en alle record sets in de zone te maken. De opdracht rapporteert de voortgang in het console venster, samen met eventuele fouten of waarschuwingen. Omdat record sets in de reeks worden gemaakt, kan het enkele minuten duren voordat een groot zone bestand is geïmporteerd.
+2. Als u de zone **contoso.com** uit het bestand **contoso.com.txt** wilt importeren in een nieuwe DNS-zone in de resource groep **myresourcegroup**, voert u de opdracht uit `az network dns zone import` .<BR>Met deze opdracht wordt het zone bestand geladen en geparseerd. De opdracht voert een reeks opdrachten uit op de Azure DNS-service om de zone en alle record sets in de zone te maken. De opdracht rapporteert de voortgang in het console venster, samen met eventuele fouten of waarschuwingen. Omdat record sets in de reeks worden gemaakt, kan het enkele minuten duren voordat een groot zone bestand is geïmporteerd.
 
     ```azurecli
     az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
@@ -101,8 +101,8 @@ Als u de DNS-zone wilt controleren nadat u het bestand hebt geïmporteerd, kunt 
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* U kunt de records weer geven met behulp van de `az network dns record-set ns list`Azure cli-opdracht.
-* U kunt gebruiken `nslookup` om de naam omzetting voor de records te controleren. Omdat de zone nog niet is gedelegeerd, moet u de juiste Azure DNS naam servers expliciet opgeven. In het volgende voor beeld ziet u hoe de naam server namen worden opgehaald die aan de zone zijn toegewezen. U ziet ook hoe u een query kunt uitvoeren op de www- `nslookup`record met behulp van.
+* U kunt de records weer geven met behulp van de Azure CLI-opdracht `az network dns record-set ns list` .
+* U kunt gebruiken `nslookup` om de naam omzetting voor de records te controleren. Omdat de zone nog niet is gedelegeerd, moet u de juiste Azure DNS naam servers expliciet opgeven. In het volgende voor beeld ziet u hoe de naam server namen worden opgehaald die aan de zone zijn toegewezen. U ziet ook hoe u een query kunt uitvoeren op de www-record met behulp van `nslookup` .
 
     ```azurecli
     az network dns record-set ns list -g myresourcegroup -z contoso.com  --output json 
@@ -171,7 +171,7 @@ Net als bij het importeren van de zone moet u zich eerst aanmelden, uw abonnemen
 
 ### <a name="to-export-a-zone-file"></a>Een zone bestand exporteren
 
-Als u de bestaande Azure DNS zone **contoso.com** in de resource groep **myresourcegroup** wilt exporteren naar het bestand **contoso. com. txt** (in de huidige map `azure network dns zone export`), voert u uit. Met deze opdracht wordt de Azure DNS-service aangeroepen om record sets in de zone op te sommen en de resultaten te exporteren naar een zone bestand dat met BIND compatibel is.
+Als u de bestaande Azure DNS zone **contoso.com** in de resource groep **myresourcegroup** wilt exporteren naar het bestand **contoso.com.txt** (in de huidige map), voert u uit `azure network dns zone export` . Met deze opdracht wordt de Azure DNS-service aangeroepen om record sets in de zone op te sommen en de resultaten te exporteren naar een zone bestand dat met BIND compatibel is.
 
 ```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt

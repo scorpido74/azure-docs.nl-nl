@@ -4,15 +4,15 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 749d7125c013f419197ef8243d2475e612dc81b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab4cc288f2a505baaa8f3a70db0a1fe76fb20c96
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619173"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84744065"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problemen met Azure Bastion oplossen
 
@@ -20,7 +20,7 @@ In dit artikel leest u hoe u problemen met Azure Bastion kunt oplossen.
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Kan geen NSG maken op AzureBastionSubnet
 
-**V:** Wanneer ik een NSG op het Azure Bastion-subnet probeer te maken, krijg ik de volgende fout melding: *' de <NSG name> netwerk beveiligings groep heeft niet de vereiste regels voor het Azure Bastion-subnet AzureBastionSubnet '*.
+**V:** Wanneer ik een NSG op het Azure Bastion-subnet probeer te maken, krijg ik de volgende fout melding: *' de netwerk beveiligings groep heeft <NSG name> niet de vereiste regels voor het Azure Bastion-subnet AzureBastionSubnet '*.
 
 **A:** Als u een NSG maakt en toepast op *AzureBastionSubnet*, moet u ervoor zorgen dat u de volgende regels in uw NSG hebt toegevoegd. Als u deze regels niet toevoegt, mislukt het maken/bijwerken van de NSG.
 
@@ -39,7 +39,7 @@ Zie [NSG-richt lijnen voor Azure Bastion](bastion-nsg.md)voor meer informatie.
 
 U kunt bijvoorbeeld de volgende opdracht gebruiken om een nieuwe RSA SSH-sleutel te maken:
 
-**ssh-keygen-t rsa-b 4096-C "email@domain.com"**
+**ssh-keygen-t rsa-b 4096-C " email@domain.com "**
 
 Uitvoer:
 
@@ -71,7 +71,7 @@ The key's randomart image is:
 
 **V:** Ik kan geen verbinding maken met mijn virtuele Windows-machine die lid is van een domein.
 
-**A:** Azure Bastion ondersteunt alleen aanmelden bij een domein in een gebruikers naam-wacht woord op basis van een domein. Wanneer u de domein referenties opgeeft in de Azure Portal, gebruikt u deusername@domainindeling UPN () in plaats van *domein\gebruikersnaam* om u aan te melden. Dit wordt ondersteund voor virtuele machines die lid zijn van een domein of een hybride lid (zowel een domein als een Azure AD-lid). Het wordt niet ondersteund voor virtuele machines die lid zijn van Azure AD.
+**A:** Azure Bastion ondersteunt alleen aanmelden bij een domein in een gebruikers naam-wacht woord op basis van een domein. Wanneer u de domein referenties opgeeft in de Azure Portal, gebruikt u de username@domain indeling UPN () in plaats van *domein\gebruikersnaam* om u aan te melden. Dit wordt ondersteund voor virtuele machines die lid zijn van een domein of een hybride lid (zowel een domein als een Azure AD-lid). Het wordt niet ondersteund voor virtuele machines die lid zijn van Azure AD.
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Problemen met bestands overdracht
 

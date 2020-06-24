@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0b938dc808d9b02ad4105d85a5b3125135c51d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74023075"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743759"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Beveiligings waarschuwingen configureren voor Azure-resource rollen in Privileged Identity Management
 
@@ -38,9 +38,9 @@ Selecteer een waarschuwing om een rapport weer te geven met een lijst met de geb
 
 | Waarschuwing | Severity | Trigger | Aanbeveling |
 | --- | --- | --- | --- |
-| **Te veel eigen aren toegewezen aan een resource** |Middelgroot |Te veel gebruikers hebben de rol van eigenaar. |Controleer de gebruikers in de lijst en wijs een aantal toe aan minder privilegede rollen. |
-| **Er zijn te veel permanente eigen aren toegewezen aan een resource** |Middelgroot |Te veel gebruikers zijn permanent toegewezen aan een rol. |Controleer de gebruikers in de lijst en wijs een aantal opnieuw toe om te activeren voor het gebruik van rollen. |
-| **Dubbele rol gemaakt** |Middelgroot |Meerdere rollen hebben hetzelfde criterium. |Gebruik slechts één van deze rollen. |
+| **Te veel eigen aren toegewezen aan een resource** |Normaal |Te veel gebruikers hebben de rol van eigenaar. |Controleer de gebruikers in de lijst en wijs een aantal toe aan minder privilegede rollen. |
+| **Er zijn te veel permanente eigen aren toegewezen aan een resource** |Normaal |Te veel gebruikers zijn permanent toegewezen aan een rol. |Controleer de gebruikers in de lijst en wijs een aantal opnieuw toe om te activeren voor het gebruik van rollen. |
+| **Dubbele rol gemaakt** |Normaal |Meerdere rollen hebben hetzelfde criterium. |Gebruik slechts één van deze rollen. |
 
 ### <a name="severity"></a>Severity
 

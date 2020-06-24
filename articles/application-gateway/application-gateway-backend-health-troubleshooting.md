@@ -4,15 +4,15 @@ description: Hierin wordt beschreven hoe u problemen met de back-end van de Azur
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 626f52aa8a14cd16d36bef8930cfb75654ef3f32
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628786"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808179"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
 ==================================================

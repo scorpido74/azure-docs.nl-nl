@@ -4,15 +4,15 @@ description: Stappen voor het configureren van waarschuwingen voor VPN Gateway d
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 95c55242baf2ceb3620ed71026af2bad0195c22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3417d2b6e105626bceb992db088a4d0113aa798f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127981"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983084"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor resource logboek gebeurtenissen van VPN Gateway
 
@@ -45,7 +45,7 @@ In de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbind
 
    ![Details voor het maken van een Log Analytics-werk ruimte](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Selecteer")
 
-4. Zoek uw VPN-gateway op de Blade**Diagnostische instellingen** **controleren** > .
+4. Zoek uw VPN-gateway op **Monitor**de  >  Blade**Diagnostische instellingen** controleren.
 
    ![Selecties voor het zoeken naar de VPN-gateway in Diagnostische instellingen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Selecteer")
 
@@ -73,7 +73,7 @@ In de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbind
 
    ![Selecties voor een aangepaste zoek opdracht in Logboeken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Selecteer")
 
-10. Voer in het tekstvak **Zoekquery** te volgende query in. Vervang de waarden in <> en TimeGenerated naar wens.
+10. Voer de volgende query in het tekstvak **Zoek query** in. Vervang de waarden in <> en TimeGenerated naar wens.
 
     ```
     AzureDiagnostics

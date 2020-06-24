@@ -6,18 +6,27 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 05/06/2020
+ms.date: 06/17/2020
 tags: connectors
-ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927442"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807751"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met SSH en Azure Logic Apps
 
-U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) werk stromen met behulp van Azure Logic apps en de SFTP-SSH-connector maken en automatiseren om taken te automatiseren die bestanden op een [beveiligde File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server bewaken, maken, verzenden en ontvangen. SFTP is een netwerkprotocol dat bestandstoegang, bestandsoverdracht en bestandsbeheer mogelijk maakt via elke betrouwbare gegevensstroom. Hier volgen enkele voor beelden van taken die u kunt automatiseren:
+U kunt met behulp van het SSH-protocol [(Secure Shell)](https://www.ssh.com/ssh/protocol/) werk stromen met behulp van Azure Logic apps en de SFTP-SSH-connector maken en automatiseren om taken te automatiseren die bestanden op een [beveiligde File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) -server bewaken, maken, verzenden en ontvangen. SFTP is een netwerkprotocol dat bestandstoegang, bestandsoverdracht en bestandsbeheer mogelijk maakt via elke betrouwbare gegevensstroom.
+
+> [!NOTE]
+> De SFTP-SSH-connector biedt momenteel geen ondersteuning voor deze SFTP-servers:
+> 
+> * IBM DataPower
+> * Opentekst Secure MFT
+> * GXS voor opentekst
+
+Hier volgen enkele voor beelden van taken die u kunt automatiseren:
 
 * Controleren wanneer bestanden worden toegevoegd of gewijzigd.
 * Bestanden downloaden, maken, kopiëren, een andere naam geven, bijwerken, weer geven en verwijderen.
@@ -40,9 +49,9 @@ Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit on
 
   Segment grootte is gekoppeld aan een verbinding, wat betekent dat u dezelfde verbinding kunt gebruiken voor acties die Chunking ondersteunen en vervolgens voor acties die geen ondersteuning bieden voor Chunking. In dit geval wordt de segment grootte voor acties die geen Chunking-bereik ondersteunen van 5 MB tot 50 MB. In deze tabel ziet u welke SFTP-SSH-acties Chunking ondersteunen:
 
-  | Actie | Ondersteuning voor segmentering | Ondersteuning voor segment grootte negeren |
+  | Bewerking | Ondersteuning voor segmentering | Ondersteuning voor segment grootte negeren |
   |--------|------------------|-----------------------------|
-  | **Bestand kopiëren** | Nee | Niet van toepassing |
+  | **Bestand kopiëren** | No | Niet van toepassing |
   | **Bestand maken** | Ja | Ja |
   | **Map maken** | Niet van toepassing | Niet van toepassing |
   | **Bestand verwijderen** | Niet van toepassing | Niet van toepassing |
@@ -53,7 +62,7 @@ Zie de sectie [SFTP-SSH versus SFTP vergelijken](#comparison) verderop in dit on
   | **Meta gegevens van bestand ophalen met behulp van pad** | Niet van toepassing | Niet van toepassing |
   | **Bestanden in de map weer geven** | Niet van toepassing | Niet van toepassing |
   | **Bestands naam wijzigen** | Niet van toepassing | Niet van toepassing |
-  | **Bestand bijwerken** | Nee | Niet van toepassing |
+  | **Bestand bijwerken** | No | Niet van toepassing |
   ||||
 
 * SFTP-SSH-Triggers bieden geen ondersteuning voor het segmenteren van berichten. Bij het aanvragen van bestands inhoud selecteren triggers alleen bestanden die 15 MB of kleiner zijn. Als u bestanden groter dan 15 MB wilt ophalen, volgt u dit patroon:
@@ -103,10 +112,10 @@ Hier volgen andere belang rijke verschillen tussen de SFTP-SSH-connector en de S
 
 SFTP-SSH-triggers werken door het SFTP-bestands systeem te pollen en te zoeken naar een bestand dat sinds de laatste poll is gewijzigd. Met sommige hulpprogram ma's kunt u de tijds tempel behouden wanneer de bestanden worden gewijzigd. In deze gevallen moet u deze functie uitschakelen zodat de trigger kan werken. Hier volgen enkele algemene instellingen:
 
-| SFTP-client | Actie |
+| SFTP-client | Bewerking |
 |-------------|--------|
-| WinSCP | Ga naar **Opties** > **voor keuren** > **overdracht** > **bewerken** > **behouden tijds tempel** > **uitschakelen** |
-| FileZilla | Ga naar de **overdrachts** > **tijds tempels van overgebrachte bestanden** > **uitschakelen** |
+| WinSCP | Ga naar **Opties**  >  **voor keuren**  >  **overdracht**  >  **bewerken**  >  **behouden tijds tempel**  >  **uitschakelen** |
+| FileZilla | Ga naar de **overdrachts**  >  **tijds tempels van overgebrachte bestanden**  >  **uitschakelen** |
 |||
 
 Wanneer een trigger een nieuw bestand vindt, controleert de trigger of het nieuwe bestand is voltooid en niet gedeeltelijk is geschreven. Een bestand kan bijvoorbeeld wijzigingen in voortgang hebben wanneer de trigger de bestands server controleert. Om te voor komen dat een gedeeltelijk geschreven bestand wordt geretourneerd, wordt door de trigger de tijds tempel voor het bestand met recente wijzigingen weer gegeven, maar wordt dat bestand niet direct geretourneerd. De trigger retourneert het bestand alleen wanneer de server opnieuw wordt gecontroleerd. Dit gedrag kan soms een vertraging veroorzaken die twee maal het polling interval van de trigger is.
@@ -133,7 +142,7 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
 ### <a name="windows-os"></a>Windows OS
 
-1. Als u dit nog niet hebt gedaan, [downloadt u het hulp programma voor de nieuwste putty-Generator (puttygen. exe)](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)en start u het hulp programma.
+1. Als u dit nog niet hebt gedaan, [downloadt u het hulp programma voor de nieuwste putty-Generator (puttygen.exe)](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)en start u het hulp programma.
 
 1. Selecteer **laden**op dit scherm.
 
@@ -145,7 +154,7 @@ Als uw persoonlijke sleutel zich in de PuTTy-indeling bevindt, waarbij de bestan
 
    ![Selecteer ' OpenSSH-sleutel exporteren '](./media/connectors-sftp-ssh/export-openssh-key.png)
 
-1. Sla het bestand met de persoonlijke sleutel `.pem` op met de bestandsnaam extensie.
+1. Sla het bestand met de persoonlijke sleutel op met de `.pem` bestandsnaam extensie.
 
 ## <a name="considerations"></a>Overwegingen
 
@@ -155,7 +164,7 @@ In deze sectie worden overwegingen beschreven voor het controleren van de trigge
 
 ### <a name="create-file"></a>Bestand maken
 
-Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **bestand maken** gebruiken. Wanneer deze actie het bestand maakt, roept de Logic Apps-service ook automatisch uw SFTP-server aan om de meta gegevens van het bestand op te halen. Als u het zojuist gemaakte bestand echter verplaatst voordat de Logic Apps-service de aanroep de meta gegevens kan ophalen, wordt er een `404` fout bericht weer gegeven `'A reference was made to a file or folder which does not exist'`. Als u het lezen van de meta gegevens van het bestand na het maken van het bestand wilt overs Laan, volgt u de stappen voor het [toevoegen en instellen van de eigenschap **alle meta gegevens ophalen** op **Nee**](#file-does-not-exist).
+Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **bestand maken** gebruiken. Wanneer deze actie het bestand maakt, roept de Logic Apps-service ook automatisch uw SFTP-server aan om de meta gegevens van het bestand op te halen. Als u het zojuist gemaakte bestand echter verplaatst voordat de Logic Apps-service de aanroep de meta gegevens kan ophalen, wordt er een `404` fout bericht weer gegeven `'A reference was made to a file or folder which does not exist'` . Als u het lezen van de meta gegevens van het bestand na het maken van het bestand wilt overs Laan, volgt u de stappen voor het [toevoegen en instellen van de eigenschap **alle meta gegevens ophalen** op **Nee**](#file-does-not-exist).
 
 <a name="connect"></a>
 
@@ -165,13 +174,13 @@ Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **best
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Voer `sftp ssh` als filter toe voor lege logische apps in het zoekvak. Selecteer de gewenste trigger onder de lijst met triggers.
+1. Voer als filter toe voor lege logische apps in het zoekvak `sftp ssh` . Selecteer de gewenste trigger onder de lijst met triggers.
 
    -of-
 
-   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**. Voer `sftp ssh` in het zoekvak in als uw filter. Selecteer in de lijst acties de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**. Voer in het zoekvak in `sftp ssh` als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken (**+**) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
 1. Geef de benodigde gegevens voor de verbinding op.
 
@@ -179,13 +188,13 @@ Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **best
    >
    > Wanneer u uw persoonlijke SSH-sleutel in de **persoonlijke SSH-sleutel** eigenschap invoert, voert u de volgende aanvullende stappen uit om ervoor te zorgen dat u de volledige en juiste waarde voor deze eigenschap opgeeft. Een ongeldige sleutel zorgt ervoor dat de verbinding mislukt.
 
-   Hoewel u een tekst editor kunt gebruiken, zijn hier voorbeeld stappen die laten zien hoe u de sleutel correct kopieert en plakt met behulp van Notepad. exe als voor beeld.
+   Hoewel u een tekst editor kunt gebruiken, zijn hier voorbeeld stappen die laten zien hoe u uw sleutel correct kopieert en plakt met behulp van Notepad.exe als voor beeld.
 
    1. Open uw persoonlijke SSH-sleutel bestand in een tekst editor. In deze stappen wordt Klad blok als voor beeld gebruikt.
 
    1. Selecteer in het menu **bewerken** in Klad blok de optie **Alles selecteren**.
 
-   1. Selecteer **Edit** > **kopie**bewerken.
+   1. Selecteer **Edit**  >  **kopie**bewerken.
 
    1. Plak de *volledige* sleutel die u hebt gekopieerd in de eigenschap van de **persoonlijke SSH-sleutel** , die ondersteuning biedt voor meerdere regels in de SFTP-SSH-trigger of de actie die u hebt toegevoegd.  ***Zorg ervoor dat u*** de sleutel plakt. ***Voer de sleutel niet hand matig in of bewerk deze***.
 
@@ -203,7 +212,7 @@ Als u het standaard adaptieve gedrag dat door de segmentering wordt gebruikt, wi
 
    ![SFTP-SSH-instellingen openen](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. Voer onder **inhouds overdracht**, in de eigenschap **segment grootte** , een geheel getal in `5` van `50`tot, bijvoorbeeld: 
+1. Voer onder **inhouds overdracht**, in de eigenschap **segment grootte** , een geheel getal in van `5` tot `50` , bijvoorbeeld: 
 
    ![Geef de segment grootte op die u in plaats daarvan wilt gebruiken](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 

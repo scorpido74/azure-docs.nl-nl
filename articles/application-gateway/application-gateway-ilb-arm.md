@@ -4,15 +4,15 @@ description: Op deze pagina vindt u instructies voor het maken, configureren, op
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312425"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808129"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Een toepassings gateway maken met een interne load balancer (ILB)
 
@@ -213,7 +213,7 @@ $getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### <a name="step-2"></a>Stap 2
 
-Gebruik `Stop-AzApplicationGateway` om de toepassingsgateway te stoppen. In dit voor beeld `Stop-AzApplicationGateway` wordt de cmdlet op de eerste regel weer gegeven, gevolgd door de uitvoer.
+Gebruik `Stop-AzApplicationGateway` om de toepassingsgateway te stoppen. In dit voor beeld wordt de `Stop-AzApplicationGateway` cmdlet op de eerste regel weer gegeven, gevolgd door de uitvoer.
 
 ```powershell
 Stop-AzApplicationGateway -ApplicationGateway $getgw  

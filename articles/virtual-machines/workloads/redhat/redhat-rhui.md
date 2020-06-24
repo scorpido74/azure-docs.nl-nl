@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b46e8efb252224f83603000777b2e342f7e7ab9d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684442"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250346"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat update-infra structuur voor Red Hat Enterprise Linux Vm's op aanvraag in azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -83,7 +83,7 @@ EUS-opslag plaatsen (Extended update support) zijn beschikbaar voor klanten die 
 >[!NOTE]
 > EUS wordt niet ondersteund voor RHEL-Extra's. Dit betekent dat als u een pakket installeert dat doorgaans beschikbaar is via het RHEL Extrass-kanaal, u dit niet kunt doen wanneer u op EUS. De product levenscyclus van Red Hat extras wordt [hier](https://access.redhat.com/support/policy/updates/extras/)beschreven.
 
-Op het moment van deze schrijf bewerking is de EUS-ondersteuning voor RHEL <= 7,4 beëindigd. Zie de sectie ' Red Hat Enterprise Linux meer ondersteuning voor invoeg toepassingen ' in de [Red Hat-documentatie](https://access.redhat.com/support/policy/updates/errata/) voor meer informatie.
+Op het moment van deze schrijf bewerking is de EUS-ondersteuning voor RHEL <= 7,4 beëindigd. Zie de sectie ' Red Hat Enterprise Linux uitgebreid onderhoud ' in de [documentatie van Red Hat](https://access.redhat.com/support/policy/updates/errata/#Long_Support) voor meer informatie.
 * RHEL 7,4 EUS-ondersteuning eindigt op 31 augustus 2019
 * RHEL 7,5 EUS support eindigt op 30 april 2020
 * RHEL 7,6 EUS-ondersteuning eindigt op 31 oktober 2020
@@ -164,13 +164,18 @@ Als u een netwerk configuratie gebruikt om de toegang van RHEL PAYG Vm's verder 
 51.5.243.77
 51.4.228.145
 ```
+>[!NOTE]
+>De nieuwe installatie kopieën van Azure US Government, vanaf januari 2020, maken gebruik van een openbaar IP-adres dat is vermeld onder Azure Global-header hierboven.
+
+>[!NOTE]
+>Houd er ook rekening mee dat Azure Duitsland is afgeschaft ten gunste van open bare Duitse regio's. Aanbeveling voor Azure Duitsland-klanten is om aan de slag te gaan met de open bare [RHUI.](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI-infra structuur
 
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>Verlopen RHUI-client certificaat op een VM bijwerken
 
-Als u een oudere RHEL-VM-installatie kopie gebruikt, bijvoorbeeld RHEL 7,4 (installatie kopie URN: `RedHat:RHEL:7.4:7.4.2018010506` ), treden er connectiviteits problemen op RHUI vanwege een nu verlopen TLS/SSL-client certificaat. De fout die u ziet, kan er als volgt uitzien: _"SSL-peer heeft uw certificaat afgewezen als verlopen"_ of _"fout: kan de meta gegevens van de opslag plaats (repomd. XML) niet ophalen voor de opslag plaats... Controleer het pad en probeer het opnieuw_. Als u dit probleem wilt verhelpen, moet u het RHUI-client pakket op de VM bijwerken met de volgende opdracht:
+Als u een oudere RHEL-VM-installatie kopie gebruikt, bijvoorbeeld RHEL 7,4 (installatie kopie URN: `RedHat:RHEL:7.4:7.4.2018010506` ), treden er connectiviteits problemen op RHUI vanwege een nu verlopen TLS/SSL-client certificaat. De fout die u ziet, kan er als volgt uitzien _: "SSL-peer heeft uw certificaat afgewezen als verlopen"_ of _"fout: kan de meta gegevens van de opslag plaats (repomd.xml) niet ophalen voor de opslag plaats:... Controleer het pad en probeer het opnieuw_. Als u dit probleem wilt verhelpen, moet u het RHUI-client pakket op de VM bijwerken met de volgende opdracht:
 
 ```bash
 sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'

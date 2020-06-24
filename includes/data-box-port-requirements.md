@@ -12,11 +12,11 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "67839740"
 ---
-| Poort nummer| In of uit | Poort bereik| Vereist| Opmerkingen |   |
+| Poort nummer| In of uit | Poort bereik| Vereist| Notities |   |
 |--------|-----|-----|-----------|----------|-----------|
-| TCP 80 (HTTP)|In|LAN|Ja|Deze poort wordt gebruikt om verbinding te maken met Data Box blog opslag REST Api's via HTTP. Als er geen verbinding wordt gemaakt met REST-Api's, wordt deze automatisch omgeleid naar de lokale web-UI via 8443. |
-| TCP 443 (HTTPS)|In|LAN|Ja|Deze poort wordt gebruikt om verbinding te maken met Data Box blog opslag REST Api's via HTTPS. Als er geen verbinding wordt gemaakt met REST-Api's, wordt deze automatisch omgeleid naar de lokale web-UI via 8443. |
-| TCP 8443 (HTTPS-ALT)|In|LAN|Ja|Dit is een alternatieve poort voor HTTPS en wordt gebruikt om verbinding te maken met een lokale web-UI voor Apparaatbeheer. |
+| TCP 80 (HTTP)|In|LAN|Yes|Deze poort wordt gebruikt om verbinding te maken met Data Box blog opslag REST Api's via HTTP. Als er geen verbinding wordt gemaakt met REST-Api's, wordt deze automatisch omgeleid naar de lokale web-UI via 8443. |
+| TCP 443 (HTTPS)|In|LAN|Yes|Deze poort wordt gebruikt om verbinding te maken met Data Box blog opslag REST Api's via HTTPS. Als er geen verbinding wordt gemaakt met REST-Api's, wordt deze automatisch omgeleid naar de lokale web-UI via 8443. |
+| TCP 8443 (HTTPS-ALT)|In|LAN|Yes|Dit is een alternatieve poort voor HTTPS en wordt gebruikt om verbinding te maken met een lokale web-UI voor Apparaatbeheer. |
 | TCP 445 (SMB)|Uit/in|LAN|In sommige gevallen<br>Opmerkingen weer geven|Deze poort is alleen vereist als u verbinding maakt via SMB. |
 | TCP 2049 (NFS)|Uit/in|LAN|In sommige gevallen<br>Opmerkingen weer geven|Deze poort is alleen vereist als u verbinding maakt via NFS. |
 | TCP 111 (NFS)|Uit/in|LAN|In sommige gevallen<br>Opmerkingen weer geven|Deze poort wordt gebruikt voor rpcbind/Port Mapping en is alleen vereist als u verbinding maakt via NFS.  |

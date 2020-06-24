@@ -7,26 +7,23 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840635"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807674"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>NSG-stroomlogboeken van Azure Network Watcher visualiseren met open-sourcehulpprogramma's
 
 Stroom logboeken voor netwerk beveiligings groepen bieden informatie die kan worden gebruikt voor het begrijpen van binnenkomend en uitgaand IP-verkeer op netwerk beveiligings groepen. In deze stroom logboeken worden uitgaande en inkomende stromen weer gegeven per regel, de NIC waarop de stroom van toepassing is, 5 tupel informatie over de stroom (bron/doel-IP, bron/doel poort, Protocol) en als het verkeer is toegestaan of geweigerd.
 
 Deze stroom logboeken kunnen lastig zijn om hand matig te parseren en inzicht te krijgen in. Er zijn echter verschillende open source-hulpprogram ma's waarmee u deze gegevens kunt visualiseren. In dit artikel wordt een oplossing geboden voor het visualiseren van deze logboeken met behulp van de elastische stack, waarmee u uw stroom logboeken snel kunt indexeren en visualiseren op een Kibana-dash board.
-
-> [!Warning]  
-> De volgende stappen werken met stroom logboeken versie 1. Zie [Inleiding tot flow-logboek registratie voor netwerk beveiligings groepen](network-watcher-nsg-flow-logging-overview.md)voor meer informatie. De volgende instructies werken niet met versie 2 van de logboek bestanden, zonder aanpassing.
 
 ## <a name="scenario"></a>Scenario
 
@@ -44,7 +41,7 @@ Door NSG-stroom logboeken te verbinden met de elastische stack, kunnen we een Ki
 
 #### <a name="install-elasticsearch"></a>Elasticsearch installeren
 
-1. Voor de elastische stack van versie 5,0 en hoger is Java 8 vereist. Voer de opdracht `java -version` uit om uw versie te controleren. Als Java niet is geïnstalleerd, raadpleegt u de documentatie op de [Azure-Suppored JDKs](https://aka.ms/azure-jdks).
+1. Voor de elastische stack van versie 5,0 en hoger is Java 8 vereist. Voer de opdracht uit `java -version` om uw versie te controleren. Als Java niet is geïnstalleerd, raadpleegt u de documentatie op de [Azure-Suppored JDKs](https://aka.ms/azure-jdks).
 2. Down load het juiste binaire pakket voor uw systeem:
 
    ```bash
@@ -138,6 +135,11 @@ Raadpleeg [installatie-instructies](https://www.elastic.co/guide/en/elasticsearc
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}

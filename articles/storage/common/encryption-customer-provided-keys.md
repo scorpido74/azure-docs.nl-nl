@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79410062"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805320"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Geef een versleutelings sleutel op voor een aanvraag voor Blob-opslag (preview-versie)
 
@@ -25,7 +25,7 @@ Clients die aanvragen indienen voor Azure Blob-opslag hebben de mogelijkheid om 
 
 Wanneer een client toepassing een versleutelings sleutel voor de aanvraag levert, Azure Storage de versleuteling en ontsleuteling transparant uitvoeren tijdens het lezen en schrijven van BLOB-gegevens. Azure Storage schrijft een SHA-256-hash van de versleutelings sleutel naast de inhoud van de blob. De hash wordt gebruikt om te controleren of alle volgende bewerkingen voor de BLOB dezelfde versleutelings sleutel gebruiken.
 
-Azure Storage de versleutelings sleutel niet opslaat of beheert die de client met de aanvraag verzendt. De sleutel wordt veilig verwijderd zodra het proces voor versleuteling of ontsleuteling is voltooid.
+Azure Storage de versleutelings sleutel niet opslaat of beheert die de client met de aanvraag verzendt. De sleutel wordt veilig verwijderd zodra het versleutelings- of ontsleutelingsporces is voltooid.
 
 Wanneer een client een BLOB maakt of bijwerkt met behulp van een door de klant geleverde sleutel op de aanvraag, moeten volgende Lees-en schrijf aanvragen voor die BLOB ook de sleutel bevatten. Als de sleutel niet is opgenomen in een aanvraag voor een blob die al is versleuteld met een door de klant verschafte sleutel, mislukt de aanvraag met fout code 409 (conflict).
 
@@ -39,7 +39,7 @@ Elke BLOB-moment opname kan een eigen versleutelings sleutel hebben.
 
 Voor REST-aanroepen kunnen clients de volgende headers gebruiken om informatie over de versleutelings sleutel op een aanvraag voor Blob-opslag veilig door te geven:
 
-|Aanvraagheader | Beschrijving |
+|Aanvraagkoptekst | Beschrijving |
 |---------------|-------------|
 |`x-ms-encryption-key` |Vereist voor zowel schrijf-als Lees aanvragen. Een met base64 gecodeerde AES-256-versleutelings sleutel waarde. |
 |`x-ms-encryption-key-sha256`| Vereist voor zowel schrijf-als Lees aanvragen. De met base64 gecodeerde SHA256 van de versleutelings sleutel. |
@@ -61,7 +61,7 @@ De volgende bewerkingen voor Blob Storage ondersteunen het verzenden van door de
 - [BLOB-eigenschappen instellen](/rest/api/storageservices/set-blob-properties)
 - [BLOB-meta gegevens instellen](/rest/api/storageservices/set-blob-metadata)
 - [BLOB ophalen](/rest/api/storageservices/get-blob)
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties) (Blob-eigenschappen ophalen)
+- [BLOB-eigenschappen ophalen](/rest/api/storageservices/get-blob-properties)
 - [BLOB-meta gegevens ophalen](/rest/api/storageservices/get-blob-metadata)
 - [Moment opname-BLOB](/rest/api/storageservices/snapshot-blob)
 
@@ -77,4 +77,4 @@ Als u een versleutelings sleutel die is gebruikt voor het versleutelen van een B
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Geef een door de klant opgegeven sleutel op een aanvraag naar Blob-opslag met .NET](../blobs/storage-blob-customer-provided-key.md)
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md)

@@ -3,7 +3,7 @@ title: Replicatie tussen beheerde instanties configureren
 titleSuffix: Azure SQL Managed Instance
 description: In deze zelf studie leert u transactionele replicatie tussen een Azure SQL Managed instance/Distributor en een SQL Managed instance Subscriber te configureren.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 507207c9c8de96d18d11299b9ab5c2566c061150
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219677"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708472"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Zelf studie: replicatie tussen twee beheerde instanties configureren
 
@@ -60,9 +60,9 @@ U moet ook [een Azure VM configureren om verbinding te maken](connect-vm-instanc
 
 ## <a name="3---create-an-azure-storage-account"></a>3-een Azure Storage-account maken
 
-[Maak een Azure-opslag account](/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak een [Bestands share](../../storage/files/storage-how-to-create-file-share.md) in het opslag account. 
+[Maak een Azure-opslagaccount](/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak vervolgens een [bestandsshare](../../storage/files/storage-how-to-create-file-share.md) in het opslagaccount. 
 
-Kopieer het pad naar de bestands share met de volgende indeling:`\\storage-account-name.file.core.windows.net\file-share-name`
+Kopieer het pad naar de bestandsshare in de volgende notatie: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Voorbeeld: `\\replstorage.file.core.windows.net\replshare`
 
@@ -70,7 +70,7 @@ Kopieer de toegangs sleutels voor opslag in de volgende indeling:`DefaultEndpoin
 
 Voorbeeld: `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
-Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie. 
+Zie [Toegangssleutels voor een opslagaccount beheren](../../storage/common/storage-account-keys-manage.md) voor meer informatie. 
 
 ## <a name="4---create-a-publisher-database"></a>4-een Publisher-data base maken
 
@@ -164,7 +164,7 @@ EXEC sp_adddistpublisher
 ```
 
    > [!NOTE]
-   > Zorg ervoor dat u alleen backslashes ( `\` ) voor de para meter file_storage gebruikt. Het gebruik van een slash ( `/` ) kan een fout veroorzaken wanneer er verbinding wordt gemaakt met de bestands share.
+   > Zorg ervoor dat u alleen backslashes ( `\` ) voor de para meter file_storage gebruikt. Het gebruik van een slash (`/`) kan een fout veroorzaken wanneer er verbinding wordt gemaakt met de bestandsshare.
 
 Met dit script wordt een lokale uitgever op het beheerde exemplaar geconfigureerd, wordt een gekoppelde server toegevoegd en wordt een set taken voor de SQL Server-Agent gemaakt.
 
@@ -271,15 +271,15 @@ Start alle drie de agents opnieuw om deze wijzigingen toe te passen.
 
 ## <a name="10---test-replication"></a>10-replicatie testen
 
-Zodra de replicatie is geconfigureerd, kunt u deze testen door nieuwe items in te voegen op de Publisher en de wijzigingen te bekijken die worden door gegeven aan de abonnee.
+Wanneer de replicatie eenmaal is geconfigureerd, kunt u deze testen door nieuwe items in te voegen in de instantie voor de uitgever en te bekijken hoe de wijzigingen worden doorgegeven aan de abonnee.
 
-Voer het volgende T-SQL-code fragment uit om de rijen op de abonnee weer te geven:
+Voer het volgende T-SQL-codefragment uit om de rijen in de instantie voor de abonnee weer te geven:
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-Voer het volgende T-SQL-code fragment uit om extra rijen in te voegen op de Publisher en controleer de rijen vervolgens opnieuw op de abonnee.
+Voer het volgende T-SQL-codefragment uit om extra rijen in te voegen in de instantie voor de uitgever en bekijk vervolgens de rijen weer in de instantie voor de abonnee.
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')

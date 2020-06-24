@@ -4,15 +4,15 @@ description: In deze zelf studie leert u hoe u Azure Virtual WAN kunt gebruiken 
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059306"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749587"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-versleuteling: IPsec over ExpressRoute voor virtuele WAN
 
@@ -140,7 +140,7 @@ Het apparaatconfiguratie-bestand bevat de instellingen die moeten worden gebruik
            ```
            "ConnectedSubnets":["10.51.231.0/24"]
             ```
-    * IP-adressen van de VPN-gateway van de virtuele hub. Omdat elke verbinding van de VPN-gateway bestaat uit twee tunnels in actief/actief-configuratie, ziet u beide IP-adressen die in dit bestand staan vermeld. In dit voor beeld ziet `Instance0` u en `Instance1` voor elke site, en ze zijn privé-IP-adressen in plaats van open bare IP-adressen.<br>Voorbeeld:
+    * IP-adressen van de VPN-gateway van de virtuele hub. Omdat elke verbinding van de VPN-gateway bestaat uit twee tunnels in actief/actief-configuratie, ziet u beide IP-adressen die in dit bestand staan vermeld. In dit voor beeld ziet u `Instance0` en `Instance1` voor elke site, en ze zijn privé-IP-adressen in plaats van open bare IP-adressen.<br>Voorbeeld:
            ``` 
            "Instance0":"10.51.230.4"
            "Instance1":"10.51.230.5"
@@ -231,7 +231,7 @@ Maak een verbinding om de communicatie tussen een virtuele machine van Azure en 
 
 ## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. opschonen van resources
 
-Wanneer u deze resources niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat, te verwijderen. Voer de volgende Power shell-opdracht uit `myResourceGroup` en vervang door de naam van uw resource groep:
+Wanneer u deze resources niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat, te verwijderen. Voer de volgende Power shell-opdracht uit en vervang door `myResourceGroup` de naam van uw resource groep:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

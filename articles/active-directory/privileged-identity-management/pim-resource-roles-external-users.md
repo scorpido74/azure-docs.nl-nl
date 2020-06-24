@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74021943"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743776"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Gast gebruikers uitnodigen en Azure-resource rollen toewijzen in Privileged Identity Management
 
@@ -55,7 +55,7 @@ Om ervoor te zorgen dat u gasten kunt uitnodigen voor uw organisatie, moet u de 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer **Azure Active Directory** > **gebruikers instellingen**.
+1. Selecteer **Azure Active Directory**  >  **gebruikers instellingen**.
 
 1. Selecteer **externe instellingen voor samen werking beheren**.
 
@@ -157,7 +157,7 @@ U kunt audit logboeken bekijken om bij te houden wat gasten doen.
 
     ![Azure-resources-resource audit pagina met een lijst met de tijd, aanvrager en actie](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. Als u de activiteit voor de gast wilt weer geven, selecteert u **Azure Active Directory** > **gebruikers** > *naam gast*.
+1. Als u de activiteit voor de gast wilt weer geven, selecteert u **Azure Active Directory**  >  **gebruikers**  >  *naam gast*.
 
 1. Selecteer **audit logboeken** om de audit logboeken voor de organisatie te bekijken. Als dat nodig is, kunt u filters opgeven.
 

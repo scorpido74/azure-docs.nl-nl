@@ -5,15 +5,15 @@ description: Dit artikel bevat informatie over het oplossen van problemen met se
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5acf4ac1ec75d5cec057e4b66e3c6cbd8a463271
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202533"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808016"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Problemen met de Azure-toepassing gateway sessie affiniteit oplossen
 
@@ -75,7 +75,7 @@ Als de toepassing geen affiniteit op basis van cookies kan verwerken, moet u een
 
 #### <a name="symptom"></a>Symptoom
 
-U hebt de instelling voor affiniteit op basis van cookies ingeschakeld, wanneer u toegang krijgt tot de Application Gateway met behulp van een korte naam-URL in `http://website` Internet Explorer, bijvoorbeeld:, de aanvraag is nog steeds stuiteren tussen back-endservers.
+U hebt de instelling voor affiniteit op basis van cookies ingeschakeld, wanneer u toegang krijgt tot de Application Gateway met behulp van een korte naam-URL in Internet Explorer, bijvoorbeeld: `http://website` , de aanvraag is nog steeds stuiteren tussen back-endservers.
 
 Volg de instructies om dit probleem te identificeren:
 
@@ -97,7 +97,7 @@ Dit probleem doet zich voor omdat Internet Explorer en andere browsers de cookie
 
 #### <a name="resolution"></a>Oplossing
 
-U kunt dit probleem oplossen door via een FQDN toegang te zoeken tot Application Gateway. Gebruik [http://website.com](https://website.com/) bijvoorbeeld of [http://appgw.website.com](http://website.com/) .
+U kunt dit probleem oplossen door via een FQDN toegang te zoeken tot Application Gateway. Gebruik bijvoorbeeld [http://website.com](https://website.com/) of [http://appgw.website.com](http://website.com/) .
 
 ## <a name="additional-logs-to-troubleshoot"></a>Aanvullende Logboeken om problemen op te lossen
 
@@ -161,7 +161,7 @@ Hulpprogram ma's voor fout opsporing, zoals Fiddler, kunnen u helpen bij het ops
 
 Gebruik de webdebugger van uw keuze. In dit voor beeld gebruiken we Fiddler om http-of HTTPS-verkeer vast te leggen en te analyseren, volgt u de instructies:
 
-1. Down load het Fiddler- <https://www.telerik.com/download/fiddler>hulp programma op.
+1. Down load het Fiddler-hulp programma op <https://www.telerik.com/download/fiddler> .
 
     > [!NOTE]
     > Kies Fiddler4 als op de opname computer .NET 4 is geïnstalleerd. Kies anders Fiddler2.
@@ -174,7 +174,7 @@ Gebruik de webdebugger van uw keuze. In dit voor beeld gebruiken we Fiddler om h
 
     ![problemen oplossen-sessie-affiniteit-problemen-13](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-13.png)
 
-4. Waarschijnlijk bent u geïnteresseerd in het ontsleutelen van HTTPS-verkeer en kunt u HTTPS-ontsleuteling inschakelen door **extra** > **Fiddler-opties**te selecteren en het selectie vakje **HTTPS-verkeer versleutelen**in te scha kelen.
+4. Waarschijnlijk bent u geïnteresseerd in het ontsleutelen van HTTPS-verkeer en kunt u HTTPS-ontsleuteling inschakelen door **extra**  >  **Fiddler-opties**te selecteren en het selectie vakje **HTTPS-verkeer versleutelen**in te scha kelen.
 
     ![problemen oplossen-sessie-affiniteit-problemen-14](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-14.png)
 
@@ -182,7 +182,7 @@ Gebruik de webdebugger van uw keuze. In dit voor beeld gebruiken we Fiddler om h
 
     ![problemen oplossen-sessie-affiniteit-problemen-15](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-15.png)
 
-6. Wanneer u het probleem hebt opgelost, slaat u het bestand voor controle op door **bestand** > **Save** > **alle sessies**opslaan te selecteren... 
+6. Wanneer u het probleem hebt opgelost, slaat u het bestand voor controle op door **bestand**  >  **Save**  >  **alle sessies**opslaan te selecteren... 
 
     ![problemen oplossen-sessie-affiniteit-problemen-16](./media/how-to-troubleshoot-application-gateway-session-affinity-issues/troubleshoot-session-affinity-issues-16.png)
 

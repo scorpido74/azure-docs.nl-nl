@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/11/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 905554d1763bdd3c5990a43c5c8d98f336e1c442
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cbdeb1c55af157a0bf5160d2420974fd014ea3b3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171205"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807596"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Failover van een opslag account initiëren
 
@@ -44,16 +44,16 @@ Zie [Azure Storage redundantie](storage-redundancy.md)voor meer informatie over 
 Voer de volgende stappen uit om een account-failover te initiëren vanuit de Azure Portal:
 
 1. Ga naar uw opslagaccount.
-2. Onder **instellingen**selecteert u **geo-replicatie**. De volgende afbeelding toont de geo-replicatie en de failover-status van een opslag account.
+1. Onder **instellingen**selecteert u **geo-replicatie**. De volgende afbeelding toont de geo-replicatie en de failover-status van een opslag account.
 
-    ![Scherm opname van geo-replicatie en failover-status](media/storage-initiate-account-failover/portal-failover-prepare.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="Scherm opname van geo-replicatie en failover-status":::
 
-3. Controleer of uw opslag account is geconfigureerd voor geo-redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Als dat niet het geval is, selecteert u vervolgens **configuratie** onder **instellingen** om uw account bij te werken naar geo-redundant.
-4. De **laatste synchronisatie tijd** eigenschap geeft aan hoe ver de secundaire achterligt van de primaire. **Tijd van laatste synchronisatie** biedt een schatting van de mate van gegevens verlies die u zult ondervinden nadat de failover is voltooid. Zie voor meer informatie over het controleren van de **laatste synchronisatie tijd** -eigenschap [de laatste synchronisatie tijd van een opslag account](last-sync-time-get.md).
-5. Selecteer **voorbereiden voor failover**.
-6. Bekijk het bevestigings venster. Wanneer u klaar bent, voert u **Ja** in om de failover te bevestigen en te initiëren.
+1. Controleer of uw opslag account is geconfigureerd voor geo-redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Als dat niet het geval is, selecteert u vervolgens **configuratie** onder **instellingen** om uw account bij te werken naar geo-redundant.
+1. De **laatste synchronisatie tijd** eigenschap geeft aan hoe ver de secundaire achterligt van de primaire. **Tijd van laatste synchronisatie** biedt een schatting van de mate van gegevens verlies die u zult ondervinden nadat de failover is voltooid. Zie voor meer informatie over het controleren van de **laatste synchronisatie tijd** -eigenschap [de laatste synchronisatie tijd van een opslag account](last-sync-time-get.md).
+1. Selecteer **voorbereiden voor failover**.
+1. Bekijk het bevestigings venster. Wanneer u klaar bent, voert u **Ja** in om de failover te bevestigen en te initiëren.
 
-    ![Scherm opname van het bevestigings dialoogvenster voor een account-failover](media/storage-initiate-account-failover/portal-failover-confirm.png)
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Scherm opname van het bevestigings dialoogvenster voor een account-failover":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -94,7 +94,7 @@ Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <
 
 Als u Azure CLI wilt gebruiken om een account-failover te initiëren, voert u de volgende opdrachten uit:
 
-```azurecli
+```azurecli-interactive
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
@@ -116,4 +116,4 @@ Nadat u GRS voor uw opslag account opnieuw hebt ingeschakeld, begint micro soft 
 - [Herstel na nood geval en failover van het opslag account](storage-disaster-recovery-guidance.md)
 - [De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren](last-sync-time-get.md)
 - [Geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)
-- [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md)
+- [Zelfstudie: Een maximaal beschikbare toepassing bouwen met Blob-opslag](../blobs/storage-create-geo-redundant-storage.md)

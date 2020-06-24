@@ -8,17 +8,17 @@ manager: KumudD
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: e4197923fa71c719611bea7603113cab331d4ba8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147802"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708226"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van Power shell
 
@@ -35,7 +35,7 @@ In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maakt via het Azu
 In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele machine met meerdere IP-adressen maakt, zoals beschreven in het scenario. Wijzig de variabelen waarden zoals vereist voor uw implementatie.
 
 1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/overview) .
-2. Meld u aan bij uw account `Connect-AzAccount` met de opdracht.
+2. Meld u aan bij uw account met de `Connect-AzAccount` opdracht.
 3. Vervang *myResourceGroup* en *westus* door de naam en locatie van uw keuze. Maak een resourcegroep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
    ```powershell
@@ -92,9 +92,9 @@ In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele mac
     -SecurityRules $NSGRule
     ```
 
-6. Definieer de primaire IP-configuratie voor de NIC. Wijzig 10.0.0.4 in een geldig adres in het subnet dat u hebt gemaakt, als u de eerder gedefinieerde waarde niet hebt gebruikt. Voordat u een statisch IP-adres toewijst, is het raadzaam om eerst te bevestigen dat het nog niet in gebruik is. Voer de opdracht `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet`in. Als het adres beschikbaar is, retourneert de uitvoer *waar*. Als deze niet beschikbaar is, retourneert de uitvoer *False* en een lijst met beschik bare adressen. 
+6. Definieer de primaire IP-configuratie voor de NIC. Wijzig 10.0.0.4 in een geldig adres in het subnet dat u hebt gemaakt, als u de eerder gedefinieerde waarde niet hebt gebruikt. Voordat u een statisch IP-adres toewijst, is het raadzaam om eerst te bevestigen dat het nog niet in gebruik is. Voer de opdracht in `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` . Als het adres beschikbaar is, retourneert de uitvoer *waar*. Als deze niet beschikbaar is, retourneert de uitvoer *False* en een lijst met beschik bare adressen. 
 
-    **Vervang \<vervangen-door-your-unique-name> door de unieke DNS-naam die u wilt gebruiken** in de volgende opdrachten. De naam moet uniek zijn voor alle open bare IP-adressen binnen een Azure-regio. Dit is een optionele para meter. U kunt het verwijderen als u alleen verbinding wilt maken met de virtuele machine met behulp van het open bare IP-adres.
+    Vervang in de volgende opdrachten **door \<replace-with-your-unique-name> de unieke DNS-naam die u wilt gebruiken.** De naam moet uniek zijn voor alle open bare IP-adressen binnen een Azure-regio. Dit is een optionele para meter. U kunt het verwijderen als u alleen verbinding wilt maken met de virtuele machine met behulp van het open bare IP-adres.
 
     ```powershell
     
@@ -242,7 +242,7 @@ U kunt persoonlijke en open bare IP-adressen toevoegen aan de Azure-netwerk inte
 
    **Een privé-IP-adres toevoegen**
 
-   Als u een privé-IP-adres aan een NIC wilt toevoegen, moet u een IP-configuratie maken. Met de volgende opdracht maakt u een configuratie met een statisch IP-adres van 10.0.0.7. Wanneer u een statisch IP-adres opgeeft, moet dit een ongebruikt adres voor het subnet zijn. Het is raadzaam om het adres eerst te testen om er zeker van te zijn dat het `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` beschikbaar is door de opdracht in te voeren. Als het IP-adres beschikbaar is, retourneert de uitvoer *waar*. Als deze niet beschikbaar is, retourneert de uitvoer *False*en een lijst met beschik bare adressen.
+   Als u een privé-IP-adres aan een NIC wilt toevoegen, moet u een IP-configuratie maken. Met de volgende opdracht maakt u een configuratie met een statisch IP-adres van 10.0.0.7. Wanneer u een statisch IP-adres opgeeft, moet dit een ongebruikt adres voor het subnet zijn. Het is raadzaam om het adres eerst te testen om er zeker van te zijn dat het beschikbaar is door de opdracht in te voeren `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` . Als het IP-adres beschikbaar is, retourneert de uitvoer *waar*. Als deze niet beschikbaar is, retourneert de uitvoer *False*en een lijst met beschik bare adressen.
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `

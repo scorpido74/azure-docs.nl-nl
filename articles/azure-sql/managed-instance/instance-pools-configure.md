@@ -43,7 +43,7 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 
 Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Cmdlet |Beschrijving |
+|Cmdlet |Description |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Hiermee maakt u een door SQL beheerde exemplaar groep. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over een exemplaar groep. |

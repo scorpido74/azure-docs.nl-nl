@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7091592f8806b6f6655315ae1faace286c2c1f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78207691"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805487"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Toegang verlenen tot BLOB-of wachtrij gegevens met Azure CLI
 
@@ -26,15 +26,15 @@ Azure Storage biedt uitbrei dingen voor Azure CLI waarmee u kunt opgeven hoe u b
 
 ## <a name="specify-how-data-operations-are-authorized"></a>Opgeven hoe gegevens bewerkingen worden geautoriseerd
 
-Azure CLI-opdrachten voor het lezen en schrijven van BLOB-en wachtrij `--auth-mode` gegevens bevatten de optionele para meter. Geef deze para meter op om aan te geven hoe een gegevens bewerking moet worden geautoriseerd:
+Azure CLI-opdrachten voor het lezen en schrijven van BLOB-en wachtrij gegevens bevatten de optionele `--auth-mode` para meter. Geef deze para meter op om aan te geven hoe een gegevens bewerking moet worden geautoriseerd:
 
 - Stel de `--auth-mode` para meter `login` in om u aan te melden met een Azure AD-beveiligings-principal (aanbevolen).
-- Stel de `--auth-mode` para meter in op `key` de verouderde waarde om de toegangs sleutel voor het account op te halen die voor autorisatie moet worden gebruikt. Als u de `--auth-mode` para meter weglaat, probeert de Azure cli ook de toegangs sleutel op te halen.
+- Stel de `--auth-mode` para meter in op de verouderde `key` waarde om de toegangs sleutel voor het account op te halen die voor autorisatie moet worden gebruikt. Als u de `--auth-mode` para meter weglaat, probeert de Azure cli ook de toegangs sleutel op te halen.
 
-Als u de `--auth-mode` para meter wilt gebruiken, moet u ervoor zorgen dat u Azure CLI-versie 2.0.46 of hoger hebt geïnstalleerd. Voer `az --version` uit om de geïnstalleerde versie te controleren.
+Als u de `--auth-mode` para meter wilt gebruiken, moet u ervoor zorgen dat u Azure CLI-versie 2.0.46 of hoger hebt geïnstalleerd. Voer uit `az --version` om de geïnstalleerde versie te controleren.
 
 > [!IMPORTANT]
-> Als u de `--auth-mode` para meter weglaat of instelt `key`op, probeert de Azure cli de toegangs sleutel voor het account voor autorisatie te gebruiken. In dit geval raadt micro soft u aan de toegangs sleutel op te geven op de opdracht of in de omgevings variabele **AZURE_STORAGE_KEY** . Zie de sectie [omgevings variabelen instellen voor autorisatie parameters](#set-environment-variables-for-authorization-parameters)voor meer informatie over omgevings variabelen.
+> Als u de `--auth-mode` para meter weglaat of instelt op `key` , probeert de Azure cli de toegangs sleutel voor het account voor autorisatie te gebruiken. In dit geval raadt micro soft u aan de toegangs sleutel op te geven op de opdracht of in de omgevings variabele **AZURE_STORAGE_KEY** . Zie de sectie [omgevings variabelen instellen voor autorisatie parameters](#set-environment-variables-for-authorization-parameters)voor meer informatie over omgevings variabelen.
 >
 > Als u de toegangs sleutel niet opgeeft, probeert de Azure CLI de Azure Storage Resource provider aan te roepen om deze voor elke bewerking op te halen. Het uitvoeren van veel gegevens bewerkingen die een aanroep van de resource provider vereisen, kan leiden tot vertraging. Zie [schaalbaarheids-en prestatie doelen voor de resource provider van Azure Storage](scalability-targets-resource-provider.md)voor meer informatie over limieten voor resource providers.
 
@@ -54,12 +54,12 @@ Zie [opslag bewerkingen aanroepen met OAuth-tokens](/rest/api/storageservices/au
 
 In het volgende voor beeld ziet u hoe u een container maakt op basis van Azure CLI met behulp van uw Azure AD-referenties. Als u de container wilt maken, moet u zich aanmelden bij de Azure CLI en hebt u een resource groep en een opslag account nodig. Zie [Quick Start: Create, down loads en List blobs with Azure cli](../blobs/storage-quickstart-blobs-cli.md)(Engelstalig) voor meer informatie over het maken van deze resources.
 
-1. Voordat u de container maakt, moet u de rol voor [blobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) van de opslag toewijzen aan uzelf. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
+1. Voordat u de container maakt, moet u de rol [Storage Blob Data Contributor](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) aan uzelf toewijzen. Hoewel u de eigenaar van het account bent, hebt u expliciete machtigingen nodig om gegevens bewerkingen uit te voeren op het opslag account. Zie voor meer informatie over het toewijzen van RBAC-rollen [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in het Azure Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
     > RBAC-roltoewijzingen kunnen enkele minuten duren voordat deze wordt door gegeven.
 
-1. Roep de opdracht [AZ storage container Create](/cli/azure/storage/container#az-storage-container-create) aan met `--auth-mode` de para meter `login` ingesteld op om de container te maken met uw Azure AD-referenties. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+1. Roep de opdracht [AZ storage container Create](/cli/azure/storage/container#az-storage-container-create) aan met de `--auth-mode` para meter ingesteld op `login` om de container te maken met uw Azure AD-referenties. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
     ```azurecli
     az storage container create \
@@ -72,7 +72,7 @@ In het volgende voor beeld ziet u hoe u een container maakt op basis van Azure C
 
 Als u beschikt over de account sleutel, kunt u een Azure Storage gegevens bewerking aanroepen. Over het algemeen is het gebruik van de account sleutel minder veilig. Als de account sleutel is aangetast, is het mogelijk dat alle gegevens in uw account worden aangetast.
 
-In het volgende voor beeld ziet u hoe u een container maakt met behulp van de toegangs sleutel voor het account. Geef de account sleutel op en geef de `--auth-mode` para meter op `key` met de waarde:
+In het volgende voor beeld ziet u hoe u een container maakt met behulp van de toegangs sleutel voor het account. Geef de account sleutel op en geef de `--auth-mode` para meter op met de `key` waarde:
 
 ```azurecli
 az storage container create \
@@ -103,7 +103,7 @@ U kunt autorisatie parameters opgeven in omgevings variabelen om te voor komen d
 |    AZURE_STORAGE_KEY                  |    De opslagaccountsleutel. Deze variabele moet worden gebruikt in combi natie met de naam van het opslag account.                                                                                                                                                                                                                                                                          |
 |    AZURE_STORAGE_CONNECTION_STRING    |    Een connection string die de sleutel voor het opslag account of een SAS-token bevat. Deze variabele moet worden gebruikt in combi natie met de naam van het opslag account.                                                                                                                                                                                                                       |
 |    AZURE_STORAGE_SAS_TOKEN            |    Een SAS-token (Shared Access Signature). Deze variabele moet worden gebruikt in combi natie met de naam van het opslag account.                                                                                                                                                                                                                                                            |
-|    AZURE_STORAGE_AUTH_MODE            |    De autorisatie modus waarmee de opdracht moet worden uitgevoerd. Toegestane waarden zijn `login` (aanbevolen) of `key`. Als u opgeeft `login`, gebruikt Azure cli uw Azure AD-referenties om de gegevens bewerking te autoriseren. Als u de legacy `key` -modus opgeeft, probeert de Azure cli een query uit te voeren voor de toegangs sleutel van het account en de opdracht met de sleutel te autoriseren.    |
+|    AZURE_STORAGE_AUTH_MODE            |    De autorisatie modus waarmee de opdracht moet worden uitgevoerd. Toegestane waarden zijn `login` (aanbevolen) of `key` . Als u opgeeft `login` , gebruikt Azure cli uw Azure AD-referenties om de gegevens bewerking te autoriseren. Als u de legacy `key` -modus opgeeft, probeert de Azure cli een query uit te voeren voor de toegangs sleutel van het account en de opdracht met de sleutel te autoriseren.    |
 
 ## <a name="next-steps"></a>Volgende stappen
 

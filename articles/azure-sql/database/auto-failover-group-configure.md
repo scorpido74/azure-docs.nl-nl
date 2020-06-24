@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 32543dffa492770d7217fb07652e41baf603ebcc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195543"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250907"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ Houd rekening met de volgende vereisten:
 
 Maak uw failovergroep en voeg uw afzonderlijke data base toe met behulp van de Azure Portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
 1. Selecteer de data base die u wilt toevoegen aan de failovergroep.
 1. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
 
@@ -295,7 +295,7 @@ Voer een failover uit naar de secundaire server en failback uit met behulp van d
 1. Selecteer **failover** in het taak venster voor het uitvoeren van een failover van uw groep met elastische groepen.
 1. Selecteer **Ja** in de waarschuwing waarmee u wordt gewaarschuwd dat TDS-sessies worden losgekoppeld.
 
-   ![Failover van de failovergroep met uw SQL database](./media/auto-failover-group-configure/failover-sql-db.png)
+   ![Failover uitvoeren voor de failovergroep met uw data base](./media/auto-failover-group-configure/failover-sql-db.png)
 
 1. Controleer welke server primair is, welke server secundair is. Als de failover is geslaagd, moeten de twee servers wisselende rollen hebben.
 1. Selecteer **failover** opnieuw om de failback-groep weer in te stellen op de oorspronkelijke instellingen.
@@ -383,13 +383,13 @@ Maak de primaire virtuele netwerk gateway met behulp van de Azure Portal.
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
     | **Naam** | De naam voor de gateway van uw virtuele netwerk. |
     | **Regio** | De regio waar uw primaire beheerde instantie zich bevindt. |
-    | **Gateway type** | Selecteer **VPN**. |
+    | **Gatewaytype** | Selecteer **VPN**. |
     | **VPN-type** | **Op route gebaseerd** selecteren |
     | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
     | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk voor uw secundaire beheerde exemplaar. |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-    | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
+    | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres. |
     | &nbsp; | &nbsp; |
 
 1. Wijzig de andere waarden als standaard en selecteer vervolgens **controleren + maken** om de instellingen voor de gateway van uw virtuele netwerk te controleren.
@@ -445,13 +445,13 @@ In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het s
    | **Abonnement** |  Het abonnement waar uw secundaire beheerde instantie zich bevindt. |
    | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway` . |
    | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
-   | **Gateway type** | Selecteer **VPN**. |
+   | **Gatewaytype** | Selecteer **VPN**. |
    | **VPN-type** | **Op route gebaseerd** selecteren |
    | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
    | **Locatie**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary` . |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
+   | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Instellingen van secundaire gateway](./media/auto-failover-group-configure/settings-for-secondary-gateway.png)
@@ -559,7 +559,7 @@ Maak de failovergroep voor uw beheerde instanties met behulp van de Azure Portal
 
 Maak de failovergroep voor uw SQL Managed instances met behulp van de Azure Portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
 1. Selecteer de primaire beheerde instantie die u wilt toevoegen aan de failovergroep.  
 1. Ga onder **instellingen**naar **failover-groepen voor instanties** en kies vervolgens **groep toevoegen** om de pagina **failover-groep voor instanties** te openen.
 
@@ -683,7 +683,7 @@ Het listener-eind punt bevindt zich in de vorm van `fog-name.database.windows.ne
 
 Zie de volgende zelf studies voor gedetailleerde stappen voor het configureren van een failovergroep:
 
-- [Eén data base aan een failovergroep toevoegen](failover-group-add-single-database-tutorial.md)
+- [Een individuele database aan een failovergroep toevoegen](failover-group-add-single-database-tutorial.md)
 - [Een elastische pool aan een failovergroep toevoegen](failover-group-add-elastic-pool-tutorial.md)
 - [Een beheerd exemplaar toevoegen aan een failovergroep](../managed-instance/failover-group-add-instance-tutorial.md)
 

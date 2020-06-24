@@ -7,17 +7,17 @@ documentationcenter: na
 author: steveesp
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 964b0bd543e887cce304d785d18a651f50bd4c45
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60743071"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708243"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bandbreedte/doorvoer testen (NTTTCP)
 
@@ -30,7 +30,7 @@ Voor de doel einden van deze test moeten de twee virtuele machines zich in dezel
 
 Noteer het IP-adres van de ontvanger. We bellen het IP-adres "a. b. c. r"
 
-Noteer het aantal kern geheugens op de virtuele machine. We bellen u de\#nummer\_kernen
+Noteer het aantal kern geheugens op de virtuele machine. We bellen u de \# nummer \_ kernen
 
 Voer de NTTTCP-test gedurende 300 seconden (of 5 minuten) uit op de VM van de verzender en de ontvanger van de virtuele machine.
 
@@ -56,33 +56,33 @@ De nieuwste versie downloaden:<https://gallery.technet.microsoft.com/NTttcp-Vers
 
 Of zoek deze indien verplaatst: <https://www.bing.com/search?q=ntttcp+download> \< --moet eerst worden bereikt
 
-Overweeg NTTTCP in een afzonderlijke map te plaatsen, zoals\\c: tools
+Overweeg NTTTCP in een afzonderlijke map te plaatsen, zoals c: \\ tools
 
 #### <a name="allow-ntttcp-through-the-windows-firewall"></a>NTTTCP via de Windows Firewall toestaan
 Maak op de ontvanger een regel voor toestaan op de Windows Firewall zodat het NTTTCP-verkeer kan worden ontvangen. Het is eenvoudig om het hele NTTTCP-programma op naam toe te staan in plaats van specifieke TCP-poorten toestaan.
 
 Ntttcp toestaan via de Windows Firewall als volgt:
 
-Netsh advfirewall firewall add rule Program =\<pad\>\\ntttcp. exe name = "ntttcp" protocol = any dir = in Action = allow Enable = Yes profile = any
+Netsh advfirewall firewall add rule Program = \<PATH\> \\ntttcp.exe name = "ntttcp-protocol = any dir = in Action = Enable = Yes profiel = any
 
-Als u bijvoorbeeld ntttcp. exe hebt gekopieerd naar de map c:\\tools, is dit de opdracht: 
+Als u bijvoorbeeld ntttcp.exe hebt gekopieerd naar de map c: \\ tools, is dit de opdracht: 
 
-Netsh advfirewall firewall add rule Program = c:\\tools\\ntttcp. exe name = "ntttcp-protocol = any dir = in Action = allow Enable = Yes profile = any
+Netsh advfirewall firewall add rule Program = c: \\ tools \\ntttcp.exe name = "ntttcp-protocol = any dir = in Action = Enable = Yes profiel = any
 
 #### <a name="running-ntttcp-tests"></a>NTTTCP-tests uitvoeren
 
 NTTTCP starten op de ontvanger (**uitvoeren vanuit cmd**, niet vanuit Power shell):
 
-ntttcp-r – m [2\*\#num\_cores],\*, a. b. c. r-t 300
+ntttcp-r – m [2 \* \# num \_ cores], \* , a. b. c. r-t 300
 
 Als de VM vier kernen en een IP-adres van 10.0.0.4 heeft, zou dit er als volgt uitzien:
 
-ntttcp-r – m 8,\*, 10.0.0.4-t 300
+ntttcp-r – m 8, \* , 10.0.0.4-t 300
 
 
 NTTTCP starten op de afzender (**uitvoeren vanuit cmd**, niet vanuit Power shell):
 
-ntttcp-s – m 8,\*, 10.0.0.4-t 300 
+ntttcp-s – m 8, \* , 10.0.0.4-t 300 
 
 Wacht op de resultaten.
 
@@ -132,13 +132,13 @@ In deze scenario's moet u de modus voor niet synchroniseren inschakelen, zodat d
 
 #### <a name="from-linux-to-windows"></a>Van Linux naar Windows:
 
-Windows \<> ontvanger:
+Ontvanger \<Windows> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-> \<van Sender Linux:
+Afzender \<Linux> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>Van Windows naar Linux:
 
-Ontvanger \<Linux>:
+Ontvanger \<Linux> :
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-Sender \<Windows>:
+Afzender \<Windows> :
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

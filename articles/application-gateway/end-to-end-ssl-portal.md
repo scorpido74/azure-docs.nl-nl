@@ -5,16 +5,16 @@ description: Meer informatie over het gebruik van de Azure Portal om een toepass
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33240d1f44d2f26569791f72a3d5fc3a6656a757
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133013"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808034"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>End-to-end TLS configureren met behulp van Application Gateway met de portal
 

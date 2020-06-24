@@ -17,7 +17,7 @@ De Service Fabric Mesh CLI (opdrachtregelinterface) is vereist voor het implemen
 
 Er kunnen drie typen CLI worden gebruikt. Ze staan in de tabel hieronder.
 
-| CLI Module | Doelomgeving |  Beschrijving | 
+| CLI Module | Doelomgeving |  Description | 
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | De primaire CLI, waarmee u uw toepassingen kunt implementeren en resources beheren in de Azure Service Fabric Mesh-omgeving. 
 | sfctl | Lokale clusters | De Service Fabric CLI waarmee u Service Fabric-resources in lokale clusters kunt implementeren en testen.  

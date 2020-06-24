@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00eff8614907ae61aa56cd58ca90db9c6d441732
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137866"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807665"
 ---
 # <a name="create-an-account-sas-with-net"></a>Een account-SAS maken met .NET
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u de sleutel van het opslag account gebruikt
 
 Als u een account-SAS voor een container wilt maken, roept u de methode [Cloud Storage account. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) aan.
 
-In het volgende code voorbeeld worden een account-SA'S gemaakt die geldig zijn voor de BLOB-en bestands Services, en worden de machtigingen lezen, schrijven en weer geven voor de client machtigingen voor toegang tot Api's op service niveau. De account-SAS beperkt het Protocol tot HTTPS, zodat de aanvraag moet worden gemaakt met HTTPS. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+In het volgende code voorbeeld worden een account-SA'S gemaakt die geldig zijn voor de BLOB-en bestands Services, en worden de machtigingen lezen, schrijven en weer geven voor de client machtigingen voor toegang tot Api's op service niveau. De account-SAS beperkt het Protocol tot HTTPS, zodat de aanvraag moet worden gemaakt met HTTPS. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```csharp
 static string GetAccountSASToken()
@@ -53,7 +53,7 @@ static string GetAccountSASToken()
 
 ## <a name="use-an-account-sas-from-a-client"></a>Een account-SAS van een client gebruiken
 
-Als u de account-SA'S wilt gebruiken om toegang te krijgen tot serviceniveau-Api's voor de Blob service, moet u een Blob service-client object maken met behulp van de SAS en het Blob Storage-eind punt voor uw opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Als u de account-SA'S wilt gebruiken om toegang te krijgen tot serviceniveau-Api's voor de Blob service, moet u een Blob service-client object maken met behulp van de SAS en het Blob Storage-eind punt voor uw opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```csharp
 static void UseAccountSAS(string sasToken)

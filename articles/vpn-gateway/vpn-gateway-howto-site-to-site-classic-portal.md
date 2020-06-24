@@ -4,15 +4,15 @@ description: Een IPSec-verbinding maken vanaf uw on-premises netwerk met een kla
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244444"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983050"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Een site-naar-site-verbinding maken met behulp van Azure Portal (klassiek)
 
@@ -20,7 +20,7 @@ ms.locfileid: "79244444"
 In dit artikel leest u hoe u Azure Portal gebruikt om een site-naar-site-VPN-gatewayverbinding te maken vanaf uw on-premises netwerk naar het VNet. De stappen in dit artikel zijn van toepassing op het klassieke implementatie model en zijn niet van toepassing op het huidige implementatie model Resource Manager. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -46,7 +46,7 @@ Controleer voordat u met de configuratie begint, of aan de volgende criteria is 
 In de voorbeelden in dit artikel worden de volgende waarden gebruikt. U kunt deze waarden gebruiken om een testomgeving te maken of ze raadplegen om meer inzicht te krijgen in de voorbeelden in dit artikel.
 
 * **VNet-naam:** TestVNet1
-* **Adresruimte:** 
+* **Adres ruimte:** 
   * 10.11.0.0/16
   * 10.12.0.0/16 (optioneel voor deze oefening)
 * **Subnetten**
@@ -157,7 +157,7 @@ In deze stap stelt u de gedeelde sleutel in en maakt u de verbinding. De sleutel
 > Deze stap is momenteel niet beschikbaar in Azure Portal. Gebruik de SM-versie (Service Management) van de Azure PowerShell-cmdlets. Zie [voordat u begint](#before) voor informatie over het installeren van deze cmdlets.
 >
 
-### <a name="step-1-connect-to-your-azure-account"></a>Step 1. Verbinding maken met uw Azure-account
+### <a name="step-1-connect-to-your-azure-account"></a>Stap 1. Verbinding maken met uw Azure-account
 
 U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. 
 

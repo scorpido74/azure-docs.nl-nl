@@ -6,18 +6,18 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.topic: conceptual
-ms.openlocfilehash: fba213be2de3b747d3ba962674a03c0bc7df3ed5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 68856a4c5218232943ac657bbd67759d5ab4b804
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863662"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983152"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Een virtuele netwerk gateway verwijderen met behulp van de portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure-portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [Power shell (klassiek)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
@@ -60,5 +60,5 @@ Op dit punt wordt de gateway van het virtuele netwerk verwijderd. Met de volgend
 Als u zich geen zorgen maakt over het bewaren van uw resources in de resource groep en u alleen opnieuw wilt beginnen, kunt u een hele resource groep verwijderen. Dit is een snelle manier om alles te verwijderen. De volgende stappen zijn alleen van toepassing op het Resource Manager-implementatie model.
 
 1. Zoek de resource groep in **alle resources**en klik op om de Blade te openen.
-2. Klik op **verwijderen**. Bekijk de betrokken resources op de Blade verwijderen. Zorg ervoor dat u al deze resources wilt verwijderen. Als dat niet het geval is, gebruikt u de stappen in een VPN-gateway verwijderen boven aan dit artikel.
+2. Klik op **Verwijderen**. Bekijk de betrokken resources op de Blade verwijderen. Zorg ervoor dat u al deze resources wilt verwijderen. Als dat niet het geval is, gebruikt u de stappen in een VPN-gateway verwijderen boven aan dit artikel.
 3. Als u wilt door gaan, typt u de naam van de resource groep die u wilt verwijderen en klikt u vervolgens op **verwijderen**.

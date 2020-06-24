@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c81c4cd72a34f69632c2b1264ba2d276ff03de4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118589"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248357"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Zelf studie: gegevens kopiëren van Blob Storage naar SQL Database met behulp van Data Factory
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "84118589"
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md).
 
-In deze zelf studie maakt u een data factory met een pijp lijn om gegevens te kopiëren van Blob-opslag naar SQL database.
+In deze zelf studie maakt u een data factory met een pijp lijn om gegevens te kopiëren van Blob-opslag naar SQL Database.
 
 Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over Copy Activity.  
 
@@ -46,14 +46,14 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
 Voordat u met deze zelfstudie begint, moet u aan de volgende vereisten voldoen:
 
 * **Azure-abonnement**.  Als u geen abonnement hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Raadpleeg het artikel over de [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
-* **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **brongegevens** opslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
-* **Azure SQL database**. In deze zelf studie gebruikt u een Azure SQL database als **doel** gegevens opslag. Als u geen Azure-SQL database hebt die u in de zelf studie kunt gebruiken, raadpleegt u [een Azure SQL database maken en configureren](../../sql-database/sql-database-get-started.md) om er een te maken.
+* **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **brongegevens** opslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [een opslag account maken](../../storage/common/storage-account-create.md) voor de stappen om er een te maken.
+* **Azure SQL-database**. In deze zelf studie gebruikt u Azure SQL Database als **doel** gegevens opslag. Als u geen data base in Azure SQL Database hebt die u in de zelf studie kunt gebruiken, raadpleegt u [een Data Base maken en configureren in Azure SQL database](../../sql-database/sql-database-get-started.md) om er een te maken.
 * **SQL Server 2012/2014 of Visual Studio 2013**. U gebruikt SQL Server Management Studio of Visual Studio om een voorbeeld database te maken en om de resultaat gegevens in de-Data Base weer te geven.  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>Naam en sleutel van het Blob-opslag account verzamelen
 U hebt de account naam en de account sleutel van uw Azure Storage-account nodig om deze zelf studie uit te voeren. Noteer de **account naam** en de **account sleutel** voor uw Azure Storage-account.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Klik op **alle services** in het linkermenu en selecteer **opslag accounts**.
 
     ![Bladeren-opslag accounts](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
@@ -66,7 +66,7 @@ U hebt de account naam en de account sleutel van uw Azure Storage-account nodig 
 7. Sluit alle Blades door op **X**te klikken.
 
 ## <a name="collect-sql-server-database-user-names"></a>SQL Server, Data Base, gebruikers namen verzamelen
-U hebt de namen van de logische SQL-Server,-data base en-gebruiker nodig om deze zelf studie uit te voeren. Noteer de namen van de **Server**, de **Data Base**en de **gebruiker** voor uw Azure-SQL database.
+U hebt de namen van de logische SQL-Server,-data base en-gebruiker nodig om deze zelf studie uit te voeren. Noteer de namen van de **Server**, de **Data Base**en de **gebruiker** voor Azure SQL database.
 
 1. Klik in het **Azure Portal**op **alle services** aan de linkerkant en selecteer **SQL-data bases**.
 2. Selecteer in de **Blade SQL-data bases**de **Data Base** die u wilt gebruiken in deze zelf studie. Noteer de naam van de **Data Base**.  
@@ -79,19 +79,19 @@ Zorg ervoor dat **toegang tot de Azure-Services** -instelling voor uw server is 
 
 1. Klik op **alle services** hub aan de linkerkant en klik op **SQL-servers**.
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
-3. In de blade **Firewallinstellingen**schakelt u **Toegang tot Azure-services toestaan****in**.
+3. In de blade **Firewallinstellingen**schakelt u **Toegang tot Azure-services toestaan** **in**.
 4. Sluit alle Blades door op **X**te klikken.
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage en SQL Database voorbereiden
-Bereid nu uw Azure Blob-opslag en Azure SQL database voor op de zelf studie door de volgende stappen uit te voeren:  
+Bereid nu uw Azure Blob-opslag voor en Azure SQL Database voor de zelf studie door de volgende stappen uit te voeren:  
 
-1. Start Kladblok. Kopieer de volgende tekst en sla deze op als **EMP. txt** in de map **C:\ADFGetStarted** op de vaste schijf.
+1. Start Kladblok. Kopieer de volgende tekst en sla deze op als **emp.txt** in de map **C:\ADFGetStarted** op de vaste schijf.
 
     ```
     John, Doe
     Jane, Doe
     ```
-2. Gebruik hulpprogram ma's zoals [Azure Storage Explorer](https://storageexplorer.com/) om de **adftutorial** -container te maken en het **EMP. txt** -bestand naar de container te uploaden.
+2. Gebruik hulpprogram ma's zoals [Azure Storage Explorer](https://storageexplorer.com/) om de **adftutorial** -container te maken en het **emp.txt** bestand naar de container te uploaden.
 
 3. Gebruik het volgende SQL-script om de tabel **emp** te maken in uw Azure SQL Database.  
 

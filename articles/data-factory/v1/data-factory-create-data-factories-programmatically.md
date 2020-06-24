@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931319"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248298"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-gegevens fabrieken maken, bewaken en beheren met behulp van Azure Data Factory .NET SDK
 > [!NOTE]
@@ -39,7 +39,7 @@ U kunt Azure-gegevens fabrieken programmatisch maken, bewaken en beheren met beh
 ### <a name="create-an-application-in-azure-active-directory"></a>Een toepassing maken in Azure Active Directory
 Maak een Azure Active Directory-toepassing, maak een service-principal voor de toepassing en wijs deze toe aan de rol **Inzender Data Factory**.
 
-1. Start **Power shell**.
+1. Start **PowerShell**.
 2. Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal.
 
     ```powershell
@@ -50,7 +50,7 @@ Maak een Azure Active Directory-toepassing, maak een service-principal voor de t
     ```powershell
     Get-AzSubscription
     ```
-4. Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang ** &lt;NameOfAzureSubscription** &gt; door de naam van uw Azure-abonnement.
+4. Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **&lt;NameOfAzureSubscription**&gt; door de naam van uw Azure-abonnement.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -59,7 +59,7 @@ Maak een Azure Active Directory-toepassing, maak een service-principal voor de t
    > [!IMPORTANT]
    > Noteer de **SubscriptionId** en de **TenantId** uit de uitvoer van deze opdracht.
 
-5. Maak een Azure-resource groep met de naam **ADFTutorialResourceGroup** door de volgende opdracht uit te voeren in Power shell.
+5. Maak een Azure-resourcegroep met de naam **ADFTutorialResourceGroup** door de volgende opdracht uit te voeren in PowerShell.
 
     ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
@@ -111,16 +111,16 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
 1. Maak met behulp van Visual Studio 2012/2013/2015 een C# .NET-consoletoepassing.
    1. Open **Visual Studio** 2012/2013/2015.
    2. Klik op **File**, houd de muisaanwijzer op **New** en klik op **Project**.
-   3. Vouw **Templates** uit en selecteer **Visual C#**. Tijdens deze walkthrough gebruikt u C#, maar u kunt een willekeurige .NET-taal gebruiken.
+   3. Vouw **Templates** uit en selecteer **Visual C#** . Tijdens deze walkthrough gebruikt u C#, maar u kunt een willekeurige .NET-taal gebruiken.
    4. Selecteer **Console Application** uit de lijst met projecttypen aan de rechterkant.
    5. Voer **DataFactoryAPITestApp** in als de naam.
    6. Selecteer **C:\ADFGetStarted** als de locatie.
-   7. Klik op **OK** om het project te maken.
+   7. Klik op **OK** om het project aan te maken.
 2. Klik op **Tools**, wijs **NuGet Package Manager** aan en klik op **Package Manager Console**.
 3. Voer de volgende stappen uit in de **Package Manager Console**:
    1. Voer de volgende opdracht uit om het Data Factory-pakket te installeren: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Voer de volgende opdracht uit om het Azure Active Directory-pakket te installeren (u gebruikt de Active Directory API in de code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Vervang de inhoud van het bestand **app. config** in het project door de volgende inhoud: 
+4. Vervang de inhoud van **App.config** bestand in het project door de volgende inhoud: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -137,7 +137,7 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
         </appSettings>
     </configuration>
     ```
-5. Werk in het bestand app. config waarden bij voor ** &lt;de toepassings&gt;-id**, ** &lt;het wacht woord&gt;**, ** &lt;de abonnements-id&gt;** en ** &lt;de Tenant-id&gt; ** met uw eigen waarden.
+5. In het App.Config bestand werkt u de waarden voor de ** &lt; toepassings- &gt; id**, het ** &lt; wacht woord &gt; **, de ** &lt; abonnements-id &gt; **en de ** &lt; Tenant-id &gt; ** bij uw eigen waarden bij.
 6. Voeg de volgende **using** -instructies toe aan het **Program.cs** -bestand in het project.
 
     ```csharp
@@ -154,7 +154,7 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     ```
-6. Voeg de volgende code toe die een instantie van de klasse **DataPipelineManagementClient** maakt in de methode **Main** . U gebruikt dit object om een gegevensfactory, een gekoppelde service, gegevenssets voor invoer en uitvoer, en een pijplijn te maken. U gebruikt dit object ook om segmenten van een gegevensset te bewaken tijdens runtime.
+6. Voeg de volgende code toe aan de methode **Main** om een instantie van de klasse **DataPipelineManagementClient** te maken. U gebruikt dit object om een gegevensfactory, een gekoppelde service, gegevenssets voor invoer en uitvoer, en een pijplijn te maken. U gebruikt dit object ook om segmenten van een gegevensset te bewaken tijdens runtime.
 
     ```csharp
     // create data factory management client
@@ -445,7 +445,7 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
     }
     ```
 
-15. Vouw in het Solution Explorer het project uit: **DataFactoryAPITestApp**, klik met de rechter muisknop op **verwijzingen**en klik op **referentie toevoegen**. Schakel het selectie vakje `System.Configuration` voor de assembly in en klik op **OK**.
+15. Vouw in het Solution Explorer het project uit: **DataFactoryAPITestApp**, klik met de rechter muisknop op **verwijzingen**en klik op **referentie toevoegen**. Schakel het selectie vakje voor de `System.Configuration` Assembly in en klik op **OK**.
 15. Bouw de consoletoepassing. Klik op **Build** in het menu en klik op **Build Solution**.
 16. Controleer of er ten minste één bestand in de adftutorial-container in uw Azure Blob Storage staat. Als dit niet het geval is, maakt u in Kladblok het Emp.txt-bestand met de volgende inhoud en uploadt u het bestand naar de adftutorial-container.
 
@@ -453,7 +453,7 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
     John, Doe
     Jane, Doe
     ```
-17. Voer het voor beeld uit door te klikken op **debug** -> **Start Debugging** in het menu. Als u **Getting run details of a data slice** ziet, wacht u een paar minuten en drukt u op **ENTER**.
+17. Voer het voorbeeld uit door op **Debug** -> **Start Debugging** te klikken in het menu. Als u **Getting run details of a data slice** ziet, wacht u een paar minuten en drukt u op **ENTER**.
 18. Gebruik Azure Portal om te controleren of de gegevensfactory **APITutorialFactory** wordt gemaakt met de volgende artefacten:
     * Gekoppelde service: **AzureStorageLinkedService**
     * Gegevensset: **DatasetBlobSource** en **DatasetBlobDestination**.
@@ -500,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende voor beeld voor het maken van een pijp lijn met behulp van .NET SDK waarmee gegevens van een Azure Blob-opslag naar een Azure-SQL database worden gekopieerd: 
+Zie het volgende voor beeld voor het maken van een pijp lijn met behulp van .NET SDK waarmee gegevens worden gekopieerd van een Azure Blob-opslag naar Azure SQL Database: 
 
 - [Een pijp lijn maken om gegevens van Blob Storage naar SQL Database te kopiëren](data-factory-copy-activity-tutorial-using-dotnet-api.md)

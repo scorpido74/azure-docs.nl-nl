@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/5/2020
-ms.openlocfilehash: f78e6969c98545ec0b9b3e0a0822d4b9ae35903a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 198e23065603d58a9b1386b7c16792a1d8140f55
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562005"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250499"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -100,7 +100,7 @@ Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/5.7/en/server
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
@@ -123,6 +123,9 @@ Wanneer verbindingen de limiet overschrijden, wordt mogelijk de volgende fout we
 > Voor de beste ervaring raden we u aan een Pooler voor verbindingen te gebruiken zoals ProxySQL om verbindingen efficiënt te beheren.
 
 Het maken van nieuwe client verbindingen met MySQL vergt tijd en deze verbindingen nemen database bronnen in beslag, zelfs wanneer ze niet actief zijn. De meeste toepassingen aanvragen een groot aantal korte, langdurige verbindingen, waardoor deze situatie wordt beperkt. Het resultaat is minder beschik bare resources voor uw werkelijke workload, waardoor de prestaties afnemen. Een verbindings groep waarmee niet-actieve verbindingen worden verminderd en bestaande verbindingen opnieuw worden gebruikt, kunt u dit voor komen. Ga naar onze [blog post](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)voor meer informatie over het instellen van ProxySQL.
+
+>[!Note]
+>ProxySQL is een open source-community-hulp programma. Het wordt door micro soft geadviseerd op basis van de beste inspanningen. Als u ondersteuning voor productie wilt krijgen met behulp van gezaghebbende richt lijnen, kunt u [ProxySQL-product ondersteuning](https://proxysql.com/services/support/)evalueren en bereiken.
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 

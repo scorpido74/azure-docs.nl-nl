@@ -4,15 +4,15 @@ description: Dit artikel bevat informatie over het uitschakelen en opnieuw insch
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 45c30a874b161301e3e9c1dafc33e495bbafb2de
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: fe4da0435731c536a723cb2cb43428166456360b
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670955"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807941"
 ---
 # <a name="disable-and-re-enable-agic-add-on-for-your-aks-cluster"></a>De AGIC-invoeg toepassing voor uw AKS-cluster uitschakelen en opnieuw inschakelen
 Application Gateway ingangs controller (AGIC) die is geïmplementeerd als een AKS-invoeg toepassing, kunt u de invoeg toepassing inschakelen en uitschakelen met één regel in azure CLI. De levens cyclus van de Application Gateway verschilt wanneer u de AGIC-invoeg toepassing uitschakelt, afhankelijk van of de Application Gateway is gemaakt door de AGIC-invoeg toepassing, of dat deze los van de AGIC-invoeg toepassing is geïmplementeerd. U kunt dezelfde opdracht uitvoeren om de AGIC-invoeg toepassing opnieuw in te scha kelen als u deze ooit uitschakelt of als u de AGIC-invoeg toepassing wilt inschakelen met behulp van een bestaand AKS-cluster en Application Gateway.

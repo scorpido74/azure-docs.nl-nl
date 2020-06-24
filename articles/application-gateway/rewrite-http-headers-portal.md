@@ -4,16 +4,16 @@ description: Meer informatie over het gebruik van de Azure Portal om een Azure-t
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74012864"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807901"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-aanvraag-en-antwoord headers herschrijven met Azure-toepassing gateway-Azure Portal
 
@@ -49,7 +49,7 @@ U kunt meerdere herschrijf sets voor HTTP-headers maken en elke herschrijfset To
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw Azure-account.
+Meld u met uw Azure-account aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="configure-header-rewrite"></a>Herschrijven van header configureren
 
@@ -99,7 +99,7 @@ In dit voor beeld wijzigen we een omleidings-URL door de locatie header te hersc
 
    - Selecteer in de lijst **operator** de optie **gelijk aan (=)**.
 
-   - Geef een reguliere-expressie patroon op. In dit voor beeld gebruiken we het patroon `(https?):\/\/.*azurewebsites\.net(.*)$`.
+   - Geef een reguliere-expressie patroon op. In dit voor beeld gebruiken we het patroon `(https?):\/\/.*azurewebsites\.net(.*)$` .
 
    - Selecteer **OK**.
 
@@ -115,7 +115,7 @@ In dit voor beeld wijzigen we een omleidings-URL door de locatie header te hersc
 
    - Selecteer in de lijst **common header** de optie **locatie**.
 
-   - Voer de waarde voor de header in. In dit voor beeld gebruiken `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` we als waarde voor de header. Met deze waarde wordt *azurewebsites.net* vervangen door *contoso.com* in de locatie header.
+   - Voer de waarde voor de header in. In dit voor beeld gebruiken we `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als waarde voor de header. Met deze waarde wordt *azurewebsites.net* vervangen door *contoso.com* in de locatie header.
 
    - Selecteer **OK**.
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
 ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279882"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708923"
 ---
 # <a name="vpn-gateway-faq"></a>Veelgestelde vragen VPN-gateways
 
@@ -73,7 +73,7 @@ Op route gebaseerde gateways implementeren op route gebaseerde VPN's. VPN-verbin
 Nee.Een gateway van het type Azure-Vnet kan niet worden gewijzigd van op beleid gebaseerd in op route gebaseerd, of andersom. De gateway moet worden verwijderd en opnieuw worden gemaakt. Dit duurt ongeveer 60 minuten. Het IP-adres van de gateway en ook de PSK (vooraf gedeelde sleutel) blijven niet behouden.
 1. Verwijder alle verbindingen die zijn gekoppeld aan de gateway die moet worden verwijderd.
 1. Gateway verwijderen:
-   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure-portal](vpn-gateway-delete-vnet-gateway-portal.md)
    - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
    - [Azure PowerShell-klassiek](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 1. [Maak een nieuwe gateway van het type dat u wilt en voltooi de VPN-installatie](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).

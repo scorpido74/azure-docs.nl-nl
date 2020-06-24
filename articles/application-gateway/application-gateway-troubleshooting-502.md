@@ -4,18 +4,18 @@ description: 'Informatie over het oplossen van Application Gateway server fout: 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: a48ed39af243296bcb76cb61f1fe64e4e95ab7e7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801736"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808161"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Fouten met ongeldige gateway oplossen in Application Gateway
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=66c070b6-1c47-4c7f-b928-317a8c8b452f" target='_blank'>Begin</a></span>met<span class="has-padding-small">het snel oplossen van uw probleem door gebruik te maken van onze virtuele agent om <b>geautomatiseerde diagnostische gegevens</b> uit te voeren.</span> <div align="right"> <sub>Privacy Statement</sub> Privacyverklaring <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
+
 Informatie over het oplossen van problemen met slechte gateway (502) die worden ontvangen bij het gebruik van Azure-toepassing gateway.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -87,13 +87,13 @@ De volgende tabel geeft een lijst van de waarden die zijn gekoppeld aan de stand
 | Test-URL |`http://127.0.0.1/` |URL-pad |
 | Interval |30 |Test interval in seconden |
 | Time-out |30 |Time-out van de test in seconden |
-| Drempel waarde voor onjuiste status |3 |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempelwaarde voor onjuiste status |3 |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 ### <a name="solution"></a>Oplossing
 
 * Zorg ervoor dat er een standaard site is geconfigureerd en luistert op 127.0.0.1.
 * Als BackendHttpSetting een andere poort dan 80 opgeeft, moet de standaard site worden geconfigureerd om op die poort te Luis teren.
-* De aanroep van `http://127.0.0.1:port` moet een http-resultaat code van 200 retour neren. Dit moet binnen de time-outperiode van 30 seconden worden geretourneerd.
+* De aanroep `http://127.0.0.1:port` van moet een HTTP-resultaat code van 200 retour neren. Dit moet binnen de time-outperiode van 30 seconden worden geretourneerd.
 * Zorg ervoor dat de geconfigureerde poort is geopend en dat er geen firewall regels of Azure-netwerk beveiligings groepen zijn, die inkomend of uitgaand verkeer op de geconfigureerde poort blok keren.
 * Als Azure Classic Vm's of Cloud service wordt gebruikt met een FQDN of een openbaar IP-adres, moet u ervoor zorgen dat het bijbehorende [eind punt](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) wordt geopend.
 * Als de virtuele machine is geconfigureerd via Azure Resource Manager en zich buiten het VNet bevindt waarin de toepassings gateway is geïmplementeerd, moet er een [netwerk beveiligings groep](../virtual-network/security-overview.md) worden geconfigureerd om toegang toe te staan op de gewenste poort.
@@ -111,18 +111,18 @@ De volgende aanvullende eigenschappen worden toegevoegd:
 | Naam |De naam van de test. Deze naam wordt gebruikt om te verwijzen naar de test in back-end-HTTP-instellingen. |
 | Protocol |Het protocol dat wordt gebruikt om de test te verzenden. De test gebruikt het protocol dat is gedefinieerd in de back-end-HTTP-instellingen |
 | Host |De hostnaam voor het verzenden van de test. Alleen van toepassing wanneer meerdere locaties op de toepassings gateway zijn geconfigureerd. Dit wijkt af van de naam van de VM-host. |
-| Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. De test wordt verzonden naar \<protocol\>://\<host\>:\<poort\>\<pad\> |
+| Pad |Het relatieve pad van de test. Het geldige pad wordt gestart vanaf/. De test wordt verzonden naar \<protocol\> :// \<host\> :\<port\>\<path\> |
 | Interval |Test interval in seconden. Dit is het tijds interval tussen twee opeenvolgende tests. |
 | Time-out |Time-out van de test (in seconden). Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. |
-| Drempel waarde voor onjuiste status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
+| Drempelwaarde voor onjuiste status |Aantal nieuwe pogingen testen. De back-endserver is gemarkeerd wanneer het aantal opeenvolgende test fouten de drempel waarde voor de onjuiste status bereikt. |
 
 ### <a name="solution"></a>Oplossing
 
 Controleer of de aangepaste status test correct is geconfigureerd als de voor gaande tabel. Naast de voor gaande stappen voor probleem oplossing moet u ook rekening houden met het volgende:
 
 * Zorg ervoor dat de test juist is opgegeven volgens de [hand leiding](application-gateway-create-probe-ps.md).
-* Als de toepassings gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als `127.0.0.1`, tenzij anders geconfigureerd in een aangepaste test.
-* Zorg ervoor dat een aanroep van\<http://\>host\<:\>\<poort\> pad retourneert een http-resultaat code van 200.
+* Als de toepassings gateway voor één site is geconfigureerd, moet de hostnaam standaard worden opgegeven als `127.0.0.1` , tenzij anders geconfigureerd in een aangepaste test.
+* Zorg ervoor dat een aanroep van http:// \<host\> : \<port\> \<path\> retourneert een http-resultaat code van 200.
 * Zorg ervoor dat interval, time-out en UnhealtyThreshold binnen de aanvaard bare bereiken vallen.
 * Als u een HTTPS-test gebruikt, moet u ervoor zorgen dat de back-endserver geen SNI vereist door een terugval certificaat te configureren op de back-endserver zelf.
 

@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331372"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749628"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie implementeren met Azure AD Connect-synchronisatie
 In dit artikel vindt u informatie die u nodig hebt om uw gebruikers wachtwoorden te synchroniseren vanuit een on-premises Active Directory-exemplaar naar een op de cloud gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -89,14 +89,13 @@ Als een gebruiker zich in het bereik van de wachtwoord-hash-synchronisatie bevin
 
 U kunt zich blijven aanmelden bij uw Cloud Services met behulp van een gesynchroniseerd wacht woord dat is verlopen in uw on-premises omgeving. Het wacht woord voor de Cloud wordt bijgewerkt de volgende keer dat u het wacht woord in de on-premises omgeving wijzigt.
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>Open bare preview-versie van de *EnforceCloudPasswordPolicyForPasswordSyncedUsers* -functie
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 Als er gesynchroniseerde gebruikers zijn die alleen communiceren met Azure AD Integrated Services en moeten voldoen aan het beleid voor het verlopen van wacht woorden, kunt u ervoor zorgen dat ze voldoen aan het verloop beleid van uw Azure AD-wacht woord door de functie *EnforceCloudPasswordPolicyForPasswordSyncedUsers* in te scha kelen.
 
 Wanneer *EnforceCloudPasswordPolicyForPasswordSyncedUsers* is uitgeschakeld (dit is de standaard instelling), stelt Azure AD Connect het kenmerk PasswordPolicies van gesynchroniseerde gebruikers in op "DisablePasswordExpiration". Dit gebeurt telkens wanneer het wacht woord van een gebruiker wordt gesynchroniseerd en geeft Azure AD het verloop beleid voor Cloud wachtwoord voor die gebruiker te negeren. U kunt de waarde van het kenmerk controleren met behulp van de Azure AD Power shell-module met de volgende opdracht:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 Als u de functie EnforceCloudPasswordPolicyForPasswordSyncedUsers wilt inschakelen, voert u de volgende opdracht uit met behulp van de MSOnline Power shell-module, zoals hieronder wordt weer gegeven. U moet ja typen voor de para meter Enable zoals hieronder wordt weer gegeven:
 
@@ -110,15 +109,15 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Als deze functie is ingeschakeld, gaat Azure AD niet naar elke gesynchroniseerde gebruiker `DisablePasswordExpiration` om de waarde uit het kenmerk PasswordPolicies te verwijderen. In plaats daarvan wordt de waarde ingesteld `None` op tijdens de volgende wachtwoord synchronisatie voor elke gebruiker wanneer deze vervolgens hun wacht woord in on-premises AD wijzigt.  
+Als deze functie is ingeschakeld, gaat Azure AD niet naar elke gesynchroniseerde gebruiker om de `DisablePasswordExpiration` waarde uit het kenmerk PasswordPolicies te verwijderen. In plaats daarvan wordt de waarde ingesteld op `None` tijdens de volgende wachtwoord synchronisatie voor elke gebruiker wanneer deze vervolgens hun wacht woord in on-premises AD wijzigt.  
 
-Het is raadzaam om EnforceCloudPasswordPolicyForPasswordSyncedUsers in te scha kelen voordat u wachtwoord-hash-synchronisatie inschakelt, zodat de eerste synchronisatie van wacht woord `DisablePasswordExpiration` -hashes de waarde niet toevoegt aan het kenmerk PasswordPolicies voor de gebruikers.
+Het is raadzaam om EnforceCloudPasswordPolicyForPasswordSyncedUsers in te scha kelen voordat u wachtwoord-hash-synchronisatie inschakelt, zodat de eerste synchronisatie van wacht woord-hashes de waarde niet toevoegt `DisablePasswordExpiration` aan het kenmerk PasswordPolicies voor de gebruikers.
 
 Het standaard wachtwoord beleid voor Azure AD vereist dat gebruikers elke 90 dagen hun wacht woord wijzigen. Als uw beleid in AD ook 90 dagen is, moeten de twee beleids regels overeenkomen. Als het AD-beleid echter niet 90 dagen is, kunt u het Azure AD-wachtwoord beleid bijwerken zodat dit overeenkomt met behulp van de set-MsolPasswordPolicy Power shell-opdracht.
 
 Azure AD biedt ondersteuning voor een afzonderlijk beleid voor wachtwoord verloop per geregistreerd domein.
 
-Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht woorden moeten hebben in azure AD, moet u `DisablePasswordExpiration` de waarde expliciet toevoegen aan het kenmerk PasswordPolicies van het gebruikers object in azure AD.  U kunt dit doen door de volgende opdracht uit te voeren.
+Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht woorden moeten hebben in azure AD, moet u de waarde expliciet toevoegen `DisablePasswordExpiration` aan het kenmerk PasswordPolicies van het gebruikers object in azure AD.  U kunt dit doen door de volgende opdracht uit te voeren.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
@@ -126,7 +125,7 @@ Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht wo
 > Deze functie is nu beschikbaar in de open bare preview.
 > De Power shell-opdracht set-MsolPasswordPolicy werkt niet op federatieve domeinen. 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Open bare preview van het synchroniseren van tijdelijke wacht woorden en ' wacht woord wijzigen bij de volgende aanmelding afdwingen '
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Tijdelijke wacht woorden synchroniseren en wacht woord wijzigen bij volgende aanmelding afdwingen
 
 Het is gebruikelijk dat een gebruiker het wacht woord tijdens de eerste aanmelding wijzigt, met name nadat een beheerders wachtwoord opnieuw is ingesteld.  Het is vaak bekend als het instellen van een ' tijdelijk ' wacht woord en wordt uitgevoerd door de vlag ' gebruiker moet wacht woord bij volgende aanmelding wijzigen ' op een gebruikers object in Active Directory (AD) in te scha kelen.
   
@@ -169,7 +168,7 @@ De synchronisatie van een wacht woord heeft geen invloed op de Azure-gebruiker d
 Als u Azure AD Domain Services gebruikt om verouderde verificatie te bieden voor toepassingen en services waarvoor Kerberos, LDAP of NTLM moet worden gebruikt, maken sommige extra processen deel uit van de synchronisatie stroom voor wacht woord-hashes. Azure AD Connect gebruikt het volgende proces om wacht woord-hashes te synchroniseren met Azure AD voor gebruik in Azure AD Domain Services:
 
 > [!IMPORTANT]
-> Azure AD Connect mag alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS omgevingen. Het is niet mogelijk om Azure AD Connect te installeren in een beheerd domein van Azure AD DS om objecten terug te synchroniseren naar Azure AD.
+> Azure AD Connect moet alleen worden geïnstalleerd en geconfigureerd voor synchronisatie met on-premises AD DS-omgevingen. Het installeren van Azure AD Connect in een beheerd Azure AD DS-domein om objecten weer naar Azure AD te synchroniseren, wordt niet ondersteund.
 >
 > Azure AD Connect synchroniseert alleen verouderde wachtwoord-hashes wanneer u Azure AD DS voor uw Azure AD-Tenant inschakelt. De volgende stappen worden niet gebruikt als u alleen Azure AD Connect gebruikt om een on-premises AD DS omgeving te synchroniseren met Azure AD.
 >
@@ -216,7 +215,7 @@ Als uw server is vergrendeld volgens de Federal Information Processing Standard 
 **Voer de volgende stappen uit om MD5 in te scha kelen voor wachtwoord hash-synchronisatie:**
 
 1. Ga naar%programfiles%\Azure AD Sync\Bin.
-2. Open MIIServer. exe. config.
+2. Open miiserver.exe.config.
 3. Ga naar het knoop punt configuratie/runtime aan het einde van het bestand.
 4. Voeg het volgende knoop punt toe:`<enforceFIPSPolicy enabled="false"/>`
 5. Sla uw wijzigingen op.

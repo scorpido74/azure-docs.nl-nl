@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87da43100c7494937ddc842e0f903ba3a360959e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74022897"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743708"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Azure-resources ontdekken om te beheren in Privileged Identity Management
 
@@ -27,7 +27,7 @@ Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt 
 
 Wanneer u Privileged Identity Management voor het eerst instelt voor Azure-resources, moet u de resources ontdekken en selecteren die u wilt beveiligen met Privileged Identity Management. Er is geen limiet voor het aantal resources dat u kunt beheren met Privileged Identity Management. We raden u echter aan om te beginnen met uw meest kritieke resources (productie).
 
-## <a name="discover-resources"></a>Resources doorzoeken
+## <a name="discover-resources"></a>Resources ontdekken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 

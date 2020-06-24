@@ -4,22 +4,22 @@ description: Meer informatie over het voorbereiden van een root-of Apex-domein n
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878881"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743589"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Een root-of Apex-domein op de voor deur onboarden
 Azure front-deur gebruikt CNAME-records om het domein eigendom te valideren voor de onboarding van aangepaste domeinen. Bovendien geeft front deur niet het frontend-IP-adres weer dat is gekoppeld aan uw front deur-profiel. u kunt uw Apex-domein niet toewijzen aan een IP-adres als het doel is om het in te stellen op Azure front deur.
 
-Het DNS-protocol voor komt dat de toewijzing van CNAME-records op de zone Apex. Als uw domein bijvoorbeeld is `contoso.com`; u kunt CNAME-records maken `somelabel.contoso.com`voor; maar u kunt geen CNAME maken `contoso.com` voor zichzelf. Deze beperking geeft een probleem met de eigen aren van toepassingen die toepassingen met taak verdeling achter de Azure front-deur hebben. Omdat voor het gebruik van een front-deur profiel een CNAME-record moet worden gemaakt, is het niet mogelijk om naar het voorste deur Profiel van de zone Apex te wijzen.
+Het DNS-protocol voor komt dat de toewijzing van CNAME-records op de zone Apex. Als uw domein bijvoorbeeld is, `contoso.com` kunt u CNAME-records maken voor `somelabel.contoso.com` , maar niet voor zichzelf een CNAME maken `contoso.com` . Deze beperking geeft een probleem met de eigen aren van toepassingen die toepassingen met taak verdeling achter de Azure front-deur hebben. Omdat voor het gebruik van een front-deur profiel een CNAME-record moet worden gemaakt, is het niet mogelijk om naar het voorste deur Profiel van de zone Apex te wijzen.
 
-Dit probleem wordt opgelost met behulp van alias records op Azure DNS. In tegens telling tot CNAME-records worden alias records gemaakt op de zone Apex en de eigen aren van toepassingen kunnen deze gebruiken om hun zone Apex-record te laten wijzen naar een front-deur profiel met open bare eind punten. Toepassings eigenaren verwijzen naar hetzelfde deur profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone. `contoso.com` En `www.contoso.com` kunnen bijvoorbeeld verwijzen naar hetzelfde deur profiel voor beide. 
+Dit probleem wordt opgelost met behulp van alias records op Azure DNS. In tegens telling tot CNAME-records worden alias records gemaakt op de zone Apex en de eigen aren van toepassingen kunnen deze gebruiken om hun zone Apex-record te laten wijzen naar een front-deur profiel met open bare eind punten. Toepassings eigenaren verwijzen naar hetzelfde deur profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone. `contoso.com`En `www.contoso.com` kunnen bijvoorbeeld verwijzen naar hetzelfde deur profiel voor beide. 
 
 Voor het toewijzen van uw Apex of hoofd domein aan het voorste deur profiel is in principe CNAME-afvlakking of DNS-Chasing vereist. Dit is een mechanisme waarbij de CNAME-vermelding in de DNS-provider recursief wordt opgelost, totdat deze een IP-adres heeft gevonden. Deze functionaliteit wordt ondersteund door Azure DNS voor eind punten van de voor deur. 
 
@@ -48,12 +48,12 @@ In dit artikel leert u het volgende:
 
     ![Alias record voor zone Apex](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. Met de bovenstaande stap maakt u een zone Apex-record die verwijst naar de voor deur en ook een CNAME- `afdverify.contosonews.com`record met `afdverify.<name>.azurefd.net` de naam ' afdverify ' (bijvoorbeeld) waarmee het domein op uw front-deur profiel wordt gebruikt.
+6. Met de bovenstaande stap maakt u een zone Apex-record die verwijst naar de voor deur en ook een CNAME-record met de naam ' afdverify ' (bijvoorbeeld `afdverify.contosonews.com` ) waarmee `afdverify.<name>.azurefd.net` het domein op uw front-deur profiel wordt gebruikt.
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>Het aangepaste domein onboarden op de voor deur
 
 1. Klik op het tabblad front deur Designer op het pictogram ' + ' op de sectie frontend-hosts om een nieuw aangepast domein toe te voegen.
-2. Voer de root-of Apex-domein naam in het veld aangepaste hostnaam in `contosonews.com`, bijvoorbeeld.
+2. Voer de root-of Apex-domein naam in het veld aangepaste hostnaam in, bijvoorbeeld `contosonews.com` .
 3. Zodra de CNAME-toewijzing van het domein naar uw voor deur is gevalideerd, klikt u op **toevoegen** om het aangepaste domein toe te voegen.
 4. Klik op **Opslaan** om de wijzigingen te verzenden.
 

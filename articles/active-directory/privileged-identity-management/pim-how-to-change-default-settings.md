@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 334f239ea8382a67add9655d4a25f98d254567d3
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78205021"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743946"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
 
@@ -44,7 +44,7 @@ Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker in de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 gt
-1. Open **Azure AD privileged Identity Management** &gt; **functie-instellingen**van **Azure AD-rollen** &gt; .
+1. Open **Azure AD privileged Identity Management** &gt; functie-instellingen van **Azure AD-rollen** &gt; **Role settings**.
 
     ![Pagina rolinstellingen die Azure AD-rollen weer geven](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -79,7 +79,7 @@ En u kunt een van deze **actieve** toewijzings duur opties kiezen:
 > [!NOTE]
 > Alle toewijzingen met een opgegeven eind datum kunnen worden vernieuwd door globale beheerders en beheerders met verhoogde bevoegdheden. Gebruikers kunnen ook selfservice aanvragen initiëren om roltoewijzingen uit te [breiden of te vernieuwen](pim-resource-roles-renew-extend.md).
 
-## <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
+## <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication vereisen
 
 Privileged Identity Management biedt een optionele afdwinging van Azure Multi-Factor Authentication voor twee verschillende scenario's.
 
@@ -131,7 +131,7 @@ Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
 
 1. Selecteer **Azure AD-rollen**.
 
-1. **Instellingen**selecteren.
+1. Selecteer **Instellingen**.
 
     ![Azure AD-rollen-instellingen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -167,7 +167,7 @@ Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerde
 
 Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
 
-- Gebruikers met micro soft-accounts voor hun e-mail @outlook.comadressen (doorgaans, maar niet altijd) kunnen niet worden geregistreerd voor Azure multi-factor Authentication. Als u rollen wilt toewijzen aan gebruikers met micro soft-accounts, moet u deze permanent beheerder maken of multi-factor Authentication uitschakelen voor die rol.
+- Gebruikers met micro soft-accounts voor hun e-mail adressen (doorgaans @outlook.com , maar niet altijd) kunnen niet worden geregistreerd voor Azure multi-factor Authentication. Als u rollen wilt toewijzen aan gebruikers met micro soft-accounts, moet u deze permanent beheerder maken of multi-factor Authentication uitschakelen voor die rol.
 - U kunt Azure Multi-Factor Authentication niet uitschakelen voor rollen met een hoge bevoegdheden voor Azure AD en Office 365. Deze veiligheids functie helpt bij het beveiligen van de volgende rollen:  
   
   - Azure Information Protection beheerder
@@ -186,7 +186,7 @@ Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebru
   - Beveiligingsbeheerder
   - SharePoint-beheerder
   - Skype voor Bedrijven-beheerder
-  - Gebruikers beheerder
+  - Gebruikersbeheerder
 
 Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
 

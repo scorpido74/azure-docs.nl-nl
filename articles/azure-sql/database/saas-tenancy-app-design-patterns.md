@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: efb25a16b5a3ae7de831436d255358aca19b828f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042188"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250704"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Multitenancy-patronen voor SaaS-data base met meerdere tenants
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ Elke Tenant database wordt als één data base geïmplementeerd.  Dit model bied
 
 #### <a name="vendor-management"></a>Leveranciers beheer
 
-De leverancier heeft toegang tot alle data bases in alle zelfstandige app-instanties, zelfs als de app-exemplaren in verschillende Tenant abonnementen zijn geïnstalleerd.  De toegang wordt bereikt via SQL-verbindingen.  Deze cross-instance Access kan de leverancier in staat stellen schema beheer en query's voor meerdere data bases te centraliseren voor rapportage-of analyse doeleinden.  Als dit soort gecentraliseerd beheer gewenst is, moet er een catalogus worden geïmplementeerd waarmee Tenant-id's worden toegewezen aan data base-Uri's.  Azure SQL Database biedt een sharding-bibliotheek die in combi natie met een SQL database wordt gebruikt om een catalogus op te geven.  De sharding-bibliotheek heeft formeel de naam van de [Elastic database-client bibliotheek][docu-elastic-db-client-library-536r].
+De leverancier heeft toegang tot alle data bases in alle zelfstandige app-instanties, zelfs als de app-exemplaren in verschillende Tenant abonnementen zijn geïnstalleerd.  De toegang wordt bereikt via SQL-verbindingen.  Deze cross-instance Access kan de leverancier in staat stellen schema beheer en query's voor meerdere data bases te centraliseren voor rapportage-of analyse doeleinden.  Als dit soort gecentraliseerd beheer gewenst is, moet er een catalogus worden geïmplementeerd waarmee Tenant-id's worden toegewezen aan data base-Uri's.  Azure SQL Database biedt een sharding-bibliotheek die samen wordt gebruikt om een catalogus te leveren.  De sharding-bibliotheek heeft formeel de naam van de [Elastic database-client bibliotheek][docu-elastic-db-client-library-536r].
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. Multi tenant-app met data base per Tenant
 
