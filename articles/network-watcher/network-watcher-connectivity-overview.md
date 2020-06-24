@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283275"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708940"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Inleiding tot verbindings problemen in azure Network Watcher
 
 De functie verbinding oplossen van Network Watcher biedt de mogelijkheid om een directe TCP-verbinding van een virtuele machine naar een virtuele machine (VM), Fully Qualified Domain Name (FQDN), URI of IPv4-adres te controleren. Netwerk scenario's zijn complex, ze worden geïmplementeerd met behulp van netwerk beveiligings groepen, firewalls, door de gebruiker gedefinieerde routes en resources die worden geboden door Azure. Complexe configuraties maken probleem oplossing van connectiviteits problemen lastig. Network Watcher helpt de hoeveelheid tijd te beperken om verbindings problemen op te sporen en op te sporen. De geretourneerde resultaten kunnen inzicht geven in of een connectiviteits probleem wordt veroorzaakt door een platform of een probleem met de gebruikers configuratie. Connectiviteit kan worden gecontroleerd met [Power shell](network-watcher-connectivity-powershell.md), [Azure cli](network-watcher-connectivity-cli.md)en [rest API](network-watcher-connectivity-rest.md).
 
 > [!IMPORTANT]
-> Verbindings problemen oplossen vereist dat de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie is geïnstalleerd op de VM die u wilt oplossen `AzureNetworkWatcherExtension` . Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="response"></a>Antwoord
 
@@ -46,7 +46,7 @@ In de volgende tabel ziet u de eigenschappen die worden geretourneerd wanneer he
 |Hops []. Taken | Een verzameling van problemen die zijn opgetreden tijdens de controle bij die hop. Als er geen problemen zijn, is de waarde leeg.|
 |Hops []. Problemen []. Oorsprong | Bij de huidige hop, waar het probleem zich voordeed. Mogelijke waarden zijn:<br/> **Inkomend** -probleem bevindt zich op de koppeling van de vorige hop naar de huidige hop<br/>**Uitgaand** -probleem bevindt zich op de koppeling van de huidige hop naar de volgende hop<br/>**Lokaal** -probleem bevindt zich op de huidige hop.|
 |Hops []. Problemen []. Ernst | De ernst van het probleem is gedetecteerd. Mogelijke waarden zijn **fout** en **waarschuwing**. |
-|Hops []. Problemen []. Voert |Het type probleem dat is gevonden. Mogelijke waarden zijn: <br/>**VERBRUIK**<br/>**Geheugen**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops []. Problemen []. Voert |Het type probleem dat is gevonden. Mogelijke waarden zijn: <br/>**CPU**<br/>**Geheugen**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops []. Problemen []. Context |Details over het gevonden probleem.|
 |Hops []. Problemen []. Context []. key |De sleutel van het paar sleutel waarden dat is geretourneerd.|
 |Hops []. Problemen []. Context []. waarde |De waarde van het sleutel waarde-paar dat wordt geretourneerd.|
@@ -72,7 +72,7 @@ Hier volgt een voor beeld van een probleem dat op een hop is gevonden.
 
 Verbindings problemen oplossen retourneert fout typen over de verbinding. De volgende tabel bevat een lijst met de huidige gegenereerde fout typen.
 
-|Type  |Beschrijving  |
+|Type  |Description  |
 |---------|---------|
 |CPU     | Hoog CPU-gebruik.       |
 |Geheugen     | Hoog geheugen gebruik.       |

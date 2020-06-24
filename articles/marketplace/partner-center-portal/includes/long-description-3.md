@@ -5,14 +5,14 @@ author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: 6713d93400bc391f4de7e07cc024ff9df2849a39
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7dd9de43e172737c96c3ee4cb5611cd2b2bee137
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700963"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750946"
 ---
 Gebruik HTML-tags om uw beschrijving zo in te delen dat deze meer aantrekkelijker is. Voor de meeste tags is een begin-en eind component vereist, zoals wordt weer gegeven in deze tabel.
 

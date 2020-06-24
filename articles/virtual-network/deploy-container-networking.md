@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 704f08bc4a41eb52789f8f28675332892d72a500
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475139"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710011"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>De Container Network Interface-invoegtoepassing (CNI) Azure Virtual Network implementeren
 
@@ -168,8 +168,8 @@ Het netwerkconfiguratiebestand van CNI heeft de JSON-indeling. Het bestand bevin
 
 Download de invoegtoepassing van [GitHub](https://github.com/Azure/azure-container-networking/releases). Download de nieuwste versie voor het platform dat u gebruikt:
 
-- **Linux**: [azure-vnet-cni-linux-amd64-\<versienr.\>.tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
-- **Windows**: [azure-vnet-cni-windows-amd64-\<versienr.\>.zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
+- **Linux**: [Azure-vnet-cni-linux-amd64- \<version no.\> . tgz](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-linux-amd64-v1.0.12-rc3.tgz)
+- **Windows**: [Azure-vnet-cni-Windows-amd64- \<version no.\> . zip](https://github.com/Azure/azure-container-networking/releases/download/v1.0.12-rc3/azure-vnet-cni-windows-amd64-v1.0.12-rc3.zip)
 
 Kopieer het installatiescript voor [Linux](https://github.com/Azure/azure-container-networking/blob/master/scripts/install-cni-plugin.sh) of [Windows](https://github.com/Azure/azure-container-networking/blob/master/scripts/Install-CniPlugin.ps1) naar uw computer. Sla het script op in een map `scripts` op uw computer en geef het bestand de naam `install-cni-plugin.sh` voor Linux of `install-cni-plugin.ps1` voor Windows. U kunt de invoegtoepassing installeren door het juiste script voor uw platform uit te voeren, waarbij u de versie opgeeft van de invoegtoepassing die u gebruikt. Geef bijvoorbeeld *v1.0.12-rc3* op:
 

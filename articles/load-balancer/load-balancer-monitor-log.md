@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858765"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809198"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-logboeken voor openbare Basic Azure Load Balancer
 
@@ -35,12 +35,12 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboek registratie voor gebeurtenis-en status controle in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboek registratie in te scha kelen.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
 
 1. Klik in de portal op **resource groepen**.
-2. Selecteer ** \<resource-group-name>** waarbij uw Load Balancer.
+2. Selecteer **\<resource-group-name>** waar uw Load Balancer is.
 3. Selecteer uw load balancer.
-4. Selecteer**Diagnostische instellingen** **bewaken** > .
+4. Selecteer **Monitoring**  >  **Diagnostische instellingen**bewaken.
 5. Selecteer in het deel venster **Diagnostische instellingen** onder **Diagnostische instellingen**de optie **+ Diagnostische instelling toevoegen**.
 6. Voer in het deel venster **Diagnostische instellingen** maken **myLBDiagnostics** in het veld **naam** in.
 7. Er zijn drie opties voor de **Diagnostische instellingen**.  U kunt een, twee of alle drie kiezen en elk configureren voor uw vereisten:

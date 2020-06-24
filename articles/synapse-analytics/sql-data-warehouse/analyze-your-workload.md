@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631234"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208396"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analyseer uw werk belasting in azure Synapse Analytics
 
-Technieken voor het analyseren van uw Synapse SQL-werk belasting in azure Synapse Analytics.
+Technieken voor het analyseren van uw Synapse SQL-werk belasting in azure Synapse Analytics. 
 
 ## <a name="resource-classes"></a>Resourceklassen
 
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Werkbelasting beheer rollen kunnen worden weer `sys.database_principals`gegeven met.
+Werkbelasting beheer rollen kunnen worden weer gegeven met `sys.database_principals` .
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -126,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-U kunt ook het `sys.dm_pdw_resource_waits` dmv gebruiken om te berekenen hoeveel gelijktijdigheids sleuven zijn toegekend.
+U kunt ook het dmv gebruiken om te `sys.dm_pdw_resource_waits` berekenen hoeveel gelijktijdigheids sleuven zijn toegekend.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots

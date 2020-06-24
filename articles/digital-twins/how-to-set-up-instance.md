@@ -1,5 +1,5 @@
 ---
-title: Een Azure Digital Apparaatdubbels-exemplaar maken
+title: Een Azure Digital Twins-exemplaar maken
 titleSuffix: Azure Digital Twins
 description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f097861f97e7ec62019fa631e2ac608d2e0c5024
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: bbd7c74fc87b3f7af799637e2288dcd074266843
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612871"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725576"
 ---
-# <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Apparaatdubbels-exemplaar instellen
+# <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-instantie instellen
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Dit artikel begeleidt u stapsgewijs door de basis stappen voor het instellen van een nieuw Azure Digital Apparaatdubbels-exemplaar. Dit omvat het maken van het exemplaar en het toewijzen van [Azure Active Directory (Aad)-](../active-directory/fundamentals/active-directory-whatis.md) machtigingen aan het exemplaar voor uzelf.
 
@@ -22,7 +25,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
-## <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Apparaatdubbels-exemplaar instellen
+## <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-instantie instellen
 
 Voer vervolgens de volgende opdrachten uit om een nieuwe Azure-resource groep te maken voor gebruik in deze procedure en maak vervolgens een nieuw exemplaar van Azure Digital Apparaatdubbels in deze resource groep.
 
@@ -32,7 +35,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 ```
 
 > [!TIP]
-> Als u een lijst met Azure-regio namen wilt uitvoeren die kunnen worden door gegeven in opdrachten in de Azure CLI, voert u de volgende opdracht uit:
+> Voer deze opdracht uit om een lijst uit te voeren van Azure-regionamen die kunnen worden doorgegeven aan opdrachten in de Azure CLI:
 > ```azurecli
 > az account list-locations -o table
 > ```
@@ -61,7 +64,7 @@ Maak een roltoewijzing voor uzelf met behulp van uw e-mail adres dat is gekoppel
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Het resultaat van deze opdracht is gegenereerde informatie over de roltoewijzing die u hebt gemaakt.
+Het resultaat van deze opdracht is uitgevoerde informatie over de roltoewijzing die u hebt gemaakt.
 
 > [!TIP]
 > Als u in plaats daarvan een *400: onjuiste aanvraag* -fout krijgt, voert u de volgende opdracht uit om de *ObjectID* voor uw gebruiker op te halen:

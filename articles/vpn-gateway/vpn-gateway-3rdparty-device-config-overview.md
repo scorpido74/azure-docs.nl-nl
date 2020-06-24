@@ -4,15 +4,15 @@ description: In dit artikel vindt u een overzicht van VPN-configuraties van part
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279401"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84988077"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Overzicht van configuraties van VPN-apparaten voor partners
 Dit artikel bevat een overzicht van het configureren van on-premises VPN-apparaten om verbinding te maken met Azure VPN-gateways. Een voor beeld van een virtueel Azure-netwerk en een VPN-gateway Setup wordt gebruikt om te laten zien hoe u verbinding kunt maken met verschillende on-premises VPN-configuraties met dezelfde para meters.
@@ -32,7 +32,7 @@ Zie [een site-naar-site-verbinding configureren](vpn-gateway-howto-site-to-site-
 ### <a name="connection-parameters"></a>Verbindingsparameters
 In deze sectie vindt u de para meters voor de voor beelden die in de vorige secties worden beschreven.
 
-| **Bepaalde**                | **Waarde**                    |
+| **Parameter**                | **Waarde**                    |
 | ---                          | ---                          |
 | Adres voorvoegsels van virtuele netwerken        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN-gateway-IP         | Azure VPN Gateway IP         |

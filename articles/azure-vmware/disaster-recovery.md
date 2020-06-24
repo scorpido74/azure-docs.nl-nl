@@ -3,12 +3,12 @@ title: Een nood herstel van virtuele machines volt ooien
 description: In dit artikel wordt beschreven hoe u een herstel na nood geval voor virtuele machines kunt uitvoeren met behulp van AVS
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148154"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749957"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Een nood herstel van virtuele machines met Azure VMware-oplossing volt ooien
 
@@ -56,7 +56,7 @@ Selecteer, indien nodig, de standaard opties voor replicatie:
 
 - **Quiescence inschakelen:** Pauzeert de virtuele machine om ervoor te zorgen dat een consistente kopie wordt gesynchroniseerd met de externe site.
 
-- **Doel opslag:** Selecteer de externe gegevens opslag voor de beveiligde virtuele machine (s). In een privécloud in de Cloud moet deze selectie het VSAN-gegevens opslag zijn.
+- **Doel opslag:** Selecteer de externe gegevens opslag voor de beveiligde virtuele machine (s). In een privécloud in de Cloud moet deze selectie het vSAN-gegevens opslag zijn.
 
 - **Compute-container:** Het externe vSphere-cluster of de resource groep.
 

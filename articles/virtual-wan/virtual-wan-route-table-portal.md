@@ -4,16 +4,16 @@ description: Route tabel virtuele WAN-hub voor het stuur verkeer naar een virtue
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 740a2174933e37e2737de0daa56e4b1670ecf55f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b22b751880cda91734ce0c322b19702e0ac9840d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773165"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752963"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Een route tabel voor virtuele WAN-hub maken voor Nva's: Azure Portal
 
@@ -34,7 +34,7 @@ Controleer of u aan de volgende criteria hebt voldaan:
     *  Er zijn mogelijk een of meer virtuele netwerken verbonden met het virtuele NVA-netwerk. In dit artikel verwijzen we naar het virtuele NVA-netwerk als een ' indirecte spoke-VNet '. Deze virtuele netwerken kunnen worden verbonden met het NVA VNet met behulp van VNet-peering. De VNet-peering koppelingen worden weer gegeven met zwarte pijlen in de bovenstaande afbeelding tussen VNet 1, VNet 2 en NVA VNet.
 *  U hebt twee virtuele netwerken gemaakt. Ze worden gebruikt als spoke VNets.
 
-    * De VNet-spoke-adres ruimten zijn: VNet1:10.0.2.0/24 en VNet2:10.0.3.0/24. Zie [een virtueel netwerk maken](../virtual-network/quick-create-portal.md)als u meer informatie nodig hebt over het maken van een virtueel netwerk.
+    * De VNet-spoke-adres ruimten zijn: VNet1:10.0.2.0/24 en VNet2:10.0.3.0/24. Zie [een virtueel netwerk maken](../virtual-network/quick-create-portal.md)als u meer informatie nodig hebt over het maken van een virtueel netwerk. Zorg ervoor dat er UDR in VNET1 en 2 naar de NVA wijzen.
 
     * Zorg ervoor dat er geen virtuele netwerk gateways aanwezig zijn in een van de VNets.
 

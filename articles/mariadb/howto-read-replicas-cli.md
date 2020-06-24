@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025047"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707988"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure CLI en REST API
 
@@ -30,21 +30,24 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 ### <a name="create-a-read-replica"></a>Een lees replica maken
 
+> [!IMPORTANT]
+> Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
+
 Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-Voor `az mariadb server replica create` de opdracht zijn de volgende para meters vereist:
+Voor de `az mariadb server replica create` opdracht zijn de volgende para meters vereist:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 | source-server | mydemoserver | De naam of ID van de bestaande hoofd server waaruit moet worden gerepliceerd. |
 
-Gebruik de `--location` para meter om een lees replica te maken. 
+Gebruik de para meter om een lees replica te maken `--location` . 
 
 In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
 
@@ -66,7 +69,7 @@ Als u alle replica's voor een bepaalde hoofd server wilt weer geven, voert u de 
 az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-Voor `az mariadb server replica list` de opdracht zijn de volgende para meters vereist:
+Voor de `az mariadb server replica list` opdracht zijn de volgende para meters vereist:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
@@ -84,12 +87,12 @@ Replicatie naar een lees replica-server kan worden gestopt met de volgende opdra
 az mariadb server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-Voor `az mariadb server replica stop` de opdracht zijn de volgende para meters vereist:
+Voor de `az mariadb server replica stop` opdracht zijn de volgende para meters vereist:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
-| name | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
+| naam | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 

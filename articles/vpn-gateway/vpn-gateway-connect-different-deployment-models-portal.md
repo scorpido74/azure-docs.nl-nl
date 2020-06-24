@@ -4,15 +4,15 @@ description: Stappen om de klassieke VNets te verbinden met Resource Manager VNe
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152020"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987685"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de portal
 
@@ -84,7 +84,7 @@ In de volgende tabel ziet u een voor beeld van hoe het voor beeld-VNets en de lo
 
 In deze sectie maakt u het klassieke VNet, het lokale netwerk (lokale site) en de gateway van het virtuele netwerk. De schermafbeeldingen dienen alleen als voorbeeld. Zorg ervoor dat u de waarden vervangt door uw eigen waarde of gebruik de [voorbeeld](#values) waarden.
 
-### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"> </a>een klassiek VNet maken
+### <a name="1-create-a-classic-vnet"></a>1. <a name="classicvnet"></a> een klassiek VNet maken
 
 Als u geen klassiek VNet hebt en u deze stappen uitvoert als oefening, kunt u een VNet maken met behulp van [dit artikel](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) en de [voor beeld](#values) -instellingen van bovenstaande waarden.
 
@@ -96,7 +96,7 @@ Als u al een VNet met een VPN-gateway hebt, controleert u of de gateway dynamisc
 4. Zoek naar ' Virtual Network ' in de lijst met resultaten en klik erop om de pagina Virtual Network te openen. 
 5. Selecteer op de pagina virtueel netwerk de optie klassiek om een klassiek VNet te maken. Als u hier de standaard waarde haalt, gaat u in plaats daarvan een resource manager-VNet.
 
-### <a name="2-configure-the-local-site"></a>2. <a name="local"> </a>de lokale site configureren
+### <a name="2-configure-the-local-site"></a>2. <a name="local"></a> de lokale site configureren
 
 1. Ga naar **alle resources** en zoek de **ClassicVNet** in de lijst.
 2. Klik in de sectie **instellingen** van het menu op **Gateway** en klik vervolgens op de banner om een gateway te maken.
@@ -207,7 +207,7 @@ In deze stappen configureert u de verbinding van de Resource Manager VNet met he
 2. Klik op **configuratie** en controleer of de IP-adres waarde de VPN-gateway voor het klassieke VNet is. Update, indien nodig, en klik vervolgens op **Opslaan**. Sluit de pagina.
 3. Klik in **alle resources**op de lokale netwerk gateway.
 4. Klik op **verbindingen** om de pagina verbindingen te openen.
-5. Klik **+** op de pagina **verbindingen** op om een verbinding toe te voegen.
+5. Klik op de pagina **verbindingen** op **+** om een verbinding toe te voegen.
 6. Geef op de pagina **verbinding toevoegen** een naam op voor de verbinding. Bijvoorbeeld ' RMtoClassic '.
 7. **Site-naar-site** is al geselecteerd op deze pagina.
 8. Selecteer de virtuele netwerk gateway die u wilt koppelen aan deze site.

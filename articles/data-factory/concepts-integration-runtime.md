@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b3dba7996b098ec398c9fe94705c18190b30ba6
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344999"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753570"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -58,8 +58,8 @@ Het volgende diagram toont hoe verschillende typen Integration Runtime gecombine
 Een Azure Integration runtime kan:
 
 - Gegevens stromen uitvoeren in azure 
-- Het uitvoeren van kopieeractiviteit tussen gegevensarchieven in de cloud
-- Het verzenden van de volgende trans formatie-activiteiten in het open bare netwerk: Databricks notebook/jar/python activity, HDInsight component activity, HDInsight varken activiteit, HDInsight MapReduce activity, HDInsight Spark-activiteit, HDInsight Streaming Machine Learning Machine Learning-activiteit, Data Lake Analytics U-SQL-activiteit, aangepaste .NET-activiteit, webactiviteit, opzoek activiteit en activiteiten voor meta gegevens ophalen.
+- Kopieer activiteit uit te voeren tussen Cloud gegevens archieven
+- De volgende trans formatie activiteiten verzenden in het open bare netwerk: Databricks notebook/jar/python activity, HDInsight component activity, HDInsight varken-activiteit, HDInsight MapReduce activity, HDInsight Spark-activiteit, HDInsight Streaming Machine Learning Machine Learning-activiteit, Data Lake Analytics U-SQL-activiteit, aangepaste .NET-activiteit, webactiviteit, activiteit voor zoeken en activiteiten voor meta gegevens ophalen.
 
 ### <a name="azure-ir-network-environment"></a>Azure IR-netwerkomgeving
 
@@ -198,5 +198,5 @@ Gegevens stroom activiteiten worden uitgevoerd op de Azure Integration runtime d
 Zie de volgende artikelen:
 
 - [Azure Integration runtime maken](create-azure-integration-runtime.md)
-- [Zelf-hostende Integration runtime maken](create-self-hosted-integration-runtime.md)
-- [Een Azure-SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 
+- [Een zelf-hostende integratieruntime maken](create-self-hosted-integration-runtime.md)
+- [Maak een Azure SSIS Integration runtime](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 

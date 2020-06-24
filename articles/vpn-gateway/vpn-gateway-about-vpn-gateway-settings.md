@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244860"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708141"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Over VPN Gateway configuratie-instellingen
 
@@ -39,7 +39,7 @@ De beschik bare waarden voor-gateway type zijn:
 * VPN
 * ExpressRoute
 
-Een VPN-gateway vereist `-GatewayType` het *VPN*.
+Een VPN-gateway vereist het `-GatewayType` *VPN*.
 
 Voorbeeld:
 
@@ -61,7 +61,7 @@ Als u de Azure Portal gebruikt om een virtuele netwerk gateway van Resource Mana
 
 #### <a name="powershell"></a>PowerShell
 
-In het volgende Power shell- `-GatewaySku` voor beeld wordt de as-VpnGw1 opgegeven. Wanneer u Power shell gebruikt om een gateway te maken, moet u eerst de IP-configuratie maken en vervolgens een variabele gebruiken om ernaar te verwijzen. In dit voor beeld is de configuratie variabele $gwipconfig.
+In het volgende Power shell-voor beeld wordt de `-GatewaySku` as-VpnGw1 opgegeven. Wanneer u Power shell gebruikt om een gateway te maken, moet u eerst de IP-configuratie maken en vervolgens een variabele gebruiken om ernaar te verwijzen. In dit voor beeld is de configuratie variabele $gwipconfig.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -118,7 +118,7 @@ Nadat een virtuele netwerk gateway is gemaakt, kunt u het VPN-type niet wijzigen
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-In het volgende Power shell- `-VpnType` voor beeld wordt de as- *RouteBased*opgegeven. Wanneer u een gateway maakt, moet u het juiste VPN-type voor uw configuratie kiezen.
+In het volgende Power shell-voor beeld wordt de `-VpnType` as- *RouteBased*opgegeven. Wanneer u een gateway maakt, moet u het juiste VPN-type voor uw configuratie kiezen.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -172,7 +172,7 @@ Zie de volgende pagina's voor aanvullende technische bronnen en specifieke synta
 | **Klassiek** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
-| [REST-API](https://msdn.microsoft.com/library/jj154113) |[REST-API](/rest/api/network/virtualnetworkgateways) |
+| [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | Niet ondersteund | [Azure-CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Volgende stappen

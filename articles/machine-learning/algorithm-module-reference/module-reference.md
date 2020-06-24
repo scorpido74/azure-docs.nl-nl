@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: e27370c2015c4679dafa5a79a820b4c984a35ec1
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 53069f24a18bac1f5c0c226ddcc3a79494c93edb
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449716"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809312"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer (preview)
 
@@ -52,12 +52,12 @@ Zie voor hulp bij het kiezen van algoritmen
 | Functionaliteit | Beschrijving | Module |
 | --- |--- | --- |
 | Model training | Voer gegevens uit via de algoritme. |  [Clustermodel trainen](train-clustering-model.md) <br/> [Model trainen](train-model.md) <br/> [Pytorch-model trainen](train-pytorch-model.md) <br/> [Model Hyperparameters afstemmen](tune-model-hyperparameters.md) |
-| Model leren en evalueren | Meet de nauw keurigheid van het getrainde model. | [Transformatie toepassen](apply-transformation.md) <br/> [Gegevens aan cluster toewijzen](assign-data-to-clusters.md) <br/> [Kruisvalidatie van model valideren](cross-validate-model.md) <br/> [Model evalueren](evaluate-model.md) <br/> [Afbeeldings model voor Score](score-image-model.md) <br/> [Score Model](score-model.md) |
+| Model leren en evalueren | Meet de nauw keurigheid van het getrainde model. | [Transformatie toepassen](apply-transformation.md) <br/> [Gegevens aan cluster toewijzen](assign-data-to-clusters.md) <br/> [Kruisvalidatie van model valideren](cross-validate-model.md) <br/> [Model evalueren](evaluate-model.md) <br/> [Afbeeldingsmodel voor score](score-image-model.md) <br/> [Score Model](score-model.md) |
 | Python-taal | Schrijf code en sluit deze in een module in om python met uw pijp lijn te integreren. | [Python-model maken](create-python-model.md) <br/> [Python-script uitvoeren](execute-python-script.md) |
 | R-taal | Schrijf code en sluit deze in een module in om R met uw pijp lijn te integreren. | [R-Script uitvoeren](execute-r-script.md) |
 | Tekstanalyse | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. |  [Word converteren naar vector](convert-word-to-vector.md) <br/> [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) |
-| Computer Vision | Voor verwerking van installatie kopie-en installatie kopieën gerelateerde modules. |  [Afbeeldings transformatie Toep assen](apply-image-transformation.md) <br/> [Converteren naar afbeelding map](convert-to-image-directory.md) <br/> [Trans formatie van init-afbeelding](init-image-transformation.md) <br/> [Splitsen op afbeelding map](split-to-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
-| Aanbeveling | Aanbevelings modellen bouwen. | [Aanbevelingsfunctie voor evaluatie](evaluate-recommender.md) <br/> [Aanbevelingsfunctie voor SVD-score](score-svd-recommender.md) <br/> [Aanbevelingsfunctie van SVD-training](train-SVD-recommender.md) |
+| Computer Vision | Voor verwerking van installatie kopie-en installatie kopieën gerelateerde modules. |  [Afbeeldingstransformatie toepassen](apply-image-transformation.md) <br/> [Converteren naar afbeeldingsmap](convert-to-image-directory.md) <br/> [Afbeeldingstransformatie initiëren](init-image-transformation.md) <br/> [Map om afbeeldingen te splitsen](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
+| Aanbeveling | Aanbevelings modellen bouwen. | [Aanbevelingsfunctie voor evaluatie](evaluate-recommender.md) <br/> [Aanbevelingsfunctie voor SVD-score](score-svd-recommender.md) <br/> [Aanbevelingsfunctie voor wide en deep learning-scores](score-wide-and-deep-recommender.md)<br/> [Aanbevelingsfunctie van SVD-training](train-SVD-recommender.md) <br/> [Aanbevelingsfunctie voor wide en deep learning-trainingen](train-wide-and-deep-recommender.md)|
 | Anomaliedetectie | Anomalie detectie modellen bouwen. | [Anomaliedetectie op basis van PCA](pca-based-anomaly-detection.md) <br/> [Anomaliedetectiemodel trainen](train-anomaly-detection-model.md) |
 
 

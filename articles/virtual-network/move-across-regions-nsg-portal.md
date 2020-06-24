@@ -3,15 +3,15 @@ title: Verplaats de Azure-netwerk beveiligings groep (NSG) naar een andere Azure
 description: Gebruik Azure Resource Manager sjabloon om de Azure-netwerk beveiligings groep van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647183"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689313"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Verplaats de Azure-netwerk beveiligings groep (NSG) naar een andere regio met behulp van de Azure Portal
 
@@ -41,11 +41,11 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>De sjabloon exporteren en implementeren vanuit de portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)-  >  **resource groepen**.
 2. Zoek de resource groep die de bron NSG bevat en klik erop.
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
+3. Selecteer > **instellingen**  >  **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+5. Klik op **sjabloon**  >  **bewerken para meters** om de **parameters.jsin** het bestand in de online-editor te openen.
 6. Als u de para meter van de naam van de NSG wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
 
     ```json
@@ -64,7 +64,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
 
 8.  Klik op **Opslaan** in de editor.
 
-9.   > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
+9.  Klik **op sjabloon**  >  **bewerken sjabloon** om de **template.js** te openen in het bestand in de online-editor.
 
 10. Als u de doel regio wilt bewerken waar de NSG-configuratie en beveiligings regels worden verplaatst, wijzigt u de eigenschap **Location** onder **resources** in de online-editor:
 
@@ -84,11 +84,11 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
 
     ```
 
-11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
+11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS**-  =  **Midden**.
 
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan of te verwijderen uit de sectie **securityRules** in het bestand **sjabloon. json** :
+    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan of te verwijderen uit de sectie **securityRules** in de **template.jsin** het bestand:
 
         ```json
            "resources": [
@@ -124,7 +124,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
             }
         ```
 
-      Als u het toevoegen of verwijderen van de regels in de doel-NSG wilt volt ooien, moet u ook de aangepaste regel typen aan het einde van het bestand **sjabloon. json** bewerken in de indeling van het voor beeld hieronder:
+      Voor het volt ooien van de toevoeging of het verwijderen van de regels in de doel-NSG moet u ook de aangepaste regel typen aan het einde van de **template.js** in het bestand bewerken in de indeling van het voor beeld hieronder:
 
       ```json
            {
@@ -153,11 +153,11 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
 
 13. Klik op **Opslaan** in de online editor.
 
-14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin de doel-NSG wordt geïmplementeerd.
+14. Klik op **basis**  >  **abonnement** om het abonnement te kiezen waarin de doel-NSG wordt geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin de doel-NSG wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de doel-NSG.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande NSG.
+15. Klik op **basis**  >  **bronnen groep** om de resource groep te kiezen waarin de doel-NSG wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de doel-NSG.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande NSG.
 
-16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u de NSG wilt implementeren.
+16. De **BASICS**  >  **locatie** van de basis beginselen controleren is ingesteld op de doel locatie waar u de NSG wilt implementeren.
 
 17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.
 

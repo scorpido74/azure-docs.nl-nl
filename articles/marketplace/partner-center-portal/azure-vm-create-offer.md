@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847919"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752421"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt
 
 Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
-## <a name="introduction"></a>Inleiding
+## <a name="introduction"></a>Introductie
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>De voor delen van publiceren naar Azure Marketplace
 
@@ -63,7 +63,7 @@ Uw technische team moet een basis kennis hebben van de volgende micro soft-techn
 2. Selecteer in het linkerdeel venster de optie **Commercial Marketplace**-  >  **overzicht**.
 3. Selecteer op de pagina **overzicht** de optie **nieuwe**  >  **Azure virtual machine**aanbieden.
 
-    ![Scherm afbeelding met de opties in het linkerdeel venster en de knop Nieuw aanbod.](./media/new-offer-azure-vm.png)
+    ![Scherm afbeelding met de opties in het linkerdeel venster en de knop Nieuw aanbod.](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > Nadat uw aanbieding is gepubliceerd, worden alle wijzigingen die u in het partner centrum aanbrengt, alleen op Azure Marketplace weer gegeven nadat u de aanbieding opnieuw hebt gepubliceerd. Zorg ervoor dat u een aanbieding altijd opnieuw publiceert nadat u de wijzigingen hebt aangebracht.
@@ -103,7 +103,7 @@ Wanneer u uw aanbieding publiceert naar de commerciële Marketplace met het part
 1. Selecteer een leadbestemming waarnaar wij de klantenleads moeten sturen. Het partner Centrum ondersteunt de volgende CRM-systemen:
     - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
     > Als uw CRM-systeem hier niet wordt vermeld, gebruikt u [Azure Table Storage](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of een [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om uw klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
@@ -171,7 +171,7 @@ U moet de voor waarden van de aanbieding voor uw klanten opgeven. U hebt hiervoo
 Op de **aanbiedings** pagina kunt u de details van het voor stel opgeven, zoals aanbiedings naam, beschrijving, koppelingen en contact personen.
 
 > [!NOTE]
-> De inhoud van uw aanbieding, zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden, hoeft niet in het Engels te zijn, zolang de beschrijving van de aanbieding met de woord groep begint, "deze toepassing is alleen beschikbaar in de \< niet-Engelse taal>". U kunt ook een URL opgeven om een koppeling te maken naar een site die inhoud levert in een andere taal dan die wordt gebruikt in de aanbiedings inhoud van de aanbieding.
+> Uw aanbiedings inhoud, zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden, hoeft niet in het Engels te zijn, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in \<non-English language> '. U kunt ook een URL opgeven om een koppeling te maken naar een site die inhoud levert in een andere taal dan die wordt gebruikt in de aanbiedings inhoud van de aanbieding.
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
@@ -237,8 +237,8 @@ Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn 
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
 
->[!Note]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de *https://upload.xboxlive.com* service die wordt gebruikt door het partner centrum niet blokkeert.
+>[!NOTE]
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de https://upload.xboxlive.com service die wordt gebruikt door het partner centrum niet blokkeert.
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace-logo's
 
@@ -514,32 +514,73 @@ Deze pagina bevat ook koppelingen waarmee u kunt samen werken met de aanbieding,
 
 ## <a name="marketplace-examples"></a>Marketplace-voor beelden
 
-De volgende voor beelden laten zien hoe de aanbieding op Azure Marketplace wordt weer gegeven.
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in azure Marketplace:
 
-### <a name="azure-marketplace-offer-details"></a>Details van aanbieding voor Azure Marketplace
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
-![Voor beeld van de pagina met details van Azure Marketplace-aanbiedingen](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
-### <a name="azure-marketplace-search-results"></a>Zoek resultaten voor Azure Marketplace
+1. Groot logo
+2. Prijs
+3. Categorieën
+4. Voorwaarden
+5. Adres van privacybeleid (koppeling)
+6. Naam van aanbieding
+7. Beschrijving
+8. Handige koppelingen
+9. Scherm afbeeldingen/Video's
 
-![Voor beeld van Azure Marketplace-Zoek gegevens pagina](media/avm-create2.png)
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de zoek resultaten van Azure Marketplace:
 
-### <a name="azure-marketplace-plan-details"></a>Details van Azure Marketplace-abonnement
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de zoek resultaten voor Azure Marketplace.":::
 
-![Voor beeld van de pagina Details van Azure Marketplace-abonnement](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
-### <a name="azure-portal-offer-details"></a>Details van Azure Portal-aanbieding
+1. Klein logo
+2. Naam van aanbieding
+3. Samen vatting van zoek resultaten
+4. Proefversie
 
-![Voor beeld van Azure Portal-aanbiedings pagina](media/avm-create4.png)
+<br>Hier volgt een voor beeld van Details van het Azure Marketplace-abonnement:
 
-### <a name="azure-portal-search-results"></a>Zoek resultaten Azure Portal
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Illustreert Details van het Azure Marketplace-abonnement.":::
 
-![Pagina voor beeld van Azure Portal Zoek resultaten](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
-### <a name="azure-portal-plan-details"></a>Details van Azure Portal plan
+1. Naam en samen vatting van plan
+2. VM-grootten aanbevelen
+3. Prijzen plannen
 
-![Voor beeld van pagina met details van Azure Portal plan](media/avm-create6.png)
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
 
-## <a name="next-steps"></a>Volgende stappen
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Naam
+2. Beschrijving
+3. Handige koppelingen
+4. Scherm afbeeldingen/Video's
+
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal Zoek resultaten:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal Zoek resultaten.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Klein logo
+2. Naam van aanbieding
+3. Samen vatting van zoek resultaten
+
+<br>Hier volgt een voor beeld van de details van het Azure Portal plan:
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Illustreert de details van het Azure Portal plan.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Plan naam
+2. Plan beschrijving
+
+## <a name="next-step"></a>Volgende stap
 
 - [Een bestaande aanbieding bijwerken in de commerciële Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

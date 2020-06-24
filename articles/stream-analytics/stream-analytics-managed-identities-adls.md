@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254376"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712374"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics verifiëren voor het Azure Data Lake Storage Gen1 met behulp van beheerde identiteiten
 
@@ -66,7 +66,7 @@ In dit artikel ziet u drie manieren om beheerde identiteit in te scha kelen voor
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>Stream Analytics-hulpprogram ma's voor Visual Studio
 
-1. Stel in JobConfig. json de instelling **systeem toegewezen identiteit** in op **waar**.
+1. Stel in JobConfig.jsin op ' door **systeem toegewezen identiteit** in op **' True '**.
 
    ![Beheerde identiteiten voor taak configuratie Stream Analytics](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
@@ -166,7 +166,7 @@ In dit artikel ziet u drie manieren om beheerde identiteit in te scha kelen voor
 
    De **PrincipalId** is de object-id van de Service-Principal en wordt weer gegeven op het portal scherm wanneer de Service-Principal is gemaakt. Als u de taak hebt gemaakt met behulp van een resource manager-sjabloon implementatie, wordt de object-ID weer gegeven in de eigenschap identiteit van het antwoord op de taak.
 
-   **Voorbeeld**
+   **Hierbij**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType

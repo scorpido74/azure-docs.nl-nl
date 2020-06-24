@@ -2,14 +2,14 @@
 title: Azure Block Chain Workbench preview implementeren
 description: Azure Block Chain Workbench preview implementeren
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 2e1a5efe4dd5a6f2a0b016626421f33202ede419
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021174"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210759"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
 
@@ -53,7 +53,7 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant waar u Azure Block Chain Workbench wilt implementeren.
-1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
+1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** .
 1. Selecteer **Block Chain**  >  **Azure Block Chain workbench (preview-versie)**.
 
     ![Azure Block Chain Workbench maken](media/deploy/blockchain-workbench-settings-basic.png)
@@ -236,7 +236,7 @@ De API-toepassing moet toestemming van de gebruiker aanvragen voor toegang tot d
 
     ![Configuratie van de Azure AD-App-registratie met het toevoegen van de Microsoft Graph User. ReadBasic. alle gedelegeerde machtigingen](media/deploy/add-graph-user-permission.png)
 
-    Selecteer **machtigingen toevoegen**.
+    Selecteer **Machtigingen toevoegen**.
 
 1. Selecteer in *geconfigureerde machtigingen*de optie **beheerder toestemming geven** voor het domein en selecteer vervolgens **Ja** voor de verificatie prompt.
 
@@ -244,7 +244,7 @@ De API-toepassing moet toestemming van de gebruiker aanvragen voor toegang tot d
 
    Met machtiging verlenen kan Block Chain Workbench toegang krijgen tot gebruikers in de Directory. De Lees machtiging is vereist om leden te zoeken en toe te voegen aan block Chain Workbench.
 
-### <a name="get-application-id"></a>Toepassings-ID ophalen
+### <a name="get-application-id"></a>Toepassings-id ophalen
 
 De toepassings-ID en Tenant gegevens zijn vereist voor de implementatie. Verzamel en bewaar de informatie voor gebruik tijdens de implementatie.
 
@@ -279,7 +279,7 @@ Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL*
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Controleer of u zich in de Tenant bevindt waarin u de Azure AD-client toepassing hebt geregistreerd.
-1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **app-registraties**.
+1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **App-registraties**.
 1. Selecteer de Azure AD-client toepassing die u hebt geregistreerd in de sectie vereisten.
 1. Selecteer **verificatie**.
 1. Geef de web-URL op van de Azure Block Chain Workbench-implementatie die u hebt opgehaald in de sectie [Block Chain Workbench web URL](#blockchain-workbench-web-url) . De antwoord-URL wordt voorafgegaan door `https://` . Bijvoorbeeld: `https://myblockchain2-7v75.azurewebsites.net`
@@ -296,8 +296,8 @@ Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL*
 
 Wanneer een implementatie niet meer nodig is, kunt u een implementatie verwijderen door de resource groep Block Chain Workbench te verwijderen.
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
-1. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
+1. Ga in de Azure Portal naar **Resourcegroep** in het linkernavigatievenster en selecteer de resourcegroep die u wilt verwijderen.
+1. Selecteer **Resourcegroep verwijderen**. Controleer de verwijdering door de naam van de resourcegroep in te voeren en **Verwijderen** te selecteren.
 
     ![Resourcegroep verwijderen](media/deploy/delete-resource-group.png)
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983564"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751745"
 ---
-# <a name="execute-r-script"></a>R-Script uitvoeren
+# <a name="execute-r-script-module"></a>R-script module uitvoeren
 
-In dit artikel wordt beschreven hoe u de **script module Execute** r gebruikt voor het uitvoeren van r-code in uw Azure machine learning Designer (preview)-pijp lijn.
+In dit artikel wordt beschreven hoe u de script module Execute r gebruikt voor het uitvoeren van R-code in uw Azure Machine Learning Designer (preview)-pijp lijn.
 
 Met R kunt u taken uitvoeren die momenteel niet worden ondersteund door bestaande modules, zoals: 
 - Aangepaste gegevens transformaties maken
@@ -31,9 +31,9 @@ Azure Machine Learning Designer gebruikt de KRANs (uitgebreid R-archief netwerk)
 
 ## <a name="supported-r-packages"></a>Ondersteunde R-pakketten
 
-De R-omgeving wordt vooraf geïnstalleerd met meer dan 100 pakketten. Zie de sectie [vooraf geïnstalleerde R-pakketten](#pre-installed-r-packages)voor een volledige lijst.
+De R-omgeving is vooraf geïnstalleerd met meer dan 100 pakketten. Zie de sectie [vooraf geïnstalleerde R-pakketten](#preinstalled-r-packages)voor een volledige lijst.
 
-U kunt ook de volgende code toevoegen aan elke wille keurige **R-script** module en de geïnstalleerde pakketten weer geven.
+U kunt ook de volgende code toevoegen aan elke wille keurige R-script module om de geïnstalleerde pakketten te bekijken.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -43,23 +43,23 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 > [!NOTE]
-> Als uw pijp lijn meerdere R-script modules voor uitvoeren bevat en dezelfde pakketten nodig heeft die niet voor komen in de lijst met vooraf geïnstalleerde, moet u de pakketten in elke module installeren. 
+> Als uw pijp lijn meerdere R-script modules bevat die pakketten nodig hebben die zich niet in de vooraf geïnstalleerde lijst bevinden, installeert u de pakketten in elke module. 
 
 ## <a name="installing-r-packages"></a>R-pakketten installeren
-Als u extra R-pakketten wilt installeren `install.packages()` , gebruikt u de-methode. Pakketten worden geïnstalleerd voor elke **Execute r-script** module en worden niet gedeeld met andere **uitvoering r-script** modules.
+Als u extra R-pakketten wilt installeren, gebruikt u de- `install.packages()` methode. Pakketten worden voor elke Execute R-script module geïnstalleerd. Ze worden niet gedeeld in andere uitvoerings-R-script modules.
 
 > [!NOTE]
-> Geef de KRANs opslagplaats op bij het installeren van pakketten zoals`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+> Geef de KRANs opslagplaats op wanneer u pakketten installeert, zoals `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
 
 In dit voor beeld ziet u hoe u Zoo installeert:
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -76,21 +76,21 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Controleer of het pakket al bestaat voordat u dit installeert om te voor komen dat de installatie wordt herhaald. Zoals `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` in de bovenstaande voorbeeld code. Herhalings installatie kan een time-out voor de webservice tot gevolg hebben.     
+ > Controleer voordat u een pakket installeert of het al bestaat, zodat u de installatie niet herhaalt. Herhalings installaties kunnen een time-out veroorzaken voor webservice-aanvragen.     
 
-## <a name="upload-files"></a>Bestanden uploaden
-Het **Execute R-script** ondersteunt het uploaden van bestanden met behulp van Azure machine learning R SDK.
+## <a name="uploading-files"></a>Bestanden uploaden
+De module voor het uitvoeren van R-scripts ondersteunt het uploaden van bestanden met behulp van de Azure Machine Learning R SDK.
 
-In het volgende voor beeld ziet u hoe u een afbeeldings bestand uploadt in het **script Execute R**:
+In het volgende voor beeld ziet u hoe u een afbeeldings bestand uploadt in het script Execute R:
 ```R
 
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -114,49 +114,44 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-Nadat de pijplijn uitvoering is voltooid, kunt u een voor beeld van de afbeelding in het rechterdeel venster van de module bekijken
+Nadat de pijplijn uitvoering is voltooid, kunt u een voor beeld van de afbeelding bekijken in het rechterdeel venster van de module.
 
 > [!div class="mx-imgBorder"]
-> ![Geüpload-afbeelding](media/module/upload-image-in-r-script.png)
+> ![Voor beeld van geüploade afbeelding](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Het uitvoeren van een R-script configureren
 
-De module voor het **uitvoeren van R-scripts** bevat voorbeeld code die u als uitgangs punt kunt gebruiken. Als u de module voor het uitvoeren van een **R-script** wilt configureren, geeft u een set ingangen en code op die moet worden uitgevoerd.
+De module voor het uitvoeren van R-scripts bevat voorbeeld code die u als uitgangs punt kunt gebruiken. Als u de module voor het uitvoeren van een R-script wilt configureren, geeft u een aantal invoer en code op om uit te voeren.
 
-![R-module](media/module/execute-r-script.png)
+![Diagram van invoer voor een R-module](media/module/execute-r-script.png)
 
 Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch geconverteerd naar een R-gegevens frame wanneer deze met deze module wordt geladen.
 
-1.  Voeg de module voor het **uitvoeren van R-scripts** toe aan de pijp lijn.
+1.  Voeg de module voor het **uitvoeren van R-scripts** toe aan de pijp lijn.  
 
-  
+1. Verbind alle invoer die het script nodig heeft. Invoer zijn optioneel en kunnen gegevens en aanvullende R-code bevatten.
 
-1. Verbind alle invoer gegevens die nodig zijn voor het script. Invoer zijn optioneel en kunnen gegevens en aanvullende R-code bevatten.
+    * **Dataset1**: referentie de eerste invoer als `dataframe1` . De invoer gegevensset moet zijn opgemaakt als een CSV-, TSV-of ARFF-bestand. U kunt ook verbinding maken met een Azure Machine Learning-gegevensset.
 
-    * **Dataset1**: referentie de eerste invoer als `dataframe1`. De invoer gegevensset moet zijn opgemaakt als een CSV-, TSV-, ARFF-of verbinding maken met een Azure Machine Learning-gegevensset.
+    * **Dataset2**: verwijst naar de tweede invoer als `dataframe2` . Deze gegevensset moet ook worden geformatteerd als een CSV-, TSV-of ARFF-bestand of als een Azure Machine Learning-gegevensset.
 
-    * **Dataset2**: verwijst naar de tweede invoer `dataframe2`als. Deze gegevensset moet ook worden opgemaakt als een CSV-, TSV-, ARFF-bestand of als Azure Machine Learning-gegevensset.
-
-    * **Script bundel**: de derde invoer accepteert zip-bestanden. Het zip-bestand kan meerdere bestanden en meerdere bestands typen bevatten.
+    * **Script bundel**: de derde invoer accepteert zip-bestanden. Een zip-bestand kan meerdere bestanden en meerdere bestands typen bevatten.
 
 1. Typ of plak een geldig R-script in het tekstvak **R-script** .
 
     > [!NOTE]
-    > Zorg ervoor dat u uw script schrijft en er zeker van zijn dat er geen syntaxis fout is, zoals het gebruik van niet-gedeclareerde variabelen of niet-geïmporteerde modules of functies. U kunt ook extra aandacht best Eden aan de lijst met vooraf geïnstalleerde pakketten aan het einde van dit document. Als u pakketten wilt gebruiken die niet worden vermeld, installeert u ze in uw script zoals`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > Wees voorzichtig met het schrijven van uw script. Zorg ervoor dat er geen syntaxis fouten zijn, zoals het gebruik van niet-gedeclareerde variabelen of niet-geïmporteerde modules of functies. Betaal extra aandacht aan de lijst met vooraf geïnstalleerde pakketten aan het einde van dit artikel. Als u pakketten wilt gebruiken die niet worden weer gegeven, installeert u ze in uw script. Een voorbeeld is `install.packages("zoo",repos = "http://cran.us.r-project.org")`.
     
-    > [!NOTE]
-    > Functions is afhankelijk van de X11-bibliotheek, zoals View, worden niet ondersteund omdat de X11-bibliotheek niet vooraf is geïnstalleerd.
-    
-    Om u te helpen aan de slag te gaan, is het tekstvak **R-script** vooraf ingevuld met voorbeeld code, die u kunt bewerken of vervangen.
+    Om u te helpen aan de slag te gaan, wordt het tekstvak **R-script** vooraf gevuld met voorbeeld code, die u kunt bewerken of vervangen.
     
     ```R
     # R version: 3.5.1
-    # The script MUST contain a function named azureml_main
+    # The script MUST contain a function named azureml_main,
     # which is the entry point for this module.
 
-    # Please note that functions dependant on X11 library
-    # such as "View" are not supported because X11 library
-    # is not pre-installed.
+    # Note that functions dependent on the X11 library,
+    # such as "View," are not supported because the X11 library
+    # is not preinstalled.
     
     # The entry point function MUST have two input arguments.
     # If the input port is not connected, the corresponding
@@ -166,7 +161,7 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
     azureml_main <- function(dataframe1, dataframe2){
     print("R script run.")
 
-    # If a zip file is connected to the third input port, it is
+    # If a .zip file is connected to the third input port, it's
     # unzipped under "./Script Bundle". This directory is added
     # to sys.path.
 
@@ -175,46 +170,44 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
     }
     ```
 
- * Het script moet een functie bevatten met `azureml_main`de naam, het toegangs punt voor deze module.
+    De functie voor het toegangs punt moet de invoer argumenten hebben `Param<dataframe1>` en `Param<dataframe2>` , zelfs wanneer deze argumenten niet worden gebruikt in de functie.
 
- * De functie voor het toegangs punt moet twee invoer argumenten `Param<dataframe1>` hebben `Param<dataframe2>`: en, zelfs wanneer deze twee argumenten niet worden gebruikt in de functie.
-
-   > [!NOTE]
-    > Er wordt verwezen naar de gegevens die worden door gegeven aan de **Execute R-script** module `dataframe1` `dataframe2`en die verschilt van Azure machine learning Designer ( `dataset1`de `dataset2`ontwerp functie als). Controleer of de ingevoerde gegevens correct zijn referneced in het script.  
+    > [!NOTE]
+    > Er wordt verwezen naar de gegevens die worden door gegeven aan de Execute R-script module `dataframe1` en `dataframe2` die verschilt van Azure machine learning Designer (de ontwerp functie als `dataset1` `dataset2` ). Zorg ervoor dat er in uw script naar de juiste invoer gegevens wordt verwezen.  
  
     > [!NOTE]
-    >  Bestaande R-code heeft mogelijk kleine wijzigingen nodig om te worden uitgevoerd in een designer-pijp lijn. Invoer gegevens die u in CSV-indeling opgeeft, moeten bijvoorbeeld expliciet worden geconverteerd naar een gegevensset voordat u deze in uw code kunt gebruiken. Gegevens-en kolom typen die in de R-taal worden gebruikt, verschillen ook op een aantal manieren van de gegevens-en kolom typen die in de ontwerp functie worden gebruikt.
+    > Voor bestaande R-code zijn mogelijk kleine wijzigingen nodig om te worden uitgevoerd in een designer-pijp lijn. Invoer gegevens die u in CSV-indeling opgeeft, moeten bijvoorbeeld expliciet worden geconverteerd naar een gegevensset voordat u deze in uw code kunt gebruiken. Gegevens-en kolom typen die in de R-taal worden gebruikt, verschillen ook op een aantal manieren van de gegevens-en kolom typen die in de ontwerp functie worden gebruikt.
 
-1.  **Wille keurige Seed**: Typ een waarde die in de R-omgeving moet worden gebruikt als de wille keurige Seed-waarde. Deze para meter is gelijk aan `set.seed(value)` het aanroepen van de R-code.  
+1.  Voer voor **wille keurige Seed**een waarde in die in de R-omgeving moet worden gebruikt als de wille keurige Seed-waarde. Deze para meter is gelijk aan het aanroepen `set.seed(value)` van de R-code.  
 
 1. Verzend de pijp lijn.  
 
 ## <a name="results"></a>Resultaten
 
-De **script** modules voor het uitvoeren van r kunnen meerdere uitvoer retour neren, maar moeten als R-gegevens frames worden weer gegeven. Gegevens frames worden automatisch geconverteerd naar gegevens sets in de ontwerp functie voor compatibiliteit met andere modules.
+Het uitvoeren van R-script modules kan meerdere uitvoer retour neren, maar ze moeten worden weer gegeven als R-gegevens frames. Gegevens frames worden automatisch geconverteerd naar gegevens sets in de ontwerp functie voor compatibiliteit met andere modules.
 
 Standaard berichten en fouten van R worden teruggestuurd naar het logboek van de module.
 
-Als u resultaten wilt afdrukken in het R-script, kunt u de afgedrukte resultaten vinden in het tabblad **70_driver_log** onder **outputs + logs** in het rechterdeel venster van de module.
+Als u resultaten wilt afdrukken in het R-script, kunt u de afdruk resultaten vinden in **70_driver_log** op het tabblad **uitvoer en logboeken** in het rechterdeel venster van de module.
 
 ## <a name="sample-scripts"></a>Voorbeeldscripts
 
-Er zijn veel manieren waarop u uw pijp lijn kunt uitbreiden door gebruik te maken van een aangepast R-script.  Deze sectie bevat voorbeeld code voor algemene taken.
+Er zijn veel manieren om uw pijp lijn uit te breiden met behulp van aangepaste R-scripts. Deze sectie bevat voorbeeld code voor algemene taken.
 
 
-### <a name="add-r-script-as-an-input"></a>R-script als invoer toevoegen
+### <a name="add-an-r-script-as-an-input"></a>Een R-script toevoegen als invoer
 
-De **script module Execute r** ondersteunt wille keurige R-script bestanden als invoer. Om dit te doen, moeten ze worden geüpload naar uw werk ruimte als onderdeel van het ZIP-bestand.
+De script module Execute R ondersteunt wille keurige R-script bestanden als invoer. Als u deze wilt gebruiken, moet u deze uploaden naar uw werk ruimte als onderdeel van het zip-bestand.
 
-1. Als u een ZIP-bestand met R-code naar uw werk ruimte wilt uploaden, gaat u naar de pagina **gegevens sets** , klikt u op **gegevensset maken**en selecteert u vervolgens een **lokaal bestand** en de optie type **Bestands** gegevensset.  
+1. Als u een zip-bestand met R-code naar uw werk ruimte wilt uploaden, gaat u naar de pagina **gegevens sets** . Selecteer **gegevensset maken**en selecteer vervolgens **uit lokaal bestand** en de optie type **Bestands** gegevensset.  
 
-1. Controleer of het gezipte bestand beschikbaar is in de lijst **mijn gegevens sets** onder **gegevens sets** in de structuur van de module links.
+1. Controleer of het gezipte bestand beschikbaar is in de lijst **mijn gegevens sets** onder de categorie **gegevens sets** in de structuur van de linker module.
 
 1.  Verbind de gegevensset met de invoer poort van de **script bundel** .
 
-1. Alle bestanden die zijn opgenomen in het ZIP-bestand, zijn beschikbaar tijdens de uitvoerings tijd van de pipeline. 
+1. Alle bestanden in het zip-bestand zijn beschikbaar tijdens de uitvoerings tijd van de pipeline. 
 
-    Als het script bundel bestand een mapstructuur bevat, blijft de structuur behouden. U moet uw code echter aanpassen aan laten voorafgaan door van de Directory **./script-bundel** tot het pad.
+    Als het script bundel bestand een mapstructuur bevat, blijft de structuur behouden. Maar u moet uw code wijzigen om de Directory **./script-bundel** te laten voorafgaan door naar het pad.
 
 ### <a name="process-data"></a>Gegevens verwerken
 
@@ -222,12 +215,12 @@ In het volgende voor beeld ziet u hoe u invoer gegevens kunt schalen en normalis
 
 ```R
 # R version: 3.5.1
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# Please note that functions dependant on X11 library
-# such as "View" are not supported because X11 library
-# is not pre-installed.
+# Note that functions dependent on the X11 library,
+# such as "View," are not supported because the X11 library
+# is not preinstalled.
 
 # The entry point function MUST have two input arguments.
 # If the input port is not connected, the corresponding
@@ -236,17 +229,17 @@ In het volgende voor beeld ziet u hoe u invoer gegevens kunt schalen en normalis
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
-  # If a zip file is connected to the third input port, it is
+  # If a .zip file is connected to the third input port, it's
   # unzipped under "./Script Bundle". This directory is added
   # to sys.path.
   series <- dataframe1$width
-  # find the maximum and minimum values of width column in dataframe1
+  # Find the maximum and minimum values of the width column in dataframe1
   max_v <- max(series)
   min_v <- min(series)
-  # calculate the scale and bias
+  # Calculate the scale and bias
   scale <- max_v - min_v
   bias <- min_v / dis
-  # apply min-max normalizing
+  # Apply min-max normalizing
   dataframe1$width <- dataframe1$width / scale - bias
   dataframe2$width <- dataframe2$width / scale - bias
   # Return datasets as a Named List
@@ -254,12 +247,12 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>Een ZIP-bestand als invoer lezen
+### <a name="read-a-zip-file-as-input"></a>Een zip-bestand lezen als invoer
 
-In dit voor beeld ziet u hoe u een gegevensset in een ZIP-bestand kunt gebruiken als invoer voor de module voor het uitvoeren van een **R-script** .
+In dit voor beeld ziet u hoe u een gegevensset in een zip-bestand kunt gebruiken als invoer voor de script module Execute R.
 
-1. Maak het gegevens bestand in CSV-indeling en noem het ' mydatafile. csv '.
-1. Maak een ZIP-bestand en voeg het CSV-bestand toe aan het archief.
+1. Maak het gegevens bestand in CSV-indeling en geef het de naam **mydatafile.csv**.
+1. Maak een zip-bestand en voeg het CSV-bestand toe aan het archief.
 1. Upload het zip-bestand naar uw Azure Machine Learning-werk ruimte. 
 1. Verbind de resulterende gegevensset met de **ScriptBundle** -invoer van de module voor het uitvoeren van een **R-script** .
 1. Gebruik de volgende code om de CSV-gegevens te lezen uit het zip-bestand.
@@ -292,9 +285,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ### <a name="pass-r-objects-between-execute-r-script-modules"></a>R-objecten door geven tussen R-script modules
 
-U kunt R-objecten door geven tussen exemplaren van de module **r-script uitvoeren** met het mechanisme voor interne serialisatie. In dit voor beeld wordt ervan uitgegaan dat u het R- `A` object wilt verplaatsen met een naam tussen twee **R-script modules uitvoeren** .
+U kunt R-objecten door geven tussen exemplaren van de module R-script uitvoeren met het mechanisme voor interne serialisatie. In dit voor beeld wordt ervan uitgegaan dat u het R-object wilt verplaatsen met een naam `A` tussen twee R-script modules uitvoeren.
 
-1. Voeg de eerste **R-script** module voor uitvoeren toe aan uw pijp lijn en typ de volgende code in het tekstvak **R-script** om een geserialiseerd object `A` te maken als een kolom in de uitvoer gegevens tabel van de module:  
+1. Voeg de eerste **R-script** module voor uitvoeren toe aan de pijp lijn. Voer vervolgens de volgende code in het tekstvak **R-script** in om een geserialiseerd object te maken `A` als een kolom in de uitvoer gegevens tabel van de module:  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -308,11 +301,11 @@ U kunt R-objecten door geven tussen exemplaren van de module **r-script uitvoere
     }
     ```
 
-    De expliciete conversie naar een geheel getal wordt uitgevoerd, omdat de serialisatie-functie gegevens uitvoer `Raw` in de R-indeling, wat niet wordt ondersteund door de ontwerp functie.
+    De expliciete conversie naar een geheel getal wordt uitgevoerd, omdat de serialisatie-functie gegevens uitvoer in de R `Raw` -indeling, die niet wordt ondersteund door de ontwerp functie.
 
 1. Voeg een tweede exemplaar van de module voor het **uitvoeren van R-scripts** toe en verbind deze met de uitvoer poort van de voor gaande module.
 
-1. Typ de volgende code in het tekstvak **R-script** om het object `A` op te halen uit de invoer gegevens tabel. 
+1. Typ de volgende code in het tekstvak **R-script** om het object op te halen `A` uit de invoer gegevens tabel. 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -323,9 +316,9 @@ U kunt R-objecten door geven tussen exemplaren van de module **r-script uitvoere
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Vooraf geïnstalleerde R-pakketten
+## <a name="preinstalled-r-packages"></a>Vooraf geïnstalleerde R-pakketten
 
-De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voor gebruik:
+De volgende vooraf geïnstalleerde R-pakketten zijn momenteel beschikbaar:
 
 |              |            | 
 |--------------|------------| 
@@ -342,7 +335,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | boot         | 1,3-22     | 
 | broom        | 0.5.2      | 
 | callr        | 3.2.0      | 
-| caret        | 6.0-84     | 
+| dakje        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
 | klasse        | 7.3-15     | 
@@ -353,7 +346,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | colorspace   | 1.4-1      | 
 | compiler     | 3.5.1      | 
 | crayon       | 1.3.4      | 
-| curl         | 3,3        | 
+| curl         | 3.3        | 
 | data.table   | 1.12.2     | 
 | gegevenssets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
@@ -361,7 +354,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | digest       | 0.6.19     | 
 | dplyr        | 0.7.6      | 
 | e1071        | 1.7-2      | 
-| evalueren     | 0.14       | 
+| evaluate     | 0.14       | 
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
@@ -380,7 +373,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
-| highr        | 0.8        | 
+| highr        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
@@ -457,7 +450,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | tidyverse    | 1.2.1      | 
 | timeDate     | 3043.102   | 
 | tinytex      | 0.13       | 
-| hulpprogramma's        | 3.5.1      | 
+| tools        | 3.5.1      | 
 | tseries      | 0,10-47    | 
 | TTR          | 0.23-4     | 
 | utf8         | 1.1.4      | 
@@ -466,7 +459,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | viridisLite  | 0.3.0      | 
 | whisker      | 0.3-2      | 
 | withr        | 2.1.2      | 
-| xfun         | 0.8        | 
+| xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
 | xts          | 0,11-2     | 
 | yaml         | 2.2.0      | 

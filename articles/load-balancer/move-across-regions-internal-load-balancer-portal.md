@@ -3,15 +3,15 @@ title: Interne Azure-Load Balancer verplaatsen naar een andere Azure-regio met b
 description: Gebruik Azure Resource Manager sjabloon om de interne Azure-Load Balancer van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb3605249578b15d67bdd9764490d61812b21c18
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638803"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808450"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Verplaats de interne Azure-Load Balancer naar een andere regio met behulp van de Azure Portal
 
@@ -43,11 +43,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-the-azure-portal"></a>De virtuele-netwerk sjabloon exporteren en implementeren vanuit de Azure Portal
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)-  >  **resource groepen**.
 2. Zoek de resource groep die het virtuele bron netwerk bevat en klik erop.
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
+3. Selecteer > **instellingen**  >  **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+5. Klik op **sjabloon**  >  **bewerken para meters** om de **parameters.jsin** het bestand in de online-editor te openen.
 6. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
 
     ```json
@@ -65,7 +65,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
 8. Klik op **Opslaan** in de editor.
 
-9.  > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
+9. Klik **op sjabloon**  >  **bewerken sjabloon** om de **template.js** te openen in het bestand in de online-editor.
 
 10. Als u de doel regio wilt bewerken waar het VNET wordt verplaatst, wijzigt u de eigenschap **Location** onder resources:
 
@@ -87,11 +87,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
     ```
 
-11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
+11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS**-  =  **Midden**.
 
-12. U kunt ook andere para meters in het bestand **sjabloon. json** wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
+12. U kunt ook andere para meters in de **template.jsin** het bestand wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u opslaat door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** in het bestand **Template. json** te wijzigen:
+    * **Adres ruimte** : de adres ruimte van het VNET kan worden gewijzigd voordat u het bestand opslaat door de sectie **resources**  >  **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen in de **template.jsvoor** het volgende:
 
         ```json
                 "resources": [
@@ -111,7 +111,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
         ```
 
-    * **Subnet** : de naam van het subnet en de adres ruimte van het subnet kunnen worden gewijzigd of toegevoegd aan door de sectie **subnets** van het bestand **sjabloon. json** te wijzigen. De naam van het subnet kan worden gewijzigd door de eigenschap **name** te wijzigen. De adres ruimte van het subnet kan worden gewijzigd door de eigenschap **addressPrefix** in het bestand **Template. json** te wijzigen:
+    * **Subnet** : de naam van het subnet en de adres ruimte van het subnet kunnen worden gewijzigd of toegevoegd aan door de sectie **subnetten** van de **template.jsin** het bestand te wijzigen. De naam van het subnet kan worden gewijzigd door de eigenschap **name** te wijzigen. De adres ruimte van het subnet kan worden gewijzigd door de eigenschap **addressPrefix** in de **template.jsin** het bestand te wijzigen:
 
         ```json
                 "subnets": [
@@ -142,7 +142,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
                 ]
         ```
 
-         Als u het adres voorvoegsel wilt wijzigen in het bestand **Template. json** , moet dit worden bewerkt op twee plaatsen, de hierboven vermelde sectie en de sectie **type** die hieronder wordt weer gegeven.  Wijzig de eigenschap **addressPrefix** zodat deze overeenkomt met het bovenstaande:
+         Als u in de **template.jsop** bestand het adres voorvoegsel wilt wijzigen, moet dit op twee plaatsen worden bewerkt, de hierboven vermelde sectie en de sectie **type** die hieronder wordt weer gegeven.  Wijzig de eigenschap **addressPrefix** zodat deze overeenkomt met het bovenstaande:
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -180,11 +180,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
 13. Klik op **Opslaan** in de online editor.
 
-14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin het doel-VNET wordt geïmplementeerd.
+14. Klik op **basis**  >  **abonnement** om het abonnement te kiezen waarin het doel-VNET wordt geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het doel-VNET wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het doel-VNET.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van het bestaande VNET.
+15. Klik op **basis**  >  **bronnen groep** om de resource groep te kiezen waarin het doel-VNET wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het doel-VNET.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van het bestaande VNET.
 
-16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u het VNET wilt implementeren.
+16. De **BASICS**  >  **locatie** van de basis beginselen controleren is ingesteld op de doel locatie waar u het VNET wilt implementeren.
 
 17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.
 
@@ -194,11 +194,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>De interne load balancer sjabloon exporteren en implementeren vanuit Azure PowerShell
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)-  >  **resource groepen**.
 2. Zoek de resource groep die de interne bron load balancer bevat en klik erop.
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
+3. Selecteer > **instellingen**  >  **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+5. Klik op **sjabloon**  >  **bewerken para meters** om de **parameters.jsin** het bestand in de online-editor te openen.
 
 6. Als u de para meter van de naam van de interne load balancer wilt bewerken, wijzigt u de eigenschap **DefaultValue** van de interne bron Load Balancer naam in de naam van de interne Load Balancer van het doel. Controleer of de naam tussen aanhalings tekens is:
 
@@ -216,11 +216,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
              }
     ```
 
-6. Als u de waarde van het virtuele doelnet werk dat hierboven is verplaatst, wilt bewerken, moet u eerst de resource-ID ophalen en deze vervolgens kopiëren en plakken in het bestand **para meters. json** . De ID ophalen:
+6. Als u de waarde van het virtuele doel netwerk dat hierboven is verplaatst, wilt bewerken, moet u eerst de resource-ID ophalen en deze vervolgens kopiëren en plakken in de **parameters.jsin** het bestand. De ID ophalen:
 
-    1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > **resource groepen** op een ander browser tabblad of-venster.
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com)  >  **resource groepen** op een ander browser tabblad of-venster.
     2. Zoek de doel resource groep die het verplaatste virtuele netwerk bevat uit de bovenstaande stappen en klik erop.
-    3. Selecteer**Eigenschappen**van > **instellingen** > .
+    3. Selecteer Eigenschappen van > **instellingen**  >  **Properties**.
     4. Markeer de **resource-id** op de Blade aan de rechter kant en kopieer deze naar het klem bord.  U kunt ook op de knop **kopiëren naar klem bord** rechts van het **resource-id-** pad klikken.
     5. Plak de resource-ID in de eigenschap **DefaultValue** in de editor **para meters bewerken** open in het andere browser venster of tabblad:
 
@@ -239,8 +239,8 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
     6. Klik op **Opslaan** in de online editor.
 
-7.  > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
-8. Als u de doel regio wilt bewerken waar de interne load balancer configuratie wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in het bestand **sjabloon. json** :
+7. Klik **op sjabloon**  >  **bewerken sjabloon** om de **template.js** te openen in het bestand in de online-editor.
+8. Als u de doel regio wilt bewerken waar de interne load balancer configuratie wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources** in de **template.jsin** het bestand:
 
     ```json
         "resources": [
@@ -255,11 +255,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
                 },
     ```
 
-9.  Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
+9.  Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS**-  =  **Midden**.
 
 10. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **SKU** : u kunt de SKU van de interne Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in het bestand **sjabloon. json** :
+    * **SKU** : u kunt de SKU van de interne Load Balancer in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU**-  >  **naam** te wijzigen in de **template.jsin** het bestand:
 
         ```json
         "resources": [
@@ -275,7 +275,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
       Zie [overzicht van Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) voor meer informatie over de verschillen tussen de Basic-en Standard SKU load balancers
 
-    * Taakverdelings **regels** : u kunt regels voor taak verdeling toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van het bestand **sjabloon. json** :
+    * Taakverdelings **regels** : u kunt regels voor taak verdeling toevoegen aan of verwijderen uit de configuratie door vermeldingen toe te voegen aan of te verwijderen uit de sectie **loadBalancingRules** van de **template.jsvoor** het bestand:
 
         ```json
         "loadBalancingRules": [
@@ -307,7 +307,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
        Zie [Wat is Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) voor meer informatie over taakverdelings regels.
 
-    * **Tests** : u kunt een test toevoegen aan of verwijderen uit de Load Balancer in de configuratie door vermeldingen toe te voegen aan of te verwijderen uit het gedeelte **tests** van het bestand **sjabloon. json** :
+    * **Tests** : u kunt een test voor de Load Balancer in de configuratie toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **tests** van de **template.jsin** het bestand:
 
         ```json
         "probes": [
@@ -327,7 +327,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
         ```
        Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview) (Engelstalig) voor meer informatie over Azure Load Balancer status tests
 
-    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van het bestand **sjabloon. json** :
+    * **Binnenkomende NAT-regels** : u kunt binnenkomende NAT-regels voor de Load Balancer toevoegen of verwijderen door vermeldingen toe te voegen aan de sectie **inboundNatRules** van de **template.jsvoor** het volgende bestand:
 
         ```json
         "inboundNatRules": [
@@ -349,7 +349,7 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
                     }
                 ]
         ```
-        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van het bestand **sjabloon. json** :
+        Als u het toevoegen of verwijderen van een binnenkomende NAT-regel wilt volt ooien, moet de regel aanwezig zijn of worden verwijderd als een **type** -eigenschap aan het einde van de **template.jsin** het bestand:
 
         ```json
         {
@@ -377,11 +377,11 @@ De volgende stappen laten zien hoe u de interne load balancer voorbereidt voor h
 
 12. Klik op **Opslaan** in de online editor.
 
-13. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin de interne doel-Load Balancer worden geïmplementeerd.
+13. Klik op **basis**  >  **abonnement** om het abonnement te kiezen waarin de interne doel-Load Balancer worden geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin de doel-Load Balancer worden geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de interne doel Load Balancer of de bestaande resource groep kiezen die hierboven voor het virtuele netwerk is gemaakt.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande interne load balancer van de bron.
+15. Klik op **basis**  >  **bronnen groep** om de resource groep te kiezen waarin de doel-Load Balancer worden geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor de interne doel Load Balancer of de bestaande resource groep kiezen die hierboven voor het virtuele netwerk is gemaakt.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande interne load balancer van de bron.
 
-16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u de interne Load Balancer wilt implementeren.
+16. De **BASICS**  >  **locatie** van de basis beginselen controleren is ingesteld op de doel locatie waar u de interne Load Balancer wilt implementeren.
 
 17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.  Controleer of de resource-Id's zijn ingevuld voor virtuele netwerken in de configuratie.
 

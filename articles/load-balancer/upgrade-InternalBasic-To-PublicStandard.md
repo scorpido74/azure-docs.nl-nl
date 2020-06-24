@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u een upgrade uitvoert van Azur
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858406"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809357"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Upgrade uitvoeren voor interne Load Balancer van Azure-uitgaande verbinding vereist
 [Azure Standard Load Balancer](load-balancer-overview.md) biedt een uitgebreide set functionaliteit en hoge Beschik baarheid via zone redundantie. Zie [vergelijkings tabel](https://docs.microsoft.com/azure/load-balancer/skus#skus)voor meer informatie over Load Balancer SKU. Aangezien standaard interne Load Balancer geen uitgaande verbinding biedt, bieden we een oplossing om in plaats daarvan een open bare standaard Load Balancer te maken.
@@ -47,10 +47,10 @@ Down load het migratie script van de [PowerShell Gallery](https://www.powershell
 
 Er zijn twee opties voor u afhankelijk van de instellingen en voor keuren van uw lokale Power shell-omgeving:
 
-* Als u de Azure AZ-modules niet hebt geïnstalleerd of als u niet van mening bent dat u de Azure AZ-modules verwijdert, kunt u `Install-Script` het beste de optie gebruiken om het script uit te voeren.
+* Als u de Azure AZ-modules niet hebt geïnstalleerd of als u niet van mening bent dat u de Azure AZ-modules verwijdert, kunt u het beste de `Install-Script` optie gebruiken om het script uit te voeren.
 * Als u de Azure AZ-modules wilt blijven gebruiken, is het verstandig om het script te downloaden en het rechtstreeks uit te voeren.
 
-Als u wilt weten of u de Azure AZ-modules hebt `Get-InstalledModule -Name az`geïnstalleerd, voert u uit. Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de `Install-Script` -methode gebruiken.
+Als u wilt weten of u de Azure AZ-modules hebt geïnstalleerd, voert u uit `Get-InstalledModule -Name az` . Als er geen geïnstalleerde AZ-modules worden weer geven, kunt u de- `Install-Script` methode gebruiken.
 
 ### <a name="install-using-the-install-script-method"></a>Installeren met behulp van de methode install-script
 
@@ -81,7 +81,7 @@ Het script uitvoeren:
    * **newLBName: [string]: vereist** : dit is de naam voor de Standard Load Balancer die u wilt maken.
 1. Voer het script uit met de juiste para meters. Het kan vijf tot zeven minuten duren voordat de bewerking is voltooid.
 
-    **Voorbeeld**
+    **Hierbij**
 
    ```azurepowershell
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
@@ -132,7 +132,7 @@ Nee. Met het Azure PowerShell script wordt de configuratie alleen gemigreerd. De
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Er zijn problemen opgetreden bij het gebruik van dit script. Hoe kan ik hulp krijgen?
   
-U kunt een e-mail verzenden naar slbupgradesupport@microsoft.com, een ondersteunings aanvraag openen met ondersteuning voor Azure of beide.
+U kunt een e-mail verzenden naar slbupgradesupport@microsoft.com , een ondersteunings aanvraag openen met ondersteuning voor Azure of beide.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,24 +1,24 @@
 ---
-title: Prognoses in een kennis archief (preview-versie)
+title: Projectie concepten (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Sla uw verrijkte gegevens op in een Data Base van de AI-verrijkings pijp lijn naar een kennis Archief voor gebruik in andere scenario's dan zoeken in volledige tekst. Het kennis archief is momenteel beschikbaar als open bare preview.
+description: Sla uw verrijkte gegevens op in een Data Base van de AI-verrijkings pijp lijn naar een kennis Archief voor gebruik in andere scenario's dan zoeken in volledige tekst. Dit kennisarchief is momenteel beschikbaar als openbare preview-versie.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 894fc6efc99eb7fcc17f2199270c08bc3cee8e8e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942973"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750320"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Prognoses in een kennis archief in azure Cognitive Search
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Micro soft Knowledge Store-projecties in azure Cognitive Search
 
 > [!IMPORTANT] 
-> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+> Dit kennisarchief is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 Azure Cognitive Search maakt inhouds verrijking mogelijk via ingebouwde cognitieve vaardig heden en aangepaste vaardig heden als onderdeel van het indexeren. Verrijkingen maken nieuwe informatie, waar ze nog niet aanwezig waren: het extra heren van informatie uit installatie kopieën, het detecteren van sentiment, sleutel zinnen en entiteiten uit tekst, om een paar te noemen. Verrijkingen voegen ook structuur toe aan niet-gedifferentieerde tekst. Al deze processen resulteren in documenten die het zoeken naar volledige tekst effectiever maken. In veel gevallen zijn verrijkte documenten handig voor andere scenario's dan zoeken, zoals voor kennis analyse.
 

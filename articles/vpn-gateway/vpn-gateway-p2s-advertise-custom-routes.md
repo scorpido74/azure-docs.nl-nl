@@ -4,15 +4,15 @@ description: Stappen voor het adverteren van aangepaste routes naar uw punt-naar
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad007514e48ea751257884ba6e9ccb3965442d36
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756898"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987576"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Aangepaste routes adverteren voor P2S VPN-clients
 
@@ -22,7 +22,7 @@ Mogelijk wilt u aangepaste routes adverteren naar al uw punt-naar-site-VPN-clien
 
 ## <a name="to-advertise-custom-routes"></a>Aangepaste routes adverteren
 
-Gebruik de `Set-AzVirtualNetworkGateway cmdlet`om aangepaste routes te adverteren. In het volgende voor beeld ziet u hoe u het IP-adres voor de tabellen uit de [Contoso-opslag account](https://contoso.table.core.windows.net)aankondigt.
+Gebruik de om aangepaste routes te adverteren `Set-AzVirtualNetworkGateway cmdlet` . In het volgende voor beeld ziet u hoe u het IP-adres voor de tabellen uit de [Contoso-opslag account](https://contoso.table.core.windows.net)aankondigt.
 
 1. Ping *contoso.table.core.Windows.net* en noteer het IP-adres. Bijvoorbeeld:
 

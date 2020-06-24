@@ -8,18 +8,18 @@ author: asudbring
 manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477018"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809409"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -118,7 +118,7 @@ Hieronder ziet u hoe u dit type test configuratie kunt uitdrukken in een resourc
       },
 ```
 
-### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a> Http/https-test
+### <a name="http--https-probe"></a><a name="httpprobe"></a><a name="httpsprobe"></a>Http/https-test
 
 >[!NOTE]
 >De HTTPS-test is alleen beschikbaar voor [Standard Load Balancer](load-balancer-standard-overview.md).
@@ -130,7 +130,7 @@ HTTP/HTTPS-tests kunnen ook handig zijn om uw eigen logica te implementeren om e
 > [!NOTE] 
 > De HTTPS-test vereist het gebruik van certificaten op basis van een minimale handtekening hash van SHA256 in de hele keten.
 
-Als u Cloud Services gebruikt en webrollen hebt die gebruikmaken van W3wp. exe, behaalt u ook de automatische controle van uw website. Fouten in de code van uw website retour neren een niet-200 status naar de load balancer-test.
+Als u Cloud Services gebruikt en webrollen hebt die gebruikmaken van w3wp.exe, behaalt u ook automatische controle van uw website. Fouten in de code van uw website retour neren een niet-200 status naar de load balancer-test.
 
 Een HTTP/HTTPS-test mislukt wanneer:
 * Met test eindpunt wordt een andere HTTP-antwoord code dan 200 (bijvoorbeeld 403, 404 of 500) geretourneerd. Hiermee wordt de status test onmiddellijk gemarkeerd. 
@@ -175,7 +175,7 @@ Als de gast agent niet reageert met HTTP 200 OK, markeert het load balancer het 
 
 Als de gast agent reageert met een HTTP-200, worden de nieuwe stromen opnieuw door de load balancer naar die instantie verzonden.
 
-Wanneer u een webrole gebruikt, wordt de website code doorgaans uitgevoerd in W3wp. exe, die niet wordt bewaakt door de Azure-infra structuur of gast agent. Fouten in W3wp. exe (bijvoorbeeld HTTP 500-antwoorden) worden niet gerapporteerd aan de gast agent. Daarom is het niet zo dat de load balancer dat exemplaar niet kan worden gedraaid.
+Wanneer u een webrole gebruikt, wordt de website code doorgaans uitgevoerd in w3wp.exe, die niet wordt bewaakt door de Azure-infra structuur of gast agent. Fouten in w3wp.exe (bijvoorbeeld HTTP 500-antwoorden) worden niet gerapporteerd aan de gast agent. Daarom is het niet zo dat de load balancer dat exemplaar niet kan worden gedraaid.
 
 <a name="health"></a>
 ## <a name="probe-up-behavior"></a><a name="probehealth"></a>Gedrag van testen

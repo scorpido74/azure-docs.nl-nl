@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253960"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689483"
 ---
 # <a name="powershell-dsc-extension"></a>Power shell DSC-extensie
 
@@ -97,30 +97,30 @@ De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitb
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| uitgever | Micro soft. Power shell. DSC | tekenreeks |
+| publisher | Micro soft. Power shell. DSC | tekenreeks |
 | type | DSC | tekenreeks |
 | typeHandlerVersion | 2,77 | int |
 
 ### <a name="settings-property-values"></a>Eigenschaps waarden van instellingen
 
-| Naam | Gegevenstype | Beschrijving
+| Name | Gegevenstype | Beschrijving
 | ---- | ---- | ---- |
 | Settings. wmfVersion | tekenreeks | Hiermee geeft u de versie op van het Windows Management Framework dat op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op ' meest recente ', wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn ' 4,0 ', ' 5,0 ' en ' meest recent '. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is ' meest recent '. |
-| Settings. Configuration. URL | tekenreeks | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als instellingen. Configuration. script en/of settings. Configuration. functie zijn gedefinieerd.
-| instellingen. Configuration. script | tekenreeks | Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven door de eigenschap Configuration. URL. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. script zijn gedefinieerd.
-| Settings. Configuration. function | tekenreeks | Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet zijn opgenomen in het script dat is gedefinieerd door Configuration. script. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. functie zijn gedefinieerd.
-| Settings. configurationArguments | Verzameling | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
-| Settings. configurationData. URL | tekenreeks | Hiermee geeft u de URL op waaruit uw pds1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
+| settings.configuratie. URL | tekenreeks | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap urationUrlSasToken van de protectedSettings.configinstellen op de waarde van uw SAS-token. Deze eigenschap is vereist als settings.configuratie. script en/of settings.configuratie. functie zijn gedefinieerd.
+| settings.configuratie. script | tekenreeks | Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven door de eigenschap Configuration. URL. Deze eigenschap is vereist als settings.configuratie. URL en/of settings.configuratie. script zijn gedefinieerd.
+| settings.configuratie. function | tekenreeks | Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet zijn opgenomen in het script dat is gedefinieerd door Configuration. script. Deze eigenschap is vereist als settings.configuratie. URL en/of settings.configuratie. functie zijn gedefinieerd.
+| settings.configurationArguments | Verzameling | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
+| settings.configurationData. URL | tekenreeks | Hiermee geeft u de URL op waaruit uw pds1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap urationDataUrlSasToken van de protectedSettings.configinstellen op de waarde van uw SAS-token.
 | Settings. privacy. dataEnabled | tekenreeks | Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn ' Enable ', ' Disable ', ' of ' $null. Als u deze eigenschap leeg of null laat, wordt telemetrie ingeschakeld
-| Settings. advancedOptions. forcePullAndApply | Booleaanse waarde | Deze instelling is ontworpen om de ervaring van het werken met de uitbrei ding voor het registreren van knoop punten met Azure Automation DSC te verbeteren.  Als de waarde is `$true`, wacht de uitbrei ding op de eerste uitvoering van de configuratie die wordt opgehaald uit de service voordat het succes/de fout wordt geretourneerd.  Als de waarde is ingesteld op $false, verwijst de status die door de uitbrei ding wordt geretourneerd alleen naar of het knoop punt is geregistreerd met Azure Automation status configuratie is geslaagd en de knooppunt configuratie niet wordt uitgevoerd tijdens de registratie.
+| Settings. advancedOptions. forcePullAndApply | Booleaanse waarde | Deze instelling is ontworpen om de ervaring van het werken met de uitbrei ding voor het registreren van knoop punten met Azure Automation DSC te verbeteren.  Als de waarde is `$true` , wacht de uitbrei ding op de eerste uitvoering van de configuratie die wordt opgehaald uit de service voordat het succes/de fout wordt geretourneerd.  Als de waarde is ingesteld op $false, verwijst de status die door de uitbrei ding wordt geretourneerd alleen naar of het knoop punt is geregistreerd met Azure Automation status configuratie is geslaagd en de knooppunt configuratie niet wordt uitgevoerd tijdens de registratie.
 | Settings. advancedOptions. downloadMappings | Verzameling | Definieert alternatieve locaties voor het downloaden van afhankelijkheden, zoals WMF en .NET
 
 ### <a name="protected-settings-property-values"></a>Eigenschaps waarden voor beveiligde instellingen
 
-| Naam | Gegevenstype | Beschrijving
+| Name | Gegevenstype | Beschrijving
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | tekenreeks | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
 | protectedSettings.configurationUrlSasToken | tekenreeks | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door Configuration. URL. Deze eigenschap wordt versleuteld. |

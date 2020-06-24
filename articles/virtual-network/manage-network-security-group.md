@@ -6,17 +6,17 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: cac67e85383f36aee0a1535d69fa075f92bd6dbf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267712"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708277"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen
 
@@ -63,7 +63,7 @@ Er is een limiet voor het aantal netwerk beveiligings groepen dat u kunt maken v
 
 5. Nadat u het bericht **validatie geslaagd** hebt weer gegeven, selecteert u **maken**.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -74,7 +74,7 @@ Er is een limiet voor het aantal netwerk beveiligings groepen dat u kunt maken v
 
 Ga naar de [Azure Portal](https://portal.azure.com) om uw netwerk beveiligings groepen weer te geven. Zoek en selecteer **netwerk beveiligings groepen**. De lijst met netwerk beveiligings groepen wordt weer gegeven voor uw abonnement.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -99,7 +99,7 @@ Zie de volgende artikelen voor meer informatie over de algemene Azure-instelling
 - [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Automation-script](../azure-resource-manager/templates/export-template-portal.md)
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -114,7 +114,7 @@ Zie de volgende artikelen voor meer informatie over de algemene Azure-instelling
 
 De meest voorkomende wijzigingen zijn het [toevoegen van een beveiligings regel](#create-a-security-rule), het [verwijderen van een regel](#delete-a-security-rule)en het [koppelen of loskoppelen van een netwerk beveiligings groep naar of van een subnet of netwerk interface](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -135,7 +135,7 @@ Als een netwerk beveiligings groep is gekoppeld aan subnetten of netwerk interfa
 
 3. Selecteer **verwijderen**op de werk balk van de netwerk beveiligings groep. Selecteer vervolgens **Ja** in het bevestigings venster.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -174,11 +174,11 @@ Er is een limiet voor het aantal regels per netwerk beveiligings groep dat u kun
     | **Poortbereiken van doel** | Een van de volgende opties:<ul><li>Eén poort, zoals`80`</li><li>Een bereik van poorten, zoals`1024-65535`</li><li>Een door komma's gescheiden lijst met enkele poorten en/of poortbereiken, zoals`80, 1024-65535`</li><li>Een asterisk ( `*` ) om verkeer toe te staan op een wille keurige poort</li></ul> | Net als bij **bron poortbereiken**kunt u enkele of meerdere poorten en bereiken opgeven. Er zijn limieten voor het aantal dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie. |
     | **Protocol** | **Any**, **TCP**, **UDP**of **ICMP** | U kunt de regel beperken tot de Transmission Control Protocol (TCP), User Data gram Protocol (UDP) of Internet Control Message Protocol (ICMP). De standaard waarde is voor de regel die op alle protocollen moet worden toegepast. |
     | **Actie** | **Toestaan** of **weigeren** | Met deze instelling geeft u op of deze regel de toegang voor de opgegeven bron-en doel configuratie toestaat of weigert. |
-    | **Prioriteiten** | Een waarde tussen 100 en 4096 die uniek is voor alle beveiligings regels in de netwerk beveiligings groep | Azure verwerkt beveiligings regels in volg orde van prioriteit. Hoe lager het getal, des te hoger de prioriteit. We raden u aan een hiaat tussen prioriteits nummers te laten wanneer u regels maakt, zoals 100, 200 en 300. Als u hiaten hebt, is het eenvoudiger om regels in de toekomst toe te voegen, zodat u ze een hogere of lagere prioriteit kunt geven dan bestaande regels. |
+    | **Priority** | Een waarde tussen 100 en 4096 die uniek is voor alle beveiligings regels in de netwerk beveiligings groep | Azure verwerkt beveiligings regels in volg orde van prioriteit. Hoe lager het getal, des te hoger de prioriteit. We raden u aan een hiaat tussen prioriteits nummers te laten wanneer u regels maakt, zoals 100, 200 en 300. Als u hiaten hebt, is het eenvoudiger om regels in de toekomst toe te voegen, zodat u ze een hogere of lagere prioriteit kunt geven dan bestaande regels. |
     | **Naam** | Een unieke naam voor de regel in de netwerk beveiligings groep | De naam mag Maxi maal 80 tekens lang zijn. De naam moet beginnen met een letter of cijfer en moet eindigen met een letter, cijfer of onderstrepings teken. De naam mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. |
     | **Beschrijving** | Een tekst beschrijving | U kunt eventueel een beschrijving van de tekst voor de beveiligings regel opgeven. |
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -197,7 +197,7 @@ Een netwerk beveiligings groep bevat nul of meer regels. Zie [overzicht van netw
 
 De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels](security-overview.md#default-security-rules)voor de netwerk beveiligings groep.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -217,7 +217,7 @@ De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels
     > [!NOTE]
     > Deze procedure is alleen van toepassing op een aangepaste beveiligings regel. Als u een standaard beveiligings regel kiest, werkt deze niet.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -233,7 +233,7 @@ De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels
     > [!NOTE]
     > Deze procedure is alleen van toepassing op een aangepaste beveiligings regel. Het is niet toegestaan om een standaard beveiligings regel te wijzigen.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -249,7 +249,7 @@ De lijst bevat de regels die u hebt gemaakt en de [standaard beveiligings regels
     > [!NOTE]
     > Deze procedure is alleen van toepassing op een aangepaste beveiligings regel. U bent niet gemachtigd om een standaard beveiligings regel te verwijderen.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -281,7 +281,7 @@ Een toepassings beveiligings groep bevat geen of meer netwerk interfaces. Zie [t
 
 6. Klik op het tabblad **controleren en maken** , nadat u het bericht validatie is geslaagd hebt weer **gegeven** , en selecteer **maken**.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -292,7 +292,7 @@ Een toepassings beveiligings groep bevat geen of meer netwerk interfaces. Zie [t
 
 Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassings beveiligings groepen weer te geven. Zoek en selecteer **toepassings beveiligings groepen**. In de Azure Portal wordt een lijst met uw toepassings beveiligings groepen weer gegeven.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -305,7 +305,7 @@ Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassings beveiligin
 
 2. Selecteer de naam van de toepassings beveiligings groep waarvan u de details wilt weer geven.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -325,7 +325,7 @@ Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassings beveiligin
 
     In de menu balk kunt u ook **toegangs beheer (IAM)** selecteren. U kunt op de pagina **toegangs beheer (IAM)** machtigingen toewijzen of verwijderen voor de toepassings beveiligings groep.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |
@@ -342,7 +342,7 @@ U kunt een toepassings beveiligings groep niet verwijderen als deze netwerk inte
 
 3. Selecteer **verwijderen**en selecteer vervolgens **Ja** om de toepassings beveiligings groep te verwijderen.
 
-#### <a name="commands"></a>Opdrachten
+#### <a name="commands"></a>Opdracht
 
 | Hulpprogramma | Opdracht |
 | ---- | ------- |

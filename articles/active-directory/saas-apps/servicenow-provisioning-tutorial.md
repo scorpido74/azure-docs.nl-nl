@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780512"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751505"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Zelf studie: ServiceNow configureren voor automatische gebruikers inrichting
 
@@ -54,12 +54,19 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 1. Identificeer de naam van uw ServiceNow-exemplaar. U kunt de naam van het exemplaar vinden in de URL die u gebruikt voor toegang tot ServiceNow. In het onderstaande voor beeld is de naam van het exemplaar dev35214.
 
-![ServiceNow-instantie](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow-instantie](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. Referenties voor een beheerder verkrijgen in ServiceNow. Navigeer naar het gebruikers profiel in ServiceNow en controleer of de gebruiker de rol Admin heeft. 
 
-![Beheerdersrol ServiceNow](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![Beheerdersrol ServiceNow](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. Controleer of de volgende instellingen zijn **uitgeschakeld** in ServiceNow:
+
+   1. **System Security**  >  **Instellingen voor strenge beveiliging**van systeem beveiliging selecteren  >  **basis verificatie voor inkomende schema aanvragen vereist**.
+   2. **Systeem eigenschappen**selecteren  >  **webservices**  >  **vereisen basis autorisatie voor inkomende SOAP-aanvragen**.
+     
+   > [!IMPORTANT]
+   > Als deze instelling is *ingeschakeld*, kan de inrichtings engine niet communiceren met ServiceNow.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>Stap 3. ServiceNow toevoegen vanuit de Azure AD-toepassings galerie
 
@@ -80,7 +87,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor ServiceNow in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -142,11 +149,19 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * **EntryJoiningPropertyValueIsMissing:** Controleer de [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) om het overeenkomende kenmerk te identificeren. Deze waarde moet aanwezig zijn op de gebruiker of groep die u wilt inrichten. 
 * Bekijk de [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) om inzicht te krijgen in vereisten of beperkingen (bijvoorbeeld indeling om land code op te geven voor een gebruiker)
 * Inrichtings aanvragen worden standaard verzonden naar https://{uw-instance-name}. Service-now. com/{table-name}. Als u een aangepaste Tenant-URL nodig hebt, kunt u de volledige URL opgeven in het veld exemplaar naam.
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   Deze fout wijst op een probleem met de communicatie tussen het ServiceNow-exemplaar. Controleer of de volgende instellingen zijn *uitgeschakeld* in ServiceNow:
+   
+   1. **System Security**  >  **Instellingen voor strenge beveiliging**van systeem beveiliging selecteren  >  **basis verificatie voor inkomende schema aanvragen vereist**.
+   2. **Systeem eigenschappen**selecteren  >  **webservices**  >  **vereisen basis autorisatie voor inkomende SOAP-aanvragen**.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 345794eead05a4ff5e5d1396df78878d2693f405
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5ad2867ffdea512348002d03ec742af42b535b31
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834982"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750213"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL-groepen in azure Synapse Analytics
 
@@ -59,7 +59,7 @@ PolyBase-loads kunnen worden uitgevoerd met behulp van CTAS of INSERT INTO. CTAS
 
 Als u de door voer wilt maximaliseren bij het gebruik van gzip-tekst bestanden, moet u bestanden opdelen in 60 of meer bestanden om de parallelle kracht van uw belasting te maximaliseren. Voor een snellere totale doorvoer, kunt u overwegen gegevens gelijktijdig te laden. Meer informatie over de onderwerpen die relevant zijn voor deze sectie is opgenomen in de volgende artikelen:
 
-- [Gegevens laden](data-loading-overview.md)
+- [Gegevens laden](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Gids voor gebruik van PolyBase](data-loading-best-practices.md)
 - [De Azure SQL-groep voor het laden van patronen en strategieën](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)
 - [Gegevens laden met Azure Data Factory](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

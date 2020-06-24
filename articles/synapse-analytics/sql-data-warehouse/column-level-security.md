@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/19/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4da74c01f732f3a62d29847d5f61934dede9778
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687925"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208090"
 ---
 # <a name="column-level-security"></a>Beveiliging op kolom niveau
 
@@ -32,7 +32,7 @@ U kunt beveiliging op kolom niveau implementeren met de instructie [Grant](/sql/
 
 ![compatibiliteit](./media/column-level-security/cls.png)
 
-## <a name="syntax"></a>Syntaxis
+## <a name="syntax"></a>Syntax
 
 ```syntaxsql
 GRANT <permission> [ ,...n ] ON
@@ -52,9 +52,9 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld ziet u `TestUser` hoe u de `SSN` toegang tot de `Membership` kolom van de tabel beperkt:
+In het volgende voor beeld ziet u hoe u `TestUser` de toegang tot de `SSN` kolom van de `Membership` tabel beperkt:
 
-Tabel `Membership` maken met SSN-kolom die wordt gebruikt voor het opslaan van sociale-beveiligings nummers:
+`Membership`Tabel maken met SSN-kolom die wordt gebruikt voor het opslaan van sociale-beveiligings nummers:
 
 ```sql
 CREATE TABLE Membership
@@ -66,13 +66,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Toegang `TestUser` tot alle kolommen toestaan, behalve de kolom SSN, die de gevoelige gegevens bevat:
+`TestUser`Toegang tot alle kolommen toestaan, behalve de kolom SSN, die de gevoelige gegevens bevat:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Query's die worden `TestUser` uitgevoerd als, mislukken als ze de kolom SSN bevatten:
+Query's die worden uitgevoerd als `TestUser` , mislukken als ze de kolom SSN bevatten:
 
 ```sql
 SELECT * FROM Membership;
@@ -81,7 +81,7 @@ SELECT * FROM Membership;
 -- The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="use-cases"></a>Use cases
+## <a name="use-cases"></a>Gebruiksscenario's
 
 Hier volgen enkele voor beelden van de manier waarop beveiliging op kolom niveau momenteel wordt gebruikt:
 

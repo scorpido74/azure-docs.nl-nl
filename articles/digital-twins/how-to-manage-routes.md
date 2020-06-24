@@ -1,5 +1,5 @@
 ---
-title: Eind punten en routes beheren
+title: Eindpunten en routes beheren
 titleSuffix: Azure Digital Twins
 description: Zie eind punten en gebeurtenis routes instellen en beheren voor Azure Digital Apparaatdubbels-gegevens.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a6549f4436fe1bd6a7ab27d942621ccaaf93cff7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612940"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725678"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 In azure Digital Apparaatdubbels kunt u [gebeurtenis meldingen](how-to-interpret-event-data.md) door sturen naar downstream-Services of verbinding maken met reken bronnen. Dit wordt gedaan door eerst **eind punten** in te stellen die de gebeurtenissen kunnen ontvangen, gevolgd door de [**gebeurtenis routes**](concepts-route-events.md) die aangeven welke gebeurtenissen worden gegenereerd door Azure Digital apparaatdubbels naar welke eind punten worden verzonden.
 
@@ -38,7 +41,7 @@ az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name>
 ```
 
 > [!TIP]
-> Als u een lijst met Azure-regio namen wilt uitvoeren die kunnen worden door gegeven in opdrachten in de Azure CLI, voert u de volgende opdracht uit:
+> Voer deze opdracht uit om een lijst uit te voeren van Azure-regionamen die kunnen worden doorgegeven aan opdrachten in de Azure CLI:
 > ```azurecli
 > az account list-locations -o table
 > ```

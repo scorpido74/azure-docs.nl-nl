@@ -3,24 +3,24 @@ title: Probleem bij het toevoegen van een niet-galerie toepassing | Microsoft Do
 description: Algemene problemen begrijpen die mensen gezicht hebben bij het toevoegen van aangepaste niet-galerie toepassingen
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: ce103ca6c958b0524d753da25c2a79aadfb7c8b3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65784483"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760283"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Probleem bij het toevoegen van een niet-galerie toepassing
 
@@ -96,7 +96,7 @@ Raadpleeg de volgende beschrijvingen voor meer informatie over de meldingen.
 
 - **UPN** : de gebruiker die de bewerking heeft uitgevoerd
 
-  *  Voor beeld **–\@tperkins f128.info**
+  *  Voor beeld – **tperkins \@ f128.info**
 
 - **Tenant-id** : de unieke id van de Tenant waarvan de gebruiker die de bewerking heeft uitgevoerd lid is van
 
@@ -122,7 +122,7 @@ Raadpleeg de volgende beschrijvingen voor meer informatie over de meldingen.
 
 - **Details** : de gedetailleerde beschrijving van wat er is gebeurd als gevolg van de bewerking
 
-  *  Voor beeld: **interne `https://bing.com/` URL is ongeldig omdat deze al wordt gebruikt**
+  *  Voor beeld: **interne URL `https://bing.com/` is ongeldig omdat deze al wordt gebruikt**
 
 - **Kopieer fout** : Klik op het **pictogram kopiëren** rechts van het tekstvak **Kopieer fout** om alle meldings gegevens te kopiëren die moeten worden gedeeld met een ondersteuning of product groep 
 - technicus

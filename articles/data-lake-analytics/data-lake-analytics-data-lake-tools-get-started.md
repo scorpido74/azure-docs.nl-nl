@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260343"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707783"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-scripts ontwikkelen met Data Lake-tools voor Visual Studio
 
@@ -55,11 +55,11 @@ Voor deze zelfstudie moet Data Lake-tools voor Visual Studio zijn geïnstalleerd
 
 1. Open Visual Studio.
 
-1. Open **Server Explorer** door Server Explorer **weer geven** > **Server Explorer**te selecteren.
+1. Open **Server Explorer** door Server Explorer **weer geven**te selecteren  >  **Server Explorer**.
 
 1. Klik met de rechter muisknop op **Azure**en selecteer **verbinding maken met Microsoft Azure abonnement**. Volg de instructies in **Aanmelden bij uw account**.
 
-1. Selecteer in **Server Explorer** **Azure** > **Data Lake Analytics**. U ziet een lijst met uw Data Lake Analytics-accounts.
+1. Selecteer in **Server Explorer** **Azure**  >  **Data Lake Analytics**. U ziet een lijst met uw Data Lake Analytics-accounts.
 
 ## <a name="write-your-first-u-sql-script"></a>Uw eerste U-SQL-script schrijven
 
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Een Data Lake Analytics-taak verzenden
 
-1. Selecteer in Visual Studio **bestand** > **Nieuw** > **project**.
+1. Selecteer in Visual Studio **Bestand** > **Nieuw** > **Project**.
 
 1. Selecteer het type **U-SQL-project** en selecteer vervolgens **volgende**. Selecteer in **uw nieuwe project configureren de**optie **maken**.
 
@@ -112,7 +112,7 @@ Selecteer **vernieuwen**om de nieuwste taak status weer te geven en het scherm t
 
 ## <a name="check-job-status"></a>Taakstatus controleren
 
-1. Selecteer in **Server Explorer** **Azure** > **Data Lake Analytics**.
+1. Selecteer in **Server Explorer** **Azure**  >  **Data Lake Analytics**.
 
 1. Vouw de Data Lake Analytics-accountnaam uit.
 

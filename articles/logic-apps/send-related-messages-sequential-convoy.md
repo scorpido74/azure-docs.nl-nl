@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f2a5ad78ecf4bf02e84b9bf2e37fea13c708e072
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143098"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987605"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verzend gerelateerde berichten in de juiste volg orde door gebruik te maken van een opeenvolgende verwerkings in Azure Logic Apps met Azure Service Bus
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u een logische app maakt die dit patroon imp
 
 * Alle berichten van dezelfde sessie in de wachtrij lezen en verwerken tijdens de huidige uitvoering van de werk stroom.
 
-Zie [github: Service-Bus-Sessions. json](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json)om het JSON-bestand van deze sjabloon te controleren.
+Als u het JSON-bestand van deze sjabloon wilt bekijken, raadpleegt u [github: service-bus-sessions.jsop](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json).
 
 Zie voor meer informatie [sequentieel verwerkings-patroon: Azure Architecture Cloud-ontwerp patronen](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
 
@@ -195,11 +195,11 @@ Ga als volgt te werk om de waarden op te geven voor de trigger en acties in de *
 
   | Eigenschap | Vereist voor dit scenario | Waarde | Beschrijving |
   |----------|----------------------------|-------|-------------|
-  | **Wachtrijnaam** | Ja | <*wachtrij naam*> | De naam voor uw eerder gemaakte Service Bus wachtrij. In dit voor beeld wordt gebruikgemaakt van Fabrikam-service-bus-wachtrij. |
-  | **Wachtrij type** | Ja | **Hoofdformulier** | Uw primaire Service Bus wachtrij |
-  | **Sessie-id** | Ja | **Volgende beschikbaar** | Met deze optie wordt een sessie opgehaald voor elke trigger die wordt uitgevoerd op basis van de sessie-ID van het bericht in de Service Bus wachtrij. De sessie wordt ook vergrendeld, zodat er geen andere logische app of andere client berichten kan verwerken die aan deze sessie zijn gerelateerd. Met de volgende acties van de werk stroom worden alle berichten verwerkt die aan die sessie zijn gekoppeld, zoals verderop in dit artikel wordt beschreven. <p><p>Hier vindt u meer informatie over de andere **sessie-id-** opties: <p>- **Geen**: de standaard optie, waardoor er geen sessies zijn en kunnen niet worden gebruikt voor het implementeren van het sequentiële verwerkings-patroon. <p>- **Aangepaste waarde invoeren**: gebruik deze optie wanneer u de sessie-id kent die u wilt gebruiken, en u de trigger altijd wilt uitvoeren voor die sessie-id. <p>**Opmerking**: de service bus-connector kan een beperkt aantal unieke sessies per keer opslaan van Azure service bus naar de connector cache. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Exchange-berichten in de Cloud met Azure Logic apps en Azure service bus](../connectors/connectors-create-api-servicebus.md#connector-reference)voor meer informatie. |
-  | **Bereik** | Ja | <*aantal intervallen*> | Het aantal tijds eenheden tussen herhalingen voordat op een bericht wordt gecontroleerd. |
-  | **Frequentie** | Ja | **Seconde**, **minuut**, **uur**, **dag**, **week**of **maand** | De tijds eenheid voor het terugkeer patroon dat moet worden gebruikt bij het controleren op een bericht. <p>**Tip**: als u een **tijd zone** of **begin tijd**wilt toevoegen, selecteert u deze eigenschappen in de lijst **nieuwe para meters toevoegen** . |
+  | **Wachtrijnaam** | Yes | <*wachtrij naam*> | De naam voor uw eerder gemaakte Service Bus wachtrij. In dit voor beeld wordt gebruikgemaakt van Fabrikam-service-bus-wachtrij. |
+  | **Wachtrij type** | Yes | **Hoofdformulier** | Uw primaire Service Bus wachtrij |
+  | **Sessie-id** | Yes | **Volgende beschikbaar** | Met deze optie wordt een sessie opgehaald voor elke trigger die wordt uitgevoerd op basis van de sessie-ID van het bericht in de Service Bus wachtrij. De sessie wordt ook vergrendeld, zodat er geen andere logische app of andere client berichten kan verwerken die aan deze sessie zijn gerelateerd. Met de volgende acties van de werk stroom worden alle berichten verwerkt die aan die sessie zijn gekoppeld, zoals verderop in dit artikel wordt beschreven. <p><p>Hier vindt u meer informatie over de andere **sessie-id-** opties: <p>- **Geen**: de standaard optie, waardoor er geen sessies zijn en kunnen niet worden gebruikt voor het implementeren van het sequentiële verwerkings-patroon. <p>- **Aangepaste waarde invoeren**: gebruik deze optie wanneer u de sessie-id kent die u wilt gebruiken, en u de trigger altijd wilt uitvoeren voor die sessie-id. <p>**Opmerking**: de service bus-connector kan een beperkt aantal unieke sessies per keer opslaan van Azure service bus naar de connector cache. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Exchange-berichten in de Cloud met Azure Logic apps en Azure service bus](../connectors/connectors-create-api-servicebus.md#connector-reference)voor meer informatie. |
+  | **Interval** | Yes | <*aantal intervallen*> | Het aantal tijds eenheden tussen herhalingen voordat op een bericht wordt gecontroleerd. |
+  | **Frequentie** | Yes | **Seconde**, **minuut**, **uur**, **dag**, **week**of **maand** | De tijds eenheid voor het terugkeer patroon dat moet worden gebruikt bij het controleren op een bericht. <p>**Tip**: als u een **tijd zone** of **begin tijd**wilt toevoegen, selecteert u deze eigenschappen in de lijst **nieuwe para meters toevoegen** . |
   |||||
 
   Zie [service bus-wanneer een bericht wordt ontvangen in een wachtrij (Peek-Lock)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))voor meer informatie over triggers. De trigger voert een [ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage)uit.
@@ -249,7 +249,7 @@ Deze actie wordt [ **pas** ](../logic-apps/logic-apps-control-flow-loops.md#unti
 1. Ga in de Service Bus actie naar **extra berichten van de sessie**en geef de naam op voor uw service bus wachtrij. Als dat niet het geval is, moet u alle andere standaard eigenschaps waarden in de actie houden.
 
    > [!NOTE]
-   > Het maximum aantal berichten is standaard ingesteld op `175` , maar deze limiet wordt beïnvloed door de eigenschap bericht grootte en maximale bericht grootte in service bus. Deze limiet is momenteel 256 KB voor Standard en 1 MB voor Premium.
+   > Het maximum aantal berichten is standaard ingesteld op `175` , maar deze limiet wordt beïnvloed door de eigenschap bericht grootte en maximale bericht grootte in service bus. Zie [bericht grootte voor een wachtrij](../service-bus-messaging/service-bus-quotas.md)voor meer informatie.
 
    ![Service Bus actie: ' extra berichten van de sessie ophalen '](./media/send-related-messages-sequential-convoy/get-additional-messages-from-session.png)
 

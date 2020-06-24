@@ -4,15 +4,15 @@ description: Azure Service Fabric accepteert de indeling docker opstellen, waarm
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282456"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691285"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-ondersteuning voor implementatie in azure Service Fabric (preview-versie)
 
-Docker gebruikt het [docker-Compose. yml](https://docs.docker.com/compose) -bestand voor het definiëren van toepassingen met meerdere containers. Om het eenvoudig te maken voor klanten die bekend zijn met docker om bestaande container toepassingen te organiseren op Azure Service Fabric, hebben we preview-ondersteuning voor docker-implementatie in het platform opgenomen. Service Fabric kunt versie 3 en hoger van `docker-compose.yml` de bestanden accepteren. 
+Docker gebruikt het [docker-Compose. yml](https://docs.docker.com/compose) -bestand voor het definiëren van toepassingen met meerdere containers. Om het eenvoudig te maken voor klanten die bekend zijn met docker om bestaande container toepassingen te organiseren op Azure Service Fabric, hebben we preview-ondersteuning voor docker-implementatie in het platform opgenomen. Service Fabric kunt versie 3 en hoger van de `docker-compose.yml` bestanden accepteren. 
 
 Omdat deze ondersteuning in preview is, wordt slechts een subset van de samen stellen-instructies ondersteund.
 
@@ -24,7 +24,7 @@ Als u deze preview wilt gebruiken, maakt u uw cluster met versie 5,7 of hoger va
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Een docker-bestand voor opstellen implementeren op Service Fabric
 
-Met de volgende opdrachten maakt u een Service Fabric- `fabric:/TestContainerApp`toepassing (met de naam), die u kunt bewaken en beheren, zoals elke andere service Fabric-toepassing. U kunt de opgegeven toepassings naam voor status query's gebruiken.
+Met de volgende opdrachten maakt u een Service Fabric-toepassing (met de naam `fabric:/TestContainerApp` ), die u kunt bewaken en beheren, zoals elke andere service Fabric-toepassing. U kunt de opgegeven toepassings naam voor status query's gebruiken.
 Service Fabric herkent "Implementatienaam" als de id van de opstellende implementatie.
 
 ### <a name="use-powershell"></a>PowerShell gebruiken
@@ -135,9 +135,9 @@ Geef het HTTP-of HTTPS-protocol op in de sectie poorten die wordt gebruikt door 
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName berekening
 
-Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain Name is (dat wil zeggen, het bevat een punt [.]), is `<ServiceName>` de door service Fabric geregistreerde DNS-naam (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
+Als de service naam die u opgeeft in een opstellend bestand een Fully Qualified Domain Name is (dat wil zeggen, het bevat een punt [.]), is de door Service Fabric geregistreerde DNS-naam `<ServiceName>` (inclusief de punt). Als dat niet het geval is, wordt elk padsegment in de naam van de toepassing een domein label in de DNS-naam van de service, waarbij het eerste padsegment het domein label op het hoogste niveau wordt.
 
-Als de opgegeven toepassings naam bijvoorbeeld is `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` zou de geregistreerde DNS-naam zijn.
+Als de opgegeven toepassings naam bijvoorbeeld is `fabric:/SampleApp/MyComposeApp` , `<ServiceName>.MyComposeApp.SampleApp` zou de geregistreerde DNS-naam zijn.
 
 ## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Een implementatie (exemplaar definitie) versus Service Fabric app-model (type definitie) opstellen
 

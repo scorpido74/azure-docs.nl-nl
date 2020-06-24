@@ -5,17 +5,17 @@ description: Azure Machine Learning webservices rechtstreeks in Excel gebruiken 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118455"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211320"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-invoeg toepassing voor Azure Machine Learning Studio (klassieke) webservices
 
@@ -75,7 +75,7 @@ Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is a
 5. Klik op **Add Web Service**.
 6. Plak de URL in het tekstvak Excel-invoeg toepassing met de naam **URL**.
 7. Plak de API/Primary-sleutel in de label- **API-sleutel**van het tekstvak.
-8. Klik op **Toevoegen**.
+8. Klik op **Add**.
    
     ![URL en API-sleutel voor een klassieke webservice.](./media/excel-add-in-for-web-services/image6.png)
 9. Als u de webservice wilt gebruiken, volgt u de voor gaande instructies, ' stappen voor het gebruik van een bestaande webservice '.
@@ -83,4 +83,4 @@ Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is a
 ## <a name="sharing-your-workbook"></a>Uw werkmap delen
 Als u de werkmap opslaat, wordt de API/Primary-sleutel voor de webservices die u hebt toegevoegd, ook opgeslagen. Dit betekent dat u de werkmap alleen moet delen met personen die u vertrouwt.
 
-Stel alle vragen in de volgende sectie met opmerkingen of op ons [forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Stel alle vragen in de volgende sectie met opmerkingen of op ons [forum](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).

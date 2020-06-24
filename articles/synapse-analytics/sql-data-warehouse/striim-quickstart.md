@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945bcd03bc3bf13517836e7a5624bd5142782183
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349946"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208549"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Installatie handleiding voor Azure SQL DW Marketplace-realtimeplatform
 
@@ -30,11 +30,11 @@ Configureer de Realtimeplatform-VM met de opgegeven eigenschappen en noteer de R
 
 ![Realtimeplatform configureren][configure]
 
-Zodra de implementatie is geïmplementeerd \<, klikt u op de naam van de virtuele machine>-masternode in de Azure Portal, klikt u op verbinding maken en kopieert u de aanmelding met een lokaal VM-account 
+Zodra de implementatie is geïmplementeerd, klikt \<VM Name> u op masternode in de Azure Portal, klikt u op verbinding maken en kopieert u de aanmelding met een lokaal VM-account 
 
 ![Realtimeplatform verbinden met SQL Data Warehouse][connect]
 
-Down load het sqljdbc42. jar <https://www.microsoft.com/en-us/download/details.aspx?id=54671> van op uw lokale computer. 
+Down load het sqljdbc42. jar van <https://www.microsoft.com/en-us/download/details.aspx?id=54671> op uw lokale computer. 
 
 Open een opdracht regel venster en wijzig de mappen in de locatie waar u het JDBC-jar hebt gedownload. SCP het jar-bestand naar uw Realtimeplatform-VM en haal het adres en het wacht woord op uit de Azure Portal
 
@@ -56,7 +56,7 @@ Voer de volgende opdrachten uit om het JDBC jar-bestand naar de map lib van Real
 
 ![Het Realtimeplatform-cluster starten][start-striim]
 
-Open nu uw favoriete browser en navigeer naar \<de DNS-naam>:9080
+Open nu uw favoriete browser en ga naar \<DNS Name> : 9080
 
 ![Ga naar het aanmeldings scherm][navigate]
 

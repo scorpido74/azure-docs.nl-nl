@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Meer informatie over het maken van een virtuele netwerk peering tussen virtuele netwerken die zijn gemaakt via Resource Manager en die voor komen in verschillende Azure-abonnementen in dezelfde of een andere Azure Active Directory Tenant.
 services: virtual-network
 documentationcenter: ''
-author: anavinahar
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
-ms.author: anavin
-ms.openlocfilehash: 242115ae454340fd0a8439b7b3c79b713409acc2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.author: kumud
+ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774471"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688769"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen en Azure Active Directory tenants
 
@@ -246,7 +246,7 @@ In deze zelf studie worden verschillende accounts voor elk abonnement gebruikt. 
 ## <a name="create-peering---resource-manager-template"></a><a name="template"></a>Een peering-Resource Manager-sjabloon maken
 
 1. Als u een virtueel netwerk wilt maken en de juiste [machtigingen](virtual-network-manage-peering.md#permissions)wilt toewijzen, voert u de stappen in de secties [Portal](#portal), [Azure cli](#cli)of [Power shell](#powershell) van dit artikel uit.
-2. Sla de tekst op die volgt op een bestand op uw lokale computer. Vervang door `<subscription ID>` de abonnements-id van de gebruiker. U kunt het bestand bijvoorbeeld opslaan als vnetpeeringA. json.
+2. Sla de tekst op die volgt op een bestand op uw lokale computer. Vervang door `<subscription ID>` de abonnements-id van de gebruiker. U kunt het bestand bijvoorbeeld opslaan als vnetpeeringA.jsop.
 
    ```json
    {
@@ -291,7 +291,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
 
 1. Meld u aan bij de Azure Portal als GebruikerA.
 2. Voer in het zoekvak van de portal **myResourceGroupA**in. Selecteer **myResourceGroupA**in de zoek resultaten.
-3. Selecteer **verwijderen**.
+3. Selecteer **Verwijderen**.
 4. Om het verwijderen te bevestigen, voert u in het vak **Geef de naam van de resource groep** **myResourceGroupA**in en selecteert u vervolgens **verwijderen**.
 5. Meld u bij de portal aan als GebruikerA en meld u aan als UserB.
 6. Voer de stappen 2-4 voor myResourceGroupB uit.

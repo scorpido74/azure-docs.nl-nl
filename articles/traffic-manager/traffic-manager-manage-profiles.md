@@ -7,17 +7,17 @@ author: rohinkoul
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: rohink
-ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938613"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711575"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Een Azure Traffic Manager-profiel beheren
 
@@ -30,14 +30,14 @@ U kunt via Azure Portal een Traffic Manager-profiel maken. Zodra u het profiel h
 ### <a name="to-create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com). Als u nog geen account hebt, kunt u zich registreren voor een [gratis proefversie van één maand](https://azure.microsoft.com/free/). 
-2. Klik op **een resource** > maken**netwerk** > **Traffic Manager profiel** > **maken**.
+2. Klik op **een resource maken**  >  **netwerk**  >  **Traffic Manager profiel**  >  **maken**.
 4. Vul het volgende in bij **Traffic Manager-profiel maken**:
     1. In **Naam** geeft u een naam op voor het profiel. Deze naam moet uniek zijn binnen de zone trafficmanager.net. De naam wordt gebruikt voor de DNS-naam `<name>`, trafficmanager.net, die wordt gebruikt voor het openen van uw Traffic Manager-profiel.
     2. In **Routeringsmethode** selecteert u de routeringsmethode **Prioriteit**.
     3. In **Abonnement** selecteert u het abonnement waarvoor u dit profiel wilt maken
     4. In **Resourcegroep** maakt u een nieuwe resourcegroep om dit profiel voor te maken.
     5. In **Locatie van de resourcegroep** selecteert u de locatie van de resourcegroep. Deze instelling verwijst naar de locatie van de resourcegroep en heeft geen invloed op het Traffic Manager-profiel dat wereldwijd wordt geïmplementeerd.
-    6. Klik op **maken**.
+    6. Klik op **Create**.
     7. Wanneer de wereldwijde implementatie van uw Traffic Manager-profiel is voltooid, wordt het in de bijbehorende resourcegroep vermeld als één van de resources.
 
 ## <a name="disable-enable-or-delete-a-profile"></a>Een profiel uitschakelen, inschakelen of verwijderen
@@ -50,14 +50,14 @@ U kunt een bestaand profiel uitschakelen zodat Traffic Manager geen gebruikersaa
 2. Het verkeer wordt niet meer via de Traffic Manager-profielinstellingen omgeleid naar de eindpunten.
 3. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in de zoekbalk van de portal naar de naam van het **Traffic Manager-profiel** dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
-3. Klik op **overzicht** > **uitschakelen**.
+3. Klik op **overzicht**  >  **uitschakelen**.
 4. Bevestig dat u het Traffic Manager-profiel wilt uitschakelen.
 
 ### <a name="to-enable-a-profile"></a>Een profiel inschakelen
 
 1. Meld u vanuit een browser aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek in de zoekbalk van de portal naar de naam van het **Traffic Manager-profiel** dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
-3. Klik op **overzicht** > **inschakelen**.
+3. Klik op **overzicht**  >  **inschakelen**.
 1. Als u een aangepaste domeinnaam gebruikt, maakt u een CNAME-resourcerecord op de Internet-DNS-server zodat deze naar de domeinnaam van uw Traffic Manager-profiel wijst.
 2. Het verkeer wordt weer omgeleid naar de eindpunten.
 
@@ -65,7 +65,7 @@ U kunt een bestaand profiel uitschakelen zodat Traffic Manager geen gebruikersaa
 
 1. Zorg ervoor dat de DNS-resourcerecord op uw Internet DNS-server geen CNAME-resourcerecord meer gebruikt die naar de domeinnaam van uw Traffic Manager-profiel wijst.
 2. Zoek in de zoekbalk van de portal naar de naam van het **Traffic Manager-profiel** dat u wilt wijzigen, en klik vervolgens in de weergegeven resultaten op het Traffic Manager-profiel.
-3. Klik op **overzicht** > **verwijderen**.
+3. Klik op **overzicht**  >  **verwijderen**.
 4. Bevestig dat u het Traffic Manager-profiel wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen

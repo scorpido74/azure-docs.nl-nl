@@ -13,15 +13,15 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281650"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711915"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Gegevens verplaatsen van de Amazon Simple Storage-service met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-amazon-simple-storage-service-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-amazon-simple-storage-service-connector.md)
 > * [Versie 2 (huidige versie)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
@@ -64,8 +64,8 @@ Een gekoppelde service koppelt een gegevens archief aan een data factory. U maak
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| accessKeyID |ID van de geheime toegangs sleutel. |tekenreeks |Ja |
-| secretAccessKey |De geheime toegangs sleutel zelf. |Versleutelde geheime teken reeks |Ja |
+| accessKeyID |ID van de geheime toegangs sleutel. |tekenreeks |Yes |
+| secretAccessKey |De geheime toegangs sleutel zelf. |Versleutelde geheime teken reeks |Yes |
 
 >[!NOTE]
 >Deze connector vereist toegangs sleutels voor IAM-account om gegevens te kopiëren van Amazon S3. [Tijdelijke beveiligings referenties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) worden niet ondersteund.
@@ -94,11 +94,11 @@ Secties zoals structuur, Beschik baarheid en beleid zijn vergelijkbaar voor alle
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | Bucket |De naam van de S3-Bucket. |Tekenreeks |Ja |
-| sleutel |De object sleutel S3. |Tekenreeks |Nee |
-| beleids |Voor voegsel voor de object sleutel S3. Objecten waarvan de sleutels beginnen met dit voor voegsel worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |Tekenreeks |Nee |
-| versie |De versie van het S3-object, als S3-versie beheer is ingeschakeld. |Tekenreeks |Nee |
-| formaat | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |Nee |
-| compressie | Geef het type en compressie niveau voor de gegevens op. De ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. | |Nee |
+| sleutel |De object sleutel S3. |Tekenreeks |No |
+| beleids |Voor voegsel voor de object sleutel S3. Objecten waarvan de sleutels beginnen met dit voor voegsel worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |Tekenreeks |No |
+| versie |De versie van het S3-object, als S3-versie beheer is ingeschakeld. |Tekenreeks |No |
+| formaat | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |No |
+| compressie | Geef het type en compressie niveau voor de gegevens op. De ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. | |No |
 
 
 > [!NOTE]
@@ -174,7 +174,7 @@ Zie [pijp lijnen maken](data-factory-create-pipelines.md)voor een volledige lijs
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| recursieve |Hiermee geeft u op of S3-objecten in de directory recursief moeten worden weer geven. |waar/onwaar |Nee |
+| recursieve |Hiermee geeft u op of S3-objecten in de directory recursief moeten worden weer geven. |waar/onwaar |No |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-voor beeld: gegevens kopiëren van Amazon S3 naar Azure Blob-opslag
 In dit voor beeld ziet u hoe u gegevens van Amazon S3 kopieert naar een Azure Blob-opslag. Gegevens kunnen echter rechtstreeks naar [een van de sinks worden gekopieerd die worden ondersteund](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieer activiteit in Data Factory.

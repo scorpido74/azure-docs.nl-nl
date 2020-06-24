@@ -3,7 +3,7 @@ title: Een door SQL beheerd exemplaar implementeren op een exemplaar groep
 titleSuffix: Azure SQL Managed Instance
 description: In dit artikel wordt beschreven hoe u Azure SQL Managed instance-groepen (preview) maakt en beheert.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 569b1fd964665e3efec87adebd5f9a76de01f381
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659647"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708800"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed instance implementeren in een instantie groep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,13 +28,13 @@ In dit artikel vindt u informatie over het maken van een [exemplaar groep](insta
 
 In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemplaar groepen en hun Beschik baarheid in de Azure Portal en Power shell.
 
-|Opdracht|Azure-portal|PowerShell|
+|Opdracht|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Een exemplaar groep maken|Nee|Ja|
-|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
-|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Ja |
-|Een exemplaar groep verwijderen|Nee|Ja|
-|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Ja|
+|Een exemplaar groep maken|Nee|Yes|
+|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Yes |
+|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Yes |
+|Een exemplaar groep verwijderen|Nee|Yes|
+|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Yes|
 |Resource gebruik voor een beheerd exemplaar bijwerken|Ja |Ja|
 |Gebruik en eigenschappen voor een beheerd exemplaar controleren|Ja|Ja|
 |Een beheerd exemplaar uit de groep verwijderen|Ja|Ja|

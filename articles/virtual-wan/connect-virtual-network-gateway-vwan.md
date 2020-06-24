@@ -4,15 +4,15 @@ description: Dit artikel helpt u bij het verbinden van een virtuele Azure-netwer
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066238"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749699"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Een VPN Gateway (virtuele netwerk gateway) verbinden met een virtueel WAN
 
@@ -47,7 +47,7 @@ De BGP-ASN kan niet 65515 zijn. 66515 wordt gebruikt door virtuele WAN van Azure
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "BGP")
 
-### <a name="public-ip-addresses"></a><a name="pip"></a>Openbare IP-adressen
+### <a name="public-ip-addresses"></a><a name="pip"></a>Open bare IP-adressen
 
 Wanneer de gateway is gemaakt, gaat u naar de pagina **Eigenschappen** . De eigenschappen en configuratie-instellingen zijn vergelijkbaar met het volgende voor beeld. Let op de twee open bare IP-adressen die worden gebruikt voor de gateway.
 
@@ -118,7 +118,7 @@ In deze sectie maakt u een verbinding tussen de VPN Gateway lokale netwerk gatew
 3. Klik op **OK** om uw verbinding te maken.
 4. U kunt de verbinding bekijken op de pagina **Verbindingen** van de virtuele netwerkgateway.
 
-   ![Combi](./media/connect-virtual-network-gateway-vwan/connect.png "verbinding")
+   ![Verbinding](./media/connect-virtual-network-gateway-vwan/connect.png "verbinding")
 5. Herhaal de voor gaande stappen om een tweede verbinding te maken. Selecteer voor de tweede verbinding de andere lokale netwerk gateway die u hebt gemaakt.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. verbindingen testen

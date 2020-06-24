@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot kennis archief (preview-versie)
+title: Concepten van kennis winkels (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Verrijkte documenten verzenden naar Azure Storage waar u verrijkte documenten kunt weer geven, wijzigen en gebruiken in azure Cognitive Search en in andere toepassingen. Deze functie is beschikbaar voor openbare preview.
 author: HeidiSteen
@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a8f7aa18598dba41b33ea4964bd2967a8c2670ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858795"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752988"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Inleiding tot kennis winkels in azure Cognitive Search
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Knowledge Store in azure Cognitive Search
 
 > [!IMPORTANT] 
-> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+> Dit kennisarchief is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 Knowledge Store is een functie van Azure Cognitive Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor onafhankelijke analyses of downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. 
 
@@ -55,7 +55,7 @@ Geïnventariseerd, de voor delen van kennis archief zijn onder andere het volgen
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
 
 
-De fysieke expressie van een kennis archief wordt gegeleeerd via `projections` het element van `knowledgeStore` een definitie in een vaardig heden. De projectie definieert een structuur van de uitvoer zodat deze overeenkomt met uw beoogde gebruik.
+De fysieke expressie van een kennis archief wordt gegeleeerd via het `projections` element van een `knowledgeStore` definitie in een vaardig heden. De projectie definieert een structuur van de uitvoer zodat deze overeenkomt met uw beoogde gebruik.
 
 Projecties kunnen worden gegeleeerd als tabellen, objecten of bestanden.
 
@@ -77,13 +77,13 @@ Projecties kunnen worden gegeleeerd als tabellen, objecten of bestanden.
 
 Het type projectie dat u in deze structuur opgeeft, bepaalt het type opslag dat wordt gebruikt door het kennis archief.
 
-+ Tabel opslag wordt gebruikt bij het definiëren `tables`van. Definieer een tabel projectie wanneer u Structured Reporting-structuren nodig hebt voor invoer in analyse hulpprogramma's of als gegevens frames exporteert naar andere gegevens archieven. U kunt meerdere `tables` opgeven om een subset of Kruis sectie van verrijkte documenten op te halen. In dezelfde projectie groep blijven tabel relaties behouden, zodat u ermee kunt werken.
++ Tabel opslag wordt gebruikt bij het definiëren van `tables` . Definieer een tabel projectie wanneer u Structured Reporting-structuren nodig hebt voor invoer in analyse hulpprogramma's of als gegevens frames exporteert naar andere gegevens archieven. U kunt meerdere opgeven `tables` om een subset of Kruis sectie van verrijkte documenten op te halen. In dezelfde projectie groep blijven tabel relaties behouden, zodat u ermee kunt werken.
 
-+ Blob-opslag wordt gebruikt wanneer u `objects` of `files`definieert. De fysieke weer gave van `object` een is een HIËRARCHISCHe JSON-structuur die een verrijkt document vertegenwoordigt. Een `file` is een afbeelding die uit een document is geëxtraheerd en die intact is overgebracht naar Blob Storage.
++ Blob-opslag wordt gebruikt wanneer u `objects` of definieert `files` . De fysieke weer gave van een `object` is een hiërarchische JSON-structuur die een verrijkt document vertegenwoordigt. Een `file` is een afbeelding die uit een document is geëxtraheerd en die intact is overgebracht naar Blob Storage.
 
-Eén projectie object bevat één set `tables`, `objects` `files`, en voor veel scenario's. het maken van een projectie kan voldoende zijn. 
+Eén projectie object bevat één set `tables` ,, `objects` `files` en voor veel scenario's. het maken van een projectie kan voldoende zijn. 
 
-`table` - `object` - `file` Het is echter mogelijk om meerdere projecties te maken, en u kunt dat doen als u verschillende gegevens relaties wilt. In een set worden gegevens gekoppeld, ervan uitgaande dat deze relaties bestaan en kunnen worden gedetecteerd. Als u extra sets maakt, zijn de documenten in elke groep nooit gerelateerd. Een voor beeld van het gebruik van meerdere projectie groepen is mogelijk als u wilt dat dezelfde gegevens worden geprojecteerd voor gebruik met uw online systeem en u een specifieke manier wilt gebruiken. u wilt ook dat dezelfde gegevens worden geprojecteerd voor gebruik in een Data Science-pijp lijn die anders wordt weer gegeven.
+Het is echter mogelijk om meerdere projecties te maken `table` - `object` - `file` , en u kunt dat doen als u verschillende gegevens relaties wilt. In een set worden gegevens gekoppeld, ervan uitgaande dat deze relaties bestaan en kunnen worden gedetecteerd. Als u extra sets maakt, zijn de documenten in elke groep nooit gerelateerd. Een voor beeld van het gebruik van meerdere projectie groepen is mogelijk als u wilt dat dezelfde gegevens worden geprojecteerd voor gebruik met uw online systeem en u een specifieke manier wilt gebruiken. u wilt ook dat dezelfde gegevens worden geprojecteerd voor gebruik in een Data Science-pijp lijn die anders wordt weer gegeven.
 
 ## <a name="requirements"></a>Vereisten 
 
@@ -103,7 +103,7 @@ De [vaardig heden](cognitive-search-working-with-skillsets.md) zijn vereist. Het
 
 ## <a name="how-to-create-a-knowledge-store"></a>Een kennis archief maken
 
-Als u een kennis winkel wilt maken, gebruikt u de portal of`api-version=2019-05-06-Preview`de preview-versie rest API ().
+Als u een kennis winkel wilt maken, gebruikt u de portal of de preview-versie REST API ( `api-version=2019-05-06-Preview` ).
 
 ### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 

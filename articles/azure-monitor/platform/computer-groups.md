@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274773"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689007"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computer groepen in Azure Monitor-logboek query's
 Met computer groepen in Azure Monitor kunt u [logboek query's](../log-query/log-query-overview.md) op een bepaalde set computers bereiken.  Elke groep wordt gevuld met computers met behulp van een query die u definieert of door groepen te importeren uit verschillende bronnen.  Wanneer de groep is opgenomen in een logboek query, zijn de resultaten beperkt tot records die overeenkomen met de computers in de groep.
@@ -32,7 +32,7 @@ U kunt een computer groep maken in Azure Monitor met behulp van een van de metho
 ### <a name="log-query"></a>Logboek query
 Computer groepen die zijn gemaakt op basis van een logboek query bevatten alle computers die worden geretourneerd door een query die u definieert.  Deze query wordt uitgevoerd telkens wanneer de computer groep wordt gebruikt, zodat alle wijzigingen die zijn aangebracht sinds de groep is gemaakt, worden weer gegeven.  
 
-U kunt elke query voor een computer groep gebruiken, maar deze moet een afzonderlijke set computers retour neren met behulp `distinct Computer`van.  Hier volgt een typisch voor beeld van een query die u als computer groep zou kunnen gebruiken.
+U kunt elke query voor een computer groep gebruiken, maar deze moet een afzonderlijke set computers retour neren met behulp van `distinct Computer` .  Hier volgt een typisch voor beeld van een query die u als computer groep zou kunnen gebruiken.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
@@ -127,7 +127,7 @@ Er wordt een record gemaakt in de werk ruimte Log Analytics voor elk lidmaatscha
 | `GroupFullName` |Volledig pad naar de groep met inbegrip van de bron-en bron naam. |
 | `GroupSource` |Bron waarvan de groep is verzameld. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |De naam van de bron waaruit de groep is verzameld.  Voor Active Directory is dit de domein naam. |
-| `ManagementGroupName` |Naam van de beheergroep voor SCOM-agents.  Voor andere agents is dit AOI-\<werk ruimte-id\> |
+| `ManagementGroupName` |Naam van de beheergroep voor SCOM-agents.  Voor andere agents is dit AOI-\<workspace ID\> |
 | `TimeGenerated` |De datum en tijd waarop de computer groep is gemaakt of bijgewerkt. |
 
 ## <a name="next-steps"></a>Volgende stappen

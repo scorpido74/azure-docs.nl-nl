@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6207abeb7fbf7639f12563813467b4c4d65e1245
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431044"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750188"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Aanbevolen procedures voor het laden van gegevens voor gegevens opslag
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Best practices voor het laden van gegevens voor datawarehousing
 
 Aanbevelingen en prestatie optimalisaties voor het laden van gegevens
 
@@ -144,6 +144,6 @@ Er hoeven geen andere wijzigingen te worden aangebracht aan onderliggende extern
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over PolyBase en het ontwerpen van een Extract, Load en Transform (ELT)-proces [ELT ontwerpen voor SQL Data Warehouse](data-loading-overview.md).
+- Zie voor meer informatie over PolyBase en het ontwerpen van een Extract, Load en Transform (ELT)-proces [ELT ontwerpen voor SQL Data Warehouse](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Gebruik voor het laden van een zelfstudie [PolyBase om gegevens te laden uit Azure blob-opslag naar Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - Zie [Uw workload controleren met DMV's](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor het controleren van het laden van gegevens.

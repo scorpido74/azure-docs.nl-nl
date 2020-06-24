@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276502"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687647"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Concepten van Azure Functions-triggers en -bindingen
 
@@ -18,7 +18,7 @@ In dit artikel vindt u informatie over de concepten van het hoge niveau rond fun
 
 Triggers zijn de oorzaak dat een functie wordt uitgevoerd. Een trigger definieert hoe een functie wordt aangeroepen en een functie moet precies één trigger hebben. Aan triggers zijn gegevens gekoppeld. Meestal is dit de nettolading waarmee de functie is geactiveerd. 
 
-Een binding met een functie is een manier om een andere resource declaratief aan de functie te koppelen. bindingen kunnen worden verbonden als *invoer bindingen*, *uitvoer bindingen*of beide. Gegevens van bindingen worden als parameters aan de functie geleverd.
+Een binding met een functie is een manier om een andere resource declaratief aan de functie te koppelen. bindingen kunnen worden verbonden als *invoer bindingen*, *uitvoer bindingen*of beide. Gegevens van bindingen worden als parameters doorgegeven aan de functie.
 
 U kunt verschillende bindingen mixen en matchen om aan uw behoeften te voldoen. Bindingen zijn optioneel en een functie kan een of meerdere invoer- en/of uitvoerbindingen hebben.
 
@@ -44,13 +44,13 @@ Triggers en bindingen worden op verschillende manieren gedefinieerd, afhankelijk
 | Platform | Triggers en bindingen worden geconfigureerd door... |
 |-------------|--------------------------------------------|
 | C#-klassen bibliotheek | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;de methoden en para meters voor C#-kenmerken |
-| Alle andere (inclusief Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Function. json](./functions-reference.md) ([schema](http://json.schemastore.org/function)) bijwerken |
+| Alle andere (inclusief Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[function.jsbijwerken op](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
 
 De portal biedt een gebruikers interface voor deze configuratie, maar u kunt het bestand rechtstreeks bewerken door de **Geavanceerde editor** te openen die beschikbaar is via het tabblad **integreren** van uw functie.
 
-In .NET definieert het parameter type het gegevens type voor invoer gegevens. Gebruik `string` bijvoorbeeld om een binding te maken met de tekst van een wachtrij trigger, een byte matrix die als binair moet worden gelezen en een aangepast type om te deserialiseren naar een object.
+In .NET definieert het parameter type het gegevens type voor invoer gegevens. Gebruik bijvoorbeeld `string` om een binding te maken met de tekst van een wachtrij trigger, een byte matrix die als binair moet worden gelezen en een aangepast type om te deserialiseren naar een object.
 
-Voor talen die dynamisch worden getypt, zoals Java script, `dataType` gebruikt u de eigenschap in het bestand *Function. json* . Als u bijvoorbeeld de inhoud van een HTTP-aanvraag in binaire indeling wilt lezen, `dataType` stelt `binary`u het volgende in:
+Voor talen die dynamisch worden getypt, zoals Java script, gebruikt u de `dataType` eigenschap in de *function.jsin* het bestand. Als u bijvoorbeeld de inhoud van een HTTP-aanvraag in binaire indeling wilt lezen, stelt u het volgende in `dataType` `binary` :
 
 ```json
 {
@@ -61,15 +61,15 @@ Voor talen die dynamisch worden getypt, zoals Java script, `dataType` gebruikt u
 }
 ```
 
-Andere opties voor `dataType` zijn `stream` en `string`.
+Andere opties voor `dataType` zijn `stream` en `string` .
 
 ## <a name="binding-direction"></a>Bindings richting
 
-Alle triggers en bindingen hebben een `direction` eigenschap in het bestand [Function. json](./functions-reference.md) :
+Alle triggers en bindingen hebben een `direction` eigenschap in de [function.jsvoor](./functions-reference.md) het volgende bestand:
 
 - Voor triggers is de richting altijd`in`
-- Invoer-en uitvoer bindingen `in` gebruiken en`out`
-- Sommige bindingen bieden ondersteuning voor een `inout`speciale richting. Als u gebruikt `inout`, is alleen de **Geavanceerde editor** beschikbaar via het tabblad **integreren** in de portal.
+- Invoer-en uitvoer bindingen gebruiken `in` en`out`
+- Sommige bindingen bieden ondersteuning voor een speciale richting `inout` . Als u gebruikt `inout` , is alleen de **Geavanceerde editor** beschikbaar via het tabblad **integreren** in de portal.
 
 Wanneer u [kenmerken in een klassen bibliotheek](functions-dotnet-class-library.md) gebruikt om triggers en bindingen te configureren, wordt de richting in een kenmerk-constructor of afgeleid van het parameter type gegeven.
 

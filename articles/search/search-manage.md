@@ -9,17 +9,17 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f91df2e4b76e2a85705100fa5626877b9a86312d
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282924"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752573"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
-> * [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/)
+> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
@@ -98,9 +98,9 @@ Een zoek service met meer replica's kan Load Balancing query-aanvragen over een 
 Hoewel de query doorvoer tijdens het toevoegen van replica's wordt bereikt, is dit niet precies twee of drie maal wanneer u replica's aan uw service toevoegt. Alle zoek toepassingen zijn onderhevig aan externe factoren die de query prestaties kunnen impinge. Complexe query's en netwerk latentie zijn twee factoren die bijdragen aan variaties in de reactie tijden van query's.
 
 ### <a name="add-partitions"></a>Partities toevoegen
-De meeste service toepassingen hebben een ingebouwde nood zaak voor meer replica's in plaats van partities. In gevallen waarin een groter aantal documenten vereist is, kunt u partities toevoegen als u zich hebt geregistreerd voor de Standard-Service. De Basic-laag biedt geen extra partities.
+Het is gebruikelijk om replica's toe te voegen, maar wanneer opslag is beperkt, kunt u partities toevoegen om meer capaciteit te krijgen. De laag waarop u de service hebt ingericht, bepaalt of de partities kunnen worden toegevoegd. De laag basis is op één partitie vergrendeld. Voor de standaard lagen en de bovenstaande ondersteuning worden extra partities ondersteund.
 
-In de laag standaard worden partities toegevoegd in veelvouden van 12 (met name 1, 2, 3, 4, 6 of 12). Dit is een artefact van sharding. Er wordt een index gemaakt in 12 Shards, die allemaal op één partitie kan worden opgeslagen of op dezelfde manier kan worden onderverdeeld in 2, 3, 4, 6 of 12 partities (één Shard per partitie).
+Partities worden toegevoegd in veelvouden van 12 (met name 1, 2, 3, 4, 6 of 12). Dit is een artefact van sharding. Er wordt een index gemaakt in 12 Shards, die allemaal op één partitie kan worden opgeslagen of op dezelfde manier kan worden onderverdeeld in 2, 3, 4, 6 of 12 partities (één Shard per partitie).
 
 ### <a name="remove-replicas"></a>Replica's verwijderen
 Na Peri Oden van hoge query volumes kunt u de schuif regelaar gebruiken om replica's te reduceren nadat de geladen Zoek query's zijn genormaliseerd (bijvoorbeeld nadat de verkoop van de feest dagen is voltooid). Er zijn geen verdere stappen voor uw onderdeel vereist. Het aantal replica's relinquishes virtuele machines in het Data Center verlagen. Uw bewerkingen voor het opnemen van query's en gegevens worden nu op minder Vm's uitgevoerd dan voorheen. De minimum vereiste is één replica.

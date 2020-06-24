@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 06/17/2020
 ms.author: aschhab
-ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff216cba76a0b6eecd4879b9ce3aefc131161b9d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260941"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987762"
 ---
 # <a name="partitioned-queues-and-topics"></a>Gepartitioneerde wachtrijen en onderwerpen
 
@@ -31,11 +31,13 @@ Elke gepartitioneerde wachtrij of elk onderwerp bestaat uit meerdere partities. 
 
 Wanneer een client een bericht wil ontvangen van een gepartitioneerde wachtrij of van een abonnement op een gepartitioneerd onderwerp, Service Bus alle partities voor berichten doorzoekt, wordt het eerste bericht geretourneerd dat is verkregen van een van de berichten archieven naar de ontvanger. Service Bus worden de andere berichten in de cache opgeslagen en geretourneerd wanneer er extra ontvangst aanvragen worden ontvangen. Een ontvangende client is niet op de hoogte van de partitie. het client gedrag van een gepartitioneerde wachtrij of onderwerp (bijvoorbeeld lezen, volt ooien, uitstellen, deadletter, vooraf ophalen) is identiek aan het gedrag van een normale entiteit.
 
+De Peek-bewerking voor een niet-gepartitioneerde entiteit retourneert altijd het oudste bericht, maar niet in een gepartitioneerde entiteit. In plaats daarvan wordt het oudste bericht geretourneerd in een van de partities waarvan de Message Broker het eerst heeft gereageerd. Er wordt niet gegarandeerd dat het geretourneerde bericht het oudste is in alle partities. 
+
 Er zijn geen extra kosten verbonden aan het verzenden van een bericht naar of het ontvangen van een bericht van een gepartitioneerde wachtrij of onderwerp.
 
 ## <a name="enable-partitioning"></a>Partitionering inschakelen
 
-Als u gepartitioneerde wacht rijen en onderwerpen met Azure Service Bus wilt gebruiken, gebruikt u de Azure SDK-versie `api-version=2013-10` 2,2 of hoger of geeft u of later op in uw HTTP-aanvragen.
+Als u gepartitioneerde wacht rijen en onderwerpen met Azure Service Bus wilt gebruiken, gebruikt u de Azure SDK-versie 2,2 of hoger of geeft u `api-version=2013-10` of later op in uw HTTP-aanvragen.
 
 ### <a name="standard"></a>Standard
 

@@ -3,7 +3,7 @@ title: Punt-naar-site-connectiviteit configureren met behulp van SSMS
 titleSuffix: Azure SQL Managed Instance
 description: Maak verbinding met Azure SQL Managed instance met behulp van SQL Server Management Studio (SSMS) met behulp van een punt-naar-site-verbinding vanaf een on-premises client computer.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: debe32bc39840573620bba5280b6e05b94f3edb6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7b9c9fc6259656af77bf1ba1b95ccf190cbd85da
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220918"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708623"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Snelstartgids: een punt-naar-site-verbinding naar een met Azure SQL beheerd exemplaar van on-premises configureren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -71,7 +71,7 @@ Voor deze snelstartgids geldt het volgende:
 
     ![VPN-client downloaden](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. Pak de bestanden uit vanuit het zip-bestand op uw on-premises client computer en open vervolgens de map met de uitgepakte bestanden.
-5. Open de map **WindowsAmd64** en open het bestand **VpnClientSetupAmd64. exe** .
+5. Open de map **WindowsAmd64** en open het **VpnClientSetupAmd64.exe** -bestand.
 6. Als u een bericht van **de Windows-computer met beveiliging** ontvangt, klikt u op **meer info** en vervolgens op **toch uitvoeren**.
 
     ![VPN-client installeren](./media/point-to-site-p2s-configure/vpn-client-defender.png)
@@ -83,7 +83,7 @@ Voor deze snelstartgids geldt het volgende:
 1. Ga naar **VPN** in **netwerk & Internet** op uw on-premises client computer en selecteer het virtuele netwerk van uw SQL Managed instance om een verbinding met dit VNet tot stand te brengen. Het VNet bevindt zich in de volgende afbeelding met de naam **MyNewVNet**.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Selecteer **Verbinding maken**.
+2. Selecteer **Verbinden**.
 3. Selecteer in het dialoog venster **verbinding maken**.
 
     ![VPN-verbinding](./media/point-to-site-p2s-configure/vpn-connection2.png)  

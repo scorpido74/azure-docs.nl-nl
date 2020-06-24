@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 11/26/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74707595"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809093"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>De versleutelings status van een BLOB controleren
 
@@ -26,11 +26,11 @@ In dit artikel wordt beschreven hoe u kunt bepalen of een bepaalde blob is versl
 
 Gebruik de Azure Portal, Power shell of Azure CLI om te bepalen of een BLOB zonder code is versleuteld.
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om te controleren of een blob is versleuteld met behulp van de Azure Portal:
 
-1. Ga in Azure Portal naar het nieuwe opslagaccount.
+1. Ga in Azure Portal naar uw opslagaccount.
 1. Selecteer **containers** om naar een lijst met containers in het account te navigeren.
 1. Zoek de BLOB en geef het tabblad **overzicht** weer.
 1. De **versleutelde** eigenschap van de server weer geven. Indien **waar**, zoals wordt weer gegeven in de volgende afbeelding, wordt de BLOB versleuteld. U ziet dat de eigenschappen van de BLOB ook de datum en tijd bevatten waarop de blob is gemaakt.
@@ -39,7 +39,7 @@ Voer de volgende stappen uit om te controleren of een blob is versleuteld met be
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Als u Power shell wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted** van de blob. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Als u Power shell wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted** van de blob. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
@@ -58,7 +58,7 @@ $blob.ICloudBlob.Properties.IsServerEncrypted
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/cli)
 
-Als u Azure CLI wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted** van de blob. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+Als u Azure CLI wilt gebruiken om te controleren of een blob is versleuteld, controleert u de eigenschap **IsServerEncrypted** van de blob. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen de punthaken te vervangen door uw eigen waarden:
 
 ```azurecli-interactive
 az storage blob show \
@@ -98,4 +98,4 @@ Zie voor meer informatie over het gebruik van AzCopy voor het kopiëren van BLOB
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Storage versleuteling voor Data-at-rest](../common/storage-service-encryption.md)
+[Azure Storage-versleuteling voor inactieve gegevens](../common/storage-service-encryption.md)

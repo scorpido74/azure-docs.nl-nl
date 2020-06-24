@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79318ab67ec58ed10520365a366785ea0de41666
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 0b926491ef3fc672626317184fb7ed2760919866
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836325"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210504"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -86,7 +86,7 @@ EXEC sp_describe_first_result_set N'
 
 Dit is de resultatenset:
 
-|is_hidden|column_ordinal|name|system_type_name|max_length|
+|is_hidden|column_ordinal|naam|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
 |0|1|vendor_id|varchar (8000)|8000|
 |0|2|pickup_datetime|DATETIME2 (7)|8|

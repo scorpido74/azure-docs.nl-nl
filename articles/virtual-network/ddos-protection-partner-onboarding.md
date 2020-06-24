@@ -5,15 +5,15 @@ ms.service: virtual-network
 documentationcenter: na
 author: anupamvi
 mms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: kumud
-ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8136ea2a567ac823f03941ebd4a67bed043ada07
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849680"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689348"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Partnering met Azure DDoS Protection Standard
 In dit artikel worden de mogelijkheden voor partner ondersteuning beschreven die worden ingeschakeld door de Azure DDoS Protection Standard. Dit artikel is bedoeld om product managers en rollen van bedrijfs ontwikkeling inzicht te geven in de investerings paden en om inzicht te krijgen in de verwerkings waarde van de partner.
@@ -80,7 +80,7 @@ De volgende stappen zijn vereist voor partners voor het configureren van integra
 - [Naslag informatie over Azure DDoS Protection-API](https://docs.microsoft.com/rest/api/virtualnetwork/ddosprotectionplans)
 - [Naslag informatie over Azure Virtual Network API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>Help opvragen
+### <a name="get-help"></a>Hulp vragen
 
 - Neem contact op met de [Azure-beveiligings Community](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)als u vragen hebt over de integratie van toepassingen, services of producten met Azure DDoS Protection Standard.
 - Volg de discussies op [stack overflow](https://stackoverflow.com/tags/azure-ddos/).

@@ -5,12 +5,12 @@ description: Meer informatie over het dynamisch maken van een permanent volume m
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208139"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751360"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -38,7 +38,11 @@ Elk AKS-cluster bevat twee vooraf gemaakte opslag klassen, die zijn geconfiguree
 * De *beheerde-Premium-* opslag klasse richt zich op een Premium Azure-schijf.
     * Premium-schijven worden ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. Als de AKS-knoop punten in uw cluster Premium Storage gebruiken, selecteert u de *beheerde-Premium-* klasse.
     
-Bij deze standaard opslag klassen mag u de volume grootte niet bijwerken nadat deze is gemaakt. Als u deze mogelijkheid wilt inschakelen, voegt u de regel *allowVolumeExpansion: True* toe aan een van de standaard-opslag klassen of maakt u een eigen aangepaste opslag klasse. U kunt een bestaande opslag klasse bewerken met behulp van de `kubectl edit sc` opdracht. Zie [opslag opties voor toepassingen in AKS][storage-class-concepts]voor meer informatie over opslag klassen en het maken van uw eigen gegevens.
+Als u een van de standaard-opslag klassen gebruikt, kunt u de volume grootte niet bijwerken nadat de opslag klasse is gemaakt. Als u wilt dat de volume grootte kan worden bijgewerkt nadat een opslag klasse is gemaakt, voegt u de regel toe `allowVolumeExpansion: true` aan een van de standaard-opslag klassen of kunt u een eigen aangepaste opslag klasse maken. U kunt een bestaande opslag klasse bewerken met behulp van de `kubectl edit sc` opdracht. 
+
+Als u bijvoorbeeld een schijf van grootte 4 TiB wilt gebruiken, moet u een opslag klasse maken die definieert, `cachingmode: None` omdat [schijf cache gebruik niet wordt ondersteund voor schijven van 4 TIB en groter](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+
+Zie [opslag opties voor toepassingen in AKS][storage-class-concepts]voor meer informatie over opslag klassen en het maken van uw eigen opslag klasse.
 
 Gebruik de opdracht [kubectl Get SC][kubectl-get] om de vooraf gemaakte opslag klassen te bekijken. In het volgende voor beeld ziet u de opslag klassen vooraf maken die beschikbaar zijn in een AKS-cluster:
 
@@ -57,7 +61,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 Een permanente volume claim (PVC) wordt gebruikt voor het automatisch inrichten van opslag op basis van een opslag klasse. In dit geval kan een PVC een van de vooraf gemaakte opslag klassen gebruiken om een standaard of Premium Azure Managed disk te maken.
 
-Maak een bestand met `azure-premium.yaml`de naam en kopieer het in het volgende manifest. De claim vraagt een schijf met `azure-managed-disk` de naam die is *5 GB* met *ReadWriteOnce* -toegang. De *beheerde-Premium-* opslag klasse wordt opgegeven als de opslag klasse.
+Maak een bestand `azure-premium.yaml` met de naam en kopieer het in het volgende manifest. De claim vraagt een schijf met de naam `azure-managed-disk` die is *5 GB* met *ReadWriteOnce* -toegang. De *beheerde-Premium-* opslag klasse wordt opgegeven als de opslag klasse.
 
 ```yaml
 apiVersion: v1
@@ -74,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> Als u een schijf wilt maken die gebruikmaakt van standaard `storageClassName: default` opslag, gebruikt u in plaats van *Managed-Premium*.
+> Als u een schijf wilt maken die gebruikmaakt van standaard opslag, gebruikt u `storageClassName: default` in plaats van *Managed-Premium*.
 
 Maak de permanente volume claim met de opdracht [kubectl apply][kubectl-apply] en geef het bestand *Azure-Premium. yaml* op:
 
@@ -86,9 +90,9 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Het permanente volume gebruiken
 
-Als de permanente volume claim is gemaakt en de schijf is ingericht, kan een pod worden gemaakt met toegang tot de schijf. In het volgende manifest wordt een eenvoudige NGINX-pod gemaakt die gebruikmaakt van de permanente volume claim met de naam *Azure-Managed-Disk* om `/mnt/azure`de Azure-schijf te koppelen aan het pad. Voor Windows Server-containers geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *":"*.
+Als de permanente volume claim is gemaakt en de schijf is ingericht, kan een pod worden gemaakt met toegang tot de schijf. In het volgende manifest wordt een eenvoudige NGINX-pod gemaakt die gebruikmaakt van de permanente volume claim met de naam *Azure-Managed-Disk* om de Azure-schijf te koppelen aan het pad `/mnt/azure` . Voor Windows Server-containers geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *":"*.
 
-Maak een bestand met `azure-pvc-disk.yaml`de naam en kopieer het in het volgende manifest.
+Maak een bestand `azure-pvc-disk.yaml` met de naam en kopieer het in het volgende manifest.
 
 ```yaml
 kind: Pod
@@ -123,7 +127,7 @@ $ kubectl apply -f azure-pvc-disk.yaml
 pod/mypod created
 ```
 
-U hebt nu een actieve pod met uw Azure-schijf die is `/mnt/azure` gekoppeld in de Directory. Deze configuratie kan worden weer gegeven bij het controleren van uw `kubectl describe pod mypod`pod via, zoals wordt weer gegeven in het volgende versmald-voor beeld:
+U hebt nu een actieve pod met uw Azure-schijf die is gekoppeld in de `/mnt/azure` Directory. Deze configuratie kan worden weer gegeven bij het controleren van uw Pod via `kubectl describe pod mypod` , zoals wordt weer gegeven in het volgende versmald-voor beeld:
 
 ```console
 $ kubectl describe pod mypod

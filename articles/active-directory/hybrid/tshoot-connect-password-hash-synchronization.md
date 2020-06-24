@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253544"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690741"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problemen met wachtwoord-hashsynchronisatie oplossen met Azure AD Connect-synchronisatie
 
@@ -60,7 +60,7 @@ Problemen oplossen waarbij er geen wacht woorden worden gesynchroniseerd:
 
 1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
 
-2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` .
 
 3. Start de wizard Azure AD Connect.
 
@@ -143,7 +143,7 @@ Problemen voor een specifiek gebruikers object oplossen:
 
 1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
 
-2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` .
 
 3. Start de wizard Azure AD Connect.
 
@@ -204,7 +204,7 @@ Problemen oplossen waarbij er geen wacht woorden worden gesynchroniseerd:
 
 1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
 
-2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` .
 
 3. Voer `Import-Module ADSyncDiagnostics` uit.
 
@@ -225,7 +225,7 @@ Problemen oplossen waarbij geen wacht woorden voor een gebruiker worden gesynchr
 
 1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie **als administrator uitvoeren** .
 
-2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` .
 
 3. Voer `Import-Module ADSyncDiagnostics` uit.
 

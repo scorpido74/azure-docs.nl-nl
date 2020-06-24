@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243937"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690028"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Naslag informatie over Azure API Management-sjabloon gegevens model
 In dit onderwerp worden de entiteits-en type representaties beschreven voor algemene items die worden gebruikt in de gegevens modellen voor de sjablonen voor de ontwikkelaars Portal in azure API Management.  
@@ -46,8 +46,8 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 -   [Menu bewerking](#Menu)  
 -   [Menu opdracht bewerking](#MenuItem)  
 -   [Zoekresultaten oproepen](#Paging)  
--   [Bepaalde](#Parameter)  
--   [Voortplant](#Product)  
+-   [Parameter](#Parameter)  
+-   [Product](#Product)  
 -   [Provider](#Provider)  
 -   [Wijze](#Representation)  
 -   [Abonnement](#Subscription)  
@@ -59,21 +59,21 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="api"></a><a name="API"></a>INSCHAKELEN  
  De `API` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`id`|tekenreeks|Resource-id. Identificeert de API binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `apis/{id}` waar `{id}` is een API-id. Deze eigenschap is alleen-lezen.|  
 |`name`|tekenreeks|De naam van de API. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
 |`description`|tekenreeks|Beschrijving van de API. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
 |`serviceUrl`|tekenreeks|Absolute URL van de back-end-service die deze API implementeert.|  
 |`path`|tekenreeks|Relatieve URL is een unieke identificatie van deze API en alle bijbehorende bron paden binnen het API Management service-exemplaar. Het wordt toegevoegd aan de URL van het API-eind punt dat is opgegeven tijdens het maken van het service-exemplaar om een open bare URL voor deze API te vormen.|  
-|`protocols`|matrix van getal|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `1 - http` en `2 - https`, of beide.|  
+|`protocols`|matrix van getal|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `1 - http` en `2 - https` , of beide.|  
 |`authenticationSettings`|[Verificatie server authenticatie-instellingen](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Verzameling van verificatie-instellingen die zijn opgenomen in deze API.|  
 |`subscriptionKeyParameterNames`|object|Een optionele eigenschap die kan worden gebruikt om aangepaste namen op te geven voor query-en/of header-para meters die de abonnements sleutel bevatten. Wanneer deze eigenschap aanwezig is, moet deze ten minste een van de volgende twee eigenschappen bevatten.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>API-samen vatting  
  De `API summary` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`id`|tekenreeks|Resource-id. Identificeert de API binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `apis/{id}` waar `{id}` is een API-id. Deze eigenschap is alleen-lezen.|  
 |`name`|tekenreeks|De naam van de API. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
@@ -82,7 +82,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="application"></a><a name="Application"></a>Modules  
  De `application` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|De unieke id van de toepassing.|  
 |`Title`|tekenreeks|De titel van de toepassing.|  
@@ -100,7 +100,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="attachment"></a><a name="Attachment"></a>Envelop  
  De `attachment` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`UniqueId`|tekenreeks|De unieke id voor de bijlage.|  
 |`Url`|tekenreeks|De URL van de resource.|  
@@ -109,11 +109,11 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
   
 ##  <a name="code-sample"></a><a name="Sample"></a>Code voorbeeld  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`title`|tekenreeks|De naam van de bewerking.|  
 |`snippet`|tekenreeks|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
-|`brush`|tekenreeks|Welke code-syntax kleur sjabloon moet worden gebruikt bij het weer geven van het code voorbeeld. Toegestane waarden zijn `plain`, `php`, `java`, `xml`, `objc`, `python`, `ruby`en `csharp`.|  
+|`brush`|tekenreeks|Welke code-syntax kleur sjabloon moet worden gebruikt bij het weer geven van het code voorbeeld. Toegestane waarden zijn `plain` , `php` , `java` , `xml` ,, `objc` , en `python` `ruby` `csharp` .|  
 |`template`|tekenreeks|De naam van deze voorbeeld sjabloon voor code.|  
 |`body`|tekenreeks|Een tijdelijke aanduiding voor het code voorbeeld gedeelte van het fragment.|  
 |`method`|tekenreeks|De HTTP-methode van de bewerking.|  
@@ -137,7 +137,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="issue"></a><a name="Issue"></a>Name  
  De `issue` entiteit heeft de volgende eigenschappen.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|De unieke id voor het probleem.|  
 |`ApiID`|tekenreeks|De ID voor de API waarvoor dit probleem is gerapporteerd.|  
@@ -153,15 +153,15 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="filtering"></a><a name="Filtering"></a>Filtrati  
  De `filtering` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Pattern`|tekenreeks|De huidige zoek term; of `null` als er geen zoek term is.|  
 |`Placeholder`|tekenreeks|De tekst die moet worden weer gegeven in het zoekvak wanneer er geen zoek term is opgegeven.|  
   
 ##  <a name="header"></a><a name="Header"></a>Journaalkop  
- In deze sectie wordt `parameter` de representatie beschreven.  
+ In deze sectie wordt de `parameter` representatie beschreven.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|-----------------|----------|  
 |`name`|tekenreeks|Parameternaam.|  
 |`description`|tekenreeks|Parameter beschrijving.|  
@@ -172,9 +172,9 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 |`readOnly`|booleaans|Hiermee wordt aangegeven of de header alleen-lezen is.|  
   
 ##  <a name="http-request"></a><a name="HTTPRequest"></a>HTTP-aanvraag  
- In deze sectie wordt `request` de representatie beschreven.  
+ In deze sectie wordt de `request` representatie beschreven.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`description`|tekenreeks|Beschrijving van bewerkings aanvraag.|  
 |`headers`|matrix van [header](#Header) -entiteiten.|Aanvraag headers.|  
@@ -182,7 +182,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 |`representations`|matrix van [representatie](#Representation)|Verzameling van representaties van bewerkings aanvragen.|  
   
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP-antwoord  
- In deze sectie wordt `response` de representatie beschreven.  
+ In deze sectie wordt de `response` representatie beschreven.  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
@@ -193,12 +193,12 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="operation"></a><a name="Operation"></a>Schijf  
  De `operation` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|`id`|tekenreeks|Resource-id. Identificeert de bewerking binnen het huidige API Management service-exemplaar uniek. De waarde is een geldige relatieve URL in de notatie van `apis/{aid}/operations/{id}` waar `{aid}` is een API-id `{id}` en is een bewerkings-id. Deze eigenschap is alleen-lezen.|  
+|`id`|tekenreeks|Resource-id. Identificeert de bewerking binnen het huidige API Management service-exemplaar uniek. De waarde is een geldige relatieve URL in de notatie van `apis/{aid}/operations/{id}` waar `{aid}` is een API-id en `{id}` is een bewerkings-id. Deze eigenschap is alleen-lezen.|  
 |`name`|tekenreeks|De naam van de bewerking. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
 |`description`|tekenreeks|Beschrijving van de bewerking. Mag niet leeg zijn. HTML-opmaak tags kunnen bevatten. De maximale lengte is 1000 tekens.|  
-|`scheme`|tekenreeks|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `http`, `https`, of beide `http` en `https`.|  
+|`scheme`|tekenreeks|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `http` , `https` , of beide `http` en `https` .|  
 |`uriTemplate`|tekenreeks|Relatieve URL-sjabloon voor het identificeren van de doel resource voor deze bewerking. Kan para meters bevatten. Voorbeeld: `customers/{cid}/orders/{oid}/?date={date}`|  
 |`host`|tekenreeks|De URL van de API Management gateway die als host fungeert voor de API.|  
 |`httpMethod`|tekenreeks|Bewerkings-HTTP-methode.|  
@@ -208,7 +208,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="operation-menu"></a><a name="Menu"></a>Menu bewerking  
  De `operation menu` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`ApiId`|tekenreeks|De ID van de huidige API.|  
 |`CurrentOperationId`|tekenreeks|De ID van de huidige bewerking.|  
@@ -218,7 +218,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="operation-menu-item"></a><a name="MenuItem"></a>Menu opdracht bewerking  
  De `operation menu item` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|De ID van de bewerking.|  
 |`Title`|tekenreeks|De beschrijving van de bewerking.|  
@@ -236,9 +236,9 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 |`PageCount`|getal|Het aantal pagina's met resultaten.|  
   
 ##  <a name="parameter"></a><a name="Parameter"></a>Bepaalde  
- In deze sectie wordt `parameter` de representatie beschreven.  
+ In deze sectie wordt de `parameter` representatie beschreven.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|-----------------|----------|  
 |`name`|tekenreeks|Parameternaam.|  
 |`description`|tekenreeks|Parameter beschrijving.|  
@@ -251,7 +251,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="product"></a><a name="Product"></a>Voortplant  
  De `product` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|Resource-id. Hiermee wordt het product uniek geïdentificeerd binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `products/{pid}` waar `{pid}` is een product-id. Deze eigenschap is alleen-lezen.|  
 |`Title`|tekenreeks|De naam van het product. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
@@ -271,17 +271,17 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 |`Caption`|tekenreeks|De weergave naam van de provider.|  
   
 ##  <a name="representation"></a><a name="Representation"></a>Wijze  
- In deze sectie wordt `representation`een beschreven.  
+ In deze sectie wordt een beschreven `representation` .  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|`contentType`|tekenreeks|Hiermee geeft u een geregistreerd of aangepast inhouds type op voor deze representatie, `application/xml`bijvoorbeeld.|  
+|`contentType`|tekenreeks|Hiermee geeft u een geregistreerd of aangepast inhouds type op voor deze representatie, bijvoorbeeld `application/xml` .|  
 |`sample`|tekenreeks|Een voor beeld van de weer gave.|  
   
 ##  <a name="subscription"></a><a name="Subscription"></a>Abonnees  
  De `subscription` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|Resource-id. Hiermee wordt het abonnement uniek geïdentificeerd binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `subscriptions/{sid}` waar `{sid}` is een abonnements-id. Deze eigenschap is alleen-lezen.|  
 |`ProductId`|tekenreeks|De product resource-id van het geabonneerde product. De waarde is een geldige relatieve URL in de notatie van `products/{pid}` waar `{pid}` is een product-id.|  
@@ -290,12 +290,12 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 |`ProductDetailsUrl`|tekenreeks|Relatieve URL naar de product gegevens.|  
 |`state`|tekenreeks|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> - `0 - suspended`: het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br /><br /> - `1 - active`: het abonnement is actief.<br /><br /> - `2 - expired`-het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br /><br /> - `3 - submitted`: de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br /><br /> - `4 - rejected`-de abonnements aanvraag is geweigerd door een beheerder.<br /><br /> - `5 - cancelled`: het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
 |`DisplayName`|tekenreeks|De weergave naam van het abonnement.|  
-|`CreatedDate`|dateTime|De datum waarop het abonnement is gemaakt, in ISO 8601- `2014-06-24T16:25:00Z`indeling:.|  
+|`CreatedDate`|dateTime|De datum waarop het abonnement is gemaakt, in ISO 8601-indeling: `2014-06-24T16:25:00Z` .|  
 |`CanBeCancelled`|booleaans|Hiermee wordt aangegeven of het abonnement door de huidige gebruiker kan worden geannuleerd.|  
 |`IsAwaitingApproval`|booleaans|Hiermee wordt aangegeven of het abonnement wacht op goed keuring.|  
-|`StartDate`|dateTime|De begin datum voor het abonnement, in ISO 8601-indeling `2014-06-24T16:25:00Z`:.|  
-|`ExpirationDate`|dateTime|De verval datum voor het abonnement, in ISO 8601-indeling `2014-06-24T16:25:00Z`:.|  
-|`NotificationDate`|dateTime|De meldings datum voor het abonnement, in ISO 8601- `2014-06-24T16:25:00Z`indeling:.|  
+|`StartDate`|dateTime|De begin datum voor het abonnement, in ISO 8601-indeling: `2014-06-24T16:25:00Z` .|  
+|`ExpirationDate`|dateTime|De verval datum voor het abonnement, in ISO 8601-indeling: `2014-06-24T16:25:00Z` .|  
+|`NotificationDate`|dateTime|De meldings datum voor het abonnement, in ISO 8601-indeling: `2014-06-24T16:25:00Z` .|  
 |`primaryKey`|tekenreeks|De sleutel van het primaire abonnement. De maximale lengte is 256 tekens.|  
 |`secondaryKey`|tekenreeks|De sleutel voor het secundaire abonnement. De maximale lengte is 256 tekens.|  
 |`CanBeRenewed`|booleaans|Hiermee wordt aangegeven of het abonnement kan worden vernieuwd door de huidige gebruiker.|  
@@ -307,7 +307,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>Samen vatting van abonnement  
  De `subscription summary` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Id`|tekenreeks|Resource-id. Hiermee wordt het abonnement uniek geïdentificeerd binnen het huidige API Management service-exemplaar. De waarde is een geldige relatieve URL in de notatie van `subscriptions/{sid}` waar `{sid}` is een abonnements-id. Deze eigenschap is alleen-lezen.|  
 |`DisplayName`|tekenreeks|De weergave naam van het abonnement|  
@@ -315,7 +315,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="user-account-info"></a><a name="UserAccountInfo"></a>Gegevens van gebruikers account  
  De `user account info` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`FirstName`|tekenreeks|Voor naam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
 |`LastName`|tekenreeks|Achternaam. Mag niet leeg zijn. De maximale lengte is 100 tekens.|  
@@ -328,7 +328,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="user-sign-in"></a><a name="UseSignIn"></a>Gebruiker aanmelden  
  De `user sign in` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`Email`|tekenreeks|E-mailadres. Mag niet leeg zijn en moet uniek zijn binnen het service-exemplaar. De maximale lengte is 254 tekens.|  
 |`Password`|tekenreeks|Wacht woord voor gebruikers account.|  

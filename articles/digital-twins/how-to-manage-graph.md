@@ -1,5 +1,5 @@
 ---
-title: Een dubbele grafiek met relaties beheren
+title: Een tweelinggrafiek met relaties beheren
 titleSuffix: Azure Digital Twins
 description: Zie een grafiek met digitale apparaatdubbels beheren door deze te verbinden met relaties.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 362b5d0f1fee1ca1763cc44f106567c543546eac
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612954"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725695"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram bestaat uit afzonderlijke digitale apparaatdubbels die zijn verbonden via **relaties**.
 
@@ -62,7 +65,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 
 `BasicRelationship`Zie [How-to: use the Azure Digital apparaatdubbels Api's and sdk's](how-to-use-apis-sdks.md)(Engelstalig) voor meer informatie over de helper-klasse.
 
-## <a name="list-relationships"></a>Relaties weer geven
+## <a name="list-relationships"></a>Lijst met relaties
 
 Voor toegang tot de lijst met relaties voor een bepaalde dubbele in de grafiek kunt u het volgende gebruiken:
 

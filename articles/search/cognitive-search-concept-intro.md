@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot AI-verrijking
+title: Basis concepten voor AI-verrijking
 titleSuffix: Azure Cognitive Search
 description: Extractie van inhoud, verwerking van natuurlijke taal (NLP) en afbeeldings verwerking worden gebruikt voor het maken van Doorzoek bare inhoud in azure Cognitive Search indexen met zowel vooraf gedefinieerde cognitieve vaardig heden als aangepaste AI-algoritmen.
 manager: nitinme
@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/24/2020
-ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/18/2020
+ms.openlocfilehash: 196562d376b8268ecf47f8133a5b1c8a122c38c5
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265196"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052273"
 ---
-# <a name="getting-started-with-ai-enrichment"></a>Aan de slag met AI-verrijking
+# <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-verrijking in azure Cognitive Search
 
-AI-verrijking is een mogelijkheid van Azure Cognitive Search indexering die wordt gebruikt om tekst te extra heren uit afbeeldingen, blobs en andere ongestructureerde gegevens bronnen. Verrijking en extractie maken uw inhoud in een [index](search-what-is-an-index.md) of [kennis archief](knowledge-store-concept-intro.md)beter doorzoekbaar. Extractie en verrijking worden geïmplementeerd met *cognitieve vaardig heden* die zijn gekoppeld aan de indexerings pijplijn. Cognitieve vaardig heden die in de service zijn ingebouwd, vallen in deze categorieën: 
+AI-verrijking is een uitbrei ding van [Indexeer functies](search-indexer-overview.md) die kunnen worden gebruikt voor het extra heren van tekst uit afbeeldingen, blobs en andere ongestructureerde gegevens bronnen. Met verrijking en extractie kunt u inhoud in indexerings objecten zoeken, hetzij een [zoek index](search-what-is-an-index.md) ofwel een [kennis archief](knowledge-store-concept-intro.md). 
+
+Extractie en verrijking worden geïmplementeerd met *cognitieve vaardig heden* die zijn gekoppeld aan de door de Indexeer functie gestuurde pijp lijn. U kunt ingebouwde vaardig heden van micro soft gebruiken of externe verwerking insluiten in een [*aangepaste vaardigheid*](cognitive-search-create-custom-skill-example.md) die u maakt. Voor beelden van een aangepaste vaardigheid zijn een aangepaste entity module of een classificatie van documenten die gericht zijn op een specifiek domein, zoals financiën, weten schappelijke publicaties of medicijnen.
+
+De ingebouwde vaardig heden vallen onder de volgende categorieën: 
 
 + Vaardig heden voor de **verwerking van natuurlijke taal** zijn onder andere [entiteits herkenning](cognitive-search-skill-entity-recognition.md), [taal detectie](cognitive-search-skill-language-detection.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), tekst manipulatie, [sentiment detectie](cognitive-search-skill-sentiment.md)en [PII-detectie](cognitive-search-skill-pii-detection.md). Met deze vaardig heden wordt ongestructureerde tekst toegewezen als Doorzoek bare en filter bare velden in een index.
 
@@ -25,9 +29,9 @@ AI-verrijking is een mogelijkheid van Azure Cognitive Search indexering die word
 
 ![Diagram van verrijkings pijplijn](./media/cognitive-search-intro/cogsearch-architecture.png "overzicht van verrijkings pijplijn")
 
-Cognitieve vaardig heden in azure Cognitive Search zijn gebaseerd op vooraf getrainde machine learning modellen in Cognitive Services-API's: [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) en [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
+Ingebouwde vaardig heden in azure Cognitive Search zijn gebaseerd op vooraf getrainde machine learning modellen in Cognitive Services-API's: [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) en [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). U kunt een Cognitive Services resource koppelen als u deze resources tijdens de verwerking van inhoud wilt gebruiken.
 
-De verwerking van natuurlijke taal en afbeelding wordt toegepast tijdens de fase van gegevens opname, met resultaten die deel uitmaken van de samen stelling van een document in een Doorzoek bare index in azure Cognitive Search. Gegevens worden als een Azure-gegevensset gedistribueerd en vervolgens gepusht via een indexerings pijplijn met behulp van de [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) die u nodig hebt. De architectuur kan worden uitgebreid als de ingebouwde vaardig heden niet voldoende zijn, kunt u [aangepaste vaardig heden](cognitive-search-create-custom-skill-example.md) maken en koppelen om aangepaste verwerking te integreren. Voor beelden hiervan zijn een aangepaste entity module of document classificatie gericht op een specifiek domein, zoals financiën, weten schappelijke publicaties of medicijnen.
+De verwerking van natuurlijke taal en afbeelding wordt toegepast tijdens de fase van gegevens opname, met resultaten die deel uitmaken van de samen stelling van een document in een Doorzoek bare index in azure Cognitive Search. Gegevens worden als een Azure-gegevensset gedistribueerd en vervolgens gepusht via een indexerings pijplijn met behulp van de [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) die u nodig hebt.  
 
 ## <a name="when-to-use-ai-enrichment"></a>Wanneer moet u AI-verrijking gebruiken?
 
@@ -55,8 +59,7 @@ Een [vaardig](cognitive-search-defining-skillset.md) heden die is geassembleerd 
 
 Aangepaste vaardig heden kunnen complexere scenario's ondersteunen, zoals het herkennen van formulieren of het detecteren van aangepaste entiteiten met behulp van een model dat u opgeeft en inpakt in de [aangepaste vaardigheids webinterface](cognitive-search-custom-skill-interface.md). Enkele voor beelden van aangepaste vaardig heden zijn [formulieren Recognizer](/azure/cognitive-services/form-recognizer/overview), integratie van de [Bing entiteiten zoeken-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)en [aangepaste entiteits herkenning](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-
-## <a name="steps-in-an-enrichment-pipeline"></a>Stappen in een verrijkings pijplijn
+<a name="enrichment-steps"># # Stappen in een verrijkings pijplijn</a>
 
 Een verrijkings pijplijn is gebaseerd op [*Indexeer functies*](search-indexer-overview.md). Indexeer functies vullen een index op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron voor het kraken van documenten. Vaardig heden, die nu zijn gekoppeld aan Indexeer functies, onderscheppen en verrijkt documenten volgens de vakkennisset (en) die u definieert. Zodra de index is geïndexeerd, hebt u toegang tot inhoud via Zoek opdrachten via alle [query typen die door Azure Cognitive Search worden ondersteund](search-query-overview.md).  Als u geen ervaring hebt met Indexeer functies, begeleidt deze sectie u stapsgewijs door de stappen.
 

@@ -16,12 +16,12 @@ ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: f297cec0e5f88461d61b14974b57992f847f6e1c
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60456124"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051977"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
 
@@ -52,13 +52,40 @@ Als de gebruiker zich niet kan aanmelden met behulp van Pass-Through-verificatie
 |AADSTS80005|Validatie heeft onvoorspelbare Web-except aangetroffen|Een tijdelijke fout. Voer de aanvraag opnieuw uit. Neem contact op met micro soft ondersteuning als dit probleem blijft optreden.
 |AADSTS80007|Er is een fout opgetreden tijdens het communiceren met Active Directory|Raadpleeg de logboeken van de agent voor meer informatie en controleer of Active Directory werkt zoals verwacht.
 
+### <a name="users-get-invalid-usernamepassword-error"></a>Fout bij het ophalen van ongeldige gebruikers naam/wacht woord 
+
+Dit kan gebeuren wanneer de on-premises UserPrincipalName van een gebruiker (UPN) afwijkt van de Cloud-UPN van de gebruiker.
+
+U kunt controleren of dit het probleem is door eerst te testen of de Pass-Through-verificatie agent correct werkt:
+
+
+1. Een test account maken.  
+2. Importeer de Power shell-module op de agent computer:
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. Voer de opdracht voor het aanroepen van Power shell uit: 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. Wanneer u wordt gevraagd om referenties in te voeren, voert u dezelfde gebruikers naam en hetzelfde wacht woord in als voor aanmelding bij ( https://login.microsoftonline.com) .
+
+Als u dezelfde gebruikers naam en hetzelfde wacht woord krijgt, betekent dit dat de Pass-Through-verificatie agent correct werkt en het probleem mogelijk is dat de on-premises UPN niet routeerbaar is. Zie de [alternatieve aanmeldings-id configureren]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)voor meer informatie.
+
+
+
+
+
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Redenen voor aanmeldings fout op het Azure Active Directory-beheer centrum (vereiste Premium-licentie)
 
 Als aan uw Tenant een Azure AD Premium-licentie is gekoppeld, kunt u ook het rapport voor de [aanmeldings activiteit](../reports-monitoring/concept-sign-ins.md) in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/)bekijken.
 
 ![Azure Active Directory beheer centrum-aanmeld rapport](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-Navigeer naar **Azure Active Directory** -> **-aanmeldingen** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/) en klik op de aanmeldings activiteit van een specifieke gebruiker. Zoek het veld **met de fout code** voor de aanmelding. Wijs de waarde van dat veld toe aan een fout reden en oplossing met behulp van de volgende tabel:
+Navigeer naar **Azure Active Directory**  ->  **-aanmeldingen** in het [Azure Active Directory beheer centrum](https://aad.portal.azure.com/) en klik op de aanmeldings activiteit van een specifieke gebruiker. Zoek het veld **met de fout code** voor de aanmelding. Wijs de waarde van dat veld toe aan een fout reden en oplossing met behulp van de volgende tabel:
 
 |Fout code voor aanmelden|Reden voor aanmeldings fout|Oplossing
 | --- | --- | ---
@@ -123,7 +150,7 @@ Afhankelijk van het type probleem dat u mogelijk hebt, moet u de logboeken van d
 
 ### <a name="azure-ad-connect-logs"></a>Azure AD Connect logboeken
 
-Raadpleeg de Azure AD Connect-Logboeken in **\*%ProgramData%\AADConnect\trace-. log**voor fouten met betrekking tot de installatie.
+Raadpleeg de Azure AD Connect-Logboeken in **%ProgramData%\AADConnect\trace- \* . log**voor fouten met betrekking tot de installatie.
 
 ### <a name="authentication-agent-event-logs"></a>Gebeurtenis logboeken voor verificatie agent
 
@@ -133,7 +160,7 @@ Schakel voor gedetailleerde analyse het logboek van de sessie in (Klik met de re
 
 ### <a name="detailed-trace-logs"></a>Gedetailleerde traceer logboeken
 
-Zoek naar traceer logboeken op **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect-\\verificatie Agent\Trace**om problemen met de gebruikers aanmelding op te lossen. In deze logboeken worden de redenen vermeld waarom een specifieke gebruiker zich aanmeldt met de functie Pass-Through-verificatie. Deze fouten worden ook toegewezen aan de oorzaken van de aanmeldings fout die worden weer gegeven in de voor gaande tabel met mislukte aanmeldings redenen. Hier volgt een voor beeld van een logboek vermelding:
+Zoek naar traceer logboeken op **%PROGRAMDATA%\MICROSOFT\AZURE AD Connect- \\ verificatie Agent\Trace**om problemen met de gebruikers aanmelding op te lossen. In deze logboeken worden de redenen vermeld waarom een specifieke gebruiker zich aanmeldt met de functie Pass-Through-verificatie. Deze fouten worden ook toegewezen aan de oorzaken van de aanmeldings fout die worden weer gegeven in de voor gaande tabel met mislukte aanmeldings redenen. Hier volgt een voor beeld van een logboek vermelding:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

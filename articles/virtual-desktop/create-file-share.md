@@ -4,16 +4,16 @@ description: Stel een FSLogix-profiel container in op een Azure-bestands share i
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484648"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208379"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -43,7 +43,7 @@ Een opslag account instellen:
     - Voer een unieke naam in voor het opslagaccount.
     - Voor de **locatie**raden we u aan om dezelfde locatie te kiezen als de Windows-hostgroep voor virtueel bureau blad.
     - Selecteer bij **Prestaties** de optie **Standaard**. (Afhankelijk van uw IOPS-vereisten. Zie [opslag opties voor FSLogix-profiel containers in Windows Virtual Desktop](store-fslogix-profile.md)voor meer informatie.)
-    - Selecteer voor **account type** **StorageV2** of **FileStorage**.
+    - Voor **account type**selecteert u **StorageV2** of **FileStorage** (alleen beschikbaar als het prestatie niveau Premium is).
     - Voor **replicatie**selecteert u **lokaal redundante opslag (LRS)**.
 
 5. Wanneer u klaar bent, selecteert u **controleren + maken**en selecteert u **maken**.
@@ -78,7 +78,7 @@ Vervolgens moet u Active Directory (AD)-verificatie inschakelen. Als u dit belei
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Azure RBAC-machtigingen toewijzen aan Windows-virtuele bureau blad-gebruikers
 
-Voor alle gebruikers die FSLogix-profielen moeten hebben die zijn opgeslagen op het opslag account moet de rol opslag bestands gegevens SMB delen worden toegewezen. 
+Voor alle gebruikers die FSLogix-profielen moeten hebben die zijn opgeslagen op het opslag account moet de rol opslag bestands gegevens SMB delen worden toegewezen.
 
 Gebruikers die zich aanmelden bij de virtuele Windows-bureau blad-sessie hosts hebben Toegangs machtigingen nodig voor toegang tot uw bestands share. Het verlenen van toegang aan een Azure-bestands share omvat het configureren van machtigingen op het share niveau en op het NTFS-niveau, vergelijkbaar met een traditionele Windows-share.
 
@@ -98,7 +98,7 @@ Machtigingen voor op rollen gebaseerde toegangs beheer (RBAC) toewijzen:
 4. Selecteer **een roltoewijzing toevoegen**.
 
 5. Selecteer in het tabblad roltoewijzing **toevoegen** de optie **opslag bestands gegevens SMB-share met verhoogde bevoegdheid** voor het beheerders account.
-   
+
      Volg dezelfde instructies om gebruikers machtigingen voor hun FSLogix-profielen toe te wijzen. Wanneer u echter naar stap 5 gaat, selecteert u in plaats daarvan **opslag bestands gegevens SMB delen** .
 
 6. Selecteer **Opslaan**.
@@ -126,7 +126,7 @@ U kunt als volgt het UNC-pad ophalen:
 
 5. Nadat u de URI hebt gekopieerd, moet u de volgende dingen doen om deze te wijzigen in de UNC:
 
-    - `https://` verwijderen
+    - Verwijderen `https://` en vervangen door`\\`
     - Vervang de slash door `/` een back slash `\` .
     - Voeg de naam toe van de bestands share die u hebt gemaakt in [een Azure-bestands share maken](#create-an-azure-file-share) aan het einde van de UNC.
 
@@ -157,7 +157,7 @@ Uw NTFS-machtigingen configureren:
      ```
 
 3. Voer de volgende cmdlet uit om de toegangs machtigingen voor de Azure-bestands share te controleren:
-    
+
     ```powershell
     icacls <mounted-drive-letter>:
     ```
@@ -167,7 +167,7 @@ Uw NTFS-machtigingen configureren:
     Zowel *NT Authority\Authenticated-gebruikers* als *BUILTIN\Users* hebben standaard bepaalde machtigingen. Met deze standaard machtigingen kunnen deze gebruikers de profiel containers van andere gebruikers lezen. Met de machtigingen die zijn beschreven in [opslag machtigingen configureren voor gebruik met profiel containers en Office-containers](/fslogix/fslogix-storage-config-ht) kunnen gebruikers echter niet de profiel containers van de andere personen lezen.
 
 4. Voer de volgende cmdlets uit om ervoor te zorgen dat uw Windows virtueel-bureaublad gebruikers hun eigen profiel containers kunnen maken, terwijl de toegang tot de profiel container van andere gebruikers wordt geblokkeerd.
-     
+
      ```powershell
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)

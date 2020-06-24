@@ -4,23 +4,23 @@ description: Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtu
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a60d34c73eed5d71599a90e463138186e21fdf7
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677896"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209348"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Wanneer u het gebruik in uw hostgroep wilt verbeteren, moet u mogelijk uw bestaande hostgroep uitbreiden met nieuwe sessie-hosts om de nieuwe belasting af te handelen.
@@ -57,12 +57,12 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
 6. Negeer het tabblad basis informatie en selecteer in plaats daarvan het tabblad **VM-Details** . Hier kunt u de details weer geven en bewerken van de virtuele machine (VM) die u wilt toevoegen aan de hostgroep.
 
 7. Selecteer de resource groep waarvoor u de virtuele machines wilt maken en selecteer vervolgens de regio. U kunt kiezen welke huidige regio u gebruikt of een nieuwe regio.
-   
+
 8. Voer het aantal sessie-hosts in dat u wilt toevoegen aan uw hostgroep in **aantal vm's**. Als u uw hostgroep bijvoorbeeld met vijf hosts wilt uitbreiden, voert u **5**in.
-   
+
     >[!NOTE]
     >U kunt de grootte of afbeelding van de Vm's niet bewerken omdat het belang rijk is om ervoor te zorgen dat alle virtuele machines in de hostgroep dezelfde grootte hebben.
-    
+
 9. Selecteer voor de gegevens van het **virtuele netwerk**het virtuele netwerk en het subnet waaraan u de virtuele machines wilt koppelen. U kunt hetzelfde virtuele netwerk selecteren als de bestaande machines die momenteel worden gebruikt, of een andere naam kiezen die geschikter is voor de regio die u in stap 7 hebt geselecteerd.
 
 10. Voer voor het **beheerders account**de Active Directory domein gebruikers naam en het wacht woord in die zijn gekoppeld aan het virtuele netwerk dat u hebt geselecteerd. Deze referenties worden gebruikt om de virtuele machines lid te maken van het virtuele netwerk.
@@ -70,9 +70,9 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
       >[!NOTE]
       >Zorg ervoor dat de namen van uw beheerders overeenkomen met de informatie die hier wordt gegeven. En dat er geen MFA is ingeschakeld voor het account.
 
-11. Selecteer het tabblad **tag** als u labels hebt waarop u de virtuele machines wilt groeperen. Als dat niet het geval is, slaat u dit tabblad over. 
+11. Selecteer het tabblad **tag** als u labels hebt waarop u de virtuele machines wilt groeperen. Als dat niet het geval is, slaat u dit tabblad over.
 
-12. Selecteer het tabblad **controleren + maken** . Controleer uw keuzes en klik op **maken**als alles er goed uitziet. 
+12. Selecteer het tabblad **controleren + maken** . Controleer uw keuzes en klik op **maken**als alles er goed uitziet.
 
 ## <a name="next-steps"></a>Volgende stappen
 

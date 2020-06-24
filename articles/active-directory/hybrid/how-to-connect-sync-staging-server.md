@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261019"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690622"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: staging-server en herstel na nood gevallen
 Met een server in de faserings modus kunt u wijzigingen aanbrengen in de configuratie en de wijzigingen bekijken voordat u de server actief maakt. U kunt ook volledige import en volledige synchronisatie uitvoeren om te controleren of alle wijzigingen worden verwacht voordat u deze wijzigingen aanbrengt in uw productie omgeving.
@@ -74,18 +74,18 @@ U hebt nu gefaseerd wijzigingen naar Azure AD en on-premises AD exporteren (als 
 #### <a name="verify"></a>Verifiëren
 1. Start een opdracht prompt en ga naar`%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Uitvoeren: `csexport "Name of Connector" %temp%\export.xml /f:x` de naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
-3. Uitvoeren: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` u hebt een bestand in% Temp% met de naam export. csv dat kan worden onderzocht in micro soft Excel. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
+3. Uitvoeren: er `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` bevindt zich een bestand in% Temp% met de naam export.csv dat in micro soft Excel kan worden onderzocht. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
 4. Breng de benodigde wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (Importeer en synchroniseer en controleer) totdat de wijzigingen die worden geëxporteerd, worden verwacht.
 
-**Informatie over het bestand export. CSV** Het meren deel van het bestand is zelf uitleg. Enkele afkortingen voor het begrijpen van de inhoud:
+**Wat is het export.csv bestand** ? Het meren deel van het bestand is zelf uitleg. Enkele afkortingen voor het begrijpen van de inhoud:
 * OMODT: object wijzigings type. Hiermee wordt aangegeven of de bewerking op object niveau een toevoegen, bijwerken of verwijderen is.
 * AMODT – kenmerk wijzigings type. Hiermee wordt aangegeven of de bewerking op kenmerk niveau een add, update of Delete is.
 
-**Algemene Id's ophalen** Het bestand export. csv bevat alle wijzigingen die moeten worden geëxporteerd. Elke rij komt overeen met een wijziging voor een object in de connector ruimte en het object wordt geïdentificeerd door het kenmerk DN. Het kenmerk DN is een unieke id die is toegewezen aan een object in de connector ruimte. Wanneer u veel rijen/wijzigingen in het export. CSV-bestand wilt analyseren, is het wellicht lastig om te achterhalen welke objecten de wijzigingen hebben op basis van het kenmerk DN. Gebruik het Power shell-script csanalyzer. ps1 om het proces van het analyseren van de wijzigingen te vereenvoudigen. Het script haalt algemene id's op (bijvoorbeeld displayName, userPrincipalName) van de objecten. Het script gebruiken:
-1. Kopieer het Power shell-script uit de sectie [CSAnalyzer](#appendix-csanalyzer) naar een `csanalyzer.ps1`bestand met de naam.
+**Algemene Id's ophalen** Het export.csv bestand bevat alle wijzigingen die moeten worden geëxporteerd. Elke rij komt overeen met een wijziging voor een object in de connector ruimte en het object wordt geïdentificeerd door het kenmerk DN. Het kenmerk DN is een unieke id die is toegewezen aan een object in de connector ruimte. Wanneer u veel rijen/wijzigingen hebt in de export.csv om te analyseren, kan het lastig zijn om erachter te komen welke objecten de wijzigingen hebben op basis van het kenmerk DN. Gebruik het Power shell-script csanalyzer.ps1 om het proces van het analyseren van de wijzigingen te vereenvoudigen. Het script haalt algemene id's op (bijvoorbeeld displayName, userPrincipalName) van de objecten. Het script gebruiken:
+1. Kopieer het Power shell-script uit de sectie [CSAnalyzer](#appendix-csanalyzer) naar een bestand met de naam `csanalyzer.ps1` .
 2. Open een Power shell-venster en blader naar de map waarin u het Power shell-script hebt gemaakt.
 3. Uitvoeren: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. U hebt nu een bestand met de naam **processedusers1. CSV** dat kan worden onderzocht in micro soft Excel. Houd er rekening mee dat het bestand een toewijzing bevat van het kenmerk DN aan algemene id's (bijvoorbeeld displayName en userPrincipalName). Het bevat momenteel niet de daad werkelijke kenmerk wijzigingen die moeten worden geëxporteerd.
+4. U hebt nu een bestand met de naam **processedusers1.csv** dat in micro soft Excel kan worden onderzocht. Houd er rekening mee dat het bestand een toewijzing bevat van het kenmerk DN aan algemene id's (bijvoorbeeld displayName en userPrincipalName). Het bevat momenteel niet de daad werkelijke kenmerk wijzigingen die moeten worden geëxporteerd.
 
 #### <a name="switch-active-server"></a>Scha kelen tussen actieve server
 1. Schakel op de huidige actieve server de server (DirSync/FIM/Azure AD Sync) uit zodat deze niet wordt geëxporteerd naar Azure AD of stel deze in de faserings modus (Azure AD Connect) in.

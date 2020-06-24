@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5dfcc84530597fc41c547a78478dcee4a4ad803
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023528"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808496"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>De distributie modus voor Azure Load Balancer configureren
 
@@ -179,7 +179,7 @@ Gebruik het klassieke Azure-implementatie model om een bestaande implementatie c
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-Zoals eerder beschreven, stelt u `LoadBalancerDistribution` het element in op sourceIP voor twee-tuple-affiniteit, sourceIPProtocol voor drie-tuple-affiniteit of geen voor geen affiniteit (5-tuple-affiniteit).
+Zoals eerder beschreven, stelt `LoadBalancerDistribution` u het element in op sourceIP voor twee-tuple-affiniteit, sourceIPProtocol voor drie-tuple-affiniteit of geen voor geen affiniteit (5-tuple-affiniteit).
 
 #### <a name="response"></a>Antwoord
 

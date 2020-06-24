@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 8157efac5ff1fc135659a84b4f4825ff36307480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6555a1718acb0574640e7b7d5d4d47d84b8a72d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297654"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711048"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Gebruik Service Bus van .NET met AMQP 1,0
 
@@ -27,13 +27,13 @@ AMQP 1,0-ondersteuning is beschikbaar in de Service Bus pakket versie 2,1 of hog
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>.NET-toepassingen configureren voor het gebruik van AMQP 1,0
 
-De Service Bus .NET-client bibliotheek communiceert standaard met de Service Bus-service met behulp van een toegewezen SOAP-protocol. Voor het gebruik van AMQP 1,0 in plaats van het standaard protocol is expliciet configuratie vereist voor de Service Bus connection string, zoals wordt beschreven in de volgende sectie. Deze wijziging is niet van toepassing, maar de code wordt ongewijzigd wanneer u AMQP 1,0.
+Standaard communiceert de Service Bus .NET-client bibliotheek met de Service Bus-service met behulp van het AMQP-protocol. U kunt ook expliciet AMQP als het transport type opgeven, zoals wordt weer gegeven in de volgende sectie. 
 
 In de huidige versie zijn er een aantal API-functies die niet worden ondersteund bij het gebruik van AMQP. Deze niet-ondersteunde functies worden weer gegeven in de sectie [gedrags verschillen](#behavioral-differences). Sommige van de geavanceerde configuratie-instellingen hebben ook een andere betekenis wanneer AMQP wordt gebruikt.
 
-### <a name="configuration-using-appconfig"></a>Configuratie met behulp van app. config
+### <a name="configuration-using-appconfig"></a>Configuratie met behulp van App.config
 
-Het is een goede gewoonte dat toepassingen het configuratie bestand app. config gebruiken om instellingen op te slaan. Voor Service Bus toepassingen kunt u app. config gebruiken om de Service Bus connection string op te slaan. Een voor beeld van een app. config-bestand is als volgt:
+Het is een goede gewoonte dat toepassingen het App.config configuratie bestand gebruiken om instellingen op te slaan. Voor Service Bus toepassingen kunt u App.config gebruiken om de Service Bus connection string op te slaan. Een voor beeld App.config bestand is als volgt:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -45,13 +45,13 @@ Het is een goede gewoonte dat toepassingen het configuratie bestand app. config 
 </configuration>
 ```
 
-De waarde van de `Microsoft.ServiceBus.ConnectionString` instelling is de service bus Connection String die wordt gebruikt voor het configureren van de verbinding met Service Bus. De indeling is als volgt:
+De waarde van de `Microsoft.ServiceBus.ConnectionString` instelling is de Service Bus Connection String die wordt gebruikt voor het configureren van de verbinding met Service Bus. De indeling is als volgt:
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
 Waar `namespace` en `SAS key` worden opgehaald van de [Azure Portal][Azure portal] wanneer u een service bus naam ruimte maakt. Zie [een service bus naam ruimte maken met behulp van de Azure Portal][Create a Service Bus namespace using the Azure portal]voor meer informatie.
 
-Wanneer u AMQP gebruikt, voegt u de `;TransportType=Amqp`connection string toe met. Deze notatie geeft de client bibliotheek de opdracht om verbinding te maken met Service Bus met behulp van AMQP 1,0.
+Wanneer u AMQP gebruikt, voegt u de connection string toe met `;TransportType=Amqp` . Deze notatie geeft de client bibliotheek de opdracht om verbinding te maken met Service Bus met behulp van AMQP 1,0.
 
 ## <a name="message-serialization"></a>Bericht-serialisatie
 
@@ -83,15 +83,15 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 | System. Collections. IList |list |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
 | System. matrix |matrix |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. |
 | System. Collections. IDictionary |map |AMQP waarde: items in de verzameling kunnen alleen die in deze tabel zijn gedefinieerd. Opmerking: alleen teken reeks sleutels worden ondersteund. |
-| URI |Beschrijving van de teken reeks (Zie de volgende tabel) |Waarde AMQP |
+| Uri |Beschrijving van de teken reeks (Zie de volgende tabel) |Waarde AMQP |
 | Date time offset |Lange beschrijving (Zie de volgende tabel) |Waarde AMQP |
 | TimeSpan |Lange beschrijving (Zie het volgende) |Waarde AMQP |
 | Streamen |binair |AMQP-gegevens (mogelijk meerdere). De gegevens secties bevatten de onbewerkte bytes die zijn gelezen van het Stream-object. |
 | Ander object |binair |AMQP-gegevens (mogelijk meerdere). Bevat het geserialiseerde binaire bestand van het object dat gebruikmaakt van de DataContractSerializer of een serialisatiefunctie die door de toepassing wordt geleverd. |
 
-| .NET-type | Type beschrijving van toegewezen AMQP | Opmerkingen |
+| .NET-type | Type beschrijving van toegewezen AMQP | Notities |
 | --- | --- | --- |
-| URI |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
+| Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |URI. AbsoluteUri |
 | Date time offset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |Date time offset. UtcTicks |
 | TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |Time span. Ticks |
 
@@ -100,7 +100,7 @@ Gebruik voor het vereenvoudigen van de interoperabiliteit met non-.NET-clients a
 Er zijn enkele kleine verschillen in het gedrag van de Service Bus .NET API bij het gebruik van AMQP, vergeleken met het standaard Protocol:
 
 * De eigenschap [OperationTimeout][OperationTimeout] wordt genegeerd.
-* `MessageReceiver.Receive(TimeSpan.Zero)`wordt geïmplementeerd als `MessageReceiver.Receive(TimeSpan.FromSeconds(10))`.
+* `MessageReceiver.Receive(TimeSpan.Zero)`wordt geïmplementeerd als `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` .
 * Het volt ooien van berichten door de vergrendelings tokens kan alleen worden uitgevoerd door de ontvangers van het bericht waarin de berichten voor het eerst zijn ontvangen.
 
 ## <a name="control-amqp-protocol-settings"></a>Instellingen voor AMQP-protocol bepalen
@@ -109,7 +109,7 @@ De [.net-api's](/dotnet/api/) bieden verschillende instellingen voor het beheren
 
 * **[MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: Hiermee beheert u het eerste tegoed dat wordt toegepast op een koppeling. De standaardwaarde is 0.
 * **[MessagingFactorySettings. AmqpTransportSettings. MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: bepaalt de maximale AMQP frame grootte die tijdens de onderhandeling wordt aangeboden tijdens de open tijd van de verbinding. De standaard waarde is 65.536 bytes.
-* **[MessagingFactorySettings. AmqpTransportSettings. BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: als de overdrachten batchgewijs zijn, bepaalt deze waarde de maximale vertraging voor het verzenden van disposities. Standaard overgenomen door afzenders/ontvangers. Individuele afzender/ontvanger kan de standaard waarde overschrijven, wat 20 milliseconden is.
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: als de overdrachten batchgewijs zijn, bepaalt deze waarde de maximale vertraging voor het verzenden van disposities. Standaard overgenomen door afzenders/ontvangers. Individuele afzender/ontvanger kan de standaard waarde overschrijven, wat 20 milliseconden is.
 * **[MessagingFactorySettings. AmqpTransportSettings. UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: bepaalt of AMQP-verbindingen tot stand worden gebracht via een TLS-verbinding. De standaard waarde is **True**.
 
 ## <a name="next-steps"></a>Volgende stappen

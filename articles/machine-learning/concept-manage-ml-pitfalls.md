@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658395"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210181"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Voor komen dat gegevens met automatische machine learning worden verdeeld en gebalanceerd.
 
@@ -79,8 +79,6 @@ Automatische ML implementeert ook de **complexiteits beperkingen** van expliciet
 
 Gegevens die in het algemeen worden gebalanceerd, worden doorgaans gevonden in gegevens voor machine learning classificatie scenario's en verwijzen naar gegevens die een onevenredige verhouding van waarnemingen in elke klasse bevatten. Dit onevenwichtige kan leiden tot een onverantwoord waargenomen positief effect van de nauw keurigheid van een model, omdat de invoer gegevens van invloed zijn op één klasse, wat resulteert in het getrainde model om die afwijking te simuleren. 
 
-Aangezien classificatie algoritmen doorgaans worden geëvalueerd door nauw keurigheid, is het controleren van de nauw keurigheid van een model een goede manier om te bepalen of dit van invloed is op gegevens die niet in balans zijn. Had het een zeer hoge nauw keurigheid of een zeer lage nauw keurigheid voor bepaalde klassen?
-
 Daarnaast worden automatisch de volgende grafieken gegenereerd, die u kunnen helpen inzicht te krijgen in de juistheid van de classificaties van uw model en modellen te identificeren die mogelijk van invloed zijn op gegevens die niet in evenwicht zijn.
 
 Grafiek| Beschrijving
@@ -91,17 +89,19 @@ Grafiek| Beschrijving
 
 ## <a name="handle-imbalanced-data"></a>Niet-sluitende gegevens verwerken 
 
-Als onderdeel van het vereenvoudigen van de machine learning-werk stroom, heeft geautomatiseerd ML ingebouwde mogelijkheden voor het oplossen van niet-sluitende gegevens zoals, 
+Als onderdeel van het vereenvoudigen van de machine learning-werk stroom, **heeft geautomatiseerd ml ingebouwde mogelijkheden** voor het oplossen van niet-sluitende gegevens zoals, 
 
-- Een **kolom**met het gewicht: automatische milliliters biedt ondersteuning voor een gewogen kolom als invoer, waardoor rijen in de gegevens naar boven of beneden worden gewogen, waardoor een klasse meer of minder ' belang rijk ' kan maken.
+- Een **kolom**met het gewicht: automatische ml biedt ondersteuning voor een kolom met gewichten als invoer, waardoor rijen in de gegevens kunnen worden gewogen of waarmee een klasse meer of minder ' belang rijk ' kan worden gemaakt.
 
 - De algoritmen die door automatische ML worden gebruikt, kunnen de onevenwichtigheid van Maxi maal 20:1 afhandelen, wat betekent dat de meest voorkomende klasse 20 keer meer rijen in de gegevens kan hebben dan de kleinste gemeen schappelijke klasse.
 
-De volgende technieken zijn aanvullende opties voor het afhandelen van niet-sluitende gegevens buiten de automatische MILLILITERs. 
+- Gebruik prestatie metrieken die beter werken met gegevens die niet in balans zijn. De AUC_weighted is bijvoorbeeld een primaire metriek waarmee de bijdrage van elke klasse wordt berekend op basis van het relatieve aantal steek proeven dat deze klasse vertegenwoordigt, en daarom robuuster is tegen onevenwichtigheid.
+
+De volgende technieken zijn aanvullende opties voor het afhandelen van niet-sluitende gegevens **buiten de automatische milliliters**. 
 
 - Hersampling naar zelfs het onevenwicht van de klasse, hetzij door de kleinere klassen te bemonsteren of de grotere klassen te verlagen. Deze methoden vereisen expertise om te verwerken en te analyseren.
 
-- Gebruik prestatie metrieken die beter werken met gegevens die niet in balans zijn. De F1-Score is bijvoorbeeld een gewogen gemiddelde van de precisie en intrekken. Precisie meet de nauw keurigheid van een classificatie--lage precisie geeft aan dat er een groot aantal fout-positieven is--, terwijl intrekken meet waarden voor de volledigheid van een classificatie, een hoog aantal onwaare negatieven aangeeft. 
+- Controleer de metrische gegevens over de prestaties van niet-sluitende informatie. De F1-Score is bijvoorbeeld een gewogen gemiddelde van de precisie en intrekken. Precisie meet de nauw keurigheid van een classificatie--lage precisie geeft aan dat er een groot aantal fout-positieven is--, terwijl intrekken meet waarden voor de volledigheid van een classificatie, een hoog aantal onwaare negatieven aangeeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

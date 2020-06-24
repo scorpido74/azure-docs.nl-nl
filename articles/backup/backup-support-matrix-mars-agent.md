@@ -4,11 +4,11 @@ description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij 
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247863"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709875"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -27,7 +27,7 @@ Azure Backup maakt gebruik van de MARS-agent om back-ups te maken van gegevens v
 
 Uw back-upopties zijn afhankelijk van waar de agent is geïnstalleerd. Zie voor meer informatie [Azure backup architectuur met behulp van de Mars-agent](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Zie [back-up naar DPM of MABS](backup-architecture.md#architecture-back-up-to-dpmmabs)voor meer informatie over de MABS-en DPM-back-uparchitectuur. Zie ook de [vereisten](backup-support-matrix-mabs-dpm.md) voor de back-uparchitectuur.
 
-**Installatie** | **Nadere**
+**Installatie** | **Details**
 --- | ---
 De nieuwste MARS-agent downloaden | U kunt de nieuwste versie van de agent downloaden van de kluis of [deze rechtstreeks downloaden](https://aka.ms/azurebackup_agent).
 Rechtstreeks op een computer installeren | U kunt de MARS-agent rechtstreeks installeren op een on-premises Windows-Server of op een Windows-VM waarop een van de [ondersteunde besturings systemen](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)wordt uitgevoerd.
@@ -41,12 +41,12 @@ Installeren op een back-upserver | Wanneer u DPM of MABS instelt om een back-up 
 
 Wanneer u de MARS-agent gebruikt voor het maken van een back-up van gegevens, neemt de agent een moment opname van de gegevens en slaat deze op in een lokale cachemap voordat de gegevens naar Azure worden verzonden. De cache (scratch)-map heeft verschillende vereisten:
 
-**Cache** | **Nadere**
+**Cache** | **Details**
 --- | ---
 Grootte |  Beschik bare ruimte in de cachemap moet ten minste 5 tot 10 procent van de totale grootte van uw back-upgegevens zijn.
 Locatie | De cachemap moet lokaal zijn opgeslagen op de computer waarvan een back-up wordt gemaakt en moet online zijn. De cachemap mag zich niet op een netwerk share, op Verwissel bare media of op een offline volume bevinden.
 Map | De cachemap mag niet worden versleuteld op een ontdubbeld volume of in een gecomprimeerde map, een sparse of een reparsepunt.
-Locatie wijzigingen | U kunt de locatie van de cache wijzigen door de back-`net stop bengine`upengine () te stoppen en de cachemap naar een nieuw station te kopiëren. (Zorg ervoor dat er voldoende ruimte beschikbaar is op het nieuwe station.) Werk vervolgens twee Register vermeldingen onder **HKLM\SOFTWARE\Microsoft\Windows Azure backup** (**config/ScratchLocation** en **config/CloudBackupProvider/ScratchLocation**) bij naar de nieuwe locatie en start de engine opnieuw.
+Locatie wijzigingen | U kunt de locatie van de cache wijzigen door de back-upengine ( `net stop bengine` ) te stoppen en de cachemap naar een nieuw station te kopiëren. (Zorg ervoor dat er voldoende ruimte beschikbaar is op het nieuwe station.) Werk vervolgens twee Register vermeldingen onder **HKLM\SOFTWARE\Microsoft\Windows Azure backup** (**config/ScratchLocation** en **config/CloudBackupProvider/ScratchLocation**) bij naar de nieuwe locatie en start de engine opnieuw.
 
 ## <a name="networking-and-access-support"></a>Ondersteuning voor netwerken en toegang
 
@@ -92,7 +92,7 @@ Zie de [routerings vereisten voor ExpressRoute](https://docs.microsoft.com/azure
 
 ### <a name="throttling-support"></a>Ondersteuning voor beperking
 
-**Functie** | **Nadere**
+**Functie** | **Details**
 --- | ---
 Bandbreedte regeling | Ondersteund. In de MARS-agent gebruikt u **Eigenschappen wijzigen** om de band breedte aan te passen.
 Netwerkbeperking | Niet beschikbaar voor back-ups van computers waarop Windows Server 2008 R2, Windows Server 2008 SP2 of Windows 7 wordt uitgevoerd.
@@ -116,8 +116,8 @@ Windows 8,1 (Enter prise, Pro)| Ja |Nee | Controleer de bijbehorende server vers
 Windows 8 (Enter prise, Pro) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
-Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja |-.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe)
-Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Ja | Nee | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
+Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja |-.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM.exe)
+Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Yes | Nee | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 
 Zie [supported MABS and DPM Operating Systems](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)(Engelstalig) voor meer informatie.
@@ -132,9 +132,9 @@ Voor on-premises of gehoste omgevingen waarin u het besturings systeem niet kunt
 
 | **Besturingssysteem**                                       | **Bestanden/mappen** | **Systeem status** | **Vereisten voor software/modules**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja               | Nee                 | Controleer de bijbehorende server versie voor vereisten voor software/modules |
-| Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja               | Ja                | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM. exe) |
-| Windows Server 2008 SP2 (Standard, Data Center, Foundation)  | Ja               | Nee                 | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM. exe) <br>  -Virtual Server 2005 base + KB KB948515 |
+| Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Yes               | Nee                 | Controleer de bijbehorende server versie voor vereisten voor software/modules |
+| Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja               | Ja                | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM.exe) |
+| Windows Server 2008 SP2 (Standard, Data Center, Foundation)  | Yes               | Nee                 | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Back-uplimieten
 
@@ -162,19 +162,19 @@ Decodeer<sup>*</sup>| Ondersteund.
 Gecomprimeerd | Ondersteund.
 Sparse | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
-Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
-Reparsepunt| Wordt niet ondersteund. Genegeerd.
-Versleuteld en verspreid |Wordt niet ondersteund. Genegeerd.
-Gecomprimeerde stroom| Wordt niet ondersteund. Genegeerd.
-Sparse stream| Wordt niet ondersteund. Genegeerd.
-OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
-Mappen met DSF-replicatie ingeschakeld | Wordt niet ondersteund.
+Vaste koppelingen| Niet ondersteund. Genegeerd.
+Reparsepunt| Niet ondersteund. Genegeerd.
+Versleuteld en verspreid |Niet ondersteund. Genegeerd.
+Gecomprimeerde stroom| Niet ondersteund. Genegeerd.
+Sparse stream| Niet ondersteund. Genegeerd.
+OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Niet ondersteund.
+Mappen met DSF-replicatie ingeschakeld | Niet ondersteund.
 
 \*Zorg ervoor dat de MARS-agent toegang heeft tot de vereiste certificaten om toegang te krijgen tot de versleutelde bestanden. Niet-toegankelijke bestanden worden overgeslagen.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Ondersteunde stations of volumes voor back-up
 
-**Station/volume** | **Ondersteuning** | **Nadere**
+**Station/volume** | **Ondersteuning** | **Details**
 --- | --- | ---
 Alleen-lezen volumes| Niet ondersteund | Volume Copy Shadow Service (VSS) werkt alleen als het volume schrijfbaar is.
 Offline volumes| Niet ondersteund |VSS werkt alleen als het volume online is.

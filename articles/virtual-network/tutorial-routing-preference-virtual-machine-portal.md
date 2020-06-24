@@ -7,17 +7,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 2a501280b817db691fb3b93097669d473443a607
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: af3d9e9fcf0dad6a5e51a3db87b63567d701970e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597987"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687987"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Routerings voorkeur configureren voor een virtuele machine met behulp van de Azure Portal
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u een virtuele machine maakt met een openbaa
 
 > [!IMPORTANT]
 > De voor keuren voor route ring is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="register-the-feature-for-your-subscription"></a>De functie voor uw abonnement registreren
 De functie voor route ring is momenteel beschikbaar als preview-versie. U moet de functie voor uw abonnement als volgt registreren met Azure PowerShell:
@@ -37,7 +37,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://preview.portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://preview.portal.azure.com/).
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
@@ -52,7 +52,7 @@ Meld u aan bij [Azure Portal](https://preview.portal.azure.com/).
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Locatie| Selecteer **VS - oost**|
+    |Locatie| Selecteer **VS Oost**|
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
 5. Klik op het tabblad **netwerken** op **Nieuw maken** voor **openbaar IP-adres**.

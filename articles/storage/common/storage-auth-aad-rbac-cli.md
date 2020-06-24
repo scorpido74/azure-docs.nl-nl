@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25a38fc6f9607ef878ad3c5bf7074f5b63d5c121
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74891965"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808867"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure CLI gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -59,7 +59,7 @@ Als u een RBAC-rol aan een beveiligingsprincipal wilt toewijzen, gebruikt u de o
 
 ### <a name="container-scope"></a>Container bereik
 
-Als u een Role bereik wilt toewijzen aan een container, geeft u een teken reeks op met het bereik van `--scope` de container voor de para meter. Het bereik voor een container bevindt zich in de vorm:
+Als u een Role bereik wilt toewijzen aan een container, geeft u een teken reeks op met het bereik van de container voor de `--scope` para meter. Het bereik voor een container bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container>
@@ -76,7 +76,7 @@ az role assignment create \
 
 ### <a name="queue-scope"></a>Wachtrij bereik
 
-Als u een Role bereik aan een wachtrij wilt toewijzen, geeft u een teken reeks met het bereik van de `--scope` wachtrij voor de para meter op. Het bereik voor een wachtrij bevindt zich in de vorm:
+Als u een Role bereik aan een wachtrij wilt toewijzen, geeft u een teken reeks met het bereik van de wachtrij voor de `--scope` para meter op. Het bereik voor een wachtrij bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue>
@@ -93,7 +93,7 @@ az role assignment create \
 
 ### <a name="storage-account-scope"></a>Bereik van opslag account
 
-Als u een rollen bereik wilt toewijzen aan het opslag account, geeft u het bereik van de bron van het `--scope` opslag account op voor de para meter. Het bereik van een opslag account bevindt zich in de vorm:
+Als u een rollen bereik wilt toewijzen aan het opslag account, geeft u het bereik van de bron van het opslag account op voor de `--scope` para meter. Het bereik van een opslag account bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
@@ -110,7 +110,7 @@ az role assignment create \
 
 ### <a name="resource-group-scope"></a>Bereik van de resource groep
 
-Als u een rollen bereik wilt toewijzen aan de resource groep, geeft u de naam van de resource groep `--resource-group` of id voor de para meter op. In het volgende voor beeld wordt de rol van **gegevens lezer van de opslag wachtrij** toegewezen aan een gebruiker op het niveau van de resource groep. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden:
+Als u een rollen bereik wilt toewijzen aan de resource groep, geeft u de naam van de resource groep of ID voor de `--resource-group` para meter op. In het volgende voor beeld wordt de rol van **gegevens lezer van de opslag wachtrij** toegewezen aan een gebruiker op het niveau van de resource groep. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden:
 
 ```azurecli-interactive
 az role assignment create \
@@ -121,7 +121,7 @@ az role assignment create \
 
 ### <a name="subscription-scope"></a>Abonnements bereik
 
-Als u een rollen bereik wilt toewijzen aan het abonnement, geeft u het bereik op voor het `--scope` abonnement voor de para meter. Het bereik voor een abonnement bevindt zich in de vorm:
+Als u een rollen bereik wilt toewijzen aan het abonnement, geeft u het bereik op voor het abonnement voor de `--scope` para meter. Het bereik voor een abonnement bevindt zich in de vorm:
 
 ```
 /subscriptions/<subscription>

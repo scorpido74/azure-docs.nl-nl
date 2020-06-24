@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261045"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690724"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Connectors gebruiken met de Azure AD Connect Sync Service Manager
 
@@ -37,7 +37,7 @@ Het tabblad connectors wordt gebruikt voor het beheren van alle systemen waarop 
 | Eigenschappen |Wordt gebruikt voor filteren op domein en OE. |
 | [Verwijderen](#delete) |Wordt gebruikt om de gegevens in de connector ruimte te verwijderen of om een verbinding met een forest te verwijderen. |
 | [Uitvoerings profielen configureren](#configure-run-profiles) |Met uitzonde ring van domein filtering, hoeft niets te worden geconfigureerd. U kunt deze actie gebruiken om al geconfigureerde uitvoerings profielen weer te geven. |
-| Voer |Wordt gebruikt om een eenmalige uitvoering van een profiel te starten. |
+| Uitvoeren |Wordt gebruikt om een eenmalige uitvoering van een profiel te starten. |
 | Stoppen |Hiermee stopt u een connector die momenteel een profiel uitvoert. |
 | Connector exporteren |Niet gebruiken. |
 | Connector importeren |Niet gebruiken. |
@@ -88,7 +88,7 @@ U kunt dit probleem oplossen door de AD DS-gebruikers account bij te werken met 
 5. Selecteer in het pop-updialoogvenster verbinding maken met Active Directory forest:
 6. De naam van het forest geeft de corresponderende on-premises AD aan.
 7. De gebruikers naam geeft het AD DS account aan dat wordt gebruikt voor synchronisatie.
-8. Voer het nieuwe wacht woord van het AD DS account in het tekstvak ![wacht woord Azure AD Connect synchronisatie versleutelings sleutel in](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
+8. Voer het nieuwe wacht woord van het AD DS account in het tekstvak wacht woord ![ Azure AD Connect synchronisatie versleutelings sleutel in](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Klik op OK om het nieuwe wacht woord op te slaan en de synchronisatie service opnieuw te starten om het oude wacht woord uit de geheugen cache te verwijderen.
 
 
