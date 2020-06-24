@@ -46,8 +46,12 @@
                   href: data-box-system-requirements-rest.md
             - name: Limieten begrijpen
               href: data-box-limits.md
-            - name: Beveiliging controleren
-              href: data-box-security.md
+            - name: Beveiliging
+              items:
+                - name: Beveiligingsbasislijn
+                  href: security-baseline.md
+                - name: Beveiliging controleren
+                  href: data-box-security.md
             - name: Veelgestelde vragen
               href: data-box-faq.md
         - name: Procedures

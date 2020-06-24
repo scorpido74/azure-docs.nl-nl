@@ -6,24 +6,22 @@ documentationcenter: android
 keywords: pushmeldingen,pushmelding,android-pushmelding, firebase cloud messaging
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/11/2019
+ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 244e9d9136705eeef27680d2fa590d283abb6467
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170440"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255463"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met Firebase SDK versie 0.6
 
@@ -556,11 +554,13 @@ U kunt pushmeldingen verzenden vanuit de [Azure-portal] door de volgende stappen
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>De mobiele app uitvoeren in een emulator
+
 Voordat pushmeldingen binnen een emulator test, moet u ervoor zorgen dat de installatiekopie van de emulator het Google API-niveau ondersteunt dat u voor uw app hebt gekozen. Als uw installatiekopie geen ondersteuning biedt voor native Google-API’s, kan de uitzondering **SERVICE\_NIET\_BESCHIKBAAR** worden weergegeven.
 
 Bovendien moet uw Google-account zijn toegevoegd aan de actieve emulator onder **Instellingen** > **Accounts**. Anders kunnen pogingen om opnieuw te registreren bij FCM leiden tot de uitzondering **VERIFICATIE\_MISLUKT**.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In deze zelfstudie hebt u Firebase Cloud Messaging gebruikt om meldingen te verzenden naar alle Android-apparaten die zijn geregistreerd bij de service. Ga verder met de volgende zelfstudie als u wilt weten hoe u pushmeldingen kunt verzenden naar specifieke apparaten:
 
 > [!div class="nextstepaction"]

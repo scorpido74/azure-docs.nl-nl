@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478755"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944318"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-beveiliging 
 
@@ -70,7 +70,7 @@ Als u een ACL wilt Toep assen op uw certificaten voor uw Service Fabric cluster 
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Een Service Fabric cluster certificaat beveiligen op basis van algemene naam
 
-Als u uw Service Fabric-cluster op `Common Name`basis van certificaten wilt beveiligen, gebruikt u de Resource Manager-sjabloon eigenschap [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), als volgt:
+Als u uw Service Fabric-cluster op basis van certificaten wilt beveiligen `Common Name` , gebruikt u de Resource Manager-sjabloon eigenschap [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames), als volgt:
 
 ```json
 "certificateCommonNames": {
@@ -87,16 +87,16 @@ Als u uw Service Fabric-cluster op `Common Name`basis van certificaten wilt beve
 > [!NOTE]
 > Service Fabric clusters gebruiken het eerste geldige certificaat dat wordt gevonden in het certificaat archief van de host. In Windows is dit het certificaat met de laatste verval datum die overeenkomt met uw algemene naam en de vinger afdruk van de verlener.
 
-Azure-domeinen, zoals *\<uw subdomein\>. CLOUDAPP.Azure.com of \<uw subdomein\>. trafficmanager.net, zijn eigendom van micro soft. Certificerings instanties geven geen certificaten voor domeinen aan niet-gemachtigde gebruikers. De meeste gebruikers moeten een domein aanschaffen bij een registratie service of een geautoriseerde domein beheerder zijn, zodat een certificerings instantie u een certificaat met deze algemene naam kan uitgeven.
+Azure-domeinen, zoals * \<YOUR SUBDOMAIN\> . cloudapp.Azure.com of \<YOUR SUBDOMAIN\> . trafficmanager.net, zijn eigendom van micro soft. Certificerings instanties geven geen certificaten voor domeinen aan niet-gemachtigde gebruikers. De meeste gebruikers moeten een domein aanschaffen bij een registratie service of een geautoriseerde domein beheerder zijn, zodat een certificerings instantie u een certificaat met deze algemene naam kan uitgeven.
 
 Lees voor meer informatie over het configureren van DNS-service voor het omzetten van uw domein naar een micro soft IP-adres hoe u [Azure DNS configureert om uw domein te hosten](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns).
 
 > [!NOTE]
 > Voeg de volgende twee records toe aan uw DNS-zone nadat u de domein naam servers hebt gedelegeerd naar uw Azure DNS zone naam servers:
-> - Een A-record voor domein APEX die niet `Alias record set` van alle IP-adressen van uw aangepaste domein is, wordt omgezet.
-> - Een C-record voor micro soft-subdomeinen die u hebt ingericht en `Alias record set`die geen zijn. U kunt bijvoorbeeld uw Traffic Manager of de DNS-naam van Load Balancer gebruiken.
+> - Een A-record voor domein APEX die niet van `Alias record set` alle IP-adressen van uw aangepaste domein is, wordt omgezet.
+> - Een C-record voor micro soft-subdomeinen die u hebt ingericht en die geen zijn `Alias record set` . U kunt bijvoorbeeld uw Traffic Manager of de DNS-naam van Load Balancer gebruiken.
 
-Als u uw portal wilt bijwerken om een aangepaste DNS-naam voor uw `"managementEndpoint"`service Fabric-cluster weer te geven, werkt u de eigenschappen van de volgende service Fabric cluster resource manager-sjabloon bij:
+Als u uw portal wilt bijwerken om een aangepaste DNS-naam voor uw Service Fabric-cluster weer te geven `"managementEndpoint"` , werkt u de eigenschappen van de volgende service Fabric cluster resource manager-sjabloon bij:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -157,12 +157,12 @@ Als u uw toepassing toegang wilt geven tot geheimen, neemt u het certificaat op 
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Service Fabric toepassingen verifiëren voor Azure-resources met behulp van Managed Service Identity (MSI)
 
-Zie [Wat is beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)voor meer informatie over beheerde identiteiten voor Azure-resources.
+Zie [Wat is beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten voor Azure-resources.
 Azure Service Fabric-clusters worden gehost op Virtual Machine Scale Sets, die [Managed Service Identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)ondersteunen.
 Zie [Azure-Services die ondersteuning bieden voor Azure Active Directory-verificatie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)voor een lijst met services die door MSI kunnen worden gebruikt voor verificatie.
 
 
-Voor het inschakelen van door het systeem toegewezen beheerde identiteit tijdens het maken van een schaalset voor virtuele machines of een bestaande schaalset voor `"Microsoft.Compute/virtualMachinesScaleSets"` virtuele machines declareert u de volgende eigenschap:
+Voor het inschakelen van door het systeem toegewezen beheerde identiteit tijdens het maken van een schaalset voor virtuele machines of een bestaande schaalset voor virtuele machines declareert u de volgende `"Microsoft.Compute/virtualMachinesScaleSets"` eigenschap:
 
 ```json
 "identity": { 
@@ -171,7 +171,7 @@ Voor het inschakelen van door het systeem toegewezen beheerde identiteit tijdens
 ```
 Zie [Wat zijn beheerde identiteiten voor Azure-resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) voor meer informatie.
 
-Als u een door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hebt gemaakt, declareert u de volgende resource in uw sjabloon om deze toe te wijzen aan de schaalset van de virtuele machine. Vervang `\<USERASSIGNEDIDENTITYNAME\>` door de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt:
+Als u een door de [gebruiker toegewezen beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)hebt gemaakt, declareert u de volgende resource in uw sjabloon om deze toe te wijzen aan de schaalset van de virtuele machine. Vervang door `\<USERASSIGNEDIDENTITYNAME\>` de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt:
 
 ```json
 "identity": {
@@ -217,7 +217,12 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 Deze firewall regels vormen een aanvulling op uw toegestane uitgaande netwerk beveiligings groepen, waaronder ServiceFabric en opslag, zoals toegestane bestemmingen van uw virtuele netwerk.
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Micro soft [Azure raadt](https://azure.microsoft.com/updates/azuretls12/) aan alle klanten de migratie te volt ooien naar oplossingen die TLS (trans port Layer security) 1,2 ondersteunen en ervoor te zorgen dat TLS 1,2 standaard wordt gebruikt.
+
+Azure-Services, waaronder [service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493), hebben het technische werk voor het verwijderen van de afhankelijkheid van TLS 1.0/1.1-protocollen voltooid en bieden volledige ondersteuning voor klanten die hun werk belasting moeten configureren om alleen TLS 1,2-verbindingen te accepteren en te initiëren.
+
+Klanten moeten hun door Azure gehoste workloads en on-premises toepassingen met Azure-Services configureren om TLS 1,2 standaard te gebruiken. Hier leest u hoe u [service Fabric cluster knooppunten en toepassingen kunt configureren](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md) voor het gebruik van een specifieke TLS-versie.
 
 ## <a name="windows-defender"></a>Windows Defender 
 

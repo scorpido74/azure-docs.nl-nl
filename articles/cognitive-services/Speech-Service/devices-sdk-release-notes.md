@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780909"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212493"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
 
@@ -39,10 +39,10 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 
 - Linux ARM wordt nu ondersteund.
 - Er worden initiële binaire bestanden voor [roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) gegeven (Linux ARM64).
-- Windows-gebruikers kunnen `AudioConfig.fromDefaultMicrophoneInput()` of `AudioConfig.fromMicrophoneInput(deviceName)` gebruiken om de microfoon op te geven die moet worden gebruikt.
+- Windows-gebruikers kunnen `AudioConfig.fromDefaultMicrophoneInput()` of gebruiken `AudioConfig.fromMicrophoneInput(deviceName)` om de microfoon op te geven die moet worden gebruikt.
 - De grootte van de tape wisselaar is geoptimaliseerd.
 - Ondersteuning voor multi-turn-herkenning met hetzelfde spraak/intentie Recognizer-object.
-- Herstel af en toe is vastgelopen tijdens het stoppen van de herkenning.
+- Een incidenteel probleem oplossen waarbij het proces niet meer reageert tijdens het stoppen van de herkenning.
 - Voor beeld-apps bevatten nu een voor beeld van een deel nemers. eigenschappen bestand om de indeling van het bestand te demonstreren.
 - Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.7.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
 
@@ -63,7 +63,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 - Nieuwe trefwoord technologie brengt belang rijke verbeteringen met zich mee.
 - Nieuwe pijp lijn voor de verwerking van audio voor verbeterde herkenning van het ver-veld.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Vanwege de nieuwe trefwoord technologie moeten alle tref woorden opnieuw worden gemaakt in onze verbeterde trefwoord Portal. Oude tref woorden volledig verwijderen van het apparaat verwijderen van de oude app.
   - ADB uninstall com. micro soft. cognitiveservices. speech. samples. sdsdkstarterapp
@@ -78,7 +78,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 - De verwerking van tref woorden is bijgewerkt, zie wijzigingen afbreken.
 - Voorbeeld toepassing voegt taal keuze voor zowel spraak herkenning als omzetting toe.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Het [installeren van een tref woord](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) is vereenvoudigd, het maakt nu deel uit van de app en vereist geen afzonderlijke installatie op het apparaat.
 - De herkenning van het tref woord is gewijzigd en twee gebeurtenissen worden ondersteund.
@@ -97,7 +97,7 @@ De volgende secties bevatten een lijst met wijzigingen in de meest recente relea
 - Nauw keurigheid van spraak herkenning is verbeterd met onze verbeterde algoritme voor geluids verwerking
 - Er is een probleem met een continue opname van audio sessie opgelost.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 - Met deze release wordt een aantal belang rijke wijzigingen geïntroduceerd. Raadpleeg [Deze pagina](https://aka.ms/csspeech/breakingchanges_1_0_0) voor meer informatie over de api's.
 - De KWS-model bestanden zijn niet compatibel met Speech-apparaten SDK 1.0.1. De bestaande trefwoord bestanden worden verwijderd nadat de nieuwe trefwoord bestanden naar het apparaat zijn geschreven.

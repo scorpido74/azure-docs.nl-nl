@@ -5,15 +5,15 @@ description: Dit artikel bevat informatie over het oplossen van het probleem met
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 961ed17bcef19b445c2546a557725bb6bd8653cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293544"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806483"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Problemen met App Service oplossen in Application Gateway
 
@@ -77,7 +77,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-In het vorige voor beeld ziet u dat de antwoord header de status code 301 voor omleiding heeft. De locatie header heeft de hostnaam van de app service in plaats van de oorspronkelijke hostnaam `www.contoso.com`.
+In het vorige voor beeld ziet u dat de antwoord header de status code 301 voor omleiding heeft. De locatie header heeft de hostnaam van de app service in plaats van de oorspronkelijke hostnaam `www.contoso.com` .
 
 ## <a name="solution-rewrite-the-location-header"></a>Oplossing: de locatie header opnieuw schrijven
 
@@ -98,9 +98,9 @@ U moet eigenaar zijn van een aangepast domein en dit proces volgen:
 
     ![Lijst met aangepaste domeinen voor app service](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Uw app service is gereed om de hostnaam te accepteren `www.contoso.com`. Wijzig uw CNAME-vermelding in DNS zodat deze terug naar de FQDN van de toepassings gateway verwijst, bijvoorbeeld `appgw.eastus.cloudapp.azure.com`.
+- Uw app service is gereed om de hostnaam te accepteren `www.contoso.com` . Wijzig uw CNAME-vermelding in DNS zodat deze terug naar de FQDN van de toepassings gateway verwijst, bijvoorbeeld `appgw.eastus.cloudapp.azure.com` .
 
-- Zorg ervoor dat uw domein `www.contoso.com` wordt omgezet naar de FQDN van de toepassings gateway wanneer u een DNS-query uitvoert.
+- Zorg ervoor dat uw domein wordt `www.contoso.com` omgezet naar de FQDN van de toepassings gateway wanneer u een DNS-query uitvoert.
 
 - Stel de aangepaste test voor het uitschakelen **van de hostnaam van de back-end-HTTP-instellingen**uit. Schakel in het Azure Portal het selectie vakje in de instellingen testen uit. Gebruik in Power shell niet de schakel optie **-PickHostNameFromBackendHttpSettings** in de opdracht **set-AzApplicationGatewayProbeConfig** . Voer in het veld hostnaam van de test de FQDN-naam van uw app service in, example.azurewebsites.net. De test aanvragen die vanuit de toepassings gateway worden verzonden, hebben deze FQDN in de hostheader.
 
@@ -111,7 +111,7 @@ U moet eigenaar zijn van een aangepast domein en dit proces volgen:
 
 - Koppel de aangepaste test terug naar de HTTP-instellingen van de back-end en controleer of de back-end in orde is.
 
-- De toepassings gateway moet nu dezelfde hostnaam `www.contoso.com`door sturen naar de app service. De omleiding gebeurt op dezelfde hostnaam. Controleer de volgende voorbeeld aanvraag en-antwoord headers.
+- De toepassings gateway moet nu dezelfde hostnaam door sturen `www.contoso.com` naar de app service. De omleiding gebeurt op dezelfde hostnaam. Controleer de volgende voorbeeld aanvraag en-antwoord headers.
 
 Als u de voor gaande stappen wilt implementeren met behulp van Power shell voor een bestaande configuratie, gebruikt u het Power shell-voorbeeld script dat volgt. Houd er rekening mee dat de Schakel opties **-PickHostname niet zijn** gebruikt in de configuratie van de test en de HTTP-instellingen.
 
