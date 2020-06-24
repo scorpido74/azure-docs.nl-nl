@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271510"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705369"
 ---
 # <a name="symmetric-key-attestation"></a>Attestation met behulp van een symmetrische sleutel
 
@@ -48,7 +48,7 @@ Hier volgen de onderdelen van elk token:
 
 | Waarde | Beschrijving |
 | --- | --- |
-| ondertekening |Een HMAC-SHA256-handtekening teken reeks. Voor afzonderlijke inschrijvingen wordt deze hand tekening gemaakt met behulp van de symmetrische sleutel (primair of secundair) om de hash uit te voeren. Voor inschrijvings groepen wordt een sleutel die is afgeleid van de sleutel registratie groep gebruikt om de hash uit te voeren. De hash wordt uitgevoerd in een bericht van de volgende indeling `URL-encoded-resourceURI + "\n" + expiry`:. **Belang rijk**: de sleutel moet worden gedecodeerd van Base64 voordat deze wordt gebruikt om de HMAC-sha256 berekening uit te voeren. Daarnaast moet het handtekening resultaat URL-gecodeerd zijn. |
+| ondertekening |Een HMAC-SHA256-handtekening teken reeks. Voor afzonderlijke inschrijvingen wordt deze hand tekening gemaakt met behulp van de symmetrische sleutel (primair of secundair) om de hash uit te voeren. Voor inschrijvings groepen wordt een sleutel die is afgeleid van de sleutel registratie groep gebruikt om de hash uit te voeren. De hash wordt uitgevoerd in een bericht van de volgende indeling: `URL-encoded-resourceURI + "\n" + expiry` . **Belang rijk**: de sleutel moet worden gedecodeerd van Base64 voordat deze wordt gebruikt om de HMAC-sha256 berekening uit te voeren. Daarnaast moet het handtekening resultaat URL-gecodeerd zijn. |
 | ResourceURI |De URI van het registratie-eind punt dat met dit token kan worden geopend, beginnend met de scope-ID voor het Device Provisioning service-exemplaar. Bijvoorbeeld: `{Scope ID}/registrations/{Registration ID}` |
 | verloop |UTF8-teken reeksen voor het aantal seconden sinds de epoche 00:00:00 UTC op 1 januari 1970. |
 | {URL-encoded-resourceURI} |Kleine letter-URL-code ring van de resource-URI voor kleine letters |

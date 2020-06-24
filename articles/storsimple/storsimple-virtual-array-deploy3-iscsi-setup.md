@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254493"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704587"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual array implementeren: ingesteld als een iSCSI-server via Azure Portal
 
@@ -81,7 +81,7 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
 6. Op de pagina **Apparaatinstellingen** :
    
    1. Wijs een unieke **naam** toe aan uw apparaat. Deze naam mag 1-15 tekens lang zijn en mag letter, cijfers en afbreek streepjes bevatten.
-   2. Klik op **iSCSI server** het iSCSI- ![server pictogram iSCSI](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) -server pictogram voor het **type** apparaat dat u maakt. Een iSCSI-server biedt u de mogelijkheid om blok opslag in te richten.
+   2. Klik op het iSCSI- **Server** pictogram ![ iSCSI-server pictogram ](./media/storsimple-virtual-array-deploy3-iscsi-setup/image7.png) voor het **type** apparaat dat u maakt. Een iSCSI-server biedt u de mogelijkheid om blok opslag in te richten.
    3. Geef op of u wilt dat dit apparaat lid is van een domein. Als uw apparaat een iSCSI-server is, is het toevoegen van het domein optioneel. Als u besluit uw iSCSI-server niet aan een domein toe te voegen, klikt u op **Toep assen**, wacht u totdat de instellingen worden toegepast en gaat u verder met de volgende stap.
       
        Als u het apparaat wilt toevoegen aan een domein. Voer een **domein naam**in en klik vervolgens op **Toep assen**.
@@ -100,17 +100,17 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
    
     Op de pagina **webproxy** :
    
-   1. Geef de **URL van de webproxy** op in deze indeling: *http\/:/host-IP-adres* of *FQDN: poort nummer*. Let op: HTTPS-Url's worden niet ondersteund.
+   1. Geef de **URL van de webproxy** op in deze indeling: *http: \/ /host-IP-adres* of *FQDN: poort nummer*. Let op: HTTPS-Url's worden niet ondersteund.
    2. Geef **verificatie** op als **basis** of **geen**.
    3. Als u verificatie gebruikt, moet u ook een **gebruikers naam** en **wacht woord**opgeven.
    4. Klik op **Toepassen**. Hiermee worden de geconfigureerde web proxy-instellingen gevalideerd en toegepast.
-8. (Optioneel) de tijd instellingen voor uw apparaat configureren, zoals de tijd zone en de primaire en secundaire NTP-servers. NTP-servers zijn vereist omdat uw apparaat tijd moet synchroniseren zodat het kan worden geverifieerd bij uw Cloud serviceproviders.
+8. (Optioneel) de tijd instellingen voor uw apparaat configureren, zoals de tijd zone en de primaire en secundaire NTP-servers. NTP-servers zijn vereist, omdat uw apparaat de tijd moet synchroniseren voor verificatie met uw cloudserviceproviders.
    
     ![Tijd instellingen](./media/storsimple-virtual-array-deploy3-iscsi-setup/image10.png)
    
     Op de pagina **tijd instellingen** :
    
-   1. Selecteer in de vervolg keuzelijst de **tijd zone** op basis van de geografische locatie waar het apparaat wordt geïmplementeerd. De standaard tijd zone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
+   1. Selecteer in de vervolg keuzelijst de **tijd zone** op basis van de geografische locatie waar het apparaat wordt geïmplementeerd. De standaard tijdzone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
    2. Geef een **primaire NTP-server** voor uw apparaat op of accepteer de standaard waarde van time.Windows.com. Zorg ervoor dat in uw netwerk NTP-verkeer kan worden doorgegeven van uw datacenter naar internet.
    3. Geef eventueel een **secundaire NTP-server** op voor uw apparaat.
    4. Klik op **Toepassen**. Hiermee worden de geconfigureerde tijd instellingen gevalideerd en toegepast.
@@ -118,7 +118,7 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
    
    1. Voer de **service registratie sleutel** in die u hebt ontvangen in **stap 2: de service registratie sleutel ophalen** in [de StorSimple virtuele matrix implementeren: bereid de portal](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)voor.
    2. Als dit niet het eerste apparaat is dat u bij deze service registreert, moet u de **versleutelings sleutel voor de service gegevens**opgeven. Deze sleutel is vereist bij de service registratie sleutel om extra apparaten te registreren bij de StorSimple-Apparaatbeheer service. Raadpleeg voor meer informatie [de versleutelings sleutel voor service gegevens ophalen](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) op uw lokale webinterface.
-   3. Klik op **registreren**. Hiermee wordt het apparaat opnieuw opgestart. Mogelijk moet u 2-3 minuten wachten voordat het apparaat is geregistreerd. Nadat het apparaat opnieuw is opgestart, wordt u naar de aanmeldings pagina geleid.
+   3. Klik op **Registreren**. Hiermee wordt het apparaat opnieuw opgestart. Mogelijk moet u 2-3 minuten wachten voordat het apparaat is geregistreerd. Nadat het apparaat opnieuw is opgestart, wordt u naar de aanmeldings pagina geleid.
       
       ![Apparaat registreren](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. Ga terug naar de Azure-portal.

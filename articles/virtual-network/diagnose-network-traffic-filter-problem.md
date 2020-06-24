@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240781"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704944"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Een probleem met het netwerk verkeer van een virtuele machine vaststellen
 
@@ -79,7 +79,7 @@ Hoewel effectief beveiligings regels zijn bekeken via de virtuele machine, kunt 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` uit op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Connect-AzAccount` om u aan te melden bij Azure met een account met de [vereiste machtigingen](virtual-network-network-interface.md#permissions)].
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer uit `Get-Module -ListAvailable Az` op uw computer om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Connect-AzAccount` om u aan te melden bij Azure met een account met de [vereiste machtigingen](virtual-network-network-interface.md#permissions)].
 
 Haal de juiste beveiligings regels op voor een netwerk interface met [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup). In het volgende voor beeld worden de effectief beveiligings regels opgehaald voor een netwerk interface met de naam *myVMVMNic*, die zich in een resource groep met de naam *myResourceGroup*bevindt:
 
@@ -113,7 +113,7 @@ In de vorige uitvoer is de naam van de netwerk interface *myVMVMNic*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnoses uitvoeren met Azure CLI
 
-Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` en u aanmelden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
+Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren en u `az login` Aanmelden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
 Haal de juiste beveiligings regels op voor een netwerk interface met [AZ Network NIC List-effectief-NSG](/cli/azure/network/nic#az-network-nic-list-effective-nsg). In het volgende voor beeld worden de effectief beveiligings regels opgehaald voor een netwerk interface met de naam *myVMVMNic* die zich in een resource groep met de naam *myResourceGroup*bevindt:
 
@@ -177,7 +177,7 @@ Of u de Azure- [Portal](#diagnose-using-azure-portal), [Power shell](#diagnose-u
 | Protocol                | TCP                                                                                |
 | Bewerking                  | Toestaan                                                                              |
 | Prioriteit                | 100                                                                                |
-| Naam                    | Allow-HTTP-all                                                                     |
+| Name                    | Allow-HTTP-all                                                                     |
 
 Nadat u de regel hebt gemaakt, wordt poort 80 inkomende van Internet toegestaan, omdat de prioriteit van de regel hoger is dan de standaard beveiligings regel met de naam *DenyAllInBound*, die het verkeer weigert. Meer informatie over het [maken van een beveiligings regel](manage-network-security-group.md#create-a-security-rule). Als verschillende Nsg's zijn gekoppeld aan de netwerk interface en het subnet, moet u dezelfde regel maken in beide Nsg's.
 

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186220"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705199"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Uw manifesten filteren met behulp van dynamische pakket
 
@@ -36,13 +36,13 @@ Met deze mogelijkheid om verschillende filters op te geven in uw stream, beschik
 
 ## <a name="overview-of-manifests"></a>Overzicht van manifesten
 
-Azure Media Services ondersteunt HLS-, MPEG-DASH-en Smooth Streaming-protocollen. Als onderdeel van [dynamische pakketten](dynamic-packaging-overview.md)worden de streaming-client manifesten (HLS Master-afspeel lijst, Dash-media Presentation Description [MPD] en Smooth streaming) dynamisch gegenereerd op basis van de indelings kiezer in de URL. Zie voor meer informatie de bezorgings protocollen in de [algemene werk stroom op aanvraag](dynamic-packaging-overview.md#delivery-protocols).
+Azure Media Services ondersteunt HLS-, MPEG-DASH-en Smooth Streaming-protocollen. Als onderdeel van [dynamische pakketten](dynamic-packaging-overview.md)worden de streaming-client manifesten (HLS Master-afspeel lijst, Dash-media Presentation Description [MPD] en Smooth streaming) dynamisch gegenereerd op basis van de indelings kiezer in de URL. Zie voor meer informatie de bezorgings protocollen in de [algemene werk stroom op aanvraag](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery).
 
 ### <a name="get-and-examine-manifest-files"></a>Manifest bestanden ophalen en onderzoeken
 
 U geeft een lijst op met de eigenschaps voorwaarden voor het filteren van eigenschappen op basis van welke sporen van uw stroom (Live of video op aanvraag [VOD]) moeten worden opgenomen in een dynamisch gemaakt manifest. Als u de eigenschappen van de tracks wilt ophalen en bekijken, moet u eerst het Smooth Streaming-manifest laden.
 
-In de zelf studie [bestanden uploaden, coderen en streamen met .net](stream-files-tutorial-with-api.md#get-streaming-urls) wordt uitgelegd hoe u de streaming-url's met .net kunt bouwen. Als u de app uitvoert, wijst een van de Url's naar het Smooth Streaming-manifest `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest`:.<br/> Kopieer en plak de URL in de adres balk van een browser. Het bestand wordt gedownload. U kunt deze openen in een tekst editor.
+In de zelf studie [bestanden uploaden, coderen en streamen met .net](stream-files-tutorial-with-api.md#get-streaming-urls) wordt uitgelegd hoe u de streaming-url's met .net kunt bouwen. Als u de app uitvoert, wijst een van de Url's naar het Smooth Streaming-manifest: `https://amsaccount-usw22.streaming.media.azure.net/00000000-0000-0000-0000-0000000000000/ignite.ism/manifest` .<br/> Kopieer en plak de URL in de adres balk van een browser. Het bestand wordt gedownload. U kunt deze openen in een tekst editor.
 
 Zie voor een REST-voor beeld [bestanden uploaden, coderen en streamen met rest](stream-files-tutorial-with-rest.md#list-paths-and-build-streaming-urls).
 
@@ -135,7 +135,7 @@ U kunt ook meerdere filters combi neren in één URL. In het volgende scenario z
 
 Als u filters wilt combi neren, stelt u de filter namen in op de URL van het manifest/de afspeel lijst met een punt komma als scheidings teken. Stel dat u een filter hebt met de naam *MyMobileDevice* dat de kwaliteiten filtert en dat u een andere benoemde *MyStartTime* hebt om een specifieke begin tijd in te stellen. U kunt Maxi maal drie filters combi neren.
 
-Zie [dit blog bericht](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
+Lees [dit blogbericht](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) voor meer informatie.
 
 ## <a name="considerations-and-limitations"></a>Overwegingen en beperkingen
 
@@ -146,7 +146,7 @@ Zie [dit blog bericht](https://azure.microsoft.com/blog/azure-media-services-rel
 - Klanten moeten het manifest hand matig downloaden en het exacte tijds tempel en de tijd schaal van de start parseren.
 
     - [Het manifest bestand ophalen en controleren om de](#get-and-examine-manifest-files)eigenschappen van de sporen in een Asset te bepalen.
-    - De formule voor het instellen van de tijds tempel eigenschappen van de Asset-filter is: <br/>startTimestamp = &lt;begin tijd in het manifest&gt; +  &lt;verwachte filter start tijd in seconden&gt; * tijd schaal
+    - De formule voor het instellen van de tijds tempel eigenschappen van de Asset-filter is: <br/>startTimestamp = &lt; begin tijd in het manifest &gt;  +   &lt; verwachte filter start tijd in seconden &gt; * tijd schaal
 
 ## <a name="next-steps"></a>Volgende stappen
 

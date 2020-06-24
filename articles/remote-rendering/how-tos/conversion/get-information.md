@@ -5,20 +5,20 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681517"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805015"
 ---
 # <a name="get-information-about-a-converted-model"></a>Informatie ophalen over een geconverteerd model
 
-Het arrAsset-bestand dat door de conversie service wordt geproduceerd, is uitsluitend bedoeld voor gebruik door de rendering-service. Het kan echter voor komen dat u toegang wilt krijgen tot informatie over een model zonder een rendering-sessie te starten. Daarom plaatst de conversie service een JSON-bestand naast het arrAsset-bestand in de uitvoer container. Als een bestand `buggy.gltf` bijvoorbeeld wordt geconverteerd, bevat de uitvoer container een bestand dat naast het geconverteerde activum `buggy.info.json` `buggy.arrAsset`wordt genoemd. Het bevat informatie over het bron model, het geconverteerde model en de conversie zelf.
+Het arrAsset-bestand dat door de conversie service wordt geproduceerd, is uitsluitend bedoeld voor gebruik door de rendering-service. Het kan echter voor komen dat u toegang wilt krijgen tot informatie over een model zonder een rendering-sessie te starten. Daarom plaatst de conversie service een JSON-bestand naast het arrAsset-bestand in de uitvoer container. Als een bestand bijvoorbeeld `buggy.gltf` wordt geconverteerd, bevat de uitvoer container een bestand dat `buggy.info.json` naast het geconverteerde activum wordt genoemd `buggy.arrAsset` . Het bevat informatie over het bron model, het geconverteerde model en de conversie zelf.
 
 ## <a name="example-info-file"></a>Voor beeld van *info* bestand
 
-Hier volgt een voor *beeld van een bestand dat* wordt gegenereerd door `buggy.gltf`het converteren van een bestand met de naam:
+Hier volgt een voor *beeld van een bestand dat* wordt gegenereerd door het converteren van een bestand met de naam `buggy.gltf` :
 
 ```JSON
 {
@@ -100,7 +100,7 @@ In deze sectie vindt u informatie over de indeling van het bron bestand.
 Deze sectie bevat informatie over de bron scène. Er zijn vaak verschillen tussen de waarden in deze sectie en de equivalente waarden in het hulp programma waarmee het bron model is gemaakt. Dergelijke verschillen worden verwacht, omdat het model tijdens de export-en conversie stappen wordt gewijzigd.
 
 * `numMeshes`: Het aantal netonderdelen, waarbij elk deel naar één enkel materiaal kan verwijzen.
-* `numFaces`: Het totale aantal _drie hoeken_ in het hele model. Houd er rekening mee dat het net wordt getriangulatie tijdens de conversie.
+* `numFaces`: Het totale aantal _drie hoeken_ in het hele model. Houd er rekening mee dat het net wordt getriangulatie tijdens de conversie. Dit aantal draagt bij aan de grens van de veelhoek in de [standaard weergave VM-grootte](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
 * `numVertices`: Het totale aantal hoek punten in het hele model.
 * `numMaterial`: Het totale aantal materialen in het hele model.
 * `numFacesSmallestMesh`: Het aantal drie hoeken in het kleinste Maas van het model.

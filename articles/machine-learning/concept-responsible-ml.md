@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: acf329092d082b9e9cece451e90e96fc0e24fa5c
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 17cbf4f7b0ae31b0523a0fbea0c1cae8f83b234b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447812"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982591"
 ---
 # <a name="responsible-machine-learning-ml"></a>Verantwoordelijke Machine Learning (ML)
 
@@ -60,6 +60,9 @@ Wanneer gegevens worden gebruikt voor analyse, is het belang rijk dat de gegeven
 In traditionele scenario's worden onbewerkte gegevens opgeslagen in bestanden en data bases. Wanneer gebruikers gegevens analyseren, gebruiken ze doorgaans de onbewerkte gegevens. Dit is een probleem omdat dit kan leiden tot inbreuk op de privacy van een persoon. Differentiële privacy probeert dit probleem te verhelpen door "Noise" of wille keurigheid toe te voegen aan de gegevens, zodat gebruikers geen afzonderlijke gegevens punten kunnen identificeren.
 
 Het implementeren van differentiatie van een differentieel particulier systeem is lastig. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) is een open-source project dat verschillende onderdelen bevat voor het bouwen van wereld wijde differentiatie systemen. Voor meer informatie over de differentiële privacy en het WhiteNoise-project raadpleegt u het artikel privacy [beschermen met behulp van differentiële privacy en WhiteNoise](./concept-differential-privacy.md) .
+
+> [!NOTE]
+> De naam van de Toolkit wordt gewijzigd en de nieuwe naam wordt in de komende weken geïntroduceerd. 
 
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>De levens cyclus van machine learning documenteren met gegevens bladen
 

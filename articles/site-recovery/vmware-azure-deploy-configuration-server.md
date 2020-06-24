@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257379"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704434"
 ---
 # <a name="deploy-a-configuration-server"></a>Een configuratieserver implementeren
 
@@ -38,12 +38,12 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 
 1. De gebruiker moet beschikken over een ontwikkelaar van de toepassing om een toepassing te kunnen maken.
     - Meld u aan bij de Azure Portal om te verifiëren.</br>
-    - Ga naar **Azure Active Directory** > -**rollen en-beheerders**.</br>
+    - Ga naar **Azure Active Directory**-  >  **rollen en-beheerders**.</br>
     - Controleer of de Application Developer-rol is toegewezen aan de gebruiker. Als dat niet het geval is, gebruik dan een gebruiker met deze machtiging of neem contact op met een [beheerder om de machtiging in te scha kelen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
     
 2. Als de ontwikkelaar van de toepassing niet kan worden toegewezen, moet u ervoor zorgen dat de gebruikers de vlag **toepassingen kunnen registreren** zijn ingesteld op **True** als de gebruiker een identiteit wil maken. Deze machtigingen inschakelen:
     - Meld u aan bij Azure Portal.
-    - Ga naar **Azure Active Directory** > **gebruikers instellingen**.
+    - Ga naar **Azure Active Directory**  >  **gebruikers instellingen**.
     - Onder **app-registraties** **kunnen gebruikers toepassingen registreren**, **Ja**selecteren.
 
       ![Azure AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
@@ -53,7 +53,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 
 ## <a name="download-the-template"></a>De sjabloon downloaden
 
-1. Ga in de kluis naar**bron**voor **bereiding van de infra structuur** > .
+1. Ga in de kluis naar bron voor **bereiding van de infra structuur**  >  **Source**.
 2. Selecteer **+Configuratieserver** in **Bron voorbereiden**.
 3. Controleer in **Server toevoegen** of **Configuratieserver voor VMware** wordt weergegeven in **Servertype**.
 4. Down load de eicellen-sjabloon voor de configuratie server.
@@ -78,7 +78,7 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 7. Accepteer de standaardinstellingen in de rest van de wizardpagina's.
 8. In **Klaar om te voltooien** doet u het volgende:
 
-    * Als u de virtuele machine met de standaard instellingen wilt instellen, selecteert u **inschakelen nadat de implementatie** > **is voltooid**.
+    * Als u de virtuele machine met de standaard instellingen wilt instellen, selecteert u **inschakelen nadat de implementatie**  >  **is voltooid**.
     * Als u een extra netwerk interface wilt toevoegen, schakelt u het selectie vakje **na de implementatie**uit en selecteert u vervolgens **volt ooien**. Standaard wordt de configuratieserversjabloon met één NIC geïmplementeerd. Na de implementatie kunt u meer NIC’s toevoegen.
 
 > [!IMPORTANT]
@@ -92,9 +92,9 @@ U moet een gebruiker hebben met een van de volgende machtigingen die zijn ingest
 Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe voordat u de server in de kluis registreert. Het toevoegen van extra adapters wordt niet ondersteund na registratie.
 
 1. Klik in de vSphere Client-inventaris met de rechtermuisknop op de VM en selecteer **Instellingen bewerken**.
-2. Selecteer **Toevoegen** > **Ethernet-adapter** bij **Hardware**. Selecteer **volgende**.
+2. Selecteer **Toevoegen** > **Ethernet-adapter** bij **Hardware**. Selecteer vervolgens **Volgende**.
 3. Selecteer een adaptertype en een netwerk.
-4. Als u de virtuele NIC wilt verbinden wanneer de VM is ingeschakeld, selecteert u **verbinden bij inschakelen**. Selecteer vervolgens **volgende** > **volt ooien** > **OK**.
+4. Als u de virtuele NIC wilt verbinden wanneer de VM is ingeschakeld, selecteert u **verbinden bij inschakelen**. Selecteer vervolgens **volgende**  >  **volt ooien**  >  **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>De configuratie server registreren bij Azure Site Recovery Services
 
@@ -102,7 +102,7 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 2. De VM wordt opgestart in een Windows Server 2016-installatie-ervaring. Accepteer de gebruiksrechtovereenkomst en voer een Administrator-wachtwoord in.
 3. Meld u nadat de installatie is voltooid bij de virtuele machine aan als de administrator.
 4. De eerste keer dat u zich aanmeldt, wordt het Azure Site Recovery-configuratie hulpprogramma binnen een paar seconden gestart.
-5. Voer een naam in die wordt gebruikt voor het registreren van de configuratieserver bij Site Recovery. Selecteer **volgende**.
+5. Voer een naam in die wordt gebruikt voor het registreren van de configuratieserver bij Site Recovery. Selecteer vervolgens **Volgende**.
 6. Het hulpprogramma controleert of de VM verbinding kan maken met Azure. Nadat de verbinding tot stand is gebracht, selecteert u **Aanmelden** om u aan te melden bij uw Azure-abonnement.</br>
     a. De referenties moeten toegang hebben tot de kluis waarin u de configuratieserver wilt registreren.</br>
     b. Zorg ervoor dat het gekozen gebruikers account gemachtigd is om een toepassing te maken in Azure. Als u de vereiste machtigingen wilt inschakelen, volgt u de richt lijnen in de sectie [Azure Active Directory machtigings vereisten](#azure-active-directory-permission-requirements).
@@ -129,10 +129,10 @@ Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe 
 
 5. Bij het valideren van de configuratie van het **toestel**worden de vereisten gecontroleerd voordat u doorgaat.
 6. Voer op de **vCenter Server/VSphere ESXi-server configureren**de FQDN of het IP-adres van de vCenter-Server of vSphere-host in, waarbij de vm's die u wilt repliceren zich bevinden. Voer de poort in waarop de server luistert. Voer een beschrijvende naam in voor de VMware-server in de kluis.
-7. Voer referenties in die door de configuratieserver moeten worden gebruikt voor verbinding met de VMware-server. Site Recovery gebruikt deze referenties voor het automatisch detecteren van VMware-VM’s die beschikbaar zijn voor replicatie. Selecteer **Add** > **door gaan**toevoegen. De referenties die u hier opgeeft, worden lokaal opgeslagen.
+7. Voer referenties in die door de configuratieserver moeten worden gebruikt voor verbinding met de VMware-server. Site Recovery gebruikt deze referenties voor het automatisch detecteren van VMware-VM’s die beschikbaar zijn voor replicatie. Selecteer **Add**  >  **door gaan**toevoegen. De referenties die u hier opgeeft, worden lokaal opgeslagen.
 8. Voer bij **referenties voor virtuele machine configureren**de gebruikers naam en het wacht woord van de virtuele machines in om de Mobility-service automatisch te installeren tijdens de replicatie. Voor **Windows** -computers heeft het account lokale beheerders rechten nodig voor de computers die u wilt repliceren. Voor **Linux**geeft u Details voor het hoofd account op.
 9. Selecteer **Configuratie voltooien** om de registratie te voltooien.
-10. Nadat de registratie is voltooid, opent u de Azure Portal en controleert u of de configuratie server en de VMware-Server worden vermeld op **Recovery Services kluis** > **Manage** > **site Recovery infrastructuur** > **configuratie servers**beheren.
+10. Nadat de registratie is voltooid, opent u de Azure Portal en controleert u of de configuratie server en de VMware-Server worden vermeld op **Recovery Services kluis**  >  **Manage**  >  **site Recovery infrastructuur**  >  **configuratie servers**beheren.
 
 ## <a name="upgrade-the-configuration-server"></a>De configuratie Server upgraden
 
@@ -175,7 +175,7 @@ Raadpleeg het [artikel over probleem oplossing](vmware-azure-troubleshoot-config
     Nee. Wijzig de wachtwoordzin van de configuratie server niet. Een wijziging in de wachtwoordzin verbreekt de replicatie van beveiligde machines en leidt tot een kritieke status.
 * Waar kan ik een kluis registratie sleutel downloaden?
 
-    Selecteer > **site Recovery infrastructuur** **Manage** > **configuratie servers**beheren in **Recovery Services kluis**. In **servers**selecteert u **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
+    Selecteer **Recovery Services Vault** **Manage**  >  **site Recovery infrastructuur**  >  **configuratie servers**beheren in Recovery Services kluis. In **servers**selecteert u **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
 * Kan ik een bestaande configuratie server klonen en gebruiken voor replicatie-indeling?
 
     Nee. Het gebruik van een gekloond configuratie Server onderdeel wordt niet ondersteund. Het klonen van een scale-out proces server is ook een niet-ondersteund scenario. Het klonen van Site Recovery onderdelen is van invloed op voortdurende replicaties.
