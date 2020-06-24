@@ -11,18 +11,18 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 0833215449c92a1710dcaf4f2fe13ce9a16685ba
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434041"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983372"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
 >Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` in uw RSS-feed-lezer.
 
-Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
+Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u informatie over:
 
 * De nieuwste releases
 * Bekende problemen
@@ -32,9 +32,9 @@ Dit artikel bevat informatie over het volgende om up-to-date te blijven met de m
 ## <a name="known-issues"></a>Bekende problemen
 
 > [!NOTE]
-> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
-
-Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
+> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md) en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken beheren) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+>
+> Zie voor meer informatie: [de Azure Portal beperkingen voor Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
 ## <a name="june-2020"></a>Juni 2020
 
@@ -69,7 +69,7 @@ Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en
 
 CDN-ondersteuning is toegevoegd voor de *oorsprong: prefetch-* headers voor Live en video on-demand streaming; beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. Origin-assisteren CDN-prefetch-functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en Azure Media Services Origin:
 
-|HTTP-header|Waarden|Afzender|Ontvanger|Functie|
+|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-oorsprong-assistentie-prefetch-ingeschakeld | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN prefetch is ingeschakeld|
 |CDN-oorsprong-assisteren-prefetch-pad| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Het prefetch-pad naar CDN opgeven|
@@ -207,7 +207,7 @@ Er zijn updates toegevoegd die Media Services prestatie verbeteringen bevatten.
 
 ## <a name="march-2019"></a>Maart 2019
 
-Dynamische verpakking ondersteunt nu Dolby Atmos. Zie [Audio codecs die worden ondersteund door dynamische pakketten](dynamic-packaging-overview.md#audio-codecs)voor meer informatie.
+Dynamische verpakking ondersteunt nu Dolby Atmos. Zie [Audio codecs die worden ondersteund door dynamische pakketten](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)voor meer informatie.
 
 U kunt nu een lijst met Asset-of account filters opgeven die van toepassing zijn op uw streaming-Locator. Zie [filters koppelen aan streaming-Locator](filters-concept.md#associating-filters-with-streaming-locator)voor meer informatie.
 
@@ -314,7 +314,7 @@ Met Azure AD-verificatie en op rollen gebaseerde Access Control (RBAC) kunt u be
 
 #### <a name="client-sdks"></a>Client-SDK 's  
 
-Talen die worden ondersteund in Media Services V3: .NET core, Java, node. js, Ruby, type script, python en go.
+Talen die worden ondersteund in Media Services V3: .NET core, Java, Node.js, Ruby, type script, python en go.
 
 #### <a name="live-encoding-updates"></a>Live encoding-updates
 
@@ -370,11 +370,15 @@ De volgende functies zijn aanwezig in de .NET SDK:
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het verzenden van een taak kunt u opgeven dat u uw bron video wilt opnemen met behulp van HTTPS-Url's, SAS-Url's of paden naar bestanden die zich in Azure Blob Storage bevinden. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
+* Bij het verzenden van een taak kunt u opgeven dat u uw bron video wilt opnemen met behulp van HTTPS-Url's, SAS-Url's of paden naar bestanden die zich in Azure Blob Storage bevinden. Media Services V3 biedt momenteel geen ondersteuning voor gesegmenteerde overdrachts codering via HTTPS-Url's.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
 Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+
+## <a name="see-also"></a>Zie ook
+
+[Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,5 +1,5 @@
 ---
-title: Elastic Database taken (preview-versie)
+title: Taken voor Elastic Database (preview)
 description: Elastic Database taken (preview) configureren om Transact-SQL-scripts (T-SQL) uit te voeren op een set van een of meer data bases in Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 995d70419edb374c3761fe2f989ce3a757cc7a47
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050063"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251160"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastische taken maken, configureren en beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Als u geen elastische taken hebt gebruikt, [leest u meer over de concepten van d
 
 ## <a name="create-and-configure-the-agent"></a>De agent maken en configureren
 
-1. Maak of identificeer een lege SQL-database op servicelaag S0 of hoger. Deze data base wordt gebruikt als de *taak database* tijdens het maken van een elastische taak agent.
+1. Een lege S0 of een hogere data base maken of identificeren. Deze data base wordt gebruikt als de *taak database* tijdens het maken van een elastische taak agent.
 2. Een elastische taak agent maken in de [Portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) of met [Power shell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent).
 
    ![Een elastische taak agent maken](./media/elastic-jobs-overview/create-elastic-job-agent.png)
@@ -56,7 +56,7 @@ Het instellen van de juiste referenties voor het uitvoeren van een taak kan enig
 
 De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de juiste taakreferenties. **Denk eraan dat de gebruiker moet worden gemaakt in elke database (alle *doelgebruikersdatabases*) waarin de taak moet worden uitgevoerd**.
 
-![Referenties voor elastische taken](./media/elastic-jobs-overview/job-credentials.png)
+![Referenties voor Elastic Jobs](./media/elastic-jobs-overview/job-credentials.png)
 
 ## <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 

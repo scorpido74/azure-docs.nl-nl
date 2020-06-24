@@ -4,15 +4,15 @@ description: Een VPN-gatewayverbinding maken tussen VNets met behulp van Resourc
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5abf79d23ca2de661383cc002dac9d7f9e4dc5bf
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78674163"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985577"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -23,7 +23,7 @@ Dit artikel helpt u om virtuele netwerken (VNet's) te verbinden met behulp van h
 De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-implementatiemodel en maken gebruik van Azure Portal. U kunt deze configuratie ook maken met een ander implementatieprogramma of -model, met behulp van de opties die worden beschreven in de volgende artikelen:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure-portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -79,7 +79,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
     - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken.
     - **Resource groep**: TestRG1
     - **Locatie**: VS-Oost
-    - **Subnetrouter**
+    - **Subnet**
         - **Naam**: front-end
         - **Adres bereik**: 10.1.0.0/24
     - **Gateway-subnet**:
@@ -92,7 +92,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
     - **VPN-type**: Selecteer **op route gebaseerd**.
     - **SKU**: Selecteer de gateway-SKU die u wilt gebruiken.
     - **Naam van openbaar IP-adres**: VNet1GWpip
-    - **Combi**
+    - **Verbinding**
        - **Naam**: VNet1toVNet4
        - **Gedeelde sleutel**: u kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen. Voor deze oefening gebruikt u abc123.
 
@@ -104,7 +104,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
    - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken.
    - **Resource groep**: TestRG4
    - **Locatie**: VS-West
-   - **Subnetrouter** 
+   - **Subnet** 
       - **Naam**: front-end
       - **Adres bereik**: 10.41.0.0/24
    - **GatewaySubnet** 
@@ -117,7 +117,7 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
     - **VPN-type**: Selecteer **op route gebaseerd**.
     - **SKU**: Selecteer de gateway-SKU die u wilt gebruiken.
     - **Naam van openbaar IP-adres**: VNet4GWpip
-    - **Combi** 
+    - **Verbinding** 
        - **Naam**: VNet4toVNet1
        - **Gedeelde sleutel**: u kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen. Voor deze oefening gebruikt u abc123.
 

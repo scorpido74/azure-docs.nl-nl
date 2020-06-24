@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064163"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983413"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
@@ -43,33 +43,35 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 2.  Verbind een niet-traind model met de meest linkse invoer. 
 
+    > [!NOTE] 
+    > **Tune model Hyper parameters** kan alleen worden verbonden met ingebouwde machine learning algoritme modules en kan geen aangepast model ondersteunen dat is ingebouwd in het **python-model Create**.
 
 
-4.  Voeg de gegevensset toe die u voor training wilt gebruiken en verbind deze met de middelste invoer van het model Hyper parameters voor het afstemmen.  
+3.  Voeg de gegevensset toe die u voor training wilt gebruiken en verbind deze met de middelste invoer van het model Hyper parameters voor het afstemmen.  
 
     Als u een gecodeerde gegevensset hebt, kunt u deze koppelen aan de meest rechtse invoer poort (**optionele validatie gegevensset**). Zo kunt u de nauw keurigheid meten tijdens de training en het afstemmen.
 
-5.  Kies in het rechterdeel venster van model Hyper parameters een waarde voor de modus voor het afwijzen van de **para meter**. Met deze optie bepaalt u hoe de para meters worden geselecteerd.
+4.  Kies in het rechterdeel venster van model Hyper parameters een waarde voor de modus voor het afwijzen van de **para meter**. Met deze optie bepaalt u hoe de para meters worden geselecteerd.
 
     - **Volledig raster**: wanneer u deze optie selecteert, wordt de module herhaald volgens een raster dat vooraf is gedefinieerd door het systeem, om verschillende combi Naties te proberen en de beste kenniser te identificeren. Deze optie is handig wanneer u niet weet wat de beste parameter instellingen zijn en u alle mogelijke combi Naties van waarden wilt proberen.
 
     - **Wille keurige sweep**: wanneer u deze optie selecteert, selecteert de module wille keurig parameter waarden boven een door het systeem gedefinieerd bereik. U moet het maximum aantal runs opgeven dat door de module moet worden uitgevoerd. Deze optie is handig als u de prestaties van het model wilt verbeteren door de metrische gegevens van uw keuze te gebruiken, maar nog steeds computer bronnen te besparen.    
 
-6.  Open de kolom kiezer voor de kolom **Label**en kies een kolom met één label.
+5.  Open de kolom kiezer voor de kolom **Label**en kies een kolom met één label.
 
-7.  Kies het aantal uitvoeringen:
+6.  Kies het aantal uitvoeringen:
 
-    1. **Maximum aantal uitvoeringen op wille keurige sweep**: als u een wille keurige sweep kiest, kunt u opgeven hoe vaak het model moet worden getraind met behulp van een wille keurige combi natie van parameter waarden.
+    - **Maximum aantal uitvoeringen op wille keurige sweep**: als u een wille keurige sweep kiest, kunt u opgeven hoe vaak het model moet worden getraind met behulp van een wille keurige combi natie van parameter waarden.
 
-8.  Voor de **rang schikking**kiest u één metrische waarde voor het classificeren van de modellen.
+7.  Voor de **rang schikking**kiest u één metrische waarde voor het classificeren van de modellen.
 
     Wanneer u een parameter sweep uitvoert, berekent de module alle toepasselijke metrische gegevens voor het model type en retourneert deze in het rapport met **resultaten van opruimen** . In de module worden afzonderlijke metrische gegevens gebruikt voor regressie-en classificatie modellen.
 
     De metriek die u kiest, bepaalt echter hoe de modellen worden gerangschikt. Alleen het bovenste model, zoals geclassificeerd door de gekozen metriek, wordt uitgevoerd als een getraind model om te gebruiken voor een score.
 
-9.  Voer voor **wille keurige Seed**een getal in dat moet worden gebruikt voor het starten van de parameter sweep. 
+8.  Voer voor **wille keurige Seed**een getal in dat moet worden gebruikt voor het starten van de parameter sweep. 
 
-10. Verzend de pijp lijn.
+9. Verzend de pijp lijn.
 
 ## <a name="results-of-hyperparameter-tuning"></a>Resultaten van afstemming tuning
 

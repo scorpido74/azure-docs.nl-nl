@@ -5,15 +5,15 @@ description: Verbind Windows-, Mac OS X-en Linux-clients veilig met een virtueel
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 013ebc2a1343c8eab3d477023e36660c93fa6da5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33f35dc2a8224f496e040b66b2b92bc4c2ec4682
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244483"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984851"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Configureer een punt-naar-site-VPN-verbinding met een VNet met behulp van systeem eigen Azure-certificaat verificatie: Azure Portal
 
@@ -105,7 +105,7 @@ U kunt het tunneltype selecteren. De tunnel opties zijn OpenVPN, SSTP en IKEv2.
 
 Selecteer voor **verificatie type** **Azure-certificaat**.
 
-  ![Verificatie type](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "verificatie type opgeven")
+  ![Verificatietype](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "verificatie type opgeven")
 
 ## <a name="7-upload-the-root-certificate-public-certificate-data"></a><a name="uploadfile"></a>7. de gegevens van het open bare certificaat van het basis certificaat uploaden
 
@@ -159,7 +159,7 @@ De configuratiebestanden van de VPN-clients bevatten de instellingen voor het co
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Verbinding maken vanaf een Mac-VPN-client
 
-Zoek in het dialoog venster netwerk het client profiel dat u wilt gebruiken, geef de instellingen op uit de [VpnSettings. XML](point-to-site-vpn-client-configuration-azure-cert.md#installmac)en selecteer vervolgens **verbinding maken**.
+Ga in het dialoog venster netwerk naar het client profiel dat u wilt gebruiken, geef de instellingen op in het [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)en selecteer vervolgens **verbinding maken**.
 
 Controleer de [installatie-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) voor gedetailleerde instructies. Als u problemen ondervindt bij het verbinding maken, controleert u of de gateway van het virtuele netwerk geen basis-SKU gebruikt. Basis-SKU wordt niet ondersteund voor Mac-clients.
 

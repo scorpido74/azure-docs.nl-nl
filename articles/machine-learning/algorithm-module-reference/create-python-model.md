@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189851"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984883"
 ---
 # <a name="create-python-model-module"></a>Python-model module maken
 
@@ -25,7 +25,7 @@ Meer informatie over het gebruik van de module python-model maken voor het maken
 Nadat u het model hebt gemaakt, kunt u [Train model](train-model.md) gebruiken om het model op een gegevensset te trainen, zoals elke andere informatieer in azure machine learning. Het getrainde model kan worden door gegeven aan het [score model](score-model.md) om voor spellingen te maken. Vervolgens kunt u het getrainde model opslaan en de Score werk stroom publiceren als een webservice.
 
 > [!WARNING]
-> Op dit moment is het niet mogelijk om de gescoorde resultaten van een python-model door te geven om het [model te evalueren](evaluate-model.md). Als u een model wilt evalueren, kunt u een aangepast python-script schrijven en dit uitvoeren met behulp van de script module voor het [uitvoeren van python](execute-python-script.md) .  
+> Op dit moment is het niet mogelijk om deze module te verbinden met het afstemmen van de module **model Hyper parameters** of door de gescoorde resultaten van een python-model door te geven om het [model te evalueren](evaluate-model.md). Als u de Hyper parameters wilt afstemmen of een model wilt evalueren, kunt u een aangepast python-script schrijven met behulp van de script module voor het [uitvoeren van python](execute-python-script.md) .
 
 
 ## <a name="configure-the-module"></a>De module configureren

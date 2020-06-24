@@ -4,15 +4,15 @@ description: In dit artikel vindt u informatie over de manieren waarop u de limi
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398367"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983348"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Overgang naar het OpenVPN-protocol of IKEv2 van SSTP
 
@@ -22,7 +22,7 @@ Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke
 
 Punt-naar-site-VPN kan gebruikmaken van een van de volgende protocollen:
 
-* **Openvpn&reg; -protocol**, een op SSL/TLS gebaseerd VPN-protocol. Een SSL-VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls open TCP-poort 443 uitgaand, die SSL gebruikt. OpenVPN kan worden gebruikt om verbinding te maken vanaf Android, iOS (versie 11,0 en hoger), Windows, Linux en Mac-apparaten (OSX-versies 10,13 en hoger).
+* **Openvpn &reg; Protocol**, een op SSL/TLS gebaseerd VPN-protocol. Een SSL-VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls open TCP-poort 443 uitgaand, die SSL gebruikt. OpenVPN kan worden gebruikt om verbinding te maken vanaf Android, iOS (versie 11,0 en hoger), Windows, Linux en Mac-apparaten (OSX-versies 10,13 en hoger).
 
 * **SSTP (Secure Socket Tunneling Protocol)**, een eigen op SSL gebaseerd VPN-protocol. Een SSL-VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls open TCP-poort 443 uitgaand, die SSL gebruikt. SSTP wordt alleen ondersteund op Windows-apparaten. Azure ondersteunt alle versies van Windows die SSTP (Windows 7 en hoger) hebben. **SSTP biedt alleen ondersteuning voor Maxi maal 128 gelijktijdige verbindingen, ongeacht de gateway-SKU**.
 
@@ -64,7 +64,7 @@ Als u Windows 10 gebruikt, kunt u ook de [Azure VPN-client voor Windows](https:/
 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
-### <a name="what-are-the-client-configuration-requirements"></a>Wat zijn de client configuratie vereisten?
+### <a name="what-are-the-client-configuration-requirements"></a>Wat zijn de configuratievereisten voor de client?
 
 >[!NOTE]
 >Voor Windows-clients moet u over beheerders rechten beschikken voor het client apparaat om de VPN-verbinding van het client apparaat naar Azure te initiëren.

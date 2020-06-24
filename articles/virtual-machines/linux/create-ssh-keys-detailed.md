@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142466"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985345"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen: SSH-sleutels voor verificatie voor een virtuele Linux-machine maken en beheren in azure 
 Met een SSH-sleutel paar (Secure Shell) kunt u een virtuele Linux-machine in azure maken die standaard gebruikmaakt van SSH-sleutels voor verificatie, waardoor het niet nodig is om zich aan te melden. Vm's die zijn gemaakt met de Azure Portal, Azure CLI, Resource Manager-sjablonen of andere hulpprogram ma's, kunnen uw open bare SSH-sleutel opnemen als onderdeel van de implementatie, waarmee SSH-sleutel verificatie wordt ingesteld voor SSH-verbindingen. 
 
 Dit artikel bevat gedetailleerde achtergrond informatie en stappen voor het maken en beheren van een SSH RSA-bestand met open bare-sleutel paar voor SSH-client verbindingen. Zie [het maken van een open bare SSH-sleutel paar voor virtuele Linux-machines in azure](mac-create-ssh-keys.md)als u snelle opdrachten wilt.
 
-Zie [SSH-sleutels gebruiken met Windows op Azure](ssh-from-windows.md)voor meer manieren om SSH-sleutels te genereren en gebruiken op een Windows-computer.
+Zie [SSH-sleutels gebruiken met Windows op Azure](ssh-from-windows.md)als u SSH-sleutels wilt genereren en deze wilt gebruiken om verbinding te maken met een van een **Windows** -computer.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

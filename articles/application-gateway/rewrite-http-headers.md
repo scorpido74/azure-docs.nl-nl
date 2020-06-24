@@ -4,15 +4,15 @@ description: Dit artikel bevat een overzicht van het herschrijven van HTTP-heade
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562233"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248677"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-headers herschrijven met Application Gateway
 
@@ -62,28 +62,28 @@ Application Gateway ondersteunt deze server variabelen:
 
 | Naam van de variabele | Beschrijving                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| add_x_forwarded_for_proxy  | Het veld X-doorgestuurde client aanvraag header met de `client_ip` variabele (Zie de uitleg verderop in deze tabel) in de notatie IP1, IP2, IP3, enzovoort. Als het X-doorgestuurde-veld zich niet in de header van de `add_x_forwarded_for_proxy` client aanvraag bevindt `$client_ip` , is de variabele gelijk aan de variabele. Deze variabele is vooral handig wanneer u de X-doorgestuurde header wilt herschrijven, zodat deze door Application Gateway wordt ingesteld, zodat de header alleen het IP-adres zonder de poort gegevens bevat. |
+| add_x_forwarded_for_proxy  | Het veld X-doorgestuurde client aanvraag header met de `client_ip` variabele (Zie de uitleg verderop in deze tabel) in de NOTATIE IP1, IP2, IP3, enzovoort. Als het X-doorgestuurde-veld zich niet in de header van de client aanvraag `add_x_forwarded_for_proxy` bevindt, is de variabele gelijk aan de `$client_ip` variabele. Deze variabele is vooral handig wanneer u de X-doorgestuurde header wilt herschrijven, zodat deze door Application Gateway wordt ingesteld, zodat de header alleen het IP-adres zonder de poort gegevens bevat. |
 | ciphers_supported          | Een lijst met de code ringen die door de client worden ondersteund.          |
 | ciphers_used               | De teken reeks die wordt gebruikt voor een tot stand gebrachte TLS-verbinding. |
 | client_ip                  | Het IP-adres van de client van waaruit de toepassings gateway de aanvraag heeft ontvangen. Als er een omgekeerde proxy is vóór de toepassings gateway en de oorspronkelijke client, retourneert *client_ip* het IP-adres van de omgekeerde proxy. |
 | client_port                | De client poort.                                                  |
 | client_tcp_rtt             | Informatie over de TCP-verbinding van de client. Beschikbaar op systemen die ondersteuning bieden voor de TCP_INFO socket optie. |
 | client_user                | Wanneer HTTP-verificatie wordt gebruikt, wordt de gebruikers naam opgegeven voor verificatie. |
-| host                       | In deze volg orde van prioriteit: de hostnaam van de aanvraag regel, de hostnaam uit het veld met de aanvraag header van de host of de server naam die overeenkomt met een aanvraag. Voor beeld: in de *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*aanvraag is de waarde host *contoso.com* |
+| host                       | In deze volg orde van prioriteit: de hostnaam van de aanvraag regel, de hostnaam uit het veld met de aanvraag header van de host of de server naam die overeenkomt met een aanvraag. Voor beeld: in de aanvraag *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* is de waarde host *contoso.com* |
 | cookie_*naam*              | De *naam* cookie.                                            |
 | http_method                | De methode die wordt gebruikt om de URL-aanvraag te maken. Bijvoorbeeld GET of POST. |
 | http_status                | De sessie status. Bijvoorbeeld 200, 400 of 403.                       |
 | http_version               | Het aanvraag protocol. Meestal HTTP/1.0, HTTP/1.1 of HTTP/2.0. |
-| query_string               | De lijst met variabele/waarde-paren die volgt op '? ' in de aangevraagde URL. Voor beeld: in de *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*aanvraag is QUERY_STRING waarde *id = 123&titel = fabrikam* |
+| query_string               | De lijst met variabele/waarde-paren die volgt op '? ' in de aangevraagde URL. Voor beeld: in de aanvraag is *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING waarde *id = 123&titel = fabrikam* |
 | received_bytes             | De lengte van de aanvraag (inclusief de aanvraag regel, kop en hoofd tekst van de aanvraag). |
 | request_query              | De argumenten in de aanvraag regel.                                |
 | request_scheme             | Het aanvraag schema: http of https.                            |
-| request_uri                | De volledige oorspronkelijke aanvraag-URI (met argumenten). Voor beeld: in de *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*aanvraag is REQUEST_URI waarde */article.aspx? id = 123&titel = fabrikam*   |
+| request_uri                | De volledige oorspronkelijke aanvraag-URI (met argumenten). Voor beeld: in de aanvraag is *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI waarde */article.aspx? id = 123&titel = fabrikam*   |
 | sent_bytes                 | Het aantal bytes dat naar een client is verzonden.                             |
 | server_port                | De poort van de server die een aanvraag heeft geaccepteerd.                 |
 | ssl_connection_protocol    | Het Protocol van een tot stand gebrachte TLS-verbinding.        |
 | ssl_enabled                | Aan als de verbinding in de TLS-modus werkt. Zoniet, een lege teken reeks. |
-| uri_path                   | Identificeert de specifieke resource in de host waartoe de webclient toegang wil. Dit is het deel van de aanvraag-URI zonder de argumenten. Voor beeld: in de *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*aanvraag is uri_path waarde */article.aspx*  |
+| uri_path                   | Identificeert de specifieke resource in de host waartoe de webclient toegang wil. Dit is het deel van de aanvraag-URI zonder de argumenten. Voor beeld: in de aanvraag is *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* uri_path waarde */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>Configuratie opnieuw schrijven
 
@@ -131,7 +131,7 @@ U kunt dit probleem oplossen door de hostnaam in de locatie header in te stellen
 
 Dit zijn de stappen voor het vervangen van de hostnaam:
 
-1. Maak een regel voor herschrijven met een voor waarde die evalueert of de locatie header in het antwoord azurewebsites.net bevat. Geef het patroon `(https?):\/\/.*azurewebsites\.net(.*)$`op.
+1. Maak een regel voor herschrijven met een voor waarde die evalueert of de locatie header in het antwoord azurewebsites.net bevat. Geef het patroon op `(https?):\/\/.*azurewebsites\.net(.*)$` .
 1. Voer een actie uit om de locatie header opnieuw te schrijven, zodat deze de hostnaam van de toepassings gateway heeft. Dit doet u door `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als waarde voor de header in te voeren.
 
 ![Locatie header wijzigen](media/rewrite-http-headers/app-service-redirection.png)
@@ -156,13 +156,13 @@ U kunt een HTTP-aanvraag of reactie header evalueren voor de aanwezigheid van ee
 
 ## <a name="limitations"></a>Beperkingen
 
-- Als een antwoord meer dan één header met dezelfde naam heeft en vervolgens de waarde van een van deze headers herschrijft, worden de andere headers in het antwoord verwijderd. Dit kan meestal gebeuren met de set-cookie-header omdat u in een antwoord meer dan één set-cookie-header kunt hebben. Een dergelijk scenario is wanneer u een app service gebruikt met een toepassings gateway en op cookies gebaseerde sessie affiniteit hebt geconfigureerd op de toepassings gateway. In dit geval bevat het antwoord twee set-cookie headers: één die wordt gebruikt door de app service, bijvoorbeeld: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` en een andere voor Application Gateway-affiniteit, bijvoorbeeld `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. Het opnieuw schrijven van een van de set-cookie headers in dit scenario kan ertoe leiden dat de andere set-cookie-header van het antwoord wordt verwijderd.
+- Als een antwoord meer dan één header met dezelfde naam heeft en vervolgens de waarde van een van deze headers herschrijft, worden de andere headers in het antwoord verwijderd. Dit kan meestal gebeuren met de set-cookie-header omdat u in een antwoord meer dan één set-cookie-header kunt hebben. Een dergelijk scenario is wanneer u een app service gebruikt met een toepassings gateway en op cookies gebaseerde sessie affiniteit hebt geconfigureerd op de toepassings gateway. In dit geval bevat het antwoord twee set-cookie headers: één die wordt gebruikt door de app service, bijvoorbeeld: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` en een andere voor Application Gateway-affiniteit, bijvoorbeeld `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Het opnieuw schrijven van een van de set-cookie headers in dit scenario kan ertoe leiden dat de andere set-cookie-header van het antwoord wordt verwijderd.
 
 - Herschrijven wordt niet ondersteund wanneer de toepassings gateway is geconfigureerd om de aanvragen om te leiden of een aangepaste fout pagina weer te geven.
 
 - Het opnieuw schrijven van de verbinding, bijwerken en host-headers wordt momenteel niet ondersteund.
 
-- Header namen mogen alfanumerieke tekens en specifieke symbolen bevatten zoals gedefinieerd in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Het onderstrepings teken (\_) wordt momenteel niet ondersteund in header namen.
+- Header namen mogen alfanumerieke tekens en specifieke symbolen bevatten zoals gedefinieerd in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Het onderstrepings teken () wordt momenteel niet ondersteund \_ in header namen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
