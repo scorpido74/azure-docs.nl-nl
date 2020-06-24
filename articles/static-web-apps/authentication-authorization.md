@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655262"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297066"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Verificatie en autorisatie voor de preview-versie van Azure static Web Apps
+# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Verificatie en autorisatie voor API-apps in Azure Static Web Apps Preview
 
 Azure static Web Apps stroomlijnt de verificatie-ervaring door verificatie met de volgende providers te beheren:
 
@@ -24,7 +24,7 @@ Azure static Web Apps stroomlijnt de verificatie-ervaring door verificatie met d
 - Google<sup>1</sup>
 - Twitter
 
-Provider-specifieke [uitnodigingen](#invitations) koppelen gebruikers met rollen en gemachtigde gebruikers krijgen toegang tot [routes](routes.md) op basis van regels die zijn gedefinieerd in het bestand _routes. json_ .
+Provider-specifieke [uitnodigingen](#invitations) koppelen gebruikers met rollen en gemachtigde gebruikers krijgen toegang tot [routes](routes.md) op basis van regels die zijn gedefinieerd in de _routes.jsvoor_ het bestand.
 
 Alle verificatie providers zijn standaard ingeschakeld. Als u een verificatie provider wilt beperken, blokkeert u de [toegang](#block-an-authorization-provider) met een aangepaste route regel.
 
@@ -37,13 +37,13 @@ Elke gebruiker die toegang heeft tot een statische web-app, maakt deel uit van e
 - **anoniem**: alle gebruikers horen automatisch bij de _anonieme_ rol.
 - **geverifieerd**: alle gebruikers die zijn aangemeld, behoren tot de _geauthenticeerde_ rol.
 
-Naast de ingebouwde rollen kunt u nieuwe rollen maken, ze toewijzen aan gebruikers via uitnodigingen en hiernaar verwijzen in het bestand _routes. json_ .
+Naast de ingebouwde rollen kunt u nieuwe rollen maken, ze toewijzen aan gebruikers via uitnodigingen en hiernaar verwijzen in de _routes.jsin_ het bestand.
 
 ## <a name="role-management"></a>Rollen beheer
 
 ### <a name="add-a-user-to-a-role"></a>Een gebruiker toevoegen aan een rol
 
-Als u gebruikers wilt toevoegen aan uw website, genereert u uitnodigingen waarmee u gebruikers kunt koppelen aan specifieke rollen. Rollen worden gedefinieerd en onderhouden in het bestand _routes. json_ .
+Als u gebruikers wilt toevoegen aan uw website, genereert u uitnodigingen waarmee u gebruikers kunt koppelen aan specifieke rollen. Rollen worden gedefinieerd en onderhouden in de _routes.jsvoor_ het bestand.
 
 <a name="invitations" id="invitations"></a>
 
@@ -192,6 +192,10 @@ Als u een provider wilt blok keren, kunt u [routerings regels](routes.md) maken 
   "statusCode": "404"
 }
 ```
+
+## <a name="restrictions"></a>Beperkingen
+
+Zie het [artikel quota's](quotas.md) voor algemene beperkingen en beperkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

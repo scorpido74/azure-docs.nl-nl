@@ -1,20 +1,26 @@
 ---
 title: Groottes van Azure VM-geheugen | Microsoft Docs
-description: Geeft een lijst van de verschillende voor geheugen geoptimaliseerde grootten die beschikbaar zijn voor virtuele machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
+description: Geeft een lijst van de verschillende voor geheugen geoptimaliseerde grootten die beschikbaar zijn voor virtuele machines in Azure. Hiermee wordt informatie weer gegeven over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
+services: virtual-machines
+documentationcenter: ''
 author: mimckitt
+manager: gwallace
+editor: ''
+tags: azure-resource-manager,azure-service-management
 keywords: VM-isolatie, geïsoleerde VM, isolatie, geïsoleerd
+ms.assetid: ''
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6e2486dfeae221e7e3ddadcdcac0d9779d49542c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678661"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791466"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines geoptimaliseerd voor geheugen
 
@@ -28,7 +34,9 @@ Voor geheugen geoptimaliseerde VM-grootten bieden een hoge geheugen-naar-CPU-ver
 
 - De [Ev3-en Esv3-serie](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (Skylake) of de Intel &reg; Xeon &reg; E5-2673 2,3 v4-processor (Broadwell) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik, en de Ev3 in overeenstemming brengen met de virtuele machines voor algemeen gebruik van de meeste andere Clouds. Het geheugen is uitgevouwen (van 7 GiB/vCPU tot 8 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de overgang naar Hyper Threading. De Ev3 is de follow-up van de VM-grootten van het hoge geheugen van de D/dv2-families.
 
-- De [Edv4-en Edsv4-serie](edv4-edsv4-series.md) worden uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoge vCPU aantallen en grote hoeveel heden geheugen. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en biedt een [Intel &reg; Turbo Boost-technologie van 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+- De [Ev4-en Esv4-serie](ev4-esv4-series.md) wordt uitgevoerd op de tweede generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, ideaal voor diverse geheugenintensieve bedrijfs toepassingen en een functie van Maxi maal 504 RAM-geheugen. Het biedt de [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
+
+- De [Edv4-en Edsv4-serie](edv4-edsv4-series.md) wordt uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoge vCPU aantallen en grote hoeveel heden geheugen. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en biedt een [Intel &reg; Turbo Boost-technologie van 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html).
 
 - De [M-serie](m-series.md) biedt een hoog aantal vCPU (maxi maal 128 vcpu's) en een grote hoeveelheid geheugen (maxi maal 3,8 TIB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen.
 

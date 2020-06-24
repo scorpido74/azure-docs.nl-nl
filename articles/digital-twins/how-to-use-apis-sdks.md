@@ -1,5 +1,5 @@
 ---
-title: De Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken
+title: De Azure Digital Twins-API's en -SDK's gebruiken
 titleSuffix: Azure Digital Twins
 description: Zie werken met de Azure Digital Apparaatdubbels Api's, inclusief via SDK.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cbc79458c1fe68b05a40f476c298d5fe94e86871
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: ebac7fb6cf4addaa43367d27a4926a85770dd595
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629602"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296131"
 ---
-# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken
+# <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital Apparaatdubbels wordt geleverd met beide **Control-api's** en **datacenter api's** voor het beheren van uw exemplaar en de bijbehorende elementen. Dit artikel geeft een overzicht van de beschik bare Api's en de methoden om ermee te werken. U kunt de REST-Api's rechtstreeks met hun bijbehorende Swaggers of via een SDK gebruiken.
 
@@ -26,7 +29,7 @@ De meest recente versie van de Control vlak-API voor open bare preview is _**202
 
 De Control-Api's gebruiken:
 * U kunt de Api's rechtstreeks aanroepen door te verwijzen naar de meest recente [Swagger-map](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Deze opslag plaats bevat ook een map met voor beelden waarin het gebruik wordt weer gegeven.
-* U hebt momenteel toegang tot Sdk's voor Control Api's in [Go](https://github.com/Azure/azure-sdk-for-go/releases).
+* U kunt momenteel toegang krijgen tot Sdk's voor besturings-Api's in [.net (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/1.0.0-preview.1), [python](https://pypi.org/project/azure-mgmt-digitaltwins/)of [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins).
 
 U kunt ook beheer vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [Azure Portal](https://portal.azure.com) en [cli](how-to-use-cli.md).
 
@@ -257,6 +260,12 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 Deze sectie bevat algemene informatie over en richt lijnen voor het gebruik van de Api's en Sdk's.
 
+> [!NOTE]
+> Tijdens de preview-versie biedt Azure Digital Apparaatdubbels geen ondersteuning voor **het delen van cross-Origin-resources (CORS)**. Als u dus een REST API aanroept vanuit een browser-app, een API Management-interface [(APIM)](../api-management/api-management-key-concepts.md) of een [Power apps](https://docs.microsoft.com/powerapps/powerapps-overview) -connector, wordt er mogelijk een beleids fout weer geven.
+> U kunt dit probleem op een van de volgende manieren oplossen:
+> * De CORS-header `Access-Control-Allow-Origin` van het bericht verwijderen. Deze header geeft aan of het antwoord kan worden gedeeld. 
+> * U kunt ook een CORS-proxy maken en de Azure Digital Apparaatdubbels REST API aanvraag door voeren. 
+
 * Als u de SDK wilt gebruiken, maakt u een instantie van de `DigitalTwinsClient` klasse. De constructor vereist referenties die kunnen worden verkregen met diverse verificatie methoden in het `Azure.Identity` pakket. `Azure.Identity`Zie de documentatie van de [naam ruimte](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)voor meer informatie. 
 * Het is `InteractiveBrowserCredential` handig om aan de slag te gaan, maar er zijn verschillende andere opties, waaronder referenties voor [beheerde identiteit](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet), die u waarschijnlijk gebruikt voor het verifiëren van [Azure functions die zijn ingesteld met MSI](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) op Azure Digital apparaatdubbels. `InteractiveBrowserCredential`Zie de documentatie van de [klasse](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)voor meer informatie.
 * Alle service-API-aanroepen worden weer gegeven als lidfuncties op de `DigitalTwinsClient` klasse.
@@ -285,4 +294,4 @@ Zie hoe u de Api's gebruikt om een Azure Digital Apparaatdubbels-exemplaar te ma
 * [Instructies: een Azure Digital Apparaatdubbels-exemplaar maken](how-to-set-up-instance.md)
 
 Of volg de stappen voor het maken van een client-app, zoals de toepassing die wordt gebruikt in deze procedure:
-* [Zelf studie: een client-app coderen](tutorial-code.md)
+* [Zelfstudie: Een client-app coderen](tutorial-code.md)

@@ -4,16 +4,16 @@ description: Configureer IPsec/IKE-connectiviteit met Azure via een ExpressRoute
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 571ed0201fea11f6770ec3aa7e72db10d49e7b01
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436816"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738155"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Een site-naar-site-VPN configureren via ExpressRoute micro soft-peering
 
@@ -91,7 +91,7 @@ In dit voor beeld wordt een Cisco IOS-XE-opdracht gebruikt. In het voor beeld wo
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-In de volgende gedeeltelijke uitvoer ziet u dat er 68-voor voegsels zijn \*ontvangen van de neighbor. 243.229.34 met ASN 12076 (MSEE):
+In de volgende gedeeltelijke uitvoer ziet u dat er 68-voor voegsels zijn ontvangen van de neighbor \* . 243.229.34 met ASN 12076 (MSEE):
 
 ```
 ...

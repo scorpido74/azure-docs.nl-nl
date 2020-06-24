@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf732b92c1a208dd4c312ae442969ef958a021b4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79139994"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791177"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Waarschuwingen valideren (EICAR-testbestand) in Azure Security Center
 In dit document leest u hoe u kunt controleren of uw systeem op de juiste manier is geconfigureerd voor waarschuwingen van Azure Security Center.
@@ -37,9 +37,9 @@ Zie [beveiligings waarschuwingen in Security Center](security-center-alerts-over
 
 Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgende stappen uit vanaf de computer waar u de aangevallen bron van de waarschuwing wilt ontvangen:
 
-1. Kopieer een uitvoerbaar bestand (bijvoorbeeld **calc. exe**) naar het bureau blad van de computer of een andere map met uw gemak, en wijzig de naam van de server als **ASC_AlertTest_662jfi039N. exe**.
+1. Kopieer een uitvoerbaar bestand (bijvoorbeeld **calc.exe**) naar het bureau blad van de computer of een andere map met uw gemak en wijzig de naam ervan in **ASC_AlertTest_662jfi039N.exe**.
 1. Open de opdracht prompt en voer dit bestand uit met een argument (alleen een valse argument naam), zoals:```ASC_AlertTest_662jfi039N.exe -foo```
-1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven die vergelijkbaar is met het [voor beeld](#alert-validate) hieronder:
+1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven.
 
 > [!NOTE]
 > Wanneer u deze test waarschuwing voor Windows bekijkt **, moet u**controleren of de controle van de veld **argumenten is ingeschakeld** . Als deze **False**is, moet u controle van opdracht regel argumenten inschakelen. Gebruik de volgende opdracht om deze functie in te scha kelen:
@@ -57,11 +57,7 @@ Nadat Security Center agent op uw computer is geïnstalleerd, voert u de volgend
 
     ```./asc_alerttest_662jfi039n testing eicar pipe```
 
-1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven die vergelijkbaar is met het [voor beeld](#alert-validate) hieronder:
-
-### <a name="alert-example"></a>Voor beeld van waarschuwing<a name="alert-validate"></a>
-
-![Voor beeld van waarschuwings validatie](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
+1. Wacht 5 tot 10 minuten en open Security Center. Er moet een waarschuwing worden weer gegeven.
 
 
 ## <a name="validate-alerts-on-kubernetes"></a>Waarschuwingen valideren op Kubernetes<a name="validate-kubernetes"></a>

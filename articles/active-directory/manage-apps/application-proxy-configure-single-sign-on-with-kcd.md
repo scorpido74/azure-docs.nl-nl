@@ -3,25 +3,25 @@ title: Eenmalige aanmelding met toepassings proxy | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u eenmalige aanmelding kunt bieden met behulp van Azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017, it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 69ac1e70684b2c4396bb15a439edab37a7e45040
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583136"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975585"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-overdracht voor eenmalige aanmelding bij uw apps met toepassings proxy
 
@@ -55,9 +55,9 @@ Voordat u aan de slag gaat met eenmalige aanmelding voor IWA-toepassingen, moet 
 De configuratie van de Active Directory varieert, afhankelijk van of de connector van de toepassings proxy en de toepassings server zich in hetzelfde domein bevinden.
 
 #### <a name="connector-and-application-server-in-the-same-domain"></a>Connector en toepassings server in hetzelfde domein
-1. Ga in Active Directory naar **hulpprogram ma's** > **gebruikers en computers**.
+1. Ga in Active Directory naar **hulpprogram ma's**  >  **gebruikers en computers**.
 2. Selecteer de server waarop de connector wordt uitgevoerd.
-3. Klik met de rechter muisknop en selecteer **Eigenschappen** > **delegeren**.
+3. Klik met de rechter muisknop en selecteer **Eigenschappen**  >  **delegeren**.
 4. Selecteer **Deze computer mag alleen aan opgegeven services delegeren**. 
 5. Selecteer **Elk verificatieprotocol gebruiken**.
 6. Onder **Services waaraan dit account gedelegeerde referenties kan geven** , voegt u de waarde voor de SPN-identiteit van de toepassings server toe. Hierdoor kan de Application proxy-connector gebruikers in AD imiteren op basis van de toepassingen die in de lijst zijn gedefinieerd.
@@ -66,7 +66,7 @@ De configuratie van de Active Directory varieert, afhankelijk van of de connecto
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector en toepassings server in verschillende domeinen
 1. Zie [Kerberos-beperkte delegering over domeinen](https://technet.microsoft.com/library/hh831477.aspx)voor een lijst met vereisten voor het werken met KCD in verschillende domeinen.
-2. Gebruik de `principalsallowedtodelegateto` eigenschap van het service account (computer of toegewezen domein gebruikers account) van de webtoepassing om Kerberos-verificatie overdracht van de toepassings proxy (connector) in te scha kelen. De toepassings server wordt uitgevoerd in de context van `webserviceaccount` en de overdracht van de server `connectorcomputeraccount`is. Voer de onderstaande opdrachten uit op een domein controller (waarop Windows Server 2012 R2 of hoger wordt uitgevoerd) in `webserviceaccount`het domein van. Gebruik platte namen (niet-UPN) voor beide accounts.
+2. Gebruik de `principalsallowedtodelegateto` eigenschap van het service account (computer of toegewezen domein gebruikers account) van de webtoepassing om Kerberos-verificatie overdracht van de toepassings proxy (connector) in te scha kelen. De toepassings server wordt uitgevoerd in de context van `webserviceaccount` en de overdracht van de server is `connectorcomputeraccount` . Voer de onderstaande opdrachten uit op een domein controller (waarop Windows Server 2012 R2 of hoger wordt uitgevoerd) in het domein van `webserviceaccount` . Gebruik platte namen (niet-UPN) voor beide accounts.
 
    Als het `webserviceaccount` een computer account is, gebruikt u deze opdrachten:
 
@@ -93,7 +93,7 @@ De configuratie van de Active Directory varieert, afhankelijk van of de connecto
 2. Als uw toepassing wordt weer gegeven in de lijst met bedrijfs toepassingen, selecteert u deze en klikt u op **eenmalige aanmelding**.
 3. Stel de modus voor eenmalige aanmelding in op **geïntegreerde Windows-verificatie**.  
 4. Voer de **interne toepassings-SPN** van de toepassings server in. In dit voor beeld is de SPN voor de gepubliceerde toepassing http/www. contoso. com. Deze SPN moet zich bevinden in de lijst met services waarnaar de connector gedelegeerde referenties kan presen teren. 
-5. Kies de **gedelegeerde aanmeldings-id** voor de connector om namens uw gebruikers te gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](#working-with-different-on-premises-and-cloud-identities) voor meer informatie
+5. Kies de **Gedelegeerde aanmeldingsidentiteit** voor de connector die u namens uw gebruikers wilt gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](#working-with-different-on-premises-and-cloud-identities) voor meer informatie
 
    ![Geavanceerde toepassings configuratie](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
@@ -119,8 +119,6 @@ SPNEGO inschakelen:
     net stop WAPCSvc & net start WAPCSvc
     ```
 
-Meer informatie over Kerberos vindt [u in alles wat u wilt weten over Kerberos-beperkte delegering (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
-
 Niet-Windows-apps hebben meestal gebruikers namen of SAM-account namen in plaats van e-mail adressen van het domein. Als die situatie van toepassing is op uw toepassingen, moet u het veld gedelegeerde aanmeldings-id configureren om uw Cloud identiteiten te verbinden met uw toepassings identiteiten. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Werken met verschillende on-premises en Cloud-identiteiten
@@ -128,8 +126,8 @@ Toepassings proxy gaat ervan uit dat gebruikers exact dezelfde identiteit hebben
 
 Met deze mogelijkheid kunnen veel organisaties die verschillende on-premises en Cloud-identiteiten hebben, SSO van de Cloud naar on-premises apps hebben zonder dat de gebruikers verschillende gebruikers namen en wacht woorden hoeven in te voeren. Dit omvat organisaties die:
 
-* Meerdere domeinen intern (joe@us.contoso.com, joe@eu.contoso.com) en één domein in de Cloud (joe@contoso.com) hebben.
-* Hebben intern een niet-Routeer barejoe@contoso.usadomein naam () en een legal in de Cloud.
+* Meerdere domeinen intern ( joe@us.contoso.com , joe@eu.contoso.com ) en één domein in de Cloud () hebben joe@contoso.com .
+* Hebben intern een niet-Routeer bare domein naam ( joe@contoso.usa ) en een legal in de Cloud.
 * Domein namen niet intern gebruiken (Joe)
 * Gebruik verschillende aliassen on-premises en in de Cloud. Bijvoorbeeld joe-johns@contoso.com versusjoej@contoso.com  
 
@@ -144,8 +142,8 @@ Als gedelegeerde aanmeldings-id wordt gebruikt, is de waarde mogelijk niet uniek
    ![Scherm opname van gebruikers voor het identificeren van de vervolg keuzelijst User Principal name](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_connect_settings.png)  
 2. Selecteer in de configuratie-instellingen van de toepassing die u wilt wijzigen de **gedelegeerde aanmeldings-id** die moet worden gebruikt:
 
-   * Principal-naam van gebruiker (bijvoorbeeld joe@contoso.com)
-   * Alternatieve Principal-naam van gebruiker (bijvoorbeeld joed@contoso.local)
+   * Principal-naam van gebruiker (bijvoorbeeld joe@contoso.com )
+   * Alternatieve Principal-naam van gebruiker (bijvoorbeeld joed@contoso.local )
    * Het deel van de gebruikers naam van de principal-naam van de gebruiker (bijvoorbeeld Joe)
    * Het deel van de gebruikers naam van een alternatieve Principal-naam van gebruiker (bijvoorbeeld joed)
    * Naam van on-premises SAM-account (is afhankelijk van de configuratie van de domein controller)
@@ -158,6 +156,3 @@ Maar in sommige gevallen wordt de aanvraag verzonden naar de back-end-toepassing
 
 * [Een toepassings proxy toepassing configureren voor het gebruik van beperkte Kerberos-delegering](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problemen met toepassingsproxy oplossen (Engelstalig artikel)](application-proxy-troubleshoot.md)
-
-
-Ga naar het [blog over toepassingsproxy](https://blogs.technet.com/b/applicationproxyblog/) voor nieuws en updates.

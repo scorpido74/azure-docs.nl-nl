@@ -25,9 +25,9 @@ Dit project bevat de volgende sjablonen:
 
 Het voor beeld gebruiken:
 
-1. Kloon de opslag plaats op uw lokale machine. Kies een sjabloon map `/ocean_blue` of `/slate_gray`.
+1. Kloon de opslag plaats op uw lokale machine. Kies een sjabloon map `/ocean_blue` of `/slate_gray` .
 1. Upload alle bestanden in de map Temp late en de `/assets` map naar Blob Storage, zoals beschreven in de vorige secties.
-1. Open vervolgens elk `\*.html` bestand in de hoofdmap van ofwel `/ocean_blue` of `/slate_gray`, vervang alle exemplaren van relatieve url's door de url's van de CSS-, afbeeldings-en letter typen bestanden die u hebt geüpload in stap 2. Bijvoorbeeld:
+1. Open vervolgens elk `\*.html` bestand in de hoofdmap van ofwel `/ocean_blue` of `/slate_gray` , vervang alle exemplaren van relatieve Url's door de url's van de CSS-, afbeeldings-en letter typen bestanden die u hebt geüpload in stap 2. Bijvoorbeeld:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
@@ -38,4 +38,4 @@ Het voor beeld gebruiken:
     ```
 1. Sla de `\*.html` bestanden op en upload deze naar de Blob-opslag.
 1. Pas het beleid aan, zoals eerder is vermeld, naar uw HTML-bestand.
-1. Als u ontbrekende letter typen, afbeeldingen of CSS ziet, controleert u uw referenties in het uitbrei ding \*beleid en de. html-bestanden.
+1. Als u ontbrekende letter typen, afbeeldingen of CSS ziet, controleert u uw referenties in het uitbrei ding beleid en de \* . html-bestanden.

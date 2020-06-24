@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: reference
 ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4837b654e5b538dda6f55eae9b15ddf0c5604693
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299465"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117876"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Beheerders rollen per beheer taak in Azure Active Directory
 
@@ -38,7 +38,7 @@ Toepassingsproxy uitschakelen | Toepassings beheerder |
 Connector service downloaden | Toepassings beheerder | 
 Alle configuratie lezen | Toepassings beheerder | 
 
-## <a name="b2c"></a>B2C
+## <a name="external-identitiesb2c"></a>Externe identiteiten/B2C
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
@@ -47,11 +47,11 @@ B2C-toepassingen maken | Globale beheerder |
 Bedrijfs toepassingen maken | Beheerder van de cloudtoepassing | Toepassingsbeheerder
 B2C-beleid maken, lezen, bijwerken en verwijderen | B2C IEF-beleids beheerder | 
 Id-providers maken, lezen, bijwerken en verwijderen | Beheerder van externe ID-provider | 
-Gebruikers stromen voor het opnieuw instellen van wacht woorden maken, lezen, bijwerken en verwijderen | Beheerder van B2C-gebruikers stroom | 
-Gebruikers stromen voor het bewerken van profielen maken, lezen, bijwerken en verwijderen | Beheerder van B2C-gebruikers stroom | 
-Gebruikers stromen voor het aanmelden maken, lezen, bijwerken en verwijderen | Beheerder van B2C-gebruikers stroom | 
-Gebruikers stroom voor het aanmelden maken, lezen, bijwerken en verwijderen |Beheerder van B2C-gebruikers stroom | 
-Gebruikers kenmerken maken, lezen, bijwerken en verwijderen | B2C-gebruikers stroom kenmerk beheerder | 
+Gebruikers stromen voor het opnieuw instellen van wacht woorden maken, lezen, bijwerken en verwijderen | Externe ID gebruikers stroom beheerder | 
+Gebruikers stromen voor het bewerken van profielen maken, lezen, bijwerken en verwijderen | Externe ID gebruikers stroom beheerder | 
+Gebruikers stromen voor het aanmelden maken, lezen, bijwerken en verwijderen | Externe ID gebruikers stroom beheerder | 
+Gebruikers stroom voor het aanmelden maken, lezen, bijwerken en verwijderen |Externe ID gebruikers stroom beheerder | 
+Gebruikers kenmerken maken, lezen, bijwerken en verwijderen | Externe ID gebruikers stroom kenmerk beheerder | 
 Gebruikers maken, lezen, bijwerken en verwijderen | Gebruikers beheerder
 Alle configuratie lezen | Algemene lezer | 
 B2C-controle logboeken lezen | Algemene lezer ([Zie documentatie](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
@@ -73,6 +73,14 @@ Taak | Minst geprivilegieerde rol | Aanvullende rollen
 Eigenschappen van het bedrijf configureren | Globale beheerder | 
 
 ## <a name="connect"></a>Verbinding maken
+
+Taak | Minst geprivilegieerde rol | Aanvullende rollen
+---- | --------------------- | ----------------
+Passthrough-verificatie | Globale beheerder  | 
+Alle configuratie lezen | Algemene lezer | Globale beheerder  |
+Naadloze eenmalige aanmelding | Globale beheerder  | 
+
+## <a name="cloud-provisioning"></a>Cloud inrichting
 
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
@@ -109,7 +117,7 @@ Alle configuratie lezen | Adreslijst lezers | Standaard gebruikersrol ([Zie de d
 Taak | Minst geprivilegieerde rol | Aanvullende rollen
 ---- | --------------------- | ----------------
 Azure AD Domain Services exemplaar maken | Globale beheerder | 
-Alle Azure AD Domain Services taken uitvoeren | Groep Administrators van Azure AD DC ([Zie de documentatie](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Alle Azure AD Domain Services taken uitvoeren | Groep Administrators van Azure AD DC ([Zie de documentatie](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Alle configuratie lezen | Lezer op een Azure-abonnement met AD DS-service | 
 
 ## <a name="devices"></a>Apparaten

@@ -5,15 +5,15 @@ description: In dit artikel wordt beschreven hoe u taak verdeling en uitgaande r
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77590011"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803687"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Configureer taak verdeling en uitgaande regels in Standard Load Balancer door gebruik te maken van de Azure Portal
 
@@ -35,7 +35,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 In deze sectie maakt u een load balancer waarmee de virtuele machines worden verdeeld. U kunt een open bare load balancer of een interne load balancer maken. Wanneer u een open bare load balancer maakt, maakt u een nieuw openbaar IP-adres dat is geconfigureerd als de front-end voor de load balancer. De front-end krijgt standaard de naam **LoadBalancerFrontEnd** .
 
-1. Selecteer linksboven in het scherm de optie **een resource** > **maken netwerk** > **Load Balancer**.
+1. Selecteer linksboven in het scherm de optie **een resource maken**  >  **netwerk**  >  **Load Balancer**.
 2. Voer op het tabblad **basis beginselen** van de pagina **Load Balancer maken** de volgende informatie in of Selecteer deze:
 
     | Instelling                 | Waarde                                              |
@@ -44,7 +44,7 @@ In deze sectie maakt u een load balancer waarmee de virtuele machines worden ver
     | Resourcegroep         | Selecteer **nieuwe maken** en typ **myResourceGroupSLB** in het tekstvak.|
     | Naam                   | **myLoadBalancer**                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | Type          | Select **Openbaar**.                                        |
+    | Type          | Selecteer **Openbaar**.                                        |
     | SKU           | Selecteer **Standard** of **Basic**. Micro soft adviseert standaard voor productie werkbelastingen. |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. Als u een bestaand openbaar IP-adres hebt dat u wilt gebruiken, selecteert u **bestaande gebruiken**.  Een bestaand openbaar IP-adres moet een **standaard** -SKU zijn.  Algemene open bare Ip's zijn niet compatibel met de **standaard** SKU Load Balancer.  |
     | Naam openbaar IP-adres              | Typ **myPublicIP** in het tekstvak.|
@@ -85,7 +85,7 @@ Een status test wordt gebruikt om de status van uw app te bewaken. Met de status
     | Protocol | Selecteer **http**. |
     | Poort | Voer **80**in.|
     | Interval | Geef **15** **op voor** het aantal seconden tussen de test pogingen. |
-    | Drempel waarde voor onjuiste status | Selecteer **2** voor het aantal **foutieve drempel waarden** of opeenvolgende test fouten die moeten optreden voordat een VM wordt beschouwd als beschadigd.|
+    | Drempelwaarde voor onjuiste status | Selecteer **2** voor het aantal **foutieve drempel waarden** of opeenvolgende test fouten die moeten optreden voordat een VM wordt beschouwd als beschadigd.|
     | | |
 4. Selecteer **OK**.
 
@@ -111,8 +111,8 @@ In het volgende gedeelte maakt u een:
     | Naam | Voer **myhttprule als**in. |
     | Protocol | selecteer **TCP**. |
     | Poort | Voer **80**in.|
-    | Backend-poort | Voer **80**in. |
-    | Back-endpool | Selecteer **myBackendPool**.|
+    | Poort back-end | Voer **80**in. |
+    | Back-end-pool | Selecteer **myBackendPool**.|
     | Statustest | Selecteer **myHealthProbe**. |
     | Impliciete uitgaande regels maken | Selecteer **Nee**. We maken in een later stadium uitgaande regels met behulp van een speciaal openbaar IP-adres. |
 4. Laat de overige standaard waarden ongewijzigd en selecteer **OK**.
@@ -159,7 +159,7 @@ Met uitgaande regels van Load Balancer wordt de uitgaande SNAT voor virtuele mac
     | Frontend-IP-adres | Selecteer **LoadBalancerFrontEndOutbound**. |
     | Time-out voor inactiviteit (minuten) | Verplaats de schuif regelaar naar * * 15 minuten.|
     | TCP opnieuw instellen | Selecteer **Ingeschakeld**.|
-    | Back-endpool | **MyBackendPoolOutbound** selecteren |
+    | Back-end-pool | **MyBackendPoolOutbound** selecteren |
     | Poort toewijzing-toewijzing van > poort | Selecteer **hand matig aantal uitgaande poorten kiezen** |
     | Uitgaande poorten-> kiezen voor | **Poorten per instantie** selecteren |
     | Uitgaande poorten-> poorten per instantie | Voer **10.000**in. |

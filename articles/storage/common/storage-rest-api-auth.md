@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee37745b35071893ff504c56a4a6883b589f1d0e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916061"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804625"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API bewerkingen aanroepen met gedeelde sleutel autorisatie
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u de Azure Storage REST-Api's aanroept, met 
 
 In de voorbeeld toepassing worden de BLOB-containers voor een opslag account vermeld. Als u de code in dit artikel wilt uitproberen, hebt u de volgende items nodig:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) met de werk belasting van **Azure Development** .
+- [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) installeren met de **Azure-ontwikkelworkload**.
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -65,7 +65,7 @@ Controleer de verwijzing voor de [ListContainers](/rest/api/storageservices/List
 
 **Aanvraag methode**: ophalen. Dit woord is de HTTP-methode die u opgeeft als een eigenschap van het object Request. Andere waarden voor deze term zijn onder andere HEAD, PUT en DELETE, afhankelijk van de API die u aanroept.
 
-**Aanvraag**-URI `https://myaccount.blob.core.windows.net/?comp=list`:.De aanvraag-URI wordt gemaakt op basis van het eind `http://myaccount.blob.core.windows.net` punt van het BLOB `/?comp=list`-opslag account en de bron teken reeks.
+**Aanvraag-URI**: `https://myaccount.blob.core.windows.net/?comp=list` .De aanvraag-URI wordt gemaakt op basis van het eind punt van het Blob-opslag account `http://myaccount.blob.core.windows.net` en de bron teken reeks `/?comp=list` .
 
 [URI-para meters](/rest/api/storageservices/List-Containers2#uri-parameters): er zijn aanvullende query parameters die u kunt gebruiken bij het aanroepen van ListContainers. Enkele van deze para meters zijn *time-out* voor de aanroep (in seconden) en het *voor voegsel*, dat wordt gebruikt voor het filteren.
 
@@ -102,14 +102,14 @@ Als u de aanvraag wilt bouwen, wat een HttpRequestMessage-object is, gaat u naar
 
 Enkele basis informatie die u nodig hebt:
 
-- Voor ListContainers is `GET`de **methode** . Deze waarde wordt ingesteld bij het instantiëren van de aanvraag.
-- De **resource** is het query gedeelte van de URI dat aangeeft welke API wordt aangeroepen, dus de waarde is `/?comp=list`. Zoals eerder is vermeld, bevindt de resource zich op de pagina referentie documentatie waarop de informatie over de [ListContainers-API](/rest/api/storageservices/List-Containers2)wordt weer gegeven.
-- De URI wordt gemaakt door het Blob service-eind punt voor dat opslag account te maken en de resource samen te voegen. De waarde voor de **aanvraag-URI** eindigt `http://contosorest.blob.core.windows.net/?comp=list`op.
+- Voor ListContainers is de **methode** `GET` . Deze waarde wordt ingesteld bij het instantiëren van de aanvraag.
+- De **resource** is het query gedeelte van de URI dat aangeeft welke API wordt aangeroepen, dus de waarde is `/?comp=list` . Zoals eerder is vermeld, bevindt de resource zich op de pagina referentie documentatie waarop de informatie over de [ListContainers-API](/rest/api/storageservices/List-Containers2)wordt weer gegeven.
+- De URI wordt gemaakt door het Blob service-eind punt voor dat opslag account te maken en de resource samen te voegen. De waarde voor de **aanvraag-URI** eindigt op `http://contosorest.blob.core.windows.net/?comp=list` .
 - Voor ListContainers is **requestBody** Null en er zijn geen extra **headers**.
 
 Verschillende Api's hebben mogelijk andere para meters die moeten worden door gegeven, zoals *ifMatch*. Een voor beeld van waar u ifMatch zou kunnen gebruiken bij het aanroepen van PutBlob. In dat geval stelt u ifMatch in op een eTag en wordt alleen de BLOB bijgewerkt als de eTag die u opgeeft, overeenkomt met de huidige eTag op de blob. Als iemand anders de BLOB heeft bijgewerkt sinds het ophalen van de eTag, wordt de wijziging niet overschreven.
 
-Stel eerst de `uri` en in `payload`.
+Stel eerst de `uri` en in `payload` .
 
 ```csharp
 // Construct the URI. It will look like this:
@@ -121,7 +121,7 @@ String uri = string.Format("http://{0}.blob.core.windows.net?comp=list", storage
 Byte[] requestPayload = null;
 ```
 
-Instantiër vervolgens de aanvraag, waarbij u de methode instelt `GET` op en de URI opgeeft.
+Instantiër vervolgens de aanvraag, waarbij u de methode instelt op `GET` en de URI opgeeft.
 
 ```csharp
 // Instantiate the request message with a null payload.
@@ -130,7 +130,7 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 {
 ```
 
-Voeg de aanvraag headers voor `x-ms-date` en `x-ms-version`toe. Deze plaats in de code is ook waar u aanvullende aanvraag headers toevoegt die vereist zijn voor de aanroep. In dit voor beeld zijn er geen aanvullende headers. Een voor beeld van een API die in extra headers wordt door gegeven, is de container-ACL-bewerking instellen. Deze API-aanroep voegt een header met de naam "x-MS-BLOB-Public-Access" en de waarde voor het toegangs niveau toe.
+Voeg de aanvraag headers voor `x-ms-date` en toe `x-ms-version` . Deze plaats in de code is ook waar u aanvullende aanvraag headers toevoegt die vereist zijn voor de aanroep. In dit voor beeld zijn er geen aanvullende headers. Een voor beeld van een API die in extra headers wordt door gegeven, is de container-ACL-bewerking instellen. Deze API-aanroep voegt een header met de naam "x-MS-BLOB-Public-Access" en de waarde voor het toegangs niveau toe.
 
 ```csharp
 // Add the request headers for x-ms-date and x-ms-version.
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
                CanonicalizedResource;  
 ```
 
-De meeste van deze velden worden zelden gebruikt. Voor Blob-opslag geeft u VERB, MD5, lengte van inhoud, canonieke kopteksten en canonieke bron op. U kunt de andere leeg laten (maar in dat geval `\n` de waarde kent zodat deze leeg zijn).
+De meeste van deze velden worden zelden gebruikt. Voor Blob-opslag geeft u VERB, MD5, lengte van inhoud, canonieke kopteksten en canonieke bron op. U kunt de andere leeg laten (maar in dat `\n` geval de waarde kent zodat deze leeg zijn).
 
 Wat zijn CanonicalizedHeaders en CanonicalizedResource? Goede vraag. Wat heeft eigenlijk een canonieke betekenis? Micro soft Word herkent het niet eens als een woord. Hier vindt u [informatie over standaardisatie](https://en.wikipedia.org/wiki/Canonicalization): *in computer wetenschappen, standaardisatie (soms standaardisering of normalisatie) is een proces voor het converteren van gegevens met meer dan één mogelijke representatie in een standaard-, normale of canonieke vorm.* Normaal gesp roken houdt dit in dat u de lijst met items (zoals kopteksten in het geval van canonieke kopteksten) kunt maken en deze in een vereiste indeling wilt standaardiseren. In principe heeft micro soft een indeling gekozen en moet deze overeenkomen.
 
@@ -308,7 +308,7 @@ Laten we beginnen met deze twee canonieke velden, omdat deze zijn vereist voor h
 
 ### <a name="canonicalized-headers"></a>Canonieke kopteksten
 
-Als u deze waarde wilt maken, haalt u de kopteksten op die beginnen met ' x-MS-' en sorteert u deze en `[key:value\n]` vervolgens maakt u deze op in een reeks instanties, samengevoegd tot één teken reeks. In dit voor beeld zien de canonieke kopteksten er als volgt uit:
+Als u deze waarde wilt maken, haalt u de kopteksten op die beginnen met ' x-MS-' en sorteert u deze en vervolgens maakt u deze op in een reeks `[key:value\n]` instanties, samengevoegd tot één teken reeks. In dit voor beeld zien de canonieke kopteksten er als volgt uit:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -353,7 +353,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 
 ### <a name="canonicalized-resource"></a>Canoniek gemaakte resource
 
-Dit deel van de teken reeks van de hand tekening vertegenwoordigt het opslag account waarop de aanvraag betrekking heeft. Houd er rekening mee dat de `<http://contosorest.blob.core.windows.net/?comp=list>`aanvraag-URI, met de daad`contosorest` werkelijke account naam (in dit geval). In dit voor beeld wordt dit geretourneerd:
+Dit deel van de teken reeks van de hand tekening vertegenwoordigt het opslag account waarop de aanvraag betrekking heeft. Houd er rekening mee dat de aanvraag `<http://contosorest.blob.core.windows.net/?comp=list>` -URI, met de daad werkelijke account naam ( `contosorest` in dit geval). In dit voor beeld wordt dit geretourneerd:
 
 ```
 /contosorest/\ncomp:list

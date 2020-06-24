@@ -5,12 +5,12 @@ description: Meer informatie over de bekende beperkingen bij het uitvoeren van W
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433005"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976605"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -101,7 +101,7 @@ GMSA-ondersteuning (Group managed service accounts) is momenteel niet beschikbaa
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kan ik Azure Monitor gebruiken voor containers met Windows-knoop punten en containers?
 
-Ja, u kunt Azure Monitor echter geen logboeken (stdout) uit Windows-containers verzamelen. U kunt nog steeds koppelen aan de live stream van stdout-logboeken vanuit een Windows-container.
+Ja, maar Azure Monitor heeft echter een aantal [beperkingen][azure-monitor] voor Windows-ondersteuning.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wat moet ik doen als ik een functie heb nodig die niet wordt ondersteund?
 
@@ -131,3 +131,4 @@ Om aan de slag te gaan met Windows Server-containers in AKS, [maakt u een knoopp
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
+[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide

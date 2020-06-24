@@ -81,7 +81,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --------- | ----------- |
 | access_token | Het toegangs token dat door de app is aangevraagd. |
 | token_type | De waarde van het token type. Het enige type dat door Azure AD wordt ondersteund, is Bearer. |
@@ -164,7 +164,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &prompt=none
 ```
 
-| Parameter | Vereist? | Beschrijving |
+| Parameter | Vereist? | Description |
 | --- | --- | --- |
 |bouw| Vereist | De naam van uw Azure AD B2C-Tenant|
 verslaggev| Vereist| De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in` , `b2c_1_sign_up` of `b2c_1_edit_profile` . |
@@ -193,7 +193,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --- | --- |
 | access_token |Het token dat de app heeft aangevraagd. |
 | token_type |Het token type is altijd Bearer. |
@@ -210,7 +210,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| Parameter | Beschrijving |
+| Parameter | Description |
 | --- | --- |
 | fout |Een teken reeks voor fout code die kan worden gebruikt voor het classificeren van typen fouten die optreden. U kunt de teken reeks ook gebruiken om te reageren op fouten. |
 | error_description |Een specifiek fout bericht die u kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |

@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 06/17/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61dd98028b7342290984615ea19b561b48aaeadb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74792233"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976894"
 ---
 # <a name="supported-postgresql-major-versions"></a>Ondersteunde PostgreSQL primaire versies
 Micro soft streeft ernaar ondersteuning te bieden voor n-2 versies van de PostgreSQL-engine in Azure Database for PostgreSQL-één server. De versies zijn de huidige primaire versie op Azure (n) en de twee voor gaande primaire versies (-2).
@@ -20,16 +20,16 @@ Micro soft streeft ernaar ondersteuning te bieden voor n-2 versies van de Postgr
 Azure Database for PostgreSQL ondersteunt momenteel de volgende primaire versies:
 
 ## <a name="postgresql-version-11"></a>PostgreSQL-versie 11
-De huidige secundaire versie is 11,5. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/11/static/release-11-5.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
+De huidige secundaire versie is 11,6. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/11/static/release-11-6.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
 
 ## <a name="postgresql-version-10"></a>PostgreSQL-versie 10
-De huidige secundaire versie is 10,10. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/10/static/release-10-10.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
+De huidige secundaire versie is 10,11. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/10/static/release-10-11.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
 
 ## <a name="postgresql-version-96"></a>PostgreSQL-versie 9,6
-De huidige secundaire release is 9.6.15. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/9.6/static/release-9-6-15.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
+De huidige secundaire release is 9.6.16. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
 
 ## <a name="postgresql-version-95"></a>PostgreSQL-versie 9,5
-De huidige secundaire release is 9.5.19. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/9.5/static/release-9-5-19.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
+De huidige secundaire release is 9.5.20. Raadpleeg de [postgresql-documentatie](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html) voor meer informatie over verbeteringen en oplossingen in deze kleine release.
 
 ## <a name="managing-upgrades"></a>Upgrades beheren
 Het PostgreSQL-project ondervindt regel matig kleine releases voor het oplossen van gemelde bugs. Azure Database for PostgreSQL Servert automatisch servers met secundaire releases tijdens de maandelijkse implementaties van de service. 

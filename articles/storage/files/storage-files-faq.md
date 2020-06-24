@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 3724392cc50e910c5caf4a3f6cba85070a6d107f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2111ccd65a2944ec5f5ea0526e6e7f577261b213
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661100"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906816"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -105,9 +105,9 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Prestaties zijn afhankelijk van uw omgevings instellingen, configuratie en of dit een initiële synchronisatie of een voortdurende synchronisatie is. Zie voor meer informatie [Azure file sync metrische gegevens over prestaties](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
-    Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op twee servers tegelijk worden gewijzigd, worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand heeft de computer ' Bron ' en het conflict nummer dat is toegevoegd aan de naam. Deze is gebaseerd op deze taxonomie: 
+    Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op hetzelfde moment worden gewijzigd in twee eind punten worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand (bepaald door LastWriteTime) heeft de naam van het eind punt en het conflict nummer dat is toegevoegd aan de bestands naam. Voor Server-eind punten is de naam van het eind punt de naam van de server. Voor Cloud-eind punten is de naam van het eind punt in de **Cloud**. De naam volgt deze taxonomie: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
     Het eerste conflict van CompanyReport.docx zou bijvoorbeeld CompanyReport-CentralServer.docx als CentralServer is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1.docx. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 
@@ -133,6 +133,10 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-effective-vfs"></a>
   **Hoe wordt de *beschik bare volume ruimte* geïnterpreteerd wanneer ik meerdere server eindpunten op een volume heb?**  
   Zie [Wat is Cloud lagen](storage-sync-cloud-tiering.md#afs-effective-vfs)?
+  
+* <a id="afs-tiered-files-tiering-disabled"></a>
+  **Ik heb Cloud lagen uitgeschakeld, waarom zijn er gelaagde bestanden op de locatie van het server eindpunt?**  
+  Zie [Wat is Cloud lagen](storage-sync-cloud-tiering.md#afs-tiering-disabled)?
 
 * <a id="afs-files-excluded"></a>
   **Welke bestanden of mappen worden automatisch uitgesloten door Azure File Sync?**  

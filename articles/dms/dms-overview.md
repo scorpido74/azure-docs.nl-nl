@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8607f1a687f2979c37c67099874288c6c5ead164
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64fb692c7ef896e643db603a6fbc3948cc4b3a11
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77647485"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749646"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Wat is Azure Database Migration Service?
 
@@ -23,7 +23,7 @@ Azure Database Migration Service is een volledig beheerde service die is ontworp
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>Data bases migreren naar Azure met vertrouwde hulpprogram ma's
 
-Azure Database Migration Service integreert een deel van de functionaliteit van onze bestaande hulpprogram ma's en services. Het biedt klanten een allesomvattende, Maxi maal beschik bare oplossing. De service gebruikt de [Data Migration Assistant](https://aka.ms/dma) voor het genereren van analyse rapporten die aanbevelingen geven om u door de vereiste wijzigingen door te voeren voordat een migratie wordt uitgevoerd. Het is aan te raden om een herstel uit te voeren dat vereist is. Wanneer u klaar bent om het migratie proces te starten, voert Azure Database Migration Service alle vereiste stappen uit. U kunt uw migratieprojecten met een gerust hart in gang zetten en verder vergeten, in de wetenschap dat het proces gebruikmaakt van de best practices zoals deze zijn bepaald door Microsoft.
+Azure Database Migration Service integreert een deel van de functionaliteit van onze bestaande hulpprogram ma's en services. Het biedt klanten een allesomvattende, Maxi maal beschik bare oplossing. De service gebruikt de [Data Migration Assistant](https://aka.ms/dma) voor het genereren van analyse rapporten die aanbevelingen geven om u door de vereiste wijzigingen door te voeren voordat een migratie wordt uitgevoerd. Het is aan te raden om een herstel uit te voeren dat vereist is. Wanneer u klaar bent om het migratie proces te starten, voert Azure Database Migration Service alle vereiste stappen uit. U kunt uw migratieprojecten met een gerust hart in gang zetten en verder vergeten, in de wetenschap dat het proces gebruikmaakt van de best practices zoals deze zijn bepaald door Microsoft. 
 
 > [!NOTE]
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium.

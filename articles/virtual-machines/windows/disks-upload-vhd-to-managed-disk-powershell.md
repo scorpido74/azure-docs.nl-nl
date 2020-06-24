@@ -3,17 +3,17 @@ title: Een VHD uploaden naar Azure of een schijf kopiëren tussen regio's-Azure 
 description: Meer informatie over het uploaden van een VHD naar een Azure Managed disk en het kopiëren van een beheerde schijf in verschillende regio's, met behulp van Azure PowerShell via direct uploaden.
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
+ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660605"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944624"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure PowerShell
 
@@ -47,6 +47,9 @@ Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestand
 Maak nu op uw lokale shell een lege standaard HDD voor het uploaden door de **Upload** -instelling op te geven in de para meter **-CreateOption** en de para meter **-UploadSizeInBytes** in de cmdlet [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Roep vervolgens [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) aan om de schijf te maken.
 
 Vervang `<yourdiskname>` , `<yourresourcegroupname>` en `<yourregion>` Voer de volgende opdrachten uit:
+
+> [!TIP]
+> Als u een besturingssysteem schijf maakt, voegt u-HyperVGeneration ' <yourGeneration> ' toe aan `New-AzDiskConfig` .
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -98,6 +101,9 @@ Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stap
 > U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
 Vervang de `<sourceResourceGroupHere>` waarden,,, `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met de waarde en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+
+> [!TIP]
+> Als u een besturingssysteem schijf maakt, voegt u-HyperVGeneration ' <yourGeneration> ' toe aan `New-AzDiskConfig` .
 
 ```powershell
 

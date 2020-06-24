@@ -45,7 +45,7 @@ U kunt uw Enterprise PKI-oplossing (uw interne PKI), Azure PowerShell, MakeCert 
 
 * **MakeCert:** zie het [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)-artikel voor een stappenplan.
 
-* **OpenSSL:** 
+* **OpenSSL** 
 
     * Bij het exporteren van certificaten, moet u het basiscertificaat naar Base64 converteren.
 

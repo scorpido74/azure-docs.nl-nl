@@ -3,35 +3,32 @@ title: Verificatie instellen
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het instellen en configureren van verificatie voor verschillende resources en werk stromen in Azure Machine Learning. Er zijn meerdere manieren om verificatie in de service te configureren en te gebruiken, variërend van eenvoudige op gebruikers interface gebaseerde verificatie voor ontwikkelings-of test doeleinden tot volledige Azure Active Directory Service-Principal-verificatie.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+author: larryfr
+ms.author: larryfr
+ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 06/17/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6fd2ba9210aa8f133ed08e850e4ded978682988
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 34641e7a883f6b07fe63595cf5750df2569640f8
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629242"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974684"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u verificatie kunt instellen en configureren voor verschillende resources en werk stromen in Azure Machine Learning. Er zijn meerdere manieren om te verifiëren bij de service, variërend van eenvoudige op gebruikers interface gebaseerde auth voor ontwikkelings-of test doeleinden tot volledige Azure Active Directory Service-Principal-verificatie. In dit artikel wordt ook uitgelegd wat de verschillen zijn in de manier waarop verificatie van webservices werkt, en hoe u zich kunt verifiëren bij de Azure Machine Learning REST API.
+Meer informatie over het verifiëren van uw Azure Machine Learning-werk ruimte en modellen die zijn geïmplementeerd als webservices.
 
-In deze procedure ziet u hoe u de volgende taken kunt uitvoeren:
+Over het algemeen zijn er twee soorten verificatie die u kunt gebruiken met Azure Machine Learning:
 
-* Interactieve gebruikers interface-verificatie gebruiken voor testen/ontwikkeling
-* Service-Principal-verificatie instellen
-* Verifiëren bij uw werk ruimte
-* OAuth 2.0 Bearer-tokens ophalen voor Azure Machine Learning REST API
-* Verificatie van webservices
+* __Interactief__: u gebruikt uw account in azure Active Directory om ofwel rechtstreeks te verifiëren, of om een token op te halen dat wordt gebruikt voor verificatie. Interactieve verificatie wordt gebruikt tijdens het experimenteren en iteratieve ontwikkeling. Of waar u de toegang tot resources (zoals een webservice) per gebruiker wilt beheren.
+* __Service-Principal__: u maakt een Service-Principal-account in azure Active Directory en gebruikt dit om een token te verifiëren of op te halen. Een service-principal wordt gebruikt wanneer u een geautomatiseerd proces nodig hebt om te verifiëren bij de service zonder tussen komst van de gebruiker. Een voor beeld: een script voor continue integratie en implementatie waarmee een model wordt getraind en getest wanneer de trainings code verandert. U kunt ook een Service-Principal gebruiken om een token op te halen voor verificatie bij een webservice, als u niet wilt dat de eind gebruiker van de service wordt geverifieerd. Of waar de verificatie van de eind gebruiker niet rechtstreeks wordt uitgevoerd met Azure Active Directory.
 
-Zie het [concept artikel](concept-enterprise-security.md) voor een algemeen overzicht van beveiliging en verificatie in azure machine learning.
+Ongeacht welk verificatie type wordt gebruikt, wordt op rollen gebaseerd toegangs beheer (RBAC) gebruikt om het niveau van toegang dat is toegestaan voor de resources te bereiken. Een account dat wordt gebruikt om het toegangs token voor een geïmplementeerd model op te halen, heeft bijvoorbeeld alleen lees toegang tot de werk ruimte nodig. Zie [toegang tot Azure machine learning werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over RBAC.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,108 +37,124 @@ Zie het [concept artikel](concept-enterprise-security.md) voor een algemeen over
 
 ## <a name="interactive-authentication"></a>Interactieve verificatie
 
-De meeste voor beelden in de documentatie voor deze service gebruiken interactieve verificatie in Jupyter-notebooks als eenvoudige methode voor testen en demonstratie. Dit is een licht gewichtve manier om te testen wat u ontwikkelt. Er zijn twee functie aanroepen waarmee automatisch een verificatie stroom op basis van een gebruikers interface wordt gevraagd.
+De meeste voor beelden in de documentatie en voor beelden gebruiken interactieve verificatie. Wanneer u de SDK gebruikt, zijn er bijvoorbeeld twee functie aanroepen waarmee automatisch een verificatie stroom op basis van een gebruikers interface wordt gevraagd:
 
-Bij het aanroepen van de `from_config()` functie wordt de prompt weer gegeven.
+* Bij het aanroepen van de `from_config()` functie wordt de prompt weer gegeven.
 
-```python
-from azureml.core import Workspace
-ws = Workspace.from_config()
-```
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
 
-De `from_config()` functie zoekt naar een JSON-bestand met de verbindings gegevens van de werk ruimte. U kunt de verbindings gegevens ook expliciet opgeven met behulp van de `Workspace` constructor, die ook wordt gevraagd om interactieve verificatie. Beide aanroepen zijn gelijk.
+    De `from_config()` functie zoekt naar een JSON-bestand met de verbindings gegevens van de werk ruimte.
 
-```python
-ws = Workspace(subscription_id="your-sub-id",
-               resource_group="your-resource-group-id",
-               workspace_name="your-workspace-name"
-              )
-```
+* Met de `Workspace` constructor om abonnements-, resource groep-en werkruimte gegevens op te geven, wordt u ook gevraagd om interactieve verificatie uit te voeren.
 
-Als u toegang hebt tot meerdere tenants, moet u de klasse wellicht importeren en expliciet definiëren welke Tenant u wilt richten. Als u de constructor aanroept voor `InteractiveLoginAuthentication` , wordt u gevraagd om u aan te melden, vergelijkbaar met de bovenstaande oproepen.
-
-```python
-from azureml.core.authentication import InteractiveLoginAuthentication
-interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-```
-
-Interactieve verificatie is handig voor testen en leren, maar biedt geen ondersteuning voor het bouwen van geautomatiseerde of headless werk stromen. Het instellen van Service-Principal-verificatie is de beste benadering voor geautomatiseerde processen die gebruikmaken van de SDK.
-
-## <a name="set-up-service-principal-authentication"></a>Service-Principal-verificatie instellen
-
-Dit proces is nodig voor het inschakelen van verificatie die is losgekoppeld van een specifieke gebruikers aanmelding, waarmee u zich kunt verifiëren bij de Azure Machine Learning python SDK in geautomatiseerde werk stromen. Met Service-Principal-verificatie kunt u [zich ook verifiëren bij de rest API](#azure-machine-learning-rest-api-auth).
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
 
 > [!TIP]
-> Service-principals moeten toegang hebben tot uw werk ruimte via [Azure op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md).
+> Als u toegang hebt tot meerdere tenants, moet u de klasse wellicht importeren en expliciet definiëren welke Tenant u wilt richten. Als u de constructor aanroept voor `InteractiveLoginAuthentication` , wordt u gevraagd om u aan te melden, vergelijkbaar met de bovenstaande oproepen.
 >
-> Met de ingebouwde rollen van **eigenaar** of **Inzender** voor uw werk ruimte kan de Service-Principal alle activiteiten uitvoeren, zoals het trainen van een model, het implementeren van een model, enzovoort. Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over het gebruik van rollen.
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
 
-Als u Service-Principal-verificatie wilt instellen, maakt u eerst een app-registratie in Azure Active Directory en wijst u vervolgens een rol toe aan uw app. De eenvoudigste manier om deze installatie te volt ooien, is via de [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/) in de Azure Portal. Nadat u zich hebt aangemeld bij de portal, klikt u op het `>_` pictogram in de rechter bovenhoek van de pagina bij uw naam om de shell te openen.
+## <a name="service-principal-authentication"></a>Verificatie van service-principal
 
-Als u de Cloud Shell nog niet eerder in uw Azure-account hebt gebruikt, moet u een opslag account resource maken voor het opslaan van bestanden die zijn geschreven. In het algemeen heeft dit opslag account een te verwaarlozen maandelijkse kosten. Installeer de machine learning-extensie ook als u deze nog niet eerder hebt gebruikt met de volgende opdracht.
+Als u de verificatie van de Service-Principal (SP) wilt gebruiken, moet u eerst de SP maken en toegang verlenen tot uw werk ruimte. Zoals eerder vermeld, wordt op Azure Role-based Access Control (RBAC) gebruikt om de toegang te beheren. Daarom moet u ook bepalen welke toegang u wilt verlenen aan de SP.
 
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
+> [!IMPORTANT]
+> Als u een Service-Principal gebruikt, geeft u deze de __Mini maal vereiste toegang voor de taak__ waarvoor deze wordt gebruikt. U kunt bijvoorbeeld geen service principal-eigenaar of Inzender toegang verlenen als u voor alle gebruikt voor het lezen van het toegangs token voor een webimplementatie.
+>
+> De reden voor het verlenen van de minimale toegang is dat een Service-Principal gebruikmaakt van een wacht woord voor verificatie en dat het wacht woord kan worden opgeslagen als onderdeel van een Automation-script. Als het wacht woord wordt gelekt, en de mini maal vereiste toegang voor een bepaalde taken, minimaliseert het schadelijke gebruik van de SP.
+
+De eenvoudigste manier om een SP te maken en toegang te verlenen tot uw werk ruimte is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u een Service-Principal wilt maken en toegang tot uw werk ruimte wilt verlenen, gebruikt u de volgende stappen:
 
 > [!NOTE]
-> U moet een beheerder zijn van het abonnement om de volgende stappen uit te voeren.
+> U moet een beheerder zijn van het abonnement om al deze stappen uit te voeren.
 
-Voer vervolgens de volgende opdracht uit om de service-principal te maken. Geef deze een naam, in dit geval **ml-auth**.
+1. Verifiëren bij uw Azure-abonnement:
 
-```azurecli-interactive
-az ad sp create-for-rbac --sdk-auth --name ml-auth
-```
+    ```azurecli-interactive
+    az login
+    ```
 
-De uitvoer is vergelijkbaar met het volgende. Noteer de `clientId` `clientSecret` velden, en, `tenantId` zoals u deze nodig hebt voor andere stappen in dit artikel.
+    Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanmeldingspagina gedownload. Anders moet u een browser openen en de instructies op de opdracht regel volgen. De instructies moeten bladeren naar [https://aka.ms/devicelogin](https://aka.ms/devicelogin) en een autorisatie code invoeren.
 
-```json
-{
-    "clientId": "your-client-id",
-    "clientSecret": "your-client-secret",
-    "subscriptionId": "your-sub-id",
-    "tenantId": "your-tenant-id",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net"
-}
-```
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Voer vervolgens de volgende opdracht uit om de details op te halen van de service-principal die u zojuist hebt gemaakt, met behulp `clientId` van de bovenstaande waarde als invoer voor de `--id` para meter.
+    Zie [Aanmelden met Azure cli](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)voor andere verificatie methoden.
 
-```azurecli-interactive
-az ad sp show --id your-client-id
-```
+1. Installeer de Azure Machine Learning extensie:
 
-Hier volgt een vereenvoudigd voor beeld van de JSON-uitvoer van de opdracht. Noteer het `objectId` veld, omdat u de waarde voor de volgende stap nodig hebt.
+    ```azurecli-interactive
+    az extension add -n azure-cli-ml
+    ```
 
-```json
-{
-    "accountEnabled": "True",
-    "addIns": [],
-    "appDisplayName": "ml-auth",
-    ...
-    ...
-    ...
-    "objectId": "your-sp-object-id",
-    "objectType": "ServicePrincipal"
-}
-```
+1. De service-principal maken. In het volgende voor beeld wordt een SP **met de naam ml-auth** gemaakt:
 
-Gebruik vervolgens de volgende opdracht om uw Service-Principal toegang toe te wijzen aan uw machine learning-werk ruimte. U hebt de naam van uw werk ruimte en de naam van de resource groep nodig voor `-w` `-g` respectievelijk de para meters en. Voor de `--user` para meter gebruikt u de `objectId` waarde uit de vorige stap. Met de `--role` para meter kunt u de Access-rol voor de service-principal instellen en in het algemeen gebruikt u **eigenaar** of **Inzender**. Beide hebben schrijf toegang tot bestaande resources, zoals reken clusters en gegevens bronnen, maar alleen de **eigenaar** kan deze resources inrichten.
+    ```azurecli-interactive
+    az ad sp create-for-rbac --sdk-auth --name ml-auth
+    ```
 
-```azurecli-interactive
-az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
-```
+    De uitvoer is vergelijkbaar met het volgende. Noteer de `clientId` `clientSecret` velden, en, `tenantId` zoals u deze nodig hebt voor andere stappen in dit artikel.
 
-Deze aanroep produceert geen uitvoer, maar u hebt nu Service-Principal-verificatie ingesteld voor uw werk ruimte.
+    ```json
+    {
+        "clientId": "your-client-id",
+        "clientSecret": "your-client-secret",
+        "subscriptionId": "your-sub-id",
+        "tenantId": "your-tenant-id",
+        "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+        "resourceManagerEndpointUrl": "https://management.azure.com",
+        "activeDirectoryGraphResourceId": "https://graph.windows.net",
+        "sqlManagementEndpointUrl": "https://management.core.windows.net:5555",
+        "galleryEndpointUrl": "https://gallery.azure.com/",
+        "managementEndpointUrl": "https://management.core.windows.net"
+    }
+    ```
 
-## <a name="authenticate-to-your-workspace"></a>Verifiëren bij uw werk ruimte
+1. De Details voor de Service-Principal ophalen met de `clientId` waarde die is geretourneerd in de vorige stap:
 
-Nu u Service-Principal-verificatie hebt ingeschakeld, kunt u zich bij uw werk ruimte in de SDK aanmelden zonder dat u zich fysiek als gebruiker aanmeldt. Gebruik de `ServicePrincipalAuthentication` klasse-constructor en gebruik de waarden uit de vorige stappen als de para meters. De `tenant_id` para meter wordt toegewezen aan `tenantId` van boven, wordt `service_principal_id` toegewezen aan `clientId` en wordt `service_principal_password` toegewezen aan `clientSecret` .
+    ```azurecli-interactive
+    az ad sp show --id your-client-id
+    ```
+
+    De volgende JSON is een vereenvoudigd voor beeld van de uitvoer van de opdracht. Noteer het `objectId` veld, omdat u de waarde voor de volgende stap nodig hebt.
+
+    ```json
+    {
+        "accountEnabled": "True",
+        "addIns": [],
+        "appDisplayName": "ml-auth",
+        ...
+        ...
+        ...
+        "objectId": "your-sp-object-id",
+        "objectType": "ServicePrincipal"
+    }
+    ```
+
+1. Toestaan dat de SP toegang heeft tot uw Azure Machine Learning-werk ruimte. U hebt de naam van uw werk ruimte en de naam van de resource groep nodig voor `-w` `-g` respectievelijk de para meters en. Voor de `--user` para meter gebruikt u de `objectId` waarde uit de vorige stap. `--role`Met de para meter kunt u de Access-rol voor de service-principal instellen. In het volgende voor beeld wordt de SP toegewezen aan de rol **eigenaar** . 
+
+    > [!IMPORTANT]
+    > Met de functie voor toegang tot eigenaar kan de Service-Principal vrijwel elke bewerking in uw werk ruimte uitvoeren. Het wordt in dit document gebruikt om te demonstreren hoe toegang wordt verleend. in een productie omgeving raadt micro soft aan de service-principal de minimale toegang te geven die nodig is voor het uitvoeren van de rol die u wilt gebruiken. Zie [toegang tot Azure machine learning werk ruimte beheren](how-to-assign-roles.md)voor meer informatie.
+
+    ```azurecli-interactive
+    az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
+    ```
+
+    Deze aanroep produceert geen uitvoer bij geslaagde pogingen.
+
+### <a name="use-a-service-principal-from-the-sdk"></a>Een service-principal van de SDK gebruiken
+
+Als u de werk ruimte wilt verifiëren vanuit de SDK met behulp van de Service-Principal, gebruikt u de `ServicePrincipalAuthentication` constructor class. Gebruik de waarden die u hebt gekregen bij het maken van de service provider als de para meters. De `tenant_id` para meter wordt toegewezen aan `tenantId` van boven, wordt `service_principal_id` toegewezen aan `clientId` en wordt `service_principal_password` toegewezen aan `clientSecret` .
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -151,7 +164,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
                                     service_principal_password="your-client-secret") # clientSecret
 ```
 
-De `sp` variabele bevat nu een verificatie object dat u rechtstreeks in de SDK gebruikt. Over het algemeen is het een goed idee om de id's/geheimen die hierboven worden gebruikt, op te slaan in omgevings variabelen, zoals in de volgende code wordt weer gegeven.
+De `sp` variabele bevat nu een verificatie object dat u rechtstreeks in de SDK gebruikt. Over het algemeen is het een goed idee om de id's/geheimen die hierboven worden gebruikt, op te slaan in omgevings variabelen, zoals in de volgende code wordt weer gegeven. Als u in omgevings variabelen opslaat, voor komt u dat de gegevens per ongeluk in een GitHub-opslag plaats worden gecontroleerd.
 
 ```python
 import os
@@ -161,7 +174,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
 ```
 
-Voor automatische werk stromen die worden uitgevoerd in Python en de SDK voornamelijk gebruiken, kunt u dit object in de meeste gevallen gebruiken voor uw verificatie. De volgende code verifieert uw werk ruimte met behulp van het auth-object dat u zojuist hebt gemaakt.
+Voor automatische werk stromen die worden uitgevoerd in Python en de SDK voornamelijk gebruiken, kunt u dit object in de meeste gevallen gebruiken voor uw verificatie. De volgende code verifieert uw werk ruimte met behulp van het auth-object dat u hebt gemaakt.
 
 ```python
 from azureml.core import Workspace
@@ -172,16 +185,20 @@ ws = Workspace.get(name="ml-example",
 ws.get_details()
 ```
 
-## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API auth
+### <a name="use-a-service-principal-from-the-azure-cli"></a>Een service-principal van de Azure CLI gebruiken
 
-De service-principal die u in de bovenstaande stappen hebt gemaakt, kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](https://docs.microsoft.com/rest/api/azureml/). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) in Python en node. js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt.
+U kunt een Service-Principal gebruiken voor Azure CLI-opdrachten. Zie [Aanmelden met een Service-Principal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)voor meer informatie.
+
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Een Service-Principal gebruiken met de REST API (preview-versie)
+
+De service-principal kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](https://docs.microsoft.com/rest/api/azureml/) (preview). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) in zowel Python als Node.js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt.
 
 > [!NOTE]
-> MSAL. js is een nieuwe bibliotheek dan ADAL, maar u kunt geen service-to-service-verificatie uitvoeren met behulp van client referenties met MSAL. js, omdat het hoofd zakelijk een bibliotheek aan de client zijde is die is bedoeld voor interactieve/UI-verificatie die is gekoppeld aan een specifieke gebruiker. We raden u aan ADAL te gebruiken zoals hieronder wordt weer gegeven om automatische werk stromen te bouwen met de REST API.
+> MSAL.js is een nieuwe bibliotheek dan ADAL, maar u kunt geen service-to-service-verificatie uitvoeren met behulp van client referenties met MSAL.js, omdat het hoofd zakelijk een bibliotheek aan de client zijde is die is bedoeld voor interactieve/UI-verificatie die is gekoppeld aan een specifieke gebruiker. We raden u aan ADAL te gebruiken zoals hieronder wordt weer gegeven om automatische werk stromen te bouwen met de REST API.
 
-### <a name="nodejs"></a>Node.js
+#### <a name="nodejs"></a>Node.js
 
-Gebruik de volgende stappen om een verificatie token te genereren met behulp van node. js. Voer uit in uw omgeving `npm install adal-node` . Gebruik vervolgens uw `tenantId` , `clientId` , en `clientSecret` van de service-principal die u in de bovenstaande stappen hebt gemaakt als waarden voor de overeenkomende variabelen in het volgende script.
+Gebruik de volgende stappen om een verificatie token te genereren met behulp van Node.js. Voer uit in uw omgeving `npm install adal-node` . Gebruik vervolgens uw `tenantId` , `clientId` , en `clientSecret` van de service-principal die u in de bovenstaande stappen hebt gemaakt als waarden voor de overeenkomende variabelen in het volgende script.
 
 ```javascript
 const adal = require('adal-node').AuthenticationContext;
@@ -209,7 +226,7 @@ context.acquireTokenWithClientCredentials(
 );
 ```
 
-De variabele `tokenResponse` is een object dat het token en de gekoppelde meta gegevens bevat, zoals de verloop tijd. Tokens zijn geldig gedurende 1 uur en kunnen worden vernieuwd door dezelfde aanroep opnieuw uit te voeren om een nieuw token op te halen. Hier volgt een voor beeld van een antwoord.
+De variabele `tokenResponse` is een object dat het token en de gekoppelde meta gegevens bevat, zoals de verloop tijd. Tokens zijn geldig gedurende 1 uur en kunnen worden vernieuwd door dezelfde aanroep opnieuw uit te voeren om een nieuw token op te halen. Het volgende code fragment is een voor beeld van een antwoord.
 
 ```javascript
 {
@@ -226,7 +243,7 @@ De variabele `tokenResponse` is een object dat het token en de gekoppelde meta g
 
 Gebruik de `accessToken` eigenschap om het verificatie token op te halen. Raadpleeg de [rest API-documentatie](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) voor voor beelden over het gebruik van het token voor het maken van API-aanroepen.
 
-### <a name="python"></a>Python
+#### <a name="python"></a>Python
 
 Gebruik de volgende stappen om een verificatie token te genereren met behulp van python. Voer uit in uw omgeving `pip install adal` . Gebruik vervolgens uw `tenantId` , `clientId` , en `clientSecret` van de service-principal die u in de bovenstaande stappen hebt gemaakt als waarden voor de juiste variabelen in het volgende script.
 
@@ -244,7 +261,7 @@ token_response = auth_context.acquire_token_with_client_credentials("https://man
 print(token_response)
 ```
 
-De variabele `token_response` is een woorden lijst die het token en de gekoppelde meta gegevens bevat, zoals de verval tijd. Tokens zijn geldig gedurende 1 uur en kunnen worden vernieuwd door dezelfde aanroep opnieuw uit te voeren om een nieuw token op te halen. Hier volgt een voor beeld van een antwoord.
+De variabele `token_response` is een woorden lijst die het token en de gekoppelde meta gegevens bevat, zoals de verval tijd. Tokens zijn geldig gedurende 1 uur en kunnen worden vernieuwd door dezelfde aanroep opnieuw uit te voeren om een nieuw token op te halen. Het volgende code fragment is een voor beeld van een antwoord.
 
 ```python
 {
@@ -263,9 +280,17 @@ Gebruiken `token_response["accessToken"]` om het verificatie token op te halen. 
 
 ## <a name="web-service-authentication"></a>Verificatie van de webservice
 
-Web-Services in Azure Machine Learning gebruiken een ander verificatie patroon dan hierboven is beschreven. De eenvoudigste manier om te verifiëren bij geïmplementeerde webservices is door gebruik te maken **van verificatie op basis van een sleutel**, waarmee statisch Bearer-type verificatie sleutels worden gegenereerd die niet moeten worden vernieuwd. Als u alleen bij een geïmplementeerde webservice wilt verifiëren, hoeft u geen Service Principle-verificatie in te stellen, zoals hierboven wordt weer gegeven.
+De model implementaties die zijn gemaakt door Azure Machine Learning bieden twee verificatie methoden:
 
-Op de web-services die zijn geïmplementeerd op de Azure Kubernetes-service, is standaard op sleutel gebaseerde verificatie *ingeschakeld* . Azure Container Instances geïmplementeerde Services hebben op sleutel gebaseerde verificatie standaard *uitgeschakeld* , maar u kunt deze inschakelen door in te stellen `auth_enabled=True` bij het maken van de ACI-webservice. Hier volgt een voor beeld van het maken van een ACI-implementatie configuratie met ingeschakelde authenticatie op basis van een sleutel.
+* **op basis van sleutels**: een statische sleutel wordt gebruikt om te verifiëren bij de webservice.
+* **op basis**van een token: er moet een tijdelijk token worden opgehaald uit de werk ruimte en worden gebruikt om de webservice te verifiëren. Dit token verloopt na een bepaalde tijd en moet worden vernieuwd om te blijven werken met de webservice.
+
+    > [!NOTE]
+    > Verificatie op basis van tokens is alleen beschikbaar bij het implementeren naar de Azure Kubernetes-service.
+
+### <a name="key-based-web-service-authentication"></a>Verificatie op basis van sleutel-webservice
+
+Op de web-services die zijn geïmplementeerd op Azure Kubernetes service (AKS) is standaard op basis van sleutel verificatie *ingeschakeld* . Op basis van Azure Container Instances (ACI) geïmplementeerde Services hebben op sleutel gebaseerde verificatie standaard *uitgeschakeld* , maar u kunt deze inschakelen door in te stellen `auth_enabled=True` bij het maken van de ACI-webservice. De volgende code is een voor beeld van het maken van een ACI-implementatie configuratie met ingeschakelde authenticatie op basis van een sleutel.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -299,7 +324,7 @@ aci_service.regen_key("Primary")
 aci_service.regen_key("Secondary")
 ```
 
-Web-Services bieden ook ondersteuning voor verificatie op basis van tokens, maar alleen voor implementaties van Azure Kubernetes-service. Bekijk de [instructies](how-to-consume-web-service.md) voor het gebruik van webservices voor aanvullende informatie over verificatie.
+Zie [een client maken voor een model dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)voor meer informatie over het verifiëren van een geïmplementeerd model.
 
 ### <a name="token-based-web-service-authentication"></a>Verificatie op basis van tokens-based web-service
 
@@ -307,8 +332,32 @@ Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers ee
 
 * Token verificatie is **standaard uitgeschakeld** wanneer u implementeert in azure Kubernetes service.
 * Verificatie van tokens **wordt niet ondersteund** wanneer u implementeert in azure container instances.
+* Token verificatie **kan niet tegelijkertijd worden gebruikt als verificatie op basis van een sleutel**.
 
-Als u de verificatie van tokens wilt beheren, gebruikt `token_auth_enabled` u de para meter bij het maken of bijwerken van een implementatie.
+Als u de verificatie van tokens wilt beheren, gebruikt `token_auth_enabled` u de para meter bij het maken of bijwerken van een implementatie:
+
+```python
+from azureml.core.webservice import AksWebservice
+from azureml.core.model import Model, InferenceConfig
+
+# Create the config
+aks_config = AksWebservice.deploy_configuration()
+
+#  Enable token auth and disable (key) auth on the webservice
+aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
+
+aks_service_name ='aks-service-1'
+
+# deploy the model
+aks_service = Model.deploy(workspace=ws,
+                           name=aks_service_name,
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aks_config,
+                           deployment_target=aks_target)
+
+aks_service.wait_for_deployment(show_output = True)
+```
 
 Als token verificatie is ingeschakeld, kunt u de `get_token` methode gebruiken om een JSON Web token (JWT) op te halen en de verval tijd van dat token:
 
@@ -316,7 +365,7 @@ Als token verificatie is ingeschakeld, kunt u de `get_token` methode gebruiken o
 > Als u een Service-Principal gebruikt om het token op te halen en de minimale vereiste toegang wilt hebben om een token op te halen, wijst u deze toe aan de rol van **lezer** voor de werk ruimte.
 
 ```python
-token, refresh_by = service.get_token()
+token, refresh_by = aks_service.get_token()
 print(token)
 ```
 

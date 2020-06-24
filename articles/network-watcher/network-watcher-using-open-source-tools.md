@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189059"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738631"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Netwerk verkeers patronen visualiseren van en naar uw Vm's met open source-hulpprogram ma's
 
@@ -35,7 +35,7 @@ U hebt een eenvoudige webtoepassing die is geïmplementeerd op een virtuele mach
 
 ### <a name="install-capanalysis"></a>CapAnalysis installeren
 
-Als u CapAnalysis op een virtuele machine wilt installeren, kunt u hier https://www.capanalysis.net/ca/how-to-install-capanalysisde officiële instructies raadplegen.
+Als u CapAnalysis op een virtuele machine wilt installeren, kunt u hier de officiële instructies raadplegen https://www.capanalysis.net/ca/how-to-install-capanalysis .
 Om toegang tot CapAnalysis op afstand te krijgen, moet u poort 9877 op uw virtuele machine openen door een nieuwe regel voor binnenkomende beveiliging toe te voegen. Zie [regels maken in een bestaande NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule)voor meer informatie over het maken van regels in netwerk beveiligings groepen. Zodra de regel is toegevoegd, kunt u toegang krijgen tot CapAnalysis vanuit`http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Azure Network Watcher gebruiken om een pakket opname sessie te starten

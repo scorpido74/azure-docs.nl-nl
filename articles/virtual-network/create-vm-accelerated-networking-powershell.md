@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: da7164fbf9148764ef8da0205b147b0fd188de9d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457249"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975789"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Een Windows-VM maken met versneld netwerken met behulp van Azure PowerShell
 
@@ -66,6 +66,10 @@ Versnelde netwerken worden ondersteund in de meeste algemene doel stellingen en 
 Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/Dsv3, D/Dsv4, E/Esv3, EA/Easv4, Fsv2, Lsv2, MS/MMS en MS/Mmsv2.
 
 Zie [grootten voor virtuele Windows-machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren.
+
+### <a name="custom-images"></a>Aangepaste installatiekopieën
+
+Als u een aangepaste installatie kopie gebruikt en uw installatie kopie versneld netwerken ondersteunt, moet u ervoor zorgen dat u beschikt over de vereiste Stuur Programma's die werken met Mellanox Connectx-3 en Connectx-4 LX-Nic's in Azure.
 
 ### <a name="regions"></a>Regio's
 

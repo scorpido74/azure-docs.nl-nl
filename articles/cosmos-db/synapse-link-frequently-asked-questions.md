@@ -1,23 +1,23 @@
 ---
-title: Veelgestelde vragen over de koppeling van Azure Synapse voor Azure Cosmos DB
+title: Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 description: Krijg antwoorden op veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB op gebieden zoals facturering, analytische opslag, beveiliging, time to Live in een analytische opslag.
 author: srchi
 ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a78b956dad618d827a5f8bef676a7b074bdead9a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598680"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119508"
 ---
-# <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over de koppeling van Azure Synapse voor Azure Cosmos DB
+# <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
 Met Azure Synapse link voor Azure Cosmos DB maakt u een nauwe integratie tussen Azure Cosmos DB en Azure Synapse Analytics. Hierdoor kunnen klanten bijna realtime analyses uitvoeren via hun operationele gegevens met volledige prestatie isolatie van hun transactionele werk belastingen en zonder een ETL-pijp lijn. In dit artikel vindt u antwoorden op veelgestelde vragen over de Synapse-koppeling voor Azure Cosmos DB.
 
-## <a name="general-faq"></a>Algemene veelgestelde vragen
+## <a name="general-faq"></a>Veelgestelde algemene vragen
 
 ### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Wordt de Synapse-koppeling ondersteund voor alle Api's van Azure Cosmos DB?
 In de open bare preview-versie wordt Synapse link alleen ondersteund voor de Azure Cosmos DB SQL-API (core). Ondersteuning voor de API van Cosmos DB voor Mongo DB-& Cassandra-API is momenteel onder gated preview.  Neem contact op met het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com)om toegang aan te vragen voor gateded preview.
@@ -31,7 +31,7 @@ Wanneer u van plan bent een Azure Cosmos-account met meerdere regio's te configu
 Wanneer de Synapse-koppeling is ingeschakeld voor een account met meerdere regio's in de preview-versie, wordt het analytische archief in alle regio's gemaakt. De onderliggende gegevens worden geoptimaliseerd voor de door Voer en transactionele consistentie in het transactionele archief.
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Kan ik de Synapse-koppelings functie voor mijn Azure Cosmos-account uitschakelen?
-Nadat de Synapse-koppelings functie op account niveau is ingeschakeld, kunt u deze momenteel niet uitschakelen.  Als u de mogelijkheid wilt uitschakelen, moet u een nieuw Azure Cosmos-account verwijderen en opnieuw maken.
+Nadat de Synapse Link-functie op accountniveau is ingeschakeld, kunt u deze momenteel niet uitschakelen.  Als u de mogelijkheid wilt uitschakelen, moet u een nieuw Azure Cosmos-account verwijderen en opnieuw maken.
 
 Begrijp dat u **geen** facturerings implicaties hebt als de Synapse-koppelings mogelijkheid is ingeschakeld op account niveau, maar er geen containers voor het analytische archief zijn ingeschakeld.
 
@@ -53,10 +53,10 @@ Azure Cosmos DB garandeert de prestaties van de isolatie tussen transactionele e
 Ja, verwijderingen en updates van de gegevens in het transactionele archief worden weer gegeven in de analytische opslag. U kunt de Time to Live (TTL) configureren op de container om historische gegevens op te nemen, zodat de analytische opslag alle versies van items behoudt die voldoen aan de criteria van de analytische TTL. Zie het [overzicht van de analyse-TTL](analytical-store-introduction.md#analytical-ttl) voor meer informatie.
 
 ### <a name="can-i-connect-to-analytical-store-from-analytics-engines-other-than-azure-synapse-analytics"></a>Kan ik verbinding maken met een analytische archief met andere analyse-engines dan Azure Synapse Analytics?
-U hebt alleen toegang tot query's en voert deze uit op de analytische opslag met behulp van de verschillende uitvoerings tijden van Azure Synapse Analytics. Het analytische archief kan worden opgevraagd en geanalyseerd met:
+Het openen en uitvoeren van query's in de analytische opslag is alleen mogelijk met behulp van de verschillende runtimes die door Azure Synapse Analytics worden voorzien. De analytische opslag kan worden doorzocht en geanalyseerd met:
 
-* Synapse Spark met volledige ondersteuning voor scala, Python, SparkSQL en C#. Synapse Spark is van toepassing op data engineering-en Science-scenario's
-* SQL Server zonder de T-SQL-taal en ondersteuning voor bekende BI-hulpprogram ma's (bijvoorbeeld Power BI Premium, enz.)
+* Synapse Spark met volledige ondersteuning voor scala, Python, SparkSQL en C#. Synapse Spark neemt een centrale plaats in data engineering- en wetenschappelijke scenario's in
+* Serverloze SQL met T-SQL-taal en ondersteuning voor bekende BI-hulpprogramma's (bijvoorbeeld Power BI Premium, enzovoort)
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>Kan ik verbinding maken met het analytische archief vanuit Synapse SQL ingericht?
 Op dit moment is het analytische archief niet toegankelijk vanuit Synapse SQL provisioned.
@@ -71,7 +71,7 @@ De replicatie is asynchroon en op dit moment is de verwachte latentie ongeveer 2
 Als bepaalde items in uw container het [goed gedefinieerde schema voor analyse](analytical-store-introduction.md#analytical-schema)schenden, worden ze niet opgenomen in de analytische opslag. Als u scenario's hebt geblokkeerd door goed gedefinieerd schema voor analyse, kunt u het [Azure Cosmos DB-team](mailto:cosmosdbsynapselink@microsoft.com) een e-mail sturen.
 
 ### <a name="can-i-partition-the-data-in-analytical-store-differently-from-transactional-store"></a>Kan ik de gegevens in de analytische opslag anders partitioneren dan transactie opslag?
-De gegevens in het analytische archief worden gepartitioneerd op basis van de horizontale partitionering van Shards in de transactionele opslag. Op dit moment kunt u geen andere strategie voor partitionering kiezen voor de analytische opslag.
+De gegevens in analytische opslag zijn gepartitioneerd op basis van de horizontale partitionering van shards in de transactionele opslag. U kunt momenteel geen andere partitioneringsstrategie voor de analytische opslag kiezen.
 
 ### <a name="can-i-customize-or-override-the-way-transactional-data-is-transformed-into-columnar-format-in-the-analytical-store"></a>Kan ik de manier aanpassen of negeren waarop transactionele gegevens worden omgezet in de kolom indeling in de analytische opslag?
 Op dit moment kunt u de gegevens items niet transformeren wanneer ze automatisch worden door gegeven vanuit het transactionele archief naar de analytische opslag. Als u scenario's hebt geblokkeerd door deze beperking, moet u een e-mail sturen naar het [Azure Cosmos DB team](mailto:cosmosdbsynapselink@microsoft.com).
@@ -118,11 +118,11 @@ Momenteel wordt de ondersteuning Azure Cosmos DB voor het gebruik van gewijzigde
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Hoe kan ik in Synapse Studio herkennen of ik verbinding heb met een Azure Cosmos DB-container terwijl het Analytics-archief is ingeschakeld?
 Een Azure Cosmos DB container waarvoor een analytische opslag is ingeschakeld, heeft het volgende pictogram:
 
-![Azure Cosmos DB container ingeschakeld met analytische archief-pictogram](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met analytische archief-pictogram":::
 
 Een transactionele opslag container wordt weer gegeven met het volgende pictogram:
 
-![Azure Cosmos DB container ingeschakeld met transactionele Store-pictogram](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met transactionele Store-pictogram":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Hoe geeft u Azure Cosmos DB referenties door van Synapse Studio?
 Er worden momenteel Azure Cosmos DB referenties door gegeven tijdens het maken van de gekoppelde service door de gebruiker die toegang heeft tot de Azure Cosmos DB-data bases. Toegang tot de Store is beschikbaar voor andere gebruikers die toegang hebben tot de werk ruimte.

@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: cdbd78808d1758b43d2b2fe6e8f7ac03652ff92b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995765"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296335"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault bewaken met Azure Event Grid (preview-versie)
 
-Key Vault integratie met Event Grid is momenteel beschikbaar als preview-versie. Hiermee kunnen gebruikers worden gewaarschuwd wanneer de status van een geheim dat is opgeslagen in de sleutel kluis is gewijzigd. Een status wijziging wordt gedefinieerd als een geheim dat bijna verloopt (binnen 30 dagen van verloop tijd), een geheim dat is verlopen of een geheim met een nieuwe versie die beschikbaar is. Meldingen voor alle drie de geheime typen (sleutel, certificaat en geheim) worden ondersteund.
+Key Vault integratie met Event Grid is momenteel beschikbaar als preview-versie. Hiermee kunnen gebruikers worden gewaarschuwd wanneer de status van een geheim dat is opgeslagen in de sleutel kluis is gewijzigd. Een status wijziging wordt gedefinieerd als een geheim dat bijna is verlopen (30 dagen vóór de verval datum), een geheim dat is verlopen of een geheim met een nieuwe versie die beschikbaar is. Meldingen voor alle drie de geheime typen (sleutel, certificaat en geheim) worden ondersteund.
 
 Toepassingen kunnen reageren op deze gebeurtenissen met moderne serverloze architecturen, zonder complexe code of dure en inefficiënte polling Services. Gebeurtenissen worden gepusht via [Azure Event grid](https://azure.microsoft.com/services/event-grid/) naar gebeurtenis afhandelingen zoals [Azure functions](https://azure.microsoft.com/services/functions/), [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/)of zelfs naar uw eigen webhook, en u betaalt alleen voor wat u gebruikt. Zie [Event grid prijzen](https://azure.microsoft.com/pricing/details/event-grid/)voor meer informatie over prijzen.
 
@@ -42,7 +42,7 @@ Toepassingen die Key Vault gebeurtenissen verwerken, moeten een aantal aanbevole
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Key Vault overzicht](overview.md))
+- [Overzicht van Azure Key Vault](overview.md)
 - [Overzicht van Azure Event Grid](../../event-grid/overview.md)
 - Procedure: [Key Vault-gebeurtenissen naar Automation-Runbook routeren (preview)](event-grid-tutorial.md).
 - Procedure: [E-mail ontvangen wanneer een sleutel kluis geheim verandert](event-grid-logicapps.md)

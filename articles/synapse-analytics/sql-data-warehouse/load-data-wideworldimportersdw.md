@@ -58,7 +58,7 @@ Volg deze stappen om een lege SQL-groep te maken.
 
 1. Vul de sectie **Project Details** in met de volgende gegevens:
 
-   | Instelling | Voorbeeld | Beschrijving |
+   | Instelling | Voorbeeld | Description |
    | ------- | --------------- | ----------- |
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige resourcegroepnamen. |

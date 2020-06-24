@@ -5,12 +5,12 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1de3afc380c5c3c82a869de0ff2319b013e26438
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610884"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945338"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API-overzicht
 
@@ -95,7 +95,7 @@ Gebruik de [Azure monitor metrische definities rest API](https://docs.microsoft.
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: https\/\/: Management.Azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resource type}*/*{ResourceName*}/providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
+**Aanvraag-URI**: https: \/ \/ Management.Azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{resource type}* / *{ResourceName*}/providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
 Als u bijvoorbeeld de metrische definities voor een Azure Storage account wilt ophalen, ziet de aanvraag er als volgt uit:
 
@@ -239,7 +239,7 @@ Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter 
 
 **Methode**: ophalen
 
-**Aanvraag-URI**:\:https//management.Azure.com/subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-Provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/Microsoft.Insights/Metrics? metricnames *= {metric}*&time span =*{StartTime/EndTime}*&$filter =*{filter}*&resultType = meta gegevens&API-Version =*{apiVersion}*
+**Aanvraag-URI**: https \: //*Management.Azure.com/subscriptions/{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}*/providers/Microsoft.Insights/Metrics? metricnames =*{metric}*&time span =*{StartTime/EndTime}*&$filter =*{filter}*&resultType = meta gegevens&API-Version =*{apiVersion}*
 
 Als u bijvoorbeeld de lijst met dimensie waarden wilt ophalen die zijn verzonden voor de ' API-naam dimensie ' voor de metriek ' trans acties ', waarbij de geotype dimensie = ' primary ' tijdens het opgegeven tijds bereik, zou de aanvraag er als volgt uitzien:
 
@@ -312,7 +312,7 @@ Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter 
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: https\/:/Management.Azure.com/subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-Provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/Microsoft.Insights/Metrics? metricnames =*{metric}*&time span =*{StartTime/EndTime}*&$filter =*{filter}*&interval =*{timeGrain}*&aggregatie =*{aggreation}*&API-Version =*{apiVersion}*
+**Aanvraag-URI**: https \/ :/Management.Azure.com/subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-Provider-namespace}* / *{resource-type}* / *{resource-name}*/providers/Microsoft.Insights/Metrics? metricnames =*{metric}*&time span =*{StartTime/EndTime}*&$filter =*{filter}*&interval =*{timeGrain}*&aggregatie =*{aggreation}*&API-Version =*{apiVersion}*
 
 Als u bijvoorbeeld de top-3 Api's wilt ophalen, in aflopende waarde, door het aantal ' trans acties ' tijdens een periode van 5 minuten, waarbij de GeotType ' primair ' was, zou de aanvraag er als volgt uitzien:
 
@@ -391,7 +391,7 @@ Gebruik de [Azure monitor metrische definities rest API](https://msdn.microsoft.
 
 **Methode**: ophalen
 
-**Aanvraag-URI**: https\/\/: Management.Azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resource type}*/*{ResourceName*}/providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
+**Aanvraag-URI**: https: \/ \/ Management.Azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}* / *{resource type}* / *{ResourceName*}/providers/Microsoft.Insights/metricDefinitions? API-Version =*{apiVersion}*
 
 Als u bijvoorbeeld de metrische definities voor een Azure Logic-app wilt ophalen, ziet de aanvraag er als volgt uit:
 
@@ -582,7 +582,7 @@ De resulterende hoofd tekst van het JSON-antwoord zou er ongeveer uitzien als in
 Een extra aanpak is het gebruik van [ARMClient](https://github.com/projectkudu/armclient) op de Windows-computer. ARMClient verwerkt de Azure AD-verificatie (en de resulterende JWT-token) automatisch. De volgende stappen beschrijven het gebruik van ARMClient voor het ophalen van metrische gegevens:
 
 1. Installeer [chocolade](https://chocolatey.org/) en [ARMClient](https://github.com/projectkudu/armclient).
-2. Typ *armclient. exe-aanmelding*in een Terminal venster. U wordt dan gevraagd u aan te melden bij Azure.
+2. Typ *armclient.exe login*in een Terminal venster. U wordt dan gevraagd u aan te melden bij Azure.
 3. Typ *ARMCLIENT Get [your_resource_id]/providers/Microsoft.Insights/metricdefinitions? API-Version = 2016-03-01*
 4. Typ *ARMCLIENT Get [your_resource_id]/providers/Microsoft.Insights/Metrics? API-Version = 2016-09-01*
 
@@ -605,7 +605,7 @@ De volgende lijst bevat enkele voor beelden van Resource-ID-indelingen voor vers
 * **IOT hub** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.devices/IotHubs/*{IOT-hub-name}*
 * **Elastische SQL-pool** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.SQL/servers/*{pool-DB}*/elasticpools/*{SQL-pool-name}*
 * **SQL database (V12)** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.SQL/servers/*{server-name}*/databases/*{Data Base-name}*
-* **Service Bus** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{Namespace}*/*{ServiceBus-name}*
+* **Service Bus** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.ServiceBus/*{Namespace}* / *{ServiceBus-name}*
 * **Schaal sets voor virtuele machines** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachineScaleSets/*{VM-name}*
 * **Vm's** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.Compute/virtualMachines/*{VM-name}*
 * **Event hubs** -/Subscriptions/*{abonnements-id}*/resourceGroups/*{resource-group-name}*/providers/Microsoft.EventHub/namespaces/*{EventHub-namespace}*
@@ -654,7 +654,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als u de resource-ID voor een Azure Storage-account wilt ophalen met behulp `az storage account show` van de Azure CLI, voert u de opdracht uit, zoals in het volgende voor beeld wordt weer gegeven:
+Als u de resource-ID voor een Azure Storage-account wilt ophalen met behulp van de Azure CLI, voert u de `az storage account show` opdracht uit, zoals in het volgende voor beeld wordt weer gegeven:
 
 ```azurecli
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
@@ -705,16 +705,30 @@ Het resultaat moet er ongeveer uitzien als in het volgende voor beeld:
 
 ## <a name="retrieve-activity-log-data"></a>Gegevens van activiteiten logboek ophalen
 
-Naast metrische definities en gerelateerde waarden is het ook mogelijk om de Azure Monitor REST API te gebruiken voor het ophalen van extra interessante inzichten die betrekking hebben op Azure-resources. Zo is het mogelijk om gegevens in een [activiteiten logboek](https://msdn.microsoft.com/library/azure/dn931934.aspx) op te vragen. In het volgende voor beeld ziet u hoe u met behulp van de Azure Monitor REST API een query uitvoert voor activiteiten logboek gegevens binnen een bepaald datum bereik voor een Azure-abonnement:
+Naast metrische definities en gerelateerde waarden is het ook mogelijk om de Azure Monitor REST API te gebruiken voor het ophalen van extra interessante inzichten die betrekking hebben op Azure-resources. Zo is het mogelijk om gegevens in een [activiteiten logboek](https://msdn.microsoft.com/library/azure/dn931934.aspx) op te vragen. De volgende voorbeeld aanvragen gebruiken de Azure Monitor REST API om een query uit te kunnen uitvoeren op het activiteiten logboek.
 
-```powershell
-$apiVersion = "2015-04-01"
-$filter = "eventTimestamp ge '2017-08-18' and eventTimestamp le '2017-08-19'and eventChannels eq 'Admin, Operation'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.insights/eventtypes/management/values?api-version=${apiVersion}&`$filter=${filter}"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -Verbose
+Activiteiten logboeken ophalen met het filter:
+
+``` HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
+```
+
+Activiteiten logboeken ophalen met het filter en Select:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Activiteiten logboeken ophalen met Select:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
+```
+
+Activiteiten logboeken ophalen zonder filter of selectie:
+
+```HTTP
+GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

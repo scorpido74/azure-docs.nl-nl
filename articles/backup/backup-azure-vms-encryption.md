@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: ea4d2830fb9db9f95ba8ab87626a79d94aaecb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0800a15b215b37ceb75abc0d6480331d642dc746
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187933"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124500"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -43,7 +43,7 @@ Azure Backup kunt back-ups maken van virtuele Azure-machines met en zonder de Az
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Ga als volgt te werk voordat u begint:
+Doe voordat u begint het volgende:
 
 1. Zorg ervoor dat u een of meer virtuele [Windows](../security/azure-security-disk-encryption-windows.md) -of [Linux](../virtual-machines/linux/disk-encryption-overview.md) -vm's met ade ingeschakeld hebt.
 2. [De ondersteunings matrix](backup-support-matrix-iaas.md) voor Azure VM backup bekijken
@@ -61,12 +61,12 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
     ![Blade back-up](./media/backup-azure-vms-encryption/select-backup.png)
 
-3.  > **Waar wordt uw werk belasting uitgevoerd?** Selecteer **Azure**. **Backup goal**
-4. In **waarvan wilt u een back-up maken?** Selecteer **virtuele machine** > **OK**.
+3. **Backup goal**  >  **Waar wordt uw werk belasting uitgevoerd?** Selecteer **Azure**.
+4. In **waarvan wilt u een back-up maken?** Selecteer **virtuele machine**  >  **OK**.
 
       ![Blade scenario](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. Kies in **back-upbeleid** > **back-upbeleid**, selecteer het beleid dat u aan de kluis wilt koppelen. Klik vervolgens op **OK**.
+5. Kies in **back-upbeleid**  >  **back-upbeleid**, selecteer het beleid dat u aan de kluis wilt koppelen. Klik vervolgens op **OK**.
     - Een back-upbeleid geeft aan wanneer er back-ups worden gemaakt en hoe lang ze worden opgeslagen.
     - De details van het standaardbeleid worden onder de vervolgkeuzelijst weergegeven.
 
@@ -99,7 +99,7 @@ De eerste back-up wordt uitgevoerd volgens de planning, maar u kunt deze als vol
 3. Klik in de lijst **Back-upitems** op het weglatings teken (...).
 4. Klik op **Nu back-up maken**.
 5. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
-6. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** > worden**uitgevoerd**. Afhankelijk van de grootte van de virtuele machine kan het maken van de eerste back-up even duren.
+6. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de virtuele machine kan het maken van de eerste back-up even duren.
 
 ## <a name="provide-permissions"></a>Machtigingen opgeven
 
@@ -112,13 +112,13 @@ Machtigingen instellen:
 
 1. Selecteer in het Azure Portal **alle services**en zoek naar **sleutel kluizen**.
 2. Selecteer de sleutel kluis die is gekoppeld aan de versleutelde virtuele machine waarvan u een back-up maakt.
-3. Selecteer **toegangs beleid** > **nieuwe toevoegen**.
+3. Selecteer **toegangs beleid**  >  **nieuwe toevoegen**.
 4. Selecteer **Principal selecteren**en typ **back-upbeheer**.
-5. Selecteer **back-upbeheer service** > **selecteren**.
+5. Selecteer **back-upbeheer service**  >  **selecteren**.
 
     ![Back-upservice selecteren](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. Selecteer in **toegangs beleid** > **configureren via sjabloon (optioneel)** **Azure backup**.
+6. Selecteer in **toegangs beleid**  >  **configureren via sjabloon (optioneel)** **Azure backup**.
     - De vereiste machtigingen zijn vooraf ingevuld voor **sleutel machtigingen** en **geheime machtigingen**.
     - Als uw virtuele machine is versleuteld met **alleen bek**, verwijdert u de selectie voor **sleutel machtigingen** , omdat u alleen machtigingen voor geheimen nodig hebt.
 
@@ -126,13 +126,15 @@ Machtigingen instellen:
 
 7. Klik op **OK**. **Backup Management-service** is toegevoegd aan het **toegangs beleid**.
 
-    ![Toegangsbeleidsregels](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
+    ![Toegangsbeleid](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
 8. Klik op **Opslaan** om Azure backup met de machtigingen op te geven.
 
 ## <a name="restore-an-encrypted-vm"></a>Een versleutelde VM herstellen
 
-U herstelt versleutelde Vm's als volgt:
+Versleutelde Vm's kunnen alleen worden hersteld door de VM-schijf te herstellen, zoals hieronder wordt uitgelegd. **Vervangen bestaande** en **herstel-VM** worden niet ondersteund.
+
+Herstel de versleutelde Vm's als volgt:
 
 1. [Herstel de VM-schijf](backup-azure-arm-restore-vms.md#restore-disks).
 2. Maak het exemplaar van de virtuele machine opnieuw door een van de volgende handelingen uit te voeren:

@@ -4,25 +4,25 @@ description: In dit artikel wordt beschreven hoe u netwerk verkeer via de Azure 
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235056"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703346"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Netwerk verkeer routeren met een route tabel met behulp van de Azure CLI
 
@@ -40,7 +40,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.28 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.28 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 ## <a name="create-a-route-table"></a>Een routetabel maken
 
@@ -162,7 +162,7 @@ Het kan een minuut duren voordat de opdracht is uitgevoerd.
 
 Maak twee Vm's in het virtuele netwerk, zodat u kunt valideren dat verkeer van het *open bare* subnet via de NVA in een latere stap wordt doorgestuurd naar het *privé* -subnet. 
 
-Maak een virtuele machine in het *open bare* subnet met [AZ VM Create](/cli/azure/vm). Met `--no-wait` de para meter kan Azure de opdracht op de achtergrond uitvoeren, zodat u kunt door gaan met de volgende opdracht. Er wordt een wacht woord gebruikt om dit artikel te stroom lijnen. Sleutels worden doorgaans gebruikt in productie-implementaties. Als u sleutels gebruikt, moet u ook het door sturen van SSH-agent configureren. Zie de documentatie voor uw SSH-client voor meer informatie. Vervang `<replace-with-your-password>` in de volgende opdracht door een wacht woord van uw keuze.
+Maak een virtuele machine in het *open bare* subnet met [AZ VM Create](/cli/azure/vm). Met de `--no-wait` para meter kan Azure de opdracht op de achtergrond uitvoeren, zodat u kunt door gaan met de volgende opdracht. Er wordt een wacht woord gebruikt om dit artikel te stroom lijnen. Sleutels worden doorgaans gebruikt in productie-implementaties. Als u sleutels gebruikt, moet u ook het door sturen van SSH-agent configureren. Zie de documentatie voor uw SSH-client voor meer informatie. Vervang `<replace-with-your-password>` in de volgende opdracht door een wacht woord van uw keuze.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"
@@ -210,7 +210,7 @@ Let op het **openbare IP-adres**. Dit adres wordt gebruikt voor toegang tot de v
 
 ## <a name="route-traffic-through-an-nva"></a>Verkeer routeren via een NVA
 
-Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmprivate* -VM. Vervang * \<publicIpAddress>* door het open bare IP-adres van uw VM. In het bovenstaande voor beeld is het IP-adres *13.90.242.231*.
+Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmprivate* -VM. Vervang door *\<publicIpAddress>* het open bare IP-adres van uw virtuele machine. In het bovenstaande voor beeld is het IP-adres *13.90.242.231*.
 
 ```bash
 ssh azureuser@<publicIpAddress>

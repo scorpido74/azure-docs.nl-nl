@@ -3,22 +3,18 @@ title: Azure Event Hubs-Exchange-gebeurtenissen met verschillende protocollen
 description: In dit artikel wordt uitgelegd hoe consumenten en producenten die gebruikmaken van verschillende protocollen (AMQP, Apache Kafka en HTTPS), gebeurtenissen kunnen uitwisselen bij het gebruik van Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
-author: femila
-manager: ''
+author: spelluru
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: femila
-ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 7ebcf1fc838fbe6b1c70b1fe422f40de3c47e752
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372217"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296437"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Uitwisseling van gebeurtenissen tussen consumenten en producenten die verschillende protocollen gebruiken: AMQP, Kafka en HTTPS
 Azure Event Hubs ondersteunt drie protocollen voor consumenten en producenten: AMQP, Kafka en HTTPS. Elk van deze protocollen heeft een eigen manier om een bericht weer te geven, waardoor natuurlijk de volgende vraag zich voordoet: als een toepassing gebeurtenissen verzendt naar een event hub met één protocol en deze gebruikt met een ander protocol, wat betekenen de verschillende onderdelen en waarden van de gebeurtenis eruit als bij de consument? In dit artikel worden aanbevolen procedures voor zowel de producent als de consument beschreven om ervoor te zorgen dat de waarden in een gebeurtenis correct worden geïnterpreteerd door de verbruikte toepassing.
@@ -208,7 +204,7 @@ if (headerNamedAMQPheaders != null) {
 }
 ```
 
-De andere richting is meer betrokken, omdat kopteksten die door een Kafka-producent worden ingesteld, altijd worden gezien door een AMQP-consumer als onbewerkte bytes (type org. apache. QPid. Proton. AMQP. binary voor `System.Byte[]` de Microsoft Azure Event hubs-client voor Java of voor .net AMQP-clients van micro soft). Het eenvoudigste pad is het gebruik van een van de door Kafka geleverde serialisatiefunctie voor het genereren van de bytes voor de header waarden aan de Kafka van de producent en vervolgens een compatibele deserialisatie code op de AMQP aan de gebruiker schrijven.
+De andere richting is meer betrokken, omdat kopteksten die door een Kafka-producent worden ingesteld, altijd worden gezien door een AMQP-consumer als onbewerkte bytes (type org. apache. QPid. Proton. AMQP. binary voor de Microsoft Azure Event Hubs-client voor Java of `System.Byte[]` voor .net AMQP-clients van micro soft). Het eenvoudigste pad is het gebruik van een van de door Kafka geleverde serialisatiefunctie voor het genereren van de bytes voor de header waarden aan de Kafka van de producent en vervolgens een compatibele deserialisatie code op de AMQP aan de gebruiker schrijven.
 
 Net als bij AMQP-to-Kafka is het best practice dat u het beste een eigenschap moet toevoegen in berichten die via Kafka worden verzonden. De AMQP-consument kan de eigenschap gebruiken om te bepalen of koptekst waarden moeten worden gedeserialiseerd. De waarde van de eigenschap is niet belang rijk. Het heeft alleen een bekende naam nodig die de AMQP-consument kan vinden in de lijst met kopteksten en het gedrag dienovereenkomstig aan te passen. Als de Kafka-producent niet kan worden gewijzigd, is het ook mogelijk om te controleren of de waarde van de eigenschap van het type binary of byte is en om te deserialiseren op basis van het soort.
 

@@ -1,5 +1,5 @@
 ---
-title: Naslag informatie voor Azure Queue Storage
+title: Azure Queue Storage-verwijzing
 description: Zoek Azure Storage API-referentie, leesmij-bestanden en client bibliotheek pakketten.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d01fb4d467b34f4093cbeb1346786ad793eede7d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fbf20b92edf5d8dce8438731c2812a78e457a402
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346008"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976656"
 ---
-# <a name="azure-queue-storage-reference"></a>Naslag informatie voor Azure Queue Storage
+# <a name="azure-queue-storage-reference"></a>Azure Queue Storage-verwijzing
 
 Zoek naar Azure Queue Storage API Reference, bibliotheek pakketten, leesmij-bestanden en aan de slag-artikelen.
 
@@ -67,8 +67,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor de pyth
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage queues-client bibliotheek voor python](/python/api/overview/azure/storage-queue-readme) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Quick Start: Azure Queue Storage-client bibliotheek V12 voor python](/azure/storage/queues/storage-quickstart-queues-python) |
-| 2.x | [Azure-Storage-wachtrij](/python/api/azure-storage-queue/?view=azure-python-previous) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Azure-wachtrij opslag gebruiken v 2.1 van python](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
+| 12. x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Quickstart: Azure Queue Storage-clientbibliotheek v12 voor Python](/azure/storage/queues/storage-quickstart-queues-python) |
+| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Azure-wachtrij opslag gebruiken v 2.1 van python](/azure/storage/queues/storage-python-how-to-use-queue-storage) |
 
 ## <a name="javascript-client-libraries"></a>Java script-client bibliotheken
 
@@ -77,7 +77,7 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor Azure Q
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Client bibliotheek voor Azure Storage wachtrij voor Java script](/javascript/api/overview/azure/storage-queue-readme) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/storage-queue) | [Quick Start: Azure Queue Storage-client bibliotheek V12 voor Java script](/azure/storage/queues/storage-quickstart-queues-nodejs) |
-| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van node. js](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
+| 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy) | [Pakket (NPM)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van Node.js](/azure/storage/queues/storage-nodejs-how-to-use-queues) |
 
 ## <a name="rest-apis"></a>REST-API’s
 

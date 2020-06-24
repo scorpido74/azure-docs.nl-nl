@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005205"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945610"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Terugkerende en geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps
 
@@ -52,9 +52,9 @@ U kunt de werk stroom van de logische app starten met behulp van de trigger voor
 
 Dit zijn de verschillen tussen deze triggers:
 
-* **Terugkeer patroon**: voert uw werk stroom met regel matige tijds intervallen uit op basis van de opgegeven planning. Als er herhalingen worden gemist, worden de gemiste terugkeer patronen niet door de trigger geactiveerd, maar worden herhalingen opnieuw gestart met het volgende geplande interval. U kunt ook een start datum en-tijd en de tijd zone opgeven. Als u dag selecteert, kunt u uren van de dag en minuten van het uur opgeven, bijvoorbeeld elke dag om 2:30. Als u week selecteert, kunt u ook dagen van de week selecteren, bijvoorbeeld woensdag en zaterdag. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md).
+* **Terugkeer patroon**: voert uw werk stroom met regel matige tijds intervallen uit op basis van de opgegeven planning. Als er herhalingen worden gemist, bijvoorbeeld als gevolg van onderbrekingen of uitgeschakelde werk stromen, worden de gemiste terugkeer patronen niet verwerkt door de terugkeer patroon, maar worden herhalingen opnieuw gestart met het volgende geplande interval. U kunt ook een start datum en-tijd en de tijd zone opgeven. Als u dag selecteert, kunt u uren van de dag en minuten van het uur opgeven, bijvoorbeeld elke dag om 2:30. Als u week selecteert, kunt u ook dagen van de week selecteren, bijvoorbeeld woensdag en zaterdag. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md).
 
-* **Schuif venster**: voert uw werk stroom uit met regel matige tijds intervallen die gegevens verwerken in doorlopende segmenten. Als er geen terugkerende items worden weer gegeven, wordt het schuif venster geactiveerd en worden de gemiste terugkeer patronen verwerkt. U kunt een start datum en-tijd, een tijd zone en een duur opgeven om elk terugkeer patroon in uw werk stroom te vertragen. Deze trigger biedt geen ondersteuning voor geavanceerde schema's, bijvoorbeeld specifieke uren van de dag, minuten van het uur en dagen van de week. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor het schuivende venster](../connectors/connectors-native-sliding-window.md).
+* **Schuif venster**: voert uw werk stroom uit met regel matige tijds intervallen die gegevens verwerken in doorlopende segmenten. Als er herhalingen worden gemist, bijvoorbeeld als gevolg van onderbrekingen of uitgeschakelde werk stromen, wordt de activerings venster weer geactiveerd en worden de gemiste terugkeer patronen verwerkt. U kunt een start datum en-tijd, een tijd zone en een duur opgeven om elk terugkeer patroon in uw werk stroom te vertragen. Deze trigger biedt geen ondersteuning voor geavanceerde schema's, bijvoorbeeld specifieke uren van de dag, minuten van het uur en dagen van de week. Zie voor meer informatie [terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor het schuivende venster](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
@@ -93,7 +93,7 @@ Hier volgen enkele patronen die laten zien hoe u het terugkeer patroon kunt behe
 
 Stel dat de huidige datum en tijd 8 september 2017 om 1:00 uur is. U geeft de begin datum en-tijd op als 7 september 2017 om 2:00 uur, die in het verleden ligt en een terugkeer patroon dat elke twee dagen wordt uitgevoerd.
 
-| Begintijd | Huidige tijd | Terugkeerpatroon | Planning |
+| Begintijd | Huidige tijd | Terugkeerpatroon | Schema |
 |------------|--------------|------------|----------|
 | 2017-09-**07**T14:00:00Z <br>(2017-09-**07** om 2:00 uur) | 2017-09-**08**T13:00:00Z <br>(2017-09-**08** om 1:00 uur) | Elke twee dagen | geen |
 |||||
@@ -126,7 +126,7 @@ Dus hoe ver in het verleden u de start tijd opgeeft, bijvoorbeeld 2017-09-**05**
 
 Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de triggers die ondersteuning bieden voor de opties:
 
-| Trigger | Terugkeerpatroon | Interval | Frequentie | Begintijd | Deze dagen | Deze uren | Deze minuten | Opmerking |
+| Trigger | Terugkeerpatroon | Interval | Frequentie | Begintijd | Deze dagen | Deze uren | Deze minuten | Notitie |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (geen begin datum en-tijd) | 15 | Minuut | geen | niet beschikbaar | geen | geen | Dit schema wordt onmiddellijk gestart, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
 | Optreden <br>Sliding window | Wordt elke 15 minuten uitgevoerd (met begin datum en-tijd) | 15 | Minuut | *start date* T*Start*tijd Z | niet beschikbaar | geen | geen | Dit schema wordt niet *eerder* gestart dan de opgegeven begin datum en-tijd, waarna toekomstige terugkeer patronen worden berekend op basis van de laatste uitvoerings tijd. |
@@ -141,14 +141,14 @@ Hier volgen enkele voor beelden van herhalingen die u kunt instellen voor de tri
 | Terugkeerpatroon | Dagelijks uitgevoerd om 8:00 uur (geen begin datum en-tijd) | 1 | Dag | geen | niet beschikbaar | 8 | 00 | Deze planning wordt elke dag om 8:00 uur uitgevoerd. |
 | Terugkeerpatroon | Voer dagelijks uit om 8:00 uur en 4:00 uur | 1 | Dag | geen | niet beschikbaar | 8, 16 | 0 | |
 | Terugkeerpatroon | Voer dagelijks uit om 8:30 uur, 8:45 uur, 4:30 uur en 4:45 uur | 1 | Dag | geen | niet beschikbaar | 8, 16 | 30, 45 | |
-| Terugkeerpatroon | Elke zaterdag om 5:00 uur uitvoeren (geen begin datum en-tijd) | 1 | Wekelijks | geen | Zaterdag | 17 | 0 | Deze planning wordt elke zaterdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Elke zaterdag om 5:00 uur uitvoeren (met begin datum en-tijd) | 1 | Wekelijks | *start date* T17:00:00Z | Zaterdag | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd, in dit geval 9 september 2017 om 5:00 uur. Toekomstige herhalingen worden elke zaterdag om 5:00 uur uitgevoerd. |
-| Terugkeerpatroon | Elke dinsdag, donderdag om 5 uur en de minuut na het opslaan *van de logische* app wordt uitgevoerd| 1 | Wekelijks | geen | "Dinsdag", "donderdag" | 17 | geen | |
-| Terugkeerpatroon | Wordt elk uur uitgevoerd tijdens werk uren. | 1 | Wekelijks | geen | Selecteer alle dagen behalve zaterdag en zondag. | Selecteer de uren van de dag die u wilt. | Selecteer een wille keurig aantal minuten van het gewenste uur. | Als uw werk uren bijvoorbeeld 8:00 AM tot 5:00 uur zijn, selecteert u "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" als de uren van de dag *plus* "0" als minuten van het uur. |
-| Terugkeerpatroon | Eenmaal per dag uitvoeren in weekends | 1 | Wekelijks | geen | ' Zaterdag ', ' zondag ' | Selecteer de uren van de dag die u wilt. | Selecteer eventueel een wille keurig aantal minuten van het uur. | Deze planning wordt elke zaterdag en zondag op het opgegeven schema uitgevoerd. |
-| Terugkeerpatroon | Elke 15 minuten twee wekelijks alleen op elke maandag uitvoeren | 2 | Wekelijks | geen | Bedraagt | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Deze planning wordt elke maandag om de 15 minuten uitgevoerd. |
-| Terugkeerpatroon | Elke maand uitvoeren | 1 | Month | *start date* T*Start*tijd Z | niet beschikbaar | niet beschikbaar | niet beschikbaar | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd en berekent toekomstige terugkeer patronen op de begin datum en-tijd. Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. |
-| Terugkeerpatroon | Elk uur uitvoeren voor één dag per maand | 1 | Month | {Zie opmerking} | niet beschikbaar | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Zie opmerking} | Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. Als u de minuten voor de terugkeer planning wilt beheren, geeft u het aantal minuten van het uur, een begin tijd op of gebruikt u de aanmaak tijd. Als de begin tijd of aanmaak tijd 8:25 uur is, wordt deze planning bijvoorbeeld uitgevoerd om 8:25 uur, 9:25 uur, 10:25 uur, enzovoort. |
+| Terugkeerpatroon | Elke zaterdag om 5:00 uur uitvoeren (geen begin datum en-tijd) | 1 | Week | geen | Zaterdag | 17 | 0 | Deze planning wordt elke zaterdag om 5:00 uur uitgevoerd. |
+| Terugkeerpatroon | Elke zaterdag om 5:00 uur uitvoeren (met begin datum en-tijd) | 1 | Week | *start date* T17:00:00Z | Zaterdag | geen | geen | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd, in dit geval 9 september 2017 om 5:00 uur. Toekomstige herhalingen worden elke zaterdag om 5:00 uur uitgevoerd. |
+| Terugkeerpatroon | Elke dinsdag, donderdag om 5 uur en de minuut na het opslaan *van de logische* app wordt uitgevoerd| 1 | Week | geen | "Dinsdag", "donderdag" | 17 | geen | |
+| Terugkeerpatroon | Wordt elk uur uitgevoerd tijdens werk uren. | 1 | Week | geen | Selecteer alle dagen behalve zaterdag en zondag. | Selecteer de uren van de dag die u wilt. | Selecteer een wille keurig aantal minuten van het gewenste uur. | Als uw werk uren bijvoorbeeld 8:00 AM tot 5:00 uur zijn, selecteert u "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" als de uren van de dag *plus* "0" als minuten van het uur. |
+| Terugkeerpatroon | Eenmaal per dag uitvoeren in weekends | 1 | Week | geen | ' Zaterdag ', ' zondag ' | Selecteer de uren van de dag die u wilt. | Selecteer eventueel een wille keurig aantal minuten van het uur. | Deze planning wordt elke zaterdag en zondag op het opgegeven schema uitgevoerd. |
+| Terugkeerpatroon | Elke 15 minuten twee wekelijks alleen op elke maandag uitvoeren | 2 | Week | geen | Bedraagt | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Deze planning wordt elke maandag om de 15 minuten uitgevoerd. |
+| Terugkeerpatroon | Elke maand uitvoeren | 1 | Maand | *start date* T*Start*tijd Z | niet beschikbaar | niet beschikbaar | niet beschikbaar | Dit schema start niet *eerder* dan de opgegeven begin datum en-tijd en berekent toekomstige terugkeer patronen op de begin datum en-tijd. Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. |
+| Terugkeerpatroon | Elk uur uitvoeren voor één dag per maand | 1 | Maand | {Zie opmerking} | niet beschikbaar | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Zie opmerking} | Als u geen start datum en-tijd opgeeft, gebruikt dit schema de aanmaak datum en-tijd. Als u de minuten voor de terugkeer planning wilt beheren, geeft u het aantal minuten van het uur, een begin tijd op of gebruikt u de aanmaak tijd. Als de begin tijd of aanmaak tijd 8:25 uur is, wordt deze planning bijvoorbeeld uitgevoerd om 8:25 uur, 9:25 uur, 10:25 uur, enzovoort. |
 |||||||||
 
 <a name="run-once"></a>

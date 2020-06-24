@@ -5,15 +5,15 @@ description: Dit artikel bevat instructies voor het configureren van TLS-beleid 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3804059fdd818f10663d14bde72da2c6773fa53f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312676"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808246"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>TLS-beleids versies en coderings suites op Application Gateway configureren
 
@@ -73,9 +73,9 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-tls-policies"></a>Vooraf gedefinieerde TLS-beleids regels weer geven
 
-Application Gateway wordt geleverd met drie vooraf gedefinieerde beleids regels die kunnen worden gebruikt. Deze `Get-AzApplicationGatewaySslPredefinedPolicy` beleids regels worden opgehaald met de cmdlet. Elk beleid heeft verschillende protocol versies en coderings suites ingeschakeld. Deze vooraf gedefinieerde beleids regels kunnen worden gebruikt om snel een TLS-beleid te configureren op uw toepassings gateway. Standaard **AppGwSslPolicy20150501** is geselecteerd als er geen specifiek TLS-beleid is gedefinieerd.
+Application Gateway wordt geleverd met drie vooraf gedefinieerde beleids regels die kunnen worden gebruikt. `Get-AzApplicationGatewaySslPredefinedPolicy`Deze beleids regels worden opgehaald met de cmdlet. Elk beleid heeft verschillende protocol versies en coderings suites ingeschakeld. Deze vooraf gedefinieerde beleids regels kunnen worden gebruikt om snel een TLS-beleid te configureren op uw toepassings gateway. Standaard **AppGwSslPolicy20150501** is geselecteerd als er geen specifiek TLS-beleid is gedefinieerd.
 
-De volgende uitvoer is een voor beeld van `Get-AzApplicationGatewaySslPredefinedPolicy`het uitvoeren van.
+De volgende uitvoer is een voor beeld van het uitvoeren van `Get-AzApplicationGatewaySslPredefinedPolicy` .
 
 ```
 Name: AppGwSslPolicy20150501
@@ -110,7 +110,7 @@ CipherSuites:
 
 Wanneer u een aangepast TLS-beleid configureert, geeft u de volgende para meters door: Policy type, MinProtocolVersion, CipherSuite en toepassings gateway. Als u probeert andere para meters door te geven, krijgt u een fout melding bij het maken of bijwerken van de Application Gateway. 
 
-In het volgende voor beeld wordt een aangepast TLS-beleid ingesteld voor een toepassings gateway. Hiermee wordt de minimale Protocol versie ingesteld `TLSv1_1` op en worden de volgende coderings suites ingeschakeld:
+In het volgende voor beeld wordt een aangepast TLS-beleid ingesteld voor een toepassings gateway. Hiermee wordt de minimale Protocol versie ingesteld op `TLSv1_1` en worden de volgende coderings suites ingeschakeld:
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

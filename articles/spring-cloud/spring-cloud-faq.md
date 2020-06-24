@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: 95260d9a15fdc32c9fddccbcf63ae9fa564fd36a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3c38a67b13a6b5c12767d38ecf2297d2417ebdb
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176767"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808409"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -24,21 +24,6 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure veer Cloud.
 Azure lente Cloud biedt een platform als een service (PaaS) voor veer-Cloud ontwikkelaars. Azure lente-Cloud beheert uw toepassings infrastructuur zodat u zich kunt concentreren op toepassings code en bedrijfs logica. De belangrijkste functies die zijn ingebouwd in azure lente Cloud zijn onder andere Eureka, configuratie server, service register server, Pivotal build service, Blue-groen implementaties en meer. Met deze service kunnen ontwikkel aars ook hun toepassingen koppelen aan andere Azure-Services, zoals Azure Cosmos DB, Azure Database for MySQL en Azure cache voor redis.
 
 Azure veer Cloud verbetert de diagnostische ervaring van toepassingen voor ontwikkel aars en Opera tors door Azure Monitor, Application Insights en Log Analytics te integreren.
-
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Welke service plannen biedt Azure lente-Cloud aanbieding?
-
-Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.  Een lente-Cloud implementatie bevat 16 vCPU-kernen en 32 gigabytes (GB) aan geheugen.  De bovengrens voor elk micro service-exemplaar binnen een implementatie is 4 vCPU-kernen met 8 GB geheugen.
-
-Resource | Aantal
-------- | -------
-App-exemplaren per lente toepassing | 20
-Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 500
-Azure veer Cloud service-instanties per regio per abonnement | 10
-Permanente volumes | 10 x 50 GBytes
-
-\*_Als u de limiet wilt verhogen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/faq/)._
-
-Zie [Veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie.
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Hoe veilig is Azure lente-Cloud?
 
@@ -59,7 +44,10 @@ Tijdens de preview-versie heeft Azure lente Cloud de volgende bekende beperkinge
 * `spring.application.name`wordt overschreven door de naam van de toepassing die wordt gebruikt voor het maken van elke toepassing.
 * `server.port`is niet toegestaan in het configuratie bestand van de Git-opslag plaats. Als u het toevoegt aan het configuratie bestand, wordt uw toepassing waarschijnlijk onbereikbaar van andere toepassingen of Internet.
 * De Azure Portal-en Azure Resource Manager-sjablonen bieden geen ondersteuning voor het uploaden van toepassings pakketten. U kunt toepassings pakketten alleen uploaden door de toepassing te implementeren via de Azure CLI.
-* Als u meer wilt weten over quotum beperkingen, raadpleegt u [welke service plannen Azure lente Cloud offers?](#what-service-plans-does-azure-spring-cloud-offer).
+
+### <a name="what-pricing-tiers-are-available"></a>Welke prijs categorieën zijn er beschikbaar? 
+Welk item moet ik gebruiken en wat zijn de limieten binnen elke laag?
+* Azure lente-Cloud biedt twee prijs Categorieën: Basic en Standard. De laag basis is gericht op dev/test en er wordt geprobeerd Azure lente-Cloud uit te voeren. De Standard-laag is geoptimaliseerd voor het uitvoeren van productie verkeer voor algemeen gebruik. Zie de [prijs informatie voor Azure lente Cloud](https://azure.microsoft.com/pricing/details/spring-cloud/) voor limieten en vergelijking van het functie niveau.
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hoe kan ik feedback geven en problemen melden?
 

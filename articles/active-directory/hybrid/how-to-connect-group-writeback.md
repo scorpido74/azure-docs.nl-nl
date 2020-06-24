@@ -1,0 +1,71 @@
+---
+title: 'Azure AD Connect: terugschrijven van groep'
+description: In dit artikel wordt beschreven hoe u de groep terugschrijven in Azure AD Connect.
+services: active-directory
+author: billmath
+manager: daveba
+ms.service: active-directory
+ms.topic: reference
+ms.workload: identity
+ms.date: 06/11/2020
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7823ee7f7d4d5c9bb34d5c57ab0eea7d77c257d3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84947042"
+---
+# <a name="azure-ad-connect-group-writeback"></a>Terugschrijven van groep Azure AD Connect
+
+Met groeps terugschrijven kunnen klanten Cloud groepen gebruiken voor hun hybride behoeften. Als u de functie Office 365-groepen gebruikt, dan kunnen deze groepen in uw on-premises Active Directory worden weergegeven. Deze optie is **alleen** beschikbaar als u Exchange aanwezig hebt in uw on-premises Active Directory.
+
+## <a name="pre-requisites"></a>Vereisten
+Aan de volgende vereisten moet worden voldaan om de groeps terugschrijven in te scha kelen.
+- Azure Active Directory Premium licenties voor uw Tenant.
+- Een geconfigureerde hybride implementatie tussen uw Exchange on-premises organisatie en Office 365 en is geverifieerd.
+- Er is een ondersteunde versie van Exchange on-premises geïnstalleerd
+- Eenmalige aanmelding met Azure Active Directory Connect geconfigureerd 
+
+## <a name="enable-group-writeback"></a>Groep terugschrijven inschakelen
+Voer de volgende stappen uit om groeps terugschrijven in te scha kelen:
+
+1. Open de wizard Azure AD Connect, selecteer **configureren** en klik vervolgens op **volgende**.
+2. Selecteer **synchronisatie opties aanpassen** en klik vervolgens op **volgende**.
+3. Voer uw referenties in op de pagina **verbinding maken met Azure AD** . Klik op **Volgende**.
+4. Controleer op de pagina **optionele functies** of de opties die u eerder hebt geconfigureerd, nog steeds zijn geselecteerd.
+5. Selecteer **groep terugschrijven** en klik vervolgens op **volgende**.
+6. Selecteer op de **pagina terugschrijven**een Active Directory organisatie-eenheid (OE) voor het opslaan van objecten die zijn gesynchroniseerd vanuit Office 365 naar uw on-premises organisatie en klik vervolgens op **volgende**.
+7. Klik op de pagina **gereed** voor configuratie op **configureren**.
+8. Wanneer de wizard is voltooid, klikt u op **Afsluiten** op de pagina configuratie voltooid.
+9. Open de Windows Power shell op de Azure Active Directory Connect-server en voer de volgende opdrachten uit.
+
+```Powershell
+$AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
+Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
+```
+
+Zie [configure Microsoft 365 groups with on-premises Exchange Hybrid (Engelstalig)](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect)voor meer informatie over het configureren van de Office 365-groepen.
+
+## <a name="disabling-group-writeback"></a>Terugschrijven van groep uitschakelen
+Voer de volgende stappen uit om het terugschrijven van de groep uit te scha kelen: 
+
+
+1. Start de wizard Azure Active Directory Connect en navigeer naar de pagina Additional Tasks. Selecteer de taak **synchronisatie opties aanpassen** en klik op **volgende**.
+2. Schakel op de pagina **optionele functies** het selectie vakje terugschrijven van groep uit.  U ontvangt een waarschuwing waarin wordt aangegeven dat groepen worden verwijderd.  Klik op **Ja**.
+   >[!IMPORTANT]
+   > Als u het terugschrijven van de groep uitschakelt, worden de groepen die eerder zijn gemaakt door deze functie, verwijderd uit de lokale Active Directory tijdens de volgende synchronisatie cyclus. 
+
+   ![Selectie vakje uitschakelen](media/how-to-connect-group-writeback/group2.png)
+  
+3. Klik op **Volgende**.
+4. Klik op **configureren**.
+
+ >[!NOTE]
+ > Als u het terugschrijven van de groep uitschakelt, worden de volledige import-en volledige synchronisatie vlaggen ingesteld op ' True ' op de Azure Active Directory-connector, waardoor de regel wordt gewijzigd in de volgende synchronisatie cyclus en de groepen die eerder werden teruggeschreven naar uw Active Directory worden verwijderd.
+
+## <a name="next-steps"></a>Volgende stappen
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840686"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738648"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Inleiding tot het oplossen van resources in azure Network Watcher
 
@@ -49,34 +49,34 @@ In de volgende tabellen ziet u de verschillende fout typen (id onder resultaten 
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout wordt gedetecteerd |Ja|
-| GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
-| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
-| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn. | Nee |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | Nee |
-| PlatformInActive | Er is een probleem met het platform. | Nee|
-| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
-| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| Nee|
-| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Ja|
-| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Ja |
+| NoFault | Als er geen fout wordt gedetecteerd |Yes|
+| GatewayNotFound | Kan geen gateway of gateway vinden |No|
+| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden  |No|
+| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn. | No |
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | No |
+| PlatformInActive | Er is een probleem met het platform. | No|
+| ServiceNotRunning | De onderliggende service is niet actief. | No|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| No|
+| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Yes|
+| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Yes |
 
 ### <a name="connection"></a>Verbinding
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout wordt gedetecteerd |Ja|
-| GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
-| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
-| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn.  | Nee |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | Nee |
-| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | Nee |
-| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |Nee|
-| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
-| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Ja|
-| PeerReachability | De peer gateway is niet bereikbaar. | Ja|
-| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
-| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
+| NoFault | Als er geen fout wordt gedetecteerd |Yes|
+| GatewayNotFound | Kan geen gateway of gateway vinden |No|
+| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden  |No|
+| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikersupdate wordt uitgevoerd. De update kan een wijziging van het formaat zijn.  | No |
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de statustest. | No |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | No |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |No|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Yes |
+| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Yes|
+| Verificatie | Vooraf gedeelde sleutel komt niet overeen | Yes|
+| PeerReachability | De peer gateway is niet bereikbaar. | Yes|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Yes|
+| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Yes|
 
 ## <a name="supported-gateway-types"></a>Ondersteunde gateway typen
 
@@ -107,12 +107,12 @@ De logboek bestanden voor het oplossen van problemen met bronnen worden opgeslag
 
 Raadpleeg aan de [slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies voor het downloaden van bestanden van Azure Storage-accounts. Een ander hulp programma dat kan worden gebruikt, is Storage Explorer. Meer informatie over Storage Explorer kunt u vinden op de volgende koppeling: [Storage Explorer](https://storageexplorer.com/)
 
-### <a name="connectionstatstxt"></a>ConnectionStats. txt
+### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-Het **ConnectionStats. txt** -bestand bevat algemene statistieken over de verbinding, waaronder binnenkomend en uitgaand bytes, verbindings status en het tijdstip waarop de verbinding tot stand is gebracht.
+Het **ConnectionStats.txt** bestand bevat de algemene statistieken van de verbinding, inclusief binnenkomend en uitgaand aantal bytes, verbindings status en de tijd dat de verbinding tot stand is gebracht.
 
 > [!NOTE]
-> Als de aanroep van de API voor probleem oplossing in orde resulteert, is het enige resultaat dat in het zip-bestand wordt geretourneerd een **ConnectionStats. txt** -bestand.
+> Als de aanroep van de API voor probleem oplossing in orde wordt geretourneerd, is het enige resultaat dat in het zip-bestand wordt geretourneerd een **ConnectionStats.txt** bestand.
 
 De inhoud van dit bestand is vergelijkbaar met het volgende voor beeld:
 
@@ -124,19 +124,19 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats. txt
+### <a name="cpustatstxt"></a>CPUStats.txt
 
-Het bestand **CPUStats. txt** bevat het CPU-gebruik en het geheugen dat beschikbaar is op het moment van testen.  De inhoud van dit bestand is vergelijkbaar met het volgende voor beeld:
+Het **CPUStats.txt** bestand bevat CPU-gebruik en geheugen dat beschikbaar is op het moment van testen.  De inhoud van dit bestand is vergelijkbaar met het volgende voor beeld:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
 ```
 
-### <a name="ikeerrorstxt"></a>IKEErrors. txt
+### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-Het bestand **IKEErrors. txt** bevat IKE-fouten die tijdens de bewaking zijn gevonden.
+Het **IKEErrors.txt** bestand bevat IKE-fouten die tijdens de bewaking zijn gevonden.
 
-In het volgende voor beeld ziet u de inhoud van een IKEErrors. txt-bestand. Uw fouten kunnen afwijken, afhankelijk van het probleem.
+In het volgende voor beeld wordt de inhoud van een IKEErrors.txt-bestand weer gegeven. Uw fouten kunnen afwijken, afhankelijk van het probleem.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -145,11 +145,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-Het logboek bestand **Scrubbed-wfpdiag. txt** bevat het WFP-logboek. Dit logboek bevat logboek registratie van pakket-drop en IKE/AuthIP-fouten.
+Het logboek bestand van de **Scrubbed-wfpdiag.txt** bevat het WFP-logboek. Dit logboek bevat logboek registratie van pakket-drop en IKE/AuthIP-fouten.
 
-In het volgende voor beeld ziet u de inhoud van het bestand Scrubbed-wfpdiag. txt. In dit voor beeld was de gedeelde sleutel van een verbinding niet juist, wat vanaf de derde regel van de onderkant kan worden weer gegeven. Het volgende voor beeld is slechts een fragment van het hele logboek, omdat het logboek lang kan zijn, afhankelijk van het probleem.
+In het volgende voor beeld wordt de inhoud van het Scrubbed-wfpdiag.txt-bestand weer gegeven. In dit voor beeld was de gedeelde sleutel van een verbinding niet juist, wat vanaf de derde regel van de onderkant kan worden weer gegeven. Het volgende voor beeld is slechts een fragment van het hele logboek, omdat het logboek lang kan zijn, afhankelijk van het probleem.
 
 ```
 ...
@@ -178,11 +178,11 @@ In het volgende voor beeld ziet u de inhoud van het bestand Scrubbed-wfpdiag. tx
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag. txt. Sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag.txt. Sum
 
-Het bestand **wfpdiag. txt. Sum** is een logboek waarin de gewerkte buffers en gebeurtenissen worden weer gegeven.
+Het bestand **wfpdiag.txt. Sum** is een logboek waarin de gewerkte buffers en gebeurtenissen worden weer gegeven.
 
-Het volgende voor beeld is de inhoud van een bestand wfpdiag. txt. sum.
+Het volgende voor beeld is de inhoud van een bestand wfpdiag.txt. sum.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl

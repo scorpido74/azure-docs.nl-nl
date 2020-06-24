@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/16/2020
+ms.date: 06/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: adaf385293d48f76e5daaccf3b42895c4acf5dfc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ad3ec9f257289abab1c2d881a798a43a2c1d8ad
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559393"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976758"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -175,7 +175,7 @@ Zie [uw eerste installatie kopie naar een privé-docker-container register pushe
 
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
-* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`Is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
+* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest`Is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
 
     > [!IMPORTANT]
     > Voor aangepaste installatie kopieën die u hebt gemaakt, moet u ervoor zorgen dat alle labels worden opgenomen die met de afbeelding zijn gebruikt. Als uw installatie kopie bijvoorbeeld is gemaakt met een specifieke tag, zoals `:v1` . Als u geen specifieke tag hebt gebruikt bij het maken van de installatie kopie, is een tag van `:latest` toegepast.
@@ -205,15 +205,7 @@ Zie de [sectie ONNX runtime dockerfile](https://github.com/microsoft/onnxruntime
 > [!TIP]
 > Omdat deze installatie kopieën openbaar beschikbaar zijn, hoeft u geen adres, gebruikers naam of wacht woord op te geven wanneer u deze gebruikt.
 
-Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Containers)voor meer informatie.
-
-> [!TIP]
->__Als uw model is getraind op Azure machine learning Compute__met __versie 1.0.22 of hoger__ van de Azure machine learning SDK, wordt er tijdens de training een installatie kopie gemaakt. Als u de naam van deze installatie kopie wilt detecteren, gebruikt u `run.properties["AzureML.DerivedImageName"]` . In het volgende voor beeld ziet u hoe u deze installatie kopie gebruikt:
->
-> ```python
-> # Use an image built during training with SDK 1.0.22 or greater
-> image_config.base_image = run.properties["AzureML.DerivedImageName"]
-> ```
+Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Containers) opslag plaats op github voor meer informatie.
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Een installatie kopie gebruiken met de Azure Machine Learning SDK
 
@@ -228,7 +220,7 @@ from azureml.core.environment import Environment
 myenv = Environment(name="myenv")
 # Enable Docker and reference an image
 myenv.docker.enabled = True
-myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest"
 ```
 
 Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte bevindt, moet u gebruiken `docker.base_image_registry` om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
@@ -289,7 +281,7 @@ Voordat u een model implementeert met behulp van de Machine Learning CLI, moet u
         "docker": {
             "arguments": [],
             "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
+            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda:latest",
             "enabled": false,
             "sharedVolumes": true,
             "shmSize": null

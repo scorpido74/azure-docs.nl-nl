@@ -9,14 +9,14 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74895374"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804903"
 ---
 # <a name="client-side-encryption-with-python"></a>Versleuteling aan client zijde met python
 
@@ -92,7 +92,7 @@ Tabel gegevens versleuteling werkt als volgt:
 
 1. Gebruikers geven de eigenschappen op die moeten worden versleuteld.
 2. De client bibliotheek genereert een wille keurige initialisatie vector (IV) van 16 bytes samen met een wille keurige inhouds versleutelings sleutel (CEK) van 32 bytes voor elke entiteit en voert een envelop versleuteling uit voor de afzonderlijke eigenschappen die moeten worden versleuteld door een nieuwe IV per eigenschap af te leiden. De versleutelde eigenschap wordt opgeslagen als binaire gegevens.
-3. De verpakte CEK en andere versleutelings meta gegevens worden vervolgens opgeslagen als twee extra gereserveerde eigenschappen. De eerste gereserveerde eigenschap\_(ClientEncryptionMetadata1) is een teken reeks eigenschap die de informatie over IV, versie en ingepakte sleutel bevat. De tweede gereserveerde eigenschap\_(ClientEncryptionMetadata2) is een binaire eigenschap die de informatie bevat over de versleutelde eigenschappen. De informatie in deze tweede eigenschap (\_ClientEncryptionMetadata2) is zelf versleuteld.
+3. De verpakte CEK en andere versleutelings meta gegevens worden vervolgens opgeslagen als twee extra gereserveerde eigenschappen. De eerste gereserveerde eigenschap ( \_ ClientEncryptionMetadata1) is een teken reeks eigenschap die de informatie over IV, versie en ingepakte sleutel bevat. De tweede gereserveerde eigenschap ( \_ ClientEncryptionMetadata2) is een binaire eigenschap die de informatie bevat over de versleutelde eigenschappen. De informatie in deze tweede eigenschap ( \_ ClientEncryptionMetadata2) is zelf versleuteld.
 4. Als gevolg van deze aanvullende gereserveerde eigenschappen die vereist zijn voor versleuteling, kunnen gebruikers nu slechts 250 aangepaste eigenschappen hebben in plaats van 252. De totale grootte van de entiteit moet kleiner zijn dan 1 MB.
 
    Houd er rekening mee dat alleen teken reeks eigenschappen kunnen worden versleuteld. Als andere typen eigenschappen moeten worden versleuteld, moeten ze worden geconverteerd naar teken reeksen. De versleutelde teken reeksen worden op de service opgeslagen als binaire eigenschappen, en ze worden teruggeconverteerd naar teken reeksen (onbewerkte teken reeksen, niet EntityProperties met het type EdmType. STRING) na ontsleuteling.
@@ -109,7 +109,7 @@ Houd er rekening mee dat entiteiten worden versleuteld wanneer ze worden ingevoe
 > Omdat de entiteiten zijn versleuteld, kunt u geen query's uitvoeren die filteren op een versleutelde eigenschap.  Als u probeert, zijn de resultaten onjuist, omdat de service probeert versleutelde gegevens te vergelijken met niet-versleutelde gegevens.
 > 
 > 
-> Als u query bewerkingen wilt uitvoeren, moet u een sleutel conflict Oplosser opgeven waarmee alle sleutels in de resultatenset kunnen worden omgezet. Als een entiteit in het query resultaat niet kan worden omgezet naar een provider, wordt een fout gegenereerd door de client bibliotheek. Voor elke query die aan server zijde-projecties uitvoert, voegt de client bibliotheek de speciale eigenschappen van de\_meta gegevens \_voor versleuteling (ClientEncryptionMetadata1 en ClientEncryptionMetadata2) standaard toe aan de geselecteerde kolommen.
+> Als u query bewerkingen wilt uitvoeren, moet u een sleutel conflict Oplosser opgeven waarmee alle sleutels in de resultatenset kunnen worden omgezet. Als een entiteit in het query resultaat niet kan worden omgezet naar een provider, wordt een fout gegenereerd door de client bibliotheek. Voor elke query die aan server zijde-projecties uitvoert, voegt de client bibliotheek de speciale eigenschappen van de meta gegevens voor versleuteling ( \_ ClientEncryptionMetadata1 en \_ ClientEncryptionMetadata2) standaard toe aan de geselecteerde kolommen.
 > 
 > [!IMPORTANT]
 > Houd rekening met de volgende belang rijke punten wanneer versleuteling aan de client zijde wordt gebruikt:

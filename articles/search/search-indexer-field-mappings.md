@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005801"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975330"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -22,7 +22,7 @@ Wanneer u Azure Cognitive Search-Indexeer functies gebruikt, merkt u soms dat de
 
 Een aantal situaties waarin veld Toewijzingen handig zijn:
 
-* De gegevens bron bevat een veld met `_id`de naam, maar in azure Cognitive Search zijn veld namen die beginnen met een onderstrepings teken niet toegestaan. Met een veld toewijzing kunt u effectief de naam wijzigen van een veld.
+* De gegevens bron bevat een veld met de naam `_id` , maar in Azure Cognitive Search zijn veld namen die beginnen met een onderstrepings teken niet toegestaan. Met een veld toewijzing kunt u effectief de naam wijzigen van een veld.
 * U wilt verschillende velden in de index vullen op basis van dezelfde gegevens bron gegevens. Het is bijvoorbeeld mogelijk dat u verschillende analyse functies op deze velden wilt Toep assen.
 * U wilt een index veld vullen met gegevens uit meer dan één gegevens bron en de gegevens bronnen gebruiken verschillende veld namen.
 * U moet uw gegevens met Base64 coderen of decoderen. Veld Toewijzingen ondersteunen verschillende **toewijzings functies**, waaronder functies voor Base64-code ring en-decodering.
@@ -34,11 +34,14 @@ Een aantal situaties waarin veld Toewijzingen handig zijn:
 
 Een veld toewijzing bestaat uit drie delen:
 
-1. A `sourceFieldName`, waarmee een veld in de gegevens bron wordt aangeduid. Deze eigenschap is vereist.
-2. Een optioneel `targetFieldName`, waarmee een veld in uw zoek index wordt aangeduid. Als u dit weglaat, wordt dezelfde naam gebruikt als voor de gegevens bron.
-3. Een optioneel `mappingFunction`, waarmee u uw gegevens kunt transformeren met behulp van een van de vooraf gedefinieerde functies. Dit kan worden toegepast op de veld Toewijzingen invoer en uitvoer. [Hieronder](#mappingFunctions)vindt u de volledige lijst met functies.
+1. A `sourceFieldName` , waarmee een veld in de gegevens bron wordt aangeduid. Deze eigenschap is vereist.
+2. Een optioneel `targetFieldName` , waarmee een veld in uw zoek index wordt aangeduid. Als u dit weglaat, wordt dezelfde naam gebruikt als voor de gegevens bron.
+3. Een optioneel `mappingFunction` , waarmee u uw gegevens kunt transformeren met behulp van een van de vooraf gedefinieerde functies. Dit kan worden toegepast op de veld Toewijzingen invoer en uitvoer. [Hieronder](#mappingFunctions)vindt u de volledige lijst met functies.
 
 Veld toewijzingen worden toegevoegd aan de `fieldMappings` matrix van de definitie van de Indexeer functie.
+
+> [!NOTE]
+> Als er geen veld toewijzingen worden toegevoegd, nemen Indexeer functies aan dat gegevens bron velden moeten worden toegewezen aan index velden met dezelfde naam. Als u een veld toewijzing toevoegt, worden deze standaard veld toewijzingen voor het bron-en doel veld verwijderd. Sommige Indexeer functies, zoals [de Indexeer functie van Blob Storage](search-howto-indexing-azure-blob-storage.md), voegen standaard veld toewijzingen toe voor het veld index sleutel.
 
 ## <a name="map-fields-using-the-rest-api"></a>Velden toewijzen met behulp van de REST API
 
@@ -75,9 +78,9 @@ In meerdere veld toewijzingen kan naar een bron veld worden verwezen. In het vol
 
 ## <a name="map-fields-using-the-net-sdk"></a>Velden toewijzen met behulp van de .NET SDK
 
-U definieert veld toewijzingen in de .NET SDK met behulp van de klasse [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) , die de `SourceFieldName` eigenschappen `TargetFieldName`en bevat en een `MappingFunction` optionele verwijzing.
+U definieert veld toewijzingen in de .NET SDK met behulp van de klasse [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping) , die de eigenschappen `SourceFieldName` en bevat `TargetFieldName` en een optionele `MappingFunction` verwijzing.
 
-U kunt veld Toewijzingen opgeven wanneer u de Indexeer functie bouwt of later door de `Indexer.FieldMappings` eigenschap rechtstreeks in te stellen.
+U kunt veld Toewijzingen opgeven wanneer u de Indexeer functie bouwt of later door de eigenschap rechtstreeks in te stellen `Indexer.FieldMappings` .
 
 In het volgende C#-voor beeld worden de veld Toewijzingen ingesteld bij het maken van een Indexeer functie.
 
@@ -122,7 +125,7 @@ Voert *URL-veilige base64-* code ring van de invoer teken reeks uit. Er wordt va
 
 Alleen URL-veilige tekens kunnen worden weer gegeven in een Azure Cognitive Search-document sleutel (omdat klanten het document moeten kunnen adresseren met de [lookup-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) ). Als het Bron veld voor uw sleutel URL-onveilige tekens bevat, kunt u de `base64Encode` functie gebruiken om deze te converteren naar de indexerings tijd. Een document sleutel (zowel vóór als na de conversie) mag echter niet langer zijn dan 1.024 tekens.
 
-Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u `base64Decode` de functie gebruiken om de oorspronkelijke sleutel waarde op te halen en gebruiken om het bron document op te halen.
+Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u de `base64Decode` functie gebruiken om de oorspronkelijke sleutel waarde op te halen en gebruiken om het bron document op te halen.
 
 ```JSON
 
@@ -137,7 +140,28 @@ Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u `base64Deco
   }]
  ```
 
-Als u geen eigenschap para meters voor uw toewijzings functie opgeeft, wordt standaard de `{"useHttpServerUtilityUrlTokenEncode" : true}`waarde gebruikt.
+#### <a name="example---preserve-original-values"></a>Voor beeld: oorspronkelijke waarden behouden
+
+De [Blob Storage Indexeer functie](search-howto-indexing-azure-blob-storage.md) voegt automatisch een veld toewijzing van `metadata_storage_path` , de URI van de blob, toe aan het veld index sleutel als er geen veld toewijzing is opgegeven. Deze waarde is base64-gecodeerd zodat deze veilig kan worden gebruikt als een Azure Cognitive Search-document sleutel. In het volgende voor beeld ziet u hoe u tegelijkertijd een *URL-veilige base64-* gecodeerde versie van `metadata_storage_path` aan een veld kunt toewijzen `index_key` en de oorspronkelijke waarde in een veld wilt behouden `metadata_storage_path` :
+
+```JSON
+
+"fieldMappings": [
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "metadata_storage_path"
+  },
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "index_key",
+    "mappingFunction": {
+       "name": "base64Encode"
+    }
+  }
+]
+```
+
+Als u geen eigenschap para meters voor uw toewijzings functie opgeeft, wordt standaard de waarde gebruikt `{"useHttpServerUtilityUrlTokenEncode" : true}` .
 
 Azure Cognitive Search ondersteunt twee verschillende base64-code ringen. U moet dezelfde para meters gebruiken bij het coderen en decoderen van hetzelfde veld. Zie voor meer informatie [Base64-coderings opties](#base64details) om te bepalen welke para meters u moet gebruiken.
 
@@ -164,7 +188,7 @@ Uw bron gegevens kunnen bestaan uit base64-gecodeerde teken reeksen, zoals teken
   }]
 ```
 
-Als u geen eigenschap para meters opneemt, wordt standaard `{"useHttpServerUtilityUrlTokenEncode" : true}`de waarde gebruikt.
+Als u geen eigenschap para meters opneemt, wordt standaard de waarde gebruikt `{"useHttpServerUtilityUrlTokenEncode" : true}` .
 
 Azure Cognitive Search ondersteunt twee verschillende base64-code ringen. U moet dezelfde para meters gebruiken bij het coderen en decoderen van hetzelfde veld. Zie voor meer informatie [Base64-coderings opties](#base64details) om te bepalen welke para meters u moet gebruiken.
 
@@ -174,14 +198,14 @@ Azure Cognitive Search ondersteunt twee verschillende base64-code ringen. U moet
 
 Azure Cognitive Search ondersteunt URL-veilige base64-code ring en normale base64-code ring. Een teken reeks die met base64 is gecodeerd tijdens het indexeren, moet later worden gedecodeerd met dezelfde coderings opties, anders wordt het resultaat niet met de oorspronkelijke waarde overeenkomen.
 
-Als de `useHttpServerUtilityUrlTokenEncode` or `useHttpServerUtilityUrlTokenDecode` -para meters voor respectievelijk coderen en decoderen `true`zijn `base64Encode` ingesteld op, wordt gereageerd `base64Decode` als [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) en gedraagt zich als [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Als de `useHttpServerUtilityUrlTokenEncode` or `useHttpServerUtilityUrlTokenDecode` -para meters voor respectievelijk coderen en decoderen zijn ingesteld op `true` , wordt `base64Encode` gereageerd als [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) en `base64Decode` gedraagt zich als [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
 > [!WARNING]
-> Als `base64Encode` wordt gebruikt voor het produceren van sleutel `useHttpServerUtilityUrlTokenEncode` waarden, moet worden ingesteld op True. Alleen URL-veilige base64-code ring kan worden gebruikt voor sleutel waarden. Zie [naamgevings regels &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) voor de volledige set beperkingen voor tekens in sleutel waarden.
+> Als `base64Encode` wordt gebruikt voor het produceren van sleutel waarden, `useHttpServerUtilityUrlTokenEncode` moet worden ingesteld op True. Alleen URL-veilige base64-code ring kan worden gebruikt voor sleutel waarden. Zie [naamgevings regels &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) voor de volledige set beperkingen voor tekens in sleutel waarden.
 
-De .NET-bibliotheken in azure Cognitive Search uitgaan van de volledige .NET Framework, dat ingebouwde code ring biedt. De `useHttpServerUtilityUrlTokenEncode` opties `useHttpServerUtilityUrlTokenDecode` en maken gebruik van deze ingebouwde functionaliteit. Als u .NET core of een ander Framework gebruikt, raden we u aan om deze `false` opties in te stellen en de functies code ring en decodering van uw Framework rechtstreeks aan te roepen.
+De .NET-bibliotheken in azure Cognitive Search uitgaan van de volledige .NET Framework, dat ingebouwde code ring biedt. De `useHttpServerUtilityUrlTokenEncode` Opties en maken `useHttpServerUtilityUrlTokenDecode` gebruik van deze ingebouwde functionaliteit. Als u .NET core of een ander Framework gebruikt, raden we u aan om deze opties in te stellen `false` en de functies code ring en decodering van uw Framework rechtstreeks aan te roepen.
 
-De volgende tabel vergelijkt verschillende base64-code ringen van `00>00?00`de teken reeks. Als u de vereiste aanvullende verwerking (indien van toepassing) voor uw base64-functies wilt bepalen, past u de functie `00>00?00` voor het coderen van de bibliotheek toe op `MDA-MDA_MDA`de teken reeks en vergelijkt u de uitvoer met de verwachte uitvoer.
+De volgende tabel vergelijkt verschillende base64-code ringen van de teken reeks `00>00?00` . Als u de vereiste aanvullende verwerking (indien van toepassing) voor uw base64-functies wilt bepalen, past u de functie voor het coderen van de bibliotheek toe op de teken reeks `00>00?00` en vergelijkt u de uitvoer met de verwachte uitvoer `MDA-MDA_MDA` .
 
 | Encoding | Uitvoer van base64-code ring | Aanvullende verwerking na bibliotheek codering | Aanvullende verwerking voordat de tape wisselaar wordt gedecodeerd |
 | --- | --- | --- | --- |
@@ -201,7 +225,7 @@ Deze functie maakt gebruik van de volgende para meters:
 * `delimiter`: een teken reeks die als scheidings teken moet worden gebruikt bij het splitsen van de invoer teken reeks.
 * `position`: een op nul gebaseerde positie van het token dat moet worden gekozen nadat de invoer reeks is gesplitst.
 
-`Jane Doe`Als de invoer bijvoorbeeld, de `delimiter` is `" "`(spatie) en de `position` 0, is het resultaat. `Jane` Als de `position` 1 is, is `Doe`het resultaat. Als de positie verwijst naar een token dat niet bestaat, wordt er een fout geretourneerd.
+Als de invoer bijvoorbeeld `Jane Doe` , de `delimiter` is `" "` (spatie) en de `position` 0, is het resultaat `Jane` ; als de `position` waarde 1 is, is het resultaat `Doe` . Als de positie verwijst naar een token dat niet bestaat, wordt er een fout geretourneerd.
 
 #### <a name="example---extract-a-name"></a>Voor beeld: een naam ophalen
 
@@ -226,13 +250,13 @@ De gegevens bron bevat een `PersonName` veld en u wilt het indexeren als twee af
 
 ### <a name="jsonarraytostringcollection-function"></a>de functie jsonArrayToStringCollection
 
-Transformeert een teken reeks die is opgemaakt als een JSON-matrix met teken reeksen in een teken reeks matrix die `Collection(Edm.String)` kan worden gebruikt om een veld in de index te vullen.
+Transformeert een teken reeks die is opgemaakt als een JSON-matrix met teken reeksen in een teken reeks matrix die kan worden gebruikt om een `Collection(Edm.String)` veld in de index te vullen.
 
-Als de invoer teken `["red", "white", "blue"]`reeks bijvoorbeeld is, wordt het doel veld van het type `Collection(Edm.String)` gevuld met de drie waarden `red`, `white`en. `blue` Voor invoer waarden die niet kunnen worden geparseerd als JSON-teken reeks matrices, wordt een fout geretourneerd.
+Als de invoer teken reeks bijvoorbeeld is `["red", "white", "blue"]` , wordt het doel veld van het type `Collection(Edm.String)` gevuld met de drie waarden `red` , `white` en `blue` . Voor invoer waarden die niet kunnen worden geparseerd als JSON-teken reeks matrices, wordt een fout geretourneerd.
 
 #### <a name="example---populate-collection-from-relational-data"></a>Voor beeld: verzameling van relationele gegevens invullen
 
-Azure SQL Database heeft geen ingebouwd gegevens type dat op natuurlijke wijze is gekoppeld aan `Collection(Edm.String)` velden in azure Cognitive Search. Als u velden voor teken reeks verzameling wilt vullen, kunt u de bron gegevens vooraf verwerken als een JSON-teken reeks `jsonArrayToStringCollection` matrix en vervolgens de functie mapping gebruiken.
+Azure SQL Database heeft geen ingebouwd gegevens type dat op natuurlijke wijze is gekoppeld aan `Collection(Edm.String)` velden in Azure Cognitive Search. Als u velden voor teken reeks verzameling wilt vullen, kunt u de bron gegevens vooraf verwerken als een JSON-teken reeks matrix en vervolgens de `jsonArrayToStringCollection` functie mapping gebruiken.
 
 ```JSON
 
@@ -253,9 +277,9 @@ Deze functie kan worden gebruikt om een teken reeks te coderen zodat deze ' URL 
 
 `urlEncode`de functie kan worden gebruikt als alternatief voor de `base64Encode` functie als alleen onveilige URL-tekens moeten worden geconverteerd, terwijl andere tekens ongewijzigd blijven.
 
-De invoer teken reeks is- `<hello>` en vervolgens wordt het doel veld van `(Edm.String)` het type ingevuld met de waarde`%3chello%3e`
+De invoer teken reeks is `<hello>` -en vervolgens wordt het doel veld van `(Edm.String)` het type ingevuld met de waarde`%3chello%3e`
 
-Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u `urlDecode` de functie gebruiken om de oorspronkelijke sleutel waarde op te halen en gebruiken om het bron document op te halen.
+Wanneer u de gecodeerde sleutel ophaalt tijdens de zoek tijd, kunt u de `urlDecode` functie gebruiken om de oorspronkelijke sleutel waarde op te halen en gebruiken om het bron document op te halen.
 
 ```JSON
 

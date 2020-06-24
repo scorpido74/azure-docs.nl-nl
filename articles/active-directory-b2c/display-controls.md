@@ -53,7 +53,7 @@ Het element **DisplayControl** bevat de volgende kenmerken:
 
 Het element **DisplayControl** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** worden gebruikt om vooraf de waarde in te vullen van de claims die moeten worden verzameld van de gebruiker. |
 | DisplayClaims | 0:1 | **DisplayClaims** worden gebruikt om claims weer te geven die van de gebruiker moeten worden verzameld. |

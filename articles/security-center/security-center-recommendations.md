@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245302"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791381"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
@@ -53,7 +53,7 @@ Security Center analyseert de beveiligings status van uw resources om mogelijke 
     U kunt de aanbevelingen filteren. Als u de aanbevelingen wilt filteren, selecteert u **filter** op de Blade **aanbevelingen** . De Blade **filter** wordt geopend en u selecteert de ernst en de status waarden die u wilt zien.
 
    * **Aanbevelingen**: de aanbeveling.
-   * **Effect op beveiligde Score**: een score die wordt gegenereerd door Security Center met behulp van uw beveiligings aanbevelingen en het Toep assen van geavanceerde algoritmen om te bepalen hoe belang rijk elke aanbeveling is. Zie [Secure Score Calculation](security-center-secure-score.md#secure-score-calculation)(Engelstalig) voor meer informatie.
+   * **Effect op beveiligde Score**: een score die wordt gegenereerd door Security Center met behulp van uw beveiligings aanbevelingen en het Toep assen van geavanceerde algoritmen om te bepalen hoe belang rijk elke aanbeveling is. Zie [Secure Score Calculation](secure-score-security-controls.md#how-your-secure-score-is-calculated)(Engelstalig) voor meer informatie.
    * **Resource**: geeft een lijst van de resources waarop deze aanbeveling van toepassing is.
    * **Status balken**: beschrijft de ernst van de betreffende aanbeveling:
        * **Hoog (rood)**: er bestaat een beveiligings probleem met een zinvolle bron (zoals een toepassing, een virtuele machine of een netwerk beveiligings groep) en vereist aandacht.

@@ -4,15 +4,15 @@ description: Deze pagina bevat informatie over ExpressRoute-bewaking
 services: expressroute
 author: mialdrid
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6622a6e9f6865dbbafa145d6773440599b0c2777
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436916"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738903"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -39,8 +39,8 @@ Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U ku
 |GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Global Reach|
 |AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
 |LineProtocol|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
-|RxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fysieke connectiviteit|<ui><li>Koppeling</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|RxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
 >
