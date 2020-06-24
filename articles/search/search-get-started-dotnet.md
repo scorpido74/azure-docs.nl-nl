@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634930"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079394"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>Quickstart: Een zoekindex maken in .NET
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "84634930"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Maak een .NET Core-consoletoepassing in C# waarmee een Azure Cognitive Search-index wordt gemaakt en geladen en query's op die index worden uitgevoerd met behulp van Visual Studio en de [.NET SDK van Azure Cognitive Search](https://aka.ms/search-sdk). 
+Maak een .NET Core-consoletoepassing in C# waarmee een Azure Cognitive Search-index wordt gemaakt en geladen en query's op die index worden uitgevoerd met behulp van Visual Studio en de [.NET SDK van Azure Cognitive Search](https://docs.microsoft.com/dotnet/api/overview/azure/search). 
 
 In dit artikel wordt stap voor stap uitgelegd hoe u de toepassing maakt. U kunt ook [de volledige toepassing downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart) als u meteen met de code aan de slag wilt.
 
@@ -64,7 +64,7 @@ Open eerst Visual Studio en maak een nieuw Console App-project dat kan worden ui
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-De [.NET SDK van Azure Cognitive Search](https://aka.ms/search-sdk) bestaat uit een aantal clientbibliotheken die worden gedistribueerd als NuGet-pakketten.
+De [.NET SDK van Azure Cognitive Search](https://docs.microsoft.com/dotnet/api/overview/azure/search) bestaat uit een aantal clientbibliotheken die worden gedistribueerd als NuGet-pakketten.
 
 Gebruik voor dit project versie 9 van het NuGet-pakket `Microsoft.Azure.Search` en het meest recente NuGet-pakket `Microsoft.Extensions.Configuration.Json`.
 

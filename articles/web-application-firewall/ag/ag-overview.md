@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747772"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212901"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall voor Azure Application Gateway
 
 Azure Web Application Firewall (WAF) voor Azure Application Gateway biedt gecentraliseerde beveiliging van uw webtoepassingen tegen veelvoorkomende aanvallen en beveiligingsproblemen. Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van algemeen bekende beveiligingsproblemen. SQL-injectie en cross-site scripting zijn twee van de meest voorkomende aanvallen.
 
-WAF voor Application Gateway is gebaseerd op [Core Rule Set (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1, 3.0 of 2.2.9 van het Open Web Application Security Project (OWASP). WAF wordt automatisch bijgewerkt om bescherming te bieden tegen nieuwe beveiligingsproblemen, zonder dat er aanvullende configuratie nodig is. 
+WAF voor Application Gateway is gebaseerd op [Core Rule Set (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1, 3.0 of 2.2.9 van het Open Web Application Security Project (OWASP). WAF wordt automatisch bijgewerkt om bescherming te bieden tegen nieuwe beveiligingsproblemen, zonder dat er aanvullende configuratie nodig is. 
 
 Alle WAF-functies die hieronder worden vermeld, bevinden zich in een WAF-beleid. U kunt meerdere beleidsregels opstellen en deze kunnen worden gekoppeld aan een toepassingsgateway, aan individuele listeners of aan routeringsregels op een toepassingsgateway die op een pad zijn gebaseerd. Op deze manier kunt u indien nodig afzonderlijke beleidsregels hanteren voor elke site achter uw toepassingsgateway. Zie [Een WAF-beleid maken](create-waf-policy-ag.md)voor meer informatie over WAF-beleidsregels.
 

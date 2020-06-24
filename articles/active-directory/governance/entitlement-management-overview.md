@@ -1,5 +1,5 @@
 ---
-title: Wat is rechtenbeheer? -Azure AD
+title: Wat is rechtenbeheer? - Azure AD
 description: Bekijk een overzicht van Azure Active Directory rechten beheer en hoe u dit kunt gebruiken voor het beheren van de toegang tot groepen, toepassingen en share point online-sites voor interne en externe gebruikers.
 services: active-directory
 documentationCenter: ''
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4ce292ad507eb0208633db7743b881508a8e58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44c8a46c844b9bc4b92702323df18addb207dd6c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144440"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85078169"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 

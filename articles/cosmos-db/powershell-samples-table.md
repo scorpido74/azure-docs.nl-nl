@@ -3,15 +3,15 @@ title: Voorbeelden van Azure PowerShell voor Azure Cosmos DB - Table-API
 description: De Azure PowerShell-voorbeelden verschillende algemene taken laten uitvoeren in de Table-API-accounts van Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/13/2020
+ms.topic: how-to
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1790edd41426a7395705485d764682bd47f75186
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 5d947c9f3f5aedd419662936c7007fc45a57b087
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649700"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262987"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>Voorbeelden van Azure PowerShell voor Azure Cosmos DB - Table-API
 
@@ -30,4 +30,5 @@ De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor 
 |[Failoverprioriteit wijzigen of failover activeren](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de prioriteit van de regionale failover van een Azure Cosmos-account of activeer een handmatige failover. |
 |[Accountsleutels of verbindingsreeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Haal de primaire en secundaire sleutels en verbindingsreeksen op of genereer opnieuw een accountsleutel van een Azure Cosmos-account. |
 |[Een Cosmos-account maken met een IP-firewall](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos-account waarvoor IP-firewall is ingeschakeld. |
+|[Resources vergrendelen tegen verwijdering](scripts/powershell/table/powershell-table-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voor komen dat resources worden verwijderd met resource vergrendelingen. |
 |||

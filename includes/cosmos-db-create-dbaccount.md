@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: e81f584892126a1d79e0d56ecacaa8c202fa81e3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 2cb07957af996f19bb15853fda81400cd63c8b21
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647704"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113790"
 ---
 1. Selecteer vanuit het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
 
@@ -37,14 +37,14 @@ ms.locfileid: "83647704"
     > [!NOTE]
     > U kunt per Azure-abonnement maximaal één gratis laag voor het Azure Cosmos DB-account hebben, en u moet zich aanmelden wanneer u het account maakt. Als u de optie voor het toepassen van de korting voor gratis lagen niet ziet, betekent dit dat er al een ander account in het abonnement is ingeschakeld met een gratis laag.
    
-   ![De pagina Nieuw account voor Azure Cosmos DB](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
+   :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png" alt-text="De pagina Nieuw account voor Azure Cosmos DB":::
 
 1. Selecteer **Controleren + maken**. U kunt de secties **Netwerk** en **Tags** overslaan.
 
 1. Controleer de accountinstellingen en selecteer vervolgens **Maken**. Het duurt een paar minuten om het account te maken. Wacht tot de portal-pagina **Uw implementatie is voltooid** weergeeft. 
 
-    ![Het deelvenster Meldingen in Azure Portal](./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png)
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Het deelvenster Meldingen in Azure Portal":::
 
 1. Selecteer **Ga naar resource** om naar de Azure Cosmos DB-accountpagina te gaan. 
 
-    ![De Azure Cosmos DB-accountpagina](./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png)
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="De Azure Cosmos DB-accountpagina":::
