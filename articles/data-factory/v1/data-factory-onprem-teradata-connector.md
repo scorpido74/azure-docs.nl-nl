@@ -13,15 +13,15 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281195"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707307"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Gegevens verplaatsen van Teradata met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-onprem-teradata-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-onprem-teradata-connector.md)
 > * [Versie 2 (huidige versie)](../connector-teradata.md)
 
 > [!NOTE]
@@ -63,12 +63,12 @@ De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zij
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesTeradata** |Ja |
-| server |Naam van de server van de Teradata. |Ja |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Teradata-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
-| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |Nee |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises Teradata-data base. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesTeradata** |Yes |
+| server |Naam van de server van de Teradata. |Yes |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Teradata-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Yes |
+| gebruikersnaam |Geef de gebruikers naam op als u basis-of Windows-verificatie gebruikt. |No |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |No |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises Teradata-data base. |Yes |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -84,7 +84,7 @@ Als de bron van het type **RelationalSource** (dat Teradata bevat) is, zijn de v
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Ja |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Yes |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van Teradata naar Azure Blob
 In het volgende voor beeld worden voor beeld-JSON-definities weer gegeven die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kunt kopiëren van Teradata naar Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
@@ -295,12 +295,12 @@ Bij het verplaatsen van gegevens naar Teradata, worden de volgende toewijzingen 
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimal |Decimal |
-| Double |Double |
+| Dubbel |Dubbel |
 | Geheel getal |Int32 |
-| Aantal |Double |
+| Getal |Dubbel |
 | SmallInt |Int16 |
 | Date |DateTime |
-| Time |TimeSpan |
+| Tijd |TimeSpan |
 | Tijd met tijd zone |Tekenreeks |
 | Tijdstempel |DateTime |
 | Tijds tempel met tijd zone |Date time offset |

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250359"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707596"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Beheer gebruikers, SSH-en herstel schijven op Linux-Vm's met de VMAccess-extensie met de Azure CLI
 ## <a name="overview"></a>Overzicht
@@ -56,7 +56,7 @@ Er zijn twee manieren waarop u de VMAccess-extensie kunt gebruiken op uw virtuel
 De volgende voor beelden gebruiken [AZ VM User](/cli/azure/vm/user) commands. Als u deze stappen wilt uitvoeren, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
 ## <a name="update-ssh-key"></a>SSH-sleutel bijwerken
-In het volgende voor beeld wordt de SSH-sleutel `azureuser` voor de gebruiker op `myVM`de VM bijgewerkt met de naam:
+In het volgende voor beeld wordt de SSH-sleutel voor de gebruiker `azureuser` op de VM bijgewerkt met de naam `myVM` :
 
 ```azurecli-interactive
 az vm user update \
@@ -66,10 +66,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Opmerking:** De `az vm user update` opdracht voegt de nieuwe open bare-sleutel tekst toe `~/.ssh/authorized_keys` aan het bestand voor de gebruiker met beheerders rechten op de VM. Hiermee worden geen bestaande SSH-sleutels vervangen of verwijderd. Hiermee verwijdert u geen eerdere sleutels die zijn ingesteld tijdens de implementatie tijd of volgende updates via de VMAccess-extensie.
+> **Opmerking:** De `az vm user update` opdracht voegt de nieuwe open bare-sleutel tekst toe aan het `~/.ssh/authorized_keys` bestand voor de gebruiker met beheerders rechten op de VM. Hiermee worden geen bestaande SSH-sleutels vervangen of verwijderd. Hiermee verwijdert u geen eerdere sleutels die zijn ingesteld tijdens de implementatie tijd of volgende updates via de VMAccess-extensie.
 
 ## <a name="reset-password"></a>Wachtwoord opnieuw instellen
-In het volgende voor beeld wordt het wacht woord `azureuser` voor de gebruiker opnieuw `myVM`ingesteld op de VM met de naam:
+In het volgende voor beeld wordt het wacht woord voor de gebruiker opnieuw ingesteld `azureuser` op de VM met de naam `myVM` :
 
 ```azurecli-interactive
 az vm user update \
@@ -80,7 +80,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>SSH opnieuw starten
-In het volgende voor beeld wordt de SSH-daemon opnieuw gestart en wordt de SSH-configuratie opnieuw ingesteld op `myVM`de standaard waarden voor een virtuele machine met de naam:
+In het volgende voor beeld wordt de SSH-daemon opnieuw gestart en wordt de SSH-configuratie opnieuw ingesteld op de standaard waarden voor een virtuele machine met de naam `myVM` :
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -89,7 +89,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-an-administrativesudo-user"></a>Een gebruiker met beheerdersrechten/sudo-gebruiker maken
-In het volgende voor beeld wordt een `myNewUser` gebruiker gemaakt met de naam **sudo** -machtigingen. Het account gebruikt een SSH-sleutel voor verificatie op de virtuele `myVM`machine met de naam. Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een virtuele machine in het geval dat de huidige referenties verloren zijn gegaan of worden verg eten. Als best practice worden accounts met **sudo** -machtigingen beperkt.
+In het volgende voor beeld wordt een gebruiker gemaakt met de naam `myNewUser` **sudo** -machtigingen. Het account gebruikt een SSH-sleutel voor verificatie op de virtuele machine met de naam `myVM` . Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een virtuele machine in het geval dat de huidige referenties verloren zijn gegaan of worden verg eten. Als best practice worden accounts met **sudo** -machtigingen beperkt.
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +100,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Een gebruiker verwijderen
-In het volgende voor beeld wordt een `myNewUser` gebruiker met de naam `myVM`op de VM verwijderd met de naam:
+In het volgende voor beeld wordt een gebruiker `myNewUser` met de naam op de VM verwijderd met de naam `myVM` :
 
 ```azurecli-interactive
 az vm user delete \
@@ -115,7 +115,7 @@ In de volgende voor beelden worden onbewerkte JSON-bestanden gebruikt. Gebruik [
 ### <a name="reset-user-access"></a>Gebruikers toegang opnieuw instellen
 Als u de toegang tot de hoofdmap op uw Linux-VM verloren hebt, kunt u een VMAccess-script starten om de SSH-sleutel of het wacht woord van een gebruiker bij te werken.
 
-Als u de open bare SSH-sleutel van een gebruiker wilt bijwerken, `update_ssh_key.json` maakt u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden voor de `username` para `ssh_key` meters en:
+Als u de open bare SSH-sleutel van een gebruiker wilt bijwerken, maakt u een bestand met `update_ssh_key.json` de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden voor de `username` `ssh_key` para meters en:
 
 ```json
 {
@@ -136,7 +136,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Als u een gebruikers wachtwoord opnieuw wilt instellen, maakt `reset_user_password.json` u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden voor de `username` para `password` meters en:
+Als u een gebruikers wachtwoord opnieuw wilt instellen, maakt u een bestand met `reset_user_password.json` de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden voor de `username` `password` para meters en:
 
 ```json
 {
@@ -158,7 +158,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>SSH opnieuw starten
-Als u de SSH-daemon opnieuw wilt opstarten en de SSH-configuratie opnieuw wilt instellen op `reset_sshd.json`de standaard waarden, maakt u een bestand met de naam. Voeg de volgende inhoud toe:
+Als u de SSH-daemon opnieuw wilt opstarten en de SSH-configuratie opnieuw wilt instellen op de standaard waarden, maakt u een bestand met de naam `reset_sshd.json` . Voeg de volgende inhoud toe:
 
 ```json
 {
@@ -180,7 +180,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>Gebruikers met beheerders rechten beheren
 
-Als u een gebruiker wilt maken met **sudo** -machtigingen die een SSH-sleutel voor verificatie gebruiken, `create_new_user.json` maakt u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden door de `username` para `ssh_key` meters en. Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een virtuele machine in het geval dat de huidige referenties verloren zijn gegaan of worden verg eten. Als best practice worden accounts met **sudo** -machtigingen beperkt.
+Als u een gebruiker wilt maken met **sudo** -machtigingen die een SSH-sleutel voor verificatie gebruiken, maakt u een bestand met `create_new_user.json` de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarden door de `username` `ssh_key` para meters en. Deze methode is ontworpen om u te helpen weer toegang te krijgen tot een virtuele machine in het geval dat de huidige referenties verloren zijn gegaan of worden verg eten. Als best practice worden accounts met **sudo** -machtigingen beperkt.
 
 ```json
 {
@@ -202,7 +202,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Als u een gebruiker wilt verwijderen, maakt u `delete_user.json` een bestand met de naam en voegt u de volgende inhoud toe. Vervang uw eigen waarde door de `remove_user` para meter:
+Als u een gebruiker wilt verwijderen, maakt u een bestand met `delete_user.json` de naam en voegt u de volgende inhoud toe. Vervang uw eigen waarde door de `remove_user` para meter:
 
 ```json
 {
@@ -225,7 +225,7 @@ az vm extension set \
 ### <a name="check-or-repair-the-disk"></a>De schijf controleren of herstellen
 Met VMAccess kunt u ook een schijf controleren en herstellen die u hebt toegevoegd aan de virtuele Linux-machine.
 
-Als u de schijf wilt controleren en vervolgens wilt herstellen, maakt `disk_check_repair.json` u een bestand met de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarde door de `repair_disk`volgende naam:
+Als u de schijf wilt controleren en vervolgens wilt herstellen, maakt u een bestand met `disk_check_repair.json` de naam en voegt u de instellingen in de volgende indeling toe. Vervang uw eigen waarde door de volgende naam `repair_disk` :
 
 ```json
 {

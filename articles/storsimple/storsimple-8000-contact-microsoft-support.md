@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254987"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706967"
 ---
 # <a name="contact-microsoft-support"></a>Neem contact op met Microsoft Ondersteuning
 
@@ -57,7 +57,7 @@ Afhankelijk van uw [ondersteunings plan](https://azure.microsoft.com/support/pla
 
    1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
    2. Geef in de contact gegevens uw naam, e-mail adres, optionele contact persoon, land/regio. Schakel het selectie vakje **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen** in.
-   3. Klik op **maken**.
+   3. Klik op **Create**.
    
        ![Contact opnemen met MS-ondersteuning via de nieuwe portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -103,7 +103,7 @@ Voer de volgende stappen uit om een ondersteunings sessie te starten:
 7. Sla deze teken reeks op en verzend deze in een e-mail bericht naar Microsoft Ondersteuning.
 
 > [!IMPORTANT]
-> U kunt de ondersteunings toegang `Disable-HcsSupportAccess`uitschakelen door uit te voeren. Het StorSimple-apparaat probeert ook de toegang tot 8 uur na het starten van de sessie uit te scha kelen. Het is een best practice om uw StorSimple te wijzigen na het initiëren van een ondersteunings sessie.
+> U kunt de ondersteunings toegang uitschakelen door uit te voeren `Disable-HcsSupportAccess` . Het StorSimple-apparaat probeert ook de toegang tot 8 uur na het starten van de sessie uit te scha kelen. Het is een best practice om uw StorSimple te wijzigen na het initiëren van een ondersteunings sessie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

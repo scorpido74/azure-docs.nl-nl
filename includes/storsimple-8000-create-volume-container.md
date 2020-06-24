@@ -31,7 +31,7 @@ ms.locfileid: "67176080"
       Als u beschikt over informatie over uw bandbreedtegebruik, kunt u de bandbreedte mogelijk toewijzen op basis van een planning door een **bandbreedtesjabloon te selecteren**. Voor een stapsgewijze procedure gaat u naar [Add a bandwidth template](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template) (Een bandbreedtesjabloon toevoegen).
 
       ![De blade Volumecontainer](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. Klik op **maken**.
+   7. Klik op **Create**.
 
         ![De blade Volumecontainer](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

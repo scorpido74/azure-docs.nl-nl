@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/29/2020
-ms.openlocfilehash: 9ac85299311c1fd233988c6472d6325934dd42dd
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 6/10/2020
+ms.openlocfilehash: eff70d193674877b3b9453319197b60569399968
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614536"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707052"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van Power shell
 
@@ -29,7 +29,7 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met `Install-Module -Name Az.MySql -AllowPrerelease`behulp van de volgende opdracht:.
+> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Zodra de AZ. MySql Power shell-module algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
@@ -41,6 +41,9 @@ Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account
 
 ### <a name="create-a-read-replica"></a>Een lees replica maken
 
+> [!IMPORTANT]
+> Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
+
 Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
 ```azurepowershell-interactive
@@ -48,12 +51,12 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   New-AzMySqlServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-Voor `New-AzMySqlServerReplica` de opdracht zijn de volgende para meters vereist:
+Voor de `New-AzMySqlServerReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
-| Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
 
@@ -77,16 +80,16 @@ Als u alle replica's voor een bepaalde hoofd server wilt weer geven, voert u de 
 Get-AzMySqlReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 ```
 
-Voor `Get-AzMySqlReplica` de opdracht zijn de volgende para meters vereist:
+Voor de `Get-AzMySqlReplica` opdracht zijn de volgende para meters vereist:
 
-| Instelling | Voorbeeldwaarde | Beschrijving  |
+| Instelling | Voorbeeldwaarde | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
 | ServerName | mydemoserver | De naam of ID van de hoofd server. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
-Het verwijderen van een lees replica-server kan worden uitgevoerd `Remove-AzMySqlServer` door de cmdlet uit te voeren.
+Het verwijderen van een lees replica-server kan worden uitgevoerd door de cmdlet uit te voeren `Remove-AzMySqlServer` .
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
@@ -97,7 +100,7 @@ Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegrou
 > [!IMPORTANT]
 > Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
-Als u een master server wilt verwijderen, kunt u `Remove-AzMySqlServer` de cmdlet uitvoeren.
+Als u een master server wilt verwijderen, kunt u de `Remove-AzMySqlServer` cmdlet uitvoeren.
 
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

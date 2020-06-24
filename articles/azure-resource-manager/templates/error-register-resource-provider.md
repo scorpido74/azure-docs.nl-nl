@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u registratie fouten van Azure-resource
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273772"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706525"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Fouten oplossen voor de registratie van de resourceprovider
 
@@ -79,13 +79,13 @@ Als u de ondersteunde API-versies voor een bepaald type resource wilt ophalen, g
 
 ## <a name="solution-2---azure-cli"></a>Oplossing 2-Azure CLI
 
-Gebruik de `az provider list` opdracht om te controleren of de provider is geregistreerd.
+Gebruik de opdracht om te controleren of de provider is geregistreerd `az provider list` .
 
 ```azurecli-interactive
 az provider list
 ```
 
-Als u een resource provider wilt registreren, `az provider register` gebruikt u de opdracht en geeft u de *naam ruimte* op die u wilt registreren.
+Als u een resource provider wilt registreren, gebruikt u de `az provider register` opdracht en geeft u de *naam ruimte* op die u wilt registreren.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn

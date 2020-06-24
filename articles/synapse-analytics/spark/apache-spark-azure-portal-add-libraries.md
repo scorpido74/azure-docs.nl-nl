@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60cbb269693b23b658b8e28f90383814d6657661
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870370"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194328"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Bibliotheken voor Apache Spark toevoegen en beheren in azure Synapse Analytics
 
@@ -26,7 +26,7 @@ Python-pakketten kunnen worden toegevoegd op het niveau van de Spark-groep (prev
 
 Apache Spark in azure Synapse Analytics beschikt over een volledige Anacondas-installatie plus extra bibliotheken. De lijst met volledige bibliotheken vindt u op [Apache Spark-versie ondersteuning](apache-spark-version-support.md).
 
-Wanneer een Spark-exemplaar wordt gestart, wordt een nieuwe virtuele omgeving gemaakt met behulp van deze installatie als basis. Daarnaast kan het bestand *Requirements. txt* (uitvoer van `pip freeze` de opdracht) worden gebruikt voor het bijwerken van de virtuele omgeving. De pakketten die in dit bestand worden vermeld voor installatie of upgrade, worden gedownload van PyPi op het moment dat het cluster wordt gestart. Dit vereisten bestand wordt gebruikt wanneer een Spark-exemplaar wordt gemaakt vanuit die Spark-groep.
+Wanneer een Spark-exemplaar wordt gestart, wordt een nieuwe virtuele omgeving gemaakt met behulp van deze installatie als basis. Daarnaast kan een *requirements.txt* -bestand (uitvoer van de `pip freeze` opdracht) worden gebruikt voor het bijwerken van de virtuele omgeving. De pakketten die in dit bestand worden vermeld voor installatie of upgrade, worden gedownload van PyPi op het moment dat het cluster wordt gestart. Dit vereisten bestand wordt gebruikt wanneer een Spark-exemplaar wordt gemaakt vanuit die Spark-groep.
 
 > [!IMPORTANT]
 >
@@ -67,4 +67,4 @@ for i in pip.get_installed_distributions(local_only=True):
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Documentatie over Apache Spark](https://spark.apache.org/docs/2.4.4/)
+- [Documentatie voor Apache Spark](https://spark.apache.org/docs/2.4.4/)

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248357"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706491"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>Azure Resource Manager resource groepen beheren met Azure PowerShell
 
@@ -196,7 +196,7 @@ Als u de `-IncludeParameterDefaultValue` para meter gebruikt bij het exporteren 
 }
 ```
 
-Als u de `-SkipResourceNameParameterization` -para meter gebruikt bij het exporteren van de sjabloon, worden para meters voor resource namen niet opgenomen in de sjabloon. In plaats daarvan wordt de resource naam rechtstreeks op de resource ingesteld op de huidige waarde. U kunt de naam niet aanpassen tijdens de implementatie.
+Als u de- `-SkipResourceNameParameterization` para meter gebruikt bij het exporteren van de sjabloon, worden para meters voor resource namen niet opgenomen in de sjabloon. In plaats daarvan wordt de resource naam rechtstreeks op de resource ingesteld op de huidige waarde. U kunt de naam niet aanpassen tijdens de implementatie.
 
 ```json
 "resources": [

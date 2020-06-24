@@ -8,17 +8,17 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257197"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704383"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell
 
 In dit artikel ziet u hoe u virtuele VMware-machines repliceert naar Azure met behulp van Azure PowerShell.
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > - Maak een Recovery Services kluis en stel de kluis context in.
@@ -37,7 +37,7 @@ Voordat u begint:
 
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](vmware-azure-architecture.md).
 - Raadpleeg de [ondersteuningsvereisten](site-recovery-support-matrix-to-azure.md) voor alle onderdelen.
-- U hebt de module `Az` Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
+- U hebt de `Az` module Azure PowerShell. Als u Azure PowerShell moet installeren of upgraden, volgt u deze [hand leiding voor het installeren en configureren van Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Aanmelden bij Azure
 
@@ -98,14 +98,14 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 
 4. Gebruik de gedownloade kluis registratie sleutel en volg de stappen in de onderstaande artikelen om de installatie en registratie van de configuratie server te volt ooien.
    - [Uw beveiligings doelen kiezen](vmware-azure-set-up-source.md#choose-your-protection-goals)
-   - [De bronomgeving instellen](vmware-azure-set-up-source.md#set-up-the-configuration-server)
+   - [De bron omgeving instellen](vmware-azure-set-up-source.md#set-up-the-configuration-server)
 
 ### <a name="set-the-vault-context"></a>De kluis context instellen
 
 Stel de kluis context in met behulp van de cmdlet Set-ASRVaultContext. Eenmaal ingesteld, worden volgende Azure Site Recovery bewerkingen in de Power shell-sessie uitgevoerd in de context van de geselecteerde kluis.
 
 > [!TIP]
-> De Azure Site Recovery Power shell-module (AZ. Recovery Services module) wordt geleverd met eenvoudig te gebruiken aliassen voor de meeste cmdlets. De cmdlets in de module nemen de formulier * \<bewerking>-**AzRecoveryServicesAsr**\<-object>* en hebben gelijkwaardige aliassen die de formulier * \<bewerking>-**ASR**\<-object>* uitvoeren. U kunt de cmdlet-aliassen voor gebruiks gemak vervangen.
+> De Azure Site Recovery Power shell-module (AZ. Recovery Services module) wordt geleverd met eenvoudig te gebruiken aliassen voor de meeste cmdlets. De cmdlets in de module hebben de vorm * \<Operation> - **AzRecoveryServicesAsr** \<Object> * en hebben gelijkwaardige aliassen die het formulier * \<Operation> - **ASR** \<Object> *gebruiken. U kunt de cmdlet-aliassen voor gebruiks gemak vervangen.
 
 In het onderstaande voor beeld wordt de kluis Details van de variabele $vault gebruikt om de kluis context voor de Power shell-sessie op te geven.
 

@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732688"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254409"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Afgebroken SQL-rijen in Data Factory gegevens stromen toewijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Een veelvoorkomend scenario in Data Factory bij het gebruik van toewijzings gegevens stromen is het schrijven van uw getransformeerde gegevens naar een Azure SQL database. In dit scenario wordt een veelvoorkomende fout voorwaarde die u moet voor komen tegen mogelijke kolom afkap ping. Volg deze stappen voor het vastleggen van kolommen die niet in een doel reeks kolom passen, zodat uw gegevens stroom in deze scenario's kan worden voortgezet.
+Een veelvoorkomend scenario in Data Factory bij het gebruik van toewijzings gegevens stromen is het schrijven van uw getransformeerde gegevens naar een data base in Azure SQL Database. In dit scenario wordt een veelvoorkomende fout voorwaarde die u moet voor komen tegen mogelijke kolom afkap ping. Volg deze stappen voor het vastleggen van kolommen die niet in een doel reeks kolom passen, zodat uw gegevens stroom in deze scenario's kan worden voortgezet.
 
 ## <a name="scenario"></a>Scenario
 
-1. Er is een Azure SQL database-doel tabel met een ```nvarchar(5)``` kolom genaamd "naam".
+1. Er is een doel database tabel die een kolom bevat met de ```nvarchar(5)``` naam ' name '.
 
 2. In onze gegevens stroom willen we film titels van onze Sink toewijzen aan de kolom naam.
 
@@ -40,9 +40,9 @@ In deze video wordt een voor beeld gegeven van het instellen van een logische ri
 
     ![Conditional Split](media/data-flow/error1.png)
 
-2. Met deze Conditional Split trans formatie wordt de maximum lengte van ' title ' gedefinieerd als vijf. Een rij die kleiner dan of gelijk aan vijf is, gaat in de ```GoodRows``` stroom. Rijen die groter zijn dan vijf, worden in de ```BadRows``` stream verzonden.
+2. Met deze Conditional Split trans formatie wordt de maximum lengte van ' title ' gedefinieerd als vijf. Een rij die kleiner dan of gelijk aan vijf is, gaat in de ```GoodRows``` stroom. Rijen die groter zijn dan vijf, worden in de ```BadRows``` Stream verzonden.
 
-3. De rijen die zijn mislukt, moeten nu worden geregistreerd. Voeg een Sink-trans formatie ```BadRows``` toe aan de stroom voor logboek registratie. Hier worden alle velden automatisch toegewezen, zodat de registratie van de volledige transactie record wordt geregistreerd. Dit is een tekst scheidings teken van CSV-bestand naar één bestand in Blob Storage. Het logboek bestand "badrows. csv" wordt aangeroepen.
+3. De rijen die zijn mislukt, moeten nu worden geregistreerd. Voeg een Sink-trans formatie toe aan de ```BadRows``` stroom voor logboek registratie. Hier worden alle velden automatisch toegewezen, zodat de registratie van de volledige transactie record wordt geregistreerd. Dit is een tekst scheidings teken van CSV-bestand naar één bestand in Blob Storage. Het logboek bestand badrows.csv wordt aangeroepen.
 
     ![Ongeldige rijen](media/data-flow/error3.png)
     

@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267350"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704179"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Streaming-eenheden begrijpen en aanpassen
 
@@ -78,7 +78,7 @@ De volgende factoren beïnvloeden het geheugen dat wordt gebruikt (onderdeel van
 Het verbruikte geheugen (status grootte) voor een statistische functie voor een venster is niet altijd direct evenredig met de grootte van het venster. In plaats daarvan is het geheugen dat wordt verbruikt evenredig met de kardinaliteit van de gegevens of het aantal groepen in elk tijd venster.
 
 
-In de volgende query `clusterid` is bijvoorbeeld het nummer dat is gekoppeld aan de kardinaliteit van de query. 
+In de volgende query is bijvoorbeeld het nummer dat is gekoppeld aan de `clusterid` kardinaliteit van de query. 
 
    ```sql
    SELECT count(*)
@@ -86,7 +86,7 @@ In de volgende query `clusterid` is bijvoorbeeld het nummer dat is gekoppeld aan
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Om problemen te verhelpen die worden veroorzaakt door een hoge kardinaliteit in de vorige query, kunt u gebeurtenissen verzenden naar Event hub gepartitioneerd door `clusterid`en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp van de **partitie** , zoals wordt weer gegeven in het onderstaande voor beeld:
+Om problemen te verhelpen die worden veroorzaakt door een hoge kardinaliteit in de vorige query, kunt u gebeurtenissen verzenden naar Event hub gepartitioneerd door `clusterid` en de query uitschalen door het systeem toe te staan elke invoer partitie afzonderlijk te verwerken met behulp van de **partitie** , zoals wordt weer gegeven in het onderstaande voor beeld:
 
    ```sql
    SELECT count(*) 

@@ -4,19 +4,19 @@ description: Meer informatie over het vereisen van goedgekeurde client-apps voor
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a215e2bb7d9d1cf9013414037383590456296cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c9cd790edcb186ed2f80d467076512cd558ca40
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480892"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253389"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Procedure: goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang
 
@@ -41,37 +41,37 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 **Stap 1: beleid voor Android-en iOS-gebaseerde moderne authenticatie clients waarvoor het gebruik van een goedgekeurde client toepassing is vereist bij de toegang tot Exchange Online.**
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
-1. Onder **Cloud-apps of-acties** > **gaat**u naar **Office 365 (preview-versie)**.
+   1. Selecteer **Voltooid**.
+1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.
 1. Onder **voor waarden**selecteert u **client-apps (preview-versie)**.
    1. Stel **configureren** in op **Ja**.
    1. Selecteer **Mobiele apps en bureaubladclients** en **Clients met moderne verificatie**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
 **Stap 2: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online met ActiveSync (EAS)**
 
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
-1. Selecteer **Office 365 Exchange Online**onder **Cloud-apps of** > **-** acties.
+   1. Selecteer **Voltooid**.
+1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:
       1. Stel **configureren** in op **Ja**.
       1. Selecteer **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
@@ -88,37 +88,37 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 **Stap 1: beleid voor Android-en iOS-gebaseerde moderne authenticatie clients waarvoor het gebruik van een goedgekeurde client toepassing is vereist bij de toegang tot Exchange Online en share point online.**
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
-1. Onder **Cloud-apps of-acties** > **gaat**u naar **Office 365 Exchange Online** en **Office 365 share point online**.
+   1. Selecteer **Voltooid**.
+1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 Exchange Online** en **Office 365 share point online**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
    1. Voeg **Android** en **IOS**toe.
 1. Onder **voor waarden**selecteert u **client-apps (preview-versie)**.
    1. Stel **configureren** in op **Ja**.
    1. Selecteer **Mobiele apps en bureaubladclients** en **Clients met moderne verificatie**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 
 **Stap 2: beleid voor Exchange ActiveSync-clients waarvoor het gebruik van een goedgekeurde client-app is vereist.**
 
-1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
-1. Selecteer **Office 365 Exchange Online**onder **Cloud-apps of** > **-** acties.
+   1. Selecteer **Voltooid**.
+1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:
       1. Stel **configureren** in op **Ja**.
       1. Selecteer **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-1. Onder **toegangs beheer** > **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
+1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **goedgekeurde client-app vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
 

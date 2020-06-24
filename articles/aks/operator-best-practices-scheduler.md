@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126576"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704740"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor Basic scheduler-functies in azure Kubernetes service (AKS)
 
@@ -77,7 +77,7 @@ De onvrijwillige onderbrekingen kunnen worden verholpen door meerdere replica's 
 
 Als een cluster moet worden bijgewerkt of een implementatie sjabloon is bijgewerkt, zorgt de Kubernetes scheduler ervoor dat er meer peulen worden gepland op andere knoop punten voordat de vrijwillige onderbrekings gebeurtenissen kunnen door gaan. De scheduler wacht voordat een knoop punt opnieuw wordt opgestart totdat het gedefinieerde aantal peulen is gepland op andere knoop punten in het cluster.
 
-We bekijken een voor beeld van een replicaset met vijf peulen waarop NGINX wordt uitgevoerd. Het Peul in de replicaset wordt toegewezen aan het `app: nginx-frontend`label. Tijdens een vrijwillige onderbrekings gebeurtenis, zoals een cluster upgrade, wilt u er zeker van zijn dat er ten minste drie peulen worden uitgevoerd. Het volgende YAML-manifest voor een *PodDisruptionBudget* -object definieert deze vereisten:
+We bekijken een voor beeld van een replicaset met vijf peulen waarop NGINX wordt uitgevoerd. Het Peul in de replicaset wordt toegewezen aan het label `app: nginx-frontend` . Tijdens een vrijwillige onderbrekings gebeurtenis, zoals een cluster upgrade, wilt u er zeker van zijn dat er ten minste drie peulen worden uitgevoerd. Het volgende YAML-manifest voor een *PodDisruptionBudget* -object definieert deze vereisten:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -119,13 +119,13 @@ Zie voor meer informatie over het gebruik van pod-verstoringen budgetten [een on
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regel matig controleren op cluster problemen met uitvoeren-Advisor
 
-**Richt lijnen voor best practices** : Voer regel matig `kube-advisor` de meest recente versie van het hulp programma voor open source uit om problemen in uw cluster op te sporen. Als u resource quota toepast op een bestaand AKS-cluster, `kube-advisor` voert u eerst uit om een Peul te vinden waarvoor geen resource-aanvragen en-limieten zijn gedefinieerd.
+**Richt lijnen voor best practices** : Voer regel matig de meest recente versie van het `kube-advisor` hulp programma voor open source uit om problemen in uw cluster op te sporen. Als u resource quota toepast op een bestaand AKS-cluster, voert u `kube-advisor` eerst uit om een Peul te vinden waarvoor geen resource-aanvragen en-limieten zijn gedefinieerd.
 
 Het hulp programma [uitvoeren Advisor][kube-advisor] is een gekoppeld AKS open source-project waarmee een Kubernetes-cluster wordt gescand en rapporten worden gevonden over problemen die worden aangetroffen. Een nuttige controle is het identificeren van een Peul dat geen resource-aanvragen en limieten heeft.
 
 Het uitvoeren-hulp programma kan rapporteren over de resource aanvraag en limieten die ontbreken in PodSpecs voor Windows-toepassingen, evenals Linux-toepassingen, maar het hulp programma uitvoeren Advisor zelf moet op een Linux-pod worden gepland. U kunt een pod plannen om uit te voeren op een knooppunt groep met een specifiek besturings systeem met behulp van een [knooppunt kiezer][k8s-node-selector] in de configuratie van de pod.
 
-In een AKS-cluster dat meerdere ontwikkel teams en toepassingen host, kan het lastig zijn om het aantal te volgen zonder deze resource aanvragen en-limieten. Als best practice, die regel matig `kube-advisor` worden uitgevoerd op uw AKS-clusters, met name als u geen resource quota aan naam ruimten toewijst.
+In een AKS-cluster dat meerdere ontwikkel teams en toepassingen host, kan het lastig zijn om het aantal te volgen zonder deze resource aanvragen en-limieten. Als best practice, die regel matig worden uitgevoerd `kube-advisor` op uw AKS-clusters, met name als u geen resource quota aan naam ruimten toewijst.
 
 ## <a name="next-steps"></a>Volgende stappen
 

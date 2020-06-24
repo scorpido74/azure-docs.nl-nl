@@ -4,16 +4,16 @@ description: In dit artikel wordt de Azure-toepassing Standard_v2 en WAF_v2 SKU 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: df68bec859a3c2456dd1cf5f69387e8affb4b3e2
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484532"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254341"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -195,7 +195,7 @@ Een Azure PowerShell script is beschikbaar in de Power shell Gallery, waarmee u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstart: Webverkeer omleiden met Azure Application Gateway - Azure Portal](quick-create-portal.md)
+- [Quickstart: Webverkeer omleiden met Azure Application Gateway - Azure Portal](quick-create-portal.md)
 - [Een automatische schaling maken, een zone redundante toepassings gateway met een gereserveerd virtueel IP-adres met behulp van Azure PowerShell](tutorial-autoscale-ps.md)
 - Meer informatie over [Application Gateway](overview.md).
 - Meer informatie over [Azure firewall](../firewall/overview.md).

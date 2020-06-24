@@ -7,17 +7,17 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201863"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703890"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Een subnet delegering toevoegen of verwijderen
 
@@ -33,7 +33,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 In deze sectie maakt u een virtueel netwerk en het subnet dat u later delegeert aan een Azure-service.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource** > **netwerk** > **virtueel netwerk**maken.
+1. Selecteer in de linkerbovenhoek van het scherm **een resource**  >  **netwerk**  >  **virtueel netwerk**maken.
 1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
 
     | Instelling | Waarde |
@@ -50,7 +50,7 @@ In deze sectie maakt u een virtueel netwerk en het subnet dat u later delegeert 
 
 ### <a name="permissions"></a>Machtigingen
 
-Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de `Microsoft.Network/virtualNetworks/subnets/write`volgende machtiging nodig:.
+Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de volgende machtiging nodig: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 De ingebouwde rol [Network Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) bevat ook de benodigde machtigingen.
 
@@ -79,7 +79,7 @@ Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u vo
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 Maak een resourcegroep maken met [az group create](https://docs.microsoft.com/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam **myResourceGroup** gemaakt op de locatie **eastus** :
+In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroup** gemaakt op de locatie **eastus**:
 
 ```azurecli-interactive
 
@@ -103,7 +103,7 @@ Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/v
 ```
 ### <a name="permissions"></a>Machtigingen
 
-Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de `Microsoft.Network/virtualNetworks/subnets/write`volgende machtiging nodig:.
+Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de volgende machtiging nodig: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 De ingebouwde rol [Network Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) bevat ook de benodigde machtigingen.
 
@@ -186,14 +186,14 @@ De uitvoer van de opdracht is een lege beugel:
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 Maak een resourcegroep met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus
 ```
 ### <a name="create-virtual-network"></a>Virtueel netwerk maken
 
-Maak een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet** met behulp van [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) in de **MyResourceGroup** met behulp van [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). De IP-adres ruimte voor het virtuele netwerk is **10.0.0.0/16**. Het subnet in het virtuele netwerk is **10.0.0.0/24**.  
+Maak een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet** met behulp van [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) in de **myResourceGroup** met behulp van [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest). De IP-adres ruimte voor het virtuele netwerk is **10.0.0.0/16**. Het subnet in het virtuele netwerk is **10.0.0.0/24**.  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -202,7 +202,7 @@ Maak een virtueel netwerk met de naam **myVnet** met een subnet met de naam **my
 ```
 ### <a name="permissions"></a>Machtigingen
 
-Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de `Microsoft.Network/virtualNetworks/subnets/write`volgende machtiging nodig:.
+Als u het subnet dat u wilt delegeren aan een Azure-service niet hebt gemaakt, hebt u de volgende machtiging nodig: `Microsoft.Network/virtualNetworks/subnets/write` .
 
 De ingebouwde rol [Network Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) bevat ook de benodigde machtigingen.
 

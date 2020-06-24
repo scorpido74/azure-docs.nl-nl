@@ -1,6 +1,6 @@
 ---
 title: Geavanceerde gegevens beveiliging voor IaaS in Azure Security Center | Microsoft Docs
-description: " Meer informatie over het inschakelen van geavanceerde gegevens beveiliging voor IaaS in Azure Security Center. "
+description: Meer informatie over het inschakelen van geavanceerde gegevens beveiliging voor SQL-machines in Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,155 +11,127 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c269ad13072ae4dcff9caba892ccc0643647e5c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282729"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254162"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines (preview-versie)
-Geavanceerde gegevens beveiliging voor SQL-servers in azure Virtual Machines is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. Deze preview-functie bevat functionaliteit voor het identificeren en beperken van potentiële database problemen en het detecteren van afwijkende activiteiten die kunnen wijzen op bedreigingen voor uw data base. 
+# <a name="advanced-data-security-for-sql-machines-preview"></a>Geavanceerde gegevens beveiliging voor SQL-machines (preview-versie)
 
-Deze beveiligings aanbieding voor Azure Vm's SQL-servers is gebaseerd op dezelfde fundamentele technologie die wordt gebruikt in het [Azure SQL database geavanceerde gegevens beveiligings pakket](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
+De geavanceerde gegevens beveiliging van Azure Security Center voor SQL-machines beveiligt SQL-servers die worden gehost in azure, op andere Cloud omgevingen, en zelfs on-premises machines. Hiermee worden de beveiligingen voor uw Azure-systeem eigen SQL-servers uitgebreid om hybride omgevingen volledig te ondersteunen.
+
+Deze preview-functie bevat functionaliteit voor het identificeren en beperken van potentiële database problemen en het detecteren van afwijkende activiteiten die kunnen wijzen op bedreigingen voor uw Data Base: 
+
+* **Beoordeling van beveiligings** problemen: de scan service om mogelijke beveiligings problemen met een Data Base op te sporen, op te sporen en te helpen oplossen. Evaluatie scans bieden een overzicht van de beveiligings status van uw SQL-machines en Details van eventuele beveiligings resultaten.
+
+* [Advanced Threat Protection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) : de detectie service die CONTINU uw SQL-servers bewaakt voor bedreigingen, zoals SQL-injectie, brute-force aanvallen en misbruik van bevoegdheden. Deze service biedt actie gerichte beveiligings waarschuwingen in Azure Security Center met details van de verdachte activiteit, richt lijnen voor het oplossen van problemen met de bedreigingen en opties voor het voortzetten van uw onderzoeken met Azure Sentinel.
+
+>[!TIP]
+> Geavanceerde gegevens beveiliging voor SQL-machines is een uitbrei ding van het [geavanceerde gegevens beveiligings pakket](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)van Azure Security Center, dat al beschikbaar is voor Azure SQL-data bases, Synapse en SQL Managed instances.
 
 
-## <a name="overview"></a>Overzicht
+## <a name="set-up-advanced-data-security-for-sql-machines"></a>Geavanceerde gegevens beveiliging instellen voor SQL-machines 
 
-Geavanceerde gegevens beveiliging biedt een aantal geavanceerde SQL-beveiligings mogelijkheden, bestaande uit evaluatie van beveiligings problemen en geavanceerde beveiliging tegen bedreigingen.
+Het instellen van de geavanceerde gegevens beveiliging van Azure Security Center voor SQL-machines omvat twee stappen:
 
-* [Evaluatie van beveiligings problemen](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is een eenvoudig te configureren service waarmee u mogelijke beveiligings problemen met een Data Base kunt detecteren, bijhouden en helpen oplossen. Het biedt inzicht in de beveiligings status en bevat de stappen voor het oplossen van beveiligings problemen en het uitbreiden van uw data base-Fortifications.
-* [Geavanceerde bedreigingen beveiliging](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw SQL-Server of deze misbruiken. Het controleert uw data base voortdurend op verdachte activiteiten en biedt actie gerichte beveiligings waarschuwingen voor afwijkende database toegangs patronen. Deze waarschuwingen bieden informatie over verdachte activiteiten en aanbevolen acties voor het onderzoeken en oplossen van de dreiging.
+* Richt de Log Analytics-agent in op de host van uw SQL-Server. Dit geeft de verbinding met Azure.
 
-## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Aan de slag met geavanceerde gegevens beveiliging voor SQL op virtuele machines van Azure
+* Schakel de optionele bundel in op de pagina prijzen en instellingen van Security Center.
 
-Met de volgende stappen kunt u aan de slag met geavanceerde gegevens beveiliging voor SQL op de open bare preview van Azure Vm's.
+Beide worden hieronder beschreven.
 
-### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Geavanceerde gegevens beveiliging instellen voor SQL op virtuele Azure-machines
+### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Stap 1. Richt de Log Analytics-agent in op de host van uw SQL-Server:
 
-Geavanceerde gegevens beveiliging inschakelen voor SQL-servers op Virtual Machines op het niveau van het abonnement/de werk ruimte:
- 
+- **SQL Server op de Azure-VM** : als uw SQL-machine wordt gehost op een Azure-VM, kunt u [de log Analytics agent automatisch inrichten](security-center-enable-data-collection.md#workspace-configuration). U kunt ook de hand matige procedure voor het [toevoegen van een virtuele machine van Azure](quick-onboard-azure-stack.md#add-the-virtual-machine-extension-to-your-existing-azure-stack-virtual-machines)volgen.
+
+- **SQL Server op Azure Arc** : als uw SQL Server wordt gehost op een [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -computer, kunt u de log Analytics agent implementeren met behulp van de Security Center aanbeveling ' Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-computers (preview) '. U kunt ook de hand matige procedure volgen in de [Azure Arc-documentatie](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
+
+- **SQL Server on-premises** : als uw SQL Server wordt gehost op een on-premises Windows-machine zonder Azure Arc, hebt u twee opties om deze te verbinden met Azure:
+    
+    - **Azure-Arc implementeren** : u kunt een Windows-machine verbinden met Security Center. Azure Arc biedt echter een diep gaande integratie in *al* uw Azure-omgeving. Als u Azure Arc hebt ingesteld, ziet u de pagina **SQL Server – Azure Arc** in de portal en worden uw beveiligings waarschuwingen weer gegeven op een specifiek tabblad **beveiliging** op die pagina. De eerste en aanbevolen optie is om [Azure Arc op de host in te stellen](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows) en de instructies voor **SQL Server op Azure Arc**te volgen.
+        
+    - **De Windows-machine verbinden zonder Azure Arc** : als u ervoor kiest om verbinding te maken met een SQL Server die wordt uitgevoerd op een Windows-computer zonder Azure Arc te gebruiken, volgt u de instructies in [Windows-computers verbinden met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+
+
+### <a name="step-2-enable-the-optional-bundle-in-security-centers-pricing-and-settings-page"></a>Stap 2. Schakel de optionele bundel in op de pagina prijzen en instellingen van Security Center:
+
 1. Open op de zijbalk van Security Center de pagina **prijzen &-instellingen** .
 
-1. Selecteer het abonnement of de werk ruimte waarvoor u geavanceerde gegevens beveiliging wilt inschakelen voor SQL op Azure-Vm's.
+    - Als u de **standaard werkruimte van Azure Security Center** gebruikt (met de naam ' defaultworkspace-[uw abonnement-id]-[regio] '), selecteert u het relevante **abonnement**.
 
-1. Schakel de optie voor **SQL-servers in VM (preview)** in op ingeschakeld. 
+    - Als u **een niet-standaard werk ruimte**gebruikt, selecteert u de relevante **werk ruimte** (Voer indien nodig de naam van de werk ruimte in het filter in):
 
-    (Klik op de scherm opname om uit te vouwen)
-
-    [![Aanbevelingen en waarschuwingen Security Center zoals weer gegeven in het Windows-beheer centrum](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
-
-    Geavanceerde gegevens beveiliging voor SQL-servers wordt ingeschakeld op alle SQL-servers die zijn verbonden met de geselecteerde werk ruimte of de standaard werkruimte van het geselecteerde abonnement.
-
-    >[!NOTE]
-    > De oplossing is volledig actief na de eerste keer opnieuw opstarten van de SQL Server. 
-
-Als u een nieuwe werk ruimte wilt maken, volgt u de instructies in [een log Analytics-werk ruimte maken](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
-
-Als u de host van de SQL Server wilt verbinden met een werk ruimte, volgt u de instructies in [Windows-computers verbinden met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+        ![titel](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
 
-## <a name="set-up-email-notification-for-security-alerts"></a>E-mail meldingen instellen voor beveiligings waarschuwingen 
+1. Schakel de optie voor **SQL-servers op computers (preview)** in op ingeschakeld. 
 
-U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wanneer Security Center waarschuwingen worden gegenereerd. Het e-mail bericht bevat een directe koppeling naar de waarschuwing in Azure Security Center met alle relevante informatie. 
+    [![Security Center prijs pagina met optionele bundels](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-1. Ga naar **Security Center** > **prijzen & instellingen** en klik op het betreffende abonnement
+    Geavanceerde gegevens beveiliging voor SQL-servers op machines wordt ingeschakeld op alle SQL-servers die zijn verbonden met de geselecteerde werk ruimte. De beveiliging is volledig actief na de eerste keer opnieuw opstarten van de SQL Server. 
 
-    ![Abonnements instellingen](./media/security-center-advanced-iaas-data/subscription-settings.png)
+    >[!TIP] 
+    > Als u een nieuwe werk ruimte wilt maken, volgt u de instructies in [een log Analytics-werk ruimte maken](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-1. Klik in het menu instellingen op **e-mail meldingen**. 
-1. Voer in het tekstvak **e-mail adres** de e-mail adressen in om de meldingen te ontvangen. U kunt meer dan één e-mail adres invoeren door de e-mail adressen te scheiden door een komma (,).  Bijvoorbeeld admin1@mycompany.comadmin2@mycompany.com,admin3@mycompany.com
 
-    ![E-mailinstellingen](./media/security-center-advanced-iaas-data/email-settings.png)
+1. U kunt ook e-mail meldingen configureren voor beveiligings waarschuwingen. 
+    U kunt een lijst met ontvangers instellen om een e-mail melding te ontvangen wanneer Security Center waarschuwingen worden gegenereerd. Het e-mail bericht bevat een directe koppeling naar de waarschuwing in Azure Security Center met alle relevante informatie. Zie [e-mail meldingen instellen voor beveiligings waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)voor meer informatie.
 
-1. Stel in de instellingen voor **e-mail meldingen** de volgende opties in:
-  
-    * **E-mail melding verzenden voor waarschuwingen met hoge urgentie**: in plaats van e-mail verzenden voor alle waarschuwingen, verzendt u alleen voor waarschuwingen met hoge urgentie.
-    * **Ook e-mail meldingen verzenden naar abonnements eigenaren**: verzend meldingen naar de eigen aars van de abonnementen.
 
-1. Klik boven in het scherm met **e-mail meldingen** op **Opslaan**.
-
-  > [!NOTE]
-  > Zorg ervoor dat u op **Opslaan** klikt voordat u het venster sluit of de nieuwe instellingen voor **e-mail meldingen** worden niet opgeslagen.
 
 ## <a name="explore-vulnerability-assessment-reports"></a>Rapporten van evaluatie van beveiligings problemen verkennen
 
-Het dash board evaluatie van beveiligings problemen biedt een overzicht van de resultaten van de evaluatie in al uw data bases. U kunt de distributie van data bases weer geven op basis van SQL Server versie, samen met een samen vatting van fouten versus het door geven van data bases en een algehele samen vatting van mislukte controles volgens risico distributie.
+De service voor evaluatie van beveiligings problemen scant uw data bases eenmaal per week. De scans worden uitgevoerd op dezelfde dag van de week waarop u de service hebt ingeschakeld.
+
+Het dash board evaluatie van beveiligings problemen biedt een overzicht van de evaluatie resultaten voor al uw data bases, samen met een samen vatting van gezonde en beschadigde data bases en een algehele samen vatting van mislukte controles volgens risico distributie.
 
 U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks vanuit Security Center weer geven.
 
-1. Selecteer op de zijbalk van Security Center onder RESOURCE SECURITY-hygiëne **gegevens & opslag**.
+1. Open de pagina **aanbevelingen** vanuit de zijbalk van Security Center en selecteer de aanbevolen **beveiligings problemen op uw SQL database servers op computers moeten worden hersteld (preview)**. Zie [Security Center-aanbevelingen](security-center-recommendations.md)voor meer informatie. 
 
-1. Selecteer de aanbevolen **beveiligings problemen voor uw SQL-data bases in vm's moeten worden hersteld (preview-versie)**. Zie [Security Center-aanbevelingen](security-center-recommendations.md)voor meer informatie. 
 
-    [![* * Beveiligings problemen voor uw SQL-data bases in Vm's moeten worden hersteld (preview) * * Recommendation](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
+    [![* * Beveiligings problemen voor uw SQL-data bases op computers moeten worden hersteld (preview-versie) * * aanbeveling](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
     De gedetailleerde weer gave voor deze aanbeveling wordt weer gegeven.
 
-    [![Gedetailleerde weer gave voor de * * beveiligings problemen voor uw SQL-data bases in Vm's moet worden hersteld (preview) * * Recommendation](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
+    [![Gedetailleerde weer gave voor de * * beveiligings problemen voor uw SQL-data bases op computers moeten worden hersteld (preview) * * Recommendation](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-1. Meer informatie over inzoomen:
+1. Voor meer informatie, inzoomen:
 
-    * Voor een overzicht van gescande resources (data bases) en de lijst met beveiligings controles die zijn getest, klikt u op de server van belang.
-    [![Beveiligings problemen gegroepeerd op SQL Server](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
+    * Selecteer de gewenste server voor een overzicht van gescande resources (data bases) en de lijst met beveiligings controles die zijn getest.
 
-    * Voor een overzicht van de beveiligings problemen gegroepeerd op een specifieke SQL database, klikt u op de gewenste data base.
-    [![Beveiligings problemen gegroepeerd op SQL Server](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
+    * Selecteer de gewenste Data Base voor een overzicht van de beveiligings problemen die zijn gegroepeerd op een specifieke SQL database.
 
     In elke weer gave worden de beveiligings controles gesorteerd op **Ernst**. Klik op een specifieke beveiligings controle om het deel venster Details te bekijken met een **Beschrijving**, het probleem te **verhelpen** en andere gerelateerde informatie, zoals **impact** of **Bench Mark**.
 
-## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Geavanceerde bedreigings beveiliging voor SQL-servers op Azure Vm's-waarschuwingen
-Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om SQL-servers te openen of misbruik te maken. Deze gebeurtenissen kunnen de volgende waarschuwingen activeren:
+## <a name="advanced-threat-protection-for-sql-servers-on-machines-alerts"></a>Waarschuwingen voor Advanced Threat Protection voor SQL-servers op computers
+Waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om SQL-machines te openen of misbruik te maken. Deze gebeurtenissen kunnen waarschuwingen activeren die worden weer gegeven in de [sectie waarschuwingen voor SQL database en SQL Data Warehouse van de pagina waarschuwings referentie](alerts-reference.md#alerts-sql-db-and-warehouse).
 
-### <a name="anomalous-access-pattern-alerts-preview"></a>Waarschuwingen voor afwijkende toegangs patronen (preview-versie)
-
-* **Toegang vanaf ongebruikelijke locatie:** Deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangs patroon voor SQL Server, waarbij iemand zich vanaf een ongebruikelijke geografische locatie heeft aangemeld bij de SQL-Server. Mogelijke oorzaken:
-    * Een aanvaller of voormalig kwaad aardig gebruik heeft toegang verkregen tot uw SQL Server.
-    * Een rechtmatige gebruiker heeft uw SQL Server vanaf een nieuwe locatie geopend.
-* **Toegang tot een toepassing die mogelijk schadelijk is**: deze waarschuwing wordt geactiveerd wanneer een mogelijk schadelijke toepassing wordt gebruikt voor toegang tot de database. Mogelijke oorzaken:
-    * Een aanvaller probeert uw SQL te schenden met behulp van gang bare hulpprogram ma's voor aanvallen.
-    * Een rechtmatige indringings test in actie.
-* **Toegang vanaf ongebruikelijke klant**: deze waarschuwing wordt geactiveerd wanneer er een wijziging is in het toegangspatroon tot de SQL-server, waarbij iemand zich vanuit een ongebruikelijke klant (SQL-gebruiker) heeft aangemeld bij de SQL-server. Mogelijke oorzaken:
-    * Een aanvaller of voormalig kwaad aardig gebruik heeft toegang verkregen tot uw SQL Server. 
-    * Een rechtmatige gebruiker heeft uw SQL Server geopend vanuit een nieuwe principal.
-* **Brute Force SQL-referenties**: deze waarschuwing wordt geactiveerd wanneer er een abnormaal groot aantal mislukte aanmeldingen met andere referenties is. Mogelijke oorzaken:
-    * Een aanvaller probeert uw SQL te schenden met behulp van een brute kracht.
-    * Een rechtmatige indringings test in actie.
-
-### <a name="potential-sql-injection-attacks-supported-in-sql-server-2019"></a>Potentiële SQL-injectie aanvallen (ondersteund in SQL Server 2019)
-
-* **Beveiligings probleem met SQL-injectie**: deze waarschuwing wordt geactiveerd wanneer een toepassing een mislukte SQL-instructie in de data base genereert. Deze waarschuwing kan duiden op een mogelijk beveiligingsprobleem met SQL-injectieaanvallen. Mogelijke oorzaken:
-    * Een fout in de toepassingscode die de foutieve SQL-instructie maakt
-    * Toepassingscode of opgeslagen procedures schonen gebruikersinvoer niet op tijdens het construeren van de foutieve SQL-instructie, dit kan worden misbruikt voor SQL-injectie
-* **Mogelijke SQL-injectie**: deze waarschuwing wordt geactiveerd wanneer een actieve aanval wordt uitgevoerd tegen een geïdentificeerd beveiligingslek voor SQL-injectie in een toepassing. Dit betekent dat de aanvaller schadelijke SQL-instructies probeert te injecteren met de kwetsbare toepassingscode of opgeslagen procedures.
-
-
-### <a name="unsafe-command-supported-in-sql-server-2019"></a>Onveilige opdracht (ondersteund in SQL Server 2019)
-
-* **Mogelijk onveilige actie**: deze waarschuwing wordt geactiveerd wanneer een zeer bevoegde en mogelijk onveilige opdracht wordt uitgevoerd. Mogelijke oorzaken:
-    * De opdracht die moet worden uitgeschakeld voor betere beveiliging postuur is ingeschakeld.
-    * Een aanvaller probeert SQL Access te gebruiken of bevoegdheden te escaleren.   
 
 
 ## <a name="explore-and-investigate-security-alerts"></a>Beveiligings waarschuwingen verkennen en onderzoeken
 
-Uw gegevens beveiligings waarschuwingen zijn beschikbaar op de pagina waarschuwingen van Security Center, het tabblad Beveiliging van de resource of via de directe koppeling in de e-mail berichten met waarschuwingen.
+Beveiligings waarschuwingen zijn beschikbaar op de pagina waarschuwingen van Security Center, het tabblad Beveiliging van de resource of via de directe koppeling in de e-mail waarschuwingen.
 
-1. Ga als volgt te werk als u waarschuwingen wilt weergeven:
-
-    * In Security Center klikt u op **beveiligings waarschuwingen** in de zijbalk en selecteert u een waarschuwing.
-    * Open in het resource bereik de relevante resource pagina en klik op de zijbalk op **beveiliging**. 
+1. Als u waarschuwingen wilt weer geven, selecteert u **beveiligings waarschuwingen** op de zijbalk van Security Center en selecteert u een waarschuwing.
 
 1. Waarschuwingen zijn zodanig ontworpen dat ze zich op zichzelf bevinden, met gedetailleerde stappen voor herbemiddeling en informatie over onderzoek. U kunt verder onderzoeken door andere Azure Security Center en Azure-Sentinel-mogelijkheden te gebruiken voor een bredere weer gave:
 
-    * Schakel de controle functie van SQL Server in voor verdere onderzoeken. Als u een Azure Sentinel-gebruiker bent, kunt u de SQL-controle logboeken uploaden van de gebeurtenissen van het Windows-beveiligings logboek naar Sentinel en een rijke onderzoek ervaring hebben.
+    * Schakel de controle functie van SQL Server in voor verdere onderzoeken. Als u een Azure Sentinel-gebruiker bent, kunt u de SQL-controle logboeken uploaden van de gebeurtenissen van het Windows-beveiligings logboek naar Sentinel en een rijke onderzoek ervaring hebben. [Meer informatie over het controleren van SQL Server](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15).
     * Gebruik de aanbevelingen van Security Center voor de hostmachine die in elke waarschuwing worden aangegeven om uw beveiligings postuur te verbeteren. Hierdoor worden de Risico's van toekomstige aanvallen verminderd. 
+
+    Meer [informatie over het beheren van en reageren op waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie het volgende artikel voor verwante materialen:
 
-- [Aanbevelingen herstellen](security-center-remediate-recommendations.md)
+- [Beveiligings waarschuwingen voor SQL Database en SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [E-mail meldingen instellen voor beveiligings waarschuwingen](security-center-provide-security-contact-details.md)
+- [Meer informatie over Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
+- [Geavanceerde gegevens beveiligings pakket van Azure Security Center](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

@@ -4,15 +4,16 @@ description: Problemen met Azure Synapse Studio oplossen
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20978a6389c790575fa26258c4468f891af733ff
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431317"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211456"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Problemen met Azure Synapse Studio (preview) oplossen
 
@@ -99,4 +100,4 @@ Bepaalde browsers ondersteunen het weer geven van tijds tempels op het tabblad '
 ![tijds tempel weer geven](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Als de vorige stappen niet helpen bij het oplossen van het probleem, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Als de vorige stappen niet helpen om uw probleem op te lossen, [maakt u een ondersteunings ticket](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

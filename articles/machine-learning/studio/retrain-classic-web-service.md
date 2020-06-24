@@ -5,17 +5,17 @@ description: Meer informatie over het opnieuw trainen van een model en het bijwe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 877697893b377007c812def00858b7300356f5e4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 659011a13be310512ace68d2e020eaebff9a10ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117772"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706032"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Een klassieke studio-webservice (klassiek) opnieuw trainen en implementeren
 
@@ -46,7 +46,7 @@ U kunt Score-eind punten toevoegen met behulp van de voorbeeld code die in deze 
 
 1. Klik in Machine Learning Studio (klassiek) in de linker navigatie kolom op Web Services.
 1. Klik onder aan het dash board van de webservice op **voor beeld van eind punten beheren**.
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 1. Typ een naam en beschrijving voor het nieuwe eind punt. Selecteer het logboek registratie niveau en of voorbeeld gegevens zijn ingeschakeld. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
 
 ## <a name="update-the-added-endpoints-trained-model"></a>Het getrainde model van het toegevoegde eind punt bijwerken

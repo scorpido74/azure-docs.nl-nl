@@ -4,19 +4,19 @@ description: Meer informatie over het toewijzen van Azure-rollen aan de lokale g
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128882"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253083"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe de update van het lidmaatschap werkt en hoe u
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
-Wanneer u een Windows-apparaat met Azure AD verbindt met een Azure AD-deelname, voegt Azure AD de volgende beveiligings principes toe aan de lokale groep Administrators op het apparaat:
+Wanneer u een Windows-apparaat met Azure AD verbindt met een Azure AD-deelname, voegt Azure AD de volgende beveiligings-principals toe aan de lokale groep Administrators op het apparaat:
 
 - De rol van de globale beheerder van Azure AD
 - De rol van Azure AD-Apparaatbeheer 
@@ -79,7 +79,7 @@ Vanaf de **Windows 10 1709** -release kunt u deze taak uitvoeren vanuit **instel
  
 Daarnaast kunt u ook gebruikers toevoegen met behulp van de opdracht prompt:
 
-- Als uw Tenant gebruikers zijn gesynchroniseerd vanuit een on-premises Active Directory `net localgroup administrators /add "Contoso\username"`, gebruikt u.
+- Als uw Tenant gebruikers zijn gesynchroniseerd vanuit een on-premises Active Directory, gebruikt u `net localgroup administrators /add "Contoso\username"` .
 - Als uw Tenant gebruikers zijn gemaakt in azure AD, gebruikt u`net localgroup administrators /add "AzureAD\UserUpn"`
 
 ## <a name="considerations"></a>Overwegingen 

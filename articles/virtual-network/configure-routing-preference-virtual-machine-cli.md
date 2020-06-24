@@ -7,17 +7,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 59583d6d9e643c7b3f4c86198da04bde6b2db324
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d5ea44e7059ae01204dbafd454c187e10f85e4e8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598183"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707545"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Routerings voorkeur configureren voor een virtuele machine met behulp van Azure CLI
 
@@ -27,7 +27,7 @@ In dit artikel wordt beschreven hoe u een virtuele machine maakt met een openbaa
 
 > [!IMPORTANT]
 > De voor keuren voor route ring is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="register-the-feature-for-your-subscription"></a>De functie voor uw abonnement registreren
 De functie voor route ring is momenteel beschikbaar als preview-versie. Registreer de functie voor uw abonnement als volgt:
@@ -73,7 +73,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak een virtueel netwerk met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVNET* met subnetten *mySubNet*:
+Maak een virtueel netwerk met [AZ Network vnet Create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVNET* met subnetten *mySubNet*:
 
 ```azurecli
 # Create a virtual network
@@ -109,7 +109,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-Maak een VM met [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). In het volgende voor beeld worden een Windows Server 2019-VM en de vereiste onderdelen van het virtuele netwerk gemaakt als deze nog niet bestaan.
+Maak een virtuele machine met [AZ VM Create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create). In het volgende voor beeld worden een Windows Server 2019-VM en de vereiste onderdelen van het virtuele netwerk gemaakt als deze nog niet bestaan.
 
 ```azurecli
 az vm create \

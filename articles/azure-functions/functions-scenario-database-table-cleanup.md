@@ -4,12 +4,12 @@ description: Gebruik Azure Functions om een taak te plannen die verbinding maakt
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 18e310559cb0b88aac53b1020172847968616f97
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020333"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254273"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions gebruiken om verbinding te maken met een Azure SQL Database
 
@@ -21,13 +21,13 @@ Als dit uw eerste ervaring voor het werken met C#-functies is, moet u de [Azure 
 
 + Volg de stappen in het artikel [uw eerste functie maken met Visual Studio](functions-create-your-first-function-visual-studio.md) om een lokale functie-app te maken die is gericht op versie 2. x of een latere versie van de runtime. U moet uw project ook hebben gepubliceerd naar een functie-app in Azure.
 
-+ In dit artikel wordt een Transact-SQL-opdracht beschreven waarmee een bulksgewijze opschoning bewerking wordt uitgevoerd in de tabel **SalesOrderHeader** in de voorbeeld database AdventureWorksLT. Als u de voorbeeld database AdventureWorksLT wilt maken, voert u de stappen in het artikel [een Azure-SQL database maken in de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
++ In dit artikel wordt een Transact-SQL-opdracht beschreven waarmee een bulksgewijze opschoning bewerking wordt uitgevoerd in de tabel **SalesOrderHeader** in de voorbeeld database AdventureWorksLT. Als u de voorbeeld database AdventureWorksLT wilt maken, voert u de stappen in het artikel [een Data Base maken in Azure SQL database met behulp van de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-+ U moet een [firewall regel op server niveau](../sql-database/sql-database-get-started-portal-firewall.md) toevoegen voor het open bare IP-adres van de computer die u voor deze Quick Start gebruikt. Deze regel is vereist om toegang te krijgen tot het SQL database exemplaar vanaf uw lokale computer.  
++ U moet een [firewall regel op server niveau](../sql-database/sql-database-get-started-portal-firewall.md) toevoegen voor het open bare IP-adres van de computer die u voor deze Quick Start gebruikt. Deze regel is vereist om toegang te krijgen tot het SQL Database exemplaar vanaf uw lokale computer.  
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 
-U moet de connection string ophalen voor de data base die u hebt gemaakt tijdens [het maken van een Azure-SQL database in de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
+U moet de connection string ophalen voor de data base die u hebt gemaakt tijdens het [maken van een data base in Azure SQL database met behulp van de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -51,11 +51,11 @@ U moet uw app eerder hebben gepubliceerd naar Azure. Als u dit nog niet hebt ged
 
     ![SQL connection string-instelling toevoegen.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
-    De verbindings reeksen worden in azure (**extern**) opgeslagen. Om lekkage van geheimen te voor komen, moet het bestand local. settings. json project (**lokaal**) worden uitgesloten van broncode beheer, zoals met behulp van een. gitignore-bestand.
+    De verbindings reeksen worden in azure (**extern**) opgeslagen. Om lekkage van geheimen te voor komen, moet de local.settings.jsop het project bestand (**lokaal**) worden uitgesloten van broncode beheer, zoals met behulp van een. gitignore-bestand.
 
 ## <a name="add-the-sqlclient-package-to-the-project"></a>Het SqlClient-pakket toevoegen aan het project
 
-U moet het NuGet-pakket met de SqlClient-bibliotheek toevoegen. Deze Data Access-bibliotheek is nodig om verbinding te maken met een SQL database.
+U moet het NuGet-pakket met de SqlClient-bibliotheek toevoegen. Deze Data Access-bibliotheek is vereist om verbinding te maken met SQL Database.
 
 1. Open uw lokale functie-app-project in Visual Studio 2019.
 

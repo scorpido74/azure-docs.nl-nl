@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195346"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706168"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters
 
@@ -39,9 +39,9 @@ Maak een door de gebruiker toegewezen beheerde identiteit als u deze nog niet he
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ door de **gebruiker toegewezen** in het zoekvak en klik op door de **gebruiker toegewezen beheerde identiteit**.
-1. Klik op **maken**.
+1. Klik op **Create**.
 1. Voer een naam in voor uw beheerde identiteit, selecteer het juiste abonnement, de resource groep en de locatie.
-1. Klik op **maken**.
+1. Klik op **Create**.
 
 Zie [beheerde identiteiten in azure hdinsight](hdinsight-managed-identities.md)voor meer informatie over de werking van beheerde identiteiten in azure hdinsight.
 
@@ -54,14 +54,14 @@ Een Azure Data Lake Storage Gen2-opslagaccount maken.
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Klik linksboven op **een resource maken**.
 1. Typ **opslag** in het zoekvak en klik op **opslag account**.
-1. Klik op **maken**.
+1. Klik op **Create**.
 1. In het scherm **opslag account maken** :
     1. Selecteer de juiste abonnement en resource groep.
     1. Voer een naam in voor uw Data Lake Storage Gen2-account.
     1. Klik op het tabblad **Geavanceerd** .
     1. Klik op **ingeschakeld** naast **hiërarchische naam ruimte** onder **Data Lake Storage Gen2**.
     1. Klik op **Controleren + maken**.
-    1. Klik op **maken**
+    1. Klik op **Maken**.
 
 Zie [Quick Start: een Azure data Lake Storage Gen2 Storage-account maken](../storage/blobs/data-lake-storage-quickstart-create-account.md)voor meer informatie over andere opties tijdens het maken van een opslag account.
 
@@ -100,7 +100,7 @@ Wijs de beheerde identiteit toe aan de rol van de eigenaar van de **opslag-BLOB*
 
 U kunt [een voorbeeld sjabloon bestand downloaden](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) en [een voor beeld-parameter bestand downloaden](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json). Voordat u de sjabloon en het Azure CLI-code fragment hieronder gebruikt, vervangt u de volgende tijdelijke aanduidingen door de juiste waarden:
 
-| Tijdelijke aanduiding | Beschrijving |
+| Tijdelijke aanduiding | Description |
 |---|---|
 | `<SUBSCRIPTION_ID>` | De ID van uw Azure-abonnement |
 | `<RESOURCEGROUPNAME>` | De resource groep waar u het nieuwe cluster en opslag account wilt maken. |
@@ -116,7 +116,7 @@ In het onderstaande code fragment worden de volgende eerste stappen uitgevoerd:
 1. Hiermee maakt u een nieuwe resource groep voor de nieuwe implementatie activiteiten.
 1. Hiermee maakt u een door de gebruiker toegewezen beheerde identiteit.
 1. Hiermee wordt een extensie toegevoegd aan de Azure CLI om functies voor Data Lake Storage Gen2 te gebruiken.
-1. Hiermee maakt u een nieuw Data Lake Storage Gen2-account `--hierarchical-namespace true` met behulp van de vlag.
+1. Hiermee maakt u een nieuw Data Lake Storage Gen2-account met behulp van de `--hierarchical-namespace true` vlag.
 
 ```azurecli
 az login
@@ -169,7 +169,7 @@ De mogelijkheid van uw HDInsight-cluster voor toegang tot bestanden in Data Lake
 
 Azure-Services hebben twee typen beheerde identiteiten: systeem toegewezen en door de gebruiker toegewezen. HDInsight maakt gebruik van door de gebruiker toegewezen beheerde identiteiten voor toegang tot Data Lake Storage Gen2. A `user-assigned managed identity` wordt gemaakt als een zelfstandige Azure-resource. Via een productieproces maakt Azure een identiteit in de Azure AD-tenant, die wordt vertrouwd door het gebruikte abonnement. Nadat de identiteit is gemaakt, kan deze worden toegewezen aan een of meer Azure-service-exemplaren.
 
-De levenscyclus van een door de gebruiker toegewezen identiteit wordt afzonderlijk beheerd van de levenscyclus van de Azure Service-exemplaren waaraan de identiteit is toegewezen. Zie [Hoe worden de beheerde identiteiten voor Azure-resources gewerkt?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)voor meer informatie over beheerde identiteiten.
+De levenscyclus van een door de gebruiker toegewezen identiteit wordt afzonderlijk beheerd van de levenscyclus van de Azure Service-exemplaren waaraan de identiteit is toegewezen. Zie [Wat zijn beheerde identiteiten voor Azure-resources?](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten.
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>Hoe kan ik machtigingen instellen voor Azure AD-gebruikers om gegevens op te vragen in Data Lake Storage Gen2 met behulp van Hive of andere services?
 
@@ -235,7 +235,7 @@ Voor beelden zijn gebaseerd op een [SSH-verbinding](./hdinsight-hadoop-linux-use
 
 #### <a name="creating-a-hive-table"></a>Een Hive-tabel maken
 
-Er worden drie bestands locaties weer gegeven voor illustratie doeleinden. Gebruik slechts één van de `LOCATION` vermeldingen voor daad werkelijke uitvoering.
+Er worden drie bestands locaties weer gegeven voor illustratie doeleinden. Gebruik slechts één van de vermeldingen voor daad werkelijke uitvoering `LOCATION` .
 
 ```hql
 DROP TABLE myTable;
@@ -258,4 +258,4 @@ LOCATION '/example/data/';
 
 * [Integratie van Azure HDInsight met Data Lake Storage Gen2-voor beeld-ACL en beveiligings update](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Inleiding tot Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)
-* [Zelf studie: gegevens uitpakken, transformeren en laden met interactieve Query's in azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Zelfstudie: Gegevens extraheren, transformeren en laden met Interactive Query in Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

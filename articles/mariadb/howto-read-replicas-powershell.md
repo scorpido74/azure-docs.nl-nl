@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 5/26/2020
-ms.openlocfilehash: 4854518d77ca3eb0c978a0ca3462535e17ad3fcd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 6/10/2020
+ms.openlocfilehash: 0280d69dc552b776457ff28d19968f6494a846ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052030"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707943"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van Power shell
 
@@ -29,8 +29,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de Power shell-module AZ. MariaDb in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
-> Zodra de Power shell-module AZ. MariaDb algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.MariaDb in preview is, moet u deze afzonderlijk van de Az-module van PowerShell installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
+> Zodra de PowerShell-module Az.MariaDb algemeen beschikbaar is, wordt het onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
@@ -40,6 +40,9 @@ Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account
 > De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
 
 ### <a name="create-a-read-replica"></a>Een lees replica maken
+
+> [!IMPORTANT]
+> Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
@@ -53,7 +56,7 @@ Voor de `New-AzMariaDbServerReplica` opdracht zijn de volgende para meters verei
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
-| Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
 

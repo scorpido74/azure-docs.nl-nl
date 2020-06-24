@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329583"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743147"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Activiteiten en controle geschiedenis voor Azure-resource rollen in Privileged Identity Management weer geven
 
@@ -88,7 +88,7 @@ Resource controle geeft u een overzicht van alle functie activiteiten voor een r
 
 1. Selecteer **activeren (toegewezen + geactiveerd)** bij **controle type**.
 
-    [![Resource audit lijst gefilterd door audit type](media/azure-pim-resource-rbac/rbac-audit-activity.png "Resource audit lijst gefilterd op Activate")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![resource controle lijst te activeren, gefilterd op controle type activeren](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    [![Resource audit lijst gefilterd op controle type activeren](media/azure-pim-resource-rbac/rbac-audit-activity.png "Resource audit lijst gefilterd op Activate")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![ Resource controle lijst die wordt gefilterd door audit type activeren](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. Klik onder **actie**op **(activiteit)** voor een gebruiker om de activiteit Details van die gebruiker in azure-resources te bekijken.
 

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: reference
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: d69f9c8cf24cbab154aa5c91fe194edbc8f21d58
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8914f081196c41dccf3acbed9cf87bd63df8b92c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696759"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193954"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Ondersteunde taal-en runtime versies voor Apache Spark en afhankelijke onderdelen  
 
@@ -1252,5 +1252,5 @@ zlib = = 1.2.8
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Documentatie over Apache Spark](https://spark.apache.org/docs/2.4.4/)
+- [Documentatie voor Apache Spark](https://spark.apache.org/docs/2.4.4/)
 - [Apache Spark concepten](apache-spark-concepts.md)

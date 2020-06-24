@@ -4,26 +4,26 @@ description: Een hostgroep in Windows Virtual Desktop maken met Power shell-cmdl
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c9c9a7d1845875fd80471ad2380a1ec7933cfb3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6b064c6e4107da5695e2a9945240e4276ac795b8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607666"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211847"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan worden gekoppeld aan meerdere RemoteApp-groepen, één bureau blad-app-groep en meerdere sessie-hosts.
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-tenantomgevingen. Elke hostgroep kan worden gekoppeld aan meerdere RemoteApp-groepen, één bureau blad-app-groep en meerdere sessie-hosts.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,10 +34,10 @@ In dit artikel wordt ervan uitgegaan dat u de instructies voor [het instellen va
 Voer de volgende cmdlet uit om u aan te melden bij de virtuele Windows-bureaublad omgeving:
 
 ```powershell
-New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
+New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname>
 ```
 
-Met deze cmdlet worden de groep voor de hostgroep, de werk ruimte en het bureau blad-app gemaakt. Daarnaast wordt de groep bureau blad-apps geregistreerd bij de werk ruimte. U kunt een werk ruimte met deze cmdlet maken of een bestaande werk ruimte gebruiken. 
+Met deze cmdlet worden de groep voor de hostgroep, de werk ruimte en het bureau blad-app gemaakt. Daarnaast wordt de groep bureau blad-apps geregistreerd bij de werk ruimte. U kunt een werk ruimte met deze cmdlet maken of een bestaande werk ruimte gebruiken.
 
 Voer de volgende cmdlet uit om een registratie token te maken om een sessie-host te autoriseren om lid te worden van de hostgroep en deze op te slaan in een nieuw bestand op uw lokale computer. U kunt opgeven hoe lang het registratie token geldig is door gebruik te maken van de para meter-ExpirationHours.
 
@@ -48,16 +48,16 @@ Voer de volgende cmdlet uit om een registratie token te maken om een sessie-host
 New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 ```
 
-Als u bijvoorbeeld een token wilt maken dat binnen twee uur verloopt, voert u deze cmdlet uit: 
+Als u bijvoorbeeld een token wilt maken dat binnen twee uur verloopt, voert u deze cmdlet uit:
 
 ```powershell
-New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) 
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 ```
 
 Daarna voert u deze cmdlet uit om Azure Active Directory gebruikers toe te voegen aan de standaard groep bureau blad-apps voor de hostgroep.
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 Voer deze volgende cmdlet uit om Azure Active Directory gebruikers groepen toe te voegen aan de standaard groep bureau blad-apps voor de hostgroep:
@@ -69,7 +69,7 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 Voer de volgende cmdlet uit om het registratie token te exporteren naar een variabele, die u later gaat gebruiken in [REGI Steren van de virtuele machines naar de hostgroep van het virtuele Windows-bureau blad](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
 
 ```powershell
-$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> 
+$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname>
 ```
 
 ## <a name="create-virtual-machines-for-the-host-pool"></a>Virtuele machines voor de hostgroep maken
@@ -85,7 +85,7 @@ U kunt op verschillende manieren een virtuele machine maken:
 >[!NOTE]
 >Als u een virtuele machine implementeert met Windows 7 als besturings systeem van de host, is het proces voor maken en implementeren iets anders. Zie [een virtuele Windows 7-machine implementeren op het virtuele bureau blad van Windows](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)voor meer informatie.
 
-Nadat u de virtuele machines van de sessiehost hebt gemaakt, [past u een Windows-licentie toe op een host-VM](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) om uw Windows-of Windows Server-machines uit te voeren zonder dat u voor een andere licentie betaalt. 
+Nadat u de virtuele machines van de sessiehost hebt gemaakt, [past u een Windows-licentie toe op een host-VM](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) om uw Windows-of Windows Server-machines uit te voeren zonder dat u voor een andere licentie betaalt.
 
 ## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>De virtuele machines voorbereiden voor installaties van Virtual Desktop agent voor Windows
 

@@ -10,17 +10,17 @@ ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: 04e936fe4a6d514b000b08ddf11b52d0e524d98e
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417868"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707851"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Een privé-IP-adres configureren voor een virtuele machine met behulp van de Azure Portal
 
@@ -55,13 +55,13 @@ Voer de volgende stappen uit om een virtuele machine met de naam *DNS01* in het 
     | --- | --- |
     | **Abonnement** | Uw huidige abonnement |
     | **Resourcegroep** | **TestRG** (selecteren in vervolg keuzelijst) |
-    | **Naam van de virtuele machine** | *DNS01* |
+    | **Naam van virtuele machine** | *DNS01* |
     | **Regio** | **VS VS-Oost** |
     | **Installatiekopie** | **Windows Server 2019 Datacenter** |
     | **Grootte** | **VM-grootte** van **B1ls**, **aanbieding** van **Standard** |
     | **Gebruikersnaam** | De gebruikers naam van uw beheerders account |
     | **Wachtwoord** | Het wacht woord voor de gebruikers naam van uw beheerders account |
-    | **Wacht woord bevestigen** | Het wacht woord opnieuw |
+    | **Wachtwoord bevestigen** | Het wacht woord opnieuw |
 
     ![Maak een virtuele machine op het tabblad basis beginselen, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
 4. Geef in **netwerken**waarden op voor items, zoals wordt beschreven in de volgende tabel, en selecteer vervolgens **volgende**.
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om een virtuele machine met de naam *DNS01* in het 
     | Item | Waarde |
     | --- | --- |
     | **Virtueel netwerk** | **TestVNet** |
-    | **Subnetrouter** | **Front** |
+    | **Subnet** | **Front** |
 
     ![Maak een virtuele machine op het tabblad netwerken, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
 5. Kies in **beheer**onder **Diagnostische opslag account**de optie **vnetstorage**. Als dat opslag account niet wordt weer gegeven in de lijst, selecteert u **nieuwe maken**, geeft u een **naam** op voor *vnetstorage*en selecteert u **OK**. Selecteer ten slotte **controle &nbsp; + &nbsp; maken**.

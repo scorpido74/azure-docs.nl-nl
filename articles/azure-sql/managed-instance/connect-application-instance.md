@@ -3,8 +3,8 @@ title: Uw toepassing verbinden met een SQL-beheerd exemplaar
 titleSuffix: Azure SQL Managed Instance
 description: In dit artikel wordt beschreven hoe u uw toepassing verbindt met Azure SQL Managed instance.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,14 +12,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: fea16b3e1e5df056c241d07c0e1dd7a5a30819a5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a5d002532adb043fa5196231964d5b6e2c81417c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219768"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706372"
 ---
-# <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uw toepassing verbinden met Azure SQL Managed instance
+# <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uw toepassing verbinden met het beheerde Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 U hebt nu meerdere keuzes wanneer u bepaalt hoe en waar u uw toepassing host.
@@ -107,7 +107,7 @@ Raadpleeg het volgende voor meer informatie over het oplossen van verbindings pr
 
 - Controleer of de client computer (waarop de VPN-client wordt uitgevoerd) route vermeldingen heeft voor alle virtuele netwerken waartoe u toegang wilt. De routes worden opgeslagen in `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` .
 
-   ![route. txt](./media/connect-application-instance/route-txt.png)
+   ![route.txt](./media/connect-application-instance/route-txt.png)
 
    Zoals in deze afbeelding wordt weer gegeven, zijn er twee vermeldingen voor elk betrokken virtuele netwerk en een derde vermelding voor het VPN-eind punt dat is geconfigureerd in de portal.
 

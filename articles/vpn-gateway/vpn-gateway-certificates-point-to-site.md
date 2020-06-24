@@ -5,17 +5,17 @@ description: Maak een zelfondertekend basis certificaat, Exporteer de open bare 
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9792f52ae60039ff4891ea95688f961e73283af
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279336"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983424"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Certificaten voor punt-naar-site genereren en exporteren met Power shell
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Certificaten voor punt-naar-site-verbindingen genereren en exporteren met PowerShell
 
 Punt-naar-site-verbindingen gebruiken certificaten voor verificatie. In dit artikel wordt beschreven hoe u een zelfondertekend basis certificaat maakt en client certificaten genereert met behulp van Power shell op Windows 10 of Windows Server 2016. Zie [certificaten-Linux](vpn-gateway-certificates-point-to-site-linux.md) of [certificaten-makecert](vpn-gateway-certificates-point-to-site-makecert.md)als u andere certificaat instructies zoekt.
 

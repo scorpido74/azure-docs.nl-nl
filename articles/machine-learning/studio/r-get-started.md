@@ -4,17 +4,17 @@ description: Gebruik deze zelf studie voor R-Program ma's om aan de slag te gaan
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 2c481fc2f435695b4b99b86411a2fcca27e97ab4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b2bd75750670a83409b0f5b8839144e55ef2c4d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117861"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706278"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Aan de slag met Azure Machine Learning Studio (klassiek) in R
 
@@ -141,7 +141,7 @@ De volledige code voor deze sectie bevindt zich in [MachineLearningSamples-noteb
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>De gegevensset laden
 
-We gaan eerst het bestand **csdairydata. CSV** laden in azure machine learning Studio (klassiek).
+Het **csdairydata.csv** bestand wordt geladen in azure machine learning Studio (klassiek).
 
 1. Start uw Azure Machine Learning Studio-omgeving (klassiek).
 1. Selecteer **+ Nieuw** linksonder in het scherm en selecteer **gegevensset**.
@@ -156,11 +156,11 @@ Nu we een aantal gegevens hebben in Machine Learning Studio (klassiek), moeten w
 
 1. Selecteer **+ Nieuw** linksonder en selecteer **experiment**en vervolgens **leeg experiment**.
 1. U kunt uw experiment een naam bieden door te selecteren en te wijzigen, het **experiment gemaakt op...** titel boven aan de pagina. U kunt deze bijvoorbeeld wijzigen in **CA-zuivel analyse**.
-1. Vouw aan de linkerkant van de pagina experiment **opgeslagen gegevens sets**en vervolgens **mijn gegevens sets**uit. U ziet het **cadairydata. CSV** -bestand dat u eerder hebt geüpload.
-1. Sleep de **gegevensset csdairydata. CSV** naar het experiment en zet deze neer.
+1. Vouw aan de linkerkant van de pagina experiment **opgeslagen gegevens sets**en vervolgens **mijn gegevens sets**uit. U ziet de **cadairydata.csv** die u eerder hebt geüpload.
+1. Sleep de **csdairydata.csv gegevensset** naar het experiment en zet deze neer.
 1. Typ in het vak **Zoek proef items** boven in het linkerdeel venster de opdracht [R-script uitvoeren][execute-r-script]. U ziet dat de module wordt weer gegeven in de lijst zoeken.
 1. Sleep de module voor het [uitvoeren van R-scripts][execute-r-script] naar uw pallet.  
-1. Verbind de uitvoer van de **csdairydata. CSV-gegevensset** naar de meest linkse invoer (**Dataset1**) van het [script Execute R][execute-r-script].
+1. Verbind de uitvoer van de **csdairydata.csv gegevensset** met de meest linkse invoer (**Dataset1**) van het [R-script uitvoeren][execute-r-script].
 1. **Vergeet niet om ' opslaan ' te selecteren.**  
 
 Op dit moment moet het experiment er ongeveer uitzien als afbeelding 3.
@@ -171,11 +171,11 @@ Op dit moment moet het experiment er ongeveer uitzien als afbeelding 3.
 
 #### <a name="check-on-the-data"></a>De gegevens controleren
 
-Laten we eens kijken naar de gegevens die we in ons experiment hebben geladen. In het experiment selecteert u de uitvoer van de **gegevensset cadairydata. CSV** en selecteert u **visualiseren**. U ziet iets als afbeelding 4.  
+Laten we eens kijken naar de gegevens die we in ons experiment hebben geladen. Selecteer in het experiment de uitvoer van de **cadairydata.csv gegevensset** en selecteer **visualiseren**. U ziet iets als afbeelding 4.  
 
-![Samen vatting van de cadairydata. CSV-gegevensset](./media/r-quickstart/fig4.png)
+![Samen vatting van de cadairydata.csv gegevensset](./media/r-quickstart/fig4.png)
 
-*Afbeelding 4. Samen vatting van de cadairydata. CSV-gegevensset.*
+*Afbeelding 4. Samen vatting van de cadairydata.csv gegevensset.*
 
 In deze weer gave zien we veel nuttige informatie. We kunnen de eerste verschillende rijen van die gegevensset zien. Als we een kolom selecteren, ziet u in de sectie statistieken meer informatie over de kolom. De rij functie type laat bijvoorbeeld zien welke gegevens typen Azure Machine Learning Studio (klassiek) aan de kolom zijn toegewezen. Een kort overzicht is een goede Sanity controle voordat we een ernstige hoeveelheid werk gaan uitvoeren.
 

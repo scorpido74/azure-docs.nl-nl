@@ -9,23 +9,24 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 15b27990842da8837e6cd8fc8d29f361961ee044
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: e7df5f2ed484a2425e97423fbbdd396fc4eb1eb0
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669542"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253474"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Het importeren of exporteren van een Data Base duurt lang Azure SQL Database en Managed instance import/export-service
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Wanneer u de import/export-service gebruikt, kan het proces langer duren dan verwacht. In dit artikel worden de mogelijke oorzaken voor deze vertraging en alternatieve methoden voor tijdelijke oplossingen beschreven.
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database import/export-service
 
-De Azure SQL Database import/export-service is een op REST gebaseerde webservice die in elk Azure-Data Center wordt uitgevoerd. Deze service wordt aangeroepen wanneer u de optie [Data Base importeren](database-import.md#using-azure-portal) of [exporteren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) gebruikt om uw SQL database in de Azure portal te verplaatsen. De service biedt gratis aanvraag wachtrijen en Compute-Services voor het importeren en exporteren tussen Azure SQL Database en Azure Blob-opslag.
+De Azure SQL Database import/export-service is een op REST gebaseerde webservice die in elk Azure-Data Center wordt uitgevoerd. Deze service wordt aangeroepen wanneer u de optie [Data Base importeren](database-import.md#using-azure-portal) of [exporteren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) gebruikt om uw data base te verplaatsen in de Azure Portal. De service biedt gratis aanvraag wachtrijen en Compute-Services voor het importeren en exporteren tussen Azure SQL Database en Azure Blob-opslag.
 
-De import-en export bewerkingen vertegenwoordigen geen traditionele back-up van de fysieke data base, maar in plaats daarvan een logische back-up van de data base die gebruikmaakt van een speciale BACPAC-indeling. Met de BACPAC-indeling kunt u voor komen dat u een fysieke indeling moet gebruiken die kan verschillen tussen de versies van Microsoft SQL Server en Azure SQL Database. Daarom kunt u het gebruiken om de data base veilig te herstellen naar een SQL Server-Data Base en naar een SQL database.
+De import-en export bewerkingen vertegenwoordigen geen traditionele back-up van de fysieke data base, maar in plaats daarvan een logische back-up van de data base die gebruikmaakt van een speciale BACPAC-indeling. Met de BACPAC-indeling kunt u voor komen dat u een fysieke indeling moet gebruiken die kan verschillen tussen versies van Microsoft SQL Server, Azure SQL Database en Azure SQL Managed instance.
 
 ## <a name="what-causes-delays-in-the-process"></a>Wat veroorzaken vertragingen in het proces?
 
@@ -45,13 +46,13 @@ Als uw data base-exports alleen worden gebruikt voor herstel na onbedoeld verwij
   * [Micro soft. SqlServer. DAC-naam ruimte](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
   * [DACFx downloaden](https://www.microsoft.com/download/details.aspx?id=55713)
 
-## <a name="things-to-consider-when-you-export-or-import-an-azure-sql-database"></a>Overwegingen bij het exporteren of importeren van een Azure-SQL database
+## <a name="things-to-consider-when-you-export-or-import-a-database"></a>Aandachtspunten bij het exporteren of importeren van een Data Base
 
 * Alle methoden die in dit artikel worden besproken, maken gebruik van het DTU-quotum (data base Trans Action Unit) dat de Azure SQL Database-Service beperkt. U kunt [de DTU-statistieken voor de Data Base weer geven op de Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring). Als de bron limiet van de data base is bereikt, moet u [een upgrade uitvoeren voor de](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources) servicelaag om meer resources toe te voegen.
-* In het ideale geval moet u client toepassingen (zoals het sqlpackage-hulp programma of uw aangepaste DAC-toepassing) uitvoeren vanaf een virtuele machine in dezelfde regio als uw SQL database. Anders kunt u prestatie problemen ondervinden met betrekking tot netwerk latentie.
+* In het ideale geval moet u client toepassingen (zoals het sqlpackage-hulp programma of uw aangepaste DAC-toepassing) uitvoeren vanaf een virtuele machine in dezelfde regio als uw data base. Anders kunt u prestatie problemen ondervinden met betrekking tot netwerk latentie.
 * Het exporteren van grote tabellen zonder geclusterde indexen kan erg traag of zelfs een fout veroorzaken. Dit probleem treedt op omdat de tabel niet parallel kan worden opgesplitst en geëxporteerd. In plaats daarvan moet het worden geëxporteerd in één trans actie en dat trage prestaties en mogelijke fouten tijdens het exporteren veroorzaakt, met name voor grote tabellen.
 
 
 ## <a name="related-documents"></a>Gerelateerde documenten
 
-[Overwegingen bij het exporteren van een Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-export#considerations-when-exporting-an-azure-sql-database)
+[Overwegingen bij het exporteren van een Data Base](https://docs.microsoft.com/azure/sql-database/sql-database-export#considerations-when-exporting-an-azure-sql-database)

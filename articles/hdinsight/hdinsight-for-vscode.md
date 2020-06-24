@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 5c429da761c39ae6828eb5d79809b687e8a76bd3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a20cbf14ea2aa2475f25236615b85d6697ce252b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609094"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704859"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -115,7 +115,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http \: //10.172.41.42:18080.
 
 4. Selecteer autorisatie type **Basic** of **none**.  Als u **Basic**selecteert:  
-    &emsp;a. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
+    &emsp;één. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
     &emsp;b. Voer uw Ambari-wacht woord in.
 
 5. Bekijk de **uitvoer** weergave voor verificatie.
@@ -140,7 +140,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 4. [Maak verbinding](#connect-to-an-azure-account) met uw Azure-account of koppel een cluster als u dit nog niet hebt gedaan.
 
-5. Selecteer een cluster als het standaard cluster voor het huidige script bestand. De hulpprogram ma's worden automatisch bijgewerkt **. VSCode\settings.json** -configuratie bestand:
+5. Selecteer een cluster als het standaard cluster voor het huidige script bestand. De **.VSCode\settings.jsin** het configuratie bestand worden automatisch door de hulpprogram ma's bijgewerkt:
 
    ![Standaard cluster configuratie instellen](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
@@ -249,6 +249,10 @@ Het hulp programma biedt ook ondersteuning voor de **Spark SQL** -query:
    ![ipynb-resultaten uitvoeren](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
 
 
+> [!NOTE]
+>
+>MS-python >= 2020.5.78807-versie wordt niet ondersteund voor deze uitbrei ding is een [bekend probleem](#known-issues).
+
 ## <a name="submit-pyspark-batch-job"></a>Batch taak PySpark verzenden
 
 1. Open de **HDexample** -map die u [eerder](#open-a-work-folder)hebt besproken als deze is gesloten.  
@@ -290,16 +294,16 @@ Nadat u een python-taak hebt verzonden, worden de inzendings logboeken weer gege
 
 ## <a name="apache-livy-configuration"></a>Apache livy-configuratie
 
-De [Apache livy](https://livy.incubator.apache.org/) -configuratie wordt ondersteund. U kunt deze configureren in de **. VSCode\settings.json** -bestand in de map van de werk ruimte. Momenteel biedt livy-configuratie alleen ondersteuning voor python-script. Zie [LIVY README](https://github.com/cloudera/livy/blob/master/README.rst )(Engelstalig) voor meer informatie.
+De [Apache livy](https://livy.incubator.apache.org/) -configuratie wordt ondersteund. U kunt deze configureren in de **.VSCode\settings.jsvoor** het bestand in de map met de werk ruimte. Momenteel biedt livy-configuratie alleen ondersteuning voor python-script. Zie [LIVY README](https://github.com/cloudera/livy/blob/master/README.rst )(Engelstalig) voor meer informatie.
 
 <a id="triggerlivyconf"></a>**Livy-configuratie activeren**
 
 Methode 1  
 1. Navigeer in de menu balk naar instellingen voor **Bestands**  >  **Voorkeuren**  >  **Settings**.
 2. Voer in het vak **Zoek instellingen** **HDInsight-taak inzending in: livy conf**.  
-3. Selecteer **bewerken in instellingen. json** voor het relevante Zoek resultaat.
+3. Selecteer **bewerken in settings.js** voor het relevante Zoek resultaat.
 
-Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt toegevoegd aan de werkmap. U kunt de livy-configuratie bekijken door **. vscode\settings.json**te selecteren.
+Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt toegevoegd aan de werkmap. U kunt de livy-configuratie bekijken door **.vscode\settings.jsaan**te selecteren.
 
 + De project instellingen:
 
@@ -433,7 +437,7 @@ Een taak verzenden naar een HDInsight-cluster met behulp van Data Lake Storage G
 
 > [!NOTE]
 >
-> U kunt de toegangs sleutel voor het opslag account ophalen van de Azure Portal. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)voor meer informatie.
+> U kunt de toegangs sleutel voor het opslag account ophalen van de Azure Portal. Zie [Toegangssleutels voor een opslagaccount beheren](../storage/common/storage-account-keys-manage.md) voor meer informatie.
 
 ## <a name="unlink-cluster"></a>Cluster ontkoppelen
 
@@ -448,9 +452,9 @@ Een taak verzenden naar een HDInsight-cluster met behulp van Data Lake Storage G
 Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Meld**u aan.
 
 ## <a name="known-issues"></a>Bekende problemen
-### <a name="python-on-2020580290-version-is-not-supported-on-this-extention"></a>Python op 2020.5.80290-versie wordt niet ondersteund voor deze uitbrei ding 
+### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>MS-python >= 2020.5.78807-versie wordt niet ondersteund voor deze uitbrei ding 
 
-Kan geen verbinding maken met Jupyter notebook. is een bekend probleem voor python-versie 2020.5.80290. Gebruikers wordt aangeraden de **2020.4.76186** -versie van MS-python te gebruiken om dit probleem te voor komen.
+Kan geen verbinding maken met Jupyter notebook. is een bekend probleem voor python-versie >= 2020.5.78807. Gebruikers wordt aangeraden de **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** -versie van MS-python te gebruiken om dit probleem te voor komen.
 
 ![bekende problemen](./media/hdinsight-for-vscode/known-issue.png)
 

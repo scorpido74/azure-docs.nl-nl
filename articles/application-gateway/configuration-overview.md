@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u de onderdelen van Azure-toepa
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: bd6f04ca7e24e380ad657f967284704ad613375a
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996394"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254664"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -307,7 +307,7 @@ Houd er rekening mee dat de naam van de standaard-affiniteits cookie *Applicatio
 
 ### <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
-Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplande service-updates zonder problemen verwijderen. U kunt deze instelling Toep assen op alle leden van een back-end-groep tijdens het maken van de regel. Zo zorgt u ervoor dat alle ongedaan maken van de registratie van exemplaren van een back-end-groep de bestaande verbindingen blijven behouden en dat er doorlopende aanvragen voor een Configureer bare time-out worden verzonden en geen nieuwe aanvragen of verbindingen worden ontvangen. De enige uitzonde ring hierop is het aantal aanvragen dat is gebonden voor het deregistreren van instanties vanwege gateway beheer sessie-affiniteit en zal worden doorgestuurd naar de instanties van de registratie. Het afbreken van de verbinding is van toepassing op back-end-exemplaren die expliciet uit de back-end-pool worden verwijderd.
+Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplande service-updates zonder problemen verwijderen. U kunt deze instelling Toep assen op alle leden van een back-end-pool door het verbreken van de verbinding in te scha kelen voor de HTTP-instelling. Zo zorgt u ervoor dat alle ongedaan maken van de registratie van exemplaren van een back-end-groep de bestaande verbindingen blijven behouden en dat er doorlopende aanvragen voor een Configureer bare time-out worden verzonden en geen nieuwe aanvragen of verbindingen worden ontvangen. De enige uitzonde ring hierop is het aantal aanvragen dat is gebonden voor het deregistreren van instanties vanwege gateway beheer sessie-affiniteit en zal worden doorgestuurd naar de instanties van de registratie. Het afbreken van de verbinding is van toepassing op back-end-exemplaren die expliciet uit de back-end-pool worden verwijderd.
 
 ### <a name="protocol"></a>Protocol
 

@@ -4,19 +4,19 @@ description: Meer informatie over het opvragen van Microsoft Graph risico detect
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: reference
+ms.topic: how-to
 ms.date: 10/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6fd62ccab4d6e32b23835d280732797e133ada8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671624"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253559"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph
 
@@ -72,9 +72,9 @@ Voordat u aan de slag gaat, hebt u het volgende nodig:
 
    1. Als **type**, selecteer **Webtoepassing en/of Web-API**.
 
-   1. Typ `http://localhost`in het tekstvak **URL voor aanmelden** .
+   1. Typ in het tekstvak **URL voor aanmelden** `http://localhost` .
 
-   1. Klik op **maken**.
+   1. Klik op **Create**.
 1. Als u de pagina **instellingen** wilt openen, klikt u in de lijst toepassingen op uw zojuist gemaakte app-registratie. 
 1. Kopieer de **toepassings-id**.
 
@@ -139,12 +139,12 @@ Op dit moment hebt u het volgende nodig:
 - De client-ID 
 - De sleutel 
 
-Als u zich wilt verifiëren, verzendt u `https://login.microsoft.com` een post-aanvraag naar met de volgende para meters in de hoofd tekst:
+Als u zich wilt verifiëren, verzendt u een post-aanvraag naar `https://login.microsoft.com` met de volgende para meters in de hoofd tekst:
 
 - grant_type:**client_credentials**
 - resource`https://graph.microsoft.com`
-- client_id: \<uw client-id\>
-- client_secret: \<uw sleutel\>
+- client_id:\<your client ID\>
+- client_secret:\<your key\>
 
 Als dit is gelukt, wordt er een verificatie token geretourneerd.  
 Maak een header met de volgende para meter om de API aan te roepen:

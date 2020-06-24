@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096222"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194000"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -54,11 +54,11 @@ U kunt [hier](../../azure-monitor/insights/network-performance-monitor-performan
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hoe kan ik een knoop punt configureren voor de ondersteuning van bewaking met behulp van het TCP-protocol?
 Voor het knoop punt voor de ondersteuning van bewaking met het TCP-protocol: 
 * Zorg ervoor dat het knoop punt platform Windows Server is (2008 SP1 of hoger).
-* Voer het Power shell-script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit op het knoop punt. Zie de [instructies](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) voor meer informatie.
+* Voer [EnableRules.ps1](https://aka.ms/npmpowershellscript) Power shell-script uit op het knoop punt. Zie de [instructies](../../azure-monitor/insights/network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) voor meer informatie.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hoe kan ik de TCP-poort die wordt gebruikt door NPM wijzigen voor bewaking?
-U kunt de TCP-poort die door NPM wordt gebruikt voor bewaking wijzigen door het script [EnableRules. ps1](https://aka.ms/npmpowershellscript) uit te voeren. U moet het poort nummer invoeren dat u wilt gebruiken als para meter. Als u bijvoorbeeld TCP wilt inschakelen op poort 8060, voert `EnableRules.ps1 8060`u uit. Zorg ervoor dat u dezelfde TCP-poort gebruikt op alle knoop punten die worden gebruikt voor de bewaking.
+U kunt de TCP-poort die door NPM wordt gebruikt voor bewaking wijzigen door het [EnableRules.ps1](https://aka.ms/npmpowershellscript) script uit te voeren. U moet het poort nummer invoeren dat u wilt gebruiken als para meter. Als u bijvoorbeeld TCP wilt inschakelen op poort 8060, voert u uit `EnableRules.ps1 8060` . Zorg ervoor dat u dezelfde TCP-poort gebruikt op alle knoop punten die worden gebruikt voor de bewaking.
 
 Het script configureert alleen Windows Firewall lokaal. Als u een netwerk firewall of NSG-regels (netwerk beveiligings groep) hebt, moet u ervoor zorgen dat het verkeer dat bestemd is voor de TCP-poort die wordt gebruikt door NPM wordt toegestaan.
 
@@ -149,19 +149,19 @@ Voor informatie over het niveau van MS-peering gebruikt u de onderstaande query 
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
     
 Voor informatie over privé-peering kunt u de onderstaande query gebruiken in zoeken in Logboeken
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
   
 Voor informatie over het circuit niveau gebruikt u de onderstaande query in zoeken in Logboeken
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welke regio's worden ondersteund voor de prestatie meter van de NPM?
 NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
@@ -213,7 +213,7 @@ Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk fir
 * Als u wilt controleren of een tussenliggende netwerk firewall of Azure NSG de communicatie op de vereiste poort niet blokkeert, gebruikt u het PsPing-hulp programma van derden met behulp van de onderstaande instructies:
   * het hulp programma psping kan [hier](https://technet.microsoft.com/sysinternals/psping.aspx) worden gedownload 
   * Voer de volgende opdracht uit vanaf het bron knooppunt.
-    * psping-n 15 \<doel knooppunt IP\>-adres:p ortnumber standaard gebruikt 8084-poort. Als u dit expliciet hebt gewijzigd met behulp van het script EnableRules. ps1, voert u het aangepaste poort nummer in dat u gebruikt. Dit is een ping van Azure machine naar on-premises
+    * psping-n 15 \<destination node IPAddress\> :P ortnumber gebruikt standaard NPM 8084-poort. Als u dit expliciet hebt gewijzigd met behulp van het EnableRules.ps1 script, voert u het aangepaste poort nummer in dat u gebruikt. Dit is een ping van Azure machine naar on-premises
 * Controleer of de pings zijn geslaagd. Als dat niet het geval is, duidt dit erop dat een tussenliggende netwerk firewall of Azure NSG het verkeer op deze poort blokkeert.
 * Voer nu de opdracht uit vanaf het doel knooppunt naar het IP-adres van het bron knooppunt.
 
@@ -222,9 +222,9 @@ Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk fir
 Aangezien de netwerk paden tussen A en B kunnen verschillen van de netwerk paden tussen B en A, kunnen verschillende waarden voor verlies en latentie worden waargenomen.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Waarom worden al mijn ExpressRoute-circuits en peering-verbindingen niet gedetecteerd?
-NPM detecteert nu ExpressRoute-circuits en peering verbindingen in alle abonnementen waartoe de gebruiker toegang heeft. Kies alle abonnementen waar uw Express-route resources zijn gekoppeld en schakel bewaking in voor elke gedetecteerde resource. NPM zoekt naar verbindings objecten bij het detecteren van een persoonlijke peering, dus controleer of er een VNET is gekoppeld aan uw peering.
+NPM detecteert nu ExpressRoute-circuits en peering verbindingen in alle abonnementen waartoe de gebruiker toegang heeft. Kies alle abonnementen waar uw Express-route resources zijn gekoppeld en schakel bewaking in voor elke gedetecteerde resource. NPM zoekt naar verbindings objecten bij het detecteren van een persoonlijke peering, dus controleer of er een VNET is gekoppeld aan uw peering. NPM detecteert geen circuits en peering die zich in een andere Tenant bevinden vanuit de werk ruimte Log Analytics.
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>De functie voor het controleren van de monitor heeft een diagnostisch bericht ' verkeer wordt niet door gegeven via een circuit '. Wat houdt dat in?
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>De functie voor het controleren van de monitor heeft een diagnostisch bericht ' verkeer wordt niet door gegeven via een circuit '. Wat betekent dat?
 
 Er kan een scenario zijn met een goede verbinding tussen de on-premises en Azure-knoop punten, maar het verkeer gaat niet over het ExpressRoute-circuit dat is geconfigureerd om te worden bewaakt door NPM. 
 
@@ -233,6 +233,12 @@ Dit kan gebeuren als:
 * Het circuit is niet beschikbaar.
 * De route filters worden zo geconfigureerd dat ze prioriteit geven aan andere routes (zoals een VPN-verbinding of een ander ExpressRoute-circuit) over het beoogde ExpressRoute-circuit. 
 * De on-premises en Azure-knoop punten die zijn gekozen voor het bewaken van het ExpressRoute-circuit in de bewakings configuratie, hebben geen verbinding met elkaar via het beoogde ExpressRoute-circuit. Zorg ervoor dat u de juiste knoop punten hebt gekozen die met elkaar zijn verbonden via het ExpressRoute-circuit dat u wilt bewaken.
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>Waarom controleert ExpressRoute mijn circuit/peering als beschadigd wanneer deze beschikbaar zijn en gegevens door gegeven.
+De monitor ExpressRoute vergelijkt de netwerk prestatie waarden (verlies, latentie en bandbreedte gebruik) die worden gerapporteerd door de agents/service met de drempels die tijdens de configuratie zijn ingesteld. Als de gerapporteerde bandbreedte bezetting groter is dan de drempel waarde die is ingesteld in de configuratie, wordt het circuit gemarkeerd als beschadigd. Als het verlies, de latentie of de gebruikte bandbreedte benutting groter is dan de drempel waarde die in de configuratie is ingesteld, wordt de peering als beschadigd gemarkeerd. NPM maakt geen gebruik van metrische gegevens of enige andere vorm van data voor deicde-status.
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>Waarom rapporteert ExpressRoute Monitor'bandwidth-gebruik een waarde andere van metrische bits in/uit
+Voor ExpressRoute monitor is band breedte utiliation het gemiddelde van de inkomende en uitgaande band breedte in de afgelopen 20 minuten. deze worden uitgedrukt in bits per seconde. Voor metrische gegevens van snelle route zijn bit-in-en uitgangs punten per minuut. De gegevensset die voor beide wordt gebruikt, is niet alleen hetzelfde, maar de aggregatie valies tussen NPM en de metrische gegevens. Voor gedetailleerde, minuut per minuut controleren en snelle waarschuwingen wordt u aangeraden waarschuwingen rechtstreeks in te stellen op basis van de maat eenheden.
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>Tijdens het configureren van de bewaking van mijn ExpressRoute-circuit worden de Azure-knoop punten niet gedetecteerd.
 Dit kan gebeuren als de Azure-knoop punten zijn verbonden via Operations Manager. De ExpressRoute-monitor mogelijkheid biedt alleen ondersteuning voor Azure-knoop punten die zijn verbonden als rechtstreekse agents.
@@ -263,7 +269,7 @@ Dit kan gebeuren als de doel service geen webtoepassing is, maar de test is geco
 Het NPM-proces is zo geconfigureerd dat er wordt gestopt als er meer dan 5% van de CPU-bronnen van de host worden gebruikt. Dit is om ervoor te zorgen dat u de knoop punten voor hun gebruikelijke werk belastingen kunt blijven gebruiken zonder dat dit invloed heeft op de prestaties.
 
 ### <a name="does-npm-edit-firewall-rules-for-monitoring"></a>NPM de firewall regels voor bewaking bewerken?
-NPM maakt alleen een lokale Windows Firewall regel voor de knoop punten waarop het Power shell-script EnableRules. ps1 wordt uitgevoerd, zodat de agents TCP-verbindingen met elkaar kunnen maken op de opgegeven poort. De oplossing wijzigt geen NSG-regels (netwerk firewall of netwerk beveiligings groep).
+NPM maakt alleen een lokale Windows Firewall regel voor de knoop punten waarop het EnableRules.ps1 Power shell-script wordt uitgevoerd, zodat de agents TCP-verbindingen met elkaar kunnen maken op de opgegeven poort. De oplossing wijzigt geen NSG-regels (netwerk firewall of netwerk beveiligings groep).
 
 ### <a name="how-can-i-check-the-health-of-the-nodes-being-used-for-monitoring"></a>Hoe kan ik de status van de knoop punten controleren die worden gebruikt voor bewaking?
 U kunt de status van de knoop punten die worden gebruikt voor bewaking, bekijken in de volgende weer gave: Netwerkprestatiemeter-> configuratie-> knoop punten. Als een knoop punt een slechte status heeft, kunt u de fout Details bekijken en de voorgestelde actie uitvoeren.

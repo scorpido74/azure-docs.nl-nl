@@ -7,18 +7,18 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06dbb985ece8e5b6df3ef3f29a997af5212404ad
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253271"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742674"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -129,7 +129,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Nu de gebruiker in aanmerking komt voor de rol, laat hij ze weten dat ze deze kunnen activeren volgens de instructies in [mijn Azure AD-rollen activeren in privileged Identity Management](pim-how-to-activate-role.md).
 
-    In aanmerking komende beheerders worden tijdens de activering gevraagd om zich te registreren voor Azure Multi-Factor Authentication (MFA). Als een gebruiker zich niet kan registreren voor MFA of een Microsoft-account (zoals @outlook.com) gebruikt, moet u deze in al hun rollen blijvend maken.
+    In aanmerking komende beheerders worden tijdens de activering gevraagd om zich te registreren voor Azure Multi-Factor Authentication (MFA). Als een gebruiker zich niet kan registreren voor MFA of een Microsoft-account (zoals) gebruikt @outlook.com , moet u deze in al hun rollen blijvend maken.
 
 ## <a name="make-a-role-assignment-permanent"></a>Een roltoewijzing permanent maken
 

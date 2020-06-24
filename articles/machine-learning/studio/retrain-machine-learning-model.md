@@ -5,21 +5,19 @@ description: Meer informatie over het bijwerken van een webservice voor het gebr
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217941"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706083"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Retraining is een manier om ervoor te zorgen dat machine learning modellen nauw keurig blijven en op basis van de meest relevante gegevens die beschikbaar zijn. In dit artikel wordt beschreven hoe u een machine learning model opnieuw traint en implementeert als nieuwe webservice in Studio (klassiek). Als u een klassieke webservice opnieuw wilt trainen, [raadpleegt u dit artikel met instructies.](retrain-classic-web-service.md)
 
@@ -61,14 +59,14 @@ Voor dit voor beeld gebruiken we C# om de toepassing voor opnieuw trainen te mak
 
 Gebruik de volgende stappen voor het aanroepen van de Api's voor retraining:
 
-1. Een C#-console toepassing maken in Visual Studio: **Nieuw** > **project** > **Visual C#** > **Windows klassieke bureau blad** > **console-app (.NET Framework)**.
+1. Een C#-console toepassing maken in Visual Studio: **Nieuw**  >  **project**  >  **Visual C#**  >  **Windows klassieke bureau blad**  >  **console-app (.NET Framework)**.
 1. Meld u aan bij de Machine Learning Web Services-portal.
 1. Klik op de webservice waarmee u wilt werken.
 1. Klik op **verbruik**.
 1. Klik onder aan de pagina **verbruik** in het gedeelte **voorbeeld code** op **batch**.
 1. Kopieer de C#-voorbeeld code voor batch uitvoering en plak deze in het Program.cs-bestand. Zorg ervoor dat de naam ruimte intact blijft.
 
-Voeg het NuGet-pakket micro soft. AspNet. WebApi. client toe, zoals is opgegeven in de opmerkingen. Als u de verwijzing naar micro soft. WindowsAzure. storage. dll wilt toevoegen, moet u mogelijk de [client bibliotheek voor Azure Storage services](https://www.nuget.org/packages/WindowsAzure.Storage)installeren.
+Voeg het NuGet-pakket micro soft. AspNet. WebApi. client toe, zoals is opgegeven in de opmerkingen. Als u de verwijzing naar Microsoft.WindowsAzure.Storage.dll wilt toevoegen, moet u mogelijk de [client bibliotheek voor Azure Storage-services](https://www.nuget.org/packages/WindowsAzure.Storage)installeren.
 
 Op de volgende scherm afbeelding ziet u de pagina **verbruik** in de Azure machine learning webservices-Portal.
 
@@ -104,7 +102,7 @@ U moet er ook voor zorgen dat het invoer bestand beschikbaar is op de locatie di
 
 ### <a name="specify-the-output-location"></a>De uitvoer locatie opgeven
 
-Wanneer u de uitvoer locatie in de aanvraag lading opgeeft, moet de extensie van het bestand dat is opgegeven in *RelativeLocation* worden opgegeven als `ilearner`.
+Wanneer u de uitvoer locatie in de aanvraag lading opgeeft, moet de extensie van het bestand dat is opgegeven in *RelativeLocation* worden opgegeven als `ilearner` .
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {

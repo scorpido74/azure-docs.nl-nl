@@ -8,17 +8,17 @@ author: KumudD
 manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72333363"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707511"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>Een IPv6-toepassing met dubbele stack implementeren met behulp van standaard interne Load Balancer in azure-Power shell (preview)
 
@@ -39,8 +39,8 @@ De procedure voor het maken van een intern Load Balancer die geschikt is voor IP
 
 De wijzigingen die het boven een interne configuratie van load balancer-front-end doen, zijn:
 - De `PrivateIpAddressVersion` is opgegeven als ' IPv6 '
-- Het `-PublicIpAddress` argument is wegge laten of vervangen door `-PrivateIpAddress`. Houd er rekening mee dat het privé adres zich binnen het bereik van de IP-ruimte van het subnet bevindt waarin de interne load balancer worden geïmplementeerd. Als er een `-PrivateIpAddress` statisch wordt wegge laten, wordt het volgende gratis IPv6-adres geselecteerd in het subnet waarin de interne Load Balancer is geïmplementeerd.
-- Het dubbele stack subnet waarin de interne load balancer worden geïmplementeerd, wordt opgegeven met een `-Subnet` of `-SubnetId` -argument.
+- Het `-PublicIpAddress` argument is wegge laten of vervangen door `-PrivateIpAddress` . Houd er rekening mee dat het privé adres zich binnen het bereik van de IP-ruimte van het subnet bevindt waarin de interne load balancer worden geïmplementeerd. Als er een statisch `-PrivateIpAddress` wordt wegge laten, wordt het volgende gratis IPv6-adres geselecteerd in het subnet waarin de interne Load Balancer is geïmplementeerd.
+- Het dubbele stack subnet waarin de interne load balancer worden geïmplementeerd, wordt opgegeven met een of- `-Subnet` `-SubnetId` argument.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

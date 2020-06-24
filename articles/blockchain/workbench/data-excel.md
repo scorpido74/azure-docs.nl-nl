@@ -2,14 +2,14 @@
 title: Gegevens van Azure Blockchain Workbench gebruiken in Microsoft Excel
 description: Meer informatie over het laden en weer geven van Azure Block Chain Workbench preview SQL DB-gegevens in micro soft Excel.
 ms.date: 09/05/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: mmercuri
-ms.openlocfilehash: a84858ead83782cc9b6ef1b1d7f905172600fb8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74326052"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253542"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Gegevens van Azure Blockchain Workbench weergeven met Microsoft Excel
 
@@ -27,7 +27,7 @@ U kunt als volgt verbinding maken met een database van Blockchain Workbench:
 2. Ga naar het tabblad **Gegevens** en kies **Gegevens ophalen**.
 3. Selecteer **Uit Azure** en selecteer vervolgens **Uit Azure SQL Database**.
 
-   ![Verbinding maken met Azure SQL-database](./media/data-excel/connect-sql-db.png)
+   ![Verbinding maken met Azure SQL Database](./media/data-excel/connect-sql-db.png)
 
 4. Ga als volgt te werk in het dialoogvenster **SQL Server-database**:
 

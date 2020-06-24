@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge workloads implementeren
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: d82c93783d80060bc3443131191b7cec32dc4878
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680767"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193784"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge workloads implementeren (preview-versie)
 
@@ -29,7 +29,7 @@ Azure-Arc en Azure IoT Edge zijn de mogelijkheden van elkaar heel goed. Azure Ar
 
 * Gebruik [de ondersteuning van IOT Edge voor Kubernetes](https://aka.ms/edgek8sdoc) om deze te implementeren via de stroom operator van Azure Arc.
 
-* Down load het bestand [**Values. yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) voor IOT Edge helm-diagram en vervang de tijdelijke aanduiding **deviceConnectionString** aan het einde van het bestand door de naam die u in stap 1 hebt genoteerd. U kunt andere ondersteunde installatie opties voor grafieken instellen zoals vereist. Maak een naam ruimte voor de IoT Edge werk belasting en maak een geheim toevoegen:
+* Down load het bestand [**Values. yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) voor IOT Edge helm-diagram en vervang de tijdelijke aanduiding **deviceConnectionString** aan het einde van het bestand door de naam die u in stap 1 hebt genoteerd. U kunt andere ondersteunde installatie opties voor grafieken instellen zoals vereist. Maak een naam ruimte voor de IoT Edge workload en maak er een geheim in:
 
     ```
     $ kubectl create ns iotedge
@@ -39,7 +39,7 @@ Azure-Arc en Azure IoT Edge zijn de mogelijkheden van elkaar heel goed. Azure Ar
 
     U kunt dit ook op afstand instellen met behulp van het [cluster configuratie voorbeeld](./use-gitops-connected-cluster.md).
 
-## <a name="connect-a-cluster"></a>Een cluster verbinden
+## <a name="connect-a-cluster"></a>Verbinding maken met een cluster
 
 Gebruik de `az` cli- `connectedk8s` extensie om een Kubernetes-cluster te verbinden met Azure Arc:
 

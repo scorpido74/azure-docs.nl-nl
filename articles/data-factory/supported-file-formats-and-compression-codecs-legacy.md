@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b1f11a1ff25117c07e61475e7e83fc0c170cd552
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414656"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254613"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Ondersteunde bestands indelingen en compressie-codecs in Azure Data Factory (verouderd)
 
@@ -30,19 +30,19 @@ ms.locfileid: "81414656"
 >[!NOTE]
 >Meer informatie over het nieuwe model van het artikel [tekst met scheidings tekens](format-delimited-text.md) . De volgende configuraties voor gegevens opslag gegevensset op basis van een bestand worden nog steeds ondersteund als-is voor achterwaartse compabitility. U wordt aangeraden het nieuwe model verder te gebruiken.
 
-Als u wilt lezen uit een tekst bestand of naar een tekst bestand wilt schrijven, stelt u `type` de eigenschap in `format` het gedeelte van de gegevensset in op **TextFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Raadpleeg het gedeelte [TextFormat-voorbeeld](#textformat-example) voor configuratie-instructies.
+Als u wilt lezen uit een tekst bestand of naar een tekst bestand wilt schrijven, stelt u de `type` eigenschap in het `format` gedeelte van de gegevensset in op **TextFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Raadpleeg het gedeelte [TextFormat-voorbeeld](#textformat-example) voor configuratie-instructies.
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen om een zeldzaam niet-afdrukbaar teken te gebruiken dat mogelijk niet voor komt in uw gegevens. Geef bijvoorbeeld ' \u0001 ' op, die het begin van de kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')**. <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code te verkrijgen. |Nee |
-| rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'**. |Nee |
-| escapeChar |Dit speciale teken wordt gebruikt om een scheidingsteken voor kolommen van de inhoud van het invoerbestand om te zetten. <br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voor beeld: als u een komma (', ') hebt als scheidings teken voor de kolom, maar u de komma wilt gebruiken in de tekst (bijvoorbeeld: "Hallo, wereld"), kunt u $ opgeven als escape teken en de teken reeks "Hallo $, wereld" in de bron. |Nee |
-| quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |Nee |
-| nullValue |Een of meer tekens die worden gebruikt om een null-waarde te vertegenwoordigen. |Een of meer tekens. De **standaardwaarden** zijn **'\N' en 'NULL'** voor lezen en **'\N'** voor schrijven. |Nee |
-| encodingName |Geef de coderingsnaam op. |Een geldige coderingsnaam. Zie [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Voorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is **UTF-8**. |Nee |
-| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |True<br/><b>False (standaard)</b> |Nee |
-| skipLineCount |Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Geheel getal |Nee |
-| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |Nee |
+| columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen om een zeldzaam niet-afdrukbaar teken te gebruiken dat mogelijk niet voor komt in uw gegevens. Geef bijvoorbeeld ' \u0001 ' op, die het begin van de kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')**. <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code te verkrijgen. |No |
+| rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'**. |No |
+| escapeChar |Dit speciale teken wordt gebruikt om een scheidingsteken voor kolommen van de inhoud van het invoerbestand om te zetten. <br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voor beeld: als u een komma (', ') hebt als scheidings teken voor de kolom, maar u de komma wilt gebruiken in de tekst (bijvoorbeeld: "Hallo, wereld"), kunt u $ opgeven als escape teken en de teken reeks "Hallo $, wereld" in de bron. |No |
+| quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |No |
+| nullValue |Een of meer tekens die worden gebruikt om een null-waarde te vertegenwoordigen. |Een of meer tekens. De **standaardwaarden** zijn **'\N' en 'NULL'** voor lezen en **'\N'** voor schrijven. |No |
+| encodingName |Geef de coderingsnaam op. |Een geldige coderingsnaam. Zie [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Voorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is **UTF-8**. |No |
+| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |True<br/><b>False (standaard)</b> |No |
+| skipLineCount |Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Geheel getal |No |
+| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |No |
 
 ### <a name="textformat-example"></a>Voorbeeld van TextFormat
 
@@ -86,18 +86,18 @@ Gebruik een `escapeChar` in plaats van `quoteChar`, vervang de regel door `quote
 
 Als u **een JSON-bestand wilt importeren/exporteren naar/van Azure Cosmos DB**, raadpleegt u de sectie JSON-documenten importeren/exporteren in [gegevens verplaatsen naar/van Azure Cosmos DB](connector-azure-cosmos-db.md) artikel.
 
-Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schrijven `type` , stelt u `format` de eigenschap in de sectie in op **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
+Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schrijven, stelt u de `type` eigenschap in de `format` sectie in op **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
-| jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden. | Nee |
-| jsonPathDefinition | Hiermee geeft u de JSON-padexpressie aan voor elke kolomtoewijzing met een aangepaste kolomnaam (begin met een kleine letter). Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden en u kunt gegevens uit een object of matrix ophalen. <br/><br/> Voor velden onder het hoofdobject begint u met root $; voor velden binnen de matrix die is gekozen door de eigenschap `jsonNodeReference`, begint u vanaf het element van de matrix. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies. | Nee |
-| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Bijvoorbeeld: windows 1250 of shift_jis. De **standaard** waarde is: **UTF-8**. |Nee |
-| nestingSeparator |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. De standaardwaarde is '.' (punt). |Nee |
+| filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |No |
+| jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden. | No |
+| jsonPathDefinition | Hiermee geeft u de JSON-padexpressie aan voor elke kolomtoewijzing met een aangepaste kolomnaam (begin met een kleine letter). Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden en u kunt gegevens uit een object of matrix ophalen. <br/><br/> Voor velden onder het hoofdobject begint u met root $; voor velden binnen de matrix die is gekozen door de eigenschap `jsonNodeReference`, begint u vanaf het element van de matrix. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies. | No |
+| encodingName |Geef de coderingsnaam op. Zie voor de lijst met geldige namen voor versleuteling [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Bijvoorbeeld: windows 1250 of shift_jis. De **standaard** waarde is: **UTF-8**. |No |
+| nestingSeparator |Teken dat wordt gebruikt voor het scheiden van geneste niveaus. De standaardwaarde is '.' (punt). |No |
 
 >[!NOTE]
->In het geval van cross-apply gegevens in een matrix in meerdere rijen (hoofdletter 1-> voor beeld 2 in [JsonFormat-voor beelden](#jsonformat-example)), kunt u er alleen voor kiezen `jsonNodeReference`om één matrix uit te breiden met behulp van eigenschap.
+>In het geval van cross-apply gegevens in een matrix in meerdere rijen (hoofdletter 1-> voor beeld 2 in [JsonFormat-voor beelden](#jsonformat-example)), kunt u er alleen voor kiezen om één matrix uit te breiden met behulp van eigenschap `jsonNodeReference` .
 
 ### <a name="json-file-patterns"></a>JSON-bestandpatronen
 
@@ -231,7 +231,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door ge
 De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [kolommen van bron gegevensset toewijzen aan kolommen voor doel gegevensset](copy-activity-schema-and-type-mapping.md)voor meer informatie.
-- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens wilt kopiëren uit een matrix, `array[x].property` kunt u gebruiken om de waarde van de opgegeven `xth` eigenschap van het object te extra `array[*].property` heren, of u kunt gebruiken om de waarde te vinden van een object dat dergelijke eigenschap bevat.
+- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens wilt kopiëren uit een matrix, kunt u gebruiken `array[x].property` om de waarde van de opgegeven eigenschap van het object te extra heren `xth` , of u kunt gebruiken `array[*].property` om de waarde te vinden van een object dat dergelijke eigenschap bevat.
 
 ```json
 "properties": {
@@ -306,8 +306,8 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling, door d
 De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [kolommen van bron gegevensset toewijzen aan kolommen voor doel gegevensset](copy-activity-schema-and-type-mapping.md)voor meer informatie.
-- `jsonNodeReference`Hiermee wordt aangegeven dat gegevens uit de objecten met hetzelfde patroon worden herhaald en opgehaald uit de **matrix** `orderlines`.
-- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. In dit voor beeld `ordernumber`, `orderdate`,, `city` en bevinden zich onder het hoofd object waarvan `$.`het JSON `order_pd` - `order_price` pad begint met, terwijl en worden gedefinieerd met een `$.`pad dat is afgeleid van het element matrix zonder.
+- `jsonNodeReference`Hiermee wordt aangegeven dat gegevens uit de objecten met hetzelfde patroon worden herhaald en opgehaald uit de **matrix** `orderlines` .
+- Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. In dit voor beeld,, `ordernumber` `orderdate` , en `city` bevinden zich onder het hoofd object waarvan het JSON-pad begint met `$.` , terwijl `order_pd` en `order_price` worden gedefinieerd met een pad dat is afgeleid van het element matrix zonder `$.` .
 
 ```json
 "properties": {
@@ -375,7 +375,7 @@ voor elke record gaat u naar een JSON-object in de volgende indeling schrijven:
 }
 ```
 
-De uitvoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer specifiek: `structure` in de sectie worden de aangepaste eigenschapnamen in het doel `nestingSeparator` bestand gedefinieerd (de standaard waarde is '. ') worden gebruikt om de nest laag te identificeren uit de naam. Dit gedeelte is **optioneel**, tenzij u de naam van de eigenschap wilt wijzigen ten opzichte van de naam van de bronkolom of sommige eigenschappen wilt nesten.
+De uitvoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer specifiek: `structure` in de sectie worden de aangepaste eigenschapnamen in het doel bestand gedefinieerd `nestingSeparator` (de standaard waarde is '. ') worden gebruikt om de nest laag te identificeren uit de naam. Dit gedeelte is **optioneel**, tenzij u de naam van de eigenschap wilt wijzigen ten opzichte van de naam van de bronkolom of sommige eigenschappen wilt nesten.
 
 ```json
 "properties": {
@@ -429,23 +429,23 @@ Houd rekening met de volgende punten:
 > [!IMPORTANT]
 > Als u de kopie wilt voorzien van zelf-hostende Integration Runtime bijvoorbeeld tussen on-premises en gegevens opslag in de Cloud, moet u de **64-bits jre 8 (Java Runtime Environment) of openjdk** op uw IR-computer **installeren, als**u geen Parquet-bestanden kopieert. Raadpleeg de volgende alinea met meer informatie.
 
-Voor een kopie die wordt uitgevoerd op een zelf-hostende IR met Parquet-serialisatie/deserialisatie, zoekt ADF de Java-runtime *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* door het REGI ster voor jre te controleren, indien niet *`JAVA_HOME`* gevonden, ter controle van de systeem variabele voor openjdk.
+Voor een kopie die wordt uitgevoerd op een zelf-hostende IR met Parquet-serialisatie/deserialisatie, zoekt ADF de Java-runtime door het REGI ster *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* voor jre te controleren, indien niet gevonden, ter controle van de systeem variabele *`JAVA_HOME`* voor openjdk.
 
 - **Jre gebruiken**: de 64-bits IR vereist een 64-bits jre. U kunt deze [hier](https://go.microsoft.com/fwlink/?LinkId=808605)vinden.
-- **Als u openjdk wilt gebruiken**, wordt dit ondersteund sinds IR-versie 3,13. Verdeel het JVM. dll-bestand met alle andere vereiste assembly's van OpenJDK in een zelf-hostende IR-computer en stel de systeem omgevings variabele in JAVA_HOME dienovereenkomstig in.
+- **Als u openjdk wilt gebruiken**, wordt dit ondersteund sinds IR-versie 3,13. Verpak de jvm.dll met alle andere vereiste assembly's van OpenJDK op een zelf-hostende IR-computer en stel de systeem omgevings variabele in JAVA_HOME dienovereenkomstig in.
 
 >[!TIP]
->Als u gegevens kopieert naar/van Parquet-indeling met behulp van zelf-hostende Integration Runtime en de fout melding ' er is een fout opgetreden bij het aanroepen van Java, bericht: **Java. lang. OutOfMemoryError: Java-heap-ruimte**', kunt u een omgevings variabele `_JAVA_OPTIONS` toevoegen aan de computer die als host fungeert voor de zelf-hostende IR om een dergelijke kopie te maken,
+>Als u gegevens kopieert naar/van Parquet-indeling met behulp van zelf-hostende Integration Runtime en de fout melding ' er is een fout opgetreden bij het aanroepen van Java, bericht: **Java. lang. OutOfMemoryError: Java-heap-ruimte**', kunt u een omgevings variabele toevoegen aan `_JAVA_OPTIONS` de computer die als host fungeert voor de zelf-hostende IR om een dergelijke kopie te maken,
 
 ![JVM-Heap-grootte instellen op zelf-hostende IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Voor beeld: Stel `_JAVA_OPTIONS` variabele met `-Xms256m -Xmx16g`waarde in. Met de `Xms` vlag wordt de eerste geheugen toewijzings groep opgegeven voor een Java Virtual Machine (JVM `Xmx` ), terwijl de maximale geheugen toewijzings groep wordt opgegeven. Dit betekent dat JVM wordt gestart met `Xms` de hoeveelheid geheugen en dat er een maximum `Xmx` hoeveelheid geheugen kan worden gebruikt. ADF gebruikt standaard min 64 MB en Max 1G.
+Voor beeld: Stel variabele `_JAVA_OPTIONS` met waarde in `-Xms256m -Xmx16g` . Met de vlag `Xms` wordt de eerste geheugen toewijzings groep opgegeven voor een Java Virtual Machine (JVM), terwijl `Xmx` de maximale geheugen toewijzings groep wordt opgegeven. Dit betekent dat JVM wordt gestart met `Xms` de hoeveelheid geheugen en dat er een maximum hoeveelheid geheugen kan worden gebruikt `Xmx` . ADF gebruikt standaard min 64 MB en Max 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Toewijzing van gegevens type voor Parquet-bestanden
 
 | Data Factory-gegevens type interim | Parquet primitief type | Parquet oorspronkelijke type (deserialiseren) | Oorspronkelijk type Parquet (serialisatie) |
 |:--- |:--- |:--- |:--- |
-| Booleaans | Booleaans | N.v.t. | N.v.t. |
+| Boolean | Boolean | N.v.t. | N.v.t. |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -454,8 +454,8 @@ Voor beeld: Stel `_JAVA_OPTIONS` variabele met `-Xms256m -Xmx16g`waarde in. Met 
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binair | UInt64 | Decimal |
-| Enkel | Drijvend | N.v.t. | N.v.t. |
-| Double | Double | N.v.t. | N.v.t. |
+| Enkelvoudig | Float | N.v.t. | N.v.t. |
+| Dubbel | Dubbel | N.v.t. | N.v.t. |
 | Decimal | Binair | Decimal | Decimal |
 | Tekenreeks | Binair | Utf8 | Utf8 |
 | DateTime | Int96 | N.v.t. | N.v.t. |
@@ -489,16 +489,16 @@ Houd rekening met de volgende punten:
 > [!IMPORTANT]
 > Als u de kopie wilt voorzien van zelf-hostende Integration Runtime bijvoorbeeld tussen on-premises en gegevens opslag in de Cloud, moet u de **64-bits jre 8 (Java Runtime Environment) of openjdk** op uw IR-computer **installeren, als**u geen Orc-bestanden kopieert. Raadpleeg de volgende alinea met meer informatie.
 
-Voor een kopie die wordt uitgevoerd op een zelf-hostende IR met ORC-serialisatie/deserialisatie, zoekt ADF de Java-runtime *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* door het REGI ster voor jre te controleren, indien niet *`JAVA_HOME`* gevonden, ter controle van de systeem variabele voor openjdk.
+Voor een kopie die wordt uitgevoerd op een zelf-hostende IR met ORC-serialisatie/deserialisatie, zoekt ADF de Java-runtime door het REGI ster *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* voor jre te controleren, indien niet gevonden, ter controle van de systeem variabele *`JAVA_HOME`* voor openjdk.
 
 - **Jre gebruiken**: de 64-bits IR vereist een 64-bits jre. U kunt deze [hier](https://go.microsoft.com/fwlink/?LinkId=808605)vinden.
-- **Als u openjdk wilt gebruiken**, wordt dit ondersteund sinds IR-versie 3,13. Verdeel het JVM. dll-bestand met alle andere vereiste assembly's van OpenJDK in een zelf-hostende IR-computer en stel de systeem omgevings variabele in JAVA_HOME dienovereenkomstig in.
+- **Als u openjdk wilt gebruiken**, wordt dit ondersteund sinds IR-versie 3,13. Verpak de jvm.dll met alle andere vereiste assembly's van OpenJDK op een zelf-hostende IR-computer en stel de systeem omgevings variabele in JAVA_HOME dienovereenkomstig in.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Toewijzing van gegevens type voor ORC-bestanden
 
 | Data Factory-gegevens type interim | ORC typen |
 |:--- |:--- |
-| Booleaans | Booleaans |
+| Boolean | Boolean |
 | SByte | Byte |
 | Byte | Korte |
 | Int16 | Korte |
@@ -507,8 +507,8 @@ Voor een kopie die wordt uitgevoerd op een zelf-hostende IR met ORC-serialisatie
 | UInt32 | Omvang |
 | Int64 | Omvang |
 | UInt64 | Tekenreeks |
-| Enkel | Drijvend |
-| Double | Double |
+| Enkelvoudig | Float |
+| Dubbel | Dubbel |
 | Decimal | Decimal |
 | Tekenreeks | Tekenreeks |
 | DateTime | Tijdstempel |
@@ -540,12 +540,12 @@ Houd rekening met de volgende punten:
 
 ## <a name="compression-support-legacy"></a><a name="compression-support"></a>Ondersteuning voor compressie (verouderd)
 
-Azure Data Factory ondersteunt gecomprimeerde/gedecomprimeerde gegevens tijdens het kopiëren. Wanneer u een `compression` eigenschap opgeeft in een invoer-gegevensset, lezen de Kopieer activiteit de gecomprimeerde gegevens van de bron en decomprimeert deze. en wanneer u de eigenschap in een uitvoer-gegevensset opgeeft, worden de gegevens door de Kopieer activiteit gecomprimeerd en vervolgens naar de Sink geschreven. Hier volgen enkele voor beelden van scenario's:
+Azure Data Factory ondersteunt gecomprimeerde/gedecomprimeerde gegevens tijdens het kopiëren. Wanneer u `compression` een eigenschap opgeeft in een invoer-gegevensset, worden de gecomprimeerde gegevens van de bron door de Kopieer activiteit gelezen en gedecomprimeerd. Wanneer u de eigenschap in een uitvoer-gegevensset opgeeft, worden de gegevens door de Kopieer activiteit gecomprimeerd en vervolgens naar de Sink geschreven. Hier volgen enkele voor beelden van scenario's:
 
-* Lees de door GZIP gecomprimeerde gegevens van een Azure-Blob, Decomprimeer deze en schrijf resultaat gegevens naar een Azure-SQL database. U definieert de invoer van de Azure Blob- `compression` `type` gegevensset met de eigenschap als gzip.
-* Gegevens lezen uit een bestand met een onbewerkte tekst vanuit een on-premises bestands systeem, comprimeren met de GZip-indeling en de gecomprimeerde gegevens schrijven naar een Azure-Blob. U definieert een Azure Blob-gegevensset voor uitvoer `compression` `type` met de eigenschap als gzip.
-* Lees het zip-bestand van de FTP-server, Decomprimeer het om de bestanden erin op te halen en land deze bestanden in Azure Data Lake Store. U definieert een invoer-FTP-gegevensset `compression` `type` met de eigenschap als ZipDeflate.
-* Lees een door GZIP gecomprimeerde gegevens uit een Azure-Blob, Decomprimeer het, comprimeer deze met BZIP2 en schrijf resultaat gegevens naar een Azure-Blob. U definieert de invoer van de Azure Blob `compression` `type` -gegevensset met ingesteld op gzip en de `compression` `type` uitvoer gegevensset met ingesteld op bzip2.
+* Lees de door GZIP gecomprimeerde gegevens van een Azure-Blob, Decomprimeer deze en schrijf resultaat gegevens naar Azure SQL Database. U definieert de invoer van de Azure Blob-gegevensset met de `compression` `type` eigenschap als gzip.
+* Gegevens lezen uit een bestand met een onbewerkte tekst vanuit een on-premises bestands systeem, comprimeren met de GZip-indeling en de gecomprimeerde gegevens schrijven naar een Azure-Blob. U definieert een Azure Blob-gegevensset voor uitvoer met de `compression` `type` eigenschap als gzip.
+* Lees het zip-bestand van de FTP-server, Decomprimeer het om de bestanden erin op te halen en land deze bestanden in Azure Data Lake Store. U definieert een invoer-FTP-gegevensset met de `compression` `type` eigenschap als ZipDeflate.
+* Lees een door GZIP gecomprimeerde gegevens uit een Azure-Blob, Decomprimeer het, comprimeer deze met BZIP2 en schrijf resultaat gegevens naar een Azure-Blob. U definieert de invoer van de Azure Blob-gegevensset met `compression` `type` ingesteld op gzip en de uitvoer gegevensset met `compression` `type` ingesteld op bzip2.
 
 Als u compressie voor een gegevensset wilt opgeven, gebruikt u de eigenschap **Compression** in de JSON van de gegevensset, zoals in het volgende voor beeld:
 
@@ -575,7 +575,7 @@ Als u compressie voor een gegevensset wilt opgeven, gebruikt u de eigenschap **C
 
 De sectie **compressie** heeft twee eigenschappen:
 
-* **Type:** de compressie-codec, die **gzip**, **Deflate**, **bzip2**of **ZipDeflate**kan zijn. Opmerking Wanneer u Kopieer activiteit gebruikt om ZipDeflate-bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden `<path specified in dataset>/<folder named as source zip file>/`bestanden uitgepakt naar de map:.
+* **Type:** de compressie-codec, die **gzip**, **Deflate**, **bzip2**of **ZipDeflate**kan zijn. Opmerking Wanneer u Kopieer activiteit gebruikt om ZipDeflate-bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden bestanden uitgepakt naar de map: `<path specified in dataset>/<folder named as source zip file>/` .
 * **Niveau:** de compressie ratio, die **optimaal** of **snelst**kan zijn.
 
   * **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.

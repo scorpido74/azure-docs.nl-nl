@@ -3,12 +3,12 @@ title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 6594386fd2d8c8ab9d9c1414d7e04f4352a3f086
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5ade39d014ca309796813cc6ff9259bcc8bdd17b
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678270"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194073"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
@@ -358,7 +358,7 @@ Gebruik de eigenschap **para meters** om parameter waarden inline door te geven.
       "contentVersion":"1.0.0.0"
      },
      "parameters": {
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }

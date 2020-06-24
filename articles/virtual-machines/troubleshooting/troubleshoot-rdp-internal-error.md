@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266921"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703788"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Er treedt een interne fout op wanneer u via Extern bureaublad probeert te verbinden met een Azure-VM
 
@@ -59,7 +59,7 @@ Maak verbinding met de [seriële console en open een Power shell-exemplaar](./se
 ) om te controleren of poort 8080 wordt gebruikt door andere toepassingen:
 
         Netstat -anob |more
-2. Als met de term. exe 8080 poort wordt gebruikt, gaat u naar stap 2. Als een andere service of andere toepassing dan de term. exe 8080 poort gebruikt, voert u de volgende stappen uit:
+2. Als Termservice.exe 8080-poort gebruikt, gaat u naar stap 2. Als een andere service of toepassing, met uitzonde ring van Termservice.exe, 8080-poort wordt gebruikt, volgt u deze stappen:
 
     1. Stop de service voor de toepassing die gebruikmaakt van de 3389-service:
 

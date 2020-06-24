@@ -4,16 +4,16 @@ description: Een FSLogix-profiel container maken met behulp van Azure NetApp Fil
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484634"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211938"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Een profiel container maken met Azure NetApp Files en AD DS
 
@@ -87,7 +87,7 @@ Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
 ## <a name="create-a-capacity-pool"></a>Een capaciteits pool maken
 
-Maak vervolgens een nieuwe capaciteits groep: 
+Maak vervolgens een nieuwe capaciteits groep:
 
 1. Ga naar het menu Azure NetApp Files en selecteer uw nieuwe account.
 2. Selecteer in uw account menu de optie **capaciteits Pools** onder Storage service.
@@ -158,7 +158,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 2. Pak het gedownloade bestand uit.
 
-3. Ga in het bestand naar **x64**-  >  **releases** en voer **FSLogixAppsSetup. exe**uit. Het installatie menu wordt geopend.
+3. Ga in het bestand naar **x64**-  >  **releases** en voer **FSLogixAppsSetup.exe**uit. Het installatie menu wordt geopend.
 
 4.  Als u een product code hebt, voert u deze in het tekstvak product code in.
 

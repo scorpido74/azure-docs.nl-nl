@@ -5,20 +5,20 @@ description: Meer informatie over het maken van een aangepaste test voor Applica
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312593"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807161"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Een aangepaste test voor Azure-toepassing gateway maken met behulp van Power shell voor Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure-portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Een openbaar IP-adres maken voor de front-endconfiguratie
 
-Maak de openbare IP-resource **publicIP01** in de resourcegroep **appgw-rg** voor de regio VS - west. In dit voor beeld wordt een openbaar IP-adres gebruikt voor het front-end-IP-adres van de toepassings gateway.  Voor de toepassings gateway moet het open bare IP-adres een dynamisch gemaakte DNS- `-DomainNameLabel` naam hebben. Daarom kan het niet worden opgegeven tijdens het maken van het open bare IP-adres.
+Maak de openbare IP-resource **publicIP01** in de resourcegroep **appgw-rg** voor de regio VS - west. In dit voor beeld wordt een openbaar IP-adres gebruikt voor het front-end-IP-adres van de toepassings gateway.  Voor de toepassings gateway moet het open bare IP-adres een dynamisch gemaakte DNS-naam hebben `-DomainNameLabel` . Daarom kan het niet worden opgegeven tijdens het maken van het open bare IP-adres.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -87,10 +87,10 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 U kunt alle configuratie-items instellen voordat u de toepassings gateway maakt. In het volgende voor beeld worden de configuratie-items gemaakt die nodig zijn voor een toepassings gateway resource.
 
-| **Component** | **Beschrijving** |
+| **Onderdeel** | **Beschrijving** |
 |---|---|
 | **Gateway-IP-configuratie** | Een IP-configuratie voor een toepassings gateway.|
-| **Back-end-groep** | Een groep IP-adressen, FQDN-of Nic's die betrekking hebben op de toepassings servers die als host fungeren voor de webtoepassing|
+| **Back-end-pool** | Een groep IP-adressen, FQDN-of Nic's die betrekking hebben op de toepassings servers die als host fungeren voor de webtoepassing|
 | **Statustest** | Een aangepaste test die wordt gebruikt om de status van de back-endadresgroep te controleren|
 | **HTTP-instellingen** | Een verzameling instellingen waaronder, poort, protocol, affiniteit op basis van cookies, test en time-out.  Deze instellingen bepalen hoe verkeer wordt doorgestuurd naar de back-endadresgroep.|
 | **Frontend-poort** | De poort die de toepassings gateway luistert naar verkeer op|

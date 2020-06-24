@@ -3,15 +3,15 @@ title: Exporteren naar SQL vanuit Azure-toepassing Insights | Microsoft Docs
 description: Application Insights gegevens doorlopend naar SQL exporteren met behulp van Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 811d86c0a9b8e55f548046402885e2ec5967c477
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536910"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254681"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met behulp van Stream Analytics
-In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar een Azure-SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
+In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar Azure SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
 
 Doorlopend exporteren verplaatst uw telemetriegegevens naar Azure Storage in JSON-indeling. We parseren de JSON-objecten met Azure Stream Analytics en maken rijen in een database tabel.
 
@@ -70,7 +70,7 @@ Doorlopend exporteren voert altijd gegevens uit naar een Azure Storage-account, 
    
     Noteer het algemene deel van de padnaam, die is afgeleid van de toepassings naam en instrumentatie sleutel. 
 
-De gebeurtenissen worden geschreven naar BLOB-bestanden in JSON-indeling. Elk bestand kan een of meer gebeurtenissen bevatten. Daarom willen we de gegevens van de gebeurtenis lezen en de gewenste velden filteren. Er zijn allerlei dingen die we kunnen doen met de gegevens, maar het plan is nu het gebruik van Stream Analytics om de gegevens naar een SQL database te verplaatsen. Zo kunt u heel eenvoudig veel interessante query's uitvoeren.
+De gebeurtenissen worden geschreven naar BLOB-bestanden in JSON-indeling. Elk bestand kan een of meer gebeurtenissen bevatten. Daarom willen we de gegevens van de gebeurtenis lezen en de gewenste velden filteren. Er zijn allerlei dingen die we kunnen doen met de gegevens, maar het plan is nu het gebruik van Stream Analytics om de gegevens naar SQL Database te verplaatsen. Zo kunt u heel eenvoudig veel interessante query's uitvoeren.
 
 ## <a name="create-an-azure-sql-database"></a>Een Azure SQL-database maken
 Nadat u het abonnement in [Azure Portal][portal]hebt gemaakt, maakt u de data base (en een nieuwe server, tenzij u er al een hebt) waarnaar u de gegevens gaat schrijven.
@@ -220,7 +220,7 @@ Selecteer SQL als uitvoer.
 
 ![Selecteer in stream Analytics uitvoer](./media/code-sample-export-sql-stream-analytics/SA006.png)
 
-Geef de SQL database op.
+Geef de Data Base op.
 
 ![Vul de details van de data base in](./media/code-sample-export-sql-stream-analytics/SA007.png)
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 3b09b431e827bed4e416913c88d23ee1eddaf17c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 2358cf57348b82975250d489ac95d6e0b35eed0e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629011"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254817"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Problemen met Azure Event Grid oplossen
 Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichten, beschrijvingen en aanbevolen acties die u moet uitvoeren wanneer u deze fouten ontvangt. 
@@ -29,11 +29,18 @@ Deze hand leiding bevat een lijst met Azure Event Grid fout codes, fout berichte
 | ---------- | ------------- | ----------- | -------------- | 
 | Http status code. conflict <br/>409 | Er bestaat al een onderwerp met de opgegeven naam. Kies een andere naam voor het onderwerp.   | De naam van het aangepaste onderwerp moet uniek zijn in één Azure-regio om een juiste publicatie bewerking te kunnen garanderen. Dezelfde naam kan worden gebruikt in verschillende Azure-regio's. | Kies een andere naam voor het onderwerp. |
 | Http status code. conflict <br/> 409 | Het domein met de opgegeven bestaat al. Kies een andere domein naam. | De domein naam moet uniek zijn in één Azure-regio om een juiste publicatie bewerking te kunnen garanderen. Dezelfde naam kan worden gebruikt in verschillende Azure-regio's. | Kies een andere naam voor het domein. |
-| Http status code. conflict<br/>409 | De quotum limiet is bereikt. Zie [Azure Event grid limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)voor meer informatie over deze limieten.  | Elk Azure-abonnement heeft een limiet voor het aantal Azure Event Grid resources dat kan worden gebruikt. Sommige of alle van deze quota zijn overschreden en er kunnen geen resources meer worden gemaakt. |    Controleer het gebruik van uw huidige resources en verwijder deze die niet nodig zijn. Als u nog steeds uw quotum wilt verhogen, stuurt u een e-mail [aeg@microsoft.com](mailto:aeg@microsoft.com) naar het exacte aantal benodigde resources. |
+| Http status code. conflict<br/>409 | De quotum limiet is bereikt. Zie [Azure Event grid limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)voor meer informatie over deze limieten.  | Elk Azure-abonnement heeft een limiet voor het aantal Azure Event Grid resources dat kan worden gebruikt. Sommige of alle van deze quota zijn overschreden en er kunnen geen resources meer worden gemaakt. |    Controleer het gebruik van uw huidige resources en verwijder deze die niet nodig zijn. Als u nog steeds uw quotum wilt verhogen, stuurt u een e-mail naar [aeg@microsoft.com](mailto:aeg@microsoft.com) het exacte aantal benodigde resources. |
+
+## <a name="error-code-403"></a>Fout code: 403
+
+| Foutcode | Foutbericht | Beschrijving | Aanbevolen actie |
+| ---------- | ------------- | ----------- | ------------------ |
+| Http status code. verboden <br/>403 | Publiceren naar {topic/Domain} door de client {IpAddress} is geweigerd vanwege IP-filter regels. | Voor het onderwerp of het domein zijn IP-firewall regels geconfigureerd en de toegang is beperkt tot geconfigureerde IP-adressen. | Voeg het IP-adres toe aan de IP-firewall regels, Zie [IP-Firewall configureren](configure-firewall.md) |
+| Http status code. verboden <br/> 403 | Publiceren naar {topic/Domain} door de client is geweigerd omdat de aanvraag afkomstig is van een persoonlijk eind punt en er geen overeenkomende persoonlijke eindpunt verbinding is gevonden voor de resource. | Het onderwerp of het domein heeft het geconfigureerde persoonlijke eind punt en de publicatie aanvraag is afkomstig van een persoonlijk eind punt dat niet is geconfigureerd/goedgekeurd. | Een persoonlijk eind punt configureren voor het onderwerp/domein. [Privé-eindpunten configureren](configure-private-endpoints.md) |
 
 ## <a name="troubleshoot-event-subscription-validation"></a>Problemen met validatie van gebeurtenis abonnementen oplossen
 
-Bij het maken van een gebeurtenis abonnement, als er een fout bericht wordt `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation`weer gegeven, geeft dit aan dat er een fout is opgetreden in de validatie-handshake. U kunt deze fout oplossen door de volgende aspecten te controleren:
+Bij het maken van een gebeurtenis abonnement, als er een fout bericht `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` wordt weer gegeven, geeft dit aan dat er een fout is opgetreden in de validatie-handshake. U kunt deze fout oplossen door de volgende aspecten te controleren:
 
 - Voer een HTTP POST naar uw webhook-URL uit met een voor beeld van een [SubscriptionValidationEvent](webhook-event-delivery.md#validation-details) -aanvraag tekst met behulp van Postman of krul of een soortgelijk hulp programma.
 - Als uw webhook het handshake-mechanisme voor synchrone validatie implementeert, controleert u of de ValidationCode als onderdeel van het antwoord wordt geretourneerd.

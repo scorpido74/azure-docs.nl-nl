@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267948"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707392"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Een on-premises StorSimple-apparaat implementeren (Update 3 en hoger)
 
@@ -28,7 +28,7 @@ Bij de informatie in deze zelfstudies wordt ervan uitgegaan dat u de voorzorgsma
 U hebt beheerdersbevoegdheden nodig om het installatie- en configuratieproces uit te voeren. U wordt geadviseerd om de configuratiecontrolelijst te raadplegen voordat u begint. Het implementatie- en configuratieproces kan enige tijd duren.
 
 > [!NOTE]
-> De StorSimple-implementatiegegevens die zijn gepubliceerd op de website van Microsoft Azure zijn alleen van toepassing op apparaten uit de StorSimple 8000-serie. Ga voor volledige informatie over de 7000-serie apparaten naar: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Raadpleeg de [Introductiehandleiding van het StorSimple-systeem](http://onlinehelp.storsimple.com/111_Appliance/) voor informatie over de implementatie van de 7000-serie. 
+> De StorSimple-implementatiegegevens die zijn gepubliceerd op de website van Microsoft Azure zijn alleen van toepassing op apparaten uit de StorSimple 8000-serie. Ga voor volledige informatie over de 7000-serie apparaten naar: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) . Raadpleeg de [Introductiehandleiding van het StorSimple-systeem](http://onlinehelp.storsimple.com/111_Appliance/) voor informatie over de implementatie van de 7000-serie. 
 
 
 ## <a name="deployment-steps"></a>Implementatiestappen

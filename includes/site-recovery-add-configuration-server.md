@@ -52,4 +52,4 @@ ms.locfileid: "67175749"
 
     ![Samenvatting](./media/site-recovery-add-configuration-server/combined-wiz10.png)
 
-Nadat de registratie is voltooid, wordt de server weer gegeven op de Blade **instellingen** > **servers** in de kluis.
+Nadat de registratie is voltooid, wordt de server weer gegeven op de Blade **instellingen**  >  **servers** in de kluis.

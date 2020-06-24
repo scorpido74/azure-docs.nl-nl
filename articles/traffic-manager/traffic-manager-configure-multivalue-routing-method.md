@@ -4,20 +4,19 @@ description: In dit artikel wordt uitgelegd hoe u Traffic Manager configureert o
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
-ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938785"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706814"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>De methode voor het routeren van meerdere waarden in Traffic Manager configureren
 
@@ -38,7 +37,7 @@ Maak een resource groep voor het Traffic Manager profiel.
 ## <a name="create-a-traffic-manager-profile"></a>Een Traffic Manager-profiel maken
 Maak een Traffic Manager profiel dat gebruikers verkeer verstuurt door het naar het eind punt te verzenden met de laagste latentie.
 
-1. Selecteer in de linkerbovenhoek van het scherm **een resource** > **netwerk** > **Traffic Manager profiel** > **maken**.
+1. Selecteer in de linkerbovenhoek van het scherm **een resource maken**  >  **netwerk**  >  **Traffic Manager profiel**  >  **maken**.
 2. Voer in **Traffic Manager profiel maken**de volgende informatie in of Selecteer deze, accepteer de standaard waarden voor de overige instellingen en selecteer vervolgens **maken**:
     
     | Instelling                 | Waarde                                              |
@@ -63,7 +62,7 @@ Voeg twee IP-adressen als externe eind punten toe aan het profiel voor meerdere 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Type                    | Extern eind punt                                   |
-    | Naam           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | FQDN-naam (Fully Qualified Domain Name) of IP           | Typ het open bare IP-adres van het eind punt dat u wilt toevoegen aan dit Traffic Manager profiel                         |
     |        |           |
 

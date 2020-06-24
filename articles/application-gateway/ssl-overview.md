@@ -4,15 +4,15 @@ description: Dit artikel bevat een overzicht van de Application Gateway end-to-e
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: 3f8dcf4858d69f33ea50d473f6261cf45a6b7fa5
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f9d55c3294cc28b6193371cdc6ede7ba1bc8167b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629219"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254800"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway
 

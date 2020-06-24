@@ -13,18 +13,18 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897049"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253491"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Factoren die invloed hebben op de prestaties van Azure AD Connect
 
 Azure AD Connect uw Active Directory synchroniseert met Azure AD. Deze server is een essentieel onderdeel van het verplaatsen van uw gebruikers identiteiten naar de Cloud. De belangrijkste factoren die van invloed zijn op de prestaties van een Azure AD Connect zijn:
 
-| **Ontwerp factor**| **Definitie** |
+| **Ontwerp factor**| **Beschrijving** |
 |:-|-|
 | Topologie| De distributie van de eind punten en onderdelen Azure AD Connect moet worden beheerd in het netwerk. |
 | Schalen| Het aantal objecten zoals de gebruikers, groepen en organisatie-eenheden die worden beheerd door Azure AD Connect. |
@@ -143,7 +143,7 @@ Organisaties kunnen voor komen dat bepaalde kenmerken naar Azure AD stromen, maa
 
 ## <a name="azure-ad-connect-dependency-factors"></a>Afhankelijkheids factoren Azure AD Connect
 
-De prestaties van Azure AD Connect zijn afhankelijk van de prestaties van de verbonden directory's die worden geïmporteerd en geëxporteerd naar. Bijvoorbeeld de grootte van de Active Directory die moet worden geïmporteerd of de netwerk latentie naar de Azure AD-service. De SQL database de inrichtings engine gebruikt, heeft ook invloed op de algehele prestaties van de synchronisatie cyclus.
+De prestaties van Azure AD Connect zijn afhankelijk van de prestaties van de verbonden directory's die worden geïmporteerd en geëxporteerd naar. Bijvoorbeeld de grootte van de Active Directory die moet worden geïmporteerd of de netwerk latentie naar de Azure AD-service. Het SQL database dat de inrichtings engine gebruikt, heeft ook invloed op de algehele prestaties van de synchronisatie cyclus.
 
 ### <a name="active-directory-factors"></a>Active Directory factoren
 
@@ -172,7 +172,7 @@ De grootte van de bron Active Directory topologie heeft invloed op uw SQL databa
 
 - Organisaties met meer dan 100.000 gebruikers kunnen netwerk latentie verminderen door SQL database en de inrichtings engine te verplaatsen op dezelfde server.
 - Als gevolg van de vereisten voor invoer en uitvoer (I/O) voor hoge schijven van het synchronisatie proces, gebruikt u een SSD-schijf (Solid-State Drive) voor de SQL database van de inrichtings engine voor optimale resultaten, als dit niet mogelijk is, overweeg dan RAID 0 of RAID 1-configuraties.
-- Geen volledige synchronisatie uitvoeren vóór-bekend; Dit leidt tot onnodig verloop en tragere reactie tijden.
+- Voer geen volledige synchronisatie preventief uit. Dit leidt tot onnodig verloop en tragere reactie tijden.
 
 ## <a name="conclusion"></a>Conclusie
 

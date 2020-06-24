@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: d3a2dfba98f83d34c3e83ec865e3b692f7dbacd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254220"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254562"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Inzicht in facturering voor Azure CDN
 
@@ -114,7 +114,8 @@ Als u een van de volgende Azure-Services gebruikt als uw CDN-oorsprong, worden e
 - Azure Cosmos DB
 - Azure Data Lake Store
 - Azure Machine Learning 
-- Azure SQL-database
+- Azure SQL Database
+- Azure SQL Managed Instance
 - Azure Cache voor Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hoe kan ik mijn kosten het meest effectief beheren?

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 4c0ae83a0ed3a7f9fc550af2d64d5fcd1f42c998
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 609b5903d02e9265e211cf25606ae3852e03e913
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324661"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254018"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Zelf studie: SQL Data Sync instellen tussen data bases in Azure SQL Database en SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,18 +36,18 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) om uw data base te vinden in SQL database. Zoek en selecteer **SQL-data bases**.
 
-    ![Zoeken naar SQL-data bases, Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
+    ![Zoeken naar data bases, Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
 
 1. Selecteer de data base die u wilt gebruiken als de hub-Data Base voor de gegevens synchronisatie.
 
-    ![Selecteer in SQL database lijst Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
+    ![Selecteer in de lijst met data bases Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/select-sql-database.png)
 
     > [!NOTE]
     > De hub-data base is het centrale eind punt van een synchronisatie topologie waarin een synchronisatie groep meerdere database eindpunten heeft. Alle andere leden databases met eind punten in de synchronisatie groep, synchroniseren met de hub-data base.
 
 1. Selecteer in het menu **SQL database** voor de geselecteerde data base de optie **synchroniseren met andere data bases**.
 
-    ![Synchroniseren met andere data bases, SQL database, Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
+    ![Synchroniseren met andere data bases, Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/sync-to-other-databases.png)
 
 1. Selecteer op de pagina **synchroniseren met andere data bases** de optie **nieuwe synchronisatie groep**. De pagina **nieuwe synchronisatie groep** wordt geopend met een **synchronisatie groep maken (stap 1)** gemarkeerd.
 
@@ -244,5 +244,5 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 Zie de volgende onderwerpen voor meer informatie over SQL Database:
 
-- [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
+- [Overzicht van SQL Database](sql-database-paas-overview.md)
 - [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)

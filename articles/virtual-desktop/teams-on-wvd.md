@@ -4,16 +4,16 @@ description: Micro soft teams gebruiken op het virtuele bureau blad van Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 0b2ef8a944af9f80dd65ce75869bcf4e3156c63f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667043"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254902"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -42,7 +42,7 @@ In deze sectie wordt uitgelegd hoe u de teams bureau blad-app kunt installeren o
 
 ### <a name="prepare-your-image-for-teams"></a>Uw installatie kopie voorbereiden voor teams
 
-Als u teams per computer wilt installeren, stelt u de volgende register sleutel op de host in:
+Als u media optimalisatie voor teams wilt inschakelen, stelt u de volgende register sleutel op de host in:
 
 1. Voer in het menu Start **regedit** uit als Administrator. Ga naar **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
 2. Maak de volgende waarde voor de sleutel teams:
@@ -57,29 +57,39 @@ Installeer de [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/ap
 
 ### <a name="install-microsoft-teams"></a>Micro soft teams installeren
 
-U kunt de teams bureau blad-app implementeren met behulp van een installatie per computer. Micro soft teams installeren in uw virtueel-bureaublad omgeving van Windows:
+U kunt de teams bureau blad-app implementeren met behulp van een installatie per machine of per gebruiker. Micro soft teams installeren in uw virtueel-bureaublad omgeving van Windows:
 
 1. Down load het [MSI-pakket voor teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) dat overeenkomt met uw omgeving. Het is raadzaam om het 64-bits installatie programma te gebruiken op een 64-bits besturings systeem.
 
       > [!NOTE]
       > Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
 
-2. Voer deze opdracht uit om de MSI te installeren op de host-VM.
+2. Voer een van de volgende opdrachten uit om de MSI te installeren op de host-VM:
 
-      ```console
-      msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
-      ```
+    - Installatie per gebruiker
 
-      Hiermee worden teams geïnstalleerd in de map Program Files (x86) op een 64-bits besturings systeem en in de map Program Files op een 32-bits besturings systeem. Op dit moment is de installatie van de gouden installatie kopie voltooid. Het installeren van teams per computer is vereist voor niet-permanente Setup.
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        ```
 
-      De volgende keer dat u teams in een sessie opent, wordt u gevraagd om uw referenties op te vragen.
+        Dit proces is de standaard installatie, waarmee teams worden geïnstalleerd in de map **% AppData%** gebruiker. Teams werken niet goed met installatie per gebruiker op een niet-permanente configuratie.
 
-      > [!NOTE]
-      > Gebruikers en beheerders kunnen de functie voor het automatisch starten van teams tijdens het aanmelden op dit moment niet uitschakelen.
+    - Installatie per computer
 
-      Als u de MSI wilt verwijderen van de host-VM, voert u de volgende opdracht uit:
+        ```powershell
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        ```
 
-      ```console
+        Hiermee worden teams geïnstalleerd in de map Program Files (x86) op een 64-bits besturings systeem en in de map Program Files op een 32-bits besturings systeem. Op dit moment is de installatie van de gouden installatie kopie voltooid. Het installeren van teams per computer is vereist voor niet-permanente Setup.
+
+        De volgende keer dat u teams in een sessie opent, wordt u gevraagd om uw referenties op te vragen.
+
+        > [!NOTE]
+        > Gebruikers en beheerders kunnen de functie voor het automatisch starten van teams tijdens het aanmelden op dit moment niet uitschakelen.
+
+3. Als u de MSI wilt verwijderen van de host-VM, voert u de volgende opdracht uit:
+
+      ```powershell
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
@@ -137,7 +147,7 @@ Als u problemen ondervindt met aanroepen en vergaderingen, kunt u de logboeken v
 
 ## <a name="contact-microsoft-teams-support"></a>Contact opnemen met micro soft teams ondersteuning
 
-Ga naar het [Microsoft 365-beheer centrum](https://docs.microsoft.com/microsoft-365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=online)om contact op te nemen met de ondersteuning van micro soft teams.
+Ga naar het [Microsoft 365-beheer centrum](/microsoft-365/admin/contact-support-for-business-products)om contact op te nemen met de ondersteuning van micro soft teams.
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Remote Desktop Protocol eigenschappen voor een hostgroep aanpassen
 
@@ -145,7 +155,7 @@ Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wi
 
 Het inschakelen van apparaatomleiding is niet vereist wanneer teams met media optimalisatie gebruiken. Als u teams zonder media optimalisatie gebruikt, stelt u de volgende RDP-eigenschappen in om de omleiding van de microfoon en camera in te scha kelen:
 
-- `audiocapturemode:i:1`Hiermee schakelt u audio-opname in van het lokale apparaat en redirets audio-toepassingen in de externe sessie.
+- `audiocapturemode:i:1`Hiermee wordt audio-opname van het lokale apparaat ingeschakeld en worden audio toepassingen omgeleid naar de externe sessie.
 - `audiomode:i:0`Audio afspelen op de lokale computer.
 - `camerastoredirect:s:*`alle camera's worden omgeleid.
 

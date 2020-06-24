@@ -4,20 +4,20 @@ description: Meer informatie over het maken van een aangepaste test voor Applica
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312556"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807292"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Een aangepaste test voor Azure-toepassing gateway (klassiek) maken met behulp van Power shell
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure-portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -136,32 +136,32 @@ In het volgende voor beeld ziet u hoe u een configuratie bestand gebruikt om de 
 > [!IMPORTANT]
 > Het protocolitem Http of Https is hoofdlettergevoelig.
 
-Er is een nieuwe \<configuratie\> -item test toegevoegd om aangepaste tests te configureren.
+Er wordt een nieuw configuratie-item \<Probe\> toegevoegd om aangepaste tests te configureren.
 
 De configuratie parameters zijn:
 
 |Parameter|Beschrijving|
 |---|---|
 |**Naam** |Referentie naam voor aangepaste test. |
-| **Protocolsubstatus** | Gebruikt protocol (mogelijke waarden zijn HTTP of HTTPS).|
-| **Host** en **pad** | Volledige URL-pad dat door de toepassings gateway wordt aangeroepen om de status van het exemplaar te bepalen. Als u bijvoorbeeld een website http:\//contoso.com/hebt, kan de aangepaste test worden geconfigureerd voor ' http:\//contoso.com/Path/custompath.htm ' voor test controles om een geslaagde http-reactie te krijgen.|
-| **Bereik** | Hiermee configureert u de controles van het test interval in seconden.|
-| **Out** | Hiermee wordt de time-out van de test voor een HTTP-antwoord controle gedefinieerd.|
+| **Protocol** | Gebruikt protocol (mogelijke waarden zijn HTTP of HTTPS).|
+| **Host** en **pad** | Volledige URL-pad dat door de toepassings gateway wordt aangeroepen om de status van het exemplaar te bepalen. Als u bijvoorbeeld een website http: \/ /contoso.com/hebt, kan de aangepaste test worden geconfigureerd voor "http: \/ /contoso.com/Path/custompath.htm" voor test controles om een geslaagde http-reactie te krijgen.|
+| **Interval** | Hiermee configureert u de controles van het test interval in seconden.|
+| **Time-out** | Hiermee wordt de time-out van de test voor een HTTP-antwoord controle gedefinieerd.|
 | **UnhealthyThreshold** | Het aantal mislukte HTTP-antwoorden dat nodig is voor het markeren van het back-end-exemplaar als *beschadigd*.|
 
-Naar de test naam wordt verwezen in de \<BackendHttpSettings\> -configuratie om toe te wijzen welke back-end-pool aangepaste test instellingen gebruikt.
+Er wordt in de configuratie naar de test naam verwezen \<BackendHttpSettings\> om toe te wijzen welke back-end-pool aangepaste test instellingen gebruikt.
 
 ## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Een aangepaste test toevoegen aan een bestaande toepassings gateway
 
 Het wijzigen van de huidige configuratie van een toepassings gateway vereist drie stappen: het huidige XML-configuratie bestand ophalen, wijzigen zodat het een aangepaste test heeft en de toepassings gateway configureren met de nieuwe XML-instellingen.
 
-1. Haal het XML-bestand op `Get-AzureApplicationGatewayConfig`met behulp van. Met deze cmdlet wordt de configuratie-XML geëxporteerd die moet worden gewijzigd om een test instelling toe te voegen.
+1. Haal het XML-bestand op met behulp van `Get-AzureApplicationGatewayConfig` . Met deze cmdlet wordt de configuratie-XML geëxporteerd die moet worden gewijzigd om een test instelling toe te voegen.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. Open het XML-bestand in een tekst editor. Voeg een `<probe>` sectie toe `<frontendport>`na.
+1. Open het XML-bestand in een tekst editor. Voeg een `<probe>` sectie toe na `<frontendport>` .
 
    ```xml
    <Probes>
@@ -192,7 +192,7 @@ Het wijzigen van de huidige configuratie van een toepassings gateway vereist dri
 
    Sla het XML-bestand op.
 
-1. Werk de configuratie van de toepassings gateway bij met het nieuwe XML `Set-AzureApplicationGatewayConfig`-bestand met behulp van. Met deze cmdlet wordt uw toepassings gateway bijgewerkt met de nieuwe configuratie.
+1. Werk de configuratie van de toepassings gateway bij met het nieuwe XML-bestand met behulp van `Set-AzureApplicationGatewayConfig` . Met deze cmdlet wordt uw toepassings gateway bijgewerkt met de nieuwe configuratie.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"

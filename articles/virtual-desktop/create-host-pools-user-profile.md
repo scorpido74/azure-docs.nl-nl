@@ -4,22 +4,22 @@ description: Een FSLogix-profiel container instellen voor een Windows Virtual De
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250918"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211830"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
 
 De virtueel-bureaublad service van Windows biedt FSLogix-profiel containers als de aanbevolen gebruikers profiel oplossing. Het is niet raadzaam om de oplossing voor de gebruikers profiel schijf (UPD) te gebruiken, die wordt afgeschaft in toekomstige versies van Windows virtueel bureau blad.
 
-In dit artikel wordt uitgelegd hoe u een FSLogix voor een hostgroep instelt met behulp van een bestands share op basis van een virtuele machine. Zie de [FSLogix-site](https://docs.fslogix.com/)voor meer documentatie over FSLogix.
+In dit artikel wordt uitgelegd hoe u een FSLogix voor een hostgroep instelt met behulp van een bestands share op basis van een virtuele machine. Het is raadzaam om Azure Files te gebruiken in plaats van bestands shares. Zie de [FSLogix-site](https://docs.fslogix.com/)voor meer documentatie over FSLogix.
 
 >[!NOTE]
 >Zie [opslag opties voor FSLogix-profiel containers](store-fslogix-profile.md)als u op zoek bent naar het vergelijkings materiaal over de verschillende FSLogix-profiel container opslag opties in Azure.
@@ -60,9 +60,9 @@ Als u de virtuele machines met de FSLogix-software wilt configureren, gaat u als
 
 1. [Maak verbinding met de virtuele machine](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
 2. Start een Internet browser en navigeer naar [deze koppeling](https://go.microsoft.com/fwlink/?linkid=2084562) om de FSLogix-agent te downloaden.
-3. Ga in het \\ \\zip\\-bestand \\ \\naar\\een Win32-versie of x64-versie en voer **FSLogixAppsSetup** uit om de FSLogix-agent te installeren.  Zie [FSLogix downloaden en installeren](/fslogix/install-ht/)voor meer informatie over het installeren van FSLogix.
-4. Navigeer naar **programma bestanden** > **FSLogix** > **apps** om te bevestigen dat de agent is geïnstalleerd.
-5. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+3. Ga \\ \\ in het zip-bestand naar een Win32- \\ versie of \\ \\ x64- \\ versie en voer **FSLogixAppsSetup** uit om de FSLogix-agent te installeren.  Zie [FSLogix downloaden en installeren](/fslogix/install-ht/)voor meer informatie over het installeren van FSLogix.
+4. Navigeer naar **programma bestanden**  >  **FSLogix**  >  **apps** om te bevestigen dat de agent is geïnstalleerd.
+5. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **Computer \\ HKEY_LOCAL_MACHINE \\ software \\ FSLogix**.
 6. Maak een sleutel met de naam **profielen**.
 7. Maak de volgende waarden voor de sleutel profielen:
 

@@ -4,11 +4,11 @@ description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen 
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273616"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707920"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -52,7 +52,7 @@ Recovery Services kluizen hebben de volgende kenmerken:
 
 Azure Backup biedt verschillende back-upagenten, afhankelijk van het type computer waarvan een back-up wordt gemaakt:
 
-**Agent** | **Nadere**
+**Agent** | **Details**
 --- | ---
 **MARS-agent** | <ul><li>Wordt uitgevoerd op afzonderlijke on-premises Windows Server-machines om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op virtuele machines van Azure om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op DPM-MABS-servers om een back-up te maken van de lokale opslag schijf DPM/MABS naar Azure.</li></ul>
 **VM-extensie van Azure** | Wordt uitgevoerd op virtuele Azure-machines om een back-up te maken naar een kluis.
@@ -61,7 +61,7 @@ Azure Backup biedt verschillende back-upagenten, afhankelijk van het type comput
 
 In de volgende tabel worden de verschillende typen back-ups beschreven en wanneer deze worden gebruikt:
 
-**Back-uptype** | **Nadere** | **Belasting**
+**Back-uptype** | **Details** | **Gebruik**
 --- | --- | ---
 **Volledig** | Een volledige back-up bevat de volledige gegevens bron. Vergt meer netwerk bandbreedte dan differentiële of incrementele back-ups. | Wordt gebruikt voor de eerste back-up.
 **Differentiële** |  Een differentiële back-up slaat de blokken op die zijn gewijzigd sinds de eerste volledige back-up. Maakt gebruik van een kleinere hoeveelheid netwerk en opslag, en houdt geen redundante kopieën van ongewijzigde gegevens in beslag.<br/><br/> Inefficiënt omdat gegevens blokken die niet worden gewijzigd tussen latere back-ups worden overgebracht en opgeslagen. | Niet gebruikt door Azure Backup.
@@ -71,7 +71,7 @@ In de volgende tabel worden de verschillende typen back-ups beschreven en wannee
 
 In de volgende tabel worden de verschillende typen back-ups beschreven die worden gebruikt voor SQL Server data bases en hoe vaak ze worden gebruikt:
 
-**Back-uptype** | **Nadere** | **Belasting**
+**Back-uptype** | **Details** | **Gebruik**
 --- | --- | ---
 **Volledige back-up** | Bij een volledige back-up wordt er een back-up van de hele database gemaakt. Het bevat alle gegevens in een specifieke data base of in een set bestands groepen of bestanden. Een volledige back-up bevat ook voldoende Logboeken om die gegevens te herstellen. | U kunt maximaal één volledige back-up per dag activeren.<br/><br/> U kunt ervoor kiezen om een volledige back-up op een dagelijks of wekelijks interval te maken.
 **Differentiële back-up** | Een differentiële back-up is gebaseerd op de meest recente back-up van de vorige volledige gegevens.<br/><br/> Het legt alleen de gegevens vast die zijn gewijzigd sinds de volledige back-up. |  U kunt maximaal één differentiële back-up per dag activeren.<br/><br/> U kunt niet zowel een volledige back-up als een differentiële back-up configureren op dezelfde dag.
@@ -95,8 +95,8 @@ De volgende tabel bevat een overzicht van de ondersteunde functies voor de versc
 **Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
-Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Yes][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Yes][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Yes][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 

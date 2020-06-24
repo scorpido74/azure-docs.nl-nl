@@ -13,15 +13,15 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281390"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707375"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Gegevens van ODBC-gegevens archieven verplaatsen met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-odbc-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-odbc-connector.md)
 > * [Versie 2 (huidige versie)](../connector-odbc.md)
 
 > [!NOTE]
@@ -66,13 +66,13 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesOdbc** |Ja |
-| Verbindings |Het referentie deel voor niet-toegang van de connection string en een optionele versleutelde referentie. Zie de voor beelden in de volgende secties. <br/><br/>U kunt de connection string met een patroon opgeven `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, of de systeem-DSN (gegevens bron naam) gebruiken die u hebt ingesteld op de gateway `"DSN=<name of the DSN>;"` computer met (u moet nog steeds het referentie deel opgeven in de gekoppelde service). |Ja |
-| referenties |Het deel van de toegangs referentie van de connection string dat is opgegeven in de eigenschaps waarde-indeling van het stuur programma. Bijvoorbeeld: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Nee |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met het ODBC-gegevens archief. Mogelijke waarden zijn: anoniem en basis. |Ja |
-| userName |Geef de gebruikers naam op als u basis verificatie gebruikt. |Nee |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het ODBC-gegevens archief. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **OnPremisesOdbc** |Yes |
+| Verbindings |Het referentie deel voor niet-toegang van de connection string en een optionele versleutelde referentie. Zie de voor beelden in de volgende secties. <br/><br/>U kunt de connection string met een patroon opgeven `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` , of de systeem-DSN (gegevens bron naam) gebruiken die u hebt ingesteld op de gateway computer met `"DSN=<name of the DSN>;"` (u moet nog steeds het referentie deel opgeven in de gekoppelde service). |Yes |
+| referenties |Het deel van de toegangs referentie van de connection string dat is opgegeven in de eigenschaps waarde-indeling van het stuur programma. Bijvoorbeeld: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |No |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met het ODBC-gegevens archief. Mogelijke waarden zijn: anoniem en basis. |Yes |
+| userName |Geef de gebruikers naam op als u basis verificatie gebruikt. |No |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |No |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het ODBC-gegevens archief. |Yes |
 
 ### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
 
@@ -138,7 +138,7 @@ De sectie **typeProperties** verschilt voor elk type gegevensset en bevat inform
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |De naam van de tabel in het ODBC-gegevens archief. |Ja |
+| tableName |De naam van de tabel in het ODBC-gegevens archief. |Yes |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten.
@@ -149,7 +149,7 @@ Wanneer de bron van het type **RelationalSource** (inclusief ODBC) is in Kopieer
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Ja |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Yes |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van ODBC-gegevens archief naar een Azure-Blob
@@ -187,7 +187,7 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies b
 }
 ```
 
-**Azure Storage gekoppelde service**
+**Een gekoppelde Azure Storage-service**
 
 ```json
 {
@@ -357,7 +357,7 @@ Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaa
 ## <a name="troubleshoot-connectivity-issues"></a>Verbindingsproblemen oplossen
 Gebruik het tabblad **Diagnostische gegevens** van **Data Management Gateway Configuration Manager**om verbindings problemen op te lossen.
 
-1. Start **Data Management Gateway Configuration Manager**. U kunt ' C:\Program Files\Microsoft Gegevensbeheer Gateway\1.0\Shared\ConfigManager.exe ' direct uitvoeren (of) zoek naar **Gateway** om een koppeling naar een **micro soft data management gateway** -toepassing te vinden, zoals wordt weer gegeven in de volgende afbeelding.
+1. Start **Data Management Gateway Configuration Manager**. U kunt ' C:\Program Files\Microsoft Gegevensbeheer Gateway\1.0\Shared\ConfigManager.exe direct (of) zoeken naar de **Gateway** om een koppeling naar een **micro soft data management gateway** -toepassing te zoeken, zoals wordt weer gegeven in de volgende afbeelding.
 
     ![Gateway zoeken](./media/data-factory-odbc-connector/search-gateway.png)
 2. Schakel over naar het tabblad **Diagnostische gegevens** .

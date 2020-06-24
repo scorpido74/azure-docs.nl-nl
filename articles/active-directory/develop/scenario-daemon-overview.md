@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885460"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253117"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Scenario: daemon-toepassing die web-Api's aanroept
 
@@ -38,7 +38,7 @@ Hier volgen enkele voor beelden van gebruiks voorbeelden voor daemon-apps:
 - Bureaublad toepassingen (zoals Windows-Services in Windows-of daemon-processen in Linux) die batch-taken uitvoeren, of een besturingssysteem service die op de achtergrond wordt uitgevoerd
 - Web-Api's die directory's moeten bewerken, niet specifieke gebruikers
 
-Er is een andere veelvoorkomende situatie waarbij niet-daemon-toepassingen gebruikmaken van client referenties: zelfs wanneer ze namens gebruikers handelen, moeten ze om technische redenen toegang hebben tot een web-API of een resource onder hun eigen identiteit. Een voor beeld is toegang tot geheimen in Azure Key Vault of een Azure SQL database voor een cache.
+Er is een andere veelvoorkomende situatie waarbij niet-daemon-toepassingen gebruikmaken van client referenties: zelfs wanneer ze namens gebruikers handelen, moeten ze om technische redenen toegang hebben tot een web-API of een resource onder hun eigen identiteit. Een voor beeld is toegang tot geheimen in Azure Key Vault of Azure SQL Database voor een cache.
 
 Toepassingen die een token voor hun eigen identiteiten verkrijgen:
 

@@ -10,14 +10,14 @@ ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 3f2456370d6f74e5d34c6b387247a6de442acea7
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115456"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705862"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Para meters voor de webservice Azure Machine Learning Studio (klassiek) gebruiken
 
@@ -61,10 +61,10 @@ Als voor beeld gaan we ervan uit dat we een experiment hebben met een [export ge
    
    Er wordt een vermelding toegevoegd onder de **para meters** van de webservice onder aan het deel venster Eigenschappen met de naam ' pad naar blob, beginnend met container '. Dit is de para meter van de webservice die nu is gekoppeld aan deze module parameter voor [export gegevens][writer] .
 4. Als u de naam van de para meter voor de webservice wilt wijzigen, klikt u op de naam, typt u "blob-pad" en drukt u op **Enter** . 
-5. Als u een standaard waarde wilt opgeven voor de para meter van de webservice, klikt u op het pictogram rechts van de naam, selecteert u standaard waarde opgeven, voert u een waarde in (bijvoorbeeld ' container1/output1. csv ') en drukt u op **Enter** .
+5. Als u een standaard waarde wilt opgeven voor de para meter van de webservice, klikt u op het pictogram rechts van de naam, selecteert u standaard waarde opgeven, geeft u een waarde op (bijvoorbeeld ' container1/output1.csv ') en drukt u op **Enter** .
    
    ![Webservice-para meter](./media/web-service-parameters/parameter.png)
-6. Klik op **uitvoeren**. 
+6. Klik op **Run**. 
 7. Klik op **Deploy web service** en selecteer **Deploy web service [Classic]** of **Deploy web service [New]** om de webservice te implementeren.
 
 > [!NOTE] 

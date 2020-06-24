@@ -4,19 +4,19 @@ description: Meer informatie over de impact van uw beleid voor voorwaardelijke t
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 02/25/2020
+ms.topic: conceptual
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620688"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253134"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen oplossen met behulp van het hulp programma What If in voorwaardelijke toegang
 
@@ -40,7 +40,7 @@ In het **What if hulp programma voor voorwaardelijke toegang**moet u eerst de in
      
 Als volgende stap kunt u een simulatie uitvoering initiëren waarmee uw instellingen worden geëvalueerd. Alleen beleids regels die zijn ingeschakeld, maken deel uit van een evaluatie-uitvoering.
 
-Wanneer de evaluatie is voltooid, genereert het hulp programma een rapport van het betreffende beleid.
+Wanneer de evaluatie is voltooid, genereert het hulp programma een rapport van het betreffende beleid. Voor het verzamelen van meer informatie over het beleid voor voorwaardelijke toegang, kunt u met de [voorwaardelijke toegang inzicht en de rapportage werkmap](howto-conditional-access-insights-reporting.md) aanvullende informatie geven over beleid in de modus alleen rapport en die beleids regels die momenteel zijn ingeschakeld.
 
 ## <a name="running-the-tool"></a>Het hulp programma uitvoeren
 
@@ -104,6 +104,5 @@ In de lijst met beleids regels die niet van toepassing zijn op uw gebruiker, kun
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
-- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md). 
-- Als u klassiek beleid wilt migreren, raadpleegt u [klassiek beleid migreren in de Azure Portal](policy-migration.md)  
+- Meer informatie over de toepassing voor beleid voor voorwaardelijke toegang vindt u in de modus alleen rapport-beleid met behulp van [inzichten en rapportage voor voorwaardelijke toegang](howto-conditional-access-insights-reporting.md).
+- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u het [algemene beleid voorwaardelijke toegang](concept-conditional-access-policy-common.md). 

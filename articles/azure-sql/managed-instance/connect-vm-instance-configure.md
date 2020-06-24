@@ -3,7 +3,7 @@ title: Azure VM-connectiviteit configureren
 titleSuffix: Azure SQL Managed Instance
 description: Verbinding maken met Azure SQL Managed instance met SQL Server Management Studio van een virtuele machine van Azure.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 9cfb8d2f9c7a04c519674856ca0e5603e0f9f782
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 76c4e2c5052e70c4c6cb8ff631151a5e6fc544e5
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219763"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706355"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Snelstartgids: een Azure-VM configureren om verbinding te maken met een door Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ Met de volgende stappen maakt u een nieuw subnet in het SQL Managed instance VNe
 
 1. Open de resource groep voor het beheerde exemplaar dat u hebt gemaakt in de Snelstartgids [een beheerd exemplaar maken](instance-create-quickstart.md) . Selecteer het virtuele netwerk voor uw beheerde exemplaar.
 
-   ![SQL Managed instance-resources](./media/connect-vm-instance-configure/resources.png)
+   ![SQL Managed Instance-resources](./media/connect-vm-instance-configure/resources.png)
 
 2. Selecteer **subnetten** en selecteer vervolgens **+ subnet** om een nieuw subnet te maken.
 
@@ -51,12 +51,12 @@ Met de volgende stappen maakt u een nieuw subnet in het SQL Managed instance VNe
 
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ---------------- | ----------------- | ----------- |
-   | **Naam** | Een geldige naam|Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen.|
+   | **Naam** | Een geldige naam|Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen.|
    | **Adresbereik (CIDR-blok)** | Een geldig bereik | De standaard waarde is geschikt voor deze Quick Start.|
-   | **Netwerk beveiligings groep** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
+   | **Netwerkbeveiligingsgroep** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
    | **Routetabel** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
    | **Service-eindpunten** | 0 geselecteerd | De standaard waarde is geschikt voor deze Quick Start.|
-   | **Delegatie van subnet** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
+   | **Subnet delegering** | Geen | De standaard waarde is geschikt voor deze Quick Start.|
 
    ![Nieuw subnet met SQL-beheerde instantie voor client-VM](./media/connect-vm-instance-configure/new-subnet.png)
 
@@ -81,10 +81,10 @@ De eenvoudigste manier om een virtuele client machine met alle benodigde hulppro
    | Instelling| Voorgestelde waarde | Beschrijving |
    | ---------------- | ----------------- | ----------- |
    | **Abonnement** | Een geldig abonnement | Moet een abonnement zijn waarin u gemachtigd bent om nieuwe resources te maken. |
-   | **Resourcegroep** |De resource groep die u hebt opgegeven in de Snelstartgids voor het [maken van SQL Managed instance](instance-create-quickstart.md)|Deze resource groep moet het VNet zijn.|
+   | **Resource groep** |De resource groep die u hebt opgegeven in de Snelstartgids voor het [maken van SQL Managed instance](instance-create-quickstart.md)|Deze resource groep moet het VNet zijn.|
    | **Locatie** | De locatie voor de resource groep | Deze waarde wordt ingevuld op basis van de geselecteerde resource groep. |
-   | **Naam van de virtuele machine**  | Een geldige naam | Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen.|
-   |**Gebruikers naam beheerder**|Een geldige gebruikers naam|Zie [naamgevings regels en beperkingen](/azure/architecture/best-practices/resource-naming)voor geldige namen. Maak geen gebruik van 'serverbeheerder' aangezien dit een rol is die op serverniveau is gereserveerd.<br>U gebruikt deze gebruikers naam telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-the-virtual-machine).|
+   | **Naam van virtuele machine**  | Een geldige naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen.|
+   |**Gebruikers naam beheerder**|Een geldige gebruikers naam|Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige namen. Maak geen gebruik van 'serverbeheerder' aangezien dit een rol is die op serverniveau is gereserveerd.<br>U gebruikt deze gebruikers naam telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-the-virtual-machine).|
    |**Wachtwoord**|Een geldig wachtwoord|Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>U gebruikt dit wacht woord telkens wanneer u [verbinding maakt met de virtuele machine](#connect-to-the-virtual-machine).|
    | **Grootte van virtuele machine** | Een geldige grootte | De standaard instelling in deze sjabloon van **Standard_B2s** is voldoende voor deze Quick Start. |
    | **Locatie**|[resourceGroup (). locatie].| Wijzig deze waarde niet. |
@@ -112,7 +112,7 @@ De volgende stappen laten zien hoe u verbinding maakt met uw nieuwe virtuele mac
 
     ![VM](./media/connect-vm-instance-configure/vm.png)  
 
-2. Selecteer **Verbinding maken**.
+2. Selecteer **Verbinden**.
 
    Een Remote Desktop Protocol bestand (RDP-bestand) wordt weer gegeven met het open bare IP-adres en het poort nummer voor de virtuele machine.
 

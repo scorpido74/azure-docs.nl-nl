@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250073"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706593"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Netwerkinterface opnieuw instellen voor virtuele Azure-machine voor Windows 
 
@@ -117,7 +117,7 @@ Voer de volgende stappen uit om de netwerk interface opnieuw in te stellen:
 Nadat u extern bureau blad naar de computer kunt, moet u de oude Nic's verwijderen om het potentiële probleem te voor komen:
 
 1.  Open Apparaatbeheer.
-2.  Selecteer **weer** > geven**verborgen apparaten**weer geven.
+2.  Selecteer **weer**geven  >  **verborgen apparaten**weer geven.
 3.  Selecteer **netwerk adapters**. 
 4.  Controleer op de adapters met de naam ' Microsoft Hyper-V netwerk adapter '.
 5.  Mogelijk ziet u een niet-beschik bare adapter die grijs wordt weer gegeven. Klik met de rechter muisknop op de adapter en selecteer vervolgens verwijderen.

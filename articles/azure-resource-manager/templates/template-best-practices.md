@@ -2,25 +2,21 @@
 title: Aanbevolen procedures voor sjablonen
 description: Hierin worden aanbevolen benaderingen beschreven voor het ontwerpen van Azure Resource Manager sjablonen. Biedt suggesties om veelvoorkomende problemen te voor komen bij het gebruik van sjablonen.
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c00a3a1162ffec4ce89c43ef2f76796fb5943438
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156409"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254086"
 ---
 # <a name="arm-template-best-practices"></a>Aanbevolen procedures voor ARM-sjablonen
 
-In dit artikel vindt u aanbevelingen voor het maken van uw Azure Resource Manager-sjabloon (ARM). Met deze aanbevelingen kunt u veelvoorkomende problemen voor komen wanneer u een ARM-sjabloon gebruikt om een oplossing te implementeren.
-
-Voor aanbevelingen over het beheren van uw Azure-abonnementen raadpleegt u [Azure Enter prise-steigers: prescripted Subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
-
-Zie [Azure Resource Manager sjablonen ontwikkelen voor Cloud consistentie](templates-cloud-consistency.md)voor aanbevelingen voor het maken van sjablonen die in alle Azure-Cloud omgevingen werken.
+Dit artikel laat u zien hoe u aanbevolen procedures kunt gebruiken bij het maken van uw ARM-sjabloon. Met deze aanbevelingen kunt u veelvoorkomende problemen voor komen wanneer u een ARM-sjabloon gebruikt om een oplossing te implementeren.
 
 ## <a name="template-limits"></a>Sjabloon limieten
 
-Beperk de grootte van uw sjabloon tot 4 MB en elk parameter bestand tot 64 KB. De limiet van 4 MB is van toepassing op de uiteindelijke status van de sjabloon nadat deze is uitgebreid met iteratieve resource definities en waarden voor variabelen en para meters. 
+Beperk de grootte van uw sjabloon tot 4 MB en elk parameter bestand tot 64 KB. De limiet van 4 MB is van toepassing op de uiteindelijke status van de sjabloon nadat deze is uitgebreid met iteratieve resource definities en waarden voor variabelen en para meters.
 
 U bent ook beperkt tot:
 
@@ -93,7 +89,7 @@ De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](templat
 
 * Gebruik geen para meter voor de API-versie voor een resource type. De resource-eigenschappen en-waarden kunnen variëren per versie nummer. IntelliSense in een code-editor kan het juiste schema niet bepalen wanneer de API-versie is ingesteld op een para meter. In plaats daarvan wordt de API-versie in de sjabloon vastgelegd.
 
-* Gebruik `allowedValues` spaarzaam. Gebruik deze alleen wanneer u moet controleren of sommige waarden niet zijn opgenomen in de toegestane opties. Als u te `allowedValues` breed gebruikt, kunt u geldige implementaties blok keren door de lijst niet up-to-date te houden.
+* Gebruik `allowedValues` spaarzaam. Gebruik deze alleen wanneer u moet controleren of sommige waarden niet zijn opgenomen in de toegestane opties. Als u `allowedValues` te breed gebruikt, kunt u geldige implementaties blok keren door de lijst niet up-to-date te houden.
 
 * Wanneer een parameter naam in uw sjabloon overeenkomt met een para meter in de Power shell-implementatie opdracht, wordt deze naam conflicten opgelost door de achtervoegsel **FromTemplate** toe te voegen aan de sjabloon parameter. Als u bijvoorbeeld een para meter met de naam **ResourceGroupName** in uw sjabloon opneemt, wordt er een conflict veroorzaakt met de para meter **ResourceGroupName** in de cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . Tijdens de implementatie wordt u gevraagd om een waarde voor **ResourceGroupNameFromTemplate**op te geven.
 
@@ -101,7 +97,7 @@ De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](templat
 
 * Gebruik altijd para meters voor gebruikers namen en wacht woorden (of geheimen).
 
-* Gebruiken `securestring` voor alle wacht woorden en geheimen. Gebruik het `secureObject` type als u gevoelige gegevens doorgeeft in een JSON-object. Sjabloon parameters met een beveiligde teken reeks of beveiligde object typen kunnen niet worden gelezen na het implementeren van de resource. 
+* Gebruiken `securestring` voor alle wacht woorden en geheimen. Gebruik het type als u gevoelige gegevens doorgeeft in een JSON-object `secureObject` . Sjabloon parameters met een beveiligde teken reeks of beveiligde object typen kunnen niet worden gelezen na het implementeren van de resource. 
    
    ```json
    "parameters": {
@@ -120,7 +116,7 @@ De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](templat
 
 ### <a name="location-recommendations-for-parameters"></a>Aanbevelingen voor de locatie van para meters
 
-* Gebruik een para meter om de locatie voor resources op te geven en stel de standaard `resourceGroup().location`waarde in op. Als u een locatie parameter opgeeft, kunnen gebruikers van de sjabloon een locatie opgeven waarvoor ze gemachtigd zijn om te implementeren.
+* Gebruik een para meter om de locatie voor resources op te geven en stel de standaard waarde in op `resourceGroup().location` . Als u een locatie parameter opgeeft, kunnen gebruikers van de sjabloon een locatie opgeven waarvoor ze gemachtigd zijn om te implementeren.
 
    ```json
    "parameters": {
@@ -134,7 +130,7 @@ De informatie in deze sectie kan nuttig zijn wanneer u met [para meters](templat
    },
    ```
 
-* Geef `allowedValues` geen voor de locatie parameter op. De locaties die u opgeeft, zijn mogelijk niet beschikbaar in alle Clouds.
+* Geef geen `allowedValues` voor de locatie parameter op. De locaties die u opgeeft, zijn mogelijk niet beschikbaar in alle Clouds.
 
 * Gebruik de locatie parameter waarde voor bronnen die zich waarschijnlijk op dezelfde locatie bevinden. Deze aanpak minimaliseert het aantal keren dat gebruikers worden gevraagd om locatie gegevens op te geven.
 
@@ -236,7 +232,7 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](template-syntax
    * [Externe toegang tot uw virtuele machine toestaan met behulp van Power shell](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Externe toegang tot uw virtuele Linux-machine toestaan met behulp van Azure CLI](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* De eigenschap **domeinnaam label** voor open bare IP-adressen moet uniek zijn. De **domeinnaam label** -waarde moet tussen de 3 en 63 tekens lang zijn en de regels volgen die zijn opgegeven met deze `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`reguliere expressie:. Omdat de functie **Unique string** een teken reeks genereert die 13 tekens lang is, is de para meter **dnsPrefixString** beperkt tot 50 tekens:
+* De eigenschap **domeinnaam label** voor open bare IP-adressen moet uniek zijn. De **domeinnaam label** -waarde moet tussen de 3 en 63 tekens lang zijn en de regels volgen die zijn opgegeven met deze reguliere expressie: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Omdat de functie **Unique string** een teken reeks genereert die 13 tekens lang is, is de para meter **dnsPrefixString** beperkt tot 50 tekens:
 
    ```json
    "parameters": {
@@ -275,7 +271,12 @@ De volgende informatie kan nuttig zijn wanneer u met [resources](template-syntax
    > [!NOTE]
    > Gebruik de eigenschap **protectedSettings** van de relevante extensies om ervoor te zorgen dat geheimen worden versleuteld wanneer ze worden door gegeven als para meters voor vm's en uitbrei dingen.
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>Test Toolkit gebruiken
+
+De ARM-sjabloon test Toolkit is een script dat controleert of uw sjabloon aanbevolen procedures gebruikt. Als uw sjabloon niet voldoet aan de aanbevolen procedures, wordt een lijst met waarschuwingen met voorgestelde wijzigingen geretourneerd. De test Toolkit kan u helpen bij het implementeren van aanbevolen procedures in uw sjabloon.
+
+Nadat u uw sjabloon hebt voltooid, voert u de test Toolkit uit om te zien of er manieren zijn om de IT-implementatie te verbeteren. Zie [arm-sjabloon test Toolkit](test-toolkit.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

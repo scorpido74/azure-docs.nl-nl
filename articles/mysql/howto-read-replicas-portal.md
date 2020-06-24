@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0aab6957f6078a59aafd0c9967b0d88e97e50cda
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 6/10/2020
+ms.openlocfilehash: 17771cfa9ffa73d22d2e136836dcf0f19e68f8cb
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849430"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707205"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -25,6 +25,9 @@ In dit artikel leert u hoe u in de Azure Database for MySQL-service Lees replica
 > De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MySQL-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
 
 ## <a name="create-a-read-replica"></a>Een lees replica maken
+
+> [!IMPORTANT]
+> Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 

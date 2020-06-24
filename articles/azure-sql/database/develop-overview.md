@@ -10,21 +10,22 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344591"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254035"
 ---
-# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Overzicht van toepassings ontwikkeling-SQL Database & SQL Managed instance 
+# <a name="application-development-overview---sql-database--sql-managed-instance"></a>Overzicht van toepassings ontwikkeling-SQL Database & SQL Managed instance
+
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 In dit artikel worden de basis overwegingen beschreven die een ontwikkelaar moet kennen bij het schrijven van code om verbinding te maken met uw data base in Azure. Dit artikel is van toepassing op Azure SQL Database en Azure SQL Managed instance.
 
 ## <a name="language-and-platform"></a>Taal en platform
 
-U kunt verschillende [Programmeer talen en platformen](connect-query-content-reference-guide.md) gebruiken om verbinding te maken en Azure SQL database op te vragen. U kunt [voorbeeld toepassingen](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) vinden die u kunt gebruiken om verbinding te maken met de Azure-SQL database.
+U kunt verschillende [Programmeer talen en platformen](connect-query-content-reference-guide.md) gebruiken om verbinding te maken en Azure SQL database op te vragen. U kunt [voorbeeld toepassingen](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) vinden die u kunt gebruiken om verbinding te maken met de data base.
 
 U kunt gebruikmaken van open-source hulpprogram ma's zoals [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli)en [VS code](https://code.visualstudio.com/). Daarnaast werkt Azure SQL Database met Microsoft-hulpprogramma's zoals [Visual Studio](https://www.visualstudio.com/downloads/) en [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). U kunt ook de Azure Portal, Power shell en REST Api's gebruiken om extra productiviteit te verkrijgen.
 
@@ -44,7 +45,7 @@ Vermijd langlopende trans acties omdat een infra structuur of verbindings fout d
 
 ## <a name="resiliency"></a>Flexibiliteit
 
-Azure SQL Database is een Cloud service waar u mogelijk tijdelijke fouten verwacht die zich voordoen in de onderliggende infra structuur of in de communicatie tussen Cloud entiteiten. Hoewel Azure SQL Database bestendig is op het mislukken van de transitieve infra structuur, kunnen deze storingen invloed hebben op uw verbinding. Wanneer er een tijdelijke fout optreedt tijdens het verbinden met SQL Database, moet uw code [de aanroep opnieuw proberen](troubleshoot-common-connectivity-issues.md). U wordt aangeraden de logica uitstel Logic te gebruiken, zodat SQL database het niet wordt overbelast door meerdere clients tegelijk opnieuw te proberen. Pogings logica is afhankelijk van de [fout berichten voor SQL database-client Programma's](troubleshoot-common-errors-issues.md).
+Azure SQL Database is een Cloud service waar u mogelijk tijdelijke fouten verwacht die zich voordoen in de onderliggende infra structuur of in de communicatie tussen Cloud entiteiten. Hoewel Azure SQL Database bestendig is op het mislukken van de transitieve infra structuur, kunnen deze storingen invloed hebben op uw verbinding. Wanneer er een tijdelijke fout optreedt tijdens het verbinden met SQL Database, moet uw code [de aanroep opnieuw proberen](troubleshoot-common-connectivity-issues.md). We raden u aan logica uitstel Logic te gebruiken, zodat de service niet meer hoeft te worden gebruikt voor meerdere clients tegelijk opnieuw te proberen. Pogings logica is afhankelijk van de [fout berichten voor SQL database-client Programma's](troubleshoot-common-errors-issues.md).
 
 Zie voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen op uw Azure SQL Database het [plannen van Azure-onderhouds gebeurtenissen in Azure SQL database](planned-maintenance.md).
 

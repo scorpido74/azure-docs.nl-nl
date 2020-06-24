@@ -2,7 +2,7 @@
 title: Belangrijkste verschillen voor Machine Learning Services (preview-versie)
 description: In dit onderwerp worden de belangrijkste verschillen tussen Machine Learning Services in Azure SQL Managed instance en SQL Server Machine Learning Services beschreven.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: 02211a09df2d2744119ea8fbe6f0ecaa63dba020
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045107"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254745"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>De belangrijkste verschillen tussen Machine Learning Services in Azure SQL Managed instance en SQL Server
 
@@ -48,7 +48,7 @@ Machine Learning Services in SQL Managed instance en SQL Server ondersteunen zow
   | SQL Managed Instance | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |
 
-- U hoeft niet in te stellen `external scripts enabled` via `sp_configure` . Zodra u zich hebt [geregistreerd](machine-learning-services-overview.md#signup) voor de preview-versie, wordt machine learning voor uw SQL database ingeschakeld.
+- U hoeft niet in te stellen `external scripts enabled` via `sp_configure` . Zodra u zich hebt [geregistreerd](machine-learning-services-overview.md#signup) voor de preview-versie, wordt machine learning ingeschakeld voor Azure SQL Managed instance.
 
 ## <a name="packages"></a>Pakketten
 
@@ -59,8 +59,8 @@ Python en R-pakket beheer werken anders tussen SQL Managed instance en SQL Serve
 
 Zie voor meer informatie over het beheren van python-en R-pakketten:
 
-- [Python-pakket gegevens ophalen](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
-- [R-pakket gegevens ophalen](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [Python-pakketgegevens ophalen](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
+- [R-pakketgegevens ophalen](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=azure/sql-database/context/ml-context&view=sql-server-ver15)
 
 ## <a name="resource-governance"></a>Resourcebeheer
 

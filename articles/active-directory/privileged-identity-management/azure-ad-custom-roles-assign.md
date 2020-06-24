@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0303d37ef5bbbf266feb5456b0bc224ce272ee13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80a75664b977c7f37808de7ca68b332363886a4e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499250"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742978"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol toewijzen in Privileged Identity Management
 
@@ -74,7 +74,7 @@ Privileged Identity Management kunt aangepaste rollen beheren die u kunt maken i
 1. Als het selectie vakje **permanent** is ingeschakeld en beschikbaar is (afhankelijk van rolinstellingen), kunt u opgeven of de toewijzing permanent is. Schakel het selectie vakje in om de toewijzing permanent in aanmerking te laten komen of permanent toe te wijzen. Schakel het selectie vakje uit om de duur van een toewijzing op te geven.
 1. Als u de nieuwe roltoewijzing wilt maken, klikt u op **Opslaan** en vervolgens op **toevoegen**. Er wordt een melding weer gegeven van de status van het toewijzings proces.
 
-Als u de roltoewijzing wilt controleren, selecteert u in een openstaande rol de optie **toewijzingen** > **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
+Als u de roltoewijzing wilt controleren, selecteert u in een openstaande rol de optie **toewijzingen**  >  **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
 
  ![Controleren of de roltoewijzing wordt weer gegeven als in aanmerking komend of actief](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

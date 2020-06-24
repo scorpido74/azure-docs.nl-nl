@@ -5,16 +5,16 @@ services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015825"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193410"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -38,9 +38,9 @@ In dit document worden standaard namen gebruikt om de instructies te vereenvoudi
 
 |Instelling | Voorbeeldwaarde | Beschrijving |
 | :------ | :-------------- | :---------- |
-| **Synapse-werk ruimte** | WS1 |  De naam die de Synapse-werk ruimte heeft. |
+| **Synapse-werkruimte** | WS1 |  De naam die de Synapse-werk ruimte heeft. |
 | **ADLSGEN2-account** | STG1 | Het ADLS-account dat moet worden gebruikt met uw werk ruimte. |
-| **Verpakking** | CNT1 | De container in STG1 die standaard door de werk ruimte wordt gebruikt. |
+| **Container** | CNT1 | De container in STG1 die standaard door de werk ruimte wordt gebruikt. |
 | **Active Directory-Tenant** | contoso | de naam van de Active Directory-Tenant.|
 ||||
 

@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d94f7219c5a29de9a707aa9ae4ed25ac4b2bf03e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042979"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254307"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Implementeer en verken een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In deze zelf studie implementeert en bekijkt u de Wingtip tickets SaaS data base-per-Tenant toepassing (Wingtip). De app maakt gebruik van een Data Base-per-Tenant patroon om de gegevens van meerdere tenants op te slaan. De app is ontworpen om functies van Azure SQL Database te demonstreren die het inschakelen van SaaS-scenario's vereenvoudigen.
 
-Vijf minuten nadat u **implementeren naar Azure**hebt geselecteerd, hebt u een multi tenant-SaaS-toepassing. De app bevat een SQL database die wordt uitgevoerd in de Cloud. De app wordt geïmplementeerd met drie voor beelden van tenants, elk met een eigen data base. Alle data bases worden geïmplementeerd in een elastische SQL-pool. De app is geïmplementeerd in uw Azure-abonnement. U hebt volledige toegang om de afzonderlijke onderdelen van de app te verkennen en ermee te werken. De C#-bron code van de toepassing en de beheer scripts bevinden zich in de [WingtipTicketsSaaS-DbPerTenant github opslag plaats][github-wingtip-dpt].
+Vijf minuten nadat u **implementeren naar Azure**hebt geselecteerd, hebt u een multi tenant-SaaS-toepassing. De app bevat een Data Base die wordt uitgevoerd in Azure SQL Database. De app wordt geïmplementeerd met drie voor beelden van tenants, elk met een eigen data base. Alle data bases worden geïmplementeerd in een elastische SQL-pool. De app is geïmplementeerd in uw Azure-abonnement. U hebt volledige toegang om de afzonderlijke onderdelen van de app te verkennen en ermee te werken. De C#-bron code van de toepassing en de beheer scripts bevinden zich in de [WingtipTicketsSaaS-DbPerTenant github opslag plaats][github-wingtip-dpt].
 
 In deze zelfstudie komen deze onderwerpen aan bod:
 
@@ -87,7 +88,7 @@ Wanneer de toepassing wordt geïmplementeerd, downloadt u de bron code-en beheer
 1. Blader naar de [WingtipTicketsSaaS-DbPerTenant github opslag plaats][github-wingtip-dpt].
 1. Selecteer **Klonen of downloaden**.
 1. Selecteer **zip downloaden**en sla het bestand op.
-1. Klik met de rechter muisknop op het bestand **WingtipTicketsSaaS-DbPerTenant-Master. zip** en selecteer **Eigenschappen**.
+1. Klik met de rechter muisknop op het **WingtipTicketsSaaS-DbPerTenant-master.zip** -bestand en selecteer vervolgens **Eigenschappen**.
 1. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**  >  **Apply**.
 1. Selecteer **OK**en pak de bestanden uit
 
@@ -107,7 +108,7 @@ Er wordt in bijna elk script naar deze waarden verwezen.
 
 De app geeft een overzicht van locaties die gebeurtenissen hosten. Locatie typen zijn onder andere concert huizen, Jazz klaveren en sport clubs. In Wingtip-tickets worden locaties geregistreerd als tenants. Een Tenant geeft u een eenvoudige manier om gebeurtenissen weer te geven en om tickets aan hun klanten te verkopen. Elke locatie krijgt een gepersonaliseerde website om hun evenementen weer te geven en om tickets te verkopen.
 
-In de app wordt intern een SQL database geïmplementeerd in een elastische SQL-pool.
+In de app wordt intern in elke Tenant een Data Base opgehaald die is geïmplementeerd in een elastische pool.
 
 Een centrale **gebeurtenis hub** pagina bevat een lijst met koppelingen naar de tenants in uw implementatie.
 
@@ -153,7 +154,7 @@ Nu de app is geïmplementeerd, kunt u deze gebruiken.
 
 Het Power shell *-script demo-LoadGenerator* start een werk belasting die wordt uitgevoerd op alle Tenant databases. De werkelijke belasting van veel SaaS-apps is sporadisch en onvoorspelbaar. Voor het simuleren van dit type belasting, produceert de generator een belasting met wille keurige pieken of bursts van de activiteit op elke Tenant. De bursts treden op in wille keurige intervallen. Het duurt enkele minuten voordat het laad patroon zich voordoet. Laat de generator ten minste drie of vier minuten uitvoeren voordat u de belasting bewaken.
 
-1. Open in de Power shell-ISE de.. \\ . Het \\ script hulpprogram ma's voor learning modules \\ *demo-LoadGenerator. ps1* .
+1. Open in de Power shell-ISE de.. \\ . Hulpprogram ma's voor leer modules \\ \\ *Demo-LoadGenerator.ps1* script.
 2. Druk op F5 om het script uit te voeren en de load generator te starten. Wijzig de standaard parameter waarden nu.
 3. Meld u aan bij uw Azure-account en selecteer het abonnement dat u wilt gebruiken, indien nodig.
 
@@ -167,17 +168,17 @@ Als u de achtergrond taken wilt beheren en controleren, gebruikt u de volgende c
 - `Receive-Job`
 - `Stop-Job`
 
-### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator. ps1-acties
+### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 acties
 
-*Demo-LoadGenerator. ps1* imiteert een actieve werk belasting van klant transacties. De volgende stappen beschrijven de volg orde van de acties die door *demo-LoadGenerator. ps1* worden gestart:
+*Demo-LoadGenerator.ps1* imiteert een actieve werk belasting van klant transacties. De volgende stappen beschrijven de volg orde van de acties die *Demo-LoadGenerator.ps1* initieert:
 
-1. *Demo-LoadGenerator. ps1* start *LoadGenerator. ps1* op de voor grond.
+1. *Demo-LoadGenerator.ps1* *LoadGenerator.ps1* op de voor grond wordt gestart.
 
     - Beide. ps1-bestanden worden opgeslagen in de hulpprogram ma's mappen learning modules \\ \\ .
 
-2. *LoadGenerator. ps1* loopt door alle Tenant databases in de catalogus.
+2. *LoadGenerator.ps1* doorloopt alle Tenant databases in de catalogus.
 
-3. *LoadGenerator. ps1* start een Power shell-taak op de achtergrond voor elke Tenant database:
+3. *LoadGenerator.ps1* start een Power shell-taak op de achtergrond voor elke Tenant database:
 
     - De achtergrond taken worden standaard gedurende 120 minuten uitgevoerd.
     - Elke taak veroorzaakt een op CPU gebaseerde belasting voor één Tenant database door *sp_CpuLoadGenerator*uit te voeren. De intensiteit en duur van de belasting variëren afhankelijk van `$DemoScenario` .
@@ -199,7 +200,7 @@ Voordat u verdergaat met de volgende sectie, moet u de belasting Generator laten
 Bij de eerste implementatie worden drie voor beelden van tenants gemaakt. U maakt nu een andere Tenant om de impact op de geïmplementeerde toepassing te bekijken. In de Wingtip-app wordt de werk stroom voor het inrichten van nieuwe tenants uitgelegd in de [zelf studie voor het inrichten en de catalogus](saas-dbpertenant-provision-and-catalog.md). In deze fase maakt u een nieuwe Tenant die minder dan een minuut in beslag neemt.
 
 1. Open een nieuwe Power shell-ISE.
-2. Openen... \\ Learning Modules\Provision en Catalog \\ *demo-ProvisionAndCatalog. ps1*.
+2. Openen... \\ Learning Modules\Provision en catalogus \\ *Demo-ProvisionAndCatalog.ps1*.
 3. Druk op F5 om het script uit te voeren. Behoud de standaard waarden voor nu.
 
    > [!NOTE]
@@ -239,7 +240,7 @@ Nu u bent begonnen met het uitvoeren van een belasting voor de verzameling tenan
 
 ## <a name="monitor-the-pool"></a>De pool bewaken
 
-Nadat *LoadGenerator. ps1* enkele minuten is uitgevoerd, moeten er voldoende gegevens beschikbaar zijn om te kijken naar sommige bewakings mogelijkheden. Deze mogelijkheden zijn ingebouwd in Pools en data bases.
+Nadat *LoadGenerator.ps1* enkele minuten is uitgevoerd, moeten er voldoende gegevens beschikbaar zijn om te kijken naar enkele bewakings mogelijkheden. Deze mogelijkheden zijn ingebouwd in Pools en data bases.
 
 Blader naar de server **tenants1-dpt- &lt; gebruiker &gt; **en selecteer **Pool1** om het resource gebruik voor de groep weer te geven. In de volgende grafieken is de load Generator één uur uitgevoerd.
 

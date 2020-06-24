@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248344"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706576"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure Portal
 
@@ -63,7 +63,7 @@ In de scherm afbeelding ziet u de beheer opties voor een virtuele Azure-machine.
 ## <a name="delete-resources"></a>Resources verwijderen
 
 1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
-2. Selecteer **verwijderen**. Op de volgende scherm afbeelding ziet u de beheer opties voor een virtuele machine.
+2. Selecteer **Verwijderen**. Op de volgende scherm afbeelding ziet u de beheer opties voor een virtuele machine.
 
     ![Azure-resource verwijderen](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
 3. Typ de naam van de resource om het verwijderen te bevestigen en selecteer vervolgens **verwijderen**.

@@ -4,12 +4,12 @@ description: Hiermee wordt u gewaarschuwd voor ongebruikelijke wijzigingen in de
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e4a629b4c33c22bf5663d6f8e8b9d0ba11ac24dc
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700768"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254783"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
@@ -304,7 +304,7 @@ Op basis van het percentage aanvragen en het aantal betrokken gebruikers kunt u 
 
 In veel gevallen kunt u het probleem snel vaststellen op basis van de gegevens van de aanvraag naam, uitzonde ring, fout bij het openen van een afhankelijkheid en traceer gegeven.
 
-In dit voor beeld is er een uitzonde ring van SQL database omdat de aanvraag limiet is bereikt.
+In dit voor beeld is er een uitzonde ring van SQL Database omdat de aanvraag limiet is bereikt.
 
 [![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: 9309f431a820b800e652d7fa8afcea8f03a46062
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 95f29331c723e584cdecdd27a714f22377dfd26d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114526"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253576"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit Opgeslagen procedure in Azure Data Factory
 
@@ -41,32 +41,32 @@ In deze sectie gebruikt u Data Factory gebruikers interface om een Data Factory 
 De eerste stap is het maken van een data factory met behulp van de Azure Portal. 
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-2. Navigeer naar het [Azure Portal](https://portal.azure.com). 
+2. Navigeer naar [Azure Portal](https://portal.azure.com). 
 3. Klik op **Nieuw** in het linkermenu en klik vervolgens op **Gegevens en analyses** en **Data Factory**. 
    
    ![Nieuw -> DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
-2. Voer op de blade **New data factory****ADFTutorialDataFactory** in bij **Name**. 
+2. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in als **naam**. 
       
-     ![Pagina Nieuwe gegevensfactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
+     ![De pagina Nieuwe data factory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory.png)
  
-   De naam van de Azure-data factory moet **wereld wijd uniek**zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
   
      ![Naam niet beschikbaar - fout](./media/how-to-invoke-ssis-package-stored-procedure-activity/name-not-available-error.png)
 3. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken. 
 4. Voer een van de volgende stappen uit voor de **Resourcegroep**:
      
-   - Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst. 
-   - Selecteer **nieuwe maken**en voer de naam van een resource groep in.   
+   - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
+   - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.   
          
      Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 4. Selecteer **V2** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst ziet u alleen locaties die worden ondersteund in Data Factory. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich op andere locaties bevinden.
 6. Selecteer **Vastmaken aan dashboard**.     
-7. Klik op **Maken**.
-8. Op het dash board ziet u de volgende tegel met de status: **Data Factory implementeren**. 
+7. Klik op **Create**.
+8. Op het dashboard ziet u de volgende tegel met de status: **Gegevensfactory implementeren**. 
 
      ![tegel met de status 'gegevensfactory implementeren'](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
-9. Wanneer het maken is voltooid, ziet u de pagina **Data Factory** zoals in de afbeelding wordt weergegeven.
+9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
    
      ![Startpagina van de gegevensfactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Klik op de tegel **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad. 
@@ -80,7 +80,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te
 2. Vouw in de werkset **activiteiten** het item **Algemeen**uit en sleep de activiteit **opgeslagen procedure** naar het ontwerp oppervlak voor pijp lijnen. 
 
     ![Opgeslagen procedure-activiteit slepen en neerzetten](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. Ga in het venster Eigenschappen voor de activiteit opgeslagen procedure naar het tabblad **SQL-account** en klik op **+ Nieuw**. U maakt een verbinding met de Azure-SQL database die als host fungeert voor de SSIS-catalogus (SSIDB-data base). 
+3. Ga in het venster Eigenschappen voor de activiteit opgeslagen procedure naar het tabblad **SQL-account** en klik op **+ Nieuw**. U maakt een verbinding met de data base in Azure SQL Database die als host fungeert voor de SSIS-catalogus (SSIDB-data base). 
    
     ![Knop Nieuwe gekoppelde service](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit: 
@@ -97,7 +97,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface om een pijp lijn te
         ![Een gekoppelde Azure SQL Database-service](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. Ga in het venster Eigenschappen naar het tabblad **opgeslagen procedure** van het tabblad **SQL-account** en voer de volgende stappen uit: 
 
-    1. Selecteer **bewerken**. 
+    1. Selecteer **Bewerken**. 
     2. Voer in het veld **opgeslagen procedure naam** in `sp_executesql` . 
     3. Klik op **+ Nieuw** in het gedeelte **para meters van de opgeslagen procedure** . 
     4. Voer **stmt**in bij **naam** van de para meter. 
@@ -193,12 +193,12 @@ Houd rekening met de volgende punten:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen **Inzender** of **Eigenaar**, of moet dit een **beheerder** van het Azure-abonnement zijn.
-* Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Een gekoppelde Azure SQL Database-service maken
-Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor de SSIS-catalogus, te koppelen aan uw data factory. Data Factory maakt gebruik van informatie in deze gekoppelde service om verbinding te maken met SSISDB-data base en voert een opgeslagen procedure uit om een SSIS-pakket uit te voeren. 
+Maak een gekoppelde service om uw data base die als host fungeert voor de SSIS-catalogus, te koppelen aan uw data factory. Data Factory maakt gebruik van informatie in deze gekoppelde service om verbinding te maken met SSISDB-data base en voert een opgeslagen procedure uit om een SSIS-pakket uit te voeren. 
 
-1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService.js** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
 
     > [!IMPORTANT]
     > Vervang &lt; servername &gt; , &lt; username &gt; en &lt; Password door de &gt; waarden van uw Azure SQL database voordat u het bestand opslaat.
@@ -217,7 +217,7 @@ Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor 
 
 2. Ga in **Azure PowerShell**naar de map **C:\ADF\RunSSISPackage** .
 
-3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
+3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -226,7 +226,7 @@ Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Een pijp lijn maken met een opgeslagen procedure activiteit 
 In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met de activiteit wordt de sp_executesql opgeslagen procedure aangeroepen om uw SSIS-pakket uit te voeren. 
 
-1. Maak een JSON-bestand met de naam **RunSSISPackagePipeline. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
+1. Maak een JSON-bestand met de naam **RunSSISPackagePipeline.js** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
 
     > [!IMPORTANT]
     > Vervang &lt; de mapnaam &gt; , &lt; de project naam &gt; , &lt; de pakket naam &gt; met de namen van de map, het project en het pakket in de SSIS-catalogus voordat u het bestand opslaat. 
@@ -305,7 +305,7 @@ while ($True) {
 ### <a name="create-a-trigger"></a>Een trigger maken
 In de vorige stap hebt u de pijp lijn op aanvraag geactiveerd. U kunt ook een schema trigger maken om de pijp lijn op een schema uit te voeren (elk uur, dagelijks, enzovoort).
 
-1. Maak een JSON-bestand met de naam **MyTrigger. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **MyTrigger.js** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
 
     ```json
     {

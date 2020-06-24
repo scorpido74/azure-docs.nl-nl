@@ -13,15 +13,15 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265816"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707137"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Gegevens verplaatsen van SAP HANA met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-sap-hana-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](data-factory-sap-hana-connector.md)
 > * [Versie 2 (huidige versie)](../connector-sap-hana.md)
 
 > [!NOTE]
@@ -59,12 +59,12 @@ In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifie
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als op uw server een aangepaste poort wordt gebruikt, `server:port`geeft u op. | tekenreeks | Ja
-authenticationType | Type verificatie. | tekenreeksexpressie. "Basic" of "Windows" | Ja 
-gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
-wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
-gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP HANA exemplaar. | tekenreeks | Ja
-encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | Nee
+server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als op uw server een aangepaste poort wordt gebruikt, geeft u op `server:port` . | tekenreeks | Yes
+authenticationType | Type verificatie. | tekenreeksexpressie. "Basic" of "Windows" | Yes 
+gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Yes
+wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Yes
+gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP HANA exemplaar. | tekenreeks | Yes
+encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | No
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
@@ -81,7 +81,7 @@ Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** is (i
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query | Hiermee geeft u de SQL-query voor het lezen van gegevens uit het SAP HANA-exemplaar. | SQL-query. | Ja |
+| query | Hiermee geeft u de SQL-query voor het lezen van gegevens uit het SAP HANA-exemplaar. | SQL-query. | Yes |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van SAP HANA naar Azure Blob
 Het volgende voor beeld geeft een voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). In dit voor beeld ziet u hoe u gegevens van een on-premises SAP HANA kopieert naar een Azure Blob Storage. Gegevens kunnen echter **rechtstreeks** naar een van de hieronder vermelde sinks worden gekopieerd met behulp [van de](data-factory-data-movement-activities.md#supported-data-stores-and-formats) Kopieer activiteit in azure Data Factory.  
@@ -287,8 +287,8 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-REAL | Enkel
-DUBBELKLIK | Enkel
+REAL | Enkelvoudig
+DUBBELKLIK | Enkelvoudig
 KOMMA | Decimal
 True | Byte
 VARCHAR | Tekenreeks

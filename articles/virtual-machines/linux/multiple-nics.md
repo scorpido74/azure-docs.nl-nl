@@ -9,11 +9,11 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267181"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706678"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten
 
@@ -25,7 +25,7 @@ Installeer de nieuwste [Azure cli](/cli/azure/install-az-cli2) en meld u aan bij
 
 Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *mystorageaccount*en *myVM*.
 
-Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -79,9 +79,9 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>Een virtuele machine maken en de Nic's koppelen
-Wanneer u de virtuele machine maakt, geeft u de Nic's op `--nics`waarmee u hebt gemaakt. U moet er ook voor zorgen dat u de VM-grootte selecteert. Er zijn limieten voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Meer informatie over de [grootten van Linux VM](sizes.md).
+Wanneer u de virtuele machine maakt, geeft u de Nic's op waarmee u hebt gemaakt `--nics` . U moet er ook voor zorgen dat u de VM-grootte selecteert. Er zijn limieten voor het totale aantal Nic's dat u aan een virtuele machine kunt toevoegen. Meer informatie over de [grootten van Linux VM](sizes.md).
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
+Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM*:
 
 ```azurecli
 az vm create \
@@ -169,7 +169,7 @@ Azure Resource Manager sjablonen gebruiken declaratieve JSON-bestanden om uw omg
 
 Meer informatie over [het maken van meerdere exemplaren met behulp van *kopiëren*](../../resource-group-create-multiple.md). 
 
-U kunt ook een `copyIndex()` gebruiken om een nummer toe te voegen aan een resource naam, zodat u, `myNic1` `myNic2`, enzovoort, kunt maken. Hieronder ziet u een voor beeld van het toevoegen van de index waarde:
+U kunt ook een gebruiken `copyIndex()` om een nummer toe te voegen aan een resource naam, zodat u `myNic1` ,, enzovoort, kunt maken `myNic2` . Hieronder ziet u een voor beeld van het toevoegen van de index waarde:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -222,7 +222,7 @@ Als u wilt verzenden naar of van een secundaire netwerk interface, moet u hand m
 
 Bij het toevoegen van de route naar het besturings systeem is het gateway adres *1 voor het* subnet waarin de netwerk interface zich bevindt. Als de netwerk interface bijvoorbeeld het adres *10.0.2.4*toegewezen, is de gateway die u opgeeft voor de route *10.0.2.1*. U kunt een specifiek netwerk definiëren voor de bestemming van de route of een bestemming van *0.0.0.0*opgeven als u wilt dat al het verkeer voor de interface via de opgegeven gateway gaat. De gateway voor elk subnet wordt beheerd door het virtuele netwerk.
 
-Wanneer u de route voor een secundaire interface hebt toegevoegd, controleert u of de route in de route tabel is `route -n`opgenomen. De volgende voorbeeld uitvoer is voor de route tabel met de twee netwerk interfaces die zijn toegevoegd aan de virtuele machine in dit artikel:
+Wanneer u de route voor een secundaire interface hebt toegevoegd, controleert u of de route in de route tabel is opgenomen `route -n` . De volgende voorbeeld uitvoer is voor de route tabel met de twee netwerk interfaces die zijn toegevoegd aan de virtuele machine in dit artikel:
 
 ```bash
 Kernel IP routing table

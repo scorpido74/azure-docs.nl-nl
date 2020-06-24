@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281065"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707154"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Planning en uitvoering Data Factory
 > [!NOTE]
@@ -61,7 +61,7 @@ Een activiteit in een Data Factory pijp lijn kan nul of meer invoer **gegevens s
 
 De **frequentie** in het gedeelte **Beschik baarheid** specificeert de tijds eenheid. De toegestane waarden voor de frequentie zijn: minuut, uur, dag, week en maand. De eigenschap **interval** in het gedeelte Beschik baarheid geeft een vermenigvuldigings factor voor frequentie op. Bijvoorbeeld: als de frequentie is ingesteld op dag en interval is ingesteld op 1 voor een uitvoer gegevensset, worden de uitvoer gegevens dagelijks geproduceerd. Als u de frequentie opgeeft als minuut, raden we u aan het interval in te stellen op ten minste 15. 
 
-In het volgende voor beeld zijn de invoer gegevens elk uur beschikbaar en worden de uitvoer gegevens elk uur geproduceerd (`"frequency": "Hour", "interval": 1`). 
+In het volgende voor beeld zijn de invoer gegevens elk uur beschikbaar en worden de uitvoer gegevens elk uur geproduceerd ( `"frequency": "Hour", "interval": 1` ). 
 
 **Invoer gegevensset:** 
 
@@ -184,14 +184,14 @@ In de volgende tabel worden de eigenschappen beschreven die u kunt gebruiken in 
 
 | Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
-| frequency |Hiermee geeft u de tijds eenheid voor de segment productie van gegevensset op.<br/><br/><b>Ondersteunde frequentie</b>: minuut, uur, dag, week, maand |Ja |N.v.t. |
-| interval |Hiermee geeft u een vermenigvuldigings factor voor frequentie<br/><br/>"Frequentie x-interval" bepaalt hoe vaak het segment wordt geproduceerd.<br/><br/>Als u wilt dat de gegevensset op elk uur wordt gesegmenteerd, stelt u de <b>frequentie</b> in op <b>uur</b>en het <b>interval</b> in op <b>1</b>.<br/><br/><b>Opmerking</b>: als u een frequentie opgeeft als minuut, raden we u aan het interval in te stellen op niet minder dan 15 |Ja |N.v.t. |
-| stijl |Hiermee geeft u op of het segment moet worden geproduceerd aan het begin/einde van het interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Als de frequentie is ingesteld op month en style is ingesteld op EndOfInterval, wordt het segment gemaakt op de laatste dag van de maand. Als de stijl is ingesteld op StartOfInterval, wordt het segment gegenereerd op de eerste dag van de maand.<br/><br/>Als de frequentie is ingesteld op dag en stijl is ingesteld op EndOfInterval, wordt het segment gemaakt in het afgelopen uur van de dag.<br/><br/>Als de frequentie is ingesteld op uur en de stijl is ingesteld op EndOfInterval, wordt het segment aan het einde van het uur geproduceerd. Bijvoorbeeld, voor een segment voor 1 uur – 2 uur, het segment wordt geproduceerd op 2 uur. |Nee |EndOfInterval |
-| anchorDateTime |Definieert de absolute positie in de tijd die door scheduler wordt gebruikt om segment grenzen van het gegevensset te berekenen. <br/><br/><b>Opmerking</b>: als de AnchorDateTime datum delen heeft die nauw keuriger zijn dan de frequentie, worden de gedetailleerde onderdelen genegeerd. <br/><br/>Als het <b>interval</b> bijvoorbeeld <b>elk uur</b> is (frequentie: uur en interval: 1) en de <b>AnchorDateTime</b> <b>minuten en seconden</b>bevat, worden de <b>minuten en seconden</b> delen van de AnchorDateTime genegeerd. |Nee |01/01/0001 |
-| offset |Tijds duur waarmee het begin en einde van alle segmenten van de gegevensset worden verschoven. <br/><br/><b>Opmerking</b>: als zowel anchorDateTime als offset zijn opgegeven, is het resultaat de gecombineerde werk tijd. |Nee |N.v.t. |
+| frequency |Hiermee geeft u de tijds eenheid voor de segment productie van gegevensset op.<br/><br/><b>Ondersteunde frequentie</b>: minuut, uur, dag, week, maand |Yes |NA |
+| interval |Hiermee geeft u een vermenigvuldigings factor voor frequentie<br/><br/>"Frequentie x-interval" bepaalt hoe vaak het segment wordt geproduceerd.<br/><br/>Als u wilt dat de gegevensset op elk uur wordt gesegmenteerd, stelt u de <b>frequentie</b> in op <b>uur</b>en het <b>interval</b> in op <b>1</b>.<br/><br/><b>Opmerking</b>: als u een frequentie opgeeft als minuut, raden we u aan het interval in te stellen op niet minder dan 15 |Yes |NA |
+| stijl |Hiermee geeft u op of het segment moet worden geproduceerd aan het begin/einde van het interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Als de frequentie is ingesteld op month en style is ingesteld op EndOfInterval, wordt het segment gemaakt op de laatste dag van de maand. Als de stijl is ingesteld op StartOfInterval, wordt het segment gegenereerd op de eerste dag van de maand.<br/><br/>Als de frequentie is ingesteld op dag en stijl is ingesteld op EndOfInterval, wordt het segment gemaakt in het afgelopen uur van de dag.<br/><br/>Als de frequentie is ingesteld op uur en de stijl is ingesteld op EndOfInterval, wordt het segment aan het einde van het uur geproduceerd. Bijvoorbeeld, voor een segment voor 1 uur – 2 uur, het segment wordt geproduceerd op 2 uur. |No |EndOfInterval |
+| anchorDateTime |Definieert de absolute positie in de tijd die door scheduler wordt gebruikt om segment grenzen van het gegevensset te berekenen. <br/><br/><b>Opmerking</b>: als de AnchorDateTime datum delen heeft die nauw keuriger zijn dan de frequentie, worden de gedetailleerde onderdelen genegeerd. <br/><br/>Als het <b>interval</b> bijvoorbeeld <b>elk uur</b> is (frequentie: uur en interval: 1) en de <b>AnchorDateTime</b> <b>minuten en seconden</b>bevat, worden de <b>minuten en seconden</b> delen van de AnchorDateTime genegeerd. |No |01/01/0001 |
+| offset |Tijds duur waarmee het begin en einde van alle segmenten van de gegevensset worden verschoven. <br/><br/><b>Opmerking</b>: als zowel anchorDateTime als offset zijn opgegeven, is het resultaat de gecombineerde werk tijd. |No |NA |
 
 ### <a name="offset-example"></a>offset-voor beeld
-Standaard worden op basis van`"frequency": "Day", "interval": 1`12 uur UTC-tijd (middernacht) dagelijks () segmenten gestart. Als u wilt dat de begin tijd 6 uur UTC-tijd in plaats daarvan instelt, stelt u de verschuiving in zoals weer gegeven in het volgende code fragment: 
+Standaard worden op basis `"frequency": "Day", "interval": 1` van 12 uur UTC-tijd (middernacht) dagelijks () segmenten gestart. Als u wilt dat de begin tijd 6 uur UTC-tijd in plaats daarvan instelt, stelt u de verschuiving in zoals weer gegeven in het volgende code fragment: 
 
 ```json
 "availability":
@@ -202,7 +202,7 @@ Standaard worden op basis van`"frequency": "Day", "interval": 1`12 uur UTC-tijd 
 }
 ```
 ### <a name="anchordatetime-example"></a>anchorDateTime-voor beeld
-In het volgende voor beeld wordt de gegevensset elke 23 uur gemaakt. Het eerste segment begint op het tijdstip dat is opgegeven door de anchorDateTime, die is `2017-04-19T08:00:00` ingesteld op (UTC-tijd).
+In het volgende voor beeld wordt de gegevensset elke 23 uur gemaakt. Het eerste segment begint op het tijdstip dat is opgegeven door de anchorDateTime, die is ingesteld op `2017-04-19T08:00:00` (UTC-tijd).
 
 ```json
 "availability":    
@@ -214,7 +214,7 @@ In het volgende voor beeld wordt de gegevensset elke 23 uur gemaakt. Het eerste 
 ```
 
 ### <a name="offsetstyle-example"></a>Voor beeld van verschuiving/stijl
-De volgende gegevensset is een maandelijkse gegevensset en wordt geproduceerd op derde van elke maand om 8:00 uur (`3.08:00:00`):
+De volgende gegevensset is een maandelijkse gegevensset en wordt geproduceerd op derde van elke maand om 8:00 uur ( `3.08:00:00` ):
 
 ```json
 "availability": {
@@ -230,10 +230,10 @@ Voor een gegevensset kan een validatie beleid worden gedefinieerd waarmee wordt 
 
 De **beleids** sectie in de definitie van de gegevensset definieert de criteria of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen. In de volgende tabel worden de eigenschappen beschreven die u kunt gebruiken in de sectie **beleid** :
 
-| Policy Name | Beschrijving | Toegepast op | Vereist | Standaard |
+| Policy Name | Description | Toegepast op | Vereist | Standaard |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |Nee |N.v.t. |
-| minimumRows | Valideert dat de gegevens in een **Azure-SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |Nee |N.v.t. |
+| minimumSizeMB | Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |No |NA |
+| minimumRows | Valideert dat de gegevens in een **Azure-SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |No |NA |
 
 #### <a name="examples"></a>Voorbeelden
 **minimumSizeMB:**

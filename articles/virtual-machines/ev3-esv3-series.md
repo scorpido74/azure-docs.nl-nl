@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 0121f73da911a9346fd1f142d98246709631a742
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 9fcb714e68548b95ed6d32bb16fb08c43ff0e5fa
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678100"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707630"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- en Esv3-serie
 
-De Ev3-en Esv3-serie beschikken over Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz-processor (Broadwell) in een Hyper-Threaded configuratie, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik, en de Ev3 in overeenstemming brengen met de virtuele machines voor algemeen gebruik van de meeste andere Clouds.  Het geheugen is uitgevouwen (van 7 GiB/vCPU tot 8 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading. De Ev3 is de follow-up van de VM-grootten van het hoge geheugen van de D/dv2-families.
+De Ev3-en Esv3-serie worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), of Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4-processor (Broadwell) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor 2,3 de meeste werk belastingen voor algemeen gebruik, en de Ev3 in overeenstemming brengen met de virtuele machines voor algemeen gebruik van de meeste andere Clouds.  Het geheugen is uitgevouwen (van 7 GiB/vCPU tot 8 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading. De Ev3 is de follow-up van de VM-grootten van het hoge geheugen van de D/dv2-families.
 
 ## <a name="ev3-series"></a>Ev3-serie
 
-Instanties van de Ev3-serie zijn gebaseerd op de Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell)-processor en Intel Turbo Boost-technologie 2,0. Ev3-exemplaren zijn ideaal voor geheugenintensieve bedrijfstoepassingen.
+Instanties van de Ev3-serie worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon-® E5-2673 v4 2,3 GHz (Broadwell)-processors en bieden Intel Turbo Boost-technologie 2,0. Ev3-exemplaren zijn ideaal voor geheugenintensieve bedrijfstoepassingen.
 
 Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium Storage-schijven wilt gebruiken, gebruik dan de ESv3-grootten. De prijs- en factureringsmeters voor de ESv3-grootten zijn gelijk aan die van de Ev3-serie.
 
@@ -54,7 +54,7 @@ Er zijn <sup>1</sup> beperkte core-grootten beschikbaar.
 
 ## <a name="esv3-series"></a>Esv3-serie
 
-Instanties van de Esv3-serie zijn gebaseerd op de Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell)-processor, Intel Turbo Boost-technologie 2,0 en Premium Storage gebruiken. Instanties van de Esv3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
+Instanties van de Esv3-serie worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2,1 GHz (Skylake) of de Intel® Xeon-® E5-2673 v4 2,3 GHz (Broadwell)-processor, functie Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken. Instanties van de Esv3-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
 
 De Esv3-serie van de virtuele machine met Intel® Hyper-Threading-technologie.
 

@@ -4,19 +4,19 @@ description: Meer informatie over het werken met aangepaste besturings elementen
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050538"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253304"
 ---
 # <a name="custom-controls-preview"></a>Aangepaste besturings elementen (preview-versie)
 
@@ -45,7 +45,7 @@ Als u een aangepast besturings element wilt verwijderen, moet u er eerst voor zo
 
 1. Ga naar de lijst met aangepaste besturings elementen
 1. Klik op...  
-1. Selecteer **verwijderen**.
+1. Selecteer **Verwijderen**.
 
 ## <a name="editing-custom-controls"></a>Aangepaste besturings elementen bewerken
 
