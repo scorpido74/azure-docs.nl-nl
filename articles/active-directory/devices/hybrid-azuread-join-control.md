@@ -4,19 +4,19 @@ description: Meer informatie over het uitvoeren van een gecontroleerde validatie
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "80049983"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252709"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname
 
@@ -42,7 +42,7 @@ Gebruik de Active Directory Services Interfaces editor (ADSI bewerken) om de SCP
 
 1. Start de **ADSI** -module voor het bewerken van het bureau blad van en het beheer werkstation of een domein controller als een ondernemings beheerder.
 1. Maak verbinding met de **configuratie naamgevings context** van uw domein.
-1. Blader naar **CN = Configuration, DC = contoso, DC = com** > **CN = Services** > **CN = apparaatregistratie configureren**
+1. Blader naar **CN = Configuration, DC = contoso, DC = com**  >  **CN = Services**  >  **CN = apparaatregistratie configureren**
 1. Klik met de rechter muisknop op het leaf-object **CN = 62a0ff2e-97b9-4513-943f-0d221bd30080** en selecteer **Eigenschappen**
    1. Selecteer **tref woorden** in het venster **kenmerk editor** en klik op **bewerken**
    1. Selecteer de waarden van **azureADId** en **azureADName** (een voor een tegelijk) en klik op **verwijderen**
@@ -55,24 +55,24 @@ Gebruik het volgende voor beeld om een groepsbeleid-object (GPO) te maken om een
 
 1. Open een groepsbeleid-beheer console en maak een nieuw groepsbeleid-object in uw domein.
    1. Geef een naam op voor het nieuwe groeps beleidsobject dat u hebt gemaakt (bijvoorbeeld ClientSideSCP).
-1. Bewerk het groeps beleidsobject en zoek het volgende pad: **computer configuratie** > **voor keuren** > **Windows Settings** > **REGI ster** Windows-instellingen
-1. Klik met de rechter muisknop op het REGI ster en selecteer **Nieuw** > **register item**
+1. Bewerk het groeps beleidsobject en zoek het volgende pad: **computer configuratie**  >  **voor keuren**  >  **Windows Settings**  >  **REGI ster** Windows-instellingen
+1. Klik met de rechter muisknop op het REGI ster en selecteer **Nieuw**  >  **register item**
    1. Configureer op het tabblad **Algemeen** de volgende instellingen:
       1. Actie: **bijwerken**
       1. Hive: **HKEY_LOCAL_MACHINE**
       1. Sleutelpad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Waardenaam: **TenantId**
       1. Waardetype: **REG_SZ**
-      1. Waardegegevens: de GUID of **Directory-id** van uw Azure AD-exemplaar (deze waarde is te vinden in de **Azure Portal** > **Azure Active Directory** > **Eigenschappen** > **Directory-id**)
+      1. Waardegegevens: de GUID of **Directory-id** van uw Azure AD-exemplaar (deze waarde is te vinden in de **Azure Portal**  >  **Azure Active Directory**  >  **Eigenschappen**  >  **Directory-id**)
    1. Klik op **OK**
-1. Klik met de rechter muisknop op het REGI ster en selecteer **Nieuw** > **register item**
+1. Klik met de rechter muisknop op het REGI ster en selecteer **Nieuw**  >  **register item**
    1. Configureer op het tabblad **Algemeen** de volgende instellingen:
       1. Actie: **bijwerken**
       1. Hive: **HKEY_LOCAL_MACHINE**
       1. Sleutelpad: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. Waardenaam: **Tenant** naam
       1. Waardetype: **REG_SZ**
-      1. Waardegegevens: uw geverifieerde **domein naam** als u een federatieve omgeving gebruikt, zoals AD FS. Uw geverifieerde **domein naam** of uw onmicrosoft.com- `contoso.onmicrosoft.com` domein naam bijvoorbeeld als u een beheerde omgeving gebruikt
+      1. Waardegegevens: uw geverifieerde **domein naam** als u een federatieve omgeving gebruikt, zoals AD FS. Uw geverifieerde **domein naam** of uw onmicrosoft.com-domein naam bijvoorbeeld `contoso.onmicrosoft.com` Als u een beheerde omgeving gebruikt
    1. Klik op **OK**
 1. De editor voor het zojuist gemaakte groeps beleidsobject sluiten
 1. Koppel het zojuist gemaakte groeps beleidsobject aan de gewenste organisatie-eenheid met computers die lid zijn van een domein en die deel uitmaken van uw geïmplementeerde implementatie populatie
@@ -88,9 +88,9 @@ Als u AD FS gebruikt, moet u eerst SCP aan de client zijde configureren met behu
 
 Voor het registreren van Windows-apparaten op een lager niveau moeten organisaties [micro soft Workplace join installeren voor niet-Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554) die beschikbaar zijn via het micro soft Download centrum.
 
-U kunt het pakket implementeren met behulp van een software distributiesysteem, zoals [micro soft Endpoint Configuration Manager](/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de Stille para meter. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
+U kunt het pakket implementeren met behulp van een softwaredistributiesysteem, zoals  [Microsoft Endpoint Configuration Manager](/configmgr/). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de Stille para meter. De huidige branch van Configuration Manager biedt voordelen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
 
-Het installatie programma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikers context. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt tijdens de verificatie met Azure AD met de gebruikers referenties op de achtergrond gekoppeld aan het apparaat met Azure AD.
+Het installatieprogramma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikerscontext. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt tijdens de verificatie met Azure AD met de gebruikers referenties op de achtergrond gekoppeld aan het apparaat met Azure AD.
 
 Als u de apparaatregistratie wilt beheren, moet u het Windows Installer-pakket implementeren op de geselecteerde groep apparaten van het lagere niveau Windows.
 

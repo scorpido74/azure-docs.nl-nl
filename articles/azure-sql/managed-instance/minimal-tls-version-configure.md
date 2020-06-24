@@ -2,7 +2,7 @@
 title: Minimale TLS-versie configureren-beheerd exemplaar
 description: Meer informatie over het configureren van een minimale TLS-versie voor een beheerd exemplaar
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: ''
 ms.topic: conceptual
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7982cb80c253ec3966319528e39390920c653e38
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267117"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974259"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Minimale TLS-versie configureren in Azure SQL Managed instance
 Met de instelling minimale versie van [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) kunnen klanten de versie van TLS beheren die wordt gebruikt door hun Azure SQL Managed instance.

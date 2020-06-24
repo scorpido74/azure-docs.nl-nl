@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198388"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736999"
 ---
-# <a name="orchestration-mode-preview"></a>Orchestration-modus (preview-versie)
+# <a name="orchestration-modes-preview"></a>Orchestration-modi (preview-versie)
+
+> [!CAUTION]
+> Hartelijk dank voor iedereen die heeft deel genomen aan deze open bare preview. We konden waardevolle feedback over onze community verzamelen. Deze preview is nu **gesloten** voor nieuwe deel nemers om feedback te kunnen integreren. Deze ruimte wordt bijgewerkt met nieuwe informatie.
 
 Virtuele-machine schaal sets bieden een logische groepering van door het platform beheerde virtuele machines. Met schaal sets kunt u een configuratie model voor virtuele machines maken, automatisch extra exemplaren toevoegen of verwijderen op basis van CPU-of geheugen belasting en automatisch upgraden naar de meest recente versie van het besturings systeem. In de meeste gevallen kunt u met schaal sets virtuele machines maken met behulp van een VM-configuratie model dat is opgegeven op het moment dat de schaalset wordt gemaakt. de schaalset kan alleen virtuele machines beheren die impliciet zijn gemaakt op basis van het configuratie model.
 
@@ -34,7 +37,7 @@ Virtuele-machine schaal sets ondersteunen 2 verschillende indelings modi:
 > 
 > Deze functie van virtuele-machine schaal sets is momenteel beschikbaar als open bare preview.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 
 ## <a name="orchestration-modes"></a>Indelingsmodi

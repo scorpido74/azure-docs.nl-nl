@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216447"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945389"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
 In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings gegevens van virtuele Azure-machines te verzamelen en analyseren om hun status te behouden. Virtuele machines kunnen worden bewaakt voor Beschik baarheid en prestaties met Azure Monitor zoals elke [andere Azure-resource](monitor-azure-resource.md), maar ze zijn uniek van andere resources, aangezien u ook de gast besturingssystemen en het systeem en de werk belastingen die hierop worden uitgevoerd, moet bewaken. 
@@ -105,9 +105,9 @@ Installeer de diagnostische uitbrei ding voor één virtuele Windows-machine in 
 Zie [Telegraf installeren en configureren](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf) voor meer informatie over het configureren van de telegrafie agenten op virtuele Linux-machines. De menu optie voor het instellen van de **Diagnostische** gegevens is beschikbaar voor Linux, maar u kunt er ook voor zorgen dat u niet naar Azure Storage gaat verzenden.
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>Metrische platform gegevens en activiteiten logboek verzamelen
-U kunt de platform metrieken en het activiteiten logboek dat is verzameld voor elke virtuele-machinehost in het Azure Portal weer geven. Verzamel deze gegevens in dezelfde Log Analytics werk ruimte als Azure Monitor voor VM's om deze te analyseren met de andere bewakings gegevens die voor de virtuele machine zijn verzameld. Deze verzameling is geconfigureerd met een [Diagnostische instelling](../platform/diagnostic-settings.md). Verzamel het activiteiten logboek met een [Diagnostische instelling voor het abonnement](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal).
+U kunt de platform metrieken en het activiteiten logboek dat is verzameld voor elke virtuele-machinehost in het Azure Portal weer geven. Verzamel deze gegevens in dezelfde Log Analytics werk ruimte als Azure Monitor voor VM's om deze te analyseren met de andere bewakings gegevens die voor de virtuele machine zijn verzameld. Deze verzameling is geconfigureerd met een [Diagnostische instelling](../platform/diagnostic-settings.md). Verzamel het activiteiten logboek met een [Diagnostische instelling voor het abonnement](../platform/diagnostic-settings.md#create-in-azure-portal).
 
-Verzamel platform metrieken met een diagnostische instelling voor de virtuele machine. In tegens telling tot andere Azure-resources kunt u geen diagnostische instelling maken voor een virtuele machine in de Azure Portal, maar moet u een [andere methode](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)gebruiken. In de volgende voor beelden ziet u hoe u metrische gegevens voor een virtuele machine kunt verzamelen met behulp van Power shell en CLI.
+Verzamel platform metrieken met een diagnostische instelling voor de virtuele machine. In tegens telling tot andere Azure-resources kunt u geen diagnostische instelling maken voor een virtuele machine in de Azure Portal, maar moet u een [andere methode](../platform/diagnostic-settings.md#create-using-powershell)gebruiken. In de volgende voor beelden ziet u hoe u metrische gegevens voor een virtuele machine kunt verzamelen met behulp van Power shell en CLI.
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"

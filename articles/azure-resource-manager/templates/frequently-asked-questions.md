@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/30/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 380e65d3f3d659d8fa6f339a9dfd45263f711541
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325899"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296862"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Veelgestelde vragen over ARM-sjablonen
 
@@ -128,7 +128,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
 * **Kan ik nog steeds aangepaste script extensies en desired state Configuration (DSC) gebruiken?**
 
-  Deze opties zijn nog steeds beschikbaar en zijn niet gewijzigd. Implementatie scripts zijn ontworpen om acties uit te voeren die niet zijn gerelateerd aan de VM-gast. Als u een script moet uitvoeren op een hostbesturingssysteem in een VM, is de klanten script extensie en/of DSC een betere keuze. Implementatie scripts hebben echter voor delen, zoals het instellen van de time-outperiode.
+  Deze opties zijn nog steeds beschikbaar en zijn niet gewijzigd. Implementatie scripts zijn ontworpen om acties uit te voeren die niet zijn gerelateerd aan de VM-gast. Als u een script moet uitvoeren op een hostbesturingssysteem in een VM, is de aangepaste script extensie en/of DSC een betere keuze. Implementatie scripts hebben echter voor delen, zoals het instellen van de time-outperiode.
 
 * **Worden implementatie scripts ondersteund in Azure Government?**
 

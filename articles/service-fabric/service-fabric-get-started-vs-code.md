@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258484"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692595"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric voor Visual Studio code
 
@@ -55,8 +55,8 @@ De volgende vereiste onderdelen moeten worden geïnstalleerd voor .NET core/C#-o
 1. Open VS code.
 2. Klik op het pictogram uitbrei dingen in de **activiteiten balk** aan de linkerkant van VS code. Zoek naar "Service Fabric". Klik op **installeren** voor de uitbrei ding service Fabric reliable Services.
 
-## <a name="commands"></a>Opdrachten
-De uitbrei ding Service Fabric Reliable Services voor VS code biedt een groot aantal opdrachten waarmee ontwikkel aars Service Fabric projecten kunnen maken en implementeren. U kunt opdrachten vanuit het **opdracht palet** aanroepen door `(Ctrl + Shift + p)`op, op de opdracht naam in de invoer balk te drukken en de gewenste opdracht te selecteren in de lijst prompt. 
+## <a name="commands"></a>Opdracht
+De uitbrei ding Service Fabric Reliable Services voor VS code biedt een groot aantal opdrachten waarmee ontwikkel aars Service Fabric projecten kunnen maken en implementeren. U kunt opdrachten vanuit het **opdracht palet** aanroepen door op, op de `(Ctrl + Shift + p)` opdracht naam in de invoer balk te drukken en de gewenste opdracht te selecteren in de lijst prompt. 
 
 * Service Fabric: toepassing maken 
 * Service Fabric: toepassing publiceren 
@@ -87,10 +87,10 @@ Met de opdracht **service Fabric: add service** voegt u een nieuwe service toe a
 5.  De nieuwe service wordt weer gegeven in de projectmap. 
 
 ### <a name="service-fabric-publish-application"></a>Service Fabric: toepassing publiceren
-Met de **service Fabric: opdracht publicatie toepassing** wordt uw service Fabric toepassing geïmplementeerd op een extern cluster. Het doel cluster kan een beveiligd of een niet-beveiligd cluster zijn. Als er geen para meters zijn ingesteld in Cloud. json, wordt de toepassing geïmplementeerd naar het lokale cluster.
+Met de **service Fabric: opdracht publicatie toepassing** wordt uw service Fabric toepassing geïmplementeerd op een extern cluster. Het doel cluster kan een beveiligd of een niet-beveiligd cluster zijn. Als er geen para meters zijn ingesteld in Cloud.jsop, wordt de toepassing geïmplementeerd naar het lokale cluster.
 
-1.  De eerste keer dat de toepassing is gebouwd, wordt er een Cloud. JSON-bestand gegenereerd in de projectmap.
-2.  Voer de waarden in voor het cluster waarmee u verbinding wilt maken in het bestand Cloud. json.
+1.  De eerste keer dat de toepassing is gebouwd, wordt een Cloud.jsin het bestand gegenereerd in de projectmap.
+2.  Voer de waarden in voor het cluster waarmee u verbinding wilt maken in de Cloud.jsin het bestand.
 3.  Selecteer de opdracht **service Fabric: toepassing publiceren** .
 4.  Bekijk het doel cluster met Service Fabric Explorer om te bevestigen dat de toepassing is geïnstalleerd. 
 
@@ -98,8 +98,8 @@ Met de **service Fabric: opdracht publicatie toepassing** wordt uw service Fabri
 Met de **service Fabric: toepassings opdracht implementeren** wordt uw service Fabric toepassing geïmplementeerd op uw lokale cluster. Zorg ervoor dat het lokale cluster wordt uitgevoerd voordat u de opdracht gebruikt. 
 
 1. Selecteer de **service Fabric: toepassings opdracht implementeren**
-2. Bekijk het lokale cluster met Service Fabric Explorer (http:\//localhost: 19080/Explorer) om te bevestigen dat de toepassing is geïnstalleerd. Dit kan enige tijd duren. het is dus een ogen blik geduld.
-3. U kunt ook **service Fabric: opdracht toepassing publiceren** zonder para meters die zijn ingesteld in het bestand Cloud. json, gebruiken om te implementeren in een lokaal cluster.
+2. Bekijk het lokale cluster met Service Fabric Explorer (http: \/ /localhost: 19080/Explorer) om te bevestigen dat de toepassing is geïnstalleerd. Dit kan enige tijd duren. het is dus een ogen blik geduld.
+3. U kunt ook **service Fabric: opdracht toepassing publiceren** zonder para meters die zijn ingesteld in de Cloud.jsin het bestand om te implementeren in een lokaal cluster.
 
 > [!NOTE]
 > Het implementeren van Java-toepassingen voor het lokale cluster wordt niet ondersteund op Windows-computers.

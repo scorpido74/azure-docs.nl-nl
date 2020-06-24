@@ -4,18 +4,18 @@ description: Meer informatie over het verplaatsen van App Service resources van 
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77925707"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945474"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Een App Service-app naar een andere regio verplaatsen
 
 In dit artikel wordt beschreven hoe u App Service-resources verplaatst naar een andere Azure-regio. U kunt uw resources om een aantal redenen verplaatsen naar een andere regio. Om bijvoorbeeld te profiteren van een nieuwe Azure-regio, voor het implementeren van functies of services die alleen beschikbaar zijn in specifieke regio's, om te voldoen aan de interne beleids-en beheer vereisten, of als reactie op vereisten voor capaciteits planning.
 
-App Service resources zijn regio-specifiek en kunnen niet worden verplaatst naar andere regio's. U moet een kopie van uw bestaande App Service-resources maken in de doel regio. Verplaats de inhoud naar de nieuwe app. Als uw bron-app gebruikmaakt van een aangepast domein, kunt u [deze migreren naar de nieuwe app in de doel regio](manage-custom-dns-migrate-domain.md) wanneer u klaar bent.
+App Service resources zijn regio-specifiek en kunnen niet worden verplaatst naar andere regio's. U moet een kopie maken van uw bestaande App Service-resources in de doel regio en vervolgens uw inhoud verplaatsen naar de nieuwe app. Als uw bron-app gebruikmaakt van een aangepast domein, kunt u [deze migreren naar de nieuwe app in de doel regio](manage-custom-dns-migrate-domain.md) wanneer u klaar bent.
 
 Om het kopiëren van uw app gemakkelijker te maken, kunt u [een afzonderlijke app service-app klonen](app-service-web-app-cloning.md) in een app service plan in een andere regio, maar dit heeft wel [beperkingen](app-service-web-app-cloning.md#current-restrictions), met name dat het geen ondersteuning biedt voor Linux-apps.
 

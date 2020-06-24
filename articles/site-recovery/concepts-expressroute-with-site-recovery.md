@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258003"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700882"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute met Azure Site Recovery
 
@@ -46,7 +46,7 @@ Dit zorgt ervoor dat alleen replicatie verkeer via ExpressRoute loopt terwijl de
 
 Nadat de failover van virtuele machines of servers naar een virtueel Azure-netwerk is uitgevoerd, kunt u deze openen met behulp van [privé-peering](../expressroute/expressroute-circuit-peerings.md#privatepeering). 
 
-Het gecombineerde scenario wordt in het volgende diagram weer gegeven ![: on-premises-naar-Azure met ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Het gecombineerde scenario wordt in het volgende diagram weer gegeven: ![ on-premises-naar-Azure met ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replicatie van Azure naar Azure met ExpressRoute
 

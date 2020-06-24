@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509233"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791483"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -131,7 +131,7 @@ Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [
 
 Geforceerde tunneling wordt ondersteund bij het maken van een nieuwe firewall. U kunt een bestaande firewall niet configureren voor geforceerde tunneling. Zie [Geforceerde tunneling van Azure Firewall](forced-tunneling.md) voor meer informatie. 
 
-Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
+Azure Firewall moet een directe verbinding met internet hebben. Als uw AzureFirewallSubnet een standaardroute naar uw on-premises netwerk via BGP leert, moet u deze overschrijven met een UDR van 0.0.0.0/0 met de waarde **NextHopType** ingesteld op **Internet** om directe verbinding met internet te houden.
 
 Als voor uw configuratie geforceerde tunneling naar een on-premises netwerk is vereist en u de doel-IP-voor voegsels voor uw Internet doelen kunt bepalen, kunt u deze bereiken met het on-premises netwerk als de volgende hop configureren via een door de gebruiker gedefinieerde route op het AzureFirewallSubnet. U kunt ook BGP gebruiken om deze routes te definiëren.
 
@@ -176,7 +176,7 @@ De aanvankelijke doorvoer capaciteit van Azure Firewall is 2,5-3 Gbps en wordt g
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Hoe lang duurt het om Azure Firewall uit te schalen?
 
-Azure Firewall wordt geleidelijk geschaald wanneer de gemiddelde door Voer of het CPU-verbruik 60% is. Uitschalen neemt vijf tot zeven minuten in beslag. Bij het testen van de prestaties moet u ervoor zorgen dat u ten minste 10 tot 15 minuten test en nieuwe verbindingen initieert om te profiteren van de nieuwe firewall knooppunten.
+Azure Firewall wordt geleidelijk geschaald wanneer de gemiddelde door Voer of het CPU-verbruik 60% is. Uitschalen neemt vijf tot zeven minuten in beslag. Bij het testen van de prestaties moet u ervoor zorgen dat u ten minste 10 tot 15 minuten test en nieuwe verbindingen start om te profiteren van de nieuwe firewall knooppunten.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Staat Azure Firewall standaard toegang tot Active Directory toe?
 
@@ -215,3 +215,7 @@ Ja. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-
 ## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Kan ik een IP-groep verplaatsen naar een andere resource groep?
 
 Nee. het verplaatsen van een IP-groep naar een andere resource groep wordt momenteel niet ondersteund.
+
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Wat is de time-out voor inactiviteit van TCP voor Azure Firewall?
+
+Een standaard gedrag van een netwerk firewall is om ervoor te zorgen dat TCP-verbindingen in stand worden gehouden en ze onmiddellijk sluiten als er geen activiteit is. Azure Firewall TCP-time-out voor inactiviteit is vier minuten. Deze instelling kan niet worden geconfigureerd. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie wordt onderhouden. Een veelvoorkomende procedure is het gebruik van een TCP-Keep-Alive. Deze procedure houdt de verbinding gedurende een langere periode actief. Zie de [.net-voor beelden](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)voor meer informatie.

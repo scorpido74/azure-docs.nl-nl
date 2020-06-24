@@ -73,7 +73,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 
 De informatie in de volgende tabel bevat de proxy-en firewall configuratie-informatie voor Azure China 21Vianet.
 
-|Agentresource|Poorten |Beschrijving | 
+|Agentresource|Poorten |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -81,7 +81,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie-infor
 
 De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegevens voor de Amerikaanse overheid van Azure.
 
-|Agentresource|Poorten |Beschrijving | 
+|Agentresource|Poorten |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |

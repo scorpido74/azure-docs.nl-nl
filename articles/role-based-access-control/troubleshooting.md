@@ -10,17 +10,17 @@ ms.service: role-based-access-control
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996600"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790701"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Problemen met Azure-roltoewijzingen
 
-- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** **omdat de** > **optie toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout ' de client met object-id heeft geen toestemming hebt om actie uit te voeren ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de `Microsoft.Authorization/roleAssignments/write` machtiging heeft, zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
+- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** **omdat de**  >  optie**toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout ' de client met object-id heeft geen toestemming hebt om actie uit te voeren ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de machtiging heeft `Microsoft.Authorization/roleAssignments/write` , zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
 
 ## <a name="problems-with-custom-roles"></a>Problemen met aangepaste rollen
 
@@ -81,7 +81,7 @@ $ras.Count
 ## <a name="access-denied-or-permission-errors"></a>Toegang geweigerd of machtigings fouten
 
 - Als de machtigingsfout 'Client met object-id is niet gemachtigd om actie uit te voeren over bereik (code: AuthorizationFailed)' wanneer u een resource wilt maken, controleert u of u momenteel bent aangemeld met een gebruiker die een rol heeft met schrijfrechten voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Zie [ingebouwde rollen van Azure](built-in-roles.md)voor een lijst met machtigingen voor elke ingebouwde rol.
-- Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan `Microsoft.Support/supportTickets/write` wie een rol is toegewezen, zoals [mede werker van de ondersteunings aanvraag](built-in-roles.md#support-request-contributor).
+- Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen `Microsoft.Support/supportTickets/write` , zoals [mede werker van de ondersteunings aanvraag](built-in-roles.md#support-request-contributor).
 
 ## <a name="role-assignments-with-identity-not-found"></a>Roltoewijzingen met identiteit niet gevonden
 
@@ -112,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u mogelijk `principalName`een leeg. Bijvoorbeeld, de [toewijzings lijst AZ Role](/cli/azure/role/assignment#az-role-assignment-list) retourneert een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
+Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u mogelijk een leeg `principalName` . Bijvoorbeeld, de [toewijzings lijst AZ Role](/cli/azure/role/assignment#az-role-assignment-list) retourneert een roltoewijzing die vergelijkbaar is met de volgende uitvoer:
 
 ```
 {
@@ -143,7 +143,7 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-Als u dit fout bericht ontvangt, moet u ook de `-Scope` para meters `-ResourceGroupName` of opgeven.
+Als u dit fout bericht ontvangt, moet u ook de `-Scope` `-ResourceGroupName` para meters of opgeven.
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
@@ -153,7 +153,7 @@ PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -
 
 Azure Resource Manager worden soms configuraties en gegevens in de cache opgeslagen om de prestaties te verbeteren. Wanneer u roltoewijzingen toevoegt of verwijdert, kan het tot 30 minuten duren voordat de wijzigingen van kracht worden. Als u de Azure Portal, Azure PowerShell of Azure CLI gebruikt, kunt u het vernieuwen van uw roltoewijzingen afdwingen door u af te melden en u aan te melden. Als u wijzigingen aanbrengt in de roltoewijzing met REST API-aanroepen, kunt u een vernieuwing afdwingen door uw toegangs token te vernieuwen.
 
-Als u een roltoewijzing toevoegt of verwijdert in het bereik van de beheer groep en de rol `DataActions`heeft, kan de toegang op het gegevensvlak niet enkele uren worden bijgewerkt. Dit geldt alleen voor beheer groeps bereik en het gegevens vlak.
+Als u een roltoewijzing toevoegt of verwijdert in het bereik van de beheer groep en de rol heeft `DataActions` , kan de toegang op het gegevensvlak niet enkele uren worden bijgewerkt. Dit geldt alleen voor beheer groeps bereik en het gegevens vlak.
 
 ## <a name="web-app-features-that-require-write-access"></a>Functies van web-apps waarvoor schrijf toegang is vereist
 
@@ -205,7 +205,7 @@ Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
 * Eindpunten  
 * IP-adressen  
 * Disks  
-* Uitbreidingen  
+* Extensies  
 
 Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
 

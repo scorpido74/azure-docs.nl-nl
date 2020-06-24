@@ -1,0 +1,66 @@
+---
+title: De ' aangemeld blijven? ' configureren vragen om Azure Active Directory accounts
+description: Meer informatie over aangemeld blijven (KMSI), waarin wordt weer gegeven dat u bent aangemeld? prompt, hoe u deze kunt configureren in de Azure Active Directory-Portal en hoe u aanmeldings problemen kunt oplossen.
+services: active-directory
+author: CelesteDG
+manager: daveba
+ms.service: active-directory
+ms.topic: conceptual
+ms.workload: identity
+ms.subservice: fundamentals
+ms.date: 06/05/2020
+ms.author: celested
+ms.reviewer: asteen, jlu, hirsin
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8c4b253a3017f1a836ac989bb897065a6a7d8337
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84739950"
+---
+# <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>De ' aangemeld blijven? ' configureren vragen om Azure AD-accounts
+
+Aangemeld blijven (KMSI) Hiermee wordt de vraag aanmelden **blijven** weer gegeven nadat een gebruiker zich heeft aangemeld. Als een gebruiker **Ja** op deze vraag antwoordt, biedt de keep me aangemeld-service een permanent [vernieuwings token](../develop/developer-glossary.md#refresh-token). Voor federatieve tenants wordt de prompt weer gegeven nadat de gebruiker is geverifieerd met de federatieve identiteits service.
+
+In het volgende diagram ziet u de aanmeldings stroom van de gebruiker voor een beheerde Tenant en federatieve Tenant en de nieuwe prompt aangemeld blijven. Deze stroom bevat slimme logica zodat de optie **aangemeld blijven?** niet wordt weer gegeven als het machine learning systeem een aanmelding met een hoog risico of een aanmelding van een gedeeld apparaat detecteert.
+
+:::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="Diagram van de aanmeldings stroom van de gebruiker voor een beheerde versus federatieve Tenant":::
+
+> [!NOTE]
+> Voor het configureren van de optie aangemeld aanmelden moet u Azure Active Directory (Azure AD) Premium 1, Premium 2 of Basic-edities gebruiken of een Office 365-licentie hebben. Zie voor meer informatie over licenties en edities [Aanmelden registreren voor Azure AD Premium](active-directory-get-started-premium.md).<br><br>Azure AD Premium-en Basic-edities zijn beschikbaar voor klanten in China met behulp van het wereld wijde exemplaar van Azure AD. De Azure AD Premium en Basic-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op met het [Azure AD-forum](https://feedback.azure.com/forums/169401-azure-active-directory/)voor meer informatie.
+
+## <a name="configure-kmsi"></a>KMSI configureren
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account van een globale administrator voor de map.
+1. Selecteer **Azure Active Directory**, selecteer **bedrijfs huisstijl**en selecteer vervolgens **configureren**.
+1. Zoek in de sectie **Geavanceerde instellingen** de **optie weer geven om de instelling aangemeld te blijven** .
+
+   Met deze instelling kunt u kiezen of uw gebruikers aangemeld blijven bij Azure AD totdat ze zich expliciet hebben afgemeld.
+   * Als u **Nee**kiest, wordt de optie **aangemeld blijven** verborgen nadat de gebruiker zich heeft aangemeld en moet de gebruiker zich aanmelden telkens wanneer de browser wordt gesloten en opnieuw wordt geopend.
+   * Als u **Ja**kiest, wordt de optie **aangemeld blijven?** weer gegeven aan de gebruiker.
+
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Scherm afbeelding toont de optie weer geven om aangemeld te blijven":::
+
+## <a name="troubleshoot-sign-in-issues"></a>Problemen met aanmelden oplossen
+
+Als een gebruiker niet op de vraag **aangemeld blijven?** wordt weer gegeven, zoals in het volgende diagram, maar de aanmeldings poging wordt afgebroken, ziet u een aanmeldings logboek vermelding die de interrupt aanduidt.
+
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Ziet u de aangemeld blijven? verschijnt":::
+
+Meer informatie over de aanmeldings fout vindt u in het voor beeld.
+
+* **Fout code voor aanmelden**: 50140
+* **Reden van fout**: deze fout is opgetreden vanwege een onderbreking bij het aanmelden bij de aanmelding van de gebruiker.
+
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Voor beeld van een aanmeldings logboek vermelding met de hand aangemeld bij interrupt":::
+
+U kunt voor komen dat gebruikers de interrupt zien door de **optie weer geven in te stellen op** **Nee** in de geavanceerde huisstijl instellingen.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over andere instellingen die van invloed zijn op de time-out van de aanmeldings sessie:
+
+* Office 365: [time-out voor niet-actieve sessie](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
+* Voorwaardelijke toegang van Azure AD- [aanmeldings frequentie voor gebruikers](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
+* Azure Portal – [time-out voor inactiviteit op Directory-niveau](https://docs.microsoft.com/azure/azure-portal/admin-timeout)

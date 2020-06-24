@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
 ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277516"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697337"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions bindings uitbreidingen registreren
 
@@ -33,7 +33,7 @@ De volgende tabel geeft aan wanneer en hoe u bindingen registreert.
 
 ## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Uitbreidings bundels voor lokale ontwikkeling
 
-Uitbreidings bundels is een implementatie technologie waarmee u een compatibele set functies binding extensies kunt toevoegen aan uw functie-app. Wanneer u uw app bouwt, worden er een vooraf gedefinieerde set extensies toegevoegd. Extensie pakketten die in een bundel zijn gedefinieerd, zijn compatibel met elkaar, waarmee u conflicten tussen pakketten kunt voor komen. U schakelt uitbreidings bundels in het bestand host. json van de app in.  
+Uitbreidings bundels is een implementatie technologie waarmee u een compatibele set functies binding extensies kunt toevoegen aan uw functie-app. Wanneer u uw app bouwt, worden er een vooraf gedefinieerde set extensies toegevoegd. Extensie pakketten die in een bundel zijn gedefinieerd, zijn compatibel met elkaar, waarmee u conflicten tussen pakketten kunt voor komen. U schakelt uitbreidings bundels in de host.jsvan de app in.  
 
 U kunt uitbreidings bundels gebruiken met versie 2. x en latere versies van de functions-runtime. Zorg ervoor dat u de nieuwste versie van [Azure functions core tools](functions-run-local.md#v2)gebruikt bij het ontwikkelen van lokale.
 
@@ -41,13 +41,13 @@ Gebruik uitbreidings bundels voor lokale ontwikkeling met behulp van Azure Funct
 
 Als u geen uitbreidings bundels gebruikt, moet u de .NET Core 2. x SDK installeren op uw lokale computer voordat u de binding-extensies installeert. Met uitbreidings bundels wordt deze vereiste voor lokale ontwikkeling verwijderd. 
 
-Als u uitbreidings bundels wilt gebruiken, moet u het bestand *host. json* bijwerken zodat het `extensionBundle`de volgende vermelding bevat voor:
+Als u uitbreidings bundels wilt gebruiken, moet u de *host.jsin* het bestand bijwerken met de volgende vermelding voor `extensionBundle` :
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
-## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C\# Class-bibliotheek met Visual Studio
+## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# Class-bibliotheek met Visual Studio
 
 In **Visual Studio**kunt u pakketten installeren via de Package Manager-console met behulp van de opdracht [installeren-pakket](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -57,7 +57,7 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 De naam van het pakket dat voor een bepaalde binding wordt gebruikt, is opgenomen in het referentie artikel voor die binding. Zie de [sectie pakketten in het artikel service bus binding referentie](functions-bindings-service-bus.md#functions-1x)voor een voor beeld.
 
-Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het pakket, zoals `3.0.0-beta5`. Geldige versies worden weer gegeven op de afzonderlijke pakket pagina's op [NuGet.org](https://nuget.org). De primaire versies die overeenkomen met functions runtime 1. x of 2. x worden opgegeven in het referentie artikel voor de binding.
+Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het pakket, zoals `3.0.0-beta5` . Geldige versies worden weer gegeven op de afzonderlijke pakket pagina's op [NuGet.org](https://nuget.org). De primaire versies die overeenkomen met functions runtime 1. x of 2. x worden opgegeven in het referentie artikel voor de binding.
 
 Als u gebruikt `Install-Package` om te verwijzen naar een binding, hoeft u geen [uitbreidings bundels](#extension-bundles)te gebruiken. Deze benadering is specifiek voor klassen bibliotheken die zijn gemaakt in Visual Studio.
 
@@ -71,9 +71,9 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 De .NET Core SLI kan alleen worden gebruikt voor de ontwikkeling van Azure Functions 2. x.
 
-Vervang `<BINDING_TYPE_NAME>` door de naam van het pakket dat de binding bevat die u nodig hebt. U kunt het artikel over de gewenste bindings verwijzing vinden in de [lijst met ondersteunde bindingen](./functions-triggers-bindings.md#supported-bindings).
+Vervang door `<BINDING_TYPE_NAME>` de naam van het pakket dat de binding bevat die u nodig hebt. U kunt het artikel over de gewenste bindings verwijzing vinden in de [lijst met ondersteunde bindingen](./functions-triggers-bindings.md#supported-bindings).
 
-Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het pakket, zoals `3.0.0-beta5`. Geldige versies worden weer gegeven op de afzonderlijke pakket pagina's op [NuGet.org](https://nuget.org). De primaire versies die overeenkomen met functions runtime 1. x of 2. x worden opgegeven in het referentie artikel voor de binding.
+Vervang `<TARGET_VERSION>` in het voor beeld door een specifieke versie van het pakket, zoals `3.0.0-beta5` . Geldige versies worden weer gegeven op de afzonderlijke pakket pagina's op [NuGet.org](https://nuget.org). De primaire versies die overeenkomen met functions runtime 1. x of 2. x worden opgegeven in het referentie artikel voor de binding.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

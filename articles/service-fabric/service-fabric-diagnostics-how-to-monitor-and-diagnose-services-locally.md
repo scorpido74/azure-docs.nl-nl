@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258510"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701197"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Services controleren en diagnosticeren in een ontwikkelomgeving met lokale machines
 > [!div class="op_single_selector"]
@@ -40,9 +40,9 @@ Service Fabric ETW-gebeurtenissen meenemen om toepassings ontwikkelaars te helpe
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>Uw eigen aangepaste traceringen toevoegen aan de toepassings code
 De Service Fabric Visual Studio-project sjablonen bevatten voorbeeld code. De code laat zien hoe u aangepaste toepassings code ETW-traceringen kunt toevoegen die worden weer gegeven in de Visual Studio ETW viewer naast systeem traceringen van Service Fabric. Het voor deel van deze methode is dat meta gegevens automatisch worden toegevoegd aan traceringen en dat de Visual Studio diagnostische gebeurtenis Viewer al is geconfigureerd om ze weer te geven.
 
-Voor projecten die zijn gemaakt op basis van de **service Sjablonen** (stateless of stateful), zoekt `RunAsync` u alleen naar de implementatie:
+Voor projecten die zijn gemaakt op basis van de **service Sjablonen** (stateless of stateful), zoekt u alleen naar de `RunAsync` implementatie:
 
-1. De aanroep van `ServiceEventSource.Current.ServiceMessage` in de `RunAsync` -methode toont een voor beeld van een aangepaste etw-tracering van de toepassings code.
+1. De aanroep van `ServiceEventSource.Current.ServiceMessage` in de- `RunAsync` methode toont een voor beeld van een aangepaste etw-tracering van de toepassings code.
 2. In het **ServiceEventSource.cs** -bestand ziet u een overbelasting voor de `ServiceEventSource.ServiceMessage` methode die moet worden gebruikt voor gebeurtenissen met hoge frequentie als gevolg van de oorzaak van de prestaties.
 
 Voor projecten die zijn gemaakt op basis van de **actor sjablonen** (stateless of stateful):

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277588"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791653"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
@@ -35,7 +35,7 @@ Service bindingen kunnen ook start fouten van toepassingen veroorzaken. Als u ee
 
 > ' Java. SQL. SQLException: de tijdzone waarde ' Coordinated Universal Time ' van de server wordt niet herkend of bevat meer dan een tijd zone. '
 
-Als u deze fout wilt oplossen, gaat `server parameters` u naar de van uw MySQL-exemplaar `time_zone` en wijzigt u de waarde van *systeem* in *+ 0:00*.
+Als u deze fout wilt oplossen, gaat u naar de `server parameters` van uw MySQL-exemplaar en wijzigt u de `time_zone` waarde van *systeem* in *+ 0:00*.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Mijn toepassing is vastgelopen of heeft een onverwachte fout gegenereerd
@@ -49,7 +49,7 @@ Wanneer u fouten opspoort in de toepassing, moet u eerst de status en detectie s
 
   - `TomcatErrorCount`(_Tomcat. Global. error_): alle uitzonde ringen voor de lente toepassing worden hier geteld. Als dit aantal groot is, gaat u naar Azure Log Analytics om uw toepassings logboeken te controleren.
 
-  - `AppMemoryMax`(_JVM. Memory. Max_): de maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het bedrag kan niet worden gedefinieerd, of het kan in de loop van de tijd worden gewijzigd als het is gedefinieerd. Als deze is gedefinieerd, is de hoeveelheid gebruikt en toegewezen geheugen altijd kleiner dan of gelijk aan de maximum waarde. Een geheugen toewijzing kan echter mislukken met een `OutOfMemoryError` bericht als de toewijzing probeert het gebruikte geheugen te verg Roten, zoals het gebruik van *> vastgelegd*, zelfs als het *wordt gebruikt <= Max* is ingesteld op True. Probeer in een dergelijke situatie de maximale Heap-grootte te verhogen met behulp `-Xmx` van de para meter.
+  - `AppMemoryMax`(_JVM. Memory. Max_): de maximale hoeveelheid geheugen die beschikbaar is voor de toepassing. Het bedrag kan niet worden gedefinieerd, of het kan in de loop van de tijd worden gewijzigd als het is gedefinieerd. Als deze is gedefinieerd, is de hoeveelheid gebruikt en toegewezen geheugen altijd kleiner dan of gelijk aan de maximum waarde. Een geheugen toewijzing kan echter mislukken met een `OutOfMemoryError` bericht als de toewijzing probeert het gebruikte geheugen te verg Roten, zoals het gebruik van *> vastgelegd*, zelfs als het *wordt gebruikt <= Max* is ingesteld op True. Probeer in een dergelijke situatie de maximale Heap-grootte te verhogen met behulp van de `-Xmx` para meter.
 
   - `AppMemoryUsed`(_JVM. Memory. used_): de hoeveelheid geheugen in bytes die momenteel door de toepassing wordt gebruikt. Voor een normale toepassing voor het laden van Java vormt deze metrische reeks een *zaagtand* patroon, waarbij het geheugen gebruik gestaag toeneemt en afneemt in kleine stappen en plotseling een hoop zou afnemen en het patroon wordt herhaald. Deze metrische serie wordt veroorzaakt door garbagecollection in Java Virtual Machine, waarbij verzamelings acties voor komen op het zaagtand patroon.
     
@@ -111,7 +111,7 @@ Maar als u probeert het Azure lente-Cloud service-exemplaar in te stellen met be
 
 Als u het Azure lente-Cloud service-exemplaar wilt instellen met behulp van de Resource Manager-sjabloon, raadpleegt u eerst [de structuur en de syntaxis van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 
-De naam van het Azure lente-Cloud service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io`, zodat de installatie mislukt als de naam in conflict is met een bestaande. Mogelijk vindt u meer informatie in de activiteiten Logboeken.
+De naam van het Azure lente-Cloud service-exemplaar wordt gebruikt voor het aanvragen van een subdomeinnaam onder `azureapps.io` , zodat de installatie mislukt als de naam in conflict is met een bestaande. Mogelijk vindt u meer informatie in de activiteiten Logboeken.
 
 ### <a name="i-cant-deploy-a-jar-package"></a>Ik kan geen JAR-pakket implementeren
 
@@ -159,8 +159,8 @@ Met omgevings variabelen wordt het Azure lente Cloud-Framework geïnformeerd, wa
 > Met deze procedure worden de omgevings variabelen weer gegeven met behulp van het eind punt van de test.  Ga niet verder als uw test eindpunt openbaar toegankelijk is of als u een domein naam aan uw toepassing hebt toegewezen.
 
 1. Ga naar `https://<your application test endpoint>/actuator/health`.  
-    - Een antwoord dat lijkt `{"status":"UP"}` op dat het eind punt is ingeschakeld.
-    - Als het antwoord negatief is, neemt u de volgende afhankelijkheden op in het bestand *pom. XML* :
+    - Een antwoord dat lijkt op `{"status":"UP"}` dat het eind punt is ingeschakeld.
+    - Als het antwoord negatief is, neemt u de volgende afhankelijkheden op in uw *POM.xml* -bestand:
 
         ```xml
             <dependency>
@@ -169,7 +169,7 @@ Met omgevings variabelen wordt het Azure lente Cloud-Framework geïnformeerd, wa
             </dependency>
         ```
 
-1. Als het eind punt voor de installatie van de veer boot is ingeschakeld, gaat u naar de Azure Portal en zoekt u naar de pagina configuratie van uw toepassing.  Voeg een omgevings variabele met de `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` naam en de `*` waarde toe. 
+1. Als het eind punt voor de installatie van de veer boot is ingeschakeld, gaat u naar de Azure Portal en zoekt u naar de pagina configuratie van uw toepassing.  Voeg een omgevings variabele met de naam `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` en de waarde toe `*` . 
 
 1. Start de toepassing opnieuw.
 
@@ -189,16 +189,18 @@ Met omgevings variabelen wordt het Azure lente Cloud-Framework geïnformeerd, wa
     }
     ```
 
-Zoek naar het onderliggende knoop punt `systemEnvironment`met de naam.  Dit knoop punt bevat de omgevings variabelen van uw toepassing.
+Zoek naar het onderliggende knoop punt met de naam `systemEnvironment` .  Dit knoop punt bevat de omgevings variabelen van uw toepassing.
 
 > [!IMPORTANT]
-> Vergeet niet om de bloot stelling van uw omgevings variabelen terug te draaien voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure Portal, zoek de configuratie pagina van uw toepassing en verwijder deze omgevings variabele: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
+> Vergeet niet om de bloot stelling van uw omgevings variabelen terug te draaien voordat u uw toepassing toegankelijk maakt voor het publiek.  Ga naar de Azure Portal, zoek de configuratie pagina van uw toepassing en verwijder deze omgevings variabele: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` .
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>Ik kan geen metrische gegevens of Logboeken vinden voor mijn toepassing
 
 Ga naar **app-beheer** om te controleren of de statussen _van_de toepassing _actief_ zijn.
 
-Als u de metrische gegevens van _JVM_ kunt zien, maar geen metrische gegevens van _Tomcat_, controleert u of `spring-boot-actuator` de afhankelijkheid is ingeschakeld in uw toepassings pakket en of deze correct wordt opgestart.
+Controleer of weer _JMX_ is ingeschakeld in uw toepassings pakket. Deze functie kan worden ingeschakeld met de configuratie-eigenschap `spring.jmx.enabled=true` .  
+
+Controleer of de `spring-boot-actuator` afhankelijkheid is ingeschakeld in uw toepassings pakket en of deze correct wordt opgestart.
 
 ```xml
 <dependency>

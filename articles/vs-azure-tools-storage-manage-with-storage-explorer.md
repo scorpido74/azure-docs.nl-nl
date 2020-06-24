@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 11166d5578b90fe6ec936389bcd173c4c26b4852
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171239"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975262"
 ---
 # <a name="get-started-with-storage-explorer"></a>Aan de slag met Storage Explorer
 
@@ -35,7 +35,7 @@ De volgende versies van Windows-ondersteunings Storage Explorer:
 
 Voor alle versies van Windows Storage Explorer .NET Framework 4.7.2 Mini maal vereist.
 
-# <a name="macos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 De volgende versies van macOS-ondersteunings Storage Explorer:
 
@@ -55,9 +55,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 Storage Explorer is ook beschikbaar als een *. tar. gz* -down load. U moet afhankelijkheden hand matig installeren. De volgende distributies van Linux-ondersteuning *. tar. gz* -installatie:
 
+* Ubuntu 20,04 x64
 * Ubuntu 18,04 x64
 * Ubuntu 16,04 x64
-* Ubuntu 14,04 x64
 
 De installatie van het *tar. gz* -netwerk werkt mogelijk met andere distributies, maar alleen deze vermelde items worden officieel ondersteund.
 
@@ -123,7 +123,7 @@ Er zijn verschillende manieren om te koppelen aan een resource in Storage Explor
 
 1. Selecteer **een resource toevoegen via Azure Active Directory (Azure AD)** en selecteer vervolgens **volgende**.
 
-1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Volgende**.
+1. Selecteer een Azure-account en-Tenant. Deze waarden moeten toegang hebben tot de opslag resource die u wilt koppelen. Selecteer **Next**.
 
 1. Kies het resource type dat u wilt koppelen. Geef de gegevens op die nodig zijn om verbinding te maken. 
 
@@ -141,7 +141,7 @@ Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop pun
 
 1. Selecteer **een Connection String gebruiken**en selecteer **volgende**.
 
-1. Kies een weergave naam voor de verbinding en voer uw connection string in. Selecteer vervolgens **volgende**.
+1. Kies een weergave naam voor de verbinding en voer uw connection string in. Selecteer vervolgens **Volgende**.
 
 1. Bekijk de **samen vatting** van de verbinding om te controleren of alle gegevens correct zijn. Als dat het geval is, selecteert u **verbinding maken**. Selecteer anders **terug** om terug te keren naar de vorige pagina's om eventuele onjuiste gegevens op te lossen.
 
@@ -155,7 +155,7 @@ Nadat de verbinding is toegevoegd, gaat de resource structuur naar het knoop pun
 
 1. Selecteer **een SAS-URI (Shared Access Signature) gebruiken**en selecteer **volgende**.
 
-1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Volgende**.
+1. Kies een weergave naam voor de verbinding en voer de URL voor de Shared Access-hand tekening in. Het service-eind punt voor het type resource dat u wilt koppelen, moet automatisch door voeren worden. Als u een aangepast eind punt gebruikt, is dit mogelijk niet het geval. Selecteer **Next**.
 
 1. Bekijk de **samen vatting** van de verbinding om te controleren of alle gegevens correct zijn. Als dat het geval is, selecteert u **verbinding maken**. Selecteer anders **terug** om terug te keren naar de vorige pagina's om eventuele onjuiste gegevens op te lossen.
 
@@ -201,7 +201,7 @@ Als u een andere naam voor de verbinding wilt gebruiken of als uw emulator niet 
 
 1. Selecteer **koppelen aan een lokale emulator**en selecteer vervolgens **volgende**.
 
-1. Kies een weergave naam voor de verbinding en voer de poorten in waarop uw emulator luistert voor elk Service type. **Als u verbinding wilt met een lokale emulator** , worden de standaard poort waarden voor de meeste emulators voorgesteld. De poort van de **bestanden** is leeg, omdat er momenteel geen officiële emulators zijn die de service files ondersteunen. Als de emulator die u gebruikt, ondersteuning biedt voor bestanden, kunt u de poort opgeven die u wilt gebruiken. Selecteer vervolgens **volgende**.
+1. Kies een weergave naam voor de verbinding en voer de poorten in waarop uw emulator luistert voor elk Service type. **Als u verbinding wilt met een lokale emulator** , worden de standaard poort waarden voor de meeste emulators voorgesteld. De poort van de **bestanden** is leeg, omdat er momenteel geen officiële emulators zijn die de service files ondersteunen. Als de emulator die u gebruikt, ondersteuning biedt voor bestanden, kunt u de poort opgeven die u wilt gebruiken. Selecteer vervolgens **Volgende**.
 
 1. Bekijk de **samen vatting** van de verbinding en zorg ervoor dat alle informatie juist is. Als dat het geval is, selecteert u **verbinding maken**. Selecteer anders **terug** om terug te keren naar de vorige pagina's om eventuele onjuiste gegevens op te lossen.
 

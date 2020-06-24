@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655301"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119406"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Processor voor wijzigingenfeed in Azure Cosmos DB
 
@@ -23,19 +23,19 @@ Het belangrijkste voor deel van de processor bibliotheek voor wijzigings invoer 
 
 ## <a name="components-of-the-change-feed-processor"></a>Onderdelen van de processor voor wijzigings invoer
 
-Er zijn vier belang rijke onderdelen van de implementatie van de feed voor wijzigings invoer:
+Er zijn vier belangrijke onderdelen bij de implementatie van de wijzigingenfeedverwerker:
 
-1. **De bewaakte container:** De bewaakte container bevat de gegevens waaruit de wijzigings feed wordt gegenereerd. Eventuele toevoegingen en updates van de bewaakte container worden weer gegeven in de wijzigings feed van de container.
+1. **De bewaakte container:** De bewaakte container bevat de gegevens waaruit de wijzigingenfeed wordt gegenereerd. Eventuele toevoegingen en updates van de bewaakte container worden weergegeven in de wijzigingenfeed van de container.
 
-1. **De lease-container:** De lease container fungeert als een status opslag en coördineert de wijzigings feed voor meerdere werk rollen. De lease container kan worden opgeslagen in hetzelfde account als de bewaakte container of in een afzonderlijk account.
+1. **De leasecontainer:** De leasecontainer fungeert als een statusopslag en coördineert de wijzigingenfeed voor meerdere werkrollen. De leasecontainer kan worden opgeslagen in hetzelfde account als de bewaakte container of in een afzonderlijk account.
 
-1. **De host:** Een host is een toepassings exemplaar dat de feed-processor van de wijziging gebruikt om te Luis teren naar wijzigingen. Meerdere instanties met dezelfde lease configuratie kunnen parallel worden uitgevoerd, maar elk exemplaar moet een andere **exemplaar naam**hebben.
+1. **De host:** Een host is een toepassingsexemplaar dat de wijzigingenfeedverwerker gebruikt om naar wijzigingen te luisteren. Er kunnen meerdere exemplaren met dezelfde leaseconfiguratie parallel worden uitgevoerd, maar elk exemplaar moet een andere **naam hebben**.
 
-1. **De gemachtigde:** De gemachtigde is de code die definieert wat u, de ontwikkelaar, wilt doen met elke batch met wijzigingen die de wijzigings status van de feed verwerkt. 
+1. **De gemachtigde:** De gemachtigde is de code die definieert wat u, de ontwikkelaar, wilt doen met elke batch met wijzigingen die door de wijzigingenfeedverwerker wordt verwerkt. 
 
 We kijken naar een voor beeld in het volgende diagram om meer inzicht te krijgen in de manier waarop deze vier elementen van de feed-processor samen werken. In de bewaakte container worden documenten opgeslagen en wordt ' City ' gebruikt als partitie sleutel. We zien dat de partitie sleutel waarden worden gedistribueerd in bereiken die items bevatten. Er zijn twee exemplaren van hosts en de wijzigings processor wordt toegewezen aan verschillende bereiken van partitie sleutel waarden voor elke instantie om de reken distributie te maximaliseren. Elk bereik wordt parallel gelezen en de voortgang wordt afzonderlijk van andere bereiken in de lease-container bewaard.
 
-![Voor beeld van een feed-processor wijzigen](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="Voor beeld van een feed-processor wijzigen" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>De processor voor de wijzigings feed implementeren
 
@@ -56,7 +56,7 @@ Met aanroepen krijgt `Build` u het processor exemplaar dat u kunt starten door a
 
 ## <a name="processing-life-cycle"></a>Levens cyclus verwerken
 
-De normale levens cyclus van een exemplaar van een host is:
+De normale levenscyclus van een host-exemplaar is:
 
 1. Lees de wijzigings feed.
 1. Als er geen wijzigingen zijn, schakelt u de slaap stand in voor een vooraf gedefinieerde hoeveelheid tijd (aanpasbaar met `WithPollInterval` in de opbouw functie) en gaat u naar #1.
@@ -83,7 +83,7 @@ Zoals eerder vermeld, binnen een implementatie-eenheid, kunt u een of meer exemp
 
 1. Alle exemplaren moeten dezelfde configuratie voor de lease container hebben.
 1. Alle exemplaren moeten hetzelfde hebben `processorName` .
-1. Elk exemplaar moet een andere exemplaar naam () hebben `WithInstanceName` .
+1. Elk exemplaar moet een andere naam hebben (`WithInstanceName`).
 
 Als deze drie voor waarden van toepassing zijn, wordt met behulp van een even distributie algoritme alle leases in de lease container gedistribueerd op alle actieve instanties van die implementatie-eenheid en parallelliseren compute. Een lease kan alleen eigendom zijn van één exemplaar op een bepaald moment, waardoor het maximum aantal exemplaren gelijk is aan het aantal leases.
 

@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 955e13b88037aa42b59707698549b1c980720990
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840601"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738546"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Stroom logboeken van netwerk beveiligings groepen visualiseren met Power BI
 
@@ -109,7 +109,7 @@ We hebben in dit scenario geleerd dat met behulp van stroom logboeken voor netwe
 
 U kunt deze sjabloon gratis aanpassen aan uw behoeften. Er zijn veel verschillende manieren waarop u Power BI kunt gebruiken met stroom logboeken voor netwerk beveiligings groepen. 
 
-## <a name="notes"></a>Opmerkingen
+## <a name="notes"></a>Notities
 
 * Logboeken worden standaard opgeslagen in`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 

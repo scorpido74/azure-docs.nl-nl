@@ -3,27 +3,27 @@ title: Problemen met toepassings proxy oplossen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u fouten in azure AD-toepassingsproxy oplost.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43ac046f3480b08fdc3b8d582d9e724f4b9b93d5
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244223"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975432"
 ---
-# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Problemen met toepassings proxy en fout berichten oplossen
+# <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Problemen en foutberichten met Application Proxy oplossen
 
 Bij het oplossen van problemen met toepassings proxy raden we u aan om te beginnen met het controleren van de stroom voor probleem oplossing, problemen met de connector van de [toepassings proxy op te lossen](application-proxy-debug-connectors.md), om te bepalen of toepassings proxy connectors correct zijn Als u nog steeds problemen hebt met het maken van verbinding met de toepassing, volgt u de stroom problemen oplossen in toepassings [problemen met toepassings proxy](application-proxy-debug-apps.md).
 
@@ -31,15 +31,13 @@ Als er fouten optreden bij het openen van een gepubliceerde toepassing of bij he
 
 * Open de console van Windows-Services. Controleer of de **micro soft Aad Application proxy connector** -service is ingeschakeld en wordt uitgevoerd. Mogelijk wilt u ook de pagina eigenschappen van de toepassings proxy service bekijken, zoals wordt weer gegeven in de volgende afbeelding:  
   ![Micro soft AAD Application proxy connector venster Eigenschappen scherm afbeelding](./media/application-proxy-troubleshoot/connectorproperties.png)
-* Open Logboeken en zoek naar connector gebeurtenissen van toepassings proxy in **toepassingen en services** > **micro soft** > **AadApplicationProxy** > -**connector** > -**beheerder**Logboeken.
+* Open Logboeken en zoek naar connector gebeurtenissen van toepassings proxy in **toepassingen en services**  >  **micro soft**  >  **AadApplicationProxy**-  >  **connector**-  >  **beheerder**Logboeken.
 * Als dat nodig is, kunt u meer gedetailleerde logboeken vinden door [de Application proxy Connector-sessie Logboeken in te scha kelen](application-proxy-connectors.md#under-the-hood).
 
 ## <a name="the-page-is-not-rendered-correctly"></a>De pagina wordt niet correct weer gegeven
 Er zijn mogelijk problemen met de rendering van uw toepassing of werken onjuist zonder specifieke fout berichten te ontvangen. Dit kan gebeuren als u het pad naar het artikel hebt gepubliceerd, maar de toepassing vereist inhoud die buiten dat pad bestaat.
 
-Als u bijvoorbeeld het pad `https://yourapp/app` publiceert terwijl de toepassing installatie kopieën aanroept `https://yourapp/media`, worden deze niet weer gegeven. Zorg ervoor dat u de toepassing publiceert met het pad naar het hoogste niveau dat u nodig hebt om alle relevante inhoud op te nemen. In dit voor beeld zou het zijn `http://yourapp/`.
-
-Als u het pad naar inhoud waarnaar wordt verwezen, wijzigt, maar gebruikers nog steeds naar een diepere koppeling in het pad moeten gaan, raadpleegt u het blog bericht [de juiste koppeling voor toepassings proxy toepassingen in het Azure AD-toegangs venster en Office 365 App Launcher instellen](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
+Als u bijvoorbeeld het pad publiceert `https://yourapp/app` terwijl de toepassing installatie kopieën aanroept `https://yourapp/media` , worden deze niet weer gegeven. Zorg ervoor dat u de toepassing publiceert met het pad naar het hoogste niveau dat u nodig hebt om alle relevante inhoud op te nemen. In dit voor beeld zou het zijn `http://yourapp/` .
 
 ## <a name="connector-errors"></a>Connector fouten
 
@@ -53,9 +51,9 @@ Wanneer u de connector fout in het gebeurtenis logboek vindt, gebruikt u deze ta
 | ----- | ----------------- |
 | Registratie van connector is mislukt: Controleer of u de toepassings proxy hebt ingeschakeld in de Azure Beheerportal en of u de gebruikers naam en het wacht woord van uw Active Directory correct hebt ingevoerd. Fout: er zijn een of meer fouten opgetreden. | Als u het registratie venster hebt gesloten zonder u aan te melden bij Azure AD, voert u de wizard connector opnieuw uit en registreert u de connector. <br><br> Als het registratie venster wordt geopend en vervolgens onmiddellijk wordt gesloten zonder dat u zich hoeft aan te melden, wordt deze fout waarschijnlijk weer gegeven. Deze fout treedt op wanneer het systeem een netwerk fout bevat. Zorg ervoor dat het mogelijk is om vanuit een browser verbinding te maken met een open bare website en dat de poorten zijn geopend zoals is opgegeven in de vereisten voor de [toepassings proxy](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
 | Er wordt een duidelijke fout weer gegeven in het registratie venster. Kan niet door gaan | Als u deze fout ziet en het venster wordt gesloten, hebt u de verkeerde gebruikers naam of het juiste wacht woord opgegeven. &Opnieuw. |
-| Registratie van connector is mislukt: Controleer of u de toepassings proxy hebt ingeschakeld in de Azure Beheerportal en of u de gebruikers naam en het wacht woord van uw Active Directory correct hebt ingevoerd. Fout: ' AADSTS50059: geen Tenant gegevens gevonden in de aanvraag of impliciet door de verstrekte referenties en de zoek opdracht op de Service Principal URI is mislukt. | U probeert u aan te melden met een micro soft-account en niet een domein dat deel uitmaakt van de organisatie-ID van de map waartoe u toegang wilt krijgen. Zorg ervoor dat de beheerder deel uitmaakt van dezelfde domein naam als het Tenant domein, bijvoorbeeld als het Azure AD-domein contoso.com is, de beheerder moet zijn admin@contoso.com. |
-| Kan het huidige uitvoerings beleid voor het uitvoeren van Power shell-scripts niet ophalen. | Als de installatie van de connector mislukt, controleert u of het Power shell-uitvoerings beleid niet is uitgeschakeld. <br><br>1. Open de groepsbeleid editor.<br>2. Ga naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **Windows Power shell** en dubbel klik op **script uitvoering inschakelen**.<br>3. het uitvoerings beleid kan worden ingesteld op **niet geconfigureerd** of **ingeschakeld**. Als deze optie is **ingeschakeld**, moet u ervoor zorgen dat het uitvoerings beleid onder opties is ingesteld op het **toestaan van lokale scripts en externe ondertekende scripts** of voor het **toestaan van alle scripts**. |
-| Connector kan de configuratie niet downloaden. | Het client certificaat van de connector, dat wordt gebruikt voor authenticatie, is verlopen. Dit kan ook gebeuren als de connector achter een proxy is geïnstalleerd. In dit geval heeft de connector geen toegang tot internet en kan deze geen toepassingen leveren aan externe gebruikers. Vernieuw de vertrouwens relatie `Register-AppProxyConnector` hand matig met de cmdlet in Windows Power shell. Als uw connector zich achter een proxy bevindt, moet u Internet toegang verlenen tot de connector-accounts ' netwerk services ' en ' lokaal systeem '. Dit kan worden bereikt door hen toegang te verlenen tot de proxy of door deze in te stellen om de proxy over te slaan. |
+| Registratie van connector is mislukt: Controleer of u de toepassings proxy hebt ingeschakeld in de Azure Beheerportal en of u de gebruikers naam en het wacht woord van uw Active Directory correct hebt ingevoerd. Fout: ' AADSTS50059: geen Tenant gegevens gevonden in de aanvraag of impliciet door de verstrekte referenties en de zoek opdracht op de Service Principal URI is mislukt. | U probeert u aan te melden met een micro soft-account en niet een domein dat deel uitmaakt van de organisatie-ID van de map waartoe u toegang wilt krijgen. Zorg ervoor dat de beheerder deel uitmaakt van dezelfde domein naam als het Tenant domein, bijvoorbeeld als het Azure AD-domein contoso.com is, de beheerder moet zijn admin@contoso.com . |
+| Kan het huidige uitvoerings beleid voor het uitvoeren van Power shell-scripts niet ophalen. | Als de installatie van de connector mislukt, controleert u of het Power shell-uitvoerings beleid niet is uitgeschakeld. <br><br>1. Open de groepsbeleid editor.<br>2. Ga naar **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Windows Power shell** en dubbel klik op **script uitvoering inschakelen**.<br>3. het uitvoerings beleid kan worden ingesteld op **niet geconfigureerd** of **ingeschakeld**. Als deze optie is **ingeschakeld**, moet u ervoor zorgen dat het uitvoerings beleid onder opties is ingesteld op het **toestaan van lokale scripts en externe ondertekende scripts** of voor het **toestaan van alle scripts**. |
+| Connector kan de configuratie niet downloaden. | Het client certificaat van de connector, dat wordt gebruikt voor authenticatie, is verlopen. Dit kan ook gebeuren als de connector achter een proxy is geïnstalleerd. In dit geval heeft de connector geen toegang tot internet en kan deze geen toepassingen leveren aan externe gebruikers. Vernieuw de vertrouwens relatie hand matig met de `Register-AppProxyConnector` cmdlet in Windows Power shell. Als uw connector zich achter een proxy bevindt, moet u Internet toegang verlenen tot de connector-accounts ' netwerk services ' en ' lokaal systeem '. Dit kan worden bereikt door hen toegang te verlenen tot de proxy of door deze in te stellen om de proxy over te slaan. |
 | Registratie van connector is mislukt: Zorg ervoor dat u een toepassings beheerder bent van uw Active Directory om de connector te registreren. Fout: de registratie aanvraag is geweigerd. | De alias waarmee u zich wilt aanmelden, is geen beheerder van dit domein. De connector is altijd geïnstalleerd voor de directory die eigenaar is van het domein van de gebruiker. Zorg ervoor dat het beheerders account waarmee u zich probeert aan te melden, ten minste machtigingen voor de toepassings beheerder heeft voor de Azure AD-Tenant. |
 | De connector kan geen verbinding maken met de service vanwege netwerk problemen. De connector heeft geprobeerd toegang te krijgen tot de volgende URL. | De connector kan geen verbinding maken met de Cloud service van de toepassings proxy. Dit kan gebeuren als u een firewall regel hebt die de verbinding blokkeert. Zorg ervoor dat u toegang hebt tot de juiste poorten en URL'S die worden vermeld in de vereisten voor de [toepassings proxy](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). |
 
@@ -65,7 +63,7 @@ In deze tabel worden de meest voorkomende fouten beschreven die afkomstig zijn v
 
 | Fout | Aanbevolen stappen |
 | ----- | ----------------- |
-| Kan het huidige uitvoerings beleid voor het uitvoeren van Power shell-scripts niet ophalen. | Als de installatie van de connector mislukt, controleert u of het Power shell-uitvoerings beleid niet is uitgeschakeld.<br><br>1. Open de groepsbeleid editor.<br>2. Ga naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **Windows Power shell** en dubbel klik op **script uitvoering inschakelen**.<br>3. het uitvoerings beleid kan worden ingesteld op **niet geconfigureerd** of **ingeschakeld**. Als deze optie is **ingeschakeld**, moet u ervoor zorgen dat het uitvoerings beleid onder opties is ingesteld op het **toestaan van lokale scripts en externe ondertekende scripts** of voor het **toestaan van alle scripts**. |
+| Kan het huidige uitvoerings beleid voor het uitvoeren van Power shell-scripts niet ophalen. | Als de installatie van de connector mislukt, controleert u of het Power shell-uitvoerings beleid niet is uitgeschakeld.<br><br>1. Open de groepsbeleid editor.<br>2. Ga naar **computer configuratie**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **Windows Power shell** en dubbel klik op **script uitvoering inschakelen**.<br>3. het uitvoerings beleid kan worden ingesteld op **niet geconfigureerd** of **ingeschakeld**. Als deze optie is **ingeschakeld**, moet u ervoor zorgen dat het uitvoerings beleid onder opties is ingesteld op het **toestaan van lokale scripts en externe ondertekende scripts** of voor het **toestaan van alle scripts**. |
 | 12008-Azure AD heeft het maximum aantal toegestane Kerberos-verificatie pogingen voor de back-endserver overschreden. | Deze fout kan duiden op een onjuiste configuratie tussen Azure AD en de back-end-toepassings server, of een probleem in de tijd-en datum configuratie op beide computers. De back-endserver heeft het Kerberos-ticket geweigerd dat is gemaakt door Azure AD. Controleer of Azure AD en de back-end-toepassings server correct zijn geconfigureerd. Zorg ervoor dat de configuratie van de tijd en de datum op de Azure AD-en de back-end-toepassings server worden gesynchroniseerd. |
 | 13016-Azure AD kan een Kerberos-ticket namens de gebruiker niet ophalen omdat er geen UPN is in het rand token of in de cookie voor toegang. | Er is een probleem met de STS-configuratie. Herstel de UPN-claim configuratie in de STS. |
 | 13019-Azure AD kan een Kerberos-ticket namens de gebruiker niet ophalen vanwege de volgende algemene API-fout. | Deze gebeurtenis kan duiden op een onjuiste configuratie tussen Azure AD en de domein controller Server, of een probleem in de tijd-en datum configuratie op beide computers. De domein controller heeft het Kerberos-ticket geweigerd dat is gemaakt door Azure AD. Controleer of Azure AD en de back-end-toepassings server correct zijn geconfigureerd, met name de SPN-configuratie. Zorg ervoor dat het domein van Azure AD lid is van hetzelfde domein als de domein controller om ervoor te zorgen dat de domein controller een vertrouwens relatie met Azure AD tot stand brengt. Zorg ervoor dat de configuratie van de tijd en de datum op de Azure AD en de domein controller worden gesynchroniseerd. |

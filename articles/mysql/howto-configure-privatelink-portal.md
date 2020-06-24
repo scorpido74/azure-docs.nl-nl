@@ -6,16 +6,16 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7dbce3f2645a1ae4e01dc52d516962297ea07df6
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: b4ac25d6fca78962e9da4f7dd79476b8e8b9c2d5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488848"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738257"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met behulp van portal
 
-Een persoonlijk eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hiermee kunnen Azure-resources, zoals Virtual Machines (Vm's), privé communiceren met persoonlijke koppelings bronnen. In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MySQL-server met een persoonlijk Azure-eind punt.
+Een privé-eindpunt is de fundamentele bouwsteen voor een Private Link in Azure. Het biedt Azure-resources, zoals virtuele machines, de mogelijkheid om Private Link-resources te gebruiken om privé met elkaar communiceren. In dit artikel leert u hoe u de Azure Portal kunt gebruiken om een virtuele machine te maken in een Azure-Virtual Network en een Azure Database for MySQL-server met een persoonlijk Azure-eind punt.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -30,7 +30,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een MySQL-server in Azure).
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
-In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron.
+In deze sectie maakt u een virtueel netwerk en het subnet om de VM te hosten die wordt gebruikt om op een veilige manier toegang te krijgen tot uw Private Link-resource.
 
 1. Selecteer in de linkerbovenhoek van het scherm **een resource**  >  **netwerk**  >  **virtueel netwerk**maken.
 2. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
@@ -49,23 +49,23 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een**  >  **Compute**  >  **virtuele machine**voor het berekenen van een resource maken.
+1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal de optie **Een resource maken** > **Compute** > **Virtuele machine**.
 
 2. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **PROJECT DETAILS** | |
+    | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.  |
     | **EXEMPLAARDETAILS** |  |
-    | Naam van de virtuele machine | Voer *myVm*in. |
+    | Naam van de virtuele machine | Voer *myVm* in. |
     | Regio | Selecteer **Europa - west**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
+    | Installatiekopie | Selecteer **Windows Server 2019 Datacenter**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
-    | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
+    | Gebruikersnaam | Voer een gebruikersnaam naar keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in. |
     | **REGELS VOOR BINNENKOMENDE POORT** |  |
@@ -74,26 +74,26 @@ In deze sectie maakt u een Virtual Network en het subnet voor het hosten van de 
     | Hebt u al een Windows-licentie? | Laat de standaardwaarde **Nee** staan. |
     |||
 
-1. Selecteer **volgende: schijven**.
+1. Selecteer **Volgende: Schijven**.
 
-1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: netwerken**.
+1. Behoud de standaardinstellingen in **Een virtuele machine maken – schijven** en selecteer **Volgende: Netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Virtueel netwerk | De standaard **MyVirtualNetwork**behouden.  |
-    | Adresruimte | De standaard **10.1.0.0/24**behouden.|
-    | Subnet | Behoud de standaard **mySubnet (10.1.0.0/24)**.|
+    | Virtueel netwerk | Laat de standaardwaarde **MyVirtualNetwork** staan.  |
+    | Adresruimte | Laat de standaardwaarde **10.1.0.0/24** staan.|
+    | Subnet | Laat de standaardwaarde **mySubnet (10.1.0.0/24)** staan.|
     | Openbare IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     |||
 
 
-1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
+1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure.
 
-1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
+1. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
 
 ## <a name="create-an-azure-database-for-mysql"></a>Een Azure Database voor MySQL maken
 
@@ -107,18 +107,18 @@ In deze sectie maakt u een Azure Database for MySQL-server in Azure.
     | ------- | ----- |
     | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.|
     | **Servergegevens** |  |
-    |Servernaam  | Voer *mijn server*in. Als deze naam wordt gebruikt, maakt u een unieke naam.|
+    |Servernaam  | Voer *mijn server*in. Als deze naam al wordt gebruikt, maakt u een unieke naam.|
     | Gebruikers naam beheerder| Voer de naam van de beheerder van uw keuze in. |
-    | Wachtwoord | Voer een wachtwoord naar keuze in. Het wacht woord moet ten minste acht tekens lang zijn en voldoen aan de gedefinieerde vereisten. |
+    | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 8 tekens lang zijn en moet voldoen aan de vooraf gedefinieerde vereisten. |
     | Locatie | Selecteer een Azure-regio waar u wilt dat de MySQL-server zich bevindt. |
     |Versie  | Selecteer de database versie van de MySQL-server die is vereist.|
     | Compute + Storage| Selecteer de prijs categorie die nodig is voor de server op basis van de werk belasting. |
     |||
  
 7. Selecteer **OK**. 
-8. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+8. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
 9. Wanneer u het bericht door gegeven validatie ziet, selecteert u **maken**. 
 10. Wanneer u het bericht door gegeven validatie ziet, selecteert u maken. 
 
@@ -132,7 +132,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
 
 1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal de optie **een resource maken**  >  **Networking**  >  **persoonlijke netwerk koppeling**.
 
-2. Selecteer **Start**in het **persoonlijke koppelings centrum**op de optie om **een particuliere verbinding met een service te maken**.
+2. Selecteer in **Private Link-centrum – Overzicht** bij de optie **Een particuliere verbinding met een service maken** de optie **Start**.
 
     ![Overzicht van persoonlijke koppelingen](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
@@ -142,41 +142,41 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
     | ------- | ----- |
     | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt deze in de vorige sectie gemaakt.|
     | **Exemplaar Details** |  |
-    | Naam | Voer *myPrivateEndpoint*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Naam | Voer *myPrivateEndpoint* in. Als deze naam al wordt gebruikt, maakt u een unieke naam. |
     |Regio|Selecteer **Europa - west**.|
     |||
 
-5. Selecteer **volgende: resource**.
-6. Voer in **een persoonlijk eind punt maken-resource**in of Selecteer deze gegevens:
+5. Selecteer **Volgende: Resource**.
+6. Typ of selecteer in **Een privé-eindpunt maken – Resource** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |Verbindingsmethode  | Selecteer verbinding maken met een Azure-resource in mijn Directory.|
+    |Verbindingsmethode  | Selecteer Verbinding maken met een Azure-resource in mijn directory.|
     | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. DBforMySQL/servers**. |
-    | Resource |*Mijn server* selecteren|
-    |Doel-subresource |*MysqlServer* selecteren|
+    | Resource |Selecteer *myServer*|
+    |Stel subresource in |*MysqlServer* selecteren|
     |||
-7. Selecteer **volgende: Configuratie**.
+7. Selecteer **Volgende: Configuratie**.
 8. Voer in **een persoonlijk eind punt maken-configuratie**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |**INBEL**| |
+    |**NETWERKEN**| |
     | Virtueel netwerk| Selecteer *MyVirtualNetwork*. |
     | Subnet | Selecteer *mySubnet*. |
-    |**INTEGRATIE VAN PARTICULIERE DNS**||
-    |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
-    |Privé-DNS zone |Selecteer *(nieuw) privatelink. mysql. data base. Azure. com* |
+    |**INTEGRATIE VAN PRIVÉ-DNS**||
+    |Integreren met privé-DNS-zone |Selecteer **Ja**. |
+    |Privé-DNS-zone |Selecteer *(nieuw) privatelink. mysql. data base. Azure. com* |
     |||
 
     > [!Note] 
-    > Gebruik de vooraf gedefinieerde privé-DNS-zone voor uw service of maak een nieuwe. Raadpleeg de configuratie van de [DNS-zone van Azure-Services](../private-link/private-endpoint-dns.md) voor meer informatie.
+    > Gebruik de vooraf gedefinieerde privé-DNS-zone voor uw service of geef de naam van uw voor Keurs-DNS-zone op. Raadpleeg de configuratie van de [DNS-zone van Azure-Services](../private-link/private-endpoint-dns.md) voor meer informatie.
 
-1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
-2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
+1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven, waar uw configuratie wordt gevalideerd in Azure. 
+2. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**. 
 
     ![Privé koppeling gemaakt](media/concepts-data-access-and-security-private-link/show-mysql-private-link.png)
 
@@ -186,22 +186,22 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Verbinding maken met een virtuele machine met behulp van Extern bureaublad (RDP)
 
 
-Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet: 
+Nadat u **myVm** hebt gemaakt, maakt u hiermee als volgt verbinding via internet: 
 
-1. Voer in de zoek balk van de portal *myVm*in.
+1. Voer in de zoekbalk van de portal *myVm* in.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
 1. Selecteer **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-1. Open het *gedownloade RDP* -bestand.
+1. Open het *downloaded.rdp*-bestand.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
+    1. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **meer opties**selecteren  >  **een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+        > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
 
 1. Selecteer **OK**.
 
@@ -239,7 +239,7 @@ Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet
 
 5. Selecteer Verbinden.
 
-6. Bladeren door data bases vanuit het menu links.
+6. Blader in het menu aan de linkerkant door databases.
 
 7. Eventueel Informatie van de MySQL-server maken of er een query op uitvoeren.
 

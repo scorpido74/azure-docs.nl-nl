@@ -7,18 +7,18 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: baf309a93f8ba976cb6511c05ba5032ad07a0fc9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: beb6b5666be0d3264720c5bc7a3c9516c1bd18f4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874039"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790871"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen
 
@@ -363,7 +363,7 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een ni
 
 In azure RBAC kunt u de functie toewijzing verwijderen om de toegang tot een Azure-resource te verwijderen. Er is geen manier om een roltoewijzing te verwijderen met behulp van een sjabloon. Als u een roltoewijzing wilt verwijderen, moet u andere hulpprogram ma's gebruiken, zoals:
 
-- [Azure Portal](role-assignments-portal.md#remove-a-role-assignment)
+- [Azure-portal](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
 - [Azure-CLI](role-assignments-cli.md#remove-a-role-assignment)
 - [REST API](role-assignments-rest.md#remove-a-role-assignment)

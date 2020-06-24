@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b95ee80a7a99009918f4869b62a3e3768e6e58d3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: fc19f247a9a915bfafde68f652784c42285928ca
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828267"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974922"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -80,7 +80,7 @@ Azure cache voor redis is gebaseerd op de populaire open-source software [redis]
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Hoe kan ik aan de slag met Azure cache voor redis?
 Er zijn verschillende manieren om aan de slag te gaan met Azure cache voor redis.
 
-* U kunt een van de zelf studies bekijken die beschikbaar zijn voor [.net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [node. js](cache-nodejs-get-started.md)en [python](cache-python-get-started.md).
+* U kunt een van de zelf studies bekijken die beschikbaar zijn voor [.net](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.net](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md)en [python](cache-python-get-started.md).
 * U kunt bekijken [hoe u krachtige apps bouwt met Microsoft Azure cache voor redis](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
 * U kunt de client documentatie raadplegen voor de clients die overeenkomen met de ontwikkelings taal van uw project om te zien hoe u redis kunt gebruiken. Er zijn veel redis-clients die kunnen worden gebruikt met Azure cache voor redis. Zie voor een lijst met redis-clients [https://redis.io/clients](https://redis.io/clients) .
 
@@ -100,7 +100,7 @@ Hier volgen enkele aandachtspunten voor het kiezen van een cache aanbieding.
 * **Netwerk prestaties**: als u een werk belasting hebt waarvoor hoge door Voer is vereist, biedt de Premium-laag meer band breedte dan Standard of Basic. Daarnaast hebben grotere caches in elke laag meer band breedte vanwege de onderliggende virtuele machine die als host fungeert voor de cache. Zie de [volgende tabel](#cache-performance)voor meer informatie.
 * **Door Voer**: de Premium-laag biedt de Maxi maal beschik bare door voer. Als de cache server of client de bandbreedte limiet bereikt, ontvangt u mogelijk time-outs aan de client zijde. Zie de volgende tabel voor meer informatie.
 * **Hoge Beschik baarheid/Sla**: Azure cache voor redis garandeert dat een Standard/Premium-cache ten minste 99,9% van de tijd beschikbaar is. Zie voor meer informatie over onze SLA [Azure cache for redis prijzen](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). De SLA heeft alleen betrekking op connectiviteit met de cache-eind punten. De SLA heeft geen betrekking op beveiliging tegen gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten.
-* **Redis-gegevens persistentie**: met de Premium-laag kunt u de cache gegevens in een Azure Storage-account behouden. In een Basic-of Standard-cache worden alle gegevens alleen in het geheugen opgeslagen. Onderliggende problemen met de infra structuur kunnen leiden tot mogelijk gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten. Azure-cache voor redis biedt de opties RDB en AOF (binnenkort beschikbaar) in redis-persistentie. Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
+* **Redis-gegevens persistentie**: met de Premium-laag kunt u de cache gegevens in een Azure Storage-account behouden. In een Basic-of Standard-cache worden alle gegevens alleen in het geheugen opgeslagen. Onderliggende problemen met de infra structuur kunnen leiden tot mogelijk gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten. Azure cache voor redis biedt redis-persistentie opties voor RDB-en AOF (preview-versie). Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
 * **Redis-cluster**: als u caches wilt maken die groter zijn dan 120 GB of als u gegevens wilt Shard tussen meerdere redis-knoop punten, kunt u redis clustering gebruiken, die beschikbaar is in de laag Premium. Elk knoop punt bestaat uit een primair/replica-cache paar voor maximale Beschik baarheid. Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
 * **Verbeterde beveiliging en netwerk isolatie**: Azure Virtual Network (VNET)-implementatie biedt verbeterde beveiliging en isolatie voor uw Azure-cache voor redis, evenals subnetten, beleid voor toegangs beheer en andere functies om de toegang verder te beperken. Zie [Virtual Network-ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie.
 * **Redis configureren**: in de standaard-en Premium-laag kunt u redis configureren voor de meldingen van de opdracht regel.
@@ -128,7 +128,7 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 | Prijscategorie | Grootte | CPU-kernen | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
 | --- | --- | --- | --- | --- | --- |
 | **Standaard cache grootten** | | |**Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aantal aanvragen per seconde (RPS) niet-SSL** |**SSL-aanvragen per seconde (RPS)** |
-| C0 | 250 MB | Gedeeld | 100/12,5  |  15.000 |   7.500 |
+| C0 | 250 MB | Gedeeld | 100/12,5  |  15.000 |   7\.500 |
 | C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
 | Stand |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
@@ -211,7 +211,7 @@ Een van de fantastische dingen over redis is dat er veel clients zijn die veel v
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Is er een lokale emulator voor Azure cache voor redis?
-Er is geen lokale emulator voor Azure cache voor redis, maar u kunt de MSOpenTech-versie van redis-server. exe uitvoeren vanaf de [opdracht regel Programma's van redis](https://github.com/MSOpenTech/redis/releases/) op uw lokale machine en er verbinding mee maken om een vergelijk bare ervaring te krijgen met een lokale cache-emulator, zoals wordt weer gegeven in het volgende voor beeld:
+Er is geen lokale emulator voor Azure cache voor redis, maar u kunt de MSOpenTech-versie van redis-server.exe uitvoeren vanaf de [opdracht regel Programma's redis](https://github.com/MSOpenTech/redis/releases/) op uw lokale computer en er verbinding mee maken om een vergelijk bare ervaring te krijgen met een lokale cache-emulator, zoals wordt weer gegeven in het volgende voor beeld:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -331,13 +331,13 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 
 ### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>Hoe kan ik Bench Mark en test de prestaties van mijn cache?
 * [Schakel de diagnostische gegevens van de cache in](cache-how-to-monitor.md#enable-cache-diagnostics), zodat u de status van de cache kunt [bewaken](cache-how-to-monitor.md). U kunt de metrische gegevens weer geven in de Azure Portal en u kunt ze ook [downloaden en bekijken](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) met de hulpprogram ma's van uw keuze.
-* U kunt redis-benchmark. exe gebruiken om de redis-server te laden.
+* U kunt redis-benchmark.exe gebruiken om test uw redis-server te laden.
 * Zorg ervoor dat de belasting test-client en de Azure-cache voor redis zich in dezelfde regio bevinden.
-* Gebruik redis-cli. exe en controleer de cache met behulp van de opdracht INFO.
+* Gebruik redis-cli.exe en bewaak de cache met behulp van de opdracht INFO.
 * Als uw belasting een hoge geheugen fragmentatie veroorzaakt, moet u omhoog schalen naar een grotere cache grootte.
 * Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
-De volgende opdrachten bieden een voor beeld van het gebruik van redis-benchmark. exe. Voor nauw keurige resultaten voert u deze opdrachten uit vanaf een virtuele machine in dezelfde regio als uw cache.
+De volgende opdrachten bieden een voor beeld van het gebruik van redis-benchmark.exe. Voor nauw keurige resultaten voert u deze opdrachten uit vanaf een virtuele machine in dezelfde regio als uw cache.
 
 * SET-aanvragen met pipeline testen met behulp van een nettolading van 1 KB
 

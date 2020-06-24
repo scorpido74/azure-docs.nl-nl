@@ -1,5 +1,5 @@
 ---
-title: Beveiliging voor Azure Digital Apparaatdubbels-oplossingen
+title: Beveiliging voor Azure Digital Twins-oplossingen
 titleSuffix: Azure Digital Twins
 description: Meer informatie over best practices voor beveiliging met Azure Digital Apparaatdubbels.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1464d1b8da4b9f0389b192f0876ed52ad5e4ad44
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 1a54ec54823d8d002344e26f97db7043433f6da0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613010"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736846"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Azure Digital Apparaatdubbels beveiligen met op rollen gebaseerd toegangs beheer
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Voor de beveiliging biedt Azure Digital Apparaatdubbels nauw keurige toegangs controle over specifieke gegevens, resources en acties in uw implementatie. Dit wordt gedaan via een gedetailleerde beheer strategie voor rollen en machtigingen die **op rollen gebaseerd toegangs beheer (RBAC)** wordt genoemd. Meer informatie over de algemene principes van RBAC voor Azure vindt u [hier](../role-based-access-control/overview.md).
 

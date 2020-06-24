@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
@@ -16,7 +16,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76984539"
 ---
-1. Selecteer in de [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory** > **app-registraties** > **nieuwe registratie**.
+1. Selecteer in de [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**.
 
    [![Nieuwe toepassings registratie in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-new-application-registration.png)](media/time-series-insights-aad-registration/active-directory-new-application-registration.png#lightbox)
 
@@ -66,11 +66,11 @@ ms.locfileid: "76984539"
    > [!NOTE]
    > U kunt in plaats daarvan een certificaat importeren. Voor een betere beveiliging wordt een certificaat aanbevolen. Als u een certificaat wilt gebruiken, selecteert u **certificaat uploaden**.
 
-1. Koppel uw Azure Active Directory app Azure TIme Series Insights. Selecteer **API-machtigingen** > **een machtigings** > **-api's toevoegen die mijn organisatie gebruikt**. 
+1. Koppel uw Azure Active Directory app Azure TIme Series Insights. Selecteer **API-machtigingen**  >  **een machtigings**  >  **-api's toevoegen die mijn organisatie gebruikt**. 
 
     [![Een API koppelen aan uw Azure Active Directory-app](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 
-   Typ `Azure Time Series Insights` in de zoek balk en selecteer `Azure Time Series Insights`.
+   Typ `Azure Time Series Insights` in de zoek balk en selecteer `Azure Time Series Insights` .
 
 1. Geef vervolgens de type API-machtiging op die uw app vereist. Standaard worden **gedelegeerde machtigingen** gemarkeerd. Kies een machtigings type en selecteer vervolgens **machtigingen toevoegen**.
 

@@ -6,22 +6,22 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/10/2018
+ms.date: 06/23/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 1aaec104e9130eeef723c6505e04e3317271566b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234188"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292131"
 ---
 **Vereisten voor configuratie en proces server**
 
 
 ## <a name="hardware-requirements"></a>Hardwarevereisten
 
-**Component** | **Vereiste** 
+**Onderdeel** | **Vereiste** 
 --- | ---
 CPU-kernen | 8 
 RAM | 16 GB
@@ -32,7 +32,7 @@ Vrije schijf ruimte (Bewaar schijf) | 600 GB
 
 ## <a name="software-requirements"></a>Softwarevereisten
 
-**Component** | **Vereiste** 
+**Onderdeel** | **Vereiste** 
 --- | ---
 Besturingssysteem | Windows Server 2012 R2 <br> Windows Server 2016
 Landinstelling van het besturingssysteem | Engels (en-*)
@@ -44,7 +44,7 @@ FIPS (Federal Information Processing Standards) | FIPS-modus niet inschakelen
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
-**Component** | **Vereiste** 
+**Onderdeel** | **Vereiste** 
 --- | --- 
 Type IP-adres | Statisch 
 Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport) 
@@ -52,20 +52,18 @@ NIC-type | VMXNET3 (als de configuratie server een VMware-VM is)
  |
 **Internet toegang** (de server moet toegang hebben tot de volgende url's, rechtstreeks of via proxy):|
 \*.backup.windowsazure.com | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
-\*.store.core.windows.net | Gebruikt voor gerepliceerde gegevens overdracht en coördinatie
-\*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen
+\*.blob.core.windows.net | Wordt gebruikt voor toegang tot het opslag account waarin gerepliceerde gegevens worden opgeslagen. U kunt de specifieke URL van uw cache-opslag account opgeven.
 \*.hypervrecoverymanager.windowsazure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie
-https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie 
-*.services.visualstudio.com | Gebruikt voor telemetrie-doel einden (optioneel)
+https:\//login.microsoftonline.com | Gebruikt voor replicatie beheer bewerkingen en coördinatie 
 time.nist.gov | Wordt gebruikt om de tijd synchronisatie tussen het systeem en de algemene tijd te controleren
 time.windows.com | Wordt gebruikt om de tijd synchronisatie tussen het systeem en de algemene tijd te controleren
-| <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//Graph.Windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.Microsoft.com </li></ul> | OVF Setup heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
-https:\//dev.mysql.com/Get/downloads/MySQLInstaller/mysql-Installer-Community-5.7.20.0.msi  | Om de MySQL-down load te volt ooien. </br> In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook white list is, indien nodig.
+| <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /login.live.com </li><li> https: \/ /Graph.Windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (optioneel) </li><li> https: \/ /www.live.com </li><li> https: \/ /www.Microsoft.com </li></ul> | OVF Setup moet toegang hebben tot deze aanvullende Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
+https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Om de MySQL-down load te volt ooien. </br> In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook white list is, indien nodig.
 |
 
 ## <a name="required-software"></a>Vereiste software
 
-**Component** | **Vereiste** 
+**Onderdeel** | **Vereiste** 
 --- | ---
 VMware vSphere PowerCLI | [PowerCLI versie 6,0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) moet worden geïnstalleerd als de configuratie server wordt uitgevoerd op een virtuele VMWare-machine.
 MYSQL | MySQL moet worden geïnstalleerd. U kunt hand matig installeren of Site Recovery het installeren. (Zie [instellingen configureren](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings) voor meer informatie)
@@ -76,7 +74,7 @@ MYSQL | MySQL moet worden geïnstalleerd. U kunt hand matig installeren of Site 
 De volgende tabel bevat een overzicht van de capaciteits vereisten voor de configuratie server. Als u meerdere virtuele VMware-machines repliceert, raadpleegt u de [overwegingen voor capaciteits planning](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) en voert u het [Azure site Recovery Deployment planner-hulp programma](../articles/site-recovery/site-recovery-deployment-planner.md)uit.
 
 
-**VERBRUIK** | **Geheugen** | **Cache schijf** | **Gegevens wijzigings frequentie** | **Gerepliceerde machines**
+**CPU** | **Geheugen** | **Cache schijf** | **Gegevens wijzigings frequentie** | **Gerepliceerde machines**
 --- | --- | --- | --- | ---
 8 Vcpu's<br/><br/> 2 sockets * 4 kernen \@ 2,5 GHz | 16 GB | 300 GB | 500 GB of minder | < 100-machines
 12 Vcpu's<br/><br/> 2 SOCKS * 6 kernen \@ 2,5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 tot 150 computers

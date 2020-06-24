@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/09/2020
+ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7e03f8436d432ffb4e20a442261ccf18c57a3934
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628168"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944761"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schrijf audit naar een opslag account achter VNet en firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -27,7 +27,7 @@ In dit artikel worden twee manieren beschreven om Azure SQL Database en Azure St
 
 ## <a name="background"></a>Achtergrond
 
-[Azure Virtual Network (VNet)](../../virtual-network/virtual-networks-overview.md) is de fundamentele bouw steen voor uw particuliere netwerk in Azure. Met VNet kunnen veel typen Azure-resources, zoals Azure Virtual Machines (VM), veilig communiceren met elkaar, Internet en on-premises netwerken. VNet is vergelijkbaar met een traditioneel netwerk in uw eigen Data Center, maar biedt extra voor delen van Azure-infra structuur, zoals schaal, Beschik baarheid en isolatie.
+[Azure Virtual Network (VNet)](../../virtual-network/virtual-networks-overview.md) is de fundamentele bouw steen voor uw particuliere netwerk in Azure. Via VNet kunnen veel soorten Azure-resources, zoals virtuele Azure-machines, veilig communiceren met elkaar, internet en on-premises netwerken. VNet is vergelijkbaar met een traditioneel netwerk in uw eigen Data Center, maar biedt extra voor delen van Azure-infra structuur, zoals schaal, Beschik baarheid en isolatie.
 
 Zie [Wat is Azure Virtual Network](../../virtual-network/virtual-networks-overview.md)voor meer informatie over de VNet-concepten, aanbevolen procedures en nog veel meer.
 
@@ -50,7 +50,7 @@ Maak verbinding met [Azure Portal](https://portal.azure.com) met uw abonnement. 
 
 1. Klik op **controleren** onder de kop beveiliging. Selecteer **aan**.
 
-2. Selecteer **Opslag**. Selecteer het opslag account waarin de logboeken worden opgeslagen. Het opslag account moet voldoen aan de vereisten die worden vermeld in [vereiste onderdelen](#prerequisites).
+2. Selecteer **opslag**. Selecteer het opslag account waarin de logboeken worden opgeslagen. Het opslag account moet voldoen aan de vereisten die worden vermeld in [vereiste onderdelen](#prerequisites).
 
 3. **Opslag Details** openen
 
@@ -71,7 +71,7 @@ U hebt de audit geconfigureerd om te schrijven naar een opslag account achter ee
 
 Als alternatief voor het gebruik van de Azure Portal kunt u REST-opdrachten gebruiken om de controle te configureren voor het schrijven van database gebeurtenissen op een opslag account achter een VNet en firewall.
 
-De voorbeeld scripts in deze sectie vereisen dat u het script bijwerkt voordat u ze uitvoert. Vervang de volgende waarden in de scripts:
+De voorbeeld scripts in deze sectie vereisen dat u het script bijwerkt voordat u ze uitvoert. Wijzig de volgende waarden in de scripts:
 
 |Voorbeeldwaarde|Voorbeeld beschrijving|
 |:-----|:-----|
@@ -145,6 +145,18 @@ SQL-controle configureren om gebeurtenissen te schrijven naar een opslag account
 
 - [Controle beleid voor data bases maken of bijwerken (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Controle beleid voor servers maken of bijwerken (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
+
+## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager-sjabloon gebruiken
+
+U kunt controle configureren voor het schrijven van database gebeurtenissen op een opslag account achter het virtuele netwerk en Firewall met [Azure Resource Manager](../../azure-resource-manager/management/overview.md) sjabloon, zoals wordt weer gegeven in het volgende voor beeld:
+
+> [!IMPORTANT]
+> Als u een opslag account achter een virtueel netwerk en een firewall wilt gebruiken, moet u de para meter **isStorageBehindVnet** instellen op True
+
+- [Een Azure SQL-Server implementeren met controle ingeschakeld om audit logboeken naar een Blob-opslag te schrijven](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+
+> [!NOTE]
+> Het gekoppelde voor beeld bevindt zich op een externe open bare opslag plaats en wordt als ' as is ' gegeven, zonder garantie, en wordt niet ondersteund onder een ondersteunings programma/service van micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

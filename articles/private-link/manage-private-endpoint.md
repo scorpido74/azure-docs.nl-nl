@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van privé-eindpunt verbindingen i
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75452968"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737492"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Manage a Private Endpoint connection (Een privé-eindpuntverbinding beheren)
 Een persoonlijke Azure-koppeling werkt op een goedkeurings stroom model voor de persoonlijke koppeling service, waarmee de gebruiker van de private link een verbinding kan aanvragen met de service provider voor het gebruik van de service. De service provider kan vervolgens bepalen of de gebruiker verbinding mag maken of niet. Met de persoonlijke Azure-koppeling kunnen de service providers de verbinding van het particuliere eind punt op hun resources beheren. In dit artikel vindt u instructies voor het beheren van de verbindingen met een privé-eind punt.
@@ -29,9 +29,9 @@ In de onderstaande tabel ziet u de verschillende acties van de service provider 
 |Actie van service provider   |Status privé-eind punt service gebruiker   |Beschrijving   |
 |---------|---------|---------|
 |Geen    |    In behandeling     |    De verbinding wordt hand matig gemaakt en is in afwachting van goed keuring door de resource-eigenaar van de persoonlijke koppeling.       |
-|Goedkeuren    |  Goedgekeurd       |  De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt.     |
-|Afwijzen     | Geweigerd        | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling.        |
-|Verwijderen    |  De verbinding verbroken       | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd om op te schonen.        |
+|Goedkeuren    |  Goedgekeurd       |  De verbinding werd automatisch of handmatig goedgekeurd en is klaar om te worden gebruikt.     |
+|Afwijzen     | Afgewezen        | De verbinding werd afgewezen door de resource-eigenaar van de private link.        |
+|Verwijderen    |  Ontkoppeld       | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd om op te schonen.        |
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Manage Private Endpoint Connections on Azure PaaS resources (Privé-eindpuntverbindingen beheren in Azure PaaS-resources)
@@ -58,7 +58,7 @@ Get-AzPrivateLinkService -Name myPrivateLinkService -ResourceGroupName myResourc
  
 #### <a name="approve-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren 
  
-Gebruik de `Approve-AzPrivateEndpointConnection` -cmdlet om een verbinding met een privé-eind punt goed te keuren. 
+Gebruik de- `Approve-AzPrivateEndpointConnection` cmdlet om een verbinding met een privé-eind punt goed te keuren. 
  
 ```azurepowershell
 Approve-AzPrivateEndpointConnection -Name myPrivateEndpointConnection -ResourceGroupName myResourceGroup -ServiceName myPrivateLinkService

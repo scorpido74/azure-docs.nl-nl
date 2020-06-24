@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 208f0d73b4c8bb11adc9c73796ebc6a622f5ed50
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797363"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118165"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Inleiding tot de Azure Cosmos DB etcd-API (preview)
 
@@ -31,7 +31,7 @@ Azure Cosmos DB implementeert het wire-protocol van etcd versie 3 en maakt de AP
 
 In het volgende diagram ziet u de onderdelen van een Kubernetes-cluster. In de cluster Master gebruikt de API-server Azure Cosmos DB etcd API, in plaats van lokaal geïnstalleerde etcd. 
 
-![Azure Cosmos DB implementeren van het etcd wire-protocol](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+:::image type="content" source="./media/etcd-api-introduction/etcd-api-wire-protocol.png" alt-text="Azure Cosmos DB implementeren van het etcd wire-protocol" border="false":::
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 

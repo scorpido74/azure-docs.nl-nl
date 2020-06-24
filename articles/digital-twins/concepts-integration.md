@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e266e9f8738a0c7d06c1f3b3f7213ad807e179fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613234"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737169"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Apparaatdubbels integreren met andere services
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Azure Digital Apparaatdubbels wordt doorgaans samen met andere services gebruikt. Met behulp van [**gebeurtenis routes**](concepts-route-events.md)ontvangen Azure Digital apparaatdubbels gegevens van upstream-Services, zoals [IOT hub](../iot-hub/about-iot-hub.md), die worden gebruikt voor het leveren van telemetriegegevens en meldingen. Azure Digital Apparaatdubbels kan ook gegevens routeren naar downstream-Services voor opslag, integratie van werk stromen, analyses en andere toepassingen. 
 

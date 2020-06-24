@@ -4,12 +4,12 @@ description: Meer informatie over welke poorten en adressen vereist zijn voor he
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 724d270b5ea18dbbd30ff2587e8bea5ee126a9ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 88be26bb22cf539309ce67716101d7386d9d0513
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264406"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945559"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -173,7 +173,7 @@ De volgende FQDN/toepassings regels zijn vereist voor het gebruik van Windows Se
 | FQDN                                    | Poort      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Windows-gerelateerde binaire bestanden installeren |
-| mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows-gerelateerde binaire bestanden installeren |
+| *. mp.microsoft.com, www <span></span> . msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Windows-gerelateerde binaire bestanden installeren |
 | kms.core.windows.net | TCP: 1688 | Windows-gerelateerde binaire bestanden installeren |
 
 ## <a name="next-steps"></a>Volgende stappen

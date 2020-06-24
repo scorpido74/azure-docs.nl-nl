@@ -4,15 +4,15 @@ description: bestand opnemen
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/15/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 64433f3233e249059c1c2d180a03e0a221924f15
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84317619"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84793661"
 ---
 Met behulp van spot Vm's kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
@@ -43,9 +43,22 @@ De volgende VM-grootten worden niet ondersteund voor spot-Vm's:
  - B-serie
  - Promotie versies van elke grootte (zoals dv2, NV, NC, H promotie grootten)
 
-Spot-Vm's kunnen momenteel geen tijdelijke besturingssysteem schijven gebruiken.
-
 Spot-Vm's kunnen worden geïmplementeerd in elke regio, met uitzonde ring van Microsoft Azure-China 21Vianet.
+
+Sommige abonnements kanalen worden niet ondersteund:
+
+<a name="channel"></a>
+
+| Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
+|------------------------------|-----------------------------------|
+| Enterprise Agreement         | Yes                               |
+| Betalen naar gebruik                | Yes                               |
+| Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Voordelen                     | Niet beschikbaar                     |
+| Gesponsorde                    | Niet beschikbaar                     |
+| Gratis proefversie                   | Niet beschikbaar                     |
+
+
 
 ## <a name="pricing"></a>Prijzen
 
@@ -75,23 +88,6 @@ Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars
 **V:** Kan ik een extra quotum voor plaats vragen?
 
 **A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
-
-
-**V:** Welke kanalen ondersteunen de ondersteuning van virtuele machines?
-
-**A:** Zie de onderstaande tabel voor meer informatie over de beschik baarheid van spot VM'S.
-
-<a name="channel"></a>
-
-| Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
-|------------------------------|-----------------------------------|
-| Enterprise Agreement         | Yes                               |
-| Betalen naar gebruik                | Yes                               |
-| Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Microsoft-klantovereenkomst | Yes                               |
-| Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Yes                               |
-| Gratis proefversie                   | Niet beschikbaar                     |
 
 
 **V:** Waar kan ik vragen plaatsen?

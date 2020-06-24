@@ -2,23 +2,23 @@
 title: Externe toegang tot on-premises apps-Azure AD-toepassingsproxy
 description: De toepassings proxy van Azure Active Directory biedt veilige externe toegang tot on-premises webtoepassingen. Na een eenmalige aanmelding bij Azure AD, hebben gebruikers toegang tot zowel Cloud-als on-premises toepassingen via een externe URL of een interne toepassings Portal. Toepassings proxy kan bijvoorbeeld externe toegang en eenmalige aanmelding bieden voor Extern bureaublad, share point, teams, tableau, Qlik en LOB-toepassingen (line-of-Business).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 20b186c75358344e6e995b24b8e54e308c8653d2
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168723"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84975415"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Externe toegang tot on-premises toepassingen via de toepassings proxy van Azure Active Directory
 
@@ -26,7 +26,7 @@ De toepassings proxy van Azure Active Directory biedt veilige externe toegang to
 
 Azure AD-toepassingsproxy is:
 
-- **Eenvoudig te gebruiken**. Gebruikers hebben toegang tot uw on-premises toepassingen op dezelfde manier als de toegang tot O365 en andere SaaS-apps die zijn geïntegreerd met Azure AD. U hoeft uw toepassing niet te wijzigen of bij te werken om te kunnen werken met een toepassingsproxy.
+- **Eenvoudig te gebruiken**. Gebruikers hebben toegang tot uw on-premises toepassingen op dezelfde manier als de toegang tot O365 en andere SaaS-apps die zijn geïntegreerd met Azure AD. U hoeft uw toepassingen niet te wijzigen of bij te werken om te kunnen werken met toegangsproxy.
 
 - **Beveiligd**. On-premises toepassingen kunnen gebruikmaken van de autorisatie-instellingen en beveiligings analyses van Azure. On-premises toepassingen kunnen bijvoorbeeld gebruikmaken van voorwaardelijke toegang en verificatie in twee stappen. Voor toepassings proxy is het niet nodig om binnenkomende verbindingen via uw firewall te openen.
 
@@ -39,11 +39,11 @@ Toepassings proxy werkt met:
 
 * Webtoepassingen die gebruikmaken van [geïntegreerde Windows-authenticatie](application-proxy-configure-single-sign-on-with-kcd.md) voor verificatie
 * Webtoepassingen die gebruikmaken van op formulieren of [koptekst gebaseerde](application-proxy-configure-single-sign-on-with-ping-access.md) toegang
-* Web-Api's die u beschikbaar wilt maken voor uitgebreide toepassingen op verschillende apparaten
+* Web-API's die u beschikbaar wilt maken voor uitgebreide toepassingen op verschillende apparaten
 * Toepassingen die worden gehost achter een [extern bureaublad-gateway](application-proxy-integrate-with-remote-desktop-services.md)
 * Uitgebreide client-apps die zijn geïntegreerd met de micro soft Authentication Library (MSAL)
 
-Toepassings proxy biedt ondersteuning voor eenmalige aanmelding. Zie voor meer informatie over ondersteunde methoden [één aanmeldings methode kiezen](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Toepassings proxy biedt ondersteuning voor eenmalige aanmelding. Zie [Kiezen voor eenmalige aanmeldingsmethode](what-is-single-sign-on.md#choosing-a-single-sign-on-method) voor meer informatie over ondersteunde methoden.
 
 Toepassings proxy wordt aanbevolen om externe gebruikers toegang te geven tot interne bronnen. Toepassings proxy vervangt de nood zaak van een VPN-of reverse-proxy. Het is niet bedoeld voor interne gebruikers in het bedrijfs netwerk.  Deze gebruikers die onnodig toepassings proxy gebruiken, kunnen onverwachte en ongewenste prestatie problemen veroorzaken.
 
@@ -54,22 +54,20 @@ In het volgende diagram ziet u hoe Azure AD en toepassings proxy samen werken om
 ![AzureAD toepassings proxy diagram](./media/application-proxy/azureappproxxy.png)
 
 1. Nadat de gebruiker toegang tot de toepassing heeft verkregen via een eind punt, wordt de gebruiker omgeleid naar de aanmeldings pagina van Azure AD.
-2. Na een geslaagde aanmelding stuurt Azure AD een token naar het client apparaat van de gebruiker.
-3. De client stuurt het token naar de Application proxy-service, waarmee de user principal name (UPN) en de SPN (Security Principal Name) van het token worden opgehaald. Toepassings proxy verzendt de aanvraag vervolgens naar de connector van de toepassings proxy.
+2. Na een geslaagde aanmelding stuurt Azure AD een token naar het clientapparaat van de gebruiker.
+3. De client stuurt het token naar de toepassingsproxyservice, waarmee de user principal name (UPN) en de Security principal name (SPN) van het token worden opgehaald. Toepassings proxy verzendt de aanvraag vervolgens naar de connector van de toepassings proxy.
 4. Als u eenmalige aanmelding hebt geconfigureerd, voert de connector extra authenticatie uit namens de gebruiker.
 5. De connector stuurt de aanvraag naar de on-premises toepassing.
 6. Het antwoord wordt via de connector en de Application proxy-service naar de gebruiker verzonden.
 
 | Onderdeel | Beschrijving |
 | --------- | ----------- |
-| Eindpunt  | Het eind punt is een URL of [eind gebruikers Portal](end-user-experiences.md). Gebruikers kunnen toepassingen en buiten uw netwerk bereiken door toegang te krijgen tot een externe URL. Gebruikers in uw netwerk hebben toegang tot de toepassing via een URL of een portal voor eind gebruikers. Wanneer gebruikers naar een van deze eind punten gaan, verifiëren ze in azure AD en sturen ze vervolgens via de connector naar de on-premises toepassing.|
-| Azure AD | Azure AD voert de verificatie uit met behulp van de Tenant Directory die is opgeslagen in de Cloud. |
-| Application proxy-service | Deze toepassings proxy service wordt uitgevoerd in de Cloud als onderdeel van Azure AD. Hiermee wordt het aanmeldings token van de gebruiker aan de Application proxy-connector door gegeven. Met de toepassings proxy worden alle toegankelijke headers voor de aanvraag doorgestuurd en worden de headers volgens het bijbehorende protocol ingesteld op het IP-adres van de client. Als de inkomende aanvraag voor de proxy al die header heeft, wordt het client-IP-adres toegevoegd aan het einde van de door komma's gescheiden lijst die de waarde van de koptekst is.|
-| Application proxy-connector | De connector is een licht gewicht agent die wordt uitgevoerd op een Windows-Server in uw netwerk. De connector beheert de communicatie tussen de service toepassings proxy in de Cloud en de on-premises toepassing. De connector gebruikt alleen uitgaande verbindingen. u hoeft geen binnenkomende poorten te openen of niets in de DMZ te plaatsen. De connectors zijn stateless en halen indien nodig gegevens uit de Cloud. Zie [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)voor meer informatie over connectors, zoals hoe ze worden geladen en geverifieerd.|
-| Active Directory (AD) | Active Directory on-premises wordt uitgevoerd om verificatie voor domein accounts uit te voeren. Wanneer eenmalige aanmelding is geconfigureerd, communiceert de connector met AD voor het uitvoeren van aanvullende verificatie vereist.
+| Eindpunt  | Het eind punt is een URL of [eind gebruikers Portal](end-user-experiences.md). Gebruikers kunnen toepassingen en buiten uw netwerk bereiken door toegang te krijgen tot een externe URL. Gebruikers in uw netwerk hebben toegang tot de toepassing via een URL of een portal voor eindgebruikers. Wanneer gebruikers naar een van deze eindpunten gaan, verifiëren ze zichzelf in Azure AD en worden ze vervolgens via de connector naar de on-premises toepassing gestuurd.|
+| Azure AD | Azure AD voert de verificatie uit met behulp van de tenantmap die is opgeslagen in de cloud. |
+| Service voor proxytoepassing | Deze toepassingsproxyservice wordt uitgevoerd in de cloud als onderdeel van Azure AD. Hiermee wordt het aanmeldingstoken van de gebruiker aan de toepassingsproxy-connector doorgegeven. Met de toepassingsproxy worden alle toegankelijke headers voor de aanvraag doorgestuurd en worden de headers volgens het bijbehorende protocol ingesteld op het IP-adres van de client. Als de inkomende aanvraag voor de proxy al die header heeft, wordt het client-IP-adres toegevoegd aan het einde van de door komma's gescheiden lijst die de waarde van de koptekst is.|
+| Application proxy-connector | De connector is een lichtgewicht agent die wordt uitgevoerd op een Windows-server in uw netwerk. De connector beheert de communicatie tussen de toepassingsproxyservice in de cloud en de on-premises toepassing. De connector gebruikt alleen uitgaande verbindingen. U hoeft geen binnenkomende poorten te openen of iets in de DMZ te plaatsen. De connectors zijn staatloos en halen indien nodig gegevens uit de cloud. Zie [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)voor meer informatie over connectors, zoals hoe ze worden geladen en geverifieerd.|
+| Active Directory (AD) | Active Directory wordt on-premises uitgevoerd om verificatie voor domeinaccounts uit te voeren. Wanneer eenmalige aanmelding is geconfigureerd, communiceert de connector met AD voor het uitvoeren van vereiste aanvullende verificatie.
 | On-premises toepassing | Ten slotte heeft de gebruiker toegang tot een on-premises toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy](application-proxy-add-on-premises-application.md)om toepassings proxy te gaan gebruiken.
-
-Zie het [blog toepassings proxy](https://blogs.technet.com/b/applicationproxyblog/) voor het laatste nieuws en de meest recente updates

@@ -3,15 +3,15 @@ title: Azure Storage services bewaken met Azure Monitor voor opslag | Microsoft 
 description: In dit artikel wordt de Azure Monitor voor opslag functie beschreven waarmee opslag beheerders een duidelijk beeld krijgen van de prestaties en het gebruik van problemen met hun Azure Storage accounts.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: e69e00eb9db43a76af1d6e541f44f750452cf858
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800057"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944488"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Uw opslag service controleren met Azure Monitor voor opslag
 
@@ -46,7 +46,7 @@ Vanuit Azure Monitor kunt u de trans actie-, latentie-en capaciteits gegevens va
 
 Voer de volgende stappen uit om het gebruik en de beschik baarheid van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **monitor** in het linkerdeel venster in het Azure Portal en selecteer in de sectie **insightss** de optie **opslag accounts**.
 
@@ -228,6 +228,8 @@ In dit voor beeld werken we met de werkmap capaciteit van opslag account en late
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
+Raadpleeg voor algemene richt lijnen voor probleem oplossing het [artikel specifieke informatie over probleem](troubleshoot-workbooks.md)oplossing op basis van een werkmap.
+
 Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor opslag. Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Problemen met prestaties, capaciteit of Beschik baarheid oplossen
@@ -237,24 +239,6 @@ Raadpleeg de Azure Storage [probleemoplossings richtlijnen](../../storage/common
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Waarom kan ik alleen 200 opslag accounts zien?
 
 Voor het aantal geselecteerde opslag accounts geldt een limiet van 200, ongeacht het aantal abonnementen dat is geselecteerd.
-
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Wat gebeurt er wanneer ik op een onlangs vastgemaakte tegel in het dash board Klik?
-
-* Als u op een wille keurige plek op de tegel klikt, gaat u naar het tabblad waar de tegel is vastgemaakt. Als u bijvoorbeeld een grafiek vastmaakt in het tabblad Overzicht van het opslag account en vervolgens op die tegel in het dash board klikt, wordt de standaard weergave geopend, maar als u een grafiek van uw eigen opgeslagen kopie vastmaakt, wordt de weer gave van uw opgeslagen kopie geopend.
-* Met het filter pictogram in de linkerbovenhoek van de titel opent u het tabblad ' tegel instellingen configureren '.
-* Met het pictogram met de ovaal in de rechter bovenhoek krijgt u de opties voor het aanpassen van de titel gegevens, aanpassen, vernieuwen en verwijderen uit het dash board.
-
-### <a name="what-happens-when-i-save-a-workbook"></a>Wat gebeurt er wanneer ik een werkmap opsla?
-
-* Wanneer u een werkmap opslaat, kunt u een nieuwe kopie van de werkmap maken met behulp van uw wijzigingen en de titel wijzigen. Als u opslaat, wordt de werkmap niet overschreven, de huidige werkmap is altijd de standaard weergave.
-* Een **niet-opgeslagen** werkmap is alleen de standaard weergave.
-
-
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Waarom zie ik niet al mijn abonnementen in de portal?
-
-In de portal worden alleen gegevens weer gegeven voor geselecteerde abonnementen op het starten van de portal. Als u wilt wijzigen welke abonnementen zijn geselecteerd, gaat u naar rechtsboven en klikt u op het notitie blok met een filter pictogram. Hiermee wordt het tabblad map en abonnementen weer gegeven.
-
-![Map en abonnement](./media/storage-insights-overview/fqa3.png)
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Hoe wijzigt u de kleur en drempel waarde voor Beschik baarheid?
 
@@ -273,7 +257,7 @@ Op dit moment worden er Maxi maal drie verschillende typen fouten weer gegeven e
 
     ![Ga naar metrische gegevens en klik op bewerken en vervolgens op trans acties, totalen](./media/storage-insights-overview/fqa7.png)
 
-1. Wijzig vervolgens het aantal splitsingen.
+3. Wijzig vervolgens het aantal splitsingen.
 
     ![Metrische para meters selecteren "](./media/storage-insights-overview/fqa7-2.png)
 
@@ -282,37 +266,6 @@ Als u n verschillende typen fouten wilt zien dan splitByLimit opgeven als n + 1,
 ###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Ik heb mijn werkmap opgeslagen in een opslag account. Waarom kan ik dit nu niet vinden?
 
 Elke werkmap wordt opgeslagen in het opslag account waarin u deze hebt opgeslagen. Zoek het specifieke opslag account waarin de gebruiker de werkmap heeft opgeslagen. Anders is het niet mogelijk om een specifieke werkmap te vinden zonder de resource (opslag account) te weten.
-
-### <a name="what-is-time-range"></a>Wat is een tijds bereik?
-
-In het tijds bereik worden gegevens uit een bepaald tijds bestek weer gegeven. Als het tijds bereik bijvoorbeeld 24 uur is, worden de gegevens van de afgelopen 24 uur weer gegeven.
-
-### <a name="what-is-time-granularity-time-grain"></a>Wat is een tijd granulariteit (tijd korrel)?
-
-Tijd granulatie is het tijds verschil tussen twee gegevens punten. Als de tijd korrel bijvoorbeeld is ingesteld op 1 seconde, worden metrische gegevens elke seconde verzameld.
-
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Wat is de tijd granulatie zodra een deel van de werkmappen is vastgemaakt aan een dash board?
-
-De standaardtijd granulatie is ingesteld op automatisch. deze kan momenteel niet worden gewijzigd.
-
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Hoe kan ik het tijds bereik van de werkmap stap in mijn dash board wijzigen?
-
-Standaard is het tijds bereik voor time span uren op de dashboard tegel ingesteld op 24 uur, om deze klik op het weglatings teken in de rechter bovenhoek te wijzigen. Selecteer **tegel gegevens aanpassen**, schakel het selectie vakje de tijd instellingen van het dash board negeren op het niveau van de titel in en kies vervolgens een time span in het vervolg keuzemenu.  
-
-![Selecteer de weglatings tekens in de rechter hoek van de tegel en kies deze gegevens aanpassen](./media/storage-insights-overview/fqa-data-settings.png)
-
-![Selecteer in tegel instellingen configureren de vervolg keuzelijst time span om het interval/tijds bereik te wijzigen](./media/storage-insights-overview/fqa-timespan.png)
-
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Hoe kan ik de titel van de werkmap of de stap van een werkmap wijzigen die ik heb vastgemaakt aan een dash board?
-
-De titel van de werkmap of werkmap stap die is vastgemaakt aan een dash board, behoudt dezelfde naam als in de werkmap. Als u de titel wilt wijzigen, moet u uw eigen kopie van de werkmap opslaan. Vervolgens kunt u de werkmap een naam geeft voordat u op Opslaan klikt.
-
-![Selecteer boven opslaan om een kopie van de werkmap op te slaan en de naam ervan te wijzigen](./media/storage-insights-overview/fqa-change-workbook-name.png)
-
-Als u de naam van een stap in uw opgeslagen werkmap wilt wijzigen, selecteert u bewerken onder de stap en selecteert u vervolgens het vistuig aan de onderkant van de instellingen.
-
-![Selecteer Bewerken onder aan de stap van een werkmap om de instellingen ](./media/storage-insights-overview/fqa-edit.png)
- ![ in instellingen te openen Selecteer onder aan het vistuig de optie aan de onderkant, zodat de stap naam kan worden gewijzigd](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,18 +8,18 @@ author: asudbring
 keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6, mobiel, IOT
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65f378f52c464869217084c6f155b9d34c6fc092
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045444"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803740"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Een Internet gerichte Load Balancer-oplossing met IPv6 implementeren met behulp van een sjabloon
 
@@ -111,12 +111,12 @@ Een Azure Resource Manager sjabloon bevat meerdere variabelen en para meters die
 
 De voorbeeld sjabloon die in dit artikel wordt gebruikt, bevat de volgende variabelen en para meters:
 
-| Para meter/variabele | Opmerkingen |
+| Para meter/variabele | Notities |
 | --- | --- |
 | adminUsername |Geef de naam op van het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |
 | adminPassword |Geef het wacht woord op voor het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |
-| dnsNameforIPv4LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv4-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0{1,61}-9-] [a-z0-9] $. |
-| dnsNameforIPv6LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv6-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0{1,61}-9-] [a-z0-9] $. Dit kan dezelfde naam zijn als het IPv4-adres. Wanneer een client een DNS-query voor deze naam verzendt, retourneert Azure zowel de A-als AAAA-records wanneer de naam wordt gedeeld. |
+| dnsNameforIPv4LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv4-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0-9-] {1,61} [a-z0-9] $. |
+| dnsNameforIPv6LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv6-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0-9-] {1,61} [a-z0-9] $. Dit kan dezelfde naam zijn als het IPv4-adres. Wanneer een client een DNS-query voor deze naam verzendt, retourneert Azure zowel de A-als AAAA-records wanneer de naam wordt gedeeld. |
 | vmNamePrefix |Geef het voor voegsel van de VM-naam op. De sjabloon voegt een getal (0, 1 enz.) toe aan de naam wanneer de virtuele machines worden gemaakt. |
 | nicNamePrefix |Geef het voor voegsel van de netwerk interface naam op. De sjabloon voegt een getal (0, 1 enz.) toe aan de naam wanneer de netwerk interfaces worden gemaakt. |
 | storageAccountName |Voer de naam van een bestaand opslag account in of geef de naam op van een nieuwe die moet worden gemaakt door de sjabloon. |

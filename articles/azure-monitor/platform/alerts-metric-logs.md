@@ -1,17 +1,17 @@
 ---
 title: Metrische waarschuwingen maken voor logboeken in Azure Monitor
 description: Zelf studie over het maken van waarschuwingen voor bijna realtime metrische gegevens op de populaire log Analytics-Data.
-author: yanivlavi
-ms.author: yalavi
+author: harelbr
+ms.author: harelbr
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c9998488013ce89b17a30a6c3948a02407d06bb
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80055183"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945321"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrische waarschuwingen maken voor logboeken in Azure Monitor
 
@@ -19,7 +19,7 @@ ms.locfileid: "80055183"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor ondersteunt het [type metrische waarschuwing](../../azure-monitor/platform/alerts-metric-near-real-time.md) dat voor delen heeft ten opzichte van de [klassieke waarschuwingen](../../azure-monitor/platform/alerts-classic-portal.md). Metrische gegevens zijn beschikbaar voor een [grote lijst met Azure-Services](../../azure-monitor/platform/metrics-supported.md). In dit artikel wordt het gebruik van een subset (dat wil zeggen) `Microsoft.OperationalInsights/workspaces`voor resource-.
+Azure Monitor ondersteunt het [type metrische waarschuwing](../../azure-monitor/platform/alerts-metric-near-real-time.md) dat voor delen heeft ten opzichte van de [klassieke waarschuwingen](../../azure-monitor/platform/alerts-classic-portal.md). Metrische gegevens zijn beschikbaar voor een [grote lijst met Azure-Services](../../azure-monitor/platform/metrics-supported.md). In dit artikel wordt het gebruik van een subset (dat wil zeggen) voor resource- `Microsoft.OperationalInsights/workspaces` .
 
 U kunt metrische waarschuwingen gebruiken in populaire Log Analytics logboeken die als meet waarden worden geëxtraheerd als onderdeel van de gegevens in Logboeken, inclusief resources in azure of on-premises. De ondersteunde Log Analytics oplossingen worden hieronder weer gegeven:
 
@@ -163,7 +163,7 @@ Om hetzelfde te krijgen, kunt u de voor beeld-Azure Resource Manager onderstaand
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -299,7 +299,7 @@ Om hetzelfde te krijgen, kunt u de voor beeld-Azure Resource Manager onderstaand
 }
 ```
 
-Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertStatic. json. vervolgens kan deze worden gecombineerd met een JSON-parameter bestand voor het maken van een resource sjabloon. Hieronder vindt u een voor beeld van een JSON-bestand voor de para meter:
+Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertStatic.jsen kan worden gekoppeld aan een JSON-parameter bestand voor het maken van een resource sjabloon. Hieronder vindt u een voor beeld van een JSON-bestand voor de para meter:
 
 ```json
 {
@@ -355,7 +355,7 @@ Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertStatic. json.
 }
 ```
 
-Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertStatic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+Ervan uitgaande dat het bovenstaande parameter bestand wordt opgeslagen als metricfromLogsAlertStatic.parameters.jsop; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 U kunt ook de Azure Power shell-opdracht hieronder ook gebruiken:
 
@@ -452,7 +452,7 @@ Om hetzelfde te halen, kunt u de voor beeld-Azure Resource Manager sjabloon hier
             "type": "string",
             "minLength": 1,
             "metadata": {
-                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example: /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspaceName"
             }
         },
         "metricName": {
@@ -609,7 +609,7 @@ Om hetzelfde te halen, kunt u de voor beeld-Azure Resource Manager sjabloon hier
 }
 ```
 
-Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertDynamic. json. vervolgens kan deze worden gecombineerd met een JSON-parameter bestand voor het maken van een resource sjabloon. Hieronder vindt u een voor beeld van een JSON-bestand voor de para meter:
+Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertDynamic.jsen kan worden gekoppeld aan een JSON-parameter bestand voor het maken van een resource sjabloon. Hieronder vindt u een voor beeld van een JSON-bestand voor de para meter:
 
 ```json
 {
@@ -671,7 +671,7 @@ Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertDynamic. json
 }
 ```
 
-Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertDynamic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+Ervan uitgaande dat het bovenstaande parameter bestand wordt opgeslagen als metricfromLogsAlertDynamic.parameters.jsop; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 U kunt ook de Azure Power shell-opdracht hieronder ook gebruiken:
 

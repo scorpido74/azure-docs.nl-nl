@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 4315b6ded8824fb119cd9c05a760b4269bcfd12d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996647"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791058"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen weer geven met behulp van de Azure Portal
 
@@ -54,7 +54,7 @@ Gebruikers aan wie de rol van [eigenaar](built-in-roles.md#owner) voor een abonn
 
 1. Klik op het abonnement waarvan u de eigen aren wilt vermelden.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **Roltoewijzingen** om alle roltoewijzingen voor dit abonnement weer te geven.
 
@@ -68,7 +68,7 @@ Gebruikers aan wie de rol van [eigenaar](built-in-roles.md#owner) voor een abonn
 
 1. Klik op de specifieke resource.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
 
@@ -84,7 +84,7 @@ Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of
 
 1. Klik op de specifieke resource.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **Toegang controleren**.
 

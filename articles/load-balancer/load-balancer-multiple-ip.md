@@ -7,18 +7,18 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74077010"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803635"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Taak verdeling op meerdere IP-configuraties met behulp van de Azure Portal
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om het scenario te vervolledigen dat in dit artikel
 
 Voor elke virtuele machine in uw virtuele netwerk voegt u de IP-configuratie voor de secundaire NIC toe:  
 
-1. Blader naar de Azure Portal: https://portal.azure.com. Meld u aan met uw Azure-account.
+1. Blader naar de Azure Portal: https://portal.azure.com . Meld u aan met uw Azure-account.
 
 2. Selecteer in de linkerbovenhoek van het scherm het pictogram van de **resource groep** . Selecteer vervolgens de resource groep waar uw virtuele machines zich bevinden (bijvoorbeeld **contosofabrikam**). In het deel venster **resource groepen** worden alle resources en nic's voor de virtuele machines weer gegeven.
 
@@ -86,9 +86,9 @@ Nadat de tweede IP-configuratie voor de secundaire NIC is voltooid, wordt deze w
 
 Maak uw load balancer voor de configuratie:
 
-1. Blader naar de Azure Portal: https://portal.azure.com. Meld u aan met uw Azure-account.
+1. Blader naar de Azure Portal: https://portal.azure.com . Meld u aan met uw Azure-account.
 
-2. Selecteer in de linkerbovenhoek van het scherm **een resource** > **maken netwerk** > **Load Balancer**. Selecteer vervolgens **maken**.
+2. Selecteer in de linkerbovenhoek van het scherm **een resource maken**  >  **netwerk**  >  **Load Balancer**. Selecteer vervolgens **maken**.
 
 3. Typ onder **Load Balancer maken**een naam voor uw Load Balancer. In dit scenario gebruiken we de naam **mylb**.
 

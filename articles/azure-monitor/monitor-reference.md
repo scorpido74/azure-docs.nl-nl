@@ -5,15 +5,15 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/17/2020
-ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/15/2020
+ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873847"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945372"
 ---
-# <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er door Azure Monitor bewaakt?
+# <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er bewaakt door Azure Monitor?:
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
 
 ## <a name="insights-and-core-solutions"></a>Inzichten en kern oplossingen
@@ -30,8 +30,8 @@ Inzichten bieden een aangepaste bewakings ervaring voor bepaalde toepassingen en
 | [Azure Monitor voor Cosmos DB](insights/cosmosdb-insights-overview.md) | Biedt een overzicht van de algemene prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB resources in een uniforme interactieve ervaring. |
 | [Azure Monitor voor netwerken (preview-versie)](insights/network-insights-overview.md) | Biedt een uitgebreid overzicht van de status en metrische gegevens voor al uw netwerk bronnen. De geavanceerde zoek functie helpt u bij het identificeren van bron afhankelijkheden, het inschakelen van scenario's zoals het identificeren van resources die als host fungeren voor uw website, door eenvoudigweg te zoeken naar de naam van uw website. |
 [Azure Monitor voor resource groepen (preview-versie)](insights/resource-group-insights.md) |  Sorteren en diagnose eventuele problemen die uw afzonderlijke bronnen ondervinden, terwijl u context biedt voor de status en prestaties van de resource groep als geheel. |
-| [Azure Monitor voor Storage](insights/storage-insights-overview.md) | Biedt uitgebreide bewaking van uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. |
-| [Azure Monitor voor virtuele machines](insights/container-insights-overview.md) | Bewaakt uw Azure virtual machines (VM) en virtuele-machine schaal sets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. |
+| [Azure Monitor voor opslag](insights/storage-insights-overview.md) | Biedt uitgebreide bewaking van uw Azure Storage-accounts door een uniforme weer gave te bieden van de prestaties, capaciteit en beschik baarheid van uw Azure Storage services. |
+| [Azure Monitor voor virtuele machines](insights/vminsights-overview.md) | Bewaakt uw Azure virtual machines (VM) en virtuele-machine schaal sets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. |
 | [Azure Monitor voor Key Vault (preview-versie)](insights/key-vaults-insights-overview.md) | Povides uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave van uw Key Vault-aanvragen, prestaties, fouten en latentie te bieden. |
 | [Azure Monitor voor Azure-cache voor redis (preview-versie)](insights/redis-cache-insights-overview.md) |  Biedt een geïntegreerde, interactieve weer gave van de algehele prestaties, fouten, capaciteit en operationele status. |
 
@@ -55,43 +55,43 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 - Logboeken: de service ondersteunt Diagnostische instellingen waarmee de logboeken en metrische gegevens van het platform kunnen worden verzameld voor Azure Monitor Logboeken.
 - Inzicht: er is een inzicht beschikbaar voor de service die een aangepaste bewakings ervaring biedt voor de service.
 
-| Service | Metrische gegevens | Logboeken | Inzicht | Opmerkingen |
+| Service | Metrische gegevens | Logboeken | Inzicht | Notities |
 |:---|:---|:---|:---|:---|
-|Active Directory | No | Yes | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
+|Active Directory | No | Ja | [Ja](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Nee | Nee | Nee |  |
 |Active Directory Domain Services | No | Yes | No |  |
 |Activiteitenlogboek | No | Yes | No | |
 |Advanced Threat Protection | Nee | Nee | Nee |  |
 |Advisor | Nee | Nee | Nee |  |
 |AI Builder | Nee | Nee | Nee |  |
-|Analysis Services | Ja | Ja | No |  |
+|Analysis Services | Yes | Ja | No |  |
 |API for FHIR | Nee | Nee | Nee |  |
-|API Management | Ja | Ja | No |  |
-|App Service | Ja | Ja | No |  |
+|API Management | Yes | Ja | No |  |
+|App Service | Yes | Ja | No |  |
 |AppConfig | Nee | Nee | Nee |  |
-|Application Gateway | Ja | Ja | No |  |
+|Application Gateway | Yes | Ja | No |  |
 |Attestation-service | Nee | Nee | Nee |  |
-|Automatisering | Ja | Ja | No |  |
+|Automation | Yes | Ja | No |  |
 |Azure Service Manager (RDFE) | Nee | Nee | Nee |  |
 |Backup | No | Yes | No |  |
 |Bastion | Nee | Nee | Nee |  |
-|Batch | Ja | Ja | No |  |
+|Batch | Yes | Ja | No |  |
 |Batch AI | Nee | Nee | Nee |  |
 |Blockchain-service | No | Yes | No |  |
 |Blueprints | Nee | Nee | Nee |  |
 |Bot-service | Nee | Nee | Nee |  |
-|Cloud Services | Ja | Ja | No | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
+|Cloud Services | Yes | Ja | No | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Cloud Shell | Nee | Nee | Nee |  |
-|Cognitive Services | Ja | Ja | No |  |
+|Cognitive Services | Yes | Ja | No |  |
 |Container Instances | Yes | Nee | Nee |  |
-|Container Registry | Ja | Ja | No |  |
+|Container Registry | Yes | Ja | No |  |
 |Content Delivery Network (CDN) | No | Yes | No |  |
-|Cosmos DB | Ja | Ja | [Ja](insights/cosmosdb-insights-overview.md) |  |
+|Cosmos DB | Yes | Ja | [Ja](insights/cosmosdb-insights-overview.md) |  |
 |Cost Management | Nee | Nee | Nee |  |
 |Data Box | Nee | Nee | Nee |  |
 |Data Catalog Gen2 | Nee | Nee | Nee |  |
-|Data Explorer | Ja | Ja | No |  |
-|Data Factory | Ja | Ja | No |  |
+|Data Explorer | Yes | Ja | No |  |
+|Data Factory | Yes | Ja | No |  |
 |Data Factory v2 | No | Yes | No |  |
 |Data Share | Nee | Nee | Nee |  |
 |Database for MariaDB | Ja | Ja | No |  |
@@ -119,56 +119,55 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |IoT Central | Nee | Nee | Nee |  |
 |IoT Hub | Ja | Ja | No |  |
 |Key Vault | Ja | Ja | [Ja](insights/key-vaults-insights-overview.md) |  |
-|Kubernetes Service (AKS) | No | No | [Ja](insights/container-insights-overview.md)  |  |
-|Load Balancer | Ja | Ja | No |  |
-|Logic Apps | Ja | Ja | No |  |
-|Machine Learning Service | No | No | No |  |
-|Managed Applications  | No | No | No |  |
-|Maps  | No | No | No |  |
-|Media Services | Ja | Ja | No |  |
-|Microsoft Flow | No | No | No |  |
-|Microsoft Managed Desktop | No | No | No |  |
-|Microsoft PowerApps | No | No | No |  |
-|Microsoft Social Engagement | No | No | No |  |
-|Microsoft Stream | Ja | Ja | No |  |
-|Migreren | No | No | No |  |
+|Kubernetes Service (AKS) | No | Nee | [Ja](insights/container-insights-overview.md)  |  |
+|Load Balancer | Yes | Ja | No |  |
+|Logic Apps | Yes | Ja | No |  |
+|Machine Learning Service | No | Nee | Nee |  |
+|Managed Applications  | No | Nee | Nee |  |
+|Maps  | No | Nee | Nee |  |
+|Media Services | Yes | Ja | No |  |
+|Microsoft Flow | No | Nee | Nee |  |
+|Microsoft Managed Desktop | No | Nee | Nee |  |
+|Microsoft PowerApps | No | Nee | Nee |  |
+|Microsoft Social Engagement | No | Nee | Nee |  |
+|Microsoft Stream | Yes | Ja | No |  |
+|Migreren | No | Nee | Nee |  |
 |Multi-Factor Authentication | No | Yes | No |  |
-|Network Watcher | Ja | Ja | No |  |
-|Notification Hubs | Yes | No | No |  |
-|Open Datasets | No | No | No |  |
-|Beleid | No | No | No |  |
-|Power BI | Ja | Ja | Nee |  |
-|Power BI Embedded | Nee | No | No |  |
-|Private Link | No | No | No |  |
-|Communicatie platform voor project spooler | No | No | No |  |
-|Red Hat OpenShift | No | No | No |  |
-|Redis Cache | Ja | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
+|Network Watcher | Yes | Ja | No |  |
+|Notification Hubs | Yes | No | Nee |  |
+|Open Datasets | No | Nee | Nee |  |
+|Beleid | No | Nee | Nee |  |
+|Power BI Embedded | Yes | Ja | No |  |
+|Private Link | No | Nee | Nee |  |
+|Communicatie platform voor project spooler | No | Nee | Nee |  |
+|Red Hat OpenShift | No | Nee | Nee |  |
+|Redis Cache | Yes | Ja | [Ja](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | No | Nee | Nee |  |
-|Resource Manager | Nee | Nee | Nee |  |
+|Resource Manager | No | Nee | Nee |  |
 |Retail-zoek opdracht: door Bing | Nee | Nee | Nee |  |
-|Search | Ja | Ja | No |  |
-|Service Bus | Ja | Ja | No |  |
+|Search | Yes | Ja | No |  |
+|Service Bus | Yes | Ja | No |  |
 |Service Fabric | No | Yes | No | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Aanmeldings Portal | Nee | Nee | Nee |  |
 |Siteherstel | No | Yes | No |  |
 |Lente-Cloud service | Nee | Nee | Nee |  |
-|SQL Data Warehouse | Ja | Ja | No |  |
-|SQL Database | Ja | Ja | No |  |
-|SQL Server Stretch Database | Ja | Ja | No |  |
+|SQL Data Warehouse | Yes | Ja | No |  |
+|SQL Database | Yes | Ja | No |  |
+|SQL Server Stretch Database | Yes | Ja | No |  |
 |Stack | Nee | Nee | Nee |  |
 |Storage | Yes | No | [Ja](insights/storage-insights-overview.md) |  |
 |Opslag cache | Nee | Nee | Nee |  |
 |Opslag synchronisatie Services | Nee | Nee | Nee |  |
-|Stream Analytics | Ja | Ja | No |  |
-|Time Series Insights | Ja | Ja | No |  |
+|Stream Analytics | Yes | Ja | No |  |
+|Time Series Insights | Yes | Ja | No |  |
 |TINA | Nee | Nee | Nee |  |
-|Traffic Manager | Ja | Ja | No |  |
+|Traffic Manager | Yes | Ja | No |  |
 |Universeel afdrukken | Nee | Nee | Nee |  |
-|Virtuele-machineschaalsets | No | Yes | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtual Machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
-|Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
+|Virtuele-machineschaalsets | No | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtual Machines | Yes | Ja | [Ja](insights/vminsights-overview.md) | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken. |
+|Virtual Network | Yes | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtual Network-NSG-stroom logboeken | No | Yes | No |  |
-|VPN Gateway | Ja | Ja | No |  |
+|VPN Gateway | Yes | Ja | No |  |
 |Windows Virtual Desktop | Nee | Nee | Nee |  |
 
 
@@ -201,7 +200,7 @@ Andere oplossingen zijn beschikbaar voor het bewaken van verschillende toepassin
 |:---|:---|
 | [Active Directory status controle](insights/ad-assessment.md) | Het risico en de status van uw Active Directory omgevingen evalueren. |
 | [Replicatie status van Active Directory](insights/ad-replication-status.md) | Bewaakt uw Active Directory-omgeving regel matig voor replicatie fouten. |
-| [Activiteiten logboek analyse](platform/activity-log-view.md#azure-portal) | Vermeldingen in het activiteiten logboek weer geven. |
+| [Activiteiten logboek analyse](platform/activity-log.md#activity-log-analytics-monitoring-solution) | Vermeldingen in het activiteiten logboek weer geven. |
 | [DNS-analyse (preview-versie)](insights/dns-analytics.md) | Verzamelt, analyseert en correleert Windows DNS analytic-en audit logboeken en andere gerelateerde gegevens van uw DNS-servers. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Verzamel, Bekijk en analyseer uw Cloud Foundry systeem status-en prestatie gegevens over meerdere implementaties. |
 | [Containers](insights/containers.md) | Docker-en Windows-container-hosts weer geven en beheren. |

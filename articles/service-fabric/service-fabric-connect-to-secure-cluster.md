@@ -4,11 +4,11 @@ description: Hierin wordt beschreven hoe u client toegang tot een Service Fabric
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258575"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701216"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
 
@@ -20,7 +20,7 @@ Wanneer een client verbinding maakt met een Service Fabric cluster knooppunt, ka
 
 Er zijn een aantal verschillende manieren om verbinding te maken met een beveiligd cluster met behulp van de Service Fabric CLI (sfctl). Als u ter verificatie een clientcertificaat gebruikt, moeten de certificaatgegevens overeenkomen met een certificaat dat is geïmplementeerd in de clusterknooppunten. Als uw certificaat certificerings instanties (Ca's) heeft, moet u ook de vertrouwde certificerings instanties opgeven.
 
-U kunt verbinding maken met een cluster met `sfctl cluster select` behulp van de opdracht.
+U kunt verbinding maken met een cluster met behulp van de `sfctl cluster select` opdracht.
 
 Client certificaten kunnen worden opgegeven op twee verschillende manieren, hetzij als een certificaat en sleutel paar, hetzij als één PFX-bestand. U wordt gevraagd om het wacht woord op te geven voor met wacht woord beveiligde PEM-bestanden. Als u het client certificaat als een PFX-bestand hebt verkregen, moet u het PFX-bestand eerst converteren naar een PEM-bestand met behulp van de volgende opdracht. 
 
@@ -30,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 Als uw pfx-bestand niet is beveiligd met een wacht woord, gebruikt u-Passin Pass: voor de laatste para meter.
 
-Geef het bestandspad op in het `--pem` argument om het client certificaat op te geven als een PEM-bestand. Bijvoorbeeld:
+Geef het bestandspad op in het argument om het client certificaat op te geven als een PEM-bestand `--pem` . Bijvoorbeeld:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -44,16 +44,16 @@ Als u een certificaat wilt opgeven, gebruikt u `--cert` de `--key` argumenten en
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Soms certificaten die worden gebruikt voor het beveiligen van test-of dev-clusters, mislukken certificaat validatie. Als u certificaat verificatie wilt overs `--no-verify` Laan, geeft u de optie op. Bijvoorbeeld:
+Soms certificaten die worden gebruikt voor het beveiligen van test-of dev-clusters, mislukken certificaat validatie. Als u certificaat verificatie wilt overs Laan, geeft u de `--no-verify` optie op. Bijvoorbeeld:
 
 > [!WARNING]
-> Gebruik de `no-verify` optie niet wanneer u verbinding maakt met productie service Fabric clusters.
+> Gebruik de optie niet `no-verify` Wanneer u verbinding maakt met productie service Fabric clusters.
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Daarnaast kunt u paden opgeven naar mappen van vertrouwde CA-certificaten of afzonderlijke certificaten. Als u deze paden wilt opgeven, `--ca` gebruikt u het argument. Bijvoorbeeld:
+Daarnaast kunt u paden opgeven naar mappen van vertrouwde CA-certificaten of afzonderlijke certificaten. Als u deze paden wilt opgeven, gebruikt u het `--ca` argument. Bijvoorbeeld:
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca

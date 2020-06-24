@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1acb01ceb9747fa833e998bd5501ce8a8a51babb
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674355"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119457"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -25,7 +25,7 @@ Met behulp van [Azure Cosmos DB-analytische opslag](analytical-store-introductio
 
 In de volgende afbeelding ziet u de integratie van de Azure Synapse-koppeling met Azure Cosmos DB en Azure Synapse Analytics: 
 
-![Architectuur diagram voor Azure Synapse Analytics-integratie met Azure Cosmos DB](./media/synapse-link/synapse-analytics-cosmos-db-architecture.png)
+:::image type="content" source="./media/synapse-link/synapse-analytics-cosmos-db-architecture.png" alt-text="Architectuur diagram voor Azure Synapse Analytics-integratie met Azure Cosmos DB" border="false":::
 
 ## <a name="benefits"></a><a id="synapse-link-benefits"></a>Verleend
 
@@ -134,12 +134,12 @@ Het facturerings model van de koppeling Azure Synapse bevat de kosten die zijn g
 
 Raadpleeg de volgende documenten voor meer informatie:
 
-* [Overzicht van Azure Cosmos DB Analytical Store](analytical-store-introduction.md)
+* [Overzicht van analytische opslag van Azure Cosmos DB](analytical-store-introduction.md)
 
-* [Aan de slag met Azure Synapse-koppeling voor Azure Cosmos DB](configure-synapse-link.md)
+* [Aan de slag met Azure Synapse Link voor Azure Cosmos DB](configure-synapse-link.md)
  
-* [Wat wordt ondersteund in azure Synapse Analytics uitvoerings tijd](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
+* [Wat wordt er ondersteund in Azure Synapse Analytics-runtime?](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [Veelgestelde vragen over de koppeling van Azure Synapse voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
+* [Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB](synapse-link-frequently-asked-questions.md)
 
-* [Azure Synapse-koppeling voor Azure Cosmos DB use cases](synapse-link-use-cases.md)
+* [Use cases voor Azure Synapse Link voor Azure Cosmos DB](synapse-link-use-cases.md)

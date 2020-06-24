@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
 ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127632"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701146"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Procedure: fouten opsporen in Windows-containers in azure Service Fabric met behulp van Visual Studio 2019
 
@@ -27,7 +27,7 @@ Met Visual Studio 2019 kunt u fouten opsporen in .NET-toepassingen in containers
 
 1. Ter ondersteuning van de DNS-omzetting tussen containers moet u uw lokale ontwikkel cluster instellen met behulp van de computer naam. Deze stappen zijn ook nodig als u services wilt adresseren via de omgekeerde proxy.
    1. Power shell openen als Administrator
-   2. Ga doorgaans `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`naar de map voor het instellen van het SDK-cluster.
+   2. Ga doorgaans naar de map voor het instellen van het SDK-cluster `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup` .
    3. Het script uitvoeren`DevClusterSetup.ps1`
 
       ``` PowerShell
@@ -35,7 +35,7 @@ Met Visual Studio 2019 kunt u fouten opsporen in .NET-toepassingen in containers
       ```
 
       > [!NOTE]
-      > U kunt de `-CreateOneNodeCluster` gebruiken om een cluster met één knoop punt te installeren. Met de standaard instelling wordt een lokaal cluster met vijf knoop punten gemaakt.
+      > U kunt de gebruiken `-CreateOneNodeCluster` om een cluster met één knoop punt te installeren. Met de standaard instelling wordt een lokaal cluster met vijf knoop punten gemaakt.
       >
 
       Zie [DNS-service in Azure service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)voor meer informatie over de DNS-service in service Fabric. Zie voor meer informatie over het gebruik van Service Fabric reverse proxy van services die in een container worden uitgevoerd, [reverse proxy rehandling for services die in containers worden uitgevoerd](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).

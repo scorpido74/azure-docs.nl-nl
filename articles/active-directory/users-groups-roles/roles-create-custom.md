@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2682a85f88a537630fbca86dd55541a152d8f37e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758636"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732001"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Een aangepaste rol maken en toewijzen in Azure Active Directory
 
@@ -170,7 +170,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 Net als ingebouwde rollen worden aangepaste rollen standaard toegewezen op basis van het standaard organisatie bereik om toegangs machtigingen te verlenen voor alle app-registraties in uw organisatie. Maar in tegens telling tot ingebouwde rollen kunnen aangepaste rollen ook worden toegewezen in het bereik van één Azure AD-resource. Hierdoor kunt u de gebruiker toestemming geven om referenties en basis eigenschappen van één app bij te werken zonder dat u een tweede aangepaste rol hoeft te maken.
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met toepassings ontwikkelaars machtigingen in de Azure AD-organisatie.
-1. Selecteer **app-registraties**.
+1. Selecteer **App-registraties**.
 1. Selecteer de app-registratie waaraan u toegang wilt verlenen. Mogelijk moet u **alle toepassingen** selecteren om de volledige lijst van app-registraties in uw Azure AD-organisatie weer te geven.
 
     ![Selecteer de app-registratie als een resource bereik voor een roltoewijzing](./media/roles-create-custom/appreg-all-apps.png)

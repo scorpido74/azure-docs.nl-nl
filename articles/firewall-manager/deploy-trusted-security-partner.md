@@ -1,33 +1,33 @@
 ---
-title: Een vertrouwde beveiligings partner van Azure Firewall Manager implementeren
-description: Meer informatie over het implementeren van een Azure Firewall Manager-vertrouwde beveiliging met behulp van de Azure Portal.
+title: Een Azure Firewall Manager-beveiligings partner provider implementeren
+description: Meer informatie over het implementeren van een Azure Firewall Manager security partner provider met behulp van de Azure Portal.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e06f8e3adaedbc8847aacba0ca4ad9c6a172c9b7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73931303"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791687"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>Een vertrouwde beveiligingspartner implementeren (preview)
+# <a name="deploy-a-security-partner-provider-preview"></a>Een beveiligings partner provider (preview-versie) implementeren
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Met *vertrouwde beveiligings partners* in azure firewall Manager kunt u uw vertrouwde en beste SECaaS-aanbiedingen (Security as a Service) van derden gebruiken om de Internet toegang voor uw gebruikers te beveiligen.
+Met *aanbieders van beveiligings partners* in azure firewall Manager kunt u uw vertrouwde, eersteklas SECaaS-aanbiedingen (Security as-a-Service) van derden gebruiken om de Internet toegang voor uw gebruikers te beveiligen.
 
 Zie [Wat zijn vertrouwde beveiligings partners (preview)?](trusted-security-partners.md)voor meer informatie over ondersteunde scenario's en best practice richt lijnen.
 
-De ondersteunde beveiligings partners zijn **ZScaler** en **iboss** voor deze preview. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
+De ondersteunde beveiligings partners zijn **ZScaler**, **Check Point**en **iboss** voor deze preview. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!IMPORTANT]
-> Azure Firewall Manager-Preview moet expliciet worden ingeschakeld met `Register-AzProviderFeature` behulp van de Power shell-opdracht.
+> Azure Firewall Manager-Preview moet expliciet worden ingeschakeld met behulp van de `Register-AzProviderFeature` Power shell-opdracht.
 
 Voer vanuit een Power shell-opdracht prompt de volgende opdrachten uit:
 
@@ -41,6 +41,8 @@ Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. Voer 
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>Een beveiligings provider van derden implementeren in een nieuwe hub
 
+Sla deze sectie over als u een provider van derden in een bestaande hub implementeert.
+
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
 2. In **zoeken**, typt u **firewall Manager** en selecteert u deze onder **Services**.
 3. Ga naar aan de **slag**. Selecteer **een beveiligde virtuele hub maken**. 
@@ -51,8 +53,8 @@ Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. Voer 
    > Vertrouwde beveiligings partners maken verbinding met uw hub met behulp van VPN Gateway tunnels. Als u de VPN Gateway verwijdert, gaan de verbindingen met uw vertrouwde beveiligings partners verloren.
 7. Als u Azure Firewall wilt implementeren voor het filteren van privé verkeer samen met de service provider van derden om het Internet verkeer te filteren, selecteert u een beleid voor Azure Firewall. Zie de [ondersteunde scenario's](trusted-security-partners.md#key-scenarios).
 8. Als u alleen een beveiligings provider van derden wilt implementeren in de hub, selecteert u **Azure firewall: ingeschakeld/uitgeschakeld** om deze in te stellen op **uitgeschakeld**. 
-9. Selecteer **volgende: vertrouwde beveiligings partners**.
-10. Selecteer **vertrouwde beveiligings partner** om deze in te stellen op **ingeschakeld**. Selecteer een partner. 
+9. Selecteer **volgende: provider van beveiligings partner**.
+10. Selecteer **beveiligings partner provider** om deze in te stellen op **ingeschakeld**. Selecteer een partner. 
 11. Selecteer **Next**. 
 12. Bekijk de inhoud en selecteer vervolgens **maken**.
 
@@ -75,20 +77,25 @@ Houd er rekening mee dat een VPN-gateway moet worden geïmplementeerd om een bes
 
 Om tunnels in te stellen voor de VPN Gateway van de virtuele hub, hebben externe providers toegangs rechten nodig voor uw hub. U kunt dit doen door een service-principal te koppelen aan uw abonnement of resource groep en toegangs rechten te verlenen. Vervolgens moet u deze referenties aan de derde partij geven met behulp van hun portal.
 
+### <a name="create-and-authorize-a-service-principal"></a>Een service-principal maken en autoriseren
+
 1. Create Azure Active Directory (AD) Service-Principal: u kunt de omleidings-URL overs Laan. 
 
-   [Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 2. Voeg toegangs rechten en bereik voor de Service-Principal toe.
-   [Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 
    > [!NOTE]
    > U kunt de toegang tot de resource groep beperken voor meer gedetailleerde besturings elementen.
-3. Volg de [ZScaler: configure a Microsoft Azure instructies voor het configureren van virtuele WAN-integratie](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) naar:
 
-   - Meld u aan bij de Partner Portal en voeg uw referenties toe om de vertrouwde partner toegang te geven tot uw beveiligde hub.
-   - Synchroniseer de virtuele hubs in de Partner Portal en stel de tunnel in op de virtuele hub. U kunt dit doen zodra uw Azure AD-verificatie referenties zijn gevalideerd.
+### <a name="visit-partner-portal"></a>Partner Portal bezoeken
+
+1. Volg de instructies van uw partner om de installatie te volt ooien. Dit omvat het verzenden van AAD-gegevens om de hub te detecteren en er verbinding mee te maken, het uitzonderings beleid bij te werken en de connectiviteits status en logboeken te controleren.
+
+   - [Zscaler: configureer Microsoft Azure virtuele WAN-integratie](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration).
+   - [Controle punt: configureer Microsoft Azure virtuele WAN-integratie](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm).
    
-4. U kunt de status voor het maken van de tunnel bekijken in de Azure Virtual WAN-Portal in Azure. Zodra de tunnels **zijn verbonden** met Azure en de Partner Portal, gaat u door met de volgende stappen om routes in te stellen om te selecteren welke branches en VNets Internet verkeer naar de partner moeten verzenden.
+2. U kunt de status voor het maken van de tunnel bekijken in de Azure Virtual WAN-Portal in Azure. Zodra de tunnels **zijn verbonden** met Azure en de Partner Portal, gaat u door met de volgende stappen om routes in te stellen om te selecteren welke branches en VNets Internet verkeer naar de partner moeten verzenden.
 
 ## <a name="configure-route-settings"></a>Route-instellingen configureren
 
@@ -116,7 +123,3 @@ Na het volt ooien van de stappen voor het instellen van de route worden de virtu
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Zelf studie: uw Cloud netwerk beveiligen met Azure Firewall Manager Preview met behulp van de Azure Portal](secure-cloud-network.md)
-
-
-
-

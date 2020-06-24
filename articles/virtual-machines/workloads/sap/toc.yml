@@ -123,6 +123,8 @@
     - name: SAP NetWeaver in Azure plannen en implementeren
       href: planning-guide.md
       items:
+        - name: Azure Storage-typen voor SAP-workload
+          href: planning-guide-storage.md
         - name: SAP-workload in scenario's met virtuele Azure-machines
           href: sap-planning-supported-configurations.md
         - name: Welke SAP-software wordt ondersteund voor Azure-implementaties
@@ -230,7 +232,7 @@
             - name: RHEL met Pacemaker multi-SID voor een A(SCS)-exemplaar
               href: high-availability-guide-rhel-multi-sid.md
     - name: Herstel na noodgevallen van SAP met Azure Site Recovery
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: Azure-nabijheidplaatsingsgroepen voor optimale netwerklatentie met SAP-toepassingen
       href: sap-proximity-placement-scenarios.md
 - name: AAD SAP Identity Integration en eenmalige aanmelding

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437107"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974514"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Storage Explorer
 
@@ -48,7 +48,7 @@ U moet ten minste één rol toewijzen die toegang verleent tot het lezen van geg
 
 Azure Storage heeft twee toegangs niveaus: _beheer_ en _gegevens_. Abonnementen en opslag accounts zijn toegankelijk via de Management-laag. Containers, blobs en andere gegevens bronnen worden geopend via de gegevenslaag. Als u bijvoorbeeld een lijst wilt ophalen van uw opslag accounts van Azure, verzendt u een aanvraag naar het beheer eindpunt. Als u een lijst met Blob-containers in een account wilt, verzendt u een aanvraag naar het juiste service-eind punt.
 
-RBAC-rollen kunnen machtigingen voor beheer-of gegevenslaag toegang bevatten. De rol van lezer geeft bijvoorbeeld alleen-lezen toegang tot management Layer-resources.
+RBAC-rollen kunnen u machtigingen verlenen voor toegang tot beheer of gegevenslaag. De rol van lezer geeft bijvoorbeeld alleen-lezen toegang tot management Layer-resources.
 
 De rol van lezer biedt geen gegevenslaag machtigingen en is niet nodig om toegang te krijgen tot de gegevenslaag.
 
@@ -58,7 +58,14 @@ Als u geen rol hebt die machtigingen voor een beheer laag verleent, kan Storage 
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Wat moet ik doen als ik de beheer laag machtigingen niet kan ophalen die ik nodig heb van mijn beheerder?
 
-Er zijn momenteel geen RBAC-oplossing voor dit probleem. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resources koppelen met uw Azure-referenties.
+
+1. Open het dialoog venster verbinding maken.
+2. Selecteer een resource toevoegen via Azure Active Directory (Azure AD). Klik op Volgende.
+3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
+4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinden.
+
+Voor andere resource typen hebben we momenteel geen oplossing die betrekking heeft op RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-built-in-rbac-roles"></a>Aanbevolen geïntegreerde RBAC-rollen
 
@@ -75,13 +82,13 @@ Er zijn verschillende ingebouwde RBAC-rollen die de machtigingen kunnen bieden d
 
 Certificaat fouten treden doorgaans op in een van de volgende situaties:
 
-- De app is verbonden via een _transparante proxy_, wat betekent dat een server (zoals uw bedrijfs server) HTTPS-verkeer onderschept, ontsleutelt en vervolgens versleutelt met behulp van een zelfondertekend certificaat.
+- De app is verbonden via een _transparante proxy_. Dit betekent dat een server (zoals uw bedrijfs server) het HTTPS-verkeer onderschept, ontsleutelt en vervolgens versleutelt met behulp van een zelfondertekend certificaat.
 - U voert een toepassing uit die een zelfondertekend TLS/SSL-certificaat injecteert in de HTTPS-berichten die u ontvangt. Voor beelden van toepassingen die certificaten injecteren, zijn onder andere software voor de inspectie van virussen en netwerk verkeer.
 
 Wanneer Storage Explorer een zelfondertekend of niet-vertrouwd certificaat ziet, weet het niet meer of het ontvangen HTTPS-bericht is gewijzigd. Als u een exemplaar van het zelfondertekende certificaat hebt, kunt u Storage Explorer om dit te vertrouwen door de volgende stappen uit te voeren:
 
 1. Een met base 64 gecodeerde X. 509 (. CER)-kopie van het certificaat verkrijgen.
-2. Ga naar **bewerken** > **SSL-certificaten** > **certificaten importeren**, en gebruik vervolgens de bestands kiezer om het. cer-bestand te zoeken, te selecteren en te openen.
+2. Ga naar **bewerken**  >  **SSL-certificaten**  >  **certificaten importeren**, en gebruik vervolgens de bestands kiezer om het. cer-bestand te zoeken, te selecteren en te openen.
 
 Dit probleem kan ook optreden als er meerdere certificaten (root en tussenliggend) zijn. Om deze fout op te lossen, moeten beide certificaten worden toegevoegd.
 
@@ -91,25 +98,25 @@ Als u niet zeker weet waar het certificaat vandaan komt, volgt u deze stappen om
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): een van de lichte versies moet voldoende zijn.
     * Mac en Linux: moeten zijn opgenomen in uw besturings systeem.
 2. Voer OpenSSL uit.
-    * Windows: Open de installatiemap, selecteer **/bin/** en dubbel klik vervolgens op **openssl. exe**.
+    * Windows: Open de installatiemap, selecteer **/bin/** en dubbel klik vervolgens op **openssl.exe**.
     * Mac en Linux: uitvoeren `openssl` vanaf een Terminal.
 3. Voer `s_client -showcerts -connect microsoft.com:443` uit.
-4. Zoek naar zelfondertekende certificaten. Als u niet zeker weet welke certificaten u zelf hebt ondertekend, noteert u de locatie van het `("s:")` onderwerp en de `("i:")` Uitgever.
+4. Zoek naar zelfondertekende certificaten. Als u niet zeker weet welke certificaten u zelf hebt ondertekend, noteert u de locatie van het onderwerp `("s:")` en de uitgever `("i:")` .
 5. Wanneer u zelfondertekende certificaten vindt, kopieert en plakt u alles uit (en inclusief) `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` in een nieuw CER-bestand.
-6. Open Storage Explorer en ga naar**import certificaten**voor**SSL-certificaten** >  **bewerken** > . Gebruik vervolgens de bestands kiezer om de CER-bestanden die u hebt gemaakt, te zoeken, te selecteren en te openen.
+6. Open Storage Explorer en ga naar **Edit**  >  **SSL Certificates**  >  **import certificaten**voor SSL-certificaten bewerken. Gebruik vervolgens de bestands kiezer om de CER-bestanden die u hebt gemaakt, te zoeken, te selecteren en te openen.
 
-Als u geen zelfondertekende certificaten kunt vinden door deze stappen te volgen, neemt u contact met ons op via het feedback programma. U kunt Storage Explorer ook openen vanaf de opdracht regel met behulp `--ignore-certificate-errors` van de vlag. Wanneer deze vlag wordt geopend, worden certificaat fouten Storage Explorer genegeerd.
+Als u geen zelfondertekende certificaten kunt vinden door deze stappen te volgen, neemt u contact met ons op via het feedback programma. U kunt Storage Explorer ook openen vanaf de opdracht regel met behulp van de `--ignore-certificate-errors` vlag. Wanneer deze vlag wordt geopend, worden certificaat fouten Storage Explorer genegeerd.
 
 ## <a name="sign-in-issues"></a>Aanmeldingsproblemen
 
 ### <a name="blank-sign-in-dialog-box"></a>Het dialoog venster lege aanmelding
 
-De dialoog vensters met een leeg aanmeld probleem worden meestal beschreven wanneer Active Directory Federation Services (AD FS) Storage Explorer om een omleiding uit te voeren, wat niet wordt ondersteund door elektron. U kunt dit probleem omzeilen door de apparaatcode stroom te gebruiken om u aan te melden. Hiervoor volgt u de volgende stappen:
+De dialoog vensters met een leeg aanmeld probleem worden meestal beschreven wanneer Active Directory Federation Services (AD FS) Storage Explorer om een omleiding uit te voeren, wat niet wordt ondersteund door elektron. U kunt dit probleem omzeilen door de apparaatcode stroom te gebruiken om u aan te melden. Voer hiervoor de volgende stappen uit:
 
-1. Open op de werk balk links verticaal de knop **instellingen**. Ga in het deel venster instellingen naar **toepassing** > **Aanmelden**. Schakel **Aanmelden met apparaatcode stroom in**.
+1. Open op de werk balk links verticaal de knop **instellingen**. Ga in het deel venster instellingen naar **toepassing**  >  **Aanmelden**. Schakel **Aanmelden met apparaatcode stroom in**.
 2. Open het dialoog venster **verbinding maken** (via het pictogram met de plug-in de verticale balk aan de linkerkant of selecteer **account toevoegen** in het deel venster account).
 3. Kies de omgeving waarin u zich wilt aanmelden.
-4. Selecteer **Aanmelden**.
+4. Selecteer **Aanmelden.**
 5. Volg de instructies op het volgende scherm.
 
 Als u zich niet kunt aanmelden bij het account dat u wilt gebruiken omdat uw standaard browser al is aangemeld bij een ander account, voert u een van de volgende handelingen uit:
@@ -122,7 +129,7 @@ Als u zich niet kunt aanmelden bij het account dat u wilt gebruiken omdat uw sta
 Voer de volgende stappen uit als u een lus voor opnieuw verifiëren hebt of als u de UPN van een van uw accounts hebt gewijzigd:
 
 1. Verwijder alle accounts en sluit Storage Explorer.
-2. Verwijder de. De map IdentityService van uw computer. In Windows bevindt de map zich `C:\users\<username>\AppData\Local`op. Voor Mac en Linux vindt u de map in de hoofdmap van de gebruikers lijst.
+2. Verwijder de. De map IdentityService van uw computer. In Windows bevindt de map zich op `C:\users\<username>\AppData\Local` . Voor Mac en Linux vindt u de map in de hoofdmap van de gebruikers lijst.
 3. Als u Mac of Linux uitvoert, moet u ook de vermelding micro soft. developer. IdentityService verwijderen uit de opslag van uw besturings systeem. Op de Mac is het sleutel archief de *gnome-keten* toepassing. In Linux wordt de toepassing meestal _sleutel hanger_genoemd, maar de naam kan variëren, afhankelijk van uw distributie.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
@@ -176,7 +183,7 @@ Als u een gekoppeld account of opslag resource niet kunt verwijderen via de gebr
 > Sluit Storage Explorer voordat u deze mappen verwijdert.
 
 > [!NOTE]
-> Als u ooit SSL-certificaten hebt geïmporteerd, maakt u een back-up `certs` van de inhoud van de map. Later kunt u de back-up gebruiken om uw SSL-certificaten opnieuw te importeren.
+> Als u ooit SSL-certificaten hebt geïmporteerd, maakt u een back-up van de inhoud van de `certs` map. Later kunt u de back-up gebruiken om uw SSL-certificaten opnieuw te importeren.
 
 ## <a name="proxy-issues"></a>Proxy problemen
 
@@ -204,7 +211,7 @@ Als u hulpprogram ma's voor netwerken hebt, zoals Fiddler voor Windows, kunt u d
 
 * Als u uw proxy moet gebruiken, moet u mogelijk uw netwerk hulpprogramma configureren om verbinding te maken via de proxy.
 * Controleer het poort nummer dat wordt gebruikt door uw netwerk programma.
-* Voer de URL van de lokale host en het poort nummer van het netwerk hulpprogramma in als proxy-instellingen in Storage Explorer. Wanneer u dit op de juiste wijze uitvoert, start het netwerk hulpprogramma het registreren van netwerk aanvragen van Storage Explorer naar beheer-en service-eind punten. Voer `https://cawablobgrs.blob.core.windows.net/` bijvoorbeeld in voor uw BLOB-eind punt in een browser en ontvang een antwoord dat er ongeveer als volgt uitziet:
+* Voer de URL van de lokale host en het poort nummer van het netwerk hulpprogramma in als proxy-instellingen in Storage Explorer. Wanneer u dit op de juiste wijze uitvoert, start het netwerk hulpprogramma het registreren van netwerk aanvragen van Storage Explorer naar beheer-en service-eind punten. Voer bijvoorbeeld `https://cawablobgrs.blob.core.windows.net/` in voor uw BLOB-eind punt in een browser en ontvang een antwoord dat er ongeveer als volgt uitziet:
 
   ![Codevoorbeeld](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
@@ -231,7 +238,7 @@ Als u de account sleutels ziet, moet u een probleem in GitHub oplossen zodat we 
 
 Als dit fout bericht wordt weer gegeven wanneer u een aangepaste verbinding probeert toe te voegen, zijn de verbindings gegevens die zijn opgeslagen in de lokale referentie beheerder mogelijk beschadigd. U kunt dit probleem omzeilen door de beschadigde lokale verbindingen te verwijderen en vervolgens opnieuw toe te voegen:
 
-1. Start Storage Explorer. Ga in het menu naar **Help** > **in-/uitschakelen Ontwikkelhulpprogramma's**.
+1. Start Storage Explorer. Ga in het menu naar **Help**  >  **in-/uitschakelen Ontwikkelhulpprogramma's**.
 2. Ga in het geopende venster op het tabblad **toepassing** naar **lokale opslag** (links) > **File://**.
 3. Afhankelijk van het type verbinding waarmee u een probleem ondervindt, zoekt u de sleutel en kopieert u de waarde ervan naar een tekst editor. De waarde is een matrix met uw aangepaste verbindings namen, zoals de volgende:
     * Opslagaccounts
@@ -245,7 +252,7 @@ Als dit fout bericht wordt weer gegeven wanneer u een aangepaste verbinding prob
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Tabellen
         * `StorageExplorer_CustomConnections_Tables_v1`
-4. Nadat u de huidige verbindings namen hebt opgeslagen, stelt u de waarde in `[]`Ontwikkelhulpprogramma's in op.
+4. Nadat u de huidige verbindings namen hebt opgeslagen, stelt u de waarde in Ontwikkelhulpprogramma's in op `[]` .
 
 Als u de niet-beschadigde verbindingen wilt behouden, kunt u de volgende stappen gebruiken om de beschadigde verbindingen te vinden. Als u geen enkele bestaande verbinding verliest, kunt u deze stappen overs Laan en de specifieke instructies voor het verwijderen van uw verbindings gegevens volgen.
 
@@ -259,13 +266,13 @@ Nadat u alle verbindingen hebt door lopen, moet u voor alle verbindings namen di
 
 1. Zoek in het menu **Start** naar **referentie beheer** en open het.
 2. Ga naar **Windows-referenties**.
-3. Onder **algemene referenties**zoekt u naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+3. Onder **algemene referenties**zoekt u naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 1. Open Spotlight (Command + spatie balk) en zoek naar **sleutel hanger toegang**.
-2. Zoek naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+2. Zoek naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 
 # <a name="linux"></a>[Linux](#tab/Linux)
@@ -273,7 +280,7 @@ Nadat u alle verbindingen hebt door lopen, moet u voor alle verbindings namen di
 Het lokale referentie beheer varieert afhankelijk van de Linux-distributie. Als uw Linux-distributie geen ingebouwd GUI-hulp programma biedt voor lokaal referentie beheer, kunt u een hulp programma van derden installeren om uw lokale referenties te beheren. U kunt bijvoorbeeld [seahorse](https://wiki.gnome.org/Apps/Seahorse/)gebruiken, een open-source GUI-hulp programma voor het beheren van lokale referenties voor Linux.
 
 1. Open het hulp programma lokaal referentie beheer en zoek uw opgeslagen referenties.
-2. Zoek naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+2. Zoek naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 ---
 
@@ -290,12 +297,14 @@ Als u verbinding maakt met een service via een SAS-URL en er zich een fout voord
 Als u per ongeluk een ongeldige SAS-URL hebt aangesloten en nu niet kunt ontkoppelen, voert u de volgende stappen uit:
 
 1. Wanneer u Storage Explorer uitvoert, drukt u op F12 om het venster Ontwikkelhulpprogramma's te openen.
-2. Selecteer op het tabblad **toepassing** de optie **lokale opslag** > **File://** in de structuur aan de linkerkant.
-3. Zoek de sleutel die is gekoppeld aan het Service type van de problematische SAS-URI. Als de beschadigde SAS-URI bijvoorbeeld voor een BLOB-container is, zoekt u naar de sleutel `StorageExplorer_AddStorageServiceSAS_v1_blob`met de naam.
+2. Selecteer op het tabblad **toepassing** de optie **lokale opslag**  >  **File://** in de structuur aan de linkerkant.
+3. Zoek de sleutel die is gekoppeld aan het Service type van de problematische SAS-URI. Als de beschadigde SAS-URI bijvoorbeeld voor een BLOB-container is, zoekt u naar de sleutel met de naam `StorageExplorer_AddStorageServiceSAS_v1_blob` .
 4. De waarde van de sleutel moet een JSON-matrix zijn. Zoek het object dat is gekoppeld aan de ongeldige URI en verwijder het.
 5. Druk op CTRL + R om Storage Explorer opnieuw te laden.
 
 ## <a name="linux-dependencies"></a>Linux-afhankelijkheden
+
+### <a name="snap"></a>Module
 
 Storage Explorer 1.10.0 en hoger is beschikbaar als een module van de snap Store. Met de Storage Explorer-uitlijning worden alle afhankelijkheden automatisch geïnstalleerd en wordt deze bijgewerkt wanneer er een nieuwe versie van de magneet beschikbaar is. Het installeren van de Storage Explorer-module is de aanbevolen installatie methode.
 
@@ -305,64 +314,83 @@ Voor Storage Explorer is het gebruik van een wachtwoord beheerder vereist. u moe
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
+### <a name="targz-file"></a>. tar. gz-bestand
+
 U kunt de toepassing ook downloaden als een. tar. gz-bestand, maar u moet afhankelijkheden hand matig installeren.
 
-> [!IMPORTANT]
-> Storage Explorer zoals gegeven in de. tar. gz-down load wordt alleen ondersteund voor Ubuntu-distributies. Andere distributies zijn niet geverifieerd en kunnen alternatieve of extra pakketten vereisen.
+Storage Explorer zoals aangegeven in de. tar. gz-down load wordt alleen ondersteund voor de volgende versies van Ubuntu. Storage Explorer kan werken aan andere Linux-distributies, maar ze worden niet officieel ondersteund.
 
-Deze pakketten zijn de meest voorkomende vereisten voor Storage Explorer op Linux:
+- Ubuntu 20,04 x64
+- Ubuntu 18,04 x64
+- Ubuntu 16,04 x64
 
-* [.NET Core 2,2-runtime](/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
-* `libgconf-2-4`
-* `libgnome-keyring0` of `libgnome-keyring-dev`
-* `libgnome-keyring-common`
+Voor Storage Explorer moet .NET Core zijn geïnstalleerd op uw systeem. U wordt aangeraden .NET Core 2,1, maar Storage Explorer werkt ook met 2,2.
 
 > [!NOTE]
-> Voor Storage Explorer versie 1.7.0 en eerder is .NET Core 2,0 vereist. Als u een nieuwere versie van .NET core hebt geïnstalleerd, moet u een [patch Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Als u Storage Explorer 1.8.0 of hoger gebruikt, kunt u gebruikmaken van tot .NET Core 2,2. Versies van meer dan 2,2 zijn op dit moment niet geverifieerd.
+> Voor Storage Explorer versie 1.7.0 en eerder is .NET Core 2,0 vereist. Als u een nieuwere versie van .NET core hebt geïnstalleerd, moet u een [patch Storage Explorer](#patching-storage-explorer-for-newer-versions-of-net-core). Als u Storage Explorer 1.8.0 of hoger gebruikt, hebt u ten minste .NET Core 2,1 nodig.
 
-# <a name="ubuntu-1904"></a>[Ubuntu 19,04](#tab/1904)
+# <a name="ubuntu-2004"></a>[Ubuntu 20,04](#tab/2004)
 
-1. Down load Storage Explorer.
-2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
-3. Voer de volgende opdracht uit:
+1. Down load het bestand Storage Explorer. tar. gz.
+2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. Down load Storage Explorer.
-2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
-3. Voer de volgende opdracht uit:
+1. Down load het bestand Storage Explorer. tar. gz.
+2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
 
-1. Down load Storage Explorer.
-2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
-3. Voer de volgende opdracht uit:
+1. Down load het bestand Storage Explorer. tar. gz.
+2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):
    ```bash
-   sudo apt install libgnome-keyring-dev
-   ```
-
-# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
-
-1. Down load Storage Explorer.
-2. Installeer de [.net core-runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
-3. Voer de volgende opdracht uit:
-   ```bash
-   sudo apt install libgnome-keyring-dev
+   wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 ---
+
+Veel bibliotheken die nodig zijn voor Storage Explorer, zijn vooraf geïnstalleerd met canonieke standaard installaties van Ubuntu. Er ontbreken mogelijk enkele van deze bibliotheken in aangepaste omgevingen. Als u problemen ondervindt met het starten van Storage Explorer, raden we u aan om ervoor te zorgen dat de volgende pakketten op uw systeem zijn geïnstalleerd:
+
+- iproute2
+- libasound2
+- libatm1
+- libgconf2-4
+- libnspr4
+- libnss3
+- libpulse0
+- libsecret-1-0
+- libx11-xcb1
+- libxss1
+- libxtables11
+- libxtst6
+- xdg-hulppr.
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>Patches Storage Explorer voor nieuwere versies van .NET core
 
 Voor Storage Explorer 1.7.0 of eerder moet u de versie van .NET core die door Storage Explorer wordt gebruikt, wellicht patchen:
 
 1. Down load versie 1.5.43 van StreamJsonRpc van [NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Zoek naar de koppeling ' pakket downloaden ' aan de rechter kant van de pagina.
-2. Nadat u het pakket hebt gedownload, wijzigt u de bestands `.nupkg` extensie `.zip`van in.
+2. Nadat u het pakket hebt gedownload, wijzigt u de bestands extensie van `.nupkg` in `.zip` .
 3. Pak het pakket uit.
 4. Open de map `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
 5. Kopieer `StreamJsonRpc.dll` naar de volgende locaties in de map Storage Explorer:

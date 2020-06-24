@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77619920"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738495"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-stroomlogboeken lezen
 
@@ -114,7 +114,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>De blok-BLOB lezen
 
-Vervolgens moet u de `$blocklist` variabele lezen om de gegevens op te halen. In dit voor beeld laten we de blokkerings lijst door lopen, de bytes van elk blok lezen en ze in een matrix verhaalen. Gebruik de methode [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) om de gegevens op te halen.
+Vervolgens moet u de variabele lezen `$blocklist` om de gegevens op te halen. In dit voor beeld laten we de blokkerings lijst door lopen, de bytes van elk blok lezen en ze in een matrix verhaalen. Gebruik de methode [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) om de gegevens op te halen.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
@@ -158,7 +158,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Nu bevat `$valuearray` de matrix de teken reeks waarde van elk blok. Als u de vermelding wilt verifiëren, moet u de tweede naar de laatste waarde in de `$valuearray[$valuearray.Length-2]`matrix ophalen door uit te voeren. U wilt niet de laatste waarde, omdat het de haak sluiten is.
+Nu `$valuearray` bevat de matrix de teken reeks waarde van elk blok. Als u de vermelding wilt verifiëren, moet u de tweede naar de laatste waarde in de matrix ophalen door uit te voeren `$valuearray[$valuearray.Length-2]` . U wilt niet de laatste waarde, omdat het de haak sluiten is.
 
 De resultaten van deze waarde worden weer gegeven in het volgende voor beeld:
 

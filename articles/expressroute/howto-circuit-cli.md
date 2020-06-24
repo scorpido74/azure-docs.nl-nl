@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u een ExpressRoute-circuit maak
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476148"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738325"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Een ExpressRoute-circuit maken en wijzigen met behulp van CLI
 
@@ -20,10 +20,10 @@ ms.locfileid: "79476148"
 In dit artikel wordt beschreven hoe u een Azure ExpressRoute-circuit maakt met behulp van de opdracht regel interface (CLI). In dit artikel leest u ook hoe u de status controleert, bijwerkt of verwijdert en de inrichting van een circuit ongedaan maakt. Als u een andere methode wilt gebruiken om te werken met ExpressRoute-circuits, kunt u het artikel selecteren in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Zo](expressroute-howto-circuit-arm.md)
+> * [Azure-portal](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager sjabloon](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [Power shell (klassiek)](expressroute-howto-circuit-classic.md)
 >
@@ -57,7 +57,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. de lijst met ondersteunde providers, locaties en band breedten ophalen
 
-Voordat u een ExpressRoute-circuit maakt, hebt u de lijst met ondersteunde connectiviteits providers, locaties en bandbreedte opties nodig. De CLI- `az network express-route list-service-providers` opdracht retourneert deze informatie, die u in latere stappen gaat gebruiken:
+Voordat u een ExpressRoute-circuit maakt, hebt u de lijst met ondersteunde connectiviteits providers, locaties en bandbreedte opties nodig. De CLI `az network express-route list-service-providers` -opdracht retourneert deze informatie, die u in latere stappen gaat gebruiken:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -118,7 +118,7 @@ Het antwoord is vergelijkbaar met het volgende voorbeeld:
 
 Controleer het antwoord om te zien of uw connectiviteits provider wordt vermeld. Noteer de volgende informatie die u nodig hebt om een circuit te maken:
 
-* Naam
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -155,7 +155,7 @@ Het antwoord bevat de service sleutel.
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. alle ExpressRoute-circuits weer geven
 
-Voer de `az network express-route list` opdracht uit om een lijst op te halen met alle ExpressRoute-circuits die u hebt gemaakt. U kunt deze informatie op elk gewenst moment ophalen met behulp van deze opdracht. Als u alle circuits wilt weer geven, maakt u de aanroep zonder para meters.
+Voer de opdracht uit om een lijst op te halen met alle ExpressRoute-circuits die u hebt gemaakt `az network express-route list` . U kunt deze informatie op elk gewenst moment ophalen met behulp van deze opdracht. Als u alle circuits wilt weer geven, maakt u de aanroep zonder para meters.
 
 ```azurecli-interactive
 az network express-route list

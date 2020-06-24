@@ -8,17 +8,17 @@ author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845065"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738750"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose van on-premises connectiviteit via VPN-gateways
 
@@ -59,22 +59,22 @@ Deze problemen zijn moeilijk op te lossen en hoofd oorzaken zijn vaak niet-intu√
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Problemen oplossen met Azure Network Watcher
 
-Maak verbinding met Azure PowerShell en start de `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet om uw verbinding te diagnosticeren. U kunt de details over het gebruik van deze cmdlet vinden bij het [oplossen van problemen Virtual Network gateway en verbindingen-Power shell](network-watcher-troubleshoot-manage-powershell.md). Het kan enkele minuten duren voordat deze cmdlet is voltooid.
+Maak verbinding met Azure PowerShell en start de cmdlet om uw verbinding te diagnosticeren `Start-AzNetworkWatcherResourceTroubleshooting` . U kunt de details over het gebruik van deze cmdlet vinden bij het [oplossen van problemen Virtual Network gateway en verbindingen-Power shell](network-watcher-troubleshoot-manage-powershell.md). Het kan enkele minuten duren voordat deze cmdlet is voltooid.
 
 Zodra de cmdlet is voltooid, kunt u naar de opslag locatie die in de cmdlet is opgegeven, zoeken naar gedetailleerde informatie over het probleem en de logboeken. Azure Network Watcher maakt een zip-map die de volgende logboek bestanden bevat:
 
 ![1][1]
 
-Open het bestand IKEErrors. txt en de volgende fout wordt weer gegeven. Dit geeft aan dat er een probleem is met een onjuiste configuratie van de on-premises IKE-instelling.
+Open het bestand IKEErrors.txt en Hiermee wordt de volgende fout weer gegeven. Dit geeft aan dat er een probleem is met een onjuiste configuratie van de on-premises IKE-instelling.
 
 ```
 Error: On-premises device rejected Quick Mode settings. Check values.
      based on log : Peer sent NO_PROPOSAL_CHOSEN notify
 ```
 
-U kunt gedetailleerde informatie ophalen uit de Scrubbed-wfpdiag. txt over de fout, zoals in dit geval wordt vermeld dat er een probleem `ERROR_IPSEC_IKE_POLICY_MATCH` is waardoor de verbinding niet goed werkt.
+U kunt gedetailleerde informatie verkrijgen van de Scrubbed-wfpdiag.txt over de fout, zoals in dit geval wordt vermeld dat er een probleem is `ERROR_IPSEC_IKE_POLICY_MATCH` waardoor de verbinding niet goed werkt.
 
-Een andere algemene onjuiste configuratie is het opgeven van onjuiste gedeelde sleutels. Als u in het voor gaande voor beeld verschillende gedeelde sleutels hebt opgegeven, wordt in IKEErrors. txt de volgende `Error: Authentication failed. Check shared key`fout weer gegeven:.
+Een andere algemene onjuiste configuratie is het opgeven van onjuiste gedeelde sleutels. Als u in het voor gaande voor beeld verschillende gedeelde sleutels hebt opgegeven, wordt in de IKEErrors.txt de volgende fout weer gegeven: `Error: Authentication failed. Check shared key` .
 
 Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u uw VPN Gateway en verbinding met het gemak van een eenvoudige Power shell-cmdlet opsporen en oplossen. Momenteel ondersteunen we het vaststellen van de volgende voor waarden en werken ze met het toevoegen van meer voor waarden.
 
@@ -82,33 +82,33 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Ja|
-| GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
-| PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
-| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
-| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | Nee |
-| PlatformInActive | Er is een probleem met het platform. | Nee|
-| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
-| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Dit is slechts een waarschuwing.| Nee|
-| ConnectionsNotConnected | Geen van de verbindingen is verbonden. Dit is slechts een waarschuwing.| Ja|
-| GatewayCPUUsageExceeded | Het huidige CPU-gebruik van de gateway is > 95%. | Ja |
+| NoFault | Als er geen fout is gedetecteerd. |Yes|
+| GatewayNotFound | De gateway of gateway is niet gevonden. |No|
+| PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |No|
+| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | No |
+| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | No |
+| PlatformInActive | Er is een probleem met het platform. | No|
+| ServiceNotRunning | De onderliggende service is niet actief. | No|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Dit is slechts een waarschuwing.| No|
+| ConnectionsNotConnected | Geen van de verbindingen is verbonden. Dit is slechts een waarschuwing.| Yes|
+| GatewayCPUUsageExceeded | Het huidige CPU-gebruik van de gateway is > 95%. | Yes |
 
 ### <a name="connection"></a>Verbinding
 
 | Fouttype | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Ja|
-| GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
-| PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
-| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
-| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | Nee |
-| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | Nee |
-| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
-| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
-| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
-| PeerReachability | De peer gateway is niet bereikbaar. | Ja|
-| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
+| NoFault | Als er geen fout is gedetecteerd. |Yes|
+| GatewayNotFound | De gateway of gateway is niet gevonden. |No|
+| PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |No|
+| UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | No |
+| VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | No |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | No |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |No|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Yes |
+| ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Yes|
+| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Yes|
+| PeerReachability | De peer gateway is niet bereikbaar. | Yes|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Yes|
 | WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="next-steps"></a>Volgende stappen

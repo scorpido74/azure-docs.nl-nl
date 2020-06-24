@@ -1,20 +1,19 @@
 ---
 title: De status van uw Azure-IoT Hub controleren | Microsoft Docs
 description: Azure Monitor en Azure Resource Health gebruiken om snel uw IoT Hub te controleren en problemen vast te stellen
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: kgremban
+ms.date: 04/21/2020
+ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732433"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792015"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>De status van Azure IoT Hub bewaken en snel problemen vaststellen
 
@@ -32,8 +31,6 @@ IoT Hub biedt ook een eigen metrische gegevens die u kunt gebruiken om de status
 ## <a name="use-azure-monitor"></a>Azure Monitor gebruiken
 
 Azure Monitor voorziet in diagnostische gegevens voor Azure-resources, wat betekent dat u bewerkingen kunt bewaken die plaatsvinden in uw IoT-hub.
-
-De diagnostische instellingen van Azure Monitor vervangt de IoT Hub Operations monitor. Als u momenteel bewerkingen bewaken gebruikt, moet u uw werk stromen migreren. Zie voor meer informatie [migreren van bewerkingen bewaken naar Diagnostische instellingen](iot-hub-migrate-to-diagnostics-settings.md).
 
 Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md) en [ondersteunde services, schema's en categorieën voor Diagnostische logboeken van Azure voor](../azure-monitor/platform/diagnostic-logs-schema.md)meer informatie over de specifieke metrische gegevens en gebeurtenissen die Azure monitor Watches.
 
@@ -121,11 +118,11 @@ De categorie apparaat-id bewerkingen houdt fouten bij die optreden wanneer u pro
 
 #### <a name="routes"></a>Routes
 
-In de categorie bericht routering worden fouten bijgehouden die optreden tijdens de bericht route-evaluatie en de eindpunt status, zoals wordt waargenomen door IoT Hub. Deze categorie bevat gebeurtenissen zoals:
+In de categorie [bericht routering](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) worden fouten bijgehouden die optreden tijdens de bericht route-evaluatie en de eindpunt status, zoals wordt waargenomen door IOT hub. Deze categorie bevat gebeurtenissen zoals:
 
 * Een regel resulteert in "niet-gedefinieerd",
 * IoT Hub markeert een eind punt als Dead of
-* Eventuele fouten die zijn ontvangen van een eind punt. 
+* Eventuele fouten die zijn ontvangen van een eind punt.
 
 Deze categorie bevat geen specifieke fouten voor de berichten zelf (zoals storingen in het apparaat), die worden gerapporteerd in de categorie telemetrie van het apparaat.
 
@@ -134,19 +131,26 @@ Deze categorie bevat geen specifieke fouten voor de berichten zelf (zoals storin
     "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"westus"
         }
     ]
 }
 ```
 
-#### <a name="device-telemetry"></a>Telemetrie van apparaat
+Hier vindt u meer informatie over Diagnostische logboeken voor route ring:
+
+* [Lijst met fout codes voor Diagnostische logboeken voor route ring](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [Lijst met Diagnostische logboeken voor route ring operationNames](troubleshoot-message-routing.md#diagnostics-operation-names)
+
+#### <a name="device-telemetry"></a>Apparaattelemetrie
 
 De telemetrie-categorie van het apparaat houdt fouten bij die zich op de IoT-hub voordoen en zijn gerelateerd aan de telemetrie-pijp lijn. Deze categorie bevat fouten die optreden bij het verzenden van telemetrie-gebeurtenissen (zoals het beperken) en het ontvangen van telemetrie-gebeurtenissen (zoals niet-geautoriseerde lezer). Deze categorie kan geen fouten ondervangen die worden veroorzaakt door code die op het apparaat wordt uitgevoerd.
 
@@ -315,7 +319,7 @@ In de categorie directe methoden worden aanvraag-antwoord interacties bijgehoude
 
 De categorie gedistribueerde tracering houdt de correlatie-Id's bij voor berichten die de header van de tracering context bevatten. Als u deze logboeken volledig wilt inschakelen, moet de client code worden bijgewerkt door het [end-to-end van IOT-toepassingen te analyseren en te diagnosticeren met IOT hub Distributed tracing (preview)](iot-hub-distributed-tracing.md).
 
-Houd er `correlationId` rekening mee dat u voldoet aan het voor stel van de [W3C-traceer context](https://github.com/w3c/trace-context) , waarbij het een `trace-id` en een `span-id`bevat.
+Houd er rekening mee dat `correlationId` u voldoet aan het voor stel van de [W3C-traceer context](https://github.com/w3c/trace-context) , waarbij het een `trace-id` en een bevat `span-id` .
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C-Logboeken (apparaat-naar-Cloud)
 
@@ -342,7 +346,7 @@ IoT Hub registreert dit logboek wanneer een bericht met geldige traceer eigensch
 }
 ```
 
-Hier `durationMs` wordt niet berekend wanneer de klok van het IOT hub mogelijk niet synchroon is met de klok van het apparaat en daarom kan de duur van de berekening misleidend zijn. U wordt aangeraden logica te schrijven met behulp `properties` van de tijds tempels in de sectie om pieken vast te leggen in latentie van apparaat naar Cloud.
+Hier `durationMs` wordt niet berekend wanneer de klok van het IOT hub mogelijk niet synchroon is met de klok van het apparaat en daarom kan de duur van de berekening misleidend zijn. U wordt aangeraden logica te schrijven met behulp van de tijds tempels in de `properties` sectie om pieken vast te leggen in latentie van apparaat naar Cloud.
 
 | Eigenschap | Type | Beschrijving |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
@@ -543,7 +547,7 @@ Voer de volgende stappen uit om de status van uw IoT-hubs te controleren:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Navigeer naar **service Health** > **resource Health**.
+2. Navigeer naar **service Health**  >  **resource Health**.
 
 3. Selecteer uw abonnement in de vervolg keuzelijsten en selecteer vervolgens **IOT hub** als resource type.
 

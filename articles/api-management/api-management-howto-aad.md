@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868392"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808296"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkelaarsaccounts autoriseren met behulp van Azure Active Directory in Azure API Management
 
@@ -51,7 +51,7 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 10. Open een ander tabblad in uw browser. 
 11. Ga naar de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om een App in Active Directory te registreren.
 12. Selecteer **App-registraties** onder **Beheren**.
-13. Selecteer **nieuwe registratie**. Stel op de pagina **een toepassing registreren** de volgende waarden in:
+13. Selecteer **Nieuwe registratie**. Stel op de pagina **een toepassing registreren** de volgende waarden in:
     
     * Stel **name** in op een duidelijke naam. bijvoorbeeld: *Developer-Portal*
     * Stel **ondersteunde account typen** **in op accounts in deze directory van de organisatie**. 
@@ -72,7 +72,7 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 19. Het venster **ID-provider toevoegen** bevat ook het tekstvak **toegestane tenants** . Hier geeft u de domeinen van de Azure AD-exemplaren op waaraan u toegang wilt verlenen tot de Api's van het API Management service-exemplaar. U kunt meerdere domeinen van elkaar scheiden met nieuwe voor-en spaties of komma's.
 
     > [!NOTE]
-    > U kunt meerdere domeinen opgeven in de sectie **toegestane tenants** . Voordat een gebruiker zich kan aanmelden vanuit een ander domein dan het oorspronkelijke domein waarin de toepassing is geregistreerd, moet een globale beheerder van het andere domein toestemming verlenen voor toegang tot Directory gegevens van de toepassing. De globale beheerder moet het volgende doen om toestemming te verlenen: a. Ga naar `https://<URL of your developer portal>/aadadminconsent` (bijvoorbeeld) https://contoso.portal.azure-api.net/aadadminconsent).
+    > U kunt meerdere domeinen opgeven in de sectie **toegestane tenants** . Voordat een gebruiker zich kan aanmelden vanuit een ander domein dan het oorspronkelijke domein waarin de toepassing is geregistreerd, moet een globale beheerder van het andere domein toestemming verlenen voor toegang tot Directory gegevens van de toepassing. De globale beheerder moet het volgende doen om toestemming te verlenen: a. Ga naar `https://<URL of your developer portal>/aadadminconsent` (bijvoorbeeld) https://contoso.portal.azure-api.net/aadadminconsent) .
     > b. Typ de domein naam van de Azure AD-Tenant waarmee u toegang wilt verlenen.
     > c. Selecteer **Indienen**. 
 
@@ -84,11 +84,11 @@ Nadat de wijzigingen zijn opgeslagen, kunnen gebruikers in de opgegeven Azure AD
 
 Nadat u toegang hebt ingeschakeld voor gebruikers in een Azure AD-Tenant, kunt u Azure AD-groepen toevoegen aan API Management. Hierdoor kunt u de product zichtbaarheid beheren met Azure AD-groepen.
 
-Als u een externe Azure AD-groep wilt toevoegen aan APIM, moet u eerst de vorige sectie volt ooien. Daarnaast moet de toepassing die u hebt geregistreerd, toegang krijgen tot de Microsoft Graph- `Directory.Read.All` API met toestemming door de volgende stappen te volgen: 
+Als u een externe Azure AD-groep wilt toevoegen aan APIM, moet u eerst de vorige sectie volt ooien. Daarnaast moet de toepassing die u hebt geregistreerd, toegang krijgen tot de Microsoft Graph-API met `Directory.Read.All` toestemming door de volgende stappen te volgen: 
 
 1. Ga terug naar de registratie van uw app die in de vorige sectie is gemaakt.
 2. Selecteer **API-machtigingen**en klik vervolgens op **+ een machtiging toevoegen**. 
-3. Selecteer in het deel venster **API-machtigingen voor aanvragen** het tabblad **micro soft api's** en selecteer vervolgens de tegel **Microsoft Graph** . Selecteer **toepassings machtigingen**, zoek naar de **map**en selecteer de **map. lezen. alle** machtiging. 
+3. Selecteer in het deel venster **API-machtigingen voor aanvragen** het tabblad **micro soft api's** , Schuif omlaag en selecteer vervolgens de tegel **Azure Active Directory grafiek** . Selecteer **toepassings machtigingen**, zoek naar de **map**en selecteer de **map. lezen. alle** machtiging. 
 4. Klik onder aan het deel venster op **machtigingen toevoegen** en klik vervolgens op **toestemming beheerder geven voor {tenantnaam}** zodat u toegang verleent aan alle gebruikers in deze map. 
 
 U kunt nu externe Azure AD-groepen toevoegen via het tabblad **groepen** van uw API Management-exemplaar.
@@ -103,7 +103,7 @@ Nadat u een externe Azure AD-groep hebt toegevoegd, kunt u de eigenschappen erva
  
 Gebruikers van het geconfigureerde Azure AD-exemplaar kunnen zich nu aanmelden bij de ontwikkelaars Portal. Ze kunnen weer geven en zich abonneren op groepen waarvoor ze zicht baarheid hebben.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/>Ontwikkelaars Portal-Azure AD-account verificatie toevoegen
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>Ontwikkelaars Portal-Azure AD-account verificatie toevoegen
 
 In de ontwikkelaars Portal kunt u zich aanmelden met AAD met de **aanmeldings knop: OAuth-** widget. De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
 
