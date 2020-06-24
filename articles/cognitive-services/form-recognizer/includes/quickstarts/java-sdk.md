@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 2cc8908b1ecd3225b5226b933eb570cffc180e67
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 6ff56ca61304bdacb3512156babd637afd337c7e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85112082"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242188"
 ---
-[Referentie documentatie](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)  |  [Bron code](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  van bibliotheek [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Referentie documentatie](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)  |  [Bron code](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  van bibliotheek [Pakket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -130,7 +130,7 @@ U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens test
 * Gebruik de bovenstaande methode om ook de URL van een kwitantie-installatie kopie op te halen.
 
 > [!NOTE]
-> De code fragmenten in deze hand leiding gebruiken externe formulieren die worden gebruikt voor Url's. Als u in plaats daarvan lokale formulier documenten wilt verwerken, raadpleegt u de bijbehorende methoden in de [referentie documentatie](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview).
+> De code fragmenten in deze hand leiding gebruiken externe formulieren die worden gebruikt voor Url's. Als u in plaats daarvan lokale formulier documenten wilt verwerken, raadpleegt u de bijbehorende methoden in de [referentie documentatie](https://docs.microsoft.com/java/api/overview/azure/formrecognizer).
 
 ```java
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117264"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212442"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Het voorbeeldhulpprogramma voor labelen implementeren
 
@@ -89,13 +89,13 @@ Volg deze stappen om een nieuwe resource te maken met behulp van de Azure Portal
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als alternatief voor het gebruik van de Azure Portal kunt u een resource maken met behulp van de Azure CLI. Voordat u doorgaat, moet u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)installeren. U kunt deze stap overs Laan als u al werkt met de Azure CLI. 
+Als alternatief voor het gebruik van de Azure Portal kunt u een resource maken met behulp van de Azure CLI. Voordat u doorgaat, moet u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren. U kunt deze stap overs Laan als u al werkt met de Azure CLI. 
 
 Er zijn enkele dingen die u moet weten over deze opdracht:
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM`Hiermee wordt een wille keurige DNS-naam gegenereerd. 
-* In dit voor beeld wordt ervan uitgegaan dat u een resource groep hebt die u kunt gebruiken om een resource te maken. Vervang `<resource_group_name>` door een geldige resource groep die is gekoppeld aan uw abonnement. 
-* U moet opgeven waar u de resource wilt maken. Vervang `<region name>` door de gewenste regio voor de web-app. 
+* In dit voor beeld wordt ervan uitgegaan dat u een resource groep hebt die u kunt gebruiken om een resource te maken. Vervang door `<resource_group_name>` een geldige resource groep die is gekoppeld aan uw abonnement. 
+* U moet opgeven waar u de resource wilt maken. Vervang door de `<region name>` gewenste regio voor de web-app. 
 * Met deze opdracht wordt de gebruiksrecht overeenkomst automatisch geaccepteerd.
 
 Voer in de Azure CLI deze opdracht uit om een web-app-resource te maken voor het hulp programma voor het labelen van het voor beeld. 

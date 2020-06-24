@@ -7,20 +7,18 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/18/2020
+ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343772"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079372"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Beschikbaarheidsgroepen voor SQL Server configureren op virtuele RHEL-machines in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> Deze zelfstudie bevindt zich in **openbare preview**. 
->
 > In deze zelfstudie gebruiken we SQL Server 2017 met RHEL 7.6, maar u kunt ook SQL Server 2019 in RHEL 7 of RHEL 8 gebruiken om hoge beschikbaarheid te configureren. De opdrachten voor het configureren van resources van beschikbaarheidsgroep zijn gewijzigd in RHEL 8. In het artikel [Resource voor beschikbaarheidsgroep maken](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) en RHEL 8-resources vindt u meer informatie over de juiste opdrachten.
 
 In deze zelfstudie leert u het volgende:

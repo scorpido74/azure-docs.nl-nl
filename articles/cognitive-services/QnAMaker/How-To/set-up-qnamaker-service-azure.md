@@ -3,12 +3,12 @@ title: Een QnA Maker-service instellen-QnA Maker
 description: Voordat u QnA Maker Knowledge bases kunt maken, moet u eerst een QnA Maker service in azure instellen. Iedereen met een machtiging voor het maken van nieuwe resources in een abonnement kan een QnA Maker-service instellen.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235525"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214125"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 
@@ -60,9 +60,9 @@ Met deze procedure maakt u de Azure-resources die nodig zijn voor het beheren va
     De resource met het _Cognitive Services_ type heeft uw _abonnements_ sleutels.
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Abonnements sleutels zoeken in de Azure Portal
+## <a name="find-authoring-keys-in-the-azure-portal"></a>Zoek sleutels zoeken in de Azure Portal
 
-U kunt uw abonnements sleutels weer geven en opnieuw instellen in de Azure Portal, waar u de QnA Maker resource hebt gemaakt.
+U kunt uw ontwerp sleutels bekijken en opnieuw instellen in de Azure Portal, waar u de QnA Maker resource hebt gemaakt. Deze sleutels kunnen worden aangeduid als abonnements sleutels. 
 
 1. Ga naar de QnA Maker resource in de Azure Portal en selecteer de resource met het _Cognitive Services_ type:
 
@@ -72,7 +72,7 @@ U kunt uw abonnements sleutels weer geven en opnieuw instellen in de Azure Porta
 
     ![Abonnementssleutel](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Eindpunt sleutels zoeken in de QnA Maker Portal
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>Zoek eindpunt sleutels zoeken in de QnA Maker Portal
 
 Het eind punt bevindt zich in dezelfde regio als de resource omdat de eindpunt sleutels worden gebruikt voor het aanroepen van de Knowledge Base.
 
