@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225244"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808375"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Load Balancer metrische gegevens over het gebruik van de REST API ophalen
 
@@ -48,8 +48,8 @@ De volgende headers zijn vereist:
 | resourceGroupName | De naam van de resource groep die de resource bevat. U kunt deze waarde verkrijgen via de Azure Resource Manager-API, CLI of de portal. |
 | loadBalancerName | De naam van de Azure Load Balancer. |
 | metrische namen | Een door komma's gescheiden lijst met geldige [Load Balancer metrische gegevens](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-versie | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document wordt de API `2018-01-01`-versie beschreven die is opgenomen in de bovenstaande URL.  |
-| tijdsbestek | De time span van de query. Het is een teken reeks met de volgende `startDateTime_ISO/endDateTime_ISO`indeling. Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
+| api-versie | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document wordt de API-versie beschreven `2018-01-01` die is opgenomen in de bovenstaande URL.  |
+| tijdsbestek | De time span van de query. Het is een teken reeks met de volgende indeling `startDateTime_ISO/endDateTime_ISO` . Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Aanvraagbody

@@ -133,7 +133,7 @@ Als u Azure CDN verificatie van beveiligings tokens wilt gebruiken, moet u een *
 
 Omdat SAS-para meters niet zichtbaar zijn voor Azure CDN, kan Azure CDN het bezorgings gedrag niet wijzigen op basis hiervan. De gedefinieerde parameter beperkingen gelden alleen voor aanvragen die Azure CDN van de oorspronkelijke server, en niet van aanvragen van de client naar Azure CDN. Het is belang rijk dat u rekening houdt met het instellen van SAS-para meters. Als deze geavanceerde mogelijkheden vereist zijn en u [optie 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)gebruikt, stelt u de juiste beperkingen in voor het beveiligings token van Azure CDN.
 
-| SAS-parameter naam | Beschrijving |
+| SAS-parameter naam | Description |
 | --- | --- |
 | Starten | Het tijdstip waarop Azure CDN toegang tot het blobbestand kan krijgen. Als gevolg van Clock scheefheid (wanneer een klok signaal op verschillende tijdstippen voor verschillende onderdelen arriveert), kiest u een tijd van 15 minuten eerder als u wilt dat de Asset direct beschikbaar is. |
 | Beëindigen | De tijd waarna Azure CDN geen toegang meer heeft tot het blobbestand. Eerder in de cache opgeslagen bestanden op Azure CDN zijn nog steeds toegankelijk. Als u de verval tijd van het bestand wilt beheren, stelt u de juiste verloop tijd in op het Azure CDN beveiligings token of verwijdert u de Asset. |

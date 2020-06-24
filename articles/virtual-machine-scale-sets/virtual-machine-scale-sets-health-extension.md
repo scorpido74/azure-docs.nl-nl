@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124105"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783041"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>De toepassingsstatusextensie gebruiken met virtuele-machineschaalsets
 Het controleren van de status van uw toepassing is een belang rijk signaal voor het beheren en upgraden van uw implementatie. Virtuele-machine schaal sets van Azure bieden ondersteuning voor [rolling upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , waaronder [automatische upgrades van besturings systemen](virtual-machine-scale-sets-automatic-upgrade.md), die afhankelijk zijn van de status controle van de afzonderlijke instanties om uw implementatie bij te werken. U kunt ook de status extensie gebruiken om de toepassings status van elk exemplaar in uw schaalset te bewaken en de reparatie van instanties uit te voeren met [automatische herstel bewerkingen](virtual-machine-scale-sets-automatic-instance-repairs.md).
@@ -57,18 +57,18 @@ De volgende JSON toont het schema voor de uitbrei ding van de toepassings status
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype
+| Name | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | datum |
+| apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | tekenreeks |
 | type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | tekenreeks |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Instellingen
 
-| Naam | Waarde/voor beeld | Gegevenstype
+| Name | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ----
-| Protocolsubstatus | `http`of `https` of`tcp` | tekenreeks |
+| protocol | `http`of `https` of`tcp` | tekenreeks |
 | poort | Optioneel wanneer protocol is `http` of `https` , verplicht wanneer protocol wordt`tcp` | int |
 | requestPath | Verplicht wanneer het protocol is `http` of `https` niet is toegestaan wanneer het protocol is`tcp` | tekenreeks |
 
@@ -154,7 +154,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-De inhoud van het JSON-bestand van de extensie.
+De extension.jsvoor bestands inhoud.
 
 ```json
 {
@@ -173,7 +173,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 In de logboeken wordt ook regel matig de status van de toepassings status vastgelegd.

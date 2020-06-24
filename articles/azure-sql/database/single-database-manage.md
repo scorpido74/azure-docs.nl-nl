@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f348ea67583d10dae2ebc548a48b7e74b66a958
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 43e28774625db0217dde1227bad160ba87750c8c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343345"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254987"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Servers en individuele data bases maken en beheren in Azure SQL Database
 
@@ -43,7 +43,7 @@ Als u één Azure SQL Database wilt maken met behulp van de [Azure Portal](https
 
 ## <a name="manage-an-existing-server"></a>Een bestaande server beheren
 
-Als u een bestaande server wilt beheren, gaat u naar de-server met behulp van een aantal methoden, bijvoorbeeld vanaf een specifieke SQL database pagina, de pagina **SQL servers** of de pagina **alle resources** .
+Als u een bestaande server wilt beheren, gaat u naar de-server met behulp van een aantal methoden, bijvoorbeeld vanaf een specifieke database pagina, de pagina **SQL-servers** of de pagina **alle resources** .
 
 Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bases** en selecteert u de data base die u wilt beheren. In de volgende scherm afbeelding ziet u hoe u een firewall op server niveau instelt voor een Data Base op de pagina **overzicht** voor een Data Base.
 
@@ -106,7 +106,7 @@ Gebruik de volgende [Azure cli](/cli/azure/sql/db) -opdrachten om de servers, da
 |[AZ SQL Server show](/cli/azure/sql/server#az-sql-server-show)|Hiermee wordt een server opgehaald|
 |[AZ SQL Server Update](/cli/azure/sql/server#az-sql-server-update)|Hiermee wordt een server bijgewerkt|
 |[AZ SQL Server Delete](/cli/azure/sql/server#az-sql-server-delete)|Hiermee wordt een server verwijderd|
-|[AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Hiermee maakt u een server firewall regel|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Hiermee maakt u een server firewall regel|
 |[AZ SQL Server firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Een lijst met firewall regels op een server|
 |[AZ SQL Server firewall-Rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Toont de details van een firewall regel|
 |[AZ SQL Server firewall-Rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Hiermee wordt een firewall regel bijgewerkt|

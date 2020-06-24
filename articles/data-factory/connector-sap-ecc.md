@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 4bdcb2b4008f54ff0d84594e6f3b5a7b76944e65
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81413802"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987012"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Gegevens van SAP ECC kopiëren met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -74,11 +74,11 @@ De volgende eigenschappen worden ondersteund voor de SAP ECC-gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `type` | De `type` eigenschap moet worden ingesteld op `SapEcc`. | Ja |
-| `url` | De URL van de SAP ECC OData-service. | Ja |
-| `username` | De gebruikers naam die wordt gebruikt om verbinding te maken met SAP ECC. | Nee |
-| `password` | Het Lees bare wacht woord dat wordt gebruikt om verbinding te maken met SAP ECC. | Nee |
-| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u geen runtime opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee |
+| `type` | De `type` eigenschap moet worden ingesteld op `SapEcc` . | Yes |
+| `url` | De URL van de SAP ECC OData-service. | Yes |
+| `username` | De gebruikers naam die wordt gebruikt om verbinding te maken met SAP ECC. | No |
+| `password` | Het Lees bare wacht woord dat wordt gebruikt om verbinding te maken met SAP ECC. | No |
+| `connectVia` | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u geen runtime opgeeft, wordt de standaard Azure Integration runtime gebruikt. | No |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -107,13 +107,13 @@ De volgende eigenschappen worden ondersteund voor de SAP ECC-gekoppelde service:
 
 Zie [gegevens sets](concepts-datasets-linked-services.md)voor een volledige lijst met de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. De volgende sectie bevat een lijst met de eigenschappen die worden ondersteund door de SAP ECC-gegevensset.
 
-Als u gegevens wilt kopiëren uit SAP ECC, `type` stelt u de eigenschap van `SapEccResource`de gegevensset in op.
+Als u gegevens wilt kopiëren uit SAP ECC, stelt `type` u de eigenschap van de gegevensset in op `SapEccResource` .
 
 De volgende eigenschappen worden ondersteund:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `path` | Pad van de SAP ECC OData-entiteit. | Ja |
+| `path` | Pad van de SAP ECC OData-entiteit. | Yes |
 
 ### <a name="example"></a>Voorbeeld
 
@@ -140,14 +140,15 @@ Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met 
 
 ### <a name="sap-ecc-as-a-source"></a>SAP ECC als een bron
 
-Als u gegevens wilt kopiëren uit SAP ECC, `type` stelt u de `source` eigenschap in het gedeelte van de `SapEccSource`Kopieer activiteit in op.
+Als u gegevens wilt kopiëren uit SAP ECC, stelt u de `type` eigenschap in het `source` gedeelte van de Kopieer activiteit in op `SapEccSource` .
 
-De volgende eigenschappen worden ondersteund in de `source` sectie Kopieer activiteit:
+De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit `source` :
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| `type` | De `type` eigenschap van de `source` sectie van de Kopieer activiteit moet worden ingesteld `SapEccSource`op. | Ja |
-| `query` | De OData-query opties voor het filteren van de gegevens. Bijvoorbeeld:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>De SAP ECC-connector kopieert gegevens van de gecombineerde URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | Nee |
+| `type` | De `type` eigenschap van de sectie van de Kopieer activiteit `source` moet worden ingesteld op `SapEccSource` . | Yes |
+| `query` | De OData-query opties voor het filteren van de gegevens. Bijvoorbeeld:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>De SAP ECC-connector kopieert gegevens van de gecombineerde URL:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Zie [ODATA URL Components](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)(Engelstalig) voor meer informatie. | No |
+| `httpRequestTimeout` | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. Als niet wordt opgegeven, is de standaard waarde **00:30:00** (30 minuten). | No |
 
 ### <a name="example"></a>Voorbeeld
 

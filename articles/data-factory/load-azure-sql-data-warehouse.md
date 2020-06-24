@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8891c65707822abeb2bcca52280d9b56dc725e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660286"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251986"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Gegevens laden in azure Synapse Analytics met behulp van Azure Data Factory
 
@@ -42,7 +42,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Azure Synapse Analytics: het Data Warehouse bevat de gegevens die worden gekopieerd van de SQL database. Als u geen Azure Synapse Analytics hebt, raadpleegt u de instructies in [Create a Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
-* Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../azure-sql/database/single-database-create-quickstart.md)te volgen.
+* Azure SQL Database: in deze zelf studie worden gegevens uit de gegevensset Adventure Works LT voor beeld gekopieerd in Azure SQL Database. U kunt deze voorbeeld database in SQL Database maken door de instructies in [een voorbeeld database maken in Azure SQL database](../azure-sql/database/single-database-create-quickstart.md)te volgen.
 * Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure Storage-account hebt, raadpleegt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken

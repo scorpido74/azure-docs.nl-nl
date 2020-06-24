@@ -6,14 +6,14 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 668406bb90e1f1e064adf01d7dbab42923fe30aa
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657137"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789273"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java-lente toepassing voorbereiden voor implementatie in azure lente Cloud
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Een Java Spring-toepassing voorbereiden voor implementatie in Azure Spring Cloud
 
 In dit onderwerp wordt beschreven hoe u een bestaande Java-toepassing voorbereidt voor implementatie naar Azure lente-Cloud. Als het goed is geconfigureerd, biedt Azure lente Cloud krachtige services voor het bewaken, schalen en bijwerken van uw Java-lente-Cloud toepassing.
 
@@ -38,7 +38,7 @@ De Azure lente-Cloud ondersteunt alleen veer boot-apps van veer boot versie 2,1 
 Spring boot-versie | Lente-Cloud versie
 ---|---
 2.1 | Greenwich. RELEASE
-2,2 | Hoxton. RELEASE
+2.2 | Hoxton. RELEASE
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Afhankelijkheden voor Spring boot versie 2,1
 
@@ -101,9 +101,9 @@ De volgende tabel geeft een lijst van de juiste Azure lente-Cloud versies voor u
 Spring boot-versie | Lente-Cloud versie | Azure lente-Cloud versie
 ---|---|---
 2.1 | Greenwich. RELEASE | 2.1
-2,2 | Hoxton. RELEASE | 2,2
+2.2 | Hoxton. RELEASE | 2.2
 
-Neem een van de volgende afhankelijkheden op in het bestand pom. XML. Selecteer de afhankelijkheid waarvan de Azure lente-Cloud versie overeenkomt met uw eigen.
+Neem een van de volgende afhankelijkheden op in uw pom.xml-bestand. Selecteer de afhankelijkheid waarvan de Azure lente-Cloud versie overeenkomt met uw eigen.
 
 ### <a name="dependency-for-azure-spring-cloud-version-21"></a>Afhankelijkheid voor Azure lente Cloud versie 2,1
 
@@ -135,7 +135,7 @@ Als u de ingebouwde functies van Azure veer cloud van service register wilt insc
 
 ### <a name="service-registry"></a>Service register
 
-Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u de `spring-cloud-starter-netflix-eureka-client` afhankelijkheid op in het bestand pom. XML, zoals hier wordt weer gegeven:
+Als u de beheerde Azure Service Registry-service wilt gebruiken, neemt u de `spring-cloud-starter-netflix-eureka-client` afhankelijkheid op in het pom.xml-bestand, zoals hier wordt weer gegeven:
 
 ```xml
     <dependency>
@@ -174,7 +174,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-configuration"></a>Gedistribueerde configuratie
 
-Als u gedistribueerde configuratie wilt inschakelen, neemt u de volgende `spring-cloud-config-client` afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
+Als u gedistribueerde configuratie wilt inschakelen, neemt u de volgende `spring-cloud-config-client` afhankelijkheden op in het gedeelte met afhankelijkheden van uw pom.xml bestand:
 
 ```xml
 <dependency>
@@ -188,7 +188,7 @@ Als u gedistribueerde configuratie wilt inschakelen, neemt u de volgende `spring
 
 ### <a name="metrics"></a>Metrische gegevens
 
-Neem de `spring-boot-starter-actuator` afhankelijkheid op in de sectie afhankelijkheden van het bestand pom. XML, zoals hier wordt weer gegeven:
+Neem de `spring-boot-starter-actuator` afhankelijkheid op in de sectie afhankelijkheden van uw pom.xml-bestand, zoals hier wordt weer gegeven:
 
 ```xml
 <dependency>
@@ -199,9 +199,12 @@ Neem de `spring-boot-starter-actuator` afhankelijkheid op in de sectie afhankeli
 
  Metrische gegevens worden periodiek opgehaald uit de JMX-eind punten. U kunt de metrische gegevens visualiseren met behulp van de Azure Portal.
 
+ > [!WARNING]
+ > Geef `spring.jmx.enabled=true` de configuratie-eigenschap op. Als dat niet het geval is, kunnen er geen metrische gegevens worden gevisualiseerd in Azure Portal.
+
 ### <a name="distributed-tracing"></a>Gedistribueerde tracering
 
-Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` afhankelijkheden op in het gedeelte afhankelijkheden van het bestand pom. XML:
+Neem de volgende `spring-cloud-starter-sleuth` en `spring-cloud-starter-zipkin` afhankelijkheden op in het gedeelte met afhankelijkheden van uw pom.xml-bestand:
 
 ```xml
 <dependency>
@@ -230,4 +233,4 @@ In dit onderwerp hebt u geleerd hoe u uw Java lente-toepassing kunt configureren
 > [!div class="nextstepaction"]
 > [Meer informatie over het instellen van een configuratie Server-exemplaar](spring-cloud-tutorial-config-server.md)
 
-Meer voor beelden zijn beschikbaar op GitHub: [Azure lente-Cloud voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+Meer voorbeelden zijn beschikbaar in GitHub: [Azure Spring Cloud-voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

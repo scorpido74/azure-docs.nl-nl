@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74278108"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884911"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN gebruiken met CORS
 ## <a name="what-is-cors"></a>Wat is CORS?
@@ -30,7 +30,7 @@ Er zijn twee typen CORS-aanvragen, *eenvoudige aanvragen* en *complexe aanvragen
 
 ### <a name="for-simple-requests"></a>Voor eenvoudige aanvragen:
 
-1. De browser verzendt de CORS-aanvraag met een extra header van de HTTP-aanvraag van de **bron** . De waarde van deze header is de oorsprong die de bovenliggende pagina heeft geleverd. deze is gedefinieerd als de combi natie van *protocol,* *domein* en *poort.*  Wanneer een pagina van HTTPS\://www.contoso.com probeert toegang te krijgen tot de gegevens van een gebruiker in de fabrikam.com-oorsprong, wordt de volgende aanvraag header verzonden naar fabrikam.com:
+1. De browser verzendt de CORS-aanvraag met een extra header van de HTTP-aanvraag van de **bron** . De waarde van deze header is de oorsprong die de bovenliggende pagina heeft geleverd. deze is gedefinieerd als de combi natie van *protocol,* *domein* en *poort.*  Wanneer een pagina van HTTPS \: //www.contoso.com probeert toegang te krijgen tot de gegevens van een gebruiker in de fabrikam.com-oorsprong, wordt de volgende aanvraag header verzonden naar fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
@@ -48,7 +48,7 @@ Er zijn twee typen CORS-aanvragen, *eenvoudige aanvragen* en *complexe aanvragen
 
 ### <a name="for-complex-requests"></a>Voor complexe aanvragen:
 
-Een complexe aanvraag is een CORS-aanvraag waarbij de browser een *Preflight-aanvraag* (dat wil zeggen een oriënterende test) moet verzenden voordat de daad werkelijke CORS-aanvraag wordt verzonden. De Preflight-aanvraag vraagt de server machtiging aan als de oorspronkelijke CORS-aanvraag kan door `OPTIONS` gaan en een aanvraag voor dezelfde URL is.
+Een complexe aanvraag is een CORS-aanvraag waarbij de browser een *Preflight-aanvraag* (dat wil zeggen een oriënterende test) moet verzenden voordat de daad werkelijke CORS-aanvraag wordt verzonden. De Preflight-aanvraag vraagt de server machtiging aan als de oorspronkelijke CORS-aanvraag kan door gaan en een `OPTIONS` aanvraag voor dezelfde URL is.
 
 > [!TIP]
 > Voor meer informatie over CORS-stromen en veelvoorkomende Valk uilen, raadpleegt [u de hand leiding voor cors voor rest api's](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).

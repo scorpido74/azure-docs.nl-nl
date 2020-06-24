@@ -3,16 +3,16 @@ title: Implementatie volgorde voor resources instellen
 description: Hierin wordt beschreven hoe u een resource instelt als afhankelijk van een andere resource tijdens de implementatie om ervoor te zorgen dat de resources in de juiste volg orde worden geïmplementeerd.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535465"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255208"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definieer de volg orde voor het implementeren van resources in ARM-sjablonen
 
-Wanneer u een resource implementeert, moet u er mogelijk voor zorgen dat er andere resources bestaan voordat deze wordt geïmplementeerd. U hebt bijvoorbeeld een SQL-Server nodig voordat u een SQL database implementeert. U definieert deze relatie door één resource als afhankelijk van de andere bron te markeren. U definieert een afhankelijkheid met het **dependsOn** -element of met behulp van de functie **Reference** .
+Wanneer u een resource implementeert, moet u er mogelijk voor zorgen dat er andere resources bestaan voordat deze wordt geïmplementeerd. U hebt bijvoorbeeld een logische SQL-Server nodig voordat u een Data Base implementeert. U definieert deze relatie door één resource als afhankelijk van de andere bron te markeren. U definieert een afhankelijkheid met het **dependsOn** -element of met behulp van de functie **Reference** .
 
 Resource Manager evalueert de afhankelijkheden tussen resources en implementeert ze in de volgorde van afhankelijkheid. Als resources niet van elkaar afhankelijk zijn, worden deze door Resource Manager parallel geïmplementeerd. U hoeft alleen afhankelijkheden te definiëren voor resources die in dezelfde sjabloon zijn geïmplementeerd.
 
@@ -59,7 +59,7 @@ Met de eigenschap resources kunt u onderliggende resources opgeven die zijn gere
 
 Elke bovenliggende resource accepteert alleen bepaalde resource typen als onderliggende resources. De geaccepteerde resource typen worden opgegeven in het [sjabloon schema](https://github.com/Azure/azure-resource-manager-schemas) van de bovenliggende resource. De naam van het onderliggende bron type bevat de naam van het bovenliggende bron type, zoals **micro soft. web/sites/config** en **micro soft. web/sites/extensies** , zijn zowel onderliggende resources van **micro soft. web/sites**.
 
-In het volgende voor beeld ziet u een SQL-Server en SQL database. U ziet dat er een expliciete afhankelijkheid is gedefinieerd tussen de SQL database en SQL Server, zelfs als de Data Base een onderliggend element van de server is.
+In het volgende voor beeld ziet u een logische SQL-Server en-data base. U ziet dat er een expliciete afhankelijkheid is gedefinieerd tussen de data base en de server, zelfs als de Data Base een onderliggend item van de server is.
 
 ```json
 "resources": [

@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -8,28 +8,30 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67176511"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905864"
 ---
-U hebt toegang tot de console logboeken die in de container zijn gegenereerd. Schakel eerst container logboek registratie in door de volgende opdracht uit te voeren in de Cloud Shell:
+Om toegang te krijgen tot de console logboeken die zijn gegenereerd in de toepassings code in App Service, schakelt u de diagnostische logboek registratie in door de volgende opdracht uit te voeren in de [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --resource-group <resource-group-name> --name <app-name> --application-logging true --level Verbose
 ```
 
-Zodra logboekregistratie is ingeschakeld, voert u de volgende opdracht uit om de logboekstream te zien:
+Mogelijke waarden voor `--level` zijn: `Error` ,, en `Warning` `Info` `Verbose` . Elk volgende niveau omvat het vorige niveau. Bijvoorbeeld: `Error` bevat alleen fout berichten en `Verbose` bevat alle berichten.
+
+Wanneer diagnostische logboek registratie is ingeschakeld, voert u de volgende opdracht uit om de logboek stroom te bekijken:
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --resource-group <resource-group-name> --name <app-name>
 ```
 
 Als u de consolelogboeken niet meteen ziet, probeert u het opnieuw na 30 seconden.
 
 > [!NOTE]
-> U kunt de logboek bestanden ook vanuit de browser controleren op `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+> U kunt ook de logboekbestanden van de browser inspecteren op `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
 
-Als u het streamen van Logboeken op `Ctrl` + `C`elk gewenst moment wilt stoppen, typt u.
+U kunt op elk gewenst moment `Ctrl`+`C` typen om te stoppen met logboekstreaming.

@@ -3,17 +3,17 @@ title: Azure Blob Storage-gebeurtenissen verzenden naar een webeindpunt - Azure 
 description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van Blob Storage. De gebeurtenissen naar een webhook verzenden. De gebeurtenissen in een webtoepassing verwerken.
 author: normesta
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6cf929af951a6bbd498d13cd514b8cae8e353f6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745526"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809144"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Snelstartgids: opslag gebeurtenissen naar een webeindpunt door sturen met Azure CLI
 
@@ -29,7 +29,7 @@ Als u de stappen in dit artikel hebt voltooid, ziet u dat de gebeurtenisgegevens
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de nieuwste versie van Azure CLI (2.0.70 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Als u Cloud Shell niet gebruikt, moet u zich eerst aanmelden met `az login`.
 

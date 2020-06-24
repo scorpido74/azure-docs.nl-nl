@@ -5,20 +5,20 @@ description: Meer informatie over het maken van een aangepaste test voor Applica
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74074611"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808221"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Een aangepaste test maken voor Application Gateway met behulp van de portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure-portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -44,16 +44,16 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
 
 4. Vul op de pagina **status test toevoegen** de vereiste informatie voor de test in en klik op **OK**als u klaar bent.
 
-   |**Instelling** | **Waarde** | **Nadere**|
+   |**Instelling** | **Waarde** | **Details**|
    |---|---|---|
    |**Naam**|customProbe|Deze waarde is een beschrijvende naam die wordt gegeven aan de test die toegankelijk is in de portal.|
-   |**Protocolsubstatus**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
+   |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
    |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar (Protocol)://(hostnaam):(poort van httpsetting)/urlPath.  Dit is van toepassing wanneer meerdere locaties op Application Gateway zijn geconfigureerd. Als de Application Gateway is geconfigureerd voor één site, voert u 127.0.0.1 in.|
    |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de back-end-bron in de back-end-groep die is gekoppeld aan de http-instelling waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http:\//contoso.com alleen '/' |
+   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http: \/ /contoso.com alleen '/' |
    |**Interval (sec.)**|30|Hoe vaak de test wordt uitgevoerd om de status te controleren. Het wordt afgeraden om de lagere dan 30 seconden in te stellen.|
    |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is. Houd er rekening mee dat de time-outwaarde niet groter mag zijn dan de interval waarde die is gebruikt in deze test instelling of de waarde van de time-out van de aanvraag in de HTTP-instelling die wordt gekoppeld aan deze test.|
-|**Drempel waarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+|**Drempelwaarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
    |**Vergelijkings voorwaarden voor testen gebruiken**|Ja of nee|Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. U kunt het acceptabele bereik van back-end-respons code of back-end-antwoord tekst wijzigen. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
    |**HTTP-instellingen**|selectie uit vervolg keuzelijst|De test wordt gekoppeld aan de HTTP-instelling (en) die u hier selecteert, waardoor de status van de back-end-groep die is gekoppeld aan de geselecteerde HTTP-instelling wordt gecontroleerd. Het gebruikt de poort voor de test aanvraag, zoals die wordt gebruikt in de geselecteerde HTTP-instelling. U kunt alleen die HTTP-instellingen kiezen die niet zijn gekoppeld aan een andere aangepaste test. <br>Houd er rekening mee dat alleen deze HTTP-instellingen beschikbaar zijn voor koppelingen die hetzelfde protocol hebben als het protocol dat is gekozen in deze test configuratie en dezelfde status hebben als de *naam van de gekozen host van de back-end-HTTP-instelling* .|
    
@@ -93,16 +93,16 @@ Tests worden in een proces in twee stappen geconfigureerd via de portal. De eers
 
 4. Vul op de Blade **status test toevoegen** de vereiste informatie voor de test in en klik op **OK**als u klaar bent.
 
-   |**Instelling** | **Waarde** | **Nadere**|
+   |**Instelling** | **Waarde** | **Details**|
    |---|---|---|
    |**Naam**|customProbe|Deze waarde is een beschrijvende naam die wordt gegeven aan de test die toegankelijk is in de portal.|
-   |**Protocolsubstatus**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
+   |**Protocol**|HTTP of HTTPS | Het protocol dat wordt gebruikt door de status test. |
    |**Host**|dat wil zeggen contoso.com|Deze waarde is de naam van de virtuele host (die afwijkt van de naam van de VM-host) die op de toepassings server wordt uitgevoerd. De test wordt verzonden naar (Protocol)://(hostnaam):(poort van httpsetting)/urlPath.  Dit is van toepassing wanneer meerdere locaties op Application Gateway zijn geconfigureerd. Als de Application Gateway is geconfigureerd voor één site, voert u 127.0.0.1 in.|
    |**Kies een hostnaam uit de back-end-HTTP-instellingen**|Ja of nee|Hiermee stelt u de *host* -header in de test in op de hostnaam van de back-end-bron in de back-end-groep die is gekoppeld aan de http-instelling waaraan deze test is gekoppeld. Speciaal vereist in het geval van back-endservers met meerdere tenants, zoals Azure app service. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http:\//contoso.com alleen '/' |
+   |**Pad**|/of een ander pad|De rest van de volledige URL voor de aangepaste test. Er begint een geldig pad met '/'. Gebruik voor het standaardpad van http: \/ /contoso.com alleen '/' |
    |**Interval (sec.)**|30|Hoe vaak de test wordt uitgevoerd om de status te controleren. Het wordt afgeraden om de lagere dan 30 seconden in te stellen.|
    |**Time-out (SEC)**|30|De hoeveelheid tijd die de test wacht voordat een time-out optreedt. Als er binnen deze time-outperiode geen geldig antwoord wordt ontvangen, wordt de test als mislukt gemarkeerd. Het time-outinterval moet hoog genoeg zijn dat er een http-aanroep kan worden uitgevoerd om ervoor te zorgen dat de status van de back-end beschikbaar is. Houd er rekening mee dat de time-outwaarde niet groter mag zijn dan de interval waarde die is gebruikt in deze test instelling of de waarde van de time-out van de aanvraag in de HTTP-instelling die wordt gekoppeld aan deze test.|
-|**Drempel waarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
+|**Drempelwaarde voor onjuiste status**|3|Aantal opeenvolgende mislukte pogingen om te worden beschouwd als een slechte status. De drempel waarde kan worden ingesteld op 1 of meer.|
    |**Vergelijkings voorwaarden voor testen gebruiken**|Ja of nee|Standaard wordt een HTTP (S)-antwoord met de status code tussen 200 en 399 als gezond beschouwd. U kunt het acceptabele bereik van back-end-respons code of back-end-antwoord tekst wijzigen. [Meer informatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]

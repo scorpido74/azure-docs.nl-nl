@@ -4,7 +4,7 @@ description: Azure AD aanmelden bij een virtuele machine van Azure waarop Window
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abc2dee6b83820169173d965d53381ead9f4d0b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 700e8f2ae29ad41ceaecf58c3ffde4a27725c25c
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194023"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252794"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 

@@ -1,5 +1,5 @@
 ---
-title: Machtigingen voor het beheer van de toepassings beheerder delegeren-Azure AD | Microsoft Docs
+title: Beheerders machtigingen voor toepassings beheer delegeren-Azure AD | Microsoft Docs
 description: Machtigingen verlenen voor toegang tot beheer van toepassingen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2527e4e630e7bf9cce0c68261bfa1c1797fbf795
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253037"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731814"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Machtigingen voor app-registratie in Azure Active Directory delegeren
 
@@ -60,8 +60,8 @@ In sommige gevallen bevatten bedrijfs toepassingen die zijn gemaakt in de toepas
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Een eigenaar toewijzen aan een bedrijfs toepassing
 
-1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) met een account dat in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
-1. Selecteer op de [pagina](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) app-registraties voor de organisatie een app om de overzichts pagina voor de app te openen.
+1. Meld u aan bij [uw Azure AD-organisatie](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)   met een account dat in aanmerking komt voor de toepassings beheerder of de beheerder van de Cloud toepassing voor de organisatie.
+1. Selecteer op de [pagina app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)   voor de organisatie een app om de overzichts pagina voor de app te openen.
 1. Selecteer **eigen aars** om de lijst met eigen aars voor de app weer te geven.
 1. Selecteer **toevoegen** om een of meer eigen aars te selecteren die u aan de app wilt toevoegen.
 

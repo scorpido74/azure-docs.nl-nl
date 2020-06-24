@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 79a821a4c8fe4cb2d048f0dcb0a6e091462a1779
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b6d234c3845c220fd63c24db5bdbdae0f7c63fd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548798"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255072"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Verbinding maken met gegevens bronnen vanuit Azure Databricks
 
@@ -28,9 +28,9 @@ Dit artikel bevat koppelingen naar alle verschillende gegevens bronnen in azure 
 
 De volgende lijst bevat de gegevens bronnen in azure die u kunt gebruiken met Azure Databricks. Zie [gegevens bronnen voor Azure Databricks](/azure/databricks/data/data-sources/index)voor een volledige lijst met gegevens bronnen die kunnen worden gebruikt met Azure Databricks.
 
-- [Azure SQL database](/azure/databricks/data/data-sources/sql-databases)
+- [Azure SQL Database](/azure/databricks/data/data-sources/sql-databases)
 
-    Deze koppeling biedt de data frame-API voor het maken van verbinding met SQL-data bases met JDBC en het beheren van de parallellisme van Lees bewerkingen via de JDBC-interface. Dit onderwerp bevat gedetailleerde voor beelden van het gebruik van de scala-API, met verkorte python-en Spark SQL-voor beelden aan het einde.
+    Deze koppeling biedt de data frame-API voor het maken van verbinding met SQL Database met JDBC en het beheren van de parallellisme van Lees bewerkingen via de JDBC-interface. Dit onderwerp bevat gedetailleerde voor beelden van het gebruik van de scala-API, met verkorte python-en Spark SQL-voor beelden aan het einde.
 - [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
     Deze koppeling bevat voor beelden over het gebruik van de Azure Active Directory Service-Principal voor verificatie met Azure Data Lake Storage. Het bevat ook instructies voor het openen van toegang tot de gegevens in Azure Data Lake Storage van Azure Databricks.

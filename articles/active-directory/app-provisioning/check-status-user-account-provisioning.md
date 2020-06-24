@@ -2,21 +2,21 @@
 title: Automatische toewijzing van gebruikers accounts aan SaaS-toepassingen rapporteren
 description: Informatie over het controleren van de status van automatische toewijzing van gebruikers accounts en het oplossen van problemen met het inrichten van afzonderlijke gebruikers.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 102a0b60c917d5ee24177ac4b52e97fe72c343e7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593876"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782004"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Zelf studie: rapportage over automatische toewijzing van gebruikers accounts
 
@@ -72,4 +72,4 @@ Zie problemen met het [configureren en inrichten van gebruikers voor een toepass
 ## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

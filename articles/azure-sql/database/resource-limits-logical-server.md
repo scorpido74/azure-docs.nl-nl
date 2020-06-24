@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 11/19/2019
-ms.openlocfilehash: c3f843de6eaa621ecdd04c5a3418dc0d620f841e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/10/2020
+ms.openlocfilehash: eac5814eb977a01135ad2fcd9551b3475673dbca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343384"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691727"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Resource limieten voor Azure SQL Database en Azure Synapse Analytics-servers
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,13 +53,13 @@ Voor bron opslag van één data base, raadpleegt u op [DTU gebaseerde resource l
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Wat er gebeurt wanneer de database resource limieten zijn bereikt
 
-### <a name="compute-dtus-and-edtus--vcores"></a>Compute (Dtu's en Edtu's/vCores)
+### <a name="compute-cpu"></a>Reken CPU
 
-Wanneer database Compute-gebruik (gemeten door Dtu's en Edtu's, of vCores) hoog wordt, wordt de query latentie verhoogd en kunnen query's zelfs een time-out opleveren. Onder deze omstandigheden kunnen query's in de wachtrij worden geplaatst door de service en worden resources opgegeven voor uitvoering omdat resources gratis worden.
+Wanneer het CPU-gebruik van de data base hoog wordt, wordt de query latentie verhoogd en kunnen query's zelfs een time-out opleveren. Onder deze omstandigheden kunnen query's in de wachtrij worden geplaatst door de service en worden resources opgegeven voor uitvoering omdat resources gratis worden.
 Wanneer het gebruik van hoge berekeningen wordt tegengekomen, zijn de volgende opties voor risico beperking:
 
 - De reken grootte van de data base of elastische pool verg Roten om de data base te voorzien van meer compute-resources. Zie bronnen van [één data base schalen](single-database-scale.md) en [elastische pool resources schalen](elastic-pool-scale.md).
-- Query's optimaliseren om het resource gebruik van elke query te verminderen. Zie [query tuning/Hinting](performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
+- Query's optimaliseren om het CPU-resource gebruik van elke query te verminderen. Zie [query tuning/Hinting](performance-guidance.md#query-tuning-and-hinting)(Engelstalig) voor meer informatie.
 
 ### <a name="storage"></a>Storage
 
@@ -82,7 +82,28 @@ Wanneer u het gebruik van hoge sessies of werk nemers ondervindt, kunt u de volg
 - De instelling van de [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximale mate van parallellisme) verlagen.
 - Optimaliseer de query werk belasting zodat het aantal keren en de duur van query's wordt beperkt.
 
-### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Resource verbruik door workloads van gebruikers en interne processen
+### <a name="memory"></a>Geheugen
+
+In tegens telling tot andere resources (CPU, werk nemers, opslag), heeft het bereiken van de geheugen limiet geen negatieve invloed op de query prestaties en leidt dit niet tot fouten en fouten. Zoals beschreven in details over de [architectuur handleiding voor geheugen beheer](https://docs.microsoft.com/sql/relational-databases/memory-management-architecture-guide), gebruikt de SQL server data base-engine vaak al het beschik bare geheugen. Geheugen wordt hoofd zakelijk gebruikt voor het opslaan van gegevens in de cache, om te voor komen dat u dure opslag toegang krijgt. Met een hoger geheugen gebruik wordt de query prestaties meestal verbeterd vanwege snellere lees bewerkingen van het geheugen, in plaats van langzamere Lees bewerkingen van de opslag.
+
+Nadat de data base-engine is gestart, worden gegevens in het geheugen agressief opgeslagen in de data base-engine, omdat de werk belasting gegevens uit de opslag begint te lezen. Na deze eerste opvolgings periode is het gebruikelijk en verwacht om de `avg_memory_usage_percent` kolommen en te zien `avg_instance_memory_percent` in [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) moeten worden gesloten of gelijk zijn aan 100%, met name voor data bases die niet inactief zijn en niet volledig in het geheugen passen.
+
+Naast de gegevens cache wordt geheugen gebruikt in andere onderdelen van de data base-engine. Wanneer er een geheugen vraag is en alle beschik bare geheugen door de gegevens cache is gebruikt, wordt de grootte van de gegevens cache door de data base-engine dynamisch verkleind om geheugen beschikbaar te maken voor andere onderdelen, en wordt de gegevens cache dynamisch uitgebreid wanneer er andere onderdelen vrij zijn van geheugen.
+
+In zeldzame gevallen kan een voldoende veeleisende werk belasting een ontoereikende geheugen fout veroorzaken, waardoor er onvoldoende geheugen beschikbaar is. Dit kan gebeuren op elk niveau van geheugen gebruik tussen 0% en 100%. Dit is waarschijnlijker voor kleinere reken grootten die proportionele kleinere geheugen limieten hebben en/of met werk belastingen met meer geheugen voor het verwerken van query's, zoals in [compacte elastische Pools](elastic-pool-resource-management.md).
+
+Als er geheugen fouten optreden, zijn de volgende opties beschikbaar:
+- De servicelaag of de reken grootte van de data base of elastische pool wordt verhoogd. Zie bronnen van [één data base schalen](single-database-scale.md) en [elastische pool resources schalen](elastic-pool-scale.md).
+- Query's en configuratie optimaliseren om het geheugen gebruik te beperken. Algemene oplossingen worden beschreven in de volgende tabel.
+
+|Oplossing|Description|
+| :----- | :----- |
+|De grootte van geheugen subsidies verminderen|Voor meer informatie over geheugen subsidies, zie het blog bericht [over SQL Server geheugen toekenning](https://techcommunity.microsoft.com/t5/sql-server/understanding-sql-server-memory-grant/ba-p/383595) . Een gemeen schappelijke oplossing om te voor komen dat buitensporig grote geheugen subsidies worden gebruikt, houdt [Statistieken](https://docs.microsoft.com/sql/relational-databases/statistics/statistics) up-to-date. Dit resulteert in een nauw keurige schatting van het geheugen verbruik door de query-engine, waardoor onnodig grote geheugen subsidies worden voor komen.</br></br>In data bases die gebruikmaken van het compatibiliteits niveau 140 en hoger, kan de data base-engine automatisch de grootte van het geheugen toewijzen met behulp van [feedback van geheugen toekenning in batch modus](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#batch-mode-memory-grant-feedback) In data bases die gebruikmaken van het compatibiliteits niveau 150 en hoger, gebruikt de data base-engine ook [feedback over geheugen toekenning](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?view=sql-server-ver15#row-mode-memory-grant-feedback)in de rij, voor meer veelgebruikte query's in de rij-modus. Deze ingebouwde functionaliteit helpt bij het vermijden van geheugen fouten als gevolg van onnodig grote geheugen subsidies.|
+|De grootte van de cache voor query plannen beperken|De data base-engine slaat query plannen op in het geheugen, om te voor komen dat een query plan wordt gecompileerd voor elke uitvoering van de query. Schakel de OPTIMIZE_FOR_AD_HOC_WORKLOADS [database bereik configuratie](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)in om te voor komen dat de cache van het query plan wordt veroorzaakt door schema's die slechts één keer worden gebruikt.|
+|De grootte van het vergrendelings geheugen verminderen|De data base-engine gebruikt geheugen voor [vergren delingen](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide#Lock_Engine). Vermijd zo mogelijk grote trans acties die een groot aantal vergren delingen kunnen verkrijgen en het gebruik van hoog vergrendelings geheugen veroorzaken.|
+
+
+## <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Resource verbruik door workloads van gebruikers en interne processen
 
 Het CPU-en geheugen verbruik per werk belasting van de gebruiker in elke Data Base wordt gerapporteerd in de weer gaven [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) en [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) , in `avg_cpu_percent` en `avg_memory_usage_percent` kolommen. Voor elastische Pools wordt het gebruik van resource op pool niveau gerapporteerd in de weer gave [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) . Het CPU-verbruik van de werk belasting van de gebruiker wordt ook gerapporteerd via de `cpu_percent` Azure monitor metriek voor [afzonderlijke data bases](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) en [elastische Pools](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) op groeps niveau.
 
@@ -137,7 +158,7 @@ De werkelijke generatie tarieven voor logboek registratie die tijdens de uitvoer
 
 De verkeers vormgeving van de logboek frequentie wordt geoppereerd via de volgende wacht typen (beschikbaar in de weer gaven [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) ):
 
-| Wacht type | Opmerkingen |
+| Wacht type | Notities |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | Data base beperken |
 | POOL_LOG_RATE_GOVERNOR | Beperking van groepen |

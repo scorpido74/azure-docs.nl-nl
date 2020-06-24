@@ -4,19 +4,19 @@ description: Meer informatie over het implementeren van beveiligde, door Azure b
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d02b0299b6267fdd9d880d5bc0fe8c93d0edadc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672606"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252777"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Een beveiligd, door Azure beheerd werk station implementeren
 
@@ -33,16 +33,16 @@ Selecteer een profiel voordat u de oplossing implementeert. U kunt meerdere prof
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Gebruiker in azure AD | Ja | Ja | Ja | Ja | Ja | Ja |
 | Door intune beheerde | Ja | Ja | Ja | Ja | Ja | Ja |
-| Apparaat-Azure AD geregistreerd | Ja |  |  |  |  | |   |
+| Apparaat-Azure AD geregistreerd | Yes |  |  |  |  | |   |
 | Apparaat-Azure AD toegevoegd |   | Ja | Ja | Ja | Ja | Ja |
-| Basis lijn voor beveiliging van intune toegepast |   | Ja <br> Intensievere | Ja <br> (HighSecurity) | Ja <br> (NCSC) | Ja <br> Gesteld | N.v.t. |
+| Basis lijn voor beveiliging van intune toegepast |   | Yes <br> Intensievere | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Gesteld | NA |
 | Hardware voldoet aan de veilige Windows 10-standaarden |   | Ja | Ja | Ja | Ja | Ja |
 | Micro soft Defender ATP is ingeschakeld |   | Ja  | Ja | Ja | Ja | Ja |
 | Beheer rechten verwijderen |   |   | Ja  | Ja | Ja | Ja |
 | Implementatie met micro soft auto pilot |   |   | Ja  | Ja | Ja | Ja |
 | Apps die alleen door intune zijn geïnstalleerd |   |   |   | Ja | Ja |Ja |
 | Url's die zijn beperkt tot goedgekeurde lijst |   |   |   | Ja | Ja |Ja |
-| Internet geblokkeerd (inkomend/uitgaand) |   |   |   |  |  |Ja |
+| Internet geblokkeerd (inkomend/uitgaand) |   |   |   |  |  |Yes |
 
 > [!NOTE]
 > Op de **apparaten** voor beveiligde werk stations worden toegewezen aan profielen en beleid. Gebruikers worden niet rechtstreeks op deze beleids regels toegepast, waardoor het delen van apparaten (gedeelde apparaten) van kracht wordt. Als een beveiligd werk station niet wordt gedeeld in uw implementatie, of als het individuele gebruikers beleid nodig is, kan de toewijzing van de gebruikers beleids profielen worden toegewezen aan de gebruiker en het apparaat. 
@@ -63,19 +63,19 @@ Multi-factor Authentication vereisen, ten minste voor uw beheerders. Zie op [clo
 
 ### <a name="azure-ad-users-and-groups"></a>Azure AD-gebruikers en-groepen
 
-1. Blader in het Azure Portal naar **Azure Active Directory** > **gebruikers** > **nieuwe gebruiker**.
+1. Blader in het Azure Portal naar **Azure Active Directory**  >  **gebruikers**  >  **nieuwe gebruiker**.
 1. Maak de apparaat-beheerder door de stappen in de [zelf studie gebruikers maken](/Intune/quickstart-create-user)te volgen.
 1. Voer het volgende in:
 
    * **Naam** : Beveilig de beheerder van het werk station
    * **Gebruikers naam** - `secure-ws-admin@identityitpro.com`
-   * **Directory role**Beperkte beheerder en selecteer de rol **intune-beheerder** .**Limited administrator**  - 
+   * **Directory-functie**  -  **Beperkte beheerder** en selecteer de rol **intune-beheerder** .
 
 1. Selecteer **Maken**.
 
 Vervolgens maakt u twee groepen: werk Station gebruikers en Workstation apparaten.
 
-Blader in het Azure Portal naar **Azure Active Directory** > **groepen** > **nieuwe groep**.
+Blader in het Azure Portal naar **Azure Active Directory**  >  **groepen**  >  **nieuwe groep**.
 
 1. Voor de werk Station-gebruikers groep wilt u mogelijk [licentie verlening op basis](../users-groups-roles/licensing-groups-assign.md) van een groep configureren om het inrichten van licenties voor gebruikers te automatiseren.
 1. Voer voor de groep werk Station gebruikers het volgende in:
@@ -101,21 +101,21 @@ Blader in het Azure Portal naar **Azure Active Directory** > **groepen** > **nie
 
 Configureer de instelling van uw apparaten in Active Directory zodat uw administratieve beveiligings groep apparaten kan toevoegen aan uw domein. Als u deze instelling wilt configureren vanuit de Azure Portal:
 
-1. Ga naar de**Apparaatinstellingen**van **Azure Active Directory** > **apparaten** > .
+1. Ga naar de apparaatinstellingen van **Azure Active Directory**  >  **apparaten**  >  **Device settings**.
 1. Kies **geselecteerd** onder **gebruikers kunnen apparaten toevoegen aan Azure AD**en selecteer vervolgens de groep beveiligde werk Station-gebruikers.
 
 #### <a name="removal-of-local-admin-rights"></a>Verwijderen van lokale beheerders rechten
 
 Deze methode vereist dat gebruikers van het VIP-, DevOps-en secure-level werk station geen beheerders rechten hebben op hun computers. Als u deze instelling wilt configureren vanuit de Azure Portal:
 
-1. Ga naar de**Apparaatinstellingen**van **Azure Active Directory** > **apparaten** > .
+1. Ga naar de apparaatinstellingen van **Azure Active Directory**  >  **apparaten**  >  **Device settings**.
 1. Selecteer **geen** onder **aanvullende lokale beheerders op apparaten die zijn toegevoegd aan Azure AD**.
 
 #### <a name="require-multi-factor-authentication-to-join-devices"></a>Multi-factor Authentication vereisen voor het toevoegen van apparaten
 
 Om het proces van het toevoegen van apparaten aan Azure AD verder te verbeteren:
 
-1. Ga naar de**Apparaatinstellingen**van **Azure Active Directory** > **apparaten** > .
+1. Ga naar de apparaatinstellingen van **Azure Active Directory**  >  **apparaten**  >  **Device settings**.
 1. Selecteer **Ja** onder **vereisen multi-factor Authentication om lid te worden van apparaten**.
 1. Selecteer **Opslaan**.
 
@@ -123,7 +123,7 @@ Om het proces van het toevoegen van apparaten aan Azure AD verder te verbeteren:
 
 Van de Azure Portal:
 
-1. Blader naar **Azure Active Directory** > **Mobility (MDM en mam)** > **Microsoft intune**.
+1. Blader naar **Azure Active Directory**  >  **Mobility (MDM en mam)**  >  **Microsoft intune**.
 1. Wijzig de instelling voor het **MDM-gebruikers bereik** in **alle**.
 1. Selecteer **Opslaan**.
 
@@ -143,7 +143,7 @@ Om ervoor te zorgen dat apparaten volledig worden geconfigureerd voordat ze word
 
 Van de **Azure Portal**:
 
-1. Ga naar **Microsoft intune** > **apparaatregistratie** > de > **standaard****instellingen**voor de inschrijving van de**Windows-inschrijvings** > **status pagina** > .
+1. Ga naar **Microsoft intune**apparaatregistratie de standaard instellingen voor de inschrijving van de  >  **Device enrollment**  >  **Windows-inschrijvings**  >  **status pagina**  >  **Default**  >  **Settings**.
 1. Stel de voortgang van de installatie van het **app-profiel weer geven** in op **Ja**.
 1. Het **gebruik van het blok apparaat instellen totdat alle apps en profielen** op **Ja**zijn geïnstalleerd.
 
@@ -153,7 +153,7 @@ Nadat u een apparaatgroep hebt gemaakt, moet u een implementatie profiel maken o
 
 In intune in de Azure Portal:
 
-1. Selecteer **registratie** > van**Windows-inschrijvings** > **profielen** > voor apparaatregistratie**maken**.
+1. Selecteer **registratie**van  >  **Windows-inschrijvings**  >  **profielen**voor apparaatregistratie  >  **maken**.
 1. Voer het volgende in:
 
    * Naam: **profiel voor beveiligde werk station implementeren**.
@@ -162,7 +162,7 @@ In intune in de Azure Portal:
 
 1. Selecteer **Next**.
 
-   * Voor **implementatie modus**kiest u **zelf implementeren (preview)**. Apparaten met dit profiel zijn gekoppeld aan de gebruiker die het apparaat inschrijft. Er zijn gebruikersreferenties vereist om het apparaat te kunnen registreren. Het is belang rijk om te weten dat wanneer u een apparaat implementeert in de modus **zelf implementeren** , u laptops in een gedeeld model kunt implementeren. Er vindt geen gebruikers toewijzing plaats totdat het apparaat voor de eerste keer wordt toegewezen aan een gebruiker. Als gevolg hiervan worden alle gebruikers beleidsregels, zoals BitLocker, pas ingeschakeld als een gebruikers toewijzing is voltooid. Zie [selected profiles](/intune/device-profile-assign)(Engelstalig) voor meer informatie over het aanmelden bij een beveiligd apparaat.
+   * Voor **implementatie modus**kiest u **zelf implementeren (preview)**. Apparaten met dit profiel zijn gekoppeld aan de gebruiker die het apparaat inschrijft. Er zijn gebruikersreferenties vereist om het apparaat in te kunnen schrijven. Het is belang rijk om te weten dat wanneer u een apparaat implementeert in de modus **zelf implementeren** , u laptops in een gedeeld model kunt implementeren. Er vindt geen gebruikers toewijzing plaats totdat het apparaat voor de eerste keer wordt toegewezen aan een gebruiker. Als gevolg hiervan worden alle gebruikers beleidsregels, zoals BitLocker, pas ingeschakeld als een gebruikers toewijzing is voltooid. Zie [selected profiles](/intune/device-profile-assign)(Engelstalig) voor meer informatie over het aanmelden bij een beveiligd apparaat.
    * In het vak **toevoegen aan Azure AD** moet het **lid van Azure AD zijn opgenomen** en grijs worden weer gegeven.
    * Selecteer uw taal (regio), type **standaard**gebruikers account. 
 
@@ -171,7 +171,7 @@ In intune in de Azure Portal:
    * Selecteer een scope-tag als u deze vooraf hebt geconfigureerd.
 
 1. Selecteer **Next**.
-1. Kies **toewijzingen** > **toewijzen aan** > **geselecteerde groepen**. Kies **werk stations beveiligen**in **groepen selecteren die u wilt toevoegen**.
+1. Kies **toewijzingen**  >  **toewijzen aan**  >  **geselecteerde groepen**. Kies **werk stations beveiligen**in **groepen selecteren die u wilt toevoegen**.
 1. Selecteer **Next**.
 1. Selecteer **Maken** om het profiel te maken. Het Autopilot-implementatieprofiel is nu klaar om te worden toegewezen aan apparaten.
 
@@ -185,7 +185,7 @@ In deze richt lijnen wordt geadviseerd om een nieuwe update-ring te maken en de 
 
 In Azure Portal:
 
-1. Ga naar **Microsoft intune** > -**software-updates** > **Windows 10-update ringen**.
+1. Ga naar **Microsoft intune**-  >  **software-updates**  >  **Windows 10-update ringen**.
 1. Voer het volgende in:
 
    * Naam: door **Azure beheerde werk station-updates**
@@ -211,11 +211,11 @@ Windows Defender ATP en Microsoft Intune samen werken om inbreuk op de beveiligi
 
 Als u de integratie van Windows Defender ATP en intune wilt configureren, gaat u naar de Azure Portal.
 
-1. Blader naar **Microsoft intune** > **Device compliance** > apparaatcompatibiliteit**Windows Defender ATP**.
+1. Blader naar **Microsoft intune**  >  **apparaatcompatibiliteit**  >  **Windows Defender ATP**.
 1. Selecteer in stap 1 onder **Windows Defender ATP configureren** **de optie Windows Defender atp verbinden met Microsoft intune in Windows Defender Security Center**.
 1. In het Windows Defender Beveiligingscentrum:
 
-   1. Selecteer **instellingen** > **geavanceerde functies**.
+   1. Selecteer **Instellingen** > **Geavanceerde functies**.
    1. Kies **aan** **Microsoft intune-verbinding**.
    1. Selecteer **Voorkeuren opslaan**.
 
@@ -234,16 +234,16 @@ Down load en voer het juiste script uit om de beveiliging van de oplossing te vo
 | Lage beveiliging | N.v.t. | N.v.t. |
 | Verbeterde beveiliging | https://aka.ms/securedworkstationgit | Uitgebreid-werk station-Windows10-(1809). ps1 |
 | Hoge beveiliging | https://aka.ms/securedworkstationgit | HighSecurityWorkstation-Windows10-(1809). ps1 |
-| Gespecialiseerd | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) Security Baseline Baseline. ps1 |
+| Gespecialiseerd | https://github.com/pelarsen/IntunePowerShellAutomation | DeviceConfiguration_NCSC-Windows10 (1803) SecurityBaseline.ps1 |
 | Gespecialiseerde naleving * | https://aka.ms/securedworkstationgit | DeviceCompliance_NCSC-Windows10 (1803). ps1 |
-| Gesteld | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809)-SecurityBaseline. ps1 |
+| Gesteld | https://aka.ms/securedworkstationgit | Secure-Workstation-Windows10-(1809) -SecurityBaseline.ps1 |
 
 \*Gespecialiseerde naleving is een script dat de gespecialiseerde configuratie afdwingt die is opgenomen in de NCSC Windows10 Security Baseline Baseline.
 
 Nadat het script is uitgevoerd, kunt u in intune updates Toep assen op profielen en beleid. De scripts voor uitgebreide en veilige profielen maken beleids regels en profielen voor u, maar u moet het beleid toewijzen aan uw apparaatgroep voor **beveiligde werk stations** .
 
-* Hier vindt u de intune-configuratie profielen voor apparaten die zijn gemaakt door de scripts: **Azure Portal** > **Microsoft intune** > **configuratie** > **profielen**voor apparaten.
-* Hier vindt u het intune-nalevings beleid voor apparaten dat is gemaakt door de scripts: **Azure Portal** > **Microsoft intune** > **nalevings** > **beleid**voor apparaten.
+* Hier vindt u de intune-configuratie profielen voor apparaten die zijn gemaakt door de scripts: **Azure Portal**  >  **Microsoft intune**  >  **configuratie**  >  **profielen**voor apparaten.
+* Hier vindt u het intune-nalevings beleid voor apparaten dat is gemaakt door de scripts: **Azure Portal**  >  **Microsoft intune**  >  **nalevings**  >  **beleid**voor apparaten.
 
 Als u de wijzigingen wilt bekijken die door de scripts zijn aangebracht, kunt u de profielen exporteren. Op deze manier kunt u extra beveiliging bepalen die nodig is, zoals beschreven in de SECCON- [documentatie](/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework).
 
@@ -287,9 +287,9 @@ In sommige gevallen zijn toepassingen als de Google Chrome-browser vereist op he
 
 1. Down load de Offline Installer [Chrome bundel voor Windows 64 bits](https://cloud.google.com/chrome-enterprise/browser/download/).
 1. Pak de bestanden uit en noteer de locatie van het `GoogleChromeStandaloneEnterprise64.msi` bestand.
-1. Ga in **het Azure Portal** naar **Microsoft intune** > **apps** > voor**client-apps** > **toevoegen**.
+1. Ga in het **Azure Portal** naar **Microsoft intune**  >  apps voor**client-apps**  >  **Apps**  >  **toevoegen**.
 1. Kies onder **app-type**de optie **line-of-Business**.
-1. Onder **app-pakket bestand**selecteert u `GoogleChromeStandaloneEnterprise64.msi` het bestand van de uitgepakte locatie en selecteert u **OK**.
+1. Onder **app-pakket bestand**selecteert u het `GoogleChromeStandaloneEnterprise64.msi` bestand van de uitgepakte locatie en selecteert u **OK**.
 1. Geef onder **app-gegevens**een beschrijving en een uitgever op. Selecteer **OK**.
 1. Selecteer **Toevoegen**.
 1. Selecteer op het tabblad **toewijzingen** de optie **beschikbaar voor Inge schreven apparaten** onder **toewijzings type**.
@@ -304,7 +304,7 @@ In een beveiligde modus is de installatie van de toepassing beperkt tot de intun
 
 Een door intune beheerde kopie van de [bedrijfsportal](/Intune/store-apps-company-portal-app) biedt u toegang op aanvraag tot extra hulpprogram ma's die u naar gebruikers van de beveiligde werk stations kunt pushen.
 
-Mogelijk moet u Windows 32-bits Apps of andere apps installeren waarvan de implementatie speciale voor bereidingen vereist. In dergelijke gevallen kunt u `.intunewin` het [micro soft Win32 content prep-hulp programma](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool) een kant-en-klaar indelings bestand bieden voor installatie.
+Mogelijk moet u Windows 32-bits Apps of andere apps installeren waarvan de implementatie speciale voor bereidingen vereist. In dergelijke gevallen kunt u het [micro soft Win32 content prep-hulp programma](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool) een kant-en-klaar `.intunewin` indelings bestand bieden voor installatie.
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>Voorwaardelijke toegang alleen toestaan dat beveiligde werk stations toegang krijgen Azure Portal
 
@@ -313,15 +313,15 @@ Azure AD biedt de mogelijkheid om te beheren en te beperken wie en wat toegang h
 > [!NOTE]
 > U moet een gebruikers groep maken en uw nood gebruiker toevoegen waarmee het beleid voor voorwaardelijke toegang kan worden omzeild. In ons voor beeld hebben we een beveiligings groep met de naam **Emergency BreakGlass**
 
-1. Blader naar het **Azure Portal** > **Microsoft intune** > **voorwaardelijke toegang-beleid** > **Nieuw beleid**.
+1. Blader naar het **Azure Portal**  >  **Microsoft intune**  >  **voorwaardelijke toegang-beleid**  >  **Nieuw beleid**.
 1. Geef een **naam** op voor het beleid.
-1. **Gebruikers en groepen** > selecteren**gebruikers en groepen selecteren** 
-1. Selecteer **Include** > **Directory-functies** insluiten > Kies de rollen > globale beheerder, beheerder van beschermde rol, bevoegde verificatie beheerder, beveiligings beheerder, nalevings beheerder, beheerder van voorwaardelijke toegang, toepassings beheerder, Cloud toepassings beheerder, intune-service beheerder
+1. **Gebruikers en groepen**selecteren  >  **gebruikers en groepen selecteren** 
+1. Selecteer **Include**  >  **Directory-functies** insluiten > Kies de rollen > globale beheerder, beheerder van beschermde rol, bevoegde verificatie beheerder, beveiligings beheerder, nalevings beheerder, beheerder van voorwaardelijke toegang, toepassings beheerder, Cloud toepassings beheerder, intune-service beheerder
 1. Selecteer **uitsluiten** > Kies **gebruikers en groepen** > selecteer **uitgesloten gebruikers selecteren** > Selecteer uw groep met **nood BreakGlass** .
 1. Selecteer **Cloud-apps of-acties** > **alle Cloud-apps** te selecteren
 1. Selecteer **voor waarden** > Selecteer **device platforms** > kies configure **Ja** > Select **device platforms selecteren** **Windows**
 1. Selecteer **toegangs beheer** > Selecteer **toegang verlenen** **Ja** > Kies **vereisen dat het apparaat moet worden gemarkeerd als compatibel**. 
-1. Selecteer **beleid** > inschakelen**op**
+1. Selecteer **beleid inschakelen**  >  **op**
  
 Met deze beleids instelling zorgt u ervoor dat uw beheerders een compatibel Windows-apparaat moeten gebruiken, dat is ingesteld door intune en WDATP. 
 
@@ -333,17 +333,17 @@ U kunt ook Power shell gebruiken om de mogelijkheden voor het beheer van hosts u
 
 Mogelijk moet u bepaalde aangepaste besturings elementen en instellingen op uw beveiligde werk stations instellen. In dit voor beeld wordt de achtergrond van het werk station gewijzigd door gebruik te maken van de mogelijkheid van Power shell om het apparaat eenvoudig te identificeren als een geschikt, beveiligd werk station.
 
-Met het script [SetDesktopBackground. ps1](https://gallery.technet.microsoft.com/scriptcenter/Set-Desktop-Image-using-5430c9fb/) van micro soft scripting Center kan Windows deze [gratis, algemene achtergrond afbeelding](https://i.imgur.com/OAJ28zO.png) laden bij het opstarten.
+Met het [SetDesktopBackground.ps1](https://gallery.technet.microsoft.com/scriptcenter/Set-Desktop-Image-using-5430c9fb/) script uit het micro soft scripting Center kan Windows deze [gratis, algemene achtergrond afbeelding](https://i.imgur.com/OAJ28zO.png) laden bij het opstarten.
 
 1. Down load het script naar een lokaal apparaat.
 1. Werk de customerXXXX en de download locatie van de achtergrond afbeelding bij. In ons voor beeld vervangen we customerXXXX naar achtergronden.
-1. Blader naar het **Azure Portal** > **Microsoft intune** > **Device configuration** > **Power shell-scripts** > **toevoegen**.
+1. Blader naar het **Azure Portal**  >  **Microsoft intune**  >  **Device configuration**  >  **Power shell-scripts**  >  **toevoegen**.
 1. Geef een **naam** op voor het script en geef de locatie van het **script**op.
 1. Selecteer **Configureren**.
    1. Stel **Dit script uitvoeren met de aanmeldings referenties** in op **Ja**.
    1. Selecteer **OK**.
 1. Selecteer **Maken**.
-1. Selecteer **toewijzingen** > **groepen selecteren**.
+1. Selecteer **toewijzingen**  >  **groepen selecteren**.
    1. De beveiligings groep **beveiligen werk stations**toevoegen.
    1. Selecteer **Opslaan**.
 
@@ -351,19 +351,19 @@ Met het script [SetDesktopBackground. ps1](https://gallery.technet.microsoft.com
 
 1. Als u uw apparaat wilt inschrijven, hebt u de volgende gegevens nodig:
    * **Serie nummer** : gevonden op het chassis van het apparaat.
-   * **Windows-product-id** : gevonden onder **systeem** > **info** in het menu Windows-instellingen.
+   * **Windows-product-id** : gevonden onder **systeem**  >  **info** in het menu Windows-instellingen.
    * U kunt [Get-WindowsAutoPilotInfo](https://aka.ms/Autopilotshell) uitvoeren om een CSV-hash-bestand op te halen met alle vereiste gegevens voor de registratie van het apparaat.
    
-     Voer `Get-WindowsAutoPilotInfo – outputfile device1.csv` uit om de informatie uit te voeren als een CSV-bestand dat u in intune kunt importeren.
+     Voer uit `Get-WindowsAutoPilotInfo – outputfile device1.csv` om de informatie uit te voeren als een CSV-bestand dat u in intune kunt importeren.
 
      > [!NOTE]
-     > Voor het script zijn verhoogde rechten vereist. Deze wordt uitgevoerd als een externe hand tekening. Met `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned` deze opdracht kan het script correct worden uitgevoerd.
+     > Voor het script zijn verhoogde rechten vereist. Deze wordt uitgevoerd als een externe hand tekening. `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`Met deze opdracht kan het script correct worden uitgevoerd.
 
    * U kunt deze informatie verzamelen door u aan te melden bij een apparaat met Windows 10 versie 1809 of hoger. De wederverkoper van uw hardware kan deze informatie ook verstrekken.
-1. Ga in **het Azure Portal**naar **Microsoft intune** > **apparaatregistratie** > **Windows registratie** > **apparaten-Windows auto pilot-apparaten beheren**.
+1. Ga in het **Azure Portal**naar **Microsoft intune**  >  **apparaatregistratie**  >  **Windows registratie**  >  **apparaten-Windows auto pilot-apparaten beheren**.
 1. Selecteer **importeren** en kies uw CSV-bestand.
 1. Voeg het apparaat toe aan de beveiligings groep **beveiligde werk stations** .
-1. Op het Windows 10-apparaat dat u wilt configureren, gaat u naar **Windows-instellingen** > **Update & beveiligings** > **herstel**.
+1. Op het Windows 10-apparaat dat u wilt configureren, gaat u naar **Windows-instellingen**  >  **Update & beveiligings**  >  **herstel**.
    1. Kies **aan de slag** onder **deze PC opnieuw instellen**.
    1. Volg de aanwijzingen om het apparaat opnieuw in te stellen en opnieuw te configureren met het profiel en nalevings beleid dat is geconfigureerd.
 
@@ -424,19 +424,19 @@ De MMA-agent implementeren met het Power shell-script van intune
 
 1. Down load het installatie [script naar een lokaal apparaat](https://aka.ms/securedworkstationgit).
 1. De para meters, **$WorkSpaceID** en **$WorkSpaceKey** bijwerken
-1. Blader naar het **Azure Portal** > **Microsoft intune** > **Device configuration** > **Power shell-scripts** > **toevoegen**.
+1. Blader naar het **Azure Portal**  >  **Microsoft intune**  >  **Device configuration**  >  **Power shell-scripts**  >  **toevoegen**.
 1. Geef een **naam** op voor het script en geef de locatie van het **script**op.
 1. Selecteer **Configureren**.
    1. Stel **Dit script uitvoeren met de aanmeldings referenties** in op **Ja**.
    1. Selecteer **OK**.
 1. Selecteer **Maken**.
-1. Selecteer **toewijzingen** > **groepen selecteren**.
+1. Selecteer **toewijzingen**  >  **groepen selecteren**.
    1. De beveiligings groep **beveiligen werk stations**toevoegen.
    1. Selecteer **Opslaan**.
 
 Vervolgens moet u Log Analytics instellen om de nieuwe logboeken te ontvangen
 1. Ga in het **Azure Portal**naar **Log Analytics werk ruimte** > Selecteer controle van beveiligd werk station
-1. Selecteer **Geavanceerde instellingen** > **gegevens** > van**Windows-gebeurtenis logboeken**
+1. Selecteer **Geavanceerde instellingen**  >  **gegevens**van  >  **Windows-gebeurtenis logboeken**
 1. In **gebeurtenissen verzamelen uit de volgende gebeurtenis logboeken** 
 1. Voer het volgende in:
    * ' Micro soft-Windows-AppLocker/EXE en DLL ' > **gegevens** selectie opheffen

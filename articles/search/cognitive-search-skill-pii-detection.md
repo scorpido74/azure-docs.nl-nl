@@ -48,14 +48,14 @@ Para meters zijn hoofdletter gevoelig en zijn optioneel.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-| Invoer naam      | Beschrijving                   |
+| Invoer naam      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Optioneel. De standaardwaarde is `en`.  |
 | `text`          | De tekst die moet worden geanalyseerd.          |
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam      | Beschrijving                   |
+| Uitvoer naam      | Description                   |
 |---------------|-------------------------------|
 | `piiEntities` | Een matrix met complexe typen die de volgende velden bevat: <ul><li>tekst (de werkelijke PII als geëxtraheerd)</li> <li>type</li><li>subType</li><li>Score (hogere waarde betekent dat er waarschijnlijk een echte entiteit is)</li><li>offset (in de invoer tekst)</li><li>lengte</li></ul> </br> [Mogelijke typen en subtypen kunt u hier vinden.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
 | `maskedText` | Als `maskingMode` is ingesteld op een andere waarde dan `none` , wordt deze uitvoer het teken reeks resultaat van de maskering die wordt uitgevoerd op de invoer tekst, zoals wordt beschreven door de geselecteerde `maskingMode` .  Als `maskingMode` is ingesteld op `none` , is deze uitvoer niet aanwezig. |

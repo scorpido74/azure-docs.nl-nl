@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457266"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255002"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -166,7 +166,7 @@ Als u een grootschalige-data base in Azure SQL Database moet herstellen naar een
 > [!NOTE]
 > Omdat de bron en het doel zich in verschillende regio's bevinden, kan de data base geen momentopname opslag delen met de bron database als in niet-geografische herstel bewerkingen, die zeer snel zijn voltooid. In het geval van een geo-Restore van een grootschalige-data base is het een grootte-of-Data-bewerking, zelfs als het doel zich in het gekoppelde gebied van de geo-gerepliceerde opslag bevindt.  Dit betekent dat het uitvoeren van een geo-herstel tijd evenredig is met de grootte van de data base die wordt hersteld.  Als het doel zich in het gekoppelde gebied bevindt, wordt de kopie binnen een regio weer gegeven. Dit is aanzienlijk sneller dan een kopie van een andere regio, maar het is nog steeds een bewerking voor de grootte van de gegevens.
 
-## <a name="available-regions"></a><a name=regions></a>Beschik bare regio's
+## <a name="available-regions"></a><a name=regions></a>Beschikbare regio's
 
 De laag Azure SQL Database grootschalige is beschikbaar in alle regio's, maar is standaard beschikbaar in de volgende regio's die hieronder worden weer gegeven.
 Als u een grootschalige-Data Base wilt maken in een regio die niet wordt weer gegeven als ondersteund, kunt u een aanvraag voor onboarding verzenden via Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](quota-increase-request.md) voor instructies voor instructies. Gebruik de volgende richt lijnen bij het verzenden van uw aanvraag:
@@ -218,8 +218,8 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 
 | Probleem | Beschrijving |
 | :---- | :--------- |
-| In het deel venster Back-ups beheren voor een server worden geen grootschalige-data bases weer gegeven. deze worden dan in de weer gave gefilterd  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups en omdat de Bewaar instellingen voor lange termijn retentie en tijdstippen voor het bewaren van back-ups niet van toepassing zijn. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren.|
-| Terugzetten naar eerder tijdstip | Een niet-grootschalige-data base kan niet worden hersteld als een grootschalige-data base en een grootschalige-data base kan niet worden hersteld als een niet-grootschalige-data base. Voor een niet-grootschalige-data base die is gemigreerd naar grootschalige door de servicelaag te wijzigen, herstelt u een tijdstip voordat de migratie en binnen de Bewaar periode voor back-ups van de data base mogelijk [is.](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups) De herstelde data base is niet-grootschalige. |
+| In het deel venster Back-ups beheren voor een server worden geen grootschalige-data bases weer gegeven. Deze worden gefilterd op basis van de weer gave.  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups, zodat de Bewaar instellingen voor lange termijn en tijdstippen voor het bewaren van back-ups niet van toepassing zijn. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren.|
+| Terugzetten naar eerder tijdstip | Een niet-grootschalige-data base kan niet worden hersteld als een grootschalige-data base en een grootschalige-data base kan niet worden hersteld als een niet-grootschalige-data base. Voor een niet-grootschalige-data base die is gemigreerd naar grootschalige door de servicelaag te wijzigen, herstelt u een tijdstip voordat de migratie en binnen de Bewaar periode voor back-ups van de data base mogelijk [is.](recovery-using-backups.md#programmatic-recovery-using-automated-backups) De herstelde data base is niet-grootschalige. |
 | Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | Azure SQL Managed instance wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met grootschalige.|

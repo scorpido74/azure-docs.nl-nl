@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: febd5d1e49a87f0846aba2aaa976e170ee31fab8
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: c1801c1b26742661987ea822a3cb1479f40ec059
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432339"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751282"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -24,7 +24,7 @@ Voor deze methode moet u beheerders rechten op de computer hebben om de agent te
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>Het installatie script genereren op basis van de Azure Portal
 
@@ -40,6 +40,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 
     >[!NOTE]
     >Azure-Arc voor servers (preview) ondersteunt alleen de volgende regio's:
+    >- EastUS
     >- WestUS2
     >- West-Europa
     >- SoutheastAsia
@@ -58,7 +59,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
 
 ### <a name="install-manually"></a>De installatie handmatig uitvoeren
 
-U kunt de aangesloten machine agent hand matig installeren door het Windows Installer-pakket *AzureConnectedMachineAgent. msi*uit te voeren. U kunt de nieuwste versie van het [Windows agent-Windows Installer pakket](https://aka.ms/AzureConnectedMachineAgent) downloaden van het micro soft Download centrum. 
+U kunt de aangesloten machine agent hand matig installeren door de Windows Installer-pakket *AzureConnectedMachineAgent.msi*uit te voeren. U kunt de nieuwste versie van het [Windows agent-Windows Installer pakket](https://aka.ms/AzureConnectedMachineAgent) downloaden van het micro soft Download centrum. 
 
 > [!NOTE]
 > * Als u de agent wilt installeren of verwijderen, moet u over *beheerders* machtigingen beschikken.
@@ -161,4 +162,4 @@ Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken me
 
 - Meer informatie over het beheren van uw machine met [Azure Policy](../../governance/policy/overview.md), voor zaken als VM- [gast configuratie](../../governance/policy/concepts/guest-configuration.md), moet u controleren of de computer rapporteert aan de verwachte log Analytics-werk ruimte, de bewaking inschakelen met [Azure monitor met vm's](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)en nog veel meer.
 
-- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturings systeem en de workloads die worden uitgevoerd op de machine proactief wilt bewaken, beheren met Automation-runbooks of-oplossingen, zoals Updatebeheer, of andere Azure-Services zoals [Azure Security Center](../../security-center/security-center-intro.md)gebruiken.
+- Meer informatie over de [log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md). De Log Analytics-agent voor Windows en Linux is vereist wanneer u het besturingssysteem en workloads op de machine proactief wilt monitoren, deze wilt beheren met Automation-runbooks of oplossingen zoals Updatebeheer, of andere Azure-services zoals [Azure Security Center](../../security-center/security-center-intro.md) wilt gebruiken.

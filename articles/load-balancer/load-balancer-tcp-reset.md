@@ -8,19 +8,19 @@ author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: d3d836ddea8d07a25ad09e6f19d9f17a680decd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68714053ac92faf8550a3e5f83a526afa1222971
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294405"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808484"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer met TCP Reset bij niet-actief
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer met opnieuw instellen van TCP bij inactiviteit
 
 U kunt [Standard Load Balancer](load-balancer-standard-overview.md) gebruiken om een meer voorspel bare toepassings gedrag te maken voor uw SCENARIO'S door TCP reset in te scha kelen bij niet-actief voor een bepaalde regel. Het standaard gedrag van Load Balancer is het op de achtergrond neerzetten van stromen wanneer de time-out van een stroom niet actief is.  Als u deze functie inschakelt, worden Load Balancer bidirectionele TCP resets (TCP eerste pakket) verzonden naar time-out voor inactiviteit.  Hiermee wordt de eind punten van uw toepassing geïnformeerd dat er een time-out voor de verbinding is opgetreden. deze kan niet meer worden gebruikt.  Eind punten kunnen onmiddellijk een nieuwe verbinding tot stand brengen, indien nodig.
 

@@ -34,7 +34,7 @@ Retourneert de resource-ID voor een [extensie resource](../management/extension-
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | resourceId |Yes |tekenreeks |De resource-ID voor de resource waarop de uitbreidings resource wordt toegepast. |
 | resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
@@ -112,7 +112,7 @@ De syntaxis voor deze functie is afhankelijk van de naam van de lijst bewerkinge
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | ResourceName of resourceIdentifier |Yes |tekenreeks |De unieke id voor de resource. |
 | apiVersion |Yes |tekenreeks |API-versie van de runtime status van de resource. Doorgaans in de notatie **jjjj-mm-dd**. |
@@ -323,7 +323,7 @@ Retourneert informatie over een resource provider en de ondersteunde resource ty
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Yes |tekenreeks |Naam ruimte van de provider |
 | resourceType |No |tekenreeks |Het type resource binnen de opgegeven naam ruimte. |
@@ -398,7 +398,7 @@ Retourneert een-object dat de runtime status van een resource aangeeft.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | ResourceName of resourceIdentifier |Yes |tekenreeks |De naam of de unieke id van een resource. Als u naar een resource in de huidige sjabloon verwijst, geeft u alleen de resource naam op als para meter. Als er wordt verwezen naar een eerder geïmplementeerde resource of als de naam van de bron ambigu is, geeft u de resource-ID op. |
 | apiVersion |No |tekenreeks |API-versie van de opgegeven resource. **Deze para meter is vereist als de resource niet binnen dezelfde sjabloon is ingericht.** Doorgaans in de notatie **jjjj-mm-dd**. Zie voor een geldige API-versie voor uw resource [sjabloon verwijzing](/azure/templates/). |
@@ -721,7 +721,7 @@ Retourneert de unieke id van een resource. U gebruikt deze functie als de resour
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. Geef deze waarde alleen op wanneer u implementeert in het bereik van een resource groep of een abonnement. |
 | resourceGroupName |No |tekenreeks |De standaard waarde is de huidige resource groep. Geef deze waarde op wanneer u een resource in een andere resource groep wilt ophalen. Geef deze waarde alleen op wanneer u implementeert voor het bereik van een resource groep. |
@@ -917,7 +917,7 @@ Retourneert de unieke id voor een resource die is geïmplementeerd op het abonne
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |No |teken reeks (in GUID-indeling) |De standaard waarde is het huidige abonnement. Geef deze waarde op als u een resource in een ander abonnement wilt ophalen. |
 | resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
@@ -999,7 +999,7 @@ Retourneert de unieke id voor een resource die is geïmplementeerd op Tenant niv
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
 | resourceType |Yes |tekenreeks |Het type resource, inclusief de naam ruimte van de resource provider. |
 | resourceName1 |Yes |tekenreeks |De naam van de resource. |

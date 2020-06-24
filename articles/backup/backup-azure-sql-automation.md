@@ -4,12 +4,12 @@ description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 21c8ea5ff50cc78b60ccb3b09c953b184757f3c9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 862455175497fe5496c7eea459c32772074671ff
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246982"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255140"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
@@ -499,7 +499,7 @@ Als de uitvoer verloren is gegaan of als u de relevante taak-ID wilt ophalen, [h
 
 ### <a name="change-policy-for-backup-items"></a>Beleid voor back-upitems wijzigen
 
-De gebruiker kan een bestaand beleid wijzigen of het beleid van het back-upitem wijzigen van Policy1 in Policy2. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) met back-upitem als para meter.
+Gebruiker kan het beleid van het back-upitem wijzigen van Policy1 in Policy2. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) met back-upitem als para meter.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
@@ -513,6 +513,19 @@ De opdracht wacht tot de configuratie back-up is voltooid en retourneert de volg
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
+```
+
+### <a name="edit-an-existing-backup-policy"></a>Een bestaand back-upbeleid bewerken
+
+Als u een bestaand beleid wilt bewerken, gebruikt u de opdracht [set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-3.8.0) .
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -SchedulePolicy $SchPol -RetentionPolicy $RetPol
+```
+Controleer of de back-uptaken op een bepaald moment zijn geslaagd om eventuele fouten op te sporen. Als dat het geval is, moet u de problemen oplossen. Voer vervolgens de opdracht beleid bewerken opnieuw uit met de para meter **FixForInconsistentItems** om het beleid opnieuw te bewerken voor alle back-upitems waarvoor de bewerking eerder is mislukt.
+
+```powershell
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $Pol -FixForInconsistentItems
 ```
 
 ### <a name="re-register-sql-vms"></a>SQL-Vm's opnieuw registreren
@@ -597,4 +610,4 @@ Laten we bijvoorbeeld uitgaan dat een SQL AG twee knoop punten heeft: ' SQL-Serv
 
 SQL-Server-0, SQL-Server-1 wordt ook weer gegeven als ' AzureVMAppContainer ' als [er back-upcontainers worden weer gegeven](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0).
 
-Haal alleen de relevante SQL database op voor het [inschakelen van back-ups](#configuring-backup) en het maken van back-ups [op aanvraag](#on-demand-backup) en het [herstellen van PS-cmdlets](#restore-sql-dbs) .
+U hoeft alleen de relevante data base op te halen om [back-ups in te scha kelen](#configuring-backup) en de [PS-cmdlets](#restore-sql-dbs) [op aanvraag](#on-demand-backup) en herstellen identiek te maken.

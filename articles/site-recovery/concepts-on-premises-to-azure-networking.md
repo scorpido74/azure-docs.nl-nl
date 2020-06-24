@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33dafaff396ce378dfa9eab0158e1b2fd9c10da6
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281988"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770489"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Verbinding maken met virtuele Azure-machines na een failover van on-premises 
 
@@ -149,11 +149,21 @@ Geef vóór failover de netwerk instellingen en het IP-adres op voor de doel-Azu
 
 ## <a name="get-new-ip-addresses"></a>Nieuwe IP-adressen ophalen
 
-In dit scenario krijgt de Azure VM na een failover een nieuw IP-adres. Een DNS-update voor het bijwerken van records voor apparaten waarvoor failover is uitgevoerd om naar het IP-adres van de virtuele Azure-machine te verwijzen.
+In dit scenario krijgt de Azure VM na een failover een nieuw IP-adres. Als u een nieuw IP-adres wilt instellen voor de virtuele machine die is gemaakt na een failover, kunt u de volgende stappen uitvoeren:
 
+1. Ga naar **gerepliceerde items**.
+2. Selecteer de gewenste virtuele machine van Azure.
+3. Selecteer **Compute en netwerk** en selecteer **bewerken**.
 
+     ![De failover-netwerk configuraties aanpassen](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+
+4. Als u de instellingen van het failover-netwerk wilt bijwerken, selecteert u **bewerken** voor de NIC die u wilt configureren. Op de volgende pagina die wordt geopend, geeft u het bijbehorende vooraf gemaakte IP-adres op in de testfailover en failover-locatie.
+
+    ![De NIC-configuratie bewerken](media/azure-to-azure-customize-networking/nic-drilldown.png)
+
+5. Selecteer **OK**.
+
+Site Recovery gaat nu door met deze instellingen en zorg ervoor dat de virtuele machine op failover is verbonden met de geselecteerde bron via het bijbehorende IP-adres, als deze beschikbaar is in het doel-IP-bereik. In dit scenario is het niet nodig om het hele subnet te failoveren. Er is een DNS-update vereist om records bij te werken voor een failover van een machine om naar het nieuwe IP-adres van de virtuele machine te verwijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Meer informatie over](site-recovery-active-directory.md) het repliceren van on-premises Active Directory en DNS naar Azure.
-
-

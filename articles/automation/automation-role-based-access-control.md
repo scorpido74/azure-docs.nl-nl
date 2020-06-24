@@ -43,7 +43,7 @@ In de volgende tabellen worden de specifieke machtigingen beschreven die aan elk
 
 Een eigenaar kan alles beheren, inclusief toegang. In de volgende tabel ziet u de machtigingen die zijn verleend voor de rol:
 
-|Acties|Beschrijving|
+|Acties|Description|
 |---|---|
 |Micro soft. Automation/automationAccounts/|Resources van alle typen maken en beheren.|
 
