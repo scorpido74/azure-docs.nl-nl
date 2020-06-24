@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582859"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728143"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Een naamgevings beleid afdwingen voor Office 365-groepen in Azure Active Directory
 
@@ -36,23 +36,23 @@ Wanneer groeps naamgevings beleid is geconfigureerd, wordt het beleid toegepast 
 
 U kunt het naamgevings beleid voor groepen op twee verschillende manieren afdwingen:
 
-- **Naamgevings beleid voor voegsel-achtervoegsel** U kunt voor voegsels of achtervoegsels definiëren die vervolgens automatisch worden toegevoegd om een naamgevings Conventie voor uw groepen af te dwingen (bijvoorbeeld in de groeps naam\_"\_GRP Japan\_mijn groeps techniek\_"\_ , GRP Japan het voor \_voegsel en technisch het achtervoegsel is). 
+- **Naamgevings beleid voor voegsel-achtervoegsel** U kunt voor voegsels of achtervoegsels definiëren die vervolgens automatisch worden toegevoegd om een naamgevings Conventie voor uw groepen af te dwingen (bijvoorbeeld in de groeps naam "GRP \_ Japan \_ mijn groeps \_ techniek", GRP \_ Japan \_ het voor voegsel en \_ technisch het achtervoegsel is). 
 
 - **Aangepaste geblokkeerde woorden** U kunt een set geblokkeerde woorden die specifiek zijn voor uw organisatie uploaden om te worden geblokkeerd in groepen die zijn gemaakt door gebruikers (bijvoorbeeld "CEO, Payroll, HR").
 
 ### <a name="prefix-suffix-naming-policy"></a>Naamgevings beleid voor voegsel-achtervoegsel
 
-De algemene structuur van de naamgevings regels is ' voor voegsel [GroupName] achtervoegsel '. Hoewel u meerdere voor voegsels en achtervoegsels kunt definiëren, kunt u slechts één exemplaar van [GroupName] in de instelling hebben. De voor voegsels of achtervoegsels kunnen bestaan uit vaste teken reeksen of gebruikers kenmerken, \[zoals\] afdeling, die worden vervangen op basis van de gebruiker die de groep maakt. Het totale toegestane aantal tekens voor de teken reeksen voor voor voegsel en achtervoegsel, inclusief groeps naam, is 53 tekens. 
+De algemene structuur van de naamgevings regels is ' voor voegsel [GroupName] achtervoegsel '. Hoewel u meerdere voor voegsels en achtervoegsels kunt definiëren, kunt u slechts één exemplaar van [GroupName] in de instelling hebben. De voor voegsels of achtervoegsels kunnen bestaan uit vaste teken reeksen of gebruikers kenmerken, zoals \[ afdeling, \] die worden vervangen op basis van de gebruiker die de groep maakt. Het totale toegestane aantal tekens voor de teken reeksen voor voor voegsel en achtervoegsel, inclusief groeps naam, is 53 tekens. 
 
 Voor voegsels en achtervoegsels kunnen speciale tekens bevatten die worden ondersteund in groeps naam en groeps alias. Alle tekens in het voor voegsel of achtervoegsel dat niet wordt ondersteund in de groeps alias, worden nog steeds toegepast in de groeps naam, maar verwijderd uit de groeps alias. Vanwege deze beperking kunnen de voor voegsels en achtervoegsels die worden toegepast op de groeps naam afwijken van de voor waarden die zijn toegepast op de groeps alias. 
 
 #### <a name="fixed-strings"></a>Vaste teken reeksen
 
-U kunt teken reeksen gebruiken om het gemakkelijker te maken om groepen te scannen en te onderscheiden in de algemene adres lijst en in de linker navigatie koppelingen van groeps werkbelastingen. Enkele veelvoorkomende voor voegsels zijn tref woorden zoals ' GRP\_name ', '\#name ', '\_name '
+U kunt teken reeksen gebruiken om het gemakkelijker te maken om groepen te scannen en te onderscheiden in de algemene adres lijst en in de linker navigatie koppelingen van groeps werkbelastingen. Enkele veelvoorkomende voor voegsels zijn tref woorden zoals ' GRP \_ name ', ' \# name ', ' \_ name '
 
 #### <a name="user-attributes"></a>Gebruikers kenmerken
 
-U kunt kenmerken gebruiken waarmee u en uw gebruikers kunnen bepalen welke afdeling, kantoor of geografische regio waarvoor de groep is gemaakt. Als u bijvoorbeeld uw naamgevings beleid definieert als `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`, en `User’s department = Engineering`, dan kan de naam van een afgedwongen groep ' groeps techniek ' zijn. Ondersteunde Azure AD-kenmerken \[zijn\]afdeling \[,\]bedrijf \[,\]kantoor \[,\]staat of provincie \[,\]CountryorRegion \[,\]titel. Niet-ondersteunde gebruikers kenmerken worden beschouwd als vaste teken reeksen. bijvoorbeeld '\[post code\]'. Extensie kenmerken en aangepaste kenmerken worden niet ondersteund.
+U kunt kenmerken gebruiken waarmee u en uw gebruikers kunnen bepalen welke afdeling, kantoor of geografische regio waarvoor de groep is gemaakt. Als u bijvoorbeeld uw naamgevings beleid definieert als `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` , en `User’s department = Engineering` , dan kan de naam van een afgedwongen groep ' groeps techniek ' zijn. Ondersteunde Azure AD-kenmerken zijn \[ afdeling \] , \[ bedrijf \] , \[ kantoor \] , \[ staat of provincie \] , \[ CountryorRegion \] , \[ titel \] . Niet-ondersteunde gebruikers kenmerken worden beschouwd als vaste teken reeksen. bijvoorbeeld ' \[ Post code \] '. Extensie kenmerken en aangepaste kenmerken worden niet ondersteund.
 
 U kunt het beste kenmerken gebruiken waarvoor waarden zijn ingevuld voor alle gebruikers in uw organisatie en geen kenmerken met lange waarden gebruiken.
 
@@ -72,14 +72,14 @@ Geblokkeerde woorden lijst regels:
 Als u een naamgevings beleid wilt configureren, is een van de volgende rollen vereist:
 - Globale beheerder
 - Groeps beheerder
-- Gebruikers beheerder
+- Gebruikersbeheerder
 
 Geselecteerde beheerders kunnen worden uitgesloten van dit beleid, in alle werk belastingen en eind punten van groepen, zodat ze groepen kunnen maken met behulp van geblokkeerde woorden en met hun eigen naamgevings regels. Hieronder ziet u de lijst met beheerders rollen die zijn uitgesloten van het groeps naamgevings beleid.
 
 - Globale beheerder
 - Ondersteuning voor partner Tier 1
 - Ondersteuning voor partner Tier 2
-- Gebruikers beheerder
+- Gebruikersbeheerder
 - Schrijvers van mappen
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Naamgevings beleid configureren in Azure Portal

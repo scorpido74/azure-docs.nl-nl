@@ -10,17 +10,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283002"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688871"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-gegevens indexeren met behulp van een indexeerfunctie in Azure Cognitive Search 
 
 > [!IMPORTANT] 
 > SQL API is algemeen beschikbaar.
-> MongoDB-API, Gremlin-API en Cassandra-API-ondersteuning zijn momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+> MongoDB-API, Gremlin-API en Cassandra-API-ondersteuning zijn momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. U kunt toegang tot de voor beelden aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview)in te vullen. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
 > [!WARNING]
 > Alleen Cosmos DB verzamelingen waarvoor een [indexerings beleid](https://docs.microsoft.com/azure/cosmos-db/index-policy) is ingesteld op [consistent](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) , worden ondersteund door Azure Cognitive Search. Het indexeren van verzamelingen met een Lazy-indexerings beleid wordt niet aanbevolen en kan leiden tot ontbrekende gegevens. Verzamelingen waarvoor indexeren is uitgeschakeld, worden niet ondersteund.
@@ -71,7 +71,7 @@ Op de **gegevens bron** pagina moet de bron **Cosmos DB**zijn, met de volgende s
 
 + **Naam** is de naam van het gegevens bron object. Nadat u deze hebt gemaakt, kunt u deze voor andere werk belastingen kiezen.
 
-+ **Cosmos DB account** moet de primaire of secundaire connection string van Cosmos DB zijn, met een `AccountEndpoint` en een `AccountKey`. Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan het einde van de Connection String en scheid deze van de Connection String met een punt komma. Voor de Gremlin-API en Cassandra-API gebruikt u de instructies voor de [rest API](#cosmosdb-indexer-rest).
++ **Cosmos DB account** moet de primaire of secundaire connection string van Cosmos DB zijn, met een `AccountEndpoint` en een `AccountKey` . Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan het einde van de Connection String en scheid deze van de Connection String met een punt komma. Voor de Gremlin-API en Cassandra-API gebruikt u de instructies voor de [rest API](#cosmosdb-indexer-rest).
 
 + **Data Base** is een bestaande data base van het account. 
 
@@ -128,7 +128,7 @@ U kunt de REST API gebruiken om Azure Cosmos DB gegevens te indexeren, het volge
 Eerder in dit artikel wordt vermeld dat [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) indexering en indexering van [Azure Cognitive Search](search-what-is-an-index.md) een afzonderlijke bewerking zijn. Voor het indexeren van Cosmos DB worden standaard alle documenten automatisch geïndexeerd, behalve met de Cassandra-API. Als u automatisch indexeren uitschakelt, kan alleen toegang worden verkregen tot documenten via hun eigen koppelingen of door query's met behulp van de document-ID. Voor het indexeren van Azure-Cognitive Search moet Cosmos DB automatisch indexeren zijn ingeschakeld in de verzameling die wordt geïndexeerd door Azure Cognitive Search. Wanneer u zich aanmeldt voor de Cosmos DB Cassandra-API Indexeer functie preview, krijgt u instructies voor het instellen van Cosmos DB indexeren.
 
 > [!WARNING]
-> Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb`. Met ingang van API-versie **2019-05-06** worden de Azure Cognitive Search-api's en- `cosmosdb` Portal alleen ondersteund als in dit artikel wordt geadviseerd. Dit betekent dat het gegevens bron type moet `cosmosdb` zijn als u verbinding wilt maken met een Cosmos DB eind punt.
+> Azure Cosmos DB is de volgende generatie DocumentDB. Eerder met API-versie **2017-11-11** kunt u de `documentdb` syntaxis gebruiken. Dit betekent dat u uw gegevens bron type kunt opgeven als `cosmosdb` of `documentdb` . Met ingang van API-versie **2019-05-06** worden de Azure Cognitive Search-api's en-Portal alleen ondersteund `cosmosdb` als in dit artikel wordt geadviseerd. Dit betekent dat het gegevens bron type moet zijn `cosmosdb` Als u verbinding wilt maken met een Cosmos DB eind punt.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-invoer voor de aanvraag samen stellen
 
@@ -176,9 +176,9 @@ De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de v
 | Veld   | Beschrijving |
 |---------|-------------|
 | **naam** | Vereist. Kies een wille keurige naam voor uw gegevens bron object. |
-|**voert**| Vereist. Moet zijn `cosmosdb`. |
+|**type**| Vereist. Moet zijn `cosmosdb` . |
 |**aanmeldings** | Vereist. Moet een Cosmos DB connection string zijn.<br/>Voor SQL-verzamelingen hebben verbindings reeksen de volgende indeling:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>Voeg voor MongoDB-verzamelingen **soort = MongoDb** toe aan de Connection String:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>Voor Gremlin-grafieken en Cassandra-tabellen meldt u zich aan voor de preview-versie van de [Indexeer functie](https://aka.ms/azure-cognitive-search/indexer-preview) om toegang te krijgen tot de preview-versie en informatie over het format teren van de referenties.<br/><br/>Vermijd poort nummers in de eind punt-URL. Als u het poort nummer toevoegt, kan Azure Cognitive Search uw Azure Cosmos DB-Data Base niet indexeren.|
-| **container** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
+| **verpakking** | Bevat de volgende elementen: <br/>**naam**: vereist. Geef de ID op van de database verzameling die moet worden geïndexeerd.<br/>**query**: optioneel. U kunt een query opgeven voor het afvlakken van een wille keurig JSON-document in een plat schema dat door Azure Cognitive Search kan worden geïndexeerd.<br/>Query's worden niet ondersteund voor de MongoDB-API, de Gremlin-API en de Cassandra-API. |
 | **dataChangeDetectionPolicy** | Aanbevelingen. Zie de sectie [gewijzigde documenten indexeren](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Optioneel. Zie het gedeelte [verwijderde documenten indexeren](#DataDeletionDetectionPolicy) .|
 
@@ -247,9 +247,9 @@ Query voor het afvlakken van matrices:
 Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron-JSON-documenten of de uitvoer van uw aangepaste query projectie.
 
 > [!NOTE]
-> Voor gepartitioneerde verzamelingen is de standaard document sleutel Azure Cosmos DB `_rid` eigenschap, die door Azure Cognitive Search automatisch wordt hernoemd `rid` , omdat veld namen niet kunnen beginnen met een onderstrepings teken. Azure Cosmos DB `_rid` -waarden bevatten ook tekens die ongeldig zijn in azure Cognitive Search sleutels. Daarom zijn de `_rid` waarden base64-gecodeerd.
+> Voor gepartitioneerde verzamelingen is de standaard document sleutel Azure Cosmos DB `_rid` eigenschap, die door Azure Cognitive Search automatisch wordt hernoemd, `rid` omdat veld namen niet kunnen beginnen met een onderstrepings teken. Azure Cosmos DB- `_rid` waarden bevatten ook tekens die ongeldig zijn in Azure Cognitive Search sleutels. Daarom `_rid` zijn de waarden base64-gecodeerd.
 > 
-> Voor MongoDB-verzamelingen wordt de naam van de `_id` eigenschap automatisch door Azure `id`Cognitive Search gewijzigd in.  
+> Voor MongoDB-verzamelingen wordt de naam van de eigenschap automatisch door Azure Cognitive Search gewijzigd `_id` in `id` .  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Toewijzing tussen JSON-gegevens typen en Azure Cognitive Search-gegevens typen
 | JSON-gegevens type | Compatibele doel veld typen voor index |
@@ -297,7 +297,7 @@ De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen besch
 
 ## <a name="indexing-changed-documents"></a>Gewijzigde documenten indexeren
 
-Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik `_ts` van de eigenschap (time stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
+Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik van de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -306,7 +306,7 @@ Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt ide
 
 Het gebruik van dit beleid wordt sterk aanbevolen om te zorgen voor een goede prestaties van de Indexeer functie. 
 
-Als u een aangepaste query gebruikt, zorg er dan voor dat `_ts` de eigenschap wordt geprojecteerd door de query.
+Als u een aangepaste query gebruikt, zorg er dan voor dat de `_ts` eigenschap wordt geprojecteerd door de query.
 
 <a name="IncrementalProgress"></a>
 
@@ -314,9 +314,9 @@ Als u een aangepaste query gebruikt, zorg er dan voor dat `_ts` de eigenschap wo
 
 Incrementele voortgang tijdens het indexeren zorgt ervoor dat als de uitvoering van de Indexeer functie wordt onderbroken door tijdelijke fouten of limiet voor uitvoerings tijd, de Indexeer functie kan ophalen waar de volgende keer wordt uitgevoerd, in plaats van de volledige verzameling helemaal opnieuw te indexeren. Dit is vooral belang rijk bij het indexeren van grote verzamelingen. 
 
-Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query gebruikt, moet u ervoor zorgen dat de `_ts` resultaten door de query worden gesorteerd op basis van de kolom. Zo kunt u periodiek controleren of Azure Cognitive Search gebruikt om incrementele voortgang te bieden bij de aanwezigheid van fouten.   
+Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query gebruikt, moet u ervoor zorgen dat de resultaten door de query worden gesorteerd op basis van de `_ts` kolom. Zo kunt u periodiek controleren of Azure Cognitive Search gebruikt om incrementele voortgang te bieden bij de aanwezigheid van fouten.   
 
-In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts` component bevat, kan Azure Cognitive Search mogelijk niet afleiden dat de query wordt gesorteerd `_ts`door de. U kunt Azure Cognitive Search vertellen dat de resultaten worden geordend met behulp van de `assumeOrderByHighWaterMarkColumn` configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
+In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts` component bevat, kan Azure Cognitive Search mogelijk niet afleiden dat de query wordt gesorteerd door de `_ts` . U kunt Azure Cognitive Search vertellen dat de resultaten worden geordend met behulp van de `assumeOrderByHighWaterMarkColumn` configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
 
     {
      ... other indexer definition properties
@@ -336,7 +336,7 @@ Wanneer rijen uit de verzameling worden verwijderd, wilt u deze rijen meestal oo
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap waarnaar `softDeleteColumnName` wordt verwezen, wordt geprojecteerd door de query.
+Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap waarnaar wordt verwezen, `softDeleteColumnName` wordt geprojecteerd door de query.
 
 In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig verwijderings beleid:
 
@@ -364,7 +364,7 @@ In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig ver
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Volgende stappen
 
-Gefeliciteerd! U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
+Gefeliciteerd U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
 
 * Zie de [pagina Azure Cosmos DB Service](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
 * Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Cognitive Search.

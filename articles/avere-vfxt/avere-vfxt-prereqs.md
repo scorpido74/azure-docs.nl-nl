@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252543"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689892"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
@@ -68,7 +68,7 @@ Deze stap hoeft slechts één keer per abonnement te worden uitgevoerd.
 
 De software voorwaarden vooraf accepteren:
 
-1. Open een Cloud shell in de Azure Portal of door te bladeren <https://shell.azure.com>naar. Meld u aan met uw abonnements-ID.
+1. Open een Cloud shell in de Azure Portal of door te bladeren naar <https://shell.azure.com> . Meld u aan met uw abonnements-ID.
 
    ```azurecli
     az login
@@ -98,7 +98,7 @@ Maak het eind punt van de opslag service vanuit het Azure Portal.
 1. Selecteer het virtuele netwerk voor uw cluster.
 1. Klik in het menu links op **service-eind punten** .
 1. Klik bovenaan op **toevoegen** .
-1. Kies de service ``Microsoft.Storage``.
+1. Kies de service ``Microsoft.Storage`` .
 1. Selecteer het subnet van het cluster.
 1. Klik onderaan op **toevoegen**.
 

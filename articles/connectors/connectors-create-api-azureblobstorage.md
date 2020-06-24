@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247356"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711286"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Blobs in Azure Blob Storage maken en beheren met behulp van Azure Logic Apps
 
@@ -89,7 +89,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
    ![Nieuwe stap toevoegen aan de werk stroom van een logische app](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Kies het plus teken (**+**) dat wordt weer gegeven en selecteer **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer **een actie toevoegen**.
 
 3. Voer in het zoekvak ' Azure Blob ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
@@ -123,8 +123,8 @@ In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud
 
    | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Verbindings naam** | Ja | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
-   | **Opslag account** | Ja | <*opslag account*> | Selecteer uw opslag account in de lijst. |
+   | **Verbindingsnaam** | Yes | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
+   | **Opslag account** | Yes | <*opslag account*> | Selecteer uw opslag account in de lijst. |
    ||||
 
    Bijvoorbeeld:
@@ -194,7 +194,7 @@ Voer de volgende algemene stappen uit om de ondersteuning voor uitzonde ringen e
 1. Voeg in de werk stroom van de logische app de HTTP-actie of trigger toe en stel deze in om toegang te krijgen tot het opslag account of de entiteit.
 
    > [!IMPORTANT]
-   > Voor uitgaande HTTP-actie-of trigger aanroepen naar Azure Storage-accounts, moet u ervoor zorgen `x-ms-version` dat de aanvraag header de eigenschap en de API-versie bevat voor de bewerking die u wilt uitvoeren op het opslag account. Zie [toegang verifiëren met beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) en [versie beheer voor Azure Storage services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)voor meer informatie.
+   > Voor uitgaande HTTP-actie-of trigger aanroepen naar Azure Storage-accounts, moet u ervoor zorgen dat de aanvraag header de `x-ms-version` eigenschap en de API-versie bevat voor de bewerking die u wilt uitvoeren op het opslag account. Zie [toegang verifiëren met beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) en [versie beheer voor Azure Storage services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)voor meer informatie.
 
 1. Selecteer bij die actie [de beheerde identiteit](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) die u voor verificatie wilt gebruiken.
 

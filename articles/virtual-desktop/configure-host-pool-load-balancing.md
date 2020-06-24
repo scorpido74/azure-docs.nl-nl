@@ -4,16 +4,16 @@ description: De taakverdelings methode configureren voor een virtuele Windows-de
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612432"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204338"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>De taakverdelingsmethode voor Windows Virtual Desktop configureren
 
@@ -33,15 +33,15 @@ Breedte-eerste taak verdeling is de standaard configuratie voor nieuwe niet-perm
 Voer de volgende Power shell-cmdlet uit om een hostgroep zodanig te configureren dat de taak verdeling breed is zonder de maximale sessie limiet aan te passen:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-Daarna voert u de volgende cmdlet uit om ervoor te zorgen dat u de taak verdelings methode breed hebt ingesteld: 
+Daarna voert u de volgende cmdlet uit om ervoor te zorgen dat u de taak verdelings methode breed hebt ingesteld:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Diepte: voor de taak verdeling worden nieuwe gebruikers sessies gedistribueerd n
 Voer de volgende Power shell-cmdlet uit om een hostgroep te configureren voor het uitvoeren van diepte-eerste taak verdeling:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 Voer de volgende cmdlet uit om ervoor te zorgen dat de instelling is bijgewerkt:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,8 +77,8 @@ U kunt ook taak verdeling configureren met de Azure Portal.
 
 Taak verdeling configureren:
 
-1. Meld u aan bij de https://portal.azure.comAzure Portal op. 
-2. Zoek en selecteer **Windows Virtual Desktop** onder Services. 
+1. Meld u aan bij de Azure Portal op https://portal.azure.com .
+2. Zoek en selecteer **Windows Virtual Desktop** onder Services.
 3. Selecteer op de pagina virtueel bureau blad van Windows de optie **groepen hosten**.
 4. Selecteer de naam van de hostgroep die u wilt bewerken.
 5. Selecteer **Eigenschappen**.

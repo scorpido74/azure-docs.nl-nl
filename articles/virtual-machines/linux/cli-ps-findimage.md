@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250307"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711592"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux-VM-installatiekopieën zoeken in de Azure Marketplace met de Azure CLI
 
@@ -19,7 +19,7 @@ In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om VM-installatie 
 
 Blader ook naar beschik bare installatie kopieën en aanbiedingen met behulp van de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -winkel, de [Azure Portal](https://portal.azure.com)of [Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account`az login`().
+Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account ( `az login` ).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -49,9 +49,9 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ## <a name="find-specific-images"></a>Specifieke installatiekopieën zoeken
 
-Als u een specifieke VM-installatie kopie in Marketplace wilt zoeken `az vm image list` , gebruikt u `--all` de opdracht met de optie. Het duurt enige tijd voordat deze versie van de opdracht is voltooid en kan een langdurige uitvoer retour neren, dus u kunt de `--publisher` lijst doorgaans filteren op of een andere para meter. 
+Als u een specifieke VM-installatie kopie in Marketplace wilt zoeken, gebruikt u de `az vm image list` opdracht met de `--all` optie. Het duurt enige tijd voordat deze versie van de opdracht is voltooid en kan een langdurige uitvoer retour neren, dus u kunt de lijst doorgaans filteren op `--publisher` of een andere para meter. 
 
-Met de volgende opdracht worden bijvoorbeeld alle Debian-aanbiedingen weer gegeven (Houd er `--all` rekening mee dat zonder de switch alleen de lokale cache van algemene installatie kopieën wordt doorzocht):
+Met de volgende opdracht worden bijvoorbeeld alle Debian-aanbiedingen weer gegeven (Houd er rekening mee dat zonder de `--all` Switch alleen de lokale cache van algemene installatie kopieën wordt doorzocht):
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
@@ -98,9 +98,9 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-Gelijksoortige filters toep assen `--location`met `--publisher`de opties `--sku` , en. U kunt gedeeltelijke overeenkomsten op een filter uitvoeren, bijvoorbeeld `--offer Deb` om te zoeken naar alle Debian-installatie kopieën.
+Gelijksoortige filters toep assen met de `--location` `--publisher` Opties, en `--sku` . U kunt gedeeltelijke overeenkomsten op een filter uitvoeren, bijvoorbeeld `--offer Deb` om te zoeken naar alle Debian-installatie kopieën.
 
-Als u geen specifieke locatie met de `--location` optie opgeeft, worden de waarden voor de standaard locatie geretourneerd. (Stel een andere standaard locatie in door `az configure --defaults location=<location>`uit te voeren.)
+Als u geen specifieke locatie met de optie opgeeft `--location` , worden de waarden voor de standaard locatie geretourneerd. (Stel een andere standaard locatie in door uit te voeren `az configure --defaults location=<location>` .)
 
 Met de volgende opdracht wordt bijvoorbeeld een lijst weer gegeven met alle Debian 8 Sku's op de locatie Europa-west:
 
@@ -186,7 +186,7 @@ westus      akumina
 ...
 ```
 
-Gebruik deze informatie om aanbiedingen van een specifieke uitgever te vinden. Bijvoorbeeld, voor de *canonieke* uitgever op de locatie vs-West, zoek aanbiedingen door uit `azure vm image list-offers`te voeren. Geef de locatie en de uitgever op, zoals in het volgende voor beeld:
+Gebruik deze informatie om aanbiedingen van een specifieke uitgever te vinden. Bijvoorbeeld, voor de *canonieke* uitgever op de locatie vs-West, zoek aanbiedingen door uit te voeren `azure vm image list-offers` . Geef de locatie en de uitgever op, zoals in het volgende voor beeld:
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -203,7 +203,7 @@ westus      UbunturollingSnappy
 westus      UbuntuServer
 westus      Ubuntu_Core
 ```
-U ziet dat in de regio vs-West, canonieke de *UbuntuServer* -aanbieding op Azure publiceert. Maar welke SKU's? Als u deze waarden wilt ophalen `azure vm image list-skus` , moet u de locatie, uitgever en aanbieding die u hebt gedetecteerd, uitvoeren en instellen:
+U ziet dat in de regio vs-West, canonieke de *UbuntuServer* -aanbieding op Azure publiceert. Maar welke SKU's? Als u deze waarden wilt ophalen, moet `azure vm image list-skus` u de locatie, uitgever en aanbieding die u hebt gedetecteerd, uitvoeren en instellen:
 
 ```azurecli
 az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
@@ -268,17 +268,17 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-U kunt nu precies de installatie kopie kiezen die u wilt gebruiken door rekening te houden met de URN-waarde. Geef deze waarde door aan `--image` de para meter bij het maken van een virtuele machine met de opdracht [AZ VM Create](/cli/azure/vm) . Houd er rekening mee dat u het versie nummer in de URN kunt vervangen door "nieuwste". Deze versie is altijd de nieuwste versie van de installatie kopie. 
+U kunt nu precies de installatie kopie kiezen die u wilt gebruiken door rekening te houden met de URN-waarde. Geef deze waarde door aan de `--image` para meter bij het maken van een virtuele machine met de opdracht [AZ VM Create](/cli/azure/vm) . Houd er rekening mee dat u het versie nummer in de URN kunt vervangen door "nieuwste". Deze versie is altijd de nieuwste versie van de installatie kopie. 
 
-Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie `imageReference` parameters afzonderlijk in de eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
+Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie parameters afzonderlijk in de `imageReference` Eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Plan eigenschappen weer geven
 
-Als u de gegevens van het aankoop plan van een afbeelding wilt weer geven, voert u de opdracht [AZ VM Image Show](/cli/azure/image) uit. Als de `plan` eigenschap in de uitvoer niet `null`is, heeft de installatie kopie de voor waarden die u moet accepteren voordat u een programmatische implementatie uitvoert.
+Als u de gegevens van het aankoop plan van een afbeelding wilt weer geven, voert u de opdracht [AZ VM Image Show](/cli/azure/image) uit. Als de `plan` eigenschap in de uitvoer niet is `null` , heeft de installatie kopie de voor waarden die u moet accepteren voordat u een programmatische implementatie uitvoert.
 
-De canonieke Ubuntu Server 18,04 LTS-installatie kopie heeft bijvoorbeeld geen aanvullende voor waarden, omdat `plan` de gegevens `null`er als volgt uitziet:
+De canonieke Ubuntu Server 18,04 LTS-installatie kopie heeft bijvoorbeeld geen aanvullende voor waarden, omdat de `plan` gegevens er als volgt uitziet `null` :
 
 ```azurecli
 az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
@@ -300,7 +300,7 @@ Uitvoer:
 }
 ```
 
-Als u een vergelijk bare opdracht uitvoert voor de RabbitMQ die door de BitNami `plan` -installatie `name`kopie `product`wordt gecertificeerd `publisher`, worden de volgende eigenschappen weer gegeven:, en. (Sommige installatie kopieën hebben ook `promotion code` een eigenschap.) Raadpleeg de volgende secties om de voor waarden te accepteren en de programmatische implementatie in te scha kelen om deze installatie kopie te implementeren.
+Als u een vergelijk bare opdracht uitvoert voor de RabbitMQ die door de BitNami-installatie kopie wordt gecertificeerd, worden de volgende eigenschappen weer gegeven `plan` : `name` , `product` en `publisher` . (Sommige installatie kopieën hebben ook een `promotion code` eigenschap.) Raadpleeg de volgende secties om de voor waarden te accepteren en de programmatische implementatie in te scha kelen om deze installatie kopie te implementeren.
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -333,7 +333,7 @@ Als u de licentie voorwaarden wilt weer geven en accepteren, gebruikt u de opdra
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
-De uitvoer bevat een `licenseTextLink` aan de licentie voorwaarden en geeft aan dat de waarde van `accepted` is `true`:
+De uitvoer bevat een `licenseTextLink` aan de licentie voorwaarden en geeft aan dat de waarde van `accepted` is `true` :
 
 ```
 {
@@ -354,7 +354,7 @@ De uitvoer bevat een `licenseTextLink` aan de licentie voorwaarden en geeft aan 
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Implementeren met behulp van Purchase Plan-para meters
 
-Nadat u de voor waarden voor de installatie kopie hebt geaccepteerd, kunt u een virtuele machine in het abonnement implementeren. Als u de installatie kopie wilt implementeren `az vm create` met behulp van de opdracht, geeft u para meters voor het inkoop plan op naast een URN voor de installatie kopie. Als u bijvoorbeeld een virtuele machine wilt implementeren met de installatie kopie RabbitMQ gecertificeerd door BitNami:
+Nadat u de voor waarden voor de installatie kopie hebt geaccepteerd, kunt u een virtuele machine in het abonnement implementeren. Als u de installatie kopie wilt implementeren met behulp van de `az vm create` opdracht, geeft u para meters voor het inkoop plan op naast een URN voor de installatie kopie. Als u bijvoorbeeld een virtuele machine wilt implementeren met de installatie kopie RabbitMQ gecertificeerd door BitNami:
 
 ```azurecli
 az group create --name myResourceGroupVM --location westus

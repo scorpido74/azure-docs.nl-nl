@@ -11,16 +11,16 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
-ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611463"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888419"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Aan de slag met Azure CDN-ontwikkeling
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Laten we de basis structuur van ons programma ontvangen.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. We moeten enkele constanten definiëren die door de methoden worden gebruikt.  Voeg in `Program` de-klasse, maar `Main` vóór de-methode, het volgende toe.  Zorg ervoor dat u de tijdelijke aanduidingen, inclusief de ** &lt;punt haken&gt;**, vervangt door uw eigen waarden, indien nodig.
+2. We moeten enkele constanten definiëren die door de methoden worden gebruikt.  Voeg in de `Program` -klasse, maar vóór de `Main` -methode, het volgende toe.  Zorg ervoor dat u de tijdelijke aanduidingen, inclusief de ** &lt; punt haken &gt; **, vervangt door uw eigen waarden, indien nodig.
 
     ```csharp
     //Tenant app constants
@@ -95,7 +95,7 @@ Laten we de basis structuur van ons programma ontvangen.
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. Vervang de `Main` -methode als volgt:
+4. Vervang de- `Main` methode als volgt:
 
    ```csharp
    static void Main(string[] args)
@@ -154,7 +154,7 @@ Laten we de basis structuur van ons programma ontvangen.
     }
     ```
 
-Nu de basis structuur van ons programma is geschreven, moeten we de methoden maken die worden aangeroepen door `Main` de-methode.
+Nu de basis structuur van ons programma is geschreven, moeten we de methoden maken die worden aangeroepen door de- `Main` methode.
 
 ## <a name="authentication"></a>Verificatie
 Voordat we de Azure CDN-beheer bibliotheek kunnen gebruiken, moeten we onze service-principal verifiëren en een verificatie token verkrijgen.  Deze methode maakt gebruik van ADAL om het token op te halen.
@@ -189,7 +189,7 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Zorg ervoor dat u `<redirect URI>` vervangt door de omleidings-URI die u hebt ingevoerd bij het registreren van de toepassing in azure AD.
+Zorg ervoor dat u vervangt door `<redirect URI>` de omleidings-URI die u hebt ingevoerd bij het registreren van de toepassing in azure AD.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>CDN-profielen en eind punten weer geven
 U bent nu klaar om CDN-bewerkingen uit te voeren.  Het eerste dat onze methode heeft, is een lijst van alle profielen en eind punten in de resource groep, en als er een overeenkomst wordt gevonden voor het profiel en de namen van eind punten die zijn opgegeven in onze constanten, maakt u er later een notitie van.
@@ -271,7 +271,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> In het bovenstaande voor beeld wordt het eind punt een *Contoso* oorsprong met de naam `www.contoso.com`contoso met een hostnaam toegewezen.  U moet dit wijzigen zodat deze verwijst naar de hostnaam van uw eigen oorsprong.
+> In het bovenstaande voor beeld wordt het eind punt een oorsprong met de naam *Contoso* met een hostnaam toegewezen `www.contoso.com` .  U moet dit wijzigen zodat deze verwijst naar de hostnaam van uw eigen oorsprong.
 >
 >
 
@@ -292,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> In het bovenstaande voor beeld wordt met `/*` de teken reeks aangegeven dat ik alles wil verwijderen uit de hoofdmap van het pad van het eind punt.  Dit komt overeen met het controleren van **Alles opschonen** in het dialoog venster ' opschonen ' van de Azure Portal. In de `CreateCdnProfile` -methode maak ik ons profiel als **Azure CDN van een Verizon** -profiel met behulp van de code `Sku = new Sku(SkuName.StandardVerizon)`. Dit is dus geslaagd.  **Azure CDN van Akamai** profielen bieden echter geen ondersteuning voor het **opschonen van alles**, dus als ik een Akamai-profiel voor deze zelf studie gebruik, moet ik dan specifieke paden voor het leegmaken van de toepassing toevoegen.
+> In het bovenstaande voor beeld wordt met de teken reeks `/*` aangegeven dat ik alles wil verwijderen uit de hoofdmap van het pad van het eind punt.  Dit komt overeen met het controleren van **Alles opschonen** in het dialoog venster ' opschonen ' van de Azure Portal. In de `CreateCdnProfile` -methode maak ik ons profiel als **Azure CDN van een Verizon** -profiel met behulp van de code `Sku = new Sku(SkuName.StandardVerizon)` . Dit is dus geslaagd.  **Azure CDN van Akamai** profielen bieden echter geen ondersteuning voor het **opschonen van alles**, dus als ik een Akamai-profiel voor deze zelf studie gebruik, moet ik dan specifieke paden voor het leegmaken van de toepassing toevoegen.
 >
 >
 

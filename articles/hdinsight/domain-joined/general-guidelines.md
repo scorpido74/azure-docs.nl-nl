@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77463204"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887898"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Algemene informatie over Enter prise Security en richt lijnen in azure HDInsight
 
@@ -43,9 +43,9 @@ Wanneer u een beveiligd HDInsight-cluster implementeert, zijn er enkele aanbevol
 
 * Wanneer gegevens toegang wordt gemaakt via een service waarvoor autorisatie is ingeschakeld:
   * De autorisatie-invoeg toepassing voor Zwerver wordt aangeroepen en krijgt de context van de aanvraag.
-  * Zwerver past de beleids regels toe die zijn geconfigureerd voor de service. Als het beleid voor Zwerver mislukt, wordt de toegangs controle uitgesteld naar het bestands systeem. Sommige services, zoals MapReduce, controleren alleen of het bestand of de map eigendom is van dezelfde gebruiker die de aanvraag indient. Services als Hive, Controleer of het eigendom overeenkomt met of de juiste`rwx`machtigingen voor het bestands systeem ().
+  * Zwerver past de beleids regels toe die zijn geconfigureerd voor de service. Als het beleid voor Zwerver mislukt, wordt de toegangs controle uitgesteld naar het bestands systeem. Sommige services, zoals MapReduce, controleren alleen of het bestand of de map eigendom is van dezelfde gebruiker die de aanvraag indient. Services als Hive, Controleer of het eigendom overeenkomt met of de juiste machtigingen voor het bestands systeem ( `rwx` ).
 
-* Voor Hive moet de gebruiker, naast de machtigingen voor maken/bijwerken/verwijderen, machtigingen hebben `rwx`voor de directory op opslag en alle submappen.
+* Voor Hive moet de gebruiker, naast de machtigingen voor maken/bijwerken/verwijderen, machtigingen hebben voor `rwx` de directory op opslag en alle submappen.
 
 * Beleids regels kunnen worden toegepast op groepen (voor keuren) in plaats van personen.
 
@@ -67,13 +67,13 @@ Wanneer hiërarchische naam ruimte niet ingeschakeld is:
 ### <a name="default-hdfs-permissions"></a>Standaard machtigingen voor HDFS
 
 * Gebruikers hebben standaard geen toegang tot de **/** map op HDFS (ze moeten zich in de rol van de eigenaar van de opslag-BLOB bevinden om de toegang te kunnen volt ooien).
-* Voor de map met tijdelijke bestanden voor MapReduce en anderen wordt een gebruikersspecifieke map gemaakt en de machtigingen `sticky _wx` opgegeven. Gebruikers kunnen onder andere bestanden en mappen maken, maar kunnen geen andere items bekijken.
+* Voor de map met tijdelijke bestanden voor MapReduce en anderen wordt een gebruikersspecifieke map gemaakt en de `sticky _wx` machtigingen opgegeven. Gebruikers kunnen onder andere bestanden en mappen maken, maar kunnen geen andere items bekijken.
 
 ### <a name="url-auth"></a>URL-verificatie
 
 Als de URL-verificatie is ingeschakeld:
 
-* De configuratie bevat de voor voegsels die worden behandeld in de URL-verificatie ( `adl://`zoals).
+* De configuratie bevat de voor voegsels die worden behandeld in de URL-verificatie (zoals `adl://` ).
 * Als de toegang voor deze URL is, controleert zwerver of de gebruiker zich in de acceptatie lijst bevindt.
 * Zwerver controleert geen van de fijn gekorrelde beleids regels.
 
@@ -119,7 +119,7 @@ HDInsight kan niet afhankelijk zijn van on-premises domein controllers of aangep
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS-exemplaar
 
-* Maak het exemplaar met de `.onmicrosoft.com domain`. Op deze manier zijn er geen meerdere DNS-servers voor het domein.
+* Maak het exemplaar met de `.onmicrosoft.com domain` . Op deze manier zijn er geen meerdere DNS-servers voor het domein.
 * Maak een zelfondertekend certificaat voor de LDAPS en upload het naar Azure AD DS.
 * Gebruik een peered virtueel netwerk voor het implementeren van clusters (wanneer u een aantal teams hebt die gebruikmaken van HDInsight ESP-clusters), is dit nuttig. Dit zorgt ervoor dat u geen poorten (Nsg's) in het virtuele netwerk hoeft te openen met de domein controller.
 * Configureer de DNS-server voor het virtuele netwerk op de juiste wijze (de naam van het Azure AD DS-domein moet worden omgezet zonder hosts-bestands vermeldingen).
@@ -159,6 +159,17 @@ Meest voorkomende oorzaken:
 * Nsg's zijn te beperkend, waardoor domein deelname niet wordt voor komen.
 * De beheerde identiteit beschikt niet over voldoende machtigingen.
 * De cluster naam is niet uniek voor de eerste zes tekens (met een ander live cluster of met een verwijderd cluster).
+
+## <a name="authentication-setup-and-configuration"></a>Verificatie-instellingen en-configuratie
+
+### <a name="user-principal-name-upn"></a>User Principal Name (UPN)
+
+* Gebruik een kleine letter voor alle services-Upn's zijn niet hoofdletter gevoelig in ESP-clusters, maar
+* Het UPN-voor voegsel moet overeenkomen met beide SAMAccountName in azure AD-DS. Het veld e-mail is niet vereist.
+
+### <a name="ldap-properties-in-ambari-configuration"></a>LDAP-eigenschappen in Ambari-configuratie
+
+Zie [AMBARI LDAP-verificatie-instellingen](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html)voor een volledige lijst van de Ambari-eigenschappen die van invloed zijn op uw HDInsight-cluster configuratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,14 +3,14 @@ title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: tomfitz
-ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457283"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888741"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
@@ -100,6 +100,9 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
 Resource changes: 1 to modify.
 ```
+
+> [!NOTE]
+> De bewerking What-if kan de [referentie functie](template-functions-resource.md#reference)niet omzetten. Elke keer dat u een eigenschap instelt op een sjabloon expressie die de functie Reference bevat, wat-als-rapporten de eigenschap wordt gewijzigd. Dit probleem treedt op omdat wat-als de huidige waarde van de eigenschap (zoals `true` of `false` voor een Boole-waarde) vergelijkt met de niet-omgezette sjabloon expressie. Deze waarden komen natuurlijk niet overeen. Wanneer u de sjabloon implementeert, wordt de eigenschap alleen gewijzigd wanneer de sjabloon expressie wordt omgezet in een andere waarde.
 
 ## <a name="what-if-commands"></a>Wat-als-opdrachten
 

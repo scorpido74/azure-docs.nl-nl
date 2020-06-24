@@ -2,13 +2,13 @@
 title: Azure Red Hat open Shift v4. x configureren met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open Shift versie 4 en hoger.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 4b827524845874dabaabe535163d99c408f77a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/15/2020
+ms.openlocfilehash: 872d842f02e19313940dfeba5258feb7d3799547
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196294"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888450"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v4. x configureren met Azure Monitor voor containers
 
@@ -57,11 +57,11 @@ Voer de volgende stappen uit om de bewaking van een Azure Red Hat open Shift ver
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aroV4/onboarding_azuremonitor_for_containers.sh.`
 
-3. Als u de **uitvoeren-context** van uw cluster wilt identificeren, `oc login` voert u de opdracht `kubectl config current-context` uit en kopieert u de waarde op uw cluster.
+3. Als u de **uitvoeren-context** van uw cluster wilt identificeren, `oc login` voert u de opdracht uit en kopieert u de waarde op uw cluster `kubectl config current-context` .
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integreren met een bestaande werk ruimte
 
-Met de volgende stap wordt het controleren van uw cluster ingeschakeld met het bash-script dat u eerder hebt gedownload. Als u wilt integreren met een bestaande Log Analytics-werk ruimte, voert u de volgende stappen uit om eerst de volledige Resource-ID te `workspaceResourceId` identificeren van uw log Analytics werk ruimte die voor de para meter is vereist en voert u vervolgens de opdracht uit om de invoeg toepassing bewaking met de opgegeven werk ruimte in te scha kelen. Als u geen werk ruimte hebt om op te geven, kunt u door gaan naar stap 5 en het script een nieuwe werk ruimte laten maken.
+Met de volgende stap wordt het controleren van uw cluster ingeschakeld met het bash-script dat u eerder hebt gedownload. Als u wilt integreren met een bestaande Log Analytics-werk ruimte, voert u de volgende stappen uit om eerst de volledige Resource-ID te identificeren van uw Log Analytics werk ruimte die voor de `workspaceResourceId` para meter is vereist en voert u vervolgens de opdracht uit om de invoeg toepassing bewaking met de opgegeven werk ruimte in te scha kelen. Als u geen werk ruimte hebt om op te geven, kunt u de sectie overs Laan [met de standaardwerk ruimte](#integrate-with-default-workspace) en kunt u het script een nieuwe werk ruimte laten maken.
 
 1. Een lijst met alle abonnementen waartoe u toegang hebt met behulp van de volgende opdracht:
 
@@ -74,7 +74,7 @@ Met de volgende stap wordt het controleren van uw cluster ingeschakeld met het b
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
     Kopieer de waarde voor **SubscriptionId**.
@@ -93,25 +93,25 @@ Met de volgende stap wordt het controleren van uw cluster ingeschakeld met het b
 
     Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
 
-4. Voer de volgende opdracht uit om de bewaking in te scha kelen en `workspaceResourceId` de waarde voor de para meter te vervangen: 
+4. Voer de volgende opdracht uit om de bewaking in te scha kelen en de waarde voor de `workspaceResourceId` `azureAroV4ResourceIdparameter` para meters te vervangen: 
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <LogAnayticsWorkspaceResourceId>`
+    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <workspaceResourceId>`
 
     Voorbeeld:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4  /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
+    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4 /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
 
 Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven.
 
 ### <a name="integrate-with-default-workspace"></a>Integreren met standaard werkruimte
 
-Met de volgende stap wordt bewaking van uw Azure Red Hat open Shift v4. x-cluster ingeschakeld met behulp van het bash-script dat u hebt gedownload. In dit voor beeld hoeft u geen bestaande werk ruimte te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaardwerk ruimte te maken in de standaard resource groep van het cluster abonnement als deze nog niet in de regio bestaat. De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van de *DefaultWorkspace-\<GUID>\<-regio>*.  
+Met de volgende stap wordt bewaking van uw Azure Red Hat open Shift v4. x-cluster ingeschakeld met behulp van het bash-script dat u hebt gedownload. In dit voor beeld hoeft u geen bestaande werk ruimte te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaardwerk ruimte te maken in de standaard resource groep van het cluster abonnement als deze nog niet in de regio bestaat. De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<GUID> - \<Region> *.  
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
+`bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
 
-    For example:
+Bijvoorbeeld:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
+`bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
 
 Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de metrische gegevens van de status voor het cluster kunt weer geven.
 

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942912"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888034"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
 
@@ -41,18 +41,18 @@ Dit document laat zien hoe u een .NET core-console toepassing maakt die wordt ui
 
 1. Ga naar de [.net Core-installatie handleiding](https://www.microsoft.com/net/core) om .net core te installeren. Wanneer u uw omgeving selecteert, kiest u de opdracht regel optie.
 2. Maak een map voor uw project vanaf de opdracht regel. Navigeer naar deze map en typ `dotnet new console -o <sample-project-name>` om een C#-console project te maken.
-3. Open deze map in Visual Studio code. Deze stap kan snel worden uitgevoerd via de opdracht regel door in `code .` Windows te typen.
+3. Open deze map in Visual Studio code. Deze stap kan snel worden uitgevoerd via de opdracht regel door `code .` in Windows te typen.
 4. Installeer de [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) vanuit de Visual Studio code Marketplace. Start Visual Studio code opnieuw.
 5. Op dit moment ziet u twee prompts. Een is voor het toevoegen van ' vereiste assets voor het maken en debuggen '. Klik op Ja. Er is nog een prompt voor het herstellen van niet-opgeloste afhankelijkheden. Klik op herstellen.
 6. Wijzig `launch.json` onder `.vscode` om externe terminal te gebruiken als een-console. Deze instelling moet worden gelezen als`"console": "externalTerminal"`
-7. Met Visual Studio code kunt u fouten opsporen in .NET core-toepassingen. `F5` Zorg ervoor dat uw toepassing wordt uitgevoerd en controleer of uw installatie werkt. U ziet "Hallo wereld!" afgedrukt op de-console.
+7. Met Visual Studio code kunt u fouten opsporen in .NET core-toepassingen. `F5`Zorg ervoor dat uw toepassing wordt uitgevoerd en controleer of uw installatie werkt. U ziet "Hallo wereld!" afgedrukt op de-console.
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>De bibliotheek voor gegevens verplaatsing toevoegen aan uw project
 
-1. Voeg de nieuwste versie van de bibliotheek voor gegevens verplaatsing toe `dependencies` aan de sectie `<project-name>.csproj` van uw bestand. Op het moment van schrijven zou deze versie worden`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. Voeg de nieuwste versie van de bibliotheek voor gegevens verplaatsing toe aan de `dependencies` sectie van uw `<project-name>.csproj` bestand. Op het moment van schrijven zou deze versie worden`"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. Er moet een prompt worden weer gegeven om het project te herstellen. Klik op de knop herstellen. U kunt het project ook herstellen vanaf de opdracht regel door de opdracht `dotnet restore` in de hoofdmap van de projectmap te typen.
 
-Wijzigen `<project-name>.csproj`:
+Wijzigen `<project-name>.csproj` :
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -68,9 +68,9 @@ Wijzigen `<project-name>.csproj`:
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>Het skelet van uw toepassing instellen
 
-Het eerste wat we doen, is de ' skelet code ' van onze toepassing instellen. Deze code vraagt ons om een naam van een opslag account en de account sleutel en gebruikt deze referenties `CloudStorageAccount` voor het maken van een object. Dit object wordt gebruikt om te communiceren met het opslag account in alle overdrachts scenario's. De code vraagt ons ook om het type overdrachts bewerking te kiezen dat we willen uitvoeren.
+Het eerste wat we doen, is de ' skelet code ' van onze toepassing instellen. Deze code vraagt ons om een naam van een opslag account en de account sleutel en gebruikt deze referenties voor het maken van een `CloudStorageAccount` object. Dit object wordt gebruikt om te communiceren met het opslag account in alle overdrachts scenario's. De code vraagt ons ook om het type overdrachts bewerking te kiezen dat we willen uitvoeren.
 
-Wijzigen `Program.cs`:
+Wijzigen `Program.cs` :
 
 ```csharp
 using System;
@@ -147,7 +147,7 @@ namespace DMLibSample
 
 ## <a name="upload-a-local-file-to-a-blob"></a>Een lokaal bestand uploaden naar een BLOB
 
-Voeg de methoden `GetSourcePath` toe `GetBlob` en `Program.cs`toe aan:
+Voeg de methoden toe `GetSourcePath` en `GetBlob` toe aan `Program.cs` :
 
 ```csharp
 public static string GetSourcePath()
@@ -201,7 +201,7 @@ Houd er rekening mee dat veel parallelle bewerkingen in een omgeving met weinig 
 
 Laten we code toevoegen waarmee we het aantal parallelle bewerkingen kunnen instellen. Laten we ook code toevoegen die laat zien hoe lang het duurt voordat de overdracht is voltooid.
 
-Een `SetNumberOfParallelOperations` methode toevoegen aan `Program.cs`:
+Een `SetNumberOfParallelOperations` methode toevoegen aan `Program.cs` :
 
 ```csharp
 public static void SetNumberOfParallelOperations()
@@ -212,7 +212,7 @@ public static void SetNumberOfParallelOperations()
 }
 ```
 
-Wijzig de `ExecuteChoice` methode die moet `SetNumberOfParallelOperations`worden gebruikt:
+Wijzig de `ExecuteChoice` methode die moet worden gebruikt `SetNumberOfParallelOperations` :
 
 ```csharp
 public static void ExecuteChoice(CloudStorageAccount account)
@@ -259,9 +259,9 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="track-transfer-progress"></a>Voortgang van de overdracht volgen
 
-Hoe lang het duurt voordat de gegevens zijn overgedragen, is nuttig. De voortgang van de overdracht *tijdens* de overdracht kan echter nog beter worden weer geven. Voor dit scenario moet een `TransferContext` object worden gemaakt. Het `TransferContext` object is beschikbaar in twee vormen `SingleTransferContext` : `DirectoryTransferContext`en. De eerste is voor het overzetten van één bestand en de laatste is voor het overdragen van een map bestanden.
+Hoe lang het duurt voordat de gegevens zijn overgedragen, is nuttig. De voortgang van de overdracht *tijdens* de overdracht kan echter nog beter worden weer geven. Voor dit scenario moet een object worden gemaakt `TransferContext` . Het `TransferContext` object is beschikbaar in twee vormen: `SingleTransferContext` en `DirectoryTransferContext` . De eerste is voor het overzetten van één bestand en de laatste is voor het overdragen van een map bestanden.
 
-Voeg de methoden `GetSingleTransferContext` toe `GetDirectoryTransferContext` en `Program.cs`toe aan:
+Voeg de methoden toe `GetSingleTransferContext` en `GetDirectoryTransferContext` toe aan `Program.cs` :
 
 ```csharp
 public static SingleTransferContext GetSingleTransferContext(TransferCheckpoint checkpoint)
@@ -289,7 +289,7 @@ public static DirectoryTransferContext GetDirectoryTransferContext(TransferCheck
 }
 ```
 
-Wijzig de `TransferLocalFileToAzureBlob` methode die moet `GetSingleTransferContext`worden gebruikt:
+Wijzig de `TransferLocalFileToAzureBlob` methode die moet worden gebruikt `GetSingleTransferContext` :
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -309,9 +309,9 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="resume-a-canceled-transfer"></a>Een geannuleerde overdracht hervatten
 
-Een andere handige functie die wordt aangeboden door de bibliotheek voor gegevens verplaatsing is de mogelijkheid om een geannuleerde overdracht te hervatten. We voegen code toe waarmee we de overdracht tijdelijk kunnen annuleren door te typen `c`en de overdracht 3 seconden later te hervatten.
+Een andere handige functie die wordt aangeboden door de bibliotheek voor gegevens verplaatsing is de mogelijkheid om een geannuleerde overdracht te hervatten. We voegen code toe waarmee we de overdracht tijdelijk kunnen annuleren door te typen `c` en de overdracht 3 seconden later te hervatten.
 
-Wijzigen `TransferLocalFileToAzureBlob`:
+Wijzigen `TransferLocalFileToAzureBlob` :
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -363,13 +363,13 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Tot nu toe is onze `checkpoint` waarde altijd ingesteld op `null`. Als we de overdracht annuleren, halen we het laatste controle punt van de overdracht op en gebruiken we dit nieuwe controle punt in onze overdrachts context.
+Tot nu toe is onze `checkpoint` waarde altijd ingesteld op `null` . Als we de overdracht annuleren, halen we het laatste controle punt van de overdracht op en gebruiken we dit nieuwe controle punt in onze overdrachts context.
 
 ## <a name="transfer-a-local-directory-to-blob-storage"></a>Een lokale directory overdragen naar Blob Storage
 
 Disappointing als de bibliotheek voor gegevens verplaatsing slechts één bestand tegelijk kan overdragen. Gelukkig is dit niet het geval. De bibliotheek voor gegevens verplaatsing biedt de mogelijkheid om een map met bestanden en alle bijbehorende submappen over te dragen. Laten we een code toevoegen waarmee we er alleen kunnen doen.
 
-Voeg eerst de methode `GetBlobDirectory` toe aan `Program.cs`:
+Voeg eerst de methode toe `GetBlobDirectory` aan `Program.cs` :
 
 ```csharp
 public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
@@ -387,7 +387,7 @@ public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
 }
 ```
 
-Wijzig `TransferLocalDirectoryToAzureBlobDirectory`vervolgens:
+Wijzig vervolgens `TransferLocalDirectoryToAzureBlobDirectory` :
 
 ```csharp
 public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorageAccount account)
@@ -444,13 +444,13 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 }
 ```
 
-Er zijn enkele verschillen tussen deze methode en de methode voor het uploaden van één bestand. We gebruiken nu en `TransferManager.UploadDirectoryAsync` de `getDirectoryTransferContext` methode die u eerder hebt gemaakt. Daarnaast bieden we nu een `options` waarde voor onze upload bewerking, waarmee we kunnen aangeven dat we in onze upload submappen willen opnemen.
+Er zijn enkele verschillen tussen deze methode en de methode voor het uploaden van één bestand. We gebruiken nu `TransferManager.UploadDirectoryAsync` en de `getDirectoryTransferContext` methode die u eerder hebt gemaakt. Daarnaast bieden we nu een `options` waarde voor onze upload bewerking, waarmee we kunnen aangeven dat we in onze upload submappen willen opnemen.
 
 ## <a name="copy-a-file-from-url-to-a-blob"></a>Een bestand kopiëren van een URL naar een BLOB
 
 Nu gaan we code toevoegen waarmee we een bestand kunnen kopiëren van een URL naar een Azure-Blob.
 
-Wijzigen `TransferUrlToAzureBlob`:
+Wijzigen `TransferUrlToAzureBlob` :
 
 ```csharp
 public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
@@ -502,13 +502,13 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 }
 ```
 
-Een belang rijke use case voor deze functie is wanneer u gegevens van een andere Cloud service (bijvoorbeeld AWS) naar Azure moet verplaatsen. Als u een URL hebt waarmee u toegang krijgt tot de resource, kunt u deze resource eenvoudig verplaatsen naar Azure-blobs met behulp van `TransferManager.CopyAsync` de-methode. Met deze methode wordt ook een nieuwe Boole-para meter geïntroduceerd. Als `true` deze para meter wordt ingesteld, wordt aangegeven dat er een asynchrone kopie op de server moet worden uitgevoerd. Als u deze para `false` meter instelt op een synchrone kopie, wat betekent dat de resource eerst naar onze lokale machine wordt gedownload en vervolgens naar Azure Blob is geüpload. Synchrone kopiëren is momenteel echter alleen beschikbaar voor het kopiëren van de ene Azure Storage Resource naar een andere.
+Een belang rijke use case voor deze functie is wanneer u gegevens van een andere Cloud service (bijvoorbeeld AWS) naar Azure moet verplaatsen. Als u een URL hebt waarmee u toegang krijgt tot de resource, kunt u deze resource eenvoudig verplaatsen naar Azure-blobs met behulp van de- `TransferManager.CopyAsync` methode. Met deze methode wordt ook een nieuwe Boole-para meter geïntroduceerd. Als deze para meter `true` wordt ingesteld, wordt aangegeven dat er een asynchrone kopie op de server moet worden uitgevoerd. Als u deze para meter instelt op `false` een synchrone kopie, wat betekent dat de resource eerst naar onze lokale machine wordt gedownload en vervolgens naar Azure Blob is geüpload. Synchrone kopiëren is momenteel echter alleen beschikbaar voor het kopiëren van de ene Azure Storage Resource naar een andere.
 
 ## <a name="copy-a-blob"></a>Een BLOB kopiëren
 
 Een andere functie die uniek is in de bibliotheek voor gegevens verplaatsing is de mogelijkheid om van de ene Azure Storage Resource naar een andere te kopiëren.
 
-Wijzigen `TransferAzureBlobToAzureBlob`:
+Wijzigen `TransferAzureBlobToAzureBlob` :
 
 ```csharp
 public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount account)
@@ -525,7 +525,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
     ConsoleKeyInfo keyinfo;
     try
     {
-        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, true, null, context, cancellationSource.Token);
+        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, CopyMethod.ServiceSideAsyncCopy, null, context, cancellationSource.Token);
         while(!task.IsCompleted)
         {
             if(Console.KeyAvailable)
@@ -560,7 +560,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-In dit voor beeld wordt de Boole-para meter `TransferManager.CopyAsync` in `false` ingesteld op om aan te geven dat we een synchrone kopie willen uitvoeren. Dit betekent dat de resource eerst naar de lokale machine wordt gedownload en vervolgens naar Azure Blob is geüpload. De optie voor synchroon kopiëren is een uitstekende manier om ervoor te zorgen dat uw Kopieer bewerking een consistente snelheid heeft. Daarentegen is de snelheid van een asynchrone kopie aan de server zijde afhankelijk van de beschik bare netwerk bandbreedte op de server, die kan schommelen. Synchrone kopiëren kan echter extra uitvoer kosten genereren in vergelijking met asynchrone kopieën. De aanbevolen aanpak is het gebruik van synchrone kopieën in een Azure-VM die zich in dezelfde regio bevindt als uw bron opslag account om te voor komen dat er geen kosten in rekening worden brengt.
+In dit voor beeld wordt de Boole-para meter in ingesteld op om aan `TransferManager.CopyAsync` `false` te geven dat we een synchrone kopie willen uitvoeren. Dit betekent dat de resource eerst naar de lokale machine wordt gedownload en vervolgens naar Azure Blob is geüpload. De optie voor synchroon kopiëren is een uitstekende manier om ervoor te zorgen dat uw Kopieer bewerking een consistente snelheid heeft. Daarentegen is de snelheid van een asynchrone kopie aan de server zijde afhankelijk van de beschik bare netwerk bandbreedte op de server, die kan schommelen. Synchrone kopiëren kan echter extra uitvoer kosten genereren in vergelijking met asynchrone kopieën. De aanbevolen aanpak is het gebruik van synchrone kopieën in een Azure-VM die zich in dezelfde regio bevindt als uw bron opslag account om te voor komen dat er geen kosten in rekening worden brengt.
 
 De toepassing voor gegevens verplaatsing is nu voltooid. [Het volledige code voorbeeld is beschikbaar op github](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
 

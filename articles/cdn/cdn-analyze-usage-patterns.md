@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594165"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888441"
 ---
 # <a name="core-reports-from-verizon"></a>Kern rapporten van Verizon
 
@@ -31,7 +31,7 @@ Door gebruik te maken van Verizon-kern rapporten via de profielen portal voor Ve
 * Overgedragen gegevens
 * Treffers
 * Cache statussen
-* Percentage treffers in cache
+* Percentage treffers in de cache
 * Overdracht van IPV4/IPV6-gegevens
 
 ## <a name="accessing-verizon-core-reports"></a>Toegang tot Verizon-kern rapporten
@@ -108,7 +108,7 @@ Als u verlopen cache treffers wilt verkleinen, stelt `max-age` u een activum in 
 * TCP_PARTIAL_HIT: deze status wordt gerapporteerd wanneer een byte bereik aanvraag resulteert in een treffer voor een gedeeltelijk in cache opgeslagen Asset. Het aangevraagde byte bereik wordt onmiddellijk vanuit de POP naar de client bediend.
 * Niet-CACHEbaar: deze status wordt gerapporteerd wanneer een activum `Cache-Control` en `Expires` kopteksten aangeven dat deze niet in de cache moeten worden opgeslagen in een pop of de HTTP-client. Deze typen aanvragen worden geleverd vanaf de oorspronkelijke server.
 
-## <a name="cache-hit-ratio"></a>Percentage treffers in cache
+## <a name="cache-hit-ratio"></a>Percentage treffers in de cache
 Dit rapport geeft het percentage van in de cache opgeslagen aanvragen aan dat rechtstreeks vanuit de cache is bediend.
 
 Het rapport bevat de volgende details:
@@ -120,7 +120,7 @@ Het rapport bevat de volgende details:
 Het rapport bevat geen:
 
 * Aanvragen die worden geweigerd vanwege de opties voor het filteren van landen/regio's.
-* Aanvragen voor activa waarvan de headers aangeven dat ze niet in de cache moeten worden opgeslagen. Zo `Cache-Control: private` `Cache-Control: no-cache`voor komt u dat een asset in de cache wordt opgeslagen. `Pragma: no-cache`
+* Aanvragen voor activa waarvan de headers aangeven dat ze niet in de cache moeten worden opgeslagen. Zo voor `Cache-Control: private` komt u `Cache-Control: no-cache` `Pragma: no-cache` dat een asset in de cache wordt opgeslagen.
 * Aanvragen voor byte bereik voor gedeeltelijk opgeslagen cache-inhoud.
 
 De formule is: (TCP_ TREFFER/(TCP_ HIT + TCP_MISS)) * 100

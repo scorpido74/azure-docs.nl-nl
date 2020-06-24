@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4ae15d0898cedb0ed17dc308584769395aa819c2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014924"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079473"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -35,6 +35,9 @@ NAT-regels worden gebruikt om een back-end-bron op te geven voor het routeren va
 
 ## <a name="what-is-ip-1686312916"></a>Wat is IP-168.63.129.16?
 Het virtuele IP-adres voor de host die als Azure-infra structuur is gelabeld Load Balancer waar de Azure Health-tests afkomstig zijn. Bij het configureren van back-end-exemplaren, moeten ze verkeer van dit IP-adres toestaan om te reageren op status controles. Deze regel communiceert niet met toegang tot uw Load Balancer frontend. Als u geen gebruik maakt van de Azure Load Balancer, kunt u deze regel onderdrukken. Meer informatie over service Tags vindt u [hier](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
+
+## <a name="can-i-use-global-vnet-peering-with-basic-load-blancer"></a>Kan ik globale VNET-peering gebruiken met Basic Load Blancer?
+Nee. Basis Load Balancer biedt geen ondersteuning voor globale VNET-peering. U kunt in plaats daarvan een Standard Load Balancer gebruiken. Zie de [upgrade van Basic naar Standard](upgrade-basic-standard.md) -artikel voor naadloze upgrade.
 
 ## <a name="next-steps"></a>Volgende stappen
 Als uw vraag hier niet wordt vermeld, kunt u met uw vraag feedback over deze pagina sturen. Hiermee maakt u een GitHub-probleem voor het product team om ervoor te zorgen dat al onze vragen van de gewaardeerde klant worden beantwoord.

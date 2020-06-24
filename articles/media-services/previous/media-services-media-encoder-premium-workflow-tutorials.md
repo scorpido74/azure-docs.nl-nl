@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251009"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712425"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Zelfstudies voor geavanceerde Media Encoder Premium Workflow
 ## <a name="overview"></a>Overzicht
@@ -601,7 +601,7 @@ Voer nu een lokale test uit. Na deze uitvoering inspecteert u (via het tabblad s
 
 Het knooppunt object roept de methode log aan bij, verwijst naar het huidige knoop punt of het onderdeel waarin het script wordt uitgevoerd. Elk onderdeel als zodanig heeft de mogelijkheid om logboek registratie gegevens uit te voeren die beschikbaar zijn via het tabblad systeem. In dit geval wordt de letterlijke teken reeks "Hallo wereld" uitgevoerd. Het is belang rijk te weten dat dit een onwaardevol hulp programma voor fout opsporing kan zijn, zodat u inzicht krijgt in de manier waarop het script daad werkelijk wordt uitgevoerd.
 
-Vanuit onze script omgeving hebben we ook toegang tot eigenschappen van andere onderdelen. Probeer het volgende:
+Vanuit onze script omgeving hebben we ook toegang tot eigenschappen van andere onderdelen. Probeer dit:
 
 ```java
     //inspect current node:
@@ -761,7 +761,7 @@ Dit is gedaan door middel van normale bewerkingen voor teken reeks manipulatie. 
 
 *De resulterende lijst met clips registreren*
 
-Voer een test uit om te zien hoe de video-en audio gegevensstromen zijn afgekapt. Als u meer dan één test uitvoert met verschillende waarden voor het beperkende punt, zult u merken dat deze niet meer in aanmerking komen. De reden hiervoor is dat de ontwerper, in tegens telling tot de Azure runtime, de cliplist XML niet voor elke uitvoering overschrijft. Dit betekent dat alleen de eerste keer dat u de in-en uitpunten hebt ingesteld, ervoor zorgt dat het XML-bestand, alle andere keren, onze Guard-`clipListXML.indexOf("<trim>") == -1`component (als ()) de werk stroom niet kan toevoegen aan een ander trim element wanneer dat al aanwezig is.
+Voer een test uit om te zien hoe de video-en audio gegevensstromen zijn afgekapt. Als u meer dan één test uitvoert met verschillende waarden voor het beperkende punt, zult u merken dat deze niet meer in aanmerking komen. De reden hiervoor is dat de ontwerper, in tegens telling tot de Azure runtime, de cliplist XML niet voor elke uitvoering overschrijft. Dit betekent dat alleen de eerste keer dat u de in-en uitpunten hebt ingesteld, ervoor zorgt dat het XML-bestand, alle andere keren, onze Guard-component (als ( `clipListXML.indexOf("<trim>") == -1` )) de werk stroom niet kan toevoegen aan een ander trim element wanneer dat al aanwezig is.
 
 Om ervoor te zorgen dat onze werk stroom handig kan worden getest, kunt u het beste een code voor het bewaren van een huis houden om te controleren of een knip element al aanwezig is. Als dit het geval is, kunt u deze verwijderen voordat u doorgaat door de XML te wijzigen met de nieuwe waarden. In plaats van gebruik te maken van een teken reeks manipulatie, is het waarschijnlijk veiliger om dit te doen via real XML object model parsering.
 

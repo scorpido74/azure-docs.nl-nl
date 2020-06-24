@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253829"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888546"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dynamische site versnelling via Azure CDN
 
@@ -149,7 +149,7 @@ JPEG-compressie | . jpg,. JPEG,. JPE,. jig,. jgig,. JGI
 
 ## <a name="caching"></a>Caching
 
-Met DSA is caching standaard uitgeschakeld in het CDN, zelfs wanneer de oorsprong of `Cache-Control` `Expires` headers in de reactie worden opgenomen. DSA wordt doorgaans gebruikt voor dynamische activa die niet in de cache moeten worden opgeslagen omdat deze uniek zijn voor elke client. Dit gedrag kan worden verbroken met caching.
+Met DSA is caching standaard uitgeschakeld in het CDN, zelfs wanneer de oorsprong `Cache-Control` of `Expires` headers in de reactie worden opgenomen. DSA wordt doorgaans gebruikt voor dynamische activa die niet in de cache moeten worden opgeslagen omdat deze uniek zijn voor elke client. Dit gedrag kan worden verbroken met caching.
 
 Als u een website hebt met een combi natie van statische en dynamische assets, kunt u het beste een hybride benadering maken om de beste prestaties te verkrijgen. 
 
@@ -183,7 +183,7 @@ Voor toegang tot de regel Engine:
 
 U kunt ook twee CDN-eind punten gebruiken: één eind punt dat is geoptimaliseerd met DSA voor het leveren van dynamische assets en een ander eind punt dat is geoptimaliseerd voor een statisch optimalisatie type, zoals algemene weblevering, voor leverings cachebare assets. Wijzig de Url's van uw webpagina's zodat u deze rechtstreeks kunt koppelen aan de Asset op het CDN-eind punt dat u wilt gebruiken. 
 
-Bijvoorbeeld: `mydynamic.azureedge.net/index.html` is een dynamische pagina en wordt geladen vanuit het DSA-eind punt.De HTML-pagina verwijst naar meerdere statische assets, zoals Java script-bibliotheken of installatie kopieën die worden geladen vanuit het statische `mystatic.azureedge.net/banner.jpg` CDN `mystatic.azureedge.net/scripts.js`-eind punt, zoals en. 
+Bijvoorbeeld: `mydynamic.azureedge.net/index.html` is een dynamische pagina en wordt geladen vanuit het DSA-eind punt.De HTML-pagina verwijst naar meerdere statische assets, zoals Java script-bibliotheken of installatie kopieën die worden geladen vanuit het statische CDN-eind punt, zoals `mystatic.azureedge.net/banner.jpg` en `mystatic.azureedge.net/scripts.js` . 
 
 
 

@@ -15,34 +15,16 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99103c9994b240e2f45b66acf269b320c90e5135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231727"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718595"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
 In deze zelf studie worden de stappen beschreven die u moet uitvoeren op zowel de werk plek van Facebook als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Indien geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en ongedaan gemaakt met behulp [van](https://work.workplace.com/) de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
-
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migreren naar de nieuwe werk plek via Facebook-toepassing
-Als u een bestaande integratie met behulp van Facebook hebt, raadpleegt u de onderstaande sectie over de wijzigingen die worden weer gegeven. Als u de werk plek voor de eerste keer instelt op Facebook, kunt u deze sectie overs Laan en naar de ondersteunde mogelijkheden gaan. 
-
-#### <a name="whats-changing"></a>Wat wordt er gewijzigd?
-* Wijzigingen aan de kant van Azure AD: de autorisatie methode voor het inrichten van gebruikers op de werk plek heeft in het verleden een geheim token met een lange levens duur. U ziet binnenkort dat de autorisatie methode is gewijzigd in de toekenning van OAuth-autorisatie. 
-* Wijzigingen aan de werk plek: voorheen was de Azure AD-app een aangepaste integratie in werk plek via Facebook. Nu ziet u Azure AD in de map werk plek integratie als een toepassing van derden. 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Wat moet ik doen om mijn bestaande aangepaste integratie naar de nieuwe toepassing te migreren?
-Als u een bestaande werk plek hebt geïntegreerd met een geldig token, is er geen actie vereist. **Vanaf 04/28/2020 zijn alle toepassingen die niet in quarantaine zijn geplaatst automatisch gemigreerd als gevolg van ongeldige referenties.**
- 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Hoe kan ik zien of mijn toepassing is gemigreerd? 
-* In azure portal: wanneer uw toepassing wordt gemigreerd, wordt de banner in het gedeelte autorisatie van aanstaande wijzigingen verwijderd en wordt het veld geheim token vervangen door een knop met een blauwe machtiging. 
-* Bekijk de Azure AD-app op de werk plek van de Facebook-Portal om te controleren of deze is goedgekeurd.  
-
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>De sectie beheerders referenties is grijs weer gegeven in mijn toepassing en kan niet worden opgeslagen. Hoe komt dat?
-De sectie beheerders referenties is vergrendeld voor werk plek-klanten die niet zijn gemigreerd. Gebruik de volgende URL als de sectie beheerders referenties grijs wordt weer gegeven en u de toegang opnieuw moet verlenen. **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = True** (https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)
-
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
 > [!div class="checklist"]
@@ -67,7 +49,7 @@ Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 - Gebruik niet de productieomgeving, tenzij dit echt nodig is.
 - Als u geen Azure AD-proef omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een proef versie van één maand krijgen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Step 1. Uw inrichtings implementatie plannen
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
 1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en werk plek via Facebook](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
@@ -96,7 +78,7 @@ Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basi
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **werk plek op Facebook**.
+2. Selecteer **Workplace by Facebook** in de lijst met toepassingen.
 
     ![De koppeling Workplace by Facebook in de lijst met toepassingen](common/all-applications.png)
 
@@ -178,7 +160,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

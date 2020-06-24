@@ -8,20 +8,20 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125111"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711626"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -136,7 +136,7 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 ## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Fout: de register vermelding IsRegistered van de virtuele-bureaublad agent bevat een waarde van 0
 
-**Oorzaak:** Het registratie token is verlopen of is gegenereerd met de verval waarde van 999999.
+**Oorzaak:** Het registratie token is verlopen.
 
 **Oplossen:** Volg deze instructies om de register fout van de agent op te lossen.
 
@@ -182,7 +182,7 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Problemen met de Windows-stack aan de zijkant van het virtuele bureau blad oplossen
 
-De Windows-stack voor virtueel bureau blad wordt automatisch geïnstalleerd met Windows Server 2019. Gebruik micro soft Installer (MSI) om de side-by-stack te installeren op micro soft Windows Server 2016 of Windows Server 2012 R2. Voor micro soft Windows 10 is de Windows-stack voor virtueel bureau blad ingeschakeld met **enablesxstackrs. ps1**.
+De Windows-stack voor virtueel bureau blad wordt automatisch geïnstalleerd met Windows Server 2019. Gebruik micro soft Installer (MSI) om de side-by-stack te installeren op micro soft Windows Server 2016 of Windows Server 2012 R2. Voor micro soft Windows 10 is de Windows-stack voor virtuele Bureau bladen naast elkaar ingeschakeld met **enablesxstackrs.ps1**.
 
 Er zijn drie belang rijke manieren waarop de side-by-stack wordt geïnstalleerd of ingeschakeld op virtuele machines van de sessiehost:
 
@@ -224,8 +224,8 @@ Er zijn bekende omstandigheden waardoor de side-by-side-stack defect kan raken:
 - Niet de juiste volg orde van de stappen voor het inschakelen van de side-by-side-stack
 - Automatisch bijwerken naar Windows 10 Enhanced veelzijdige schijf (EVD)
 - De rol van de Extern bureaublad sessiehost (RDSH) ontbreekt
-- Meerdere keren uitvoeren van enablesxsstackrc. ps1
-- Enablesxsstackrc. ps1 wordt uitgevoerd in een account zonder lokale beheerders bevoegdheden
+- Meerdere keren uitgevoerd enablesxsstackrc.ps1
+- enablesxsstackrc.ps1 uitvoeren in een account dat geen lokale beheerders bevoegdheden heeft
 
 De instructies in deze sectie kunnen u helpen bij het verwijderen van de Windows-stack met virtuele Bureau bladen. Nadat u de side-by-stack hebt verwijderd, gaat u naar ' de virtuele machine registreren bij de Windows Virtual Desktop-hostgroep ' in [een hostgroep met Power shell maken](create-host-pools-powershell.md) om de side-by-side-stack opnieuw te installeren.
 
@@ -278,7 +278,7 @@ Volg deze instructies voor het uitvoeren van herstel vanuit hetzelfde subnet en 
 
 Als uw besturings systeem micro soft Windows 10 is, gaat u verder met de onderstaande instructies:
 
-14. Open in de virtuele machine met PsExec de bestanden Verkenner en kopieer disablesxsstackrc. ps1 naar het systeem station van de virtuele machine met de niet-werkende side-by-side-stack.
+14. Open in de virtuele machine met PsExec de bestanden Verkenner en kopieer disablesxsstackrc.ps1 naar het systeem station van de virtuele machine met de gestapelde side-by-side-stack.
 
     ```cmd
         \\<VMname>\c$\
@@ -287,7 +287,7 @@ Als uw besturings systeem micro soft Windows 10 is, gaat u verder met de onderst
     >[!NOTE]
     >VMname is de computer naam van de virtuele machine met de niet-gelijktijdige stack.
 
-15. Het aanbevolen proces: vanuit het PsExec-hulp programma start u Power shell en navigeert u naar de map uit de vorige stap en voert u disablesxsstackrc. ps1 uit. U kunt ook de volgende cmdlets uitvoeren:
+15. Het aanbevolen proces: vanuit het PsExec-hulp programma start u Power shell en navigeert u naar de map uit de vorige stap en voert u disablesxsstackrc.ps1 uit. U kunt ook de volgende cmdlets uitvoeren:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force

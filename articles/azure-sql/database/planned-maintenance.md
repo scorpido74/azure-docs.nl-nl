@@ -11,25 +11,25 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 2f5f69a5f145ae8bbf23aa1e5dbca07b30db0e21
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 524eaa0cfd2137f2b88102bfa5c514d5248cc743
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042692"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718619"
 ---
-# <a name="planning-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Planning voor Azure-onderhouds gebeurtenissen in Azure SQL Database en Azure SQL Managed instance
+# <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure-onderhouds gebeurtenissen plannen in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw data base in Azure SQL Database en Azure SQL Managed instance.
 
-## <a name="what-is-a-planned-maintenance-event"></a>Wat is een gepland onderhouds gebeurtenis
+## <a name="what-is-a-planned-maintenance-event"></a>Wat is een gepland onderhouds gebeurtenis?
 
-Voor elke Data Base bewaart Azure SQL Database en Azure SQL Managed instance een quorum van database replica's waarbij één replica het primaire is. Op het moment dat een primaire replica online onderhoud moet zijn en moet ten minste één secundaire replica in orde zijn. Tijdens gepland onderhoud gaan leden van het database quorum één keer offline, met de bedoeling dat er één primaire replica is en ten minste één secundaire replica online om ervoor te zorgen dat er geen downtime van de client is. Wanneer de primaire replica offline moet worden gezet, treedt er een herconfiguratie/failover-proces op waarin de ene secundaire replica de nieuwe primair wordt.  
+Voor elke Data Base bewaart Azure SQL Database en Azure SQL Managed instance een quorum van database replica's waarbij één replica het primaire is. Op elk moment moet een primaire replica online onderhoud zijn en moet ten minste één secundaire replica in orde zijn. Tijdens gepland onderhoud gaan leden van het database quorum één keer offline, met de bedoeling dat er één primaire replica is en ten minste één secundaire replica online om ervoor te zorgen dat er geen downtime van de client is. Wanneer de primaire replica offline moet worden gezet, treedt er een herconfiguratie/failover-proces op waarin de ene secundaire replica de nieuwe primair wordt.  
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Wat u kunt verwachten tijdens een geplande onderhouds gebeurtenis
 
-Opnieuw configureren/failovers worden over het algemeen binnen 30 seconden voltooid – het gemiddelde is 8 seconden. Als er al een verbinding is gemaakt, moet uw toepassing opnieuw verbinding maken met de goede kopie van de nieuwe primaire replica van uw data base. Als er een nieuwe verbinding tot stand wordt gebracht terwijl de Data Base een herconfiguratie ondergaat voordat de nieuwe primaire replica online is, krijgt u de fout 40613 (Data Base niet beschikbaar): ' data base {DATABASENAME} ' op server ' {servername} ' is momenteel niet beschikbaar. Probeer de verbinding later opnieuw. Als uw data base een langlopende query heeft, wordt deze query onderbroken tijdens een herconfiguratie en moet deze opnieuw worden gestart.
+Opnieuw configureren/failovers worden over het algemeen binnen 30 seconden voltooid. Het gemiddelde is 8 seconden. Als er al een verbinding is gemaakt, moet uw toepassing opnieuw verbinding maken met de goede kopie van de nieuwe primaire replica van uw data base. Als er een nieuwe verbinding tot stand wordt gebracht terwijl de Data Base een herconfiguratie ondergaat voordat de nieuwe primaire replica online is, krijgt u de fout 40613 (Data Base niet beschikbaar): ' data base {DATABASENAME} ' op server ' {servername} ' is momenteel niet beschikbaar. Probeer later opnieuw verbinding te maken.' Als uw data base een langlopende query heeft, wordt deze query onderbroken tijdens een herconfiguratie en moet deze opnieuw worden gestart.
 
 ## <a name="retry-logic"></a>Logica voor opnieuw proberen
 
@@ -45,5 +45,5 @@ Als uw data base aanmeldings fouten ondervindt, controleert u het [resource Heal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [resource Health](resource-health-to-troubleshoot-connectivity.md) voor Azure SQL database en Azure SQL Managed instance
+- Meer informatie over [resource Health](resource-health-to-troubleshoot-connectivity.md) voor Azure SQL database en Azure SQL Managed instance.
 - Zie voor meer informatie over logica voor opnieuw proberen [logica voor tijdelijke fouten](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors).

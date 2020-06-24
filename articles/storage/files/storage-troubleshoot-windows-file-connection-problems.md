@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 62b3a5ca772e21515fadf0397b294e93d77f96a6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657729"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711830"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -342,12 +342,12 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 De cmdlet voert deze controles hieronder uit, en biedt richt lijnen voor fouten:
 1. CheckPort445Connectivity: Controleer of poort 445 is geopend voor de SMB-verbinding
 2. CheckDomainJoined: Controleer of de client computer lid is van een domein dat is gekoppeld aan AD
-3. CheckADObject: Controleer of de aangemelde gebruiker een geldige weer gave heeft in het AD-domein waaraan het opslag account is gekoppeld
+3. CheckADObject: Bevestig dat er een object in de Active Directory is dat het opslag account vertegenwoordigt en de juiste SPN (Service Principal Name) heeft.
 4. CheckGetKerberosTicket: er wordt geprobeerd een Kerberos-ticket op te halen om verbinding te maken met het opslag account 
-5. CheckADObjectPasswordIsCorrect: Controleer of het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel van het opslag account kerb
+5. CheckADObjectPasswordIsCorrect: Zorg ervoor dat het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel kerb1 of kerb2 van het opslag account.
 6. CheckSidHasAadUser: Controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD. Als u wilt controleren of een specifieke AD-gebruiker is gesynchroniseerd met Azure AD, kunt u de-gebruikers naam en-domein opgeven in de invoer parameters.
-7. CheckAadUserHasSid: Controleer of een Azure AD-gebruiker een SID in AD heeft, moet de gebruiker de object-id van de Azure AD-gebruiker met-ObjectId invoeren. 
-8. CheckStorageAccountDomainJoined: Controleer of u een identiteit hebt geregistreerd in AD om het opslag account aan te duiden. 
+7. CheckAadUserHasSid: Controleer of een Azure AD-gebruiker een SID heeft in AD. deze controle vereist dat gebruiker de object-id van de Azure AD-gebruiker met para meter-ObjectId opgeeft. 
+8. CheckStorageAccountDomainJoined: Controleer de eigenschappen van het opslag account om te zien of AD-verificatie is ingeschakeld en of de AD-eigenschappen van het account zijn ingevuld.
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Kan de machtigingen voor mappen en bestands niveau (Windows-Acl's) niet configureren met Windows bestanden Verkenner
 

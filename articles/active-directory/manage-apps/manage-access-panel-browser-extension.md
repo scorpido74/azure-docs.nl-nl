@@ -3,25 +3,24 @@ title: Problemen met de Azure Access-paneel uitbreiding voor IE oplossen | Micro
 description: Groeps beleid gebruiken voor het implementeren van de invoeg toepassing Internet Explorer voor de portal mijn apps.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 16abfbeacd972ee8b0ab55f09945e687c95f0093
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67723920"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763258"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Problemen met de uitbrei ding van het toegangs paneel voor Internet Explorer oplossen
 
@@ -40,7 +39,7 @@ Het diagnostische hulp programma downloaden en installeren:
 
 1. [Selecteer deze koppeling om het diagnostische hulp programma te downloaden.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 1. Open het bestand en pak de inhoud naar uw computer uit.
-1. Als u het hulp programma wilt uitvoeren, klikt u met de rechter muisknop op het bestand met de naam *AccessPanelExtensionDiagnosticTool. js* en selecteert u **openen met** > **micro soft Windows**-scripthost.
+1. Als u het hulp programma wilt uitvoeren, klikt u met de rechter muisknop op het bestand met de naam *AccessPanelExtensionDiagnosticTool.js* en selecteert u **openen met**  >  **micro soft Windows-scripthost**.
 
     ![Openen met > micro soft Windows-scripthost](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 

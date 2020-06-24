@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75465640"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080668"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Overzicht van Service Fabric zelfstandige clusters
 
@@ -21,9 +21,16 @@ Een knooppunt type definieert de grootte, het aantal en de eigenschappen voor ee
 Het proces voor het maken van een Service Fabric cluster on-premises is vergelijkbaar met het proces van het maken van een cluster op een wille keurige cloud van uw keuze met een set Vm's. De eerste stappen voor het inrichten van de virtuele machines vallen onder de Cloud provider of de on-premises omgeving die u gebruikt. Zodra u een set Vm's met netwerk connectiviteit hebt ingeschakeld, worden de stappen voor het instellen van het Service Fabric-pakket, het bewerken van de cluster instellingen en het uitvoeren van het cluster en de beheer scripts identiek. Dit zorgt ervoor dat uw kennis en ervaring van het beheer van Service Fabric clusters kunnen worden overgedragen wanneer u ervoor kiest om nieuwe hosting omgevingen te richten.
 
 ## <a name="cluster-security"></a>Clusterbeveiliging
+
 Een Service Fabric cluster is een bron waarvan u eigenaar bent.  Het is uw verantwoordelijkheid om uw clusters te beveiligen om te voor komen dat onbevoegde gebruikers verbinding kunnen maken. Een beveiligd cluster is vooral belang rijk wanneer u werk belastingen voor productie op het cluster uitvoert.
 
+> [!NOTE]
+> Windows-verificatie is gebaseerd op Kerberos. NTLM wordt niet ondersteund als verificatie type.
+>
+> Gebruik, indien mogelijk, X. 509-certificaat verificatie voor Service Fabric clusters.
+
 ### <a name="node-to-node-security"></a>Beveiliging van knoop punt naar knoop punt
+
 Beveiliging van knoop punt naar knoop punt beveiligt de communicatie tussen de Vm's of computers in een cluster. Dit beveiligings scenario zorgt ervoor dat alleen computers die gemachtigd zijn om deel te nemen aan het cluster, kunnen deel nemen aan het hosten van toepassingen en services in het cluster. Service Fabric maakt gebruik van X. 509-certificaten voor het beveiligen van een cluster en het bieden van beveiligings functies van toepassingen.  Een cluster certificaat is vereist voor het beveiligen van het cluster verkeer en het bieden van cluster-en server authenticatie.  Zelfondertekende certificaten kunnen worden gebruikt voor test clusters, maar een certificaat van een vertrouwde certificerings instantie moet worden gebruikt voor het beveiligen van productie clusters.
 
 Windows-beveiliging kan ook worden ingeschakeld voor een zelfstandig Windows-cluster. Als u Windows Server 2012 R2 en Windows Active Directory, raden we u aan Windows-beveiliging te gebruiken met door groepen beheerde service accounts. Gebruik anders Windows-beveiliging met Windows-accounts.
@@ -31,6 +38,7 @@ Windows-beveiliging kan ook worden ingeschakeld voor een zelfstandig Windows-clu
 Lees voor meer informatie [knoop punt-naar-knooppunt beveiliging](service-fabric-cluster-security.md#node-to-node-security)
 
 ### <a name="client-to-node-security"></a>Beveiliging van client naar knoop punt
+
 Bij client-naar-knoop punt-beveiliging worden clients geverifieerd en wordt de communicatie tussen een client en afzonderlijke knoop punten in het cluster beveiligd. Met dit type beveiliging kunt u ervoor zorgen dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de toepassingen die op het cluster worden geïmplementeerd. Clients zijn uniek geïdentificeerd via de beveiligings referenties van het X. 509-certificaat. Een wille keurig aantal optionele client certificaten kan worden gebruikt om beheerders of gebruikers clients te verifiëren met het cluster.
 
 Naast client certificaten kan Azure Active Directory ook worden geconfigureerd voor het verifiëren van clients met het cluster.
@@ -55,6 +63,7 @@ Een zelfstandig cluster is een bron die u volledig bezit. U bent zelf verantwoor
 Lees [upgrades van zelfstandige clusters](service-fabric-cluster-upgrade-standalone.md)voor meer informatie.
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
+
 U kunt clusters maken op Vm's of computers waarop deze besturings systemen worden uitgevoerd (Linux wordt nog niet ondersteund):
 
 * Windows Server 2012 R2
@@ -62,6 +71,7 @@ U kunt clusters maken op Vm's of computers waarop deze besturings systemen worde
 * Windows Server 2019
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Meer informatie over het [beveiligen](service-fabric-cluster-security.md), [schalen](service-fabric-cluster-scaling-standalone.md)en [upgraden](service-fabric-cluster-upgrade-standalone.md) van zelfstandige clusters.
 
 Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).

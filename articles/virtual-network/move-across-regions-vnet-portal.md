@@ -3,15 +3,15 @@ title: Verplaats een virtueel Azure-netwerk naar een andere Azure-regio met behu
 description: Verplaats een virtueel Azure-netwerk van de ene Azure-regio naar een andere met behulp van een resource manager-sjabloon en de Azure Portal.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75640785"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711439"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van de Azure Portal
 
@@ -42,9 +42,9 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer vervolgens **resource groepen**.
 1. Zoek de resource groep die het virtuele bron netwerk bevat en selecteer deze.
-1. **Instellingen** > **export sjabloon**selecteren.
+1. **Instellingen**  >  **export sjabloon**selecteren.
 1. Selecteer in het deel venster **sjabloon exporteren** de optie **implementeren**.
-1. Als u het bestand *para meters. json* in uw online editor wilt openen, selecteert u **sjabloon** > **bewerken para meters**.
+1. Als u de *parameters.jsvoor* het bestand in uw online editor wilt openen, selecteert u **sjabloon**  >  **bewerken para meters**.
 1. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
 
     ```json
@@ -63,7 +63,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 1. Selecteer **Opslaan** in de editor.
 
-1. Selecteer > sjabloon**bewerken** **sjabloon om**het bestand *Template. json* in de online-editor te openen.
+1. Selecteer **sjabloon**bewerken als u de *template.jsvoor* het bestand in de online editor wilt openen  >  **Edit template**.
 
 1. Als u in de online editor de doel regio wilt bewerken waar het virtuele netwerk wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
 
@@ -85,11 +85,11 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
     ```
 
-1. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes. De code voor een regio is de naam van de regio, zonder spaties (bijvoorbeeld **centrale VS** = **-middenus).**
+1. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes. De code voor een regio is de naam van de regio, zonder spaties (bijvoorbeeld **centrale VS**  =  -**middenus**).
 
 1. Beschrijving U kunt ook andere para meters in de sjabloon wijzigen, afhankelijk van uw vereisten:
 
-    * **Adres ruimte**: voordat u het bestand opslaat, kunt u de adres ruimte van het virtuele netwerk wijzigen door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen:
+    * **Adres ruimte**: voordat u het bestand opslaat, kunt u de adres ruimte van het virtuele netwerk wijzigen door de sectie **resources**  >  **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen:
 
         ```json
                 "resources": [
@@ -140,7 +140,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
                 ]
         ```
 
-        Als u het adres voorvoegsel in het bestand *Template. json* wilt wijzigen, bewerkt u het op twee plaatsen: in de code in de voor gaande sectie en in het gedeelte **type** van de volgende code. Wijzig de eigenschap **addressPrefix** in de volgende code zodat deze overeenkomt met de eigenschap **addressPrefix** in de code in de voor gaande sectie.
+        Als u het adres voorvoegsel in de *template.js* in het bestand wilt wijzigen, bewerkt u het op twee plaatsen: in de code in de voor gaande sectie en in het gedeelte **type** van de volgende code. Wijzig de eigenschap **addressPrefix** in de volgende code zodat deze overeenkomt met de eigenschap **addressPrefix** in de code in de voor gaande sectie.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -178,13 +178,13 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
 1. Selecteer in de online editor **Opslaan**.
 
-1. Als u het abonnement wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis** > **abonnement**.
+1. Als u het abonnement wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis**  >  **abonnement**.
 
-1. Als u de resource groep wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis** > **resource groep**. 
+1. Als u de resource groep wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis**  >  **resource groep**. 
 
     Als u een nieuwe resource groep voor het virtuele doel netwerk wilt maken, selecteert u **nieuwe maken**. Zorg ervoor dat de naam niet hetzelfde is als de naam van de bron resource groep in het bestaande virtuele netwerk.
 
-1. Controleer of de**locatie** van de **basis beginselen** > is ingesteld op de doel locatie waar u het virtuele netwerk wilt implementeren.
+1. Controleer of de locatie van de **basis beginselen**  >  **Location** is ingesteld op de doel locatie waar u het virtuele netwerk wilt implementeren.
 
 1. Controleer onder **instellingen**of de naam overeenkomt met de naam die u eerder hebt ingevoerd in de para meters-editor.
 

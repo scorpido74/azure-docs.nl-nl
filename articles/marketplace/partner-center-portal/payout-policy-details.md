@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6aa40d0914237a28c7bbd32b15bf0d8d02140192
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783550"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887930"
 ---
-# <a name="payout-policy-details"></a>Details van uitbetalings beleid
+# <a name="payout-policy-details"></a>Details van betaalbeleid
 
 In dit artikel wordt het uitbetalings proces van micro soft beschreven, waar u de status van een uitbetaling en het terugkoppelings beleid kunt vinden.
 
@@ -25,7 +25,7 @@ In Partner Center selecteert u **uitbetaling** in de rechter bovenhoek van de po
 ![Illustreert het uitbetalings pictogram in de rechter bovenhoek van de portal van de partner centrum.](./media/payout-overview.png)
 
 > [!TIP]
-> Niet alle account rollen hebben toegang tot informatie over uitbetaling. Zie voor meer informatie [rollen en machtigingen voor toegang tot het rapport uitbetaling](./payout-summary.md).
+> Niet alle account rollen hebben toegang tot informatie over uitbetaling. Zie voor meer informatie [rollen en machtigingen voor toegang tot het rapport uitbetaling](./payout-summary-overview.md#roles-and-permissions).
 
 ## <a name="payment-schedules"></a>Betalings schema's
 
@@ -102,12 +102,12 @@ Hier volgt een voorbeeld schema:
 | Voor beeld van uitbetalings datum | 10/15/2020 | Gemarkeerd als **verzonden** in de sectie transactie geschiedenis en in betalingen in het uitbetalings dashboard |
 | <font color="red">Als de klant micro soft niet betaalt</font> | 12/2/2020 – 12/5/2020 | Geen wijziging, hetzelfde als hierboven |
 | Klant ontvangt eerste e-mail adres voor betaling | 12/6/2020 | Geen |
-| De klant ontvangt regel matige e-mails met een oplopende urgentie | 12/7/2020 – 1/31/2020 | Geen |
-| Publisher wordt op de hoogte gesteld van uitschrijving waarschijnlijk | 1/7/2020 | Er is een e-mail melding verzonden naar de uitgever dat de klant nog geen betaling heeft verzonden. De trans actie-ID en het dollar bedrag zijn opgenomen. |
-| Opzeg ging van klant ontvangt | 2/1/2020 | Geen |
-| Beëindiging van het verzamelings proces/fondsen zijn afgeschreven | 2/15/2020 | Er is een e-mail melding verzonden naar de uitgever die de fondsen afschrijven. De trans actie-ID en het dollar bedrag zijn opgenomen. |
-| Uitbetaling wordt in mindering gebracht | 3/1/2020 | Er wordt een negatieve trans actie weer geven in de uitbetalings verklaring van partner Center |
-| Uitbetaling wordt Inge houden | 3/15/2020 | Toekomstige uitbetalingen worden weer gegeven in de uitbetalings verklaring van partner Center. De betaling wordt pas ontvangen als het saldo niet langer negatief is.  |
+| De klant ontvangt regel matige e-mails met een oplopende urgentie | 12/7/2020 – 1/31/2021 | Geen |
+| Publisher wordt op de hoogte gesteld van uitschrijving waarschijnlijk | 1/7/2021 | Er is een e-mail melding verzonden naar de uitgever dat de klant nog geen betaling heeft verzonden. De trans actie-ID en het dollar bedrag zijn opgenomen. |
+| Opzeg ging van klant ontvangt | 2/1/2021 | Geen |
+| Beëindiging van het verzamelings proces/fondsen zijn afgeschreven | 2/15/2021 | Er is een e-mail melding verzonden naar de uitgever die de fondsen afschrijven. De trans actie-ID en het dollar bedrag zijn opgenomen. |
+| Uitbetaling wordt in mindering gebracht | 3/1/2021 | Er wordt een negatieve trans actie weer geven in de uitbetalings verklaring van partner Center |
+| Uitbetaling wordt Inge houden | 3/15/2021 | Toekomstige uitbetalingen worden weer gegeven in de uitbetalings verklaring van partner Center. De betaling wordt pas ontvangen als het saldo niet langer negatief is.  |
 |||
 
 ## <a name="next-step"></a>Volgende stap

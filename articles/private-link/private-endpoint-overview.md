@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022194"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106467"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -37,7 +37,7 @@ Hier volgen enkele belang rijke informatie over persoonlijke eind punten:
  
 - Netwerk verbindingen kunnen alleen worden geïnitieerd door clients die verbinding maken met het persoonlijke eind punt. service providers hebben geen routerings configuratie voor het initiëren van verbindingen met Service-consumenten. Verbindingen kunnen slechts in één richting tot stand worden gebracht.
 
-- Bij het maken van een persoonlijk eind punt wordt ook een alleen-lezen netwerk interface gemaakt voor de levens cyclus van de resource. Aan de interface worden dynamisch privé-IP-adressen toegewezen van het subnet dat is toegewezen aan de bron van de persoonlijke koppeling. de waarde van het privé-IP-adres blijft ongewijzigd voor de gehele levens cyclus van het persoonlijke eind punt.
+- Bij het maken van een persoonlijk eind punt wordt ook een alleen-lezen netwerk interface gemaakt voor de levens cyclus van de resource. Aan de interface worden dynamisch privé-IP-adressen toegewezen van het subnet dat is toegewezen aan de bron van de persoonlijke koppeling. De waarde van het privé-IP-adres blijft ongewijzigd voor de gehele levens cyclus van het persoonlijke eind punt.
  
 - Het persoonlijke eind punt moet worden geïmplementeerd in dezelfde regio als het virtuele netwerk. 
  
@@ -55,17 +55,18 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |Naam van de resource van de persoonlijke koppeling  |Resourcetype   |Subbronnen  |
 |---------|---------|---------|
 |**Privé koppelings service** (uw eigen service)   |  Micro soft. Network/privateLinkServices       | leeg |
+|**Azure Automation** |  Micro soft. Automation/automationAccounts | Webhook, DSCAndHybridWorker |
 |**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        | 
-|**Azure Storage**  | Micro soft. Storage/Storage accounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Micro soft. Storage/Storage accounts    |  BLOB (BLOB, blob_secondary)<BR> Data Lake File System Gen2 (DFS, dfs_secondary)       |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Data Lake File System Gen2 (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Micro soft. AzureCosmosDB/databaseAccounts    | SQL, MongoDB, Cassandra, Gremlin, tabel|
-|**Azure Database for PostgreSQL-één server** | Micro soft. DBforPostgreSQL/servers    | postgresqlServer |
-|**Azure Database for MySQL** | Micro soft. DBforMySQL/servers    | mysqlServer |
-|**Azure Database for MariaDB** | Micro soft. DBforMariaDB/servers    | mariadbServer |
+|**Azure Database for PostgreSQL-één server** | Microsoft.DBforPostgreSQL/servers    | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure IoT Hub** | Micro soft. devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Micro soft.-sleutel kluis/-kluizen    | kluis |
-|**Azure Kubernetes-service-Kubernetes-API** | Micro soft. container service/managedClusters    | managedCluster |
+|**Azure Kubernetes Service - Kubernetes API** | Micro soft. container service/managedClusters    | managedCluster |
 |**Azure Search** | Micro soft. Search/searchService| searchService|  
 |**Azure Container Registry** | Micro soft. ContainerRegistry/registers    | registry |
 |**Azure App Configuration** | Micro soft. Appconfiguration/configurationStores    | configurationStore |

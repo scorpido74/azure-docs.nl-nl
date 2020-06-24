@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef603141129be6a73e018fb3e3dcabf9c5d7961f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 503fc3c9ce566e9b3d90062709222bf27d88fa01
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993487"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106065"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
@@ -100,9 +100,8 @@ Volg deze instructies om te controleren of naadloze SSO op de juiste wijze is in
 
 ## <a name="step-3-roll-out-the-feature"></a>Stap 3: de functie implementeren
 
-U kunt met behulp van de onderstaande instructies de naadloze SSO voor uw gebruikers geleidelijk uitrollen. U begint met het toevoegen van de volgende Azure AD-Url's aan alle of geselecteerde intranet zone-instellingen van gebruikers met behulp van groepsbeleid in Active Directory:
+U kunt met behulp van de onderstaande instructies de naadloze SSO voor uw gebruikers geleidelijk uitrollen. U begint met het toevoegen van de volgende Azure AD-URL aan de intranet zone-instellingen van alle of geselecteerde gebruikers met behulp van groepsbeleid in Active Directory:
 
-- `https://aadg.windows.net.nsatc.net`
 - `https://autologon.microsoftazuread-sso.com`
 
 Daarnaast moet u de beleids instelling voor intranet zones met de naam **updates toestaan voor de status balk via script** inschakelen via Groepsbeleid. 

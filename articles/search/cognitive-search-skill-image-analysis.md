@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80369480"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080835"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Cognitieve vaardigheid van Image Analysis
 
@@ -22,7 +22,7 @@ De kwalificatie **analyse van installatie kopieën** extraheert een uitgebreide 
 > [!NOTE]
 > Kleine volumes (minder dan 20 trans acties) kunnen gratis worden uitgevoerd in azure Cognitive Search, maar voor grotere werk belastingen moet [een factureer bare Cognitive Services resource worden gekoppeld](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -34,15 +34,15 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| defaultLanguageCode   |  Een teken reeks die aangeeft welke taal moet worden geretourneerd. De service retourneert herkennings resultaten in een opgegeven taal. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/><br/>Ondersteunde talen zijn: <br/>*en* -Engels (standaard) <br/> *es* -Spaans <br/> *Ja* , Japans <br/> *PT* -Portugees <br/> *zh* -vereenvoudigd Chinees|
-| visualFeatures |  Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li> *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid](https://go.microsoft.com/fwlink/?linkid=2121117).|
-| nadere   | Een matrix met teken reeksen die aangeeft welke specifieke details van het domein moeten worden geretourneerd. Geldige typen visuele functies zijn: <ul><li>*beroemdheden* : identificeert beroemdheden als deze wordt gedetecteerd in de installatie kopie.</li><li>*bezienswaardigheden* : identificeert bezienswaardigheden als deze worden gedetecteerd in de installatie kopie. </li></ul> |
+| `defaultLanguageCode` |  Een teken reeks die aangeeft welke taal moet worden geretourneerd. De service retourneert herkennings resultaten in een opgegeven taal. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/><br/>Ondersteunde talen zijn: <br/>*en* -Engels (standaard) <br/> *es* -Spaans <br/> *Ja* , Japans <br/> *PT* -Portugees <br/> *zh* -vereenvoudigd Chinees|
+| `visualFeatures` |    Een matrix met teken reeksen die aangeeft welke Visual-functie typen moeten worden geretourneerd. Geldige typen visuele functies zijn:  <ul><li>*volwassene* : detecteert of de installatie kopie een porno grafie heeft (komt voor een naaktheid of een geslachte handeling) of is benchmarks (voor beeld van extreem geweld of bloed). Er wordt ook een expliciete suggestie voor inhoud (ook wel ongepaste-inhoud genoemd) gedetecteerd.</li><li>*Brands* : detecteert verschillende merken in een installatie kopie, met inbegrip van de geschatte locatie. De visuele functie *Brands* is alleen beschikbaar in het Engels.</li><li> *Categorieën* : de afbeeldings inhoud wordt gecategoriseerd op basis van een taxonomie die is gedefinieerd in de Cognitive Services [Computer Vision documentatie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Beschrijving* : Hiermee wordt de afbeeldings inhoud met een volledige zin in ondersteunde talen beschreven.</li><li>*gezichten* : detecteert of er gezichten aanwezig zijn. Indien aanwezig, worden coördinaten, geslacht en leeftijd gegenereerd.</li><li>   *objecten* : detecteert verschillende objecten in een installatie kopie, met inbegrip van de geschatte locatie. De Visual-functie voor *objecten* is alleen beschikbaar in het Engels.</li><li> *Tags* : Tags de afbeelding met een gedetailleerde lijst met woorden die betrekking hebben op de inhoud van de installatie kopie.</li></ul> Namen van visuele functies zijn hoofdletter gevoelig. Houd er rekening mee dat de visuele functies *kleur* en *imageType* zijn afgeschaft, maar deze functionaliteit kan nog steeds worden geopend via een [aangepaste vaardigheid](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).|
+| `details` | Een matrix met teken reeksen die aangeeft welke specifieke details van het domein moeten worden geretourneerd. Geldige typen visuele functies zijn: <ul><li>*beroemdheden* : identificeert beroemdheden als deze wordt gedetecteerd in de installatie kopie.</li><li>*bezienswaardigheden* : identificeert bezienswaardigheden als deze worden gedetecteerd in de installatie kopie. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
 | Invoer naam      | Beschrijving                                          |
 |---------------|------------------------------------------------------|
-| installatiekopie         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een ```none```andere waarde dan. Zie het voor [beeld](#sample-output) voor meer informatie.|
+| `image`         | Complex type. Momenteel werkt alleen met het veld '/document/normalized_images ', dat door de indexer van Azure Blob ```imageAction``` is geproduceerd wanneer is ingesteld op een andere waarde dan ```none``` . Zie het voor [beeld](#sample-output) voor meer informatie.|
 
 
 
@@ -514,15 +514,15 @@ In de volgende gevallen worden er geen elementen geëxtraheerd.
 
 | Foutcode | Beschrijving |
 |------------|-------------|
-| NotSupportedLanguage | De gegeven taal wordt niet ondersteund. |
-| InvalidImageUrl | De afbeeldings-URL heeft een ongeldige indeling of is niet toegankelijk.|
-| InvalidImageFormat | De invoer gegevens zijn geen geldige installatie kopie. |
-| InvalidImageSize | De invoer afbeelding is te groot. |
-| NotSupportedVisualFeature  | Het opgegeven functie type is niet geldig. |
-| NotSupportedImage | Niet-ondersteunde installatie kopie, bijvoorbeeld onderliggende porno grafie. |
-| InvalidDetails | Niet-ondersteund domein-specifiek model. |
+| `NotSupportedLanguage` | De gegeven taal wordt niet ondersteund. |
+| `InvalidImageUrl` | De afbeeldings-URL heeft een ongeldige indeling of is niet toegankelijk.|
+| `InvalidImageFormat` | De invoer gegevens zijn geen geldige installatie kopie. |
+| `InvalidImageSize` | De invoer afbeelding is te groot. |
+| `NotSupportedVisualFeature`  | Het opgegeven functie type is niet geldig. |
+| `NotSupportedImage` | Niet-ondersteunde installatie kopie, bijvoorbeeld onderliggende porno grafie. |
+| `InvalidDetails` | Niet-ondersteund domein-specifiek model. |
 
-Als u de fout melding ziet `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, controleert u het pad. Zowel beroemdheden als bezienswaardigheden zijn eigenschappen `detail`.
+Als u de fout melding ziet `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"` , controleert u het pad. Zowel beroemdheden als bezienswaardigheden zijn eigenschappen `detail` .
 
 ```json
 "categories":[  

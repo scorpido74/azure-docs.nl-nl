@@ -4,12 +4,12 @@ description: Meer informatie over hoe u de cluster-automatische schaal functie k
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683555"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730013"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Schaal een cluster automatisch om te voldoen aan de vereisten van de toepassing op de Azure Kubernetes-service (AKS)
 
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u de cluster-automatische schaal functie ins
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor dit artikel moet u de Azure CLI-versie 2.0.76 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor dit artikel moet u de Azure CLI-versie 2.0.76 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -99,7 +99,7 @@ az aks update \
 In het bovenstaande voor beeld wordt de cluster-automatische schaal functie van de groep met één knoop punt in *myAKSCluster* ingesteld op mini maal *1* en Maxi maal *5* knoop punten.
 
 > [!NOTE]
-De automatische schaal aanpassing van het cluster maakt op basis van het minimum-en maximum aantal ingesteld op elke knooppunt groep, maar dwingt deze niet af. Als u bijvoorbeeld een minimum aantal van 5 instelt wanneer het huidige aantal knoop punten 3 is, wordt de pool niet onmiddellijk geschaald naar 5. Als u het minimum aantal voor de knooppunt groep wijzigt naar een waarde die hoger is dan het huidige aantal knoop punten, wordt deze nieuwe limiet in acht genomen wanneer voldoende unschedulablee peulen aanwezig zijn die twee nieuwe extra knoop punten vereisen en een gebeurtenis van de automatische schaalr activeren. Als dit gebeurt, wordt de limiet voor het nieuwe minimum aantal overschreden voor de cluster-automatische schaal functie.
+> De automatische schaal aanpassing van het cluster maakt beslissingen op basis van het minimum-en maximum aantal dat is ingesteld voor elke knooppunt groep, maar dwingt deze niet af na het bijwerken van de minimum-of maximum aantallen. Als u bijvoorbeeld een minimum aantal van 5 instelt wanneer het huidige aantal knoop punten 3 is, wordt de pool niet onmiddellijk geschaald naar 5. Als het minimum aantal voor de knooppunt groep een waarde heeft die hoger is dan het huidige aantal knoop punten, worden de nieuwe minimum-of maximum instellingen in acht genomen wanneer voldoende unschedulablee peulen aanwezig zijn die 2 nieuwe extra knoop punten vereisen en een gebeurtenis voor een automatische schaalr activeren. Na de gebeurtenis Scale worden de limieten voor het nieuwe aantal in acht genomen.
 
 Bewaak de prestaties van uw toepassingen en services en pas het aantal knoop punten van de cluster automatisch aan, zodat dit overeenkomt met de vereiste prestaties.
 
@@ -117,7 +117,7 @@ U kunt ook gedetailleerdere Details van de cluster automatisch schalen configure
 | omlaag schalen-niet-lees bare tijd          | Hoe lang een ongelezeny-knoop punt niet nodig moet zijn voordat het in aanmerking komt voor omlaag schalen         | 20 minuten    |
 | schaal-down-gebruik-drempel waarde | Het niveau van het knooppunt gebruik, gedefinieerd als de som van aangevraagde resources gedeeld door capaciteit, waaronder een knoop punt kan worden overwogen voor omlaag schalen | 0,5 |
 | Max-correct beëindigen-SEC     | Het maximum aantal seconden dat de automatische schaal functie van het cluster wacht op beëindiging van pod wanneer u een knoop punt omlaag wilt schalen. | 600 seconden   |
-| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | onjuist |
+| saldo-vergelijkbaar-node-groups | Vergelijk bare knooppunt groepen detecteren en het aantal knoop punten ertussen verdelen | false |
 
 > [!IMPORTANT]
 > Het profiel van de cluster automatisch schalen is van invloed op alle knooppunt groepen die gebruikmaken van de automatische cluster schaal. U kunt geen profiel voor automatische schaal aanpassing instellen per knooppunt groep.

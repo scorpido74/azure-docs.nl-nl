@@ -2,22 +2,22 @@
 title: De documentatie voor de eenmalige aanmelding voor uw toepassing maken & publiceren
 description: Richt lijnen voor onafhankelijke software leveranciers op het integreren met Azure Active Directory
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 7e2436175fc68d76dabb98fb8ca4c9c27cde007b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74232284"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763309"
 ---
 # <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Documentatie voor eenmalige aanmelding voor uw toepassing maken en publiceren   
 

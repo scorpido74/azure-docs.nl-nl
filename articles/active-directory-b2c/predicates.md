@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396891"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203806"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikaten en PredicateValidations
 
@@ -30,7 +30,7 @@ In het volgende diagram ziet u de relatie tussen de elementen:
 
 ## <a name="predicates"></a>Predicaten
 
-Het **predicaat** element definieert een basis validatie om de waarde van een claim type te controleren en retourneert `true` of `false`. De validatie wordt uitgevoerd met behulp van een opgegeven **methode** -element en een set **parameter** elementen die relevant zijn voor de methode. Een predikaat kan bijvoorbeeld controleren of de lengte van een teken reeks claim waarde binnen het opgegeven minimum-en maximum aantal para meters ligt, of dat een teken reeks claim waarde een tekenset bevat. Het element **UserHelpText** biedt een fout bericht voor gebruikers als de controle mislukt. De waarde van het element **UserHelpText** kan worden gelokaliseerd met behulp van [taal aanpassing](localization.md).
+Het **predicaat** element definieert een basis validatie om de waarde van een claim type te controleren en retourneert `true` of `false` . De validatie wordt uitgevoerd met behulp van een opgegeven **methode** -element en een set **parameter** elementen die relevant zijn voor de methode. Een predikaat kan bijvoorbeeld controleren of de lengte van een teken reeks claim waarde binnen het opgegeven minimum-en maximum aantal para meters ligt, of dat een teken reeks claim waarde een tekenset bevat. Het element **UserHelpText** biedt een fout bericht voor gebruikers als de controle mislukt. De waarde van het element **UserHelpText** kan worden gelokaliseerd met behulp van [taal aanpassing](localization.md).
 
 Het element **predikaten** moet direct na het **ClaimsSchema** -element binnen het element [BuildingBlocks](buildingblocks.md) worden weer gegeven.
 
@@ -44,9 +44,9 @@ Het **predicaat** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor het predicaat. Andere elementen kunnen deze id in het beleid gebruiken. |
-| Methode | Ja | Het type methode dat moet worden gebruikt voor validatie. Mogelijke waarden: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)of [IsDateRange](#isdaterange).  |
-| HelpText | Nee | Een fout bericht voor gebruikers als de controle mislukt. Deze teken reeks kan worden gelokaliseerd met behulp van de [taal aanpassing](localization.md) |
+| Id | Yes | Een id die wordt gebruikt voor het predicaat. Andere elementen kunnen deze id in het beleid gebruiken. |
+| Methode | Yes | Het type methode dat moet worden gebruikt voor validatie. Mogelijke waarden: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)of [IsDateRange](#isdaterange).  |
+| HelpText | No | Een fout bericht voor gebruikers als de controle mislukt. Deze teken reeks kan worden gelokaliseerd met behulp van de [taal aanpassing](localization.md) |
 
 Het **predicaat** -element bevat de volgende elementen:
 
@@ -75,13 +75,13 @@ De methode IsLengthRange controleert of de lengte van een teken reeks claim waar
 
 | Parameter | Vereist | Beschrijving |
 | ------- | ----------- | ----------- |
-| Maximum | Ja | Het maximum aantal tekens dat kan worden ingevoerd. |
-| Minimum | Ja | Het minimum aantal tekens dat moet worden ingevoerd. |
+| Maximum | Yes | Het maximum aantal tekens dat kan worden ingevoerd. |
+| Minimum | Yes | Het minimum aantal tekens dat moet worden ingevoerd. |
 
 
-In het volgende voor beeld ziet u een methode IsLengthRange `Minimum` met `Maximum` de para meters en geeft u het lengte bereik van de teken reeks op:
+In het volgende voor beeld ziet u een methode IsLengthRange met de para meters `Minimum` en `Maximum` geeft u het lengte bereik van de teken reeks op:
 
-```XML
+```xml
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
   <Parameters>
     <Parameter Id="Minimum">8</Parameter>
@@ -96,11 +96,11 @@ De methode MatchesRegex controleert of een teken reeks claim waarde overeenkomt 
 
 | Parameter | Vereist | Beschrijving |
 | ------- | ----------- | ----------- |
-| RegularExpression | Ja | Het reguliere expressie patroon dat moet worden vergeleken. |
+| RegularExpression | Yes | Het reguliere expressie patroon dat moet worden vergeleken. |
 
-In het volgende voor beeld `MatchesRegex` ziet u een methode `RegularExpression` met de para meter die een reguliere expressie specificeert:
+In het volgende voor beeld ziet `MatchesRegex` u een methode met de para meter `RegularExpression` die een reguliere expressie specificeert:
 
-```XML
+```xml
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
@@ -114,11 +114,11 @@ De methode IncludesCharacters controleert of een teken reeks claim waarde een te
 
 | Parameter | Vereist | Beschrijving |
 | ------- | ----------- | ----------- |
-| CharacterSet | Ja | De set tekens die kan worden ingevoerd. Bijvoorbeeld kleine `a-z`letters, hoofd `A-Z`letters, cijfers `0-9`, of een lijst met symbolen, zoals. `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` |
+| CharacterSet | Yes | De set tekens die kan worden ingevoerd. Bijvoorbeeld kleine letters `a-z` , hoofd letters, `A-Z` cijfers, `0-9` of een lijst met symbolen, zoals `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
-In het volgende voor beeld `IncludesCharacters` ziet u een methode `CharacterSet` met de para meter die de set tekens specificeert:
+In het volgende voor beeld ziet `IncludesCharacters` u een methode met de para meter `CharacterSet` die de set tekens specificeert:
 
-```XML
+```xml
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
@@ -132,12 +132,12 @@ De methode IsDateRange controleert of een datum claim waarde ligt tussen een ber
 
 | Parameter | Vereist | Beschrijving |
 | ------- | ----------- | ----------- |
-| Maximum | Ja | De grootste mogelijke datum die kan worden ingevoerd. De notatie van de datum volgt `yyyy-mm-dd` de Conventie of `Today`. |
-| Minimum | Ja | De kleinste mogelijke datum die kan worden ingevoerd. De notatie van de datum volgt `yyyy-mm-dd` de Conventie of `Today`.|
+| Maximum | Yes | De grootste mogelijke datum die kan worden ingevoerd. De notatie van de datum volgt de `yyyy-mm-dd` Conventie of `Today` . |
+| Minimum | Yes | De kleinste mogelijke datum die kan worden ingevoerd. De notatie van de datum volgt de `yyyy-mm-dd` Conventie of `Today` .|
 
-In het volgende voor beeld `IsDateRange` ziet u een methode `Minimum` met `Maximum` de para meters en geeft u het datum `yyyy-mm-dd` bereik `Today`op met een notatie van en.
+In het volgende voor beeld ziet u een `IsDateRange` methode met de para meters `Minimum` en `Maximum` geeft u het datum bereik op met een notatie van `yyyy-mm-dd` en `Today` .
 
-```XML
+```xml
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
   <Parameters>
     <Parameter Id="Minimum">1970-01-01</Parameter>
@@ -152,7 +152,7 @@ Hoewel de predikaten de validatie definiëren voor het controleren op basis van 
 
 Het element **PredicateValidations** moet direct na het element **predikaten** worden weer gegeven binnen het [BuildingBlocks](buildingblocks.md) -element.
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="">
     <PredicateGroups>
@@ -180,7 +180,7 @@ Het element **PredicateValidation** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor de validatie van predikaten. Het element **claim** type kan deze id in het beleid gebruiken. |
+| Id | Yes | Een id die wordt gebruikt voor de validatie van predikaten. Het element **claim** type kan deze id in het beleid gebruiken. |
 
 Het element **PredicateValidation** bevat het volgende element:
 
@@ -198,7 +198,7 @@ Het element **PredicateGroup** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor de predicaat groep.  |
+| Id | Yes | Een id die wordt gebruikt voor de predicaat groep.  |
 
 Het **PredicateGroup** -element bevat de volgende elementen:
 
@@ -211,7 +211,7 @@ Het **PredicateReferences** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Nee | Hiermee geeft u op dat de waarde moet overeenkomen met een groot aantal predicaat definities voor de invoer die moet worden geaccepteerd. Als niet wordt opgegeven, moet de waarde overeenkomen met alle predicaat definities. |
+| MatchAtLeast | No | Hiermee geeft u op dat de waarde moet overeenkomen met een groot aantal predicaat definities voor de invoer die moet worden geaccepteerd. Als niet wordt opgegeven, moet de waarde overeenkomen met alle predicaat definities. |
 
 Het **PredicateReferences** -element bevat de volgende elementen:
 
@@ -223,7 +223,7 @@ Het **PredicateReference** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor de validatie van predikaten.  |
+| Id | Yes | Een id die wordt gebruikt voor de validatie van predikaten.  |
 
 
 ## <a name="configure-password-complexity"></a>Wachtwoord complexiteit configureren
@@ -231,15 +231,15 @@ Het **PredicateReference** -element bevat de volgende kenmerken:
 Met **predikaten** en **PredicateValidationsInput** kunt u de complexiteits vereisten bepalen voor wacht woorden die door een gebruiker worden verschaft bij het maken van een account. Azure AD B2C maakt standaard gebruik van sterke wacht woorden. Azure AD B2C biedt ook ondersteuning voor configuratie opties voor het beheren van de complexiteit van wacht woorden die klanten kunnen gebruiken. U kunt wachtwoord complexiteit definiëren met behulp van deze predicaat elementen:
 
 - Met **behulp van** de `IsLengthRange` -methode valideert u of het wacht woord tussen de 8 en 64 tekens moet lang zijn.
-- Met de `IncludesCharacters` methode wordt in **kleine letters** gecontroleerd of het wacht woord een kleine letter bevat.
-- **Hoofd letters** met `IncludesCharacters` de methode valideert of het wacht woord een hoofd letter bevat.
+- Met de methode wordt in **kleine letters** `IncludesCharacters` gecontroleerd of het wacht woord een kleine letter bevat.
+- **Hoofd letters** met de `IncludesCharacters` methode valideert of het wacht woord een hoofd letter bevat.
 - **Number** Als u de `IncludesCharacters` methode gebruikt, wordt gevalideerd of het wacht woord een cijfer bevat.
-- **Symbol** Met het `IncludesCharacters` symbool dat de methode gebruikt, wordt gevalideerd of het wacht woord een van de symbool tekens bevat.
+- **Symbol** Met het symbool `IncludesCharacters` dat de methode gebruikt, wordt gevalideerd of het wacht woord een van de symbool tekens bevat.
 - **Pincode** met behulp van de `MatchesRegex` methode valideert of het wacht woord alleen cijfers bevat.
-- Met **behulp van** de `MatchesRegex` methode valideert u of het wacht woord alleen een ongeldig teken heeft opgegeven.
+- **AllowedAADCharacters** Met behulp `MatchesRegex` van de methode valideert u of het wacht woord alleen een ongeldig teken heeft opgegeven.
 - **DisallowedWhitespace** met behulp van de `MatchesRegex` -methode valideert of het wacht woord niet begint of eindigt met een spatie.
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
@@ -294,10 +294,10 @@ Met **predikaten** en **PredicateValidationsInput** kunt u de complexiteits vere
 Nadat u de basis validaties hebt gedefinieerd, kunt u deze combi neren en een set wachtwoord beleidsregels maken die u in uw beleid kunt gebruiken:
 
 - **SimplePassword** valideert de DisallowedWhitespace, AllowedAADCharacters en IsLengthBetween8And64
-- **StrongPassword** valideert de DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. De laatste groep `CharacterClasses` voert een extra set predikaten uit met `MatchAtLeast` de waarde 3. Het wacht woord van de gebruiker moet tussen 8 en 16 tekens lang zijn en drie van de volgende tekens bevatten: kleine letters, hoofd letters, cijfer of symbool.
+- **StrongPassword** valideert de DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64. De laatste groep `CharacterClasses` voert een extra set predikaten uit met de `MatchAtLeast` waarde 3. Het wacht woord van de gebruiker moet tussen 8 en 16 tekens lang zijn en drie van de volgende tekens bevatten: kleine letters, hoofd letters, cijfer of symbool.
 - **CustomPassword** valideert alleen DisallowedWhitespace, AllowedAADCharacters. De gebruiker kan dus elke wille keurige lengte opgeven, op voor waarde dat de tekens geldig zijn.
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="SimplePassword">
     <PredicateGroups>
@@ -367,7 +367,7 @@ Nadat u de basis validaties hebt gedefinieerd, kunt u deze combi neren en een se
 
 Voeg in uw claim type het element **PredicateValidationReference** toe en geef de id op als een van de validaties voor het predicaat, zoals SimplePassword, StrongPassword of CustomPassword.
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -384,9 +384,9 @@ Hieronder ziet u hoe de elementen worden georganiseerd wanneer Azure AD B2C het 
 
 ## <a name="configure-a-date-range"></a>Een datum bereik configureren
 
-Met de **predikaten** en **PredicateValidations** elementen kunt u de minimum-en maximum datum waarden van de **UserInputType** bepalen met behulp `DateTimeDropdown`van een. Hiervoor maakt u een **predikaat** met de `IsDateRange` -methode en geeft u de minimale en maximale para meters op.
+Met de **predikaten** en **PredicateValidations** elementen kunt u de minimum-en maximum datum waarden van de **UserInputType** bepalen met behulp van een `DateTimeDropdown` . Hiervoor maakt u een **predikaat** met de- `IsDateRange` methode en geeft u de minimale en maximale para meters op.
 
-```XML
+```xml
 <Predicates>
   <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
@@ -397,9 +397,9 @@ Met de **predikaten** en **PredicateValidations** elementen kunt u de minimum-en
 </Predicates>
 ```
 
-Voeg een **PredicateValidation** toe met een verwijzing naar `DateRange` het predicaat.
+Voeg een **PredicateValidation** toe met een verwijzing naar het `DateRange` predicaat.
 
-```XML
+```xml
 <PredicateValidations>
   <PredicateValidation Id="CustomDateRange">
     <PredicateGroups>
@@ -413,9 +413,9 @@ Voeg een **PredicateValidation** toe met een verwijzing naar `DateRange` het pre
 </PredicateValidations>
 ```
 
-Voeg in uw claim type het element **PredicateValidationReference** toe en geef de id `CustomDateRange`op als.
+Voeg in uw claim type het element **PredicateValidationReference** toe en geef de id op als `CustomDateRange` .
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>
   <DataType>date</DataType>

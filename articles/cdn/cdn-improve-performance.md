@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253761"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887696"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>De prestaties verbeteren door bestanden in Azure CDN te comprimeren
 Bestands compressie is een eenvoudige en efficiënte methode om de snelheid van de bestands overdracht te verbeteren en de prestaties van de pagina belasting te verhogen door de grootte van een bestand te verkleinen voordat het wordt verzonden vanaf de-server. Bestands compressie kan de bandbreedte kosten verlagen en biedt uw gebruikers een meer reactie tijd.
@@ -127,7 +127,7 @@ Deze profielen ondersteunen de volgende compressie coderingen:
 
 Als de aanvraag meer dan één compressie type ondersteunt, hebben die compressie typen voor rang op brotli-compressie.
 
-Wanneer een aanvraag voor een Asset brotli compressie specificeert (HTTP- `Accept-Encoding: br`header is) en de aanvraag resulteert in een Missing in de cache, voert Azure CDN brotli-compressie van de Asset rechtstreeks op de pop-server uit. Daarna wordt het gecomprimeerde bestand vanuit de cache verwerkt.
+Wanneer een aanvraag voor een Asset brotli compressie specificeert (HTTP-header is `Accept-Encoding: br` ) en de aanvraag resulteert in een Missing in de cache, voert Azure CDN brotli-compressie van de Asset rechtstreeks op de pop-server uit. Daarna wordt het gecomprimeerde bestand vanuit de cache verwerkt.
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN standaard van Akamai-profielen
 
@@ -139,7 +139,7 @@ Deze profielen ondersteunen alleen gzip-compressie codering. Wanneer een profiel
 In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario beschreven:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Compressie is uitgeschakeld of het bestand komt niet in aanmerking voor compressie
-| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | Het CDN-antwoord naar de client | &nbsp; &nbsp; Opmerkingen&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | Het CDN-antwoord naar de client | &nbsp; &nbsp; &nbsp; &nbsp; Opmerkingen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd | |
 | Gecomprimeerd |Gecomprimeerde |Gecomprimeerde | |
@@ -149,7 +149,7 @@ In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario besc
 | Gecomprimeerde |Niet in cache |Gecomprimeerde | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Compressie is ingeschakeld en het bestand komt in aanmerking voor compressie
-| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | CDN-antwoord naar de client | Opmerkingen |
+| Door de client aangevraagde indeling (via Accept-Encoding-header) | Cache-bestands indeling | CDN-antwoord naar de client | Notities |
 | --- | --- | --- | --- |
 | Gecomprimeerd |Gecomprimeerd |Gecomprimeerd |CDN transcodeert tussen ondersteunde indelingen. |
 | Gecomprimeerd |Gecomprimeerde |Gecomprimeerd |CDN voert een compressie uit. |
@@ -162,7 +162,7 @@ In de volgende tabellen wordt Azure CDN compressie gedrag voor elk scenario besc
 Voor eind punten die zijn ingeschakeld voor Media Services CDN-streaming, wordt compressie standaard ingeschakeld voor de volgende MIME-typen: 
 - application/vnd. MS-sstr + XML 
 - toepassing/streepje + XML
-- application/vnd. Apple. mpegurl
+- URL van de toepassing/vnd.apple.mpeg
 - Application/F4M + XML 
 
 ## <a name="see-also"></a>Zie ook

@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-extensie voor Visual Studio code
 description: Meer informatie over het gebruik van de Azure Policy extensie voor Visual Studio code voor het opzoeken van de aliassen van Resource Manager.
-ms.date: 03/07/2020
+ms.date: 06/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 0c4e04cc352744fed1c7c2965f8096f0f05c2a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94d865e4a810fbebd8495153f97f9d1e3227e8af
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182562"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888510"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Azure Policy-extensie voor Visual Studio code gebruiken
 
@@ -26,7 +26,7 @@ Azure Policy extensie voor Visual Studio code kan worden geïnstalleerd op alle 
 De volgende items zijn vereist voor het volt ooien van de stappen in dit artikel:
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-- [Visual Studio code](https://code.visualstudio.com).
+- [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-azure-policy-extension"></a>Azure Policy extensie installeren
 
@@ -34,7 +34,7 @@ Nadat u aan de vereisten hebt voldaan, kunt u Azure Policy extensie voor Visual 
 
 1. Open Visual Studio Code.
 
-1. Ga in de menu balk naar**uitbrei dingen** **weer geven** > .
+1. Ga in de menu balk naar **View**  >  **uitbrei dingen**weer geven.
 
 1. Voer in het zoekvak **Azure Policy**in.
 
@@ -68,7 +68,7 @@ Als u resources en lookup-aliassen wilt evalueren, moet u verbinding maken met u
 
    - Opdracht palet
 
-     Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Azure in: Meld**u aan.
+     Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Meld**u aan.
 
      :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Azure Cloud Sign in voor Visual Studio code vanuit het opdracht palet" border="false":::
 
@@ -82,11 +82,11 @@ Wanneer u zich voor het eerst aanmeldt, worden alleen de standaard-abonnements b
 
    - Opdracht palet: 
 
-     Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Azure in: Selecteer abonnementen**.
+     Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Selecteer abonnementen**.
 
    - Venster voet tekst
 
-     Selecteer in de voet tekst van het venster onder aan het scherm het segment dat overeenkomt met **Azure \<:\>uw account**.
+     Selecteer in de voet tekst van het venster onder aan het scherm het segment dat overeenkomt met **Azure: \<your account\> **.
 
 1. Gebruik het vak filteren om abonnementen snel op naam te vinden. Controleer of verwijder vervolgens de controle van elk abonnement om de abonnementen in te stellen die worden weer gegeven door de Azure Policy-extensie. Wanneer u klaar bent met het toevoegen of verwijderen van abonnementen om weer te geven, selecteert u **OK**.
 
@@ -99,7 +99,7 @@ De uitbrei ding Azure Policy vermeldt resources in de geselecteerde abonnementen
 - **Resource groepen**
   - Alle resources op de resource groep waarin ze zich bevinden
 
-De uitbrei ding filtert standaard het deel van de resource provider op bestaande resources en resources die beleids aliassen hebben. Wijzig dit gedrag in **instellingen** > **extensies** > **Azure Policy** om alle resource providers zonder filters weer te geven.
+De uitbrei ding filtert standaard het deel van de resource provider op bestaande resources en resources die beleids aliassen hebben. Wijzig dit gedrag in **instellingen**  >  **extensies**  >  **Azure Policy** om alle resource providers zonder filters weer te geven.
 
 Klanten met honderden of duizenden resources in één abonnement kunnen een Doorzoek bare manier gebruiken om hun resources te vinden. Met de Azure Policy extensie kunt u zoeken naar een specifieke resource door de volgende stappen uit te voeren:
 
@@ -111,7 +111,7 @@ Klanten met honderden of duizenden resources in één abonnement kunnen een Door
 
    - Opdracht palet:
 
-     Ga in de menu balk naar het **opdracht palet** **weer geven** > en voer **resources in: resources zoeken**.
+     Ga in de menu balk naar het **View** > **opdracht palet**weer geven en voer **resources in: resources zoeken**.
 
 1. Als er meer dan één abonnement is geselecteerd voor weer gave, gebruikt u het filter om te selecteren welk abonnement u wilt zoeken.
 
@@ -123,9 +123,12 @@ Klanten met honderden of duizenden resources in één abonnement kunnen een Door
 
 Wanneer een resource is geselecteerd, hetzij via de Zoek interface, hetzij door deze te selecteren in de structuur weergave, wordt met de uitbrei ding van de Azure Policy het JSON-bestand geopend dat de resource bevat en alle eigenschaps waarden van de Resource Manager.
 
-Zodra een resource is geopend, wordt met de muis aanwijzer over de naam van de Resource Manager-eigenschap of de waarde de Azure Policy alias weer gegeven als er een bestaat. In dit voor beeld is de resource een `Microsoft.Compute/virtualMachines` resource type en de eigenschap **Properties. storageProfile. imageReference. offer.** Met de muis aanwijzer worden de overeenkomende aliassen weer gegeven.
+Zodra een resource is geopend, wordt met de muis aanwijzer over de naam van de Resource Manager-eigenschap of de waarde de Azure Policy alias weer gegeven als er een bestaat. In dit voor beeld is de resource een `Microsoft.Compute/virtualMachines` resource type en de eigenschap **Properties. StorageProfile. imageReference. offer.** Met de muis aanwijzer worden de overeenkomende aliassen weer gegeven.
 
 :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Met de Azure Policy-extensie wordt de eigenschaps alias van een resource manager weer gegeven" border="false":::
+
+> [!NOTE]
+> De VS code-extensie beschrijft alleen eigenschappen van de modus van de Resource Manager en geeft geen eigenschappen van de modus van de [resource provider](../concepts/definition-structure.md#mode) weer.
 
 ## <a name="search-for-and-view-policies-and-assignments"></a>Beleids regels en toewijzingen zoeken en weer geven
 
@@ -139,7 +142,7 @@ In de uitbrei ding Azure Policy worden beleids typen en beleids toewijzingen wee
 
    - Opdracht palet:
 
-     Ga in de menu balk naar het **opdracht palet** **weer geven** > en voer **beleid in: Zoek beleid**.
+     Ga in de menu balk naar het **View** > **opdracht palet**weer geven en voer **beleid in: Zoek beleid**.
 
 1. Als er meer dan één abonnement is geselecteerd voor weer gave, gebruikt u het filter om te selecteren welk abonnement u wilt zoeken.
 
@@ -151,7 +154,7 @@ Bij het selecteren van een beleid of toewijzing, hetzij via de Zoek interface, h
 
 ## <a name="sign-out"></a>Afmelden
 
-Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Azure in: Meld**u aan.
+Ga in de menu balk naar het **View**  >  **opdracht palet**weer geven en voer **Azure in: Meld**u aan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -159,5 +162,5 @@ Ga in de menu balk naar het**opdracht palet** **weer geven** > en voer **Azure i
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/12/2020
 ms.author: memildin
-ms.openlocfilehash: 16c2669dbb0a483a00d093871dfeeed65c5f9f20
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: e0988c60629cab2c6d7312e5067c31153b24e2dc
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669780"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688718"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
@@ -44,7 +44,7 @@ De volgende tabel bevat rollen en toegestane acties in Security Center.
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Beveiligings beleid bewerken|-|✔|-|-|✔|
 |Prijs categorie voor abonnement wijzigen|-|✔|-|-|✔|
-|Automatische inrichting in-of uitschakelen|-|✔|-|-|✔|
+|Automatische inrichting in-of uitschakelen|-|✔|✔|-|✔|
 |Aanbevelingen voor beveiliging Toep assen op een resource</br> (en gebruik een [snelle oplossing!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
 |Waarschuwingen negeren|-|✔|-|✔|✔|
 |Waarschuwingen en aanbevelingen weer geven|✔|✔|✔|✔|✔|

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271107"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688956"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor IoT Hub-berichtroutering
 
@@ -54,9 +54,9 @@ Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren
 | -------- | ---- | ----------- |
 | Invoer | tekenreeks | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
 | contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
-| iothub-verbinding-apparaat-id | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`voor query's. |
-| iothub-enqueuedtime | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`voor query's. |
-| iothub-interface-naam | tekenreeks | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`voor query's. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
+| iothub-verbinding-apparaat-id | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik voor query's `$connectionDeviceId` . |
+| iothub-enqueuedtime | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik voor query's `enqueuedTime` . |
+| iothub-interface-naam | tekenreeks | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik voor query's `$interfaceName` . Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast **Content type**, **contentEncoding**en **enqueuedTime**kan ook een query worden uitgevoerd op de **connectionDeviceId** -en **connectionModuleId** .
 
@@ -66,7 +66,7 @@ Toepassings eigenschappen zijn door de gebruiker gedefinieerde teken reeksen die
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op bericht systeem eigenschappen moet worden voorafgegaan door het `$` symbool. Query's op toepassings eigenschappen zijn toegankelijk met hun naam en mogen niet worden voorafgegaan door het `$`symbool. Als de naam van een toepassings eigenschap `$`begint met, zoekt IOT hub deze in de systeem eigenschappen en wordt deze niet gevonden. vervolgens wordt de toepassings eigenschappen weer gegeven. Bijvoorbeeld: 
+Een query op bericht systeem eigenschappen moet worden voorafgegaan door het `$` symbool. Query's op toepassings eigenschappen zijn toegankelijk met hun naam en mogen niet worden voorafgegaan door het `$` symbool. Als de naam van een toepassings eigenschap begint met `$` , zoekt IOT hub deze in de systeem eigenschappen en wordt deze niet gevonden. vervolgens wordt de toepassings eigenschappen weer gegeven. Bijvoorbeeld: 
 
 Een query uitvoeren op de systeem eigenschap contentEncoding 
 
@@ -142,12 +142,12 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld in C# wilt zien, downloadt u de [Azure IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het zip-bestand master. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice*laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
+> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld in C# wilt zien, downloadt u de [Azure IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het master.zip-bestand uit. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice*laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
 
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op de bericht tekst moet worden voorafgegaan door de `$body`. U kunt een verwijzing naar een hoofd tekst, een verwijzing naar de hoofd tekst of meerdere hoofd verwijzingen in de query-expressie gebruiken. De query-expressie kan ook een verwijzing naar een hoofd tekst combi neren met bericht systeem eigenschappen en naslag informatie over de eigenschappen van een Message-toepassing. Zo zijn de volgende geldige query-expressies: 
+Een query op de bericht tekst moet worden voorafgegaan door de `$body` . U kunt een verwijzing naar een hoofd tekst, een verwijzing naar de hoofd tekst of meerdere hoofd verwijzingen in de query-expressie gebruiken. De query-expressie kan ook een verwijzing naar een hoofd tekst combi neren met bericht systeem eigenschappen en naslag informatie over de eigenschappen van een Message-toepassing. Zo zijn de volgende geldige query-expressies: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -200,7 +200,7 @@ Met bericht routering kunt u een query uitvoeren op dubbele Tags en eigenschappe
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op het bericht dat moet worden voorafgegaan door de `$twin`. De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. Dit geldt voor apparaatdubbels en module apparaatdubbels. U `twin` `$twin`kunt ook onthouden of,, of `$body`, als eigenschaps namen. `body` Zo zijn de volgende geldige query-expressies: 
+Een query op het bericht dat moet worden voorafgegaan door de `$twin` . De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. Dit geldt voor apparaatdubbels en module apparaatdubbels. U kunt ook onthouden `twin` of,, `$twin` `body` of `$body` , als eigenschaps namen. Zo zijn de volgende geldige query-expressies: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

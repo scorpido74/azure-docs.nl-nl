@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74113302"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080594"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL Database inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -140,7 +140,7 @@ Het antwoord moet er ongeveer als volgt uitzien:
     }
 
 De uitvoerings geschiedenis bevat tot 50 van de meest recent voltooide uitvoeringen, die in de omgekeerde chronologische volg orde worden gesorteerd (zodat de meest recente uitvoering eerst in het antwoord komt).
-Meer informatie over het antwoord vindt u in de [status van de Indexeer functie ophalen](https://go.microsoft.com/fwlink/p/?LinkId=528198)
+Meer informatie over het antwoord vindt u in de [status van de Indexeer functie ophalen](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexeer functies uitvoeren volgens een schema
 U kunt de Indexeer functie ook zo rangschikken dat deze periodiek volgens een planning wordt uitgevoerd. Als u dit wilt doen, voegt u de eigenschap **schema** toe wanneer u de Indexeer functie maakt of bijwerkt. In het onderstaande voor beeld ziet u een PUT-aanvraag om de Indexeer functie bij te werken:
@@ -155,7 +155,7 @@ U kunt de Indexeer functie ook zo rangschikken dat deze periodiek volgens een pl
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen het begin van twee opeenvolgende indexerings uitvoeringen. Het kleinste toegestane interval is 5 minuten. de langste is één dag. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Het patroon hiervoor is: `P(nD)(T(nH)(nM))`. Voor beelden `PT15M` : elke 2 uur voor `PT2H` elke 15 minuten.
+De **interval** parameter is vereist. Het interval verwijst naar de tijd tussen het begin van twee opeenvolgende indexerings uitvoeringen. Het kleinste toegestane interval is 5 minuten. de langste is één dag. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Het patroon hiervoor is: `P(nD)(T(nH)(nM))` . Voor beelden: elke `PT15M` 2 uur voor elke 15 minuten `PT2H` .
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
@@ -228,11 +228,32 @@ Als u een beleid met een hoog water merk wilt gebruiken, maakt of werkt u de geg
     }
 
 > [!WARNING]
-> Als de bron tabel geen index heeft op de bovengrens kolom, kan er een time-out optreden bij query's die worden gebruikt door de SQL-Indexeer functie. In het bijzonder moet `ORDER BY [High Water Mark Column]` de-component een index efficiënt uitvoeren wanneer de tabel veel rijen bevat.
+> Als de bron tabel geen index heeft op de bovengrens kolom, kan er een time-out optreden bij query's die worden gebruikt door de SQL-Indexeer functie. In het bijzonder moet de- `ORDER BY [High Water Mark Column]` component een index efficiënt uitvoeren wanneer de tabel veel rijen bevat.
 >
 >
 
-Als er time-outfouten optreden, kunt `queryTimeout` u de instelling van de Indexeer functie gebruiken om de querytime-out in te stellen op een waarde die hoger is dan de standaard time-out van 5 minuten. Als u de time-out bijvoorbeeld wilt instellen op 10 minuten, maakt u de Indexeer functie of werkt u deze bij met de volgende configuratie:
+<a name="convertHighWaterMarkToRowVersion"></a>
+
+##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
+
+Als u een [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) -gegevens type gebruikt voor de kolom hoog water merk, kunt u overwegen de configuratie-instelling voor de `convertHighWaterMarkToRowVersion` Indexeer functie te gebruiken. `convertHighWaterMarkToRowVersion`heeft twee dingen:
+
+* Gebruik het gegevens type rowversion voor de kolom hoog water merk in de SQL-query van de Indexeer functie. Met het juiste gegevens type verbetert de prestaties van index query's.
+* Trek 1 af van de waarde van rowversion voordat de indexer-query wordt uitgevoerd. Weer gaven met 1 tot veel samen voegingen kunnen rijen met dubbele rowversion-waarden bevatten. Als u 1 aftrekt, zorgt u ervoor dat de Indexeer functie-query deze rijen niet mist.
+
+Als u deze functie wilt inschakelen, moet u de indexer maken of bijwerken met de volgende configuratie:
+
+    {
+      ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
+    }
+
+<a name="queryTimeout"></a>
+
+##### <a name="querytimeout"></a>queryTimeout
+
+Als er time-outfouten optreden, kunt u de instelling van de `queryTimeout` Indexeer functie gebruiken om de querytime-out in te stellen op een waarde die hoger is dan de standaard time-out van 5 minuten. Als u de time-out bijvoorbeeld wilt instellen op 10 minuten, maakt u de Indexeer functie of werkt u deze bij met de volgende configuratie:
 
     {
       ... other indexer definition properties
@@ -240,7 +261,11 @@ Als er time-outfouten optreden, kunt `queryTimeout` u de instelling van de Index
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-U kunt de `ORDER BY [High Water Mark Column]` component ook uitschakelen. Dit wordt echter niet aanbevolen omdat als de uitvoering van de Indexeer functie wordt onderbroken door een fout, de Indexeer functie alle rijen opnieuw moet verwerken als deze later wordt uitgevoerd, zelfs als de Indexeer functie bijna alle rijen al heeft verwerkt op het moment dat deze werd onderbroken. Als u de `ORDER BY` component wilt uitschakelen, `disableOrderByHighWaterMarkColumn` gebruikt u de instelling in de definitie van de Indexeer functie:  
+<a name="disableOrderByHighWaterMarkColumn"></a>
+
+##### <a name="disableorderbyhighwatermarkcolumn"></a>disableOrderByHighWaterMarkColumn
+
+U kunt de component ook uitschakelen `ORDER BY [High Water Mark Column]` . Dit wordt echter niet aanbevolen omdat als de uitvoering van de Indexeer functie wordt onderbroken door een fout, de Indexeer functie alle rijen opnieuw moet verwerken als deze later wordt uitgevoerd, zelfs als de Indexeer functie bijna alle rijen al heeft verwerkt op het moment dat deze werd onderbroken. Als u de `ORDER BY` component wilt uitschakelen, gebruikt u de `disableOrderByHighWaterMarkColumn` instelling in de definitie van de Indexeer functie:  
 
     {
      ... other indexer definition properties
@@ -264,12 +289,12 @@ Wanneer u de techniek voor zacht verwijderen gebruikt, kunt u het beleid voor vo
         }
     }
 
-De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks representatie van de werkelijke waarde. Als u bijvoorbeeld een kolom met gehele getallen hebt waarin verwijderde rijen worden gemarkeerd met de waarde 1, gebruikt `"1"`u. Als u een BIT-kolom hebt waarin verwijderde rijen worden gemarkeerd met de Booleaanse waarde True, gebruikt u de `True` letterlijke teken reeks of `true`is het hoofdletter gebruik.
+De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks representatie van de werkelijke waarde. Als u bijvoorbeeld een kolom met gehele getallen hebt waarin verwijderde rijen worden gemarkeerd met de waarde 1, gebruikt u `"1"` . Als u een BIT-kolom hebt waarin verwijderde rijen worden gemarkeerd met de Booleaanse waarde True, gebruikt u de letterlijke teken reeks `True` of `true` is het hoofdletter gebruik.
 
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
-| SQL-gegevens type | Toegestane doel index veld typen | Opmerkingen |
+| SQL-gegevenstype | Toegestane doel index veld typen | Notities |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |

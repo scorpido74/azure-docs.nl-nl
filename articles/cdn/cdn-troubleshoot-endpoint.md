@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083119"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888685"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Troubleshooting Azure CDN-eind punten die een 404-status code retour neren
 Dit artikel biedt u de mogelijkheid om problemen met Azure Content Delivery Network (CDN)-eind punten op te lossen die de status codes van 404 HTTP-antwoorden retour neren.
@@ -49,7 +49,7 @@ Er zijn verschillende mogelijke oorzaken, zoals:
 > 
 
 ### <a name="check-the-origin-file"></a>Het bron bestand controleren
-Controleer eerst of het bestand dat in de cache is opgeslagen, beschikbaar is op de oorspronkelijke server en toegankelijk is via internet. De snelste manier om dat te doen is door een browser in een persoonlijke of incognito-sessie te openen en rechtstreeks naar het bestand te bladeren. Typ of plak de URL in het vak Adres en controleer of het bestand de verwachte resultaten heeft. Stel dat u een bestand in een Azure Storage-account hebt dat toegankelijk is op https:\//cdndocdemo.blob.core.Windows.net/publicblob/Lorem.txt. Als u de inhoud van dit bestand kunt laden, wordt de test door gegeven.
+Controleer eerst of het bestand dat in de cache is opgeslagen, beschikbaar is op de oorspronkelijke server en toegankelijk is via internet. De snelste manier om dat te doen is door een browser in een persoonlijke of incognito-sessie te openen en rechtstreeks naar het bestand te bladeren. Typ of plak de URL in het vak Adres en controleer of het bestand de verwachte resultaten heeft. Stel bijvoorbeeld dat u een bestand hebt in een Azure Storage-account dat toegankelijk is op https: \/ /cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Als u de inhoud van dit bestand kunt laden, wordt de test door gegeven.
 
 ![Gelukt!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 
@@ -68,12 +68,12 @@ De pagina **oorsprong** wordt weer gegeven.
 ![Oorspronkelijke pagina](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
 
 #### <a name="origin-type-and-hostname"></a>Type oorsprong en hostnaam
-Controleer of de waarden van het **type oorsprong** en de hostnaam van de **oorsprong** juist zijn. In dit voor beeld is https\/:/cdndocdemo.blob.core.Windows.net/publicblob/Lorem.txt, het hostname-gedeelte van de URL is *cdndocdemo.blob.core.Windows.net*, dat juist is. Omdat Azure Storage, Web-apps en Cloud service-oorsprong een vervolg keuzelijst waarde gebruiken voor het veld **hostnaam hostnamen** , zijn onjuiste spellen geen problemen. Als u echter een aangepaste oorsprong gebruikt, controleert u of de hostnaam juist is gespeld.
+Controleer of de waarden van het **type oorsprong** en de hostnaam van de **oorsprong** juist zijn. In dit voor beeld is https: \/ /cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, het hostname-gedeelte van de URL is *cdndocdemo.blob.core.Windows.net*, dat juist is. Omdat Azure Storage, Web-apps en Cloud service-oorsprong een vervolg keuzelijst waarde gebruiken voor het veld **hostnaam hostnamen** , zijn onjuiste spellen geen problemen. Als u echter een aangepaste oorsprong gebruikt, controleert u of de hostnaam juist is gespeld.
 
 #### <a name="http-and-https-ports"></a>HTTP-en HTTPS-poorten
-Controleer uw **http-** en **HTTPS-poorten**. In de meeste gevallen zijn 80 en 443 juist, en u hoeft geen wijzigingen aan te brengen.  Als de oorspronkelijke server op een andere poort luistert, moet deze hier worden weer gegeven. Als u het niet zeker weet, bekijkt u de URL van het bron bestand. De specificatie van HTTP-en HTTPS-poorten 80 en 443 worden als standaard waarden gebruikt. In de voor beeld-URL,\/https:/cdndocdemo.blob.core.Windows.net/publicblob/Lorem.txt, is geen poort opgegeven, dus wordt de standaard waarde van 443 gebruikt en zijn de instellingen juist.  
+Controleer uw **http-** en **HTTPS-poorten**. In de meeste gevallen zijn 80 en 443 juist, en u hoeft geen wijzigingen aan te brengen.  Als de oorspronkelijke server op een andere poort luistert, moet deze hier worden weer gegeven. Als u het niet zeker weet, bekijkt u de URL van het bron bestand. De specificatie van HTTP-en HTTPS-poorten 80 en 443 worden als standaard waarden gebruikt. In het voor beeld-URL, https: \/ /cdndocdemo.blob.core.windows.net/publicblob/lorem.txt is een poort niet opgegeven, dus wordt de standaard waarde van 443 gebruikt en zijn de instellingen juist.  
 
-Stel echter dat de URL voor het oorspronkelijke bestand dat u eerder hebt getest http:\//www.contoso.com:8080/file.txt. Noteer het gedeelte *: 8080* aan het einde van het hostname-segment. Met dit nummer geeft u aan dat de browser poort 8080 moet gebruiken om verbinding te maken\.met de webserver op www-contoso.com. Daarom moet u *8080* invoeren in het veld **http-poort** . Het is belang rijk te weten dat deze poort instellingen alleen van invloed zijn op de poort die door het eind punt wordt gebruikt om informatie op te halen van de oorsprong.
+Stel echter dat de URL voor het oorspronkelijke bestand dat u eerder hebt getest http: \/ /www.contoso.com:8080/file.txt. Noteer het gedeelte *: 8080* aan het einde van het hostname-segment. Met dit nummer geeft u aan dat de browser poort 8080 moet gebruiken om verbinding te maken met de webserver op www \. -contoso.com. Daarom moet u *8080* invoeren in het veld **http-poort** . Het is belang rijk te weten dat deze poort instellingen alleen van invloed zijn op de poort die door het eind punt wordt gebruikt om informatie op te halen van de oorsprong.
 
 > [!NOTE]
 > **Azure CDN standaard van Akamai** -eind punten staan niet het volledige TCP-poort bereik voor de oorsprong toe.  Zie [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100)) (Door Azure CDN van Akamai toegestane poorten van oorsprong) voor een lijst met poorten van oorsprong die niet zijn toegestaan.  
@@ -92,7 +92,7 @@ De pagina CDN-eind punt **configureren** wordt weer gegeven.
 #### <a name="protocols"></a>Protocollen
 Voor **protocollen**, controleert u of het protocol dat door de clients wordt gebruikt, is geselecteerd. Omdat hetzelfde protocol dat wordt gebruikt door de client wordt gebruikt voor toegang tot de bron, is het belang rijk dat de oorspronkelijke poorten correct zijn geconfigureerd in de vorige sectie. Het CDN-eind punt luistert alleen op de standaard-HTTP-en HTTPS-poorten (80 en 443), ongeacht de poort van oorsprong.
 
-We gaan terug naar ons hypothetische voor beeld met\/http:/www.contoso.com:8080/file.txt.  Zoals u herinnert, heeft Contoso opgegeven *8080* als http-poort, maar laten we ook aannemen dat *44300* als HTTPS-poort is opgegeven.  Als ze een eind punt hebben gemaakt met de naam *Contoso*, wordt de hostnaam van het CDN-eind punt *contoso.azureedge.net*.  Een aanvraag voor http:\//contoso.azureedge.net/file.txt is een HTTP-aanvraag. Daarom gebruikt het eind punt http op poort 8080 om het op te halen van de oorsprong.  Een beveiligde aanvraag via HTTPS, https:\//contoso.azureedge.net/file.txt, zorgt ervoor dat het eind punt https gebruikt op poort 44300 bij het ophalen van het bestand van de oorsprong.
+We gaan terug naar ons hypothetische voor beeld met http: \/ /www.contoso.com:8080/file.txt.  Zoals u herinnert, heeft Contoso opgegeven *8080* als http-poort, maar laten we ook aannemen dat *44300* als HTTPS-poort is opgegeven.  Als ze een eind punt hebben gemaakt met de naam *Contoso*, wordt de hostnaam van het CDN-eind punt *contoso.azureedge.net*.  Een aanvraag voor http: \/ /contoso.azureedge.net/file.txt is een HTTP-aanvraag. Daarom gebruikt het eind punt http op poort 8080 om het op te halen van de oorsprong.  Een beveiligde aanvraag via HTTPS, https: \/ /contoso.azureedge.net/file.txt, zorgt ervoor dat het eind punt https gebruikt op poort 44300 bij het ophalen van het bestand van de oorsprong.
 
 #### <a name="origin-host-header"></a>Host-header van oorsprong
 De **oorsprong** van de host-header is de waarde van de host-header die met elke aanvraag wordt verzonden naar de oorsprong.  In de meeste gevallen moet dit hetzelfde zijn als de hostnaam van de **oorsprong** die we eerder hebben geverifieerd.  Een onjuiste waarde in dit veld veroorzaakt doorgaans geen 404-statussen, maar veroorzaakt waarschijnlijk andere 4xx-statussen, afhankelijk van wat de oorsprong verwacht.
@@ -100,7 +100,7 @@ De **oorsprong** van de host-header is de waarde van de host-header die met elke
 #### <a name="origin-path"></a>Pad voor de oorsprong
 Ten slotte moeten we het **oorspronkelijke pad**verifiëren.  Dit is standaard leeg.  U moet dit veld alleen gebruiken als u het bereik wilt beperken van de bron-hostende resources die u beschikbaar wilt maken op het CDN.  
 
-In het voor beeld-eind punt wilden alle resources op het opslag account beschikbaar zijn, dus het **bronpad** is leeg gelaten.  Dit betekent dat een aanvraag voor https:\//cdndocdemo.azureedge.net/publicblob/Lorem.txt resulteert in een verbinding van het eind punt naar cdndocdemo.core.Windows.net die */publicblob/Lorem.txt*aanvraagt.  Evenzo resulteert een aanvraag voor https:\//cdndocdemo.azureedge.net/donotcache/status.png in het eind punt dat */donotcache/status.png* van de oorsprong aanvraagt.
+In het voor beeld-eind punt wilden alle resources op het opslag account beschikbaar zijn, dus het **bronpad** is leeg gelaten.  Dit betekent dat een aanvraag voor https: \/ /cdndocdemo.azureedge.net/publicblob/lorem.txt resulteert in een verbinding van het eind punt naar cdndocdemo.core.Windows.net die */publicblob/lorem.txt*aanvraagt.  Op dezelfde manier wordt een aanvraag voor https: \/ /cdndocdemo.azureedge.net/donotcache/status.png resultaten opgeleverd in het eind punt dat */donotcache/status.png* aanvraagt van de oorsprong.
 
-Maar wat als u het CDN niet wilt gebruiken voor elk pad op uw oorsprong?  Stel dat u het pad naar de *publicblob* wilt weer geven.  Als we */publicblob* in het veld **bronpad** invoeren, zorgt dat ervoor dat het eind punt */publicblob* invoegt voordat elke aanvraag wordt ingediend bij de oorsprong.  Dit betekent dat de aanvraag voor https:\//cdndocdemo.azureedge.net/publicblob/Lorem.txt nu daad werkelijk het aanvraag gedeelte van de URL, */publicblob/Lorem.txt*en het toevoegen van */publicblob* aan het begin zal nemen. Dit resulteert in een aanvraag voor */publicblob/publicblob/Lorem.txt* van de oorsprong.  Als dat pad niet kan worden omgezet naar een echt bestand, wordt de status van de 404 geretourneerd.  De juiste URL voor het ophalen van Lorem. txt in dit voor beeld is in\/werkelijkheid https:/cdndocdemo.azureedge.net/Lorem.txt.  Houd er rekening mee dat het pad van de */publicblob* helemaal niet is opgenomen, omdat het aanvraag gedeelte van de URL */lorem.txt* is en het eind punt */publicblob*toevoegt, wat *betekent dat de aanvraag wordt door* gegeven aan de oorsprong.
+Maar wat als u het CDN niet wilt gebruiken voor elk pad op uw oorsprong?  Stel dat u het pad naar de *publicblob* wilt weer geven.  Als we */publicblob* in het veld **bronpad** invoeren, zorgt dat ervoor dat het eind punt */publicblob* invoegt voordat elke aanvraag wordt ingediend bij de oorsprong.  Dit betekent dat de aanvraag voor https: \/ /cdndocdemo.azureedge.net/publicblob/lorem.txt nu daad werkelijk het aanvraag gedeelte van de URL, */publicblob/lorem.txt*en de */publicblob* toevoegen aan het begin. Dit resulteert in een aanvraag voor */publicblob/publicblob/lorem.txt* van de oorsprong.  Als dat pad niet kan worden omgezet naar een echt bestand, wordt de status van de 404 geretourneerd.  De juiste URL voor het ophalen van lorem.txt in dit voor beeld is in werkelijkheid https: \/ /cdndocdemo.azureedge.net/lorem.txt.  Houd er rekening mee dat het pad van de */publicblob* helemaal niet is opgenomen, omdat het aanvraag gedeelte van de URL */lorem.txt* is en het eind punt */publicblob*toevoegt, wat resulteert in */publicblob/lorem.txt* de aanvraag wordt door gegeven aan de oorsprong.
 

@@ -7,22 +7,22 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae9b282c22b405eeebc2719e377a3091fc9d12e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840772"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724947"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>De beveiliging van uw virtuele machine analyseren met de weer gave van de beveiligings groep met behulp van Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Zo](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
@@ -40,7 +40,7 @@ In het scenario dat in dit artikel wordt behandeld, worden de geconfigureerde en
 
 ## <a name="get-a-vm"></a>Een virtuele machine ophalen
 
-Een virtuele machine is vereist om de `vm list` cmdlet uit te voeren. Met de volgende opdracht worden de virtuele machines in een resource groep weer gegeven:
+Een virtuele machine is vereist om de cmdlet uit te voeren `vm list` . Met de volgende opdracht worden de virtuele machines in een resource groep weer gegeven:
 
 ```azurecli
 az vm list -resource-group resourceGroupName

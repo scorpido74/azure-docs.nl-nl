@@ -4,16 +4,16 @@ description: Op deze pagina vindt u instructies voor het oplossen van problemen 
 services: expressroute
 author: rambk
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 827d68a5f0f35e42acae1fa225646eb509f69c89
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78330954"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729316"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Connectiviteit ExpressRoute controleren
 Dit artikel helpt u bij het controleren en oplossen van problemen met ExpressRoute-connectiviteit. Met ExpressRoute wordt een on-premises netwerk uitgebreid naar de micro soft-Cloud via een particuliere verbinding die meestal wordt vereenvoudigd door een connectiviteits provider. Voor ExpressRoute-connectiviteit is traditioneel drie afzonderlijke netwerk zones vereist:
@@ -36,7 +36,7 @@ Het doel van dit document is om gebruikers te helpen te bepalen of en waar een c
 
 ## <a name="overview"></a>Overzicht
 In het volgende diagram ziet u de logische verbinding van een klanten netwerk met het micro soft-netwerk met behulp van ExpressRoute.
-[![i]][1]
+[![1]][1]
 
 In het voor gaande diagram duiden de getallen op belang rijke netwerk punten. In dit artikel wordt naar deze netwerk punten gerefereerd op basis van het bijbehorende nummer. Afhankelijk van het ExpressRoute-connectiviteits model: de co-locatie van de Cloud uitwisseling, Point-to-Point Ethernet-verbinding of any-to-any (IPVPN), kunnen de netwerk punten 3 en 4 switches zijn (laag 2 apparaten) of routers (laag 3-apparaten). In het model voor directe connectiviteit bevinden zich geen netwerk punten 3 en 4; in plaats daarvan (2) zijn rechtstreeks verbonden met Msee's via donker glas. De belangrijkste netwerk punten worden als volgt geïllustreerd:
 

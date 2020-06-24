@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/18/2020
-ms.openlocfilehash: 3098ca0d3d5e41c298d3058ffa84fcf129648281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399486"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730137"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 
@@ -25,7 +25,7 @@ ms.locfileid: "81399486"
 
 In deze zelf studie gebruikt u de Azure Portal om een data factory te maken. Vervolgens gebruikt u het hulp programma Gegevens kopiëren om een pijp lijn te maken die alleen nieuwe en gewijzigde bestanden incrementeel kopieert van Azure Blob-opslag naar Azure Blob-opslag. Hiermee wordt `LastModifiedDate` bepaald welke bestanden moeten worden gekopieerd.
 
-Nadat u de stappen hier hebt voltooid, worden in Azure Data Factory alle bestanden in het bron archief gescand, wordt het bestands filter `LastModifiedDate`toegepast en wordt alleen naar de doel opslag gekopieerd bestanden die sinds de laatste keer zijn bijgewerkt of gewijzigd. Houd er rekening mee dat als Data Factory een groot aantal bestanden scant, er nog steeds een lange duur moet worden verwacht. Het scannen van bestanden is tijdrovend, zelfs wanneer de hoeveelheid gekopieerde gegevens wordt gereduceerd.
+Nadat u de stappen hier hebt voltooid, worden in Azure Data Factory alle bestanden in het bron archief gescand, wordt het bestands filter toegepast `LastModifiedDate` en wordt alleen naar de doel opslag gekopieerd bestanden die sinds de laatste keer zijn bijgewerkt of gewijzigd. Houd er rekening mee dat als Data Factory een groot aantal bestanden scant, er nog steeds een lange duur moet worden verwacht. Het scannen van bestanden is tijdrovend, zelfs wanneer de hoeveelheid gekopieerde gegevens wordt gereduceerd.
 
 > [!NOTE]
 > Zie [Inleiding tot Azure Data Factory](introduction.md) als u niet bekend bent met Azure Data Factory.
@@ -33,13 +33,13 @@ Nadat u de stappen hier hebt voltooid, worden in Azure Data Factory alle bestand
 In deze zelfstudie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
-> * De uitvoering van de pijplijn en van de activiteit controleren
+> * De uitvoering van de pijplijn en van de activiteit controleren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 * **Azure Storage account**: gebruik Blob Storage voor de bron-en Sink-gegevens opslag. Als u geen Azure Storage account hebt, volgt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
 
 ## <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
@@ -52,11 +52,11 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer **Een resource maken** in het linkerdeelvenster. Selecteer **Analytics** > **Data Factory**:
+1. Selecteer **Een resource maken** in het linkerdeelvenster. Selecteer **Analytics**  >  **Data Factory**:
 
    ![Data Factory selecteren](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. Voer op de pagina **Nieuwe data factory****ADFTutorialDataFactory** in bij **Naam**.
+2. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
 
    De naam van de data factory moet wereldwijd uniek zijn. Dit fout bericht kan worden weer gegeven:
 
@@ -128,7 +128,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
      ![De pagina voor het invoer bestand of de map kiezen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
-5. Selecteer op de pagina **doel gegevens archief** de **AzureBlobStorage** -service die u hebt gemaakt. Dit is hetzelfde opslag account als het gegevens archief van de bron. Selecteer **volgende**.
+5. Selecteer op de pagina **doel gegevens archief** de **AzureBlobStorage** -service die u hebt gemaakt. Dit is hetzelfde opslag account als het gegevens archief van de bron. Selecteer vervolgens **Volgende**.
 
 6. Voltooi op de pagina **Uitvoerbestand of uitvoermap kiezen** de volgende stappen:
 
@@ -150,7 +150,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De toepassing wordt overgeschakeld naar het tabblad **monitor** . U ziet de status van de pijp lijn. Selecteer **Vernieuwen** om de lijst te vernieuwen. Selecteer de koppeling onder **PIJPLIJN naam** om details van de activiteit weer te geven of de pijp lijn opnieuw uit te voeren.
 
-    ![De lijst vernieuwen en Details van de uitvoering van de activiteit weer geven](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![De lijst vernieuwen en Details van de uitvoering van de activiteit weer geven](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. Er is slechts één activiteit (de Kopieer activiteit) in de pijp lijn, zodat er slechts één vermelding wordt weer gegeven. Selecteer de koppeling **Details** (het bril-pictogram) in de kolom **naam van activiteit** voor meer informatie over de Kopieer bewerking. Zie [overzicht van Kopieer activiteiten](copy-activity-overview.md)voor meer informatie over de eigenschappen.
 
@@ -160,23 +160,21 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![Geen bestanden in de bron container of doel container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. Maak een leeg tekst bestand en geef het de naam **bestand1. txt**. Upload dit tekst bestand naar de bron container in uw opslag account. U kunt verschillende hulpprogram ma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
+12. Maak een leeg tekst bestand en geef het de naam **file1.txt**. Upload dit tekst bestand naar de bron container in uw opslag account. U kunt verschillende hulpprogram ma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
-    ![Maak bestand1. txt en upload deze naar de bron container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![file1.txt maken en uploaden naar de bron container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijplijn uitvoeringen**en wacht u totdat dezelfde pijp lijn automatisch opnieuw wordt geactiveerd.  
 
-    ![Alle pijplijn uitvoeringen selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
-
 14. Wanneer de tweede pijp lijn is uitgevoerd, voert u dezelfde stappen uit om de details van de uitvoering van de activiteit te controleren.  
 
-    U ziet dat het ene bestand (bestand1. txt) is gekopieerd van de bron container naar de doel container van uw Blob Storage-account:
+    U ziet dat één bestand (file1.txt) is gekopieerd van de bron container naar de doel container van uw Blob Storage-account:
 
-    ![bestand1. txt is gekopieerd van de bron container naar de doel container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![file1.txt is gekopieerd van de bron container naar de doel container](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
 
-15. Maak nog een leeg tekst bestand en geef het de naam **bestand2. txt**. Upload dit tekst bestand naar de bron container in uw Blob Storage-account.
+15. Maak nog een leeg tekst bestand en noem het **file2.txt**. Upload dit tekst bestand naar de bron container in uw Blob Storage-account.
 
-16. Herhaal stap 13 en 14 voor het tweede tekst bestand. U ziet dat alleen het nieuwe bestand (bestand2. txt) is gekopieerd van de bron container naar de doel container van uw opslag account tijdens de uitvoering van deze pijp lijn.  
+16. Herhaal stap 13 en 14 voor het tweede tekst bestand. U ziet dat alleen het nieuwe bestand (file2.txt) is gekopieerd van de bron container naar de doel container van uw opslag account tijdens de uitvoering van deze pijp lijn.  
 
     U kunt ook controleren of er slechts één bestand is gekopieerd met behulp van [Azure Storage Explorer](https://storageexplorer.com/) om de bestanden te scannen:
 

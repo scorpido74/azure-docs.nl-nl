@@ -1,83 +1,174 @@
 ---
-title: Gids voor probleem oplossing-Azure Event Hubs | Microsoft Docs
-description: Dit artikel bevat een lijst met uitzonde ringen en voorgestelde acties van Azure Event Hubs Messa ging.
+title: Verbindings problemen oplossen-Azure Event Hubs | Microsoft Docs
+description: Dit artikel bevat informatie over het oplossen van verbindings problemen met Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: ab3cbdf938409f4eacffa10ae5cb20f8c36b5856
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/27/2020
+ms.author: spelluru
+ms.openlocfilehash: 4111a71200ec9bffdfed37c926635754c868f71e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124666"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726715"
 ---
-# <a name="azure-event-hubs---troubleshooting-guide"></a>Azure-Event Hubs-probleemoplossings gids
-In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen die kunnen optreden bij het gebruik van Azure Event hubs.
+# <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Verbindings problemen oplossen-Azure Event Hubs
+Er zijn verschillende redenen waarom client toepassingen geen verbinding kunnen maken met een Event Hub. De verbindings problemen die u ondervindt, kunnen permanent of tijdelijk zijn. Als het probleem voortdurend optreedt (permanent), wilt u mogelijk de connection string controleren, de firewall instellingen van uw organisatie, de instellingen van de IP-firewall, de instellingen voor netwerk beveiliging (Service-eind punten, persoonlijke eind punten, enzovoort). Voor tijdelijke problemen voert u een upgrade uit naar de nieuwste versie van de SDK, voert u opdrachten uit om verwijderde pakketten te controleren en netwerk traceringen te verkrijgen, kan u helpen bij het oplossen van de problemen. 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>Problemen met connectiviteit, certificaten of time-outs
-De volgende stappen kunnen u helpen bij het oplossen van problemen met connectiviteit/certificaat/time-out voor alle services onder *. servicebus.windows.net. 
+In dit artikel vindt u tips voor het oplossen van verbindings problemen met Azure Event Hubs. 
 
-- Blader naar of [wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/` . Het helpt te controleren of er problemen zijn met de IP-filtering of het virtuele netwerk of de certificaat keten (het meest gebruikelijk wanneer u Java SDK gebruikt).
+## <a name="troubleshoot-permanent-connectivity-issues"></a>Problemen met permanente connectiviteit oplossen
+Als de toepassing helemaal geen verbinding kan maken met de Event Hub, volgt u de stappen in deze sectie om het probleem op te lossen. 
 
-    Een voor beeld van een geslaagd bericht:
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+### <a name="check-if-there-is-a-service-outage"></a>Controleren of er sprake is van een service storing
+Controleer de onderbreking van de Azure Event Hubs-service op de site van de [Azure-service status](https://azure.microsoft.com/status/).
+
+### <a name="verify-the-connection-string"></a>Controleer de connection string 
+Controleer of de connection string die u gebruikt juist is. Zie [Connection String ophalen](event-hubs-get-connection-string.md) om de Connection String te krijgen met behulp van de Azure Portal, CLI of Power shell. 
+
+Controleer voor Kafka-clients of producer.config-of consumer.config-bestanden juist zijn geconfigureerd. Zie [berichten verzenden en ontvangen met Kafka in Event hubs](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)voor meer informatie.
+
+### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Controleren of de poorten die nodig zijn om te communiceren met Event Hubs worden geblokkeerd door de firewall van de organisatie
+Controleer of de poorten die worden gebruikt bij het communiceren met Azure Event Hubs niet worden geblokkeerd op de firewall van uw organisatie. Zie de volgende tabel voor de uitgaande poorten die u moet openen om te communiceren met Azure Event Hubs. 
+
+| Protocol | Poorten | Details | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 en 5672 | Zie [AMQP protocol Guide (Engelstalig](../service-bus-messaging/service-bus-amqp-protocol-guide.md) ) | 
+| HTTP, HTTPS | 80, 443 |  |
+| Kafka | 9093 | Zie [Event hubs gebruiken in Kafka-toepassingen](event-hubs-for-kafka-ecosystem-overview.md)
+
+Hier volgt een voor beeld van een opdracht waarmee wordt gecontroleerd of de 5671-poort is geblokkeerd.
+
+```powershell
+tnc <yournamespacename>.servicebus.windows.net -port 5671
+```
+
+Op Linux:
+
+```shell
+telnet <yournamespacename>.servicebus.windows.net 5671
+```
+
+### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Controleren of IP-adressen zijn toegestaan in uw bedrijfs firewall
+Wanneer u met Azure werkt, moet u soms specifieke IP-adresbereiken of Url's in uw bedrijfs firewall of-proxy toestaan om toegang te krijgen tot alle Azure-Services die u gebruikt of probeert te gebruiken. Controleer of het verkeer is toegestaan op IP-adressen die worden gebruikt door Event Hubs. Voor IP-adressen die worden gebruikt door Azure Event Hubs: Zie [Azure IP-adresbereiken en service Tags-Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) and [service tag-EventHub](network-security.md#service-tags).
+
+Controleer ook of het IP-adres voor uw naam ruimte is toegestaan. Voer de volgende stappen uit om de juiste IP-adressen te vinden die u voor uw verbindingen wilt toestaan:
+
+1. Voer de volgende opdracht uit vanaf een opdracht prompt: 
+
     ```
-    
-    Een voor beeld van een fout bericht:
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-- Voer de volgende opdracht uit om te controleren of een poort is geblokkeerd op de firewall. De gebruikte poorten zijn 443 (HTTPS), 5671 (AMQP) en 9093 (Kafka). Afhankelijk van de bibliotheek die u gebruikt, worden ook andere poorten gebruikt. Hier volgt een voor beeld van de opdracht waarmee wordt gecontroleerd of de 5671-poort is geblokkeerd.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
 
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
+Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
+
+1. Eerst voert u Nslookup uit op de naam ruimte.
+
     ```
-
-    Op Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
+    nslookup <yournamespace>.servicebus.windows.net
     ```
-- Als er onregelmatige verbindings problemen zijn, voert u de volgende opdracht uit om te controleren of er verloren pakketten zijn. Met deze opdracht wordt geprobeerd 25 verschillende TCP-verbindingen elke 1 seconde te maken met de service. Vervolgens kunt u controleren of het aantal geslaagde/mislukte en ook TCP-verbindings latentie wordt weer geven. U kunt het `psping` hulp programma [hier](/sysinternals/downloads/psping)downloaden.
+2. Noteer de naam in de sectie **niet-bindende antwoord** , die een van de volgende indelingen heeft: 
 
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
     ```
-    U kunt gelijkwaardige opdrachten gebruiken als u andere hulp middelen gebruikt, zoals `tnc` , `ping` , enzovoort. 
-- Verkrijg een netwerk tracering als de vorige stappen niet helpen en analyseren met behulp van hulpprogram ma's zoals [wireshark](https://www.wireshark.org/). Neem zo nodig contact op met [Microsoft ondersteuning](https://support.microsoft.com/) . 
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
+    ```
+3. Voer nslookup uit voor elk van deze met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die in drie beschikbaarheids zones worden uitgevoerd. 
 
-## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problemen die zich kunnen voordoen met Service-upgrades/opnieuw opstarten
-Het upgraden van de back-end-service en opnieuw opstarten kan de volgende invloed hebben op uw toepassingen:
+### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Controleren of de toepassing moet worden uitgevoerd in een specifiek subnet van een vnet
+Controleer of de toepassing wordt uitgevoerd in een subnet van een virtueel netwerk dat toegang heeft tot de naam ruimte. Als dat niet het geval is, voert u de toepassing uit in het subnet dat toegang tot de naam ruimte heeft of voegt u het IP-adres toe van de computer waarop de toepassing wordt uitgevoerd voor de [IP-firewall](event-hubs-ip-filtering.md). 
 
-- Aanvragen kunnen tijdelijk worden beperkt.
+Wanneer u een service-eind punt voor een virtueel netwerk maakt voor een Event Hub naam ruimte, accepteert de naam ruimte alleen verkeer van het subnet dat is gekoppeld aan het service-eind punt. Er is een uitzonde ring op dit gedrag. U kunt specifieke IP-adressen toevoegen aan de IP-firewall om toegang tot het open bare eind punt van Event hub mogelijk te maken. Zie [netwerk service-eind punten](event-hubs-service-endpoints.md)voor meer informatie.
+
+### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>Controleer de IP-Firewall instellingen voor uw naam ruimte
+Controleer of uw IP-adres van de computer waarop de toepassing wordt uitgevoerd, niet wordt geblokkeerd door de IP-firewall.  
+
+Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
+
+De IP-firewall regels worden toegepast op het niveau van de Event Hubs naam ruimte. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Event Hubs naam ruimte, wordt geweigerd als niet-geautoriseerd. De IP-regel wordt niet vermeld in het antwoord. IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
+
+Zie [IP-firewall regels voor een Azure Event hubs-naam ruimte configureren](event-hubs-ip-filtering.md)voor meer informatie. Zie [problemen met het netwerk oplossen](#troubleshoot-network-related-issues)om te controleren of er problemen zijn met de IP-filtering, het virtuele netwerk of de certificaat keten.
+
+#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>De IP-adressen zoeken die door IP-firewall worden geblokkeerd
+Schakel Diagnostische logboeken in voor [Event hubs van virtuele netwerk verbindingen](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) door de instructies in de [Logboeken voor diagnostische gegevens inschakelen](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)uit te voeren. U ziet het IP-adres voor de verbinding die wordt geweigerd.
+
+```json
+{
+    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
+    "NamespaceName": "namespace-name",
+    "IPAddress": "1.2.3.4",
+    "Action": "Deny Connection",
+    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
+    "Count": "65",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
+    "Category": "EventHubVNetConnectionEvent"
+}
+```
+
+### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Controleren of de naam ruimte kan worden geopend met alleen een persoonlijk eind punt
+Als de naam ruimte van de Event Hubs zodanig is geconfigureerd dat deze alleen toegankelijk is via een particulier eind punt, controleert u of de client toepassing toegang heeft tot de naam ruimte via het persoonlijke eind punt. 
+
+Met [Azure Private Link service](../private-link/private-link-overview.md) kunt u toegang krijgen tot Azure Event hubs via een **persoonlijk eind punt** in uw virtuele netwerk. Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
+
+Zie [Private-eind punten configureren](private-link-service.md)voor meer informatie. 
+
+### <a name="troubleshoot-network-related-issues"></a>Problemen met het netwerk oplossen
+Voer de volgende stappen uit om problemen met het netwerk op te lossen met Event Hubs: 
+
+Blader naar of [wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/` . Het helpt te controleren of er problemen zijn met de IP-filtering of het virtuele netwerk of de certificaat keten (het meest gebruikelijk wanneer u Java SDK gebruikt).
+
+Een voor beeld van een **geslaagd bericht**:
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
+```
+
+Een voor beeld van een fout **bericht**:
+
+```json
+<Error>
+    <Code>400</Code>
+    <Detail>
+        Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
+    </Detail>
+</Error>
+```
+
+## <a name="troubleshoot-transient-connectivity-issues"></a>Problemen met de tijdelijke verbinding oplossen
+Als u problemen ondervindt met de verbinding, gaat u naar de volgende secties voor tips voor probleem oplossing. 
+
+### <a name="use-the-latest-version-of-the-client-sdk"></a>De nieuwste versie van de client-SDK gebruiken
+Enkele van de problemen met de tijdelijke verbinding zijn mogelijk opgelost in de nieuwere versies van de SDK dan wat u gebruikt. Zorg ervoor dat u de nieuwste versie van de client-Sdk's in uw toepassingen gebruikt. Sdk's worden continu verbeterd met nieuwe/bijgewerkte functies en probleem oplossingen, zodat u altijd met het nieuwste pakket kunt testen. Controleer de opmerkingen bij de release voor problemen die zijn opgelost en de functies zijn toegevoegd/bijgewerkt. 
+
+Zie het artikel over de [Azure Event hubs-client-sdk's](sdks.md) voor meer informatie over client-sdk's. 
+
+### <a name="run-the-command-to-check-dropped-packets"></a>Voer de opdracht uit om verwijderde pakketten te controleren
+Als er onregelmatige verbindings problemen zijn, voert u de volgende opdracht uit om te controleren of er verloren pakketten zijn. Met deze opdracht wordt geprobeerd 25 verschillende TCP-verbindingen elke 1 seconde te maken met de service. Vervolgens kunt u controleren of het aantal geslaagde/mislukte en ook TCP-verbindings latentie wordt weer geven. U kunt het `psping` hulp programma [hier](/sysinternals/downloads/psping)downloaden.
+
+```shell
+.\psping.exe -n 25 -i 1 -q <yournamespacename>.servicebus.windows.net:5671 -nobanner     
+```
+U kunt gelijkwaardige opdrachten gebruiken als u andere hulp middelen gebruikt, zoals `tnc` , `ping` , enzovoort. 
+
+Verkrijg een netwerk tracering als de vorige stappen niet helpen en analyseren met behulp van hulpprogram ma's zoals [wireshark](https://www.wireshark.org/). Neem zo nodig contact op met [Microsoft ondersteuning](https://support.microsoft.com/) . 
+
+### <a name="service-upgradesrestarts"></a>Service-upgrades/opnieuw opstarten
+Problemen met de tijdelijke verbinding kunnen zich voordoen als de back-end-service is bijgewerkt en opnieuw wordt opgestart. Wanneer deze zich voordoen, ziet u mogelijk de volgende symptomen: 
+
 - Er is mogelijk een neerzetten in inkomende berichten/aanvragen.
 - Het logboek bestand kan fout berichten bevatten.
 - De verbinding van de toepassingen kan enkele seconden worden verbroken met de service.
+- Aanvragen kunnen tijdelijk worden beperkt.
 
-Als de toepassings code gebruikmaakt van SDK, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing zal opnieuw verbinding maken zonder belang rijke gevolgen voor de toepassing/werk stroom.
-
+Als de toepassings code gebruikmaakt van SDK, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing zal opnieuw verbinding maken zonder belang rijke gevolgen voor de toepassing/werk stroom. Als dat niet het geval is, probeert u na enkele minuten opnieuw verbinding te maken met de service. 
 
 ## <a name="next-steps"></a>Volgende stappen
+Zie de volgende artikelen:
 
-U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
-
-* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Een event hub maken](event-hubs-create.md)
-* [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
+* [Verificatie- en autorisatieproblemen oplossen](troubleshoot-authentication-authorization.md)

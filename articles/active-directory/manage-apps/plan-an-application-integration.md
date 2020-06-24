@@ -3,8 +3,8 @@ title: Aan de slag met het integreren van Azure AD met apps | Microsoft Docs
 description: Dit artikel is een aan de slag-hand leiding voor het integreren van Azure Active Directory (AD) met on-premises toepassingen en Cloud toepassingen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063377"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763088"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Hand leiding voor het integreren van Azure Active Directory met toepassingen
 
@@ -96,6 +96,6 @@ Voor gedetailleerde informatie kunt u Azure Active Directory implementatie plann
 Een implementatie plan downloaden van de Azure Portal:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer**een app** | -**implementatie plan**voor **bedrijfs toepassingen** | .
+2. Selecteer **Enterprise Applications**  |  **een app**-  |  **implementatie plan**voor bedrijfs toepassingen.
 
 Geef feedback over implementatie plannen door gebruik te maken van de enquête van het [implementatie plan](https://aka.ms/DeploymentPlanFeedback).

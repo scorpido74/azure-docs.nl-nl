@@ -3,8 +3,8 @@ title: Toegang tot apps beheren met Azure AD | Microsoft Docs
 description: Hierin wordt beschreven hoe u met beAzure Active Directory organisaties de apps kunt opgeven waarvoor elke gebruiker toegang heeft.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a694c9f6fc9d3a0b7e73c1565501915aa1470bc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ee8cf2374d29e7044e817b73a5414865eea206e7
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739822"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762986"
 ---
 # <a name="managing-access-to-apps"></a>Toegang tot apps beheren
 

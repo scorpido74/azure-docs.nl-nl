@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b1cf1750924ab8ea8afff6ac788683565433866b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618013"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080032"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor tekst-en afbeeldings verwerking tijdens het indexeren (Azure Cognitive Search)
 
@@ -22,7 +22,7 @@ In dit artikel vindt u informatie over de cognitieve vaardig heden van Azure Cog
 > [!NOTE]
 > Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
 >
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
+> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/).
 >
 > De functie [incrementele verrijking (preview)](cognitive-search-incremental-indexing-conceptual.md) biedt u de mogelijkheid om een cache te bieden waarmee de Indexeer functie efficiënter kan werken bij het uitvoeren van alleen de cognitieve vaardig heden die nodig zijn als u uw vakkennisset in de toekomst wijzigt, zodat u tijd en geld bespaart.
 
@@ -38,16 +38,17 @@ Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Ove
 | [Micro soft. skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om te detecteren welke taal wordt gebruikt (één taal-ID per document). Wanneer er meerdere talen worden gebruikt binnen dezelfde tekst segmenten, is de uitvoer de LCID van de taal die het meest in gebruik is.|
 | [Micro soft. skills. Text. MergeSkill](cognitive-search-skill-textmerger.md) | Consolideert tekst van een verzameling velden in één veld.  |
 | [Micro soft. skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het instellen van entiteiten voor een vaste set categorieën: personen, locatie, organisatie, e-mails, Url's, datum/tijd-velden. |
-| [Micro soft. skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om persoons gegevens uit een bepaalde tekst op te halen. De vaardigheid biedt ook verschillende opties voor het maskeren van de gedetecteerde PII-entiteiten in de tekst.  |
+| [Micro soft. skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om persoons gegevens uit een bepaalde tekst op te halen. De vaardigheid biedt ook verschillende opties voor het maskeren van de gedetecteerde persoons gegevens entiteiten in de tekst.  |
 | [Micro soft. skills. Text. SentimentSkill](cognitive-search-skill-sentiment.md)  | Deze vaardigheid maakt gebruik van een pretraind model om positieve of negatieve sentiment te beoordelen op basis van een record. De Score ligt tussen 0 en 1. Er treden neutrale scores op voor de null-case wanneer sentiment niet kan worden gedetecteerd en voor tekst die als neutraal wordt beschouwd.  |
 | [Micro soft. skills. Text. SplitSkill](cognitive-search-skill-textsplit.md) | Splitst tekst op pagina's zodat u inhoud stapsgewijs kunt verrijken of uitbreiden. |
 | [Micro soft. skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het vertalen van de invoer tekst in een groot aantal talen voor het gebruik van normalisatie-of lokalisatie-use cases. |
 | [Micro soft. skills. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Deze vaardigheid maakt gebruik van een algoritme voor detectie van de afbeelding om de inhoud van een afbeelding te identificeren en een beschrijving van een tekst te genereren. |
 | [Micro soft. skills. Vision. OcrSkill](cognitive-search-skill-ocr.md) | Optische teken herkenning. |
 | [Micro soft. skills. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Staat filteren toe, het toewijzen van een standaard waarde en het samen voegen van gegevens op basis van een voor waarde.|
-| [Micro soft. skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. |
+| [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. |
 | [Micro soft. skills. util. ShaperSkill](cognitive-search-skill-shaper.md) | Wijst uitvoer toe aan een complex type (een gegevens type met meerdere delen, dat kan worden gebruikt voor een volledige naam, een adres van meerdere regels of een combi natie van achternaam en persoonlijke id). |
 | [Micro soft. skills. custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Hiermee kan een AI-verrijkings pijplijn worden uitgebreid door een HTTP-aanroep naar een aangepaste web-API te maken |
+| [Micro soft. skills. custom. AmlSkill](cognitive-search-aml-skill.md) | Hiermee kan een AI-verrijkings pijplijn met een Azure Machine Learning model worden uitgebreid |
 
 
 Zie [een aangepaste interface definiëren](cognitive-search-custom-skill-interface.md) voor meer informatie over het maken van een aangepaste [vaardigheid](cognitive-search-custom-skill-web-api.md). voor [Beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md).

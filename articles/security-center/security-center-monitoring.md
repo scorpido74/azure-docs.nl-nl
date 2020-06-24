@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d18258d62267c931a39947611dda038ff6e65205
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603766"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718696"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>U beveiligingsstatus versterken met Azure Security Center
 Dit artikel helpt u bij het versterken van uw beveiligings postuur. Gebruik de bewakings mogelijkheden in Azure Security Center om ervoor te zorgen dat uw resource beveiliging zo nauw keurig mogelijk is en de naleving van het beleid kan bewaken.
@@ -34,7 +34,7 @@ U kunt de beveiligings status van uw resources en eventuele problemen per resour
 - Als u uw netwerk bronnen, zoals virtuele machines, netwerk beveiligings groepen en-eind punten, wilt bewaken en aanbevelingen wilt ontvangen voor het verbeteren van de beveiliging, raadpleegt u [uw netwerk beveiligen in azure Security Center](security-center-network-recommendations.md) voor meer informatie. 
 - Als u uw gegevens en opslag resources, zoals SQL-servers en opslag accounts, wilt bewaken en aanbevelingen wilt ontvangen voor het verbeteren van de beveiliging, raadpleegt u [Azure SQL-service en-gegevens in azure Security Center beveiligen](security-center-sql-service-recommendations.md) voor meer informatie. 
 - Als u uw identiteits-en toegangs bronnen wilt bewaken, met inbegrip van MFA-en account machtigingen, en aanbevelingen wilt ontvangen voor het verbeteren van de beveiliging, raadpleegt u [identiteit en toegang controleren in azure Security Center](security-center-identity-access.md) voor meer informatie. 
-- Zie [toegang tot virtuele machines beheren met Just-in-time](security-center-just-in-time.md) voor meer informatie om de just-in-time toegang tot uw resources te controleren. 
+- Zie [toegang tot virtuele machines beheren met Just-in-time](security-center-just-in-time.md) voor meer informatie om de just-in-time toegang tot uw resources te controleren.
 
 
 Zie [Beveiligingsaanbevelingen implementeren in Azure Security Center](security-center-recommendations.md) voor meer informatie over het toepassen van aanbevelingen.

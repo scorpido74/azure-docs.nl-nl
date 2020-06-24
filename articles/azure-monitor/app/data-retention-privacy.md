@@ -2,13 +2,13 @@
 title: Bewaren van gegevens en opslag in Azure-toepassing inzichten | Microsoft Docs
 description: Retentie en privacybeleid
 ms.topic: conceptual
-ms.date: 09/29/2019
-ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: d77eaa32c8487d1aa87626683b4c29bf1cee0e75
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275995"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718679"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -52,10 +52,10 @@ De belangrijkste categorieën zijn:
 * [Webpagina's-pagina](../../azure-monitor/app/javascript.md) -, gebruikers-en sessie aantallen. Laad tijden van pagina's. Uitzonderingen. Ajax-aanroepen.
 * Prestatie meter items-geheugen, CPU, IO, netwerk bezetting.
 * Client-en server context: besturings systeem, land instelling, apparaattype, browser, scherm resolutie.
-* [Uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) en crash- **stack dumps**, `build id`, CPU-type. 
+* [Uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) en crash- **stack dumps**, `build id` , CPU-type. 
 * [Afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) : aanroepen naar externe services, zoals rest, SQL, Ajax. URI of connection string, duur, geslaagd, opdracht.
 * [Beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) : duur van testen en stappen, reacties.
-* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **Alles wat u in uw logboeken of telemetrie codeeert**.
+* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)  -  **Alles wat u in uw logboeken of telemetrie codeeert**.
 
 [Meer details](#data-sent-by-application-insights).
 
@@ -132,7 +132,7 @@ Als een klant deze map moet configureren met specifieke beveiligings vereisten, 
 
 ###  <a name="net"></a>.Net
 
-Maakt standaard `ServerTelemetryChannel` gebruik van de map `%localAppData%\Microsoft\ApplicationInsights` lokale app-gegevens van de huidige gebruiker `%TMP%`of de map Temp. (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .)
+Maakt standaard `ServerTelemetryChannel` gebruik van de map lokale app-gegevens van de huidige gebruiker `%localAppData%\Microsoft\ApplicationInsights` of de map Temp `%TMP%` . (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .)
 
 
 Via het configuratie bestand:
@@ -155,9 +155,9 @@ Via code:
 
 ### <a name="netcore"></a>NetCore
 
-Maakt standaard `ServerTelemetryChannel` gebruik van de map `%localAppData%\Microsoft\ApplicationInsights` lokale app-gegevens van de huidige gebruiker `%TMP%`of de map Temp. (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .) In een Linux-omgeving wordt lokale opslag uitgeschakeld, tenzij er een opslagmap is opgegeven.
+Maakt standaard `ServerTelemetryChannel` gebruik van de map lokale app-gegevens van de huidige gebruiker `%localAppData%\Microsoft\ApplicationInsights` of de map Temp `%TMP%` . (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) .) In een Linux-omgeving wordt lokale opslag uitgeschakeld, tenzij er een opslagmap is opgegeven.
 
-Het volgende code fragment laat zien hoe u `ServerTelemetryChannel.StorageFolder` kunt instellen `ConfigureServices()` in de methode `Startup.cs` van uw klasse:
+Het volgende code fragment laat zien hoe u kunt instellen `ServerTelemetryChannel.StorageFolder` in de `ConfigureServices()` methode van uw `Startup.cs` klasse:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -169,19 +169,19 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 Wordt standaard `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` gebruikt voor het persistent maken van gegevens. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) .)
 
-Het voor voegsel `appInsights-node` van de map kan worden overschreven door de runtime-waarde van `Sender.TEMPDIR_PREFIX` de statische variabele in [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)te wijzigen.
+Het voor voegsel `appInsights-node` van de map kan worden overschreven door de runtime-waarde van de statische variabele `Sender.TEMPDIR_PREFIX` in [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)te wijzigen.
 
 ### <a name="javascript-browser"></a>Java script (browser)
 
-[HTML5-sessie opslag](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) wordt gebruikt om gegevens op te slaan. Er worden twee afzonderlijke buffers gebruikt `AI_buffer` : `AI_sent_buffer`en. Telemetrie die is gebatcheerd en wacht op verzen ding `AI_buffer`, wordt opgeslagen in. De telemetrie die zojuist is verzonden, `AI_sent_buffer` wordt geplaatst totdat de opname server reageert dat deze is ontvangen. Wanneer de telemetrie is ontvangen, wordt deze verwijderd uit alle buffers. Bij tijdelijke fouten (bijvoorbeeld `AI_buffer` wanneer een gebruiker verbinding met het netwerk heeft verbroken), blijft de telemetrie actief totdat deze is ontvangen of reageert de opname server dat de telemetrie ongeldig is (bijvoorbeeld een onjuist schema of te oud).
+[HTML5-sessie opslag](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) wordt gebruikt om gegevens op te slaan. Er worden twee afzonderlijke buffers gebruikt: `AI_buffer` en `AI_sent_buffer` . Telemetrie die is gebatcheerd en wacht op verzen ding, wordt opgeslagen in `AI_buffer` . De telemetrie die zojuist is verzonden, wordt geplaatst `AI_sent_buffer` totdat de opname server reageert dat deze is ontvangen. Wanneer de telemetrie is ontvangen, wordt deze verwijderd uit alle buffers. Bij tijdelijke fouten (bijvoorbeeld wanneer een gebruiker verbinding met het netwerk heeft verbroken), blijft de telemetrie actief `AI_buffer` totdat deze is ontvangen of reageert de opname server dat de telemetrie ongeldig is (bijvoorbeeld een onjuist schema of te oud).
 
-U kunt telemetrie buffers uitschakelen door [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) in `false`te stellen op. Wanneer sessie opslag is uitgeschakeld, wordt in plaats daarvan een lokale matrix gebruikt als permanente opslag. Omdat de Java script-SDK op een client apparaat wordt uitgevoerd, heeft de gebruiker toegang tot deze opslag locatie via de ontwikkel hulpprogramma's van de browser.
+U kunt telemetrie buffers uitschakelen door [`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31) in te stellen op `false` . Wanneer sessie opslag is uitgeschakeld, wordt in plaats daarvan een lokale matrix gebruikt als permanente opslag. Omdat de Java script-SDK op een client apparaat wordt uitgevoerd, heeft de gebruiker toegang tot deze opslag locatie via de ontwikkel hulpprogramma's van de browser.
 
 ### <a name="opencensus-python"></a>Opentellingen python
 
-Standaard gebruikt de python-SDK voor opentellingen de `%username%/.opencensus/.azure/`huidige map gebruiker. Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) .) De map met de persistente gegevens krijgt de naam na het python-bestand dat de telemetrie heeft gegenereerd.
+Standaard gebruikt de python-SDK voor opentellingen de huidige map gebruiker `%username%/.opencensus/.azure/` . Machtigingen voor toegang tot deze map zijn beperkt tot de huidige gebruiker en beheerders. (Zie hier [implementatie](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py) .) De map met de persistente gegevens krijgt de naam na het python-bestand dat de telemetrie heeft gegenereerd.
 
-U kunt de locatie van uw opslag bestand wijzigen door door te geven `storage_path` in de-para meter in de constructor van de export functie die u gebruikt.
+U kunt de locatie van uw opslag bestand wijzigen door door te geven in de- `storage_path` para meter in de constructor van de export functie die u gebruikt.
 
 ```python
 AzureLogHandler(
@@ -202,11 +202,11 @@ Het wordt niet aanbevolen om uw toepassing expliciet in te stellen voor gebruik 
 
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
-| Azure App Services  | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie.  |
-| Azure Function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie. |
+| Azure App Services  | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)over de configuratie.  |
+| Azure Function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://azure.github.io/AppService/2018/04/17/App-Service-and-Functions-hosted-apps-can-now-update-TLS-versions!)over de configuratie. |
 |.NET | Ondersteund, de configuratie is afhankelijk van versie. | Raadpleeg [deze instructies](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)voor gedetailleerde informatie over de configuratie van .net 4,7 en eerdere versies.  |
-|Status Monitor | Ondersteund, configuratie vereist | Status monitor is afhankelijk van de[configuratie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) van de [besturingssysteem configuratie](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + voor de ondersteuning van TLS 1,2.
-|Node.js |  In v 10.5.0 is configuratie mogelijk vereist. | Gebruik de [officiële node. js TLS/SSL-documentatie](https://nodejs.org/api/tls.html) voor elke toepassingsspecifieke configuratie. |
+|Status Monitor | Ondersteund, configuratie vereist | Status monitor is afhankelijk van de configuratie van de [besturingssysteem configuratie](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  +  [.NET Configuration](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) voor de ondersteuning van TLS 1,2.
+|Node.js |  In v 10.5.0 is configuratie mogelijk vereist. | Gebruik de [officiële Node.js TLS/SSL-documentatie](https://nodejs.org/api/tls.html) voor specifieke configuratie van de toepassing. |
 |Java | Ondersteund, JDK-ondersteuning voor TLS 1,2 is toegevoegd in [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) en [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 maakt [standaard gebruik van TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
 | Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
@@ -277,19 +277,19 @@ Voor [sdk's voor andere platforms][platforms]raadpleegt u hun documenten.
 | Aanvragen |URL, duur, respons code |
 | Afhankelijkheden |Type (SQL, HTTP,...), connection string, of URI, synchronisatie/async, duur, geslaagd, SQL-instructie (met Status Monitor) |
 | **Uitzonderingen** |Type, **bericht**, oproep stacks, bron bestand, regel nummer,`thread id` |
-| Valt |`Process id`, `parent process id`, `crash thread id`; toepassings patch, `id`, build;  type uitzonde ring, adres, reden; verborgen symbolen en registers, binaire begin-en eind adressen, binaire naam en pad, CPU-type |
+| Valt |`Process id`, `parent process id` , `crash thread id` ; toepassings patch, `id` , build;  type uitzonde ring, adres, reden; verborgen symbolen en registers, binaire begin-en eind adressen, binaire naam en pad, CPU-type |
 | Tracering |**Bericht** -en ernst niveau |
 | Prestatiemeteritems |Processor tijd, beschikbaar geheugen, aanvraag frequentie, uitzonderings frequentie, privé-bytes verwerken, i/o-frequentie, aanvraag duur, lengte van aanvraag wachtrij |
 | Beschikbaarheid |Reactie code van webtest, duur van elke test stap, test naam, tijds tempel, geslaagd, reactie tijd, test locatie |
 | SDK-diagnose |Bericht of uitzonde ring traceren |
 
-U kunt [een aantal van de gegevens uitschakelen door ApplicationInsights. config te bewerken][config]
+U kunt [een aantal gegevens uitschakelen door ApplicationInsights.configte bewerken][config]
 
 > [!NOTE]
 > Client-IP wordt gebruikt om geografische locatie af te leiden, maar standaard worden IP-gegevens niet meer opgeslagen en worden alle nullen naar het gekoppelde veld geschreven. Voor meer informatie over het afhandelen van persoonlijke gegevens kunt u dit [artikel](../../azure-monitor/platform/personal-data-mgmt.md#application-data)aanbevelen. Als u IP-adres gegevens moet opslaan in het artikel over de [IP-adres verzameling](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) , wordt u door de opties geleid.
 
 ## <a name="credits"></a>Tegoeden
-Dit product bevat GeoLite2-gegevens die zijn gemaakt door MaxMind [https://www.maxmind.com](https://www.maxmind.com), die beschikbaar zijn via.
+Dit product bevat GeoLite2-gegevens die zijn gemaakt door MaxMind, die beschikbaar zijn via [https://www.maxmind.com](https://www.maxmind.com) .
 
 
 

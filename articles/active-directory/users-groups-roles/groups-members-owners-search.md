@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206109"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728262"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Zoeken in groepen en leden (preview) in Azure Active Directory
 
@@ -45,7 +45,7 @@ Als u problemen ondervindt, kunt u teruggaan naar de oude ervaring door de banne
 
 ## <a name="group-search-and-sorting"></a>Groep zoeken en sorteren
 
-De zoek opdracht in de groeps lijst is uitgebreid, zodat u met de zoek functie automatisch een en een `startswith` subtekenreeks kunt zoeken in de lijst met groeps namen. De subtekenreeks zoeken wordt alleen uitgevoerd op hele woorden en bevat geen speciale tekens. Zoeken in subtekenreeksen is hoofdletter gevoelig.
+De zoek opdracht in de groeps lijst is uitgebreid, zodat u met de zoek functie automatisch een `startswith` en een subtekenreeks kunt zoeken in de lijst met groeps namen. De subtekenreeks zoeken wordt alleen uitgevoerd op hele woorden en bevat geen speciale tekens. Zoeken in subtekenreeksen is hoofdletter gevoelig.
 
 ![nieuwe subtekenreeks zoekt op de pagina alle groepen](./media/groups-members-owners-search/groups-search-preview.png)
 

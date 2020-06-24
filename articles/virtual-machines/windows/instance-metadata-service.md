@@ -1,5 +1,5 @@
 ---
-title: Azure Instance Metadata Service
+title: Azire Instance Metadata Service
 description: De REST-interface voor het ophalen van informatie over de Vm's compute, Network en aanstaande onderhouds gebeurtenissen.
 services: virtual-machines
 author: KumariSupriya
@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 5338f8b29f2328cec02e44185903eb2581226eff
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 195d9f6da88639cc3b4299519e90bf682bc743d9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635268"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888595"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -858,6 +858,55 @@ methode 405 niet toegestaan | Alleen `GET` aanvragen worden ondersteund
    * Met labels voor schaal sets worden alleen de virtuele machine weer gegeven op het moment dat de computer opnieuw wordt opgestart, de installatie kopie of de schijf wordt gewijzigd.
 1. Er is een time-out opgetreden voor de aanvraag voor mijn oproep naar de service?
    * Meta gegevens moeten worden gemaakt op basis van het primaire IP-adres dat is toegewezen aan de primaire netwerk kaart van de virtuele machine. Daarnaast moet er een route voor het 169.254.169.254/32-adres in de lokale routerings tabel van uw VM zijn, in het geval dat u uw routes hebt gewijzigd.
+   * <details>
+        <summary>De routerings tabel controleren</summary>
+
+        1. Dump uw lokale routerings tabel en zoek naar de IMDS-vermelding (bijvoorbeeld):
+            ```console
+            > route print
+            IPv4 Route Table
+            ===========================================================================
+            Active Routes:
+            Network Destination        Netmask          Gateway       Interface  Metric
+                      0.0.0.0          0.0.0.0      172.16.69.1      172.16.69.7     10
+                    127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+                    127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+              127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+                168.63.129.16  255.255.255.255      172.16.69.1      172.16.69.7     11
+              169.254.169.254  255.255.255.255      172.16.69.1      172.16.69.7     11
+            ... (continues) ...
+            ```
+        1. Controleer of er een route bestaat voor `169.254.169.254` en noteer de bijbehorende netwerk interface (bijvoorbeeld `172.16.69.7` ).
+        1. Dump de configuratie van de interface en zoek de interface die overeenkomt met het punt waarnaar wordt verwezen in de routerings tabel. Dit is het MAC-adres (fysiek).
+            ```console
+            > ipconfig /all
+            ... (continues) ...
+            Ethernet adapter Ethernet:
+
+               Connection-specific DNS Suffix  . : xic3mnxjiefupcwr1mcs1rjiqa.cx.internal.cloudapp.net
+               Description . . . . . . . . . . . : Microsoft Hyper-V Network Adapter
+               Physical Address. . . . . . . . . : 00-0D-3A-E5-1C-C0
+               DHCP Enabled. . . . . . . . . . . : Yes
+               Autoconfiguration Enabled . . . . : Yes
+               Link-local IPv6 Address . . . . . : fe80::3166:ce5a:2bd5:a6d1%3(Preferred)
+               IPv4 Address. . . . . . . . . . . : 172.16.69.7(Preferred)
+               Subnet Mask . . . . . . . . . . . : 255.255.255.0
+            ... (continues) ...
+            ```
+        1. Controleer of de interface overeenkomt met de primaire NIC van de virtuele machine en het primaire IP-adres. U kunt de primaire NIC/IP vinden door te kijken naar de netwerk configuratie in azure portal of door deze te bekijken [met de Azure cli](https://docs.microsoft.com/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show). Let op de open bare en privé Ip's (en het MAC-adres als u de CLI gebruikt). Power shell CLI-voor beeld:
+            ```powershell
+            $ResourceGroup = '<Resource_Group>'
+            $VmName = '<VM_Name>'
+            $NicNames = az vm nic list --resource-group $ResourceGroup --vm-name $VmName | ConvertFrom-Json | Foreach-Object { $_.id.Split('/')[-1] }
+            foreach($NicName in $NicNames)
+            {
+                $Nic = az vm nic show --resource-group $ResourceGroup --vm-name $VmName --nic $NicName | ConvertFrom-Json
+                Write-Host $NicName, $Nic.primary, $Nic.macAddress
+            }
+            # Output: wintest767 True 00-0D-3A-E5-1C-C0
+            ```
+        1. Als ze niet overeenkomen, werkt u de routerings tabel bij, zodat de primaire NIC/IP is gericht.
+    </details>
 
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback
 

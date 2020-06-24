@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244015"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690180"
 ---
 # <a name="azure-api-management-page-controls"></a>Besturings elementen van Azure API Management-pagina
 Azure API Management biedt de volgende besturings elementen voor gebruik in de sjablonen voor de ontwikkelaars Portal.  
@@ -187,7 +187,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
 ### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
  Het `subscribe-button` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
--   [Voortplant](api-management-product-templates.md#Product)  
+-   [Product](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>abonnement-annuleren  
  Het `subscription-cancel` besturings element bevat een besturings element voor het annuleren van een abonnement op een product op de pagina gebruikers profiel in de ontwikkelaars Portal.  
@@ -212,7 +212,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
 ### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
  Het `subscription-cancel` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
--   [Voortplant](api-management-product-templates.md#Product)
+-   [Product](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

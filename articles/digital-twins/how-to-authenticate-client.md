@@ -1,5 +1,5 @@
 ---
-title: Een client toepassing verifiëren
+title: Een clienttoepassing verifiëren
 titleSuffix: Azure Digital Twins
 description: Zie een client toepassing verifiëren op basis van de Azure Digital Apparaatdubbels-service.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8390ed8777c2c15940bef5838890e49396404052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613269"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726052"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Een client toepassing verifiëren met Azure Digital Apparaatdubbels
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Nadat u [een Azure Digital apparaatdubbels-exemplaar hebt gemaakt](how-to-set-up-instance.md), kunt u een client toepassing maken die u gaat gebruiken om te communiceren met het exemplaar. Wanneer u een eerste client project hebt ingesteld, wordt in dit artikel beschreven hoe u de client toepassing op de juiste wijze verifieert met het Azure Digital Apparaatdubbels-exemplaar.
 
@@ -44,7 +47,7 @@ Als u een app-registratie wilt maken, moet u de resource-Id's voor de Azure Digi
 }]
 ``` 
 
-Sla dit bestand op als *manifest. json*.
+Sla dit bestand *op alsmanifest.jsop*.
 
 > [!NOTE] 
 > Er zijn enkele locaties waar een ' vriendelijke ', lees bare teken reeks `https://digitaltwins.azure.net` kan worden gebruikt voor de app-id van de Azure Digital apparaatdubbels-bron in plaats van de GUID `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Zo kunnen bijvoorbeeld veel voor beelden in deze documentatieset authenticatie gebruiken met de MSAL-bibliotheek, en de beschrijvende teken reeks kan hiervoor worden gebruikt. Tijdens deze stap voor het maken van de app-registratie is de GUID-vorm van de ID echter vereist, zoals hierboven wordt weer gegeven. 
@@ -52,7 +55,7 @@ Sla dit bestand op als *manifest. json*.
 Klik in het venster Cloud Shell op het pictogram bestanden uploaden/downloaden en kies uploaden.
 
 :::image type="content" source="media/how-to-authenticate-client/upload-extension.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
-Navigeer naar het *manifest. json* dat u zojuist hebt gemaakt en klik op openen.
+Ga naar de *manifest.js* die u zojuist hebt gemaakt en klik op openen.
 
 Voer vervolgens de volgende opdracht uit om een app-registratie te maken (waar nodig tijdelijke aanduidingen vervangen):
 
@@ -256,4 +259,4 @@ Lees meer over de werking van beveiliging in azure Digital Apparaatdubbels:
 * [Concepten: beveiliging voor Azure Digital Apparaatdubbels Solutions](concepts-security.md)
 
 Of nu de verificatie is ingesteld, gaat u verder met het maken van modellen in uw exemplaar:
-* [Instructies: een twee ledig model beheren](how-to-manage-model.md)
+* [Uitleg: Een dubbel model beheren](how-to-manage-model.md)

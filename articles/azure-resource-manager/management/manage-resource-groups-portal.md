@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f01da074423a45b30e6c386852e88798e55938b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632979"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888799"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager resource groepen beheren met behulp van de Azure Portal
 
@@ -39,12 +39,12 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 3. Selecteer **Toevoegen**.
 4. Voer de volgende waarden in:
 
-   - **Abonnement**: selecteer uw Azure-abonnement. 
+   - **Abonnement**: Selecteer uw Azure-abonnement. 
    - **Resource groep**: Voer een nieuwe naam voor de resource groep in. 
    - **Regio**: Selecteer een Azure-locatie, zoals **VS-centraal**.
 
      ![resource groep maken](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
-5. Selecteer **controleren + maken**
+5. Selecteer **Beoordelen en maken**
 6. Selecteer **Maken**. Het duurt een paar seconden om een resource groep te maken.
 7. Selecteer **vernieuwen** in het bovenste menu om de lijst met resource groepen te vernieuwen en selecteer vervolgens de zojuist gemaakte resource groep om deze te openen. Of selecteer de **melding**(het klok pictogram) bovenaan en selecteer vervolgens **Ga naar resource groep** om de zojuist gemaakte resource groep te openen
 
@@ -86,7 +86,7 @@ U kunt de resources in de groep verplaatsen naar een andere resource groep. Zie 
 
 Vergren delen voor komt dat andere gebruikers in uw organisatie per ongeluk essentiële resources verwijderen of wijzigen, zoals een Azure-abonnement, resource groep of resource. 
 
-1. Open de resource groep die u wilt verwijderen.  Zie [resource groepen openen](#open-resource-groups).
+1. Open de resource groep die u wilt vergren delen.  Zie [resource groepen openen](#open-resource-groups).
 2. Selecteer in het linkerdeel venster de optie **vergren**delen.
 3. Selecteer **toevoegen**om een vergren deling aan de resource groep toe te voegen.
 4. Voer de **vergrendelings naam**, het **vergrendelings type**en de **notities**in. De vergrendelings typen bevatten **alleen-lezen**en **verwijderen**.

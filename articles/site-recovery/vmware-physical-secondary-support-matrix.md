@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256794"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711881"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar een secundaire site
 
@@ -39,7 +39,7 @@ Bestaande partners kunnen nieuwe klanten aan het scenario vrijgeven totdat de on
 
 ## <a name="host-servers"></a>Hostservers
 
-**Besturingssysteem** | **Nadere**
+**Besturingssysteem** | **Details**
 --- | ---
 vCenter-server | vCenter 5,5, 6,0 en 6,5<br/><br/> Als u 6,0 of 6,5 uitvoert, moet u er rekening mee houden dat er slechts 5,5 functies worden ondersteund.
 
@@ -48,7 +48,7 @@ vCenter-server | vCenter 5,5, 6,0 en 6,5<br/><br/> Als u 6,0 of 6,5 uitvoert, mo
 
 De volgende tabel bevat een overzicht van de ondersteuning van besturings systemen voor computers die met Site Recovery worden gerepliceerd. Elke werk belasting kan worden uitgevoerd op het ondersteunde besturings systeem.
 
-**Besturingssysteem** | **Nadere**
+**Besturingssysteem** | **Details**
 --- | ---
 Windows Server | 64-bits Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 met ten minste SP1.
 Linux | Red Hat Enterprise Linux 6,7, 6,8, 6,9, 7,1, 7,2 <br/><br/> CentOS 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enter prise Linux 6,4, 6,5, 6,8 met de Red Hat compatible kernel of een onherstelbare versie van de Enter prise kernel 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
@@ -68,14 +68,14 @@ Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 
 **Configuratie** | **Geboden**  
 --- | --- 
-Host-NIC-koppeling | Ja 
-Host-VLAN | Ja 
-Host-IPv4 | Ja 
-Host-IPv6 | Nee 
-Gast-VM-NIC-koppeling | Nee
-Gast-VM-IPv4 | Ja
-Gast-VM-IPv6 | Nee
-Gast-VM-Windows/Linux-statisch IP-adres | Ja
+Host-NIC-koppeling | Yes 
+Host-VLAN | Yes 
+Host-IPv4 | Yes 
+Host-IPv6 | No 
+Gast-VM-NIC-koppeling | No
+Gast-VM-IPv4 | Yes
+Gast-VM-IPv6 | No
+Gast-VM-Windows/Linux-statisch IP-adres | Yes
 Gast-VM-multi-NIC | Ja
 
 
@@ -85,43 +85,43 @@ Gast-VM-multi-NIC | Ja
 
 **Opslag (host)** | **Geboden** 
 --- | --- 
-NFS | Ja 
+NFS | Yes 
 SMB 3.0 | N.v.t. 
-SAN (ISCSI) | Ja 
-Meerdere paden (MPIO) | Ja 
+SAN (ISCSI) | Yes 
+Meerdere paden (MPIO) | Yes 
 
 ### <a name="guest-or-physical-server-storage"></a>Opslag van gast-of fysieke servers
 
 **Configuratie** | **Geboden** 
 --- | --- 
-VMDK | Ja 
+VMDK | Yes 
 VHD/VHDX | N.v.t. 
 VM van generatie 2 | N.v.t. 
-Gedeelde cluster schijf | Ja 
-Versleutelde schijf | Nee 
-UEFI| Ja 
-NFS | Nee 
-SMB 3.0 | Nee 
-RDM | Ja 
-Schijf > 1 TB | Ja 
-Volume met gestripte schijf > 1 TB<br/><br/> LVM | Ja 
-Opslagruimten | Nee 
-Hot toevoegen/verwijderen schijf | Ja 
-Schijf uitsluiten | Ja 
+Gedeelde cluster schijf | Yes 
+Versleutelde schijf | No 
+UEFI| Yes 
+NFS | No 
+SMB 3.0 | No 
+RDM | Yes 
+Schijf > 1 TB | Yes 
+Volume met gestripte schijf > 1 TB<br/><br/> LVM | Yes 
+Opslagruimten | No 
+Hot toevoegen/verwijderen schijf | Yes 
+Schijf uitsluiten | Yes 
 Meerdere paden (MPIO) | N.v.t. 
 
 ## <a name="vaults"></a>Kluizen
 
 **Actie** | **Geboden** 
 --- | --- 
-Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) | Nee 
-Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | Nee 
+Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) | No 
+Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | No 
 
 ## <a name="mobility-service-and-updates"></a>Mobility service en updates
 
 De Mobility-service coördineert de replicatie tussen on-premises VMware-servers of fysieke servers en de secundaire site. Wanneer u de replicatie instelt, moet u ervoor zorgen dat u de nieuwste versie van de Mobility-service en andere onderdelen hebt.
 
-| **Bijwerken** | **Nadere** |
+| **Bijwerk** | **Details** |
 | --- | --- |
 |Scout-updates | Scout-updates zijn cumulatief. <br/><br/> [Meer informatie over en downloaden van](vmware-physical-secondary-disaster-recovery.md#updates) de nieuwste updates voor Scout |
 |Onderdeel updates | Scout-updates bevatten updates voor alle onderdelen, waaronder de RX-server, configuratie server, proces-en hoofddoel doel servers, vContinuum-servers en bron servers die u wilt beveiligen.<br/><br/> [Meer informatie](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|

@@ -2,13 +2,13 @@
 title: Knoop punten en Pools in Azure Batch
 description: Meer informatie over reken knooppunten en Pools en hoe deze worden gebruikt in een Azure Batch werk stroom vanuit een ontwikkelings oogpunt.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791153"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888373"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoop punten en Pools in Azure Batch
 
@@ -28,6 +28,8 @@ Alle rekenknooppunten in Batch omvatten ook:
 - **Firewall**instellingen die zijn geconfigureerd om de toegang te beheren.
 - [Externe toegang](error-handling.md#connect-to-compute-nodes) voor Windows-knooppunten (Remote Desktop Protocol (RDP)) en Linux-knooppunten (Secure Shell (SSH)).
 
+Knoop punten kunnen standaard met elkaar communiceren, maar ze kunnen niet communiceren met virtuele machines die geen deel uitmaken van dezelfde groep. Als u knoop punten veilig met andere virtuele machines of met een on-premises netwerk wilt laten communiceren, kunt u de groep inrichten [in een subnet van een virtueel Azure-netwerk (VNet)](batch-virtual-network.md). Wanneer u dit doet, kunt u toegang krijgen tot uw knoop punten via open bare IP-adressen. Deze open bare IP-adressen worden gemaakt door batch en kunnen worden gewijzigd gedurende de levens duur van de groep. U kunt ook [een pool maken met een statisch openbaar IP-adres](create-pool-public-ip.md) dat u beheert. Dit zorgt ervoor dat ze niet onverwacht worden gewijzigd.
+
 ## <a name="pools"></a>Pools
 
 Een pool is de verzameling knoop punten waarop uw toepassing wordt uitgevoerd.
@@ -42,7 +44,7 @@ De pool kan hand matig of automatisch door de batch-service worden gemaakt wanne
 
 - [Besturings systeem en versie van knoop punt](#operating-system-and-version)
 - [Knooppunt type en het doel aantal knoop punten](#node-type-and-target)
-- [Knooppunt grootte](#node-size)
+- [Knooppuntgrootte](#node-size)
 - [Beleid voor automatisch schalen](#automatic-scaling-policy)
 - [Taakplanningsbeleid](#task-scheduling-policy)
 - [Communicatie status](#communication-status)
@@ -107,7 +109,7 @@ Het aantal rekenknooppunten wordt aangeduid als *beoogd* omdat de pool in sommig
 
 Zie [batch-prijzen](https://azure.microsoft.com/pricing/details/batch/)voor prijs informatie voor knoop punten met lage prioriteit en toegewezen.
 
-## <a name="node-size"></a>Knooppunt grootte
+## <a name="node-size"></a>Knooppuntgrootte
 
 Wanneer u een Azure Batch-groep maakt, kunt u kiezen uit bijna alle reeksen en grootten virtuele machines die beschikbaar zijn in Azure. Azure biedt verscheidene VM-grootten voor verschillende workloads, met inbegrip van VM-grootten die speciaal zijn bedoeld voor [HPC](../virtual-machines/linux/sizes-hpc.md) of [GPU](../virtual-machines/linux/sizes-gpu.md). 
 
@@ -162,13 +164,16 @@ Zie [Deploy applications to compute nodes with Batch application packages](batch
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>Configuratie van virtuele netwerken (VNet) en firewalls
 
-Wanneer u een pool rekenknooppunten inricht in Batch kunt u deze pool koppelen aan een subnet van een virtueel netwerk van [Azure (VNet)](../virtual-network/virtual-networks-overview.md). Het gebruik van een Azure VNet vereist dat de Batch-client-API gebruikmaakt van Azure Active Directory-verificatie (AD). Azure Batch-ondersteuning voor Azure AD wordt beschreven in [Oplossingen van Batch-service verifiëren met Active Directory](batch-aad-auth.md).  
+Wanneer u een pool rekenknooppunten inricht in Batch kunt u deze pool koppelen aan een subnet van een virtueel netwerk van [Azure (VNet)](../virtual-network/virtual-networks-overview.md). Het gebruik van een Azure VNet vereist dat de Batch-client-API gebruikmaakt van Azure Active Directory-verificatie (AD). Azure Batch-ondersteuning voor Azure AD wordt beschreven in [Oplossingen van Batch-service verifiëren met Active Directory](batch-aad-auth.md).
 
 ### <a name="vnet-requirements"></a>Vereisten voor VNet
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 Zie [Een pool van virtuele machines maken met uw virtuele netwerk](batch-virtual-network.md) voor meer informatie over het instellen van een Batch-pool in een VNet.
+
+> [!TIP]
+> Om ervoor te zorgen dat de open bare IP-adressen die worden gebruikt voor toegang tot knoop punten, niet worden gewijzigd, kunt u [een pool maken met opgegeven open bare IP-adressen die u beheert](create-pool-public-ip.md).
 
 ## <a name="pool-and-compute-node-lifetime"></a>Levensduur van pool en rekenknooppunt
 

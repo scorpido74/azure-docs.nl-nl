@@ -3,12 +3,12 @@ title: Controle lijst voor productie voorbereiding van Azure Service Fabric
 description: Down load uw Service Fabric-toepassing en cluster productie gereed door de aanbevolen procedures te volgen.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e12e07a4446af46bc1979bd8bd4ab3987a3fd8ad
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376797"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081055"
 ---
 # <a name="production-readiness-checklist"></a>Controlelijst voor productiegereedheid
 
@@ -17,7 +17,7 @@ Is uw toepassing en cluster klaar om productie verkeer te nemen? Het uitvoeren e
 
 ## <a name="prerequisites-for-production"></a>Vereisten voor productie
 1. Aanbevolen procedures voor Azure Service Fabric: [toepassings ontwerp](./service-fabric-best-practices-applications.md), [beveiliging](./service-fabric-best-practices-security.md), [netwerken](./service-fabric-best-practices-networking.md), [capaciteits planning en schalen](./service-fabric-best-practices-capacity-scaling.md), [infra structuur als code](./service-fabric-best-practices-infrastructure-as-code.md)en [controle en diagnose](./service-fabric-best-practices-monitoring.md). 
-1. Implementeer de Reliable Actors-beveiligings configuratie als u het Actors-programmeer model gebruikt
+1. [Configureer FabricTransport-instellingen](./service-fabric-reliable-actors-fabrictransportsettings.md) als u het programmeer model van reliable actors gebruikt en beveiligde communicatie tussen services vereist.
 1. Voor clusters met meer dan 20 kernen of tien knoop punten maakt u een specifiek primair knooppunt type voor systeem services. Voeg [plaatsings beperkingen](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) toe om het primaire knooppunt type voor systeem services te reserveren.
 1. Gebruik een virtuele d2v2 of hogere SKU voor het primaire knooppunt type. U kunt het beste een SKU kiezen met ten minste 50 GB aan vaste schijf capaciteit.
 1. Productie clusters moeten [veilig](service-fabric-cluster-security.md)zijn. Zie deze [cluster sjabloon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)voor een voor beeld van het instellen van een beveiligd cluster. Gebruik algemene namen voor certificaten en Vermijd het gebruik van zelf-ondertekende certificaten.

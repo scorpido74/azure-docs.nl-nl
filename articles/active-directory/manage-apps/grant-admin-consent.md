@@ -2,24 +2,24 @@
 title: Beheerder van de hele Tenant toestemming geven voor een toepassing-Azure AD
 description: Meer informatie over het verlenen van toestemming op Tenant niveau voor een toepassing, zodat eind gebruikers niet om toestemming wordt gevraagd wanneer ze zich aanmelden bij een toepassing.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d31f03d8e6138829bbf57003b504f68f5c2315b2
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75480916"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763360"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Toestemming van de beheerder voor de hele Tenant verlenen aan een toepassing
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Een toepassing beheerderstoestemming verlenen voor de hele tenant
 
 Meer informatie over hoe u de gebruikers ervaring kunt vereenvoudigen door de beheerder van de hele Tenant toestemming te verlenen voor een toepassing. In dit artikel worden de verschillende manieren beschreven waarop u dit kunt doen. De methoden zijn van toepassing op alle eind gebruikers in uw Azure Active Directory-Tenant (Azure AD).
 
@@ -80,7 +80,7 @@ Zo altijd moet u de machtigingen voor een toepassings aanvraag zorgvuldig contro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Configureren hoe eind gebruikers toestemming geven voor toepassingen](configure-user-consent.md)
+[Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
 
 [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
 

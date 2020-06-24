@@ -3,14 +3,14 @@ title: Een Windows-ontwikkel omgeving instellen
 description: Installeer de runtime, SDK en hulpprogramma's en maak een lokaal ontwikkelcluster. Zodra u dit hebt gedaan, kunt u toepassingen bouwen in Windows.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e51b224bdb91d8bce0f83088791cba8cd3b2d45
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449410"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888093"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Uw ontwikkelomgeving voorbereiden in Windows
 
@@ -69,7 +69,7 @@ Als u alleen de SDK nodig hebt, kunt u dit pakket installeren:
 De huidige versies zijn:
 
 * Service Fabric SDK en Hulpprogram Ma's 4.1.416
-* Service Fabric runtime-7.1.416
+* Service Fabric runtime-7.1.417
 
 Zie [service Fabric versies](service-fabric-versions.md) voor een lijst met ondersteunde versies
 

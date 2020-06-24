@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115519"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728501"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Een dynamische regel voor groepslid maatschap valideren (preview) in Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) biedt nu de mogelijkheid om dynamische groeps 
 
 ## <a name="step-by-step-walk-through"></a>Step-by-Step-instructies
 
-Ga naar **Azure Active Directory** > **groepen**om aan de slag te gaan. Selecteer een bestaande dynamische groep of maak een nieuwe dynamische groep en klik op dynamische lidmaatschaps regels. Vervolgens ziet u het tabblad **regels valideren** .
+Ga naar **Azure Active Directory**groepen om aan de slag te gaan  >  **Groups**. Selecteer een bestaande dynamische groep of maak een nieuwe dynamische groep en klik op dynamische lidmaatschaps regels. Vervolgens ziet u het tabblad **regels valideren** .
 
 ![Zoek het tabblad regels valideren en begin met een bestaande regel](./media/groups-dynamic-rule-validation/validate-tab.png)
 

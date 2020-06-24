@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 54c4a673e654a0244183a84ffa841d553ae6db51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106250"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688617"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Een virtuele Linux-machine maken met versneld netwerken met behulp van Azure CLI
 
@@ -97,7 +97,7 @@ az group create --name myResourceGroup --location centralus
 
 Selecteer een ondersteunde Linux-regio die wordt weer gegeven in [Linux-versneld netwerken](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview).
 
-Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet). In het volgende voor beeld wordt een virtueel netwerk met de naam *myVnet* gemaakt met één subnet:
+Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet). In het volgende voor beeld wordt een virtueel netwerk met de naam *myVnet* gemaakt met één subnet:
 
 ```azurecli
 az network vnet create \
@@ -158,9 +158,9 @@ az network nic create \
 ```
 
 ### <a name="create-a-vm-and-attach-the-nic"></a>Een virtuele machine maken en de NIC koppelen
-Wanneer u de virtuele machine maakt, geeft u de NIC op `--nics`die u hebt gemaakt met. Selecteer een grootte en distributie die worden vermeld in [Linux versneld netwerken](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
+Wanneer u de virtuele machine maakt, geeft u de NIC op die u hebt gemaakt met `--nics` . Selecteer een grootte en distributie die worden vermeld in [Linux versneld netwerken](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM* met de UbuntuLTS-installatie kopie en een grootte die ondersteuning biedt voor versneld netwerken (*Standard_DS4_v2*):
+Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVM* met de UbuntuLTS-installatie kopie en een grootte die ondersteuning biedt voor versneld netwerken (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \
@@ -192,13 +192,13 @@ Zodra de VM is gemaakt, wordt de uitvoer vergelijkbaar met de volgende voorbeeld
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>Controleren of versneld netwerken zijn ingeschakeld
 
-Gebruik de volgende opdracht om voor de VM een SSH-sessie te maken. Vervang `<your-public-ip-address>` door het open bare IP-adres dat is toegewezen aan de virtuele machine die u hebt gemaakt en vervang *azureuser* als u `--admin-username` een andere waarde hebt gebruikt voor het maken van de VM.
+Gebruik de volgende opdracht om voor de VM een SSH-sessie te maken. Vervang door `<your-public-ip-address>` het open bare IP-adres dat is toegewezen aan de virtuele machine die u hebt gemaakt en vervang *azureuser* als u een andere waarde hebt gebruikt voor `--admin-username` het maken van de VM.
 
 ```bash
 ssh azureuser@<your-public-ip-address>
 ```
 
-Voer `uname -r` vanuit de bash-shell in en bevestig dat de versie van de kernel een van de volgende versies is, of hoger:
+Voer vanuit de bash-shell in `uname -r` en bevestig dat de versie van de kernel een van de volgende versies is, of hoger:
 
 * **Ubuntu 16,04**: 4.11.0-1013
 * **SLES SP3**: 4.4.92-6.18
@@ -206,7 +206,7 @@ Voer `uname -r` vanuit de bash-shell in en bevestig dat de versie van de kernel 
 * **CentOS**: 7.4.20171206
 
 
-Bevestig dat het Mellanox VF-apparaat wordt blootgesteld aan de virtuele `lspci` machine met de opdracht. De geretourneerde uitvoer is vergelijkbaar met de volgende uitvoer:
+Bevestig dat het Mellanox VF-apparaat wordt blootgesteld aan de virtuele machine met de `lspci` opdracht. De geretourneerde uitvoer is vergelijkbaar met de volgende uitvoer:
 
 ```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
