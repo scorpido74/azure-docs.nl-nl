@@ -2,18 +2,18 @@
 title: Setup van het GPU-stuur programma voor Azure N-Series voor Linux
 description: NVIDIA GPU-Stuur Programma's instellen voor virtuele machines uit de N-serie waarop Linux wordt uitgevoerd in azure
 services: virtual-machines-linux
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: e4ee760acb441cdf70e588004d2f380ead07cd34
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 1d463242c923d766b500c1ede796e399e7af9c54
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779364"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735928"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
@@ -216,7 +216,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Voeg het volgende toe aan `/etc/nvidia/gridd.conf` :
+8. Voeg het volgende toe in `/etc/nvidia/gridd.conf`:
  
    ```
    IgnoreSP=FALSE
@@ -289,7 +289,7 @@ Als u NVIDIA-raster Stuur Programma's wilt installeren op de virtuele machines v
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Voeg het volgende toe aan `/etc/nvidia/gridd.conf` :
+8. Voeg het volgende toe in `/etc/nvidia/gridd.conf`:
  
    ```
    IgnoreSP=FALSE

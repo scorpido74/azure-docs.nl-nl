@@ -111,7 +111,7 @@ Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api'
 
 De vereiste aanvraag headers worden hieronder beschreven.
 
-| Header vereiste aanvraag | Beschrijving |
+| Header vereiste aanvraag | Description |
 | --- | --- |
 | Autorisatie | Als u wilt verifiëren met Time Series Insights, moet een geldig OAuth 2,0 Bearer-token worden door gegeven in de **autorisatie** -header. |
 
@@ -122,7 +122,7 @@ De vereiste aanvraag headers worden hieronder beschreven.
 
 De optionele aanvraag headers worden hieronder beschreven.
 
-| Optionele aanvraagheader | Beschrijving |
+| Optionele aanvraagheader | Description |
 | --- | --- |
 | Inhouds type | alleen `application/json` wordt ondersteund. |
 | x-MS-Client-Request-id | Een client aanvraag-ID. Deze waarde wordt vastgelegd door de service. Hiermee kan de service bewerkingen volgen tussen services. |
@@ -131,7 +131,7 @@ De optionele aanvraag headers worden hieronder beschreven.
 
 Optioneel, maar aanbevolen antwoord headers worden hieronder beschreven.
 
-| Reactie header | Beschrijving |
+| Reactie header | Description |
 | --- | --- |
 | Inhouds type | Alleen `application/json` wordt ondersteund. |
 | x-MS-Request-id | Door de server gegenereerde aanvraag-ID. Kan worden gebruikt om contact op te nemen met micro soft om een aanvraag te onderzoeken. |

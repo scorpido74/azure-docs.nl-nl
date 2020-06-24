@@ -74,7 +74,7 @@ In het volgende voor beeld ziet u een **RelyingParty** -element in het *B2C_1A_s
 
 Het optionele **RelyingParty** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | De standaard gebruikers traject voor de RP-toepassing. |
 | UserJourneyBehaviors | 0:1 | Het bereik van het gedrag van de reis van de gebruiker. |
@@ -110,7 +110,7 @@ Het element **DefaultUserJourney** bevat het volgende kenmerk:
 
 Het **UserJourneyBehaviors** -element bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Het bereik van het gedrag van de sessie voor eenmalige aanmelding (SSO) van een gebruikers traject. |
 | SessionExpiryType |0:1 | Het verificatie gedrag van de sessie. Mogelijke waarden: `Rolling` of `Absolute` . De `Rolling` waarde (standaard) geeft aan dat de gebruiker aangemeld blijft, zolang de gebruiker voortdurend actief is in de toepassing. De `Absolute` waarde geeft aan dat de gebruiker opnieuw moet worden geverifieerd na de tijds periode die is opgegeven voor de levens duur van de toepassings sessie. |
@@ -155,7 +155,7 @@ In het volgende voor beeld wordt een para meter met de naam `campaignId` met een
 
 Het element **ContentDefinitionParameters** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Een teken reeks die het sleutel waarde-paar bevat dat is toegevoegd aan de query reeks van een load-URI voor de inhouds definitie. |
 
@@ -177,10 +177,10 @@ Het element **TechnicalProfile** bevat het volgende kenmerk:
 
 De **TechnicalProfile** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | De teken reeks die de naam van het technische profiel bevat. |
-| Beschrijving | 0:1 | De teken reeks die de beschrijving van het technische profiel bevat. |
+| Description | 0:1 | De teken reeks die de beschrijving van het technische profiel bevat. |
 | Protocol | 1:1 | Het protocol dat wordt gebruikt voor de Federatie. |
 | Metagegevens | 0:1 | De verzameling sleutel *Item* /waarde-paren die wordt gebruikt door het protocol voor communicatie met het eind punt in de loop van een trans actie om de interactie tussen de Relying Party en andere deel nemers van de community te configureren. |
 | OutputClaims | 1:1 | Een lijst met claim typen die worden beschouwd als uitvoer in het technische profiel. Elk van deze elementen bevat een verwijzing naar een **claim** type dat al is gedefinieerd in de sectie **ClaimsSchema** of in een beleid van waaruit dit beleids bestand wordt overgenomen. |
@@ -196,7 +196,7 @@ Het **protocol** element bevat het volgende kenmerk:
 
 Het element **OutputClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Instanties | Description |
 | ------- | ----------- | ----------- |
 | Output claim | 0: n | De naam van een verwacht claim type in de lijst met ondersteunde typen voor het beleid waarop de Relying Party zich abonneert. Deze claim dient als uitvoer voor het technische profiel. |
 

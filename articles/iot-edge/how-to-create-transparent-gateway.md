@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c1e14fe6764a9f5e850d3b975ef3bcc6cb28bf78
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309149"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782582"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway
 
@@ -34,9 +34,9 @@ Er zijn drie algemene stappen voor het instellen van een geslaagde transparante 
 2. Maak een apparaat-id voor het downstream-apparaat, zodat het kan worden geverifieerd met IoT Hub. Configureer het downstream-apparaat om berichten te verzenden via het gateway apparaat. Zie [een downstream-apparaat verifiëren voor Azure IOT hub](how-to-authenticate-downstream-device.md)voor meer informatie.
 3. Verbind het downstream-apparaat met het gateway apparaat en begin met het verzenden van berichten. Zie [verbinding maken tussen een downstream-apparaat en een Azure IOT Edge-gateway](how-to-connect-downstream-device.md)voor meer informatie.
 
-Een apparaat kan alleen als gateway functioneren als het op een veilige manier verbinding kan maken met de downstream-apparaten. Met Azure IoT Edge kunt u een open bare-sleutel infrastructuur (PKI) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het gateway-apparaat bevestigen. Met deze identiteits controle voor komt u dat uw apparaten verbinding maken met mogelijk schadelijke gateways.
+Een apparaat kan alleen als gateway fungeren als het een veilige verbinding met de downstream-apparaten heeft. Met Azure IoT Edge kunt u een open bare-sleutel infrastructuur (PKI) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het gateway-apparaat bevestigen. Met deze identiteits controle voor komt u dat uw apparaten verbinding maken met mogelijk schadelijke gateways.
 
-Een downstream-apparaat in een transparant Gateway scenario kan elke toepassing of elk platform zijn met een identiteit die is gemaakt met de [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub) -Cloud service. In veel gevallen gebruiken deze toepassingen de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md). Voor alle praktische doel einden kan een downstream-apparaat zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway apparaat zelf. Een IoT Edge apparaat kan echter niet worden downstream van een IoT Edge gateway.
+Een downstream-apparaat kan een toepassing of platform zijn met een identiteit die is gemaakt met de [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub) -Cloud service. In deze toepassingen wordt vaak gebruikgemaakt van de [Azure IOT Device SDK](../iot-hub/iot-hub-devguide-sdks.md). Een downstream-apparaat kan zelfs een toepassing zijn die wordt uitgevoerd op het IoT Edge gateway-apparaat zelf. Een IoT Edge apparaat kan echter niet worden downstream van een IoT Edge gateway.
 
 U kunt een certificaat infrastructuur maken waarmee de vertrouwens relatie die is vereist voor de gateway topologie van uw apparaat wordt ingeschakeld. In dit artikel wordt ervan uitgegaan dat u dezelfde certificaat instelling gebruikt voor het inschakelen van [x. 509 ca-beveiliging](../iot-hub/iot-hub-x509ca-overview.md) in IOT hub, waarbij een x. 509 CA-certificaat is gekoppeld aan een specifieke IOT-hub (de basis-CA van de IOT-hub), een reeks certificaten die zijn ondertekend met deze certificerings instantie en een certificerings instantie voor het IOT edge apparaat.
 
@@ -72,7 +72,7 @@ Voor productie scenario's moet u deze bestanden met uw eigen certificerings inst
    1. [Basis-CA-certificaat maken](how-to-create-test-certificates.md#create-root-ca-certificate). Aan het einde van deze instructies hebt u een basis-CA-certificaat bestand:
       * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
 
-   2. [IOT Edge CA-certificaat voor het apparaat maken](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Aan het einde van deze instructies hebt u twee bestanden, een CA-certificaat voor apparaten en de persoonlijke sleutel:
+   2. [IOT Edge CA-certificaat voor het apparaat maken](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Aan het einde van deze instructies hebt u twee bestanden, een CA-certificaat en de persoonlijke sleutel van het apparaat:
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`maar
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
@@ -95,7 +95,7 @@ Voor productie scenario's moet u deze bestanden met uw eigen certificerings inst
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub implementeren op de gateway
 
-Wanneer u IoT Edge voor het eerst op een apparaat installeert, wordt slechts één systeem module automatisch gestart: de IoT Edge agent. Wanneer u de eerste implementatie meer een apparaat maakt, wordt de tweede systeem module, de IoT Edge hub, ook gestart.
+Wanneer u IoT Edge voor het eerst op een apparaat installeert, wordt slechts één systeem module automatisch gestart: de IoT Edge agent. Wanneer u de eerste implementatie voor een apparaat hebt gemaakt, wordt de tweede systeem module, de IoT Edge hub, ook gestart.
 
 De IoT Edge hub is verantwoordelijk voor het ontvangen van inkomende berichten van downstream-apparaten en het routeren naar de volgende bestemming. Als de **edgeHub** -module niet op uw apparaat wordt uitgevoerd, maakt u een eerste implementatie voor uw apparaat. De implementatie ziet er leeg uit omdat u geen modules toevoegt, maar dit zorgt ervoor dat beide systeem modules worden uitgevoerd.
 

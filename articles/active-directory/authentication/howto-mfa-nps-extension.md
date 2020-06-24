@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554829"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789529"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -165,7 +165,7 @@ Volg deze stappen om een test account te verkrijgen:
 
 1. [Down load de NPS-extensie](https://aka.ms/npsmfa) vanuit het micro soft Download centrum.
 2. Kopieer het binaire bestand naar de Network Policy Server die u wilt configureren.
-3. Voer *Setup. exe* uit en volg de installatie-instructies. Als er fouten optreden, controleert u of de twee bibliotheken van de sectie vereisten zijn geïnstalleerd.
+3. Voer *setup.exe* uit en volg de installatie-instructies. Als er fouten optreden, controleert u of de twee bibliotheken van de sectie vereisten zijn geïnstalleerd.
 
 #### <a name="upgrade-the-nps-extension"></a>De NPS-extensie upgraden
 
@@ -190,11 +190,20 @@ Tenzij u uw eigen certificaten wilt gebruiken (in plaats van de zelfondertekende
 1. Voer Windows Power shell uit als beheerder.
 2. Mappen wijzigen.
 
-   `cd "C:\Program Files\Microsoft\AzureMfa\Config"`
+   ```powershell
+   cd "C:\Program Files\Microsoft\AzureMfa\Config"
+   ```
 
 3. Voer het Power shell-script uit dat is gemaakt door het installatie programma.
 
-   `.\AzureMfaNpsExtnConfigSetup.ps1`
+   > [!IMPORTANT]
+   > Voor klanten die gebruikmaken van de Clouds van Azure Government of Azure China 21Vianet, bewerkt u eerst de `Connect-MsolService` cmdlets in het *AzureMfaNpsExtnConfigSetup.ps1* script om de *AzureEnvironment* -para meters voor de vereiste Cloud op te neemt. Geef bijvoorbeeld *-AzureEnvironment USGovernment* of *-AzureEnvironment AzureChinaCloud*op.
+   >
+   > Zie [Connect-MsolService para meter Reference (](/powershell/module/msonline/connect-msolservice#parameters)Engelstalig) voor meer informatie.
+
+   ```powershell
+   .\AzureMfaNpsExtnConfigSetup.ps1
+   ```
 
 4. Meld u als beheerder aan bij Azure AD.
 5. Power shell vraagt om uw Tenant-ID. Gebruik de GUID van de Directory-ID die u hebt gekopieerd uit de Azure Portal in de sectie vereisten.
@@ -205,22 +214,30 @@ Herhaal deze stappen voor alle extra NPS-servers die u wilt instellen voor taak 
 Als uw vorige computer certificaat is verlopen en er een nieuw certificaat is gegenereerd, moet u verlopen certificaten verwijderen. Verlopen certificaten kunnen leiden tot problemen met het starten van de NPS-extensie.
 
 > [!NOTE]
-> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \<TenantID\> , ou = micro soft NPS extension**zijn. 
+> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \<TenantID\> , ou = micro soft NPS extension**zijn.
 
-### <a name="microsoft-azure-government-additional-steps"></a>Aanvullende stappen Microsoft Azure Government
+### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Aanvullende stappen voor Microsoft Azure Government of Azure China 21Vianet
 
-Voor klanten die Azure Government Cloud gebruiken, zijn de volgende aanvullende configuratie stappen vereist op elke NPS-server.
+Voor klanten die gebruikmaken van de Clouds van Azure Government of Azure China 21Vianet, zijn de volgende aanvullende configuratie stappen vereist op elke NPS-server.
 
 > [!IMPORTANT]
-> Configureer deze register instellingen alleen als u een Azure Government klant bent.
+> Configureer deze register instellingen alleen als u een Azure Government of Azure China 21Vianet-klant bent.
 
-1. Als u een Azure Government klant bent, opent u de **REGI ster-editor** op de NPS-server.
-1. Navigeer naar `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Stel de volgende sleutel waarden in:
+1. Als u een Azure Government of Azure China 21Vianet-klant bent, opent u de **REGI ster-editor** op de NPS-server.
+1. Navigeer naar `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`.
+1. Stel voor Azure Government klanten de volgende sleutel waarden in.:
 
     | Registersleutel       | Waarde |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Stel voor Azure China 21Vianet-klanten de volgende sleutel waarden in:
+
+    | Registersleutel       | Waarde |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.cn   |
+    | STS_URL            | https://login.chinacloudapi.cn/   |
 
 1. Herhaal de vorige twee stappen om de register sleutel waarden voor elke NPS-server in te stellen.
 1. Start de NPS-service voor elke NPS-server opnieuw.
@@ -269,7 +286,7 @@ U kunt ervoor kiezen om deze sleutel te maken en deze in te stellen op ONWAAR wa
 
 Het volgende script is beschikbaar voor het uitvoeren van basis stappen voor de status controle bij het oplossen van problemen met de NPS-extensie.
 
-[MFA_NPS_Troubleshooter. ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -277,7 +294,7 @@ Het volgende script is beschikbaar voor het uitvoeren van basis stappen voor de 
 
 Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de **netwerk service**van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \<tenantid\> , OE = micro soft NPS-extensie**
 
-Zelfondertekende certificaten die zijn gegenereerd door het script *AzureMfaNpsExtnConfigSetup. ps1* , hebben ook een levens duur van twee jaar. Wanneer u controleert of het certificaat is geïnstalleerd, moet u ook controleren of het certificaat niet is verlopen.
+Zelfondertekende certificaten die door het *AzureMfaNpsExtnConfigSetup.ps1* script worden gegenereerd, hebben ook een geldigheids duur van twee jaar. Wanneer u controleert of het certificaat is geïnstalleerd, moet u ook controleren of het certificaat niet is verlopen.
 
 ---
 
@@ -285,7 +302,7 @@ Zelfondertekende certificaten die zijn gegenereerd door het script *AzureMfaNpsE
 
 Open de Power shell-opdracht prompt en voer de volgende opdrachten uit:
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
@@ -295,7 +312,7 @@ Met deze opdrachten worden alle certificaten afgedrukt die aan uw Tenant zijn ge
 
 Met de volgende opdracht wordt een bestand met de naam ' npscertificate ' gemaakt op het station ' C: ' in Format. cer.
 
-``` PowerShell
+```powershell
 import-module MSOnline
 Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertificate.cer

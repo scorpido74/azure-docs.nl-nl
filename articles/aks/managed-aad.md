@@ -4,24 +4,24 @@ description: Meer informatie over het gebruik van Azure AD in azure Kubernetes s
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 05/11/2020
-ms.openlocfilehash: 67f5f707ad2971551e3c9623dd5c07ad880afcf2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/04/2020
+ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211143"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782667"
 ---
-# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Azure AD integreren in azure Kubernetes service (preview)
+# <a name="integrate-aks-managed-azure-ad-preview"></a>Door AKS beheerde Azure AD integreren (preview-versie)
 
 > [!Note]
-> Bestaande AKS-clusters met AAD-integratie (Azure Active Directory) worden niet beïnvloed door de nieuwe met AKS beheerde AAD-ervaring.
+> Bestaande AKS-clusters (Azure Kubernetes service) met Azure Active Directory-integratie (Azure AD) worden niet beïnvloed door de nieuwe, door AKS beheerde Azure AD-ervaring.
 
-Azure AD-integratie met door AKS beheerde AAD is ontworpen om de Azure AD-integratie ervaring te vereenvoudigen, waar gebruikers eerder moesten een client-app, een server-app en de Azure AD-Tenant nodig hebben om Lees machtigingen voor mappen te verlenen. In de nieuwe versie beheert de AKS-resource provider de client-en server-apps voor u.
+Azure AD-integratie met door AKS beheerde Azure AD is ontworpen om de Azure AD-integratie ervaring te vereenvoudigen, waar gebruikers eerder moesten een client-app, een server-app en de Azure AD-Tenant moeten maken voor het verlenen van Lees machtigingen voor mappen. In de nieuwe versie beheert de AKS-resource provider de client-en server-apps voor u.
 
 ## <a name="limitations"></a>Beperkingen
 
-* U kunt momenteel geen upgrade uitvoeren van een bestaand AKS AAD-geïntegreerd cluster naar de nieuwe met AKS beheerde AAD-ervaring.
+* U kunt momenteel geen upgrade uitvoeren van een bestaand AKS Azure AD-geïntegreerd cluster naar de nieuwe door AKS beheerde Azure AD-ervaring.
 
 > [!IMPORTANT]
 > AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
@@ -30,6 +30,8 @@ Azure AD-integratie met door AKS beheerde AAD is ontworpen om de Azure AD-integr
 > - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
 
 ## <a name="before-you-begin"></a>Voordat u begint
+
+* Zoek de Tenant-ID van uw Azure-account door naar de Azure Portal te gaan en Azure Active Directory > eigenschappen te selecteren > Directory-ID
 
 > [!Important]
 > U moet Kubectl gebruiken met een minimum versie van 1,18
@@ -52,7 +54,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-Als u kubectl wilt installeren, gebruikt u het volgende:
+Als u kubectl wilt installeren, gebruikt u de volgende opdrachten:
 
 ```azurecli
 sudo az aks install-cli
@@ -79,37 +81,64 @@ Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registrat
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+## <a name="azure-ad-authentication-overview"></a>Overzicht van Azure AD-verificatie
+
+Cluster beheerders kunnen op rollen gebaseerd toegangs beheer (RBAC) Kubernetes configureren op basis van de identiteit van een gebruiker of het lidmaatschap van de Directory groep. Azure AD-verificatie wordt geleverd voor AKS-clusters met OpenID Connect Connect. OpenID Connect Connect is een id-laag die boven op het OAuth 2,0-protocol is gebouwd. Voor meer informatie over OpenID Connect Connect raadpleegt u de [Open-ID Connect-documentatie][open-id-connect].
+
+Vanuit het Kubernetes-cluster wordt webhook-token verificatie gebruikt om verificatie tokens te verifiëren. Webhook-token verificatie wordt geconfigureerd en beheerd als onderdeel van het AKS-cluster.
+
+## <a name="webhook-and-api-server"></a>Webhook en API-server
+
+:::image type="content" source="media/aad-integration/auth-flow.png" alt-text="Webhook-en API-Server verificatie stroom":::
+
+Zoals in de bovenstaande afbeelding wordt weer gegeven, roept de API-server de AKS-webhookserver aan en voert de volgende stappen uit:
+
+1. De Azure AD-client toepassing wordt gebruikt door kubectl om gebruikers aan te melden met [OAuth 2,0-autorisatie subsidie stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code).
+2. Azure AD biedt een access_token, id_token en een refresh_token.
+3. De gebruiker doet een aanvraag om kubectl te maken met een access_token van kubeconfig.
+4. Kubectl stuurt de access_token naar APIServer.
+5. De API-server is geconfigureerd met de auth webhook-server om validatie uit te voeren.
+6. De webhookserver voor verificatie bevestigt dat de JSON Web Token hand tekening geldig is door de open bare Azure AD-ondertekeningssleutel te controleren.
+7. De server toepassing maakt gebruik van door de gebruiker ingevoerde referenties voor het opvragen van groepslid maatschappen van de aangemelde gebruiker vanuit de MS Graph API.
+8. Er wordt een antwoord verzonden naar de APIServer met gebruikers informatie, zoals de claim van de user principal name (UPN) van het toegangs token en het groepslid maatschap van de gebruiker op basis van de object-ID.
+9. De API voert een autorisatie besluit uit op basis van de Kubernetes Role/RoleBinding.
+10. Na de autorisatie retourneert de API-server een reactie op kubectl.
+11. Kubectl geeft feedback aan de gebruiker.
+
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>Een AKS-cluster maken met Azure AD ingeschakeld
 
-U kunt nu een AKS-cluster maken met behulp van de volgende CLI-opdrachten.
+Maak een AKS-cluster met behulp van de volgende CLI-opdrachten.
 
-Maak eerst een Azure-resource groep:
+Een Azure-resource groep maken:
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location centralus
 ```
 
-Maak vervolgens een AKS-cluster:
+U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken. U hebt de object-ID voor uw Azure AD-groep nodig.
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
+# List existing groups in the directory
+az ad group list
 ```
-Met de bovenstaande opdracht maakt u een AKS-cluster met drie knoop punten, maar de gebruiker die het cluster heeft gemaakt, is standaard geen lid van een groep die toegang heeft tot dit cluster. Deze gebruiker moet een Azure AD-groep maken, toevoegen als lid van de groep en vervolgens het cluster bijwerken zoals hieronder wordt weer gegeven. Volg de instructies [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
 
-Zodra u een groep hebt gemaakt en uzelf (en andere) hebt toegevoegd als lid, kunt u het cluster met de Azure AD-groep bijwerken met de volgende opdracht
+Gebruik de volgende opdracht om een nieuwe Azure AD-groep voor uw cluster beheerders uit te Aken:
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+# Create an Azure AD group
+az ad group create --display-name MyDisplay --mail-nickname MyDisplay
 ```
-Als u eerst een groep maakt en leden toevoegt, kunt u de Azure AD-groep op het moment van maken inschakelen met de volgende opdracht:
+
+Een AKS-cluster maken en beheer toegang inschakelen voor uw Azure AD-groep
 
 ```azurecli-interactive
+# Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-Een geslaagde het maken van een door AKS beheerd AAD-cluster heeft de volgende sectie in de antwoord tekst
+Als u een Azure AD-cluster met AKS-beheer hebt gemaakt, is de volgende sectie in de antwoord tekst
 ```
 "Azure ADProfile": {
     "adminGroupObjectIds": null,
@@ -124,12 +153,17 @@ Een geslaagde het maken van een door AKS beheerd AAD-cluster heeft de volgende s
 Het cluster wordt binnen een paar minuten gemaakt.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Toegang tot een Azure AD-cluster
-De beheerders referenties ophalen voor toegang tot het cluster:
 
+U hebt de [Azure Kubernetes service-cluster gebruiker](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) ingebouwde rol nodig om de volgende stappen uit te voeren.
+
+De gebruikers referenties ophalen voor toegang tot het cluster:
+ 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Gebruik nu de kubectl Get nodes opdracht om knoop punten in het cluster weer te geven:
+Volg de instructies om u aan te melden.
+
+Gebruik de opdracht kubectl Get nodes om knoop punten in het cluster weer te geven:
 
 ```azurecli-interactive
 kubectl get nodes
@@ -139,22 +173,45 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
+Configureer [op rollen gebaseerde Access Control (RBAC)](https://review.docs.microsoft.com/azure/aks/azure-ad-rbac?branch=pr-en-us-117564) om extra beveiligings groepen voor uw clusters te configureren.
 
-De gebruikers referenties voor toegang tot het cluster ophalen:
- 
+## <a name="troubleshooting-access-issues-with-azure-ad"></a>Problemen met toegang tot Azure AD oplossen
+
+> [!Important]
+> De normale Azure AD-groeps verificatie wordt omzeild met de stappen die hieronder worden beschreven. Gebruik ze alleen in een nood geval.
+
+Als u permanent bent geblokkeerd door geen toegang te hebben tot een geldige Azure AD-groep die toegang heeft tot uw cluster, kunt u de beheerders referenties ook rechtstreeks voor toegang tot het cluster verkrijgen.
+
+Als u deze stappen wilt uitvoeren, moet u toegang hebben tot de ingebouwde rol [Azure Kubernetes service cluster admin](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) .
+
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-Volg de instructies om u aan te melden.
 
-U ontvangt: **u moet zijn aangemeld bij de server (niet gemachtigd)**
+## <a name="non-interactive-login-with-kubelogin"></a>Niet-interactieve aanmelding met kubelogin
 
-De bovenstaande gebruiker krijgt een fout melding omdat de gebruiker geen deel uitmaakt van een groep die toegang heeft tot het cluster.
+Er zijn een aantal niet-interactieve scenario's, zoals doorlopende integratie pijplijnen die momenteel niet beschikbaar zijn in kubectl. U kunt [kubelogin](https://github.com/Azure/kubelogin) gebruiken om toegang te krijgen tot het cluster in niet-interactieve scenario's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Access Control van op rollen gebaseerde Azure AD][azure-ad-rbac].
 * Gebruik [kubelogin](https://github.com/Azure/kubelogin) om toegang te krijgen tot functies voor Azure-verificatie die niet beschikbaar zijn in kubectl.
+* Gebruik [Azure Resource Manager (arm)-Sjablonen][aks-arm-template] voor het maken van met AKS beheerde Azure AD-clusters.
+
+<!-- LINKS - external -->
+[kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-group-create]: /cli/azure/group#az-group-create
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
+[operator-best-practices-identity]: operator-best-practices-identity.md
+[azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md
+

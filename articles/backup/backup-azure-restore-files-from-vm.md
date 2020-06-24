@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 91918bb053c1f26e33d08dde3b68debfcffe350e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 68fa3bb2b17da01004220f5876911fa3289a2e7c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195757"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124984"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -237,7 +237,7 @@ Als u het script uitvoert op een computer met beperkte toegang, controleert u of
 
 > [!NOTE]
 >
-> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor exampple: de gedownloade script naam begint met \' VMname \' \_ \' Geoname \' _ \' GUID \' , zoals *ContosoVM_wcus_12345678*
+> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Bijvoorbeeld: de naam van het gedownloade script begint met \' VMname \' \_ \' Geoname \' _ \' GUID \' , zoals *ContosoVM_wcus_12345678*
 > - De URL zou <https://pod01-rec2.wcus.backup.windowsazure.com> "
 >
 
@@ -258,7 +258,7 @@ Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de vo
     - Zorg ervoor dat het besturings systeem WS 2012 of hoger is.
     - Zorg ervoor dat de register sleutels zijn ingesteld zoals hieronder wordt beschreven op de Restore-server en zorg ervoor dat u de server opnieuw opstart. Het getal naast de GUID kan variëren van 0001-0005. In het volgende voor beeld is het 0004. Navigeer door het pad naar de register sleutel tot het gedeelte para meters.
 
-    ![iSCSI-reg-Key-changes. png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200

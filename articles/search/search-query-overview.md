@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282820"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130803"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Query typen en samen stelling in azure Cognitive Search
 
-In azure Cognitive Search is een query een volledige specificatie van een round-trip bewerking. De para meters in de aanvraag bieden match criteria voor het zoeken van documenten in een index, welke velden moeten worden opgenomen of uitgesloten, uitvoerings instructies worden door gegeven aan de engine en de richt lijnen voor het vorm geven van de reactie. Niet opgegeven (`search=*`), een query wordt uitgevoerd op alle Doorzoek bare velden als een zoek bewerking met volledige tekst, waardoor een oneindige resultatenset in wille keurige volg orde wordt geretourneerd.
+In azure Cognitive Search is een query een volledige specificatie van een round-trip bewerking. Op de aanvraag zijn er para meters die uitvoerings instructies bieden voor de engine, evenals de para meters die het antwoord vormen. Niet opgegeven ( `search=*` ), zonder match criteria en het gebruik van null of standaard parameters, wordt een query uitgevoerd voor alle Doorzoek bare velden als een zoek bewerking in volledige tekst, waardoor een oneindige resultatenset in een wille keurige volg orde wordt geretourneerd.
 
-Het volgende voor beeld is een representatieve query die is geconstrueerd in de [rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents). In dit voor beeld wordt de index voor de [Hotels-demo](search-get-started-portal.md) en de algemene para meters opgenomen.
+Het volgende voor beeld is een representatieve query die is geconstrueerd in de [rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents). In dit voor beeld wordt de index voor de [Hotels-demo](search-get-started-portal.md) en de algemene para meters opgenomen, zodat u kunt zien hoe een query eruit ziet.
 
 ```
 {
@@ -35,19 +35,27 @@ Het volgende voor beeld is een representatieve query die is geconstrueerd in de 
 
 + **`queryType`** Hiermee stelt u de parser in, ofwel de [standaard-query-parser](search-query-simple-examples.md) (optimaal voor zoeken in volledige tekst), of de [volledige lucene-query-parser](search-query-lucene-examples.md) die wordt gebruikt voor geavanceerde query constructies, zoals reguliere expressies, proximity Search, fuzzy en Joker tekens zoeken.
 
-+ **`search`** biedt de overeenkomende criteria, meestal tekst, maar vaak vergezeld van Booleaanse Opera tors. Enkele zelfstandige termen zijn *term* query's. Met een aanhalings teken voor meerdere delen worden query's voor de *sleutel woordgroepen* uitgevoerd. De zoek opdracht kan niet worden gedefinieerd, zoals **`search=*`** in, maar is waarschijnlijk meer dan de termen, zinsdelen en Opera tors die vergelijkbaar zijn met wat er in het voor beeld wordt weer gegeven.
++ **`search`** biedt de match criteria, meestal hele termen of zinsdelen, maar vaak vergezeld van Booleaanse Opera tors. Enkele zelfstandige termen zijn *term* query's. Query's met meerdere delen van citaten zijn *woordgroepen* query's. De zoek opdracht kan niet worden gedefinieerd, zoals in **`search=*`** , maar er is geen criteria om op te zoeken. de resultatenset bestaat uit wille keurig geselecteerde documenten.
 
 + **`searchFields`** beperkt de uitvoering van query's naar specifieke velden. Elk veld waarvoor een *zoekbaar* kenmerk is in het index schema, is een kandidaat voor deze para meter.
 
-Antwoorden worden ook gevormd door de para meters die u in de query opneemt. In het voor beeld bestaat de resultatenset uit velden die worden weer **`select`** gegeven in de instructie. Alleen velden die zijn gemarkeerd als *ophalen* kunnen worden gebruikt in een $SELECT-instructie. Daarnaast worden alleen de **`top`** 10 treffers geretourneerd in deze query, terwijl **`count`** u weet hoeveel documenten er allemaal overeenkomen, wat meer kan zijn dan wat er wordt geretourneerd. In deze query worden rijen gesorteerd op waardering in aflopende volg orde.
+Antwoorden worden ook gevormd door de para meters die u opneemt in de query:
+
++ **`select`** geeft aan welke velden moeten worden geretourneerd in het antwoord. Alleen velden die zijn gemarkeerd als *ophalen* in de index kunnen worden gebruikt in een SELECT-instructie.
+
++ **`top`** retourneert het opgegeven aantal best overeenkomende documenten. In dit voor beeld worden slechts tien hits geretourneerd. Als u de resultaten wilt weer geven, kunt u met de bovenkant en de pagina overs Laan.
+
++ **`count`** geeft aan hoeveel documenten in de volledige index in zijn geheel overeenkomen, wat meer kan zijn dan wat er wordt geretourneerd. 
+
++ **`orderby`** wordt gebruikt als u resultaten wilt sorteren op een waarde, zoals een classificatie of locatie. Anders is de standaard waarde het gebruik van de relevantie score om de resultaten te classificeren.
 
 In azure Cognitive Search is het uitvoeren van query's altijd op basis van één index, geauthenticeerd met een API-sleutel die in de aanvraag is opgenomen. In REST worden beide weer gegeven in aanvraag headers.
 
 ### <a name="how-to-run-this-query"></a>Deze query uitvoeren
 
-U kunt deze query uitvoeren met behulp van [Search Explorer en de index van de hotels](search-get-started-portal.md). 
+Voordat u code schrijft, kunt u query hulpprogramma's gebruiken om te zien wat de syntaxis is en experimenteren met verschillende para meters. De snelste benadering is het ingebouwde Portal-hulp programma, [Search Explorer](search-explorer.md).
 
-U kunt deze query teken reeks in de zoek balk van de Explorer plakken:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
+Als u deze Quick Start hebt uitgevoerd [om de hotels-demo-index te maken](search-get-started-portal.md), kunt u deze query reeks plakken in de zoek balk van de Explorer om uw eerste query uit te voeren:`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Hoe query bewerkingen worden ingeschakeld door de index
 
@@ -99,7 +107,7 @@ In de volgende voor beelden ziet u het punt: dezelfde query, maar met verschille
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
-Dezelfde query die gebruikmaakt van de volledige lucene-parser `^3` , interpreteert als een in-Field Booster. Switch parsers wijzigen de positie, met de resultaten met de term *historisch* naar boven.
+Dezelfde query die gebruikmaakt van de volledige lucene-parser, interpreteert `^3` als een in-Field Booster. Switch parsers wijzigen de positie, met de resultaten met de term *historisch* naar boven.
 
 ```
 queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
@@ -113,7 +121,7 @@ Azure Cognitive Search ondersteunt een breed scala aan query typen.
 
 | Query type | Gebruik | Voor beelden en meer informatie |
 |------------|--------|-------------------------------|
-| Zoek opdracht in vrije tekst | Zoek parameter en beide parsers| Zoek opdrachten in volledige tekst scans voor een of meer voor waarden in alle *Doorzoek* bare velden in uw index en werkt op de manier waarop u een zoek machine zoals Google of Bing verwacht. Het voor beeld in de inleiding is zoeken in volledige tekst.<br/><br/>Met zoeken in volledige tekst wordt tekst analyse met behulp van de standaard-lucene Analyzer (standaard) gebruikt om alle voor waarden te kleine letters te verwijderen, stop woorden zoals ' de '. U kunt de standaard instelling overschrijven met [niet-Engelse analyses](index-add-language-analyzers.md#language-analyzer-list) of [gespecialiseerde neutraal-](index-add-custom-analyzers.md#AnalyzerTable) analyse functies waarmee tekst analyse wordt gewijzigd. Een voor beeld is een [tref woord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) dat de volledige inhoud van een veld als één token behandelt. Dit is handig voor gegevens zoals post codes, Id's en sommige product namen. | 
+| Zoek opdracht in vrije tekst | Zoek parameter en beide parsers| Zoek opdrachten in volledige tekst scans voor een of meer voor waarden in alle *Doorzoek* bare velden in uw index en werkt op de manier waarop u een zoek machine zoals Google of Bing verwacht. Het voor beeld in de inleiding is zoeken in volledige tekst.<br/><br/>Zoek opdracht in volledige tekst ondergaate lexicale analyse met behulp van de standaard-lucene Analyzer (standaard) om alle voor waarden kleine letters te verlagen, verwijder stop woorden zoals ' de '. U kunt de standaard instelling overschrijven met [niet-Engelse analyse](index-add-language-analyzers.md#language-analyzer-list) functies of [gespecialiseerde neutraal-](index-add-custom-analyzers.md#AnalyzerTable) analyse functies waarmee lexicale analyses worden gewijzigd. Een voor beeld is een [tref woord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) dat de volledige inhoud van een veld als één token behandelt. Dit is handig voor gegevens zoals post codes, Id's en sommige product namen. | 
 | Gefilterde zoek opdracht | [OData-filter expressie](query-odata-filter-orderby-syntax.md) en een van beide parsers | Met filter query's wordt een booleaanse expressie voor alle *filter* bare velden in een index geëvalueerd. In tegens telling tot zoeken komt een filter query overeen met de exacte inhoud van een veld, inclusief hoofdletter gevoeligheid voor teken reeks velden. Een ander verschil is dat filter query's worden weer gegeven in de OData-syntaxis. <br/>[Voor beeld van filter expressie](search-query-simple-examples.md#example-3-filter-queries) |
 | Op geografische locaties zoeken | Het [type EDM. GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) in het veld, filter expressie en beide parsers | Coördinaten die zijn opgeslagen in een veld met een EDM. GeographyPoint worden gebruikt voor de besturings elementen "dichtbij zoeken" of op basis van een kaart. <br/>[Voor beeld van geo-zoeken](search-query-simple-examples.md#example-5-geo-search)|
 | Bereik zoeken | filter expressie en eenvoudige parser | In azure Cognitive Search worden bereik query's gemaakt met behulp van de filter parameter. <br/>[Voor beeld van Range-filter](search-query-simple-examples.md#example-4-range-filters) | 
@@ -122,7 +130,7 @@ Azure Cognitive Search ondersteunt een breed scala aan query typen.
 | [Proximity Search](query-lucene-syntax.md#bkmk_proximity) | Zoek parameter en volledige parser | Hiermee worden zoek termen in een document in de buurt. <br/>[Voor beeld van proximity Search](search-query-lucene-examples.md#example-4-proximity-search) |
 | [term versterking](query-lucene-syntax.md#bkmk_termboost) | Zoek parameter en volledige parser | Hiermee wordt een document hoger gerangschikt als het de gestimuleerde term bevat, ten opzichte van andere. <br/>[Voor beeld van een betere term](search-query-lucene-examples.md#example-5-term-boosting) |
 | [reguliere expressie zoeken](query-lucene-syntax.md#bkmk_regex) | Zoek parameter en volledige parser | Komt overeen met de inhoud van een reguliere expressie. <br/>[Voor beeld van een reguliere expressie](search-query-lucene-examples.md#example-6-regex) |
-|  [Joker teken of voor voegsel zoeken](query-lucene-syntax.md#bkmk_wildcard) | Zoek parameter en volledige parser | Komt overeen met een voor voegsel en tilde (`~`) of één`?`teken (). <br/>[Zoek voorbeeld voor joker tekens](search-query-lucene-examples.md#example-7-wildcard-search) |
+|  [Joker teken of voor voegsel zoeken](query-lucene-syntax.md#bkmk_wildcard) | Zoek parameter en volledige parser | Komt overeen met een voor voegsel en tilde () `~` of één teken ( `?` ). <br/>[Zoek voorbeeld voor joker tekens](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Zoek resultaten beheren 
 
@@ -141,21 +149,21 @@ Af en toe zijn de stoffen en niet de structuur van de resultaten onverwacht. Wan
 
 + Wijzig **`searchMode=any`** (standaard) in **`searchMode=all`** om overeenkomsten te vereisen voor alle criteria in plaats van een criterium. Dit geldt met name wanneer Boole-Opera tors worden opgenomen in de query.
 
-+ Wijzig de query techniek als tekst-of lexicale analyse nood zakelijk is, maar het query type belet taal verwerking. In zoeken in volledige tekst, tekst-of lexicale analyse auto correctie voor spel fouten, enkelvoudige Word-formulieren en zelfs onregelmatige woorden of zelfstandige naam woorden. Voor sommige query's, zoals fuzzy of joker tekens, is tekst analyse geen onderdeel van de pijp lijn voor het parseren van query's. In sommige gevallen worden reguliere expressies gebruikt als tijdelijke oplossing. 
++ Wijzig de query techniek als tekst-of lexicale analyse nood zakelijk is, maar het query type belet taal verwerking. In zoeken in volledige tekst, tekst-of lexicale analyse auto correctie voor spel fouten, enkelvoudige Word-formulieren en zelfs onregelmatige woorden of zelfstandige naam woorden. Voor sommige query's, zoals fuzzy of joker tekens zoeken, maakt lexicale analyse geen deel uit van de pipeline voor het parseren van query's. In sommige gevallen worden reguliere expressies gebruikt als tijdelijke oplossing. 
 
 ### <a name="paging-results"></a>Resultaten pagineren
-Met Azure Cognitive Search kunt u eenvoudig paginering van zoek resultaten implementeren. Met behulp **`top`** van **`skip`** de-en-para meters kunt u probleemloos Zoek opdrachten verzenden waarmee u de totale set Zoek resultaten in beheerbaar, bestelde subsets waarmee u eenvoudig goede zoek acties in de gebruikers interface kunt kunnen ontvangen. Tijdens het ontvangen van deze kleinere subsets van resultaten kunt u ook het aantal documenten weergeven in het totale aantal zoekresultaten.
+Met Azure Cognitive Search kunt u eenvoudig paginering van zoek resultaten implementeren. Met behulp van de **`top`** **`skip`** -en-para meters kunt u probleemloos Zoek opdrachten verzenden waarmee u de totale set Zoek resultaten in beheerbaar, bestelde subsets waarmee u eenvoudig goede zoek acties in de gebruikers interface kunt kunnen ontvangen. Tijdens het ontvangen van deze kleinere subsets van resultaten kunt u ook het aantal documenten weergeven in het totale aantal zoekresultaten.
 
 Meer informatie over het pagineren van zoek resultaten vindt u in het artikel de [pagina met zoek resultaten in Azure Cognitive Search](search-pagination-page-layout.md).
 
 ### <a name="ordering-results"></a>Resultaten ordenen
 Wanneer er resultaten voor een zoek query worden ontvangen, kunt u aanvragen dat Azure Cognitive Search de resultaten bedient die zijn gesorteerd op waarden in een specifiek veld. Standaard worden de zoek resultaten door Azure Cognitive Search gesorteerd op basis van de positie van de zoek Score van elk document, die is afgeleid van [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Als u wilt dat Azure Cognitive Search uw resultaten retourneert die zijn besteld met een andere waarde dan de zoek Score, **`orderby`** kunt u de zoek parameter gebruiken. U kunt de waarde van de **`orderby`** para meter opgeven voor het toevoegen van veld namen en aanroepen naar de [** `geo.distance()` functie**](query-odata-filter-orderby-syntax.md) voor georuimtelijke waarden. Elke expressie kan worden gevolgd door `asc` om aan te geven dat de resultaten in oplopende Volg **`desc`** orde worden aangevraagd en om aan te geven dat de resultaten in aflopende volg orde worden aangevraagd. De standaard oplopende volgorde.
+Als u wilt dat Azure Cognitive Search uw resultaten retourneert die zijn besteld met een andere waarde dan de zoek Score, kunt u de **`orderby`** Zoek parameter gebruiken. U kunt de waarde van de para meter opgeven voor het **`orderby`** toevoegen van veld namen en aanroepen naar de [** `geo.distance()` functie**](query-odata-filter-orderby-syntax.md) voor georuimtelijke waarden. Elke expressie kan worden gevolgd door `asc` om aan te geven dat de resultaten in oplopende volg orde worden aangevraagd en **`desc`** om aan te geven dat de resultaten in aflopende volg orde worden aangevraagd. De standaard oplopende volgorde.
 
 
 ### <a name="hit-highlighting"></a>Markeren
-In azure Cognitive Search is het benadrukken van het exacte deel van de zoek resultaten dat overeenkomt met de zoek query, eenvoudig **`highlight`** gemaakt **`highlightPreTag`** met behulp van de para meters, en **`highlightPostTag`** . U kunt opgeven in welke *Doorzoek* bare velden de overeenkomende tekst moet worden benadrukt, evenals de exacte teken reeks tags die moeten worden toegevoegd aan het begin en het einde van de overeenkomende tekst die Azure Cognitive Search retourneert.
+In azure Cognitive Search is het benadrukken van het exacte deel van de zoek resultaten dat overeenkomt met de zoek query, eenvoudig gemaakt met behulp van de **`highlight`** **`highlightPreTag`** **`highlightPostTag`** para meters, en. U kunt opgeven in welke *Doorzoek* bare velden de overeenkomende tekst moet worden benadrukt, evenals de exacte teken reeks tags die moeten worden toegevoegd aan het begin en het einde van de overeenkomende tekst die Azure Cognitive Search retourneert.
 
 ## <a name="see-also"></a>Zie ook
 

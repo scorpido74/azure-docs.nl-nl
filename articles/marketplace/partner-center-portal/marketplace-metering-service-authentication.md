@@ -6,30 +6,30 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/13/2020
-ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/21/2020
+ms.openlocfilehash: dd1c4e724e70507816aa4b6ba652adfb998a8cc0
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642316"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783398"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Verificatie strategieën voor Marketplace-meet service
 
 Marketplace meter service ondersteunt twee verificatie strategieën:
 
 * [Beveiligings token van Azure AD](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
 
 Er wordt uitgelegd wanneer en hoe u de verschillende verificatie strategieën gebruikt voor het veilig verzenden van aangepaste meters met behulp van Marketplace-meet service.
 
 ## <a name="using-the-azure-ad-security-token"></a>Het Azure AD-beveiligings token gebruiken
 
-Toepasselijke aanbiedings typen zijn SaaS en Azure-toepassingen met een beheerd type toepassings plan.  
+Toepasselijke aanbiedings typen zijn transactable SaaS en Azure Applications met een beheerd type toepassings plan.  
 
-Verzend aangepaste meters met behulp van een vooraf gedefinieerde ID voor de vaste toepassing die moet worden geverifieerd.
+Verzend aangepaste meters met behulp van een vooraf gedefinieerde, vaste Azure AD-toepassings-ID om te verifiëren.
 
-Voor SaaS-aanbiedingen is Azure AD de enige beschik bare optie.
+Voor SaaS-aanbiedingen is dit de enige beschik bare optie. Het is een verplichte stap voor het publiceren van een SaaS-aanbieding zoals beschreven in [een SaaS-toepassing registreren](./pc-saas-registration.md).
 
 Voor Azure-toepassingen met een beheerd toepassings abonnement kunt u overwegen deze strategie in de volgende gevallen te gebruiken:
 
@@ -66,12 +66,12 @@ Zie [Azure Active Directory toegangs tokens](https://docs.microsoft.com/azure/ac
 
 #### <a name="request-body"></a>*Aanvraag tekst*
 
-|  **Eigenschaps naam**  |  **Vereist**  |  **Beschrijving**          |
+|  **Naam van eigenschap**  |  **Vereist**  |  **Beschrijving**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Grant_type`       |   True         | Toekennings type. De standaardwaarde is `client_credentials`. |
+|  `Grant_type`       |   True         | Toekennings type. Gebruik `client_credentials`. |
 |  `Client_id`        |   True         | Client/App-ID die is gekoppeld aan de Azure AD-app.|
-|  `client_secret`    |   True         | Het wacht woord dat is gekoppeld aan de Azure AD-app.  |
-|  `Resource`         |   True         | Doel resource waarvoor het token wordt aangevraagd. De standaardwaarde is `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`.  |
+|  `client_secret`    |   True         | Geheim dat is gekoppeld aan de Azure AD-app.  |
+|  `Resource`         |   True         | Doel resource waarvoor het token wordt aangevraagd. Gebruik `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`. |
 | | | |
 
 #### <a name="response"></a>*Beantwoord*
@@ -145,7 +145,7 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
 
     ```powershell
     # Get resourceUsageId from the managed app
-    $managedAppUrl = "https://management.azure.com/subscriptions/" + $metadata.compute.subscriptionId + "/resourceGroups/" + $metadata.compute.resourceGroupName + "/providers/Microsoft.Solutions/applications/" + $managedappId + "\?api-version=2019-07-01"
+    $managedAppUrl = "https://management.azure.com" + $managedappId + "\?api-version=2019-07-01"
     $ManagedApp = curl $managedAppUrl -H $Headers | Select-Object -Expand Content | ConvertFrom-Json
     # Use this resource ID to emit usage 
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
@@ -156,3 +156,4 @@ Volg de onderstaande stappen om te verifiëren met behulp van een Windows-VM,
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Azure-toepassingsaanbieding maken](./create-new-azure-apps-offer.md)
+* [Een voor transactable SaaS-aanbieding maken](./offer-creation-checklist.md)

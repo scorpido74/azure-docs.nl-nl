@@ -69,6 +69,8 @@
         - name: Beleid implementeren dat kan worden hersteld
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel-integratie
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: Klantacties
       items:
         - name: Serviceproviders weergeven en beheren

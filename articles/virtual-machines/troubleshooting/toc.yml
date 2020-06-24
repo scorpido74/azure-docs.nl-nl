@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: Vastgelopen bij Windows-update
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Onverwacht opnieuw opgestart of een fout
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: Virtuele machine loopt vast bij opstarten
           href: troubleshoot-vm-boot-configure-update.md
         - name: VM kan niet worden opgestart vanwege Windows Opstartbeheer

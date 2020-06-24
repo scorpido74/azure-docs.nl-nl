@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 332ce90de334a384ee6017a12781d0ddb2ed4158
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266726"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126141"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -33,12 +33,12 @@ Citrix breidt de waarde van Windows virtueel bureau blad uit met robuuste zakeli
 
 ![VMware-logo](./media/partners/vmware.png)
 
-VMware horizon Cloud op Microsoft Azure biedt organisaties de mogelijkheid om hun eigen exemplaar van Microsoft Azure te koppelen aan het eenvoudige, intuïtieve Horizony-besturings vlak voor de Cloud, waarbij u een veilige, allesomvattende, in de Cloud gehoste oplossing maakt voor het leveren van gevirtualiseerde Windows-toepassingen en Desk tops. Met de release van Windows virtueel bureau blad heeft VMware samen met micro soft de functionaliteit van Windows virtueel bureau blad uitgebreid naar klanten met behulp van een horizon-Cloud op Microsoft Azure. Deze functionaliteit is aan het einde van 2019 beschikbaar in de technische preview-versie.
- 
-Als goedgekeurde provider worden de voor delen van Windows virtueel bureau blad uitgebreid naar VMware horizon Cloud op Microsoft Azure klanten, waaronder Windows 10 Enter prise voor meerdere sessies, Windows 7 met gratis uitgebreide beveiligings updates voor Maxi maal drie jaar en FSLogix. Daarnaast ontvangen klanten de functies van de Enter prise-klasse van de Cloud, zoals de brede ondersteuning voor eind punten; wereld wijde, in de Cloud geoptimaliseerde Broker; flexibele bureaublad opties en configuraties; beheer van de gebruikers omgeving; en ondersteuning voor hybride omgevingen.
+VMware horizon Cloud op Microsoft Azure is een systeem eigen Cloud service waarmee organisaties snel externe Bureau bladen en toepassingen kunnen implementeren vanaf hun bestaande Microsoft Azure-abonnementen terwijl alle functies van VMware horizon worden ingezet. Horizon-Cloud maakt gebruik van het besturings vlak van de horizon om één beheer interface te bieden voor alle horizon-omgevingen, on-premises of in de Cloud. Hiermee kunnen hybride bureau blad-virtualisatie worden uitgevoerd en kunnen klanten hun werk belastingen in hun eigen tempo verplaatsen naar Azure.
 
-- [Meld u aan voor de Tech Preview van Horizon-Cloud op Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+Als een Windows-goedgekeurd virtuele bureau blad-provider kan VMware klanten helpen met het gebruik van virtuele Windows-Bureau bladen, terwijl ze nog steeds gebruikmaken van de extra functionaliteit die wordt geleverd met VMware-horizon, zoals geïntegreerd en eenvoudig te gebruiken energie beheer, bewaking van de Cloud en het hoogoven extreme-protocol. Deze functies worden aangepast aan het wijzigen van de netwerk omstandigheden op het vlieg werk om een consistente, uitstekende gebruikers ervaring te bieden. VMware-horizon-Cloud wordt ook geleverd met VMware-app-volumes en Dynamic Environment Manager, waarmee geavanceerde toepassingen voor toepassings-en gebruikers omgevingen worden toegevoegd die werken met MSIX app attach en FSLogix.
+
 - [Ga naar de website van de partner](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+- [Lees de technische documentatie voor VMware horizon-Cloud](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure).
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contex
 
 - [Ga naar de website van de partner](https://devicetrust.com/wvd).
 
+## <a name="ekran-system"></a>Ekran systeem
+
+![Ekran-systeem logo](./media/partners/ekran.png)
+
+Het ekran-systeem is een Windows-waarde voor virtueel bureau blad-partner toevoegen waarmee IT-teams alle activiteiten van externe gebruikers op Microsoft Azure virtuele machines kunnen controleren. Met ekran System kunt u activiteiten op het scherm vastleggen voor elke gebruikers sessie in gepubliceerde toepassingen of virtuele Bureau bladen, terwijl u een breed scala aan context rijke meta gegevens, zoals toepassings namen, actieve venster titels, bezochte Url's en toetsaanslagen verzamelt. Geavanceerde functies bieden diep gaande zicht baarheid en respons tijden voor snelle incidenten, waardoor ekran systeem een efficiënte oplossing voor het beheer van problemen met betrekking tot Insider Threats en naleving.  
+
+De unieke drijvende eindpunt licenties van ekran-systeemclients is geautomatiseerd voor het ondersteunen van dynamisch wijzigen van virtuele Bureau bladen. Met ekran System kunt u automatisch de toewijzing van licenties van verwijderde niet-permanente virtuele Bureau bladen opheffen en verwijderen uit uw data base. Ekran-systeem kan naadloos worden geïntegreerd met Azure Active Directory en Azure Sentinel.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
+- [Ga naar de partner pagina](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="flexxible-it"></a>Flexxible
+
+![Flexxible IT-logo](./media/partners/flexxible.png)
+
+Flexxible is de waarde van een virtueel bureau blad van Windows-Voeg partner toe waarmee organisaties snel virtuele Windows-Bureau bladen en Citrix-werkruimte infrastructuur kunnen schalen, bewaken en efficiënt kunt beheren. Flexxible | SUITE biedt IT-beheerders de mogelijkheid om virtuele Windows-werk belastingen op intelligente wijze in te richten en te beheren in Azure.
+ 
+Flexxible IT-technologie breidt de waarde van beide systeem eigen virtuele bureau blad-en Citrix-werk ruimte uit door algemene processen te automatiseren om de configuratie van de infra structuur, het inrichten van pc's en het dagelijks beheer te vereenvoudigen. Als u geen complexe Power shell-scripts of tijdrovende hand matige processen nodig hebt, biedt SUITE schaal bare Desktop implementatie, uitgebreide bewaking en rapportage en beveiligd beheer. Met deze functies kunt u zich richten op het leveren van een verbeterd service niveau en een goede Windows Virtual Desktop-ervaring voor uw gebruikers.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A).
+- [Ga naar de website van de partner](https://www.flexxible.com/suite-for-windows-virtual-desktop).
+
 ## <a name="hp"></a>HP
 
 ![HP-logo](./media/partners/hp.png)
@@ -127,7 +149,7 @@ IGEL-besturings systeem ondersteunt alle populaire virtuele apps, Bureau bladen 
 
 ![Ivanti-logo](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager is een Windows-service voor virtueel bureau blad met toegevoegde waarde waarmee desktop implementatie en-beheer worden vergemakkelijkt door gebruikers gegevens van het bureau blad te scheiden voor een naadloze portabiliteit. Met Ivanti kunnen gebruikers complexe projecten leveren, zoals migreren naar Windows 10, Office 365 of het verplaatsen van services naar de Cloud versnellen. 
+Ivanti User Workspace Manager is een Windows-service voor virtueel bureau blad met toegevoegde waarde waarmee desktop implementatie en-beheer worden vergemakkelijkt door gebruikers gegevens van het bureau blad te scheiden voor een naadloze portabiliteit. Met Ivanti kunnen gebruikers complexe projecten leveren, zoals migreren naar Windows 10, het Microsoft 365 of verplaatsen van services naar de Cloud. 
 
 Bij gebruik in combi natie met Windows Virtual Desktop biedt Ivanti gebruikers werkruimte beheer een eenvoudig context beheer van de gebruikers ervaring op het bureau blad, voor het elimineren van lange aanmeldings tijden en uitroeiing van Nightmares voor groeps beleid. Met de out-of-the-box-sjablonen van Ivanti-gebruikers werkruimte beheer wordt de installatie voor gebruikers vereenvoudigd via agents en de bestaande-console. Ivanti gebruikers werkruimte beheer biedt responsieve, beveiligde Desk tops die gebruikers bevallen, het besparen van geld op servers, het efficiënter beheren van gebruikers en het verminderen van het beveiligings risico van eind punten. 
 
@@ -163,6 +185,7 @@ Met Liquit voor het samen voegen van toepassingen en leverings software kunnen o
 
 Als gecertificeerde integratie partner helpt Liquit de overgang naar de cloud te versnellen zonder een RIP-en-vervang vertraging. Met Windows Virtual Desktop kunt u eenvoudig verbinding maken met een bestaande omgeving, een werk ruimte maken en het bureau blad leveren. U kunt vervolgens de migratie van oude platforms afronden en wijzigingen aanbrengen in de back-end zonder uw gebruikers merkt. Profiteer van een consistente ervaring voor eind gebruikers, een flexibele infra structuur en behoud de controle over uw toepassingen, ongeacht waar ze zich bevinden.
 
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8).
 - [Ga naar de website van de partner](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Aanmeldings VSI
@@ -235,6 +258,17 @@ RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope
 De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centraal Azure SQL database-exemplaar voor beoordeling. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
 
 - [Ga naar de website van de partner](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
+
+## <a name="rimo3"></a>Rimo3
+
+![Rimo3-logo](./media/partners/rimo3.png)
+
+Rimo3 verbetert de Windows Virtual Desktop-ervaring door de implementatie te versnellen en voortdurend veranderingen beheer te verbeteren. Rimo3 voorziet IT-teams van de kennis die ze nodig hebben om uw toepassings portefeuille te ondersteunen voor de gereedheid voor Azure-migratie van toepassings werkbelastingen. Gebruikers kunnen toepassingen onboarden en ze testen in hun virtuele Windows-werk ruimte voor virtueel bureau blad snel en painlessly. Gebruikers kunnen ook proactief inzicht krijgen in de gevolgen van wijzigingen wanneer hun organisatie nieuwe toepassingen en updates samenvoegt. Ten slotte kunnen IT-beheerders gebruikmaken van Rimo3's intelligent rook testen en functionaliteits tests automatiseren zonder gebruikers sessies te onderbreken.
+
+Rimo3 biedt een eenvoudig te gebruiken, schaalbaar, geautomatiseerd platform voor automatisch testen van toepassingen. Dit platform bevat mogelijkheden voor alle drie basis principes voor het testen van toepassingen: compatibiliteit, functionaliteit en prestaties. Hiermee kunnen organisaties, leiders en teams de bedrijfs continuïteit verbeteren, wijzigingen sneller en gebruikers ervaring optimaliseren.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B).
+- [Ga naar de website van de partner](https://rimo3.com/outcomes/).
 
 ## <a name="sepago"></a>sepago
 

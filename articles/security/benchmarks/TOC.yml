@@ -37,6 +37,8 @@
       href: ../../api-management/security-baseline.md
     - name: Application Gateway-beveiligingsbasislijn
       href: ../../application-gateway/security-baseline.md
+    - name: Automation-beveiligingsbasislijn
+      href: ../../automation/security-baseline.md
     - name: Azure Cache voor Redis-beveiligingsbasislijn
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Basislijn voor back-ups
@@ -51,24 +53,32 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Customer Lockbox-beveiligingsbasislijn
       href: ../fundamentals/customer-lockbox-security-baseline.md
+    - name: Databox-beveiligingsbasislijn
+      href: ../../databox/security-baseline.md
     - name: Basislijn voor Data Explorer-beveiliging
       href: /azure/data-explorer/security-baseline
     - name: Data Factory-beveiligingsbasislijn
-      href: /azure/data-factory/security-baseline
+      href: ../../data-factory/security-baseline.md
     - name: Databricks-beveiligingsbasislijn
       href: ../../azure-databricks/security-baseline.md
     - name: Basislijn voor Event Hubs-beveiliging
       href: ../../event-hubs/security-baseline.md
+    - name: ExpressRoute-beveiligingsbasislijn
+      href: ../../expressroute/security-baseline.md
     - name: Functions-beveiligingsbasislijn
       href: ../../azure-functions/security-baseline.md
     - name: Basislijn voor HDInsight-beveiliging
       href: ../../hdinsight/security-baseline.md
     - name: Basislijn voor Key Vault-beveiliging
       href: ../../key-vault/security-baseline.md
+    - name: Logic Apps-beveiligingsbasislijn
+      href: ../../logic-apps/security-baseline.md
     - name: Basislijn voor MariaDB-beveiliging
       href: ../../mariadb/security-baseline.md
     - name: Basislijn voor MySQL-beveiliging
       href: ../../mysql/security-baseline.md
+    - name: Network Watcher-beveiligingsbasislijn
+      href: ../../network-watcher/security-baseline.md
     - name: Basislijn voor PostgreSQL-beveiliging
       href: ../../postgresql/security-baseline.md
     - name: Basislijn voor SQL Database-beveiliging

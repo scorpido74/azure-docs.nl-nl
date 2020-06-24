@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 595436daa2efbd8e706a539d0a89c3ea98be31ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5844fca371680ce02e6628d9cacbf50ebe4c8ed0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655467"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734823"
 ---
 # <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Een door Azure Active Directory Domain Services beheerd domein verwijderen met de Azure Portal
 
-Als u een beheerd domein niet meer nodig hebt, kunt u een Azure Active Directory Domain Services-exemplaar (Azure AD DS) verwijderen. Er is geen optie voor het uitschakelen of tijdelijk uitschakelen van een door Azure AD DS beheerd domein. Als u het door Azure AD DS beheerde domein verwijdert, wordt de Azure AD-Tenant niet verwijderd. Dit artikel laat u zien hoe u de Azure Portal kunt gebruiken om een door Azure AD DS beheerd domein te verwijderen.
+Als u een beheerd domein niet meer nodig hebt, kunt u een beheerd domein van Azure Active Directory Domain Services (Azure AD DS) verwijderen. Er is geen optie voor het uitschakelen of tijdelijk uitschakelen van een door Azure AD DS beheerd domein. Als u het beheerde domein verwijdert, wordt de Azure AD-Tenant niet verwijderd. Dit artikel laat u zien hoe u de Azure Portal kunt gebruiken om een beheerd domein te verwijderen.
 
 > [!WARNING]
 > **Verwijdering is permanent en kan niet worden omgekeerd.**
-> Wanneer u een door Azure AD DS beheerd domein verwijdert, gebeurt het volgende:
+> Wanneer u een beheerd domein verwijdert, worden de volgende stappen uitgevoerd:
 >   * Domein controllers voor het beheerde domein worden ongedaan gemaakt en uit het virtuele netwerk verwijderd.
 >   * Gegevens op het beheerde domein worden permanent verwijderd. Deze gegevens omvatten aangepaste organisatie-eenheden, Gpo's, aangepaste DNS-records, service-principals, Gmsa's, enzovoort die u hebt gemaakt.
 >   * Computers die zijn gekoppeld aan het beheerde domein, verliezen hun vertrouwens relatie met het domein en moeten uit het domein worden verwijderd.
@@ -32,19 +32,19 @@ Als u een beheerd domein niet meer nodig hebt, kunt u een Azure Active Directory
 
 ## <a name="delete-the-managed-domain"></a>Het beheerde domein verwijderen
 
-Voer de volgende stappen uit om een door Azure AD DS beheerd domein te verwijderen:
+Als u een beheerd domein wilt verwijderen, voert u de volgende stappen uit:
 
 1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**.
-1. Selecteer de naam van uw met Azure AD DS beheerd domein, zoals *aaddscontoso.com*.
+1. Selecteer de naam van uw beheerde domein, zoals *aaddscontoso.com*.
 1. Selecteer **Verwijderen** op de pagina **Overzicht**. Om het verwijderen te bevestigen, typt u de domein naam van het beheerde domein opnieuw en selecteert u vervolgens **verwijderen**.
 
-Het kan 15-20 minuten of langer duren voordat het beheerde domein van Azure AD DS verwijderd.
+Het kan 15-20 minuten of langer duren voordat het beheerde domein is verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Overweeg [feedback te delen][feedback] voor de functies die u wilt zien in azure AD DS.
 
-Zie [een Azure Active Directory Domain Services exemplaar maken en configureren][create-instance]als u opnieuw aan de slag wilt gaan met Azure AD DS.
+Zie [een Azure Active Directory Domain Services beheerd domein maken en configureren][create-instance]als u opnieuw aan de slag wilt gaan met Azure AD DS.
 
 <!-- INTERNAL LINKS -->
 [feedback]: contact-us.md

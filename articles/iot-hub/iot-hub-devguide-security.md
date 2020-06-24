@@ -11,12 +11,12 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2e1167c92dccdfa7600a4827c0081647c190d7d4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726057"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252131"
 ---
 # <a name="control-access-to-iot-hub"></a>Toegang tot IoT Hub regelen
 
@@ -147,7 +147,7 @@ Dit zijn de verwachte waarden:
 
 **Opmerking op voor voegsel**: het URI-voor voegsel wordt berekend door een segment en niet op basis van het teken. Bijvoorbeeld `/a/b` een voor voegsel voor, `/a/b/c` maar niet voor `/a/bc` .
 
-Het volgende node. js-fragment bevat een functie met de naam **generateSasToken** die het token van de invoer berekent `resourceUri, signingKey, policyName, expiresInMins` . In de volgende secties wordt beschreven hoe u de verschillende invoer gegevens voor de verschillende token-use cases initialiseert.
+Het volgende Node.js fragment bevat een functie met de naam **generateSasToken** die het token van de invoer berekent `resourceUri, signingKey, policyName, expiresInMins` . In de volgende secties wordt beschreven hoe u de verschillende invoer gegevens voor de verschillende token-use cases initialiseert.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -198,11 +198,6 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-Hier volgen de installatie-instructies voor de vereisten.
-
-[!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
-
 De functionaliteit in C# voor het genereren van een beveiligings token is:
 
 ```csharp
@@ -235,7 +230,6 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 ```
 
-
 > [!NOTE]
 > Omdat de geldigheids duur van het token op IoT Hub machines is gevalideerd, moet de drift op de klok van de computer die het token genereert, mini maal zijn.
 
@@ -266,7 +260,7 @@ Een token dat is gemaakt voor toegang tot alle functies van het apparaat moet bi
 * geen beleids naam,
 * een verloop tijd.
 
-Een voor beeld van het gebruik van de voor gaande node. js-functie zou zijn:
+Een voor beeld van het gebruik van de voor gaande Node.js functie is:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -300,7 +294,7 @@ Een token service die het vooraf gemaakte Shared Access-beleid met de naam **app
 * beleids naam: `device` ,
 * een verloop tijd.
 
-Een voor beeld van het gebruik van de voor gaande node. js-functie zou zijn:
+Een voor beeld van het gebruik van de voor gaande Node.js functie is:
 
 ```javascript
 var endpoint ="myhub.azure-devices.net/devices/device1";
@@ -444,7 +438,7 @@ In de volgende onderwerpen vindt u meer informatie over het beheren van de toega
 
 De volgende tabel bevat de machtigingen die u kunt gebruiken om de toegang tot uw IoT-hub te beheren.
 
-| Machtiging | Opmerkingen |
+| Machtiging | Notities |
 | --- | --- |
 | **RegistryRead** |Hiermee wordt lees toegang verleend aan het identiteits register. Zie [identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie. <br/>Deze machtiging wordt gebruikt door de Cloud Services van de back-end. |
 | **RegistryReadWrite** |Hiermee wordt lees-en schrijf toegang verleend aan het identiteits register. Zie [identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie. <br/>Deze machtiging wordt gebruikt door de Cloud Services van de back-end. |

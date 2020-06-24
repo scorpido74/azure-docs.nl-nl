@@ -13,12 +13,15 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: 'Een duurzame functie maken - C#'
+    - name: Een duurzame functie maken - C#
       href: durable-functions-create-first-csharp.md
       displayName: 'get started, chaining'
     - name: Een duurzame functie maken - JavaScript
       displayName: 'get started, chaining'
       href: quickstart-js-vscode.md
+    - name: Een duurzame functie maken - Python
+      displayName: 'get started, chaining'
+      href: quickstart-python-vscode.md
 - name: Zelfstudies
   items:
     - name: Functiekoppeling
@@ -76,7 +79,7 @@
 - name: Naslaginformatie
   items:
     - name: Host.json-instellingen
-      href: 'durable-functions-bindings.md#host-json'
+      href: durable-functions-bindings.md#host-json
     - name: Bindingen
       href: durable-functions-bindings.md
     - name: HTTP-API
