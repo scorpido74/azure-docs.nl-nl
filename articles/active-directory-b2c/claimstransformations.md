@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529134"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202956"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -37,8 +37,8 @@ Het **ClaimsTransformation** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Beschrijving |
 | --------- |-------- | ----------- |
-| Id |Ja | Een id die wordt gebruikt om de claim transformatie uniek te identificeren. Er wordt naar de id verwezen vanuit andere XML-elementen in het beleid. |
-| TransformationMethod | Ja | De transformatie methode die in de claim transformatie moet worden gebruikt. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| Id |Yes | Een id die wordt gebruikt om de claim transformatie uniek te identificeren. Er wordt naar de id verwezen vanuit andere XML-elementen in het beleid. |
+| TransformationMethod | Yes | De transformatie methode die in de claim transformatie moet worden gebruikt. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 ## <a name="claimstransformation"></a>ClaimsTransformation
 
@@ -79,8 +79,8 @@ Het **input claim** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- | ----------- |
-| ClaimTypeReferenceId |Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
-| TransformationClaimType |Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| ClaimTypeReferenceId |Yes | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid. |
+| TransformationClaimType |Yes | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 ### <a name="inputparameters"></a>Invoer parameters
 
@@ -94,9 +94,9 @@ Het element **Input parameters** bevat het volgende element:
 
 | Kenmerk | Vereist |Beschrijving |
 | --------- | ----------- |----------- |
-| Id | Ja | Een id die een verwijzing is naar een para meter van de methode voor het transformeren van claims. Elke claim transformatie methode heeft zijn eigen waarden. Zie de tabel claim transformatie voor een volledige lijst van de beschik bare waarden. |
-| DataType | Ja | Het type gegevens van de para meter, zoals teken reeks, Booleaanse waarde, int of DateTime, zoals wordt bepaald door de opsomming van het gegevens type in het XML-schema van het aangepaste beleid. Dit type wordt gebruikt om reken kundige bewerkingen correct uit te voeren. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
-| Waarde | Ja | Een waarde die Verbatim wordt door gegeven aan de trans formatie. Sommige waarden zijn wille keurig, wat u selecteert in de methode voor het transformeren van claims. |
+| Id | Yes | Een id die een verwijzing is naar een para meter van de methode voor het transformeren van claims. Elke claim transformatie methode heeft zijn eigen waarden. Zie de tabel claim transformatie voor een volledige lijst van de beschik bare waarden. |
+| DataType | Yes | Het type gegevens van de para meter, zoals teken reeks, Booleaanse waarde, int of DateTime, zoals wordt bepaald door de opsomming van het gegevens type in het XML-schema van het aangepaste beleid. Dit type wordt gebruikt om reken kundige bewerkingen correct uit te voeren. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| Waarde | Yes | Een waarde die Verbatim wordt door gegeven aan de trans formatie. Sommige waarden zijn wille keurig, wat u selecteert in de methode voor het transformeren van claims. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -112,8 +112,8 @@ Het **output claim** -element bevat de volgende kenmerken:
 
 | Kenmerk |Vereist | Beschrijving |
 | --------- | ----------- |----------- |
-| ClaimTypeReferenceId | Ja | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid.
-| TransformationClaimType | Ja | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
+| ClaimTypeReferenceId | Yes | Een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema in het beleid.
+| TransformationClaimType | Yes | Een id om te verwijzen naar een type transformatie claim. Elke claim transformatie heeft zijn eigen waarden. Zie de [verwijzing naar claims transformeren](#claims-transformations-reference) voor een volledige lijst met de beschik bare waarden. |
 
 Als de invoer claim en de uitvoer claim van hetzelfde type (teken reeks of Booleaanse waarde) zijn, kunt u dezelfde invoer claim gebruiken als de uitvoer claim. In dit geval wijzigt de claim transformatie de invoer claim met de uitvoer waarde.
 
@@ -121,7 +121,7 @@ Als de invoer claim en de uitvoer claim van hetzelfde type (teken reeks of Boole
 
 U kunt bijvoorbeeld de laatste versie van uw service voorwaarden opslaan die de gebruiker heeft geaccepteerd. Wanneer u de service voorwaarden bijwerkt, kunt u de gebruiker vragen om de nieuwe versie te accepteren. In het volgende voor beeld vergelijkt de **HasTOSVersionChanged** -claim transformatie de waarde van de **TOSVersion** -claim met de waarde van de **LastTOSAcceptedVersion** -claim en retourneert vervolgens de Boolean **TOSVersionChanged** -claim.
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">

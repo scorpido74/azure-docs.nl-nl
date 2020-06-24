@@ -4,16 +4,16 @@ description: Taal pakketten installeren voor Vm's met meerdere sessies van Windo
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80634033"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200406"
 ---
 # <a name="install-language-packs"></a>Taalpakketten installeren
 
@@ -32,7 +32,7 @@ Taal pakketten installeren:
 
 1. Meld u aan als beheerder.
 2. Zorg ervoor dat u alle meest recente Windows-en Windows Store-updates hebt geïnstalleerd.
-3. Ga naar **instellingen** > **tijd & taal** > **regio**.
+3. Ga naar **instellingen**  >  **tijd & taal**  >  **regio**.
 4. Onder **land of regio**selecteert u het land of de regio van uw voor keur in de vervolg keuzelijst.
     In dit voor beeld gaan we **Frank rijk**selecteren, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
@@ -57,7 +57,7 @@ Taal pakketten installeren:
 
 9. Als er een venster wordt weer gegeven waarin u wordt gevraagd om u af te melden bij uw sessie. Meld u af en meld u vervolgens opnieuw aan. De weergave taal moet nu de geselecteerde taal zijn.
 
-10.  Ga naar de klok van **het configuratie scherm** > **en** > de regio**regio**.
+10.  Ga naar de klok van **het configuratie scherm**  >  **en**de regio  >  **regio**.
 
 11.  Wanneer het **regio** venster wordt geopend, selecteert u het tabblad **beheer** en selecteert u **instellingen kopiëren**.
 
@@ -67,7 +67,7 @@ Taal pakketten installeren:
 
 14.  Er wordt een venster geopend waarin u de sessie opnieuw kunt starten. Selecteer **nu opnieuw opstarten**.
 
-15.  Nadat u zich hebt aangemeld, gaat u terug naar de klok van **het configuratie scherm** > **en de regio** > **regio.**
+15.  Nadat u zich hebt aangemeld, gaat u terug naar de klok van **het configuratie scherm**  >  **en de regio**  >  **regio**.
 
 16.  Selecteer het tabblad **beheer** .
 
@@ -89,13 +89,13 @@ U kunt als volgt Sysprep uitvoeren op uw computer:
 
 1. Open PowerShell als administrator.
 2. Voer de volgende cmdlet uit om naar de juiste map te gaan:
-   
+
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
 3. Voer vervolgens de volgende cmdlet uit:
-    
+
     ```powershell
     .\sysprep.exe
     ```
@@ -109,7 +109,7 @@ U kunt als volgt Sysprep uitvoeren op uw computer:
 
 Als er tijdens het Sysprep-proces een fout bericht wordt weer gegeven, kunt u het volgende doen:
 
-1. Open **station C** en ga naar **Windows** > **System32 Sysprep** > **Panther**en open vervolgens het **Setuperr** -bestand.
+1. Open **station C** en ga naar **Windows**  >  **System32 Sysprep**  >  **Panther**en open vervolgens het **Setuperr** -bestand.
 
    De tekst in het fout bestand geeft aan dat u een specifiek taal pakket moet verwijderen, zoals wordt weer gegeven in de volgende afbeelding. Kopieer de naam van het taal pakket voor de volgende stap.
 

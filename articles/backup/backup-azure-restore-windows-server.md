@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over het herstellen van gegevens 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 446ebf563a09131b715b2e08033a7a0278a1fd95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 040ac3069500d0e52441df6f07d92645a7ae69df
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652087"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764431"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
-In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt het volgende doen:
+In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt:
 
 * Gegevens herstellen op dezelfde computer waarvan de back-ups zijn gemaakt.
 * Gegevens herstellen naar een alternatieve machine
@@ -51,7 +51,7 @@ Als u een bestand per ongeluk hebt verwijderd en op dezelfde computer wilt herst
    > De optie voor het herstellen van afzonderlijke bestanden en mappen vereist .NET Framework 4.5.2 of hoger. Als u de optie **afzonderlijke bestanden en mappen** niet ziet, moet u .NET Framework bijwerken naar versie 4.5.2 of hoger en het opnieuw proberen.
 
    > [!TIP]
-   > Met de optie **afzonderlijke bestanden en mappen** kunt u snel toegang krijgen tot de herstel punt gegevens. Het is geschikt voor het herstellen van afzonderlijke bestanden, met een totale grootte van niet meer dan 80 GB en biedt overdrachts-of kopieer snelheden van Maxi maal 6 MBps tijdens het herstel. De **volume** optie herstelt alle back-ups van gegevens in een opgegeven volume. Deze optie biedt snellere overdrachts snelheden (Maxi maal 60 MBps), die ideaal zijn voor het herstellen van grote hoeveel heden gegevens of volledige volumes.
+   > Met de optie **afzonderlijke bestanden en mappen** kunt u snel toegang krijgen tot de herstel punt gegevens. Het is geschikt voor het herstellen van afzonderlijke bestanden, met een totale grootte van niet meer dan 80 GB en biedt overdrachts-of kopieer snelheden van Maxi maal 6 MBps tijdens het herstel. De **volume** optie herstelt alle back-ups van gegevens in een opgegeven volume. Deze optie biedt snellere overdrachts snelheden (Maxi maal 40 MBps), die ideaal zijn voor het herstellen van grote hoeveel heden gegevens of volledige volumes.
 
 5. Selecteer op de pagina **volume en datum selecteren** het volume dat de bestanden en mappen bevat die u wilt herstellen.
 

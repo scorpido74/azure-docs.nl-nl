@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 07aa9ade25d1d986833b6da2f3907d07b752b662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a1a97c3cb6df4c1498940738fe070819fba1b5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655427"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734806"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos-beperkte delegering (KCD) configureren in Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ U hebt de volgende resources nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services beheerd domein maken en configureren][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een virtuele Windows Server-machine en voegt u deze toe aan een beheerd domein en][create-join-windows-vm] installeert u vervolgens [de AD DS-beheer hulpprogramma's][tutorial-create-management-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
@@ -46,7 +46,7 @@ Kerberos-beperkte delegering (KCD) beperkt de services of bronnen waarmee een op
 
 Traditionele KCD hebben ook een aantal problemen. In eerdere besturings systemen had de service beheerder bijvoorbeeld geen handige manier om te weten welke front-end-services zijn overgedragen aan de resource services waarvan ze eigenaar zijn. Een front-end-service die kan delegeren naar een resource service was een mogelijk aanvals punt. Als een server die een front-end-service heeft die is geconfigureerd voor delegeren aan resource Services, is aangetast, kan de resource Services ook worden aangetast.
 
-In een door Azure AD DS beheerd domein hebt u geen domein beheerders rechten. Als gevolg hiervan kunnen traditionele op accounts gebaseerde KCD niet worden geconfigureerd in een Azure-AD DS een beheerd domein. Op resources gebaseerde KCD kunnen in plaats daarvan worden gebruikt. Dit is ook veiliger.
+In een beheerd domein hebt u geen domein beheerders rechten. Als gevolg hiervan kunnen traditionele op accounts gebaseerde KCD niet worden geconfigureerd in een beheerd domein. Op resources gebaseerde KCD kunnen in plaats daarvan worden gebruikt. Dit is ook veiliger.
 
 ### <a name="resource-based-kcd"></a>KCD op basis van resources
 
@@ -58,8 +58,8 @@ KCD op basis van resources is geconfigureerd met behulp van Power shell. U gebru
 
 In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoerd op de computer met de naam *Contoso-webapp.aaddscontoso.com*. De web-app moet toegang hebben tot een web-API die wordt uitgevoerd op de computer met de naam *Contoso-API.aaddscontoso.com* in de context van domein gebruikers. Voer de volgende stappen uit om dit scenario te configureren:
 
-1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het Azure AD DS beheerde domein.
-1. [Domein: Voeg de virtuele machines samen][create-join-windows-vm], zowel de toepassing die de web-app uitvoert als de toepassing die de Web-API uitvoert, naar de Azure AD DS beheerde domein. Maak deze computer accounts in de aangepaste organisatie-eenheid uit de vorige stap.
+1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het beheerde domein.
+1. [Domein: lid worden van de virtuele machines][create-join-windows-vm], zowel de toepassing die de web-app uitvoert als de toepassing die de Web-API uitvoert, naar het beheerde domein. Maak deze computer accounts in de aangepaste organisatie-eenheid uit de vorige stap.
 
     > [!NOTE]
     > De computer accounts voor de web-app en de Web-API moeten zich in een aangepaste OE bevinden, waar u machtigingen hebt voor het configureren van op resources gebaseerde KCD. U kunt geen op resources gebaseerde KCD configureren voor een computer account in de container ingebouwde *Aad DC-computers* .
@@ -75,8 +75,8 @@ In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoer
 
 In dit scenario wordt ervan uitgegaan dat u een web-app hebt die wordt uitgevoerd als een service account met de naam *appsvc*. De web-app moet toegang hebben tot een web-API die wordt uitgevoerd als een service account met de naam *backendsvc* in de context van domein gebruikers. Voer de volgende stappen uit om dit scenario te configureren:
 
-1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het Azure AD DS beheerde domein.
-1. [Domein: Voeg de virtuele machines][create-join-windows-vm] die de back-end web-API/resource uitvoeren, toe aan het beheerde domein van Azure AD DS. Maak het computer account binnen de aangepaste organisatie-eenheid.
+1. [Een aangepaste organisatie-eenheid maken](create-ou.md). U kunt machtigingen voor het beheren van deze aangepaste organisatie-eenheid overdragen aan gebruikers binnen het beheerde domein.
+1. [Domein: Voeg de virtuele machines][create-join-windows-vm] die de back-end web-API/resource uitvoeren, toe aan het beheerde domein. Maak het computer account binnen de aangepaste organisatie-eenheid.
 1. Maak het service account (bijvoorbeeld ' appsvc ') dat wordt gebruikt om de web-app in de aangepaste organisatie-eenheid uit te voeren.
 
     > [!NOTE]

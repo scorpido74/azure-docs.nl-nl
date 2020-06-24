@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: d8eb4abb600e1164e6de00d3abca190d019be011
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 44b9b060be7ec707444ddf409848be1a16addb83
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560614"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298613"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -56,9 +56,9 @@ public static async Task<IActionResult> Run(
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie zoekt naar een `name` para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
+In het volgende voor beeld ziet u een trigger binding in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie zoekt naar een `name` para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -132,9 +132,9 @@ public class Person {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie zoekt naar een `name` para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
+In het volgende voor beeld ziet u een trigger binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie zoekt naar een `name` para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -181,9 +181,9 @@ module.exports = function(context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie zoekt naar een `name` para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
+In het volgende voor beeld ziet u een trigger binding in een *function.jsin* het bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie zoekt naar een `name` para meter in de query reeks of de hoofd tekst van de HTTP-aanvraag.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -478,9 +478,9 @@ Zie voor een volledig voor beeld het [voor beeld](#example)van de trigger.
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `HttpTrigger` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `HttpTrigger` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 | **type** | N.v.t.| Vereist: moet worden ingesteld op `httpTrigger` . |
 | **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |
@@ -500,7 +500,7 @@ Wanneer u een functie voor een HTTP-trigger maakt, is de functie standaard adres
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-U kunt deze route aanpassen met behulp van de optionele `route` eigenschap voor de invoer binding van de HTTP-trigger. Als voor beeld wordt met het volgende *Function. json* -bestand een `route` eigenschap voor een http-trigger gedefinieerd:
+U kunt deze route aanpassen met behulp van de optionele `route` eigenschap voor de invoer binding van de HTTP-trigger. Als voor beeld wordt met de volgende *function.jsin* file een `route` eigenschap gedefinieerd voor een http-trigger:
 
 ```json
 {
@@ -635,7 +635,7 @@ public class HttpTriggerJava {
 
 ---
 
-Standaard worden alle functie routes voorafgegaan door *API*. U kunt het voor voegsel ook aanpassen of verwijderen met behulp `extensions.http.routePrefix` van de eigenschap in het [JSON](functions-host-json.md) -bestand van de host. In het volgende voor beeld wordt het voor voegsel *API* -route verwijderd met behulp van een lege teken reeks voor het voor voegsel in het bestand *host. json* .
+Standaard worden alle functie routes voorafgegaan door *API*. U kunt het voor voegsel ook aanpassen of verwijderen met behulp van de `extensions.http.routePrefix` eigenschap in uw [host.jsvoor](functions-host-json.md) het bestand. In het volgende voor beeld wordt het voor voegsel *API* -route verwijderd met behulp van een lege teken reeks voor het voor voegsel in de *host.jsin* het bestand.
 
 ```json
 {
@@ -752,9 +752,6 @@ De geverifieerde gebruiker is beschikbaar via [http-headers](../app-service/app-
 
 ## <a name="function-access-keys"></a><a name="authorization-keys"></a>Functie toegangs toetsen
 
-> [!IMPORTANT]
-> Hoewel sleutels uw HTTP-eind punten kunnen afleiden tijdens de ontwikkeling, zijn ze niet bedoeld als een manier om een HTTP-trigger in de productie te beveiligen. Zie [een HTTP-eind punt in productie beveiligen](#secure-an-http-endpoint-in-production)voor meer informatie.
-
 [!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>Sleutels verkrijgen
@@ -815,7 +812,7 @@ Webhook-autorisatie wordt verwerkt door het onderdeel webhook-ontvanger, onderde
 
 ## <a name="limits"></a>Limieten
 
-De lengte van de HTTP-aanvraag is beperkt tot 100 MB (104.857.600 bytes) en de URL-lengte is beperkt tot 4 KB (4.096 bytes). Deze limieten worden opgegeven door het `httpRuntime` element van het [Web. config-bestand](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)van de runtime.
+De lengte van de HTTP-aanvraag is beperkt tot 100 MB (104.857.600 bytes) en de URL-lengte is beperkt tot 4 KB (4.096 bytes). Deze limieten worden opgegeven door het `httpRuntime` element van het [Web.config-bestand](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)van de runtime.
 
 Als een functie die de HTTP-trigger gebruikt, niet binnen 230 seconden wordt voltooid, wordt een time-out opgetreden in de [Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) en wordt een HTTP 502-fout geretourneerd. De functie wordt nog steeds uitgevoerd, maar kan geen HTTP-antwoord retour neren. Voor langlopende functies wordt u aangeraden async-patronen te volgen en een locatie te retour neren waar u de status van de aanvraag kunt pingen. Zie voor meer informatie over hoe lang een functie kan worden uitgevoerd het [plan voor schalen en hosten](functions-scale.md#timeout).
 

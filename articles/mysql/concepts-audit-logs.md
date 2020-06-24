@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 00e4ef2452d2048f386d48e994ba1051ca81ec75
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062548"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100957"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Audit Logboeken in Azure Database for MySQL
 
@@ -22,18 +22,19 @@ In Azure Database for MySQL is het controle logboek beschikbaar voor gebruikers.
 
 ## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
 
-Het controle logboek is standaard uitgeschakeld. Als u deze wilt inschakelen `audit_log_enabled` , stelt u in op aan.
+>[!NOTE]
+> Het is raadzaam om alleen de gebeurtenis typen en gebruikers die vereist zijn voor controle doeleinden te registreren om ervoor te zorgen dat de prestaties van uw server niet sterk worden beïnvloed.
+
+Het controle logboek is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `audit_log_enabled` u in op aan.
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
 - `audit_log_events`: Hiermee beheert u de gebeurtenissen die moeten worden vastgelegd. Zie de onderstaande tabel voor specifieke controle gebeurtenissen.
-- `audit_log_include_users`: MySQL-gebruikers die moeten worden opgenomen voor logboek registratie. De standaard waarde voor deze para meter is leeg, die alle gebruikers bevat die moeten worden geregistreerd. Dit heeft een hogere prioriteit `audit_log_exclude_users`dan. De maximale lengte van de para meter is 512 tekens.
-> [!Note]
-> `audit_log_include_users`heeft een hogere prioriteit `audit_log_exclude_users`dan. `audit_log_include_users`  =  Als `demouser` en `demouser` `audit_log_include_users` wordt de gebruiker bijvoorbeeld opgenomen in de audit logboeken, omdat deze een hogere prioriteit heeft. `audit_log_exclude_users`  = 
+- `audit_log_include_users`: MySQL-gebruikers die moeten worden opgenomen voor logboek registratie. De standaard waarde voor deze para meter is leeg, die alle gebruikers bevat die moeten worden geregistreerd. Dit heeft een hogere prioriteit dan `audit_log_exclude_users` . De maximale lengte van de para meter is 512 tekens.
 - `audit_log_exclude_users`: MySQL-gebruikers die moeten worden uitgesloten van logboek registratie. De maximale lengte van de para meter is 512 tekens.
 
-> [!Note]
-> Voor `sql_text`wordt het logboek afgekapt als dit langer is dan 2048 tekens.
+> [!NOTE]
+> `audit_log_include_users`heeft een hogere prioriteit dan `audit_log_exclude_users` . Als `audit_log_include_users`  =  `demouser` en wordt `audit_log_exclude_users`  =  `demouser` de gebruiker bijvoorbeeld opgenomen in de audit logboeken, omdat deze een `audit_log_include_users` hogere prioriteit heeft.
 
 | **Gebeurtenis** | **Beschrijving** |
 |---|---|
@@ -73,9 +74,9 @@ In de volgende secties wordt beschreven wat er wordt uitgevoerd door MySQL-contr
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Naam van de server |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (alleen beschikbaar voor MySQL 5,7) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (alleen beschikbaar voor MySQL 5,7) |
 | `connection_id_d` | Unieke verbindings-ID die is gegenereerd door MySQL |
-| `host_s` | Blank |
+| `host_s` | Leeg |
 | `ip_s` | IP-adres van de client die verbinding maakt met MySQL |
 | `user_s` | Naam van de gebruiker die de query uitvoert |
 | `db_s` | Naam van de data base die is verbonden met |
@@ -84,6 +85,9 @@ In de volgende secties wordt beschreven wat er wordt uitgevoerd door MySQL-contr
 ### <a name="general"></a>Algemeen
 
 Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT, DML_NONSELECT, DML, DDL, DCL en beheerder.
+
+> [!NOTE]
+> Voor wordt `sql_text` het logboek afgekapt als dit langer is dan 2048 tekens.
 
 | **Eigenschap** | **Beschrijving** |
 |---|---|
@@ -101,11 +105,11 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Naam van de server |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (alleen beschikbaar voor MySQL 5,6) |
+| `event_subclass_s` | `LOG`, `ERROR` , `RESULT` (alleen beschikbaar voor MySQL 5,6) |
 | `event_time` | Begin tijd van de query in UTC-tijds tempel |
 | `error_code_d` | Fout code als de query is mislukt. `0`betekent geen fout |
 | `thread_id_d` | ID van de thread die de query heeft uitgevoerd |
-| `host_s` | Blank |
+| `host_s` | Leeg |
 | `ip_s` | IP-adres van de client die verbinding maakt met MySQL |
 | `user_s` | Naam van de gebruiker die de query uitvoert |
 | `sql_text_s` | Volledige query tekst |
@@ -114,7 +118,7 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 ### <a name="table-access"></a>Tabel toegang
 
 > [!NOTE]
-> Logboeken voor tabel toegang worden alleen uitgevoerd voor MySQL 5,7.
+> Logboeken voor tabel toegang worden alleen uitgevoerd voor MySQL 5,7.<br>Voor wordt `sql_text` het logboek afgekapt als dit langer is dan 2048 tekens.
 
 | **Eigenschap** | **Beschrijving** |
 |---|---|
@@ -132,7 +136,7 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Naam van de server |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`of`DELETE` |
+| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` of`DELETE` |
 | `connection_id_d` | Unieke verbindings-ID die is gegenereerd door MySQL |
 | `db_s` | De naam van de data base die wordt geopend |
 | `table_s` | De naam van de tabel die wordt geopend |

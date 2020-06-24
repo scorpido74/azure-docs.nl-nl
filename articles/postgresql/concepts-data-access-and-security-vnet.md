@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965831"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099658"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtual Network Service-eind punten en-regels voor Azure Database for PostgreSQL-één server gebruiken
 
@@ -45,7 +45,7 @@ Met een regel voor het virtuele netwerk krijgt uw Azure Database for PostgreSQL-
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Voor delen van een regel voor een virtueel netwerk
 
@@ -69,7 +69,7 @@ Als uw **micro soft. SQL** server een knoop punt in een subnet in het virtuele n
 
 Vanaf 2018 augustus is de Azure Database for PostgreSQL-service nog niet van de services die rechtstreeks aan een subnet kunnen worden toegewezen.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Details over regels voor virtuele netwerken
 
@@ -90,7 +90,7 @@ Elke regel voor het virtuele netwerk is van toepassing op uw hele Azure Database
 Er is een schei ding van beveiligings rollen in het beheer van Virtual Network Service-eind punten. Actie is vereist voor elk van de volgende rollen:
 
 - **Netwerk beheerder:** &nbsp; Schakel het eind punt in.
-- **Database beheerder:** &nbsp; werk de toegangs beheer lijst (ACL) bij om het opgegeven subnet toe te voegen aan de Azure database for postgresql-server.
+- **Database beheerder:** &nbsp; Werk de toegangs beheer lijst (ACL) bij om het opgegeven subnet toe te voegen aan de Azure Database for PostgreSQL-server.
 
 *Alternatief voor RBAC:*
 
@@ -102,7 +102,7 @@ U hebt de mogelijkheid om op [rollen gebaseerd toegangs beheer (RBAC)][rbac-what
 > In sommige gevallen bevinden de Azure Database for PostgreSQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
 > - Beide abonnementen moeten zich in dezelfde Azure Active Directory Tenant bezitten.
 > - De gebruiker beschikt over de vereiste machtigingen voor het initiëren van bewerkingen, zoals het inschakelen van service-eind punten en het toevoegen van een VNet-subnet aan de opgegeven server.
-> - Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+> - Zorg ervoor dat voor beide abonnementen de resource provider **micro soft. SQL** en **micro soft. DBforPostgreSQL** is geregistreerd. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
 
 ## <a name="limitations"></a>Beperkingen
 

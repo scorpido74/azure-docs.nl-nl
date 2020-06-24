@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/04/2020
-ms.openlocfilehash: 909485ea3c4e143ce93579d1bfea5e13cf94c575
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/18/2020
+ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660043"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080733"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde rollen van Azure
 
@@ -1168,6 +1168,7 @@ Kan een avere vFXT-cluster maken en beheren. [Meer informatie](../avere-vfxt/ave
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/*/Read |  |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
+> | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/proximityPlacementGroups/* |  |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* |  |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/disks/* |  |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/*/Read |  |
@@ -1207,6 +1208,7 @@ Kan een avere vFXT-cluster maken en beheren. [Meer informatie](../avere-vfxt/ave
         "Microsoft.Authorization/*/read",
         "Microsoft.Compute/*/read",
         "Microsoft.Compute/availabilitySets/*",
+        "Microsoft.Compute/proximityPlacementGroups/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/disks/*",
         "Microsoft.Network/*/read",
@@ -2767,7 +2769,7 @@ Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)/certificates/* | Website certificaten maken en beheren |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/listSitesAssignedToHostName/Read | Namen ophalen van sites die zijn toegewezen aan de hostnaam. |
-> | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/serverFarms/join/Action |  |
+> | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/serverFarms/join/Action | Een App Service-abonnement koppelen |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/serverFarms/Read | De eigenschappen van een App Service plan ophalen |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)/sites/* | Websites maken en beheren (voor het maken van sites is ook schrijf machtigingen vereist voor het bijbehorende App Service plan) |
 > | **NotActions** |  |
@@ -5623,7 +5625,7 @@ Hiermee kunt u logische apps beheren, maar niet wijzigen. [Meer informatie](../l
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/* | Een verbindings gateway maken en beheren. |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)/Connections/* | Een verbinding maken en beheren. |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | Maakt en beheert een aangepaste API. |
-> | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/serverFarms/join/Action |  |
+> | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/serverFarms/join/Action | Een App Service-abonnement koppelen |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/serverFarms/Read | De eigenschappen van een App Service plan ophalen |
 > | [Micro soft. Web](resource-provider-operations.md#microsoftweb)-/sites/functions/listSecrets/Action | Lijst met functie geheimen. |
 > | **NotActions** |  |
@@ -6342,7 +6344,7 @@ Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen,
 
 ### <a name="devtest-labs-user"></a>DevTest Labs-gebruiker
 
-Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, deze starten, opnieuw opstarten en afsluiten. [Meer informatie](../lab-services/devtest-lab-add-devtest-user.md)
+Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, deze starten, opnieuw opstarten en afsluiten. [Meer informatie](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6446,7 +6448,7 @@ Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, d
 
 ### <a name="lab-creator"></a>Lab-Maker
 
-Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accounts. [Meer informatie](../lab-services/classroom-labs/add-lab-creator.md)
+Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accounts. [Meer informatie](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -8340,7 +8342,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Overig
+## <a name="other"></a>Anders
 
 
 ### <a name="biztalk-contributor"></a>BizTalk-bijdrager

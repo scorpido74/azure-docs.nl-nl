@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258055"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735027"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: Secure LDAP waarschuwingen in Azure Active Directory Domain Services
 
@@ -32,7 +32,7 @@ Dit artikel helpt u bij het begrijpen en oplossen van veelvoorkomende waarschuwi
 
 ### <a name="resolution"></a>Oplossing
 
-Wanneer u beveiligd LDAP inschakelt, is het raadzaam extra regels te maken voor het beperken van de toegang tot specifieke IP-adressen van de toegangs rechten voor het binnenkomende LDAPS. Met deze regels wordt het Azure AD DS beheerde domein beschermd tegen beveiligings aanvallen. Voer de volgende stappen uit om de netwerk beveiligings groep bij te werken om de TCP-poort 636 voor beveiligde LDAP te beperken:
+Wanneer u beveiligd LDAP inschakelt, is het raadzaam extra regels te maken voor het beperken van de toegang tot specifieke IP-adressen van de toegangs rechten voor het binnenkomende LDAPS. Deze regels beveiligen het beheerde domein tegen beveiligings aanvallen. Voer de volgende stappen uit om de netwerk beveiligings groep bij te werken om de TCP-poort 636 voor beveiligde LDAP te beperken:
 
 1. In de Azure Portal zoekt en selecteert u **netwerk beveiligings groepen**.
 1. Kies de netwerk beveiligings groep die is gekoppeld aan uw beheerde domein, zoals *AADDS-contoso.com-NSG*, en selecteer vervolgens **regels voor binnenkomende beveiliging**
@@ -43,7 +43,7 @@ Wanneer u beveiligd LDAP inschakelt, is het raadzaam extra regels te maken voor 
 1. Geef de prioriteit voor de regel op en voer een naam in, zoals *RestrictLDAPS*.
 1. Wanneer u klaar bent, selecteert u **toevoegen** om de regel te maken.
 
-De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+De status van het beheerde domein wordt automatisch bijgewerkt binnen twee uur en de waarschuwing wordt verwijderd.
 
 > [!TIP]
 > TCP-poort 636 is niet de enige regel die nodig is om Azure AD DS soepel uit te voeren. Zie voor meer informatie de [Azure AD DS-netwerk beveiligings groepen en de vereiste poorten](network-considerations.md#network-security-groups-and-required-ports).

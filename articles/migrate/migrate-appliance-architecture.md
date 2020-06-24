@@ -2,13 +2,13 @@
 title: Azure Migrate-apparaatarchitectuur
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389015"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770897"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate-apparaatarchitectuur
 
@@ -48,11 +48,11 @@ Het apparaat heeft een aantal onderdelen.
 
 Tijdens de installatie van het apparaat registreert u het apparaat met Azure Migrate en vindt u de acties die in de tabel worden samenvatten.
 
-**Actie** | **Nadere** | **Machtigingen**
+**Actie** | **Details** | **Machtigingen**
 --- | --- | ---
-**Bron providers registreren** | Deze bronnen providers worden geregistreerd in het abonnement dat u hebt gekozen tijdens de installatie van het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. de sleutel kluis.<br/><br/> Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. | Als u de resource providers wilt registreren, hebt u een rol voor Inzender of eigenaar nodig voor het abonnement.
-**Azure AD-App-communicatie maken** | Azure Migrate maakt een Azure Active Directory (Azure AD)-app voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd, en hun respectieve services die worden uitgevoerd op Azure.<br/><br/> Deze app heeft geen rechten om Azure Resource Manager-aanroepen of RBAC-toegang te maken voor een resource. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) nodig voor Azure migrate om de app te maken.
-**Azure AD-apps maken-sleutel kluis** | Deze app wordt alleen voor de migratie van virtuele VMware-machines naar Azure gemaakt.<br/><br/> Het wordt uitsluitend gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor migratie zonder agent.<br/><br/> Het heeft RBAC-toegang op de Azure-sleutel kluis (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) nodig voor Azure migrate om de app te maken.
+**Bron providers registreren** | Deze bronnen providers worden geregistreerd in het abonnement dat u hebt gekozen tijdens de installatie van het apparaat: micro soft. OffAzure, micro soft. migrate en micro soft. de sleutel kluis.<br/><br/> Als u een resourceprovider registreert, wordt uw abonnement zo geconfigureerd dat dit kan worden gebruikt met de resourceprovider. | Als u de resourceproviders wilt registreren, hebt u de rol Inzender of Eigenaar nodig voor het abonnement.
+**Azure AD-App-communicatie maken** | Azure Migrate maakt een Azure Active Directory (Azure AD)-app voor communicatie (verificatie en autorisatie) tussen de agents die op het apparaat worden uitgevoerd, en hun respectieve services die worden uitgevoerd op Azure.<br/><br/> Deze app heeft geen rechten om Azure Resource Manager-aanroepen of RBAC-toegang te maken voor een resource. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps) nodig voor Azure migrate om de app te maken.
+**Azure AD-apps maken-sleutel kluis** | Deze app wordt alleen voor de migratie van virtuele VMware-machines naar Azure gemaakt.<br/><br/> Het wordt uitsluitend gebruikt voor toegang tot de sleutel kluis die is gemaakt in het abonnement van de gebruiker voor migratie zonder agent.<br/><br/> Het heeft RBAC-toegang op de Azure-sleutel kluis (gemaakt in de Tenant van de klant) wanneer detectie vanaf het apparaat wordt gestart. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) nodig voor Azure migrate om de app te maken.
 
 
 

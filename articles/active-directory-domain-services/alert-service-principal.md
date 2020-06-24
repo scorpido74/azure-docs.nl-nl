@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845964"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734993"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: waarschuwingen voor service-principals in Azure Active Directory Domain Services
 
-[Service-principals](../active-directory/develop/app-objects-and-service-principals.md) zijn toepassingen die door het Azure-platform worden gebruikt voor het beheren, bijwerken en onderhouden van een door Azure AD DS beheerd domein. Als een service-principal wordt verwijderd, wordt de functionaliteit van de Azure AD DS Managed Domain beïnvloed.
+[Service-principals](../active-directory/develop/app-objects-and-service-principals.md) zijn toepassingen die door het Azure-platform worden gebruikt voor het beheren, bijwerken en onderhouden van een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein. Als een service-principal wordt verwijderd, heeft dit invloed op de functionaliteit van het beheerde domein.
 
 Dit artikel helpt u bij het oplossen van problemen met Service-Principal-configuratie waarschuwingen.
 
@@ -30,7 +30,7 @@ Dit artikel helpt u bij het oplossen van problemen met Service-Principal-configu
 
 *Een service-principal die vereist is voor een goede werking van Azure AD Domain Services, is verwijderd uit uw Azure AD-adres lijst. Deze configuratie is van invloed op de mogelijkheid van micro soft om uw beheerde domein te bewaken, te beheren, te patchen en te synchroniseren.*
 
-Als een vereiste service-principal is verwijderd, kan het Azure-platform geen geautomatiseerde beheer taken uitvoeren. Het door Azure AD DS beheerde domein kan mogelijk geen updates Toep assen of back-ups maken.
+Als een vereiste service-principal is verwijderd, kan het Azure-platform geen geautomatiseerde beheer taken uitvoeren. Het beheerde domein past mogelijk geen updates toe of back-ups maken.
 
 ### <a name="check-for-missing-service-principals"></a>Controleren op ontbrekende service-principals
 
@@ -64,18 +64,18 @@ Als de *2565bd9d-DA50-47d4-8b85-4c97f669dc36* van de toepassings-id ontbreekt in
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+De status van het beheerde domein wordt automatisch bijgewerkt binnen twee uur en de waarschuwing wordt verwijderd.
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>De micro soft AAD-naam ruimte opnieuw registreren
 
 Als de toepassings-ID *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*of *D87DCBC6-A371-462E-88E3-28AD15EC4E64* ontbreekt in uw Azure AD-adres lijst, voert u de volgende stappen uit om de *micro soft. Aad* -resource provider opnieuw te registreren:
 
 1. Zoek in het Azure Portal naar en selecteer **abonnementen**.
-1. Kies het abonnement dat is gekoppeld aan uw door Azure AD DS beheerd domein.
+1. Kies het abonnement dat is gekoppeld aan uw beheerde domein.
 1. Kies **resource providers**in de linkernavigatiebalk.
 1. Zoek naar *micro soft. Aad*en selecteer **opnieuw registreren**.
 
-De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+De status van het beheerde domein wordt automatisch bijgewerkt binnen twee uur en de waarschuwing wordt verwijderd.
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Waarschuwing AADDS105: de toepassing voor wachtwoord synchronisatie is verouderd
 
@@ -105,7 +105,7 @@ Als u de Azure AD-toepassing die wordt gebruikt voor referentie synchronisatie o
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
-Wanneer u beide toepassingen verwijdert, maakt het Azure-platform deze automatisch opnieuw en probeert wachtwoord synchronisatie te hervatten. De status van het beheerde domein van Azure AD DS wordt binnen twee uur automatisch bijgewerkt en de waarschuwing wordt verwijderd.
+Wanneer u beide toepassingen verwijdert, maakt het Azure-platform deze automatisch opnieuw en probeert wachtwoord synchronisatie te hervatten. De status van het beheerde domein wordt automatisch bijgewerkt binnen twee uur en de waarschuwing wordt verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

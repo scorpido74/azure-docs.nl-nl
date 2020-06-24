@@ -3,23 +3,23 @@ title: Problemen met het configureren van wachtwoord-SSO voor Azure AD Gallery-a
 description: Meer informatie over de veelvoorkomende problemen bij het configureren van eenmalige aanmelding met een wacht woord voor toepassingen die al zijn opgenomen in de Azure AD-toepassings galerie
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89fda2657a68fc8a3fd293c0c6001a71f5970548
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159043"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763513"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleem met het configureren van een eenmalige aanmelding met een wacht woord voor een toepassing in de Azure AD-galerie
 

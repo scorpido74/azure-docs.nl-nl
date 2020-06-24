@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/23/2020
 ms.author: spelluru
 ms.reviewer: shvija
-ms.openlocfilehash: 0fc1a29aa34be8e692a92c7c1cfb73b5c22b037d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 985e85e0958984be6ebecb9f0898e2723de9e85d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665185"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297287"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisch partities toevoegen aan een Event Hub (Apache Kafka onderwerp) in azure Event Hubs
 Event Hubs daarentegen biedt streaming van berichten via een model op basis van gepartitioneerd gebruik, waarbij elke consumer slechts een specifieke subset of partitie van de berichtenstroom leest. Dit patroon maakt een horizontale schaal voor de verwerking van gebeurtenissen mogelijk en biedt andere stroomgerichte functies die niet beschikbaar zijn in wachtrijen en onderwerpen. Een partitie is een geordende reeks gebeurtenissen die in een Event Hub wordt bewaard. Als nieuwere gebeurtenissen arriveren, worden ze toegevoegd aan het einde van deze reeks. Zie [partities](event-hubs-scalability.md#partitions) voor meer informatie over partities in het algemeen.

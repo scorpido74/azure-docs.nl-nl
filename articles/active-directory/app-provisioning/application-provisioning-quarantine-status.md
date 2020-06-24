@@ -2,21 +2,21 @@
 title: Toepassings inrichtings status van quarantaine | Microsoft Docs
 description: Wanneer u een toepassing voor het automatisch inrichten van gebruikers hebt geconfigureerd, leest u wat een inrichtings status in quarantaine betekent en hoe u deze wist.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/28/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d8b50bfdd894d36b96fb3a53eab7c43c5b1fe11a
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593927"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782106"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Toepassing inrichten in quarantaine status
 
@@ -28,11 +28,11 @@ In quarantaine wordt de frequentie van incrementele cycli geleidelijk per dag ge
 
 Er zijn drie manieren om te controleren of een toepassing in quarantaine is geplaatst:
   
-- Ga in het Azure Portal naar **Azure Active Directory** > **bedrijfs toepassingen** > &lt;*toepassings naam*&gt; > **inrichten** en controleer de voortgangs balk voor een quarantaine bericht.   
+- Ga in het Azure Portal naar **Azure Active Directory**  >  **bedrijfs toepassingen**  >  &lt; *toepassings naam* &gt;  >  **inrichten** en controleer de voortgangs balk voor een quarantaine bericht.   
 
   ![Status balk van de inrichting met de status van de quarantaine](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- Ga in het Azure Portal naar **Azure Active Directory** > **controle logboeken** > filter op **activiteit: quarantaine** en controleer de quarantaine geschiedenis. In de weer gave in de voortgangs balk zoals hierboven wordt aangegeven of het inrichten momenteel in quarantaine is geplaatst, kunt u in de audit Logboeken de quarantaine geschiedenis voor een toepassing weer geven. 
+- Ga in het Azure Portal naar **Azure Active Directory**  >  **controle logboeken** > filter op **activiteit: quarantaine** en controleer de quarantaine geschiedenis. In de weer gave in de voortgangs balk zoals hierboven wordt aangegeven of het inrichten momenteel in quarantaine is geplaatst, kunt u in de audit Logboeken de quarantaine geschiedenis voor een toepassing weer geven. 
 
 - Gebruik de Microsoft Graph aanvraag [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) om programmatisch de status van de inrichtings taak op te halen:
 

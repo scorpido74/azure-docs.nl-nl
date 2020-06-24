@@ -2,18 +2,17 @@
 title: Beveiliging en verificatie Azure Event Grid
 description: In dit artikel worden verschillende manieren beschreven om toegang te verifiëren tot uw Event Grid-resources (webhook, abonnementen, aangepaste onderwerpen)
 services: event-grid
-author: femila
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: femila
-ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.author: spelluru
+ms.openlocfilehash: d028367b82e8529d5260c086f2e4afa609582b00
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558993"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100227"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Toegang tot Azure Event Grid-bronnen verifiëren
 In dit artikel vindt u informatie over de volgende scenario's:  
@@ -85,8 +84,21 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest wordt versleuteld. Bovendien is de maximale tijds duur dat gebeurtenissen of gegevens bewaard 24 uur in acht te komen in de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
 
+## <a name="use-system-assigned-identities-for-event-delivery"></a>Door het systeem toegewezen identiteiten gebruiken voor gebeurtenis levering
+U kunt een door het systeem toegewezen beheerde identiteit voor een onderwerp of domein inschakelen en de identiteit gebruiken om gebeurtenissen door te sturen naar ondersteunde doelen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
+
+Dit zijn de stappen: 
+
+1. Maak een onderwerp of domein met een door het systeem toegewezen identiteit of werk een bestaand onderwerp of domein bij om identiteit in te scha kelen. 
+1. Voeg de identiteit toe aan een geschikte rol (bijvoorbeeld Service Bus verzender van gegevens) op de bestemming (bijvoorbeeld een Service Bus wachtrij).
+1. Wanneer u gebeurtenis abonnementen maakt, moet u het gebruik van de identiteit inschakelen voor het leveren van gebeurtenissen aan de bestemming. 
+
+Zie [gebeurtenis levering met een beheerde identiteit](managed-service-identity.md)voor gedetailleerde stapsgewijze instructies.
+
+
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Gebeurtenis levering verifiëren voor webhook-eind punten
 In de volgende secties wordt beschreven hoe u de levering van gebeurtenissen verifieert aan webhook-eind punten. U moet een mechanisme voor validatie-Handshake gebruiken, onafhankelijk van de methode die u gebruikt. Zie [webhook Event Delivery](webhook-event-delivery.md) voor meer informatie. 
+
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Azure Active Directory gebruiken (Azure AD)
 U kunt het webhook-eind punt dat wordt gebruikt voor het ontvangen van gebeurtenissen van Event Grid, beveiligen met behulp van Azure AD. U moet een Azure AD-toepassing maken, een rol en service-principal maken in uw toepassing autoriseren Event Grid en het gebeurtenis abonnement configureren voor het gebruik van de Azure AD-toepassing. Meer informatie over het [configureren van Azure Active Directory met Event grid](secure-webhook-delivery.md).

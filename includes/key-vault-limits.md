@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 065365ec2dc429013732725ccb22f73c519b6c0e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768729"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85200188"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Belangrijkste trans acties (Maxi maal 10 seconden toegestane trans acties per kluis per regio<sup>1</sup>):
 
@@ -28,7 +28,7 @@ ms.locfileid: "81768729"
 >
 > De drempel waarden voor beperking worden gewogen en afdwinging ligt op de som. Wanneer u bijvoorbeeld in de vorige tabel GET-bewerkingen uitvoert op RSA HSM-sleutels, is het acht maal duurder voor het gebruik van 4.096-bits sleutels vergeleken met 2.048-bits sleutels. Dat komt doordat 1000/125 = 8.
 >
-> In een gegeven interval van 10 seconden kan een Azure Key Vault-client *slechts een* van de volgende bewerkingen uitvoeren voordat er een `429` HTTP-status code voor beperking wordt aangetroffen:
+> In een gegeven interval van 10 seconden kan een Azure Key Vault-client *slechts een* van de volgende bewerkingen uitvoeren voordat er een http- `429` status code voor beperking wordt aangetroffen:
 > - 2.000 RSA 2.048-bits software sleutel GET trans acties
 > - 1.000 RSA 2.048-bits HSM-sleutel GET-trans acties
 > - 125 RSA 4.096-bits HSM-sleutel GET-trans acties
@@ -46,7 +46,10 @@ Zie [Azure Key Vault Throttle-instructies](../articles/key-vault/key-vault-ovw-t
 
 ### <a name="azure-private-link-integration"></a>Integratie van persoonlijke Azure-koppelingen
 
+> [!NOTE]
+> Het aantal sleutelkluizen met ingeschakelde privé-eindpunten per abonnement is een aanpasbare limiet. De limiet die hieronder wordt weergegeven, is de standaardlimiet. Als u een hogere limiet wilt aanvragen voor uw service, kunt u een e-mail sturen naar akv-privatelink@microsoft.com. We zullen deze aanvragen per geval goedkeuren.
+
 | Resource | Limiet |
 | -------- | ----- |
 | Persoonlijke eind punten per sleutel kluis | 64 |
-| Sleutel kluizen met persoonlijke eind punten per abonnement | 64 |
+| Sleutel kluizen met persoonlijke eind punten per abonnement | 400 |

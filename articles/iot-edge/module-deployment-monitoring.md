@@ -8,12 +8,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127608"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194787"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Meer informatie over IoT Edge automatische implementaties voor afzonderlijke apparaten of op schaal
 
@@ -61,7 +61,7 @@ De doel voorwaarde wordt continu geëvalueerd gedurende de levens duur van de im
 
 U hebt bijvoorbeeld een implementatie met een doel voorwaarde label. Environment = ' Prod '. Wanneer u de implementatie hebt gestart, zijn er 10 productie apparaten. De modules zijn in deze 10 apparaten geïnstalleerd. In de status van de IoT Edge-agent worden 10 apparaten weer gegeven, 10 geslaagde reacties, 0 mislukte antwoorden en 0 Reacties in behandeling. Nu voegt u nog vijf apparaten toe met tags. Environment = ' Prod '. De service detecteert de wijziging en de status van de IoT Edge-agent wordt 15 totaal aantal apparaten, 10 geslaagde reacties, 0 mislukte antwoorden en vijf in behandeling zijnde antwoorden tijdens de implementatie van de vijf nieuwe apparaten.
 
-Gebruik een Booleaanse voor waarde op dubbele Tags van het apparaat, dubbele gerapporteerde eigenschappen of deviceId om de doel apparaten te selecteren. Als u de voor waarde met tags wilt gebruiken, moet u ' Tags ' toevoegen:{} sectie op het apparaat dubbele onder hetzelfde niveau als eigenschappen. [Meer informatie over tags op het apparaat, dubbele](../iot-hub/iot-hub-devguide-device-twins.md)
+Gebruik een Booleaanse voor waarde op dubbele Tags van het apparaat, dubbele gerapporteerde eigenschappen of deviceId om de doel apparaten te selecteren. Als u de voor waarde met tags wilt gebruiken, moet u ' Tags ' toevoegen: {} sectie op het apparaat dubbele onder hetzelfde niveau als eigenschappen. [Meer informatie over tags op het apparaat, dubbele](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Voor beelden van doel voorwaarden:
 
@@ -69,15 +69,15 @@ Voor beelden van doel voorwaarden:
 * Tags. Environment = ' Prod '
 * Tags. Environment = ' Prod ' en tags. Location = ' westelijke '
 * Tags. Environment = ' Prod ' of tags. Location = ' westelijke '
-* Tags. operator = ' John ' en tags. Environment = ' Prod ' is niet deviceId = ' linuxprod1 '
+* Tags. operator = ' John ' en tags. Environment = ' Prod ' en niet deviceId = ' linuxprod1 '
 * Properties. gerapporteerd. devicemodel = ' 4000x '
 
 Houd rekening met deze beperkingen wanneer u een doel voorwaarde bouwt:
 
 * In Device-dubbele kunt u alleen een doel voorwaarde bouwen met behulp van tags, gerapporteerde eigenschappen of deviceId.
 * Dubbele aanhalings tekens zijn niet toegestaan in een deel van de doel voorwaarde. Gebruik enkele aanhalings tekens.
-* Enkele aanhalings tekens vertegenwoordigen de waarden van de doel voorwaarde. Daarom moet u de enkele aanhalings tekens met een andere enkele aanhalings tekens wegmaken als deze deel uitmaakt van de apparaatnaam. Bijvoorbeeld, om een apparaat met de naam `operator'sDevice`schrijven `deviceId='operator''sDevice'`te richten.
-* Cijfers, letters en de volgende tekens zijn toegestaan in doel voorwaarde waarden: `-:.+%_#*?!(),=@;$`.
+* Enkele aanhalings tekens vertegenwoordigen de waarden van de doel voorwaarde. Daarom moet u de enkele aanhalings tekens met een andere enkele aanhalings tekens wegmaken als deze deel uitmaakt van de apparaatnaam. Bijvoorbeeld, om een apparaat met de naam `operator'sDevice` schrijven te richten `deviceId='operator''sDevice'` .
+* Cijfers, letters en de volgende tekens zijn toegestaan in doel voorwaarde waarden: `-:.+%_#*?!(),=@;$` .
 
 ### <a name="priority"></a>Prioriteit
 
@@ -142,7 +142,7 @@ In een standaard implementatie kunt u bijvoorbeeld de gesimuleerde temperatuur s
 }
 ```
 
-In een gelaagde implementatie die gericht is op sommige of alle van dezelfde apparaten, kunt u een eigenschap toevoegen die aangeeft dat de gesimuleerde sensor 1000 berichten verzendt en vervolgens stopt. U wilt de bestaande eigenschappen niet overschrijven, dus u maakt een nieuwe sectie in de gewenste eigenschappen `layeredProperties`, die de nieuwe eigenschap bevat:
+In een gelaagde implementatie die gericht is op sommige of alle van dezelfde apparaten, kunt u een eigenschap toevoegen die aangeeft dat de gesimuleerde sensor 1000 berichten verzendt en vervolgens stopt. U wilt de bestaande eigenschappen niet overschrijven, dus u maakt een nieuwe sectie in de gewenste eigenschappen `layeredProperties` , die de nieuwe eigenschap bevat:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -174,7 +174,7 @@ Een gefaseerde implementatie is een algemeen proces waarbij een operator wijzigi
 
 Een gefaseerde implementatie wordt uitgevoerd in de volgende fasen en stappen:
 
-1. Stel een test omgeving van IoT Edge apparaten in door deze in te richten en een apparaat-dubbele `tag.environment='test'`tag in te stellen zoals.In de test omgeving moet de productie omgeving worden gespiegeld die de implementatie uiteindelijk gaat richten.
+1. Stel een test omgeving van IoT Edge apparaten in door deze in te richten en een apparaat-dubbele tag in te stellen zoals `tag.environment='test'` .In de test omgeving moet de productie omgeving worden gespiegeld die de implementatie uiteindelijk gaat richten.
 2. Maak een implementatie met inbegrip van de gewenste modules en configuraties. De doel voorwaarde moet gericht zijn op de test IoT Edge Device environment.
 3. Valideer de configuratie van de nieuwe module in de test omgeving.
 4. Werk de implementatie bij om een subset van productie IoT Edge apparaten op te nemen door een nieuwe tag toe te voegen aan de doel voorwaarde. Zorg er ook voor dat de prioriteit voor de implementatie hoger is dan andere implementaties die momenteel zijn gericht op die apparaten

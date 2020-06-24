@@ -1,7 +1,7 @@
 ---
 title: 'Power shell: SQL Server migreren naar SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over het migreren van een datagbase van SQL Server naar Azure SQL Database met behulp van Azure PowerShell met de Azure Database Migration Service.
+description: Meer informatie over het migreren van een Data Base van SQL Server naar Azure SQL Database met behulp van Azure PowerShell met de Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a092ec3d211ed3fafadd73c37b3e58c353b618d6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192650"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253406"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Een SQL Server-Data Base migreren naar Azure SQL Database met behulp van Azure PowerShell
 
-In dit artikel migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 of hoger naar een Azure SQL database met behulp van Microsoft Azure PowerShell. U kunt data bases van een SQL Server-exemplaar migreren naar Azure SQL Database met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
+In dit artikel migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 of hoger naar Azure SQL database met behulp van Microsoft Azure PowerShell. U kunt data bases van een SQL Server-exemplaar migreren naar Azure SQL Database met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 * [SQL Server 2016 of hoger](https://www.microsoft.com/sql-server/sql-server-downloads) (alle edities)
 * Om het TCP/IP-protocol in te scha kelen, dat standaard is uitgeschakeld bij SQL Server Express installatie. Schakel het TCP/IP-protocol in door het artikel [een server netwerk protocol in of uit](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)te scha kelen.
 * Als u uw [Windows Firewall wilt configureren voor toegang tot de data base-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Een Azure SQL Database-exemplaar. U kunt een Azure SQL Database-exemplaar maken door de details te volgen in het artikel [een Azure-SQL database maken in de Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Een Azure SQL Database-exemplaar. U kunt een Azure SQL Database-exemplaar maken door de details te volgen in het artikel [een Data Base maken in Azure SQL database in de Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 of hoger.
 * Als u een Microsoft Azure Virtual Network wilt maken met behulp van het Azure Resource Manager-implementatie model, dat de Azure Database Migration Service met site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Als u de evaluatie van uw on-premises data base en schema migratie met behulp van Data Migration Assistant wilt volt ooien, zoals beschreven in het artikel [een SQL Server migratie-evaluatie uitvoeren](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
@@ -96,7 +96,7 @@ Nadat u een Azure Database Migration Service-exemplaar hebt gemaakt, moet u een 
 U kunt een object data base-verbindings gegevens maken met behulp van de- `New-AzDmsConnInfo` cmdlet. Deze cmdlet verwacht de volgende para meters:
 
 * *Server type*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
-* *Gegevens bron*. De naam of het IP-adres van een SQL Server exemplaar of Azure SQL database.
+* *Gegevens bron*. De naam of het IP-adres van een SQL Server exemplaar of Azure SQL Database.
 * *AuthType*. Het verificatie type voor de verbinding. Dit kan SqlAuthentication of WindowsAuthentication zijn.
 * Met de para meter *TrustServerCertificate* wordt een waarde ingesteld die aangeeft of het kanaal is versleuteld tijdens het passeren van de verificatie van de certificaat keten om de vertrouwens relatie te valideren. De waarde kan True of False zijn.
 

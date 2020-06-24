@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71257992"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735010"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekende problemen: waarschuwingen voor netwerk configuratie in Azure Active Directory Domain Services
 
@@ -30,15 +30,15 @@ Dit artikel helpt u bij het begrijpen en oplossen van veelvoorkomende waarschuwi
 
 *Micro soft kan de domein controllers voor dit beheerde domein niet bereiken. Dit kan gebeuren als een netwerk beveiligings groep (NSG) die in uw virtuele netwerk is geconfigureerd, de toegang tot het beheerde domein blokkeert. Een andere mogelijke reden is als er een door de gebruiker gedefinieerde route is die inkomend verkeer van het Internet blokkeert.*
 
-Ongeldige regels voor netwerk beveiligings groepen zijn de meest voorkomende oorzaak van netwerk fouten voor Azure AD DS. De netwerk beveiligings groep voor het virtuele netwerk moet toegang tot specifieke poorten en protocollen toestaan. Als deze poorten zijn geblokkeerd, kan het Azure-platform het beheerde domein niet bewaken of bijwerken. De synchronisatie tussen de Azure AD-Directory en Azure AD DS beheerde domein wordt ook beïnvloed. Zorg ervoor dat u de standaard poorten opent om te voor komen dat de service wordt onderbroken.
+Ongeldige regels voor netwerk beveiligings groepen zijn de meest voorkomende oorzaak van netwerk fouten voor Azure AD DS. De netwerk beveiligings groep voor het virtuele netwerk moet toegang tot specifieke poorten en protocollen toestaan. Als deze poorten zijn geblokkeerd, kan het Azure-platform het beheerde domein niet bewaken of bijwerken. De synchronisatie tussen de Azure AD-Directory en Azure AD DS wordt ook beïnvloed. Zorg ervoor dat u de standaard poorten opent om te voor komen dat de service wordt onderbroken.
 
 ## <a name="default-security-rules"></a>Standaardbeveiligingsregels
 
-De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegepast op de netwerk beveiligings groep voor een beheerd domein van Azure AD DS. Met deze regels blijven Azure AD DS beveiligd en kan het Azure-platform het beheerde domein bewaken, beheren en bijwerken. Mogelijk hebt u ook een extra regel waarmee inkomend verkeer wordt toegestaan als u [beveiligde LDAP configureert][configure-ldaps].
+De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegepast op de netwerk beveiligings groep voor een beheerd domein. Met deze regels blijven Azure AD DS beveiligd en kan het Azure-platform het beheerde domein bewaken, beheren en bijwerken. Mogelijk hebt u ook een extra regel waarmee inkomend verkeer wordt toegestaan als u [beveiligde LDAP configureert][configure-ldaps].
 
 ### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| Prioriteit | Naam | Poort | Protocol | Bron | Doel | Bewerking |
+| Prioriteit | Name | Poort | Protocol | Bron | Doel | Bewerking |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Alle | Toestaan |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Alle | Toestaan |
@@ -49,7 +49,7 @@ De volgende standaard regels voor binnenkomend en uitgaand verkeer worden toegep
 
 ### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 
-| Prioriteit | Naam | Poort | Protocol | Bron | Doel | Bewerking |
+| Prioriteit | Name | Poort | Protocol | Bron | Doel | Bewerking |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Alle | Alle | VirtualNetwork | VirtualNetwork | Toestaan |
 | 65001    | AllowAzureLoadBalancerOutBound | Alle | Alle |  Alle | Internet | Toestaan |
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om de bestaande beveiligings regels te controleren 
 
     Controleer de regels voor binnenkomend en uitgaand verkeer en vergelijkt u met de lijst met vereiste regels in de vorige sectie. Selecteer, indien nodig, alle aangepaste regels die het vereiste verkeer blok keren. Als een van de vereiste regels ontbreekt, voegt u in de volgende sectie een regel toe.
 
-    Nadat u regels hebt toegevoegd of verwijderd om het vereiste verkeer toe te staan, wordt de status van het beheerde domein van Azure AD DS binnen twee uur automatisch bijgewerkt en wordt de waarschuwing verwijderd.
+    Nadat u regels hebt toegevoegd of verwijderd om het vereiste verkeer toe te staan, wordt de status van het beheerde domein automatisch binnen twee uur bijgewerkt en wordt de waarschuwing verwijderd.
 
 ### <a name="add-a-security-rule"></a>Een beveiligingsregel toevoegen
 

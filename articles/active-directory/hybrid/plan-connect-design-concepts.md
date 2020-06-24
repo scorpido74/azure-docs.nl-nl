@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253882"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698594"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: ontwerp concepten
 Het doel van dit document is het beschrijven van gebieden die tijdens het implementatie ontwerp van Azure AD Connect moeten worden beschouwd. Dit document is een grondige kennis van bepaalde gebieden en deze concepten worden ook kort beschreven in andere documenten.
@@ -62,7 +62,7 @@ Als u meerdere forests hebt en gebruikers niet tussen forests en domeinen verpla
 
 Als u gebruikers tussen forests en domeinen verplaatst, moet u een kenmerk vinden dat niet verandert of kan worden verplaatst met de gebruikers tijdens de verplaatsing. Een aanbevolen benadering is het introduceren van een synthetisch kenmerk. Een kenmerk dat iets zou kunnen bevatten dat lijkt op een GUID, zou geschikt zijn. Tijdens het maken van het object wordt een nieuwe GUID gemaakt en gestempeld op de gebruiker. Een aangepaste synchronisatie regel kan worden gemaakt op de server van de synchronisatie-engine om deze waarde te maken op basis van de **ObjectGUID** en het geselecteerde kenmerk in toevoegen bij te werken. Wanneer u het object verplaatst, moet u ook de inhoud van deze waarde kopiëren.
 
-Een andere oplossing is het kiezen van een bestaand kenmerk dat u niet wijzigt. Veelgebruikte kenmerken zijn onder andere werk **nemers**. Als u overweegt een kenmerk dat letters bevat, moet u ervoor zorgen dat er geen kans is (hoofd letters en kleine letters) kan worden gewijzigd voor de waarde van het kenmerk. Ongeldige kenmerken die niet moeten worden gebruikt, zijn onder andere die kenmerken met de naam van de gebruiker. In een huwelijk of echtheid wordt de naam naar verwachting gewijzigd. Dit is niet toegestaan voor dit kenmerk. Dit is ook een van de redenen waarom kenmerken zoals **userPrincipalName**, **mail**en **targetAddress** niet zelfs kunnen worden geselecteerd in de installatie wizard van Azure AD Connect. Deze kenmerken bevatten ook het teken\@' ', wat niet is toegestaan in de source Anchor.
+Een andere oplossing is het kiezen van een bestaand kenmerk dat u niet wijzigt. Veelgebruikte kenmerken zijn onder andere werk **nemers**. Als u overweegt een kenmerk dat letters bevat, moet u ervoor zorgen dat er geen kans is (hoofd letters en kleine letters) kan worden gewijzigd voor de waarde van het kenmerk. Ongeldige kenmerken die niet moeten worden gebruikt, zijn onder andere die kenmerken met de naam van de gebruiker. In een huwelijk of echtheid wordt de naam naar verwachting gewijzigd. Dit is niet toegestaan voor dit kenmerk. Dit is ook een van de redenen waarom kenmerken zoals **userPrincipalName**, **mail**en **targetAddress** niet zelfs kunnen worden geselecteerd in de installatie wizard van Azure AD Connect. Deze kenmerken bevatten ook het \@ teken ' ', wat niet is toegestaan in de source Anchor.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Het kenmerk source Anchor wijzigen
 De waarde van het kenmerk source Anchor kan niet worden gewijzigd nadat het object is gemaakt in azure AD en de identiteit is gesynchroniseerd.
@@ -140,7 +140,7 @@ Overschakelen van objectGUID naar ConsistencyGuid als het kenmerk bron anker:
 
 3. Voer uw Azure AD-beheerders referenties in en klik op **volgende**.
 
-4. Azure AD Connect wizard analyseert de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een object in de map, wordt door Azure AD Connect afgesloten dat er momenteel geen andere toepassing is die het kenmerk gebruikt en veilig is om het te gebruiken als bron anker kenmerk. Klik op **Volgende** om verder te gaan.
+4. Azure AD Connect wizard analyseert de status van het kenmerk MS-DS-ConsistencyGuid in uw on-premises Active Directory. Als het kenmerk niet is geconfigureerd voor een object in de map, wordt door Azure AD Connect afgesloten dat er momenteel geen andere toepassing is die het kenmerk gebruikt en veilig is om het te gebruiken als bron anker kenmerk. Klik op **Volgende** om door te gaan.
 
    ![ConsistencyGuid inschakelen voor bestaande implementatie-stap 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -180,7 +180,7 @@ Tijdens de integratie van uw on-premises Directory met Azure AD is het belang ri
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Het kenmerk voor userPrincipalName kiezen
 Wanneer u het kenmerk selecteert voor het opgeven van de waarde van UPN die moet worden gebruikt in azure, moet ervoor worden gezorgd
 
-* De kenmerk waarden voldoen aan de UPN-syntaxis (RFC 822), dat wil zeggen, het moet het domein\@notatie username zijn
+* De kenmerk waarden voldoen aan de UPN-syntaxis (RFC 822), dat wil zeggen, het moet het domein notatie username zijn \@
 * Het achtervoegsel in de waarden komt overeen met een van de geverifieerde aangepaste domeinen in azure AD
 
 In snelle instellingen is de aangenomen keuze voor het kenmerk userPrincipalName. Als het kenmerk userPrincipalName niet de waarde bevat waarmee gebruikers zich moeten aanmelden bij Azure, moet u **aangepaste installatie**kiezen.
@@ -188,7 +188,7 @@ In snelle instellingen is de aangenomen keuze voor het kenmerk userPrincipalName
 ### <a name="custom-domain-state-and-upn"></a>Aangepaste domein status en UPN
 Het is belang rijk om ervoor te zorgen dat er een geverifieerd domein is voor het UPN-achtervoegsel.
 
-John is een gebruiker in contoso.com. U wilt dat John de on-premises UPN John\@contoso.com gebruikt om u aan te melden bij Azure nadat u de gebruikers hebt gesynchroniseerd met uw Azure AD-contoso.onmicrosoft.com. Hiervoor moet u contoso.com toevoegen en verifiëren als aangepast domein in azure AD voordat u kunt beginnen met het synchroniseren van de gebruikers. Als het UPN-achtervoegsel van John, bijvoorbeeld contoso.com, niet overeenkomt met een geverifieerd domein in azure AD, wordt het UPN-achtervoegsel door Azure AD vervangen door contoso.onmicrosoft.com.
+John is een gebruiker in contoso.com. U wilt dat John de on-premises UPN John \@ contoso.com gebruikt om u aan te melden bij Azure nadat u de gebruikers hebt gesynchroniseerd met uw Azure AD-contoso.onmicrosoft.com. Hiervoor moet u contoso.com toevoegen en verifiëren als aangepast domein in azure AD voordat u kunt beginnen met het synchroniseren van de gebruikers. Als het UPN-achtervoegsel van John, bijvoorbeeld contoso.com, niet overeenkomt met een geverifieerd domein in azure AD, wordt het UPN-achtervoegsel door Azure AD vervangen door contoso.onmicrosoft.com.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Niet-routeerbaar bare on-premises domeinen en UPN voor Azure AD
 Sommige organisaties hebben niet-routeerbaare domeinen, zoals contoso. local of eenvoudige domeinen met één label, zoals contoso. U kunt een niet-routeerbaar domein niet verifiëren in azure AD. Azure AD Connect kan alleen worden gesynchroniseerd met een geverifieerd domein in azure AD. Wanneer u een Azure AD-Directory maakt, wordt er een routeerbaar domein gemaakt dat het standaard domein voor uw Azure AD wordt, bijvoorbeeld contoso.onmicrosoft.com. Daarom is het nood zakelijk om een ander routeerbaar domein te controleren in een scenario voor het geval dat u niet wilt synchroniseren met het standaard domein onmicrosoft.com.

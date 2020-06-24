@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a684a669c491e35b5c6b62dd318b4fe61edeb52b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655379"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734789"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 
@@ -33,7 +33,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
@@ -42,10 +42,10 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
 ## <a name="service-accounts-overview"></a>Overzicht van service accounts
 
-In een door Azure AD DS beheerd domein bestaat een beveiligings groep met de naam **Aad DC-service accounts** als onderdeel van de organisatie-eenheid (OE) van de *gebruiker* . Leden van deze beveiligings groep zijn gemachtigd om de volgende bevoegdheden:
+In een beheerd domein bestaat een beveiligings groep met de naam **Aad DC-service accounts** als onderdeel van de organisatie-eenheid (OE) van de *gebruiker* . Leden van deze beveiligings groep zijn gemachtigd om de volgende bevoegdheden:
 
 - De bevoegdheid **Directory wijzigingen repliceren** op het hoofd DSE.
-- De bevoegdheid **Directory wijzigingen repliceren** in de *configuratie* naamgevings`cn=configuration` context (container).
+- De bevoegdheid **Directory wijzigingen repliceren** in de *configuratie* naamgevings context ( `cn=configuration` container).
 
 De beveiligings groep van de **Aad DC-service accounts** is ook lid van de ingebouwde groep **Pre-Windows 2000-compatibele toegang**.
 
@@ -58,11 +58,11 @@ Het service account voor share Point server heeft voldoende bevoegdheden nodig o
 Voer de volgende stappen uit op de virtuele machine met Azure AD DS Management:
 
 > [!NOTE]
-> Als u groepslid maatschap wilt bewerken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
+> Als u groepslid maatschap in een beheerd domein wilt bewerken, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
 1. Als u groepslid maatschap wilt beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
-1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *aaddscontoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven.
+1. Kies in het linkerdeel venster uw beheerde domein, zoals *aaddscontoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven.
 1. Selecteer de organisatie-eenheid **gebruikers** en kies vervolgens de beveiligings groep *Aad DC-service accounts* .
 1. Selecteer **leden**en klik vervolgens op **toevoegen...**.
 1. Voer de naam van het share point-service account in en selecteer **OK**. In het volgende voor beeld heeft het share point-service account de naam *SPAdmin*:

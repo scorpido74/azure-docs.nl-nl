@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277880"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697704"
 ---
 # <a name="durable-functions-types-and-features"></a>Durable Functions typen en-functies
 
@@ -36,7 +36,7 @@ In tegens telling tot Orchestrator-functies zijn de activiteit functies niet bep
 > [!NOTE]
 > Omdat activiteit functies slechts *ten minste eenmaal* moeten worden uitgevoerd, raden we u aan om uw activiteit functie Logic *idempotent* waar mogelijk te maken.
 
-Gebruik een [activiteit trigger](durable-functions-bindings.md#activity-trigger) om een activiteit functie te definiëren. .NET-functies ontvangen `DurableActivityContext` een als-para meter. U kunt de trigger ook binden aan een ander JSON-serializeable-object om invoer door te geven aan de functie. In Java script kunt u toegang krijgen tot een invoer `<activity trigger binding name>` via de eigenschap van het [ `context.bindings` object](../functions-reference-node.md#bindings). Voor activiteit functies kan slechts één waarde worden door gegeven. Als u meerdere waarden wilt door geven, moet u Tuples, matrices of complexe typen gebruiken.
+Gebruik een [activiteit trigger](durable-functions-bindings.md#activity-trigger) om een activiteit functie te definiëren. .NET-functies ontvangen een `DurableActivityContext` als-para meter. U kunt de trigger ook binden aan een ander JSON-serializeable-object om invoer door te geven aan de functie. In Java script kunt u toegang krijgen tot een invoer via de `<activity trigger binding name>` eigenschap van het [ `context.bindings` object](../functions-reference-node.md#bindings). Voor activiteit functies kan slechts één waarde worden door gegeven. Als u meerdere waarden wilt door geven, moet u Tuples, matrices of complexe typen gebruiken.
 
 > [!NOTE]
 > U kunt een activiteit functie alleen activeren vanuit een Orchestrator-functie.

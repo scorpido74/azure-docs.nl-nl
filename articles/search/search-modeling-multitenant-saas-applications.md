@@ -8,20 +8,24 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549011"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081103"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Cognitive Search
+
 Een multi tenant-toepassing biedt dezelfde services en mogelijkheden voor elk aantal tenants dat de gegevens van een andere Tenant niet kan zien of delen. In dit document worden de isolatie strategieën voor tenants besproken voor multi tenant-toepassingen die zijn gebouwd met Azure Cognitive Search.
 
 ## <a name="azure-cognitive-search-concepts"></a>Azure Cognitive Search-concepten
-Als een Search-as-a-service-oplossing kunnen ontwikkel aars met Azure Cognitive Search uitgebreidere Zoek ervaringen toevoegen aan toepassingen zonder dat ze een infra structuur hoeven te beheren of een expert te worden in het ophalen van informatie. Gegevens worden naar de service geüpload en vervolgens opgeslagen in de Cloud. Door eenvoudige aanvragen te gebruiken voor de Azure Cognitive Search-API, kunnen de gegevens worden gewijzigd en doorzocht. In [dit artikel](https://aka.ms/whatisazsearch)vindt u een overzicht van de service. Voordat u ontwerp patronen bespreekt, is het belang rijk om enkele concepten in azure Cognitive Search te begrijpen.
+Als een Search-as-a-service-oplossing kunnen ontwikkel aars met [Azure Cognitive Search](search-what-is-azure-search.md) uitgebreidere Zoek ervaringen toevoegen aan toepassingen zonder dat ze een infra structuur hoeven te beheren of een expert te worden in het ophalen van informatie. Gegevens worden naar de service geüpload en vervolgens opgeslagen in de Cloud. Door eenvoudige aanvragen te gebruiken voor de Azure Cognitive Search-API, kunnen de gegevens worden gewijzigd en doorzocht. 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Services, indexen, velden en documenten doorzoeken
+
+Voordat u ontwerp patronen bespreekt, is het belang rijk dat u een paar basis concepten begrijpt.
+
 Wanneer u Azure Cognitive Search gebruikt, wordt er één geabonneerd op een *Zoek service*. Wanneer gegevens worden geüpload naar Azure Cognitive Search, wordt deze opgeslagen in een *index* binnen de zoek service. Er kan een aantal indexen binnen één service zijn. Als u de vertrouwde concepten van data bases wilt gebruiken, kan de zoek service worden likened naar een Data Base terwijl de indexen binnen een service kunnen worden likened aan tabellen in een Data Base.
 
 Elke index binnen een zoek service heeft een eigen schema, dat wordt gedefinieerd door een aantal aanpas bare *velden*. Gegevens worden toegevoegd aan een Azure Cognitive Search-index in de vorm van afzonderlijke *documenten*. Elk document moet worden geüpload naar een bepaalde index en moet overeenkomen met het schema van de index. Bij het zoeken naar gegevens met behulp van Azure Cognitive Search worden de Zoek opdrachten in volledige tekst op basis van een bepaalde index uitgegeven.  Om deze concepten te vergelijken met die van een Data Base, kunnen velden worden likened aan kolommen in een tabel en kunnen de documenten worden likened naar rijen.
@@ -127,5 +131,5 @@ Deze methode kan worden gebruikt voor het bezorgen van de functionaliteit van af
 ## <a name="next-steps"></a>Volgende stappen
 Azure Cognitive Search is een fascinerende keuze voor veel toepassingen. Bij het evalueren van de verschillende ontwerp patronen voor multi tenant-toepassingen, moet u rekening houden met de [verschillende prijs categorieën](https://azure.microsoft.com/pricing/details/search/) en de bijbehorende [service limieten](search-limits-quotas-capacity.md) voor het Best passend maken van Azure Cognitive Search voor het aanpassen van werk belastingen en architecturen van elke omvang.
 
-Vragen over Azure Cognitive Search en multi tenant scenario's kunnen worden omgeleid naar azuresearch_contact@microsoft.com.
+Vragen over Azure Cognitive Search en multi tenant scenario's kunnen worden omgeleid naar azuresearch_contact@microsoft.com .
 

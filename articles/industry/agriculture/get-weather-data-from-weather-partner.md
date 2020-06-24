@@ -5,18 +5,18 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66fa4e7d3edf839ab1e497e86362bcfc979dc279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ab42509930e76989a67f45deb33e370e6e9adf4
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81266160"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194736"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
 Met Azure FarmBeats kunt u weer gegevens ophalen van uw weer gegevens provider (s) met behulp van een Connector-Framework op basis van docker. Met behulp van dit framework implementeren weer gegevens providers een docker die kan worden geïntegreerd met FarmBeats. Momenteel worden de volgende gegevens providers ondersteund:
 
-[NOAA gegevens uit Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/)
+[DTN](https://www.dtn.com/dtn-content-integration/)
 
 De weer gegevens kunnen worden gebruikt voor het genereren van met actie bruikbare inzichten en het bouwen van AI/ML-modellen op FarmBeats.
 
@@ -28,7 +28,7 @@ Zorg ervoor dat u FarmBeats hebt geïnstalleerd om weer gegevens op te halen. De
 
 Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op uw FarmBeats data hub:
 
-1. Ga naar uw FarmBeats data hub Swagger (https://yourdatahub.azurewebsites.net/swagger)
+1. Ga naar uw FarmBeats data hub Swagger (https://farmbeatswebsite-api.azurewebsites.net/swagger)
 
 2. Ga naar/partner API en maak een POST-aanvraag met de volgende invoer lading:
 
@@ -40,7 +40,7 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
          "username": "<credentials to access private docker - not required for public docker>", 
          "password": "<credentials to access private docker – not required for public docker>"  
        },  
-       "imageName" : "<docker image name. Default is azurefarmbeats/fambeats-noaa>",
+       "imageName" : "<docker image name",
        "imageTag" : "<docker image tag, default:latest>",
        "azureBatchVMDetails": {  
          "batchVMSKU" : "<VM SKU. Default is standard_d2_v2>",  
@@ -59,13 +59,13 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
    }  
    ```
 
-   Als u bijvoorbeeld weer gegevens wilt ophalen uit NOAA door Azure open gegevens sets, gebruikt u de onderstaande nettolading. U kunt de naam en beschrijving aanpassen volgens uw voor keur.
+   Als u bijvoorbeeld weer gegevens wilt ophalen uit DTN, gebruikt u de onderstaande nettolading. U kunt de naam en beschrijving aanpassen volgens uw voor keur.
 
    ```json
    {
  
      "dockerDetails": {
-       "imageName": "azurefarmbeats/farmbeats-noaa",
+       "imageName": "dtnweather/dtn-farm-beats",
        "imageTag": "latest",
        "azureBatchVMDetails": {
          "batchVMSKU": "standard_d2_v2",
@@ -73,9 +73,12 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
          "nodeAgentSKUID": "batch.node.ubuntu 18.04"
        }
      },
+     "partnerCredentials": {
+      "apikey": "<API key from DTN>"
+      },
      "partnerType": "Weather",
-     "name": "ods-noaa",
-     "description": "NOAA data from Azure Open Datasets registered as a Weather Partner"
+     "name": "dtn-weather",
+     "description": "DTN registered as a Weather Partner in FarmBeats"
    }  
    ```
 
@@ -92,10 +95,12 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
 
 5. Uw FarmBeats-instantie heeft nu een actieve weer gegevens partner en u kunt taken uitvoeren om weer gegevens voor een bepaalde locatie (breedte graad/lengte graad) en een datum bereik op te vragen. De taak type (s) bevatten details over welke para meters zijn vereist voor het uitvoeren van weer taken.
 
-   Voor NOAA gegevens uit Azure open gegevens sets worden bijvoorbeeld de volgende taak type (s) gemaakt:
-
-   - get_weather_data (Get ISD/historische weer gegevens)
-   - get_weather_forecast_data (Get GFS/Forecast weer gegeven gegevens)
+   Voor DTN worden bijvoorbeeld de volgende taak type (s) gemaakt:
+   
+   - get_dtn_daily_observations (dagelijkse waarnemingen voor een locatie en een tijds periode ophalen)
+   - get_dtn_daily_forecasts (dagelijkse prognoses voor een locatie en een periode ophalen)
+   - get_dtn_hourly_observations (per uur waarnemingen voor een locatie en een periode ophalen)
+   - get_dtn_hourly_forecasts (uurprognoses voor een locatie en een periode ophalen)
 
 6. Noteer de **id** en de para meters van de taak type (s).
 
@@ -115,17 +120,15 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
        }
    ```
 
-   Als u bijvoorbeeld **get_weather_data**wilt uitvoeren, gebruikt u de volgende Payload:
+   Als u bijvoorbeeld **get_dtn_daily_observations**wilt uitvoeren, gebruikt u de volgende Payload:
 
    ```json
-   {
- 
+   { 
          "typeId": "<id of the JobType>",
          "arguments": {
                "latitude": 47.620422,
                "longitude": -122.349358,
-               "start_date": "yyyy-mm-dd",
-               "end_date": "yyyy-mm-dd"
+               "days": 5
          },
          "name": "<name of the job>",
          "description": "<description>",
@@ -146,7 +149,7 @@ Nadat de weers taken zijn voltooid, kunt u een query uitvoeren op opgenomen weer
 
 Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van FarmBeats REST API:
 
-1. Ga in uw FarmBeats data hub Swaggerhttps://yourdatahub.azurewebsites.net/swagger)(naar/WeatherDataLocation API en maak een GET-aanvraag. Het antwoord heeft een of meer/WeatherDataLocation-objecten gemaakt voor de locatie (breedte graad/lengte graad) die is opgegeven als onderdeel van de taak uitvoering. Noteer de **id** en de **weatherDataModelId** van de object (en).
+1. Ga in uw FarmBeats data hub Swagger (naar https://yourdatahub.azurewebsites.net/swagger) /WEATHERDATALOCATION API en maak een GET-aanvraag. Het antwoord heeft een of meer/WeatherDataLocation-objecten gemaakt voor de locatie (breedte graad/lengte graad) die is opgegeven als onderdeel van de taak uitvoering. Noteer de **id** en de **weatherDataModelId** van de object (en).
 
 2. Maak een GET/{id} op de/WeatherDataModel-API voor de **weatherDataModelId** zoals vermeld in stap 1. Het ' weer gegeven gegevens model ' bevat alle meta gegevens en Details over de opgenomen weers gegevens. Voor beeld: de **weers meting** in het object **weer gegeven gegevens model** bevat details over welke informatie wordt ondersteund en in welke typen en eenheden. Bijvoorbeeld:
 
@@ -214,7 +217,7 @@ Weer gegevens worden ontvangen op een EventHub en vervolgens gepusht naar een TS
 
 Volg de stappen voor het visualiseren van gegevens op TSI:
 
-1. Ga naar **Azure Portal** > **FarmBeats DataHub resource groep** > Selecteer **Time Series Insights** Environment (TSI-xxxx) > **beleid voor gegevens toegang**. Voeg een gebruiker toe met toegang voor lezer of Inzender.
+1. Ga naar **Azure Portal**  >  **FarmBeats DataHub resource groep** > Selecteer **Time Series Insights** Environment (TSI-xxxx) > **beleid voor gegevens toegang**. Voeg een gebruiker toe met toegang voor lezer of Inzender.
 
 2. Ga naar de pagina **overzicht** van **Time Series Insights** omgeving (TSI-xxxx) en selecteer de **URL van Time Series Insights Explorer**. U kunt nu de opgenomen weers gegevens visualiseren.
 
@@ -224,7 +227,7 @@ Naast het opslaan, doorzoeken en visualisatie van weer gegevens, biedt de TSI oo
 
 |        Partner   |  Details   |
 | ------- | -------             |
-|     DockerDetails-afbeeldings         |          Naam van docker-installatie kopie. Bijvoorbeeld docker.io/azurefarmbeats/farmbeats-noaa (image in hub.docker.com) of myazureacr.azurecr.io/mydockerimage (afbeelding in Azure Container Registry), enzovoort. Als er geen REGI ster wordt gegeven, is de standaard waarde hub.docker.com      |
+|     DockerDetails-afbeeldings         |          Naam van docker-installatie kopie. Bijvoorbeeld docker.io/mydockerimage (image in hub.docker.com) of myazureacr.azurecr.io/mydockerimage (afbeelding in Azure Container Registry), enzovoort. Als er geen REGI ster wordt gegeven, wordt de standaard hub.docker.com      |
 |          DockerDetails - imageTag             |         De label naam van de docker-installatie kopie. De standaard waarde is "meest recent"     |
 |  DockerDetails-referenties      |  Referenties voor toegang tot de privé-docker. Dit wordt door de partner aan de klant verschaft   |
 |  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch VM-SKU. [Hier](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ziet u alle beschik bare virtuele Linux-machines. Geldige waarden zijn: ' klein ', ' ExtraLarge ', ' large ', ' A8 ', ' A9 ', ' medium ', ' A5 ', ' A6 ', ' A7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ', ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ' , STANDARD_H8, STANDARD_H8m, STANDARD_H16, STANDARD_H16m, STANDARD_H16mr, STANDARD_H16r, STANDARD_A1_V2, STANDARD_A2_V2, STANDARD_A4_V2, STANDARD_A8_V2, STANDARD_A2m_V2, STANDARD_A4m_V2, STANDARD_A8m_V2, STANDARD_M64ms, STANDARD_M128s, STANDARD_D2_V3, is niet de enige die wordt door ', ', ', ', ', ', '. **De standaard waarde is standard_d2_v2**  |
@@ -232,7 +235,7 @@ Naast het opslaan, doorzoeken en visualisatie van weer gegevens, biedt de TSI oo
 |    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    SKU-ID van Azure Batch node-agent. Momenteel wordt alleen batch. node. Ubuntu 18,04-batch-knooppunt agent ondersteund.    |
 | DockerDetails - partnerCredentials | referenties voor het aanroepen van de partner-API in docker. De partner moet deze informatie aan hun klanten geven op basis van het verificatie mechanisme dat wordt ondersteund voor beeld. Gebruikers naam/wacht woord of API-sleutels. |
 | partnerType | "Weer" (andere partner typen in FarmBeats zijn "sensor" en "installatie kopie")  |
-|  name   |   Gewenste naam van de partner in het FarmBeats-systeem   |
+|  naam   |   Gewenste naam van de partner in het FarmBeats-systeem   |
 |  description |  Beschrijving   |
 
 ## <a name="next-steps"></a>Volgende stappen

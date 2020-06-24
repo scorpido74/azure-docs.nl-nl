@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e79156e6e9f1283dfc7b8801820e3335f31afa9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654662"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734296"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Beveiligings controles inschakelen voor Azure Active Directory Domain Services
 
@@ -25,7 +25,7 @@ Met beveiligings controles van Azure Active Directory Domain Services (Azure AD 
 U kunt gebeurtenissen in azure Storage archiveren en gebeurtenissen streamen naar SIEM-software (Security Information and Event Management) (of een equivalent) met behulp van Azure Event Hubs, of uw eigen analyse uitvoeren en Azure Log Analytics-werk ruimten van de Azure Portal gebruiken.
 
 > [!IMPORTANT]
-> Azure AD DS-beveiligings controles zijn alleen beschikbaar voor exemplaren op basis van Azure Resource Manager. Zie [Azure-AD DS migreren van het klassieke virtuele-netwerk model naar Resource Manager][migrate-azure-adds]voor meer informatie over het migreren van.
+> Azure AD DS-beveiligings controles zijn alleen beschikbaar voor beheerde domeinen op basis van Azure Resource Manager. Zie [Azure-AD DS migreren van het klassieke virtuele-netwerk model naar Resource Manager][migrate-azure-adds]voor meer informatie over het migreren van.
 
 ## <a name="security-audit-destinations"></a>Doelen voor beveiligings controle
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure A
 
     ![Het vereiste doel en type controle gebeurtenissen inschakelen dat moet worden vastgelegd](./media/security-audit-events/diagnostic-settings-page.png)
 
-    * **Azure Storage**
+    * **Azure-opslag**
         * Selecteer **archiveren naar een opslag account**en kies vervolgens **configureren**.
         * Selecteer het **abonnement** en het **opslag account** dat u wilt gebruiken voor het archiveren van beveiligings controle gebeurtenissen.
         * Als u klaar bent, kiest u **OK**.
@@ -94,13 +94,13 @@ Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure A
 
 1. Maak de doel resource voor de beveiligings controle gebeurtenissen.
 
-    * **Azure Storage** - [een opslag account maken met behulp van Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Met Azure Event hubs** - [maakt u een event hub met behulp van Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Mogelijk moet u ook de cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) gebruiken om een autorisatie regel te maken waarmee Azure-AD DS machtigingen worden verleend aan de Event hub *naam ruimte*. De autorisatie regel moet de rechten **beheren**, **Luis teren**en **verzenden** bevatten.
+    * **Azure-opslag**  -  [Een opslag account maken met behulp van Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
+    * **Azure Event hubs**  -  [Maak een event hub met behulp van Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Mogelijk moet u ook de cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) gebruiken om een autorisatie regel te maken waarmee Azure-AD DS machtigingen worden verleend aan de Event hub *naam ruimte*. De autorisatie regel moet de rechten **beheren**, **Luis teren**en **verzenden** bevatten.
 
         > [!IMPORTANT]
         > Zorg ervoor dat u de autorisatie regel instelt op de naam ruimte Event Hub en niet op de Event Hub zelf.
 
-    * **Met Azure log Analytics-werk ruimten** - [maakt u een log Analytics-werk ruimte met Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+    * **Azure log analytic-werk ruimten**  -  [Maak een log Analytics-werk ruimte met Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 1. Gebruik de cmdlet [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) om de resource-id voor uw door Azure AD DS beheerde domein op te halen. Maak een variabele met de naam *$aadds. ResourceId* om de waarde te bevatten:
 

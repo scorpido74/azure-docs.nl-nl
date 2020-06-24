@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72792987"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080723"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 3
 
@@ -25,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Als u versie 2,0-Preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 3.
+Als u versie 2,0-Preview of ouder van de [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 3.
 
 Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
 
@@ -41,17 +41,17 @@ Versie 3 van de Azure Search .NET SDK bevat een aantal wijzigingen ten opzichte 
 ## <a name="whats-new-in-version-3"></a>Wat is er nieuw in versie 3
 Versie 3 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API, met name 2016-09-01. Dit maakt het mogelijk om veel nieuwe functies van Azure Search van een .NET-toepassing te gebruiken, met inbegrip van het volgende:
 
-* [Analysevoorzieningen aanpassen](https://aka.ms/customanalyzers)
+* [Analysevoorzieningen aanpassen](index-add-custom-analyzers.md)
 * Ondersteuning voor [azure Blob Storage](search-howto-indexing-azure-blob-storage.md) en [Azure Table Storage](search-howto-indexing-azure-tables.md) Indexer
 * Aanpassing van Indexeer functie via [veld Toewijzingen](search-indexer-field-mappings.md)
 * ETags-ondersteuning voor het inschakelen van veilig gelijktijdig bijwerken van index definities, Indexeer functies en gegevens bronnen
-* Ondersteuning voor het samen stellen van index veld definities declaratief door uw model klasse te verf raaien `FieldBuilder` en de nieuwe klasse te gebruiken.
+* Ondersteuning voor het samen stellen van index veld definities declaratief door uw model klasse te verf raaien en de nieuwe klasse te gebruiken `FieldBuilder` .
 * Ondersteuning voor .NET core en .NET Portable profile 111
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
-Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
+Werk eerst uw NuGet-verwijzing bij voor `Microsoft.Azure.Search` het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
 
 Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat het geval is, bent u klaar om aan de slag te gaan.
 
@@ -61,7 +61,7 @@ Als uw build mislukt, ziet u een build-fout als de volgende:
 
 De volgende stap is het oplossen van deze build-fout. Zie belang rijke [wijzigingen in versie 3](#ListOfChanges) voor meer informatie over de oorzaak van de fout en hoe u deze kunt oplossen.
 
-Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de eigenschap `IndexingParameters.Base64EncodeKeys` , wordt er een waarschuwing weer gegeven met de tekst`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de `IndexingParameters.Base64EncodeKeys` eigenschap, wordt er een waarschuwing weer gegeven met de tekst`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
 Wanneer u opgebouwde fouten hebt opgelost, kunt u wijzigingen aanbrengen in uw toepassing om te profiteren van de nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 3](#WhatsNew).
 
@@ -71,7 +71,7 @@ Wanneer u opgebouwde fouten hebt opgelost, kunt u wijzigingen aanbrengen in uw t
 Er is een klein aantal belang rijke wijzigingen in versie 3 waarvoor code wijzigingen nodig zijn naast het opnieuw samen stellen van uw toepassing.
 
 ### <a name="indexesgetclient-return-type"></a>Indexes. GetClient retour type
-De `Indexes.GetClient` methode heeft een nieuw retour type. Voorheen werd deze geretourneerd `SearchIndexClient`, maar dit is gewijzigd `ISearchIndexClient` in versie 2,0-Preview en deze wijziging gaat naar versie 3. Dit is ter ondersteuning van klanten die de `GetClient` methode voor eenheids testen willen intrekken door een model implementatie `ISearchIndexClient`van te retour neren.
+De `Indexes.GetClient` methode heeft een nieuw retour type. Voorheen `SearchIndexClient` werd deze geretourneerd, maar dit is gewijzigd `ISearchIndexClient` in versie 2,0-Preview en deze wijziging gaat naar versie 3. Dit is ter ondersteuning van klanten die de `GetClient` methode voor eenheids testen willen intrekken door een model implementatie van te retour neren `ISearchIndexClient` .
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -87,7 +87,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 ### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Analyzer, data type en andere zijn niet meer impliciet geconverteerd naar teken reeksen
-Er zijn veel typen in de Azure Search .NET SDK die zijn afgeleid van `ExtensibleEnum`. Voorheen werden deze typen allemaal impliciet geconverteerd naar type `string`. Er is echter een bug ontdekt in de `Object.Equals` implementatie voor deze klassen en het herstellen van de fout die vereist is om deze impliciete conversie uit te scha kelen. Expliciete omzetting `string` naar is nog steeds toegestaan.
+Er zijn veel typen in de Azure Search .NET SDK die zijn afgeleid van `ExtensibleEnum` . Voorheen werden deze typen allemaal impliciet geconverteerd naar type `string` . Er is echter een bug ontdekt in de `Object.Equals` implementatie voor deze klassen en het herstellen van de fout die vereist is om deze impliciete conversie uit te scha kelen. Expliciete omzetting naar `string` is nog steeds toegestaan.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -130,9 +130,9 @@ index.Analyzers = new Analyzer[]
 
 Mogelijk worden er compilatie fouten weer gegeven met betrekking tot methoden of eigenschappen die als verouderd zijn gemarkeerd in versie 2,0-Preview en vervolgens worden verwijderd in versie 3. Als u dergelijke fouten tegen komt, kunt u deze als volgt oplossen:
 
-- Als u deze constructor gebruikt: `ScoringParameter(string name, string value)`, gebruikt u deze in plaats daarvan:`ScoringParameter(string name, IEnumerable<string> values)`
-- Als u de `ScoringParameter.Value` eigenschap gebruikt, gebruikt u in `ScoringParameter.Values` plaats daarvan de `ToString` eigenschap of de-methode.
-- Als u de `SearchRequestOptions.RequestId` eigenschap hebt gebruikt, gebruikt u `ClientRequestId` in plaats daarvan de eigenschap.
+- Als u deze constructor gebruikt: `ScoringParameter(string name, string value)` , gebruikt u deze in plaats daarvan:`ScoringParameter(string name, IEnumerable<string> values)`
+- Als u de eigenschap gebruikt `ScoringParameter.Value` , gebruikt u `ScoringParameter.Values` in plaats daarvan de eigenschap of de- `ToString` methode.
+- Als u de eigenschap hebt gebruikt `SearchRequestOptions.RequestId` , gebruikt u `ClientRequestId` in plaats daarvan de eigenschap.
 
 ### <a name="removed-preview-features"></a>De preview-functies zijn verwijderd
 

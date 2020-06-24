@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 42fd1a6c17ddbf06715a9f814bc214db3f34e1ad
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263186"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100172"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk
 <a name="network-service-tags"></a>
@@ -40,7 +40,7 @@ De kolommen geven aan of de tag:
 
 Service Tags geven standaard de bereiken weer voor de hele Cloud. Sommige service Tags bieden ook een nauw keurigere controle door de overeenkomende IP-bereiken te beperken tot een bepaalde regio. De service tags **opslag** vertegenwoordigt bijvoorbeeld Azure Storage voor de hele Cloud, maar **opslag. westus** beperkt het bereik tot alleen de IP-adresbereiken van het opslag gebied van de regio westus. In de volgende tabel wordt aangegeven of elk servicetag het regionale bereik ondersteunt.  
 
-| Label | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Label | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ActionGroup** | Actie groep. | Inkomend | Nee | Nee |
 | **ApiManagement** | Beheer verkeer voor Azure API Management-specifieke implementaties. <br/><br/>*Opmerking:* Deze tag vertegenwoordigt het Azure API Management service-eind punt voor besturings vlak per regio. Hierdoor kunnen klanten beheer bewerkingen uitvoeren op de Api's, bewerkingen, beleids regels, NamedValues die zijn geconfigureerd voor de API Management service.  | Inkomend | Ja | Ja |
@@ -135,10 +135,12 @@ U kunt de huidige lijst met Service Tags op een programmatische manier ophalen i
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>Service Tags detecteren met behulp van Download bare JSON-bestanden 
 U kunt JSON-bestanden downloaden die de huidige lijst met Service Tags samen met IP-adres bereik gegevens bevatten. Deze lijsten worden wekelijks bijgewerkt en gepubliceerd. Locaties voor elke Cloud zijn:
 
-- [Open bare Azure](https://www.microsoft.com/download/details.aspx?id=56519)
-- [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)  
+- [Azure openbaar](https://www.microsoft.com/download/details.aspx?id=56519)
+- [Azure van de Amerikaanse overheid](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure Duitsland](https://www.microsoft.com/download/details.aspx?id=57064)   
+
+De IP-adresbereiken in deze bestanden bevinden zich in CIDR-notatie. 
 
 > [!NOTE]
 >Een subset van deze gegevens is gepubliceerd in XML-bestanden voor [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064)en [Azure Duitsland](https://www.microsoft.com/download/details.aspx?id=54770). Deze XML-down loads worden vóór 30 juni 2020 verouderd en zijn na die datum niet meer beschikbaar. U moet migreren naar met behulp van de detectie-API of JSON-bestand downloads, zoals beschreven in de vorige secties.

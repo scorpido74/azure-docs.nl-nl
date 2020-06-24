@@ -8,15 +8,15 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248773"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696980"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Aan de slag met Azure Metrics Explorer
 
-## <a name="where-do-i-start"></a>Waar kan ik beginnen
+## <a name="where-do-i-start"></a>Waar moet ik beginnen?
 Azure Monitor Metrics Explorer is een onderdeel van de Microsoft Azure-portal waarmee grafieken kunnen worden getekend, trends visueel worden gecorreleerd en pieken en spannings dips in metrische waarden worden onderzocht. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resources te onderzoeken. Begin in de volgende volg orde:
 
 1. [Kies een resource en metrische gegevens](#create-your-first-metric-chart) en u ziet een eenvoudige grafiek. [Selecteer vervolgens een tijds bereik](#select-a-time-range) dat relevant is voor uw onderzoek.

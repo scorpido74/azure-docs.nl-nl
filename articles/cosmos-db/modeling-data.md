@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4125d7ea17c6ebab28ef8e5fde5af5475d07002d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72755021"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113378"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Gegevens modellering in Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Wanneer u gegevens modelleert in Azure Cosmos DB probeert u uw entiteiten te beh
 
 Laten we eerst zien hoe we gegevens in een relationele data base kunnen model leren. In het volgende voor beeld ziet u hoe een persoon kan worden opgeslagen in een relationele data base.
 
-![Relationeel database model](./media/sql-api-modeling-data/relational-data-model.png)
+:::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Relationeel database model" border="false":::
 
 Bij het werken met relationele data bases is de strategie het normaliseren van al uw gegevens. Het normaliseren van uw gegevens omvat meestal het nemen van een entiteit, zoals een persoon, en het opsplitsen daarvan in discrete onderdelen. In het bovenstaande voor beeld kan een persoon meerdere contact gegevens records hebben, evenals meerdere adres records. De contact gegevens kunnen verder worden opgesplitst door algemene velden, zoals een type, verder uit te pakken. Hetzelfde geldt voor het adres, elke record kan van het type *thuis* of *zakelijk*zijn.
 
@@ -282,7 +282,8 @@ In het bovenstaande voor beeld hebben we de niet-gebonden verzameling verwijderd
 
 In een relationele data base zijn *veel* relaties vaak gemodelleerd met samenvoeg tabellen, die alleen worden gekoppeld aan records uit andere tabellen.
 
-![Tabellen koppelen](./media/sql-api-modeling-data/join-table.png)
+
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Tabellen koppelen" border="false":::
 
 Misschien bent u geneigd om hetzelfde te repliceren met behulp van documenten en een gegevens model te produceren dat er ongeveer als volgt uitziet.
 
@@ -373,7 +374,7 @@ Bekijk de volgende JSON.
 
 Hier hebben we (voornamelijk) het Inge sloten model gevolgd, waar gegevens uit andere entiteiten zijn Inge sloten in het document op het hoogste niveau, maar er wordt naar andere gegevens verwezen.
 
-Als u het boek document bekijkt, kunnen we enkele interessante velden zien wanneer we de matrix van auteurs bekijken. Er is een `id` veld dat het veld wordt gebruikt om terug te verwijzen naar een auteur-document, de standaard procedure in een genormaliseerd model, maar we `name` hebben `thumbnailUrl`ook en. We hebben de toepassing kunnen `id` blijven gebruiken om aanvullende informatie te verkrijgen die hij nodig heeft uit het respectieve auteurs document met behulp van de "link", maar omdat in onze toepassing de naam van de auteur en een miniatuur afbeelding worden weer gegeven met elk boek dat wordt weer geven, kunnen we een retour naar de server per boek in een lijst opslaan door **bepaalde** gegevens van de auteur te denormaliseren.
+Als u het boek document bekijkt, kunnen we enkele interessante velden zien wanneer we de matrix van auteurs bekijken. Er is een `id` veld dat het veld wordt gebruikt om terug te verwijzen naar een auteur-document, de standaard procedure in een genormaliseerd model, maar we hebben ook `name` en `thumbnailUrl` . We hebben `id` de toepassing kunnen blijven gebruiken om aanvullende informatie te verkrijgen die hij nodig heeft uit het respectieve auteurs document met behulp van de "link", maar omdat in onze toepassing de naam van de auteur en een miniatuur afbeelding worden weer gegeven met elk boek dat wordt weer geven, kunnen we een retour naar de server per boek in een lijst opslaan door **bepaalde** gegevens van de auteur te denormaliseren.
 
 Als de naam van de auteur is gewijzigd of als hij of zij de foto wil bijwerken, moeten we dan ook elk boek dat ze ooit hebben gepubliceerd, maar voor onze toepassing bijwerken, op basis van de veronderstelling dat auteurs hun namen niet vaak wijzigen, is dit een acceptabel ontwerp besluit.  
 
@@ -383,7 +384,7 @@ De mogelijkheid om een model met vooraf berekende velden te maken, wordt mogelij
 
 ## <a name="distinguishing-between-different-document-types"></a>Onderscheiden van verschillende document typen
 
-In sommige scenario's wilt u mogelijk verschillende document typen combi neren in dezelfde verzameling. Dit is meestal het geval wanneer u wilt dat er meerdere, gerelateerde documenten zich in dezelfde [partitie](partitioning-overview.md)bevinden. U kunt bijvoorbeeld zowel boeken als boek beoordelingen in dezelfde verzameling plaatsen en partitioneren door `bookId`. In dat geval wilt u meestal aan uw documenten toevoegen met een veld dat het type identificeert om ze te onderscheiden.
+In sommige scenario's wilt u mogelijk verschillende document typen combi neren in dezelfde verzameling. Dit is meestal het geval wanneer u wilt dat er meerdere, gerelateerde documenten zich in dezelfde [partitie](partitioning-overview.md)bevinden. U kunt bijvoorbeeld zowel boeken als boek beoordelingen in dezelfde verzameling plaatsen en partitioneren door `bookId` . In dat geval wilt u meestal aan uw documenten toevoegen met een veld dat het type identificeert om ze te onderscheiden.
 
     Book documents:
     {

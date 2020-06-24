@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b5d6787a41e59511267dd9e7f9048a0431e26a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332805"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204112"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een Azure MFA-technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -34,7 +34,7 @@ Dit technische profiel:
 
 ## <a name="protocol"></a>Protocol
 
-Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary`. Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C:
+Het **naam** kenmerk van het **protocol** element moet worden ingesteld op `Proprietary` . Het kenmerk **handler** moet de volledig gekwalificeerde naam van de assembly van de protocolhandler bevatten die wordt gebruikt door Azure AD B2C:
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 In het volgende voor beeld ziet u een technisch Azure MFA-profiel:
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
     <DisplayName>Send Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -59,16 +59,16 @@ Het **InputClaims** -element bevat een lijst met claims die naar Azure MFA moete
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| userPrincipalName | Ja | De id voor de gebruiker die eigenaar is van het telefoon nummer. |
-| phoneNumber | Ja | Het telefoon nummer waarnaar een SMS-code moet worden verzonden. |
-| companyName | Nee |De bedrijfs naam in het SMS. Als u dit niet opgeeft, wordt de naam van uw toepassing gebruikt. |
-| landinstellingen | Nee | De land instelling van het SMS. Als dat niet is vermeld, wordt de land instelling van de gebruiker gebruikt. |
+| userPrincipalName | Yes | De id voor de gebruiker die eigenaar is van het telefoon nummer. |
+| phoneNumber | Yes | Het telefoon nummer waarnaar een SMS-code moet worden verzonden. |
+| companyName | No |De bedrijfs naam in het SMS. Als u dit niet opgeeft, wordt de naam van uw toepassing gebruikt. |
+| landinstelling | No | De land instelling van het SMS. Als dat niet is vermeld, wordt de land instelling van de gebruiker gebruikt. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de Azure MFA-service worden verzonden.
 
 ### <a name="output-claims"></a>Uitvoer claims
 
-De Azure MFA-protocol provider retourneert geen **OutputClaims**, dus u hoeft geen uitvoer claims op te geven. U kunt echter claims toevoegen die niet worden geretourneerd door de Azure MFA-ID-provider zolang u het `DefaultValue` kenmerk hebt ingesteld.
+De Azure MFA-protocol provider retourneert geen **OutputClaims**, dus u hoeft geen uitvoer claims op te geven. U kunt echter claims toevoegen die niet worden geretourneerd door de Azure MFA-ID-provider zolang u het kenmerk hebt ingesteld `DefaultValue` .
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -76,7 +76,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Ja | Moet **OneWaySMS**zijn.  |
+| Bewerking | Yes | Moet **OneWaySMS**zijn.  |
 
 #### <a name="ui-elements"></a>UI-elementen
 
@@ -84,16 +84,16 @@ De volgende meta gegevens kunnen worden gebruikt voor het configureren van de fo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | Nee | Fout bericht van gebruiker als het telefoon nummer geen SMS accepteert. |
-| UserMessageIfInvalidFormat | Nee | Fout bericht van gebruiker als het gegeven telefoon nummer geen geldig telefoon nummer is. |
-| UserMessageIfServerError | Nee | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
-| UserMessageIfThrottled| Nee | Gebruikers fout bericht als een aanvraag is beperkt.|
+| UserMessageIfCouldntSendSms | No | Fout bericht van gebruiker als het telefoon nummer geen SMS accepteert. |
+| UserMessageIfInvalidFormat | No | Fout bericht van gebruiker als het gegeven telefoon nummer geen geldig telefoon nummer is. |
+| UserMessageIfServerError | No | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
+| UserMessageIfThrottled| No | Gebruikers fout bericht als een aanvraag is beperkt.|
 
 ### <a name="example-send-an-sms"></a>Voor beeld: een SMS verzenden
 
 In het volgende voor beeld ziet u een technisch Azure MFA-profiel dat wordt gebruikt om via SMS een code te verzenden.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
   <DisplayName>Send Sms</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -121,14 +121,14 @@ Het **InputClaims** -element bevat een lijst met claims die naar Azure MFA moete
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Ja | Hetzelfde telefoon nummer als eerder gebruikt om een code te verzenden. Het wordt ook gebruikt om een sessie voor telefoon verificatie te vinden. |
-| verificationCode  | Ja | De verificatie code van de gebruiker die moet worden geverifieerd |
+| phoneNumber| Yes | Hetzelfde telefoon nummer als eerder gebruikt om een code te verzenden. Het wordt ook gebruikt om een sessie voor telefoon verificatie te vinden. |
+| verificationCode  | Yes | De verificatie code van de gebruiker die moet worden geverifieerd |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat de Azure MFA-service wordt aangeroepen.
 
 ### <a name="output-claims"></a>Uitvoer claims
 
-De Azure MFA-protocol provider retourneert geen **OutputClaims**, dus u hoeft geen uitvoer claims op te geven. U kunt echter claims toevoegen die niet worden geretourneerd door de Azure MFA-ID-provider zolang u het `DefaultValue` kenmerk hebt ingesteld.
+De Azure MFA-protocol provider retourneert geen **OutputClaims**, dus u hoeft geen uitvoer claims op te geven. U kunt echter claims toevoegen die niet worden geretourneerd door de Azure MFA-ID-provider zolang u het kenmerk hebt ingesteld `DefaultValue` .
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -136,7 +136,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Ja | Moet worden **gecontroleerd** |
+| Bewerking | Yes | Moet worden **gecontroleerd** |
 
 #### <a name="ui-elements"></a>UI-elementen
 
@@ -144,16 +144,16 @@ De volgende meta gegevens kunnen worden gebruikt voor het configureren van de fo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| Nee | Fout bericht van gebruiker als de gebruiker te vaak een verificatie code heeft geprobeerd. |
-| UserMessageIfServerError | Nee | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
-| UserMessageIfThrottled| Nee | Fout bericht van gebruiker als de aanvraag wordt beperkt.|
-| UserMessageIfWrongCodeEntered| Nee| Fout bericht van gebruiker als de code die is ingevoerd voor verificatie, onjuist is.|
+| UserMessageIfMaxAllowedCodeRetryReached| No | Fout bericht van gebruiker als de gebruiker te vaak een verificatie code heeft geprobeerd. |
+| UserMessageIfServerError | No | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
+| UserMessageIfThrottled| No | Fout bericht van gebruiker als de aanvraag wordt beperkt.|
+| UserMessageIfWrongCodeEntered| No| Fout bericht van gebruiker als de code die is ingevoerd voor verificatie, onjuist is.|
 
 ### <a name="example-verify-a-code"></a>Voor beeld: een code verifiëren
 
 In het volgende voor beeld ziet u een technisch Azure MFA-profiel dat wordt gebruikt om de code te controleren.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-VerifySms">
     <DisplayName>Verify Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

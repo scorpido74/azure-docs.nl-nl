@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b5d1f44b35b89607fecf6875b1e56be97f37d0fa
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298870"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203635"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Een Azure API Management-API beveiligen met Azure AD B2C
 
@@ -25,9 +25,9 @@ Meer informatie over het beperken van toegang tot uw Azure API Management-API (A
 
 U hebt de volgende resources nodig om door te gaan met de stappen in dit artikel:
 
-* [Azure AD B2C Tenant](tutorial-create-tenant.md)
-* De [toepassing is geregistreerd](tutorial-register-applications.md) in uw Tenant
-* [Gebruikers stromen die zijn gemaakt](tutorial-create-user-flows.md) in uw Tenant
+* [Azure AD B2C-tenant](tutorial-create-tenant.md)
+* [Toepassing](tutorial-register-applications.md) die is geregistreerd in uw tenant
+* [Gebruikersstromen die zijn gemaakt](tutorial-create-user-flows.md) in uw tenant
 * [Gepubliceerde API](../api-management/import-and-publish.md) in azure API Management
 * [Postman](https://www.getpostman.com/) om beveiligde toegang te testen (optioneel)
 
@@ -35,7 +35,7 @@ U hebt de volgende resources nodig om door te gaan met de stappen in dit artikel
 
 Wanneer u een API in azure API Management met Azure AD B2C beveiligt, hebt u verschillende waarden nodig voor het [inkomende beleid](../api-management/api-management-howto-policies.md) dat u in APIM maakt. Noteer eerst de toepassings-ID van een toepassing die u eerder hebt gemaakt in uw Azure AD B2C-Tenant. Als u de toepassing gebruikt die u in de vereisten hebt gemaakt, gebruikt u de toepassings-ID voor *webbapp1*.
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u gebruikmaken van onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere **toepassingen (** verouderd). [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
+Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuwe uniforme ervaring voor **App-registraties** of de verouderde ervaring **Toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/)
 
@@ -171,7 +171,7 @@ Met het toegangs token en de APIM-abonnements sleutel die u hebt geregistreerd, 
 
 1. Selecteer de knop **verzenden** in het bericht om de aanvraag uit te voeren. Als u alles op de juiste manier hebt geconfigureerd, moet u een JSON-antwoord met een verzameling conferentie luidsprekers weer geven (dit is afgekapt):
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ Nu u een succes volle aanvraag hebt ingediend, test u de fout melding om ervoor 
 
 1. Selecteer de **Verzend** knop om de aanvraag uit te voeren. Met een ongeldig token is het verwachte resultaat een niet- `401` geautoriseerde status code:
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ Als u de `401` status code ziet, hebt u gecontroleerd dat alleen bellers met een
 
 Verschillende toepassingen communiceren doorgaans met één REST API. Als u wilt dat uw API tokens accepteert die bedoeld zijn voor meerdere toepassingen, voegt u hun toepassings-Id's toe aan het- `<audiences>` element in het inkomend APIM-beleid.
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ Verschillende toepassingen communiceren doorgaans met één REST API. Als u wilt
 
 Als u meerdere token verleners wilt ondersteunen, voegt u hun eind punt-Uri's toe aan het- `<issuers>` element in het APIM-beleid voor binnenkomende verbindingen.
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ U kunt dit algemene proces volgen om een gefaseerde migratie uit te voeren:
 
 In het volgende voor beeld APIM inkomend beleid ziet u hoe tokens kunnen worden geaccepteerd die worden uitgegeven door b2clogin.com en login.microsoftonline.com. Daarnaast ondersteunt de IT API-aanvragen van twee toepassingen.
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

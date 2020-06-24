@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277464"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697354"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
 
@@ -98,13 +98,13 @@ public class OutgoingEmail
 }
 ```
 
-U kunt de instelling van de eigenschap `ApiKey` van het kenmerk weglaten als u uw API-sleutel hebt in een app-instelling met de naam ' AzureWebJobsSendGridApiKey '.
+U kunt de instelling van de eigenschap van het kenmerk weglaten `ApiKey` Als u uw API-sleutel hebt in een app-instelling met de naam ' AzureWebJobsSendGridApiKey '.
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding.
+In het volgende voor beeld ziet u een SendGrid-uitvoer binding in eenfunction.jsin een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt *van* de binding.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json 
 {
@@ -159,11 +159,11 @@ public class Message
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
+In het volgende voor beeld ziet u een SendGrid-uitvoer binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json 
 {
@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een door HTTP geactiveerde functie die een e-mail verzendt met behulp van de SendGrid-binding. U kunt standaard waarden opgeven in de binding configuratie. Zo is het e-mail adres *van* e-mail geconfigureerd in *Function. json*. 
+In het volgende voor beeld ziet u een door HTTP geactiveerde functie die een e-mail verzendt met behulp van de SendGrid-binding. U kunt standaard waarden opgeven in de binding configuratie. Zo is het e-mail adres *van* e-mail geconfigureerd in *function.jsop*. 
 
 ```json
 {
@@ -260,7 +260,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld `@SendGridOutput` wordt de aantekening uit de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime) gebruikt om een e-mail te verzenden met de SendGrid-uitvoer binding.
+In het volgende voor beeld wordt de `@SendGridOutput` aantekening uit de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime) gebruikt om een e-mail te verzenden met de SendGrid-uitvoer binding.
 
 ```java
 package com.function;
@@ -336,7 +336,7 @@ Zie C#-voor [beeld](#example)voor een volledig voor beeld.
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -352,18 +352,18 @@ Met de aantekening [SendGridOutput](https://github.com/Azure/azure-functions-jav
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die beschikbaar zijn in `SendGrid` het bestand *Function. json* en het kenmerk/aantekening.
+De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die beschikbaar zijn in de *function.jsin* het bestand en het `SendGrid` kenmerk/aantekening.
 
-| *Function. json* -eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
+| *function.jsbij* eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
-| type |N.v.t.| Moet worden ingesteld op `sendGrid`.| Nee |
-| richting |N.v.t.| Moet worden ingesteld op `out`.| Nee |
-| name |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` wanneer er slechts één retour waarde is. | Nee |
-| apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| Nee |
-| tot| Handeling | Het e-mail adres van de ontvanger. | Ja |
-| from| Van | Het e-mail adres van de afzender. |  Ja |
-| Onderwerp| Onderwerp | Het onderwerp van het e-mail bericht. | Ja |
-| tekst| Tekst | De inhoud van het e-mail bericht. | Ja |
+| type |N.v.t.| Moet worden ingesteld op `sendGrid` .| No |
+| richting |N.v.t.| Moet worden ingesteld op `out` .| No |
+| naam |N.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` wanneer er slechts één retour waarde is. | No |
+| apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| No |
+| tot| Handeling | Het e-mail adres van de ontvanger. | Yes |
+| from| Van | Het e-mail adres van de afzender. |  Yes |
+| Onderwerp| Onderwerp | Het onderwerp van het e-mail bericht. | Yes |
+| tekst| Tekst | De inhoud van het e-mail bericht. | Yes |
 
 Voor optionele eigenschappen zijn mogelijk standaard waarden in de binding gedefinieerd en worden ze programmatisch toegevoegd of genegeerd.
 
@@ -371,12 +371,12 @@ Voor optionele eigenschappen zijn mogelijk standaard waarden in de binding gedef
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>instellingen voor de host. json
+## <a name="hostjson-settings"></a>host.jsop instellingen
 
-In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het voor beeld van een host. JSON-bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en hoger de [verwijzing host. json voor Azure functions](functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het volgende voor beeld host.jsin het onderstaande bestand bevat alleen de instellingen van versie 2. x + voor deze binding. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x en verder [host.jsop referentie voor Azure functions](functions-host-json.md).
 
 > [!NOTE]
-> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Zie [host.jsbij verwijzing voor Azure functions 1. x](functions-host-json-v1.md)voor een referentie van host.jsin in functions 1. x.
 
 ```json
 {

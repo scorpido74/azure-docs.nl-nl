@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: d6d037f3d45216b81d2c5fdcb67ea48b4252a889
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380292"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100993"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Controle logboeken voor Azure Database for MySQL in het Azure Portal configureren en openen
 
@@ -27,6 +27,9 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 - [Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
+
+>[!NOTE]
+> Het is raadzaam om alleen de gebeurtenis typen en gebruikers die vereist zijn voor controle doeleinden te registreren om ervoor te zorgen dat de prestaties van uw server niet sterk worden beïnvloed.
 
 Controle logboek registratie inschakelen en configureren.
 
@@ -53,7 +56,7 @@ Controle logboek registratie inschakelen en configureren.
 
 1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**.
 
-1. Klik op ' + Diagnostische instelling toevoegen ![' Diagnostische instelling toevoegen](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Klik op ' + Diagnostische instelling toevoegen ' ![ Diagnostische instelling toevoegen](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Geef een naam op voor de diagnostische instelling.
 

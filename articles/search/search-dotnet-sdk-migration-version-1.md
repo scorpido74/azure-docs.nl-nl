@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 159aaa8424c3d7a711b587464b80696929f02186
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cecb7b2a669b47bb79b022df786add65f5648f2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72792383"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080969"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Een upgrade uitvoeren naar Azure Search .NET SDK-versie 1,1
 
-Als u versie 1.0.2-Preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 1,1.
+Als u versie 1.0.2-Preview of ouder van de [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 1,1.
 
 Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
 
@@ -26,7 +26,7 @@ Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)
 > Wanneer u een upgrade uitvoert naar versie 1,1, of als u al een versie gebruikt tussen 1,1 en 2,0-Preview, moet u een upgrade uitvoeren naar versie 3. Zie [upgraden naar de Azure Search .NET SDK versie 3](search-dotnet-sdk-migration.md) voor instructies.
 >
 
-Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
+Werk eerst uw NuGet-verwijzing bij voor `Microsoft.Azure.Search` het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
 
 Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op.
 
@@ -51,9 +51,9 @@ Ten slotte kunt u, nadat u een opbouw fout hebt aangebracht, wijzigingen aanbren
 De volgende lijst wordt geordend op basis van de kans dat de wijziging invloed heeft op de code van uw toepassing.
 
 ### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch-en IndexAction-wijzigingen
-`IndexBatch.Create`is hernoemd `IndexBatch.New` en heeft geen `params` argument meer. U kunt gebruiken `IndexBatch.New` voor batches die verschillende soorten acties combi neren (samen voegen, verwijderen, enzovoort). Daarnaast zijn er nieuwe statische methoden voor het maken van batches, waarbij alle acties hetzelfde zijn `Delete`:, `Merge`, `MergeOrUpload`en. `Upload`
+`IndexBatch.Create`is hernoemd `IndexBatch.New` en heeft geen `params` argument meer. U kunt gebruiken `IndexBatch.New` voor batches die verschillende soorten acties combi neren (samen voegen, verwijderen, enzovoort). Daarnaast zijn er nieuwe statische methoden voor het maken van batches, waarbij alle acties hetzelfde zijn: `Delete` , `Merge` , en `MergeOrUpload` `Upload` .
 
-`IndexAction`Er zijn geen open bare constructors meer en de bijbehorende eigenschappen zijn nu onveranderbaar. Gebruik de nieuwe statische methoden voor het maken van acties voor verschillende doel einden `Merge`: `MergeOrUpload` `Delete`,, `Upload`en. `IndexAction.Create`is verwijderd. Als u de overbelasting hebt gebruikt die alleen een document inneemt, `Upload` moet u ervoor zorgen dat u in plaats daarvan gebruikt.
+`IndexAction`Er zijn geen open bare constructors meer en de bijbehorende eigenschappen zijn nu onveranderbaar. Gebruik de nieuwe statische methoden voor het maken van acties voor verschillende doel einden: `Delete` , `Merge` , en `MergeOrUpload` `Upload` . `IndexAction.Create`is verwijderd. Als u de overbelasting hebt gebruikt die alleen een document inneemt, moet u ervoor zorgen dat u `Upload` in plaats daarvan gebruikt.
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -72,7 +72,7 @@ Als u wilt, kunt u deze nog verder vereenvoudigen:
     indexClient.Documents.Index(batch);
 
 ### <a name="indexbatchexception-changes"></a>IndexBatchException wijzigingen
-De `IndexBatchException.IndexResponse` naam van de eigenschap is gewijzigd in `IndexingResults`en het type is nu `IList<IndexingResult>`.
+De `IndexBatchException.IndexResponse` naam van de eigenschap is gewijzigd in `IndexingResults` en het type is nu `IList<IndexingResult>` .
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -148,11 +148,11 @@ In `IndexesOperationsExtensions`:
 Vanaf versie 1,1 worden de bewerkings methoden door de Azure Search .NET SDK anders ingedeeld:
 
 * Optionele para meters worden nu als standaard parameters gemodelleerd in plaats van extra methode Overloads. Dit vermindert het aantal overbelasting van de methode, soms aanzienlijk.
-* De uitbreidings methoden verbergen nu een groot deel van de overbodige details van HTTP van de aanroeper. Oudere versies van de SDK hebben bijvoorbeeld een antwoord object geretourneerd met een HTTP-status code, die u vaak niet hoeft te controleren, omdat bewerkings methoden worden gegenereerd `CloudException` voor een status code die een fout aangeeft. De nieuwe uitbreidings methoden retour neren alleen model objecten, waardoor u geen problemen hoeft op te slaan in uw code.
-* Daarentegen bieden de kern interfaces nu methoden die u meer controle geven over het HTTP-niveau als u dit nodig hebt. U kunt nu aangepaste HTTP-headers door geven die moeten worden opgenomen in-aanvragen en `AzureOperationResponse<T>` het nieuwe retour type geeft u direct toegang `HttpRequestMessage` tot `HttpResponseMessage` de en voor de bewerking. `AzureOperationResponse`is gedefinieerd in de `Microsoft.Rest.Azure` naam ruimte en `Hyak.Common.OperationResponse`wordt vervangen.
+* De uitbreidings methoden verbergen nu een groot deel van de overbodige details van HTTP van de aanroeper. Oudere versies van de SDK hebben bijvoorbeeld een antwoord object geretourneerd met een HTTP-status code, die u vaak niet hoeft te controleren, omdat bewerkings methoden `CloudException` worden gegenereerd voor een status code die een fout aangeeft. De nieuwe uitbreidings methoden retour neren alleen model objecten, waardoor u geen problemen hoeft op te slaan in uw code.
+* Daarentegen bieden de kern interfaces nu methoden die u meer controle geven over het HTTP-niveau als u dit nodig hebt. U kunt nu aangepaste HTTP-headers door geven die moeten worden opgenomen in-aanvragen en het nieuwe `AzureOperationResponse<T>` retour type geeft u direct toegang tot de `HttpRequestMessage` en `HttpResponseMessage` voor de bewerking. `AzureOperationResponse`is gedefinieerd in de `Microsoft.Rest.Azure` naam ruimte en wordt vervangen `Hyak.Common.OperationResponse` .
 
 ### <a name="scoringparameters-changes"></a>ScoringParameters wijzigingen
-Er is een nieuwe `ScoringParameter` klasse met de naam toegevoegd in de nieuwste SDK, zodat het eenvoudiger is om para meters in te stellen voor Score profielen in een zoek query. Voorheen werd `ScoringProfiles` de eigenschap van `SearchParameters` de klasse getypt `IList<string>`als; Nu is deze getypt `IList<ScoringParameter>`als.
+Er is een nieuwe klasse met `ScoringParameter` de naam toegevoegd in de nieuwste SDK, zodat het eenvoudiger is om para meters in te stellen voor Score profielen in een zoek query. Voorheen `ScoringProfiles` werd de eigenschap van de `SearchParameters` klasse getypt als `IList<string>` ; Nu is deze getypt als `IList<ScoringParameter>` .
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -182,7 +182,7 @@ Als gevolg van de wijzigingen in de hand tekening die worden beschreven in de [b
 * De naam van `IndexGetStatisticsResponse` is gewijzigd in `IndexGetStatisticsResult`
 * De naam van `IndexListResponse` is gewijzigd in `IndexListResult`
 
-Als u wilt samenvatten, afgeleide klassen die alleen beschikbaar waren voor het verpakken van een model object, `OperationResponse`zijn verwijderd. Het achtervoegsel van de resterende klassen is gewijzigd van `Response` in `Result`.
+Als u wilt samenvatten, `OperationResponse` afgeleide klassen die alleen beschikbaar waren voor het verpakken van een model object, zijn verwijderd. Het achtervoegsel van de resterende klassen is gewijzigd van `Response` in `Result` .
 
 #### <a name="example"></a>Voorbeeld
 Als uw code er als volgt uitziet:
@@ -218,7 +218,7 @@ U kunt dit wijzigen in dit om eventuele build-fouten op te lossen:
     IndexerExecutionResult lastResult = status.LastResult;
 
 #### <a name="response-classes-and-ienumerable"></a>Antwoord klassen en IEnumerable
-Een extra wijziging die van invloed kan zijn op uw code is dat de antwoord klassen die verzamelingen `IEnumerable<T>`bevatten niet meer worden geïmplementeerd. In plaats daarvan kunt u rechtstreeks toegang krijgen tot de verzamelings eigenschap. Als uw code er bijvoorbeeld als volgt uitziet:
+Een extra wijziging die van invloed kan zijn op uw code is dat de antwoord klassen die verzamelingen bevatten niet meer worden geïmplementeerd `IEnumerable<T>` . In plaats daarvan kunt u rechtstreeks toegang krijgen tot de verzamelings eigenschap. Als uw code er bijvoorbeeld als volgt uitziet:
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -250,7 +250,7 @@ Als u een webtoepassing hebt waarmee u `DocumentSearchResponse` rechtstreeks de 
         };
     }
 
-U kunt dit wijzigen door de eigenschap `.Results` van het Zoek resultaat op te halen om de weer gave van zoek resultaten te herstellen:
+U kunt dit wijzigen door de `.Results` eigenschap van het Zoek resultaat op te halen om de weer gave van zoek resultaten te herstellen:
 
     public ActionResult Search(string q = "")
     {
@@ -265,17 +265,17 @@ U kunt dit wijzigen door de eigenschap `.Results` van het Zoek resultaat op te h
         };
     }
 
-U zult in uw code zelf moeten zoeken naar dergelijke gevallen; **De compiler waarschuwt u niet** als `JsonResult.Data` is van het `object`type.
+U zult in uw code zelf moeten zoeken naar dergelijke gevallen; **De compiler waarschuwt u niet** als `JsonResult.Data` is van het type `object` .
 
 ### <a name="cloudexception-changes"></a>CloudException wijzigingen
-De `CloudException` klasse is verplaatst van de `Hyak.Common` naam ruimte naar `Microsoft.Rest.Azure` de naam ruimte. De naam van `Error` de eigenschap is ook gewijzigd in `Body`.
+De `CloudException` klasse is verplaatst van de `Hyak.Common` naam ruimte naar de `Microsoft.Rest.Azure` naam ruimte. De naam van de `Error` eigenschap is ook gewijzigd in `Body` .
 
 ### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient-en SearchIndexClient-wijzigingen
-Het type van de `Credentials` eigenschap is gewijzigd van `SearchCredentials` in de basis klasse, `ServiceClientCredentials`. Als u toegang nodig hebt tot `SearchCredentials` de van `SearchIndexClient` een `SearchServiceClient`of, gebruikt u de `SearchCredentials` nieuwe eigenschap.
+Het type van de `Credentials` eigenschap is gewijzigd van `SearchCredentials` in de basis klasse, `ServiceClientCredentials` . Als u toegang nodig hebt tot de `SearchCredentials` van een `SearchIndexClient` of `SearchServiceClient` , gebruikt u de nieuwe `SearchCredentials` eigenschap.
 
 In oudere versies van de SDK `SearchServiceClient` `SearchIndexClient` heeft constructors die een `HttpClient` para meter hebben gevolgd. Deze zijn vervangen door constructors die een `HttpClientHandler` en een reeks `DelegatingHandler` objecten aannemen. Dit maakt het gemakkelijker om aangepaste handlers te installeren en zo nodig HTTP-aanvragen vooraf te verwerken.
 
-Ten slotte zijn de constructors die zijn `Uri` geduurde en `SearchCredentials` gewijzigd. Als u bijvoorbeeld code hebt die er ongeveer als volgt uitziet:
+Ten slotte zijn de constructors die zijn geduurde `Uri` en `SearchCredentials` gewijzigd. Als u bijvoorbeeld code hebt die er ongeveer als volgt uitziet:
 
     var client =
         new SearchServiceClient(
@@ -289,10 +289,10 @@ U kunt dit wijzigen in dit om eventuele build-fouten op te lossen:
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-Houd er ook rekening mee dat het type van de para meter `ServiceClientCredentials`referenties is gewijzigd in. Dit is waarschijnlijk niet van invloed op uw `SearchCredentials` code, omdat `ServiceClientCredentials`deze is afgeleid van.
+Houd er ook rekening mee dat het type van de para meter referenties is gewijzigd in `ServiceClientCredentials` . Dit is waarschijnlijk niet van invloed op uw code, omdat deze `SearchCredentials` is afgeleid van `ServiceClientCredentials` .
 
 ### <a name="passing-a-request-id"></a>Een aanvraag-ID door geven
-In oudere versies van de SDK kunt u een aanvraag-ID instellen op de `SearchServiceClient` of `SearchIndexClient` en deze opnemen in elke aanvraag voor de rest API. Dit is handig voor het oplossen van problemen met de zoek service als u contact moet opnemen met de ondersteuning. Het is echter handiger om voor elke bewerking een unieke aanvraag-ID in te stellen, in plaats van dezelfde ID voor alle bewerkingen te gebruiken. Daarom zijn de `SetClientRequestId` methoden van `SearchServiceClient` en `SearchIndexClient` verwijderd. In plaats daarvan kunt u een aanvraag-ID door geven aan elke bewerkings methode via de optionele `SearchRequestOptions` para meter.
+In oudere versies van de SDK kunt u een aanvraag-ID instellen op de `SearchServiceClient` of `SearchIndexClient` en deze opnemen in elke aanvraag voor de rest API. Dit is handig voor het oplossen van problemen met de zoek service als u contact moet opnemen met de ondersteuning. Het is echter handiger om voor elke bewerking een unieke aanvraag-ID in te stellen, in plaats van dezelfde ID voor alle bewerkingen te gebruiken. Daarom `SetClientRequestId` zijn de methoden van `SearchServiceClient` en `SearchIndexClient` verwijderd. In plaats daarvan kunt u een aanvraag-ID door geven aan elke bewerkings methode via de optionele `SearchRequestOptions` para meter.
 
 > [!NOTE]
 > In een toekomstige release van de SDK voegen we een nieuw mechanisme toe voor het instellen van een aanvraag-ID globaal op de client objecten die consistent zijn met de benadering die wordt gebruikt door andere Azure-Sdk's.
@@ -313,10 +313,10 @@ U kunt dit wijzigen in dit om eventuele build-fouten op te lossen:
 ### <a name="interface-name-changes"></a>Wijzigingen in de interface naam
 De interface namen van de bewerkings groep zijn allemaal gewijzigd zodat deze consistent zijn met de bijbehorende eigenschaps namen:
 
-* De naam van `ISearchServiceClient.Indexes` het type van is gewijzigd van `IIndexOperations` in `IIndexesOperations`.
-* De naam van `ISearchServiceClient.Indexers` het type van is gewijzigd van `IIndexerOperations` in `IIndexersOperations`.
-* De naam van `ISearchServiceClient.DataSources` het type van is gewijzigd van `IDataSourceOperations` in `IDataSourcesOperations`.
-* De naam van `ISearchIndexClient.Documents` het type van is gewijzigd van `IDocumentOperations` in `IDocumentsOperations`.
+* De naam van het type van `ISearchServiceClient.Indexes` is gewijzigd van `IIndexOperations` in `IIndexesOperations` .
+* De naam van het type van `ISearchServiceClient.Indexers` is gewijzigd van `IIndexerOperations` in `IIndexersOperations` .
+* De naam van het type van `ISearchServiceClient.DataSources` is gewijzigd van `IDataSourceOperations` in `IDataSourcesOperations` .
+* De naam van het type van `ISearchIndexClient.Documents` is gewijzigd van `IDocumentOperations` in `IDocumentsOperations` .
 
 Deze wijziging is waarschijnlijk niet van invloed op uw code, tenzij u de modellen van deze interfaces hebt gemaakt voor test doeleinden.
 
@@ -326,9 +326,9 @@ Deze wijziging is waarschijnlijk niet van invloed op uw code, tenzij u de modell
 Er is een fout opgetreden in oudere versies van de Azure Search .NET SDK met betrekking tot serialisatie van aangepaste model klassen. De bug kan optreden als u een aangepaste model klasse hebt gemaakt met een eigenschap van een Waardetype waarvoor null niet is toegestaan.
 
 ### <a name="steps-to-reproduce"></a>Stappen om te reproduceren
-Maak een aangepaste model klasse met een eigenschap van het waardetype waarvoor geen null-waarde is toegestaan. U kunt bijvoorbeeld een open bare `UnitCount` eigenschap van het `int` type toevoegen `int?`in plaats van.
+Maak een aangepaste model klasse met een eigenschap van het waardetype waarvoor geen null-waarde is toegestaan. U kunt bijvoorbeeld een open bare `UnitCount` eigenschap van het type toevoegen `int` in plaats van `int?` .
 
-Als u een document indexeert met de standaard waarde van dat type (bijvoorbeeld 0 voor `int`), is het veld null in azure Search. Als u het document vervolgens zoekt, wordt er `Search` met de oproep `JsonSerializationException` geklagen dat er niet kan `null` worden `int`geconverteerd naar.
+Als u een document indexeert met de standaard waarde van dat type (bijvoorbeeld 0 voor `int` ), is het veld null in azure Search. Als u het document vervolgens zoekt, wordt er met de `Search` oproep `JsonSerializationException` geklagen dat er niet kan `null` worden geconverteerd naar `int` .
 
 Filters werken mogelijk niet zoals verwacht, omdat null is geschreven naar de index in plaats van de gewenste waarde.
 

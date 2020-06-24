@@ -5,17 +5,17 @@ description: Een trainings experiment converteren naar een voorspellend experime
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e1efa4fa3a222a11c35f642f68310109c4f32712
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118528"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696385"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Een Azure Machine Learning Studio-webservice (klassiek) implementeren
 
@@ -210,7 +210,7 @@ Prijzen zijn specifiek voor regio's. u moet dus een facturerings plan definiëre
 6. Selecteer een resource groep voor het plan uit de vervolg keuzelijst **resource groep** . Zie [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md)(Engelstalig) voor meer informatie over resource groepen.
 7. Typ in **naam van plan** de naam van het plan.
 8. Klik onder **Opties plannen**op het facturerings niveau voor het nieuwe abonnement.
-9. Klik op **Maken**.
+9. Klik op **Create**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>De webservice implementeren in een andere regio
 

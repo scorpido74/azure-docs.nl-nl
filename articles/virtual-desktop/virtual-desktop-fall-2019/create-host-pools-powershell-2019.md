@@ -4,27 +4,27 @@ description: Een hostgroep in Windows Virtual Desktop maken met Power shell-cmdl
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1d312417017676d0b0bc53e3e16e229e45f1aa17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 79bd13deb66998c8a1acde28774b47fd567d368c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659429"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204707"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](../create-host-pools-powershell.md)als u probeert Azure Resource Manager virtuele Windows-bureaublad objecten te beheren die zijn geïntroduceerd in de lente 2020-update.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../create-host-pools-powershell.md) als u probeert Azure Resource Manager Windows Virtual Desktop-objecten te beheren die zijn geïntroduceerd tijdens de update uit het voorjaar van 2020.
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows-Tenant omgevingen voor virtueel bureau blad. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureau blad.
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-tenantomgevingen. Elke hostgroep kan een app-groep bevatten waarmee gebruikers kunnen communiceren, op dezelfde manier als op een fysiek bureaublad.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>De Power shell-client gebruiken voor het maken van een hostgroep
 
-[Down load en Importeer eerst de Windows Virtual Desktop Power shell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw Power shell-sessie als u dat nog niet hebt gedaan.
+Eerst [downloadt en importeert u de Windows Virtual Desktop PowerShell-module](/powershell/windows-virtual-desktop/overview/) voor gebruik in uw PowerShell-sessie als u dat nog niet hebt gedaan.
 
 Voer de volgende cmdlet uit om u aan te melden bij de virtuele Windows-bureaublad omgeving
 
@@ -71,7 +71,7 @@ U kunt op verschillende manieren een virtuele machine maken:
 >[!NOTE]
 >Als u een virtuele machine implementeert met Windows 7 als besturings systeem van de host, is het proces voor maken en implementeren iets anders. Zie [een virtuele Windows 7-machine implementeren op het virtuele bureau blad van Windows](deploy-windows-7-virtual-machine.md)voor meer informatie.
 
-Nadat u de virtuele machines van de sessiehost hebt gemaakt, [past u een Windows-licentie toe op een host-VM](../apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) om uw Windows-of Windows Server-machines uit te voeren zonder dat u voor een andere licentie betaalt. 
+Nadat u de virtuele machines van de sessiehost hebt gemaakt, [past u een Windows-licentie toe op een host-VM](../apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) om uw Windows-of Windows Server-machines uit te voeren zonder dat u voor een andere licentie betaalt.
 
 ## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>De virtuele machines voorbereiden voor installaties van Virtual Desktop agent voor Windows
 
@@ -115,4 +115,4 @@ Ga als volgt te werk op elke virtuele machine om de virtuele bureau blad-agents 
 Nu u een hostgroep hebt gemaakt, kunt u deze vullen met RemoteApps. Zie de zelf studie app-groepen beheren voor meer informatie over het beheren van apps in Windows virtueel bureau blad.
 
 > [!div class="nextstepaction"]
-> [Zelf studie app-groepen beheren](../manage-app-groups.md)
+> [Zelfstudie: App-groepen beheren](../manage-app-groups.md)

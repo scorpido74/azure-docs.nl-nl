@@ -2,22 +2,22 @@
 title: Meer informatie over Azure AD-toepassingsproxy-connectors | Microsoft Docs
 description: Behandelt de basis beginselen van Azure AD-toepassingsproxy-connectors.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116615"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764669"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD-toepassingsproxy-connectors begrijpen
 
@@ -69,7 +69,7 @@ Azure AD biedt automatische updates voor alle connectors die u implementeert. Zo
 
 Als u niet wilt wachten totdat een automatische update naar uw connector komt, kunt u een hand matige upgrade uitvoeren. Ga naar de [Download pagina](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) voor de connector op de server waarop de connector zich bevindt en selecteer **downloaden**. Dit proces start een upgrade voor de lokale connector.
 
-Voor tenants met meerdere connectors bedoelt de automatische updates één connector per keer in elke groep om uitval tijd in uw omgeving te voor komen.
+Voor tenants met meerdere connectors, worden de automatische updates per één connector in elke groep uitgevoerd om uitvaltijd in uw omgeving te voorkomen.
 
 U kunt uitval tijd ondervinden wanneer de connector wordt bijgewerkt als:
   

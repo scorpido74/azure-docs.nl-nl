@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b6b5e43ed0baed8cd84078809c5eb0fe146b0ecb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 2fcf3b4c91e87453e2cf605eb717b75ed7d64d95
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636288"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105920"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboek gegevens en-werk ruimten in Azure Monitor beheren
 
@@ -20,8 +20,10 @@ Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een
 In dit artikel wordt uitgelegd hoe u de toegang tot logboeken beheert en hoe u de werk ruimten die deze bevat, kunt beheren, met inbegrip van het verlenen van toegang tot: 
 
 * De werk ruimte met werkruimte machtigingen.
-* Gebruikers die toegang nodig hebben tot logboek gegevens van specifieke bronnen met behulp van Azure op rollen gebaseerd toegangs beheer (RBAC).
+* Gebruikers die toegang nodig hebben tot logboek gegevens van specifieke bronnen met behulp van Azure op rollen gebaseerd toegangs beheer (RBAC), ook wel bekend als [resource-context](design-logs-deployment.md#access-mode)
 * Gebruikers die toegang nodig hebben tot logboek gegevens in een specifieke tabel in de werk ruimte met behulp van Azure RBAC.
+
+Lees de [implementatie van uw Azure monitor-logboeken](design-logs-deployment.md) voor meer informatie over de concepten van de logboeken met RBAC en toegangs strategieën.
 
 ## <a name="configure-access-control-mode"></a>Toegangs beheer modus configureren
 
@@ -104,7 +106,7 @@ Aan elke werk ruimte kunnen meerdere accounts worden gekoppeld en elk account ka
 
 Voor de volgende activiteiten zijn ook Azure-machtigingen vereist:
 
-|Bewerking |Azure-machtigingen nodig |Opmerkingen |
+|Bewerking |Azure-machtigingen nodig |Notities |
 |-------|-------------------------|------|
 | Bewakings oplossingen toevoegen en verwijderen | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Deze machtigingen moeten worden toegekend op het niveau van de resourcegroep of het abonnement. |
 | De prijscategorie wijzigen | `Microsoft.OperationalInsights/workspaces/*/write` | |

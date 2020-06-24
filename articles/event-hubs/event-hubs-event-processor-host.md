@@ -3,23 +3,19 @@ title: Gebeurtenissen ontvangen met Event processor host-Azure Event Hubs | Micr
 description: In dit artikel wordt de Event processor host in azure Event Hubs beschreven, waarmee u het beheer van controle punten, leasing en het lezen van gebeurtenissen met een parallelle activiteit vereenvoudigt.
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/10/2020
-ms.author: shvija
-ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: f3d6a5e77c3c1c5e8b8dceb44e5bcbe9cb5f93ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372233"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299293"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
@@ -104,15 +100,15 @@ Tot slot registreren consumenten het [EventProcessorHost](/dotnet/api/microsoft.
 
 Stel dat er vijf virtuele machines (Vm's) zijn toegewezen voor het gebruiken van gebeurtenissen en een eenvoudige console toepassing in elke VM, wat het werkelijke verbruiks werk doet. Elke console toepassing maakt vervolgens één [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) -exemplaar en registreert het met de Event hubs-service.
 
-In dit voorbeeld scenario gaan we ervan uit dat 16 partities worden toegewezen aan de 5 **EventProcessorHost** -instanties. Sommige **EventProcessorHost** -instanties hebben mogelijk een aantal meer partities dan andere. Voor elke partitie waarvan een **EventProcessorHost** -exemplaar eigenaar is, wordt een exemplaar van `SimpleEventProcessor` de klasse gemaakt. Daarom zijn er 16 exemplaren van `SimpleEventProcessor` algemeen, met één toegewezen aan elke partitie.
+In dit voorbeeld scenario gaan we ervan uit dat 16 partities worden toegewezen aan de 5 **EventProcessorHost** -instanties. Sommige **EventProcessorHost** -instanties hebben mogelijk een aantal meer partities dan andere. Voor elke partitie waarvan een **EventProcessorHost** -exemplaar eigenaar is, wordt een exemplaar van de `SimpleEventProcessor` klasse gemaakt. Daarom zijn er 16 exemplaren van `SimpleEventProcessor` Algemeen, met één toegewezen aan elke partitie.
 
 De volgende lijst bevat een overzicht van dit voor beeld:
 
 - 16 Event Hubs partities.
-- 5 Vm's, 1 consument-app (bijvoorbeeld consument. exe) in elke VM.
-- 5 EPH exemplaren geregistreerd, 1 per VM door consumer. exe.
+- 5 Vm's, 1 consumenten-app (bijvoorbeeld Consumer.exe) in elke VM.
+- 5 EPH exemplaren geregistreerd, 1 in elke VM door Consumer.exe.
 - 16 `SimpleEventProcessor` objecten gemaakt door de 5 EPH-instanties.
-- 1 Consumer. exe-app kan `SimpleEventProcessor` vier objecten bevatten, omdat het 1 EPH-exemplaar een eigenaar van vier partities kan zijn.
+- 1 Consumer.exe-app kan vier `SimpleEventProcessor` objecten bevatten, omdat het 1 EPH-exemplaar een eigenaar van vier partities kan zijn.
 
 ## <a name="partition-ownership-tracking"></a>Het bijhouden van de eigendom van partities
 
@@ -120,12 +116,12 @@ Het eigendom van een partitie aan een EPH-exemplaar (of een consumer) wordt gevo
 
 | **Naam van consumentengroep** | **Partitie-id** | **Hostnaam (eigenaar)** | **Verwervings tijd (of eigendom) van de lease** | **Offset in partitie (controle punt)** |
 | --- | --- | --- | --- | --- |
-| $Default | 0 | Consumenten\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 1 | Consumenten\_VM4 | 2018-04-15T01:22:13 | 734 |
-| $Default | 2 | Consumenten\_VM0 | 2018-04-15T01:22:56 | 122 |
+| $Default | 0 | Consumenten \_ VM3 | 2018-04-15T01:23:45 | 156 |
+| $Default | 1 | Consumenten \_ VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 2 | Consumenten \_ VM0 | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
-| $Default | 15 | Consumenten\_VM3 | 2018-04-15T01:22:56 | 976 |
+| $Default | 15 | Consumenten \_ VM3 | 2018-04-15T01:22:56 | 976 |
 
 Hier verkrijgt elke host eigenaar van een partitie voor een bepaalde duur (de duur van de lease). Als een host uitvalt (VM wordt afgesloten), verloopt de lease. Andere hosts proberen het eigendom van de partitie te verkrijgen en een van de hosts slaagt. Met dit proces wordt de lease op de partitie opnieuw ingesteld met een nieuwe eigenaar. Op deze manier kan slechts één lezer tegelijk lezen van elke partitie binnen een Consumer groep.
 
@@ -206,8 +202,8 @@ Nu u bekend bent met de Event processor host, raadpleegt u de volgende artikelen
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-node-send-v2.md)
 * [Programmeer handleiding voor Event Hubs](event-hubs-programming-guide.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
-* [Voor beelden Event Hubs op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+* [Event Hubs-voorbeelden op Github](https://github.com/Azure/azure-event-hubs/tree/master/samples)

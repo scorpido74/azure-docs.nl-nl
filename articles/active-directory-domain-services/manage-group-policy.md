@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 742d716ecdfff6ab67dedc281aa6134020f57add
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e48c9ae3ff9697faa6c652794df78deb52e94a73
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655037"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734653"
 ---
-# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>groepsbeleid beheren in een Azure AD Domain Services beheerd domein
+# <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>groepsbeleid beheren in een Azure Active Directory Domain Services beheerd domein
 
 Instellingen voor gebruikers-en computer objecten in Azure Active Directory Domain Services (Azure AD DS) worden vaak beheerd met behulp van groepsbeleid-objecten (Gpo's). Azure AD DS bevat ingebouwde Gpo's voor de containers *AADDC gebruikers* en *AADDC-computers* . U kunt deze ingebouwde Gpo's aanpassen om groepsbeleid te configureren die nodig zijn voor uw omgeving. Leden van de groep *Azure AD DC-Administrators* hebben Groepsbeleid beheerders bevoegdheden in het Azure AD DS-domein, en kunnen ook aangepaste gpo's en organisatie-eenheden (ou's) maken. Zie [Groepsbeleid Overview][group-policy-overview]voor meer informatie over wat Groepsbeleid is en hoe het werkt.
 
@@ -36,17 +36,17 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een Windows Server-VM en voegt u deze toe aan een beheerd domein][create-join-windows-vm].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
 > [!NOTE]
-> U kunt groepsbeleid Beheersjablonen gebruiken door de nieuwe sjablonen te kopiëren naar het beheer werkstation. Kopieer de *ADMX* -bestanden naar `%SYSTEMROOT%\PolicyDefinitions` en kopieer de taalspecifieke *. ADML* -bestanden naar `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, waarbij `Language-CountryRegion` overeenkomt met de taal en regio van de *. ADML* -bestanden.
+> U kunt groepsbeleid Beheersjablonen gebruiken door de nieuwe sjablonen te kopiëren naar het beheer werkstation. Kopieer de *ADMX* -bestanden naar `%SYSTEMROOT%\PolicyDefinitions` en kopieer de taalspecifieke *. ADML* -bestanden naar `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]` , waarbij `Language-CountryRegion` overeenkomt met de taal en regio van de *. ADML* -bestanden.
 >
 > Kopieer bijvoorbeeld de Engelse Verenigde Staten versie van de *. ADML* -bestanden naar de `\en-us` map.
 >
-> U kunt uw groepsbeleid beheer sjabloon ook centraal opslaan op de domein controllers die deel uitmaken van het door Azure AD DS beheerde domein. Zie [het centraal archief maken en beheren voor groepsbeleid Beheersjablonen in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)voor meer informatie.
+> U kunt uw groepsbeleid beheer sjabloon ook centraal opslaan op de domein controllers die deel uitmaken van het beheerde domein. Zie [het centraal archief maken en beheren voor groepsbeleid Beheersjablonen in Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)voor meer informatie.
 
 ## <a name="install-group-policy-management-tools"></a>groepsbeleid-beheer hulpprogramma's installeren
 
@@ -68,17 +68,17 @@ Als u groepsbeleid object (Gpo's) wilt maken en configureren, moet u de groepsbe
 
 ## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Het console Groepsbeleidbeheer openen en een object bewerken
 
-Standaard groeps beleidsobjecten (Gpo's) bestaan voor gebruikers en computers in een door Azure AD DS beheerd domein. Met de functie voor groepsbeleid beheer die in de vorige sectie is geïnstalleerd, bekijken en bewerken we een bestaand groeps beleidsobject. In de volgende sectie maakt u een aangepast groeps beleidsobject.
+Standaard groeps beleidsobjecten (Gpo's) bestaan voor gebruikers en computers in een beheerd domein. Met de functie voor groepsbeleid beheer die in de vorige sectie is geïnstalleerd, bekijken en bewerken we een bestaand groeps beleidsobject. In de volgende sectie maakt u een aangepast groeps beleidsobject.
 
 > [!NOTE]
-> Als u groeps beleid wilt beheren in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
+> Als u groeps beleid in een beheerd domein wilt beheren, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
 
 1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven, met inbegrip van **Groepsbeleid-beheer** dat in de vorige sectie is geïnstalleerd.
 1. Als u de console Groepsbeleidbeheer (GPMC) wilt openen, kiest u **Groepsbeleid beheer**.
 
     ![De console Groepsbeleidbeheer wordt gereed voor het bewerken van groeps beleidsobjecten](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een door Azure AD DS beheerd domein, een voor de container *AADDC computers* en één voor de container *gebruikers van AADDC* . U kunt deze groeps beleidsobjecten zo instellen dat groeps beleid zo nodig wordt geconfigureerd in uw Azure AD DS beheerde domein.
+Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een beheerd domein: een voor de container *AADDC computers* en één voor de container gebruikers van *AADDC* . U kunt deze groeps beleidsobjecten aanpassen om groeps beleid te configureren als nodig in uw beheerde domein.
 
 1. Vouw in de **Groepsbeleid-beheer** console het knoop punt **forest: aaddscontoso.com** uit. Vouw vervolgens de knoop punten **domeinen** uit.
 
@@ -86,7 +86,7 @@ Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een door Azure AD DS be
 
     ![Ingebouwde Gpo's die zijn toegepast op de standaard containers AADDC computers en AADDC gebruikers](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Deze ingebouwde groeps beleidsobjecten kunnen worden aangepast voor het configureren van specifieke groeps beleidsregels op uw door Azure AD DS beheerd domein. Klik met de rechter muisknop op een van de groeps beleidsobjecten, zoals *AADDC computers*, en kies vervolgens **bewerken...**.
+1. Deze ingebouwde groeps beleidsobjecten kunnen worden aangepast voor het configureren van specifieke groeps beleidsregels voor uw beheerde domein. Klik met de rechter muisknop op een van de groeps beleidsobjecten, zoals *AADDC computers*, en kies vervolgens **bewerken...**.
 
     ![Kies de optie voor het bewerken van een van de ingebouwde Gpo's](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
@@ -98,7 +98,7 @@ Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een door Azure AD DS be
 
 ## <a name="create-a-custom-group-policy-object"></a>Een aangepast groepsbeleid-object maken
 
-Als u gelijksoortige beleids instellingen wilt groeperen, maakt u vaak extra groeps beleidsobjecten in plaats van alle vereiste instellingen toe te passen in de enkelvoudige standaard groeps beleidsobject. Met Azure AD DS kunt u uw eigen aangepaste groeps beleidsobjecten maken of importeren en deze koppelen aan een aangepaste organisatie-eenheid. Als u eerst een aangepaste OE wilt maken, raadpleegt u [een aangepaste organisatie-eenheid maken in een door Azure AD DS beheerd domein](create-ou.md).
+Als u gelijksoortige beleids instellingen wilt groeperen, maakt u vaak extra groeps beleidsobjecten in plaats van alle vereiste instellingen toe te passen in de enkelvoudige standaard groeps beleidsobject. Met Azure AD DS kunt u uw eigen aangepaste groeps beleidsobjecten maken of importeren en deze koppelen aan een aangepaste organisatie-eenheid. Als u eerst een aangepaste OE wilt maken, raadpleegt u [een aangepaste organisatie-eenheid maken in een beheerd domein](create-ou.md).
 
 1. Selecteer in de **Groepsbeleid-beheer** console uw aangepaste organisatie-eenheid (OE), bijvoorbeeld *MyCustomOU*. Klik met de rechter muisknop op de OE en kies **een groeps beleidsobject in dit domein maken en hier een koppeling aanbrengen...**:
 

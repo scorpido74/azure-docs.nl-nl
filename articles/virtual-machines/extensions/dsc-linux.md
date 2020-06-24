@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250619"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698509"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
@@ -85,14 +85,14 @@ Hier vindt u alle ondersteunde beveiligings configuratie parameters:
 ## <a name="scenarios"></a>Scenario's
 
 ### <a name="register-an-azure-automation-account"></a>Een Azure Automation-account registreren
-beveiligd. json
+protected.jsop
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-openbaar. json
+public.jsop
 ```json
 {
   "ExtensionAction" : "Register",
@@ -121,7 +121,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Een MOF-configuratie bestand (in een Azure-opslag account) Toep assen op de VM
 
-beveiligd. json
+protected.jsop
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -129,7 +129,7 @@ beveiligd. json
 }
 ```
 
-openbaar. json
+public.jsop
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -153,7 +153,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Een MOF-configuratie bestand (in open bare opslag) Toep assen op de VM
 
-openbaar. json
+public.jsop
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -169,7 +169,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Een meta MOF-configuratie bestand (in een Azure-opslag account) Toep assen op de VM
 
-beveiligd. json
+protected.jsop
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -177,7 +177,7 @@ beveiligd. json
 }
 ```
 
-openbaar. json
+public.jsop
 ```json
 {
   "ExtensionAction": "Pull",
@@ -199,7 +199,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Een meta MOF-configuratie bestand (in open bare opslag) Toep assen op de VM
-openbaar. json
+public.jsop
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -215,14 +215,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Een aangepaste resource module (een zip-bestand in een Azure Storage-account) installeren op de VM
-beveiligd. json
+protected.jsop
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-openbaar. json
+public.jsop
 ```json
 {
   "ExtensionAction": "Install",
@@ -244,7 +244,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Een aangepaste resource module (een zip-bestand in de open bare opslag) installeren op de VM
-openbaar. json
+public.jsop
 ```json
 {
   "ExtensionAction": "Install",
@@ -260,7 +260,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Een aangepaste resource module verwijderen van de VM
-openbaar. json
+public.jsop
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -287,7 +287,7 @@ Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/te
 ## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
 
 ### <a name="use-azure-cliazure-cli"></a>[Azure CLI] [Azure-cli] gebruiken
-Voordat u de DSCForLinux-extensie implementeert, `public.json` moet `protected.json` u uw en volgens de verschillende scenario's in sectie 3 configureren.
+Voordat u de DSCForLinux-extensie implementeert, moet u uw `public.json` en `protected.json` volgens de verschillende scenario's in sectie 3 configureren.
 
 #### <a name="classic"></a>Klassiek
 

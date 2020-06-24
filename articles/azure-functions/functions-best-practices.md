@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277776"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697687"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>De prestaties en betrouwbaarheid van Azure Functions verbeteren
 
@@ -24,7 +24,7 @@ Hieronder vindt u de aanbevolen procedures voor het bouwen en ontwerpen van uw s
 
 Grote, langlopende functies kunnen onverwachte time-outproblemen veroorzaken. Zie de time-outperiode van de [functie-app](functions-scale.md#timeout)voor meer informatie over de time-outs voor een bepaald hosting plan. 
 
-Een functie kan groot worden vanwege veel node. js-afhankelijkheden. Het importeren van afhankelijkheden kan ook leiden tot grotere laad tijden die leiden tot onverwachte time-outs. Afhankelijkheden worden zowel expliciet als impliciet geladen. Eén module die door uw code is geladen, kan zijn eigen extra modules laden. 
+Een functie kan groot worden vanwege veel Node.js afhankelijkheden. Het importeren van afhankelijkheden kan ook leiden tot grotere laad tijden die leiden tot onverwachte time-outs. Afhankelijkheden worden zowel expliciet als impliciet geladen. Eén module die door uw code is geladen, kan zijn eigen extra modules laden. 
 
 Als dat mogelijk is, kunnen er in kleinere functie sets grote functies worden gebruikt die samen werken en snel antwoorden retour neren. Zo kan een webhook of HTTP-activerings functie een bevestigings antwoord vereisen binnen een bepaalde tijds limiet; het is gebruikelijk dat webhooks een onmiddellijke reactie vereisen. U kunt de nettolading van de HTTP-trigger door geven aan een wachtrij die moet worden verwerkt door een functie voor wachtrij activering. Met deze benadering kunt u de werkelijke hoeveelheid werk uitstellen en een onmiddellijke reactie retour neren.
 
@@ -44,7 +44,7 @@ Event hubs zijn handig voor het ondersteunen van de communicatie van grote volum
 
 ### <a name="write-functions-to-be-stateless"></a>Schrijf functies die stateless zijn 
 
-Functies moeten stateless en idempotent, indien mogelijk, zijn. Koppel de vereiste status informatie aan uw gegevens. Een order die wordt verwerkt, zou waarschijnlijk een gekoppeld `state` lid hebben. Een functie kan een volg orde op basis van die status verwerken terwijl de functie zelf staat. 
+Functies moeten stateless en idempotent, indien mogelijk, zijn. Koppel de vereiste status informatie aan uw gegevens. Een order die wordt verwerkt, zou waarschijnlijk een gekoppeld lid hebben `state` . Een functie kan een volg orde op basis van die status verwerken terwijl de functie zelf staat. 
 
 Idempotent-functies worden met name aanbevolen met timer-triggers. Als u bijvoorbeeld iets hebt dat absoluut eenmaal per dag moet worden uitgevoerd, schrijft u dit zodat het op elk gewenst moment kan worden uitgevoerd op dezelfde dag met dezelfde resultaten. De functie kan worden afgesloten als er geen werk voor een bepaalde dag is. Ook als een vorige uitvoering niet kon worden voltooid, moet de volgende uitvoering worden opgehaald waar deze is gebleven.
 
@@ -92,7 +92,7 @@ Gebruik geen uitgebreide logboek registratie in productie code, die een negatiev
 
 Asynchrone programmering is een aanbevolen best practice, met name bij het blok keren van I/O-bewerkingen.
 
-In C# vermijdt u altijd het verwijzen `Result` naar de eigenschap `Wait` of aanroep methode `Task` voor een exemplaar. Deze benadering kan leiden tot uitputting van de thread.
+In C# vermijdt u altijd het verwijzen naar de `Result` eigenschap of aanroep `Wait` methode voor een `Task` exemplaar. Deze benadering kan leiden tot uitputting van de thread.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -104,17 +104,17 @@ De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies ma
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Indien mogelijk berichten in batch ontvangen
 
-Sommige triggers, zoals Event hub, kunnen een batch berichten ontvangen met één aanroep.  Batch berichten hebben veel betere prestaties.  U kunt de maximale Batch grootte in het `host.json` bestand configureren zoals beschreven in de [host. json-referentie documentatie](functions-host-json.md)
+Sommige triggers, zoals Event hub, kunnen een batch berichten ontvangen met één aanroep.  Batch berichten hebben veel betere prestaties.  U kunt de maximale Batch grootte in het `host.json` bestand configureren, zoals wordt beschreven in de [host.jsop referentie documentatie](functions-host-json.md)
 
-Voor C#-functies kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van de hand `EventData sensorEvent` tekening van de methode kan `EventData[] sensorEvent`bijvoorbeeld niet worden gebruikt.  Voor andere talen moet u de eigenschap kardinaliteit expliciet instellen in uw `function.json` to om `many` batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+Voor C#-functies kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van `EventData sensorEvent` de hand tekening van de methode kan bijvoorbeeld niet worden gebruikt `EventData[] sensorEvent` .  Voor andere talen moet u de eigenschap kardinaliteit expliciet instellen in uw `function.json` to om `many` batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Gedrag van hosts configureren voor betere verwerking van gelijktijdigheid
 
-Met `host.json` het bestand in de functie-app kunt u de runtime van de host en trigger gedrag configureren.  Naast het uitvoeren van batch verwerking, kunt u gelijktijdigheid voor een aantal triggers beheren. Het aanpassen van de waarden in deze opties kan er vaak toe leiden dat elke instantie op de juiste wijze wordt geschaald voor de vereisten van de aangeroepen functies.
+Met het `host.json` bestand in de functie-app kunt u de runtime van de host en trigger gedrag configureren.  Naast het uitvoeren van batch verwerking, kunt u gelijktijdigheid voor een aantal triggers beheren. Het aanpassen van de waarden in deze opties kan er vaak toe leiden dat elke instantie op de juiste wijze wordt geschaald voor de vereisten van de aangeroepen functies.
 
-Instellingen in het bestand host. json zijn van toepassing op alle functies in de app, binnen *één exemplaar* van de functie. Als u bijvoorbeeld een functie-app met twee HTTP-functies en [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) -aanvragen hebt ingesteld op 25, telt een aanvraag voor een http-trigger naar de gedeelde 25 gelijktijdige aanvragen.  Wanneer deze functie-app wordt geschaald naar 10 instanties, staan de twee functies het effectief toestaan van 250 gelijktijdige aanvragen (10 exemplaren * 25 gelijktijdige aanvragen per instantie). 
+De instellingen in de host.jsvoor het bestand zijn van toepassing op alle functies in de app, binnen *één exemplaar* van de functie. Als u bijvoorbeeld een functie-app met twee HTTP-functies en- [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) aanvragen hebt ingesteld op 25, telt een aanvraag voor een HTTP-trigger naar de gedeelde 25 gelijktijdige aanvragen.  Wanneer deze functie-app wordt geschaald naar 10 instanties, staan de twee functies het effectief toestaan van 250 gelijktijdige aanvragen (10 exemplaren * 25 gelijktijdige aanvragen per instantie). 
 
-Andere configuratie opties voor de host vindt u in het [artikel host. json-configuratie](functions-host-json.md).
+Andere configuratie opties voor de host vindt u in het [artikelhost.jsop configuratie](functions-host-json.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

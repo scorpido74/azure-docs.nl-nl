@@ -1,14 +1,14 @@
 ---
 title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d91804b91b50ee1ba4015456438c9f153ed12ada
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677778"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201715"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -121,6 +121,9 @@ Een veelvoorkomend voor beeld is een taak voor het kopiëren van bestanden naar 
 
 Taken die slechts een tot twee seconden worden uitgevoerd, zijn niet ideaal. Probeer een aanzienlijke hoeveelheid werk uit te voeren in een afzonderlijke taak (mini maal 10 seconden, Maxi maal uur of dagen). Als elke taak gedurende één minuut (of meer) wordt uitgevoerd, is de plannings overhead als Fractie van de totale reken tijd klein.
 
+### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Groeps bereik voor korte taken op Windows-knoop punten gebruiken
+
+Bij het plannen van een taak op batch knooppunten kunt u kiezen of u deze wilt uitvoeren met het taak bereik of groeps bereik. Als de taak alleen voor een korte tijd wordt uitgevoerd, kan het taak bereik inefficiënt zijn als gevolg van de resources die nodig zijn voor het maken van het account voor automatische gebruikers voor die taak. Voor een grotere efficiëntie kunt u deze taken instellen op groeps bereik. Zie [een taak uitvoeren als een automatische gebruiker met een groeps bereik](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)voor meer informatie.
 
 ## <a name="nodes"></a>Knooppunten
 

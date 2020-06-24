@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e0e5dde246dbcd5e5cb2e4ae923872a59a539d87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f34ba9b9ebdc395338ef65b696fa9748417e20e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476403"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734908"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies van het resource-forest voor Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (AD DS) biedt een aanmeldings ervaring voor oudere, on-premises en line-of-business-toepassingen. Gebruikers, groepen en wacht woord-hashes van on-premises en Cloud gebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wacht woord-hashes zijn wat gebruikers één set referenties bieden die ze kunnen gebruiken voor de on-premises AD DS, Office 365 en Azure Active Directory.
+Azure Active Directory Domain Services (Azure AD DS) biedt een aanmeldings ervaring voor oudere, on-premises en line-of-business-toepassingen. Gebruikers, groepen en wacht woord-hashes van on-premises en Cloud gebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wacht woord-hashes zijn wat gebruikers één set referenties bieden die ze kunnen gebruiken voor de on-premises AD DS, Office 365 en Azure Active Directory.
 
 Hoewel beveiligde en extra beveiligings voordelen bieden, kunnen sommige organisaties die gebruikers wachtwoorden hashes niet synchroniseren met Azure AD of Azure AD DS. Gebruikers in een organisatie hebben het wacht woord mogelijk niet kennen, omdat ze alleen smartcard verificatie gebruiken. Deze beperkingen verhinderen dat sommige organisaties Azure AD DS gebruiken om on-premises klassieke toepassingen naar Azure te tilleren en te verplaatsen.
 
-Als u deze behoeften en beperkingen wilt aanpakken, kunt u een door Azure AD DS beheerd domein maken dat gebruikmaakt van een resource-forest. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze andere bronnen vertrouwen om een veilige verificatie methode te bieden. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
+U kunt deze behoeften en beperkingen oplossen door een beheerd domein te maken dat gebruikmaakt van een resource-forest. In dit conceptuele artikel wordt uitgelegd wat forests zijn en hoe ze andere bronnen vertrouwen om een veilige verificatie methode te bieden. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
 
 > [!IMPORTANT]
 > Azure HDInsight of Azure Files wordt momenteel niet ondersteund voor de resource forests van AD DS De standaard gebruikers forests van Azure AD DS ondersteunen beide extra services.
@@ -34,7 +34,7 @@ Een *forest* is een logische constructie die door Active Directory Domain Servic
 
 In azure AD DS bevat het forest slechts één domein. On-premises AD DS bossen bevatten vaak veel domeinen. In grote organisaties, met name na fusies en acquisities, kunt u meerdere on-premises forests gebruiken die elk meerdere domeinen bevatten.
 
-Standaard wordt een door Azure AD DS beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein van Azure AD DS, bijvoorbeeld om zich aan te melden bij een VM die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
+Standaard wordt een beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. Gebruikers accounts kunnen rechtstreeks worden geverifieerd aan de hand van het beheerde domein, bijvoorbeeld om zich aan te melden bij een virtuele machine die lid is van een domein. Een gebruikers forest werkt wanneer de wacht woord-hashes kunnen worden gesynchroniseerd en gebruikers gebruiken geen exclusieve aanmeldings methoden zoals smartcard verificatie.
 
 In een Azure AD DS- *bron* -forest verifiëren *gebruikers via een eenrichtings forestvertrouwensrelatie van hun* on-premises AD DS. Met deze benadering worden de gebruikers objecten en wacht woord-hashes niet gesynchroniseerd met Azure AD DS. De gebruikers objecten en referenties bestaan alleen in het on-premises AD DS. Met deze aanpak kunnen bedrijven hosten van resources en toepassings platforms in azure die afhankelijk zijn van klassieke verificatie, zoals LDAPS, Kerberos of NTLM, maar eventuele verificatie problemen of problemen worden verwijderd. Azure AD DS resource-forests zijn momenteel beschikbaar als preview-versie.
 

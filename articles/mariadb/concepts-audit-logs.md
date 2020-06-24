@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: e8d5abd81feb86ba48fc442ee95615cb52230a24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063815"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100895"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Audit Logboeken in Azure Database for MariaDB
 
@@ -22,15 +22,19 @@ In Azure Database for MariaDB is het controle logboek beschikbaar voor gebruiker
 
 ## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
 
-Het controle logboek is standaard uitgeschakeld. Als u deze wilt inschakelen `audit_log_enabled` , stelt u in op aan.
+>[!NOTE]
+> Het is raadzaam om alleen de gebeurtenis typen en gebruikers die vereist zijn voor controle doeleinden te registreren om ervoor te zorgen dat de prestaties van uw server niet sterk worden beïnvloed.
+
+Het controle logboek is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `audit_log_enabled` u in op aan.
 
 Andere para meters die u kunt aanpassen zijn onder andere:
 
 - `audit_log_events`: Hiermee beheert u de gebeurtenissen die moeten worden vastgelegd. Zie de onderstaande tabel voor specifieke controle gebeurtenissen.
-- `audit_log_include_users`: MariaDB-gebruikers moeten worden opgenomen voor logboek registratie. De standaard waarde voor deze para meter is leeg, die alle gebruikers bevat die moeten worden geregistreerd. Dit heeft een hogere prioriteit `audit_log_exclude_users`dan. De maximale lengte van de para meter is 512 tekens.
-> [!Note]
-> `audit_log_include_users`heeft een hogere prioriteit `audit_log_exclude_users`dan. `audit_log_include_users`  =  Als `demouser` en `demouser` `audit_log_include_users` wordt de gebruiker bijvoorbeeld opgenomen in de audit logboeken, omdat deze een hogere prioriteit heeft. `audit_log_exclude_users`  = 
+- `audit_log_include_users`: MariaDB-gebruikers moeten worden opgenomen voor logboek registratie. De standaard waarde voor deze para meter is leeg, die alle gebruikers bevat die moeten worden geregistreerd. Dit heeft een hogere prioriteit dan `audit_log_exclude_users` . De maximale lengte van de para meter is 512 tekens.
 - `audit_log_exclude_users`: MariaDB-gebruikers moeten worden uitgesloten van logboek registratie. Hiermee worden Maxi maal vier gebruikers toegestaan. De maximale lengte van de para meter is 256 tekens.
+
+> [!Note]
+> `audit_log_include_users`heeft een hogere prioriteit dan `audit_log_exclude_users` . Als `audit_log_include_users`  =  `demouser` en wordt `audit_log_exclude_users`  =  `demouser` de gebruiker bijvoorbeeld opgenomen in de audit logboeken, omdat deze een `audit_log_include_users` hogere prioriteit heeft.
 
 | **Gebeurtenis** | **Beschrijving** |
 |---|---|
@@ -70,7 +74,7 @@ In de volgende secties wordt beschreven wat er wordt uitgevoerd door MariaDB aud
 | `event_class_s` | `connection_log` |
 | `event_subclass_s` | `CONNECT`, `DISCONNECT` |
 | `connection_id_d` | Unieke verbindings-ID die wordt gegenereerd door MariaDB |
-| `host_s` | Blank |
+| `host_s` | Leeg |
 | `ip_s` | IP-adres van de client die verbinding maakt met MariaDB |
 | `user_s` | Naam van de gebruiker die de query uitvoert |
 | `db_s` | Naam van de data base die is verbonden met |
@@ -79,6 +83,9 @@ In de volgende secties wordt beschreven wat er wordt uitgevoerd door MariaDB aud
 ### <a name="general"></a>Algemeen
 
 Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT, DML_NONSELECT, DML, DDL, DCL en beheerder.
+
+> [!NOTE]
+> Voor wordt `sql_text` het logboek afgekapt als dit langer is dan 2048 tekens.
 
 | **Eigenschap** | **Beschrijving** |
 |---|---|
@@ -100,7 +107,7 @@ Schema hieronder is van toepassing op de gebeurtenis typen algemeen, DML_SELECT,
 | `event_time` | Begin seconden query in UNIX-tijds tempel |
 | `error_code_d` | Fout code als de query is mislukt. `0`betekent geen fout |
 | `thread_id_d` | ID van de thread die de query heeft uitgevoerd |
-| `host_s` | Blank |
+| `host_s` | Leeg |
 | `ip_s` | IP-adres van de client die verbinding maakt met MariaDB |
 | `user_s` | Naam van de gebruiker die de query uitvoert |
 | `sql_text_s` | Volledige query tekst |

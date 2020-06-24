@@ -2,20 +2,20 @@
 title: Azure AD-kenmerk toewijzingen aanpassen | Microsoft Docs
 description: Meer informatie over kenmerk toewijzingen voor SaaS-apps in Azure Active Directory zijn de manier waarop u ze kunt aanpassen om uw bedrijfs behoeften aan te pakken.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2019
-ms.author: mimart
-ms.openlocfilehash: 9697bc2abd147a501466ba134f96512fe15173c0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.author: kenwith
+ms.openlocfilehash: 70795c703810212c3b46d06254a0c3ebdcb418f4
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639054"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782038"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -105,7 +105,7 @@ Sommige toepassingen ondersteunen echter aangepaste kenmerken en de Azure AD-inr
 
 Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst met kenmerken zijn onder andere:
 
-- Salesforce
+- SalesForce
 - ServiceNow
 - Workday
 - Azure Active Directory ([standaard kenmerken van Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)

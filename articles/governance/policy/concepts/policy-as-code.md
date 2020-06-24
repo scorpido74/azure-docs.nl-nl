@@ -3,12 +3,12 @@ title: Beleid ontwerpen als codewerkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684263"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194413"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
@@ -19,7 +19,7 @@ Als u de voortgang van uw reis met Cloud governance wilt, kunt u de beleids defi
 
 Beleid als code is een combi natie van deze ideeën. Behoud in wezen uw beleids definities in broncode beheer en telkens wanneer een wijziging wordt aangebracht, test en valideer deze wijziging. Dit geldt echter niet voor de mate van beleids betrokkenheid bij de infra structuur als code of DevOps.
 
-De validatie stap moet ook een onderdeel zijn van andere workflows voor continue integratie of continue implementatie. Voor beelden hiervan zijn het implementeren van een toepassings omgeving of virtuele infra structuur. Door Azure Policy een vroegtijdige component van het build-en implementatie proces te valideren, ontdekken de toepassings-en Operations-teams of hun wijzigingen niet-klacht zijn, lang voordat deze te laat zijn en er wordt geprobeerd om te implementeren in de productie omgeving.
+De validatie stap moet ook een onderdeel zijn van andere workflows voor continue integratie of continue implementatie. Voor beelden hiervan zijn het implementeren van een toepassings omgeving of virtuele infra structuur. Door Azure Policy een vroegtijdig onderdeel van het build-en implementatie proces te valideren, ontdekken de toepassing en de Operations-teams of hun wijzigingen niet voldoen aan het beleid, lang voordat het te laat is en er wordt geprobeerd om te implementeren in de productie omgeving.
 
 ## <a name="workflow-overview"></a>Overzicht werk stroom
 
@@ -129,5 +129,5 @@ In dit artikel wordt de algemene werk stroom voor het beleid behandeld als code 
 - Meer informatie over de structuur van de [beleids toewijzing](./assignment-structure.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

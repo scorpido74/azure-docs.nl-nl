@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afbf0bee86a3d600892ed562ee939d48168ddfdc
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501462"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85112936"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Kosten voor ingerichte doorvoer optimaliseren in Azure Cosmos DB
 
@@ -75,9 +75,9 @@ HTTP Status 429,
 
 ### <a name="retry-logic-in-sdks"></a>Logica voor opnieuw proberen in Sdk's 
 
-De systeem eigen Sdk's (.NET/.NET core, Java, node. js en python) ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
+Met de systeem eigen Sdk's (.NET/.NET core, Java, Node.js en python) wordt dit antwoord impliciet onderschept, respecteert u de door de server opgegeven nieuwe poging na de header en voert u de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 
-Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen, dat momenteel is ingesteld op 9, niet voldoende. In dergelijke gevallen genereert de client een `RequestRateTooLargeException` met de status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen op het Connection Policy-exemplaar. Standaard wordt de met `RequestRateTooLargeException` de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
+Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen, dat momenteel is ingesteld op 9, niet voldoende. In dergelijke gevallen genereert de client een `RequestRateTooLargeException` met de status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen op het Connection Policy-exemplaar. Standaard `RequestRateTooLargeException` wordt de met de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) is ingesteld op 3. in dit geval, als een aanvraag is beperkt door de gereserveerde door Voer voor de container te overschrijden, wordt de aanvraag bewerking drie keer opnieuw geprobeerd voordat de uitzonde ring voor de toepassing wordt gegenereerd. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60. in dit geval geldt dat als de cumulatieve wacht tijd voor opnieuw proberen in seconden sinds de eerste aanvraag 60 seconden overschrijdt, de uitzonde ring wordt gegenereerd.
 
@@ -117,7 +117,7 @@ Standaard indexeert Azure Cosmos DB automatisch elke eigenschap van elke record.
 
 U kunt het totale aantal ingerichte RUs, het aantal tarieven voor beperkte aanvragen en het aantal RUs dat u hebt verbruikt, bewaken in de Azure Portal. In de volgende afbeelding ziet u een voor beeld van een gebruiks metriek:
 
-![Aanvraag eenheden bewaken in de Azure Portal](./media/optimize-cost-throughput/monitoring.png)
+:::image type="content" source="./media/optimize-cost-throughput/monitoring.png" alt-text="Aanvraag eenheden bewaken in de Azure Portal":::
 
 U kunt ook waarschuwingen instellen om te controleren of het aantal aanvragen met beperkte geldigheid een specifieke drempel waarde overschrijdt. Zie [Azure Cosmos DB artikel controleren](use-metrics.md) voor meer informatie. Deze waarschuwingen kunnen een e-mail verzenden naar de account beheerders of een aangepaste HTTP-webhook of een Azure-functie aanroepen om de ingerichte door Voer automatisch te verg Roten. 
 
@@ -139,7 +139,7 @@ U kunt de volgende stappen gebruiken om de ingerichte door Voer voor een nieuwe 
 
 2. Het is raadzaam om de containers met een hogere door voer te maken dan verwacht en vervolgens naar behoefte te schalen. 
 
-3. Het is raadzaam een van de systeem eigen Azure Cosmos DB Sdk's te gebruiken om te profiteren van automatische nieuwe pogingen wanneer aanvragen een beperkt aantal zijn. Als u werkt met een platform dat niet wordt ondersteund en gebruikmaakt van de REST API van Cosmos DB, implementeert u uw eigen beleid `x-ms-retry-after-ms` voor opnieuw proberen met behulp van de header. 
+3. Het is raadzaam een van de systeem eigen Azure Cosmos DB Sdk's te gebruiken om te profiteren van automatische nieuwe pogingen wanneer aanvragen een beperkt aantal zijn. Als u werkt met een platform dat niet wordt ondersteund en gebruikmaakt van de REST API van Cosmos DB, implementeert u uw eigen beleid voor opnieuw proberen met behulp van de `x-ms-retry-after-ms` header. 
 
 4. Zorg ervoor dat uw toepassings code de situatie op de juiste wijze ondersteunt wanneer alle pogingen mislukken. 
 

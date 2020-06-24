@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 249acaad66bdfd8b5d6b8420d22a9090e44beb41
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637335"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204095"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C gebruikers accounts beheren met Microsoft Graph
 
@@ -52,22 +52,22 @@ De `displayName` is de naam die moet worden weer gegeven in azure Portal gebruik
 
 Een klant account, een consument, een partner of een burger, kan worden gekoppeld aan deze identiteits typen:
 
-- **Lokale** identiteit: de gebruikers naam en het wacht woord worden lokaal opgeslagen in de Azure AD B2C Directory. We verwijzen vaak naar deze identiteiten als ' lokale accounts '.
+- **Lokale** identiteit: de gebruikers naam en het wacht woord worden lokaal opgeslagen in de Azure AD B2C Directory. We verwijzen vaak naar deze identiteiten als 'lokale accounts'.
 - **Federatieve** identiteit: ook wel een *sociale* of *ondernemings* account genoemd, wordt de identiteit van de gebruiker beheerd door een federatieve id-provider zoals Facebook, micro soft, ADFS of Sales Force.
 
 Een gebruiker met een klant account kan zich aanmelden met meerdere identiteiten. Bijvoorbeeld gebruikers naam, e-mail adres, werk nemer-ID, sofi-ID en anderen. Eén account kan meerdere identiteiten, zowel lokaal als sociaal, hebben met hetzelfde wacht woord.
 
-In de Microsoft Graph-API worden lokale en federatieve identiteiten opgeslagen in het kenmerk `identities` gebruiker, dat van het type [objectIdentity][graph-objectIdentity]is. De `identities` verzameling vertegenwoordigt een set met identiteiten die worden gebruikt om u aan te melden bij een gebruikers account. Met deze verzameling kan de gebruiker zich aanmelden bij het gebruikers account met een van de bijbehorende identiteiten.
+In de Microsoft Graph-API worden lokale en federatieve identiteiten opgeslagen in het `identities` kenmerk gebruiker, dat van het type [objectIdentity][graph-objectIdentity]is. De `identities` verzameling vertegenwoordigt een set met identiteiten die worden gebruikt om u aan te melden bij een gebruikers account. Met deze verzameling kan de gebruiker zich aanmelden bij het gebruikers account met een van de bijbehorende identiteiten.
 
 | Eigenschap   | Type |Beschrijving|
 |:---------------|:--------|:----------|
-|signInType|tekenreeks| Hiermee geeft u de aanmeldings typen voor gebruikers in uw Directory. Voor een lokaal account `emailAddress`: `emailAddress1`, `emailAddress2` `emailAddress3` `userName`,,, of een ander type dat u wilt. Er moet een sociaal account worden `federated`ingesteld op.|
-|uitgever|tekenreeks|Hiermee geeft u de uitgever van de identiteit. Voor lokale accounts (waarbij **signInType** niet `federated`is), is deze eigenschap de lokale standaard domein naam van de B2C-Tenant `contoso.onmicrosoft.com`, bijvoorbeeld. Voor sociale identiteit (waarbij **signInType** is `federated`), is de waarde de naam van de verlener, bijvoorbeeld`facebook.com`|
-|issuerAssignedId|tekenreeks|Hiermee geeft u de unieke id op die door de uitgever aan de gebruiker is toegewezen. De combi natie van **verlener** en **issuerAssignedId** moet uniek zijn binnen uw Tenant. Als **signInType** is ingesteld op `emailAddress` of `userName`, vertegenwoordigt het lokale account de aanmeldings naam voor de gebruiker.<br>Wanneer **signInType** is ingesteld op: <ul><li>`emailAddress`(of begint met `emailAddress` like `emailAddress1`) **issuerAssignedId** moet een geldig e-mail adres zijn</li><li>`userName`(of een andere waarde), **issuerAssignedId** moet een geldig [lokaal deel zijn van een e-mail adres](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`, **issuerAssignedId** staat voor de unieke id van het federatieve account</li></ul>|
+|signInType|tekenreeks| Hiermee geeft u de aanmeldings typen voor gebruikers in uw Directory. Voor een lokaal account:,,,, `emailAddress` `emailAddress1` `emailAddress2` `emailAddress3` `userName` of een ander type dat u wilt. Er moet een sociaal account worden ingesteld op `federated` .|
+|uitgever|tekenreeks|Hiermee geeft u de uitgever van de identiteit. Voor lokale accounts (waarbij **signInType** niet is `federated` ), is deze eigenschap de lokale standaard domein naam van de B2C-Tenant, bijvoorbeeld `contoso.onmicrosoft.com` . Voor sociale identiteit (waarbij **signInType** is `federated` ), is de waarde de naam van de verlener, bijvoorbeeld`facebook.com`|
+|issuerAssignedId|tekenreeks|Hiermee geeft u de unieke id op die door de uitgever aan de gebruiker is toegewezen. De combi natie van **verlener** en **issuerAssignedId** moet uniek zijn binnen uw Tenant. Als **signInType** is ingesteld op `emailAddress` of, vertegenwoordigt het lokale account `userName` de aanmeldings naam voor de gebruiker.<br>Wanneer **signInType** is ingesteld op: <ul><li>`emailAddress`(of begint met `emailAddress` like `emailAddress1` ) **issuerAssignedId** moet een geldig e-mail adres zijn</li><li>`userName`(of een andere waarde), **issuerAssignedId** moet een geldig [lokaal deel zijn van een e-mail adres](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`, **issuerAssignedId** staat voor de unieke id van het federatieve account</li></ul>|
 
 De volgende **Identities** -eigenschappen, met een lokale account identiteit met een aanmeldings naam, een e-mail adres als aanmelding en een sociale identiteit. 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -91,11 +91,11 @@ Voor federatieve identiteiten, afhankelijk van de ID-provider, is het **issuerAs
 
 ### <a name="password-profile-property"></a>Eigenschap voor wachtwoord profiel
 
-Voor een lokale identiteit is de eigenschap **passwordProfile** vereist en bevat het wacht woord van de gebruiker. De `forceChangePasswordNextSignIn` eigenschap moet worden ingesteld `false`op.
+Voor een lokale identiteit is de eigenschap **passwordProfile** vereist en bevat het wacht woord van de gebruiker. De `forceChangePasswordNextSignIn` eigenschap moet worden ingesteld op `false` .
 
 Voor een federatieve (sociale) identiteit is de eigenschap **passwordProfile** niet vereist.
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -106,9 +106,9 @@ Voor een federatieve (sociale) identiteit is de eigenschap **passwordProfile** n
 
 Het Azure AD B2C wachtwoord beleid (voor lokale accounts) is gebaseerd op het Azure Active Directory beleid voor [sterke wachtwoord sterkte](../active-directory/authentication/concept-sspr-policy.md) . Voor het beleid voor Azure AD B2C registreren of aanmelden en voor het opnieuw instellen van het wacht woord is de sterke wachtwoord sterkte vereist en wacht woorden niet verlopen.
 
-Als de accounts die u wilt migreren, een zwakkere wachtwoord sterkte hebben dan de [sterke wachtwoord sterkte](../active-directory/authentication/concept-sspr-policy.md) die wordt afgedwongen door Azure AD B2C, kunt u de vereiste voor sterke wacht woorden uitschakelen in scenario's voor gebruikers migratie. Als u het standaard wachtwoord beleid wilt wijzigen, `passwordPolicies` stelt u `DisableStrongPassword`de eigenschap in op. U kunt de aanvraag voor het maken van een gebruiker bijvoorbeeld als volgt wijzigen:
+Als de accounts die u wilt migreren, een zwakkere wachtwoord sterkte hebben dan de [sterke wachtwoord sterkte](../active-directory/authentication/concept-sspr-policy.md) die wordt afgedwongen door Azure AD B2C, kunt u de vereiste voor sterke wacht woorden uitschakelen in scenario's voor gebruikers migratie. Als u het standaard wachtwoord beleid wilt wijzigen, stelt `passwordPolicies` u de eigenschap in op `DisableStrongPassword` . U kunt de aanvraag voor het maken van een gebruiker bijvoorbeeld als volgt wijzigen:
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -116,9 +116,9 @@ Als de accounts die u wilt migreren, een zwakkere wachtwoord sterkte hebben dan 
 
 Elke klant gerichte toepassing heeft unieke vereisten voor het verzamelen van de gegevens. Uw Azure AD B2C-Tenant wordt geleverd met een ingebouwde set met gegevens die zijn opgeslagen in eigenschappen, zoals de naam, de voor-en de post code. Met Azure AD B2C kunt u de set eigenschappen die is opgeslagen in elk klant account uitbreiden. Zie [aangepaste kenmerken (gebruikers stromen)](user-flow-custom-attributes.md) en [aangepaste kenmerken (aangepast beleid)](custom-policy-custom-attributes.md)voor meer informatie over het definiëren van aangepaste kenmerken.
 
-Microsoft Graph-API ondersteunt het maken en bijwerken van een gebruiker met extensie kenmerken. Extensie kenmerken in de Graph API worden genoemd met behulp van `extension_ApplicationObjectID_attributename`de Conventie. Bijvoorbeeld:
+Microsoft Graph-API ondersteunt het maken en bijwerken van een gebruiker met extensie kenmerken. Extensie kenmerken in de Graph API worden genoemd met behulp van de Conventie `extension_ApplicationObjectID_attributename` . Bijvoorbeeld:
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
@@ -135,13 +135,13 @@ Nadat u het code voorbeeld hebt verkregen, configureert u dit voor uw omgeving e
 
 1. Open het project in [Visual Studio](https://visualstudio.microsoft.com) of [Visual Studio code](https://code.visualstudio.com).
 1. Open `src/appsettings.json`.
-1. `appSettings` Vervang `your-b2c-tenant` in de sectie door de naam van uw Tenant en `Application (client) ID` en `Client secret` met de waarden voor de registratie van uw beheer toepassing (Zie de sectie [een beheer toepassing registreren](#register-a-management-application) in dit artikel).
-1. Open een console venster in uw lokale kloon van de opslag plaats, schakel over naar `src` de map en bouw het project:
+1. Vervang in de `appSettings` sectie door `your-b2c-tenant` de naam van uw Tenant en `Application (client) ID` en `Client secret` met de waarden voor de registratie van uw beheer toepassing (Zie de sectie [een beheer toepassing registreren](#register-a-management-application) in dit artikel).
+1. Open een console venster in uw lokale kloon van de opslag plaats, schakel over naar de `src` map en bouw het project:
     ```console
     cd src
     dotnet build
     ```
-1. Voer de toepassing uit met `dotnet` de opdracht:
+1. Voer de toepassing uit met de `dotnet` opdracht:
 
     ```console
     dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
@@ -157,7 +157,7 @@ Voor elke aanvraag voor de Microsoft Graph-API is een toegangs token voor verifi
 
 De `RunAsync` methode in het _Program.cs_ -bestand:
 
-1. Hiermee worden de toepassings instellingen van het bestand _appSettings. json_ gelezen
+1. Hiermee leest u de toepassings instellingen van de _appsettings.jsvoor_ het bestand
 1. Initialiseert de authenticatie provider met [OAuth 2,0-client referenties toekenning](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) stroom. Met de client referenties toekenning stroom kan de app een toegangs token verkrijgen om de Microsoft Graph-API aan te roepen.
 1. Hiermee stelt u de Microsoft Graph-serviceclient in met de verificatie provider:
 
@@ -202,7 +202,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[API-aanroepen maken met behulp van de Microsoft Graph sdk's](https://docs.microsoft.com/graph/sdks/create-requests) bevat informatie over het lezen en schrijven van `$select` gegevens van Microsoft Graph, het beheren van de eigenschappen die worden geretourneerd, het `$filter` opgeven `$orderBy` van aangepaste query parameters en het gebruik van de-en-query parameters.
+[API-aanroepen maken met behulp van de Microsoft Graph sdk's](https://docs.microsoft.com/graph/sdks/create-requests) bevat informatie over het lezen en schrijven van gegevens van Microsoft Graph, `$select` het beheren van de eigenschappen die worden geretourneerd, het opgeven van aangepaste query parameters en het gebruik van de- `$filter` en- `$orderBy` query parameters.
 
 ## <a name="next-steps"></a>Volgende stappen
 

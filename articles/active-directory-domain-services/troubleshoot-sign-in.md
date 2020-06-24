@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77612741"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733956"
 ---
-# <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met het aanmelden van accounts oplossen met een door Azure AD Domain Services beheerd domein
+# <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met het aanmelden van accounts oplossen met een door Azure Active Directory Domain Services beheerd domein
 
-De meest voorkomende redenen voor een gebruikers account waarmee u zich niet kunt aanmelden bij een Azure AD DS beheerd domein, zijn de volgende scenario's:
+De meest voorkomende redenen voor een gebruikers account waarmee u zich niet kunt aanmelden bij een beheerd domein van een Azure Active Directory Domain Services (Azure AD DS), zijn de volgende scenario's:
 
 * [Het account is nog niet gesynchroniseerd met Azure AD DS.](#account-isnt-synchronized-into-azure-ad-ds-yet)
 * [Azure AD DS heeft geen wacht woord-hashes waarmee het account kan worden aangemeld.](#azure-ad-ds-doesnt-have-the-password-hashes)
@@ -47,19 +47,19 @@ Azure AD genereert of slaat geen wacht woord-hashes in de vereiste indeling voor
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hybride omgevingen met on-premises synchronisatie
 
-Voor hybride omgevingen met Azure AD Connect om te synchroniseren vanuit een on-premises AD DS omgeving, kunt u de vereiste NTLM-of Kerberos-wachtwoord hashes lokaal genereren en synchroniseren in azure AD. Nadat u uw door Azure AD DS beheerde domein hebt gemaakt, schakelt u de [synchronisatie van wacht woord-hashen in op Azure Active Directory Domain Services][azure-ad-connect-phs]. Als u de synchronisatie stap voor wacht woord-hash niet hebt voltooid, kunt u zich niet aanmelden bij een account met behulp van Azure AD DS. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw volgen.
+Voor hybride omgevingen met Azure AD Connect om te synchroniseren vanuit een on-premises AD DS omgeving, kunt u de vereiste NTLM-of Kerberos-wachtwoord hashes lokaal genereren en synchroniseren in azure AD. Nadat u uw beheerde domein hebt gemaakt, schakelt u de [synchronisatie van wacht woord-hashen in azure Active Directory Domain Services][azure-ad-connect-phs]. Als u de synchronisatie stap voor wacht woord-hash niet hebt voltooid, kunt u zich niet aanmelden bij een account met behulp van Azure AD DS. Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet u deze stappen opnieuw volgen.
 
 Zie [hoe wacht woord-hash synchronisatie werkt voor Azure AD DS][phs-process]voor meer informatie.
 
 ### <a name="cloud-only-environments-with-no-on-premises-synchronization"></a>Alleen Cloud omgevingen zonder on-premises synchronisatie
 
-Azure AD DS beheerde domeinen zonder on-premises synchronisatie, alleen accounts in azure AD, moeten ook de vereiste NTLM-of Kerberos-wachtwoord hashes genereren. Als een Cloud account niet kan worden aangemeld, heeft een wachtwoord wijzigings proces voltooid voor het account nadat Azure AD DS is ingeschakeld?
+Beheerde domeinen zonder on-premises synchronisatie, alleen accounts in azure AD, moeten ook de vereiste NTLM-of Kerberos-wachtwoord hashes genereren. Als een Cloud account niet kan worden aangemeld, heeft een wachtwoord wijzigings proces voltooid voor het account nadat Azure AD DS is ingeschakeld?
 
 * **Nee, het wacht woord is niet gewijzigd.**
     * [Wijzig het wacht woord voor het account][enable-user-accounts] om de vereiste wacht woord-hashes te genereren en wacht vijf tien minuten voordat u zich opnieuw probeert aan te melden.
     * Als u Azure AD DS uitschakelt en vervolgens weer inschakelt, moet elk account de stappen opnieuw uitvoeren om het wacht woord te wijzigen en de vereiste wachtwoord hashes te genereren.
 * **Ja, het wacht woord is gewijzigd.**
-    * Probeer u aan te melden met de *UPN* -indeling, `driley@aaddscontoso.com`zoals in plaats van de *SAMAccountName* - `AADDSCONTOSO\deeriley`indeling zoals.
+    * Probeer u aan te melden met de *UPN* -indeling, zoals `driley@aaddscontoso.com` in plaats van de *SAMAccountName* -indeling zoals `AADDSCONTOSO\deeriley` .
     * De *SAMAccountName* kan automatisch worden gegenereerd voor gebruikers waarvan het UPN-voor voegsel langer is dan of gelijk is aan die van een andere gebruiker in het beheerde domein. De *UPN* -indeling is gegarandeerd uniek binnen een Azure AD-Tenant.
 
 ## <a name="the-account-is-locked-out"></a>Het account is vergrendeld
@@ -72,7 +72,7 @@ Zie problemen [met account vergrendeling oplossen in Azure AD DS][troubleshoot-a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds problemen ondervindt met het toevoegen van uw VM aan het beheerde domein van Azure AD DS, [zoekt u hulp en opent u een ondersteunings ticket voor Azure Active Directory][azure-ad-support].
+Als u nog steeds problemen ondervindt met het toevoegen van uw VM aan het beheerde domein, [zoekt u hulp en opent u een ondersteunings ticket voor Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
