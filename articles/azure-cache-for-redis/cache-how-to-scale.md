@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277997"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698339"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Het schalen van Azure Cache voor Redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies. Nadat u een cache hebt gemaakt, kunt u de grootte en de prijs categorie van de cache schalen als de vereisten van de toepassing veranderen. Dit artikel laat u zien hoe u uw cache kunt schalen met behulp van de Azure Portal en hulpprogram ma's zoals Azure PowerShell en Azure CLI.
@@ -64,7 +64,7 @@ Naast het schalen van uw cache-instanties in de Azure Portal, kunt u de schaal a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt uw Azure-cache schalen voor redis-instanties met Power shell met behulp van de cmdlet [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) wanneer de `Size`, `Sku`of `ShardCount` -eigenschappen worden gewijzigd. In het volgende voor beeld ziet u hoe u een `myCache` cache kunt schalen met de naam in een cache van 2,5 GB. 
+U kunt uw Azure-cache schalen voor redis-instanties met Power shell met behulp van de cmdlet [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) wanneer de `Size` , `Sku` of- `ShardCount` eigenschappen worden gewijzigd. In het volgende voor beeld ziet u hoe u een cache kunt schalen met de naam `myCache` in een cache van 2,5 GB. 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -76,7 +76,7 @@ Als u uw Azure-cache wilt schalen voor redis-exemplaren met behulp van Azure CLI
 Zie [instellingen van een bestaande Azure-cache wijzigen voor redis](cache-manage-cli.md#scale)voor meer informatie over schalen met Azure cli.
 
 ### <a name="scale-using-maml"></a>Schalen met behulp van MAML
-Als u uw Azure-cache wilt schalen voor redis-exemplaren met behulp van de [Microsoft Azure Management libraries (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), roept u de `IRedisOperations.CreateOrUpdate` - `RedisProperties.SKU.Capacity`methode aan en geeft u de nieuwe grootte voor de.
+Als u uw Azure-cache wilt schalen voor redis-exemplaren met behulp van de [Microsoft Azure Management libraries (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), roept u de- `IRedisOperations.CreateOrUpdate` methode aan en geeft u de nieuwe grootte voor de `RedisProperties.SKU.Capacity` .
 
     static void Main(string[] args)
     {
@@ -134,13 +134,13 @@ Nee, uw cache naam en sleutels zijn niet gewijzigd tijdens een schaal bewerking.
 * Wanneer een **standaard** cache wordt geschaald naar een grotere grootte of laag, of als een **Premium** -cache naar een grotere grootte wordt geschaald, worden alle gegevens doorgaans bewaard. Bij het schalen van een **Standard** -of **Premium** -cache naar een kleinere grootte, kunnen gegevens verloren gaan, afhankelijk van de hoeveelheid gegevens in de cache die is gerelateerd aan de nieuwe grootte wanneer deze wordt geschaald. Als gegevens verloren zijn gegaan bij het omlaag schalen, worden sleutels verwijderd met behulp van het verwijderings beleid voor [AllKeys-LRU](https://redis.io/topics/lru-cache) . 
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>Worden de instellingen van mijn aangepaste data base beïnvloed tijdens het schalen?
-Als u een aangepaste waarde voor de instelling `databases` hebt geconfigureerd tijdens het maken van de cache, moet u er rekening mee houdt dat sommige prijs categorieën verschillende [database limieten](cache-configure.md#databases)hebben. Hier volgen enkele overwegingen bij het schalen in dit scenario:
+Als u een aangepaste waarde voor de `databases` instelling hebt geconfigureerd tijdens het maken van de cache, moet u er rekening mee houdt dat sommige prijs categorieën verschillende [database limieten](cache-configure.md#databases)hebben. Hier volgen enkele overwegingen bij het schalen in dit scenario:
 
 * Bij het schalen naar een prijs categorie met een lagere `databases` limiet dan de huidige laag:
-  * Als u het standaard aantal van `databases`16 voor alle prijs categorieën gebruikt, gaan er geen gegevens verloren.
-  * Als u een aangepast aantal gebruikt `databases` dat binnen de limieten voor de laag ligt die u wilt schalen, wordt deze `databases` instelling behouden en gaan er geen gegevens verloren.
+  * Als u het standaard aantal van `databases` 16 voor alle prijs categorieën gebruikt, gaan er geen gegevens verloren.
+  * Als u een aangepast aantal gebruikt `databases` dat binnen de limieten voor de laag ligt die u wilt schalen, `databases` wordt deze instelling behouden en gaan er geen gegevens verloren.
   * Als u een aangepast aantal gebruikt `databases` dat de limieten van de nieuwe laag overschrijdt, wordt de `databases` instelling verlaagd tot de limieten van de nieuwe laag en gaan alle gegevens in de verwijderde data base verloren.
-* Bij het schalen naar een prijs categorie met dezelfde of een hogere `databases` limiet dan de huidige laag, wordt `databases` uw instelling behouden en gaan er geen gegevens verloren.
+* Bij het schalen naar een prijs categorie met dezelfde of een hogere `databases` limiet dan de huidige laag, `databases` wordt uw instelling behouden en gaan er geen gegevens verloren.
 
 Hoewel Standard-en Premium-caches een SLA van 99,9% voor Beschik baarheid hebben, is er geen SLA voor gegevens verlies.
 

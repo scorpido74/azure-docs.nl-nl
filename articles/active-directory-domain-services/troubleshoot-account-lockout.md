@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22743a1e202ac26d95cf4a48cb58b2a2418e9f0c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743446"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734178"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Problemen met account vergrendeling oplossen met een door Azure AD Domain Services beheerd domein
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Problemen met account vergrendeling oplossen met een door Azure Active Directory Domain Services beheerd domein
 
-Azure AD DS blokkeert accounts na een gedefinieerde drempel waarde om herhaalde aanmeldings pogingen te voor komen. Deze account vergrendeling kan ook plaatsvinden per ongeluk zonder dat er zich een aanval heeft voordoen. Als een gebruiker bijvoorbeeld herhaaldelijk het verkeerde wacht woord invoert of een service probeert een oud wacht woord te gebruiken, wordt het account vergrendeld.
+Azure Active Directory Domain Services (Azure AD DS) worden accounts na een ingestelde drempel waarde vergrendeld om te voor komen dat er herhaalde aanmeldings pogingen worden gedaan. Deze account vergrendeling kan ook plaatsvinden per ongeluk zonder dat er zich een aanval heeft voordoen. Als een gebruiker bijvoorbeeld herhaaldelijk het verkeerde wacht woord invoert of een service probeert een oud wacht woord te gebruiken, wordt het account vergrendeld.
 
 Dit artikel bevat informatie over het oplossen van problemen met account vergrendelingen en over hoe u het gedrag kunt configureren en hoe beveiligings controles moeten worden gecontroleerd om vergrendelings gebeurtenissen op te lossen.
 
@@ -33,9 +33,9 @@ De standaard drempel waarden voor account vergrendeling worden geconfigureerd me
 
 ### <a name="fine-grained-password-policy"></a>Nauw keurig wachtwoord beleid
 
-Met een verfijnd wachtwoord beleid (FGPPs) kunt u specifieke beperkingen voor wacht woord-en account vergrendelings beleid Toep assen op verschillende gebruikers in een domein. FGPP is alleen van invloed op gebruikers binnen een door Azure AD DS beheerd domein. Cloud gebruikers en domein gebruikers die zijn gesynchroniseerd met het door Azure AD DS beheerde domein vanuit Azure AD worden alleen beïnvloed door het wachtwoord beleid in azure AD DS. Hun accounts in azure AD of een on-premises Directory worden niet beïnvloed.
+Met een verfijnd wachtwoord beleid (FGPPs) kunt u specifieke beperkingen voor wacht woord-en account vergrendelings beleid Toep assen op verschillende gebruikers in een domein. FGPP is alleen van invloed op gebruikers binnen een beheerd domein. Cloud gebruikers en domein gebruikers die zijn gesynchroniseerd met het door Azure AD DS beheerde domein vanuit Azure AD worden alleen beïnvloed door het wachtwoord beleid in azure AD DS. Hun accounts in azure AD of een on-premises Directory worden niet beïnvloed.
 
-Beleids regels worden gedistribueerd via een groeps koppeling in het Azure AD DS Managed Domain en alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikers account dat al is vergrendeld, niet ontgrendeld.
+Beleids regels worden gedistribueerd via een groeps koppeling in het beheerde domein en alle wijzigingen die u aanbrengt, worden toegepast bij de volgende aanmelding van de gebruiker. Als u het beleid wijzigt, wordt een gebruikers account dat al is vergrendeld, niet ontgrendeld.
 
 Zie [wacht woord-en account vergrendelings beleid configureren][configure-fgpp]voor meer informatie over verfijnd wachtwoord beleid en de verschillen tussen gebruikers die rechtstreeks in azure AD DS zijn gemaakt en die zijn gesynchroniseerd vanuit Azure AD.
 
@@ -88,7 +88,7 @@ AADDomainServicesAccountManagement
 
 Zie [beleid voor wacht woord-en account vergrendeling configureren][configure-fgpp]voor meer informatie over verfijnd wachtwoord beleid voor het aanpassen van de drempel waarden voor account vergrendeling.
 
-Als u nog steeds problemen ondervindt met het toevoegen van uw VM aan het beheerde domein van Azure AD DS, [zoekt u hulp en opent u een ondersteunings ticket voor Azure Active Directory][azure-ad-support].
+Als u nog steeds problemen ondervindt met het toevoegen van uw VM aan het beheerde domein, [zoekt u hulp en opent u een ondersteunings ticket voor Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

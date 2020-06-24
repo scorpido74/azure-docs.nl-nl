@@ -13,5 +13,5 @@ ms.locfileid: "70844036"
 ---
 > [!IMPORTANT]
 > Azure Blockchain Workbench bevindt zich momenteel in de openbare review.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 > Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik het [Azure Block Chain-Forum](https://aka.ms/workbenchforum) voor ondersteuning.

@@ -4,11 +4,11 @@ description: Meer informatie over het verwijderen en implementeren van toepassin
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282508"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699835"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Toepassingen implementeren en verwijderen met behulp van Power shell
 
@@ -64,7 +64,7 @@ Als u het toepassings pakket lokaal wilt controleren, gebruikt u de cmdlet [test
 
 Met de opdracht [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) uploadt u het toepassings pakket naar het cluster installatie kopie archief.
 
-Stel dat u een toepassing bouwt en inpakt met de naam *mijn toepassing* in Visual Studio 2015. De naam van het toepassings type dat wordt weer gegeven in ApplicationManifest. XML is standaard ingesteld op ' MyApplicationType '.  Het toepassings pakket, dat het benodigde toepassings manifest, service manifesten en code/config/gegevens pakketten bevat, bevindt zich *in\<C:\Users\>username \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*. 
+Stel dat u een toepassing bouwt en inpakt met de naam *mijn toepassing* in Visual Studio 2015. De naam van het toepassings type die in de ApplicationManifest.xml wordt vermeld, is standaard ' MyApplicationType '.  Het toepassings pakket, dat het benodigde toepassings manifest, service manifesten en code/config/gegevens pakketten bevat, bevindt zich in *C:\Users \<username\> \Documents\Visual Studio 2015 \ Projects\MyApplication\MyApplication\pkg\Debug*. 
 
 Met de volgende opdracht wordt de inhoud van het toepassings pakket weer gegeven:
 
@@ -102,10 +102,10 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 Als het toepassings pakket groot is en/of veel bestanden heeft, kunt u [het comprimeren](service-fabric-package-apps.md#compress-a-package). De compressie vermindert de grootte en het aantal bestanden.
 Het gevolg is dat de registratie en het ongedaan maken van de registratie van het toepassings type sneller zijn. De upload tijd kan op dit moment langzamer zijn, met name als u de tijd opgeeft om het pakket te comprimeren. 
 
-Als u een pakket wilt comprimeren, gebruikt u dezelfde [copy-ServiceFabricApplicationPackage-](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) opdracht. Compressie kan worden gescheiden van het uploaden, met behulp `SkipCopy` van de vlag of samen met de upload bewerking. Het Toep assen van compressie op een gecomprimeerd pakket is niet op.
-Als u een gecomprimeerd pakket wilt decomprimeren, gebruikt u dezelfde [copy-ServiceFabricApplicationPackage-](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) opdracht met de `UncompressPackage` switch.
+Als u een pakket wilt comprimeren, gebruikt u dezelfde [copy-ServiceFabricApplicationPackage-](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) opdracht. Compressie kan worden gescheiden van het uploaden, met behulp van de `SkipCopy` vlag of samen met de upload bewerking. Het Toep assen van compressie op een gecomprimeerd pakket is niet op.
+Als u een gecomprimeerd pakket wilt decomprimeren, gebruikt u dezelfde [copy-ServiceFabricApplicationPackage-](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) opdracht met de `UncompressPackage` Switch.
 
-Met de volgende cmdlet wordt het pakket gecomprimeerd zonder dat het naar het archief met installatie kopieën wordt gekopieerd. Het pakket bevat nu gezipte bestanden voor `Code` de `Config` -en-pakketten. De toepassing en de service manifesten zijn niet ingepakt, omdat ze nodig zijn voor veel interne bewerkingen (zoals het delen van pakketten, de naam van het toepassings type en de versie extractie voor bepaalde validaties). Als u de manifesten inpakken, worden deze bewerkingen inefficiënt.
+Met de volgende cmdlet wordt het pakket gecomprimeerd zonder dat het naar het archief met installatie kopieën wordt gekopieerd. Het pakket bevat nu gezipte bestanden voor de- `Code` en- `Config` pakketten. De toepassing en de service manifesten zijn niet ingepakt, omdat ze nodig zijn voor veel interne bewerkingen (zoals het delen van pakketten, de naam van het toepassings type en de versie extractie voor bepaalde validaties). Als u de manifesten inpakken, worden deze bewerkingen inefficiënt.
 
 ```powershell
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -CompressPackage -SkipCopy
@@ -348,7 +348,7 @@ Zie [de afbeeldings store Connection String](service-fabric-image-store-connecti
 
 Probleem: [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) keer een time-out voor een groot toepassings pakket (volg orde van GB).
 Meld
-- Geef een grotere time-out op voor de opdracht [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) met `TimeoutSec` de para meter. De time-out is standaard 30 minuten.
+- Geef een grotere time-out op voor de opdracht [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) met de `TimeoutSec` para meter. De time-out is standaard 30 minuten.
 - Controleer de netwerk verbinding tussen de bron computer en het cluster. Als de verbinding langzaam is, kunt u overwegen om een computer met een betere netwerk verbinding te gebruiken.
 Als de client computer zich in een andere regio bevindt dan het cluster, kunt u overwegen om een client computer in een dichter of dezelfde regio als het cluster te gebruiken.
 - Controleer of u externe restricties kunt door lopen. Als het archief met installatie kopieën bijvoorbeeld is geconfigureerd voor het gebruik van Azure Storage, wordt het uploaden mogelijk beperkt.
@@ -356,8 +356,8 @@ Als de client computer zich in een andere regio bevindt dan het cluster, kunt u 
 Probleem: [het uploaden van het](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) pakket is voltooid, maar er is een time-out opgetreden in ServiceFabricApplicationType. Meld
 - [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën.
 De compressie vermindert de grootte en het aantal bestanden, waardoor de hoeveelheid verkeer wordt verminderd en het werk dat Service Fabric moet worden uitgevoerd. De upload bewerking kan langzamer verlopen (met name als u de compressie tijd opneemt), maar de registratie van het toepassings type te registreren en ongedaan te maken, zijn sneller.
-- Geef een grotere time-out op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) met `TimeoutSec` de para meter.
-- Geef `Async` switch op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). De opdracht wordt geretourneerd wanneer het cluster de opdracht accepteert en de registratie van het toepassings type asynchroon voortzet. Daarom is het niet nodig om in dit geval een hogere time-out op te geven. De opdracht [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) geeft een lijst van alle geregistreerde toepassings type versies en hun registratie status. U kunt deze opdracht gebruiken om te bepalen wanneer de registratie is voltooid.
+- Geef een grotere time-out op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) met de `TimeoutSec` para meter.
+- Geef `Async` Switch op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). De opdracht wordt geretourneerd wanneer het cluster de opdracht accepteert en de registratie van het toepassings type asynchroon voortzet. Daarom is het niet nodig om in dit geval een hogere time-out op te geven. De opdracht [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) geeft een lijst van alle geregistreerde toepassings type versies en hun registratie status. U kunt deze opdracht gebruiken om te bepalen wanneer de registratie is voltooid.
 
 ```powershell
 Get-ServiceFabricApplicationType
@@ -375,8 +375,8 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 Probleem: er is een time [-](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) out opgetreden voor een toepassings pakket met veel bestanden (volg orde van duizenden).
 Meld
 - [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën. De compressie vermindert het aantal bestanden.
-- Geef een grotere time-out op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) met `TimeoutSec` de para meter.
-- Geef `Async` switch op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). De opdracht wordt geretourneerd wanneer het cluster de opdracht accepteert en de registratie van het toepassings type asynchroon voortzet.
+- Geef een grotere time-out op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) met de `TimeoutSec` para meter.
+- Geef `Async` Switch op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). De opdracht wordt geretourneerd wanneer het cluster de opdracht accepteert en de registratie van het toepassings type asynchroon voortzet.
 Daarom is het niet nodig om in dit geval een hogere time-out op te geven. De opdracht [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) geeft een lijst van alle geregistreerde toepassings type versies en hun registratie status. U kunt deze opdracht gebruiken om te bepalen wanneer de registratie is voltooid.
 
 ```powershell

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/19/2018
 ms.author: allensu
-ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fba1f0b1f8160dece41c312b61cbc8ae9571436d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260153"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887020"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Azure CDN inhoud beperken per land/regio
 
@@ -42,7 +42,7 @@ Als u de functie voor het filteren van geo wilt gebruiken, selecteert u uw CDN-e
 
 Geef in het vak **pad** het relatieve pad op naar de locatie waar gebruikers toegang worden verleend of geweigerd. 
 
-U kunt geo-filtering Toep assen voor alle bestanden met een slash (/) of specifieke mappen selecteren door mappaden op te geven (bijvoorbeeld */pictures/*). U kunt ook geo-filtering Toep assen op één bestand (bijvoorbeeld */pictures/City.png*). Meerdere regels zijn toegestaan. Nadat u een regel hebt opgegeven, wordt er een lege rij weer gegeven waarin u de volgende regel kunt invoeren.
+U kunt geo-filtering Toep assen voor alle bestanden met een slash (/) of specifieke mappen selecteren door mappaden op te geven (bijvoorbeeld */pictures/*). U kunt ook geo-filtering Toep assen op één bestand (bijvoorbeeld */pictures/city.png*). Meerdere regels zijn toegestaan. Nadat u een regel hebt opgegeven, wordt er een lege rij weer gegeven waarin u de volgende regel kunt invoeren.
 
 Zo zijn alle volgende paden voor mappad geldig:   
 */*                                 
@@ -59,8 +59,8 @@ Selecteer in de lijst **actie** de optie **toestaan** of **blok keren**:
 - **Blok keren**: gebruikers uit de opgegeven landen/regio's hebben geen toegang tot de assets die zijn aangevraagd bij het recursieve pad. Als er geen andere opties voor het filteren van land/regio zijn geconfigureerd voor die locatie, worden alle andere gebruikers toegang verleend.
 
 Een geo-filter regel voor het blok keren van het pad */Photos/Strasbourg/* filtert bijvoorbeeld de volgende bestanden:     
-*http\//:\<endpoint>. azureedge.net/Photos/Strasbourg/1000.jpg*
-*http:\//\<eind punt>. azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http: \/ / \<endpoint> . azureedge.net/Photos/Strasbourg/1000.jpg* 
+ *http: \/ / \<endpoint> . azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>De landen/regio's definiëren
 Selecteer in de lijst **land codes** de landen/regio's die u wilt blok keren of toestaan van het pad. 

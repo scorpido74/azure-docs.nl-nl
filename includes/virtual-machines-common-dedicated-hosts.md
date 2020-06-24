@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128508"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902720"
 ---
 ## <a name="limitations"></a>Beperkingen
 
@@ -71,8 +71,7 @@ De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bi
 
 **Onderhouds beheer** biedt klanten een optie voor het overs laan van regel matige platform updates die zijn gepland op hun toegewezen hosts en pas deze toe op het tijdstip van hun keuze in een voortschrijdende periode van 35 dagen.
 
-> [!NOTE]
->  Onderhouds beheer is momenteel beschikbaar als open bare preview. Zie **updates beheren met onderhouds beheer met [cli](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) of [Power shell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)** voor meer informatie.
+Zie [platform updates beheren met onderhouds beheer](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)voor meer informatie.
 
 ## <a name="capacity-considerations"></a>Overwegingen bij capaciteitsbepaling
 

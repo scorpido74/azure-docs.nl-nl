@@ -4,15 +4,15 @@ description: Verbind Windows en Mac OS X-clients veilig met een virtueel netwerk
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdaa2fd1e435e8bf7ff4b17c7f8a15d5bd249d5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411777"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987173"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Een punt-naar-site-verbinding met een VNet configureren met RADIUS-verificatie: Power shell
 
@@ -54,7 +54,7 @@ Naast Active Directory kan een RADIUS-server ook worden geïntegreerd met andere
 ![Verbindings diagram-RADIUS](./media/point-to-site-how-to-radius-ps/radiusimage.png)
 
 > [!IMPORTANT]
->Alleen een VPN site-naar-site-verbinding kan worden gebruikt om on-premises verbinding te maken met een RADIUS-server. Een ExpressRoute-verbinding kan niet worden gebruikt.
+>Alleen een VPN site-naar-site-verbinding kan worden gebruikt om on-premises verbinding te maken met een RADIUS-server. Er kan geen ExpressRoute-verbinding worden gebruikt.
 >
 >
 
@@ -109,7 +109,7 @@ Declareer de waarden die u wilt gebruiken. Gebruik het volgende voorbeeld, en ve
   $GWIPconfName = "gwipconf"
   ```
 
-## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"> </a>de resource groep, het VNet en het open bare IP-adres maken
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a> de resource groep, het VNet en het open bare IP-adres maken
 
 Met de volgende stappen maakt u een resource groep en een virtueel netwerk in de resource groep met drie subnetten. Bij het vervangen van waarden is het belang rijk dat u de naam van het subnet van de gateway altijd ' GatewaySubnet '. Als u een andere naam kiest, mislukt het maken van de gateway.
 
@@ -143,7 +143,7 @@ Met de volgende stappen maakt u een resource groep en een virtueel netwerk in de
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"> </a>uw RADIUS-server instellen
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a> uw RADIUS-server instellen
 
 Voordat u de gateway van het virtuele netwerk maakt en configureert, moet uw RADIUS-server correct worden geconfigureerd voor authenticatie.
 
@@ -153,12 +153,12 @@ Voordat u de gateway van het virtuele netwerk maakt en configureert, moet uw RAD
 
 Het artikel [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) bevat richt lijnen over het configureren van een Windows RADIUS-server (NPS) voor AD-domein authenticatie.
 
-## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"> </a>de VPN-gateway maken
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a> de VPN-gateway maken
 
 Configureer en maak de VPN-gateway voor uw VNet.
 
 * De-gateway type moet VPN zijn en-VpnType moet RouteBased zijn.
-* Het kan tot 45 minuten duren voordat een VPN-gateway is voltooid, afhankelijk van de [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) die u selecteert.
+* Het kan tot 45 minuten duren voordat een VPN-gateway is voltooid, afhankelijk van de [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)   die u selecteert.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -166,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"> </a>de adres groep voor de RADIUS-server en de client toevoegen
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a> de adres groep voor de RADIUS-server en de client toevoegen
  
 * De-RadiusServer kan worden opgegeven met de naam of IP-adres. Als u de naam en de server on-premises opgeeft, kan de VPN-gateway de naam mogelijk niet omzetten. Als dat het geval is, is het beter om het IP-adres van de server op te geven. 
 * De-RadiusSecret moet overeenkomen met wat is geconfigureerd op uw RADIUS-server.
@@ -223,7 +223,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"> </a>het configuratie pakket voor de VPN-client downloaden en de VPN-client instellen
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a> het configuratie pakket voor de VPN-client downloaden en de VPN-client instellen
 
 Met de VPN-client configuratie kunnen apparaten verbinding maken met een VNet via een P2S-verbinding.Als u een VPN-client configuratie pakket wilt genereren en de VPN-client wilt instellen, raadpleegt u [een VPN-client configuratie voor RADIUS-verificatie maken](point-to-site-vpn-client-configuration-radius.md).
 

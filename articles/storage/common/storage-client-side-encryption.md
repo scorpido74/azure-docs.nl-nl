@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c07167a9f3a9194b7c45932ac749324429943ea9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93a142ddca360b3d85519a0531a221794ad3a892
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450119"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808824"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -61,7 +61,7 @@ Tijdens het versleutelen genereert de client bibliotheek een wille keurige initi
 > 
 > 
 
-Voor het downloaden van een versleutelde BLOB moet u de inhoud van de hele BLOB ophalen met behulp van de **DownloadTo**/**BlobReadStream** -methoden. De ingepakte CEK is gewrappt en gebruikt samen met de IV (opgeslagen als blob-meta gegevens in dit geval) om de ontsleutelde gegevens te retour neren aan de gebruikers.
+Voor het downloaden van een versleutelde BLOB moet u de inhoud van de hele BLOB ophalen met behulp van de **DownloadTo** / **BlobReadStream** -methoden. De ingepakte CEK is gewrappt en gebruikt samen met de IV (opgeslagen als blob-meta gegevens in dit geval) om de ontsleutelde gegevens te retour neren aan de gebruikers.
 
 Als u een wille keurig bereik (**DownloadRange** -methoden) in de versleutelde BLOB downloadt, moet u het bereik dat door de gebruikers wordt verstrekt, aanpassen om een klein aantal extra gegevens te krijgen dat kan worden gebruikt om het aangevraagde bereik te ontsleutelen.
 
@@ -106,7 +106,7 @@ In batch-bewerkingen wordt dezelfde KEK gebruikt voor alle rijen in die batch be
 > Als u query bewerkingen wilt uitvoeren, moet u een sleutel conflict Oplosser opgeven waarmee alle sleutels in de resultatenset kunnen worden omgezet. Als een entiteit in het query resultaat niet kan worden omgezet naar een provider, wordt een fout gegenereerd door de client bibliotheek. Voor elke query die projecties aan de server zijde uitvoert, voegt de client bibliotheek de speciale eigenschappen van de meta gegevens voor versleuteling (_ClientEncryptionMetadata1 en _ClientEncryptionMetadata2) standaard toe aan de geselecteerde kolommen.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met behulp van Azure Key Vault kunnen gebruikers sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md) voor meer informatie.
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met behulp van Azure Key Vault kunnen gebruikers sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md) voor meer informatie.
 
 De Storage-client bibliotheek gebruikt de Key Vault-kern bibliotheek om een gemeen schappelijk Framework te bieden in azure voor het beheren van sleutels. Gebruikers krijgen ook het extra voor deel van het gebruik van de Key Vault extensies-bibliotheek. De uitbrei dingen bibliotheek biedt nuttige functionaliteit rond eenvoudige en naadloze symmetrische/RSA-lokale en Cloud sleutel providers en aggregatie en caching.
 

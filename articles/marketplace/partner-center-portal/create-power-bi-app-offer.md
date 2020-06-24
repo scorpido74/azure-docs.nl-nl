@@ -160,7 +160,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 7. Privacybeleid
 8. Naam van aanbieding
 9. Samenvatting
-10. Beschrijving
+10. Description
 11. Scherm afbeeldingen/Video's
 
 ### <a name="name"></a>Name
@@ -177,7 +177,7 @@ De naam:
 
 Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Beschrijving
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

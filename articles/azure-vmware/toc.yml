@@ -16,6 +16,8 @@
       href: tutorial-access-private-cloud.md
     - name: 5- Een privécloud schalen
       href: tutorial-scale-private-cloud.md
+    - name: 6 - Een inhoudsbibliotheek maken om een VM in te implementeren
+      href: tutorial-deploy-vm-content-library.md
 - name: Concepten
   items:
     - name: Privéclouds en -clusters
@@ -28,6 +30,8 @@
       href: concepts-identity.md
     - name: Upgrades voor privéclouds
       href: concepts-upgrades.md
+    - name: API-beheer voor AVS-VM's
+      href: concepts-api-management.md
 - name: Instructiegidsen
   items:
     - name: HCX instellen

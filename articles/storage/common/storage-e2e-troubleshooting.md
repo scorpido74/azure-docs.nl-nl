@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: normesta
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4b0145514a884c43ef18518cf25a2a78b1fc3aa3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680369"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809057"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-end-probleemoplossing op basis van metrische gegevens en logboekregistratie van Azure Storage, AzCopy en Message Analyzer
 
@@ -90,11 +90,11 @@ Eerst moet u de logboeken en metrische gegevens van Azure Storage configureren, 
 
 ### <a name="configure-net-client-side-logging"></a>Logboek registratie voor .NET-client zijde configureren
 
-Als u logboek registratie aan client zijde voor een .NET-toepassing wilt configureren, schakelt u .NET Diagnostics in het configuratie bestand van de toepassing in (web. config of app. config). Zie [logboek registratie aan de client zijde met de .net Storage-client bibliotheek](https://msdn.microsoft.com/library/azure/dn782839.aspx) en [logboek registratie aan client zijde met de Microsoft Azure Storage SDK voor Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) op MSDN voor meer informatie.
+Als u logboek registratie aan client zijde voor een .NET-toepassing wilt configureren, schakelt u .NET-diagnostiek in het configuratie bestand van de toepassing in (web.config of app.config). Zie [logboek registratie aan de client zijde met de .net Storage-client bibliotheek](https://msdn.microsoft.com/library/azure/dn782839.aspx) en [logboek registratie aan client zijde met de Microsoft Azure Storage SDK voor Java](https://msdn.microsoft.com/library/azure/dn782844.aspx) op MSDN voor meer informatie.
 
 Het logboek aan de client zijde bevat gedetailleerde informatie over hoe de client de aanvraag voorbereidt en de respons ontvangt en verwerkt.
 
-In de opslag-client bibliotheek worden logboek gegevens aan de client zijde opgeslagen op de locatie die is opgegeven in het configuratie bestand van de toepassing (web. config of app. config).
+In de opslag-client bibliotheek worden logboek gegevens aan de client zijde opgeslagen op de locatie die is opgegeven in het configuratie bestand van de toepassing (web.config of app.config).
 
 ### <a name="collect-a-network-trace"></a>Een netwerk tracering verzamelen
 
@@ -320,10 +320,10 @@ Nu u bekend bent met het gebruik van Message Analyzer om uw logboek gegevens te 
 | Een probleem met de verificatie van een SAS (Shared Access Signature) |AzureStorageLog. RequestStatus = = "SASAuthorizationError" |Netwerk |
 | HTTP 409-berichten (conflict) |HTTP. Response. status code = = 409 |Netwerk |
 | 409 (alle) |* Status code = = 409 |Alles |
-| Lage PercentSuccess of logboek vermeldingen van de analyse hebben bewerkingen met de transactie status ClientOtherErrors |AzureStorageLog. RequestStatus = = "ClientOtherError" |Server |
-| Nagle-waarschuwing |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) en (AzureStorageLog. RequestPacketSize <1460) en (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |Server |
+| Lage PercentSuccess of logboek vermeldingen van de analyse hebben bewerkingen met de transactie status ClientOtherErrors |AzureStorageLog. RequestStatus = = "ClientOtherError" |server |
+| Nagle-waarschuwing |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) en (AzureStorageLog. RequestPacketSize <1460) en (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |server |
 | Tijds bereik in server-en netwerk logboeken |#Timestamp >= 2014-10-20T16:36:38 en #Timestamp <= 2014-10-20T16:36:39 |Server, netwerk |
-| Tijds bereik in Server logboeken |AzureStorageLog. time stamp >= 2014-10-20T16:36:38 en AzureStorageLog. time stamp <= 2014-10-20T16:36:39 |Server |
+| Tijds bereik in Server logboeken |AzureStorageLog. time stamp >= 2014-10-20T16:36:38 en AzureStorageLog. time stamp <= 2014-10-20T16:36:39 |server |
 
 ## <a name="next-steps"></a>Volgende stappen
 

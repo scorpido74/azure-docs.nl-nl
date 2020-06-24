@@ -30,7 +30,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: Waarschuwingen verzenden naar OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: Waarschuwingen voor resourcestatusgebeurtenissen configureren
+    - name: Resourcestatuswaarschuwingen configureren met de Azure-portal
+      href: resource-health-alert-monitor-guide.md
+    - name: Resourcestatuswaarschuwingen configureren met Resource Manager-sjablonen
       href: resource-health-alert-arm-template-guide.md
 - name: Naslaginformatie
   items:

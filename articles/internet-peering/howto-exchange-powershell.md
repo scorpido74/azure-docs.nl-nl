@@ -5,15 +5,15 @@ description: Een Exchange-peering maken of wijzigen met behulp van Power shell
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 23c905f148da614c7785b61b76abed191206cd90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c0620875e7da4582156080c4a52fd6fbe0e573c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678601"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700243"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>Een Exchange-peering maken of wijzigen met behulp van Power shell
 

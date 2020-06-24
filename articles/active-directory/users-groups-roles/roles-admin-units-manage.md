@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a4a0dfaeda18b3f68ddc3c7cc7333b8c994d174
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00ed10ece042446e941832b27c58b0032f852ad9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684921"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732256"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Beheer eenheden in Azure Active Directory beheren
 
@@ -78,7 +78,7 @@ In azure AD kunt u een administratieve eenheid verwijderen die u niet meer nodig
 
 ### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-1. Ga in de Azure Portal naar **Azure AD** > -**beheer eenheden**. 
+1. Ga in de Azure Portal naar **Azure AD**-  >  **beheer eenheden**. 
 1. Selecteer de beheer eenheid die u wilt verwijderen en selecteer vervolgens **verwijderen**. 
 1. Selecteer **Ja**om te bevestigen dat u de beheer eenheid wilt verwijderen. De administratieve eenheid wordt verwijderd.
 

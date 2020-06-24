@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7b15f79d8b63c13718d309a16eb9b71648699a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654724"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734313"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Zwakke versleuteling en wachtwoord-hash-synchronisatie uitschakelen om een Azure AD Domain Services beheerd domein te beveiligen
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Zwakke versleuteling en wachtwoord-hash-synchronisatie uitschakelen om een Azure Active Directory Domain Services beheerd domein te beveiligen
 
 Azure Active Directory Domain Services (Azure AD DS) maakt standaard gebruik van code ringen, zoals NTLM v1 en TLS v1. Deze code ringen zijn mogelijk vereist voor sommige oudere toepassingen, maar worden beschouwd als zwak en kunnen worden uitgeschakeld als u deze niet nodig hebt. Als u een on-premises hybride verbinding hebt met Azure AD Connect, kunt u de synchronisatie van NTLM-wachtwoord hashes ook uitschakelen.
 
@@ -33,7 +33,7 @@ U hebt de volgende resources nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services beheerd domein maken en configureren][create-azure-ad-ds-instance].
 * Installeer en configureer Azure PowerShell.
     * Als dat nodig is, volgt u de instructies om [de Azure PowerShell-module te installeren en verbinding te maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
     * Zorg ervoor dat u zich aanmeldt bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount][Connect-AzAccount] .
@@ -67,17 +67,17 @@ Definieer vervolgens *DomainSecuritySettings* voor het configureren van de volge
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-Pas ten slotte de gedefinieerde beveiligings instellingen toe op de Azure AD DS beheerde domein met de cmdlet [set-AzResource][Set-AzResource] . Geef de Azure AD DS-resource op uit de eerste stap en de beveiligings instellingen van de vorige stap.
+Pas tot slot de gedefinieerde beveiligings instellingen toe op het beheerde domein met behulp van de cmdlet [set-AzResource][Set-AzResource] . Geef de Azure AD DS-resource op uit de eerste stap en de beveiligings instellingen van de vorige stap.
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-Het duurt enkele ogen blikken voordat de beveiligings instellingen worden toegepast op het beheerde domein van Azure AD DS.
+Het duurt enkele ogen blikken voordat de beveiligings instellingen worden toegepast op het beheerde domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [How to Synchronizing object and credentials in an Azure AD DS Managed Domain][synchronization](Engelstalig) voor meer informatie over het synchronisatie proces.
+Zie [hoe objecten en referenties worden gesynchroniseerd in een beheerd domein][synchronization]voor meer informatie over het synchronisatie proces.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

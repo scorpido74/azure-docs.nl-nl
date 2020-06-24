@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: ace818adb4c5157675ac3b1d88f5df2ef61d69ee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a264e40814952577d3a7db3b36c168dfc396f388
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042202"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249158"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-multi tenant-app
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -80,7 +80,7 @@ Voor het voltooien van deze zelfstudie moet u ervoor zorgen dat aan de volgende 
 
 In deze zelf studie wordt de analyse uitgevoerd op de verkoop gegevens van het ticket. In de huidige stap genereert u ticket gegevens voor alle tenants.  Later worden deze gegevens geëxtraheerd voor analyse. *Zorg ervoor dat u de batch met tenants hebt ingericht zoals eerder beschreven, zodat u een zinvolle hoeveelheid gegevens hebt*. Een voldoende grote hoeveelheid gegevens kan een aantal verschillende inkopende patronen voor tickets bieden.
 
-1. Open *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*in **Power shell ISE**en stel de volgende waarde in:
+1. Open in **Power shell ISE**de *Analytics\Demo-TenantAnalytics.ps1. ..\Learning Modules\Operational Analytics\Tenant *en stel de volgende waarde in:
     - **$DemoScenario**  =  **1** koop tickets voor gebeurtenissen op alle locaties
 2. Druk op **F5** om het script uit te voeren en een ticket-inkoop geschiedenis te maken voor elke gebeurtenis in elke locatie.  Het script wordt gedurende enkele minuten uitgevoerd om tien duizenden tickets te genereren.
 
@@ -90,7 +90,7 @@ Vaak bestaan er talrijke transactionele Shard-data bases die samen alle Tenant g
 In de volgende stappen implementeert u de Analytics Store, die **tenantanalytics**wordt genoemd. U kunt ook vooraf gedefinieerde tabellen implementeren die verderop in de zelf studie worden ingevuld:
 1. Open in Power shell ISE *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Stel de variabele $DemoScenario in het script in die overeenkomt met de keuze van de analyse Store. Voor Learning doeleinden wordt het gebruik van de data base zonder column Store aanbevolen.
-    - Als u SQL database wilt gebruiken zonder column Store, stelt u **$DemoScenario**  =  **2** in
+    - Als u SQL Database wilt gebruiken zonder column Store, stelt u **$DemoScenario**  =  **2** in
     - Als u SQL database wilt gebruiken met column Store, stelt u **$DemoScenario**  =  **3** in  
 3. Druk op **F5** om het demo script uit te voeren (waarmee het script *Deploy-TenantAnalytics \<XX> . ps1* wordt aangeroepen) waarmee de Tenant-analyse opslag wordt gemaakt. 
 

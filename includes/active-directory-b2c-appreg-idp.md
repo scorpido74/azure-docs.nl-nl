@@ -12,14 +12,14 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 06/02/2020
 ms.locfileid: "84317760"
 ---
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u gebruikmaken van onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere **toepassingen (** verouderd). [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
+Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuwe uniforme ervaring voor **App-registraties** of de verouderde ervaring **Toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
-1. Selecteer **app-registraties**en selecteer vervolgens **nieuwe registratie**.
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *testapp1*.
 1. Selecteer **accounts in een organisatorische Directory of een id-provider**.
 1. Onder **omleidings-URI**selecteert u **Web**en voert u `https://jwt.ms` in het tekstvak URL in.
@@ -28,9 +28,9 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u gebruikm
 
 Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekennings stroom in:
 
-1. Selecteer onder **beheren**de optie **verificatie**.
-1. Selecteer **de nieuwe ervaring uitproberen** (indien weer gegeven).
-1. Schakel onder **impliciete toekenning**de selectie vakjes **toegangs tokens** en **id-tokens** in.
+1. Selecteer **Verificatie** onder **Beheren**.
+1. Selecteer **De nieuwe ervaring proberen** (indien weergegeven).
+1. Schakel onder **Impliciete toekenning** de selectievakjes **Toegangstokens** en **Id-tokens** in.
 1. Selecteer **Opslaan**.
 
 #### <a name="applications-legacy"></a>[Toepassingen (verouderd)](#tab/applications-legacy/)
@@ -40,6 +40,6 @@ Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toe
 1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld *testapp1*.
-1. Selecteer **Ja**voor **Web-app/Web-API**.
+1. Selecteer **Ja** bij **Web-app/web-API**.
 1. Voer bij **antwoord-URL**`https://jwt.ms`
 1. Selecteer **Maken**.

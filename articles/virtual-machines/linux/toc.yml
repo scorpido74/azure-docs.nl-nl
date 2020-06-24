@@ -157,8 +157,16 @@
       href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: Concepten
   items:
-    - name: Installatiekopieën
-      href: shared-image-galleries.md
+    - name: Imaging
+      items:
+        - name: Overzicht
+          href: imaging.md
+        - name: Inrichten
+          href: provisioning.md
+        - name: Gedeelde installatiekopiegalerieën
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Regio's
@@ -415,6 +423,50 @@
     - name: Installatiekopieën gebruiken
       displayName: 'SIG, AMI, image'
       items:
+        - name: Distributiespecifieke vereisten
+          items:
+            - name: Algemene stappen
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: Cloud-init gebruiken
+          items:
+            - name: Overzicht van cloud-init
+              href: using-cloud-init.md
+            - name: Grondige kennis
+              href: cloud-init-deep-dive.md
+            - name: Problemen oplossen
+              href: cloud-init-troubleshooting.md
+            - name: VM-hostnaam configureren
+              href: cloudinit-update-vm-hostname.md
+            - name: Pakketten in een virtuele machine bijwerken
+              href: cloudinit-update-vm.md
+            - name: Een gebruiker toevoegen aan een virtuele machine
+              href: cloudinit-add-user.md
+            - name: Wisselbestand configureren
+              href: cloudinit-configure-swapfile.md
+            - name: Een bestaand bash-script uitvoeren
+              href: cloudinit-bash-script.md
+            - name: Een bestaande virtuele machine voorbereiden voor cloud-init
+              href: cloudinit-prepare-custom-image.md
+        - name: Installatiekopieën maken zonder een
+          href: no-agent.md
+        - name: Inrichten van Linux-agent uitschakelen
+          href: disable-provisioning.md
         - name: Gedeelde installatiekopiegalerieën
           items:
             - name: CLI
@@ -480,8 +532,6 @@
               href: ../image-version-encryption.md
         - name: Functie voor het maken van installatiekopieën (preview)
           items:
-            - name: Overzicht
-              href: image-builder-overview.md
             - name: Azure CLI gebruiken
               href: image-builder.md
             - name: ARM-sjabloonreferentie
@@ -495,27 +545,7 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Installatiekopieën zoeken en gebruiken
           href: cli-ps-findimage.md
-        - name: Aangepaste installatiekopie maken
-          items:
-            - name: Algemene stappen
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: Een virtuele machine vastleggen in een installatiekopie
+        - name: Virtuele machine vastleggen in beheerde installatiekopie
           href: capture-image.md
         - name: Een installatiekopie maken met Packer
           href: build-image-with-packer.md
@@ -813,22 +843,6 @@
               href: /azure/developer/terraform/install-configure
             - name: Een volledige VM maken
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: Cloud-init
-          items:
-            - name: Overzicht van cloud-init
-              href: using-cloud-init.md
-            - name: VM-hostnaam configureren
-              href: cloudinit-update-vm-hostname.md
-            - name: Pakketten in een virtuele machine bijwerken
-              href: cloudinit-update-vm.md
-            - name: Een gebruiker toevoegen aan een virtuele machine
-              href: cloudinit-add-user.md
-            - name: Wisselbestand configureren
-              href: cloudinit-configure-swapfile.md
-            - name: Een bestaand bash-script uitvoeren
-              href: cloudinit-bash-script.md
-            - name: Een bestaande virtuele machine voorbereiden voor cloud-init
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:

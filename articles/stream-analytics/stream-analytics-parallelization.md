@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: f8a6e0b9f5cc63f79dcd57765f30c527382d51ca
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8a86c1df5925097fa85d09590b59f8f30fde41d4
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193352"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296318"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Gebruik query parallel Lise ring in Azure Stream Analytics
 In dit artikel leest u hoe u parallel Lise ring in Azure Stream Analytics kunt gebruiken. U leert hoe u Stream Analytics taken kunt schalen door het configureren van invoer partities en het afstemmen van de definitie van de analyse query.
@@ -24,13 +24,13 @@ Een Stream Analytics taak definitie bevat ten minste één streaming-invoer, een
 ## <a name="partitions-in-inputs-and-outputs"></a>Partities in invoer en uitvoer
 Met partitioneren kunt u gegevens in subsets verdelen op basis van een [partitie sleutel](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#partitions). Als uw invoer (bijvoorbeeld Event Hubs) is gepartitioneerd met een sleutel, is het raadzaam om deze partitie sleutel op te geven wanneer u invoer toevoegt aan uw Stream Analytics-taak. Het schalen van een Stream Analytics taak maakt gebruik van partities in de invoer en uitvoer. Een Stream Analytics taak kan verschillende partities parallel gebruiken en schrijven, waardoor de door Voer wordt verhoogd. 
 
-### <a name="inputs"></a>Invoer
+### <a name="inputs"></a>Invoerwaarden
 Alle Azure Stream Analytics invoer kan gebruikmaken van partitionering:
 -   EventHub (de partitie sleutel expliciet moet worden ingesteld met het sleutel woord PARTITION BY als u het compatibiliteits niveau 1,1 of lager gebruikt)
 -   IoT Hub (moet de partitie sleutel expliciet instellen met het sleutel woord PARTITION BY als u het compatibiliteits niveau 1,1 of lager gebruikt)
 -   Blob Storage
 
-### <a name="outputs"></a>Uitvoer
+### <a name="outputs"></a>Uitvoerwaarden
 
 Wanneer u werkt met Stream Analytics, kunt u gebruikmaken van partitionering in de uitvoer:
 -   Azure Data Lake Storage
@@ -290,7 +290,7 @@ De [Event hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/e
 
 [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) uitvoer van stream Analytics is bijgewerkt voor het gebruik van systeem eigen integratie onder [compatibiliteits niveau 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Compatibiliteits niveau 1,2 maakt aanzienlijk hogere door Voer en vermindert het gebruik van RU in vergelijking met 1,1. Dit is het standaard compatibiliteits niveau voor nieuwe taken. De oplossing maakt gebruik van CosmosDB-containers die zijn gepartitioneerd op/deviceId en de rest van de oplossing is identiek geconfigureerd.
 
-Alle [streaming bij Azure-voor beelden van gegevens stromen](https://github.com/Azure-Samples/streaming-at-scale) gebruiken een event hub die wordt gevoed door test clients te simuleren als invoer. Elke invoer gebeurtenis is een 1 KB JSON-document, waarmee geconfigureerde opname tarieven worden omgezet in doorvoer tarieven (1 MB/s, 5 MB/s en 10 MB/s). Gebeurtenissen simuleren een IoT-apparaat dat de volgende JSON-gegevens verzendt (in een Inge kort formulier) voor Maxi maal 1K apparaten:
+Alle [streaming bij Azure-voor beelden van gegevens stromen](https://github.com/Azure-Samples/streaming-at-scale) gebruiken een event hub als invoer die wordt ingevoerd door test-clients te simuleren. Elke invoer gebeurtenis is een 1 KB JSON-document, waarmee geconfigureerde opname tarieven worden omgezet in doorvoer tarieven (1 MB/s, 5 MB/s en 10 MB/s). Gebeurtenissen simuleren een IoT-apparaat dat de volgende JSON-gegevens verzendt (in een Inge kort formulier) voor Maxi maal 1K apparaten:
 
 ```
 {

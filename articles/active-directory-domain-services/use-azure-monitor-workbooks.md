@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654457"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733395"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>Beveiligings controle gebeurtenissen in Azure AD Domain Services controleren met behulp van Azure Monitor werkmappen
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Beveiligings controle gebeurtenissen in Azure Active Directory Domain Services controleren met behulp van Azure Monitor werkmappen
 
 Als u de status van uw Azure Active Directory Domain Services (Azure AD DS) beheerde domein wilt begrijpen, kunt u beveiligings controle gebeurtenissen inschakelen. Deze beveiligings controle gebeurtenissen kunnen vervolgens worden gecontroleerd met behulp van Azure Monitor werkmappen die tekst, analyse query's en para meters in uitgebreide interactieve rapporten combi neren. Azure AD DS bevat werkmap sjablonen voor beveiligings overzicht en account activiteit waarmee u controle gebeurtenissen kunt bewaken en uw omgeving beheert.
 
@@ -31,7 +31,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Beveiligings controle gebeurtenissen ingeschakeld voor uw Azure Active Directory Domain Services beheerde domein waarmee gegevens worden gestreamd naar een Log Analytics-werk ruimte.
     * Schakel, indien nodig, [beveiligings controles in voor Azure Active Directory Domain Services][enable-security-audits].
 

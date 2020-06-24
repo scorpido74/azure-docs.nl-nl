@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257509"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699189"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analyseer het Deployment Planner rapport voor VMware-nood herstel naar Azure
 
@@ -178,7 +178,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 
 **VM-naam**: de naam of het IP-adres van de virtuele machine dat wordt gebruikt in het bestand dat is opgegeven voor VMListFile wanneer een rapport wordt gegenereerd. Deze kolom bevat ook de schijven (VMDK's) die aan de virtuele machines zijn gekoppeld. Om onderscheid te maken tussen virtuele machines van vCenter met dubbele namen of IP-adressen, bevatten de namen de naam van de ESXi-host. De vermelde ESXi-host is de host waar de virtuele machine werd geplaatst op het moment van detectie door het hulpprogramma tijdens de profileringsperiode.
 
-**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja\***. **Ja** \* is voor exemplaren waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
+**VM-compatibiliteit**: de mogelijke waarden zijn **Ja** en **Ja\***. **Ja** \* is voor instanties waarin de virtuele machine geschikt is voor [Premium-ssd's](../virtual-machines/windows/disks-types.md). Het hoge geprofileerde verloop of de IOPS-schijf komt overeen met categorie P20 of P30, maar de grootte van de schijf zorgt ervoor dat P10 of P20 wordt toegewezen. Het opslagaccount bepaalt aan welk schijftype voor Premium Storage een schijf wordt toegewezen, op basis van de grootte. Bijvoorbeeld:
 * <128 GB is een P10.
 * 128 GB tot 256 GB is een P15
 * 256 GB tot 512 GB is een P20.
@@ -186,7 +186,7 @@ Het is mogelijk dat u om wat voor reden dan ook niet meer dan x Mbps bandbreedte
 * 1025 GB tot 2048 GB is een P40.
 * 2049 GB tot 4095 GB is een P50.
 
-Als bijvoorbeeld de eigenschappen van de werk belasting van een schijf in de categorie P20 of P30 worden geplaatst, maar de grootte ervan wordt toegewezen aan een lager type Premium-opslag schijf, markeert het hulp programma die virtuele machine als **Ja**\*. Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
+Als bijvoorbeeld de eigenschappen van de werk belasting van een schijf in de categorie P20 of P30 worden geplaatst, maar de grootte ervan wordt toegewezen aan een lager type Premium-opslag schijf, markeert het hulp programma die virtuele machine als **Ja** \* . Het hulpprogramma adviseert ook om ofwel de grootte van de bronschijf te wijzigen zodat deze overeenkomt met het schijftype voor Premium Storage of de post-failover van het doelschijftype te wijzigen.
 
 **Opslagtype**: Standard of Premium.
 
@@ -269,7 +269,7 @@ Premium P10 of P15 schijf | 32 kB of meer | 8 MB/s | 672 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 8 kB    | 5 MB/s | 421 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer | 20 MB/s | 1684 GB per schijf
 
-**brongegevensverloop** | **Maximumaantal**
+**brongegevensverloop** | **Maximum limiet**
 ---|---
 Piekgegevensverloop over alle schijven op een VM | 54 MB/s
 Maximumgegevensverloop per dag dat wordt ondersteund door een processerver | 2 TB

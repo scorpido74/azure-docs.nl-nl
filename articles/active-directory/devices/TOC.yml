@@ -35,6 +35,8 @@
 - name: Instructiegidsen
   expanded: false
   items:
+    - Name: Uw Azure AD-apparaatimplementatie plannen
+      href: plan-device-deployment.md
     - name: Uw implementatie van Azure AD-deelname plannen
       href: azureadjoin-plan.md
     - name: Lokale beheerders toewijzen aan apparaten die zijn gekoppeld aan Azure AD

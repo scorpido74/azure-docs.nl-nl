@@ -58,7 +58,7 @@ ms.locfileid: "80272845"
 
 ### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
 
-|Veld|Gegevenstype|Beschrijving|
+|Veld|Gegevenstype|Description|
 |----|----|----|
 |**AlertDisplayName**|Tekenreeks|De weergave naam van de waarschuwing.|
 |**AlertType**|Tekenreeks|Het type waarschuwing. Waarschuwingen van hetzelfde type moeten dezelfde waarde hebben. Dit veld is een sleutel reeks die het type waarschuwing vertegenwoordigt en niet van een waarschuwings exemplaar. Alle waarschuwings exemplaren van dezelfde detectie logica/analyse moeten dezelfde waarde voor het waarschuwings type hebben.|
@@ -71,7 +71,7 @@ ms.locfileid: "80272845"
 |**IsIncident**|Booleaanse waarde|Dit veld bepaalt of de waarschuwing een incident (een samengestelde groepering van verschillende waarschuwingen) of een enkele waarschuwing is. De standaard waarde voor het veld is ' false ' (wat betekent dat het een enkele waarschuwing is).|
 |**ProcessingEndTime**|DateTime|Het tijdstip waarop de waarschuwing voor de eind gebruiker toegankelijk is in het oorspronkelijke product dat de waarschuwing heeft.|
 |**ProductName**|Tekenreeks|De naam van het product dat deze waarschuwing heeft gepubliceerd (Azure Security Center, Azure ATP, micro soft Defender ATP, O365 ATP, MCAS, enzovoort).|
-|**RemediationSteps**|Orderverzamellijst<String>|Hand matige actie-items die moeten worden uitgevoerd om de waarschuwing te herstellen.|
+|**RemediationSteps**|Lijst<String>|Hand matige actie-items die moeten worden uitgevoerd om de waarschuwing te herstellen.|
 |**ResourceIdentifiers**|Lijst (resource-Id's)|De resource-id's voor deze waarschuwing die kunnen worden gebruikt om de waarschuwing te sturen naar de juiste product blootstellings groep (Tenant, werk ruimte, abonnement etc.). Er kunnen meerdere id's van hetzelfde type per waarschuwing zijn.|
 |**Ernst**|Enum|De ernst van de waarschuwing, zoals gerapporteerd door de provider. Mogelijke waarden: informatief, laag, gemiddeld en hoog.|
 |**StartTimeUtc**|DateTime|De tijd van de eerste gebeurtenis of activiteit die in de waarschuwing is opgenomen. Het veld moet een teken reeks zijn die voldoet aan de ISO8601-indeling, inclusief informatie over de UTC-tijd zone.|

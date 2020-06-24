@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261513"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698625"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health bewerkingen
 In dit onderwerp worden de verschillende bewerkingen beschreven die u kunt uitvoeren met behulp van Azure Active Directory (Azure AD) Connect Health.
@@ -74,7 +74,7 @@ Azure AD Connect Health voor Active Directory Federation Services (AD FS) en Azu
 2. Op de Blade **Server** klikt u op de actie balk op **verwijderen**.
 ![Scherm opname van Azure AD Connect Health server verwijderen](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Bevestig door de naam van de server in het bevestigings venster te typen.
-4. Klik op **verwijderen**.
+4. Klik op **Verwijderen**.
 
 Azure AD Connect Health voor Azure Active Directory Domain Services:
 
@@ -82,7 +82,7 @@ Azure AD Connect Health voor Azure Active Directory Domain Services:
 2. Selecteer de domein controller die u wilt verwijderen.
 3. Klik op de actie balk op **verwijderen geselecteerd**.
 4. Bevestig de actie om de server te verwijderen.
-5. Klik op **verwijderen**.
+5. Klik op **Verwijderen**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Een service-exemplaar verwijderen van Azure AD Connect Health Service
 In sommige gevallen wilt u mogelijk een service-exemplaar verwijderen. Dit is wat u moet weten om een service-exemplaar te verwijderen uit de Azure AD Connect Health-Service.
@@ -99,7 +99,7 @@ Wanneer u een service-exemplaar verwijdert, moet u rekening houden met het volge
 2. Klik op de Blade **service** op de actie balk op **verwijderen**. 
 ![Scherm opname van Azure AD Connect Health Service verwijderen](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Bevestig door de service naam in het bevestigings venster te typen (bijvoorbeeld: sts.contoso.com).
-4. Klik op **verwijderen**.
+4. Klik op **Verwijderen**.
    <br><br>
 
 [//]: # (Het gedeelte voor het starten van RBAC)
@@ -136,7 +136,7 @@ Als u een gebruiker toegang wilt geven tot het niveau *alle service-exemplaren* 
 2. Selecteer **Toevoegen**.
 3. Selecteer in het deel venster **een rol selecteren** een rol (bijvoorbeeld **eigenaar**).<br>
    ![Scherm opname van het venster Azure AD Connect Health RBAC-gebruikers](./media/how-to-connect-health-operations/RBAC_add.png)
-4. Typ de naam of id van de doel gebruiker of-groep. U kunt een of meer gebruikers of groepen tegelijk selecteren. Klik op **selecteren**.
+4. Typ de naam of id van de doel gebruiker of-groep. U kunt een of meer gebruikers of groepen tegelijk selecteren. Klik op **Selecteren**.
    ![Scherm opname van het venster Azure AD Connect Health RBAC-gebruikers](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. Selecteer **OK**.<br>
 6. Nadat de roltoewijzing is voltooid, worden de gebruikers en groepen weer gegeven in de lijst.<br>

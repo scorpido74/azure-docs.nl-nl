@@ -1,5 +1,5 @@
 ---
-title: Opslag referentie voor Azure-bestands shares
+title: Opslagverwijzing voor Azure-bestandsshares
 description: Zoek Azure Storage API-referentie, leesmij-bestanden en client bibliotheek pakketten.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 06/02/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: d995e66c2bf3bc1cb1bd0cd93dfc2a0739ab692b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346022"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976520"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Opslag referentie voor Azure-bestands shares
+# <a name="azure-file-shares-storage-reference"></a>Opslagverwijzing voor Azure-bestandsshares
 
 Zoek naar Azure file shares Storage API Reference, bibliotheek pakketten, leesmij-bestanden en aan de slag-artikelen.
 
@@ -66,8 +66,8 @@ De volgende tabel bevat Naslag informatie en voorbeeld documentatie voor de pyth
 
 |  Versie  | Referentie documentatie | Pakket | Snelstart |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure-bestands shares client bibliotheek V12 voor python](/python/api/overview/azure/storage-file-share-readme) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Voorbeelden](/python/api/overview/azure/storage-file-share-readme#examples) |
-| 2.x | [Azure-Storage-File](/python/api/azure-storage-file/?view=azure-python-previous) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Ontwikkelen voor Azure Files met Python](/azure/storage/files/storage-python-how-to-use-file-storage) |
+| 12. x | [Azure Storage-client bibliotheken V12 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Voorbeelden](/python/api/overview/azure/storage-file-share-readme#examples) |
+| 2.x | [Azure Storage-client bibliotheken v2 voor python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Pakket (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Ontwikkelen voor Azure Files met Python](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>Java script-client bibliotheken
 

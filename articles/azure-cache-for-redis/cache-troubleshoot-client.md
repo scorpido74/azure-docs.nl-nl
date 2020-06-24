@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277945"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698190"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Problemen met Azure Cache voor Redis aan clientzijde oplossen
 
@@ -30,7 +30,7 @@ Geheugen druk op de client computer leidt naar alle soorten prestatie problemen 
 Geheugen druk op de client detecteren:
 
 - Controleer het geheugen gebruik op de computer om er zeker van te zijn dat deze niet groter is dan het beschik bare geheugen.
-- Het prestatie meter item `Page Faults/Sec` van de client bewaken. Tijdens normale werking hebben de meeste systemen enkele pagina fouten. Pieken in pagina fouten die overeenkomen met time-outs van aanvragen kunnen de geheugen belasting aangeven.
+- Het prestatie meter item van de client bewaken `Page Faults/Sec` . Tijdens normale werking hebben de meeste systemen enkele pagina fouten. Pieken in pagina fouten die overeenkomen met time-outs van aanvragen kunnen de geheugen belasting aangeven.
 
 Hoge geheugen druk op de client kan op verschillende manieren worden verminderd:
 
@@ -39,17 +39,17 @@ Hoge geheugen druk op de client kan op verschillende manieren worden verminderd:
 
 ## <a name="traffic-burst"></a>Verkeers burst
 
-Bursts van verkeer in combi natie `ThreadPool` met slechte instellingen kunnen leiden tot vertragingen bij het verwerken van gegevens die al zijn verzonden door de redis-server, maar die nog niet zijn verbruikt aan de client zijde.
+Bursts van verkeer in combi natie met slechte `ThreadPool` instellingen kunnen leiden tot vertragingen bij het verwerken van gegevens die al zijn verzonden door de redis-server, maar die nog niet zijn verbruikt aan de client zijde.
 
-Bewaak hoe `ThreadPool` uw statistieken in de loop van de tijd worden gewijzigd met [een voor beeld `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs). U kunt berichten `TimeoutException` van stack Exchange. redis zoals hieronder gebruiken om verder te onderzoeken:
+Bewaak hoe uw `ThreadPool` statistieken in de loop van de tijd worden gewijzigd met [een voor `ThreadPoolLogger` beeld ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs). U kunt `TimeoutException` berichten van stack Exchange. redis zoals hieronder gebruiken om verder te onderzoeken:
 
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,
     IOCP: (Busy=6,Free=999,Min=2,Max=1000), WORKER: (Busy=7,Free=8184,Min=2,Max=8191)
 
 In de voor gaande uitzonde ring zijn er verschillende problemen die interessant zijn:
 
-- U ziet dat in `IOCP` de sectie en `WORKER` de sectie een `Busy` waarde is die groter is dan de `Min` waarde. Dit verschil betekent dat `ThreadPool` uw instellingen moeten worden aangepast.
-- U kunt ook zien `in: 64221`. Deze waarde geeft aan dat 64.211 bytes zijn ontvangen op de kernel-laag van de client, maar niet zijn gelezen door de toepassing. Dit verschil betekent meestal dat uw toepassing (bijvoorbeeld stack Exchange. redis) geen gegevens van het netwerk leest zodra de server deze naar u verzendt.
+- U ziet dat in de `IOCP` sectie en de `WORKER` sectie een `Busy` waarde is die groter is dan de `Min` waarde. Dit verschil betekent dat uw `ThreadPool` instellingen moeten worden aangepast.
+- U kunt ook zien `in: 64221` . Deze waarde geeft aan dat 64.211 bytes zijn ontvangen op de kernel-laag van de client, maar niet zijn gelezen door de toepassing. Dit verschil betekent meestal dat uw toepassing (bijvoorbeeld stack Exchange. redis) geen gegevens van het netwerk leest zodra de server deze naar u verzendt.
 
 U kunt [uw `ThreadPool` instellingen configureren](cache-faq.md#important-details-about-threadpool-growth) om ervoor te zorgen dat uw thread pool snel omhoog wordt geschaald onder burst-scenario's.
 
@@ -60,7 +60,7 @@ Intensief CPU-gebruik van de client geeft aan dat het systeem het werk dat is ge
 Bewaak het CPU-gebruik voor het hele systeem op basis van metrische gegevens die beschikbaar zijn in de Azure Portal of via prestatie meter items op de computer. Zorg ervoor dat u de *proces* -CPU niet bewaakt omdat een enkel proces een laag CPU-gebruik kan hebben, maar dat de systeem-CPU hoog kan zijn. Bekijk pieken in het CPU-gebruik die overeenkomen met time-outs. Hoge CPU kan ook grote `in: XXX` waarden in `TimeoutException` fout berichten veroorzaken, zoals wordt beschreven in de sectie [verkeers burst](#traffic-burst) .
 
 > [!NOTE]
-> Stack Exchange. redis 1.1.603 en hoger bevat de `local-cpu` metrische gegevens `TimeoutException` in fout berichten. Zorg ervoor dat u de nieuwste versie van het [stack Exchange. redis NuGet-pakket](https://www.nuget.org/packages/StackExchange.Redis/)gebruikt. Er zijn fouten die voortdurend worden opgelost in de code, zodat deze robuuster is voor time-outs zodat de meest recente versie van belang is.
+> Stack Exchange. redis 1.1.603 en hoger bevat de `local-cpu` metrische gegevens in `TimeoutException` fout berichten. Zorg ervoor dat u de nieuwste versie van het [stack Exchange. redis NuGet-pakket](https://www.nuget.org/packages/StackExchange.Redis/)gebruikt. Er zijn fouten die voortdurend worden opgelost in de code, zodat deze robuuster is voor time-outs zodat de meest recente versie van belang is.
 >
 
 Het hoge CPU-gebruik van een client beperken:

@@ -1,24 +1,25 @@
 ---
-title: Verificatie methoden | Microsoft Azure kaarten
-description: In dit artikel vindt u meer informatie over Azure Active Directory (Azure AD) en gedeelde sleutel verificatie. Beide worden gebruikt voor Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
+title: Verificatiemethoden
+titleSuffix: Azure Maps
+description: In dit artikel vindt u meer informatie over Azure Active Directory en gedeelde sleutel verificatie. Beide worden gebruikt voor Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
 author: philmea
 ms.author: philmea
-ms.date: 01/28/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 21d29cba85adfc147ec9deb6ab362a5da943bf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335707"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987543"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
-Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutels en Azure Active Directory-verificatie. In dit artikel wordt uitgelegd hoe u deze verificatie methoden kunt gebruiken om uw implementatie van Azure Maps services te begeleiden.
+Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: verificatie van gedeelde sleutel en [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) . In dit artikel wordt uitgelegd hoe u deze verificatie methoden kunt gebruiken om uw implementatie van Azure Maps services te begeleiden.
 
 > [!NOTE]
 > Ter verbetering van de veilige communicatie met Azure Maps, ondersteunen we nu Transport Layer Security (TLS) 1,2. de ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld. Om service onderbrekingen te voor komen, moet u **uw servers en toepassingen bijwerken om TLS 1,2 te gebruiken vóór 2 April 2020**.  Als u momenteel TLS 1. x gebruikt, evalueert u uw TLS 1,2-gereedheid en ontwikkelt u een migratie plan met de tests die zijn beschreven in [het oplossen van het TLS 1,0-probleem](https://docs.microsoft.com/security/solving-tls1-problem).
@@ -32,11 +33,9 @@ Zie [verificatie beheren](https://aka.ms/amauthdetails)voor meer informatie over
 > [!Tip]
 > U wordt aangeraden de sleutels regelmatig opnieuw te genereren. U hebt twee sleutels, zodat u verbindingen met één sleutel kunt onderhouden tijdens het opnieuw genereren van de andere. Wanneer u de sleutels opnieuw genereert, moet u alle toepassingen die toegang hebben tot uw account, bijwerken met de nieuwe sleutels.
 
-## <a name="authentication-with-azure-active-directory-preview"></a>Verificatie met Azure Active Directory (preview-versie)
+## <a name="azure-ad-authentication"></a>Azure Active Directory-verificatie
 
-Azure Maps biedt nu verificatie aanvragen voor Azure Maps-Services met behulp van [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Azure AD biedt verificatie op basis van een identiteit, inclusief [op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). RBAC wordt gebruikt om toegang tot Azure Maps resources op gebruikers niveau, op groeps niveau of op toepassings niveau toe te staan. In de volgende secties worden de concepten en onderdelen van Azure Maps integratie met Azure AD besproken.
-
-## <a name="authentication-with-oauth-access-tokens"></a>Verificatie met OAuth-toegangstokens
+Azure-abonnementen worden geleverd met een Azure AD-Tenant om nauw keurig toegangs beheer mogelijk te maken. Azure Maps biedt verificatie voor Azure Maps-Services met behulp van Azure AD. Azure AD biedt verificatie op basis van identiteiten voor gebruikers en toepassingen die zijn geregistreerd in de Azure AD-Tenant.
 
 Azure Maps accepteert **OAuth 2,0** -toegangs tokens voor Azure AD-tenants die zijn gekoppeld aan een Azure-abonnement dat een Azure Maps account bevat. Azure Maps accepteert ook tokens voor:
 
@@ -44,54 +43,95 @@ Azure Maps accepteert **OAuth 2,0** -toegangs tokens voor Azure AD-tenants die z
 * Partner toepassingen die gebruikmaken van machtigingen die worden gedelegeerd door gebruikers
 * Beheerde identiteiten voor Azure-resources
 
-Azure Maps genereert een *unieke id (client-id)* voor elk Azure Maps-account. U kunt tokens aanvragen bij Azure AD wanneer u deze client-ID combineert met aanvullende para meters. Als u een token wilt aanvragen, geeft u de waarden in de volgende tabel op op basis van uw Azure-omgeving.
-
-| Azure-omgeving   | Azure AD-token eindpunt |
-| --------------------|-------------------------|
-| Openbare Azure-peering        | https://login.microsoftonline.com |
-| Azure Government    | https://login.microsoftonline.us |
-
+Azure Maps genereert een *unieke id (client-id)* voor elk Azure Maps-account. U kunt tokens aanvragen bij Azure AD wanneer u deze client-ID combineert met aanvullende para meters.
 
 Zie [verificatie beheren in azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)voor meer informatie over het configureren van Azure AD en het aanvragen van tokens voor Azure Maps.
 
-Zie [Wat is verificatie?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)voor algemene informatie over het aanvragen van tokens van Azure AD.
+Zie [Wat is verificatie?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)voor algemene informatie over verificatie met Azure AD.
 
-## <a name="request-azure-map-resources-with-oauth-tokens"></a>Azure-toewijzings resources aanvragen met OAuth-tokens
+### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Beheerde identiteiten voor Azure-resources en-Azure Maps
 
-Nadat Azure AD een token heeft ontvangen, verzendt Azure Maps een aanvraag met de volgende set vereiste aanvraag headers:
+[Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) bieden Azure-Services met een automatisch beheerde op toepassingen gebaseerde beveiligingsprincipal die kan worden geverifieerd met Azure AD. Met op rollen gebaseerd toegangs beheer (RBAC) kan de beveiligings-principal van de beheerde identiteit worden gemachtigd om toegang te krijgen tot Azure Maps Services. Enkele voor beelden van beheerde identiteiten zijn: Azure App Service, Azure Functions en Azure Virtual Machines. Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)voor een lijst met beheerde identiteiten.
 
-| Aanvraagheader    |    Waarde    |
-|:------------------|:------------|
-| x-ms-client-id    | 30d7cc….9f55|
-| Autorisatie     | Bearer-token eyJ0e….HNIVN |
+### <a name="configuring-application-azure-ad-authentication"></a>Azure AD-verificatie voor toepassingen configureren
+
+Toepassingen worden geverifieerd met de Azure AD-Tenant met behulp van een of meer ondersteunde scenario's van Azure AD. Elk Azure AD-toepassings scenario vertegenwoordigt verschillende vereisten op basis van bedrijfs behoeften. Voor sommige toepassingen zijn mogelijk gebruikers aanmelding vereist en voor andere toepassingen is mogelijk een toepassings aanmelding vereist. Zie [verificatie stromen en toepassings scenario's](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios)voor meer informatie.
+
+Nadat de toepassing een toegangs token heeft ontvangen, verzendt de SDK en/of toepassing een HTTPS-aanvraag met de volgende set vereiste HTTP-headers naast andere REST API HTTP-headers:
+
+| Header naam    | Waarde               |
+| :------------- | :------------------ |
+| x-ms-client-id | 30d7cc….9f55        |
+| Autorisatie  | Bearer-token eyJ0e….HNIVN |
 
 > [!Note]
 > `x-ms-client-id`is de Azure Maps op een account gebaseerde GUID die wordt weer gegeven op de Azure Maps-verificatie pagina.
 
-Hier volgt een voor beeld van een Azure Maps route aanvraag die gebruikmaakt van een OAuth-token:
+Hier volgt een voor beeld van een Azure Maps route aanvraag die gebruikmaakt van een Azure AD OAuth Bearer-token:
 
-```
-GET /route/directions/json?api-version=1.0&query=52.50931,13.42936:52.50274,13.43872 
-Host: atlas.microsoft.com 
-x-ms-client-id: 30d7cc….9f55 
-Authorization: Bearer eyJ0e….HNIVN 
+```http
+GET /route/directions/json?api-version=1.0&query=52.50931,13.42936:52.50274,13.43872
+Host: atlas.microsoft.com
+x-ms-client-id: 30d7cc….9f55
+Authorization: Bearer eyJ0e….HNIVN
 ```
 
 Zie [verificatie details weer geven](https://aka.ms/amauthdetails)voor meer informatie over het weer geven van uw client-id.
 
-## <a name="control-access-with-rbac"></a>Toegang beheren met RBAC
+## <a name="authorization-with-role-based-access-control"></a>Autorisatie met op rollen gebaseerd toegangs beheer
 
-Gebruik in azure AD RBAC om de toegang tot beveiligde bronnen te beheren. Stel uw Azure Maps-account in en registreer uw Azure Maps Azure AD-Tenant. Azure Maps ondersteunt het lezen van toegangs beheer voor afzonderlijke Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en Azure-Services via beheerde identiteiten voor Azure-resources. Op de pagina Azure Maps Portal kunt u RBAC instellen voor uw gekozen rollen.
+Azure Maps ondersteunt toegang tot alle principal-typen voor [op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/overview) van Azure, waaronder: individuele Azure AD-gebruikers,-groepen,-toepassingen, Azure-resources en door Azure beheerde identiteiten. Aan principal-typen wordt een set machtigingen verleend, ook wel een roldefinitie genoemd. Een roldefinitie biedt machtigingen voor het REST API acties. Het Toep assen van toegang tot een of meer Azure Maps accounts wordt een bereik genoemd. Bij het Toep assen van een principal, roldefinitie en bereik wordt een roltoewijzing gemaakt. 
 
-![Azure Maps gegevens lezer (preview-versie)](./media/azure-maps-authentication/concept.png)
+In de volgende secties worden de concepten en onderdelen van Azure Maps integratie met Azure AD op rollen gebaseerd toegangs beheer besproken. Als onderdeel van het proces om uw Azure Maps-account in te stellen, wordt een Azure AD-adres lijst gekoppeld aan het Azure-abonnement waarop het Azure Maps-account zich bevindt. 
+
+Wanneer u Azure RBAC configureert, kiest u een beveiligingsprincipal en past u deze toe op een roltoewijzing. Zie [Azure-roltoewijzingen toevoegen of verwijderen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)voor meer informatie over het toevoegen van roltoewijzingen aan de Azure Portal.
+
+### <a name="picking-a-role-definition"></a>Een roldefinitie kiezen
+
+De volgende roldefinitie typen bestaan ter ondersteuning van toepassings scenario's.
+
+| Azure Role definition       | Beschrijving                                                                                              |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------- |
+| Gegevens lezer Azure Maps      | Biedt toegang tot onveranderbare Azure Maps REST Api's.                                                       |
+| Inzender voor Azure Maps gegevens | Biedt toegang tot onveranderlijke Azure Maps REST-Api's. Veranderlijkheid wordt gedefinieerd door de acties: schrijven en verwijderen. |
+| Definitie van aangepaste rol      | Maak een ontwikkelde rol om flexibele beperkte toegang tot Azure Maps REST-Api's in te scha kelen.                      |
+
+Voor sommige Azure Maps Services zijn mogelijk verhoogde bevoegdheden vereist voor het uitvoeren van schrijf-of verwijder acties voor Azure Maps REST-Api's. Azure Maps rol gegevensinzender is vereist voor services die schrijf-of verwijderings acties bieden. In de volgende tabel wordt beschreven welke services Azure Maps contributor van gegevens van toepassing zijn voor het gebruik van schrijf-of verwijderings acties voor de betreffende service. Als er alleen lees acties worden gebruikt voor de service, kan Azure Maps gegevens lezer worden gebruikt in plaats van Azure Maps gegevens bijdrager.
+
+| Azure Maps-service | Roldefinitie Azure Maps  |
+| :----------------- | :-------------------------- |
+| Gegevens               | Inzender voor Azure Maps gegevens |
+| Creator            | Inzender voor Azure Maps gegevens |
+| Ruimtelijk            | Inzender voor Azure Maps gegevens |
 
 Zie voor meer informatie over het weer geven van uw RBAC-instellingen [RBAC configureren voor Azure Maps](https://aka.ms/amrbac).
 
-## <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Beheerde identiteiten voor Azure-resources en-Azure Maps
+#### <a name="custom-role-definitions"></a>Definities voor aangepaste rollen
 
-[Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) bieden Azure-Services met een automatisch beheerde identiteit, die kan worden gemachtigd om toegang te krijgen tot Azure Maps Services. Enkele voor beelden van beheerde identiteiten zijn: Azure App Service, Azure Functions en Azure Virtual Machines.
+Een aspect van toepassings beveiliging is het Toep assen van het principe van minimale bevoegdheden. Het principe impliceert dat de beveiligingsprincipal alleen de toegang mag hebben die vereist is en geen extra toegang heeft. Het maken van aangepaste Roldefinities kan use cases ondersteunen waarvoor een grotere nauw keurigheid van toegangs beheer nodig is. Als u een aangepaste roldefinitie wilt maken, kunt u specifieke gegevens acties selecteren om op te nemen of uit te sluiten voor de definitie. 
+
+De definitie van de aangepaste rol kan vervolgens worden gebruikt in een roltoewijzing voor elke beveiligings-principal. Zie [aangepaste rollen in azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste roldefinities van Azure.
+
+Hier volgen enkele voorbeeld scenario's waarin aangepaste rollen de beveiliging van toepassingen kunnen verbeteren.
+
+| Scenario                                                                                                                                                                                                                 | Aangepaste actie (s) voor de functie gegevens                                                                                                                  |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| Een open bare of interactieve webpagina voor aanmelden met basis kaart tegels en geen andere REST-Api's.                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
+| Een toepassing die alleen omgekeerde geocodering en geen andere REST-Api's vereist.                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |
+| Een rol voor een beveiligingsprincipal die het lezen van Azure Maps op basis van koppelings gegevens en de tegel REST-Api's van een basis kaart opvraagt.                                                                                                 | `Microsoft.Maps/accounts/services/data/read`, `Microsoft.Maps/accounts/services/render/read`                                                |
+| Een rol voor een beveiligingsprincipal waarvoor het lezen, schrijven en verwijderen van op de maker gebaseerde kaart gegevens vereist is. Dit kan worden gedefinieerd als de rol gegevens editor voor kaarten, maar biedt geen toegang tot andere REST-Api's zoals basis kaart tegels. | `Microsoft.Maps/accounts/services/data/read`, `Microsoft.Maps/accounts/services/data/write`, `Microsoft.Maps/accounts/services/data/delete` |
+
+### <a name="understanding-scope"></a>Wat is bereik?
+
+Bij het maken van een roltoewijzing wordt deze gedefinieerd in de Azure-resource hiërarchie. Boven aan de hiërarchie bevindt zich een [beheer groep](https://docs.microsoft.com/azure/governance/management-groups/overview) en de laagste is een Azure-resource, zoals een Azure Maps-account.
+Als u een roltoewijzing aan een resource groep toewijst, kan toegang tot meerdere Azure Maps accounts of bronnen in de groep worden ingeschakeld.
+
+> [!Tip]
+> De algemene aanbeveling van micro soft wijst toegang toe aan het Azure Maps-account bereik, omdat hierdoor **onbedoelde toegang tot andere Azure Maps accounts** in hetzelfde Azure-abonnement wordt voor komen.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+* Zie [overzicht van op rollen gebaseerd toegangs beheer](https://docs.microsoft.com/azure/role-based-access-control/overview) voor meer informatie over RBAC
 
 * Zie [verificatie beheren in azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)voor meer informatie over het verifiëren van een toepassing met Azure AD en Azure Maps.
 

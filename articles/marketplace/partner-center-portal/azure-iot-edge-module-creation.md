@@ -144,7 +144,7 @@ Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang
 
 Geef een gedetailleerdere beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Beschrijving
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 5. Adres van privacybeleid (koppeling)
 6. Name
 7. Samenvatting
-8. Beschrijving
+8. Description
 9. Handige koppelingen
 10. Scherm afbeeldingen/Video's
 

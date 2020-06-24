@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272771"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699359"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure HDInsight-clusters beheren met Azure CLI
 
@@ -42,7 +42,7 @@ az login
 
 ## <a name="list-clusters"></a>Clusters weer geven
 
-Gebruik [AZ hdinsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) om clusters weer te geven. Bewerk de onderstaande opdrachten door de `RESOURCE_GROUP_NAME` naam van de resource groep te vervangen en voer de volgende opdrachten in:
+Gebruik [AZ hdinsight List](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) om clusters weer te geven. Bewerk de onderstaande opdrachten door `RESOURCE_GROUP_NAME` de naam van de resource groep te vervangen en voer de volgende opdrachten in:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Cluster weer geven
 
-Gebruik [AZ hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) om informatie weer te geven voor een opgegeven cluster. Bewerk de onderstaande opdracht door te `RESOURCE_GROUP_NAME`vervangen, `CLUSTER_NAME` en voer vervolgens de volgende opdracht uit:
+Gebruik [AZ hdinsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) om informatie weer te geven voor een opgegeven cluster. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` , en `CLUSTER_NAME` Voer vervolgens de volgende opdracht uit:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Clusters verwijderen
 
-Gebruik [AZ hdinsight delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) om een opgegeven cluster te verwijderen. Bewerk de onderstaande opdracht door te `RESOURCE_GROUP_NAME`vervangen, `CLUSTER_NAME` en voer vervolgens de volgende opdracht uit:
+Gebruik [AZ hdinsight delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) om een opgegeven cluster te verwijderen. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` , en `CLUSTER_NAME` Voer vervolgens de volgende opdracht uit:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Clusters schalen
 
-Gebruik [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) om het formaat van het opgegeven hdinsight-cluster te wijzigen in de opgegeven grootte. Bewerk de onderstaande opdracht door te `RESOURCE_GROUP_NAME`vervangen en `CLUSTER_NAME` door de relevante informatie. Vervang `WORKERNODE_COUNT` door het gewenste aantal worker-knoop punten voor uw cluster. Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)voor meer informatie over het schalen van clusters. Voer de opdracht in:
+Gebruik [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) om het formaat van het opgegeven hdinsight-cluster te wijzigen in de opgegeven grootte. Bewerk de onderstaande opdracht door te vervangen `RESOURCE_GROUP_NAME` en door `CLUSTER_NAME` de relevante informatie. Vervang door `WORKERNODE_COUNT` het gewenste aantal worker-knoop punten voor uw cluster. Zie [HDInsight-clusters schalen](./hdinsight-scaling-best-practices.md)voor meer informatie over het schalen van clusters. Voer de opdracht in:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT

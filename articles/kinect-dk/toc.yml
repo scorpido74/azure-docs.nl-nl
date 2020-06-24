@@ -1,0 +1,103 @@
+- name: Documentatie voor Azure Kinect DK
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over Azure Kinect DK
+      href: about-azure-kinect-dk.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: Azure Kinect DK installeren
+      href: set-up-azure-kinect-dk.md
+    - name: Sensorstreams vastleggen in een bestand
+      href: record-sensor-streams-file.md
+    - name: Uw eerste toepassing bouwen
+      href: build-first-app.md
+    - name: De Body Tracking-SDK instellen
+      href: body-sdk-setup.md
+    - name: Uw eerste toepassing om een lichaam te volgen
+      href: build-first-body-app.md
+- name: Concepten
+  items:
+    - name: Dieptecamera
+      href: depth-camera.md
+    - name: Systemen coördineren
+      href: coordinate-systems.md
+    - name: Lichaamsvolggewrichten
+      href: body-joints.md
+    - name: Indexkaart voor het volgen van een lichaam
+      href: body-index-map.md
+- name: Instructiegidsen
+  items:
+    - name: Sensor-SDK gebruiken
+      items:
+        - name: Sensor-SDK van Azure Kinect
+          href: about-sensor-sdk.md
+        - name: Apparaat zoeken en dan openen
+          href: find-then-open-device.md
+        - name: Afbeeldingen ophalen
+          href: retrieve-images.md
+        - name: IMU-voorbeelden ophalen
+          href: retrieve-imu-samples.md
+        - name: Toegang tot microfoon
+          href: access-mics.md
+        - name: Afbeeldingstransformaties gebruiken
+          href: use-image-transformation.md
+        - name: Kalibratiefuncties gebruiken
+          href: use-calibration-functions.md
+        - name: Apparaatsynchronisatie vastleggen
+          href: capture-device-synchronization.md
+        - name: Opnemen en afspelen
+          href: record-playback-api.md
+    - name: De Body Tracking-SDK gebruiken
+      items:
+        - name: Resultaten van het volgen van een lichaam ophalen
+          href: get-body-tracking-results.md
+        - name: Gegevens in kader openen
+          href: access-data-body-frame.md
+    - name: Azure Kinect-bibliotheek toevoegen aan een VS-project
+      href: add-library-to-project.md
+    - name: Azure Kinect-firmware bijwerken
+      href: update-device-firmware.md
+    - name: Recorder gebruiken met extern gesynchroniseerde eenheden
+      href: record-external-synchronized-units.md
+- name: Hulpprogramma's
+  items:
+    - name: Azure Kinect-viewer
+      href: azure-kinect-viewer.md
+    - name: Azure Kinect-recorder
+      href: azure-kinect-recorder.md
+    - name: Azure Kinect-firmwarehulpprogramma
+      href: azure-kinect-firmware-tool.md
+- name: Resources
+  items:
+    - name: De Sensor-SDK downloaden
+      href: sensor-sdk-download.md
+    - name: De Body Tracking-SDK downloaden
+      href: body-sdk-download.md
+    - name: Systeemvereisten
+      href: system-requirements.md
+    - name: Hardwarespecificaties
+      href: hardware-specification.md
+    - name: Meerdere apparaten synchroniseren
+      href: multi-camera-sync.md
+    - name: Vergelijken met Kinect voor Windows
+      href: windows-comparison.md
+    - name: Azure Kinect DK opnieuw instellen
+      href: reset-azure-kinect-dk.md
+    - name: Azure Kinect-ondersteuning
+      href: support.md
+    - name: Problemen met Azure Kinect oplossen
+      href: troubleshooting.md
+    - name: 'Garanties, uitgebreide serviceplannen en algemene voorwaarden'
+      href: 'https://support.microsoft.com/help/4493926/warranties-extended-service-plans-and-terms-conditions-for-your-device'
+    - name: Veiligheidsinformatie
+      href: 'https://support.microsoft.com/help/4023454/safety-information'
+- name: Verwijzingen
+  items:
+    - name: Sensor-API
+      href: 'https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html'
+    - name: De Body Tracking-API
+      href: 'https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html'
+    - name: Indeling van opnamebestand
+      href: record-file-format.md

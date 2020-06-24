@@ -5,15 +5,15 @@ description: Een directe peering maken of wijzigen met behulp van de Azure Porta
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 59b9079b500817c31586c0a566082a867d7e7f41
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683993"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700562"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Een directe peering maken of wijzigen met behulp van de Azure Portal
 

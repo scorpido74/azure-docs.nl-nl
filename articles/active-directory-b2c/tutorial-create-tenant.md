@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2957ea179d9737bb6aad6fb8f121780575115b
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186400"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976376"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Zelfstudie: Een Azure Active Directory B2C-tenant maken
 
@@ -43,33 +43,26 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
     ![Abonnement-Tenant, adres lijst-en abonnements filter waarvoor de Tenant van het abonnement is geselecteerd](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
+1. Selecteer in het menu van de Azure-portal of op de **startpagina** de optie **Een resource maken**.
 1. Zoek naar **Azure Active Directory B2C**en selecteer vervolgens **maken**.
 1. Selecteer **Een nieuwe Azure AD B2C-tenant maken**.
 
     ![Maak een nieuwe Azure AD B2C-Tenant geselecteerd in Azure Portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-1. Voer de **naam** van de organisatie en de **initiële domein naam**in. Selecteer het **land of de regio** (deze kan later niet worden gewijzigd) en selecteer vervolgens **maken**.
+1. Voer op de pagina **een directory maken** het volgende in:
 
-    De domein naam wordt gebruikt als onderdeel van de domein naam van uw volledige Tenant. In dit voor beeld is de naam van de Tenant *contosob2c.onmicrosoft.com*:
+   - **Organisatie naam** : Voer de naam van uw organisatie in.
+   - **Initiële domein naam** : Voer een domein naam in. Deze naam wordt standaard toegevoegd met *. onmicrosoft.com*. U kunt dit later wijzigen door een domein naam toe te voegen die uw organisatie al gebruikt, zoals ' contoso.com '.
+   - **Land of regio** : Selecteer uw land of regio in de lijst. U kunt deze selectie later niet meer wijzigen.
+   - **Abonnement** : Selecteer uw abonnement in de lijst.
+   - **Resource groep** : Selecteer een resource groep die de Tenant zal bevatten. Of selecteer **Nieuw maken**, voer een **naam** in voor de resource groep, selecteer de locatie van de **resource groep**en selecteer **OK**.
 
-    ![Een Tenant formulier maken in met voorbeeld waarden in Azure Portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
+    ![Een Tenant formulier maken in met voorbeeld waarden in Azure Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
-1. Nadat het maken van de Tenant is voltooid, selecteert u de **nieuwe B2C-Tenant maken of een koppeling naar een bestaande Tenant koppeling aan** de bovenkant van de pagina voor het maken van de Tenant.
+1. Selecteer **Controleren + maken**.
+1. Controleer de instellingen van uw Directory. Selecteer vervolgens **Maken**.
 
-    ![Koppeling naar de breadcrumbnavigatie van de Tenant is gemarkeerd in Azure Portal](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
-
-1. Selecteer **een bestaande Azure AD B2C-Tenant koppelen aan mijn Azure-abonnement**.
-
-   ![Een bestaande abonnements selectie in Azure Portal koppelen](media/tutorial-create-tenant/portal-05-link-subscription.png)
-
-1. Selecteer de **Azure AD B2C Tenant** die u hebt gemaakt en selecteer vervolgens uw **abonnement**.
-
-    Selecteer voor **Resourcegroep** de optie **Nieuwe maken**. Voer een **naam** in voor de resource groep die de Tenant bevat, selecteer de **locatie van de resource groep**en selecteer vervolgens **maken**.
-
-    ![Formulier abonnements instellingen koppelen in Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
-
-    U kunt meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor facturerings doeleinden.
+U kunt meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor facturerings doeleinden.
 
 ## <a name="select-your-b2c-tenant-directory"></a>Selecteer uw B2C-Tenant Directory
 

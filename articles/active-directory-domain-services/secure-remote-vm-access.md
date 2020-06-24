@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105723"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734466"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Externe toegang tot virtuele machines in Azure Active Directory Domain Services beveiligen
 
@@ -41,7 +41,7 @@ U hebt de volgende resources nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services-exemplaar maken en configureren][create-azure-ad-ds-instance].
+    * Als dat nodig is, kunt [u een Azure Active Directory Domain Services beheerd domein maken en configureren][create-azure-ad-ds-instance].
 * Een subnet met *werk belastingen* dat is gemaakt in uw Azure Active Directory Domain Services virtuele netwerk.
     * Configureer zo nodig [virtuele netwerken voor een beheerde Azure Active Directory Domain Services domein][configure-azureadds-vnet].
 * Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
@@ -55,16 +55,16 @@ Een voorgestelde RDS-implementatie omvat de volgende twee Vm's:
 * *RDGVM01* : voert de RD Connection Broker-server, RD Web Access-server en RD-gateway-server uit.
 * *RDSHVM01* : de RD Session Host-server wordt uitgevoerd.
 
-Zorg ervoor dat Vm's zijn geïmplementeerd in een subnet met *werk belastingen* van uw Azure AD DS virtuele netwerk en voeg vervolgens de vm's toe aan Azure AD DS beheerd domein. Zie [een Windows Server-VM maken en toevoegen aan een door Azure AD DS beheerd domein][tutorial-create-join-vm]voor meer informatie.
+Zorg ervoor dat Vm's zijn geïmplementeerd in een subnet met *werk belastingen* van uw Azure AD DS virtuele netwerk en voeg vervolgens de vm's toe aan het beheerde domein. Zie [een Windows Server-VM maken en toevoegen aan een beheerd domein][tutorial-create-join-vm]voor meer informatie.
 
-De implementatie van de extern bureau blad-omgeving bevat een aantal stappen. De bestaande extern bureau blad-implementatie handleiding kan worden gebruikt zonder dat er specifieke wijzigingen kunnen worden gebruikt in een beheerd domein van Azure AD DS:
+De implementatie van de extern bureau blad-omgeving bevat een aantal stappen. De bestaande extern bureau blad-implementatie handleiding kan worden gebruikt zonder dat er specifieke wijzigingen in een beheerd domein kunnen worden gebruikt:
 
 1. Meld u aan bij Vm's die zijn gemaakt voor de RD-omgeving met een account dat deel uitmaakt van de groep *Administrators van Azure AD DC* , zoals *contosoadmin*.
 1. Als u RDS wilt maken en configureren, gebruikt u de bestaande [implementatie handleiding][deploy-remote-desktop]voor de Extern bureaublad-omgeving. Distribueer de onderdelen van de extern bureau blad-server op uw virtuele Azure-machines naar wens.
     * Specifiek voor Azure AD DS: als u extern bureau blad-licentie verlening configureert, stelt u deze in op de modus **per apparaat** , niet **per gebruiker** , zoals vermeld in de implementatie handleiding.
 1. Als u toegang wilt verlenen via een webbrowser, stelt u [de Extern bureaublad-webclient in voor uw gebruikers][rd-web-client].
 
-Wanneer RD is geïmplementeerd in het beheerde domein van Azure AD DS, kunt u de service beheren en gebruiken zoals u dat zou doen met een on-premises AD DS domein.
+Met RD geïmplementeerd in het beheerde domein, kunt u de service beheren en gebruiken, net zoals u zou doen met een on-premises AD DS domein.
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>NPS en de Azure MFA NPS-extensie implementeren en configureren
 
@@ -76,7 +76,7 @@ Gebruikers moeten zijn [geregistreerd voor het gebruik van azure multi-factor Au
 
 Als u Azure Multi-Factor Authentication wilt integreren in uw Azure AD DS Extern bureaublad omgeving, maakt u een NPS-server en installeert u de extensie:
 
-1. Maak een extra Windows Server 2016-of 2019-VM, zoals *NPSVM01*, die is verbonden met een subnet met *werk belastingen* in uw Azure AD DS virtuele netwerk. Voeg de virtuele machine toe aan het beheerde domein van Azure AD DS.
+1. Maak een extra Windows Server 2016-of 2019-VM, zoals *NPSVM01*, die is verbonden met een subnet met *werk belastingen* in uw Azure AD DS virtuele netwerk. Voeg de virtuele machine toe aan het beheerde domein.
 1. Meld u aan bij de NPS-VM als een account dat deel uitmaakt van de groep *Azure AD DC-Administrators* , zoals *contosoadmin*.
 1. In **Serverbeheer**selecteert u **functies en onderdelen toevoegen**en installeert u vervolgens de functie *Services voor netwerk beleid en-toegang* .
 1. Gebruik het bestaande artikel met instructies om [de Azure MFA NPS-extensie te installeren en te configureren][nps-extension].
@@ -87,9 +87,9 @@ Als de NPS-server en de Azure Multi-Factor Authentication NPS-extensie zijn geï
 
 Als u de Azure Multi-Factor Authentication NPS-extensie wilt integreren, gebruikt u het bestaande procedure-artikel om [uw extern bureaublad-gateway-infra structuur te integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD][azure-mfa-nps-integration].
 
-De volgende aanvullende configuratie opties zijn nodig voor de integratie met een door Azure AD DS beheerd domein:
+De volgende aanvullende configuratie opties zijn nodig voor de integratie met een beheerd domein:
 
-1. [Registreer de NPS-server niet in Active Directory][register-nps-ad]. Deze stap mislukt in een door Azure AD DS beheerd domein.
+1. [Registreer de NPS-server niet in Active Directory][register-nps-ad]. Deze stap mislukt in een beheerd domein.
 1. In [stap 4 om netwerk beleid te configureren][create-nps-policy], schakelt u ook het selectie vakje in om de **inbel eigenschappen van het gebruikers account te negeren**.
 1. Als u Windows Server 2019 voor de NPS-server en Azure Multi-Factor Authentication NPS-extensie gebruikt, voert u de volgende opdracht uit om het beveiligde kanaal bij te werken zodat de NPS-server op de juiste wijze kan communiceren:
 

@@ -5,15 +5,15 @@ description: Een verouderde Exchange-peering converteren naar een Azure-resource
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2020
 ms.author: derekol
-ms.openlocfilehash: e4f9f5b59b61065c300b58fb1cdb88e12b7ddbe0
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247220"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700158"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van de Azure Portal
 

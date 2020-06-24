@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 534d75a5b9009f0febee2746179ab7357a4985e0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77060417"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732868"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Zelf studie: verificatie van de SAP-Cloud platform identiteit configureren voor automatische gebruikers inrichting
 
@@ -58,7 +58,10 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
     ![Beheer console voor SAP-Cloud platform identiteits verificatie](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  Maak een gebruiker met beheerders rechten en selecteer de gebruiker.  
+2.  Druk op de knop **+ toevoegen** in het deel venster aan de linkerkant om een nieuwe beheerder toe te voegen aan de lijst. Kies **systeem toevoegen** en voer de naam van het systeem in.   
+
+> [!NOTE]
+> De beheerder-gebruiker in SAP Cloud platform identiteits verificatie moet van het type **System**zijn. Het maken van een normale beheerders gebruiker kan leiden tot *ongeoorloofde* fouten tijdens het inrichten.   
 
 3.  Onder autorisatie configureren selecteert u de wissel knop voor het **beheren van gebruikers** en **groepen beheren**.
 
@@ -78,7 +81,7 @@ Voordat u SAP Cloud platform identiteits verificatie configureert voor automatis
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -115,7 +118,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://<tenantID>.accounts.ondemand.com/service/scim ` invoer in de **Tenant-URL**. Geef de waarden voor de **gebruikers-id** en het **wacht woord** op die u eerder hebt opgehaald in respectievelijk de gebruikers **naam** en het **beheerders wachtwoord** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de SAP Cloud platform identiteits verificatie. Als de verbinding mislukt, zorgt u ervoor dat uw SAP Cloud platform identiteits verificatie account beheerders machtigingen heeft en probeer het opnieuw.
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://<tenantID>.accounts.ondemand.com/service/scim ` in de Tenant- **URL**. Geef de waarden voor de **gebruikers-id** en het **wacht woord** op die u eerder hebt opgehaald in respectievelijk de gebruikers **naam** en het **beheerders wachtwoord** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de SAP Cloud platform identiteits verificatie. Als de verbinding mislukt, zorgt u ervoor dat uw SAP Cloud platform identiteits verificatie account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
@@ -158,7 +161,7 @@ Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-p
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

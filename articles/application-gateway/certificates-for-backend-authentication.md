@@ -5,15 +5,15 @@ description: In dit artikel vindt u voor beelden van hoe een TLS/SSL-certificaat
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 06/09/2020
+ms.topic: how-to
+ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 010ecc234afd745844b5b7868030d3c4e823872f
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 125da04c9fafe33c7f3de3a5849e4238b3b45d6d
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628915"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976537"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Certificaten maken om de back-end met Azure-toepassing gateway toe te staan
 
@@ -40,7 +40,7 @@ Exporteer vanuit uw TLS/SSL-certificaat het bestand met de open bare sleutel. CE
 
    ![Exporteren](./media/certificates-for-backend-authentication/export.png)
 
-2. Klik in de wizard op **Volgende**.
+2. Klik in de wizard op **volgende**.
 
    ![Certificaat exporteren](./media/certificates-for-backend-authentication/exportwizard.png)
 
@@ -78,7 +78,7 @@ Het vertrouwde basis certificaat is vereist voor het toestaan van back-end-insta
 
 Met de volgende stappen kunt u het. cer-bestand voor uw certificaat exporteren:
 
-1. Gebruik de stappen 1-9 vermeld in de sectie **verificatie certificaat exporteren van een back-end-certificaat (voor v1-SKU)** hierboven om de open bare sleutel van uw back-end-certificaat te exporteren.
+1. Gebruik de stappen 1-8 vermeld in de vorige sectie [verificatie certificaat exporteren (voor v1 SKU)](#export-authentication-certificate-for-v1-sku) om de open bare sleutel te exporteren vanuit uw back-end-certificaat.
 
 2. Zodra de open bare sleutel is geëxporteerd, opent u het bestand.
 

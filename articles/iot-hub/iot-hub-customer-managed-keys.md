@@ -6,20 +6,21 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370573"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976571"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>Versleuteling van gegevens in rust met door de klant beheerde sleutels voor IoT Hub
 
-IoT Hub ondersteunt versleuteling van gegevens in rust met door de klant beheerde sleutels (CMK), ook wel bekend als uw eigen sleutel (BYOK), ondersteuning voor Azure IoT Hub. Azure IoT Hub voorziet in het versleutelen van gegevens in rust en onderweg. IoT Hub maakt standaard gebruik van door micro soft beheerde sleutels om de gegevens te versleutelen. Met CMK-ondersteuning hebben klanten nu de keuze om de gegevens in rust te versleutelen met een sleutel coderings sleutel, die wordt beheerd door de klanten, met behulp van de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+IoT Hub ondersteunt versleuteling van gegevens in rust met door de klant beheerde sleutels (CMK), ook wel bekend als uw eigen sleutel (BYOK). Azure IoT Hub zorgt voor versleuteling van gegevens in rust en in transit, omdat deze in onze data centers wordt geschreven en voor u wordt gedecodeerd wanneer u deze opent. IoT Hub maakt standaard gebruik van door micro soft beheerde sleutels om de gegevens in rust te versleutelen. Met CMK kunt u een andere laag versleuteling krijgen boven standaard versleuteling en kunt u ervoor kiezen om gegevens in rust te versleutelen met een sleutel coderings sleutel, die wordt beheerd via uw [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Dit biedt u de flexibiliteit om toegangs beheer te maken, te draaien, uit te scha kelen en in te trekken. Als BYOK is geconfigureerd voor uw IoT Hub, bieden we ook dubbele code ring, die een tweede beveiligingslaag biedt, en waarmee u de versleutelings sleutel via uw Azure Key Vault kunt beheren.
 
-Voor deze functie is het maken van een nieuwe IoT Hub (Basic-of Standard-laag) vereist in een van de volgende regio's: VS-Oost, VS-West 2, Zuid-Centraal VS of US Gov. Neem contact met ons op via [micro soft ondersteuning](https://azure.microsoft.com/support/create-ticket/)als u deze mogelijkheid wilt proberen. Deel uw bedrijfs naam en abonnements-ID wanneer u contact opneemt met micro soft ondersteuning.
+Voor deze functie is het maken van een nieuwe IoT Hub vereist (Basic-of Standard-laag). Neem contact met ons op via [micro soft ondersteuning](https://azure.microsoft.com/support/create-ticket/)als u deze mogelijkheid wilt proberen. Deel uw bedrijfs naam en abonnements-ID wanneer u contact opneemt met micro soft ondersteuning.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
