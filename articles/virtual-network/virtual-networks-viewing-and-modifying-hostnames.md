@@ -8,17 +8,17 @@ manager: dcscontentpm
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8c35604af9780fb4299bbd7bfd87c3d93ac537
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459148"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702836"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Hostnamen weer geven en wijzigen
 Als u wilt toestaan dat naar de rolinstanties wordt verwezen door de hostnaam, moet u de waarde voor de hostnaam in het service configuratie bestand voor elke rol instellen. U doet dit door de gewenste hostnaam toe te voegen aan het kenmerk **vmName** van het element **Role** . De waarde van het kenmerk **vmName** wordt gebruikt als basis voor de hostnaam van elke rolinstantie. Als **vmName** bijvoorbeeld een *webrol* is en er drie exemplaren van die rol zijn, worden de hostnamen van de instanties *webrole0*, *webrole1*en *webrole2*. U hoeft geen hostnaam op te geven voor virtuele machines in het configuratie bestand, omdat de hostnaam van een virtuele machine is ingevuld op basis van de naam van de virtuele machine. Zie [Azure service configuration schema (cscfg-bestand)](https://msdn.microsoft.com/library/azure/ee758710.aspx) voor meer informatie over het configureren van een Microsoft Azure-service.
@@ -41,7 +41,7 @@ Voer de volgende instructies uit vanuit een REST-client:
 
 1. Zorg ervoor dat u een client certificaat hebt om verbinding te maken met de Azure Portal. Als u een client certificaat wilt verkrijgen, volgt u de stappen in [procedure: publicatie-instellingen en abonnements gegevens downloaden en importeren](https://msdn.microsoft.com/library/dn385850.aspx). 
 2. Stel een header-vermelding met de naam x-MS-version in met de waarde 2013-11-01.
-3. Een aanvraag verzenden in de volgende indeling: https:\//management.core.Windows.net/\<abonnement-id\>/Services/hostedservices/\<service-naam\>? embed-detail = True
+3. Een aanvraag verzenden in de volgende indeling: https: \/ /Management.core.Windows.net/ \<subscrition-id\> /Services/hostedservices/ \<service-name\> ? Embed-detail = True
 4. Zoek naar het **hostname** -element voor elk **RoleInstance** -element.
 
 > [!WARNING]

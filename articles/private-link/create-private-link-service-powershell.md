@@ -4,15 +4,15 @@ description: Meer informatie over het maken van een persoonlijke Azure-koppeling
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89269fe8c291a0c5303ff58cd728e02d4907be0a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76932086"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737305"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Een persoonlijke koppelings service maken met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure PowerShell.
@@ -115,7 +115,7 @@ Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk e
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *vnetPE* in de resource groep met de naam *myResourceGroup*:
+Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *vnetPE*   in de resource groep met de naam *myResourceGroup*:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Persoonlijk eind punt ophalen
-Haal het IP-adres van het persoonlijke eind `Get-AzPrivateEndpoint` punt op met de volgende:
+Haal het IP-adres van het persoonlijke eind punt op met de `Get-AzPrivateEndpoint` volgende:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

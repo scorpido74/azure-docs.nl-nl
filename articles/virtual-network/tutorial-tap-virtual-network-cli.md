@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9460208d66e859f5fe1ce0e9ae4d62087ea3f4ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234952"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696015"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Een virtueel netwerk gebruiken Tik op de Azure CLI
 
@@ -28,7 +28,7 @@ Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk ve
 
 ## <a name="create-a-virtual-network-tap-resource"></a>Een virtueel netwerk maken tik op resource
 
-Lees de [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een virtueel netwerk tikt op resource. U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de Azure-opdracht regel interface (CLI) uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell, waarvoor geen Azure CLI op uw computer hoeft te worden geïnstalleerd. U moet zich aanmelden bij Azure met een account met de juiste [machtigingen](virtual-network-tap-overview.md#permissions). Voor dit artikel is de Azure CLI-versie 2.0.46 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Virtual Network TIKT is momenteel beschikbaar als een uitbrei ding. Als u de extensie wilt installeren, moet `az extension add -n virtual-network-tap`u deze uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` om een verbinding te maken met Azure.
+Lees de [vereisten](virtual-network-tap-overview.md#prerequisites) voordat u een virtueel netwerk tikt op resource. U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de Azure-opdracht regel interface (CLI) uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell, waarvoor geen Azure CLI op uw computer hoeft te worden geïnstalleerd. U moet zich aanmelden bij Azure met een account met de juiste [machtigingen](virtual-network-tap-overview.md#permissions). Voor dit artikel is de Azure CLI-versie 2.0.46 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Virtual Network TIKT is momenteel beschikbaar als een uitbrei ding. Als u de extensie wilt installeren, moet u deze uitvoeren `az extension add -n virtual-network-tap` . Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` om een verbinding te maken met Azure.
 
 1. Haal de ID van uw abonnement op in een variabele die in een latere stap wordt gebruikt:
 

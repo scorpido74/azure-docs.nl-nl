@@ -6,14 +6,15 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: shvija
+ms.openlocfilehash: 055422f4067b7f27ee046a3a00b168db14d13046
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459131"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297406"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -26,7 +27,7 @@ Het inschakelen van de functie BYOK is een eenmalige installatie procedure voor 
 > [!NOTE]
 > De BYOK-functionaliteit wordt ondersteund door [Event hubs toegewezen clusters met één Tenant](event-hubs-dedicated-overview.md) . Het kan niet worden ingeschakeld voor standaard Event Hubs naam ruimten.
 
-U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
+U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
 
 In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van de Azure Portal. Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
@@ -155,7 +156,7 @@ In deze sectie wordt beschreven hoe u de volgende taken kunt uitvoeren met behul
 ### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Een Event Hubs cluster en een naam ruimte maken met een beheerde service-identiteit
 In deze sectie wordt beschreven hoe u een Azure Event Hubs-naam ruimte met een beheerde service-identiteit maakt met behulp van een Azure Resource Manager sjabloon en Power shell. 
 
-1. Maak een Azure Resource Manager sjabloon voor het maken van een Event Hubs naam ruimte met een beheerde service-identiteit. Geef het bestand de naam: **CreateEventHubClusterAndNamespace. json**: 
+1. Maak een Azure Resource Manager sjabloon voor het maken van een Event Hubs naam ruimte met een beheerde service-identiteit. Geef het bestand de naam: **CreateEventHubClusterAndNamespace.jsop**: 
 
     ```json
     {
@@ -224,7 +225,7 @@ In deze sectie wordt beschreven hoe u een Azure Event Hubs-naam ruimte met een b
        }
     }
     ```
-2. Maak een sjabloon parameter bestand met de naam: **CreateEventHubClusterAndNamespaceParams. json**. 
+2. Maak een sjabloon parameter bestand met de naam: **CreateEventHubClusterAndNamespaceParams.jsop**. 
 
     > [!NOTE]
     > Vervang de volgende waarden: 
@@ -250,7 +251,7 @@ In deze sectie wordt beschreven hoe u een Azure Event Hubs-naam ruimte met een b
     }
     
     ```
-3. Voer de volgende Power shell-opdracht uit om de sjabloon te implementeren om een Event Hubs naam ruimte te maken. Vervolgens haalt u de ID van de Event Hubs naam ruimte op om deze later te gebruiken. Vervang `{MyRG}` door de naam van de resource groep voordat u de opdracht uitvoert.  
+3. Voer de volgende Power shell-opdracht uit om de sjabloon te implementeren om een Event Hubs naam ruimte te maken. Vervolgens haalt u de ID van de Event Hubs naam ruimte op om deze later te gebruiken. Vervang door `{MyRG}` de naam van de resource groep voordat u de opdracht uitvoert.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -289,7 +290,7 @@ U hebt de volgende stappen tot nu toe uitgevoerd:
 
 In deze stap werkt u de Event Hubs naam ruimte bij met sleutel kluis gegevens. 
 
-1. Maak een JSON-bestand met de naam **CreateEventHubClusterAndNamespace. json** met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **CreateEventHubClusterAndNamespace.jsop** met de volgende inhoud: 
 
     ```json
     {
@@ -361,7 +362,7 @@ In deze stap werkt u de Event Hubs naam ruimte bij met sleutel kluis gegevens.
     }
     ``` 
 
-2. Maak een sjabloon parameter bestand: **UpdateEventHubClusterAndNamespaceParams. json**. 
+2. Een sjabloon parameter bestand maken: **UpdateEventHubClusterAndNamespaceParams.jsop**. 
 
     > [!NOTE]
     > Vervang de volgende waarden: 
@@ -394,7 +395,7 @@ In deze stap werkt u de Event Hubs naam ruimte bij met sleutel kluis gegevens.
        }
     }
     ```             
-3. Voer de volgende Power shell-opdracht uit om de Resource Manager-sjabloon te implementeren. Vervang `{MyRG}` door de naam van uw resource groep voordat u de opdracht uitvoert. 
+3. Voer de volgende Power shell-opdracht uit om de Resource Manager-sjabloon te implementeren. Vervang door `{MyRG}` de naam van uw resource groep voordat u de opdracht uitvoert. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
@@ -422,7 +423,7 @@ Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleut
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
-- [Overzicht van Event Hubs](event-hubs-about.md)
+- [Event Hubs-overzicht](event-hubs-about.md)
 - [Overzicht van Key Vault](../key-vault/general/overview.md)
 
 

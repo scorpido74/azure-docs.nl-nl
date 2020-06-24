@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299550"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945508"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA voor uptime van Azure Kubernetes service (AKS)
 
@@ -23,19 +23,26 @@ Klanten kunnen nog steeds onbeperkte gratis clusters met een serviceniveau doels
 > [!Important]
 > Zie limiet voor uitgaand [verkeer](limit-egress-traffic.md) voor het openen van de juiste poorten voor clusters met uitgaand vergren delen.
 
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
+
+SLA voor uptime is beschikbaar in open bare regio's waar [AKS wordt ondersteund](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+
+* Azure Government wordt momenteel niet ondersteund.
+* Azure China 21Vianet wordt momenteel niet ondersteund.
+
 ## <a name="sla-terms-and-conditions"></a>SLA-voor waarden
 
 SLA voor uptime is een betaalde functie en ingeschakeld per cluster. De prijzen voor de SLA voor uptime worden bepaald door het aantal afzonderlijke clusters en niet op basis van de grootte van de afzonderlijke clusters. U kunt de [prijs informatie](https://azure.microsoft.com/pricing/details/kubernetes-service/) voor de sla voor uptime bekijken voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* De Azure CLI-versie 2.7.0 of hoger
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -versie 2.7.0 of hoger installeren
 
 ## <a name="creating-a-cluster-with-uptime-sla"></a>Een cluster maken met SLA voor uptime
 
 Als u een nieuw cluster wilt maken met de SLA voor de uptime, gebruikt u de Azure CLI.
 
-In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* .
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

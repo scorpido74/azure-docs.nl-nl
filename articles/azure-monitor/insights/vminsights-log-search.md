@@ -1,17 +1,17 @@
 ---
-title: Logboeken van Azure Monitor voor VM's opvragen
+title: Query's uitvoeren op logboeken van Azure Monitor voor VM's
 description: Met Azure Monitor voor VM's oplossing worden metrische gegevens verzameld en wordt er informatie vastgelegd in en in dit artikel worden de records beschreven en worden voorbeeld query's opgenomen.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396930"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803971"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Logboeken van Azure Monitor voor VM's opvragen
 
@@ -26,7 +26,7 @@ Er zijn intern gegenereerde eigenschappen die u kunt gebruiken om unieke process
 - Computer: gebruik *ResourceID* of *ResourceName_s* om een computer binnen een log Analytics-werk ruimte uniek te identificeren.
 - Proces: gebruik *ResourceID* als unieke id voor een proces binnen een log Analytics-werk ruimte. *ResourceName_s* is uniek binnen de context van de computer waarop het proces wordt uitgevoerd (MachineResourceName_s) 
 
-Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer in een opgegeven tijds bereik, kunnen query's meer dan één record retour neren voor dezelfde computer of hetzelfde proces. Voeg `| summarize arg_max(TimeGenerated, *) by ResourceId` aan de query toe om alleen de meest recente record op te nemen.
+Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer in een opgegeven tijds bereik, kunnen query's meer dan één record retour neren voor dezelfde computer of hetzelfde proces. Voeg aan de query toe om alleen de meest recente record op te nemen `| summarize arg_max(TimeGenerated, *) by ResourceId` .
 
 ### <a name="connections-and-ports"></a>Verbindingen en poorten
 
@@ -159,7 +159,7 @@ Records met een type *VMComputer* hebben inventaris gegevens voor servers met de
 | Eigenschap | Beschrijving |
 |:--|:--|
 |TenantId | De unieke id voor de werk ruimte |
-|SourceSystem | *Insights* | 
+|SourceSystem | *Inzichten* | 
 |TimeGenerated | Tijds tempel van de record (UTC) |
 |Computer | De FQDN van de computer | 
 |AgentId | De unieke ID van de Log Analytics-agent |
@@ -221,7 +221,7 @@ Records met een type *VMProcess* hebben inventaris gegevens voor met TCP verbond
 | Eigenschap | Beschrijving |
 |:--|:--|
 |TenantId | De unieke id voor de werk ruimte |
-|SourceSystem | *Insights* | 
+|SourceSystem | *Inzichten* | 
 |TimeGenerated | Tijds tempel van de record (UTC) |
 |Computer | De FQDN van de computer | 
 |AgentId | De unieke ID van de Log Analytics-agent |
@@ -437,12 +437,12 @@ Records met een type *InsightsMetrics* hebben prestatie gegevens van het gast be
 | Eigenschap | Beschrijving |
 |:--|:--|
 |TenantId | De unieke id voor de werk ruimte |
-|SourceSystem | *Insights* | 
+|SourceSystem | *Inzichten* | 
 |TimeGenerated | Tijdstip waarop de waarde is verzameld (UTC) |
 |Computer | De FQDN van de computer | 
 |Oorsprong | *vm.azm.ms* |
 |Naamruimte | Categorie van het prestatie meter item | 
-|Naam | Naam van het prestatie meter item |
+|Name | Naam van het prestatie meter item |
 |Waa | Verzamelde waarde | 
 |Tags | Gerelateerde Details over de record. Zie de onderstaande tabel voor labels die worden gebruikt met verschillende record typen.  |
 |AgentId | Unieke id voor de agent van elke computer |
@@ -454,7 +454,7 @@ De prestatie meter items die momenteel zijn verzameld in de tabel *InsightsMetri
 | Naamruimte | Naam | Beschrijving | Eenheid | Tags |
 |:---|:---|:---|:---|:---|
 | Computer    | Hartslag             | Computer heartbeat                        | | |
-| Geheugen      | AvailableMB           | Geheugen beschik bare bytes                    | Bytes          | memorySizeMB-totale geheugen grootte|
+| Geheugen      | AvailableMB           | Geheugen beschik bare bytes                    | Mega bytes      | memorySizeMB-totale geheugen grootte|
 | Netwerk     | WriteBytesPerSecond   | Door het netwerk geschreven bytes per seconde            | BytesPerSecond | NetworkDeviceId-id van het apparaat<br>bytes-totaal aantal verzonden bytes |
 | Netwerk     | ReadBytesPerSecond    | Gelezen bytes per seconde in het netwerk             | BytesPerSecond | networkDeviceId-id van het apparaat<br>bytes-totaal aantal ontvangen bytes |
 | Processor   | UtilizationPercentage | Percentage processor gebruik          | Percentage        | totalCpus-totale aantal Cpu's |
@@ -467,7 +467,7 @@ De prestatie meter items die momenteel zijn verzameld in de tabel *InsightsMetri
 | LogicalDisk | ReadLatencyMs         | Lees latentie van logische schijf in milliseconden     | Milliseconden   | mountId: koppel-ID van het apparaat |
 | LogicalDisk | ReadBytesPerSecond    | Gelezen bytes van logische schijf per seconde        | BytesPerSecond | mountId: koppel-ID van het apparaat |
 | LogicalDisk | FreeSpacePercentage   | Percentage beschik bare ruimte logische schijf        | Percentage        | mountId: koppel-ID van het apparaat |
-| LogicalDisk | FreeSpaceMB           | Bytes beschik bare ruimte logische schijf             | Bytes          | mountId: koppel-ID van het apparaat<br>diskSizeMB-totale schijf grootte |
+| LogicalDisk | FreeSpaceMB           | Bytes beschik bare ruimte logische schijf             | Mega bytes      | mountId: koppel-ID van het apparaat<br>diskSizeMB-totale schijf grootte |
 | LogicalDisk | BytesPerSecond        | Bytes van logische schijf per seconde             | BytesPerSecond | mountId: koppel-ID van het apparaat |
 
 

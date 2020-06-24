@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 3141bb3652cfa44c42125fe95f038582108a963f
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5ea5a94c73adda1328b97c3e985c4b6ac614d1b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637135"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255021"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Server parameters in Azure Database for MariaDB
 
@@ -123,6 +123,9 @@ Wanneer verbindingen de limiet overschrijden, wordt mogelijk de volgende fout we
 > Voor de beste ervaring raden we u aan een Pooler voor verbindingen te gebruiken zoals ProxySQL om verbindingen efficiënt te beheren.
 
 Het maken van nieuwe client verbindingen met MariaDB kost tijd en wanneer de verbinding tot stand is gebracht, nemen deze verbindingen database bronnen in beslag, zelfs wanneer ze niet actief zijn De meeste toepassingen aanvragen een groot aantal korte, langdurige verbindingen, waardoor deze situatie wordt beperkt. Het resultaat is minder beschik bare resources voor uw werkelijke workload, waardoor de prestaties afnemen. Een verbindings groep waarmee niet-actieve verbindingen worden verminderd en bestaande verbindingen opnieuw worden gebruikt, kunt u dit voor komen. Ga naar onze [blog post](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)voor meer informatie over het instellen van ProxySQL.
+
+>[!Note]
+>ProxySQL is een open source-community-hulp programma. Het wordt door micro soft geadviseerd op basis van de beste inspanningen. Als u ondersteuning voor productie wilt krijgen met behulp van gezaghebbende richt lijnen, kunt u [ProxySQL-product ondersteuning](https://proxysql.com/services/support/)evalueren en bereiken.
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 

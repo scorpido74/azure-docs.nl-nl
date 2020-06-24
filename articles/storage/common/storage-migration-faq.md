@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651132"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944692"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Veelgestelde vragen over de Azure Storage-migratie
 
@@ -144,7 +144,7 @@ Volg deze stappen:
     $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ```
 
-Zie [CreateVmFromManagedOsDisk. ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1)voor meer informatie over het implementeren van een virtuele machine vanaf een beheerde schijf.
+Zie [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1)voor meer informatie over het implementeren van een virtuele machine vanaf een beheerde schijf.
 
 **Hoe kan ik gegevens van een opslag account verplaatsen of downloaden?**
 
@@ -215,19 +215,20 @@ Er is geen back-upoplossing. Azure Files ondersteunt echter ook asynchrone kopie
 - Van een share naar een BLOB-container in een opslag account of een ander opslag account.
 
 Zie [gegevens overdragen met AzCopy in Windows](storage-use-azcopy.md)voor meer informatie.
+
 ## <a name="configuration"></a>Configuratie
 
 **Hoe kan ik de secundaire locatie wijzigen in de regio Europa van een opslag account?**
 
 Wanneer u een opslag account maakt, selecteert u de primaire regio voor het account. De selectie van de secundaire regio is gebaseerd op de primaire regio en kan niet worden gewijzigd. Zie [geo-redundante opslag (GRS): cross-Regional Replication for Azure Storage (Engelstalig)](storage-redundancy.md)voor meer informatie.
 
-**Waar vind ik meer informatie over Azure Storage service Encryption (SSE)?**  
+**Waar kan ik meer informatie krijgen over Azure Storage versleuteling?**  
 
 Zie de volgende artikelen:
 
--  [Veiligheidsgids voor Azure Storage](../blobs/security-recommendations.md)
-
--  [Versleuteling van Azure Storage-service voor Data-at-rest](storage-service-encryption.md)
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md)
+- [Door de klant beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling](encryption-customer-managed-keys.md)
+- [Geef een versleutelings sleutel op voor een aanvraag voor Blob-opslag (preview-versie)](encryption-customer-provided-keys.md)
 
 **Gegevens in een opslag account Hoe kan ik versleutelen?**
 
@@ -253,21 +254,21 @@ Als u virtuele machines hebt, moet u extra stappen uitvoeren voordat u de gegeve
 
 Andere personen toegang geven tot de opslag resources:
 
--   Gebruik een SAS-token (Shared Access Signature) om toegang te bieden tot een resource.
+- Gebruik een SAS-token (Shared Access Signature) om toegang te bieden tot een resource.
 
--   Geef een gebruiker op met de primaire of secundaire sleutel voor het opslag account. Zie [toegangs sleutels voor opslag accounts beheren](storage-account-keys-manage.md)voor meer informatie.
+- Geef een gebruiker op met de primaire of secundaire sleutel voor het opslag account. Zie [Toegangssleutels voor een opslagaccount beheren](storage-account-keys-manage.md) voor meer informatie.
 
--   Wijzig het toegangs beleid om anonieme toegang toe te staan. Zie [anonieme gebruikers machtigingen verlenen aan containers en blobs](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)voor meer informatie.
+- Wijzig het toegangs beleid om anonieme toegang toe te staan. Zie [anonieme gebruikers machtigingen verlenen aan containers en blobs](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)voor meer informatie.
 
 **Waar wordt AzCopy geïnstalleerd?**
 
--   Als u toegang hebt tot AzCopy vanaf de opdracht regel van Microsoft Azure Storage, typt u **AzCopy**. De opdracht regel wordt naast AzCopy geïnstalleerd.
+- Als u toegang hebt tot AzCopy vanaf de opdracht regel van Microsoft Azure Storage, typt u **AzCopy**. De opdracht regel wordt naast AzCopy geïnstalleerd.
 
--   Als u de 32-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files (x86)% \\ micro soft sdk's \\ Azure \\ AzCopy**.
+- Als u de 32-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files (x86)% \\ micro soft sdk's \\ Azure \\ AzCopy**.
 
--   Als u de 64-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files% \\ micro soft sdk's \\ Azure \\ AzCopy**.
+- Als u de 64-bits versie hebt geïnstalleerd, bevindt deze zich hier: **% Program Files% \\ micro soft sdk's \\ Azure \\ AzCopy**.
 
-**Hoe kan ik een aangepast HTTPS-domein met mijn opslag account gebruiken? Hoe kan ik bijvoorbeeld ' https: \/ /mystorageaccountname.blob.core.Windows.net/Images/image.gif ' weer geven als ' https: \/ /www.contoso.com/images/image.gif '?**
+**Hoe kan ik een aangepast HTTPS-domein met mijn opslag account gebruiken? Hoe kan ik bijvoorbeeld ' https: \/ /mystorageaccountname.blob.core.windows.net/images/image.gif ' weer geven als ' https: \/ /www.contoso.com/images/image.gif '?**
 
 TLS/SSL wordt momenteel niet ondersteund voor opslag accounts met aangepaste domeinen.
 U kunt echter geen aangepaste niet-HTTPS-domeinen gebruiken. Zie [een aangepaste domein naam configureren voor het eind punt van de Blob-opslag](../blobs/storage-custom-domain-name.md)voor meer informatie.
@@ -284,15 +285,15 @@ Geografisch redundante opslag met lees toegang is vereist voor toegang tot redun
 
 **Hoe kan ik toegang krijgen tot gegevens die zijn opgeslagen in de secundaire regio voor een gerepliceerd opslag account (zoals zone-redundante opslag, geografisch redundante opslag of geografisch redundante opslag met lees toegang)?**
 
--   Als u gebruikmaakt van zone-redundante opslag of geografisch redundante opslag, hebt u geen toegang tot gegevens uit de secundaire regio, tenzij u een failover naar die regio initieert. Zie [nood herstel en failover van het opslag account](storage-disaster-recovery-guidance.md)voor meer informatie over het failoverproces.
+- Als u gebruikmaakt van zone-redundante opslag of geografisch redundante opslag, hebt u geen toegang tot gegevens uit de secundaire regio, tenzij u een failover naar die regio initieert. Zie [nood herstel en failover van het opslag account](storage-disaster-recovery-guidance.md)voor meer informatie over het failoverproces.
 
--   Als u geografisch redundante opslag met lees toegang gebruikt, kunt u op elk gewenst moment toegang krijgen tot gegevens uit de secundaire regio. Gebruik een van de volgende methoden:  
+- Als u geografisch redundante opslag met lees toegang gebruikt, kunt u op elk gewenst moment toegang krijgen tot gegevens uit de secundaire regio. Hanteer één van de volgende methoden:  
 
-    - **AzCopy**: toevoeg **-secundair** aan de naam van het opslag account in de URL voor toegang tot het secundaire eind punt. Bijvoorbeeld:  
+  - **AzCopy**: toevoeg **-secundair** aan de naam van het opslag account in de URL voor toegang tot het secundaire eind punt. Bijvoorbeeld:  
 
       `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **SAS-token**: gebruik een SAS-token om toegang te krijgen tot gegevens van het eind punt. Zie [using Shared Access signatures](storage-sas-overview.md)(Engelstalig) voor meer informatie.
+  - **SAS-token**: gebruik een SAS-token om toegang te krijgen tot gegevens van het eind punt. Zie [using Shared Access signatures](storage-sas-overview.md)(Engelstalig) voor meer informatie.
 
 **Hoe kan ik FTP gebruiken om toegang te krijgen tot gegevens in een opslag account?**
 
@@ -300,6 +301,6 @@ Er is geen manier om rechtstreeks toegang te krijgen tot een opslag account via 
 
 Als u alleen gegevens wilt downloaden zonder gebruik te hoeven maken van Storage Explorer of een soort gelijke toepassing, kunt u mogelijk een SAS-token gebruiken. Zie [using Shared Access signatures](storage-sas-overview.md)(Engelstalig) voor meer informatie.
 
-## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
 Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

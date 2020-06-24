@@ -315,7 +315,7 @@ Levenscyclus beheer ondersteunt het trapsgewijs en verwijderen van blobs en het 
 
 De uitvoerings voorwaarden zijn gebaseerd op leeftijd. Basis-blobs gebruiken het tijdstip waarop het laatst is gewijzigd voor het bijhouden van leeftijd en de BLOB-moment opnamen maken gebruik van de moment opname voor het bijhouden van leeftijd.
 
-| Voor waarde voor actie uitvoeren             | Waarde voor waarde                          | Beschrijving                             |
+| Voor waarde voor actie uitvoeren             | Waarde voor waarde                          | Description                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor basis-BLOB-acties     |
 | daysAfterCreationGreaterThan     | Geheel getal dat de leeftijd in dagen aangeeft | De voor waarde voor BLOB-momentopname acties |

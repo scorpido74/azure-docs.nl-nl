@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930451"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254919"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellen bijwerken met resource activiteit bijwerken
 
@@ -47,7 +47,7 @@ Na verloop van tijd moeten de voorspellende modellen in de Score experimenten va
 In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [Software modellen opnieuw trainen machine learning Studio (klassiek)](../../machine-learning/studio/retrain-machine-learning-model.md) voor meer informatie.
 
 - **Training-webservice** : ontvangt trainings gegevens en produceert getrainde modellen. De uitvoer van het opnieuw trainen is een. ilearner-bestand in een Azure Blob-opslag. Het **standaard eindpunt** wordt automatisch voor u gemaakt wanneer u het trainings experiment als een webservice publiceert. U kunt meer eind punten maken, maar in het voor beeld wordt alleen het standaard eindpunt gebruikt.
-- **Scores-webservice** : ontvangt voor beelden zonder gelabeld gegevens en maakt voor spellingen. De uitvoer van voor spellingen kan verschillende vormen hebben, zoals een CSV-bestand of rijen in een Azure-SQL database, afhankelijk van de configuratie van het experiment. Het standaard eindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als een webservice publiceert. 
+- **Scores-webservice** : ontvangt voor beelden zonder gelabeld gegevens en maakt voor spellingen. De uitvoer van voor spellingen kan verschillende vormen hebben, zoals een CSV-bestand of rijen in Azure SQL Database, afhankelijk van de configuratie van het experiment. Het standaard eindpunt wordt automatisch voor u gemaakt wanneer u het voorspellende experiment als een webservice publiceert. 
 
 In de volgende afbeelding ziet u de relatie tussen training en Score-eind punten in azure ML.
 
@@ -58,7 +58,7 @@ U kunt de **training-webservice** aanroepen met behulp van de **Azure ml batch E
 U kunt de **Score-webservice** aanroepen met behulp van de **activiteit Azure ml update resource** om de webservice bij te werken met het nieuwe getrainde model. De volgende voor beelden bieden gekoppelde service definities: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Scores-webservice is een klassieke webservice
-Als de Score-webservice een **klassieke webservice**is, maakt u het tweede **niet-standaard en bijwerk bare eind punt** met behulp van de Azure Portal. Zie het artikel [endpoints maken](../../machine-learning/machine-learning-create-endpoint.md) voor de stappen. Nadat u het niet-standaard bijwerk bare eind punt hebt gemaakt, voert u de volgende stappen uit:
+Als de Score-webservice een **klassieke webservice**is, maakt u het tweede **niet-standaard en bijwerk bare eind punt** met behulp van de Azure Portal. Zie het artikel [endpoints maken](../../machine-learning/studio/create-endpoint.md) voor de stappen. Nadat u het niet-standaard bijwerk bare eind punt hebt gemaakt, voert u de volgende stappen uit:
 
 * Klik op **batch-uitvoering** om de URI-waarde voor de JSON-eigenschap **mlEndpoint** op te halen.
 * Klik op **resource koppeling bijwerken** om de URI-waarde voor de JSON-eigenschap **updateResourceEndpoint** op te halen. De API-sleutel bevindt zich op de eindpunt pagina zelf (in de rechter benedenhoek).

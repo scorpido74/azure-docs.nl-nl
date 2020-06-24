@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267688"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702223"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>De StorSimple Apparaatbeheer-service gebruiken om de configuratie van uw StorSimple-apparaat te wijzigen
 
@@ -87,7 +87,7 @@ Voor maximale Beschik baarheid moet u de primaire en secundaire DNS-servers conf
 
 **Primaire DNS-server** : u gebruikt de Windows PowerShell voor StorSimple om eerst de primaire DNS-server op te geven tijdens de eerste installatie. U kunt de primaire DNS-server alleen opnieuw configureren via de Windows Power shell-interface. Gebruik de `Set-HcsDNSClientServerAddress` cmdlet om de primaire DNS-server van uw apparaat te wijzigen. Ga naar de syntaxis van de cmdlet [set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) voor meer informatie.
 
-**Secundaire DNS-server** : als u de secundaire DNS-server wilt `Set-HcsDNSClientServerAddress` wijzigen, gebruikt u de cmdlet in de Windows Power shell-interface van de Blade apparaat-of **netwerk instellingen** van uw StorSimple-apparaat in de Azure Portal.
+**Secundaire DNS-server** : als u de secundaire DNS-server wilt wijzigen, gebruikt u de `Set-HcsDNSClientServerAddress` cmdlet in de Windows Power shell-interface van de Blade apparaat-of **netwerk instellingen** van uw StorSimple-apparaat in de Azure Portal.
 
 Als u de secundaire DNS-server in Azure Portal wilt wijzigen, voert u de volgende stappen uit.
 

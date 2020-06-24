@@ -7,19 +7,19 @@ author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734176"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791194"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van de Azure Portal
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure Portal
 
 Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste Azure-rollen maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals bij een abonnement en een resource groep. Aangepaste rollen worden opgeslagen in een Azure Active Directory-Directory (Azure AD) en kunnen worden gedeeld via abonnementen. Elke directory kan Maxi maal 5000 aangepaste rollen hebben. Aangepaste rollen kunnen worden gemaakt met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de REST API. In dit artikel wordt beschreven hoe u aangepaste rollen maakt met behulp van de Azure Portal.
 
@@ -196,15 +196,15 @@ Volg deze stappen om machtigingen toe te voegen aan of te verwijderen voor uw aa
 
 1. Klik op **toevoegen** om de machtiging toe te voegen aan uw lijst met machtigingen.
 
-    De machtiging wordt toegevoegd als een `Actions` of een `DataActions`.
+    De machtiging wordt toegevoegd als een `Actions` of een `DataActions` .
 
     ![Machtigingen toegevoegd](./media/custom-roles-portal/permissions-list-add.png)
 
-1. Als u machtigingen wilt verwijderen, klikt u op het pictogram verwijderen aan het einde van de rij. In dit voor beeld, omdat een gebruiker geen ondersteunings tickets hoeft te maken, kan `Microsoft.Support/*` de machtiging worden verwijderd.
+1. Als u machtigingen wilt verwijderen, klikt u op het pictogram verwijderen aan het einde van de rij. In dit voor beeld, omdat een gebruiker geen ondersteunings tickets hoeft te maken, `Microsoft.Support/*` kan de machtiging worden verwijderd.
 
 ### <a name="add-wildcard-permissions"></a>Machtigingen voor joker tekens toevoegen
 
-Afhankelijk van hoe u ervoor hebt gekozen om te beginnen, hebt u mogelijk machtigingen met Joker\*tekens () in de lijst met machtigingen. Een Joker teken\*() breidt een machtiging uit voor alles die overeenkomt met de teken reeks die u opgeeft. Stel bijvoorbeeld dat u alle machtigingen wilt toevoegen met betrekking tot Azure Cost Management en exports. U kunt al deze machtigingen toevoegen:
+Afhankelijk van hoe u ervoor hebt gekozen om te beginnen, hebt u mogelijk machtigingen met Joker tekens ( \* ) in de lijst met machtigingen. Een Joker teken ( \* ) breidt een machtiging uit voor alles die overeenkomt met de teken reeks die u opgeeft. Stel bijvoorbeeld dat u alle machtigingen wilt toevoegen met betrekking tot Azure Cost Management en exports. U kunt al deze machtigingen toevoegen:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -224,7 +224,7 @@ Als u een nieuwe machtiging voor joker tekens wilt toevoegen, kunt u deze niet t
 
 ### <a name="exclude-permissions"></a>Machtigingen uitsluiten
 
-Als uw rol een machtiging voor Joker\*tekens () heeft en u specifieke machtigingen uit die Joker machtiging wilt uitsluiten of verwijderen, kunt u deze uitsluiten. Stel bijvoorbeeld dat u de volgende Joker machtiging hebt:
+Als uw rol een machtiging voor joker tekens ( \* ) heeft en u specifieke machtigingen uit die Joker machtiging wilt uitsluiten of verwijderen, kunt u deze uitsluiten. Stel bijvoorbeeld dat u de volgende Joker machtiging hebt:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -236,7 +236,7 @@ Als u niet wilt toestaan dat een export wordt verwijderd, kunt u de volgende mac
 Microsoft.CostManagement/exports/delete
 ```
 
-Wanneer u een machtiging uitsluit, wordt deze toegevoegd als `NotActions` een `NotDataActions`of. De juiste beheer machtigingen worden berekend door alle toe `Actions` te voegen en vervolgens alle te verwijderen. `NotActions` De juiste gegevens machtigingen worden berekend door alle toe `DataActions` te voegen en vervolgens alle te verwijderen. `NotDataActions`
+Wanneer u een machtiging uitsluit, wordt deze toegevoegd als een `NotActions` of `NotDataActions` . De juiste beheer machtigingen worden berekend door alle toe te voegen `Actions` en vervolgens alle te verwijderen `NotActions` . De juiste gegevens machtigingen worden berekend door alle toe te voegen `DataActions` en vervolgens alle te verwijderen `NotDataActions` .
 
 > [!NOTE]
 > Het uitsluiten van een machtiging is niet hetzelfde als een weigering. Het uitsluiten van machtigingen is een handige manier om machtigingen van een Joker machtiging af te trekken.
@@ -249,7 +249,7 @@ Wanneer u een machtiging uitsluit, wordt deze toegevoegd als `NotActions` een `N
 
     ![Deel venster machtigingen uitsluiten: machtiging geselecteerd](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    De machtiging wordt toegevoegd als een `NotActions` of `NotDataActions`.
+    De machtiging wordt toegevoegd als een `NotActions` of `NotDataActions` .
 
     ![Uitgesloten machtiging](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
@@ -269,7 +269,7 @@ Op het tabblad **toewijs bare bereiken** geeft u op waar uw aangepaste rol besch
 
 ## <a name="step-6-json"></a>Stap 6: JSON
 
-Op het tabblad **JSON** ziet u de aangepaste rol die is ingedeeld in JSON. Als u wilt, kunt u de JSON rechtstreeks bewerken. Als u een Joker teken (\*)-machtiging wilt toevoegen, moet u dit tabblad gebruiken.
+Op het tabblad **JSON** ziet u de aangepaste rol die is ingedeeld in JSON. Als u wilt, kunt u de JSON rechtstreeks bewerken. Als u een Joker teken ()- \* machtiging wilt toevoegen, moet u dit tabblad gebruiken.
 
 1. Klik op **bewerken**om de JSON te bewerken.
 
@@ -287,7 +287,7 @@ Op het tabblad **controleren en maken** kunt u de instellingen van uw aangepaste
 
 1. Controleer de instellingen van uw aangepaste rol.
 
-    ![Tabblad controleren en maken](./media/custom-roles-portal/review-create.png)
+    ![Tabblad Beoordelen en maken](./media/custom-roles-portal/review-create.png)
 
 1. Klik op **maken** om uw aangepaste rol te maken.
 

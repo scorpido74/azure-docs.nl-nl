@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 3a359e4b3523615623c76d48c1aafd7aa95a5277
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324433"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255038"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,10 +91,11 @@ De Fsv2-serie wordt alleen ondersteund in de laag Algemeen.  Zie de [Beschik baa
 - M-serie is een optie voor geoptimaliseerd voor geheugen voor werk belastingen die meer geheugen en hogere reken limieten hebben dan wordt verzorgd door GEN5.
 - De M-serie biedt 29 GB per vCore en 128 vCores, waardoor de geheugen limiet wordt verhoogd ten opzichte van GEN5 van 8x tot bijna 4 TB.
 
-De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.
+De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA).  Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
 
-Als u hardware van de M-serie wilt inschakelen voor een abonnement en regio, moet een ondersteunings aanvraag worden geopend. Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA).  Als de ondersteunings aanvraag is goedgekeurd, volgt de selectie-en inrichtings ervaring van de M-serie hetzelfde patroon als voor andere hardware-generaties. Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
-
+<!--
+To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).
+-->
 
 ### <a name="compute-and-memory-specifications"></a>Specificaties van Compute en geheugen
 
@@ -112,7 +113,7 @@ Zie [resource limieten voor afzonderlijke data bases (vCore)](resource-limits-vc
 
 ### <a name="selecting-a-hardware-generation"></a>Een hardware-generatie selecteren
 
-In de Azure Portal kunt u de hardware-generatie voor een Data Base of groep in SQL Database selecteren op het moment dat deze wordt gemaakt, of u kunt de hardware-generatie van een bestaande SQL database of groep wijzigen.
+In de Azure Portal kunt u de hardware-generatie voor een Data Base of groep in SQL Database selecteren op het moment dat deze wordt gemaakt, of u kunt de hardware-generatie van een bestaande data base of groep wijzigen.
 
 **Een hardwarematige generatie selecteren bij het maken van een SQL Database of groep**
 
@@ -193,32 +194,33 @@ Fsv2-serie is beschikbaar in de volgende regio's: AustraliÃ«-centraal, AustraliÃ
 #### <a name="m-series"></a>M-serie
 
 De M-serie is beschikbaar in de volgende regio's: VS-Oost, Europa-noord, Europa-west, VS-West 2.
-De M-serie kan ook een beperkte Beschik baarheid hebben in extra regio's. U kunt een andere regio aanvragen dan hier wordt vermeld, maar de uitvoering van een andere regio is mogelijk niet mogelijk.
+<!--
+M-series may also have limited availability in additional regions. You can request a different region than listed here, but fulfillment in a different region may not be possible.
 
-Als u de beschik baarheid van de M-serie in een abonnement wilt inschakelen, moet u toegang [aanvragen door een nieuwe ondersteunings aanvraag](#create-a-support-request-to-enable-m-series)in te dienen.
+To enable M-series availability in a subscription, access must be requested by [filing a new support request](#create-a-support-request-to-enable-m-series).
 
 
-##### <a name="create-a-support-request-to-enable-m-series"></a>Een ondersteunings aanvraag maken om de M-serie in te scha kelen: 
+##### Create a support request to enable M-series: 
 
-1. Selecteer **Help en ondersteuning** in de portal.
-2. Selecteer **Nieuwe ondersteuningsaanvraag**.
+1. Select **Help + support** in the portal.
+2. Select **New support request**.
 
-Geef op de pagina **basis beginselen** het volgende op:
+On the **Basics** page, provide the following:
 
-1. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)**.
-2. Voor **abonnement** = Selecteer het abonnement om de M-serie in te scha kelen.
-3. Selecteer **SQL database**bij **quotum type**.
-4. Selecteer **volgende** om naar de pagina **Details** te gaan.
+1. For **Issue type**, select **Service and subscription limits (quotas)**.
+2. For **Subscription** = select the subscription to enable M-series.
+3. For **Quota type**, select **SQL database**.
+4. Select **Next** to go to the **Details** page.
 
-Geef op de pagina **Details** het volgende op:
+On the **Details** page, provide the following:
 
-1. Selecteer in de sectie **probleem Details** de koppeling **Details opgeven** . 
-2. Voor **SQL database quotum type** selecteert u **M-serie**.
-3. Selecteer bij **regio**de regio om de M-serie in te scha kelen.
-    Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
+1. In the **PROBLEM DETAILS** section select the **Provide details** link. 
+2. For **SQL Database quota type** select **M-series**.
+3. For **Region**, select the region to enable M-series.
+    For regions where M-series is available, see [M-series availability](#m-series).
 
-Goedgekeurde ondersteunings aanvragen worden doorgaans binnen 5 werk dagen afgehandeld.
-
+Approved support requests are typically fulfilled within 5 business days.
+-->
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,14 +1,14 @@
 ---
 title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ab18b85fc24deb58a6c65ca038d47120056eaa75
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221145"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791704"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -25,7 +25,7 @@ Azure Policy voor Kubernetes ondersteunt de volgende cluster omgevingen:
 - [AKS-engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> Azure Policy voor Kubernetes is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte definities van de preview-beleids regels met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie zijn _afgeschaft_. Gebruik in plaats daarvan het bijgewerkte [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effect.
+> Azure Policy voor Kubernetes is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceOPAConstraint** -en **EnforceRegoPolicy** -effect en de gerelateerde **service categorie Kubernetes** zijn _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
 
 ## <a name="overview"></a>Overzicht
 
@@ -370,7 +370,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>Beleids taal
 
-De Azure Policy taal structuur voor het beheren van Kubernetes volgt de bestaande beleids definities. Het effect _EnforceOPAConstraint_ wordt gebruikt om uw Kubernetes-clusters te beheren en bevat gedetailleerde eigenschappen die specifiek zijn voor het werken met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) en gate keeper v3. Zie het effect [EnforceOPAConstraint](./effects.md#enforceopaconstraint) voor meer informatie en voor beelden.
+De Azure Policy taal structuur voor het beheren van Kubernetes volgt de bestaande beleids definities. Met de [modus van de resource provider](./definition-structure.md#resource-provider-modes) van `Microsoft.Kubernetes.Data` worden de effecten [controleren](./effects.md#audit) en [weigeren](./effects.md#deny) gebruikt voor het beheren van uw Kubernetes-clusters. _Controleren_ en _weigeren_ moeten **gedetailleerde** eigenschappen bieden die specifiek zijn voor het werken met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) en gate keeper v3.
 
 Als onderdeel van de eigenschappen _Details. constraintTemplate_ en _Details. CONSTRAINT_ in de beleids definitie Azure Policy door gegeven de uri's van deze [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) naar de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)voor meer informatie.
 
@@ -540,5 +540,5 @@ De gegevens die door de invoeg toepassing worden verzameld, zijn geen persoonlij
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

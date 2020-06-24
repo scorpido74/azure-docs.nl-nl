@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734107"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790243"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure deny-toewijzingen weer geven met behulp van de Azure Portal
 
@@ -42,7 +42,7 @@ Volg deze stappen om toewijzingen weigeren te vermelden in het bereik van het ab
 
 1. Klik op de beheer groep of het abonnement dat u wilt weer geven.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **toewijzingen weigeren** (of klik op de knop **weer geven** op de tegel toewijzingen weigeren weer geven).
 
@@ -57,7 +57,7 @@ Volg deze stappen om toewijzingen weigeren te vermelden in het bereik van het ab
     |  |  |
     | --- | --- |
     | **Naam** | De naam van de weigerings toewijzing. |
-    | **Principal-type** | Gebruiker, groep, door het systeem gedefinieerde groep of Service-Principal. |
+    | **Type principal** | Gebruiker, groep, door het systeem gedefinieerde groep of Service-Principal. |
     | **Geweigerd**  | Naam van de beveiligingsprincipal die is opgenomen in de toewijzing weigeren. |
     | **Id** | De unieke id voor de deny-toewijzing. |
     | **Uitgesloten principals** | Of er beveiligings-principals zijn die zijn uitgesloten van de weigerings toewijzing. |

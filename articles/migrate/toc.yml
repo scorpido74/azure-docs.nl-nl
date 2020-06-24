@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: Fysieke servers migreren
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: AWS-VM's beoordelen en migreren
+      items:
+        - name: 'Amazon Web Services-VM''s (AWS) ontdekken, beoordelen en migreren naar Azure'
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: Geïmporteerde servers evalueren voor migratie
       items:
         - name: Geïmporteerde servers evalueren voor migratie

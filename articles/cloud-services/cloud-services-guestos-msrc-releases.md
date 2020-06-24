@@ -10,39 +10,75 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/2/2020
+ms.date: 6/12/2020
 ms.author: yohaddad
-ms.openlocfilehash: 89344c38c719a06d8241ec34136a75c96de9f901
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322869"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737458"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+## <a name="june-2020-guest-os"></a>Juni 2020-gast besturingssysteem
+">[!NOTE]
+>Het juni gast besturingssysteem wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen. "
+
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2,99, 3,86, 4,79  |  9 juni 2020  |
+|  Rel 20-06  |  [4561616]  |  Meest recente cumulatieve update (LCU)  |  5,44  |  9 juni 2020  |
+|  Rel 20-06  |  [4561608]  |  Meest recente cumulatieve update (LCU)  |  6,20  |  9 juni 2020  |
+|  Rel 20-06  |  [4562030]  |  Onderhouds stack-update  |  2,99  |  9 juni 2020  |
+|  Rel 20-06  |  [4561643]  |  Maandelijks samen vouwen  |  2,99  |  9 juni 2020  |
+|  Rel 20-06  |  [4562252]  |  Onderhouds stack-update  |  3,86  |  9 juni 2020  |
+|  Rel 20-06  |  [4561612]  |  Maandelijks samen vouwen  |  3,86  |  9 juni 2020  |
+|  Rel 20-06  |  [4561600]  |  Flits  |  3,86, 4,79, 5,44, 6,20  |  9 juni 2020  |
+|  Rel 20-06  |  [4562253]  |  Onderhouds stack-update  |  4,79  |  9 juni 2020  |
+|  Rel 20-06  |  [4561666]  |  Maandelijks samen vouwen  |  4,79  |  9 juni 2020  |
+|  Rel 20-06  |  [4562561]  |  Onderhouds stack-update  |  5,44  |  9 juni 2020  |
+|  Rel 20-06  |  [4562562]  |  Onderhouds stack-update  |  6,20  |  9 juni 2020  |
+
+
+
+[4561603]: https://support.microsoft.com/kb/4561603
+[4561616]: https://support.microsoft.com/kb/4561616
+[4561608]: https://support.microsoft.com/kb/4561608
+[4562030]: https://support.microsoft.com/kb/4562030
+[4561643]: https://support.microsoft.com/kb/4561643
+[4562252]: https://support.microsoft.com/kb/4562252
+[4561612]: https://support.microsoft.com/kb/4561612
+[4561600]: https://support.microsoft.com/kb/4561600
+[4562253]: https://support.microsoft.com/kb/4562253
+[4561666]: https://support.microsoft.com/kb/4561666
+[4562561]: https://support.microsoft.com/kb/4562561
+[4562562]: https://support.microsoft.com/kb/4562562
+
 
 ## <a name="may-2020-guest-os"></a>Mei 2020-gast besturingssysteem
 
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 mei 2020  |
-|  Rel 20-05   |  [4556813]  |  Meest recente cumulatieve update (LCU)   |  [5,43]  |  12 mei 2020  |
-|  Rel 20-05   |  [4551853]  |  Meest recente cumulatieve update (LCU)   |  [6,19]  |  12 mei 2020  |
-|  Rel 20-05   |  [4552940]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
-|  Rel 20-05   |  [4556836]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
-|  Rel 20-05   |  [4555449]  |  Onderhouds stack-update   |  [2,98]  |  12 mei 2020  |
-|  Rel 20-05   |  [4552920]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
-|  Rel 20-05   |  [4552979]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
-|  Rel 20-05   |  [4556840]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
-|  Rel 20-05   |  [4552947]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
-|  Rel 20-05   |  [4552982]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
-|  Rel 20-05   |  [4552946]  |  Maandelijks samen vouwen   |  [4,78]  |  12 mei 2020  |
-|  Rel 20-05   |  [4556846]  |  Maandelijks samen vouwen   |  [4,78]  |  12 mei 2020  |
-|  Rel 20-05   |  [4550994]  |  Onderhouds stack-update   |  [5,43]  |  Apr 14, 2020  |
-|  Rel 20-05   |  [4552924]  |  Maandelijks samen vouwen   |  [6,19]  |  12 mei 2020  |
-|  Rel 20-05   |  [4549947]  |  Onderhouds stack-update   |  [6,19]  |  Apr 14, 2020  |
+|  Rel 20-05  |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 mei 2020  |
+|  Rel 20-05  |  [4556813]  |  Meest recente cumulatieve update (LCU)   |  [5,43]  |  12 mei 2020  |
+|  Rel 20-05  |  [4551853]  |  Meest recente cumulatieve update (LCU)   |  [6,19]  |  12 mei 2020  |
+|  Rel 20-05  |  [4552940]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05  |  [4556836]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05  |  [4555449]  |  Onderhouds stack-update   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05  |  [4552920]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05  |  [4552979]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05  |  [4556840]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05  |  [4552947]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05  |  [4552982]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05  |  [4552946]  |  Maandelijks samen vouwen   |  [4,78]  |  12 mei 2020  |
+|  Rel 20-05  |  [4556846]  |  Maandelijks samen vouwen   |  [4,78]  |  12 mei 2020  |
+|  Rel 20-05  |  [4550994]  |  Onderhouds stack-update   |  [5,43]  |  Apr 14, 2020  |
+|  Rel 20-05  |  [4552924]  |  Maandelijks samen vouwen   |  [6,19]  |  12 mei 2020  |
+|  Rel 20-05  |  [4549947]  |  Onderhouds stack-update   |  [6,19]  |  Apr 14, 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -66,6 +102,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
 [5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
 [6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+
 
 ## <a name="april-2020-guest-os"></a>April 2020-gast besturingssysteem
 
@@ -237,16 +274,16 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 19-12  |  [4530692]  |  Windows-beveiliging  | [2.93] | 10 december 2019 |
-|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2.93] | 10 december 2019 |
+|  Rel 19-12  |  [4530692]  |  Windows-beveiliging  | [2,93] | 10 december 2019 |
+|  Rel 19-12  |  [4530677]  |  Internet Explorer  | [2,93] | 10 december 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [3,80] | 10 december 2019 |
 |  Rel 19-12  |  [4530698]  |  Windows-beveiliging  | [3,80] | 10 december 2019 |
 |  Rel 19-12  |  [4530730]  |  Windows-beveiliging  | [4,73] | 10 december 2019 |
 |  Rel 19-12  |  [4530677]  |  Internet Explorer  | [4,73] | 10 december 2019 |
 |  Rel 19-12  |  [4530689]  |  Meest recente cumulatieve update  | [5,38] | 10 december 2019 |
 |  Rel 19-12  |  [4530715]  |  Meest recente cumulatieve update  | [6,14] | 10 december 2019 |
-|  Rel 19-12  |  [4525235]  |  Niet-beveiliging  | [2.93] | 12 november 2019 |
-|  Rel 19-12  |  [4531786]  |  Onderhouds stack-update  | [2.93] | 10 december 2019 |
+|  Rel 19-12  |  [4525235]  |  Niet-beveiliging  | [2,93] | 12 november 2019 |
+|  Rel 19-12  |  [4531786]  |  Onderhouds stack-update  | [2,93] | 10 december 2019 |
 |  Rel 19-12  |  [4525246]  |  Niet-beveiliging  | [3,80] | 12 november 2019 |
 |  Rel 19-12  |  [4523208]  |  Onderhouds stack-update  | [3,80] | 12 november 2019 |
 |  Rel 19-12  |  [4525243]  |  Niet-beveiliging  | [4,73] | 12 november 2019 |
@@ -274,7 +311,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [5,38]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
 [4,73]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
 [3,80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2.93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[2,93]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 
@@ -1375,7 +1412,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-065 |[3156757] |Beveiligings update voor .NET Framework |4,32, 3,39, 2,51 |10 mei 2016 |
 | MS16-067 |[3155784] |Beveiligings update voor het volume manager-stuur programma |4,32, 3,39 |10 mei 2016 |
 | N.v.t. |[3148851] |Tijd zone wijzigingen voor Rusland in Windows  |4,32, 3,39, 2,51 |10 mei 2016 |
-| N.v.t. |[3133977] |BitLocker kan geen stations versleutelen vanwege service fouten in het proces Svchost. exe in Windows 7 of Windows Server 2008 R2  |2,51 |10 mei 2016 |
+| N.v.t. |[3133977] |BitLocker kan geen stations versleutelen vanwege een service crash in svchost.exe proces in Windows 7 of Windows Server 2008 R2  |2,51 |10 mei 2016 |
 | N.v.t. |[3133681] |Virtuele machines reageren niet op uw bewerking in SCVMM in Windows Server 2012 R2  |4,32 |10 mei 2016 |
 | N.v.t. |[3123245] |Update verbetert de identificatie van de poort uitgeput in Windows Server 2012 R2  |4,32 |10 mei 2016 |
 | N.v.t. |[RC4 uitschakelen] | Micro soft-beveiligings advies: update voor het uitschakelen van RC4  |4,32, 3,39, 2,51 |10 mei 2016 |
@@ -1544,7 +1581,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="april-2015-guest-os"></a>April 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| [MS15-034] |[3042553] |Beveiligings probleem in HTTP. sys kan leiden tot uitvoering van externe code |4,19, 3,26, 2,38 |Apr 17, 2015 |
+| [MS15-034] |[3042553] |Beveiligings probleem in HTTP.sys kan leiden tot uitvoering van externe code |4,19, 3,26, 2,38 |Apr 17, 2015 |
 
 ## <a name="march-2015-guest-os"></a>Maart 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |

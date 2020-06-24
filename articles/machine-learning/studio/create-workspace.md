@@ -5,17 +5,17 @@ description: Als u Azure Machine Learning Studio (klassiek) wilt gebruiken, moet
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: d8e8e9ec7a0a5c502e3046b0c6ddb3a7da064739
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ede84fefed7db9d2afcc0ad65833ab2c0fefbc03
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117284"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696521"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) maken en delen
 
@@ -25,7 +25,7 @@ Als u Azure Machine Learning Studio (klassiek) wilt gebruiken, moet u een Machin
 
 Als u een werk ruimte in Machine Learning Studio (klassiek) wilt openen, moet u zijn aangemeld bij het micro soft-account dat u hebt gebruikt voor het maken van de werk ruimte, of moet u een uitnodiging van de eigenaar ontvangen om deel te nemen aan de werk ruimte. Vanuit de Azure Portal kunt u de werk ruimte beheren, waaronder de mogelijkheid om toegang te configureren.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/)
 
     > [!NOTE]
     > Als u zich wilt aanmelden en een studio-werk ruimte wilt maken, moet u een beheerder van het Azure-abonnement zijn. 
@@ -43,7 +43,7 @@ Als u een werk ruimte in Machine Learning Studio (klassiek) wilt openen, moet u 
 
      ![Een nieuwe studio-werk ruimte maken](./media/create-workspace/create-new-workspace.png)
 
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
    Machine Learning is momenteel beschikbaar in een beperkt aantal regio's. Als uw abonnement niet een van deze regio's bevat, wordt het fout bericht ' u hebt geen abonnementen in de toegestane regio's ' weer gegeven.  Als u een regio wilt toevoegen aan uw abonnement, maakt u een nieuwe micro soft-ondersteunings aanvraag van de Azure Portal, kiest u **facturering** als het probleem type en volgt u de aanwijzingen om uw aanvraag in te dienen.
 

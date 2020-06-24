@@ -4,15 +4,15 @@ description: In dit artikel ziet u de stappen voor het verplaatsen van uw open b
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019448"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738359"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Overstappen van openbare peering op Microsoft-peering
 
@@ -62,7 +62,7 @@ Gedetailleerde instructies voor het inschakelen van micro soft-peering vindt u i
 
 Controleer of de micro soft-peering is ingeschakeld en of de aangekondigde open bare voor voegsels de geconfigureerde status hebben.
 
-* [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
+* [Azure-portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure-CLI](howto-routing-cli.md#getmsft)
 

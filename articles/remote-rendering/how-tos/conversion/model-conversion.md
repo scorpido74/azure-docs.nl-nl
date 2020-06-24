@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681491"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808613"
 ---
 # <a name="convert-models"></a>Modellen converteren
 
@@ -38,6 +38,11 @@ Er zijn kleine verschillen tussen de indelingen met betrekking tot de conversie 
     - of door een *Shared Access Signature (SAS)* op te geven.
 
 Alle model gegevens (invoer en uitvoer) worden opgeslagen in Azure Blob-opslag die door de gebruiker is opgegeven. Met Azure remote rendering hebt u volledige controle over het beheer van uw bedrijfs middelen.
+
+## <a name="pricing"></a>Prijzen
+
+Raadpleeg de pagina met [prijzen voor externe rendering](https://azure.microsoft.com/pricing/details/remote-rendering) voor informatie over de prijzen voor conversie.
+
 
 ## <a name="conversion-parameters"></a>Conversie parameters
 

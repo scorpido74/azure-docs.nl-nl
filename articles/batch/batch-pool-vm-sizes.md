@@ -2,14 +2,14 @@
 title: VM-grootten kiezen voor Pools
 description: Kiezen uit de beschik bare VM-grootten voor reken knooppunten in Azure Batch Pools
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e3bcc51fafe10f4a753bdc79795f9afd00821d7
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c1621bbbe6676144176636346f3f5c34db169b7a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323821"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693155"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -37,9 +37,11 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 | Dv3, Dsv3 | Alle grootten |
 | Dav4<sup>1</sup> | Geen-nog niet beschikbaar |
 | Dasv4<sup>1</sup> | Alle grootten, met uitzonde ring van Standard_D48as_v4, Standard_D64as_v4 Standard_D96as_v4 |
+| Ddv4, Ddsv4 |  Geen-nog niet beschikbaar |
 | Ev3, Esv3 | Alle grootten, met uitzonde ring van E64is_v3 en E64i_v3 |
 | Eav4<sup>1</sup> | Alle grootten, met uitzonde ring van Standard_E48a_v4, Standard_E64a_v4 Standard_E96a_v4 |
 | Easv4<sup>1</sup> | Alle grootten, met uitzonde ring van Standard_E48as_v4, Standard_E64as_v4 Standard_E96as_v4 |
+| Edv4, Edsv4 |  Geen-nog niet beschikbaar |
 | F, FS | Alle grootten |
 | Fsv2 | Alle grootten |
 | G, GS | Alle grootten |

@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: event-grid
 author: tfitzmac
 ms.service: event-grid
@@ -28,7 +28,7 @@ In [Cloud shell](/azure/cloud-shell/quickstart):
 
 Voor een lokale installatie:
 
-1. [Installeer de Azure cli](/cli/azure/install-azure-cli). Zorg ervoor dat u de nieuwste versie hebt door te controleren met `az --version`.
+1. [Installeer de Azure cli](/cli/azure/install-azure-cli). Zorg ervoor dat u de nieuwste versie hebt door te controleren met `az --version` .
 1. Eerdere versies van de uitbrei ding verwijderen`az extension remove -n eventgrid`
 1. Installeer de `eventgrid` extensie met`az extension add -n eventgrid`
 

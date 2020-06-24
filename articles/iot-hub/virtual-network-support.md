@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7d7e04c526f7327a000ac26e255d2c8363c01f5c
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: bf193859c140001def83a18ca7965d9cbd312b02
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871238"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907530"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -76,7 +76,7 @@ Het [IP-filter](iot-hub-ip-filtering.md) van IOT hub beheert ook niet de open ba
 
 ### <a name="pricing-for-private-link"></a>Prijs voor privé koppeling
 
-Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link)voor prijs informatie.
+Zie [prijzen van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link) voor meer informatie over prijzen.
 
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>De connectiviteit van IoT Hub met andere Azure-resources afbreken
 
@@ -91,6 +91,76 @@ Om ervoor te zorgen dat andere services uw IoT-hub als een vertrouwde micro soft
 1. Onder **status**selecteert u **aan**en klikt u vervolgens op **Opslaan**.
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Scherm afbeelding die laat zien hoe u de beheerde identiteit voor IoT Hub inschakelt":::
+
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Beheerde identiteit aan uw IoT Hub toewijzen tijdens het maken van een ARM-sjabloon
+
+Als u beheerde identiteit wilt toewijzen aan uw IoT-hub op resource-inrichtings tijd, gebruikt u de ARM-sjabloon hieronder:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Devices/IotHubs",
+      "apiVersion": "2020-03-01",
+      "name": "<provide-a-valid-resource-name>",
+      "location": "<any-of-supported-regions>",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "sku": {
+        "name": "<your-hubs-SKU-name>",
+        "tier": "<your-hubs-SKU-tier>",
+        "capacity": 1
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-02-01",
+      "name": "updateIotHubWithKeyEncryptionKey",
+      "dependsOn": [
+        "<provide-a-valid-resource-name>"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "0.9.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Devices/IotHubs",
+              "apiVersion": "2020-03-01",
+              "name": "<provide-a-valid-resource-name>",
+              "location": "<any-of-supported-regions>",
+              "identity": {
+                "type": "SystemAssigned"
+              },
+              "sku": {
+                "name": "<your-hubs-SKU-name>",
+                "tier": "<your-hubs-SKU-tier>",
+                "capacity": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+Nadat u de waarden voor uw resource hebt vervangen `name` , `location` en, `SKU.name` `SKU.tier` kunt u Azure CLI gebruiken om de resource in een bestaande resource groep te implementeren met behulp van:
+
+```azurecli-interactive
+az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
+```
+
+Nadat de resource is gemaakt, kunt u de beheerde service-identiteit ophalen die aan uw hub is toegewezen met behulp van Azure CLI:
+
+```azurecli-interactive
+az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
+```
 
 ### <a name="pricing-for-managed-identity"></a>Prijzen voor beheerde identiteit
 
@@ -110,7 +180,7 @@ IoT Hub kunt berichten routeren naar een opslag account van de klant. Uw IoT Hub
 
 5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **opslag** als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op, selecteert u de container die u wilt gebruiken in uw Blob-opslag, geeft u code ring en indeling van de bestands naam op. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **maken** .
+6. Op de pagina die wordt weer gegeven, geeft u een naam voor het eind punt op, selecteert u de container die u wilt gebruiken in uw Blob-opslag, geeft u code ring en indeling van de bestands naam op. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
 
 Nu is uw aangepaste opslag eindpunt ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en heeft deze toegang tot uw opslag Resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
@@ -146,7 +216,7 @@ IoT Hub kunnen worden geconfigureerd voor het routeren van berichten naar een se
 
 5. Navigeer naar het gedeelte **aangepaste eind punten** en klik op **toevoegen**. Selecteer **Service Bus-wachtrij** of **Service Bus onderwerp** (indien van toepassing) als het type eind punt.
 
-6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u de naam ruimte van de service bus en de wachtrij of het onderwerp (indien van toepassing). Klik op de knop **maken** .
+6. Op de pagina die wordt weer gegeven, geeft u een naam op voor uw eind punt, selecteert u de naam ruimte van de service bus en de wachtrij of het onderwerp (indien van toepassing). Klik op de knop **Maken**.
 
 Nu het aangepaste service bus-eind punt is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw service bus-resource ondanks de firewall beperkingen. U kunt dit eind punt nu gebruiken om een routerings regel in te stellen.
 
@@ -162,7 +232,7 @@ Met de functie voor het uploaden van bestanden van IoT Hub kunnen apparaten best
 
 4. Ga op de pagina resource van uw IoT Hub naar het tabblad **bestand uploaden** .
 
-5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen**, de **SAS TTL**, de **standaard-TTL**en het **maximum aantal leverings aantallen** naar wens. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **maken** .
+5. Op de pagina die wordt weer gegeven, selecteert u de container die u wilt gebruiken in uw Blob-opslag, configureert u de **instellingen voor bestands meldingen**, de **SAS TTL**, de **standaard-TTL**en het **maximum aantal leverings aantallen** naar wens. Selecteer **systeem toegewezen** als **verificatie type** voor uw opslag eindpunt. Klik op de knop **Maken**.
 
 Nu uw opslag eindpunt voor het uploaden van bestanden is ingesteld voor het gebruik van de door het systeem toegewezen identiteit van uw hub en de toegang heeft tot uw opslag Resource ondanks de firewall beperkingen.
 
@@ -196,11 +266,11 @@ await registryManager.ExportDevicesAsync(
     cancellationToken);
 ```
 
-Voor het gebruik van deze versie van de Azure IoT Sdk's met ondersteuning voor virtuele netwerken voor C#, Java en node. js:
+Voor het gebruik van deze versie van de Azure IoT Sdk's met ondersteuning voor virtuele netwerken voor C#, Java en Node.js:
 
 1. Maak een omgevings variabele `EnableStorageIdentity` met de naam en stel de waarde in op `1` .
 
-2. De SDK downloaden: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [node. js](https://aka.ms/vnetnodesdk)
+2. De SDK downloaden: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node.js](https://aka.ms/vnetnodesdk)
  
 Voor python downloadt u onze beperkte versie van GitHub.
 

@@ -4,11 +4,11 @@ description: Meer informatie over het inpakken van een Azure Service Fabric-toep
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258341"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701044"
 ---
 # <a name="package-an-application"></a>Toepassingspakket maken
 
@@ -45,7 +45,7 @@ De namen van de mappen moeten overeenkomen met de **naam** kenmerken van elk ove
 
 Typische scenario's voor het gebruik van **SetupEntryPoint** zijn wanneer u een uitvoerbaar bestand moet uitvoeren voordat de service wordt gestart, of als u een bewerking wilt uitvoeren met verhoogde bevoegdheden. Bijvoorbeeld:
 
-* Instellen en initialiseren van omgevings variabelen die voor het uitvoer bare bestand van de service nodig zijn. Het is niet beperkt tot uitvoer bare bestanden die zijn geschreven via de Service Fabric-programmeer modellen. NPM. exe vereist bijvoorbeeld enkele omgevings variabelen die zijn geconfigureerd voor het implementeren van een node. js-toepassing.
+* Instellen en initialiseren van omgevings variabelen die voor het uitvoer bare bestand van de service nodig zijn. Het is niet beperkt tot uitvoer bare bestanden die zijn geschreven via de Service Fabric-programmeer modellen. npm.exe hebt bijvoorbeeld bepaalde omgevings variabelen nodig die zijn geconfigureerd voor het implementeren van een node.js toepassing.
 * Toegangs beheer instellen door beveiligings certificaten te installeren.
 
 Zie voor meer informatie over het configureren van de **SetupEntryPoint** [het beleid configureren voor een toegangs punt voor een service-instelling](service-fabric-application-runas-security.md)
@@ -66,7 +66,7 @@ Wanneer de verpakking is voltooid, kunt u de locatie van het pakket vinden in he
 
 ### <a name="build-a-package-by-command-line"></a>Een pakket bouwen met de opdracht regel
 
-Het is ook mogelijk om de toepassing via een programma te verpakken met behulp `msbuild.exe`van. Op de schermen wordt Visual Studio uitgevoerd, zodat de uitvoer hetzelfde is.
+Het is ook mogelijk om de toepassing via een programma te verpakken met behulp van `msbuild.exe` . Op de schermen wordt Visual Studio uitgevoerd, zodat de uitvoer hetzelfde is.
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
@@ -88,7 +88,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-Deze fout geeft aan dat het bestand *MySetup. bat* waarnaar wordt verwezen in het service manifest **SetupEntryPoint** ontbreekt in het code pakket. Nadat het ontbrekende bestand is toegevoegd, wordt de verificatie door de toepassing door gegeven:
+Deze fout geeft aan dat het *MySetup.bat* bestand waarnaar wordt verwezen in het service manifest **SetupEntryPoint** ontbreekt in het code pakket. Nadat het ontbrekende bestand is toegevoegd, wordt de verificatie door de toepassing door gegeven:
 
 ```
 tree /f .\MyApplicationType
@@ -122,7 +122,7 @@ True
 
 Als voor uw toepassing [toepassings parameters](service-fabric-manage-multiple-environment-app-configuration.md) zijn gedefinieerd, kunt u deze door geven in [test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) voor een juiste validatie.
 
-Als u het cluster kent waarop de toepassing wordt geïmplementeerd, wordt u aangeraden de `ImageStoreConnectionString` para meter door te geven. In dit geval wordt het pakket ook gevalideerd op basis van eerdere versies van de toepassing die al in het cluster worden uitgevoerd. De validatie kan bijvoorbeeld detecteren of een pakket met dezelfde versie maar een andere inhoud al is geïmplementeerd.  
+Als u het cluster kent waarop de toepassing wordt geïmplementeerd, wordt u aangeraden de para meter door te geven `ImageStoreConnectionString` . In dit geval wordt het pakket ook gevalideerd op basis van eerdere versies van de toepassing die al in het cluster worden uitgevoerd. De validatie kan bijvoorbeeld detecteren of een pakket met dezelfde versie maar een andere inhoud al is geïmplementeerd.  
 
 Wanneer de toepassing correct is verpakt en validatie wordt door gegeven, kunt u overwegen om het pakket te comprimeren voor snellere implementatie bewerkingen.
 
@@ -134,10 +134,10 @@ Voor een gecomprimeerd toepassings pakket kan [het uploaden van het toepassings 
 Het implementatie mechanisme is hetzelfde voor gecomprimeerde en niet-gecomprimeerde pakketten. Als het pakket is gecomprimeerd, wordt het opgeslagen als zodanig in het cluster installatie kopie archief en wordt het gedecomprimeerd op het knoop punt voordat de toepassing wordt uitgevoerd.
 De compressie vervangt het geldige Service Fabric-pakket door de gecomprimeerde versie. De map moet schrijf machtigingen toestaan. Het uitvoeren van compressie op een al gecomprimeerd pakket resulteert niet in wijzigingen.
 
-U kunt een pakket comprimeren door de Power shell [-opdracht copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) uit te voeren met `CompressPackage` de switch. U kunt het pakket decomprimeren met dezelfde opdracht met behulp `UncompressPackage` van Switch.
+U kunt een pakket comprimeren door de Power shell [-opdracht copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) uit te voeren met de `CompressPackage` Switch. U kunt het pakket decomprimeren met dezelfde opdracht met behulp van `UncompressPackage` Switch.
 
 Met de volgende opdracht wordt het pakket gecomprimeerd zonder dat het naar het archief met installatie kopieën wordt gekopieerd. U kunt een gecomprimeerd pakket kopiëren naar een of meer Service Fabric clusters, indien nodig, met behulp van [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) zonder de `SkipCopy` vlag.
-Het pakket bevat nu gezipte bestanden voor `code`de `config`pakketten, `data` en. Het manifest van de toepassing en de service manifesten zijn niet ingepakt, omdat ze nodig zijn voor veel interne bewerkingen. Bijvoorbeeld pakket delen, naam van het toepassings type en de versie extractie voor bepaalde validaties hebben alle toegang tot de manifesten nodig. Als u de manifesten inpakken, worden deze bewerkingen inefficiënt.
+Het pakket bevat nu gezipte bestanden voor `code` de `config` pakketten, en `data` . Het manifest van de toepassing en de service manifesten zijn niet ingepakt, omdat ze nodig zijn voor veel interne bewerkingen. Bijvoorbeeld pakket delen, naam van het toepassings type en de versie extractie voor bepaalde validaties hebben alle toegang tot de manifesten nodig. Als u de manifesten inpakken, worden deze bewerkingen inefficiënt.
 
 ```
 tree /f .\MyApplicationType
@@ -187,13 +187,13 @@ Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType
 
 Intern berekent Service Fabric controle sommen voor de toepassings pakketten voor validatie. Wanneer compressie wordt gebruikt, worden de controle sommen berekend op basis van de gezipte versies van elk pakket. Bij het genereren van een nieuwe post uit hetzelfde toepassings pakket worden verschillende controle sommen gemaakt. Gebruik [diff-inrichting](service-fabric-application-upgrade-advanced.md)om validatie fouten te voor komen. Als u deze optie kiest, neemt u niet de ongewijzigde pakketten op in de nieuwe versie. Raadpleeg in plaats daarvan rechtstreeks vanuit het nieuwe service manifest.
 
-Als het inrichten van diff geen optie is en u de pakketten moet toevoegen, genereert u nieuwe versies voor `code`de `config`,, `data` en om te voor komen dat de controlesom niet overeenkomt. Het genereren van nieuwe versies voor ongewijzigde pakketten is nood zakelijk wanneer een gecomprimeerd pakket wordt gebruikt, ongeacht of de vorige versie compressie gebruikt of niet.
+Als het inrichten van diff geen optie is en u de pakketten moet toevoegen, genereert u nieuwe versies voor de `code` , `config` , en `data` om te voor komen dat de controlesom niet overeenkomt. Het genereren van nieuwe versies voor ongewijzigde pakketten is nood zakelijk wanneer een gecomprimeerd pakket wordt gebruikt, ongeacht of de vorige versie compressie gebruikt of niet.
 
 Het pakket is nu goed verpakt, gevalideerd en gecomprimeerd (indien nodig), zodat het gereed is voor [implementatie](service-fabric-deploy-remove-applications.md) naar een of meer service Fabric clusters.
 
 ### <a name="compress-packages-when-deploying-using-visual-studio"></a>Pakketten comprimeren bij het implementeren met Visual Studio
 
-U kunt Visual Studio een instructie geven om pakketten te comprimeren tijdens de implementatie `CopyPackageParameters` door het element toe te voegen aan uw `CompressPackage` publicatie profiel `true`en het kenmerk in te stellen op.
+U kunt Visual Studio een instructie geven om pakketten te comprimeren tijdens de implementatie door het element toe te voegen `CopyPackageParameters` aan uw publicatie profiel en het `CompressPackage` kenmerk in te stellen op `true` .
 
 ``` xml
     <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
@@ -206,12 +206,12 @@ U kunt Visual Studio een instructie geven om pakketten te comprimeren tijdens de
 ## <a name="create-an-sfpkg"></a>Een sfpkg maken
 
 Vanaf versie 6,1 kunt u met Service Fabric inrichten vanuit een externe opslag.
-Met deze optie hoeft het toepassings pakket niet naar het archief met installatie kopieën te worden gekopieerd. In plaats daarvan kunt u een `sfpkg` maken en uploaden naar een externe Store. vervolgens geeft u de Download-URI op die moet Service Fabric bij het inrichten. Hetzelfde pakket kan worden ingericht voor meerdere clusters. Bij het inrichten vanuit de externe opslag wordt de benodigde tijd voor het kopiëren van het pakket naar elk cluster opgeslagen.
+Met deze optie hoeft het toepassings pakket niet naar het archief met installatie kopieën te worden gekopieerd. In plaats daarvan kunt u een maken `sfpkg` en uploaden naar een externe Store. vervolgens geeft u de Download-URI op die moet Service Fabric bij het inrichten. Hetzelfde pakket kan worden ingericht voor meerdere clusters. Bij het inrichten vanuit de externe opslag wordt de benodigde tijd voor het kopiëren van het pakket naar elk cluster opgeslagen.
 
 Het `sfpkg` bestand is een zip die het oorspronkelijke toepassings pakket bevat en de extensie '. sfpkg ' heeft.
 In de zip kan het toepassings pakket gecomprimeerd of gedecomprimeerd zijn. De compressie van het toepassings pakket in het zip-bestand wordt uitgevoerd op het niveau van code, configuratie en gegevens pakket, zoals [eerder beschreven](service-fabric-package-apps.md#compress-a-package).
 
-Als u een `sfpkg`wilt maken, begint u met een map die het oorspronkelijke toepassings pakket bevat of niet. Gebruik vervolgens elk hulp programma om de map met de extensie '. sfpkg ' te laten overgaan. Gebruik bijvoorbeeld [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+Als u een wilt maken `sfpkg` , begint u met een map die het oorspronkelijke toepassings pakket bevat of niet. Gebruik vervolgens elk hulp programma om de map met de extensie '. sfpkg ' te laten overgaan. Gebruik bijvoorbeeld [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
@@ -222,7 +222,7 @@ De `sfpkg` moet worden geüpload naar het buiten-band beheer van de externe opsl
 Als u het pakket wilt inrichten, gebruikt u externe inrichting, waarvoor de down load-URI en de informatie over het toepassings type vereist zijn.
 
 >[!NOTE]
-> Het inrichten op basis van het relatieve pad van de installatie `sfpkg` kopie opslag biedt momenteel geen ondersteuning voor bestanden. Daarom mag de `sfpkg` niet worden gekopieerd naar de archief met installatie kopieën.
+> Het inrichten op basis van het relatieve pad van de installatie kopie opslag biedt momenteel geen ondersteuning voor `sfpkg` bestanden. Daarom mag de `sfpkg` niet worden gekopieerd naar de archief met installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
 

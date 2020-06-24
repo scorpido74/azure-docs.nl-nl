@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d3441847fc47146418265804457c37c693bd60b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560830"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297015"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
@@ -38,9 +38,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een Service Bus uitvoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie gebruikt een timer trigger om elke 15 seconden een wachtrij bericht te verzenden.
+In het volgende voor beeld ziet u een Service Bus uitvoer binding in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie gebruikt een timer trigger om elke 15 seconden een wachtrij bericht te verzenden.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -89,9 +89,9 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een Service Bus uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie gebruikt een timer trigger om elke 15 seconden een wachtrij bericht te verzenden.
+In het volgende voor beeld ziet u een Service Bus uitvoer binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie gebruikt een timer trigger om elke 15 seconden een wachtrij bericht te verzenden.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -143,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 In het volgende voor beeld ziet u hoe u kunt schrijven naar een Service Bus wachtrij in python.
 
-Een definitie van een Service Bus binding is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `serviceBus` .
+Een definitie van een Service Bus binding wordt gedefinieerd in *function.jsop* waar *type* is ingesteld op `serviceBus` .
 
 ```json
 {
@@ -278,9 +278,9 @@ De `ServiceBusQueueOutput` `ServiceBusTopicOutput` aantekeningen en zijn beschik
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `ServiceBus` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `ServiceBus` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
@@ -305,7 +305,7 @@ Gebruik de volgende parameter typen voor de uitvoer binding:
 * `out byte[]`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
 * `out BrokeredMessage`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
 * `out Message`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
-* `ICollector<T>`of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
+* `ICollector<T>`of `IAsyncCollector<T>` (voor asynchrone methoden): voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
 
 Wanneer u werkt met C#-functies:
 
@@ -353,12 +353,12 @@ Gebruik de [Azure service bus SDK](https://docs.microsoft.com/azure/service-bus-
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>instellingen voor de host. json
+## <a name="hostjson-settings"></a>host.jsop instellingen
 
-In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. Het onderstaande voor beeld van host. JSON-bestand bevat alleen de instellingen voor deze binding. Zie voor meer informatie over globale configuratie-instellingen [host. json Reference voor Azure functions versie](functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x en hoger. In het onderstaande voor beeld host.jsin het onderstaande bestand worden alleen de instellingen voor deze binding opgenomen. Zie [host.jsop referentie voor Azure functions versie](functions-host-json.md)voor meer informatie over globale configuratie-instellingen.
 
 > [!NOTE]
-> Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Zie [host.jsbij verwijzing voor Azure functions 1. x](functions-host-json-v1.md)voor een referentie van host.jsin in functions 1. x.
 
 ```json
 {

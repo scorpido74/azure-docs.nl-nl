@@ -10,11 +10,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279505"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84702819"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-onderdelen van de privécloud
 
@@ -48,7 +48,7 @@ vCenter Server-apparaat (VCSA) biedt de functies voor verificatie, beheer en Orc
 
 ### <a name="vcenter-single-sign-on"></a>eenmalige aanmelding via vCenter
 
-De controller van de embedded platform Services op VCSA is gekoppeld aan een **vCenter-domein met eenmalige aanmelding**.  De domein naam is **cloudsimple. local**.  Er wordt een **CloudOwner@cloudsimple.com** standaard gebruiker voor toegang tot vCenter gemaakt.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
+De controller van de embedded platform Services op VCSA is gekoppeld aan een **vCenter-domein met eenmalige aanmelding**.  De domein naam is **cloudsimple. local**.  Er wordt een standaard gebruiker **CloudOwner@cloudsimple.com** voor toegang tot vCenter gemaakt.  U kunt uw on-premises/Azure Active Directory- [identiteits bronnen voor vCenter](set-vcenter-identity.md)toevoegen.
 
 ## <a name="vsan-storage"></a>vSAN-opslag
 
@@ -82,7 +82,7 @@ NSX Data Center biedt Netwerkvirtualisatie, micro segmentatie en netwerk beveili
 
 ## <a name="vsphere-cluster"></a>vSphere-cluster
 
-ESXi-hosts worden geconfigureerd als een cluster om te zorgen voor een hoge Beschik baarheid van de privécloud.  Wanneer u een privécloud maakt, worden de beheer onderdelen van vSphere geïmplementeerd op het eerste cluster.  Er wordt een resource groep gemaakt voor beheer onderdelen en alle management-Vm's worden geïmplementeerd in deze resource groep. Het eerste cluster kan niet worden verwijderd om de privécloud te verkleinen.  vSphere-cluster biedt hoge Beschik baarheid voor Vm's met **VSPHERE ha**.  Te verdragen fouten zijn gebaseerd op het aantal beschik bare knoop punten in het cluster.  U kunt de formule ```Number of nodes = 2N+1``` ```N``` gebruiken om het aantal fouten te verdragen.
+ESXi-hosts worden geconfigureerd als een cluster om te zorgen voor een hoge Beschik baarheid van de privécloud.  Wanneer u een privécloud maakt, worden de beheer onderdelen van vSphere geïmplementeerd op het eerste cluster.  Er wordt een resource groep gemaakt voor beheer onderdelen en alle management-Vm's worden geïmplementeerd in deze resource groep. Het eerste cluster kan niet worden verwijderd om de privécloud te verkleinen.  vSphere-cluster biedt hoge Beschik baarheid voor Vm's met **VSPHERE ha**.  Te verdragen fouten zijn gebaseerd op het aantal beschik bare knoop punten in het cluster.  U kunt de formule gebruiken ```Number of nodes = 2N+1``` ```N``` om het aantal fouten te verdragen.
 
 ### <a name="vsphere-cluster-limits"></a>limieten voor vSphere-clusters
 

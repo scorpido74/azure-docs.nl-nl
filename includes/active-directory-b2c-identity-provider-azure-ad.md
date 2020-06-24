@@ -19,10 +19,10 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map gebruikt die de Azure AD-Tenant van uw organisatie bevat (bijvoorbeeld contoso.com). Selecteer het **filter Directory + abonnement** in het bovenste menu en kies vervolgens de map die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
-1. Selecteer **nieuwe registratie**.
+1. Selecteer **Nieuwe registratie**.
 1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld `Azure AD B2C App`.
 1. Accepteer de standaard selectie van **accounts in deze organisatie Directory alleen** voor deze toepassing.
-1. Voor de **omleidings-URI**accepteert u de waarde van **Web**en voert u de volgende URL in in kleine `your-B2C-tenant-name` letters, waar wordt vervangen door de naam van uw Azure AD B2C-Tenant.
+1. Voor de **omleidings-URI**accepteert u de waarde van **Web**en voert u de volgende URL in in kleine letters, waar `your-B2C-tenant-name` wordt vervangen door de naam van uw Azure AD B2C-Tenant.
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -30,7 +30,7 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 
     Bijvoorbeeld `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`.
 
-1. Selecteer **Registreren**. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
+1. Selecteer **Registreren**. Noteer de **Toepassings-id (client)** voor gebruik in een latere stap.
 1. Selecteer **certificaten & geheimen**en selecteer vervolgens **Nieuw client geheim**.
 1. Voer een **Beschrijving** in voor het geheim, selecteer een verloop en selecteer vervolgens **toevoegen**. Noteer de **waarde** van het geheim voor gebruik in een latere stap.
 
@@ -38,11 +38,11 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 
 Als u de `family_name` en `given_name` claims van Azure ad wilt ophalen, kunt u optionele claims voor uw toepassing configureren in de Azure Portal gebruikers interface of het toepassings manifest. Zie [optionele claims voor uw Azure AD-app bieden](/azure/active-directory/develop/active-directory-optional-claims)voor meer informatie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zoek naar **Azure Active Directory** en selecteer deze optie.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Zoek naar **Azure Active Directory** en selecteer deze optie.
 1. Selecteer in de sectie **beheren** de optie **app-registraties**.
 1. Selecteer in de lijst de toepassing waarvoor u de optionele claims wilt configureren.
 1. Selecteer in de sectie **beheren** de optie **token configuratie**.
 1. Selecteer **optionele claim toevoegen**.
 1. Selecteer **id**voor het **token type**.
-1. Selecteer de optionele claims om toe te `family_name` voegen en `given_name`.
-1. Klik op **Toevoegen**.
+1. Selecteer de optionele claims om toe te voegen `family_name` en `given_name` .
+1. Klik op **Add**.

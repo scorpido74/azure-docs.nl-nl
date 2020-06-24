@@ -4,15 +4,15 @@ description: Een lijst met metrische gegevens die beschikbaar zijn voor elk reso
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/06/2020
+ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 09aa3a5febe9ea25d8614a99ec3f832cc2d0309f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 7ed55200db72879f7ec7323b5c165998944688a5
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456943"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906782"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
 
@@ -165,7 +165,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |TotalUpdateDeploymentMachineRuns|Totaal aantal machine-uitvoeringen van update-implementaties|Count|Totaal|Het totale aantal uitgevoerde software-update-implementatie computers in een software-update-implementatie|SoftwareUpdateConfigurationName, status, target computer, SoftwareUpdateConfigurationRunId|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Micro soft. batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Bat-CH/batchAccounts
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -202,7 +202,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |JobTerminateStartEvent|Taak start gebeurtenissen beëindigen|Count|Totaal|Het totale aantal taken dat is aangevraagd om te worden beëindigd.|jobId|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Micro soft. BatchAI/werk ruimten
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/werk ruimten
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -222,7 +222,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |Kernen verlaten|Kernen verlaten|Count|Average|Aantal te verlaten kernen|Scenario, clustername|
 |Percentage quotum gebruik|Percentage quotum gebruik|Count|Average|Percentage van gebruikte quota|Scenario, clustername, VmFamilyName, VmPriority|
 
-## <a name="microsoftblockchainblockchainmembers"></a>Micro soft. Block Chain/blockchainMembers
+## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -832,7 +832,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |FailedShareSubscriptionSynchronizations|Mislukte moment opnamen van share ontvangen|Count|Count|Aantal mislukte moment opnamen van ontvangen shares in het account|Geen|
 
 
-## <a name="microsoftdbformariadbservers"></a>Micro soft. DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -853,7 +853,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |network_bytes_ingress|Netwerk in|Bytes|Totaal|Netwerk in meerdere actieve verbindingen|Geen|
 
 
-## <a name="microsoftdbformysqlservers"></a>Micro soft. DBforMySQL/servers
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -874,7 +874,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |network_bytes_ingress|Netwerk in|Bytes|Totaal|Netwerk in meerdere actieve verbindingen|Geen|
 
 
-## <a name="microsoftdbforpostgresqlservers"></a>Micro soft. DBforPostgreSQL/servers
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -1014,7 +1014,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Micro soft. DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
 |---|---|---|---|---|---|
@@ -1313,7 +1313,7 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 |IngestionResult|Opname resultaat|Count|Count|Aantal opname bewerkingen|IngestionResultDetails|
 |CPU|CPU|Percentage|Average|Niveau CPU-gebruik|Geen|
 |ContinuousExportNumOfRecordsExported|Doorlopend exporteren: aantal geëxporteerde records|Count|Totaal|Het aantal geëxporteerde records dat wordt geactiveerd voor elk opslag artefact dat is geschreven tijdens de export bewerking|ContinuousExportName, data base|
-|ExportUtilization|Gebruik exporteren|Percentage|Maximum|Gebruik exporteren|Geen|
+|ExportUtilization|Exportgebruik|Percentage|Maximum|Gebruik exporteren|Geen|
 |ContinuousExportPendingCount|Aantal doorlopend exporteren in behandeling|Count|Maximum|Het aantal in behandeling zijnde doorlopende export taken dat gereed is voor uitvoering|Geen|
 |ContinuousExportMaxLatenessMinutes|Maximale achterstand voor continue export|Count|Maximum|De achterstand (in minuten) die is gerapporteerd door de doorlopende export taken in het cluster|Geen|
 |ContinuousExportResult|Resultaat doorlopend exporteren|Count|Count|Hiermee wordt aangegeven of continue export is geslaagd of mislukt|ContinuousExportName, resultaat, data base|
@@ -2084,17 +2084,6 @@ Er zijn enkele beperkingen in wat kan worden gerouteerd en het formulier waarin 
 <sup>1</sup> deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model met 2 vCores en hoger, of 200 DTU en hoger voor op DTU gebaseerde aankoop modellen. 
 
 <sup>2</sup> deze metriek is beschikbaar voor data bases met behulp van het vCore-aankoop model met 2 vCores en hoger, of 200 DTU en hoger voor op DTU gebaseerde aankoop modellen. Deze metriek is momenteel niet beschikbaar voor grootschalige-data bases.
-
-
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatietype|Beschrijving|Dimensies|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|DTU-percentage|Percentage|Average|DTU-percentage|ElasticPoolResourceId|
-|database_dtu_consumption_percent|DTU-percentage|Percentage|Average|DTU-percentage|DatabaseResourceId,ElasticPoolResourceId|
-|storage_used|Gebruikte gegevens ruimte|Bytes|Average|Gebruikte gegevens ruimte|ElasticPoolResourceId|
-|database_storage_used|Gebruikte gegevens ruimte|Bytes|Average|Gebruikte gegevens ruimte|DatabaseResourceId,ElasticPoolResourceId|
-|dtu_used|DTU gebruikt|Count|Average|DTU gebruikt|DatabaseResourceId|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Micro soft. SQL/managedInstances
 

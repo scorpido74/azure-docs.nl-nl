@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125499"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118046"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
 Azure Cosmos DB uw gegevens transparant repliceert in alle Azure-regio's die zijn gekoppeld aan uw Cosmos-account. Cosmos DB maakt gebruik van meerdere lagen van redundantie voor uw gegevens, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Fysieke partitionering](./media/high-availability/cosmosdb-data-redundancy.png)
+:::image type="content" source="./media/high-availability/cosmosdb-data-redundancy.png" alt-text="Fysieke partitionering" border="false":::
 
 - De gegevens in Cosmos-containers worden [horizon taal gepartitioneerd](partitioning-overview.md).
 
@@ -32,7 +32,7 @@ Als uw Cosmos-account wordt gedistribueerd over *n* Azure-regio's, zijn er ten m
 
 Als een wereld wijd gedistribueerde data base biedt Cosmos DB uitgebreide service overeenkomsten die de door Voer, latentie bij het 99e percentiel, consistentie en hoge Beschik baarheid omvatten. In de volgende tabel ziet u de garanties voor maximale Beschik baarheid van Cosmos DB voor accounts met meerdere regio's. Configureer voor hoge Beschik baarheid altijd uw Cosmos-accounts zodat er meerdere schrijf regio's zijn.
 
-|Bewerkings type  | Enkele regio |Meerdere regio's (schrijf bewerkingen in één regio)|Meerdere regio's (schrijf bewerkingen met meerdere regio's) |
+|Het type bewerking  | Enkele regio |Meerdere regio's (schrijf bewerkingen in één regio)|Meerdere regio's (schrijf bewerkingen met meerdere regio's) |
 |---------|---------|---------|-------|
 |Schrijfopdrachten    | 99,99    |99,99   |99,999|
 |Titel     | 99,99    |99,999  |99,999|
@@ -128,7 +128,7 @@ az cosmosdb create \
 
 U kunt Beschikbaarheidszones inschakelen met behulp van Azure Portal bij het maken van een Azure Cosmos-account. Wanneer u een account maakt, moet u ervoor zorgen dat u de functie voor **geo-redundantie**, **meerdere regio's**en een regio kiest waar Beschikbaarheidszones worden ondersteund:
 
-![Beschikbaarheidszones met behulp van Azure Portal inschakelen](./media/high-availability/enable-availability-zones-using-portal.png) 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Beschikbaarheidszones met behulp van Azure Portal inschakelen"::: 
 
 ## <a name="building-highly-available-applications"></a>Maxi maal beschik bare toepassingen bouwen
 

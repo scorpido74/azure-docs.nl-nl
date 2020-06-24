@@ -69,7 +69,7 @@ Zie het artikel [Activiteiten voor gegevenstransformatie](transform-data.md) voo
 ## <a name="control-flow-activities"></a>Controle stroom activiteiten
 De volgende controlestroomactiviteiten worden ondersteund:
 
-Controleactiviteit | Beschrijving
+Controleactiviteit | Description
 ---------------- | -----------
 [Variabele toevoegen](control-flow-append-variable-activity.md) | Voeg een waarde toe aan een bestaande matrix variabele.
 [Pijp lijn uitvoeren](control-flow-execute-pipeline-activity.md) | De Execute Pipeline Activity stelt een Data Factory-pijplijn in staat om een andere pijplijn aan te roepen.
@@ -106,7 +106,7 @@ Een pijplijn wordt als volgt in de JSON-indeling gedefinieerd:
 }
 ```
 
-Label | Beschrijving | Type | Vereist
+Label | Description | Type | Vereist
 --- | ----------- | ---- | --------
 naam | Naam van de pijplijn. Geef een naam op die staat voor de actie die de pijplijn uitvoert. <br/><ul><li>Maximum aantal tekens: 140</li><li>Moet beginnen met een letter, cijfer of onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" </li></ul> | Tekenreeks | Yes
 description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. | Tekenreeks | No
@@ -141,7 +141,7 @@ Uitvoeringsactiviteiten zijn [activiteiten voor gegevensverplaatsing](#data-move
 
 De volgende tabel beschrijft de eigenschappen in de JSON-definitie activity:
 
-Label | Beschrijving | Vereist
+Label | Description | Vereist
 --- | ----------- | ---------
 naam | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert. <br/><ul><li>Maximum aantal tekens: 55</li><li>Moet beginnen met een letter-cijfer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" | Yes</li></ul>
 description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt | Yes
@@ -182,7 +182,7 @@ Beleidsregels beïnvloeden het de runtimegedrag van een activiteit, waarbij conf
 }
 ```
 
-JSON-naam | Beschrijving | Toegestane waarden | Vereist
+JSON-naam | Description | Toegestane waarden | Vereist
 --------- | ----------- | -------------- | --------
 timeout | Hiermee geeft u de time-out op voor de activiteit die moet worden uitgevoerd. | Periode | Nee. De standaardwaarde is 7 dagen.
 retry | Maximaal aantal nieuwe pogingen | Geheel getal | Nee. De standaardwaarde is 0
@@ -206,7 +206,7 @@ Controleactiviteiten hebben de volgende structuur op het hoogste niveau:
 }
 ```
 
-Label | Beschrijving | Vereist
+Label | Description | Vereist
 --- | ----------- | --------
 naam | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert.<br/><ul><li>Maximum aantal tekens: 55</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" | Yes</li><ul>
 description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt | Yes

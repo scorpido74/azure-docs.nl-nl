@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370454"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790514"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -35,7 +35,15 @@ Een IoT-hub heeft een standaard ingebouwde eind punt (**berichten/gebeurtenissen
 
 Elk bericht wordt doorgestuurd naar alle eind punten waarvan de Routing query's overeenkomen. Met andere woorden, een bericht kan naar meerdere eind punten worden doorgestuurd.
 
-IoT Hub ondersteunt momenteel de volgende services als aangepaste eind punten:
+
+Als uw aangepaste eind punt firewall configuraties heeft, kunt u de micro soft Trusted First partij Exception gebruiken om uw IoT Hub toegang te geven tot het specifieke eind punt [Azure Storage](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) [Azure Event hubs](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) en [Azure service bus](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing). Dit is beschikbaar in bepaalde regio's voor IoT-hubs met een [beheerde service-identiteit](./virtual-network-support.md).
+
+IoT Hub ondersteunt momenteel de volgende eind punten:
+
+ - Ingebouwd eind punt
+ - Azure Storage
+ - Service Bus-wacht rijen en Service Bus onderwerpen
+ - Event Hubs
 
 ### <a name="built-in-endpoint"></a>Ingebouwd eind punt
 
@@ -75,9 +83,6 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-> [!NOTE]
-> Als uw opslag account firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen [micro soft betrouw bare eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) te gebruiken (beschikbaar in geselecteerde regio's voor IOT-hubs met een beheerde service-identiteit).
-
 Als u een met Azure Data Lake Gen2 compatibel opslag account wilt maken, maakt u een nieuw v2-opslag account en selecteert u *ingeschakeld* op het veld *hiërarchische naam ruimte* op het tabblad **Geavanceerd** , zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Azure date Lake Gen2-opslag selecteren](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -87,17 +92,9 @@ Als u een met Azure Data Lake Gen2 compatibel opslag account wilt maken, maakt u
 
 Service Bus-wacht rijen en-onderwerpen die als IoT Hub-eind punten worden gebruikt, mogen geen **sessies** of **Duplicaten detectie** zijn ingeschakeld. Als een van deze opties is ingeschakeld, wordt het eind punt weer gegeven als **onbereikbaar** in de Azure Portal.
 
-> [!NOTE]
-> Als uw service bus-resource firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen om [micro soft vertrouwde eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing) te gebruiken (beschikbaar in regio's selecteren voor IOT-hubs met een beheerde service-identiteit).
-
-
 ### <a name="event-hubs"></a>Event Hubs
 
 Naast het ingebouwde Event Hubs compatibele eind punt, kunt u ook gegevens routeren naar aangepaste eind punten van het type Event Hubs. 
-
-> [!NOTE]
-> Als uw event hubs-bron firewall configuraties heeft die de connectiviteit van IoT Hub beperken, kunt u overwegen [micro soft betrouw bare eerste partij uitzondering](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing) te gebruiken (beschikbaar in bepaalde regio's voor IOT-hubs met een beheerde service-identiteit).
-
 
 ## <a name="reading-data-that-has-been-routed"></a>Gegevens lezen die zijn doorgestuurd
 
@@ -146,11 +143,9 @@ In de meeste gevallen is de gemiddelde toename in latentie kleiner dan 500 MS. U
 
 ## <a name="monitoring-and-troubleshooting"></a>Bewaking en problemen oplossen
 
-IoT Hub biedt diverse metrische gegevens met betrekking tot route ring en eind punten om u een overzicht te geven van de status van uw hub en verzonden berichten. U kunt informatie uit meerdere metrische gegevens combi neren om de hoofd oorzaak van problemen vast te stellen. Gebruik bijvoorbeeld metrische **route ring: telemetriegegevens** die zijn neergezet of **D2C. telemetrie** .. dropd om het aantal berichten te identificeren dat is verwijderd toen de query's op een van de routes niet overeenkomen en de terugval route is uitgeschakeld. Met [IOT hub metrische gegevens](iot-hub-metrics.md) worden alle metrische gegevens weer gegeven die standaard zijn ingeschakeld voor uw IOT hub.
+IoT Hub biedt diverse metrische gegevens met betrekking tot route ring en eind punten om u een overzicht te geven van de status van uw hub en verzonden berichten. Met [IOT hub metrische gegevens](iot-hub-metrics.md) worden alle metrische gegevens weer gegeven die standaard zijn ingeschakeld voor uw IOT hub. Met behulp van de **routes** Diagnostische logboeken in azure monitor [Diagnostische instellingen](../iot-hub/iot-hub-monitor-resource-health.md)kunt u fouten volgen die optreden tijdens de evaluatie van een routerings query en de status van een eind punt, zoals wordt waargenomen door IOT hub. U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) gebruiken om [de status van](iot-hub-devguide-endpoints.md#custom-endpoints) de eind punten op te halen. 
 
-U kunt de REST API status van [eind punt ophalen](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) gebruiken om [de status van](iot-hub-devguide-endpoints.md#custom-endpoints) de eind punten op te halen. U kunt het beste de [IOT hub metrische gegevens](iot-hub-metrics.md) met betrekking tot de bericht latentie van de route ring gebruiken om fouten op te sporen en op te sporen wanneer de status van het eind punt dood of slecht is. U kunt bijvoorbeeld voor het type eind punt Event Hubs **D2C. endpoints. latentie. Event hubs**. De status van een onjuist eind punt wordt bijgewerkt naar in orde wanneer IoT Hub een uiteindelijk consistente status van de status heeft bereikt.
-
-Met behulp van de **routes** Diagnostische logboeken in azure monitor [Diagnostische instellingen](../iot-hub/iot-hub-monitor-resource-health.md)kunt u fouten volgen die optreden tijdens de evaluatie van een routerings query en de status van een eind punt, zoals wordt waargenomen door IOT hub, bijvoorbeeld wanneer een eind punt dood is. Deze Diagnostische logboeken kunnen worden verzonden naar Azure Monitor-logboeken, Event Hubs of Azure Storage voor aangepaste verwerking.
+Gebruik de [gids voor probleem oplossing voor route ring](troubleshoot-message-routing.md) voor meer informatie en ondersteuning voor het oplossen van problemen met route ring.
 
 ## <a name="next-steps"></a>Volgende stappen
 

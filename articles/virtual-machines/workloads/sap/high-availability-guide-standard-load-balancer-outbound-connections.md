@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660170"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907462"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -91,7 +91,7 @@ De configuratie zou er als volgt uitzien:
 
 1. Load Balancer maken  
    1. Klik in de [Azure Portal](https://portal.azure.com) op alle resources, toevoegen en zoek naar **Load Balancer**  
-   1. Klik op **maken** 
+   1. Klik op **Maken**. 
    1. Load Balancer naam **MyPublicILB**  
    1. Selecteer **openbaar** als type, **standaard** als SKU  
    1. Selecteer **openbaar IP-adres maken** en opgeven als een naam **MyPublicILBFrondEndIP**  
@@ -222,7 +222,10 @@ Voer de volgende stappen uit op alle cluster knooppunten om pacemaker toe te sta
 
 ## <a name="other-solutions"></a>Andere oplossingen
 
-Als uitgaand verkeer wordt gerouteerd via firewall van derden, moet u ervoor zorgen dat de firewall configuratie uitgaande verbindingen met de Azure Management API toestaat: `https://management.azure.com` en `https://login.microsoftonline.com` .  
+Als uitgaand verkeer wordt gerouteerd via firewall van derden:
+
+- Als u Azure Fence agent gebruikt, moet u ervoor zorgen dat de firewall configuratie uitgaande verbindingen met de Azure Management API toestaat: `https://management.azure.com` en`https://login.microsoftonline.com`   
+- Als u de infra structuur van de Azure Public Cloud update van SUSE gebruikt voor het Toep assen van updates en patches, raadpleegt u [Azure Public Cloud update-101 infra structuur](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>Volgende stappen
 

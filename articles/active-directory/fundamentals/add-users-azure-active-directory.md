@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262111"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692152"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Gebruikers toevoegen of verwijderen met Azure Active Directory
 
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om een nieuwe gebruiker toe te voegen:
 
    - **Gebruikers naam**. Vereist. De gebruikers naam van de nieuwe gebruiker. Bijvoorbeeld `mary@contoso.com`.
 
-     Het domein gedeelte van de gebruikers naam moet de oorspronkelijke standaard domeinnaam, *contoso.com* * \<domein naam>. onmicrosoft.com*of een aangepaste domein naam, zoals contoso.com, gebruiken. Zie [uw aangepaste domein naam toevoegen met behulp van de Azure Active Directory-Portal](add-custom-domain.md)voor meer informatie over het maken van een aangepaste domein naam.
+     Het domein gedeelte van de gebruikers naam moet ofwel de oorspronkelijke standaard domein naam, * \<yourdomainname> . onmicrosoft.com*of een aangepaste domein naam, zoals *contoso.com*, gebruiken. Zie [uw aangepaste domein naam toevoegen met behulp van de Azure Active Directory-Portal](add-custom-domain.md)voor meer informatie over het maken van een aangepaste domein naam.
 
    - **Groepen**. U kunt de gebruiker eventueel toevoegen aan een of meer bestaande groepen. U kunt de gebruiker ook op een later tijdstip toevoegen aan groepen. Zie [een basis groep maken en leden toevoegen met Azure Active Directory](active-directory-groups-create-azure-portal.md)voor meer informatie over het toevoegen van gebruikers aan groepen.
 

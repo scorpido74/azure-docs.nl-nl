@@ -9,17 +9,17 @@ keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629470"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84803691"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Aan de slag met het maken van een Internet gerichte load balancer met IPv6 met behulp van Power shell voor Resource Manager
 
@@ -102,7 +102,7 @@ Zorg ervoor dat u beschikt over de nieuwste productie versie van de module Azure
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
-2. Maak Azure open bare IP-adres bronnen (PIP) voor de front-end-IP-adres groep. Zorg ervoor dat u de waarde voor `-DomainNameLabel` wijzigt voordat u de volgende opdrachten uitvoert. De waarde moet uniek zijn binnen de Azure-regio.
+2. Maak Azure open bare IP-adres bronnen (PIP) voor de front-end-IP-adres groep. Zorg ervoor dat u de waarde voor wijzigt `-DomainNameLabel` voordat u de volgende opdrachten uitvoert. De waarde moet uniek zijn binnen de Azure-regio.
 
     ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4

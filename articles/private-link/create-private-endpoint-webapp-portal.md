@@ -3,17 +3,17 @@ title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-ein
 description: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298700"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737390"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
 
@@ -139,7 +139,7 @@ In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk e
 1. Open het gedownloade RDP-bestand.
 
 - Selecteer Verbinding maken wanneer hierom wordt gevraagd.
-- Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
+- Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
 
 > [!Note]
 > Mogelijk moet u meer opties selecteren > een ander account gebruiken om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.

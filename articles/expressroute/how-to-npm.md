@@ -4,15 +4,15 @@ description: Configureer de Cloud netwerk bewaking (NPM) voor Azure ExpressRoute
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 05c21f4f3f0af0de524db75ce9e6feb38d98c24e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74076594"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738376"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Netwerkprestatiemeter configureren voor ExpressRoute
 
@@ -20,7 +20,7 @@ Dit artikel helpt u bij het configureren van een Netwerkprestatiemeter-extensie 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-U kunt het volgende doen:
+U kunt:
 
 * Verlies en latentie bewaken in verschillende VNets en waarschuwingen instellen
 
@@ -101,13 +101,13 @@ U wordt aangeraden ten minste twee agents te installeren aan elke kant van de Ex
 4. Op de pagina **doelmap** wijzigt of behoudt u de standaardmap voor installatie en klikt u vervolgens op **volgende**.
 5. Op de pagina **installatie opties voor agent** kunt u ervoor kiezen om de agent te verbinden met Azure monitor Logboeken of Operations Manager. U kunt ook de keuzes leeg laten als u de agent later wilt configureren. Klik op **volgende**nadat u de gewenste selectie (s) hebt gemaakt.
 
-   * Als u verbinding met **Azure log Analytics**wilt maken, plakt u de **werk ruimte-id** en de **werkruimte sleutel** (primaire sleutel) die u in het klad blok hebt gekopieerd in de vorige sectie. Klik vervolgens op **volgende**.
+   * Als u verbinding met **Azure log Analytics**wilt maken, plakt u de **werk ruimte-id** en de **werkruimte sleutel** (primaire sleutel) die u in het klad blok hebt gekopieerd in de vorige sectie. Klik op **Volgende**.
 
      ![ID en sleutel](./media/how-to-npm/8.png)
-   * Als u ervoor hebt gekozen om verbinding te maken met **Operations Manager**, typt u op de pagina **configuratie van beheer groep** de naam van de **beheer groep**, de **beheer server**en de poort van de **beheer server**. Klik vervolgens op **volgende**.
+   * Als u ervoor hebt gekozen om verbinding te maken met **Operations Manager**, typt u op de pagina **configuratie van beheer groep** de naam van de **beheer groep**, de **beheer server**en de poort van de **beheer server**. Klik op **Volgende**.
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * Kies op de pagina **actie-account van agent** ofwel het **lokale systeem** account, ofwel het **domein of het lokale computer account**. Klik vervolgens op **volgende**.
+   * Kies op de pagina **actie-account van agent** ofwel het **lokale systeem** account, ofwel het **domein of het lokale computer account**. Klik op **Volgende**.
 
      ![Account](./media/how-to-npm/10.png)
 6. Controleer uw keuzes op de pagina **gereed voor installatie** en klik op **installeren**.

@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266869"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701878"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Specifieke RDP-foutberichten oplossen naar een virtuele Windows-machine in Azure
 Er wordt mogelijk een specifiek fout bericht weer gegeven wanneer Extern bureaublad verbinding met een virtuele machine van Windows (VM) in azure wordt gebruikt. In dit artikel worden enkele veelvoorkomende fout berichten beschreven, samen met de stappen voor probleem oplossing om deze op te lossen. Als u problemen ondervindt met het maken van verbinding met uw virtuele machine via RDP, maar geen specifiek fout bericht tegen komt, raadpleegt u de [hand leiding voor het oplossen van problemen voor extern bureaublad](troubleshoot-rdp-connection.md).
@@ -69,7 +69,7 @@ Het adres gedeelte van dit RDP-bestand heeft:
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>Er is een verificatie fout opgetreden. Kan geen verbinding maken met de lokale beveiligings autoriteit.
 Oorzaak: de doel-VM kan de beveiligings instantie niet vinden in het gedeelte met de gebruikers naam van uw referenties.
 
-Als uw gebruikers naam in de vorm *SecurityAuthority*\\*username* (voor beeld: corp\gebruiker1.) is, is het gedeelte *SecurityAuthority* de computer naam van de virtuele machine (voor de lokale beveiligings instantie) of een Active Directory domein naam.
+Als uw gebruikers naam in de vorm *SecurityAuthority* \\ *username* (voor beeld: corp\gebruiker1.) is, is het gedeelte *SecurityAuthority* de computer naam van de virtuele machine (voor de lokale beveiligings instantie) of een Active Directory domein naam.
 
 Mogelijke oplossingen:
 
@@ -84,8 +84,8 @@ Oorzaak: de doel-VM kan de account naam en het wacht woord niet valideren.
 
 Een op Windows gebaseerde computer kan de referenties van een lokaal account of een domein account valideren.
 
-* Voor lokale accounts gebruikt u de syntaxis *computer*\\*naam username* (bijvoorbeeld: SQL1\Admin4798).
-* Gebruik voor domein accounts de syntaxis van de *domein*\\*naam username* (bijvoorbeeld: CONTOSO\peterodman).
+* Voor lokale accounts gebruikt u de syntaxis *computer* \\ *naam username* (bijvoorbeeld: SQL1\Admin4798).
+* Gebruik voor domein accounts de syntaxis van de *domein* \\ *naam username* (bijvoorbeeld: CONTOSO\peterodman).
 
 Als u uw VM hebt gepromoveerd naar een domein controller in een nieuw Active Directory-forest, wordt het lokale beheerders account waarmee u zich hebt aangemeld, geconverteerd naar een gelijkwaardig account met hetzelfde wacht woord in het nieuwe forest en domein. Het lokale account wordt verwijderd.
 

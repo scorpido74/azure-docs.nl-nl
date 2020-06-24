@@ -5,17 +5,17 @@ description: Gebruik Power shell om meerdere Machine Learning modellen en web se
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 145ee5b458927fc4e3cda5277de614383181eed5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 43f797981c6e3d32cdd5083f4ee1e16359667bdd
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465691"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696487"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Meerdere webservice-eind punten maken van een experiment met ML Studio (klassiek) en Power shell
 
@@ -42,7 +42,7 @@ Gebruik het voorbeeld [experiment](https://gallery.azure.ai/Experiment/Bike-Rent
 > 
 > 
 
-Het experiment maakt gebruik van een **import gegevens** module voor het importeren van de trainings gegevensset *customer001. CSV* van een Azure-opslag account. We gaan ervan uit dat u trainings gegevens sets hebt verzameld van alle uithuur locaties van fietsen en ze hebt opgeslagen op dezelfde Blob-opslag locatie met bestands namen, variërend van *rentalloc001. CSV* naar *rentalloc10. CSV*.
+Het experiment maakt gebruik van een **import gegevens** module voor het importeren van de trainings gegevensset *customer001.csv* van een Azure-opslag account. We gaan ervan uit dat u trainings gegevens sets hebt verzameld van alle uithuur locaties van fietsen en ze hebt opgeslagen op dezelfde Blob-opslag locatie met bestands namen, variërend van *rentalloc001.csv* naar *rentalloc10.csv*.
 
 ![In de lezers module worden gegevens uit een Azure-Blob geïmporteerd](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
@@ -54,7 +54,7 @@ U kunt dit op andere manieren doen. U kunt een SQL-query met een webservice-para
 
 ![Een getrainde model module wordt uitgevoerd in een webservice-module voor het uitvoeren van webservices](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Nu gaan we dit trainings experiment uitvoeren met de standaard waarde *rental001. CSV* als trainings gegevensset. Als u de uitvoer van de module **Evaluate** bekijkt (Klik op de uitvoer en selecteert u **visualiseren**), ziet u een goede prestaties van *AUC* = 0,91. Op dit moment bent u klaar om een webservice te implementeren uit dit trainings experiment.
+Nu gaan we dit trainings experiment uitvoeren met de standaard waarde *rental001.csv* als trainings gegevensset. Als u de uitvoer van de module **Evaluate** bekijkt (Klik op de uitvoer en selecteert u **visualiseren**), ziet u een goede prestaties van *AUC* = 0,91. Op dit moment bent u klaar om een webservice te implementeren uit dit trainings experiment.
 
 ## <a name="deploy-the-training-and-scoring-web-services"></a>De training-en Score-webservices implementeren
 Als u de training-webservice wilt implementeren, klikt u op de knop **webservice instellen** onder het canvas op het experiment en selecteert u **Web service implementeren**. Deze webservice aanroepen ' fiets huren oefenen '.
@@ -87,7 +87,7 @@ Voer vervolgens de volgende Power shell-opdracht uit:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-U hebt nu 10 eind punten gemaakt en deze bevatten allemaal hetzelfde getrainde model dat is getraind op *customer001. CSV*. U kunt deze weer geven in de Azure Portal.
+U hebt nu 10 eind punten gemaakt en deze bevatten allemaal hetzelfde getrainde model dat is getraind op *customer001.csv*. U kunt deze weer geven in de Azure Portal.
 
 ![De lijst met getrainde modellen weer geven in de portal](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 

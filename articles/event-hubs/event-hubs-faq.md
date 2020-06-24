@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 0ff1f19a30be8c4ca40a980459901fd9224a6626
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: cee131030b47320a51e54f8b8bed70b0e4d677b0
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996615"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738019"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -97,9 +97,9 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
 2. Noteer de naam in de sectie **niet-bindende antwoord** , die een van de volgende indelingen heeft: 
 
     ```
-    <name>-s1.servicebus.windows.net
-    <name>-s2.servicebus.windows.net
-    <name>-s3.servicebus.windows.net
+    <name>-s1.cloudapp.net
+    <name>-s2.cloudapp.net
+    <name>-s3.cloudapp.net
     ```
 3. Voer nslookup uit voor elk met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die worden uitgevoerd in drie beschikbaarheids zones, 
 
@@ -127,15 +127,15 @@ Schakel vervolgens de volgende instructies in [Diagnostische logboeken inschakel
 Event Hubs biedt een Kafka-eind punt dat kan worden gebruikt door uw bestaande op Apache Kafka gebaseerde toepassingen. Een configuratie wijziging is vereist voor de PaaS Kafka-ervaring. Het biedt een alternatief voor het uitvoeren van uw eigen Kafka-cluster. Event Hubs ondersteunt Apache Kafka 1,0-en nieuwere client versies en werkt met uw bestaande Kafka-toepassingen,-hulpprogram ma's en-frameworks. Zie [Event hubs voor Kafka opslag plaats](https://github.com/Azure/azure-event-hubs-for-kafka)voor meer informatie.
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Welke configuratie wijzigingen moeten worden uitgevoerd voor mijn bestaande toepassing om te praten met Event Hubs?
-Als u verbinding wilt maken met een Event Hub, moet u de configuratie van de Kafka-client bijwerken. Dit doet u door een Event Hubs naam ruimte te maken en de [Connection String](event-hubs-get-connection-string.md)te verkrijgen. Wijzig de Boots trap. servers om de Event Hubs FQDN en de poort te laten verwijzen naar 9093. Werk de sasl. JAAS. config bij om de Kafka-client naar uw Event Hubs-eind punt te sturen (dit is de connection string die u hebt verkregen), met de juiste verificatie zoals hieronder wordt weer gegeven:
+Als u verbinding wilt maken met een Event Hub, moet u de configuratie van de Kafka-client bijwerken. Dit doet u door een Event Hubs naam ruimte te maken en de [Connection String](event-hubs-get-connection-string.md)te verkrijgen. Wijzig de Boots trap. servers om de Event Hubs FQDN en de poort te laten verwijzen naar 9093. Werk de sasl.jaas.config om de Kafka-client om te leiden naar uw Event Hubs-eind punt (dit is de connection string die u hebt verkregen), met de juiste verificatie zoals hieronder wordt weer gegeven:
 
-Boots trap. servers = {uw. Event hubs. FQDN}: 9093-aanvraag. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = sasl. JAAS. config = org. apache. Kafka. common. Security. Plains. PlainLoginModule vereist username = "$ConnectionString" Password = "{YOUR. Event hubs. Combi. TEKEN reeks} ";
+Boots trap. servers = {uw. Event hubs. FQDN}: 9093-aanvraag. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = PLAIN sasl.jaas.config= org. apache. Kafka. common. Security. Plain. PlainLoginModule vereist username = "$ConnectionString" Password = "{YOUR. Event hubs. Combi. TEKEN reeks} ";
 
 Voorbeeld:
 
-Boots trap. servers = dummynamespace. servicebus. Windows. net: 9093 Request. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = sasl. JAAS. config = org. apache. Kafka. common. Security. Plains. PlainLoginModule vereist username = "$ConnectionString" Password = "endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+Boots trap. servers = dummynamespace. servicebus. Windows. net: 9093 Request. time-out. MS = 60000 Security. Protocol = SASL_SSL sasl. mechanisme = PLAIN sasl.jaas.config= org. apache. Kafka. common. Security. Plain. PlainLoginModule vereist username = "$ConnectionString" Password = "endpoint = SB://dummynamespace.servicebus.Windows.net/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Opmerking: als sasl. JAAS. config geen ondersteunde configuratie in uw Framework is, zoekt u de configuraties die worden gebruikt voor het instellen van de SASL gebruikers naam en het wacht woord en het gebruik daarvan. Stel de gebruikers naam in op $ConnectionString en het wacht woord voor uw Event Hubs connection string.
+Opmerking: als sasl.jaas.config geen ondersteunde configuratie in uw Framework is, zoekt u de configuraties die worden gebruikt om de gebruikers naam en het wacht woord van SASL in te stellen en gebruikt u deze in plaats daarvan. Stel de gebruikers naam in op $ConnectionString en het wacht woord voor uw Event Hubs connection string.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Wat is de bericht/gebeurtenis grootte voor Event Hubs?
 De maximale toegestane bericht grootte voor Event Hubs is 1 MB.
@@ -276,6 +276,6 @@ Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreemen
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 * [Een event hub maken](event-hubs-create.md)
 * [Event Hubs automatisch verg Roten](event-hubs-auto-inflate.md)

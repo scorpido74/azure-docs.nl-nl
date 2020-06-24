@@ -8,11 +8,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243846"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84701810"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Overzicht van de netwerk architectuur van App Service omgevingen
 App Service omgevingen worden altijd gemaakt binnen een subnet van een [virtueel netwerk][virtualnetwork] : apps die worden uitgevoerd in een app service Environment kunnen communiceren met privé-eind punten die zich in dezelfde virtuele netwerk topologie bevinden.  Omdat klanten delen van hun virtuele netwerk infrastructuur kunnen vergren delen, is het belang rijk om inzicht te krijgen in de typen netwerk communicatie stromen die zich voordoen met een App Service Environment.

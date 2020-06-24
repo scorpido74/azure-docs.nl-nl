@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3e1d000ed316a1a92e6dcdab0f9b7d577fd33d8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ebb751826f0495f378c2df4118b3ad2008fd418f
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772230"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905014"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -230,11 +230,13 @@ Met de bedrijfs logica van uw toepassing wordt deze stap gedicteerd. sommige alg
 
 ## <a name="user-and-application-tokens"></a>Tokens van gebruikers en toepassingen
 
-Uw toepassing kan tokens namens een gebruiker (de gebruikelijke stroom) of rechtstreeks vanuit een toepassing (via de client referentie stroom ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) ontvangen. Deze app-tokens geven aan dat deze aanroep afkomstig is van een toepassing en geen back-up van de-gebruiker heeft. Deze tokens worden grotendeels hetzelfde behandeld, met enkele verschillen:
+Uw toepassing kan tokens ontvangen voor de gebruiker (de stroom die gewoonlijk wordt besproken) of rechtstreeks vanuit een toepassing (via de [client referentie stroom](v1-oauth2-client-creds-grant-flow.md)). Deze app-tokens geven aan dat deze aanroep afkomstig is van een toepassing en geen back-up van de-gebruiker heeft. Deze tokens worden grotendeels hetzelfde behandeld:
 
-* Alleen app-tokens hebben een `scp` claim en kunnen in plaats daarvan een claim hebben `roles` . Hier wordt de machtiging voor de toepassing (in plaats van de gedelegeerde machtigingen) vastgelegd. Zie machtigingen en toestemming ([v 1.0](../azuread-dev/v1-permissions-consent.md), [v 2.0](v2-permissions-and-consent.md)) voor meer informatie over gedelegeerde en toepassings machtigingen.
-* Er ontbreken veel Human-specifieke claims, zoals `name` of `upn` .
-* De `sub` `oid` claims en zijn hetzelfde.
+* Gebruik `roles` om machtigingen weer te geven die zijn toegekend aan het onderwerp van het token (de Service-Principal in plaats van een gebruiker in dit geval).
+* Gebruik `oid` of `sub` om te controleren of de aanroepende Service-Principal de verwachte is.
+
+Als uw app onderscheid moet maken tussen alleen app-toegangs tokens en toegangs tokens voor gebruikers, gebruikt u de `idtyp` [optionele claim](active-directory-optional-claims.md).  Door de claim toe te voegen `idtyp` aan het `accessToken` veld en de waarde te controleren `app` , kunt u alleen app-toegangs tokens detecteren.  ID-tokens en toegangs tokens voor gebruikers worden niet opgenomen in de `idtyp` claim.
+
 
 ## <a name="token-revocation"></a>Token intrekking
 

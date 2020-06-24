@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76845033"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738212"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-gateways bewaken met Network Watcher probleem oplossing
 
@@ -79,7 +79,7 @@ In deze stap geven we het runbook een naam, in het voor beeld wordt **Get-VPNGat
 
 ### <a name="step-5"></a>Stap 5
 
-In deze stap wordt het runbook gemaakt, het volgende code voorbeeld bevat de code die nodig is voor het voor beeld. De items in de code die de \<waarde\> bevatten moeten worden vervangen door de waarden van uw abonnement.
+In deze stap wordt het runbook gemaakt, het volgende code voorbeeld bevat de code die nodig is voor het voor beeld. De items in de code die \<value\> moeten worden vervangen door de waarden van uw abonnement.
 
 Gebruik de volgende code als klikken op **Opslaan**
 
