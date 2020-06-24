@@ -1,33 +1,33 @@
 ---
-title: Wat zijn vertrouwde beveiligings partners van Azure Firewall Manager (preview-versie)
-description: Meer informatie over vertrouwde beveiligings partners van Azure Firewall Manager
+title: Wat zijn Azure Firewall Manager-beveiligings partner providers (preview-versie)
+description: Meer informatie over leveranciers van Azure Firewall Manager-beveiligings partners
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d430deae191fbc9f9ab5bbbc2b83ee4640dd831
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436779"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791508"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>Wat zijn vertrouwde beveiligingspartners (preview)?
+# <a name="what-are-security-partner-providers-preview"></a>Wat zijn beveiligings partner providers (preview-versie)?
 
 > [!IMPORTANT]
 > Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Met *vertrouwde beveiligings partners (preview)* in azure firewall Manager kunt u uw vertrouwde, eersteklas SECaaS-aanbiedingen (Security as a Service) van derden gebruiken om de Internet toegang voor uw gebruikers te beveiligen.
+Met *aanbieders van beveiligings partners (preview)* in azure firewall Manager kunt u uw vertrouwde, eersteklas SECaaS-aanbiedingen (Security as a Service) van derden gebruiken om de Internet toegang voor uw gebruikers te beveiligen.
 
 Met een snelle configuratie kunt u een hub met een ondersteunde beveiligings partner beveiligen en Internet verkeer van uw virtuele netwerken (VNets) of vertakkings locaties binnen een regio routeren en filteren. Dit wordt gedaan met behulp van geautomatiseerde route beheer zonder door de gebruiker gedefinieerde routes (Udr's) in te stellen en te beheren.
 
 U kunt beveiligde hubs implementeren die zijn geconfigureerd met de beveiligings partner van uw keuze in meerdere Azure-regio's om connectiviteit en beveiliging voor uw gebruikers overal ter wereld in deze regio's te krijgen. Met de mogelijkheid om de aanbieding van de beveiligings partner voor Internet/SaaS-toepassings verkeer te gebruiken en Azure Firewall voor privé verkeer in de beveiligde hubs, kunt u nu beginnen met het bouwen van uw beveiligings rand op Azure die dicht bij uw wereld wijd gedistribueerde gebruikers en toepassingen ligt.
 
-Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler** en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
+Voor deze preview zijn de ondersteunde beveiligings partners **ZScaler**, **Check Point**en **iboss**. Ondersteunde regio's zijn WestCentralUS, NorthCentralUS, Westus, WestUS2 en Oost-Timor.
 
-![Vertrouwde beveiligingspartners](media/trusted-security-partners/trusted-security-partners.png)
+![Beveiligingspartnerproviders](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>Belang rijke scenario's
 
@@ -80,4 +80,4 @@ Office 365-verbindingen worden bovendien sterk versleuteld voor privacy en gebru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Implementeer een vertrouwde beveiligings aanbieding in een beveiligde hub met behulp van Azure firewall Manager](deploy-trusted-security-partner.md).
+[Implementeer een beveiligings partner die wordt aangeboden in een beveiligde hub met behulp van Azure firewall Manager](deploy-trusted-security-partner.md).

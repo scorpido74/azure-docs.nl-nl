@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548ebf5b0d5836383b74326516fbe47b1b25f60f
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76899944"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080182"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling: op rest van inhoud in azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
 
@@ -32,13 +32,13 @@ Sleutels hoeven niet allemaal in hetzelfde Key Vault te zijn. Eén zoek service 
 
 In dit voor beeld worden de volgende services gebruikt. 
 
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. 
++ [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. 
 
 + [Een Azure Key Vault resource maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) of een bestaande kluis vinden onder uw abonnement.
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) of [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) wordt gebruikt voor configuratie taken.
 
-+ [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) en [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) kunnen worden gebruikt om de rest API aan te roepen. Er is op dit moment geen portal ondersteuning voor door de klant beheerde versleuteling.
++ [Postman](search-get-started-postman.md), [Azure POWERSHELL](search-create-index-rest-api.md) en [.NET SDK preview](https://aka.ms/search-sdk-preview) kunnen worden gebruikt om de rest API aan te roepen. Er is op dit moment geen portal ondersteuning voor door de klant beheerde versleuteling.
 
 >[!Note]
 > Vanwege de aard van de versleuteling met de functie door de klant beheerde sleutels, kunnen Azure Cognitive Search uw gegevens niet ophalen als uw Azure Key kluis-sleutel is verwijderd. Als u gegevens verlies wilt voor komen dat wordt veroorzaakt door onKey Vault opzettelijke verwijderingen van sleutels, **moet** u voorlopig verwijderen en beveiliging opschonen in Key Vault inschakelen voordat het kan worden gebruikt. Zie [Azure Key Vault voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)voor meer informatie.   

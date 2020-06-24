@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 012d183a20e5fdcf39d72813051d745a3f9787a7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560126"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214363"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
 
@@ -277,7 +277,7 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
 
 Een 504-status code geeft aan dat er een time-out is opgetreden voor de aanvraag. De standaard time-out is 1 minuut.
 
-U kunt de time-out verhogen of proberen de service te versnellen door de score.py te wijzigen zodat overbodige aanroepen worden verwijderd. Als deze acties het probleem niet verhelpen, gebruikt u de informatie in dit artikel om fouten op te sporen in het score.py-bestand. De code heeft mogelijk een vastgelopen status of een oneindige lus.
+U kunt de time-out verhogen of proberen de service te versnellen door de score.py te wijzigen zodat overbodige aanroepen worden verwijderd. Als deze acties het probleem niet verhelpen, gebruikt u de informatie in dit artikel om fouten op te sporen in het score.py-bestand. De code kan een niet-reagerende status hebben of een oneindige lus.
 
 ## <a name="advanced-debugging"></a>Geavanceerde fout opsporing
 
@@ -300,9 +300,9 @@ Voor lokale web service-implementaties is een werkende docker-installatie op uw 
 
 1. Als u VS code wilt configureren om met de docker-installatie kopie te communiceren, maakt u een nieuwe configuratie voor fout opsporing:
 
-    1. Selecteer in VS code het menu __fout opsporing__ en selecteer vervolgens __Open configuraties__. Er wordt een bestand met de naam __Launch. json__ geopend.
+    1. Selecteer in VS code het menu __fout opsporing__ en selecteer vervolgens __Open configuraties__. Er wordt een bestand met de naam __launch.js__ geopend.
 
-    1. Zoek in het bestand __Launch. json__ de regel die bevat `"configurations": [` en voeg de volgende tekst toe:
+    1. Zoek in het bestand __launch.jsop__ de regel die bevat `"configurations": [` en voeg de volgende tekst toe:
 
         ```json
         {
@@ -325,7 +325,7 @@ Voor lokale web service-implementaties is een werkende docker-installatie op uw 
 
         Deze sectie wordt gekoppeld aan de docker-container via poort 5678.
 
-    1. Sla het bestand __Launch. json__ op.
+    1. Sla de __launch.jsop in__ het bestand.
 
 ### <a name="create-an-image-that-includes-ptvsd"></a>Een installatie kopie maken die PTVSD bevat
 

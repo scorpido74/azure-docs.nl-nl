@@ -1,6 +1,6 @@
 ---
 title: Linux java-apps configureren
-description: Meer informatie over het configureren van een vooraf ontwikkelde Java-container voor uw app. In dit artikel vindt u de meest voorkomende configuratie taken.
+description: Meer informatie over het configureren van een vooraf ontwikkelde Java-container voor uw app. In dit artikel worden de meest algemene configuratietaken beschreven.
 keywords: Azure app service, Web-app, Linux, OSS, Java, Java EE, JEE, javaee
 author: bmitchell287
 manager: barbkess
@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 63fee90be773f61bfef73e21a272192eea5f789c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 496f519ba5e4eb17060ee35ed86fba45c85336d6
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167482"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905728"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux Java-app voor Azure App Service configureren
 
@@ -44,7 +44,7 @@ Prestatie rapporten, visualisaties van verkeer en de status checkups zijn beschi
 
 ### <a name="stream-diagnostic-logs"></a>Diagnostische logboeken streamen
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 Zie [Stream-Logboeken in Cloud shell](../troubleshoot-diagnostic-logs.md#in-cloud-shell)voor meer informatie.
 
@@ -280,7 +280,7 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 ### <a name="configure-new-relic"></a>Nieuwe Relic configureren
 
 1. Een NewRelic-account maken op [NewRelic.com](https://newrelic.com/signup)
-2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die lijkt op *newrelic-Java-x. x. x. zip*.
+2. Down load de Java-Agent van NewRelic. deze heeft een bestands naam die vergelijkbaar is met *newrelic-java-x.x.x.zip*.
 3. Kopieer uw licentie sleutel, u hebt deze later nodig om de agent te configureren.
 4. [Ssh in uw app service-exemplaar](app-service-linux-ssh-support.md) en maak een nieuwe directory */Home/site/wwwroot/apm*.
 5. Upload de uitgepakte NewRelic Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/newrelic*zijn.
@@ -292,7 +292,7 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 ### <a name="configure-appdynamics"></a>AppDynamics configureren
 
 1. Een AppDynamics-account maken op [AppDynamics.com](https://www.appdynamics.com/community/register/)
-2. De Java-agent downloaden van de AppDynamics-website, de bestands naam is vergelijkbaar met *AppServerAgent-x. x. x. xxxxx. zip*
+2. De Java-agent downloaden van de AppDynamics-website, de bestands naam is vergelijkbaar met *AppServerAgent-x.x.x.xxxxx.zip*
 3. [Ssh in uw app service-exemplaar](app-service-linux-ssh-support.md) en maak een nieuwe directory */Home/site/wwwroot/apm*.
 4. Upload de Java-Agent bestanden naar een map onder */Home/site/wwwroot/apm*. De bestanden voor uw agent moeten in */Home/site/wwwroot/apm/appdynamics*zijn.
 5. In de Azure Portal, bladert u naar uw toepassing in App Service en maakt u een nieuwe toepassings instelling.
@@ -306,7 +306,7 @@ In deze sectie wordt beschreven hoe u Java-toepassingen die zijn geïmplementeer
 
 ### <a name="starting-jar-apps"></a>JAR-apps starten
 
-App Service verwacht dat uw JAR-toepassing standaard de naam *app. jar*heeft. Als het deze naam heeft, wordt deze automatisch uitgevoerd. Voor maven-gebruikers kunt u de JAR-naam instellen door deze op te nemen `<finalName>app</finalName>` in het `<build>` gedeelte van uw *pom. XML*. [U kunt hetzelfde doen in Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) door de eigenschap in te stellen `archiveFileName` .
+App Service verwacht dat uw JAR-toepassing standaard de naam *app. jar*heeft. Als het deze naam heeft, wordt deze automatisch uitgevoerd. Voor maven-gebruikers kunt u de JAR-naam instellen door deze op te nemen `<finalName>app</finalName>` in het `<build>` gedeelte van uw *pom.xml*. [U kunt hetzelfde doen in Gradle](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName) door de eigenschap in te stellen `archiveFileName` .
 
 Als u een andere naam voor uw JAR wilt gebruiken, moet u ook de [opstart opdracht](app-service-linux-faq.md#built-in-images) opgeven waarmee het jar-bestand wordt uitgevoerd. Bijvoorbeeld `java -jar my-jar-app.jar`. U kunt de waarde voor de opstart opdracht in de Portal instellen, onder configuratie > algemene instellingen, of met een toepassings instelling met de naam `STARTUP_COMMAND` .
 
@@ -350,9 +350,9 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
 
 #### <a name="application-level-data-sources"></a>Gegevens bronnen op toepassings niveau
 
-1. Maak een *context. XML-* bestand in de *META-INF/* map van uw project. Maak de *META-INF/-* map als deze niet bestaat.
+1. Maak een *context.xml* -bestand in de *META-INF/-* map van uw project. Maak de *META-INF/-* map als deze niet bestaat.
 
-2. Voeg in *context. XML*een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
+2. Voeg in *context.xml*een `Context` element toe om de gegevens bron te koppelen aan een JNDI-adres. Vervang de `driverClassName` tijdelijke aanduiding door de naam van de klasse van uw stuur programma uit de bovenstaande tabel.
 
     ```xml
     <Context>
@@ -367,7 +367,7 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
     </Context>
     ```
 
-3. Werk de *Web. XML* van uw toepassing bij om de gegevens bron in uw toepassing te gebruiken.
+3. Werk de *web.xml* van uw toepassing bij om de gegevens bron in uw toepassing te gebruiken.
 
     ```xml
     <resource-env-ref>
@@ -378,9 +378,9 @@ Bepaal vervolgens of de gegevens bron beschikbaar moet zijn voor één toepassin
 
 #### <a name="shared-server-level-resources"></a>Resources op gedeelde server niveau
 
-Als u een gedeelde gegevens bron op server niveau wilt toevoegen, moet u de server. XML van Tomcat bewerken. Upload eerst een [opstart script](app-service-linux-faq.md#built-in-images) en stel het pad naar het script in de **Configuration**  >  **opstart opdracht**van de configuratie in. U kunt het opstart script uploaden met [FTP](../deploy-ftp.md).
+Als u een gedeelde gegevens bron op server niveau wilt toevoegen, moet u de server.xml van Tomcat bewerken. Upload eerst een [opstart script](app-service-linux-faq.md#built-in-images) en stel het pad naar het script in de **Configuration**  >  **opstart opdracht**van de configuratie in. U kunt het opstart script uploaden met [FTP](../deploy-ftp.md).
 
-Met het opstart script maakt u een [XSL-trans formatie](https://www.w3schools.com/xml/xsl_intro.asp) naar het bestand server. XML en voert u het resulterende XML-bestand uit naar `/usr/local/tomcat/conf/server.xml` . Het opstart script moet libxslt installeren via APK. Het XSL-bestand en het opstart script kunnen worden geüpload via FTP. Hieronder ziet u een voor beeld van een opstart script.
+Met het opstart script wordt een [XSL-trans formatie](https://www.w3schools.com/xml/xsl_intro.asp) naar het server.xml-bestand gemaakt en wordt het resulterende XML-bestand uitgevoerd naar `/usr/local/tomcat/conf/server.xml` . Het opstart script moet libxslt installeren via APK. Het XSL-bestand en het opstart script kunnen worden geüpload via FTP. Hieronder ziet u een voor beeld van een opstart script.
 
 ```sh
 # Install libxslt. Also copy the transform file to /home/tomcat/conf/
@@ -390,7 +390,7 @@ apk add --update libxslt
 xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
-Hieronder vindt u een voor beeld van een XSL-bestand. Het XSL-voorbeeld bestand voegt een nieuw connector knooppunt toe aan de Tomcat-server. XML.
+Hieronder vindt u een voor beeld van een XSL-bestand. Het XSL-voorbeeld bestand voegt een nieuw connector knooppunt toe aan de Tomcat-server.xml.
 
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -524,7 +524,7 @@ Als u Tomcat met redis wilt gebruiken, moet u uw app configureren voor het gebru
 
     U kunt de naam, de poort en toegangs sleutel gegevens op de Azure Portal vinden door te kijken in de secties **Eigenschappen** of **toegangs sleutels** van uw service-exemplaar.
 
-2. Het *src/main/webapp/META-INF/context. XML-* bestand van uw app maken of bijwerken met de volgende inhoud:
+2. Het *src/main/webapp/META-INF/context.xml-* bestand van uw app maken of bijwerken met de volgende inhoud:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -562,7 +562,7 @@ Als u Tomcat met redis wilt gebruiken, moet u uw app configureren voor het gebru
 
 7. Ga naar de sectie **Geavanceerde instellingen** van uw redis-exemplaar en stel **alleen toegang toestaan via SSL** in op **Nee**. Hiermee kan uw App Service-exemplaar communiceren met uw redis-cache via de Azure-infra structuur.
 
-8. Werk de `azure-webapp-maven-plugin` configuratie in het *pom. XML-* bestand van uw app bij om te verwijzen naar uw redis-account gegevens. In dit bestand worden de omgevings variabelen gebruikt die u eerder hebt ingesteld om uw account gegevens uit uw bron bestanden te beveiligen.
+8. Werk de `azure-webapp-maven-plugin` configuratie in het *pom.xml* -bestand van uw app bij om te verwijzen naar uw redis-account gegevens. In dit bestand worden de omgevings variabelen gebruikt die u eerder hebt ingesteld om uw account gegevens uit uw bron bestanden te beveiligen.
 
     Wijzig zo nodig `1.9.1` in de huidige versie van de [Maven-invoegtoepassing voor Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
 

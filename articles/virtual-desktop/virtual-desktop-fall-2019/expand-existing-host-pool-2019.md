@@ -4,21 +4,21 @@ description: Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtu
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f4313f36a0b250be9646c6658b98f15037374729
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615524"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214278"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](../expand-existing-host-pool.md)als u probeert Azure Resource Manager virtuele Windows-bureaublad objecten te beheren die zijn geïntroduceerd in de lente 2020-update.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../expand-existing-host-pool.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
 
 Wanneer u het gebruik in uw hostgroep wilt verbeteren, moet u mogelijk uw bestaande hostgroep uitbreiden met nieuwe sessie-hosts om de nieuwe belasting af te handelen.
 
@@ -49,7 +49,7 @@ Als u al een hostgroep en host-Vm's hebt gemaakt met behulp van de [Azure Market
 
 U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een hostgroep uit te breiden:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zoek in de zoek balk aan de bovenkant van de Azure Portal naar **resource groepen** en selecteer het item onder **Services**.
 3. Zoek en selecteer de resource groep die u hebt gemaakt tijdens het maken van de hostgroep.
 4. Selecteer **implementaties**in het deel venster aan de linkerkant van de browser.
@@ -57,12 +57,12 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
      - Als u de oorspronkelijke hostgroep hebt gemaakt met de Azure Marketplace-aanbieding, selecteert u de implementatie die begint met **RDS. WVD-Provision-host-pool**.
      - Als u de oorspronkelijke hostgroep hebt gemaakt met de GitHub-sjabloon Azure Resource Manager, selecteert u de implementatie met de naam **micro soft. Temp late**.
 6. Selecteer opnieuw **implementeren**.
-     
+
      >[!NOTE]
      >Als de sjabloon niet automatisch opnieuw wordt geïmplementeerd wanneer u opnieuw **implementeren**selecteert, selecteert u **sjabloon** in het deel venster aan de linkerkant van uw browser en selecteert u vervolgens **implementeren**.
 
 7. Selecteer de resource groep die de huidige host-Vm's in de bestaande hostgroep bevat.
-     
+
      >[!NOTE]
      >Als er een fout bericht wordt weer gegeven waarin u wordt aangegeven dat u een andere resource groep wilt selecteren, terwijl u de naam juist hebt ingevoerd, selecteert u een andere resource groep en selecteert u vervolgens de oorspronkelijke resource groep.
 
@@ -85,7 +85,7 @@ Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens
 3.    Selecteer voor *regio*de regio waarin de bestaande vm's van de hostgroep-host zich bevinden.
 4.    Voer bij *naam van Hostpool*de naam van de bestaande hostgroep in.
 5.    Selecteer bij *bureau blad*het type bureau blad dat overeenkomt met de bestaande hostgroep.
-6.    Voor *standaard bureaublad gebruikers*voert u een door komma's gescheiden lijst in van alle extra gebruikers die u wilt aanmelden bij de virtuele Windows-desktop clients en toegang tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld wilt user3@contoso.com toewijzen en user4@contoso.com toegang wilt krijgen, voert user3@contoso.comu inuser4@contoso.com.
+6.    Voor *standaard bureaublad gebruikers*voert u een door komma's gescheiden lijst in van alle extra gebruikers die u wilt aanmelden bij de virtuele Windows-desktop clients en toegang tot een bureau blad nadat de Azure Marketplace-aanbieding is voltooid. Als u bijvoorbeeld wilt toewijzen user3@contoso.com en toegang wilt krijgen, voert u in user4@contoso.com user3@contoso.com user4@contoso.com .
 7.    Selecteer **volgende: virtuele machine configureren**.
 
 >[!NOTE]
@@ -96,12 +96,12 @@ Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens
 Alle parameter waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's voor de host maakt, met uitzonde ring van het totale aantal virtuele machines. Het aantal Vm's dat u invoert, is het aantal Vm's in de uitgebreide hostgroep:
 
 1. Selecteer de VM-grootte die overeenkomt met de bestaande Vm's van de host.
-    
+
     >[!NOTE]
     >Als de specifieke VM-grootte die u zoekt niet wordt weer gegeven in de VM-grootte kiezer, dat is omdat we deze nog niet hebben uitgevoerd op het Azure Marketplace-hulp programma. Als u een VM-grootte wilt aanvragen, moet u een aanvraag maken of een bestaande aanvraag bijstemmen in het [Windows-UserVoice-forum van Virtual Desktop](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
 2. Pas het *gebruiks profiel*, de *totale gebruikers*en het *aantal virtuele-machine* parameters aan om het totale aantal sessie-hosts te selecteren dat u wilt gebruiken in uw hostgroep. Als u uw hostgroep bijvoorbeeld uitbreidt van vijf sessie-hosts tot acht, configureert u deze opties voor het ophalen van 8 virtuele machines.
-3. Voer een voor voegsel voor de namen van de virtuele machines in. Als u bijvoorbeeld de naam "voor voegsel" opgeeft, worden de virtuele machines "voor voegsel-0," "voor voegsel-1," genoemd.
+3. Voer een voorvoegsel in voor de namen van de virtuele machines. Als u bijvoorbeeld de naam "voor voegsel" opgeeft, worden de virtuele machines "voor voegsel-0," "voor voegsel-1," genoemd.
 4. Selecteer **volgende: instellingen van de virtuele machine**.
 
 ### <a name="virtual-machine-settings"></a>Instellingen voor virtuele machines
@@ -117,8 +117,8 @@ Alle parameter waarden in deze sectie moeten overeenkomen met wat u hebt opgegev
 
 Alle parameter waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's van de host maakt:
 
-1. Voer voor de naam van de *Windows-Tenant groep voor virtueel bureau blad*de naam in voor de Tenant groep die uw Tenant bevat. Zorg ervoor dat dit de standaard instelling is, tenzij u een specifieke naam voor de Tenant groep hebt opgegeven.
-2. Voer de naam in van de Tenant waar u deze hostgroep gaat maken voor de *Windows-Tenant naam van het virtuele bureau blad*.
+1. Voer voor *Naam van Windows Virtual Desktop-tenantgroep* de naam in van de tenantgroep die uw tenant bevat. Laat hier de standaardwaarde ongewijzigd, tenzij u een specifieke tenantgroepsnaam hebt ontvangen.
+2. Voer voor *Naam van Windows Virtual Desktop-tenant* de naam in van de tenant waarin u deze hostgroep gaat maken.
 3. Geef dezelfde referenties op die u hebt gebruikt toen u de hostgroep en de Vm's voor de host hebt gemaakt. Als u een Service-Principal gebruikt, geeft u de ID op van het Azure Active Directory exemplaar waarin uw Service-Principal zich bevindt.
 4. Selecteer **volgende: controleren + maken**.
 

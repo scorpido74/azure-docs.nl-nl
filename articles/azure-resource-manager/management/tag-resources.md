@@ -2,13 +2,13 @@
 title: Label resources, resource groepen en abonnementen voor logische organisatie
 description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
 ms.topic: conceptual
-ms.date: 05/06/2020
-ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.date: 06/15/2020
+ms.openlocfilehash: c06bd5f44f01a98e3a39d0cf404713e0d0546192
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864484"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791925"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en-beheer hiërarchie te organiseren
 
@@ -31,7 +31,7 @@ De rol [Inzender](../../role-based-access-control/built-in-roles.md#contributor)
 
 ### <a name="apply-tags"></a>Tags Toep assen
 
-Azure PowerShell biedt twee opdrachten voor het Toep assen van labels: [New-AzTag](/powershell/module/az.resources/new-aztag) en [Update-AzTag](/powershell/module/az.resources/update-aztag). U moet de module AZ. Resources 1.12.0 of hoger hebben. U kunt uw versie controleren met `Get-Module Az.Resources`. U kunt die module installeren of [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 of later installeren.
+Azure PowerShell biedt twee opdrachten voor het Toep assen van labels: [New-AzTag](/powershell/module/az.resources/new-aztag) en [Update-AzTag](/powershell/module/az.resources/update-aztag). U moet de module AZ. Resources 1.12.0 of hoger hebben. U kunt uw versie controleren met `Get-Module Az.Resources` . U kunt die module installeren of [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 of later installeren.
 
 De **New-AzTag** vervangt alle labels op de resource, resource groep of het abonnement. Wanneer u de opdracht aanroept, geeft u de resource-ID van de entiteit die u wilt labelen door.
 
@@ -263,7 +263,7 @@ Als u een tag wilt toevoegen aan de bestaande tags voor een resource groep, gebr
 az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-Op dit moment biedt Azure CLI geen ondersteuning voor het Toep assen van tags op abonnementen.
+Momenteel heeft Azure CLI geen opdracht voor het Toep assen van tags op abonnementen. U kunt CLI echter gebruiken om een ARM-sjabloon te implementeren waarmee de tags op een abonnement worden toegepast. Zie [labels Toep assen op resource groepen of abonnementen](#apply-tags-to-resource-groups-or-subscriptions).
 
 ### <a name="list-tags"></a>Tags weergeven
 
@@ -290,13 +290,13 @@ Dat script retourneert de volgende indeling:
 
 ### <a name="list-by-tag"></a>Lijst op label
 
-Als u alle resources met een bepaalde tag en waarde wilt ophalen, gebruikt `az resource list`u:
+Als u alle resources met een bepaalde tag en waarde wilt ophalen, gebruikt u `az resource list` :
 
 ```azurecli-interactive
 az resource list --tag Dept=Finance
 ```
 
-Gebruik `az group list`de volgende informatie om resource groepen met een specifieke tag op te halen:
+Gebruik de volgende informatie om resource groepen met een specifieke tag op te halen `az group list` :
 
 ```azurecli-interactive
 az group list --tag Dept=IT
@@ -326,7 +326,7 @@ U kunt resources, resource groepen en abonnementen labelen tijdens de implementa
 
 ### <a name="apply-values"></a>Waarden Toep assen
 
-In het volgende voor beeld wordt een opslag account met drie Tags geïmplementeerd. Twee van de tags (`Dept` en `Environment`) worden ingesteld op letterlijke waarden. Eén tag (`LastDeployed`) wordt ingesteld op een para meter die standaard op de huidige datum staat.
+In het volgende voor beeld wordt een opslag account met drie Tags geïmplementeerd. Twee van de tags ( `Dept` en `Environment` ) worden ingesteld op letterlijke waarden. Eén tag ( `LastDeployed` ) wordt ingesteld op een para meter die standaard op de huidige datum staat.
 
 ```json
 {
@@ -436,7 +436,7 @@ Als u veel waarden wilt opslaan in een enkele tag, past u een JSON-tekenreeks to
 
 ### <a name="apply-tags-from-resource-group"></a>Tags Toep assen vanuit de resource groep
 
-Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup](../templates/template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt `tags[tag-name]` u `tags.tag-name` de syntaxis in plaats van de syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
+Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup](../templates/template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt u de `tags[tag-name]` syntaxis in plaats van de `tags.tag-name` syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
 
 ```json
 {
@@ -523,6 +523,8 @@ New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateU
 az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
 ```
 
+Zie [resource groepen en-resources op abonnements niveau maken](../templates/deploy-to-subscription.md)voor meer informatie over abonnements implementaties.
+
 De volgende sjabloon voegt de tags van een object toe aan een resource groep of een abonnement.
 
 ```json
@@ -583,17 +585,15 @@ Zie voor REST API bewerkingen de [Naslag informatie voor Azure billing rest API]
 Voor tags gelden de volgende beperkingen:
 
 * Niet alle resource typen ondersteunen Tags. Zie [tag-ondersteuning voor Azure-resources](tag-support.md)om te bepalen of u een tag kunt Toep assen op een resource type.
-* -Beheer groepen ondersteunen labels momenteel niet.
 * Elke resource, resource groep en elk abonnement kan Maxi maal 50 label naam/waarde-paren hebben. Als u meer tags wilt Toep assen dan het Maxi maal toegestane aantal, gebruikt u een JSON-teken reeks voor de waarde van de tag. De JSON-tekenreeks kan veel waarden bevatten die worden toegepast op een enkele tagnaam. Een resource groep of-abonnement kan een groot aantal resources bevatten die elk een 50-tag met de naam/waarde-paren hebben.
 * De tagnaam is beperkt tot 512 tekens en de tagwaarde is beperkt tot 256 tekens. Voor opslagaccounts is de tagnaam beperkt tot 128 tekens en de tagwaarde beperkt tot 256 tekens.
-* Gegeneraliseerde Vm's ondersteunen geen tags.
 * Labels kunnen niet worden toegepast op klassieke resources, zoals Cloud Services.
-* Label namen mogen niet de volgende tekens `<`bevatten `>`: `%`, `&`, `\`, `?`,,,`/`
+* Label namen mogen niet de volgende tekens bevatten: `<` , `>` , `%` , `&` , `\` , `?` ,`/`
 
    > [!NOTE]
    > Op dit moment staat Azure DNS-zones en Traffic Manager services ook niet toe dat spaties in het label worden gebruikt.
    >
-   > De front-deur van Azure biedt geen `#` ondersteuning voor het gebruik van in de label naam.
+   > De front-deur van Azure biedt geen ondersteuning voor het gebruik van `#` in de label naam.
 
 ## <a name="next-steps"></a>Volgende stappen
 

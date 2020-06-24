@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654100"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789936"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Uw Extern bureaublad-gateway-infra structuur integreren met behulp van de Network Policy Server (NPS)-extensie en Azure AD
 
@@ -130,13 +130,14 @@ Als onderdeel van de configuratie van de NPS-extensie moet u beheerders referent
 
 Installeer de NPS-extensie op een server waarop de rol Network Policy and Access Services (NPS) is geïnstalleerd. Deze functie fungeert als de RADIUS-server voor uw ontwerp.
 
-> [!Important]
-> Zorg ervoor dat u de NPS-extensie niet op uw Extern bureaublad-gateway server installeert.
+> [!IMPORTANT]
+> Installeer de NPS-extensie niet op uw Extern bureaublad-gateway-server (RDG). De RDG-server gebruikt niet het RADIUS-protocol met de bijbehorende client, waardoor de extensie de MFA niet kan interpreteren en uitvoeren.
 >
+> Wanneer de RDG-server en de NPS-server met de NPS-extensie verschillende servers zijn, gebruikt RDG intern NPS om te communiceren met andere NPS-servers en wordt RADIUS als protocol gebruikt om correct te communiceren.
 
 1. Down load de [NPS-extensie](https://aka.ms/npsmfa).
-1. Kopieer het uitvoer bare installatie bestand (NpsExtnForAzureMfaInstaller. exe) naar de NPS-server.
-1. Dubbel klik op **NpsExtnForAzureMfaInstaller. exe**op de NPS-server. Klik op **uitvoeren**als u hierom wordt gevraagd.
+1. Kopieer het uitvoer bare installatie bestand (NpsExtnForAzureMfaInstaller.exe) naar de NPS-server.
+1. Dubbel klik op de NPS-server op **NpsExtnForAzureMfaInstaller.exe**. Klik op **uitvoeren**als u hierom wordt gevraagd.
 1. Bekijk in het dialoog venster NPS-extensie voor Azure MFA Setup de licentie voorwaarden van de software, Controleer **Ik ga akkoord met de licentie voorwaarden**en klik op **installeren**.
 1. Klik in het dialoog venster NPS-extensie voor Azure MFA Setup op **sluiten**.
 
@@ -157,10 +158,10 @@ Als u uw eigen certificaten wilt gebruiken, moet u de open bare sleutel van uw c
 Als u het script wilt gebruiken, geeft u de extensie op met uw Azure AD-beheerders referenties en de Azure AD-Tenant-ID die u eerder hebt gekopieerd. Voer het script uit op elke NPS-server waarop u de NPS-extensie hebt geïnstalleerd. Ga daarna als volgt te werk:
 
 1. Open een Windows Power shell-prompt met beheerders rechten.
-1. Typ `cd 'c:\Program Files\Microsoft\AzureMfa\Config'`bij de Power shell-prompt en druk op **Enter**.
-1. Typ `.\AzureMfaNpsExtnConfigSetup.ps1`en druk op **Enter**. Met het script wordt gecontroleerd of de Azure Active Directory Power shell-module is geïnstalleerd. Als dat niet is geïnstalleerd, wordt de module door het script geïnstalleerd.
+1. Typ bij de Power shell-prompt `cd 'c:\Program Files\Microsoft\AzureMfa\Config'` en druk op **Enter**.
+1. Typ `.\AzureMfaNpsExtnConfigSetup.ps1` en druk op **Enter**. Met het script wordt gecontroleerd of de Azure Active Directory Power shell-module is geïnstalleerd. Als dat niet is geïnstalleerd, wordt de module door het script geïnstalleerd.
 
-   ![AzureMfaNpsExtnConfigSetup. ps1 uitvoeren in azure AD Power shell](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![AzureMfaNpsExtnConfigSetup.ps1 uitvoeren in azure AD Power shell](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. Nadat het script de installatie van de Power shell-module heeft gecontroleerd, wordt het dialoog venster Azure Active Directory Power shell-module weer gegeven. Voer in het dialoog venster uw Azure AD-beheerders referenties en-wacht woord in en klik op **Aanmelden**.
 
@@ -186,7 +187,7 @@ Extern bureaublad verbindings autorisatie beleid (RD Cap's) opgeven van de verei
 
 1. Open **Serverbeheer**op de RD-gateway-server.
 1. Klik in het menu op **extra**, wijs **extern bureaublad-services**aan en klik vervolgens op **extern bureaublad-gatewaybeheer**.
-1. Klik in de RD-gatewaybeheer met de rechter muisknop op ** \[server naam\] (lokaal)** en klik op **Eigenschappen**.
+1. Klik in de RD-gatewaybeheer met de rechter muisknop op ** \[ Server naam \] (lokaal)** en klik op **Eigenschappen**.
 1. Selecteer in het dialoog venster Eigenschappen het tabblad **RD CAP archief** .
 1. Op het tabblad RD CAP archief selecteert u **centrale server waarop NPS wordt uitgevoerd**. 
 1. In het veld **Geef een naam of IP-adres op voor de server waarop NPS wordt uitgevoerd** , typt u het IP-adres of de server naam van de server waarop u de NPS-extensie hebt geïnstalleerd.

@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a57392b0072f6e6bb692ad0a28e6adf87f615eed
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684959"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732548"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheer eenheid in Azure Active Directory
 
@@ -96,11 +96,11 @@ Selecteer **beheer eenheden** in het linkerdeel venster om de lijst met beheer e
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Er zijn twee manieren om een gebruiker uit een beheer eenheid te verwijderen. In de Azure Portal kunt u een gebruikers profiel openen door naar **Azure AD** > -**gebruikers**te gaan. Selecteer de gebruiker om het profiel van de gebruiker te openen. Selecteer de beheer eenheid waaruit u de gebruiker wilt verwijderen en selecteer **verwijderen uit beheer eenheid**.
+Er zijn twee manieren om een gebruiker uit een beheer eenheid te verwijderen. In de Azure Portal kunt u een gebruikers profiel openen door naar **Azure AD**-  >  **gebruikers**te gaan. Selecteer de gebruiker om het profiel van de gebruiker te openen. Selecteer de beheer eenheid waaruit u de gebruiker wilt verwijderen en selecteer **verwijderen uit beheer eenheid**.
 
 ![Een gebruiker uit een beheer eenheid verwijderen uit het gebruikers profiel](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-U kunt een gebruiker ook verwijderen in **Azure AD** > -**administratieve eenheden** door de beheer eenheid te selecteren waarvan u gebruikers wilt verwijderen. Selecteer de gebruiker en selecteer **lid verwijderen**.
+U kunt een gebruiker ook verwijderen in **Azure AD**-  >  **administratieve eenheden** door de beheer eenheid te selecteren waarvan u gebruikers wilt verwijderen. Selecteer de gebruiker en selecteer **lid verwijderen**.
   
 ![Een gebruiker op het niveau van de beheer eenheid verwijderen](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 

@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: dc2763fd3c203a5b0443299d9824b6ebf61bdc78
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735756"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791075"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen voor externe gast gebruikers met behulp van de Azure Portal
 
@@ -31,7 +31,7 @@ ms.locfileid: "82735756"
 
 Om roltoewijzingen toe te voegen of te verwijderen, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/roleAssignments/write`en `Microsoft.Authorization/roleAssignments/delete` machtigingen, zoals beheerder of [eigenaar](built-in-roles.md#owner) van [gebruikers toegang](built-in-roles.md#user-access-administrator)
+- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) of [Eigenaar](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>Wanneer wilt u gast gebruikers uitnodigen?
 
@@ -51,7 +51,7 @@ Volg deze stappen om een gast gebruiker toe te voegen aan uw directory via de pa
 
 1. Zorg ervoor dat de instellingen voor externe samen werking van uw organisatie zodanig zijn geconfigureerd dat u gasten kunt uitnodigen. Zie [externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen](../active-directory/b2b/delegate-invitations.md)voor meer informatie.
 
-1. Klik in de Azure Portal op **Azure Active Directory** > **gebruikers** > **nieuwe gast gebruiker**.
+1. Klik in de Azure Portal op **Azure Active Directory**  >  **gebruikers**  >  **nieuwe gast gebruiker**.
 
     ![Nieuwe functie gast gebruiker in Azure Portal](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -71,13 +71,13 @@ Zie [Azure Active Directory uitnodiging voor B2B-samen werking](../active-direct
 
 In azure RBAC wijst u een rol toe om toegang te verlenen. Als u een roltoewijzing wilt toevoegen voor een gast gebruiker, voert u [dezelfde stappen uit](role-assignments-portal.md#add-a-role-assignment) als voor een gebruiker, groep, Service-Principal of beheerde identiteit. Volg deze stappen om een roltoewijzing voor een gast gebruiker in verschillende bereiken toe te voegen.
 
-1. Klik in de Azure Portal op **alle services**.
+1. Klik in Azure Portal op **Alle services**.
 
 1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
 
 1. Klik op de specifieke resource.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
     De volgende scherm afbeelding toont een voor beeld van de Blade toegangs beheer (IAM) voor een resource groep. Als u hier toegangscontrole wijzigingen aanbrengt, zijn deze alleen van toepassing op de resource groep.
 
@@ -85,7 +85,7 @@ In azure RBAC wijst u een rol toe om toegang te verlenen. Als u een roltoewijzin
 
 1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
 
-1. Klik op**toewijzing van roltoewijzing** toevoegen om het deel venster roltoewijzing toevoegen te openen. **Add** > 
+1. Klik op **Toevoegen** > **Roltoewijzing toevoegen** om het deelvenster Roltoewijzing toevoegen te openen.
 
     Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie Roltoewijzing toevoegen uitgeschakeld.
 
@@ -107,17 +107,17 @@ Als u een roltoewijzing wilt toevoegen voor een gast gebruiker, voert u [dezelfd
 
 Als de gast gebruiker zich nog niet in uw directory bevindt, kunt u de gebruiker rechtstreeks uitnodigen vanuit het deel venster roltoewijzing toevoegen.
 
-1. Klik in de Azure Portal op **alle services**.
+1. Klik in Azure Portal op **Alle services**.
 
 1.  Selecteer de set resources waarop de toegang van toepassing is, ook wel bekend als het bereik. U kunt bijvoorbeeld **beheer groepen**, **abonnementen**, **resource groepen**of een resource selecteren.
 
 1. Klik op de specifieke resource.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op **het tabblad roltoewijzingen om** alle roltoewijzingen in dit bereik weer te geven.
 
-1. Klik op**toewijzing van roltoewijzing** toevoegen om het deel venster roltoewijzing toevoegen te openen. **Add** > 
+1. Klik op **Toevoegen** > **Roltoewijzing toevoegen** om het deelvenster Roltoewijzing toevoegen te openen.
 
     ![Menu Toevoegen](./media/role-assignments-external-users/add-menu.png)
 
@@ -161,11 +161,11 @@ Voordat u een gast gebruiker uit een Directory verwijdert, moet u eerst eventuel
 
 1. Klik op **Ja** om te bevestigen dat u de roltoewijzing inderdaad wilt verwijderen.
 
-1. Klik in de linker navigatie balk op **Azure Active Directory** > **gebruikers**.
+1. Klik in de linker navigatie balk op **Azure Active Directory**  >  **gebruikers**.
 
 1. Klik op de gast gebruiker die u wilt verwijderen.
 
-1. Klik op **verwijderen**.
+1. Klik op **Verwijderen**.
 
    ![Gast gebruiker verwijderen](./media/role-assignments-external-users/delete-guest-user.png)
 

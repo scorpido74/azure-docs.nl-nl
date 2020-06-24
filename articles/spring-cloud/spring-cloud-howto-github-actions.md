@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: e17fa3e99de9f429fa279ba2e5413b60e9084de8
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484307"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125699"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure lente Cloud CI/CD met GitHub-acties
 
@@ -21,7 +21,7 @@ GitHub-acties ondersteunen een geautomatiseerde werk stroom voor de levens cyclu
 In dit voor beeld is de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)vereist.
 
 ## <a name="set-up-github-repository-and-authenticate"></a>GitHub-opslag plaats en verificatie instellen
-U hebt een Azure-Service Principle-referentie nodig om de Azure-aanmeldings actie te autoriseren. Als u een Azure-referentie wilt ophalen, voert u de volgende opdrachten uit op de lokale computer:
+U hebt een Azure-Service-Principal-referentie nodig om de Azure-aanmeldings actie te autoriseren. Als u een Azure-referentie wilt ophalen, voert u de volgende opdrachten uit op de lokale computer:
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 

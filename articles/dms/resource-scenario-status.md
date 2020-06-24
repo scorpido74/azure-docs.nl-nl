@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 84026a5a9ba63bf008eeb25df3d0c42cbd558fa9
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254917"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118777"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status van migratie scenario's die door Azure Database Migration Service worden ondersteund
 
@@ -48,18 +48,20 @@ De volgende tabel toont Azure Database Migration Service ondersteuning voor offl
 | Doel  | Bron | Ondersteuning | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL Database** | SQL Server | ✔ | Algemene beschikbaarheid |
-|   | RDS SQL |  |  |
-|   | Oracle |  |  |
+|   | RDS SQL | X |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | Algemene beschikbaarheid |
-|   | RDS SQL |  |  |
-|   | Oracle |  |   |
+|   | RDS SQL | X |  |
+|   | Oracle | X |   |
 | **Azure SQL-VM** | SQL Server | ✔ | Algemene beschikbaarheid |
-|   | Oracle |   |   |
+|   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Algemene beschikbaarheid |
-| **Azure DB voor MySQL** | MySQL |   |   |
-|   | RDS MySQL |   |   |
-| **Azure DB voor PostgreSQL** | PostgreSQL |  |
-|  | RDS PostgreSQL |   |   |
+| **Azure DB voor MySQL** | MySQL | X |   |
+|   | RDS MySQL | X |   |
+| **Azure DB voor PostgreSQL-één server** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
+| **Azure DB voor PostgreSQL-grootschalige (Citus)** | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>Ondersteuning voor migratie van online (continue synchronisatie)
 
@@ -69,18 +71,20 @@ De volgende tabel toont Azure Database Migration Service ondersteuning voor onli
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL Database** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL | ✔ | Algemene beschikbaarheid |
-|   | Oracle |  |  |
+|   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL | ✔ | Algemene beschikbaarheid |
 |   | Oracle | ✔ | Persoonlijke preview |
-| **Azure SQL-VM** | SQL Server |   |   |
-|   | Oracle  |  |  |
+| **Azure SQL-VM** | SQL Server | X |   |
+|   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Algemene beschikbaarheid |
 | **Azure DB voor MySQL** | MySQL | ✔ | Algemene beschikbaarheid |
 |   | RDS MySQL | ✔ | Algemene beschikbaarheid |
-| **Azure DB voor PostgreSQL** | PostgreSQL | ✔ | Algemene beschikbaarheid |
+| **Azure DB voor PostgreSQL-één server** | PostgreSQL | ✔ | Algemene beschikbaarheid |
 |   | RDS PostgreSQL | ✔ | Algemene beschikbaarheid |
 |   | Oracle | ✔ | Open bare preview |
+| **Azure DB voor PostgreSQL-grootschalige (Citus)** | PostgreSQL | ✔ | Algemene beschikbaarheid |
+|   | RDS PostgreSQL | ✔ | Algemene beschikbaarheid |
 
 ## <a name="next-steps"></a>Volgende stappen
 

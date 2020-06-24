@@ -3,17 +3,17 @@ title: Pakket vereisten in Azure Maps Maker tekenen
 description: Meer informatie over de vereisten voor het teken pakket voor het converteren van uw ontwerp bestanden voor de locatie om gegevens toe te wijzen met behulp van de Azure Maps conversie service
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/09/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660614"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791568"
 ---
 # <a name="drawing-package-requirements"></a>Vereisten voor tekenpakketten
 
@@ -29,7 +29,7 @@ De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conve
 
 Woorden lijst met termen die in dit document worden gebruikt.
 
-| Term  | Definitie |
+| Termijn  | Definitie |
 |:-------|:------------|
 | Laag | Een AutoCAD DWG-laag.|
 | Niveau | Een gebied van een gebouw bij een ingestelde uitbrei ding. Bijvoorbeeld de basis van een gebouw. |
@@ -93,7 +93,7 @@ In de volgende secties worden de vereisten voor elke laag gedetailleerd beschrev
 
 Het DWG-bestand voor elk niveau moet een laag bevatten om de omtrek van dat niveau te definiëren. Deze laag wordt aangeduid als de buitenste laag. Als een faciliteit bijvoorbeeld twee niveaus bevat, moet deze twee DWG-bestanden hebben, met een buitenste laag voor elk bestand.
 
-Nu ziet u hoeveel entiteits tekeningen zich in de buiten-laag bevinden, de [resulterende faciliteit gegevensset](tutorial-creator-indoor-maps.md#create-a-feature-stateset) bevat slechts **één** niveau functie voor elk DWG-bestand. En verder:
+Nu ziet u hoeveel entiteits tekeningen zich in de buiten-laag bevinden, de [resulterende faciliteit gegevensset](tutorial-creator-indoor-maps.md#create-a-feature-stateset) bevat slechts **één** niveau functie voor elk DWG-bestand. Aanvullend:
 
 * Buitens moeten worden getekend als veelhoek, poly lijn (gesloten), cirkel.
 
@@ -169,12 +169,13 @@ Een voor beeld van de laag Zonelabel kan worden gezien als de laag ZONELABELS in
 
 De map zip moet een manifest bestand op het hoofd niveau van de map bevatten en het bestand moet de naam **manifest.jsop**hebben. Hierin worden de DWG-bestanden beschreven zodat de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion) de inhoud kan parseren. Alleen de bestanden die door het manifest worden geïdentificeerd, worden opgenomen in de opname. Bestanden die zich in de map zip bevinden, maar niet op de juiste manier worden vermeld in het manifest, worden genegeerd.
 
-De bestands paden in het **buildingLevels** -object van het manifest bestand moeten relatief zijn ten opzichte van de hoofdmap van de map zip. De naam van het DWG-bestand moet exact overeenkomen met de naam van het niveau van de faciliteit. Zo zou een DWG-bestand voor het niveau ' Basement ' bijvoorbeeld ' basement. DWG ' zijn. Een DWG-bestand voor niveau 2 krijgt de naam level_2. DWG. Gebruik een onderstrepings teken als de naam van uw niveau een spatie heeft. 
+De bestands paden in het **buildingLevels** -object van het manifest bestand moeten relatief zijn ten opzichte van de hoofdmap van de map zip. De naam van het DWG-bestand moet exact overeenkomen met de naam van het niveau van de faciliteit. Zo zou een DWG-bestand voor het niveau ' Basement ' bijvoorbeeld ' basement. DWG ' zijn. Een DWG-bestand voor niveau 2 krijgt de naam level_2. DWG. Gebruik een onderstrepings teken als de naam van uw niveau een spatie heeft.
 
 Hoewel er vereisten gelden wanneer u de manifest-objecten gebruikt, zijn niet alle objecten vereist. In de volgende tabel ziet u de vereiste en optionele objecten voor versie 1,1 van de [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conversion).
 
 | Object | Vereist | Beschrijving |
 | :----- | :------- | :------- |
+| versie | true |Schema versie van manifest. Op dit moment wordt alleen versie 1,1 ondersteund.|
 | directoryInfo | true | Geeft een overzicht van de geografische locatie-en contact gegevens. Het kan ook worden gebruikt voor een overzicht van de geografische en contact gegevens van een inzittende. |
 | buildingLevels | true | Hiermee geeft u de niveaus van de gebouwen en de bestanden die het ontwerp van de niveaus bevatten. |
 | georeferentie | true | Bevat numerieke geografische gegevens voor de faciliteit tekening. |
@@ -211,7 +212,7 @@ Het `buildingLevels` object bevat een JSON-matrix met de niveaus van gebouwen.
 |-----------|------|----------|-------------|
 |levelName    |tekenreeks    |true |    Beschrijvende niveau naam. Bijvoorbeeld: Floor 1, lobby, Blue parkeren, Basement, enzovoort.|
 |rang telwoord | geheel getal |    true | Rang nummer wordt gebruikt om de verticale volg orde van niveaus te bepalen. Elke faciliteit moet een niveau hebben met een rang telwoord van 0. |
-|heightAboveFacilityAnchor | numeriek |    false |    Niveau hoogte boven de grond vloer in meters. |
+|heightAboveFacilityAnchor | numeriek | false |    Niveau hoogte boven het anker in meters. |
 | verticalExtent | numeriek | false | De vloer tot de plafond hoogte (breedte) van het niveau in meters. |
 |bestandsnaam |    tekenreeks |    true |    Bestandssysteempad naar het bestands systeem van de CAD-tekening voor een gebouw niveau. Deze moet relatief zijn ten opzichte van de hoofdmap van het zip-bestand van het gebouw. |
 
@@ -253,7 +254,7 @@ Het `unitProperties` object bevat een JSON-matrix met de eigenschappen van de ee
 |verticalPenetrationDirection|    tekenreeks|    false    |Als `verticalPenetrationCategory` is gedefinieerd, definieert u eventueel de geldige reis richting. De toegestane waarden zijn `lowToHigh` , `highToLow` , en `both` `closed` . De standaard waarde is `both` .|
 | niet-openbaar | booleaans | false | Hiermee wordt aangegeven of de eenheid open is voor het publiek. |
 | isRoutable | booleaans | false | Als deze instelling `false` is ingesteld op, kan eenheid niet worden genavigeerd naar of via. De standaard waarde is `true` . |
-| isOpenArea | booleaans | false | Hiermee kan navigatie agent de eenheid invoeren zonder dat er een openings koppeling met de eenheid nodig is. Deze waarde is standaard ingesteld op `true` tenzij de eenheid een opening heeft. |
+| isOpenArea | booleaans | false | Hiermee kan de navigatie agent de eenheid invoeren zonder dat er een openings koppeling met de eenheid nodig is. Deze waarde is standaard ingesteld op `true` voor eenheden zonder openingen. `false` voor eenheden met openingen.  Hand matig `isOpenArea` instellen `false` op een eenheid zonder openingen resulteert in een waarschuwing. Dit komt doordat de resulterende eenheid niet bereikbaar is voor een navigatie agent.|
 
 ### <a name="the-zoneproperties-object"></a>Het zoneProperties-object
 
@@ -265,6 +266,7 @@ Het `zoneProperties` object bevat een JSON-matrix met zone-eigenschappen.
 |categoryName|    tekenreeks|    false    |Categorie naam. Raadpleeg de [categorie](https://aka.ms/pa-indoor-spacecategories)voor een volledige lijst met categorieën. |
 |zoneNameAlt|    tekenreeks|    false    |Alternatieve naam van de zone.  |
 |zoneNameSubtitle|    tekenreeks |    false    |Ondertitel van de zone. |
+|zoneSetId|    tekenreeks |    false    | Stel ID in om een relatie tussen meerdere zones tot stand te brengen, zodat deze kunnen worden opgevraagd of als groep kan worden geselecteerd. Bijvoorbeeld zones die meerdere niveaus beslaan. |
 
 ### <a name="sample-drawing-package-manifest"></a>Voor beeld van teken pakket manifest
 

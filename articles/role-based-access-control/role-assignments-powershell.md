@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 46aea9ab113a0c75ed24497ee39793d08c4f7165
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735654"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790888"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell
 
@@ -31,12 +31,12 @@ ms.locfileid: "82735654"
 
 Om roltoewijzingen toe te voegen of te verwijderen, hebt u het volgende nodig:
 
-- `Microsoft.Authorization/roleAssignments/write`en `Microsoft.Authorization/roleAssignments/delete` machtigingen, zoals beheerder of [eigenaar](built-in-roles.md#owner) van [gebruikers toegang](built-in-roles.md#user-access-administrator)
+- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) of [Eigenaar](built-in-roles.md#owner)
 - [Power shell in azure Cloud shell](/azure/cloud-shell/overview) of [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="get-object-ids"></a>Object-Id's ophalen
 
-Als u roltoewijzingen wilt toevoegen of verwijderen, moet u mogelijk de unieke ID van een object opgeven. De ID heeft de volgende indeling `11111111-1111-1111-1111-111111111111`:. U kunt de ID ophalen met behulp van de Azure Portal of Azure PowerShell.
+Als u roltoewijzingen wilt toevoegen of verwijderen, moet u mogelijk de unieke ID van een object opgeven. De ID heeft de volgende indeling: `11111111-1111-1111-1111-111111111111` . U kunt de ID ophalen met behulp van de Azure Portal of Azure PowerShell.
 
 ### <a name="user"></a>Gebruiker
 
@@ -102,7 +102,7 @@ Er zijn een aantal keren dat een rolnaam kan worden gewijzigd, bijvoorbeeld:
 
 > [!IMPORTANT]
 > Een preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Zelfs als een rol een andere naam heeft gekregen, wordt de rol-ID niet gewijzigd. Als u scripts of automatisering gebruikt om roltoewijzingen te maken, is het een best practice om de unieke rol-ID te gebruiken in plaats van de rolnaam. Als de naam van een rol wordt gewijzigd, zijn uw scripts waarschijnlijker goed.
 
@@ -112,7 +112,7 @@ Als u een roltoewijzing wilt toevoegen met behulp van de unieke rol-ID in plaats
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-In het volgende voor beeld wordt de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toegewezen aan *\@Alain example.com* gebruiker op het *Pharma-Sales-* resource groeps bereik. Als u de unieke rol-ID wilt ophalen, kunt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) gebruiken of de [ingebouwde rollen van Azure](built-in-roles.md)bekijken.
+In het volgende voor beeld wordt de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toegewezen aan *Alain \@ example.com* gebruiker op het *Pharma-Sales-* resource groeps bereik. Als u de unieke rol-ID wilt ophalen, kunt u [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) gebruiken of de [ingebouwde rollen van Azure](built-in-roles.md)bekijken.
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -207,7 +207,7 @@ CanDelegate        : False
 
 In azure RBAC verwijdert u een roltoewijzing met behulp van [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment)om de toegang te verwijderen.
 
-In het volgende voor beeld wordt de toewijzing van de rol *Inzender voor virtuele machines* uit de *Alain\@example.com* -gebruiker voor de resource groep *Pharma-Sales* verwijderd:
+In het volgende voor beeld wordt de toewijzing van de rol *Inzender voor virtuele machines* uit de *Alain \@ example.com* -gebruiker voor de resource groep *Pharma-Sales* verwijderd:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales

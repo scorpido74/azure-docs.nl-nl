@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 04de89624dd0e6857e96327bb408cf8700a1f6a2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 9fba2a898809c7c4062e1c0115ffce60f5becfdf
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848877"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213806"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -26,7 +26,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
 3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Dynamics 365 Business Central**.
 
-    ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-bc.png)
+    ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
 > Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
@@ -60,7 +60,7 @@ Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te begin
 
 #### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
 
-Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (te beginnen met *http* of *https*), zodat deze een proef versie kan krijgen.  Bijvoorbeeld `https://contoso.com/trial/my-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
+Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (beginnend met `http` of `https` ), waar een proef versie kan worden verkregen.  Bijvoorbeeld `https://contoso.com/trial/my-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
 
 > [!NOTE]
 > De tokens die uw toepassing via uw proef koppeling ontvangt, kunnen alleen worden gebruikt voor het verkrijgen van gebruikers gegevens via Azure Active Directory (Azure AD) om het maken van accounts in uw app te automatiseren. Micro soft-accounts worden niet ondersteund voor verificatie met behulp van dit token.
@@ -131,6 +131,23 @@ Hier definieert u Details voor uw aanbieding, zoals naam, beschrijving en instal
 > [!NOTE]
 > U kunt de details van de aanbiedings vermelding alleen in één taal opgeven. Het is niet nodig om in het Engels te zijn, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook toegestaan een URL voor de *Help-koppeling* op te geven om inhoud te bieden in een andere taal dan die in de inhoud van de aanbieding.
 
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
+
+:::image type="content" source="media/example-d365-business-central.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Logo
+2. Producten
+3. Categorieën
+4. Ondersteunings adres (koppeling)
+5. Gebruiksvoorwaarden
+6. Privacybeleid
+7. Naam van aanbieding
+8. Samenvatting
+9. Beschrijving
+10. Scherm afbeeldingen/Video's
+
 ### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
@@ -193,7 +210,7 @@ Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. Er zijn te
 
 #### <a name="videos"></a>Video's
 
-U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels)
+U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels).
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
@@ -358,7 +375,7 @@ Met de optie **Marketplace-vermelding** op het tabblad **test station** kunt u D
 - **Video's** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, met inbegrip van de manier waarop u de functies van uw aanbieding kunt gebruiken en inzicht kunt krijgen in de voor delen.
   - **Naam** (vereist)
   - **URL (alleen YouTube of Vimeo)** (vereist)
-  - **Miniatuur** afbeelding (bestand moet de PNG-indeling hebben en 533 x 324 px)
+  - **Miniatuur** afbeelding (het bestand moet een PNG-indeling hebben en 533 x 324 pixels)
 
 Selecteer **concept opslaan** voordat u doorgaat.
 

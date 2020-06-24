@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b190f2392fae11b074b2ee90a1c89f272b88818d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298207"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790294"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -42,7 +42,7 @@ De optie voor het publiceren van Transact wordt momenteel ondersteund voor de vo
 
 ### <a name="billing-infrastructure-costs"></a>Kosten van facturerings infrastructuur
 
-Voor **virtual machines-en Azure-toepassingen**worden de gebruiks kosten voor Azure-infra structuur in rekening gebracht voor het Azure-abonnement van de klant. De kosten voor het gebruik van de infra structuur zijn geprijsd en worden afzonderlijk van de licentie kosten van de software provider weer gegeven op de factuur van de klant.
+Voor **virtuele machines** en **Azure-toepassingen**worden Azure-infrastructuur gebruiks kosten in rekening gebracht voor het Azure-abonnement van de klant. De kosten voor het gebruik van de infra structuur zijn geprijsd en worden afzonderlijk van de licentie kosten van de software provider weer gegeven op de factuur van de klant.
 
 Voor **SaaS-apps**moet u de uitgever de Azure-infrastructuur gebruiks kosten en software licentie kosten account als één kosten item.  Het wordt weer gegeven als een vast bedrag voor de klant. Het gebruik van de Azure-infra structuur wordt rechtstreeks beheerd en gefactureerd met de partner. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers willen doorgaans de gebruiks kosten voor Azure-infra structuur bundelen in hun prijzen voor software licenties. Software licentie kosten worden niet gemeten of verbruikt.
 
@@ -51,8 +51,8 @@ Voor **SaaS-apps**moet u de uitgever de Azure-infrastructuur gebruiks kosten en 
 Afhankelijk van de gebruikte transactie optie zijn de kosten voor software licenties als volgt:
 
 - **Gratis** : er worden geen kosten in rekening gebracht voor software licenties.
-- **Bring your own License** (BYOL): alle toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
-- **Betalen** per gebruik: software licentie kosten worden weer gegeven als een vCPU-prijs tarief, gebaseerd op de gebruikte Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
+- **Bring your own License** (BYOL): alle toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. Dit geldt alleen voor virtuele machines en Azure-toepassingen.
+- **Betalen** per gebruik: software licentie kosten worden weer gegeven als een vCPU-prijs tarief, gebaseerd op de gebruikte Azure-infra structuur. Dit geldt alleen voor virtuele machines en Azure-toepassingen.
 - **Abonnements prijzen** : software licentie kosten worden weer gegeven als maandelijks of jaarlijks, terugkerend bedrag in rekening gebracht als een vast tarief of per seat. Dit geldt alleen voor SaaS-apps (maandelijks of jaarlijks) en door Azure toepassingen beheerde apps (maandelijks).
 - **Gratis software-proef versie** : er worden gedurende 30 of 90 dagen geen kosten in rekening gebracht voor software licenties.
 
@@ -78,7 +78,7 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Pay-As-You-Go** 
+**Betalen per gebruik** 
 
 Betalen per gebruik heeft de volgende kosten structuur:
 
@@ -136,7 +136,7 @@ In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt
 |Micro soft betaalt u 80% van uw licentie kosten <br> \*Micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \*$90,00 per maand    |
 |Micro soft bewaart 20% van de licentie kosten <br> \*Micro soft houdt 10% van de licentie kosten voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \*$10,00     |
 
-Voor bepaalde SaaS-producten die u op onze commerciële Marketplace publiceert, verlaagt micro soft de **service kosten voor Marketplace** van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Als u wilt dat uw aanbieding in aanmerking komt, moet u ten minste één van uw aanbiedingen door micro soft worden aangewezen als een voor bereiding op het IP-adres of door de IP-mede-verkoop prioriteit. Om dit gereduceerde service-tarief voor de Marketplace voor de maand te ontvangen, moet aan de voor waarden worden voldaan ten minste vijf werk dagen vóór het einde van de vorige kalender maand. Lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via de commerciële Marketplace. Dit verlaagde tarief is beschikbaar voor gekwalificeerde aanbiedingen, met licentie kosten die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020. Na deze periode keert de kosten terug naar de normale hoeveelheid.
+Voor bepaalde SaaS-producten die u op commerciële Marketplace publiceert, verlaagt micro soft de **service kosten voor Marketplace** van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Als u wilt dat uw aanbieding in aanmerking komt, moet u ten minste één van uw aanbiedingen door micro soft worden aangewezen als een voor bereiding op het IP-adres of door de IP-mede-verkoop prioriteit. Om dit gereduceerde service-tarief voor de Marketplace voor de maand te ontvangen, moet aan de voor waarden worden voldaan ten minste vijf werk dagen vóór het einde van de vorige kalender maand. Lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via de commerciële Marketplace. Dit verlaagde tarief is beschikbaar voor gekwalificeerde aanbiedingen, met licentie kosten die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020. Na deze periode keert de kosten terug naar de normale hoeveelheid.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Facturering, betaling, facturering en verzamelingen van klanten
 
@@ -183,7 +183,10 @@ Zie [uw commerciële Marketplace-account beheren in Partner Center](https://docs
 De optie voor het publiceren van Transact is alleen beschikbaar voor gebruik met de volgende typen Marketplace-aanbiedingen:
 
 - **Virtuele machine** : u kunt kiezen uit gratis, uw eigen licentie of betalen per gebruik-prijs modellen en aanwezig als sku's die zijn gedefinieerd op het niveau van de aanbieding. Op de Azure-factuur van de klant presenteert micro soft de licentie kosten van de uitgever software afzonderlijk van de onderliggende kosten voor Azure-infra structuur. Kosten voor Azure-infra structuur worden aangestuurd door het gebruik van de uitgever software.
-- **Azure-toepassingen: oplossings sjabloon of beheerde app** : moet een of meer virtuele machines inrichten en de som van de prijzen van de virtuele machine ophalen. Voor beheerde apps in één abonnement kan een maandelijks abonnement met een vaste frequentie worden geselecteerd als het prijs model in plaats van de prijzen van de virtuele machine. In sommige gevallen worden gebruiks kosten voor Azure-infra structuur door gegeven aan de klant, onafhankelijk van software licentie kosten, maar op hetzelfde factuur overzicht. Als u echter een beheerde app-aanbieding voor ISV-infrastructuur kosten configureert, worden de Azure-resources gefactureerd aan de uitgever en ontvangt de klant een vast bedrag dat de kosten van infra structuur, software licenties en beheer Services omvat.
+
+- **Azure-toepassing: oplossings sjabloon of beheerde app** : moet een of meer virtuele machines inrichten en de som van de prijzen van de virtuele machine ophalen. Voor beheerde apps in één abonnement kan een maandelijks abonnement met een vaste frequentie worden geselecteerd als het prijs model in plaats van de prijzen van de virtuele machine. In sommige gevallen worden gebruiks kosten voor Azure-infra structuur door gegeven aan de klant, onafhankelijk van software licentie kosten, maar op hetzelfde factuur overzicht. Als u echter een beheerde app-aanbieding voor ISV-infrastructuur kosten configureert, worden de Azure-resources gefactureerd aan de uitgever en ontvangt de klant een vast bedrag dat de kosten van infra structuur, software licenties en beheer Services omvat.
+
+- **SaaS-toepassing** : moet een multi tenant oplossing zijn, gebruik [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) voor verificatie en kan worden geïntegreerd met de [SaaS-fulfillment-api's](partner-center-portal/pc-saas-fulfillment-api-v2.md). Het gebruik van Azure-infra structuur wordt beheerd en rechtstreeks aan u (de partner) gefactureerd. u moet dus rekening doen met de gebruiks kosten voor Azure-infra structuur en software licentie kosten als één kosten item. Zie [een nieuwe SaaS-aanbieding maken in de commerciële Marketplace](partner-center-portal/create-new-saas-offer.md)voor gedetailleerde richt lijnen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

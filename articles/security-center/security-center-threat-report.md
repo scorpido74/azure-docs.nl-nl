@@ -1,6 +1,6 @@
 ---
 title: Bedreigingsinformatierapport Azure Security Center | Microsoft Docs
-description: In dit document wordt uitgelegd hoe u bedreigingsinformatierapporten in Azure Security Center gebruikt tijdens een onderzoek om meer informatie over een beveiligingswaarschuwing te krijgen.
+description: Deze pagina helpt u bij het gebruik van Azure Security Center Threat Intelligence-rapporten tijdens een onderzoek naar meer informatie over beveiligings waarschuwingen
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,22 +11,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4fdbab4a69fac1376779f37d5fa69fef587bf52
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921246"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888233"
 ---
-# <a name="azure-security-center-threat-intelligence-report"></a>Bedreigingsinformatierapport in Azure Security Center
-In dit document wordt uitgelegd hoe bedreigingsinformatierapporten in Azure Security Center u kunnen helpen meer te weten te komen over een bedreiging die een beveiligingswaarschuwing heeft gegenereerd.
+# <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center Threat Intelligence-rapport
+
+Op deze pagina wordt uitgelegd hoe Azure Security Center Threat Intelligence-rapporten u kunnen helpen om meer te weten te komen over een bedreiging waarmee een beveiligings waarschuwing wordt geactiveerd.
+
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Wat is een bedreigingsinformatierapport?
+
 Security Center bedreigings beveiliging werkt door beveiligings gegevens van uw Azure-resources, het netwerk en verbonden partner oplossingen te bewaken. Deze informatie wordt door Security Center geanalyseerd, waarbij vaak informatie uit meerdere bronnen wordt samengebracht om bedreigingen te analyseren. Zie [How Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md#detect-threats)voor meer informatie.
 
-Wanneer Security Center een bedreiging detecteert, produceert het een [beveiligingswaarschuwing](security-center-managing-and-responding-alerts.md) met gedetailleerde informatie over een specifieke gebeurtenis en suggesties om het op te lossen. Ter ondersteuning van incident response teams, het onderzoeken en oplossen van bedreigingen, Security Center bevat een Threat Intelligence-rapport dat informatie bevat over de gedetecteerde bedreiging, inclusief informatie zoals:
+Wanneer Security Center een bedreiging identificeert, wordt er een [beveiligings waarschuwing](security-center-managing-and-responding-alerts.md)geactiveerd, die gedetailleerde informatie bevat over de gebeurtenis, inclusief suggesties voor herstel. Security Center biedt bedreigingen Intelligence-rapporten die informatie over gedetecteerde bedreigingen bevatten om te helpen incidenten om te voor komen dat antwoord teams problemen onderzoeken en oplossen. Het rapport bevat informatie zoals:
 
 * De identiteit of associaties van de aanvaller (indien beschikbaar)
 * De doelstellingen van de aanvaller
@@ -38,36 +41,39 @@ Wanneer Security Center een bedreiging detecteert, produceert het een [beveiligi
 
 > [!NOTE]
 > De hoeveelheid informatie in het rapport kan variëren; de gedetailleerdheid van de informatie is afhankelijk van de activiteit en de gangbaarheid van de malware.
->
->
 
 Security Center heeft drie soorten bedreigingsrapporten, afhankelijk van het soort aanval. De beschikbare rapporten zijn:
 
-* **Activiteitsgroeprapport**: biedt diepgaande informatie over aanvallers en hun doelstellingen en tactieken.
+* **Rapport activiteiten groep**: biedt uitgebreide Dives in aanvallers, hun doel stellingen en tactieken.
 * **Campagnerapport**: gericht op details van een specifieke aanvalscampagne.
 * **Bedreigingsoverzichtsrapport**: dekt alle onderwerpen in de voorgaande twee rapporten.
 
-Dit type informatie is nuttig tijdens het respons proces van een incident, waarbij een voortdurend onderzoek wordt gedaan om de bron van de aanval, de motivatie van de aanvaller en wat te doen om het probleem te verhelpen.
+Dit type informatie is nuttig tijdens het respons proces van een incident, waarbij een voortdurend onderzoek wordt gedaan om de bron van de aanval, de motivatie van de aanvaller en wat te doen om het probleem in de toekomst te verhelpen.
+
+
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>Hoe open ik het bedreigingsinformatierapport?
-U kunt uw huidige waarschuwingen controleren met de tegel **Beveiligingswaarschuwingen**. Open de Azure Portal en voer de volgende stappen uit om meer informatie over elke waarschuwing weer te geven:
 
-1. Op het Security Center-dashboard ziet u de tegel **Beveiligingswaarschuwingen**.
-2. Klik op de tegel om de blade **Beveiligingswaarschuwingen** te openen, die meer informatie over de waarschuwingen bevat. Klik vervolgens in de beveiligingswaarschuwing waarover u meer te weten wilt komen.
+1. Open de pagina **beveiligings waarschuwingen** vanuit de zijbalk van Security Center.
+1. Selecteer een waarschuwing. 
+    De pagina waarschuwings Details wordt geopend met meer informatie over de waarschuwing. Hieronder vindt u de informatie pagina met **indica toren** voor waarschuwingen gedetecteerd.
 
-    ![Beveiligingswaarschuwingen](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. In dit geval toont de Blade **verdacht proces** de details over de waarschuwing, zoals wordt weer gegeven in de afbeelding hieronder:
+    [![Pagina met gedetecteerde waarschuwings Details van Ransomware-indica toren](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 
-    ![Details van beveiligingswaarschuwing](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. De hoeveelheid beschikbare informatie voor een beveiligingswaarschuwing is afhankelijk van het type waarschuwing. In het veld **rapporten** hebt u een koppeling naar het rapport Threat Intelligence. Als u hierop klikt, wordt er een nieuw browservenster geopend met een PDF-bestand.
+1. Selecteer de koppeling naar het rapport en een PDF-bestand wordt geopend in de standaard browser.
 
-   ![Opslagselectie](./media/security-center-threat-report/security-center-threat-report-fig3.png)
+    [![Pagina waarschuwing Details mogelijk onveilige actie](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
 
-Hier kunt u de PDF voor het rapport downloaden en meer lezen over het gedetecteerde beveiligingsprobleem, waarna u op basis van de informatie actie kunt ondernemen.
+    U kunt het PDF-rapport eventueel downloaden. 
 
-## <a name="see-also"></a>Zie ook
-In dit document hebt u geleerd hoe beveiligingsinformatierapporten van Azure Security Center u kunnen helpen tijdens een onderzoek naar beveiligingswaarschuwingen. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
+    >[!TIP]
+    > De hoeveelheid beschikbare informatie voor een beveiligingswaarschuwing is afhankelijk van het type waarschuwing.
 
-* [Azure Security Center plannings-en bedienings handleiding](security-center-planning-and-operations-guide.md). Leer de ontwerpoverwegingen kennen en leer deze in te plannen als u de overstap naar Azure Security Center wilt maken.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Op deze pagina wordt uitgelegd hoe u bedreigings informatie rapporten opent wanneer u beveiligings waarschuwingen onderzoekt. Zie de volgende pagina's voor verwante informatie:
+
 * [Beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md). Informatie over het beheren van en reageren op beveiligingswaarschuwingen.
-* [Beveiligingsincidenten afhandelen in Azure Security Center](security-center-incident.md)
+* [Beveiligings incidenten afhandelen in Azure Security Center](security-center-incident.md)

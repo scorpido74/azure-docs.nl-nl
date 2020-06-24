@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260161"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099064"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk limieten
 
@@ -56,6 +56,7 @@ Voor de meest recente informatie over Azure Storage-service limieten en aanbevol
     - Er kan slechts één beheerde schijf met een bepaalde naam in een resourcegroep aanwezig zijn voor alle vooraf gemaakte mappen en voor de hele Data Box Disk. Dit betekent dat de VHD's die naar de vooraf gemaakte mappen zijn geüpload, unieke namen moeten hebben. Zorg ervoor dat de opgegeven naam niet overeenkomt met een bestaande beheerde schijf in een resourcegroep. Als VHD's dezelfde naam hebben, wordt er slechts één VHD geconverteerd naar een beheerde schijf met die naam. De overige VHD's worden als pagina-blobs geüpload in het faseringsopslagaccount.
     - Kopieer de VHD's altijd naar een van de vooraf gemaakte mappen. Als u de VHD's buiten deze mappen kopieert of kopieert naar een map die u zelf hebt gemaakt, worden de VHD's, en niet de beheerde schijven, naar een Azure Storage-account als pagina-blobs geüpload.
     - Alleen de vaste VHD's kunnen worden geüpload om beheerde schijven te maken. Dynamische VHD's, differentiërende VHD's of VHDX-bestanden worden niet ondersteund.
+    - Niet-VHD-bestanden die zijn gekopieerd naar de voorgemaakte mappen voor beheerde schijven, worden niet geconverteerd naar een beheerde schijf.
 
 ## <a name="azure-storage-account-size-limits"></a>Maximale grootte van Azure Storage-account
 
@@ -83,14 +84,14 @@ Dit zijn de groottes van de Azure-objecten die kunnen worden geschreven. Zorg er
 | Entiteit                                       | Conventies                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Container namen voor blok-Blob en pagina-BLOB <br> Bestands share namen voor Azure Files | Moet een geldige DNS-naam zijn van 3 tot 63 tekens lang zijn. <br>  Moet beginnen met een letter of cijfer. <br> Mag alleen kleine letters, cijfers en het koppel teken (-) bevatten. <br> Elk koppelteken (-) moet direct worden voorafgegaan en gevolgd door een letter of cijfer. <br> In namen worden geen opeenvolgende koppeltekens toegestaan. |
-| Map-en bestands namen voor Azure files     |<li> Case: behouden, hoofdletter gevoelig en mag niet langer zijn dan 255 tekens. </li><li> Kan niet eindigen met een slash (/). </li><li>Als dit wordt gegeven, wordt deze automatisch verwijderd. </li><li> De volgende tekens zijn niet toegestaan:<code>" \\ / : \| < > * ?</code></li><li> Gereserveerde tekens voor URL's moeten op de juiste wijze van een escape-teken zijn voorzien. </li><li> Ongeldige tekens voor URL-paden zijn niet toegestaan. Code punten zoals \\uE000 zijn geen geldige Unicode-tekens. Sommige ASCII-of Unicode-tekens, zoals Stuur codes (0x00 tot \\0x1F, u0081, enzovoort), zijn ook niet toegestaan. Zie RFC 2616, Section 2,2: Basic rules and RFC 3987 (Engelstalig) voor regels voor het Unicode-teken reeksen in HTTP/1.1. </li><li> De volgende bestands namen zijn niet toegestaan: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, punt teken (.) en twee punten (..).</li>|
+| Map-en bestands namen voor Azure files     |<li> Case: behouden, hoofdletter gevoelig en mag niet langer zijn dan 255 tekens. </li><li> Kan niet eindigen met een slash (/). </li><li>Als dit wordt gegeven, wordt deze automatisch verwijderd. </li><li> De volgende tekens zijn niet toegestaan:<code>" \\ / : \| < > * ?</code></li><li> Gereserveerde tekens voor URL's moeten op de juiste wijze van een escape-teken zijn voorzien. </li><li> Ongeldige tekens voor URL-paden zijn niet toegestaan. Code punten zoals \\ uE000 zijn geen geldige Unicode-tekens. Sommige ASCII-of Unicode-tekens, zoals Stuur codes (0x00 tot 0x1F, \\ u0081, enzovoort), zijn ook niet toegestaan. Zie RFC 2616, Section 2,2: Basic rules and RFC 3987 (Engelstalig) voor regels voor het Unicode-teken reeksen in HTTP/1.1. </li><li> De volgende bestands namen zijn niet toegestaan: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, punt teken (.) en twee punten (..).</li>|
 | Blobnamen voor blok-blob en pagina-blob      | Blobnamen zijn hoofdlettergevoelig en kunnen elke combinatie van tekens bevatten. <br> Een blobnaam moet 1 tot 1024 tekens bevatten. <br> Gereserveerde tekens voor URL's moeten op de juiste wijze van een escape-teken zijn voorzien. <br>Het aantal padsegmenten dat de blobnaam omvat, mag niet meer dan 254 zijn. Een padsegment is de tekenreeks tussen opeenvolgende scheidingstekens (bijvoorbeeld de slash '/') die overeenkomt met de naam van een virtuele map. |
 
 ## <a name="managed-disk-naming-conventions"></a>Naamgevings regels voor beheerde schijven
 
 | Entiteit | Conventies                                             |
 |-------------------|-----------------------------------------------------------|
-| Namen van beheerde schijven       | <li> De naam moet 1 tot 80 tekens lang zijn. </li><li> De naam moet beginnen met een letter of cijfer, eindigen met een letter, cijfer of onderstrepings teken. </li><li> De naam mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. </li><li>   De naam mag geen spaties of `/`bevatten.                                              |
+| Namen van beheerde schijven       | <li> De naam moet 1 tot 80 tekens lang zijn. </li><li> De naam moet beginnen met een letter of cijfer, eindigen met een letter, cijfer of onderstrepings teken. </li><li> De naam mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. </li><li>   De naam mag geen spaties of bevatten `/` .                                              |
 
 ## <a name="next-steps"></a>Volgende stappen
 

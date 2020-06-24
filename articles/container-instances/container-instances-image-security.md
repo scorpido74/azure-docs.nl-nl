@@ -1,15 +1,15 @@
 ---
-title: Beveiliging voor container instanties
+title: Beveiligings overwegingen voor container instanties
 description: Aanbevelingen voor het beveiligen van installatie kopieën en geheimen voor Azure Container Instances en algemene veiligheids overwegingen voor elk container platform
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457991"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907020"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Beveiligings overwegingen voor Azure Container Instances
 
@@ -18,6 +18,9 @@ In dit artikel worden beveiligings overwegingen geïntroduceerd voor het gebruik
 > [!div class="checklist"]
 > * **Beveiligings aanbevelingen** voor het beheren van installatie kopieën en geheimen voor Azure container instances
 > * **Overwegingen voor het container ecosysteem** gedurende de levens cyclus van de container, voor elk container platform
+
+Zie de [Azure-beveiligings basislijn voor container instances](security-baseline.md)voor uitgebreide aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
+
 
 ## <a name="security-recommendations-for-azure-container-instances"></a>Beveiligings aanbevelingen voor Azure Container Instances
 
@@ -140,6 +143,8 @@ Behoud een nauw keurige controle spoor van beheerders toegang tot uw container e
 * Resource logboeken voor [Azure container instances](container-instances-log-analytics.md) en [Azure container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Volgende stappen
+
+* Raadpleeg de [Azure Security Baseline voor container instances](security-baseline.md) voor uitgebreide aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
 * Meer informatie over het gebruik van [Azure Security Center](../security-center/container-security.md) voor realtime detectie van bedreigingen in uw container omgevingen.
 

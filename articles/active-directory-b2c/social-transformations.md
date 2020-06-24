@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183751"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203381"
 ---
 # <a name="social-accounts-claims-transformations"></a>Sociale accounts claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In Azure Active Directory B2C (Azure AD B2C) worden identiteiten van sociale accounts opgeslagen in `userIdentities` een kenmerk van een claim type **alternativeSecurityIdCollection** . Elk item in de **alternativeSecurityIdCollection** geeft de verlener (naam van de identiteits provider, zoals Facebook.com) en `issuerUserId`de, aan. Dit is een unieke gebruikers-id voor de verlener.
+In Azure Active Directory B2C (Azure AD B2C) worden identiteiten van sociale accounts opgeslagen in een `userIdentities` kenmerk van een claim type **alternativeSecurityIdCollection** . Elk item in de **alternativeSecurityIdCollection** geeft de verlener (naam van de identiteits provider, zoals Facebook.com) en de `issuerUserId` , aan. Dit is een unieke gebruikers-id voor de verlener.
 
-```JSON
+```json
 "userIdentities": [{
     "issuer": "google.com",
     "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"
@@ -41,15 +41,15 @@ In dit artikel vindt u voor beelden van het gebruik van de claim transformaties 
 
 Hiermee maakt u een JSON-weer gave van de eigenschap alternativeSecurityId van de gebruiker die kan worden gebruikt in de aanroepen van Azure Active Directory. Zie het [AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid) -schema voor meer informatie.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | sleutel | tekenreeks | Het claim type dat de unieke gebruikers-id specificeert die wordt gebruikt door de ID-provider voor sociale netwerken. |
 | Input claim | Identity provider | tekenreeks | Het claim type dat de naam van de ID-provider van de sociale account opgeeft, zoals facebook.com. |
 | Output claim | alternativeSecurityId | tekenreeks | Het claim type dat is geproduceerd nadat de ClaimsTransformation is aangeroepen. Bevat informatie over de identiteit van een gebruiker van een sociaal account. De **Uitgever** is de waarde van de `identityProvider` claim. De **issuerUserId** is de waarde van de `key` claim in Base64-indeling. |
 
-Gebruik deze claim transformatie om een `alternativeSecurityId` claim type te genereren. Dit wordt gebruikt door alle technische profielen van de sociale ID-provider `Facebook-OAUTH`, zoals. De volgende claims transformatie ontvangt de gebruikers-ID en de naam van de ID-provider. De uitvoer van dit technische profiel is een JSON-teken reeks indeling die kan worden gebruikt in azure AD Directory Services.
+Gebruik deze claim transformatie om een claim type te genereren `alternativeSecurityId` . Dit wordt gebruikt door alle technische profielen van de sociale ID-provider, zoals `Facebook-OAUTH` . De volgende claims transformatie ontvangt de gebruikers-ID en de naam van de ID-provider. De uitvoer van dit technische profiel is een JSON-teken reeks indeling die kan worden gebruikt in azure AD Directory Services.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
@@ -71,13 +71,13 @@ Gebruik deze claim transformatie om een `alternativeSecurityId` claim type te ge
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
-Hiermee voegt `AlternativeSecurityId` u een `alternativeSecurityIdCollection` aan een claim toe.
+Hiermee voegt `AlternativeSecurityId` u een aan een `alternativeSecurityIdCollection` claim toe.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | item | tekenreeks | Het claim type dat aan de uitvoer claim moet worden toegevoegd. |
 | Input claim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden gebruikt door de claim transformatie, indien beschikbaar in het beleid. Als deze wordt vermeld, wordt aan het `item` einde van de verzameling de claim transformatie toegevoegd. |
-| Output claim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. De nieuwe verzameling die zowel de items van invoer `collection` als `item`bevat. |
+| Output claim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. De nieuwe verzameling die zowel de items van invoer `collection` als bevat `item` . |
 
 In het volgende voor beeld wordt een nieuwe sociale identiteit gekoppeld aan een bestaand account. Een nieuwe sociale identiteit koppelen:
 1. Voer in de technische profielen **Aad-UserReadUsingAlternativeSecurityId** en **Aad-UserReadUsingObjectId** de **alternativeSecurityIds** -claim van de gebruiker uit.
@@ -86,7 +86,7 @@ In het volgende voor beeld wordt een nieuwe sociale identiteit gekoppeld aan een
 1. Roep de **AddItemToAlternativeSecurityIdCollection** -claim transformatie aan om de **AlternativeSecurityId2** -claim toe te voegen aan de bestaande **AlternativeSecurityIds** -claim.
 1. De **alternativeSecurityIds** claim naar het gebruikers account behouden
 
-```XML
+```xml
 <ClaimsTransformation Id="AddAnotherAlternativeSecurityId" TransformationMethod="AddItemToAlternativeSecurityIdCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="AlternativeSecurityId2" TransformationClaimType="item" />
@@ -110,14 +110,14 @@ In het volgende voor beeld wordt een nieuwe sociale identiteit gekoppeld aan een
 
 Retourneert een lijst met verleners van de claim **alternativeSecurityIdCollection** naar een nieuwe **stringCollection** -claim.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | Het claim type dat moet worden gebruikt om de lijst met id-providers (verlener) op te halen. |
 | Output claim | identityProvidersCollection | stringCollection | De ClaimTypes die worden geproduceerd nadat deze ClaimsTransformation is aangeroepen. Lijst met id-providers die zijn gekoppeld aan de invoer claim alternativeSecurityIdCollection |
 
 De volgende claim transformatie leest de claim van de gebruiker **alternativeSecurityIds** en extraheert de lijst met namen van id-providers die aan dat account zijn gekoppeld. Gebruik uitvoer **identityProvidersCollection** om de lijst met id-providers weer te geven die aan het account zijn gekoppeld. Of filter op de pagina identiteits provider selecteren de lijst met id-providers op basis van de **identityProvidersCollection** claim van de uitvoer. De gebruiker kan dus kiezen om een nieuwe sociale identiteit te koppelen die nog niet aan het account is gekoppeld.
 
-```XML
+```xml
 <ClaimsTransformation Id="ExtractIdentityProviders" TransformationMethod="GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="alternativeSecurityIds" TransformationClaimType="alternativeSecurityIdCollection" />
@@ -137,7 +137,7 @@ De volgende claim transformatie leest de claim van de gebruiker **alternativeSec
 
 Hiermee verwijdert u een **AlternativeSecurityId** van een **alternativeSecurityIdCollection** -claim.
 
-| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
+| Item | TransformationClaimType | Gegevenstype | Notities |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | Identity provider | tekenreeks | Het claim type dat de naam van de identiteits provider bevat die uit de verzameling moet worden verwijderd. |
 | Input claim | verzameling | alternativeSecurityIdCollection | De ClaimTypes die worden gebruikt door de claim transformatie. De claim transformatie verwijdert de Identity provider uit de verzameling. |
@@ -149,7 +149,7 @@ In het volgende voor beeld wordt een van de sociale identiteiten ontkoppeld met 
 3. Een technisch profiel voor het transformeren van claims aanroepen dat de **RemoveAlternativeSecurityIdByIdentityProvider** -claim transformatie aanroept, waarbij de geselecteerde sociale identiteit is verwijderd met behulp van de naam van de identiteits provider.
 4. Behoud de **alternativeSecurityIds** -claim naar het gebruikers account.
 
-```XML
+```xml
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
     <InputClaims>
         <InputClaim ClaimTypeReferenceId="secondIdentityProvider" TransformationClaimType="identityProvider" />

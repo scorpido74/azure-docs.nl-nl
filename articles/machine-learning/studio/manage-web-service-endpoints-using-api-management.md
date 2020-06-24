@@ -5,17 +5,17 @@ description: Een hand leiding waarin wordt getoond hoe u AzureML-webservices beh
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: a5814113906aadad01821f78863f5053b8082892
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d9b83c065865bf8e3e5906aa3ad7107f1ca8da75
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114832"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705539"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klassieke) webservices beheren met API Management
 
@@ -39,12 +39,12 @@ U kunt uw Azure Machine Learning-webservice beheren met een API Management-exemp
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **+ Een resource maken**.
 3. Typ ' API Management ' in het zoekvak en selecteer vervolgens de resource ' API Management '.
-4. Klik op **Maken**.
+4. Klik op **Create**.
 5. De **naam** waarde wordt gebruikt om een unieke URL te maken (in dit voor beeld wordt ' demoazureml ' gebruikt).
 6. Selecteer een **abonnement**, **resource groep**en **locatie** voor uw service-exemplaar.
 7. Geef een waarde voor de naam van de **organisatie** op (in dit voor beeld wordt ' demoazureml ' gebruikt).
 8. Voer uw **e-mail adres** van de beheerder in. dit e-mail adres wordt gebruikt voor meldingen van het API management systeem.
-9. Klik op **Maken**.
+9. Klik op **Create**.
 
 Het kan tot 30 minuten duren voordat een nieuwe service is gemaakt.
 

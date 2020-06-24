@@ -11,23 +11,23 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734090"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790184"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van de REST API
 
 > [!IMPORTANT]
 > Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Als de [ingebouwde rollen van Azure](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. In dit artikel wordt beschreven hoe u aangepaste rollen oplijsteert, maakt, bijwerkt of verwijdert met behulp van de REST API.
 
@@ -128,7 +128,7 @@ Als u informatie wilt ophalen over een aangepaste rol met de unieke id, gebruikt
 
 ## <a name="create-a-custom-role"></a>Een aangepaste rol maken
 
-Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken of bijwerken](/rest/api/authorization/roledefinitions/createorupdate) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die `Microsoft.Authorization/roleDefinitions/write` de machtiging voor alle `assignableScopes`heeft. Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
+Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken of bijwerken](/rest/api/authorization/roledefinitions/createorupdate) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die de `Microsoft.Authorization/roleDefinitions/write` machtiging voor alle heeft `assignableScopes` . Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
 
 1. Bekijk de lijst met beschik bare bewerkingen voor de [resource provider](resource-provider-operations.md) voor het maken van de machtigingen voor uw aangepaste rol.
 
@@ -185,11 +185,11 @@ Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken
 
 1. Als `assignableScopes` een beheer groep is, vervangt u het exemplaar van *{groupid}* door de id van uw beheer groep. Een beheer groep toevoegen aan `assignableScopes` is momenteel beschikbaar als preview-versie.
 
-1. Voeg in `actions` de eigenschap de bewerkingen toe die door de functie kunnen worden uitgevoerd.
+1. Voeg in de `actions` eigenschap de bewerkingen toe die door de functie kunnen worden uitgevoerd.
 
-1. Voeg in `notActions` de eigenschap de bewerkingen toe die zijn uitgesloten van de toegestaan `actions`.
+1. Voeg in de `notActions` eigenschap de bewerkingen toe die zijn uitgesloten van de toegestaan `actions` .
 
-1. Geef in `roleName` de `description` eigenschappen en een unieke rolnaam en een beschrijving op. Zie voor meer informatie over de eigenschappen [Azure aangepaste rollen](custom-roles.md).
+1. Geef in `roleName` de `description` Eigenschappen en een unieke rolnaam en een beschrijving op. Zie voor meer informatie over de eigenschappen [Azure aangepaste rollen](custom-roles.md).
 
     Hieronder ziet u een voor beeld van een aanvraag tekst:
 
@@ -227,7 +227,7 @@ Als u een aangepaste rol wilt maken, gebruikt u de [roldefinities-rest API maken
 
 ## <a name="update-a-custom-role"></a>Een aangepaste rol bijwerken
 
-Als u een aangepaste rol wilt bijwerken, gebruikt u de [roldefinities-rest API maken of bijwerken](/rest/api/authorization/roledefinitions/createorupdate) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die `Microsoft.Authorization/roleDefinitions/write` de machtiging voor alle `assignableScopes`heeft. Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
+Als u een aangepaste rol wilt bijwerken, gebruikt u de [roldefinities-rest API maken of bijwerken](/rest/api/authorization/roledefinitions/createorupdate) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die de `Microsoft.Authorization/roleDefinitions/write` machtiging voor alle heeft `assignableScopes` . Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
 
 1. De roldefinities gebruiken [-lijst](/rest/api/authorization/roledefinitions/list) -of [roldefinities-rest API ophalen](/rest/api/authorization/roledefinitions/get) om informatie over de aangepaste rol op te halen. Zie de sectie [met aangepaste rollen](#list-custom-roles) van de eerdere lijst voor meer informatie.
 
@@ -317,7 +317,7 @@ Als u een aangepaste rol wilt bijwerken, gebruikt u de [roldefinities-rest API m
 
 ## <a name="delete-a-custom-role"></a>Een aangepaste rol verwijderen
 
-Als u een aangepaste rol wilt verwijderen, gebruikt u de [roldefinities-rest API verwijderen](/rest/api/authorization/roledefinitions/delete) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die `Microsoft.Authorization/roleDefinitions/delete` de machtiging voor alle `assignableScopes`heeft. Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
+Als u een aangepaste rol wilt verwijderen, gebruikt u de [roldefinities-rest API verwijderen](/rest/api/authorization/roledefinitions/delete) . Als u deze API wilt aanroepen, moet u zijn aangemeld met een gebruiker waaraan een rol is toegewezen die de `Microsoft.Authorization/roleDefinitions/delete` machtiging voor alle heeft `assignableScopes` . Van de ingebouwde rollen, alleen de beheerder van de [eigenaar](built-in-roles.md#owner) en de [gebruikers toegang](built-in-roles.md#user-access-administrator) bevatten deze machtiging.
 
 1. Gebruik de roldefinities [-lijst](/rest/api/authorization/roledefinitions/list) -of [roldefinities-Get](/rest/api/authorization/roledefinitions/get) rest API om de GUID-id van de aangepaste rol op te halen. Zie de sectie [met aangepaste rollen](#list-custom-roles) van de eerdere lijst voor meer informatie.
 

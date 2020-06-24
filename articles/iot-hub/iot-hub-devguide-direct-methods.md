@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583682"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791959"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Directe methoden van IoT Hub begrijpen en aanroepen
 
@@ -33,7 +33,7 @@ Raadpleeg de [communicatie richtlijnen van Cloud naar apparaat](iot-hub-devguide
 
 ## <a name="method-lifecycle"></a>Methode levenscyclus
 
-Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer invoer vereisen in de methode-Payload om op de juiste wijze te instantiëren. U roept een directe methode aan via een service gerichte URI (`{iot hub}/twins/{device id}/methods/`). Een apparaat ontvangt directe methoden via een apparaatspecifieke MQTT onderwerp (`$iothub/methods/POST/{method name}/`) of via AMQP-koppelingen (de eigenschappen `IoThub-methodname` van `IoThub-status` de en toepassing). 
+Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer invoer vereisen in de methode-Payload om op de juiste wijze te instantiëren. U roept een directe methode aan via een service gerichte URI ( `{iot hub}/twins/{device id}/methods/` ). Een apparaat ontvangt directe methoden via een apparaatspecifieke MQTT onderwerp ( `$iothub/methods/POST/{method name}/` ) of via AMQP-koppelingen (de eigenschappen van de `IoThub-methodname` en `IoThub-status` toepassing). 
 
 > [!NOTE]
 > Wanneer u een rechtstreekse methode aanroept op een apparaat, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer i
 
 Directe methoden zijn synchroon en slagen of mislukken na de time-outperiode (standaard: 30 seconden, instelbaar tussen 5 en 300 seconden). Directe methoden zijn handig in interactieve scenario's waarin u wilt dat een apparaat reageert als en alleen als het apparaat online is en opdrachten ontvangt. U kunt bijvoorbeeld een lampje van een telefoon inschakelen. In deze scenario's wilt u direct slagen of mislukken, zodat de Cloud service zo snel mogelijk kan reageren op het resultaat. Het apparaat kan een deel van de bericht tekst retour neren als resultaat van de methode, maar dit is niet vereist voor de methode. Er is geen garantie voor de volg orde of enige semantiek van gelijktijdigheids op methode aanroepen.
 
-Directe methoden zijn alleen HTTPS vanuit de Cloud kant en MQTT of AMQP van de kant van het apparaat.
+Directe methoden zijn alleen HTTPS vanuit de Cloud zijde en HTTPS, MQTT, AMQP, MQTT over websockets of AMQP over websockets van de kant van het apparaat.
 
 De payload voor methode aanvragen en-antwoorden is een JSON-document van Maxi maal 128 KB.
 
@@ -76,9 +76,9 @@ Directe methode aanroepen op een apparaat zijn HTTPS-aanroepen die bestaan uit d
     }
     ```
 
-De waarde die in `responseTimeoutInSeconds` de aanvraag wordt gegeven, is de hoeveelheid tijd die IOT hub service moet wachten tot de uitvoering van een directe methode op een apparaat is voltooid. Stel deze time-out in op mini maal zo lang als de verwachte uitvoerings tijd van een directe methode door een apparaat. Als er geen time-out wordt gegeven, wordt de standaard waarde van 30 seconden gebruikt. De minimum-en maximum waarden `responseTimeoutInSeconds` voor zijn respectievelijk 5 en 300 seconden.
+De waarde `responseTimeoutInSeconds` die in de aanvraag wordt gegeven, is de hoeveelheid tijd die IOT hub service moet wachten tot de uitvoering van een directe methode op een apparaat is voltooid. Stel deze time-out in op mini maal zo lang als de verwachte uitvoerings tijd van een directe methode door een apparaat. Als er geen time-out wordt gegeven, wordt de standaard waarde van 30 seconden gebruikt. De minimum-en maximum waarden voor `responseTimeoutInSeconds` zijn respectievelijk 5 en 300 seconden.
 
-De waarde die in `connectTimeoutInSeconds` de aanvraag is gegeven, is de hoeveelheid tijd die nodig is voor het aanroepen van een directe methode die IOT hub service moet wachten totdat een apparaat zonder verbinding online kan worden gezet. De standaard waarde is 0, wat betekent dat apparaten al online moeten zijn bij het aanroepen van een directe methode. De maximum waarde voor `connectTimeoutInSeconds` is 300 seconden.
+De waarde die `connectTimeoutInSeconds` in de aanvraag is gegeven, is de hoeveelheid tijd die nodig is voor het aanroepen van een directe methode die IOT hub service moet wachten totdat een apparaat zonder verbinding online kan worden gezet. De standaard waarde is 0, wat betekent dat apparaten al online moeten zijn bij het aanroepen van een directe methode. De maximum waarde voor `connectTimeoutInSeconds` is 300 seconden.
 
 
 #### <a name="example"></a>Voorbeeld
@@ -91,7 +91,7 @@ Als u wilt beginnen, gebruikt u de [Microsoft Azure IOT-extensie voor Azure cli]
 az iot hub generate-sas-token -n <iothubName> -du <duration>
 ```
 
-Vervang vervolgens de autorisatie-header door de zojuist gegenereerde SharedAccessSignature en wijzig de `iothubName`para `deviceId`meters, `methodName` en en `payload` stel deze in op uw `curl` implementatie in de onderstaande voorbeeld opdracht.  
+Vervang vervolgens de autorisatie-header door de zojuist gegenereerde SharedAccessSignature en wijzig de `iothubName` `deviceId` `methodName` para meters, en en stel deze `payload` in op uw implementatie in de `curl` onderstaande voorbeeld opdracht.  
 
 ```bash
 curl -X POST \
@@ -122,8 +122,8 @@ De back-end-app ontvangt een antwoord dat bestaat uit de volgende items:
 
 * *HTTP-status code*:
   * 200 geeft een geslaagde uitvoering van de directe methode aan.
-  * 404 geeft aan dat de apparaat-ID ongeldig is, of dat het apparaat niet online was bij het aanroepen van een directe `connectTimeoutInSeconds` methode en voor het volgende (gebruik een begeleid fout bericht om de hoofd oorzaak te begrijpen).
-  * 504 geeft de time-out van de gateway aan waardoor het apparaat niet reageert `responseTimeoutInSeconds`op een directe methode aanroep binnen.
+  * 404 geeft aan dat de apparaat-ID ongeldig is, of dat het apparaat niet online was bij het aanroepen van een directe methode en voor het volgende `connectTimeoutInSeconds` (gebruik een begeleid fout bericht om de hoofd oorzaak te begrijpen).
+  * 504 geeft de time-out van de gateway aan waardoor het apparaat niet reageert op een directe methode aanroep binnen `responseTimeoutInSeconds` .
 
 * *Headers* die de ETAG, aanvraag-id, inhouds type en inhouds codering bevatten.
 
@@ -142,7 +142,7 @@ De back-end-app ontvangt een antwoord dat bestaat uit de volgende items:
 
 Het aanroepen van directe methoden met een module-ID wordt ondersteund in de C#-SDK van de [IOT-service client](https://www.nuget.org/packages/Microsoft.Azure.Devices/).
 
-Voor dit doel gebruikt u de `ServiceClient.InvokeDeviceMethodAsync()` methode en geeft u de `deviceId` para `moduleId` meters en als door.
+Voor dit doel gebruikt u de `ServiceClient.InvokeDeviceMethodAsync()` methode en geeft u de `deviceId` `moduleId` para meters en als door.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Een directe methode op een apparaat verwerken
 
@@ -154,7 +154,7 @@ De volgende sectie is voor het MQTT-protocol.
 
 #### <a name="method-invocation"></a>Methode aanroep
 
-Apparaten ontvangen directe methode aanvragen in het onderwerp MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`. Het aantal abonnementen per apparaat is beperkt tot 5. Daarom is het raadzaam om niet afzonderlijk te abonneren op elke directe methode. Overweeg in plaats daarvan te `$iothub/methods/POST/#` abonneren en vervolgens de bezorgde berichten te filteren op basis van de namen van de gewenste methoden.
+Apparaten ontvangen directe methode aanvragen in het onderwerp MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}` . Het aantal abonnementen per apparaat is beperkt tot 5. Daarom is het raadzaam om niet afzonderlijk te abonneren op elke directe methode. Overweeg in plaats daarvan te abonneren `$iothub/methods/POST/#` en vervolgens de bezorgde berichten te filteren op basis van de namen van de gewenste methoden.
 
 De hoofd tekst die het apparaat ontvangt, heeft de volgende indeling:
 
@@ -169,7 +169,7 @@ Methode aanvragen zijn QoS 0.
 
 #### <a name="response"></a>Antwoord
 
-Het apparaat verzendt reacties naar `$iothub/methods/res/{status}/?$rid={request id}`, waarbij:
+Het apparaat verzendt reacties naar `$iothub/methods/res/{status}/?$rid={request id}` , waarbij:
 
 * De `status` eigenschap is de door het apparaat opgegeven status van de uitvoering van de methode.
 
@@ -183,25 +183,25 @@ De volgende sectie is voor het AMQP-protocol.
 
 #### <a name="method-invocation"></a>Methode aanroep
 
-Het apparaat ontvangt directe methode aanvragen door een ontvangst koppeling op adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`te maken.
+Het apparaat ontvangt directe methode aanvragen door een ontvangst koppeling op adres te maken `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 
 Het AMQP-bericht arriveert op de ontvangst koppeling die de methode aanvraag vertegenwoordigt. Het bevat de volgende secties:
 
 * De eigenschap correlatie-ID, die een aanvraag-ID bevat die opnieuw moet worden door gegeven met de bijbehorende methode reactie.
 
-* Een toepassings eigenschap genaamd `IoThub-methodname`, die de naam bevat van de methode die wordt aangeroepen.
+* Een toepassings eigenschap genaamd `IoThub-methodname` , die de naam bevat van de methode die wordt aangeroepen.
 
 * De bericht tekst van het AMQP met de methode payload als JSON.
 
 #### <a name="response"></a>Antwoord
 
-Het apparaat maakt een verzend koppeling om de methode reactie op adres `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`te retour neren.
+Het apparaat maakt een verzend koppeling om de methode reactie op adres te retour neren `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` .
 
 De reactie van de methode wordt geretourneerd op de verzendende koppeling en is als volgt gestructureerd:
 
 * De eigenschap correlatie-ID, die de aanvraag-ID bevat die is door gegeven in het aanvraag bericht van de methode.
 
-* Een toepassings eigenschap met `IoThub-status`de naam, die de door de gebruiker opgegeven methode status bevat.
+* Een toepassings eigenschap `IoThub-status` met de naam, die de door de gebruiker opgegeven methode status bevat.
 
 * De AMQP-bericht tekst die de methode respons bevat als JSON.
 

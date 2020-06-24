@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176784"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790582"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
 
@@ -174,3 +174,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>Meer informatie over het uitvoeren van query's in toepassings logboeken
 
 Azure Monitor biedt uitgebreide ondersteuning voor het uitvoeren van query's in toepassings logboeken met behulp van Log Analytics. Zie aan de [slag met logboek query's in azure monitor](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over deze service. Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over het bouwen van query's voor het analyseren van uw toepassings Logboeken.
+
+## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Hoe kan ik meerdere regels Java stack-traceringen omzetten in één regel?
+
+Er is een tijdelijke oplossing voor het converteren van uw stack traceringen met meerdere regels naar één regel. U kunt de uitvoer van het Java-logboek wijzigen om stack-tracerings berichten opnieuw in te delen, waarbij de nieuwe regels opnieuw worden vervangen door een token. Als u de Java logback-bibliotheek gebruikt, kunt u stack trace-berichten opnieuw opmaken door het volgende toe te voegen `%replace(%ex){'[\r\n]+', '\\n'}%nopex` :
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+Daarna kunt u het token met nieuwe regels opnieuw in Log Analytics, zoals hieronder:
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+Mogelijk kunt u dezelfde strategie gebruiken voor andere Java-logboek bibliotheken.

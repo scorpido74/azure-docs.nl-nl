@@ -1,14 +1,14 @@
 ---
 title: Een aangepaste Linux-container configureren
-description: Meer informatie over het configureren van een aangepaste Linux-container in Azure App Service. In dit artikel vindt u de meest voorkomende configuratie taken.
+description: Meer informatie over het configureren van een aangepaste Linux-container in Azure App Service. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280142"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905796"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Een aangepaste Linux-container voor Azure App Service configureren
 
@@ -18,7 +18,7 @@ Deze hand leiding bevat belang rijke concepten en instructies voor container ops
 
 ## <a name="configure-port-number"></a>Poort nummer configureren
 
-De webserver in uw aangepaste installatie kopie mag een andere poort dan 80 gebruiken. U vertelt Azure over de poort die uw aangepaste container gebruikt met behulp `WEBSITES_PORT` van de app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_. U kunt deze instellen door de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
+De webserver in uw aangepaste installatie kopie mag een andere poort dan 80 gebruiken. U vertelt Azure over de poort die uw aangepaste container gebruikt met behulp van de `WEBSITES_PORT` app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_. U kunt deze instellen door [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) de opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -38,9 +38,9 @@ Deze methode werkt zowel voor apps met één container als apps met meerdere con
 
 U kunt de */Home* -map in het bestands systeem van uw app gebruiken om bestanden op te slaan tijdens het opnieuw opstarten en ze te delen met alle instanties. De `/home` in uw app is beschikbaar om uw container-app toegang te geven tot permanente opslag.
 
-Wanneer permanente opslag is uitgeschakeld, worden de schrijf bewerkingen `/home` naar de Directory niet opgeslagen in een app die opnieuw wordt gestart of over meerdere exemplaren. De enige uitzonde ring `/home/LogFiles` hierop is de map die wordt gebruikt voor het opslaan van de docker-en container Logboeken. Wanneer permanente opslag is ingeschakeld, worden alle schrijf bewerkingen `/home` naar de Directory persistent gemaakt en kunnen alle exemplaren van een uitgeschaalde app worden geopend.
+Wanneer permanente opslag is uitgeschakeld, worden de schrijf bewerkingen naar de `/home` Directory niet opgeslagen in een app die opnieuw wordt gestart of over meerdere exemplaren. De enige uitzonde ring hierop is de `/home/LogFiles` map die wordt gebruikt voor het opslaan van de docker-en container Logboeken. Wanneer permanente opslag is ingeschakeld, worden alle schrijf bewerkingen naar de `/home` Directory persistent gemaakt en kunnen alle exemplaren van een uitgeschaalde app worden geopend.
 
-Permanente opslag is standaard *ingeschakeld* en de instelling wordt niet weer gegeven in de toepassings instellingen. Als u dit wilt uitschakelen, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` stelt u de app [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) -instelling in door de opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
+Permanente opslag is standaard *ingeschakeld* en de instelling wordt niet weer gegeven in de toepassings instellingen. Als u dit wilt uitschakelen, stelt u de `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app-instelling in door de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -54,9 +54,9 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 SSH maakt veilige communicatie tussen een container en een client mogelijk. Als u een aangepaste container SSH wilt ondersteunen, moet u deze toevoegen aan de Dockerfile zelf.
 
 > [!TIP]
-> Alle ingebouwde Linux-containers hebben de SSH-instructies toegevoegd aan hun afbeeldings opslagplaatsen. U kunt de volgende instructies door lopen met de [node. js 10,14-opslag plaats](https://github.com/Azure-App-Service/node/blob/master/10.14) om te zien hoe deze er wordt ingeschakeld.
+> Alle ingebouwde Linux-containers hebben de SSH-instructies toegevoegd aan hun afbeeldings opslagplaatsen. U kunt de volgende instructies door lopen met de [opslag plaatsNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14) om te zien hoe deze er wordt ingeschakeld.
 
-- Gebruik de instructie [Run](https://docs.docker.com/engine/reference/builder/#run) om de SSH-server te installeren en stel het wacht woord voor het `"Docker!"`hoofd account in op. Voor een installatie kopie op basis van [Alpine Linux](https://hub.docker.com/_/alpine)hebt u bijvoorbeeld de volgende opdrachten nodig:
+- Gebruik de instructie [Run](https://docs.docker.com/engine/reference/builder/#run) om de SSH-server te installeren en stel het wacht woord voor het hoofd account in op `"Docker!"` . Voor een installatie kopie op basis van [Alpine Linux](https://hub.docker.com/_/alpine)hebt u bijvoorbeeld de volgende opdrachten nodig:
 
     ```Dockerfile
     RUN apk add openssh \
@@ -88,11 +88,11 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
     /usr/sbin/sshd
     ```
 
-    Zie hoe de standaard [node. js 10,14-container](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) de SSH-server start, voor een voor beeld.
+    Voor een voor beeld ziet u hoe de standaard [containerNode.js 10,14](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) de SSH-server start.
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="configure-multi-container-apps"></a>Apps voor meerdere containers configureren
 
@@ -104,13 +104,13 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
 
 Multi-container-apps zoals WordPress hebben permanente opslag nodig om goed te kunnen functioneren. Als u deze functie wilt inschakelen, moet de configuratie van de docker-samen stellen naar een opslag locatie *buiten* uw container verwijzen. Opslag locaties in uw container behouden geen wijzigingen na het opnieuw opstarten van de app.
 
-Schakel permanente opslag in door de `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app-instelling in te stellen met behulp van de opdracht [AZ webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud shell.
+Schakel permanente opslag in door de `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app-instelling in te stellen met behulp van de opdracht [AZ webapp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud shell.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-Wijs in uw *docker-Compose. yml* -bestand de `volumes` optie toe `${WEBAPP_STORAGE_HOME}`aan. 
+Wijs in uw *docker-Compose. yml* -bestand de `volumes` optie toe aan `${WEBAPP_STORAGE_HOME}` . 
 
 `WEBAPP_STORAGE_HOME` is een omgevingsvariabele in App Service die is toegewezen aan de permanente opslag voor uw app. Bijvoorbeeld:
 
@@ -139,7 +139,7 @@ In de volgende lijsten worden ondersteunde en niet-ondersteunde docker-configura
 - command
 - entrypoint
 - omgeving
-- installatiekopie
+- image
 - ports
 - restart
 - services
@@ -165,7 +165,7 @@ Voor het gebruik van een aangepaste container met VNet-integratie is mogelijk ex
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: implementeren vanuit een persoonlijke container opslagplaats](tutorial-custom-docker-image.md)
+> [Zelfstudie: Implementeren vanuit een privécontaineropslagplaats](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Zelf studie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)
+> [Zelfstudie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)

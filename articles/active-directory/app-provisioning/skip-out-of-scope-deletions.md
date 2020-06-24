@@ -2,31 +2,31 @@
 title: Verwijdering van gebruikers buiten het bereik overs Laan
 description: Meer informatie over het negeren van het standaard gedrag van het ongedaan maken van de inrichting van de gebruikers van het bereik.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593264"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789902"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Verwijdering van gebruikers accounts die buiten het bereik vallen, overs Laan
 
-De Azure AD Provisioning-engine laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Voor bepaalde scenario's zoals workday naar inkomend gebruik van AD-gebruikers is dit gedrag echter mogelijk niet de verwachte en wilt u dit standaard gedrag overschrijven.  
+De Azure AD Provisioning-engine laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Voor bepaalde scenario's zoals workday voor inrichtende AD-gebruikers is dit gedrag mogelijk niet de verwachte en wilt u dit standaard gedrag negeren.  
 
-In deze hand leiding wordt beschreven hoe u de Microsoft Graph-API en de Microsoft Graph API Explorer kunt gebruiken om de vlag ***SkipOutOfScopeDeletions*** in te stellen waarmee de verwerking van accounts die buiten het bereik vallen worden beheerd. 
-* Als ***SkipOutOfScopeDeletions*** is ingesteld op 0 (false), worden de accounts die zich buiten het bereik bevinden, uitgeschakeld in het doel
-* Als ***SkipOutOfScopeDeletions*** is ingesteld op 1 (waar), worden accounts die buiten het bereik vallen niet uitgeschakeld in het doel. deze vlag wordt ingesteld op het niveau van de *inrichtings app* en kan worden geconfigureerd met behulp van de Graph API. 
+In dit artikel wordt beschreven hoe u de Microsoft Graph-API en de Microsoft Graph API Explorer kunt gebruiken om de vlag ***SkipOutOfScopeDeletions*** in te stellen waarmee de verwerking van accounts die buiten het bereik vallen worden beheerd. 
+* Als ***SkipOutOfScopeDeletions*** is ingesteld op 0 (ONWAAR), worden accounts die buiten het bereik vallen, uitgeschakeld in het doel.
+* Als ***SkipOutOfScopeDeletions*** is ingesteld op 1 (waar), worden accounts die zich buiten het bereik bevinden niet in het doel uitgeschakeld. Deze vlag wordt ingesteld op het niveau van de inrichting van de *app* en kan worden geconfigureerd met behulp van de Graph API. 
 
-Omdat deze configuratie veel wordt gebruikt met de *werkdag om de app voor het inrichten van gebruikers te Active Directory* , bevatten de onderstaande stappen scherm opnamen van de werkdag-toepassing. Dit kan echter ook worden gebruikt met **alle andere apps** , zoals ServiceNow, Sales Force, Dropbox, enzovoort.
+Omdat deze configuratie veel wordt gebruikt in combi natie met de *werkdag voor het Active Directory* van de app voor het inrichten van gebruikers, bevatten de volgende stappen scherm opnamen van de werkdag-toepassing. De configuratie kan echter ook worden gebruikt met *alle andere apps*, zoals ServiceNow, Sales Force en Dropbox.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Stap 1: de principal-ID van uw inrichtings App Service ophalen (object-ID)
 

@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/03/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2109baf077b1b4c1074cfae9edd0d2b5ef5030d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343000"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206883"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
-Azure Automation status configuratie is een Azure Configuration Management-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations) kunt schrijven, beheren en compileren voor knoop punten in elke Cloud of on-premises Data Center. De service importeert ook [DSC-resources](/powershell/scripting/dsc/resources/resources)en wijst configuraties toe aan doel knooppunten, allemaal in de Cloud. U kunt de configuratie van Azure Automation status in de Azure Portal openen door **State Configuration (DSC)** te selecteren onder **configuratie beheer**. 
+Azure Automation status configuratie is een Azure Configuration Management-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations) kunt schrijven, beheren en compileren voor knoop punten in elke Cloud of on-premises Data Center. De service importeert ook [DSC-resources](/powershell/scripting/dsc/resources/resources)en wijst configuraties toe aan doel knooppunten, allemaal in de Cloud. U kunt de configuratie van Azure Automation status in de Azure Portal openen door **State Configuration (DSC)** te selecteren onder **configuratie beheer**.
 
 U kunt Azure Automation status configuratie gebruiken voor het beheren van verschillende computers:
 
@@ -53,7 +53,7 @@ Met de configuratie van de Azure Automation-status wordt dezelfde Management laa
 
 Knoop punten die worden beheerd met Azure Automation status configuratie, verzenden gedetailleerde rapportage status gegevens naar de ingebouwde pull-server. U kunt Azure Automation status configuratie configureren om deze gegevens te verzenden naar uw Log Analytics-werk ruimte. Zie [door sturen Azure Automation status configuratie rapport gegevens naar Azure monitor-logboeken](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Vereisten voor het gebruik van Azure Automation status configuratie
+## <a name="prerequisites"></a>Vereisten
 
 Houd rekening met de vereisten in deze sectie wanneer u Azure Automation status configuratie gebruikt.
 
@@ -103,36 +103,9 @@ Proxy ondersteuning voor de DSC-agent is beschikbaar in Windows versie 1809 en h
 
 Voor Linux-knoop punten ondersteunt de DSC-agent proxy en maakt gebruik van de `http_proxy` variabele om de URL te bepalen. Zie [DSC-mailconfiguraties genereren](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)voor meer informatie over proxy ondersteuning.
 
-#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Netwerkbereiken en naam ruimte Azure Automation status configuratie
+#### <a name="dns-records-per-region"></a>DNS-records per regio
 
-Het is raadzaam om de hieronder vermelde adressen te gebruiken bij het definiëren van uitzonde ringen. Voor IP-adressen kunt u de [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Dit bestand wordt wekelijks bijgewerkt en heeft de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken.
-
-Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio, kunt u de communicatie beperken tot dat regionale Data Center. De volgende tabel bevat de DNS-record voor elke regio:
-
-| **Regio** | **DNS-record** |
-| --- | --- |
-| VS - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| VS - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| VS - oost    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| VS - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Canada - midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Europa -west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| Europa - noord |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Azië - zuidoost |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| India - centraal |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan - oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Australië - zuidoost |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Verenigd Koninkrijk Zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| VS (overheid) - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-Down load het [Azure Data Center IP-adres](https://www.microsoft.com/download/details.aspx?id=41653) XML-bestand in het micro soft Download centrum voor een lijst met IP-adressen van regio's in plaats van regio namen.
-
-> [!NOTE]
-> Het XML-bestand met IP-adressen van Azure Data Center geeft een lijst van de IP-adresbereiken die worden gebruikt in de Microsoft Azure data centers. Het bestand bevat compute-, SQL-en Storage-bereiken.
->
->Er wordt wekelijks een bijgewerkt bestand geplaatst. Het bestand weerspiegelt de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken. Nieuwe bereiken die in het bestand worden weer gegeven, worden gedurende ten minste één week niet gebruikt in de data centers. Het is een goed idee om elke week het nieuwe XML-bestand te downloaden. Werk vervolgens uw site bij om de services die in Azure worden uitgevoerd, correct te identificeren. 
-
-Gebruikers van Azure ExpressRoute moeten weten dat dit bestand wordt gebruikt om de Border Gateway Protocol (BGP)-advertentie van Azure Space bij te werken in de eerste week van elke maand.
+Het is raadzaam om de adressen te gebruiken die worden vermeld in de tabel [DNS-records per regio](how-to/automation-region-dns-records.md) bij het definiëren van uitzonde ringen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -141,5 +114,5 @@ Gebruikers van Azure ExpressRoute moeten weten dat dit bestand wordt gebruikt om
 - Zie [DSC-configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md)voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
 - Zie [continue implementatie instellen met chocolade](automation-dsc-cd-chocolatey.md)voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie.
 - Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/)voor prijs informatie.
-- Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+- Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.

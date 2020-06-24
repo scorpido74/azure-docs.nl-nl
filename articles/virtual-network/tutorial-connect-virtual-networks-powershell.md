@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e040938cd0bde127d3ae36819b978ad4e56ded4a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201285"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703431"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Virtuele netwerken verbinden met virtuele netwerk peering met behulp van Power shell
 
@@ -31,7 +31,7 @@ U kunt virtuele netwerken met elkaar verbinden met virtueel-netwerk peering. Wan
 * Twee virtuele netwerken maken
 * Twee virtuele netwerken koppelen met virtueel-netwerkpeering
 * Een virtuele machine (VM) implementeren op elk van de virtuele netwerken
-* Communicatie tussen virtuele machines
+* Communiceren tussen VM's
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -129,7 +129,7 @@ Maak een VM in elk virtueel netwerk, zodat u er in een latere stap tussen kunt c
 
 ### <a name="create-the-first-vm"></a>De eerste VM maken
 
-Maak een VM met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVm1* in het virtuele netwerk *myVirtualNetwork1* . Met `-AsJob` deze optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap. Wanneer u hierom wordt gevraagd, voert u de gebruikers naam en het wacht woord in waarmee u zich wilt aanmelden bij de virtuele machine.
+Maak een VM met [New-AzVM](/powershell/module/az.compute/new-azvm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVm1* in het virtuele netwerk *myVirtualNetwork1* . Met deze `-AsJob` optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap. Wanneer u hierom wordt gevraagd, voert u de gebruikers naam en het wacht woord in waarmee u zich wilt aanmelden bij de virtuele machine.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -156,7 +156,7 @@ New-AzVm `
 
 Het maken van de virtuele machine duurt een paar minuten. Ga niet verder met de volgende stappen totdat de virtuele machine door Azure wordt gemaakt en de uitvoer naar Power shell wordt geretourneerd.
 
-## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
+## <a name="communicate-between-vms"></a>Communiceren tussen VM's
 
 U kunt verbinding maken met het open bare IP-adres van een virtuele machine via internet. Gebruik [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) om het openbare IP-adres van een virtuele machine op te halen. In het volgende voorbeeld wordt het openbare IP-adres van de VM *myVm1* opgehaald:
 

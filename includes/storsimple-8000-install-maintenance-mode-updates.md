@@ -37,7 +37,7 @@ Wanneer u updates voor de onderhouds modus toepast op een StorSimple-apparaat, w
 
     `Get-HcsUpdateStatus`
 
-    Als dat `RunInProgress` zo `True`is, wordt de update nog steeds uitgevoerd. Als `RunInProgress` dat `False`het geval is, geeft dit aan dat de update is voltooid.
+    Als dat zo `RunInProgress` is `True` , wordt de update nog steeds uitgevoerd. Als `RunInProgress` dat `False` het geval is, geeft dit aan dat de update is voltooid.
 
 5. Nadat de updates van de schijf firmware zijn toegepast en de bijgewerkte controller opnieuw is opgestart, controleert u de versie van de schijf firmware. Op de bijgewerkte controller typt u:
 

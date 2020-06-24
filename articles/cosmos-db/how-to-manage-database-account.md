@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 76e8167a5d0dc83a5cc1b238d3015594278e344d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116695"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116754"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 
@@ -31,7 +31,7 @@ Zie [een Azure Cosmos DB-account maken met Azure cli](manage-with-cli.md#create-
 
 Zie [een Azure Cosmos DB-account maken met Power shell](manage-with-powershell.md#create-account)
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sjabloon
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-sjabloon
 
 Zie [Azure Cosmos DB-account maken met Azure Resource Manager sjablonen](manage-sql-with-resource-manager.md)
 
@@ -49,7 +49,7 @@ Zie [Azure Cosmos DB-account maken met Azure Resource Manager sjablonen](manage-
 
 1. Selecteer **OK** om uw wijzigingen op te slaan.
 
-   ![Menu Regio's toevoegen of verwijderen](./media/how-to-manage-database-account/add-region.png)
+   :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 In een schrijfmodus voor één regio kunt u de schrijfregio niet verwijderen. U dient dan failover toe te passen naar een andere regio voordat u de huidige schrijfregio kunt verwijderen.
 
@@ -69,7 +69,7 @@ Zie [regio's toevoegen of verwijderen met Power shell](manage-with-powershell.md
 
 Open het tabblad **gegevens globaal repliceren** en selecteer **inschakelen** om schrijf bewerkingen in meerdere regio's in te scha kelen. Wanneer u meerdere regio's schrijft, worden de regio's die u momenteel op het account hebt gelezen, gelezen en geschreven.
 
-![Een Azure Cosmos-account configureert een scherm opname van meerdere masters](./media/how-to-manage-database-account/single-to-multi-master.png)
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Een Azure Cosmos-account configureert een scherm opname van meerdere masters":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -149,13 +149,13 @@ Met de optie voor automatische failover kunnen Azure Cosmos DB een failover naar
 
 2. Selecteer bovenin het deelvenster de knop **Automatische failover**.
 
-   ![Menu Gegevens globaal repliceren](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Gegevens globaal repliceren":::
 
 3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN**. 
 
 4. Selecteer **Opslaan**.
 
-   ![Portalmenu Automatische failover](./media/how-to-manage-database-account/automatic-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenu Automatische failover":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -178,7 +178,7 @@ Nadat een Cosmos-account is geconfigureerd voor automatische failover, kunnen de
 
 2. Selecteer bovenin het deelvenster de knop **Automatische failover**.
 
-   ![Menu Gegevens globaal repliceren](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Gegevens globaal repliceren":::
 
 3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN**.
 
@@ -186,7 +186,7 @@ Nadat een Cosmos-account is geconfigureerd voor automatische failover, kunnen de
 
 5. Selecteer **Opslaan**.
 
-   ![Portalmenu Automatische failover](./media/how-to-manage-database-account/automatic-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenu Automatische failover":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -212,13 +212,13 @@ Het proces voor het uitvoeren van een hand matige failover omvat het wijzigen va
 
 2. Selecteer bovenaan het menu de optie **Handmatige failover**.
 
-   ![Menu Gegevens globaal repliceren](./media/how-to-manage-database-account/replicate-data-globally.png)
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Gegevens globaal repliceren":::
 
 3. Selecteer in het menu **Handmatige failover** de nieuwe schrijfregio. Schakel het selectievakje in om aan te geven dat u begrijpt dat met deze optie de schrijfregio wordt gewijzigd.
 
 4. Selecteer **OK** om de failover te activeren.
 
-   ![Portalmenu Handmatige failover](./media/how-to-manage-database-account/manual-failover.png)
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Portalmenu Handmatige failover":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

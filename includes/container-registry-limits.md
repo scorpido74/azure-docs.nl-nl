@@ -1,24 +1,25 @@
 ---
-title: bestand opnemen
+title: Include-bestand
 description: bestand opnemen
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683442"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242077"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
-| Opslag<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| Maximale grootte van de afbeelding slaag | 200 GiB | 200 GiB | 200 GiB |
+| Inbegrepen opslag<sup>1</sup> (GIB) | 10 | 100 | 500 |
+| Opslag limiet (TiB) | 20| 20 | 20 |
+| Maximale grootte van de afbeelding slaag (GiB) | 200 | 200 | 200 |
 | ReadOps per minuut<sup>2, 3</sup> | 1000 | 3000 | 10.000 |
 | WriteOps per minuut<sup>2, 4</sup> | 100 | 500 | 2.000 |
 | Down load bandbreedte MBps<sup>2</sup> | 30 | 60 | 100 |
@@ -27,15 +28,15 @@ ms.locfileid: "83683442"
 | Geo-replicatie | N.v.t. | N.v.t. | [Geboden][geo-replication] |
 | Inhoud vertrouwen | N.v.t. | N.v.t. | [Geboden][content-trust] |
 | Persoonlijke koppeling met persoonlijke eind punten | N.v.t. | N.v.t. | [Geboden][plink] |
-| Toegang tot de service Endpoint VNet | N.v.t. | N.v.t. | [Voorbeeld][vnet] |
+| Toegang tot de service Endpoint VNet | N.v.t. | N.v.t. | [Preview][vnet] |
 | Door klant beheerde sleutels | N.v.t. | N.v.t. | [Geboden][cmk] |
-| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Voorbeeld][token]|
+| Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Preview][token]|
 | &bull;Tokens | N.v.t. | N.v.t. | 20.000 |
 | &bull;Scope toewijzingen | N.v.t. | N.v.t. | 20.000 |
 | &bull;Opslag plaatsen per scope toewijzing | N.v.t. | N.v.t. | 500 |
 
 
-<sup>1</sup> De opgegeven opslag limieten zijn de hoeveelheid *opgenomen* opslag ruimte voor elke laag. Boven deze limieten wordt een extra dagelijks tarief per GiB in rekening gebracht voor afbeeldings opslag. Zie voor informatie over de rente [Azure container Registry prijzen][pricing].
+<sup>1</sup> opslag inbegrepen in het dagelijkse tempo van elke laag. Voor extra opslag wordt een extra dagelijks tarief per GiB in rekening gebracht, tot aan de opslag limiet. Zie voor informatie over de rente [Azure container Registry prijzen][pricing].
 
 <sup>2</sup>*ReadOps*, *WriteOps*en *band breedte* zijn minimale schattingen. Azure Container Registry streeft naar het verbeteren van de prestaties als vereist gebruik.
 

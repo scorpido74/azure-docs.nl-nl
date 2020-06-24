@@ -6,17 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: bfb0a73631564c96a4af745fe9d7540a3a84f9c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0f31ddb0e0aeabff06d14d40d254c2577b38b5c
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655358"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906799"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Aangepaste velden in een Log Analytics-werk ruimte maken in Azure Monitor (preview)
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u tekst gegevens kunt parseren in een Log Analytics werkruimte die wordt verzameld. Het is raadzaam om tekst gegevens in een query filter te parseren nadat deze zijn verzameld volgens de richt lijnen die worden beschreven in [tekst gegevens parseren in azure monitor](../log-query/parse-text.md). Het biedt verschillende voor delen ten opzichte van het gebruik van aangepaste velden.
+
+> [!IMPORTANT]
+> Aangepaste velden verg Roten de hoeveelheid gegevens die in de Log Analytics werkruimte wordt verzameld, waardoor uw kosten kunnen worden verhoogd. Zie [gebruik en kosten beheren met Azure monitor logboeken](manage-cost-storage.md#pricing-model) voor meer informatie.
 
 Met de functie voor **aangepaste velden** van Azure monitor kunt u bestaande records in uw log Analytics-werk ruimte uitbreiden door uw eigen Doorzoek bare velden toe te voegen.  Aangepaste velden worden automatisch ingevuld op basis van gegevens die zijn geëxtraheerd uit andere eigenschappen in dezelfde record.
 
@@ -50,7 +53,7 @@ De eerste stap is het identificeren van de records waarmee het aangepaste veld w
 ### <a name="step-2---perform-initial-extract"></a>Stap 2: Voer de eerste extractie uit.
 Zodra u de records met het aangepaste veld hebt geïdentificeerd, identificeert u de gegevens die u wilt extra heren.  Log Analytics gebruikt deze informatie om Vergelijk bare patronen in vergelijk bare records te identificeren.  In de stap hierna kunt u de resultaten valideren en meer informatie geven over Log Analytics voor gebruik in de analyse.
 
-1. Markeer de tekst in de voorbeeld record die u wilt vullen van het aangepaste veld.  Vervolgens wordt er een dialoog venster weer gegeven waarin u een naam en gegevens type voor het veld kunt opgeven en de eerste extractie kunt uitvoeren.  De tekens ** \_CF** worden automatisch toegevoegd.
+1. Markeer de tekst in de voorbeeld record die u wilt vullen van het aangepaste veld.  Vervolgens wordt er een dialoog venster weer gegeven waarin u een naam en gegevens type voor het veld kunt opgeven en de eerste extractie kunt uitvoeren.  De tekens ** \_ CF** worden automatisch toegevoegd.
 2. Klik op **extra heren** om een analyse van de verzamelde records uit te voeren.  
 3. In de secties **samen vatting** en **Zoek resultaten** worden de resultaten van het uittreksel weer gegeven, zodat u de nauw keurigheid ervan kunt controleren.  **Samen vatting** geeft de criteria weer die worden gebruikt voor het identificeren van records en een aantal voor elk van de geïdentificeerde gegevens waarden.  **Zoek resultaten** bieden een gedetailleerde lijst met records die voldoen aan de criteria.
 

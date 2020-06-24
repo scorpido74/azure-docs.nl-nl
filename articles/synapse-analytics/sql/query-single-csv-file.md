@@ -5,18 +5,18 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f264a62428f919fe23797171926ddf63c585c42b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234134"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214448"
 ---
-# <a name="query-csv-files"></a>CSV-bestanden opvragen
+# <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
 In dit artikel leert u hoe u een query kunt uitvoeren op één CSV-bestand met behulp van SQL on-demand (preview) in azure Synapse Analytics. CSV-bestanden hebben mogelijk verschillende indelingen: 
 
@@ -29,7 +29,7 @@ Alle bovenstaande variaties worden hieronder besproken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap is het **maken van een Data Base** waarin de tabellen worden gemaakt. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap is het **maken van een Data Base** waarin de tabellen worden gemaakt. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 ## <a name="windows-style-new-line"></a>Windows-stijl nieuwe regel
 
@@ -37,7 +37,7 @@ De volgende query laat zien hoe u een CSV-bestand zonder een koprij, met een nie
 
 Bestands voorbeeld:
 
-![Eerste tien rijen van het CSV-bestand zonder kop, Windows-stijl nieuwe regel.](./media/query-single-csv-file/population.png)
+![Eerste tien rijen van het CSV-bestand zonder koptekst, nieuwe regel in Windows-stijl.](./media/query-single-csv-file/population.png)
 
 ```sql
 SELECT *
@@ -179,6 +179,37 @@ WHERE
 
 > [!NOTE]
 > Deze query mislukt als ESCAPECHAR niet is opgegeven omdat de komma in "slov, enia" als veld scheidings teken wordt beschouwd in plaats van een deel van de naam van het land/de regio. "Slov, enia" worden beschouwd als twee kolommen. Daarom zou de betreffende rij een kolom meer hebben dan de andere rijen en één kolom meer dan u hebt gedefinieerd in de WITH-component.
+
+### <a name="escaping-quoting-characters"></a>Aanhalings tekens als aanhalings teken
+
+De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen met een nieuwe UNIX-stijl, door komma's gescheiden kolommen en een dubbele aanhalings tekens in waarden. Let op de verschillende locatie van het bestand in vergelijking met de andere voor beelden.
+
+Bestands voorbeeld:
+
+![De volgende query laat zien hoe u een bestand met een veldnamenrij kunt lezen met een nieuwe UNIX-stijl, door komma's gescheiden kolommen en een dubbele aanhalings tekens in waarden.](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> Het aanhalings teken moet worden voorafgegaan door een ander aanhalings teken. Een aanhalings teken kan alleen in kolom waarde worden weer gegeven als de waarde is ingekapseld met aanhalings tekens.
 
 ## <a name="tab-delimited-files"></a>Door tabs gescheiden bestanden
 

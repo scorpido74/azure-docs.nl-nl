@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758755"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791619"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>API-ondersteuning in de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -20,7 +20,7 @@ Azure static Web Apps biedt serverloze API-eind punten via [Azure functions](../
 
 - **Geïntegreerde beveiliging** met rechtstreekse toegang tot gebruikers [verificatie en op rollen gebaseerde autorisatie](user-information.md) gegevens.
 - **Naadloze route ring** die de _API_ -route beschikbaar maakt voor de web-app, zonder dat hiervoor aangepaste CORS-regels vereist zijn.
-- **Azure functions** v3 die compatibel is met node. js 12.
+- **Azure functions** v3 die compatibel is met Node.js 12.
 - **Http-triggers** en uitvoer bindingen.
 
 ## <a name="configuration"></a>Configuratie
@@ -33,6 +33,7 @@ Azure static Web Apps biedt een API via Azure Functions. De mogelijkheden van Az
 
 - Het voor voegsel van de API-route moet _API_zijn.
 - De API-functie-app moet in Java script zijn.
+- Routerings regels voor API-functies bieden alleen ondersteuning voor het [omleiden](routes.md#redirects) en [beveiligen van routes met rollen](routes.md#securing-routes-with-roles).
 - Triggers en bindingen zijn beperkt tot [http](../azure-functions/functions-bindings-http-webhook.md).
   - Alle andere [Azure functions-triggers en-bindingen](../azure-functions/functions-triggers-bindings.md#supported-bindings) , met uitzonde ring van uitvoer bindingen, zijn beperkt.
 - Logboeken zijn alleen beschikbaar als u [Application Insights](../azure-functions/functions-monitoring.md) toevoegt aan uw functions-app.

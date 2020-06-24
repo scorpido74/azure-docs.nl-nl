@@ -17,9 +17,9 @@ ms.locfileid: "67176222"
 ---
 #### <a name="to-create-a-new-service"></a>Een nieuwe service maken
 
-1.  Meld u met uw Microsoft-account-referenties aan bij de Azure Portal op deze URL <https://portal.azure.com/>:. Als u het apparaat in de overheids Portal implementeert, meldt u zich aan bij:<https://portal.azure.us/>
+1.  Meld u met uw Microsoft-account-referenties aan bij de Azure Portal op deze URL: <https://portal.azure.com/> . Als u het apparaat in de overheids Portal implementeert, meldt u zich aan bij:<https://portal.azure.us/>
 
-2.  Klik in het Azure Portal op **+ een resource** &gt; -StorSimple maken voor de **virtuele** **opslag** &gt; .
+2.  Klik in het Azure Portal op **+ een resource** -StorSimple maken voor de &gt; **Storage** &gt; **virtuele**opslag.
 
     ![Nieuwe service maken](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

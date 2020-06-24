@@ -1,15 +1,15 @@
 ---
 title: Linux ASP.NET Core-Apps configureren
-description: Meer informatie over het configureren van een vooraf gemaakte ASP.NET Core-container voor uw app. In dit artikel vindt u de meest voorkomende configuratie taken.
+description: Meer informatie over het configureren van een vooraf gemaakte ASP.NET Core-container voor uw app. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/13/2019
-ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: e009f5b1fc656f700b3f0e76dda6e545aed535d2
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255913"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905762"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Een Linux ASP.NET Core-app configureren voor Azure App Service
 
@@ -39,31 +39,31 @@ Voer de volgende opdracht uit in de [Cloud shell](https://shell.azure.com) om de
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
 
-## <a name="customize-build-automation"></a>Bouw automatisering aanpassen
+## <a name="customize-build-automation"></a>De automatisering van bouwbewerkingen aanpassen
 
-Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
+Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouwautomatisering is ingeschakeld, moet u de volgende stappen voor de App Service-bouwautomatisering in deze volgorde uitvoeren:
 
-1. Voer een aangepast script uit, `PRE_BUILD_SCRIPT_PATH`indien opgegeven door.
-1. Voer `dotnet restore` uit om NuGet-afhankelijkheden te herstellen.
-1. Voer `dotnet publish` uit om een binair bestand te maken voor productie.
-1. Voer een aangepast script uit, `POST_BUILD_SCRIPT_PATH`indien opgegeven door.
+1. Voer aangepast script uit als dit door `PRE_BUILD_SCRIPT_PATH` is opgegeven.
+1. Voer uit `dotnet restore` om NuGet-afhankelijkheden te herstellen.
+1. Voer uit `dotnet publish` om een binair bestand te maken voor productie.
+1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
-`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Voor het uitvoeren van opdrachten die vooraf zijn `PRE_BUILD_COMMAND`gebouwd, definieert u. Als u opdrachten na het bouwen wilt uitvoeren `POST_BUILD_COMMAND`, definieert u.
+`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
 
-In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
+In het volgende voorbeeld worden de twee variabelen voor een reeks opdrachten opgegeven, gescheiden door komma's.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)voor meer omgevings variabelen voor het aanpassen van het bouwen van Automation.
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md) voor aanvullende omgevingsvariabelen om bouwautomatisering aan te passen.
 
 Zie Oryx-documentatie voor meer informatie over hoe App Service worden uitgevoerd en gebouwd ASP.NET Core apps in Linux [: hoe .net core-apps zijn gedetecteerd en gebouwd](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
 
 ## <a name="access-environment-variables"></a>Toegang tot omgevingsvariabelen
 
-In App Service kunt u de [app-instellingen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code instellen. Vervolgens kunt u ze in een wille keurige klasse openen met behulp van het standaard ASP.NET Core afhankelijkheids injectie patroon:
+In App Service kunt u [app-instellingen configureren](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code. Vervolgens kunt u ze in een wille keurige klasse openen met behulp van het standaard ASP.NET Core afhankelijkheids injectie patroon:
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -81,8 +81,8 @@ namespace SomeNamespace
     
         public SomeMethod()
         {
-            // retrieve App Service app setting
-            var myAppSetting = _configuration["MySetting"];
+            // retrieve nested App Service app setting
+            var myHierarchicalConfig = _configuration["My:Hierarchical:Config:Data"];
             // retrieve App Service connection string
             var myConnString = _configuration.GetConnectionString("MyDbConnection");
         }
@@ -90,11 +90,18 @@ namespace SomeNamespace
 }
 ```
 
-Als u een app-instelling met dezelfde naam in App Service en in *appSettings. json*configureert, heeft de app service-waarde voor rang boven de waarde *appSettings. json* . Met de lokale waarde *appSettings. json* kunt u de app lokaal fouten opsporen, maar met de app service waarde kunt u de app uitvoeren in het product met productie-instellingen. Verbindings reeksen werken op dezelfde manier. Op deze manier kunt u uw toepassings geheimen buiten uw code opslagplaats houden en toegang krijgen tot de juiste waarden zonder uw code te wijzigen.
+Als u een app-instelling met dezelfde naam in App Service configureert en in *appsettings.jsop*bijvoorbeeld de app service-waarde heeft voor rang *op deappsettings.js* waarde. Met de lokale *appsettings.jsop* waarde kunt u de app lokaal fouten opsporen, maar met de app service waarde kunt u de app uitvoeren in het product met productie-instellingen. Verbindings reeksen werken op dezelfde manier. Op deze manier kunt u uw toepassings geheimen buiten uw code opslagplaats houden en toegang krijgen tot de juiste waarden zonder uw code te wijzigen.
+
+> [!NOTE]
+> Houd rekening met de [hiërarchische configuratie gegevens](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) in *appsettings.jsop* wordt geopend met behulp `:` van het scheidings teken dat standaard is voor .net core. Als u een specifieke hiërarchische configuratie-instelling in App Service wilt overschrijven, stelt u de naam van de app-instelling in op dezelfde gescheiden indeling in de sleutel. u kunt het volgende voor beeld uitvoeren in de [Cloud shell](https://shell.azure.com):
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
+```
 
 ## <a name="get-detailed-exceptions-page"></a>Pagina gedetailleerde uitzonde ringen ophalen
 
-Wanneer uw ASP.NET-app een uitzonde ring genereert in het Visual Studio-fout opsporingsprogramma, wordt een gedetailleerde uitzonderings pagina weer gegeven in de browser, maar in App Service die pagina wordt vervangen door een algemene **HTTP 500-** fout of er is **een fout opgetreden tijdens het verwerken van uw aanvraag.** . Als u de gedetailleerde uitzonderings pagina in App Service wilt `ASPNETCORE_ENVIRONMENT` weer geven, voegt u de app-instelling toe aan uw app door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
+Wanneer uw ASP.NET-app een uitzonde ring genereert in het Visual Studio-fout opsporingsprogramma, wordt een gedetailleerde uitzonderings pagina weer gegeven in de browser, maar in App Service die pagina wordt vervangen door een algemene **HTTP 500-** fout of er is **een fout opgetreden tijdens het verwerken van uw aanvraag.** . Als u de gedetailleerde uitzonderings pagina in App Service wilt weer geven, voegt `ASPNETCORE_ENVIRONMENT` u de app-instelling toe aan uw app door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -104,9 +111,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 In App Service vindt [SSL-beëindiging](https://wikipedia.org/wiki/TLS_termination_proxy) plaats in de load balancers voor het netwerk, zodat alle HTTPS-aanvragen uw app bereiken als niet-versleutelde HTTP-aanvragen. Als uw app-logica moet weten of de gebruikers aanvragen zijn versleuteld of niet, configureert u de doorgestuurde headers-middleware in *Startup.cs*:
 
-- Configureer de middleware met [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) voor het door `X-Forwarded-For` sturen `X-Forwarded-Proto` van de `Startup.ConfigureServices`en-headers in.
+- Configureer de middleware met [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) voor het door sturen `X-Forwarded-For` van de en- `X-Forwarded-Proto` headers in `Startup.ConfigureServices` .
 - Voeg persoonlijke IP-adresbereiken toe aan de bekende netwerken, zodat de middleware de App Service load balancer kan vertrouwen.
-- Roep de methode [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) aan `Startup.Configure` in voordat u andere middlewares aanroept.
+- Roep de methode [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) aan in `Startup.Configure` voordat u andere middlewares aanroept.
 
 Als u alle drie de elementen samen plaatst, ziet uw code eruit als in het volgende voor beeld:
 
@@ -154,7 +161,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>App-instellingen gebruiken
 
-Voeg in de <a target="_blank" href="https://shell.azure.com">Azure Cloud shell</a>een app-instelling toe aan uw app service app door de volgende CLI-opdracht uit te voeren. Vervang * \<app-name>*, * \<resource-group-name>* en * \<project name>* met de juiste waarden.
+Voeg in de <a target="_blank" href="https://shell.azure.com">Azure Cloud shell</a>een app-instelling toe aan uw app service app door de volgende CLI-opdracht uit te voeren. Vervang *\<app-name>* , *\<resource-group-name>* , en *\<project-name>* door de juiste waarden.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -162,9 +169,28 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+ASP.NET Core biedt een [ingebouwde logboek registratie provider voor app service](https://docs.microsoft.com/aspnet/core/fundamentals/logging/#azure-app-service). Voeg in *Program.cs* van uw project de provider toe aan uw toepassing via de `ConfigureLogging` uitbreidings methode, zoals wordt weer gegeven in het volgende voor beeld:
 
-## <a name="open-ssh-session-in-browser"></a>SSH-sessie openen in browser
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.AddAzureWebAppDiagnostics();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
+```
+
+U kunt vervolgens logboeken configureren en genereren met het [standaard .net-kern patroon](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+Zie [probleem oplossing ASP.net Core op Azure app service en IIS](https://docs.microsoft.com/aspnet/core/test/troubleshoot-azure-iis) voor meer informatie over het oplossen van problemen met ASP.net core-apps in app service.
+
+## <a name="open-ssh-session-in-browser"></a>SSH-sessie in de browser openen
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 

@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734855"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791789"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klassieke abonnementsbeheerders van Azure
 
@@ -38,13 +38,13 @@ In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheer
 
     Mede beheerders kunnen alleen worden toegewezen bij het abonnements bereik.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **klassieke beheerders** .
 
     ![Scherm afbeelding waarmee klassieke beheerders worden geopend](./media/classic-administrators/classic-administrators.png)
 
-1. Klik op **toevoegen** > **mede beheerder** toevoegen om het deel venster CO-Administrators toevoegen te openen.
+1. Klik op **toevoegen**  >  **mede beheerder** toevoegen om het deel venster CO-Administrators toevoegen te openen.
 
     Als de optie co-beheerder toevoegen is uitgeschakeld, bent u niet gemachtigd.
 
@@ -83,7 +83,7 @@ Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Director
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **klassieke beheerders** .
 
@@ -125,10 +125,10 @@ Er kan slechts één service beheerder per Azure-abonnement zijn. Het wijzigen v
 
 | Account beheerders account | Kan de service beheerder wijzigen in een andere Microsoft-account? | Kan de service beheerder wijzigen in een Azure AD-account in dezelfde map? | Kan de service beheerder wijzigen in een Azure AD-account in een andere adres lijst? |
 | --- | --- | --- | --- |
-| Microsoft-account | Ja | Nee | Nee |
-| Microsoft Azure Active Directory-account | Ja | Ja | Nee |
+| Microsoft-account | Yes | Nee | Nee |
+| Azure AD-account | Ja | Ja | No |
 
-Als de account beheerder een Azure AD-account is, kunt u de service beheerder wijzigen in een Azure AD-account in dezelfde map, maar niet in een andere map. Bijvoorbeeld, abby@contoso.com kan de service beheerder wijzigen in bob@contoso.com, maar kan de service beheerder niet wijzigen in john@notcontoso.com , john@notcontoso.com tenzij er een aanwezigheid is in de contoso.com-map.
+Als de account beheerder een Azure AD-account is, kunt u de service beheerder wijzigen in een Azure AD-account in dezelfde map, maar niet in een andere map. Bijvoorbeeld, abby@contoso.com kan de service beheerder wijzigen in bob@contoso.com , maar kan de service beheerder niet wijzigen in, john@notcontoso.com tenzij john@notcontoso.com er een aanwezigheid is in de contoso.com-map.
 
 Zie [Wat is Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md)voor meer informatie over micro soft-accounts en Azure AD-accounts.
 
@@ -138,7 +138,7 @@ De account beheerder is de gebruiker die zich voor het eerst aanmeldt voor het A
 
 Volg deze stappen om de account beheerder weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
@@ -152,4 +152,4 @@ Volg deze stappen om de account beheerder weer te geven.
 
 * [Inzicht in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../role-based-access-control/role-assignments-portal.md)
-* [Beheerders van Azure-abonnementen toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md)
+* [Azure-abonnementsbeheerders toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md)

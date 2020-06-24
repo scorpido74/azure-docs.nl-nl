@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 51660fb416aa9850381f515a3a31cc57519094b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66256985"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117978"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Query Cheat-werk bladen Azure Cosmos DB
 
@@ -23,12 +23,12 @@ Kies uit een down load van letter grootte of A3-formaat.
 
 Down load de [Azure Cosmos DB Cheat-pagina's van de letterlijke grootte](https://go.microsoft.com/fwlink/?LinkId=623215) als u wilt afdrukken op A4-formaat (8,5 x 11).
 
-![Azure Cosmos DB query Cheat Sheets-letterlijke grootte, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png" alt-text="Azure Cosmos DB query Cheat Sheets-letterlijke grootte, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies" border="false":::
 
 ## <a name="oversized-cheat-sheets"></a>Grote cheat-bladen
 Down load de [Azure Cosmos DB Blade Cheat van A3-formaat](https://go.microsoft.com/fwlink/?linkid=870413) als u wilt afdrukken met een plotter of grootschalige printer op A3-formaat (11,7 x 16,5).
 
-![Azure Cosmos DB query Cheat Sheets: A3-formaat, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB query Cheat Sheets: A3-formaat, met SQL API, java script, MongoDB, Gremlin en Table-API query's en functies" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over het schrijven van query's:

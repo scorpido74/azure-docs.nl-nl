@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267623"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694804"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Problemen met de implementatie van StorSimple-apparaten oplossen
 ## <a name="overview"></a>Overzicht
@@ -82,7 +82,7 @@ In de volgende tabellen staan de veelvoorkomende fouten die u kunt tegen komen w
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Fouten tijdens de optionele web proxy-instellingen
 | Nee. | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 | --- | --- | --- | --- |
-| 1 |Invoke-Hcssetupwizard uit: ongeldige para meter (uitzonde ring van HRESULT: 0x80070057) |Een van de opgegeven para meters voor de proxy-instellingen is ongeldig. |De URI is niet in de juiste indeling opgenomen. Gebruik de volgende indeling: http://*\<IP-adres of FQDN-naam van de webproxyserver>*:*\<TCP-poort nummer>* |
+| 1 |Invoke-Hcssetupwizard uit: ongeldige para meter (uitzonde ring van HRESULT: 0x80070057) |Een van de opgegeven para meters voor de proxy-instellingen is ongeldig. |De URI is niet in de juiste indeling opgenomen. Gebruik de volgende indeling: http:// *\<IP address or FQDN of the web proxy server>* :*\<TCP port number>* |
 | 2 |Invoke-Hcssetupwizard uit: RPC-server niet beschikbaar (uitzonde ring van HRESULT: 0x800706ba) |De hoofd oorzaak is een van de volgende:<ol><li>Het cluster is niet actief.</li><li>De passieve controller kan niet communiceren met de actieve controller en de opdracht wordt uitgevoerd vanuit de passieve controller.</li></ol> |Afhankelijk van de hoofd oorzaak:<ol><li>[Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om te controleren of het cluster actief is.</li><li>Voer de opdracht uit vanaf de actieve controller. Als u de opdracht van de passieve controller wilt uitvoeren, moet u ervoor zorgen dat de passieve controller kan communiceren met de actieve controller. U moet [contact opnemen met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) als deze verbinding is verbroken.</li></ol> |
 | 3 |Invoke-Hcssetupwizard uit: RPC-aanroep is mislukt (uitzonde ring van HRESULT: 0x800706be) |Het cluster is niet beschikbaar. |[Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om te controleren of het cluster actief is. |
 | 4 |Invoke-Hcssetupwizard uit: cluster bron niet gevonden (uitzonde ring van HRESULT: 0x8007138f) |De cluster bron is niet gevonden. Dit kan gebeuren wanneer de installatie niet juist is. |Mogelijk moet u het apparaat opnieuw instellen op de standaard fabrieks instellingen. [Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om een cluster bron te maken. |
@@ -112,7 +112,7 @@ U kunt een of meer van de volgende fouten tegen komen bij het instellen van de S
 | 5 |Het wacht woord moet speciale tekens bevatten. |Wacht woorden moeten drie van de volgende vier teken typen bevatten: kleine letters, hoofd letters, cijfers en speciale tekens. Zorg ervoor dat uw wacht woord voldoet aan deze vereisten. |
 | 6 |Het wacht woord moet drie van de volgende vier teken typen bevatten: hoofd letters, kleine letters, cijfers en speciale tekens. |Uw wacht woord bevat niet de vereiste typen tekens. Zorg ervoor dat uw wacht woord voldoet aan deze vereisten. |
 | 7 |De para meter komt niet overeen met de bevestiging. |Zorg ervoor dat uw wacht woord voldoet aan alle vereisten en of u het correct hebt ingevoerd. |
-| 8 |Uw wacht woord mag niet overeenkomen met de standaard waarde. |Het standaard wachtwoord is *Wachtwoord1*. Als u zich voor de eerste keer aanmeldt, moet u dit wacht woord wijzigen. |
+| 8 |Uw wacht woord mag niet overeenkomen met de standaard waarde. |Het standaardapparaatwachtwoord is *Wachtwoord1*. Als u zich voor de eerste keer aanmeldt, moet u dit wacht woord wijzigen. |
 | 9 |Het wacht woord dat u hebt opgegeven, komt niet overeen met het wacht woord van het apparaat. Voer het wacht woord opnieuw in. |Controleer het wacht woord en typ het opnieuw. |
 
 Wacht woorden worden verzameld voordat het apparaat wordt geregistreerd, maar worden pas na een geslaagde registratie toegepast. De werk stroom voor wachtwoord herstel vereist dat het apparaat wordt geregistreerd.
@@ -173,15 +173,15 @@ Gebruik de volgende Windows Power shell-cmdlets om connectiviteits fouten te det
 * `Test-Connection`: Gebruik deze cmdlet om de netwerk verbinding binnen en buiten het netwerk te controleren.
 * `Test-HcsmConnection`: Gebruik deze cmdlet om de connectiviteit van een geregistreerd apparaat te controleren.
 * `Sync-HcsTime`: Gebruik deze cmdlet om de tijd van het apparaat weer te geven en een tijd synchronisatie met de NTP-server af te dwingen.
-* `Enable-HcsPing`en `Disable-HcsPing`: met deze cmdlets kunnen de hosts de netwerk interfaces op uw StorSimple-apparaat pingen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen.
+* `Enable-HcsPing`en `Disable-HcsPing` : met deze cmdlets kunnen de hosts de netwerk interfaces op uw StorSimple-apparaat pingen. Standaard reageren de StorSimple-netwerk interfaces niet op ping-aanvragen.
 * `Trace-HcsRoute`: Gebruik deze cmdlet als een hulp programma voor route tracering. Er worden pakketten naar elke router verzonden naar een eind bestemming gedurende een bepaalde periode en vervolgens worden de resultaten berekend op basis van de pakketten die worden geretourneerd door elke hop. Aangezien `Trace-HcsRoute` de mate van pakket verlies bij elke router of koppeling wordt weer gegeven, kunt u bepalen welke routers of koppelingen mogelijk netwerk problemen veroorzaken.
 * `Get-HcsRoutingTable`: Gebruik deze cmdlet om de lokale IP-routerings tabel weer te geven.
 
 ## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Problemen oplossen met de cmdlet Get-netadapter
-Wanneer u netwerk interfaces configureert voor een implementatie voor de eerste keer dat het apparaat wordt geïmplementeerd, is de hardware-status niet beschikbaar in de gebruikers interface van de StorSimple Apparaatbeheer-service omdat het apparaat nog niet is geregistreerd bij de service. Daarnaast is het mogelijk dat de Blade **Hardware-status** niet altijd goed overeenkomt met de status van het apparaat, met name als er problemen zijn die van invloed zijn op de service synchronisatie. In deze gevallen kunt u de `Get-NetAdapter` -cmdlet gebruiken om de status en status van uw netwerk interfaces te bepalen.
+Wanneer u netwerk interfaces configureert voor een implementatie voor de eerste keer dat het apparaat wordt geïmplementeerd, is de hardware-status niet beschikbaar in de gebruikers interface van de StorSimple Apparaatbeheer-service omdat het apparaat nog niet is geregistreerd bij de service. Daarnaast is het mogelijk dat de Blade **Hardware-status** niet altijd goed overeenkomt met de status van het apparaat, met name als er problemen zijn die van invloed zijn op de service synchronisatie. In deze gevallen kunt u de- `Get-NetAdapter` cmdlet gebruiken om de status en status van uw netwerk interfaces te bepalen.
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Een lijst met alle netwerk adapters op het apparaat weer geven
-1. Start Windows PowerShell voor StorSimple en typ `Get-NetAdapter`. 
+1. Start Windows PowerShell voor StorSimple en typ `Get-NetAdapter` . 
 2. Gebruik de uitvoer van de `Get-NetAdapter` cmdlet en de volgende richt lijnen om inzicht te krijgen in de status van uw netwerk interface.
    
    * Als de interface in orde is en is ingeschakeld, wordt de status **van**de **ifIndex** weer gegeven.
@@ -191,7 +191,7 @@ Wanneer u netwerk interfaces configureert voor een implementatie voor de eerste 
 
 Ga voor meer informatie over het gebruik van deze cmdlet naar [Get-netadapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) in de naslag gids voor Windows Power shell-cmdlets.
 
-In de volgende secties worden voor beelden van uitvoer `Get-NetAdapter` van de cmdlet weer gegeven.
+In de volgende secties worden voor beelden van uitvoer van de cmdlet weer gegeven `Get-NetAdapter` .
 
  In deze voor beelden was controller 0 de passieve controller en is deze als volgt geconfigureerd:
 
@@ -235,11 +235,11 @@ Hier volgt de uitvoer van controller 1 (de actieve controller). Alleen de DATA 0
 
 
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Problemen oplossen met de cmdlet Test-Connection
-U kunt de `Test-Connection` cmdlet gebruiken om te bepalen of het StorSimple-apparaat verbinding kan maken met het externe netwerk. Als alle netwerk parameters, met inbegrip van de DNS, correct zijn geconfigureerd in de installatie wizard, kunt u `Test-Connection` de cmdlet gebruiken om een bekend adres buiten het netwerk te pingen, zoals Outlook.com.
+U kunt de `Test-Connection` cmdlet gebruiken om te bepalen of het StorSimple-apparaat verbinding kan maken met het externe netwerk. Als alle netwerk parameters, met inbegrip van de DNS, correct zijn geconfigureerd in de installatie wizard, kunt u de `Test-Connection` cmdlet gebruiken om een bekend adres buiten het netwerk te pingen, zoals Outlook.com.
 
 U moet ping inschakelen om verbindings problemen met deze cmdlet op te lossen als ping is uitgeschakeld.
 
-Bekijk de volgende voor beelden van uitvoer van `Test-Connection` de cmdlet.
+Bekijk de volgende voor beelden van uitvoer van de `Test-Connection` cmdlet.
 
 > [!NOTE]
 > In het eerste voor beeld is het apparaat geconfigureerd met een onjuiste DNS. In het tweede voor beeld is de DNS juist.
@@ -305,7 +305,7 @@ Ga naar [test-HcsmConnection](https://technet.microsoft.com/library/dn715782.asp
 > [!IMPORTANT]
 > U kunt deze cmdlet uitvoeren voor zowel de actieve als de passieve controller.
 
-Bekijk de volgende voor beelden van uitvoer van `Test-HcsmConnection` de cmdlet.
+Bekijk de volgende voor beelden van uitvoer van de `Test-HcsmConnection` cmdlet.
 
 **Voor beeld van uitvoer: het apparaat is geregistreerd met StorSimple update 3**
 
@@ -407,7 +407,7 @@ Als u bijvoorbeeld 2 netwerk interfaces, DATA 2 en DATA 3 hebt, verbonden met in
 
 Als u update 1 op uw StorSimple-apparaat uitvoert, heeft uw DATA 0-netwerk interface de hoogste voor keur voor het Cloud verkeer. Dit betekent dat zelfs als er andere Cloud interfaces zijn ingeschakeld, het Cloud verkeer wordt gerouteerd via gegevens 0.
 
-Als u de `Get-HcsRoutingTable` cmdlet uitvoert zonder para meters op te geven (zoals in het volgende voor beeld), voert de cmdlet zowel IPv4-als IPv6-routerings tabellen uit. U kunt ook een relevante routerings tabel opgeven `Get-HcsRoutingTable -IPv4` of `Get-HcsRoutingTable -IPv6` ophalen.
+Als u de `Get-HcsRoutingTable` cmdlet uitvoert zonder para meters op te geven (zoals in het volgende voor beeld), voert de cmdlet zowel IPv4-als IPv6-routerings tabellen uit. U kunt ook `Get-HcsRoutingTable -IPv4` `Get-HcsRoutingTable -IPv6` een relevante routerings tabel opgeven of ophalen.
 
       Controller0>
       Controller0>Get-HcsRoutingTable
@@ -491,7 +491,7 @@ De fout kan een van de volgende oorzaken hebben:
 * Onjuiste firewall instellingen
 
 ### <a name="to-locate-and-fix-the-device-registration-problem"></a>Het registratie probleem van het apparaat zoeken en oplossen
-1. Controleer de apparaatconfiguratie: Voer op de actieve controller uit `Invoke-HcsSetupWizard`.
+1. Controleer de apparaatconfiguratie: Voer op de actieve controller uit `Invoke-HcsSetupWizard` .
    
    > [!NOTE]
    > De wizard Setup moet worden uitgevoerd op de actieve controller. Als u wilt controleren of u verbinding hebt met de actieve controller, bekijkt u de banner die in de seriële console wordt weer gegeven. De banner geeft aan of u verbonden bent met controller 0 of controller 1 en of de controller actief of passief is. Ga voor meer informatie naar [een actieve controller op het apparaat identificeren](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).

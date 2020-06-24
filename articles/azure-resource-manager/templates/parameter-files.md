@@ -2,19 +2,19 @@
 title: Parameterbestand maken
 description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873093"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117502"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-parameter bestand maken
 
 In plaats van para meters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameter waarden bevat. In dit artikel wordt beschreven hoe u het parameter bestand maakt.
 
-## <a name="parameter-file"></a>Parameter bestand
+## <a name="parameter-file"></a>Parameterbestand
 
 Het parameter bestand heeft de volgende indeling:
 
@@ -182,12 +182,18 @@ In het volgende voor beeld ziet u de indelingen van verschillende parameter type
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>Sjabloon implementeren met parameter bestand
+
+Zie:
+
+- [Resources implementeren met ARM-sjablonen en Azure CLI](./deploy-powershell.md#pass-parameter-values)
+- [Resources implementeren met ARM-sjablonen en Azure PowerShell](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>Bestandsnaam
 
-De algemene Conventie voor het benoemen van het parameter bestand is het toevoegen van **. para meters** aan de naam van de sjabloon. Als uw sjabloon bijvoorbeeld de naam **azuredeploy. json**heeft, heet het parameter bestand **azuredeploy. para meters. json**. Deze naamgevings Conventie helpt u de verbinding tussen de sjabloon en de para meters te zien.
+De algemene Conventie voor het benoemen van het parameter bestand is het toevoegen van **. para meters** aan de naam van de sjabloon. Als uw sjabloon bijvoorbeeld de naam **azuredeploy.js**heeft, wordt uw parameter bestand **azuredeploy.parameters.jsaan**genoemd. Deze naamgevings Conventie helpt u de verbinding tussen de sjabloon en de para meters te zien.
 
-Als u wilt implementeren in verschillende omgevingen, moet u meer dan één parameter bestand maken. Wanneer u het parameter bestand een naam geeft, voegt u een manier toe om het te identificeren. Gebruik bijvoorbeeld **azuredeploy. para meters-dev. json** en **azuredeploy. para meters-Prod. json**
-
+Als u wilt implementeren in verschillende omgevingen, moet u meer dan één parameter bestand maken. Wanneer u het parameter bestand een naam geeft, voegt u een manier toe om het te identificeren. Gebruik bijvoorbeeld **azuredeploy.parameters-dev.jsop** en **azuredeploy.parameters-prod.jsop**
 
 ## <a name="parameter-precedence"></a>Parameter prioriteit
 
@@ -198,6 +204,7 @@ Het is mogelijk om een extern parameter bestand te gebruiken door de URI naar he
 ## <a name="parameter-name-conflicts"></a>Conflicten met parameter namen
 
 Als uw sjabloon een para meter bevat met dezelfde naam als een van de para meters in de Power shell-opdracht, geeft Power shell de para meter van uw sjabloon weer met de achtervoegsel **FromTemplate**. Een para meter met de naam **ResourceGroupName** in uw sjabloon is bijvoorbeeld strijdig met de para meter **ResourceGroupName** in de cmdlet [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) . U wordt gevraagd een waarde voor **ResourceGroupNameFromTemplate**op te geven. U kunt deze Verwar ring vermijden door parameter namen te gebruiken die niet worden gebruikt voor implementatie opdrachten.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

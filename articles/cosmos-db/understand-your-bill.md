@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34f55d628b4e334df4b3e74edfd3c0defbdeaa93
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647719"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114238"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB-factuur
 
@@ -73,7 +73,7 @@ Als u de ingerichte door Voer voor een container of een set containers op 9:30 u
 
 * Als er in een maand van 720 uur (24 uur * 30 dagen) een ingerichte door Voer van 500 uur 1.200 RU/SEC is en voor de resterende 220 uur door Voer is 22.200 RU/sec, wordt uw maandelijkse factuur weer gegeven: 500 x $0.096/uur + 220 x $1.776/Hour = $438.72/maand.
 
-![Voor beeld van toegewezen doorvoer facturering](./media/understand-your-bill/bill-example1.png)
+:::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Voor beeld van toegewezen doorvoer facturering":::
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Facturerings voorbeeld: containers met gedeelde doorvoer modus
 
@@ -87,7 +87,7 @@ Als u de ingerichte door Voer voor een container of een set containers op 9:30 u
 
 * Als er in een maand van 720 uur een ingerichte door Voer van 300 uur 120-K RU/SEC is en voor de resterende 420 uur door Voer is 155-K RU/sec., wordt uw maandelijkse factuur weer gegeven: 300 x $9.60/uur + 420 x $12.40/Hour = $2.880 + $5.208 = $8088/maand. 
 
-![Voor beeld van een facturering van gedeelde door Voer](./media/understand-your-bill/bill-example2.png)
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Voor beeld van een facturering van gedeelde door Voer":::
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Facturerings voorbeelden met geo-replicatie en multi-master  
 
@@ -177,11 +177,11 @@ We gaan het volgende voor beeld overwegen, waarbij we een Azure Cosmos-account m
 
 In de onderstaande afbeelding ziet u de wijzigingen in de totale ingerichte door Voer gedurende 720 uur voor de maand. 
 
-![Voor beeld van Real-Life](./media/understand-your-bill/bill-example3.png)
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Voor beeld van Real-Life":::
 
 De totale maandelijkse factuur (ervan uitgaande tot 30 dagen/720 uur per maand) wordt als volgt berekend:
 
-|**Tijden**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
+|**Hours**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20.000 |Doorvoer factuur voor container in West-VS (alle regio's zijn schrijfbaar)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Doorvoer factuur voor twee extra regio's: VS-Oost, Europa-noord (alle regio's zijn schrijfbaar)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2.880  |
@@ -248,7 +248,7 @@ Laten we eens kijken naar een ander voor beeld, waar u proactief uw factuur kunt
 |----|----|----|----|
 |Bewerkings type| Aanvragen per seconde| Gem. RU/aanvraag| RUs vereist|
 |Schrijven| 100 | 5 | 500|
-|Lezen| 400| 1| 400|
+|Raadplegen| 400| 1| 400|
 
 Totaal aantal RU/SEC: 500 + 400 = 900 uur kosten: 900/100 * $0,008 = $0,072 verwachte maandelijkse kosten voor door Voer (aangenomen 31 dagen): $0,072 * 24 * 31 = $53,57
 

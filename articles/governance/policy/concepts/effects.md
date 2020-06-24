@@ -1,14 +1,14 @@
 ---
 title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
-ms.date: 05/20/2020
+ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f077548f2de06ef35a80aea0e8e33718a18ff229
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424343"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791415"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -22,22 +22,26 @@ Deze effecten worden momenteel ondersteund in een beleids definitie:
 - [Weigeren](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Uitgeschakeld](#disabled)
-- [EnforceOPAConstraint](#enforceopaconstraint) (preview-versie)
-- [EnforceRegoPolicy](#enforceregopolicy) (preview-versie)
 - [Wijzigen](#modify)
+
+De volgende effecten worden _afgeschaft_:
+
+- [EnforceOPAConstraint](#enforceopaconstraint)
+- [EnforceRegoPolicy](#enforceregopolicy)
+
+> [!IMPORTANT]
+> In plaats van de **EnforceOPAConstraint** -of **EnforceRegoPolicy** -effecten gebruikt u _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` . De ingebouwde beleids definities zijn bijgewerkt. Wanneer bestaande beleids toewijzingen van deze ingebouwde beleids definities worden gewijzigd, moet de para meter _effect_ worden gewijzigd in een waarde in de lijst met bijgewerkte _allowedValues_ .
 
 ## <a name="order-of-evaluation"></a>Volg orde van evaluatie
 
-Aanvragen voor het maken of bijwerken van een ​​resource via Azure Resource Manager worden eerst door Azure Policy geëvalueerd. Azure Policy maakt een lijst met alle toewijzingen die van toepassing zijn op de resource en evalueert vervolgens de resource op basis van elke definitie. Azure Policy verschillende effecten verwerkt voordat de aanvraag aan de juiste resource provider wordt door gegeven. Dit voor komt het voor komen van onnodige verwerking door een resource provider wanneer een resource niet voldoet aan de ontworpen governance-besturings elementen van Azure Policy.
+Aanvragen om een resource te maken of bij te werken worden eerst geëvalueerd door Azure Policy. Azure Policy maakt een lijst met alle toewijzingen die van toepassing zijn op de resource en evalueert vervolgens de resource op basis van elke definitie. Voor een [Resource Manager-modus](./definition-structure.md#resource-manager-modes)worden door Azure Policy verschillende effecten verwerkt voordat de aanvraag aan de juiste resource provider wordt door gegeven. Deze volg orde voor komt onnodige verwerking door een resource provider wanneer een resource niet voldoet aan de ontworpen governance-besturings elementen van Azure Policy. Met een [resource provider modus](./definition-structure.md#resource-provider-modes)beheert de resource provider de evaluatie en het resultaat en rapporteert de resultaten terug naar Azure Policy.
 
 - **Uitgeschakeld** wordt eerst gecontroleerd om te bepalen of de beleids regel moet worden geëvalueerd.
-- **Toevoegen** en **wijzigen** worden vervolgens geëvalueerd. Omdat de aanvraag kan worden gewijzigd, is het mogelijk dat er een wijziging is aangebracht waardoor een controle of weigering van een trigger kan worden verhinderd.
+- **Toevoegen** en **wijzigen** worden vervolgens geëvalueerd. Omdat de aanvraag kan worden gewijzigd, is het mogelijk dat er een wijziging is aangebracht waardoor een controle of weigering van een trigger kan worden verhinderd. Deze effecten zijn alleen beschikbaar in de modus Resource Manager.
 - De **weigering** wordt vervolgens geëvalueerd. Door weigeren voor controle te evalueren, wordt de dubbele logboek registratie van een ongewenste resource voor komen.
-- De **controle** wordt vervolgens geëvalueerd voordat de aanvraag naar de resource provider wordt verzonden.
+- De **controle** wordt als laatste geëvalueerd.
 
-Nadat de resource provider een succes code heeft geretourneerd, wordt **AuditIfNotExists** en **DeployIfNotExists** geëvalueerd om te bepalen of er aanvullende logboek registratie of actie vereist is.
-
-Er is momenteel geen volg orde voor de evaluatie van de **EnforceOPAConstraint** -of **EnforceRegoPolicy** -effecten.
+Nadat de resource provider een succes code heeft geretourneerd in een aanvraag voor de Resource Manager-modus, **AuditIfNotExists** en **DeployIfNotExists** bepalen of aanvullende nalevings logboek registratie of actie vereist is.
 
 ## <a name="append"></a>Toevoegen
 
@@ -88,28 +92,50 @@ Voor beeld 2: een combi natie van één **veld/waarde** met een **\[\*\]** [alia
 }
 ```
 
-
-
-
 ## <a name="audit"></a>Controleren
 
 Controle wordt gebruikt om een waarschuwings gebeurtenis in het activiteiten logboek te maken bij het evalueren van een niet-compatibele resource, maar de aanvraag wordt niet gestopt.
 
 ### <a name="audit-evaluation"></a>Controle-evaluatie
 
-Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Azure Policy verzendt vervolgens de resource naar de resource provider. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
+Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Voor een resource manager-modus wordt Azure Policy de resource vervolgens naar de resource provider verzonden. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
 
 ### <a name="audit-properties"></a>Controle-eigenschappen
 
-Het controle-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+Voor een resource manager-modus bevat het controle-effect geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+
+Voor de modus van de resource provider van `Microsoft.Kubernetes.Data` heeft het controle-effect de volgende aanvullende subeigenschappen van **Details**.
+
+- **constraintTemplate** (vereist)
+  - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
+- **beperking** (vereist)
+  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die worden door gegeven via **waarden** als `{{ .Values.<valuename> }}` . In voor beeld 2 hieronder staan deze waarden `{{ .Values.excludedNamespaces }}` en `{{ .Values.allowedContainerImagesRegex }}` .
+- **waarden** (optioneel)
+  - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
 
 ### <a name="audit-example"></a>Controle voorbeeld
 
-Voor beeld: het controle-effect gebruiken.
+Voor beeld 1: het controle-effect voor de Resource Manager-modus gebruiken.
 
 ```json
 "then": {
     "effect": "audit"
+}
+```
+
+Voor beeld 2: het controle-effect voor een resource provider modus van gebruiken `Microsoft.Kubernetes.Data` . De aanvullende informatie in **Details** definieert de beperkings sjabloon en CRD voor gebruik in Kubernetes om de toegestane container installatie kopieën te beperken.
+
+```json
+"then": {
+    "effect": "audit",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
 }
 ```
 
@@ -125,7 +151,7 @@ AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor 
 
 De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd.
 
-- **Type** [vereist]
+- **Type** (vereist)
   - Hiermee geeft u het type gerelateerde resource op dat moet worden gezocht.
   - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
 - **Naam** (optioneel)
@@ -185,17 +211,26 @@ Weigeren wordt gebruikt om te voor komen dat een resource aanvraag die voldoet a
 
 ### <a name="deny-evaluation"></a>Evaluatie weigeren
 
-Wanneer u een overeenkomende resource maakt of bijwerkt, voor komt u dat de aanvraag wordt verzonden naar de resource provider. De aanvraag wordt geretourneerd als een `403 (Forbidden)` . In de portal kan de verboden worden weer gegeven als een status voor de implementatie die door de beleids toewijzing is voor komen.
+Wanneer u een overeenkomende resource in een resource manager-modus maakt of bijwerkt, voor komt u dat de aanvraag wordt verzonden naar de resource provider. De aanvraag wordt geretourneerd als een `403 (Forbidden)` . In de portal kan de verboden worden weer gegeven als een status voor de implementatie die door de beleids toewijzing is voor komen. De resource provider beheert de evaluatie van de resource voor de modus van de resource provider.
 
 Tijdens de evaluatie van bestaande resources zijn bronnen die overeenkomen met een beleids definitie voor weigeren als niet-compatibel gemarkeerd.
 
 ### <a name="deny-properties"></a>Eigenschappen weigeren
 
-Het deny-effect heeft geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+Voor een resource manager-modus heeft het deny-effect geen aanvullende eigenschappen voor gebruik in de **voor waarde voor de beleids** definitie.
+
+Voor de modus van de resource provider van `Microsoft.Kubernetes.Data` heeft het deny-effect de volgende aanvullende subeigenschappen van **Details**.
+
+- **constraintTemplate** (vereist)
+  - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
+- **beperking** (vereist)
+  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die worden door gegeven via **waarden** als `{{ .Values.<valuename> }}` . In voor beeld 2 hieronder staan deze waarden `{{ .Values.excludedNamespaces }}` en `{{ .Values.allowedContainerImagesRegex }}` .
+- **waarden** (optioneel)
+  - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
 
 ### <a name="deny-example"></a>Voor beeld weigeren
 
-Voor beeld: het weigeren van het effect.
+Voor beeld 1: het afwijzen van de Resource Manager-modus gebruiken.
 
 ```json
 "then": {
@@ -203,6 +238,21 @@ Voor beeld: het weigeren van het effect.
 }
 ```
 
+Voor beeld 2: het weigeren van het effect van een resource provider modus van `Microsoft.Kubernetes.Data` . De aanvullende informatie in **Details** definieert de beperkings sjabloon en CRD voor gebruik in Kubernetes om de toegestane container installatie kopieën te beperken.
+
+```json
+"then": {
+    "effect": "deny",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "values": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
+            "excludedNamespaces": "[parameters('excludedNamespaces')]"
+        }
+    }
+}
+```
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
@@ -222,7 +272,7 @@ Tijdens een evaluatie cyclus worden beleids definities met een DeployIfNotExists
 
 De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigenschappen waarmee de gerelateerde resources worden gedefinieerd en de sjabloon implementatie moet worden uitgevoerd.
 
-- **Type** [vereist]
+- **Type** (vereist)
   - Hiermee geeft u het type gerelateerde resource op dat moet worden gezocht.
   - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
 - **Naam** (optioneel)
@@ -246,14 +296,14 @@ De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigensc
   - Als een overeenkomende gerelateerde resource wordt geëvalueerd als waar, wordt het effect voldaan en wordt de implementatie niet geactiveerd.
   - Kan [Field ()] gebruiken om de gelijkwaardigheid te controleren met waarden in de **if** -voor waarde.
   - Kan bijvoorbeeld worden gebruikt om te controleren of de bovenliggende resource (in de **if** -voor waarde) zich op dezelfde resource locatie bevindt als de overeenkomende gerelateerde resource.
-- **roleDefinitionIds** [vereist]
+- **roleDefinitionIds** (vereist)
   - Deze eigenschap moet een matrix van teken reeksen bevatten die overeenkomen met de op rollen gebaseerde toegangs beheer functie-ID die toegankelijk is voor het abonnement. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (optioneel)
   - Toegestane waarden zijn _abonnements_ -en _ResourceGroup_.
   - Hiermee stelt u het type implementatie in dat moet worden geactiveerd. Met het _abonnement_ wordt een [implementatie op abonnements niveau](../../../azure-resource-manager/templates/deploy-to-subscription.md)aangegeven. _ResourceGroup_ wijst op een implementatie naar een resource groep.
   - Een _locatie_ -eigenschap moet worden opgegeven in de _implementatie_ bij het gebruik van implementaties op abonnements niveau.
   - De standaard waarde is _ResourceGroup_.
-- **Implementatie** [vereist]
+- **Implementatie** (vereist)
   - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments` put-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
 
   > [!NOTE]
@@ -319,13 +369,12 @@ Dit effect is handig voor het testen van situaties of voor wanneer de beleids de
 Een alternatief voor het uitgeschakelde effect is **enforcementMode**, dat is ingesteld op de beleids toewijzing.
 Wanneer **enforcementMode** is _uitgeschakeld_, worden er nog steeds resources geëvalueerd. Logboek registratie, zoals activiteiten logboeken, en het beleids effect vindt niet plaats. Zie [beleids toewijzing-afdwingings modus](./assignment-structure.md#enforcement-mode)voor meer informatie.
 
-
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
 Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.Kubernetes.Data` . Het wordt gebruikt voor het door geven van Gate Keeping-regels voor toegangs beheer die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) voor Kubernetes-clusters in Azure.
 
 > [!NOTE]
-> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities.
+> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceOPAConstraint** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint-evaluatie
 
@@ -336,11 +385,11 @@ Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de r
 
 De eigenschap **Details** van het effect EnforceOPAConstraint heeft de subeigenschappen waarmee de gate keeper v3 Admission Control-regel wordt beschreven.
 
-- **constraintTemplate** [vereist]
+- **constraintTemplate** (vereist)
   - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
-- **beperking** [vereist]
+- **beperking** (vereist)
   - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die worden door gegeven via **waarden** als `{{ .Values.<valuename> }}` . In het onderstaande voor beeld zijn deze waarden `{{ .Values.cpuLimit }}` en `{{ .Values.memoryLimit }}` .
-- **waarden** [Optioneel]
+- **waarden** (optioneel)
   - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint-voor beeld
@@ -381,7 +430,7 @@ Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limiet
 Dit effect wordt gebruikt in combi natie met de beleids definitie _modus_ van `Microsoft.ContainerService.Data` . Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
-> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan het bijgewerkte [EnforceOPAConstraint](#enforceopaconstraint) -effect.
+> [Azure Policy voor Kubernetes](./policy-for-kubernetes.md) is in Preview en ondersteunt alleen Linux-knooppunt Pools en ingebouwde beleids definities. Ingebouwde beleids definities bevinden zich in de categorie **Kubernetes** . De beperkte preview-beleids definities met **EnforceRegoPolicy** -effect en de gerelateerde **Kubernetes-service** categorie worden _afgeschaft_. Gebruik in plaats daarvan de effecten _controleren_ en _weigeren_ met de resource provider modus `Microsoft.Kubernetes.Data` .
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy-evaluatie
 
@@ -392,11 +441,11 @@ Elke 15 minuten wordt een volledige scan van het cluster voltooid en worden de r
 
 De eigenschap **Details** van het effect EnforceRegoPolicy heeft de subeigenschappen waarmee de gate keeper v2 Admission Control-regel wordt beschreven.
 
-- **policyId** [vereist]
+- **policyId** (vereist)
   - Een unieke naam die als een para meter wordt door gegeven aan de Rego Admission Control-regel.
-- **beleid** [vereist]
+- **beleid** (vereist)
   - Hiermee geeft u de URI op van de Rego Admission Control-regel.
-- **policyParameters** [Optioneel]
+- **policyParameters** (optioneel)
   - Hiermee worden alle para meters en waarden gedefinieerd die moeten worden door gegeven aan het Rego-beleid.
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy-voor beeld
@@ -445,15 +494,21 @@ Wanneer een beleids definitie die gebruikmaakt van het Modify-effect, wordt uitg
 
 De eigenschap **Details** van het effect Modify heeft alle subeigenschappen die de machtigingen definiëren die nodig zijn voor herstel en de **bewerkingen** die worden gebruikt om label waarden toe te voegen, bij te werken of te verwijderen.
 
-- **roleDefinitionIds** [vereist]
+- **roleDefinitionIds** (vereist)
   - Deze eigenschap moet een matrix van teken reeksen bevatten die overeenkomen met de op rollen gebaseerde toegangs beheer functie-ID die toegankelijk is voor het abonnement. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
   - De gedefinieerde rol moet alle bewerkingen bevatten die zijn toegewezen aan de rol [Inzender](../../../role-based-access-control/built-in-roles.md#contributor) .
-- **bewerkingen** [vereist]
+- **conflictEffect** (optioneel)
+  - Hiermee wordt bepaald welke beleids definitie ' WINS ' in het geval van meer dan één beleids definitie dezelfde eigenschap wijzigt.
+    - Voor nieuwe of bijgewerkte bronnen heeft de beleids definitie met _weigeren_ prioriteit. Beleids definities met _controle_ alle **bewerkingen**overs Laan. Als er meer dan één beleids definitie is _geweigerd, wordt_de aanvraag geweigerd als een conflict. Als alle beleids definities _controle_hebben, worden geen van de **bewerkingen** van de conflicterende beleids definities verwerkt.
+    - Voor bestaande bronnen geldt dat als er meerdere beleids regels zijn _geweigerd_, de nalevings status _conflicterend_is. Als een of minder beleids definities zijn _geweigerd_, retourneert elke toewijzing een nalevings status van _niet-compatibel_.
+  - Beschik bare waarden: _controleren_, _weigeren_, _uitgeschakeld_.
+  - De standaard waarde is _weigeren_.
+- **bewerkingen** (vereist)
   - Een matrix met alle label bewerkingen die moeten worden voltooid voor overeenkomende resources.
   - Eigenschappen:
-    - **bewerking** [vereist]
+    - **bewerking** (vereist)
       - Definieert welke actie moet worden uitgevoerd op een overeenkomende resource. Opties zijn: _addOrReplace_, _toevoegen_, _verwijderen_. Een gezichte lijkt op [Append](#append) het _toevoegen_ van het effect.
-    - **veld** [vereist]
+    - **veld** (vereist)
       - Het label dat moet worden toegevoegd, vervangen of verwijderd. Label namen moeten voldoen aan dezelfde naam Conventie voor andere [velden](./definition-structure.md#fields).
     - **waarde** (optioneel)
       - De waarde waarop de tag moet worden ingesteld.
@@ -528,6 +583,7 @@ Voor beeld 2: de `env` tag verwijderen en de `environment` tag toevoegen of best
         "roleDefinitionIds": [
             "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
         ],
+        "conflictEffect": "deny",
         "operations": [
             {
                 "operation": "Remove",
@@ -542,8 +598,6 @@ Voor beeld 2: de `env` tag verwijderen en de `environment` tag toevoegen of best
     }
 }
 ```
-
-
 
 ## <a name="layering-policy-definitions"></a>Beleids definities voor lagen
 
@@ -580,5 +634,5 @@ Elke toewijzing wordt afzonderlijk geëvalueerd. Daarom is er geen kans dat een 
 - Lees over de [structuur van Azure Policy-definities](definition-structure.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
 - Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
-- Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
+- Ontdek hoe u [niet-compatibele resources kunt herstellen](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

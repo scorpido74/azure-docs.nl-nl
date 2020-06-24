@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: c9cf77971038a3d7d160180b93594736d3ca6200
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 8a92540ff2c57ff5c1aa827237a7341aecc1592b
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84674224"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84789256"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-verificatiebeleid
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -50,14 +50,14 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 |Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|verificatie-basis|Hoofd element.|Ja|
+|verificatie-basis|Hoofd element.|Yes|
 
 ### <a name="attributes"></a>Kenmerken
 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Ja|N.v.t.|
-|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Ja|N.v.t.|
+|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Yes|N.v.t.|
+|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Yes|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -99,7 +99,7 @@ In dit voor beeld wordt het client certificaat ingesteld in het beleid in plaats
   
 |Naam|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
-|verificatie-certificaat|Hoofd element.|Ja|  
+|verificatie-certificaat|Hoofd element.|Yes|  
   
 ### <a name="attributes"></a>Kenmerken  
   
@@ -107,7 +107,7 @@ In dit voor beeld wordt het client certificaat ingesteld in het beleid in plaats
 |----------|-----------------|--------------|-------------|  
 |vingerafdruk|De vinger afdruk voor het client certificaat.|Ofwel `thumbprint` of `certificate-id` moeten aanwezig zijn.|N.v.t.|
 |certificaat-id|De naam van de certificaat resource.|Ofwel `thumbprint` of `certificate-id` moeten aanwezig zijn.|N.v.t.|
-|body|Client certificaat als een byte matrix.|Nee|N.v.t.|
+|body|Client certificaat als een byte matrix.|No|N.v.t.|
 |wachtwoord|Het wacht woord voor het client certificaat.|Wordt gebruikt als het certificaat dat is opgegeven in `body` , is beveiligd met een wacht woord.|N.v.t.|
   
 ### <a name="usage"></a>Gebruik  
@@ -118,12 +118,14 @@ In dit voor beeld wordt het client certificaat ingesteld in het beleid in plaats
 -   **Beleids bereik:** alle bereiken  
 
 ##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Verifiëren met beheerde identiteit  
- Gebruik het `authentication-managed-identity` beleid om te verifiëren met een back-end-service met behulp van de beheerde identiteit van de API Management service. Dit beleid gebruikt in feite de beheerde identiteit voor het verkrijgen van een toegangs token van Azure Active Directory voor toegang tot de opgegeven resource. Nadat het token is verkregen, wordt met het beleid de waarde van het token in de `Authorization` header ingesteld met behulp van het `Bearer` schema.
+ Gebruik het `authentication-managed-identity` beleid om te verifiëren met een back-end-service met behulp van de beheerde identiteit. Dit beleid gebruikt in feite de beheerde identiteit voor het verkrijgen van een toegangs token van Azure Active Directory voor toegang tot de opgegeven resource. Nadat het token is verkregen, wordt met het beleid de waarde van het token in de `Authorization` header ingesteld met behulp van het `Bearer` schema.
+
+Zowel door het systeem toegewezen identiteit als een van de door de gebruiker toegewezen identiteit kan worden gebruikt om een token aan te vragen. Als `client-id` er geen door het systeem toegewezen identiteit wordt gebruikt, wordt ervan uitgegaan. Als de `client-id` variabele is opgegeven, wordt er een token aangevraagd voor de door de gebruiker toegewezen identiteit van Azure Active Directory
   
 ### <a name="policy-statement"></a>Beleids verklaring  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>Voorbeeld  
@@ -174,15 +176,16 @@ In dit voor beeld wordt het client certificaat ingesteld in het beleid in plaats
   
 |Naam|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
-|verificatie-beheerd identiteit |Hoofd element.|Ja|  
+|verificatie-beheerd identiteit |Hoofd element.|Yes|  
   
 ### <a name="attributes"></a>Kenmerken  
   
 |Naam|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|resource|Tekenreeks. De App-ID van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Ja|N.v.t.|  
-|uitvoer-token-variabele-naam|Tekenreeks. De naam van de context variabele die de token waarde ontvangt als object type `string` . |Nee|N.v.t.|  
-|negeren-fout|True. Als `true` deze is ingesteld op, blijft de beleids pijplijn worden uitgevoerd, zelfs als er geen toegangs token is verkregen.|Nee|false|  
+|resource|Tekenreeks. De App-ID van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Yes|N.v.t.|
+|client-id|Tekenreeks. De App-ID van de door de gebruiker toegewezen identiteit in Azure Active Directory.|No|door het systeem toegewezen identiteit|
+|uitvoer-token-variabele-naam|Tekenreeks. De naam van de context variabele die de token waarde ontvangt als object type `string` . |No|N.v.t.|  
+|negeren-fout|True. Als `true` deze is ingesteld op, blijft de beleids pijplijn worden uitgevoerd, zelfs als er geen toegangs token is verkregen.|No|false|  
   
 ### <a name="usage"></a>Gebruik  
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

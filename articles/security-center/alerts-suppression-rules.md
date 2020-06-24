@@ -8,14 +8,14 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 84b5cd8a59103f60249da861238acb45f8aa2fd5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8644a4e7dc8973775d952581bfc57d266c79f1a5
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871701"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130786"
 ---
-# <a name="suppressing-alerts-from-azure-security-centers-threat-protection"></a>Waarschuwingen onderdrukken van de bedreigings beveiliging van Azure Security Center
+# <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Waarschuwingen onderdrukken van de bedreigings beveiliging van Azure Security Center
 
 Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwingen kunt gebruiken om foutieve positieve of andere ongewenste beveiligings waarschuwingen in Azure Security Center te onderdrukken.
 
@@ -28,7 +28,7 @@ Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwi
     - ✔ National/soeverein (US Gov, China gov, andere gov)
 
 
-## <a name="introduction-to-suppression-rules"></a>Inleiding tot onderdrukkings regels
+## <a name="what-are-suppression-rules"></a>Wat zijn onderdrukkings regels?
 
 De bedreigings beveiligings onderdelen van Azure Security Center het detecteren van bedreigingen in elk gebied van uw omgeving en het genereren van beveiligings waarschuwingen.
 
@@ -45,7 +45,7 @@ Met de onderdrukkings regels worden de criteria gedefinieerd waarvoor waarschuwi
 
 [![Azure Security Center pagina met beveiligings waarschuwingen met opties voor waarschuwingen onderdrukken](media/alerts-suppression-rules/alerts-screen-with-options.png)](media/alerts-suppression-rules/alerts-screen-with-options.png#lightbox)
 
-## <a name="creating-a-suppression-rule"></a>Een onderdrukkings regel maken
+## <a name="create-a-suppression-rule"></a>Een onderdrukkings regel maken
 
 Er zijn een paar manieren waarop u regels kunt maken om ongewenste beveiligings waarschuwingen te onderdrukken:
 
@@ -89,13 +89,13 @@ Een regel rechtstreeks in het Azure Portal maken:
 
 1. Sla de regel op. 
 
-## <a name="editing-suppression-rules"></a>Onderdrukkings regels bewerken
+## <a name="edit-a-suppression-rules"></a>Een onderdrukkings regel bewerken
 
-Als u de regels wilt bewerken die u hebt gemaakt, gebruikt u de pagina onderdrukkings regels.
+Als u een regel wilt bewerken die u hebt gemaakt, gebruikt u de pagina onderdrukkings regels.
 
 1. Selecteer op de pagina beveiligings waarschuwingen van Security Center de koppeling **onderdrukt regels** aan de bovenkant van de pagina.
 
-1. Op de pagina onderdrukkings regels wordt een lijst geopend met alle beschik bare regels op basis van de momenteel geselecteerde abonnementen. 
+1. De pagina onderdrukkings regels wordt geopend met alle regels voor de geselecteerde abonnementen.
 
     [![Lijst met onderdrukkings regels](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
@@ -103,13 +103,13 @@ Als u de regels wilt bewerken die u hebt gemaakt, gebruikt u de pagina onderdruk
 
 1. Breng de benodigde wijzigingen aan en selecteer **Toep assen**. 
 
-## <a name="deleting-suppression-rules"></a>Onderdrukkings regels verwijderen
+## <a name="delete-a-suppression-rule"></a>Een onderdrukkings regel verwijderen
 
 Als u een of meer regels die u hebt gemaakt, wilt verwijderen, gebruikt u de pagina onderdrukkings regels.
 
 1. Selecteer op de pagina beveiligings waarschuwingen van Security Center de koppeling **onderdrukt regels** aan de bovenkant van de pagina.
 
-1. Op de pagina onderdrukkings regels wordt een lijst geopend met alle beschik bare regels op basis van de momenteel geselecteerde abonnementen. 
+1. De pagina onderdrukkings regels wordt geopend met alle regels voor de geselecteerde abonnementen.
 
 1. Als u één regel wilt verwijderen, opent u het menu met weglatings tekens (...) voor de regel en selecteert u **verwijderen**.
 
@@ -117,7 +117,7 @@ Als u een of meer regels die u hebt gemaakt, wilt verwijderen, gebruikt u de pag
 
     ![Een of meer onderdrukkings regels verwijderen](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
-## <a name="viewing-alerts-that-have-been-suppressed"></a>Waarschuwingen weer geven die zijn onderdrukt
+## <a name="view-suppressed-alerts"></a>Onderdrukt waarschuwingen weer geven
 
 Waarschuwingen die overeenkomen met uw ingeschakelde onderdrukkings regels worden nog steeds gegenereerd, maar de status wordt ingesteld op **genegeerd**. U kunt de status bekijken in de Azure Portal of u hebt echter toegang tot uw Security Center beveiligings waarschuwingen. 
 
@@ -131,7 +131,7 @@ Gebruik het filter van Security Center om waarschuwingen weer te geven die door 
    [![Genegeerde waarschuwingen weer geven](media/alerts-suppression-rules/view-dismissed-alerts.png)](media/alerts-suppression-rules/view-dismissed-alerts.png#lightbox)
 
 
-## <a name="using-the-api-to-create-and-manage-suppression-rules"></a>De API gebruiken voor het maken en beheren van onderdrukkings regels
+## <a name="create-and-manage-suppression-rules-with-the-api"></a>Onderdrukkings regels maken en beheren met de API
 
 U kunt regels voor het onderdrukken van waarschuwingen maken, weer geven of verwijderen via de REST API van Security Center. 
 

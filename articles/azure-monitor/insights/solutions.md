@@ -6,18 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832041"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906884"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Bewakings oplossingen in Azure Monitor
-
-Bewakings oplossingen maken gebruik van services in azure om meer inzicht te krijgen in de werking van een bepaalde toepassing of service. Dit artikel bevat een kort overzicht van de bewakings oplossingen in Azure en informatie over het gebruik en de installatie ervan.
-
-U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Deze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen. Naast de oplossingen die door micro soft worden geleverd, kunnen partners en klanten [beheer oplossingen maken](solutions-creating.md) voor gebruik in hun eigen omgeving of worden ze beschikbaar gesteld aan klanten via de community.
+Bewakings oplossingen maken gebruik van services in azure voor een extra analyse van de werking van een bepaalde toepassing of service. Dit artikel bevat een kort overzicht van de bewakings oplossingen in Azure en informatie over het gebruik en de installatie ervan. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Deze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.
 
 ## <a name="use-monitoring-solutions"></a>Bewakingsoplossingen gebruiken
 

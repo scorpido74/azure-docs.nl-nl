@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: 0444ffd27b3a261268f04f0077cca3116521e6f7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 06/19/2020
+ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484520"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117944"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -85,7 +85,7 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
 
 1. Genereer de sleutel opnieuw. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)voor meer informatie over het opnieuw genereren van een toegangs sleutel. Sla de nieuwe sleutel op.
 
-1. Als u de werk ruimte voor het gebruik van de nieuwe sleutel wilt bijwerken, gebruikt u de volgende stappen:
+1. De nieuwe sleutel wordt na een uur automatisch gesynchroniseerd met de Azure Machine Learning-werk ruimte. Gebruik de volgende stappen om ervoor te zorgen dat de werk ruimte direct wordt gesynchroniseerd met de nieuwe sleutel:
 
     1. Meld u aan bij het Azure-abonnement dat uw werk ruimte bevat met behulp van de volgende Azure CLI-opdracht:
 

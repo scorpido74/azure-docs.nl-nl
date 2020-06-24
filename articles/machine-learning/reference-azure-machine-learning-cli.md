@@ -8,14 +8,14 @@ ms.topic: reference
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 03/05/2020
+ms.date: 06/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: d4eb0ec0d3c3becc4fddd5923cd040f3957732bc
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: cd636ed1ff4369360fb5faae02e8095983cad043
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434062"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214516"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installeer & gebruik de CLI-extensie voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ De CLI is geen vervanging voor de Azure Machine Learning SDK. Het is een aanvull
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+* Als u de CLI wilt gebruiken, moet u een Azure-abonnement hebben. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
 
@@ -195,23 +195,7 @@ De volgende opdrachten laten zien hoe u met gegevens sets in Azure Machine Learn
 
     Voor informatie over de indeling van het JSON-bestand dat wordt gebruikt voor het definiëren van de gegevensset, gebruikt u `az ml dataset register --show-template` .
 
-    Zie voor meer informatie [AZ ml dataset REGI ster](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Een actieve of afgeschafte gegevensset archiveren:
-
-    ```azurecli-interactive
-    az ml dataset archive -n dataset-name
-    ```
-
-    Zie voor meer informatie [AZ ml dataset Archive](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
-
-+ Een gegevensset afschaffen:
-
-    ```azurecli-interactive
-    az ml dataset deprecate -d replacement-dataset-id -n dataset-to-deprecate
-    ```
-
-    Zie [AZ ml dataset afschaffen](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)voor meer informatie.
+    Zie voor meer informatie [AZ ml dataset REGI ster](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-register).
 
 + Alle gegevens sets in een werk ruimte weer geven:
 
@@ -219,7 +203,7 @@ De volgende opdrachten laten zien hoe u met gegevens sets in Azure Machine Learn
     az ml dataset list
     ```
 
-    Zie de [lijst AZ ml dataset](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)voor meer informatie.
+    Zie de [lijst AZ ml dataset](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-list)voor meer informatie.
 
 + Details van een gegevensset ophalen:
 
@@ -227,15 +211,7 @@ De volgende opdrachten laten zien hoe u met gegevens sets in Azure Machine Learn
     az ml dataset show -n dataset-name
     ```
 
-    Zie [AZ ml dataset show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive)(Engelstalig) voor meer informatie.
-
-+ Een gearchiveerde of afgeschafte gegevensset opnieuw activeren:
-
-    ```azurecli-interactive
-    az ml dataset reactivate -n dataset-name
-    ```
-
-    Zie voor meer informatie [AZ ml dataset reactivate](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
+    Zie [AZ ml dataset show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-show)(Engelstalig) voor meer informatie.
 
 + Registratie van een gegevensset opheffen:
 

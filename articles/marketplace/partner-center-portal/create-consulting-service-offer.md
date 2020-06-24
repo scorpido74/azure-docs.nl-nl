@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 52b97e772897289f0c54c4520da7d7af80f44dc3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700949"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213708"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -109,6 +109,37 @@ Hier definieert u de details van het aanbod dat op Marketplace wordt weer gegeve
 
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding met de woord groep begint, &quot; is deze toepassing alleen beschikbaar in [niet-Engelse taal]. &quot; Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
+
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in azure Marketplace (alle prijzen zijn bijvoorbeeld alleen bedoeld voor de werkelijke kosten):
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Logo
+2. Prijs
+3. Oplossings gebieden
+4. Bedrijfstakken
+5. Naam van aanbieding
+6. Samenvatting
+7. Beschrijving
+8. Scherm afbeeldingen/Video's
+
+<br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Logo
+2. Prijs
+3. Producten
+4. Bedrijfstakken
+5. Naam van aanbieding
+6. Samenvatting
+7. Beschrijving
+8. Scherm afbeeldingen/Video's
+9. Documenten
 
 ### <a name="name"></a>Name
 

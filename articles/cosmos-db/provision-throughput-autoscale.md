@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465657"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791143"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-containers en-data bases maken met de door Voer van automatisch schalen
 
@@ -57,8 +57,9 @@ Elk uur wordt u gefactureerd voor de hoogste door Voer `T` die het systeem binne
 
 Het ingangs punt voor automatisch schalen maximale door Voer `Tmax` wordt gestart om 4000 ru/s, die tussen 400-4000 ru/s. U kunt `Tmax` in stappen van 1000 ru/s instellen en de waarde op elk gewenst moment wijzigen.  
 
-## <a name="enable-autoscale-on-existing-resources"></a>Automatisch schalen op bestaande resources inschakelen ##
-Gebruik de [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) om automatisch schalen in te scha kelen op een bestaande data base of container. U kunt op elk gewenst moment scha kelen tussen de ingerichte door Voer van automatisch schalen en standaard (hand matig). Raadpleeg deze [documentatie](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) voor meer informatie.
+## <a name="enable-autoscale-on-existing-resources"></a>Automatisch schalen op bestaande resources inschakelen
+
+Gebruik de [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) om automatisch schalen in te scha kelen op een bestaande data base of container. U kunt op elk gewenst moment scha kelen tussen de ingerichte door Voer van automatisch schalen en standaard (hand matig). Raadpleeg deze [documentatie](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) voor meer informatie. Voor alle Api's kunt u op dit moment alleen de Azure Portal gebruiken om automatisch schalen in te scha kelen op bestaande resources.
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Doorvoer-en opslag limieten voor automatisch schalen
 

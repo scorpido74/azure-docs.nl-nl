@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 5955f52cda73630f371a46f83ac0fb9a252b80e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9044380ec4f8f28a2056ab1e30a9fec3081ad204
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655488"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734874"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure AD Domain Services
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure Active Directory Domain Services
 
 Toepassingen en services hebben vaak een identiteit nodig om zichzelf te verifiëren met andere resources. Een webservice moet bijvoorbeeld mogelijk worden geverifieerd met een database service. Als een toepassing of service meerdere instanties heeft, zoals een webserver Farm, kan het hand matig maken en configureren van de identiteiten voor deze resources tijdrovend zijn.
 
 In plaats daarvan kunt u een beheerd service account (gMSA) van een groep maken in het beheerde domein van Azure Active Directory Domain Services (Azure AD DS). Het Windows-besturings systeem beheert automatisch de referenties voor een gMSA, waardoor het beheer van grote groepen resources wordt vereenvoudigd.
 
-In dit artikel wordt beschreven hoe u een gMSA maakt in een door Azure AD DS beheerd domein met behulp van Azure PowerShell.
+In dit artikel wordt beschreven hoe u met Azure PowerShell een gMSA maakt in een beheerd domein.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -35,7 +35,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
     * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd-domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
 
@@ -49,11 +49,11 @@ Zie voor meer informatie [groep managed service accounts (gMSA) Overview (Engels
 
 ## <a name="using-service-accounts-in-azure-ad-ds"></a>Service accounts in azure AD DS gebruiken
 
-Als Azure AD DS beheerde domeinen worden vergrendeld en beheerd door micro soft, zijn er enkele aandachtspunten bij het gebruik van service accounts:
+Als beheerde domeinen worden vergrendeld en beheerd door micro soft, zijn er enkele aandachtspunten bij het gebruik van service accounts:
 
 * Maak service accounts in aangepaste organisatie-eenheden (OE) op het beheerde domein.
     * U kunt geen service account maken in de ingebouwde AADDC- *gebruikers* of *AADDC-computers* .
-    * Maak in plaats daarvan [een aangepaste OE][create-custom-ou] in het door Azure AD DS beheerde domein en maak vervolgens service accounts in die aangepaste organisatie-eenheid.
+    * Maak in plaats daarvan [een aangepaste OE][create-custom-ou] in het beheerde domein en maak vervolgens service accounts in die aangepaste organisatie-eenheid.
 * De basis sleutel voor Key Distribution Services (KDS) wordt vooraf gemaakt.
     * De basis sleutel KDS wordt gebruikt om wacht woorden voor Gmsa's te genereren en op te halen. In azure AD DS wordt de hoofdmap KDS voor u gemaakt.
     * U hebt geen rechten om een andere te maken of om de standaard KDS-basis sleutel te bekijken.
@@ -65,7 +65,7 @@ Maak eerst een aangepaste OE met behulp van de cmdlet [New-ADOrganizationalUnit]
 > [!TIP]
 > [Gebruik uw beheer-VM][tutorial-create-management-vm]om deze stappen uit te voeren om een gMSA te maken. Deze beheer-VM moet al de vereiste AD Power shell-cmdlets en de verbinding met het beheerde domein hebben.
 
-In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het door Azure AD DS beheerde domein met de naam *aaddscontoso.com*. Gebruik uw eigen OE en beheerde domein naam:
+In het volgende voor beeld wordt een aangepaste OE gemaakt met de naam *myNewOU* in het beheerde domein met de naam *aaddscontoso.com*. Gebruik uw eigen OE en beheerde domein naam:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"

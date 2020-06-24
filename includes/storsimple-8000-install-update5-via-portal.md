@@ -17,7 +17,7 @@ ms.locfileid: "67176233"
 
     ![Apparaat selecteren](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
-2. Navigeren > naar **Apparaatinstellingen apparaat-****updates**.
+2. Navigeren naar **Apparaatinstellingen apparaat-**  >  **updates**.
 
     ![Klik op updates voor apparaten](./media/storsimple-8000-install-update5-via-portal/update2.png)
 

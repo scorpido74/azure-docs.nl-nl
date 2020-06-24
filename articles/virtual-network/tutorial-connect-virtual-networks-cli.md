@@ -9,18 +9,18 @@ Customer intent: I want to connect two virtual networks so that virtual machines
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8c226d083c75d50639e7036de938626ca81a5ee
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235167"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703446"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Virtuele netwerken verbinden met virtuele netwerk peering met behulp van Azure CLI
 
@@ -29,13 +29,13 @@ U kunt virtuele netwerken met elkaar verbinden met virtueel-netwerk peering. Wan
 * Twee virtuele netwerken maken
 * Twee virtuele netwerken koppelen met virtueel-netwerkpeering
 * Een virtuele machine (VM) implementeren op elk van de virtuele netwerken
-* Communicatie tussen virtuele machines
+* Communiceren tussen VM's
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 ## <a name="create-virtual-networks"></a>Virtuele netwerken maken
 
@@ -45,7 +45,7 @@ Voordat u een virtueel netwerk maakt, moet u een resource groep maken voor het v
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet). In het volgende voor beeld wordt een virtueel netwerk met de naam *myVirtualNetwork1* gemaakt met het adres voorvoegsel *10.0.0.0/16*.
+Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet). In het volgende voor beeld wordt een virtueel netwerk met de naam *myVirtualNetwork1* gemaakt met het adres voorvoegsel *10.0.0.0/16*.
 
 ```azurecli-interactive 
 az network vnet create \
@@ -126,7 +126,7 @@ Maak een VM in elk virtueel netwerk, zodat u er in een latere stap tussen kunt c
 
 ### <a name="create-the-first-vm"></a>De eerste VM maken
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVm1* in het virtuele netwerk *myVirtualNetwork1* . Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. Met `--no-wait` deze optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap.
+Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een VM gemaakt met de naam *myVm1* in het virtuele netwerk *myVirtualNetwork1* . Als SSH-sleutels niet al bestaan op de standaardlocatie van de sleutel, worden ze met deze opdracht gemaakt. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`. Met deze `--no-wait` optie wordt de virtuele machine op de achtergrond gemaakt, zodat u verder kunt gaan met de volgende stap.
 
 ```azurecli-interactive
 az vm create \
@@ -170,9 +170,9 @@ Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt
 
 Let op het **openbare IP-adres**. Dit adres wordt gebruikt voor toegang tot de virtuele machine via internet in een latere stap.
 
-## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
+## <a name="communicate-between-vms"></a>Communiceren tussen VM's
 
-Gebruik de volgende opdracht om een SSH-sessie te maken met de *myVm2* -VM. Vervang `<publicIpAddress>` door het open bare IP-adres van uw virtuele machine. In het vorige voor beeld is het open bare IP-adres *13.90.242.231*.
+Gebruik de volgende opdracht om een SSH-sessie te maken met de *myVm2* -VM. Vervang door `<publicIpAddress>` het open bare IP-adres van uw virtuele machine. In het vorige voor beeld is het open bare IP-adres *13.90.242.231*.
 
 ```bash
 ssh <publicIpAddress>

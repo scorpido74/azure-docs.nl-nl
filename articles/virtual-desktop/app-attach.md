@@ -4,22 +4,23 @@ description: MSIX-app-koppeling instellen voor het virtuele bureau blad van Wind
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6544a0536a99261d1ebc13748a5365b9893e789
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605191"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204469"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
 > [!IMPORTANT]
 > MSIX app attach is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit onderwerp vindt u instructies voor het instellen van een MSIX-app-koppeling in een virtueel-bureaublad omgeving van Windows.
 
@@ -29,11 +30,29 @@ Voordat u aan de slag gaat, hebt u het volgende nodig om de MSIX-app-koppeling t
 
 - Toegang tot de Windows Insider-portal voor het verkrijgen van de versie van Windows 10 met ondersteuning voor de MSIX app attach-Api's.
 - Een werkende implementatie van virtueel bureau blad in Windows. Zie [een Tenant maken in het virtuele bureau blad van Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)voor meer informatie over het implementeren van de Windows Virtual Desktop-versie van 2019. Zie [een hostgroep maken met de Azure Portal](./create-host-pools-azure-marketplace.md)voor meer informatie over het implementeren van de Windows Virtual Desktop lente 2020-release.
+- Het MSIX-verpakkings programma.
+- Een netwerk share in uw Windows-implementatie voor virtueel bureau blad waar het MSIX-pakket wordt opgeslagen.
 
-- Het MSIX-verpakkings programma
-- Een netwerk share in uw Windows-implementatie voor virtueel bureau blad waar het MSIX-pakket wordt opgeslagen
+## <a name="get-the-os-image"></a>De installatie kopie van het besturings systeem ophalen
 
-## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>De installatie kopie van het besturings systeem downloaden van het technologie-acceptatie programma (tik)-Portal
+Eerst moet u de installatie kopie van het besturings systeem ophalen. U kunt de installatie kopie van het besturings systeem verkrijgen via de Azure Portal. Als u echter lid bent van het Windows Insider-programma, hebt u de mogelijkheid om in plaats daarvan de Windows Insider-portal te gebruiken.
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>De installatie kopie van het besturings systeem ophalen uit de Azure Portal
+
+De installatie kopie van het besturings systeem ophalen van de Azure Portal:
+
+1. Open de [Azure Portal](https://portal.azure.com) en meld u aan.
+
+2. Ga naar **een virtuele machine maken**.
+
+3. Op het tabblad **basis** selecteert u **Windows 10 Enter prise multi-session, versie 2004**.
+
+4. Volg de overige instructies om het maken van de virtuele machine te volt ooien.
+
+     >[!NOTE]
+     >U kunt deze VM gebruiken om een MSIX-app-koppeling rechtstreeks te testen. Voor meer informatie gaat u verder met [het genereren van een VHD-of VHDX-pakket voor MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lees deze sectie anders door.
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>De installatie kopie van het besturings systeem ophalen uit de Windows Insider-Portal
 
 De installatie kopie van het besturings systeem ophalen van de Windows Insider-portal:
 
@@ -45,30 +64,15 @@ De installatie kopie van het besturings systeem ophalen van de Windows Insider-p
 2. Schuif omlaag naar de sectie **Select Edition** en selecteer **Windows 10 Insider preview Enter prise (Fast) – Build 19041** of hoger.
 
 3. Selecteer **bevestigen**, selecteer de taal die u wilt gebruiken en selecteer vervolgens opnieuw **bevestigen** .
-    
+
      >[!NOTE]
      >Op het moment is Engels de enige taal die met de functie is getest. U kunt andere talen selecteren, maar deze kunnen niet worden weer gegeven zoals bedoeld.
-    
+
 4. Wanneer de download koppeling is gegenereerd, selecteert u de **64-bits downloaden** en slaat u deze op de lokale harde schijf op.
 
-## <a name="get-the-os-image-from-the-azure-portal"></a>De installatie kopie van het besturings systeem ophalen uit de Azure Portal
+## <a name="prepare-the-vhd-image-for-azure"></a>De VHD-installatie kopie voorbereiden voor Azure
 
-De installatie kopie van het besturings systeem ophalen van de Azure Portal:
-
-1. Open de [Azure Portal](https://portal.azure.com) en meld u aan.
-
-2. Ga naar **een virtuele machine maken**.
-
-3. Op het tabblad **basis** selecteert u **Windows 10 Enter prise multi-session, versie 2004**.
-      
-4. Volg de overige instructies om het maken van de virtuele machine te volt ooien.
-
-     >[!NOTE]
-     >U kunt deze VM gebruiken om een MSIX-app-koppeling rechtstreeks te testen. Voor meer informatie gaat u verder met [het genereren van een VHD-of VHDX-pakket voor MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lees deze sectie anders door.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>De VHD-installatie kopie voorbereiden voor Azure 
-
-Voordat u aan de slag gaat, moet u een installatie kopie van een hoofd-VHD maken. Als u nog geen installatie kopie van de hoofd-VHD hebt gemaakt, gaat u naar voor [bereiding en past u een installatie kopie van een virtuele harde schijf](set-up-customize-master-image.md) aan en volgt u de instructies. 
+Vervolgens moet u een installatie kopie van een hoofd-VHD maken. Als u nog geen installatie kopie van de hoofd-VHD hebt gemaakt, gaat u naar voor [bereiding en past u een installatie kopie van een virtuele harde schijf](set-up-customize-master-image.md) aan en volgt u de instructies.
 
 Nadat u de installatie kopie van de hoofd-VHD hebt gemaakt, moet u automatische updates voor MSIX app attach-toepassingen uitschakelen. Als u automatische updates wilt uitschakelen, moet u de volgende opdrachten uitvoeren in een opdracht prompt met verhoogde bevoegdheid:
 
@@ -90,7 +94,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Nadat u automatische updates hebt uitgeschakeld, moet u Hyper-V inschakelen omdat u de opdracht Mount-VHD gebruikt voor fase ring en ontkoppeling-VHD om te destageren. 
+Nadat u automatische updates hebt uitgeschakeld, moet u Hyper-V inschakelen omdat u de opdracht Mount-VHD gebruikt voor fase ring en ontkoppeling-VHD om te destageren.
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -102,7 +106,7 @@ Bereid vervolgens de VM-VHD voor Azure voor en upload de resulterende VHD-schijf
 
 Nadat u de VHD naar Azure hebt geüpload, maakt u een hostgroep die is gebaseerd op deze nieuwe installatie kopie door de instructies in de [groep een host maken te volgen met behulp van de zelf studie voor Azure Marketplace](create-host-pools-azure-marketplace.md) .
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>De toepassing voorbereiden voor de MSIX-app attach 
+## <a name="prepare-the-application-for-msix-app-attach"></a>De toepassing voorbereiden voor de MSIX-app attach
 
 Als u al een MSIX-pakket hebt, gaat u verder met het configureren van een [virtuele bureau blad-infra structuur voor Windows](#configure-windows-virtual-desktop-infrastructure). Als u oudere toepassingen wilt testen, volgt u de instructies in een [MSIX-pakket maken op basis van een installatie programma van een desktop computer op een virtuele machine](/windows/msix/packaging-tool/create-app-package-msi-vm/) om de verouderde toepassing te converteren naar een MSIX-pakket.
 
@@ -185,7 +189,7 @@ Voordat u begint, moet u ervoor zorgen dat uw netwerk share aan de volgende vere
 - De share is met SMB compatibel.
 - De virtuele machines die deel uitmaken van de Session Host-groep hebben NTFS-machtigingen voor de share.
 
-### <a name="set-up-an-msix-app-attach-share"></a>Een koppelings share voor een MSIX-app instellen 
+### <a name="set-up-an-msix-app-attach-share"></a>Een koppelings share voor een MSIX-app instellen
 
 Maak in uw Windows Virtual Desktop-omgeving een netwerk share en verplaats het pakket daar.
 
@@ -426,16 +430,16 @@ Met elk van deze automatische scripts wordt één fase van de app gekoppelde scr
 
 ## <a name="use-packages-offline"></a>Pakketten offline gebruiken
 
-Als u pakketten gebruikt van de [Microsoft Store voor bedrijven](https://businessstore.microsoft.com/) of de [Microsoft Store voor onderwijs](https://educationstore.microsoft.com/) binnen uw netwerk of op apparaten die niet zijn verbonden met internet, moet u de pakket licenties van de Microsoft Store ophalen en op uw apparaat installeren om de app te kunnen uitvoeren. Als uw apparaat online is en verbinding kan maken met de Microsoft Store voor bedrijven, moeten de vereiste licenties automatisch worden gedownload, maar als u offline bent, moet u de licenties hand matig instellen. 
+Als u pakketten gebruikt van de [Microsoft Store voor bedrijven](https://businessstore.microsoft.com/) of de [Microsoft Store voor onderwijs](https://educationstore.microsoft.com/) binnen uw netwerk of op apparaten die niet zijn verbonden met internet, moet u de pakket licenties van de Microsoft Store ophalen en op uw apparaat installeren om de app te kunnen uitvoeren. Als uw apparaat online is en verbinding kan maken met de Microsoft Store voor bedrijven, moeten de vereiste licenties automatisch worden gedownload, maar als u offline bent, moet u de licenties hand matig instellen.
 
-Als u de licentie bestanden wilt installeren, moet u een Power shell-script gebruiken dat de MDM_EnterpriseModernAppManagement_StoreLicenses02_01-klasse aanroept in de WMI Bridge-provider.  
+Als u de licentie bestanden wilt installeren, moet u een Power shell-script gebruiken dat de MDM_EnterpriseModernAppManagement_StoreLicenses02_01-klasse aanroept in de WMI Bridge-provider.
 
-U kunt als volgt de licenties instellen voor offline gebruik: 
+U kunt als volgt de licenties instellen voor offline gebruik:
 
 1. Down load het app-pakket, de licenties en de vereiste Frameworks van de Microsoft Store voor bedrijven. U hebt zowel de versleutelde als niet-versleutelde licentie bestanden nodig. Gedetailleerde Download instructies vindt u [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
 2. Werk de volgende variabelen bij in het script voor stap 3:
       1. `$contentID`is de ContentID-waarde van het niet-versleutelde licentie bestand (. XML). U kunt het licentie bestand openen in een tekst editor naar keuze.
-      2. `$licenseBlob`is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze. 
+      2. `$licenseBlob`is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze.
 3. Voer het volgende script uit vanuit een Power shell-prompt voor beheerders. Er is een goede plaats om de licentie-installatie uit te voeren aan het einde van het [faserings script](#stage-the-powershell-script) dat ook moet worden uitgevoerd vanaf een beheerders prompt.
 
 ```powershell
@@ -450,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -469,7 +473,7 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

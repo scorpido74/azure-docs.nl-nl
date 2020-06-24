@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170627"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888120"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs configureren (preview-versie)
 
@@ -28,20 +28,22 @@ In dit artikel wordt beschreven hoe u object replicatie configureert voor uw ops
 
 Voordat u object replicatie configureert, moet u de bron-en doel opslag accounts maken als deze nog niet bestaan. Beide accounts moeten voor algemeen gebruik v2-opslag accounts zijn. Zie [een Azure Storage-account maken](../common/storage-account-create.md)voor meer informatie.
 
-Zorg er ook voor dat u zich hebt geregistreerd voor de volgende vooraf bekeken onderdelen:
+Een opslag account kan fungeren als het bron account voor Maxi maal twee doel accounts. En een doel account kan niet meer dan twee bron accounts bevatten. De bron- en doelaccounts kunnen zich allemaal in verschillende regio's bevinden. U kunt afzonderlijke replicatie beleidsregels configureren om gegevens naar elk van de doel accounts te repliceren.
+
+Voordat u begint, moet u ervoor zorgen dat u hebt geregistreerd voor de volgende vooraf bekeken onderdelen:
 
 - [Object replicatie (preview-versie)](object-replication-overview.md)
 - [Versie beheer van BLOB (preview)](versioning-overview.md)
 - [Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)](storage-blob-change-feed.md)
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voordat u object replicatie configureert in de Azure Portal, maakt u de bron-en doel containers in hun respectieve opslag accounts, als deze nog niet bestaan. Daarnaast is het inschakelen van BLOB-versie beheer en het wijzigen van de feed voor het bron account, en schakelt u BLOB-versie beheer in op het doel account.
 
 Voer de volgende stappen uit om een replicatie beleid te maken in de Azure Portal:
 
 1. Navigeer naar het bron opslag account in de Azure Portal.
-1. Onder **instellingen**selecteert u **object replicatie**.
+1. Selecteer onder **BLOB service** **object replicatie**.
 1. Selecteer **replicatie instellen**.
 1. Selecteer het doel abonnement en het opslag account.
 1. Selecteer in de sectie **container paren** een bron container van het bron account en een doel container van het doel account. U kunt Maxi maal 10 container paren per replicatie beleid maken.
@@ -232,7 +234,7 @@ az storage account or-policy show --resource-group <resource-group> \
 
 Als u een replicatie beleid en de bijbehorende regels wilt verwijderen, gebruikt u Azure Portal, Power shell of CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om een replicatie beleid te verwijderen in de Azure Portal:
 

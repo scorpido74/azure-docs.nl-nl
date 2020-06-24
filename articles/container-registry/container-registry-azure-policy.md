@@ -2,24 +2,21 @@
 title: Naleving met behulp van Azure Policy
 description: Ingebouwde beleids regels toewijzen in Azure Policy om de naleving van uw Azure-container registers te controleren
 ms.topic: article
-ms.date: 02/26/2020
-ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 6101db865749f98f50e04f1fec3b8009089b7908
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145004"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791891"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Controle van de naleving van Azure-container registers met behulp van Azure Policy
 
 [Azure Policy](../governance/policy/overview.md) is een service in azure die u gebruikt om beleids regels te maken, toe te wijzen en te beheren. Met deze beleidsregels worden verschillende regels en effecten afgedwongen voor uw resources, zodat deze resources voldoen aan de standaarden en service level agreements in uw bedrijf.
 
-In dit artikel worden ingebouwde beleids regels (preview-versie) geïntroduceerd voor Azure Container Registry. Gebruik deze beleids regels om nieuwe en bestaande registers te controleren op naleving.
+In dit artikel worden ingebouwde beleids regels voor Azure Container Registry geïntroduceerd. Gebruik deze beleids regels om nieuwe en bestaande registers te controleren op naleving.
 
 Er worden geen kosten in rekening gebracht voor het gebruik van Azure Policy.
-
-> [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 ## <a name="built-in-policy-definitions"></a>Ingebouwde beleids definities
 
@@ -27,7 +24,7 @@ De volgende ingebouwde beleids definities zijn specifiek voor Azure Container Re
 
 [!INCLUDE [azure-policy-samples-policies-container-registry](../../includes/policy/samples/bycat/policies-container-registry.md)]
 
-Zie ook de ingebouwde netwerk beleids definitie: [[Preview] Container Registry moet een service-eind punt voor een virtueel netwerk gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
+Zie ook de ingebouwde Network Policy Definition: [container Registry moet een service-eind punt voor een virtueel netwerk gebruiken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78).
 
 ## <a name="assign-policies"></a>Beleid toewijzen
 
@@ -48,7 +45,10 @@ Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Zie [ni
 
 1. Selecteer **alle services**en zoek naar **beleid**.
 1. Selecteer **naleving**.
-1. Gebruik de filters om de nalevings status te beperken of om ![te zoeken naar naleving](./media/container-registry-azure-policy/azure-policy-compliance.png)van beleids regels in de portal.
+1. Gebruik de filters om de nalevings status te beperken of om te zoeken naar beleid.
+
+    ![Naleving van beleid in Portal](./media/container-registry-azure-policy/azure-policy-compliance.png)
+    
 1. Selecteer een beleid om statistische details en gebeurtenissen van de naleving te controleren. Selecteer desgewenst een specifiek REGI ster voor resource naleving.
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Beleids naleving in de Azure CLI
@@ -64,8 +64,8 @@ Voorbeelduitvoer:
 ```
 Name                                                                                   ID
 -------------------------------------------------------------------------------------  --------------------------------------------------------------------------------------------------------------------------------
-[Preview]: Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
-[Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
+Container Registries should not allow unrestricted network access           /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/b4faf132dc344b84ba68a441
+Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
 Voer vervolgens de [lijst AZ policy state](/cli/azure/policy/state#az-policy-state-list) uit om de nalevings status van JSON-indeling te retour neren voor alle resources onder een specifieke beleids-id:
@@ -87,12 +87,8 @@ az policy state list \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over Azure Policy [definities](../governance/policy/concepts/definition-structure.md) en [effecten](../governance/policy/concepts/effects.md)
+* Meer informatie over Azure Policy [definities](../governance/policy/concepts/definition-structure.md) en [effecten](../governance/policy/concepts/effects.md).
 
-* Een [aangepaste beleids definitie](../governance/policy/tutorials/create-custom-policy-definition.md) maken
+* Maak een [aangepaste beleids definitie](../governance/policy/tutorials/create-custom-policy-definition.md).
 
-* Meer informatie over de beheer [mogelijkheden](../governance/index.yml) van Azure
-
-
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+* Meer informatie over de beheer [mogelijkheden](../governance/index.yml) van Azure.

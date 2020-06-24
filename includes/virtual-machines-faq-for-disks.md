@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837935"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242067"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
-## <a name="managed-disks"></a>Beheerde schijven
+## <a name="managed-disks"></a>Managed Disks
 
 **Wat is Azure Managed Disks?**
 
@@ -302,7 +302,7 @@ Nee. Azure Site Recovery Azure naar Azure-beveiliging voor Vm's met Managed Disk
 
 **Kan ik Vm's migreren met onbeheerde schijven die zich bevinden op opslag accounts die al of niet eerder zijn versleuteld naar Managed disks?**
 
-Ja
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks en Storage Service Encryption
 
@@ -340,7 +340,7 @@ Ja. Alle beheerde moment opnamen en installatie kopieën worden automatisch vers
 
 **Kan ik Vm's converteren met onbeheerde schijven die zich bevinden op de opslag accounts die eerder zijn versleuteld op beheerde schijven?**
 
-Ja
+Yes
 
 **Wordt een geëxporteerde VHD van een beheerde schijf of een moment opname ook versleuteld?**
 
@@ -451,7 +451,7 @@ De 8 TiB-, 16 TiB-en 32 TiB-schijf-Sku's worden ondersteund in alle regio's onde
 
 **Bieden we ondersteuning voor het inschakelen van host-caching op alle schijf grootten?**
 
-Het opslaan van alleen-lezen-en lees-en schrijf bewerkingen in de host wordt ondersteund op schijven met minder dan 4 TiB. Voor schijf grootten die meer dan 4 TiB zijn, bieden we geen ondersteuning voor het instellen van de cache optie anders dan geen. We raden u aan cache gebruik te maken van kleinere schijf grootten, waarbij u de prestaties beter kunt zien met gegevens in de cache van de virtuele machine.
+Host caching (ReadOnly en lezen/schrijven) wordt ondersteund op schijf grootten die kleiner zijn dan 4 TiB. Dit betekent dat elke schijf die tot 4095 GiB is ingericht, kan profiteren van de caching van de host. Host caching wordt niet ondersteund voor schijf grootten die groter zijn dan of gelijk zijn aan 4096 GiB. Zo kan een P50 Premium-schijf die is ingericht op 4095 GiB, profiteren van het gebruik van host caching en een P50-schijf die is ingericht op 4096 GiB geen gebruik kunnen maken van de caching van de host. We raden u aan cache gebruik te maken van kleinere schijf grootten, waarbij u de prestaties beter kunt zien met gegevens in de cache van de virtuele machine.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 

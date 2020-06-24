@@ -9,29 +9,29 @@ ms.topic: reference
 ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/16/2020
+ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555861"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907547"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt de script module voor het uitvoeren van python in Azure Machine Learning Designer (preview-versie) beschreven.
 
-Gebruik deze module om python-code uit te voeren. Zie [het volgende artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)voor meer informatie over de architectuur en ontwerp principes van python.
+Gebruik deze module om python-code uit te voeren. Zie [dit artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)voor meer informatie over de architectuur en ontwerp principes van python.
 
-Met python kunt u taken uitvoeren die momenteel niet worden ondersteund door bestaande modules, zoals:
+Met python kunt u taken uitvoeren die niet worden ondersteund door bestaande modules, zoals:
 
-+ Gegevens visualiseren met`matplotlib`
-+ Python-bibliotheken gebruiken om gegevens sets en modellen in uw werk ruimte op te sommen
-+ Gegevens lezen, laden en bewerken vanuit bronnen die niet worden ondersteund door de module [gegevens importeren](./import-data.md)
-+ Voer uw eigen diepe leer code uit 
++ Het visualiseren van gegevens met behulp van `matplotlib` .
++ Python-bibliotheken gebruiken voor het opsommen van gegevens sets en modellen in uw werk ruimte.
++ Gegevens lezen, laden en bewerken vanuit bronnen die niet worden ondersteund door de module [gegevens importeren](./import-data.md) .
++ Voer uw eigen diepe leer code uit. 
 
 
-Azure Machine Learning maakt gebruik van de Anaconda-distributie van python, met veel algemene hulpprogram ma's voor gegevens verwerking. De Anaconda-versie wordt automatisch bijgewerkt. Huidige versie is:
+Azure Machine Learning maakt gebruik van de Anaconda-distributie van python, met veel algemene hulpprogram ma's voor gegevens verwerking. De Anaconda-versie wordt automatisch bijgewerkt. De huidige versie is:
  -  Anaconda 4.5 + Distribution voor python 3,6 
 
 De vooraf geïnstalleerde pakketten zijn:
@@ -145,26 +145,37 @@ De vooraf geïnstalleerde pakketten zijn:
 -    werkzeug = = 0.16.1
 -    wiel = = 0.34.2
 
- Als u andere pakketten wilt installeren die niet in de vooraf geïnstalleerde lijst voor komt, bijvoorbeeld *scikit-misc*, voegt u de volgende code toe aan het script: 
+ Als u pakketten wilt installeren die zich niet in de vooraf geïnstalleerde lijst bevinden (bijvoorbeeld *scikit-misc*), voegt u de volgende code toe aan het script: 
 
  ```python
 import os
 os.system(f"pip install scikit-misc")
 ```
+
+Gebruik de volgende code om pakketten te installeren voor betere prestaties, met name voor demijnen:
+```python
+import importlib.util
+package_name = 'scikit-misc'
+spec = importlib.util.find_spec(package_name)
+if spec is None:
+    import os
+    os.system(f"pip install scikit-misc")
+```
+
 > [!NOTE]
-> Als uw pijp lijn meerdere python-script modules voor uitvoeren bevat en dezelfde pakketten nodig heeft die niet voor komen in de lijst met vooraf geïnstalleerde, installeert u de pakketten in elke module. 
+> Als uw pijp lijn meerdere python-script modules voor uitvoeren bevat waarvoor pakketten nodig zijn die zich niet in de vooraf geïnstalleerde lijst bevinden, installeert u de pakketten in elke module.
 
 ## <a name="upload-files"></a>Bestanden uploaden
-Het **script python uitvoeren** ondersteunt het uploaden van bestanden met behulp van [Azure machine learning python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
+De script module voor het uitvoeren van python ondersteunt het uploaden van bestanden met behulp van de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
 
-In het volgende voor beeld ziet u hoe u een afbeeldings bestand uploadt in de script module voor het **uitvoeren van python** :
+In het volgende voor beeld ziet u hoe u een afbeeldings bestand uploadt in de script module voor het uitvoeren van python:
 
 ```Python
 
-# The script MUST contain a function named azureml_main
+# The script MUST contain a function named azureml_main,
 # which is the entry point for this module.
 
-# imports up here can be used to
+# Imports up here can be used to
 import pandas as pd
 
 # The entry point function must have two input arguments:
@@ -186,70 +197,70 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     run.upload_file(f"graphics/{img_file}", img_file)
 
     # Return value must be of a sequence of pandas.DataFrame
-    # E.g.
+    # For example:
     #   -  Single return value: return dataframe1,
     #   -  Two return values: return dataframe1, dataframe2
     return dataframe1,
 }
 ```
 
-Nadat de pijplijn uitvoering is voltooid, kunt u een voor beeld van de afbeelding in het rechterdeel venster van de module bekijken
+Nadat de pijplijn uitvoering is voltooid, kunt u een voor beeld van de afbeelding bekijken in het rechterdeel venster van de module.
 
 > [!div class="mx-imgBorder"]
-> ![Geüpload-afbeelding](media/module/upload-image-in-python-script.png)
+> ![Voor beeld van geüploade afbeelding](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>Het configureren van een script voor het uitvoeren van python
 
-De **script module python uitvoeren** bevat een voor beeld van python-code die u als uitgangs punt kunt gebruiken. Als u de **script** module voor het uitvoeren van python wilt configureren, geeft u een set invoer-en Python-code op die moet worden uitgevoerd in het **python-script** tekstvak.
+De script module python uitvoeren bevat een voor beeld van python-code die u als uitgangs punt kunt gebruiken. Als u de script module voor het uitvoeren van python wilt configureren, geeft u een set invoer-en Python-code op die in het tekstvak **python-script** wordt uitgevoerd.
 
 1. Voeg de **script module python uitvoeren** toe aan de pijp lijn.
 
 2. Voeg gegevens sets toe aan **Dataset1** uit de ontwerp functie die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1**.
 
-    Het gebruik van een gegevensset is optioneel, als u gegevens wilt genereren met behulp van python of python-code wilt gebruiken om de gegevens rechtstreeks in de module te importeren.
+    Het gebruik van een gegevensset is optioneel. Gebruik deze functie als u gegevens wilt genereren met behulp van python of python-code wilt gebruiken om de gegevens rechtstreeks in de module te importeren.
 
-    Deze module ondersteunt toevoeging van een tweede gegevensset op **Dataset2**. Raadpleeg de tweede gegevensset in uw python-script als DataFrame2.
+    Deze module biedt ondersteuning voor het toevoegen van een tweede gegevensset op **Dataset2**. Raadpleeg de tweede gegevensset in uw python-script als **DataFrame2**.
 
-    Gegevens sets die zijn opgeslagen in Azure Machine Learning worden automatisch geconverteerd naar **Panda** data. frames wanneer deze met deze module worden geladen.
+    Gegevens sets die zijn opgeslagen in Azure Machine Learning worden automatisch geconverteerd naar Panda data-frames wanneer deze met deze module worden geladen.
 
     ![Python-invoer toewijzing uitvoeren](media/module/python-module.png)
 
-4. Als u nieuwe Python-pakketten of-code wilt toevoegen, voegt u het zip-bestand toe dat deze aangepaste resources bevat in de **script bundel**. De invoer voor de **script bundel** moet een zip-bestand zijn dat is geüpload naar uw werk ruimte als een dataset van het bestands type. U kunt de gegevensset uploaden op de Asset-pagina **gegevens sets** en u kunt de module gegevensset slepen en neerzetten vanuit de lijst **mijn gegevens sets** in de structuur van de module voor ontwerpen in Designer. 
+4. Als u nieuwe Python-pakketten of-code wilt toevoegen, voegt u het zip-bestand toe dat deze aangepaste resources in de **script bundel**bevat. De invoer voor de **script bundel** moet een zip-bestand zijn dat is geüpload naar uw werk ruimte als een dataset van het bestands type. U kunt de gegevensset uploaden op de Asset-pagina met **gegevens sets** . U kunt de module gegevensset slepen vanuit de lijst **mijn gegevens sets** in de structuur van de module links op de ontwerp pagina ontwerpen. 
 
     Elk bestand in het geüploade gezipte archief kan worden gebruikt tijdens de uitvoering van de pijp lijn. Als het archief een mapstructuur bevat, blijft de structuur behouden, maar moet u een map met de naam **src** naar het pad laten voorafgaan door.
 
 5. Typ of plak geldige python-script in het tekstvak **python-script** .
 
     > [!NOTE]
-    > Wees zeer voorzichtig bij het schrijven van uw script en zorg ervoor dat er geen syntaxis fout is, zoals het gebruik van niet-gedeclareerde objecten of niet-geïmporteerde modules. U kunt ook extra aandacht best Eden aan de lijst met vooraf geïnstalleerde modules. Als u modules wilt importeren die niet worden weer gegeven, installeert u de bijbehorende pakketten in uw script, zoals
+    >  Wees voorzichtig met het schrijven van uw script. Zorg ervoor dat er geen syntaxis fouten zijn, zoals het gebruik van niet-gedeclareerde variabelen of niet-geïmporteerde modules of functies. U kunt extra aandacht best Eden aan de vooraf geïnstalleerde module lijst. Als u modules wilt importeren die niet worden weer gegeven, installeert u de bijbehorende pakketten in uw script, zoals:
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    Het **python-script** tekstvak is vooraf ingevuld met enkele instructies in opmerkingen, en voorbeeld code voor gegevens toegang en-uitvoer. U moet deze code bewerken of vervangen. Zorg ervoor dat u python-conventies voor inspringing en hoofdletter gebruik volgt.
+    Het **python-script** tekstvak is vooraf ingevuld met enkele instructies in opmerkingen, en voorbeeld code voor gegevens toegang en-uitvoer. U moet deze code bewerken of vervangen. Python-conventies volgen voor inspringing en behuizing:
 
     + Het script moet een functie bevatten met `azureml_main` de naam van het toegangs punt voor deze module.
-    + De functie voor het toegangs punt moet twee invoer argumenten hebben: `Param<dataframe1>` en `Param<dataframe2>` , zelfs wanneer deze argumenten niet worden gebruikt in uw script.
-    + Gezipte bestanden die zijn verbonden met de derde invoer poort, worden uitgepakt en opgeslagen in de map, `.\Script Bundle` , die ook aan de python worden toegevoegd `sys.path` . 
+    + De functie voor het toegangs punt moet twee invoer argumenten hebben `Param<dataframe1>` en `Param<dataframe2>` , zelfs wanneer deze argumenten niet in uw script worden gebruikt.
+    + Gezipte bestanden die zijn verbonden met de derde invoer poort, worden uitgepakt en opgeslagen in de map `.\Script Bundle` , die ook aan de python worden toegevoegd `sys.path` . 
 
-    Als uw zip-bestand bevat, kunt u `mymodule.py` het ook importeren met `import mymodule` .
+    Als uw zip-bestand bevat `mymodule.py` , kunt u dit importeren met behulp van `import mymodule` .
 
-    + Er kunnen twee gegevens sets worden geretourneerd naar de ontwerper. dit moet een reeks van het type zijn `pandas.DataFrame` . U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
+    Er kunnen twee gegevens sets worden geretourneerd naar de ontwerper. dit moet een reeks van het type zijn `pandas.DataFrame` . U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
 
-6. Verzend de pijp lijn of selecteer de module en klik op **geselecteerde uitvoeren** om alleen het python-script uit te voeren.
+6. Verzend de pijp lijn of selecteer de module en selecteer **geselecteerde uitvoeren** om alleen het python-script uit te voeren.
 
     Alle gegevens en code worden in een virtuele machine geladen en uitgevoerd met behulp van de opgegeven python-omgeving.
 
 ## <a name="results"></a>Resultaten
 
-De resultaten van alle berekeningen die door de Inge sloten python-code worden uitgevoerd, moeten als een Panda worden geleverd. Data frame, die automatisch wordt geconverteerd naar de indeling van de Azure Machine Learning gegevensset, zodat u de resultaten kunt gebruiken met andere modules in de pijp lijn.
+De resultaten van alle berekeningen door de Inge sloten python-code moeten worden geleverd als `pandas.DataFrame` , die automatisch wordt geconverteerd naar de indeling van de Azure machine learning-gegevensset. U kunt vervolgens de resultaten gebruiken met andere modules in de pijp lijn.
 
 De module retourneert twee gegevens sets:  
   
-+ **Gegevensset 1**die is gedefinieerd door de eerste geretourneerde Panda data frame in Python-script
++ De **resultaten gegevensset 1**, zoals gedefinieerd door het eerste geretourneerde Panda-gegevens frame in een python-script.
 
-+ **Resulterende gegevensset 2**, gedefinieerd door de tweede geretourneerde Panda data frame in Python-script
++ **Resulterende gegevensset 2**, gedefinieerd door het tweede geretourneerde gegevens frame van Panda, in een python-script.
 
 
 ## <a name="next-steps"></a>Volgende stappen

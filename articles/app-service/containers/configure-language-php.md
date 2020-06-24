@@ -1,15 +1,15 @@
 ---
 title: PHP-apps configureren
-description: Meer informatie over het configureren van een vooraf gemaakte PHP-container voor uw app. In dit artikel vindt u de meest voorkomende configuratie taken.
+description: Meer informatie over het configureren van een vooraf gemaakte PHP-container voor uw app. In dit artikel worden de meest algemene configuratietaken beschreven.
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234940"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905694"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Een Linux PHP-app voor Azure App Service configureren
 
@@ -39,24 +39,24 @@ Voer de volgende opdracht uit in het [Cloud shell](https://shell.azure.com) om d
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="customize-build-automation"></a>Bouw automatisering aanpassen
+## <a name="customize-build-automation"></a>De automatisering van bouwbewerkingen aanpassen
 
-Als u uw app implementeert met git-of ZIP-pakketten waarvoor build Automation is ingeschakeld, wordt de App Service stapsgewijs door de volgende reeks gemaakt:
+Als u uw app wilt implementeren met behulp van Git of zip-pakketten waarbij bouwautomatisering is ingeschakeld, moet u de volgende stappen voor de App Service-bouwautomatisering in deze volgorde uitvoeren:
 
-1. Voer een aangepast script uit, indien opgegeven door `PRE_BUILD_SCRIPT_PATH` .
+1. Voer aangepast script uit als dit door `PRE_BUILD_SCRIPT_PATH` is opgegeven.
 1. Voer `php composer.phar install` uit.
-1. Voer een aangepast script uit, indien opgegeven door `POST_BUILD_SCRIPT_PATH` .
+1. Voer aangepast script uit als dit is opgegeven door `POST_BUILD_SCRIPT_PATH`.
 
-`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Voor het uitvoeren van opdrachten die vooraf zijn gebouwd, definieert u `PRE_BUILD_COMMAND` . Als u opdrachten na het bouwen wilt uitvoeren, definieert u `POST_BUILD_COMMAND` .
+`PRE_BUILD_COMMAND`en `POST_BUILD_COMMAND` zijn omgevings variabelen die standaard leeg zijn. Als u vooraf gebouwde opdrachten wilt uitvoeren, definieert u `PRE_BUILD_COMMAND`. Als u achteraf gebouwde opdrachten wilt uitvoeren, definieert u `POST_BUILD_COMMAND`.
 
-In het volgende voor beeld worden de twee variabelen opgegeven voor een reeks opdrachten, gescheiden door komma's.
+In het volgende voorbeeld worden de twee variabelen voor een reeks opdrachten opgegeven, gescheiden door komma's.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)voor meer omgevings variabelen voor het aanpassen van het bouwen van Automation.
+Zie [Oryx-configuratie](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md) voor aanvullende omgevingsvariabelen om bouwautomatisering aan te passen.
 
 Zie [Oryx documentation](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)(Engelstalig) voor meer informatie over de manier waarop app service php-apps in Linux uitvoert en bouwt.
 
@@ -70,7 +70,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Toegang tot omgevingsvariabelen
 
-In App Service kunt u de [app-instellingen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code instellen. Vervolgens kunt u ze openen met het standaard [getenv ()-](https://secure.php.net/manual/function.getenv.php) patroon. Voor toegang tot bijvoorbeeld de app-instelling `DB_HOST` gebruikt u de volgende code:
+In App Service kunt u [app-instellingen configureren](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code. Vervolgens kunt u ze openen met het standaard [getenv ()-](https://secure.php.net/manual/function.getenv.php) patroon. Voor toegang tot bijvoorbeeld de app-instelling `DB_HOST` gebruikt u de volgende code:
 
 ```php
 getenv("DB_HOST")
@@ -104,17 +104,17 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 Populaire webframeworks bieden toegang tot de `X-Forwarded-*`-informatie in het patroon van de standaard-app. In [CodeIgniter](https://codeigniter.com/) wordt met [is_https()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) standaard de waarde van `X_FORWARDED_PROTO` gecontroleerd.
 
-## <a name="customize-phpini-settings"></a>Instellingen voor php. ini aanpassen
+## <a name="customize-phpini-settings"></a>php.ini-instellingen aanpassen
 
-Als u wijzigingen moet aanbrengen in uw PHP-installatie, kunt u de [php. ini-instructies](https://www.php.net/manual/ini.list.php) wijzigen door de volgende stappen uit te voeren.
+Als u wijzigingen moet aanbrengen in uw PHP-installatie, kunt u een van de [php.ini-instructies](https://www.php.net/manual/ini.list.php) wijzigen door de volgende stappen uit te voeren.
 
 > [!NOTE]
-> De beste manier om de PHP-versie en de huidige *php. ini* -configuratie te bekijken, is door [phpinfo ()](https://www.php.net/manual/function.phpinfo.php) aan te roepen in uw app.
+> De beste manier om de PHP-versie en de huidige *php.ini* configuratie te bekijken is door [phpinfo ()](https://php.net/manual/function.phpinfo.php) aan te roepen in uw app.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Aanpassen-niet-PHP_INI_SYSTEM-instructies
 
-Als u de richt lijnen PHP_INI_USER, PHP_INI_PERDIR en PHP_INI_ALL (Zie [php. ini-instructies](https://www.php.net/manual/ini.list.php)) wilt aanpassen, voegt u een *. htaccess* -bestand toe aan de hoofdmap van uw app.
+Als u PHP_INI_USER-, PHP_INI_PERDIR-en PHP_INI_ALL-instructies wilt aanpassen (Zie [php.ini-instructies](https://www.php.net/manual/ini.list.php)), voegt u een *. htaccess* -bestand toe aan de hoofdmap van uw app.
 
 Voeg in het *. htaccess* -bestand de instructies toe met behulp van de `php_value <directive-name> <value>` syntaxis. Bijvoorbeeld:
 
@@ -134,7 +134,7 @@ Als alternatief voor het gebruik van *. htaccess*kunt u [ini_set ()](https://www
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM-instructies aanpassen
 
-U kunt de *htaccess* -methode niet gebruiken om PHP_INI_SYSTEM-instructies (Zie de [instructies in PHP. ini](https://www.php.net/manual/ini.list.php)) aan te passen. App Service biedt een afzonderlijk mechanisme voor het gebruik van de `PHP_INI_SCAN_DIR` app-instelling.
+Als u PHP_INI_SYSTEM-instructies wilt aanpassen (Zie [php.ini-instructies](https://www.php.net/manual/ini.list.php)), kunt u de methode *. htaccess* niet gebruiken. App Service biedt een afzonderlijk mechanisme voor het gebruik van de `PHP_INI_SCAN_DIR` app-instelling.
 
 Voer eerst de volgende opdracht uit in het [Cloud shell](https://shell.azure.com) om een toepassings instelling toe te voegen `PHP_INI_SCAN_DIR` :
 
@@ -142,11 +142,11 @@ Voer eerst de volgende opdracht uit in het [Cloud shell](https://shell.azure.com
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`is de standaardmap waarin *php. ini* zich bevindt. `/home/site/ini`is de aangepaste map waarin u een aangepast *. ini* -bestand toevoegt. U scheidt de waarden met een `:` .
+`/usr/local/etc/php/conf.d`is de standaardmap waarin *php.ini* bestaat. `/home/site/ini`is de aangepaste map waarin u een aangepast *. ini* -bestand toevoegt. U scheidt de waarden met een `:` .
 
 Ga naar de Web SSH-sessie met uw Linux-container ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Maak een map in `/home/site` `ini` de naam en maak vervolgens een *. ini* -bestand in de `/home/site/ini` map (bijvoorbeeld *Settings. ini)* met de instructies die u wilt aanpassen. Gebruik de syntaxis die u zou gebruiken in een *php. ini* -bestand. 
+Maak een map in `/home/site` `ini` de naam en maak vervolgens een *. ini* -bestand in de `/home/site/ini` map (bijvoorbeeld *settings.ini)* met de instructies die u wilt aanpassen. Gebruik de syntaxis die u in een *php.ini* -bestand zou gebruiken. 
 
 > [!TIP]
 > In de ingebouwde Linux-containers in App Service wordt */Home* gebruikt als permanente gedeelde opslag. 
@@ -164,10 +164,10 @@ Start de app opnieuw op om de wijzigingen van kracht te laten worden.
 
 ## <a name="enable-php-extensions"></a>PHP-uitbrei dingen inschakelen
 
-De ingebouwde PHP-installaties bevatten de meest gebruikte uitbrei dingen. U kunt extra uitbrei dingen op dezelfde manier inschakelen als u de [php. ini-instructies aanpast](#customize-php_ini_system-directives).
+De ingebouwde PHP-installaties bevatten de meest gebruikte uitbrei dingen. U kunt extra uitbrei dingen op dezelfde manier inschakelen als [php.ini-instructies](#customize-php_ini_system-directives).
 
 > [!NOTE]
-> De beste manier om de PHP-versie en de huidige *php. ini* -configuratie te bekijken, is door [phpinfo ()](https://php.net/manual/function.phpinfo.php) aan te roepen in uw app.
+> De beste manier om de PHP-versie en de huidige *php.ini* configuratie te bekijken is door [phpinfo ()](https://php.net/manual/function.phpinfo.php) aan te roepen in uw app.
 >
 
 Als u extra uitbrei dingen wilt inschakelen, volgt u deze stappen:
@@ -187,9 +187,9 @@ Start de app opnieuw op om de wijzigingen van kracht te laten worden.
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>SSH-sessie openen in browser
+## <a name="open-ssh-session-in-browser"></a>SSH-sessie in de browser openen
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -197,9 +197,9 @@ Start de app opnieuw op om de wijzigingen van kracht te laten worden.
 
 Wanneer een werkende PHP-app zich op een andere manier gedraagt in App Service of fouten bevat, kunt u het volgende proberen:
 
-- [Open de logboek stroom](#access-diagnostic-logs).
-- Test de app lokaal in de productie modus. App Service worden uw node. js-apps in de productie modus uitgevoerd. u moet er dus voor zorgen dat uw project in de productie modus lokaal werkt zoals verwacht. Bijvoorbeeld:
-    - Afhankelijk van uw *Composer. json*kunnen verschillende pakketten worden geïnstalleerd voor de productie modus ( `require` VS. `require-dev` ).
+- [Open de logboekstream](#access-diagnostic-logs).
+- Test de app lokaal in de productie modus. App Service wordt uw app in productie modus uitgevoerd. u moet er dus voor zorgen dat uw project in de productie modus lokaal werkt zoals verwacht. Bijvoorbeeld:
+    - Afhankelijk van uw *composer.jsop*kunnen verschillende pakketten worden geïnstalleerd voor de productie modus ( `require` VS. `require-dev` ).
     - Bepaalde web Frameworks kunnen statische bestanden in de productie modus anders implementeren.
     - Bepaalde web Frameworks kunnen aangepaste opstart scripts gebruiken wanneer ze in de productie modus worden uitgevoerd.
 - Voer uw app uit in App Service in de foutopsporingsmodus. In [Laravel](https://meanjs.org/)kunt u bijvoorbeeld uw app configureren voor het uitvoeren van debug-berichten in de productie door [de `APP_DEBUG` app-instelling `true` in te stellen op ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
@@ -209,7 +209,7 @@ Wanneer een werkende PHP-app zich op een andere manier gedraagt in App Service o
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: PHP-app met MySQL](tutorial-php-mysql-app.md)
+> [Zelfstudie: PHP-app met MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
 > [Veelgestelde vragen over App Service Linux](app-service-linux-faq.md)

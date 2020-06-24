@@ -4,16 +4,16 @@ description: Een installatie kopie van een virtueel bureau blad van Windows voor
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611956"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212782"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -63,9 +63,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 ## <a name="software-preparation-and-installation"></a>Software voorbereiding en-installatie
 
-In deze sectie wordt beschreven hoe u FSLogix en Windows Defender voorbereidt en installeert, evenals een aantal basis configuratie opties voor apps en het REGI ster van uw installatie kopie. 
+In deze sectie wordt beschreven hoe u FSLogix en Windows Defender voorbereidt en installeert, evenals een aantal basis configuratie opties voor apps en het REGI ster van uw installatie kopie.
 
-Als u Office 365 ProPlus en OneDrive op uw VM installeert, gaat u naar [Office installeren op een Master-VHD-installatie kopie](install-office-on-wvd-master-image.md) en volgt u de instructies voor het installeren van de apps. Wanneer u klaar bent, keert u terug naar dit artikel.
+Als u Microsoft 365 apps voor Enter prise en OneDrive op uw VM installeert, gaat u naar [Office installeren op een Master-VHD-installatie kopie](install-office-on-wvd-master-image.md) en volgt u de instructies voor het installeren van de apps. Wanneer u klaar bent, keert u terug naar dit artikel.
 
 Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen, raden we u aan deze te installeren nadat u de instructies van deze sectie hebt voltooid.
 
@@ -87,7 +87,7 @@ Zie [uitsluitingen configureren en valideren op basis van bestands extensie en m
 
 Automatische updates via lokale groepsbeleid uitschakelen:
 
-1. Open **Lokale groepsbeleidsobjecteditor\\Beheersjablonen\\Windows-\\onderdelen Windows Update**.
+1. Open **Lokale groepsbeleidsobjecteditor \\ Beheersjablonen \\ Windows-onderdelen \\ Windows Update**.
 2. Klik met de rechter muisknop op **Automatische updates configureren** en stel deze in op **uitgeschakeld**.
 
 U kunt ook de volgende opdracht uitvoeren op een opdracht prompt om Automatische updates uit te scha kelen.
@@ -113,7 +113,7 @@ Tijd zones omleiden:
 1. Open de **console Groepsbeleidbeheer**op de Active Directory-server.
 2. Breid uw domein en groepsbeleid objecten uit.
 3. Klik met de rechter muisknop op het **Groepsbeleid-object** dat u hebt gemaakt voor de instellingen voor groeps beleid en selecteer **bewerken**.
-4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad** > apparaat voor sessie-host**en bron omleiding**.
+4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie**  >  **beleid**  >  **Beheersjablonen**  >  **Windows-onderdelen**  >  **extern bureaublad-services**  >  **extern bureaublad**apparaat voor sessie-host  >  **en bron omleiding**.
 5. Schakel de instelling **tijd zone omleiding toestaan** in.
 
 U kunt deze opdracht ook uitvoeren op de hoofd installatie kopie om tijd zones om te leiden:
@@ -204,7 +204,7 @@ In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie upl
 Nu u een installatie kopie hebt, kunt u hostgroepen maken of bijwerken. Raadpleeg de volgende artikelen voor meer informatie over het maken en bijwerken van hostgroepen:
 
 - [Een hostpool maken met een Azure Resource Manager-sjabloon](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
-- [Zelf studie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Zelfstudie: een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Een hostpool maken met PowerShell](create-host-pools-powershell.md)
 - [Een profielcontainer maken voor een hostpool met behulp van een bestandsshare](create-host-pools-user-profile.md)
 - [De taakverdelingsmethode voor Windows Virtual Desktop configureren](configure-host-pool-load-balancing.md)

@@ -1,0 +1,81 @@
+---
+title: Dv4 en Dsv4-serie-Azure Virtual Machines
+description: Specificaties voor de virtuele machines uit de Dv4-en Dsv4-serie.
+author: brbell
+ms.author: brbell
+ms.reviewer: cynthn
+ms.custom: mimckitt
+ms.service: virtual-machines
+ms.subservice: sizes
+ms.topic: conceptual
+ms.date: 06/08/2020
+ms.openlocfilehash: 68cd6673283362380fc5a1f4b780f0a22aa53402
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783587"
+---
+# <a name="dv4-and-dsv4-series"></a>Dv4- en Dsv4-serie
+
+De Dv4-en Dsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-functie heeft een zeer hoge Turbo klok snelheid van 3,4 GHz. 
+
+> [!NOTE]
+> Voor veelgestelde vragen raadpleegt u [Azure VM-grootten zonder lokale tijdelijke schijf](azure-vms-no-temp-disk.md).
+## <a name="dv4-series"></a>Dv4-serie
+
+Dv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De grootte van de Dv4-serie biedt een combi natie van opties voor vCPU, geheugen en externe opslag voor de meeste productiewerk belastingen. Virtuele machines uit de Dv4-serie beschikken over de [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html).
+
+Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd. Als u Premium Storage-schijven wilt gebruiken, gebruikt u de Dsv4-grootten. De prijs-en facturerings meters voor Dsv4-grootten zijn gelijk aan die van de Dv4-serie.
+
+
+> [!IMPORTANT]
+> Deze nieuwe grootten zijn momenteel alleen beschikbaar als open bare preview. U kunt zich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)aanmelden voor deze Dv4-en Dsv4-serie. 
+
+
+ACU: 195-210
+
+Premium Storage: niet ondersteund
+
+Premium Storage caching: niet ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
+
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+|---|---|---|---|---|---|
+| Standard_D2_v4 | 2 | 8 | Alleen externe opslag | 4 | 2/1000 |
+| Standard_D4_v4 | 4 | 16  | Alleen externe opslag | 8 | 2/2000 |
+| Standard_D8_v4 | 8 | 32 | Alleen externe opslag | 16 | 4/4000 |
+| Standard_D16_v4 | 16 | 64 | Alleen externe opslag | 32 | 8/8000 |
+| Standard_D32_v4 | 32 | 128 | Alleen externe opslag | 32 | 8/16000 |
+| Standard_D48_v4 | 48 | 192 | Alleen externe opslag | 32 | 8/24000 |
+| Standard_D64_v4 | 64 | 256 | Alleen externe opslag | 32 | 8/30000 |
+
+## <a name="dsv4-series"></a>Dsv4-serie
+
+Dsv4-serie-grootten worden uitgevoerd op Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). De grootte van de Dv4-serie biedt een combi natie van opties voor vCPU, geheugen en externe opslag voor de meeste productiewerk belastingen. Virtuele machines uit de Dsv4-serie beschikken over de [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html). Opslag van externe gegevens schijven wordt afzonderlijk van virtuele machines gefactureerd.
+
+> [!IMPORTANT]
+> Deze nieuwe grootten zijn momenteel alleen beschikbaar als open bare preview. U kunt zich [hier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)aanmelden voor deze Dv4-en Dsv4-serie. 
+
+ACU: 195-210
+
+Premium Storage: ondersteund
+
+Premium Storage caching: ondersteund
+
+Livemigratie: ondersteund
+
+Updates voor geheugen behoud: ondersteund
+
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale door Voer in cache: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+|---|---|---|---|---|---|---|---|
+| Standard_D2s_v4 | 2 | 8  | Alleen externe opslag | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
+| Standard_D4s_v4 | 4 | 16 | Alleen externe opslag | 8 | 38500/242 (100) | 6400/96 | 2/2000 |
+| Standard_D8s_v4 | 8 | 32 | Alleen externe opslag | 16 | 77000/485 (200) | 12800/192 | 4/4000 |
+| Standard_D16s_v4 | 16 | 64  | Alleen externe opslag | 32 | 154000/968 (400) | 25600/384 | 8/8000 |
+| Standard_D32s_v4 | 32 | 128 | Alleen externe opslag | 32 | 308000/1936 (800) | 51200/768 | 8/16000 |
+| Standard_D48s_v4 | 48 | 192 | Alleen externe opslag | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
+| Standard_D64s_v4 | 64 | 256 | Alleen externe opslag | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |

@@ -2,21 +2,21 @@
 title: Gebruikers worden niet ingericht in mijn toepassing
 description: Veelvoorkomende problemen oplossen die zich voordoen wanneer u geen gebruikers ziet die worden weer gegeven in een Azure AD Gallery-toepassing die u hebt geconfigureerd voor het inrichten van gebruikers met Azure AD
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fa47fbba7632077c83dc1d594c7c58c59c869bf7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594012"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782276"
 ---
 # <a name="no-users-are-being-provisioned"></a>Er worden geen gebruikers ingericht 
 >[!NOTE]
@@ -42,7 +42,7 @@ Hieronder vindt u een lijst met algemene probleem gebieden die u kunt inzoomen a
 - [Inrichtings logboeken zeggen dat gebruikers worden overgeslagen en niet ingericht, ook al toegewezen](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>De inrichtings service lijkt niet te worden gestart
-Als u instelt dat **de inrichtings status** moet worden **ingeschakeld** in de sectie ** &gt; Azure Active Directory de module bedrijfs apps &gt; \[toepassings naam\] &gt;inrichten** van de Azure Portal. Er worden echter geen andere status gegevens op die pagina weer gegeven na de volgende keer opnieuw laden. de service wordt waarschijnlijk uitgevoerd, maar is nog niet klaar met het volt ooien van een eerste cyclus. Controleer de hierboven beschreven **inrichtings Logboeken (preview)** om te bepalen welke bewerkingen de service uitvoert en of er fouten zijn.
+Als u instelt dat de **inrichtings status** moet worden **ingeschakeld** in de sectie **Azure Active Directory de &gt; module bedrijfs Apps &gt; \[ toepassings naam \] &gt; inrichten** van de Azure Portal. Er worden echter geen andere status gegevens op die pagina weer gegeven na de volgende keer opnieuw laden. de service wordt waarschijnlijk uitgevoerd, maar is nog niet klaar met het volt ooien van een eerste cyclus. Controleer de hierboven beschreven **inrichtings Logboeken (preview)** om te bepalen welke bewerkingen de service uitvoert en of er fouten zijn.
 
 >[!NOTE]
 >Een eerste cyclus kan 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-adres lijst en het aantal gebruikers binnen het bereik van de inrichting. Volgende synchronisaties na de eerste cyclus zijn sneller, omdat er door de inrichtings service water merken worden opgeslagen die de status van beide systemen na de eerste cyclus vertegenwoordigen. De eerste cyclus verbetert de prestaties van volgende synchronisaties.

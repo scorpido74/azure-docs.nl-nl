@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 301f77d4eba7b1a63dd49de280de252bd9af1956
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77472448"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080474"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Een Cognitive Services resource koppelen aan een vaardig heden in azure Cognitive Search 
 
@@ -29,7 +29,7 @@ Azure Cognitive Search heeft een afhankelijkheid op Cognitive Services, waaronde
 
 + Azure Cognitive Search maakt gebruik van de Cognitive Services resource sleutel die u op een vaardighedenset hebt geboden om afbeeldings-en tekst verrijking te factureren. Het uitvoeren van factureer bare vaardig heden bevindt zich op de Cognitive Services prijs op basis van [betalen per gebruik](https://azure.microsoft.com/pricing/details/cognitive-services/).
 
-+ Afbeeldings extractie is een Azure Cognitive Search bewerking die optreedt wanneer documenten worden gekraakt voordat verrijking wordt uitgevoerd. De afbeeldings extractie is Factureerbaar. Zie de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400)voor meer informatie over het ophalen van images.
++ Afbeeldings extractie is een Azure Cognitive Search bewerking die optreedt wanneer documenten worden gekraakt voordat verrijking wordt uitgevoerd. De afbeeldings extractie is Factureerbaar. Zie de [pagina met prijzen voor Azure Cognitive Search](https://azure.microsoft.com/pricing/details/search/)voor meer informatie over het ophalen van images.
 
 + Tekst extractie vindt ook plaats tijdens het kraken van documenten. Het is niet factureerbaar.
 
@@ -108,9 +108,9 @@ Als u een bestaande vaardig heden hebt, kunt u deze koppelen aan een nieuwe of a
 
 ## <a name="attach-cognitive-services-programmatically"></a>Cognitive Services via een programma koppelen
 
-Wanneer u de vaardig heden programmatisch definieert, voegt u een `cognitiveServices` sectie toe aan de vaardig heden. In dat gedeelte moet u de sleutel van de Cognitive Services resource die u wilt koppelen aan de vaardig heden, toevoegen. Houd er rekening mee dat de resource zich in dezelfde regio als uw Azure Cognitive Search-resource moet bevinden. Neem `@odata.type`ook de naam op en stel `#Microsoft.Azure.Search.CognitiveServicesByKey`deze in op.
+Wanneer u de vaardig heden programmatisch definieert, voegt u een `cognitiveServices` sectie toe aan de vaardig heden. In dat gedeelte moet u de sleutel van de Cognitive Services resource die u wilt koppelen aan de vaardig heden, toevoegen. Houd er rekening mee dat de resource zich in dezelfde regio als uw Azure Cognitive Search-resource moet bevinden. Neem ook de `@odata.type` naam op en stel deze in op `#Microsoft.Azure.Search.CognitiveServicesByKey` .
 
-In het volgende voor beeld ziet u dit patroon. U ziet `cognitiveServices` de sectie aan het einde van de definitie.
+In het volgende voor beeld ziet u dit patroon. U ziet de `cognitiveServices` sectie aan het einde van de definitie.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06

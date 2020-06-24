@@ -2,22 +2,22 @@
 title: Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen-Azure AD
 description: Meer informatie over het beheren van toestemmings aanvragen wanneer de gebruikers toestemming is uitgeschakeld of beperkt en hoe u een aanvraag voor de beheerder van de hele Tenant kunt evalueren voor een toepassing.
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367844"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763190"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen
 
@@ -114,7 +114,7 @@ Zie [Azure AD gebruiken voor toegang tot toepassingen voor](what-is-access-manag
 
 [De beheerder toestemming werk stroom configureren](configure-admin-consent-workflow.md)
 
-[Configureren hoe eind gebruikers toestemming geven voor toepassingen](configure-user-consent.md)
+[Configureren hoe eindgebruikers toestemming geven voor toepassingen](configure-user-consent.md)
 
 [Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
 
