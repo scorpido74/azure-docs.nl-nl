@@ -6,16 +6,16 @@ ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: e050675282d8a7784d31aaf45a564da991ff6e63
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9086e00e4b6caf89ab249bbf25ca03a6f068ba49
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020027"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248272"
 ---
-# <a name="connect-an-app-service-app-to-a-sql-database"></a>Een App Service-app verbinden met een SQL-database
+# <a name="connect-an-app-service-app-to-sql-database"></a>Een App Service-app verbinden met SQL Database
 
-In dit scenario leert u hoe u een Azure SQL-database en een App Service-app maakt. Vervolgens wordt de SQL-database aan de app gekoppeld met behulp van app-instellingen.
+In dit scenario leert u hoe u een database in Azure SQL Database en een App Service-app maakt. Vervolgens gaat u de database aan de app koppelen met behulp van app-instellingen.
 
 Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/overview) en voer vervolgens `Connect-AzAccount` uit om verbinding te maken met Azure.
 
@@ -23,7 +23,7 @@ Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure Powe
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to a SQL database")]
+[!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect an app to SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie 
 

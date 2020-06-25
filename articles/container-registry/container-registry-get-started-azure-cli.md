@@ -2,14 +2,14 @@
 title: 'Quickstart: Register maken - Azure CLI'
 description: Leer snel hoe u een persoonlijk Docker-containerregister maakt met behulp van Azure CLI.
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 888daa53b719151b4362597c7a300e82fe26860e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31e917fa306330ca579266e21560d7d42c7f2bc7
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682751"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752464"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Quickstart: Een privé-containerregister maken met Azure CLI
 
@@ -38,7 +38,8 @@ In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptima
 Maak een ACR-exemplaar met de opdracht [az acr create][az-acr-create]. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voorbeeld wordt *myContainerRegistry007* gebruikt. Werk deze waarde bij naar een unieke waarde.
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry007 --sku Basic
 ```
 
 Wanneer het register is gemaakt, is de uitvoer vergelijkbaar met het volgende:
@@ -64,14 +65,14 @@ Wanneer het register is gemaakt, is de uitvoer vergelijkbaar met het volgende:
 }
 ```
 
-Noteer `loginServer` in de uitvoer. Dit is de volledig gekwalificeerde registernaam (in kleine letters). In de rest van deze snelstart wordt `<acrName>` gebruikt als tijdelijke aanduiding voor de naam van het containerregister.
+Noteer `loginServer` in de uitvoer. Dit is de volledig gekwalificeerde registernaam (in kleine letters). In de rest van deze quickstart wordt `<registry-name>` gebruikt als tijdelijke aanduiding voor de naam van het containerregister en wordt `<login-server>` gebruikt als tijdelijke aanduiding voor naam van de aanmeldingsserver voor het register.
 
 ## <a name="log-in-to-registry"></a>Aanmelden bij register
 
 Voordat u installatiekopieën van containers gaat pushen en ophalen, moet u zich aanmelden bij het register. Gebruik hiervoor de opdracht [az acr login][az-acr-login].
 
 ```azurecli
-az acr login --name <acrName>
+az acr login --name <registry-name>
 ```
 
 Met de opdracht wordt een `Login Succeeded`-bericht geretourneerd nadat deze is voltooid.
@@ -83,7 +84,7 @@ Met de opdracht wordt een `Login Succeeded`-bericht geretourneerd nadat deze is 
 In het volgende voorbeeld worden de opslagplaatsen in uw register vermeld:
 
 ```azurecli
-az acr repository list --name <acrName> --output table
+az acr repository list --name <registry-name> --output table
 ```
 
 Uitvoer:
@@ -97,7 +98,7 @@ hello-world
 In het volgende voorbeeld worden de tags in de **hello-world**-opslagplaats vermeld.
 
 ```azurecli
-az acr repository show-tags --name <acrName> --repository hello-world --output table
+az acr repository show-tags --name <registry-name> --repository hello-world --output table
 ```
 
 Uitvoer:
@@ -123,7 +124,10 @@ az group delete --name myResourceGroup
 In deze quickstart hebt u een Azure Container Registry gemaakt met de Azure-CLI. U hebt een containerinstallatiekopie naar het register gepusht en de installatiekopie uit het register opgehaald en uitgevoerd. Ga verder met de zelfstudies voor Azure Container Registry om meer te leren over ACR.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry-zelfstudies][container-registry-tutorial-quick-task]
+> [Azure Container Registry-zelfstudies][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Zelfstudies over Azure Container Registry-taken][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -143,3 +147,4 @@ In deze quickstart hebt u een Azure Container Registry gemaakt met de Azure-CLI.
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

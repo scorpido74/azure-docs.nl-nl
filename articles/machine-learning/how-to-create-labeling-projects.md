@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629636"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212001"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevenslabelproject maken en labels exporteren 
 
@@ -176,7 +176,10 @@ Zodra een machine learning-model is getraind met uw handmatig gelabelde gegevens
 
 ## <a name="initialize-the-labeling-project"></a>Het labelproject initialiseren
 
-Nadat het labelproject is geïnitialiseerd, kunnen sommige aspecten van het project niet meer worden gewijzigd. U kunt het taaktype of de gegevensset niet wijzigen. U kunt labels en de URL voor de taakbeschrijving *wel* wijzigen. Controleer zorgvuldig de instellingen voordat u het project maakt. Nadat u het project hebt verzonden, keert u terug naar de startpagina **Gegevens labelen**, waar het project wordt weergegeven als **Initialiseren**. Deze pagina wordt niet automatisch vernieuwd. Vernieuw de pagina daarom na een korte pauze handmatig om de status van het project te zien als **Gemaakt**.
+Nadat het labelproject is geïnitialiseerd, kunnen sommige aspecten van het project niet meer worden gewijzigd. U kunt het taaktype of de gegevensset niet wijzigen. U kunt labels en de URL voor de taakbeschrijving *wel* wijzigen. Controleer zorgvuldig de instellingen voordat u het project maakt. Nadat u het project hebt verzonden, keert u terug naar de startpagina **Gegevens labelen**, waar het project wordt weergegeven als **Initialiseren**.
+
+> [!NOTE]
+> Deze pagina wordt mogelijk niet automatisch vernieuwd. Vernieuw de pagina daarom na een korte pauze handmatig om de status van het project te zien als **Gemaakt**.
 
 ## <a name="run-and-monitor-the-project"></a>Het project uitvoeren en bewaken
 

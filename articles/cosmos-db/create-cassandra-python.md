@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dc8f00e5764cea856e028acb7adb5aebc070c625
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559848"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118269"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Quickstart: een Cassandra-app bouwen met de Python SDK en Azure Cosmos DB
 
@@ -137,31 +137,31 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
 
-    Gebruik de ![knop Kopiëren](./media/create-cassandra-python/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
+1. Gebruik de ![knop Kopiëren](./media/create-cassandra-python/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
 
-    ![Een gebruikersnaam, wachtwoord en toegangspunt die worden gebruikt voor toegang in Azure Portal, blade Verbindingsreeks, bekijken en kopiëren](./media/create-cassandra-python/keys.png)
+    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="Een gebruikersnaam, wachtwoord en contactpunt voor toegang in Azure Portal weergeven en kopiëren, blade Verbindingsreeks":::
 
-2. Open het bestand *config.py*. 
+1. Open het bestand *config.py*. 
 
-3. Plak de waarde CONTACT POINT vanuit de portal over `<FILLME>` op regel 10.
+1. Plak de waarde CONTACT POINT vanuit de portal over `<FILLME>` op regel 10.
 
     Regel 10 moet nu ongeveer als volgt uitzien: 
 
     `'contactPoint': 'cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350'`
 
-4. Kopieer de waarde van USERNAME vanuit de portal en plak deze over `<FILLME>` op regel 6.
+1. Kopieer de waarde van USERNAME vanuit de portal en plak deze over `<FILLME>` op regel 6.
 
     Regel 6 moet nu ongeveer als volgt uitzien: 
 
     `'username': 'cosmos-db-quickstart',`
     
-5. Kopieer de waarde van PASSWORD vanuit de portal en plak deze over `<FILLME>` op regel 8.
+1. Kopieer de waarde van PASSWORD vanuit de portal en plak deze over `<FILLME>` op regel 8.
 
     Regel 8 moet nu ongeveer als volgt uitzien:
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. Sla het bestand *config.py* op.
+1. Sla het bestand *config.py* op.
     
 ## <a name="use-the-x509-certificate"></a>Het X509-certificaat gebruiken
 
@@ -196,11 +196,11 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
     Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
 
-    ![De uitvoer bekijken en controleren](./media/create-cassandra-python/output.png)
+    :::image type="content" source="./media/create-cassandra-python/output.png" alt-text="De uitvoer weergeven en controleren":::
     
 4. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen. 
 
-    ![De gegevens bekijken in Data Explorer](./media/create-cassandra-python/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-python/data-explorer.png" alt-text="De gegevens weergeven in Data Explorer":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

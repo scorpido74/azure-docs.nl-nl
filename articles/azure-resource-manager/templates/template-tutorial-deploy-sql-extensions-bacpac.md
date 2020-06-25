@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018392"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250329"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Zelfstudie: SQL BACPAC-bestanden met ARM-sjablonen importeren
 
@@ -45,7 +45,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="prepare-a-bacpac-file"></a>Een BACPAC-bestand voorbereiden
 
-Een BACPAC-bestand wordt gedeeld in [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Zie [Een Azure SQL-database exporteren naar een BACPAC-bestand](../../azure-sql/database/database-export.md) als u een eigen account wilt maken. Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u de sjabloon later in de zelfstudie bijwerken.
+Een BACPAC-bestand wordt gedeeld in [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Zie [Een database vanuit Azure SQL Database exporteren naar een BACPAC-bestand](../../azure-sql/database/database-export.md) om uw eigen bestand te maken. Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u de sjabloon later in de zelfstudie bijwerken.
 
 Het BACPAC-bestand moet worden opgeslagen in een Azure Storage-account voordat het kan worden geïmporteerd met behulp van een ARM-sjabloon. Met het volgende PowerShell-script bereidt u het BACPAC-bestand voor met de volgende stappen:
 
@@ -196,7 +196,7 @@ De sjabloon die in deze zelfstudie wordt gebruikt, wordt opgeslagen in [GitHub](
 
         Zie de [verwijzing voor SQL Database-extensies](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions) voor meer informatie over de resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
-        * **dependsOn**: de extensieresource moet worden gemaakt nadat de SQL-database is gemaakt.
+        * **dependsOn**: de extensieresource moet worden gemaakt nadat de database is gemaakt.
         * **storageKeyType**: Geef het type van de te gebruiken opslagsleutel op. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Gebruik in deze zelfstudie `StorageAccessKey`.
         * **storageKey**: Geef de sleutel op voor het opslagaccount waarin het BACPAC-bestand wordt opgeslagen. Als het type opslagsleutel `SharedAccessKey` is, moet deze worden voorafgegaan door een '?'.
         * **storageUri**: Geef de URL op van het BACPAC-bestand dat is opgeslagen in een opslagaccount.
@@ -241,7 +241,7 @@ Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
 
 U moet een extra firewallregel toevoegen om de server te benaderen vanaf uw clientcomputer. Raadpleeg [IP-firewallregels maken en beheren](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules) voor meer informatie.
 
-Selecteer in Azure Portal de SQL-database in de geïmplementeerde resourcegroep. Selecteer **Query-editor (preview)** en voer vervolgens de beheerdersreferenties in. U ziet dat twee tabellen in de database worden geïmporteerd.
+Selecteer in Azure Portal de database in de geïmplementeerde resourcegroep. Selecteer **Query-editor (preview)** en voer vervolgens de beheerdersreferenties in. U ziet dat twee tabellen in de database worden geïmporteerd.
 
 ![Query-editor (preview)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
