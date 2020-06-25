@@ -6,20 +6,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4cb96e1299010636e0bce3cb99fbba9862822564
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e92b0679111a6d5c6173da04c5061c95956125b8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022262"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322952"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>HDInsight-clusters met een aangepaste Ambari-data base instellen
 
 Apache Ambari vereenvoudigt het beheer en de bewaking van een Apache Hadoop cluster. Ambari biedt een gebruiks vriendelijke webgebruikersinterface en REST API. Ambari is opgenomen in HDInsight-clusters en wordt gebruikt om het cluster te controleren en configuratie wijzigingen aan te brengen.
 
-In een normale cluster maken, zoals beschreven in andere artikelen, zoals het [instellen van clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md), wordt Ambari geïmplementeerd in een [S0 Azure-SQL database](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) die wordt beheerd door HDInsight en niet toegankelijk is voor gebruikers.
+In het normale cluster maken, zoals beschreven in andere artikelen, zoals het [instellen van clusters in hdinsight](hdinsight-hadoop-provision-linux-clusters.md), wordt Ambari geïmplementeerd in een [s0-Azure SQL database](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) die wordt beheerd door HDInsight en niet toegankelijk is voor gebruikers.
 
 Met de functie Custom Ambari DB kunt u een nieuw cluster en installatie-Ambari implementeren in een externe data base die u beheert. De implementatie wordt uitgevoerd met een Azure Resource Manager sjabloon. Deze functie biedt de volgende voor delen:
 
@@ -38,6 +38,7 @@ U kunt een aangepaste Ambari-data base implementeren met alle cluster typen en v
 
 De aangepaste Ambari DB heeft de volgende vereisten:
 
+- De naam van de data base mag geen afbreek streepjes of spaties bevatten
 - U moet beschikken over een bestaande Azure SQL DB-server en-data base.
 - De data base die u voor de installatie van Ambari opgeeft, moet leeg zijn. Er mogen geen tabellen zijn in het standaard dbo-schema.
 - De gebruiker die wordt gebruikt om verbinding te maken met de data base moet machtigingen voor selecteren, CREATE TABLE en invoegen hebben voor de data base.

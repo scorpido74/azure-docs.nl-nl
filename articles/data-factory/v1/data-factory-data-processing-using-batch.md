@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c6fb590cbb57e8798bf65d0aa30585ae3db3691d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ab4e2f480ab0ef2deea3909d56f4fe1da17bbd07
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021531"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321402"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
 > [!NOTE]
@@ -134,13 +134,13 @@ U gebruikt [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/
 
    Als u Storage Explorer gebruikt, uploadt u in de volgende stap bestanden met de volgende namen: `inputfolder/2015-11-16-00/file.txt` , `inputfolder/2015-11-16-01/file.txt` , enzovoort. Met deze stap worden de mappen automatisch gemaakt.
 
-1. Maak een tekst bestand **bestand. txt** op de computer met inhoud met het sleutel woord **micro soft**. Een voor beeld is ' aangepaste activiteit testen die micro soft heeft gepaard micro soft '.
+1. Maak een tekst bestand **file.txt** op uw computer met inhoud met het sleutel woord **micro soft**. Een voor beeld is ' aangepaste activiteit testen die micro soft heeft gepaard micro soft '.
 
 1. Upload het bestand naar de volgende invoer mappen in Blob Storage:
 
    ![Invoer mappen](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Als u Storage Explorer gebruikt, uploadt u het bestand **. txt** -bestand naar **mycontainer**. Selecteer **kopiëren** op de werk balk om een kopie van de BLOB te maken. Wijzig in het dialoog venster **BLOB kopiëren** de naam van de **doel-BLOB** in `inputfolder/2015-11-16-00/file.txt` . Herhaal deze stap om te maken `inputfolder/2015-11-16-01/file.txt` , `inputfolder/2015-11-16-02/file.txt` ,,, enzovoort `inputfolder/2015-11-16-03/file.txt` `inputfolder/2015-11-16-04/file.txt` . Met deze actie worden automatisch de mappen gemaakt.
+   Als u Storage Explorer gebruikt, uploadt u het **file.txt** bestand naar **mycontainer**. Selecteer **kopiëren** op de werk balk om een kopie van de BLOB te maken. Wijzig in het dialoog venster **BLOB kopiëren** de naam van de **doel-BLOB** in `inputfolder/2015-11-16-00/file.txt` . Herhaal deze stap om te maken `inputfolder/2015-11-16-01/file.txt` , `inputfolder/2015-11-16-02/file.txt` ,,, enzovoort `inputfolder/2015-11-16-03/file.txt` `inputfolder/2015-11-16-04/file.txt` . Met deze actie worden automatisch de mappen gemaakt.
 
 1. Maak een andere container met de naam `customactivitycontainer` . Upload het zip-bestand van de aangepaste activiteit naar deze container.
 
@@ -192,7 +192,7 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
    g. Selecteer **OK** om het project te maken.
 
-1. Selecteer **extra**  >  **NuGet package manager**  >  **package**Manager-console.
+1. Selecteer **Hulpprogramma's** > **NuGet Package Manager** > **Package Manager-console**.
 
 1. Voer in de Package Manager-console de volgende opdracht uit om micro soft. Azure. Management. DataFactories te importeren:
 
@@ -398,11 +398,11 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
 1. Start Windows Verkenner en ga naar de map **bin \\ debug** of **bin \\ release** . De keuze van de map is afhankelijk van het type Build.
 
-1. Maak een zip-bestand **MyDotNetActivity. zip** dat alle binaire bestanden bevat in de map ** \\ bin \\ debug** . Mogelijk wilt u de MyDotNetActivity toevoegen. **PDB** -bestand, zodat u aanvullende informatie krijgt, zoals het regel nummer in de bron code die het probleem heeft veroorzaakt als er een fout optreedt.
+1. Maak een zip-bestand **MyDotNetActivity.zip** dat alle binaire bestanden bevat in de map ** \\ bin \\ debug** . Mogelijk wilt u de MyDotNetActivity toevoegen. **PDB** -bestand, zodat u aanvullende informatie krijgt, zoals het regel nummer in de bron code die het probleem heeft veroorzaakt als er een fout optreedt.
 
    ![De lijst met bin\Debug](./media/data-factory-data-processing-using-batch/image5.png)
 
-1. Upload **MyDotNetActivity. zip** als een BLOB naar de BLOB-container `customactivitycontainer` in de Blob-opslag die door de gekoppelde StorageLinkedService-service in ADFTutorialDataFactory wordt gebruikt. Maak de BLOB-container `customactivitycontainer` als deze nog niet bestaat.
+1. Upload **MyDotNetActivity.zip** als een BLOB naar de BLOB-container `customactivitycontainer` in de Blob-opslag die door de StorageLinkedService gekoppelde service in ADFTutorialDataFactory wordt gebruikt. Maak de BLOB-container `customactivitycontainer` als deze nog niet bestaat.
 
 #### <a name="execute-method"></a>Methode uitvoeren
 In deze sectie vindt u meer informatie over de code in de methode Execute.
@@ -495,7 +495,7 @@ mycontainer -\> inputfolder
     2015-11-16-04
 ```
 
-U kunt bijvoorbeeld één bestand (bestand. txt) met de volgende inhoud in elk van de mappen verwijderen:
+U kunt bijvoorbeeld één bestand (file.txt) met de volgende inhoud in elk van de mappen verwijderen:
 
 ```
 test custom activity Microsoft test custom activity Microsoft
@@ -509,7 +509,7 @@ U ziet vijf uitvoer bestanden met dezelfde inhoud. Het uitvoer bestand van verwe
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
 ```
 
-Als u meerdere bestanden (File. txt, bestand2. txt, file3. txt) met dezelfde inhoud in de map invoer neerzet, ziet u de volgende inhoud in het uitvoer bestand. Elke map (2015-11-16-00, enz.) komt overeen met een segment in dit voor beeld, ook al heeft de map meerdere invoer bestanden.
+Als u meerdere bestanden (file.txt, file2.txt, file3.txt) met dezelfde inhoud in de map invoer neerzet, ziet u de volgende inhoud in het uitvoer bestand. Elke map (2015-11-16-00, enz.) komt overeen met een segment in dit voor beeld, ook al heeft de map meerdere invoer bestanden.
 
 ```csharp
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
@@ -556,7 +556,7 @@ Met gekoppelde services worden gegevens archieven of COMPUTE-Services gekoppeld 
 
    ![Nieuwe gegevens opslag](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
+1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie [Toegangssleutels voor opslagaccounts beheren](../../storage/common/storage-account-keys-manage.md) voor informatie over het ophalen van uw toegangssleutel voor opslag.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de gekoppelde service te implementeren.
 
@@ -724,13 +724,13 @@ In deze stap maakt u een andere gegevensset van het type AzureBlob om de uitvoer
 
     | **Gereedschap** | **Begin tijd**          | **Uitvoerbestand**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00. txt** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01. txt** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16-**02. txt** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16-**03. txt** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16-**04. txt** |
+    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00.txt** |
+    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01.txt** |
+    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16-**03.txt** |
+    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16-**04.txt** |
 
-    Houd er rekening mee dat alle bestanden in een map voor invoer (bijvoorbeeld 2015-11-16-00) deel uitmaken van een segment met de begin tijd 2015-11-16-00. Wanneer dit segment wordt verwerkt, scant de aangepaste activiteit elk bestand en produceert een regel in het uitvoer bestand met het aantal exemplaren van de zoek term micro soft. Als er drie bestanden in de map 2015-11-16-00 staan, zijn er drie regels in het uitvoer bestand 2015-11-16 -00. txt.
+    Houd er rekening mee dat alle bestanden in een map voor invoer (bijvoorbeeld 2015-11-16-00) deel uitmaken van een segment met de begin tijd 2015-11-16-00. Wanneer dit segment wordt verwerkt, scant de aangepaste activiteit elk bestand en produceert een regel in het uitvoer bestand met het aantal exemplaren van de zoek term micro soft. Als er drie bestanden in de map 2015-11-16-00 staan, zijn er drie regels in het uitvoer bestand 2015-11-16-00.txt.
 
 1. Selecteer **implementeren** op de werk balk om de **output dataset**te maken en te implementeren.
 
@@ -738,7 +738,7 @@ In deze stap maakt u een andere gegevensset van het type AzureBlob om de uitvoer
 In deze stap maakt u een pijp lijn met één activiteit, de aangepaste activiteit die u eerder hebt gemaakt.
 
 > [!IMPORTANT]
-> Als u **File. txt** niet hebt geüpload voor het invoeren van mappen in de BLOB-container, moet u dit doen voordat u de pijp lijn maakt. De eigenschap **isPaused** is ingesteld op ONWAAR in de JSON van de pijp lijn, zodat de pijp lijn onmiddellijk wordt uitgevoerd, omdat de **begin** datum in het verleden ligt.
+> Als u **file.txt** niet hebt geüpload naar invoer mappen in de BLOB-container, moet u dit doen voordat u de pijp lijn maakt. De eigenschap **isPaused** is ingesteld op ONWAAR in de JSON van de pijp lijn, zodat de pijp lijn onmiddellijk wordt uitgevoerd, omdat de **begin** datum in het verleden ligt.
 >
 >
 
@@ -792,10 +792,10 @@ In deze stap maakt u een pijp lijn met één activiteit, de aangepaste activitei
    Houd rekening met de volgende punten:
 
    * Er bevindt zich slechts één activiteit in de pijp lijn en het is van het type **DotNetActivity**.
-   * **Assemblyname** is ingesteld op de naam van het dll-bestand **MyDotNetActivity. dll**.
+   * **Assemblyname** is ingesteld op de naam van de dll **MyDotNetActivity.dll**.
    * **Entry Point** wordt ingesteld op **MyDotNetActivityNS. MyDotNetActivity**. Dat is in wezen \<namespace\> .\<classname\> in uw code.
    * **PackageLinkedService** is ingesteld op **StorageLinkedService**, die verwijst naar de Blob-opslag met het zip-bestand van de aangepaste activiteit. Als u verschillende opslag accounts gebruikt voor invoer-en uitvoer bestanden en het zip-bestand van de aangepaste activiteit, moet u een andere opslag-gekoppelde service maken. In dit artikel wordt ervan uitgegaan dat u hetzelfde opslag account gebruikt.
-   * **PackageFile** is ingesteld op **customactivitycontainer/MyDotNetActivity. zip**. Het is in de indeling \<containerforthezip\> / \<nameofthezip.zip\> .
+   * **PackageFile** is ingesteld op **customactivitycontainer/MyDotNetActivity.zip**. Het is in de indeling \<containerforthezip\> / \<nameofthezip.zip\> .
    * De aangepaste activiteit krijgt **input dataset** als invoer en **output dataset** als uitvoer.
    * De eigenschap **linkedServiceName** van de aangepaste activiteit verwijst naar **AzureBatchLinkedService**, wat aangeeft Data Factory dat de aangepaste activiteit moet worden uitgevoerd op batch.
    * De **gelijktijdigheids** instelling is belang rijk. Als u de standaard waarde (1) gebruikt, zelfs als u twee of meer reken knooppunten in de batch-pool hebt, worden de segmenten na elkaar verwerkt. Daarom neemt u geen gebruik van de parallelle verwerkings mogelijkheid van batch. Als u **gelijktijdigheid** instelt op een hogere waarde, zegt 2, betekent dit dat twee segmenten (overeenkomt met twee taken in batch) tegelijk kunnen worden verwerkt. In dit geval worden zowel de virtuele machines in de batch-pool gebruikt. Stel de gelijktijdigheids eigenschap op de juiste wijze in.
@@ -841,15 +841,15 @@ In deze stap test u de pijp lijn door bestanden in de invoer mappen neer te zett
 
    ![Diagram van segment toewijzing](./media/data-factory-data-processing-using-batch/image16.png)
 
-1. Probeer nu met meerdere bestanden in een map. Maak de bestanden **bestand2. txt**, **file3. txt**, **file4. txt**en **file5. txt** met dezelfde inhoud als in file. txt in de map **2015-11-06-01**.
+1. Probeer nu met meerdere bestanden in een map. Maak de bestanden **file2.txt**, **file3.txt**, **file4.txt**en **file5.txt** met dezelfde inhoud als in file.txt in de map **2015-11-06-01**.
 
-1. Verwijder in de map uitvoermap het uitvoer bestand **2015-11-16 -01. txt**.
+1. Verwijder in de map uitvoermap het uitvoer bestand **2015-11-16-01.txt**.
 
 1. Klik op de Blade **output dataset** met de rechter muisknop op het segment met de **begin tijd** van het segment ingesteld op **11/16/2015 01:00:00 uur**. Selecteer **uitvoeren** om het segment opnieuw op te starten of opnieuw te verwerken. Het segment heeft nu vijf bestanden in plaats van één bestand.
 
     ![Uitvoeren](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. Nadat het segment is uitgevoerd en de status **gereed**is, controleert u de inhoud van het uitvoer bestand voor dit segment (**2015-11-16 -01. txt**). Het uitvoer bestand wordt weer gegeven onder `mycontainer` in `outputfolder` uw Blob-opslag. Er moet een regel voor elk bestand van het segment zijn.
+1. Nadat het segment is uitgevoerd en de status **gereed**is, controleert u de inhoud van het uitvoer bestand voor dit segment (**2015-11-16-01.txt**). Het uitvoer bestand wordt weer gegeven onder `mycontainer` in `outputfolder` uw Blob-opslag. Er moet een regel voor elk bestand van het segment zijn.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -860,7 +860,7 @@ In deze stap test u de pijp lijn door bestanden in de invoer mappen neer te zett
     ```
 
 > [!NOTE]
-> Als u het uitvoer bestand 2015-11-16 -01. txt niet hebt verwijderd voordat u met vijf invoer bestanden hebt geprobeerd, ziet u één regel uit de vorige segment uitvoering en vijf regels van de huidige segment uitvoering. Standaard wordt de inhoud toegevoegd aan het uitvoer bestand als dit al bestaat.
+> Als u het uitvoer bestand niet hebt verwijderd 2015-11-16-01.txt voordat u met vijf invoer bestanden hebt geprobeerd, ziet u een regel uit de vorige segment uitvoering en vijf regels van de huidige segment uitvoering. Standaard wordt de inhoud toegevoegd aan het uitvoer bestand als dit al bestaat.
 >
 >
 
@@ -880,7 +880,7 @@ Gebruik de portal om de batch-taak en de bijbehorende taken weer te geven die zi
 ### <a name="debug-the-pipeline"></a>Fouten opsporen in de pijplijn
 Fout opsporing bestaat uit een aantal basis technieken.
 
-1. Als het invoer segment niet is ingesteld op **gereed**, controleert u of de map van de invoer mappen juist is en of het bestand. txt in de invoer mappen bestaat.
+1. Als het invoer segment niet is ingesteld op **gereed**, controleert u of de indeling van de invoer mappen juist is en of file.txt in de invoer mappen bestaat.
 
    ![Mapstructuur van invoer](./media/data-factory-data-processing-using-batch/image3.png)
 
@@ -913,7 +913,7 @@ Fout opsporing bestaat uit een aantal basis technieken.
 
    ![Lijst met aangepaste post bestanden](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Zorg ervoor dat **assemblyname** (MyDotNetActivity. dll), **Entry Point** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) en **packageLinkedService** (moet verwijzen naar de Blob-opslag met het zip-bestand) zijn ingesteld op de juiste waarden.
+1. Zorg ervoor dat **assemblyname** (MyDotNetActivity.dll), **Entry Point** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) en **packageLinkedService** (moet verwijzen naar de Blob-opslag die het zip-bestand bevat) zijn ingesteld op de juiste waarden.
 
 1. Als u een fout hebt opgelost en het segment opnieuw wilt verwerken, klikt u met de rechter muisknop op het segment op de Blade **output dataset** en selecteert u **uitvoeren**.
 
@@ -923,9 +923,9 @@ Fout opsporing bestaat uit een aantal basis technieken.
    > Er bevindt zich in de Blob-opslag een container met de naam `adfjobs` . Deze container wordt niet automatisch verwijderd, maar u kunt deze veilig verwijderen nadat u klaar bent met het testen van de oplossing. Op dezelfde manier maakt de data factory oplossing een batch-taak met de naam `adf-\<pool ID/name\>:job-0000000001` . U kunt deze taak verwijderen nadat u de oplossing hebt getest.
    >
    >
-1. De aangepaste activiteit maakt geen gebruik van het bestand **app. config** uit uw pakket. Als uw code verbindings reeksen uit het configuratie bestand leest, werkt deze daarom niet tijdens runtime. De best practice wanneer u batch gebruikt, is het opslaan van geheimen in Azure Key Vault. Gebruik vervolgens een service-principal op basis van een certificaat om de sleutel kluis te beveiligen en het certificaat naar de batch-pool te distribueren. De aangepaste .NET-activiteit kan tijdens runtime toegang hebben tot geheimen van de sleutel kluis. Deze algemene oplossing kan worden geschaald naar elk type geheim, niet alleen op een connection string.
+1. De aangepaste activiteit maakt geen gebruik van het **app.config** -bestand uit uw pakket. Als uw code verbindings reeksen uit het configuratie bestand leest, werkt deze daarom niet tijdens runtime. De best practice wanneer u batch gebruikt, is het opslaan van geheimen in Azure Key Vault. Gebruik vervolgens een service-principal op basis van een certificaat om de sleutel kluis te beveiligen en het certificaat naar de batch-pool te distribueren. De aangepaste .NET-activiteit kan tijdens runtime toegang hebben tot geheimen van de sleutel kluis. Deze algemene oplossing kan worden geschaald naar elk type geheim, niet alleen op een connection string.
 
-    Er is een eenvoudige tijdelijke oplossing, maar dit is geen best practice. U kunt een SQL database gekoppelde service maken met connection string-instellingen. Vervolgens kunt u een gegevensset maken die gebruikmaakt van de gekoppelde service en de gegevensset als een dummy invoer gegevensset koppelen aan de aangepaste .NET-activiteit. U kunt vervolgens de connection string van de gekoppelde service openen in de code van de aangepaste activiteit. Het werkt prima tijdens runtime.  
+    Er is een eenvoudige tijdelijke oplossing, maar dit is geen best practice. U kunt een SQL Database gekoppelde service maken met connection string-instellingen. Vervolgens kunt u een gegevensset maken die gebruikmaakt van de gekoppelde service en de gegevensset als een dummy invoer gegevensset koppelen aan de aangepaste .NET-activiteit. U kunt vervolgens de connection string van de gekoppelde service openen in de code van de aangepaste activiteit. Het werkt prima tijdens runtime.  
 
 #### <a name="extend-the-sample"></a>Het voor beeld uitbreiden
 U kunt dit voor beeld uitbreiden voor meer informatie over Data Factory-en batch-functies. Als u bijvoorbeeld segmenten in een ander tijds bereik wilt verwerken, voert u de volgende stappen uit:
@@ -964,7 +964,7 @@ Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma'
 * [Gegevens vernieuwen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure en Power BI: basis overzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Inleiding tot de Data Factory-Service](data-factory-introduction.md)

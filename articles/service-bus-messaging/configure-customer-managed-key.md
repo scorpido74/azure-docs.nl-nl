@@ -1,19 +1,14 @@
 ---
 title: Uw eigen sleutel configureren voor het versleutelen van Azure Service Bus gegevens in rust
 description: Dit artikel bevat informatie over het configureren van uw eigen sleutel voor het versleutelen van Azure Service Bus gegevens rest.
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: aschhab
-ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9bc48d82d1e63f08ab68e8f9c6a63e781c14c675
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459063"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338101"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens op rest door gebruik te maken van de Azure Portal
 Azure Service Bus Premium zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Service Bus Premium is afhankelijk van Azure Storage om de gegevens op te slaan en de standaard instelling is dat alle gegevens die zijn opgeslagen met Azure Storage, worden versleuteld met door micro soft beheerde sleutels. 
@@ -28,7 +23,7 @@ Het inschakelen van de functie BYOK is een eenmalige installatie procedure voor 
 >   * Deze functie wordt ondersteund door [Azure service bus Premium](service-bus-premium-messaging.md) -laag. Het kan niet worden ingeschakeld voor de standaardlaag Service Bus naam ruimten.
 >   * De versleuteling kan alleen worden ingeschakeld voor nieuwe of lege naam ruimten. Als de naam ruimte gegevens bevat, mislukt de versleutelings bewerking.
 
-U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
+U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/general/overview.md) voor meer informatie over Azure Key Vault.
 
 In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met door de klant beheerde sleutels met behulp van de Azure Portal. Voor informatie over het maken van een sleutel kluis met behulp van de Azure Portal, raadpleegt u [Quick Start: een geheim instellen en ophalen van Azure Key Vault met behulp van de Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
@@ -117,7 +112,7 @@ In deze sectie wordt beschreven hoe u de volgende taken kunt uitvoeren met behul
 ### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>Een Premium-Service Bus naam ruimte maken met een beheerde service-identiteit
 In deze sectie wordt beschreven hoe u een Azure Service Bus naam ruimte met een beheerde service-identiteit maakt met behulp van een Azure Resource Manager sjabloon en Power shell. 
 
-1. Maak een Azure Resource Manager sjabloon om een Service Bus naam ruimte voor de Premium-laag te maken met een beheerde service-identiteit. Geef het bestand de naam: **CreateServiceBusPremiumNamespace. json**: 
+1. Maak een Azure Resource Manager sjabloon om een Service Bus naam ruimte voor de Premium-laag te maken met een beheerde service-identiteit. Geef het bestand de naam: **CreateServiceBusPremiumNamespace.jsop**: 
 
     ```json
     {
@@ -165,7 +160,7 @@ In deze sectie wordt beschreven hoe u een Azure Service Bus naam ruimte met een 
        }
     }
     ```
-2. Maak een sjabloon parameter bestand met de naam: **CreateServiceBusPremiumNamespaceParams. json**. 
+2. Maak een sjabloon parameter bestand met de naam: **CreateServiceBusPremiumNamespaceParams.jsop**. 
 
     > [!NOTE]
     > Vervang de volgende waarden: 
@@ -186,7 +181,7 @@ In deze sectie wordt beschreven hoe u een Azure Service Bus naam ruimte met een 
        }
     }
     ```
-3. Voer de volgende Power shell-opdracht uit om de sjabloon te implementeren om een Premium-Service Bus naam ruimte te maken. Vervolgens haalt u de ID van de Service Bus naam ruimte op om deze later te gebruiken. Vervang `{MyRG}` door de naam van de resource groep voordat u de opdracht uitvoert.  
+3. Voer de volgende Power shell-opdracht uit om de sjabloon te implementeren om een Premium-Service Bus naam ruimte te maken. Vervolgens haalt u de ID van de Service Bus naam ruimte op om deze later te gebruiken. Vervang door `{MyRG}` de naam van de resource groep voordat u de opdracht uitvoert.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateServiceBusPremiumNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateServiceBusPremiumNamespace.json -TemplateParameterFile ./CreateServiceBusPremiumNamespaceParams.json
@@ -225,7 +220,7 @@ U hebt de volgende stappen tot nu toe uitgevoerd:
 
 In deze stap werkt u de Service Bus naam ruimte bij met sleutel kluis gegevens. 
 
-1. Maak een JSON-bestand met de naam **UpdateServiceBusNamespaceWithEncryption. json** met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **UpdateServiceBusNamespaceWithEncryption.jsop** met de volgende inhoud: 
 
     ```json
     {
@@ -288,7 +283,7 @@ In deze stap werkt u de Service Bus naam ruimte bij met sleutel kluis gegevens.
     }
     ``` 
 
-2. Maak een sjabloon parameter bestand: **UpdateServiceBusNamespaceWithEncryptionParams. json**.
+2. Een sjabloon parameter bestand maken: **UpdateServiceBusNamespaceWithEncryptionParams.jsop**.
 
     > [!NOTE]
     > Vervang de volgende waarden: 
@@ -317,7 +312,7 @@ In deze stap werkt u de Service Bus naam ruimte bij met sleutel kluis gegevens.
        }
     }
     ```             
-3. Voer de volgende Power shell-opdracht uit om de Resource Manager-sjabloon te implementeren. Vervang `{MyRG}` door de naam van uw resource groep voordat u de opdracht uitvoert. 
+3. Voer de volgende Power shell-opdracht uit om de Resource Manager-sjabloon te implementeren. Vervang door `{MyRG}` de naam van uw resource groep voordat u de opdracht uitvoert. 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json

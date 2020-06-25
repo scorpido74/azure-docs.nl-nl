@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 87a30544378936f8408f187f6b9ad67edb8dce12
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 49550453885ebaba40380a4675ace8fb012fcaa1
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117761"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322720"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Streaming-export van Azure SQL Database en SQL Managed instance diagnostische telemetrie configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -37,16 +37,16 @@ Naast het streamen van de export van het Intelligent Insights-logboek, kunt u oo
 
 | Diagnostische telemetrie voor data bases | Ondersteuning voor Azure SQL Database | Ondersteuning van Azure SQL Managed Instance |
 | :------------------- | ----- | ----- |
-| [Basis metrieken](#basic-metrics): bevat DTU/CPU-percentage, DTU/CPU-limiet, fysiek gegevens Lees percentage, logboek schrijf percentage, geslaagd/mislukt/geblokkeerd door Firewall verbindingen, percentages van werk nemers, percentage van de opslag, opslag percentage en XTP opslag percentage. | Ja | Nee |
-| [Exemplaar-en app-Geavanceerd](#advanced-metrics): bevat TempDB systeem database gegevens en Logboek bestands grootte en het logboek bestand TempDB-percentage gebruikt. | Ja | Nee |
+| [Basis metrieken](#basic-metrics): bevat DTU/CPU-percentage, DTU/CPU-limiet, fysiek gegevens Lees percentage, logboek schrijf percentage, geslaagd/mislukt/geblokkeerd door Firewall verbindingen, percentages van werk nemers, percentage van de opslag, opslag percentage en XTP opslag percentage. | Yes | Nee |
+| [Exemplaar-en app-Geavanceerd](#advanced-metrics): bevat TempDB systeem database gegevens en Logboek bestands grootte en het logboek bestand TempDB-percentage gebruikt. | Yes | Nee |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): bevat informatie over de query runtime-statistieken, zoals CPU-gebruik en statistieken voor de duur van query's. | Ja | Ja |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): bevat informatie over de query wacht statistieken (waarvoor uw query's zijn gewacht), zoals CPU, logboek en vergren deling. | Ja | Ja |
 | [Fouten](#errors-dataset): bevat informatie over SQL-fouten in een Data Base. | Ja | Ja |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset): bevat informatie over hoeveel tijd een Data Base op verschillende wacht typen heeft gewacht. | Ja | Nee |
-| [Time-outs](#time-outs-dataset): bevat informatie over time-outs voor een Data Base. | Ja | Nee |
-| [Blokken](#blockings-dataset): bevat informatie over het blok keren van gebeurtenissen in een Data Base. | Ja | Nee |
-| [Deadlocks](#deadlocks-dataset): bevat informatie over deadlock-gebeurtenissen voor een Data Base. | Ja | Nee |
-| [AutomaticTuning](#automatic-tuning-dataset): bevat informatie over aanbevelingen voor automatisch afstemmen voor een Data Base. | Ja | Nee |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): bevat informatie over hoeveel tijd een Data Base op verschillende wacht typen heeft gewacht. | Yes | Nee |
+| [Time-outs](#time-outs-dataset): bevat informatie over time-outs voor een Data Base. | Yes | Nee |
+| [Blokken](#blockings-dataset): bevat informatie over het blok keren van gebeurtenissen in een Data Base. | Yes | Nee |
+| [Deadlocks](#deadlocks-dataset): bevat informatie over deadlock-gebeurtenissen voor een Data Base. | Yes | Nee |
+| [AutomaticTuning](#automatic-tuning-dataset): bevat informatie over aanbevelingen voor automatisch afstemmen voor een Data Base. | Yes | Nee |
 | [SQLInsights](#intelligent-insights-dataset): bevat intelligent Insights prestaties voor een Data Base. Zie [intelligent Insights](intelligent-insights-overview.md)voor meer informatie. | Ja | Ja |
 
 > [!NOTE]
@@ -96,7 +96,7 @@ U kunt het menu **Diagnostische instellingen** in de Azure Portal gebruiken om s
 
 Selecteer een van de volgende tabbladen voor stapsgewijze instructies voor het configureren van de streaming-export van diagnostische telemetrie in de Azure Portal en voor scripts voor het uitvoeren van hetzelfde met Power shell en de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Elastische Pools in Azure SQL Database
 
@@ -231,7 +231,7 @@ Voer de volgende stappen uit om streaming van diagnostische telemetrie in te sch
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
+> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
 U kunt metrische gegevens en diagnostische logboek registratie inschakelen met behulp van Power shell.
 
@@ -453,7 +453,7 @@ Raadpleeg de volgende tabellen voor meer informatie over basis gegevens per reso
 
 Raadpleeg de volgende tabel voor meer informatie over geavanceerde metrische gegevens.
 
-|**Meting**|**Weergave naam voor metrische gegevens**|**Beschrijving**|
+|**Gegevens**|**Weergave naam voor metrische gegevens**|**Beschrijving**|
 |---|---|---|
 |sqlserver_process_core_percent<sup>1</sup>|Kern percentage van SQL process|Het CPU-gebruiks percentage voor het SQL-proces, zoals gemeten door het besturings systeem.|
 |sqlserver_process_memory_percent<sup>1</sup> |Percentage van het SQL-proces geheugen|Het percentage geheugen gebruik voor het SQL-proces, zoals gemeten door het besturings systeem.|
@@ -605,7 +605,7 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 |Bericht|Fout bericht in tekst zonder opmaak |
 |user_defined_b|Is de door de gebruiker gedefinieerde fout |
 |error_number_d|Foutcode |
-|Ernst|Ernst van de fout |
+|Severity|Ernst van de fout |
 |state_d|Status van de fout |
 |query_hash_s|Query-hash van de mislukte query, indien beschikbaar |
 |query_plan_hash_s|Query plan-hash van de mislukte query, indien beschikbaar |
@@ -748,7 +748,7 @@ Meer informatie over de [intelligent Insights-logboek indeling](intelligent-insi
 Zie voor meer informatie over het inschakelen van logboek registratie en het begrijpen van de metrische gegevens en logboek categorieën die worden ondersteund door de verschillende Azure-Services:
 
 - [Overzicht van metrische gegevens in Microsoft Azure](../../azure-monitor/platform/data-platform.md)
-- [Overzicht van Azure platform-logboeken](../../azure-monitor/platform/platform-logs-overview.md)
+- [Overzicht van Azure-platformlogboeken](../../azure-monitor/platform/platform-logs-overview.md)
 
 Lees voor meer informatie over Event Hubs:
 

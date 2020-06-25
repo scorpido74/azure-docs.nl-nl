@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 75bbce0f1e9787e55880ccac80dacb5457e1f2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56afed264facb6a02040cef01cd5d5d41526ec49
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68728371"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322656"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Beveiligings frame: autorisatie | Oplossingen 
 | Product/service | Artikel |
 | --------------- | ------- |
 | **Grens van computer vertrouwen** | <ul><li>[Zorg ervoor dat de juiste Acl's zijn geconfigureerd om onbevoegde toegang tot gegevens op het apparaat te beperken](#acl-restricted-access)</li><li>[Zorg ervoor dat gevoelige gebruikersspecifieke toepassings inhoud wordt opgeslagen in de map gebruikers profiel](#sensitive-directory)</li><li>[Zorg ervoor dat de geïmplementeerde toepassingen met de minste bevoegdheden worden uitgevoerd](#deployed-privileges)</li></ul> |
 | **Webtoepassing** | <ul><li>[Volg orde van opeenvolgende stappen afdwingen bij het verwerken van bedrijfs logica stromen](#sequential-logic)</li><li>[Implementeer het mechanisme voor het beperken van de frequentie om opsomming te voor komen](#rate-enumeration)</li><li>[Zorg ervoor dat de juiste autorisatie plaatsvindt en dat het beginsel van de minimale bevoegdheden wordt gevolgd](#principle-least-privilege)</li><li>[Beslissingen met betrekking tot bedrijfs logica en bron toegang mogen niet worden gebaseerd op de para meters voor de inkomende aanvraag](#logic-request-parameters)</li><li>[Zorg ervoor dat de inhoud en bronnen niet worden besteld of toegankelijk via geforceerde-Browsing](#enumerable-browsing)</li></ul> |
-| **Enddatabase** | <ul><li>[Zorg ervoor dat accounts met minimale bevoegdheden worden gebruikt om verbinding te maken met de database server](#privileged-server)</li><li>[Implementeer beveiliging op RIJNIVEAU om te voor komen dat tenants toegang krijgen tot de gegevens van elkaar](#rls-tenants)</li><li>[De sysadmin-rol mag alleen geldige benodigde gebruikers hebben](#sysadmin-users)</li></ul> |
+| **Database** | <ul><li>[Zorg ervoor dat accounts met minimale bevoegdheden worden gebruikt om verbinding te maken met de database server](#privileged-server)</li><li>[Implementeer beveiliging op RIJNIVEAU om te voor komen dat tenants toegang krijgen tot de gegevens van elkaar](#rls-tenants)</li><li>[De sysadmin-rol mag alleen geldige benodigde gebruikers hebben](#sysadmin-users)</li></ul> |
 | **IoT-Cloud gateway** | <ul><li>[Verbinding maken met de Cloud gateway met behulp van de tokens met minimale privileges](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Een SAS-sleutel voor alleen-lezen toegang gebruiken voor het genereren van de tokens van het apparaat](#sendonly-sas)</li><li>[Gebruik geen toegangs tokens die directe toegang bieden tot de Event hub](#access-tokens-hub)</li><li>[Verbinding maken met Event hub met SAS-sleutels waarvoor de minimale machtigingen zijn vereist](#sas-minimum-permissions)</li></ul> |
 | **Azure document DB** | <ul><li>[Resource tokens gebruiken om waar mogelijk verbinding te maken met Azure Cosmos DB](#resource-docdb)</li></ul> |
@@ -46,7 +46,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van computer vertrouwen | 
+| **Onderdeel**               | Grens van computer vertrouwen | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -57,7 +57,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van computer vertrouwen | 
+| **Onderdeel**               | Grens van computer vertrouwen | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -68,7 +68,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van computer vertrouwen | 
+| **Onderdeel**               | Grens van computer vertrouwen | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -79,7 +79,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -90,7 +90,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -101,7 +101,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -112,7 +112,7 @@ ms.locfileid: "68728371"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -131,53 +131,53 @@ Een mogelijke aanvaller kan nu niet knoeien en de bewerking van de toepassing wi
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Webtoepassing | 
+| **Onderdeel**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
 | **Verwijzingen**              | N.v.t.  |
-| **Stappen** | <p>Gevoelige statische en configuratie bestanden mogen niet worden bewaard in de hoofdmap van het web. Voor inhoud die niet openbaar moet zijn, moeten de juiste toegangs controles worden toegepast of moeten de inhoud zelf worden verwijderd.</p><p>Daarnaast wordt geforceerde Browse doorgaans gecombineerd met de technieken voor het verzamelen van gegevens door te proberen om mappen en bestanden op een server te inventariseren. Kwaadwillende personen kunnen controleren op alle variaties van de meeste bestaande bestanden. Een zoek opdracht voor het zoeken naar wacht woorden omvat bijvoorbeeld bestanden zoals psswd. txt, password. htm, password. dat en andere variaties.</p><p>Om dit te verhelpen, moet u de mogelijkheden voor detectie van beveiligings pogingen opnemen.</p>|
+| **Stappen** | <p>Gevoelige statische en configuratie bestanden mogen niet worden bewaard in de hoofdmap van het web. Voor inhoud die niet openbaar moet zijn, moeten de juiste toegangs controles worden toegepast of moeten de inhoud zelf worden verwijderd.</p><p>Daarnaast wordt geforceerde Browse doorgaans gecombineerd met de technieken voor het verzamelen van gegevens door te proberen om mappen en bestanden op een server te inventariseren. Kwaadwillende personen kunnen controleren op alle variaties van de meeste bestaande bestanden. Een zoek opdracht voor wachtwoord bestanden omvat bijvoorbeeld bestanden met inbegrip van psswd.txt, password.htm, password. dat en andere variaties.</p><p>Om dit te verhelpen, moet u de mogelijkheden voor detectie van beveiligings pogingen opnemen.</p>|
 
 ## <a name="ensure-that-least-privileged-accounts-are-used-to-connect-to-database-server"></a><a id="privileged-server"></a>Zorg ervoor dat accounts met minimale bevoegdheden worden gebruikt om verbinding te maken met de database server
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
+| **Onderdeel**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [SQL database machtigingen hiërarchie](https://msdn.microsoft.com/library/ms191465) [SQL database Beveilig bare items](https://msdn.microsoft.com/library/ms190401) |
+| **Verwijzingen**              | [Hiërarchie van SQL-machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-Beveilig bare items](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Stappen** | U moet mini maal privileged accounts gebruiken om verbinding te maken met de data base. Het aanmelden van een toepassing moet worden beperkt in de-data base en moet alleen geselecteerde opgeslagen procedures uitvoeren. De aanmelding van de toepassing mag geen directe toegang tot de tabel hebben. |
 
 ## <a name="implement-row-level-security-rls-to-prevent-tenants-from-accessing-each-others-data"></a><a id="rls-tenants"></a>Implementeer beveiliging op RIJNIVEAU om te voor komen dat tenants toegang krijgen tot de gegevens van elkaar
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
+| **Onderdeel**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure, premises |
 | **Kenmerken**              | SQL-versie-V12, SQL-versie-MsSQL2016 |
 | **Verwijzingen**              | [Beveiliging op RIJNIVEAU SQL Server](https://msdn.microsoft.com/library/azure/dn765131.aspx) |
 | **Stappen** | <p>Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een databasetabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslidmaatschap of uitvoeringscontext).</p><p>Beveiliging op RIJNIVEAU vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met RLS kunt u beperkingen instellen voor de toegang tot gegevens in rijen. U kunt bijvoorbeeld bepalen dat werkrollen alleen toegang hebben tot de rijen met gegevens die relevant zijn voor hun afdeling, of de toegang van klanten beperken tot de gegevens die relevant zijn voor hun bedrijf.</p><p>De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. Het database systeem past de toegangs beperkingen telkens toe wanneer de toegang tot gegevens vanuit een wille keurige laag wordt gestart. Dit maakt het beveiligings systeem betrouwbaarder en betrouwbaarder door de surface area van het beveiligings systeem te verminderen.</p><p>|
 
-Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-database functie alleen van toepassing is op SQL Server vanaf 2016 en Azure SQL database. Als de out-of-Box-functie voor beveiliging op rijniveau niet is geïmplementeerd, moet worden gegarandeerd dat gegevens toegang is beperkt met behulp van weer gaven en procedures
+Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-database functie alleen van toepassing is op SQL Server begin 2016, Azure SQL Database en SQL Managed instance. Als de out-of-Box-functie voor beveiliging op rijniveau niet is geïmplementeerd, moet worden gegarandeerd dat gegevens toegang is beperkt met behulp van weer gaven en procedures
 
 ## <a name="sysadmin-role-should-only-have-valid-necessary-users"></a><a id="sysadmin-users"></a>De sysadmin-rol mag alleen geldige benodigde gebruikers hebben
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Database | 
+| **Onderdeel**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
-| **Verwijzingen**              | [SQL database machtigingen hiërarchie](https://msdn.microsoft.com/library/ms191465) [SQL database Beveilig bare items](https://msdn.microsoft.com/library/ms190401) |
+| **Verwijzingen**              | [Hiërarchie van SQL-machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-hierarchy-database-engine), [SQL-Beveilig bare items](https://docs.microsoft.com/sql/relational-databases/security/securables) |
 | **Stappen** | Leden van de vaste serverrol SysAdmin moeten zeer beperkt zijn en nooit accounts bevatten die door toepassingen worden gebruikt.  Controleer de lijst met gebruikers in de rol en Verwijder overbodige accounts|
 
 ## <a name="connect-to-cloud-gateway-using-least-privileged-tokens"></a><a id="cloud-least-privileged"></a>Verbinding maken met de Cloud gateway met behulp van de tokens met minimale privileges
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | IoT-Cloud gateway | 
+| **Onderdeel**               | IoT-Cloud gateway | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Gateway keuze-Azure IoT Hub |
@@ -188,7 +188,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Event Hub | 
+| **Onderdeel**               | Azure Event Hub | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -199,7 +199,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Event Hub | 
+| **Onderdeel**               | Azure Event Hub | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -210,7 +210,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Event Hub | 
+| **Onderdeel**               | Azure Event Hub | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -221,7 +221,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure document DB | 
+| **Onderdeel**               | Azure document DB | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -232,7 +232,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure-vertrouwens grens | 
+| **Onderdeel**               | Azure-vertrouwens grens | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -243,7 +243,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Grens van Service Fabric vertrouwen | 
+| **Onderdeel**               | Grens van Service Fabric vertrouwen | 
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Omgeving-Azure |
@@ -254,7 +254,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Dynamics CRM | 
+| **Onderdeel**               | Dynamics CRM | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -265,7 +265,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Dynamics CRM-Portal | 
+| **Onderdeel**               | Dynamics CRM-Portal | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -276,7 +276,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Storage | 
+| **Onderdeel**               | Azure Storage | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | Para-tabel |
@@ -287,7 +287,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Azure Storage | 
+| **Onderdeel**               | Azure Storage | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -298,7 +298,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Mobiele client | 
+| **Onderdeel**               | Mobiele client | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -309,7 +309,7 @@ Houd er rekening mee dat beveiliging op rijniveau als een out-of-the-box-databas
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
+| **Onderdeel**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
@@ -327,7 +327,7 @@ Het `<behaviorExtensions/>` element van het WCF-configuratie bestand hieronder g
     </extensions>
 </system.serviceModel>
 ```
-Het gebruik van volledig gekwalificeerde (sterke) namen is een unieke aanduiding van een type en verbetert de beveiliging van uw systeem. Gebruik volledig gekwalificeerde assembly namen bij het registreren van typen in de machine. config-en app. config-bestanden.
+Het gebruik van volledig gekwalificeerde (sterke) namen is een unieke aanduiding van een type en verbetert de beveiliging van uw systeem. Gebruik volledig gekwalificeerde assembly namen bij het registreren van typen in het machine.config-en app.config-bestand.
 
 ### <a name="example"></a>Voorbeeld
 Het `<behaviorExtensions/>` element van het WCF-configuratie bestand hieronder geeft WCF de aangepaste gedrags klasse met een sterke verwijzing aan een bepaalde WCF-extensie toe te voegen.
@@ -346,7 +346,7 @@ Het `<behaviorExtensions/>` element van het WCF-configuratie bestand hieronder g
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | WCF | 
+| **Onderdeel**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, NET Framework 3 |
 | **Kenmerken**              | N.v.t.  |
@@ -394,7 +394,7 @@ return result;
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | Web-API | 
+| **Onderdeel**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen, MVC5 |
 | **Kenmerken**              | N.v.t., ID-provider-ADFS, ID-provider-Azure AD |
@@ -445,7 +445,7 @@ public class CustomController : ApiController
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | IoT-apparaat | 
+| **Onderdeel**               | IoT-apparaat | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |
@@ -456,7 +456,7 @@ public class CustomController : ApiController
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Component**               | IoT-veld Gateway | 
+| **Onderdeel**               | IoT-veld Gateway | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | Algemeen |
 | **Kenmerken**              | N.v.t.  |

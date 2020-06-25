@@ -1,25 +1,14 @@
 ---
 title: AMQP 1,0 in Azure Service Bus en Event Hubs protocol handleiding | Microsoft Docs
 description: Protocol gids voor expressies en beschrijving van AMQP 1,0 in Azure Service Bus en Event Hubs
-services: service-bus-messaging,event-hubs
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086139"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337897"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 in Azure Service Bus en Event Hubs protocol gids
 
@@ -35,7 +24,7 @@ Het doel is voor alle ontwikkel aars die een bestaande AMQP 1,0-client stack geb
 
 Algemene AMQP 1,0-stacks van algemeen gebruik, zoals Apache proton of AMQP.NET lite, implementeren al alle kern AMQP 1,0-protocollen. Deze basis bewegingen worden soms verpakt met een API van een hoger niveau. Apache Proton biedt zelfs twee, de verplichte Mess enger-API en de reactieve reactor-API.
 
-In de volgende bespreking gaan we ervan uit dat het beheer van AMQP-verbindingen,-sessies en-koppelingen en de verwerking van frame overdrachten en datatransport besturing worden verwerkt door de respectieve stack (zoals Apache Proton-C) en niet veel als enige specifieke aandacht van toepassings ontwikkelaars. We gaan abstracten uitgaan van een paar API-primitieven, zoals de mogelijkheid om verbinding te maken, en om een vorm van de abstractie objecten van de *afzender* en de *ontvanger* te `send()` maken `receive()` , die respectievelijk een of meer vorm en bewerkingen hebben.
+In de volgende bespreking gaan we ervan uit dat het beheer van AMQP-verbindingen,-sessies en-koppelingen en de verwerking van frame overdrachten en datatransport besturing worden verwerkt door de respectieve stack (zoals Apache Proton-C) en niet veel als enige specifieke aandacht van toepassings ontwikkelaars. We gaan abstracten uitgaan van een paar API-primitieven, zoals de mogelijkheid om verbinding te maken, en om een vorm van de abstractie objecten van de *afzender* en de *ontvanger* te maken, die respectievelijk een of meer vorm `send()` en `receive()` bewerkingen hebben.
 
 Bij het bespreken van geavanceerde mogelijkheden van Azure Service Bus, zoals het bladeren door berichten of het beheer van sessies, worden deze functies uitgelegd in AMQP-voor waarden, maar ook als een gelaagde pseudo-implementatie boven op de API-abstractie.
 
@@ -88,7 +77,7 @@ Clients die gebruikmaken van AMQP-verbindingen via TCP, moeten poorten 5671 en 5
 
 ![Lijst met doel poorten][4]
 
-Een .NET-client zou mislukken met een SocketException (' er is een poging gedaan om toegang te krijgen tot een socket op een manier die niet wordt toegestaan door de toegangs machtigingen ') als deze poorten zijn geblokkeerd door de firewall. De functie kan worden uitgeschakeld door de `EnableAmqpLinkRedirect=false` instelling in de met-teken reeks, waardoor de clients met de externe service via poort 5671 kunnen communiceren.
+Een .NET-client zou mislukken met een SocketException (' er is een poging gedaan om toegang te krijgen tot een socket op een manier die niet wordt toegestaan door de toegangs machtigingen ') als deze poorten zijn geblokkeerd door de firewall. De functie kan worden uitgeschakeld door de instelling `EnableAmqpLinkRedirect=false` in de met-teken reeks, waardoor de clients met de externe service via poort 5671 kunnen communiceren.
 
 
 ### <a name="links"></a>Koppelingen
@@ -103,7 +92,7 @@ De koppeling voor het initiëren van de container vraagt de tegenovergestelde co
 
 Koppelingen hebben de naam en zijn gekoppeld aan knoop punten. Zoals vermeld in het begin, zijn knoop punten de communicerende entiteiten binnen een container.
 
-In Service Bus is een knoop punt rechtstreeks gelijk aan een wachtrij, een onderwerp, een abonnement of een subwachtrij deadletter van een wachtrij of abonnement. De naam van het knoop punt dat in AMQP wordt gebruikt, is daarom de relatieve naam van de entiteit binnen de naam ruimte Service Bus. Als de naam van een `myqueue`wachtrij is, is dat ook de naam van het AMQP-knoop punt. Een onderwerp-abonnement volgt de HTTP API-Conventie door te sorteren in een ' Abonnementen ' resource verzameling. Daarom heeft een abonnement **Sub** in een onderwerp **mytopic** de AMQP-knooppunt naam **mytopic/abonnementen/sub**.
+In Service Bus is een knoop punt rechtstreeks gelijk aan een wachtrij, een onderwerp, een abonnement of een subwachtrij deadletter van een wachtrij of abonnement. De naam van het knoop punt dat in AMQP wordt gebruikt, is daarom de relatieve naam van de entiteit binnen de naam ruimte Service Bus. Als de naam van een wachtrij is `myqueue` , is dat ook de naam van het AMQP-knoop punt. Een onderwerp-abonnement volgt de HTTP API-Conventie door te sorteren in een ' Abonnementen ' resource verzameling. Daarom heeft een abonnement **Sub** in een onderwerp **mytopic** de AMQP-knooppunt naam **mytopic/abonnementen/sub**.
 
 De client waarmee verbinding moet worden gemaakt, is ook vereist voor het gebruik van een lokale knooppunt naam voor het maken van koppelingen. Service Bus is geen voor schriften voor de namen van deze knoop punten en interpreteert deze niet. AMQP 1,0-client stacks gebruiken meestal een schema om ervoor te zorgen dat deze namen van tijdelijke knoop punten uniek zijn binnen het bereik van de client.
 
@@ -127,7 +116,7 @@ Zo kunnen Service Bus en Event Hubs ten minste één keer worden ondersteund, wa
 
 Om mogelijke dubbele verzen dingen te compenseren, ondersteunt Service Bus duplicaten detectie als een optionele functie in wacht rijen en onderwerpen. Met duplicaten detectie worden de bericht-Id's van alle inkomende berichten geregistreerd tijdens een door de gebruiker gedefinieerd tijd venster en worden alle berichten die met dezelfde bericht-Id's worden verzonden, in dat zelfde venster weer gegeven.
 
-### <a name="flow-control"></a>Datatransport besturing
+### <a name="flow-control"></a>Stoombeheer
 
 Naast het stroom beheer model op sessie niveau dat eerder is besproken, heeft elke koppeling een eigen stroom beheer model. Met Datatransport besturing op sessie niveau kan de container te allen tijde niet te veel frames tegelijk verwerken, de Datatransport besturing op koppelings niveau zorgt ervoor dat de toepassing wordt belast met het aantal berichten dat via een koppeling moet worden verwerkt en wanneer.
 
@@ -215,7 +204,7 @@ De pijlen in de volgende tabel geven de stroom richting van Performative weer.
 
 In de volgende secties wordt uitgelegd welke eigenschappen van de standaard AMQP-bericht secties worden gebruikt door Service Bus en hoe deze worden toegewezen aan de API-set van Service Bus.
 
-Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten worden toegewezen `application-properties` aan de toewijzing van AMQP.
+Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten worden toegewezen aan de toewijzing van AMQP `application-properties` .
 
 #### <a name="header"></a>koptekst
 
@@ -234,7 +223,7 @@ Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten wor
 | bericht-id |Een door de toepassing gedefinieerde, vrije-vorm-id voor dit bericht. Wordt gebruikt voor duplicaten detectie. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Door de toepassing gedefinieerde gebruikers-id die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
 | tot |De door de toepassing gedefinieerde doel-id, die niet wordt geïnterpreteerd door Service Bus. |[Aan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Adres](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | beantwoorden |Een door de toepassing gedefinieerde antwoord-Path-Indicator die niet wordt geïnterpreteerd door Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Door de toepassing gedefinieerde correlatie-id, die niet wordt geïnterpreteerd door Service Bus. |[Correlatie](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | inhouds type |Door de toepassing gedefinieerde inhouds type-indicator voor de hoofd tekst, niet geïnterpreteerd door Service Bus. |[Invoer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -247,7 +236,7 @@ Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten wor
 
 #### <a name="message-annotations"></a>Bericht aantekeningen
 
-Er zijn enkele andere eigenschappen van Service Bus-berichten, die geen deel uitmaken van AMQP-bericht eigenschappen, en `MessageAnnotations` die worden door gegeven als op het bericht.
+Er zijn enkele andere eigenschappen van Service Bus-berichten, die geen deel uitmaken van AMQP-bericht eigenschappen, en die worden door gegeven als `MessageAnnotations` op het bericht.
 
 | Toewijzings sleutel van annotatie | Gebruik | API-naam |
 | --- | --- | --- |
@@ -263,17 +252,17 @@ Er zijn enkele andere eigenschappen van Service Bus-berichten, die geen deel uit
 ### <a name="transaction-capability"></a>Transactie mogelijkheid
 
 Een transactie groepeert twee of meer bewerkingen in een uitvoeringsbereik. Een dergelijke trans actie moet er dus voor zorgen dat alle bewerkingen die tot een bepaalde groep bewerkingen behoren, slagen of mislukken.
-De bewerkingen worden gegroepeerd op een id `txn-id`.
+De bewerkingen worden gegroepeerd op een id `txn-id` .
 
-Voor transactionele interactie fungeert de client als een `transaction controller` , waarmee de bewerkingen worden beheerd die samen moeten worden gegroepeerd. Service Bus-service fungeert als `transactional resource` een en voert het werk uit zoals `transaction controller`aangevraagd door de.
+Voor transactionele interactie fungeert de client als een `transaction controller` , waarmee de bewerkingen worden beheerd die samen moeten worden gegroepeerd. Service Bus-service fungeert als een `transactional resource` en voert het werk uit zoals aangevraagd door de `transaction controller` .
 
-De client en service communiceren via een `control link` , die door de client is vastgesteld. De `declare` - `discharge` en-berichten worden door de controller via de beheer koppeling verzonden om respectievelijk trans acties toe te wijzen en te volt ooien (ze vertegenwoordigen niet de afbakening van transactioneel werk). De daad werkelijke verzen ding/ontvangst wordt niet uitgevoerd op deze koppeling. Elke aangevraagde transactionele bewerking wordt expliciet geïdentificeerd met `txn-id` de gewenste en kan daarom worden uitgevoerd op een koppeling op de verbinding. Als de koppeling van het besturings element wordt gesloten terwijl er nog niet-gefactureerde trans acties bestaan, worden alle dergelijke trans acties onmiddellijk teruggedraaid en wordt geprobeerd om verdere transactionele werkzaamheden uit te voeren. Berichten op de besturings koppeling mogen niet vooraf worden afgerekend.
+De client en service communiceren via een `control link` , die door de client is vastgesteld. De `declare` `discharge` -en-berichten worden door de controller via de beheer koppeling verzonden om respectievelijk trans acties toe te wijzen en te volt ooien (ze vertegenwoordigen niet de afbakening van transactioneel werk). De daad werkelijke verzen ding/ontvangst wordt niet uitgevoerd op deze koppeling. Elke aangevraagde transactionele bewerking wordt expliciet geïdentificeerd met de gewenste `txn-id` en kan daarom worden uitgevoerd op een koppeling op de verbinding. Als de koppeling van het besturings element wordt gesloten terwijl er nog niet-gefactureerde trans acties bestaan, worden alle dergelijke trans acties onmiddellijk teruggedraaid en wordt geprobeerd om verdere transactionele werkzaamheden uit te voeren. Berichten op de besturings koppeling mogen niet vooraf worden afgerekend.
 
-Elke verbinding moet een eigen beheer koppeling initiëren om trans acties te kunnen starten en beëindigen. De service definieert een speciaal doel dat fungeert als een `coordinator`. De client/controller brengt een beheer koppeling naar dit doel tot stand. De beheer koppeling valt buiten de grens van een entiteit, dat wil zeggen, dezelfde beheer koppeling kan worden gebruikt om trans acties voor meerdere entiteiten te initiëren en te corrigeren.
+Elke verbinding moet een eigen beheer koppeling initiëren om trans acties te kunnen starten en beëindigen. De service definieert een speciaal doel dat fungeert als een `coordinator` . De client/controller brengt een beheer koppeling naar dit doel tot stand. De beheer koppeling valt buiten de grens van een entiteit, dat wil zeggen, dezelfde beheer koppeling kan worden gebruikt om trans acties voor meerdere entiteiten te initiëren en te corrigeren.
 
 #### <a name="starting-a-transaction"></a>Een trans actie starten
 
-Om te beginnen met transactioneel werk. de controller moet een `txn-id` van de coördinator verkrijgen. Dit doet u door een `declare` type bericht te verzenden. Als de declaratie is geslaagd, reageert de coördinator met een positie resultaat, waarmee de toewijzing `txn-id`wordt uitgevoerd.
+Om te beginnen met transactioneel werk. de controller moet een `txn-id` van de coördinator verkrijgen. Dit doet u door een `declare` type bericht te verzenden. Als de declaratie is geslaagd, reageert de coördinator met een positie resultaat, waarmee de toewijzing wordt uitgevoerd `txn-id` .
 
 | Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
@@ -284,7 +273,7 @@ Om te beginnen met transactioneel werk. de controller moet een `txn-id` van de c
 
 #### <a name="discharging-a-transaction"></a>Een trans actie wordt geloosd
 
-De controller sluit de transactionele werkzaamheden door een `discharge` bericht naar de coördinator te verzenden. De controller geeft aan dat de transactionele werkzaamheden moeten worden doorgevoerd of teruggedraaid door de `fail` vlag in te stellen op de kwijtings instantie. Als de coördinator de kwijting niet kan volt ooien, wordt het bericht met dit resultaat afgewezen `transaction-error`.
+De controller sluit de transactionele werkzaamheden door een `discharge` bericht naar de coördinator te verzenden. De controller geeft aan dat de transactionele werkzaamheden moeten worden doorgevoerd of teruggedraaid door de `fail` vlag in te stellen op de kwijtings instantie. Als de coördinator de kwijting niet kan volt ooien, wordt het bericht met dit resultaat afgewezen `transaction-error` .
 
 > Opmerking: Fail = True verwijst naar terugdraaien van een trans actie, en fout = False verwijst naar door voeren.
 
@@ -293,30 +282,30 @@ De controller sluit de transactionele werkzaamheden door een `discharge` bericht
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
 |  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
 | | . . . <br/>Transactioneel werk<br/>op andere koppelingen<br/> . . . |
-| overbrengen<br/>levering-id = 57,...)<br/>{ AmqpValue (<br/>**Kwijting (trans actie-id = 0,<br/>Fail = false)**)}| ------> |  |
+| overbrengen<br/>levering-id = 57,...)<br/>{ AmqpValue (<br/>**Kwijting (trans actie-id = 0, <br/> Fail = false)**)}| ------> |  |
 | | <------ | toestand <br/> First = 57, last = 57, <br/>status =**geaccepteerd ()**)|
 
 #### <a name="sending-a-message-in-a-transaction"></a>Een bericht in een trans actie verzenden
 
-Alle transactionele werkzaamheden worden uitgevoerd met de transactionele leverings `transactional-state` status die de trans actie-id uitvoert. In het geval van het verzenden van berichten wordt de transactionele status uitgevoerd door het overdrachts frame van het bericht. 
+Alle transactionele werkzaamheden worden uitgevoerd met de transactionele leverings status `transactional-state` die de trans actie-id uitvoert. In het geval van het verzenden van berichten wordt de transactionele status uitgevoerd door het overdrachts frame van het bericht. 
 
 | Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
 |  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
-| overbrengen<br/>ingang = 1,<br/>delivery-id = 1, <br/>**status =<br/>TransactionalState (<br/>trans actie-id = 0)**)<br/>nettolading| ------> |  |
-| | <------ | toestand <br/> First = 1, last = 1, <br/>status =**TransactionalState (<br/>trans actie-id = 0,<br/>resultaat = geaccepteerd ()**))|
+| overbrengen<br/>ingang = 1,<br/>delivery-id = 1, <br/>**status = <br/> TransactionalState ( <br/> trans actie-id = 0)**)<br/>nettolading| ------> |  |
+| | <------ | toestand <br/> First = 1, last = 1, <br/>status =**TransactionalState ( <br/> trans actie-id = 0, <br/> resultaat = geaccepteerd ()**))|
 
 #### <a name="disposing-a-message-in-a-transaction"></a>Een bericht in een trans actie afstoten
 
-`Complete`  /  `Abandon`  /  `DeadLetter`  / Bericht toestand bevat bewerkingen zoals `Defer`. Als u deze bewerkingen binnen een trans actie wilt uitvoeren `transactional-state` , geeft u het door met de toestand.
+Bericht toestand bevat bewerkingen zoals `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Als u deze bewerkingen binnen een trans actie wilt uitvoeren, geeft u het door `transactional-state` met de toestand.
 
 | Client (controller) | | Service Bus (coördinator) |
 | --- | --- | --- |
 | overbrengen<br/>delivery-id = 0,...)<br/>{AmqpValue (declare ())}| ------> |  |
 |  | <------ | toestand <br/> First = 0, last = 0, <br/>status = gedeclareerd (<br/>trans actie-id = {trans actie-ID}<br/>))|
 | | <------ |overbrengen<br/>ingang = 2,<br/>delivery-id = 11, <br/>status = Null)<br/>nettolading|  
-| toestand <br/> First = 11, last = 11, <br/>status =**TransactionalState (<br/>trans actie-id = 0,<br/>resultaat = geaccepteerd ()**))| ------> |
+| toestand <br/> First = 11, last = 11, <br/>status =**TransactionalState ( <br/> trans actie-id = 0, <br/> resultaat = geaccepteerd ()**))| ------> |
 
 
 ## <a name="advanced-service-bus-capabilities"></a>Geavanceerde Service Bus mogelijkheden
@@ -337,9 +326,9 @@ Voor al deze gebaren is een aanvraag/antwoord interactie tussen de client en de 
 | Logische bewerking | Client | Service Bus |
 | --- | --- | --- |
 | Reactie pad voor aanvraag maken |--> koppelen (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**Sender**,<br/>bron =**Null**,<br/>target = "myentity/$management"<br/>) |Geen actie |
-| Reactie pad voor aanvraag maken |Geen actie |\<--attach (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**ontvanger**,<br/>Bron = null,<br/>target = "myentity"<br/>) |
+| Reactie pad voor aanvraag maken |Geen actie |\<-- attach(<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**ontvanger**,<br/>Bron = null,<br/>target = "myentity"<br/>) |
 | Reactie pad voor aanvraag maken |--> koppelen (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**ontvanger**,<br/>source = "myentity/$management",<br/>target = "myclient $ id"<br/>) | |
-| Reactie pad voor aanvraag maken |Geen actie |\<--attach (<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**Sender**,<br/>Bron = "myentity",<br/>target = "myclient $ id"<br/>) |
+| Reactie pad voor aanvraag maken |Geen actie |\<-- attach(<br/>name = {*naam koppeling*},<br/>ingang = {*numerieke ingang*},<br/>Role =**Sender**,<br/>Bron = "myentity",<br/>target = "myclient $ id"<br/>) |
 
 Met dat paar koppelingen op locatie is de aanvraag/antwoord-implementatie eenvoudig: een aanvraag is een bericht dat wordt verzonden naar een entiteit in de infra structuur voor berichten die dit patroon begrijpt. In dat verzoek-bericht wordt het veld *beantwoorden* in de sectie *Eigenschappen* ingesteld op de *doel* -id voor de koppeling waarop het antwoord moet worden afgeleverd. De entiteit handling verwerkt de aanvraag en stuurt vervolgens het antwoord over de koppeling waarvan de *doel* -id overeenkomt met de opgegeven *antwoord-* id.
 
@@ -372,7 +361,7 @@ Het aanvraag bericht heeft de volgende toepassings eigenschappen:
 | --- | --- | --- | --- |
 | schijf |Nee |tekenreeks |**put-token** |
 | type |Nee |tekenreeks |Het type van het token dat wordt geplaatst. |
-| name |Nee |tekenreeks |De "doel groep" waarop het token van toepassing is. |
+| naam |Nee |tekenreeks |De "doel groep" waarop het token van toepassing is. |
 | verval |Ja |tijdstempel |De verloop tijd van het token. |
 
 De eigenschap *name* identificeert de entiteit waaraan het token moet worden gekoppeld. In Service Bus is het het pad naar de wachtrij, of onderwerp/abonnement. De eigenschap *type* geeft het token type aan:
@@ -406,13 +395,13 @@ De client wordt vervolgens verantwoordelijk voor het bijhouden van de verval dat
 
 Send [-by/overdracht Sender](service-bus-transactions.md#transfers-and-send-via) is een functie waarmee service bus een bepaald bericht via een andere entiteit kan door sturen naar een doel entiteit. Deze functie wordt gebruikt voor het uitvoeren van bewerkingen tussen entiteiten in één trans actie.
 
-Met deze functionaliteit maakt u een afzender en brengt u de koppeling tot stand `via-entity`. Tijdens het maken van de koppeling wordt aanvullende informatie door gegeven om de werkelijke bestemming van de berichten/overdrachten op deze koppeling tot stand te brengen. Zodra het koppelen is gelukt, worden alle berichten die via deze koppeling worden verzonden, automatisch doorgestuurd naar de *doel entiteit* via *via-entity*. 
+Met deze functionaliteit maakt u een afzender en brengt u de koppeling tot stand `via-entity` . Tijdens het maken van de koppeling wordt aanvullende informatie door gegeven om de werkelijke bestemming van de berichten/overdrachten op deze koppeling tot stand te brengen. Zodra het koppelen is gelukt, worden alle berichten die via deze koppeling worden verzonden, automatisch doorgestuurd naar de *doel entiteit* via *via-entity*. 
 
 > Opmerking: verificatie moet worden uitgevoerd voor zowel *via-entity* als *doel-entiteit* voordat deze koppeling tot stand wordt gebracht.
 
 | Client | | Service Bus |
 | --- | --- | --- |
-| Koppel<br/>name = {naam koppeling},<br/>Role = Sender,<br/>Bron = {client koppelings-ID},<br/>doel =**{via-entity}**,<br/>**Eigenschappen = map [(<br/>com. micro soft: overdracht-doel-adres<br/>= {doel-entiteit})]** ) | ------> | |
+| Koppel<br/>name = {naam koppeling},<br/>Role = Sender,<br/>Bron = {client koppelings-ID},<br/>doel =**{via-entity}**,<br/>**Eigenschappen = map [( <br/> com. micro soft: overdracht-doel-adres = <br/> {doel-entiteit})]** ) | ------> | |
 | | <------ | Koppel<br/>name = {naam koppeling},<br/>Role = ontvanger,<br/>Bron = {client koppelings-ID},<br/>doel = {via-entity},<br/>eigenschappen = map [(<br/>com. micro soft: overdracht-bestemming-adres =<br/>{Destination-entity})] ) |
 
 ## <a name="next-steps"></a>Volgende stappen

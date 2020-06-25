@@ -1,24 +1,24 @@
 ---
 title: Ingebouwde beleids definities voor Azure Cognitive Services
 description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Cognitive Services. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 06/11/2020
+ms.date: 06/23/2020
 author: nitinme
 ms.author: nitinme
 ms.service: cognitive-services
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 36dfeb93502e9d1d2a2694fb709b3a6cdeb6520a
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 26766a43c3e8b76000768e85c4fe07d99045fb59
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84989005"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322946"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-services"></a>Azure Policy ingebouwde beleids definities voor Azure Cognitive Services
 
 Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure Cognitive Services. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **versie** om de bron weer te geven op de [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-cognitive-services"></a>Azure Cognitive Services
 

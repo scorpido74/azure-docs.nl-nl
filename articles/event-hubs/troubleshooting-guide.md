@@ -1,20 +1,14 @@
 ---
 title: Verbindings problemen oplossen-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het oplossen van verbindings problemen met Azure Event Hubs.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2020
-ms.author: spelluru
-ms.openlocfilehash: 4111a71200ec9bffdfed37c926635754c868f71e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/23/2020
+ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726715"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322384"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Verbindings problemen oplossen-Azure Event Hubs
 Er zijn verschillende redenen waarom client toepassingen geen verbinding kunnen maken met een Event Hub. De verbindings problemen die u ondervindt, kunnen permanent of tijdelijk zijn. Als het probleem voortdurend optreedt (permanent), wilt u mogelijk de connection string controleren, de firewall instellingen van uw organisatie, de instellingen van de IP-firewall, de instellingen voor netwerk beveiliging (Service-eind punten, persoonlijke eind punten, enzovoort). Voor tijdelijke problemen voert u een upgrade uit naar de nieuwste versie van de SDK, voert u opdrachten uit om verwijderde pakketten te controleren en netwerk traceringen te verkrijgen, kan u helpen bij het oplossen van de problemen. 

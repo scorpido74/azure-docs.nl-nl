@@ -1,7 +1,7 @@
 ---
-title: Een verbinding met een Azure-SQL database instellen met behulp van een beheerde identiteit (preview)
+title: Een verbinding met Azure SQL Database instellen met behulp van een beheerde identiteit (preview)
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het instellen van een indexer-verbinding met een Azure-SQL database met behulp van een beheerde identiteit (preview)
+description: Meer informatie over het instellen van een verbinding met een Indexeer functie voor het Azure SQL Database met behulp van een beheerde identiteit (preview)
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3e58bdafce6746d7f83dfbceeff529c6d4b5075a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664800"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321340"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding met een Azure-SQL database instellen met behulp van een beheerde identiteit (preview)
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Een Indexeer functie verbinding instellen met Azure SQL Database met behulp van een beheerde identiteit (preview)
 
 > [!IMPORTANT] 
-> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Ondersteuning voor het instellen van een verbinding met een gegevens bron met behulp van een beheerde identiteit bevindt zich momenteel in een open bare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads.
 > U kunt toegang tot de preview aanvragen door [dit formulier](https://aka.ms/azure-cognitive-search/mi-preview-request)in te vullen.
 
-Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met een Azure-SQL database met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
+Op deze pagina wordt beschreven hoe u een Indexeer functie verbinding kunt instellen met Azure SQL Database met behulp van een beheerde identiteit in plaats van referenties op te geven in het gegevens bron object connection string.
 
 Voor meer informatie over deze functie kunt u het beste inzicht krijgen in wat een indexer is en hoe u een Indexeer functie instelt voor uw gegevens bron. Meer informatie vindt u op de volgende koppelingen:
+
 * [Overzicht van de indexeerfunctie](search-indexer-overview.md)
 * [Indexeerfunctie voor Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ Wanneer een door het systeem toegewezen beheerde identiteit is ingeschakeld, maa
 Nadat u **Opslaan** hebt geselecteerd, ziet u een object-id die is toegewezen aan uw zoek service.
 
 ![Object-id](./media/search-managed-identities/system-assigned-identity-object-id.png "Object-id")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2-Azure Active Directory beheerder inrichten voor SQL Server
 
 Wanneer u in de volgende stap verbinding maakt met de data base, moet u verbinding maken met Azure Active Directory een Azure AD-account dat beheerders toegang heeft tot de data base om de zoek service toegang te geven tot de data base.
@@ -102,7 +103,7 @@ Bij het indexeren van een SQL database moet de gegevens bron de volgende vereist
 * **naam** is de unieke naam van de gegevens bron in uw zoek service.
 * **type** is`azuresql`
 * **aanmeldings**
-    * Wanneer u een beheerde identiteit gebruikt om te verifiëren, is de notatie van de **referenties** anders dan wanneer u geen beheerd-identiteit gebruikt. Hier geeft u een initiële catalogus-of database naam en een ResourceId op die geen account sleutel of wacht woord heeft. De ResourceId moet de abonnements-ID bevatten van de Azure-SQL database, de resource groep van de SQL database en de naam van de SQL database. 
+    * Wanneer u een beheerde identiteit gebruikt om te verifiëren, is de notatie van de **referenties** anders dan wanneer u geen beheerd-identiteit gebruikt. Hier geeft u een initiële catalogus-of database naam en een ResourceId op die geen account sleutel of wacht woord heeft. De ResourceId moet de abonnements-ID van Azure SQL Database, de resource groep van SQL Database en de naam van de SQL database bevatten. 
     * Connection string indeling beheerde identiteit:
         * *Initiële catalogus | Data Base =**database naam**; ResourceId =/Subscriptions/**uw abonnements-id**/resourceGroups/**de naam van uw resource groep**/providers/Microsoft.SQL/servers/**uw SQL Server naam**/; Verbindingstime-out = verbindingstime **-out**;*
 * **container** Hiermee geeft u de naam op van de tabel of weer gave die u wilt indexeren.

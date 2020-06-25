@@ -1,25 +1,15 @@
 ---
 title: Aan de slag met Azure Service Bus-onderwerpen en -abonnementen | Microsoft Docs
 description: Een C# .NET Core-consoletoepassing schrijven die Service Bus Messaging-onderwerpen en -abonnementen gebruikt.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 11/27/2019
-ms.author: aschhab
-ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 7b2b8382c11f447237a8f49ee5be1f4989e3f906
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74560101"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337508"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Aan de slag met Service Bus-onderwerpen
 
@@ -38,7 +28,7 @@ Deze zelfstudie bestaat uit de volgende stappen:
     2. Haal de **Connection String**op.
     3. Maak een **onderwerp** in de naam ruimte.
     4. Maak **één abonnement** op het onderwerp in de naam ruimte.
-3. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
+3. [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
 4. [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
  
 ## <a name="send-messages-to-the-topic"></a>Berichten naar het onderwerp verzenden
@@ -75,7 +65,7 @@ Start Visual Studio en maak een nieuwe **consoletoepassing (.NET Core)**.
     static ITopicClient topicClient;
     ``` 
 
-3. Vervang de `Main()` -methode door de volgende **asynchrone** `Main` methode waarmee berichten asynchroon worden verzonden met de methode SendMessagesAsync die u in de volgende stap gaat toevoegen. 
+3. Vervang de- `Main()` methode door de volgende **asynchrone** `Main` methode waarmee berichten asynchroon worden verzonden met de methode SendMessagesAsync die u in de volgende stap gaat toevoegen. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -210,7 +200,7 @@ Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET 
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Vervang de `Main()` -methode door de volgende **async** `Main` -methode. Hiermee wordt de `RegisterOnMessageHandlerAndReceiveMessages()` methode aangeroepen die u in de volgende stap gaat toevoegen. 
+3. Vervang de- `Main()` methode door de volgende **async** - `Main` methode. Hiermee wordt de `RegisterOnMessageHandlerAndReceiveMessages()` methode aangeroepen die u in de volgende stap gaat toevoegen. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -368,10 +358,10 @@ Als u de berichten wilt ontvangen die u hebt verzonden, maakt u een andere .NET 
    
     ![Lengte van het onderwerp][topic-message-receive]
 
-Gefeliciteerd! Met de standaard .NET-bibliotheek, hebt u nu een onderwerp en abonnement gemaakt, 10 berichten verzonden en die berichten ontvangen.
+Gefeliciteerd Met de standaard .NET-bibliotheek, hebt u nu een onderwerp en abonnement gemaakt, 10 berichten verzonden en die berichten ontvangen.
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

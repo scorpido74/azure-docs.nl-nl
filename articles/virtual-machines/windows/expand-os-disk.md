@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5044993e04dabc363a7a4ee49abb66285bcd7521
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869695"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338241"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>De besturingssysteemschijf van een virtuele machine uitbreiden
 
@@ -160,7 +160,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Grootte van gegevens schijven wijzigen
 
-Dit artikel is voornamelijk gericht op het uitbreiden van de besturingssysteem schijf van de virtuele machine, maar het script kan ook worden gebruikt voor het uitbreiden van de gegevens schijven die zijn gekoppeld aan de virtuele machine. Als u bijvoorbeeld de eerste gegevensschijf die is gekoppeld aan de VM wilt uitbreiden, vervangt u het object `OSDisk` van `StorageProfile` door de matrix `DataDisks` en gebruikt u een numerieke index om een verwijzing naar de eerste gekoppelde schijf te verkrijgen, zoals hieronder wordt weergegeven:
+Dit artikel is voornamelijk gericht op het uitbreiden van de besturingssysteem schijf van de virtuele machine, maar het script kan ook worden gebruikt voor het uitbreiden van de gegevens schijven die zijn gekoppeld aan de virtuele machine. Als u alleen een gegevens schijf uitbreidt, hoeft u de toewijzing van de VM **niet** ongedaan te maken. Als u bijvoorbeeld de eerste gegevensschijf die is gekoppeld aan de VM wilt uitbreiden, vervangt u het object `OSDisk` van `StorageProfile` door de matrix `DataDisks` en gebruikt u een numerieke index om een verwijzing naar de eerste gekoppelde schijf te verkrijgen, zoals hieronder wordt weergegeven:
 
 **Beheerde schijf**
 
@@ -201,11 +201,11 @@ Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u het besturi
 
 2.  Open een opdracht prompt en typ **Disk Part**.
 
-2.  Typ `list volume`bij de **Disk Part** -prompt. Noteer het volume dat u wilt uitbreiden.
+2.  Typ bij de **Disk Part** -prompt `list volume` . Noteer het volume dat u wilt uitbreiden.
 
-3.  Typ `select volume <volumenumber>`bij de **Disk Part** -prompt. Hiermee wordt het volume *volumenumber* geselecteerd dat u wilt uitbreiden naar aaneengesloten lege ruimte op dezelfde schijf.
+3.  Typ bij de **Disk Part** -prompt `select volume <volumenumber>` . Hiermee wordt het volume *volumenumber* geselecteerd dat u wilt uitbreiden naar aaneengesloten lege ruimte op dezelfde schijf.
 
-4.  Typ `extend [size=<size>]`bij de **Disk Part** -prompt. Hiermee wordt het geselecteerde volume uitgebreid naar *grootte* in mega bytes (MB).
+4.  Typ bij de **Disk Part** -prompt `extend [size=<size>]` . Hiermee wordt het geselecteerde volume uitgebreid naar *grootte* in mega bytes (MB).
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,19 +1,14 @@
 ---
 title: Blob Storage als controlepunt opslag gebruiken op Azure Stack hub (preview)
 description: In dit artikel wordt beschreven hoe u Blob Storage gebruikt als controlepunt opslag in Event Hubs op Azure Stack hub (preview).
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 03/18/2020
-ms.author: spelluru
-ms.openlocfilehash: 2938099383c32eac493e4b4bb620f03c76ca5c44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0990941191827c66cd51d70216c75e106d0448fd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023647"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322363"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob Storage als controlepunt archief gebruiken Event Hubs op Azure Stack hub (preview)
 Als u Azure Blob Storage gebruikt als controlepunt opslag in een omgeving die ondersteuning biedt voor een andere versie van de Storage BLOB SDK dan die welke meestal beschikbaar zijn in azure, moet u code gebruiken om de API-versie van de opslag service te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld werkt met [Event hubs op een Azure stack hub-versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u code gebruiken om de API-versie van de Storage-service te richten op 2017-11-09. Zie voor een voor beeld van het richten op een specifieke opslag-API-versie de volgende voor beelden op GitHub: 
@@ -34,7 +29,7 @@ The value for one of the HTTP headers is not in the correct format
 
 
 ## <a name="sample-error-message-in-python"></a>Voorbeeld fout bericht in python
-Voor python wordt een fout van `azure.core.exceptions.HttpResponseError` wordt door gegeven aan de foutafhandelingsroutine `on_error(partition_context, error)` van `EventHubConsumerClient.receive()`. Maar de methode `receive()` veroorzaakt geen uitzonde ring. `print(error)`de volgende uitzonderings gegevens worden afgedrukt:
+Voor python wordt een fout van `azure.core.exceptions.HttpResponseError` wordt door gegeven aan de foutafhandelingsroutine `on_error(partition_context, error)` van `EventHubConsumerClient.receive()` . Maar de methode `receive()` veroorzaakt geen uitzonde ring. `print(error)`de volgende uitzonderings gegevens worden afgedrukt:
 
 ```bash
 The value for one of the HTTP headers is not in the correct format.

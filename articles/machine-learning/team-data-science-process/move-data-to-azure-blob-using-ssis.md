@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720868"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322866"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Gegevens verplaatsen van of naar Azure Blob Storage met SSIS-connectors
 Het [SQL Server Integration Services Feature Pack voor Azure](https://msdn.microsoft.com/library/mt146770.aspx) biedt onderdelen om verbinding te maken met Azure, gegevens over te dragen tussen Azure-en on-premises gegevens bronnen en gegevens die zijn opgeslagen in azure te verwerken.
@@ -27,7 +27,7 @@ Zodra klanten on-premises gegevens naar de Cloud hebben verplaatst, hebben ze to
 
 Voor beelden van het gebruik van deze Azure-resources zijn te vinden in de [SQL](sql-walkthrough.md) -en [HDInsight](hive-walkthrough.md) -scenario's.
 
-Zie [meer met SQL Server Integration Services Feature Pack voor Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) blog voor een bespreking van canonieke scenario's die gebruikmaken van SSIS om bedrijfs behoeften te bereiken die gemeen schappelijk zijn voor hybride gegevens integratie scenario's.
+Zie [meer met SQL Server Integration Services Feature Pack voor Azure](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) blog voor een bespreking van canonieke scenario's die gebruikmaken van SSIS om bedrijfs behoeften te bereiken die gemeen schappelijk zijn voor hybride gegevens integratie scenario's.
 
 > [!NOTE]
 > Raadpleeg Azure Blob- [basis beginselen](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) en [Azure Blob service](https://msdn.microsoft.com/library/azure/dd179376.aspx)voor een volledige inleiding tot Azure Blob-opslag.
@@ -70,7 +70,7 @@ De para meters die de taak gebruikt, worden hier beschreven:
 | **Zijn** |Hiermee geeft u de naam op van de BLOB-container die de geüploade bestanden als blobs bevat. |
 | **BlobDirectory** |Hiermee geeft u de BLOB-map op waarin het geüploade bestand wordt opgeslagen als een blok-blob. De BLOB-map is een virtuele hiërarchische structuur. Als de BLOB al bestaat, wordt de IA vervangen. |
 | **LocalDirectory** |Hiermee geeft u de lokale map met de bestanden die moeten worden geüpload. |
-| **Bestands** |Hiermee geeft u een naam filter op waarmee bestanden met het opgegeven naam patroon worden geselecteerd. MySheet\*. xls\* bevat bijvoorbeeld bestanden als MySheet001. xls en MySheetABC. xlsx |
+| **Bestands** |Hiermee geeft u een naam filter op waarmee bestanden met het opgegeven naam patroon worden geselecteerd. MySheet \* . xls \* bevat bijvoorbeeld bestanden zoals MySheet001.xls en MySheetABC.xlsx |
 | **TimeRangeFrom/TimeRangeTo** |Hiermee geeft u een tijds bereik filter op. Bestanden die zijn gewijzigd na *TimeRangeFrom* en voordat *TimeRangeTo* zijn opgenomen. |
 
 > [!NOTE]

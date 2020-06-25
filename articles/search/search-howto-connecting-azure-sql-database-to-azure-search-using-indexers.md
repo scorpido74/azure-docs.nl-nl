@@ -1,7 +1,7 @@
 ---
 title: Zoeken in Azure SQL-gegevens
 titleSuffix: Azure Cognitive Search
-description: Gegevens importeren uit Azure SQL Database met Indexeer functies, voor zoeken in volledige tekst in azure Cognitive Search. In dit artikel worden de verbindingen, de configuratie van de Indexeer functie en gegevens opname beschreven.
+description: Gegevens importeren uit Azure SQL Database of SQL Managed instance met Indexeer functies, voor zoeken in volledige tekst in azure Cognitive Search. In dit artikel worden de verbindingen, de configuratie van de Indexeer functie en gegevens opname beschreven.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 1afe92720997ede327f098b9a435d00842ae201e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080594"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322143"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL Database inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
+# <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
-Voordat u een query kunt uitvoeren op een [Azure Cognitive search-index](search-what-is-an-index.md), moet u deze vullen met uw gegevens. Als de gegevens zich in een Azure-SQL database bevinden, kan een **azure Cognitive Search indexer voor Azure SQL database** (of **Azure SQL indexeerer** voor kort) het indexerings proces automatiseren, wat betekent dat er minder code moet worden geschreven en dat de infra structuur minder goed is.
+Voordat u een query kunt uitvoeren op een [Azure Cognitive search-index](search-what-is-an-index.md), moet u deze vullen met uw gegevens. Als de gegevens zich in Azure SQL Database of SQL Managed instance bevinden, kan een **Azure Cognitive Search Indexeer functie voor Azure SQL database** (of **Azure SQL Indexeer functie** ) het indexerings proces automatiseren, wat betekent dat er minder code moet worden geschreven en dat de infra structuur minder goed is.
 
-In dit artikel worden de mechanismen besproken van het gebruik van [Indexeer](search-indexer-overview.md)functies, maar hierin worden ook de kenmerken beschreven die alleen beschikbaar zijn voor Azure SQL-data bases (bijvoorbeeld geïntegreerde wijzigingen bijhouden). 
+In dit artikel worden de mechanismen besproken van het gebruik van [Indexeer](search-indexer-overview.md)functies, maar hierin worden ook de onderdelen beschreven die alleen beschikbaar zijn voor Azure SQL database of SQL Managed instance (bijvoorbeeld geïntegreerde wijzigingen bijhouden). 
 
-Naast Azure SQL-data bases biedt Azure Cognitive Search Indexeer functies voor [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md)en [Azure-tabel opslag](search-howto-indexing-azure-tables.md). Als u ondersteuning voor andere gegevens bronnen wilt aanvragen, geeft u uw feedback op het [Feedback forum van Azure Cognitive Search](https://feedback.azure.com/forums/263029-azure-search/).
+Naast Azure SQL Database en SQL Managed instance biedt Azure Cognitive Search Indexeer functies voor [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md)en Azure- [tabel opslag](search-howto-indexing-azure-tables.md). Als u ondersteuning voor andere gegevens bronnen wilt aanvragen, geeft u uw feedback op het [Feedback forum van Azure Cognitive Search](https://feedback.azure.com/forums/263029-azure-search/).
 
 ## <a name="indexers-and-data-sources"></a>Indexeer functies en gegevens bronnen
 
@@ -172,7 +172,7 @@ Als uw SQL database het [bijhouden van wijzigingen](https://docs.microsoft.com/s
 
 + Database versie vereisten:
   * SQL Server 2012 SP3 en hoger als u SQL Server op virtuele Azure-machines gebruikt.
-  * Azure SQL Database V12 als u Azure SQL Database gebruikt.
+  * Azure SQL Database of SQL Managed instance.
 + Alleen tabellen (geen weer gaven). 
 + Schakel op de data base het [bijhouden van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) in voor de tabel. 
 + Er is geen samengestelde primaire sleutel (een primaire sleutel met meer dan één kolom) in de tabel.  
@@ -354,7 +354,7 @@ Voor incrementele indexering ondersteunt Azure Cognitive Search twee beleids reg
 
 Bij alleen-lezen replica's ondersteunt SQL database geïntegreerde wijzigingen bijhouden niet. Daarom moet u beleid voor hoog water merk gebruiken. 
 
-Onze standaard aanbeveling is het gegevens type rowversion te gebruiken voor de kolom hoog water merk. Het gebruik van rowversion is echter afhankelijk van de `MIN_ACTIVE_ROWVERSION` functie van SQL database, wat niet wordt ondersteund voor alleen-lezen replica's. Daarom moet u de Indexeer functie naar een primaire replica verwijzen als u rowversion gebruikt.
+Onze standaard aanbeveling is het gegevens type rowversion te gebruiken voor de kolom hoog water merk. Het gebruik van rowversion is echter afhankelijk van de `MIN_ACTIVE_ROWVERSION` functie, wat niet wordt ondersteund voor alleen-lezen replica's. Daarom moet u de Indexeer functie naar een primaire replica verwijzen als u rowversion gebruikt.
 
 Als u probeert rowversion te gebruiken op een alleen-lezen replica, ziet u de volgende fout: 
 

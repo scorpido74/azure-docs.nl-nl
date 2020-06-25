@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816179"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338277"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Accounts voor nood toegang beheren in azure AD
 
@@ -109,7 +109,7 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 
         ![waarschuwings logica](./media/directory-emergency-access/alert-image2.png)
 
-    1. Selecteer **Done**. U kunt nu de geschatte maandelijkse kosten van deze waarschuwing weer geven.
+    1. Selecteer **Voltooid**. U kunt nu de geschatte maandelijkse kosten van deze waarschuwing weer geven.
 1. Selecteer een actie groep van gebruikers die door de waarschuwing moeten worden gewaarschuwd. Zie [een actie groep maken](#create-an-action-group)als u er een wilt maken.
 1. Als u de e-mail melding die wordt verzonden naar de leden van de actie groep wilt aanpassen, selecteert u acties onder **acties aanpassen**.
 1. Geef onder **waarschuwings Details**de naam van de waarschuwings regel op en voeg een optionele beschrijving toe.
@@ -118,7 +118,7 @@ Organisaties moeten de activiteiten voor aanmelding en controle logboeken van de
 1. Als u waarschuwingen voor een tijdje wilt uitschakelen, schakelt u het selectie vakje **waarschuwingen onderdrukken** in en voert u de wacht tijd in voordat u opnieuw een waarschuwing krijgt en selecteert u vervolgens **Opslaan**.
 1. Klik op **waarschuwings regel maken**.
 
-### <a name="create-an-action-group"></a>Een actie groep maken
+### <a name="create-an-action-group"></a>Een actiegroep maken
 
 1. Selecteer **een actie groep maken**.
 
@@ -156,5 +156,5 @@ Deze stappen moeten met regel matige tussen pozen en voor belang rijke wijziging
 - [Gebruikers toevoegen met Azure AD](../fundamentals/add-users-azure-active-directory.md) en [de nieuwe gebruiker toewijzen aan de rol van globale beheerder](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Meld u aan voor Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)als u zich nog niet hebt aangemeld
 - [Verificatie in twee stappen vereisen voor een gebruiker](../authentication/howto-mfa-userstates.md)
-- [Aanvullende beveiligingen voor globale beheerders in Office 365 configureren](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), als u Office 365 gebruikt
+- [Extra beveiligingen voor globale beheerders in Microsoft 365 configureren](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts), als u Microsoft 365 gebruikt
 - [Een toegangs beoordeling van globale beheerders starten](../privileged-identity-management/pim-how-to-start-security-review.md) en [bestaande globale beheerders overstappen naar meer specifieke beheerders rollen](directory-assign-admin-roles.md)

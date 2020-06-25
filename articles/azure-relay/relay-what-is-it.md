@@ -1,24 +1,14 @@
 ---
 title: Wat is Azure Relay? | Microsoft Docs
 description: In dit artikel vindt u een overzicht van Azure Relay, een service die is bedoeld voor het ontwikkelen van cloudtoepassingen die on-premises services verbruiken die worden uitgevoerd in uw bedrijfsnetwerk zonder dat er een firewallverbinding hoeft te worden geopend of uw netwerkinfrastructuur ingrijpend hoeft te worden gewijzigd.
-services: service-bus-relay
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: 1e3e971d-2a24-4f96-a88a-ce3ea2b1a1cd
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: spelluru
-ms.openlocfilehash: 964a472a5c0a6350090f83755747a12e89a1650e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211630"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322645"
 ---
 # <a name="what-is-azure-relay"></a>Wat is Azure Relay?
 De Azure Relay-service stelt u in staat om services die worden uitgevoerd in uw bedrijfsnetwerk op een veilige manier aan te bieden aan de openbare cloud. U kunt dit doen zonder een poort in de firewall te openen of de infrastructuur van het bedrijfsnetwerk ingrijpend te wijzigen. 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020894"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322055"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -40,12 +40,12 @@ Hieronder volgt een samen vatting van de rollen die zijn toegewezen aan de behee
 |Azure Data Explorer-cluster | Inzender | Inzender
 |
 
-Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een externe provider in het SQL database met dezelfde naam als de Azure-gegevens share bron. Hieronder volgt een samen vatting van de machtiging die is vereist voor de SQL-gebruiker.
+Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een externe provider in Azure SQL Database met dezelfde naam als de Azure-gegevens share bron. Hieronder volgt een samen vatting van de machtiging die is vereist voor de SQL-gebruiker.
 
 | |  |  |
 |---|---|---|
 |**SQL Database type**|**SQL-gebruikers machtiging voor de gegevens provider**|**SQL-gebruikers machtiging voor gegevens verbruiker**|
-|Azure SQL-database | db_datareader | db_datareader, db_datawriter db_ddladmin
+|Azure SQL Database | db_datareader | db_datareader, db_datawriter db_ddladmin
 |Azure Synapse Analytics (voorheen SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
 
@@ -66,7 +66,7 @@ Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheer
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-resource.
 1. Klik op *Opslaan*.
 
-Naast de bovenstaande stappen moet een SQL-gebruiker voor SQL-bronnen worden gemaakt op basis van een externe provider in het SQL database met dezelfde naam als de Azure-gegevens share-resource. Aan deze gebruiker moet *db_datareader* machtiging worden verleend. In de zelf studie [uw gegevens delen vindt u](share-your-data.md) een voorbeeld script samen met andere vereisten voor het delen van SQL. 
+Naast de bovenstaande stappen moet een SQL-gebruiker voor SQL-bronnen worden gemaakt op basis van een externe provider in SQL Database met dezelfde naam als de Azure-gegevens share bron. Aan deze gebruiker moet *db_datareader* machtiging worden verleend. In de zelf studie [uw gegevens delen vindt u](share-your-data.md) een voorbeeld script samen met andere vereisten voor het delen van SQL. 
 
 ### <a name="data-consumer"></a>Gegevens verbruiker
 Als u gegevens wilt ontvangen, moet de beheerde identiteit van de consument gegevens share bron toegang krijgen tot de Azure-doel gegevens opslag. In het geval van een opslag account krijgt de beheerde identiteit van de gegevens share bron bijvoorbeeld de rol Storage BLOB data Inzender. 
@@ -84,7 +84,7 @@ Volg de onderstaande stappen voor het maken van een roltoewijzing voor de beheer
 1. Typ onder *selecteren*de naam van uw Azure-gegevens share-resource.
 1. Klik op *Opslaan*.
 
-Voor een op SQL gebaseerd doel moet u naast de bovenstaande stappen een SQL-gebruiker maken van een externe provider in het SQL database met dezelfde naam als de Azure-gegevens share bron. Deze gebruiker moet worden toegekend *db_datareader, db_datawriter db_ddladmin* machtiging. Een voorbeeld script samen met andere vereisten voor het delen van SQL-bestanden vindt u in de zelf studie [gegevens accepteren en ontvangen](subscribe-to-data-share.md) . 
+Voor een op SQL gebaseerd doel moet u naast de bovenstaande stappen een SQL-gebruiker maken van een externe provider in SQL Database met dezelfde naam als de Azure-gegevens share bron. Deze gebruiker moet worden toegekend *db_datareader, db_datawriter db_ddladmin* machtiging. Een voorbeeld script samen met andere vereisten voor het delen van SQL-bestanden vindt u in de zelf studie [gegevens accepteren en ontvangen](subscribe-to-data-share.md) . 
 
 Als u gegevens deelt met behulp van REST Api's, moet u deze roltoewijzingen hand matig maken. 
 

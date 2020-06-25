@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: da9ad5576d146c007e45124668875e9681860ce6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2241a452bdcf974282814eb118da68517b02369
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76938827"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323200"
 ---
 # <a name="specify-a-face-recognition-model"></a>Een model voor gezichtsherkenning opgeven
 
@@ -23,7 +23,14 @@ Deze hand leiding laat zien hoe u een gezichts herkennings model kunt opgeven vo
 
 De face-service maakt gebruik van machine learning modellen voor het uitvoeren van bewerkingen op menselijke gezichten in installatie kopieën. We blijven de nauw keurigheid van onze modellen verbeteren op basis van feedback van klanten en de voor uitgang van onderzoek en wij leveren deze verbeteringen als model updates. Ontwikkel aars hebben de mogelijkheid om op te geven welke versie van het gezichts herkennings model ze willen gebruiken. ze kunnen het model kiezen dat het beste past bij hun gebruik.
 
-Als u een nieuwe gebruiker bent, raden we u aan het meest recente model te gebruiken. Lees in voor meer informatie over hoe u deze kunt opgeven in verschillende gezichts bewerkingen, terwijl model conflicten worden voor komen. Als u een ervaren gebruiker bent en niet zeker weet of u moet overschakelen naar het meest recente model, gaat u naar de sectie [verschillende modellen evalueren](#evaluate-different-models) om het nieuwe model te evalueren en resultaten te vergelijken met uw huidige gegevensset.
+In azure face service zijn drie herkennings modellen beschikbaar. De modellen _recognition_01_ (gepubliceerd 2017) en _recognition_02_ (uitgegeven 2019) worden continu ondersteund om achterwaartse compatibiliteit te garanderen voor klanten die FaceLists of **PersonGroup**s gebruiken die met deze modellen zijn gemaakt. Een **FaceList** of **Persongroup** maakt altijd gebruik van het herkennings model waarmee het is gemaakt, en nieuwe gezichten worden gekoppeld aan dit model wanneer ze worden toegevoegd. Dit kan niet worden gewijzigd nadat het is gemaakt en klanten het bijbehorende herkennings model moeten gebruiken met de bijbehorende **FaceList** of **PersonGroup**.
+
+U kunt op eigen gemak overstappen op latere erkennings modellen. u moet echter nieuwe FaceLists en PersonGroups maken met het herkennings model van uw keuze.
+
+Het _recognition_03_ model (gepubliceerd 2020) is het meest nauw keurige model dat momenteel beschikbaar is. Als u een nieuwe klant bent, raden we u aan dit model te gebruiken. _Recognition_03_ biedt een verbeterde nauw keurigheid voor de vergelijking van overeenkomsten en de matching van personen. Houd er rekening mee dat elk model onafhankelijk van de andere modellen werkt en dat een betrouwbaarheids drempel voor één model niet is bedoeld om te worden vergeleken in de andere herkennings modellen.
+
+Lees in voor meer informatie over het opgeven van een geselecteerd model in verschillende gezichts bewerkingen, terwijl model conflicten worden voor komen. Als u een ervaren gebruiker bent en wilt bepalen of u moet overschakelen naar het meest recente model, gaat u naar de sectie [verschillende modellen evalueren](#evaluate-different-models) om het nieuwe model te evalueren en resultaten te vergelijken met de huidige gegevensset.
+
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,28 +45,28 @@ Met gezichts detectie worden de visuele bezienswaardigheden van menselijke gezic
 
 Het herkennings model wordt gebruikt wanneer de gezichts functies worden geëxtraheerd, zodat u een model versie kunt opgeven wanneer de detectie bewerking wordt uitgevoerd.
 
-Wanneer u de [Face-detect] API gebruikt, wijst u de model versie `recognitionModel` toe met de para meter. De beschik bare waarden zijn:
+Wanneer u de [Face-detect] API gebruikt, wijst u de model versie toe met de `recognitionModel` para meter. De beschikbare waarden zijn:
+* recognition_01
+* recognition_02
+* recognition_03
 
-* `recognition_01`
-* `recognition_02`
 
 Desgewenst kunt u de para meter _returnRecognitionModel_ (standaard **False**) opgeven om aan te geven of _recognitionModel_ als reactie moet worden geretourneerd. Daarom ziet een aanvraag-URL voor het [gezichts detectie] rest API er als volgt uit:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
-Als u de-client bibliotheek gebruikt, kunt u de waarde voor `recognitionModel` toewijzen door een teken reeks die de versie vertegenwoordigt door te geven.
-Als u deze niet hebt toegewezen, wordt de standaard model versie (_recognition_01_) gebruikt. Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
+Als u de-client bibliotheek gebruikt, kunt u de waarde voor toewijzen `recognitionModel` door een teken reeks die de versie vertegenwoordigt door te geven. Als u deze niet hebt toegewezen, wordt een standaard model versie van `recognition_01` gebruikt. Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_01", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>Gezichten identificeren met het opgegeven model
 
 De face-service kan gezichts gegevens uit een afbeelding extra heren en deze koppelen aan een **persoons** object (bijvoorbeeld via de aanroep face-API [toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), en meerdere **persoons** objecten kunnen samen worden opgeslagen in een **PersonGroup**. Vervolgens kan een nieuw gezicht worden vergeleken met een **PersonGroup** (met de aanroep voor het identificeren van het [gezicht] ) en kan de overeenkomende persoon binnen die groep worden geïdentificeerd.
 
-Een **PersonGroup** moet één uniek herkennings model hebben voor alle **personen**en u kunt dit opgeven met behulp van de `recognitionModel` para meter bij het maken van de groep ([PersonGroup-Create] of [LargePersonGroup-Create]). Als u deze para meter niet opgeeft, wordt het `recognition_01` oorspronkelijke model gebruikt. Een groep maakt altijd gebruik van het herkennings model waarmee het is gemaakt, en nieuwe gezichten worden gekoppeld aan dit model wanneer ze eraan worden toegevoegd. Dit kan niet worden gewijzigd nadat het maken van een groep is gemaakt. Als u wilt zien welk model a **PersonGroup** is geconfigureerd met, gebruikt u de [PersonGroup-Get-] API met de para meter _returnRecognitionModel_ ingesteld op **True**.
+Een **PersonGroup** moet één uniek herkennings model hebben voor alle **personen**en u kunt dit opgeven met behulp van de `recognitionModel` para meter bij het maken van de groep ([PersonGroup-Create] of [LargePersonGroup-Create]). Als u deze para meter niet opgeeft, wordt het oorspronkelijke `recognition_01` model gebruikt. Een groep maakt altijd gebruik van het herkennings model waarmee het is gemaakt, en nieuwe gezichten worden gekoppeld aan dit model wanneer ze eraan worden toegevoegd. Dit kan niet worden gewijzigd nadat het maken van een groep is gemaakt. Als u wilt zien welk model a **PersonGroup** is geconfigureerd met, gebruikt u de [PersonGroup-Get-] API met de para meter _returnRecognitionModel_ ingesteld op **True**.
 
 Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 
@@ -77,29 +84,30 @@ Er is geen wijziging in de [Face-identify-] API. u hoeft alleen de model versie 
 
 ## <a name="find-similar-faces-with-specified-model"></a>Vergelijk bare gezichten zoeken met het opgegeven model
 
-U kunt ook een herkennings model opgeven voor zoek acties op vergelijk bare functies. U kunt de model versie `recognitionModel` toewijzen bij het maken van de lijst face met [FaceList-Create] API of [LargeFaceList-Create]. Als u deze para meter niet opgeeft, wordt het `recognition_01` oorspronkelijke model gebruikt. In een gezichts lijst wordt altijd het herkennings model gebruikt dat is gemaakt met en er worden nieuwe gezichten gekoppeld aan dit model wanneer ze eraan worden toegevoegd. Dit kan niet worden gewijzigd nadat het is gemaakt. Als u wilt zien in welk model een gezichts lijst is geconfigureerd, gebruikt u de [FaceList-Get-] API waarbij de para meter _returnRecognitionModel_ is ingesteld op **True**.
+U kunt ook een herkennings model opgeven voor zoek acties op vergelijk bare functies. U kunt de model versie toewijzen bij `recognitionModel` het maken van de lijst face met [FaceList-Create] API of [LargeFaceList-Create]. Als u deze para meter niet opgeeft, `recognition_01` wordt standaard het model gebruikt. In een gezichts lijst wordt altijd het herkennings model gebruikt dat is gemaakt met en er worden nieuwe gezichten gekoppeld aan dit model wanneer ze worden toegevoegd aan de lijst. u kunt dit niet wijzigen nadat het is gemaakt. Als u wilt zien in welk model een gezichts lijst is geconfigureerd, gebruikt u de [FaceList-Get-] API waarbij de para meter _returnRecognitionModel_ is ingesteld op **True**.
 
 Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 ```
 
-Deze code maakt een lijst met gezichten met de naam `My face collection`, met behulp van het _recognition_02_ model voor het uitpakken van onderdelen. Wanneer u deze gezichts lijst zoekt naar een nieuw gedetecteerd gezicht, moet dat gezicht zijn gedetecteerd ([gezichts detectie]) met behulp van het _recognition_02_ model. Net als in de vorige sectie moet het model consistent zijn.
+Deze code maakt een lijst met gezichten `My face collection` met de naam, met behulp van het _recognition_03_ model voor het uitpakken van onderdelen. Wanneer u deze gezichts lijst zoekt naar een nieuw gedetecteerd gezicht, moet dat gezicht zijn gedetecteerd ([gezichts detectie]) met behulp van het _recognition_03_ model. Net als in de vorige sectie moet het model consistent zijn.
 
 Er is geen wijziging in het [gezicht-zoek vergelijk bare] API. u geeft alleen de model versie op in detectie.
 
 ## <a name="verify-faces-with-specified-model"></a>Gezichten met het opgegeven model controleren
 
-De [Face-verify-] API controleert of twee gezichten deel uitmaken van dezelfde persoon. Er is geen wijziging in de controle-API met betrekking tot herkennings modellen, maar u kunt alleen gezichten vergelijken die met hetzelfde model zijn gevonden. De twee gezichten moeten dus worden gedetecteerd met `recognition_01` of. `recognition_02`
+De [Face-verify-] API controleert of twee gezichten deel uitmaken van dezelfde persoon. Er is geen wijziging in de controle-API met betrekking tot herkennings modellen, maar u kunt alleen gezichten vergelijken die met hetzelfde model zijn gevonden.
 
 ## <a name="evaluate-different-models"></a>Verschillende modellen evalueren
 
-Als u de prestaties van de _recognition_01_ en _recognition_02_ modellen wilt vergelijken met uw gegevens, moet u het volgende doen:
+Als u de prestaties van verschillende herkennings modellen wilt vergelijken met uw eigen gegevens, moet u het volgende doen:
+1. Maak drie PersonGroups met behulp van _recognition_01_, _recognition_02_en _recognition_03_ .
+1. Gebruik uw afbeeldings gegevens om gezichten te detecteren en ze te registreren bij **personen**in deze drie **PersonGroup**s. 
+1. Train uw PersonGroups met behulp van de PersonGroup-Train API.
+1. Test met gezicht-identify op alle drie de **PersonGroup**s en vergelijk de resultaten.
 
-1. Maak twee **PersonGroup**s met respectievelijk _recognition_01_ en _recognition_02_ .
-1. Gebruik uw afbeeldings gegevens om gezichten te detecteren en ze te registreren bij **persoon**s voor deze twee **PersonGroup**s en activeer het trainings proces met [PersonGroup-Train] API.
-1. Test met [gezicht-identify] op beide **PersonGroup**s en vergelijk de resultaten.
 
 Als u normaal gesp roken een betrouwbaarheids drempel opgeeft (een waarde tussen nul en één die bepaalt hoe betrouwbaar het model moet zijn om een gezicht te identificeren), moet u mogelijk verschillende drempel waarden voor verschillende modellen gebruiken. Een drempel waarde voor één model is niet bedoeld om te worden gedeeld met een andere, en niet noodzakelijkerwijs dezelfde resultaten produceert.
 

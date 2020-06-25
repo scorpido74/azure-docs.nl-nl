@@ -3,14 +3,14 @@ title: Een Windows-Hybrid Runbook Worker implementeren in Azure Automation
 description: In dit artikel wordt uitgelegd hoe u een Hybrid Runbook Worker implementeert die u kunt gebruiken om runbooks uit te voeren op Windows-computers in uw lokale Data Center of in de cloud omgeving.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: b1cac1ed1ff92086991d405ad72950e362493619
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079194"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338007"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -190,15 +190,15 @@ Voer nu de `Add-HybridRunbookWorker` cmdlet uit met de volgende syntaxis.
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 ```
 
-U kunt de informatie die vereist is voor deze cmdlet, ophalen via de pagina sleutels beheren in de Azure Portal. Open deze pagina door **sleutels** te selecteren op de pagina instellingen in uw Automation-account.
+U kunt de informatie ophalen die vereist is voor de para meters `EndPoint` en `Token` van de pagina **sleutels** in uw Automation-account. Selecteer **sleutels** onder de sectie **account instellingen** aan de linkerkant van de pagina.
 
 ![Pagina sleutels beheren](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
+* `EndPoint`Kopieer de waarde voor **URL**voor de para meter.
+
+* Kopieer voor de `Token` para meter de waarde voor de **primaire toegangs sleutel**.
+
 * Gebruik de `GroupName` naam van de Hybrid Runbook worker groep voor de para meter. Als deze groep al bestaat in het Automation-account, wordt de huidige machine hieraan toegevoegd. Als deze groep niet bestaat, wordt deze toegevoegd.
-
-* Voor de `EndPoint` para meter gebruikt u het item **URL** op de pagina sleutels beheren.
-
-* Voor de `Token` para meter gebruikt u de **primaire toegangs sleutel** vermelding op de pagina sleutels beheren.
 
 * Stel, indien nodig, de `Verbose` para meter in om details over de installatie te ontvangen.
 

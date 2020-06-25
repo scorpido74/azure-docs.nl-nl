@@ -1,24 +1,14 @@
 ---
 title: AMQP 1,0-aanvraag/antwoord-bewerkingen in Azure Service Bus
 description: In dit artikel wordt de lijst met AMQP bewerkingen op aanvraag/antwoord in Microsoft Azure Service Bus gedefinieerd.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: aschhab
-ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 82eb968cc952fab6e828c8b98f4ec2ba569b4441
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76761080"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337843"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 in Microsoft Azure Service Bus: bewerkingen op basis van aanvraag-respons
 
@@ -143,7 +133,7 @@ Het aanvraag bericht moet de volgende toepassings eigenschappen bevatten:
 |`lock-tokens`|matrix van uuid|Ja|De tokens voor bericht vergrendeling die moeten worden verlengd.|  
 
 > [!NOTE]
-> Lock-tokens zijn `DeliveryTag` de eigenschap van ontvangen berichten. Zie het volgende voor beeld in de [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) om deze op te halen. Het token kan ook worden weer gegeven in de ' DeliveryAnnotations ' als ' x-opt-Lock-token ', maar dit is niet gegarandeerd `DeliveryTag` en de moet de voor keur hebben. 
+> Lock-tokens zijn de `DeliveryTag` eigenschap van ontvangen berichten. Zie het volgende voor beeld in de [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) om deze op te halen. Het token kan ook worden weer gegeven in de ' DeliveryAnnotations ' als ' x-opt-Lock-token ', maar dit is niet gegarandeerd en de `DeliveryTag` moet de voor keur hebben. 
 > 
   
 #### <a name="response"></a>Antwoord  
@@ -153,7 +143,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt.|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een AMQP sectie met een kaart met de volgende vermeldingen:  
   
@@ -188,7 +178,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK: heeft meer berichten<br /><br /> 204: geen inhoud: geen berichten meer|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
@@ -226,9 +216,9 @@ De toewijzing die een bericht weergeeft, moet de volgende vermeldingen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |bericht-id|tekenreeks|Ja|`amqpMessage.Properties.MessageId`Als teken reeks|  
-|sessie-id|tekenreeks|Nee|`amqpMessage.Properties.GroupId as string`|  
-|partitie sleutel|tekenreeks|Nee|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|via-Partition-sleutel|tekenreeks|Nee|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|sessie-id|tekenreeks|No|`amqpMessage.Properties.GroupId as string`|  
+|partitie sleutel|tekenreeks|No|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-Partition-sleutel|tekenreeks|No|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|matrix van byte|Ja|AMQP 1,0 Wire-gecodeerd bericht.|  
   
 #### <a name="response"></a>Antwoord  
@@ -238,7 +228,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt.|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een kaart met de volgende vermeldingen:  
   
@@ -272,7 +262,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt.|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|   
+|statusDescription|tekenreeks|No|De beschrijving van de status.|   
   
 ## <a name="session-operations"></a>Sessie bewerkingen  
   
@@ -302,7 +292,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK: heeft meer berichten<br /><br /> 204: geen inhoud: geen berichten meer|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een kaart met de volgende vermeldingen:  
   
@@ -338,7 +328,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK: heeft meer berichten<br /><br /> 204: geen inhoud: geen berichten meer|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een kaart met de volgende vermeldingen:  
   
@@ -379,7 +369,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 ### <a name="get-session-state"></a>Sessie status ophalen  
 
@@ -407,7 +397,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
@@ -443,7 +433,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK: heeft meer berichten<br /><br /> 204: geen inhoud: geen berichten meer|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
@@ -490,14 +480,14 @@ De **correlatie filter** toewijzing moet ten minste één van de volgende vermel
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|correlation-id|tekenreeks|Nee||  
-|bericht-id|tekenreeks|Nee||  
-|tot|tekenreeks|Nee||  
-|beantwoorden|tekenreeks|Nee||  
-|label|tekenreeks|Nee||  
-|sessie-id|tekenreeks|Nee||  
-|antwoord-to-Session-ID|tekenreeks|Nee||  
-|inhouds type|tekenreeks|Nee||  
+|correlation-id|tekenreeks|No||  
+|bericht-id|tekenreeks|No||  
+|tot|tekenreeks|No||  
+|beantwoorden|tekenreeks|No||  
+|label|tekenreeks|No||  
+|sessie-id|tekenreeks|No||  
+|antwoord-to-Session-ID|tekenreeks|No||  
+|inhouds type|tekenreeks|No||  
 |properties|map|Nee|Wordt toegewezen aan Service Bus [BrokeredMessage. Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).|  
   
 De toewijzing **SQL-regel-Action** moet de volgende vermeldingen bevatten:  
@@ -513,7 +503,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 ### <a name="remove-rule"></a>Regel verwijderen  
   
@@ -539,7 +529,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 ### <a name="get-rules"></a>Regels ophalen
 
@@ -649,7 +639,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|  
+|statusDescription|tekenreeks|No|De beschrijving van de status.|  
   
 De hoofd tekst van het antwoord moet bestaan uit een **AMQP** sectie met een **kaart** met de volgende vermeldingen:  
   
@@ -661,7 +651,7 @@ De toewijzing die een bericht weergeeft, moet de volgende vermeldingen bevatten:
   
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
-|Lock-token|uuid|Ja|Lock-token `receiver-settle-mode` als dat 1 is.|  
+|Lock-token|uuid|Ja|Lock-token als dat `receiver-settle-mode` 1 is.|  
 |message|matrix van byte|Ja|AMQP 1,0 Wire-gecodeerd bericht.|  
   
 ### <a name="update-disposition-status"></a>Status van de functie voor bijwerken  
@@ -683,8 +673,8 @@ De hoofd tekst van het aanvraag bericht moet bestaan uit een **AMQP** sectie met
 |---------|----------------|--------------|--------------------|  
 |toestand: status|tekenreeks|Ja|gevuld<br /><br /> geannuleerd<br /><br /> gebroken|  
 |Lock-tokens|matrix van uuid|Ja|Tokens voor bericht vergrendeling om de status van de toestand bij te werken.|  
-|deadletter-reden|tekenreeks|Nee|Kan worden ingesteld als de status van de bestemming is ingesteld op **opgeschort**.|  
-|deadletter-beschrijving|tekenreeks|Nee|Kan worden ingesteld als de status van de bestemming is ingesteld op **opgeschort**.|  
+|deadletter-reden|tekenreeks|No|Kan worden ingesteld als de status van de bestemming is ingesteld op **opgeschort**.|  
+|deadletter-beschrijving|tekenreeks|No|Kan worden ingesteld als de status van de bestemming is ingesteld op **opgeschort**.|  
 |eigenschappen-naar-Modify|map|Nee|Lijst met Service Bus brokered-bericht eigenschappen die moeten worden gewijzigd.|  
   
 #### <a name="response"></a>Antwoord  
@@ -694,7 +684,7 @@ Het antwoord bericht moet de volgende toepassings eigenschappen bevatten:
 |Sleutel|Waardetype|Vereist|Inhoud van waarde|  
 |---------|----------------|--------------|--------------------|  
 |Status code|int|Ja|HTTP-antwoord code [RFC2616]<br /><br /> 200: OK – geslaagd, anders mislukt|  
-|statusDescription|tekenreeks|Nee|De beschrijving van de status.|
+|statusDescription|tekenreeks|No|De beschrijving van de status.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

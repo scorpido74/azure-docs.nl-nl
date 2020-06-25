@@ -4,41 +4,38 @@ description: In dit artikel wordt een overzicht gegeven van de real-time weergav
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 81d7210778fd6b5d75fb4b4fa8e066d2e015174f
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196138"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338034"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Metrische gegevens weer geven in realtime
 
-Met Azure Monitor voor de functie Live data (preview) van containers kunt u metrische gegevens over de status van het knoop punt en de pod in realtime visualiseren. Het emuleert directe toegang tot de `kubectl top nodes` -, `kubectl get pods –all-namespaces` -en- `kubectl get nodes` opdrachten voor het aanroepen, parseren en visualiseren van de gegevens in prestatie grafieken die deel uitmaken van dit inzicht. 
+Met Azure Monitor voor de functie Live data (preview) van containers kunt u metrische gegevens over de status van het knoop punt en de pod in realtime visualiseren. Het emuleert directe toegang tot de `kubectl top nodes` -, `kubectl get pods –all-namespaces` -en- `kubectl get nodes` opdrachten voor het aanroepen, parseren en visualiseren van de gegevens in prestatie grafieken die deel uitmaken van dit inzicht.
 
-Dit artikel bevat een gedetailleerd overzicht en helpt u inzicht te krijgen in het gebruik van deze functie.  
-
->[!NOTE]
->AKS-clusters die zijn ingeschakeld als [persoonlijke clusters](https://azure.microsoft.com/updates/aks-private-cluster/) , worden niet ondersteund met deze functie. Deze functie is afhankelijk van het rechtstreeks openen van de Kubernetes-API via een proxy server vanuit uw browser. Door netwerk beveiliging in te scha kelen, wordt dit verkeer geblokkeerd door de Kubernetes-API van deze proxy te blok keren. 
+Dit artikel bevat een gedetailleerd overzicht en helpt u inzicht te krijgen in het gebruik van deze functie.
 
 >[!NOTE]
->Deze functie is beschikbaar in alle Azure-regio's, inclusief Azure China. Het is momenteel niet beschikbaar in de Amerikaanse overheid van Azure.
+>AKS-clusters die zijn ingeschakeld als [persoonlijke clusters](https://azure.microsoft.com/updates/aks-private-cluster/) , worden niet ondersteund met deze functie. Deze functie is afhankelijk van het rechtstreeks openen van de Kubernetes-API via een proxy server vanuit uw browser. Door netwerk beveiliging in te scha kelen, wordt dit verkeer geblokkeerd door de Kubernetes-API van deze proxy te blok keren.
 
 Raadpleeg de [installatie handleiding](container-insights-livedata-setup.md)voor hulp bij het instellen of oplossen van problemen met de functie Live data (preview).
 
-## <a name="how-it-works"></a>Hoe werkt het? 
+## <a name="how-it-works"></a>Hoe werkt het?
 
-De functie voor Live gegevens (preview) heeft rechtstreeks toegang tot de Kubernetes-API en aanvullende informatie over het verificatie model vindt u [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
+De functie voor Live gegevens (preview) heeft rechtstreeks toegang tot de Kubernetes-API en aanvullende informatie over het verificatie model vindt u [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-Deze functie voert een polling bewerking uit op basis van de metrische gegevens (inclusief `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` en `/api/v1/pods` ), die standaard elke vijf seconden zijn. Deze gegevens worden in de cache opgeslagen in uw browser en gegrafeerd in de vier prestatie grafieken die zijn opgenomen in Azure Monitor voor containers op het tabblad **cluster** door **Go Live (preview)** te selecteren. Elke volgende poll wordt gediagrameerd in een visualisatie venster van vijf minuten. 
+Deze functie voert een polling bewerking uit op basis van de metrische gegevens (inclusief `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` en `/api/v1/pods` ), die standaard elke vijf seconden zijn. Deze gegevens worden in de cache opgeslagen in uw browser en gegrafeerd in de vier prestatie grafieken die zijn opgenomen in Azure Monitor voor containers op het tabblad **cluster** door **Go Live (preview)** te selecteren. Elke volgende poll wordt gediagrameerd in een visualisatie venster van vijf minuten.
 
 ![De optie Live go in de cluster weergave](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-Het polling-interval wordt geconfigureerd in de vervolg keuzelijst **ingesteld interval** zodat u elke 1, 5, 15 en 30 seconden polling voor nieuwe gegevens kunt instellen. 
+Het polling-interval wordt geconfigureerd in de vervolg keuzelijst **ingesteld interval** zodat u elke 1, 5, 15 en 30 seconden polling voor nieuwe gegevens kunt instellen.
 
 ![Live vervolg polling-interval](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->We raden u aan het polling-interval in te stellen op één seconde terwijl u een probleem gedurende korte tijd oplost. Deze aanvragen kunnen van invloed zijn op de beschik baarheid en beperking van de Kubernetes-API op uw cluster. Daarna kunt u de configuratie opnieuw configureren naar een langer polling-interval. 
+>We raden u aan het polling-interval in te stellen op één seconde terwijl u een probleem gedurende korte tijd oplost. Deze aanvragen kunnen van invloed zijn op de beschik baarheid en beperking van de Kubernetes-API op uw cluster. Daarna kunt u de configuratie opnieuw configureren naar een langer polling-interval.
 
 >[!IMPORTANT]
 >Er worden geen gegevens permanent opgeslagen tijdens de werking van deze functie. Alle informatie die tijdens deze sessie is vastgelegd, wordt onmiddellijk verwijderd wanneer u uw browser sluit of van de functie verlaat. De gegevens blijven in het venster van vijf minuten aanwezig voor visualisatie. alle metrische gegevens die ouder zijn dan vijf minuten, worden ook permanent verwijderd.
@@ -47,9 +44,9 @@ Deze grafieken kunnen niet worden vastgemaakt aan het laatste Azure-dash board d
 
 ## <a name="metrics-captured"></a>Vastgelegde metrische gegevens
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>CPU-gebruik van het knoop punt%/het geheugen gebruik van het knoop punt% 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>CPU-gebruik van het knoop punt%/het geheugen gebruik van het knoop punt%
 
-Deze twee prestatie grafieken zijn gekoppeld aan een equivalent van het aanroepen `kubectl top nodes` en vastleggen van de resultaten van het **CPU-percentage** en het **geheugen%** van de desbetreffende grafiek. 
+Deze twee prestatie grafieken zijn gekoppeld aan een equivalent van het aanroepen `kubectl top nodes` en vastleggen van de resultaten van het **CPU-percentage** en het **geheugen%** van de desbetreffende grafiek.
 
 ![Voorbeeld resultaten van Kubectl bovenste knoop punten](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -81,7 +78,7 @@ Deze prestatie grafiek wordt toegewezen aan een equivalent van aanroepen `kubect
 ![Grafiek pod aantal knoop punten](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->De namen van de status, zoals geïnterpreteerd door, `kubectl` komen mogelijk niet exact overeen in de grafiek. 
+>De namen van de status, zoals geïnterpreteerd door, `kubectl` komen mogelijk niet exact overeen in de grafiek.
 
 ## <a name="next-steps"></a>Volgende stappen
 

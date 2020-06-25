@@ -3,12 +3,12 @@ title: Azure Monitor voor containers inschakelen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt begrijpen hoe uw container presteert en welke prestatie problemen zijn geïdentificeerd.
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: a765c601682eb594d40ba98b8b4ef1853f35fb37
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: e17a346418bc5d38470168339f2078a0a187fe4e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886016"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338272"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
@@ -57,7 +57,7 @@ Voordat u begint, moet u ervoor zorgen dat u over het volgende beschikt:
 Het volgende wordt officieel ondersteund met Azure Monitor voor containers.
 
 - Omgevingen: Azure Red Hat open Shift, Kubernetes on-premises en AKS engine op Azure en Azure Stack. Zie de [AKS-engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)voor meer informatie.
-- De versies van Kubernetes en het ondersteunings beleid zijn hetzelfde als de versies van AKS die worden [ondersteund](../../aks/supported-kubernetes-versions.md). 
+- De versies van Kubernetes en het ondersteunings beleid zijn hetzelfde als de versies van AKS die worden [ondersteund](../../aks/supported-kubernetes-versions.md).
 
 ## <a name="network-firewall-requirements"></a>Netwerk firewall vereisten
 
@@ -65,7 +65,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 
 |Agentresource|Poorten |
 |--------------|------|
-| `*.ods.opinsights.azure.com` | 443 |  
+| `*.ods.opinsights.azure.com` | 443 |
 | `*.oms.opinsights.azure.com` | 443 |
 | `dc.services.visualstudio.com` | 443 |
 | `*.monitoring.azure.com` | 443 |
@@ -73,7 +73,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 
 De informatie in de volgende tabel bevat de proxy-en firewall configuratie-informatie voor Azure China 21Vianet.
 
-|Agentresource|Poorten |Description | 
+|Agentresource|Poorten |Beschrijving |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -81,7 +81,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie-infor
 
 De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegevens voor de Amerikaanse overheid van Azure.
 
-|Agentresource|Poorten |Description | 
+|Agentresource|Poorten |Beschrijving |
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |
@@ -92,7 +92,7 @@ De informatie in de volgende tabel bevat de proxy-en firewall configuratie gegev
 Uw vermogen om de prestaties te bewaken, is afhankelijk van een container Log Analytics-agent voor Linux speciaal ontwikkeld voor de Azure Monitor voor containers. Deze gespecialiseerde agent verzamelt prestatie-en gebeurtenis gegevens van alle knoop punten in het cluster en de agent wordt automatisch geïmplementeerd en geregistreerd bij de opgegeven Log Analytics-werk ruimte tijdens de implementatie. De agent versie is micro soft/OMS: ciprod04202018 of hoger, en wordt vertegenwoordigd door een datum in de volgende notatie: *mmddyyyy*.
 
 >[!NOTE]
->Met de preview-versie van Windows Server-ondersteuning voor AKS is er voor een AKS-cluster met Windows Server-knoop punten geen agent geïnstalleerd om gegevens te verzamelen en door te sturen naar Azure Monitor. In plaats daarvan wordt een Linux-knoop punt dat automatisch in het cluster wordt geïmplementeerd als onderdeel van de standaard implementatie, worden de gegevens verzameld en doorgestuurd naar Azure Monitor voor alle Windows-knoop punten in het cluster.  
+>Met de algemene Beschik baarheid van Windows Server-ondersteuning voor AKS, heeft een AKS-cluster met Windows Server-knoop punten een preview-agent geïnstalleerd als een daemonset pod op elk afzonderlijk Windows Server-knoop punt om logboeken te verzamelen en door te sturen naar Log Analytics. Voor metrische gegevens over prestaties wordt een Linux-knoop punt dat automatisch in het cluster wordt geïmplementeerd als onderdeel van de standaard implementatie, worden de gegevens verzameld en doorgestuurd naar Azure Monitor voor alle Windows-knoop punten in het cluster.
 >
 
 Wanneer een nieuwe versie van de agent wordt uitgebracht, wordt deze automatisch bijgewerkt op uw beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS). Zie [Release aankondigingen](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent als u de gepubliceerde versies wilt volgen.

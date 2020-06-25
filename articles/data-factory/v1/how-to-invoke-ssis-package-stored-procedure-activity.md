@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 225414760507bb023d0a514290420fc7cb59b950
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118320"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322117"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Een SSIS-pakket aanroepen met behulp van opgeslagen procedure activiteit in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SSIS-pakket aanroept vanuit een Azure Data Factory pijp lijn met behulp van een opgeslagen procedure activiteit. 
@@ -82,9 +82,9 @@ Houd rekening met de volgende punten:
 * Als u Data Factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, lid zijn van de rollen **Inzender** of **Eigenaar**, of moet dit een **beheerder** van het Azure-abonnement zijn.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Een gekoppelde Azure SQL Database-service maken
-Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor de SSIS-catalogus, te koppelen aan uw data factory. Data Factory maakt gebruik van informatie in deze gekoppelde service om verbinding te maken met SSISDB-data base en voert een opgeslagen procedure uit om een SSIS-pakket uit te voeren. 
+Maak een gekoppelde service om uw data base te koppelen aan Azure SQL Database die als host fungeert voor de SSIS-catalogus naar uw data factory. Data Factory maakt gebruik van informatie in deze gekoppelde service om verbinding te maken met SSISDB-data base en voert een opgeslagen procedure uit om een SSIS-pakket uit te voeren. 
 
-1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService.js** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud: 
 
     > [!IMPORTANT]
     > Vervang &lt; servername &gt; , &lt; username &gt; @ &lt; servername &gt; en &lt; Password door de &gt; waarden van uw Azure SQL database voordat u het bestand opslaat.
@@ -110,7 +110,7 @@ Maak een gekoppelde service om uw Azure-SQL database die als host fungeert voor 
 ### <a name="create-an-output-dataset"></a>Een uitvoergegevensset maken
 Deze uitvoer gegevensset is een dummy-gegevensset waarmee de planning van de pijp lijn wordt gestimuleerd. U ziet dat de frequentie is ingesteld op uur en dat interval is ingesteld op 1. Daarom wordt de pijp lijn één keer per uur uitgevoerd binnen de begin-en eind tijd van de pijp lijn. 
 
-1. Maak een output DataSet. JSON-bestand met de volgende inhoud: 
+1. Maak een OutputDataset.jsin het bestand met de volgende inhoud: 
     
     ```json
     {
@@ -135,7 +135,7 @@ Deze uitvoer gegevensset is een dummy-gegevensset waarmee de planning van de pij
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Een pijp lijn maken met een opgeslagen procedure activiteit 
 In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met de activiteit wordt de sp_executesql opgeslagen procedure aangeroepen om uw SSIS-pakket uit te voeren. 
 
-1. Maak een JSON-bestand met de naam **MyPipeline. json** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
+1. Maak een JSON-bestand met de naam **MyPipeline.js** in de map **C:\ADF\RunSSISPackage** met de volgende inhoud:
 
     > [!IMPORTANT]
     > Vervang &lt; de mapnaam &gt; , &lt; de project naam &gt; , &lt; de pakket naam &gt; met de namen van de map, het project en het pakket in de SSIS-catalogus voordat u het bestand opslaat.
@@ -182,7 +182,7 @@ In deze stap maakt u een pijp lijn met een opgeslagen procedure activiteit. Met 
     Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     De StartDateTime die u hier opgeeft, is dezelfde begintijd die u hebt opgegeven in de JSON van de pijplijn. 
-1. Voer **Get-AzDataFactoryRun** uit om de details van de activiteit uitvoeringen voor een specifiek segment op te halen.
+1. Voer **Get-AzDataFactoryRun** uit om gegevens over het uitvoeren van de activiteit op te halen voor een specifiek segment.
 
     ```powershell
     Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z

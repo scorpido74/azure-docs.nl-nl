@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74924085"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320978"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>De opgeslagen procedure vanuit een Kopieer activiteit in Azure Data Factory aanroepen
 > [!NOTE]
@@ -29,7 +29,7 @@ Bij het kopiëren van gegevens naar [SQL Server](data-factory-sqlserver-connecto
 In het volgende voor beeld ziet u hoe u een opgeslagen procedure in een SQL Server-Data Base aanroept vanuit een Data Factory pijp lijn (Kopieer activiteit):  
 
 ## <a name="output-dataset-json"></a>JSON van uitvoer gegevensset
-Stel in de JSON van de uitvoer gegevensset het **type** in op: **SqlServerTable**. Stel deze in op **AzureSqlTable** om te gebruiken met een Azure-SQL database. De waarde voor de eigenschap **TableName** moet overeenkomen met de naam van de eerste para meter van de opgeslagen procedure.  
+Stel in de JSON van de uitvoer gegevensset het **type** in op: **SqlServerTable**. Stel deze in op **AzureSqlTable** om te gebruiken met Azure SQL database. De waarde voor de eigenschap **TableName** moet overeenkomen met de naam van de eerste para meter van de opgeslagen procedure.  
 
 ```json
 {

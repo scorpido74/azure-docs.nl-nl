@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1b5d51eafc0cb21a02f8a750bd78b5be7aca734f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605507"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336877"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -197,7 +197,7 @@ Het data factory-team heeft een voor beeld van een [script voor voorafgaande en 
 
    ![Uw eigen sjabloon bouwen](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Selecteer **bestand laden**en selecteer vervolgens de gegenereerde Resource Manager-sjabloon. Dit is het **arm_template. json** -bestand dat zich bevindt in het zip-bestand dat in stap 1 is geëxporteerd.
+1. Selecteer **bestand laden**en selecteer vervolgens de gegenereerde Resource Manager-sjabloon. Dit is de **arm_template.jsvoor** het bestand dat is opgeslagen in het zip-bestand dat u in stap 1 hebt geëxporteerd.
 
    ![Sjabloon bewerken](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -212,7 +212,7 @@ Als uw Development Factory een bijbehorende Git-opslag plaats heeft, kunt u de s
 * U gebruikt automatische CI/CD en u wilt enkele eigenschappen wijzigen tijdens de implementatie van Resource Manager, maar de eigenschappen zijn niet standaard ingesteld op para meters.
 * Uw fabriek is zo groot dat de standaard Resource Manager-sjabloon ongeldig is omdat deze meer dan de Maxi maal toegestane para meters (256) heeft.
 
-Als u de standaard sjabloon voor parameterisering wilt overschrijven, maakt u een bestand met de naam **arm-sjabloon-para meters-definition. json** in de hoofdmap van uw Git-vertakking. U moet die exacte bestands naam gebruiken.
+Als u de standaard sjabloon voor parameterisering wilt overschrijven, maakt u een bestand met de naam **arm-template-parameters-definition.js** in de hoofdmap van uw Git-vertakking. U moet die exacte bestands naam gebruiken.
 
    ![Bestand met aangepaste para meters](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -225,7 +225,7 @@ Wanneer u een resource manager-sjabloon exporteert, wordt dit bestand door Data 
 
 ### <a name="custom-parameter-syntax"></a>Syntaxis van aangepaste para meter
 
-Hieronder volgen enkele richt lijnen voor het maken van het bestand met aangepaste para meters, **arm-sjabloon-para meters-definitie. json**. Het bestand bestaat uit een sectie voor elk entiteits type: trigger, pijp lijn, gekoppelde service, gegevensset, Integration runtime en gegevens stroom.
+Hieronder vindt u enkele richt lijnen die u moet volgen wanneer u het bestand met aangepaste para meters maakt **arm-template-parameters-definition.jsop**. Het bestand bestaat uit een sectie voor elk entiteits type: trigger, pijp lijn, gekoppelde service, gegevensset, Integration runtime en gegevens stroom.
 
 * Voer het pad naar de eigenschap in onder het relevante entiteits type.
 * Als u een eigenschaps naam instelt  `*` , geeft u aan dat u alle eigenschappen daaronder wilt para meters (alleen naar het eerste niveau, niet recursief). U kunt ook uitzonde ringen voor deze configuratie opgeven.
@@ -422,6 +422,7 @@ Hieronder ziet u de huidige standaard sjabloon parameterisering. Als u slechts e
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
                     "environmentUrl": "=",
                     "aadResourceId": "=",
                     "sasUri": "|:-sasUri:secureString",
@@ -574,9 +575,9 @@ Als u Git hebt geconfigureerd, worden de gekoppelde sjablonen gegenereerd en opg
 
 ![Map gekoppelde Resource Manager-sjablonen](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-De gekoppelde Resource Manager-sjablonen bestaan gewoonlijk uit een hoofd sjabloon en een reeks onderliggende sjablonen die zijn gekoppeld aan de Master. De bovenliggende sjabloon heet ArmTemplate_master. json en de onderliggende sjablonen hebben de naam van het patroon ArmTemplate_0. json, ArmTemplate_1. json, enzovoort. 
+De gekoppelde Resource Manager-sjablonen bestaan gewoonlijk uit een hoofd sjabloon en een reeks onderliggende sjablonen die zijn gekoppeld aan de Master. De bovenliggende sjabloon heet ArmTemplate_master.jsop, en de onderliggende sjablonen worden benoemd met het patroon ArmTemplate_0.jsop, ArmTemplate_1.jsop, enzovoort. 
 
-Als u gekoppelde sjablonen wilt gebruiken in plaats van de volledige Resource Manager-sjabloon, moet u uw CI/CD-taak bijwerken zodat deze verwijst naar ArmTemplate_master. json in plaats van ArmTemplateForFactory. json (de volledige Resource Manager-sjabloon). Resource Manager vereist ook dat u de gekoppelde sjablonen uploadt naar een opslag account, zodat Azure deze kan openen tijdens de implementatie. Zie [gekoppelde Resource Manager-sjablonen implementeren met VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)voor meer informatie.
+Als u gekoppelde sjablonen wilt gebruiken in plaats van de volledige Resource Manager-sjabloon, moet u uw CI/CD-taak bijwerken zodat deze verwijst naar ArmTemplate_master.jsin plaats van ArmTemplateForFactory.jsop (de volledige Resource Manager-sjabloon). Resource Manager vereist ook dat u de gekoppelde sjablonen uploadt naar een opslag account, zodat Azure deze kan openen tijdens de implementatie. Zie [gekoppelde Resource Manager-sjablonen implementeren met VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)voor meer informatie.
 
 Vergeet niet om de Data Factory scripts in uw CI/CD-pijp lijn vóór en na de implementatie taak toe te voegen.
 
@@ -726,8 +727,10 @@ function triggerSortUtil {
         return;
     }
     $visited[$trigger.Name] = $true;
-    $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
-        triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
     }
     $sortedList.Push($trigger)
 }

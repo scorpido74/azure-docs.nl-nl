@@ -1,25 +1,14 @@
 ---
 title: Diagnostische logboeken instellen-Azure Event hub | Microsoft Docs
 description: Meer informatie over het instellen van activiteiten logboeken en Diagnostische logboeken voor Event hubs in Azure.
-keywords: ''
-documentationcenter: ''
-services: event-hubs
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
 ms.topic: article
-ms.workload: data-services
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 30ce33adc8e33f8da67c745b52681d171e97db8d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299055"
+ms.locfileid: "85322461"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
 
@@ -70,7 +59,7 @@ Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notatio
 
 De JSON-teken reeksen van het archief logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-Naam | Beschrijving
+Naam | Description
 ------- | -------
 TaskName | Beschrijving van de mislukte taak
 ActivityId | Interne ID, gebruikt voor bijhouden
@@ -108,7 +97,7 @@ De volgende code is een voor beeld van een JSON-teken reeks in het archief logbo
 
 De JSON-teken reeksen van het operationele logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-Naam | Beschrijving
+Naam | Description
 ------- | -------
 ActivityId | Interne ID, gebruikt voor tracking doeleinden |
 Gebeurtenisnaam | Naam van bewerking |

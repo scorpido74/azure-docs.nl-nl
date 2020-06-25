@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44c8a46c844b9bc4b92702323df18addb207dd6c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078169"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338188"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -67,13 +67,13 @@ Het beheer van rechten introduceert Azure AD het concept van een *toegangs pakke
  Dit zijn de typen resources waarmee u de toegang van de gebruiker tot het beheer recht kunt beheren:
 
 - Lidmaatschap van Azure AD-beveiligings groepen
-- Lidmaatschap van Office 365-groepen en-teams
+- Lidmaatschap van Microsoft 365 groepen en teams
 - Toewijzing aan Azure AD-zakelijke toepassingen, waaronder SaaS-toepassingen en toepassingen met aangepaste integratie die ondersteuning bieden voor Federatie/eenmalige aanmelding en/of inrichting
 - Lidmaatschap van share point online-sites
 
-U kunt ook de toegang beheren tot andere bronnen die afhankelijk zijn van Azure AD-beveiligings groepen of Office 365-groepen.  Bijvoorbeeld:
+U kunt ook de toegang beheren tot andere bronnen die afhankelijk zijn van Azure AD-beveiligings groepen of Microsoft 365 groepen.  Bijvoorbeeld:
 
-- U kunt gebruikers licenties geven voor Microsoft Office 365 door een Azure AD-beveiligings groep te gebruiken in een toegangs pakket en op [groepen gebaseerde licentie verlening](../users-groups-roles/licensing-groups-assign.md) voor die groep te configureren
+- U kunt gebruikers licenties geven voor Microsoft 365 met behulp van een Azure AD-beveiligings groep in een toegangs pakket en op [groepen gebaseerde licentie verlening](../users-groups-roles/licensing-groups-assign.md) configureren voor die groep
 - U kunt gebruikers toegang geven tot het beheer van Azure-resources met behulp van een Azure AD-beveiligings groep in een toegangs pakket en een [Azure-roltoewijzing](../../role-based-access-control/role-assignments-portal.md) voor die groep maken
 
 ## <a name="how-do-i-control-who-gets-access"></a>Hoe kan ik besturings element wie toegang krijgt?

@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c29305fe6a5b4ff33652720d87a2a9c447888472
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077862"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338175"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -45,7 +45,7 @@ In dit artikel worden enkele items beschreven die u moet controleren om te helpe
 
 * Als er gebruikers zijn die al zijn toegewezen aan een resource die u met een toegangspakket wilt beheren, moet u ervoor zorgen dat de gebruikers met een toepasselijk beleid worden toegewezen aan het toegangspakket. Het is bijvoorbeeld mogelijk dat u een groep wilt opnemen in een toegangspakket dat al gebruikers in de groep bevat. Als die gebruikers in de groep voortdurende toegang nodig hebben, moeten ze beschikken over het juiste beleid voor de toegangspakketten, zodat ze hun toegang tot de groep niet verliezen. U kunt het toegangspakket toewijzen door de gebruikers te vragen het toegangspakket met die resource aan te vragen, of door ze rechtstreeks toe te wijzen aan het toegangspakket. Zie [instellingen voor aanvraag en goed keuring wijzigen voor een toegangs pakket](entitlement-management-access-package-request-policy.md)voor meer informatie.
 
-* Wanneer u een lid van een team verwijdert, wordt deze persoon ook verwijderd uit de Office 365-groep. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
+* Wanneer u een lid van een team verwijdert, worden deze ook uit de groep Microsoft 365 verwijderd. Het verwijderen uit de chatfunctionaliteit van het team kan worden uitgesteld. Zie [groepslid maatschap](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)voor meer informatie.
 
 * Zorg ervoor dat uw directory niet is geconfigureerd voor Multi-Geo. Rechtenbeheer biedt momenteel geen ondersteuning voor Multi-Geo-locaties voor SharePoint Online. SharePoint Online-sites moeten zich in de standaard geo-locatie bevinden om te worden beheerd met rechtenbeheer. Zie [multi-geo-mogelijkheden in OneDrive en share point online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)voor meer informatie.
 

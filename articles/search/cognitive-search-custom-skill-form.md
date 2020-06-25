@@ -6,14 +6,14 @@ manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792000"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321303"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Voor beeld: een aangepaste vaardigheid voor het herkennen van een formulier maken
 
@@ -43,9 +43,9 @@ Voeg eerst omgevings variabelen op project niveau toe. Zoek het project **Analyz
 * `FORMS_RECOGNIZER_RETRY_DELAY`waarvan de waarde is ingesteld op 1000. Deze waarde is de tijd in milliseconden die het programma wacht voordat de query opnieuw wordt uitgevoerd.
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS`waarvan de waarde is ingesteld op 100. Deze waarde is het aantal keren dat het programma de service zal opvragen tijdens het ophalen van een geslaagd antwoord.
 
-Open vervolgens _AnalyzeForm.cs_ en zoek de `fieldMappings` variabele, die verwijst naar het bestand *met veld toewijzingen. json* . Dit bestand (en de variabele waarmee ernaar wordt verwezen) definieert de lijst met sleutels die u wilt extra heren uit uw formulieren en een aangepast label voor elke sleutel. Zo `{ "Address:", "address" }, { "Invoice For:", "recipient" }` betekent een waarde dat het script alleen de waarden voor de gedetecteerde `Address:` en `Invoice For:` velden opslaat, en worden deze waarden labelen met `"address"` `"recipient"`respectievelijk.
+Open vervolgens _AnalyzeForm.cs_ en zoek de `fieldMappings` variabele, die verwijst naar de *field-mappings.jsin* het bestand. Dit bestand (en de variabele waarmee ernaar wordt verwezen) definieert de lijst met sleutels die u wilt extra heren uit uw formulieren en een aangepast label voor elke sleutel. Zo betekent een waarde `{ "Address:", "address" }, { "Invoice For:", "recipient" }` dat het script alleen de waarden voor de gedetecteerde `Address:` en `Invoice For:` velden opslaat, en worden deze waarden labelen met `"address"` `"recipient"` respectievelijk.
 
-Let ten slotte op `contentType` de variabele. Met dit script wordt het opgegeven formulier Recognizer-model uitgevoerd op externe documenten waarnaar wordt verwezen door de URL, zodat het `application/json`inhouds type. Als u lokale bestanden wilt analyseren door de byte-streams in de HTTP-aanvragen op te nemen, moet u `contentType` het juiste [MIME-type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) voor het bestand wijzigen.
+Let ten slotte op de `contentType` variabele. Met dit script wordt het opgegeven formulier Recognizer-model uitgevoerd op externe documenten waarnaar wordt verwezen door de URL, zodat het inhouds type `application/json` . Als u lokale bestanden wilt analyseren door de byte-streams in de HTTP-aanvragen op te nemen, moet u het `contentType` juiste [MIME-type](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) voor het bestand wijzigen.
 
 ## <a name="test-the-function-from-visual-studio"></a>De functie testen vanuit Visual Studio
 
@@ -82,7 +82,7 @@ Hier moet u de URL opgeven van een formulier dat hetzelfde type heeft als de for
 > [!div class="mx-imgBorder"]
 > ![Azure Storage Explorer; Er is een PDF-document geselecteerd](media/cognitive-search-skill-form/form-sas.png)
 
-Als u een extern document wilt analyseren dat zich niet in Azure Blob-opslag bevindt, plakt `"formUrl"` u de URL in `"formSasToken"` het veld en laat u het veld leeg.
+Als u een extern document wilt analyseren dat zich niet in Azure Blob-opslag bevindt, plakt u de URL in het `"formUrl"` veld en laat u het `"formSasToken"` veld leeg.
 
 > [!NOTE]
 > Wanneer de vaardigheid is geïntegreerd in een vaardig heden, worden de URL en het token verschaft door Cognitive Search.
@@ -111,7 +111,7 @@ Er wordt een antwoord weer gegeven dat vergelijkbaar is met het volgende voor be
 
 Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
 
-1. Klik in de **Solution Explorer** in Visual Studio met de rechter muisknop op het project en selecteer **publiceren**. Kies **nieuwe** > **publicatie**maken.
+1. Klik in de **Solution Explorer** in Visual Studio met de rechter muisknop op het project en selecteer **publiceren**. Kies **nieuwe**  >  **publicatie**maken.
 1. Als u Visual Studio nog niet hebt verbonden met uw Azure-account, selecteert u **een account toevoegen....**
 1. Volg de aanwijzingen op het scherm. Geef een unieke naam op voor uw app service, het Azure-abonnement, de resource groep, het hosting plan en het opslag account dat u wilt gebruiken. U kunt een nieuwe resource groep, een nieuw hosting plan en een nieuw opslag account maken als u deze nog niet hebt. Wanneer u klaar bent, selecteert u **maken**.
 1. Nadat de implementatie is voltooid, ziet u de URL van de site. Deze URL is het adres van uw functie-app in Azure. Sla het bestand op een tijdelijke locatie op.
@@ -119,7 +119,7 @@ Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
 
 ## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijp lijn
 
-Als u deze vaardigheid wilt gebruiken in een Cognitive Search pijp lijn, moet u een vaardigheids definitie toevoegen aan uw vaardig heden. Het volgende JSON-blok is een voor beeld van een vaardigheids definitie (u moet de invoer en uitvoer bijwerken zodat deze overeenkomen met uw specifieke scenario en uw vaardig heden-omgeving). Vervang `AzureFunctionEndpointUrl` door de URL van uw functie en `AzureFunctionDefaultHostKey` Vervang door de sleutel van uw host.
+Als u deze vaardigheid wilt gebruiken in een Cognitive Search pijp lijn, moet u een vaardigheids definitie toevoegen aan uw vaardig heden. Het volgende JSON-blok is een voor beeld van een vaardigheids definitie (u moet de invoer en uitvoer bijwerken zodat deze overeenkomen met uw specifieke scenario en uw vaardig heden-omgeving). Vervang door `AzureFunctionEndpointUrl` de URL van uw functie en vervang door `AzureFunctionDefaultHostKey` de sleutel van uw host.
 
 ```json
 { 

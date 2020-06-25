@@ -7,12 +7,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964223"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322044"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Veelvoorkomende problemen in azure data share oplossen 
 
@@ -32,7 +32,7 @@ Dit kan de volgende oorzaken hebben:
     1. Selecteer het abonnement dat u wilt gebruiken voor het maken van een Azure data share-resource
     1. Klik op **resource providers**
     1. Zoeken naar **micro soft. DataShare**
-    1. Klik op **registreren** 
+    1. Klik op **Registreren** 
 
     U moet de [rol van Azure INZENDER RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) hebben om deze stappen te kunnen volt ooien. 
 
@@ -62,9 +62,9 @@ Voor delen op basis van SQL zijn aanvullende machtigingen vereist. Zie problemen
 
 ## <a name="troubleshooting-sql-based-sharing"></a>Problemen met delen op basis van SQL oplossen
 
-"Gebruiker x bestaat niet in SQL database"
+"Gebruiker x bestaat niet in SQL Database"
 
-Als deze fout optreedt bij het toevoegen van een gegevensset van een bron op basis van SQL, kan dat zijn omdat u geen gebruiker hebt gemaakt voor de door Azure data share beheerde identiteit op uw SQL Server.  Voer het volgende script uit om dit probleem op te lossen:
+Als deze fout optreedt bij het toevoegen van een gegevensset van een bron op basis van SQL, kan dat zijn omdat u geen gebruiker hebt gemaakt voor de door Azure data share beheerde identiteit in SQL Database.  Voer het volgende script uit om dit probleem op te lossen:
 
 ```sql
     create user "<share_acct_name>" from external provider; 
@@ -89,7 +89,7 @@ Als het fout bericht betrekking heeft op machtiging, controleert u of de gegeven
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens. 
+Voor meer informatie over hoe u gegevens kunt beginnen delen, gaat u verder naar de zelfstudie [uw gegevens delen](share-your-data.md). 
 
 Ga door naar de zelf studie [gegevens accepteren en ontvangen](subscribe-to-data-share.md) voor meer informatie over het ontvangen van gegevens.
 

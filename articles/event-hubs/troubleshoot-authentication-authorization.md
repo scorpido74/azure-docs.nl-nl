@@ -1,20 +1,14 @@
 ---
 title: Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 description: In dit artikel vindt u informatie over het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2020
-ms.author: spelluru
-ms.openlocfilehash: d093be47ce38efa9ba9f2009fa09e1021d48336b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 06/23/2020
+ms.openlocfilehash: 1c053f60c877cdd26655948c37ab81a5e4d61cf0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84713242"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322411"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Problemen met verificatie en autorisatie oplossen-Azure Event Hubs
 Het artikel problemen [met connectiviteit oplossen](troubleshooting-guide.md) bevat tips voor het oplossen van verbindings problemen met Azure Event hubs. In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen met verificatie en autorisatie met Azure Event Hubs. 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: kgremban
-ms.openlocfilehash: 5c3c9c7a061fd4c471b1ef159388deb1a851dd57
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d73f3a37bb084533733b27b49ac171747cee814c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297151"
+ms.locfileid: "85321890"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren
 
@@ -166,7 +166,7 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>Optie 2: automatisch inrichten
 
-IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml). IoT Edge ondersteunt momenteel twee Attestation-mechanismen bij het gebruik van automatische inrichting, maar uw hardware-vereisten kunnen van invloed zijn op uw keuzes. Zo worden Raspberry Pi-apparaten standaard niet geleverd met een Trusted Platform Module TPM-chip. Raadpleeg voor meer informatie de volgende artikelen:
+IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml). IoT Edge ondersteunt momenteel drie Attestation-mechanismen bij het gebruik van automatische inrichting, maar uw hardware-vereisten kunnen van invloed zijn op uw keuzes. Zo worden Raspberry Pi-apparaten standaard niet geleverd met een Trusted Platform Module TPM-chip. Raadpleeg voor meer informatie de volgende artikelen:
 
 * [Een IoT Edge apparaat maken en inrichten met een virtuele TPM op een Linux-VM](how-to-auto-provision-simulated-device-linux.md)
 * [Een IoT Edge apparaat maken en inrichten met X. 509-certificaten](how-to-auto-provision-x509-certs.md)

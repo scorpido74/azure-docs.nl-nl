@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220434"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338236"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
@@ -39,13 +39,13 @@ Deze functie is beschikbaar voor de volgende Azure-Services en-regio's. *Micro s
 - **[Azure service bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. ServiceBus*): algemeen beschikbaar in alle Azure-regio's.
 - **[Azure Event hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. EventHub*): algemeen beschikbaar in alle Azure-regio's.
 - **[Azure data Lake Store gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. AzureActiveDirectory*): algemeen beschikbaar in alle Azure-regio's waar ADLS gen1 beschikbaar is.
-- **[Azure app service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)**: algemeen beschikbaar in alle Azure-regio's waar app service beschikbaar is.
+- **[Azure app service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*micro soft. Web*): algemeen beschikbaar in alle Azure-regio's waar app service beschikbaar is.
 
 **Open bare preview**
 
 - **[Azure container Registry](../container-registry/container-registry-vnet.md)** (*micro soft. ContainerRegistry*): de preview-versie die beschikbaar is in de beperkte Azure-regio's waar Azure container Registry beschikbaar is.
 
-Voor recente updates kijkt u op de pagina [Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates voor Azure Virtual Network).
+Controleer de pagina [Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network) voor de meest recente meldingen.
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 
@@ -151,5 +151,5 @@ Zie [Veelgestelde vragen over Virtual Network Service-eind punten](https://docs.
 - [Een Azure SQL Data Warehouse beveiligen met een virtueel netwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integratie van Azure-Services in virtuele netwerken](virtual-network-for-azure-services.md)
 - [Virtual Network service-eindpunt beleid](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Azure Resource Manager sjabloon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager-sjabloon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

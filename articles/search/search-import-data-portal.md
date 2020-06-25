@@ -1,19 +1,19 @@
 ---
 title: Gegevens importeren in een zoek index met behulp van Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het gebruik van de wizard gegevens importeren in de Azure Portal om Azure-gegevens te verkennen vanuit Cosmos DB, Blob Storage, Table Storage, SQL Database en SQL Server op Azure-Vm's.
+description: Meer informatie over het gebruik van de wizard gegevens importeren in de Azure Portal om Azure-gegevens te verkennen vanuit Cosmos DB, Blob Storage, Table Storage, SQL Database, SQL Managed instance en SQL Server op Azure Vm's.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460697"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321378"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>De wizard gegevens importeren voor Azure Cognitive Search
 
@@ -65,7 +65,7 @@ U moet deze afzonderlijke tabel of weer gave maken voordat u de wizard uitvoert,
 | ---------- | ----------- |
 | **Bestaande gegevensbron** |Als u al Indexeer functies hebt gedefinieerd in uw zoek service, hebt u mogelijk een bestaande definitie van een gegevens bron die u opnieuw kunt gebruiken. In azure Cognitive Search worden gegevens bron objecten alleen gebruikt door Indexeer functies. U kunt een gegevens bron object maken via een programma of via de wizard **gegevens importeren** en ze indien nodig opnieuw gebruiken.|
 | **Voorbeelden**| Azure Cognitive Search biedt twee ingebouwde voorbeeld gegevens bronnen die worden gebruikt in zelf studies en Snelstartgids: een onroerend goed SQL database en een Hotels-data base die wordt gehost op Cosmos DB. Zie voor een door loop op basis van het voor beeld van hotels het artikel [een index maken in de snelstartgids Azure Portal](search-get-started-portal.md) . |
-| [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |De servicenaam, referenties voor een databasegebruiker met leesmachtiging en de naam van een database kunnen worden opgegeven op de pagina of via een ADO.NET-verbindingsreeks. Kies de verbindingsreeksoptie om eigenschappen te bekijken of aan te passen. <br/><br/>De tabel of weergave die de rijenset bevat, moet worden opgegeven op de pagina. Deze optie wordt weergegeven nadat de verbinding tot stand is gebracht, waarna een vervolgkeuzelijst wordt weergegeven zodat u een selectie kunt maken.|
+| [**Azure SQL Database of SQL Managed instance**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |De servicenaam, referenties voor een databasegebruiker met leesmachtiging en de naam van een database kunnen worden opgegeven op de pagina of via een ADO.NET-verbindingsreeks. Kies de verbindingsreeksoptie om eigenschappen te bekijken of aan te passen. <br/><br/>De tabel of weergave die de rijenset bevat, moet worden opgegeven op de pagina. Deze optie wordt weergegeven nadat de verbinding tot stand is gebracht, waarna een vervolgkeuzelijst wordt weergegeven zodat u een selectie kunt maken.|
 | **SQL Server op virtuele Azure-machine** |Geef een volledig gekwalificeerde service naam, gebruikers-ID en wacht woord en Data Base als connection string op. Voor het gebruik van deze gegevensbron moet u eerder een certificaat hebben geïnstalleerd in het lokale archief dat de verbinding versleutelt. Zie [SQL VM-verbinding met Azure Cognitive Search](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)voor instructies. <br/><br/>De tabel of weergave die de rijenset bevat, moet worden opgegeven op de pagina. Deze optie wordt weergegeven nadat de verbinding tot stand is gebracht, waarna een vervolgkeuzelijst wordt weergegeven zodat u een selectie kunt maken. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|Vereisten zijn het account, de database en de verzameling. Alle documenten in de verzameling worden opgenomen in de index. U kunt een query definiëren om de rijenset samen te voegen of te filteren, of de query leeg laten. Er is geen query vereist in deze wizard.|
 | [**Azure Blob Storage**](search-howto-indexing-azure-blob-storage.md) |Vereisten zijn het opslagaccount en een container. Als blob-namen een virtuele naamconventie voor groeperingsdoeleinden volgen, kunt u desgewenst het gedeelte van de virtuele map van de naam als een map onder de container opgeven. Zie [Blob Storage indexeren](search-howto-indexing-azure-blob-storage.md) voor meer informatie. |
@@ -75,7 +75,7 @@ U moet deze afzonderlijke tabel of weer gave maken voordat u de wizard uitvoert,
 
 Achter de schermen worden de volgende objecten gemaakt, geconfigureerd en aangeroepen door de wizard. Nadat de wizard is uitgevoerd, kunt u de uitvoer ervan vinden in de portal pagina's. De overzichts pagina van uw service bevat lijsten met indexen, Indexeer functies, gegevens bronnen en vaardig heden. Index definities kunnen worden weer gegeven in volledige JSON in de portal. Voor andere definities kunt u de [rest API](https://docs.microsoft.com/rest/api/searchservice/) gebruiken om specifieke objecten op te halen.
 
-| Object | Beschrijving | 
+| Object | Description | 
 |--------|-------------|
 | [Gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Persistente verbindings gegevens naar bron gegevens, met inbegrip van referenties. Een gegevens bron object wordt uitsluitend gebruikt met Indexeer functies. | 
 | [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Fysieke gegevens structuur die wordt gebruikt voor zoeken in volledige tekst en andere query's. | 
@@ -93,7 +93,7 @@ De wizard gegevens importeren wordt gestart vanaf de opdracht balk op de overzic
 
    ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
 
-U kunt ook **gegevens importeren** uit andere Azure-Services, waaronder Azure Cosmos DB, Azure SQL database en Azure Blob-opslag. Zoek naar **Azure Cognitive Search toevoegen** in het linkerdeel venster op de overzichts pagina van de service.
+U kunt ook **gegevens importeren** uit andere Azure-Services, waaronder Azure Cosmos DB, Azure SQL database, door SQL beheerd exemplaar en Azure Blob-opslag. Zoek naar **Azure Cognitive Search toevoegen** in het linkerdeel venster op de overzichts pagina van de service.
 
 <a name="index-definition"></a>
 
@@ -105,7 +105,7 @@ De wizard genereert een onvolledige index, die wordt gevuld met documenten die z
 
 1. Is het gegevens type dat geschikt is voor de inkomende gegevens? Azure Cognitive Search ondersteunt de [gegevens typen van de Entity Data Model (EDM)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Voor Azure SQL-gegevens is er een [toewijzings grafiek](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping) die gelijkwaardige waarden bevat. Zie [veld Toewijzingen en trans formaties](search-indexer-field-mappings.md)voor meer achtergrond informatie.
 
-1. Hebt u één veld dat kan dienen als de *sleutel*? Dit veld moet EDM. String zijn en moet een unieke identificatie vormen voor een document. Voor relationele gegevens kan deze worden toegewezen aan een primaire sleutel. Voor blobs is dit mogelijk de `metadata-storage-path`. Als veld waarden spaties of streepjes bevatten, moet u de optie **Base-64 Codeer sleutel** instellen in de stap **een Indexeer functie maken** onder **Geavanceerde opties**om de validatie controle voor deze tekens te onderdrukken.
+1. Hebt u één veld dat kan dienen als de *sleutel*? Dit veld moet EDM. String zijn en moet een unieke identificatie vormen voor een document. Voor relationele gegevens kan deze worden toegewezen aan een primaire sleutel. Voor blobs is dit mogelijk de `metadata-storage-path` . Als veld waarden spaties of streepjes bevatten, moet u de optie **Base-64 Codeer sleutel** instellen in de stap **een Indexeer functie maken** onder **Geavanceerde opties**om de validatie controle voor deze tekens te onderdrukken.
 
 1. Stel kenmerken in om te bepalen hoe dit veld wordt gebruikt in een index. 
 

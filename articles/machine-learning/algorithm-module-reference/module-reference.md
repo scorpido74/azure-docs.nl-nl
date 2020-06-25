@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 53069f24a18bac1f5c0c226ddcc3a79494c93edb
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: b85140d5a54d7447a80899f498dd63014bd11695
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84809312"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321861"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer (preview)
 
@@ -32,16 +32,16 @@ Zie voor hulp bij het kiezen van algoritmen
 ## <a name="data-preparation-modules"></a>Modules voor gegevens voorbereiding
 
 
-| Functionaliteit | Beschrijving | Module |
+| Functionaliteit | Description | Module |
 | --- |--- | --- |
-| Gegevens invoer en-uitvoer | Verplaats gegevens van Cloud bronnen naar uw pijp lijn. Schrijf uw resultaten of tussenliggende gegevens naar Azure Storage, een SQL database of Hive, terwijl u een pijp lijn uitvoert, of gebruik Cloud opslag voor het uitwisselen van gegevens tussen pijp lijnen.  | [Gegevens handmatig invoeren](enter-data-manually.md) <br/> [Gegevens exporteren](export-data.md) <br/> [Gegevens importeren](import-data.md) |
+| Gegevens invoer en-uitvoer | Verplaats gegevens van Cloud bronnen naar uw pijp lijn. Schrijf uw resultaten of tussenliggende gegevens naar Azure Storage, SQL Database of Hive, terwijl u een pijp lijn uitvoert, of gebruik Cloud opslag voor het uitwisselen van gegevens tussen pijp lijnen.  | [Gegevens handmatig invoeren](enter-data-manually.md) <br/> [Gegevens exporteren](export-data.md) <br/> [Gegevens importeren](import-data.md) |
 | Gegevens transformatie | Bewerkingen op gegevens die uniek zijn voor machine learning, zoals het normaliseren of Binningen van gegevens, het beperken van de afmetingen en het converteren van gegevens over verschillende bestands indelingen.| [Kolommen toevoegen](add-columns.md) <br/> [Rijen toevoegen](add-rows.md) <br/> [Wiskundige bewerking toepassen](apply-math-operation.md) <br/> [SQL-transformatie toepassen](apply-sql-transformation.md) <br/> [Ontbrekende gegevens opschonen](clean-missing-data.md) <br/> [Waarden inperken](clip-values.md) <br/> [Converteren naar CSV](convert-to-csv.md) <br/> [Converteren naar gegevensset](convert-to-dataset.md) <br/> [Converteren naar indicatorwaarden](convert-to-indicator-values.md) <br/> [Metagegevens bewerken](edit-metadata.md) <br/> [Gegevens in opslaglocaties groeperen](group-data-into-bins.md) <br/> [Gegevens samenvoegen](join-data.md) <br/> [Gegevens normaliseren](normalize-data.md) <br/> [Partitie en voorbeeld](partition-and-sample.md)  <br/> [Dubbele rijen verwijderen](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Kolomtransformatie selecteren](select-columns-transform.md) <br/> [Kolommen in gegevensset selecteren](select-columns-in-dataset.md) <br/> [Gegevens splitsen](split-data.md) |
 | Functie selectie | Selecteer een subset van relevante, nuttige functies om te gebruiken bij het bouwen van een analytisch model. | [Functieselectie op basis van filters](filter-based-feature-selection.md) <br/> [Belang van permutatiefunctie](permutation-feature-importance.md) |
 | Statistische functies | Bieden een groot aantal statistische methoden die zijn gerelateerd aan data Science. | [Gegevens samenvatten](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>Machine learning-algoritmen
 
-| Functionaliteit | Beschrijving | Module |
+| Functionaliteit | Description | Module |
 | --- |--- | --- |
 | Regressie | Een waarde voors pellen. | [Regressie versterkte beslissingsstructuur](boosted-decision-tree-regression.md) <br/> [Regressie beslissingsforest](decision-forest-regression.md) <br/> [Lineaire regressie](linear-regression.md)  <br/> [Regressie neuraal netwerk](neural-network-regression.md)  <br/> |
 | Clustering | Groepeert gegevens tegelijk.| [K-means-clustering](k-means-clustering.md)
@@ -49,13 +49,13 @@ Zie voor hulp bij het kiezen van algoritmen
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Modules voor het maken en evalueren van modellen
 
-| Functionaliteit | Beschrijving | Module |
+| Functionaliteit | Description | Module |
 | --- |--- | --- |
 | Model training | Voer gegevens uit via de algoritme. |  [Clustermodel trainen](train-clustering-model.md) <br/> [Model trainen](train-model.md) <br/> [Pytorch-model trainen](train-pytorch-model.md) <br/> [Model Hyperparameters afstemmen](tune-model-hyperparameters.md) |
 | Model leren en evalueren | Meet de nauw keurigheid van het getrainde model. | [Transformatie toepassen](apply-transformation.md) <br/> [Gegevens aan cluster toewijzen](assign-data-to-clusters.md) <br/> [Kruisvalidatie van model valideren](cross-validate-model.md) <br/> [Model evalueren](evaluate-model.md) <br/> [Afbeeldingsmodel voor score](score-image-model.md) <br/> [Score Model](score-model.md) |
 | Python-taal | Schrijf code en sluit deze in een module in om python met uw pijp lijn te integreren. | [Python-model maken](create-python-model.md) <br/> [Python-script uitvoeren](execute-python-script.md) |
 | R-taal | Schrijf code en sluit deze in een module in om R met uw pijp lijn te integreren. | [R-Script uitvoeren](execute-r-script.md) |
-| Tekstanalyse | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. |  [Word converteren naar vector](convert-word-to-vector.md) <br/> [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) |
+| Text Analytics | Bieden speciale reken kundige hulp middelen voor het werken met zowel gestructureerde als ongestructureerde tekst. |  [Word converteren naar vector](convert-word-to-vector.md) <br/> [N-Gram-functies uit tekst halen](extract-n-gram-features-from-text.md) <br/> [Functie-hashing](feature-hashing.md) <br/> [Tekst voorverwerken](preprocess-text.md) <br/> [Latente Dirichlet-toewijzing](latent-dirichlet-allocation.md) |
 | Computer Vision | Voor verwerking van installatie kopie-en installatie kopieën gerelateerde modules. |  [Afbeeldingstransformatie toepassen](apply-image-transformation.md) <br/> [Converteren naar afbeeldingsmap](convert-to-image-directory.md) <br/> [Afbeeldingstransformatie initiëren](init-image-transformation.md) <br/> [Map om afbeeldingen te splitsen](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | Aanbeveling | Aanbevelings modellen bouwen. | [Aanbevelingsfunctie voor evaluatie](evaluate-recommender.md) <br/> [Aanbevelingsfunctie voor SVD-score](score-svd-recommender.md) <br/> [Aanbevelingsfunctie voor wide en deep learning-scores](score-wide-and-deep-recommender.md)<br/> [Aanbevelingsfunctie van SVD-training](train-SVD-recommender.md) <br/> [Aanbevelingsfunctie voor wide en deep learning-trainingen](train-wide-and-deep-recommender.md)|
 | Anomaliedetectie | Anomalie detectie modellen bouwen. | [Anomaliedetectie op basis van PCA](pca-based-anomaly-detection.md) <br/> [Anomaliedetectiemodel trainen](train-anomaly-detection-model.md) |

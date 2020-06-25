@@ -1,25 +1,18 @@
 ---
 title: Een Azure Service Bus naam ruimte maken met behulp van een sjabloon
 description: Azure Resource Manager sjabloon gebruiken om een Service Bus Messa ging-naam ruimte te maken
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 5febdd63ab6f854ca3244f8449f6f715a75e735f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264472"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336835"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Een Service Bus naam ruimte maken met behulp van een Azure Resource Manager sjabloon
 
@@ -34,7 +27,7 @@ De volgende sjablonen zijn ook beschikbaar voor het maken van Service Bus-naam r
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-a-service-bus-namespace"></a>Een service bus-naam ruimte maken
 

@@ -1,20 +1,14 @@
 ---
 title: Toegang verlenen met een hand tekening voor gedeelde toegang in azure Event Hubs
 description: In dit artikel vindt u informatie over het verlenen van toegang tot Azure Event Hubs-resources met behulp van Shared Access signatures (SAS).
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 0c572723c493847ed15f80948511d1cc993fa7e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298749"
+ms.locfileid: "85323123"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Toegang tot Event Hubs resources met hand tekeningen voor gedeelde toegang autoriseren
 Een Shared Access Signature (SAS) biedt een manier om beperkte toegang tot resources in uw Event Hubs-naam ruimte toe te kennen. SAS-beveiligingen hebben toegang tot Event Hubs-resources op basis van autorisatie regels. Deze regels worden geconfigureerd op een naam ruimte of een entiteit (Event Hub of onderwerp). Dit artikel bevat een overzicht van het SAS-model en beoordeelt de aanbevolen procedures voor SAS.

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27d8ec5aba55abcea54069b9707d766c4acc7a7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 8576088069f419872db57b063163e8d9b1968b33
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078327"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338209"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
@@ -103,13 +103,13 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 - Zorg ervoor dat de instellingen op site niveau gast toegang inschakelen (dezelfde optie selecties als eerder vermeld). Zie voor meer informatie [extern delen in-of uitschakelen voor een site](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
 
-### <a name="review-your-office-365-group-sharing-settings"></a>De instellingen voor het delen van uw Office 365-groep controleren
+### <a name="review-your-microsoft-365-group-sharing-settings"></a>De instellingen voor het delen van Microsoft 365 groepen controleren
 
-- Als u Office 365-groepen wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de **gebruikers nieuwe gasten toevoegen aan de organisatie** zijn **ingesteld op aan om gast** toegang toe te staan. Zie [gast toegang beheren voor Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)voor meer informatie.
+- Als u Microsoft 365 groepen in uw toegangs pakketten wilt toevoegen voor externe gebruikers, moet u ervoor zorgen dat de **gebruikers nieuwe gasten toevoegen aan de organisatie** zijn ingesteld **op aan om toegang** tot de gast toe te staan. Zie voor meer informatie [gast toegang beheren voor Microsoft 365 groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
-- Als u wilt dat externe gebruikers toegang hebben tot de share point online-site en de resources die zijn gekoppeld aan een Office 365-groep, moet u extern delen van share point Online inschakelen. Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
+- Als u wilt dat externe gebruikers toegang hebben tot de share point online-site en de resources die zijn gekoppeld aan een Microsoft 365 groep, moet u het extern delen van share point Online inschakelen. Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
 
-- Zie voor meer informatie over het instellen van het gast beleid voor Office 365-groepen op het mapniveau in Power shell, [voor beeld: gast beleid voor groepen op het niveau van de Directory configureren](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Zie voor meer informatie over het instellen van het gast beleid voor Microsoft 365 groepen op het niveau van de Directory in Power shell, [voor beeld: Configureer gast beleid voor groepen op het niveau van de Directory](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>De instellingen voor het delen van teams controleren
 

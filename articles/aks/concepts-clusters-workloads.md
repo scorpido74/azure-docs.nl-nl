@@ -4,12 +4,12 @@ description: Meer informatie over de basis onderdelen van het cluster en de work
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ddf6543ff0e4313b28c183718b6ac3b2395e0dbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729968"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336630"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
 
@@ -105,9 +105,9 @@ Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de
 
 De bovenstaande regels voor geheugen-en CPU-toewijzing worden gebruikt om agent knooppunten in orde te blijven, met inbegrip van enige hosting systeem die essentieel is voor de cluster status. Deze toewijzings regels zorgen er ook voor dat het knoop punt minder toegewezen geheugen en CPU rapporteert dan wanneer het geen deel uitmaakt van een Kubernetes-cluster. De bovenstaande resource reserveringen kunnen niet worden gewijzigd.
 
-Als een knoop punt bijvoorbeeld 7 GB biedt, zal het 34% van het geheugen dat niet kan worden overschreven boven op de drempel waarde voor 750Mi hard verwijderen.
+Als een knoop punt bijvoorbeeld 7 GB biedt, wordt er 34% van het geheugen gerapporteerd die niet kan worden verplaatst, inclusief de 750Mi-drempel waarde voor harde verwijdering.
 
-`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
+`0.75 + (0.25*4) + (0.20*3) = 0.75GB + 1GB + 0.6GB = 2.35GB / 7GB = 33.57% reserved`
 
 Naast reserve ringen voor Kubernetes, reserveert het onderliggende knooppunt besturingssysteem ook een hoeveelheid CPU-en geheugen bronnen om besturings systemen te onderhouden.
 

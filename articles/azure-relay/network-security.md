@@ -1,18 +1,14 @@
 ---
 title: Netwerk beveiliging voor Azure Relay
 description: In dit artikel wordt beschreven hoe u toegang kunt configureren vanaf privé-eind punten
-services: service-bus-relay
-author: spelluru
-ms.service: service-bus-relay
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.author: spelluru
-ms.openlocfilehash: d0a0d03680877ae78f5af939f8d47e4e426abadb
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211012"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322165"
 ---
 # <a name="network-security-for-azure-relay"></a>Netwerk beveiliging voor Azure Relay 
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Relay: 
@@ -33,11 +29,11 @@ De IP-firewall regels worden toegepast op het niveau van de relay-naam ruimte. D
 
 Zie [IP-Firewall configureren voor een relay-naam ruimte](ip-firewall-virtual-networks.md) voor meer informatie
 
-## <a name="private-endpoints"></a>Privé-eind punten
+## <a name="private-endpoints"></a>Privé-eindpunten
 
 Met Azure **Private Link service** kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Relay, Azure service bus, Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Zie [Wat is Azure private link (preview)?](../private-link/private-link-overview.md) voor meer informatie.
 
-Een **persoonlijk eind punt** is een netwerk interface waarmee de werk belastingen die worden uitgevoerd in een virtueel netwerk, privé en veilig verbinding kunnen maken met een service die een **persoonlijke koppelings bron** heeft (bijvoorbeeld een relay-naam ruimte). Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute, VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de service wordt over het micro soft backbone-netwerk gepasseerd, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt een niveau van granulatie in toegangs beheer geven door verbindingen met specifieke Azure Relay-naam ruimten toe te staan.
+Een **persoonlijk eind punt** is een netwerk interface waarmee de werk belastingen die worden uitgevoerd in een virtueel netwerk, privé en veilig verbinding kunnen maken met een service die een **persoonlijke koppelings bron** heeft (bijvoorbeeld een relay-naam ruimte). Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute, VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de service wordt over het micro soft backbone-netwerk gepasseerd, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt een niveau van granulatie in toegangs beheer geven door verbindingen met specifieke Azure Relay-naam ruimten toe te staan.
 
 > [!NOTE]
 > Deze functie is momenteel beschikbaar als **Preview-versie**. 

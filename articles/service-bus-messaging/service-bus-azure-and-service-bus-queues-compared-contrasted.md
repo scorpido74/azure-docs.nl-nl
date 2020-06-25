@@ -1,25 +1,14 @@
 ---
-title: Azure Storage-wacht rijen en Service Bus wachtrijen vergelijken
+title: Azure Storage- en Service Bus-wachtrijen vergelijken
 description: Analyseer verschillen en overeenkomsten tussen twee typen wacht rijen die door Azure worden aangeboden.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 09/04/2019
-ms.author: aschhab
-ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414538"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337650"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage Queues and Service Bus Queues - Compared and Contrasted (Storage-wachtrijen en Service Bus-wachtrijen: overeenkomsten en verschillen)
 In dit artikel worden de verschillen en overeenkomsten geanalyseerd tussen de twee typen wacht rijen die momenteel worden aangeboden door Microsoft Azure: opslag wachtrijen en Service Bus wacht rijen. Met behulp van deze informatie kunt u de respectieve technologieën vergelijken en er contrast van ondervinden, en kunt u beter gefundeerde beslissingen nemen over welke oplossing het beste aan uw behoeften voldoet.
@@ -67,7 +56,7 @@ De tabellen in de volgende secties bieden een logische groepering van wachtrij f
 ## <a name="foundational-capabilities"></a>Basis mogelijkheden
 In deze sectie worden enkele van de fundamentele wachtrij mogelijkheden van opslag wachtrijen en Service Bus-wacht rijen vergeleken.
 
-| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Garantie best Ellen |**Nee** <br/><br>Zie de eerste opmerking in de sectie ' aanvullende informatie ' voor meer informatie.</br> |**Ja, eerst-in-first-out (FIFO)**<br/><br>(door het gebruik van Messa ging-sessies) |
 | Leverings garantie |**Mini maal één keer** |**Mini maal één keer** (met behulp van de PeekLock-ontvangst modus-dit is de standaard instelling) <br/><br/>**Mini maal één keer** (met behulp van de ReceiveAndDelete-ontvangst modus) <br/> <br/> Meer informatie over verschillende [ontvangst modi](service-bus-queues-topics-subscriptions.md#receive-modes)  |
@@ -99,7 +88,7 @@ In deze sectie worden enkele van de fundamentele wachtrij mogelijkheden van opsl
 ## <a name="advanced-capabilities"></a>Geavanceerde mogelijkheden
 In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Service Bus wachtrijen vergeleken.
 
-| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Geplande bezorging |**Ja** |**Ja** |
 | Automatische onbestelbare berichten |**Nee** |**Ja** |
@@ -130,7 +119,7 @@ In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Ser
 ## <a name="capacity-and-quotas"></a>Capaciteit en quota's
 In deze sectie worden opslag wachtrijen en Service Bus wachtrijen vergeleken met het perspectief van de [capaciteit en quota's](service-bus-quotas.md) die van toepassing kunnen zijn.
 
-| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Maximale wachtrij grootte |**500 TB**<br/><br/>(beperkt tot een [capaciteit van één opslag account](../storage/common/storage-introduction.md#queue-storage)) |**1 GB tot 80 GB**<br/><br/>(gedefinieerd bij het maken van een wachtrij en het [inschakelen van partitionering](service-bus-partitioning.md) – Zie de sectie ' aanvullende informatie ') |
 | Maximale bericht grootte |**64 kB**<br/><br/>(48 KB wanneer **Base64** -code ring wordt gebruikt)<br/><br/>Azure ondersteunt grote berichten door wacht rijen en blobs te combi neren. op die wijze kunt u Maxi maal 200 GB voor één item in de wachtrij plaatsen. |**256 KB** of **1 MB**<br/><br/>(inclusief header en hoofd tekst, maximale header grootte: 64 KB).<br/><br/>Is afhankelijk [van de servicelaag](service-bus-premium-messaging.md). |
@@ -149,15 +138,15 @@ In deze sectie worden opslag wachtrijen en Service Bus wachtrijen vergeleken met
 ## <a name="management-and-operations"></a>Beheer en bewerkingen
 In deze sectie worden de beheer functies van opslag wachtrijen en Service Bus wachtrijen vergeleken.
 
-| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Beheer Protocol |**REST over HTTP/HTTPS** |**REST over HTTPS** |
 | Runtime-Protocol |**REST over HTTP/HTTPS** |**REST over HTTPS**<br/><br/>**AMQP 1,0 Standard (TCP met TLS)** |
 | .NET API |**Ja**<br/><br/>(API voor .NET-opslag-client) |**Ja**<br/><br/>(.NET Service Bus-API) |
-| Systeem eigen C++ |**Ja** |**Ja** |
+| Systeemeigen C++ |**Ja** |**Ja** |
 | Java-API |**Ja** |**Ja** |
 | PHP-API |**Ja** |**Ja** |
-| Node. js-API |**Ja** |**Ja** |
+| Node.js-API |**Ja** |**Ja** |
 | Ondersteuning voor wille keurige meta gegevens |**Ja** |**Nee** |
 | Naamgevings regels voor Queue |**Maxi maal 63 tekens lang**<br/><br/>(De naam van een wachtrij moet kleine letters zijn.) |**Maxi maal 260 tekens lang**<br/><br/>(Wachtrij paden en-namen zijn niet hoofdletter gevoelig.) |
 | Functie wachtrij lengte ophalen |**Ja**<br/><br/>(Geschatte waarde als berichten buiten de TTL verlopen zonder dat ze worden verwijderd.) |**Ja**<br/><br/>(Exacte waarde, punt in tijd) |
@@ -173,10 +162,10 @@ In deze sectie worden de beheer functies van opslag wachtrijen en Service Bus wa
 ## <a name="authentication-and-authorization"></a>Verificatie en autorisatie
 In deze sectie worden de verificatie-en autorisatie functies beschreven die worden ondersteund door opslag wachtrijen en Service Bus wachtrijen.
 
-| Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
+| Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Verificatie |**Symmetrische sleutel** |**Symmetrische sleutel** |
-| Beveiligingsmodel |Gedelegeerde toegang via SAS-tokens. |GEBASEERD |
+| Beveiligingsmodel |Gedelegeerde toegang via SAS-tokens. |SAS |
 | Federatie van ID-provider |**Nee** |**Ja** |
 
 ### <a name="additional-information"></a>Aanvullende informatie

@@ -4,18 +4,18 @@ description: Meer informatie over het gebruik van de Azure CLI om een AKS-cluste
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 83ba43c3b8a00325750ec935fd3a43ec7d56074c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779940"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336533"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integreren met de Azure Kubernetes-service met behulp van Azure CLI
 
 Azure Kubernetes service (AKS) kan worden geconfigureerd om Azure Active Directory (AD) te gebruiken voor gebruikers verificatie. In deze configuratie kunt u zich aanmelden bij een AKS-cluster met behulp van een Azure AD-verificatie token. Cluster operators kunnen ook RBAC (Kubernetes Role-based Access Control) configureren op basis van de identiteit of het lidmaatschap van de Directory groep van een gebruiker.
 
-In dit artikel wordt beschreven hoe u de vereiste onderdelen van Azure AD maakt en vervolgens een Azure AD-cluster implementeert en een eenvoudige RBAC-rol maakt in het AKS-cluster. U kunt [deze stappen ook uitvoeren met behulp van de Azure Portal][azure-ad-portal].
+In dit artikel wordt beschreven hoe u de vereiste onderdelen van Azure AD maakt en vervolgens een Azure AD-cluster implementeert en een eenvoudige RBAC-rol maakt in het AKS-cluster.
 
 Zie [Azure CLI-voor beelden-AKS-integratie met Azure AD][complete-script]voor het volledige voorbeeld script dat in dit artikel wordt gebruikt.
 
@@ -25,7 +25,7 @@ De volgende beperkingen zijn van toepassing:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
 
@@ -97,7 +97,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>Een Azure AD-client onderdeel maken
 
-De tweede Azure AD-toepassing wordt gebruikt wanneer een gebruiker zich aanmeldt bij het AKS-cluster`kubectl`met de Kubernetes cli (). Deze client toepassing neemt de verificatie aanvraag van de gebruiker en verifieert hun referenties en machtigingen. Maak de Azure AD-App voor het client onderdeel met behulp van de opdracht [AZ AD App Create][az-ad-app-create] :
+De tweede Azure AD-toepassing wordt gebruikt wanneer een gebruiker zich aanmeldt bij het AKS-cluster met de Kubernetes CLI ( `kubectl` ). Deze client toepassing neemt de verificatie aanvraag van de gebruiker en verifieert hun referenties en machtigingen. Maak de Azure AD-App voor het client onderdeel met behulp van de opdracht [AZ AD App Create][az-ad-app-create] :
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \

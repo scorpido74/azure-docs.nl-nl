@@ -1,24 +1,14 @@
 ---
 title: Doorvoer eenheden automatisch opschalen-Azure Event Hubs | Microsoft Docs
 description: Schakel automatisch verg Roten in een naam ruimte in om doorvoer eenheden automatisch te schalen.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: afd28fa878651b08443f7863c16cd22c1bc96e3d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 382d407bde61a4ca24ab5833ea51d540c8904adc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297321"
+ms.locfileid: "85322542"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatisch schalen van Azure Event Hubs doorvoer eenheden
 Azure Event Hubs is een uiterst schaalbaar platform voor het streamen van gegevens. Als zodanig neemt Event Hubs gebruik vaak toe na het starten van de service. Voor dit gebruik moet u de vooraf vastgestelde [doorvoer eenheden](event-hubs-scalability.md#throughput-units) verg Roten om event hubs te schalen en grotere overdrachts snelheden af te handelen. De functie **automatisch verg Roten** van Event hubs wordt automatisch geschaald door het aantal doorvoer eenheden te verhogen om te voldoen aan de behoeften van het gebruik. Het verhogen van doorvoer eenheden voor komt het beperken van scenario's, waarbij:

@@ -7,12 +7,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 06/05/2020
 ms.author: enewman
-ms.openlocfilehash: f37ace3663b49da8a8e6b3b16047111988609d6b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cd27264e91220c7f68aaae35650234bd9c1e4cac
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898995"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322275"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Een Lab instellen om te beheren en te ontwikkelen met SQL Server
 
@@ -102,7 +102,7 @@ Visual Studio biedt ondersteuning voor verschillende werk belastingen, inclusief
 6. Klik op **volgende**wanneer **u klaar bent om te installeren**.
 7. Wacht totdat het installatie programma wordt uitgevoerd.  Klik op **Voltooien**.
 
-Nu u Azure Data Studio hebt geïnstalleerd, kunt u de verbinding met de Azure SQL Database instellen.
+Nu u Azure Data Studio hebt geïnstalleerd, kunt u de verbinding met Azure SQL Database instellen.
 
 1. Klik op de **welkomst** pagina voor Azure Data Studio op de koppeling **nieuwe verbinding** .
 2. Vul in het vak **verbindings gegevens** de benodigde gegevens in.

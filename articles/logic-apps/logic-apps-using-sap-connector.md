@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/29/2020
+ms.date: 06/23/2020
 tags: connectors
-ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220503"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323151"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
 
@@ -49,9 +49,12 @@ Als u dit artikel wilt volgen, hebt u de volgende items nodig:
 
 * Uw [SAP-toepassings server](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) of [SAP-berichten server](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* Bericht inhoud die u kunt verzenden naar uw SAP-server, zoals een voor beeld van een IDoc-bestand, moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u wilt gebruiken.
+* Bericht inhoud die u naar uw SAP-server verzendt, zoals een voor beeld van een IDoc-bestand, moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u wilt gebruiken.
 
 * Als u de trigger **Wanneer een bericht wordt ontvangen van SAP** wilt gebruiken, moet u deze installatie stappen ook uitvoeren:
+  
+  > [!NOTE]
+  > Deze trigger maakt gebruik van dezelfde URI-locatie voor het vernieuwen en afmelden van een webhook-abonnement. Voor de vernieuwings bewerking wordt de HTTP- `PATCH` methode gebruikt, terwijl de afmeldings bewerking de HTTP- `DELETE` methode gebruikt. Dit gedrag kan ertoe leiden dat een vernieuwings bewerking wordt weer gegeven als een afmeldings bewerking in de geschiedenis van uw trigger, maar de bewerking is nog steeds een verlenging omdat de trigger wordt gebruikt `PATCH` als de HTTP-methode, niet `DELETE` .
 
   * Stel de beveiligings machtigingen voor uw SAP-gateway in met deze instelling:
 
@@ -90,10 +93,10 @@ Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in ee
 
 1. [Down load en installeer de meest recente SAP-client bibliotheek](#sap-client-library-prerequisites) op uw lokale computer. U moet de volgende assembly bestanden hebben:
 
-   * libicudecnumber. dll
-   * rscp4n. dll
-   * sapnco. dll
-   * sapnco_utils. dll
+   * libicudecnumber.dll
+   * rscp4n.dll
+   * sapnco.dll
+   * sapnco_utils.dll
 
 1. Maak een zip-bestand dat deze assembly's bevat en upload dit pakket naar uw BLOB-container in Azure Storage.
 
@@ -360,9 +363,9 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
       Logic Apps stelt uw verbinding in en test deze om te controleren of de verbinding goed werkt.
 
-1. Geef de [vereiste para meters](#parameters) op op basis van de configuratie van uw SAP-systeem.
+1. Geef de [vereiste para meters](#parameters) op op basis van de configuratie van uw SAP-systeem. 
 
-   U kunt desgewenst een of meer SAP-acties opgeven. Met deze lijst met acties worden de berichten opgegeven die de trigger van uw SAP-server ontvangt. Een lege lijst geeft aan dat de trigger alle berichten ontvangt. Als de lijst meer dan één bericht bevat, ontvangt de trigger alleen de berichten die in de lijst zijn opgegeven. Alle andere berichten die vanaf uw SAP-server worden verzonden, worden geweigerd.
+   U kunt [de berichten die u ontvangt van uw SAP-server filteren door een lijst met SAP-acties op te geven](#filter-with-sap-actions).
 
    U kunt een SAP-actie selecteren in de bestands kiezer:
 
@@ -395,6 +398,56 @@ De SAP-connector accepteert samen met eenvoudige teken reeks-en nummer invoer de
 * Para meters wijzigen, waardoor de tabel richtings parameters worden vervangen door nieuwere SAP-releases.
 * Hiërarchische tabel parameters
 
+<a name="filter-with-sap-actions"></a>
+
+#### <a name="filter-with-sap-actions"></a>Filteren met SAP-acties
+
+U kunt desgewenst de berichten die uw logische app ontvangt van uw SAP-server filteren door een lijst, of matrix, te leveren met een of meer SAP-acties. Deze matrix is standaard leeg, wat betekent dat uw logische app alle berichten van uw SAP-server ontvangt zonder te filteren. 
+
+Wanneer u het matrix filter instelt, ontvangt de trigger alleen berichten van de opgegeven SAP-actie typen en worden alle andere berichten van uw SAP-server geweigerd. Dit filter is echter niet van invloed op of het type van de ontvangen Payload zwak of sterk is.
+
+SAP-actie filters worden uitgevoerd op het niveau van de SAP-adapter voor uw on-premises gegevens gateway. Zie [test IDocs verzenden naar Logic apps vanuit SAP](#send-idocs-from-sap)voor meer informatie.
+
+Als u geen IDoc-pakketten van SAP kunt verzenden naar de trigger van de logische app, raadpleegt u het afkeurings bericht voor transactionele RFC (tRFC)-oproep in het dialoog venster SAP tRFC (T-code SM58). In de SAP-interface worden mogelijk de volgende fout berichten weer geven die zijn afgekapt als gevolg van de limieten voor de subtekenreeksen van het veld **status tekst** .
+
+* `The RequestContext on the IReplyChannel was closed without a reply being`: Onverwachte fouten treden op wanneer de catch-all-handler voor het kanaal het kanaal beëindigt vanwege een fout en het kanaal opnieuw opbouwt om andere berichten te verwerken.
+
+  * Als u wilt bevestigen dat uw logische app de IDoc heeft ontvangen, [voegt u een reactie actie toe](../connectors/connectors-native-reqres.md#add-a-response-action) die een `200 OK` status code retourneert. De IDoc wordt getransporteerd via tRFC, die geen respons lading toestaat.
+
+  * Als u in plaats daarvan het IDoc moet afwijzen, reageert u met een andere HTTP-status code dan `200 OK` zodat de SAP-adapter een uitzonde ring voor uw naam terugstuurt naar SAP. 
+
+* `The segment or group definition E2EDK36001 was not found in the IDoc meta`: Verwachte fouten worden veroorzaakt door andere fouten, zoals de fout bij het genereren van een IDoc XML-nettolading, omdat de bijbehorende segmenten niet worden vrijgegeven door SAP, waardoor de vereiste meta gegevens voor het segment type voor de conversie ontbreken. 
+
+  * Neem contact op met de ABAP-Engineer voor uw SAP-systeem om deze segmenten te kunnen vrijgeven door SAP.
+
+<a name="find-extended-error-logs"></a>
+
+#### <a name="find-extended-error-logs"></a>Uitgebreide fout logboeken zoeken
+
+Controleer de uitgebreide logboeken van de SAP-adapter voor volledige fout berichten. 
+
+Voor on-premises gegevens gateway releases van juni 2020 en hoger kunt u [Gateway logboeken inschakelen in de app-instellingen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+
+Voor on-premises gegevens gateway releases van 2020 april en eerder zijn Logboeken standaard uitgeschakeld. Als u uitgebreide logboeken wilt ophalen, voert u de volgende stappen uit:
+
+1. Open het bestand in de installatiemap van de on-premises gegevens gateway `Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` . 
+
+1. Wijzig voor de instelling **SapExtendedTracing** de waarde van **False** in **waar**.
+
+1. Indien gewenst moet u voor minder gebeurtenissen de waarde van **SapTracingLevel** wijzigen van **Informational** (standaard) in **fout** of **waarschuwing**. Of, voor meer gebeurtenissen, wijzigt u **informatie** in **uitgebreid**.
+
+1. Sla het configuratiebestand op.
+
+1. Start uw gegevens Gateway opnieuw op. Open de installatie-app van uw on-premises gegevens gateway en ga naar het menu **Service-instellingen** . Selecteer onder **de gateway opnieuw opstarten** **nu opnieuw opstarten**.
+
+1. Reproduceer het probleem.
+
+1. Uw gateway logboeken exporteren. Ga in de data Gateway-installatie-app naar het menu **Diagnostische** gegevens. Onder **Gateway logboeken**selecteert u **Logboeken exporteren**. Deze bestanden bevatten SAP-logboeken die op datum zijn ingedeeld. Afhankelijk van de grootte van het logboek, kunnen er meerdere logboek bestanden voor één datum bestaan.
+
+1. In het configuratie bestand herstelt u de instelling **SapExtendedTracing** in **Onwaar**.
+
+1. Start de gateway opnieuw.
+
 ### <a name="test-your-logic-app"></a>Uw logische app testen
 
 1. Als u uw logische app wilt activeren, verzendt u een bericht van uw SAP-systeem.
@@ -403,9 +456,148 @@ De SAP-connector accepteert samen met eenvoudige teken reeks-en nummer invoer de
 
 1. Open de meest recente uitvoering, waarin het bericht wordt weer gegeven dat vanuit uw SAP-systeem is verzonden in de sectie trigger uitvoer.
 
+<a name="send-idocs-from-sap"></a>
+
+### <a name="test-sending-idocs-from-sap"></a>Verzenden van IDocs vanuit SAP testen
+
+Als u IDocs van SAP naar uw logische app wilt verzenden, moet u de volgende minimale configuratie configureren:
+
+> [!IMPORTANT]
+> Gebruik deze stappen alleen wanneer u uw SAP-configuratie test met uw logische app. Productie omgevingen vereisen aanvullende configuratie.
+
+1. [Een RFC-doel configureren in SAP](#create-rfc-destination)
+
+1. [Een ABAP-verbinding maken met uw RFC-doel](#create-abap-connection)
+
+1. [Een ontvanger poort maken](#create-receiver-port)
+
+1. [Een zender poort maken](#create-sender-port)
+
+1. [Een logische systeem partner maken](#create-logical-system-partner)
+
+1. [Een partner profiel maken](#create-partner-profiles)
+
+1. [Testen van berichten verzenden](#test-sending-messages)
+
+#### <a name="create-rfc-destination"></a>RFC-doel maken
+
+1. Als u de **configuratie van instellingen voor een RFC-verbinding** wilt openen, gebruikt u in uw SAP-interface de **sm59** -transactie code (T code) met het voor voegsel **/n** .
+
+1. Selecteer **TCP/IP-verbindingen**  >  **maken**.
+
+1. Maak een nieuwe RFC-doel met de volgende instellingen:
+    
+    * Voer een naam in voor uw **RFC-doel**.
+    
+    * Selecteer op het tabblad **technische instellingen** bij **activerings type**de optie **geregistreerd server programma**. Voer een waarde in voor de **programma-id**. In SAP wordt de trigger van uw logische app geregistreerd met behulp van deze id.
+    
+    * Op het tabblad **Unicode** , voor **communicatie type met doel systeem**, selecteert u **Unicode**.
+
+1. Sla uw wijzigingen op.
+
+1. Registreer uw nieuwe **programma-id** bij Azure Logic apps.
+
+1. Als u de verbinding wilt testen, selecteert u in de SAP-interface, onder uw nieuwe **RFC-doel**, de optie **verbinding testen**.
+
+#### <a name="create-abap-connection"></a>ABAP-verbinding maken
+
+1. Als u de **configuratie van instellingen voor een RFC-verbinding** wilt openen, gebruikt u in uw SAP-interface de **sm59***-transactie code (T code) met het voor voegsel **/n** .
+
+1. Selecteer **ABAP-verbindingen**  >  **maken**.
+
+1. Voor **RFC-doel**voert u de id in voor [het test-SAP-systeem](#create-rfc-destination).
+
+1. Sla uw wijzigingen op.
+
+1. Als u de verbinding wilt testen, selecteert u **verbindings test** .
+
+#### <a name="create-receiver-port"></a>Ontvanger poort maken
+
+1. Als u de **poorten in de IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we21** -transactie code (T code) met het voor voegsel **/n** .
+
+1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
+
+1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer een **naam**in voor de test poort. Sla uw wijzigingen op.
+
+1. In de instellingen voor uw nieuwe ontvanger poort, voor **RFC-doel**, voert u de id in voor [de test-RFC-bestemming](#create-rfc-destination).
+
+1. Sla uw wijzigingen op.
+
+#### <a name="create-sender-port"></a>Poort van afzender maken
+
+1.  Als u de **poorten in de IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we21** -transactie code (T code) met het voor voegsel **/n** .
+
+1. Selecteer **poorten**  >  **transactionele RFC**  >  **Create**.
+
+1. In het dialoog venster instellingen dat wordt geopend, selecteert u **eigen poort naam**. Voer voor uw test poort een **naam** in die begint met **SAP**. Alle poort namen van de afzender moeten beginnen met de letters **SAP**, bijvoorbeeld **SAPTEST**. Sla uw wijzigingen op.
+
+1. Voer in de instellingen voor de nieuwe zender poort voor **RFC-doel**de id in voor [uw ABAP-verbinding](#create-abap-connection).
+
+1. Sla uw wijzigingen op.
+
+#### <a name="create-logical-system-partner"></a>Een logische systeem partner maken
+
+1. Als u de **wijzigings weergave logische systemen wilt openen: overzichts** instellingen in uw SAP-interface, gebruikt u de **bd54** -transactie code (T-code).
+
+1. Accepteer het waarschuwings bericht dat wordt weer gegeven: **Waarschuwing: de tabel is kruislings-client**
+
+1. Selecteer in de lijst met de bestaande logische systemen **nieuwe vermeldingen**.
+
+1. Voer voor het nieuwe logische systeem een **Log.System** -id en een korte **naam** beschrijving in. Sla uw wijzigingen op.
+
+1. Wanneer de **prompt voor Workbench** wordt weer gegeven, maakt u een nieuwe aanvraag door een beschrijving op te geven, of als u al een aanvraag hebt gemaakt, slaat u deze stap over.
+
+1. Nadat u de workbench-aanvraag hebt gemaakt, koppelt u die aanvraag aan de tabel update-aanvraag. Sla de wijzigingen op om te bevestigen dat de tabel is bijgewerkt.
+
+#### <a name="create-partner-profiles"></a>Partner profielen maken
+
+Voor productie omgevingen moet u twee partner profielen maken. Het eerste profiel is voor de afzender, dat wil zeggen uw organisatie en het SAP-systeem. Het tweede profiel is voor de ontvanger, de logische app.
+
+1. Als u de instellingen van de **partner profielen** wilt openen, gebruikt u in uw SAP-interface de **we20** -transactie code (T code) met het voor voegsel **/n** .
+
+1. Onder **partner profielen**selecteert u **partner type LS**  >  **Create**.
+
+1. Maak een nieuw Partner profiel met de volgende instellingen:
+
+    * Voer [de id van uw logische systeem partner](#create-logical-system-partner)in als **partner nummer**.
+
+    * Voor **Parts. Typ** **ls**.
+
+    * Voer voor **agent**de id in voor het SAP-gebruikers account dat moet worden gebruikt wanneer u programma-id's registreert voor Azure Logic apps of andere niet-SAP-systemen.
+
+1. Sla uw wijzigingen op. Als u [de logische systeem partner](#create-logical-system-partner)nog niet hebt gemaakt, krijgt u de fout melding **een geldig partner nummer**.
+
+1. Selecteer in de instellingen van uw partner profiel onder **uitgaande parmtrs.** de optie **uitgaande para meter maken**.
+
+1. Maak een nieuwe uitgaande para meter met de volgende instellingen:
+
+    * Voer uw **bericht type**in, bijvoorbeeld **CREMAS**.
+
+    * Voer de [id van de poort van de ontvanger](#create-receiver-port)in.
+
+    * Voer een IDoc-grootte in voor het **pakket. Grootte**. Als u [IDocs een voor een wilt verzenden vanuit SAP](#receive-idoc-packets-from-sap), selecteert u **onmiddellijk door geven IDOC**.
+
+1. Sla uw wijzigingen op.
+
+#### <a name="test-sending-messages"></a>Testen van berichten verzenden
+
+1. Als u het **test programma voor IDOC-verwerkings** instellingen wilt openen, gebruikt u in uw SAP-interface de **we19** -transactie code (T code) met het voor voegsel **/n** .
+
+1. Selecteer onder **sjabloon voor testen**de optie **via bericht type**en voer uw bericht type in, bijvoorbeeld **CREMAS**. Selecteer **Maken**.
+
+1. Bevestig het **IDOC-type?** bericht door **door gaan**te selecteren.
+
+1. Selecteer het knoop punt **EDIDC** . Voer de juiste waarden in voor uw ontvanger en de poorten van de afzender. Selecteer **Doorgaan**.
+
+1. Selecteer **standaard uitgaande verwerking**.
+
+1. Selecteer **door gaan**als u de verwerking van uitgaande IDOC wilt starten. Wanneer de verwerking is voltooid, wordt de **IDOC verzonden naar het SAP-systeem of het externe programma** bericht weer gegeven.
+
+1.  Als u de verwerkings fouten wilt controleren, gebruikt u de **SM58** -transactie code (T code) met het voor voegsel **/n** .
+
 ## <a name="receive-idoc-packets-from-sap"></a>IDoc pakketten ontvangen van SAP
 
-U kunt SAP instellen voor het [verzenden van IDocs in pakketten](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), die batches of groepen van IDocs zijn. Voor het ontvangen van IDoc-pakketten, de SAP-connector en de specifiek de trigger, hebt u geen extra configuratie nodig. Als u elk item in een IDoc-pakket echter wilt verwerken nadat de trigger het pakket heeft ontvangen, zijn er aanvullende stappen vereist om het pakket te splitsen in afzonderlijke IDocs.
+U kunt SAP instellen voor het [verzenden van IDocs in pakketten](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/4ab38886549a6d8ce10000000a42189c.html), die batches of groepen van IDocs zijn. Voor het ontvangen van IDoc-pakketten, de SAP-connector en de specifiek de trigger, hebt u geen extra configuratie nodig. Als u elk item in een IDoc-pakket echter wilt verwerken nadat de trigger het pakket heeft ontvangen, zijn er aanvullende stappen vereist om het pakket te splitsen in afzonderlijke IDocs.
 
 Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDocs uit een pakket kunt ophalen met behulp van de [ `xpath()` functie](./workflow-definition-language-functions-reference.md#xpath):
 
@@ -439,7 +631,14 @@ U kunt de Quick Start-sjabloon voor dit patroon gebruiken door deze sjabloon te 
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Schema's genereren voor artefacten in SAP
 
-In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een HTTP-aanvraag. De SAP-actie verzendt een aanvraag naar een SAP-systeem om de schema's voor opgegeven IDoc en BAPI te genereren. Schema's die in het antwoord retour neren, worden geüpload naar een integratie account met behulp van de Azure Resource Manager-connector.
+In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een HTTP-aanvraag. Voor het genereren van de schema's voor de opgegeven IDoc en BAPI, verzendt het SAP-actie **schema** een aanvraag naar een SAP-systeem.
+
+Deze SAP-actie retourneert een XML-schema, niet de inhoud of gegevens van het XML-document zelf. Schema's die in het antwoord worden geretourneerd, worden geüpload naar een integratie account met behulp van de Azure Resource Manager-connector. Schema's bevatten de volgende onderdelen:
+
+* De structuur van het aanvraag bericht. Gebruik deze informatie om uw BAPI- `get` lijst te maken.
+* De structuur van het antwoord bericht. Gebruik deze informatie voor het parseren van het antwoord. 
+
+Als u het aanvraag bericht wilt verzenden, gebruikt u de algemene SAP-actie **bericht verzenden naar SAP**of de BAPI-acties van de doel **oproep** .
 
 ### <a name="add-an-http-request-trigger"></a>Een HTTP-aanvraag trigger toevoegen
 
@@ -639,9 +838,23 @@ Wanneer berichten worden verzonden met een **veilig type** ingeschakeld, ziet he
 
 ## <a name="advanced-scenarios"></a>Geavanceerde scenario's
 
+### <a name="change-language-headers"></a>Taal headers wijzigen
+
+Wanneer u verbinding maakt met SAP vanuit Logic Apps, is de standaard taal voor de verbinding Engels. U kunt de taal voor uw verbinding instellen met behulp van [de standaard `Accept-Language` -http-header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4) met uw inkomende aanvragen.
+
+> [!TIP]
+> De meeste webbrowsers voegen een `Accept-Language` koptekst toe op basis van de instellingen van de gebruiker. De webbrowser past deze header toe wanneer u een nieuwe SAP-verbinding maakt in de Logic Apps Designer. Als u geen SAP-verbindingen in de voorkeurs taal van uw webbrowser wilt maken, moet u de instellingen van uw webbrowser bijwerken om uw voorkeurs taal te gebruiken of uw SAP-verbinding maken met behulp van Azure Resource Manager in plaats van de Logic Apps Designer. 
+
+U kunt bijvoorbeeld een aanvraag met de `Accept-Language` koptekst naar uw logische app verzenden met behulp van de **HTTP-aanvraag** trigger. Alle acties in uw logische app ontvangen de header. SAP gebruikt vervolgens de opgegeven talen in de bijbehorende systeem berichten, zoals BAPI-fout berichten.
+
+De SAP-verbindings parameters voor een logische app hebben geen taal eigenschap. Als u de `Accept-Language` header gebruikt, wordt mogelijk de volgende fout weer geven: **Controleer de account gegevens en/of de machtigingen en probeer het opnieuw.** In dit geval controleert u in plaats daarvan de fout logboeken van het SAP-onderdeel. De fout treedt eigenlijk op in het SAP-onderdeel dat gebruikmaakt van de-header, waardoor u mogelijk een van deze fout berichten krijgt:
+
+* `"SAP.Middleware.Connector.RfcLogonException: Select one of the installed languages"`
+* `"SAP.Middleware.Connector.RfcAbapMessageException: Select one of the installed languages"`
+
 ### <a name="confirm-transaction-explicitly"></a>Trans actie expliciet bevestigen
 
-Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, [transactionele RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDoc verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
+Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, [transactionele RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDoc verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
 
 Deze mogelijkheid om de trans actie-ID-bevestiging te ontkoppelen is handig wanneer u trans acties niet wilt dupliceren in SAP, bijvoorbeeld in scenario's waarin storingen optreden vanwege oorzaken van problemen met het netwerk. Door de trans actie-ID afzonderlijk te bevestigen, wordt de trans actie slechts één keer in uw SAP-systeem uitgevoerd.
 

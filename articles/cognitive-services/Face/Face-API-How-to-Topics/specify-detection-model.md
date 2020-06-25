@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a90b37b197e25a8db79a87761d94dfded53acf50
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76934577"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323216"
 ---
 # <a name="specify-a-face-detection-model"></a>Een model voor gezichtsdetectie opgeven
 
@@ -38,7 +38,7 @@ U moet bekend zijn met het concept van AI-gezichts detectie. Als dat niet het ge
 
 Met gezichts herkenning vindt u de locatie van het begrenzingsvak van menselijke gezichten en identificeert u hun visuele bezienswaardigheden. De functies van het gezicht worden geëxtraheerd en opgeslagen voor toekomstig gebruik in [herkennings](../concepts/face-recognition.md) bewerkingen.
 
-Wanneer u de [Face-detect-] API gebruikt, kunt u de model versie toewijzen met `detectionModel` de para meter. De beschik bare waarden zijn:
+Wanneer u de [Face-detect-] API gebruikt, kunt u de model versie toewijzen met de `detectionModel` para meter. De beschikbare waarden zijn:
 
 * `detection_01`
 * `detection_02`
@@ -47,11 +47,11 @@ Een aanvraag-URL voor het [gezichts detectie] rest API ziet er als volgt uit:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-Als u de-client bibliotheek gebruikt, kunt u de waarde voor `detectionModel` toewijzen door door te geven in een geschikte teken reeks. Als u deze niet toegewezen geeft, gebruikt de API de standaard model versie (`detection_01`). Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
+Als u de-client bibliotheek gebruikt, kunt u de waarde voor toewijzen `detectionModel` door door te geven in een geschikte teken reeks. Als u deze niet toegewezen geeft, gebruikt de API de standaard model versie ( `detection_01` ). Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_03", detectionModel: "detection_02");
 ```
 
 ## <a name="add-face-to-person-with-specified-model"></a>Een gezicht toevoegen aan een persoon met een opgegeven model
@@ -63,7 +63,7 @@ Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
 string personGroupId = "mypersongroupid";
-await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_03");
 
 string personId = (await faceClient.PersonGroupPerson.CreateAsync(personGroupId, "My Person Name")).PersonId;
 
@@ -71,7 +71,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Met deze code wordt een **PersonGroup** met `mypersongroupid` id gemaakt en wordt hieraan een **persoon** toegevoegd. Vervolgens wordt er een gezicht aan deze **persoon** toegevoegd met `detection_02` behulp van het model. Als u de para meter *detectionModel* niet opgeeft, wordt het standaard model gebruikt door `detection_01`de API.
+Met deze code wordt een **PersonGroup** met id gemaakt `mypersongroupid` en wordt hieraan een **persoon** toegevoegd. Vervolgens wordt er een gezicht aan deze **persoon** toegevoegd met behulp van het `detection_02` model. Als u de para meter *detectionModel* niet opgeeft, wordt het standaard model gebruikt door de API `detection_01` .
 
 > [!NOTE]
 > U hoeft niet hetzelfde detectie model te gebruiken voor alle gezichten in een **persoons** object en u hoeft niet hetzelfde detectie model te gebruiken bij het detecteren van nieuwe gezichten om te vergelijken met een **persoons** object (bijvoorbeeld in de API voor het identificeren van het [gezichts] punt).
@@ -81,13 +81,13 @@ Met deze code wordt een **PersonGroup** met `mypersongroupid` id gemaakt en word
 U kunt ook een detectie model opgeven wanneer u een gezicht toevoegt aan een bestaand **FaceList** -object. Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 
 ```csharp
-await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_03");
 
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Deze code maakt een **FaceList** met `My face collection` de naam en voegt een gezicht toe aan `detection_02` het model. Als u de para meter *detectionModel* niet opgeeft, wordt het standaard model gebruikt door `detection_01`de API.
+Deze code maakt een **FaceList** `My face collection` met de naam en voegt een gezicht toe aan het `detection_02` model. Als u de para meter *detectionModel* niet opgeeft, wordt het standaard model gebruikt door de API `detection_01` .
 
 > [!NOTE]
 > U hoeft niet hetzelfde detectie model te gebruiken voor alle gezichten in een **FaceList** -object en u hoeft niet hetzelfde detectie model te gebruiken bij het detecteren van nieuwe gezichten om te vergelijken met een **FaceList** -object.
@@ -103,7 +103,7 @@ De verschillende gezichts detectie modellen zijn geoptimaliseerd voor verschille
 |Retourneert face-kenmerken (Head pose, Age, Emotion, enzovoort) als deze zijn opgegeven in de aanroep detectie. |  Retourneert geen face-kenmerken.     |
 |Retourneert gezichts bezienswaardigheden als deze zijn opgegeven in de detectie aanroep.   | Retourneert geen gezichts bezienswaardigheden.  |
 
-De beste manier om de prestaties van de `detection_01` -en `detection_02` -modellen te vergelijken, is door deze te gebruiken in een voorbeeld gegevensset. We raden u aan de API voor het detectie van het [gezichts] aanbod op diverse installatie kopieën aan te roepen, met name afbeeldingen van veel gezichten of gezichten die moeilijk te zien zijn, met behulp van elk detectie model. Let op het aantal gezichten dat elke model retourneert.
+De beste manier om de prestaties van de- `detection_01` en-modellen te vergelijken `detection_02` , is door deze te gebruiken in een voorbeeld gegevensset. We raden u aan de API voor het detectie van het [gezichts] aanbod op diverse installatie kopieën aan te roepen, met name afbeeldingen van veel gezichten of gezichten die moeilijk te zien zijn, met behulp van elk detectie model. Let op het aantal gezichten dat elke model retourneert.
 
 ## <a name="next-steps"></a>Volgende stappen
 

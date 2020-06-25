@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 15a18693b3d1623f5f549742ff95ac4194952eb8
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 04442d7c82b463c0cfa5813bd4b20554b57ec950
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717846"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323238"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -172,7 +172,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 In sommige gevallen past de servicelaag van Bedrijfskritiek niet op de juiste manier het [maximale geheugen limieten voor objecten geoptimaliseerd](../managed-instance/resource-limits.md#in-memory-oltp-available-space) toe. Met SQL Managed instance kan workload mogelijk meer geheugen gebruiken voor in-memory OLTP bewerkingen, wat van invloed kan zijn op de beschik baarheid en stabiliteit van het exemplaar. In-Memory OLTP-query's die de limieten bereiken, mislukken mogelijk niet onmiddellijk. Dit probleem wordt binnenkort opgelost. De query's die meer in-memory OLTP geheugen gebruiken, zullen eerder mislukken als ze de [limieten](../managed-instance/resource-limits.md#in-memory-oltp-available-space)bereiken.
 
-**Tijdelijke oplossing**: [Bewaak in-Memory OLTP opslag gebruik](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitor-space) met [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) om ervoor te zorgen dat de werk belasting niet meer dan het beschik bare geheugen gebruikt. Verhoog de geheugen limieten die afhankelijk zijn van het aantal vCores of Optimaliseer uw werk belasting zodat er minder geheugen wordt gebruikt.
+**Tijdelijke oplossing**: [Bewaak in-Memory OLTP opslag gebruik](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-monitor-space) met [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) om ervoor te zorgen dat de werk belasting niet meer dan het beschik bare geheugen gebruikt. Verhoog de geheugen limieten die afhankelijk zijn van het aantal vCores of Optimaliseer uw werk belasting zodat er minder geheugen wordt gebruikt.
  
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Verkeerde fout geretourneerd tijdens het verwijderen van een bestand dat niet leeg is
 

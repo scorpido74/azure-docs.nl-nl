@@ -1,25 +1,18 @@
 ---
 title: Azure Service Bus-resources maken met behulp van sjablonen
 description: Azure Resource Manager sjablonen gebruiken voor het automatiseren van het maken van Service Bus resources
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 09/11/2018
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fd6a42d9624d7a95e66b88e004e1f5203a738a1
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264455"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336618"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -52,7 +45,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 4. Maak een nieuwe resource groep als deze niet bestaat.
 5. De implementatie testen.
 6. Stel, indien gewenst, de implementatie modus in.
-7. Implementeer de sjabloon.
+7. De sjabloon implementeren.
 
 Zie [resources implementeren met Azure Resource Manager sjablonen][Deploy resources with Azure Resource Manager templates]voor volledige informatie over het implementeren van Azure Resource Manager sjablonen.
 
@@ -173,7 +166,7 @@ U wordt gevraagd om u aan te melden bij uw Azure-account. Nadat u zich hebt aang
 Get-AzSubscription
 ```
 
-Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang `<YourSubscriptionId>` door de GUID voor het Azure-abonnement dat u wilt gebruiken:
+Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang door `<YourSubscriptionId>` de GUID voor het Azure-abonnement dat u wilt gebruiken:
 
 ```powershell
 Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -199,7 +192,7 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>De implementatie testen
 
-Valideer uw implementatie door de `Test-AzResourceGroupDeployment` cmdlet uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
+Valideer uw implementatie door de cmdlet uit te voeren `Test-AzResourceGroupDeployment` . Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -207,7 +200,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>De implementatie maken
 
-Als u de nieuwe implementatie wilt maken, `New-AzResourceGroupDeployment` voert u de cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
+Als u de nieuwe implementatie wilt maken, voert u de `New-AzResourceGroupDeployment` cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Zie [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
 
 Met de volgende opdracht wordt u gevraagd om de drie para meters in het Power shell-venster:
 

@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a66d2f49c2f5646faadd13662c1e798401a71c73
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176393"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85338365"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing kiezen voor gegevens overdracht
 
@@ -35,7 +35,7 @@ De gegevens verplaatsing kan van de volgende typen zijn:
 
     - **Grafische interface** : als u af en toe slechts enkele bestanden overbrengt en de gegevens overdracht niet hoeft te automatiseren, kunt u kiezen voor een grafisch interface programma zoals Azure Storage Explorer of een hulp programma voor het verkennen van het web in azure Portal.
     - **Scripted of programmatische overdracht** : u kunt geoptimaliseerde software hulpprogramma's gebruiken die u rechtstreeks aanbiedt of aanroept. De beschik bare hulpprogram ma's die scriptbaar zijn, zijn AzCopy, Azure PowerShell en Azure CLI. Voor een programmatische interface gebruikt u een van de Sdk's voor .NET, Java, Python, node/JS, C++, go, PHP of Ruby.
-    - **On-premises apparaten** : we bieden u een fysiek of virtueel apparaat dat zich in uw Data Center bevindt en optimaliseert de gegevens overdracht via het netwerk. Deze apparaten bieden ook een lokale cache met veelgebruikte bestanden. Het fysieke apparaat is de Data Box Edge en het virtuele apparaat is de Data Box Gateway. Zowel in uw lokale als permanent worden uitgevoerd en via het netwerk verbinding maken met Azure.
+    - **On-premises apparaten** : we bieden u een fysiek of virtueel apparaat dat zich in uw Data Center bevindt en optimaliseert de gegevens overdracht via het netwerk. Deze apparaten bieden ook een lokale cache met veelgebruikte bestanden. Het fysieke apparaat is de Azure Stack rand en het virtuele apparaat is de Data Box Gateway. Zowel in uw lokale als permanent worden uitgevoerd en via het netwerk verbinding maken met Azure.
     - **Pijp lijn voor beheerde gegevens** : u kunt een Cloud pijplijn instellen om regel matig bestanden over te dragen tussen verschillende Azure-Services, on-premises of een combi natie van twee. Gebruik Azure Data Factory voor het instellen en beheren van gegevens pijplijnen en het verplaatsen en transformeren van gegevens voor analyse.
 
 De volgende Visual illustreert de richt lijnen voor het kiezen van de verschillende hulpprogram ma's voor gegevens overdracht van Azure, afhankelijk van de beschik bare netwerk bandbreedte voor overdracht, gegevens grootte die is bedoeld voor overdracht en de frequentie van de overdracht.
@@ -73,11 +73,11 @@ U kunt ook naar uw Azure Storage-account gaan in Azure Portal en de functie voor
 - [Krijg een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Lees een overzicht van AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Quick Start: blobs uploaden, downloaden en vermelden met Power shell](../blobs/storage-quickstart-blobs-powershell.md)
-- [Quick Start: blobs maken, downloaden en vermelden met Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
+- [Quickstart: Blobs maken, downloaden, uploaden en weergeven met Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Meer informatie over:
 
     - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](https://docs.microsoft.com/azure/databox/).
-    - [Azure data Box gateway en Azure data Box Edge voor online overdrachten](https://docs.microsoft.com/azure/databox-online/).
+    - [Azure data Box gateway en Azure stack Edge voor online overdrachten](https://docs.microsoft.com/azure/databox-online/).
 - [Meer informatie over Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
 - De REST-Api's gebruiken om gegevens over te dragen
 

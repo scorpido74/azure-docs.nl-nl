@@ -6,17 +6,17 @@ documentationcenter: ''
 author: sharad4u
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: how-to
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 7939daf97309d5026fd24732cd922e47c2b16812
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743623"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322313"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrische gegevens en logboeken bewaken in azure front deur
 
@@ -73,7 +73,7 @@ Diagnostische logboeken voor uw front-deur configureren:
 
 De voor deur bevat momenteel Diagnostische logboeken (batched per uur). Diagnostische logboeken bieden afzonderlijke API-aanvragen voor elke vermelding met het volgende schema:
 
-| Eigenschap  | Beschrijving |
+| Eigenschap  | Description |
 | ------------- | ------------- |
 | BackendHostname | Als de aanvraag wordt doorgestuurd naar een back-end, vertegenwoordigt dit veld de hostnaam van de back-end. Dit veld is leeg als de aanvraag is omgeleid of doorgestuurd naar een regionale cache (wanneer caching is ingeschakeld voor de routerings regel). |
 | CacheStatus | In het geval van cache scenario's definieert dit veld de cache treffer/Missing in de POP |
@@ -88,6 +88,7 @@ De voor deur bevat momenteel Diagnostische logboeken (batched per uur). Diagnost
 | RequestUri | De URI van de ontvangen aanvraag. |
 | ResponseBytes | Bytes dat als reactie door de back-endserver wordt verzonden.  |
 | RoutingRuleName | De naam van de routerings regel die de aanvraag heeft gevonden. |
+| RulesEngineMatchNames | De namen van de regels die de aanvraag heeft gevonden. |
 | Exemplaar | De TLS/SSL-protocol versie die wordt gebruikt door de aanvraag of null als er geen versleuteling is. |
 | SentToOriginShield | Boolean-veld dat aangeeft of er een cache-Missing is in de eerste omgeving en dat de aanvraag is verzonden naar de regionale cache. Dit veld negeren als de routerings regel een omleiding is of wanneer caching niet is ingeschakeld. |
 | TimeTaken | De duur van de actie in milliseconden. |

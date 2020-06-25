@@ -11,18 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 3cc47eb3fb097b7ed88cf931ef423aa34c0d071c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 634c8b118a9d1f041e536f17cc9588f3a85fa4d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84705726"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321815"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Azure Machine Learning Studio (klassieke) webservices implementeren die gebruikmaken van modules voor het importeren en exporteren van gegevens
 
 Wanneer u een voorspellend experiment maakt, voegt u doorgaans een invoer en uitvoer van een webservice toe. Wanneer u het experiment implementeert, kunnen gebruikers gegevens van de webservice verzenden en ontvangen via de invoer en uitvoer. Voor sommige toepassingen is het mogelijk dat de gegevens van een consument beschikbaar zijn via een gegevensfeed of al aanwezig zijn in een externe gegevens bron, zoals Azure Blob Storage. In deze gevallen hebben ze geen lees-en schrijf gegevens met behulp van de invoer en uitvoer van webservices. Ze kunnen in plaats daarvan de batch Execution Service (BES) gebruiken voor het lezen van gegevens uit de gegevens bron met behulp van een import data-module en de Score resultaten naar een andere gegevens locatie schrijven met behulp van een module export data.
 
-De modules gegevens importeren en gegevens exporteren kunnen lezen uit en schrijven naar verschillende gegevens locaties, zoals een web-URL via HTTP, een Hive-query, een Azure-SQL database, Azure-tabel opslag, Azure Blob Storage, een gegevensfeed of een SQL Server-Data Base.
+De modules gegevens importeren en gegevens exporteren kunnen lezen uit en schrijven naar verschillende gegevens locaties, zoals een web-URL via HTTP, een Hive-query, een data base in Azure SQL Database, Azure Table Storage, Azure Blob Storage, een gegevensfeed of een SQL Server-Data Base.
 
 In dit onderwerp wordt het voor beeld 5: trainen, testen, evalueren voor binaire classificatie: volwassene gegevensset gebruikt en wordt ervan uitgegaan dat de gegevensset al is geladen in een Azure SQL-tabel met de naam censusdata.
 

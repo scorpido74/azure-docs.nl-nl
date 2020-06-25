@@ -3,19 +3,19 @@ title: Taken plannen om aaneengesloten gegevens af te handelen
 description: Terugkerende taken maken en uitvoeren die aaneengesloten gegevens verwerken met behulp van Schuif vensters in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004632"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322108"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Taken plannen en uitvoeren voor aaneengesloten gegevens met behulp van de taak verschuiving van het venster in Azure Logic Apps
 
-Als u taken, processen of taken die gegevens in aaneengesloten segmenten moeten verwerken regel matig wilt uitvoeren, kunt u de werk stroom van de logische app starten met de trigger voor het **schuivende venster** . U kunt een datum en tijd instellen, evenals een tijd zone voor het starten van de werk stroom en een terugkeer patroon voor het herhalen van die werk stroom. Als terugkeer patronen om welke reden dan ook worden gemist, worden deze gemiste terugkeer patronen door deze trigger verwerkt. Als u bijvoorbeeld gegevens synchroniseert tussen uw data base en back-upopslag, gebruikt u de trigger voor het schuif venster, zodat de gegevens worden gesynchroniseerd zonder dat er hiaten ontstaan. Zie voor meer informatie over de ingebouwde plannings triggers en-acties [planning en uitvoeren van terugkerende automatische, taken en werk stromen met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Als u taken, processen of taken die gegevens in aaneengesloten segmenten moeten verwerken regel matig wilt uitvoeren, kunt u de werk stroom van de logische app starten met de trigger voor het **schuivende venster** . U kunt een datum en tijd instellen, evenals een tijd zone voor het starten van de werk stroom en een terugkeer patroon voor het herhalen van die werk stroom. Als er om een of andere reden geen herhalingen worden gemist, bijvoorbeeld als gevolg van onderbrekingen of uitgeschakelde werk stromen, worden deze geactiveerd door deze trigger. Als u bijvoorbeeld gegevens synchroniseert tussen uw data base en back-upopslag, gebruikt u de trigger voor het schuif venster, zodat de gegevens worden gesynchroniseerd zonder dat er hiaten ontstaan. Zie voor meer informatie over de ingebouwde plannings triggers en-acties [planning en uitvoeren van terugkerende automatische, taken en werk stromen met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Hier volgen enkele patronen die deze trigger ondersteunt:
 
@@ -40,7 +40,7 @@ Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en u
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
 
-1. Wanneer de ontwerp functie voor logische apps wordt weer gegeven, voert `sliding window` u in het zoekvak in als uw filter. Selecteer in de lijst triggers het **Schuif venster** om de eerste stap in de werk stroom van de logische app te activeren.
+1. Wanneer de ontwerp functie voor logische apps wordt weer gegeven, voert u in het zoekvak in `sliding window` als uw filter. Selecteer in de lijst triggers het **Schuif venster** om de eerste stap in de werk stroom van de logische app te activeren.
 
    ![Selecteer de trigger voor het schuivende venster](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -48,9 +48,9 @@ Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en u
 
    ![Interval en frequentie instellen](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Eigenschap | JSON-naam | Vereist | Type | Beschrijving |
+   | Eigenschap | JSON-naam | Vereist | Type | Description |
    |----------|----------|-----------|------|-------------|
-   | **Bereik** | `interval` | Ja | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden <br>-Week: 1-71 weken <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
+   | **Interval** | `interval` | Yes | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden <br>-Week: 1-71 weken <br>-Dag: 1-500 dagen <br>-Uur: 1-12000 uur <br>-Minuut: 1-72000 minuten <br>-Seconde: 1-9999999 seconden <p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
    | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede**, **minuut**, **uur**, **dag**, **week**of **maand** |
    ||||||
 
@@ -58,11 +58,11 @@ Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en u
 
    Open de lijst **nieuwe para meter toevoegen** voor meer terugkeer opties. De opties die u selecteert, worden weer gegeven op de trigger na selectie.
 
-   | Eigenschap | Vereist | JSON-naam | Type | Beschrijving |
+   | Eigenschap | Vereist | JSON-naam | Type | Description |
    |----------|----------|-----------|------|-------------|
-   | **Vertraging** | Nee | spoedig | Tekenreeks | De duur voor het uitstellen van elk terugkeer patroon met de [datum tijd specificatie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
-   | **Tijdzone** | Nee | timeZone | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
-   | **Begintijd** | Nee | startTime | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd moet voldoen aan de [ISO 8601-datum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) en-tijd [notatie in UTC-datum/tijd-indeling](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een UTC- [afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor geavanceerde terugkeer patronen de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Vertraging** | No | spoedig | Tekenreeks | De duur voor het uitstellen van elk terugkeer patroon met de [datum tijd specificatie ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
+   | **Tijdzone** | No | timeZone | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
+   | **Begin tijd** | No | startTime | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd moet voldoen aan de [ISO 8601-datum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) en-tijd [notatie in UTC-datum/tijd-indeling](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een UTC- [afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor geavanceerde terugkeer patronen de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    |||||
 
 1. Bouw nu uw resterende werk stroom met andere acties. Zie [Connect oren voor Azure Logic apps](../connectors/apis-list.md)voor meer acties die u kunt toevoegen.
