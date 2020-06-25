@@ -1,25 +1,14 @@
 ---
 title: Power shell gebruiken voor het beheren van Azure Service Bus resources | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u met behulp van Azure PowerShell-module Service Bus entiteiten kunt maken en beheren (naam ruimten, wacht rijen, onderwerpen, abonnementen).
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 8605e269f09e4fedf7a61817a3634e75081593ca
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/23/2020
+ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890237"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341747"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Power shell gebruiken voor het beheren van Service Bus resources
 
@@ -45,7 +34,7 @@ De eerste stap is het gebruik van Power shell om u aan te melden bij uw Azure-ac
 
 Bij het werken met Service Bus naam ruimten kunt u de cmdlets [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)en [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) gebruiken.
 
-In dit voor beeld worden een aantal lokale variabelen in het script gemaakt. `$Namespace` en `$Location`.
+In dit voor beeld worden een aantal lokale variabelen in het script gemaakt. `$Namespace`en `$Location` .
 
 * `$Namespace`is de naam van de naam ruimte van Service Bus waarmee we willen werken.
 * `$Location`Hiermee wordt het Data Center geïdentificeerd waarin de naam ruimte wordt ingericht.

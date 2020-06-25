@@ -1,20 +1,14 @@
 ---
 title: Azure Service Bus geo-nood herstel | Microsoft Docs
 description: Over het gebruik van geografische regio's om een failover uit te voeren en herstel na nood geval in Azure Service Bus
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 04/29/2020
-ms.author: aschhab
-ms.openlocfilehash: a5a1e7a7ef73825b4b13d2f36c1c8554fdc2a9b6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647843"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341470"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-nood herstel
 
@@ -146,7 +140,7 @@ U kunt Beschikbaarheidszones alleen inschakelen voor nieuwe naam ruimten, met be
 
 ![3][]
 
-## <a name="private-endpoints"></a>Privé-eind punten
+## <a name="private-endpoints"></a>Privé-eindpunten
 Deze sectie bevat aanvullende overwegingen bij het gebruik van geo-nood herstel met naam ruimten die persoonlijke eind punten gebruiken. Zie [Azure service bus met persoonlijke Azure-koppeling integreren](private-link-service.md)voor meer informatie over het gebruik van privé-eind punten met Service Bus in het algemeen.
 
 ### <a name="new-pairings"></a>Nieuwe paren
@@ -174,7 +168,7 @@ Stel dat u twee virtuele netwerken hebt: VNET-1, VNET-2 en deze primaire en twee
 ![Persoonlijke eind punten en virtuele netwerken](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
 
 
-Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Service Bus naam ruimte. Neem de volgende scenario's: 
+Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Service Bus naam ruimte. Denk eens na over de volgende scenario's: 
 
 **Failover van toepassing:** Hier komt de toepassing niet voor in VNET-1 maar wordt deze verplaatst naar VNET-2. Als beide persoonlijke eind punten zijn geconfigureerd op zowel VNET-1 als VNET-2 voor zowel primaire als secundaire naam ruimten, werkt de toepassing gewoon. 
 

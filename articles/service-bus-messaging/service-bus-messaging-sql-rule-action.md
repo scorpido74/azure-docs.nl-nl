@@ -1,25 +1,14 @@
 ---
 title: Naslag informatie over de SQLRuleAction-syntaxis in Azure Service Bus
 description: Dit artikel bevat een verwijzing naar de SQLRuleAction-syntaxis. De acties worden geschreven in de syntaxis op basis van SQL-taal die wordt uitgevoerd voor een brokered bericht.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759625"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341579"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Naslag informatie voor SQLRuleAction-syntaxis voor Azure Service Bus
 
@@ -65,7 +54,7 @@ Dit artikel bevat informatie over de grammatica van de SQL-regel actie.
   
 ## <a name="arguments"></a>Argumenten  
   
--   `<scope>`is een optionele teken reeks die het bereik van `<property_name>`de aangeeft. Geldige waarden zijn `sys` of `user`. De `sys` waarde geeft de systeem Scope `<property_name>` aan waar de naam van een open bare eigenschap van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user`Hiermee wordt het gebruikers `<property_name>` bereik aangegeven waarbij een sleutel van de [BrokeredMessage-klassen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) woordenlijst is. `user`Scope is het standaard bereik als `<scope>` niet is opgegeven.  
+-   `<scope>`is een optionele teken reeks die het bereik van de aangeeft `<property_name>` . Geldige waarden zijn `sys` of `user` . De `sys` waarde geeft de systeem Scope aan waar de `<property_name>` naam van een open bare eigenschap van de [klasse BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)is. `user`Hiermee wordt het gebruikers bereik aangegeven waarbij `<property_name>` een sleutel van de [BrokeredMessage-klassen](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) woordenlijst is. `user`Scope is het standaard bereik als `<scope>` niet is opgegeven.  
   
 ### <a name="remarks"></a>Opmerkingen  
 
@@ -92,13 +81,13 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
  Dit betekent een wille keurige teken reeks die begint met een letter en wordt gevolgd door een of meer onderstrepings tekens/letter/cijfer.  
   
- `[:IsLetter:]`betekent elk Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)``c` retourneert `true` een Unicode-letter.  
+ `[:IsLetter:]`betekent elk Unicode-teken dat is gecategoriseerd als Unicode-letter. `System.Char.IsLetter(c)`retourneert `true` `c` een Unicode-letter.  
   
  `[:IsDigit:]`betekent elk Unicode-teken dat is gecategoriseerd als een decimaal cijfer. `System.Char.IsDigit(c)`retourneert `true` of `c` een Unicode-cijfer is.  
   
  Een `<regular_identifier>` kan geen gereserveerd tref woord zijn.  
   
- `<delimited_identifier>`is een teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden `<delimited_identifier>`van:  
+ `<delimited_identifier>`is een teken reeks die wordt Inge sloten met vier Kante haken links/rechts ([]). Een rechter rechte haak wordt weer gegeven als twee rechter rechte haken. Hier volgen enkele voor beelden van `<delimited_identifier>` :  
   
 ```  
 [Property With Space]  
@@ -106,7 +95,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ```  
   
- `<quoted_identifier>`is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>`:  
+ `<quoted_identifier>`is een teken reeks die tussen dubbele aanhalings tekens is geplaatst. Een dubbel aanhalings teken in id wordt weer gegeven als twee dubbele aanhalings tekens. Het is niet raadzaam om id's van aanhalings tekens te gebruiken omdat deze eenvoudig kunnen worden verward met een teken reeks constante. Gebruik, indien mogelijk, een gescheiden id. Hier volgt een voor beeld van `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -138,7 +127,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
  `<escape_char>`moet een expressie zijn die als een teken reeks met een lengte van 1 wordt geëvalueerd. Deze wordt gebruikt als escape-teken voor de operator LIKE.  
   
- Bijvoorbeeld, `property LIKE 'ABC\%' ESCAPE '\'` komt overeen `ABC%` met een teken reeks die begint met `ABC`.  
+ Bijvoorbeeld, `property LIKE 'ABC\%' ESCAPE '\'` komt overeen met `ABC%` een teken reeks die begint met `ABC` .  
   
 ## <a name="constant"></a>bedrag  
   
@@ -149,7 +138,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="arguments"></a>Argumenten  
   
--   `<integer_constant>`is een teken reeks die niet tussen aanhalings tekens staat en geen decimale punten bevat. De waarden worden `System.Int64` intern opgeslagen en volgen hetzelfde bereik.  
+-   `<integer_constant>`is een teken reeks die niet tussen aanhalings tekens staat en geen decimale punten bevat. De waarden worden intern opgeslagen `System.Int64` en volgen hetzelfde bereik.  
   
      Hier volgen enkele voor beelden van lange constanten:  
   
@@ -158,9 +147,9 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
     2  
     ```  
   
--   `<decimal_constant>`is een teken reeks die niet tussen aanhalings tekens staat en een decimaal teken bevat. De waarden worden `System.Double` intern opgeslagen en volgen hetzelfde bereik/dezelfde precisie.  
+-   `<decimal_constant>`is een teken reeks die niet tussen aanhalings tekens staat en een decimaal teken bevat. De waarden worden intern opgeslagen `System.Double` en volgen hetzelfde bereik/dezelfde precisie.  
   
-     In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevens type ter ondersteuning van nauw keurige semantiek, dus moet u niet vertrouwen op het feit dat het onderliggende gegevens type `System.Double` voor `<decimal_constant>`is.  
+     In een toekomstige versie kan dit nummer worden opgeslagen in een ander gegevens type ter ondersteuning van nauw keurige semantiek, dus moet u niet vertrouwen op het feit dat het onderliggende gegevens type `System.Double` voor is `<decimal_constant>` .  
   
      Hier volgen enkele voor beelden van decimale constanten:  
   
@@ -169,7 +158,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
     2.0  
     ```  
   
--   `<approximate_number_constant>`is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden `System.Double` intern opgeslagen en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
+-   `<approximate_number_constant>`is een getal dat is geschreven in een weten schappelijke notatie. De waarden worden intern opgeslagen `System.Double` en volgen hetzelfde bereik/dezelfde precisie. Hier volgen enkele voor beelden van constanten met een benaderende waarde:  
   
     ```  
     101.5E5  
@@ -185,7 +174,7 @@ Er is een fout opgetreden bij een poging toegang te krijgen tot een niet-bestaan
   
 ### <a name="remarks"></a>Opmerkingen
   
-Booleaanse constanten worden vertegenwoordigd door de tref `TRUE` woorden `FALSE`of. De waarden worden opgeslagen als `System.Boolean`.  
+Booleaanse constanten worden vertegenwoordigd door de tref woorden `TRUE` of `FALSE` . De waarden worden opgeslagen als `System.Boolean` .  
   
 ## <a name="string_constant"></a>string_constant  
   
@@ -207,9 +196,9 @@ Teken reeks constanten worden tussen enkele aanhalings tekens geplaatst en bevat
   
 ### <a name="remarks"></a>Opmerkingen  
 
-De `newid()` functie retourneert een **System. GUID** die is gegenereerd `System.Guid.NewGuid()` door de-methode.  
+De `newid()` functie retourneert een **System. GUID** die is gegenereerd door de- `System.Guid.NewGuid()` methode.  
   
-De `property(name)` functie retourneert de waarde van de eigenschap waarnaar wordt verwezen `name`door. De `name` waarde kan een geldige expressie zijn die een teken reeks waarde retourneert.  
+De `property(name)` functie retourneert de waarde van de eigenschap waarnaar wordt verwezen door `name` . De `name` waarde kan een geldige expressie zijn die een teken reeks waarde retourneert.  
   
 ## <a name="considerations"></a>Overwegingen
 

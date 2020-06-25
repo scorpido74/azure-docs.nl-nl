@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: c766fb84fa14eab09143cfb5b71f7aefc9f51d24
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 50ee9e3c22c885931e2586f65ba2fa3353fccfeb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85077767"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355842"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>Configuratie van op SAML gebaseerde SSO-app automatiseren met Microsoft Graph-API
 
@@ -111,6 +111,8 @@ Content-type: application/json
 
 [Maak een instantie](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) van de toepassing en Service-Principal in uw Tenant met behulp van de sjabloon-id die u in de laatste stap voor uw toepassing hebt opgehaald.
 
+> [!NOTE] 
+> U kunt de applicationTemplate-API gebruiken om [niet-galerie-apps](add-non-gallery-app.md)te instantiëren. Gebruik applicationTemplateId `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` .
 #### <a name="request"></a>Aanvraag
 
 <!-- {
@@ -594,7 +596,7 @@ HTTP/1.1 204
 
 Wijs de volgende gebruiker toe aan de Service-Principal en wijs de AWS_Role1 toe. 
 
-| Name  | Id  |
+| Naam  | Id  |
 |---------|---------|
 | Gebruikers-ID (principalId) | 6cad4079-4e79-4a3f-9efb-ea30a14bdb26 |
 | Type (principalType) | Gebruiker |

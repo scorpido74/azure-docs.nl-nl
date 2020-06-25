@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433576"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355655"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Gegevens in Azure Blob Storage beheren en zoeken met Blob-index (preview)
 
@@ -36,11 +36,11 @@ Container-en BLOB-naam voor voegsels zijn eendimensionale categorisatie voor uw 
 
 Houd rekening met de volgende vijf blobs in uw opslag account:
 >
-> container1/Trans Action. CSV  
-> container2/Campaign. docx  
-> Foto's/bannerphoto. png  
-> archieven/voltooid/2019review. PDF  
-> Logboeken/2020/01/01/logfile. txt  
+> container1/transaction.csv  
+> container2/campaign.docx  
+> Foto's/bannerphoto.png  
+> archieven/voltooide/2019review.pdf  
+> Logboeken/2020/01/01/logfile.txt  
 >
 
 Deze blobs zijn momenteel gescheiden met behulp van een voor voegsel van de container/virtuele map/BLOB-naam. Met Blob index kunt u een index label kenmerk van `Project = Contoso` op deze vijf blobs instellen om ze samen te categoriseren en daarbij hun huidige voorvoegsel organisatie te behouden. Dit elimineert de nood zaak om gegevens te verplaatsen door de mogelijkheid om gegevens te filteren en te zoeken met behulp van de multi-dimensionale index van het opslag platform.
@@ -63,7 +63,7 @@ U kunt meerdere labels op uw BLOB Toep assen om de gegevens beter te beschrijven
 > "Priority" = "01" 
 >
 
-Als u de bestaande kenmerken van de index code wilt wijzigen, moet u eerst de bestaande label kenmerken ophalen, de label kenmerken wijzigen en vervangen door de SetBlobTags-bewerking. Als u alle index Tags uit de BLOB wilt verwijderen, roept u de SetBlobTags-bewerking aan zonder dat er label kenmerken zijn opgegeven. Als blob-index Tags zijn een subresource voor de inhoud van de BLOB-gegevens, wijzigt SetBlobTags geen onderliggende inhoud en wordt de laatste wijzigings tijd van de BLOB niet gewijzigd.
+Als u de bestaande kenmerken van de index code wilt wijzigen, moet u eerst de bestaande label kenmerken ophalen, de label kenmerken wijzigen en vervangen door de SetBlobTags-bewerking. Als u alle index Tags uit de BLOB wilt verwijderen, roept u de SetBlobTags-bewerking aan zonder dat er label kenmerken zijn opgegeven. Als blob-index Tags zijn een subresource voor de inhoud van de BLOB-gegevens, wordt door SetBlobTags geen onderliggende inhoud gewijzigd en wordt de laatste wijzigings tijd of ETag (entiteits code) van de BLOB niet gewijzigd. U kunt index Tags maken of wijzigen voor alle huidige basis-blobs en eerdere versies. Labels op moment opnamen of zachte verwijderde blobs kunnen echter niet worden gewijzigd. 
 
 De volgende limieten gelden voor BLOB-index Tags:
 - Elke Blob kan Maxi maal 10 BLOB-index Tags hebben
@@ -130,7 +130,7 @@ In de onderstaande tabel ziet u alle geldige Opera tors voor voorwaardelijke bew
 |     <      |  Kleiner dan    | ' Leeftijd ' < ' 32 ' |
 |     <=     |  Kleiner dan of gelijk aan  | ' Bedrijf ' <= ' Contoso ' |
 |    EN     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
-|     OR     |  Logische of   | "Status" = ' done ' of ' Priority ' >= ' 05 ' |
+|     OF     |  Logische of   | "Status" = ' done ' of ' Priority ' >= ' 05 ' |
 
 > [!NOTE]
 > Er zijn twee extra Opera Tors, niet gelijk aan en logische of, die zijn toegestaan in de header Conditional x-MS-if-Tags voor een BLOB-bewerking, maar die niet aanwezig zijn in de FindBlobsByTags-bewerking.

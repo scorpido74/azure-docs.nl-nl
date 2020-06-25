@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664282"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339314"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Zelf studie: Medius flow configureren voor automatische gebruikers inrichting
 
@@ -52,11 +52,11 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>Stap 2. Medius flow configureren voor ondersteuning bij het inrichten met Azure AD
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>De Office 365-app activeren binnen Medius flow
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>De Microsoft 365-app activeren binnen Medius flow
 Begin met het inschakelen van de toegang tot de Azure AD-aanmelding en de Azure AD-configuratie functie in Medius Flow door de volgende stappen uit te voeren:
 
 #### <a name="user-login"></a>Gebruikers aanmelding
-Om de aanmeldings stroom naar Office 365/Azure AD in te scha kelen, raadpleegt u [dit] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) artikel.
+Als u de aanmeldings stroom voor Microsoft 365/Azure AD wilt inschakelen, raadpleegt u [dit] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) artikel.
 
 #### <a name="user-transfer-configuration"></a>Configuratie van gebruikers overdracht
 Raadpleeg [Dit](
@@ -129,7 +129,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Medius flow in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -169,7 +169,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |naam. familielid|Tekenreeks|
    |naam. opgemaakt|Tekenreeks|
    |externalID|Tekenreeks|
-   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Verwijzing|
+   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
 
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Medius flow**.
@@ -180,7 +180,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |---|---|
       |displayName|Tekenreeks|
       |externalID|Tekenreeks|
-      |leden|Verwijzing|
+      |leden|Naslaginformatie|
 
 12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -208,7 +208,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

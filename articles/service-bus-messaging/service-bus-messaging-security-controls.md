@@ -1,18 +1,14 @@
 ---
 title: Beveiligings controles voor Azure Service Bus berichten
 description: Een controle lijst met beveiligings controles voor het evalueren van Azure Service Bus berichten
-services: service-bus-messaging
-ms.service: service-bus-messaging
-author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
-ms.author: spelluru
-ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 3130150a227076befae3f58f65e00a36578b68d5
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75903252"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341624"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Beveiligings controles voor Azure Service Bus berichten
 

@@ -1,23 +1,14 @@
 ---
 title: Filters voor Azure Service Bus-onderwerp | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe abonnees kunnen bepalen welke berichten ze willen ontvangen van een onderwerp door filters op te geven.
-services: service-bus-messaging
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.author: spelluru
-ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/23/2020
+ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258807"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339967"
 ---
 # <a name="topic-filters-and-actions"></a>Onderwerpfilters en acties
 
@@ -34,7 +25,7 @@ Service Bus ondersteunt drie filter voorwaarden:
 -   *Correlatie filters* : een **CorrelationFilter** bevat een set voor waarden die overeenkomen met een of meer van de gebruikers-en systeem eigenschappen van een inkomend bericht. Een veelgebruikte toepassing is om te vergelijken met de eigenschap **CorrelationId** , maar deze kan er ook voor kiezen om te zoeken op basis van de volgende eigenschappen:
 
     - **Invoer**
-     - **Adres**
+     - **Label**
      - **MessageId**
      - **ReplyTo**
      - **ReplyToSessionId**

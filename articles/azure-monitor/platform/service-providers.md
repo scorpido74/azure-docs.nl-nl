@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190420"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340889"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor logboeken voor service providers
 
@@ -64,7 +64,7 @@ De voor delen van de gecentraliseerde architectuur zijn:
 De nadelen van de gecentraliseerde architectuur zijn:
 
 * Deze architectuur is alleen van toepassing op VM-gegevens op basis van een agent, die geen PaaS, SaaS en Azure Fabric-gegevens bronnen bevat.
-* Het kan lastig zijn om de gegevens tussen de klanten te scheiden wanneer ze in één werk ruimte worden samengevoegd. De enige manier om dit te doen is door de Fully Qualified Domain Name van de computer (FQDN) of via de ID van het Azure-abonnement te gebruiken. 
+* Het kan lastig zijn om de gegevens tussen de klanten te scheiden wanneer ze in één werk ruimte worden samengevoegd. De enige manier om dit te doen is door de Fully Qualified Domain Name van de computer (FQDN) of via de ID van het Azure-abonnement te gebruiken.
 * Alle gegevens van alle klanten worden opgeslagen in dezelfde regio met één factuur en dezelfde Bewaar periode en configuratie-instellingen.
 * Voor Azure Fabric-en PaaS-services zoals Azure Diagnostics en Azure-audit logboeken moet de werk ruimte zich in dezelfde Tenant bevinden als de resource, waardoor de logboeken niet kunnen worden verzonden naar de centrale werk ruimte.
 * Alle VM-agents van alle klanten worden met dezelfde werk ruimte-ID en-sleutel geauthenticeerd naar de centrale werk ruimte. Er is geen methode om logboeken van een specifieke klant te blok keren zonder andere klanten te onderbreken.
@@ -77,13 +77,13 @@ Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie
 
 1. Centrale werk ruimte: de service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de [API voor gegevens verzameling](../../azure-monitor/platform/data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, behalve een script, is het gebruik van [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI als centrale locatie: Power BI kunnen fungeren als centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](../../azure-monitor/platform/powerbi.md). 
+2. Power BI als centrale locatie: Power BI kunnen fungeren als centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](../../azure-monitor/platform/powerbi.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Het maken en configureren van werk ruimten automatiseren met behulp van [Resource Manager-sjablonen](template-workspace-configuration.md)
 
-* Het maken van werk ruimten automatiseren met [Power shell](../../azure-monitor/platform/powershell-workspace-configuration.md) 
+* Het maken van werk ruimten automatiseren met [Power shell](../../azure-monitor/platform/powershell-workspace-configuration.md)
 
 * [Waarschuwingen](../../azure-monitor/platform/alerts-overview.md) gebruiken om te integreren met bestaande systemen
 

@@ -3,14 +3,14 @@ title: Een Linux-Hybrid Runbook Worker implementeren in Azure Automation
 description: In dit artikel wordt uitgelegd hoe u een Azure Automation Hybrid Runbook Worker installeert voor het uitvoeren van runbooks op Linux-computers in uw lokale Data Center of cloud omgeving.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/17/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: a8679c189e77fe7b191a645b07c68b6101604644
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c569c83ed0bc5d78f0e5670c802188ee9fd8fd53
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079145"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340796"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -82,11 +82,11 @@ Hybrid Runbook Workers van Linux ondersteunen een beperkt aantal typen Runbook i
 
 |Type Runbook | Ondersteund |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ja |
 |PowerShell |Ja<sup>1</sup> |
-|PowerShell-werkstroom |No |
-|Grafisch |No |
-|Grafische power shell-werk stroom |No |
+|PowerShell-werkstroom |Nee |
+|Grafisch |Nee |
+|Grafische power shell-werk stroom |Nee |
 
 <sup>1</sup> Power shell-runbooks vereisen dat Power shell core wordt geïnstalleerd op de Linux-machine. Zie [Power shell core in Linux installeren](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.
 
@@ -120,13 +120,25 @@ Als u een Linux-Hybrid Runbook Worker wilt installeren en configureren, voert u 
 
     In de zoek resultaten ziet u heartbeat-records voor de machine, waarmee wordt aangegeven dat deze is verbonden en dat er wordt gerapporteerd aan de service. Standaard stuurt elke agent een heartbeat-record naar de toegewezen werk ruimte.
 
-3. Voer de volgende opdracht uit om de machine toe te voegen aan een Hybrid Runbook Worker groep, waarbij u de waarden voor de para meters *-w*, *-k*, *-g*en *-e*wijzigt. Voor de para meter *-g* , vervang de waarde door de naam van de Hybrid Runbook worker groep waaraan de nieuwe Linux-Hybrid Runbook worker moet worden toegevoegd. Als de naam niet bestaat in uw Automation-account, wordt er een nieuwe Hybrid Runbook Worker groep met die naam gemaakt.
+3. Voer de volgende opdracht uit om de machine toe te voegen aan een Hybrid Runbook worker groep, waarbij u de waarden opgeeft voor de para meters,, `-w` `-k` `-g` en `-e` .
+
+    U kunt de vereiste gegevens voor para meters `-k` en `-e` op de pagina **sleutels** in uw Automation-account ophalen. Selecteer **sleutels** onder de sectie **account instellingen** aan de linkerkant van de pagina.
+
+    ![Pagina sleutels beheren](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
+
+    * `-e`Kopieer de waarde voor **URL**voor de para meter.
+
+    * Kopieer voor de `-k` para meter de waarde voor de **primaire toegangs sleutel**.
+
+    * Geef voor de `-g` para meter de naam op van de Hybrid Runbook worker groep waaraan de nieuwe Linux Hybrid Runbook worker moet worden toegevoegd. Als deze groep al bestaat in het Automation-account, wordt de huidige machine hieraan toegevoegd. Als deze groep niet bestaat, wordt deze met die naam gemaakt.
+
+    * Geef voor de `-w` para meter uw log Analytics werk ruimte-id op.
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-4. Nadat de opdracht is voltooid, worden in de pagina Hybrid Worker groepen in het Azure Portal de nieuwe groep en het aantal leden weer gegeven. Als dit een bestaande groep is, wordt het aantal leden verhoogd. U kunt de groep selecteren in de lijst op de pagina Hybrid Worker groepen en de tegel **Hybrid Workers** selecteren. Op de pagina Hybrid Workers ziet u elk lid van de groep die wordt weer gegeven.
+4. Nadat de opdracht is voltooid, toont de pagina Hybrid Worker groepen in uw Automation-account de nieuwe groep en het aantal leden. Als dit een bestaande groep is, wordt het aantal leden verhoogd. U kunt de groep selecteren in de lijst op de pagina Hybrid Worker groepen en de tegel **Hybrid Workers** selecteren. Op de pagina Hybrid Workers ziet u elk lid van de groep die wordt weer gegeven.
 
     > [!NOTE]
     > Als u de Log Analytics extensie van de virtuele machine voor Linux voor een Azure-VM gebruikt, wordt u aangeraden om in te stellen dat er `autoUpgradeMinorVersion` `false` problemen met de Hybrid Runbook Worker kunnen ontstaan door de versie van automatische upgrades. Zie [Azure cli-implementatie](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)voor meer informatie over het hand matig bijwerken van de extensie.

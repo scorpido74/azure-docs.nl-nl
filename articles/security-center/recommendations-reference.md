@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 647d0b13930109b093532ce0b330e9b3eb6d439b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260947"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341286"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Aanbevelingen voor beveiliging: een referentie gids
 
@@ -153,7 +153,7 @@ Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat
 |**Transparent Data Encryption in SQL-databases moet zijn ingeschakeld**|Schakel transparante gegevens versleuteling in om gegevens op rest te beveiligen en te voldoen aan nalevings vereisten.<br>(Gerelateerd beleid: Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld)|Laag|**J**|SQL|
 |**De evaluatie van beveiligings problemen moet worden ingeschakeld op SQL Database**|Met een evaluatie van beveiligingsproblemen kunt u potentiële beveiligingsproblemen van de database detecteren, bijhouden en herstellen.<br>(Gerelateerd beleid: de evaluatie van beveiligings problemen moet worden ingeschakeld op uw SQL-servers)|Hoog|**J**|SQL|
 |**De evaluatie van beveiligings problemen moet worden ingeschakeld op het SQL-beheerde exemplaar**|Met een evaluatie van beveiligingsproblemen kunt u potentiële beveiligingsproblemen van de database detecteren, bijhouden en herstellen.<br>(Gerelateerd beleid: de evaluatie van beveiligings problemen moet worden ingeschakeld op het SQL Managed instance)|Hoog|**J**|SQL|
-|**Beveiligings problemen voor uw SQL-data bases in Vm's moeten worden hersteld**|Met evaluatie van SQL-beveiligings problemen wordt uw data base gescand op beveiligings lekken en worden eventuele afwijkingen van aanbevolen procedures, zoals onjuiste configuratie, overmatige machtigingen en onbeveiligde gevoelige gegevens, weer gegeven. Door de gevonden beveiligings problemen op te lossen, kunt u uw data base Security stature aanzienlijk verbeteren.|Hoog|N|SQL|
+|**Beveiligings problemen op uw SQL-servers op computers moeten worden hersteld**|Met evaluatie van SQL-beveiligings problemen wordt uw data base gescand op beveiligings lekken en worden eventuele afwijkingen van aanbevolen procedures, zoals onjuiste configuratie, overmatige machtigingen en onbeveiligde gevoelige gegevens, weer gegeven. Door de gevonden beveiligings problemen op te lossen, kunt u uw data base Security stature aanzienlijk verbeteren.|Hoog|N|SQL|
 |**Beveiligingsproblemen in uw SQL-databases moeten worden opgelost**|Met evaluatie van SQL-beveiligings problemen wordt uw data base gescand op beveiligings lekken en worden eventuele afwijkingen van aanbevolen procedures, zoals onjuiste configuratie, buitensporige machtigingen en onbeveiligde gevoelige gegevens, weer gegeven. Door de gevonden beveiligings problemen op te lossen, kunt u uw data base Security stature aanzienlijk verbeteren.<br>(Gerelateerd beleid: beveiligings problemen voor uw SQL-data bases moeten worden hersteld)|Hoog|N|SQL|
 ||||||
 

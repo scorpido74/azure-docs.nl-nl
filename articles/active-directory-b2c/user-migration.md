@@ -1,7 +1,7 @@
 ---
 title: Gebruikers migratie benaderingen
 titleSuffix: Azure AD B2C
-description: Migreer gebruikers accounts van een andere ID-provider naar Azure AD B2C met behulp van de methoden voor bulk import of naadloze migratie.
+description: Migreer gebruikers accounts van een andere ID-provider naar Azure AD B2C met behulp van de pre-migratie of naadloze migratie methoden.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a606335a17a9c8f4796b1ce813a1fd891963e0f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332336"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355383"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Gebruikers migreren naar Azure AD B2C
 
-Voor de migratie van een andere ID-provider naar Azure Active Directory B2C (Azure AD B2C) moeten mogelijk ook bestaande gebruikers accounts worden gemigreerd. Hier worden twee migratie methoden besproken, *bulksgewijs importeren* en *naadloze migratie*. Bij beide methoden moet u een toepassing of script schrijven die gebruikmaakt van de Microsoft Graph- [API](manage-user-accounts-graph-api.md) om gebruikers accounts te maken in azure AD B2C.
+Voor de migratie van een andere ID-provider naar Azure Active Directory B2C (Azure AD B2C) moeten mogelijk ook bestaande gebruikers accounts worden gemigreerd. Hier worden twee migratie methoden besproken, *vooraf migreren* en *naadloze migratie*. Bij beide methoden moet u een toepassing of script schrijven die gebruikmaakt van de Microsoft Graph- [API](manage-user-accounts-graph-api.md) om gebruikers accounts te maken in azure AD B2C.
 
-## <a name="bulk-import"></a>Bulksgewijs importeren
+## <a name="pre-migration"></a>Vooraf migreren
 
-In de stroom voor bulk import voert de migratie toepassing de volgende stappen uit voor elk gebruikers account:
+In de stroom voorafgaand aan de migratie voert de migratie toepassing de volgende stappen uit voor elk gebruikers account:
 
 1. Lees het gebruikers account van de oude ID-provider, met inbegrip van de huidige referenties (gebruikers naam en wacht woord).
 1. Maak een overeenkomend account in uw Azure AD B2C Directory met de huidige referenties.
 
-Gebruik de Bulk Import-stroom in een van deze twee situaties:
+Gebruik de pre-migratie stroom in een van deze twee situaties:
 
 - U hebt toegang tot de Lees bare referenties van een gebruiker (de gebruikers naam en het wacht woord).
 - De referenties zijn versleuteld, maar u kunt ze ontsleutelen.
@@ -43,25 +43,25 @@ Gebruik de naadloze migratie stroom als niet-gecodeerde wacht woorden in de oude
 - Het wacht woord wordt opgeslagen in een eenrichtings gecodeerde indeling, zoals met een hash-functie.
 - Het wacht woord wordt opgeslagen door de verouderde ID-provider op een manier die u niet kunt openen. Bijvoorbeeld wanneer de ID-provider referenties valideert door een webservice aan te roepen.
 
-De naadloze migratie stroom vereist nog steeds een bulk migratie van gebruikers accounts, maar gebruikt vervolgens een [aangepast beleid](custom-policy-get-started.md) voor het opvragen van een [rest API](custom-policy-rest-api-intro.md) (die u maakt) om het wacht woord van elke gebruiker bij de eerste aanmelding in te stellen.
+Voor de naadloze migratie stroom is nog steeds een vooraf-migratie van gebruikers accounts vereist, maar vervolgens een [aangepast beleid](custom-policy-get-started.md) voor het uitvoeren van een query op een [rest API](custom-policy-rest-api-intro.md) (die u maakt) om het wacht woord van elke gebruiker bij de eerste aanmelding in te stellen.
 
-De naadloze migratie stroom heeft daarom twee fasen: *bulksgewijs importeren* en *Referenties instellen*.
+De naadloze migratie stroom heeft daarom twee fasen: *pre-migratie* en *Referenties instellen*.
 
-### <a name="phase-1-bulk-import"></a>Fase 1: bulksgewijs importeren
+### <a name="phase-1-pre-migration"></a>Fase 1: vooraf migreren
 
 1. Uw migratie toepassing leest de gebruikers accounts van de oude ID-provider.
 1. De migratie toepassing maakt corresponderende gebruikers accounts in uw Azure AD B2C Directory, maar *stelt geen wacht woorden*in.
 
 ### <a name="phase-2-set-credentials"></a>Fase 2: Referenties instellen
 
-Nadat een bulk migratie van de accounts is voltooid, worden uw aangepaste beleid en REST API het volgende uitgevoerd wanneer een gebruiker zich aanmeldt:
+Nadat de accounts vooraf zijn gemigreerd, worden uw aangepaste beleid en REST API het volgende uitgevoerd wanneer een gebruiker zich aanmeldt:
 
 1. Lees het Azure AD B2C gebruikers account dat overeenkomt met het opgegeven e-mail adres.
 1. Controleer of het account is gemarkeerd voor migratie door een Boole-extensie kenmerk te evalueren.
-    - Als het uitbreidings kenmerk wordt `True`geretourneerd, belt u uw rest API om het wacht woord te valideren voor de verouderde ID-provider.
+    - Als het uitbreidings kenmerk wordt geretourneerd `True` , belt u uw rest API om het wacht woord te valideren voor de verouderde ID-provider.
       - Als de REST API bepaalt of het wacht woord onjuist is, geeft u een beschrijvende fout door aan de gebruiker.
-      - Als de REST API bepaalt of het wacht woord juist is, schrijft u het wacht woord naar het Azure AD B2C account en wijzigt u `False`het kenmerk van de Boole-extensie in.
-    - Als het kenmerk van de Boole `False`-extensie wordt geretourneerd, kunt u het aanmeldings proces het normaal voortzetten.
+      - Als de REST API bepaalt of het wacht woord juist is, schrijft u het wacht woord naar het Azure AD B2C account en wijzigt u het kenmerk van de Boole-extensie in `False` .
+    - Als het kenmerk van de Boole-extensie wordt geretourneerd `False` , kunt u het aanmeldings proces het normaal voortzetten.
 
 Als u een voor beeld van een aangepast beleid en REST API wilt bekijken, raadpleegt u het voor beeld [naadloze gebruikers migratie](https://aka.ms/b2c-account-seamless-migration) op github.
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 77c464f51bd17921052b3ae1e9fefb49e777d6c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181902"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341309"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Gegevens versleuteling voor Azure Database for PostgreSQL Eén server met behulp van de Azure CLI
 
@@ -54,16 +54,16 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
 
 1. Er zijn twee manieren om de beheerde identiteit voor uw Azure Database for PostgreSQL één server op te halen.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Maak een nieuwe Azure Database for MySQL-server met een beheerde identiteit.
+    ### <a name="create-an-new-azure-database-for-postgresql-server-with-a-managed-identity"></a>Maak een nieuwe Azure Database for PostgreSQL-server met een beheerde identiteit.
 
     ```azurecli-interactive
-    az postgres server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
+    az postgres server create --name <server_name> -g <resource_group> --location <location> --storage-size <size>  -u <user> -p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled> --assign-identity
     ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Een bestaande Azure Database for MySQL-server bijwerken om een beheerde identiteit op te halen.
+    ### <a name="update-an-existing-the-azure-database-for-postgresql-server-to-get-a-managed-identity"></a>Een bestaande Azure Database for PostgreSQL-server bijwerken om een beheerde identiteit op te halen.
 
     ```azurecli-interactive
-    az postgres server update –name <server name>  -g <resoure_group> --assign-identity
+    az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
 2. Stel de **sleutel machtigingen** (**Get**, **wrap**, **dewrap**) in voor de **Principal**. Dit is de naam van de postgresql één server server.
@@ -77,7 +77,7 @@ Meer informatie over het gebruik van de Azure CLI voor het instellen en beheren 
 1. Schakel gegevens versleuteling in voor de Azure Database for PostgreSQL één server met behulp van de sleutel die in de Azure Key Vault is gemaakt.
 
     ```azurecli-interactive
-    az postgres server key create –name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key create --name <server_name> -g <resource_group> --kid <key_url>
     ```
 
     Sleutel-URL:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
@@ -102,7 +102,7 @@ Nadat Azure Database for PostgreSQL één server is versleuteld met een door de 
 ### <a name="get-the-key-used"></a>De gebruikte sleutel ophalen
 
     ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
     ```
 
     Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`

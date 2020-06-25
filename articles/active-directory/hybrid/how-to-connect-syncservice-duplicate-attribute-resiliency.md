@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5585f0cd04dca4145f0322db9d625e35372b24b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82632fb104438e1b5279b1525fbce2b6d8e7ceeb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78298340"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356879"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Tolerantie voor synchronisatie- en duplicatiekenmerken identificeren
 Dubbel kenmerk tolerantie is een functie in Azure Active Directory die de wrijvings kracht veroorzaakt door **userPrincipalName** -en SMTP **proxyAddress attribuut** -conflicten bij het uitvoeren van een van de synchronisatie hulpprogramma's van micro soft.
@@ -40,7 +40,7 @@ Als er een poging wordt gedaan om een nieuw object in te richten met een UPN-of 
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Gedrag met tolerantie voor dubbel kenmerk
 In plaats van een object met een dubbel kenmerk niet volledig in te richten of bij te werken, heeft Azure Active Directory ' quarantaines ' het dubbele kenmerk dat de uniekheids beperking zou schenden. Als dit kenmerk is vereist voor het inrichten, zoals UserPrincipalName, wordt door de service een waarde voor de tijdelijke aanduiding toegewezen. De indeling van deze tijdelijke waarden is  
-_** \@ \<OriginalPrefix>+\<4DigitNumber>InitialTenantDomain>. onmicrosoft.com. \<**_
+_** \<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.com**_.
 
 Het kenmerk tolerantie proces verwerkt alleen UPN-en SMTP- **proxyAddress attribuut** -waarden.
 
@@ -116,7 +116,7 @@ Als u een uitgebreide zoek opdracht wilt uitvoeren, gebruikt u de vlag **-search
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>In een beperkt aantal of alle
-1. **MaxResults \<int>** kan worden gebruikt om de query te beperken tot een specifiek aantal waarden.
+1. **MaxResults \<Int> ** kan worden gebruikt om de query te beperken tot een specifiek aantal waarden.
 2. **Alle** kunnen worden gebruikt om ervoor te zorgen dat alle resultaten worden opgehaald in het geval dat een groot aantal fouten bestaat.
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
@@ -147,9 +147,9 @@ Geen van deze bekende problemen veroorzaakt gegevens verlies of service verminde
 1. Objecten met specifieke kenmerk configuraties blijven export fouten ontvangen, in tegens telling tot de dubbele kenmerk (en) die in quarantaine worden geplaatst.  
    Bijvoorbeeld:
    
-    a. Er wordt een nieuwe gebruiker gemaakt in AD met de **UPN\@Joe contoso.com** en proxyaddress attribuut **SMTP:\@Joe contoso.com**
+    a. Er wordt een nieuwe gebruiker gemaakt in AD met de UPN **joe \@ contoso.com** en proxyAddress attribuut **SMTP: Joe \@ contoso.com**
    
-    b. De eigenschappen van dit object conflicteren met een bestaande groep, waarbij proxyAddress attribuut **SMTP is: Joe\@contoso.com**.
+    b. De eigenschappen van dit object conflicteren met een bestaande groep, waarbij proxyAddress attribuut **SMTP is: Joe \@ contoso.com**.
    
     c. Bij het exporteren wordt een **proxyAddress attribuut-conflict** fout gegenereerd in plaats van dat de conflict kenmerken in quarantaine worden geplaatst. Bij elke volgende synchronisatie cyclus wordt er opnieuw geprobeerd om de bewerking uit te kunnen laten lopen, net zoals die zou zijn voordat de tolerantie functie was ingeschakeld.
 2. Als twee groepen on-premises zijn gemaakt met hetzelfde SMTP-adres, kan een van de eerste pogingen niet worden ingericht met een standaard dubbele **proxyAddress attribuut** -fout. De dubbele waarde wordt echter wel op de juiste wijze in quarantaine geplaatst tijdens de volgende synchronisatie cyclus.
@@ -159,20 +159,20 @@ Geen van deze bekende problemen veroorzaakt gegevens verlies of service verminde
 1. Het gedetailleerde fout bericht voor twee objecten in een UPN-conflict is hetzelfde. Dit geeft aan dat beide UPN-namen zijn gewijzigd, wanneer er slechts één van de gegevens is gewijzigd.
 2. In het gedetailleerde fout bericht voor een UPN-conflict wordt de verkeerde displayName weer gegeven voor een gebruiker die de UPN heeft gewijzigd/in quarantaine is geplaatst. Bijvoorbeeld:
    
-    a. **Gebruiker A** synchroniseert eerst met **UPN =\@user contoso.com**.
+    a. **Gebruiker A** synchroniseert eerst met **UPN = User \@ contoso.com**.
    
-    b. **Gebruiker B** probeert te synchroniseren naast **UPN =\@user contoso.com**.
+    b. **Gebruiker B** probeert te synchroniseren naast **UPN = User \@ contoso.com**.
    
-    c. **Gebruiker B** UPN is gewijzigd in **User1234\@contoso.onmicrosoft.com** en **gebruikers\@contoso.com** is toegevoegd aan **DirSyncProvisioningErrors**.
+    c. **Gebruiker B** UPN is gewijzigd in **User1234 \@ contoso.onmicrosoft.com** en **gebruikers \@ contoso.com** is toegevoegd aan **DirSyncProvisioningErrors**.
    
-    d. In het fout bericht voor **gebruiker B** moet worden aangegeven dat **gebruiker a** al een **\@gebruiker contoso.com** als UPN heeft, maar **de eigen DisplayName van gebruiker b** wordt weer gegeven.
+    d. In het fout bericht voor **gebruiker B** moet worden aangegeven dat **gebruiker a** al een **gebruiker \@ contoso.com** als UPN heeft, maar **de eigen DisplayName van gebruiker b** wordt weer gegeven.
 
 **Identiteitssynchronisatie fout rapport**:
 
 De koppeling voor *stappen voor het oplossen van dit probleem* is onjuist:  
     ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Actieve gebruikers")  
 
-Deze moet verwijzen naar [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
+Deze moet verwijzen naar [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency) .
 
 ## <a name="see-also"></a>Zie ook
 * [Azure AD Connect synchronisatie](how-to-connect-sync-whatis.md)

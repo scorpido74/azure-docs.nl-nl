@@ -1,19 +1,14 @@
 ---
 title: Een toepassing verifiëren voor toegang tot Azure Service Bus entiteiten
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen, enzovoort)
-services: service-bus-messaging
-ms.service: event-hubs
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: aschhab
-ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259290"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341503"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
 Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -21,7 +16,7 @@ Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) 
 ## <a name="overview"></a>Overzicht
 Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Service Bus entiteit, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
- 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een `https://servicebus.azure.net`token is.
+ 1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. De resource naam voor het aanvragen van een token is `https://servicebus.azure.net` .
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Service Bus-service om toegang tot de opgegeven bron te autoriseren.
 
 De verificatie stap vereist dat een toepassings aanvraag een OAuth 2,0-toegangs token bevat tijdens runtime. Als een toepassing wordt uitgevoerd binnen een Azure-entiteit, zoals een Azure-VM, een schaalset voor virtuele machines of een Azure function-app, kan deze een beheerde identiteit gebruiken om toegang te krijgen tot de resources. Zie [toegang verifiëren voor Azure service bus resources met Azure Active Directory en beheerde identiteiten voor Azure-resources](service-bus-managed-service-identity.md)voor meer informatie over het verifiëren van aanvragen die door een beheerde identiteit worden door gegeven aan service bus service. 
@@ -43,7 +38,7 @@ Voor Azure Service Bus is het beheer van naam ruimten en alle gerelateerde resou
 - [Azure Service Bus gegevens afzender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender): gebruik deze rol om toegang te geven tot Service Bus naam ruimte en de entiteiten.
 - [Azure Service Bus gegevens ontvanger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver): gebruik deze rol om toegang te krijgen tot Service Bus naam ruimte en de bijbehorende entiteiten. 
 
-## <a name="resource-scope"></a>Bron bereik 
+## <a name="resource-scope"></a>Resourcebereik 
 Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.
 
 In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service Bus resources kunt bereiken, te beginnen met het smalle bereik:
@@ -112,7 +107,7 @@ Zie [toepassingen integreren met Azure Active Directory](../active-directory/dev
 > [!IMPORTANT]
 > Noteer de **TenantId** en de **ApplicationId**. U hebt deze waarden nodig om de toepassing uit te voeren.
 
-### <a name="create-a-client-secret"></a>Een client geheim maken   
+### <a name="create-a-client-secret"></a>Een clientgeheim maken   
 De toepassing heeft een client geheim nodig om de identiteit ervan te bewijzen wanneer een token wordt aangevraagd. Voer de volgende stappen uit om het client geheim toe te voegen.
 
 1. Ga naar de registratie van uw app in de Azure Portal als u zich nog niet op de pagina bevindt.
@@ -128,7 +123,7 @@ De toepassing heeft een client geheim nodig om de identiteit ervan te bewijzen w
     ![Clientgeheim](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Machtigingen voor de Service Bus-API
-Als uw toepassing een console toepassing is, moet u een systeem eigen toepassing registreren en API-machtigingen voor **micro soft. ServiceBus** toevoegen aan de **vereiste machtigingenset** . Systeem eigen toepassingen hebben ook een **omleidings-URI** in azure AD nodig, die als een id fungeert. de URI hoeft geen netwerk bestemming te zijn. Voor `https://servicebus.microsoft.com` dit voor beeld gebruiken, omdat de voorbeeld code deze URI al gebruikt.
+Als uw toepassing een console toepassing is, moet u een systeem eigen toepassing registreren en API-machtigingen voor **micro soft. ServiceBus** toevoegen aan de **vereiste machtigingenset** . Systeem eigen toepassingen hebben ook een **omleidings-URI** in azure AD nodig, die als een id fungeert. de URI hoeft geen netwerk bestemming te zijn. `https://servicebus.microsoft.com`Voor dit voor beeld gebruiken, omdat de voorbeeld code deze URI al gebruikt.
 
 ### <a name="client-libraries-for-token-acquisition"></a>Client bibliotheken voor het verkrijgen van tokens  
 Zodra u uw toepassing hebt geregistreerd en de machtiging hebt verleend voor het verzenden/ontvangen van gegevens in Azure Service Bus, kunt u code toevoegen aan uw toepassing om een beveiligingsprincipal te verifiëren en het OAuth 2,0-token te verkrijgen. Als u het token wilt verifiëren en verkrijgen, kunt u een van de [micro soft-identiteits platform verificatie bibliotheken](../active-directory/develop/reference-v2-libraries.md) of een andere open-source-bibliotheek gebruiken die ondersteuning biedt voor OpenID Connect of verbinding maken met 1,0. Uw toepassing kan vervolgens het toegangs token gebruiken om een aanvraag voor Azure Service Bus te autoriseren.
@@ -142,12 +137,12 @@ Gebruik de optie **client geheim aanmelden** en niet de optie **interactief gebr
 
 ### <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
-Voordat u het voor beeld kunt uitvoeren, moet u het bestand **app. config** bewerken en de volgende waarden instellen, afhankelijk van uw scenario:
+Voordat u het voor beeld kunt uitvoeren, moet u het **app.config** -bestand bewerken en, afhankelijk van uw scenario, de volgende waarden instellen:
 
 - `tenantId`: Stel in op de waarde **TenantId** .
 - `clientId`: Stel in op **ApplicationId** -waarde.
 - `clientSecret`: Als u zich wilt aanmelden met behulp van het client geheim, maakt u het in azure AD. U kunt ook een web-app of API gebruiken in plaats van een systeem eigen app. Voeg ook de app toe onder **Access Control (IAM)** in de naam ruimte die u eerder hebt gemaakt.
-- `serviceBusNamespaceFQDN`: Stel in op de volledige DNS-naam van de zojuist gemaakte Service Bus naam ruimte; bijvoorbeeld `example.servicebus.windows.net`.
+- `serviceBusNamespaceFQDN`: Stel in op de volledige DNS-naam van de zojuist gemaakte Service Bus naam ruimte; bijvoorbeeld `example.servicebus.windows.net` .
 - `queueName`: Stel in op de naam van de wachtrij die u hebt gemaakt.
 - De omleidings-URI die u in de vorige stappen hebt opgegeven in uw app.
 

@@ -1,24 +1,14 @@
 ---
 title: Toegangs beheer Azure Service Bus met hand tekeningen voor gedeelde toegang
 description: Overzicht van Service Bus toegangs beheer met behulp van hand tekeningen voor gedeelde toegang, Details over SAS-autorisatie met Azure Service Bus.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259472"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340960"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -45,7 +35,7 @@ Het [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssigna
 
 Elke Service Bus naam ruimte en elke Service Bus entiteit heeft een beleid voor gedeelde toegang dat bestaat uit regels. Het beleid op het niveau van de naam ruimte is van toepassing op alle entiteiten in de naam ruimte, ongeacht hun afzonderlijke beleids configuratie.
 
-Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: **naam**, **bereik**en **rechten**. De **naam** is gewoon. een unieke naam binnen dat bereik. Het bereik is eenvoudig genoeg: het is de URI van de bron in kwestie. Voor een Service Bus naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/`.
+Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: **naam**, **bereik**en **rechten**. De **naam** is gewoon. een unieke naam binnen dat bereik. Het bereik is eenvoudig genoeg: het is de URI van de bron in kwestie. Voor een Service Bus naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/` .
 
 De rechten die worden verleend door de beleids regel, kunnen een combi natie zijn van:
 
@@ -65,7 +55,7 @@ Wanneer u een Service Bus naam ruimte maakt, wordt automatisch een beleids regel
 
 U kunt de [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regel configureren voor service bus naam ruimten, wacht rijen of onderwerpen. Het configureren van een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) op een service bus-abonnement wordt momenteel niet ondersteund, maar u kunt regels die zijn geconfigureerd in een naam ruimte of onderwerp, gebruiken om de toegang tot abonnementen te beveiligen. Zie voor een werk voorbeeld waarin deze procedure wordt geïllustreerd het voor beeld van het [gebruik van Shared Access Signature (SAS) met Service Bus abonnementen](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) .
 
-![GEBASEERD](./media/service-bus-sas/service-bus-namespace.png)
+![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
 In deze afbeelding zijn de *manageRuleNS*-, *SendRuleNS*-en *listenRuleNS* -autorisatie regels van toepassing op zowel wachtrij W1 als onderwerp T1, terwijl *listenRuleQ* en *SendRuleQ* alleen van toepassing zijn op wachtrij W1 en *sendRuleT* alleen van toepassing op het onderwerp T1.
 
@@ -77,7 +67,7 @@ Elke client die toegang heeft tot de naam van een verificatie regel naam en een 
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**-Token verloop datum direct. Geheel getal dat seconden weergeeft sinds de `00:00:00 UTC` epoche op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt.
+* **`se`**-Token verloop datum direct. Geheel getal dat seconden weergeeft sinds de epoche `00:00:00 UTC` op 1 januari 1970 (UNIX-epoche) wanneer het token verloopt.
 * **`skn`**-De naam van de autorisatie regel.
 * **`sr`**-De URI van de bron waartoe toegang wordt verkregen.
 * **`sig`** Ondertekening.
@@ -92,13 +82,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 Het token bevat de niet-gehashte waarden, zodat de ontvanger de hash opnieuw kan berekenen met dezelfde para meters, zodat u kunt controleren of de uitgever in het bezit is van een geldige ondertekeningssleutel.
 
-De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld `http://<namespace>.servicebus.windows.net/<entityPath>` of `sb://<namespace>.servicebus.windows.net/<entityPath>`; dat wil zeggen `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. 
+De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld, `http://<namespace>.servicebus.windows.net/<entityPath>` of `sb://<namespace>.servicebus.windows.net/<entityPath>` ; `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3` ... 
 
 **De URI moet een [percentage zijn gecodeerd](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
 De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/contosoTopics/T1` of `http://contoso.servicebus.windows.net` in het vorige voor beeld.
 
-Een SAS-token is geldig voor alle resources die worden voorafgegaan `<resourceURI>` door de gebruikt `signature-string`in de.
+Een SAS-token is geldig voor alle resources die worden voorafgegaan door de `<resourceURI>` gebruikt in de `signature-string` .
 
 ## <a name="regenerating-keys"></a>Sleutels opnieuw genereren
 
@@ -191,7 +181,7 @@ In de vorige sectie hebt u gezien hoe u het SAS-token gebruikt met een HTTP POST
 
 Voordat u begint met het verzenden van gegevens naar Service Bus, moet de uitgever het SAS-token in een AMQP-bericht verzenden naar een goed gedefinieerd AMQP-knoop punt met de naam **$CBS** (dit kan worden weer gegeven als een ' speciale ' wachtrij die door de service wordt gebruikt om alle SAS-tokens te verkrijgen en te valideren). De uitgever moet het **ReplyTo** -veld in het AMQP-bericht opgeven. Dit is het knoop punt waarin de service antwoordt op de uitgever met het resultaat van de token validatie (een eenvoudig patroon van aanvraag/antwoord tussen Publisher en service). Dit antwoord knooppunt wordt ' op de hoogte ' gemaakt, zoals beschreven in de AMQP 1,0-specificatie. Nadat u hebt gecontroleerd of het SAS-token geldig is, kan de uitgever door gaan en gegevens verzenden naar de service.
 
-De volgende stappen laten zien hoe u het SAS-token met het AMQP-protocol kunt verzenden met behulp van de [AMQP.net Lite](https://github.com/Azure/amqpnetlite) -bibliotheek. Dit is handig als u de officiële Service Bus SDK niet kunt gebruiken (bijvoorbeeld op WinRT, .NET Compact Framework, .NET Micro Framework en mono) die in C\#worden ontwikkeld. Deze bibliotheek is natuurlijk handig om te begrijpen hoe beveiliging op basis van claims werkt op het niveau van de AMQP, zoals u hebt gezien hoe het werkt op het HTTP-niveau (met een HTTP POST-aanvraag en het SAS-token dat in de header ' autorisatie ' is verzonden). Als u dergelijke uitgebreide kennis over AMQP niet nodig hebt, kunt u de officiële Service Bus SDK gebruiken met .NET Framework toepassingen.
+De volgende stappen laten zien hoe u het SAS-token met het AMQP-protocol kunt verzenden met behulp van de [AMQP.net Lite](https://github.com/Azure/amqpnetlite) -bibliotheek. Dit is handig als u de officiële Service Bus SDK niet kunt gebruiken (bijvoorbeeld op WinRT, .NET Compact Framework, .NET Micro Framework en mono) die in C worden ontwikkeld \# . Deze bibliotheek is natuurlijk handig om te begrijpen hoe beveiliging op basis van claims werkt op het niveau van de AMQP, zoals u hebt gezien hoe het werkt op het HTTP-niveau (met een HTTP POST-aanvraag en het SAS-token dat in de header ' autorisatie ' is verzonden). Als u dergelijke uitgebreide kennis over AMQP niet nodig hebt, kunt u de officiële Service Bus SDK gebruiken met .NET Framework toepassingen.
 
 ### <a name="c35"></a>C&#35;
 
@@ -244,7 +234,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-De `PutCbsToken()` methode ontvangt de *verbinding* (AMQP-verbindings klasse-instantie zoals gegeven door de [AMQP .net Lite-bibliotheek](https://github.com/Azure/amqpnetlite)) die de TCP-verbinding met de service en de *SASTOKEN* -para meter vertegenwoordigt die het SAS-token moet verzenden.
+De `PutCbsToken()` methode ontvangt de *verbinding* (AMQP-verbindings klasse-instantie zoals gegeven door de [AMQP .net Lite-bibliotheek](https://github.com/Azure/amqpnetlite)) die de TCP-verbinding met de service en de *sasToken* -para meter vertegenwoordigt die het SAS-token moet verzenden.
 
 > [!NOTE]
 > Het is belang rijk dat de verbinding wordt gemaakt met **sasl-verificatie mechanisme ingesteld op anoniem** (en niet de standaard instelling met gebruikers naam en wacht woord die worden gebruikt wanneer u het SAS-token niet hoeft te verzenden).
@@ -253,7 +243,7 @@ De `PutCbsToken()` methode ontvangt de *verbinding* (AMQP-verbindings klasse-ins
 
 Vervolgens maakt de uitgever twee AMQP-koppelingen voor het verzenden van het SAS-token en het ontvangen van het antwoord (het token validatie resultaat) van de service.
 
-Het AMQP-bericht bevat een aantal eigenschappen en meer informatie dan een eenvoudig bericht. Het SAS-token is de hoofd tekst van het bericht (met behulp van de bijbehorende constructor). De eigenschap **' ReplyTo '** is ingesteld op de naam van het knoop punt voor het ontvangen van het validatie resultaat op de ontvanger koppeling (u kunt de naam ervan wijzigen als u wilt en het dynamisch wordt gemaakt door de service). De laatste drie toepassings-en aangepaste eigenschappen worden door de service gebruikt om aan te geven wat voor soort bewerking het moet worden uitgevoerd. Zoals beschreven in de specificatie van de CBS-concept moet het de **bewerkings naam** ("put-token"), het **type token** (in dit geval `servicebus.windows.net:sastoken`, a) en de **"naam" van de doel groep** waarop het token van toepassing is (de hele entiteit).
+Het AMQP-bericht bevat een aantal eigenschappen en meer informatie dan een eenvoudig bericht. Het SAS-token is de hoofd tekst van het bericht (met behulp van de bijbehorende constructor). De eigenschap **' ReplyTo '** is ingesteld op de naam van het knoop punt voor het ontvangen van het validatie resultaat op de ontvanger koppeling (u kunt de naam ervan wijzigen als u wilt en het dynamisch wordt gemaakt door de service). De laatste drie toepassings-en aangepaste eigenschappen worden door de service gebruikt om aan te geven wat voor soort bewerking het moet worden uitgevoerd. Zoals beschreven in de specificatie van de CBS-concept moet het de **bewerkings naam** ("put-token"), het **type token** (in dit geval, a `servicebus.windows.net:sastoken` ) en de **"naam" van de doel groep** waarop het token van toepassing is (de hele entiteit).
 
 Nadat het SAS-token op de afzender koppeling is verzonden, moet de uitgever het antwoord op de koppeling ontvanger lezen. Het antwoord is een eenvoudig AMQP-bericht met een toepassings eigenschap met de naam **' status-code '** die dezelfde waarden kan bevatten als een HTTP-status code.
 
@@ -263,7 +253,7 @@ De volgende tabel bevat de toegangs rechten die zijn vereist voor verschillende 
 
 | Bewerking | Claim vereist | Claim bereik |
 | --- | --- | --- |
-| **Naam ruimte** | | |
+| **Naamruimte** | | |
 | Autorisatie regel configureren voor een naam ruimte |Beheren |Elk naam ruimte adres |
 | **Service register** | | |
 | Privé beleid opsommen |Beheren |Elk naam ruimte adres |

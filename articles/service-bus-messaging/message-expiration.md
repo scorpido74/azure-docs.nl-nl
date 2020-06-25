@@ -1,24 +1,14 @@
 ---
 title: Azure Service Bus-verlopen van berichten
 description: In dit artikel wordt uitgelegd over de verval tijd en de duur van Azure Service Bus berichten. Na een dergelijke deadline wordt het bericht niet meer bezorgd.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756331"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341204"
 ---
 # <a name="message-expiration-time-to-live"></a>Verlopen van berichten (Time to Live)
 
@@ -26,7 +16,7 @@ De payload in een bericht of een opdracht of query die een bericht overbrengt na
 
 Voor ontwikkel-en test omgevingen waarin wacht rijen en onderwerpen vaak worden gebruikt in de context van gedeeltelijke uitvoeringen van toepassingen of toepassings onderdelen, is het ook wenselijk dat geringe test berichten automatisch worden opgeruimd, zodat de volgende test uitvoering schoon kan worden gestart.
 
-De verval datum van elk afzonderlijk bericht kan worden bepaald door de systeem eigenschap [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) in te stellen, waarmee een relatieve duur wordt opgegeven. De verval datum wordt een absolute directe melding wanneer het bericht in de entiteit wordt geplaatst. Op dat moment gebruikt de eigenschap [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) de waarde [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). De TTL-instelling (time-to-Live) voor een brokered bericht wordt niet afgedwongen wanneer er geen clients actief Luis teren.
+De verval datum van elk afzonderlijk bericht kan worden bepaald door de systeem eigenschap [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) in te stellen, waarmee een relatieve duur wordt opgegeven. De verval datum wordt een absolute directe melding wanneer het bericht in de entiteit wordt geplaatst. Op dat moment gebruikt de eigenschap [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) de waarde [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc)  +  [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). De TTL-instelling (time-to-Live) voor een brokered bericht wordt niet afgedwongen wanneer er geen clients actief Luis teren.
 
 Na de **ExpiresAtUtc** -chat worden berichten niet meer in aanmerking komen voor ophalen. De verval datum heeft geen invloed op berichten die momenteel zijn vergrendeld voor levering; deze berichten worden nog steeds normaal verwerkt. Als de vergren deling is verlopen of het bericht is afgebroken, wordt de verval datum direct van kracht.
 
@@ -74,7 +64,7 @@ Hier ziet u wat er als niet-actief van entiteiten (wacht rijen, onderwerpen en a
     - Geen verzen dingen  
     - Het onderwerp is niet bijgewerkt  
     - Geen geplande berichten 
-- Subscriptions
+- Abonnementen
     - Geen ontvangen  
     - Het abonnement is niet bijgewerkt  
     - Er zijn geen nieuwe regels toegevoegd aan het abonnement  

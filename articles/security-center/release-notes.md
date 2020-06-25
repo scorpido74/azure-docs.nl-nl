@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: f41b87f50dfac15c6228398a2c9d1c6ae470903d
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: cebc1d54443c63a3fb9a2c8b6e9471525e0d7403
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260930"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341263"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -31,6 +31,14 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 
 
 ## <a name="june-2020"></a>Juni 2020
+
+De updates in juni omvatten:
+- [Secure Score-API (preview-versie)](#secure-score-api-preview)
+- [Geavanceerde gegevens beveiliging voor SQL-machines (Azure, andere Clouds en on-premises) (preview)](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
+- [Twee nieuwe aanbevelingen voor het implementeren van de Log Analytics agent op Azure Arc-machines (preview)](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
+- [Nieuw beleid voor het maken van continue export-en werk stroom automatiserings configuraties op schaal](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
+- [Nieuwe aanbeveling voor het gebruik van Nsg's om niet-Internet gerichte virtuele machines te beveiligen](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
+
 
 ### <a name="secure-score-api-preview"></a>Secure Score-API (preview-versie)
 
@@ -76,6 +84,29 @@ Meer informatie over hoe Azure Security Center de agent gebruikt in [Wat is de l
 Meer informatie over [uitbrei dingen voor Azure Arc-machines](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
 
 
+
+### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Nieuw beleid voor het maken van continue export-en werk stroom automatiserings configuraties op schaal
+
+Het automatiseren van de bewakings-en reactie processen van uw organisatie kan de tijd die nodig is om beveiligings incidenten te onderzoeken en te verhelpen, aanzienlijk verbeteren.
+
+Als u uw automatiserings configuraties in uw organisatie wilt implementeren, gebruikt u deze ingebouwde DeployIfdNotExist Azure-beleids regels voor het maken en configureren van [doorlopende export](continuous-export.md) -en [werk stroom automatiserings](workflow-automation.md) procedures:
+
+Het beleid is te vinden in azure Policy:
+
+
+|Doel  |Beleid  |Beleids-ID  |
+|---------|---------|---------|
+|Doorlopend exporteren naar Event Hub|[Export implementeren in Event Hub voor Azure Security Center-waarschuwingen en -aanbevelingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+|Doorlopend exporteren naar Log Analytics werk ruimte|[Export implementeren in Log Analytics-werkruimte voor Azure Security Center-waarschuwingen en -aanbevelingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+|Werk stroom automatisering voor beveiligings waarschuwingen|[Werkstroomautomatisering implementeren voor Azure Security Center-waarschuwingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+|Werk stroom automatisering voor beveiligings aanbevelingen|[Werkstroomautomatisering implementeren voor Azure Security Center-aanbevelingen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+||||
+
+Aan de slag met sjablonen voor het [automatiseren van werk stromen](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
+
+Meer informatie over het gebruik van de twee export beleidsregels in [voortdurend exporteren Azure Security Center waarschuwingen en aanbevelingen via beleid](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745).
+
+
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>Nieuwe aanbeveling voor het gebruik van Nsg's om niet-Internet gerichte virtuele machines te beveiligen
 
 Het beveiligings beheer voor best practices voor beveiliging bevat nu de volgende nieuwe aanbeveling:
@@ -89,6 +120,16 @@ Meer informatie vindt u in de tabel met [netwerk aanbevelingen](recommendations-
 
 
 ## <a name="may-2020"></a>Mei 2020
+
+Updates in kunnen onder andere het volgende omvatten:
+- [Regels voor waarschuwings onderdrukking (preview-versie)](#alert-suppression-rules-preview)
+- [De evaluatie van de beveiligings problemen van de virtuele machine is nu algemeen beschikbaar](#virtual-machine-vulnerability-assessment-is-now-generally-available)
+- [Wijzigingen in de just-in-time-toegang van virtuele machines (VM)](#changes-to-just-in-time-jit-virtual-machine-vm-access)
+- [Aangepaste aanbevelingen zijn verplaatst naar een afzonderlijk beveiligings beheer](#custom-recommendations-have-been-moved-to-a-separate-security-control)
+- [Toevoegen/verbergen om aanbevelingen in besturings elementen of als een platte lijst weer te geven](#toggle-added-to-view-recommendations-in-controls-or-as-a-flat-list)
+- [Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging](#expanded-security-control-implement-security-best-practices)
+- [Aangepaste beleids regels met aangepaste meta gegevens zijn nu algemeen beschikbaar](#custom-policies-with-custom-metadata-are-now-generally-available)
+- [Crash dump analyse mogelijkheden migreren naar aanval op bestandsloze detectie](#crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection)
 
 
 ### <a name="alert-suppression-rules-preview"></a>Regels voor waarschuwings onderdrukking (preview-versie)
@@ -211,6 +252,11 @@ Enkele van de voor delen van deze overgang:
 
 ## <a name="april-2020"></a>April 2020
 
+De updates in april zijn onder andere:
+- [Dynamische nalevings pakketten zijn nu algemeen beschikbaar](#dynamic-compliance-packages-are-now-generally-available)
+- [Aanbevelingen voor de identiteit nu opgenomen in Azure Security Center gratis laag](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
+
 ### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dynamische nalevings pakketten zijn nu algemeen beschikbaar
 
 Het dash board voor nalevings vereisten van Azure Security Center bevat nu **dynamische nalevings pakketten** (nu algemeen beschikbaar) voor het bijhouden van aanvullende industrie-en regelgevings normen.
@@ -248,6 +294,14 @@ Meer informatie over het [bewaken van identiteit en toegang](security-center-ide
 
 
 ## <a name="march-2020"></a>Maart 2020
+
+De updates in maart zijn onder andere:
+- [Werk stroom automatisering is nu algemeen beschikbaar](#workflow-automation-is-now-generally-available)
+- [Integratie van Azure Security Center met Windows-beheer centrum](#integration-of-azure-security-center-with-windows-admin-center)
+- [Beveiliging voor de Azure Kubernetes-service](#protection-for-azure-kubernetes-service)
+- [Verbeterde just-in-time-ervaring](#improved-just-in-time-experience)
+- [Twee beveiligings aanbevelingen voor afgeschafte webtoepassingen](#two-security-recommendations-for-web-applications-deprecated)
+
 
 ### <a name="workflow-automation-is-now-generally-available"></a>Werk stroom automatisering is nu algemeen beschikbaar
 

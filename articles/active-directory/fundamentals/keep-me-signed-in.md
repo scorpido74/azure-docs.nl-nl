@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4b253a3017f1a836ac989bb897065a6a7d8337
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a82f81888828cb5edd42c37a6e8b2c2ee51fe603
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739950"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339556"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>De ' aangemeld blijven? ' configureren vragen om Azure AD-accounts
 
@@ -28,7 +28,7 @@ In het volgende diagram ziet u de aanmeldings stroom van de gebruiker voor een b
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="Diagram van de aanmeldings stroom van de gebruiker voor een beheerde versus federatieve Tenant":::
 
 > [!NOTE]
-> Voor het configureren van de optie aangemeld aanmelden moet u Azure Active Directory (Azure AD) Premium 1, Premium 2 of Basic-edities gebruiken of een Office 365-licentie hebben. Zie voor meer informatie over licenties en edities [Aanmelden registreren voor Azure AD Premium](active-directory-get-started-premium.md).<br><br>Azure AD Premium-en Basic-edities zijn beschikbaar voor klanten in China met behulp van het wereld wijde exemplaar van Azure AD. De Azure AD Premium en Basic-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op met het [Azure AD-forum](https://feedback.azure.com/forums/169401-azure-active-directory/)voor meer informatie.
+> Voor het configureren van de optie aangemeld aanmelden moet u Azure Active Directory (Azure AD) Premium 1, Premium 2 of Basic-edities gebruiken of een Microsoft 365-licentie hebben. Zie voor meer informatie over licenties en edities [Aanmelden registreren voor Azure AD Premium](active-directory-get-started-premium.md).<br><br>Azure AD Premium-en Basic-edities zijn beschikbaar voor klanten in China met behulp van het wereld wijde exemplaar van Azure AD. De Azure AD Premium en Basic-edities worden momenteel niet ondersteund in de Azure-service die wordt beheerd door 21Vianet in China. Neem contact met ons op met het [Azure AD-forum](https://feedback.azure.com/forums/169401-azure-active-directory/)voor meer informatie.
 
 ## <a name="configure-kmsi"></a>KMSI configureren
 
@@ -61,6 +61,6 @@ U kunt voor komen dat gebruikers de interrupt zien door de **optie weer geven in
 
 Meer informatie over andere instellingen die van invloed zijn op de time-out van de aanmeldings sessie:
 
-* Office 365: [time-out voor niet-actieve sessie](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
+* Microsoft 365: [time-out voor niet-actieve sessie](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
 * Voorwaardelijke toegang van Azure AD- [aanmeldings frequentie voor gebruikers](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
 * Azure Portal – [time-out voor inactiviteit op Directory-niveau](https://docs.microsoft.com/azure/azure-portal/admin-timeout)

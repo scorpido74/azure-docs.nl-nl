@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74227074"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340868"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Lokaal opsporen van fouten in Azure-functies voor Event Grid Trigger
 
@@ -34,7 +34,7 @@ Zodra de functie is gemaakt, opent u het code bestand en kopieert u de URL naar 
 
 ![Locatie kopiëren](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-copy-location.png)
 
-Stel vervolgens een onderbrekings punt in op de regel die `log.LogInformation`begint met.
+Stel vervolgens een onderbrekings punt in op de regel die begint met `log.LogInformation` .
 
 ![Onderbrekings punt instellen](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-set-breakpoint.png)
 
@@ -62,7 +62,7 @@ Open de Azure Portal en navigeer naar een opslag account en klik op de optie **g
 
 ![Gebeurtenis van opslag account toevoegen](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-Klik in het venster *gebeurtenissen* op de knop **gebeurtenis abonnement** . Klik in het venster *even abonnement* op de vervolg keuzelijst *type eind punt* en selecteer **webhook**.
+Klik in het venster *gebeurtenissen* op de knop **gebeurtenis abonnement** . Klik in het venster *gebeurtenis abonnement* op de vervolg keuzelijst *type eind punt* en selecteer **webhook**.
 
 ![Type abonnement selecteren](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 
@@ -70,7 +70,7 @@ Zodra het eindpunt type is geconfigureerd, klikt u op **Selecteer een eind punt*
 
 ![Type eind punt selecteren](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-endpoint.png)
 
-De *abonnee-eindpunt* waarde bestaat uit drie verschillende waarden. Het voor voegsel is de HTTPS-URL die door *ngrok*wordt gegenereerd. De rest van de URL is afkomstig van de URL die in het functie code bestand is gevonden, waarbij de functie naam aan het einde wordt toegevoegd. Met ingang van de URL van het code bestand van de *ngrok* functie wordt de `http://localhost:7071` ngrok-URL vervangen en `{functionname}`wordt de functie naam vervangen.
+De *abonnee-eindpunt* waarde bestaat uit drie verschillende waarden. Het voor voegsel is de HTTPS-URL die door *ngrok*wordt gegenereerd. De rest van de URL is afkomstig van de URL die in het functie code bestand is gevonden, waarbij de functie naam aan het einde wordt toegevoegd. Met ingang van de URL van het code bestand van de functie wordt de *ngrok* -URL vervangen `http://localhost:7071` en wordt de functie naam vervangen `{functionname}` .
 
 In de volgende scherm afbeelding ziet u hoe de uiteindelijke URL eruit moet zien:
 

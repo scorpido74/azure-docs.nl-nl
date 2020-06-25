@@ -1,23 +1,14 @@
 ---
 title: Azure Service Bus-migreren naar Shared Access Signature autorisatie
 description: Meer informatie over het migreren van Azure Active Directory-Access Control Service naar Shared Access Signature-autorisatie.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2020
-ms.author: aschhab
-ms.openlocfilehash: 532bbaf0b983b2d4310780686777cbe895afebe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774618"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340120"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus-migreren van Azure Active Directory Access Control Service naar Shared Access Signature autorisatie
 
@@ -29,11 +20,11 @@ SAS heeft het voor deel dat het niet direct afhankelijk is van een andere servic
 
 Voor alle bestaande toepassingen die afhankelijk zijn van ACS, bevelen wij klanten aan om hun toepassingen te migreren om te vertrouwen op SAS.
 
-## <a name="migration-scenarios"></a> Migratiescenario's
+## <a name="migration-scenarios"></a>Migratiescenario's
 
 ACS en Service Bus zijn geïntegreerd met de gedeelde kennis van een *handtekening sleutel*. De handtekening sleutel wordt gebruikt door een ACS-naam ruimte voor het ondertekenen van autorisatie tokens en wordt gebruikt door Service Bus om te controleren of het token is uitgegeven door de gekoppelde ACS-naam ruimte. De ACS-naam ruimte bevat service-identiteiten en autorisatie regels. De autorisatie regels definiëren welke service-identiteit of welk token dat is uitgegeven door een externe ID-provider, het type toegang tot een deel van de Service Bus naam ruimte grafiek, in de vorm van een treffer voor het langste voor voegsel.
 
-Een ACS-regel kan bijvoorbeeld de **Verzend** claim op het pad `/` naar een service-identiteit verlenen, wat betekent dat een token dat is uitgegeven door ACS op basis van die regel, de client rechten verleent die worden verzonden naar alle entiteiten in de naam ruimte. Als het voor voegsel van `/abc`het pad is, is de identiteit beperkt tot het `abc` verzenden van entiteiten die onder dat voor voegsel worden genoemd. Er wordt van uitgegaan dat lezers van deze migratie richtlijnen al bekend zijn met deze concepten.
+Een ACS-regel kan bijvoorbeeld de **Verzend** claim op het pad `/` naar een service-identiteit verlenen, wat betekent dat een token dat is uitgegeven door ACS op basis van die regel, de client rechten verleent die worden verzonden naar alle entiteiten in de naam ruimte. Als het voor voegsel van het pad is `/abc` , is de identiteit beperkt tot het verzenden van entiteiten die `abc` onder dat voor voegsel worden genoemd. Er wordt van uitgegaan dat lezers van deze migratie richtlijnen al bekend zijn met deze concepten.
 
 De migratie scenario's vallen in drie categorieën:
 

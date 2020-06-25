@@ -1,19 +1,14 @@
 ---
 title: Azure Service Bus-bericht eenheden automatisch bijwerken
 description: In dit artikel wordt beschreven hoe u een Azure Automation runbook kunt gebruiken om automatisch bericht eenheden bij te werken van een Service Bus naam ruimte.
-services: service-bus-messaging
-ms.service: service-bus-messaging
-documentationcenter: ''
-author: spelluru
 ms.topic: how-to
-ms.date: 05/14/2020
-ms.author: spelluru
-ms.openlocfilehash: db86f22247b757ed2f1cc2c168421346ad90a1fc
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/23/2020
+ms.openlocfilehash: 52f5b13b482739bfa56ff606f684fd5a9c7d3b6e
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657642"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341492"
 ---
 # <a name="automatically-update-messaging-units-of-an-azure-service-bus-namespace"></a>Bericht eenheden van een Azure Service Bus naam ruimte automatisch bijwerken 
 Dit artikel laat u zien hoe u automatisch de [Messa ging-eenheden](service-bus-premium-messaging.md) van een service bus naam ruimte kunt bijwerken op basis van resource (CPU of geheugen) gebruik. 

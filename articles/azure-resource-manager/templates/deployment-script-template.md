@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: jgao
-ms.openlocfilehash: 3d9ab41fdb05eca3b39bf1ad222f6d42a3311b77
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 6cf10ea9693f922ee8edfb6bab5d1a7cde681fcb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193721"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339423"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -362,10 +362,10 @@ Timeout             : PT1H
 
 Met Azure CLI kunt u implementatie scripts beheren op basis van het abonnement of het bereik van de resource groep:
 
-- [AZ Deployment-scripts delete](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): een implementatie script verwijderen.
-- [AZ Deployment-scripts lijst](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): alle implementatie scripts weer geven.
-- [AZ Deployment-scripts show](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): een implementatie script ophalen.
-- [AZ Deployment-scripts show-log](/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): script logboeken van de implementatie weer geven.
+- [AZ Deployment-scripts delete](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-delete): een implementatie script verwijderen.
+- [AZ Deployment-scripts lijst](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-list): alle implementatie scripts weer geven.
+- [AZ Deployment-scripts show](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show): een implementatie script ophalen.
+- [AZ Deployment-scripts show-log](/cli/azure/deployment-scripts?view=azure-cli-latest#az-deployment-scripts-show-log): script logboeken van de implementatie weer geven.
 
 De uitvoer van de lijst opdracht ziet er ongeveer als volgt uit:
 

@@ -1,22 +1,14 @@
 ---
 title: IP-firewall regels voor Azure Service Bus configureren
 description: Hoe u firewall regels kunt gebruiken om verbindingen van bepaalde IP-adressen toe te staan Azure Service Bus.
-services: service-bus
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus
-ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2020
-ms.author: aschhab
-ms.openlocfilehash: fdd3540248c5210e2f6fc47f439641c007a793d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647817"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341439"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>IP-firewall regels voor Azure Service Bus configureren
 Service Bus naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -26,7 +18,7 @@ Deze functie is handig in scenario's waarin Azure Service Bus alleen toegankelij
 > [!IMPORTANT]
 > Firewalls en virtuele netwerken worden alleen ondersteund in de **Premium** -laag van service bus. Als de upgrade naar de **premier** -laag geen optie is, raden wij aan dat u het Shared Access Signature SAS-token veilig en met alleen geautoriseerde gebruikers kunt delen. Zie [verificatie en autorisatie](service-bus-authentication-and-authorization.md#shared-access-signature)voor meer informatie over SAS-verificatie.
 
-## <a name="ip-firewall-rules"></a>IP-firewall regels
+## <a name="ip-firewall-rules"></a>IP-firewallregels
 De IP-firewall regels worden toegepast op het niveau van de Service Bus naam ruimte. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Service Bus naam ruimte, wordt geweigerd als niet-geautoriseerd. De IP-regel wordt niet vermeld in het antwoord. IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
 
 >[!WARNING]

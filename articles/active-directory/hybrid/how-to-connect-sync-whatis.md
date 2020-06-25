@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3b87f40d75d4045155e7dd953dc76ffd9de2b34
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60348736"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356862"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect synchronisatie: synchronisatie begrijpen en aanpassen
 De Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) is een hoofd onderdeel van Azure AD Connect. Het zorgt voor alle bewerkingen die betrekking hebben op het synchroniseren van identiteits gegevens tussen uw on-premises omgeving en Azure AD. Azure AD Connect Sync is de opvolger van DirSync, Azure AD Sync en Forefront Identity Manager met de Azure Active Directory connector geconfigureerd.
@@ -64,7 +64,7 @@ De synchronisatie service bestaat uit twee onderdelen: het on-premises **Azure A
 | **Meer informatie en verwijzingen** | |
 | [Poorten](reference-connect-ports.md) |Een lijst met poorten die u moet openen tussen de synchronisatie-engine en uw on-premises directory's en Azure AD. |
 | [Kenmerken gesynchroniseerd naar Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Een lijst met alle kenmerken die worden gesynchroniseerd tussen on-premises AD en Azure AD. |
-| [Naslag informatie over functies](reference-connect-sync-functions-reference.md) |Een lijst met alle functies die beschikbaar zijn in declaratieve inrichting. |
+| [Functieverwijzing](reference-connect-sync-functions-reference.md) |Een lijst met alle functies die beschikbaar zijn in declaratieve inrichting. |
 
 ## <a name="additional-resources"></a>Aanvullende resources
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](whatis-hybrid-identity.md)

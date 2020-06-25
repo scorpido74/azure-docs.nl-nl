@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77895fd81bd37e304d422aea64da0298fc1673ff
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253531"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356471"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Problemen oplossen met een object dat niet synchroniseert met Azure Active Directory
 
@@ -77,8 +77,8 @@ De kolom **status** bevat de belangrijkste informatie en toont het ernstigste pr
 | --- | --- |
 | gestopt-* |De uitvoering kan niet worden voltooid. Dit kan bijvoorbeeld gebeuren als het externe systeem niet actief is en er geen contact kan worden opgenomen. |
 | gestopt-fout limiet |Er zijn meer dan 5.000 fouten. De uitvoering is automatisch gestopt vanwege het grote aantal fouten. |
-| voltooid-\*-fouten |De uitvoering is voltooid, maar er zijn fouten (minder dan 5.000) die moeten worden onderzocht. |
-| voltooid-\*-waarschuwingen |De uitvoering is voltooid, maar sommige gegevens hebben niet de verwachte status. Als u fouten hebt, is dit bericht meestal alleen een symptoom. Onderzoek pas waarschuwingen als u fouten hebt opgelost. |
+| voltooid- \* -fouten |De uitvoering is voltooid, maar er zijn fouten (minder dan 5.000) die moeten worden onderzocht. |
+| voltooid- \* -waarschuwingen |De uitvoering is voltooid, maar sommige gegevens hebben niet de verwachte status. Als u fouten hebt, is dit bericht meestal alleen een symptoom. Onderzoek pas waarschuwingen als u fouten hebt opgelost. |
 | voltooid |Geen problemen. |
 
 Wanneer u een rij selecteert, wordt de onderkant van het tabblad **bewerkingen** bijgewerkt, zodat de details van die uitvoering worden weer gegeven. Aan de linkerkant van dit gebied hebt u mogelijk een lijst met de titel **stap #**. Deze lijst wordt alleen weer gegeven als u meerdere domeinen in uw forest hebt en elk domein wordt vertegenwoordigd door een stap. De domein naam kan worden gevonden onder de koptekst **partitie**. Onder de kop **synchronisatie statistieken** vindt u meer informatie over het aantal wijzigingen dat is verwerkt. Selecteer de koppelingen om een lijst met gewijzigde objecten op te halen. Als u objecten met fouten hebt, worden deze fouten weer gegeven onder de kop **synchronisatie fouten** .

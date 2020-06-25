@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81407023"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356199"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Problemen met objectsynchronisatie oplossen met Azure AD Connect-synchronisatie
 Dit artikel bevat stappen voor het oplossen van problemen met object synchronisatie met behulp van de taak voor het oplossen van problemen. Bekijk [deze korte video](https://aka.ms/AADCTSVideo)voor informatie over het oplossen van problemen met de werking van Azure Active Directory (Azure AD).
@@ -32,7 +32,7 @@ Voor implementatie van Azure AD Connect met versie 1.1.749.0 of hoger, gebruikt 
 Voer de volgende stappen uit om de taak voor het oplossen van problemen in de wizard uit te voeren:
 
 1.  Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect-server met de optie als administrator uitvoeren.
-2.  Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2.  Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` .
 3.  Start de wizard Azure AD Connect.
 4.  Ga naar de pagina extra taken, selecteer problemen oplossen en klik op volgende.
 5.  Klik op de pagina probleem oplossing op starten om het menu probleem oplossing in Power shell te starten.
@@ -43,7 +43,7 @@ Voer de volgende stappen uit om de taak voor het oplossen van problemen in de wi
 De volgende invoer parameters zijn nodig voor de taak voor het oplossen van problemen:
 1.  **DN-naam van object** : dit is de DN-naam van het object waarvoor problemen moeten worden oplossen
 2.  **Naam** van de AD-connector: dit is de naam van het AD-forest waarin het bovenstaande object zich bevindt.
-3.  Globale beheerders referenties van de Azure ![AD-Tenant globale beheerder referenties](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Globale beheerders referenties van de Azure AD-Tenant globale ![ beheerder referenties](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>Inzicht in de resultaten van de taak voor het oplossen van problemen
 De taak voor het oplossen van problemen voert de volgende controles uit:

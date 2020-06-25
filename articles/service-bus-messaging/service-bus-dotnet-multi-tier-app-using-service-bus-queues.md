@@ -1,22 +1,15 @@
 ---
 title: .NET-toepassing met meerdere lagen die Azure Service Bus gebruikt | Microsoft Docs
 description: Een .NET-zelfstudie waarmee u in Azure een app met meerdere lagen kunt ontwikkelen die Service Bus-wachtrijen gebruikt voor communicatie tussen lagen.
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.date: 06/23/2020
+ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60403096"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340304"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-toepassing met meerdere lagen die Azure Service Bus-wachtrijen gebruikt
 
@@ -94,7 +87,7 @@ Vervolgens voegt u code toe waarmee items worden verzonden naar een Service Bus-
    ![][13]
    
    Na de installatie wordt verwezen naar de vereiste clientassembly's en zijn enkele nieuwe codebestanden toegevoegd.
-10. Klik in **Solution Explorer** met de rechtermuisknop op **Modellen** en klik achtereenvolgens op **Toevoegen** en **Klasse**. Typ in het vak **Naam** de naam **OnlineOrder.cs**. Klik vervolgens op **toevoegen**.
+10. Klik in **Solution Explorer** met de rechtermuisknop op **Modellen** en klik achtereenvolgens op **Toevoegen** en **Klasse**. Typ in het vak **Naam** de naam **OnlineOrder.cs**. Klik vervolgens op **Toevoegen**.
 
 ### <a name="write-the-code-for-your-web-role"></a>De code voor de webrol schrijven
 In dit gedeelte maakt u de verschillende pagina's die door uw toepassing worden weergegeven.
@@ -316,7 +309,7 @@ U maakt nu de werkrol die de orderverzendingen verwerkt. In dit voorbeeld wordt 
 4. Klik in het dialoogvenster **Nieuw rolproject toevoegen** op **Werkrol met Service Bus-wachtrij**.
    
    ![][23]
-5. Voer in het vak **Naam** de naam **OrderProcessingRole** voor het project in. Klik vervolgens op **toevoegen**.
+5. Voer in het vak **Naam** de naam **OrderProcessingRole** voor het project in. Klik vervolgens op **Toevoegen**.
 6. Kopieer de verbindingsreeks die u hebt verkregen in stap 9 van het gedeelte 'Een Service Bus-naamruimte maken' naar het klembord.
 7. Klik in **Solution Explorer** met de rechtermuisknop op de **OrderProcessingRole** die u in stap 5 hebt gemaakt (klik met de rechtermuisknop op **OrderProcessingRole** onder **Rollen** en niet onder de klasse). Klik vervolgens op **Eigenschappen**.
 8. Klik op het tabblad **Instellingen** van het dialoogvenster **Eigenschappen** in het vak **Waarde** voor **Microsoft.ServiceBus.ConnectionString**. Plak vervolgens de eindpuntwaarde die u in stap 6 hebt gekopieerd.

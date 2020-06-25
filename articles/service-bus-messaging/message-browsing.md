@@ -1,30 +1,20 @@
 ---
 title: Azure Service Bus-bericht bladeren
 description: Met Service Bus berichten bladeren en bekijken kunnen een Azure Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden.
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77539362"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341246"
 ---
 # <a name="message-browsing"></a>Berichten doorzoeken
 
 Door een bericht te bladeren of te bekijken, kan een Service Bus-client alle berichten opsommen die zich in een wachtrij of abonnement bevinden, meestal voor diagnose-en fout opsporing.
 
-Met de bewerking Peek worden alle berichten geretourneerd die bestaan in het wachtrij-of abonnements berichten logboek, niet alleen die beschikbaar zijn `Receive()` voor direct `OnMessage()` ophalen met of de lus. De `State` eigenschap van elk bericht vertelt u of het bericht actief is (dat kan worden ontvangen), [uitgesteld](message-deferral.md)of [gepland](message-sequencing.md).
+Met de bewerking Peek worden alle berichten geretourneerd die bestaan in het wachtrij-of abonnements berichten logboek, niet alleen die beschikbaar zijn voor direct ophalen met `Receive()` of de `OnMessage()` lus. De `State` eigenschap van elk bericht vertelt u of het bericht actief is (dat kan worden ontvangen), [uitgesteld](message-deferral.md)of [gepland](message-sequencing.md).
 
 Verbruikte en verlopen berichten worden opgeschoond door een asynchrone ' garbagecollection ' en niet noodzakelijkerwijs precies wanneer berichten verlopen en daarom `Peek` is het mogelijk om berichten te retour neren die al verlopen zijn en worden verwijderd of onbestelbaar wanneer een receive-bewerking vervolgens wordt aangeroepen voor de wachtrij of het abonnement.
 

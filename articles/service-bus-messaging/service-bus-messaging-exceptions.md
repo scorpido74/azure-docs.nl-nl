@@ -1,25 +1,14 @@
 ---
 title: Azure Service Bus-Messa ging Exceptions | Microsoft Docs
 description: Dit artikel bevat een lijst met Azure Service Bus Messa ging-uitzonde ringen en voorgestelde acties die moeten worden uitgevoerd wanneer de uitzonde ring optreedt.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/23/2020
-ms.author: aschhab
-ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.date: 06/23/2020
+ms.openlocfilehash: dd57938c24565257aefebc89a8b070865e6791af
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739344"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341652"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Uitzonde ringen Service Bus berichten
 Dit artikel bevat de .NET-uitzonde ringen die door .NET Framework Api's worden gegenereerd. 
@@ -149,7 +138,7 @@ In de onderstaande gevallen wordt een **SocketException** gegenereerd:
 
 ### <a name="resolution"></a>Oplossing
 
-De **SocketException** -fouten geven aan dat de VM die als host fungeert voor de toepassingen `<mynamespace>.servicebus.windows.net` de naam niet kan omzetten naar het bijbehorende IP-adres. 
+De **SocketException** -fouten geven aan dat de VM die als host fungeert voor de toepassingen de naam niet kan omzetten `<mynamespace>.servicebus.windows.net` naar het bijbehorende IP-adres. 
 
 Controleer of de volgende opdracht is geslaagd in toewijzing aan een IP-adres.
 

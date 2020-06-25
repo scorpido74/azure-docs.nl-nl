@@ -1,25 +1,15 @@
 ---
 title: Azure Service Bus-beheer bibliotheken | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u Azure Service Bus-beheer bibliotheken kunt gebruiken om Service Bus naam ruimten en entiteiten dynamisch in te richten.
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901496"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341711"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus-beheerbibliotheken
 
@@ -40,7 +30,7 @@ Als u de Service Bus-beheer bibliotheken wilt gaan gebruiken, moet u zich verifi
 * [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Deze zelf studies bieden u een `AppId` (client-id) `TenantId`,, `ClientSecret` en (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet ten minste [**Azure Service Bus gegevens eigenaar**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) of [**Inzender**](/azure/role-based-access-control/built-in-roles#contributor) machtigingen hebben voor de resource groep waarop u wilt uitvoeren.
+Deze zelf studies bieden u een `AppId` (client-id), `TenantId` , en `ClientSecret` (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet ten minste [**Azure Service Bus gegevens eigenaar**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) of [**Inzender**](/azure/role-based-access-control/built-in-roles#contributor) machtigingen hebben voor de resource groep waarop u wilt uitvoeren.
 
 ## <a name="programming-pattern"></a>Programmerings patroon
 

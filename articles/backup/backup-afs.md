@@ -3,14 +3,14 @@ title: Back-ups maken van Azure-bestands shares in de Azure Portal
 description: Meer informatie over het gebruik van de Azure Portal voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: a78760e793704d9ec4580e21ea86e0ba573b3949
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977985"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340713"
 ---
-# <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>Back-ups maken van Azure-bestands shares in een Recovery Services kluis
+# <a name="back-up-azure-file-shares"></a>Een back-up maken van Azure-bestandsshares 
 
 In dit artikel wordt uitgelegd hoe u de Azure Portal gebruikt voor het maken van back-ups van [Azure-bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -148,7 +148,7 @@ In sommige gevallen wilt u mogelijk een back-upmomentopname of een herstel punt 
 
 1. Selecteer **OK** om te bevestigen dat de back-uptaak op aanvraag wordt uitgevoerd.
 
-1. Controleer de portal meldingen om het volt ooien van de back-uptaak uit te voeren. U kunt de voortgang van de taak in het kluis dashboard bewaken. Selecteer de **back-uptaken** > die worden**uitgevoerd**.
+1. Controleer de portal meldingen om het volt ooien van de back-uptaak uit te voeren. U kunt de voortgang van de taak in het kluis dashboard bewaken. Selecteer de **back-uptaken**die worden  >  **uitgevoerd**.
 
 >[!NOTE]
 >Azure Backup vergrendelt het opslag account wanneer u de beveiliging voor een bestands share configureert in het bijbehorende account. Dit biedt beveiliging tegen onbedoeld verwijderen van een opslag account met back-ups van bestands shares.

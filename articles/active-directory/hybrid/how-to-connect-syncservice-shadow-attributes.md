@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: c57ab03f72f0f59dd18a873ddc7cd98d3c36ef9c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60384699"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356658"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schaduw kenmerken van Azure AD Connect Sync-Service
 De meeste kenmerken worden in azure AD op dezelfde manier weer gegeven als in uw on-premises Active Directory. Maar sommige kenmerken hebben een speciale verwerking en de kenmerk waarde in azure AD kan afwijken van wat Azure AD Connect synchroniseert.
@@ -32,7 +32,7 @@ Sommige kenmerken hebben twee weer gaven in azure AD. Zowel de on-premises waard
 U kunt de schaduw kenmerken niet zien met behulp van de Azure Portal of met Power shell. Maar het begrip van het concept helpt u bij het oplossen van bepaalde scenario's waarbij het kenmerk verschillende waarden op locatie en in de Cloud heeft.
 
 Bekijk dit voor beeld van Fabrikam voor meer informatie over het gedrag.  
-![Domeinen](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
+![Domains](./media/how-to-connect-syncservice-shadow-attributes/domains.png)  
 Ze hebben meerdere UPN-achtervoegsels in hun on-premises Active Directory, maar ze hebben er slechts één geverifieerd.
 
 ### <a name="userprincipalname"></a>userPrincipalName
@@ -58,7 +58,7 @@ Voor een postvak gebruiker, on-premises of in Exchange Online, worden alleen waa
 | on-premises proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-In dit geval is **SMTP: Abbie.\@Spencer fabrikam.com** verwijderd omdat dat domein niet is geverifieerd. Maar Exchange heeft ook **SIP toegevoegd: Abbie.\@Spencer fabrikamonline.com**. Fabrikam heeft geen on-premises Lync/Skype gebruikt, maar Azure AD en Exchange Online bereid het voor.
+In dit geval is **SMTP: Abbie. spencer \@ fabrikam.com** verwijderd omdat dat domein niet is geverifieerd. Maar Exchange heeft ook **SIP toegevoegd: Abbie. spencer \@ fabrikamonline.com**. Fabrikam heeft geen on-premises Lync/Skype gebruikt, maar Azure AD en Exchange Online bereid het voor.
 
 Deze logica voor proxyAddresses wordt aangeduid als **ProxyCalc**. ProxyCalc wordt bij elke wijziging van een gebruiker aangeroepen wanneer:
 

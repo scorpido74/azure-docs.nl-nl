@@ -5,12 +5,12 @@ description: Meer informatie over de bekende beperkingen bij het uitvoeren van W
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: e03343bc0bf8d2b49d2322573e75fe76cc853e32
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976605"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339877"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -85,7 +85,7 @@ U moet de naam Maxi maal 6 (zes) tekens gebruiken. Dit is een huidige beperking 
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Worden alle functies ondersteund met Windows-knoop punten?
 
-Netwerk beleid en kubenet worden momenteel niet ondersteund met Windows-knoop punten. 
+Netwerk beleid en kubenet worden momenteel niet ondersteund met Windows-knoop punten.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kan ik ingangs controllers uitvoeren op Windows-knoop punten?
 
@@ -101,7 +101,7 @@ GMSA-ondersteuning (Group managed service accounts) is momenteel niet beschikbaa
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kan ik Azure Monitor gebruiken voor containers met Windows-knoop punten en containers?
 
-Ja, maar Azure Monitor heeft echter een aantal [beperkingen][azure-monitor] voor Windows-ondersteuning.
+Ja, u kunt Azure Monitor echter een open bare preview hebben voor het verzamelen van Logboeken (stdout, stderr) en metrische gegevens van Windows-containers. U kunt ook koppelen aan de live stream van stdout-logboeken vanuit een Windows-container.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wat moet ik doen als ik een functie heb nodig die niet wordt ondersteund?
 

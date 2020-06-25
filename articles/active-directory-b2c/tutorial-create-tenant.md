@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4e2957ea179d9737bb6aad6fb8f121780575115b
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 807cc4647a27cf62109885ba1adaeaf5058a20c4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976376"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355417"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Zelfstudie: Een Azure Active Directory B2C-tenant maken
 
@@ -62,7 +62,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Selecteer **Controleren + maken**.
 1. Controleer de instellingen van uw Directory. Selecteer vervolgens **Maken**.
 
-U kunt meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor facturerings doeleinden.
+U kunt meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor facturerings doeleinden. Als u een Tenant wilt koppelen, moet u een beheerder zijn in de Azure AD B2C Tenant en moet u ten minste een rol van Inzender toewijzen binnen het Azure-abonnement. Zie [een Azure AD B2C-Tenant koppelen aan een abonnement](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
 ## <a name="select-your-b2c-tenant-directory"></a>Selecteer uw B2C-Tenant Directory
 

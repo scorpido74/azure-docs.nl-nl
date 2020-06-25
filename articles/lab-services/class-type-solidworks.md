@@ -7,12 +7,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: nicolela
-ms.openlocfilehash: ee2f1636547378102f35b432914426b3e24d92ef
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d3f6a855f4b162f0b14ff01ed0a3560897383c49
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898988"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341765"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Een Lab voor technische klassen instellen met behulp van SolidWorks
 
@@ -77,8 +77,6 @@ De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon k
 
     > [!NOTE]
     > In het dialoog venster **server toevoegen** wordt u gevraagd om het **poort nummer** dat wordt gebruikt voor uw licentie server en de naam of het IP-adres van de licentie server.
-
-1. Nadat u klaar bent met het installeren van de client software, moet u ook de GPU inschakelen die via de RDP-verbinding moet worden gebruikt. Zie het artikel over het [inschakelen van GPU via RDP-verbinding](how-to-setup-lab-gpu.md#enable-gpu-over-rdp-connection-to-windows-vms) voor meer informatie.
 
 ## <a name="cost"></a>Kosten
 

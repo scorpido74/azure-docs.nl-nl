@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 82c66231bcbdcaeb5371838291f1e6998f9f8bd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "62095486"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356165"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: afhandelings LargeObject-fouten veroorzaakt door userCertificate-kenmerk
 
@@ -70,7 +70,7 @@ De stappen kunnen als volgt worden samenvatten:
 8. Exporteer de wijzigingen naar Azure AD.
 9. Synchronisatie planner opnieuw inschakelen.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Step 1. Synchronisatie planner uitschakelen en controleren of er geen synchronisatie wordt uitgevoerd
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Stap 1. Synchronisatie planner uitschakelen en controleren of er geen synchronisatie wordt uitgevoerd
 Zorg ervoor dat er geen synchronisatie plaatsvindt terwijl u zich in het midden van de implementatie van een nieuwe synchronisatie regel bevindt om te voor komen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD. De ingebouwde synchronisatie planner uitschakelen:
 1. Start Power shell-sessie op de Azure AD Connect-server.
 

@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f63db0efb509223715efd4848a91d0435ab54af7
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617518"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340841"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
 
@@ -42,7 +42,7 @@ Wanneer u een pod implementeert in een AKS-cluster, plant Kubernetes alleen een 
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld `sku: gpu` wordt `effect: NoSchedule` de en ingesteld dat de Taint die wordt toegepast op het knoop punt in de vorige stap, worden toegestaan:
+Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld wordt de `sku: gpu` en `effect: NoSchedule` ingesteld dat de Taint die wordt toegepast op het knoop punt in de vorige stap, worden toegestaan:
 
 ```yaml
 kind: Pod
@@ -67,7 +67,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Wanneer deze pod wordt geïmplementeerd, zoals het gebruik `kubectl apply -f gpu-toleration.yaml`van, kan Kubernetes de pod plannen op de knoop punten waarop de Taint is toegepast. Met deze logische isolatie kunt u de toegang tot resources in een cluster beheren.
+Wanneer deze pod wordt geïmplementeerd, zoals het gebruik van `kubectl apply -f gpu-toleration.yaml` , kan Kubernetes de pod plannen op de knoop punten waarop de Taint is toegepast. Met deze logische isolatie kunt u de toegang tot resources in een cluster beheren.
 
 Wanneer u taints toepast, moet u samen werken met de ontwikkel aars en eigen aren van uw toepassing, zodat ze de vereiste verdragen in hun implementaties kunnen definiëren.
 
@@ -104,7 +104,7 @@ Laten we eens kijken naar een voor beeld van knoop punten met een grote hoeveelh
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-Een pod-specificatie voegt vervolgens `nodeSelector` de eigenschap toe om een knooppunt kiezer te definiëren die overeenkomt met het label dat op een knoop punt is ingesteld:
+Een pod-specificatie voegt vervolgens de `nodeSelector` eigenschap toe om een knooppunt kiezer te definiëren die overeenkomt met het label dat op een knoop punt is ingesteld:
 
 ```yaml
 kind: Pod
@@ -122,7 +122,7 @@ spec:
       limits:
         cpu: 4.0
         memory: 16Gi
-    nodeSelector:
+  nodeSelector:
       hardware: highmem
 ```
 

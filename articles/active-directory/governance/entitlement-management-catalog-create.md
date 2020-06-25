@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253d0dc945e0351b5c017739d081c567a139f5d1
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078442"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339575"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer
 
@@ -57,7 +57,7 @@ U kunt ook een catalogus maken met behulp van Microsoft Graph.  Een gebruiker in
 
 ## <a name="add-resources-to-a-catalog"></a>Resources toevoegen aan een catalogus
 
-Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanwezig zijn in een catalogus. De typen resources die u kunt toevoegen, zijn groepen, toepassingen en share point online-sites. De groepen kunnen bestaan uit in de Cloud gemaakte Office 365-groepen of in de Cloud gemaakte Azure AD-beveiligings groepen. De toepassingen kunnen Azure AD-bedrijfs toepassingen zijn, met inbegrip van zowel SaaS-toepassingen als uw eigen toepassingen die federatieve zijn voor Azure AD. De sites kunnen share point online-sites of share point online-site verzamelingen zijn.
+Als u resources wilt toevoegen aan een toegangs pakket, moeten de resources aanwezig zijn in een catalogus. De typen resources die u kunt toevoegen, zijn groepen, toepassingen en share point online-sites. De groepen kunnen door de Cloud gemaakte Microsoft 365 groepen of Azure AD-beveiligings groepen in de Cloud zijn gemaakt. De toepassingen kunnen Azure AD-bedrijfs toepassingen zijn, met inbegrip van zowel SaaS-toepassingen als uw eigen toepassingen die federatieve zijn voor Azure AD. De sites kunnen share point online-sites of share point online-site verzamelingen zijn.
 
 **Vereiste rol:** De [vereiste rollen weer geven om resources toe te voegen aan een catalogus](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 

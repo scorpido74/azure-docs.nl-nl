@@ -3,16 +3,16 @@ title: Beweging detecteren en gebeurtenissen verzenden - Azure
 description: In deze quickstart leert u hoe u Live Video Analytics in IoT Edge kunt gebruiken om beweging te detecteren en gebeurtenissen kunt verzenden door directe methoden programmatisch aan te roepen.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 4986ea13bec5382a8e0ef791e75442e4333e4356
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261585"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816711"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Quickstart: Beweging detecteren en gebeurtenissen verzenden
 
-Deze quickstart begeleidt u door de stappen om aan de slag te gaan met Live Video Analytics in IoT Edge. Er wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde live-videostream. Nadat u de installatie stappen hebt voltooid, kunt u een gesimuleerde live-videostream uitvoeren via een mediagraaf die beweging in die stream detecteert en rapporteert. In het onderstaande diagram ziet u een grafische weergave van die mediagraaf.
+Deze quickstart begeleidt u door de stappen om aan de slag te gaan met Live Video Analytics in IoT Edge. Er wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde live-videostream. Nadat u de installatiestappen hebt voltooid, kunt u een gesimuleerde livevideostream uitvoeren via een mediagraaf die beweging in die stream detecteert en rapporteert. In het volgende diagram ziet u een grafische weergave van die mediagraaf.
 
 ![Live Video Analytics op basis van bewegingsdetectie](./media/analyze-live-video/motion-detection.png) 
 
@@ -20,58 +20,57 @@ Dit artikel is gebaseerd op [voorbeeldcode](https://github.com/Azure-Samples/liv
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Visual Studio Code](https://code.visualstudio.com/) op uw computer met de volgende extensies:
-    1. [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
-    2. [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) geïnstalleerd op uw systeem
+* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) als u nog geen account hebt.
+* [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
+    * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+    * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). 
 
 > [!TIP]
-> U wordt mogelijk gevraagd om docker te installeren tijdens de installatie van de Azure IoT Tools-extensie. U kunt deze vraag negeren.
+> U wordt mogelijk gevraagd om Docker te installeren terwijl u de Azure IoT Tools-extensie installeert. U kunt de vraag negeren.
 
 ## <a name="set-up-azure-resources"></a>Azure-resources instellen
 
-De volgende Azure-resources zijn voor deze zelfstudie vereist.
+Voor deze zelfstudie hebt u de volgende Azure-resources nodig:
 
 * IoT Hub
 * Storage-account
 * Azure Media Services-account
 * Linux-VM in Azure, met [IoT Edge-runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) geïnstalleerd
 
-Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) voor het implementeren van de hierboven genoemde Azure-resources in uw Azure-abonnement. Volg de onderstaande stappen om dit te doen:
+Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) om de vereiste Azure-resources in uw Azure-abonnement te implementeren. Voer hiervoor de volgende stappen uit:
 
-1. Blader naar https://shell.azure.com.
-1. Als dit de eerste keer is dat u Cloud Shell gebruikt, wordt u gevraagd een abonnement te selecteren voor het maken van een opslagaccount en een Microsoft Azure Files-share. Selecteer Opslag maken om een opslagaccount te maken voor het opslaan van de gegevens van uw Cloud Shell-sessie. Dit opslagaccount is gescheiden van het account dat door het script wordt gemaakt voor gebruik met uw Azure Media Services-account.
-1. Selecteer in de vervolgkeuzelijst aan de linkerkant van het shell-venster de optie Bash als uw omgeving.
+1. Open [Azure Cloud Shell](https://shell.azure.com).
+1. Als u Cloud Shell voor het eerst gebruikt, wordt u gevraagd een abonnement te selecteren voor het maken van een opslagaccount en een Microsoft Azure-bestandsshare. Selecteer **Opslag maken** om een opslagaccount te maken voor de gegevens van uw Cloud Shell-sessie. Dit opslagaccount is gescheiden van het account dat door het script wordt gemaakt voor gebruik bij uw Azure Media Services-account.
+1. Selecteer in de vervolgkeuzelijst aan de linkerkant van het Cloud Shell-venster **Bash** als uw omgeving.
 
     ![Omgevingsselector](./media/quickstarts/env-selector.png)
 
-1. Voer de volgende opdracht uit
+1. Voer de volgende opdracht uit.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
 
-    Als het script is voltooid, ziet u alle resources die hierboven in uw abonnement zijn vermeld.
+    Als het script is voltooid, ziet u alle vereiste resources in uw abonnement.
 
-1. Zodra het script is voltooid, klikt u op de accolades om de mapstructuur zichtbaar te maken. Er zijn enkele bestanden gemaakt in de map ~/clouddrive/lva-sample. Van belang voor deze quickstart zijn:
+1. Als het script is voltooid, selecteert u de accolades om de mapstructuur zichtbaar te maken. Er bevinden zich enkele bestanden in de map *~/clouddrive/lva-sample*. Van belang voor deze quickstart zijn:
 
-     * ~/clouddrive/lva-sample/edge-deployment/.env: bevat eigenschappen die door Visual Studio Code worden gebruikt om modules in een edge-apparaat te implementeren
-     * ~/clouddrive/lva-sample/appsetting.json: gebruikt door Visual Studio Code voor het uitvoeren van voorbeeldcode
+     * ***~/clouddrive/lva-sample/edge-deployment/.env***: dit bestand bevat eigenschappen die Visual Studio Code gebruikt om modules te implementeren op een edge-apparaat.
+     * ***~/clouddrive/lva-sample/appsetting.json***: dit bestand wordt gebruikt door Visual Studio Code voor het uitvoeren van de voorbeeldcode.
      
-U hebt deze nodig om de bestanden in Visual Studio Code later in de quickstart bij te werken. U kunt deze voorlopig naar een lokaal bestand kopiëren.
-
+U hebt deze bestanden nodig wanneer u uw ontwikkelomgeving in Visual Studio Code instelt in de volgende sectie. U kunt deze voorlopig in een lokaal bestand kopiëren.
 
  ![App-instellingen](./media/quickstarts/clouddrive.png)
 
 ## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
 
-1. Kloon de opslagplaats vanaf hier https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp.
-1. Start Visual Studio Code en open de map waar u de opslagplaats hebt gedownload.
-1. In Visual Studio Code bladert u naar de map src/cloud-to-device-console-app en maakt u een bestand met de naam appsettings.json. Dit bestand bevat de instellingen die nodig zijn om het programma uit te voeren.
-1. Kopieer de inhoud vanuit het bestand ~/clouddrive/lva-sample/appsettings.json dat in de vorige sectie is gegenereerd (zie stap 5)
+1. Kloon de opslagplaats vanuit deze locatie: https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp.
+1. Open in Visual Studio Code de map waarin de opslagplaats is gedownload.
+1. Ga in Visual Studio Code naar de map *src/cloud-to-device-console-app*. Maak daar een bestand en geef het de naam *appsettings.json*. Dit bestand bevat de instellingen die nodig zijn om het programma uit te voeren.
+1. Kopieer de inhoud van het bestand *~/clouddrive/lva-sample/appsettings.json* dat u eerder in deze quickstart hebt gegenereerd.
 
-    De tekst moet er als volgt uitzien:
+    De tekst moet lijken op de volgende uitvoer.
 
     ```
     {  
@@ -80,8 +79,8 @@ U hebt deze nodig om de bestanden in Visual Studio Code later in de quickstart b
         "moduleId" : "lvaEdge"  
     }
     ```
-1. Blader vervolgens naar de map src/edge en maak een bestand met de extensie .env.
-1. Kopieer de inhoud vanuit het bestand ~/clouddrive/lva-sample/edge-deployment/.env. De tekst moet er als volgt uitzien:
+1. Ga naar de map *src/edge* en maak een bestand met de naam *.env*.
+1. Kopieer de inhoud van het bestand */clouddrive/lva-sample/edge-deployment/.env*. De tekst moet lijken op de volgende code.
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -100,66 +99,74 @@ U hebt deze nodig om de bestanden in Visual Studio Code later in de quickstart b
 
 ## <a name="examine-the-sample-files"></a>De voorbeeldbestanden bekijken
 
-1. Blader in Visual Studio code naar src/edge. U ziet het. env-bestand dat u hebt gemaakt, samen met een paar sjabloonbestanden voor de implementatie.
+1. Ga in Visual Studio Code naar *src/edge*. U ziet het bestand *.env* en enkele implementatiesjabloonbestanden.
 
-    De implementatiesjabloon verwijst naar het implementatiemanifest voor het edge-apparaat met enkele tijdelijke waarden. Het. env-bestand bevat de waarden voor die variabelen.
-1. Blader vervolgens naar de map src/cloud-to-device-console-app. Hier ziet u het bestand appsettings.json dat u hebt gemaakt, samen met enkele andere bestanden:
+    De implementatiesjabloon verwijst naar het implementatiemanifest voor het edge-apparaat, waarbij variabelen zijn gebruikt voor bepaalde eigenschappen. Het bestand *.env* bevat de waarden voor die variabelen.
+1. Ga naar de map *src/cloud-to-device-console-app*. Hier ziet u het bestand *appsettings.json* en enkele andere bestanden:
 
-    * c2d-console-app.csproj: het projectbestand voor Visual Studio Code.
-    * operations.json: dit bestand bevat de verschillende bewerkingen die u het programma wilt laten uitvoeren.
-    * Program.cs: de voorbeeldcode van het programma. Deze doet het volgende:
+    * ***c2d-console-app.csproj***: het projectbestand voor Visual Studio Code.
+    * ***operations.json***: een lijst met de bewerkingen die u het programma wilt laten uitvoeren.
+    * ***Program.cs***: de voorbeeldcode van het programma. Deze code:
     
-        * Laadt de app-instellingen
-        * Roept directe methoden aan die worden weergegeven door de module Live Video Analytics in IoT Edge. U kunt de module gebruiken om live-videostreams te analyseren door de bijbehorende [directe methoden](direct-methods.md) aan te roepen 
-        * Wordt onderbroken zodat u een controle kunt uitvoeren op de uitvoer van het programma in het TERMINAL-venster en de gebeurtenissen die worden gegenereerd door de module in het UITVOER-venster
-        * Roept directe methoden op om resources op te schonen   
+      * De app-instellingen laden.
+      * Roept directe methoden aan die worden weergegeven door de module Live Video Analytics in IoT Edge. U kunt de module gebruiken om livevideostreams te analyseren door de bijbehorende [directe methoden](direct-methods.md) aan te roepen.
+      * Pauzeert, zodat u de uitvoer van het programma kunt controleren in het **TERMINAL**-venster en de gebeurtenissen die zijn gegenereerd door de module kunt controleren in het **UITVOER**-venster.
+      * Roept directe methoden aan voor het opschonen van resources.   
 
-## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Het IoT Edge-implementatiemanifest genereren en implementeren
+## <a name="generate-and-deploy-the-deployment-manifest"></a>Het implementatiemanifest genereren en implementeren
 
-Het implementatiemanifest definieert welke modules worden geïmplementeerd op een edge-apparaat en definieert tevens de configuratie-instellingen voor deze modules. Volg deze stappen om een dergelijk manifest op basis van het sjabloonbestand te genereren en implementeer het vervolgens op het edge-apparaat.
+Het implementatiemanifest geeft aan welke modules op een edge-apparaat worden geïmplementeerd. Ook bevat het de configuratie-instellingen voor deze modules. 
 
-1. Open Visual Studio Code
-1. Stel de IoT Hub-verbindingsreeks in door naast het deelvenster AZURE IOT HUB in de linkerbenedenhoek te klikken op het pictogram Meer acties. U kunt de tekenreeks kopiëren vanuit het bestand src/cloud-to-device-console-app/appsettings.json. 
+Volg deze stappen om het manifest te genereren op basis van het sjabloonbestand en het vervolgens te implementeren op het edge-apparaat.
 
-    ![IoT-verbindingsreeks instellen](./media/quickstarts/set-iotconnection-string.png)
-1. Klik vervolgens met de rechtermuisknop op het bestand src/edge/deployment.template.json en klik op IoT Edge-implementatiemanifest genereren.
-    ![IoT Edge-implementatiemanifest genereren](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
+1. Open Visual Studio Code.
+1. Selecteer naast het deelvenster **AZURE IOT HUB** het pictogram **Meer acties** om de IoT Hub-verbindingsreeks in te stellen. U kunt de tekenreeks kopiëren uit het bestand *src/cloud-to-device-console-app/appsettings.json*. 
 
-    Hiermee maakt u een manifestbestand in de map src/edge/config met de naam deployment.amd64.json.
-1. Klik met de rechtermuisknop op src/edge/config/deployment.amd64.json en klik op Implementatie voor één apparaat maken en selecteer de naam van uw edge-apparaat.
+    ![IoT Hub-verbindingsreeks instellen](./media/quickstarts/set-iotconnection-string.png)
+
+1. Klik met de rechtermuisknop op **src/edge/deployment.template.json** en selecteer **IoT Edge-implementatiemanifest genereren**.
+
+    ![Het IoT Edge-implementatiemanifest genereren](./media/quickstarts/generate-iot-edge-deployment-manifest.png)
+
+    Met deze actie maakt u een manifestbestand met de naam *deployment.amd64.json* in de map *src/edge/config*.
+1. Klik met de rechtermuisknop op **src/edge/config/deployment.amd64.json**, selecteer **Implementatie voor één apparaat maken** en selecteer vervolgens de naam van uw edge-apparaat.
 
     ![Implementatie voor één apparaat maken](./media/quickstarts/create-deployment-single-device.png)
-1. Vervolgens wordt u gevraagd om een IoT Hub-apparaat te selecteren. Selecteer lva-sample-device in de vervolgkeuzelijst.
-1. Na ongeveer dertig seconden kunt u de Azure IOT-hub vernieuwen in het gedeelte linksonder en ziet u dat op het edge-apparaat de volgende modules zijn geïmplementeerd:
 
-    * Live Video Analytics in IoT Edge (modulenaam lvaEdge)
-    * RTSP-simulator (modulenaam rtspsim)
+1. Wanneer u wordt gevraagd om een IoT Hub-apparaat te selecteren, kiest u **lva-sample-device** in de vervolgkeuzelijst.
+1. Vernieuw Azure IoT Hub na ongeveer 30 seconden in de linkerbenedenhoek van het venster. Op het edge-apparaat worden nu de volgende geïmplementeerde modules weergegeven:
 
-In de RTSP-simulatormodule wordt een live-videostream gesimuleerd met behulp van een videobestand dat is gekopieerd naar uw edge-apparaat tijdens het uitvoeren van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). In deze fase hebt u de modules geïmplementeerd, maar er zijn geen mediagrafen actief.
+    * Live Video Analytics in IoT Edge (modulenaam `lvaEdge`)
+    * RTSP-simulator (Real-Time Streaming Protocol) (modulenaam `rtspsim`)
 
-## <a name="prepare-for-monitoring-events"></a>Bewakingsgebeurtenissen voorbereiden
+In de RTSP-simulatormodule wordt een livevideostream gesimuleerd met behulp van een videobestand dat is gekopieerd naar uw edge-apparaat toen u het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) uitvoerde. 
 
-U gebruikt de module Live Video Analytics in IoT Edge om beweging in de inkomende live-videostream te detecteren en gebeurtenissen naar de IoT Hub te verzenden. Volg deze stappen om deze gebeurtenissen te bekijken:
+In deze fase zijn de modules geïmplementeerd, maar zijn er geen mediagrafen actief.
+
+## <a name="prepare-to-monitor-events"></a>Het bewaken van gebeurtenissen voorbereiden
+
+U gaat de module Live Video Analytics in IoT Edge gebruiken om beweging in de inkomende livevideostream te detecteren en gebeurtenissen naar IoT Hub te verzenden. Volg deze stappen om deze gebeurtenissen te bekijken:
 
 1. Open het deelvenster Explorer in Visual Studio Code en zoek Azure IoT Hub in de linkerbenedenhoek.
-1. Vouw het apparaatknooppunt uit.
-1. Klik met de rechtermuisknop op lva-sample-device en kies de optie Bewaking van ingebouwde gebeurtenisbewaking starten.
+1. Vouw het knooppunt **Apparaten** uit.
+1. Klik met de rechtermuisknop op **Iva-sample-device** en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**.
 
     ![Bewaking van ingebouwd gebeurteniseindpunt starten](./media/quickstarts/start-monitoring-iothub-events.png)
 
 ## <a name="run-the-sample-program"></a>Het voorbeeldprogramma uitvoeren
 
-Volg de onderstaande stappen om de voorbeeldcode uit te voeren.
-1. Ga in Visual Studio Code naar src/cloud-to-device-console-app/operations.json.
-1. Controleer het volgende onder het knooppunt GraphTopologySet:
+Volg deze stappen om de voorbeeldcode uit te voeren:
 
-    ` "topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
-1. Controleer vervolgens of op de knooppunten GraphInstanceSet en GraphTopologyDelete de waarde van topologyName overeenkomt met de waarde van de eigenschap 'name' in de bovenstaande graaftopologie:
+1. Ga in Visual Studio Code naar *src/cloud-to-device-console-app/operations.json*.
+1. Controleer op het knooppunt **GraphTopologySet** of u de volgende waarde ziet:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
+1. Controleer of op de knooppunten **GraphInstanceSet** en **GraphTopologyDelete** de waarde van `topologyName` overeenkomt met de waarde van de eigenschap `name` in de graaftopologie:
 
     `"topologyName" : "MotionDetection"`
     
-1. Start een foutopsporingssessie (druk op F5). In het TERMINAL-venster ziet u enkele berichten verschijnen.
-1. operations.json begint met het uitvoeren van aanroepen naar GraphTopologyList en GraphInstanceList. Als u resources hebt opgeschoond na vorige quickstarts, worden er lege lijsten geretourneerd, waarna wordt gepauzeerd zodat u op Enter kunt drukken.
+1. Start een foutopsporingssessie door de toets F5 te selecteren. In het **TERMINAL**-venster worden enkele berichten weergegeven.
+1. Het bestand *operations.json-* wordt gestart met aanroepen naar `GraphTopologyList` en `GraphInstanceList`. Als u na het voltooien van vorige quickstarts resources hebt opgeschoond, worden er lege lijsten geretourneerd en wordt het proces gepauzeerd. Selecteer de Enter-toets om door te gaan.
 
     ```
     --------------------------------------------------------------------------
@@ -176,56 +183,58 @@ Volg de onderstaande stappen om de voorbeeldcode uit te voeren.
     Executing operation WaitForInput
     Press Enter to continue
     ```
-1. Wanneer u op de Enter-toets drukt in het TERMINAL-venster, wordt de volgende set met aanroepen met de directe methode gemaakt
+
+    In het **TERMINAL**-venster wordt de volgende set aanroepen van directe methoden weergegeven:
      
-     * Een aanroep van GraphTopologySet met behulp van topologyUrl hierboven
-     * Een aanroep van GraphInstanceSet met behulp van de volgende hoofdtekst
+     * Een aanroep van `GraphTopologySet` waarin gebruik wordt gemaakt van de voorgaande `topologyUrl`
+     * Een aanroep van `GraphInstanceSet` waarin gebruik wordt gemaakt van de volgende hoofdtekst:
      
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph",
-       "properties": {
-         "topologyName": "MotionDetection",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph",
+           "properties": {
+             "topologyName": "MotionDetection",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
+               }
+             ]
            }
-         ]
-       }
-     }
-     ```
+         }
+         ```
      
-     * Een aanroep van GraphInstanceActivate om het graafexemplaar te starten en de videostroom te starten.
-     * Een tweede aanroep van GraphInstanceList om aan te geven dat het graafexemplaar inderdaad actief is.
-1. De uitvoer in het TERMINAL-venster wordt nu onderbroken met de prompt 'Druk op Enter om door te gaan'. Klik nog niet op Enter. U kunt omhoog schuiven om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen
-1. Als u nu overschakelt naar het UITVOER-venster in Visual Studio Code, worden berichten die worden verzonden naar de IoT-hub, weergegeven door de module Live Video Analytics in IoT Edge.
-     * Deze berichten worden besproken in de sectie hieronder
-1. De mediagraaf blijft actief en resultaten afdrukken: de RTSP-simulator blijft de bronvideo herhalen. Als u de mediagraaf wilt stoppen, gaat u terug naar het TERMINAL-venster en klikt u op Enter. De volgende serie aanroepen worden gedaan om resources op te schonen:
-     * Een aanroep van GraphInstanceDeactivate om het graafexemplaar te deactiveren
-     * Een aanroep van GraphInstanceDelete om het exemplaar te verwijderen
-     * Een aanroep van GraphTopologyDelete om de topologie te verwijderen
-     * Een laatste aanroep van GraphTopologyList om aan te geven dat de lijst nu leeg is
+     * Een aanroep van `GraphInstanceActivate` waarmee het graafexemplaar en de videostroom worden gestart
+     * Een tweede aanroep van `GraphInstanceList` waarmee wordt weergegeven dat het graafexemplaar wordt uitgevoerd
+1. De uitvoer in het **TERMINAL**-venster wordt gepauzeerd bij `Press Enter to continue`. Selecteer Enter nog niet. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
+1. Schakel naar het **UITVOER**-venster in Visual Studio Code. Er zijn berichten te zien die door de module Live Video Analytics in IoT Edge worden verzonden naar de IoT-hub. In de volgende sectie van deze quickstart worden deze berichten besproken.
+1. Het uitvoeren van de mediagraaf wordt vervolgd en de resultaten worden afgedrukt. Via de RTSP-simulator wordt de bronvideo continu herhaald. Als u de mediagraaf wilt stoppen, keert u terug naar het **TERMINAL**-venster en selecteert u Enter. 
+
+    Met de volgende reeks aanroepen worden resources opgeschoond:
+     * Met een aanroep van `GraphInstanceDeactivate` wordt het graafexemplaar gedeactiveerd.
+     * Met een aanroep van `GraphInstanceDelete` wordt het exemplaar verwijderd.
+     * Met een aanroep van `GraphTopologyDelete` wordt de topologie verwijderd.
+     * Met een aanroep van `GraphTopologyList` wordt ten slotte aangegeven dat de lijst leeg is.
 
 ## <a name="interpret-results"></a>Resultaten interpreteren
 
-Wanneer u de mediagraaf uitvoert, worden de resultaten van het knooppunt van de bewegingsdetectorprocessor via het knooppunt van de IoT Hub-sink verzonden naar de IoT-hub. De berichten die u ziet in het UITVOER-venster van Visual Studio Code bevatten een sectie 'body' en een sectie 'applicationProperties'. Lees [dit](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) artikel als u wilt weten wat deze secties inhouden.
+Wanneer u de mediagraaf uitvoert, gaan de resultaten van het knooppunt van de bewegingsdetectorprocessor via het knooppunt van de IoT Hub-sink naar de IoT-hub. De berichten die u ziet in het **UITVOER**-venster van Visual Studio Code bevatten een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) voor meer informatie.
 
-In de onderstaande berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst door de module Live Video Analytics bepaald.
+In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst bepaald door de module Live Video Analytics.
 
-## <a name="mediasession-established-event"></a>MediaSession Established-gebeurtenis
+### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-gebeurtenis
 
-Wanneer een mediagraaf wordt geïnstantieerd, probeert het RTSP-bronknooppunt verbinding te maken met de RTSP-server die wordt uitgevoerd op de rtspsim-live555-container. Als dit lukt, wordt deze gebeurtenis afgedrukt:
+Wanneer een mediagraaf wordt geïnstantieerd, probeert het RTSP-bronknooppunt verbinding te maken met de RTSP-server die wordt uitgevoerd in de rtspsim-live555-container. Als het lukt om de verbinding tot stand te brengen, wordt de volgende gebeurtenis afgedrukt.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:  
@@ -243,16 +252,19 @@ Wanneer een mediagraaf wordt geïnstantieerd, probeert het RTSP-bronknooppunt ve
 }
 ```
 
-* Het bericht is een diagnostische gebeurtenis, MediaSessionEstablished, die aangeeft dat het RTSP-bronknooppunt (het subject) verbinding kan maken met de RTSP-simulator en een (gesimuleerde) live-feed kan gaan ontvangen.
-* 'subject' in applicationProperties verwijst naar het knooppunt in de graaftopologie van waaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van het RTSP-bronknooppunt.
-* 'eventType' in applicationProperties geeft aan dat dit een diagnostische gebeurtenis is.
-* 'eventTime' geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
-* 'body' bevat gegevens over de diagnostische gebeurtenis, in dit geval de [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol)-details.
+In de voorgaande uitvoer geldt het volgende: 
+* Het bericht is een diagnostische gebeurtenis, `MediaSessionEstablished`. Het geeft aan dat het RTSP-bronknooppunt (het onderwerp) is verbonden met de RTSP-simulator en is begonnen met het ontvangen van een (gesimuleerde) livefeed.
+* In `applicationProperties` verwijst `subject` naar het knooppunt in de graaftopologie vanwaaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van het RTSP-bronknooppunt.
+* In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis een diagnostische gebeurtenis is.
+* `eventTime` geeft het tijdstip aan waarop de gebeurtenis heeft plaatsgevonden.
+* De `body`-sectie bevat gegevens over de diagnostische gebeurtenis. In dit geval bevatten de gegevens de details van [Session Description Protocol (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol).
 
 
-## <a name="motion-detection-event"></a>Bewegingsdetectiegebeurtenis
+### <a name="motiondetection-event"></a>MotionDetection-gebeurtenis
 
-Wanneer er beweging wordt gedetecteerd, verzendt de module Live Video Analytics Edge een deductiegebeurtenis. Het type wordt ingesteld op 'motion' om aan te geven dat het een resultaat is van de bewegingsdetectieprocessor en eventTime vertelt u op welke tijd (UTC) beweging heeft plaatsgevonden. Hieronder ziet u een voorbeeld:
+Wanneer er beweging wordt gedetecteerd, verzendt de module Live Video Analytics in IoT Edge een deductiegebeurtenis. Het `type` is ingesteld op `motion` om aan te geven dat het om een resultaat van de bewegingsdetectieprocessor gaat. De waarde `eventTime` geeft aan wanneer de beweging heeft plaatsgevonden (in UTC). 
+
+Hier volgt een voorbeeld van dit bericht:
 
 ```
   {  
@@ -282,12 +294,14 @@ Wanneer er beweging wordt gedetecteerd, verzendt de module Live Video Analytics 
 }  
 ```
 
-* 'subject' in applicationProperties verwijst naar het knooppunt in de mediagraaf waaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van de bewegingsdetectieprocessor.
-* 'eventType' in applicationProperties geeft aan dat dit een analytische gebeurtenis is.
-* 'eventTime' geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
-'body' bevat gegevens over de analytische gebeurtenis. In dit geval is de gebeurtenis een deductiegebeurtenis en daarom bevat de hoofdtekst ('body') de gegevens 'timestamp' en 'inferences'.
-* Het gegeven 'inferences' geeft aan dat het 'type' 'motion' is en dat er aanvullende gegevens zijn over de gebeurtenis 'motion'.
-* De sectie 'box' bevat de coördinaten voor een begrenzingsvak rond het bewegende object. De waarden worden genormaliseerd door de breedte en hoogte van de video in pixels (bijvoorbeeld een breedte van 1920 en een hoogte van 1080).
+In dit voorbeeld geldt het volgende: 
+
+* In `applicationProperties` verwijst `subject` naar het knooppunt in de mediagraaf vanwaaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van de bewegingsdetectieprocessor.
+* In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis een analytische gebeurtenis is.
+* De waarde `eventTime` is het tijdstip waarop de gebeurtenis heeft plaatsgevonden.
+* De waarde `body` bevat gegevens over de analytische gebeurtenis. In dit geval is de gebeurtenis een deductiegebeurtenis en bevat de hoofdtekst daarom `timestamp`- en `inferences`-gegevens.
+* De `inferences`-gegevens geven aan dat het `type` `motion` is. Deze bevatten aanvullende gegevens over die `motion`-gebeurtenis.
+* De sectie `box` bevat de coördinaten voor een begrenzingsvak rond het bewegende object. De waarden worden genormaliseerd door de breedte en hoogte van de video in pixels. De breedte is bijvoorbeeld 1920 en de hoogte 1080.
 
     ```
     l - distance from left of image
@@ -296,10 +310,10 @@ Wanneer er beweging wordt gedetecteerd, verzendt de module Live Video Analytics 
     h - height of bounding box
     ```
     
-## <a name="cleanup-resources"></a>Resources opruimen
+## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de andere quickstarts wilt proberen, moet u de gemaakte resources bewaren. Anders gaat u naar de Azure-portal, bladert u naar de resourcegroepen, selecteert u de resourcegroep waaronder u deze quickstart hebt uitgevoerd en verwijdert u alle resources.
+Als u de andere quickstarts wilt proberen, moet u de resources die u hebt gemaakt, bewaren. Anders gaat u in Azure Portal naar de resourcegroepen, selecteert u de resourcegroep waar u deze quickstart hebt uitgevoerd en verwijdert u vervolgens alle resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer de andere quickstarts uit, zoals het detecteren van een object in een live-videofeed.        
+Voer de andere quickstarts uit, zoals het detecteren van een object in een livevideofeed.        

@@ -1,20 +1,14 @@
 ---
 title: Azure Service Bus metrische gegevens in Azure Monitor | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken om Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen) te bewaken.
-services: service-bus-messaging
-documentationcenter: .NET
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: aschhab
-ms.openlocfilehash: f2f3c8113fb89a41b1a22567b4e5ca0085353689
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/23/2020
+ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736038"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340286"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
@@ -60,7 +54,7 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 Telt het aantal gegevens-en beheer bewerkings aanvragen.
 
-| Metrische naam | Beschrijving |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
 | Binnenkomende aanvragen| Het aantal aanvragen voor de Service Bus-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Geslaagde aanvragen|Het aantal geslaagde aanvragen voor de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -78,7 +72,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="message-metrics"></a>Metrische gegevens van bericht
 
-| Metrische naam | Beschrijving |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
 |Inkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Uitgaande berichten|Het aantal gebeurtenissen of berichten dat is ontvangen van Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -96,7 +90,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="connection-metrics"></a>Verbindings gegevens
 
-| Metrische naam | Beschrijving |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
 |ActiveConnections|Het aantal actieve verbindingen op een naam ruimte en op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |Geopende verbindingen |Het aantal geopende verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -111,7 +105,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 > 
 > De andere metriek die u kunt bewaken is: **vertraagde aanvragen**. Het is niet mogelijk om een probleem op te lossen, omdat de naam ruimte binnen het geheugen, de CPU en de brokered Connections limieten blijft. Zie [beperking in azure service bus Premium-laag](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) voor meer informatie.
 
-| Metrische naam | Beschrijving |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
 |CPU-gebruik per naam ruimte|Het percentage CPU-gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
 |Gebruik van geheugen grootte per naam ruimte|Het percentage geheugen gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
@@ -133,7 +127,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
     1. Selecteer **Service Bus naam ruimten** voor het veld **filteren op resource type** . 
     2. Selecteer uw abonnement voor het veld **filteren op abonnement** .
     3. Selecteer de **Service Bus-naam ruimte** in de lijst. 
-    4. Selecteer **Done**. 
+    4. Selecteer **Voltooid**. 
     
         ![Naamruimte selecteren](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Selecteer **criteria toevoegen**en voer de volgende acties uit op de pagina **signaal logica configureren** :
@@ -144,7 +138,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
     1. Selecteer **groter dan** voor **waarde**.
     2. Selecteer **totaal** voor **tijd aggregatie**. 
     3. Voer **5** in als **drempel waarde**. 
-    4. Selecteer **Done**.    
+    4. Selecteer **Voltooid**.    
 
         ![Voor waarde opgeven](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. Vouw op de pagina **regel maken** de optie **waarschuwings Details definiëren**uit en voer de volgende acties uit:

@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474000d1d4d7e1358682d1421125d482e3782049
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 64ab5901ad54e37fc05d7da757ce7f31d42fe3b6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60381392"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357100"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Het tabblad Synchronisatie Service Manager bewerkingen gebruiken
 
@@ -39,8 +39,8 @@ De kolom **status** is de belangrijkste informatie en toont het ernstigste probl
 | --- | --- |
 | gestopt\* |De uitvoering is niet voltooid. Bijvoorbeeld, als het externe systeem niet actief is en er geen contact met kan worden opgenomen. |
 | gestopt-fout limiet |Er zijn meer dan 5.000 fouten. De uitvoering is automatisch gestopt vanwege het grote aantal fouten. |
-| voltooid-\*-fouten |De uitvoering is voltooid, maar er zijn fouten (minder dan 5.000) die moeten worden onderzocht. |
-| voltooid-\*-waarschuwingen |De uitvoering is voltooid, maar sommige gegevens hebben niet de verwachte status. Als er fouten zijn, is dit bericht meestal alleen een symptoom. Als u fouten hebt opgelost, moet u geen waarschuwingen onderzoeken. |
+| voltooid- \* -fouten |De uitvoering is voltooid, maar er zijn fouten (minder dan 5.000) die moeten worden onderzocht. |
+| voltooid- \* -waarschuwingen |De uitvoering is voltooid, maar sommige gegevens hebben niet de verwachte status. Als er fouten zijn, is dit bericht meestal alleen een symptoom. Als u fouten hebt opgelost, moet u geen waarschuwingen onderzoeken. |
 | voltooid |Geen problemen. |
 
 Wanneer u een rij selecteert, worden de onderste updates weer gegeven met de details van die uitvoering. Helemaal links van de onderkant hebt u mogelijk een lijst met de melding **stap #**. Deze lijst wordt alleen weer gegeven als u meerdere domeinen in uw forest hebt waarin elk domein door een stap wordt vertegenwoordigd. De domein naam kan worden gevonden onder de koptekst **partitie**. Onder **synchronisatie statistieken**vindt u meer informatie over het aantal wijzigingen dat is verwerkt. U kunt op de koppelingen klikken om een lijst met gewijzigde objecten op te halen. Als u objecten met fouten hebt, worden deze fouten weer gegeven onder **synchronisatie fouten**.

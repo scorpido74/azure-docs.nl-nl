@@ -11,32 +11,32 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610442"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85356403"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
 In dit artikel wordt uitgelegd hoe connectiviteit tussen Azure AD Connect en Azure AD werkt en hoe u verbindings problemen kunt oplossen. Deze problemen worden hoogstwaarschijnlijk gezien in een omgeving met een proxy server.
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>Verbindings problemen in de installatie wizard oplossen
-Azure AD Connect maakt gebruik van moderne verificatie (met behulp van de ADAL-bibliotheek) voor verificatie. Voor de installatie wizard en de juiste synchronisatie-engine moet machine. config correct zijn geconfigureerd, aangezien deze twee .NET-toepassingen zijn.
+Azure AD Connect maakt gebruik van moderne verificatie (met behulp van de ADAL-bibliotheek) voor verificatie. Voor de installatie wizard en de synchronisatie-engine moet machine.config correct worden geconfigureerd, omdat deze twee .NET-toepassingen zijn.
 
 In dit artikel laten we zien hoe fabrikam verbinding maakt met Azure AD via de proxy. De proxy server heeft de naam fabrikamproxy en maakt gebruik van poort 8080.
 
-Eerst moeten we controleren of [**machine. config**](how-to-connect-install-prerequisites.md#connectivity) correct is geconfigureerd.
+Eerst moeten we controleren of [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
-> In sommige niet-micro soft-blogs wordt gedocumenteerd dat er wijzigingen in MIIServer. exe. config moeten worden aangebracht. Dit bestand wordt echter bij elke upgrade overschreven, dus zelfs als het tijdens de eerste installatie werkt, stopt het systeem bij de eerste upgrade. Daarom is het raadzaam om in plaats daarvan machine. config bij te werken.
+> In sommige niet-micro soft-blogs wordt gedocumenteerd dat er in plaats daarvan wijzigingen in miiserver.exe.config moeten worden aangebracht. Dit bestand wordt echter bij elke upgrade overschreven, dus zelfs als het tijdens de eerste installatie werkt, stopt het systeem bij de eerste upgrade. Daarom is het raadzaam om machine.config in plaats daarvan bij te werken.
 >
 >
 
@@ -62,7 +62,7 @@ De volgende problemen zijn de meest voorkomende fouten die optreden in de instal
 Deze fout wordt weer gegeven wanneer de wizard zelf de proxy niet kan bereiken.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
-* Als u deze fout ziet, controleert u of de [machine. config](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd.
+* Als u deze fout ziet, controleert u of de [machine.config](how-to-connect-install-prerequisites.md#connectivity) juist is geconfigureerd.
 * Als dat het goed is, volgt u de stappen in [Controleer de connectiviteit](#verify-proxy-connectivity) van de proxy om te zien of het probleem zich buiten de wizard bevindt.
 
 ### <a name="a-microsoft-account-is-used"></a>Een Microsoft-account wordt gebruikt
@@ -70,33 +70,33 @@ Als u een **Microsoft-account** gebruikt in plaats van een **school-of organisat
 ![Er wordt een micro soft-account gebruikt](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Het MFA-eind punt kan niet worden bereikt
-Deze fout wordt weer gegeven als **https://secure.aadcdn.microsoftonline-p.com** het eind punt niet kan worden bereikt en voor uw globale beheerder MFA is ingeschakeld.
+Deze fout wordt weer gegeven als het eind punt **https://secure.aadcdn.microsoftonline-p.com** niet kan worden bereikt en voor uw globale beheerder MFA is ingeschakeld.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Als u deze fout ziet, controleert u of het eind punt **Secure.aadcdn.microsoftonline-p.com** is toegevoegd aan de proxy.
 
 ### <a name="the-password-cannot-be-verified"></a>Het wacht woord kan niet worden geverifieerd
-Als de installatie wizard is geslaagd om verbinding te maken met Azure AD, maar het wacht woord zelf niet kan worden geverifieerd, ![ziet u deze fout: ongeldig wacht woord.](./media/tshoot-connect-connectivity/badpassword.png)
+Als de installatie wizard is geslaagd om verbinding te maken met Azure AD, maar het wacht woord zelf niet kan worden geverifieerd, ziet u deze fout: ![ ongeldig wacht woord.](./media/tshoot-connect-connectivity/badpassword.png)
 
-* Is het wacht woord een tijdelijk wacht woord en moet het worden gewijzigd? Is het eigenlijk het juiste wacht woord? Probeer u aan te melden `https://login.microsoftonline.com` bij (op een andere computer dan de Azure AD Connect-server) en controleer of het account bruikbaar is.
+* Is het wacht woord een tijdelijk wacht woord en moet het worden gewijzigd? Is het eigenlijk het juiste wacht woord? Probeer u aan te melden bij `https://login.microsoftonline.com` (op een andere computer dan de Azure AD Connect-server) en controleer of het account bruikbaar is.
 
 ### <a name="verify-proxy-connectivity"></a>Proxy connectiviteit controleren
-Als u wilt controleren of de Azure AD Connect server daad werkelijk verbinding heeft met de proxy en Internet, gebruikt u een Power shell om te zien of de proxy webaanvragen toestaat of niet. Voer `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`uit in een Power shell-prompt. (Technisch de eerste aanroep is `https://login.microsoftonline.com` en deze URI werkt ook, maar de andere URI is sneller om te reageren.)
+Als u wilt controleren of de Azure AD Connect server daad werkelijk verbinding heeft met de proxy en Internet, gebruikt u een Power shell om te zien of de proxy webaanvragen toestaat of niet. Voer uit in een Power shell-prompt `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` . (Technisch de eerste aanroep is `https://login.microsoftonline.com` en deze URI werkt ook, maar de andere URI is sneller om te reageren.)
 
-Power shell gebruikt de configuratie in machine. config om contact op te nemen met de proxy. De instellingen in WinHTTP/Netsh mogen niet van invloed zijn op deze cmdlets.
+Power shell gebruikt de configuratie in machine.config om contact op te nemen met de proxy. De instellingen in WinHTTP/Netsh mogen niet van invloed zijn op deze cmdlets.
 
-Als de proxy correct is geconfigureerd, krijgt u de status geslaagd: ![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Als de proxy correct is geconfigureerd, krijgt u de status geslaagd: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-Als u **geen verbinding kunt maken met de externe server**, probeert Power shell een directe aanroep uit te voeren zonder de proxy of DNS te gebruiken onjuist geconfigureerd. Controleer of het bestand **machine. config** juist is geconfigureerd.
+Als u **geen verbinding kunt maken met de externe server**, probeert Power shell een directe aanroep uit te voeren zonder de proxy of DNS te gebruiken onjuist geconfigureerd. Controleer of het **machine.config** -bestand juist is geconfigureerd.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
-Als de proxy niet juist is geconfigureerd, wordt een fout bericht weer ![geven](./media/tshoot-connect-connectivity/invokewebrequest403.png)
-![: proxy200 proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
+Als de proxy niet juist is geconfigureerd, wordt een fout bericht weer geven: ![ proxy200 ](./media/tshoot-connect-connectivity/invokewebrequest403.png)
+ ![ proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
 | Fout | Fout tekst | Opmerking |
 | --- | --- | --- |
 | 403 |Verboden |De proxy is niet geopend voor de aangevraagde URL. Ga naar de proxy configuratie en controleer of de [url's](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) zijn geopend. |
-| 407 |Proxy verificatie vereist |De proxy server vereist een aanmelding en er is geen opgegeven. Als voor uw proxy server verificatie is vereist, moet u ervoor zorgen dat deze instelling is geconfigureerd in machine. config. Zorg er ook voor dat u domein accounts gebruikt voor de gebruiker die de wizard uitvoert en voor het service account. |
+| 407 |Proxy verificatie vereist |De proxy server vereist een aanmelding en er is geen opgegeven. Als voor uw proxy server verificatie is vereist, moet u ervoor zorgen dat deze instelling is geconfigureerd in de machine.config. Zorg er ook voor dat u domein accounts gebruikt voor de gebruiker die de wizard uitvoert en voor het service account. |
 
 ### <a name="proxy-idle-timeout-setting"></a>Instelling time-out proxy inactief
 Wanneer Azure AD Connect een export aanvraag naar Azure AD verzendt, kan het tot vijf minuten duren voordat de aanvraag is verwerkt voordat een antwoord wordt gegenereerd. Dit kan vooral gebeuren als er sprake is van een aantal groeps objecten met grote groepslid maatschappen die zijn opgenomen in dezelfde export aanvraag. Zorg ervoor dat de time-out voor de proxy is ingesteld op meer dan 5 minuten. Anders kan een probleem met de Azure AD Connect-server onregelmatige connectiviteits problemen met Azure AD worden waargenomen.
@@ -104,7 +104,7 @@ Wanneer Azure AD Connect een export aanvraag naar Azure AD verzendt, kan het tot
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Het communicatie patroon tussen Azure AD Connect en Azure AD
 Als u al deze voor gaande stappen hebt gevolgd en nog steeds geen verbinding kunt maken, kunt u op dit moment zoeken naar netwerk Logboeken. In deze sectie wordt een normaal en geslaagd connectiviteits patroon gedocumenteerd. Er wordt ook gemeen schappelijke rode haring vermeld die kunnen worden genegeerd wanneer u de netwerk logboeken leest.
 
-* Er zijn aanroepen `https://dc.services.visualstudio.com`naar. Het is niet vereist om deze URL te openen in de proxy om de installatie te volt ooien en deze aanroepen kunnen worden genegeerd.
+* Er zijn aanroepen naar `https://dc.services.visualstudio.com` . Het is niet vereist om deze URL te openen in de proxy om de installatie te volt ooien en deze aanroepen kunnen worden genegeerd.
 * U ziet dat de DNS-omzetting een lijst met de werkelijke hosts bevat die zich bevinden in de nsatc.net van de DNS-naam ruimte en andere naam ruimten die niet onder microsoftonline.com. Er zijn echter geen aanvragen voor webservices op de daad werkelijke server namen en u hoeft deze Url's niet aan de proxy toe te voegen.
 * De eind punten adminwebservice en provisioningapi zijn detectie-eind punten en worden gebruikt om het werkelijke eind punt te vinden dat moet worden gebruikt. Deze eind punten verschillen afhankelijk van uw regio.
 
@@ -113,7 +113,7 @@ Hier volgt een dump van een echt proxy logboek en de pagina van de wizard instal
 
 **Verbinding maken met Azure AD**
 
-| Time | URL |
+| Tijd | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -122,9 +122,9 @@ Hier volgt een dump van een echt proxy logboek en de pagina van de wizard instal
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*. microsoftonline.com:443 |
 
-**Configureren**
+**Configureerer**
 
-| Time | URL |
+| Tijd | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-Anchor*. microsoftonline.com:443 |
@@ -140,7 +140,7 @@ Hier volgt een dump van een echt proxy logboek en de pagina van de wizard instal
 
 **Initiële synchronisatie**
 
-| Time | URL |
+| Tijd | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |

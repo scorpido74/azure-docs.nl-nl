@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff25cb15257302ac806aa9480d6d7b911eb36d06
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253287"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339725"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Een implementatie van voorwaardelijke toegang plannen
 
@@ -216,7 +216,7 @@ Toegangs tokens worden standaard verleend als een CA-beleids voorwaarde geen toe
 
 ### <a name="minimize-the-number-of-ca-policies"></a>Minimaliseer het aantal CA-beleids regels
 
-Het maken van een beleid voor elke app is niet efficiënt en leidt tot moeilijk beheer. In voorwaardelijke toegang worden alleen de eerste 195-beleids regels per gebruiker toegepast. We raden u aan uw apps te analyseren en ze te groeperen in toepassingen die dezelfde resource vereisten voor dezelfde gebruikers hebben. Als alle Office 365-apps of alle HR-apps dezelfde vereisten voor dezelfde gebruikers hebben, kunt u bijvoorbeeld één beleid maken en alle apps toevoegen waarop dit van toepassing is. 
+Het maken van een beleid voor elke app is niet efficiënt en leidt tot moeilijk beheer. In voorwaardelijke toegang worden alleen de eerste 195-beleids regels per gebruiker toegepast. We raden u aan uw apps te analyseren en ze te groeperen in toepassingen die dezelfde resource vereisten voor dezelfde gebruikers hebben. Als alle Microsoft 365-apps of alle HR-apps dezelfde vereisten voor dezelfde gebruikers hebben, kunt u bijvoorbeeld één beleid maken en alle apps toevoegen waarop dit van toepassing is. 
 
 ### <a name="set-up-emergency-access-accounts"></a>Accounts voor nood toegang instellen
 

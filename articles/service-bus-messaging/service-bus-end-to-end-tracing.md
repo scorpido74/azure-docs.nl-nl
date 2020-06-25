@@ -1,24 +1,14 @@
 ---
 title: End-to-end-tracering en diagnostische gegevens Azure Service Bus | Microsoft Docs
 description: Overzicht van Service Bus client diagnoses en end-to-end tracering (client via alle services die bij de verwerking betrokken zijn).
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294185"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340734"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Gedistribueerde tracering en correlatie via Service Bus berichten
 
@@ -81,7 +71,7 @@ async Task ProcessAsync(Message message)
 ```
 
 In dit voor beeld `RequestTelemetry` wordt voor elk verwerkte bericht gerapporteerd, met een tijds tempel, duur en resultaat (geslaagd). De telemetrie heeft ook een set correlatie-eigenschappen.
-Geneste traceringen en uitzonde ringen die worden gerapporteerd tijdens de bericht verwerking, worden ook gestempeld met correlatie `RequestTelemetry`-eigenschappen die ze vertegenwoordigen als ' kinderen ' van de.
+Geneste traceringen en uitzonde ringen die worden gerapporteerd tijdens de bericht verwerking, worden ook gestempeld met correlatie-eigenschappen die ze vertegenwoordigen als ' kinderen ' van de `RequestTelemetry` .
 
 Als u tijdens de verwerking van berichten aanroepen naar ondersteunde externe onderdelen maakt, worden deze ook automatisch gevolgd en gecorreleerd. Raadpleeg [aangepaste bewerkingen bijhouden met Application Insights .NET SDK](../azure-monitor/app/custom-operations-tracking.md) voor hand matig bijhouden en correlatie.
 
@@ -96,7 +86,7 @@ Als uw tracerings systeem geen automatische Service Bus traceringen ondersteunt,
 
 Service Bus .NET-client is instrumentatie met behulp van .NET-tracering primitieven [System. Diagnostics. activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) en [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 
-`Activity`fungeert als tracerings context, `DiagnosticSource` maar is een meldings mechanisme. 
+`Activity`fungeert als tracerings context, maar `DiagnosticSource` is een meldings mechanisme. 
 
 Als er geen listener voor de DiagnosticSource-gebeurtenissen is, is instrumentatie uitgeschakeld, waardoor de kosten voor de instrumentatie gelijk blijven. DiagnosticSource biedt alle controle over de listener:
 - Listener bepaalt naar welke bronnen en gebeurtenissen moet worden geluisterd
@@ -155,7 +145,7 @@ Alle gebeurtenissen hebben ook de eigenschappen entity en endpoint, die in de on
   * `string Entity`--De naam van de entiteit (wachtrij, onderwerp, enzovoort)
   * `Uri Endpoint`-Service Bus eind punt-URL
 
-Voor elke gebeurtenis ' Stop ' `Status` is een `TaskStatus` eigenschap met asynchrone bewerking voltooid, die ook in de volgende tabel wordt wegge laten voor eenvoud.
+Voor elke gebeurtenis ' Stop ' is een `Status` eigenschap met `TaskStatus` asynchrone bewerking voltooid, die ook in de volgende tabel wordt wegge laten voor eenvoud.
 
 Hier volgt de volledige lijst met bewerkingen met een instrument:
 
@@ -183,14 +173,14 @@ Hier volgt de volledige lijst met bewerkingen met een instrument:
 | Micro soft. Azure. ServiceBus. RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`-De sessie-id aanwezig in de berichten. |
 | Micro soft. Azure. ServiceBus. Exception | een instrumentele API| `Exception Exception`-Uitzonderings exemplaar |
 
-In elke gebeurtenis kunt u toegang krijgen `Activity.Current` tot de huidige bewerkings context.
+In elke gebeurtenis kunt u toegang krijgen tot `Activity.Current` de huidige bewerkings context.
 
 #### <a name="logging-additional-properties"></a>Logboek registratie van aanvullende eigenschappen
 
 `Activity.Current`geeft gedetailleerde context van de huidige bewerking en de bovenliggende bewerkingen. Zie voor meer informatie [activiteiten documentatie](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) voor meer informatie.
 Service Bus instrumentatie biedt aanvullende informatie in de `Activity.Current.Tags` -wacht `MessageId` en `SessionId` wanneer deze beschikbaar zijn.
 
-Activiteiten die de gebeurtenis ' Receive ', ' Peek ' en ' ReceiveDeferred ' volgen, `RelatedTo` kunnen ook tag hebben. Het bevat een afzonderlijke lijst `Diagnostic-Id`met berichten die als resultaat zijn ontvangen.
+Activiteiten die de gebeurtenis ' Receive ', ' Peek ' en ' ReceiveDeferred ' volgen, kunnen ook `RelatedTo` tag hebben. Het bevat een afzonderlijke lijst met `Diagnostic-Id` berichten die als resultaat zijn ontvangen.
 Deze bewerking kan ertoe leiden dat er verschillende niet-gerelateerde berichten worden ontvangen. Daarnaast is de `Diagnostic-Id` ' is niet bekend wanneer de bewerking wordt gestart, dus ' Receive '-bewerkingen kunnen alleen worden gecorreleerd aan proces bewerkingen met deze tag. Het is handig bij het analyseren van prestatie problemen om te controleren hoe lang het heeft geduurd om het bericht te ontvangen.
 
 Een efficiënte manier om tags te registreren, is om ze te herhalen. het toevoegen van labels aan het voor gaande voor beeld ziet eruit als 
@@ -211,25 +201,25 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 #### <a name="filtering-and-sampling"></a>Filters en steek proeven
 
 In sommige gevallen is het wenselijk om slechts een deel van de gebeurtenissen te registreren om de prestaties van de overhead of het opslag verbruik te verminderen. U kunt stop gebeurtenissen alleen registreren (zoals in het voor gaande voor beeld) of het voorbeeld percentage van de gebeurtenissen. 
-`DiagnosticSource`bieden een manier om deze te `IsEnabled` krijgen met een predikaat. Zie [context-based filtering in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering)voor meer informatie.
+`DiagnosticSource`bieden een manier om deze te krijgen met een `IsEnabled` predikaat. Zie [context-based filtering in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering)voor meer informatie.
 
 `IsEnabled`kan meerdere keren worden aangeroepen voor één bewerking om de prestaties te verminderen.
 
 `IsEnabled`wordt in de volgende volg orde aangeroepen:
 
-1. `IsEnabled(<OperationName>, string entity, null)`bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Houd er rekening mee dat er aan het einde geen ' Start ' of ' Stop ' is. Gebruik het om bepaalde bewerkingen of wacht rijen te filteren. Als retour aanroep `false`wordt geretourneerd, worden gebeurtenissen voor de bewerking niet verzonden
+1. `IsEnabled(<OperationName>, string entity, null)`bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` . Houd er rekening mee dat er aan het einde geen ' Start ' of ' Stop ' is. Gebruik het om bepaalde bewerkingen of wacht rijen te filteren. Als retour aanroep wordt geretourneerd `false` , worden gebeurtenissen voor de bewerking niet verzonden
 
-   * Voor de bewerkingen ' process ' en ' ProcessSession ' ontvangt `IsEnabled(<OperationName>, string entity, Activity activity)` u ook terugbellen. Gebruik deze functie om gebeurtenissen te filteren `activity.Id` op basis van of label eigenschappen.
+   * Voor de bewerkingen ' process ' en ' ProcessSession ' ontvangt u ook `IsEnabled(<OperationName>, string entity, Activity activity)` terugbellen. Gebruik deze functie om gebeurtenissen te filteren op basis van `activity.Id` of label eigenschappen.
   
-2. `IsEnabled(<OperationName>.Start)`bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Hiermee wordt gecontroleerd of de gebeurtenis start moet worden gestart. Het resultaat is alleen van invloed op de gebeurtenis start, maar verdere instrumentatie is niet afhankelijk van het item.
+2. `IsEnabled(<OperationName>.Start)`bijvoorbeeld `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` . Hiermee wordt gecontroleerd of de gebeurtenis start moet worden gestart. Het resultaat is alleen van invloed op de gebeurtenis start, maar verdere instrumentatie is niet afhankelijk van het item.
 
 Er is geen `IsEnabled` voor de gebeurtenis ' Stop '.
 
-Als een bepaalde bewerkings resultaat `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` uitzonde ring is, wordt aangeroepen. U kunt zich alleen abonneren op uitzonderings gebeurtenissen en de rest van de instrumentatie verhinderen. In dit geval moet u dergelijke uitzonde ringen nog steeds afhandelen. Omdat andere instrumentatie is uitgeschakeld, moet u niet verwachten dat de tracerings context wordt gestroomd met de berichten van de gebruiker naar de producent.
+Als een bepaalde bewerkings resultaat uitzonde ring is, `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` wordt aangeroepen. U kunt zich alleen abonneren op uitzonderings gebeurtenissen en de rest van de instrumentatie verhinderen. In dit geval moet u dergelijke uitzonde ringen nog steeds afhandelen. Omdat andere instrumentatie is uitgeschakeld, moet u niet verwachten dat de tracerings context wordt gestroomd met de berichten van de gebruiker naar de producent.
 
-U kunt `IsEnabled` ook sampling strategieën implementeren. Steek proeven op basis `Activity.Id` van `Activity.RootId` de of zorgen voor een consistente steek proef op alle banden (zolang deze door tracering systeem of door uw eigen code worden door gegeven).
+U kunt `IsEnabled` ook sampling strategieën implementeren. Steek proeven op basis van de `Activity.Id` of zorgen voor een `Activity.RootId` consistente steek proef op alle banden (zolang deze door tracering systeem of door uw eigen code worden door gegeven).
 
-Als er meerdere `DiagnosticSource` listeners voor dezelfde bron aanwezig zijn, is het voldoende voor slechts één listener om de gebeurtenis te accepteren. Daarom `IsEnabled` wordt niet gegarandeerd dat deze wordt aangeroepen.
+`DiagnosticSource`Als er meerdere listeners voor dezelfde bron aanwezig zijn, is het voldoende voor slechts één listener om de gebeurtenis te accepteren. Daarom `IsEnabled` wordt niet gegarandeerd dat deze wordt aangeroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,12 +12,12 @@ ms.date: 06/08/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e3aa91ce9b1b4ba56507dfe1920d7f7dbd18ac3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 1604e132cb77fbb2a2a1033a1f23f70dd3e6b8b9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763530"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355961"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerietoepassingen
 
@@ -41,6 +41,8 @@ Als de toepassing niet is toegevoegd aan uw Azure AD-Tenant, raadpleegt u [een n
    - Als u wilt zoeken naar de toepassing, selecteert u in het menu **toepassings type** **alle toepassingen**en selecteert u vervolgens **Toep assen**. Voer de naam van de toepassing in het zoekvak in en selecteer vervolgens de toepassing in de resultaten.
 
 3. Selecteer onder de sectie **beheren** de optie **eenmalige aanmelding**. 
+
+   - Houd er rekening mee dat er bepaalde scenario's zijn waarbij de optie **voor eenmalige aanmelding** niet aanwezig is. Als de toepassing bijvoorbeeld is geregistreerd met behulp van **app-registraties** , wordt de mogelijkheid voor eenmalige aanmelding geconfigureerd in de **app-registratie** Portal en wordt deze niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
 4. Selecteer **SAML**. De pagina **eenmalige aanmelding met SAML-preview instellen** wordt weer gegeven.
 

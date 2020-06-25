@@ -1,26 +1,24 @@
 ---
 title: Azure Service Bus integreren met Azure Private Link service
 description: Meer informatie over het integreren van Azure Service Bus met Azure Private Link service
-services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
-ms.date: 03/13/2020
-ms.service: service-bus-messaging
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a78375a3acf5c56d9a59c0f4b6113a063f8c431a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650963"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85340445"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus integreren met een persoonlijke Azure-koppeling
 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Service Bus, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
-Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
+Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
 
-Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor meer informatie.
+Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) voor meer informatie.
 
 >[!WARNING]
 > Het implementeren van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Service Bus.
@@ -47,17 +45,17 @@ Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor 
 Als u een Service Bus naam ruimte met een persoonlijke Azure-koppeling wilt integreren, hebt u de volgende entiteiten of machtigingen nodig:
 
 - Een Service Bus naam ruimte.
-- Een virtueel Azure-netwerk.
-- Een subnet in het virtuele netwerk.
+- Een Azure Virtual Network.
+- Een subnet binnen het virtueel netwerk.
 - Eigenaar-of Inzender machtigingen voor zowel de Service Bus naam ruimte als het virtuele netwerk.
 
-Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het persoonlijke eind punt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. De naam ruimte van uw Service Bus kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
+Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het privé-eindpunt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. De naam ruimte van uw Service Bus kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
 
 ### <a name="steps"></a>stappen
 
 Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ **Service Bus**in de zoek balk.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
@@ -106,7 +104,7 @@ Als u al een bestaande naam ruimte hebt, kunt u een persoonlijk eind punt maken 
 ## <a name="add-a-private-endpoint-using-powershell"></a>Een persoonlijk eind punt toevoegen met Power shell
 In het volgende voor beeld ziet u hoe u Azure PowerShell kunt gebruiken om een persoonlijke eindpunt verbinding te maken met een Service Bus naam ruimte.
 
-Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio bevinden. De naam ruimte van uw Service Bus kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
+Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. De naam ruimte van uw Service Bus kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
 
 ```azurepowershell-interactive
 
@@ -167,16 +165,16 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Privé-eind punten beheren met Azure Portal
 
-Wanneer u een persoonlijk eind punt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die resource uw verbindings aanvraag goed keuren.
+Wanneer u een privé-eindpunt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die resource uw verbindings aanvraag goed keuren.
 
-Er zijn vier inrichtings provincies:
+Er zijn vier inrichtingsstatussen:
 
-| Service actie | Status privé-eind punt service gebruiker | Beschrijving |
+| Service actie | Status privé-eindpunt serviceconsument | Beschrijving |
 |--|--|--|
-| Geen | In behandeling | De verbinding wordt hand matig gemaakt en in afwachting van goed keuring van de resource-eigenaar van de persoonlijke koppeling. |
-| Goedkeuren | Goedgekeurd | De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt. |
-| Afwijzen | Geweigerd | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling. |
-| Verwijderen | De verbinding verbroken | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. |
+| Geen | In behandeling | De verbinding wordt handmatig gemaakt en in afwachting van goedkeuring door de resource-eigenaar van de Private Link. |
+| Goedkeuren | Goedgekeurd | De verbinding werd automatisch of handmatig goedgekeurd en is klaar om te worden gebruikt. |
+| Afwijzen | Afgewezen | De verbinding werd afgewezen door de resource-eigenaar van de private link. |
+| Verwijderen | Ontkoppeld | De verbinding is verwijderd door de resource-eigenaar van de private link, het privé-eindpunt wordt informatief en moet worden verwijderd voor opschoning. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
@@ -223,11 +221,11 @@ Er zijn vier inrichtings provincies:
     ![Verbindings pagina verwijderen](./media/private-link-service/delete-connection-page.png)
 3. U ziet dat de status is gewijzigd in **verbroken**. Vervolgens ziet u dat het eind punt verdwijnt uit de lijst. 
 
-## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de persoonlijke verbinding werkt
+## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
 
 U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke eindpunt resource verbinding maken met uw Service Bus naam ruimte via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
 
-Maak eerst een virtuele machine aan de hand van de stappen in [een virtuele Windows-machine maken in de Azure Portal](../virtual-machines/windows/quick-create-portal.md)
+Maak eerst een nieuwe virtuele machine door de instructies te volgen in [Een virtuele Windows-machine in de Azure Portal maken](../virtual-machines/windows/quick-create-portal.md)
 
 Op het tabblad **netwerk** : 
 
@@ -251,17 +249,17 @@ Address:  10.0.0.4 (private IP address associated with the private endpoint)
 Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
+## <a name="limitations-and-design-considerations"></a>Beperkingen en overwegingen bij het ontwerp
 
-**Prijzen**: Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link/)voor prijs informatie.
+**Pricing**: Zie [Prijs van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) voor meer informatie over prijzen.
 
 **Beperkingen**: deze functie is beschikbaar in alle open bare Azure-regio's.
 
 **Maximum aantal privé-eind punten per service bus naam ruimte**: 120.
 
-Zie voor meer informatie [Azure Private Link service: beperkingen](../private-link/private-link-service-overview.md#limitations)
+Zie [Azure Private Link-service: beperkingen](../private-link/private-link-service-overview.md#limitations) voor meer informatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [persoonlijke Azure-koppelingen](../private-link/private-link-service-overview.md)
+- Meer informatie over [Azure Private Link](../private-link/private-link-service-overview.md)
 - Meer informatie over [Azure service bus](service-bus-messaging-overview.md)
