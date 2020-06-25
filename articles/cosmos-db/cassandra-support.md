@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 978dbf3d8e6a92242c0a984b26bb35cf911a3369
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7384237f91bf3af8ccad1a97b27fb62a1845a88
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590419"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118981"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
@@ -108,7 +108,7 @@ Azure Cosmos DB Cassandra-API is een beheerd serviceplatform. Het vereist geen b
 
 U kunt een gehoste Cassandra-shell (CQLSH v5.0.1) rechtstreeks vanuit Data Explorer openen in de [Azure-portal](data-explorer.md) of in [Azure Cosmos Explorer](https://cosmos.azure.com/). Voordat u de CQL-shell inschakelt, moet u de functie [Notebooks](enable-notebooks.md) inschakelen in uw account (als deze nog niet is ingeschakeld, wordt u gevraagd dit te doen wanneer u klikt op `Open Cassandra Shell`). Controleer de gemarkeerde notitie in [Notebooks inschakelen voor Azure Cosmos DB-accounts](enable-notebooks.md) voor ondersteunde Azure-regio's.
 
-![CQLSH](./media/cassandra-support/cqlsh.png)
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH":::
 
 U kunt ook verbinding maken met de Cassandra-API in Azure Cosmos DB met behulp van de CQLSH die is geïnstalleerd op een lokale computer. De API wordt geleverd met Apache Cassandra 3.1.1 en is meteen klaar voor gebruik door de omgevingsvariabelen in te stellen. De volgende secties bevatten instructies voor het installeren, configureren en verbinding maken met de Cassandra-API in Azure Cosmos DB, in Windows of Linux met behulp van CQLSH.
 

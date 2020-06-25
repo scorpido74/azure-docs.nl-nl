@@ -1,5 +1,5 @@
 ---
-title: Een node. js Express-app maken met de API van Azure Cosmos DB voor MongoDB (Part2)
+title: Een Node.js Express-app maken met de API van Azure Cosmos DB voor MongoDB (deel 2)
 description: Deel 2 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75441135"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85119168"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Een Angular-app maken met de API van Azure Cosmos DB voor MongoDB - een Node.js Express-app maken
 
@@ -102,7 +102,7 @@ Voor deze zelfstudie hebt u verder nodig:
     * Behandelt alles dat zich in de map dist bevindt, dat wil zeggen de statische inhoud
     * Haalt de app op en behandelt index.html voor alle GET-aanvragen die niet op de server worden gevonden (voor dieptekoppelingen)
     * Start de server met app.listen
-    * Gebruikt een pijl functie om te registreren dat de poort actief is
+    * Gebruikt een pijlfunctie om te registreren dat de poort actief is
     
    ```node
    const express = require('express');
@@ -163,7 +163,7 @@ Voor deze zelfstudie hebt u verder nodig:
 
     De respons laat zien dat de app actief is en lokaal wordt uitgevoerd. 
 
-    ![Postman, waarin de aanvraag en de respons worden weergegeven](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="Postman, waarin de aanvraag en de respons worden weergegeven":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

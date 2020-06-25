@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124446"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262613"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Bulksgewijs laden met Synapse SQL
 
@@ -28,7 +28,7 @@ U kunt gegevens nu gemakkelijk bulksgewijs laden met SQL-pools. Klik daarvoor me
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet toegang hebben tot de werkruimte met ten minste de RBAC-rol Bijdrager voor opslagblobgegevens voor het ADLS Gen2-account.
+- Deze wizard genereert een COPY-instructie die gebruikmaakt van AAD-pass-through voor verificatie. Uw [AAD-gebruiker moet toegang hebben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) tot de werkruimte met ten minste de RBAC-rol Bijdrager voor opslagblobgegevens voor het ADLS Gen2-account.
 
 - U moet beschikken over de vereiste [machtigingen om de COPY-instructie te gebruiken](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) en ook over machtigingen om een tabel te maken, als u gegevens in een nieuwe tabel wilt laden.
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610693"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212173"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big data streamen naar een datawarehouse
 Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar een SQL Data Warehouse.
@@ -173,7 +173,7 @@ Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql
 2. Selecteer in het menu links op de pagina SQL-datawarehouse **Query-editor (preview)** . 
 
     ![De pagina SQL-datawarehouse](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Voer de naam van **gebruiker** en het **wachtwoord** voor de SQL-server in, en selecteer **OK**. U moet uw client-IP-adres mogelijk aan de firewall koppelen om in te kunnen loggen bij de SQL-server. 
+2. Voer de naam van **gebruiker** en het **wachtwoord** voor de SQL-server in, en selecteer **OK**. U moet uw client-IP-adres mogelijk aan de firewall toevoegen om u aan te kunnen melden bij de SQL-server. 
 
     ![SQL-serververificatie](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. Kopieer en plak het volgende SQL-script in het queryvenster: 
