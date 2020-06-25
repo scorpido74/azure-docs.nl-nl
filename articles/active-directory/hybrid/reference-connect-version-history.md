@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53ac540950dc6f64107ee20448b2c24981837b05
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1f54eae8c57d3317c6d654b4a019501410239bf9
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558510"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317499"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -108,10 +108,10 @@ Met deze hotfix-build wordt een probleem in Build 1.5.20.0 opgelost als u de in 
 - Het kenmerk mS-DS-ConsistencyGuid wordt automatisch ingesteld op alle gesynchroniseerde groepen en u hoeft niets te doen om deze functie in te scha kelen. 
 - De Get-ADSyncRunProfile is verwijderd omdat deze niet meer in gebruik is. 
 - De waarschuwing die wordt weer gegeven wanneer u probeert een ondernemings beheerder of een domein beheerders account te gebruiken voor de AD DS Connector-account, is gewijzigd om meer context te bieden. 
-- Er is een nieuwe cmdlet toegevoegd om objecten uit de connector ruimte te verwijderen het oude CSDelete. exe-hulp programma wordt verwijderd en wordt vervangen door de nieuwe cmdlet Remove-ADSyncCSObject. De cmdlet Remove-ADSyncCSObject neemt een CsObject als invoer. Dit object kan worden opgehaald met behulp van de cmdlet Get-ADSyncCSObject.
+- Er is een nieuwe cmdlet toegevoegd om objecten uit de connector ruimte te verwijderen het oude CSDelete.exe-hulp programma wordt verwijderd en wordt vervangen door de nieuwe cmdlet Remove-ADSyncCSObject. De cmdlet Remove-ADSyncCSObject neemt een CsObject als invoer. Dit object kan worden opgehaald met behulp van de cmdlet Get-ADSyncCSObject.
 
 >[!NOTE]
->Het oude hulp programma CSDelete. exe is verwijderd en vervangen door de nieuwe cmdlet Remove-ADSyncCSObject 
+>Het oude CSDelete.exe hulp programma is verwijderd en vervangen door de nieuwe cmdlet Remove-ADSyncCSObject 
 
 ### <a name="fixed-issues"></a>Problemen opgelost
 
@@ -501,7 +501,7 @@ Status: is vrijgegeven om klanten te selecteren
 
 * Er is een fout opgelost waarbij certificaten met SAN-joker tekens een controle op vereisten niet hebben.
 
-* Er is een fout opgelost waardoor MIIServer. exe vastloopt tijdens het exporteren van een Azure AD-connector.
+* Er is een fout opgelost waardoor miiserver.exe vastloopt tijdens het exporteren van een Azure AD-connector.
 
 * Er is een fout opgelost waarbij een ongeldige wachtwoord poging is geregistreerd op de domein controller bij het uitvoeren van de Azure AD Connect wizard om de configuratie te wijzigen.
 
@@ -569,7 +569,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Naam                          | Access               | Van toepassing op
+Type     | Name                          | Access               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
@@ -851,11 +851,11 @@ Het probleem dat zich voordoet, is dat de **optie alle domeinen en organisatie-e
 * Er is een probleem opgelost met het terugschrijven van wacht woorden, waarmee een Azure AD-beheerder het wacht woord van een on-premises AD-privileged gebruikers account opnieuw kan instellen. Het probleem treedt op wanneer aan Azure AD Connect de machtiging wacht woord opnieuw instellen wordt verleend via het bevoegde account. Het probleem wordt opgelost in deze versie van Azure AD Connect door niet toe te staan dat een Azure AD-beheerder het wacht woord van een wille keurige on-premises AD-privileged user account opnieuw instelt, tenzij de beheerder de eigenaar van dat account is. Raadpleeg [Security advisor 4033453](https://technet.microsoft.com/library/security/4033453)voor meer informatie.
 
 * Er is een probleem opgelost dat betrekking heeft op de functie [MS-DS-ConsistencyGuid als bron-anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) waarbij Azure AD Connect niet terugschrijven naar on-premises AD MS-DS-ConsistencyGuid-kenmerk. Het probleem treedt op wanneer er meerdere on-premises AD-forests zijn toegevoegd aan Azure AD Connect en de *optie gebruikers identiteiten bestaan in meerdere mappen* is geselecteerd. Wanneer deze configuratie wordt gebruikt, vullen de resulterende synchronisatie regels niet het kenmerk sourceAnchorBinary in de tekst in. Het kenmerk sourceAnchorBinary wordt gebruikt als het bron kenmerk voor het kenmerk MS-DS-ConsistencyGuid. Als gevolg hiervan wordt write-back naar het kenmerk MS-DSConsistencyGuid niet uitgevoerd. Om het probleem op te lossen, zijn de volgende synchronisatie regels bijgewerkt om ervoor te zorgen dat het kenmerk sourceAnchorBinary in de tekst altijd wordt ingevuld:
-  * In vanuit AD-InetOrgPerson AccountEnabled. XML
-  * In van AD-InetOrgPerson common. XML
-  * In vanuit AD-User AccountEnabled. XML
-  * In van common. XML van AD-gebruiker
-  * Vanuit AD: gebruiker lid worden van SOAInAAD. XML
+  * In van AD-InetOrgPerson AccountEnabled.xml
+  * In van AD-InetOrgPerson Common.xml
+  * In van AccountEnabled.xml van AD-gebruiker
+  * In van Common.xml van AD-gebruiker
+  * In van AD-gebruiker toevoegen SOAInAAD.xml
 
 * Voorheen, zelfs als de functie [MS-DS-ConsistencyGuid als bron anker](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) niet is ingeschakeld, wordt de synchronisatie regel ' out to AD-gebruiker ImmutableId ' nog steeds toegevoegd aan Azure AD Connect. Het effect is onschadelijk en leidt er niet toe dat er een write-back van het MS-DS-ConsistencyGuid-kenmerk plaatsvindt. Om Verwar ring te voor komen, is logica toegevoegd om ervoor te zorgen dat de synchronisatie regel alleen wordt toegevoegd wanneer de functie is ingeschakeld.
 
@@ -990,7 +990,7 @@ Azure AD Connect-synchronisatie
 
 * Azure AD Connect wordt nu automatisch het kenmerk ConsistencyGuid voor het kenmerk bron anker ingeschakeld voor on-premises AD-objecten. Verder vult Azure AD Connect het kenmerk ConsistencyGuid in met de kenmerk waarde objectGuid als dit leeg is. Deze functie is alleen van toepassing op nieuwe implementatie. Raadpleeg voor meer informatie over deze functie de sectie artikel [Azure AD Connect: ontwerp concepten-MS-DS-ConsistencyGuid gebruiken als source Anchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
 * Er is een nieuwe probleemoplossings cmdlet invoke-ADSyncDiagnostics toegevoegd om te helpen bij het vaststellen van problemen met de wachtwoord-hash-synchronisatie. Raadpleeg voor meer informatie over het gebruik van de cmdlet het artikel [problemen met wachtwoord-hash-synchronisatie met Azure AD Connect synchronisatie oplossen](tshoot-connect-password-hash-synchronization.md).
-* Azure AD Connect ondersteunt nu het synchroniseren van open bare mapitems-objecten van on-premises AD naar Azure AD. U kunt de functie inschakelen met behulp van Azure AD Connect wizard onder optionele functies. Raadpleeg voor meer informatie over deze functie, artikel [Office 365 op basis van een rand ondersteuning voor open bare mappen die zijn ingeschakeld voor on-premises e-mail](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
+* Azure AD Connect ondersteunt nu het synchroniseren van open bare mapitems-objecten van on-premises AD naar Azure AD. U kunt de functie inschakelen met behulp van Azure AD Connect wizard onder optionele functies. Raadpleeg voor meer informatie over deze functie, artikel [Office 365 op basis van een rand ondersteuning voor open bare mappen die zijn ingeschakeld voor on-premises e-mail](https://techcommunity.microsoft.com/t5/exchange/office-365-directory-based-edge-blocking-support-for-on-premises/m-p/74218).
 * Azure AD Connect moet een AD DS-account zijn om te synchroniseren vanuit on-premises AD. Als u eerder Azure AD Connect hebt geïnstalleerd met behulp van de Express-modus, kunt u de referenties van een ondernemings Administrator-account opgeven en Azure AD Connect het vereiste AD DS account maken. Voor een aangepaste installatie en het toevoegen van forests aan een bestaande implementatie, moet u echter het AD DS-account opgeven. U hebt nu ook de mogelijkheid om de referenties van een ondernemings Administrator-account op te geven tijdens een aangepaste installatie. u kunt Azure AD Connect het AD DS account maken dat vereist is.
 * Azure AD Connect ondersteunt nu SQL AOA. U moet SQL AOA inschakelen voordat u Azure AD Connect installeert. Tijdens de installatie detecteert Azure AD Connect of het gegeven SQL-exemplaar is ingeschakeld voor SQL AOA of niet. Als SQL-AOA is ingeschakeld, Azure AD Connect meer cijfers uit als SQL AOA is geconfigureerd voor het gebruik van synchrone replicatie of asynchrone replicatie. Bij het instellen van de listener voor de beschikbaarheids groep wordt aanbevolen de eigenschap RegisterAllProvidersIP in te stellen op 0. Deze aanbeveling is omdat Azure AD Connect momenteel gebruikt SQL Native Client om verbinding te maken met SQL en SQL Native Client het gebruik van de eigenschap MultiSubNetFailover niet ondersteunt.
 * Als u LocalDB gebruikt als de Data Base voor uw Azure AD Connect-server en de maximale grootte van 10 GB heeft bereikt, wordt de synchronisatie service niet meer gestart. Voorheen moet u de ShrinkDatabase-bewerking uitvoeren op de LocalDB om voldoende DB-ruimte vrij te maken om de synchronisatie service te starten. Daarna kunt u de Synchronization Service Manager voor het verwijderen van de uitvoerings geschiedenis om meer DB-ruimte vrij te maken. U kunt nu de cmdlet start-ADSyncPurgeRunHistory gebruiken om de gegevens van de uitvoerings geschiedenis van LocalDB te verwijderen, zodat de database ruimte opnieuw wordt vrijgemaakt. Verder ondersteunt deze cmdlet een offline modus (door de para meter-offline op te geven) die kan worden gebruikt wanneer de synchronisatie service niet wordt uitgevoerd. Opmerking: de offline modus kan alleen worden gebruikt als de synchronisatie service niet wordt uitgevoerd en de gebruikte data base LocalDB is.
@@ -1050,7 +1050,7 @@ Azure AD Connect-synchronisatie
 * De Azure AD-Tenant bevat een service configuratie waarmee wordt aangegeven of de functie voor wachtwoord synchronisatie is ingeschakeld voor uw Tenant of niet. Voorheen is het eenvoudig dat de service configuratie onjuist is geconfigureerd door Azure AD Connect wanneer u een actieve en een staging-server hebt. Azure AD Connect wordt nu geprobeerd de service configuratie alleen te laten overeenkomen met uw actieve Azure AD Connect server.
 * De wizard Azure AD Connect detecteert en retourneert nu een waarschuwing als on-premises AD geen AD-prullenbak heeft ingeschakeld.
 * Voorheen werd een time-out van het exporteren naar Azure AD als de gezamenlijke grootte van de objecten in de batch een bepaalde drempel waarde overschrijdt. Nu zal de synchronisatie service opnieuw proberen om de objecten in afzonderlijke, kleinere batches opnieuw te verzenden als het probleem wordt aangetroffen.
-* De toepassing voor sleutel beheer van de synchronisatie service is verwijderd uit het menu Start van Windows. Het beheer van de versleutelings sleutel wordt nog steeds ondersteund via de opdracht regel interface met miiskmu. exe. Raadpleeg voor meer informatie over het beheren van de versleutelings sleutel [het artikel de versleutelings sleutel voor de Azure AD Connect synchronisatie afbreken](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
+* De toepassing voor sleutel beheer van de synchronisatie service is verwijderd uit het menu Start van Windows. Het beheer van de versleutelings sleutel wordt nog steeds ondersteund via de opdracht regel interface met behulp van miiskmu.exe. Raadpleeg voor meer informatie over het beheren van de versleutelings sleutel [het artikel de versleutelings sleutel voor de Azure AD Connect synchronisatie afbreken](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key).
 * Als u eerder het wacht woord voor Azure AD Connect synchronisatie service-account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het Azure AD Connect synchronisatie service-account opnieuw hebt geïnitialiseerd. Dit proces is nu niet meer nodig.
 
 Desktop-SSO

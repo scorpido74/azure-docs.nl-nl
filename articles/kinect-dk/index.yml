@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Kinect DK
+summary: Azure Kinect DK is een ontwikkelaarskit met geavanceerde AI-sensoren die geavanceerde computer vision- en spraakmodellen bieden. Kinect bevat een dieptesensor, een ruimtelijke microfoonmatrix met videocamera en een oriëntatiesensor als een klein alles-in-een-apparaat met meerdere modi, opties en SDK's (Software Development Kit).
+metadata:
+  title: Documentatie voor Azure Kinect DK
+  description: Azure Kinect DK is een ontwikkelaarskit met geavanceerde AI-sensoren die geavanceerde computer vision- en spraakmodellen bieden. Kinect bevat een dieptesensor, een ruimtelijke microfoonmatrix met videocamera en een oriëntatiesensor als een klein alles-in-een-apparaat met meerdere modi, opties en SDK's.
+  ms.prod: kinect-dk
+  ms.topic: landing-page
+  author: tesych
+  ms.author: tesych
+  ms.date: 03/11/2020
+  ms.openlocfilehash: f1691507d75d6de630f3c5a48cd59c8cc22b5999
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "85277879"
+landingContent:
+- title: Over Azure Kinect DK
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Kinect DK?
+      url: about-azure-kinect-dk.md
+  - linkListType: reference
+    links:
+    - text: Hardwarespecificaties
+      url: hardware-specification.md
+    - text: Systeemvereisten
+      url: system-requirements.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Sensor-SDK van Azure Kinect
+      url: sensor-sdk-download.md
+    - text: De Body Tracking-SDK van Azure Kinect
+      url: body-sdk-download.md
+  - linkListType: quickstart
+    links:
+    - text: Azure Kinect DK installeren
+      url: set-up-azure-kinect-dk.md
+    - text: Sensorstreams vastleggen in een bestand
+      url: record-sensor-streams-file.md
+    - text: Uw eerste Azure Kinect-toepassing bouwen
+      url: build-first-app.md
+    - text: De Body Tracking-SDK instellen
+      url: body-sdk-setup.md
+    - text: Uw eerste app om een lichaam te volgen
+      url: build-first-body-app.md
+- title: De Sensor-SDK gebruiken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Apparaat zoeken en dan openen
+      url: find-then-open-device.md
+    - text: Afbeeldingsgegevens ophalen
+      url: about-sensor-sdk.md
+    - text: Toegang tot microfoon
+      url: access-mics.md
+    - text: Opnemen en afspelen
+      url: record-playback-api.md
+- title: De Body Tracking-SDK gebruiken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Resultaten van het volgen van een lichaam ophalen
+      url: get-body-tracking-results.md
+    - text: Gegevens in kader openen
+      url: access-data-body-frame.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Sensor-SDK en - API
+      url: https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/index.html
+    - text: Body Tracking-SDK en -API
+      url: https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/index.html
+    - text: Vision-services
+      url: https://azure.microsoft.com/services/cognitive-services/directory/vision/
+    - text: Spraakservices
+      url: https://docs.microsoft.com/azure/cognitive-services/speech-service/

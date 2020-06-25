@@ -1,23 +1,19 @@
 ---
 title: Azure Relay integreren met Azure Private Link service
 description: Meer informatie over het integreren van Azure Relay met Azure Private Link service
-services: service-bus-relay
-author: spelluru
-ms.author: spelluru
-ms.date: 05/13/2020
-ms.service: service-bus-relay
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 3c2426b65e16d8d6bcdd9733280c8f97f4aa79d6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657551"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317314"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay integreren met een persoonlijke Azure-koppeling (preview-versie)
 Met Azure **Private Link service** kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Relay, Azure service bus, Azure Event Hubs, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk. Zie [Wat is Azure private link (preview)?](../private-link/private-link-overview.md) voor meer informatie.
 
-Een **persoonlijk eind punt** is een netwerk interface waarmee de werk belastingen die worden uitgevoerd in een virtueel netwerk, privé en veilig verbinding kunnen maken met een service die een **persoonlijke koppelings bron** heeft (bijvoorbeeld een relay-naam ruimte). Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute, VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de service wordt over het micro soft backbone-netwerk gepasseerd, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt een niveau van granulatie in toegangs beheer geven door verbindingen met specifieke Azure Relay-naam ruimten toe te staan. 
+Een **persoonlijk eind punt** is een netwerk interface waarmee de werk belastingen die worden uitgevoerd in een virtueel netwerk, privé en veilig verbinding kunnen maken met een service die een **persoonlijke koppelings bron** heeft (bijvoorbeeld een relay-naam ruimte). Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute, VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de service wordt over het micro soft backbone-netwerk gepasseerd, waardoor de bloot stelling van het open bare Internet wordt voor komen. U kunt een niveau van granulatie in toegangs beheer geven door verbindingen met specifieke Azure Relay-naam ruimten toe te staan. 
 
 
 > [!IMPORTANT]
@@ -32,18 +28,18 @@ Een **persoonlijk eind punt** is een netwerk interface waarmee de werk belasting
 Als u een Azure Relay naam ruimte wilt integreren met een persoonlijke koppeling (preview) van Azure, hebt u de volgende entiteiten of machtigingen nodig:
 
 - Een Azure Relay naam ruimte.
-- Een virtueel Azure-netwerk.
-- Een subnet in het virtuele netwerk.
+- Een Azure Virtual Network.
+- Een subnet binnen het virtueel netwerk.
 - Machtigingen voor eigenaar of Inzender op het virtuele netwerk.
 
-Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het persoonlijke eind punt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. Uw naam ruimte kan zich in een andere regio bevinden.
+Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het privé-eindpunt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. Uw naam ruimte kan zich in een andere regio bevinden.
 
-Uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
+Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 
 ### <a name="steps"></a>Stappen
 Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-create-namespace-portal.md)voor stapsgewijze instructies voor het maken van een nieuwe Azure relay naam ruimte en entiteiten hierin.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **relays**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
@@ -98,7 +94,7 @@ Zie [een Azure relay naam ruimte maken met behulp van de Azure Portal](relay-cre
 ## <a name="add-a-private-endpoint-using-powershell"></a>Een persoonlijk eind punt toevoegen met Power shell
 In het volgende voor beeld ziet u hoe u Azure PowerShell kunt gebruiken om een persoonlijke eindpunt verbinding te maken met een Azure Relay naam ruimte.
 
-Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio bevinden. De naam ruimte van uw Azure Relay kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
+Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. De naam ruimte van uw Azure Relay kan zich in een andere regio bevinden. En uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
 
 ```azurepowershell-interactive
 
@@ -158,16 +154,16 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Privé-eind punten beheren met Azure Portal
 
-Wanneer u een persoonlijk eind punt maakt, moet de verbinding worden goedgekeurd. Als de resource (relay-naam ruimte) waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u rechten hebt voor het beheren van de relay-naam ruimte. Als u verbinding maakt met een relay-naam ruimte waarvoor u de toegang beheren niet hebt, moet u wachten tot de eigenaar van die bron uw verbindings aanvraag goed keuren.
+Wanneer u een privé-eindpunt maakt, moet de verbinding worden goedgekeurd. Als de resource (relay-naam ruimte) waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u rechten hebt voor het beheren van de relay-naam ruimte. Als u verbinding maakt met een relay-naam ruimte waarvoor u de toegang beheren niet hebt, moet u wachten tot de eigenaar van die bron uw verbindings aanvraag goed keuren.
 
-Er zijn vier inrichtings provincies:
+Er zijn vier inrichtingsstatussen:
 
-| Service actie | Status privé-eind punt service gebruiker | Beschrijving |
+| Service actie | Status privé-eindpunt serviceconsument | Beschrijving |
 |--|--|--|
 | Geen | In behandeling | De verbinding wordt hand matig gemaakt en is in afwachting van goed keuring van de Azure Relay naam ruimte-eigenaar. |
-| Goedkeuren | Goedgekeurd | De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt. |
-| Afwijzen | Geweigerd | De verbinding is geweigerd door de eigenaar van de Azure Relay naam ruimte. |
-| Verwijderen | De verbinding verbroken | De verbinding is verwijderd door de eigenaar van de Azure Relay naam ruimte, het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. |
+| Goedkeuren | Goedgekeurd | De verbinding werd automatisch of handmatig goedgekeurd en is klaar om te worden gebruikt. |
+| Afwijzen | Afgewezen | De verbinding is geweigerd door de eigenaar van de Azure Relay naam ruimte. |
+| Verwijderen | Ontkoppeld | De verbinding is verwijderd door de eigenaar van de Azure Relay naam ruimte, het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
@@ -210,7 +206,7 @@ Er zijn vier inrichtings provincies:
     ![Verbindings pagina verwijderen](./media/private-link-service/delete-connection-page.png)
 3. U ziet dat de status is gewijzigd in **verbroken**. Vervolgens ziet u dat het eind punt verdwijnt uit de lijst. 
 
-## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de persoonlijke verbinding werkt
+## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
 U moet controleren of bronnen binnen hetzelfde subnet van het persoonlijke eind punt verbinding maken met uw Azure Relay naam ruimte via het bijbehorende privé-IP-adres.
 
 Voor deze test maakt u een virtuele machine door de stappen te volgen in de [virtuele Windows-machine maken in de Azure Portal](../virtual-machines/windows/quick-create-portal.md)
@@ -237,7 +233,7 @@ Address:  10.0.0.4 (private IP address associated with the private endpoint)
 Aliases:  <namespace-name>.servicebus.windows.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
+## <a name="limitations-and-design-considerations"></a>Beperkingen en overwegingen bij het ontwerp
 
 ### <a name="design-considerations"></a>Overwegingen bij het ontwerpen
 - Privé-eind punt voor Azure Relay is in **open bare preview**. 

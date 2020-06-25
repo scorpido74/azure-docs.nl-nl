@@ -2,24 +2,14 @@
 title: Azure Relay metrische gegevens in Azure Monitor | Microsoft Docs
 description: Dit artikel bevat informatie over hoe u Azure Monitor kunt gebruiken om te controleren op de status van Azure Relay.
 services: service-bus-relay
-documentationcenter: .NET
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211799"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314378"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay metrische gegevens in Azure Monitor 
 Azure Relay metrische gegevens geven u de status van resources in uw Azure-abonnement. Met een uitgebreide set metrische gegevens kunt u de algemene status van uw doorstuur bronnen beoordelen, niet alleen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Deze statistieken kunnen van belang zijn wanneer u de status van Azure Relay kunt bewaken. Metrische gegevens kunnen ook helpen bij het oplossen van problemen met de hoofd oorzaak zonder dat u contact hoeft op te nemen met de ondersteuning van Azure.
@@ -58,7 +48,7 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 ## <a name="connection-metrics"></a>Verbindings gegevens
 
-| Metrische naam | Beschrijving |
+| Naam meetwaarde | Description |
 | ------------------- | ----------------- |
 | ListenerConnections-geslaagd  | Het aantal geslaagde listener-verbindingen dat gedurende een opgegeven periode is gemaakt aan Azure Relay. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 |ListenerConnections-client error |Het aantal client fouten op listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
@@ -75,7 +65,7 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 ## <a name="memory-usage-metrics"></a>Metrische gegevens over geheugen gebruik
 
-| Metrische naam | Beschrijving |
+| Naam meetwaarde | Description |
 | ------------------- | ----------------- |
 |BytesTransferred |Het aantal bytes dat is overgedragen gedurende een opgegeven periode.<br/><br/> Eenheid: bytes <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
 
@@ -83,7 +73,7 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 Azure Relay ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Het toevoegen van dimensies aan uw metrische gegevens is optioneel. Als u geen dimensies toevoegt, worden metrische gegevens opgegeven op het niveau van de naam ruimte. 
 
-|Dimensie naam|Beschrijving|
+|Dimensie naam|Description|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay ondersteunt Messa ging-entiteiten in de naam ruimte.|
 

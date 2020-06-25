@@ -1,23 +1,14 @@
 ---
 title: Uitzonde ringen voor Azure Event Hubs-Resource Manager | Microsoft Docs
 description: Lijst met Azure Event Hubs-uitzonde ringen die door Azure Resource Manager en voorgestelde acties worden geoppereerd.
-services: service-bus-messaging
-documentationcenter: na
-author: spelluru
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/08/2019
-ms.author: spelluru
-ms.openlocfilehash: e6ee1137fce97cbe5a64aa5287223f6ba09dcf47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74936085"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312515"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Uitzonde ringen voor Azure Event Hubs-Resource Manager
 Dit artikel bevat een lijst met uitzonde ringen die worden gegenereerd bij interactie met Azure Event Hubs met behulp van Azure Resource Manager-via-sjablonen of directe aanroepen.
@@ -29,7 +20,7 @@ De volgende secties bieden verschillende uitzonde ringen/fouten die worden weer 
 
 ## <a name="error-code-conflict"></a>Fout code: conflict
 
-| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Conflict | 40300 | Het maximum aantal resources van het type EventHub is bereikt of overschreden. Werkelijk: #, Maxi maal toegestaan: # | De naam ruimte heeft het [quotum](event-hubs-quotas.md) bereikt voor het aantal Event hubs dat kan bevatten. | Verwijder ongebruikte of overbodige Event hubs uit de naam ruimte of overweeg een upgrade uit te dienen naar een [toegewezen cluster](event-hubs-dedicated-overview.md). |
 | Conflict | geen | Herstel na nood gevallen (DR) configuratie kan niet worden verwijderd, omdat de replicatie wordt uitgevoerd. Failover of Verbreek de koppeling voordat u de DR-configuratie probeert te verwijderen. | [GeoDR-replicatie](event-hubs-geo-dr.md) wordt uitgevoerd, zodat de configuratie op dit moment niet kan worden verwijderd. | Als u het verwijderen van de configuratie wilt blok keren, wacht u totdat de replicatie is voltooid, het activeren van een failover of het verbreekt van de GeoDR-koppeling. |
@@ -37,14 +28,14 @@ De volgende secties bieden verschillende uitzonde ringen/fouten die worden weer 
 
 ## <a name="error-code-429"></a>Fout code: 429
 
-| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | 429 | geen | Naam ruimte inrichten in overgang | Er wordt momenteel een andere bewerking uitgevoerd op deze naam ruimte. | Wacht tot de huidige bewerking is voltooid en probeer het vervolgens opnieuw. |
 | 429 | geen | Herstel bewerking voor nood gevallen wordt uitgevoerd. | Er wordt momenteel een [GeoDR](event-hubs-geo-dr.md) -bewerking uitgevoerd voor deze naam ruimte of koppelen. | Wacht tot de huidige GeoDR-bewerking is voltooid en probeer het vervolgens opnieuw. |
 
 ## <a name="error-code-badrequest"></a>Fout code: onjuiste aanvraag
 
-| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | BadRequest | 40000 | PartitionCount kan niet worden gewijzigd voor een Event Hub. | De Basic-of Standard-laag van Azure Event Hubs biedt geen ondersteuning voor het wijzigen van partities. | Maak een nieuwe Event Hub met het gewenste aantal partities in de basis-of standaardlaag naam ruimte. Scale-out van partitie wordt ondersteund voor [toegewezen clusters](event-hubs-dedicated-overview.md). |
 | BadRequest | 40000 | De waarde ' # ' voor MessageRetentionInDays is niet geldig voor de laag Basic. de waarde mag niet langer zijn dan ' 1 ' dag (en). | Basic-laag Event Hubs naam ruimten bieden alleen ondersteuning voor het bewaren van berichten van Maxi maal 1 dag. | Als er meer dan één dag voor het bewaren van berichten gewenst is, [maakt u een standaard Event hubs naam ruimte](event-hubs-create.md). | 
@@ -59,6 +50,6 @@ De volgende secties bieden verschillende uitzonde ringen/fouten die worden weer 
 
 ## <a name="error-code-internal-server-error"></a>Fout code: interne server fout
 
-| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
+| Foutcode | Fout subcode | Foutbericht | Description | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
 | Interne server fout | geen | Interne server fout. | Er is een interne fout opgetreden voor de Event Hubs-service. | Voer de mislukte bewerking opnieuw uit. Als de bewerking blijft mislukken, neemt u contact op met de ondersteuning. |

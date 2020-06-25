@@ -1,23 +1,14 @@
 ---
 title: De verdeling van partities verdelen over meerdere exemplaren-Azure Event Hubs | Microsoft Docs
 description: Hierin wordt beschreven hoe u de belasting van partities op meerdere exemplaren van uw toepassing kunt verdelen met behulp van een gebeurtenis processor en de Azure Event Hubs SDK.
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-editor: ''
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/28/2020
-ms.author: shvija
-ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 06/23/2020
+ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147865"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314981"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>De verdeling van partities verdelen over meerdere exemplaren van uw toepassing
 U kunt de toepassing voor het verwerken van gebeurtenissen schalen door meerdere exemplaren van de toepassing uit te voeren en de belasting tussen zichzelf te verdelen. In de oudere versies heeft [EventProcessorHost](event-hubs-event-processor-host.md) u de mogelijkheid om de belasting te verdelen tussen meerdere exemplaren van uw programma en controlepunt gebeurtenissen tijdens ontvangst. In de nieuwere versies (5,0 en hoger), **EventProcessorClient** (.net en Java) of **EventHubConsumerClient** (python en Java script) kunt u hetzelfde doen. Het ontwikkelings model wordt eenvoudiger gemaakt met behulp van gebeurtenissen. U abonneert u op de gebeurtenissen waarin u bent geïnteresseerd door een gebeurtenis-handler te registreren.
@@ -100,4 +91,4 @@ Zie de volgende Quick Start:
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)

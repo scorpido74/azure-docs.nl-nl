@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/09/2018
-ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/09/2020
+ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194595"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660942"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Gegevens uit een SQL Server-database naar Azure Blob-opslag kopiëren met behulp van het hulpprogramma Copy Data
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -146,18 +146,15 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 1. Klik op de pagina **Brongegevensarchief** op **Nieuwe verbinding maken**.
 
-
 1. Zoek onder **Nieuwe gekoppelde service** naar **SQL Server** en selecteer vervolgens **Doorgaan**.
 
 1. Voer in het dialoogvenster **Nieuwe gekoppelde service (SQL Server)** bij **Naam** **SqlServerLinkedService** in. Selecteer **+ Nieuw** onder **Verbinding maken via integratieruntime**. U moet een zelf-hostende integratieruntime maken, deze downloaden op de computer en registreren bij Data Factory. Met de zelf-hostende integratieruntime worden gegevens gekopieerd tussen uw on-premises omgeving en de cloud.
 
+1. Selecteer in het dialoogvenster **Integratieruntime instellen** de optie **Zelf-hostend**. Selecteer vervolgens **Doorgaan**.
 
-1. Selecteer in het dialoogvenster **Integratieruntime instellen** de optie **Zelf-hostend**. Selecteer vervolgens **Volgende**.
+   ![Integratie-runtime maken](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-   ![Integratie-runtime maken](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
-
-1. Voer in het dialoogvenster **Integratieruntime maken** onder **Naam** **TutorialIntegrationRuntime** in. Selecteer vervolgens **Volgende**.
-
+1. Voer in het dialoogvenster **Integratieruntime maken** onder **Naam** **TutorialIntegrationRuntime** in. Selecteer vervolgens **Maken**.
 
 1. Selecteer in het dialoogvenster **Integratieruntime instellen** de koppeling **Klik hier om de snelle installatie voor deze computer te starten**. Met deze actie wordt de integratieruntime op de computer geïnstalleerd en geregistreerd bij Data Factory. U kunt er ook voor kiezen om handmatig te configureren door het installatiebestand te downloaden, uit te voeren, en de sleutel te gebruiken om de integratieruntime te registreren.
 
@@ -216,20 +213,17 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 1. Bekijk in het dialoogvenster **Overzicht** de waarden voor alle instellingen en selecteer **Volgende**.
 
-1. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak die u hebt gemaakt, te controleren.
+1. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren. 
 
-   ![De pagina Implementatie](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+1. Nadat de uitvoering van de pijplijn is voltooid, kunt u de status bekijken van de pijplijn die u hebt gemaakt. 
 
-1. Op het tabblad **Controleren** kunt u de status bekijken van de pijplijn die u hebt gemaakt. Met de koppelingen in de kolom **Acties** kunt u de uitvoeringen van activiteit weergeven die zijn gekoppeld aan de pijplijnuitvoering, en de pijplijn opnieuw uitvoeren.
+1. Selecteer op de pagina Pijplijnuitvoeringen **Vernieuwen** om de lijst te vernieuwen. Klik op de link onder **PIJPLIJNNAAM** om details van de uitvoering van de activiteit weer te geven of de pijplijn opnieuw uit te voeren. 
 
-1. Selecteer de koppeling **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Als u wilt terugkeren naar de weergave**Pijplijnuitvoeringen**, selecteert u **Pijplijnuitvoeringen** bovenaan.
+1. Selecteer op de pagina Activiteitsuitvoeringen de link **Details** (pictogram van een bril) in de kolom **NAAM ACTIVITEIT** voor meer informatie over de kopieerbewerking. Als u wilt terugkeren naar de weergave Pijplijnuitvoeringen, klikt u op de link **ALLE pijplijnuitvoeringen** bovenaan het koppelingsmenu. Selecteer **Vernieuwen** om de weergave te vernieuwen.
 
 1. Controleer of een uitvoerbestand wordt weergegeven in de map **fromonprem** van de container **adftutorial**.
 
-
 1. Selecteer het tabblad **Bewerken** aan de linkerkant om over te schakelen naar de bewerkingsmodus. U kunt de gekoppelde services, gegevenssets en pijplijnen die zijn gemaakt met het hulpprogramma, bijwerken met behulp van de editor. Selecteer **Code** om de JSON-code weer te geven die is gekoppeld aan de entiteit die in de editor is geopend. Bekijk [de Azure Portal-versie van deze tutorial](tutorial-copy-data-portal.md) voor details over hoe u entiteiten in de Data Factory-gebruikersinterface kunt bewerken.
-
-   ![Tabblad Bewerken](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

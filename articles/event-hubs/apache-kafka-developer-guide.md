@@ -1,19 +1,14 @@
 ---
 title: Apache Kafka ontwikkelaars handleiding voor Event Hubs
 description: Dit artikel bevat koppelingen naar artikelen waarin wordt beschreven hoe u uw Kafka-toepassingen integreert met Azure Event Hubs.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: b7486c251784b345351669bda6f0eb2309977728
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bbd173a7f81042c0839cec81838172b21f80d5cd
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297457"
+ms.locfileid: "85314244"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs
 Dit artikel bevat koppelingen naar artikelen waarin wordt beschreven hoe u uw Apache Kafka-toepassingen integreert met Azure Event Hubs. 
@@ -27,7 +22,7 @@ U vindt Quick starts in GitHub en in deze inhoudsset waarmee u snel op Event Hub
 ### <a name="quickstarts-in-github"></a>Quick starts in GitHub
 Raadpleeg de volgende Quick starts in de **Azure-Event-hubs-for-Kafka** -opslag plaats: 
 
-| Client taal/-Framework | Beschrijving | 
+| Client taal/-Framework | Description | 
 | ------------------------- | ----------- | 
 | [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en maakt met behulp van een voorbeeld producent en een consument die is geschreven in C# met behulp van .NET Core 2,0.</p><p>Dit voor beeld is gebaseerd op [confluente Apache Kafka .net-client](https://github.com/confluentinc/confluent-kafka-dotnet), gewijzigd voor gebruik met Event hubs voor Kafka.</p> | 
 | [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | In deze Quick start ziet u hoe u een Event Hubs Kafka-eind punt maakt en er verbinding mee kunt maken met behulp van een voorbeeld producent en een consument die is geschreven in Java. |
@@ -68,7 +63,7 @@ Zie ook de zelf studie: [proces Apache Kafka voor Event hubs gebeurtenissen met 
 ## <a name="how-to-guides"></a>Instructiegidsen
 Raadpleeg de volgende hand leidingen in onze documentatie:
 
-| Artikel | Beschrijving | 
+| Artikel | Description | 
 | ------- | ----------- | 
 | [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md) | Laat zien hoe u een Kafka-Broker kunt spie gelen in een Event Hub met behulp van Kafka MirrorMaker. |
 | [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md) | Helpt u bij het aansluiten van uw Spark-toepassing op Event Hubs voor realtime-streaming. |

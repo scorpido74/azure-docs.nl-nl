@@ -1,24 +1,14 @@
 ---
 title: Azure Relay-migreren naar Shared Access Signature autorisatie
 description: Hierin wordt beschreven hoe u Azure Relay toepassingen kunt migreren met behulp van Azure Active Directory Access Control Service om de autorisatie te Shared Access Signature.
-services: service-bus-relay
-documentationcenter: ''
-author: clemensv
-manager: timlt
-editor: ''
-ms.service: service-bus-relay
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 300a7eb5bb69db878b208be8c1e2b404717a6265
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211773"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314306"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay-migreren van Azure Active Directory Access Control Service naar Shared Access Signature autorisatie
 
@@ -30,7 +20,7 @@ SAS heeft het voor deel dat het niet direct afhankelijk is van een andere servic
 
 Voor alle bestaande toepassingen die afhankelijk zijn van ACS, bevelen wij klanten aan om hun toepassingen te migreren om te vertrouwen op SAS.
 
-## <a name="migration-scenarios"></a> Migratiescenario's
+## <a name="migration-scenarios"></a>Migratiescenario's
 
 ACS en relay zijn geïntegreerd met de gedeelde kennis van een *handtekening sleutel*. De handtekening sleutel wordt gebruikt door een ACS-naam ruimte voor het ondertekenen van autorisatie tokens en wordt gebruikt door Azure Relay om te controleren of het token is uitgegeven door de gekoppelde ACS-naam ruimte. De ACS-naam ruimte bevat service-identiteiten en autorisatie regels. De autorisatie regels definiëren welke service-identiteit of welk token dat is uitgegeven door een externe ID-provider, het type toegang tot een deel van de relay-naam ruimte grafiek, in de vorm van een treffer voor het langste voor voegsel.
 

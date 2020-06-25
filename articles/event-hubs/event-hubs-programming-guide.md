@@ -1,20 +1,14 @@
 ---
 title: .NET-programmeer handleiding-Azure Event Hubs (verouderd) | Microsoft Docs
 description: Dit artikel bevat informatie over het schrijven van code voor Azure-Event Hubs met behulp van de Azure .NET SDK.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-ms.service: event-hubs
-ms.custom: seodec18
 ms.topic: article
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: d958c2d32c16874676f46bb216067fe2d7bbe784
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280974"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314546"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET-programmeer handleiding voor Azure Event Hubs (verouderd micro soft. Azure. Event hubs-pakket)
 In dit artikel worden enkele algemene scenario's beschreven voor het schrijven van code met behulp van Azure Event Hubs. Er wordt uitgegaan van een basisbegrip van Event Hubs. Zie het [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md) voor een conceptueel overzicht van Event Hubs.
@@ -117,7 +111,7 @@ Als u de klasse [EventProcessorHost][] wilt gebruiken, kunt u [IEventProcessor](
 Als u gebeurtenis verwerking wilt starten, maakt u een exemplaar van [EventProcessorHost][], waarbij u de juiste para meters voor uw event hub opgeeft. Bijvoorbeeld:
 
 > [!NOTE]
-> EventProcessorHost en de bijbehorende klassen zijn opgenomen in het pakket **micro soft. Azure. Event hubs. processor** . Voeg het pakket toe aan uw Visual Studio-project door de instructies in [dit artikel](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) te volgen of door de volgende opdracht in het console venster`Install-Package Microsoft.Azure.EventHubs.Processor`van [Package Manager](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) te geven:.
+> EventProcessorHost en de bijbehorende klassen zijn opgenomen in het pakket **micro soft. Azure. Event hubs. processor** . Voeg het pakket toe aan uw Visual Studio-project door de instructies in [dit artikel](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) te volgen of door de volgende opdracht in het console venster van [Package Manager](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) te geven: `Install-Package Microsoft.Azure.EventHubs.Processor` .
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

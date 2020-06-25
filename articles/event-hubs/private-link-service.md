@@ -1,18 +1,14 @@
 ---
 title: Azure Event Hubs integreren met de persoonlijke koppelings service van Azure
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
-services: event-hubs
-author: spelluru
-ms.author: spelluru
-ms.date: 03/12/2020
-ms.service: event-hubs
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 1f07e6eb1a219db4f8eb94c54acaa3181e186da6
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670018"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312835"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure-Event Hubs integreren met persoonlijke Azure-koppeling
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.

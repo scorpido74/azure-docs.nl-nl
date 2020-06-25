@@ -1,25 +1,14 @@
 ---
 title: Hybride verbindingen-websockets in een knoop punt Azure Relay
 description: Een Node.js consoletoepassing schrijven voor websockets voor hybride verbindingen in Azure Relay
-services: service-bus-relay
-documentationcenter: node
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
-ms.service: service-bus-relay
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: node
-ms.workload: na
-ms.date: 11/01/2018
-ms.author: spelluru
-ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 86897c0a752e4203537135dbac68cc0b4c1da44c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211890"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316931"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Aan de slag met WebSockets voor hybride verbindingen in Azure Relay in Node.js
 
@@ -37,7 +26,7 @@ In deze snelstart voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Node. js](https://nodejs.org/en/).
+- [Node.js](https://nodejs.org/en/).
 - Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="create-a-namespace"></a>Een naamruimte maken

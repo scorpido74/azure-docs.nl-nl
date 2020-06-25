@@ -1,19 +1,14 @@
 ---
 title: Gegevens verwerken van Event Hubs Azure met behulp van Stream Analytics | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u gegevens uit uw Azure-Event Hub verwerkt met behulp van een Azure Stream Analytics taak.
-services: event-hubs
-author: spelluru
-manager: ''
-ms.author: spelluru
-ms.date: 07/09/2019
+ms.date: 06/23/2020
 ms.topic: article
-ms.service: event-hubs
-ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "69991950"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312893"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Gegevens uit uw Event Hub verwerken met Azure Stream Analytics 
 De Azure Stream Analytics-service maakt het eenvoudig om streaminggegevens van Azure Event Hubs op te nemen, te verwerken en te analyseren, waardoor het mogelijk is om in real-time acties in realtime te maken. Met deze integratie kunt u snel een analytische hotspot-pijp lijn maken. U kunt de Azure Portal gebruiken om binnenkomende gegevens te visualiseren en een Stream Analytics query te schrijven. Als uw query klaar is, kunt u deze in slechts enkele klikken naar productie verplaatsen. 
@@ -49,7 +44,7 @@ Dit zijn de belangrijkste voor delen van Azure Event Hubs en Azure Stream Analyt
     - U kunt een voor beeld bekijken van inkomende gegevens in de tabel indeling of de RAW-indeling. 
     - Als uw weer gegeven gegevens niet actueel zijn, selecteert u **vernieuwen** om de meest recente gebeurtenissen te bekijken. 
 
-        Hier volgt een voor beeld van gegevens in de **tabel indeling**: ![resulteert in de tabel indeling](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Hier volgt een voor beeld van gegevens in de **tabel indeling**: ![ resulteert in de tabel indeling](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Hier volgt een voor beeld van de gegevens in **RAW-indeling**: 
 

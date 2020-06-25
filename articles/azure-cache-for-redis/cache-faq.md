@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: fc19f247a9a915bfafde68f652784c42285928ca
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 00b4306340e9888ea5a794c7940a021674060e05
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974922"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316127"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -177,7 +177,7 @@ Zie [verbinding maken met andere Clouds-Azure cache voor redis Power shell](cach
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Wat doen de configuratie opties voor stack Exchange. redis?
 Stack Exchange. redis heeft veel opties. In deze sectie vindt u enkele van de algemene instellingen. Zie [stack Exchange. redis-configuratie](https://stackexchange.github.io/StackExchange.Redis/Configuration)voor meer gedetailleerde informatie over de opties voor stack Exchange. redis.
 
-| ConfigurationOptions | Beschrijving | Aanbeveling |
+| ConfigurationOptions | Description | Aanbeveling |
 | --- | --- | --- |
 | AbortOnConnectFail |Als deze eigenschap is ingesteld op True, wordt er geen verbinding gemaakt na een netwerk fout. |Stel deze waarde in op False en laat stack Exchange. redis automatisch opnieuw verbinding maken. |
 | ConnectRetry |Het aantal keren dat verbindings pogingen moeten worden herhaald tijdens de eerste verbinding. |Raadpleeg de volgende opmerkingen voor hulp. |
@@ -289,7 +289,7 @@ Redis server biedt geen systeem eigen ondersteuning voor TLS, maar Azure cache v
 >
 >
 
-Redis-hulpprogram ma's zoals `redis-cli` niet werken met de TLS-poort, maar u kunt een hulp programma gebruiken `stunnel` om de hulpprogram ma's veilig te verbinden met de TLS-poort door de instructies in de aankondiging van de [ASP.net-sessie status provider voor redis preview release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) -blog post te volgen.
+Redis-hulpprogram ma's zoals `redis-cli` niet werken met de TLS-poort, maar u kunt een hulp programma gebruiken `stunnel` om de hulpprogram ma's veilig te verbinden met de TLS-poort door de instructies in de aankondiging van de [ASP.net-sessie status provider voor redis preview release](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/) -blog post te volgen.
 
 Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 

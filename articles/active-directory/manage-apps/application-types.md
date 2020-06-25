@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1878004f51a66ba414c3e74be97c7135a51295bc
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763700"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317462"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Onverwachte toepassing in de lijst met toepassingen
 
@@ -66,7 +66,7 @@ Bij het filteren op **alle toepassingen**wordt in de **lijst** **alle toepassing
 
 5. Wanneer u een nieuwe toepassings registratie toevoegt door een aangepaste toepassing te maken met behulp van de [Portal voor toepassings registratie van de v 2.0-toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
-6. Wanneer u een toepassing die u ontwikkelt, toevoegt met behulp van de [ASP.NET-verificatie methoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) of [verbonden services](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx) van Visual Studio
+6. Wanneer u een toepassing die u ontwikkelt, toevoegt met behulp van de [ASP.NET-verificatie methoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) of [verbonden services](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) van Visual Studio
 
 7. Wanneer u een Service-Principal-object maakt met behulp van de [Azure AD Power shell-module](/powershell/azure/install-adv2?view=azureadps-2.0)
 

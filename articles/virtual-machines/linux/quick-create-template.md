@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 0e9ce74d62bb45c84f8bca2d71579b05c0ba656a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485708"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677947"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>Quickstart: Een virtuele Ubuntu Linux-machine maken met een Resource Manager-sjabloon
 
@@ -23,8 +23,13 @@ In deze snelstart wordt beschreven hoe u een Resource Manager-sjabloon gebruikt 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
+## <a name="prerequisites"></a>Vereisten
 
-## <a name="review-the-template"></a>De sjabloon controleren
+Geen.
+
+## <a name="create-an-ubuntu-linux-virtual-machine"></a>Een virtuele Ubuntu Linux-machine maken
+
+### <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze snelstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/).
 
@@ -35,19 +40,17 @@ Verschillende resources worden in de sjabloon gedefinieerd:
 
 - [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/Microsoft.Network/virtualNetworks/subnets): een subnet maken.
 - [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts): een opslagaccount maken.
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): een openbaar IP-adres maken.
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): een NIC maken.
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/Microsoft.Network/networkSecurityGroups): een netwerkbeveiligingsgroep maken.
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/Microsoft.Network/virtualNetworks): een virtueel netwerk maken.
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): een NIC maken.
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): een openbaar IP-adres maken.
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines) : een virtuele machine maken.
 
-
-
-## <a name="deploy-the-template"></a>De sjabloon implementeren
+### <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
 
-    [![Implementeren in Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+    [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
 
 1. Typ of selecteer de volgende waarden. Gebruik waar mogelijk de standaardwaarden.
 

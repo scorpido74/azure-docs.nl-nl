@@ -1,20 +1,14 @@
 ---
 title: Een Azure Event Hubs-naam ruimte naar een andere regio verplaatsen | Microsoft Docs
 description: In dit artikel leest u hoe u een Azure Event Hubs-naam ruimte van de huidige regio naar een andere regio kunt verplaatsen.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: how-to
-ms.custom: subject-moving-resources
-ms.date: 04/14/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 06/23/2020
+ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690494"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312956"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Een Azure Event Hubs-naam ruimte verplaatsen naar een andere regio
 Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wilt verplaatsen van de ene regio naar een andere. Het is bijvoorbeeld mogelijk dat u een naam ruimte met dezelfde configuratie voor testen wilt maken. U kunt ook een secundaire naam ruimte in een andere regio maken als onderdeel van de [planning voor nood herstel](event-hubs-geo-dr.md#setup-and-failover-flow).
@@ -32,11 +26,11 @@ Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wi
 ## <a name="prepare"></a>Voorbereiden
 Exporteer een resource manager-sjabloon om aan de slag te gaan. Deze sjabloon bevat instellingen die uw Event Hubs naam ruimte beschrijven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw event hubs naam ruimte.
 
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
+3. Selecteer > **instellingen**  >  **sjabloon exporteren**.
 
 4. Kies **downloaden** op de pagina **sjabloon exporteren** .
 
@@ -62,7 +56,7 @@ Implementeer de sjabloon om een Event Hubs naam ruimte te maken in de doel regio
 
 5. Selecteer **Bouw uw eigen sjabloon in de editor**.
 
-6. Selecteer **bestand laden**en volg de instructies voor het laden van het **sjabloon. json** -bestand dat u hebt gedownload in de laatste sectie.
+6. Selecteer **bestand laden**en volg de instructies voor het laden van de **template.jsin** het bestand dat u in de laatste sectie hebt gedownload.
 
 7. Selecteer **Opslaan** om de sjabloon op te slaan. 
 
@@ -85,7 +79,7 @@ Implementeer de sjabloon om een Event Hubs naam ruimte te maken in de doel regio
               ```
               /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<CLUSTER'S RESOURCE GROUP>/providers/Microsoft.EventHub/clusters/<CLUSTER NAME>
               ```   
-        3. Als Event Hub in uw naam ruimte een opslag account gebruikt voor het vastleggen van gebeurtenissen, geeft u de naam van de resource groep `StorageAccounts_<original storage account name>_external` en het veld opslag account voor op. 
+        3. Als Event Hub in uw naam ruimte een opslag account gebruikt voor het vastleggen van gebeurtenissen, geeft u de naam van de resource groep en het veld opslag account voor op `StorageAccounts_<original storage account name>_external` . 
             
             ```
             /subscriptions/0000000000-0000-0000-0000-0000000000000/resourceGroups/<STORAGE'S RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>

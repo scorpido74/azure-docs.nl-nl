@@ -12,17 +12,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: fc8f79221a5923dea9f767e62566c716bbdcad50
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9548168e15522a8fb21cfd33c0cf475841a5d52b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344829"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318229"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Dit artikel laat u zien hoe u Azure Active Directory (Azure AD) multi-factor Authentication (MFA) kunt gebruiken met SQL Server Management Studio (SSMS). Azure AD MFA kan worden gebruikt bij het verbinden van SSMS of SqlPackage. exe voor het [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md) en [azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie voor een overzicht van multi-factor Authentication [universele verificatie met SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).
+Dit artikel laat u zien hoe u Azure Active Directory (Azure AD) multi-factor Authentication (MFA) kunt gebruiken met SQL Server Management Studio (SSMS). Azure AD MFA kan worden gebruikt bij het verbinden van SSMS of SqlPackage.exe op [Azure SQL database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md) en [azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie voor een overzicht van multi-factor Authentication [universele verificatie met SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
 > Data bases in Azure SQL Database, Azure SQL Managed instance en Azure Synapse (voorheen Azure SQL Data Warehouse) worden gezamenlijk genoemd in de rest van dit artikel als data bases en de server verwijst naar de [Server](logical-servers.md) die als host fungeert voor de data bases voor Azure SQL database en Azure Synapse.
@@ -77,5 +77,5 @@ Wanneer de verificatie is voltooid, maakt SSMS verbinding met het normaal gezien
 
 - Zie voor een overzicht van multi-factor Authentication [universele verificatie met SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).  
 - Anderen toegang verlenen tot uw Data Base: [SQL database-verificatie en-autorisatie: toegang verlenen](logins-create-manage.md)  
-- Zorg ervoor dat anderen verbinding kunnen maken via de firewall: [Configureer een firewall regel op server niveau met behulp van de Azure Portal](/database/firewall-configure.md)  
+- Zorg ervoor dat anderen verbinding kunnen maken via de firewall: [Configureer een firewall regel op server niveau met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)  
 - Wanneer u **Active Directory-universele met MFA-** verificatie gebruikt, is ADAL tracering beschikbaar vanaf [SSMS 17,3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Standaard uitgeschakeld, u kunt ADAL tracering inschakelen via het menu **extra**, **Opties** , onder **Azure-Services**, Azure- **Cloud**, **ADAL uitvoervenster traceer niveau**, gevolgd door **uitvoer** in te scha kelen in het menu **weer gave** . De traceringen zijn beschikbaar in het uitvoer venster wanneer u **Azure Active Directory optie**selecteert.

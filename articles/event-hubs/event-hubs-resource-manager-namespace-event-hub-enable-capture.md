@@ -1,25 +1,14 @@
 ---
 title: Een event hub maken met Capture ingeschakeld - Azure Event Hubs | Microsoft Docs
 description: Een Azure Event Hubs-naamruimte met een gebeurtenishub maken en Capture inschakelen met behulp van een Azure Resource Manager-sjabloon
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090
-ms.service: event-hubs
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/12/2020
-ms.author: shvija
-ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 51b654635fa7e06901a257c930e04bff3ea86cf8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79453867"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315695"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
 
@@ -429,7 +418,7 @@ U kunt Event Hubs Capture ook configureren via de [Azure-portal](https://portal.
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 * [Een Event Hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 

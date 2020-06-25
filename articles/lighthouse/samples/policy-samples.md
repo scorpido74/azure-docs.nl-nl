@@ -1,21 +1,21 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Lighthouse
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Lighthouse. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 18187a393739c6b7e757a6d7d5011ce24b92deb2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 88b80fd9e362637250973d108b12b11821ee8ee4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229586"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885095"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-lighthouse"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Lighthouse
+# <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Ingebouwde Azure Policy-definities voor Azure Lighthouse
 
 Deze pagina is een index van ingebouwde [Azure Policy](../../governance/policy/overview.md)-beleidsdefinities voor Azure Lighthouse. Zie [Ingebouwde Azure Policy-definities](../../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-lighthouse"></a>Azure Lighthouse
 

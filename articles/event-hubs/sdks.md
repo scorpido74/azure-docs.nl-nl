@@ -1,20 +1,14 @@
 ---
 title: Azure Event Hubs-client-Sdk's | Microsoft Docs
 description: Dit artikel bevat informatie over de client-Sdk's voor Azure Event Hubs.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2020
-ms.author: spelluru
-ms.openlocfilehash: ffa0663f392c4dbf290a244e2c95422a8855debf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/23/2020
+ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267948"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312559"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs-client-Sdk's
 Dit artikel bevat de volgende informatie voor de Sdk's die worden ondersteund door Azure Event Hubs: 
@@ -39,7 +33,7 @@ In de volgende tabel worden alle momenteel beschik bare Azure Event Hubs runtime
 |        | [Azure-eventhub-checkpointstoreblob-AIO](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Zelfstudie](get-started-python-send-v2.md)</li></ul> |
 | Javascript | [Azure/Event-hubs](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
 |            | [Azure-Event hubs-checkpointstore-BLOB](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
-| Aan de slag | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
+| Go | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
 | C | [Azure-Event-hubs-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-c)</li><li>[Zelfstudie](event-hubs-c-getstarted-send.md)</li></ul> |
 
 ## <a name="management-sdks"></a>Management-Sdk's
@@ -54,6 +48,6 @@ De volgende tabel geeft een lijst van alle momenteel beschik bare beheer bibliot
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 * [Een event hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

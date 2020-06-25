@@ -1,21 +1,14 @@
 ---
 title: Congigure IP-Firewall voor Azure Relay naam ruimte
 description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om verbindingen van bepaalde IP-adressen toe te staan Azure Relay naam ruimten.
-services: service-bus-relay
-documentationcenter: ''
-author: spelluru
-ms.service: service-bus-relay
-ms.devlang: na
-ms.custom: seodec18
 ms.topic: article
-ms.date: 05/13/2020
-ms.author: spelluru
-ms.openlocfilehash: 88eb7acf1e72084a83d6d8631c0ea5d740988640
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653428"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314851"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-Firewall configureren voor een Azure Relay naam ruimte
 Relay-naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
@@ -24,7 +17,7 @@ Deze functie is handig in scenario's waarin Azure Relay alleen toegankelijk moet
 
 
 > [!IMPORTANT]
-> Deze functie is momenteel in preview. 
+> Deze functie is momenteel beschikbaar als preview-product. 
 
 
 ## <a name="enable-ip-firewall-rules"></a>IP-firewall regels inschakelen

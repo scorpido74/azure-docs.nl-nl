@@ -1,26 +1,14 @@
 ---
 title: Voor beelden-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met voor beelden voor Azure Event Hubs op GitHub.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.custom: seodec18
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9529b11d15460c713a0ae14f3bccfa1c2684a3ad
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162055"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315517"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-opslag plaatsen met voor beelden voor Azure Event Hubs 
 U kunt Event Hubs-voor beelden vinden op [github](https://github.com/Azure/azure-event-hubs/tree/master/samples). In deze voor beelden worden de belangrijkste functies in [Azure Event hubs](/azure/event-hubs/)gedemonstreerd. In dit artikel worden de beschik bare voor beelden gecategoriseerd en beschreven, met koppelingen naar elk.
@@ -29,7 +17,7 @@ U kunt Event Hubs-voor beelden vinden op [github](https://github.com/Azure/azure
 
 | Versie | Locatie van voor beelden |
 | ------- | ---------------- | 
-| Azure. Messa ging. Event hubs versie 5 (nieuwste) | [Voor beelden Event Hubs op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Voor beelden van Event Hubs-processors op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Azure. Messa ging. Event hubs versie 5 (nieuwste) | [Event Hubs-voorbeelden op Github](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[Voor beelden van Event Hubs-processors op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
 | Micro soft. Azure. Event hubs versie 4 (verouderd) | [Locatie van GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Java-voorbeelden
@@ -69,6 +57,6 @@ U kunt voor beelden vinden voor de functie Event Hubs voor Apache Kafka in de Gi
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over Event Hubs vindt u in de volgende artikelen:
 
-- [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 - [Functies van Event Hubs](event-hubs-features.md)
 - [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

@@ -1,19 +1,14 @@
 ---
 title: Toegang tot Azure Event Hubs verifiëren met hand tekeningen voor gedeelde toegang
 description: Dit artikel laat u zien hoe u de toegang tot Event Hubs-resources kunt verifiëren met behulp van hand tekeningen voor gedeelde toegang.
-services: event-hubs
-ms.service: event-hubs
-documentationcenter: ''
-author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.openlocfilehash: d29fef42fb875c6ed55ac1d879b9c398490e1700
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: ed389460cf3461df060df79fb756e73711f693f0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298817"
+ms.locfileid: "85318042"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Toegang tot Event Hubs resources verifiëren met behulp van Shared Access signatures (SAS)
 Shared Access Signature (SAS) biedt u gedetailleerde controle over het type toegang dat u verleent aan de clients die de Shared Access Signature hebben. Hier volgen enkele van de besturings elementen die u in een SAS kunt instellen: 

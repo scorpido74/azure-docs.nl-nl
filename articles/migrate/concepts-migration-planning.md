@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: 377085a98214d5fa92d08dd78d37635364295c46
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 81132f0a6f8b57d8798a9a5c4f0a2b9c1ac736d4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85269021"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317396"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migratie plan samen stellen met Azure Migrate
 
@@ -70,7 +70,7 @@ Wanneer u uw servers hebt gedetecteerd, gebruikt u afhankelijkheids toewijzing z
 
 Omdat Azure flexibiliteit biedt om de grootte van uw Cloud capaciteit gedurende de loop der tijd te verg Roten, kunt u het CPU-en geheugen resources die zijn toegewezen aan uw servers optimaliseren. Maak een evaluatie van de groep die is geïdentificeerd om de prestatie geschiedenis van de werk belastingen te begrijpen. deze is zeer belang rijk voor de aanbevolen VM-Sku's en schijven aanbevelingen op Azure.
 
-## <a name="asses-your-readiness-for-migration"></a>Uw gereedheid voor migratie controleren
+## <a name="assess-your-readiness-for-migration"></a>Uw gereedheid voor migratie beoordelen
 
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Gereedheids-en geschiktheids analyse voor Azure
 Exporteer het Azure VM-evaluatie rapport en filtreer door de volgende gereedheids categorieën om inzicht te krijgen in de VM-gereedheid voor Azure:

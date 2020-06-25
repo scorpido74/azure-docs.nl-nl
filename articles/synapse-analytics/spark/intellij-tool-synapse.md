@@ -2,20 +2,20 @@
 title: Zelfstudie - Azure-toolkit voor IntelliJ (Spark-toepassing)
 description: Zelfstudie - Gebruik de Azure-toolkit voor IntelliJ om Spark-toepassingen, die in Scala worden geschreven, te ontwikkelen en naar een Apache Spark-pool te verzenden (preview).
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6f71b9ecc5dc0279d2053f6212f685968309284e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608754"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976792"
 ---
-# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Zelfstudie: Apache Spark-toepassingen maken met IntelliJ met behulp van Synapse Analytics (voorbeeld van werkruimten)
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Zelfstudie: een Apache Spark-toepassing met IntelliJ maken met behulp van een Synapse-werkruimte
 
 Deze zelfstudie demonstreert hoe u de invoegtoepassing Azure-toolkit voor IntelliJ gebruikt om Apache Spark-toepassingen, die in [Scala](https://www.scala-lang.org/) worden geschreven, te ontwikkelen en naar een Spark-pool te verzenden (preview), rechtstreeks vanuit de IntelliJ-IDE (Integrated Development Environment). U kunt de invoegtoepassing op een paar manieren gebruiken:
 
@@ -146,7 +146,7 @@ Nadat u een Scala-toepassing hebt gemaakt, kunt u deze extern uitvoeren.
     |Opdrachtregelargumenten|U kunt voor de hoofdklasse argumenten invoeren, gescheiden door een spatie, indien nodig.|
     |JAR’s en bestanden waarnaar wordt verwezen|U kunt de paden invoeren voor de JAR’s en bestanden waarnaar wordt verwezen, indien aanwezig. U kunt ook bladeren door bestanden in het virtuele Azure-bestandssysteem, dat momenteel alleen ADLS Gen2-cluster ondersteunt. Voor meer informatie: [Apache Spark-configuratie](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) en [Resources uploaden naar cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Opslag van taakuploads|Vouw uit om aanvullende opties te onthullen.|
-    |Opslagtype|Selecteer **Azure Blob gebruiken om te uploaden** in de vervolgkeuzelijst.|
+    |Opslagtype|Selecteer **Azure Blob gebruiken voor uploaden** of **Standaardopslagaccount van cluster gebruiken voor uploaden** in de vervolgkeuzelijst.|
     |Opslagaccount|Voer uw opslagaccount in.|
     |Opslagsleutel|Voer uw opslagsleutel in.|
     |Opslagcontainer|Selecteer uw opslagcontainer in de vervolgkeuzelijst zodra **Opslagaccount** en **Opslagsleutel** zijn ingevoerd.|
@@ -250,6 +250,7 @@ Deze wordt alleen ondersteund in IntelliJ 2018.2 en 2018.3.
 
     |Eigenschap |Waarde |
     |----|----|
+    |Hoofdklassenaam| Selecteer de hoofdklassenaam.| 
     |Spark-pools|Selecteer de Spark-pools waarop u uw toepassing wilt uitvoeren.|
     ||
 

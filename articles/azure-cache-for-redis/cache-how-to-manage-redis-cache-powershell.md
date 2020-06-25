@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cabb1a7d45906c9e60e1defd7d3d99286cdd39fb
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647981"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318246"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -134,7 +134,7 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 | KeyType |Hiermee geeft u op welke toegangs sleutel opnieuw moet worden gegenereerd bij het vernieuwen van toegangs sleutels. Geldige waarden zijn: primair, secundair | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-eigenschappen
-| Eigenschap | Beschrijving | Prijscategorieën |
+| Eigenschap | Description | Prijscategorieën |
 | --- | --- | --- |
 | RDB-back-up-ingeschakeld |Of [redis-gegevens persistentie](cache-how-to-premium-persistence.md) is ingeschakeld |Alleen Premium |
 | RDB-Storage-verbindings reeks |Het connection string naar het opslag account voor [redis-gegevens persistentie](cache-how-to-premium-persistence.md) |Alleen Premium |
@@ -779,5 +779,5 @@ Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Windows 
 * [Resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/templates/deploy-portal.md): informatie over het maken en beheren van resource groepen in de Azure Portal.
 * [Azure-blog](https://azure.microsoft.com/blog/): meer informatie over nieuwe functies in Azure.
 * [Windows Power shell-blog](https://devblogs.microsoft.com/powershell/): meer informatie over nieuwe functies in Windows Power shell.
-* ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): krijg praktische tips en trucs van de Windows Power shell-community.
+* ["Hey, Scripting Guy!" Blog](https://devblogs.microsoft.com/scripting/author/the-scripting-guys/): krijg praktische tips en trucs van de Windows Power shell-community.
 

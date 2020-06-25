@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972637"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317766"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps
 
@@ -45,7 +45,7 @@ Door uw logische app te downloaden, krijgt u een sjabloon die de definities voor
 
 U kunt Resource Manager-sjablonen maken met behulp van Azure PowerShell met de [module LogicAppTemplate](https://github.com/jeffhollan/LogicAppTemplateCreator). Deze open-source module evalueert eerst uw logische app en alle verbindingen die de logische app gebruikt. De module genereert vervolgens sjabloon resources met de vereiste para meters voor implementatie.
 
-Stel bijvoorbeeld dat u een logische app hebt die een bericht ontvangt van een Azure Service Bus wachtrij en gegevens uploadt naar een Azure-SQL database. De module behoudt alle Orchestration Logic en parameterizes de verbindings reeksen SQL en Service Bus, zodat u deze waarden kunt opgeven en wijzigen op basis van uw implementatie behoeften.
+Stel bijvoorbeeld dat u een logische app hebt die een bericht ontvangt van een Azure Service Bus wachtrij en gegevens uploadt naar Azure SQL Database. De module behoudt alle Orchestration Logic en parameterizes de verbindings reeksen SQL en Service Bus, zodat u deze waarden kunt opgeven en wijzigen op basis van uw implementatie behoeften.
 
 Deze voor beelden laten zien hoe u logische apps maakt en implementeert met behulp van Azure Resource Manager sjablonen, Azure-pijp lijnen in azure DevOps en Azure PowerShell:
 
@@ -86,7 +86,7 @@ Als u uw sjabloon wilt genereren na de installatie van de LogicAppTemplate-modul
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
-Als u de aanbeveling voor pijpleidingen in een token van het [Azure Resource Manager-client hulpprogramma](https://github.com/projectkudu/ARMClient)wilt volgen, voert `$SubscriptionId` u deze opdracht uit in plaats van uw Azure-abonnements-id:
+Als u de aanbeveling voor pijpleidingen in een token van het [Azure Resource Manager-client hulpprogramma](https://github.com/projectkudu/ARMClient)wilt volgen, voert u deze opdracht uit in plaats van `$SubscriptionId` uw Azure-abonnements-id:
 
 ```text
 PS> armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
@@ -106,8 +106,8 @@ PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $f
 
 | Parameters | Vereist | Beschrijving |
 |------------|----------|-------------|
-| TemplateFile | Ja | Het bestandspad naar het sjabloon bestand |
-| KeyVault | Nee | Een Enum die beschrijft hoe mogelijke sleutel kluis waarden moeten worden afgehandeld. De standaardwaarde is `None`. |
+| TemplateFile | Yes | Het bestandspad naar het sjabloon bestand |
+| KeyVault | No | Een Enum die beschrijft hoe mogelijke sleutel kluis waarden moeten worden afgehandeld. De standaardwaarde is `None`. |
 ||||
 
 ## <a name="next-steps"></a>Volgende stappen

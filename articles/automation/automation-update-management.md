@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Updatebeheer
 description: Dit artikel bevat een overzicht van de functie Updatebeheer die updates implementeert voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 06/16/2020
+ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 85b724cacc9c878f39de62e91e18713a1817933d
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817232"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316400"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -166,7 +166,7 @@ Zie [Connect Operations Manager to Azure monitor logs](../azure-monitor/platform
 
 De volgende tabel beschrijft de verbonden bronnen die Updatebeheer ondersteunt:
 
-| Verbonden bron | Ondersteund | Beschrijving |
+| Verbonden bron | Ondersteund | Description |
 | --- | --- | --- |
 | Windows-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start de installatie van de vereiste updates. |
 | Linux-agents |Yes |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start de installatie van vereiste updates op ondersteunde distributies. |
@@ -207,7 +207,7 @@ Volg de instructies in [computers verbinden zonder Internet toegang](../azure-mo
 
 In de volgende tabel worden de classificaties gedefinieerd die Updatebeheer ondersteunt voor Windows-updates. 
 
-|Classificatie  |Beschrijving  |
+|Classificatie  |Description  |
 |---------|---------|
 |Essentiële updates     | Een update voor een specifiek probleem dat betrekking heeft op een kritieke bug die niet aan beveiliging voldoet.        |
 |Beveiligingsupdates     | Een update voor een productspecifiek, beveiligings probleem.        |
@@ -220,10 +220,17 @@ In de volgende tabel worden de classificaties gedefinieerd die Updatebeheer onde
 
 In de volgende tabel worden de ondersteunde classificaties voor Linux-updates gedefinieerd.
 
-|Classificatie  |Beschrijving  |
+|Classificatie  |Description  |
 |---------|---------|
 |Essentiële en beveiligingsupdates     | Updates voor een specifiek probleem of een productspecifiek beveiligings probleem.         |
 |Andere Updates     | Alle andere updates die niet kritiek zijn of die geen beveiligings updates zijn.        |
+
+>[!NOTE]
+>Update classificatie voor Linux-machines is alleen beschikbaar als deze wordt gebruikt in de ondersteunde open bare Cloud regio's van Azure. Wanneer u Updatebeheer gebruikt in de volgende nationale Cloud regio's:
+>* Azure US Government
+>* 21Vianet in China
+>
+> Er is geen classificatie van Linux-updates en deze worden gerapporteerd in de categorie **andere updates** . Updatebeheer gebruikt gegevens die worden gepubliceerd door de ondersteunde distributies, met name de uitgebrachte [ovaal](https://oval.mitre.org/) (open beveiligings-en evaluatie taal). Omdat Internet toegang is beperkt van deze nationale Clouds, heeft Updatebeheer geen toegang tot deze bestanden en kan deze niet worden gebruikt.
 
 Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en beveiligings updates in de Cloud, terwijl evaluatie gegevens worden weer gegeven vanwege gegevens verrijking in de Cloud. Voor patching is Updatebeheer afhankelijk van de classificatie gegevens die op de computer beschikbaar zijn. In tegens telling tot andere distributies is CentOS deze informatie niet beschikbaar in de RTM-versie. Als er CentOS machines zijn geconfigureerd voor het retour neren van beveiligings gegevens voor de volgende opdracht, kunt Updatebeheer patch op basis van classificaties.
 
@@ -231,7 +238,7 @@ Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en 
 sudo yum -q --security check-update
 ```
 
-Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze functie mogelijk zelf hebben ingeschakeld. 
+Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze functie mogelijk zelf hebben ingeschakeld.
 
 Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yum-beveiligings-invoeg toepassing installeren. Op Red Hat Enterprise Linux 7 maakt de invoeg toepassing al deel uit van yum. u hoeft niets te installeren. Zie het volgende Red Hat [Knowledge-artikel](https://access.redhat.com/solutions/10021)voor meer informatie.
 

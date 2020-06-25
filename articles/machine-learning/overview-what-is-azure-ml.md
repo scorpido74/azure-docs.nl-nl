@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: ebc30f995c44685dfd58e627706e4ca60e8ecfd5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556819"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738291"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -124,16 +124,11 @@ Uw Azure Storage-account, rekendoelen en andere resources kunnen veilig worden g
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic- en Enterprise-edities
 
 Azure Machine Learning biedt twee edities die zijn afgestemd op uw machine learning-behoeften:
-+ Basic (algemeen verkrijgbaar)
-+ Enterprise (in preview)
++ **Basic**: ideaal voor open-sourceontwikkeling op cloudschaal met een ervaring waarbij code de hoogste prioriteit heeft.
 
-Deze edities bepalen welke tools voor machine learning beschikbaar zijn voor ontwikkelaars en gegevenswetenschappers in hun werkruimte.   
++ **Enterprise**: alle functionaliteit van Basic plus een webinterface (studio) en veilig, uitgebreid ML-levenscyclusbeheer voor alle vaardigheidsniveaus.
 
-Met Basic-werkruimten kunt u Azure Machine Learning blijven gebruiken en betaalt u alleen voor de Azure-resources die worden verbruikt tijdens het machine learning-proces. Voor werkruimten van de Enterprise-editie worden alleen kosten in rekening gebracht voor hun Azure-verbruik tijdens de preview-versie. Meer informatie is beschikbaar op de [pagina met een overzicht en prijzen van de verschillende edities](https://azure.microsoft.com/pricing/details/machine-learning/) voor Azure Machine Learning. 
-
-U wijst de gewenste editie toe wanneer u een werkruimte maakt. Bestaande werkruimten worden automatisch geconverteerd naar de Basic-editie. De Basic-editie omvat alle functies die al algemeen beschikbaar waren vanaf oktober 2019. Alle experimenten in deze werkruimten die zijn gemaakt met behulp van functies van de Enterprise-editie, blijven beschikbaar voor u in de modus Alleen-lezen totdat u een upgrade naar Enterprise uitvoert. Lees hier meer over het [upgraden van een Basic-werkruimte naar de Enterprise-editie](how-to-manage-workspace.md#upgrade). 
-
-Klanten zijn verantwoordelijk voor kosten die gedurende deze periode zijn gemaakt voor rekenresources en andere Azure-resources.
+Lees het [artikel over de Azure Machine Learning-edities](concept-editions.md) voor meer informatie over deze edities en welke mogelijkheden de edities bieden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

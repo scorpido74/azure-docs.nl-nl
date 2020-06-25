@@ -1,24 +1,24 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Cognitive Search
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Cognitive Search. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-samples
-ms.openlocfilehash: ea7b52ae508f1bf1a331d7e5adff4c9628bcf209
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 69938da071a756fe68c750f7f9c4e8825f0a369d
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234876"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887824"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-cognitive-search"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Cognitive Search
+# <a name="azure-policy-built-in-definitions-for-azure-cognitive-search"></a>Ingebouwde Azure Policy-definities voor Azure Cognitive Search
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Cognitive Search. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde Azure Policy-definities voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefinitie in Azure Portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefinitie in Azure Portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-cognitive-search"></a>Azure Cognitive Search
 

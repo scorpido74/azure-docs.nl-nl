@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Gegevensbeveiliging
       items:
         - name: Versleuteling van beveiligde assets
@@ -63,6 +67,8 @@
           href: how-to/automation-region-dns-records.md
         - name: Een Uitvoeren als-account van Automation beheren
           href: manage-runas-account.md
+        - name: Privéverbinding maken met een Automation-account
+          href: how-to/private-link-security.md
         - name: Rolmachtigingen en beveiliging beheren
           href: automation-role-based-access-control.md
         - name: Een Automation-account verplaatsen naar een ander abonnement

@@ -1,25 +1,25 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Arc voor servers
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Arc voor servers. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 ms.custom: subject-policy-samples
-ms.openlocfilehash: b1e0417b10f460a7818b3d76c1c7791dce3eddae
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: d0a8f0c83cd03edd8435015f090573f7fe4f5f29
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236145"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888785"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-arc-for-servers"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Arc voor servers
+# <a name="azure-policy-built-in-definitions-for-azure-arc-for-servers"></a>Ingebouwde Azure Policy-definities voor Azure Arc voor servers
 
 Deze pagina is een index van ingebouwde [Azure Policy](../../governance/policy/overview.md)-beleidsdefinities voor Azure Arc voor servers. Zie [Ingebouwde Azure Policy-definities](../../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-arc-for-servers"></a>Azure Arc voor servers
 

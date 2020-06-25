@@ -1,25 +1,14 @@
 ---
 title: Azure Relay uitzonde ringen en oplossingen oplossen | Microsoft Docs
 description: Lijst met Azure Relay uitzonde ringen en voorgestelde acties die u kunt uitvoeren om ze te helpen oplossen.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 5f9dd02c-cce0-43b3-8eb8-744f0c27f38c
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/20/2017
-ms.author: spelluru
-ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 0bc8a399173331525d62b25929f65ad189ed219b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210867"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316866"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay uitzonde ringen
 
@@ -48,7 +37,7 @@ De volgende tabel bevat een lijst met uitzonderings typen van berichten en de oo
 
 | **Uitzonderingstype** | **Beschrijving** | **Voorgestelde actie** | **Opmerking bij automatische of directe nieuwe poging** |
 | --- | --- | --- | --- |
-| [Out](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |De server heeft niet binnen de opgegeven tijd gereageerd op de aangevraagde bewerking, die wordt beheerd door [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). De server heeft mogelijk de aangevraagde bewerking voltooid. Dit kan gebeuren vanwege vertragingen in het netwerk of andere infra structuur. |Controleer de systeem status op consistentie en probeer het vervolgens opnieuw, indien nodig. Zie [TimeoutException](#timeoutexception). |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
+| [Time-out](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |De server heeft niet binnen de opgegeven tijd gereageerd op de aangevraagde bewerking, die wordt beheerd door [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout). De server heeft mogelijk de aangevraagde bewerking voltooid. Dit kan gebeuren vanwege vertragingen in het netwerk of andere infra structuur. |Controleer de systeem status op consistentie en probeer het vervolgens opnieuw, indien nodig. Zie [TimeoutException](#timeoutexception). |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |
 | [Ongeldige bewerking](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |De aangevraagde gebruikers bewerking is niet toegestaan in de server of de service. Zie het uitzonderings bericht voor meer informatie. |Controleer de code en de documentatie. Zorg ervoor dat de aangevraagde bewerking geldig is. |Opnieuw proberen wordt niet geholpen. |
 | [Bewerking is geannuleerd](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |Er wordt geprobeerd een bewerking aan te roepen voor een object dat al is gesloten, afgebroken of verwijderd. In zeldzame gevallen is de ambient trans actie al verwijderd. |Controleer de code en zorg ervoor dat deze geen bewerkingen aanroept op een verwijderd object. |Opnieuw proberen wordt niet geholpen. |
 | [Onbevoegde toegang](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |Het [token provider](/dotnet/api/microsoft.servicebus.tokenprovider) -object kan geen token verkrijgen, het token is ongeldig of het token bevat niet de claims die vereist zijn om de bewerking uit te voeren. |Zorg ervoor dat de token provider is gemaakt met de juiste waarden. Controleer de configuratie van de Access Control-service. |In sommige gevallen kan het nodig zijn om het opnieuw te proberen. Voeg logica voor opnieuw proberen toe aan code. |

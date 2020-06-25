@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195173"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735350"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een virtuele-machineschaalset maken met Azure PowerShell
 
@@ -191,6 +191,8 @@ New-AzVmss `
   -Credential $cred
 ```
 
+> [!IMPORTANT]
+> We raden u aan de *meest recente* installatiekopieversie te gebruiken. Geef 'meest recente' op om de nieuwste versie van een installatiekopie te gebruiken die beschikbaar is op het moment van implementatie. Zelfs als u 'meest recente' gebruikt, wordt de VM-installatiekopie niet automatisch bijgewerkt na de implementatie, zelfs niet als er een nieuwe versie beschikbaar wordt.
 
 ## <a name="understand-vm-instance-sizes"></a>VM-exemplaargrootten begrijpen
 De grootte van een VM-exemplaar, of *SKU*, bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en geheugen die beschikbaar worden gesteld aan het VM-exemplaar. VM-exemplaren in een schaalset moeten de juiste grootte krijgen voor de verwachte werkbelasting.

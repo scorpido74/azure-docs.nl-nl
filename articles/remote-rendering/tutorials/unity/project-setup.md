@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c05daa998829c4ac0687f75ae5678695127a50b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300586"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659914"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Zelfstudie: Een geheel nieuw Unity-project opstarten
 
@@ -105,6 +105,7 @@ Selecteer het **hoofdcamera**-knooppunt.
 
 1. Open *Bewerken > Projectinstellingen...*
 1. Selecteer in de lijst aan de linkerkant de optie Kwaliteit.
+1. Wijzig het **actieve kwaliteitsniveau** in *Laag* door dit te selecteren
 1. Wijzig het **Standaardkwaliteitsniveau** in *Laag*
 
     ![instellingen voor projectkwaliteit wijzigen](media/settings-quality.png)

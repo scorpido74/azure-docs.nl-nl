@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen
+title: Veelgestelde vragen (FAQ's)
 titleSuffix: Azure Cognitive Search
 description: Krijg antwoorden op veelgestelde vragen over Microsoft Azure Cognitive Search-service, een in de Cloud gehoste zoek service op Microsoft Azure.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618038"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317232"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Cognitive Search
 
@@ -53,7 +53,7 @@ Als u een index opnieuw wilt maken, moet u de gegevens van externe bronnen opnie
 
 Als alternatief kunt u de voorbeeld code **index-Backup-Restore** in deze [Azure Cognitive Search .net](https://github.com/Azure-Samples/azure-search-dotnet-samples) -voor beeld-opslag plaats gebruiken om een back-up te maken van een index definitie en index MOMENTOPNAME naar een reeks json-bestanden. Later kunt u het hulp programma en de bestanden gebruiken om de index, indien nodig, te herstellen.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Kan ik indexeren vanuit SQL database replica's (van toepassing op [Azure SQL database Indexeer functies](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Kan ik indexeren vanuit SQL Database replica's (van toepassing op [Azure SQL database Indexeer functies](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 
 Er zijn geen beperkingen voor het gebruik van primaire of secundaire replica's als gegevens bron wanneer u een volledig nieuwe index bouwt. Voor het vernieuwen van een index met incrementele updates (op basis van gewijzigde records) is echter de primaire replica vereist. Deze vereiste is van SQL Database, die alleen het bijhouden van wijzigingen op primaire replica's waarborgt. Als u secundaire replica's probeert te gebruiken voor een werk belasting voor het vernieuwen van de index, is er geen garantie dat u alle gegevens kunt ophalen.
 

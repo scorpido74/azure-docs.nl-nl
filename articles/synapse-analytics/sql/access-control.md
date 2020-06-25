@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310254"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765077"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werkruimten, gegevens en pijplijnen beheren
 
@@ -169,14 +169,7 @@ Volg deze stappen als u een gebruiker toegang wilt verlenen tot een **individuel
 > *db_datareader* en *db_datawriter* kunnen worden gebruikt voor lees- en schrijfmachtigingen als het verlenen van *db_owner*-toestemming niet wenselijk is.
 > Een Spark-gebruiker heeft de *db_owner*-machtiging nodig om rechtstreeks vanuit Spark naar/vanuit een SQL-pool te lezen en te schrijven.
 
-Wanneer de gebruikers zijn gemaakt, controleert u of SQL op aanvraag een query kan uitvoeren voor het opslagaccount:
-
-- Voer de volgende opdracht uit voor de **master**database van SQL op aanvraag:
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+Wanneer de gebruikers zijn gemaakt, controleert u of SQL op aanvraag een query kan uitvoeren voor het opslagaccount.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Toegangsbeheer voor pijplijnuitvoeringen in een werkruimte
 

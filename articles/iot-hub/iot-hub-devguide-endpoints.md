@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7139c458d2cc2a59f4202e9cbc7d48433514f34
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: d054ff893e1bfdc0f48ede2e2aaa6050885ccc0a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792082"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314033"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referentie-IoT Hub-eind punten
 
@@ -38,11 +38,11 @@ In de volgende lijst worden de eind punten beschreven:
 
 * **Apparaat-id beheren**. Elke IoT hub bevat een set HTTPS REST-eind punten voor het beheren van apparaat-id's (maken, ophalen, bijwerken en verwijderen). [Apparaat-id's](iot-hub-devguide-identity-registry.md) worden gebruikt voor verificatie van apparaten en toegangs beheer.
 
-* **Dubbele beheer van apparaten**. Elke IoT hub biedt een set service gerichte HTTPS REST-eind punten om [apparaatdubbels](iot-hub-devguide-device-twins.md) te zoeken en bij te werken (tags en eigenschappen bijwerken).
+* **Dubbele beheer van apparaten**. Elke IoT hub biedt een set service gerichte HTTPS REST-eind punten om [apparaatdubbels](iot-hub-devguide-device-twins.md) te zoeken en bij te werken (tags en eigenschappen bijwerken). 
 
 * **Taak beheer**. Elke IoT hub biedt een reeks service gerichte HTTPS REST-eind punten voor het opvragen en beheren van [taken](iot-hub-devguide-jobs.md).
 
-* **Apparaat-eind punten**. Voor elk apparaat in het identiteitsregister wordt door IoT Hub een reeks eindpunten zichtbaar gemaakt:
+* **Apparaat-eind punten**. IoT Hub geeft voor elk apparaat in het identiteits register een set eind punten weer. Tenzij anders vermeld, worden deze eind punten weer gegeven met behulp van [MQTT v 3.1.1](https://mqtt.org/), https 1,1 en [AMQP 1,0](https://www.amqp.org/) -protocollen. AMQP en MQTT zijn ook beschikbaar via [Websockets](https://tools.ietf.org/html/rfc6455) op poort 443.
 
   * *Apparaat-naar-Cloud-berichten verzenden*. Een apparaat gebruikt dit eind punt om [apparaat-naar-Cloud-berichten te verzenden](iot-hub-devguide-messages-d2c.md).
 
@@ -50,11 +50,9 @@ In de volgende lijst worden de eind punten beschreven:
 
   * *Uploads van bestanden starten*. Een apparaat gebruikt dit eind punt om een Azure Storage SAS-URI van IoT Hub te ontvangen om [een bestand te uploaden](iot-hub-devguide-file-upload.md).
 
-  * *Dubbele eigenschappen van het apparaat ophalen en bijwerken*. Een apparaat gebruikt dit eind punt om toegang te krijgen tot de eigenschappen van het [apparaat twee](iot-hub-devguide-device-twins.md).
+  * *Dubbele eigenschappen van het apparaat ophalen en bijwerken*. Een apparaat gebruikt dit eind punt om toegang te krijgen tot de eigenschappen van het [apparaat twee](iot-hub-devguide-device-twins.md). HTTPS wordt niet ondersteund.
 
-  * *Ontvang direct-methode aanvragen*. Een apparaat gebruikt dit eind punt om te Luis teren naar aanvragen van [directe methoden](iot-hub-devguide-direct-methods.md).
-
-    Deze eind punten worden beschikbaar gemaakt met behulp van [MQTT v 3.1.1](https://mqtt.org/), https 1,1 en [AMQP 1,0](https://www.amqp.org/) -protocollen. AMQP en MQTT zijn ook beschikbaar via [Websockets](https://tools.ietf.org/html/rfc6455) op poort 443.
+  * *Ontvang direct-methode aanvragen*. Een apparaat gebruikt dit eind punt om te Luis teren naar aanvragen van [directe methoden](iot-hub-devguide-direct-methods.md). HTTPS wordt niet ondersteund.
 
 * **Service-eind punten**. Elke IoT hub biedt een set eind punten voor de back-end van uw oplossing om met uw apparaten te communiceren. Met één uitzonde ring worden deze eind punten alleen weer gegeven met de protocollen [AMQP](https://www.amqp.org/) en AMQP over websockets. Het eind punt voor het aanroepen van de directe methode wordt weer gegeven via het HTTPS-protocol.
   

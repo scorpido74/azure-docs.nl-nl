@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: Uw servers beschermen met Microsoft Defender ATP
       href: security-center-wdatp.md
-    - name: Geavanceerde gegevensbeveiliging voor SQL in virtuele Azure-machines gebruiken
+    - name: Geavanceerde gegevensbeveiliging voor SQL-machines gebruiken
       href: security-center-iaas-advanced-data.md
     - name: App Service gebruiken om uw toepassingen te beveiligen
       href: security-center-app-services.md

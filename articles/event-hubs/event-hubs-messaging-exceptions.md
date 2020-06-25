@@ -1,24 +1,14 @@
 ---
 title: Azure Event Hubs-uitzonde ringen
 description: Dit artikel bevat een lijst met uitzonde ringen en voorgestelde acties van Azure Event Hubs Messa ging.
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/16/2020
-ms.author: shvija
-ms.openlocfilehash: d7f420b353361bdd4185958a1f66bfb68fd5decc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125635"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314608"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Uitzonde ringen voor Event Hubs berichten-.NET
 In deze sectie vindt u de .NET-uitzonde ringen die worden gegenereerd door .NET Framework-Api's. 
@@ -130,6 +120,6 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
 * [Een event hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

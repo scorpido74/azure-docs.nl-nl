@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f7b3bf347b15ebad2403f3aa64c0f3fd6c4be052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611790"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737190"
 ---
 ## <a name="configure-the-sample-project"></a>Het voorbeeldproject configureren
 
@@ -22,7 +22,7 @@ In de uitgepakte map navigeert u naar _digital-twins-samples-master/AdtSampleApp
 
 Gebruik in Visual Studio het deelvenster *Solution Explorer* om een kopie te maken van het bestand _SampleClientApp > **serviceConfig.json.TEMPLATE**_ (gebruik de menu's onder de rechtermuisknop om te kopiëren en plakken). Wijzig de naam van de kopie in *serviceConfig.json*. Dit bestand fungeert als een vooraf ingesteld JSON-bestand met de benodigde configuratievariabelen om het project uit te voeren.
 
-Selecteer het nieuwe bestand om dit te openen in het bewerkingsvenster. Wijzig `tenantId` in uw *directory-id*, `clientId` in uw *toepassings-id* en `instanceUrl` in de URL van de *hostName* van uw Azure Digital Twins-exemplaar (met *https://* ervoor, zoals hieronder weergegeven).
+Selecteer het bestand *serviceConfig.json* om dit te openen in het bewerkingsvenster. Wijzig `tenantId` in uw *directory-id*, `clientId` in uw *toepassings-id* en `instanceUrl` in de URL van de *hostName* van uw Azure Digital Twins-exemplaar (met *https://* ervoor, zoals hieronder weergegeven).
 
 ```json
 {

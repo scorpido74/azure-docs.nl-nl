@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457164"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316078"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
 
@@ -42,7 +42,7 @@ Het NuGet-pakket van de redis-sessie status provider heeft een afhankelijkheid v
 >
 >
 
-Het NuGet-pakket downloadt en voegt de vereiste assembly-verwijzingen toe en voegt de volgende sectie toe aan het bestand Web. config. Deze sectie bevat de vereiste configuratie voor uw ASP.NET-toepassing voor het gebruik van de Azure-cache voor de redis-sessie status provider.
+Het NuGet-pakket downloadt en voegt de vereiste assembly-verwijzingen toe en voegt de volgende sectie toe aan uw web.config-bestand. Deze sectie bevat de vereiste configuratie voor uw ASP.NET-toepassing voor het gebruik van de Azure-cache voor de redis-sessie status provider.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -94,9 +94,9 @@ Configureer de kenmerken met de waarden van uw cache-Blade in de Microsoft Azure
 * **operationTimeoutInMilliseconds** : met deze instelling kunt u de instelling voor syncTimeout in de stack Exchange. redis-client onderdrukken. Als deze niet is opgegeven, wordt de standaard instelling voor syncTimeout van 1000 gebruikt. Zie het [configuratie model stack Exchange. redis](https://go.microsoft.com/fwlink/?LinkId=398705)voor meer informatie.
 * **redisSerializerType** : met deze instelling kunt u aangepaste serialisatie van sessie-inhoud opgeven die wordt verzonden naar redis. Het opgegeven type moet een `Microsoft.Web.Redis.ISerializer` open bare constructor zonder para meters implementeren en moet declareren. Wordt standaard `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` gebruikt.
 
-Zie voor meer informatie over deze eigenschappen de oorspronkelijke blog post-aankondiging bij het [aankondigen van de ASP.net-sessie status provider voor redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Zie voor meer informatie over deze eigenschappen de oorspronkelijke blog post-aankondiging bij het [aankondigen van de ASP.net-sessie status provider voor redis](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/).
 
-Vergeet niet om een opmerking uit te checken in het gedeelte met de standaard InProc-sessie status van de web. config.
+Vergeet niet om de sectie standaard InProc-sessie status provider in uw web.config uit te checken.
 
 ```xml
 <!-- <sessionState mode="InProc"

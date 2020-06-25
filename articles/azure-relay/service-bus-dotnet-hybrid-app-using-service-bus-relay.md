@@ -1,25 +1,14 @@
 ---
 title: Azure Windows Communication Foundation (WCF) Relay hybride on-premises/Cloud toepassing (.NET) | Microsoft Docs
 description: Ontdek hoe u een on-premises WCF-service zichtbaar maakt voor een webtoepassing in de cloud met behulp van Azure Relay
-services: service-bus-relay
-documentationcenter: .net
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 9ed02f7c-ebfb-4f39-9c97-b7dc15bcb4c1
-ms.service: service-bus-relay
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.author: spelluru
-ms.openlocfilehash: b86d535e4cbc275b3ee777d7c70146f7711c502c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211591"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314413"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Een on-premises WCF-service zichtbaar maken voor een webtoepassing in de cloud met behulp van Azure Relay
 
@@ -28,11 +17,11 @@ In dit artikel wordt beschreven hoe u een hybride cloudtoepassing opbouwt met Mi
 * Een bestaande webservice voor verbruik door een weboplossing maken of aanpassen.
 * De Azure Windows Communication Foundation (WCF) Relay-service gebruiken voor het delen van gegevens tussen een Azure-toepassing en een webservice die ergens anders wordt gehost.
 
-In deze zelf studie voert u de volgende taken uit:
+In deze zelfstudie gaat u de volgende taken uitvoeren:
 
 > [!div class="checklist"]
 >
-> * Installeer de vereisten voor deze zelf studie.
+> * Voldoen aan de vereisten voor deze zelfstudie.
 > * Het scenario lezen.
 > * Een naamruimte maken.
 > * Een on-premises server maken.
@@ -46,7 +35,7 @@ In deze zelf studie voert u de volgende taken uit:
 Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* [Visual Studio 2015 of hoger](https://www.visualstudio.com). In de voor beelden in deze zelf studie wordt gebruikgemaakt van Visual Studio 2019.
+* [Visual Studio 2015 of hoger](https://www.visualstudio.com). In de voorbeelden in deze zelfstudie wordt Visual Studio 2019 gebruikt.
 * Azure-SDK voor .NET. Installeer de SDK via de [SDK-downloadpagina](https://azure.microsoft.com/downloads/).
 
 ## <a name="how-azure-relay-helps-with-hybrid-solutions"></a>Hoe Azure hulp biedt bij hybride oplossingen
@@ -78,7 +67,7 @@ Nadat de installatie is voltooid, hebt u alles wat u nodig hebt om te beginnen m
 
 ## <a name="create-a-namespace"></a>Een naamruimte maken
 
-De eerste stap is het maken van een naamruimte en ophalen van een SAS-sleutel ([Shared Access Signature](../service-bus-messaging/service-bus-sas.md)). Een naamruimte biedt een toepassingsbegrenzing voor elke toepassing die toegankelijk is via de relayservice. Een SAS-sleutel wordt automatisch door het systeem gegenereerd wanneer een service naam ruimte wordt gemaakt. De combinatie van servicenaamruimte en SAS-sleutel biedt Service Bus de benodigde referenties voor het verifiëren van toegang tot een toepassing.
+De eerste stap is het maken van een naamruimte en ophalen van een SAS-sleutel ([Shared Access Signature](../service-bus-messaging/service-bus-sas.md)). Een naamruimte biedt een toepassingsbegrenzing voor elke toepassing die toegankelijk is via de relayservice. Een SAS-sleutel wordt automatisch door het systeem gegenereerd wanneer een servicenaamruimte wordt gemaakt. De combinatie van servicenaamruimte en SAS-sleutel biedt Service Bus de benodigde referenties voor het verifiëren van toegang tot een toepassing.
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
@@ -86,15 +75,15 @@ De eerste stap is het maken van een naamruimte en ophalen van een SAS-sleutel ([
 
 U bouwt eerst een gesimuleerd on-premises systeem voor de productcatalogus op.  Dit project is een Visual Studio-consoletoepassing en gebruikt het [Azure Service Bus NuGet-pakket](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) om de Service Bus-bibliotheken en configuratie-instellingen op te nemen. <a name="create-the-project"></a>
 
-1. Start micro soft Visual Studio als beheerder. Als u dit wilt doen, klikt u met de rechter muisknop op het pictogram van het Visual Studio-programma en selecteert u **als administrator uitvoeren**.
-1. Selecteer in Visual Studio **een nieuw project maken**.
+1. Start Microsoft Visual Studio als beheerder. Klik hiervoor met de rechtermuisknop op het pictogram van het Visual Studio-programma en selecteer vervolgens **Als administrator uitvoeren**.
+1. Selecteer **Een nieuw project maken** in Visual Studio.
 1. Selecteer in **een nieuw project maken de**optie **console-app (.NET Framework)** voor C# en selecteer **volgende**.
 1. Geef het project de naam *ProductsServer* en selecteer **maken**.
 
    ![Uw nieuwe project configureren][11]
 
 1. Klik in **Solution Explorer**met de rechter muisknop op het project **ProductsServer** en selecteer vervolgens **NuGet-pakketten beheren**.
-1. Selecteer **Bladeren**, zoek naar en kies **WindowsAzure. ServiceBus**. Selecteer **installeren**en ga akkoord met de gebruiks voorwaarden.
+1. Selecteer **Bladeren**, en zoek en kies vervolgens **WindowsAzure.ServiceBus**. Selecteer **Installeren** en accepteer de gebruiksvoorwaarden.
 
    ![NuGet-pakket selecteren][13]
 
@@ -197,7 +186,7 @@ Maak de volgende code wijzigingen in uw oplossing:
     }
     ```
 
-1. Dubbel klik in **Solution Explorer**op **app. config** om het bestand te openen in de Visual Studio-editor. Voeg aan de onderkant van het `<system.ServiceModel>` element, maar nog steeds binnen `<system.ServiceModel>` , de volgende XML-code toe. Zorg ervoor dat u vervangt door `yourServiceNamespace` de naam van uw naam ruimte en `yourKey` met de SAS-sleutel die u eerder hebt opgehaald via de portal:
+1. Dubbelklik in **Solution Explorer** op **App.config** om het bestand te openen in de Visual Studio-editor. Voeg aan de onderkant van het `<system.ServiceModel>` element, maar nog steeds binnen `<system.ServiceModel>` , de volgende XML-code toe. Zorg ervoor dat u vervangt door `yourServiceNamespace` de naam van uw naam ruimte en `yourKey` met de SAS-sleutel die u eerder hebt opgehaald via de portal:
 
     ```xml
     <system.serviceModel>
@@ -224,7 +213,7 @@ Maak de volgende code wijzigingen in uw oplossing:
     > [!NOTE]
     > De fout die wordt veroorzaakt door `transportClientEndpointBehavior` is slechts een waarschuwing en is geen blokkerend probleem voor dit voor beeld.
 
-1. In *app. config*vervangt u in het- `<appSettings>` element de Connection String waarde door de Connection String die u eerder hebt verkregen via de portal.
+1. Vervang in *App.config*nog steeds `<appSettings>` de Connection String waarde door de Connection String die u eerder hebt verkregen via de portal in het element.
 
     ```xml
     <appSettings>
@@ -243,7 +232,7 @@ In deze sectie bouwt u een eenvoudige ASP.NET-toepassing op waarmee gegevens wor
 ### <a name="create-the-project"></a>Het project maken
 
 1. Zorg ervoor dat Visual Studio wordt uitgevoerd als beheerder.
-1. Selecteer in Visual Studio **een nieuw project maken**.
+1. Selecteer **Een nieuw project maken** in Visual Studio.
 1. Selecteer in **een nieuw project maken de**optie **ASP.net Web Application (.NET Framework)** voor C# en selecteer **volgende**.
 1. Geef het project de naam *ProductsPortal* en selecteer **maken**.
 1. In **een nieuwe ASP.NET-webtoepassing maken**kiest u **MVC** en selecteert u **wijzigen** onder **verificatie**.
@@ -457,7 +446,7 @@ De volgende stap bestaat uit het opnieuw publiceren van de **ProductsPortal** fr
 
     ![Start-URL][27]
 
-1. Selecteer **bestand**  >  **Alles opslaan**.
+1. Klik op **Bestand** > **Alles opslaan**.
 1. Selecteer oplossing **bouwen opnieuw**  >  **samen stellen**.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren

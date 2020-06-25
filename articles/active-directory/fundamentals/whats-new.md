@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b0f0ed5a36af0890577fcc6fd097698c147c0d6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c4e2b4d046490500fceb7a1bee09559790fd433
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298103"
+ms.locfileid: "85317518"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -96,7 +96,7 @@ Op dit moment kunnen gebruikers die zich in domeinen bevinden in azure AD, maar 
 **Service categorie:** Soevereine Clouds  
 **Product mogelijkheden:** Gebruikers verificatie
  
-Vanaf juni zal het OIDC Discovery-document [micro soft Identity platform en OpenID Connect Connect protocol](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) op het [Azure Government Cloud](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) -eind punt (login.microsoftonline.us) het juiste nationale eind punt voor de [Cloud grafiek](https://docs.microsoft.com/graph/deployments) retour neren ( https://graph.microsoft.us of https://dod-graph.microsoft.us0) , op basis van de beschik bare Tenant.  Het bevat momenteel het onjuiste grafiek eindpunt (graph.microsoft.com) msgraph_host veld.  
+Vanaf juni zal het OIDC Discovery-document [micro soft Identity platform en OpenID Connect Connect protocol](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) op het [Azure Government Cloud](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) -eind punt (login.microsoftonline.us) het juiste nationale eind punt voor de [Cloud grafiek](https://docs.microsoft.com/graph/deployments) retour neren ( https://graph.microsoft.us of https://dod-graph.microsoft.us) , op basis van de beschik bare Tenant.  Het bevat momenteel het onjuiste grafiek eindpunt (graph.microsoft.com) msgraph_host veld.  
 
 Deze fout oplossing wordt geleidelijk ongeveer 2 maanden uitgerold.  
 

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248529"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655771"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Quickstart: Een gegevensfactory maken met de Azure Data Factory-UI
 
@@ -41,9 +41,7 @@ Bekijk deze video voor een beter begrip van de Data Factory-UI:
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Ga naar de [Azure Portal](https://portal.azure.com). 
-1. Selecteer de optie **Een resource maken** in het menu van de Azure-portal.
-   
-   ![De optie Een resource maken selecteren in het Azure-portalmenu](./media/doc-common-process/create-a-resource.png)
+1. Selecteer **Een resource maken** in het menu van de Azure-portal.
 1. Selecteer **Analyses** en selecteer **Data Factory**. 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ Bekijk deze video voor een beter begrip van de Data Factory-UI:
 ## <a name="create-a-linked-service"></a>Een gekoppelde service maken
 In deze procedure maakt u een gekoppelde service om uw Azure Storage-account te koppelen aan de data factory. De gekoppelde service beschikt over de verbindingsgegevens die de Data Factory-service tijdens runtime gebruikt om er een verbinding mee tot stand te brengen.
 
-1. Selecteer **Verbindingen** onderaan het venster en selecteerde knop **Nieuw** op de werkbalk (de knop **Verbindingen** bevindt zich onder in de linkerkolom onder **Factory-resources**). 
+1. Open het [tabblad Beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) via het linkerdeelvenster.
 
+1. Selecteer op de pagina Gekoppelde services **+Nieuw** om een nieuwe gekoppelde service te maken.
+
+   ![Nieuwe gekoppelde service](./media/doc-common-process/new-linked-service.png)
+   
 1. Selecteer op de pagina **Nieuwe gekoppelde service** de optie **Azure Blob-opslag** en selecteer vervolgens**Doorgaan**. 
 
 1. Voer de volgende stappen uit op de pagina Nieuwe gekoppelde service (Azure Blob Storage): 

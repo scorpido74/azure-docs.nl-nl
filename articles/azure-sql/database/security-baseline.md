@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 50d408da248bfcea7088af52cd551579da0ad14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 26456c09975fa49bae17a3cfeef8ecc1ef913815
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051211"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315880"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>Azure-beveiligings basislijn voor Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -353,7 +353,7 @@ https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemem
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 **Azure Security Center bewaking**: Ja
 
@@ -449,7 +449,7 @@ Benoemde locaties configureren in Azure:https://docs.microsoft.com/azure/active-
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Een AAD-exemplaar maken en configureren:
 
@@ -477,7 +477,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 Azure Active Directory-verificatie configureren en beheren met Azure SQL:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-authentication-aad-configure
+https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure
 
 Azure-activiteiten logboeken integreren in Azure Monitor:
 
@@ -515,7 +515,7 @@ https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

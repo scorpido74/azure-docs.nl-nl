@@ -1,21 +1,14 @@
 ---
 title: Beheer bibliotheken-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over de bibliotheek die u kunt gebruiken voor het beheren van Azure Event Hubs-naam ruimten en-entiteiten van .NET.
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: dotnet
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 431fe04461f422274697d1e91c4b56e914ce2d4e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.date: 06/23/2020
+ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60746655"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85312980"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs-beheerbibliotheken
 
@@ -35,13 +28,13 @@ Om aan de slag te gaan met de Event Hubs-beheer Bibliotheken, moet u verifiëren
 * [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-Deze zelf studies bieden u een `AppId` (client-id) `TenantId`,, `ClientSecret` en (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet **eigenaars** machtigingen hebben voor de resource groep waarvoor u wilt uitvoeren.
+Deze zelf studies bieden u een `AppId` (client-id), `TenantId` , en `ClientSecret` (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet **eigenaars** machtigingen hebben voor de resource groep waarvoor u wilt uitvoeren.
 
 ## <a name="programming-pattern"></a>Programmerings patroon
 
 Het patroon voor het bewerken van een Event Hubs resource volgt een gemeen schappelijk Protocol:
 
-1. Een token verkrijgen van AAD met behulp van de `Microsoft.IdentityModel.Clients.ActiveDirectory` -bibliotheek.
+1. Een token verkrijgen van AAD met behulp van de- `Microsoft.IdentityModel.Clients.ActiveDirectory` bibliotheek.
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 

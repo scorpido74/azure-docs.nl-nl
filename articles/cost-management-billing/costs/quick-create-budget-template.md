@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830307"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686406"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Quickstart: Een budget maken met een Azure Resource Manager-sjabloon
 
@@ -74,7 +74,7 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
     * **Drempelwaarde**: voer een drempelwaarde in voor de melding. Er wordt een melding verzonden wanneer de kosten de drempelwaarde overschrijden. Dit is altijd een percentage van 0 tot en met 1000.
     * **Contact-e-mails** voer een lijst met e-mailadressen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. De verwachte indeling is `["user1@domain.com","user2@domain.com"]`.
     * **Contactrollen**: voer een lijst met contactrollen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Standaardwaarden zijn Eigenaar, Inzender en Lezer. De verwachte indeling is `["Owner","Contributor","Reader"]`.
-    * **Contactgroepen**: voer een lijst met actiegroepen in waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Dit veld accepteert een matrix van tekenreeksen. De verwachte indeling is `["Action Group Name1","Action Group Name2"]`. Als u geen actiegroepen wilt gebruiken, voert u `[]` in.
+    * **Contactgroepen**: voer een lijst met resource-id's van actiegroepen in als volledige resource-URI's waarnaar de budgetmelding moet worden verzonden wanneer de drempelwaarde wordt overschreden. Dit veld accepteert een matrix van tekenreeksen. De verwachte indeling is `["action group resource ID1","action group resource ID2"]`. Als u geen actiegroepen wilt gebruiken, voert u `[]` in.
     * **Resourcefilter**: voer een lijst met filters voor resources in. De verwachte indeling is `["Resource Filter Name1","Resource Filter Name2"]`. Als u geen filter wilt toepassen, voert u `[]` in. Als u een resourcefilter invoert, moet u ook waarden voor **meterfilters** invoeren.
     * **Meterfilter**: voer een lijst met filters voor meters in. Dit is verplicht voor budgetten met de budgetcategorie **Gebruik**. De verwachte indeling is `["Meter Filter Name1","Meter Filter Name2"]`. Als u geen **resourcefilter** hebt ingevoerd, voert u `[]` in.
     * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.

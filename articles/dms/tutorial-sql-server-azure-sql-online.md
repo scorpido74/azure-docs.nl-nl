@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 6e7ef31f7d48096fe94570ca9f3275bda23452f9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e923a09eeb15d05a32e99a1e9a46e36b72552736
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194170"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318467"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Zelf studie: SQL Server migreren naar een enkele data base of gegroepeerde Data base in Azure SQL Database online met behulp van DMS
 
@@ -164,7 +164,7 @@ Voer de volgende stappen uit om een on-premises data base te beoordelen:
 Wanneer u tevreden bent over de evaluatie en overtuigd bent dat de geselecteerde database een goede kandidaat is voor migratie naar een individuele of pooldatabase in Azure SQL Database, kunt u de DMA gebruiken om het schema naar Azure SQL Database te migreren.
 
 > [!NOTE]
-> Voordat u een migratieproject in DMA maakt, moet u ervoor zorgen dat u al een Azure SQL-database hebt ingericht zoals is vermeld in de vereisten. Voor deze zelfstudie wordt ervan uitgegaan dat de naam van de Azure SQL Database **AdventureWorksAzure** is, maar u kunt elke naam die u wenst opgeven.
+> Voordat u een migratie project in DMA maakt, moet u ervoor zorgen dat u al een SQL database in azure hebt ingericht zoals vermeld in de vereisten. Voor deze zelfstudie wordt ervan uitgegaan dat de naam van de Azure SQL Database **AdventureWorksAzure** is, maar u kunt elke naam die u wenst opgeven.
 
 > [!IMPORTANT]
 > Als u SSIS gebruikt, biedt DMA momenteel geen ondersteuning voor de migratie van de bron-SSISDB, maar u kunt uw SSIS-projecten/-pakketten opnieuw implementeren naar de doel-SSISDB die wordt gehost door Azure SQL Database. Zie het artikel [Pakketten van SQL Server Integration Services migreren naar Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) voor meer informatie over het migreren van SSIS-pakketten.
@@ -212,7 +212,7 @@ Voer de volgende stappen uit om het **AdventureWorks2012** -schema te migreren n
 
     ![Resourceproviders weergeven](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
-3. Zoek naar migratie, klik rechts van **micro soft. DataMigration**, selecteer **registreren**.
+3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren**.
 
     ![Resourceprovider registreren](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)
 

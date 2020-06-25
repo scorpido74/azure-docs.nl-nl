@@ -1,25 +1,14 @@
 ---
 title: Overzicht van Azure Relay-API | Microsoft Docs
-description: In dit artikel vindt u een overzicht van de beschik bare Azure Relay Api's (.NET Standard, .NET Framework, node. js, enzovoort).
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: fdaa1d2b-bd80-4e75-abb9-0c3d0773af2d
-ms.service: service-bus-relay
-ms.devlang: na
+description: In dit artikel vindt u een overzicht van de beschik bare Azure Relay-Api's (.NET Standard, .NET Framework, Node.js, enz.)
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ad7226b5c5badfddf9f436a1229a48f729485821
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 15e13ccac9b05e6e1b0730b38b372dec20c69dda
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210591"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316950"
 ---
 # <a name="available-relay-apis"></a>Beschik bare relay-Api's
 
@@ -47,11 +36,11 @@ De .NET Standard-bibliotheek is gebaseerd op de open protocol definitie voor de 
 
 #### <a name="nodejs"></a>Node.js
 
-De Hybride verbindingen-modules die in de bovenstaande tabel worden weer gegeven, vervangen of wijzigen bestaande node. js-modules met alternatieve implementaties die Luis teren op de Azure Relay-service in plaats van de lokale netwerk stack.
+De Hybride verbindingen-modules die in de bovenstaande tabel worden weer gegeven, vervangen of wijzigen bestaande Node.js modules met alternatieve implementaties die Luis teren op de Azure Relay-service in plaats van de lokale netwerk stack.
 
-De `hyco-https` module wijzigt en gedeeltelijk overschrijft de kern node. js `http` -modules en `https` biedt een HTTPS-listener-implementatie die compatibel is met veel bestaande node. js-modules en-toepassingen die afhankelijk zijn van deze kern modules.
+De `hyco-https` module wijzigt en gedeeltelijk overschrijft de kern Node.js modules `http` en `https` biedt een HTTPS-listener-implementatie die compatibel is met veel bestaande Node.js modules en toepassingen die afhankelijk zijn van deze kern modules.
 
-De `hyco-ws` `hyco-websocket` -en-modules wijzigen de populaire `ws` en `websocket` modules voor node. js, met alternatieve listener-implementaties waarmee modules en toepassingen die afhankelijk zijn van een van beide modules, kunnen werken achter de hybride verbindingen relay.
+Met `hyco-ws` de `hyco-websocket` modules en worden de populaire `ws` en `websocket` modules voor Node.js gewijzigd, waarbij alternatieve listener-implementaties worden geboden waarmee modules en toepassingen die afhankelijk zijn van een van beide modules, kunnen werken achter de hybride verbindingen relay.
 
 Meer informatie over deze modules vindt u in de [Azure-relay-node github-](https://github.com/Azure/azure-relay-node) opslag plaats.
 

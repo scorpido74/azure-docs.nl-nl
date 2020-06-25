@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69ac1e70684b2c4396bb15a439edab37a7e45040
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975585"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317528"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-overdracht voor eenmalige aanmelding bij uw apps met toepassings proxy
 
@@ -156,3 +156,4 @@ Maar in sommige gevallen wordt de aanvraag verzonden naar de back-end-toepassing
 
 * [Een toepassings proxy toepassing configureren voor het gebruik van beperkte Kerberos-delegering](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problemen met toepassingsproxy oplossen (Engelstalig artikel)](application-proxy-troubleshoot.md)
+

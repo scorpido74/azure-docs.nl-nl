@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c587af529831c4fb8cdb15b50b2a0b16a868efe3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: fa8baa5f17b0f6d667ce05c027e41120b4a15e82
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255378"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85316062"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Wat is een logische SQL-Server in Azure SQL Database en Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -87,7 +87,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 
 Als u servers, data bases en firewalls met Azure PowerShell wilt maken en beheren, gebruikt u de volgende Power shell-cmdlets. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
-| Cmdlet | Beschrijving |
+| Cmdlet | Description |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Hiermee maakt u een Data Base |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Hiermee worden een of meer data bases opgehaald|
@@ -112,7 +112,7 @@ Als u servers, data bases en firewalls met Azure PowerShell wilt maken en behere
 
 Als u servers, data bases en firewalls wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
-| Cmdlet | Beschrijving |
+| Cmdlet | Description |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Hiermee maakt u een Data Base|
 |[AZ SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Een lijst met alle data bases die worden beheerd door een server of alle data bases in een elastische pool|
@@ -150,7 +150,7 @@ Gebruik de volgende T-SQL-opdrachten om servers, data bases en firewalls te make
 |[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Hiermee maakt u een nieuwe data base in Azure SQL Database. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 |[CREATE data base (Azure Synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Hiermee maakt u een nieuwe Data Warehouse-data base in azure Synapse. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Data Base of elastische pool wordt gewijzigd. |
-|[ALTER data base (Azure SQL Data Warehouse)](/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Hiermee wijzigt u een Data Warehouse-data base in azure Synapse.|
+|[ALTER data base (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)|Hiermee wijzigt u een Data Warehouse-data base in azure Synapse.|
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Data Base. Als u bent aangemeld bij de hoofd database voor een-server, retourneert informatie over alle data bases. Voor Azure Synapse moet u verbinding hebben met de hoofd database.|
 |[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|

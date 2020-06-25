@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: b645945cc082b321e63e9d02e0bb6a799e82364d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080733"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317305"
 ---
 # <a name="azure-built-in-roles"></a>Ingebouwde rollen van Azure
 
@@ -26,7 +26,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 ## <a name="all"></a>Alles
 
 > [!div class="mx-tableFixed"]
-> | Ingebouwde rol | Beschrijving | Id |
+> | Ingebouwde rol | Description | Id |
 > | --- | --- | --- |
 > | **Algemeen** |  |  |
 > | [Inzender](#contributor) | Hiermee beheert u alles behalve het verlenen van toegang tot resources. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -87,6 +87,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [AcrQuarantineWriter](#acrquarantinewriter) | ACR quarantaine gegevens schrijver | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Rol van Cluster beheerder voor Azure Kubernetes-service](#azure-kubernetes-service-cluster-admin-role) | Lijst met actie voor cluster beheer referenties. | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Gebruikersrol Azure Kubernetes service-cluster](#azure-kubernetes-service-cluster-user-role) | Geef een lijst actie voor de gebruikers referenties van het cluster op. | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | [Rol van de Azure Kubernetes service-bijdrager](#azure-kubernetes-service-contributor-role) | Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes Service-clusters | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | **Databases** |  |  |
 > | [Rol van Cosmos DB-account lezer](#cosmos-db-account-reader-role) | Kan gegevens van Azure Cosmos DB-account lezen. Zie [DocumentDB account Inzender](#documentdb-account-contributor) voor het beheren van Azure Cosmos DB accounts. | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB-operator](#cosmos-db-operator) | Hiermee kunt u Azure Cosmos DB accounts beheren, maar geen toegang tot gegevens. Hiermee voor komt u toegang tot account sleutels en verbindings reeksen. | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -3138,6 +3139,50 @@ Geef een lijst actie voor de gebruikers referenties van het cluster op. [Meer in
     }
   ],
   "roleName": "Azure Kubernetes Service Cluster User Role",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-contributor-role"></a>Rol van de Azure Kubernetes service-bijdrager
+
+Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes Service-clusters
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Acties** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Een beheerd cluster ophalen |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | Hiermee maakt u een nieuw beheerd cluster of wordt er een bestaande bijgewerkt |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants access to read and write Azure Kubernetes Service clusters",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "name": "ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.ContainerService/managedClusters/read",
+        "Microsoft.ContainerService/managedClusters/write",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service Contributor Role",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

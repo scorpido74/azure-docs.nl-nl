@@ -1,22 +1,14 @@
 ---
 title: Diagnostische logboeken voor Hybride verbindingen
 description: Dit artikel bevat een overzicht van alle activiteiten en Diagnostische logboeken die beschikbaar zijn voor Azure Relay.
-services: service-bus-messaging
-author: spelluru
-editor: ''
-ms.assetid: ''
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 04/27/2020
-ms.author: spelluru
-ms.openlocfilehash: b7ac5f1da70352115bf05df1a61120f46a85ec5d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211104"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314893"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Diagnostische logboeken inschakelen voor Azure Relay Hybride verbindingen
 Wanneer u begint met het gebruik van uw Azure Relay Hybride verbindingen, wilt u misschien controleren hoe en wanneer uw listeners en afzenders worden geopend en gesloten, en hoe uw Hybride verbindingen worden gemaakt en berichten worden verzonden. Dit artikel bevat een overzicht van activiteiten en Diagnostische logboeken die worden geleverd door de Azure Relay-service. 
@@ -60,7 +52,7 @@ De nieuwe instellingen worden in ongeveer 10 minuten van kracht. De logboeken wo
 ## <a name="schema-for-hybrid-connections-events"></a>Schema voor hybride verbindings gebeurtenissen
 Hybride verbindingen gebeurtenis logboek JSON-teken reeksen bevatten de elementen die in de volgende tabel worden weer gegeven:
 
-| Naam | Beschrijving |
+| Naam | Description |
 | ------- | ------- |
 | ResourceId | Resource-ID Azure Resource Manager |
 | ActivityId | Interne ID, gebruikt om de opgegeven bewerking te identificeren. Kan ook worden aangeduid als ' TrackingId ' |

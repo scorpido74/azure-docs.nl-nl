@@ -1,25 +1,14 @@
 ---
 title: Azure Relay Veelgestelde vragen | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over de Azure Relay-service.
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: spelluru
-ms.openlocfilehash: ac8967ab036929bf5363a79c9d7c60485bc98841
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 40e6f830e2314f7c8f36fcd25d24a41cc256bef2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211981"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317030"
 ---
 # <a name="azure-relay-faqs"></a>Veelgestelde vragen over Azure Relay
 
@@ -80,10 +69,10 @@ Het verzenden van een bericht naar een Azure Relay wordt behandeld als een ' vol
 Relays die worden geopend met behulp van de WCF-binding van **netTCPRelay** behandelen berichten niet als afzonderlijke berichten, maar als een stroom gegevens stroom via het systeem. Wanneer u deze binding gebruikt, hebben alleen de afzender en de listener inzicht in het framing van de afzonderlijke berichten die zijn verzonden en ontvangen. Voor Relais die de **netTCPRelay** -binding gebruiken, worden alle gegevens behandeld als een stroom voor het berekenen van factureer bare berichten. In dit geval berekent Service Bus de totale hoeveelheid gegevens die via elke afzonderlijke relay wordt verzonden of ontvangen, op een basis van vijf minuten. Vervolgens wordt de totale hoeveelheid gegevens met 64 KB gedeeld om het aantal factureer bare berichten voor die relay tijdens die periode te bepalen.
 
 ## <a name="quotas"></a>Quota
-| Quotum naam | Bereik |  Opmerkingen | Waarde |
+| Quotum naam | Bereik |  Notities | Waarde |
 | --- | --- | --- | --- |
 | Gelijktijdige listeners op een relay |Entiteit |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |25 |
-| Gelijktijdige relay-verbindingen per alle relay-eind punten in een service naam ruimte |Naamruimte |- |5.000 |
+| Gelijktijdige relay-verbindingen per alle relay-eind punten in een service naam ruimte |Naamruimte |- |5\.000 |
 | Relay-eind punten per service naam ruimte |Naamruimte |- |10.000 |
 | Bericht grootte voor [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) -en [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) -relays |Naamruimte |Inkomende berichten die groter zijn dan deze quota worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |64 kB |
 | Bericht grootte voor [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) -en [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) -relays |Naamruimte |Geen limiet voor de bericht grootte. |Onbeperkt |
@@ -128,7 +117,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 Zie [Relay-uitzonde ringen][Relay exceptions]voor een beschrijving van veelvoorkomende uitzonde ringen en voorgestelde acties die u kunt uitvoeren.
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Wat is een Shared Access Signature en welke talen kan ik gebruiken om een hand tekening te genereren?
-Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie [Service Bus verificatie met hand tekeningen voor gedeelde toegang][Shared Access Signatures]voor meer informatie over het genereren van uw eigen hand tekeningen in node. js, PHP, Python, Java, C en C#.
+Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie [Service Bus verificatie met hand tekeningen voor gedeelde toegang][Shared Access Signatures]voor meer informatie over het genereren van uw eigen hand tekeningen in Node.js, PHP, Python, Java, C en C#.
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Is het mogelijk om relay-eind punten te White listen?
 Ja. De relay-client maakt verbinding met de Azure Relay-service door gebruik te maken van volledig gekwalificeerde domein namen. Klanten kunnen een vermelding voor toevoegen `*.servicebus.windows.net` aan firewalls die ondersteuning bieden voor DNS-White list.
