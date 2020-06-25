@@ -1,6 +1,6 @@
 ---
 title: Apache Sqoop met Apache Hadoop-Azure HDInsight
-description: Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren tussen Apache Hadoop op HDInsight en een Azure SQL Database.
+description: Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren tussen Apache Hadoop op HDInsight en Azure SQL Database.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa4d0d45152b49ee76c3f9795f9a05b888776d6
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74769384"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319525"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop gebruiken voor het importeren en exporteren van gegevens tussen Apache Hadoop in HDInsight en SQL Database
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-azure-sql-database"></a>Apache Sqoop gebruiken voor het importeren en exporteren van gegevens tussen Apache Hadoop op HDInsight en Azure SQL Database
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren van een Apache Hadoop cluster in azure HDInsight en Azure SQL Database of Microsoft SQL Server Data Base. De stappen in dit document gebruiken de `sqoop` opdracht rechtstreeks vanuit het hoofd knooppunt van het Hadoop-cluster. U gebruikt SSH om verbinding te maken met het hoofd knooppunt en de opdrachten uit te voeren in dit document. Dit artikel is een voortzetting van het [gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporteren van een Apache Hadoop cluster in azure HDInsight en Azure SQL Database of Microsoft SQL Server. De stappen in dit document gebruiken de `sqoop` opdracht rechtstreeks vanuit het hoofd knooppunt van het Hadoop-cluster. U gebruikt SSH om verbinding te maken met het hoofd knooppunt en de opdrachten uit te voeren in dit document. Dit artikel is een voortzetting van het [gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +37,7 @@ Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporte
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Stel variabelen in om gebruiks gemak te gebruiken. Vervang `PASSWORD`, `MYSQLSERVER`, en `MYDATABASE` door de relevante waarden en voer de volgende opdrachten in:
+1. Stel variabelen in om gebruiks gemak te gebruiken. Vervang `PASSWORD` , `MYSQLSERVER` , en `MYDATABASE` door de relevante waarden en voer de volgende opdrachten in:
 
     ```bash
     export password='PASSWORD'
@@ -51,9 +51,9 @@ Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporte
 
 ## <a name="sqoop-export"></a>Sqoop exporteren
 
-Van Hive naar SQL Server.
+Van Hive naar SQL.
 
-1. Als u wilt controleren of Sqoop uw SQL Database kan zien, voert u de onderstaande opdracht in voor de open SSH-verbinding. Met deze opdracht wordt een lijst met data bases geretourneerd.
+1. Als u wilt controleren of Sqoop uw data base kan zien, voert u de onderstaande opdracht in voor de open SSH-verbinding. Met deze opdracht wordt een lijst met data bases geretourneerd.
 
     ```bash
     sqoop list-databases --connect $serverConnect
@@ -65,7 +65,7 @@ Van Hive naar SQL Server.
     sqoop list-tables --connect $serverDbConnect
     ```
 
-1. Als u gegevens uit de Hive `hivesampletable` -tabel naar `mobiledata` de tabel in SQL database wilt exporteren, voert u de onderstaande opdracht in voor de open SSH-verbinding:
+1. Als u gegevens uit de Hive `hivesampletable` -tabel naar de `mobiledata` tabel in uw Data Base wilt exporteren, voert u de onderstaande opdracht in voor de open SSH-verbinding:
 
     ```bash
     sqoop export --connect $serverDbConnect \
@@ -86,9 +86,9 @@ Van Hive naar SQL Server.
 
 ## <a name="sqoop-import"></a>Sqoop importeren
 
-Van SQL Server naar Azure Storage.
+Van SQL naar Azure Storage.
 
-1. Voer de onderstaande opdracht in uw open SSH-verbinding in om gegevens uit `mobiledata` de tabel in SQL database te importeren `wasbs:///tutorials/usesqoop/importeddata` in de map op HDInsight. De velden in de gegevens worden gescheiden door een tab en de lijnen worden afgesloten met een nieuw regel teken.
+1. Voer de onderstaande opdracht in uw open SSH-verbinding in om gegevens uit de `mobiledata` tabel in SQL te importeren in de `wasbs:///tutorials/usesqoop/importeddata` map op HDInsight. De velden in de gegevens worden gescheiden door een tab en de lijnen worden afgesloten met een nieuw regel teken.
 
     ```bash
     sqoop import --connect $serverDbConnect \
@@ -134,13 +134,13 @@ Van SQL Server naar Azure Storage.
         SELECT * FROM mobiledata_imported2 LIMIT 10;
         ```
 
-    1. Sluit Beeline af `!exit`met.
+    1. Sluit Beeline af met `!exit` .
 
 ## <a name="limitations"></a>Beperkingen
 
-* Bulk export-met HDInsight op basis van Linux, de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database biedt geen ondersteuning voor bulk toevoegingen.
+* Bulksgewijs exporteren-met HDInsight op basis van Linux biedt de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar SQL geen bulk toevoegingen.
 
-* Batch verwerking: met HDInsight op basis van Linux kunt u met `-batch` behulp van de switch tijdens het invoegen meerdere invoegen gebruiken in plaats van een batch verwerking van de Insert-bewerkingen uit te voeren.
+* Batch verwerking: met HDInsight op basis van Linux kunt u met behulp `-batch` van de switch tijdens het invoegen meerdere invoegen gebruiken in plaats van een batch verwerking van de Insert-bewerkingen uit te voeren.
 
 ## <a name="important-considerations"></a>Belangrijke overwegingen
 
@@ -159,5 +159,5 @@ Van SQL Server naar Azure Storage.
 U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
 
 * [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): gebruik de actie Sqoop in een Oozie-werk stroom.
-* [Analyseer gegevens van de vlucht vertraging met HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): gebruik interactieve query's om vlucht vertragings gegevens te analyseren en gebruik vervolgens Sqoop om gegevens te exporteren naar een Azure-SQL database.
+* [Analyseer gegevens van de vlucht vertraging met HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md): gebruik interactieve query's om vlucht vertragings gegevens te analyseren en gebruik vervolgens Sqoop om gegevens te exporteren naar een data base in Azure.
 * [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight/Azure Blob Storage zoeken.

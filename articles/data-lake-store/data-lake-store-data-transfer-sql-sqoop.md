@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d240a212f898c917fd9c55b837210191eab704e5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015927"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319561"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Gegevens kopiëren tussen Data Lake Storage Gen1 en Azure SQL Database met behulp van Sqoop
 
@@ -22,7 +22,7 @@ Meer informatie over het gebruik van Apache Sqoop voor het importeren en exporte
 
 Big Data-toepassingen zijn een natuurlijke keuze voor het verwerken van ongestructureerde en semi-gestructureerde gegevens, zoals Logboeken en bestanden. Het is echter ook mogelijk dat u gestructureerde gegevens moet verwerken die zijn opgeslagen in relationele data bases.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) is een hulp programma dat is ontworpen om gegevens over te dragen tussen relationele data bases en een Big data opslag plaats, zoals data Lake Storage gen1. U kunt deze gebruiken voor het importeren van gegevens uit een relationele Database Management System (RDBMS), zoals Azure SQL Database in Data Lake Storage Gen1. U kunt de gegevens vervolgens transformeren en analyseren met behulp van big data workloads en vervolgens de gegevens weer exporteren naar een RDBMS. In dit artikel gebruikt u een Azure SQL database als uw relationele data base die u wilt importeren/exporteren.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) is een hulp programma dat is ontworpen om gegevens over te dragen tussen relationele data bases en een Big data opslag plaats, zoals data Lake Storage gen1. U kunt deze gebruiken voor het importeren van gegevens uit een relationele Database Management System (RDBMS), zoals Azure SQL Database in Data Lake Storage Gen1. U kunt de gegevens vervolgens transformeren en analyseren met behulp van big data workloads en vervolgens de gegevens weer exporteren naar een RDBMS. In dit artikel gebruikt u een data base in Azure SQL Database als uw relationele data base die u wilt importeren/exporteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,11 +31,11 @@ Voordat u begint, moet u het volgende hebben:
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 * **Een Azure data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van het account.
 * **Azure HDInsight-cluster** met toegang tot een Data Lake Storage gen1-account. Zie [een HDInsight-cluster met data Lake Storage gen1 maken](data-lake-store-hdinsight-hadoop-use-portal.md). In dit artikel wordt ervan uitgegaan dat u een HDInsight Linux-cluster hebt met Data Lake Storage Gen1 toegang.
-* **Azure SQL database**. Zie [een Azure-SQL database maken](../sql-database/sql-database-get-started.md) voor instructies over het maken van een account.
+* **Azure SQL-database**. Zie [een Data Base maken in Azure SQL database](../sql-database/sql-database-get-started.md) voor instructies over het maken van een data base in Azure SQL database.
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Voorbeeld tabellen maken in de Azure SQL database
+## <a name="create-sample-tables-in-the-database"></a>Voorbeeld tabellen maken in de data base
 
-1. Als u wilt beginnen, maakt u twee voorbeeld tabellen in Azure SQL database. Gebruik [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) of Visual Studio om verbinding te maken met de data base en voer vervolgens de volgende query's uit.
+1. Maak twee voorbeeld tabellen in de data base om te starten. Gebruik [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) of Visual Studio om verbinding te maken met de data base en voer vervolgens de volgende query's uit.
 
     **Maken Tabel1**
 
@@ -87,7 +87,7 @@ De Sqoop-pakketten van An HDInsight cluster zijn al beschikbaar. Als u het HDIns
 
        sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-   De **SQL-Data Base-Server naam** tijdelijke aanduiding vertegenwoordigt de naam van de server waarop de Azure-SQL database wordt uitgevoerd. **SQL-data base-naam** tijdelijke aanduiding staat voor de werkelijke database naam.
+   De naam van de server waarop de data base wordt uitgevoerd, vertegenwoordigt de tijdelijke aanduiding voor de **SQL-Data Base-Server naam** . **SQL-data base-naam** tijdelijke aanduiding staat voor de werkelijke database naam.
 
    Bijvoorbeeld:
 

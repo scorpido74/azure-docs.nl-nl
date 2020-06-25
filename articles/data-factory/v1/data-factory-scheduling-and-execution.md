@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 15a2d6ae5d8b80468ffcdd00d60b1f36843ed677
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707154"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319717"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Planning en uitvoering Data Factory
 > [!NOTE]
@@ -233,7 +233,7 @@ De **beleids** sectie in de definitie van de gegevensset definieert de criteria 
 | Policy Name | Description | Toegepast op | Vereist | Standaard |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |No |NA |
-| minimumRows | Valideert dat de gegevens in een **Azure-SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |No |NA |
+| minimumRows | Valideert dat de gegevens in **Azure SQL database** of **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |No |NA |
 
 #### <a name="examples"></a>Voorbeelden
 **minimumSizeMB:**

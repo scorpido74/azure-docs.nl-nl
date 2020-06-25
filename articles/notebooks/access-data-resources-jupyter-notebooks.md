@@ -4,12 +4,12 @@ description: Meer informatie over toegang tot bestanden, REST-Api's, data bases 
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a7e242c000b57cbbfafebc1e11191199a7a4b95f
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554365"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319132"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Toegang tot cloudgegevens in een notebook
 
@@ -42,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL-data bases
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database en SQL Managed instance
 
-U hebt toegang tot SQL Server data bases met behulp van de pyodbc-of pymssql-bibliotheken.
+U kunt toegang krijgen tot data bases in SQL Database of SQL Managed instance met behulp van de pyodbc-of pymssql-bibliotheken.
 
-[Met python kunt u een query uitvoeren op een Azure-SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) geeft u instructies voor het maken van een Data Base met AdventureWorks-gegevens en ziet u hoe u deze gegevens opvraagt. Dezelfde code wordt weer gegeven in de voorbeeld notitieblok voor dit artikel.
+[Met python kunt u een query uitvoeren op een Azure-SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) geeft u instructies voor het maken van een data base in SQL database met AdventureWorks-gegevens en ziet u hoe u een query op die gegevens uitvoert. Dezelfde code wordt weer gegeven in de voorbeeld notitieblok voor dit artikel.
 
 ## <a name="azure-storage"></a>Azure Storage
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74923873"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318872"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Kolommen van bron gegevensset toewijzen aan kolommen van doel gegevensset
 > [!NOTE]
@@ -39,7 +39,7 @@ Hieronder vindt u fout voorwaarden die resulteren in een uitzonde ring:
 > De volgende voor beelden zijn voor Azure SQL en Azure Blob, maar zijn van toepassing op alle gegevens archieven die ondersteuning bieden voor rechthoekige data sets. Pas de definities van de gegevensset en de gekoppelde service in voor beelden aan om naar gegevens in de relevante gegevens bron te verwijzen.
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Voor beeld 1: kolom toewijzing van Azure SQL naar Azure Blob
-In dit voor beeld heeft de invoer tabel een structuur en verwijst deze naar een SQL-tabel in een Azure-SQL database.
+In dit voor beeld heeft de invoer tabel een structuur en verwijst deze naar een SQL-tabel in Azure SQL Database.
 
 ```json
 {

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 27cc1052a2f35382b2d6a93482b7af219a9a187a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35835e1508311bd31008a2335a8c543e558686c2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015162"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319375"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie gebruiken met Apache Hadoop voor het definiëren en uitvoeren van een werkstroom in Azure HDInsight op basis van Linux
 
@@ -35,7 +35,7 @@ U kunt Oozie ook gebruiken om taken te plannen die specifiek zijn voor een syste
 
 * **Een SSH-client**. Zie [verbinding maken met HDInsight (Apache Hadoop) met SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Een Azure SQL database**.  Zie [een Azure-SQL database maken in de Azure Portal](../sql-database/sql-database-get-started.md).  In dit artikel wordt gebruikgemaakt van een Data Base met de naam **oozietest**.
+* **Een Azure SQL database**.  Zie [een Data Base maken in Azure SQL database in het Azure Portal](../sql-database/sql-database-get-started.md).  In dit artikel wordt gebruikgemaakt van een Data Base met de naam **oozietest**.
 
 * Het URI-schema voor de primaire opslag van uw clusters. `wasb://`voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://` . Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
 
@@ -126,7 +126,7 @@ Gebruik de volgende stappen om een HiveQL-script (component Query Language) te m
 
    * `${hiveDataFolder}`: Bevat de locatie voor het opslaan van de gegevens bestanden voor de tabel.
 
-     Het definitie bestand van de werk stroom, werk stroom. XML in dit artikel, geeft deze waarden door aan dit HiveQL-script tijdens runtime.
+     Het definitie bestand van de werk stroom, workflow.xml in dit artikel, geeft deze waarden door aan dit HiveQL-script tijdens runtime.
 
 1. Als u het bestand wilt opslaan, selecteert u **CTRL + X**, voert u **Y**in en selecteert u vervolgens **Enter**.  
 
@@ -275,7 +275,7 @@ Oozie-werk stroom definities worden geschreven in Hadoop process Definition Lang
 
 ## <a name="create-the-job-definition"></a>De taak definitie maken
 
-De taak definitie beschrijft waar u de werk stroom. XML kunt vinden. Ook wordt beschreven waar u andere bestanden kunt vinden die worden gebruikt door de werk stroom, zoals `useooziewf.hql` . Het definieert ook de waarden voor eigenschappen die worden gebruikt in de werk stroom en de gekoppelde bestanden.
+De taak definitie beschrijft waar de workflow.xml worden gevonden. Ook wordt beschreven waar u andere bestanden kunt vinden die worden gebruikt door de werk stroom, zoals `useooziewf.hql` . Het definieert ook de waarden voor eigenschappen die worden gebruikt in de werk stroom en de gekoppelde bestanden.
 
 1. Gebruik de volgende opdracht om het volledige adres van de standaard opslag te verkrijgen. Dit adres wordt gebruikt in het configuratie bestand dat u in de volgende stap maakt.
 
@@ -366,7 +366,7 @@ De taak definitie beschrijft waar u de werk stroom. XML kunt vinden. Ook wordt b
     </configuration>
     ```
 
-    De meeste informatie in dit bestand wordt gebruikt om de waarden in te vullen die worden gebruikt in de werk stroom. XML-of ooziewf. HQL-bestanden, zoals `${nameNode}` .  Als het pad een `wasbs` pad is, moet u het volledige pad gebruiken. Verkort de waarde niet naar gewoon `wasbs:///` . De `oozie.wf.application.path` vermelding definieert waar het bestand workflow. XML moet worden gevonden. Dit bestand bevat de werk stroom die door deze taak is uitgevoerd.
+    De meeste informatie in dit bestand wordt gebruikt om de waarden in te vullen die worden gebruikt in de workflow.xml-of ooziewf. HQL-bestanden, zoals `${nameNode}` .  Als het pad een `wasbs` pad is, moet u het volledige pad gebruiken. Verkort de waarde niet naar gewoon `wasbs:///` . De `oozie.wf.application.path` vermelding definieert waar het workflow.xml bestand moet worden gevonden. Dit bestand bevat de werk stroom die door deze taak is uitgevoerd.
 
 3. Als u de configuratie van de Oozie-taak definitie wilt maken, gebruikt u de volgende opdracht:
 
@@ -539,7 +539,7 @@ Voer de volgende stappen uit om toegang te krijgen tot de Oozie-webgebruikersint
 
 U kunt de coördinator gebruiken om een start, een eind en de frequentie van het voorval voor taken op te geven. Voer de volgende stappen uit om een schema voor de werk stroom te definiëren:
 
-1. Gebruik de volgende opdracht om een bestand met de naam **Coordinator. XML**te maken:
+1. Gebruik de volgende opdracht om een bestand met de naam **coordinator.xml**te maken:
 
     ```bash
     nano coordinator.xml
@@ -564,7 +564,7 @@ U kunt de coördinator gebruiken om een start, een eind en de frequentie van het
     > * `${coordStart}`: De begin tijd van de taak.
     > * `${coordEnd}`: De eind tijd van de taak.
     > * `${coordTimezone}`: Coördinator taken bevinden zich in een vaste tijd zone zonder zomer tijd, meestal aangeduid met UTC. Deze tijd zone wordt aangeduid als de *Oozie-verwerkings tijd.*
-    > * `${wfPath}`: Het pad naar de werk stroom. XML.
+    > * `${wfPath}`: Het pad naar het workflow.xml.
 
 2. Als u het bestand wilt opslaan, selecteert u **CTRL + X**, voert u **Y**in en selecteert u vervolgens **Enter**.
 
@@ -593,7 +593,7 @@ U kunt de coördinator gebruiken om een start, een eind en de frequentie van het
         </property>
         ```
 
-       Vervang de `wasbs://mycontainer@mystorageaccount.blob.core.windows` tekst door de waarde die wordt gebruikt in de andere vermeldingen in het bestand job. XML.
+       Vervang de `wasbs://mycontainer@mystorageaccount.blob.core.windows` tekst door de waarde die in de andere vermeldingen in het job.xml bestand wordt gebruikt.
 
    * Als u het begin, het einde en de frequentie voor de coördinator wilt definiëren, voegt u de volgende XML toe:
 

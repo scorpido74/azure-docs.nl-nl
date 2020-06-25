@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195931"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319064"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Problemen oplossen met behulp van Data Management Gateway
 Dit artikel bevat informatie over het oplossen van problemen met het gebruik van Data Management Gateway.
@@ -204,7 +204,7 @@ Het TLS/SSL-certificaat is mogelijk verloren gegaan op de gateway computer. De g
 Volg deze stappen om het probleem op te lossen:
 
 1. Start Data Management Gateway Configuration Manager.
-2. Ga naar het tabblad **instellingen** .  
+2. Schakel over naar het tabblad **Instellingen**.  
 3. Klik op de knop **wijzigen** om het TLS/SSL-certificaat te wijzigen.
 
    ![Knop certificaat wijzigen](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
@@ -224,7 +224,7 @@ Dit kan om verschillende redenen gebeuren en de beperking is dienovereenkomstig 
 #### <a name="resolution"></a>Oplossing
 Sta uitgaande TCP-verbindingen via TCP/1433 toe aan de Data Management Gateway client voordat u verbinding maakt met een SQL database.
 
-Als de doel database een Azure-SQL database is, controleert u ook SQL Server firewall instellingen voor Azure.
+Als de doel database zich in Azure SQL Database bevindt, moet u ook SQL Server firewall instellingen voor Azure controleren.
 
 Raadpleeg de volgende sectie om de verbinding met het on-premises gegevens archief te testen.
 

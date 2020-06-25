@@ -3,12 +3,12 @@ title: Java-toepassingen overal bewaken-Azure Monitor Application Insights
 description: Toepassings prestatie bewaking voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Zoek de hoofd oorzaak van de problemen d met behulp van gedistribueerde tracering en toepassings overzicht.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509207"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319683"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ Meer informatie en aanvullende configuratie opties vindt u hieronder voor meer i
 
 ## <a name="configuration-file-path"></a>Pad naar configuratie bestand
 
-Application Insights Java 3,0 Preview verwacht dat het configuratie bestand wordt benoemd `ApplicationInsights.json`en zich in dezelfde map als `applicationinsights-agent-3.0.0-PREVIEW.4.jar`bevindt.
+Application Insights Java 3,0 Preview verwacht dat het configuratie bestand wordt benoemd `ApplicationInsights.json` en zich in dezelfde map als bevindt `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
 
 U kunt uw eigen pad naar een configuratie bestand opgeven met
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`omgevings variabele of
 * `applicationinsights.configurationFile`Java-systeem eigenschap
 
-Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de `applicationinsights-agent-3.0.0-PREVIEW.4.jar` map waar zich bevindt.
+Als u een relatief pad opgeeft, wordt dit omgezet ten opzichte van de map waar `applicationinsights-agent-3.0.0-PREVIEW.5.jar` zich bevindt.
 
 ## <a name="connection-string"></a>Verbindingsreeks
 
@@ -48,7 +48,7 @@ Dit is vereist. U kunt uw connection string vinden in uw Application Insights-re
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Verbindings reeks Application Insights":::
 
-U kunt de connection string ook instellen met behulp van `APPLICATIONINSIGHTS_CONNECTION_STRING`de omgevings variabele.
+U kunt de connection string ook instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_CONNECTION_STRING` .
 
 ## <a name="cloud-role-name"></a>Rolnaam van Cloud
 
@@ -68,7 +68,7 @@ Als u de naam van de Cloud functie wilt instellen:
 
 Als de naam van de Cloud functie niet is ingesteld, wordt de naam van de Application Insights resource gebruikt voor het labelen van het onderdeel op de toepassings toewijzing.
 
-U kunt ook de naam van de Cloud functie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_ROLE_NAME`.
+U kunt ook de naam van de Cloud functie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_ROLE_NAME` .
 
 ## <a name="cloud-role-instance"></a>Cloud rolinstantie
 
@@ -86,7 +86,7 @@ Als u de Cloud rolinstantie wilt instellen op iets anders dan de naam van de com
 }
 ```
 
-U kunt ook de Cloud rolinstantie instellen met behulp van de `APPLICATIONINSIGHTS_ROLE_INSTANCE`omgevings variabele.
+U kunt ook de Cloud rolinstantie instellen met behulp van de omgevings variabele `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
 
 ## <a name="application-log-capture"></a>Toepassings logboeken vastleggen
 
@@ -110,7 +110,7 @@ Als u deze drempel waarde wilt wijzigen:
 }
 ```
 
-Dit zijn de geldige `threshold` waarden die u in het `ApplicationInsights.json` bestand kunt opgeven en de manier waarop ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
+Dit zijn de geldige `threshold` waarden die u in het bestand kunt opgeven `ApplicationInsights.json` en de manier waarop ze overeenkomen met de registratie niveaus in verschillende registratie raamwerken:
 
 | `threshold`  | Log4j  | Logback | JUL     |
 |--------------|--------|---------|---------|
@@ -123,7 +123,7 @@ Dit zijn de geldige `threshold` waarden die u in het `ApplicationInsights.json` 
 | FOUTEN OPSPOREN/VERFIJNEN   | FOUTOPSPORING  | FOUTOPSPORING   | BLIJVEN    |
 | KLEINERE        | FOUTOPSPORING  | FOUTOPSPORING   | KLEINERE   |
 | TRACERING/KLEINSTE | TRACERINGS  | TRACERINGS   | MEEST  |
-| ALLE          | ALLE    | ALLE     | ALLE     |
+| ALL          | ALL    | ALL     | ALL     |
 
 ## <a name="jmx-metrics"></a>Metrische gegevens van JMX
 
@@ -237,7 +237,7 @@ Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbindi
 
 Dit kan handig zijn voor herkennen en het diagnosticeren van problemen met Application Insights zichzelf.
 
-Standaard meldt de app aan op de console `warn`met niveau, die overeenkomt met deze configuratie:
+Standaard meldt de app aan op de console met niveau `warn` , die overeenkomt met deze configuratie:
 
 ```json
 {
@@ -252,7 +252,7 @@ Standaard meldt de app aan op de console `warn`met niveau, die overeenkomt met d
 }
 ```
 
-Geldige niveaus zijn `OFF`, `ERROR` `WARN` `INFO` `DEBUG`,,, en `TRACE`.
+Geldige niveaus zijn,,,, `OFF` `ERROR` `WARN` `INFO` `DEBUG` en `TRACE` .
 
 Als u zich wilt aanmelden bij een bestand in plaats van zich aan te melden bij de console:
 
@@ -271,4 +271,4 @@ Als u zich wilt aanmelden bij een bestand in plaats van zich aan te melden bij d
 }
 ```
 
-Wanneer u logboek registratie gebruikt en het bestand is `maxSizeMB`gevonden, wordt het overschakelt, waarbij alleen het meest recente voltooide logboek bestand naast het huidige logboek bestand wordt bewaard.
+Wanneer u logboek registratie gebruikt en het bestand is gevonden, `maxSizeMB` wordt het overschakelt, waarbij alleen het meest recente voltooide logboek bestand naast het huidige logboek bestand wordt bewaard.

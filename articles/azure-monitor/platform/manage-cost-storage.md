@@ -11,17 +11,17 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 06/19/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: c6358411572de6049a3362cc0e8e26b9cbc82d43
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 4f7be81c3593e35dfbbcf3a5671726da70ae0c7e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906848"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319666"
 ---
-# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
+# <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u uw kosten voor Azure Monitor-logboeken begrijpt en beheert. Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen. Alle prijzen en kosten die in dit artikel worden weer gegeven, zijn alleen bedoeld als voor beeld. 
@@ -32,7 +32,7 @@ In dit artikel wordt uitgelegd hoe u opgenomen gegevens volume en opslag groei p
 
 ## <a name="pricing-model"></a>Prijsmodel
 
-De standaard prijs voor Log Analytics is een model voor **betalen naar gebruik** op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Het gegevens volume wordt gemeten als de grootte van de gegevens die worden opgeslagen. Elke Log Analytics-werk ruimte wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. De hoeveelheid gegevens opname kan aanzienlijk zijn, afhankelijk van de volgende factoren: 
+De standaard prijs voor Log Analytics is een model voor **betalen naar gebruik** op basis van het gegevens volume dat is opgenomen en optioneel voor langere gegevens retentie. Het gegevens volume wordt gemeten als de grootte van de gegevens die worden opgeslagen in GB (10 ^ 9 bytes). Elke Log Analytics-werk ruimte wordt in rekening gebracht als een afzonderlijke service en draagt bij aan de factuur voor uw Azure-abonnement. De hoeveelheid gegevens opname kan aanzienlijk zijn, afhankelijk van de volgende factoren: 
 
   - Aantal ingeschakelde beheer oplossingen en hun configuratie
   - Aantal bewaakte Vm's
@@ -40,7 +40,7 @@ De standaard prijs voor Log Analytics is een model voor **betalen naar gebruik**
   
 Naast het betalen naar gebruik-model is Log Analytics **capaciteits reserverings** lagen waarmee u Maxi maal 25% kunt besparen op basis van de betalen naar gebruik-prijs. Met de prijzen voor capaciteits reservering kunt u een reserve ring kopen vanaf 100 GB per dag. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De lagen voor capaciteits reservering hebben een toezeggings periode van 31 dagen. Tijdens de toezeggings periode kunt u overschakelen naar een reserverings tier op een hoger niveau (waardoor de dag van 31 dagen opnieuw wordt opgestart), maar u kunt niet teruggaan naar betalen naar gebruik of naar een reserverings laag met een lagere capaciteit totdat de toezeggings periode is voltooid. Facturering voor de reserverings lagen voor capaciteit wordt dagelijks uitgevoerd. Meer [informatie](https://azure.microsoft.com/pricing/details/monitor/) over log Analytics prijzen voor betalen per gebruik en capaciteits reservering. 
 
-In alle prijs categorieën wordt de gegevens grootte van een gebeurtenis berekend op basis van een teken reeks representatie van de eigenschappen die in Log Analytics voor deze gebeurtenis zijn opgeslagen, ongeacht of de gegevens worden verzonden vanuit een agent of worden toegevoegd tijdens het opname proces. Dit omvat alle [aangepaste velden](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) die worden toegevoegd wanneer gegevens worden verzameld en vervolgens worden opgeslagen in log Analytics. Diverse eigenschappen die worden gebruikt voor alle gegevens typen, inclusief enkele [log Analytics standaard eigenschappen](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties), worden uitgesloten in de berekening van de gebeurtenis grootte. Dit omvat `_ResourceId` , `_ItemId` , `_IsBillable` en `_BilledSize` `Type` . Alle andere eigenschappen die zijn opgeslagen in Log Analytics, worden opgenomen in de berekening van de gebeurtenis grootte. Sommige gegevens typen zijn gratis van gegevens opname kosten, bijvoorbeeld de AzureActivity-, heartbeat-en gebruiks typen. Als u wilt bepalen of een gebeurtenis is uitgesloten van facturering voor gegevens opname, kunt u de `_IsBillable` eigenschap gebruiken zoals [hieronder](#data-volume-for-specific-events)wordt weer gegeven.
+In alle prijs categorieën wordt de gegevens grootte van een gebeurtenis berekend op basis van een teken reeks representatie van de eigenschappen die in Log Analytics voor deze gebeurtenis zijn opgeslagen, ongeacht of de gegevens worden verzonden vanuit een agent of worden toegevoegd tijdens het opname proces. Dit omvat alle [aangepaste velden](https://docs.microsoft.com/azure/azure-monitor/platform/custom-fields) die worden toegevoegd wanneer gegevens worden verzameld en vervolgens worden opgeslagen in log Analytics. Diverse eigenschappen die worden gebruikt voor alle gegevens typen, inclusief enkele [log Analytics standaard eigenschappen](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties), worden uitgesloten in de berekening van de gebeurtenis grootte. Dit omvat `_ResourceId` , `_ItemId` , `_IsBillable` en `_BilledSize` `Type` . Alle andere eigenschappen die zijn opgeslagen in Log Analytics, worden opgenomen in de berekening van de gebeurtenis grootte. Sommige gegevens typen zijn gratis van gegevens opname kosten, bijvoorbeeld de AzureActivity-, heartbeat-en gebruiks typen. Als u wilt bepalen of een gebeurtenis is uitgesloten van facturering voor gegevens opname, kunt u de `_IsBillable` eigenschap gebruiken zoals [hieronder](#data-volume-for-specific-events)wordt weer gegeven. Gebruik wordt gerapporteerd in GB (1.0 E9 bytes). 
 
 Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) en [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) hun eigen prijs modellen hebben. 
 
@@ -196,7 +196,7 @@ Voor elke werk ruimte is de dagelijkse Cap toegepast op een ander uur van de dag
 Zodra de dagelijkse limiet is bereikt, stopt het verzamelen van factureer bare gegevens typen voor de rest van de dag. (De latentie die inherent is aan het Toep assen van het dagelijkse kapje betekent dat het kapje niet precies het opgegeven niveau voor de dagelijkse Cap wordt toegepast.) Er wordt een waarschuwings banner boven aan de pagina weer gegeven voor de geselecteerde Log Analytics-werk ruimte en er wordt een bewerkings gebeurtenis verzonden naar de *bewerkings* tabel onder **LogManagement** categorie. Het verzamelen van gegevens wordt hervat nadat het tijdstip waarop de tijd opnieuw is ingesteld onder *dagelijkse limiet is ingesteld op*. We raden u aan een waarschuwings regel te definiëren op basis van deze bewerkings gebeurtenis, die is geconfigureerd om te worden gewaarschuwd wanneer de dagelijkse gegevens limiet is bereikt. 
 
 > [!WARNING]
-> Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Security Center, met uitzonde ring van werk ruimten waarin Azure Security Center is geïnstalleerd vóór 19 juni 2017. 
+> Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Sentinal of Azure Security Center, met uitzonde ring van werk ruimten waarin Azure Security Center is geïnstalleerd vóór 19 juni 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
 

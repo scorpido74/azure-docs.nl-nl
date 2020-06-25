@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019908"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318906"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory-voor beelden
 > [!NOTE]
@@ -26,17 +26,17 @@ ms.locfileid: "84019908"
 ## <a name="samples-on-github"></a>Voorbeelden op GitHub
 De [github Azure-DataFactory-opslag plaats](https://github.com/azure/azure-datafactory) bevat verschillende voor beelden waarmee u snel kunt werken met Azure Data Factory Service (of) de scripts kunt wijzigen en deze in de eigen toepassing kunt gebruiken. De map Samples\JSON bevat JSON-fragmenten voor algemene scenario's.
 
-| Voorbeeld | Beschrijving |
+| Voorbeeld | Description |
 |:--- |:--- |
 | [ADF-walkthrough](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Dit voor beeld bevat een end-to-end-procedure voor het verwerken van logboek bestanden met behulp van Azure Data Factory om gegevens van logboek bestanden in te scha kelen naar inzichten. <br/><br/>In deze walkthrough verzamelt de Data Factory-pijp lijn voorbeeld logboeken, verwerkt en verrijkt de gegevens van logboeken met referentie gegevens, en worden de gegevens getransformeerd om de effectiviteit te beoordelen van een marketing campagne die onlangs is gestart. |
 | [JSON-voor beelden](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Dit voor beeld bevat JSON-voor beelden voor algemene scenario's. |
 | [Voor beeld van http-gegevens-Downloader](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |In dit voor beeld wordt het downloaden van gegevens van een HTTP-eind punt naar Azure Blob Storage met aangepaste .NET-activiteit gedemonstreerd. |
-| [Voor beeld van meerdere AppDomain dot-activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Met dit voor beeld kunt u een aangepaste .NET-activiteit ontwerpen die niet is beperkt tot assembly-versies die worden gebruikt door de ADF Launcher (bijvoorbeeld WindowsAzure. Storage v 4.3.0, Newton soft. json v 6.0. x, enzovoort). |
-| [R-script uitvoeren](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Dit voor beeld bevat de Data Factory aangepaste activiteit die kan worden gebruikt voor het aanroepen van RScript. exe. Dit voor beeld werkt alleen met uw eigen (niet op aanvraag) HDInsight-cluster waarop R al is geïnstalleerd. |
+| [Voor beeld van meerdere AppDomain dot-activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Met dit voor beeld kunt u een aangepaste .NET-activiteit ontwerpen die niet is beperkt tot assembly-versies die worden gebruikt door de ADF Launcher (bijvoorbeeld WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsop v 6.0. x, enzovoort). |
+| [R-script uitvoeren](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Dit voor beeld bevat de Data Factory aangepaste activiteit die kan worden gebruikt om RScript.exe aan te roepen. Dit voor beeld werkt alleen met uw eigen (niet op aanvraag) HDInsight-cluster waarop R al is geïnstalleerd. |
 | [Spark-taken aanroepen in HDInsight Hadoop-cluster](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |In dit voor beeld ziet u hoe u MapReduce-activiteit kunt gebruiken om een Spark-programma aan te roepen. Het Spark-programma kopieert alleen gegevens van de ene Azure Blob-container naar een andere. |
 | [Twitter-analyse met behulp van Azure Machine Learning-batch Score activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dit voor beeld laat zien hoe u AzureMLBatchScoringActivity kunt gebruiken om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
 | [Twitter-analyse met aangepaste activiteit](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |In dit voor beeld ziet u hoe u een aangepaste .NET-activiteit gebruikt om een Azure Machine Learning model aan te roepen waarmee Twitter-sentiment analyse, Score ring, voor spelling, enzovoort worden uitgevoerd. |
-| [Pijp lijnen met para meters voor Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Het voor beeld biedt een end-to-end C#-code voor het implementeren van N pijp lijnen voor het scoren en opnieuw trainen van elk met een andere regio parameter, waarbij de lijst met regio's afkomstig is uit een para meters. txt-bestand, dat deel uitmaakt van dit voor beeld. |
+| [Pijp lijnen met para meters voor Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Het voor beeld biedt een end-to-end C#-code voor het implementeren van N pijp lijnen voor het scoren en opnieuw trainen van elk met een andere regio parameter, waarbij de lijst met regio's afkomstig is uit een parameters.txt bestand, dat deel uitmaakt van dit voor beeld. |
 | [Referentie gegevens vernieuwen voor Azure Stream Analytics taken](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Dit voor beeld laat zien hoe u Azure Data Factory gebruikt en Azure Stream Analytics samen om de query's uit te voeren met referentie gegevens en het vernieuwen voor referentie gegevens volgens een planning in te stellen. |
 | [Hybride pijp lijn met on-premises Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |In het voor beeld wordt een on-premises Hadoop-cluster gebruikt als reken doel voor het uitvoeren van taken in Data Factory net zoals u andere reken doelen zou toevoegen, zoals een Hadoop-cluster op basis van HDInsight in de Cloud. |
 | [JSON-conversie programma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Met dit hulp programma kunt u JSONs converteren van versie vóór 2015-07-01-preview naar meest recente of 2015-07-01-Preview (standaard). |
@@ -46,9 +46,9 @@ De [github Azure-DataFactory-opslag plaats](https://github.com/azure/azure-dataf
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 U kunt de volgende Azure Resource Manager sjablonen vinden voor Data Factory op GitHub.
 
-| Template | Beschrijving |
+| Template | Description |
 | --- | --- |
-| [Kopiëren van Azure-Blob Storage naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Als u deze sjabloon implementeert, wordt een Azure-data factory gemaakt met een pijp lijn waarmee gegevens worden gekopieerd van de opgegeven Azure Blob-opslag naar de Azure-SQL database |
+| [Kopiëren van Azure-Blob Storage naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Als u deze sjabloon implementeert, wordt een Azure-data factory gemaakt met een pijp lijn waarmee gegevens uit de opgegeven Azure Blob-opslag worden gekopieerd naar Azure SQL Database |
 | [Kopiëren van Sales Force naar Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Als u deze sjabloon implementeert, wordt een Azure-data factory gemaakt met een pijp lijn waarmee gegevens worden gekopieerd van het opgegeven Sales Force-account naar de Azure Blob-opslag. |
 | [Gegevens transformeren door Hive-script uit te voeren op een Azure HDInsight-cluster](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |Als u deze sjabloon implementeert, wordt een Azure-data factory gemaakt met een pijp lijn die gegevens transformeert door het script voor het voorbeeld Hive uit te voeren op een Azure HDInsight Hadoop cluster. |
 
@@ -104,7 +104,7 @@ De volgende zaken moeten op uw computer zijn geïnstalleerd:
    4. Selecteer de **resource groep** voor de Data Factory.
    5. Selecteer **VS-West**, **VS-Oost**of **Europa-Noord** voor de **regio**.
    6. Klik op **Volgende**.
-6. Geef op de pagina **gegevens archieven configureren** een bestaand **Azure SQL database** -en **Azure Storage-account** (of) data base/opslag maken op en klik op volgende.
+6. Geef op de pagina **gegevens archieven configureren** een bestaande **Data base op in Azure SQL database** en **Azure Storage-account** (of) data base/opslag maken en klik op volgende.
 7. Selecteer op de pagina **Compute configureren** de optie standaard instellingen en klik op **volgende**.
 8. Controleer op de pagina **samen vatting** alle instellingen en klik op **volgende**.
 9. Wacht tot de implementatie is voltooid op de pagina **Implementatie status** en klik op **volt ooien**.

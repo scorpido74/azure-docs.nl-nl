@@ -1,20 +1,14 @@
 ---
 title: Apache flink gebruiken voor Apache Kafka-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het verbinden van Apache flink met een Azure-Event Hub
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
 ms.topic: how-to
-ms.date: 04/02/2020
-ms.author: shvija
-ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 43cbf99a6ba2c0384ceffc10b01916f6ad22b26a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632813"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320135"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Flink gebruiken met Azure Event Hubs voor Apache Kafka
 In deze zelf studie leert u hoe u Apache flink verbindt met een Event Hub zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Azure Event Hubs ondersteunt [Apache Kafka versie 1,0.](https://kafka.apache.org/10/documentation.html).
@@ -51,7 +45,7 @@ Een Event Hubs naam ruimte is vereist voor het verzenden of ontvangen van een Ev
 
 ## <a name="clone-the-example-project"></a>Het voorbeeldproject klonen
 
-Nu u de Event Hubs connection string hebt, kloont u de Azure Event Hubs voor de Kafka-opslag plaats `flink` en navigeert u naar de submap:
+Nu u de Event Hubs connection string hebt, kloont u de Azure Event Hubs voor de Kafka-opslag plaats en navigeert u naar de `flink` submap:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -64,9 +58,9 @@ Gebruik het meegeleverde flink producer-voor beeld om berichten te verzenden naa
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een Event Hubs Kafka-eind punt opgeven
 
-#### <a name="producerconfig"></a>producer. config
+#### <a name="producerconfig"></a>producer.config
 
-Werk de `bootstrap.servers` waarden `sasl.jaas.config` en in `producer/src/main/resources/producer.config` om de producent om te leiden naar het event hubs Kafka-eind punt met de juiste authenticatie.
+Werk de `bootstrap.servers` `sasl.jaas.config` waarden en in `producer/src/main/resources/producer.config` om de producent om te leiden naar het event hubs Kafka-eind punt met de juiste authenticatie.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -87,7 +81,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-De producent begint nu met het verzenden van gebeurtenissen naar de Event Hub `test` in het onderwerp en het afdrukken van de gebeurtenissen naar stdout.
+De producent begint nu met het verzenden van gebeurtenissen naar de Event Hub in het onderwerp `test` en het afdrukken van de gebeurtenissen naar stdout.
 
 ## <a name="run-flink-consumer"></a>Flink-consument uitvoeren
 
@@ -95,7 +89,7 @@ Gebruik het voor beeld van de meegeleverde gebruiker om berichten te ontvangen v
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Een Event Hubs Kafka-eind punt opgeven
 
-#### <a name="consumerconfig"></a>Consumer. config
+#### <a name="consumerconfig"></a>consumer.config
 
 Werk de `bootstrap.servers` en `sasl.jaas.config` waarden in `consumer/src/main/resources/consumer.config` bij om de consument om te leiden naar het event hubs Kafka-eind punt met de juiste authenticatie.
 
@@ -118,7 +112,7 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Als de Event Hub gebeurtenissen heeft (bijvoorbeeld als uw producent ook wordt uitgevoerd), begint de Consumer nu met het ontvangen van gebeurtenissen van het `test`onderwerp.
+Als de Event Hub gebeurtenissen heeft (bijvoorbeeld als uw producent ook wordt uitgevoerd), begint de Consumer nu met het ontvangen van gebeurtenissen van het onderwerp `test` .
 
 Bekijk [de Kafka-connector gids van flink](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) voor meer gedetailleerde informatie over het verbinden van flink met Kafka.
 

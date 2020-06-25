@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4f1154b994e512521edf22a3b8dc5819a93a5249
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015009"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319205"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -34,7 +34,7 @@ Een voor deel van het onderdeel is de mogelijkheid om meta gegevens te exportere
 De tabellen HDInsight 3,6 en HDInsight 4,0 zuren begrijpen zuur verschillen. De enige vereiste actie voor de migratie is het uitvoeren van ' primaire ' compressie voor elke ACID-tabel op het 3,6-cluster. Raadpleeg de [hand leiding](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) van de Hive-taal voor meer informatie over compressie.
 
 ### <a name="2-copy-sql-database"></a>2. SQL database kopiëren
-Maak een nieuwe kopie van uw externe meta Store. Als u een externe meta Store gebruikt, is een van de veilige en eenvoudige manieren om een kopie van de meta Store te maken, [het herstellen van de data base](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) met een andere naam met behulp van de functie voor het terugzetten van SQL database.  Zie [externe meta gegevensopslag plaatsen in azure HDInsight gebruiken](../hdinsight-use-external-metadata-stores.md) voor meer informatie over het koppelen van een externe metadata voor een HDInsight-cluster.
+Maak een nieuwe kopie van uw externe meta Store. Als u een externe meta Store gebruikt, is een van de veilige en eenvoudige manieren om een kopie van de meta Store te maken, [het herstellen van de data base](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) met een andere naam met behulp van de `RESTORE` functie.  Zie [externe meta gegevensopslag plaatsen in azure HDInsight gebruiken](../hdinsight-use-external-metadata-stores.md) voor meer informatie over het koppelen van een externe metadata voor een HDInsight-cluster.
 
 ### <a name="3-upgrade-metastore-schema"></a>3. het meta Store-schema bijwerken
 Zodra de meta Store- **kopie** is voltooid, voert u een schema-upgrade script uit in [script actie](../hdinsight-hadoop-customize-cluster-linux.md) op het bestaande HDInsight 3,6-cluster om de nieuwe Meta Store naar Hive 3-schema bij te werken. (Voor deze stap is het niet nodig om de nieuwe Meta Store te koppelen aan een cluster.) Hierdoor kan de Data Base worden gekoppeld als HDInsight 4,0-meta Store.
@@ -44,7 +44,7 @@ Gebruik de waarden in de tabel hieronder. Vervang door `SQLSERVERNAME DATABASENA
 |Eigenschap | Waarde |
 |---|---|
 |Script type|-Aangepast|
-|Naam|Hive-upgrade|
+|Name|Hive-upgrade|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Knooppunt type (n)|Head|
 |Parameters|GEBRUIKERS NAAM DATABASENAME DATA BASE WACHT WOORD|
@@ -217,7 +217,7 @@ In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer g
 |Eigenschap | Waarde |
 |---|---|
 |Script type|-Aangepast|
-|Naam|DAS|
+|Name|DAS|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Knooppunt type (n)|Head|
 

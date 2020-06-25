@@ -1,24 +1,14 @@
 ---
 title: Geo-nood herstel-Azure Event Hubs | Microsoft Docs
 description: Over het gebruik van geografische regio's om een failover uit te voeren en herstel na nood gevallen in azure Event Hubs
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2020
-ms.author: shvija
-ms.openlocfilehash: 47e3a27ba9c0b7995f45f38ae4e19941cb4f8c01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/23/2020
+ms.openlocfilehash: 142e2b99376bef24a6477f7b40394ca2b67f292b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659712"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320543"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure-Event Hubs-geo-nood herstel 
 Als er voor de hele Azure-regio's of-Data Centers (als er geen [beschikbaarheids zones](../availability-zones/az-overview.md) worden gebruikt) downtime actief is, is het essentieel dat de gegevens worden verwerkt in een andere regio of Data Center. Daarom zijn *geo-nood herstel* en *geo-replicatie* belang rijke functies voor elke onderneming. Azure Event Hubs ondersteunt zowel geo-nood herstel als geo-replicatie op het niveau van de naam ruimte. 
@@ -55,10 +45,10 @@ De volgende combi Naties van primaire en secundaire naam ruimten worden onderste
 
 | Primaire naam ruimte | Secundaire naam ruimte | Ondersteund | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ja | 
-| Standard | Toegewezen | Ja | 
-| Toegewezen | Toegewezen | Ja | 
-| Toegewezen | Standard | Nee | 
+| Standard | Standard | Yes | 
+| Standard | Toegewezen | Yes | 
+| Toegewezen | Toegewezen | Yes | 
+| Toegewezen | Standard | No | 
 
 > [!NOTE]
 > U kunt geen naam ruimten koppelen die zich in hetzelfde toegewezen cluster bevinden. U kunt naam ruimten in afzonderlijke clusters koppelen. 
@@ -133,7 +123,7 @@ U kunt Beschikbaarheidszones alleen inschakelen voor nieuwe naam ruimten, met be
 
 ![3][]
 
-## <a name="private-endpoints"></a>Privé-eind punten
+## <a name="private-endpoints"></a>Privé-eindpunten
 Deze sectie bevat aanvullende overwegingen bij het gebruik van geo-nood herstel met naam ruimten die persoonlijke eind punten gebruiken. Zie [persoonlijke eind punten configureren](private-link-service.md)voor meer informatie over het gebruik van privé-eind punten met Event hubs in het algemeen.
 
 ### <a name="new-pairings"></a>Nieuwe paren
@@ -160,7 +150,7 @@ Stel dat u twee virtuele netwerken hebt: VNET-1, VNET-2 en deze primaire en secu
 
 ![Persoonlijke eind punten en virtuele netwerken](./media/event-hubs-geo-dr/private-endpoints-virtual-networks.png)
 
-Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Event Hubs naam ruimte. Neem de volgende scenario's: 
+Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Event Hubs naam ruimte. Denk eens na over de volgende scenario's: 
 
 **Failover van toepassing:** Hier komt de toepassing niet voor in VNET-1 maar wordt deze verplaatst naar VNET-2. Als beide persoonlijke eind punten zijn geconfigureerd op zowel VNET-1 als VNET-2 voor zowel primaire als secundaire naam ruimten, werkt de toepassing gewoon. 
 
@@ -180,7 +170,7 @@ Voor meer informatie over Event Hubs gaat u naar de volgende koppelingen:
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 * [Voorbeeldtoepassingen die gebruikmaken van Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

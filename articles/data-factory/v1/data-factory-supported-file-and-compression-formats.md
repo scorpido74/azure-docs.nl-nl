@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 901e15994b8a51a5fd45d57ca7a4db7778d968e1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707035"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318761"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory
 *Dit onderwerp is van toepassing op de volgende connectors: [Amazon S3](data-factory-amazon-simple-storage-service-connector.md), [Azure Blob](data-factory-azure-blob-connector.md), [Azure data Lake Store](data-factory-azure-datalake-connector.md), [Bestands systeem](data-factory-onprem-file-system-connector.md), [FTP](data-factory-ftp-connector.md), [HDFS](data-factory-hdfs-connector.md), [http](data-factory-http-connector.md)en [SFTP](data-factory-sftp-connector.md).*
@@ -219,7 +219,7 @@ In dit voorbeeld kunt u verwachten dat één JSON-hoofdobject wordt toegewezen a
 ```
 en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door gegevens te extraheren uit de objecten en matrix:
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| Id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | Pc | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 13/1/2017 11:24:37 uur |
 
@@ -349,7 +349,7 @@ De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (
 
 Als u de volgende tabel in SQL Database hebt:
 
-| id | order_date | order_price | order_by |
+| Id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
@@ -497,7 +497,7 @@ De sectie **compressie** heeft twee eigenschappen:
 
 Wanneer u `compression` een eigenschap opgeeft in een JSON van een invoer gegevensset, kan de pijp lijn gecomprimeerde gegevens van de bron lezen en wanneer u de eigenschap in een JSON van een uitvoer gegevensset opgeeft, kan de Kopieer activiteit gecomprimeerde gegevens naar het doel schrijven. Hier volgen enkele voor beelden van scenario's:
 
-* Lees de door GZIP gecomprimeerde gegevens van een Azure-Blob, Decomprimeer deze en schrijf resultaat gegevens naar een Azure-SQL database. U definieert de invoer van de Azure Blob-gegevensset met de `compression` `type` JSON-eigenschap als gzip.
+* Lees de door GZIP gecomprimeerde gegevens van een Azure-Blob, Decomprimeer deze en schrijf resultaat gegevens naar Azure SQL Database. U definieert de invoer van de Azure Blob-gegevensset met de `compression` `type` JSON-eigenschap als gzip.
 * Gegevens lezen uit een bestand met een onbewerkte tekst vanuit een on-premises bestands systeem, comprimeren met de GZip-indeling en de gecomprimeerde gegevens schrijven naar een Azure-Blob. U definieert een uitvoer van een Azure Blob-gegevensset met de `compression` `type` JSON-eigenschap als gzip.
 * Lees het zip-bestand van de FTP-server, Decomprimeer het om de bestanden erin op te halen en de bestanden naar Azure Data Lake Store te brengen. U definieert een invoer-FTP-gegevensset met de `compression` `type` JSON-eigenschap als ZipDeflate.
 * Lees een door GZIP gecomprimeerde gegevens uit een Azure-Blob, Decomprimeer het, comprimeer deze met BZIP2 en schrijf resultaat gegevens naar een Azure-Blob. In dit geval definieert u de invoer van de Azure Blob-gegevensset die is `compression` `type` ingesteld op gzip en de uitvoer gegevensset met `compression` `type` ingesteld op bzip2.   

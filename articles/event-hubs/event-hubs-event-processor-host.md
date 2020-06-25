@@ -1,21 +1,14 @@
 ---
 title: Gebeurtenissen ontvangen met Event processor host-Azure Event Hubs | Microsoft Docs
 description: In dit artikel wordt de Event processor host in azure Event Hubs beschreven, waarmee u het beheer van controle punten, leasing en het lezen van gebeurtenissen met een parallelle activiteit vereenvoudigt.
-services: event-hubs
-documentationcenter: .net
-author: spelluru
-ms.service: event-hubs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: f3d6a5e77c3c1c5e8b8dceb44e5bcbe9cb5f93ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299293"
+ms.locfileid: "85320635"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
