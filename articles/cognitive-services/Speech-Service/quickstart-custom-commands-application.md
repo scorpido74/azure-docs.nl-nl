@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307476"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362139"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Een spraakassistent maken met aangepaste opdrachten
 
@@ -24,7 +24,7 @@ In deze Quick Start maakt en test u een basis toepassing voor aangepaste opdrach
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Maak een Azure-spraak bron in een regio die aangepaste opdrachten ondersteunt.<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * Down load het voor beeld van een [Smart room Lite](https://aka.ms/speech/cc-quickstart) JSON-bestand.
 > * Down load de nieuwste versie van de [Windows Voice Assistant-client](https://aka.ms/speech/va-samples-wvac).
 
@@ -82,7 +82,8 @@ U ziet nu overzicht van de nieuwe toepassing aangepaste opdrachten.
     - De TV inschakelen
     - De Tempe ratuur instellen op 80 graden
     - Uitschakelen
-    - Een alarm instellen
+    - De TV
+    - Een alarm instellen voor 5 PM
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>De toepassing aangepaste opdrachten integreren in een assistent
 Voordat u toegang tot deze toepassing kunt krijgen vanuit een andere locatie dan speech Studio, moet u de toepassing publiceren. Voor het publiceren van een toepassing moet u de voor spelling LUIS-bron configureren.  
@@ -110,7 +111,7 @@ U kunt deze waarden ook ophalen door **instellingen**  >  **Algemeen** te select
 
 In het bereik van dit artikel gebruiken we de Windows Voice Assistant-client die u hebt gedownload als onderdeel van de vereisten. Pak de map uit.
 1. Start **VoiceAssistantClient.exe**.
-1. Maak een nieuw publicatie profiel en voer een waarde in voor het **verbindings profiel**. Voer in het gedeelte **algemene instellingen** de **abonnements sleutel**waarden, de **abonnements sleutel regio** en de **App-ID van de aangepaste opdrachten**in.
+1. Maak een nieuw publicatie profiel en voer een waarde in voor het **verbindings profiel**. Voer in het gedeelte **algemene instellingen** de **abonnements sleutel** values in (dit is hetzelfde als de waarde voor de **spraak bron sleutel** die u hebt opgeslagen bij het publiceren van de toepassing), de **abonnements sleutel regio** en de **App-ID van de aangepaste opdrachten**.
     > [!div class="mx-imgBorder"]
     > ![WVAC maken](media/custom-commands/create-profile.png)
 1. Selecteer **opslaan en profiel Toep assen**.

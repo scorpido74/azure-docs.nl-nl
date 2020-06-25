@@ -12,14 +12,14 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147671"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362054"
 ---
-# <a name="onboarding-and-installing"></a>Onboarding en installatie
+# <a name="onboarding-and-installing"></a>Onboarding en installeren
 
 Vereisten om aan de slag te gaan met de analyse van micro soft-beveiligings code:
 
@@ -48,8 +48,9 @@ Als u voldoet aan de bovenstaande kwalificaties, neemt u contact op met een part
 
 >**Partner**
 
-- Zones-contact gegevens:cloudsupport@zones.com
+- Zones: contact gegevens:cloudsupport@zones.com
 - Wortell – contact gegevens:info@wortell.nl
+- Logischis-contact gegevens:Matthew.Curtis@us.logicalis.com 
 
 ### <a name="become-a-partner"></a>Een partner worden
 
@@ -57,7 +58,7 @@ Het micro soft security code Analysis-Team is bezig met het voorbereiden van par
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>De uitbrei ding voor de analyse van micro soft-beveiligings code installeren
 
-1. Nadat de extensie is gedeeld met uw Azure DevOps-organisatie, gaat u naar de pagina Azure DevOps-organisatie. Een voor beeld van een URL voor een `https://dev.azure.com/contoso`dergelijke pagina is.
+1. Nadat de extensie is gedeeld met uw Azure DevOps-organisatie, gaat u naar de pagina Azure DevOps-organisatie. Een voor beeld van een URL voor een dergelijke pagina is `https://dev.azure.com/contoso` .
 1. Selecteer het pictogram winkel Bag in de rechter bovenhoek naast uw naam en selecteer vervolgens **extensies beheren**.
 1. Selecteer **gedeeld**.
 1. Selecteer de uitbrei ding voor de analyse van micro soft-beveiligings code, selecteer **installeren**.
@@ -72,7 +73,7 @@ Nadat u de uitbrei ding hebt geïnstalleerd, zijn de taken voor het ontwikkelen 
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Specifieke build-taken toevoegen aan uw Azure DevOps-pijp lijn
 
 1. Open uw team project uit uw Azure DevOps-organisatie.
-1. Selecteer **pijp lijnen** > **builds**.
+1. Selecteer **pijp lijnen**  >  **builds**.
 1. Selecteer de pijp lijn waaraan u de extensie taken wilt toevoegen:
    - Nieuwe pijp lijn: Selecteer **Nieuw** en volg de stappen die worden beschreven om een nieuwe pijp lijn te maken.
    - Pijp lijn bewerken: Selecteer een bestaande pijp lijn en selecteer **bewerken** om te beginnen met het bewerken van de pijp lijn.

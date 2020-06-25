@@ -12,18 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d4281d3b6132e551283a71cd1801ef462fbfc68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33ce2a496caa52609d8bdf8c92e29064ca4ae349
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146129"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362037"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Release en route ring van micro soft security code Analysis
 
-Het micro soft security code Analysis-Team in samen werking met Developer Support is trots om recente en aanstaande verbeteringen aan te kondigen aan onze MSCA-extensie. Zie de onderstaande route kaart.
+Het micro soft security code Analysis-Team in samen werking met Developer Support is trots om recente en aanstaande verbeteringen aan te kondigen aan onze MSCA-extensie.
 
-![Releases](./media/security-code-analysis-releases/releases.png)
 
 ## <a name="credential-scanner-v20-released-in-april-2020"></a>Referentie scanner v 2.0: uitgebracht in april 2020
 
@@ -54,18 +53,25 @@ Het micro soft security code Analysis-Team in samen werking met Developer Suppor
 
 ### <a name="improvements"></a>Verbeteringen
 
-- FUNCTIE: werk bij naar laatste SARIF v2 (versie 2.1.16). Hierdoor kunnen resultaten in de cache worden opgeslagen tijdens het door geven van hashes op de opdracht regel, een aanzienlijke prestatie verbetering bij het recursief analyseren van directory's met meerdere exemplaren van scan doelen.
+- FUNCTIE: werk bij naar laatste SARIF v2 (versie 2.1.16). Met deze update kunt u de resultaten in de cache opslaan tijdens het door geven van hashes op de opdracht regel, een aanzienlijke prestatie verbetering bij het recursief analyseren van directory's met meerdere exemplaren van scan doelen.
 - Probleem oplossing: type fout oplossing in BA2021. DoNotMarkWritableSectionsAsExecutable uitvoer.
 - PRESTATIES: Elimineer het laden van PDB voor alle niet-gemengde modus voor beheerde assembly's, inclusief IL-bibliotheek (voor tijd gecompileerd) binaire bestanden.
 - ONJUISTE negatieve correctie: Controleer of een PDB die is geplaatst naast een binair element, echt overeenkomt met het binaire bestand onder analyse
 - FUNCTIE: Geef het argument--Local-Symbol-Directors op om extra (lokale, niet-symbool server) PDB-opzoek locaties op te geven
 - Fout-positieve correctie: overs laan van PDB gestuurde analyses voor de gegenereerde systeem eigen Boots trap exe van .NET core (dit is geen door de gebruiker te bepalen code).
 
-## <a name="whats-next-in-fy20"></a>Wat is er nieuw in FY20?
+## <a name="whats-next-in-q3-cy20"></a>Wat is er nieuw in Q3 CY20?
 
 - Hulp programma voor Java-beveiligings analyse
 - Python-beveiligings analyse programma
 - S pluis om TS-linten te vervangen voor type script en Java script
+- Hulp programma voor het analyseren van Resource Manager-sjablonen
+
+## <a name="tool-deprecation-notification"></a>Melding voor afschaffing van hulp programma
+
+### <a name="microsoft-security-risk-detection-msrd-is-deprecated-on-june-26-2020"></a>Micro soft beveiligings risico detectie (MSRD) is afgeschaft op 26 2020 juni.
+
+De afgeschafte MSRD fuzzy-service wordt vervangen door een door de open source zelf gehoste ontwikkelaar platform voor ontwikkel aars voor Azure. Dit platform wordt momenteel ontwikkeld en getest in samen werking met veel van de kern product teams van micro soft. Dit benadering van een platform integreert opschoon functies en biedt adaptieve, geavanceerde methoden voor het leren van fuzz/CD-pijp lijnen die in de loop van de tijd met software projecten groeien. De open-source release van dit platform is gepland voor de laatste helft van 2020.
 
 ## <a name="next-steps"></a>Volgende stappen
 

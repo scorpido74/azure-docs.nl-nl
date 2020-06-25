@@ -5,24 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: 00e4ef2452d2048f386d48e994ba1051ca81ec75
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100957"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362122"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Audit Logboeken in Azure Database for MySQL
 
 In Azure Database for MySQL is het controle logboek beschikbaar voor gebruikers. Het controle logboek kan worden gebruikt om activiteit op database niveau bij te houden en wordt vaak gebruikt voor naleving.
 
-> [!IMPORTANT]
-> De functionaliteit van het controle logboek is momenteel beschikbaar als preview-versie.
-
 ## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
 
->[!NOTE]
+>[!IMPORTANT]
 > Het is raadzaam om alleen de gebeurtenis typen en gebruikers die vereist zijn voor controle doeleinden te registreren om ervoor te zorgen dat de prestaties van uw server niet sterk worden beïnvloed.
 
 Het controle logboek is standaard uitgeschakeld. Als u deze wilt inschakelen, stelt `audit_log_enabled` u in op aan.

@@ -1,5 +1,5 @@
 ---
-title: Een dubbel model beheren
+title: Aangepaste modellen beheren
 titleSuffix: Azure Digital Twins
 description: Zie een model maken, bewerken en verwijderen in azure Digital Apparaatdubbels.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 6c023ff8419a41353e0c8aff70d04c5b9fcb27a4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 7d9fd0386f13f6c3e6df7b9d8bcf120b55c6446d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725644"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362778"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -255,4 +255,4 @@ Modellen kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbe
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie digitale apparaatdubbels maken en beheren op basis van uw modellen:
-* [Instructies: een digitale twee richtings beheer beheren](how-to-manage-twin.md)
+* [Instructies: digitale apparaatdubbels beheren](how-to-manage-twin.md)

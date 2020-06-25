@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
 ms.reviewer: baanders
-ms.openlocfilehash: 4051b5c098b0ce299185a483abf2bdd39bb6c11f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 50fade5179d5323a332d9b103f2fac17d402aa3f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725814"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362846"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Apparaatdubbels gebruiken voor het bijwerken van een Azure Maps binnenste kaart
 
@@ -163,5 +163,5 @@ Afhankelijk van de configuratie van uw topologie kunt u deze drie kenmerken opsl
 
 Zie de volgende verwijzingen voor meer informatie over het beheren, bijwerken en ophalen van gegevens uit de apparaatdubbels-grafiek:
 
-* [Instructies: een digitale twee richtings beheer beheren](./how-to-manage-twin.md)
+* [Instructies: digitale apparaatdubbels beheren](./how-to-manage-twin.md)
 * [Instructies: een query uitvoeren op de dubbele grafiek](./how-to-query-graph.md)

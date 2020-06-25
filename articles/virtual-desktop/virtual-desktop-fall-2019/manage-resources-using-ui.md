@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2680a463bd0150a92dc587eb2f233ef58a58f6d
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 307fe6cd287d7a58435f745cd066be8308293267
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214159"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362105"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Een beheer programma met een Azure Resource Manager-sjabloon implementeren
 
@@ -71,11 +71,13 @@ Nadat de GitHub-Azure Resource Manager sjabloon is voltooid, vindt u een resourc
 
 Voordat u zich aanmeldt en het beheer programma gebruikt, moet u toestemming geven voor de nieuwe Azure AD-toepassing die aan het beheer programma is gekoppeld. Door toestemming te geven, kunt u met het beheer programma Windows virtueel-bureaublad beheer aanroepen namens de gebruiker die momenteel is aangemeld bij het hulp programma.
 
-![Een scherm opname met de machtigingen die worden gegeven wanneer u akkoord gaat met het beheer programma voor de gebruikers interface.](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![Een scherm opname met de machtigingen die worden gegeven wanneer u akkoord gaat met het beheer programma voor de gebruikers interface.](../media/management-ui-delegated-permissions.png)
 
 Als u wilt bepalen welke gebruiker u kunt gebruiken om u aan te melden bij het hulp programma, gaat u naar de [pagina met gebruikers instellingen van Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) en noteert u de waarde voor **gebruikers kan toestemming geven om toegang te krijgen tot Bedrijfs gegevens**namens hen.
 
-![Een scherm opname waarin wordt getoond of gebruikers toestemming kunnen geven voor toepassingen alleen voor hun gebruiker.](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![Een scherm opname waarin wordt getoond of gebruikers toestemming kunnen geven voor toepassingen alleen voor hun gebruiker.](../media/management-ui-user-consent-allowed.png)
 
 - Als de waarde is ingesteld op **Ja**, kunt u zich aanmelden met een gebruikers account in de Azure Active Directory en alleen toestemming geven voor die gebruiker. Als u zich echter op een later tijdstip bij het beheer programma aanmeldt met een andere gebruiker, moet u dezelfde toestemming opnieuw uitvoeren.
 - Als de waarde is ingesteld op **Nee**, moet u zich aanmelden als globale beheerder in de Azure Active Directory en toestemming geven voor de beheerder voor alle gebruikers in de Directory. Geen van de andere gebruikers wordt gevraagd om toestemming te vragen.
@@ -87,7 +89,8 @@ Nadat u hebt bepaald welke gebruiker u gaat gebruiken om toestemming te geven, v
 2. Meld u aan met het juiste Azure Active Directory gebruikers account.
 3. Als u een globale beheerder hebt geverifieerd, kunt u nu het selectie vakje inschakelen om toestemming te geven namens **uw organisatie**. Selecteer **accepteren** om toestemming te geven.
 
-   ![Een scherm opname waarin de volledige toestemming pagina wordt weer gegeven die de gebruiker of beheerder ziet.](../media/management-ui-consent-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname waarin de volledige toestemming pagina wordt weer gegeven die de gebruiker of beheerder ziet.](../media/management-ui-consent-page.png)
 
 Hiermee gaat u nu naar het beheer programma.
 

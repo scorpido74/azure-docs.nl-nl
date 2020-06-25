@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 124d81651cd937dc9671f725f54826b1ff9a42a5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235896"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362319"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](../troubleshoot-set-up-issues.md)als u probeert Azure Resource Manager virtuele Windows-bureaublad objecten te beheren die zijn geïntroduceerd in de lente 2020-update.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-set-up-issues.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
 
 In dit artikel komen problemen aan bod tijdens de eerste installatie van de virtuele bureau blad-Tenant van Windows en de gerelateerde infra structuur van de sessie-hostgroep.
 
@@ -30,7 +30,8 @@ Ga naar de [technische community van Windows virtueel bureau blad](https://techc
 
 Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag**met  >  **micro soft Windows 10** > en [Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
-![Een scherm opname van het selecteren van Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809.](../media/AzureMarketPlace.png)
+> [!div class="mx-imgBorder"]
+> ![Een scherm opname van het selecteren van Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Tenant voor Windows virtueel bureau blad maken
 
@@ -54,7 +55,8 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Fout: de gebruiker is niet gemachtigd om een query uit te zoeken op de beheer service
 
-![Scherm opname van het Power shell-venster waarin een gebruiker niet is gemachtigd om een query uit te zoeken op de beheer service.](../media/UserNotAuthorizedNewTenant.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van het Power shell-venster waarin een gebruiker niet is gemachtigd om een query uit te zoeken op de beheer service.](../media/UserNotAuthorizedNewTenant.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -75,7 +77,8 @@ Voor beeld van onbewerkte fout:
 
 **Oplossen:** Volg de instructies in [De toepassingsrol van de TenantCreator toewijzen aan een gebruiker in uw Azure Active Directory-Tenant](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role). Nadat u de instructies hebt gevolgd, hebt u een gebruiker toegewezen aan de TenantCreator-rol.
 
-![Scherm opname van TenantCreator rol toegewezen.](../media/TenantCreatorRoleAssigned.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van TenantCreator rol toegewezen.](../media/TenantCreatorRoleAssigned.png)
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Vm's voor virtuele Windows-bureau blad-sessies maken
 
@@ -87,7 +90,8 @@ Het virtuele bureau blad van Windows – inrichten van een sjabloon voor een hos
 
 ### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Fout: als u de koppeling van GitHub gebruikt, wordt het bericht ' een gratis account maken ' weer gegeven
 
-![Scherm opname voor het maken van een gratis account.](../media/be615904ace9832754f0669de28abd94.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname voor het maken van een gratis account.](../media/be615904ace9832754f0669de28abd94.png)
 
 **Oorzaak 1:** Er zijn geen actieve abonnementen in het account dat wordt gebruikt om u aan te melden bij Azure, of het account dat wordt gebruikt, heeft geen machtigingen om de abonnementen weer te geven.
 
@@ -110,7 +114,8 @@ Het virtuele bureau blad van Windows – inrichten van een sjabloon voor een hos
 
 ### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Fout: de fout ' de implementatie van de sjabloon is niet geldig ' wordt weer gegeven
 
-![Scherm opname van sjabloon implementatie... is niet geldig ' fout](../media/troubleshooting-marketplace-validation-error-generic.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van sjabloon implementatie... is niet geldig ' fout](../media/troubleshooting-marketplace-validation-error-generic.png)
 
 Voordat u een specifieke actie onderneemt, moet u het activiteiten logboek controleren om de gedetailleerde fout voor de mislukte implementatie validatie te bekijken.
 
@@ -119,10 +124,14 @@ De fout in het activiteiten logboek weer geven:
 1. Sluit de huidige Azure Marketplace-implementatie aanbieding.
 2. Zoek in de bovenste zoek balk naar en selecteer het **activiteiten logboek**.
 3. Zoek een activiteit met de naam **Validate implementation** die de status **failed** heeft en selecteer de activiteit.
-   ![Scherm opname van afzonderlijke * * activiteit voor het valideren van de implementatie * * met een mislukte * *-status](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Scherm opname van afzonderlijke * * activiteit voor het valideren van de implementatie * * met een mislukte * *-status](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Selecteer JSON en schuif omlaag naar de onderkant van het scherm totdat u het veld ' statusMessage ' ziet.
-   ![Scherm opname van mislukte activiteiten, met een rood vak rond de eigenschap statusMessage van de JSON-tekst.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
+   
+   > [!div class="mx-imgBorder"]
+   > ![Scherm opname van mislukte activiteiten, met een rood vak rond de eigenschap statusMessage van de JSON-tekst.](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
 Als uw bewerkings sjabloon de quotum limiet overschrijdt, kunt u een van de volgende dingen doen om dit op te lossen:
 
@@ -140,7 +149,8 @@ Volg deze instructies voor het oplossen van problemen met mislukte implementatie
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fout: de implementatie is mislukt.... \<hostname> /JoinDomain
 
-![De scherm afbeelding van de implementatie is mislukt.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
+> [!div class="mx-imgBorder"]
+> ![De scherm afbeelding van de implementatie is mislukt.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -181,7 +191,8 @@ Ga als volgt te werk om dit probleem op te lossen:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Fout: VMExtensionProvisioningError
 
-![Scherm opname van de implementatie is mislukt met de status van de Terminal-inrichting is mislukt.](../media/7aaf15615309c18a984673be73ac969a.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de implementatie is mislukt met de status van de Terminal-inrichting is mislukt.](../media/7aaf15615309c18a984673be73ac969a.png)
 
 **Oorzaak 1:** Tijdelijke fout met de virtueel-bureaublad omgeving van Windows.
 
@@ -191,7 +202,8 @@ Ga als volgt te werk om dit probleem op te lossen:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Fout: de opgegeven gebruikers naam voor de beheerder is niet toegestaan
 
-![Scherm opname van de implementatie is mislukt, omdat een opgegeven beheerder niet is toegestaan.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de implementatie is mislukt, omdat een opgegeven beheerder niet is toegestaan.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -210,7 +222,8 @@ Voor beeld van onbewerkte fout:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Fout: de virtuele machine heeft een fout gerapporteerd bij het verwerken van de extensie
 
-![Scherm opname van de bron bewerking die is voltooid met een Terminal-inrichtings status in uw implementatie is mislukt.](../media/49c4a1836a55d91cd65125cf227f411f.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de bron bewerking die is voltooid met een Terminal-inrichtings status in uw implementatie is mislukt.](../media/49c4a1836a55d91cd65125cf227f411f.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -236,7 +249,8 @@ Voor beeld van onbewerkte fout:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Fout: heeft-Power shell DSC-configuratie FirstSessionHost is voltooid met fout (en)
 
-![Scherm opname van implementatie mislukt met Power shell DSC-configuratie FirstSessionHost voltooid met fout (en).](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van implementatie mislukt met Power shell DSC-configuratie FirstSessionHost voltooid met fout (en).](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -365,7 +379,8 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 ### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Fout: de gebruiker vereist Azure Multi-Factor Authentication (MFA)
 
-![Scherm opname van de implementatie is mislukt vanwege een gebrek aan Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de implementatie is mislukt vanwege een gebrek aan Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
 
 Voor beeld van onbewerkte fout:
 

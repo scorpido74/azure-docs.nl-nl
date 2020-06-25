@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871888"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362088"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>De build-taken configureren en aanpassen
 
@@ -61,15 +61,15 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
 - Voer bij **doel**een of meer specificaties in voor een bestand, map of filter patroon. Deze specificaties worden omgezet in een of meer binaire bestanden die moeten worden geanalyseerd:
     - Meerdere opgegeven doelen moeten worden gescheiden door een punt komma (;).
     - Een aanduiding kan één bestand zijn of joker tekens bevatten.
-    - De directory specificaties moeten altijd eindigen \\op *.
+    - De directory specificaties moeten altijd eindigen op \\ *.
     - Voorbeelden:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
 
-- Als u de **opdracht regel** in de lijst **type** selecteert, moet u binskim. exe uitvoeren:
-     - Zorg ervoor dat de eerste argumenten voor binskim. exe de woorden **analyse** zijn, gevolgd door een of meer padspecificatie. Elk pad kan een volledig pad zijn of een pad dat relatief is ten opzichte van de bronmap.
+- Als u de **opdracht regel** in de lijst **type** selecteert, moet u binskim.exe uitvoeren:
+     - Zorg ervoor dat de eerste argumenten die moeten binskim.exe, de woorden **analyse** zijn, gevolgd door een of meer padspecificatie. Elk pad kan een volledig pad zijn of een pad dat relatief is ten opzichte van de bronmap.
      - Meerdere doel paden moeten worden gescheiden door een spatie.
      - U kunt de optie **/o** of **/output** weglaten. De uitvoer waarde wordt toegevoegd of vervangen.
      - De standaard-opdracht regel configuraties worden als volgt weer gegeven.
@@ -78,7 +78,7 @@ Details van taak configuratie worden weer gegeven in de volgende scherm afbeeldi
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > Het afsluitende \\sterretje is belang rijk als u directory's voor het doel opgeeft.
+          > Het afsluitende \\ sterretje is belang rijk als u directory's voor het doel opgeeft.
 
 Zie de [Gebruikers handleiding voor BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)voor meer informatie over BinSkim-opdracht regel argumenten, regels op id of afsluit codes.
 
@@ -103,40 +103,10 @@ Beschikbare opties zijn onder meer:
   - **Overeenkomende time-out**: de hoeveelheid tijd in seconden die nodig is om een zoek opdracht uit te voeren voordat de controle wordt afgebroken.
   - **Grootte van Lees buffer voor bestands scan**: de grootte in bytes van de buffer die wordt gebruikt terwijl de inhoud wordt gelezen. De standaard waarde is 524.288.  
   - **Maximale Lees bytes van bestands scan**: het maximum aantal bytes dat moet worden gelezen uit een bestand tijdens inhouds analyse. De standaard waarde is 104.857.600.
-  - **Besturings opties** > **Voer deze taak uit**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Selecteer **aangepaste voor waarden** om complexere voor waarden op te geven.
+  - **Beheer opties**  >  **Deze taak uitvoeren**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Selecteer **aangepaste voor waarden** om complexere voor waarden op te geven.
   - **Versie**: de versie van de build-taak in azure DevOps. Deze optie wordt niet regel matig gebruikt.
 
 Voor informatie over YAML-configuratie voor deze taak raadpleegt u de opties voor de [yaml voor referentie scanner](yaml-configuration.md#credential-scanner-task)
-
-## <a name="microsoft-security-risk-detection-task"></a>Micro soft-taak risico detectie
-
-> [!NOTE]
-> U moet een account maken en configureren met de micro soft security risico Detection-service (MSRD) voordat u de MSRD-taak gebruikt. Deze service vereist een afzonderlijk voorbereidings proces. In tegens telling tot de meeste andere taken in deze uitbrei ding, is voor deze taak een afzonderlijk abonnement met MSRD vereist.
->
-> Raadpleeg de [micro soft-beveiligings Risico's](https://aka.ms/msrddocs) en [detectie van micro soft-beveiligings Risico's:](https://docs.microsoft.com/security-risk-detection/how-to/) instructies.
-
-Details voor het configureren van deze taak worden weer gegeven in de volgende lijst. Voor elk UI-element kunt u de muis aanwijzer boven dat element houden om hulp te krijgen.
-
-   - **Azure DevOps service-eindpunt naam voor MSRD**: een Gene riek type van Azure DevOps service-eind punt slaat de URL van uw onboarded MSRD-exemplaar en uw rest API toegangs token op. Als u een dergelijk eind punt hebt gemaakt, kunt u dit hier opgeven. Als dat niet het geval is, selecteert u de koppeling **beheren** om een nieuw service-eind punt voor deze MSRD-taak te maken en te configureren.
-   - **Account-id**: een GUID die kan worden opgehaald uit de URL van het MSRD-account.
-   - **Url's naar binaire bestanden**: een door punt komma's gescheiden lijst met openbaar beschik bare url's. De fuzzy-computer gebruikt deze Url's om de binaire bestanden te downloaden.
-   - **Url's van de Seed-bestanden**: een door punt komma's gescheiden lijst met openbaar beschik bare url's. Op de computer met fuzzy worden deze Url's gebruikt om de zaden te downloaden. Het opgeven van deze waarde is optioneel als de Seed-bestanden worden gedownload met de binaire bestanden.
-   - **Type besturings**systeem: het besturingssysteem platform van de computers waarop de taak wordt uitgevoerd. Beschik bare waarden zijn **Windows** en **Linux**.
-   - **Windows-editie/Linux Edition**: de versie van het besturings systeem van de computers waarop de taak wordt uitgevoerd. U kunt de standaard waarde overschrijven als uw computers een andere versie van het besturings systeem hebben.
-   - **Pakket installatie script**: het script dat moet worden uitgevoerd op een test machine. Met dit script worden het test doel programma en de afhankelijkheden ervan geïnstalleerd voordat de taak wordt verzonden.
-   - **Para meters voor taak verzending**:
-       - **Seed-map**: het pad naar de map op de fuzzy computer die de zaden bevat.
-       - **Seed-extensie**: de bestandsnaam extensie van de zaden.
-       - **Uitvoerbaar stuur programma testen**: het pad naar het uitvoer bare bestand van het doel op de fuzzy-computer.
-       - **Uitvoer bare architectuur van het test programma testen**: de architectuur van het uitvoer bare bestand. Beschik bare waarden zijn **x86** en **amd64**.
-       - **Test argumenten voor Stuur Programma's**: de opdracht regel argumenten die zijn door gegeven aan het uitvoer bare bestand van de test. Het argument% test file%, inclusief de aanhalings tekens, wordt automatisch vervangen door het volledige pad naar het doel bestand. Dit bestand wordt geparseerd door het test stuur programma en is vereist.
-       - **Testen van het stuur programma wordt afgesloten**wanneer de test is voltooid: Schakel dit selectie vakje in als het test stuur programma na voltooiing moet worden beëindigd. Schakel deze optie uit als het test stuur programma geforceerd moet worden gesloten.
-       - **Maximum duur (in seconden)**: een schatting van de langste redelijkerwijs verwachte tijd die het doel programma nodig heeft voor het parseren van een invoer bestand. Hoe nauw keuriger de schatting, des te efficiëntere uitvoeringen van de app.
-       - Het **test stuur programma kan herhaaldelijk worden uitgevoerd**: Schakel dit selectie vakje in als het test stuur programma herhaaldelijk kan worden uitgevoerd zonder dat dit afhankelijk is van een permanente of gedeelde globale status.
-       - De naam van het **test stuur programma kan worden gewijzigd**: Schakel dit selectie vakje in als u de naam van het uitvoer bare bestand van het test stuur programma wilt wijzigen en nog steeds correct wilt werken.
-       - **De toepassing die u wilt uitvoeren, wordt uitgevoerd als één besturingssysteem proces**: Schakel dit selectie vakje in als het test stuur programma wordt uitgevoerd onder één besturingssysteem proces. Schakel deze optie uit als het test stuur programma extra processen heeft gestart.
-
-Voor informatie over de YAML-configuratie voor deze taak raadpleegt u onze [micro soft-beveiligings Risico's detectie yaml-opties](yaml-configuration.md#microsoft-security-risk-detection-task)
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn-analyse taak
 
@@ -153,11 +123,11 @@ Beschikbare opties zijn onder meer:
 - **RuleSet**: waarden zijn **sdl vereist**, **SDL wordt aanbevolen**of uw eigen aangepaste regelset.
 - **Versie van analyse**functies: u kunt het beste **meest recente**selecteren.
 - **Onderdrukkings bestand voor waarschuwingen van compiler**: een tekst bestand met een lijst met waarschuwingen die worden onderdrukt.
-- **Besturings opties** > **Voer deze taak uit**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Kies **aangepaste voor waarden** om complexere voor waarden op te geven.
+- **Beheer opties**  >  **Deze taak uitvoeren**: Hiermee geeft u op wanneer de taak wordt uitgevoerd. Kies **aangepaste voor waarden** om complexere voor waarden op te geven.
 
 > [!NOTE]
 >
-> - Roslyn-analyse functies zijn geïntegreerd met de compiler en kunnen alleen worden uitgevoerd als onderdeel van de CSC. exe-compilatie. Deze taak vereist daarom de compiler opdracht die eerder in de build werd uitgevoerd om opnieuw te worden afgespeeld of opnieuw uit te voeren. Deze herhaling of uitvoering wordt uitgevoerd door een query uit te voeren op Visual Studio Team Services (VSTS) voor de MSBuild build-taak Logboeken.
+> - Roslyn-analyse functies zijn geïntegreerd met de compiler en kunnen alleen worden uitgevoerd als onderdeel van csc.exe-compilatie. Deze taak vereist daarom de compiler opdracht die eerder in de build werd uitgevoerd om opnieuw te worden afgespeeld of opnieuw uit te voeren. Deze herhaling of uitvoering wordt uitgevoerd door een query uit te voeren op Visual Studio Team Services (VSTS) voor de MSBuild build-taak Logboeken.
 >
 >   Er is geen andere manier om de opdracht regel voor het compileren van MSBuild op betrouw bare wijze op te halen uit de build-definitie. U wordt aangeraden een tekstvak voor vrije vorm toe te voegen om gebruikers in staat te stellen hun opdracht regels in te voeren. Het is echter lastig om deze opdracht regels up-to-date te houden en te synchroniseren met de hoofd build.
 >

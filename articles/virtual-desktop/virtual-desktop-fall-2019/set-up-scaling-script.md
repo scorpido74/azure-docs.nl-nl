@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3a82665f197301fe81c448dd18181f0602bdbef
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209790"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362540"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Sessie-hosts schalen met behulp van Azure Automation
 
@@ -106,7 +106,8 @@ Eerst hebt u een Azure Automation-account nodig om het Power shell-runbook uit t
 
 6. Nadat u uw Azure Automation-account hebt ingesteld, meldt u zich aan bij uw Azure-abonnement en controleert u of uw Azure Automation-account en het relevante runbook zijn weer gegeven in de opgegeven resource groep, zoals in de volgende afbeelding:
 
-![Een afbeelding van de pagina overzicht van Azure met het zojuist gemaakte Automation-account en runbook.](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Een afbeelding van de pagina overzicht van Azure met het zojuist gemaakte Automation-account en runbook.](../media/automation-account.png)
 
   Als u wilt controleren of de webhook het moet zijn, selecteert u de naam van uw runbook. Ga vervolgens naar het gedeelte resources van het runbook en selecteer **webhooks**.
 
@@ -236,11 +237,13 @@ Ten slotte moet u de Azure Logic-app maken en een uitvoerings schema instellen v
 
      Nadat u het script hebt uitgevoerd, moet de logische app worden weer gegeven in een resource groep, zoals wordt weer gegeven in de volgende afbeelding.
 
-     ![Een afbeelding van de overzichts pagina voor een voor beeld van een Azure Logic-app.](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![Een afbeelding van de overzichts pagina voor een voor beeld van een Azure Logic-app.](../media/logic-app.png)
 
 Als u wijzigingen wilt aanbrengen in het uitvoerings schema, zoals het wijzigen van het terugkeer-interval of de tijd zone, gaat u naar de scheduler automatisch schalen en selecteert u **bewerken** om naar de Logic apps Designer te gaan.
 
-![Een afbeelding van de ontwerp functie voor Logic Apps. De herhalings-en webhook-menu's waarmee de gebruiker terugkeer tijden en het webhookbestand kunnen bewerken.](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![Een afbeelding van de ontwerp functie voor Logic Apps. De herhalings-en webhook-menu's waarmee de gebruiker terugkeer tijden en het webhookbestand kunnen bewerken.](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>Uw schaal programma beheren
 
@@ -252,7 +255,8 @@ U kunt een samenvattings status van alle runbook-taken weer geven of een uitgebr
 
 Rechts van het geselecteerde Automation-account kunt u onder ' taak statistieken ' een lijst met samen vattingen van alle runbook-taken weer geven. Als u de pagina **taken** aan de linkerkant van het venster opent, worden de huidige statussen van de taak, start tijden en voltooiings tijden weer gegeven.
 
-![Een scherm opname van de pagina taak status.](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![Een scherm opname van de pagina taak status.](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>Uitvoer van Logboeken en hulpprogram ma's voor schalen weer geven
 
@@ -260,5 +264,6 @@ U kunt de logboeken van scale-out-en schaal bewerkingen bekijken door uw runbook
 
 Ga naar het runbook (de standaard naam is WVDAutoScaleRunbook) in de resource groep die als host fungeert voor het Azure Automation-account en selecteer **overzicht**. Selecteer op de pagina overzicht een taak onder recente taken om de uitvoer van het hulp programma weer te geven, zoals wordt weer gegeven in de volgende afbeelding.
 
-![Een afbeelding van het uitvoer venster voor het hulp programma voor schalen.](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![Een afbeelding van het uitvoer venster voor het hulp programma voor schalen.](../media/tool-output.png)
 

@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: be5709c8ccf8626ac3a48fdf7cad1c61dbfbf628
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 87d57470ffbe1d65bb646c51387e15e58ab6fa30
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729513"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362914"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -59,7 +59,7 @@ Ontwikkel aars moeten eerst eind punten definiëren om een gebeurtenis route te 
 * Service Bus
 
 Eind punten worden ingesteld met behulp van Control-Api's (ondersteund door de [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md)of via de Azure Portal. Met een eindpunt definitie kunt u het volgende doen:
-* De ID van het eind punt (of beschrijvende naam)
+* De naam van het eind punt
 * Het type eind punt (Event Grid, Event hub of Service Bus)
 * De primaire connection string en secundaire connection string voor verificatie 
 * Het pad naar het onderwerp van het eind punt, bijvoorbeeld *Your-topic.westus2.eventgrid.Azure.net*
@@ -67,18 +67,18 @@ Eind punten worden ingesteld met behulp van Control-Api's (ondersteund door de [
 De eindpunt-Api's die beschikbaar zijn in het besturings vlak zijn:
 * Eind punt maken
 * Lijst met eind punten ophalen
-* Eind punt ophalen op ID (Pass-eind punt-ID)
-* Eind punt verwijderen met ID (Pass-eind punt-ID)
+* Eind punt ophalen op naam
+* Eind punt verwijderen op naam
 
 ## <a name="create-an-event-route"></a>Een gebeurtenis route maken
  
 Gebeurtenis routes worden gemaakt in een client toepassing met de volgende [.net (C#) SDK-](how-to-use-apis-sdks.md) aanroep: 
 
 ```csharp
-await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-ID>"));
+await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
 ```
 
-* `endpoint-ID`Hiermee wordt een eind punt geïdentificeerd, zoals een event hub, Event grid of service bus. Deze eind punten moeten in uw abonnement worden gemaakt en aan Azure Digital Apparaatdubbels gekoppeld met behulp van Control-Api's voordat u deze registratie oproep doet.
+* `endpoint-name`Hiermee wordt een eind punt geïdentificeerd, zoals een event hub, Event grid of service bus. Deze eind punten moeten in uw abonnement worden gemaakt en aan Azure Digital Apparaatdubbels gekoppeld met behulp van Control-Api's voordat u deze registratie oproep doet.
 
 Het gebeurtenis route object dat is door gegeven aan `EventRoutes.Add` , heeft ook een [ **filter** parameter](./how-to-manage-routes.md#filter-events), die kan worden gebruikt om de typen gebeurtenissen te beperken die volgen op deze route.
 

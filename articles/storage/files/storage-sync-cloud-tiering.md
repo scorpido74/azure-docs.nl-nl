@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ad222c5fb5554698b6166b0b10a52221a31b360
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886214"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362285"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -31,7 +31,11 @@ Wanneer een gebruiker een gelaagd bestand opent, Azure File Sync de bestands geg
 ### <a name="how-does-cloud-tiering-work"></a>Hoe werkt Cloud lagen?
 Het Azure File Sync-systeem filter bouwt een ' heatmap ' van uw naam ruimte op elk server eindpunt. Het controleert de toegang (lees-en schrijf bewerkingen) in de loop van de tijd en wijst vervolgens, op basis van de frequentie en de Recency van toegang, een hitte Score toe aan elk bestand. Een veelgebruikt bestand dat onlangs is geopend, wordt beschouwd als hot, terwijl een bestand dat nauwelijks is gerakend en gedurende enige tijd niet toegankelijk is, als koud wordt beschouwd. Wanneer het bestands volume op een server de drempel waarde voor vrije ruimte van het volume overschrijdt dat u hebt ingesteld, worden de coole bestanden gelaagd tot Azure Files tot er aan het percentage van de vrije ruimte wordt voldaan.
 
-In versie 4,0 en hoger van de Azure File Sync-agent kunt u ook een datum beleid opgeven op elk server eindpunt dat bestanden die niet worden geopend of gewijzigd binnen een opgegeven aantal dagen worden getierd.
+Daarnaast kunt u een datum beleid opgeven op elk server eindpunt dat bestanden belaagt die niet toegankelijk zijn binnen een opgegeven aantal dagen, ongeacht de beschik bare lokale opslag capaciteit. Dit is een goede keuze voor het proactief vrijmaken van lokale schijf ruimte als u weet dat bestanden in dat Server-eind punt niet lokaal hoeven te worden bewaard buiten een bepaalde leeftijd. Dat beschik bare lokale schijf capaciteit voor andere eind punten op hetzelfde volume vrijmaakt, om meer bestanden in de cache op te slaan.
+
+De heatmap in de Cloud is in feite een geordende lijst van alle bestanden die worden gesynchroniseerd en die zich bevinden op een locatie waarvoor Cloud lagen zijn ingeschakeld. Om de relatieve positie van een afzonderlijk bestand in die heatmap te bepalen, gebruikt het systeem het maximum van een van de volgende tijds tempels, in die volg orde: MAX (tijd van laatste toegang, tijd van laatste wijziging, aanmaak tijd). Normaal gesp roken wordt de tijd van laatste toegang bijgehouden en beschikbaar. Als er echter een nieuwe server-eind punt wordt gemaakt, terwijl Cloud lagen zijn ingeschakeld, is er niet voldoende tijd door gegeven om de toegang tot het bestand te observeren. Als er geen tijd van laatste toegang is, wordt het tijdstip waarop de tijd voor het laatst is gewijzigd, gebruikt om de relatieve positie in het heatmap te evalueren. Dezelfde terugval is van toepassing op het datum beleid. Zonder tijd van laatste toegang wordt het datum beleid toegepast op het tijdstip waarop het voor het laatst is gewijzigd. Als deze niet beschikbaar is, wordt deze terugvallen op de aanmaak tijd van een bestand. In de loop van de tijd worden er meer en meer aanvragen voor bestands toegang en draaiing uitgevoerd om de automatisch getraceerde tijd van laatste toegang te gebruiken.
+
+Cloud lagen zijn niet afhankelijk van de NTFS-functie voor het bijhouden van de tijd van de laatste toegang. Deze NTFS-functie is standaard uitgeschakeld en vanwege prestatie overwegingen wordt u niet aangeraden deze functie hand matig in te scha kelen. Met Cloud lagen wordt de tijd van laatste toegang afzonderlijk en zeer efficiënt bijgehouden.
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Wat is de minimale bestands grootte voor een bestand dat moet worden gelaagd?
@@ -89,7 +93,7 @@ Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-be
         
         | Kenmerk letter | Kenmerk | Definitie |
         |:----------------:|-----------|------------|
-        | A | Archief | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
+        | A | Archiveren | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
         | P | Sparse-bestand | Geeft aan dat het bestand een sparse-bestand is. Een sparse-bestand is een speciaal type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijf stroom grotendeels leeg is. Azure File Sync maakt gebruik van verspreide bestanden omdat een bestand volledig is gelaagd of gedeeltelijk wordt ingetrokken. In een volledig gelaagd bestand wordt de bestands stroom opgeslagen in de Cloud. Het deel van het bestand bevindt zich al op schijf in een gedeeltelijk ingetrokken bestand. Als een bestand volledig wordt ingetrokken, wordt Azure File Sync geconverteerd van een sparse-bestand naar een gewoon bestand. Dit kenmerk wordt alleen ingesteld op Windows Server 2016 en ouder.|
         | M | Gegevens toegang intrekken | Geeft aan dat de gegevens van het bestand niet volledig aanwezig zijn in de lokale opslag. Als u het bestand leest, wordt er ten minste een deel van de bestands inhoud opgehaald van een Azure-bestands share waarop het server-eind punt is aangesloten. Dit kenmerk wordt alleen ingesteld op Windows Server 2019. |
         | L | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale verwijzing voor gebruik door een bestandssysteem filter. Azure File Sync maakt gebruik van reparsepunten om te definiëren of het Azure File Sync bestandssysteem filter (StorageSync.sys) de locatie van de Cloud waar het bestand is opgeslagen. Dit biedt ondersteuning voor naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in de Azure-bestands share. Wanneer een bestand volledig wordt ingetrokken, verwijdert Azure File Sync het reparsepunt uit het bestand. |

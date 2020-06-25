@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307500"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362404"
 ---
-# <a name="create-application-with-simple-commands"></a>Toepassing maken met eenvoudige opdrachten
+# <a name="create-application-with-simple-commands"></a>Toepassing met eenvoudige opdrachten maken
 
 In dit artikel leert u het volgende:
  - Een lege toepassing maken
@@ -26,6 +26,10 @@ In dit artikel leert u het volgende:
 
 ## <a name="create-empty-application"></a>Lege toepassing maken
 Een lege toepassing voor aangepaste opdrachten maken. Raadpleeg de [Snelstartgids](quickstart-custom-commands-application.md)voor meer informatie. Deze keer, in plaats van een project te importeren, maakt u een leeg project.
+
+1. Voer in het vak **naam** de project naam in `Smart-Room-Lite` (of iets anders van uw keuze).
+1. Selecteer in de lijst **taal** de optie **Engels (Verenigde Staten)**.
+1. Selecteer of maak een LUIS-resource van uw keuze.
 
    > [!div class="mx-imgBorder"]
    > ![Een project maken](media/custom-commands/create-new-project.png)
@@ -36,7 +40,7 @@ U kunt de ontwerp bron die u hebt geselecteerd in het venster **Nieuw project** 
 
 ## <a name="add-turnon-command"></a>Opdracht TurnOn toevoegen
 
-In de **Smart room-Lite-** toepassing voor aangepaste opdrachten voegt u een eenvoudige opdracht toe waarmee een utterance wordt verwerkt `turn on the tv` en met het bericht wordt gereageerd `Ok, turning the tv on` .
+In de lege aangepaste opdrachten voor het maken van **Smart room-Lite-** toepassingen die u zojuist hebt gemaakt, voegt u een eenvoudige opdracht toe waarmee een utterance wordt verwerkt, `turn on the tv` en reageert u met het bericht `Ok, turning the tv on` .
 
 1. Maak een nieuwe opdracht door **nieuwe opdracht** boven aan het linkerdeel venster te selecteren. Het **nieuwe opdracht** venster wordt geopend.
 1. Geef een waarde voor het veld **naam** op als **TurnOn**.
@@ -74,7 +78,7 @@ We hebben nu geen para meters, dus we kunnen door gaan naar de sectie **voltooii
 
 Vervolgens moet de opdracht een voltooiings regel hebben. Deze regel geeft aan de gebruiker door dat er een uitvoerings actie wordt ondernomen. Ga naar [verwijzingen](./custom-commands-references.md)voor meer informatie over regels en voltooiings regels.
 
-1. Selecteer de standaard voltooiings regel die u **hebt** geselecteerd en bewerk deze als volgt: 
+1. Selecteer de standaard voltooiings regel die u **hebt** geselecteerd en bewerk deze als volgt:
 
     
     | Instelling    | Voorgestelde waarde                          | Beschrijving                                        |
@@ -84,13 +88,7 @@ Vervolgens moet de opdracht een voltooiings regel hebben. Deze regel geeft aan d
     | **Acties**    | Spraak antwoord verzenden > eenvoudige editor > eerste variatie >`Ok, turning the tv on` | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
     
 
-1. U kunt ook de bestaande standaard voltooiings regel verwijderen en een nieuwe maken door de **toevoegen** boven aan het middelste deel venster te selecteren.
-1. Geef een waarde op in het gedeelte **naam** .
-1. Een actie toevoegen.
-   1. Maak een actie door **een actie toevoegen** te selecteren in de sectie **acties** .
-   1. Selecteer in het venster **nieuwe actie** in de lijst **type** de optie **spraak antwoord verzenden**.
-   1. Onder **antwoord**selecteert u **eenvoudige editor**.
-   1. Geef in het **eerste variatie** veld een waarde op als antwoord `Ok, turning the tv on` .
+
 
    > [!div class="mx-imgBorder"]
    > ![Een spraak antwoord maken](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ Vervolgens moet de opdracht een voltooiings regel hebben. Deze regel geeft aan d
 1. Selecteer **Opslaan** om de actie op te slaan.
 1. Selecteer in de sectie **voltooiings regels** de optie **Opslaan** om alle wijzigingen op te slaan. 
 
+
+ > [!NOTE]
+    > Het is niet nodig om de standaard voltooiings regel te gebruiken die bij de opdracht wordt geleverd. Indien nodig kunt u de bestaande standaard voltooiings regel verwijderen en uw eigen regel toevoegen.
 
 ### <a name="try-it-out"></a>Uitproberen
 
@@ -124,7 +125,7 @@ Bewerk vervolgens **de bestaande regels** voor het volt ooien van voltooiing als
 
 | Instelling    | Voorgestelde waarde                          |
 | ---------- | ---------------------------------------- |
-| Name  | ConfirmationResponse                  |
+| Naam  | ConfirmationResponse                  |
 | Voorwaarden | Geen                                     |
 | Acties    | Spraak antwoord verzenden > eenvoudige editor > eerste variatie >`Ok, setting temperature to 40 degrees` |
 

@@ -1,5 +1,5 @@
 ---
-title: Een digital twin beheren
+title: Digitale apparaatdubbels beheren
 titleSuffix: Azure Digital Twins
 description: Zie afzonderlijke apparaatdubbels en relaties ophalen, bijwerken en verwijderen.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 9acea128313fc440834626dd3a99b117e4b25a8f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 07c77f3cf149fdd6533a070b29f709758be23ce5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735894"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362727"
 ---
 # <a name="manage-digital-twins"></a>Digitale apparaatdubbels beheren
 
@@ -21,7 +21,7 @@ ms.locfileid: "84735894"
 
 Entiteiten in uw omgeving worden vertegenwoordigd door [Digital apparaatdubbels](concepts-twins-graph.md). Het beheren van uw digitale apparaatdubbels kan het maken, wijzigen en verwijderen omvatten. Als u deze bewerkingen wilt uitvoeren, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md), de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
-Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [How-to: manage a dubbele Graph with relationships](how-to-manage-graph.md)als u wilt werken met relaties en de [dubbele grafiek](concepts-twins-graph.md) als geheel.
+Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [How-to: manage the dubbele Graph with relationships](how-to-manage-graph.md)als u wilt werken met relaties en de [dubbele grafiek](concepts-twins-graph.md) als geheel.
 
 > [!TIP]
 > Alle SDK-functies zijn beschikbaar in synchrone en asynchrone versies.
@@ -347,4 +347,4 @@ Apparaatdubbels kan ook worden beheerd met behulp van de Azure Digital Apparaatd
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie relaties tussen uw digitale apparaatdubbels maken en beheren:
-* [Instructies: een dubbele grafiek met relaties beheren](how-to-manage-graph.md)
+* [Instructies: de dubbele grafiek met relaties beheren](how-to-manage-graph.md)

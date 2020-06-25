@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 968e753cb8bf4376d2082d5238004c291b8f0938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211938"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362982"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Een profiel container maken met Azure NetApp Files en AD DS
 
@@ -53,7 +53,8 @@ Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
 4. Als dit de eerste keer is dat u Azure Cloud Shell gebruikt, maakt u een opslag account in hetzelfde abonnement dat u de Azure NetApp Files en het virtuele bureau blad van Windows bewaart.
 
-   ![Het venster opslag account met de knop opslag maken onder aan het venster is rood gemarkeerd.](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![Het venster opslag account met de knop opslag maken onder aan het venster is rood gemarkeerd.](media/create-storage-button.png)
 
 5. Als Azure Cloud Shell is geladen, voert u de volgende twee cmdlets uit.
 
@@ -67,7 +68,8 @@ Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
 6. Selecteer in de linkerkant van het venster **alle services**. Voer **Azure NetApp files** in het zoekvak dat boven aan het menu wordt weer gegeven.
 
-   ![Een scherm opname van een gebruiker die Azure NetApp Files invoert in het zoekvak alle services. In de zoek resultaten wordt de Azure NetApp Files resource weer gegeven.](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname van een gebruiker die Azure NetApp Files invoert in het zoekvak alle services. In de zoek resultaten wordt de Azure NetApp Files resource weer gegeven.](media/azure-netapp-files-search-box.png)
 
 
 7. Selecteer **Azure NetApp files** in de zoek resultaten en selecteer vervolgens **maken**.
@@ -108,7 +110,8 @@ Daarna moet u lid worden van een Active Directory verbinding.
 
 1. Selecteer **Active Directory verbindingen** in het menu aan de linkerkant van de pagina en selecteer vervolgens de knop **samen voegen** om de pagina **lid worden** van de Active Directory te openen.
 
-   ![Een scherm opname van het menu verbinding maken Active Directory.](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname van het menu verbinding maken Active Directory.](media/active-directory-connections-menu.png)
 
 2. Voer de volgende waarden in op de pagina **lid worden Active Directory** om lid te worden van een verbinding:
 
@@ -148,7 +151,8 @@ Nadat u het volume hebt gemaakt, configureert u de volume toegangs parameters.
 
 6.  Als u het koppelingspad wilt zien, selecteert u **naar resource gaan** en zoekt u deze op het tabblad Overzicht.
 
-    ![Een scherm afbeelding van het overzichts scherm met een rode pijl die verwijst naar het koppelingspad.](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm afbeelding van het overzichts scherm met een rode pijl die verwijst naar het koppelingspad.](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>FSLogix configureren op virtuele machines in de sessiehost (Vm's)
 
@@ -218,7 +222,8 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 4. Open **Azure NetApp files**, selecteer uw Azure NetApp files account en selecteer vervolgens **volumes**. Zodra het menu volumes wordt geopend, selecteert u het bijbehorende volume.
 
-   ![Een scherm opname van het NetApp-account dat u eerder hebt ingesteld in de Azure Portal met de knop volumes geselecteerd.](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname van het NetApp-account dat u eerder hebt ingesteld in de Azure Portal met de knop volumes geselecteerd.](media/netapp-account.png)
 
 5. Ga naar het tabblad **overzicht** en controleer of in de FSLogix-profiel container ruimte wordt gebruikt.
 
@@ -226,7 +231,8 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
    In deze map moet er een VHD (of VHDX) van het profiel staan, zoals in het volgende voor beeld.
 
-   ![Een scherm afbeelding van de inhoud van de map in het koppelingspad. In is één VHD-bestand met de naam ' Profile_ssbb '.](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm afbeelding van de inhoud van de map in het koppelingspad. In is één VHD-bestand met de naam ' Profile_ssbb '.](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

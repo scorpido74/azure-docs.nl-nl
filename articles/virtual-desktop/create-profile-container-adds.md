@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207308"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362438"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Een profiel container maken met Azure Files en Azure AD DS
 
@@ -93,7 +93,8 @@ De toegangs sleutel voor het opslag account ophalen:
 
     Hiermee wordt een RDP-bestand gedownload waarmee u zich met de eigen referenties kunt aanmelden bij de VM.
 
-    ![Een scherm opname van het tabblad RDP van het venster verbinding maken met virtuele machine.](media/rdp-tab.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van het tabblad RDP van het venster verbinding maken met virtuele machine.](media/rdp-tab.png)
 
 6. Wanneer u zich hebt aangemeld bij de VM, voert u een opdracht prompt uit als beheerder.
 
@@ -156,11 +157,13 @@ Een FSLogix-profiel container configureren:
 
 9.  Klik met de rechter muisknop op **profielen**, selecteer **Nieuw**en selecteer vervolgens **DWORD-waarde (32-bits).** Geef de waarde **ingeschakeld** en stel de **gegevens** waarde in op **1**.
 
-    ![Een scherm afbeelding van de sleutel Profiles. Het REG_DWORD bestand wordt gemarkeerd en de bijbehorende gegevens waarde is ingesteld op 1.](media/dword-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm afbeelding van de sleutel Profiles. Het REG_DWORD bestand wordt gemarkeerd en de bijbehorende gegevens waarde is ingesteld op 1.](media/dword-value.png)
 
 10. Klik met de rechter muisknop op **profielen**, selecteer **Nieuw**en selecteer vervolgens **waarde met meerdere teken reeksen**. Noem de waarde **VHDLocations** en stel de URI voor de Azure Files share `\\fsprofile.file.core.windows.net\share` in als gegevens waarde.
 
-    ![Een scherm afbeelding van de sleutel Profiles waarin het VHDLocations-bestand wordt weer gegeven. De gegevens waarde bevat de URI voor de Azure Files share.](media/multi-string-value.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm afbeelding van de sleutel Profiles waarin het VHDLocations-bestand wordt weer gegeven. De gegevens waarde bevat de URI voor de Azure Files share.](media/multi-string-value.png)
 
 ## <a name="assign-users-to-a-session-host"></a>Gebruikers toewijzen aan een sessie-host
 

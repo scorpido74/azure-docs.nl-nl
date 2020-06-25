@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: ddbe49f34bbdbf0f9c461a25f23d6f7cbd8600d9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726052"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362948"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Een client toepassing verifiëren met Azure Digital Apparaatdubbels
 
@@ -175,7 +175,7 @@ Als u een .NET-app wilt verifiëren met Azure-Services, kunt u de volgende minim
 U hebt de toepassings-id van de *toepassing (client)* en de *map (Tenant)* van de vorige versie nodig, evenals de URL van uw Azure Digital apparaatdubbels-exemplaar.
 
 > [!TIP]
-> De URL van het Azure Digital Apparaatdubbels-exemplaar wordt gemaakt door *https://* toe te voegen aan het begin van de *hostnaam*van uw Azure Digital apparaatdubbels-exemplaar. Als u de hostnaam, samen met alle eigenschappen van uw exemplaar, wilt zien, kunt u uitvoeren `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> De URL van het Azure Digital Apparaatdubbels-exemplaar wordt gemaakt door *https://* toe te voegen aan het begin van de *hostnaam*van uw Azure Digital apparaatdubbels-exemplaar. Als u de *hostnaam*, samen met alle eigenschappen van uw exemplaar, wilt zien, kunt u uitvoeren `az dt show --dt-name <your-Azure-Digital-Twins-instance>` . U kunt de `az account show --query tenantId` opdracht gebruiken om de *map-id (Tenant)* te bekijken. 
 
 ```javascript
 import * as Msal from "msal";
@@ -259,4 +259,4 @@ Lees meer over de werking van beveiliging in azure Digital Apparaatdubbels:
 * [Concepten: beveiliging voor Azure Digital Apparaatdubbels Solutions](concepts-security.md)
 
 Of nu de verificatie is ingesteld, gaat u verder met het maken van modellen in uw exemplaar:
-* [Uitleg: Een dubbel model beheren](how-to-manage-model.md)
+* [Instructies: aangepaste modellen beheren](how-to-manage-model.md)

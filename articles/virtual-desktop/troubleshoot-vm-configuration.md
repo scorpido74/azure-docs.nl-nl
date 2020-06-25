@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: df2990e3799d0b16f316c522185ac9b779ca48e4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711626"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362353"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -121,7 +121,8 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 ### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: de status die is opgeslagen in de cmdlet Get-AzWvdSessionHost, toont de status als niet beschikbaar
 
-![Met de cmdlet Get-AzWvdSessionHost wordt de status weer gegeven als niet beschikbaar.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Met de cmdlet Get-AzWvdSessionHost wordt de status weer gegeven als niet beschikbaar.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Oorzaak:** De agent kan zichzelf niet bijwerken naar een nieuwe versie.
 
@@ -194,7 +195,8 @@ Als u problemen ondervindt met de Windows-stack naast elkaar, typt u de opdracht
 
 In de uitvoer van **qwinsta** wordt **RDP-SxS** vermeld in de uitvoer als de side-by-side-stack is geïnstalleerd en ingeschakeld.
 
-![Side-by-side stack is geïnstalleerd of ingeschakeld met qwinsta die worden vermeld als RDP-SxS in de uitvoer.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Side-by-side stack is geïnstalleerd of ingeschakeld met qwinsta die worden vermeld als RDP-SxS in de uitvoer.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Controleer de hieronder vermelde Register vermeldingen en controleer of de waarden overeenkomen. Als er register sleutels ontbreken of als de waarden niet overeenkomen, volgt u de instructies in [een hostgroep maken met Power shell](create-host-pools-powershell.md) voor informatie over het opnieuw installeren van de side-by-side-stack.
 
@@ -208,7 +210,8 @@ Controleer de hieronder vermelde Register vermeldingen en controleer of de waard
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Fout: O_REVERSE_CONNECT_STACK_FAILURE
 
-![Fout code O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Fout code O_REVERSE_CONNECT_STACK_FAILURE.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Oorzaak:** De side-by-side-stack is niet geïnstalleerd op de host-VM van de sessie.
 
@@ -244,19 +247,21 @@ Volg deze instructies voor het uitvoeren van herstel vanuit hetzelfde subnet en 
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname is de computer naam van de virtuele machine met de niet-gelijktijdige stack.
 
 7. Accepteer de gebruiksrecht overeenkomst voor PsExec door op akkoord te klikken.
 
-    ![Scherm opname van de software licentie overeenkomst.](media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van de software licentie overeenkomst.](media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Dit dialoog venster wordt alleen weer gegeven voor de eerste keer dat PsExec wordt uitgevoerd.
 
 8. Wanneer de sessie met de opdracht prompt op de virtuele machine wordt geopend met de niet-gelijktijdige stack, voert u qwinsta uit en controleert u of er een vermelding met de naam RDP-SxS beschikbaar is. Als dat niet het geval is, is er geen side-by-side stack aanwezig op de VM, zodat het probleem niet is gekoppeld aan de side-by-side-stack.
 
-    ![Opdracht prompt van beheerder](media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Opdracht prompt van beheerder](media/AdministratorCommandPrompt.png)
 
 9. Voer de volgende opdracht uit, waarmee micro soft-onderdelen die op de virtuele machine zijn geïnstalleerd, worden weer geven met de stack-by-side-stapel.
 
@@ -324,7 +329,8 @@ Controleren welke versie van Windows 10 Enter prise multi-session u hebt:
 3. Selecteer **over uw PC**.
 4. Controleer het nummer naast versie. Het getal moet ' 1809 ' of ' 1903 ' zijn, zoals wordt weer gegeven in de volgende afbeelding.
 
-    ![Een scherm opname van het Windows-specificaties venster. Het versie nummer is blauw gemarkeerd.](media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van het Windows-specificaties venster. Het versie nummer is blauw gemarkeerd.](media/windows-specifications.png)
 
 Nu u het versie nummer weet, gaat u verder met de relevante sectie.
 

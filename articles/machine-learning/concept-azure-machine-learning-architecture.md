@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 97b13118eb0299f042bdadfebecbc1a23d1ce59f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683038"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362591"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -45,10 +45,10 @@ De werk stroom voor het machine learning model volgt doorgaans deze reeks:
 Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 
 +  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-+ Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
++ Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview).
 + Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
-+ Gebruik [Azure machine learning Designer (preview)](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
-+ De [vele modellen oplossings versneller](https://aka.ms/many-models) (preview) is gebaseerd op Azure machine learning en stelt u in staat honderden of zelfs duizenden machine learning modellen te trainen, te bedienen en te beheren.
++ Gebruik [Azure machine learning Designer (preview)](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven. (Een [Enter prise-werk ruimte](concept-workspace.md#upgrade)) is vereist voor het gebruik van Designer.)
++ De [Many Models Solution Accelerator](https://aka.ms/many-models) (preview) heeft Azure Machine Learning als basis en stelt u in staat om honderden, of zelfs duizenden machine Learning-modellen, te trainen, te gebruiken en te beheren.
 
 > [!NOTE]
 > Hoewel in dit artikel voor waarden en concepten worden gedefinieerd die worden gebruikt door Azure Machine Learning, worden er geen termen en concepten voor het Azure-platform gedefinieerd. Zie de [Microsoft Azure verklarende woorden lijst](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)voor meer informatie over de terminologie van het Azure-platform.
@@ -68,7 +68,7 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
         * [Omgevingen](#environments)
         * [Trainings script](#training-scripts)
         * [Schattingen](#estimators)
-    * [Eindpunten](#endpoints)
+    * [Eind punten](#endpoints)
         * [-Webservice](#web-service-endpoint)
         * [IoT-modules](#iot-module-endpoints)
     * [Gegevensset & gegevens opslag](#datasets-and-datastores)

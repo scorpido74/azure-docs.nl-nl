@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117424"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362506"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md)als u probeert Azure Resource Manager virtuele Windows-bureaublad objecten te beheren die zijn geïntroduceerd in de lente 2020-update.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
 
 Gebruik dit artikel voor het oplossen van problemen die zich voordoen bij het configureren van de virtuele machines (Vm's) voor virtuele bureau blad-sessies van Windows.
 
@@ -118,7 +118,8 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fout: de status die is opgeslagen in de cmdlet Get-RdsSessionHost, toont de status als niet beschikbaar
 
-![Met de cmdlet Get-RdsSessionHost wordt de status weer gegeven als niet beschikbaar.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Met de cmdlet Get-RdsSessionHost wordt de status weer gegeven als niet beschikbaar.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Oorzaak:** De agent kan zichzelf niet bijwerken naar een nieuwe versie.
 
@@ -179,7 +180,7 @@ Wanneer de virtuele Windows-bureau blad-agent voor het eerst is geïnstalleerd o
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Problemen met de Windows-stack aan de zijkant van het virtuele bureau blad oplossen
 
-De Windows-stack voor virtueel bureau blad wordt automatisch geïnstalleerd met Windows Server 2019. Gebruik micro soft Installer (MSI) om de side-by-stack te installeren op micro soft Windows Server 2016 of Windows Server 2012 R2. Voor micro soft Windows 10 is de Windows-stack voor virtueel bureau blad ingeschakeld met **enablesxstackrs. ps1**.
+De Windows-stack voor virtueel bureau blad wordt automatisch geïnstalleerd met Windows Server 2019. Gebruik micro soft Installer (MSI) om de side-by-stack te installeren op micro soft Windows Server 2016 of Windows Server 2012 R2. Voor micro soft Windows 10 is de Windows-stack voor virtuele Bureau bladen naast elkaar ingeschakeld met **enablesxstackrs.ps1**.
 
 Er zijn drie belang rijke manieren waarop de side-by-stack wordt geïnstalleerd of ingeschakeld op virtuele machines van de sessiehost:
 
@@ -191,7 +192,8 @@ Als u problemen ondervindt met de Windows-stack naast elkaar, typt u de opdracht
 
 In de uitvoer van **qwinsta** wordt **RDP-SxS** vermeld in de uitvoer als de side-by-side-stack is geïnstalleerd en ingeschakeld.
 
-![Side-by-side stack is geïnstalleerd of ingeschakeld met qwinsta die worden vermeld als RDP-SxS in de uitvoer.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Side-by-side stack is geïnstalleerd of ingeschakeld met qwinsta die worden vermeld als RDP-SxS in de uitvoer.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 Controleer de hieronder vermelde Register vermeldingen en controleer of de waarden overeenkomen. Als er register sleutels ontbreken of als de waarden niet overeenkomen, volgt u de instructies in [een hostgroep maken met Power shell](create-host-pools-powershell-2019.md) voor informatie over het opnieuw installeren van de side-by-side-stack.
 
@@ -205,7 +207,8 @@ Controleer de hieronder vermelde Register vermeldingen en controleer of de waard
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>Fout: O_REVERSE_CONNECT_STACK_FAILURE
 
-![Fout code O_REVERSE_CONNECT_STACK_FAILURE.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![Fout code O_REVERSE_CONNECT_STACK_FAILURE.](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Oorzaak:** De side-by-side-stack is niet geïnstalleerd op de host-VM van de sessie.
 
@@ -227,8 +230,8 @@ Er zijn bekende omstandigheden waardoor de side-by-side-stack defect kan raken:
 - Niet de juiste volg orde van de stappen voor het inschakelen van de side-by-side-stack
 - Automatisch bijwerken naar Windows 10 Enhanced veelzijdige schijf (EVD)
 - De rol van de Extern bureaublad sessiehost (RDSH) ontbreekt
-- Meerdere keren uitvoeren van enablesxsstackrc. ps1
-- Enablesxsstackrc. ps1 wordt uitgevoerd in een account zonder lokale beheerders bevoegdheden
+- Meerdere keren uitgevoerd enablesxsstackrc.ps1
+- enablesxsstackrc.ps1 uitvoeren in een account dat geen lokale beheerders bevoegdheden heeft
 
 De instructies in deze sectie kunnen u helpen bij het verwijderen van de Windows-stack met virtuele Bureau bladen. Nadat u de side-by-stack hebt verwijderd, gaat u naar ' de virtuele machine registreren bij de Windows Virtual Desktop-hostgroep ' in [een hostgroep met Power shell maken](create-host-pools-powershell-2019.md) om de side-by-side-stack opnieuw te installeren.
 
@@ -247,19 +250,21 @@ Volg deze instructies voor het uitvoeren van herstel vanuit hetzelfde subnet en 
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname is de computer naam van de virtuele machine met de niet-gelijktijdige stack.
 
 7. Accepteer de gebruiksrecht overeenkomst voor PsExec door op akkoord te klikken.
 
-    ![Scherm opname van de software licentie overeenkomst.](../media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![Scherm opname van de software licentie overeenkomst.](../media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >Dit dialoog venster wordt alleen weer gegeven voor de eerste keer dat PsExec wordt uitgevoerd.
 
 8. Wanneer de sessie met de opdracht prompt op de virtuele machine wordt geopend met de niet-gelijktijdige stack, voert u qwinsta uit en controleert u of er een vermelding met de naam RDP-SxS beschikbaar is. Als dat niet het geval is, is er geen side-by-side stack aanwezig op de VM, zodat het probleem niet is gekoppeld aan de side-by-side-stack.
 
-    ![Opdracht prompt van beheerder](../media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![Opdracht prompt van beheerder](../media/AdministratorCommandPrompt.png)
 
 9. Voer de volgende opdracht uit, waarmee micro soft-onderdelen die op de virtuele machine zijn geïnstalleerd, worden weer geven met de stack-by-side-stapel.
 
@@ -281,7 +286,7 @@ Volg deze instructies voor het uitvoeren van herstel vanuit hetzelfde subnet en 
 
 Als uw besturings systeem micro soft Windows 10 is, gaat u verder met de onderstaande instructies:
 
-14. Open in de virtuele machine met PsExec de bestanden Verkenner en kopieer disablesxsstackrc. ps1 naar het systeem station van de virtuele machine met de niet-werkende side-by-side-stack.
+14. Open in de virtuele machine met PsExec de bestanden Verkenner en kopieer disablesxsstackrc.ps1 naar het systeem station van de virtuele machine met de gestapelde side-by-side-stack.
 
     ```cmd
         \\<VMname>\c$\
@@ -290,7 +295,7 @@ Als uw besturings systeem micro soft Windows 10 is, gaat u verder met de onderst
     >[!NOTE]
     >VMname is de computer naam van de virtuele machine met de niet-gelijktijdige stack.
 
-15. Het aanbevolen proces: vanuit het PsExec-hulp programma start u Power shell en navigeert u naar de map uit de vorige stap en voert u disablesxsstackrc. ps1 uit. U kunt ook de volgende cmdlets uitvoeren:
+15. Het aanbevolen proces: vanuit het PsExec-hulp programma start u Power shell en navigeert u naar de map uit de vorige stap en voert u disablesxsstackrc.ps1 uit. U kunt ook de volgende cmdlets uitvoeren:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -327,7 +332,8 @@ Controleren welke versie van Windows 10 Enter prise multi-session u hebt:
 3. Selecteer **over uw PC**.
 4. Controleer het nummer naast versie. Het getal moet ' 1809 ' of ' 1903 ' zijn, zoals wordt weer gegeven in de volgende afbeelding.
 
-    ![Een scherm opname van het Windows-specificaties venster. Het versie nummer is blauw gemarkeerd.](../media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van het Windows-specificaties venster. Het versie nummer is blauw gemarkeerd.](../media/windows-specifications.png)
 
 Nu u het versie nummer weet, gaat u verder met de relevante sectie.
 

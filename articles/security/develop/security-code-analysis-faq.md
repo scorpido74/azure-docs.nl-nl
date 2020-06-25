@@ -1,7 +1,7 @@
 ---
 title: Veelgestelde vragen over documentatie voor analyse van micro soft-beveiligings code
 description: Dit artikel bevat een veelgestelde vragen over de uitbrei ding voor de analyse van beveiligings codes van micro soft
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,17 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015842"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362071"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 Hebt u vragen? Bekijk de volgende veelgestelde vragen voor meer informatie.
 
-## <a name="general-faq"></a>Algemene veelgestelde vragen
+## <a name="general-faq"></a>Veelgestelde algemene vragen
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Kan ik de uitbrei ding installeren op mijn Visual Studio Team Foundation Server-exemplaar in plaats van op een Azure DevOps-exemplaar?
 
@@ -123,15 +123,15 @@ De hash-sleutel van het geheim van het uitvoer bestand CredScan is vereist, zoal
 
 De bestands expressie kan een bestands naam zijn. Het kan ook het grondtal van een volledig bestandspad of een bestands naam zijn. Jokertekens worden niet ondersteund.
 
-In de volgende voor beelden ziet u hoe u het bestand \<InputPath> \src\JS\lib\angular.js onderdrukt
+In de volgende voor beelden ziet u hoe u het bestand kunt onderdrukken \<InputPath>\src\JS\lib\angular.js
 
 Voor beelden van geldige onderdrukkings regels:
 
-- \<InputPath>\src\JS\lib\angular.js: Hiermee wordt het bestand in het opgegeven pad onderdrukt
+- \<InputPath>\src\JS\lib\angular.js-onderdrukt het bestand in het opgegeven pad
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- hoek. js: alle bestanden met dezelfde naam onderdrukken
+- angular.js-onderdrukt elk bestand met dezelfde naam
 
         {
             "tool": "Credential Scanner",
@@ -166,7 +166,7 @@ Zie het blog bericht [geheimen veilig beheren in de Cloud](https://devblogs.micr
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Kan ik mijn eigen aangepaste zoekers schrijven?
 
-Referentie scanner is afhankelijk van een set inhouds zoekacties die meestal worden gedefinieerd in het bestand buildsearchers. XML. Het bestand bevat een matrix met XML-geserialiseerde objecten die een **ContentSearcher** -object vertegenwoordigen. Het programma wordt gedistribueerd met een aantal goed geteste zoek functies. Maar u kunt ook uw eigen aangepaste zoek functies implementeren.
+Referentie scanner is afhankelijk van een set inhouds zoekacties die meestal worden gedefinieerd in het buildsearchers.xml-bestand. Het bestand bevat een matrix met XML-geserialiseerde objecten die een **ContentSearcher** -object vertegenwoordigen. Het programma wordt gedistribueerd met een aantal goed geteste zoek functies. Maar u kunt ook uw eigen aangepaste zoek functies implementeren.
 
 Een inhouds zoekmachine wordt als volgt gedefinieerd:
 
@@ -196,23 +196,23 @@ Het volledige fout bericht:
 
 Omdat Roslyn-analyse taken worden uitgevoerd als onderdeel van compilatie, moet de bron structuur op de build-machine een samenstelbaar status hebben.
 
-In een stap tussen uw belangrijkste build-en Roslyn-analyse stappen is het mogelijk dat de bron structuur in een status staat die het maken van het gebouw verhindert. Deze extra stap is waarschijnlijk **dotnet. exe Publish**. Probeer de stap voor het herstellen van NuGet net vóór de Roslyn-analysen stap te dupliceren. Deze gedupliceerde stap kan de bron structuur mogelijk weer in een samenstelbaar gebied plaatsen.
+In een stap tussen uw belangrijkste build-en Roslyn-analyse stappen is het mogelijk dat de bron structuur in een status staat die het maken van het gebouw verhindert. Deze extra stap is waarschijnlijk **dotnet.exe publiceren**. Probeer de stap voor het herstellen van NuGet net vóór de Roslyn-analysen stap te dupliceren. Deze gedupliceerde stap kan de bron structuur mogelijk weer in een samenstelbaar gebied plaatsen.
 
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>CSC. exe kan geen analyse-exemplaar maken
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe kan geen analyse-exemplaar maken
 
 Het volledige fout bericht:
 
-' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C: \\ *BBBB*. dll: kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem kan het opgegeven bestand niet vinden. "
+csc.exe afgesloten met fout code 1--een exemplaar van Analyzer *AAAA* kan niet worden gemaakt van C: \\ *BBBB*. dll: kan bestand of Assembly ' micro soft. CodeAnalysis, versie =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem kan het opgegeven bestand niet vinden. "
 
-Zorg ervoor dat uw compiler Roslyn-analyse functies ondersteunt. Het uitvoeren van de opdracht **CSC. exe/version** moet een versie waarde van 2,6 of hoger rapporteren.
+Zorg ervoor dat uw compiler Roslyn-analyse functies ondersteunt. Het uitvoeren van de opdracht **csc.exe/version** moet een versie waarde van 2,6 of hoger rapporteren.
 
 Soms kan een. csproj-bestand de installatie van de Visual Studio voor het bouwen van de machine overschrijven door te verwijzen naar een pakket van Microsoft.Net. compilers. Als u geen specifieke versie van de compiler wilt gebruiken, verwijdert u verwijzingen naar Microsoft.Net. compilers. Controleer anders of de versie van het pakket waarnaar wordt verwezen ook 2,6 of hoger is.
 
-Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Probeer het pad naar het fouten logboek op te halen, dat is opgegeven in de **csc.exe optie/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>De versie van het C#-compileer programma is niet recent genoeg
 
-Als u de nieuwste versies van de C#-compiler wilt downloaden, gaat u naar [Microsoft.net. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers). Als u de geïnstalleerde versie wilt downloaden, voert u **CSC. exe/version** uit vanaf een opdracht prompt. Zorg ervoor dat u verwijst naar een Microsoft.Net. compilers NuGet-pakket met versie 2,6 of hoger.
+Als u de nieuwste versies van de C#-compiler wilt downloaden, gaat u naar [Microsoft.net. compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers). Als u de geïnstalleerde versie wilt downloaden, voert u **csc.exe/version** uit vanaf een opdracht prompt. Zorg ervoor dat u verwijst naar een Microsoft.Net. compilers NuGet-pakket met versie 2,6 of hoger.
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>MSBuild-en VSBuild-logboeken zijn niet gevonden
 

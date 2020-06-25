@@ -1,5 +1,5 @@
 ---
-title: Een tweelinggrafiek met relaties beheren
+title: Het dubbele diagram met relaties beheren
 titleSuffix: Azure Digital Twins
 description: Zie een grafiek met digitale apparaatdubbels beheren door deze te verbinden met relaties.
 author: baanders
@@ -8,12 +8,12 @@ ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e332936543cc36e20b88da4ce5cc9115d0890967
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 13ceed847b3946b47fb3389145843ad085391dc5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725695"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362795"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
@@ -23,7 +23,7 @@ De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins
 
 Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance.md) hebt en [verificatie](how-to-authenticate-client.md) hebt ingesteld voor uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
-Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [How-to: manage a Digital](how-to-manage-twin.md)apparaatdubbels (Engelstalig) voor meer informatie over het gebruik van een digitale hand.
+Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [How-to: Manage Digital apparaatdubbels](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
 
 ## <a name="create-relationships"></a>Relaties maken
 

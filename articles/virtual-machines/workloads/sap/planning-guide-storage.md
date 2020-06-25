@@ -13,17 +13,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3997ae5aa95423841a918a3b5ed1fb0a01d3602e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85218005"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362999"
 ---
-# <a name="azure-storage-types-for-sap-workload"></a>Azure Storage typen voor SAP-workload
+# <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
 Azure heeft talloze opslag typen die in de mogelijkheden, door Voer, latentie en prijzen aanzienlijk verschillen. Sommige opslag typen zijn niet of zijn beperkt bruikbaar voor SAP-scenario's. Dat zijn verschillende Azure Storage-typen goed geschikt of geoptimaliseerd voor specifieke SAP-werkbelasting scenario's. Met name voor SAP HANA hebben sommige Azure Storage-typen gecertificeerd voor het gebruik met SAP HANA. In dit document gaan we de verschillende soorten opslag door lopen en de mogelijkheden en bruikbaarheid van SAP-workloads en SAP-onderdelen beschrijven.
 
 Opmerkingen over de eenheden die in dit artikel worden gebruikt. De leveranciers van de open bare Cloud zijn verplaatst om GiB ([gibibyte](https://en.wikipedia.org/wiki/Gibibyte)) of TIB ([tebibyte](https://en.wikipedia.org/wiki/Tebibyte) als maat eenheden te gebruiken in plaats van Gigabyte of terabyte. Daarom gebruiken alle Azure-documentatie en Mentoraat deze eenheden.  In het hele document verwijzen we alleen naar deze grootte-eenheden van MiB-, GiB-en TiB-eenheden. U moet mogelijk met MB, GB en TB plannen. Let dus op enkele kleine verschillen in de berekeningen als u de grootte van een 400-MiB per seconde moet aanpassen, in plaats van een 250-door Voer per seconde.
@@ -34,7 +34,23 @@ Microsoft Azure opslag van Standard-HDD, Standard-SSD, Azure Premium-opslag en u
 
 Er zijn diverse redundante methoden, die allemaal worden beschreven in het artikel [Azure storage replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) die van toepassing zijn op enkele van de verschillende opslag typen die Azure te bieden heeft. 
 
-Hoe deze tolerantie opties worden toegepast op de typen Azure-opslag die worden gebruikt voor SAP, worden beschreven in de volgende secties.
+### <a name="azure-managed-disks"></a>Azure Managed disks
+
+Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks automatisch uitgelijnd met de [Availability set] [virtual-machines-Manage-Availability] van de virtuele machine waaraan ze zijn gekoppeld, waardoor de beschik baarheid van uw virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)voor meer informatie.
+
+In dit voor beeld wordt gebruikgemaakt van de flexibiliteit van Managed disks:
+
+- U implementeert uw SAP-virtuele machines in een Azure-beschikbaarheidsset met uw twee DBMS-Vm's 
+- Terwijl Azure de virtuele machines implementeert, wordt de schijf met de installatie kopie van het besturings systeem in een ander opslag cluster geplaatst. Dit voor komt dat beide Vm's worden beïnvloed door een probleem met één Azure Storage-cluster
+- Wanneer u nieuwe beheerde schijven maakt die u aan deze Vm's toewijst om de gegevens en logboek bestanden van uw Data Base op te slaan, worden deze nieuwe schijven voor de twee virtuele machines ook geïmplementeerd in afzonderlijke opslag clusters, zodat geen van de schijven van de eerste virtuele machine opslag clusters deelt met de schijven van de tweede VM
+
+Implementatie zonder Managed disks in door de klant gedefinieerde opslag accounts is een wille keurige schijf toewijzing en heeft geen inzicht in het feit dat Vm's worden geïmplementeerd in een AvSet voor tolerantie doeleinden.
+
+> [!NOTE]
+> Daarom moeten nieuwe implementaties van virtuele machines die gebruikmaken van Azure Block Storage voor hun schijven (alle Azure-opslag met uitzonde ring van Azure NetApp Files) gebruikmaken van Azure Managed disks voor de basis-VHD/OS-schijven, gegevens schijven die SAP-database bestanden bevatten. Onafhankelijk van het feit of u de Vm's implementeert via beschikbaarheidsset, op Beschikbaarheidszones of onafhankelijk van de sets en zones. Schijven die worden gebruikt voor het opslaan van back-ups, hoeven geen beheerde schijven te zijn.
+
+> [!NOTE]
+> Azure Managed disks bieden alleen lokale redundantie (LRS). 
 
 
 ## <a name="storage-scenarios-with-sap-workloads"></a>Opslag scenario's met SAP-workloads
@@ -67,6 +83,7 @@ Voordat u naar de details gaat, worden de samen vatting en aanbevelingen aan het
 | DBMS-logboek volume niet-HANA M/Mv2 VM-families | niet ondersteund | beperkt geschikt (niet-productie) | Aanbevolen<sup>1</sup> | aanbevelingen | niet ondersteund |
 | DBMS-logboek volume niet-HANA niet-M/Mv2 VM-families | niet ondersteund | beperkt geschikt (niet-productie) | geschikt voor een gemiddelde werk belasting | aanbevelingen | niet ondersteund |
 
+
 <sup>1</sup> met het gebruik van [Azure write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) voor Mv2 VM-families voor logboek-en opnieuw uitvoeren op logboek volumes <sup>2</sup> met ANF zijn/Hana/data en/Hana/log vereist voor ANF 
 
 Eigenschappen die u kunt verwachten van de lijst met verschillende soorten opslag, zoals:
@@ -78,11 +95,25 @@ Eigenschappen die u kunt verwachten van de lijst met verschillende soorten opsla
 | Latentie schrijf bewerkingen | hoog | gemiddeld tot hoog  | laag (submilliseconden<sup>1</sup>) | submilliseconde | submilliseconde |
 | HANA ondersteund | nee | nee | Ja<sup>1</sup> | ja | ja |
 | Schijf momentopnamen mogelijk | ja | ja | ja | nee | ja |
+| Toewijzing van schijven op verschillende opslag clusters bij gebruik van beschikbaarheids sets | via Managed disks | via Managed disks | via Managed disks | schijf type wordt niet ondersteund voor virtuele machines die zijn geïmplementeerd via beschikbaarheids sets | geen<sup>3</sup> |
+| Uitgelijnd met Beschikbaarheidszones | ja | ja | ja | ja | betrokkenheid van micro soft nodig |
+| Zonegebonden-redundantie | niet voor beheerde schijven | niet voor beheerde schijven | niet voor beheerde schijven | nee | nee |
+| Geo-redundantie | niet voor beheerde schijven | niet voor beheerde schijven | nee | nee | nee |
 
 
 <sup>1</sup> met gebruik van [Azure write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) voor Mv2 VM-families voor logboeken/opnieuw uitvoeren van logboek volumes
 
 <sup>2</sup> kosten zijn afhankelijk van ingerichte IOPS en door Voer
+
+<sup>3</sup> het maken van verschillende ANF-capaciteits groepen biedt geen garantie voor de implementatie van capaciteits groepen op verschillende opslag eenheden
+
+
+> [!IMPORTANT]
+> Als u een I/O-latentie van minder dan 1 milliseconden wilt gebruiken met behulp van Azure NetApp Files (ANF), moet u samen werken met micro soft om de juiste plaatsing tussen uw Vm's en de NFS-shares op basis van ANF te regelen. Tot nu toe is er geen mechanisme aanwezig dat een automatische nabijheid vormt tussen een geïmplementeerde VM en de NFS-volumes die worden gehost op ANF. Gezien de verschillende instellingen van de verschillende Azure-regio's, kan de I/O-latentie na 1 milliseconde worden gepusht als de virtuele machine en de NFS-share niet in de buurt zijn toegewezen.
+
+
+> [!IMPORTANT]
+> Geen van de momenteel aangeboden Azure Block Storage-based Managed disks of Azure NetApp Files bieden zonegebonden of geografische redundantie. Daarom moet u ervoor zorgen dat uw architectuur met hoge Beschik baarheid en herstel na nood gevallen niet afhankelijk zijn van welk type Azure native storage-replicatie voor deze beheerde schijven, NFS-of SMB-shares.
 
 
 ## <a name="azure-premium-storage"></a>Azure Premium-opslag
@@ -95,8 +126,7 @@ Azure Premium SSD-opslag is geïntroduceerd met het doel om het volgende te bied
 Dit type opslag is gericht op DBMS-workloads, opslag verkeer waarvoor een lage latentie vertraging van één cijfer en de kosten voor de door Voer in het geval van Azure Premium Storage niet het daad werkelijke gegevens volume is dat op dergelijke schijven is opgeslagen, maar de grootte categorie van een dergelijke schijf, onafhankelijk van de hoeveelheid gegevens die op de schijf is opgeslagen. U kunt ook schijven maken op Premium-opslag die niet rechtstreeks worden toegewezen in de grootte categorieën die in het artikel [Premium-SSD](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd)worden weer gegeven. De conclusies in dit artikel zijn:
 
 - De opslag is ingedeeld in bereiken. Bijvoorbeeld, een schijf in het bereik 513 GiB tot 1024 GiB capaciteit delen dezelfde mogelijkheden en dezelfde maandelijkse kosten
-- De IOPS per GiB wordt niet gevolgd
--  lineair over de grootte categorieën. Kleinere schijven onder 32 GiB hebben hogere IOPS-tarieven per GiB. Voor schijven van meer dan 32 GiB tot 1024 GiB ligt het aantal IOPS per GiB tussen 4-5 IOPS per GiB. Voor grotere schijven tot 32.767 GiB is de IOPS-frequentie per GiB lager dan 1
+- De IOPS per GiB volgen geen lineair over de grootte categorieën. Kleinere schijven onder 32 GiB hebben hogere IOPS-tarieven per GiB. Voor schijven van meer dan 32 GiB tot 1024 GiB ligt het aantal IOPS per GiB tussen 4-5 IOPS per GiB. Voor grotere schijven tot 32.767 GiB is de IOPS-frequentie per GiB lager dan 1
 - De I/O-door Voer voor deze opslag is niet lineair met de grootte van de schijf categorie. Voor kleinere schijven, zoals de categorie tussen 65 GiB en 128 GiB capaciteit, is de door Voer ongeveer 780KB/GiB. Overwegende dat voor de extreem grote schijven, zoals een 32.767 GiB-schijf, de door Voer rond 28KB/GiB
 - De Sla's voor IOPS en door Voer kunnen niet worden gewijzigd zonder de capaciteit van de schijf te wijzigen
 

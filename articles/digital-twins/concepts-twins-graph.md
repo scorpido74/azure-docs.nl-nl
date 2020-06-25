@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726078"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362863"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
@@ -187,8 +187,8 @@ Hier volgt een voor beeld van een relatie die is opgemaakt als een JSON-object:
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie grafiek elementen beheren met Azure Digital-Api's:
-* [Instructies: een digitale twee richtings beheer beheren](how-to-manage-twin.md)
-* [Instructies: een dubbele grafiek met relaties beheren](how-to-manage-graph.md)
+* [Instructies: digitale apparaatdubbels beheren](how-to-manage-twin.md)
+* [Instructies: de dubbele grafiek met relaties beheren](how-to-manage-graph.md)
 
 U kunt ook meer informatie vinden over het uitvoeren van query's op de Azure Digital Apparaatdubbels-grafiek:
 * [Concepten: query taal](concepts-query-language.md)

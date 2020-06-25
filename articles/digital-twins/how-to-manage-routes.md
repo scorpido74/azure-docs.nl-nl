@@ -2,18 +2,18 @@
 title: Eindpunten en routes beheren
 titleSuffix: Azure Digital Twins
 description: Zie eind punten en gebeurtenis routes instellen en beheren voor Azure Digital Apparaatdubbels-gegevens.
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cf18d8ef391115da5e1c8fcab235c30e96287f5b
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84725678"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362761"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
 
@@ -74,17 +74,19 @@ In de voor beelden in dit artikel wordt de C#-SDK gebruikt.
 
 Gebeurtenis routes worden gedefinieerd met behulp van data plan-Api's. Een route definitie kan deze elementen bevatten:
 * De route-ID die u wilt gebruiken
-* De ID van het eind punt dat u wilt gebruiken
+* De naam van het eind punt dat u wilt gebruiken
 * Een filter dat definieert welke gebeurtenissen naar het eind punt worden verzonden 
 
-Als er geen route-ID is, worden er geen berichten meer doorgestuurd buiten Azure Digital Apparaatdubbels. Als er een route-ID en het filter is `null` , worden alle berichten naar het eind punt doorgestuurd. Als er een route-ID en een filter worden toegevoegd, worden berichten gefilterd op basis van het filter.
+Als er geen route-ID is, worden er geen berichten meer doorgestuurd buiten Azure Digital Apparaatdubbels. Als er een route-ID en het filter is `true` , worden alle berichten naar het eind punt doorgestuurd. Als er een route-ID en een ander filter worden toegevoegd, worden berichten gefilterd op basis van het filter.
 
 Voor één route moeten meerdere meldingen en gebeurtenis typen worden geselecteerd. 
 
-Hier volgt de aanroep van de SDK die wordt gebruikt om een gebeurtenis route toe te voegen:
+`CreateEventRoute`is de SDK-aanroep die wordt gebruikt om een gebeurtenis route toe te voegen. Hier volgt een voor beeld van het gebruik:
 
 ```csharp
-await client.CreateEventRoute("routeName", new EventRoute("endpointID"));
+EventRoute er = new EventRoute("endpointName");
+er.Filter("true"); //Filter allows all messages
+await client.CreateEventRoute("routeName", er);
 ```
 
 > [!TIP]
@@ -130,11 +132,11 @@ Als u geen filtert, ontvangen eind punten diverse gebeurtenissen van Azure Digit
 
 U kunt de verzonden gebeurtenissen beperken door een filter toe te voegen aan een eind punt.
 
-Als u een filter wilt toevoegen, kunt u een PUT-aanvraag naar *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-03 -01-preview* gebruiken met de volgende hoofd tekst:
+Als u een filter wilt toevoegen, kunt u een PUT-aanvraag naar *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-05 -31-preview* gebruiken met de volgende hoofd tekst:
 
 ```json  
 {
-    "endpointId": "<endpoint-ID>",
+    "endpointName": "<endpoint-name>",
     "filter": "<filter-text>"
 }
 ``` 
@@ -143,9 +145,10 @@ Dit zijn de ondersteunde route filters.
 
 | Bestandsnaam | Beschrijving | Schema filteren | Ondersteunde waarden | 
 | --- | --- | --- | --- |
-| Type | Het [type gebeurtenis dat](./concepts-route-events.md#types-of-event-messages) door uw digitale dubbele instantie wordt doorlopend | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Edge.Create`<br>`Microsoft.DigitalTwins.Edge.Update`<br> `Microsoft.DigitalTwins.Edge.Delete` <br> `microsoft.iot.telemetry`  |
-| Bron | Naam van het Azure Digital Apparaatdubbels-exemplaar | `"filter" : "source = '<hostname>'"`|  **Voor meldingen:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Voor telemetrie:**`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/ digitaltwins/<twinId>`|
-| Onderwerp | Een beschrijving van de gebeurtenis in de context van de bovenstaande gebeurtenis bron | `"filter": " subject = '<subject>'"` | Het onderwerp is **voor meldingen**`<twinid>` <br> of een URI-indeling voor onderwerpen, die uniek worden geïdentificeerd door meerdere onderdelen of Id's:<br>`<twinid>/relationships/<relationship>/<edgeid>`<br> **Voor telemetrie**is het onderwerp het padcomponent (als de telemetrie wordt verzonden vanuit een twee ledig onderdeel), zoals `comp1.comp2` . Als de telemetrie niet vanuit een onderdeel wordt verzonden, is het veld onderwerp leeg. |
+| Type | Het [type gebeurtenis dat](./concepts-route-events.md#types-of-event-messages) door uw digitale dubbele instantie wordt doorlopend | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
+| Bron | Naam van het Azure Digital Apparaatdubbels-exemplaar | `"filter" : "source = '<hostname>'"`|  **Voor meldingen**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Voor telemetrie**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
+| Onderwerp | Een beschrijving van de gebeurtenis in de context van de bovenstaande gebeurtenis bron | `"filter": " subject = '<subject>'"` | **Voor meldingen**: het onderwerp is`<twinid>` <br> of een URI-indeling voor onderwerpen, die uniek worden geïdentificeerd door meerdere onderdelen of Id's:<br>`<twinid>/relationships/<relationshipid>`<br> **Voor telemetrie**: het onderwerp is het pad van het onderdeel (als de telemetrie wordt verzonden vanuit een twee ledig onderdeel), zoals `comp1.comp2` . Als de telemetrie niet vanuit een onderdeel wordt verzonden, is het veld onderwerp leeg. |
+| Gegevens schema | DTDL-model-ID | `"filter": "dataschema = 'dtmi:example:com:floor4;2'"` | **Voor telemetrie**: het gegevens schema is de model-id van de dubbele of de component die de telemetrie verzendt <br>**Voor meldingen**: gegevens schema wordt niet ondersteund|
 | Type inhoud | Inhouds type van gegevens waarde | `"filter": "datacontenttype = '<contentType>'"` | `application/json` |
 | Specificatie versie | De versie van het gebeurtenis schema dat u gebruikt | `"filter": "specversion = '<version>'"` | Moet zijn `1.0` . Dit geeft de CloudEvents-schema versie 1,0 |
 | Waar/onwaar | Hiermee kunt u een route maken zonder te filteren, of een route uitschakelen | `"filter" : "<true/false>"` | `true`= route is ingeschakeld zonder filtering <br> `false`= route is uitgeschakeld |

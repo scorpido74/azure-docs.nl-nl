@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206050"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362336"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -195,7 +195,8 @@ De omleidings-URI instellen:
 6. Selecteer **Web** in de vervolg keuzelijst onder Type.
 7. Voer de URL van de overzichts pagina van de app in en voeg **/Security/signin-callback** toe aan het eind. Bijvoorbeeld: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
-   ![De omleidings-URI-pagina](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > ![De omleidings-URI-pagina](../media/redirect-uri-page.png)
 
 8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt `contosoapp45` , bijvoorbeeld is, is de bijbehorende URL <https://contosoapp45.azurewebsites.net> ).
 9. Meld u aan met het juiste Azure Active Directory gebruikers account.

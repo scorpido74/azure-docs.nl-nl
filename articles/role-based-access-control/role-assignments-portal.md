@@ -2,24 +2,20 @@
 title: Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal-Azure RBAC
 description: Meer informatie over het verlenen van toegang tot Azure-resources voor gebruikers, groepen, service-principals of beheerde identiteiten met behulp van de Azure Portal en Azure op rollen gebaseerd toegangs beheer (Azure RBAC).
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2020
+ms.date: 06/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3e4d2dca6817951f2f06a86c4338106f194b7751
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 76f4f39e7def192b8cb97c37aefc9f67d82ad4be
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790956"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362223"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal
 
@@ -35,11 +31,11 @@ Om roltoewijzingen toe te voegen of te verwijderen, hebt u het volgende nodig:
 
 ## <a name="access-control-iam"></a>Toegangsbeheer (IAM)
 
-**Toegangs beheer (IAM)** is de Blade die u gebruikt om rollen toe te wijzen om toegang te verlenen tot Azure-resources. Het is ook bekend als identiteits-en toegangs beheer en wordt weer gegeven op verschillende locaties in de Azure Portal. Hieronder ziet u een voor beeld van de Blade toegangs beheer (IAM) voor een abonnement.
+**Toegangs beheer (IAM)** is de pagina die u doorgaans gebruikt om rollen toe te wijzen om toegang te verlenen tot Azure-resources. Het is ook bekend als identiteits-en toegangs beheer en wordt weer gegeven op verschillende locaties in de Azure Portal. Hieronder ziet u een voor beeld van de pagina toegangs beheer (IAM) voor een abonnement.
 
-![Blade toegangs beheer (IAM) voor een abonnement](./media/role-assignments-portal/access-control-subscription.png)
+![De pagina toegangs beheer (IAM) voor een abonnement](./media/role-assignments-portal/access-control-subscription.png)
 
-Als u de Blade toegangs beheer (IAM) het meest effectief wilt maken, kunt u het beste de volgende drie vragen beantwoorden wanneer u een rol probeert toe te wijzen:
+Als u de IAM-pagina (Access Control) het meest effectief wilt maken, kunt u het beste de volgende drie vragen beantwoorden wanneer u een rol probeert toe te wijzen:
 
 1. **Wie moet er toegang toe hebben?**
 
@@ -71,7 +67,7 @@ In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen aan een 
 
    Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie Roltoewijzing toevoegen uitgeschakeld.
 
-   ![Menu Toevoegen](./media/role-assignments-portal/add-menu.png)
+   ![Menu roltoewijzing toevoegen](./media/shared/add-role-assignment-menu.png)
 
     Het deelvenster Roltoewijzing toevoegen wordt geopend.
 
@@ -105,7 +101,7 @@ Als u een gebruiker beheerder van een Azure-abonnement wilt maken, wijst u deze 
 
    Als u niet bent gemachtigd voor het toewijzen van rollen, is de optie Roltoewijzing toevoegen uitgeschakeld.
 
-   ![Menu Toevoegen](./media/role-assignments-portal/add-menu.png)
+   ![Menu roltoewijzing toevoegen](./media/shared/add-role-assignment-menu.png)
 
     Het deelvenster Roltoewijzing toevoegen wordt geopend.
 
@@ -118,6 +114,75 @@ Als u een gebruiker beheerder van een Azure-abonnement wilt maken, wijst u deze 
 1. Klik op **Opslaan** om de rol toe te wijzen.
 
    Na enkele ogenblikken wordt de rol van eigenaar op abonnementsniveau toegewezen aan de gebruiker.
+
+## <a name="add-a-role-assignment-for-a-managed-identity-preview"></a>Een roltoewijzing voor een beheerde identiteit toevoegen (preview)
+
+U kunt roltoewijzingen voor een beheerde identiteit toevoegen met behulp van de pagina **toegangs beheer (IAM)** zoals eerder in dit artikel is beschreven. Wanneer u de pagina toegangs beheer (IAM) gebruikt, begint u met het bereik en selecteert u vervolgens de beheerde identiteit en rol. In deze sectie wordt een alternatieve manier beschreven om roltoewijzingen toe te voegen voor een beheerde identiteit. Met deze stappen begint u met de beheerde identiteit en selecteert u vervolgens het bereik en de rol.
+
+> [!IMPORTANT]
+> Als u een roltoewijzing voor een beheerde identiteit toevoegt met behulp van deze alternatieve stappen, is momenteel een preview-versie beschikbaar.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+### <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
+
+Volg deze stappen om een rol toe te wijzen aan een door het systeem toegewezen beheerde identiteit door te beginnen met de beheerde identiteit.
+
+1. Open een door het systeem toegewezen beheerde identiteit in het Azure Portal.
+
+1. Klik in het linkermenu op **identiteit**.
+
+    ![Door het systeem toegewezen beheerde identiteit](./media/shared/identity-system-assigned.png)
+
+1. Klik onder **machtigingen**op **Azure-roltoewijzingen**.
+
+    Als er al rollen zijn toegewezen aan de geselecteerde door het systeem toegewezen beheerde identiteit, ziet u de lijst met roltoewijzingen. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+
+    ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/shared/role-assignments-system-assigned.png)
+
+1. Als u het abonnement wilt wijzigen, klikt u op de lijst met **abonnementen** .
+
+1. Klik op **roltoewijzing toevoegen (preview)**.
+
+1. Gebruik de vervolg keuzelijsten om de set resources te selecteren waarop de roltoewijzing van toepassing is, zoals **abonnement**, **resource groep**of resource.
+
+    Als u geen schrijf machtigingen voor de roltoewijzing voor het geselecteerde bereik hebt, wordt een inline-bericht weer gegeven. 
+
+1. Selecteer in de vervolgkeuzelijst **Rol** een rol, zoals **Inzender voor virtuele machines**.
+
+   ![Deelvenster Roltoewijzing toevoegen](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+
+1. Klik op **Opslaan** om de rol toe te wijzen.
+
+   Na enkele ogen blikken is de beheerde identiteit toegewezen aan de rol bij de geselecteerde scope.
+
+### <a name="user-assigned-managed-identity"></a>Door een gebruiker toegewezen beheerde identiteit
+
+Volg deze stappen om een rol toe te wijzen aan een door de gebruiker toegewezen beheerde identiteit door te beginnen met de beheerde identiteit.
+
+1. Open een door de gebruiker toegewezen beheerde identiteit in het Azure Portal.
+
+1. Klik in het linkermenu op **Azure Role Assignments**.
+
+    Als er al rollen zijn toegewezen aan de geselecteerde door de gebruiker toegewezen beheerde identiteit, ziet u de lijst met roltoewijzingen. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+
+    ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/shared/role-assignments-user-assigned.png)
+
+1. Als u het abonnement wilt wijzigen, klikt u op de lijst met **abonnementen** .
+
+1. Klik op **roltoewijzing toevoegen (preview)**.
+
+1. Gebruik de vervolg keuzelijsten om de set resources te selecteren waarop de roltoewijzing van toepassing is, zoals **abonnement**, **resource groep**of resource.
+
+    Als u geen schrijf machtigingen voor de roltoewijzing voor het geselecteerde bereik hebt, wordt een inline-bericht weer gegeven. 
+
+1. Selecteer in de vervolgkeuzelijst **Rol** een rol, zoals **Inzender voor virtuele machines**.
+
+   ![Deelvenster Roltoewijzing toevoegen](./media/role-assignments-portal/add-role-assignment-with-scope.png)
+
+1. Klik op **Opslaan** om de rol toe te wijzen.
+
+   Na enkele ogen blikken is de beheerde identiteit toegewezen aan de rol bij de geselecteerde scope.
 
 ## <a name="remove-a-role-assignment"></a>Roltoewijzing verwijderen
 

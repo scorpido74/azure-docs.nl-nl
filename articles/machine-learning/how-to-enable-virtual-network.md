@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5415237a502116b597c1514f75f35203108237ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d613caa5c2eea4f2add129c640ab322168c536f6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299072"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362489"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,7 +136,10 @@ De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende a
 [![De regels voor uitgaande NSG voor Machine Learning Compute](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Als u gebruikmaakt van standaard docker-installatie kopieën van micro soft, en het inschakelen van door de gebruiker beheerde afhankelijkheden, moet u ook een __service-tag__ van __MicrosoftContainerRegistry. Region_Name__ (bijvoorbeeld MicrosoftContainerRegistry. eastus) gebruiken.
+> Als u van plan bent om standaard-docker-installatie kopieën te gebruiken die door micro soft worden meegeleverd en door de gebruiker beheerde afhankelijkheden in te scha kelen, moet u ook de volgende __service Tags__gebruiken:
+>
+> * __MicrosoftContainerRegistry__
+> * __AzureFrontDoor.FirstParty__
 >
 > Deze configuratie is vereist wanneer u code die vergelijkbaar is met de volgende fragmentten als onderdeel van uw trainings scripts:
 >

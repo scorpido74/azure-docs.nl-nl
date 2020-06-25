@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/18/2020
-ms.openlocfilehash: d6d037f3d45216b81d2c5fdcb67ea48b4252a889
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.date: 6/24/2020
+ms.openlocfilehash: 1c48c16666305e9b9c342869e52aa04cfd4dac07
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100993"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362965"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Controle logboeken voor Azure Database for MySQL in het Azure Portal configureren en openen
 
 U kunt de [Azure database for MySQL controle logboeken](concepts-audit-logs.md) en diagnostische instellingen van de Azure Portal configureren.
-
-> [!IMPORTANT]
-> De functionaliteit van het controle logboek is momenteel beschikbaar als preview-versie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,7 +25,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 ## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
 
->[!NOTE]
+>[!IMPORTANT]
 > Het is raadzaam om alleen de gebeurtenis typen en gebruikers die vereist zijn voor controle doeleinden te registreren om ervoor te zorgen dat de prestaties van uw server niet sterk worden beïnvloed.
 
 Controle logboek registratie inschakelen en configureren.

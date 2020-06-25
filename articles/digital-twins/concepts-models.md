@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5aef0c9a9b0f3dbfb5ad2f4c827b1a11190e097a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261355"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362880"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -23,7 +23,7 @@ Een belang rijk kenmerk van Azure Digital Apparaatdubbels is de mogelijkheid om 
 
 Een model is vergelijkbaar met een **klasse** in een object georiënteerde programmeer taal en definieert een gegevensshape voor een bepaald concept in uw echte werk omgeving. Modellen hebben namen (zoals *room* of *temperatuur sensor*) en bevatten elementen zoals eigenschappen, telemetrie/gebeurtenissen en opdrachten die beschrijven wat dit type entiteit in uw omgeving kan doen. Later gaat u deze modellen gebruiken om [**digitale apparaatdubbels**](concepts-twins-graph.md) te maken die specifieke entiteiten vertegenwoordigen die aan deze type beschrijving voldoen.
 
-Modellen worden geschreven met behulp van de op JSON gebaseerde **Digital-taal voor dubbele definitie (DTDL)**.  
+Modellen worden geschreven met behulp van de op JSON-LD gebaseerde **Digital-definitie (DTDL)**.  
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>Digital-dubbele-definitie taal (DTDL) voor het schrijven van modellen
 
@@ -207,7 +207,7 @@ Als u meer informatie wilt over de parser-bibliotheek, met inbegrip van een voor
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie modellen beheren met de DigitalTwinsModels-Api's:
-* [Uitleg: Een dubbel model beheren](how-to-manage-model.md)
+* [Instructies: aangepaste modellen beheren](how-to-manage-model.md)
 
 Of leer hoe digitale apparaatdubbels worden gemaakt op basis van modellen:
 * [Concepten: Digital apparaatdubbels en het dubbele diagram](concepts-twins-graph.md)

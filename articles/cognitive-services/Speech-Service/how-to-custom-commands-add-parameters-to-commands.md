@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1d74bf089f3e5bc1fd04232b58ce95c649a170e1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307492"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362370"
 ---
-# <a name="add-parameters-to-commands"></a>Para meters aan opdrachten toevoegen
+# <a name="add-parameters-to-commands"></a>Parameters toevoegen aan opdrachten
 
 In dit artikel leert u hoe u para meters kunt toevoegen aan aangepaste opdrachten. Para meters zijn de vereiste gegevens voor de opdrachten voor het volt ooien van een taak. In complexe scenario's kunnen para meters ook worden gebruikt om voor waarden te definiëren waarmee aangepaste acties worden geactiveerd.
 
@@ -60,9 +60,10 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
        | Configuratie      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | Voor teken reeksen beperkt de invoer tot een reeks mogelijke waarden |
        | Vooraf gedefinieerde invoer waarden     | `on`, `off`           | Set mogelijke waarden en hun aliassen         |
        
-        > [!div class="mx-imgBorder"]
+        
+   1. Voor het toevoegen van vooraf gedefinieerde invoer waarden selecteert u **een vooraf gedefinieerde invoer toevoegen** en in het venster **Nieuw item** typt u **naam** zoals opgegeven in de bovenstaande tabel. In dit geval gebruiken we geen aliassen, zodat u deze leeg kunt laten. 
+    > [!div class="mx-imgBorder"]
         > ![Para meter maken](media/custom-commands/create-on-off-parameter.png)
-
    1. Selecteer **Opslaan** om alle configuraties van de para meter op te slaan.
  
  ### <a name="add-subjectdevice-parameter"></a>De para meter SubjectDevice toevoegen 
@@ -72,7 +73,7 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
 
        | Instelling            | Voorgestelde waarde       |
        | ------------------ | --------------------- |
-       | Name               | `SubjectDevice`         |
+       | Naam               | `SubjectDevice`         |
        | Is wereld wijd          | uitgeschakeld             |
        | Vereist           | wel               |
        | Antwoord voor vereiste para meter     | Eenvoudige editor >`Which device do you want to control?`    | 
@@ -145,7 +146,7 @@ Nieuwe parameter **temperatuur** toevoegen met de volgende configuratie
 
 | Configuratie      | Voorgestelde waarde     |
 | ------------------ | ----------------|
-| Name               | `Temperature`           |
+| Naam               | `Temperature`           |
 | Vereist           | wel         |
 | Antwoord voor vereiste para meter      | Eenvoudige editor >`What temperature would you like?`
 | Type               | Getal          |
@@ -182,7 +183,7 @@ Voeg een para meter met de naam **DateTime** toe met de volgende configuratie.
 
    | Instelling                           | Voorgestelde waarde                     | 
    | --------------------------------- | ----------------------------------------|
-   | Name                              | `DateTime`                               |
+   | Naam                              | `DateTime`                               |
    | Vereist                          | wel                                 |
    | Antwoord voor vereiste para meter   | Eenvoudige editor >`For what time?`            | 
    | Type                              | DateTime                                |
