@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6205c4189abfefc2ee9c4a273ebfd6773ea609b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e75329444c2ddb9401f32bccea400d90b633294
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411363"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361520"
 ---
 # <a name="connect-with-power-bi"></a>Verbinden met Power BI
 
@@ -25,7 +25,7 @@ Zodra u een server in azure hebt gemaakt en een tabellair model hebt geïmplemen
   
 ## <a name="connect-in-power-bi-desktop"></a>Verbinden maken in Power BI Desktop
 
-1. Klik in Power bi Desktop op **gegevens** > ophalen**Azure** > **Azure Analysis Services Data Base**.
+1. Klik in Power bi Desktop op **gegevens ophalen**  >  **Azure**  >  **Azure Analysis Services Data Base**.
 
 2. Voer bij **Server**de naam van de server in. Zorg ervoor dat u de volledige URL opgeeft. bijvoorbeeld asazure://westcentralus.asazure.windows.net/advworks.
 
@@ -44,9 +44,9 @@ Zodra u een server in azure hebt gemaakt en een tabellair model hebt geïmplemen
 ## <a name="connect-in-power-bi-service"></a>Verbinding maken in Power BI (Service)
 
 1. Maak een Power BI Desktop-bestand dat een live verbinding heeft met uw model op uw server.
-2. Klik in [Power bi](https://powerbi.microsoft.com)op **gegevens** > **bestanden**ophalen, zoek en selecteer uw pbix-bestand.
+2. Klik in [Power bi](https://powerbi.microsoft.com)op **gegevens**  >  **bestanden**ophalen, zoek en selecteer uw pbix-bestand.
 
 ## <a name="see-also"></a>Zie ook
 [Verbinding maken met Azure Analysis Services](analysis-services-connect.md)   
-[Clientbibliotheken](analysis-services-data-providers.md)
+[Clientbibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 

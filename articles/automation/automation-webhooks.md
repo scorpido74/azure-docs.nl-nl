@@ -3,21 +3,21 @@ title: Een Azure Automation runbook starten vanuit een webhook
 description: In dit artikel leest u hoe u een webhook gebruikt om een runbook in Azure Automation te starten vanuit een HTTP-aanroep.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/03/2020
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342966"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361673"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Een runbook starten vanuit een webhook
 
 Met een webhook kan een externe service een bepaald runbook in Azure Automation starten via één HTTP-aanvraag. Externe services omvatten Azure DevOps Services, GitHub, Azure Monitor-logboeken en aangepaste toepassingen. Een dergelijke service kan een webhook gebruiken om een runbook te starten zonder de volledige Azure Automation-API te implementeren. U kunt webhooks vergelijken met andere methoden voor het starten van een runbook bij [het starten van een runbook in azure Automation](automation-starting-a-runbook.md).
 
 > [!NOTE]
-> Het gebruik van een webhook voor het starten van een python-runbook wordt niet ondersteund.
+> Het gebruiken van een webhook om een Python-runbook te starten wordt niet ondersteund.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
@@ -83,9 +83,13 @@ Nu gaan we het volgende JSON-object door geven in de gebruikers interface voor d
 
 De beveiliging van een webhook is afhankelijk van de privacy van de URL, die een beveiligings token bevat waarmee de webhook kan worden aangeroepen. Azure Automation voert geen verificatie uit voor een aanvraag zolang deze is gemaakt aan de juiste URL. Daarom mogen uw clients geen webhooks gebruiken voor runbooks die zeer gevoelige bewerkingen uitvoeren zonder gebruik te maken van een alternatieve manier om de aanvraag te valideren.
 
-U kunt logica binnen een runbook toevoegen om te bepalen of deze wordt aangeroepen door een webhook. Zorg ervoor dat het runbook de `WebhookName` eigenschap van de `WebhookData` para meter controleert. Het runbook kan verdere validatie uitvoeren door te kijken naar bepaalde informatie in `RequestHeader` de `RequestBody` Eigenschappen en.
+Houd rekening met de volgende strategieën:
 
-Een andere strategie is ervoor te hebben dat het runbook enige validatie van een externe voor waarde uitvoert wanneer er een webhook-aanvraag wordt ontvangen. Denk bijvoorbeeld aan een runbook dat wordt aangeroepen door GitHub telkens wanneer er een nieuwe door Voer is voor een GitHub-opslag plaats. Het runbook kan verbinding maken met GitHub om te controleren of er een nieuwe commit heeft plaatsgevonden voordat u doorgaat.
+* U kunt logica binnen een runbook toevoegen om te bepalen of deze wordt aangeroepen door een webhook. Zorg ervoor dat het runbook de `WebhookName` eigenschap van de `WebhookData` para meter controleert. Het runbook kan verdere validatie uitvoeren door te kijken naar bepaalde informatie in `RequestHeader` de `RequestBody` Eigenschappen en.
+
+* Laat het runbook enige validatie van een externe voor waarde uitvoeren wanneer er een webhook-aanvraag wordt ontvangen. Denk bijvoorbeeld aan een runbook dat wordt aangeroepen door GitHub telkens wanneer er een nieuwe door Voer is voor een GitHub-opslag plaats. Het runbook kan verbinding maken met GitHub om te controleren of er een nieuwe commit heeft plaatsgevonden voordat u doorgaat.
+
+* Azure Automation ondersteunt service tags voor het virtuele Azure-netwerk, met name [GuestAndHybridManagement](../virtual-network/service-tags-overview.md). U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md) en het activeren van webhooks in uw virtuele netwerk. Service tags kunnen worden gebruikt in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door het opgeven van de servicetag naam **GuestAndHybridManagement** in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de Automation-Service toestaan of weigeren. Deze servicetag biedt geen ondersteuning voor het toestaan van nauw keurigere controle door IP-adresbereiken te beperken tot een bepaalde regio.
 
 ## <a name="create-a-webhook"></a>Een webhook maken
 

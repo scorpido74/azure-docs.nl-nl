@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261071"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357389"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect sync: Scheduler (Azure AD Connect-synchronisatie: planning)
 In dit onderwerp wordt de ingebouwde scheduler in Azure AD Connect Sync (synchronisatie-engine) beschreven.
@@ -41,11 +41,11 @@ De scheduler is verantwoordelijk voor twee taken:
 De scheduler zelf is altijd actief, maar kan worden geconfigureerd om alleen een of geen van deze taken uit te voeren. Als u bijvoorbeeld uw eigen synchronisatie cyclus proces nodig hebt, kunt u deze taak in de scheduler uitschakelen, maar nog steeds de onderhouds taak uitvoeren.
 
 ## <a name="scheduler-configuration"></a>Scheduler-configuratie
-Als u de huidige configuratie-instellingen wilt weer geven, gaat `Get-ADSyncScheduler`u naar Power shell en voert u uit. U ziet iets als deze afbeelding:
+Als u de huidige configuratie-instellingen wilt weer geven, gaat u naar Power shell en voert u uit `Get-ADSyncScheduler` . U ziet iets als deze afbeelding:
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-Als u **de synchronisatie opdracht of cmdlet is niet beschikbaar** wanneer u deze cmdlet uitvoert, wordt de Power shell-module niet geladen. Dit probleem kan zich voordoen als u Azure AD Connect uitvoert op een domein controller of op een server met hogere Power shell-beperkings niveaus dan de standaard instellingen. Als u deze fout ziet, voert u `Import-Module ADSync` uit om de cmdlet beschikbaar te maken.
+Als u **de synchronisatie opdracht of cmdlet is niet beschikbaar** wanneer u deze cmdlet uitvoert, wordt de Power shell-module niet geladen. Dit probleem kan zich voordoen als u Azure AD Connect uitvoert op een domein controller of op een server met hogere Power shell-beperkings niveaus dan de standaard instellingen. Als u deze fout ziet, voert u uit `Import-Module ADSync` om de cmdlet beschikbaar te maken.
 
 * **AllowedSyncCycleInterval**. Het kortste tijds interval tussen de synchronisatie cycli die zijn toegestaan door Azure AD. U kunt niet vaker synchroniseren dan deze instelling en toch worden ondersteund.
 * **CurrentlyEffectiveSyncCycleInterval**. De planning is momenteel van kracht. Deze heeft dezelfde waarde als CustomizedSyncInterval (indien ingesteld) als deze niet vaker dan AllowedSyncInterval is. Als u een build gebruikt vóór 1.1.281 en u CustomizedSyncCycleInterval wijzigt, wordt deze wijziging van kracht na de volgende synchronisatie cyclus. Vanuit build 1.1.281 wordt de wijziging onmiddellijk van kracht.
@@ -58,7 +58,7 @@ Als u **de synchronisatie opdracht of cmdlet is niet beschikbaar** wanneer u dez
 * **StagingModeEnabled**. Hiermee wordt aangegeven of de [faserings modus](how-to-connect-sync-staging-server.md) is ingeschakeld. Als deze instelling is ingeschakeld, worden de exports onderdrukt van de uitvoering, maar worden nog steeds import en synchronisatie uitgevoerd.
 * **SchedulerSuspended**. Tijdens een upgrade instellen door verbinding te maken om te voor komen dat de scheduler wordt uitgevoerd.
 
-U kunt sommige van deze instellingen wijzigen met `Set-ADSyncScheduler`. De volgende para meters kunnen worden gewijzigd:
+U kunt sommige van deze instellingen wijzigen met `Set-ADSyncScheduler` . De volgende para meters kunnen worden gewijzigd:
 
 * CustomizedSyncCycleInterval
 * NextSyncCyclePolicyType
@@ -83,13 +83,13 @@ Met wijzigingen wordt de planner gewijzigd zodat deze dagelijks wordt uitgevoerd
 ### <a name="disable-the-scheduler"></a>De scheduler uitschakelen  
 Als u wijzigingen in de configuratie wilt aanbrengen, moet u de scheduler uitschakelen. Wanneer u bijvoorbeeld [filters configureert](how-to-connect-sync-configure-filtering.md) of [wijzigingen aanbrengt aan de synchronisatie regels](how-to-connect-sync-change-the-configuration.md).
 
-Voer `Set-ADSyncScheduler -SyncCycleEnabled $false`uit om de scheduler uit te scha kelen.
+Voer uit om de scheduler uit te scha kelen `Set-ADSyncScheduler -SyncCycleEnabled $false` .
 
 ![De scheduler uitschakelen](./media/how-to-connect-sync-feature-scheduler/schedulerdisable.png)
 
-Wanneer u de wijzigingen hebt aangebracht, vergeet dan niet om de Scheduler opnieuw in te `Set-ADSyncScheduler -SyncCycleEnabled $true`scha kelen met.
+Wanneer u de wijzigingen hebt aangebracht, vergeet dan niet om de Scheduler opnieuw in te scha kelen met `Set-ADSyncScheduler -SyncCycleEnabled $true` .
 
-## <a name="start-the-scheduler"></a>De scheduler starten
+## <a name="start-the-scheduler"></a>De planner starten
 De scheduler wordt standaard elke 30 minuten uitgevoerd. In sommige gevallen wilt u mogelijk een synchronisatie cyclus uitvoeren tussen de geplande cycli of moet u een ander type uitvoeren.
 
 ### <a name="delta-sync-cycle"></a>Delta synchronisatie cyclus
@@ -109,9 +109,9 @@ Een volledige synchronisatie cyclus omvat de volgende stappen:
 
 Het kan zijn dat u een urgente wijziging hebt die onmiddellijk moet worden gesynchroniseerd. Dit is de reden waarom u hand matig een cyclus moet uitvoeren. 
 
-Als u een synchronisatie cyclus hand matig moet uitvoeren, voert u uit in `Start-ADSyncSyncCycle -PolicyType Delta`Power shell.
+Als u een synchronisatie cyclus hand matig moet uitvoeren, voert u uit in Power shell `Start-ADSyncSyncCycle -PolicyType Delta` .
 
-Als u een volledige synchronisatie cyclus wilt starten, `Start-ADSyncSyncCycle -PolicyType Initial` voert u uit vanaf een Power shell-prompt.   
+Als u een volledige synchronisatie cyclus wilt starten, voert u `Start-ADSyncSyncCycle -PolicyType Initial` uit vanaf een Power shell-prompt.   
 
 Het uitvoeren van een volledige synchronisatie cyclus kan veel tijd in beslag nemen. Lees de volgende sectie voor meer informatie over het optimaliseren van dit proces.
 
@@ -156,8 +156,8 @@ Als de scheduler momenteel een synchronisatie cyclus uitvoert, moet u deze mogel
 
 Wanneer een synchronisatie cyclus wordt uitgevoerd, kunt u geen configuratie wijzigingen aanbrengen. U kunt wachten tot de scheduler het proces heeft voltooid, maar ook stoppen, zodat u uw wijzigingen direct kunt door voeren. Het stoppen van de huidige cyclus is niet schadelijk en in behandeling zijnde wijzigingen worden verwerkt met de volgende uitvoering.
 
-1. Begin met de scheduler om de huidige cyclus te stoppen met de Power shell `Stop-ADSyncSyncCycle`-cmdlet.
-2. Als u een build vóór 1.1.281 gebruikt en vervolgens stopt met het stoppen van de scheduler, wordt de huidige connector van de huidige taak niet gestopt. Voer de volgende acties uit om te voor komen dat de connector ![wordt gestopt: StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
+1. Begin met de scheduler om de huidige cyclus te stoppen met de Power shell-cmdlet `Stop-ADSyncSyncCycle` .
+2. Als u een build vóór 1.1.281 gebruikt en vervolgens stopt met het stoppen van de scheduler, wordt de huidige connector van de huidige taak niet gestopt. Voer de volgende acties uit om te voor komen dat de connector wordt gestopt: ![ StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
    * Start de **synchronisatie service** vanuit het menu Start. Ga naar **connectors**, Markeer de connector met de status **actief**en selecteer **stoppen** in de acties.
 
 De scheduler is nog actief en start opnieuw op de volgende mogelijkheid.

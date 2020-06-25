@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60d2f8017454cd73e91bb022bab79a48b0af8a36
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209586"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361401"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -549,13 +549,6 @@ In azure volgt een schijf/VHD-naam de volgende naam verbinding die een unieke na
 De bovenstaande teken reeks moet een unieke identificatie hebben van de schijf/VHD die is opgeslagen op Azure Storage.
 
 
-#### <a name="managed-disks"></a><a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Managed Disks
-
-Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks wordt automatisch uitgelijnd met de beschikbaarheidsset van de virtuele machine waaraan deze zijn gekoppeld, waardoor de beschik baarheid van de virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)voor meer informatie.
-
-We raden u aan Azure Managed disks te gebruiken, omdat de implementatie en het beheer van uw virtuele machines worden vereenvoudigd.
-
-
 #### <a name="azure-persisted-storage-types"></a>Persistente opslag typen van Azure
 Azure biedt een verscheidenheid aan permanente opslag optie die kan worden gebruikt voor SAP-workload en specifieke onderdelen van de SAP-stack. Lees voor meer informatie het document [Azure Storage voor SAP-workloads](./planning-guide-storage.md).
 
@@ -967,7 +960,7 @@ Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelf
   ```
 
 * Een VHD downloaden  
-  Zodra het SAP-systeem is gestopt en de VM is uitgeschakeld, kunt u de Power shell-cmdlet Save-AzVhd op het on-premises doel gebruiken om de VHD-schijven terug te downloaden naar de on-premises wereld. Hiervoor hebt u de URL van de VHD nodig, die u kunt vinden in de sectie opslag van de Azure Portal (moet u navigeren naar het opslag account en de opslag container waar de VHD is gemaakt) en u moet weten waar de VHD moet worden gekopieerd.
+  Zodra het SAP-systeem is gestopt en de VM is uitgeschakeld, kunt u de Power shell-cmdlet `Save-AzVhd` op het on-premises doel gebruiken om de VHD-schijven terug te downloaden naar de on-premises wereld. Hiervoor hebt u de URL van de VHD nodig, die u kunt vinden in de sectie opslag van de Azure Portal (moet u navigeren naar het opslag account en de opslag container waar de VHD is gemaakt) en u moet weten waar de VHD moet worden gekopieerd.
 
   Vervolgens kunt u gebruikmaken van de opdracht door de para meter SourceUri te definiëren als de URL van de VHD die u wilt downloaden en de LocalFilePath als de fysieke locatie van de VHD (inclusief de naam). De opdracht kan er als volgt uitzien:
 
@@ -988,7 +981,7 @@ Tijdens de download tijd kan de Vhd's of de Managed Disks niet actief zijn. Zelf
   ```
 
 * Een VHD downloaden   
-  Zodra het SAP-systeem is gestopt en de VM is uitgeschakeld, kunt u de Azure CLI-opdracht _Azure Storage-BLOB downloaden_ op het on-premises doel om de VHD-schijven terug te downloaden naar de on-premises wereld. Hiervoor hebt u de naam en de container van de VHD nodig. deze kunt u vinden in de sectie opslag van de Azure Portal (Navigeer naar het opslag account en de opslag container waar de VHD is gemaakt). u moet weten waar de VHD moet worden gekopieerd.
+  Zodra het SAP-systeem is gestopt en de VM is uitgeschakeld, kunt u de Azure CLI-opdracht `_azure storage blob download_` op het on-premises doel gebruiken om de VHD-schijven terug te downloaden naar de on-premises wereld. Hiervoor hebt u de naam en de container van de VHD nodig. deze kunt u vinden in de sectie opslag van de Azure Portal (Navigeer naar het opslag account en de opslag container waar de VHD is gemaakt). u moet weten waar de VHD moet worden gekopieerd.
 
   Vervolgens kunt u gebruikmaken van de opdracht door de para meters Blob en container van de VHD te definiëren die u wilt downloaden en de bestemming als de fysieke doel locatie van de VHD (inclusief de naam). De opdracht kan er als volgt uitzien:
 

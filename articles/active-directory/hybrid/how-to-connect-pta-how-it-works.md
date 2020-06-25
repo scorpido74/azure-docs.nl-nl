@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e794b66341d4e7c478fd526107cc35c7c745fa7f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60347772"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358324"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Pass-Through-verificatie Azure Active Directory: technische grondige kennis
 Dit artikel bevat een overzicht van de werking van de Pass-Through-verificatie van Azure Active Directory (Azure AD). Zie het artikel over de [grondige beveiliging](how-to-connect-pta-security-deep-dive.md) voor meer informatie.
@@ -40,7 +40,7 @@ Wanneer een gebruiker zich probeert aan te melden bij een toepassing die is beve
 5. Azure AD: de gebruikers naam en het wacht woord (versleutelen met behulp van de open bare sleutel van de verificatie agenten) worden in een wachtrij geplaatst, wanneer de aanvraag wordt ontvangen om zich aan te melden.
 6. Een on-premises verificatie agent haalt de gebruikers naam en het versleutelde wacht woord op uit de wachtrij. Houd er rekening mee dat de agent geen regel matig pollt voor aanvragen van de wachtrij, maar aanvragen ophaalt via een vooraf ingestelde permanente verbinding.
 7. De agent ontsleutelt het wacht woord met behulp van de bijbehorende persoonlijke sleutel.
-8. De agent valideert de gebruikers naam en het wacht woord voor Active Directory door gebruik te maken van standaard Windows-Api's. Dit is een vergelijkbaar mechanisme voor wat Active Directory Federation Services (AD FS) gebruikt. De gebruikers naam kan de on-premises standaard gebruikersnaam zijn, `userPrincipalName`meestal of een ander kenmerk dat is geconfigureerd in azure AD Connect `Alternate ID`(ook wel bekend als).
+8. De agent valideert de gebruikers naam en het wacht woord voor Active Directory door gebruik te maken van standaard Windows-Api's. Dit is een vergelijkbaar mechanisme voor wat Active Directory Federation Services (AD FS) gebruikt. De gebruikers naam kan de on-premises standaard gebruikersnaam zijn, meestal `userPrincipalName` of een ander kenmerk dat is geconfigureerd in azure AD Connect (ook wel bekend als `Alternate ID` ).
 9. De on-premises Active Directory domein controller (DC) evalueert de aanvraag en retourneert de juiste reactie (geslaagd, mislukt, wacht woord verlopen of gebruiker vergrendeld) bij de agent.
 10. De verificatie agent retourneert op zijn beurt deze reactie terug naar Azure AD.
 11. Azure AD evalueert het antwoord en reageert indien nodig op de gebruiker. Azure AD ondertekent bijvoorbeeld de gebruiker onmiddellijk of aanvragen voor Azure Multi-Factor Authentication.

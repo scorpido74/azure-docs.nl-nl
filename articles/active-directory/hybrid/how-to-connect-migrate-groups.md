@@ -5,18 +5,18 @@ services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229796"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358579"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Groepen migreren van het ene forest naar het andere voor Azure AD Connect
 
@@ -29,9 +29,9 @@ In dit artikel wordt beschreven hoe u groepen van het ene forest naar het andere
 
 ## <a name="migrate-groups"></a>Groepen migreren
 
-Vanaf versie 1.5.18.0 ondersteunt Azure AD Connect het gebruik van het `mS-DS-ConsistencyGuid` kenmerk voor groepen. Als u kiest `mS-DS-ConsistencyGuid` als bron anker kenmerk en de waarde wordt ingevuld in Active Directory, Azure AD Connect gebruikt de waarde van `mS-DS-ConsistencyGuid` als. `immutableId` Anders gaat u terug naar het gebruik `objectGUID`van. Maar houd er rekening mee dat Azure AD Connect de waarde niet naar `mS-DS-ConsistencyGuid` het kenmerk in Active Directory schrijft.
+Vanaf versie 1.5.18.0 ondersteunt Azure AD Connect het gebruik van het `mS-DS-ConsistencyGuid` kenmerk voor groepen. Als u kiest `mS-DS-ConsistencyGuid` als bron anker kenmerk en de waarde wordt ingevuld in Active Directory, Azure AD Connect gebruikt de waarde van `mS-DS-ConsistencyGuid` als `immutableId` . Anders gaat u terug naar het gebruik van `objectGUID` . Maar houd er rekening mee dat Azure AD Connect de waarde niet naar het `mS-DS-ConsistencyGuid` kenmerk in Active Directory schrijft.
 
-Tijdens een cross-forest verplaatsen, wanneer een groeps object van het ene forest (F1) wordt verplaatst naar een ander forest (bijvoorbeeld F2), moet u ofwel de `mS-DS-ConsistencyGuid` waarde (als deze aanwezig is) of de `objectGUID` waarde van het object in forest F1 kopiëren naar `mS-DS-ConsistencyGuid` het kenmerk van het object in F2.
+Tijdens een cross-forest verplaatsen, wanneer een groeps object van het ene forest (F1) wordt verplaatst naar een ander forest (bijvoorbeeld F2), moet u ofwel de `mS-DS-ConsistencyGuid` waarde (als deze aanwezig is) of de `objectGUID` waarde van het object in forest F1 kopiëren naar het `mS-DS-ConsistencyGuid` kenmerk van het object in F2.
 
 Gebruik de volgende scripts als richt lijn voor meer informatie over het migreren van één groep van het ene forest naar het andere. U kunt deze scripts ook gebruiken als richt lijn voor de migratie van meerdere groepen. De scripts gebruiken de Forestnaam F1 voor het bron-forest en F2 voor de doel-forest.
 
@@ -83,7 +83,7 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Vervolgens gebruiken we het gegenereerde CSV-bestand voor uitvoer om `mS-DS-ConsistencyGuid` het kenmerk van het doel object in het F2 te stem pelen:
+Vervolgens gebruiken we het gegenereerde CSV-bestand voor uitvoer om het `mS-DS-ConsistencyGuid` kenmerk van het doel object in het F2 te stem pelen:
 
 
 ```

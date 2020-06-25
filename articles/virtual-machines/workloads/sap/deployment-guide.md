@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 828615add9f24b5a2089e240bbf62647f34a25f0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207399"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361384"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -211,10 +211,6 @@ ms.locfileid: "85207399"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Schijven kopiëren tussen Azure Storage accounts)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (VM-en VHD-structuur voor SAP-implementaties)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (Automatisch koppelen voor gekoppelde schijven instellen)
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (Eén virtuele machine met SAP NetWeaver demo/training-scenario)
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Concepten van de implementatie van SAP-instanties in de Cloud)
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure-bewakings oplossing voor SAP)
-[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -446,7 +442,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
 1. **Instellingen**:
    * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
-     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks][planning-guide-managed-disks] in de plannings handleiding voor meer informatie over Managed disks.
+     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) in de plannings handleiding voor meer informatie over Managed disks.
      * **Opslag account**: Selecteer een bestaand opslag account of maak een nieuwe. Niet alle opslag typen werken voor het uitvoeren van SAP-toepassingen. Zie [opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)voor meer informatie over opslag typen.
    * **Netwerk**
      * **Virtueel netwerk** en **subnet**: als u de virtuele machine wilt integreren met uw intranet, selecteert u het virtuele netwerk dat is verbonden met uw on-premises netwerk.
@@ -586,7 +582,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
 1. **Instellingen**:
    * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
-     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks][planning-guide-managed-disks] in de plannings handleiding voor meer informatie over Managed disks.
+     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) in de plannings handleiding voor meer informatie over Managed disks.
    * **Netwerk**
      * **Virtueel netwerk** en **subnet**: als u de virtuele machine wilt integreren met uw intranet, selecteert u het virtuele netwerk dat is verbonden met uw on-premises netwerk.
      * **Openbaar IP-adres**: Selecteer het open bare IP-adres dat u wilt gebruiken of voer para meters in om een nieuw openbaar IP-adres te maken. U kunt een openbaar IP-adres gebruiken om toegang te krijgen tot uw virtuele machine via internet. Zorg ervoor dat u ook een netwerk beveiligings groep maakt om de toegang tot uw virtuele machine te beveiligen.
@@ -917,7 +913,7 @@ Zie door de gebruiker [gedefinieerde routes en door sturen via IP][virtual-netwo
 > Algemene ondersteunings verklaring: open altijd een incident met SAP op onderdeel BC-op-NT-AZR voor Windows of BC-LNX-AZR als u ondersteuning nodig hebt voor de Azure-extensie voor SAP.
 > Er zijn specifieke micro soft-ondersteunings technici actief in het SAP-ondersteunings systeem om onze gezamenlijke klanten te helpen.
 
-Wanneer u de virtuele machine hebt voor bereid zoals beschreven in [implementatie scenario's van vm's voor SAP on Azure][deployment-guide-3], wordt de Azure VM-agent geïnstalleerd op de virtuele machine. De volgende stap is het implementeren van de Azure-extensie voor SAP, die beschikbaar is in de Azure extension-opslag plaats in de wereld wijde Azure-data centers. Zie [Azure virtual machines planning en implementatie voor SAP net-Weaver][planning-guide-9.1]voor meer informatie.
+Wanneer u de virtuele machine hebt voor bereid zoals beschreven in [implementatie scenario's van vm's voor SAP on Azure][deployment-guide-3], wordt de Azure VM-agent geïnstalleerd op de virtuele machine. De volgende stap is het implementeren van de Azure-extensie voor SAP, die beschikbaar is in de Azure extension-opslag plaats in de wereld wijde Azure-data centers. Zie [planning en implementatie van Azure Virtual Machines voor SAP NetWeaver] [planning-gids-9,1] voor meer informatie.
 
 We zijn bezig met het vrijgeven van een nieuwe versie van de Azure-extensie voor SAP. De nieuwe extensie maakt gebruik van de door het systeem toegewezen identiteit van de virtuele machine om informatie over de gekoppelde schijven, netwerk interfaces en de virtuele machine zelf op te halen. Om toegang te kunnen krijgen tot deze bronnen, heeft de systeem identiteit van de virtuele machine lezers machtigingen nodig voor de virtuele machine, de besturingssysteem schijf, gegevens schijven en netwerk interfaces. U wordt momenteel aangeraden de nieuwe extensie alleen in de volgende scenario's te installeren:
 

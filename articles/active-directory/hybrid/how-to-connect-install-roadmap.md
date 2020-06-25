@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331430"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358732"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installatieprocedure voor Azure AD Connect en Azure AD Connect Health
 
@@ -46,7 +46,7 @@ U vindt de download voor Azure AD Connect op [Microsoft Download Center](https:/
 |Installeren met de snelle instellingen | [Snelle installatie van Azure AD Connect](./how-to-connect-install-express.md)|
 |Installeren met behulp van aangepaste instellingen | [Aangepaste installatie van Azure AD Connect](./how-to-connect-install-custom.md)|
 |Upgrade van DirSync | [Upgrade van Azure AD-synchronisatiehulpprogramma (DirSync) (Engelstalig artikel)](./how-to-dirsync-upgrade-get-started.md)|
-|Na installatie | [Controleer de installatie en wijs licenties toe](how-to-connect-post-installation.md)|
+|Na de installatie | [Controleer de installatie en wijs licenties toe](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Meer informatie over Azure AD Connect installeren
 U wilt u ook voorbereiden op [operationele](how-to-connect-sync-operations.md) problemen. U wilt mogelijk een stand-by-server hebben, waarop u eenvoudig failover-overschakeling kunt uitvoeren in geval van een [noodgeval](how-to-connect-sync-staging-server.md#disaster-recovery). Als u van plan bent frequente configuratiewijzigingen aan te brengen, moet u een [faseringsmodus](how-to-connect-sync-staging-server.md)-server gebruiken.
@@ -132,7 +132,7 @@ Volg de volgende stappen om aan de slag te gaan met Azure AD Connect Health:
 
 1. [Ontvang Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) of [Start een proef versie](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. [Down load en installeer Azure AD Connect Health Agents](#download-and-install-azure-ad-connect-health-agent) op uw identiteits servers.
-3. Bekijk het dash board van [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)Azure AD Connect Health op.
+3. Bekijk het dash board van Azure AD Connect Health op [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth) .
 
 > [!NOTE]
 > Houd er rekening mee dat u de Azure AD Connect Health-agents moet installeren op uw doelservers om gegevens te zien in uw Azure AD Connect Health-dashboard.

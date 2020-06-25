@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897253"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359345"
 ---
 # <a name="risky-ip-report-public-preview"></a>Risk ante IP-rapport (open bare preview)
 AD FS-klanten kunnen eindpunten voor wachtwoordverificatie op internet beschikbaar maken om verificatieservices te bieden aan eindgebruikers zodat ze toegang hebben tot SaaS-toepassingen zoals Office 365. In dat geval kunnen criminelen aanmeldpogingen uitvoeren op uw AD FS-systeem om het wachtwoord van een eindgebruiker te achterhalen en toegang te krijgen tot toepassingsresources. AD FS biedt de extranetfunctionaliteit voor accountvergrendeling om dergelijke aanvallen te voorkomen vanaf AD FS in Windows Server 2012 R2. Als u een lagere versie gebruikt, raden we u ten zeerste aan uw AD FS-systeem naar Windows Server 2016 te upgraden. <br />

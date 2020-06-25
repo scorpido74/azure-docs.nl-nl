@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7730efd29e24f99bce3937a9ce5cc2caf4e1400f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331530"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359497"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect en federatie
 Met Azure Active Directory (Azure AD) Connect kunt u Federatie configureren met on-premises Active Directory Federation Services (AD FS) en Azure AD. Met aanmelden via de Federatie kunt u gebruikers in staat stellen om zich aan te melden bij Azure AD-Services met hun on-premises wacht woorden, en, in het bedrijfs netwerk, zonder dat ze hun wacht woord opnieuw hoeven in te voeren. U kunt met behulp van de optie Federatie met AD FS een nieuwe installatie van AD FS implementeren of u kunt een bestaande installatie opgeven in een Windows Server 2012 R2-farm.

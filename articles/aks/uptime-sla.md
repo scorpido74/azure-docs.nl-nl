@@ -3,14 +3,14 @@ title: Azure Kubernetes service (AKS) met SLA voor uptime
 description: Meer informatie over de optionele SLA-aanbieding voor uptime voor de API-server van Azure Kubernetes service (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: b360f36dfc80033ac95e4face438b66eed33cec4
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945508"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361571"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA voor uptime van Azure Kubernetes service (AKS)
 
@@ -30,29 +30,38 @@ SLA voor uptime is beschikbaar in open bare regio's waar [AKS wordt ondersteund]
 * Azure Government wordt momenteel niet ondersteund.
 * Azure China 21Vianet wordt momenteel niet ondersteund.
 
+## <a name="limitations"></a>Beperkingen
+
+* Persoonlijke clusters worden momenteel niet ondersteund.
+
 ## <a name="sla-terms-and-conditions"></a>SLA-voor waarden
 
 SLA voor uptime is een betaalde functie en ingeschakeld per cluster. De prijzen voor de SLA voor uptime worden bepaald door het aantal afzonderlijke clusters en niet op basis van de grootte van de afzonderlijke clusters. U kunt de [prijs informatie](https://azure.microsoft.com/pricing/details/kubernetes-service/) voor de sla voor uptime bekijken voor meer informatie.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -versie 2.7.0 of hoger installeren
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -versie 2.8.0 of hoger installeren
 
-## <a name="creating-a-cluster-with-uptime-sla"></a>Een cluster maken met SLA voor uptime
+## <a name="creating-a-new-cluster-with-uptime-sla"></a>Een nieuw cluster maken met SLA voor uptime
+
+> [!NOTE]
+> Als u de SLA voor uptime inschakelt, kunt u dit op geen enkele manier verwijderen uit een cluster.
 
 Als u een nieuw cluster wilt maken met de SLA voor de uptime, gebruikt u de Azure CLI.
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
+# Create a resource group
 az group create --name myResourceGroup --location eastus
 ```
-Gebruik de opdracht [az aks create][az-aks-create] om een AKS-cluster te maken. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Azure Monitor voor containers kan ook worden ingeschakeld met behulp van de parameter *--enable-addons monitoring*.  Het volt ooien van deze bewerking duurt enkele minuten.
+Gebruik de [`az aks create`][az-aks-create] opdracht voor het maken van een AKS-cluster. In het volgende voorbeeld wordt een cluster met de naam *myAKSCluster* gemaakt met één knooppunt. Het volt ooien van deze bewerking duurt enkele minuten:
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1 --enable-addons monitoring --generate-ssh-keys
+# Create an AKS cluster with uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1
 ```
-Na enkele minuten is de opdracht voltooid en retourneert deze informatie over het cluster in JSON-indeling. Het volgende JSON-fragment toont de betaalde laag voor de SKU, wat aangeeft dat uw cluster is ingeschakeld met SLA voor uptime.
+Na enkele minuten is de opdracht voltooid en retourneert deze informatie over het cluster in JSON-indeling. Het volgende JSON-fragment toont de betaalde laag voor de SKU, wat aangeeft dat uw cluster is ingeschakeld met een SLA voor uptime:
 
 ```output
   },
@@ -62,15 +71,61 @@ Na enkele minuten is de opdracht voltooid en retourneert deze informatie over he
   },
 ```
 
-## <a name="limitations"></a>Beperkingen
+## <a name="modify-an-existing-cluster-to-use-uptime-sla"></a>Een bestaand cluster wijzigen voor het gebruik van de SLA voor uptime
 
-* Kan momenteel niet converteren als bestaand cluster om de SLA voor uptime in te scha kelen.
-* Op dit moment is er geen manier om de SLA voor de uptime te verwijderen uit een AKS-cluster nadat het is gemaakt.  
-* Persoonlijke clusters worden momenteel niet ondersteund.
+U kunt eventueel uw bestaande clusters bijwerken om de SLA voor uptime te gebruiken.
+
+Als u een AKS-cluster met de vorige stappen hebt gemaakt, verwijdert u de resource groep:
+
+```azurecli-interactive
+# Delete the existing cluster by deleting the resource group 
+az group delete --name myResourceGroup --yes --no-wait
+```
+
+Maak een nieuwe resource groep:
+
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location eastus
+```
+
+Een nieuw cluster maken en geen SLA voor uptime gebruiken:
+
+```azurecli-interactive
+# Create a new cluster without uptime SLA
+az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
+```
+
+Gebruik de [`az aks update`][az-aks-nodepool-update] opdracht om het bestaande cluster bij te werken:
+
+```azurecli-interactive
+# Update an existing cluster to use Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --uptime-sla
+ ```
+
+ Het volgende JSON-fragment toont de betaalde laag voor de SKU, wat aangeeft dat uw cluster is ingeschakeld met een SLA voor uptime:
+
+ ```output
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Paid"
+  },
+  ```
+
+## <a name="clean-up"></a>Opruimen
+
+Opschonen van de resources die u hebt gemaakt om kosten te voor komen. Als u het cluster wilt verwijderen, gebruikt u de [`az group delete`][az-group-delete] opdracht om de resource groep AKS te verwijderen:
+
+```azurecli-interactive
+az group delete --name myResourceGroup --yes --no-wait
+```
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Gebruik [Beschikbaarheidszones][availability-zones] om maximale Beschik baarheid te verg Roten met uw AKS-cluster werkbelastingen.
+
 Configureer uw cluster om uitgaand [verkeer te beperken](limit-egress-traffic.md).
 
 <!-- LINKS - External -->
@@ -86,3 +141,5 @@ Configureer uw cluster om uitgaand [verkeer te beperken](limit-egress-traffic.md
 [limit-egress-traffic]: ./limit-egress-traffic.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-group-delete]: /cli/azure/group#az-group-delete

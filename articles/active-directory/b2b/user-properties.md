@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 06/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f5002e361653614c966dc43301afa83eb7b200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5da41209747198a9d6e034373e1b396d0f086a74
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050800"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361095"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker
 
@@ -28,7 +28,7 @@ Afhankelijk van de behoeften van de uitgenodigde organisatie, kan een Azure AD B
 - Status 1: in een extern exemplaar van Azure AD en wordt weer gegeven als gast gebruiker in de uitnodigende organisatie. In dit geval meldt de B2B-gebruiker zich aan met behulp van een Azure AD-account dat deel uitmaakt van de uitgenodigde Tenant. Als de partner organisatie geen gebruik maakt van Azure AD, wordt de gast gebruiker in azure AD nog steeds gemaakt. De vereisten zijn dat ze hun uitnodiging inwisselen en Azure AD verifieert hun e-mail adres. Deze indeling wordt ook wel een just-in-time (JIT) pacht of een ' virale ' pacht genoemd.
 
    > [!IMPORTANT]
-   > **Vanaf 31 maart 2021**biedt micro soft geen ondersteuning meer voor de terugbetaling van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en-tenants voor B2B-samenwerkings scenario's. In de voor bereiding raden wij klanten aan om te kiezen voor [verificatie via een eenmalige wachtwoord code](one-time-passcode.md). We hebben uw feedback over deze open bare preview-functie en zijn enthousiast om nog meer manieren te maken om samen te werken.
+   > **Vanaf 31 maart 2021** heeft Microsoft geen ondersteuning meer voor het aflossen van uitnodigingen door het maken van niet-beheerde Azure AD-accounts en -tenants voor B2B-samenwerkingsscenario's. In de voorbereiding raden wij klanten aan om te kiezen voor de [verificatie van de eenmalige wachtwoordcode e-mailen](one-time-passcode.md). We waarderen uw feedback over deze openbare preview-functie en willen graag nog meer manieren te maken om samen te werken.
 
 - Status 2: in een micro soft-account en wordt weer gegeven als gast gebruiker in de organisatie van de host. In dit geval meldt de gast gebruiker zich aan met een Microsoft-account of een sociaal account (google.com of vergelijkbaar). De identiteit van de uitgenodigde gebruiker wordt gemaakt als een Microsoft-account in de directory van de organisatie die wordt uitgenodigd tijdens de aanbieding.
 
@@ -104,7 +104,11 @@ Het is mogelijk om de standaard beperkingen uit te scha kelen, zodat een gast ge
 ![Scherm afbeelding met de optie externe gebruikers in de gebruikers instellingen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kan ik gast gebruikers zichtbaar maken in de algemene adres lijst van Exchange?
-Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list)voor meer informatie. 
+Ja. Gast objecten zijn standaard niet zichtbaar in de algemene adres lijst van uw organisatie, maar u kunt Azure Active Directory Power shell gebruiken om ze zichtbaar te maken. Zie **kan ik gast objecten zichtbaar maken in de algemene adres lijst?** in [gast toegang beheren in Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)voor meer informatie.
+
+## <a name="can-i-update-a-guest-users-email-address"></a>Kan ik het e-mail adres van een gast gebruiker bijwerken?
+
+Als een gast gebruiker uw uitnodiging accepteert en vervolgens het e-mail adres wijzigt, wordt de nieuwe e-mail niet automatisch gesynchroniseerd met het gast gebruikers object in uw Directory. De eigenschap mail wordt gemaakt via [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0). U kunt de eigenschap e-mail bijwerken via het Exchange-beheer centrum of [Exchange Online Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)en de wijziging wordt weer gegeven in het gebruikers object van de Azure AD-gast.
 
 ## <a name="next-steps"></a>Volgende stappen
 

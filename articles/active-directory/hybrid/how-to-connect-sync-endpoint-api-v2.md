@@ -7,17 +7,17 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5501153a9c54d4509aa7dd948e03e011b30d79e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713808"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357576"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2-eind punt-API (open bare preview) 
 Micro soft heeft een nieuw eind punt (API) geïmplementeerd voor Azure AD Connect die de prestaties verbetert van de synchronisatie service-bewerkingen naar Azure Active Directory. Door gebruik te maken van het nieuwe v2-eind punt, kunt u zien dat er prestatie verhogingen optreden bij het exporteren en importeren naar Azure AD. Dit nieuwe eind punt ondersteunt het volgende:
@@ -125,7 +125,7 @@ De volgende stappen kunnen worden gebruikt om de limiet voor lidmaatschappen te 
 
 8. Werk op de pagina trans **formaties** de **bron** waarde voor de **leden** transformatie bij en vervang ' 50000 ' door een waarde tussen 50001 en 250000. Met deze vervanging wordt de maximale grootte van het lidmaatschap van groepen die worden gesynchroniseerd met Azure AD verg root. We raden aan om te beginnen met een aantal 100.000 om inzicht te krijgen in de gevolgen die het synchroniseren van grote groepen op de synchronisatie prestaties heeft. 
  
- **Voorbeeld** 
+ **Hierbij** 
  
  `IIF((ValueCount("member")> 75000),Error("Maximum Group member count exceeded"),IgnoreThisFlow)` 
  

@@ -1,5 +1,5 @@
 ---
-title: Safelist de Azure Portal Url's op uw firewall of proxy server
+title: Lijst met veilige Azure-portal-URL's op uw firewall of proxyserver maken
 description: Deze Url's toevoegen aan de proxy server bypass om te communiceren met de Azure Portal en de bijbehorende services
 services: azure-portal
 keywords: ''
@@ -9,14 +9,14 @@ ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67ccf6e2f113c0ec72cfcbccedf88017e452ec4b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255044"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361656"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist de Azure Portal Url's op uw firewall of proxy server
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Lijst met veilige Azure-portal-URL's op uw firewall of proxyserver maken
 
 U kunt on-premises beveiligings apparaten configureren om beveiligings beperkingen voor de Azure Portal Url's over te slaan. Deze configuratie kan de prestaties en connectiviteit tussen uw lokale of Wide Area netwerk en de Azure-Cloud verbeteren.
 
@@ -53,6 +53,7 @@ De URL-eind punten naar Safelist voor de Azure Portal zijn specifiek voor de Azu
 #### <a name="us-government-cloud"></a>[Cloud van de Amerikaanse overheid](#tab/us-government-cloud)
 
 ```
+*.applicationinsights.us
 *.azure.us
 *.loganalytics.us
 *.microsoft.us

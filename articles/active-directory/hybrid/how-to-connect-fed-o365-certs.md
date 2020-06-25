@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200884"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359735"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Federatie certificaten vernieuwen voor Office 365 en Azure Active Directory
 ## <a name="overview"></a>Overzicht
@@ -116,7 +116,7 @@ Controleer het volgende om te controleren of het certificaat automatisch kan wor
 
 **2. de federatieve meta gegevens van AD FS zijn openbaar toegankelijk.** Controleer of uw federatieve meta gegevens openbaar toegankelijk zijn door te navigeren naar de volgende URL van een computer op het open bare Internet (van het bedrijfs netwerk):
 
-https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.XML
+https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 waar `(your_FS_name)` wordt vervangen door de naam van de Federation service-host die uw organisatie gebruikt, zoals FS.contoso.com.  Als u beide instellingen wel kunt controleren, hoeft u niets anders te doen.  
 
@@ -141,7 +141,7 @@ Als **AutoCertificateRollover** echter is ingesteld op **True**, maar uw federat
 1. Controleer of u bent aangemeld bij de primaire AD FS-server.
 2. Controleer de huidige handtekening certificaten in AD FS door een Power shell-opdracht venster te openen en de volgende opdracht uit te voeren:
 
-    PS C:\>Get-ADFSCertificate – CertificateType token-ondertekening
+    PS C: \> Get-ADFSCertificate – CertificateType token-ondertekening
 
    > [!NOTE]
    > Als u AD FS 2,0 gebruikt, moet u eerst add-Pssnapin micro soft. ADFS. Power shell uitvoeren.
@@ -149,8 +149,8 @@ Als **AutoCertificateRollover** echter is ingesteld op **True**, maar uw federat
    >
 3. Bekijk de uitvoer van de opdracht op alle certificaten die worden weer gegeven. Als AD FS een nieuw certificaat hebt gegenereerd, ziet u in de uitvoer twee certificaten: een waarvoor de **IsPrimary** -waarde **waar** is en de **NotAfter** -datum ligt binnen 5 dagen en een waarvoor **IsPrimary** **Onwaar** is en **NotAfter** ongeveer een jaar in de toekomst ligt.
 4. Als u slechts één certificaat ziet en de **NotAfter** -datum binnen vijf dagen valt, moet u een nieuw certificaat genereren.
-5. Als u een nieuw certificaat wilt genereren, voert u de volgende opdracht uit in een `PS C:\>Update-ADFSCertificate –CertificateType token-signing`Power shell-opdracht prompt:.
-6. Controleer de update door de volgende opdracht opnieuw uit te voeren: PS\>C: Get-ADFSCertificate – CertificateType token ondertekening
+5. Als u een nieuw certificaat wilt genereren, voert u de volgende opdracht uit in een Power shell-opdracht prompt: `PS C:\>Update-ADFSCertificate –CertificateType token-signing` .
+6. Controleer de update door de volgende opdracht opnieuw uit te voeren: PS C: \> Get-ADFSCertificate – CertificateType token ondertekening
 
 Twee certificaten moeten nu worden vermeld, waarvan een van de **NotAfter** datum ongeveer één jaar in de toekomst heeft en waarvoor de **IsPrimary** -waarde **False**is.
 
@@ -160,8 +160,8 @@ Werk Office 365 bij met de nieuwe token handtekening certificaten die voor de ve
 1. Open de Microsoft Azure Active Directory-module voor Windows PowerShell.
 2. Voer $cred = Get-Credential. Wanneer u met deze cmdlet om referenties wordt gevraagd, typt u de referenties van uw account voor de Cloud service beheerder.
 3. Voer Connect-MsolService – Credential $cred. Met deze cmdlet maakt u verbinding met de Cloud service. Het maken van een context waarmee u verbinding maakt met de Cloud service is vereist voor het uitvoeren van een van de extra cmdlets die door het hulp programma worden geïnstalleerd.
-4. Als u deze opdrachten uitvoert op een computer die niet de AD FS primaire Federatie server is, voert u set-MSOLAdfscontext-computer &lt;AD FS Primary server&gt;uit, &lt;waarbij AD FS primaire&gt; server de interne FQDN-naam van de primaire AD FS server is. Met deze cmdlet wordt een context gemaakt waarmee u verbinding maakt met AD FS.
-5. Voer Update-MSOLFederatedDomain – DomainName &lt;domein&gt;. Met deze cmdlet worden de instellingen van AD FS in de Cloud service bijgewerkt en wordt de vertrouwens relatie tussen de twee geconfigureerd.
+4. Als u deze opdrachten uitvoert op een computer die niet de AD FS primaire Federatie server is, voert u set-MSOLAdfscontext-computer &lt; AD FS Primary server uit &gt; , waarbij &lt; AD FS primaire server &gt; de interne FQDN-naam van de primaire AD FS server is. Met deze cmdlet wordt een context gemaakt waarmee u verbinding maakt met AD FS.
+5. Voer Update-MSOLFederatedDomain – DomainName &lt; domein &gt; . Met deze cmdlet worden de instellingen van AD FS in de Cloud service bijgewerkt en wordt de vertrouwens relatie tussen de twee geconfigureerd.
 
 > [!NOTE]
 > Als u meerdere domeinen op het hoogste niveau wilt ondersteunen, zoals contoso.com en fabrikam.com, moet u de **SupportMultipleDomain** -switch gebruiken met cmdlets. Zie [ondersteuning voor meerdere domeinen op het hoogste niveau](how-to-connect-install-multiple-domains.md)voor meer informatie.

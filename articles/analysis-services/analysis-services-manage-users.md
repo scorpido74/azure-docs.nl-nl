@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701046"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361486"
 ---
 # <a name="authentication-and-user-permissions"></a>Verificatie en gebruikersmachtigingen
 
@@ -24,7 +24,7 @@ Azure Analysis Services ondersteunt [Azure AD B2B-samen werking](../active-direc
 
 ## <a name="authentication"></a>Verificatie
 
-Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analysis Services- [client bibliotheken](analysis-services-data-providers.md) (AMO, MSOLAP, ADOMD) om verbinding te maken met een server. 
+Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analysis Services- [client bibliotheken](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) (AMO, MSOLAP, ADOMD) om verbinding te maken met een server. 
 
 Alle drie client bibliotheken ondersteunen zowel interactieve als Azure AD-stroom en niet-interactieve verificatie methoden. De twee niet-interactieve methoden, Active Directory wacht woord en Active Directory geïntegreerde verificatie methoden kunnen worden gebruikt in toepassingen die gebruikmaken van AMOMD en MSOLAP. Deze twee methoden resulteren nooit in pop-updialoogvensters.
 
@@ -32,7 +32,7 @@ Client toepassingen zoals Excel en Power BI Desktop, en hulpprogram ma's zoals S
 
 Afhankelijk van de client toepassing of het hulp programma dat u gebruikt, kan het type verificatie en de manier waarop u zich aanmeldt anders zijn. Elke toepassing kan verschillende functies ondersteunen voor het maken van verbinding met Cloud Services, zoals Azure Analysis Services.
 
-Power BI Desktop, Visual Studio en SSMS ondersteunen Active Directory universele verificatie, een interactieve methode die ook Azure Multi-Factor Authentication (MFA) ondersteunt. Azure MFA helpt bij het beveiligen van de toegang tot gegevens en toepassingen tijdens een eenvoudig aanmeldings proces. Het biedt krachtige verificatie met verschillende verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of melding van een mobiele app). Interactieve MFA met Azure AD kan resulteren in een pop-upvenster voor validatie. **Universele verificatie wordt aanbevolen**.
+Power BI Desktop, Visual Studio en SSMS ondersteunen Active Directory universele verificatie, een interactieve methode die ook Azure Multi-Factor Authentication (MFA) ondersteunt. Azure MFA helpt bij het beveiligen van de toegang tot gegevens en toepassingen tijdens een eenvoudig aanmeldings proces. Het biedt krachtige verificatie met verschillende verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of melding van een mobiele app). Bij interactieve MFA met Azure AD kunnen er pop-upvensters worden weergegeven voor validatie. **Universele verificatie wordt aanbevolen**.
 
 Als u zich aanmeldt bij Azure met behulp van een Windows-account en universele verificatie niet is geselecteerd of beschikbaar (Excel), is [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) vereist. Met Federatie worden Azure AD-en Office 365-gebruikers geverifieerd met on-premises referenties en kunnen ze toegang krijgen tot Azure-resources.
 
@@ -44,7 +44,7 @@ Azure Analysis Services-servers ondersteunen verbindingen van [SSMS v-17.1](http
 
 *  Biedt ondersteuning voor Azure B2B-gast gebruikers die zijn uitgenodigd voor Azure als Tenant. Wanneer u verbinding maakt met een server, moeten gast gebruikers Active Directory universele verificatie selecteren wanneer ze verbinding maken met de server.
 
-*  Ondersteunt Multi-Factor Authentication (MFA). Azure MFA helpt de toegang tot gegevens en toepassingen te beschermen met een reeks verificatie opties: telefoon oproep, SMS-bericht, Smart Cards met pincode of mobiele app-melding. Interactieve MFA met Azure AD kan resulteren in een pop-upvenster voor validatie.
+*  Ondersteunt Multi-Factor Authentication (MFA). Azure MFA helpt de toegang tot gegevens en toepassingen te beschermen met een reeks verificatie opties: telefoon oproep, SMS-bericht, Smart Cards met pincode of mobiele app-melding. Bij interactieve MFA met Azure AD kunnen er pop-upvensters worden weergegeven voor validatie.
 
 ### <a name="visual-studio"></a>Visual Studio
 

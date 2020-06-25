@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261292"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358443"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Volgende stappen en het beheren van Azure AD Connect
 Gebruik de operationele procedures in dit artikel om de verbinding van Azure Active Directory (Azure AD) aan te passen aan de behoeften en vereisten van uw organisatie.  
@@ -74,7 +74,7 @@ De volgende tabel bevat een samen vatting van deze taken en een korte beschrijvi
 
 | Aanvullende taak | Beschrijving |
 | --- | --- |
-|**Privacy-instellingen**|Weer geven welke telemetriegegevens worden gedeeld met micro soft.|
+|**Privacyinstellingen**|Weer geven welke telemetriegegevens worden gedeeld met micro soft.|
 |**Huidige configuratie weer geven**|Bekijk uw huidige Azure AD Connect-oplossing.  Dit omvat algemene instellingen, gesynchroniseerde directory's en synchronisatie-instellingen. |
 | **Synchronisatie opties aanpassen** |Wijzig de huidige configuratie, zoals het toevoegen van extra Active Directory forests aan de configuratie, of het inschakelen van synchronisatie opties zoals gebruiker, groep, apparaat of wacht woord terugschrijven. |
 |**Opties voor apparaten configureren**|Beschik bare apparaatinstellingen voor synchronisatie|

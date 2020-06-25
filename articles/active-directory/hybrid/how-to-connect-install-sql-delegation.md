@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60243521"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358664"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Azure AD Connect installeren met SQL-gedelegeerde beheerdersmachtigingen
 Voorafgaand aan de nieuwste Azure AD Connect-build, werd beheer overdracht bij het implementeren van configuraties die vereist voor SQL, niet ondersteund.  Gebruikers die Azure AD Connect nodig hadden voor het installeren van de machtigingen van de server beheerder (SA) op de SQL-Server.

@@ -8,17 +8,17 @@ editor: curtand
 ms.reviewer: darora10
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79036984"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359752"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Aangepaste standaard regels in Azure AD Connect herstellen
 
@@ -49,7 +49,7 @@ Hier volgen enkele algemene aanpassingen aan de standaard regels:
 
 Voordat u regels wijzigt:
 
-- Schakel de synchronisatie planner uit. De scheduler wordt standaard elke 30 minuten uitgevoerd. Zorg ervoor dat deze niet begint terwijl u wijzigingen aanbrengt en uw nieuwe regels bijwerkt. Als u de scheduler tijdelijk wilt uitschakelen, start u Power `Set-ADSyncScheduler -SyncCycleEnabled $false`shell en voert u uit.
+- Schakel de synchronisatie planner uit. De scheduler wordt standaard elke 30 minuten uitgevoerd. Zorg ervoor dat deze niet begint terwijl u wijzigingen aanbrengt en uw nieuwe regels bijwerkt. Als u de scheduler tijdelijk wilt uitschakelen, start u Power shell en voert u uit `Set-ADSyncScheduler -SyncCycleEnabled $false` .
  ![Power shell-opdrachten om de synchronisatie planner uit te scha kelen](media/how-to-connect-fix-default-rules/default3.png)
 
 - De wijziging in het bereik filter kan ertoe leiden dat objecten in de doel directory worden verwijderd. Wees voorzichtig voordat u wijzigingen aanbrengt in de scope-objecten. U wordt aangeraden wijzigingen aan te brengen in een staging-server voordat u wijzigingen aanbrengt op de actieve server.
@@ -105,10 +105,10 @@ Bewaar het **bereik filter** en de **regels voor samen voegen** leeg. Vul de tra
 U weet nu hoe u een nieuw kenmerk voor een gebruikers object stroom kunt maken van Active Directory naar Azure Active Directory. U kunt deze stappen gebruiken om elk kenmerk van elk object toe te wijzen aan de bron en het doel. Zie [Aangepaste synchronisatie regels maken](how-to-connect-create-custom-sync-rule.md) en voor [bereiding voor het inrichten van gebruikers](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)voor meer informatie.
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>De waarde van een bestaand kenmerk overschrijven
-Mogelijk wilt u de waarde overschrijven van een kenmerk dat al is toegewezen. Als u bijvoorbeeld altijd een null-waarde wilt instellen op een kenmerk in azure AD, hoeft u alleen maar een regel voor binnenkomende verbindingen te maken. Maak de constante waarde, `AuthoritativeNull`, stroom naar het doel kenmerk. 
+Mogelijk wilt u de waarde overschrijven van een kenmerk dat al is toegewezen. Als u bijvoorbeeld altijd een null-waarde wilt instellen op een kenmerk in azure AD, hoeft u alleen maar een regel voor binnenkomende verbindingen te maken. Maak de constante waarde, `AuthoritativeNull` , stroom naar het doel kenmerk. 
 
 >[!NOTE] 
-> Gebruik `AuthoritativeNull` in plaats `Null` van in dit geval. Dit komt omdat de niet-null-waarde de null-waarde vervangt, zelfs als deze een lagere prioriteit heeft (een hogere waarde in de regel). `AuthoritativeNull`daarentegen wordt niet vervangen door andere regels die niet null zijn. 
+> Gebruik `AuthoritativeNull` in plaats van `Null` in dit geval. Dit komt omdat de niet-null-waarde de null-waarde vervangt, zelfs als deze een lagere prioriteit heeft (een hogere waarde in de regel). `AuthoritativeNull`daarentegen wordt niet vervangen door andere regels die niet null zijn. 
 
 ### <a name="dont-sync-existing-attribute"></a>Bestaand kenmerk niet synchroniseren
 Als u een kenmerk wilt uitsluiten van synchronisatie, gebruikt u de functie voor kenmerk filtering in Azure AD Connect. Start **Azure AD Connect** vanaf het bureaublad pictogram en selecteer vervolgens **synchronisatie opties aanpassen**.
@@ -141,7 +141,7 @@ U kunt dit kenmerk niet instellen in Active Directory. Stel de waarde van dit ke
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
-We hebben de afdeling eerst van de bron (Active Directory) geconverteerd naar kleine letters. Vervolgens hebben we met `Left` de functie alleen de eerste drie tekens en worden deze vergeleken met `hrd`. Als deze overeenkomt, wordt de waarde ingesteld op `True`, anders `NULL`. Bij het instellen van de waarde op NULL, kan een andere regel met een lagere prioriteit (een hogere waarde) ernaar schrijven met een andere voor waarde. Voer Preview uit op één object om de synchronisatie regel te valideren, zoals vermeld in de sectie [synchronisatie regel valideren](#validate-sync-rule) .
+We hebben de afdeling eerst van de bron (Active Directory) geconverteerd naar kleine letters. Vervolgens `Left` hebben we met de functie alleen de eerste drie tekens en worden deze vergeleken met `hrd` . Als deze overeenkomt, wordt de waarde ingesteld op `True` , anders `NULL` . Bij het instellen van de waarde op NULL, kan een andere regel met een lagere prioriteit (een hogere waarde) ernaar schrijven met een andere voor waarde. Voer Preview uit op één object om de synchronisatie regel te valideren, zoals vermeld in de sectie [synchronisatie regel valideren](#validate-sync-rule) .
 
 ![Opties voor de inkomende synchronisatie regel maken](media/how-to-connect-fix-default-rules/default7a.png)
 
@@ -178,7 +178,7 @@ Selecteer in het venster voor beeld de optie **Preview genereren** en **kenmerk 
 
 ![Preview](media/how-to-connect-fix-default-rules/default14.png)
  
-Hier ziet u dat de zojuist toegevoegde regel wordt uitgevoerd op het object en dat het `cloudFiltered` kenmerk is ingesteld op True.
+Hier ziet u dat de zojuist toegevoegde regel wordt uitgevoerd op het object en dat het kenmerk is ingesteld `cloudFiltered` op True.
 
 ![Preview](media/how-to-connect-fix-default-rules/default15a.png)
  

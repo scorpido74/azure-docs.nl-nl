@@ -8,31 +8,31 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d0f7093f44a284ec26907d7c4bcfb2bdfd04763
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190310"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360908"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect Cloud-inrichtings agent: automatische upgrade
 
 Zorg ervoor dat uw Azure Active Directory (Azure AD) Connect-installatie van de Cloud-inrichtings agent altijd up-to-date is met de functie voor automatische upgrades.
 
-De agent wordt hier geïnstalleerd: ' Program files\Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe '
+De agent wordt hier geïnstalleerd: ' Program files\Azure AD Connect inrichtings Agent\AADConnectProvisioningAgent.exe '
 
 Als u uw versie wilt controleren, klikt u met de rechter muisknop op het uitvoer bare bestand en selecteert u eigenschappen en vervolgens Details.
 
 ![Versie van agent bestand](media/how-to-automatic-upgrade/agent1.png)
 
-De agent Updater wordt hier geïnstalleerd: ' Program files\Azure AD Connect inrichtings agent Updater\AzureADConnectAgentUpdater.exe '
+De Updater voor de agent is hier geïnstalleerd: "Program files\Azure AD Connect inrichtings agent Updater\AzureADConnectAgentUpdater.exe"
 
 Als u uw versie wilt controleren, klikt u met de rechter muisknop op het uitvoer bare bestand en selecteert u eigenschappen en vervolgens Details.
 

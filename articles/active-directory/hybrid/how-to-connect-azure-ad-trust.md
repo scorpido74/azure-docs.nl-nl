@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331725"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360092"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-vertrouwensrelatie met Azure AD beheren met behulp van Azure AD Connect
 
@@ -103,14 +103,14 @@ Azure AD Connect zorgt ervoor dat de vertrouwens relatie van Azure AD altijd is 
 
 ## <a name="restore-issuance-transform-rules"></a>Regels voor uitgifte transformatie herstellen
 
-Azure AD Connect versie 1.1.873.0 of hoger maakt een back-up van de vertrouwens instellingen van Azure AD wanneer een update wordt uitgevoerd naar de vertrouwens instellingen van Azure AD. Er wordt een back-up van de Azure AD-vertrouwens instellingen gemaakt op **%ProgramData%\AADConnect\ADFS**. De&lt;bestands naam heeft de volgende indeling AadTrust: date&gt;-&lt;time&gt;. txt, bijvoorbeeld-AadTrust-20180710-150216. txt
+Azure AD Connect versie 1.1.873.0 of hoger maakt een back-up van de vertrouwens instellingen van Azure AD wanneer een update wordt uitgevoerd naar de vertrouwens instellingen van Azure AD. Er wordt een back-up van de Azure AD-vertrouwens instellingen gemaakt op **%ProgramData%\AADConnect\ADFS**. De bestands naam heeft de volgende indeling AadTrust: &lt; Date &gt; - &lt; time &gt; . txt, bijvoorbeeld-AadTrust-20180710-150216.txt
 
 ![Een scherm afbeelding van een voor beeld van een back-up van Azure AD-vertrouwens relatie](./media/how-to-connect-azure-ad-trust/backup.png)
 
 U kunt de transformatie regels voor uitgifte herstellen met behulp van de onderstaande voorgestelde stappen
 
 1. Open de gebruikers interface van AD FS beheer in Serverbeheer
-2. Open de eigenschappen van de Azure AD-vertrouwens relatie door te gaan **AD FS &gt; Relying Party-vertrouwens &gt; relaties Microsoft Office 365-identiteits platform &gt; claim uitgifte beleid bewerken**
+2. Open de eigenschappen van de Azure AD-vertrouwens relatie door te gaan **AD FS &gt; Relying Party-vertrouwens relaties &gt; Microsoft Office 365-identiteits platform &gt; claim uitgifte beleid bewerken**
 3. Klik op **regel toevoegen**
 4. Selecteer claims verzenden met een aangepaste regel in de claim regel sjabloon en klik op **volgende**
 5. Kopieer de naam van de claim regel uit het back-upbestand en plak deze in de naam van het veld **claim regel**

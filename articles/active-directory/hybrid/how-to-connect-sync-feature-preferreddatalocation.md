@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983259"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357406"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: de voorkeurs locatie van gegevens voor Office 365-resources configureren
 Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Office 365, gebruikt u dit kenmerk om de geografische locatie van de Office 365-gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
@@ -91,8 +91,8 @@ In de volgende secties vindt u de stappen voor het inschakelen van synchronisati
 Om te voor komen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD, moet u ervoor zorgen dat er geen synchronisatie plaatsvindt terwijl u de synchronisatie regels bijwerkt. De ingebouwde synchronisatie planner uitschakelen:
 
 1. Start een Power shell-sessie op de Azure AD Connect-server.
-2. Schakel de geplande synchronisatie uit door deze cmdlet `Set-ADSyncScheduler -SyncCycleEnabled $false`uit te voeren:.
-3. Start de **Synchronization Service Manager** door de**synchronisatie service**te **starten** > .
+2. Schakel de geplande synchronisatie uit door deze cmdlet uit te voeren: `Set-ADSyncScheduler -SyncCycleEnabled $false` .
+3. Start de **Synchronization Service Manager** door de **START**  >  **synchronisatie service**te starten.
 4. Selecteer het tabblad **bewerkingen** en controleer of er geen bewerking is met de status *in behandeling*.
 
 ![Scherm opname van Synchronization Service Manager](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -135,7 +135,7 @@ Het kenmerk **preferredDataLocation** wordt standaard niet in de Azure AD-connec
 ## <a name="step-5-create-an-inbound-synchronization-rule"></a>Stap 5: een regel voor binnenkomende synchronisatie maken
 Met de regel voor binnenkomende synchronisatie kan de kenmerk waarde worden gestroomd van het bron kenmerk in on-premises Active Directory naar de oorspronkelijke tekst.
 
-1. Start de **Editor voor synchronisatie regels** door te gaan met de**Editor voor synchronisatie regels** **starten** > .
+1. Start de **Editor voor synchronisatie regels** door te **START**gaan met de  >  **Editor voor synchronisatie regels**starten.
 2. Stel de **richting** van het zoek filter in op **binnenkomend**.
 3. Selecteer **nieuwe regel toevoegen**om een nieuwe regel voor binnenkomende verbindingen te maken.
 4. Geef onder het tabblad **Beschrijving** de volgende configuratie op:

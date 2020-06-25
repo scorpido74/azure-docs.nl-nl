@@ -10,22 +10,30 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 06/05/2020
-ms.openlocfilehash: 7238e2d7cbcb26a7b45ae9d7db52a0826abe0754
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897980"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361639"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Release opmerkingen bij Azure SQL Edge 
 
 In dit artikel wordt beschreven wat er nieuw is en wat er is gewijzigd bij elke nieuwe build van Azure SQL Edge.
 
+## <a name="ctp-21"></a>CTP 2,1 
+### <a name="sql-engine-build-number---15020001545"></a>Buildnummer van SQL-engine-15.0.2000.1545
+### <a name="fixes"></a>Oplossingen
+1. Verhelp de voor SPELing met ONNX-modellen om het CPUID-probleem in ARM af te handelen 
+2. Oplossing voor het verbeteren van de verwerking van het fout traject bij het opstarten van TSQL-streaming 
+3. Corrigeer de onjuiste waarde van het watermerk vertraging in de metrische gegevens van de taak wanneer er geen data zijn. 
+4. Los het probleem met de uitvoer adapter op wanneer de adapter een variabel schema tussen batches heeft.  
+
 ## <a name="ctp-20"></a>CTP 2,0 
 ### <a name="sql-engine-build-number---15020001401"></a>Buildnummer van SQL-engine-15.0.2000.1401
 ### <a name="whats-new"></a>Wat is nieuw?
 1.  De product naam is bijgewerkt naar ' Azure SQL Edge '
-2.  Functie Date_bucket
+1.  Functie Date_bucket
 
     i.  Ondersteuning voor datum, tijd, type DateTime
 3.  Voors PELLEn met ONNX

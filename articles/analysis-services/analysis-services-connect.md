@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b4e56dfeae2d4b7826f3ad30bc5eb4b8672b85
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676652"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361469"
 ---
 # <a name="connecting-to-servers"></a>Verbinding maken met servers
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met een server met behulp
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
-[De nieuwste client bibliotheken ophalen](analysis-services-data-providers.md)
+[De nieuwste client bibliotheken ophalen](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET-en OLEDB-client bibliotheken om verbinding te maken met en een interface met een Analysis Services-server. Voor SSMS, Visual Studio, Excel 2016 en hoger, en Power BI, worden de meest recente client bibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de meest recente heeft. Bijvoorbeeld wanneer beleids regels updates vertragen of Office 365-updates op het uitgestelde kanaal staan.
 
@@ -38,7 +38,7 @@ Wanneer u een Analysis Services-server maakt in azure, geeft u een unieke naam e
 
 ### <a name="get-the-server-name"></a>De server naam ophalen
 
-Kopieer de volledige naam van de server in **Azure Portal** > server > **overzicht** > van de server**naam**. Als andere gebruikers in uw organisatie ook verbinding maken met deze server, kunt u deze naam met de server delen. Wanneer u een server naam opgeeft, moet het volledige pad worden gebruikt.
+Kopieer de volledige naam van de server in **Azure Portal** > server > **overzicht**van de server  >  **naam**. Als andere gebruikers in uw organisatie ook verbinding maken met deze server, kunt u deze naam met de server delen. Wanneer u een server naam opgeeft, moet het volledige pad worden gebruikt.
 
 ![Servernaam bepalen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 

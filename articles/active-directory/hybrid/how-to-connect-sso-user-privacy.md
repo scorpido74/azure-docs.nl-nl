@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 467b9b2e613e43b95007142a120d39be1272de93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60242104"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357831"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Gebruikersprivacy en naadloze eenmalige aanmelding van Azure AD
 
@@ -43,10 +43,10 @@ We raden u ten zeerste aan de tweede optie te implementeren, omdat deze eenvoudi
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect traceer logboek bestanden verwijderen
 
-Controleer de inhoud van de map **%ProgramData%\AADConnect** en verwijder de inhoud van het tracerings logboek (**Trace-. log-\*** bestanden) van deze map binnen 48 uur na het installeren of upgraden van Azure AD Connect of het wijzigen van de naadloze SSO-configuratie, omdat deze actie gegevens kan maken die onder AVG vallen.
+Controleer de inhoud van de map **%ProgramData%\AADConnect** en verwijder de inhoud van het tracerings logboek (**Trace- \* . log-** bestanden) van deze map binnen 48 uur na het installeren of upgraden van Azure AD Connect of het wijzigen van de naadloze SSO-configuratie, omdat deze actie gegevens kan maken die onder AVG vallen.
 
 >[!IMPORTANT]
->Verwijder het bestand **PersistedState. XML** niet in deze map, omdat dit bestand wordt gebruikt om de status van de vorige installatie van Azure AD Connect te behouden en wordt gebruikt wanneer een upgrade-installatie wordt uitgevoerd. Dit bestand bevat nooit gegevens over een persoon en mag nooit worden verwijderd.
+>Verwijder niet het **PersistedState.xml** bestand in deze map, omdat dit bestand wordt gebruikt om de status van de vorige installatie van Azure AD Connect te behouden en wordt gebruikt wanneer de installatie van een upgrade is voltooid. Dit bestand bevat nooit gegevens over een persoon en mag nooit worden verwijderd.
 
 U kunt deze traceer logboek bestanden met behulp van Windows Verkenner controleren en verwijderen of u kunt het volgende Power shell-script gebruiken om de vereiste acties uit te voeren:
 

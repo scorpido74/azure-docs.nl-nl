@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7fca57bd517296711ada2f714d523bfa0709337c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208379"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361333"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
@@ -74,7 +74,8 @@ Vervolgens moet u Active Directory (AD)-verificatie inschakelen. Als u dit belei
 
 3.  Open de Azure Portal, open uw opslag account, selecteer **configuratie**en bevestig dat **Active Directory (AD)** is ingesteld op **ingeschakeld**.
 
-     ![Een scherm afbeelding van de configuratie pagina waarop Azure Active Directory (AD) is ingeschakeld.](media/active-directory-enabled.png)
+     > [!div class="mx-imgBorder"]
+     > ![Een scherm afbeelding van de configuratie pagina waarop Azure Active Directory (AD) is ingeschakeld.](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>Azure RBAC-machtigingen toewijzen aan Windows-virtuele bureau blad-gebruikers
 

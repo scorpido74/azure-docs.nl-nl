@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 36031006f155f1651845dbce48b6c6ec84397e93
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572675"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361418"
 ---
 # <a name="create-an-office-data-connection-file"></a>Een Office-gegevens verbindings bestand maken
 
-In dit artikel wordt beschreven hoe u een Office-gegevens verbindings bestand maakt om verbinding te maken met een Azure Analysis Services-server vanuit Excel 2016-versie nummer 16.0.7369.2117 of eerder of Excel 2013. Er is ook een bijgewerkte [Msolap. 7-provider](analysis-services-data-providers.md) vereist.
+In dit artikel wordt beschreven hoe u een Office-gegevens verbindings bestand maakt om verbinding te maken met een Azure Analysis Services-server vanuit Excel 2016-versie nummer 16.0.7369.2117 of eerder of Excel 2013. Er is ook een bijgewerkte [Msolap. 7-provider](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) vereist.
 
 
 1. Kopieer het onderstaande voorbeeld verbindings bestand en plak het in een tekst editor. 
 
-2. Wijzig `odc:ConnectionString`in de volgende eigenschappen:
+2. `odc:ConnectionString`Wijzig in de volgende eigenschappen:
 
-    *   Wijzig `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` in de regio van uw Analysis Services-server en `<servername>` de naam van uw server.
+    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;`Wijzig in `<region>` de regio van uw Analysis Services-server en `<servername>` de naam van uw server.
 
-    *   Wijzig `Initial Catalog=<database>;` `<database>` in de naam van uw data base.
+    *   `Initial Catalog=<database>;`Wijzig in `<database>` de naam van uw data base.
 
-3. Wijzig `<odc:CommandText>Model</odc:CommandText>` `Model` in de naam van uw model of perspectief. 
+3. `<odc:CommandText>Model</odc:CommandText>`Wijzig in `Model` de naam van uw model of perspectief. 
 
-4. Sla het bestand op met `.odc` een extensie in de\\map C:\Users*username*\Documents\My data sources.
+4. Sla het bestand op met een `.odc` extensie in de \\ map C:\Users*username*\Documents\My data sources.
 
 5. Klik met de rechter muisknop op het bestand en klik vervolgens op **openen in Excel**. Of Klik in Excel op het lint met **gegevens** op **bestaande verbindingen**, selecteer het bestand en klik vervolgens op **openen**.
 

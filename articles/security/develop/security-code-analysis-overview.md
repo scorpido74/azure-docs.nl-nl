@@ -1,7 +1,7 @@
 ---
 title: Documentatie overzicht van micro soft security code Analysis
 description: Dit artikel bevat een overzicht van de uitbrei ding voor de analyse van beveiligings codes van micro soft
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74851465"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361316"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Informatie over analyse van micro soft-beveiligings code
 
@@ -65,15 +65,11 @@ De anti-malware scanner bouwen is nu opgenomen in de uitbrei ding voor de analys
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim is een Portable uitvoer bare (PE) licht gewicht scanner die de instellingen van het Compileer programma, de koppelings instellingen en andere beveiligings kenmerken van binaire bestanden valideert. Deze build-taak biedt een opdracht regel wrapper rond de binskim. exe-console toepassing. BinSkim is een open source-hulp programma. Zie [BinSkim op github](https://github.com/Microsoft/binskim)voor meer informatie.
+BinSkim is een Portable uitvoer bare (PE) licht gewicht scanner die de instellingen van het Compileer programma, de koppelings instellingen en andere beveiligings kenmerken van binaire bestanden valideert. Deze build-taak biedt een opdracht regel wrapper rond de binskim.exe-console toepassing. BinSkim is een open source-hulp programma. Zie [BinSkim op github](https://github.com/Microsoft/binskim)voor meer informatie.
 
 ### <a name="credential-scanner"></a>Referentie scanner
 
 Wacht woorden en andere geheimen die zijn opgeslagen in de bron code, vormen een aanzienlijk probleem. Referentie scanner is een eigen, statisch analyse programma waarmee dit probleem kan worden opgelost. Het hulp programma detecteert referenties, geheimen, certificaten en andere gevoelige inhoud in uw bron code en de uitvoer van uw build.
-
-### <a name="microsoft-security-risk-detection"></a>Micro soft-beveiligings risico detectie
-
-Micro soft beveiligings risico detectie (MSRD) is een Cloud service voor het testen op fuzz. Hiermee worden ongebruikte beveiligings fouten in software geïdentificeerd. Deze service vereist een afzonderlijk abonnement en activering. Raadpleeg het [MSRD Developer Center](https://docs.microsoft.com/security-risk-detection/)voor meer informatie.
 
 ### <a name="roslyn-analyzers"></a>Roslyn Analyzers
 

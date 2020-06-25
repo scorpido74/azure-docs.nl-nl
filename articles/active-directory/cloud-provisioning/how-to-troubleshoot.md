@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549482"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360789"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Problemen met het inrichten van Clouds oplossen
 
@@ -44,7 +44,7 @@ Deze items kunnen worden geverifieerd in de Azure Portal en op de lokale server 
 Voer de volgende stappen uit om te controleren of de agent door Azure wordt gezien en in orde is.
 
 1. Meld u aan bij Azure Portal.
-1. Selecteer aan de linkerkant **Azure Active Directory** > **Azure AD CONNECT**. Selecteer in het midden de optie **inrichting beheren (preview)**.
+1. Selecteer aan de linkerkant **Azure Active Directory**  >  **Azure AD CONNECT**. Selecteer in het midden de optie **inrichting beheren (preview)**.
 1. Selecteer **Alle agents controleren**op het scherm **Azure AD Provisioning (preview)** .
 
    ![Alle agents controleren](media/how-to-install/install7.png)</br>
@@ -67,7 +67,7 @@ Met deze test wordt gecontroleerd of uw agents kunnen communiceren met Azure via
 
 Voer de volgende stappen uit om te controleren of de agent wordt uitgevoerd.
 
-1. Op de server waarop de agent is geïnstalleerd, opent u **Services** door **ernaar te navigeren of door te gaan** > met het**uitvoeren** > van**Services. msc**.
+1. Op de server waarop de agent is geïnstalleerd, opent u **Services** door **ernaar te navigeren of door te gaan**met het  >  **uitvoeren**van  >  **Services. msc**.
 1. Zorg er bij **Services**voor dat **Microsoft Azure AD connect agent updater** en **Microsoft Azure AD Connect inrichtings agent** zijn, en de status wordt *uitgevoerd*.
 
    ![Scherm Services](media/how-to-troubleshoot/troubleshoot1.png)
@@ -87,7 +87,7 @@ Dit probleem wordt meestal veroorzaakt door een groeps beleid waarmee wordt voor
 Voer de volgende stappen uit om dit probleem op te lossen.
 
 1. Meld u met een beheerders account aan bij de server.
-1. Open **Services** **door te navigeren** > naar de service of door te gaan met het**uitvoeren** > van**Services. msc**.
+1. Open **Services** door te navigeren naar de service of **door te gaan**met het  >  **uitvoeren**van  >  **Services. msc**.
 1. Dubbel klik onder **Services**op **Microsoft Azure AD Connect inrichtings agent**.
 1. Wijzig op het tabblad **Aanmelden** het **account** in een domein beheerder. Start de service vervolgens opnieuw. 
 
@@ -99,9 +99,9 @@ Mogelijk wordt het volgende fout bericht weer gegeven wanneer u probeert de agen
 
 ![Fout bericht time-out](media/how-to-troubleshoot/troubleshoot4.png)
 
-Dit probleem wordt meestal veroorzaakt door de agent waardoor geen verbinding kan worden gemaakt met de Hybrid Identity-service en hiervoor moet u een HTTP-proxy configureren. U kunt dit probleem oplossen door een uitgaande proxy te configureren. 
+Dit probleem wordt meestal veroorzaakt door de agent waardoor geen verbinding kan worden gemaakt met de Hybrid Identity-service, hiervoor moet u een HTTP-proxy configureren. U kunt dit probleem oplossen door een uitgaande proxy te configureren. 
 
-De inrichtings agent ondersteunt het gebruik van een uitgaande proxy. U kunt deze configureren door het configuratie bestand van de agent te bewerken *C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config*. Voeg de volgende regels toe aan het einde van het bestand net vóór de eindtag `</configuration>` .
+De inrichtings agent ondersteunt het gebruik van een uitgaande proxy. U kunt deze configureren door het configuratie bestand van de agent te bewerken *C:\Program Files\Microsoft Azure AD Connect inrichting Agent\AADConnectProvisioningAgent.exe.config*. Voeg de volgende regels toe aan het einde van het bestand net vóór de eindtag `</configuration>` .
 Vervang de variabelen `[proxy-server]` en `[proxy-port]` door de naam en poort waarden van de proxy server.
 
 ```xml
@@ -126,12 +126,12 @@ Om dit probleem op te lossen, wijzigt u het Power shell-uitvoerings beleid op de
 
 ### <a name="log-files"></a>Logboekbestanden
 
-De agent verzendt standaard minimale fout berichten en stack tracerings gegevens. U vindt deze traceer Logboeken in de map *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect Provisioning Agent\Trace*.
+De agent verzendt standaard minimale foutberichten en stack-traceringsgegevens. U vindt deze traceer Logboeken in de map *C:\PROGRAMDATA\MICROSOFT\AZURE AD Connect Provisioning Agent\Trace*.
 
 Volg deze stappen om aanvullende informatie te verzamelen voor het oplossen van problemen met de agent.
 
 1. Stop de service **Microsoft Azure ad het verbinden van inrichtings agent**.
-1. Maak een kopie van het oorspronkelijke configuratie bestand: *C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\AADConnectProvisioningAgent.exe.config*.
+1. Maak een kopie van het oorspronkelijke configuratie bestand: *C:\Program Files\Microsoft Azure AD Connect inrichting Agent\AADConnectProvisioningAgent.exe.config*.
 1. Vervang de bestaande `<system.diagnostics>` sectie door het volgende en alle tracerings berichten worden naar het bestand *ProvAgentTrace. log*.
 
    ```xml

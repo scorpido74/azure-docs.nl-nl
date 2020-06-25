@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7f6b623cc5f864106dc2f119308370e80014a4c2
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: e4f31c560fe3dd91689b361ed520e466fd52da1c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611021"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360007"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>Het wachtwoord voor het Azure AD Connector-account wijzigen
 Het account van de Azure AD-connector moet gratis service zijn. Als u de referenties opnieuw wilt instellen, is dit onderwerp voor u. Als een globale beheerder bijvoorbeeld per ongeluk het wacht woord voor het account opnieuw instelt met behulp van Power shell.

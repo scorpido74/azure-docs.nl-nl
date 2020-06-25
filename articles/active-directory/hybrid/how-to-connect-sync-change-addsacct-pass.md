@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 4077146292db1266d5dbc51cc577f952b2bff191
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60241592"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357508"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Het wachtwoord voor het AD DS-account wijzigen
 Het AD DS-account verwijst naar het gebruikers account dat door Azure AD Connect wordt gebruikt om te communiceren met on-premises Active Directory. Als u het wacht woord van het AD DS account wijzigt, moet u Azure AD Connect synchronisatie service bijwerken met het nieuwe wacht woord. Als dat niet het geval is, kan de synchronisatie niet meer correct worden gesynchroniseerd met de on-premises Active Directory en worden de volgende fouten optreden:

@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe2d0a16aeacfc551a6a07a72b58b5f461f93433
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74793896"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360517"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Zelf studie: Basic Active Directory Environment
 
@@ -196,21 +196,21 @@ Nu u onze Active Directory omgeving hebt, moet u een test account hebben.  Dit a
 ## <a name="create-an-azure-ad-tenant"></a>Een Azure Active Directory-tenant maken
 U moet nu een Azure AD-Tenant maken zodat u onze gebruikers kunt synchroniseren met de Cloud.  Ga als volgt te werk om een nieuwe Azure Active Directory-tenant te maken.
 
-1. Meld u bij de [Azure Portal](https://portal.azure.com) aan met een account waaraan een Azure-abonnement is gekoppeld.
-2. Selecteer het **plusteken (+)** en zoek naar **Azure Active Directory**.
+1. Ga naar [Azure Portal](https://portal.azure.com) en meld u aan met een account met een Azure-abonnement.
+2. Selecteer het **plus-pictogram (+)** en zoek naar **Azure Active Directory**.
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
 ![Maken](media/tutorial-single-forest/create1.png)</br>
-5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **maken**. Er wordt nu een map aangemaakt.
+5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Een globale beheerder maken in Azure Active Directory
 Nu u een Azure AD-Tenant hebt, maakt u een algemeen beheerders account.  Ga als volgt te werk om het globale beheerdersaccount te maken.
 
-1.  Onder **Beheren**, selecteer **Gebruikers**.</br>
+1.  Selecteer onder **Beheren** de optie **Gebruikers**.</br>
 ![Maken](media/tutorial-single-forest/administrator1.png)</br>
 2.  Selecteer **Alle gebruikers** en selecteer vervolgens **+ Nieuwe gebruiker**.
-3.  Geef een naam en gebruikersnaam op voor deze gebruiker. Dit is de globale beheerder voor de tenant. U moet ook de **Maprol** wijzigen naar **Globale beheerder.** U kunt ook het tijdelijke wachtwoord weergeven. Als u klaar bent, selecteert u **Maken**.</br>
+3.  Geef een naam en gebruikersnaam op voor deze gebruiker. Dit is de globale beheerder voor de tenant. U moet ook de **Maprol** wijzigen naar **Globale beheerder.** U kunt ook het tijdelijke wachtwoord weergeven. Selecteer **Maken** wanneer u klaar bent.</br>
 ![Maken](media/tutorial-single-forest/administrator2.png)</br>
 4. Als de bewerkingen zijn voltooid, opent u een nieuwe webbrowser en meldt u zich met het nieuwe globale beheerdersaccount en het tijdelijke wachtwoord aan bij myapps.microsoft.com.
 5. Wijzig het wachtwoord voor de globale beheerder in iets dat u makkelijk kunt onthouden.

@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 764071eeaf368ecf78679632cffbd6964db40aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e6f06e9ad03face5082950ecedd3f73b97dc6ae4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681032"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360925"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>De agent voor Azure AD Connect-cloudinrichting installeren
 Dit document helpt u bij het installatie proces voor de Azure Active Directory (Azure AD) Connect inrichtings agent en hoe u deze in eerste instantie kunt configureren in de Azure Portal.
@@ -27,7 +27,7 @@ Dit document helpt u bij het installatie proces voor de Azure Active Directory (
 Het installeren en configureren van Azure AD Connect inrichting wordt uitgevoerd in de volgende stappen:
     
 - [De agent installeren](#install-the-agent)
-- [Agent installatie verifiëren](#verify-agent-installation)
+- [Agentinstallatie verifiëren](#verify-agent-installation)
 
 
 ## <a name="install-the-agent"></a>De agent installeren
@@ -44,8 +44,8 @@ Voer de volgende stappen uit om de agent te installeren.
 
    ![Microsoft Azure AD scherm voor het inrichtings agent-pakket koppelen](media/how-to-install/install1.png)</br>
 
-1. Nadat deze bewerking is voltooid, wordt de configuratie wizard gestart. Meld u aan met uw Azure AD Global Administrator-account.
-1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Volgende**.
+1. Nadat deze bewerking is voltooid, wordt de configuratie wizard gestart. Meld u aan met uw globale beheerdersreferenties voor Azure AD.
+1. Selecteer in het scherm **verbinding maken Active Directory** de optie **map toevoegen**. Meld u vervolgens aan met uw Active Directory-beheerders account. Met deze bewerking wordt uw on-premises Directory toegevoegd. Selecteer **Next**.
 
    ![Active Directory scherm verbinden](media/how-to-install/install3.png)</br>
 
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om de agent te installeren.
    ![Knop Afsluiten](media/how-to-install/install5.png)</br>
 1. Als u nog steeds het scherm eerste **Microsoft Azure AD Connect inrichtings agent-pakket** ziet, selecteert u **sluiten**.
 
-## <a name="verify-agent-installation"></a>Agent installatie verifiëren
+## <a name="verify-agent-installation"></a>Agentinstallatie verifiëren
 Verificatie van de agent vindt plaats in de Azure Portal en op de lokale server waarop de agent wordt uitgevoerd.
 
 ### <a name="azure-portal-agent-verification"></a>Verificatie van Azure Portal-agent

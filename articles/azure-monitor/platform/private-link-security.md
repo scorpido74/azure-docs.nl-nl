@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 47c504d9359779294c4690059d1958614d863e58
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: b0cdff2ce71fb63194933bdfed26da16fdebcca7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260879"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361918"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
 
@@ -168,9 +168,8 @@ Het beperken van de toegang op deze manier is alleen van toepassing op gegevens 
 
 > [!NOTE]
 > Als u op werk ruimte gebaseerde Application Insights volledig wilt beveiligen, moet u de toegang tot Application Insights resource en de onderliggende Log Analytics-werk ruimte vergren delen.
-
-> [!NOTE]
-> Diagnostische gegevens op code niveau (Profiler/Debugger) bieden momenteel geen ondersteuning voor persoonlijke koppelingen.
+>
+> Voor diagnostische gegevens op code niveau (Profiler/Debugger) moet u uw eigen opslag account opgeven ter ondersteuning van een persoonlijke koppeling. Hier vindt u [documentatie](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage) over hoe u dit doet.
 
 ## <a name="use-apis-and-command-line"></a>Api's en opdracht regel gebruiken
 
@@ -226,7 +225,7 @@ Als u de Log Analytics-agent wilt toestaan om oplossings pakketten te downloaden
 
 | Cloud omgeving | Agentresource | Poorten | Richting |
 |:--|:--|:--|:--|
-|Openbare Azure-peering     | scadvisor.blob.core.windows.net         | 443 | Uitgaand
+|Openbare Azure-peering     | scadvisorcontent.blob.core.windows.net         | 443 | Uitgaand
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Uitgaand
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Uitgaand
 

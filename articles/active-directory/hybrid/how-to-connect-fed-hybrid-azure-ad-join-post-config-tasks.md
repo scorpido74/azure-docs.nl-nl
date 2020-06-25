@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049669"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359786"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Taken na configuratie voor hybride Azure AD-koppeling
 
@@ -52,7 +52,7 @@ Als uw organisatie toegang heeft tot internet via een uitgaande proxy, implement
 
 ## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Configureer het SCP in een forest dat niet is geconfigureerd door Azure AD Connect 
 
-Het SCP (Service Connection Point) bevat uw Azure AD-Tenant gegevens die door uw apparaten worden gebruikt voor automatische registratie.  Voer het Power shell-script ConfigureSCP. ps1 uit dat u hebt gedownload van Azure AD Connect.
+Het SCP (Service Connection Point) bevat uw Azure AD-Tenant gegevens die door uw apparaten worden gebruikt voor automatische registratie.  Voer het Power shell-script ConfigureSCP.ps1 uit dat u hebt gedownload van Azure AD Connect.
 
 ## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Configureer een Federation-service die niet is geconfigureerd door Azure AD Connect
 
@@ -63,7 +63,7 @@ Als uw organisatie een Federation-service gebruikt om u aan te melden bij Azure 
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Schakel Azure AD naadloze SSO in voor Windows-apparaten op lagere niveaus
 
-Als uw organisatie gebruikmaakt van hash-synchronisatie van wacht woorden of Pass-Through-verificatie om zich aan te melden bij Azure AD, schakelt u de naadloze SSO van Azure AD in met die aanmeldings https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ssomethode om Windows-apparaten op lagere niveaus te verifiëren:. 
+Als uw organisatie gebruikmaakt van hash-synchronisatie van wacht woorden of Pass-Through-verificatie om zich aan te melden bij Azure AD, schakelt u de naadloze SSO van Azure AD in met die aanmeldings methode om Windows-apparaten op lagere niveaus te verifiëren: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso . 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Stel het Azure AD-beleid voor Windows-apparaten op lagere niveaus in
 
@@ -82,7 +82,7 @@ Als u [naadloze SSO](how-to-connect-sso.md)gebruikt, schakelt u ook de optie upd
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Installeer micro soft-Workplace Join op Windows-apparaten op een lager niveau
 
-Dit installatie programma maakt een geplande taak op het apparaatsysteem dat wordt uitgevoerd in de context van de gebruiker. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt na verificatie met behulp van geïntegreerde Windows-verificatie op de achtergrond toegevoegd aan het apparaat met Azure AD met de referenties van de gebruiker. Het Download centrum bevindt zich op https://www.microsoft.com/download/details.aspx?id=53554. 
+Dit installatie programma maakt een geplande taak op het apparaatsysteem dat wordt uitgevoerd in de context van de gebruiker. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt na verificatie met behulp van geïntegreerde Windows-verificatie op de achtergrond toegevoegd aan het apparaat met Azure AD met de referenties van de gebruiker. Het Download centrum bevindt zich op https://www.microsoft.com/download/details.aspx?id=53554 . 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. groeps beleid zo configureren dat apparaatregistratie is toegestaan
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31a2bcdcf7b21999ddf17170b024589204c0e9e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b8d0bcff79b6101047545614538dc1d58a854a6d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212782"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361248"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -37,11 +37,13 @@ Een virtuele machine maken met de gekopieerde VHD:
 
 2. Selecteer op de pagina generatie opgeven de optie **generatie 1**.
 
-    ![Een scherm afbeelding van de pagina voor het genereren van opgeven. De optie ' generatie 1 ' is geselecteerd.](media/a41174fd41302a181e46385e1e701975.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm afbeelding van de pagina voor het genereren van opgeven. De optie ' generatie 1 ' is geselecteerd.](media/a41174fd41302a181e46385e1e701975.png)
 
 3. Schakel onder controlepunt type de controle punten uit door het selectie vakje uit te scha kelen.
 
-    ![Een scherm afbeelding van de sectie type controle punt van de pagina met controle punten.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm afbeelding van de sectie type controle punt van de pagina met controle punten.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
 U kunt ook de volgende cmdlet uitvoeren in Power shell om controle punten uit te scha kelen.
 
@@ -53,7 +55,8 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 Als u een virtuele machine maakt op basis van een bestaande VHD, wordt standaard een dynamische schijf gemaakt. U kunt het wijzigen naar een vaste schijf door **schijf bewerken** te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Zie [een Windows VHD of VHDX voorbereiden voor het uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md)voor meer gedetailleerde instructies.
 
-![Een scherm afbeelding van de optie voor het bewerken van de schijf.](media/35772414b5a0f81f06f54065561d1414.png)
+> [!div class="mx-imgBorder"]
+> ![Een scherm afbeelding van de optie voor het bewerken van de schijf.](media/35772414b5a0f81f06f54065561d1414.png)
 
 U kunt ook de volgende Power shell-cmdlet uitvoeren om de schijf naar een vaste schijf te wijzigen.
 
@@ -126,7 +129,8 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 Voor Windows Virtual Desktop Session Host die gebruikmaakt van Windows 10 Enter prise of Windows 10 Enter prise multi-session, raden we u aan om opslag Sense uit te scha kelen. U kunt opslag Sense uitschakelen in het menu instellingen onder **opslag**, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Een scherm opname van het menu opslag onder instellingen. De optie ' opslag Sense ' is uitgeschakeld.](media/storagesense.png)
+> [!div class="mx-imgBorder"]
+> ![Een scherm opname van het menu opslag onder instellingen. De optie ' opslag Sense ' is uitgeschakeld.](media/storagesense.png)
 
 U kunt de instelling ook wijzigen met het REGI ster door de volgende opdracht uit te voeren:
 
@@ -189,15 +193,18 @@ In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie upl
 
 2. Upload de VHD naar een BLOB-container in uw opslag account. U kunt snel uploaden met het [Storage Explorer-hulp programma](https://azure.microsoft.com/features/storage-explorer/). Zie [dit artikel](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)voor meer informatie over het Storage Explorer-hulp programma.
 
-    ![Een scherm opname van het zoek venster van het Microsoft Azure Storage Explorer-hulp programma. Het selectie vakje upload. VHD-of vhdx-bestanden als pagina-blobs (aanbevolen) is ingeschakeld.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van het zoek venster van het Microsoft Azure Storage Explorer-hulp programma. Het selectie vakje upload. VHD-of vhdx-bestanden als pagina-blobs (aanbevolen) is ingeschakeld.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. Ga vervolgens naar de Azure Portal in uw browser en zoek naar ' installatie kopieën '. Uw zoek opdracht leidt u naar de pagina **installatie kopie maken** , zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-    ![Een scherm opname van de pagina afbeelding maken van het Azure Portal, gevuld met voorbeeld waarden voor de afbeelding.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de pagina afbeelding maken van het Azure Portal, gevuld met voorbeeld waarden voor de afbeelding.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
 4. Wanneer u de installatie kopie hebt gemaakt, ziet u een melding zoals de afbeelding in de volgende scherm afbeelding:
 
-    ![Een scherm opname van de melding ' installatie kopie is gemaakt '.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de melding ' installatie kopie is gemaakt '.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

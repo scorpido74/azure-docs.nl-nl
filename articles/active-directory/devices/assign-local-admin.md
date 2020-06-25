@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4285c7d8cd6c9feee84eaae3c49ffd1f21d5df27
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253083"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360330"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -88,7 +88,7 @@ U kunt geen groepen toewijzen aan de rol apparaat-beheerder, alleen afzonderlijk
 
 Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten. Ze kunnen niet worden toegewezen aan een specifieke set apparaten.
 
-Wanneer u gebruikers van de rol apparaat-beheerder verwijdert, hebben ze nog steeds de lokale beheerders bevoegdheden op een apparaat zolang ze hiervoor zijn aangemeld. De bevoegdheid wordt ingetrokken tijdens de volgende aanmelding of na 4 uur wanneer er een nieuw primair vernieuwings token is uitgegeven.
+Wanneer u gebruikers van de rol apparaat-beheerder verwijdert, hebben ze nog steeds de lokale beheerders bevoegdheden op een apparaat zolang ze hiervoor zijn aangemeld. De bevoegdheid wordt ingetrokken tijdens de volgende aanmelding na 4 uur wanneer er een nieuw primair vernieuwings token is uitgegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

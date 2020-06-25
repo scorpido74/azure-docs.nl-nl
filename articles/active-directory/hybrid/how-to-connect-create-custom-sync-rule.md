@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65d4c477d0e3aa9d5feea53e3e667ece651c83f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75300824d94ecbd77f426539ce99da6caaa2e27a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60351041"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359990"
 ---
 # <a name="how-to-customize-a-synchronization-rule"></a>Een synchronisatieregel aanpassen
 
@@ -28,9 +28,9 @@ ms.locfileid: "60351041"
 
 U kunt de editor voor synchronisatie regels gebruiken om een nieuwe synchronisatie regel te bewerken of te maken. U moet een geavanceerde gebruiker zijn om wijzigingen in de synchronisatie regels aan te brengen. Eventuele verkeerde wijzigingen kunnen ertoe leiden dat objecten uit uw doelmap worden verwijderd. Lees de [Aanbevolen documenten](#recommended-documents) om expertise in synchronisatie regels te krijgen. Ga als volgt te werk om een synchronisatie regel te wijzigen:
 
-* Start de synchronisatie-editor vanuit het menu toepassing in het bureau blad, zoals hieronder wordt weer gegeven:
+* Start de synchronisatie-editor vanuit het toepassingsmenu op het bureaublad, zoals hieronder wordt weergegeven:
 
-    ![Menu synchronisatie regel Editor](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
+    ![Menu voor synchronisatieregeleditor](media/how-to-connect-create-custom-sync-rule/how-to-connect-create-custom-sync-rule/syncruleeditormenu.png)
 
 * Als u een standaard synchronisatie regel wilt aanpassen, kloont u de bestaande regel door te klikken op de knop bewerken in de editor voor synchronisatie regels, waarmee een kopie wordt gemaakt van de standaard regel standaard en deze wordt uitgeschakeld. Sla de gekloonde regel op met een prioriteit die kleiner is dan 100.  De prioriteit bepaalt welke regel WINS (lagere numerieke waarde) een conflict oplossing als er sprake is van een conflict met de kenmerk stroom.
 

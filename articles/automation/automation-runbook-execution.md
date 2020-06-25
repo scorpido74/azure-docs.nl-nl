@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9e602f9ed6a9132c78dbdf0ea3246cbeae80671
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4f62a94c8ed8baa9979aa1469e785d26781af7f0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832347"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361622"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
 
@@ -53,7 +53,7 @@ De volgende tabel bevat een aantal uitvoerings taken voor runbook met de aanbevo
 |Software en uitvoer bare bestanden van derden vereisen|Hybrid Runbook Worker|U beheert het besturings systeem en kan software installeren.|
 |Een bestand of map bewaken met een runbook|Hybrid Runbook Worker|Een [Watcher-taak](automation-watchers-tutorial.md) gebruiken op een Hybrid Runbook Worker.|
 |Een resource-intensieve script uitvoeren|Hybrid Runbook Worker| Azure-sandboxes hebben [resource limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).|
-|Modules met specifieke vereisten gebruiken| Hybrid Runbook Worker|Een aantal voorbeelden:</br> WinSCP-afhankelijkheid op WinSCP. exe </br> IIS-beheer-afhankelijkheid van het in-of beheren van IIS|
+|Modules met specifieke vereisten gebruiken| Hybrid Runbook Worker|Een aantal voorbeelden:</br> WinSCP-afhankelijkheid op winscp.exe </br> IIS-beheer-afhankelijkheid van het in-of beheren van IIS|
 |Een module installeren met een installatie programma|Hybrid Runbook Worker|Modules voor sandbox moeten kopiëren ondersteunen.|
 |Runbooks of modules gebruiken waarvoor .NET Framework versie anders is dan 4.7.2|Hybrid Runbook Worker|Azure-sandboxes ondersteunen .NET Framework 4.7.2 en de upgrade naar een andere versie wordt niet ondersteund.|
 |Scripts uitvoeren waarvoor uitbrei ding van bevoegdheden is vereist|Hybrid Runbook Worker|Sandboxes staan geen uitbrei ding van bevoegdheden toe. Met een Hybrid Runbook Worker kunt u UAC uitschakelen en [invoke-opdracht](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) gebruiken bij het uitvoeren van de opdracht die uitbrei ding vereist.|
@@ -79,7 +79,7 @@ Voor een runbook zijn de juiste [referenties](shared-resources/credentials.md) v
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Azure Automation maakt gebruik van de [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor het bewaken van de computer bewerkingen. Voor de bewerkingen is een Log Analytics-werk ruimte en [log Analytics agents](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)vereist.
+Azure Automation maakt gebruik van [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor het bewaken van de computer bewerkingen. Voor de bewerkingen is een Log Analytics-werk ruimte en [log Analytics agents](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)vereist.
 
 ### <a name="log-analytics-agent-for-windows"></a>Log Analytics-agent voor Windows
 
@@ -231,5 +231,5 @@ Als u onderliggende runbooks gebruikt, wordt de totale hoeveelheid tijd voor het
 * Zie [zelf studie: een Power shell-Runbook maken](learn/automation-tutorial-runbook-textual-powershell.md)om aan de slag te gaan met een Power shell-runbook.
 * Zie [Runbooks beheren in azure Automation](manage-runbooks.md)voor het werken met runbooks.
 * Zie [Power shell docs](https://docs.microsoft.com/powershell/scripting/overview)(Engelstalig) voor meer informatie over Power shell.
-* * Zie [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)(Engelstalig) voor een Power shell-cmdlet-verwijzing.
+* * Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+) voor een naslagdocumentatie voor een PowerShell-cmdlet.

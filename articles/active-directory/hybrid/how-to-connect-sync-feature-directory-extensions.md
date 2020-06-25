@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77917910"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357457"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronisatie: Directory-extensies
 U kunt Directory-extensies gebruiken om het schema uit te breiden in Azure Active Directory (Azure AD) met uw eigen kenmerken van on-premises Active Directory. Met deze functie kunt u LOB-apps bouwen door gebruik te maken van kenmerken die u on-premises blijft beheren. Deze kenmerken kunnen worden gebruikt via [uitbrei dingen](https://docs.microsoft.com/graph/extensibility-overview
@@ -60,14 +60,14 @@ Tijdens de installatie van Azure AD Connect wordt een toepassing geregistreerd w
 
 Zorg ervoor dat u **alle toepassingen** selecteert om deze app weer te geven.
 
-De kenmerken worden voorafgegaan door de **extensie \_{ApplicationId}\_**. ApplicationId heeft dezelfde waarde voor alle kenmerken in uw Azure AD-Tenant. U hebt deze waarde nodig voor alle andere scenario's in dit onderwerp.
+De kenmerken worden voorafgegaan door de **extensie \_ {ApplicationId} \_ **. ApplicationId heeft dezelfde waarde voor alle kenmerken in uw Azure AD-Tenant. U hebt deze waarde nodig voor alle andere scenario's in dit onderwerp.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Kenmerken weer geven met behulp van de Microsoft Graph-API
 
 Deze kenmerken zijn nu beschikbaar via de Microsoft Graph-API met behulp van [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> In de Microsoft Graph-API moet u vragen om de kenmerken te retour neren. Selecteer de kenmerken als volgt expliciet: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
+> In de Microsoft Graph-API moet u vragen om de kenmerken te retour neren. Selecteer de kenmerken als volgt expliciet: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division` .
 >
 > Zie [Microsoft Graph: query parameters gebruiken](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)voor meer informatie.
 

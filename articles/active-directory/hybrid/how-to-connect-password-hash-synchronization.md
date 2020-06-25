@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e37095a964e656160edbbbc4a325feceb1e48e74
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84749628"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358559"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie implementeren met Azure AD Connect-synchronisatie
 In dit artikel vindt u informatie die u nodig hebt om uw gebruikers wachtwoorden te synchroniseren vanuit een on-premises Active Directory-exemplaar naar een op de cloud gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -122,7 +122,6 @@ Voor behoud: als er gesynchroniseerde accounts zijn die niet-verlopende wacht wo
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> Deze functie is nu beschikbaar in de open bare preview.
 > De Power shell-opdracht set-MsolPasswordPolicy werkt niet op federatieve domeinen. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Tijdelijke wacht woorden synchroniseren en wacht woord wijzigen bij volgende aanmelding afdwingen
@@ -140,9 +139,6 @@ Ter ondersteuning van tijdelijke wacht woorden in azure AD voor gesynchroniseerd
 
 > [!CAUTION]
 > U moet deze functie alleen gebruiken wanneer SSPR en wacht woord terugschrijven zijn ingeschakeld op de Tenant.  Dit betekent dat als een gebruiker het wacht woord wijzigt via SSPR, deze wordt gesynchroniseerd met Active Directory.
-
-> [!NOTE]
-> Deze functie is nu beschikbaar in de open bare preview.
 
 #### <a name="account-expiration"></a>Account verloop tijd
 

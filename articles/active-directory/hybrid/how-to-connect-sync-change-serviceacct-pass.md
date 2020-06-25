@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984501"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357559"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Het wacht woord voor het ADSync-service account wijzigen
 Als u het wacht woord voor het ADSync-service account wijzigt, kan de synchronisatie service niet goed worden gestart totdat u de versleutelings sleutel hebt verlaten en het wacht woord voor het ADSync-service account opnieuw hebt geïnitialiseerd. 
@@ -107,7 +107,7 @@ Als de bestaande wacht woorden in de data base niet langer kunnen worden ontsleu
 U kunt het wacht woord van het Azure AD-service account niet rechtstreeks opgeven bij de synchronisatie service. In plaats daarvan moet u de cmdlet **add-ADSyncAADServiceAccount** gebruiken om het Azure AD-service account opnieuw te initialiseren. De cmdlet stelt het account wachtwoord opnieuw in en maakt het beschikbaar voor de synchronisatie service:
 
 1. Start een nieuwe Power shell-sessie op de Azure AD Connect-server.
-2. Voer de `Add-ADSyncAADServiceAccount`cmdlet uit.
+2. Voer de cmdlet uit `Add-ADSyncAADServiceAccount` .
 3. Geef in het pop-upvenster de globale beheerders referenties voor Azure AD op voor uw Azure AD-Tenant.
 ![Hulp programma voor synchronisatie van versleutelings sleutel Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
 4. Als dat lukt, wordt de Power shell-opdracht prompt weer gegeven.

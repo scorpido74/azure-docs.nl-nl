@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
+ms.topic: reference
 ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51c14fd7f427c29c47521a7355309e62ab2254ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78298612"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360450"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Expressies schrijven voor kenmerk toewijzingen in Azure Active Directory
 Wanneer u Cloud inrichting configureert, is een van de typen kenmerk toewijzingen die u kunt opgeven een expressie toewijzing. 
@@ -29,14 +29,14 @@ Het volgende document geldt voor de script achtige expressies die worden gebruik
 De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual Basic for Applications (VBA)-functies.
 
 * De volledige expressie moet worden gedefinieerd in termen van functies, die bestaan uit een naam gevolgd door argumenten tussen haakjes: <br>
-  *Functie naam (`<<argument 1>>`,`<<argument N>>`)*
-* U kunt functies binnen elkaar nesten. Bijvoorbeeld: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
+  *Functie naam ( `<<argument 1>>` , `<<argument N>>` )*
+* U kunt functies binnen elkaar nesten. Bijvoorbeeld: <br> *FunctionOne (FunctionTwo ( `<<argument1>>` ))*
 * U kunt drie verschillende typen argumenten door geven aan functies:
   
   1. Kenmerken, die tussen vier Kante haken moeten worden geplaatst. Bijvoorbeeld: [kenmerknaam]
   2. Teken reeks constanten, die tussen dubbele aanhalings tekens moeten worden geplaatst. Bijvoorbeeld: "Verenigde Staten"
-  3. Andere functies. Bijvoorbeeld: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* Als u voor teken reeks constanten een back slash (\) of aanhalings teken (") in de teken reeks nodig hebt, moet deze worden voorafgegaan door het back slash-symbool (\). Bijvoorbeeld: "bedrijfs naam: \\" Contoso\\""
+  3. Andere functies. Bijvoorbeeld: FunctionOne ( `<<argument1>>` , FunctionTwo ( `<<argument2>>` ))
+* Als u voor teken reeks constanten een back slash (\) of aanhalings teken (") in de teken reeks nodig hebt, moet deze worden voorafgegaan door het back slash-symbool (\). Bijvoorbeeld: "bedrijfs naam: \\ " Contoso \\ ""
 
 ## <a name="list-of-functions"></a>Lijst met functies
 | Lijst met functies | Beschrijving |
@@ -73,7 +73,7 @@ De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual 
 |[Delen](#split)|Hiermee splitst u een teken reeks in een matrix met meerdere waarden met behulp van het opgegeven scheidings teken.|
 |[StringFromSID](#stringfromsid)|Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgezet in een teken reeks.| 
 |[StripSpaces](#stripspaces) |Verwijdert alle spatie tekens ("") uit de bron teken reeks.| 
-|[Switch](#switch)|Als de **bron** waarde overeenkomt met een **sleutel**, retourneert **waarde** voor die **sleutel**. | 
+|[/Tijdnotatie](#switch)|Als de **bron** waarde overeenkomt met een **sleutel**, retourneert **waarde** voor die **sleutel**. | 
 |[ToLower](#tolower)|Neemt een *bron* teken reeks waarde en converteert deze in kleine letters met de opgegeven cultuur regels.| 
 |[ToUpper](#toupper)|Neemt een *bron* teken reeks waarde en converteert deze in hoofd letters met de opgegeven cultuur regels.|
 |[Interne](#trim)|De functie Trim verwijdert voor loop-en volg spaties uit een teken reeks.|
@@ -97,7 +97,7 @@ De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual 
 **Beschrijving:**  
 De functie BitAnd stelt opgegeven bits in op een waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num BitAnd(num value1, num value2)`
 
 * waarde1, waarde2: numerieke waarden die samen moeten worden AND'ed
@@ -110,7 +110,7 @@ Deze functie converteert beide para meters naar de binaire weer gave en stelt ee
 
 Met andere woorden: het retourneert 0 in alle gevallen, behalve wanneer de overeenkomstige bits van beide para meters 1 zijn.
 
-**Hierbij**  
+**Voorbeeld:**  
  
  `BitAnd(&HF, &HF7)`</br>
  Retourneert 7 omdat de hexadecimale waarde "F" en "F7" resulteren in deze waarden.
@@ -121,13 +121,13 @@ Met andere woorden: het retourneert 0 in alle gevallen, behalve wanneer de overe
 **Beschrijving:**  
 De functie CBool retourneert een Booleaanse waarde op basis van de geëvalueerde expressie
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool CBool(exp Expression)`
 
 **Opmerkingen**  
 Als de expressie resulteert in een waarde die niet gelijk is aan nul, retourneert CBool True, anders wordt false geretourneerd.
 
-**Hierbij**  
+**Voorbeeld:**  
 `CBool([attrib1] = [attrib2])`  
 
 Retourneert waar als beide kenmerken dezelfde waarde hebben.
@@ -137,14 +137,14 @@ Retourneert waar als beide kenmerken dezelfde waarde hebben.
 **Beschrijving:**  
 De functie ConvertFromBase64 converteert de opgegeven base64-gecodeerde waarde naar een reguliere teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ConvertFromBase64(str source)`-gaat ervan uit dat Unicode voor coderen  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Bron: base64-gecodeerde teken reeks  
 * Encoding: Unicode, ASCII, UTF8
 
-**Voorbeeld**  
+**Hierbij**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
@@ -156,10 +156,10 @@ Beide voor beelden retour neren '*Hello World!*'
 De functie ConvertToBase64 converteert een teken reeks naar een Unicode base64-teken reeks.  
 Hiermee wordt de waarde van een matrix met gehele getallen geconverteerd naar de equivalente teken reeks weergave die is gecodeerd met base-64 cijfers.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ConvertToBase64(str source)`
 
-**Hierbij**  
+**Voorbeeld:**  
 `ConvertToBase64("Hello world!")`  
 Retourneert "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
@@ -168,13 +168,13 @@ Retourneert "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 **Beschrijving:**  
 De functie ConvertToUTF8Hex converteert een teken reeks naar een UTF8 hexadecimale waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ConvertToUTF8Hex(str source)`
 
 **Opmerkingen**  
 De uitvoer indeling van deze functie wordt gebruikt door Azure Active Directory als DN-kenmerk indeling.
 
-**Hierbij**  
+**Voorbeeld:**  
 `ConvertToUTF8Hex("Hello world!")`  
 Retourneert 48656C6C6F20776F726C6421
 
@@ -183,7 +183,7 @@ Retourneert 48656C6C6F20776F726C6421
 **Beschrijving:**  
 De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
 
-**Syntaxis:**  
+**Syntaxis**  
 `num Count(mvstr attribute)`
 
 ---
@@ -191,14 +191,14 @@ De functie Count retourneert het aantal elementen in een kenmerk met meerdere wa
 **Beschrijving:**  
 De functie CStr wordt geconverteerd naar een teken reeks gegevens type.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
 * waarde: kan een numerieke waarde, een referentie kenmerk of een Boolean zijn.
 
-**Hierbij**  
+**Voorbeeld:**  
 `CStr([dn])`  
 Kan ' CN = Joe, DC = contoso, DC = com ' retour neren
 
@@ -207,10 +207,10 @@ Kan ' CN = Joe, DC = contoso, DC = com ' retour neren
 **Beschrijving:**  
 Met de functie DateFromNum wordt een waarde in de datum notatie van AD geconverteerd naar een DateTime-type.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt DateFromNum(num value)`
 
-**Hierbij**  
+**Voorbeeld:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 Retourneert een datum/tijd die 2012-01-01 23:00:00 vertegenwoordigt
@@ -220,13 +220,13 @@ Retourneert een datum/tijd die 2012-01-01 23:00:00 vertegenwoordigt
 **Beschrijving:**  
 De functie DNComponent retourneert de waarde van een opgegeven DN-onderdeel van links.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
 * DN: het referentie kenmerk dat moet worden geïnterpreteerd
 * ComponentNumber: het onderdeel in de DN dat moet worden geretourneerd
 
-**Hierbij**  
+**Voorbeeld:**  
 `DNComponent(CRef([dn]),1)`  
 Als DN "CN = Joe, OE =...," retourneert Joe
 
@@ -235,10 +235,10 @@ Als DN "CN = Joe, OE =...," retourneert Joe
 **Beschrijving:**  
 De functie Error wordt gebruikt om een aangepaste fout te retour neren.
 
-**Syntaxis:**  
+**Syntaxis**  
 `void Error(str ErrorMessage)`
 
-**Hierbij**  
+**Voorbeeld:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Als het kenmerk AccountName niet aanwezig is, genereert een fout op het object.
 
@@ -253,7 +253,7 @@ Als het kenmerk AccountName niet aanwezig is, genereert een fout op het object.
    | Naam | Vereist/herhalend | Type | Opmerkingen |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het bron object. |
-   | **inputFormat** |Vereist |Tekenreeks |Verwachte indeling van de bron waarde. Zie [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)voor ondersteunde indelingen. |
+   | **inputFormat** |Vereist |Tekenreeks |Verwachte indeling van de bron waarde. Zie voor ondersteunde indelingen [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
    | **Output** |Vereist |Tekenreeks |De indeling van de uitvoer datum. |
 
 ---
@@ -261,7 +261,7 @@ Als het kenmerk AccountName niet aanwezig is, genereert een fout op het object.
 **Beschrijving:**  
 De functie-GUID genereert een nieuwe wille keurige GUID
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Guid()`
 
 ---
@@ -269,14 +269,14 @@ De functie-GUID genereert een nieuwe wille keurige GUID
 **Beschrijving:**  
 De functie IIF retourneert een van een set mogelijke waarden op basis van een opgegeven voor waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 * voor waarde: elke waarde of expressie die als waar of ONWAAR kan worden geëvalueerd.
 * valueIfTrue: als de voor waarde wordt geëvalueerd als waar, wordt de geretourneerde waarde.
 * valueIfFalse: als de voor waarde wordt geëvalueerd als onwaar, wordt de geretourneerde waarde.
 
-**Hierbij**  
+**Voorbeeld:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Als de gebruiker een interne is, retourneert de alias van een gebruiker waaraan ' t-' is toegevoegd. anders wordt de alias van de gebruiker geretourneerd.
 
@@ -285,7 +285,7 @@ De functie IIF retourneert een van een set mogelijke waarden op basis van een op
 **Beschrijving:**  
 De functie InStr zoekt het eerste exemplaar van een subtekenreeks in een teken reeks
 
-**Syntaxis:**  
+**Syntaxis**  
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
@@ -299,7 +299,7 @@ De functie InStr zoekt het eerste exemplaar van een subtekenreeks in een teken r
 **Opmerkingen**  
 Retourneert de positie waar de subtekenreeks is gevonden of 0 als deze niet is gevonden.
 
-**Hierbij**  
+**Voorbeeld:**  
 `InStr("The quick brown fox","quick")`  
 Evalues tot 5
 
@@ -311,13 +311,13 @@ Evalueert tot 7
 **Beschrijving:**  
 Als de expressie resulteert in null, retourneert de functie IsNull de waarde True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsNull(var Expression)`
 
 **Opmerkingen**  
 Voor een kenmerk wordt een null-waarde uitgedrukt door het ontbreken van het kenmerk.
 
-**Hierbij**  
+**Voorbeeld:**  
 `IsNull([displayName])`  
 Retourneert waar als het kenmerk niet aanwezig is in de CS of MV.
 
@@ -326,14 +326,14 @@ Retourneert waar als het kenmerk niet aanwezig is in de CS of MV.
 **Beschrijving:**  
 Als de expressie Null of een lege teken reeks is, retourneert de functie IsNullOrEmpty ' True '.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsNullOrEmpty(var Expression)`
 
 **Opmerkingen**  
 Voor een-kenmerk resulteert dit in waar als het kenmerk ontbreekt of aanwezig is, maar een lege teken reeks is.  
 De inverse van deze functie heeft de naam IsPresent.
 
-**Hierbij**  
+**Voorbeeld:**  
 `IsNullOrEmpty([displayName])`  
 Retourneert waar als het kenmerk niet aanwezig is of een lege teken reeks in de CS of MV is.
 
@@ -342,13 +342,13 @@ Retourneert waar als het kenmerk niet aanwezig is of een lege teken reeks in de 
 **Beschrijving:**  
 Als de expressie resulteert in een teken reeks die niet null en niet leeg is, retourneert de functie IsPresent de waarde True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsPresent(var expression)`
 
 **Opmerkingen**  
 De inverse van deze functie heeft de naam IsNullOrEmpty.
 
-**Hierbij**  
+**Voorbeeld:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -356,7 +356,7 @@ De inverse van deze functie heeft de naam IsNullOrEmpty.
 **Beschrijving:**  
 De functie item retourneert één item uit een teken reeks/kenmerk met meerdere waarden.
 
-**Syntaxis:**  
+**Syntaxis**  
 `var Item(mvstr attribute, num index)`
 
 * kenmerk: kenmerk met meerdere waarden
@@ -367,7 +367,7 @@ De functie item is handig in combi natie met de functie contains, aangezien de l
 
 Genereert een fout als de index buiten het bereik valt.
 
-**Hierbij**  
+**Voorbeeld:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Retourneert het primaire e-mail adres.
 
@@ -376,7 +376,7 @@ Retourneert het primaire e-mail adres.
 **Beschrijving:**  
 Als de expressie kan worden geëvalueerd als een teken reeks type, wordt de functie IsString geëvalueerd als True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsString(var expression)`
 
 **Opmerkingen**  
@@ -402,7 +402,7 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 **Beschrijving:**  
 De functie Left retourneert een opgegeven aantal tekens vanaf de linkerkant van een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Left(str string, num NumChars)`
 
 * teken reeks: de teken reeks waaruit tekens moeten worden opgehaald
@@ -417,9 +417,9 @@ Een teken reeks met de eerste numChars tekens in de teken reeks:
 
 Als teken reeks minder tekens bevat dan het getal dat is opgegeven in numChars, wordt een teken reeks geretourneerd die identiek is aan de teken reeks (dat wil zeggen, met alle tekens in para meter 1).
 
-**Hierbij**  
+**Voorbeeld:**  
 `Left("John Doe", 3)`  
-Retourneert `Joh`.
+Retourneert `Joh` .
 
 ---
 ### <a name="mid"></a>Mid
@@ -464,10 +464,10 @@ Retourneert `Joh`.
 **Beschrijving:**  
 De functie RemoveDuplicates gebruikt een teken reeks met meerdere waarden en zorg ervoor dat elke waarde uniek is.
 
-**Syntaxis:**  
+**Syntaxis**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Hierbij**  
+**Voorbeeld:**  
 `RemoveDuplicates([proxyAddresses])`  
 Retourneert een gezuiverd proxyAddress attribuut-kenmerk waarbij alle dubbele waarden zijn verwijderd.
 
@@ -557,7 +557,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 **Beschrijving:**  
 Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgezet in een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
@@ -585,7 +585,7 @@ Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgez
    | **Bron** |Vereist |Tekenreeks |Te controleren **bron** waarde. |
    | **Standaard** |Optioneel |Tekenreeks |De standaard waarde die moet worden gebruikt als de bron niet overeenkomt met een sleutel. Kan een lege teken reeks zijn (""). |
    | **prestatie** |Vereist |Tekenreeks |**Sleutel** voor het vergelijken van de **bron** waarde met. |
-   | **Value** |Vereist |Tekenreeks |Vervangings waarde voor de **bron** die overeenkomt met de sleutel. |
+   | **value** |Vereist |Tekenreeks |Vervangings waarde voor de **bron** die overeenkomt met de sleutel. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -620,10 +620,10 @@ Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgez
 **Beschrijving:**  
 De functie Trim verwijdert voor loop-en volg spaties uit een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Trim(str value)`  
 
-**Hierbij**  
+**Voorbeeld:**  
 `Trim(" Test ")`  
 Retourneert ' test '.
 
@@ -635,7 +635,7 @@ Hiermee verwijdert u voor loop-en volg spaties voor elke waarde in het kenmerk p
 **Beschrijving:**  
 De functie Word retourneert een woord dat deel uitmaakt van een teken reeks, op basis van para meters die de scheidings tekens beschrijven die moeten worden gebruikt en het woord nummer dat moet worden geretourneerd.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Word(str string, num WordNumber, str delimiters)`
 
 * teken reeks: de teken reeks waaruit een woord moet worden geretourneerd.
@@ -650,7 +650,7 @@ Elke teken reeks in een teken reeks gescheiden door de tekens van de spaties wor
 
 Als teken reeks minder dan cijfer woorden bevat, of teken reeks geen woorden die zijn geïdentificeerd door scheidings tekens, wordt een lege teken reeks geretourneerd.
 
-**Hierbij**  
+**Voorbeeld:**  
 `Word("The quick brown fox",3," ")`  
 Retourneert ' bruin '
 
@@ -667,7 +667,7 @@ Als het domein bijvoorbeeld ' contoso.com ' is, kunt u de volgende expressie geb
 
 **Voor beeld van invoer/uitvoer:** <br>
 
-* **Invoer** (e-mail adresjohn.doe@contoso.com): ""
+* **Invoer** (e-mail adres): " john.doe@contoso.com "
 * **Uitvoer**: "John. Splinter"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Een constant achtervoegsel toevoegen aan de gebruikers naam
@@ -678,8 +678,8 @@ Als u een Sales Force-sandbox gebruikt, moet u mogelijk een extra achtervoegsel 
 
 **Voor beeld van invoer/uitvoer:** <br>
 
-* **Invoer**: (userPrincipalName): "John.Doe@contoso.com"
-* **Uitvoer**: "John.Doe@contoso.com.test"
+* **Invoer**: (userPrincipalName): " John.Doe@contoso.com "
+* **Uitvoer**: " John.Doe@contoso.com.test "
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Gebruikers alias genereren door delen van de voor-en achternaam samen te voegen
 U moet een gebruikers alias genereren door eerste drie letters van de voor naam van de gebruiker en eerste 5 letters van de achternaam van de gebruiker te nemen.
@@ -762,7 +762,7 @@ In het onderstaande voor beeld wordt de UPN-waarde gegenereerd door het samen vo
 
 * **Invoer** (PreferredFirstName): "John"
 * **Invoer** (PreferredLastName): "Smith"
-* **Uitvoer**: "john.smith@contoso.com"
+* **Uitvoer**: " john.smith@contoso.com "
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Genereer een unieke waarde voor het kenmerk userPrincipalName (UPN)
 Op basis van de voor naam van de gebruiker, de middelste naam en de achternaam, moet u een waarde voor het UPN-kenmerk genereren en controleren of de uniekheid in de AD-doel directory is voordat u de waarde aan het UPN-kenmerk toewijst.
@@ -779,9 +779,9 @@ Op basis van de voor naam van de gebruiker, de middelste naam en de achternaam, 
 
 * **Invoer** (PreferredFirstName): "John"
 * **Invoer** (PreferredLastName): "Smith"
-* **Uitvoer**: "John.Smith@contoso.com" als UPN-waarde John.Smith@contoso.com van niet al bestaat in de map
-* **Uitvoer**: "J.Smith@contoso.com" als UPN-waarde John.Smith@contoso.com al bestaat in de map
-* **Uitvoer**: "Jo.Smith@contoso.com" als de bovenstaande twee UPN-waarden al bestaan in de map
+* **Uitvoer**: " John.Smith@contoso.com " als UPN-waarde van John.Smith@contoso.com niet al bestaat in de map
+* **Uitvoer**: " J.Smith@contoso.com " als UPN-waarde John.Smith@contoso.com al bestaat in de map
+* **Uitvoer**: " Jo.Smith@contoso.com " als de bovenstaande twee UPN-waarden al bestaan in de map
 
 
 ## <a name="next-steps"></a>Volgende stappen 

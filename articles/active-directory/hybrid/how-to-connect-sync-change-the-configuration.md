@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558566"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357865"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
 Het doel van dit artikel is om u te laten zien hoe u wijzigingen aanbrengt in de standaard configuratie in Azure Active Directory (Azure AD) Connect Sync. Het bevat stappen voor enkele veelvoorkomende scenario's. Met deze kennis moet u eenvoudige wijzigingen in uw eigen configuratie kunnen aanbrengen op basis van uw eigen bedrijfs regels.

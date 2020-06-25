@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897191"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359089"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose and remediate duplicated attribute sync errors (Synchronisatiefouten door dubbel kenmerk analyseren en herstellen)
 
@@ -32,9 +32,9 @@ De functie voor het diagnosticeren heeft de volgende voor delen:
 - Er is geen upgrade of configuratie vereist om deze functie in te scha kelen.
 Zie [Identiteitssynchronisatie en dubbel kenmerk tolerantie](how-to-connect-syncservice-duplicate-attribute-resiliency.md)voor meer informatie over Azure AD.
 
-## <a name="problems"></a>Treden
+## <a name="problems"></a>Problemen
 ### <a name="a-common-scenario"></a>Een veelvoorkomend scenario
-Wanneer **QuarantinedAttributeValueMustBeUnique** -en **AttributeValueMustBeUnique** -synchronisatie fouten optreden, is het gebruikelijk om een **userPrincipalName** -of **proxy-adres** conflict te zien in azure AD. U kunt de synchronisatie fouten oplossen door het conflicterende bron object van de on-premises kant bij te werken. De synchronisatie fout wordt na de volgende synchronisatie opgelost. Deze afbeelding geeft bijvoorbeeld aan dat twee gebruikers een conflict hebben met hun **userPrincipalName**. Beide zijn **Joe. J\@contoso.com**. De conflicterende objecten worden in quarantaine geplaatst in azure AD.
+Wanneer **QuarantinedAttributeValueMustBeUnique** -en **AttributeValueMustBeUnique** -synchronisatie fouten optreden, is het gebruikelijk om een **userPrincipalName** -of **proxy-adres** conflict te zien in azure AD. U kunt de synchronisatie fouten oplossen door het conflicterende bron object van de on-premises kant bij te werken. De synchronisatie fout wordt na de volgende synchronisatie opgelost. Deze afbeelding geeft bijvoorbeeld aan dat twee gebruikers een conflict hebben met hun **userPrincipalName**. Beide zijn **Joe. J \@ contoso.com**. De conflicterende objecten worden in quarantaine geplaatst in azure AD.
 
 ![Algemeen scenario voor het uitvoeren van een diagnose fout](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 

@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "64571126"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360177"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Problemen met Azure AD-connectiviteit oplossen met de Power shell-module ADConnectivityTool
 
@@ -45,9 +45,9 @@ Wanneer een van deze problemen wordt gevonden, wordt er een verwant fout bericht
 
 Als we bijvoorbeeld proberen een directory toe te voegen op het scherm **verbinding maken met uw mappen** , moet Azure AD Connect dit controleren en verwacht te kunnen communiceren met een domein controller via poort 389.  Als dat niet het geval is, ziet u de fout die wordt weer gegeven in de bovenstaande scherm afbeelding.  
 
-Wat er daad werkelijk gebeurt achter de schermen, is dat Azure AD Connect de `Start-NetworkConnectivityDiagnosisTools` functie aanroept.  Deze functie wordt aangeroepen wanneer de validatie van de referenties mislukt vanwege een probleem met de netwerk verbinding.
+Wat er daad werkelijk gebeurt achter de schermen, is dat Azure AD Connect de functie aanroept `Start-NetworkConnectivityDiagnosisTools` .  Deze functie wordt aangeroepen wanneer de validatie van de referenties mislukt vanwege een probleem met de netwerk verbinding.
 
-Ten slotte wordt er een gedetailleerd logboek bestand gegenereerd wanneer het hulp programma wordt aangeroepen vanuit de wizard. Het logboek bevindt zich in **\<C:\ProgramData\AADConnect\ADConnectivityTool-date\<>-time>. log**
+Ten slotte wordt er een gedetailleerd logboek bestand gegenereerd wanneer het hulp programma wordt aangeroepen vanuit de wizard. Het logboek bevindt zich in **C:\ProgramData\AADConnect\ADConnectivityTool- \<date> - \<time> . log**
 
 ## <a name="adconnectivitytools-post-installation"></a>ADConnectivityTools na installatie
 Nadat Azure AD Connect is geïnstalleerd, kunnen alle functies in de Power shell-module ADConnectivityTools worden gebruikt.  

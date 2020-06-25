@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71176670"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85357916"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory naadloze eenmalige aanmelding: technische grondige kennis
 
@@ -39,12 +39,12 @@ Deze sectie heeft drie delen:
 
 Naadloze SSO is ingeschakeld met Azure AD Connect, zoals [hier](how-to-connect-sso-quick-start.md)wordt weer gegeven. De volgende stappen worden uitgevoerd tijdens het inschakelen van de functie:
 
-- Er wordt een computer`AZUREADSSOACC`account () gemaakt in uw on-premises Active Directory (AD) in elk AD-forest dat u synchroniseert met Azure AD (met behulp van Azure AD Connect).
+- Er wordt een computer account ( `AZUREADSSOACC` ) gemaakt in uw on-premises Active Directory (AD) in elk AD-forest dat u synchroniseert met Azure AD (met behulp van Azure AD Connect).
 - Daarnaast wordt er een aantal Spn's (Service Principal Names) voor Kerberos gemaakt dat wordt gebruikt tijdens het aanmelden bij Azure AD.
 - De Kerberos-ontsleutelings sleutel van de computer account wordt beveiligd gedeeld met Azure AD. Als er meerdere AD-forests zijn, heeft elk computer account een eigen unieke Kerberos-ontsleutelings sleutel.
 
 >[!IMPORTANT]
-> Het `AZUREADSSOACC` computer account moet om veiligheids redenen sterk worden beveiligd. Alleen domein Administrators moeten het computer account kunnen beheren. Zorg ervoor dat Kerberos-delegering op het computer account is uitgeschakeld en dat geen ander account in Active Directory overdrachts `AZUREADSSOACC` machtigingen heeft voor het computer account. Sla het computer account op in een organisatie-eenheid (OE) waar het veilig is tegen onbedoeld verwijderen en waar alleen domein beheerders toegang hebben. De Kerberos-ontsleutelings sleutel op het computer account moet ook als gevoelig worden beschouwd. We raden u ten zeerste aan [de Kerberos-ontsleutelings sleutel](how-to-connect-sso-faq.md) van het `AZUREADSSOACC` computer account ten minste elke 30 dagen in te voeren.
+> Het `AZUREADSSOACC` computer account moet om veiligheids redenen sterk worden beveiligd. Alleen domein Administrators moeten het computer account kunnen beheren. Zorg ervoor dat Kerberos-delegering op het computer account is uitgeschakeld en dat geen ander account in Active Directory overdrachts machtigingen heeft voor het `AZUREADSSOACC` computer account. Sla het computer account op in een organisatie-eenheid (OE) waar het veilig is tegen onbedoeld verwijderen en waar alleen domein beheerders toegang hebben. De Kerberos-ontsleutelings sleutel op het computer account moet ook als gevoelig worden beschouwd. We raden u ten zeerste aan [de Kerberos-ontsleutelings sleutel](how-to-connect-sso-faq.md) van het `AZUREADSSOACC` computer account ten minste elke 30 dagen in te voeren.
 
 Zodra de installatie is voltooid, werkt naadloze SSO op dezelfde manier als andere aanmelding waarbij gebruik wordt gemaakt van geïntegreerde Windows-authenticatie (IWA).
 

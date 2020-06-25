@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85200406"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361299"
 ---
 # <a name="install-language-packs"></a>Taalpakketten installeren
 
@@ -36,7 +36,8 @@ Taal pakketten installeren:
 4. Onder **land of regio**selecteert u het land of de regio van uw voor keur in de vervolg keuzelijst.
     In dit voor beeld gaan we **Frank rijk**selecteren, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-    ![Een scherm afbeelding van de regio pagina. De regio die momenteel is geselecteerd, is Frank rijk.](media/region-page-france.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm afbeelding van de regio pagina. De regio die momenteel is geselecteerd, is Frank rijk.](media/region-page-france.png)
 
 5. Selecteer vervolgens **taal**en selecteer vervolgens **een taal toevoegen**. Kies de taal die u wilt installeren in de lijst en selecteer vervolgens **volgende**.
 6. Wanneer het venster **taal functies installeren** wordt geopend, schakelt u het selectie vakje taal **pakket installeren in en stelt u in als mijn Windows-weergave taal**.
@@ -45,15 +46,19 @@ Taal pakketten installeren:
 
     Laten we een snelle visuele demonstratie uitvoeren. De volgende afbeeldingen laten zien hoe u de Franse en Nederlandse taal pakketten installeert en vervolgens Frans als weergave taal instelt.
 
-    ![Een scherm opname van de taal pagina aan het begin van het proces. De geselecteerde Windows-weergave taal is Engels.](media/language-page-default.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de taal pagina aan het begin van het proces. De geselecteerde Windows-weergave taal is Engels.](media/language-page-default.png)
 
-    ![Een scherm opname van het taal selectie venster. De gebruiker heeft Frans ingevoerd in de zoek balk om de pakketten in de Franse taal te vinden.](media/select-language-french.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van het taal selectie venster. De gebruiker heeft Frans ingevoerd in de zoek balk om de pakketten in de Franse taal te vinden.](media/select-language-french.png)
 
-    ![Een scherm opname van de pagina taal functies installeren. Frans is geselecteerd als de voorkeurs taal. De geselecteerde opties zijn ' mijn weergave taal instellen ', ' taal pakket installeren ', ' spraak herkenning ' en ' hand schrift '.](media/install-language-features.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de pagina taal functies installeren. Frans is geselecteerd als de voorkeurs taal. De geselecteerde opties zijn ' mijn weergave taal instellen ', ' taal pakket installeren ', ' spraak herkenning ' en ' hand schrift '.](media/install-language-features.png)
 
     Nadat de taal pakketten zijn geïnstalleerd, ziet u dat de namen van uw taal pakketten worden weer gegeven in de lijst met talen.
 
-    ![Een scherm opname van de taal pagina waarop de nieuwe taal pakketten zijn geïnstalleerd. De Franse en Nederlandse taal pakketten worden vermeld onder voorkeurs talen.](media/language-page-complete.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een scherm opname van de taal pagina waarop de nieuwe taal pakketten zijn geïnstalleerd. De Franse en Nederlandse taal pakketten worden vermeld onder voorkeurs talen.](media/language-page-complete.png)
 
 9. Als er een venster wordt weer gegeven waarin u wordt gevraagd om u af te melden bij uw sessie. Meld u af en meld u vervolgens opnieuw aan. De weergave taal moet nu de geselecteerde taal zijn.
 
@@ -113,7 +118,8 @@ Als er tijdens het Sysprep-proces een fout bericht wordt weer gegeven, kunt u he
 
    De tekst in het fout bestand geeft aan dat u een specifiek taal pakket moet verwijderen, zoals wordt weer gegeven in de volgende afbeelding. Kopieer de naam van het taal pakket voor de volgende stap.
 
-   ![Een scherm opname van het Setuperr-bestand. De tekst met de pakket naam wordt in donker blauw gemarkeerd.](media/setuperr-package-name.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname van het Setuperr-bestand. De tekst met de pakket naam wordt in donker blauw gemarkeerd.](media/setuperr-package-name.png)
 
 2. Open een nieuw Power shell-venster en voer de volgende cmdlet uit met de pakket naam die u in stap 2 hebt gekopieerd om het taal pakket te verwijderen:
 
@@ -137,7 +143,8 @@ Een installatie kopie vastleggen:
 
 3. Voer in het veld **naam** een naam in voor de afbeelding en wijs deze toe aan de resource groep met behulp van de vervolg keuzelijst **resource groep** , zoals weer gegeven in de volgende afbeelding.
 
-   ![Een scherm opname van het venster installatie kopie maken. De naam die de gebruiker aan deze test installatie kopie heeft gegeven, is "vmwvd-image-FR" en ze hebben deze toegewezen aan de resource groep ' testwvdimagerg '.](media/create-image.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname van het venster installatie kopie maken. De naam die de gebruiker aan deze test installatie kopie heeft gegeven, is "vmwvd-image-FR" en ze hebben deze toegewezen aan de resource groep ' testwvdimagerg '.](media/create-image.png)
 
 4. Selecteer **Maken**.
 

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6446b039d90e04c9fe7fca28b361f620183a0292
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80875738"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358715"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven.
@@ -62,7 +62,7 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
 * Als Active Directory Federation Services wordt geïmplementeerd, moeten de servers waarop AD FS of Web Application proxy is geïnstalleerd, Windows Server 2012 R2 of later zijn. [Windows Remote Management](#windows-remote-management) moet zijn ingeschakeld op deze servers voor installatie op afstand.
 * Als Active Directory Federation Services wordt geïmplementeerd, hebt u [TLS/SSL-certificaten](#tlsssl-certificate-requirements)nodig.
 * Als Active Directory Federation Services wordt geïmplementeerd, moet u [naam omzetting](#name-resolution-for-federation-servers)configureren.
-* Als voor uw globale beheerders MFA is ingeschakeld, moet de **https://secure.aadcdn.microsoftonline-p.com** URL zich in de lijst met vertrouwde sites bekomen. U wordt gevraagd deze site toe te voegen aan de lijst met vertrouwde websites wanneer u wordt gevraagd om een MFA-Challenge en deze niet eerder is toegevoegd. U kunt Internet Explorer gebruiken om het toe te voegen aan uw vertrouwde sites.
+* Als voor uw globale beheerders MFA is ingeschakeld, moet de URL **https://secure.aadcdn.microsoftonline-p.com** zich in de lijst met vertrouwde sites bekomen. U wordt gevraagd deze site toe te voegen aan de lijst met vertrouwde websites wanneer u wordt gevraagd om een MFA-Challenge en deze niet eerder is toegevoegd. U kunt Internet Explorer gebruiken om het toe te voegen aan uw vertrouwde sites.
 * Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiligings risico te verminderen voor dit kritieke onderdeel van uw IT-omgeving.  Als u de onderstaande aanbevelingen volgt, worden de beveiligings Risico's voor uw organisatie verminderd.
 
 * Implementeer Azure AD Connect op een server die lid is van een domein en beperk beheerders toegang tot domein beheerders of andere nauw beheerde beveiligings groepen.
@@ -81,7 +81,7 @@ Voor meer informatie zie:
 * Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Er is standaard een SQL Server 2012 Express LocalDB (een lichte versie van SQL Server Express) geïnstalleerd. SQL Server Express heeft een maximale grootte van 10 GB waarmee u ongeveer 100.000 objecten kunt beheren. Als u een groter volume aan Directory objecten wilt beheren, moet u de installatie wizard naar een andere installatie van SQL Server wijzen. Het type SQL Server installatie kan invloed hebben [op de prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Als u een andere installatie van SQL Server gebruikt, zijn de volgende vereisten van toepassing:
   * Azure AD Connect ondersteunt alle versies van Microsoft SQL Server van 2012 (met het nieuwste Service Pack) tot SQL Server 2019. Microsoft Azure SQL Database wordt **niet ondersteund** als data base.
-  * U moet een niet-hoofdletter gevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_CI_ in hun naam. Het gebruik van een hoofdletter gevoelige sortering wordt **niet ondersteund** , aangeduid door \_CS_ in hun naam.
+  * U moet een niet-hoofdletter gevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_ CI_ in hun naam. Het gebruik van een hoofdletter gevoelige sortering wordt **niet ondersteund** , aangeduid door \_ CS_ in hun naam.
   * U kunt slechts één synchronisatie-engine per SQL-exemplaar hebben. Het is **niet mogelijk** om een SQL-exemplaar te delen met FIM/MIM Sync, DirSync of Azure AD Sync.
 
 ### <a name="accounts"></a>Accounts
@@ -96,7 +96,7 @@ Voor meer informatie zie:
   * Als u de Microsoft Cloud in Duitsland of de Microsoft Azure Government Cloud gebruikt, raadpleegt u [Azure AD Connect Sync Service instances-overwegingen](reference-connect-instances.md) voor url's.
 * Azure AD Connect (versie 1.1.614.0 en After) maakt standaard gebruik van TLS 1,2 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als TLS 1,2 niet beschikbaar is in het onderliggende besturings systeem, wordt Azure AD Connect incrementeel terugvallen op oudere protocollen (TLS 1,1 en TLS 1,0).
 * Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voor het versleutelen van de communicatie tussen de synchronisatie-engine en Azure AD. Als u wilt overschakelen naar TLS 1,2, volgt u de stappen in [tls 1,2 inschakelen voor Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Als u een uitgaande proxy gebruikt om verbinding te maken met internet, moet de volgende instelling in het **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** -bestand worden toegevoegd voor de installatie wizard en kan Azure AD Connect worden gesynchroniseerd om verbinding te kunnen maken met internet en Azure AD. Deze tekst moet aan de onderkant van het bestand worden opgegeven. In deze code vertegenwoordigt &lt;proxyAddress attribuut&gt; het werkelijke IP-adres of de hostnaam van de proxy.
+* Als u een uitgaande proxy gebruikt om verbinding te maken met internet, moet u de volgende instelling in het **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** -bestand toevoegen aan de installatie wizard en Azure AD Connect synchroniseren om verbinding te kunnen maken met internet en Azure AD. Deze tekst moet aan de onderkant van het bestand worden opgegeven. In deze code &lt; vertegenwoordigt proxyAddress attribuut &gt; het werkelijke IP-adres of de hostnaam van de proxy.
 
 ```
     <system.net>
@@ -110,7 +110,7 @@ Voor meer informatie zie:
     </system.net>
 ```
 
-* Als voor uw proxy server verificatie is vereist, moet het [Service account](reference-connect-accounts-permissions.md#adsync-service-account) zich in het domein bevinden en moet u het installatiepad van aangepaste instellingen gebruiken om een [aangepast Service account](how-to-connect-install-custom.md#install-required-components)op te geven. U hebt ook een andere wijziging nodig voor machine. config. Met deze wijziging in machine. config reageert de installatie wizard en de synchronisatie-engine op verificatie aanvragen van de proxy server. In alle pagina's van de wizard installatie, met uitzonde ring van de pagina **configureren** , worden de referenties van de aangemelde gebruiker gebruikt. Op de pagina **configureren** aan het einde van de installatie wizard wordt de context overgeschakeld naar het [Service account](reference-connect-accounts-permissions.md#adsync-service-account) dat u hebt gemaakt. De sectie machine. config moet er als volgt uitzien.
+* Als voor uw proxy server verificatie is vereist, moet het [Service account](reference-connect-accounts-permissions.md#adsync-service-account) zich in het domein bevinden en moet u het installatiepad van aangepaste instellingen gebruiken om een [aangepast Service account](how-to-connect-install-custom.md#install-required-components)op te geven. U hebt ook een andere wijziging in machine.config. Met deze wijziging in machine.config reageert de installatie wizard en de synchronisatie-engine op verificatie aanvragen van de proxy server. In alle pagina's van de wizard installatie, met uitzonde ring van de pagina **configureren** , worden de referenties van de aangemelde gebruiker gebruikt. Op de pagina **configureren** aan het einde van de installatie wizard wordt de context overgeschakeld naar het [Service account](reference-connect-accounts-permissions.md#adsync-service-account) dat u hebt gemaakt. De sectie machine.config moet er als volgt uitzien.
 
 ```
     <system.net>
@@ -129,7 +129,7 @@ Voor meer informatie zie:
 Raadpleeg MSDN over het [standaard proxy-element](https://msdn.microsoft.com/library/kd3cf2ex.aspx)voor meer informatie.  
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 * Optioneel: een test gebruikers account om synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten
@@ -151,7 +151,7 @@ Vóór versie 1.1.614.0 maakt Azure AD Connect standaard gebruik van TLS 1,0 voo
     ```
 2. For all operating systems, set this registry key and restart the server.
     ```
-    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\.NETFramework\v4.0.30319 "schusestrongcrypto toe" = dword: 00000001
+    HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \. NETFramework\v4.0.30319 "schusestrongcrypto toe" = dword: 00000001
     ```
 4. If you also want to enable TLS 1.2 between the sync engine server and a remote SQL Server, then make sure you have the required versions installed for [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 

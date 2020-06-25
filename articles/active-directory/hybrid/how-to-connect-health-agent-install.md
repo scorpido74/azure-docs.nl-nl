@@ -12,16 +12,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10e6d3a419bdf8b14675f0edabd63ed4b4f4b86f
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136699"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359446"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -40,7 +40,7 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
 |Uitgaande verbindingen op basis van IP-adressen | Als u meer wilt weten over het filteren op IP-adressen in firewalls, ziet u [Azure IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653).|
 | TLS-inspectie voor uitgaand verkeer wordt gefilterd of uitgeschakeld | De agent registratie stap of bewerkingen voor het uploaden van gegevens kunnen mislukken als er TLS-inspectie of-beëindiging voor uitgaand verkeer op de netwerklaag is. Meer informatie over [het instellen van TLS-inspectie](https://technet.microsoft.com/library/ee796230.aspx) |
 | Firewallpoorten op de server waarop de agent wordt uitgevoerd |De volgende firewallpoorten moeten open zijn, anders kan de agent niet communiceren met de eindpunten van de Azure AD Health-service.<br /><br /><li>TCP-poort 443</li><li>TCP-poort 5671</li> <br />Houd er rekening mee dat poort 5671 niet langer vereist is voor de nieuwste versie van de agent. Voer een upgrade uit naar de nieuwste versie zodat alleen poort 443 is vereist. Lees meer over [firewallpoorten inschakelen](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
-| Sta de volgende websites toe als verbeterde beveiliging van Internet Explorer is ingeschakeld |Als verbeterde beveiliging van Internet Explorer is ingeschakeld, moeten de volgende websites worden toegestaan op de server waarop u de agent wilt installeren.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>De federatieve server van uw organisatie moet worden vertrouwd door Azure Active Directory. Bijvoorbeeld: https:\//sts.contoso.com</li> Meer informatie over [het configureren van Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Als u een proxy in uw netwerk hebt, raadpleegt u de onderstaande opmerking.|
+| Sta de volgende websites toe als verbeterde beveiliging van Internet Explorer is ingeschakeld |Als verbeterde beveiliging van Internet Explorer is ingeschakeld, moeten de volgende websites worden toegestaan op de server waarop u de agent wilt installeren.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.net</li><li>De federatieve server van uw organisatie moet worden vertrouwd door Azure Active Directory. Bijvoorbeeld: https:\//sts.contoso.com</li> Meer informatie over [het configureren van Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Als u een proxy in uw netwerk hebt, raadpleegt u de onderstaande opmerking.|
 | Zorg ervoor dat PowerShell v4.0 of later is geïnstalleerd | <li>Windows Server 2008 R2 wordt geleverd met PowerShell versie 2.0, wat onvoldoende is voor de agent. Werk PowerShell bij zoals wordt uitgelegd in [Agent-installatie op Windows Server 2008 R2-servers](#agent-installation-on-windows-server-2008-r2-servers).</li><li>Windows Server 2012 wordt geleverd met PowerShell v3.0, wat onvoldoende is voor de agent.  [Update](https://www.microsoft.com/download/details.aspx?id=40855) het Windows Management Framework.</li><li>Windows Server 2012 R2 en later wordt geleverd met een voldoende recente versie van PowerShell.</li>|
 |FIPS uitschakelen|FIPS wordt niet ondersteund door Azure AD Connect Health-agents.|
 
@@ -373,7 +373,7 @@ Als de agent gedurende meer dan twee uur geen gegevens kan verzenden naar de Azu
 De rolparameter heeft momenteel de volgende waarden:
 
 * ADFS
-* Sync
+* Synchroniseren
 * ADDS
 
 > [!NOTE]

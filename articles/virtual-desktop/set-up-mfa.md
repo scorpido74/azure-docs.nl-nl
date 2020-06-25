@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 468597c82ae6c99aadeb33fafae78e3b3ed343cd
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213666"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361146"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor virtueel bureau blad van Windows inschakelen
 
@@ -48,7 +48,8 @@ In deze sectie wordt uitgelegd hoe u een beleid voor voorwaardelijke toegang maa
 6. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **apps selecteren**.
    - Kies **Windows virtueel bureau blad** (app-id 9cdead84-a844-4324-93f2-b2e6bb768d07), **Selecteer**en vervolgens **gereed**.
 
-     ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
+     > [!div class="mx-imgBorder"]
+     > ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
 
      >[!NOTE]
      >Als u de App-ID wilt vinden van de app die u wilt selecteren, gaat u naar **bedrijfs toepassingen** en selecteert u **micro soft-toepassingen** in de vervolg keuzelijst toepassings type.

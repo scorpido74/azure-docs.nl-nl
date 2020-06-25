@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61e772d7a55577c263edc83ccface31932f5b2dd
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229813"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358358"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Pass-Through-verificatie Azure Active Directory: Quick Start
 
@@ -72,9 +72,9 @@ Zorg ervoor dat aan de volgende vereisten is voldaan.
      | **8080** (optioneel) | Verificatie agenten rapporteren hun status elke tien minuten via poort 8080 als poort 443 niet beschikbaar is. Deze status wordt weer gegeven in de Azure AD-Portal. Poort 8080 wordt _niet_ gebruikt voor gebruikers aanmeldingen. |
      
      Als uw firewall regels afdwingt op basis van de oorspronkelijke gebruikers, opent u deze poorten voor verkeer van Windows-services die als een netwerk service worden uitgevoerd.
-   - Als uw firewall of Proxy DNS-White List toestaat, voegt u verbindingen toe aan ** \*. msappproxy.net** en ** \*. servicebus.Windows.net**. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
+   - Als uw firewall of Proxy DNS-White List toestaat, voegt u verbindingen toe aan ** \* . msappproxy.net** en ** \* . servicebus.Windows.net**. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt.
    - Uw verificatie agenten hebben toegang tot **login.Windows.net** en **login.microsoftonline.com** nodig voor de eerste registratie. Open ook uw firewall voor deze Url's.
-   - Voor validatie van het certificaat kunt u de volgende Url's blok keren: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**en **www\.Microsoft.com:80**. Omdat deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, is het mogelijk dat deze Url's al worden gedeblokkeerd.
+   - Voor validatie van het certificaat kunt u de volgende Url's blok keren: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**en **www \. Microsoft.com:80**. Omdat deze Url's worden gebruikt voor certificaat validatie met andere micro soft-producten, is het mogelijk dat deze Url's al worden gedeblokkeerd.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Azure Government Cloud vereiste
 Voordat u Pass-Through-verificatie inschakelt via Azure AD Connect met stap 2, downloadt u de meest recente versie van de PTA-agent van de Azure Portal.  U moet ervoor zorgen dat de agent versie **1.5.1742.0.** of hoger.  Zie [upgrade-verificatie agenten](how-to-connect-pta-upgrade-preview-authentication-agents.md) om uw agent te controleren
@@ -150,14 +150,14 @@ U kunt het eerst interactief doen door gewoon het uitvoer bare bestand van de ge
 
 Ten tweede kunt u een script voor installatie zonder toezicht maken en uitvoeren. Dit is handig wanneer u meerdere verificatie agenten tegelijk wilt implementeren of als u verificatie agenten wilt installeren op Windows-servers waarop geen gebruikers interface is ingeschakeld, of als u geen toegang hebt tot Extern bureaublad. Hier volgen de instructies voor het gebruik van deze methode:
 
-1. Voer de volgende opdracht uit om een verificatie-agent `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`te installeren:.
-2. U kunt de verificatie agent met onze service registreren met behulp van Windows Power shell. Maak een Power shell- `$cred` referentie object dat een globale gebruikers naam en wacht woord voor uw Tenant bevat. Voer de volgende opdracht uit en * \<Vervang\> de gebruikers naam* en * \<het wacht woord\>*:
+1. Voer de volgende opdracht uit om een verificatie-agent te installeren: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` .
+2. U kunt de verificatie agent met onze service registreren met behulp van Windows Power shell. Maak een Power shell-referentie object `$cred` dat een globale gebruikers naam en wacht woord voor uw Tenant bevat. Voer de volgende opdracht uit, vervang *\<username\>* en *\<password\>* :
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
-3. Ga naar **C:\Program Files\Microsoft Azure AD Connect authentication agent** en voer het volgende script uit met `$cred` behulp van het object dat u hebt gemaakt:
+3. Ga naar **C:\Program Files\Microsoft Azure AD Connect authentication agent** en voer het volgende script uit met behulp van het `$cred` object dat u hebt gemaakt:
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 

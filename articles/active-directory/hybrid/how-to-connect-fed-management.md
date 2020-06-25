@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d64be7350b373dcceb8c192f0859fa2ee7f47334
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331985"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360075"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federation Services beheren en aanpassen met behulp van Azure AD Connect
 In dit artikel wordt beschreven hoe u Active Directory Federation Services (AD FS) kunt beheren en aanpassen met behulp van Azure Active Directory (Azure AD) Connect. Het bevat ook andere veelvoorkomende AD FS taken die u mogelijk moet uitvoeren voor een volledige configuratie van een AD FS-farm.
@@ -64,7 +64,7 @@ U kunt Azure AD Connect gebruiken om de huidige status van de AD FS en Azure AD-
 
     De pagina **gereed voor configuratie** toont de lijst met acties die worden uitgevoerd om de vertrouwens relatie te herstellen.
 
-    ![Gereed voor configuratie](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![Klaar om te configureren](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. Klik op **installeren** om de vertrouwens relatie te herstellen.
 
@@ -116,7 +116,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 6. Klik op **volgende**en ga door de pagina definitieve **configuratie** . Nadat Azure AD Connect het toevoegen van de servers aan de AD FS-farm hebt voltooid, krijgt u de mogelijkheid om de verbinding te controleren.
 
-   ![Gereed voor configuratie](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
+   ![Klaar om te configureren](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
     ![Installatie voltooid](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
@@ -148,7 +148,7 @@ Het configureren van de alternatieve aanmeldings-ID voor AD FS bestaat uit twee 
 
 6. Op de pagina **gereed voor configuratie** bevat de wizard de lijst met acties die worden uitgevoerd.
 
-   ![Gereed voor configuratie](./media/how-to-connect-fed-management/WapServer7.PNG)
+   ![Klaar om te configureren](./media/how-to-connect-fed-management/WapServer7.PNG)
 
 7. Klik op **installeren** om de configuratie te volt ooien. Nadat de configuratie is voltooid, krijgt u de mogelijkheid om de verbinding met de servers te controleren. Klik op **controleren** om de verbinding te controleren.
 
@@ -178,7 +178,7 @@ Het is eenvoudig om een domein toe te voegen voor federatief met Azure AD met be
 
 5. Klik op **Volgende**. Op de pagina **gereed voor configuratie ziet u** de lijst met acties die Azure AD Connect worden uitgevoerd. Klik op **installeren** om de configuratie te volt ooien.
 
-   ![Gereed voor configuratie](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
+   ![Klaar om te configureren](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > Gebruikers van het toegevoegde federatieve domein moeten worden gesynchroniseerd voordat ze zich kunnen aanmelden bij Azure AD.

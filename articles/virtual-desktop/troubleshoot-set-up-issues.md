@@ -8,20 +8,20 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612544"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361164"
 ---
-# <a name="host-pool-creation"></a>Hostgroep maken
+# <a name="host-pool-creation"></a>Hostgroepen maken
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit artikel komen problemen aan bod tijdens de eerste installatie van de virtuele bureau blad-Tenant van Windows en de gerelateerde infra structuur van de sessie-hostgroep.
 
@@ -31,13 +31,14 @@ Ga naar de [technische community van Windows virtueel bureau blad](https://techc
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>De afbeelding voor meerdere sessies van Windows 10 Enter prise ophalen
 
-Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag** > met**micro soft Windows 10** > en [Windows 10 Enter prise multi-session versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag**met  >  **micro soft Windows 10** > en [Windows 10 Enter prise multi-session versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>Problemen met het gebruik van de Azure Portal om hostgroepen te maken
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Fout: ' een gratis account maken ' wordt weer gegeven bij het openen van de service
 
-![Een afbeelding met de Azure Portal het bericht ' een gratis account maken ' weer gegeven](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> ![Een afbeelding met de Azure Portal het bericht ' een gratis account maken ' weer gegeven](media/create-new-account.png)
 
 **Oorzaak**: er zijn geen actieve abonnementen in het account waarmee u zich hebt aangemeld bij Azure, of het account heeft geen machtigingen om de abonnementen weer te geven. 
 
@@ -60,9 +61,10 @@ Volg deze instructies voor het oplossen van problemen met mislukte implementatie
 3. Wanneer de fout is geïdentificeerd, gebruikt u het fout bericht en de resources in [problemen met veelvoorkomende Azure-implementatie fouten oplossen met Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) om het probleem op te lossen.
 4. Verwijder alle resources die tijdens de vorige implementatie zijn gemaakt en probeer de sjabloon opnieuw te implementeren.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fout: de implementatie is mislukt...\<. hostnaam>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fout: de implementatie is mislukt.... \<hostname> /JoinDomain
 
-![De scherm afbeelding van de implementatie is mislukt.](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![De scherm afbeelding van de implementatie is mislukt.](media/failure-joindomain.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -103,7 +105,8 @@ Ga als volgt te werk om dit probleem op te lossen:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Fout: VMExtensionProvisioningError
 
-![Scherm opname van de implementatie is mislukt met de status van de Terminal-inrichting is mislukt.](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de implementatie is mislukt met de status van de Terminal-inrichting is mislukt.](media/failure-vmextensionprovisioning.png)
 
 **Oorzaak 1:** Tijdelijke fout met de virtueel-bureaublad omgeving van Windows.
 
@@ -113,7 +116,8 @@ Ga als volgt te werk om dit probleem op te lossen:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Fout: de opgegeven gebruikers naam voor de beheerder is niet toegestaan
 
-![Scherm opname van de implementatie is mislukt, omdat een opgegeven beheerder niet is toegestaan.](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de implementatie is mislukt, omdat een opgegeven beheerder niet is toegestaan.](media/failure-username.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -130,7 +134,8 @@ Voor beeld van onbewerkte fout:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Fout: de virtuele machine heeft een fout gerapporteerd bij het verwerken van de extensie
 
-![Scherm opname van de bron bewerking die is voltooid met een Terminal-inrichtings status in uw implementatie is mislukt.](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van de bron bewerking die is voltooid met een Terminal-inrichtings status in uw implementatie is mislukt.](media/failure-processing.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -149,7 +154,8 @@ Voor beeld van onbewerkte fout:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Fout: heeft-Power shell DSC-configuratie FirstSessionHost is voltooid met fout (en)
 
-![Scherm opname van implementatie mislukt met Power shell DSC-configuratie FirstSessionHost voltooid met fout (en).](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![Scherm opname van implementatie mislukt met Power shell DSC-configuratie FirstSessionHost voltooid met fout (en).](media/failure-dsc.png)
 
 Voor beeld van onbewerkte fout:
 

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f716c52443abedb0fb838fa95b421033f5e93408
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85218001"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85360313"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -118,9 +118,8 @@ iOS-en Android-apparaten kunnen alleen worden geregistreerd bij Azure AD. De vol
 |**Belangrijkste mogelijkheden**| | |  |
 | Eenmalige aanmelding bij cloud resources| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
 | Eenmalige aanmelding voor on-premises resources| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
-| Voorwaardelijke toegang| ![Kijk](./media/plan-device-deployment/check.png) 
-Compatibele apparaten| ![Kijk](./media/plan-device-deployment/check.png)
-Compatibel apparaat| ![Kijk](./media/plan-device-deployment/check.png) |
+| Voorwaardelijke toegang <br> (Vereisen dat apparaten als compatibel worden gemarkeerd) <br> (Moet worden beheerd door MDM)| ![Kijk](./media/plan-device-deployment/check.png) | ![Kijk](./media/plan-device-deployment/check.png)|![Kijk](./media/plan-device-deployment/check.png) |
+Voorwaardelijke toegang <br>(Hybride Azure AD-apparaten vereisen)| | | ![Kijk](./media/plan-device-deployment/check.png)
 | Self-service voor wachtwoord herstel vanuit het Windows-aanmeldings scherm| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
 | PINCODE voor Windows hello opnieuw instellen| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |
 | Enter prise State roaming op alle apparaten| | ![Kijk](./media/plan-device-deployment/check.png)| ![Kijk](./media/plan-device-deployment/check.png) |

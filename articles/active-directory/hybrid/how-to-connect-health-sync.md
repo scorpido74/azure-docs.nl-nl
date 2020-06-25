@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 356697c4843742c12aa39d82602815e38dcca74a
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897206"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85359140"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>De Azure AD Connect synchronisatie met Azure AD Connect Health bewaken
 De volgende documentatie is specifiek voor het bewaken van Azure AD Connect-synchronisatie met Azure AD Connect Health.  Zie [Using Azure AD Connect Health with AD FS](how-to-connect-health-adfs.md) (Engelstalig) voor informatie over het controleren van AD FS met Azure AD Connect Health. Zie ook [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md) voor informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
@@ -88,7 +88,7 @@ In het rapport worden de bestaande synchronisatiefouten in de volgende categorie
 | Gegevensvalidatiefout |Fouten vanwege ongeldige gegevens, zoals niet-ondersteunde tekens in essentiële kenmerken, zoals UserPrincipalName, indelingsfouten die de validatie niet doorstaan voordat ze naar Azure AD worden geschreven. |
 | Federatief domein wijzigen | Fouten wanneer accounts een ander federatief domein gebruiken. |
 | Groot-kenmerk |Fouten wanneer een of meer kenmerken groter zijn dan de toegestane grootte, lengte of aantal. |
-| Overige |Alle andere fouten die niet in de bovenstaande categorieën passen. Op basis van feedback wordt deze categorie in subcategorieën gesplitst. |
+| Anders |Alle andere fouten die niet in de bovenstaande categorieën passen. Op basis van feedback wordt deze categorie in subcategorieën gesplitst. |
 
 ![Overzicht van synchronisatiefoutenrapport](./media/how-to-connect-health-sync/errorreport01.png)
 ![Categorieën in synchronisatiefoutenrapport](./media/how-to-connect-health-sync/SyncErrorByTypes.PNG)

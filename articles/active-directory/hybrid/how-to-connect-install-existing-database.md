@@ -12,17 +12,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 23bcb63b6b499e72cb43089659e513d276bd8306
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558515"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85358970"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect installeren met behulp van een bestaande ADSync-database
 Azure AD Connect vereist een SQL Server-Data Base om gegevens op te slaan. U kunt de standaard SQL Server 2012 Express LocalDB gebruiken dat is geïnstalleerd met Azure AD Connect of uw eigen volledige versie van SQL gebruiken. Toen u Azure AD Connect hebt geïnstalleerd, werd er altijd een nieuwe data base gemaakt met de naam ADSync. Met Azure AD Connect versie 1.1.613.0 (of later) hebt u de mogelijkheid om Azure AD Connect te installeren door het te wijzen naar een bestaande ADSync-data base.
@@ -56,7 +56,7 @@ Belang rijke opmerkingen voordat u doorgaat:
 - U kunt niet meerdere Azure AD Connect servers dezelfde ADSync-data base delen. Met de methode ' bestaande Data Base gebruiken ' kunt u een bestaande ADSync-data base opnieuw gebruiken met een nieuwe Azure AD Connect-server. Het delen wordt niet ondersteund.
 
 ## <a name="steps-to-install-azure-ad-connect-with-use-existing-database-mode"></a>Stappen voor het installeren van Azure AD Connect met de modus ' bestaande Data Base gebruiken '
-1.  Down load Azure AD Connect-installatie programma (AzureADConnect. MSI) naar de Windows-Server. Dubbel klik op het installatie programma van Azure AD Connect om te beginnen met de installatie van Azure AD Connect.
+1.  Down load Azure AD Connect Installer (AzureADConnect.MSI) naar de Windows-Server. Dubbel klik op het installatie programma van Azure AD Connect om te beginnen met de installatie van Azure AD Connect.
 2.  Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
 ![Welkom](./media/how-to-connect-install-existing-database/db1.png)
 3.  Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar de map C:\Program Files\Microsoft Azure Active Directory Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
