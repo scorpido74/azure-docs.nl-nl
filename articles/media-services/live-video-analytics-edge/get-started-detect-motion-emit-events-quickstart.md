@@ -1,94 +1,100 @@
 ---
 title: Aan de slag met Live Video Analytics in IoT Edge - Azure
-description: In deze quickstart kunt u aan de slag met Live Video Analytics in IoT Edge en leert u beweging detecteren in een live-videostream.
+description: Deze quickstart laat zien hoe u aan de slag kunt met Live Video Analytics in IoT Edge. Leer hoe u beweging kunt detecteren in een live-videostream.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 307a81938be3e25b8a6a07bb3696ca3b7647c0aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261563"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816915"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Quickstart: Over Live Video Analytics in IoT Edge
 
-Deze quickstart begeleidt u door de stappen om aan de slag te gaan met Live Video Analytics in IoT Edge. Er wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde live-videostream. Nadat u de installatie stappen hebt voltooid, kunt u een gesimuleerde live-videostream uitvoeren via een mediagraaf die beweging in die stream detecteert en rapporteert. In het onderstaande diagram ziet u een grafische weergave van die mediagraaf.
+Deze quickstart begeleidt u door de stappen om aan de slag te gaan met Live Video Analytics in IoT Edge. Azure VM wordt gebruikt als IoT Edge-apparaat. Er wordt ook een gesimuleerde live-videostream gebruikt. 
+
+Nadat u de installatiestappen hebt voltooid, kunt u een gesimuleerde live-videostream uitvoeren via een mediagrafiek die beweging in die stream detecteert en rapporteert. Het volgende diagram geeft een grafische weergave van die mediagrafiek.
 
 ![Live Video Analytics op basis van bewegingsdetectie](./media/analyze-live-video/motion-detection.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Visual Studio Code](https://code.visualstudio.com/) op uw ontwikkelcomputer met een [extensie van Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* Het netwerk waarmee de ontwikkelcomputer is verbonden, moet het AMQP-protocol via poort 5671 toestaan (zodat Azure IoT Tools kan communiceren met Azure IoT Hub).
+* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) als u nog geen account hebt.
+* [Visual Studio Code](https://code.visualstudio.com/) op uw ontwikkelcomputer. Zorg ervoor dat u beschikt over de [Azure IoT Tools-extensie](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* Zorg ervoor dat het netwerk waarmee uw ontwikkelcomputer is verbonden AMQP (Advanced Message Queueing Protocol) toestaat via poort 5671. Dankzij deze instelling kan Azure IoT Tools communiceren met Azure IoT Hub.
 
 > [!TIP]
-> U wordt mogelijk gevraagd om docker te installeren tijdens de installatie van de Azure IoT Tools-extensie. U kunt deze vraag negeren.
+> U wordt mogelijk gevraagd om Docker te installeren wanneer u de Azure IoT Tools-extensie installeert. U mag dit negeren.
 
 ## <a name="set-up-azure-resources"></a>Azure-resources instellen
 
-De volgende Azure-resources zijn voor deze zelfstudie vereist.
+Voor deze zelfstudie hebt u de volgende Azure-resources nodig:
 
 * IoT Hub
 * Storage-account
 * Azure Media Services-account
-* Linux-VM in Azure, met [IoT Edge-runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) geïnstalleerd
+* Een Linux-VM in Azure, waarop [IoT Edge-runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) is geïnstalleerd
 
-Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) voor het implementeren van de hierboven genoemde Azure-resources in uw Azure-abonnement. Volg de onderstaande stappen om dit te doen:
+Voor deze quickstart wordt u aangeraden gebruik te maken van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) om de vereiste Azure-resources in uw Azure-abonnement te implementeren. Voer hiervoor de volgende stappen uit:
 
-1. Blader naar https://shell.azure.com.
-1. Als dit de eerste keer is dat u Cloud Shell gebruikt, wordt u gevraagd een abonnement te selecteren voor het maken van een opslagaccount en een Microsoft Azure Files-share. Selecteer Opslag maken om een opslagaccount te maken voor het opslaan van de gegevens van uw Cloud Shell-sessie. Dit opslagaccount is gescheiden van het account dat door het script wordt gemaakt voor gebruik met uw Azure Media Services-account.
-1. Selecteer in de vervolgkeuzelijst aan de linkerkant van het shell-venster de optie Bash als uw omgeving.
+1. Ga naar [Azure Cloud Shell](https://shell.azure.com).
+1. Als u Cloud Shell voor het eerst gebruikt, wordt u gevraagd een abonnement te selecteren voor het maken van een opslagaccount en een Microsoft Azure Files-share. Selecteer **Opslag maken** om een opslagaccount te maken voor de gegevens van uw Cloud Shell-sessie. Dit opslagaccount is gescheiden van het account dat door het script wordt gemaakt voor gebruik bij uw Azure Media Services-account.
+1. Selecteer in de vervolgkeuzelijst aan de linkerkant van het Cloud Shell-venster **Bash** als uw omgeving.
 
     ![Omgevingsselector](./media/quickstarts/env-selector.png)
 
-1. Voer de volgende opdracht uit
+1. Voer de volgende opdracht uit.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Als het script is voltooid, ziet u alle resources die hierboven in uw abonnement zijn vermeld. Als onderdeel van de scriptuitvoer wordt een tabel met resources gegenereerd waarin de naam van de IoT-hub wordt vermeld. Zoek het resourcetype **Microsoft.Devices/IotHubs** en noteer de naam. U hebt deze in de volgende stap nodig. Met het script worden ook enkele configuratiebestanden in de map ~/clouddrive/lva-sample/ gegenereerd. U hebt deze later in de quickstart nodig.
+Als het script is voltooid, ziet u alle vereiste resources in uw abonnement. In de scriptuitvoer bevat een tabel met resources de naam van de IoT-hub. Zoek naar het resourcetype `Microsoft.Devices/IotHubs` en noteer de naam. U hebt deze naam nodig in de volgende stap. 
+
+Het script genereert ook enkele configuratiebestanden in de map *~/clouddrive/LVA-sample/* . U hebt deze bestanden verderop in de quickstart nodig.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Modules op uw edge-apparaat implementeren
 
-Voer vanuit Cloud Shell de volgende opdracht uit
+Voer vanuit Cloud Shell de volgende opdracht uit.
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content ~/clouddrive/lva-sample/edge-deployment/deployment.amd64.json
 ```
 
-Met de bovenstaande opdracht worden de volgende modules geïmplementeerd in het edge-apparaat (de virtuele Linux-machine):
+Met deze opdracht worden de volgende modules geïmplementeerd op het edge-apparaat, in dit geval de Linux-VM.
 
-* Live Video Analytics in IoT Edge (modulenaam lvaEdge)
-* RTSP-simulator (modulenaam rtspsim)
+* Live Video Analytics in IoT Edge (modulenaam `lvaEdge`)
+* RTSP-simulator (Real-Time Streaming Protocol) (modulenaam `rtspsim`)
 
-In de RTSP-simulatormodule wordt een live-videostream gesimuleerd met behulp van een videobestand dat is gekopieerd naar uw edge-apparaat tijdens het uitvoeren van het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). In deze fase hebt u de modules geïmplementeerd, maar er zijn geen mediagrafen actief.
+In de RTSP-simulatormodule wordt een live-videostream gesimuleerd met behulp van een videobestand dat werd gekopieerd naar uw edge-apparaat toen u het [installatiescript voor Live Video Analytics-resources](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) uitvoerde. 
 
-## <a name="configure-azure-iot-tools-extension-in-visual-studio-code"></a>Azure IoT Tools-extensie in Visual Studio Code configureren
+Nu zijn de modules geïmplementeerd, maar zijn er geen mediagrafieken actief.
 
-Start Visual Studio Code en volg de onderstaande instructies om verbinding te maken met uw Azure IoT Hub met behulp van de Azure IoT Tools-extensie.
+## <a name="configure-the-azure-iot-tools-extension"></a>Configureer de Azure IoT Tools-extensie
 
-1. Ga naar het tabblad Explorer in Visual Studio Code via **Beeld** > **Explorer** of druk op Ctrl+Shift+E.
-1. Klik in de linkerbenedenhoek van het tabblad Explorer op Azure IoT Hub.
-1. Klik op het pictogram Meer opties om het contextmenu weer te geven en selecteer de optie IoT Hub-verbindingsreeks instellen.
-1. Er wordt een invoervak weergegeven. Voer hierin de IoT Hub-verbindingsreeks in. U kunt de verbindingstekenreeks voor uw IoT Hub ophalen van ~/clouddrive/lva-sample/appSettings.json in Cloud Shell.
-1. Als er verbinding is gemaakt, wordt de lijst met edge-apparaten weergegeven. Er moet ten minste één apparaat met de naam lva-sample-device aanwezig zijn.
-1. U kunt nu uw IoT Edge-apparaten beheren en interactief werken met Azure IoT Hub via het contextmenu.
-1. U kunt de modules die op het edge-apparaat zijn geïmplementeerd, weergeven door het knooppunt Modules onder lva-sample-device uit te vouwen.
+Volg deze instructies om verbinding te maken met uw IoT-hub met behulp van de Azure IoT Tools-extensie.
 
-    ![Knooppunt lva-sample-device](./media/quickstarts/lva-sample-device-node.png)
+1. Selecteer **Verkenner** > **weergeven** in Visual Studio Code. Of selecteer Ctrl+Shift+E.
+1. Selecteer **Azure IoT Hub** in de linkerbenedenhoek van het tabblad **Verkenner**.
+1. Selecteer het pictogram **Meer opties** om het contextmenu weer te geven. Selecteer vervolgens **IoT Hub-verbindingsreeks instellen**.
+1. Wanneer er een invoervak verschijn,. voert u uw IoT Hub-verbindingsreeks in. U kunt de verbindingstekenreeks ophalen van *~/clouddrive/lva-sample/appSettings.json* in Cloud Shell.
+
+Als er verbinding is gemaakt, wordt de lijst met edge-apparaten weergegeven. U zou ten minste één apparaat met de naam **lva-sample-device** moeten zien. U kunt nu uw IoT Edge-apparaten beheren en interactief werken met Azure IoT Hub via het contextmenu. Om de modules die op het edge-apparaat zijn geïmplementeerd te bekijken, vouwt u het knooppunt **Modules** uit onder **Iva-sample-device**.
+
+![Knooppunt lva-sample-device](./media/quickstarts/lva-sample-device-node.png)
 
 ## <a name="use-direct-methods"></a>Directe methoden gebruiken
 
-U kunt de module gebruiken om live-videostreams te analyseren door directe methoden aan te roepen. Lees [Directe methoden voor Live Video Analytics in IoT Edge](direct-methods.md) om inzicht te krijgen in alle directe methoden van de module. 
+U kunt de module gebruiken om live-videostreams te analyseren door directe methoden aan te roepen. Bekijk [Directe methodes voor Live Video Analytics op IoT Edge](direct-methods.md) voor meer informatie. 
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList aanroepen
-Hiermee worden alle [graaftopologieën](media-graph-concept.md#media-graph-topologies-and-instances) in de module opgesomd.
 
-1. Klik met de rechtermuisknop op de module lvaEdge en selecteer Module Directe methode aanroepen in het contextmenu.
-1. Er verschijnt een bewerkingsvak middenin het bovenste deel van het Visual Studio Code-venster. Voer GraphTopologyList in het invoervak in en druk op Enter.
-1. Kopieer vervolgens de onderstaande JSON-nettolading, plak deze in het bewerkingsvak en druk op Enter.
+Om alle [grafiektopologieën](media-graph-concept.md#media-graph-topologies-and-instances) in de module op te sommen:
+
+1. Klik in de Visual Studio Code met de rechtermuisknop op de module **lvaEdge** en selecteer **Module directe methode aanroepen**.
+1. Voer in het vak dat verschijnt *GraphTopologyList* in.
+1. Kopieer de volgende JSON-nettolading en plak deze in het vak. Selecteer vervolgens de Enter-toets.
 
     ```
     {
@@ -96,7 +102,7 @@ Hiermee worden alle [graaftopologieën](media-graph-concept.md#media-graph-topol
     }
     ```
 
-    Binnen een paar seconden ziet u het venster Uitvoer in Visual Studio Code verschijnen met het volgende antwoord
+    Binnen een paar seconden verschijnt in het venster **UITVOER** het volgende antwoord.
 
     ```
     [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
@@ -109,12 +115,12 @@ Hiermee worden alle [graaftopologieën](media-graph-concept.md#media-graph-topol
     }
     ```
     
-    Het bovenstaande antwoord wordt verwacht omdat er geen graaftopologieën zijn gemaakt.
+    Dit antwoord wordt verwacht omdat er geen grafiektopologieën zijn gemaakt.
     
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet aanroepen
 
-Als u dezelfde stappen gebruikt als voor het aanroepen van GraphTopologyList, kunt u GraphTopologySet aanroepen om een [graaftopologie](media-graph-concept.md#media-graph-topologies-and-instances) in te stellen met behulp van de volgende JSON als nettolading.
+Met behulp van de stappen voor het aanroepen van `GraphTopologyList` kunt u `GraphTopologySet` aanroepen om een [grafiektopologie](media-graph-concept.md#media-graph-topologies-and-instances) in te stellen. Gebruik de volgende JSON als de nettolading.
 
 ```
 {
@@ -185,10 +191,9 @@ Als u dezelfde stappen gebruikt als voor het aanroepen van GraphTopologyList, ku
 
 ```
 
+Deze JSON-nettolading maakt een grafiektopologie die drie parameters instelt. Twee van deze parameters hebben standaardwaarden. De topologie heeft één bronknooppunt (RTSP-bron), één processorknooppunt (bewegingsdetectieprocessor) en één sinkknooppunt (IoT Hub-sink).
 
-De bovenstaande JSON-nettolading resulteert in een graaftopologie die drie parameters definieert (waarvan twee met standaardwaarden). De topologie heeft één bronknooppunt (RTSP-bron), één processorknooppunt (bewegingsdetectieprocessor) en één sinkknooppunt (IoT Hub-sink).
-
-Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -268,25 +273,26 @@ Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord ver
 }
 ```
 
-De geretourneerde status is 201, wat aangeeft dat er een nieuwe topologie is gemaakt. Voer de volgende stappen uit:
+De geretourneerde status is 201. De status geeft aan dat een nieuwe topologie is gemaakt. 
 
-* Roep GraphTopologySet opnieuw aan en merk op dat de geretourneerde statuscode 200 is. Statuscode 200 geeft aan dat een bestaande topologie is bijgewerkt.
-* Roep GraphTopologySet opnieuw aan, maar wijzig de tekenreeks voor de beschrijving. Merk op dat de statuscode in het antwoord 200 is en dat de beschrijving is bijgewerkt naar de nieuwe waarde.
-* Roep GraphTopologyList aan zoals beschreven in de vorige sectie en merk op dat de topologie MotionDetection nu in de geretourneerde nettolading wordt weergegeven.
+Voer de volgende stappen uit:
+
+1. Roep `GraphTopologySet` opnieuw aan. De geretourneerde statuscode is 200. Deze statuscode geeft aan dat een bestaande topologie is bijgewerkt.
+1. Roep `GraphTopologySet` opnieuw aan, maar wijzig de tekenreeks voor de beschrijving. De geretourneerde statuscode is 200 en de beschrijving is bijgewerkt naar de nieuwe waarde.
+1. Roep `GraphTopologyList` aan zoals beschreven in de vorige sectie. Nu kunt u de `MotionDetection`-topologie zien in de geretourneerde nettolading.
 
 ### <a name="invoke-graphtopologyget"></a>GraphTopologyGet aanroepen
 
-Roep nu GraphTopologyGet aan met de volgende nettolading
+Roep `GraphTopologyGet` aan met behulp van de volgende nettolading.
 
 ```
-
 {
     "@apiVersion" : "1.0",
     "name" : "MotionDetection"
 }
 ```
 
-Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyGet] to [lva-sample-device/lvaEdge] ...
@@ -366,16 +372,16 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
 }
 ```
 
-Let op het volgende in de nettolading van het antwoord:
+In de nettolading van het antwoord ziet u deze details:
 
-* Statuscode is 200. Dit geeft aan dat de bewerking is geslaagd.
-* De nettolading heeft de tijdstempels 'created' en 'lastModified'.
+* De statuscode is 200, die aangeeft dat de bewerking geslaagd is.
+* De nettolading bevat de tijdstempel `created` en de tijdstempel `lastModified`.
 
 ### <a name="invoke-graphinstanceset"></a>GraphInstanceSet aanroepen
 
-Maak vervolgens een graafexemplaar die verwijst naar de bovenstaande graaftopologie. Zoals [hier](media-graph-concept.md#media-graph-topologies-and-instances) wordt beschreven, kunt u met graafexemplaren live-videostreams van talloze camera's analyseren met dezelfde graaftopologie.
+Maak een grafiekexemplaar aan die verwijst naar de voorgaande grafiektopologie. Met grafiekexemplaren kunt u live-videostreams van meerdere camera's analyseren met behulp van dezelfde grafiektopologie. Zie de [Topologieën en exemplaren van mediagrafieken](media-graph-concept.md#media-graph-topologies-and-instances) voor meer informatie.
 
-Roep de directe methode voor GraphInstanceSet aan met de volgende nettolading.
+Roep de directe methode `GraphInstanceSet` aan met de volgende nettolading.
 
 ```
 {
@@ -391,12 +397,12 @@ Roep de directe methode voor GraphInstanceSet aan met de volgende nettolading.
 }
 ```
 
-Houd rekening met het volgende:
+Merk op dat deze nettolading:
 
-* In de bovenstaande nettolading wordt de naam van de topologie (MotionDetection) opgegeven waarvoor het exemplaar moet worden gemaakt.
-* De nettolading bevat een parameterwaarde voor rtspUrl, die geen standaardwaarde heeft in de nettolading van de topologie.
+* De naam van de topologie (`MotionDetection`) opgeeft waarvoor het exemplaar moet worden gemaakt.
+* Een parameterwaarde voor `rtspUrl` bevat, die geen standaardwaarde had in de nettolading van de topologie.
 
-Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceSet] to [lva-sample-device/lvaEdge] ...
@@ -422,20 +428,20 @@ Binnen een paar seconden ziet u in het venster Uitvoer het volgende antwoord ver
 }
 ```
 
-Let op het volgende in de nettolading van het antwoord:
+In de nettolading van het antwoord ziet u dat:
 
-* De statuscode is 201, wat aangeeft dat er een nieuw exemplaar is gemaakt.
-* De status is Inactief en geeft aan dat het exemplaar van de grafiek is gemaakt maar niet is geactiveerd. Zie de [statussen voor mediagraaf](media-graph-concept.md) voor meer informatie.
+* De statuscode 201 is, wat aangeeft dat er een nieuw exemplaar is gemaakt.
+* De status `Inactive` is, wat aangeeft dat het exemplaar van de grafiek is aangemaakt maar niet geactiveerd. Zie de [Statussen voor mediagrafiek](media-graph-concept.md) voor meer informatie.
 
 Voer de volgende stappen uit:
 
-* Roep GraphInstanceSet opnieuw aan met dezelfde nettolading en houd er rekening mee dat de geretourneerde statuscode nu 200 is.
-* Roep GraphInstanceSet opnieuw aan, maar met een andere beschrijving en let op de bijgewerkte beschrijving in de nettolading van het antwoord, waarmee wordt aangegeven dat het exemplaar van de grafiek is bijgewerkt.
-* Roep GraphInstanceSet aan maar wijzig de naam in Sample-Graph-2 en bekijk de nettolading van het antwoord. Er wordt een nieuw exemplaar van de graaf gemaakt (dat wil zeggen, de statuscode is 201).
+1. Roep `GraphInstanceSet` opnieuw aan met dezelfde nettolading. U ziet dat de geretourneerde statuscode 200 is.
+1. Roep `GraphInstanceSet` opnieuw aan, maar gebruik een andere beschrijving. Merk op dat de beschrijving in de nettolading is bijgewerkt, wat aangeeft dat het exemplaar van de grafiek is bijgewerkt.
+1. Roep `GraphInstanceSet` aan, maar wijzig de naam naar `Sample-Graph-2`. Merk op dat er een nieuw grafiekexemplaar is aangemaakt in de nettolading van het antwoord (statuscode 201).
 
 ### <a name="invoke-graphinstanceactivate"></a>GraphInstanceActivate aanroepen
 
-Activeer nu het graafexemplaar, waarmee de stroom van livevideo via de module wordt gestart. Roep de directe methode voor GraphInstanceActivate aan met de volgende nettolading.
+Activeer nu het grafiekexemplaar om de stroom van live-video via de module te starten. Roep de directe methode `GraphInstanceActivate` aan met de volgende nettolading.
 
 ```
 {
@@ -444,7 +450,7 @@ Activeer nu het graafexemplaar, waarmee de stroom van livevideo via de module wo
 }
 ```
 
-Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceActivate] to [lva-sample-device/lvaEdge] ...
@@ -455,11 +461,11 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
 }
 ```
 
-Statuscode 200 in de nettolading van het antwoord geeft aan dat het graafexemplaar is geactiveerd.
+De statuscode 200 geeft aan dat het grafiekexemplaar is geactiveerd.
 
 ### <a name="invoke-graphinstanceget"></a>GraphInstanceGet aanroepen
 
-Roep nu de directe methode voor GraphInstanceGet aan met de volgende nettolading:
+Roep nu de directe methode `GraphInstanceGet` aan met de volgende nettolading.
 
 ```
  {
@@ -468,7 +474,7 @@ Roep nu de directe methode voor GraphInstanceGet aan met de volgende nettolading
  }
  ```
 
-Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceGet] to [lva-sample-device/lvaEdge] ...
@@ -494,22 +500,24 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
 }
 ```
 
-Let op het volgende in de nettolading van het antwoord:
+In de nettolading van het antwoord ziet u de volgende details:
 
-* Statuscode is 200. Dit geeft aan dat de bewerking is geslaagd.
-* De status is Actief, wat aangeeft dat het graafexemplaar nu de status Actief heeft.
+* De statuscode is 200, die aangeeft dat de bewerking geslaagd is.
+* De status is `Active`, wat aangeeft dat de grafiek nu actief is.
 
 ## <a name="observe-results"></a>Resultaten bekijken
 
-Het graafexemplaar dat hierboven is gemaakt en geactiveerd, maakt gebruik van het knooppunt van de bewegingsdetectieprocessor om beweging in de inkomende live-videostream te detecteren en verzendt gebeurtenissen naar het knooppunt van de IoT Hub-sink. Deze gebeurtenissen worden vervolgens doorgegeven aan de IoT Edge Hub, en kunnen nu worden waargenomen. Voer hiervoor de volgende stappen uit.
+De grafiek die we hebben gemaakt en geactiveerd, maakt gebruik van het knooppunt van de bewegingsdetectieprocessor om beweging in de inkomende live-videostream te detecteren. Het verzendt gebeurtenissen naar het sink-knooppunt van de IoT Hub. Deze gebeurtenissen worden doorgegeven aan de IoT Edge-hub. 
 
-1. Open het deelvenster Explorer in Visual Studio Code en zoek Azure IoT Hub in de linkerbenedenhoek.
-2. Vouw het apparaatknooppunt uit.
-3. Klik met de rechtermuisknop op lva-sample-device en kies de optie Bewaking van ingebouwde gebeurtenisbewaking starten.
+Volg deze stappen om de resultaten te bekijken.
 
-![Bewaking van IOT Hub-gebeurtenissen starten](./media/quickstarts/start-monitoring-iothub-events.png)
+1. Open het venster **Verkenner** in Visual Studio Code. Zoek naar **Azure IoT Hub** in de linkerbenedenhoek.
+2. Vouw het knooppunt **Apparaten** uit.
+3. Klik met de rechtermuisknop op **Iva-sample-device** en selecteer vervolgens **Bewaking van ingebouwde gebeurtenisbewaking starten**.
 
-In het venster Uitvoer ziet u de volgende berichten:
+    ![Bewaking van IOT Hub-gebeurtenissen starten](./media/quickstarts/start-monitoring-iothub-events.png)
+    
+In het venster **UITVOER** wordt het volgende bericht weergegeven:
 
 ```
 [IoTHubMonitor] [7:44:33 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -551,16 +559,16 @@ In het venster Uitvoer ziet u de volgende berichten:
 }
 ```
 
-Let op het volgende in het bovenstaande bericht
+Let op deze details:
 
-* Het bericht bevat een sectie 'body' en een sectie 'applicationProperties'. Lees het artikel [IoT Hub-bericht maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) om te begrijpen wat deze secties voorstellen.
-* 'subject' in applicationProperties verwijst naar het knooppunt in MediaGraph van waaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van de bewegingsdetectieprocessor.
-* 'eventType' in applicationProperties geeft aan dat dit een analytische gebeurtenis is.
-* 'eventTime' geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
-* 'body' bevat gegevens over de analytische gebeurtenis. In dit geval is de gebeurtenis een deductiegebeurtenis en daarom bevat de hoofdtekst ('body') de gegevens 'timestamp' en 'inferences'.
-* De sectie 'inferences' geeft aan dat het 'type' 'motion' is en dat er aanvullende gegevens zijn over de gebeurtenis 'motion'.
+* Het bericht bevat een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) voor meer informatie.
+* In `applicationProperties` verwijst `subject` naar het knooppunt in de `MediaGraph` vanwaaruit het bericht is gegenereerd. In dit geval is het bericht afkomstig van de bewegingsdetectieprocessor.
+* In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis een analytische gebeurtenis is.
+* De waarde `eventTime` is het tijdstip waarop de gebeurtenis heeft plaatsgevonden.
+* De sectie `body` bevat gegevens over de analytische gebeurtenis. In dit geval is de gebeurtenis een deductiegebeurtenis en bevat de hoofdtekst daarom `timestamp`- en `inferences`-gegevens.
+* De sectie `inferences` aan dat het `type` `motion` is. Het biedt aanvullende gegevens over de `motion`-gebeurtenis.
 
-Als u MediaGraph enige tijd uitvoert, wordt het volgende bericht ook weergegeven in het uitvoervenster:
+Als u de mediagrafiek even uitvoert, verschijnt het volgende bericht in het venster **UITVOER**.
 
 ```
 [IoTHubMonitor] [7:47:45 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -578,19 +586,19 @@ Als u MediaGraph enige tijd uitvoert, wordt het volgende bericht ook weergegeven
 }
 ```
 
-Let op het volgende in het bovenstaande bericht
+U ziet de volgende details dit bericht:
 
-* 'subject' in applicationProperties geeft aan dat het bericht is gegenereerd op basis van het knooppunt van de RTSP-bron in de mediagraaf.
-* 'eventType' in applicationProperties geeft aan dat dit een diagnostische gebeurtenis is.
-* 'body' bevat gegevens over de diagnostische gebeurtenis. In dit geval is de gebeurtenis MediaSessionEstablished en dus de hoofdtekst.
+* In `applicationProperties` geeft `subject` aan dat het bericht is gegenereerd op basis van het knooppunt van de RTSP-bron in de mediagraaf.
+* In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis diagnostisch is.
+* De `body` bevat gegevens over de diagnostische gebeurtenis. In dit geval bevat het bericht de hoofdtekst, omdat de gebeurtenis `MediaSessionEstablished` is.
 
 ## <a name="invoke-additional-direct-methods-to-clean-up"></a>Aanvullende directe methoden aanroepen om op te schonen
 
-Roep nu directe methoden aan voor het deactiveren en verwijderen van het graafexemplaar (in die volgorde).
+Roep directe methoden aan om de grafiek eerst te deactiveren en deze vervolgens te verwijderen.
 
 ### <a name="invoke-graphinstancedeactivate"></a>GraphInstanceDeactivate aanroepen
 
-Roep de directe methode voor GraphInstanceDeactivate aan met de volgende nettolading.
+Roep de directe methode `GraphInstanceDeactivate` aan met de volgende nettolading.
 
 ```
 {
@@ -599,7 +607,7 @@ Roep de directe methode voor GraphInstanceDeactivate aan met de volgende nettola
 }
 ```
 
-Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDeactivate] to [lva-sample-device/lvaEdge] ...
@@ -610,15 +618,13 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
 }
 ```
 
-Statuscode 200 geeft aan dat het graafexemplaar is gedeactiveerd.
+De statuscode 200 geeft aan dat het graafexemplaar is gedeactiveerd.
 
-Voer de volgende stappen uit.
-
-* Roep GraphInstanceGet aan, zoals in de eerdere secties is aangegeven en bekijk de waarde van 'state'.
+Probeer vervolgens `GraphInstanceGet` aan te roepen zoals eerder in dit artikel beschreven. Bekijk de waarde `state`.
 
 ### <a name="invoke-graphinstancedelete"></a>GraphInstanceDelete aanroepen
 
-Roep de directe methode voor GraphInstanceDelete aan met de volgende nettolading
+Roep de directe methode `GraphInstanceDelete` aan met de volgende nettolading.
 
 ```
 {
@@ -627,7 +633,7 @@ Roep de directe methode voor GraphInstanceDelete aan met de volgende nettolading
 }
 ```
 
-Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen:
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDelete] to [lva-sample-device/lvaEdge] ...
@@ -638,11 +644,11 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
 }
 ```
 
-Statuscode 200 in het antwoord geeft aan dat het graafexemplaar is verwijderd.
+Een statuscode 200 geeft aan dat de grafiek is verwijderd.
 
 ### <a name="invoke-graphtopologydelete"></a>GraphTopologyDelete aanroepen
 
-Roep de directe methode voor GraphTopologyDelete aan met de volgende nettolading:
+Roep de directe methode `GraphTopologyDelete` aan met de volgende nettolading.
 
 ```
 {
@@ -651,7 +657,7 @@ Roep de directe methode voor GraphTopologyDelete aan met de volgende nettolading
 }
 ```
 
-Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord verschijnen:
+Binnen een paar seconden ziet u in het venster **UITVOER** het volgende antwoord verschijnen.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyDelete] to [lva-sample-device/lvaEdge] ...
@@ -662,12 +668,12 @@ Binnen een paar seconden moet in het venster Uitvoer het volgende antwoord versc
 }
 ```
 
-Statuscode 200 geeft aan dat de graaftopologie is verwijderd.
+Een statuscode 200 geeft aan dat de grafiektopologie is verwijderd.
 
-Voer de volgende stappen uit.
+Voer de volgende stappen uit:
 
-* Roep GraphTopologyList aan en merk op dat deze module geen graaftopologieën bevat.
-* Roep GraphInstanceList aan met dezelfde nettolading als GraphTopologyList en merk op dat er geen graafexemplaren worden opgesomd.
+1. Roep `GraphTopologyList` aan en controleer of de module geen grafiektopologieën bevat.
+1. Roep `GraphInstanceList` aan met dezelfde nettolading als `GraphTopologyList`. Houd er rekening mee dat er geen grafieken worden opgesomd.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -675,5 +681,5 @@ Als u deze toepassing verder niet gaat gebruiken, verwijdert u de resources die 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het opnemen van video met behulp van Live Video Analytics in IoT Edge
-* Meer informatie over diagnostische berichten.
+* Meer informatie over het [opnemen van video met behulp van Live Video Analytics in IoT Edge](continuous-video-recording-tutorial.md).
+* Meer informatie over [diagnostische berichten](monitoring-logging.md).
