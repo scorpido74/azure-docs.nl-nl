@@ -1,16 +1,16 @@
 ---
 title: Aangepaste Service Fabric status rapporten toevoegen
 description: Hierin wordt beschreven hoe u aangepaste status rapporten naar Azure Service Fabric status entiteiten verzendt. Geeft aanbevelingen voor het ontwerpen en implementeren van kwaliteits rapporten.
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: d00f740085b15bdb5fe698a069d97f168507f31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: gwallace
+ms.openlocfilehash: 167ca76d0b6977a87352f8219d807949a0e4a301
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451591"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392638"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Aangepaste Service Fabric status rapporten toevoegen
 Azure Service Fabric introduceert een [status model](service-fabric-health-introduction.md) dat is ontworpen voor het markeren van slechte cluster-en toepassings voorwaarden voor specifieke entiteiten. Het status model gebruikt **status rapporten** (systeem onderdelen en watchdog). Het doel is eenvoudig en snel te diagnosticeren en te herstellen. Service schrijvers moeten vooraf denken over de status. Elke voor waarde die de status van invloed kan hebben, moet worden gerapporteerd op, met name als het kan helpen om problemen in de buurt van de hoofdmap te markeren. De status informatie kan tijd en moeite besparen bij fout opsporing en onderzoek. Het nut is vooral duidelijk wanneer de service op schaal wordt uitgevoerd in de Cloud (privé of Azure).
@@ -41,7 +41,7 @@ Zoals vermeld, kan rapportage worden uitgevoerd vanaf:
 Zodra het ontwerp voor status rapportage duidelijk is, kunnen status rapporten gemakkelijk worden verzonden. U kunt [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) gebruiken om de status te rapporteren als het cluster niet is [beveiligd](service-fabric-cluster-security.md) of als de Fabric-client beheerders bevoegdheden heeft. Rapportage kan worden uitgevoerd via de API met behulp van [FabricClient. HealthManager. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), via Power shell of via rest. Configuratie knoppen batch rapporten voor betere prestaties.
 
 > [!NOTE]
-> Rapport status is synchroon en bevat alleen het validatie werk aan de client zijde. Het feit dat het rapport wordt geaccepteerd door de Health-client of `Partition` de `CodePackageActivationContext` or-objecten betekenen niet dat het wordt toegepast in de Store. Het wordt asynchroon verzonden en kan eventueel worden gebatcheerd met andere rapporten. De verwerking op de server kan nog steeds mislukken: het Volg nummer kan worden verouderd. de entiteit waarop het rapport moet worden toegepast, is verwijderd, enzovoort.
+> Rapport status is synchroon en bevat alleen het validatie werk aan de client zijde. Het feit dat het rapport wordt geaccepteerd door de Health-client of de `Partition` or- `CodePackageActivationContext` objecten betekenen niet dat het wordt toegepast in de Store. Het wordt asynchroon verzonden en kan eventueel worden gebatcheerd met andere rapporten. De verwerking op de server kan nog steeds mislukken: het Volg nummer kan worden verouderd. de entiteit waarop het rapport moet worden toegepast, is verwijderd, enzovoort.
 > 
 > 
 
@@ -58,7 +58,7 @@ De status rapporten worden verzonden naar de Health Manager via een Health-clien
 > 
 
 De buffering op de client neemt de uniekheid van de rapporten in overweging. Als bijvoorbeeld een bepaalde slechte rapporter 100 rapporten per seconde rapporteert over dezelfde eigenschap van dezelfde entiteit, worden de rapporten vervangen door de laatste versie. Er bestaat Maxi maal één rapport in de client wachtrij. Als batch verwerking is geconfigureerd, is het aantal rapporten dat naar de Health Manager wordt verzonden, slechts één per verzend interval. Dit rapport is het laatst toegevoegde rapport, dat de meest actuele status van de entiteit weerspiegelt.
-Geef configuratie parameters op `FabricClient` wanneer deze worden gemaakt door [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) door te geven met de gewenste waarden voor aan de status gerelateerde vermeldingen.
+Geef configuratie parameters `FabricClient` op wanneer deze worden gemaakt door [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) door te geven met de gewenste waarden voor aan de status gerelateerde vermeldingen.
 
 In het volgende voor beeld wordt een Fabric-client gemaakt en wordt opgegeven dat de rapporten moeten worden verzonden wanneer ze worden toegevoegd. Bij time-outs en fouten die opnieuw kunnen worden geprobeerd, wordt elke 40 seconden opnieuw geprobeerd.
 
@@ -72,7 +72,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-We raden u aan de standaard instellingen voor de Fabric- `HealthReportSendInterval` client te houden, die zijn ingesteld op 30 seconden. Deze instelling zorgt voor optimale prestaties vanwege batch verwerking. Voor kritieke rapporten die zo snel mogelijk moeten worden verzonden, gebruikt u `HealthReportSendOptions` direct `true` in [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) -API. Directe rapporten slaan het interval voor batch verwerking over. Gebruik deze vlag met zorg; We willen zo mogelijk gebruikmaken van de batch verwerking voor de Health-client. Direct verzenden is ook handig wanneer de Fabric-client wordt afgesloten (bijvoorbeeld omdat het proces een ongeldige status heeft bepaald en moet worden afgesloten om neven effecten te voor komen). Het zorgt voor een beste verzen ding van de verzamelde rapporten. Wanneer één rapport wordt toegevoegd met de vlag Immediate, worden de verzamelde rapporten sinds de laatste verzen ding door de Health-client in batches opgenomen.
+We raden u aan de standaard instellingen voor de Fabric-client te houden, die zijn ingesteld `HealthReportSendInterval` op 30 seconden. Deze instelling zorgt voor optimale prestaties vanwege batch verwerking. Voor kritieke rapporten die zo snel mogelijk moeten worden verzonden, gebruikt u `HealthReportSendOptions` direct `true` in [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) -API. Directe rapporten slaan het interval voor batch verwerking over. Gebruik deze vlag met zorg; We willen zo mogelijk gebruikmaken van de batch verwerking voor de Health-client. Direct verzenden is ook handig wanneer de Fabric-client wordt afgesloten (bijvoorbeeld omdat het proces een ongeldige status heeft bepaald en moet worden afgesloten om neven effecten te voor komen). Het zorgt voor een beste verzen ding van de verzamelde rapporten. Wanneer één rapport wordt toegevoegd met de vlag Immediate, worden de verzamelde rapporten sinds de laatste verzen ding door de Health-client in batches opgenomen.
 
 U kunt dezelfde para meters opgeven wanneer een verbinding met een cluster wordt gemaakt via Power shell. In het volgende voor beeld wordt een verbinding met een lokaal cluster gestart:
 
@@ -102,17 +102,17 @@ GatewayInformation   : {
                        }
 ```
 
-Net als bij API kunnen rapporten worden verzonden met `-Immediate` behulp van de switch die onmiddellijk moet worden verzonden `HealthReportSendInterval` , ongeacht de waarde.
+Net als bij API kunnen rapporten worden verzonden met behulp `-Immediate` van de switch die onmiddellijk moet worden verzonden, ongeacht de `HealthReportSendInterval` waarde.
 
-Voor REST worden de rapporten verzonden naar de Service Fabric-gateway, die een interne Fabric-client heeft. Deze client is standaard geconfigureerd voor het verzenden van rapporten die elke 30 seconden worden gebatcheerd. U kunt de batch-interval wijzigen met de cluster configuratie `HttpGatewayHealthReportSendInterval` - `HttpGateway`instelling op. Zoals gezegd, is het een betere optie om de rapporten met `Immediate` waar te verzenden. 
+Voor REST worden de rapporten verzonden naar de Service Fabric-gateway, die een interne Fabric-client heeft. Deze client is standaard geconfigureerd voor het verzenden van rapporten die elke 30 seconden worden gebatcheerd. U kunt de batch-interval wijzigen met de cluster configuratie-instelling `HttpGatewayHealthReportSendInterval` op `HttpGateway` . Zoals gezegd, is het een betere optie om de rapporten met `Immediate` waar te verzenden. 
 
 > [!NOTE]
-> Om ervoor te zorgen dat niet-geautoriseerde services de status niet kunnen rapporteren aan de entiteiten in het cluster, configureert u de server om alleen aanvragen van beveiligde clients te accepteren. Voor `FabricClient` de rapportage die wordt gebruikt, moet beveiliging zijn ingeschakeld om te kunnen communiceren met het cluster (bijvoorbeeld met Kerberos of verificatie op basis van een certificaat). Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
+> Om ervoor te zorgen dat niet-geautoriseerde services de status niet kunnen rapporteren aan de entiteiten in het cluster, configureert u de server om alleen aanvragen van beveiligde clients te accepteren. Voor de `FabricClient` rapportage die wordt gebruikt, moet beveiliging zijn ingeschakeld om te kunnen communiceren met het cluster (bijvoorbeeld met Kerberos of verificatie op basis van een certificaat). Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
 > 
 > 
 
 ## <a name="report-from-within-low-privilege-services"></a>Rapport vanuit Services met weinig bevoegdheid
-Als Service Fabric Services geen beheerders toegang tot het cluster hebben, kunt u de status van entiteiten rapporteren vanuit de huidige context via `Partition` of `CodePackageActivationContext`.
+Als Service Fabric Services geen beheerders toegang tot het cluster hebben, kunt u de status van entiteiten rapporteren vanuit de huidige context via `Partition` of `CodePackageActivationContext` .
 
 * Gebruik [IStatelessServicePartition. ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) voor stateless Services om te rapporteren over het huidige service-exemplaar.
 * Gebruik [IStatefulServicePartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) voor stateful Services om te rapporteren over de huidige replica.
@@ -126,7 +126,7 @@ Als Service Fabric Services geen beheerders toegang tot het cluster hebben, kunt
 > 
 > 
 
-U kunt opgeven `HealthReportSendOptions` wanneer u rapporten verzendt `Partition` via `CodePackageActivationContext` en status-api's. Als u kritieke rapporten hebt die zo snel mogelijk moeten worden verzonden, gebruikt `HealthReportSendOptions` u direct. `true` Directe rapporten slaan het batch interval van de interne Health-client over. Zoals eerder vermeld, kunt u deze vlag gebruiken. We willen zo mogelijk gebruikmaken van de batch verwerking voor de Health-client.
+U kunt opgeven `HealthReportSendOptions` Wanneer u rapporten verzendt via `Partition` en `CodePackageActivationContext` status-api's. Als u kritieke rapporten hebt die zo snel mogelijk moeten worden verzonden, gebruikt u `HealthReportSendOptions` direct `true` . Directe rapporten slaan het batch interval van de interne Health-client over. Zoals eerder vermeld, kunt u deze vlag gebruiken. We willen zo mogelijk gebruikmaken van de batch verwerking voor de Health-client.
 
 ## <a name="design-health-reporting"></a>Ontwerp status rapportage
 De eerste stap bij het genereren van rapporten van hoge kwaliteit is het identificeren van de voor waarden die van invloed kunnen zijn op de status van de service. Elke voor waarde die het mogelijk maakt om problemen in de service of het cluster te markeren wanneer het wordt gestart, of nog beter, voordat een probleem zich voordoet, kan er miljarden dollars besparen. De voor delen omvatten minder tijd, minder nacht uren die zijn besteed aan het onderzoeken en repareren van problemen en een hogere klant tevredenheid.
@@ -167,13 +167,13 @@ Voor periodieke rapportage kan de watchdog worden geïmplementeerd met een timer
 
 Voor rapportage over overgangen is een zorgvuldige verwerking van de status vereist. De watchdog controleert enkele voor waarden en rapporten alleen wanneer de voor waarden veranderen. De kant van deze benadering is dat er minder rapporten nodig zijn. Het nadeel is dat de logica van de watchdog complex is. De watchdog moet de voor waarden of rapporten behouden, zodat deze kunnen worden geïnspecteerd om status wijzigingen te bepalen. Bij failover moet er rekening mee worden gehouden met rapporten die zijn toegevoegd, maar nog niet naar het Health Store zijn verzonden. Het Volg nummer moet steeds groter worden. Als dat niet het geval is, worden de rapporten afgewezen als verouderd. In de zeldzame gevallen waarin gegevens verlies wordt gemaakt, kan het nodig zijn om de status van de rapporter en de status van de Health Store te synchroniseren.
 
-Rapportage over overgangen is zinvol voor services die op zichzelf worden gerapporteerd `Partition` via `CodePackageActivationContext`of. Wanneer het lokale object (replica of geïmplementeerde service pakket/geïmplementeerde toepassing) wordt verwijderd, worden alle bijbehorende rapporten ook verwijderd. Deze automatische opschoning versoepelt de nood zaak van synchronisatie tussen rereporter en Health Store. Als het rapport voor de bovenliggende partitie of bovenliggende toepassing is, moet u ervoor zorgen dat er een failover wordt uitgevoerd om verouderde rapporten in de Health Store te voor komen. Logica moet worden toegevoegd om de juiste status te behouden en het rapport uit de Store te wissen wanneer het niet meer nodig is.
+Rapportage over overgangen is zinvol voor services die op zichzelf worden gerapporteerd via `Partition` of `CodePackageActivationContext` . Wanneer het lokale object (replica of geïmplementeerde service pakket/geïmplementeerde toepassing) wordt verwijderd, worden alle bijbehorende rapporten ook verwijderd. Deze automatische opschoning versoepelt de nood zaak van synchronisatie tussen rereporter en Health Store. Als het rapport voor de bovenliggende partitie of bovenliggende toepassing is, moet u ervoor zorgen dat er een failover wordt uitgevoerd om verouderde rapporten in de Health Store te voor komen. Logica moet worden toegevoegd om de juiste status te behouden en het rapport uit de Store te wissen wanneer het niet meer nodig is.
 
 ## <a name="implement-health-reporting"></a>Status rapportage implementeren
 Zodra de gegevens van de entiteit en het rapport duidelijk zijn, kunnen de verzend status rapporten worden uitgevoerd via de API, Power shell of de REST.
 
 ### <a name="api"></a>API
-Als u wilt rapporteren via de API, moet u een status rapport maken dat specifiek is voor het entiteits type waarover ze willen rapporteren. Geef het rapport een Health-client. U kunt ook een status informatie maken en deze door geven om rapportage methoden te `Partition` corrigeren `CodePackageActivationContext` op of te rapporteren over huidige entiteiten.
+Als u wilt rapporteren via de API, moet u een status rapport maken dat specifiek is voor het entiteits type waarover ze willen rapporteren. Geef het rapport een Health-client. U kunt ook een status informatie maken en deze door geven om rapportage methoden te corrigeren op `Partition` of `CodePackageActivationContext` te rapporteren over huidige entiteiten.
 
 In het volgende voor beeld wordt periodieke rapportage weer gegeven van een watchdog in het cluster. De watchdog controleert of een externe bron kan worden geopend vanuit een knoop punt. De resource is nodig voor een service manifest binnen de toepassing. Als de resource niet beschikbaar is, kunnen de andere services in de toepassing nog steeds goed functioneren. Daarom wordt het rapport elke 30 seconden verzonden op de entiteit van het geïmplementeerde service pakket.
 

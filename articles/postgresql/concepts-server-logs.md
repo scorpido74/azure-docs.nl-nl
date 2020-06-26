@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131224"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392808"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 
@@ -21,7 +21,7 @@ Controle logboek registratie wordt beschikbaar gesteld via een post gres-extensi
 
 
 ## <a name="configure-logging"></a>Logboek registratie configureren 
-U kunt post gres Standard-logboek registratie op uw server configureren met de server parameters voor registratie. Op elke Azure Database for PostgreSQL- `log_checkpoints` server en `log_connections` zijn standaard ingeschakeld. Er zijn aanvullende para meters die u kunt aanpassen aan uw logboek registratie vereisten: 
+U kunt post gres Standard-logboek registratie op uw server configureren met de server parameters voor registratie. Op elke Azure Database for PostgreSQL-server `log_checkpoints` en `log_connections` zijn standaard ingeschakeld. Er zijn aanvullende para meters die u kunt aanpassen aan uw logboek registratie vereisten: 
 
 ![Azure Database for PostgreSQL-registratie parameters](./media/concepts-server-logs/log-parameters.png)
 
@@ -41,7 +41,7 @@ De standaard indeling voor logboeken in Azure Database for PostgreSQL is. log. E
 
 Azure Database for PostgreSQL biedt een opslag locatie voor de korte termijn voor de. log-bestanden. Een nieuw bestand begint elke 1 uur of 100 MB, afhankelijk van wat het eerste komt. Logboeken worden toegevoegd aan het huidige bestand wanneer ze worden verzonden vanuit post gres.  
 
-U kunt de Bewaar periode voor deze logboek opslag voor de korte termijn instellen met behulp `log_retention_period` van de para meter. De standaardwaarde is drie dagen, de maximumwaarde is zeven dagen. De opslag locatie voor de korte termijn kan Maxi maal 1 GB aan logboek bestanden bevatten. Na 1 GB worden de oudste bestanden, ongeacht de Bewaar periode, verwijderd om ruimte te maken voor nieuwe logboeken. 
+U kunt de Bewaar periode voor deze logboek opslag voor de korte termijn instellen met behulp van de `log_retention_period` para meter. De standaardwaarde is drie dagen, de maximumwaarde is zeven dagen. De opslag locatie voor de korte termijn kan Maxi maal 1 GB aan logboek bestanden bevatten. Na 1 GB worden de oudste bestanden, ongeacht de Bewaar periode, verwijderd om ruimte te maken voor nieuwe logboeken. 
 
 Voor een langere periode voor het bewaren van Logboeken en logboek analyse kunt u de. log-bestanden downloaden en verplaatsen naar een service van derden. U kunt de bestanden downloaden met behulp van de [Azure Portal](howto-configure-server-logs-in-portal.md) [Azure cli](howto-configure-server-logs-using-cli.md). U kunt ook Azure Monitor Diagnostische instellingen configureren waarmee uw logboeken (in JSON-indeling) automatisch worden meegestuurd naar locaties met langere termijn. Meer informatie over deze optie vindt u in de sectie hieronder. 
 
@@ -82,6 +82,7 @@ Zoeken naar alle post gres-logboeken voor een bepaalde server in de afgelopen da
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 
