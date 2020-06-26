@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d696c0f6d1cdab8175af77c265435c48824f3e15
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 76fb933893b624e9b289ddf51d2a0373b51e58d1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346112"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391533"
 ---
 # <a name="quickstart-test-a-model-using-an-audio-file-in-speech-studio"></a>Snelstartgids: een model testen met behulp van een audio bestand in speech Studio
 
@@ -58,7 +58,7 @@ Nadat de inhoud van uw zip-bestand door Speech Studio is verwerkt, kunt u de bro
 
 U kunt bestanden die transcripties beschrijven in veel meer details downloaden. De bestanden bevatten lexicale vorm van spraak in uw audio bestanden en JSON-bestanden met gegevens over de betrouw baarheid van de offset, duur en transcriptie van elk woord. Volg deze stappen om deze bestanden weer te geven.
 
-1. Klik op **downloaden**.
+1. Klik op **Downloaden**.
 2. Selecteer in het dialoog venster downloaden de optie **Audio**en klik op **downloaden**.
 3. Pak het gedownloade zip-bestand uit en controleer de uitgepakte bestanden.
 

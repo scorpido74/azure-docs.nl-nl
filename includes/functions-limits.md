@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 40d171101c5d99cd33c90ee8751092a3ceebf12e
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 37a61e270f95ffdc420536046e0ce1eda1e489b4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906705"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391473"
 ---
 | Resource |[Verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan)|[Premium-abonnement](../articles/azure-functions/functions-scale.md#premium-plan)|[Toegewezen plan](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ ms.locfileid: "84906705"
 | Maxi maal geheugen (GB per instantie) | 1.5 | 3,5-14 | 1,75-14 | 3,5-14 | Elk knoop punt wordt ondersteund |
 | Functie-apps per plan |100 |100 |niet-gebonden<sup>4</sup> | unbounded | unbounded |
 | [App Service-abonnementen](../articles/app-service/overview-hosting-plans.md) | 100 per [regio](https://azure.microsoft.com/global-infrastructure/regions/) |100 per resource groep |100 per resource groep | - | - |
-| Opslag<sup>5</sup> |1 GB |250 GB |50-1000 GB | 1 TB | N.v.t. |
+| Opslag<sup>5</sup> |5 TB |250 GB |50-1000 GB | 1 TB | N.v.t. |
 | Aangepaste domeinen per app</a> |500<sup>6</sup> |500 |500 | 500 | N.v.t. |
 | SSL- [ondersteuning](../articles/app-service/configure-ssl-bindings.md) voor aangepaste domeinen |niet-gebonden SNI SSL verbinding opgenomen | niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen |niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen | niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen | N.v.t. |
 

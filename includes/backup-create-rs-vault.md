@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/18/2018
 ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 2c74783ea8246232cb5c4270691daf3f83fe9a30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2509bdae01fc9de5511dcd67eb95bf0d13d5cf39
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204435"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391146"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-Een Recovery Services kluis is een opslag entiteit waarin de herstel punten worden opgeslagen die in de loop van de tijd zijn gemaakt. Het bevat ook het back-upbeleid dat is gekoppeld aan beveiligde items.
+Een Recovery Services kluis is een beheer entiteit waarmee herstel punten worden opgeslagen die in de loop van de tijd zijn gemaakt en die een interface biedt voor het uitvoeren van back-upbewerkingen. Dit omvat het maken van back-ups op aanvraag, het uitvoeren van herstel bewerkingen en het maken van back-upbeleid.
 
 Voer de volgende stappen uit om een Recovery Services kluis te maken.
 

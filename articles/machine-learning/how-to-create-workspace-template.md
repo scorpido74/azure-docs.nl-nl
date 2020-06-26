@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 5280fe3c4a06479ae49c5064832aca6affd8167f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433504"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392660"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -65,7 +65,7 @@ De voorbeeld sjabloon heeft twee para meters:
 > [!TIP]
 > Terwijl de sjabloon die aan dit document is gekoppeld, een nieuwe Azure Container Registry maakt, kunt u ook een nieuwe werk ruimte maken zonder container register te maken. Er wordt een gemaakt wanneer u een bewerking uitvoert waarvoor een container register is vereist. Bijvoorbeeld training of implementatie van een model.
 >
-> U kunt ook verwijzen naar een bestaand container register of opslag account in de Azure Resource Manager-sjabloon in plaats van een nieuwe te maken.
+> U kunt ook verwijzen naar een bestaand container register of opslag account in de Azure Resource Manager-sjabloon in plaats van een nieuwe te maken. Voor het container register dat u gebruikt, moet het __beheerders account__ echter zijn ingeschakeld. Zie [beheerders account](/azure/container-registry/container-registry-authentication#admin-account)voor meer informatie over het inschakelen van het beheerders account.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -199,7 +199,7 @@ az group deployment create \
 
 Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 ### <a name="resource-provider-errors"></a>Fouten van de resource provider
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6381f678979437fdfc10d2ea63a79ed347183e92
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330826"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388915"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Walkthrough: Integreer REST API claims in uw Azure AD B2C gebruikers traject om gebruikers invoer te valideren
 
@@ -55,7 +55,7 @@ Zodra uw REST API de gegevens valideert, moet deze een HTTP 200 (OK) retour nere
 }
 ```
 
-Als de validatie is mislukt, moet de REST API een HTTP 409 (conflict) retour neren met `userMessage` het JSON-element. De IEF verwacht de `userMessage` claim dat de rest API retourneert. Deze claim wordt weer gegeven als een teken reeks voor de gebruiker als de validatie mislukt.
+Als de validatie is mislukt, moet de REST API een HTTP 409 (conflict) retour neren met het `userMessage` JSON-element. De IEF verwacht de `userMessage` claim dat de rest API retourneert. Deze claim wordt weer gegeven als een teken reeks voor de gebruiker als de validatie mislukt.
 
 ```json
 {
@@ -71,7 +71,7 @@ De installatie van het REST API-eind punt valt buiten het bereik van dit artikel
 
 Een claim biedt tijdelijke opslag van gegevens tijdens het uitvoeren van een Azure AD B2C beleid. U kunt claims declareren binnen de sectie [claim schema](claimsschema.md) . 
 
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
 1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
 1. Voeg de volgende claims toe aan het **ClaimsSchema** -element.  
@@ -128,15 +128,15 @@ Een onderliggend [technisch profiel](restful-technical-profile.md) biedt onderst
 </ClaimsProvider>
 ```
 
-In dit voor beeld wordt `userLanguage` de naar de rest-service verzonden `lang` binnen de JSON-nettolading. De waarde van de `userLanguage` claim bevat de huidige gebruikers taal-id. Zie [claim resolver](claim-resolver-overview.md)voor meer informatie.
+In dit voor beeld `userLanguage` wordt de naar de rest-service verzonden `lang` binnen de JSON-nettolading. De waarde van de `userLanguage` claim bevat de huidige gebruikers taal-id. Zie [claim resolver](claim-resolver-overview.md)voor meer informatie.
 
 De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Zie [Secure rest API](secure-rest-api.md)(Engelstalig) voor meer informatie over het beveiligen van uw rest-api's voor productie.
 
 ## <a name="validate-the-user-input"></a>De gebruikers invoer valideren
 
-Als u het loyaliteits nummer van de gebruiker tijdens het aanmelden wilt ophalen, moet u de gebruiker in staat stellen deze gegevens in te voeren op het scherm. Voeg de **loyaltyId** -uitvoer claim toe aan de registratie pagina door deze toe te voegen aan het element van `OutputClaims` de bestaande technische profiel registratie sectie. Geef de volledige lijst met uitvoer claims op om de volg orde te bepalen waarin de claims worden weer gegeven op het scherm.  
+Als u het loyaliteits nummer van de gebruiker tijdens het aanmelden wilt ophalen, moet u de gebruiker in staat stellen deze gegevens in te voeren op het scherm. Voeg de **loyaltyId** -uitvoer claim toe aan de registratie pagina door deze toe te voegen aan het element van de bestaande technische profiel registratie sectie `OutputClaims` . Geef de volledige lijst met uitvoer claims op om de volg orde te bepalen waarin de claims worden weer gegeven op het scherm.  
 
-Voeg de validatie technische profiel verwijzing toe aan het technische profiel voor aanmelden, waarmee de `REST-ValidateProfile`wordt aangeroepen. Het nieuwe technische profiel voor validatie wordt toegevoegd aan de bovenkant van de `<ValidationTechnicalProfiles>` verzameling die in het basis beleid is gedefinieerd. Dit gedrag houdt in dat u na een geslaagde validatie de Azure AD B2C verplaatst om het account in de Directory te maken.   
+Voeg de validatie technische profiel verwijzing toe aan het technische profiel voor aanmelden, waarmee de wordt aangeroepen `REST-ValidateProfile` . Het nieuwe technische profiel voor validatie wordt toegevoegd aan de bovenkant van de `<ValidationTechnicalProfiles>` verzameling die in het basis beleid is gedefinieerd. Dit gedrag houdt in dat u na een geslaagde validatie de Azure AD B2C verplaatst om het account in de Directory te maken.   
 
 1. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe claim provider toe:
 
@@ -192,7 +192,7 @@ Voeg de validatie technische profiel verwijzing toe aan het technische profiel v
 
 ## <a name="include-a-claim-in-the-token"></a>Een claim in het token toevoegen 
 
-Voeg een uitvoer claim toe aan het <em> `SocialAndLocalAccounts/` </em> bestand om de claim code terug te sturen naar de Relying Party-toepassing. Met de uitvoer claim kan de claim worden toegevoegd aan het token na een geslaagde gebruikers reis, waarna deze wordt verzonden naar de toepassing. Wijzig het technische profiel element in het gedeelte Relying Party om de `promoCode` als uitvoer claim toe te voegen.
+Voeg een uitvoer claim toe aan het bestand om de claim code terug te sturen naar de Relying Party-toepassing <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . Met de uitvoer claim kan de claim worden toegevoegd aan het token na een geslaagde gebruikers reis, waarna deze wordt verzonden naar de toepassing. Wijzig het technische profiel element in het gedeelte Relying Party om de als uitvoer claim toe te voegen `promoCode` .
  
 ```xml
 <RelyingParty>
@@ -221,13 +221,13 @@ Voeg een uitvoer claim toe aan het <em> `SocialAndLocalAccounts/` </em> bestand 
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer een **Framework voor identiteits ervaring**.
-1. Selecteer **aangepast beleid uploaden**en upload vervolgens de beleids bestanden die u hebt gewijzigd: *TrustFrameworkExtensions. XML*en *SignUpOrSignin. XML*. 
+1. Selecteer **aangepast beleid uploaden**en upload de beleids bestanden die u hebt gewijzigd: *TrustFrameworkExtensions.xml*en *SignUpOrSignin.xml*. 
 1. Selecteer het registratie-of aanmeldings beleid dat u hebt geüpload en klik op de knop **nu uitvoeren** .
 1. U moet zich kunnen aanmelden met een e-mail adres.
 1. Klik op de koppeling **nu registreren** .
 1. Typ 1234 in de **loyaliteits-id**en klik op **door gaan**. Op dit moment moet u een validatie fout bericht ontvangen.
 1. Wijzig naar een andere waarde en klik op **door gaan**.
-1. Het token dat teruggestuurd naar uw toepassing bevat `promoCode` de claim.
+1. Het token dat teruggestuurd naar uw toepassing bevat de `promoCode` claim.
 
 ```json
 {

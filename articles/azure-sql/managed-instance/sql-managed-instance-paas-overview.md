@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 04/02/2020
-ms.openlocfilehash: db476d32d3b087e86329f8ed40446caf122c0a00
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.date: 06/25/2020
+ms.openlocfilehash: 43fad6249d5c6f528353a819e03dd7401440e05d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944794"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391006"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Wat is Azure SQL Managed instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -53,18 +53,18 @@ De belangrijkste functies van SQL Managed instance worden weer gegeven in de vol
 |Functie | Beschrijving|
 |---|---|
 | Versie/build van SQL Server | SQL Server data base-engine (laatste stabiel) |
-| Beheerde geautomatiseerde back-ups | Yes |
-| Ingebouwde instantie-en database controle en-metrische gegevens | Yes |
-| Automatische software patching | Yes |
-| De nieuwste functies van de data base-engine | Yes |
+| Beheerde geautomatiseerde back-ups | Ja |
+| Ingebouwde instantie-en database controle en-metrische gegevens | Ja |
+| Automatische software patching | Ja |
+| De nieuwste functies van de data base-engine | Ja |
 | Aantal gegevens bestanden (rijen) per data base | Meerdere |
 | Aantal logboek bestanden (logboek) per data base | 1 |
-| VNet-Azure Resource Manager-implementatie | Yes |
-| VNet-klassiek implementatie model | No |
-| Portal ondersteuning | Yes|
+| VNet-Azure Resource Manager-implementatie | Ja |
+| VNet-klassiek implementatie model | Nee |
+| Portal ondersteuning | Ja|
 | SSIS (ingebouwde integratie service) | No-SSIS maakt deel uit van [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | SSAS (ingebouwde Analysis Service) | Nee-SSAS is afzonderlijke [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Ingebouwde Reporting service (SSRS) | Geen gebruik [Power bi gepagineerde rapporten](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een virtuele machine van Azure. SQL Managed instance kan geen SSRS als service uitvoeren, maar kan de SSRS 2019-catalogus databases voor een externe rapport Server hosten met behulp van SQL Server-verificatie. |
+| Ingebouwde Reporting service (SSRS) | Geen gebruik [Power bi gepagineerde rapporten](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) of host SSRS op een virtuele machine van Azure. SQL Managed instance kan geen SSRS als service uitvoeren, maar kan [SSRS-catalogus databases](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) hosten voor een rapport server die is geïnstalleerd op een virtuele Azure-machine met behulp van SQL Server-verificatie. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
@@ -191,14 +191,14 @@ De volgende tabel bevat een overzicht van de mogelijkheid om specifieke beheer b
 
 Categorie  |Bewerking  |Geannuleerd  |Geschatte annulerings duur  |
 |---------|---------|---------|---------|
-|Implementatie |Instantie maken |No |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |No |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Yes |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Verwijderen |Verwijdering van exemplaar |No |  |
-|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |No |  |
+|Implementatie |Instantie maken |Nee |  |
+|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |Nee |  |
+|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
+|Verwijderen |Verwijdering van exemplaar |Nee |  |
+|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |Nee |  |
 
 Als u de beheer bewerking wilt annuleren, gaat u naar de Blade overzicht en klikt u op meldingen venster van de actieve bewerking. Aan de rechter kant verschijnt een scherm met de doorlopende bewerking en er wordt een knop weer gegeven voor het annuleren van de bewerking. Nadat u de eerste keer hebt geklikt, wordt u gevraagd opnieuw te klikken en bevestigen dat u de bewerking wilt annuleren.
 

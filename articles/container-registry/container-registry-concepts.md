@@ -2,13 +2,13 @@
 title: Over opslag plaatsen & installatie kopieën
 description: Inleiding tot de belangrijkste concepten van Azure-container registers, opslag plaatsen en container installatie kopieën.
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711983"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390445"
 ---
 # <a name="about-registries-repositories-and-images"></a>Over registers, opslag plaatsen en installatie kopieën
 
@@ -24,13 +24,11 @@ Naast docker-container installatie kopieën ondersteunt Azure Container Registry
 
 Het adres van een artefact in een Azure container Registry bevat de volgende elementen. 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** : de volledig gekwalificeerde naam van de registerpad. De Registry-host in een Azure container Registry heeft de indeling *myregistry*. azurecr.io (alle kleine letters). U moet de loginUrl opgeven wanneer u docker of andere client hulpprogramma's gebruikt om artefacten te halen of te pushen naar een Azure container Registry. 
-* **naam ruimte** -slash-gescheiden logische groepering van gerelateerde installatie kopieën of artefacten, bijvoorbeeld voor een werk groep of app
-* **artefact** -de naam van een opslag plaats voor een bepaalde afbeelding of artefact
-* **Label** : een specifieke versie van een afbeelding of artefact die is opgeslagen in een opslag plaats
-
+* **opslag plaats** : naam van een logische groepering van een of meer gerelateerde installatie kopieën of artefacten, bijvoorbeeld de installatie kopieën voor een toepassing of een basis besturingssysteem. Kan *naam ruimte* -pad bevatten. 
+* **tag** -id van een specifieke versie van een installatie kopie of artefact die is opgeslagen in een opslag plaats.
 
 De volledige naam van een installatie kopie in een Azure container Registry kan er bijvoorbeeld als volgt uitzien:
 
@@ -40,20 +38,24 @@ Raadpleeg de volgende secties voor meer informatie over deze elementen.
 
 ## <a name="repository-name"></a>Naam van opslag plaats
 
-Container registers beheren *opslag*plaatsen, verzamelingen container installatie kopieën of andere artefacten met dezelfde naam, maar met verschillende Tags. De volgende drie installatie kopieën bevinden zich bijvoorbeeld in de opslag plaats ' ACR-HelloWorld ':
+Een *opslag plaats* is een verzameling container installatie kopieën of andere artefacten met dezelfde naam, maar met verschillende labels. De volgende drie installatie kopieën bevinden zich bijvoorbeeld in de opslag plaats ' ACR-HelloWorld ':
 
 
 - *ACR-HelloWorld: nieuwste*
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u installatie kopieën groeperen met behulp van door slash gescheiden namen van opslag plaatsen, bijvoorbeeld:
+Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u verwante opslag plaatsen en eigendoms artefacten in uw organisatie identificeren met door komma's gescheiden namen. Het REGI ster beheert echter alle opslag plaatsen onafhankelijk, niet als een-hiërarchie. Voor voor beelden:
 
 - *Marketing/campaign10-18/Web: v2*
 - *Marketing-campaign10-18/API: v3*
 - *Marketing-campaign10-18/Email-Sender: v2*
 - *product-retouren/webverzending: 20180604*
 - *product-retourneert/legacy-integrator: 20180715*
+
+Opslagplaats namen mogen alleen bestaan uit kleine letters, punten, streepjes, onderstrepings tekens en slashes. 
+
+Zie voor de volledige naamgevings regels voor opslag plaatsen de [specificatie open container Initiative distributie](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
 
 ## <a name="image"></a>Installatiekopie
 
@@ -63,9 +65,11 @@ Een container installatie kopie of ander artefact in een REGI ster is gekoppeld 
 
 De- *tag* voor een afbeelding of ander artefact specificeert de versie. Een enkel artefact in een opslag plaats kan worden toegewezen aan een of meer tags en kan ook ' zonder Tags ' zijn. Dat wil zeggen dat u alle tags uit een installatie kopie kunt verwijderen terwijl de gegevens van de afbeelding (de lagen) in het REGI ster blijven.
 
-De opslag plaats (of opslag plaats en naam ruimte) plus een tag definieert de naam van een afbeelding. U kunt een installatie kopie pushen en ophalen door de naam op te geven in de push-of pull-bewerking.
+De opslag plaats (of opslag plaats en naam ruimte) plus een tag definieert de naam van een afbeelding. U kunt een installatie kopie pushen en ophalen door de naam op te geven in de push-of pull-bewerking. De tag `latest` wordt standaard gebruikt als u er geen opgeeft in uw docker-opdrachten.
 
 Hoe u container installatie kopieën labelt, wordt door uw scenario's begeleid om ze te ontwikkelen of te implementeren. Stabiele Tags worden bijvoorbeeld aanbevolen voor het onderhouden van uw basis installatie kopieën en unieke labels voor het implementeren van installatie kopieën. Zie voor meer informatie [aanbevelingen voor het coderen en versie beheer van container installatie kopieën](container-registry-image-tag-version.md).
+
+Raadpleeg de [docker-documentatie](https://docs.docker.com/engine/reference/commandline/tag/)voor de naamgevings regels voor labels.
 
 ### <a name="layer"></a>Laag
 

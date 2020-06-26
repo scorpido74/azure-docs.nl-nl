@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e8a1bb19a18f43bae4639d2ca9d9b9941bd29324
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 1af98e6ecbe9b5951d94dd22be8a47c1b13691d3
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362816"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390615"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Verschillende gebeurtenissen in azure Digital Apparaatdubbels maken **meldingen**, waardoor de back-end van de oplossing op de hoogte kan worden wanneer er verschillende acties plaatsvinden. Deze worden vervolgens [doorgestuurd](concepts-route-events.md) naar verschillende locaties binnen en buiten Azure Digital apparaatdubbels die deze informatie kunnen gebruiken om actie te ondernemen.
 

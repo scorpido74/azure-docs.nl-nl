@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 1f5a569f9c3bfa91b78c836e37a22642238674be
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7a1cc2c45988e0c5a8c757e4d280b48dbbe56daa
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975938"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391380"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Quick Start: spraak op doel-C op iOS met behulp van de Speech SDK
 
@@ -36,11 +36,11 @@ Voordat u begint, bekijkt u de lijst vereisten:
 Houd er rekening mee dat deze zelf studie niet werkt met een versie van de SDK die ouder is dan 1.7.0.
 
 De Cognitive Services Speech SDK voor iOS wordt momenteel gedistribueerd als een cacao-Framework.
-Het kan worden gebruikt in Xcode-projecten als een [CocoaPod](https://cocoapods.org/), of worden https://aka.ms/csspeech/iosbinary gedownload en hand matig worden gekoppeld. Deze hand leiding maakt gebruik van een CocoaPod.
+Het kan worden gebruikt in Xcode-projecten als een [CocoaPod](https://cocoapods.org/), of worden gedownload https://aka.ms/csspeech/iosbinary en hand matig worden gekoppeld. Deze hand leiding maakt gebruik van een CocoaPod.
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 
-Start Xcode en start een nieuw project door te klikken op **bestand** > **Nieuw** > **project**.
+Start Xcode en start een nieuw project door te klikken op **bestand**  >  **Nieuw**  >  **project**.
 Kies in het dialoogvenster voor het selecteren van sjablonen de sjabloon 'iOS Single View App'.
 
 Maak in de dialoogvensters die volgen de volgende selecties:
@@ -58,9 +58,9 @@ Maak in de dialoogvensters die volgen de volgende selecties:
 ## <a name="install-the-sdk-as-a-cocoapod"></a>De SDK installeren als een CocoaPod
 
 1. Installeer de CocoaPod dependency manager zoals beschreven in de [installatie-instructies](https://guides.cocoapods.org/using/getting-started.html).
-1. Navigeer naar de map van uw voor beeld-`helloworld`app (). Plaats een tekst bestand met de naam `Podfile` en de volgende inhoud in die map:  
+1. Navigeer naar de map van uw voor beeld-app ( `helloworld` ). Plaats een tekst bestand met de naam `Podfile` en de volgende inhoud in die map:  
    [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/text-to-speech/helloworld/Podfile)]
-1. Ga naar de `helloworld` map in een Terminal en voer de opdracht `pod install`uit. Hiermee wordt een `helloworld.xcworkspace` Xcode-werk ruimte gegenereerd met zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid. Deze werk ruimte wordt gebruikt in het volgende.
+1. Ga naar de `helloworld` map in een Terminal en voer de opdracht uit `pod install` . Hiermee wordt een `helloworld.xcworkspace` Xcode-werk ruimte gegenereerd met zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid. Deze werk ruimte wordt gebruikt in het volgende.
 
 ## <a name="add-the-sample-code"></a>De voorbeeldcode toevoegen
 
@@ -74,9 +74,9 @@ Maak in de dialoogvensters die volgen de volgende selecties:
 
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
-1. De uitvoer van de fout opsporing zichtbaar maken (de**console****fout opsporing** > **weer geven** > ).
-1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product** > **bestemming** .
-1. Bouw en voer de voorbeeld code in de IOS-simulator uit door in het menu **product** > **uitvoeren** te selecteren of te klikken op de knop **afspelen** .
+1. De uitvoer van de fout opsporing**View**zichtbaar maken (de  >  **console fout opsporing**weer geven  >  **Activate Console**).
+1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product**  >  **bestemming** .
+1. Bouw en voer de voorbeeld code in de IOS-simulator uit door in het menu **product**  >  **uitvoeren** te selecteren of te klikken op de knop **afspelen** .
 
    ![Gesimuleerde iOS-app](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app-tts.png)
 

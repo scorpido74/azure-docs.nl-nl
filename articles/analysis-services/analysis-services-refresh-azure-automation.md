@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926558"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389969"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
 Met Azure Automation-en Power shell-Runbooks kunt u geautomatiseerde gegevens vernieuwings bewerkingen uitvoeren op de tabellaire modellen van Azure Analysis.  
 
-In het voor beeld in dit artikel wordt gebruikgemaakt van de [Power shell sqlserver-modules](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps).
-
-Verderop in dit artikel vindt u een voor beeld van een Power shell-Runbook, dat laat zien hoe u een model vernieuwt.  
+In het voor beeld in dit artikel wordt gebruikgemaakt van de [sqlserver Power shell-module](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps). Verderop in dit artikel vindt u een voor beeld van een Power shell-Runbook, dat laat zien hoe u een model vernieuwt.  
 
 ## <a name="authentication"></a>Verificatie
 
-Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In het voor beeld in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services.
-
-Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie over het maken van een service-principal.
+Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In het voor beeld in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services. Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!IMPORTANT]
-> In het volgende voor beeld wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld. Als de firewall is ingeschakeld, moet het open bare IP-adres van de initiator voor aanvragen worden white list in de firewall.
+> In het volgende voor beeld wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld. Als er een firewall is ingeschakeld, moet het open bare IP-adres van de initiator van de aanvraag worden opgenomen in een firewall regel.
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>Installeer SqlServer-modules vanuit Power shell Gallery.
 
@@ -68,7 +64,7 @@ De service-principal die u maakt, moet Server Administrator-machtigingen hebben 
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Blader naar het bestand **Refresh-model. ps1** , geef een **naam** en **Beschrijving**op en klik vervolgens op **maken**.
+4. Blader naar het **Refresh-Model.ps1** bestand, geef een **naam** en **Beschrijving**op en klik vervolgens op **maken**.
 
     ![Runbook importeren](./media/analysis-services-refresh-azure-automation/9.png)
 
@@ -105,7 +101,7 @@ Dit kan als volgt worden geconfigureerd:
 
     ![Planning configureren](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Klik op **Maken**.
+3. Klik op **Create**.
 
 4. Vul de para meters voor de planning in. Deze worden gebruikt telkens wanneer het Runbook wordt geactiveerd. De para meter **WEBHOOKDATA** moet leeg blijven als deze wordt uitgevoerd via een schema.
 

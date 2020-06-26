@@ -3,12 +3,12 @@ title: Prijzen van Azure Backup
 description: Meer informatie over het schatten van de kosten voor budget tering Azure Backup prijzen.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: d88587cfdbb4f60d0da8641fc0362b8f763779ad
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84908116"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391108"
 ---
 # <a name="azure-backup-pricing"></a>Prijzen van Azure Backup
 
@@ -56,7 +56,7 @@ Voor een schatting van de kosten voor het maken van een back-up van virtuele Azu
 
   - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
 
-  - Hoe lang verwacht u "moment opnamen direct terugzetten"? (1-7 dagen)
+  - Hoe lang verwacht u "moment opnamen direct terugzetten"? (1-5 dagen)
 
     - Met deze optie kunt u vanaf Maxi maal zeven dagen op een snelle manier herstellen met behulp van moment opnamen die op schijven zijn opgeslagen
 
@@ -66,7 +66,7 @@ Voor een schatting van de kosten voor het maken van een back-up van virtuele Azu
 
 - **Optioneel** : redundantie van back-upopslag
 
-  - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn. Kies **RAGRS** als u de mogelijkheid wilt bieden om **meerdere regio's te herstellen** voor uw back-ups
+  - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn. Selecteer de optie **RAGRS** in het blad als u wilt weten wat de kosten zijn wanneer het niet meer nodig is om een back-up te maken van [meerdere regio's](backup-azure-arm-restore-vms.md#cross-region-restore) .
 
 - **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen
 
@@ -104,7 +104,7 @@ Voor een schatting van de kosten voor het maken van een back-up van SQL-servers 
 
     - U kunt er ook voor kiezen om een beleid te hebben met dagelijkse/wekelijkse/maandelijkse/jaarlijkse volledige back-ups. Met deze optie wordt iets meer opslag verbruikt dan de eerste optie.
 
-  - Hoe lang verwacht u de back-ups van het logboek te bewaren? (in dagen) [1-35]
+  - Hoe lang verwacht u de back-ups van het logboek te bewaren? (in dagen) [7-35]
 
   - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
 
@@ -124,7 +124,29 @@ Voor een schatting van de kosten voor het maken van een back-up van SQL-servers 
 
 ## <a name="estimate-costs-for-backing-up-sap-hana-servers-in-azure-vms"></a>Kosten schatten voor het maken van back-ups van SAP HANA-servers in azure Vm's
 
-Het schatten van de kosten van het maken van een back-up van SAP HANA-servers in azure-Vm's is vergelijkbaar met het schatten van SQL-servers. U kunt dezelfde variabelen gebruiken zoals vermeld in de vorige sectie, naast de SQL-compressie.
+Voor een schatting van de kosten voor het maken van een back-up van SAP HANA servers die worden uitgevoerd in azure Vm's met Azure Backup, hebt u de volgende para meters nodig:
+
+- De totale grootte van de SAP HANA data bases waarvan u een back-up wilt maken. Dit moet de som zijn van de volledige back-upgrootte van elk van de data bases, zoals gerapporteerd door SAP HANA.
+- Aantal SAP HANA servers met de bovenstaande grootte
+- Wat is de verwachte grootte van logboek back-ups?
+  - De% geeft de gemiddelde dagelijkse logboek grootte aan als een percentage van de totale grootte van SAP HANA data bases waarvan u een back-up maakt op de SAP HANA server
+- Wat is het verwachte aantal dagelijkse gegevens verloop op deze servers?
+  - De% geeft de gemiddelde dagelijkse verloop grootte aan als een percentage van de totale grootte van SAP HANA data bases waarvan u een back-up maakt op de SAP HANA server
+  - Data bases hebben doorgaans ' hoog ' verloop
+  - Als u het **verloop percentage**weet, kunt u de optie **uw eigen% opgeven** gebruiken
+- Het back-upbeleid kiezen
+  - Type back-up
+    - Het meest effectief beleid dat u kunt kiezen, is een **dagelijkse onderscheiding** van **wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Azure Backup kunt met behulp van een enkele keer klikken herstellen uit verschillen.
+    - U kunt er ook voor kiezen om een beleid te hebben met **dagelijkse/wekelijkse/maandelijkse/jaarlijkse** volledige back-ups. Met deze optie wordt iets meer opslag verbruikt dan de eerste optie.
+  - Hoe lang verwacht u de back-ups van het logboek te bewaren? (in dagen) [7-35]
+  - Hoe lang wilt u ' dagelijks ' back-ups behouden? (in dagen)
+  - Hoe lang wilt u ' wekelijkse ' back-ups behouden? (in weken)
+  - Hoe lang wilt u ' maandelijks ' back-ups behouden? (in maanden)
+  - Hoe lang wilt u ' jaarlijks ' back-ups behouden? (in jaren)
+- **Optioneel** : redundantie van back-upopslag
+  - Dit duidt op de redundantie van het opslag account waarnaar de back-upgegevens worden verzonden. We raden u aan **GRS** te gebruiken voor de hoogste Beschik baarheid. Omdat het ervoor zorgt dat een kopie van uw back-upgegevens in een andere regio wordt bewaard, helpt u bij het voldoen aan meerdere nalevings standaarden. Wijzig de redundantie in **LRS** als u een back-up maakt van ontwikkel-of test omgevingen waarvoor geen back-ups op bedrijfs niveau nodig zijn.
+- **Optioneel** : regionale prijzen aanpassen of kortings tarieven Toep assen
+  - Als u de schattingen voor een andere regio of kortings tarieven wilt controleren, selecteert u **Ja** voor de **schatting pogingen voor een andere regio?** en voert u de tarieven in waarmee u de schattingen wilt uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

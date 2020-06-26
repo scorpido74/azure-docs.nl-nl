@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 410ef023898cc57847b8e2f7a5153d50731e2d4c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: ac30a57dcbceb4616961c9d100e6ac8639ef2172
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764397"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391057"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -58,6 +58,9 @@ Een Recovery Services-kluis maken:
 ## <a name="set-storage-redundancy"></a>Opslag redundantie instellen
 
 Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die opslag wordt gerepliceerd.
+
+>[!NOTE]
+>De opslag replicatie-instellingen voor de kluis zijn niet relevant voor Azure file share backup, omdat de huidige oplossing moment opname is en er geen gegevens worden overgebracht naar de kluis. Moment opnamen worden opgeslagen in hetzelfde opslag account als de back-up van de bestands share.
 
 1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis. Klik onder de sectie **instellingen** op **Eigenschappen**.
 2. In **Eigenschappen**, onder **back-upconfiguratie**, klikt u op **bijwerken**.

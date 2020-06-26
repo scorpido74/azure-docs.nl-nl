@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 0a455ef911d28306b30bed2fbb00edea198181dd
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205421"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390360"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -269,6 +269,7 @@ Het instellen van een Azure container Registry voor anonieme toegang (openbaar) 
 - [Waarom worden niet al mijn opslag plaatsen of Tags Azure Portal vermeld?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Waarom kan de Azure Portal geen opslag plaatsen of Tags ophalen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Waarom mislukt mijn pull-of push aanvraag met niet-toegestane bewerking?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
+- [De indeling van de opslag plaats is ongeldig of wordt niet ondersteund](#repository-format-is-invalid-or-unsupported)
 - [Hoe kan ik u http-traceringen verzamelen in Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Status controleren met`az acr check-health`
@@ -440,6 +441,12 @@ Hier volgen enkele scenario's waarin bewerkingen mogelijk niet zijn toegestaan:
 * Sommige bewerkingen zijn niet toegestaan als de installatie kopie zich in quarantaine bevindt. Meer informatie over [quarantaine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Het REGI ster heeft mogelijk de [opslag limiet](container-registry-skus.md#service-tier-features-and-limits)bereikt.
 
+### <a name="repository-format-is-invalid-or-unsupported"></a>De indeling van de opslag plaats is ongeldig of wordt niet ondersteund
+
+Als er een fout wordt weer gegeven zoals "niet-ondersteunde opslagplaats indeling", "ongeldige indeling" of "de aangevraagde gegevens niet bestaan" wanneer u een naam van een opslag plaats opgeeft in opslagplaats bewerkingen, controleert u de spelling en het hoofdletter gebruik van de naam. Geldige opslagplaats namen mogen alleen bestaan uit kleine letters, punten, streepjes, onderstrepings tekens en slashes. 
+
+Zie voor de volledige naamgevings regels voor opslag plaatsen de [specificatie open container Initiative distributie](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview).
+
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hoe kan ik u http-traceringen verzamelen in Windows?
 
 #### <a name="prerequisites"></a>Vereisten
@@ -496,8 +503,8 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 |---|---|---|---|
 | GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Ja |
 | Azure-opslagplaatsen | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ja | Ja |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Nee |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Nee |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ja | Nee |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ja | Nee |
 
 ## <a name="run-error-message-troubleshooting"></a>Problemen met het uitvoeren van fout berichten oplossen
 

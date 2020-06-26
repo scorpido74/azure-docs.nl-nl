@@ -3,12 +3,12 @@ title: Back-ups maken van Azure-bestands shares met Azure CLI
 description: Meer informatie over het gebruik van Azure CLI voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee83d4df5a857f0ae5b554514ecda0c257a829ae
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844038"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391091"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Back-ups maken van Azure-bestands shares met CLI
 
@@ -22,7 +22,7 @@ Aan het einde van deze zelf studie leert u hoe u de onderstaande bewerkingen kun
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u de CLI lokaal wilt installeren en gebruiken, moet u Azure CLI versie 2.0.18 of hoger gebruiken. Om de CLI- `run az --version`versie te zoeken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Als u de CLI lokaal wilt installeren en gebruiken, moet u Azure CLI versie 2.0.18 of hoger gebruiken. Om de CLI-versie te zoeken `run az --version` . Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services kluis maken
 
@@ -42,7 +42,7 @@ Voer de volgende stappen uit om een Recovery Services-kluis te maken:
     eastus      AzureFiles
     ```
 
-2. Gebruik de [AZ backup-kluis Create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) cmdlet om de kluis te maken. Geef dezelfde locatie op als de kluis die voor de resource groep is gebruikt.
+1. Gebruik de [AZ backup-kluis Create](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-create) cmdlet om de kluis te maken. Geef dezelfde locatie op als de kluis die voor de resource groep is gebruikt.
 
     In het volgende voor beeld wordt een Recovery Services-kluis gemaakt met de naam *azurefilesvault* in de regio VS-Oost.
 
@@ -54,28 +54,6 @@ Voer de volgende stappen uit om een Recovery Services-kluis te maken:
     Location    Name                ResourceGroup
     ----------  ----------------    ---------------
     eastus      azurefilesvault     azurefiles
-    ```
-
-3. Geef het type redundantie op dat moet worden gebruikt voor de kluis opslag. U kunt [lokaal redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) of [geografisch redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)gebruiken.
-
-    In het volgende voor beeld wordt de optie voor opslag redundantie voor *azurefilesvault* ingesteld op **georedundante** gebruik van de back-up [AZ backup kluis backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) cmdlet.
-
-    ```azurecli-interactive
-    az backup vault backup-properties set --name azurefilesvault --resource-group azurefiles --backup-storage-redundancy Georedundant
-    ```
-
-    Als u wilt controleren of de kluis is gemaakt, kunt u de cmdlet [AZ backup kluis show](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-show) gebruiken om de details van uw kluis op te halen. In het volgende voor beeld worden de details weer gegeven van de *azurefilesvault* die u in de bovenstaande stappen hebt gemaakt.
-
-    ```azurecli-interactive
-    az backup vault show --name azurefilesvault --resource-group azurefiles --output table
-    ```
-
-    De uitvoer is vergelijkbaar met het volgende antwoord:
-
-    ```output
-    Location     Name               ResourceGroup
-    ----------   ---------------    ---------------
-    eastus       azurefilesvault    azurefiles
     ```
 
 ## <a name="enable-backup-for-azure-file-shares"></a>Back-ups voor Azure-bestands shares inschakelen
@@ -108,7 +86,7 @@ U moet de volgende para meters definiëren om een back-up op aanvraag te activer
 * **--item-name** is de naam van de bestands share waarvoor u een back-up op aanvraag wilt activeren. Als u de **naam** of **beschrijvende naam** van het back-upitem wilt ophalen, gebruikt u de opdracht [AZ back-upitems](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
 * **--behoud: totdat** de datum wordt opgegeven tot wanneer u het herstel punt wilt behouden. De waarde moet worden ingesteld in UTC-tijd notatie (dd-mm-jjjj).
 
-In het volgende voor beeld wordt een back-up op aanvraag geactiveerd voor de *azuresfiles* -bestands share in het *afsaccount* -opslag account met retentie tot *20-01-2020*.
+In het volgende voor beeld wordt een back-up op aanvraag geactiveerd voor de *Azure files* -bestands share in het *afsaccount* -opslag account met retentie tot *20-01-2020*.
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table
@@ -125,4 +103,4 @@ Het **naam** kenmerk in de uitvoer komt overeen met de naam van de taak die is g
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het [herstellen van Azure-bestands shares met CLI](restore-afs-cli.md)
-* Meer informatie over het [beheren van Azure file share ackups met CLI](manage-afs-backup-cli.md)
+* Meer informatie over het [beheren van back-ups van Azure-bestands shares met CLI](manage-afs-backup-cli.md)

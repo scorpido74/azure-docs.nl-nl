@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5b21fcd2d3ec5560b01352b112e9ed1bb2404766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce5f373576f13a4b1bdb88b5ffb7869a2d7865cd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678040"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388354"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Aanmelden instellen voor een specifieke Azure Active Directory organisatie in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Als u een Azure Active Directory (Azure AD) als een [ID-provider](authorization-
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **id-providers**en selecteer vervolgens **nieuwe OpenID Connect Connect-provider**.
 1. Voer een **naam**in. Voer bijvoorbeeld *Contoso Azure AD*in.
-1. Voor **meta gegevens-URL**voert u de volgende `{tenant}` URL in die wordt vervangen door de domein naam van uw Azure AD-Tenant:
+1. Voor **meta gegevens-URL**voert u de volgende URL `{tenant}` in die wordt vervangen door de domein naam van uw Azure AD-Tenant:
 
     ```
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
@@ -41,9 +41,9 @@ Als u een Azure Active Directory (Azure AD) als een [ID-provider](authorization-
 
 1. Voer voor **client-id**de toepassings-id in die u eerder hebt vastgelegd.
 1. Voer voor **client geheim**het client geheim in dat u eerder hebt vastgelegd.
-1. Voer voor het **bereik**de `openid profile`in.
+1. Voer voor het **bereik**de in `openid profile` .
 1. Behoud de standaard waarden voor het **antwoord type**en de **antwoord modus**.
-1. Beschrijving Voer `contoso.com`in voor de **domein Hint**. Zie voor meer informatie [instellen van direct aanmelden met Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
+1. Beschrijving Voer in voor de **domein Hint** `contoso.com` . Zie voor meer informatie [instellen van direct aanmelden met Azure Active Directory B2C](direct-signin.md#redirect-sign-in-to-a-social-provider).
 1. Selecteer onder **claim toewijzing van de identiteits provider**de volgende claims:
 
     * **Gebruikers-id**: *OID*

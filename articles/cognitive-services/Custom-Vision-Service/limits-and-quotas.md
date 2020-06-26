@@ -3,19 +3,19 @@ title: Limieten en quota-Custom Vision Service
 titleSuffix: Azure Cognitive Services
 description: In dit artikel worden de verschillende typen licentie sleutels en de limieten en quota voor de Custom Vision Service uitgelegd.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: anroth
-ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 089d5dbb1eece2904f104dfecb3de8adec052dfc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79081774"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391737"
 ---
 # <a name="limits-and-quotas"></a>Limieten en quota
 
@@ -26,7 +26,7 @@ Het aantal trainings afbeeldingen per project en Tags per project wordt naar ver
 ||**F0**|**S0**|
 |-----|-----|-----|
 |Projecten|2|100|
-|Trainings afbeeldingen per project |5.000|100.000|
+|Trainings afbeeldingen per project |5\.000|100.000|
 |Voor spellingen/maand|10.000 |Onbeperkt|
 |Tags/project|50|500|
 |Iteraties |10|10|

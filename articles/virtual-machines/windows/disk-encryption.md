@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 164ce87df77d81a7d36d4448f5d8da8287ed0a01
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a66af3f74dbb88818f2490bdfbcbc12284652551
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656714"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392536"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan de server zijde van Azure Managed disks
 
@@ -75,12 +75,11 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 
 - Als deze functie is ingeschakeld voor uw schijf, kunt u deze niet uitschakelen.
     Als u dit wilt omzeilen, moet u [alle gegevens](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk) naar een volledig andere beheerde schijf kopiëren die geen door de klant beheerde sleutels gebruikt.
-- Alleen [' soft ' en ' hard ' RSA-sleutels](../../key-vault/keys/about-keys.md) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
+- Alleen [software-en HSM RSA-sleutels](../../key-vault/keys/about-keys.md) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
 - Schijven die zijn gemaakt op basis van aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten zich in hetzelfde abonnement bevinden.
 - Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
 - Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
-- Als u de Azure Portal gebruikt om uw schijf versleutelings te maken, kunt u nu geen moment opnamen gebruiken.
 - Beheerde schijven die zijn versleuteld met versleuteling aan de server zijde met door de klant beheerde sleutels, kunnen niet ook worden versleuteld met Azure Disk Encryption en andersom
 - Zie [Preview: door de klant beheerde sleutels gebruiken voor het versleutelen van afbeeldingen](../image-version-encryption.md)voor meer informatie over het gebruik van door de klant beheerde sleutels met galerieën met gedeelde afbeeldingen.
 
@@ -284,7 +283,7 @@ $disk.Encryption.Type
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [Wat is Azure Sleutelkluis?](../../key-vault/general/overview.md)
+- [Wat is Azure Key Vault?](../../key-vault/general/overview.md)
 - [Computers repliceren met door de klant beheerde sleutels ingeschakelde schijven](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [Herstel na nood geval instellen voor virtuele VMware-machines in azure met Power shell](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

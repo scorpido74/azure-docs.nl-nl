@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473673"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389357"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Claims toevoegen en gebruikers invoer aanpassen met aangepaste beleids regels in Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Een claim biedt een tijdelijke opslag van gegevens tijdens het uitvoeren van een
 - **UserHelpText** : helpt de gebruiker te begrijpen wat er nodig is.
 - [UserInputType](claimsschema.md#userinputtype) : het type besturings element voor invoer, zoals tekstvak, keuze rondje, vervolg keuzelijst of meerdere selecties.
 
-Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Zoek het element [BuildingBlocks](buildingblocks.md) . Als het element niet bestaat, voegt u het toe.
 1. Zoek het element [ClaimsSchema](claimsschema.md) . Als het element niet bestaat, voegt u het toe.
@@ -75,7 +75,7 @@ De volgende technische profielen worden [automatisch bevestigd](self-asserted-te
 - **SelfAsserted-** account voor de eerste keer dat gebruikers zich aanmelden met sociale Federatie.
 - **SelfAsserted-ProfileUpdate** -profiel stroom bewerken.
 
-Als u de stads claim tijdens het aanmelden wilt verzamelen, moet deze worden toegevoegd als een uitvoer claim aan `LocalAccountSignUpWithLogonEmail` het technische profiel. Negeer dit technische profiel in het extensie bestand. Geef de volledige lijst met uitvoer claims op om de volg orde te bepalen waarin de claims worden weer gegeven op het scherm. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe ClaimsProviders toe:
+Als u de stads claim tijdens het aanmelden wilt verzamelen, moet deze worden toegevoegd als een uitvoer claim aan het `LocalAccountSignUpWithLogonEmail` technische profiel. Negeer dit technische profiel in het extensie bestand. Geef de volledige lijst met uitvoer claims op om de volg orde te bepalen waarin de claims worden weer gegeven op het scherm. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe ClaimsProviders toe:
 
 ```xml
 <ClaimsProvider>
@@ -98,7 +98,7 @@ Als u de stads claim tijdens het aanmelden wilt verzamelen, moet deze worden toe
 <ClaimsProvider>
 ```
 
-Als u de stads claim wilt verzamelen na de eerste aanmelding met een federatief account, moet u deze als een uitvoer claim aan `SelfAsserted-Social` het technische profiel toevoegen. Als gebruikers van lokale en federatieve accounts hun profiel gegevens later kunnen bewerken, voegt u de uitvoer claim toe aan het `SelfAsserted-ProfileUpdate` technische profiel. Vervang deze technische profielen in het extensie bestand. Geef de volledige lijst van de uitvoer claims op om de volg orde te bepalen waarin de claims op het scherm worden weer gegeven. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe ClaimsProviders toe:
+Als u de stads claim wilt verzamelen na de eerste aanmelding met een federatief account, moet u deze als een uitvoer claim aan het `SelfAsserted-Social` technische profiel toevoegen. Als gebruikers van lokale en federatieve accounts hun profiel gegevens later kunnen bewerken, voegt u de uitvoer claim toe aan het `SelfAsserted-ProfileUpdate` technische profiel. Vervang deze technische profielen in het extensie bestand. Geef de volledige lijst van de uitvoer claims op om de volg orde te bepalen waarin de claims op het scherm worden weer gegeven. Zoek het element **ClaimsProviders** . Voeg als volgt een nieuwe ClaimsProviders toe:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -128,7 +128,7 @@ Als u de stads claim wilt verzamelen na de eerste aanmelding met een federatief 
 ## <a name="read-and-write-a-claim"></a>Een claim lezen en schrijven
 
 De volgende technische profielen zijn [Active Directory technische profielen](active-directory-technical-profile.md), waarmee gegevens worden gelezen en geschreven naar Azure Active Directory.  
-Gebruiken `PersistedClaims` om gegevens naar het gebruikers profiel te schrijven `OutputClaims` en gegevens uit het gebruikers profiel te lezen in de respectieve Active Directory technische profielen.
+Gebruiken `PersistedClaims` om gegevens naar het gebruikers profiel te schrijven en `OutputClaims` gegevens uit het gebruikers profiel te lezen in de respectieve Active Directory technische profielen.
 
 Vervang deze technische profielen in het extensie bestand. Zoek het element **ClaimsProviders** .  Voeg als volgt een nieuwe ClaimsProviders toe:
 
@@ -172,7 +172,7 @@ Vervang deze technische profielen in het extensie bestand. Zoek het element **Cl
 
 ## <a name="include-a-claim-in-the-token"></a>Een claim in het token toevoegen 
 
-Voeg een uitvoer claim toe aan het <em> `SocialAndLocalAccounts/` </em> bestand om de plaats claim terug te retour neren aan de Relying Party-toepassing. De uitvoer claim wordt toegevoegd aan het token na een geslaagde gebruikers reis en wordt naar de toepassing verzonden. Wijzig het technische profiel element in het gedeelte Relying Party om de plaats toe te voegen als een uitvoer claim.
+Voeg een uitvoer claim toe aan het bestand om de plaats claim terug te retour neren aan de Relying Party-toepassing <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> . De uitvoer claim wordt toegevoegd aan het token na een geslaagde gebruikers reis en wordt naar de toepassing verzonden. Wijzig het technische profiel element in het gedeelte Relying Party om de plaats toe te voegen als een uitvoer claim.
  
 ```xml
 <RelyingParty>
@@ -209,7 +209,7 @@ Het aanmeldings scherm moet er ongeveer uitzien als in de volgende scherm afbeel
 
 ![Scherm afbeelding van gewijzigde registratie optie](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
-Het token dat teruggestuurd naar uw toepassing bevat `city` de claim.
+Het token dat teruggestuurd naar uw toepassing bevat de `city` claim.
 
 ```json
 {

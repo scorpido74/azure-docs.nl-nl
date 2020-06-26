@@ -9,27 +9,27 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 07ccfaf842af0959388e4a3c49e7ae30c029e3c1
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677613"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391907"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
-> * [.NET SDK v2](sql-api-sdk-dotnet.md)
-> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET-SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core-SDK v2](sql-api-sdk-dotnet-core.md)
 > * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java-SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST-resourceprovider](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
@@ -96,7 +96,7 @@ ms.locfileid: "84677613"
 
 * Versie 4.0.0 B2 is de tweede iteratie in onze inspanningen voor het bouwen van een client bibliotheek die aansluit bij de aanbevolen procedures voor python-taal.
 
-**Wijzigingen die fouten veroorzaken**
+**Wijzigingen afbreken**
 
 * De client verbinding is aangepast om de HTTP-pijp lijn te gebruiken die is gedefinieerd in `azure.core.pipeline` .
 
@@ -306,7 +306,7 @@ Alle aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestel
 > [!WARNING]
 > Alle versies van de python-SDK voor SQL API vóór versie **1.0.0** zijn buiten gebruik gesteld op **29 februari 2016**. En worden alle versies 1. x en 2. x van de python-SDK voor SQL API buiten gebruik gesteld op **30 augustus 2020**.
 
-| Versie | Release datum | Buitengebruikstellings datum |
+| Versie | Release datum | Buitengebruikstellingsdatum |
 | --- | --- | --- |
 | [4.0.0](#400) |20 mei 2020 |--- |
 | [3.0.2](#302) |15 november 2018 |--- |

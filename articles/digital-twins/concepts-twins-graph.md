@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 79035a2fa2f7f3bed4890faa749661f025cea312
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362863"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390666"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgeving vertegenwoordigd door Azure **Digital apparaatdubbels**. Een digitale dubbele is een exemplaar van een van uw door uw eigen gedefinieerde [modellen](concepts-models.md). Het kan worden verbonden met andere digitale apparaatdubbels via **relaties** om een **dubbele grafiek**te vormen: deze dubbele grafiek is de weer gave van uw gehele omgeving.
 

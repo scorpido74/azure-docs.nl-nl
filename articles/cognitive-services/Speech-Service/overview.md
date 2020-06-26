@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: 664b71c56ae63ea73478923171731e343dfa5cbe
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 43efc770f3a3b29a1b0fc214d2927c8c153dff96
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417222"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391635"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -55,7 +55,7 @@ We bieden Quick starts in de populairste programmeer talen, die allemaal ontworp
 > [!NOTE]
 > Spraak-naar-tekst en tekst-naar-spraak hebben ook REST-eind punten en bijbehorende Quick starts.
 
-Nadat u de spraak service hebt bekeken, kunt u de zelf studie uitproberen die u leert hoe u de intenties kunt herkennen vanuit spraak met behulp van de Speech SDK en LUIS.
+Nadat u de spraak service hebt bekeken, kunt u de zelf studies uitproberen die u leren hoe u verschillende scenario's kunt oplossen.
 
 - [Zelf studie: intenties herkennen vanuit spraak met de Speech SDK en LUIS, C #](how-to-recognize-intents-from-speech-csharp.md)
 - [Zelf studie: stem uw bot in met de Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)

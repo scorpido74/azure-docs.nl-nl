@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 31f5339c70d52019400ca5f1fe873de4790a3bd6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380521"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391431"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Snelstartgids: spraak in Swift op iOS herkennen met de Speech SDK
 
@@ -40,7 +40,7 @@ De Cognitive Services Speech SDK voor iOS wordt gedistribueerd als een framework
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 
-Start Xcode en start een nieuw project door **bestand** > **Nieuw** > **project**te selecteren.
+Start Xcode en start een nieuw project door **bestand**  >  **Nieuw**  >  **project**te selecteren.
 Selecteer in het dialoog venster sjabloon selectie de sjabloon **voor de IOS-app met één weer gave** .
 
 In de volgende dialoog vensters volgt u de onderstaande opties.
@@ -54,7 +54,7 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 1. Selecteer een projectmap:
     1. Kies een map waarin u het project wilt plaatsen. Met deze stap maakt u een map HelloWorld in de gekozen map met alle bestanden voor het Xcode-project.
     1. Schakel het maken van een Git-opslagplaats uit voor dit voorbeeldproject.
-1. De app moet ook het gebruik van de microfoon in het `Info.plist` bestand declareren. Selecteer het bestand in het overzicht en voeg de sleutel **gebruiks beschrijving privacy-microfoon** toe met een waarde als *microfoon is vereist voor spraak herkenning*.
+1. De app moet ook het gebruik van de microfoon in het bestand declareren `Info.plist` . Selecteer het bestand in het overzicht en voeg de sleutel **gebruiks beschrijving privacy-microfoon** toe met een waarde als *microfoon is vereist voor spraak herkenning*.
 
     ![Instellingen in info. plist](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-info-plist.png)
 
@@ -62,7 +62,7 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 
 ## <a name="add-the-sample-code"></a>De voorbeeldcode toevoegen
 
-1. Plaats een nieuw header-bestand met de `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` naam in de map HelloWorld in het project HelloWorld. Plak de volgende code in het bestand:
+1. Plaats een nieuw header-bestand met de naam `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` in de map HelloWorld in het project HelloWorld. Plak de volgende code in het bestand:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 
@@ -76,8 +76,8 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 1. Vervang de inhoud van het automatisch gegenereerde `ViewController.swift` bestand door de volgende code:
 
    [!code-swift[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/helloworld/ViewController.swift#code)]
-1. Vervang `ViewController.swift`in de teken reeks `YourSubscriptionKey` door de sleutel van uw abonnement.
-1. Vervang de teken `YourServiceRegion` reeks door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik `westus` bijvoorbeeld voor het gratis proef abonnement.
+1. `ViewController.swift`Vervang in de teken reeks door `YourSubscriptionKey` de sleutel van uw abonnement.
+1. Vervang de teken reeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>De SDK installeren als een CocoaPod
 
@@ -85,14 +85,14 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 1. Ga naar de map van uw voor beeld-app. Dit is HelloWorld. Plaats een tekst bestand met de naam *Podfile* en de volgende inhoud in die map:
 
    [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/Podfile)]
-1. Ga naar de map HelloWorld in een Terminal en voer de opdracht `pod install`uit. Met deze opdracht wordt `helloworld.xcworkspace` een Xcode-werk ruimte gegenereerd die zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid bevat. Deze werk ruimte wordt in de volgende stappen gebruikt.
+1. Ga naar de map HelloWorld in een Terminal en voer de opdracht uit `pod install` . Met deze opdracht wordt een `helloworld.xcworkspace` Xcode-werk ruimte gegenereerd die zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid bevat. Deze werk ruimte wordt in de volgende stappen gebruikt.
 
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
-1. Open de werk `helloworld.xcworkspace` ruimte in Xcode.
-1. Maak de uitvoer van de fout opsporing zichtbaar door de**console activerings****gebied** >  **weer geven** > te selecteren.
-1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product** > **bestemming** .
-1. Bouw en voer de voorbeeld code in de IOS-simulator uit door in het menu **product** > **uitvoeren** te selecteren. U kunt ook de knop **afspelen** selecteren.
+1. Open de werk ruimte `helloworld.xcworkspace` in Xcode.
+1. Maak de uitvoer van de fout opsporing **View**zichtbaar door de  >  **Debug Area**  >  **console activerings**gebied weer geven te selecteren.
+1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product**  >  **bestemming** .
+1. Bouw en voer de voorbeeld code in de IOS-simulator uit door in het menu **product**  >  **uitvoeren** te selecteren. U kunt ook de knop **afspelen** selecteren.
 1. Nadat u de knop **herkennen** in de app hebt geselecteerd en enkele woorden hebt gedicteerd, ziet u de tekst die u in het onderste gedeelte van het scherm hebt gesp roken.
 
 ## <a name="next-steps"></a>Volgende stappen

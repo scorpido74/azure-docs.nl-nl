@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295402"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389323"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: aangepaste kenmerken in een aangepast profiel beleid inschakelen
 
@@ -85,7 +85,7 @@ Als u aangepaste kenmerken in uw beleid wilt inschakelen, geeft u de **toepassin
 2. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD B2C-Tenant bevat.
 3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 4. Selecteer een **Framework voor identiteits ervaring**.
-5. Selecteer **aangepast beleid uploaden**en upload de TrustFrameworkExtensions. XML-beleids bestanden die u hebt gewijzigd.
+5. Selecteer **aangepast beleid uploaden**en upload de TrustFrameworkExtensions.xml-beleids bestanden die u hebt gewijzigd.
 
 > [!NOTE]
 > De eerste keer dat het technische profiel van Azure AD de claim naar de map persistent maakt, wordt gecontroleerd of het aangepaste kenmerk bestaat. Als dat niet het geval is, wordt het aangepaste kenmerk gemaakt.  

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697560"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391839"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -117,7 +117,7 @@ Er zijn geen beperkingen voor de nettoladingen van het item, zoals het aantal ei
 
 ## <a name="per-request-limits"></a>Limieten per aanvraag
 
-Azure Cosmos DB ondersteunt [ruwe en query bewerkingen](https://docs.microsoft.com/rest/api/cosmos-db/) voor resources zoals containers, items en data bases. Het biedt ook ondersteuning voor [transactionele batch-aanvragen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) voor meerdere items met dezelfde partitie sleutel in een container.
+Azure Cosmos DB ondersteunt [ruwe en query bewerkingen](/rest/api/cosmos-db/) voor resources zoals containers, items en data bases. Het biedt ook ondersteuning voor [transactionele batch-aanvragen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) voor meerdere items met dezelfde partitie sleutel in een container.
 
 | Resource | Standaardlimiet |
 | --- | --- |

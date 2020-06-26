@@ -3,12 +3,12 @@ title: Een back-up van een Azure-bestands share maken met behulp van Power shell
 description: In dit artikel vindt u informatie over het maken van een back-up van een Azure Files bestands share met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 2d391c661363a1a2bc4238cd7a976b7e13c4f0b8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199339"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391074"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Een back-up van een Azure-bestands share maken met behulp van Power shell
 
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u:
 
   ![Object hiërarchie Recovery Services](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-## <a name="set-up-powershell"></a>Power shell instellen
+## <a name="set-up-powershell"></a>PowerShell instellen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,7 +60,7 @@ Stel Power shell als volgt in:
 5. Op de webpagina die wordt weer gegeven, wordt u gevraagd om uw account referenties in te voeren.
 
     U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** toevoegen met behulp van **-Credential**.
-   
+
     Als u een CSP-partner bent die namens een Tenant werkt, geeft u de klant op als een Tenant. Gebruik hun Tenant-ID of primaire domein naam voor de Tenant. Een voor beeld is **Connect-AzAccount-Tenant "fabrikam.com"**.
 
 6. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account meerdere abonnementen kan hebben:
@@ -95,20 +95,11 @@ Volg deze stappen om een Recovery Services kluis te maken:
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. Gebruik de cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) om de kluis te maken. Geef dezelfde locatie op voor de kluis die u hebt gebruikt voor de resource groep.
+1. Gebruik de cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) om de kluis te maken. Geef dezelfde locatie op voor de kluis die u hebt gebruikt voor de resource groep.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
-
-3. Geef het type redundantie op dat moet worden gebruikt voor de kluis opslag. U kunt [lokaal redundante opslag](../storage/common/storage-redundancy-lrs.md) of [geografisch redundante opslag](../storage/common/storage-redundancy-grs.md)gebruiken.
-   
-   In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de cmdlet [set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) voor **testvault** ingesteld op **georedundant**:
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
 
 ### <a name="view-the-vaults-in-a-subscription"></a>De kluizen in een abonnement weer geven
 
@@ -250,16 +241,16 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 Deze sectie bevat een overzicht van een belang rijke wijziging in back-ups van Azure-bestands shares in de voor bereiding op algemene Beschik baarheid.
 
-Wanneer u een back-up voor Azure-bestands shares inschakelt, geeft de gebruiker de klant een bestands share naam als de naam van de entiteit en wordt er een back-upitem gemaakt. De naam van het back-upitem is een unieke id die door de Azure Backup-service wordt gemaakt. Normaal gesp roken is de id een gebruiks vriendelijke naam. Maar om het scenario van een tijdelijke verwijdering af te handelen, waarbij een bestands share kan worden verwijderd en een andere bestands share met dezelfde naam kan worden gemaakt, is de unieke identiteit van een Azure-bestands share nu een ID. 
+Wanneer u een back-up voor Azure-bestands shares inschakelt, geeft de gebruiker de klant een bestands share naam als de naam van de entiteit en wordt er een back-upitem gemaakt. De naam van het back-upitem is een unieke id die door de Azure Backup-service wordt gemaakt. Normaal gesp roken is de id een gebruiks vriendelijke naam. Maar om het scenario van een tijdelijke verwijdering af te handelen, waarbij een bestands share kan worden verwijderd en een andere bestands share met dezelfde naam kan worden gemaakt, is de unieke identiteit van een Azure-bestands share nu een ID.
 
-Als u de unieke ID van elk item wilt weten, voert u de opdracht **Get-AzRecoveryServicesBackupItem** uit met de relevante filters voor **backupManagementType** en **WorkloadType** om alle relevante items te verkrijgen. Bekijk vervolgens het veld naam in het geretourneerde Power shell-object/-antwoord. 
+Als u de unieke ID van elk item wilt weten, voert u de opdracht **Get-AzRecoveryServicesBackupItem** uit met de relevante filters voor **backupManagementType** en **WorkloadType** om alle relevante items te verkrijgen. Bekijk vervolgens het veld naam in het geretourneerde Power shell-object/-antwoord.
 
 U wordt aangeraden items te vermelden en vervolgens hun unieke naam op te halen uit het veld naam in het antwoord. Gebruik deze waarde om de items te filteren met de *naam* parameter. Anders gebruikt u de para meter *FriendlyName* om het item met de id op te halen.
 
 > [!IMPORTANT]
-> Zorg ervoor dat Power shell is bijgewerkt naar de minimale versie (AZ. Recovery Services 2.6.0) voor back-ups van Azure-bestands shares. Met deze versie is het filter *FriendlyName* beschikbaar voor de opdracht **Get-AzRecoveryServicesBackupItem** . 
+> Zorg ervoor dat Power shell is bijgewerkt naar de minimale versie (AZ. Recovery Services 2.6.0) voor back-ups van Azure-bestands shares. Met deze versie is het filter *FriendlyName* beschikbaar voor de opdracht **Get-AzRecoveryServicesBackupItem** .
 >
-> Geef de naam van de Azure-bestands share door aan de *FriendlyName* -para meter. Als u de naam van de bestands share doorgeeft aan de para meter *name* , genereert deze versie een waarschuwing om de naam door te geven aan de para meter *FriendlyName* . 
+> Geef de naam van de Azure-bestands share door aan de *FriendlyName* -para meter. Als u de naam van de bestands share doorgeeft aan de para meter *name* , genereert deze versie een waarschuwing om de naam door te geven aan de para meter *FriendlyName* .
 >
 > Als u de minimum versie niet installeert, kan dit leiden tot een fout in bestaande scripts. Installeer de minimale versie van Power shell met behulp van de volgende opdracht:
 >
@@ -267,7 +258,7 @@ U wordt aangeraden items te vermelden en vervolgens hun unieke naam op te halen 
 >Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
 >```
 
-## <a name="trigger-an-on-demand-backup"></a>Een back-up op aanvraag activeren
+## <a name="trigger-an-on-demand-backup"></a>Een on-demand back-up activeren
 
 [Back-up-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) gebruiken om een back-up op aanvraag uit te voeren voor een beveiligde Azure-bestands share:
 
@@ -295,5 +286,5 @@ Moment opnamen van Azure-bestands shares worden gebruikt terwijl de back-ups wor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [het maken van een back-up van Azure files in de Azure Portal](backup-afs.md).
-- Raadpleeg het [voorbeeld script op github](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) voor het gebruik van een Azure Automation runbook voor het plannen van back-ups.
+* Meer informatie over [het maken van een back-up van Azure files in de Azure Portal](backup-afs.md).
+* Raadpleeg het [voorbeeld script op github](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup) voor het gebruik van een Azure Automation runbook voor het plannen van back-ups.

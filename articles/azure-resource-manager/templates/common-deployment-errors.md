@@ -3,13 +3,13 @@ title: Veelvoorkomende implementatiefouten oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer u resources implementeert in azure met behulp van Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: c9acdcb3d04b6f415c78115ccbd067ab7d859c47
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.date: 06/25/2020
+ms.openlocfilehash: 77a1359f81df1df9508e942ff6fa1f73ece51ca8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678185"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391227"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
@@ -114,7 +114,7 @@ Om foutcodes en meldingen van implementatiefouten weer te geven in PowerShell, g
 Om foutcodes en meldingen van implementatiefouten weer te geven in de Azure-CLI, gebruikt u:
 
 ```azurecli-interactive
-az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 In de portal selecteert u de melding.
@@ -172,7 +172,7 @@ Momenteel biedt Azure CLI geen ondersteuning voor het inschakelen van logboek re
 Controleer de implementatie bewerkingen met de volgende opdracht:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az deployment group operation list \
 Controleer de inhoud van de aanvraag met de volgende opdracht:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az deployment group operation list \
 Bekijk de antwoord inhoud met de volgende opdracht:
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response

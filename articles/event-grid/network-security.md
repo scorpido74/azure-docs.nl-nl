@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: 073878d6dfb0637b8d0fb7fdf5c7f6d77d2b2c8d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ba3bc14c9b4a9d5d866dbb1b9369557b948078d0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672643"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390190"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Grid: 
@@ -27,7 +27,7 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
 
 U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules)   of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **AzureEventGrid**) op te geven in het juiste *bron*-   of *doel*   veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|
 | AzureEventGrid | Azure Event Grid. | Beide | Nee | Nee |
 
@@ -100,3 +100,5 @@ De functie **IP-firewall** is beschikbaar in de lagen basis en premium van Event
 U kunt IP-Firewall voor uw Event Grid-bron configureren om de toegang via het open bare Internet te beperken tot alleen een select set met IP-adressen of IP-adresbereiken. Zie [Configure IP firewall](configure-firewall.md)(Engelstalig) voor stapsgewijze instructies.
 
 U kunt privé-eind punten zo configureren dat alleen toegang wordt beperkt tot geselecteerde virtuele netwerken. Zie voor stapsgewijze instructies [persoonlijke eind punten configureren](configure-private-endpoints.md).
+
+Zie problemen [met netwerk connectiviteit oplossen](troubleshoot-network-connectivity.md) voor informatie over het oplossen van problemen met de netwerk verbinding

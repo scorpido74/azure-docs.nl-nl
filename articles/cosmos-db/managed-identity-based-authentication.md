@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: b277ae91dbdd747aba012d6e7302ed6cba61d938
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d5aef82fe29ec544e29d7c65950e719110ad276a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262264"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391856"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
 
@@ -40,7 +40,7 @@ In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan
 
 In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde identiteit van de functie-app. Azure Cosmos DB heeft meerdere ingebouwde rollen die u aan de beheerde identiteit kunt toewijzen. Voor deze oplossing gebruikt u de volgende twee rollen:
 
-|Ingebouwde rol  |Description  |
+|Ingebouwde rol  |Beschrijving  |
 |---------|---------|
 |[Inzender voor DocumentDB-accounts](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB accounts beheren. Het ophalen van sleutels voor lezen/schrijven is toegestaan. |
 |[Lezer van Cosmos DB-account](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan gegevens van Azure Cosmos DB-account lezen. Kan Lees sleutels ophalen. |
@@ -75,10 +75,10 @@ In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijf
 
 Nu hebben we een functie-app met een door het systeem toegewezen beheerde identiteit met de rol Inzender voor het **DocumentDB-account** in de Azure Cosmos DB machtigingen. Met de volgende functie-app code worden de Azure Cosmos DB sleutels opgehaald, wordt een CosmosClient-object gemaakt, wordt de Tempe ratuur van het aquarium opgehaald en wordt dit vervolgens opgeslagen op Azure Cosmos DB.
 
-In dit voor beeld wordt de [List Keys API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) gebruikt om toegang te krijgen tot de sleutels van uw Azure Cosmos DB-account.
+In dit voor beeld wordt de [List Keys API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) gebruikt om toegang te krijgen tot de sleutels van uw Azure Cosmos DB-account.
 
 > [!IMPORTANT] 
-> Als u de rol van [de Cosmos DB-account lezer wilt toewijzen](#grant-access-to-your-azure-cosmos-account) , moet u de [API lijst met alleen-lezen sleutels](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)gebruiken. Hiermee worden alleen-lezen sleutels gevuld.
+> Als u de rol van [de Cosmos DB-account lezer wilt toewijzen](#grant-access-to-your-azure-cosmos-account) , moet u de [API lijst met alleen-lezen sleutels](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)gebruiken. Hiermee worden alleen-lezen sleutels gevuld.
 
 De List Keys-API retourneert het `DatabaseAccountListKeysResult` object. Dit type is niet gedefinieerd in de C#-bibliotheken. De volgende code toont de implementatie van deze klasse:  
 

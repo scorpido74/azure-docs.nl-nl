@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811118"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389769"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -19,17 +19,17 @@ In dit onderwerp wordt uitgelegd hoe u algemene instellingen configureert voor w
 
 ## <a name="configure-app-settings"></a>App-instellingen configureren
 
-In App Service zijn app-instellingen variabelen die als omgevings variabelen worden door gegeven aan de toepassings code. Voor Linux-apps en aangepaste containers App Service de app-instellingen door gegeven aan de `--env` container met behulp van de vlag voor het instellen van de omgevings variabele in de container.
+In App Service zijn app-instellingen variabelen die als omgevings variabelen worden door gegeven aan de toepassings code. Voor Linux-apps en aangepaste containers App Service de app-instellingen door gegeven aan de container met behulp van de `--env` vlag voor het instellen van de omgevings variabele in de container.
 
 In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. 
 
 ![Zoeken naar App Services](./media/configure-common/search-for-app-services.png)
 
-Selecteer in het menu links van de app **configuratie** > **Toepassings instellingen**.
+Selecteer in het menu links van de app **configuratie**  >  **Toepassings instellingen**.
 
 ![Toepassingsinstellingen](./media/configure-common/open-ui.png)
 
-Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van de app-instellingen `<appSettings>` in app service vergelijkbaar met het instellen hiervan in *Web. config* of *appSettings. json*, maar de waarden in app service overschrijven deze in *Web. config* of *appSettings. json*. U kunt de ontwikkelings instellingen (bijvoorbeeld lokaal MySQL-wacht woord) in *Web. config* of *appSettings. json*blijven gebruiken, maar productie geheimen (bijvoorbeeld Azure MySQL-database wachtwoord) veilig in app service. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
+Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van de app-instellingen in App Service vergelijkbaar met de instelling in `<appSettings>` in *Web.config* of *appsettings.jsop*, maar de waarden in app service overschrijven ze in *Web.config* of *appsettings.jsop*. U kunt de ontwikkelings instellingen (bijvoorbeeld lokaal MySQL-wacht woord) in *Web.config* of *appsettings.jsop*, maar productie geheimen (bijvoorbeeld Azure MySQL-database wachtwoord) veilig in app service. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
 
 U kunt ook de app-instellingen ophalen als omgevings variabelen tijdens runtime. Zie voor taalspecifieke stappen voor de taal stack:
 
@@ -59,7 +59,7 @@ Als u een instelling wilt bewerken, klikt u op de knop **bewerken** aan de recht
 Wanneer u klaar bent, klikt u op **bijwerken**. Vergeet niet om terug te klikken op **Opslaan** op de pagina **configuratie** .
 
 > [!NOTE]
-> In een standaard-Linux-container of een aangepaste Linux-container `ApplicationInsights:InstrumentationKey` moet elke geneste JSON-sleutel structuur in de naam van de app- `ApplicationInsights__InstrumentationKey` instelling, zoals voor de sleutel naam, worden geconfigureerd in app service. Met andere woorden, die `:` moeten worden vervangen door `__` (dubbele onderstrepings tekens).
+> In een standaard-Linux-container of een aangepaste Linux-container moet elke geneste JSON-sleutel structuur in de naam van de app-instelling, zoals `ApplicationInsights:InstrumentationKey` `ApplicationInsights__InstrumentationKey` voor de sleutel naam, worden geconfigureerd in app service. Met andere woorden, `:` die moeten worden vervangen door `__` (dubbele onderstrepings tekens).
 >
 
 ### <a name="edit-in-bulk"></a>Bulksgewijs bewerken
@@ -86,11 +86,11 @@ App-instellingen hebben de volgende JSON-indeling:
 
 ## <a name="configure-connection-strings"></a>Verbindingsreeksen configureren
 
-In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links van de app **configuratie** > **Toepassings instellingen**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links van de app **configuratie**  >  **Toepassings instellingen**.
 
 ![Toepassingsinstellingen](./media/configure-common/open-ui.png)
 
-Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van verbindings reeksen in App Service `<connectionStrings>` vergelijkbaar met de instelling in in *Web. config*, maar de waarden die u in app service hebt ingesteld, overschrijven deze in *Web. config*. U kunt de ontwikkelings instellingen (bijvoorbeeld een database bestand) in *Web. config* en productie geheimen (bijvoorbeeld SQL database referenties) veilig in app service blijven. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
+Voor ASP.NET-en ASP.NET Core-ontwikkel aars is het instellen van verbindings reeksen in App Service vergelijkbaar met de instelling in `<connectionStrings>` in *Web.config*, maar de waarden die u in app service instelt, worden in *Web.config*genegeerd. U kunt de ontwikkelings instellingen (bijvoorbeeld een database bestand) in *Web.config* -en productie geheimen (bijvoorbeeld SQL database referenties) veilig in app service blijven. Dezelfde code maakt gebruik van uw ontwikkelings instellingen wanneer u lokaal fouten opspoort en uw productie geheimen gebruikt wanneer deze worden geïmplementeerd in Azure.
 
 Voor andere taal stacks is het beter om de [app-instellingen](#configure-app-settings) te gebruiken, omdat verbindings reeksen speciale opmaak in de variabele sleutels nodig hebben om toegang te krijgen tot de waarden. Hier volgt één uitzonde ring: voor bepaalde typen van Azure-data bases wordt samen met de app een back-up gemaakt als u de verbindings reeksen in uw app configureert. Zie [waarvan een back-up wordt gemaakt](manage-backup.md#what-gets-backed-up)voor meer informatie. Als u deze geautomatiseerde back-up niet nodig hebt, gebruikt u de app-instellingen.
 
@@ -102,7 +102,7 @@ In runtime zijn verbindings reeksen beschikbaar als omgevings variabelen, met al
 * Instel`CUSTOMCONNSTR_`
 * PostgreSQL`POSTGRESQLCONNSTR_`  
 
-Bijvoorbeeld, een MySql-connection string met de naam *connectionstring1* kan worden gebruikt als de `MYSQLCONNSTR_connectionString1`omgevings variabele. Zie voor taalspecifieke stappen voor de taal stack:
+Bijvoorbeeld, een MySql-connection string met de naam *connectionstring1* kan worden gebruikt als de omgevings variabele `MYSQLCONNSTR_connectionString1` . Zie voor taalspecifieke stappen voor de taal stack:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -158,7 +158,7 @@ Verbindings reeksen hebben de volgende JSON-indeling:
 
 ## <a name="configure-general-settings"></a>Algemene instellingen configureren
 
-In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer**algemene instellingen** **configuratie** > in het menu van de app.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer **Configuration**  >  **algemene instellingen**configuratie in het menu van de app.
 
 ![Algemene instellingen](./media/configure-common/open-general.png)
 
@@ -168,22 +168,22 @@ Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige 
 - **Platform instellingen**: Hiermee kunt u instellingen configureren voor het hosting platform, waaronder:
     - **Bitness**: 32-bits of 64-bits.
     - **WebSocket-protocol**: voor [ASP.net-signa lering] of [socket.io](https://socket.io/), bijvoorbeeld.
-    - **Altijd ingeschakeld**: de app wordt geladen, zelfs wanneer er geen verkeer is. Het is vereist voor doorlopende webjobs of voor webjobs die worden geactiveerd met behulp van een CRON-expressie.
+    - **Altijd aan**: houdt de app geladen, zelfs wanneer er geen verkeer is. Het is vereist voor doorlopende webjobs of voor webjobs die worden geactiveerd met behulp van een CRON-expressie.
       > [!NOTE]
-      > Met de functie Always on kunt u het eind punt niet beheren. Er wordt altijd een aanvraag naar de hoofdmap van de toepassing verzonden.
+      > Met de functie Always on verzendt de front-end load balancer een aanvraag naar de hoofdmap van de toepassing. Dit toepassings eindpunt van de App Service kan niet worden geconfigureerd.
     - **Beheerde pijplijn versie**: de IIS- [pipeline-modus]. Stel deze in op **klassiek** als u een verouderde app hebt waarvoor een oudere versie van IIS vereist is.
     - **Http-versie**: ingesteld op **2,0** om ondersteuning voor [https/2-](https://wikipedia.org/wiki/HTTP/2) protocol in te scha kelen.
     > [!NOTE]
     > De meeste moderne browsers bieden alleen ondersteuning voor HTTP/2-protocollen via TLS, terwijl niet-versleuteld verkeer HTTP/1.1 blijft gebruiken. Beveilig uw aangepaste DNS-naam om ervoor te zorgen dat client browsers verbinding maken met uw app met HTTP/2. Zie [een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in azure app service](configure-ssl-bindings.md)voor meer informatie.
     - **ARR-affiniteit**: in een implementatie met meerdere exemplaren moet u ervoor zorgen dat de client voor de levens duur van de sessie wordt doorgestuurd naar hetzelfde exemplaar. U kunt deze optie instellen op **uitschakelen** voor stateless toepassingen.
-- **Fout opsporing**: externe fout opsporing inschakelen voor [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.net core](/visualstudio/debugger/remote-debugging-azure)-of [node. js](containers/configure-language-nodejs.md#debug-remotely) -apps. Deze optie wordt na 48 uur automatisch uitgeschakeld.
+- **Fout opsporing**: externe fout opsporing inschakelen voor [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.net core](/visualstudio/debugger/remote-debugging-azure)-of [Node.js](containers/configure-language-nodejs.md#debug-remotely) -apps. Deze optie wordt na 48 uur automatisch uitgeschakeld.
 - **Binnenkomende client certificaten**: client certificaten in [wederzijdse verificatie](app-service-web-configure-tls-mutual-auth.md)vereisen.
 
 ## <a name="configure-default-documents"></a>Standaard documenten configureren
 
 Deze instelling geldt alleen voor Windows-apps.
 
-In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links de optie **configuratie** > **standaard documenten**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links de optie **configuratie**  >  **standaard documenten**.
 
 ![Standaard documenten](./media/configure-common/open-documents.png)
 
@@ -193,7 +193,7 @@ Als de app gebruikmaakt van modules die worden gerouteerd op basis van URL in pl
 
 ## <a name="configure-path-mappings"></a>Paden configureren
 
-In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links van de app **configuratie** > **paden toewijzen**.
+In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervolgens uw app. Selecteer in het menu links van de app **configuratie**  >  **paden toewijzen**.
 
 ![Paden toewijzen](./media/configure-common/open-path.png)
 
@@ -205,13 +205,13 @@ Voor Windows-apps kunt u de IIS-handlertoewijzing aanpassen en virtuele toepassi
 
 Met handlertoewijzing kunt u aangepaste script processors toevoegen voor het afhandelen van aanvragen voor specifieke bestands extensies. Als u een aangepaste handler wilt toevoegen, klikt u op **nieuwe handler**. Configureer de handler als volgt:
 
-- **Extensie**. De bestands extensie die u wilt verwerken, zoals * \*. php* of *handler. fcgi*.
+- **Extensie**. De bestands extensie die u wilt verwerken, zoals * \* . php* of *handler. fcgi*.
 - **Script processor**. Het absolute pad van de script processor naar u. Aanvragen voor bestanden die overeenkomen met de bestands extensie worden verwerkt door de script processor. Gebruik het pad `D:\home\site\wwwroot` om te verwijzen naar de hoofdmap van uw app.
 - **Argumenten**. Optionele opdracht regel argumenten voor de script processor.
 
-Aan `D:\home\site\wwwroot`elke app wordt het standaard hoofdpad (`/`) toegewezen, waar uw code standaard wordt geïmplementeerd. Als de hoofdmap van de app zich in een andere map bevindt, of als uw opslag plaats meer dan één toepassing heeft, kunt u hier virtuele toepassingen en directory's bewerken of toevoegen. Klik op **nieuwe virtuele toepassing of directory**.
+Aan elke app wordt het standaard hoofdpad ( `/` ) toegewezen `D:\home\site\wwwroot` , waar uw code standaard wordt geïmplementeerd. Als de hoofdmap van de app zich in een andere map bevindt, of als uw opslag plaats meer dan één toepassing heeft, kunt u hier virtuele toepassingen en directory's bewerken of toevoegen. Klik op **nieuwe virtuele toepassing of directory**.
 
-Als u virtuele toepassingen en directory's wilt configureren, geeft u elke virtuele map en het bijbehorende fysieke pad op ten opzichte van de hoofdmap van de website (`D:\home`). U kunt eventueel het selectie vakje van de **toepassing** selecteren om een virtuele map als een toepassing te markeren.
+Als u virtuele toepassingen en directory's wilt configureren, geeft u elke virtuele map en het bijbehorende fysieke pad op ten opzichte van de hoofdmap van de website ( `D:\home` ). U kunt eventueel het selectie vakje van de **toepassing** selecteren om een virtuele map als een toepassing te markeren.
 
 ### <a name="containerized-apps"></a>Apps in de container
 
@@ -253,12 +253,12 @@ Zie [een aangepaste Linux-container configureren voor Azure app service](contain
 - [Diagnostische logboeken inschakelen](troubleshoot-diagnostic-logs.md)
 - [Een app schalen in Azure App Service]
 - [Basis principes controleren in Azure App Service]
-- [Wijzig de instellingen van het bestand applicationHost. config met applicationHost. xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
+- [applicationHost.config-instellingen wijzigen met applicationHost. xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
 [ASP.NET-Signa lering]: https://www.asp.net/signalr
-[Azure-Portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Een aangepaste domein naam configureren in Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Faseringsomgevingen in Azure App Service instellen]: ./deploy-staging-slots.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906

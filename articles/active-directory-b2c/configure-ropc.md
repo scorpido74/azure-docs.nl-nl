@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d1989f65f73ac4f9dc8dd328fa9d7ed267eec1aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636415"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389595"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
 
@@ -50,9 +50,9 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
-- Vervang * \< tenant naam>. onmicrosoft.com* door de naam van uw B2C-Tenant.
-- Vervang * \< B2C_1A_ROPC_Auth>* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
-- Vervang * \< bef2222d56-552f-4a5b-b90a-1988a7d634c3>* door de toepassings-id van uw registratie.
+- Vervang * \<tenant-name> . onmicrosoft.com* door de naam van uw B2C-Tenant.
+- Vervang door *\<B2C_1A_ROPC_Auth>* de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
+- Vervang door *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* de toepassings-id uit uw registratie.
 
 `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
@@ -61,7 +61,7 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 | gebruikersnaam | leadiocl@outlook.com |
 | wachtwoord | Passxword1 |
 | grant_type | wachtwoord |
-| scope | OpenID Connect \< bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 

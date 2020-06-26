@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 1b3c95f5727c3839974f79e8d147f99d49c4b1d6
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: a0feac9bbd98dc4c67464e84e9a3204bd9730355
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261746"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390343"
 ---
 # <a name="system-document-properties"></a>Eigenschappen van systeem document
 
-Azure Cosmos DB heeft [systeem eigenschappen](https://docs.microsoft.com/rest/api/cosmos-db/databases) , zoals ```_ts``` ,,, ```_self``` ```_attachments``` ```_rid``` en ```_etag``` op elk document. Daarnaast voegt de Gremlin-engine de ```inVPartition```- en ```outVPartition```-eigenschappen toe aan randen. Deze eigenschappen zijn standaard beschikbaar voor navigatie. Het is echter mogelijk om specifieke eigenschappen toe te voegen, of al deze, in Gremlin traversal.
+Azure Cosmos DB heeft [systeem eigenschappen](/rest/api/cosmos-db/databases) , zoals ```_ts``` ,,, ```_self``` ```_attachments``` ```_rid``` en ```_etag``` op elk document. Daarnaast voegt de Gremlin-engine de ```inVPartition```- en ```outVPartition```-eigenschappen toe aan randen. Deze eigenschappen zijn standaard beschikbaar voor navigatie. Het is echter mogelijk om specifieke eigenschappen toe te voegen, of al deze, in Gremlin traversal.
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())

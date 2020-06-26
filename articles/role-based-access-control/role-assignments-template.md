@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: beb6b5666be0d3264720c5bc7a3c9516c1bd18f4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: e26f2ed498b8bfcf6b1518ea34815efb75a8eabe
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790871"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392451"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-roltoewijzingen toevoegen met behulp van Azure Resource Manager sjablonen
 
@@ -68,7 +68,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 In azure RBAC kunt u een roltoewijzing toevoegen om toegang te verlenen.
 
-### <a name="resource-group-without-parameters"></a>Resource groep (zonder para meters)
+### <a name="resource-group-scope-without-parameters"></a>Bereik van de resource groep (zonder para meters)
 
 De volgende sjabloon toont een eenvoudige manier om een roltoewijzing toe te voegen. Sommige waarden worden opgegeven in de sjabloon. In de volgende sjabloon ziet u:
 
@@ -111,7 +111,7 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol van lezers aan een 
 
 ![Roltoewijzing op het bereik van de resource groep](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription"></a>Resource groep of-abonnement
+### <a name="resource-group-or-subscription-scope"></a>Resource groep of abonnements bereik
 
 De vorige sjabloon is niet zeer flexibel. De volgende sjabloon maakt gebruik van para meters en kan worden gebruikt in verschillende bereiken. In de volgende sjabloon ziet u:
 
@@ -195,7 +195,7 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-### <a name="resource"></a>Resource
+### <a name="resource-scope"></a>Resourcebereik
 
 Als u een roltoewijzing moet toevoegen op het niveau van een resource, is de indeling van de roltoewijzing verschillend. U geeft de naam ruimte van de resource provider en het resource type van de resource waaraan u de rol wilt toewijzen. U neemt ook de naam van de resource op in de naam van de roltoewijzing.
 

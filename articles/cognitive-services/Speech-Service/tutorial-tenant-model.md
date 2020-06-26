@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: erhopf
-ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04a6742d3db8d65e06fe3d7b35ed94ebe5dc13a5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77469014"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391210"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Zelf studie: een Tenant model maken (preview)
 
@@ -290,8 +290,8 @@ namespace PrincetonSROnly.FrontEnd.Samples
 Vervolgens moet u het project opnieuw opbouwen en uitvoeren vanaf de opdracht regel. Voordat u de opdracht uitvoert, moet u een aantal para meters bijwerken door het volgende te doen:
 
 1. Vervang `<Username>` en `<Password>` door de waarden voor een geldige Tenant gebruiker.
-1. Vervang `<Subscription-Key>` door de abonnements sleutel voor uw spraak bron. Deze waarde is beschikbaar in het gedeelte **overzicht** voor uw spraak resource in de [Azure Portal](https://aka.ms/azureportal).
-1. Vervang `<Endpoint-Uri>` door het volgende eind punt. Zorg ervoor dat u vervangt `{your region}` door de regio waarin uw spraak bron is gemaakt. Deze regio's worden ondersteund: `westus`, `westus2`en `eastus`. Uw regio gegevens zijn beschikbaar in de sectie **overzicht** van uw spraak resource in de [Azure Portal](https://aka.ms/azureportal).
+1. Vervang door `<Subscription-Key>` de abonnements sleutel voor uw spraak bron. Deze waarde is beschikbaar in het gedeelte **overzicht** voor uw spraak resource in de [Azure Portal](https://aka.ms/azureportal).
+1. Vervang door `<Endpoint-Uri>` het volgende eind punt. Zorg ervoor dat u vervangt door `{your region}` de regio waarin uw spraak bron is gemaakt. Deze regio's worden ondersteund: `westus` , `westus2` en `eastus` . Uw regio gegevens zijn beschikbaar in de sectie **overzicht** van uw spraak resource in de [Azure Portal](https://aka.ms/azureportal).
    ```
    "wss://{your region}.online.princeton.customspeech.ai/msgraphcustomspeech/conversation/v1".
    ```

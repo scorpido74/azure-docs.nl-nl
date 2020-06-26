@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380589"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391516"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Quick Start: spraak herkennen in doel-C op macOS met behulp van de Speech SDK
 
@@ -38,7 +38,7 @@ De Cognitive Services Speech SDK voor Mac wordt gedistribueerd als een framework
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 
-Start Xcode en start een nieuw project door **bestand** > **Nieuw** > **project**te selecteren. Selecteer in het dialoog venster sjabloon selectie de sjabloon voor de **cacao-app** .
+Start Xcode en start een nieuw project door **bestand**  >  **Nieuw**  >  **project**te selecteren. Selecteer in het dialoog venster sjabloon selectie de sjabloon voor de **cacao-app** .
 
 In de volgende dialoog vensters volgt u de onderstaande opties.
 
@@ -49,7 +49,7 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
     1. Schakel de selectie vakjes uit om Story boards te gebruiken en om een op documenten gebaseerde toepassing te maken. De eenvoudige gebruikers interface voor de voor beeld-app wordt programmatisch gemaakt.
     1. Schakel alle selectie vakjes voor testen en basis gegevens uit.
 
-    ![Project instellingen](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
+    ![Projectinstellingen](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-project-settings.png)
 
 1. Selecteer een projectmap:
     1. Kies een map waarin u het project wilt plaatsen. Met deze stap maakt u een map HelloWorld in uw basismap die alle bestanden voor het Xcode-project bevat.
@@ -60,7 +60,7 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 
     ![Sandbox-instellingen](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-sandbox.png)
 
-1. De app moet ook het gebruik van de microfoon in het `Info.plist` bestand declareren. Selecteer het bestand in het overzicht en voeg de sleutel **gebruiks beschrijving privacy-microfoon** toe met een waarde als *microfoon is vereist voor spraak herkenning*.
+1. De app moet ook het gebruik van de microfoon in het bestand declareren `Info.plist` . Selecteer het bestand in het overzicht en voeg de sleutel **gebruiks beschrijving privacy-microfoon** toe met een waarde als *microfoon is vereist voor spraak herkenning*.
 
     ![Instellingen in info. plist](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-info-plist.png)
 
@@ -72,21 +72,21 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 1. Ga naar de map van uw voor beeld-app. Dit is HelloWorld. Plaats een tekst bestand met de naam *Podfile* en de volgende inhoud in die map:
 
    [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/Podfile)]
-1. Ga naar de map HelloWorld in een Terminal en voer de opdracht `pod install`uit. Met deze opdracht wordt `helloworld.xcworkspace` een Xcode-werk ruimte gegenereerd die zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid bevat. Deze werk ruimte wordt in de volgende stappen gebruikt.
+1. Ga naar de map HelloWorld in een Terminal en voer de opdracht uit `pod install` . Met deze opdracht wordt een `helloworld.xcworkspace` Xcode-werk ruimte gegenereerd die zowel de voor beeld-app als de spraak-SDK als een afhankelijkheid bevat. Deze werk ruimte wordt in de volgende stappen gebruikt.
 
 ## <a name="add-the-sample-code"></a>De voorbeeldcode toevoegen
 
-1. Open de werk `helloworld.xcworkspace` ruimte in Xcode.
+1. Open de werk ruimte `helloworld.xcworkspace` in Xcode.
 1. Vervang de inhoud van het automatisch gegenereerde `AppDelegate.m` bestand door de volgende code:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/macos/from-microphone/helloworld/helloworld/AppDelegate.m#code)]
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
-1. Vervang de teken `YourServiceRegion` reeks door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik `westus` bijvoorbeeld voor het gratis proef abonnement.
+1. Vervang de teken reeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
 
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
-1. Maak de uitvoer van de fout opsporing zichtbaar door de**console activerings****gebied** >  **weer geven** > te selecteren.
-1. Bouw en voer de voorbeeld code uit door in het menu **product** > **uitvoeren** te selecteren. U kunt ook **afspelen**selecteren.
+1. Maak de uitvoer van de fout opsporing **View**zichtbaar door de  >  **Debug Area**  >  **console activerings**gebied weer geven te selecteren.
+1. Bouw en voer de voorbeeld code uit door **Product**  >  in het menu product**uitvoeren** te selecteren. U kunt ook **afspelen**selecteren.
 1. Nadat u de knop hebt geselecteerd en enkele woorden hebt gedicteerd, ziet u de tekst die u in het onderste gedeelte van het scherm hebt gesp roken. Wanneer u de app voor de eerste keer uitvoert, wordt u gevraagd om de app toegang te geven tot de microfoon van uw computer.
 
 ## <a name="next-steps"></a>Volgende stappen

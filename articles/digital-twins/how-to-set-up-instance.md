@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 792b3894bf051298250ea8f402086c1edf297842
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9489b9e1afe5e42121f61a3b0b50b28b2401bd3
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362744"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392281"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Een Azure Digital Twins-instantie instellen
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Dit artikel begeleidt u stapsgewijs door de basis stappen voor het instellen van een nieuw Azure Digital Apparaatdubbels-exemplaar. Dit omvat het maken van het exemplaar en het toewijzen van [Azure Active Directory (Aad)-](../active-directory/fundamentals/active-directory-whatis.md) machtigingen aan het exemplaar voor uzelf.
 
@@ -58,7 +55,9 @@ Als u Azure Digital Apparaatdubbels wilt gebruiken met een client toepassing, mo
 
 #### <a name="assign-yourself-a-role"></a>Uzelf een rol toewijzen
 
-Maak een roltoewijzing voor uzelf met behulp van uw e-mail adres dat is gekoppeld aan de AAD-Tenant op uw Azure-abonnement. Zorg er eerst voor dat u bent geclassificeerd als een eigenaar van uw Azure-abonnement. U kunt dit controleren met behulp van de `az role assignment list --assignee <your-Azure-email>` opdracht om te controleren of *RoleDefinitionName* de *eigenaar*is. Vervolgens kunt u de volgende opdracht gebruiken om uw gebruiker toe te wijzen aan een rol van eigenaar voor uw Azure Digital Apparaatdubbels-exemplaar:
+Maak een roltoewijzing voor uzelf met behulp van uw e-mail adres dat is gekoppeld aan de AAD-Tenant op uw Azure-abonnement. 
+
+Zorg er eerst voor dat u bent geclassificeerd als een eigenaar van uw Azure-abonnement. U kunt dit controleren door de `az role assignment list --assignee <your-Azure-email>` opdracht te gebruiken en te controleren of de *roleDefinitionName* - *waarde eigenaar*is. Als eigenaar van het abonnement kunt u de volgende opdracht gebruiken om uw gebruiker toe te wijzen aan een rol van eigenaar voor uw Azure Digital Apparaatdubbels-exemplaar:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"

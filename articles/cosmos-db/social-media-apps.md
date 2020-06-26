@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: b121d7f5f1ad626f80a03ebe6cd47a932c209672
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: df48be038635799c08be409f7f1600e324cd8380
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116430"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392162"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociaal met Azure Cosmos DB
 
@@ -228,7 +228,7 @@ Voor een sociale ervaring moet u de strategie voor partitioneren uitlijnen met d
 
 Cosmos DB worden uw query's (inclusief [aggregaties](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) op transparante wijze uitgevoerd voor al uw partities. u hoeft dus geen logica toe te voegen wanneer uw gegevens groeien.
 
-Met tijd groeit u uiteindelijk in verkeer en neemt het Resource verbruik (gemeten in [RUs](request-units.md)of aanvraag eenheden) toe. U leest en schrijft vaker als uw gebruikers database groeit. De gebruikers database begint met het maken en lezen van meer inhoud. De mogelijkheid om **uw door voer te schalen** is daarom essentieel. Het is eenvoudig om uw RUs te verg Roten. U kunt dit doen met een paar klikken op de Azure Portal of door [opdrachten uit te geven via de API](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer).
+Met tijd groeit u uiteindelijk in verkeer en neemt het Resource verbruik (gemeten in [RUs](request-units.md)of aanvraag eenheden) toe. U leest en schrijft vaker als uw gebruikers database groeit. De gebruikers database begint met het maken en lezen van meer inhoud. De mogelijkheid om **uw door voer te schalen** is daarom essentieel. Het is eenvoudig om uw RUs te verg Roten. U kunt dit doen met een paar klikken op de Azure Portal of door [opdrachten uit te geven via de API](/rest/api/cosmos-db/replace-an-offer).
 
 :::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Omhoog schalen en definiëren van een partitie sleutel":::
 

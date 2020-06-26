@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c1246b19670a18f8dadc0c5e1c64dd5af4c1b210
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c355071c4bbaff5ddb22b2db5fc4a3a0fdb561d4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380776"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391550"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Snelstartgids: spraak in doel-C op iOS herkennen met de Speech SDK
 
@@ -40,7 +40,7 @@ Dit kan vanaf [deze website](https://aka.ms/csspeech/iosbinary)worden gedownload
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 
-Start Xcode en start een nieuw project door **bestand** > **Nieuw** > **project**te selecteren.
+Start Xcode en start een nieuw project door **bestand**  >  **Nieuw**  >  **project**te selecteren.
 Selecteer in het dialoog venster sjabloon selectie de sjabloon **voor de IOS-app met één weer gave** .
 
 In de volgende dialoog vensters volgt u de onderstaande opties.
@@ -51,13 +51,13 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
     1. Zorg ervoor dat de **doel-C** is geselecteerd als de taal voor het project.
     1. Schakel alle selectie vakjes voor testen en basis gegevens uit.
 
-    ![Project instellingen](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-project-settings.png)
+    ![Projectinstellingen](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-project-settings.png)
 
 1. Selecteer een projectmap:
    1. Kies uw basismap waarin u het project wilt plaatsen. Met deze stap maakt u een map HelloWorld in uw basismap die alle bestanden voor het Xcode-project bevat.
    1. Schakel het maken van een Git-opslagplaats uit voor dit voorbeeldproject.
    1. Pas de paden aan op het scherm project instellingen van de SDK.
-      1. Op het tabblad **Algemeen** onder de **Inge sloten binaire bestanden** , voegt u de SDK-bibliotheek als een framework toe door **toevoegen van Inge sloten binaire bestanden** > **toe te voegen.** Ga naar de basismap en selecteer het bestand `MicrosoftCognitiveServicesSpeech.framework`. Met deze actie wordt de SDK-bibliotheek automatisch toegevoegd aan de koptekst van het **gekoppelde Framework en de bibliotheken** .
+      1. Op het tabblad **Algemeen** onder de **Inge sloten binaire bestanden** , voegt u de SDK-bibliotheek als een framework toe door **toevoegen van Inge sloten binaire bestanden**toe te voegen  >  **Add other**. Ga naar de basismap en selecteer het bestand `MicrosoftCognitiveServicesSpeech.framework` . Met deze actie wordt de SDK-bibliotheek automatisch toegevoegd aan de koptekst van het **gekoppelde Framework en de bibliotheken** .
          ![Framework toegevoegd](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-framework.png)
       1. Ga naar het tabblad **instellingen voor samen stellen** en selecteer de instelling **alle** .
       1. Voeg de map $ (SRCROOT)/toe. naar **Framework Zoek paden** onder de kop **Zoek paden** .
@@ -66,7 +66,7 @@ In de volgende dialoog vensters volgt u de onderstaande opties.
 
 ## <a name="set-up-the-ui"></a>De gebruikersinterface instellen
 
-De voor beeld-app heeft een zeer eenvoudige gebruikers interface. Het heeft twee knoppen om spraak herkenning te starten vanuit een bestand of van een microfoon invoer en een tekst label om het resultaat weer te geven. De gebruikersinterface is ingesteld in het `Main.storyboard`-gedeelte van het project. Open de XML-weer gave van het Story Board door met `Main.storyboard` de rechter muisknop te klikken op het item in de project structuur en **vervolgens openen als** > **bron code**te selecteren.
+De voor beeld-app heeft een zeer eenvoudige gebruikers interface. Het heeft twee knoppen om spraak herkenning te starten vanuit een bestand of van een microfoon invoer en een tekst label om het resultaat weer te geven. De gebruikersinterface is ingesteld in het `Main.storyboard`-gedeelte van het project. Open de XML-weer gave van het Story Board door met de rechter muisknop te klikken op het `Main.storyboard` item in de project structuur en **vervolgens openen als**  >  **bron code**te selecteren.
 
 Vervang de automatisch gegenereerde XML door deze code:
 
@@ -81,8 +81,8 @@ Vervang de automatisch gegenereerde XML door deze code:
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec/ios/from-microphone/helloworld/helloworld/ViewController.m#code)]
 1. Vervang de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
-1. Vervang de teken `YourServiceRegion` reeks door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik `westus` bijvoorbeeld voor het gratis proef abonnement.
-1. Voeg de aanvraag voor toegang tot de microfoon toe. Klik met de rechter `Info.plist` muisknop op de vermelding van de project structuur en selecteer **openen als** > **bron code**. Voeg de volgende regels toe aan `<dict>` de sectie en sla het bestand op.
+1. Vervang de teken reeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld. Gebruik bijvoorbeeld `westus` voor het gratis proef abonnement.
+1. Voeg de aanvraag voor toegang tot de microfoon toe. Klik met de rechter muisknop op de `Info.plist` vermelding van de project structuur en selecteer **openen als**  >  **bron code**. Voeg de volgende regels toe aan de `<dict>` sectie en sla het bestand op.
 
     ```xml
     <key>NSMicrophoneUsageDescription</key>
@@ -91,9 +91,9 @@ Vervang de automatisch gegenereerde XML door deze code:
 
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
-1. Maak de uitvoer van de fout opsporing zichtbaar door de**console activerings****gebied** >  **weer geven** > te selecteren.
-1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product** > **bestemming** .
-1. Bouw en voer de voorbeeld code in de IOS-simulator uit door in het menu **product** > **uitvoeren** te selecteren. U kunt ook de knop **afspelen** selecteren.
+1. Maak de uitvoer van de fout opsporing **View**zichtbaar door de  >  **Debug Area**  >  **console activerings**gebied weer geven te selecteren.
+1. Kies de IOS-simulator of een IOS-apparaat dat is verbonden met uw ontwikkel computer als bestemming voor de app uit de lijst in het menu van de **product**  >  **bestemming** .
+1. Bouw en voer de voorbeeld code in de IOS-simulator uit door in het menu **product**  >  **uitvoeren** te selecteren. U kunt ook de knop **afspelen** selecteren.
 1. Nadat u de knop **herkennen (bestand)** in de app hebt geselecteerd, wordt de inhoud van het audio bestand weer geven ' wat is het weer? ' in het onderste gedeelte van het scherm.
 
    ![Gesimuleerde iOS-app](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app.png)

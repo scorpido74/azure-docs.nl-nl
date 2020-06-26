@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890814"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390462"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Privé-eind punten voor Azure Event Grid onderwerpen of domeinen configureren
 U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) gebruiken om direct vanuit uw virtuele netwerk toegang te geven tot uw onderwerpen en domeinen, zonder dat u het open bare Internet [hoeft te passeren](../private-link/private-link-overview.md) . Het persoonlijke eind punt gebruikt een IP-adres uit de VNet-adres ruimte voor uw onderwerp of domein. Zie [netwerk beveiliging](network-security.md)voor meer conceptuele informatie.
@@ -65,18 +65,18 @@ In deze sectie wordt beschreven hoe u de Azure Portal gebruikt om een persoonlij
     ![Persoonlijk eind punt-& pagina maken bekijken](./media/configure-private-endpoints/review-create-page.png)
     
 
-### <a name="manage-private-link-connection"></a>Verbinding met persoonlijke koppeling beheren
+### <a name="manage-private-link-connection"></a>Verbinding met private link beheren
 
-Wanneer u een persoonlijk eind punt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die resource uw verbindings aanvraag goed keuren.
+Wanneer u een privé-eindpunt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die resource uw verbindings aanvraag goed keuren.
 
-Er zijn vier inrichtings provincies:
+Er zijn vier inrichtingsstatussen:
 
-| Service actie | Status privé-eind punt service gebruiker | Beschrijving |
+| Service actie | Status privé-eindpunt serviceconsument | Beschrijving |
 |--|--|--|
 | Geen | In behandeling | De verbinding wordt hand matig gemaakt en in afwachting van goed keuring van de resource-eigenaar van de persoonlijke koppeling. |
-| Goedkeuren | Goedgekeurd | De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt. |
-| Afwijzen | Geweigerd | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling. |
-| Verwijderen | De verbinding verbroken | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. |
+| Goedkeuren | Goedgekeurd | De verbinding werd automatisch of handmatig goedgekeurd en is klaar om te worden gebruikt. |
+| Afwijzen | Afgewezen | De verbinding werd afgewezen door de resource-eigenaar van de private link. |
+| Verwijderen | Ontkoppeld | De verbinding is verwijderd door de resource-eigenaar van de private link, het privé-eindpunt wordt informatief en moet worden verwijderd voor opschoning. |
  
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt beheren
 In de volgende secties ziet u hoe u een verbinding met een privé-eind punt kunt goed keuren of afwijzen. 
@@ -140,8 +140,8 @@ az network private-endpoint create \
 
 Voor beschrijvingen van de para meters die in het voor beeld worden gebruikt, raadpleegt u de documentatie voor [AZ Network private-endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create). In dit voor beeld ziet u een paar punten: 
 
-- Geef `private-connection-resource-id`voor de resource-id van het **onderwerp** of het **domein**op. In het vorige voor beeld wordt het onderwerp type: gebruikt.
-- voor `group-ids`, opgeven `topic` of `domain`. In het voor gaande voor `topic` beeld wordt gebruikt. 
+- `private-connection-resource-id`Geef voor de resource-id van het **onderwerp** of het **domein**op. In het vorige voor beeld wordt het onderwerp type: gebruikt.
+- voor `group-ids` , opgeven `topic` of `domain` . In het voor gaande voor beeld `topic` wordt gebruikt. 
 
 Als u een persoonlijk eind punt wilt verwijderen, gebruikt u de methode [AZ Network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -184,8 +184,8 @@ az network private-endpoint create \
 
 Voor beschrijvingen van de para meters die in het voor beeld worden gebruikt, raadpleegt u de documentatie voor [AZ Network private-endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create). In dit voor beeld ziet u een paar punten: 
 
-- Geef `private-connection-resource-id`voor de resource-id van het **onderwerp** of het **domein**op. In het vorige voor beeld wordt het onderwerp type: gebruikt.
-- voor `group-ids`, opgeven `topic` of `domain`. In het voor gaande voor `topic` beeld wordt gebruikt. 
+- `private-connection-resource-id`Geef voor de resource-id van het **onderwerp** of het **domein**op. In het vorige voor beeld wordt het onderwerp type: gebruikt.
+- voor `group-ids` , opgeven `topic` of `domain` . In het voor gaande voor beeld `topic` wordt gebruikt. 
 
 Als u een persoonlijk eind punt wilt verwijderen, gebruikt u de methode [AZ Network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete) , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -484,4 +484,5 @@ Invoke-RestMethod -Method 'Get'
 U kunt de verbinding ook goed keuren nadat deze is geweigerd via de API. Als u Azure Portal gebruikt, kunt u een eind punt dat is geweigerd, niet goed keuren. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [Configure IP firewall for Azure Event grid topics or domains](configure-firewall.md)(Engelstalig) voor meer informatie over het configureren van IP-Firewall-instellingen.
+* Zie [Configure IP firewall for Azure Event grid topics or domains](configure-firewall.md)(Engelstalig) voor meer informatie over het configureren van IP-Firewall-instellingen.
+* Zie problemen [met netwerk connectiviteit oplossen](troubleshoot-network-connectivity.md) voor informatie over het oplossen van problemen met de netwerk verbinding

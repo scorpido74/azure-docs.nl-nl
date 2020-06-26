@@ -6,20 +6,20 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 547b625996a65999c32c1b73699e3b408be01de3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: accd32f376c6030900a9f9a3c29547118d0a1a7b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188593"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388507"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: extensies-app
 
-Wanneer een Azure AD B2C Directory wordt gemaakt, wordt er automatisch `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` een app met de naam gemaakt in de nieuwe map. Deze app, waarnaar wordt verwezen als de **B2C-Extensions-app**, is zichtbaar in *app-registraties*. Deze wordt door de Azure AD B2C-service gebruikt om informatie over gebruikers en aangepaste kenmerken op te slaan. Als de app wordt verwijderd, werkt Azure AD B2C niet naar behoren en wordt uw productie omgeving beïnvloed.
+Wanneer een Azure AD B2C Directory wordt gemaakt, wordt er automatisch een app met `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` de naam gemaakt in de nieuwe map. Deze app, waarnaar wordt verwezen als de **B2C-Extensions-app**, is zichtbaar in *app-registraties*. Deze wordt door de Azure AD B2C-service gebruikt om informatie over gebruikers en aangepaste kenmerken op te slaan. Als de app wordt verwijderd, werkt Azure AD B2C niet naar behoren en wordt uw productie omgeving beïnvloed.
 
 > [!IMPORTANT]
 > Verwijder de B2C-uitbrei dingen-app alleen als u van plan bent om uw Tenant onmiddellijk te verwijderen. Als de app langer dan 30 dagen verwijderd blijft, zullen de gebruikers gegevens definitief verloren gaan.
@@ -36,11 +36,11 @@ Controleren of de B2C-extensies-app aanwezig is:
 
 Als u de B2C-uitbrei dingen per ongeluk hebt verwijderd, hebt u 30 dagen om de app te herstellen. U kunt de app herstellen met behulp van de Graph API:
 
-1. Blader naar [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
-1. Meld u aan bij de site als globale beheerder voor de Azure AD B2C directory waarvan u de verwijderde app wilt herstellen. Deze globale beheerder moet een e-mail adres hebben dat lijkt op `username@{yourTenant}.onmicrosoft.com`het volgende:.
-1. Geef een HTTP-GET op voor `https://graph.windows.net/myorganization/deletedApplications` de URL met API-Version = 1.6. Met deze bewerking worden alle toepassingen weer geven die in de afgelopen 30 dagen zijn verwijderd.
+1. Ga naar [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) .
+1. Meld u aan bij de site als globale beheerder voor de Azure AD B2C directory waarvan u de verwijderde app wilt herstellen. Deze globale beheerder moet een e-mail adres hebben dat lijkt op het volgende: `username@{yourTenant}.onmicrosoft.com` .
+1. Geef een HTTP-GET op voor de URL `https://graph.windows.net/myorganization/deletedApplications` met API-Version = 1.6. Met deze bewerking worden alle toepassingen weer geven die in de afgelopen 30 dagen zijn verwijderd.
 1. Zoek de toepassing in de lijst waarin de naam begint met ' B2C-extension-app ' en kopieer de `objectid` eigenschaps waarde.
-1. Geef een HTTP-POST op voor `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`de URL. Vervang het `{OBJECTID}` gedeelte van de URL door de `objectid` van de vorige stap.
+1. Geef een HTTP-POST op voor de URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore` . Vervang het `{OBJECTID}` gedeelte van de URL door de `objectid` van de vorige stap.
 
 U zou nu [de herstelde app kunnen zien](#verifying-that-the-extensions-app-is-present) in de Azure Portal.
 

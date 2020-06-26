@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/18/2019
-ms.openlocfilehash: 735c68a3aec4d7bbb5626497de445f61e375b34b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 157f0a710a0b3aed25455600bbf19d4ae84ed848
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263395"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391941"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Controleren en fouten opsporen met metrische gegevens in Azure Cosmos DB
 
@@ -46,7 +46,7 @@ In de volgende secties worden veelvoorkomende scenario's beschreven waarin u Azu
 
 ## <a name="understand-how-many-requests-are-succeeding-or-causing-errors"></a>Begrijpen hoeveel aanvragen slagen of fouten veroorzaken
 
-Als u aan de slag wilt gaan, gaat u naar de [Azure Portal](https://portal.azure.com) en navigeert u naar de Blade **metrische gegevens** . Zoek in de Blade naar de * * aantal aanvragen met een capaciteit van meer dan één minuut diagram. Dit diagram toont het totale aantal minuten per minuut dat is gesegmenteerd door de status code. Zie [HTTP-status codes voor Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor meer informatie over HTTP-status codes.
+Als u aan de slag wilt gaan, gaat u naar de [Azure Portal](https://portal.azure.com) en navigeert u naar de Blade **metrische gegevens** . Zoek in de Blade naar de * * aantal aanvragen met een capaciteit van meer dan één minuut diagram. Dit diagram toont het totale aantal minuten per minuut dat is gesegmenteerd door de status code. Zie [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor meer informatie over HTTP-status codes.
 
 De meest voorkomende fout status code is 429 (beperking of beperking). Deze fout betekent dat aanvragen voor Azure Cosmos DB meer zijn dan de ingerichte door voer. De meest voorkomende oplossing voor dit probleem is het [opschalen van het RUs](./set-throughput.md) voor de gegeven verzameling.
 

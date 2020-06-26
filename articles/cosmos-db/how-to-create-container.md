@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 02914a9357ef9ccc10763699dc7c84aa98777139
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261610"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390887"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
@@ -132,6 +132,8 @@ Voor een lijst met alle Azure CLI-voor beelden voor alle Azure Cosmos DB Api's r
 * [Een Table-API tabel maken met Power shell](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Een container maken met behulp van .NET SDK
+
+Als er een time-outuitzondering optreedt bij het maken van een verzameling, moet u een lees bewerking uitvoeren om te controleren of de verzameling is gemaakt. Met de Lees bewerking wordt een uitzonde ring gegenereerd totdat de bewerking voor het maken van de verzameling is voltooid. Zie de [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) artikel voor een lijst met status codes die door de maak bewerking worden ondersteund.
 
 ### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL-API en Gremlin-API
 

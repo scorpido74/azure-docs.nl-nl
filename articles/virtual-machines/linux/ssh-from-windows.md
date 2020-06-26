@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757986"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390224"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-sleutels gebruiken met Windows op Azure
 
@@ -41,17 +41,17 @@ U kunt de SSH-hulpprogram ma's die beschikbaar zijn in bash ook gebruiken in de 
 * Toegang Cloud Shell als een Terminal vanuit Visual Studio code door de extensie van het [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)te installeren.
 
 ## <a name="create-an-ssh-key-pair"></a>Een SSH-sleutelpaar maken
-In de volgende secties worden twee opties beschreven voor het maken van een SSH-sleutel paar in Windows. U kunt een shell opdracht gebruiken (`ssh-keygen`) of een GUI-hulp programma (PuTTYgen). Houd er ook rekening mee dat wanneer u Power shell gebruikt om een sleutel te maken, de open bare sleutel uploadt als SSH. com-indeling (SECSH). Wanneer u CLI gebruikt, moet u de sleutel converteren naar de OpenSSH-indeling voordat u deze uploadt. 
+In de volgende secties worden twee opties beschreven voor het maken van een SSH-sleutel paar in Windows. U kunt een shell opdracht gebruiken ( `ssh-keygen` ) of een GUI-hulp programma (PuTTYgen). Houd er ook rekening mee dat wanneer u Power shell gebruikt om een sleutel te maken, de open bare sleutel uploadt als SSH. com-indeling (SECSH). Wanneer u CLI gebruikt, moet u de sleutel converteren naar de OpenSSH-indeling voordat u deze uploadt. 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>SSH-sleutels maken met ssh-keygen
 
-Als u een opdracht shell uitvoert in Windows die SSH-client hulpprogramma's ondersteunt (of als u Azure Cloud Shell gebruikt), maakt u een SSH- `ssh-keygen` sleutel paar met behulp van de opdracht. Typ de volgende opdracht en beantwoord de prompts. Als er een SSH-sleutel paar op de gekozen locatie bestaat, worden deze bestanden overschreven. 
+Als u een opdracht shell uitvoert in Windows die SSH-client hulpprogramma's ondersteunt (of als u Azure Cloud Shell gebruikt), maakt u een SSH-sleutel paar met behulp van de `ssh-keygen` opdracht. Typ de volgende opdracht en beantwoord de prompts. Als er een SSH-sleutel paar op de gekozen locatie bestaat, worden deze bestanden overschreven. 
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Zie [de volgende](mac-create-ssh-keys.md) [stappen voor](create-ssh-keys-detailed.md) meer informatie over het maken van SSH-sleutels met behulp `ssh-keygen`van.
+Zie [de volgende](mac-create-ssh-keys.md) [stappen voor](create-ssh-keys-detailed.md) meer informatie over het maken van SSH-sleutels met behulp van `ssh-keygen` .
 
 ### <a name="create-ssh-keys-with-puttygen"></a>SSH-sleutels maken met PuTTYgen
 
@@ -63,19 +63,19 @@ Een SSH RSA-sleutel paar maken met PuTTYgen:
 
 2. Klik op **Genereren**. Standaard genereert PuTTYgen een RSA-sleutel van 2048 bits (SSH-2).
 
-4. Beweeg de muis aanwijzer in het lege gebied om wille keurigheid voor de sleutel op te geven.
+3. Beweeg de muis aanwijzer in het lege gebied om wille keurigheid voor de sleutel op te geven.
 
-5. Nadat de open bare sleutel is gegenereerd, voert u optioneel een wachtwoordzin in en bevestigt u deze. U wordt gevraagd om de wachtwoordzin wanneer u zich bij de virtuele machine verifieert met uw persoonlijke SSH-sleutel. Zonder een wachtwoordzin kunnen gebruikers zich aanmelden bij elke virtuele machine of service die gebruikmaakt van die sleutel als iemand uw persoonlijke sleutel verkrijgt. U wordt aangeraden een wachtwoordzin te maken. Als u de wachtwoordzin vergeet, is er echter geen manier om deze te herstellen.
+4. Nadat de open bare sleutel is gegenereerd, voert u optioneel een wachtwoordzin in en bevestigt u deze. U wordt gevraagd om de wachtwoordzin wanneer u zich bij de virtuele machine verifieert met uw persoonlijke SSH-sleutel. Zonder een wachtwoordzin kunnen gebruikers zich aanmelden bij elke virtuele machine of service die gebruikmaakt van die sleutel als iemand uw persoonlijke sleutel verkrijgt. U wordt aangeraden een wachtwoordzin te maken. Als u de wachtwoordzin vergeet, is er echter geen manier om deze te herstellen.
 
-6. De open bare sleutel wordt bovenaan het venster weer gegeven. U kunt deze volledige open bare sleutel kopiëren en deze vervolgens in de Azure Portal of een Azure Resource Manager sjabloon plakken wanneer u een virtuele Linux-machine maakt. U kunt ook **open bare sleutel opslaan** selecteren om een kopie op uw computer op te slaan:
+5. De open bare sleutel wordt bovenaan het venster weer gegeven. U kunt deze volledige open bare sleutel kopiëren en deze vervolgens in de Azure Portal of in een Azure Resource Manager sjabloon plakken wanneer u een virtuele Linux-machine maakt. U kunt ook **open bare sleutel opslaan** selecteren om een kopie op uw computer op te slaan. Houd er rekening mee dat bij het opslaan naar een bestand de open bare sleutel wordt geconverteerd naar een andere indeling, [RFC4716](https://tools.ietf.org/html/rfc4716). De RFC4716-indeling is mogelijk niet compatibel met alle Api's. Daarom wordt u aangeraden om de open bare sleutel die wordt weer gegeven in het venster PuTTy, te kopiëren voor gebruik in de Azure Portal.
 
     ![Bestand met open bare sleutel voor PuTTy opslaan](./media/ssh-from-windows/save-public-key.png)
 
-7. Selecteer desgewenst **persoonlijke sleutel opslaan**om de persoonlijke sleutel op te slaan in de indeling van de persoonlijke sleutel voor putty (. ppk-bestand). U hebt het. ppk-bestand later nodig voor het gebruik van PuTTy om een SSH-verbinding met de virtuele machine te maken.
+6. Selecteer desgewenst **persoonlijke sleutel opslaan**om de persoonlijke sleutel op te slaan in de indeling van de persoonlijke sleutel voor putty (. ppk-bestand). U hebt het. ppk-bestand later nodig voor het gebruik van PuTTy om een SSH-verbinding met de virtuele machine te maken.
 
     ![Bestand met persoonlijke sleutel voor PuTTy opslaan](./media/ssh-from-windows/save-ppk-file.png)
 
-    Als u de persoonlijke sleutel in de OpenSSH-indeling wilt opslaan, selecteert u in de indeling van de persoonlijke sleutel die door veel SSH-clients wordt gebruikt, de**export OpenSSH-sleutel** **conversies** > .
+    Als u de persoonlijke sleutel in de OpenSSH-indeling wilt opslaan, selecteert u in de indeling van de persoonlijke sleutel die door veel SSH-clients wordt gebruikt, de export OpenSSH-sleutel **conversies**  >  **Export OpenSSH key**.
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Een open bare SSH-sleutel opgeven bij het implementeren van een virtuele machine
 
@@ -111,7 +111,7 @@ Als u het [putty-download pakket](https://www.chiark.greenend.org.uk/~sgtatham/p
 
     ![Nieuwe PuTTy-verbinding openen](./media/ssh-from-windows/putty-new-connection.png)
 
-3. Selecteer de categorie **verbindings** > -**SSH** > -**verificatie** . Blader naar en selecteer uw persoonlijke sleutel voor PuTTy (. ppk-bestand):
+3. Selecteer de categorie **verbindings**-  >  **SSH**-  >  **verificatie** . Blader naar en selecteer uw persoonlijke sleutel voor PuTTy (. ppk-bestand):
 
     ![Selecteer uw persoonlijke sleutel voor de validatie van de PuTTy](./media/ssh-from-windows/putty-auth-dialog.png)
 

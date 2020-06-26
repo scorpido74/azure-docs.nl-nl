@@ -7,17 +7,14 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: b6f5765f51983e3b1ca9c182849b64258476a2ce
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362761"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392264"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 In azure Digital Apparaatdubbels kunt u [gebeurtenis meldingen](how-to-interpret-event-data.md) door sturen naar downstream-Services of verbinding maken met reken bronnen. Dit wordt gedaan door eerst **eind punten** in te stellen die de gebeurtenissen kunnen ontvangen, gevolgd door de [**gebeurtenis routes**](concepts-route-events.md) die aangeven welke gebeurtenissen worden gegenereerd door Azure Digital apparaatdubbels naar welke eind punten worden verzonden.
 

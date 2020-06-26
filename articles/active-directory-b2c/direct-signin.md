@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a02ad3ea43ae9d91489417bc314e3c23d54a958
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188763"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85388592"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Direct aanmelden instellen met behulp van Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Tijdens een traject voor aanmeldings gebruikers kan een Relying Party toepassing
 
 De gebruiker kan de waarde in het tekstvak voor aanmelden wijzigen.
 
-Als u een aangepast beleid gebruikt, moet u het `SelfAsserted-LocalAccountSignin-Email` technische profiel overschrijven. Stel in `<InputClaims>` de sectie de DefaultValue van de signInName-claim in `{OIDC:LoginHint}`op. De `{OIDC:LoginHint}` variabele bevat de waarde van de `login_hint` para meter. Azure AD B2C leest de waarde van de claim signInName en vult het tekstvak signInName vooraf in.
+Als u een aangepast beleid gebruikt, moet u het `SelfAsserted-LocalAccountSignin-Email` technische profiel overschrijven. Stel in de `<InputClaims>` sectie de DefaultValue van de signInName-claim in op `{OIDC:LoginHint}` . De `{OIDC:LoginHint}` variabele bevat de waarde van de `login_hint` para meter. Azure AD B2C leest de waarde van de claim signInName en vult het tekstvak signInName vooraf in.
 
 ```xml
 <ClaimsProvider>
@@ -47,11 +47,11 @@ Als u een aangepast beleid gebruikt, moet u het `SelfAsserted-LocalAccountSignin
 
 ## <a name="redirect-sign-in-to-a-social-provider"></a>Aanmelding door sturen naar een sociale provider
 
-Als u de aanmeldings traject hebt geconfigureerd zodat uw toepassing sociale accounts kan bevatten, zoals Facebook, LinkedIn of Google, kunt u de `domain_hint` para meter opgeven. Deze query parameter biedt een hint voor het Azure AD B2C over de ID-provider voor sociale netwerken die moet worden gebruikt voor aanmelding. Als de toepassing bijvoorbeeld is opgegeven `domain_hint=facebook.com`, wordt de aanmelding direct naar de aanmeldings pagina van Facebook verzonden.
+Als u de aanmeldings traject hebt geconfigureerd zodat uw toepassing sociale accounts kan bevatten, zoals Facebook, LinkedIn of Google, kunt u de `domain_hint` para meter opgeven. Deze query parameter biedt een hint voor het Azure AD B2C over de ID-provider voor sociale netwerken die moet worden gebruikt voor aanmelding. Als de toepassing bijvoorbeeld `domain_hint=facebook.com` is opgegeven, wordt de aanmelding direct naar de aanmeldings pagina van Facebook verzonden.
 
 ![Aanmeldings pagina voor aanmelding met domain_hint query parameter gemarkeerd in URL](./media/direct-signin/domain-hint.png)
 
-Als u een aangepast beleid gebruikt, kunt u de domein naam configureren met behulp `<Domain>domain name</Domain>` van het XML- `<ClaimsProvider>`element van elke.
+Als u een aangepast beleid gebruikt, kunt u de domein naam configureren met behulp `<Domain>domain name</Domain>` van het XML-element van elke `<ClaimsProvider>` .
 
 ```xml
 <ClaimsProvider>

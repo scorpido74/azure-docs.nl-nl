@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 5183591133b6892f6f57db45cf1936851784a45a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262052"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392128"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Queryprestaties afstemmen met Azure Cosmos DB
 
@@ -131,7 +131,7 @@ De belangrijkste reactie headers die worden geretourneerd door de query zijn ond
 | `x-ms-documentdb-query-metrics` | De query statistieken voor de uitvoering. Dit is een gescheiden teken reeks met statistieken over de tijd die wordt besteed aan de verschillende fasen van het uitvoeren van query's. Geretourneerd als `x-ms-documentdb-populatequerymetrics` is ingesteld op `True` . | 
 | `x-ms-request-charge` | Het aantal [aanvraag eenheden](request-units.md) dat door de query wordt verbruikt. | 
 
-Zie [Query's uitvoeren op resources met behulp van de rest API](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)voor meer informatie over de rest API aanvraag headers en opties.
+Zie [Query's uitvoeren op resources met behulp van de rest API](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)voor meer informatie over de rest API aanvraag headers en opties.
 
 ## <a name="best-practices-for-query-performance"></a>Aanbevolen procedures voor de prestaties van query's
 Hier volgen de meest voorkomende factoren die van invloed zijn op de prestaties van Azure Cosmos DB query's. In elk van deze onderwerpen wordt in dit artikel dieper opgetreden.

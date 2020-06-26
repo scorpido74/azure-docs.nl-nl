@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: e27a920aea18affd78f840d3063b8082f716745b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193942"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389816"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
@@ -59,7 +59,7 @@ De volgende regio's worden ondersteund voor implementaties van virtuele knoop pu
 * VS-West 2 (westus2)
 
 ## <a name="known-limitations"></a>Bekende beperkingen
-De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functieset van ACI. De volgende scenario's worden nog niet ondersteund met virtuele knoop punten
+De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functieset van ACI. Naast de [quota en limieten voor Azure container instances](../container-instances/container-instances-quotas.md), worden de volgende scenario's nog niet ondersteund met virtuele knoop punten:
 
 * Service-Principal gebruiken voor het ophalen van ACR-installatie kopieën. [Tijdelijke oplossing](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) is het gebruik van [Kubernetes-geheimen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
 * [Virtual Network beperkingen](../container-instances/container-instances-vnet.md) , waaronder VNet-peering, Kubernetes-netwerk beleid en uitgaand verkeer naar Internet met netwerk beveiligings groepen.
@@ -67,7 +67,7 @@ De functionaliteit van virtuele knoop punten is sterk afhankelijk van de functie
 * [Host-aliassen](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Argumenten](../container-instances/container-instances-exec.md#restrictions) voor exec in ACI
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) implementeert geen peuling voor het virtuele knoop punt
-* Virtuele knoop punten ondersteunen de planning van Linux. U kunt de open source [Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -provider hand matig installeren om Windows Server-containers te plannen voor ACI. 
+* Virtuele knoop punten ondersteunen de planning van Linux. U kunt de open source [Virtual KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -provider hand matig installeren om Windows Server-containers te plannen voor ACI.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -77,9 +77,9 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Selecteer in de linkerbovenhoek van de Azure Portal **een resource**  >  **Kubernetes-service**maken.
 
-Configureer op de pagina **basis beginselen** de volgende opties:
+Configureer op de pagina **Basisprincipes** de volgende opties:
 
-- *PROJECTDETAILS*: selecteer een Azure-abonnement, en selecteer of maak vervolgens een Azure-resourcegroep, zoals *myResourceGroup*. Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*.
+- *Project Details*: Selecteer een Azure-abonnement en selecteer of maak een Azure-resource groep, zoals *myResourceGroup*. Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*.
 - *CLUSTERDETAILS*: selecteer een regio, Kubernetes-versie en DNS-naamvoorvoegsel voor het AKS-cluster.
 - *Primaire knooppunt groep*: Selecteer een VM-grootte voor de AKS-knoop punten. De VM-grootte kan **niet** meer worden gewijzigd als een AKS-cluster eenmaal is geïmplementeerd.
      - Selecteer het aantal knooppunten dat u in het cluster wilt implementeren. Voor dit artikel stelt u het **aantal knoop punten** in op *1*. Het aantal knooppunten kan nog **wel** worden gewijzigd als het cluster is geïmplementeerd.
@@ -102,7 +102,7 @@ Het duurt enkele minuten om het AKS-cluster te maken en voor te bereiden voor ge
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kubernetes-opdrachtregelclient. De client `kubectl` is vooraf geïnstalleerd in Azure Cloud Shell.
 
-Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te gaan [https://shell.azure.com/bash](https://shell.azure.com/bash) . Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u de Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` te configureren om verbinding te maken met het Kubernetes-cluster. In het volgende voorbeeld worden de referenties opgehaald voor de clusternaam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
 

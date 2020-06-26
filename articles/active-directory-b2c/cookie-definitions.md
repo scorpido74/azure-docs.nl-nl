@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189511"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389340"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Cookie definities voor Azure AD B2C
 
@@ -24,11 +24,11 @@ De volgende secties bevatten informatie over de cookies die in Azure Active Dire
 
 ## <a name="samesite"></a>SameSite
 
-De B2C-service van Microsoft Azure AD is compatibel met SameSite-browser configuraties, `SameSite=None` inclusief ondersteuning `Secure` voor met het-kenmerk.
+De B2C-service van Microsoft Azure AD is compatibel met SameSite-browser configuraties, inclusief ondersteuning voor `SameSite=None` met het- `Secure` kenmerk.
 
 Webbrowsers kunnen de toegang tot sites beveiligen door een nieuw beveiligd standaard model toe te passen dat alle cookies moet worden beschermd tegen externe toegang tenzij anders wordt aangegeven. De Chrome-browser is de eerste voor het implementeren van deze wijziging, vanaf [Chrome 80 in februari 2020](https://www.chromium.org/updates/same-site). Voor meer informatie over het voorbereiden van de wijziging in Chrome raadpleegt u [ontwikkel aars: bereid u voor op nieuwe SameSite = geen; Beveiligde cookie-instellingen](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html) in de chroom-blog.
 
-Ontwikkel aars moeten de nieuwe cookie-instelling `SameSite=None`gebruiken om cookies voor toegang tussen sites aan te wijzen. Wanneer het `SameSite=None` kenmerk aanwezig is, moet er `Secure` een extra kenmerk worden gebruikt, zodat cookies voor meerdere locaties alleen toegankelijk zijn via HTTPS-verbindingen. Valideer en test al uw toepassingen, met inbegrip van de toepassingen die gebruikmaken van Azure AD B2C.
+Ontwikkel aars moeten de nieuwe cookie-instelling gebruiken `SameSite=None` om cookies voor toegang tussen sites aan te wijzen. Wanneer het `SameSite=None` kenmerk aanwezig is, moet er een extra `Secure` kenmerk worden gebruikt, zodat cookies voor meerdere locaties alleen toegankelijk zijn via HTTPS-verbindingen. Valideer en test al uw toepassingen, met inbegrip van de toepassingen die gebruikmaken van Azure AD B2C.
 
 Zie voor meer informatie:
 

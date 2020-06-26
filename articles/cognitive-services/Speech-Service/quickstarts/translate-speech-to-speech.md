@@ -1,22 +1,22 @@
 ---
 title: 'Snelstartgids: Vertaal spraak-naar-spraak-spraak service'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de Speech SDK om spraak-naar tekst in een andere taal interactief te vertalen in een andere taal.
+description: In deze Quick Start gebruikt u de Speech SDK om spraak van de ene taal te vertalen naar tekst in een andere taal.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 02/10/2020
+ms.date: 06/25/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 5722cc714c1ca11b2a018b7b232e261f14c5fa00
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 37b5b8f5c4fef37450a3b83c75a067982143a518
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978952"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391329"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>Snelstartgids: vertalen van spraak naar spraak
 

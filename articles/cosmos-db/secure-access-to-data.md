@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 70c7ae006c2ce7b91e1e47e12d9880ab48d42c76
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 1349ec3fc0fe9b5db60af883558a9d0aed5ee612
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85116465"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392179"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -99,11 +99,11 @@ Hier volgt een typisch ontwerp patroon waarbij bron tokens kunnen worden aangevr
 
     :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Werk stroom voor Azure Cosmos DB resource tokens" border="false":::
 
-Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen Cosmos DB-client bibliotheken. Als u echter REST gebruikt, moet u de aanvraag-en verificatie headers maken. Zie [Access Control op Cosmos DB resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de bron code voor onze [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) of [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatie headers voor rest.
+Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen Cosmos DB-client bibliotheken. Als u echter REST gebruikt, moet u de aanvraag-en verificatie headers maken. Zie [Access Control op Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de bron code voor onze [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) of [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatie headers voor rest.
 
 Zie de [resource token Broker-app](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)voor een voor beeld van een middle-tier service die wordt gebruikt om resource tokens te genereren of Broker.
 
-## <a name="users"></a>Gebruikers<a id="users"></a>
+## <a name="users"></a>Bezoekers<a id="users"></a>
 
 Azure Cosmos DB gebruikers zijn gekoppeld aan een Cosmos-data base.  Elke Data Base kan nul of meer Cosmos DB gebruikers bevatten. In het volgende code voorbeeld ziet u hoe u een Cosmos DB gebruiker maakt met behulp van de [Azure Cosmos db .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
@@ -117,7 +117,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Elke Cosmos DB gebruiker heeft een ReadAsync ()-methode die kan worden gebruikt voor het ophalen van de lijst met [machtigingen](#permissions) die aan de gebruiker zijn gekoppeld.
 
-## <a name="permissions"></a>Machtigingen<a id="permissions"></a>
+## <a name="permissions"></a>Bevoegdheden<a id="permissions"></a>
 
 Een machtigings resource is gekoppeld aan een gebruiker en toegewezen aan de container en het niveau van de partitie sleutel. Elke gebruiker kan nul of meer machtigingen bevatten. Een machtigings bron biedt toegang tot een beveiligings token dat de gebruiker nodig heeft om toegang te krijgen tot een specifieke container of gegevens in een specifieke partitie sleutel. Er zijn twee toegangs niveaus beschikbaar die kunnen worden gegeven door een machtigings Bron:
 
@@ -176,5 +176,5 @@ Azure Cosmos DB kunt u zoeken, selecteren, wijzigen en verwijderen van persoonli
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Cosmos DB Data Base Security](database-security.md)(Engelstalig) voor meer informatie over de beveiliging van Cosmos-data bases.
-- Zie [Access Control op Azure Cosmos DB resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)voor meer informatie over het maken van Azure Cosmos DB autorisatie tokens.
+- Zie [Access Control op Azure Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)voor meer informatie over het maken van Azure Cosmos DB autorisatie tokens.
 - Voor beelden van gebruikers beheer met gebruikers en machtigingen, voor [beelden van .NET SDK v3-gebruikers beheer](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

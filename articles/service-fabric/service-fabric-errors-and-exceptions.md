@@ -1,16 +1,16 @@
 ---
 title: Veelvoorkomende FabricClient-uitzonde ringen
 description: Hierin worden de algemene uitzonde ringen en fouten beschreven die kunnen worden gegenereerd door de FabricClient-Api's tijdens het uitvoeren van bewerkingen voor toepassings-en Cluster beheer.
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 06/20/2018
-ms.author: oanapl
-ms.openlocfilehash: 9ad3097a490d4728e05ea90652c17c24b79cac2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: gwallace
+ms.openlocfilehash: d22184d6d275adb95932fb29338768210547c199
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457934"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392621"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Algemene uitzonderingen en fouten bij het werken met de FabricClient-API's
 Met de [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) -api's kunnen cluster-en toepassings beheerders beheer taken uitvoeren op een service Fabric toepassing, service of cluster. Bijvoorbeeld het implementeren van toepassingen, het upgraden en verwijderen, het controleren van de status van een cluster of het testen van een service. Toepassings ontwikkelaars en cluster beheerders kunnen de FabricClient-Api's gebruiken voor het ontwikkelen van hulpprogram ma's voor het beheren van de Service Fabric cluster en toepassingen.

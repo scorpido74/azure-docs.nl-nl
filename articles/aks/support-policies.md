@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 147fc33d068909fa892023ec00cfc2827203607f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402465"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389935"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -53,7 +53,7 @@ Micro soft biedt technische ondersteuning voor het volgende:
 
 * Connectiviteit met alle Kubernetes-onderdelen die de Kubernetes-service biedt en ondersteunt, zoals de API-server.
 * Beheer, uptime, QoS en bewerkingen van Kubernetes Control vlak-Services (bijvoorbeeld Kubernetes-hoofd knooppunten, API-server, etcd en uitvoeren-DNS).
-* Etcd. Ondersteuning omvat geautomatiseerde, transparante back-ups van alle etcd-gegevens om de 30 minuten voor nood planning en herstel van de cluster status. Deze back-ups zijn niet rechtstreeks beschikbaar voor klanten of gebruikers. Ze garanderen de betrouw baarheid en consistentie van gegevens.
+* Etcd. Ondersteuning omvat geautomatiseerde, transparante back-ups van alle etcd-gegevens om de 30 minuten voor nood planning en herstel van de cluster status. Deze back-ups zijn niet rechtstreeks beschikbaar voor klanten of gebruikers. Ze garanderen de betrouw baarheid en consistentie van gegevens. Etcd. op aanvraag terugdraaien of herstellen wordt niet ondersteund als onderdeel.
 * Alle integratie punten in het stuur programma van de Azure-Cloud provider voor Kubernetes. Dit omvat integraties in andere Azure-Services, zoals load balancers, permanente volumes of netwerken (Kubernetes en Azure CNI).
 * Vragen of problemen met het aanpassen van beheer vlak onderdelen, zoals de Kubernetes API-server, etcd en uitvoeren-DNS.
 * Problemen met netwerken, zoals Azure CNI, kubenet of andere problemen met netwerk toegang en-functionaliteit. Problemen zijn onder andere DNS-omzetting, pakket verlies, route ring, enzovoort. Micro soft biedt ondersteuning voor verschillende netwerk scenario's:

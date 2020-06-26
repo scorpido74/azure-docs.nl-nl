@@ -3,14 +3,14 @@ title: Back-ups maken van Azure-bestands shares in de Azure Portal
 description: Meer informatie over het gebruik van de Azure Portal voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a78760e793704d9ec4580e21ea86e0ba573b3949
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340713"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391147"
 ---
-# <a name="back-up-azure-file-shares"></a>Een back-up maken van Azure-bestandsshares 
+# <a name="back-up-azure-file-shares"></a>Een back-up maken van Azure-bestandsshares
 
 In dit artikel wordt uitgelegd hoe u de Azure Portal gebruikt voor het maken van back-ups van [Azure-bestands shares](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -26,27 +26,6 @@ In dit artikel leert u het volgende:
 * Zorg ervoor dat de bestands share aanwezig is in een van de [ondersteunde typen opslag accounts](azure-file-share-support-matrix.md).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
-
-Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
-
-* Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U kunt [lokaal redundante opslag (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken als een goedkope optie.
-
-Het type opslag replicatie wijzigen:
-
-1. Selecteer in de nieuwe kluis **Eigenschappen** onder de sectie **instellingen** .
-
-1. Selecteer op de pagina **Eigenschappen** onder **back-upconfiguratie**de optie **bijwerken**.
-
-1. Selecteer het type opslag replicatie en selecteer **Opslaan**.
-
-    ![Back-upconfiguratie bijwerken](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> U kunt het type opslag replicatie niet wijzigen nadat de kluis is ingesteld en back-upitems bevat. Als u dit wilt doen, moet u de kluis opnieuw maken.
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>Bestands shares detecteren en back-up configureren
 

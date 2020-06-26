@@ -3,19 +3,19 @@ title: 'Gebruik een voorspellingseindpunt om afbeeldingen programmatisch te test
 titleSuffix: Azure Cognitive Services
 description: Lees hoe u de API gebruikt om afbeeldingen programmatisch te testen met uw Custom Vision Service-classificatie.
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 0766ad38265368a00272eb8abbe974ce94f5dd72
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129864"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391686"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Uw model gebruiken met de Voorspellings-API
 
@@ -110,8 +110,8 @@ In deze hand leiding maakt u gebruik van een lokale installatie kopie en kopieer
 
 1. Voer de volgende informatie in:
    * Stel het `namespace` veld in op de naam van uw project.
-   * Vervang de tijdelijke `<Your prediction key>` aanduiding door de sleutel waarde die u eerder hebt opgehaald.
-   * Vervang de tijdelijke `<Your prediction URL>` aanduiding door de URL die u eerder hebt opgehaald.
+   * Vervang de tijdelijke aanduiding door `<Your prediction key>` de sleutel waarde die u eerder hebt opgehaald.
+   * Vervang de tijdelijke aanduiding door `<Your prediction URL>` de URL die u eerder hebt opgehaald.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 

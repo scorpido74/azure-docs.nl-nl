@@ -2,20 +2,20 @@
 title: Het implementatie quotum is overschreden
 description: Hierin wordt beschreven hoe u de fout van het gebruik van meer dan 800 implementaties in de geschiedenis van de resource groep kunt oplossen.
 ms.topic: troubleshooting
-ms.date: 05/26/2020
-ms.openlocfilehash: 0fec8fa91ec79822115d83b15e8c8a839dc7fd69
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/25/2020
+ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117805"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391176"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Fout oplossen wanneer het aantal implementaties groter is dan 800
 
 Elke resource groep is beperkt tot 800 implementaties in de implementatie geschiedenis. In dit artikel wordt de fout beschreven die u ontvangt wanneer een implementatie mislukt, omdat deze de toegestane 800-implementaties zou overschrijden. U kunt deze fout oplossen door implementaties te verwijderen uit de geschiedenis van de resource groep. Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
 
 > [!NOTE]
-> Vanaf 2020 juni verwijdert Azure Resource Manager automatisch implementaties uit uw geschiedenis als u de limiet hebt bereikt. Deze fout kan nog steeds worden weer geven als u automatische verwijderingen hebt gekozen. Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie.
+> Azure Resource Manager begint binnenkort met het automatisch verwijderen van implementaties uit uw geschiedenis als u de limiet hebt bereikt. Deze fout kan nog steeds worden weer geven als u automatische verwijderingen hebt gekozen. Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie.
 
 ## <a name="symptom"></a>Symptoom
 

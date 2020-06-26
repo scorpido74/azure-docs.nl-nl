@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: ef658412e56dca33769a813994f3790a94a5235b
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 250bb5c7bec9cb68ba3236d0cb43938566b60fa8
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262528"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392502"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Met het ODBC-stuur programma verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's
 
@@ -67,7 +67,7 @@ Laten we aan de slag met het ODBC-stuur programma.
 1. Klik op de knop **testen** om te controleren of u verbinding kunt maken met uw Azure Cosmos DB-account. 
 
 1.  Klik op **Geavanceerde opties** en stel de volgende waarden in:
-    *  **Rest API versie**: selecteer de [rest API versie](https://docs.microsoft.com/rest/api/cosmos-db/) voor uw bewerkingen. De standaard waarde is 2015-12-16. Als u containers met [grote partitie sleutels](large-partition-keys.md) hebt en REST API versie 2018-12-31 hebt vereist:
+    *  **Rest API versie**: selecteer de [rest API versie](/rest/api/cosmos-db/) voor uw bewerkingen. De standaard waarde is 2015-12-16. Als u containers met [grote partitie sleutels](large-partition-keys.md) hebt en REST API versie 2018-12-31 hebt vereist:
         - Typ **2018-12-31** voor rest API versie
         - Typ ' regedit ' in het menu **Start** om de toepassing **REGI ster-editor** te zoeken en te openen.
         - Navigeer in de REGI ster-editor naar het pad: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
@@ -240,7 +240,7 @@ U kunt uw nieuwe DSN gebruiken om verbinding te maken met Azure Cosmos DB met al
 
 1. U kunt nu visuals maken met behulp van Power BI door te klikken op het ![ tabblad rapport rapporten in Power bi Desktop ](./media/odbc-driver/odbc-driver-report-tab.png) , op **nieuwe Visual**te klikken en vervolgens uw tegel aan te passen. Zie [visualisatie typen in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)voor meer informatie over het maken van visualisaties in Power bi Desktop.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 
 Als u het volgende fout bericht ontvangt, moet u ervoor zorgen dat de **host** en de **toegangs sleutel** waarden die u hebt gekopieerd in [stap 2](#connect) de juiste Azure Portal zijn en probeer het opnieuw. Gebruik de Kopieer knoppen aan de rechter kant van de **host** en **toegangs sleutel** waarden in de Azure Portal om de fout vrije waarden te kopiëren.
 

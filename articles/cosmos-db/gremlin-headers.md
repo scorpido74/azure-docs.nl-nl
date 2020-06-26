@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72755084"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85390853"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Gremlin server-antwoord headers Azure Cosmos DB
 In dit artikel worden headers behandeld die de Cosmos DB Gremlin-server retourneert naar de aanroeper bij het uitvoeren van de aanvraag. Deze headers zijn handig voor het oplossen van problemen met de prestaties van aanvragen, het bouwen van een toepassing die zonder benodigde systeemaanpassingen kan worden geïntegreerd met de Cosmos DB-service en het vereenvoudigen van de klantondersteuning.
@@ -21,7 +21,7 @@ Houd er rekening mee dat het afhankelijk maken van deze headers u de draag baarh
 
 ## <a name="headers"></a>Headers
 
-| Header | Type | Voorbeeld waarde | Indien opgenomen | Uitleg |
+| Koptekst | Type | Voorbeeld waarde | Indien opgenomen | Uitleg |
 | --- | --- | --- | --- | --- |
 | **x-ms-request-charge** | double | 11,3243 | Geslaagde en mislukte bewerkingen | Hoeveelheid verzamelde of Data Base-door Voer in [aanvraag eenheden (ru/s of RUs)](request-units.md) voor een gedeeltelijk antwoord bericht. Deze header is bij elke voortzetting aanwezig voor aanvragen met meerdere segmenten. Het weerspiegelt de kosten van een bepaald segment van de reactie. Alleen voor aanvragen die bestaan uit een segment met één antwoord deze header komt overeen met de totale kosten van Trans Port. Voor het meren deel van complexe passages is deze waarde echter een gedeeltelijke kosten. |
 | **x-ms-total-request-charge** | double | 423,987 | Geslaagde en mislukte bewerkingen | Hoeveelheid gebruikte verzameling of data base in [aanvraag eenheden (ru/s of RUs)](request-units.md) voor volledige aanvraag. Deze header is bij elke voortzetting aanwezig voor aanvragen met meerdere segmenten. Dit duidt op cumulatieve kosten sinds het begin van de aanvraag. De waarde van deze koptekst in de laatste chunk geeft aan dat de kosten voor de aanvraag volledig zijn. |
@@ -38,19 +38,19 @@ De meest voorkomende status codes die door de server worden geretourneerd, worde
 
 | Status | Uitleg |
 | --- | --- |
-| **401** | Er wordt `"Unauthorized: Invalid credentials provided"` een fout bericht weer gegeven wanneer het verificatie wachtwoord niet overeenkomt met Cosmos DB account sleutel. Navigeer naar uw Cosmos DB Gremlin-account in de Azure Portal en controleer of de sleutel juist is.|
+| **401** | Er wordt een fout bericht weer `"Unauthorized: Invalid credentials provided"` gegeven wanneer het verificatie wachtwoord niet overeenkomt met Cosmos DB account sleutel. Navigeer naar uw Cosmos DB Gremlin-account in de Azure Portal en controleer of de sleutel juist is.|
 | **404** | Gelijktijdige bewerkingen die tegelijkertijd proberen dezelfde rand of hoek punt te verwijderen en bij te werken. Foutbericht `"Owner resource does not exist"` geeft aan dat de opgegeven database of verzameling in de verbindingsparameters in de `/dbs/<database name>/colls/<collection or graph name>`-indeling onjuist is.|
 | **408** | `"Server timeout"`geeft aan dat het door lopen van meer dan **30 seconden** duurde en door de server is geannuleerd. Optimaliseer uw trans acties om snel uit te voeren door hoek punten of randen te filteren op elke hop van traversal om het zoek bereik te beperken.|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` Dit gebeurt meestal wanneer een hoekpunt of rand met een id al in de graaf bestaat.| 
-| **412** | De status code wordt aangevuld met het fout `"PreconditionFailedException": One of the specified pre-condition is not met`bericht. Deze fout wordt weer gegeven bij een optimistische gelijktijdigheids schending van het lezen van een rand of hoek punt en het terugschrijven naar het archief na wijziging. De meest voorkomende situaties waarin deze fout optreedt, zijn bijvoorbeeld `g.V('identifier').property('name','value')`eigenschaps wijzigingen. De Gremlin-engine zou het hoek punt lezen, wijzigen en terugschrijven. Als er een andere Pass-bewerking gelijktijdig wordt uitgevoerd om hetzelfde hoek punt of een rand te schrijven, wordt deze fout weer gegeven. De toepassing moet opnieuw naar de server worden verzonden.| 
+| **412** | De status code wordt aangevuld met het fout bericht `"PreconditionFailedException": One of the specified pre-condition is not met` . Deze fout wordt weer gegeven bij een optimistische gelijktijdigheids schending van het lezen van een rand of hoek punt en het terugschrijven naar het archief na wijziging. De meest voorkomende situaties waarin deze fout optreedt, zijn bijvoorbeeld eigenschaps wijzigingen `g.V('identifier').property('name','value')` . De Gremlin-engine zou het hoek punt lezen, wijzigen en terugschrijven. Als er een andere Pass-bewerking gelijktijdig wordt uitgevoerd om hetzelfde hoek punt of een rand te schrijven, wordt deze fout weer gegeven. De toepassing moet opnieuw naar de server worden verzonden.| 
 | **429** | De aanvraag is beperkt en moet opnieuw worden uitgevoerd na een waarde in **x-MS-retry-na-MS**| 
 | **500** | Een foutbericht dat `"NotFoundException: Entity with the specified id does not exist in the system."` bevat, geeft aan dat een database en/of collectie opnieuw is gemaakt met dezelfde naam. De fout verdwijnt binnen vijf minuten, aangezien wijzigingen caches in verschillende Cosmos DB-onderdelen niet doorgeven en ongeldig maken. Als u dit probleem wilt voorkomen, gebruikt u telkens een unieke database en collectie.| 
 | **1000** | Deze status code wordt geretourneerd wanneer de server een bericht heeft geparseerd, maar niet kan worden uitgevoerd. Doorgaans duidt dit op een probleem met de query.| 
 | **1001** | Deze code wordt geretourneerd wanneer de server wordt gepasseerd, maar de reactie op de client kan niet worden geserialiseerd. Deze fout kan optreden als het door lopen van een complex resultaat wordt gegenereerd, dat te groot is of niet voldoet aan de TinkerPop-protocol specificatie. De toepassing moet het door lopen vereenvoudigen wanneer deze fout optreedt. | 
 | **1003** | `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"`wordt geretourneerd wanneer de toegestane geheugen limiet wordt overschreden. De geheugen limiet is **2 GB** per Trans Port.| 
 | **1004** | Deze status code geeft de onjuiste grafiek aanvraag aan. De aanvraag kan een onjuiste indeling hebben wanneer het deserialiseren mislukt, het type zonder waarde wordt gedeserialiseerd als waardetype of niet-ondersteunde Gremlin bewerking aangevraagd. De toepassing mag de aanvraag niet opnieuw uitvoeren omdat deze niet is geslaagd. | 
-| **1007** | Normaal gesp roken wordt deze status code geretourneerd met `"Could not process request. Underlying connection has been closed."`het fout bericht. Deze situatie kan zich voordoen als het client stuur programma een verbinding probeert te gebruiken die door de server wordt gesloten. De toepassing moet het door lopen van een andere verbinding opnieuw proberen.
-| **1008** | Cosmos DB Gremlin-server kan de verbindingen beëindigen voor het opnieuw verdelen van verkeer in het cluster. Client Stuur Programma's moeten deze situatie afhandelen en alleen live-verbindingen gebruiken om aanvragen naar de server te verzenden. Af en toe kunnen client Stuur Programma's niet detecteren dat de verbinding is verbroken. Wanneer er een fout optreedt in een `"Connection is too busy. Please retry after sometime or open more connections."` toepassing, moet deze opnieuw worden gepasseerd op een andere verbinding.
+| **1007** | Normaal gesp roken wordt deze status code geretourneerd met het fout bericht `"Could not process request. Underlying connection has been closed."` . Deze situatie kan zich voordoen als het client stuur programma een verbinding probeert te gebruiken die door de server wordt gesloten. De toepassing moet het door lopen van een andere verbinding opnieuw proberen.
+| **1008** | Cosmos DB Gremlin-server kan de verbindingen beëindigen voor het opnieuw verdelen van verkeer in het cluster. Client Stuur Programma's moeten deze situatie afhandelen en alleen live-verbindingen gebruiken om aanvragen naar de server te verzenden. Af en toe kunnen client Stuur Programma's niet detecteren dat de verbinding is verbroken. Wanneer er een fout optreedt in een toepassing, `"Connection is too busy. Please retry after sometime or open more connections."` moet deze opnieuw worden gepasseerd op een andere verbinding.
 
 ## <a name="samples"></a>Voorbeelden
 
@@ -107,6 +107,6 @@ try {
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [HTTP-status codes voor Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Algemene Azure Cosmos DB REST-reactie headers](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
+* [Algemene Azure Cosmos DB REST-reactie headers](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [TinkerPop Graph driver provider-vereisten]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

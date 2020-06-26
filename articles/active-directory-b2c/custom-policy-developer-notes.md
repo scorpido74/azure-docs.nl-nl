@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7defc33f8e3e2daca60fa5c15c41c62333ffc2d7
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679246"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389255"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Opmerkingen voor ontwikkel aars voor aangepast beleid in Azure Active Directory B2C
 
@@ -101,7 +101,7 @@ Mogelijkheden voor aangepast beleid/identiteits ervaring zijn onder constante en
 | [Eenmalig wachtwoord](one-time-password-technical-profile.md) |  | X |  |  |
 | [Azure Active Directory](active-directory-technical-profile.md) als lokale map |  |  | X |  |
 | Azure-e-mail subsysteem voor verificatie via e-mail |  |  | X |  |
-| [Aanbieders van e-mail services van derden](custom-email.md) |  |X  |  |  |
+| [Aanbieders van e-mail services van derden](custom-email-mailjet.md) |  |X  |  |  |
 | [Ondersteuning voor meerdere talen](localization.md)|  |  | X |  |
 | [Validatie van predikaten](predicates.md) |  |  | X | Bijvoorbeeld wachtwoord complexiteit. |
 | [Besturings elementen weer geven](display-controls.md) |  |X  |  |  |

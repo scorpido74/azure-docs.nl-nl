@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: e030bd1124a93c667070a2b58f2f0e1c10c7d3a6
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718553"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392230"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -176,6 +176,11 @@ Zie door [de klant beheerde sleutels voor uw Azure Cosmos DB account configurere
 Alle container installatie kopieën in het REGI ster (Azure Container Registry) worden op rest versleuteld. Azure versleutelt automatisch een afbeelding voordat deze wordt opgeslagen en ontsleuteld wanneer Azure Machine Learning de installatie kopie ophaalt.
 
 Als u uw eigen (door de klant beheerde) sleutels wilt gebruiken om uw Azure Container Registry te versleutelen, moet u uw eigen ACR maken en koppelen tijdens het inrichten van de werk ruimte, of het standaard exemplaar dat wordt gemaakt, versleutelen op het moment van de inrichting van de werk ruimte.
+
+> [!IMPORTANT]
+> Voor Azure Machine Learning moet het beheerders account zijn ingeschakeld op uw Azure Container Registry. Deze instelling is standaard uitgeschakeld wanneer u een container register maakt. Zie [beheerders account](/azure/container-registry/container-registry-authentication#admin-account)voor meer informatie over het inschakelen van het beheerders account.
+>
+> Als er een Azure Container Registry is gemaakt voor een werk ruimte, moet u dit niet verwijderen. Als u dit doet, wordt uw Azure Machine Learning-werk ruimte verbroken.
 
 Raadpleeg de volgende artikelen voor een voor beeld van het maken van een werk ruimte met behulp van een bestaande Azure Container Registry:
 

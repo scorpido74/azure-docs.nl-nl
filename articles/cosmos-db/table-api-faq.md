@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 4be2f61cb0a45f30f0201d1ecca0efc2d8cbd9ae
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836223"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392349"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Table-API in Azure Cosmos DB
 
@@ -45,10 +45,10 @@ Er zijn enkele gedrags verschillen die gebruikers die afkomstig zijn van Azure T
 
   | Rest methode (n) | Rest-eind punt/query-optie | Doc-Url's | Uitleg |
   | ------------| ------------- | ---------- | ----------- |
-  | OPHALEN, PLAATSEN | `/?restype=service@comp=properties`| [Eigenschappen van de tabel service instellen](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) en de eigenschappen van de [tabel service ophalen](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) | Dit eind punt wordt gebruikt om CORS-regels, configuratie van opslag analyse en logboek registratie-instellingen in te stellen. CORS wordt momenteel niet ondersteund en analyse en logboek registratie is anders in Azure Cosmos DB dan Azure Storage tabellen |
-  | Opties | `/<table-resource-name>` | [Aanvraag voor CORS-tabel vóór de vlucht](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Dit is een onderdeel van CORS dat Azure Cosmos DB momenteel niet wordt ondersteund. |
-  | GET | `/?restype=service@comp=stats` | [Statistieken voor tabel service ophalen](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Geeft informatie over hoe snel gegevens worden gerepliceerd tussen primaire en secundaire zones. Dit is niet nodig in Cosmos DB omdat de replicatie deel uitmaakt van schrijf bewerkingen. |
-  | OPHALEN, PLAATSEN | `/mytable?comp=acl` | [Tabel](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) -ACL en [set Table-ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) ophalen | Hiermee wordt het opgeslagen toegangs beleid opgehaald en ingesteld dat wordt gebruikt voor het beheren van Shared Access signatures (SAS). Hoewel SAS wordt ondersteund, worden ze op een andere manier ingesteld en beheerd. |
+  | OPHALEN, PLAATSEN | `/?restype=service@comp=properties`| [Eigenschappen van de tabel service instellen](/rest/api/storageservices/set-table-service-properties) en de eigenschappen van de [tabel service ophalen](/rest/api/storageservices/get-table-service-properties) | Dit eind punt wordt gebruikt om CORS-regels, configuratie van opslag analyse en logboek registratie-instellingen in te stellen. CORS wordt momenteel niet ondersteund en analyse en logboek registratie is anders in Azure Cosmos DB dan Azure Storage tabellen |
+  | Opties | `/<table-resource-name>` | [Aanvraag voor CORS-tabel vóór de vlucht](/rest/api/storageservices/preflight-table-request) | Dit is een onderdeel van CORS dat Azure Cosmos DB momenteel niet wordt ondersteund. |
+  | GET | `/?restype=service@comp=stats` | [Statistieken voor tabel service ophalen](/rest/api/storageservices/get-table-service-stats) | Geeft informatie over hoe snel gegevens worden gerepliceerd tussen primaire en secundaire zones. Dit is niet nodig in Cosmos DB omdat de replicatie deel uitmaakt van schrijf bewerkingen. |
+  | OPHALEN, PLAATSEN | `/mytable?comp=acl` | [Tabel](/rest/api/storageservices/get-table-acl) -ACL en [set Table-ACL](/rest/api/storageservices/set-table-acl) ophalen | Hiermee wordt het opgeslagen toegangs beleid opgehaald en ingesteld dat wordt gebruikt voor het beheren van Shared Access signatures (SAS). Hoewel SAS wordt ondersteund, worden ze op een andere manier ingesteld en beheerd. |
 
 * Azure Cosmos DB Table-API ondersteunt alleen de JSON-indeling, niet ATOM.
 
@@ -85,7 +85,7 @@ U kunt de connection string ophalen via de pagina verbindings reeks in de Azure 
 
 ### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-net-sdk-for-the-table-api"></a>Hoe kan ik de configuratie-instellingen voor de aanvraag opties in de .NET SDK voor de Table-API overschreven?
 
-Sommige instellingen worden verwerkt op de CreateCloudTableClient-methode en andere via de app. config in de sectie appSettings in de client toepassing. Zie [Azure Cosmos DB mogelijkheden](tutorial-develop-table-dotnet.md)voor meer informatie over configuratie-instellingen.
+Sommige instellingen worden verwerkt op de CreateCloudTableClient-methode en andere via de app.config in de sectie appSettings in de client toepassing. Zie [Azure Cosmos DB mogelijkheden](tutorial-develop-table-dotnet.md)voor meer informatie over configuratie-instellingen.
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Zijn er wijzigingen voor klanten die de bestaande Azure Table Storage-Sdk's gebruiken?
 
@@ -151,7 +151,7 @@ U kunt het deel venster globale replicatie Portal Azure Cosmos DB gebruiken om e
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Hoe kan ik mijn favoriete Lees regio's configureren voor een lage latentie wanneer ik mijn gegevens Distribueer?
 
-Als u hulp nodig hebt bij het lezen van de lokale locatie, gebruikt u de sleutel PreferredLocation in het bestand app. config. Voor bestaande toepassingen genereert de Table-API een fout als LocationMode is ingesteld. Verwijder die code, omdat de Table-API deze gegevens uit het bestand app. config ophaalt. 
+Gebruik de sleutel PreferredLocation in het app.config bestand om te lezen van de lokale locatie. Voor bestaande toepassingen genereert de Table-API een fout als LocationMode is ingesteld. Verwijder die code, omdat de Table-API deze gegevens uit het app.config-bestand ophaalt. 
 
 ### <a name="how-should-i-think-about-consistency-levels-in-the-table-api"></a>Hoe moet ik nadenken over de consistentie niveaus in de Table-API?
 
@@ -171,7 +171,7 @@ Azure Cosmos DB voert de gegevens blijvend in de lokale regio door en duwt de ge
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>Kan het consistentie niveau van de Lees aanvraag worden gewijzigd?
 
-Met Azure Cosmos DB kunt u het consistentie niveau instellen op het niveau van de container (in de tabel). Met behulp van de .NET SDK kunt u het niveau wijzigen door de waarde voor de sleutel TableConsistencyLevel in het bestand app. config op te geven. De mogelijke waarden zijn: Strong, gebonden veroudering, sessie, consistent voor voegsel en uiteindelijk. Zie [instel bare data Consistency levels in azure Cosmos DB](consistency-levels.md)voor meer informatie. Het is belang rijk dat u het niveau van de aanvraag consistentie op meer dan de instelling voor de tabel niet kunt instellen. U kunt bijvoorbeeld het consistentie niveau voor de tabel op het gewenste niveau niet instellen en de consistentie van de aanvraag is sterk.
+Met Azure Cosmos DB kunt u het consistentie niveau instellen op het niveau van de container (in de tabel). Met behulp van de .NET SDK kunt u het niveau wijzigen door de waarde voor de sleutel TableConsistencyLevel in het app.config-bestand op te geven. De mogelijke waarden zijn: Strong, gebonden veroudering, sessie, consistent voor voegsel en uiteindelijk. Zie [instel bare data Consistency levels in azure Cosmos DB](consistency-levels.md)voor meer informatie. Het is belang rijk dat u het niveau van de aanvraag consistentie op meer dan de instelling voor de tabel niet kunt instellen. U kunt bijvoorbeeld het consistentie niveau voor de tabel op het gewenste niveau niet instellen en de consistentie van de aanvraag is sterk.
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Hoe verwerkt de Table-API failover als een regio uitvalt?
 
@@ -197,7 +197,7 @@ Ja, u kunt het indexerings beleid wijzigen door de index definitie op te geven. 
 
 Voor de non-.NET Sdk's kan het indexerings beleid alleen worden ingesteld in de portal op **Data Explorer**, navigeer naar de specifieke tabel die u wilt wijzigen en ga vervolgens naar de **instellingen voor het schalen &**->indexerings beleid, breng de gewenste wijziging aan en **Sla**het bestand op.
 
-De .NET-SDK kan worden verzonden in het bestand app. config:
+De .NET-SDK kan worden verzonden in het app.config-bestand:
 
 ```JSON
 {
@@ -246,7 +246,7 @@ Ja, u kunt het deel venster schaal van de Azure Cosmos DB Portal gebruiken om de
 
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>Is er een standaard TableThroughput ingesteld voor nieuwe ingerichte tabellen?
 
-Ja, als u de TableThroughput via app. config niet overschrijft en geen vooraf gemaakte container gebruikt in Azure Cosmos DB, wordt door de service een tabel gemaakt met de door Voer van 400.
+Ja, als u de TableThroughput niet overschrijft via app.config en geen vooraf gemaakte container in Azure Cosmos DB gebruikt, maakt de service een tabel met de door Voer van 400.
 
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Zijn er prijs wijzigingen voor bestaande klanten van de service Azure Table Storage?
 
@@ -262,7 +262,7 @@ Als de aanvraag snelheid meer is dan de capaciteit van de ingerichte door Voer v
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Waarom moet ik een door Voer onderscheiden van PartitionKey en RowKey om te kunnen profiteren van de Table-API aanbieding van Azure Cosmos DB?
 
-Azure Cosmos DB stelt een standaard doorvoer voor uw container in als u deze niet in het app. config-bestand of via de portal opgeeft.
+Azure Cosmos DB stelt een standaard doorvoer voor uw container in als u deze niet in het app.config-bestand of via de portal opgeeft.
 
 Azure Cosmos DB biedt garanties voor prestaties en latentie, met een bovengrens voor de bewerking. Deze garantie is mogelijk wanneer de engine governance kan afdwingen voor de bewerkingen van de Tenant. Door TableThroughput in te stellen, zorgt u ervoor dat u de gegarandeerde door Voer en latentie krijgt, omdat deze capaciteit door het platform wordt gereserveerd en de operationele succes wordt gegarandeerd.
 
@@ -293,7 +293,7 @@ Azure Cosmos DB is een SLA-systeem dat latentie, door Voer, Beschik baarheid en 
 U kunt uw feedback op de volgende manieren delen:
 
 * [Mening van gebruikers](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is het meest geschikt voor het Program meren van vragen. Zorg ervoor dat u de vraag hebt [over het onderwerp](https://stackoverflow.com/help/on-topic) en [Geef zo veel mogelijk details op, zodat u de vraag duidelijk en beantwoord kunt krijgen](https://stackoverflow.com/help/how-to-ask).
 
 ## <a name="next-steps"></a>Volgende stappen
