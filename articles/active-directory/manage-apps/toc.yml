@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: Koppelingen op de toepassingspagina werken niet
               href: application-proxy-page-links-broken-problem.md
-            - name: Welke poorten moet ik openen voor mijn app?
-              href: application-proxy-connectivity-ports-how-to.md
             - name: Geen werkende connector in een connectorgroep voor mijn app
               href: application-proxy-connectivity-no-working-connector.md
             - name: Configureren in beheerportal
