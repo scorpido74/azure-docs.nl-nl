@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2020
+ms.date: 06/25/2020
 ms.author: jgao
-ms.openlocfilehash: 6cf10ea9693f922ee8edfb6bab5d1a7cde681fcb
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: e3d0c3493039a1c4cda2bec0d949e610321f6c57
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339423"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373808"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -108,7 +108,7 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
       "storageAccountKey": "myKey"
     },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
-    "arguments": "[concat('-name ', parameters('name'))]",
+    "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
         "name": "someSecret",
@@ -142,6 +142,19 @@ Details van eigenschaps waarde:
 - **storageAccountSettings**: Geef de instellingen op om een bestaand opslag account te gebruiken. Als u niets opgeeft, wordt er automatisch een opslag account gemaakt. Zie [een bestaand opslag account gebruiken](#use-existing-storage-account).
 - **azPowerShellVersion** / **azCliVersion**: Geef de module versie op die moet worden gebruikt. Zie [vereisten](#prerequisites)voor een lijst met ondersteunde Power shell-en CLI-versies.
 - **argumenten**: Geef de parameter waarden op. De waarden worden gescheiden door spaties.
+
+    Met implementatie scripts worden de argumenten gesplitst in een matrix met teken reeksen door het aanroepen van de [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) -systeem aanroep. Dit is nodig omdat de argumenten worden door gegeven als een [opdracht eigenschap](/rest/api/container-instances/containergroups/createorupdate#containerexec) naar Azure container instance en de opdracht eigenschap een matrix van teken reeks is.
+
+    Als de argumenten escape tekens bevatten, gebruikt u [JsonEscaper](https://www.jsonescaper.com/) om de tekens te verdubbelen. Plak de oorspronkelijke escape teken reeks in het hulp programma en selecteer vervolgens **Escape**.  Het hulp programma voert een dubbele escape teken reeks uit. In de vorige voorbeeld sjabloon is het argument bijvoorbeeld **: naam \\ "John Davids \\ "**.  De escape teken reeks is **: name \\ \\ \\ "John Davids \\ \\ \\ "**.
+
+    Als u een arm-sjabloon parameter van het type object wilt door geven als een argument, converteert u het object naar een teken reeks met behulp van de functie [String ()](./template-functions-string.md#string) en gebruikt u vervolgens de functie [replace ()](./template-functions-string.md#replace) ** \\ om alle naar** te ** \\ \\ \\ vervangen.** Bijvoorbeeld:
+
+    ```json
+    replace(string(parameters('tables')), '\"', '\\\"')
+    ```
+
+    Selecteer [hier](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)om een voorbeeld sjabloon weer te geven.
+
 - **omgevings variabelen**: Geef de omgevings variabelen op die moeten worden door gegeven aan het script. Zie [implementatie scripts ontwikkelen](#develop-deployment-scripts)voor meer informatie.
 - **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren, gebruikt u `primaryScriptUri` in plaats daarvan. Zie [inline-script gebruiken](#use-inline-scripts) en [extern script gebruiken](#use-external-scripts)voor voor beelden.
 - **primaryScriptUri**: Geef een openbaar toegankelijke URL op voor het primaire implementatie script met ondersteunde bestands extensies.
@@ -372,15 +385,15 @@ De uitvoer van de lijst opdracht ziet er ongeveer als volgt uit:
 ```json
 [
   {
-    "arguments": "-name 'John Dole'",
+    "arguments": "-name \\\"John Dole\\\"",
     "azPowerShellVersion": "3.0",
     "cleanupPreference": "OnSuccess",
     "containerSettings": {
       "containerGroupName": null
     },
     "environmentVariables": null,
-    "forceUpdateTag": "20200618T194637Z",
-    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+    "forceUpdateTag": "20200625T025902Z",
+    "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
     "identity": {
       "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
       "type": "userAssigned",
@@ -399,30 +412,32 @@ De uitvoer van de lijst opdracht ziet er ongeveer als volgt uit:
     },
     "primaryScriptUri": null,
     "provisioningState": "Succeeded",
-    "resourceGroup": "myds0618rg",
+    "resourceGroup": "myds0624rg",
     "retentionInterval": "1 day, 0:00:00",
     "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
     "status": {
-      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.ContainerInstance/containerGroups/ftnlvo6rlrvo2azscripts",
-      "endTime": "2020-06-18T19:49:45.926522+00:00",
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.ContainerInstance/containerGroups/64lxews2qfa5uazscripts",
+      "endTime": "2020-06-25T03:00:16.796923+00:00",
       "error": null,
-      "expirationTime": "2020-06-19T19:49:45.926522+00:00",
-      "startTime": "2020-06-18T19:46:45.667124+00:00",
-      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0618rg/providers/Microsoft.Storage/storageAccounts/ftnlvo6rlrvo2azscripts"
+      "expirationTime": "2020-06-26T03:00:16.796923+00:00",
+      "startTime": "2020-06-25T02:59:07.595140+00:00",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Storage/storageAccounts/64lxews2qfa5uazscripts"
     },
+    "storageAccountSettings": null,
     "supportingScriptUris": null,
     "systemData": {
-      "createdAt": "2020-06-18T19:46:41.363741+00:00",
-      "createdBy": "someon@contoso.com",
+      "createdAt": "2020-06-25T02:59:04.750195+00:00",
+      "createdBy": "someone@contoso.com",
       "createdByType": "User",
-      "lastModifiedAt": "2020-06-18T19:46:41.363741+00:00",
+      "lastModifiedAt": "2020-06-25T02:59:04.750195+00:00",
       "lastModifiedBy": "someone@contoso.com",
       "lastModifiedByType": "User"
     },
     "tags": null,
     "timeout": "1:00:00",
     "type": "Microsoft.Resources/deploymentScripts"
-  },
+  }
+]
 ```
 
 ### <a name="use-rest-api"></a>Rest API gebruiken
@@ -446,9 +461,55 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 De uitvoer is vergelijkbaar met:
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-status.json" range="1-37" highlight="15,34":::
+```json
+{
+  "kind": "AzurePowerShell",
+  "identity": {
+    "type": "userAssigned",
+    "tenantId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+    "userAssignedIdentities": {
+      "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myidentity1008rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuami": {
+        "principalId": "01234567-89AB-CDEF-0123-456789ABCDEF",
+        "clientId": "01234567-89AB-CDEF-0123-456789ABCDEF"
+      }
+    }
+  },
+  "location": "centralus",
+  "systemData": {
+    "createdBy": "someone@contoso.com",
+    "createdByType": "User",
+    "createdAt": "2020-06-25T02:59:04.7501955Z",
+    "lastModifiedBy": "someone@contoso.com",
+    "lastModifiedByType": "User",
+    "lastModifiedAt": "2020-06-25T02:59:04.7501955Z"
+  },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "forceUpdateTag": "20200625T025902Z",
+    "azPowerShellVersion": "3.0",
+    "scriptContent": "\r\n          param([string] $name)\r\n          $output = \"Hello {0}\" -f $name\r\n          Write-Output $output\r\n          $DeploymentScriptOutputs = @{}\r\n          $DeploymentScriptOutputs['text'] = $output\r\n        ",
+    "arguments": "-name \\\"John Dole\\\"",
+    "retentionInterval": "P1D",
+    "timeout": "PT1H",
+    "containerSettings": {},
+    "status": {
+      "containerInstanceId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.ContainerInstance/containerGroups/64lxews2qfa5uazscripts",
+      "storageAccountId": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Storage/storageAccounts/64lxews2qfa5uazscripts",
+      "startTime": "2020-06-25T02:59:07.5951401Z",
+      "endTime": "2020-06-25T03:00:16.7969234Z",
+      "expirationTime": "2020-06-26T03:00:16.7969234Z"
+    },
+    "outputs": {
+      "text": "Hello John Dole"
+    },
+    "cleanupPreference": "OnSuccess"
+  },
+  "id": "/subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourceGroups/myds0624rg/providers/Microsoft.Resources/deploymentScripts/runPowerShellInlineWithOutput",
+  "type": "Microsoft.Resources/deploymentScripts",
+  "name": "runPowerShellInlineWithOutput"
+}
 
-In de uitvoer ziet u de implementatie status en de resource-Id's van het implementatie script.
+```
 
 De volgende REST API retourneert het logboek:
 
@@ -472,7 +533,7 @@ De levens cyclus van deze resources wordt bepaald door de volgende eigenschappen
 
   - **Altijd**: de automatisch gemaakte resources verwijderen wanneer de uitvoering van het script in een Terminal status krijgt. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share die is gemaakt in het opslag account door de script service verwijderd. Omdat de deploymentScripts-resource mogelijk nog steeds aanwezig is nadat de resources zijn opgeruimd, blijft de script service de resultaten van het script uitvoeren, bijvoorbeeld stdout, outputs, retour waarde enzovoort voordat de resources worden verwijderd.
   - **OnSuccess**: Verwijder de automatisch gemaakte resources alleen wanneer de uitvoering van het script is geslaagd. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share alleen door de script service verwijderd wanneer de uitvoering van het script is geslaagd. U hebt nog steeds toegang tot de resources om de informatie over de fout opsporing te vinden.
-  - **OnExpiration**: de automatische resources worden alleen verwijderd wanneer de instelling voor **retentionInterval** is verlopen. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share door de script service verwijderd, maar blijft het opslag account behouden.
+  - **OnExpiration**: Verwijder de automatisch gemaakte resources alleen wanneer de instelling **retentionInterval** is verlopen. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share door de script service verwijderd, maar blijft het opslag account behouden.
 
 - **retentionInterval**: Geef het tijds interval op dat een script bron moet worden bewaard en waarna deze wordt verwijderd.
 

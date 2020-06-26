@@ -50,7 +50,7 @@ Automatische upgrade maakt gebruik van Azure AD Connect Health voor de upgrade-i
 
 Als de **Synchronization Service Manager** gebruikers interface op de server wordt uitgevoerd, wordt de upgrade onderbroken totdat de gebruikers interface is gesloten.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 Als de installatie van uw verbinding niet werkt zoals verwacht, voert u de volgende stappen uit om erachter te komen wat er mis kan zijn.
 
 Eerst moet u niet verwachten dat er wordt geprobeerd de automatische upgrade uit te voeren op de eerste dag dat een nieuwe versie wordt uitgebracht. Er is opzettelijk een wille keurige aselecte manier voordat een upgrade wordt uitgevoerd en er wordt geen waarschuwing verzonden als uw installatie niet onmiddellijk wordt bijgewerkt.

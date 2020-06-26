@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bf5821a0781b5208096a0c02058cf2239a99e7d6
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697235"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367849"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -79,7 +79,7 @@ In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's i
 
 1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u de [.net Core 2. x SDK voor Windows](https://www.microsoft.com/net/download/windows).
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -132,8 +132,9 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
     | Linux-distributie | Versie |
     | --------------- | ----------- |
-    | Debian 9 | `stretch` |
-    | Debian 8 | `jessie` |
+    | Debian 10 | `buster`  |
+    | Debian 9  | `stretch` |
+    | Ubuntu 19,04    | `disco`     |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
@@ -193,7 +194,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`biedt ondersteuning voor de volgende opties: versie 2. x-only, tenzij anders vermeld.
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | Initialiseert een [C#-Class Library-project (. cs)](functions-dotnet-class-library.md). |
 | **`--csx`** | Initialiseert een [C# script-project (. CSX)](functions-reference-csharp.md). U moet `--csx` in volgende opdrachten opgeven. |
@@ -294,7 +295,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumenten:
 
-| Argument     | Description                            |
+| Argument     | Beschrijving                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Versie 2. x) Genereert dezelfde C# script-sjablonen (. CSX) die worden gebruikt in versie 1. x en in de portal. |
 | **`--language`**, **`-l`**| De programmeer taal van de sjabloon, zoals C#, F # of Java script. Deze optie is vereist in versie 1. x. In versie 2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
@@ -353,7 +354,7 @@ npm start
 
 `func start`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Pas het huidige project niet samen om uit te voeren. Alleen voor dotnet-projecten. De standaard waarde is ingesteld op ONWAAR. Niet ondersteund voor versie 1. x. |
 | **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Alleen gebruikt met `--useHttps` . Niet ondersteund voor versie 1. x. |
@@ -459,7 +460,7 @@ In versie 1. x kunt u ook rechtstreeks een functie aanroepen met behulp `func ru
 
 `func run`biedt ondersteuning voor de volgende opties:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Inline-inhoud. |
 | **`--debug`**, **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
@@ -498,14 +499,14 @@ Met deze opdracht wordt gepubliceerd naar een bestaande functie-app in Azure. U 
 
 De volgende publicatie opties zijn van toepassing voor beide versies, 1. x en 2. x:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Publiceer instellingen in local.settings.jsnaar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de Microsoft Azure-opslagemulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | De prompt voor het overschrijven van app-instellingen onderdrukken wanneer deze wordt `--publish-local-settings -i` gebruikt.|
 
 De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
 |**`--list-ignored-files`** | Geeft een lijst weer van bestanden die worden genegeerd tijdens het publiceren, dat is gebaseerd op het. funcignore-bestand. |
@@ -529,7 +530,7 @@ func deploy
 
 De volgende opties voor de implementatie van de aangepaste container zijn beschikbaar:
 
-| Optie     | Description                            |
+| Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | De naam van een docker-REGI ster waarmee de huidige gebruiker zich heeft aangemeld. |
 | **`--platform`** | Hosting platform voor de functie-app. Geldige opties zijn`kubernetes` |

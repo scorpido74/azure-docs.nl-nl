@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/11/2020
-ms.openlocfilehash: 48e23aa8cf20dd1225d3d7774d9703b960e0155a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/24/2020
+ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737883"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367989"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -43,10 +43,7 @@ U kunt een hoofd server in een [Azure database for PostgreSQL regio](https://azu
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt altijd een lees replica maken in een van de volgende regio's, ongeacht waar uw master server zich bevindt. Dit zijn de universele replica regio's:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West.
-
-* VS-West 2 is tijdelijk niet beschikbaar als replica locatie voor meerdere regio's.
-
+Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2, West-Centraal vs.
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van uw hoofd server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).
@@ -55,7 +52,7 @@ Als u verschillende regio's replica's gebruikt voor het plannen van herstel na n
 
 U moet rekening houden met de volgende beperkingen: 
 
-* Regionale Beschik baarheid: Azure Database for PostgreSQL is beschikbaar in VS-West 2, Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
+* Regionale Beschik baarheid: Azure Database for PostgreSQL is beschikbaar in Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
     
 * Uni-directionele paren: sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid. 
    Dit betekent dat een master-server in West-India een replica kan maken in India-zuid. Een hoofd server in India-zuid kan echter geen replica maken in West-India. Dit komt doordat de secundaire regio van West-India India-zuid is, India-zuid maar de secundaire regio van het westen is niet West-India.

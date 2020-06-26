@@ -13,16 +13,16 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b1a89acdf189e41f3c72ec12fc84920cd0c795d
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84731084"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374573"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Uw werk-of school account sluiten in een niet-beheerde Azure AD-organisatie
 
-Als u een gebruiker in een niet-beheerde Azure Active organization-organisatie (Azure AD) bent en u niet langer apps van die organisatie wilt gebruiken of een koppeling ermee wilt onderhouden, kunt u uw account op elk gewenst moment sluiten. Een onbeheerde organisatie heeft geen globale beheerder. Gebruikers in een onbeheerde organisatie kunnen hun accounts zelf sluiten zonder dat ze contact hoeven op te nemen met een beheerder.
+Als u een gebruiker in een niet-beheerde Azure Active Directory-organisatie (Azure AD) bent en u niet langer apps van die organisatie wilt gebruiken of een koppeling ermee wilt behouden, kunt u uw account op elk gewenst moment sluiten. Een onbeheerde organisatie heeft geen globale beheerder. Gebruikers in een onbeheerde organisatie kunnen hun accounts zelf sluiten zonder dat ze contact hoeven op te nemen met een beheerder.
 
 Gebruikers in een onbeheerde organisatie worden vaak gemaakt tijdens het aanmelden door de selfservice. Een voor beeld hiervan is een informatie medewerker in een organisatie die zich aanmeldt voor een gratis service. Zie [Wat is self-service registratie voor Azure Active Directory?](directory-self-service-signup.md)voor meer informatie over selfservice registratie.
 

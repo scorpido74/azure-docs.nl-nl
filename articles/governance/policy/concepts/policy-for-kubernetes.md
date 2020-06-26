@@ -3,12 +3,12 @@ title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab18b85fc24deb58a6c65ca038d47120056eaa75
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791704"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373621"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -52,9 +52,6 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 1. U moet de Azure CLI-versie 2.0.62 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 1. Registreer de resource providers en preview-functies.
-
-   > [!CAUTION]
-   > Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
    - Azure Portal:
 

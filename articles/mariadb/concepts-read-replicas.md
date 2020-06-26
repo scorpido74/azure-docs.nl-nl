@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/10/2020
-ms.openlocfilehash: f7606e2cbe6655801903de62ff9080eba8a0dd53
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.date: 6/24/2020
+ms.openlocfilehash: d1d1dbb273ed1da3835f533b5f38743db73816c7
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708022"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367326"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -47,9 +47,7 @@ U kunt een hoofd server in een [Azure database for MariaDB regio](https://azure.
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt in een van de volgende regio's een lees replica maken, ongeacht waar uw master server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
 
-Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West.
-
-* VS-West 2 is tijdelijk niet beschikbaar als replica locatie voor meerdere regio's.
+Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 2, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, UK-west, Europa-west, VS-West, VS-West 2, West-Centraal vs.
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
 Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van uw hoofd server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).
@@ -58,7 +56,7 @@ Als u verschillende regio's replica's gebruikt voor het plannen van herstel na n
 
 Er zijn echter beperkingen om rekening mee te houden: 
 
-* Regionale Beschik baarheid: Azure Database for MariaDB is beschikbaar in VS-West 2, Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
+* Regionale Beschik baarheid: Azure Database for MariaDB is beschikbaar in Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
     
 * Uni-directionele paren: sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid en US Gov-Virginia. 
    Dit betekent dat een master-server in West-India een replica kan maken in India-zuid. Een hoofd server in India-zuid kan echter geen replica maken in West-India. Dit komt doordat de secundaire regio van West-India India-zuid is, India-zuid maar de secundaire regio van het westen is niet West-India.

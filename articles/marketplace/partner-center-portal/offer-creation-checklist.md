@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: c34eee74070dfb137311867615f55a7c89522cd5
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708986"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374403"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Controle lijst voor het maken van SaaS-aanbiedingen in partner centrum
 
@@ -81,9 +81,9 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 | **Veldnaam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Name  | Vereist, Maxi maal 50 tekens. |
+| Naam  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
-| Description  | Vereist, Maxi maal 3000 tekens. |
+| Beschrijving  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
 | Tref woorden zoeken  | Optioneel, aanbevolen, Maxi maal 3 tref woorden. |
@@ -92,7 +92,7 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 | Titel van handige koppelingen + URL  | Optioneel. |
 | Titel van ondersteunende documenten + bestand  | Vereist, min 1 en Maxi maal 3. Moet PDF-bestands indeling zijn. |
 | Schermopnamen  | Vereist, min 1 scherm afbeelding en maximum 5; vier of meer aanbevolen. Moet 1280 X 720 zijn in PNG-indeling. |
-| Winkel logo's (klein, normaal, groot, breed, held)  | Klein (48 X 48) en groot (216 X 216) vereist; andere formaten optioneel, maar aanbevolen: gemiddeld (90 x 90), breed (255 x 115), held (815 x 290). Moet de PNG-indeling hebben. |
+| Archief logo's (klein, normaal, groot, breed)  | Klein (48 X 48) en groot (216 X 216) vereist; andere grootten zijn optioneel, maar aanbevolen: gemiddeld (90 x 90), breed (255 x 115). Moet in zijn. PNG-indeling. |
 | Video's naam + URL + miniatuur  | Optioneel, aanbevolen, Maxi maal 4 Video's. De miniatuur moet 1280 x 720 zijn in PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 | Contacts (CSP-programma, techniek, ondersteuning)  | Technische hulp en ondersteuning vereist (naam, e-mail adres en telefoon nummer); CSP-programma contact opnemen optioneel, maar aanbevolen. |
 | Ondersteunings-URL  | Vereist. |
@@ -153,7 +153,7 @@ Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbied
 
 | **Veldnaam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Description  | Vereist. |
+| Beschrijving  | Vereist. |
 | Hand matige naam en bestand van de gebruiker  | Vereist, Maxi maal 1 document. moet PDF-indeling hebben. |
 | Video naam, URL + miniatuur  | Optioneel, aanbevolen. De miniatuur moet 533 x 324 zijn in JPGP-of PNG-indeling. Video moet worden gehost in YouTube of Vimeo. |
 

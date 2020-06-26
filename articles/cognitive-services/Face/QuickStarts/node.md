@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: acb198cb727c8a6871bb329be9178f100c0bf6ed
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 2ca95731cc2d85675545591d8ef38e461484c6e9
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986546"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368019"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Snelstart: Gezichten in een afbeelding detecteren met de Face REST API en Node.js
 
@@ -33,65 +33,74 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="set-up-the-node-environment"></a>De Node-omgeving instellen
 
-Ga naar de map waarin u uw project wilt maken en maak een nieuw bestand met de naam *facedetection.js*. Installeer vervolgens de `requests`-module voor dit project. Hiermee kunnen uw scripts HTTP-aanvragen doen.
+Ga naar de map waarin u uw project wilt maken en maak een nieuw bestand met de naam *facedetection.js*. Installeer vervolgens de `axios`-module voor dit project. Hiermee kunnen uw scripts HTTP-aanvragen doen.
 
 ```shell
-npm install request --save
+npm install axios --save
 ```
 
 ## <a name="write-the-nodejs-script"></a>Het Node.js-script schrijven
 
-Plak de volgende code in *facedetection.js*. Met deze velden wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U moet het `subscriptionKey` veld bijwerken met de waarde van uw abonnements sleutel en u moet de `uriBase` teken reeks wijzigen zodat deze de juiste eindpunt teken reeks bevat. U kunt desgewenst het veld `imageUrl` wijzigen zodat het verwijst naar uw invoerafbeelding.
+Plak de volgende code in *facedetection.js*. Met deze velden wordt aangegeven hoe de Face-service moet worden verbonden en waar de invoergegevens kunnen worden opgehaald. U kunt [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) en de sleutel en het eind punt van uw face-abonnement toevoegen. U kunt desgewenst het veld `imageUrl` wijzigen zodat het verwijst naar uw invoerafbeelding.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```javascript
 'use strict';
 
-const request = require('request');
+const axios = require('axios').default;
 
-// Replace <Subscription Key> with your valid subscription key.
-const subscriptionKey = '<Subscription Key>';
+// Add a valid subscription key and endpoint to your environment variables.
+let subscriptionKey = process.env['FACE_SUBSCRIPTION_KEY']
+let endpoint = process.env['FACE_ENDPOINT'] + '/face/v1.0/detect'
 
-// You must use the same location in your REST call as you used to get your
-// subscription keys. For example, if you got your subscription keys from
-// westus, replace "westcentralus" in the URL below with "westus".
-const uriBase = 'https://<My Endpoint String>.com/face/v1.0/detect';
-
-const imageUrl =
-    'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
+// Optionally, replace with your own image URL (for example a .jpg or .png URL).
+let imageUrl = 'https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/faces.jpg'
 ```
 
 Voeg vervolgens de volgende code toe om de Face API aan te roepen en kenmerkgegevens voor gezichten op te halen uit de invoerafbeelding. Het veld `returnFaceAttributes` geeft aan welke gezichtskenmerken moeten worden opgehaald. U kunt deze queryreeks wijzigen afhankelijk van het beoogde gebruik.
 
 
 ```javascript
-// Request parameters.
-const params = {
-    'returnFaceId': 'true',
-    'returnFaceLandmarks': 'false',
-    'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,' +
-        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
-};
-
-const options = {
-    uri: uriBase,
-    qs: params,
-    body: '{"url": ' + '"' + imageUrl + '"}',
-    headers: {
-        'Content-Type': 'application/json',
-        'Ocp-Apim-Subscription-Key' : subscriptionKey
-    }
-};
-
-request.post(options, (error, response, body) => {
-  if (error) {
-    console.log('Error: ', error);
-    return;
-  }
-  let jsonResponse = JSON.stringify(JSON.parse(body), null, '  ');
-  console.log('JSON Response\n');
-  console.log(jsonResponse);
+// Send a POST request
+axios({
+    method: 'post',
+    url: endpoint,
+    params : {
+        returnFaceId: true,
+        returnFaceLandmarks: false,
+        returnFaceAttributes: 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
+    },
+    data: {
+        url: imageUrl,
+    },
+    headers: { 'Ocp-Apim-Subscription-Key': subscriptionKey }
+}).then(function (response) {
+    console.log('Status text: ' + response.status)
+    console.log('Status text: ' + response.statusText)
+    console.log()
+    //console.log(response.data)
+    response.data.forEach((face) => {
+      console.log('Face ID: ' + face.faceId)
+      console.log('Face rectangle: ' + face.faceRectangle.top + ', ' + face.faceRectangle.left + ', ' + face.faceRectangle.width + ', ' + face.faceRectangle.height)
+      console.log('Smile: ' + face.faceAttributes.smile)
+      console.log('Head pose: ' + JSON.stringify(face.faceAttributes.headPose))
+      console.log('Gender: ' + face.faceAttributes.gender)
+      console.log('Age: ' + face.faceAttributes.age)
+      console.log('Facial hair: ' + JSON.stringify(face.faceAttributes.facialHair))
+      console.log('Glasses: ' + face.faceAttributes.glasses)
+      console.log('Smile: ' + face.faceAttributes.smile)
+      console.log('Emotion: ' + JSON.stringify(face.faceAttributes.emotion))
+      console.log('Blur: ' + JSON.stringify(face.faceAttributes.blur))
+      console.log('Exposure: ' + JSON.stringify(face.faceAttributes.exposure))
+      console.log('Noise: ' + JSON.stringify(face.faceAttributes.noise))
+      console.log('Makeup: ' + JSON.stringify(face.faceAttributes.makeup))
+      console.log('Accessories: ' + JSON.stringify(face.faceAttributes.accessories))
+      console.log('Hair: ' + JSON.stringify(face.faceAttributes.hair))
+      console.log()
+    });
+}).catch(function (error) {
+    console.log(error)
 });
 ```
 
@@ -103,7 +112,7 @@ Nadat u de wijzigingen hebt aangebracht, opent u een opdrachtprompt en voert u h
 node facedetection.js
 ```
 
-De gegevens over het gezicht worden nu in het consolevenster weergegeven als JSON-gegevens. Bijvoorbeeld:
+Dit is de volledige JSON-gegevens uit `response.data` . Bijvoorbeeld:
 
 ```json
 [

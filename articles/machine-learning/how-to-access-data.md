@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d73427db5fd168a31c478f92ef11307df136a775
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 07d2326d6677ccba93e2d3173bf8abccf309fe70
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125409"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374709"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ We raden u aan een gegevens opslag voor een [Azure Blob-container](https://docs.
 
 [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction?toc=/azure/storage/blobs/toc.json) is gebaseerd op Azure Blob-opslag en ontworpen voor enter prise Big data-analyses. Een fundamenteel onderdeel van Data Lake Storage Gen2 is het toevoegen van een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) aan Blob Storage. De hiërarchische naam ruimte organiseert objecten/bestanden in een hiërarchie van mappen voor efficiënte gegevens toegang.
 
-Wanneer u een werk ruimte maakt, worden er automatisch een Azure Blob-container en een Azure-bestands share geregistreerd in de werk ruimte. Ze hebben respectievelijk de naam `workspaceblobstore` en `workspacefilestore` . `workspaceblobstore`wordt gebruikt voor het opslaan van werk ruimte-artefacten en uw machine learning-experiment-Logboeken. `workspacefilestore`wordt gebruikt voor het opslaan van notitie blokken en R-scripts die zijn geautoriseerd via [Compute-instantie](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files). De `workspaceblobstore` container wordt ingesteld als de standaard gegevens opslag.
+Wanneer u een werk ruimte maakt, worden er automatisch een Azure Blob-container en een Azure-bestands share geregistreerd in de werk ruimte. Ze hebben respectievelijk de naam `workspaceblobstore` en `workspacefilestore` . `workspaceblobstore`wordt gebruikt voor het opslaan van werk ruimte-artefacten en uw machine learning-experiment-Logboeken. `workspacefilestore`wordt gebruikt voor het opslaan van notitie blokken en R-scripts die zijn geautoriseerd via [Compute-instantie](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files). De `workspaceblobstore` container is ingesteld als de standaard gegevens opslag en kan niet worden verwijderd uit de werk ruimte.
 
 > [!IMPORTANT]
 > Met Azure Machine Learning Designer (preview) wordt automatisch een gegevens archief met de naam **azureml_globaldatasets** gemaakt wanneer u een voor beeld opent in de start pagina van de ontwerp functie. Dit gegevens archief bevat alleen voorbeeld gegevens sets. Gebruik deze gegevens opslag **niet** voor vertrouwelijke gegevens toegang.
@@ -158,8 +158,6 @@ Als uw bestands share zich in een virtueel netwerk bevindt, neemt u de para mete
 
 Gebruik [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) voor het registreren van een Azure data Lake Storage Generation 2 (ADLS gen 2) om het opslaan van referenties die zijn verbonden met een Azure DataLake gen 2-opslag met [Service-Principal-machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Als u de Service-Principal wilt gebruiken, moet u [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) en de service-principal met toegang tot *BLOB-gegevens lezer* verlenen. Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
-Als u de Service-Principal wilt gebruiken, moet u [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) en de service-principal met de juiste gegevens toegang verlenen. Meer informatie over [toegangs beheer dat is ingesteld voor ADLS gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
-
 Met de volgende code wordt het gegevens archief gemaakt en geregistreerd `adlsgen2_datastore_name` in de `ws` werk ruimte. Deze Data Store heeft toegang tot het bestands systeem `test` in het `account_name` opslag account met behulp van de gegeven referenties voor de Service-Principal.
 
 ```python 
@@ -237,6 +235,7 @@ U kunt ook de standaard gegevens opslag wijzigen met de volgende code. Deze moge
 ```Python
  ws.set_default_datastore(new_default_datastore)
 ```
+
 <a name="up-and-down"></a>
 ## <a name="upload-and-download-data"></a>Gegevens uploaden en downloaden
 

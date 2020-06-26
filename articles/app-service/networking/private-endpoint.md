@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668182"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374420"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -57,7 +57,7 @@ Vanuit een beveiligings perspectief:
 - Wanneer u een persoonlijk eind punt op uw web-app inschakelt, wordt de configuratie van de [toegangs beperkingen][accessrestrictions] van de web-app niet geëvalueerd.
 - U kunt het risico op gegevens exfiltration uit het VNet elimineren door alle NSG-regels te verwijderen waarbij de bestemming Internet of Azure-Services labelt. Wanneer u een persoonlijk eind punt voor een web-app implementeert, kunt u deze specifieke Web-app alleen bereiken via het persoonlijke eind punt. Als u een andere web-app hebt, moet u een ander speciaal privé-eind punt voor deze andere web-app implementeren.
 
-In de web-HTTP-logboeken van uw web-app vindt u het bron-IP-adres van de client. Dit wordt geïmplementeerd met behulp van het TCP-proxy protocol, waarbij de IP-eigenschap van de client wordt doorgestuurd naar de web-app. Zie voor meer informatie [verbindings gegevens ophalen met TCP proxy v2][tcpproxy].
+In de web-HTTP-logboeken van uw web-app vindt u het bron-IP-adres van de client. Deze functie wordt geïmplementeerd met behulp van het TCP-proxy protocol, waarbij de IP-eigenschap van de client wordt doorgestuurd naar de web-app. Zie voor meer informatie [verbindings gegevens ophalen met TCP proxy v2][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
@@ -65,12 +65,22 @@ In de web-HTTP-logboeken van uw web-app vindt u het bron-IP-adres van de client.
 
 ## <a name="dns"></a>DNS
 
-Omdat deze functie in preview is, wordt de DNS-vermelding niet gewijzigd tijdens de preview-versie. U moet de DNS-vermelding in uw privé-DNS-server of Azure DNS privé zone zelf beheren.
+Standaard is de open bare naam van uw web-app, zonder persoonlijk eind punt, een canonieke naam voor het cluster.
+De naam omzetting is bijvoorbeeld: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Wanneer u een persoonlijk eind punt implementeert, wijzigen we de DNS-vermelding zodat deze verwijst naar de canonieke naam mywebapp.privatelink.azurewebsites.net.
+De naam omzetting is bijvoorbeeld: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+
+Als u een privé-DNS-server of een Azure DNS privé zone hebt, moet u een zone met de naam privatelink.azurewebsites.net instellen. Registreer de record voor uw web-app met een record en het IP-adres van het privé-eind punt.
+De naam omzetting is bijvoorbeeld: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
 Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. Tijdens de preview moet de aangepaste naam worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. Zie [Custom DNS Validation][dnsvalidation](Engelstalig) voor meer informatie.
 
 Als u de kudu-console wilt gebruiken, of kudu REST API (bijvoorbeeld implementatie met Azure DevOps self-hosted agenten), moet u twee records maken in uw Azure DNS persoonlijke zone of uw aangepaste DNS-server. 
 - PrivateEndpointIP yourwebappname.azurewebsites.net 
 - PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+
+Deze twee records worden automatisch ingevuld als u een privé zone met de naam privatelink.azurewebsites.net hebt gekoppeld aan het VNet waar u het persoonlijke eind punt maakt.
 
 ## <a name="pricing"></a>Prijzen
 
@@ -86,7 +96,7 @@ De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden re
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor het implementeren van een persoonlijk eind punt voor uw web-app via de portal Zie [hoe u een persoonlijke verbinding maakt met een web-app][howtoguide]
+Zie [een persoonlijke verbinding maken met een web-app om een][howtoguide] persoonlijk eind punt voor uw web-app te implementeren via de portal
 
 
 

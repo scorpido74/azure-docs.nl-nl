@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: d1dc54810371c4258616ca95b9f0f0abeee4c415
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462954"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374607"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Voor beeld: een steun knooppunt groep toevoegen aan een Azure Kubernetes service-cluster (AKS)
 
@@ -22,7 +22,7 @@ Spot knooppunten zijn uitstekend voor workloads die onderbrekingen, vroege beëi
 
 In dit artikel voegt u een secundaire steun knooppunt groep toe aan een bestaand AKS-cluster (Azure Kubernetes service).
 
-In dit artikel wordt ervan uitgegaan dat u basis informatie krijgt over Kubernetes-en Azure Load Balancer concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service-cluster (AKS)][kubernetes-concepts] voor meer informatie.
+In dit artikel wordt ervan uitgegaan dat u basis informatie krijgt over Kubernetes-en Azure Load Balancer concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)][kubernetes-concepts] voor meer informatie.
 
 Deze functie is momenteel beschikbaar als preview-product.
 
@@ -41,9 +41,6 @@ Wanneer u een cluster maakt voor het gebruik van een steun knooppunt groep, moet
 ### <a name="register-spotpoolpreview-preview-feature"></a>Preview-functie voor spotpoolpreview registreren
 
 Als u een AKS-cluster wilt maken dat gebruikmaakt van een steun knooppunt groep, moet u de functie vlag *spotpoolpreview* inschakelen voor uw abonnement. Deze functie biedt de meest recente set service verbeteringen bij het configureren van een cluster.
-
-> [!CAUTION]
-> Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
 Registreer de functie vlag *spotpoolpreview* met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
 

@@ -1,6 +1,6 @@
 ---
-title: Een toepassing verbergen voor gebruikers ervaring in azure AD
-description: Hoe u een toepassing kunt verbergen voor gebruikers ervaring in Azure Active Directory toegangs Vensters of Office 365-starters.
+title: Een bedrijfs toepassing verbergen voor gebruikers ervaring in azure AD
+description: Een bedrijfs-toepassing verbergen voor gebruikers ervaring in Azure Active Directory toegangs Vensters of Office 365-starters.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,14 +12,14 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e792298c68ed24fb8854c399f32e04e0deaefc0
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: d21ba14fba24c9b8e0b460e56b93d0e5212bfb27
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763326"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367696"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Toepassingen verbergen voor eind gebruikers in Azure Active Directory
+# <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Zakelijke toepassingen verbergen voor eind gebruikers in Azure Active Directory
 
 Instructies voor het verbergen van toepassingen van het deel venster MyApps of Office 365 Launcher van eind gebruikers. Wanneer een toepassing wordt verborgen, hebben gebruikers nog steeds machtigingen voor de toepassing. 
 
@@ -42,6 +42,9 @@ Voer de volgende stappen uit om een toepassing te verbergen in het MyApps-deel v
 7.  Voor de **zicht bare gebruiker?** vraag, klikt u op **Nee**.
 8.  Klik op **Opslaan**.
 
+> [!NOTE]
+> Deze instructies zijn alleen van toepassing op bedrijfs toepassingen.
+
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD Power shell gebruiken om een toepassing te verbergen
 
 Als u een toepassing wilt verbergen in het deel venster MyApps, kunt u de HideApp-tag hand matig toevoegen aan de service-principal voor de toepassing. Voer de volgende [AzureAD Power shell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#service_principals) -opdrachten uit om de eigenschap **zichtbaar voor gebruikers** in te stellen op **Nee**. 
@@ -62,10 +65,11 @@ Gebruik de volgende stappen om alle Office 365-toepassingen te verbergen in het 
 
 1.  Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder voor uw Directory.
 2.  Selecteer **Azure Active Directory**.
-3.  Selecteer **Gebruikersinstellingen**.
-4.  Onder **bedrijfs toepassingen**klikt **u op beheren hoe eind gebruikers hun toepassingen starten en weer geven.**
-5.  Voor **gebruikers kunnen alleen office 365-apps in de office 365-Portal zien**, klikt u op **Ja**.
-6.  Klik op **Opslaan**.
+3.  Selecteer **gebruikers**.
+4.  Selecteer **Gebruikersinstellingen**.
+5.  Onder **bedrijfs toepassingen**klikt **u op beheren hoe eind gebruikers hun toepassingen starten en weer geven.**
+6.  Voor **gebruikers kunnen alleen office 365-apps in de office 365-Portal zien**, klikt u op **Ja**.
+7.  Klik op **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Alle groepen weer geven](../fundamentals/active-directory-groups-view-azure-portal.md)

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272273"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367441"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 extern delen en Azure Active Directory B2B-samen werking
+# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 extern delen en Azure Active Directory (Azure AD) B2B-samen werking
 
-Extern delen in Office 365 (OneDrive, share point online, Unified groups, enzovoort) en Azure Active Directory (Azure AD) B2B-samen werking zijn technisch gezien hetzelfde. Alle externe delen (met uitzonde ring van OneDrive/share point online), met inbegrip van gasten in Office 365-groepen, maakt al gebruik van de Azure AD B2B-uitnodiging voor samen werking voor delen.
+In zowel Azure AD B2B Collaboration als Office 365 extern delen (OneDrive, share point online, Unified groups, enzovoort) worden externe gebruikers geverifieerd met behulp van Azure AD B2B.
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Hoe verschilt Azure AD B2B van extern delen in share point online?
 

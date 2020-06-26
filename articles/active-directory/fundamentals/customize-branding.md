@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/24/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1e9ec975a17be2675d2f56b2cee87f91d7e9aae
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 388c40867c21390c3de8a033a1bfa08eb95bd602
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733123"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367407"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Een huis stijl toevoegen aan de Azure Active Directory aanmeldings pagina van uw organisatie
 Gebruik het logo van uw organisatie en aangepaste kleuren schema's om een consistent uiterlijk te geven op uw aanmeldings pagina's van Azure Active Directory (Azure AD). Uw aanmeldings pagina's worden weer gegeven wanneer gebruikers zich aanmelden bij de op het web gebaseerde apps van uw organisatie, zoals Office 365, die Azure AD als uw ID-provider gebruikt.
@@ -62,7 +62,17 @@ Uw aangepaste huis stijl wordt niet onmiddellijk weer gegeven wanneer uw gebruik
 
         - **Hint voor gebruikers naam.** Typ de tekst van de hint die wordt weer gegeven voor gebruikers als ze hun gebruikers naam verg eten. Deze tekst moet Unicode zijn, zonder links of code, en mag niet langer zijn dan 64 tekens. Als gasten zich aanmelden bij uw app, raden we u aan deze Hint niet toe te voegen.
 
-        - **Tekst van de aanmeldings pagina.** Typ de tekst die wordt weer gegeven aan de onderkant van de aanmeldings pagina. U kunt deze tekst gebruiken om aanvullende informatie te communiceren, zoals het telefoon nummer van uw Help Desk of een juridische verklaring. Deze tekst moet Unicode zijn en mag niet langer zijn dan 256 tekens.
+        - **Tekst en opmaak van de aanmeldings pagina.** Typ de tekst die wordt weer gegeven aan de onderkant van de aanmeldings pagina. U kunt deze tekst gebruiken om aanvullende informatie te communiceren, zoals het telefoon nummer van uw Help Desk of een juridische verklaring. Deze tekst moet Unicode zijn en mag niet langer zijn dan 1024 tekens.
+
+           U kunt de tekst van de aanmeldings pagina aanpassen die u hebt ingevoerd. Als u een nieuwe alinea wilt beginnen, gebruikt u de Enter-toets twee keer. U kunt ook de tekst opmaak wijzigen zodat deze vet, cursief, een onderstreping of klik bare koppeling bevat. Gebruik de volgende syntaxis om opmaak toe te voegen aan tekst: 
+
+          > Invoegen```[text](link)``` 
+          
+          > Vet: ``` **text** ``` of``` __text__ ``` 
+          
+          > Cursief: ``` *text* ``` of``` _text_ ``` 
+          
+          > Underline``` ++text++ ``` 
 
     - **Geavanceerde instellingen**
             

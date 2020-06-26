@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 2c5d91894ba35233f3fbebffdff9104edcfdd27b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99565c8dc8b5cbaea9f449a9f6262a37ae5b66d0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063139"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367186"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Zelf studie: sneeuw configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in sneeuw en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen op sneeuw.
+Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in sneeuw en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen op [sneeuw](https://www.Snowflake.com/pricing/). Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
+
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
->
 > Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+
+## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
+> [!div class="checklist"]
+> * Gebruikers maken met sneeuw vlokken
+> * Gebruikers in sneeuw verwijderen wanneer ze niet meer toegang nodig hebben
+> * Gebruikers kenmerken gesynchroniseerd laten tussen Azure AD en sneeuw vlokken
+> * Inrichtings groepen en groepslid maatschappen in sneeuw
+> * [Eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial) bij sneeuw (aanbevolen)
 
 ## <a name="prerequisites"></a>Vereisten
 
 In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
-* Een Azure AD-tenant.
+* [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder).
 * [Een sneeuw-Tenant](https://www.Snowflake.com/pricing/).
 * Een gebruikers account in sneeuw met beheerders machtigingen.
 
-## <a name="assigning-users-to-snowflake"></a>Gebruikers toewijzen aan sneeuw vlokken
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
+1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en sneeuw](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
-
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot sneeuw. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan sneeuw door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-snowflake"></a>Belang rijke tips voor het toewijzen van gebruikers aan sneeuw
-
-* Het is raadzaam om één Azure AD-gebruiker toe te wijzen aan sneeuw om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
-
-* Wanneer u een gebruiker toewijst aan sneeuw, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
-
-## <a name="setup-snowflake-for-provisioning"></a>Sneeuw vlokken instellen voor inrichting
+## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>Stap 2. Sneeuw configureren ter ondersteuning van inrichting met Azure AD
 
 Voordat u een sneeuw gaat configureren voor automatische gebruikers inrichting met Azure AD, moet u SCIM inrichten inschakelen op sneeuw vlokken.
 
@@ -68,34 +68,22 @@ Voordat u een sneeuw gaat configureren voor automatische gebruikers inrichting m
 
     ![Sneeuw SCIM toevoegen](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="add-snowflake-from-the-gallery"></a>Sneeuw toevoegen vanuit de galerie
+## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>Stap 3. Sneeuw toevoegen vanuit de Azure AD-toepassings galerie
 
-Als u sneeuw wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u addSnowflake van de Azure AD-toepassings galerie naar uw lijst met beheerde SaaS-toepassingen.
+Voeg sneeuw toe vanuit de Azure AD-toepassings galerie om het beheer van de inrichting op sneeuw te starten. Als u nog een keer hebt ingesteld dat sneeuw voor SSO is geïnstalleerd, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-**Als u een sneeuw wilt toevoegen vanuit de Azure AD-toepassings galerie, voert u de volgende stappen uit:**
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+* Wanneer u gebruikers en groepen toewijst aan sneeuw, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
-
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
-
-4. Voer in het zoekvak **sneeuw**in, selecteer **sneeuw** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
-
-    ![Snowflake toevoegen vanuit de galerie](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-snowflake"></a>Automatische gebruikers inrichting configureren voor sneeuw 
+## <a name="step-5-configure-automatic-user-provisioning-to-snowflake"></a>Stap 5. Automatische gebruikers inrichting configureren voor sneeuw 
 
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in sneeuw te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
-
-> [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor sneeuw, gevolgd door de instructies in de [zelf studie eenmalige aanmelding met sneeuw vlokken](Snowflake-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Automatische gebruikers inrichting voor sneeuw configureren in azure AD:
 
@@ -115,9 +103,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie beheerders referenties de `https://<Snowflake Account URL>/scim/v2` invoer in de TENANT-URL. Een voor beeld van de Tenant-URL:`https://acme.snowflakecomputing.com/scim/v2`
-
-6. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met sneeuw vlokken. Als de verbinding mislukt, zorg er dan voor dat uw sneeuw-account beheerders machtigingen heeft en probeer het opnieuw.
+5. In het gedeelte beheerders referenties voert u de **SCIM 2,0-basis-URL en verificatie token** waarden in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en de velden met **geheime tokens** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met sneeuw vlokken. Als de verbinding mislukt, zorg er dan voor dat uw sneeuw-account beheerders machtigingen heeft en probeer het opnieuw.
 
     ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -129,19 +115,27 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 9. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren naar sneeuw vlokken**.
 
-    ![Gebruikers toewijzingen sneeuw vlokken](media/Snowflake-provisioning-tutorial/user-mapping.png)
-
 10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar sneeuw vlokken in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in sneeuw voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Gebruikers kenmerken sneeuw vlokken](media/Snowflake-provisioning-tutorial/user-attribute.png)
+   |Kenmerk|Type|
+   |---|---|
+   |actief|Booleaans|
+   |displayName|Tekenreeks|
+   |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
+   |userName|Tekenreeks|
+   |name. naam|Tekenreeks|
+   |naam. familielid|Tekenreeks|
+   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: defaultRole|Tekenreeks|
+   |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: defaultWarehouse|Tekenreeks|
 
 11. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met sneeuw vlokken**.
 
-    ![Sneeuw groeps toewijzingen](media/Snowflake-provisioning-tutorial/group-mapping.png)
-
 12. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD op sneeuw vlokken in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in sneeuw te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Eigenschappen van sneeuw groep](media/Snowflake-provisioning-tutorial/group-attribute.png)
+      |Kenmerk|Type|
+      |---|---|
+      |displayName|Tekenreeks|
+      |leden|Naslaginformatie|
 
 13. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
@@ -157,9 +151,14 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-    Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op sneeuw vlokken.
+    Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd.
 
-    Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpleegt u [rapportage over automatische gebruikers accounts inrichten](../app-provisioning/check-status-user-account-provisioning.md)
+## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
+
+1. De [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) gebruiken om te bepalen welke gebruikers al dan niet met succes zijn ingericht
+2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
+3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="connector-limitations"></a>Connector beperkingen
 
@@ -168,7 +167,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Het [inrichten van een gebruikers account voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md).
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../app-provisioning/check-status-user-account-provisioning.md).

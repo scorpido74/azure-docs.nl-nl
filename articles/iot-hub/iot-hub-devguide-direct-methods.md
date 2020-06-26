@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 357fe6f04c79b5ad0cdf569e6716589007f6253b
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 189ebcc74461a57a4e91bf50262c377540cf885b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791959"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367832"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Directe methoden van IoT Hub begrijpen en aanroepen
 
@@ -33,7 +33,7 @@ Raadpleeg de [communicatie richtlijnen van Cloud naar apparaat](iot-hub-devguide
 
 ## <a name="method-lifecycle"></a>Methode levenscyclus
 
-Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer invoer vereisen in de methode-Payload om op de juiste wijze te instantiëren. U roept een directe methode aan via een service gerichte URI ( `{iot hub}/twins/{device id}/methods/` ). Een apparaat ontvangt directe methoden via een apparaatspecifieke MQTT onderwerp ( `$iothub/methods/POST/{method name}/` ) of via AMQP-koppelingen (de eigenschappen van de `IoThub-methodname` en `IoThub-status` toepassing). 
+Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer invoer vereisen in de methode-Payload om op de juiste wijze te instantiëren. U roept een directe methode aan via een service gerichte URI ( `{iot hub}/twins/{device id}/methods/` ). Een apparaat ontvangt directe methoden via een apparaatspecifieke MQTT onderwerp ( `$iothub/methods/POST/{method name}/` ) of via AMQP-koppelingen (de eigenschappen van de `IoThub-methodname` en `IoThub-status` toepassing).
 
 > [!NOTE]
 > Wanneer u een rechtstreekse methode aanroept op een apparaat, kunnen eigenschaps namen en-waarden alleen in de volgende gevallen een door ons ASCII afdruk bare alfanumerieke waarde bevatten:``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
@@ -41,7 +41,7 @@ Directe methoden worden geïmplementeerd op het apparaat en kunnen nul of meer i
 
 Directe methoden zijn synchroon en slagen of mislukken na de time-outperiode (standaard: 30 seconden, instelbaar tussen 5 en 300 seconden). Directe methoden zijn handig in interactieve scenario's waarin u wilt dat een apparaat reageert als en alleen als het apparaat online is en opdrachten ontvangt. U kunt bijvoorbeeld een lampje van een telefoon inschakelen. In deze scenario's wilt u direct slagen of mislukken, zodat de Cloud service zo snel mogelijk kan reageren op het resultaat. Het apparaat kan een deel van de bericht tekst retour neren als resultaat van de methode, maar dit is niet vereist voor de methode. Er is geen garantie voor de volg orde of enige semantiek van gelijktijdigheids op methode aanroepen.
 
-Directe methoden zijn alleen HTTPS vanuit de Cloud zijde en HTTPS, MQTT, AMQP, MQTT over websockets of AMQP over websockets van de kant van het apparaat.
+Directe methoden zijn alleen HTTPS vanuit de Cloud kant en MQTT, AMQP, MQTT over websockets of AMQP over websockets van de kant van het apparaat.
 
 De payload voor methode aanvragen en-antwoorden is een JSON-document van Maxi maal 128 KB.
 
@@ -80,12 +80,11 @@ De waarde `responseTimeoutInSeconds` die in de aanvraag wordt gegeven, is de hoe
 
 De waarde die `connectTimeoutInSeconds` in de aanvraag is gegeven, is de hoeveelheid tijd die nodig is voor het aanroepen van een directe methode die IOT hub service moet wachten totdat een apparaat zonder verbinding online kan worden gezet. De standaard waarde is 0, wat betekent dat apparaten al online moeten zijn bij het aanroepen van een directe methode. De maximum waarde voor `connectTimeoutInSeconds` is 300 seconden.
 
-
 #### <a name="example"></a>Voorbeeld
 
 Met dit voor beeld kunt u veilig een aanvraag initiëren voor het aanroepen van een directe methode op een IoT-apparaat dat is geregistreerd bij een Azure-IoT Hub.
 
-Als u wilt beginnen, gebruikt u de [Microsoft Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) om een SharedAccessSignature te maken. 
+Als u wilt beginnen, gebruikt u de [Microsoft Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension) om een SharedAccessSignature te maken.
 
 ```bash
 az iot hub generate-sas-token -n <iothubName> -du <duration>

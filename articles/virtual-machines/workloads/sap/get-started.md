@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 06/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46864b0af7a4770debaed84cc3805a219f6687e1
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd170d505286d57f383af50da282e120167fe499
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361282"
+ms.locfileid: "85367356"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -112,6 +112,8 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 06/24/2020: wijziging in instellen van [pacemaker op sles in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) voor het vrijgeven van nieuwe verbeterde Azure Fence-agent en meer robuuste STONITH-configuratie voor apparaten, gebaseerd op de Azure Fence-agent 
+- 06/24/2020: wijziging in instellen van [pacemaker op RHEL in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) voor het vrijgeven van meer ROBUUSTe STONITH-configuratie
 - 06/23/2020: wijzigingen in [Azure virtual machines planning en implementatie van SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) Guide en inleiding van [Azure Storage types voor SAP-werkbelasting](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) gids
 - 06/22/2020: Voeg installatie stappen voor nieuwe VM-extensie voor SAP toe aan de [implementatie handleiding](deployment-guide.md)
 - 06/16/2020: wijziging in [open bare-eindpunt connectiviteit voor vm's met behulp van Azure Standard ILB in SAP ha-scenario's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) om een koppeling toe te voegen aan SuSE open bare Cloud Infrastructure 101-documentatie 

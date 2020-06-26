@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: f1887065ef356717e05814a23ad85c7f0e6c6ab0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 47c3606b0b1ada93aeb8a107f48222fb26483a9c
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362659"
+ms.locfileid: "85368274"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 
@@ -43,7 +43,8 @@ Azure Cognitive Search maakt gebruik van andere Azure-Services voor uitgebreider
 Verschillende aspecten van een zoek service worden bepaald wanneer de service wordt ingericht en kan later niet worden gewijzigd:
 
 * Service naam (u kunt de naam van een service niet wijzigen)
-* Maximum aantal replica's en partities (bepaald door de laag)
+* Service locatie (u kunt momenteel geen onbeschadigde service verplaatsen naar een andere regio)
+* Maximum aantal replica's en partities (bepaald door de laag, Basic of Standard)
 
 Als u bent begonnen met het maximum van één partitie en u nu meer partities nodig hebt, moet u [een nieuwe service](search-create-service-portal.md) op een hogere laag maken en uw inhoud opnieuw maken op de nieuwe service. 
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1d3804a019add8f97dcbad0f9d707d50c35830bb
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ffc8e1919350c9a14cb53bd243af66fdfa839d04
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753913"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373451"
 ---
 # <a name="create-a-managed-service-offer"></a>Een aanbieding voor beheerde service maken
 
@@ -91,7 +91,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Handige koppelingen
 4. Schermopnamen
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -138,9 +138,9 @@ In deze sectie kunt u logo's en installatie kopieën opgeven die worden gebruikt
 
 Geef het logo van uw aanbod op in vier pixel grootten:
 
-- **Klein** (40 x 40)
+- **Klein** (48 x 48)
 - **Gemiddeld** (90 x 90)
-- **Groot** (115 x 115)
+- **Groot** (216 x 216)
 - **Breed** (255 x 115)
 
 Volg deze richt lijnen voor uw logo's:

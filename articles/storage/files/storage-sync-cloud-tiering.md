@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5b54f87635e1ea972778b0039dc34170c5b7ab8a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 869614c2e3fe11c289ab6eb7f6c1407f666de2b0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362285"
+ms.locfileid: "85368138"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -82,7 +82,11 @@ Als u meer gegevens lokaal houdt, betekent dit lagere kosten voor uitgaand verke
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Ik heb een nieuw server eindpunt toegevoegd. Hoe lang duurt het tot mijn bestanden op deze server laag?
-Wanneer de bestanden in versie 4,0 en hoger van de Azure File Sync-agent zijn geüpload naar de Azure-bestands share, worden ze op basis van uw beleid gelaagd zodra de volgende sessie wordt uitgevoerd. dit gebeurt eenmaal per uur. Bij oudere agents kan het tot 24 uur duren voordat lagen worden gelaagd.
+
+Hiermee wordt één keer per uur geëvalueerd of bestanden moeten worden getierd op basis van de ingestelde beleids regels. U kunt twee situaties tegen komen wanneer een nieuw server eindpunt wordt gemaakt:
+
+1. Wanneer u een nieuw server eindpunt toevoegt, bestaan er vaak bestanden op die server locatie. Ze moeten eerst worden geüpload voordat cloud lagen kunnen beginnen. Het volume beschik bare ruimte beleid wordt pas gestart als de initiële upload van alle bestanden is voltooid. Het optionele datum beleid begint echter met het uitvoeren van een afzonderlijk bestand, zodra een bestand is geüpload. Het interval van één uur is hier ook van toepassing. 
+2. Wanneer u een nieuw server eindpunt toevoegt, is het mogelijk dat u een lege server locatie in een Azure-bestands share verbindt met uw gegevens. Of dat voor een tweede server of tijdens een herstel na nood geval is. Als u ervoor kiest om de naam ruimte te downloaden en de inhoud op te halen tijdens de eerste down load naar uw server, worden de bestanden op basis van de laatst gewijzigd tijds tempel ingetrokken wanneer de naam ruimte niet beschikbaar is. Er worden slechts zoveel bestanden ingetrokken als binnen het volume beschik bare ruimte beleid en het optionele datum beleid.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Hoe kan ik zien of een bestand is getierd?

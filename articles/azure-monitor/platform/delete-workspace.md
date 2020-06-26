@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 0fad77f4704b9cbd8c2a37e39c09a334b08766ef
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: c93ba19cc70aa6b5df054dcc2e7e06885b02d661
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193541"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367951"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -24,7 +24,7 @@ Wanneer u een Log Analytics-werk ruimte verwijdert, wordt er een tijdelijke Verw
 > [!NOTE]
 > Als u het gedrag van zacht verwijderen wilt negeren en uw werk ruimte permanent wilt verwijderen, volgt u de stappen in [permanente werk ruimte verwijderen](#permanent-workspace-delete).
 
-U wilt voorzichtig zijn wanneer u een werk ruimte verwijdert, omdat er mogelijk belang rijke gegevens en configuratie zijn die uw service bewerking negatief kunnen beïnvloeden. Bekijk welke agents, oplossingen en andere Azure-Services en-bronnen uw gegevens opslaan in Log Analytics, zoals:
+U wilt voorzichtig zijn wanneer u een werk ruimte verwijdert, omdat er mogelijk belang rijke gegevens en configuratie zijn die uw service bewerking negatief kunnen beïnvloeden. Bekijk welke agents, oplossingen en andere Azure-Services hun gegevens in Log Analytics opslaan, zoals:
 
 * Beheeroplossingen
 * Azure Automation
@@ -104,11 +104,14 @@ De werk ruimte en alle bijbehorende gegevens worden teruggezet na de herstel bew
 > [!NOTE]
 > * Wanneer u tijdens de tijdelijke verwijderings periode een werk ruimte opnieuw maakt, geeft u een indicatie dat deze werkruimte naam al in gebruik is. 
  
-## <a name="troubleshooting"></a>Problemen oplossen
-U moet ten minste *log Analytics Inzender* machtigingen hebben om een werk ruimte te verwijderen.<br>
-Als er een fout bericht wordt weer gegeven, *is de naam van de werk ruimte al in gebruik* of *conflict* bij het maken van een werk ruimte, kan dit sinds:
-* De naam van de werk ruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
-* De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen om een nieuwe werk ruimte met dezelfde naam te maken.<br>
-   1. [Herstel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) uw werk ruimte.
-   2. Uw werk ruimte [permanent verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
-   3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.
+## <a name="troubleshooting"></a>Probleemoplossing
+
+U moet ten minste *log Analytics Inzender* machtigingen hebben om een werk ruimte te verwijderen.
+
+* Als u niet zeker weet of de verwijderde werk ruimte zich in de modus voor voorlopig verwijderen bevindt en kan worden hersteld, klikt u op de pagina *werk ruimten op Log Analytics* [herstellen](#recover-workspace) om een lijst met voorlopig verwijderde werk ruimten per abonnement weer te geven. Permanent verwijderde werk ruimten worden niet opgenomen in de lijst.
+* Als er een fout bericht wordt weer gegeven, *is de naam van de werk ruimte al in gebruik* of *conflict* bij het maken van een werk ruimte, kan dit sinds:
+  * De naam van de werk ruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
+  * De werk ruimte is in de afgelopen 14 dagen verwijderd en de naam is gereserveerd voor de tijdelijke periode voor het verwijderen. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen om een nieuwe werk ruimte met dezelfde naam te maken.<br>
+     1. [Herstel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) uw werk ruimte.
+     2. Uw werk ruimte [permanent verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
+     3. Maak een nieuwe werk ruimte met dezelfde naam voor de werk ruimte.

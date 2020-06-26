@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2ea1cfba9b460f5723f69cd0382c7413b97bef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360806"
+ms.locfileid: "85373859"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Vereisten voor het inrichten van Azure AD Connect Cloud
 Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Directory (Azure AD) verbinden met Cloud inrichting als uw identiteits oplossing.
@@ -27,7 +27,7 @@ Dit artikel bevat richt lijnen voor het kiezen en gebruiken van Azure Active Dir
 U hebt het volgende nodig voor het gebruik van Azure AD Connect Cloud inrichting:
     
 - Een hybride identiteits beheerders account voor uw Azure AD-Tenant die geen gast gebruiker is.
-- Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.
+- Een on-premises server voor de inrichtings agent met Windows 2012 R2 of hoger.  Deze server moet een laag 0-server zijn op basis van het [Active Directory administratieve laag model](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
 - On-premises firewall configuraties.
 
 >[!NOTE]

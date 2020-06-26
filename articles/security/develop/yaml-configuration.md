@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c53954e1aa1779bbf6933f7a81a95d25c8b4043a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362268"
+ms.locfileid: "85367254"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML-configuratie opties voor het aanpassen van de build-taken
 
@@ -116,7 +116,7 @@ In dit artikel vindt u een overzicht van alle YAML-configuratie opties die besch
 
 ## <a name="publish-security-analysis-logs-task"></a>Taak beveiligings analyse logboeken publiceren
 
-| **Type**      | **Type**     | **Van toepassing**            | **Vereist** | **Standaard waarde**             | **Opties (voor selectie lijsten)**                                   | **Beschrijving**                                                                                                                                                                                                                                                                                                                            |
+| **Type**      | **Type**     | **Van toepassing**            | **Vereist** | **Standaardwaarde**             | **Opties (voor selectie lijsten)**                                   | **Beschrijving**                                                                                                                                                                                                                                                                                                                            |
 |------------|---------------|-----------------------|----------|---------------------------|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Artefactnaam | tekenreeks | altijd | True | CodeAnalysisLogs |  | De naam van het artefact dat moet worden gemaakt.
 | ArtifactType | Selectie lijst | altijd | True | Container | Container, FilePath | Het type artefact dat moet worden gemaakt.
@@ -125,7 +125,6 @@ In dit artikel vindt u een overzicht van alle YAML-configuratie opties die besch
 | Assen | booleaans | AllTools = False | True | true |  | Resultaten publiceren die zijn gegenereerd door taken voor het bouwen van antimalware.
 | BinSkim | booleaans | AllTools = False | True | true |  | Publiceer resultaten die zijn gegenereerd door BinSkim-bouw taken.
 | CredScan | booleaans | AllTools = False | True | true |  | Resultaten publiceren die zijn gegenereerd door de taken voor het maken van referentie scanners.
-| MSRD | booleaans | AllTools = False | True | true |  | Publiceer taak gegevens en taak-url's voor MSRD-taken die zijn gestart door de MSRD-bouw taak. MSRD-taken zijn lang actief en bieden afzonderlijke rapporten.
 | RoslynAnalyzers | booleaans | AllTools = False | True | false |  | Publiceer resultaten die door Roslyn-analyse functies zijn gegenereerd.
 | TSLint | booleaans | AllTools = False | True | true |  | Publiceer resultaten die zijn gegenereerd door TSLint-bouw taken. Houd er rekening mee dat alleen TSLint-Logboeken in de JSON-indeling worden ondersteund voor-rapporten. Als u een andere indeling hebt gekozen, moet u de TSLint-build-taak dienovereenkomstig bijwerken.
 | ToolLogsNotFoundAction | selectie lijst | altijd | True | Standard | Fout, geen, standaard, waarschuwing | De actie die moet worden uitgevoerd wanneer logboeken voor een geselecteerd hulp programma (of een hulp programma als alle Hulpprogram Ma's zijn ingeschakeld) niet worden gevonden, wat betekent dat het hulp programma niet is uitgevoerd.<br/><br/>**Opties:**<br/>**Geen:** Het bericht wordt naar de uitgebreide uitvoer stroom geschreven die alleen toegankelijk is door het VSTS-variabele systeem in te stellen **. debug** op **True**.<br/>**Standaard:** (standaard) schrijft een standaard uitvoer bericht dat er geen logboeken zijn gevonden voor het hulp programma.<br/>**Waarschuwing:** Schrijft een geel waarschuwings bericht dat er geen logboeken zijn gevonden voor het hulp programma, dat wordt weer gegeven op de overzichts pagina samen stellen als een waarschuwing.<br/>**Fout:** Schrijft een rood fout bericht en genereert een uitzonde ring, waardoor de build wordt verbroken. Gebruik deze optie om ervoor te zorgen dat er verschillende hulp middelen zijn om ervoor te zorgen dat de hulpprogram ma's worden uitgevoerd.
@@ -141,7 +140,6 @@ In dit artikel vindt u een overzicht van alle YAML-configuratie opties die besch
 | BinSkim | booleaans | AllTools = False | True | false |  | Rapport resultaten die zijn gegenereerd door BinSkim-bouw taken.
 | BinSkimBreakOn | Selectie lijst | AllTools = True of BinSkim = True | True | Fout | Fout, WarningAbove | Het niveau van de resultaten dat moet worden gerapporteerd.
 | CredScan | booleaans | AllTools = False | True | false |  | Rapport resultaten gegenereerd door de taken voor het maken van referentie scanners.
-| MSRD | booleaans | AllTools = False | True | false |  | Rapport taak gegevens en taak-url's voor MSRD-taken die zijn gestart door de MSRD-bouw taak. MSRD-taken zijn lang actief en bieden afzonderlijke rapporten.
 | RoslynAnalyzers | booleaans | AllTools = False | True | false |  | Rapport resultaten die zijn gegenereerd door Roslyn Analyzer-bouw taken.
 | RoslynAnalyzersBreakOn | Selectie lijst | AllTools = True of RoslynAnalyzers = True | True | Fout | Fout, WarningAbove | Het niveau van de resultaten dat moet worden gerapporteerd.
 | TSLint | booleaans | AllTools = False | True | false |  | Rapport resultaten die zijn gegenereerd door TSLint-bouw taken. Houd er rekening mee dat alleen TSLint-Logboeken in de JSON-indeling worden ondersteund voor-rapporten. Als u een andere indeling hebt gekozen, moet u de TSLint-build-taak dienovereenkomstig bijwerken.

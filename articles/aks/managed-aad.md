@@ -3,14 +3,16 @@ title: Azure AD gebruiken in azure Kubernetes service
 description: Meer informatie over het gebruik van Azure AD in azure Kubernetes service (AKS)
 services: container-service
 manager: gwallace
+author: mlearned
 ms.topic: article
-ms.date: 06/04/2020
-ms.openlocfilehash: 8d446d82550a6bc790d162ee944b0753979b6546
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.date: 06/25/2020
+ms.author: mlearned
+ms.openlocfilehash: 280637be417d904de6dbb7ae2e2647026da6c838
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782667"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374539"
 ---
 # <a name="integrate-aks-managed-azure-ad-preview"></a>Door AKS beheerde Azure AD integreren (preview-versie)
 
@@ -62,9 +64,6 @@ kubectl version --client
 ```
 
 Gebruik [deze instructies](https://kubernetes.io/docs/tasks/tools/install-kubectl/) voor andere besturings systemen.
-
-> [!CAUTION]
-> Nadat u een functie voor een abonnement hebt geregistreerd, kunt u de registratie van die functie op dit moment niet ongedaan maken. Wanneer u een aantal preview-functies inschakelt, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die later in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik in plaats daarvan een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
@@ -190,7 +189,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 
 ## <a name="non-interactive-login-with-kubelogin"></a>Niet-interactieve aanmelding met kubelogin
 
-Er zijn een aantal niet-interactieve scenario's, zoals doorlopende integratie pijplijnen die momenteel niet beschikbaar zijn in kubectl. U kunt [kubelogin](https://github.com/Azure/kubelogin) gebruiken om toegang te krijgen tot het cluster in niet-interactieve scenario's.
+Er zijn een aantal niet-interactieve scenario's, zoals doorlopende integratie pijplijnen die momenteel niet beschikbaar zijn in kubectl. U kunt [kubelogin](https://github.com/Azure/kubelogin) gebruiken om toegang te krijgen tot het cluster met niet-interactieve Service-Principal-aanmelding.
 
 ## <a name="next-steps"></a>Volgende stappen
 

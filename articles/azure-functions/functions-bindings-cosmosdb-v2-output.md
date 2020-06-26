@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB uitvoer binding voor functies 2. x
+title: Azure Cosmos DB uitvoer binding voor functies 2. x en hoger
 description: Meer informatie over het gebruik van de Azure Cosmos DB uitvoer binding in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: b58924607f002af27d21343389404fcc66d1f35d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561670"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374335"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x en hoger
 
 Met de Azure Cosmos DB uitvoer binding kunt u een nieuw document naar een Azure Cosmos DB-Data Base schrijven met behulp van de SQL-API.
 
@@ -125,7 +125,7 @@ Deze sectie bevat de volgende voor beelden:
 
 ### <a name="queue-trigger-write-one-doc"></a>Wachtrij trigger, een document schrijven
 
-In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
+In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
 
 ```json
 {
@@ -146,7 +146,7 @@ De functie maakt Azure Cosmos DB documenten in de volgende indeling voor elke re
 }
 ```
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -205,7 +205,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Hier is het bestand function. json:
+Dit is de function.jsvoor het volgende bestand:
 
 ```json
 {
@@ -250,7 +250,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
+In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
 
 ```json
 {
@@ -271,7 +271,7 @@ De functie maakt Azure Cosmos DB documenten in de volgende indeling voor elke re
 }
 ```
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -307,7 +307,7 @@ Dit is de Java script-code:
 
 In het volgende voor beeld ziet u hoe u een document naar een Azure CosmosDB-data base schrijft als uitvoer van een functie.
 
-De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `cosmosDB` .
+De definitie van de binding wordt gedefinieerd in *function.jsvan* waar *type* is ingesteld op `cosmosDB` .
 
 ```json
 {
@@ -560,11 +560,11 @@ De `CosmosDBOutput` aantekening is beschikbaar voor het schrijven van gegevens n
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `CosmosDB` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
@@ -595,9 +595,9 @@ Wanneer u in uw functie naar de uitvoer parameter schrijft, wordt er standaard e
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>instellingen voor de host. json
+## <a name="hostjson-settings"></a>host.jsop instellingen
 
-In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x [host. json Reference voor Azure functions versie 2. x](functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x. Zie [host.jsvoor Azure functions versie 2. x](functions-host-json.md)voor meer informatie over algemene configuratie-instellingen in versie 2. x.
 
 ```json
 {

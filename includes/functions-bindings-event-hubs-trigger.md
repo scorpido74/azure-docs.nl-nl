@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 41e6352afb5eebc6ab09f43feac4e211232fd270
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 7826df83506083e2db1bdb011704cb0fef628801
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85292180"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378528"
 ---
 Gebruik de functie trigger om te reageren op een gebeurtenis die wordt verzonden naar een Event Hub gebeurtenis stroom. U moet lees toegang hebben tot de onderliggende Event Hub om de trigger in te stellen. Wanneer de functie wordt geactiveerd, wordt het bericht dat is door gegeven aan de functie als een teken reeks getypt.
 
@@ -343,7 +343,7 @@ Gebruik in de [runtime-bibliotheek](https://docs.microsoft.com/java/api/overview
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `EventHubTrigger` kenmerk.
 
@@ -355,7 +355,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |**programmapad** |**EventHubName** | Functions 1. x. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. |
 |**eventHubName** |**EventHubName** | Functions 2. x en hoger. De naam van de Event Hub. Wanneer de Event Hub naam ook aanwezig is in de connection string, overschrijft die waarde deze eigenschap tijdens runtime. Kan worden verwezen via [app-instellingen](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings)`%eventHubName%` |
 |**consumerGroup** |**ConsumerGroup** | Een optionele eigenschap waarmee de [Consumer groep](../articles/event-hubs/event-hubs-features.md#event-consumers) wordt ingesteld die wordt gebruikt om zich te abonneren op gebeurtenissen in de hub. Als u dit weglaat, `$Default` wordt de Consumer groep gebruikt. |
-|**kardinaliteit** | N.v.t. | Voor Java script. Ingesteld op om `many` batch verwerking in te scha kelen.  Als u niets opgeeft of instelt op `one` , wordt één bericht door gegeven aan de functie. |
+|**kardinaliteit** | N.v.t. | Gebruikt voor alle niet-C # talen. Ingesteld op om `many` batch verwerking in te scha kelen.  Als u niets opgeeft of instelt op `one` , wordt één bericht door gegeven aan de functie.<br><br>In C# wordt deze eigenschap automatisch toegewezen wanneer de trigger een matrix voor het type heeft.|
 |**Combi** |**Verbinding** | De naam van een app-instelling die de connection string aan de naam ruimte van de Event Hub bevat. Kopieer deze connection string door te klikken op de knop **verbindings gegevens** voor de [naam ruimte](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), niet op de Event hub zelf. Deze connection string moet mini maal lees machtigingen hebben om de trigger te activeren.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]

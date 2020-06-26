@@ -4,12 +4,12 @@ description: Meer informatie over het beheren van pod-toelatingen met behulp van
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd4e1b85513ed5473b4136b458d20fef4faa79c
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998362"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374488"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
@@ -42,9 +42,6 @@ az extension update --name aks-preview
 ### <a name="register-pod-security-policy-feature-provider"></a>Pod-functie provider voor beveiligings beleid registreren
 
 Als u een AKS-cluster wilt maken of bijwerken om pod-beveiligings beleid te gebruiken, moet u eerst een functie vlag voor uw abonnement inschakelen. Als u de functie vlag *PodSecurityPolicyPreview* wilt registreren, gebruikt u de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
-
-> [!CAUTION]
-> Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -153,7 +150,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Alias opdrachten maken voor beheerders en gebruikers die geen beheerder zijn
 
-Als u het verschil tussen de normale gebruiker met beheerders rechten `kubectl` wilt markeren wanneer u en de niet-beheerder gebruiker hebt gemaakt in de vorige stappen, maakt u twee opdracht regel aliassen:
+Als u het verschil tussen de normale gebruiker met beheerders rechten wilt markeren wanneer u `kubectl` en de niet-beheerder gebruiker hebt gemaakt in de vorige stappen, maakt u twee opdracht regel aliassen:
 
 * De alias voor de **kubectl-beheerder** is de gewone beheerder en ligt binnen het bereik van de naam ruimte *PSP-AKS* .
 * De **kubectl-nonadminuser** -alias is voor de niet *-beheerder-gebruiker* die in de vorige stap is gemaakt en is afgestemd op de *PSP-AKS-* naam ruimte.
@@ -167,9 +164,9 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>Het maken van een privileged pod testen
 
-We gaan eerst testen wat er gebeurt wanneer u een pod plant met de beveiligings context `privileged: true`van. Met deze beveiligings context worden de bevoegdheden van de pod geëscaleerd. In de vorige sectie waarin het standaard beleid voor AKS-pod wordt weer gegeven, moet het *beperkte* beleid deze aanvraag weigeren.
+We gaan eerst testen wat er gebeurt wanneer u een pod plant met de beveiligings context van `privileged: true` . Met deze beveiligings context worden de bevoegdheden van de pod geëscaleerd. In de vorige sectie waarin het standaard beleid voor AKS-pod wordt weer gegeven, moet het *beperkte* beleid deze aanvraag weigeren.
 
-Maak een bestand met `nginx-privileged.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand `nginx-privileged.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -204,7 +201,7 @@ Het Pod is niet bereikbaar voor de plannings fase, dus er zijn geen resources om
 
 In het vorige voor beeld heeft de pod-specificatie geautoriseerde escalatie aangevraagd. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gepland. We gaan nu proberen om dezelfde NGINX-pod uit te voeren zonder de escalatie aanvraag van de bevoegdheid.
 
-Maak een bestand met `nginx-unprivileged.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand `nginx-unprivileged.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -235,9 +232,9 @@ Het Pod is niet bereikbaar voor de plannings fase, dus er zijn geen resources om
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Het maken van een pod met een specifieke gebruikers context testen
 
-In het vorige voor beeld heeft de container installatie kopie automatisch geprobeerd de root te gebruiken om NGINX te binden aan poort 80. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gestart. We gaan nu proberen om dezelfde NGINX-pod uit te voeren met een specifieke gebruikers context `runAsUser: 2000`, zoals.
+In het vorige voor beeld heeft de container installatie kopie automatisch geprobeerd de root te gebruiken om NGINX te binden aan poort 80. Deze aanvraag is geweigerd door het standaard beleid voor *beperkte* pod-beveiliging, waardoor de pod niet kan worden gestart. We gaan nu proberen om dezelfde NGINX-pod uit te voeren met een specifieke gebruikers context, zoals `runAsUser: 2000` .
 
-Maak een bestand met `nginx-unprivileged-nonroot.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand `nginx-unprivileged-nonroot.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -274,7 +271,7 @@ Nu u het gedrag van het standaard beveiligings beleid voor pod hebt gezien, bied
 
 We gaan een beleid maken voor het afwijzen van het Peul waarvoor privileged Access moet worden aangevraagd. Andere opties, zoals *runAsUser* of toegestane *volumes*, worden niet expliciet beperkt. Dit type beleid weigert een aanvraag voor bevoegde toegang, maar anders kan het cluster de aangevraagde peul uitvoeren.
 
-Maak een bestand met `psp-deny-privileged.yaml` de naam en plak het volgende YAML-manifest:
+Maak een bestand `psp-deny-privileged.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -315,7 +312,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 In de vorige stap hebt u een pod-beveiligings beleid gemaakt waarmee u de peuling kunt afwijzen waarvoor privileged Access moet worden aangevraagd. Als u wilt toestaan dat het beleid wordt gebruikt, maakt u een *rol* of een *ClusterRole*. Vervolgens koppelt u een van deze rollen met behulp van een *RoleBinding* of *ClusterRoleBinding*.
 
-Voor dit voor beeld maakt u een ClusterRole waarmee u het beleid *PSP-deny-privileged* kunt *gebruiken* dat u in de vorige stap hebt gemaakt. Maak een bestand met `psp-deny-privileged-clusterrole.yaml` de naam en plak het volgende YAML-manifest:
+Voor dit voor beeld maakt u een ClusterRole waarmee u het beleid *PSP-deny-privileged* kunt *gebruiken* dat u in de vorige stap hebt gemaakt. Maak een bestand `psp-deny-privileged-clusterrole.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 kind: ClusterRole
@@ -339,7 +336,7 @@ Maak de ClusterRole met de opdracht [kubectl apply][kubectl-apply] en geef de na
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Maak nu een ClusterRoleBinding om de ClusterRole te gebruiken die u in de vorige stap hebt gemaakt. Maak een bestand met `psp-deny-privileged-clusterrolebinding.yaml` de naam en plak het volgende YAML-manifest:
+Maak nu een ClusterRoleBinding om de ClusterRole te gebruiken die u in de vorige stap hebt gemaakt. Maak een bestand `psp-deny-privileged-clusterrolebinding.yaml` met de naam en plak het volgende YAML-manifest:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1beta1

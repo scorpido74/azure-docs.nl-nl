@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: d2fea04e44e9a658f97d006de672fd757d894210
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b8afaae744522bec5675e5a8c17d8b0ea0be0c37
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321866"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367135"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
@@ -75,7 +75,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 |:---|:---|
 | alertId | De GUID die het waarschuwings exemplaar uniek identificeert. |
 | alertRule | De naam van de waarschuwings regel die het waarschuwings exemplaar heeft gegenereerd. |
-| Ernst | De ernst van de waarschuwing. Mogelijke waarden: Sev0, Sev1, Sev2, Sev3 of Sev4. |
+| Severity | De ernst van de waarschuwing. Mogelijke waarden: Sev0, Sev1, Sev2, Sev3 of Sev4. |
 | signalType | Hiermee wordt het signaal geïdentificeerd waarop de waarschuwings regel is gedefinieerd. Mogelijke waarden: metrisch, logboek of activiteiten logboek. |
 | monitorCondition | Wanneer een waarschuwing wordt geactiveerd, wordt de bewakings voorwaarde van de waarschuwing ingesteld op **geactiveerd**. Wanneer de onderliggende voor waarde die de waarschuwing heeft veroorzaakt, is gewist, wordt de status van de monitor ingesteld op **opgelost**.   |
 | monitoringService | De bewakings service of-oplossing die de waarschuwing heeft gegenereerd. De velden voor de waarschuwings context worden bepaald door de bewakings service. |
@@ -221,9 +221,9 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
                 ]
             }
         ]
-    },
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
+    },
 }
 ```
 

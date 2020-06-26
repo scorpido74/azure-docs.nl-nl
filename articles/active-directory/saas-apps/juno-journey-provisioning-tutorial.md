@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1a516374e0ac478b24fa1c3ced1627c4814f9bbd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647737"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367594"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Zelf studie: Juno traject configureren voor automatische gebruikers inrichting
 
@@ -40,7 +40,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 * [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
-*  Een [Juno-reis-Tenant](https://www.junojourney.com/blank).
+*  Een [Juno-reis-Tenant](https://www.junojourney.com/getstarted).
 *  Een gebruikers account in Juno traject met beheerders machtigingen.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
@@ -71,7 +71,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Juno traject in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -157,7 +157,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

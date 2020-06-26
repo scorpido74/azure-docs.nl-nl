@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB trigger voor functies 2. x
+title: Azure Cosmos DB trigger voor functies 2. x en hoger
 description: Meer informatie over het gebruik van de Azure Cosmos DB trigger in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e7a422e0637c6343e1b2757fdf9aee7375ee2c3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561630"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374233"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Cosmos DB trigger voor Azure Functions 2. x
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB trigger voor Azure Functions 2. x en hoger
 
 De Azure Cosmos DB trigger gebruikt de [Azure Cosmos DB wijzigings feed](../cosmos-db/change-feed.md) om te Luis teren naar invoeg toepassingen en updates op meerdere partities. De wijzigings feed publiceert invoegingen en updates, en kan niet worden verwijderd.
 
@@ -57,9 +57,9 @@ namespace CosmosDBSamplesV2
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een binding van Cosmos DB trigger in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden toegevoegd of gewijzigd.
+In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *function.jsin* bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden toegevoegd of gewijzigd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -93,9 +93,9 @@ Dit is de C#-script code:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden toegevoegd of gewijzigd.
+In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden toegevoegd of gewijzigd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -122,9 +122,9 @@ Dit is de Java script-code:
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een binding van Cosmos DB trigger in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden gewijzigd.
+In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *function.jsin* bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden gewijzigd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -213,11 +213,11 @@ Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `CosmosDBTrigger` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDBTrigger` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger` . |
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |

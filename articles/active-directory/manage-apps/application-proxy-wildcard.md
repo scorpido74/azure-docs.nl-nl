@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d04751cb8796290135cfc045385e1bf4cf3c3c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759943"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367730"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Joker tekens voor toepassingen in de Azure Active Directory toepassings proxy
 
@@ -62,7 +62,7 @@ Hoewel [aangepaste domeinen](application-proxy-configure-custom-domain.md) optio
 1. Een geverifieerd domein maken in Azure.
 1. Upload een TLS/SSL-certificaat in de PFX-indeling naar uw toepassings proxy.
 
-Overweeg het gebruik van een certificaat met Joker tekens voor de toepassing die u wilt maken. U kunt ook een certificaat gebruiken dat alleen specifieke toepassingen bevat. In dit geval zijn alleen de toepassingen die in het certificaat worden vermeld, toegankelijk via deze Joker teken toepassing.
+Overweeg het gebruik van een certificaat met Joker tekens voor de toepassing die u wilt maken. 
 
 Uit veiligheids overwegingen is dit een hard vereiste en worden geen joker tekens ondersteund voor toepassingen die geen aangepast domein voor de externe URL kunnen gebruiken.
 

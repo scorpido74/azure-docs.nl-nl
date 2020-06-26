@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8996335a8d39e4dd9fc79584593fe333b302c8be
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214095"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373434"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -154,7 +154,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 7. Beschrijving
 8. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -213,10 +213,6 @@ Geef het logo van uw aanbod op in drie pixel grootten:
 - **Klein** (vereist; 48 x 48)
 - **Groot** (vereist; 216 x 216)
 - **Breed** (optioneel; 255 x 115)
-
-#### <a name="hero"></a>Hero
-
-De afbeelding van de held is optioneel. Als u een waarde opgeeft, moet deze 815 x 290 pixels meten.
 
 #### <a name="screenshots"></a>Schermopnamen
 

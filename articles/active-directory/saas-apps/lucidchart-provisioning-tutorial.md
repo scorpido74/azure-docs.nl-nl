@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690562"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367968"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Zelf studie: Lucidchart configureren voor automatische gebruikers inrichting
 
@@ -82,7 +82,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Lucidchart in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -116,7 +116,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
-   |actief|Boolean-waarde|
+   |actief|Booleaans|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|Tekenreeks|
@@ -125,7 +125,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
-   |urn: IETF: params: scim: schemas: extensie: lucidchart: 1.0: gebruiker: canEdit|Boolean-waarde|
+   |urn: IETF: params: scim: schemas: extensie: lucidchart: 1.0: gebruiker: canEdit|Booleaans|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Lucidchart**.
 
@@ -162,11 +162,12 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="change-log"></a>Wijzigingenlogboek
 
 * 04/30/2020: er is ondersteuning toegevoegd voor de Enter prise extension-kenmerk en het aangepaste kenmerk ' CanEdit ' voor gebruikers.
+* 06/15/2020-tijdelijke verwijdering van gebruikers is ingeschakeld (ondersteuning van [actief](https://tools.ietf.org/html/rfc7643) kenmerk).
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 

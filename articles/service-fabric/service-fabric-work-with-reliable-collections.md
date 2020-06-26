@@ -3,12 +3,12 @@ title: Werken met betrouwbare verzamelingen
 description: Meer informatie over de aanbevolen procedures voor het werken met betrouw bare verzamelingen binnen een Azure Service Fabric-toepassing.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409808"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374692"
 ---
 # <a name="working-with-reliable-collections"></a>Werken met betrouwbare verzamelingen
 Service Fabric biedt een stateful programmeer model dat via betrouw bare verzamelingen beschikbaar is voor .NET-ontwikkel aars. Service Fabric biedt met name betrouw bare woorden lijst en betrouw bare wachtrij klassen. Wanneer u deze klassen gebruikt, wordt de status gepartitioneerd (voor schaal baarheid), gerepliceerd (voor Beschik baarheid) en trans actie binnen een partitie (voor ACID-semantiek). Laten we een typisch voor beeld van een betrouwbaar woordenlijst object bekijken en zien wat het daad werkelijk doet.
@@ -42,9 +42,14 @@ Alle bewerkingen in betrouw bare woordenlijst objecten (met uitzonde ring van Cl
 
 In de bovenstaande code wordt het ITransaction-object door gegeven aan de methode AddAsync van een betrouw bare woorden lijst. Intern, woordenlijst methoden die een sleutel accepteren, nemen een lezer/schrijf vergrendeling die is gekoppeld aan de sleutel. Als de methode de waarde van de sleutel wijzigt, neemt de methode een schrijf vergrendeling op de sleutel en als de methode alleen de waarde van de sleutel leest, wordt er een lees vergrendeling op de sleutel uitgevoerd. Omdat AddAsync de waarde van de sleutel wijzigt in de nieuwe, door gegeven waarde, wordt de schrijf vergrendeling van de sleutel genomen. Als twee (of meer) threads tegelijkertijd waarden met dezelfde sleutel kunnen toevoegen, wordt met één thread de schrijf vergrendeling opgehaald en worden de andere threads geblokkeerd. Methoden blok keren standaard Maxi maal vier seconden om de vergren deling te verkrijgen. na 4 seconden genereert de methoden een TimeoutException. Als u liever een expliciete time-outwaarde wilt door geven, kunt u een methode overbelasten.
 
-Normaal gesp roken schrijft u uw code om te reageren op een TimeoutException door deze te laten opvangen en de gehele bewerking opnieuw uit te voeren (zoals weer gegeven in de bovenstaande code). In mijn eenvoudige code roep ik alleen de taak aan. wacht vertraging van 100 milliseconden elke keer. Maar in werkelijkheid is het mogelijk dat u beter kunt werken met een bepaalde vorm van exponentiële uitstel vertraging.
+Normaal gesp roken schrijft u uw code om te reageren op een TimeoutException door deze te laten opvangen en de gehele bewerking opnieuw uit te voeren (zoals weer gegeven in de bovenstaande code). In deze eenvoudige code wordt de taak gewoon aangeroepen. Stel elke keer een vertraging van 100 milliseconden in. Maar in werkelijkheid is het mogelijk dat u beter kunt werken met een bepaalde vorm van exponentiële uitstel vertraging.
 
-Zodra de vergren deling is verkregen, voegt AddAsync de sleutel-en waarde-object verwijzingen toe aan een interne tijdelijke woorden lijst die is gekoppeld aan het ITransaction-object. Dit wordt gedaan om u te voorzien van lees-uw eigen schrijf semantiek. Dat wil zeggen, nadat u AddAsync aanroept, een latere aanroepen van TryGetValueAsync (met hetzelfde ITransaction-object) de waarde retourneert, zelfs als u de trans actie nog niet hebt doorgevoerd. Vervolgens worden uw sleutel-en waarde-objecten naar byte-matrices geserialiseerd en worden deze byte-matrices toegevoegd aan een logboek bestand op het lokale knoop punt. Ten slotte verzendt AddAsync de byte matrices naar alle secundaire replica's zodat ze dezelfde sleutel/waarde-informatie hebben. Hoewel de sleutel/waarde-informatie naar een logboek bestand is geschreven, wordt de informatie niet beschouwd als onderdeel van de woorden lijst tot de trans actie waaraan ze zijn gekoppeld, is doorgevoerd.
+Zodra de vergren deling is verkregen, voegt AddAsync de sleutel-en waarde-object verwijzingen toe aan een interne tijdelijke woorden lijst die is gekoppeld aan het ITransaction-object. Dit wordt gedaan om u te voorzien van lees-uw eigen schrijf semantiek. Dat wil zeggen dat nadat u AddAsync aanroept, een later aanroepen naar TryGetValueAsync met hetzelfde ITransaction-object de waarde retourneert, zelfs als u de trans actie nog niet hebt doorgevoerd.
+
+> [!NOTE]
+> Het aanroepen van TryGetValueAsync met een nieuwe trans actie retourneert een verwijzing naar de laatste toegezegde waarde. Wijzig deze verwijzing niet rechtstreeks, omdat hiermee het mechanisme voor het persistent maken en repliceren van de wijzigingen wordt omzeild. We raden u aan de waarden alleen-lezen in te stellen, zodat de waarde voor een sleutel alleen kan worden gewijzigd met behulp van betrouw bare Dictionary-Api's.
+
+Vervolgens worden uw sleutel-en waarde-objecten naar byte-matrices geserialiseerd en worden deze byte-matrices toegevoegd aan een logboek bestand op het lokale knoop punt. Ten slotte verzendt AddAsync de byte matrices naar alle secundaire replica's zodat ze dezelfde sleutel/waarde-informatie hebben. Hoewel de sleutel/waarde-informatie naar een logboek bestand is geschreven, wordt de informatie niet beschouwd als onderdeel van de woorden lijst tot de trans actie waaraan ze zijn gekoppeld, is doorgevoerd.
 
 In de bovenstaande code voert de aanroep van CommitAsync alle bewerkingen van de trans actie door. In het bijzonder worden door voeren gegevens toegevoegd aan het logboek bestand op het lokale knoop punt en wordt ook de doorvoer record naar alle secundaire replica's verzonden. Zodra een quorum (meerderheid) van de replica's heeft gereageerd, worden alle gegevens wijzigingen als permanent beschouwd en worden alle vergren delingen die zijn gekoppeld aan sleutels die via het ITransaction-object zijn gemanipuleerd, zodanig vrijgegeven dat andere threads/trans acties dezelfde sleutels en hun waarden kunnen manipuleren.
 
@@ -55,13 +60,13 @@ In sommige werk belastingen, zoals een gerepliceerde cache, kan incidenteel gege
 
 Op dit moment is volatiele ondersteuning alleen beschikbaar voor betrouw bare woorden lijsten en betrouw bare wacht rijen en niet ReliableConcurrentQueues. Raadpleeg de lijst met [aanvullende opmerkingen](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections) om te informeren of u vluchtige verzamelingen wilt gebruiken.
 
-Als u vluchtige ondersteuning wilt inschakelen in uw service ```HasPersistedState``` , stelt u de markering in ```false```Service type declaratie in op, bijvoorbeeld:
+Als u vluchtige ondersteuning wilt inschakelen in uw service, stelt ```HasPersistedState``` u de markering in Service type declaratie in op ```false``` , bijvoorbeeld:
 ```xml
 <StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
 ```
 
 >[!NOTE]
->Bestaande permanente Services kunnen niet vluchtig worden gemaakt en vice versa. Als u dit wilt doen, moet u de bestaande service verwijderen en vervolgens de service implementeren met de bijgewerkte vlag. Dit betekent dat u een volledig gegevens verlies moet opdoen als u de ```HasPersistedState``` markering wilt wijzigen. 
+>Bestaande permanente Services kunnen niet vluchtig worden gemaakt en vice versa. Als u dit wilt doen, moet u de bestaande service verwijderen en vervolgens de service implementeren met de bijgewerkte vlag. Dit betekent dat u een volledig gegevens verlies moet opdoen als u de markering wilt wijzigen ```HasPersistedState``` . 
 
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>Veelvoorkomende Valk uilen en hoe u deze voor komt
 Nu u begrijpt hoe de betrouw bare verzamelingen intern werken, laten we eens kijken naar enkele veelvoorkomende toepassingen. Zie de onderstaande code:
@@ -145,7 +150,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Onveranderbare gegevens typen definiëren om een programmeer fout te voor komen
-In het ideale geval laten we de compiler fouten melden wanneer u per ongeluk code produceert die mutates status van een object die u zou moeten overwegen onveranderbaar te zijn. Maar de C#-compiler heeft hiervoor niet de mogelijkheid. Om mogelijke programmeer fouten te voor komen, raden we u ten zeerste aan de typen die u gebruikt met betrouw bare verzamelingen te definiëren als onveranderlijke typen. Dit betekent met name dat u de kern waardetypen (zoals getallen [Int32, UInt64, etc.], DateTime, GUID, time span en like) aanhoudt. U kunt ook een teken reeks gebruiken. Het is raadzaam om verzamelings eigenschappen te voor komen als serialisatie en deserialisatie van deze gegevens. Als u echter verzamelings eigenschappen wilt gebruiken, wordt het gebruik van aanbevolen. NET onveranderlijke verzamelingen bibliotheek ([System. Collections. onveranderbaar](https://www.nuget.org/packages/System.Collections.Immutable/)). Deze tape wisselaar kan worden gedownload van https://nuget.org. We raden u ook aan om uw klassen te verzegelen en de velden alleen-lezen waar mogelijk te maken.
+In het ideale geval laten we de compiler fouten melden wanneer u per ongeluk code produceert die mutates status van een object die u zou moeten overwegen onveranderbaar te zijn. Maar de C#-compiler heeft hiervoor niet de mogelijkheid. Om mogelijke programmeer fouten te voor komen, raden we u ten zeerste aan de typen die u gebruikt met betrouw bare verzamelingen te definiëren als onveranderlijke typen. Dit betekent met name dat u de kern waardetypen (zoals getallen [Int32, UInt64, etc.], DateTime, GUID, time span en like) aanhoudt. U kunt ook een teken reeks gebruiken. Het is raadzaam om verzamelings eigenschappen te voor komen als serialisatie en deserialisatie van deze gegevens. Als u echter verzamelings eigenschappen wilt gebruiken, wordt het gebruik van aanbevolen. NET onveranderlijke verzamelingen bibliotheek ([System. Collections. onveranderbaar](https://www.nuget.org/packages/System.Collections.Immutable/)). Deze tape wisselaar kan worden gedownload van https://nuget.org . We raden u ook aan om uw klassen te verzegelen en de velden alleen-lezen waar mogelijk te maken.
 
 In het onderstaande type user info wordt gedemonstreerd hoe u een onveranderbaar type kunt definiëren met voor noemde aanbevelingen.
 

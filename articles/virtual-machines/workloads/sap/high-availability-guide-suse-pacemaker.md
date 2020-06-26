@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800186"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368244"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker instellen voor SUSE Linux Enterprise Server in azure
 
@@ -34,9 +34,9 @@ ms.locfileid: "83800186"
 
 Er zijn twee opties voor het instellen van een pacemaker-cluster in Azure. U kunt een afschermings agent gebruiken. Dit zorgt ervoor dat er een knoop punt kan worden gestart via de Azure-Api's of dat u een SBD-apparaat kunt gebruiken.
 
-Het SBD-apparaat vereist ten minste één extra virtuele machine die fungeert als iSCSI-doel server en een SBD-apparaat biedt. Deze iSCSI-doel servers kunnen echter worden gedeeld met andere pacemaker-clusters. Het voor deel van het gebruik van een SBD-apparaat is een snellere failover-tijd en als u gebruikmaakt van SBD-apparaten on-premises, hoeven er geen wijzigingen te worden aangebracht in de manier waarop u het pacemaker-cluster gebruikt. U kunt Maxi maal drie SBD-apparaten voor een pacemaker-cluster gebruiken om ervoor te zorgen dat een SBD-apparaat niet meer beschikbaar is, bijvoorbeeld tijdens het bijwerken van het besturings systeem van de iSCSI-doel server. Als u meer dan één SBD-apparaat per pacemaker wilt gebruiken, moet u ervoor zorgen dat u meerdere iSCSI-doel servers implementeert en een SBD verbindt vanaf elke iSCSI-doel server. We raden u aan een SBD-apparaat of drie te gebruiken. Pacemaker kan een cluster knooppunt niet automatisch afomheiningen als u alleen twee SBD-apparaten configureert en een van de knoop punten niet beschikbaar is. Als u een omheining wilt kunnen bereiken wanneer een iSCSI-doel server niet beschikbaar is, moet u drie SBD-apparaten gebruiken en daarom drie iSCSI-doel servers.
+Het SBD-apparaat vereist ten minste één extra virtuele machine die fungeert als iSCSI-doel server en een SBD-apparaat biedt. Deze iSCSI-doel servers kunnen echter worden gedeeld met andere pacemaker-clusters. Het voor deel van het gebruik van een SBD-apparaat is dat als u al gebruikmaakt van SBD-apparaten on-premises geen wijzigingen nodig hebt in de manier waarop u het pacemaker-cluster gebruikt. U kunt Maxi maal drie SBD-apparaten voor een pacemaker-cluster gebruiken om ervoor te zorgen dat een SBD-apparaat niet meer beschikbaar is, bijvoorbeeld tijdens het bijwerken van het besturings systeem van de iSCSI-doel server. Als u meer dan één SBD-apparaat per pacemaker wilt gebruiken, moet u ervoor zorgen dat u meerdere iSCSI-doel servers implementeert en een SBD verbindt vanaf elke iSCSI-doel server. We raden u aan een SBD-apparaat of drie te gebruiken. Pacemaker kan een cluster knooppunt niet automatisch afomheiningen als u alleen twee SBD-apparaten configureert en een van de knoop punten niet beschikbaar is. Als u een omheining wilt kunnen opvangen wanneer een iSCSI-doel server niet beschikbaar is, moet u drie SBD-apparaten gebruiken en daarom drie iSCSI-doel servers. Dit is de meest flexibele configuratie wanneer u SBDs gebruikt.
 
-Als u niet wilt investeren in één extra virtuele machine, kunt u ook de Azure Fence-agent gebruiken. Het nadeel is dat een failover tussen 10 en 15 minuten kan duren als de stop van een resource mislukt of de cluster knooppunten elkaar niet meer kunnen communiceren.
+De Azure Fence-agent vereist geen extra virtuele machine (s) implementeren.   
 
 ![Overzicht van pacemaker op SLES](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,32 +413,36 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. **[A]** omheining-agents installeren
+1. **[A] het** pakket fence-agents installeren, als u een STONITH-apparaat gebruikt, op basis van de Azure Fence-agent.  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > Als SuSE Linux Enter prise server voor SAP 15 wordt gebruikt, moet u er rekening mee houden dat u aanvullende module wilt activeren en extra onderdelen wilt installeren. Dit is de vereiste voor het gebruik van de Azure Fence-agent. Voor meer informatie over SUSE-modules en-extensies raadpleegt u de [uitleg over modules en extensies](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html). Volg de instructies onderstaande om Azure python SDK te installeren. 
+   > De geïnstalleerde versie van pakket **Fence-agents** moet ten minste **4.4.0** zijn om te profiteren van de snellere failover-tijden met de Azure Fence-agent, als een cluster knooppunt moet worden geomheiningd. Het is raadzaam om het pakket bij te werken als er een lagere versie wordt uitgevoerd.  
 
-   De volgende instructies voor het installeren van de Azure python SDK zijn alleen van toepassing op SuSE Enter prise server voor SAP **15**.  
 
-    - Als u gebruikmaakt van uw eigen abonnement, volgt u deze instructies  
+1. **[A]** Azure python SDK installeren 
+   - Op SLES 12 SP4 of SLES 12 SP5
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
 
-    <pre><code>
-    #Activate module PackageHub/15/x86_64
-    sudo SUSEConnect -p PackageHub/15/x86_64
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
-
-     - Als u gebruikmaakt van betalen per gebruik-abonnement, volgt u deze instructies  
-
-    <pre><code>#Activate module PackageHub/15/x86_64
-    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
+   - Op SLES 15 en hoger 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >Afhankelijk van uw versie en type installatie kopie moet u mogelijk de open bare Cloud extensie voor de besturingssysteem versie activeren voordat u Azure python SDK kunt installeren.
+   >U kunt de uitbrei ding controleren door SUSEConnect---List-Extensions uit te voeren.  
+   >De snellere failover-tijden met Azure Fence agent:
+   > - op SLES 12 SP4 of SLES 12 SP5 Installeer versie **4.6.2** of hoger van pakket python-Azure-verwerkings-compute  
+   > - op SLES 15 installeren-versie **4.6.2** of hoger van pakket python**3**-Azure--compute 
 
 1. **[A]** omzetting van hostnaam van installatie
 
@@ -457,7 +461,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    </code></pre>
 
 1. **[1]** cluster installeren
-
+- Als u gebruikmaakt van SBD-apparaten voor omheining
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -466,6 +470,19 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
    # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- Als *u geen gebruik maakt* van SBD-apparaten voor omheining
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -528,81 +545,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    <pre><code>sudo service corosync restart
    </code></pre>
 
-## <a name="create-azure-fence-agent-stonith-device"></a>Een STONITH-apparaat van Azure Fence agent maken
-
-Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Microsoft Azure. Volg deze stappen om een service-principal te maken.
-
-1. Ga naar <https://portal.azure.com>
-1. Open de Blade Azure Active Directory  
-   Ga naar eigenschappen en noteer de map-ID. Dit is de **Tenant-id**.
-1. Klik op App-registraties
-1. Klik op nieuwe registratie
-1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
-2. Selecteer het toepassings type ' Web ', voer een aanmeldings-URL in (bijvoorbeeld http: \/ /localhost) en klik op toevoegen.  
-   De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn
-1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
-1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
-1. Schrijf de waarde op. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
-1. Selecteer Overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
-
-### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
-
-De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U moet de Service-Principal machtigingen geven om alle virtuele machines van het cluster te starten en te stoppen (toewijzing ongedaan te maken). Als u de aangepaste rol nog niet hebt gemaakt, kunt u deze maken met behulp van [Power shell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) of [Azure cli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
-
-Gebruik de volgende inhoud voor het invoer bestand. U moet de inhoud aanpassen aan uw abonnementen, door c276fc76-9cd4-44c9-99a7-4fd71546436e en e91d47c4-76f3-4271-a796-21b4ecfe3624 te vervangen door de Id's van uw abonnement. Als u slechts één abonnement hebt, verwijdert u de tweede vermelding in AssignableScopes.
-
-```json
-{
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action" 
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
-}
-```
-
-### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** de aangepaste rol toewijzen aan de Service-Principal
-
-Wijs de aangepaste rol Linux Fence-agent rol toe die in het laatste hoofd stuk is gemaakt voor de Service-Principal. Gebruik de rol owner niet meer.
-
-1. Ga naar[https://portal.azure.com](https://portal.azure.com)
-1. Open de Blade alle resources
-1. De virtuele machine van het eerste cluster knooppunt selecteren
-1. Klik op toegangs beheer (IAM)
-1. Klik op roltoewijzing toevoegen
-1. Selecteer de rol ' Linux Fence-agent functie '
-1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
-1. Op Opslaan klikken
-
-Herhaal de bovenstaande stappen voor het tweede cluster knooppunt.
-
-### <a name="1-create-the-stonith-devices"></a>**[1]** de STONITH-apparaten maken
-
-Nadat u de machtigingen voor de virtuele machines hebt bewerkt, kunt u de STONITH-apparaten in het cluster configureren.
-
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
-sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
-
-sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
-</code></pre>
-
-> [!TIP]
->De Azure Fence-agent vereist uitgaande connectiviteit met open bare eind punten zoals gedocumenteerd, samen met mogelijke oplossingen, in [open bare-eindpunt connectiviteit voor vm's met behulp van standaard ILB](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
-
 ## <a name="default-pacemaker-configuration-for-sbd"></a>Standaard pacemaker-configuratie voor SBD
+
+De configuratie in deze sectie is alleen van toepassing als u gebruikmaakt van SBD STONITH.  
 
 1. **[1]** het gebruik van een STONITH-apparaat inschakelen en de Fence-vertraging instellen
 
@@ -617,6 +562,92 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    params pcmk_delay_max="15" \
    op monitor interval="15" timeout="15"
 </code></pre>
+
+## <a name="create-azure-fence-agent-stonith-device"></a>Een STONITH-apparaat van Azure Fence agent maken
+
+Deze sectie van de documentatie is alleen van toepassing als STONITH wordt gebruikt op basis van de Azure Fence-agent.
+Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Microsoft Azure. Volg deze stappen om een service-principal te maken.
+
+1. Ga naar <https://portal.azure.com>
+1. Open de Blade Azure Active Directory  
+   Ga naar Eigenschappen en noteer de map-id. Dit is de **Tenant-id**.
+1. Klik op App-registraties
+1. Klik op nieuwe registratie
+1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
+2. Selecteer het toepassings type ' Web ', voer een aanmeldings-URL in (bijvoorbeeld http: \/ /localhost) en klik op toevoegen.  
+   De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn
+1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
+1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
+1. Schrijf de waarde op. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
+1. Selecteer Overzicht. Noteer de toepassings-id. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
+
+### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
+
+De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U moet de Service-Principal machtigingen geven om alle virtuele machines van het cluster te starten en te stoppen (toewijzing ongedaan te maken). Als u de aangepaste rol nog niet hebt gemaakt, kunt u deze maken met behulp van [Power shell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) of [Azure cli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
+
+Gebruik de volgende inhoud voor het invoer bestand. U moet de inhoud aanpassen aan uw abonnementen, door c276fc76-9cd4-44c9-99a7-4fd71546436e en e91d47c4-76f3-4271-a796-21b4ecfe3624 te vervangen door de Id's van uw abonnement. Als u slechts één abonnement hebt, verwijdert u de tweede vermelding in AssignableScopes.
+
+```json
+{
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** de aangepaste rol toewijzen aan de Service-Principal
+
+Wijs de aangepaste rol Linux Fence-agent rol toe die in het laatste hoofd stuk is gemaakt voor de Service-Principal. Gebruik de rol owner niet meer.
+
+1. Ga naar[https://portal.azure.com](https://portal.azure.com)
+1. Open de blade Alle resources
+1. De virtuele machine van het eerste clusterknooppunt selecteren
+1. Klik op Toegangsbeheer (IAM)
+1. Klik op roltoewijzing toevoegen
+1. Selecteer de rol ' Linux Fence-agent functie '
+1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
+1. Op Opslaan klikken
+
+Herhaal de bovenstaande stappen voor het tweede cluster knooppunt.
+
+### <a name="1-create-the-stonith-devices"></a>**[1]** de STONITH-apparaten maken
+
+Nadat u de machtigingen voor de virtuele machines hebt bewerkt, kunt u de STONITH-apparaten in het cluster configureren.
+
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
+
+sudo crm configure property stonith-timeout=900
+
+</code></pre>
+
+> [!IMPORTANT]
+> De bewakings-en omheinings bewerkingen worden gedeserialiseerd. Als er een langere bewakings bewerking en gelijktijdige Afleidings gebeurtenis optreedt, is er dus geen vertraging voor de failover van het cluster vanwege de bewakings bewerking die al wordt uitgevoerd.
+
+> [!TIP]
+>De Azure Fence-agent vereist uitgaande connectiviteit met open bare eind punten zoals gedocumenteerd, samen met mogelijke oplossingen, in [open bare-eindpunt connectiviteit voor vm's met behulp van standaard ILB](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-configuratie voor geplande Azure-evenementen
 

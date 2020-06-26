@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: b02ba8bd6e3ae858c9e3ded07776a8a83ede171a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212583"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374267"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Een nieuwe SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -140,7 +140,7 @@ Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeve
 6. Privacybeleid
 7. Naam van aanbieding
 8. Samenvatting
-9. Description
+9. Beschrijving
 10. Scherm afbeeldingen/Video's
 11. Documenten
 
@@ -256,7 +256,7 @@ Geef de details op die in Marketplace moeten worden weer gegeven, inclusief besc
 - **Zoek trefwoorden** : Voer Maxi maal drie Zoek trefwoorden in die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace ('s).
 - **Aan de slag-instructies** (vereist): in dit gedeelte wordt uitgelegd hoe u uw app kunt configureren en gebruiken voor potentiële klanten.  Deze Snelstartgids kan koppelingen bevatten naar gedetailleerde online documentatie. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 
 Dit veld is vereist.
 
@@ -287,7 +287,6 @@ Dit veld is vereist.
     - **Gemiddeld** (90 x 90, vereist)
     - **Groot** (216 x 216, vereist)
     - **Breed** (255 x 115)
-    - **Held** (815 x 290)
 
 - **Scherm afbeeldingen** (vereist): Voeg een maximum van vijf scherm opnamen toe, met een grootte van 1280 x 720 pixels. Alle installatie kopieën moeten zich in hebben. PNG-indeling.
 - **Video's** (optioneel): voeg links toe aan Video's die uw aanbieding aantonen. U kunt links gebruiken naar YouTube-en/of Vimeo-Video's, die samen met uw aanbieding aan klanten worden weer gegeven. U moet ook een miniatuur afbeelding van de video invoeren, met een grootte van 1280 x 720 pixels in PNG-indeling. U kunt Maxi maal vier Video's per aanbieding weer geven.

@@ -4,12 +4,12 @@ description: Meer informatie over hoe u Azure Backup kunt gebruiken om gegevens 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629286"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373299"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Werk stroom voor offline back-up in Azure Backup
 
@@ -90,7 +90,7 @@ In deze sectie wordt de werk stroom voor offline back-ups beschreven, zodat uw g
 
     * **Faserings locatie**: de tijdelijke opslag locatie waarnaar de eerste back-up wordt geschreven. De faserings locatie Bekan zich op een netwerk share of een lokale computer. Als de Kopieer computer en de bron computer verschillend zijn, geeft u het volledige netwerkpad van de faserings locatie op.
     * **Azure Resource Manager Storage-account**: de naam van het Resource Manager-type opslag account (algemeen gebruik v1 of algemeen gebruik v2) in een Azure-abonnement.
-    * **Azure storage container**: de naam van de doel opslag-Blob in het Azure Storage-account waar de back-upgegevens worden geïmporteerd voordat ze worden gekopieerd naar de Recovery Services kluis.
+    * **Azure storage container**: de naam van de doel-Blob-opslag container in het Azure Storage-account waar de back-upgegevens worden geïmporteerd voordat deze naar de Recovery Services kluis worden gekopieerd.
     * **Azure-abonnements-id**: de id voor het Azure-abonnement waarin het Azure-opslag account is gemaakt.
     * **Azure import-taak naam**: de unieke naam waarmee de Azure import/export-service en Azure Backup het volgen van de overdracht van gegevens die op schijven zijn verzonden naar Azure.
   

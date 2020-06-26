@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a8d156cc2eea881b84dc0ef58f7b6538e0225f
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759858"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367747"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fout bericht ' kan geen toegang krijgen tot deze bedrijfs toepassing ' wanneer u een toepassings proxy toepassing gebruikt
 
@@ -71,7 +71,7 @@ Als eerste snelle stap controleert en corrigeert u de interne URL door de toepas
 Controleren of de toepassing is toegewezen aan een werkende connector groep:
 
 1. Open de toepassing in de portal door naar **Azure Active Directory**te gaan, op **bedrijfs toepassingen**en vervolgens op **alle toepassingen** te klikken. Open de toepassing en selecteer vervolgens **toepassings proxy** in het menu links.
-1. Bekijk het veld connector groep. Als er geen actieve connectors in de groep aanwezig zijn, wordt er een waarschuwing weer gegeven. Als er geen waarschuwingen worden weer gegeven, gaat u naar om te controleren of alle [vereiste poorten](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to) zijn toegestaan.
+1. Bekijk het veld connector groep. Als er geen actieve connectors in de groep aanwezig zijn, wordt er een waarschuwing weer gegeven. Als er geen waarschuwingen worden weer gegeven, gaat u naar om te controleren of alle [vereiste poorten](application-proxy-add-on-premises-application.md) zijn toegestaan.
 1. Als de verkeerde connector groep wordt weer gegeven, gebruikt u de vervolg keuzelijst om de juiste groep te selecteren en controleert u of er geen waarschuwingen meer beschikbaar zijn. Als de bedoelde connector groep wordt weer gegeven, klikt u op het waarschuwings bericht om de pagina te openen met het beheer van connectors.
 1. Hier volgen enkele manieren om verder in te zoomen:
 
@@ -83,7 +83,7 @@ Nadat u deze stappen hebt uitgevoerd om ervoor te zorgen dat de toepassing wordt
 
 ## <a name="check-all-required-ports-are-open"></a>Controleer of alle vereiste poorten zijn geopend
 
-Raadpleeg de [documentatie over het openen van poorten](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)om te controleren of alle vereiste poorten zijn geopend. Als alle vereiste poorten open zijn, gaat u naar de volgende sectie.
+Controleer of alle vereiste poorten zijn geopend. Zie voor de vereiste poorten het gedeelte poorten openen [in de zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in azure Active Directory](application-proxy-add-on-premises-application.md). Als alle vereiste poorten open zijn, gaat u naar de volgende sectie.
 
 ## <a name="check-for-other-connector-errors"></a>Controleren op andere connector fouten
 

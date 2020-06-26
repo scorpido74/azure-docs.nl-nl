@@ -10,21 +10,18 @@ ms.topic: include
 ms.custom: include file
 ms.date: 01/15/2020
 ms.author: diberry
-ms.openlocfilehash: 11abd52681d7c9962af4e5bf0728f97b256223c1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b1013b261e9449aef45f629c729579f4c87c1f6b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122899"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378586"
 ---
 ## <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
 
-Maak een resource voor Personaler met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Maak een resource voor Personaler met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. 
 
-* Ontvang een [proef versie](https://azure.microsoft.com/try/cognitive-services) die 7 dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
-* Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
-
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
+Nadat u een sleutel van uw resource hebt opgehaald, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
 * `PERSONALIZER_RESOURCE_KEY`voor de resource sleutel.
 * `PERSONALIZER_RESOURCE_ENDPOINT`voor het resource-eind punt.

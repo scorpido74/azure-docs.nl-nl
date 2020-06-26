@@ -7,15 +7,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/01/2017
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200201"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373978"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ontwerp overwegingen voor schaal sets
 In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](virtual-machine-scale-sets-overview.md)voor meer informatie over wat virtual machine Scale sets zijn.

@@ -1,19 +1,19 @@
 ---
-title: Invoer binding Azure Cosmos DB voor functies 2. x
+title: Invoer binding Azure Cosmos DB voor functies 2. x en hoger
 description: Meer informatie over het gebruik van de Azure Cosmos DB invoer binding in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: bce234b0d2fee38f0644ae0bd961cdcd815b0bd2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: b6daccb7ec4665842fd42a0938e3cbf18e2d7540
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667893"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374369"
 ---
-# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x
+# <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x en hoger
 
 Bij een Azure Cosmos DB-invoerbinding wordt de SQL-API gebruikt voor het ophalen van een of meer Azure Cosmos DB-documenten en het doorgeven daarvan aan de invoerparameter van de functie. De document-id of queryparameters kunnen worden bepaald op basis van de trigger waarmee de functie wordt geactiveerd.
 
@@ -1424,7 +1424,7 @@ Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
 

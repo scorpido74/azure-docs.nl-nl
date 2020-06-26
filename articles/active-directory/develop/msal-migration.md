@@ -13,16 +13,16 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 893f449c6a8e6b41a79fe9d7c26db461b757e4a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 52a4a7131c85231107a2a23a1916016776b219fd
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317761"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367424"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Toepassingen migreren naar micro soft Authentication Library (MSAL)
 
-Veel ontwikkel aars hebben toepassingen gebouwd en geïmplementeerd met behulp van de actieve Active Directory Authentication Library (ADAL). We raden u nu aan de micro soft Authentication Library (MSAL) te gebruiken voor verificatie en autorisatie van Azure AD-entiteiten.
+Veel ontwikkel aars hebben toepassingen gebouwd en geïmplementeerd met behulp van de Azure Active Directory Authentication Library (ADAL). We raden u nu aan de micro soft Authentication Library (MSAL) te gebruiken voor verificatie en autorisatie van Azure AD-entiteiten.
 
 Met behulp van MSAL in plaats van ADAL:
 

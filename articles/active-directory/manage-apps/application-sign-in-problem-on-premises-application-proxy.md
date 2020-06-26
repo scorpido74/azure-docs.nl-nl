@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c444e54d29482f69d924df3796cc5da4afb4188
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 29aa4eb0bc40f0b2b960c49cf7b17dc62d92b0ab
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84759093"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367713"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Problemen bij het aanmelden bij een on-premises toepassing met behulp van de Azure AD-toepassings proxy
 
@@ -36,7 +36,7 @@ De volgende documenten kunnen u helpen een aantal van de meest voorkomende probl
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Ik heb een verbindingsprobleem in mijn toepassing
   De volgende documenten kunnen u helpen een aantal van de meest voorkomende problemen in deze categorie op te lossen.
-  * [Ik weet niet welke poorten ik voor de toepassing moet openen](application-proxy-connectivity-ports-how-to.md)
+  * [Ik weet niet welke poorten ik voor de toepassing moet openen](application-proxy-add-on-premises-application.md)
   * [Er treedt een probleem op omdat er geen werkende connector is in een connectorgroep voor de toepassing](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Ik heb een probleem bij het configureren van de Azure AD-toepassingsproxy in de beheerportal

@@ -3,17 +3,19 @@ title: Hybrid Cloud extension (HCX) installeren
 description: De VMware Hybrid Cloud extension (HCX)-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing (AVS)
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: dc5f7f82b83c82538b2d5a7b4c87131afb3fcc20
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873655"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367543"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
-In dit artikel gaan we procedures volgen voor het instellen van de VMware Hybrid Cloud extension (HCX)-oplossing voor uw Azure VMware-oplossing (AVS) Private Cloud. HCX Advanced (standaard installatie) ondersteunt Maxi maal drie externe sites, waarbij elke externe site vereist dat een HCX Enter prise Manager of connector moet worden geïnstalleerd en geactiveerd.
-HCX maakt de migratie van uw VMware-workloads naar de Cloud en of andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen. Als er meer dan drie sites zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing via ondersteuning in te scha kelen. HCX Enter prise heeft extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+In dit artikel worden de procedures beschreven voor het instellen van de VMWare Hybrid Cloud extension (HCX)-oplossing voor uw Azure VMWare-oplossing (AVS) privécloud. HCX maakt de migratie van uw VMware-workloads naar de Cloud en andere verbonden sites mogelijk via verschillende ingebouwde HCX ondersteunde migratie typen.
+
+HCX Advanced, de standaard installatie, ondersteunt Maxi maal drie externe sites. Als er meer dan drie sites zijn vereist, hebben klanten de mogelijkheid om de HCX Enter prise-invoeg toepassing via ondersteuning in te scha kelen. HCX Enter prise-installatie bevat extra kosten voor klanten na algemene Beschik baarheid (GA), maar biedt [extra functies](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+
 
 Controleer [voordat u](#before-you-begin)aan de slag gaat, vereisten voor de [Software versie](#software-version-requirements)en de [vereisten eerst.](#prerequisites) 
 
@@ -25,7 +27,7 @@ Vervolgens worden alle nood zakelijke procedures door lopen:
 > * Netwerk-uplink en service-net configureren
 > * Voltooi de installatie door de status van het apparaat te controleren
 
-Nadat de installatie is voltooid, worden de aanbevolen volgende stappen gegeven.
+Nadat de installatie is voltooid, kunt u de aanbevolen vervolg stappen volgen die aan het einde van dit artikel worden gegeven.  
 
 ## <a name="before-you-begin"></a>Voordat u begint
     
@@ -36,17 +38,17 @@ Nadat de installatie is voltooid, worden de aanbevolen volgende stappen gegeven.
 * Bekijk eventueel gerelateerde VMware-materialen op HCX, zoals de VMware vSphere [blog serie](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) op HCX. 
 * Bestel een AVS HCX Enter prise Activation via AVS-ondersteunings kanalen.
 
-Het aanpassen van werk belastingen met reken-en opslag resources is een essentiële plannings stap bij het voorbereiden van het gebruik van de HCX-oplossing van de AVS-Privécloud. Deze stap van grootte moet worden geadresseerd als onderdeel van de eerste planning van de particuliere cloud omgeving. 
+Het aanpassen van werk belastingen met reken-en opslag resources is een essentiële plannings stap bij het voorbereiden van het gebruik van de HCX-oplossing van de AVS-Privécloud. Adresseer de grootte stap als onderdeel van de eerste planning van de particuliere cloud omgeving.   
 
 ## <a name="software-version-requirements"></a>Software versie vereisten
 Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevoerd. 
                                                          
-| Onderdeel type                                                          | Vereisten voor de bron omgeving                                                                   | Vereisten voor de doel omgeving                                                                      |
+| Onderdeel type    | Vereisten voor de bron omgeving    | Vereisten voor de doel omgeving   |
 | --- | --- | --- |
-| vCenter Server                                                          | 5.1<br/><br/>Als u 5,5 U1 of eerder gebruikt, gebruikt u de zelfstandige HCX-gebruikers interface voor HCX-bewerkingen.         | 6,0 U2 en hoger                                                                                          |
-| ESXi                                                                    | 5.0                                                                                               | ESXi 6,0 en hoger                                                                                        |
-| NSX                                                                     | Voor HCX netwerk extensie van logische switches op de bron: NSXv 6.2 + of NSX-T 2.4 +              | NSXv 6.2 + of NSX-T 2.4 +<br/><BR/voor HCX nabij route ring: NSXv 6.4 + (proximity Routing wordt niet ondersteund met NSX-T) |
-| vCloud Director                                                         | Niet vereist-geen interoperabiliteit met vCloud Director op de bron site | Wanneer de doel omgeving is geïntegreerd met vCloud Director, is de minimale waarde 9.1.0.2.              |
+| vCenter Server   | 5.1<br/><br/>Als u 5,5 U1 of eerder gebruikt, gebruikt u de zelfstandige HCX-gebruikers interface voor HCX-bewerkingen.  | 6,0 U2 en hoger   |
+| ESXi   | 5.0    | ESXi 6,0 en hoger   |
+| NSX    | Voor HCX netwerk extensie van logische switches op de bron: NSXv 6.2 + of NSX-T 2.4 +   | NSXv 6.2 + of NSX-T 2.4 +<br/><br/>Voor HCX nabij route ring: NSXv 6.4 + (proximity Routing wordt niet ondersteund met NSX-T) |
+| vCloud Director   | Niet vereist-geen interoperabiliteit met vCloud Director op de bron site | Wanneer u de doel omgeving met vCloud Director integreert, is de minimale 9.1.0.2.  |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -58,7 +60,7 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
 * On-premises HCX IX en NE apparaten moeten een vCenter-en ESXi-infra structuur kunnen bereiken.
 
-* Voor het implementeren van het WAN Interconnect-apparaat moet u naast het/22 CIDR-netwerk adres blok dat wordt gebruikt voor de implementatie van SDDC in de Azure Portal, HCX een/29-blok vereist. U moet dit in uw netwerk plannen.
+* Voor het implementeren van het WAN Interconnect-apparaat moet u naast het/22 CIDR-netwerk adres blok dat wordt gebruikt voor de implementatie van SDDC in de Azure Portal, HCX een/29-blok vereist. Zorg ervoor dat u deze vereiste in uw netwerk planning confactoreert.
 
 ## <a name="deploy-the-vmware-hcx-ova-on-premises"></a>De VMware HCX-eicellen on-premises implementeren
 
@@ -66,11 +68,11 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
     ![HCX in naar AVS vCenter selecteren](./media/hybrid-cloud-extension-installation/avs-vsphere-client.png)
 
-1. Als u het VMware HCX eicellen-bestand wilt downloaden, selecteert u **beheerders**  >  **systeem updates**.
+1. Selecteer onder **beheer** **systeem updates** en selecteer vervolgens **Download koppeling aanvragen** om het VMware HCX eicellen-bestand te downloaden.
 
     ![Systeem updates ophalen](./media/hybrid-cloud-extension-installation/administration-updates.png)
 
-1. Selecteer een OVF-sjabloon om te implementeren op on-premises vCenter.  
+1. Ga vervolgens naar de on-premises vCenter en selecteer een OVF-sjabloon om te implementeren in uw on-premises vCenter.  
 
     ![OVF-sjabloon selecteren](./media/hybrid-cloud-extension-installation/select-template.png)
 
@@ -90,7 +92,10 @@ Voor de infrastructuur onderdelen moet de vereiste minimum versie worden uitgevo
 
 Na de installatie voert u de volgende stappen uit.
 
-1. Open HCX Manager op `https://HCXManagerIP:9443` en meld u aan met uw gebruikers naam en wacht woord. 
+1. Meld u aan bij on-premises HCX Manager op `https://HCXManagerIP:9443` en meld u aan met uw gebruikers naam en wacht woord. 
+
+   > [!IMPORTANT]
+   > Zorg ervoor dat u het `9443` poort nummer opneemt met het IP-adres van HCX Manager.
 
 1. Voer in **licentie verlening**uw **Geavanceerde HCX-sleutel**in.  
 
@@ -99,7 +104,7 @@ Na de installatie voert u de volgende stappen uit.
     > [!NOTE]
     > HCX manager moet open Internet toegang of een proxy-configuratie hebben.
 
-1. VCenter configureren.
+1. Bewerk, indien nodig, de vCenter-gegevens in **vCenter**.
 
     ![VCenter configureren](./media/hybrid-cloud-extension-installation/configure-vcenter.png)
 
@@ -109,25 +114,25 @@ Na de installatie voert u de volgende stappen uit.
 
 ## <a name="configure-hcx"></a>HCX configureren 
 
-1. Meld u aan bij on-premises vCenter en selecteer vervolgens **Start**  >  **HCX**.
+1. Meld u aan bij on-premises vCenter en selecteer onder **Home**de optie **HCX**.
 
     ![HCX in VCenter](./media/hybrid-cloud-extension-installation/hcx-vcenter.png)
 
-1. Selecteer **infra structuur**  >  **site koppelen**  >  **een site koppeling toevoegen**.
+1. Onder **infra structuur**selecteert u **site koppeling**om  >  **een site koppeling toe te voegen**.
 
     ![Site koppeling toevoegen](./media/hybrid-cloud-extension-installation/site-pairing.png)
 
-1. Voer de URL, de **gebruikers naam**en het **wacht woord**voor de **externe HCX**in. Selecteer vervolgens **Verbinding maken**.
+1. Voer de URL van de externe HCX of het IP-adres, AVS cloudadmin gebruikers naam en wacht woord in en selecteer vervolgens **verbinding maken**.
 
    Het systeem geeft de verbonden site weer.
    
     ![Site verbinding](./media/hybrid-cloud-extension-installation/site-connection.png)
 
-1. Selecteer **interconnect**  >  **multi-site service net-**  >  **netwerk profielen**  >  **netwerk profiel maken**.
+1. Onder **infra structuur**selecteert u **interconnect**  >  **multi-site service net-**  >  **netwerk profielen**  >  **netwerk profiel maken**.
 
     ![Netwerk profiel maken](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. Voer HCX IX en NE IP-adresbereiken in (mini maal 2 IP-adressen zijn vereist voor IX en NE apparaten).
+1. Voer voor het nieuwe netwerk profiel de HCX IX-en NE IP-adresbereiken in (mini maal twee IP-adressen zijn vereist voor IX en NE apparaten).
     
    ![IP-adresbereiken invoeren](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   
@@ -140,7 +145,7 @@ Na de installatie voert u de volgende stappen uit.
 
     ![Reken profiel maken](./media/hybrid-cloud-extension-installation/create-compute-profile.png)
 
-1. Selecteer Services om in te scha kelen, zoals migratie, netwerk extensie, herstel na nood gevallen. Selecteer **Doorgaan**.
+1. Selecteer de services die u wilt inschakelen, zoals migratie, netwerk uitbreiding of herstel na nood gevallen, en selecteer vervolgens **door gaan**.
 
     ![Services selecteren](./media/hybrid-cloud-extension-installation/select-services.png)
 
@@ -175,25 +180,25 @@ Na de installatie voert u de volgende stappen uit.
 
 1. Selecteer **vMotion-netwerk profiel** en selecteer **door gaan**.
       
-    Selecteer het netwerk profiel waarmee de vMotion-interface van de ESXi-hosts kan worden bereikt. Als u een dergelijk netwerk profiel nog niet hebt gedefinieerd, kunt u dit hier maken. Als u geen vMotion-netwerk hebt, selecteert u **beheer netwerk profiel**.  
+   Selecteer het netwerk profiel waarmee de vMotion-interface van de ESXi-hosts kan worden bereikt. Als u een dergelijk netwerk profiel nog niet hebt gedefinieerd, kunt u dit hier maken. Als u geen vMotion-netwerk hebt, selecteert u **beheer netwerk profiel**.  
     
-    ![Netwerk profiel van vMotion selecteren](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
+   ![Netwerk profiel van vMotion selecteren](./media/hybrid-cloud-extension-installation/vmotion-network-profile.png)
 
-1. Selecteer **vSphere-replicatie netwerk profiel** en selecteer **door gaan**.
+1. Selecteer in **vSphere-replicatie netwerk profiel**een netwerk profiel de VSphere-replicatie interface van ESXi-hosts en selecteer vervolgens **door gaan**.
       
-    Selecteer een netwerk profiel waarlangs de vSphere-replicatie interface van ESXi-hosts kan worden bereikt. In de meeste gevallen is dit profiel hetzelfde als het management-netwerk profiel.  
+   In de meeste gevallen is dit profiel hetzelfde als het management-netwerk profiel.  
     
-    ![VSphere-netwerk profiel voor replicatie selecteren](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
+   ![VSphere-netwerk profiel voor replicatie selecteren](./media/hybrid-cloud-extension-installation/vsphere-replication-network-profile.png)
 
-1. Selecteer **gedistribueerde switches voor netwerk uitbreidingen** en selecteer **door gaan**.  
+1. Selecteer in **gedistribueerde switches voor netwerk uitbreidingen**de DVS waarop u netwerken wilt maken van de virtuele machines die worden geïntegreerd en verbonden.  Selecteer **Doorgaan**.  
       
-    Selecteer de gedistribueerde virtuele switches waarvoor u netwerken hebt waarvan de Virtual Machines die worden gemigreerd, zijn verbonden.
-
     ![Gedistribueerde virtuele switches selecteren](./media/hybrid-cloud-extension-installation/distributed-switches.png)
 
-1. Controleer de verbindings regels en selecteer **door gaan**. Selecteer **volt ooien** om het reken profiel te maken.  
+1. Controleer de verbindings regels en selecteer **door gaan**.  
 
     ![Reken profiel maken](./media/hybrid-cloud-extension-installation/complete-compute-profile.png)
+
+1.  Selecteer **volt ooien** om het reken profiel te maken.
 
 ## <a name="configure-network-uplink"></a>Netwerk-uplink configureren
 
@@ -217,45 +222,45 @@ Configureer nu het service-net tussen on-premises en AVS SDDC.
 
 1. Meld u aan bij AVS SDDC vCenter en selecteer **HCX**.
 
-1. Selecteer **Infrastructure**  >  service-**Interconnect**  >  **Service Mesh**  >  **mesh maken**in het infrastructuur Interconnect Service-net.  Configureer het netwerk en de reken profielen die u in de vorige stappen hebt gemaakt.    
+2. Selecteer onder **infra structuur** **interconnect**  >  **service**-net  >  **Service-Mesh maken** om het netwerk en de reken profielen te configureren die in de vorige stappen zijn gemaakt.    
       
     ![Service-net configureren](./media/hybrid-cloud-extension-installation/configure-service-mesh.png)
 
-1. Selecteer **service-net maken** en selecteer **door gaan**.  
-      
-    Selecteer gekoppelde sites waartussen hybride mobiliteit moet worden ingeschakeld.  
+3. Selecteer gekoppelde sites om hybride mogelijkheden in te scha kelen en selecteer **door gaan**.   
     
     ![Gekoppelde sites selecteren](./media/hybrid-cloud-extension-installation/select-paired-sites.png)
 
-1. Selecteer **reken profiel** en selecteer **door gaan**.
+4. Selecteer de bron-en externe Compute-profielen om hybridity Services in te scha kelen en selecteer **door gaan**.
       
-    Selecteer één reken profiel in de bron-en externe sites om hybridity Services in te scha kelen. Met de selecties worden de resources gedefinieerd, waar Virtual Machines HCX-Services kunt gebruiken.  
+    De selecties definiëren de resources, waarbij Vm's HCX-Services kunnen gebruiken.  
       
     ![Hybridisatie Services inschakelen](./media/hybrid-cloud-extension-installation/enable-hybridity.png)
 
-1. Selecteer de services die moeten worden ingeschakeld voor HCX en selecteer **door gaan**.  
+5. Selecteer de services die u wilt inschakelen en selecteer **door gaan**.  
       
     ![HCX services selecteren](./media/hybrid-cloud-extension-installation/hcx-services.png)
 
-1. Selecteer **door gaan**in **Geavanceerde configuratie-opheffen van Uplink-netwerk profielen** .  
+6. Selecteer **door gaan**in **Geavanceerde configuratie-opheffen van Uplink-netwerk profielen** .  
       
     Uplink-netwerk profielen worden gebruikt om verbinding te maken met het netwerk via welke de verbindings apparaten van de externe site kunnen worden bereikt.  
       
     ![Uplinkpoortprofiel overschrijven](./media/hybrid-cloud-extension-installation/override-uplink-profiles.png)
 
-1. In **Geavanceerde configuratie: netwerk extensie toestel uitschalen**, selecteert **u Uitschalen van netwerk extensie apparaat configureren**. 
+7. Selecteer **de Uitschaal van het apparaat netwerk uitbreiding configureren**. 
       
     ![Uitschalen netwerk extensie](./media/hybrid-cloud-extension-installation/network-extension-scale-out.png)
 
-1. Voer het aantal toestellen in dat overeenkomt met het aantal DVS-switches.  
+8. Voer het aantal toestellen in dat overeenkomt met het aantal DVS-switches.  
       
     ![Aantal apparaten configureren](./media/hybrid-cloud-extension-installation/appliance-scale.png)
 
-1. Selecteer **door gaan**in **Geavanceerde configuratie van verkeer**.  
+9. Selecteer **door gaan** om over te slaan.  
       
     ![Verkeers techniek configureren](./media/hybrid-cloud-extension-installation/traffic-engineering.png)
 
-1. Bekijk de preview van de topologie en selecteer **door gaan**. Voer vervolgens een gebruiks vriendelijke naam in voor deze service mesh en selecteer **volt ooien** om te volt ooien.  
+10. Bekijk de preview van de topologie en selecteer **door gaan**. 
+
+11. Voer een gebruiks vriendelijke naam in voor deze service mesh en selecteer **volt ooien** om te volt ooien.  
       
     ![Service-net volt ooien](./media/hybrid-cloud-extension-installation/complete-service-mesh.png)
 

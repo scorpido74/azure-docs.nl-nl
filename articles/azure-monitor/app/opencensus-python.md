@@ -7,12 +7,12 @@ ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: 04581826ab6b05333e910a162c7a0ca9566ec334
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c6b84b25ae85d20ccd7872daf16014e5bed6934b
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079123"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374148"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -251,9 +251,9 @@ Zie voor meer informatie over het wijzigen van bijgehouden telemetrie voordat de
 
 4. De export functie verzendt metrische gegevens naar Azure Monitor met een vast interval. De standaard waarde is elke 15 seconden. Er wordt één metrische waarde bijgehouden, dus deze metrische gegevens, met een wille keurige vermeldings-en tijds tempel, worden elk interval verzonden. U kunt de gegevens vinden onder `customMetrics` .
 
-#### <a name="standard-metrics"></a>Standaard metrische gegevens
+#### <a name="performance-counters"></a>Prestatiemeteritems
 
-Standaard wordt door de export functie voor metrische gegevens een aantal standaard metrische gegevens naar Azure Monitor verzonden. U kunt dit uitschakelen door de `enable_standard_metrics` vlag in te stellen op `False` de constructor van de metrische gegevens Exporter.
+Standaard wordt met de export functie voor metrische gegevens een set prestatie meter items verzonden naar Azure Monitor. U kunt dit uitschakelen door de `enable_standard_metrics` vlag in te stellen op `False` de constructor van de metrische gegevens Exporter.
 
 ```python
 ...
@@ -262,17 +262,16 @@ exporter = metrics_exporter.new_metrics_exporter(
   connection_string='InstrumentationKey=<your-instrumentation-key-here>')
 ...
 ```
-Hieronder ziet u een lijst met standaard metrische gegevens die momenteel worden verzonden:
+Hieronder ziet u een lijst met prestatie meter items die momenteel worden verzonden:
 
 - Beschikbaar geheugen (bytes)
 - Processor tijd CPU (percentage)
 - Binnenkomende aanvraag frequentie (per seconde)
 - Gemiddelde uitvoerings tijd inkomende aanvragen (milliseconden)
-- Uitgaande aanvraag frequentie (per seconde)
 - CPU-gebruik verwerken (percentage)
 - Privé bytes verwerken (bytes)
 
-U kunt deze metrische gegevens weer geven in `performanceCounters` . De frequentie van binnenkomende aanvragen is onder `customMetrics` . Zie [prestatie meter items](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)voor meer informatie.
+U kunt deze metrische gegevens weer geven in `performanceCounters` . Zie [prestatie meter items](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)voor meer informatie.
 
 #### <a name="modify-telemetry"></a>Telemetrie wijzigen
 

@@ -4,19 +4,17 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/20/2019
-ms.openlocfilehash: 942bcc6b150f990f9a9acab0d4ef68bfb6125c1b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c202ba1d7363af9791daa801f0c447c49a80859b
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71996857"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378479"
 ---
 >[!NOTE]
 > Eind punten voor resources die zijn gemaakt na 1 juli 2019 gebruik de aangepaste indeling voor subdomeinen die hieronder wordt weer gegeven. Zie [aangepaste subdomein namen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)voor meer informatie en een volledige lijst met regionale eind punten. 
 
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor inkt Recognizer met behulp van de [Azure Portal](../../cognitive-services-apis-create-account.md). 
-
-* U kunt ook een [proef versie](https://azure.microsoft.com/try/cognitive-services/#decision) van zeven dagen gratis ontvangen. Nadat u zich hebt aangemeld, wordt deze en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor inkt Recognizer met behulp van de [Azure Portal](../../cognitive-services-apis-create-account.md).
 
 Nadat u een resource hebt gemaakt, haalt u uw eind punt en de sleutel op door uw resource te openen op het [Azure Portal](https://ms.portal.azure.com#blade/HubsExtension/BrowseResourceGroupBlade)en op **Quick Start**te klikken.
 

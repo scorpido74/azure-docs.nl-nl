@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800738"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85366816"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Pacemaker instellen voor Red Hat Enterprise Linux in azure
 
@@ -196,13 +196,18 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** gelijktijdige omheinings acties toestaan
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>STONITH-apparaat maken
 
 Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Microsoft Azure. Volg deze stappen om een service-principal te maken.
 
 1. Ga naar <https://portal.azure.com>
 1. Open de Blade Azure Active Directory  
-   Ga naar eigenschappen en noteer de map-ID. Dit is de **Tenant-id**.
+   Ga naar Eigenschappen en noteer de map-id. Dit is de **Tenant-id**.
 1. Klik op App-registraties
 1. Klik op nieuwe registratie
 1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
@@ -211,7 +216,7 @@ Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Micros
 1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
 1. Schrijf de waarde op. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
-1. Selecteer Overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
+1. Selecteer Overzicht. Noteer de toepassings-id. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
 
@@ -221,32 +226,37 @@ Gebruik de volgende inhoud voor het invoer bestand. U moet de inhoud aanpassen a
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to power-off and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/powerOff/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** de aangepaste rol toewijzen aan de Service-Principal
 
-Wijs de aangepaste rol Linux Fence-agent rol toe die in het laatste hoofd stuk is gemaakt voor de Service-Principal. Gebruik de rol owner niet meer.
+Wijs de aangepaste rol Linux Fence-agent rol toe die in het laatste hoofd stuk is gemaakt voor de Service-Principal. Gebruik de rol van Eigenaar niet meer!
 
 1. Ga naar https://portal.azure.com
-1. Open de Blade alle resources
-1. De virtuele machine van het eerste cluster knooppunt selecteren
-1. Klik op toegangs beheer (IAM)
+1. Open de blade Alle resources
+1. De virtuele machine van het eerste clusterknooppunt selecteren
+1. Klik op Toegangsbeheer (IAM)
 1. Klik op roltoewijzing toevoegen
 1. Selecteer de rol ' Linux Fence-agent functie '
 1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
@@ -267,7 +277,13 @@ Gebruik de volgende opdracht om het Fence-apparaat te configureren.
 > [!NOTE]
 > De optie pcmk_host_map is alleen vereist in de opdracht als de hostnamen van de RHEL en de namen van Azure-knoop punten niet identiek zijn. Raadpleeg de sectie vet in de opdracht.
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> De bewakings-en omheinings bewerkingen worden gedeserialiseerd. Als er een langere bewakings bewerking en gelijktijdige Afleidings gebeurtenis optreedt, is er dus geen vertraging voor de failover van het cluster vanwege de bewakings bewerking die al wordt uitgevoerd.  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** het gebruik van een STONITH-apparaat inschakelen
 

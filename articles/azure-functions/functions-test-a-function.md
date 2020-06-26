@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: dae826367661648f3ee56235fd6497d265bf6a1e
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 45a7de4f19b663823a5eff7ba4f352992c3aaf0d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339446"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374199"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -35,22 +35,22 @@ In het volgende voor beeld wordt beschreven hoe u een C#-functie-app maakt in Vi
 
 Als u uw omgeving wilt instellen, maakt u een functie-en test-app. De volgende stappen helpen u bij het maken van de apps en functies die nodig zijn voor de ondersteuning van de tests:
 
-1. [Een nieuwe functions-app maken](./functions-create-first-azure-function.md) en *hieraan* een naam toe te voegen
-2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam *MyHttpTrigger*.
-3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze *MyTimerTrigger*.
-4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio door te klikken op **File > New > project > Visual C# > .net core > xUnit test project** en geef het de naam *functions. test*. 
+1. [Een nieuwe functions-app maken](./functions-create-first-azure-function.md) en **hieraan** een naam toe te voegen
+2. [Maak een HTTP-functie op basis van de sjabloon](./functions-create-first-azure-function.md) en geef deze de naam **MyHttpTrigger**.
+3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger**.
+4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests**. 
 5. Gebruik NuGet om een verwijzing toe te voegen vanuit de test-app naar [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Raadpleeg de *functions* -app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app testen* .
+6. [Raadpleeg de *functions* -app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app tests* .
 
 ### <a name="create-test-classes"></a>Test klassen maken
 
-Nu de toepassingen zijn gemaakt, kunt u de klassen maken die worden gebruikt om de geautomatiseerde tests uit te voeren.
+Nu de projecten zijn gemaakt, kunt u de klassen maken die worden gebruikt om de geautomatiseerde tests uit te voeren.
 
 Voor elke functie wordt een instantie van [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) gebruikt voor het afhandelen van bericht logboek registratie. Sommige tests registreren geen berichten of hebben geen betrekking op hoe logboek registratie wordt geïmplementeerd. Andere tests moeten de geregistreerde berichten evalueren om te bepalen of een test wordt door gegeven.
 
-De `ListLogger` klasse implementeert de `ILogger` interface en bevat een interne lijst met berichten die tijdens een test worden geëvalueerd.
+U maakt een nieuwe klasse met de naam `ListLogger` die een interne lijst met berichten bevat die tijdens het testen moet worden geëvalueerd. Voor het implementeren van de vereiste `ILogger` interface moet de klasse een bereik hebben. De volgende klasse geeft een bereik aan voor de test cases die moeten worden door gegeven aan de `ListLogger` klasse.
 
-**Klik** met de rechter muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **NullScope.cs** en voer de volgende code in:
+Maak een nieuwe klasse in *functions. test* project met de naam **NullScope.cs** en voer de volgende code in:
 
 ```csharp
 using System;
@@ -68,7 +68,7 @@ namespace Functions.Tests
 }
 ```
 
-Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **ListLogger.cs** en voer de volgende code in:
+Maak vervolgens een nieuwe klasse in *functions. test* project met de naam **ListLogger.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -114,7 +114,7 @@ De `ListLogger` klasse implementeert de volgende leden als een contract van de `
 
 De `Logs` verzameling is een exemplaar van `List<string>` en wordt geïnitialiseerd in de constructor.
 
-Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **LoggerTypes.cs** en voer de volgende code in:
+Maak vervolgens een nieuw bestand in *functions. test* project met de naam **LoggerTypes.cs** en voer de volgende code in:
 
 ```csharp
 namespace Functions.Tests
@@ -129,7 +129,7 @@ namespace Functions.Tests
 
 Met deze opsomming geeft u het type logboek registratie op dat wordt gebruikt door de tests. 
 
-Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **TestFactory.cs** en voer de volgende code in:
+Maak nu een nieuwe klasse in *functions. test* project met de naam **TestFactory.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -163,12 +163,11 @@ namespace Functions.Tests
             return qs;
         }
 
-        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        public static HttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
         {
-            var request = new DefaultHttpRequest(new DefaultHttpContext())
-            {
-                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
-            };
+            var context = new DefaultHttpContext();
+            var request = context.Request;
+            request.Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue));
             return request;
         }
 
@@ -201,7 +200,7 @@ De `TestFactory` klasse implementeert de volgende leden:
 
 - **CreateLogger**: op basis van het logboek type retourneert deze methode een logger klasse die wordt gebruikt voor het testen. Hiermee worden `ListLogger` vastgelegde berichten bijgehouden die beschikbaar zijn voor evaluatie in tests.
 
-Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **FunctionsTests.cs** en voer de volgende code in:
+Maak ten slotte een nieuwe klasse in *functions. test* project met de naam **FunctionsTests.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;

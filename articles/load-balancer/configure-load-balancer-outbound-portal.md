@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 30d71333bb29720afd82c7dbbde7126b30a7f6d6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84803687"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367390"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Configureer taak verdeling en uitgaande regels in Standard Load Balancer door gebruik te maken van de Azure Portal
 
@@ -45,7 +45,7 @@ In deze sectie maakt u een load balancer waarmee de virtuele machines worden ver
     | Naam                   | **myLoadBalancer**                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
     | Type          | Selecteer **Openbaar**.                                        |
-    | SKU           | Selecteer **Standard** of **Basic**. Micro soft adviseert standaard voor productie werkbelastingen. |
+    | SKU           | selecteer **Standaard**. |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. Als u een bestaand openbaar IP-adres hebt dat u wilt gebruiken, selecteert u **bestaande gebruiken**.  Een bestaand openbaar IP-adres moet een **standaard** -SKU zijn.  Algemene open bare Ip's zijn niet compatibel met de **standaard** SKU Load Balancer.  |
     | Naam openbaar IP-adres              | Typ **myPublicIP** in het tekstvak.|
     | Beschikbaarheidszone | Selecteer **zone-redundant** voor het maken van een flexibele Load Balancer. Als u een zonegebonden Load Balancer wilt maken, selecteert u een specifieke zone van 1, 2 of 3 |

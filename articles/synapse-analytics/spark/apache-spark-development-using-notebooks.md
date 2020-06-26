@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 6eb6403ad6d1f181d1f51dde6db266070bf32a56
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194753"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373366"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio-notebooks (preview) maken, ontwikkelen en onderhouden
 
@@ -71,7 +71,7 @@ U kunt de primaire taal voor nieuwe toegevoegde cellen instellen in de vervolg k
 
 U kunt meerdere talen gebruiken in één notebook door de juiste Magic-opdracht voor de taal aan het begin van een cel op te geven. De volgende tabel bevat de Magic-opdrachten om te scha kelen tussen talen in cellen.
 
-|Opdracht Magic |Taal | Description |  
+|Opdracht Magic |Taal | Beschrijving |  
 |---|------|-----|
 |%% pyspark| Python | Voer een **python** -query uit op Spark-context.  |
 |% Spark| Scala | Voer een **scala** -query uit op Spark-context.  |  
@@ -119,7 +119,7 @@ De IntelliSense-functies bevinden zich op verschillende niveaus van de verval da
 |PySpark (python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Spark (scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
-|.NET voor Spark (C#)|Yes|-|-|-|-|-|-|-|
+|.NET voor Spark (C#)|Ja|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Tekst cel opmaken met werkbalk knoppen
 
@@ -344,7 +344,7 @@ Net als Jupyter-notebooks hebben Azure Synapse Studio-notebooks een modale gebru
 
    ![opdracht modus](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. De bewerkings modus wordt aangegeven door een tekst cursor waarin u wordt gevraagd in het gebied van de editor te typen. Wanneer een cel zich in de bewerkings modus bevindt, kunt u niet typen in de cel. Voer de bewerkings modus in door `Enter` met de muis te klikken op het editor gebied van een cel.
+2. De bewerkings modus wordt aangegeven door een tekst cursor waarin u wordt gevraagd in het gebied van de editor te typen. Wanneer een cel zich in de bewerkings modus bevindt, kunt u in de cel typen. Voer de bewerkings modus in door `Enter` met de muis te klikken op het editor gebied van een cel.
    
    ![bewerkingsmodus](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

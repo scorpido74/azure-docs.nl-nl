@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598050"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85373659"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>Toepassings instellingen configureren voor de preview-versie van Azure static Web Apps
 
@@ -48,7 +48,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het gebruik van omgevi
 ### <a name="javascript-frameworks-and-libraries"></a>Java script-frameworks en-bibliotheken
 
 - [Angular](https://angular.io/guide/build#configuring-application-environments)
-- [Reageren](https://create-react-app.dev/docs/adding-custom-environment-variables/)
+- [React](https://create-react-app.dev/docs/adding-custom-environment-variables/)
 - [Svelte](https://linguinecode.com/post/how-to-add-environment-variables-to-your-svelte-js-app)
 - [Vue](https://cli.vuejs.org/guide/mode-and-env.html)
 
@@ -60,9 +60,9 @@ Raadpleeg de volgende artikelen voor meer informatie over het gebruik van omgevi
 
 ## <a name="about-api-app-settings"></a>Over API-app-instellingen
 
-Api's in statische Azure-Web Apps worden aangedreven door Azure Functions, waarmee u toepassings instellingen kunt definiëren in het bestand _Local. settings. json_ . Dit bestand definieert toepassings instellingen in de `Values` eigenschap van de configuratie.
+Api's in statische Azure-Web Apps worden aangedreven door Azure Functions, waarmee u toepassings instellingen kunt definiëren in de _local.settings.jsin_ het bestand. Dit bestand definieert toepassings instellingen in de `Values` eigenschap van de configuratie.
 
-In het volgende voor beeld _Local. settings. json_ ziet u hoe u een waarde kunt toevoegen voor `DATABASE_CONNECTION_STRING` .
+In het volgende voor beeld _local.settings.jsover_ ziet u hoe u een waarde kunt toevoegen voor `DATABASE_CONNECTION_STRING` .
 
 ```json
 {
@@ -93,7 +93,7 @@ U kunt toepassings instellingen configureren via de Azure Portal of met de Azure
 
 De Azure Portal biedt een interface voor het maken, bijwerken en verwijderen van toepassings instellingen.
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 
 1. Zoek en selecteer in de zoek balk **statische web apps**.
 
@@ -105,15 +105,17 @@ De Azure Portal biedt een interface voor het maken, bijwerken en verwijderen van
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Configuratie weergave Azure static Web Apps":::
 
-1. Voer een **naam** en **waarde** in
+1. Voer een **naam** en **waarde**in.
 
-1. Klik op **OK**
+1. Klik op **OK**.
+
+1. Klik op **Opslaan**.
 
 ### <a name="using-the-azure-cli"></a>Azure CLI gebruiken
 
 U kunt de `az rest` opdracht gebruiken om bulksgewijs uploads van uw instellingen naar Azure uit te voeren. De opdracht accepteert toepassings instellingen als JSON-objecten in een bovenliggende eigenschap met de naam `properties` .
 
-De eenvoudigste manier om een JSON-bestand met de juiste waarden te maken, is door een aangepaste versie van het bestand _Local. settings. json_ te maken.
+De eenvoudigste manier om een JSON-bestand met de juiste waarden te maken, is door een aangepaste versie van uwlocal.settings.jste maken _in_ het bestand.
 
 1. Om ervoor te zorgen dat het nieuwe bestand met gevoelige gegevens niet openbaar wordt weer gegeven, voegt u de volgende vermelding toe aan uw _. gitignore_ -bestand.
 
@@ -121,7 +123,7 @@ De eenvoudigste manier om een JSON-bestand met de juiste waarden te maken, is do
    local.settings*.json
    ```
 
-2. Maak vervolgens een kopie van het bestand _Local. settings. json_ en geef het de naam _Local. settings. Properties. json_.
+2. Maak vervolgens een kopie van uw _local.settings.jsin_ het bestand en noem deze _local.settings.properties.jsop_.
 
 3. Verwijder in het nieuwe bestand alle andere gegevens uit het bestand, met uitzonde ring van de toepassings instellingen en wijzig de naam `Values` in `properties` .
 
@@ -150,13 +152,13 @@ Voor de Azure CLI-opdracht is een aantal waarden vereist die specifiek zijn voor
    ```
 
 > [!IMPORTANT]
-> Het bestand local. settings. Properties. json moet zich in dezelfde map bevindt waarin deze opdracht wordt uitgevoerd. Dit bestand kan wille keurig een naam hebben. De naam is niet significant.
+> Het bestand ' local.settings.properties.jsop ' moet zich in dezelfde map bevindt waarin deze opdracht wordt uitgevoerd. Dit bestand kan wille keurig een naam hebben. De naam is niet significant.
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Toepassings instellingen weer geven met Azure CLI
 
 Toepassings instellingen zijn beschikbaar voor weer gave via de Azure CLI.
 
-1. Voer de volgende opdracht uit vanaf een Terminal of opdracht regel. Zorg ervoor dat u de tijdelijke aanduidingen vervangt door `<YOUR_SUBSCRIPTION_ID>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_STATIC_SITE_NAME>` uw eigen waarden.
+- Voer de volgende opdracht uit vanaf een Terminal of opdracht regel. Zorg ervoor dat u de tijdelijke aanduidingen vervangt door `<YOUR_SUBSCRIPTION_ID>` `<YOUR_RESOURCE_GROUP_NAME>` `<YOUR_STATIC_SITE_NAME>` uw eigen waarden.
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"

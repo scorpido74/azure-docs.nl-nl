@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c3f3eddf57b559d9e8f4837db453232308869767
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f459e1dd70850db1d7087b4c99de741b37d3bfda
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118046"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367118"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Zone redundantie is een *aanvullende mogelijkheid* voor de replicatie functie vo
 
 Bij het configureren van schrijf bewerkingen met meerdere regio's voor uw Azure Cosmos-account, kunt u zonder extra kosten voor zone redundantie kiezen. In andere gevallen raadpleegt u de onderstaande opmerking over de prijzen voor ondersteuning voor zone redundantie. U kunt zone redundantie inschakelen voor een bestaande regio van uw Azure Cosmos-account door de regio te verwijderen en opnieuw toe te voegen als u de zone redundantie hebt ingeschakeld.
 
-Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS Oost, VS-Oost 2, VS centraal, Europa-West, VS-West 2, Australië-Oost, Japan-Oost, Europa-Noord, Frankrijk-centraal* regio's.
+Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS-Oost, VS-Oost 2, VS-midden, Europa-West, VS-West 2, Japan-Oost, Europa-Noord, Frankrijk-centraal* regio's.
 
 > [!NOTE]
 > Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.

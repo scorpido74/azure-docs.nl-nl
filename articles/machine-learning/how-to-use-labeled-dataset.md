@@ -7,14 +7,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 4cb8062a6cdc653fe69493ed6ae3f02ae71048d4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6401d620aea720584df0838cacc6df2f837ca699
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431085"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374471"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning gegevensset maken en verkennen met labels
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>Azure Machine Learning gegevensset maken en verkennen met labels (preview-versie)
 
 In dit artikel leert u hoe u de gegevenslabels kunt exporteren uit een Azure Machine Learning gegevens label project en laadt u deze in populaire indelingen, zoals een Panda data frame voor het verkennen van gegevens of een Torchvision-gegevensset voor afbeeldings transformatie. 
 
@@ -27,22 +27,22 @@ Azure Machine Learning gegevens sets met labels worden [TabularDatasets](how-to-
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
 * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of toegang tot [Azure machine learning Studio](https://ml.azure.com/).
     * Het pakket [Azure-contrib-dataset](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py) installeren
-* Een Machine Learning-werk ruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
+* Een Machine Learning-werkruimte. Raadpleeg [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md).
 * Toegang tot een Azure Machine Learning gegevens labelen project. Als u geen label project hebt, maakt u er een met [de volgende stappen](how-to-create-labeling-projects.md).
 
 ## <a name="export-data-labels"></a>Gegevenslabels exporteren 
 
-Wanneer u een gegevens label project hebt voltooid, kunt u de label gegevens uit een label project exporteren. Als u dit doet, kunt u zowel de verwijzing naar de gegevens als de bijbehorende labels vastleggen en deze exporteren in [Coco-indeling](http://cocodataset.org/#format-data) of als een Azure machine learning-gegevensset. Gebruik de knop **exporteren** op de pagina **Project Details** van het label project.
+Wanneer u een gegevens label project hebt voltooid, kunt u de label gegevens uit een label project exporteren. Als u dit doet, kunt u zowel de verwijzing naar de gegevens als de bijbehorende labels vastleggen en deze exporteren in [Coco-indeling](http://cocodataset.org/#format-data) of als een Azure machine learning-gegevensset. Gebruik de knop **Exporteren** op de pagina **Projectdetails** van het labelproject.
 
 ### <a name="coco"></a>COCO 
 
- Het COCO-bestand wordt gemaakt in de standaard-Blob-opslag van de Azure Machine Learning werk ruimte in een map in *export-Coco*. 
+ Het COCO-bestand wordt gemaakt in de Blob-standaardopslag van de Azure Machine Learning-werkruimte in een map binnen *export/coco*. 
 
 ### <a name="azure-machine-learning-dataset"></a>Azure Machine Learning gegevensset
 
 U kunt de geëxporteerde Azure Machine Learning gegevensset openen in het gedeelte **gegevens sets** van uw Azure machine learning Studio. De pagina **Details** gegevensset biedt ook voorbeeld code voor toegang tot uw labels vanuit Python.
 
-![Geëxporteerde gegevensset](./media/how-to-create-labeling-projects/exported-dataset.png)
+![Geëxporteerde gegevens](./media/how-to-create-labeling-projects/exported-dataset.png)
 
 ## <a name="explore-labeled-datasets"></a>Gelabelde gegevens sets verkennen
 

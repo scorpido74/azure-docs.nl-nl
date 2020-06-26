@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
-ms.author: kenwith
+ms.date: 06/10/2020
+ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2a2691935cb38c20e20b6a776acfe70cc458a6ed
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763071"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374437"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Een implementatie van eenmalige aanmelding plannen
 
@@ -195,8 +195,6 @@ Gebruik de volgende fasen voor het plannen en implementeren van uw oplossing in 
 
    U kunt ook claims gebruiken die zijn uitgegeven in het SAML-token voor de bedrijfs toepassing met behulp [van de richt lijnen van micro soft](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping). Zorg ervoor dat deze is gekoppeld aan wat u verwacht te ontvangen in het SAML-antwoord voor uw toepassing. Als u problemen ondervindt tijdens de configuratie, gebruikt u onze richt lijnen voor [het opsporen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)van de SSO-integratie.
 
-Het onboarden van een aangepaste toepassing is een functie van Azure AD Premium P1 of P2-licenties.
-
 ### <a name="provide-sso-change-communications-to-end-users"></a>SSO-wijzigings communicatie voor eind gebruikers opgeven
 
 Implementeer uw communicatie plan. Zorg ervoor dat uw eind gebruikers weten dat er een wijziging is opgetreden, wanneer deze is aangekomen, wat u nu moet doen en hoe u hulp kunt krijgen.
@@ -273,7 +271,7 @@ We raden u aan een schaal bare benadering te kiezen bij het beheren van de toega
 
 We raden u aan een reguliere uitgebracht in te stellen waarin u de verschillende aspecten van SaaS app Security bekijkt en eventuele vereiste herstel bewerkingen uitvoert.
 
-### <a name="troubleshooting"></a>Problemen oplossen
+### <a name="troubleshooting"></a>Probleemoplossing
 
 De volgende koppelingen geven scenario's voor het oplossen van problemen. U kunt een specifieke hand leiding maken voor het ondersteunings personeel dat deze scenario's bevat en de stappen om deze te herstellen.
 

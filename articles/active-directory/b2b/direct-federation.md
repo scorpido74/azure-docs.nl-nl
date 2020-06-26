@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0641272177371ff5e8b6eac98b5bdbd381af931
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591213"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367458"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -174,7 +174,7 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
    Connect-AzureAD
    ```
 1. Meld u bij de aanmeldings prompt aan met het Managed Global Administrator-account. 
-2. Voer de volgende opdrachten uit en vervang de waarden uit het bestand met federatieve meta gegevens. Voor AD FS server en Okta is het Federatie bestand federationmetadata. XML, bijvoorbeeld: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
+2. Voer de volgende opdrachten uit en vervang de waarden uit het bestand met federatieve meta gegevens. Voor AD FS server en Okta is het Federatie bestand federationmetadata.xml, bijvoorbeeld: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -221,3 +221,7 @@ Directe Federatie met een id-provider verwijderen met behulp van Power shell:
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over de uitbesteings [ervaring](redemption-experience.md) wanneer externe gebruikers zich aanmelden met verschillende id-providers.

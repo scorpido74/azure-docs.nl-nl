@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: cabb1a7d45906c9e60e1defd7d3d99286cdd39fb
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 10591c6e1e47be5d0f8fcb5eb4a4d4d8c1adf564
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318246"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367866"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 
 | Parameter | Beschrijving | Standaard |
 | --- | --- | --- |
-| Name |Naam van de cache | |
+| Naam |Naam van de cache | |
 | Locatie |Locatie van de cache | |
 | ResourceGroupName |Naam van de resource groep waarin de cache moet worden gemaakt | |
 | Grootte |De grootte van de cache. Geldige waarden zijn: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6GB, 13GB, 26GB, 53GB |1 GB |
@@ -134,7 +134,7 @@ De volgende tabel bevat eigenschappen en beschrijvingen voor veelgebruikte para 
 | KeyType |Hiermee geeft u op welke toegangs sleutel opnieuw moet worden gegenereerd bij het vernieuwen van toegangs sleutels. Geldige waarden zijn: primair, secundair | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration-eigenschappen
-| Eigenschap | Description | Prijscategorieën |
+| Eigenschap | Beschrijving | Prijscategorieën |
 | --- | --- | --- |
 | RDB-back-up-ingeschakeld |Of [redis-gegevens persistentie](cache-how-to-premium-persistence.md) is ingeschakeld |Alleen Premium |
 | RDB-Storage-verbindings reeks |Het connection string naar het opslag account voor [redis-gegevens persistentie](cache-how-to-premium-persistence.md) |Alleen Premium |
@@ -779,5 +779,5 @@ Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Windows 
 * [Resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/templates/deploy-portal.md): informatie over het maken en beheren van resource groepen in de Azure Portal.
 * [Azure-blog](https://azure.microsoft.com/blog/): meer informatie over nieuwe functies in Azure.
 * [Windows Power shell-blog](https://devblogs.microsoft.com/powershell/): meer informatie over nieuwe functies in Windows Power shell.
-* ["Hey, Scripting Guy!" Blog](https://devblogs.microsoft.com/scripting/author/the-scripting-guys/): krijg praktische tips en trucs van de Windows Power shell-community.
+* ["Hey, Scripting Guy!" Blog](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/): krijg praktische tips en trucs van de Windows Power shell-community.
 
