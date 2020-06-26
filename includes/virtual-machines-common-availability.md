@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b823ea97e39dfa05295449fd5a039d2b9debdfa
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76748926"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412026"
 ---
 In dit artikel vindt u een overzicht van de beschik baarheid van Azure virtual machines (Vm's).
 
@@ -48,17 +48,6 @@ Deze aanpak zorgt ervoor dat altijd ten minste één exemplaar van uw toepassing
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines schaal sets 
 
 Met de virtuele-machine schaal sets van Azure kunt u een groep met virtuele machines met taak verdeling maken en beheren. Het aantal VM-exemplaren kan automatisch toenemen of afnemen in reactie op vraag of een ingesteld schema. Schaal sets bieden een hoge Beschik baarheid voor uw toepassingen en u kunt een groot aantal virtuele machines centraal beheren, configureren en bijwerken. We raden u aan twee of meer virtuele machines te maken binnen een schaalset om te voorzien in een Maxi maal beschik bare toepassing en om te voldoen aan de [99,95% Azure Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Er zijn geen kosten verbonden aan de schaalset zelf, u betaalt alleen voor elk VM-exemplaar dat u maakt. Wanneer één virtuele machine gebruikmaakt van [Azure Premium ssd's](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd), is de Azure-sla van toepassing op niet-geplande onderhouds gebeurtenissen. Virtuele machines in een schaalset kunnen worden geïmplementeerd in meerdere update domeinen en fout domeinen om de beschik baarheid en tolerantie te maximaliseren voor uitval vanwege Data Center-storingen en geplande of niet-geplande onderhouds gebeurtenissen. Virtuele machines in een schaalset kunnen ook in één beschikbaarheids zone of regio worden geïmplementeerd. De implementatie opties voor de beschikbaarheids zone kunnen verschillen op basis van de Orchestration-modus.
-
-### <a name="preview-orchestration-mode-preview"></a>Preview: voor beeld van Orchestration-modus
-Met schaal sets voor virtuele machines kunt u de Orchestration-modus opgeven.  Met de Orchestration-modus (preview) voor de virtuele-machine schaalset kunt u nu kiezen of de schaalset virtuele machines moet organiseren die expliciet worden gemaakt buiten een configuratie model van een schaalset, of dat exemplaren van virtuele machines impliciet zijn gemaakt op basis van het configuratie model. Kies de indelings modus die door het VM-indelings model expliciet gedefinieerde Virtual Machines samen in een regio of in een beschikbaarheids zone. Virtuele machines die zijn geïmplementeerd in een beschikbaarheids zone, bieden zonegebonden-isolatie voor Vm's aan de grenzen van de beschikbaarheids zone en worden niet onderhevig aan storingen die zich kunnen voordoen in een andere beschikbaarheids zone in de regio. 
-
-|   | "orchestrationMode": "VM" (VirtualMachine)| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
-|----|----|----|
-| VM-configuratie model| Geen. VirtualMachineProfile is niet gedefinieerd in het model voor schaal sets. | Vereist. VirtualMachineProfile wordt ingevuld in het model voor schaal sets. |
-| Nieuwe VM toevoegen aan Schaalset| Vm's worden expliciet toegevoegd aan de schaalset wanneer de virtuele machine wordt gemaakt. | Vm's worden impliciet gemaakt en toegevoegd aan de schaalset op basis van het VM-configuratie model, het aantal instanties en de regels voor automatisch schalen. |
-| Beschikbaarheidszones| Ondersteunt regionale implementaties of virtuele machines in één beschikbaarheids zone| Ondersteunt regionale implementatie of meerdere Beschikbaarheidszones; Kan de strategie voor zone verdeling definiëren |
-| Foutdomeinen| Kan aantal fout domeinen definiëren. 2 of 3 op basis van regionale ondersteuning en 5 voor de beschikbaarheids zone. Het toegewezen VM-fout domein blijft in de levens cyclus van de VM, inclusief de toewijzing en opnieuw starten. | Kan 1, 2 of 3 fout domeinen definiëren voor niet-zonegebonden implementaties en 5 voor implementaties van de beschikbaarheids zone. Het toegewezen VM-fout domein blijft niet behouden met de VM-levens cyclus, aan virtuele machines wordt een fout domein toegewezen op het moment van de toewijzing. |
-| Updatedomeinen| N.v.t. Update domeinen worden automatisch toegewezen aan fout domeinen| N.v.t. Update domeinen worden automatisch toegewezen aan fout domeinen |
 
 **Fout domeinen en update domeinen**
 
