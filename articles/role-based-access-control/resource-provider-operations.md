@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 28313391201281b7c30617c4b910583194b2bcd2
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 2131912244b2f895ebb7d9bbc28f132ac2404ae7
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080117"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414569"
 ---
 # <a name="azure-resource-providers-operations"></a>Bewerkingen voor Azure-resource providers
 
@@ -4140,7 +4140,7 @@ Azure-service: [Azure Analysis Services](../analysis-services/index.yml)
 
 ### <a name="microsoftdatabricks"></a>Micro soft. Databricks
 
-Azure-service: [Azure Databricks](../azure-databricks/index.yml)
+Azure-service: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |

@@ -5,14 +5,14 @@ services: event-grid
 author: VidyaKukke
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/25/2020
 ms.author: vkukke
-ms.openlocfilehash: ba3bc14c9b4a9d5d866dbb1b9369557b948078d0
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390190"
+ms.locfileid: "85414246"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Grid: 
@@ -37,6 +37,7 @@ Azure Event Grid ondersteunt toegangs beheer op basis van IP voor het publiceren
 
 Het onderwerp en het domein zijn standaard toegankelijk vanaf internet, zolang de aanvraag geldig is voor verificatie en autorisatie. Met IP-firewall kunt u dit nog verder beperken tot een reeks IP-adressen of IP-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Uitgevers die afkomstig zijn van een ander IP-adres, worden geweigerd en ontvangen een 403 (verboden)-antwoord.
 
+Zie [Configure IP firewall](configure-firewall.md)(Engelstalig) voor stapsgewijze instructies voor het configureren van IP-Firewall voor onderwerpen en domeinen.
 
 ## <a name="private-endpoints"></a>Privé-eindpunten
 U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) gebruiken om direct vanuit uw virtuele netwerk toegang te geven tot uw onderwerpen en domeinen, zonder dat u het open bare Internet [hoeft te passeren](../private-link/private-link-overview.md) . Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-service in uw VNet. Wanneer u een persoonlijk eind punt maakt voor uw onderwerp of domein, biedt het een beveiligde verbinding tussen clients in uw VNet en uw Event Grid bron. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw VNet. De verbinding tussen het persoonlijke eind punt en de Event Grid-Service maakt gebruik van een beveiligde persoonlijke koppeling.

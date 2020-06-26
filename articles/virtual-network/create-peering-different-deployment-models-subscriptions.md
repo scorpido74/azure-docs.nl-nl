@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 46f86c3aa730b5222a6c6e36bdb392a0ae891c6c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 0f2bcb78b1a998c1b335a5757b832fbb1d3fc7fb
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84689415"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412495"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Een peering voor een virtueel netwerk maken-verschillende implementatie modellen en abonnementen
 
@@ -34,7 +34,7 @@ De stappen voor het maken van peering op een virtueel netwerk zijn verschillend,
 
 U kunt geen virtuele netwerk peering maken tussen twee virtuele netwerken die zijn geïmplementeerd via het klassieke implementatie model. In deze zelf studie worden virtuele netwerken gebruikt die zich in dezelfde regio bevinden. Deze zelf studie vergelijkt virtuele netwerken in dezelfde regio. U kunt ook virtuele netwerken in verschillende [ondersteunde regio's](virtual-network-manage-peering.md#cross-region)peeren. Het is raadzaam om vertrouwd te raken met de [vereisten en beperkingen van de peering](virtual-network-manage-peering.md#requirements-and-constraints) voordat u peering van virtuele netwerken uitvoert.
 
-Bij het maken van een virtuele netwerk peering tussen virtuele netwerken die zich in verschillende abonnementen bevinden, moeten de abonnementen beide zijn gekoppeld aan dezelfde Azure Active Directory Tenant. Als u nog geen Azure Active Directory Tenant hebt, kunt u er snel [een maken](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). U kunt virtuele netwerken in verschillende abonnementen en verschillende Azure Active Directory tenants met behulp van een Azure [VPN gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)verbinden.
+Bij het maken van een virtuele netwerk peering tussen virtuele netwerken die zich in verschillende abonnementen bevinden, kunnen de abonnementen aan dezelfde Azure Active Directory-Tenant zijn gekoppeld. Als u nog geen Azure Active Directory Tenant hebt, kunt u er snel [een maken](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant).
 
 U kunt de [Azure Portal](#portal), de Azure [-opdracht regel interface](#cli) (CLI) of Azure [Power shell](#powershell) gebruiken om een peering voor het virtuele netwerk te maken. Klik op een van de vorige koppelingen van het hulp programma om rechtstreeks naar de stappen voor het maken van een virtuele netwerk-peering te gaan met het hulp programma van uw keuze.
 

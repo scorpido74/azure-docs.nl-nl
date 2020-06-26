@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778818"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743912"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Een partner-id aan uw Azure-accounts koppelen
 
@@ -160,4 +160,17 @@ Ja, u kunt uw partner-id voor Azure Stack koppelen.
 **Hoe koppel ik mijn partner-id, als mijn bedrijf [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) gebruikt voor toegang tot klantresources?**
 
 Als u klanten onboardt voor gedelegeerd resourcebeheer van Azure door [een aanbieding voor beheerde services te publiceren in Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers), wordt uw MPN-id automatisch gekoppeld. Als u [klanten onboardt door Azure Resource Manager-sjablonen te implementeren](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), moet u uw MPN-id (Microsoft Partner Network) koppelen met minstens één gebruikersaccount dat toegang heeft tot al uw abonnementen waarvoor onboarding is uitgevoerd. Let op: u moet dit doen in de tenant van de serviceprovider. Ter vereenvoudiging raden we u aan om in uw tenant een service-principal-account te maken, dat is gekoppeld aan uw MPN-id, en aan elke klant waarvoor u onboarding uitvoert, Lezerstoegang tot dit account te verlenen. In dit voorbeeld wordt de rol van de RBAC-lezer gebruikt en is dit een van de rollen die niet in aanmerking komen voor het verdiende tegoed van de partner. Zie [Rollen en machtigingen voor verdiend tegoed van partners](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2) voor meer informatie over rollen.
+
+
+**Hoe kan ik PAL (Partner Admin Link) aan mijn klant uitleggen?**
+
+Met Partner Admin Link (PAL) kan Microsoft die partners identificeren en herkennen die klanten helpen bedrijfsdoelstellingen te behalen en waarde te creëren in de cloud. Klanten moeten partners eerst toegang tot hun Azure-resource verlenen. Zodra de toegang is verleend, wordt de MPN-id (Microsoft Partner Network) gekoppeld. Door deze koppeling leert Microsoft het ecosysteem van IT-serviceproviders kennen en kunnen ze de hulpprogramma's verfijnen die nodig zijn om onze algemene klanten de beste ondersteuning te bieden.
+
+**Welke gegevens worden door PAL verzameld?**
+
+De PAL-koppeling met bestaande referenties bieden Microsoft geen nieuwe klantgegevens. Het biedt Microsoft simpelweg de telemetrie waar een partner actief is betrokken bij de Azure-omgeving van een klant. Microsoft kan invloed uitoefenen en in Azure verbruikte omzet uit de omgeving van de klant toerekenen aan de organisatie van een partner op basis van de machtigingen (RBAC-rol) en het bereik (beheergroep, abonnement, resourcegroep, resource) van het account dat de klant aan de partner heeft gegeven. 
+
+**Heeft dit invloed op de beveiliging van een de Azure-omgeving van een klant?**
+
+Door de koppeling met PAL wordt alleen het MPN-id van de partner toegevoegd aan de referenties die al zijn ingericht; eventuele machtigingen (RBAC-rol) worden niet gewijzigd en er worden geen aanvullende Azure-servicegegevens aan de partner of aan Microsoft gegeven. 
 

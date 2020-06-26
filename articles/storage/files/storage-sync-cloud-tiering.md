@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 869614c2e3fe11c289ab6eb7f6c1407f666de2b0
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368138"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413974"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -39,7 +39,30 @@ Cloud lagen zijn niet afhankelijk van de NTFS-functie voor het bijhouden van de 
 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Wat is de minimale bestands grootte voor een bestand dat moet worden gelaagd?
-Voor agent versies 9. x en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster (dubbele grootte van het bestandssysteem cluster). Als de cluster grootte van het NTFS-bestands systeem bijvoorbeeld 4KB is, is de resulterende minimale bestands grootte voor een bestand op laag 8 KB. Voor agent versies 8. x en ouder is de minimale bestands grootte voor een bestand op laag 64 kB.
+
+Voor Agent versie 9 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
+
+|Volume cluster grootte (bytes) |Bestanden van deze grootte of groter kunnen worden getierd  |
+|----------------------------|---------|
+|4 KB (4096)                 | 8 kB    |
+|8 KB (8192)                 | 16 kB   |
+|16 KB (16384)               | 32 KB   |
+|32 KB (32768) en groter    | 64 kB   |
+
+Alle bestands systemen die worden gebruikt door Windows, organiseren uw vaste schijf op basis van de cluster grootte (ook wel bekend als Allocation Unit Size). Cluster grootte vertegenwoordigt de kleinste hoeveelheid schijf ruimte die kan worden gebruikt om een bestand te bewaren. Wanneer de bestands grootte niet van een even veelvoud van de cluster grootte komt, moet er extra ruimte worden gebruikt om het bestand te bewaren (tot het volgende veelvoud van de cluster grootte).
+
+Azure File Sync wordt ondersteund op NTFS-volumes met Windows Server 2012 R2 en nieuwer. De volgende tabel beschrijft de standaard cluster grootten wanneer u een nieuw NTFS-volume maakt. 
+
+|Volume grootte    |Windows Server 2012R2 en hoger |
+|---------------|---------------|
+|7 MB – 16 TB   | 4 kB          |
+|16TB – 32 TB   | 8 kB          |
+|32 TB – 64 TB   | 16 kB         |
+|64 TB – 128 TB  | 32 KB         |
+|128TB – 256 TB | 64 kB         |
+|> 256 TB       | Niet ondersteund |
+
+Het is mogelijk dat u na het maken van het volume hand matig het volume met een andere grootte van een cluster (toewijzings eenheid) hebt geformatteerd. Als uw volume is afgeleid van een oudere versie van Windows, kunnen de standaard cluster grootten ook verschillen. [In dit artikel vindt u meer informatie over de standaard cluster groottes.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hoe werkt het opslaglaagbeleid voor beschikbare volumeruimte?
@@ -85,7 +108,7 @@ Als u meer gegevens lokaal houdt, betekent dit lagere kosten voor uitgaand verke
 
 Hiermee wordt één keer per uur geëvalueerd of bestanden moeten worden getierd op basis van de ingestelde beleids regels. U kunt twee situaties tegen komen wanneer een nieuw server eindpunt wordt gemaakt:
 
-1. Wanneer u een nieuw server eindpunt toevoegt, bestaan er vaak bestanden op die server locatie. Ze moeten eerst worden geüpload voordat cloud lagen kunnen beginnen. Het volume beschik bare ruimte beleid wordt pas gestart als de initiële upload van alle bestanden is voltooid. Het optionele datum beleid begint echter met het uitvoeren van een afzonderlijk bestand, zodra een bestand is geüpload. Het interval van één uur is hier ook van toepassing. 
+1. Wanneer u een nieuw server eindpunt toevoegt, bestaan er vaak bestanden op die server locatie. Ze moeten eerst worden geüpload voordat cloud lagen kunnen beginnen. Het volume beschik bare ruimte beleid begint niet met zijn werk totdat de initiële upload van alle bestanden is voltooid. Het optionele datum beleid begint echter met het uitvoeren van een afzonderlijk bestand, zodra een bestand is geüpload. Het interval van één uur is hier ook van toepassing. 
 2. Wanneer u een nieuw server eindpunt toevoegt, is het mogelijk dat u een lege server locatie in een Azure-bestands share verbindt met uw gegevens. Of dat voor een tweede server of tijdens een herstel na nood geval is. Als u ervoor kiest om de naam ruimte te downloaden en de inhoud op te halen tijdens de eerste down load naar uw server, worden de bestanden op basis van de laatst gewijzigd tijds tempel ingetrokken wanneer de naam ruimte niet beschikbaar is. Er worden slechts zoveel bestanden ingetrokken als binnen het volume beschik bare ruimte beleid en het optionele datum beleid.
 
 <a id="is-my-file-tiered"></a>

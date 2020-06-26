@@ -1,21 +1,21 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Automation
 description: Een overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Automation. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: e314bbc82c993db1c3fc23089f903ae68f10290e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 9a30388279f2e93cca1ceaa43fb3959cea4704d6
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229827"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886031"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-automation"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Automation
+# <a name="azure-policy-built-in-definitions-for-azure-automation"></a>Ingebouwde Azure Policy-definities voor Azure Automation
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Automation. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-automation"></a>Azure Automation
 

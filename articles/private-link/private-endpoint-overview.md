@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106467"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414144"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -76,7 +76,7 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Relay** | Micro soft. relay/naam ruimten | naamruimte |
 |**Azure Event Grid** | Micro soft. EventGrid/topics    | onderwerp |
 |**Azure Event Grid** | Micro soft. EventGrid/domeinen    | domein |
-|**Azure webapps** | Micro soft. web/sites    | site |
+|**Azure webapps** | Micro soft. web/sites    | sites |
 |**Azure Machine Learning** | Micro soft. MachineLearningServices/werk ruimten    | werkruimte |
   
  

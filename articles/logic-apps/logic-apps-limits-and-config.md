@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 06/20/2020
-ms.openlocfilehash: 3c62f9794a4eb963bcd23a294d82b67cd9e37d08
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.date: 06/25/2020
+ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367220"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412692"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informatie over limieten en configuratie voor Azure Logic Apps
 
@@ -216,7 +216,7 @@ Dit zijn de limieten voor aangepaste connectors die u kunt maken op basis van we
 
 Elk Azure-abonnement heeft deze limieten voor het integratie account:
 
-* Eén integratie account voor de [gratis laag](../logic-apps/logic-apps-pricing.md#integration-accounts) per Azure-regio
+* Eén integratie account voor de [gratis laag](../logic-apps/logic-apps-pricing.md#integration-accounts) per Azure-regio. Deze laag is alleen beschikbaar voor open bare regio's in azure, zoals vs-West of Zuidoost-Azië, maar niet voor [Azure China 21vianet](https://docs.microsoft.com/azure/china/overview-operations) of [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * 1.000 totaal aantal integratie accounts, met inbegrip van integratie accounts in een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) voor zowel [ontwikkel aars als Premium-sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 
@@ -268,7 +268,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 
 | Runtime-eind punt | Gratis | Basic | Standard | Opmerkingen |
 |------------------|------|-------|----------|-------|
-| Lees aanroepen per 5 minuten | 3000 | 30.000 | 60.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
+| Lees aanroepen per 5 minuten | 3000 | 30.000 | 60.000 | Deze limiet is van toepassing op aanroepen die de onbewerkte invoer en uitvoer ophalen uit de uitvoerings geschiedenis van een logische app. U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
 | Aanroepen starten per 5 minuten | 3000 | 30.000 | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
 | Tracerings aanroepen per 5 minuten | 3000 | 30.000 | 45.000 | U kunt de werk belasting naar meerdere accounts distribueren als dat nodig is. |
 | Gelijktijdige aanroepen blok keren | ~ 1.000 | ~ 1.000 | ~ 1.000 | Hetzelfde voor alle Sku's. U kunt het aantal gelijktijdige aanvragen verminderen of de duur beperken als dat nodig is. |

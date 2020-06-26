@@ -1,56 +1,56 @@
 ---
 title: Inleiding
-description: Meer informatie over de functies en voor delen van de Azure VMware-oplossing (AVS) voor het implementeren en beheren van op VMware gebaseerde workloads in Azure.
+description: Meer informatie over de functies en voordelen van Azure VMware Solution (AVS) voor het implementeren en beheren van VMware-workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740330"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749676"
 ---
-# <a name="what-is-azure-vmware-solution-avs-preview"></a>Wat is de preview-versie van Azure VMware Solution (AVS)?
+# <a name="what-is-azure-vmware-solution-avs-preview"></a>Wat is Azure VMware Solution (AVS) preview?
 
-Met de Azure VMware-oplossing (AVS) beschikt u over persoonlijke Clouds in Azure. De privécloud bevat vSphere-clusters, gebouwd op basis van een toegewezen bare-metal Azure-infra structuur. U kunt particuliere cloud clusters schalen van 3 naar 16 hosts, met de mogelijkheid om meerdere clusters in één privécloud te hebben. Alle persoonlijke Clouds worden ingericht met vCenter Server, VSAN, vSphere en NSX-T. U kunt workloads migreren uit uw on-premises omgevingen, nieuwe virtuele machines maken of implementeren en Azure-Services gebruiken vanuit uw persoonlijke Clouds.
+Met Azure VMware Solution (AVS) beschikt u over privéclouds in Azure. De privécloud bevat vSphere-clusters, gebouwd op basis van een toegewezen bare-metal Azure-infrastructuur. U kunt privécloudclusters schalen van 3 naar 16 hosts, met de mogelijkheid om meerdere clusters in één privécloud te hebben. Alle privéclouds zijn ingericht met vCenter Server, vSAN, vSphere en NSX-T. U kunt workloads migreren uit uw on-premises omgevingen, nieuwe virtuele machines maken of implementeren en Azure-services gebruiken vanuit uw privéclouds.
 
-AVS is een VMware-gevalideerde oplossing met een voortdurende validatie en het testen van verbeteringen en upgrades. De infra structuur en software van de privécloud worden beheerd en beheerd door micro soft, zodat u zich kunt richten op het ontwikkelen en uitvoeren van werk belastingen in uw privé-Clouds.
+AVS is een VMware gevalideerde oplossing met voortdurende validatie en het testen van verbeteringen en upgrades. De infrastructuur en software van de privécloud worden beheerd en onderhouden door Microsoft, zodat u zich kunt richten op het ontwikkelen en uitvoeren van workloads in uw privéclouds.
 
-In het volgende diagram ziet u de belending tussen persoonlijke Clouds en VNets in azure, Azure-Services en on-premises omgevingen. Netwerk toegang van particuliere Clouds naar Azure-Services of VNets biedt SLA-aangedreven integratie van Azure-service-eind punten. Persoonlijke Cloud toegang vanuit on-premises omgevingen maakt gebruik van ExpressRoute Global Reach voor een privé-en beveiligde verbinding.
+In het volgende diagram wordt de verdeling weergegeven tussen privéclouds en VNets in Azure, Azure-services en on-premises omgevingen. Netwerktoegang van privéclouds naar Azure-services of VNets biedt SLA-gestuurde integratie van Azure-service-eindpunten. Privécloud-toegang vanuit on-premises omgevingen maakt gebruik van ExpressRoute Global Reach voor een privé- en beveiligde verbinding.
 
-![Afbeelding van een persoonlijke Cloud-aangrenzing in Azure en on-premises](./media/adjacency-overview-drawing-final.png)
+![Afbeelding van verdeling van AVS-privécloud over Azure en on-premises](./media/adjacency-overview-drawing-final.png)
 
-## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privé-Clouds
+## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privéclouds
 
-Persoonlijke Clouds en clusters van AVS zijn gebouwd op basis van een bare-metal, Hyper-geconvergeerde Azure-infrastructuur host. De high-end-hosts hebben 576 GB RAM-geheugen en Dual Intel 18 Core-processors van 2,3 GHz. De gast host heeft twee vSAN-diskgroups met een totale vSAN-capaciteits categorie van 15,36 TB (SSD) en een NVMe-vSAN-cache laag van 3,2 TB.
+AVS-privéclouds en -clusters zijn opgebouwd uit een bare-metal, hypergeconvergeerde Azure-infrastructuurhost. De high-end-hosts hebben 576 GB RAM en dubbele Intel 18-core, 2,3GHz-processors. De HE hosts hebben twee vSAN-schijfgroepen met een totale raw vSAN-capaciteitslaag van 15,36 TB (SSD) en een cachelaag van 3,2 TB (NVMe).
 
-Nieuwe persoonlijke Clouds worden geïmplementeerd via de Azure Portal of Azure CLI.
+Nieuwe privéclouds worden geïmplementeerd via Azure Portal of Azure CLI.
 
 ## <a name="networking"></a>Netwerken
 
-Wanneer een privécloud wordt geïmplementeerd, worden particuliere netwerken voor beheer, inrichting en vMotion gemaakt. Deze particuliere netwerken worden gebruikt voor toegang tot vCenter en NSX-T-beheer, en voor de installatie van de virtuele machine vMotion of implementatie. Alle particuliere netwerken zijn toegankelijk vanuit een VNet in azure of vanuit on-premises omgevingen. ExpressRoute Global Reach wordt gebruikt om persoonlijke Clouds te verbinden met on-premises omgevingen en deze verbinding vereist een VNet met een ExpressRoute-circuit in uw abonnement.
+Wanneer een privécloud wordt geïmplementeerd, worden privénetwerken voor beheer, provisioning en vMotion gemaakt. Deze privénetwerken worden gebruikt voor toegang tot vCenter en NSX-T Manager en voor vMotion of implementatie van virtuele machines. Alle privénetwerken zijn toegankelijk via een VNet in Azure of vanuit on-premises omgevingen. ExpressRoute Global Reach wordt gebruikt om privéclouds te verbinden met on-premises omgevingen en voor deze verbinding is een VNet met een ExpressRoute-circuit in uw abonnement vereist.
 
-De toegang tot internet en Azure-Services worden ingericht wanneer er een privécloud wordt geïmplementeerd. De toegang wordt verschaft zodat Vm's op productie werkbelasting netwerken Azure-of op internet gebaseerde services kunnen gebruiken. Internet toegang is standaard uitgeschakeld voor nieuwe persoonlijke Clouds en kan op elk gewenst moment worden ingeschakeld of uitgeschakeld.
+Toegang tot internet- en Azure-services wordt ingericht wanneer een privécloud wordt geïmplementeerd. De toegang wordt verschaft, zodat VM's op productieworkloadnetwerken Azure- of internetservices kunnen gebruiken. Internettoegang is standaard uitgeschakeld voor nieuwe privéclouds en kan op elk gewenst moment worden ingeschakeld of uitgeschakeld.
 
-Zie het artikel over [netwerk concepten](concepts-networking.md) voor meer informatie over netwerk-en interconnectiviteit.
+Voor meer informatie over netwerken en interconnectiviteit raadpleegt u het artikel [Networking-concepten](concepts-networking.md).
 
 ## <a name="access-and-security"></a>Toegang en beveiliging
 
-Voor verbeterde beveiliging gebruiken AVS persoonlijke Clouds vSphere toegangs beheer op basis van rollen. vSphere SSO LDAP-mogelijkheden kunnen worden geïntegreerd met Azure Active Directory. Zie het artikel [toegangs-en identiteits concepten](concepts-identity.md) voor meer informatie over identiteit en bevoegdheden.
+Voor verbeterde beveiliging maken AVS-privéclouds gebruik van vSphere-toegangsbeheer op basis van rollen. vSphere SSO LDAP-mogelijkheden kunnen worden geïntegreerd met Azure Active Directory. Zie het artikel [Toegang en identiteitsconcepten](concepts-identity.md) voor meer informatie over identiteit en bevoegdheden.
 
-vSAN gegevens-at-rest-versleuteling is standaard ingeschakeld en wordt gebruikt om de beveiliging van vSAN Data Store te bieden. Dit wordt gedetailleerd beschreven in het artikel over [opslag concepten](concepts-storage.md) .
+vSAN data-at-rest encryptie is standaard ingeschakeld en wordt gebruikt om vSAN-datastorebeveiliging te bieden. Dit wordt gedetailleerd beschreven in het artikel [Opslagconcepten](concepts-storage.md).
 
-## <a name="host-and-software-lifecycle-maintenance"></a>Onderhoud van host-en software levenscyclus
+## <a name="host-and-software-lifecycle-maintenance"></a>Onderhoud van de levenscyclus van host en software
 
-Reguliere upgrades van de AVS-privécloud en VMware-software zorgen ervoor dat de nieuwste beveiligings-, stabiliteits-en functie sets worden uitgevoerd in uw privé-Clouds. Meer informatie over platform onderhoud en upgrades vindt u in het artikel over de [upgrade-concepten](concepts-upgrades.md) .
+Regelmatige upgrades van de AVS-privécloud en VMware-software zorgen ervoor dat de nieuwste beveiligings-, stabiliteits- en functiesets worden uitgevoerd in uw privéclouds. Meer informatie over platformonderhoud en -upgrades vindt u in het artikel [Upgradeconcepten](concepts-upgrades.md).
 
 ## <a name="monitoring-your-private-cloud"></a>De privécloud bewaken
 
-U kunt [Logboeken in azure monitor](../azure-monitor/overview.md) gebruiken om logboeken te verzamelen op uw virtuele machines die worden uitgevoerd in de privécloud van uw AVS. U kunt [de MMA-agent downloaden en installeren](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) op virtuele Linux-en Windows-machines die worden uitgevoerd in uw AVS-persoonlijke Clouds, met behulp van dezelfde query's die u op uw on-premises vm's uitvoert. U kunt dezelfde query's uitvoeren die normaal gesp roken alleen op uw virtuele machines worden uitgevoerd. Zie [query's schrijven](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)voor meer informatie over het maken van query's.
+U kunt [Logboeken in Azure Monitor](../azure-monitor/overview.md) gebruiken om logboeken te verzamelen op uw virtuele machines die worden uitgevoerd in de privécloud van uw AVS. U kunt [de MMA-agent downloaden en installeren](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) op virtuele Linux- en Windows-machines die worden uitgevoerd in uw AVS-privéclouds, met behulp van dezelfde query's die u op uw on-premises VM's uitvoert. U kunt dezelfde query's uitvoeren die normaal gesproken alleen op uw virtuele machines worden uitgevoerd. Zie [query's schrijven](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)voor meer informatie over het maken van query's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende stap is om de belangrijkste [persoonlijke Cloud-en cluster concepten](concepts-private-clouds-clusters.md)te leren.
+De volgende stap is het leren van de belangrijkste [privécloud- en clusterconcepten](concepts-private-clouds-clusters.md).
 
 <!-- LINKS - external -->
 

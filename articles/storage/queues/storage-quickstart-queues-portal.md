@@ -1,21 +1,21 @@
 ---
-title: 'Snelstartgids: Azure Storage-wacht rijen maken in de portal'
-description: Gebruik de Azure Portal om een wachtrij te maken. Gebruik vervolgens de Azure Portal om een bericht toe te voegen, de bericht eigenschappen weer te geven en het bericht in de wachtrij te plaatsen.
+title: 'Quickstart: Azure Storage-wachtrijen maken in de portal'
+description: Gebruik de Azure-portal om een wachtrij te maken. Gebruik vervolgens de Azure-portal om een bericht toe te voegen, de berichteigenschappen te bekijken en het bericht uit de wachtrij te verwijderen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/06/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.reviewer: dineshm
+ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74269252"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808974"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Quick Start: een wachtrij maken en een bericht toevoegen met de Azure Portal
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Quickstart: Een wachtrij maken en een bericht toevoegen met de Azure-portal
 
 In deze quickstart leert u de [Azure-portal](https://portal.azure.com/) te gebruiken om een wachtrij te maken in Azure Storage, en om berichten toe te voegen aan en weer te verwijderen uit de wachtrij.
 
@@ -53,7 +53,7 @@ Nadat u een bericht hebt toegevoegd, wordt in de Azure-portal een lijst van alle
 
 ![Schermopname met berichteigenschappen](media/storage-quickstart-queues-portal/view-message-properties.png)
 
-## <a name="dequeue-a-message"></a>Een bericht uit de wachtrij halen
+## <a name="dequeue-a-message"></a>Een bericht uit de wachtrij verwijderen
 
 U kunt vanuit de Azure-portal een bericht uit het begin van de wachtrij verwijderen. Wanneer u een bericht uit de wachtrij verwijdert, is de verwijdering definitief. 
 
@@ -66,4 +66,4 @@ Bij het verwijderen van berichten uit de wachtrij wordt altijd het oudste berich
 In deze quickstart hebt u geleerd hoe u een wachtrij maakt, een bericht toevoegt, eigenschappen van berichten bekijkt en een bericht uit de wachtrij in de Azure-portal verwijdert.
 
 > [!div class="nextstepaction"]
-> [Wat zijn Azure-wacht rijen?](storage-queues-introduction.md)
+> [Wat zijn Azure-wachtrijen?](storage-queues-introduction.md)

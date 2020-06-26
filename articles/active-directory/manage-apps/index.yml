@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie over toepassingsbeheer
-summary: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Office 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
+summary: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Microsoft 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
 metadata:
   title: Documentatie over toepassingsbeheer
-  description: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Office 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
+  description: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Microsoft 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063469"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339204"
 landingContent:
 - title: Over toepassingsbeheer
   linkLists:

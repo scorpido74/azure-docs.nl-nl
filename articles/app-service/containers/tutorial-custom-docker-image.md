@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561111"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906833"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Zelfstudie: Een aangepaste installatiekopie maken en uitvoeren in App Service vanuit een privéregister
 
@@ -236,23 +236,33 @@ Controleer of de web-app werkt door erheen te bladeren (`http://<app-name>.azure
 
 ## <a name="change-web-app-and-redeploy"></a>De web-app bijwerken en opnieuw implementeren
 
-Open in uw lokale Git-opslagplaats app/templates/app/index.html. Zoek naar het eerste HTML-element en wijzig het in.
+Open in uw lokale Git-opslagplaats *app/templates/app/index.html*. Wijzig eerst het HTML-element om overeen te komen met de volgende code.
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-Nadat u het Python-bestand hebt gewijzigd en dit hebt opgeslagen, moet u de nieuwe Docker-installatiekopie opnieuw opbouwen en pushen. Start de web-app opnieuw om de wijzigingen door te voeren. Gebruik dezelfde opdrachten die u eerder in deze zelfstudie hebt gebruikt. U kunt de volgende artikelen raadplegen: [De installatiekopie maken met het Docker-bestand](#build-the-image-from-the-docker-file) en [De installatiekopie naar Azure Container Registry pushen](#push-image-to-azure-container-registry). De web-app testen door de instructies te volgen in [De web-app testen](#test-the-web-app).
+Nadat u de wijzigingen hebt opgeslagen, bouwt en pusht u de nieuwe docker-installatiekopie met dezelfde opdrachten die u eerder in deze zelfstudie hebt gebruikt. U kunt de volgende artikelen raadplegen: [De installatiekopie maken met het Docker-bestand](#build-the-image-from-the-docker-file) en [De installatiekopie naar Azure Container Registry pushen](#push-image-to-azure-container-registry).
+
+Nadat u de nieuwe installatiekopie hebt gepusht, start u de web-app opnieuw op om de wijzigingen door te voeren met behulp van de volgende opdracht:
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+Vervang `<app_name>` door de specifieke naam die u eerder hebt gebruikt.
+
+Als de app opnieuw is opgestart, test u deze door de instructies in [De web-app testen](#test-the-web-app) te volgen.
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>SSH-verbindingen inschakelen
 

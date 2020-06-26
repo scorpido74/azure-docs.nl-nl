@@ -3,16 +3,16 @@ title: Azure-kosten analyseren met de Power BI-app
 description: In dit artikel wordt uitgelegd hoe de Azure Cost Management Power BI-app wordt geïnstalleerd en gebruikt.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/15/2020
+ms.date: 06/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 050df590827b94888c44826ac6391ff79ada1cfc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 53340c72a6456b24b52cff6d7eda9d4a34db6564
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461596"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888204"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analyseer kosten met de Azure Cost Management Power BI-app voor Enterprise Agreements (EA)
 
@@ -127,6 +127,27 @@ Zie de sectie [VM-RI-dekking (gedeelde aanbeveling)](#shared-recommendation) voo
 ## <a name="troubleshoot-problems"></a>Problemen oplossen
 
 Als u nog steeds problemen hebt met de Power BI-app, kan de volgende probleemoplossingsinformatie daarbij mogelijk helpen.
+
+### <a name="error-processing-the-data-in-the-dataset"></a>Fout bij het verwerken van gegevens in de gegevensset
+
+U krijgt mogelijk een fout met het volgende bericht:
+
+```
+There was an error when processing the data in the dataset.
+Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError","pbi.error":{"code":"ModelRefresh_ShortMessage_ProcessingError","parameters":{},"details":[{"code":"Message","detail":{"type":1,"value":"We cannot convert the value \"Required Field: 'Enr...\" to type List."}}],"exceptionCulprit":1}}} Table: <TableName>.
+```
+
+Er wordt een tabelnaam weer gegeven in plaats van `<TableName>`.
+
+#### <a name="cause"></a>Oorzaak
+
+De standaardwaarde `Enrollment Number` van **Bereik** is veranderd in de verbinding met Cost Management.
+
+#### <a name="solution"></a>Oplossing
+
+Maak opnieuw verbinding met Cost Management en stel de waarde voor **Bereik** in op `Enrollment Number`. Voer het inschrijvingsnummer van uw organisatie niet in. Typ in plaats daarvan `Enrollment Number` exact zoals dit in de volgende afbeelding verschijnt.
+
+![Informatie over EA-inschrijving invoeren](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
 ### <a name="budgetamount-error"></a>Fout in BudgetAmount
 

@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: d87e0d54a62736623483f1929b1979af8efb3a58
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331760"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052437"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V-VM's beoordelen met Azure Migrate-serverevaluatie
 
@@ -36,7 +36,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 - [Voltooi](tutorial-prepare-hyper-v.md) de eerste zelfstudie in de serie. Als u dit niet doet, werken de instructies in deze zelfstudie niet.
 - In de eerste zelfstudie hebt u het volgende gedaan:
     - [Azure voorbereiden](tutorial-prepare-hyper-v.md#prepare-azure) om te werken met Azure Migrate.
-    - Beoordeling van [Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment)-hosts en -VM's voorbereiden.
+    - Beoordeling van [Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-assessment)-hosts en -VM's voorbereiden.
     - [Controleren](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) wat u nodig hebt om het Azure Migrate-apparaat voor Hyper-V-evaluatie te implementeren.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate-project instellen
@@ -102,7 +102,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
         **Scenario** | **Downloaden** | **SHA256**
         --- | --- | ---
-        Hyper-V (8,93 MB) | [Nieuwste versie](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8,93 GB) | [Nieuwste versie](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - Voor Azure Government:
 
@@ -174,10 +174,7 @@ Het apparaat voor de eerste keer instellen.
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>Referenties voor SMB-VHD's delegeren
 
-Als u VHD's uitvoert op SMB's, moet u de delegatie van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Hiervoor is het volgende vereist:
-
-- U schakelt elke host in als gemachtigde voor het apparaat. Als u de zelfstudies in volgorde hebt gevolgd, hebt u dit gedaan in de vorige zelfstudie, toen u Hyper-V voor de evaluatie en migratie hebt voorbereid. U moet CredSSP ofwel [handmatig](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) voor de hosts hebben ingesteld, of door [een script uit te voeren](tutorial-prepare-hyper-v.md#prepare-with-a-script) dat dit doet.
-- Schakel CredSSP-delegatie in, zodat het Azure Migrate-apparaat kan fungeren als de client, waarbij de referenties naar een host worden gedelegeerd.
+Als u VHD's uitvoert op SMB's, moet u de delegatie van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Als u dit wilt doen, schakelt u elke host in als gemachtigde voor het apparaat. Als u de zelfstudies in volgorde hebt gevolgd, hebt u dit gedaan in de vorige zelfstudie, toen u Hyper-V voor de evaluatie en migratie hebt voorbereid. U moet CredSSP ofwel [handmatig](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials) voor de hosts hebben ingesteld, of door [een script uit te voeren](tutorial-prepare-hyper-v.md#run-the-script) dat dit doet.
 
 Schakel dit als volgt in op het apparaat:
 
@@ -186,7 +183,7 @@ Schakel dit als volgt in op het apparaat:
 Voer deze opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voorbeelden van hostnamen.
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 Voorbeeld: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `

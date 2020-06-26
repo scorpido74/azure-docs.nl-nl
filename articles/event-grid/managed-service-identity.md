@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 69c7c7f361a930ab1dc2e0437365d2f4457b57e2
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4d81845ab61d8a84b9bad47ede4a027cd772c499
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101077"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412925"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Gebeurtenis levering met een beheerde identiteit
 In dit artikel wordt beschreven hoe u een [beheerde service-identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor Azure Event grid-onderwerpen of-domeinen inschakelt. Gebruik dit om gebeurtenissen door te sturen naar ondersteunde bestemmingen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
@@ -44,6 +44,8 @@ Op dezelfde manier kunt u de `az eventgrid domain create` opdracht gebruiken om 
 In de vorige sectie hebt u geleerd hoe u een door het systeem beheerde identiteit inschakelt tijdens het maken van een onderwerp of een domein. In deze sectie leert u hoe u een door het systeem beheerde identiteit voor een bestaand onderwerp of domein inschakelt. 
 
 ### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+De volgende procedure laat zien hoe u een door het systeem beheerde identiteit voor een onderwerp inschakelt. De stappen voor het inschakelen van een identiteit voor een domein zijn vergelijkbaar. 
+
 1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Zoek naar **Event grid-onderwerpen** in de zoek balk aan de bovenkant.
 3. Selecteer het **onderwerp** waarvoor u de beheerde identiteit wilt inschakelen. 

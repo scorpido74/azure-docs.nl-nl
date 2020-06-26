@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298955"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750704"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure-portal
 
@@ -54,7 +54,7 @@ Een hybride netwerk gebruikt het model van hub-en-spoke om verkeer tussen Azure 
    Routes naar de via de gateway verbonden virtuele netwerken of on-premises netwerken worden bovendien automatisch doorgegeven aan de routeringstabellen voor de als peer ingestelde virtuele netwerken met behulp van de gatewayovergang. Zie [VPN-gatewayoverdracht kunt configureren voor peering voor virtuele netwerken](../vpn-gateway/vpn-gateway-peering-gateway-transit.md) voor meer informatie.
 
 - Stel **UseRemoteGateways** bij peering tussen VNet-spoke en VNet-hub. Als **UseRemoteGateways** is ingesteld en **AllowGatewayTransit** ook is ingesteld voor externe peering, gebruikt het virtuele spoke-netwerk gateways van het externe virtuele netwerk voor overdracht.
-- Om het verkeer van het spoke-subnet te routeren via de hub-firewall, hebt u een door de gebruiker gedefinieerde route (UDR) nodig die naar de firewall wijst en waarvoor de optie **Doorgifte van route van virtuele netwerkgateway** is uitgeschakeld. De uitgeschakelde optie **Doorgifte van route van virtuele netwerkgateway** voorkomt routedistributie naar de spoke-subnetten. Hierdoor veroorzaken geleerde routes geen conflicten met uw UDR.
+- Om het verkeer van het spoke-subnet te routeren via de hub-firewall, kunt u een door de gebruiker gedefinieerde route (UDR) gebruiken die naar de firewall wijst en waarvoor de optie **Doorgifte van route van virtuele netwerkgateway** is uitgeschakeld. De uitgeschakelde optie **Doorgifte van route van virtuele netwerkgateway** voorkomt routedistributie naar de spoke-subnetten. Hierdoor veroorzaken geleerde routes geen conflicten met uw UDR. Als u **routepropagatie van de virtuele netwerkgateway** ingeschakeld wilt houden, moet u ervoor zorgen dat specifieke routes naar de firewall worden gedefinieerd om de routes te overschrijven die on-premises zijn gedefinieerd vanuit BGP.
 - Configureer een UDR in het subnet van de hubgateway die verwijst naar het IP-adres van de firewall als de volgende hop naar de spoke-netwerken. Er is geen door de gebruiker gedefinieerde route (UDR) nodig in het Azure Firewall-subnet, omdat het de routes overneemt van BGP.
 
 Zie het gedeelte [Routes maken](#create-the-routes) in deze zelfstudie voor informatie over hoe deze routes worden gemaakt.

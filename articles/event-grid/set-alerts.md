@@ -7,15 +7,15 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: 488d3025f279916cb98e75f3f8db56fdc9d6d1de
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392897"
+ms.locfileid: "85412835"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Waarschuwingen instellen voor Azure Event Grid metrische gegevens en activiteiten logboeken
-In dit artikel wordt beschreven hoe u waarschuwingen maakt voor Azure Event Grid metrische gegevens en activiteiten logboek bewerkingen. 
+In dit artikel wordt beschreven hoe u waarschuwingen maakt voor Azure Event Grid metrische gegevens en activiteiten logboek bewerkingen. U kunt waarschuwingen maken voor zowel de metrische gegevens voor publiceren als levering voor Azure Event Grid resources (onderwerpen en domeinen). Voor systeem onderwerpen [maakt u waarschuwingen op de pagina **metrische gegevens** ](#create-alerts-using-the-metrics-page).
 
 ## <a name="create-alerts-on-dead-lettered-events"></a>Waarschuwingen voor onbestelbare gebeurtenissen maken
 De volgende procedure laat zien hoe u een waarschuwing kunt maken voor de metriek van **onbestelbare gebeurtenissen** voor een aangepast onderwerp. In dit voor beeld wordt een e-mail bericht verzonden naar de eigenaar van de Azure-resource groep wanneer het aantal onbestelbare gebeurtenissen voor een onderwerp boven 10 komt. 
@@ -33,6 +33,9 @@ De volgende procedure laat zien hoe u een waarschuwing kunt maken voor de metrie
     2. Selecteer dimensies (optioneel). 
         
         :::image type="content" source="./media/monitor-event-delivery/configure-signal-logic.png" alt-text="Signaallogica configureren":::        
+
+        > [!NOTE]
+        > U kunt **+** de knop voor **EventSubscriptionName** selecteren om de naam van een gebeurtenis abonnement op te geven om gebeurtenissen te filteren. 
     3. Schuif omlaag. Selecteer in de sectie **waarschuwings logica** een **operator**, **aggregatie type**, voer een **drempel waarde**in en selecteer **gereed**. In dit voor beeld wordt een waarschuwing geactiveerd wanneer het totale aantal onbestelbare gebeurtenissen groter is dan 10. 
     
         :::image type="content" source="./media/monitor-event-delivery/alert-logic.png" alt-text="Waarschuwings logica":::                
@@ -66,7 +69,7 @@ Als u bijvoorbeeld een waarschuwing wilt maken voor een gebeurtenis voor een lev
 
 
 ## <a name="create-alerts-using-the-metrics-page"></a>Waarschuwingen maken met behulp van de pagina metrische gegevens
-U kunt ook waarschuwingen maken met behulp van de pagina **metrische gegevens** . De stappen zijn vergelijkbaar. 
+U kunt ook waarschuwingen maken met behulp van de pagina **metrische gegevens** . De stappen zijn vergelijkbaar. Voor systeem onderwerpen kunt u de pagina **metrische gegevens** alleen gebruiken om waarschuwingen te maken, omdat de pagina **waarschuwingen** niet beschikbaar is. 
 
 :::image type="content" source="./media/monitor-event-delivery/metric-page-create-alert-button.png" alt-text="Pagina metrische gegevens-knop waarschuwing maken":::   
     

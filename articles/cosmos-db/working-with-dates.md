@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667010"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412546"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Werken met datums in Azure Cosmos DB
 
@@ -21,9 +21,9 @@ Naast de basis typen hebben veel toepassingen het type datum/tijd nodig om datum
 
 ## <a name="storing-datetimes"></a>Datum-en tijd opslag
 
-Azure Cosmos DB ondersteunt JSON-typen zoals-String, Number, Boolean, null, array en object. Het biedt geen rechtstreekse ondersteuning voor het type datum/tijd. Op dit moment biedt Azure Cosmos DB geen ondersteuning voor lokalisatie van datums. U moet dus DateTimes opslaan als teken reeksen. De aanbevolen notatie voor datum-en tijd teken `YYYY-MM-DDThh:mm:ss.fffffffZ` reeksen in azure Cosmos DB is die de ISO 8601 UTC-standaard volgt. Het is raadzaam om alle datums in Azure Cosmos DB op te slaan als UTC. Als de datum teken reeksen naar deze indeling worden geconverteerd, kunnen de sorteer datums lexicographically worden gewijzigd. Als er niet-UTC-datums worden opgeslagen, moet de logica aan de client zijde worden afgehandeld. Voor het converteren van een lokale datum-/tijdwaarde naar UTC moet de offset bekend/opgeslagen zijn als een eigenschap in de JSON en de client kan de offset gebruiken om de waarde van de UTC-datum/tijd te berekenen.
+Azure Cosmos DB ondersteunt JSON-typen zoals-String, Number, Boolean, null, array en object. Het biedt geen rechtstreekse ondersteuning voor het type datum/tijd. Op dit moment biedt Azure Cosmos DB geen ondersteuning voor lokalisatie van datums. U moet dus DateTimes opslaan als teken reeksen. De aanbevolen notatie voor datum-en tijd teken reeksen in Azure Cosmos DB is `yyyy-MM-ddTHH:mm:ss.fffffffZ` die de ISO 8601 UTC-standaard volgt. Het is raadzaam om alle datums in Azure Cosmos DB op te slaan als UTC. Als de datum teken reeksen naar deze indeling worden geconverteerd, kunnen de sorteer datums lexicographically worden gewijzigd. Als er niet-UTC-datums worden opgeslagen, moet de logica aan de client zijde worden afgehandeld. Voor het converteren van een lokale datum-/tijdwaarde naar UTC moet de offset bekend/opgeslagen zijn als een eigenschap in de JSON en de client kan de offset gebruiken om de waarde van de UTC-datum/tijd te berekenen.
 
-Bereik query's met DateTime-teken reeksen als filters worden alleen ondersteund als de DateTime-teken reeksen allemaal in UTC en dezelfde lengte zijn. In Azure Cosmos DB retourneert de [GetCurrentDateTime](sql-query-getcurrentdatetime.md) -systeem functie de huidige UTC-datum en-8601 tijd in de notatie: `YYYY-MM-DDThh:mm:ss.fffffffZ`.
+Bereik query's met DateTime-teken reeksen als filters worden alleen ondersteund als de DateTime-teken reeksen allemaal in UTC en dezelfde lengte zijn. In Azure Cosmos DB retourneert de [GetCurrentDateTime](sql-query-getcurrentdatetime.md) -systeem functie de huidige UTC-datum en-8601 tijd in de notatie: `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
 
 De meeste toepassingen kunnen de standaard teken reeks representatie voor DateTime gebruiken om de volgende redenen:
 
@@ -65,7 +65,7 @@ Dit document wordt als volgt opgeslagen in Azure Cosmos DB:
     }
 ```  
 
-U kunt ook DateTimes opslaan als UNIX-tijds tempels, dat wil zeggen, als een getal dat het aantal verstreken seconden vertegenwoordigt sinds 1 januari 1970. De eigenschap van de interne`_ts`Time Stamp () van Azure Cosmos DB volgt deze methode. U kunt de [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) -klasse gebruiken om datetimes als getallen te serialiseren.
+U kunt ook DateTimes opslaan als UNIX-tijds tempels, dat wil zeggen, als een getal dat het aantal verstreken seconden vertegenwoordigt sinds 1 januari 1970. De eigenschap van de interne Time Stamp () van Azure Cosmos DB `_ts` volgt deze methode. U kunt de [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) -klasse gebruiken om datetimes als getallen te serialiseren.
 
 ## <a name="querying-datetimes-in-linq"></a>Query's uitvoeren op DateTimes in LINQ
 

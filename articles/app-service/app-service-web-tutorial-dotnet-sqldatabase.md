@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: f6c8b388a9d1261e08314b8f8c607e5ee16362ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013785"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906119"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Zelfstudie: Een ASP.NET-app implementeren in Azure met Azure SQL Database
 
@@ -410,3 +410,8 @@ Ga naar de volgende zelfstudie om te ontdekken hoe u eenvoudig de beveiliging va
 
 > [!div class="nextstepaction"]
 > [Veilige toegang tot SQL Database met behulp van beheerde identiteiten voor Azure-resources](app-service-web-tutorial-connect-msi.md)
+
+Meer resources:
+
+> [!div class="nextstepaction"]
+> [ASP.NET configureren](configure-language-dotnet-framework.md)

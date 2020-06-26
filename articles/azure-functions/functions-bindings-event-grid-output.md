@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: 891eda49e11d9a9252cfcb5a0677eb47551135bc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561808"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413345"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid uitvoer binding voor Azure Functions
 
-Gebruik de Event Grid uitvoer binding om gebeurtenissen te schrijven naar een aangepast onderwerp. U moet een geldige [toegangs sleutel voor het aangepaste onderwerp](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)hebben.
+Gebruik de Event Grid uitvoer binding om gebeurtenissen te schrijven naar een aangepast onderwerp. U moet een geldige [toegangs sleutel voor het aangepaste onderwerp](../event-grid/security-authenticate-publishing-clients.md)hebben.
 
 Zie het [overzicht](./functions-bindings-event-grid.md)voor meer informatie over de installatie-en configuratie details.
 
@@ -59,7 +59,7 @@ public static async Task Run(
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in het bestand *Function. json* .
+In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in de *function.jsvoor* het bestand.
 
 ```json
 {
@@ -102,7 +102,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in het bestand *Function. json* .
+In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in de *function.jsvoor* het bestand.
 
 ```json
 {
@@ -162,9 +162,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een trigger binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. Vervolgens wordt er een gebeurtenis verzonden naar het aangepaste Event Grid onderwerp, zoals opgegeven door de `topicEndpointUri` .
+In het volgende voor beeld ziet u een trigger binding in een *function.jsin* het bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. Vervolgens wordt er in een gebeurtenis naar het aangepaste onderwerp gezonden, zoals opgegeven door de `topicEndpointUri` .
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -187,7 +187,7 @@ Hier vindt u de bindings gegevens in het bestand *Function. json* :
 }
 ```
 
-Hier volgt het python-voor beeld voor het verzenden van een gebeurtenis naar een aangepast Event Grid onderwerp door het volgende in te stellen `EventGridOutputEvent` :
+Hier volgt een voor beeld van python voor het verzenden van een gebeurtenis naar een aangepast onderwerp door het volgende in te stellen `EventGridOutputEvent` :
 
 ```python
 import logging
@@ -253,11 +253,11 @@ De Event Grid uitvoer binding is niet beschikbaar voor Java.
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `EventGrid` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `EventGrid` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op ' eventGrid '. |
 |**direction** | N.v.t. | Moet worden ingesteld op out. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
@@ -278,11 +278,11 @@ Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEv
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
-Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
+Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *function.jsop*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken van `context.bindings.<name>` `<name>` de waarde die is opgegeven in de `name` eigenschap van *Function. json*.
+U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken `context.bindings.<name>` `<name>` van de waarde die is opgegeven in de `name` eigenschap van *function.jsop*.
 
 # <a name="python"></a>[Python](#tab/python)
 

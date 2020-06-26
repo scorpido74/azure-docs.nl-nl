@@ -4,17 +4,17 @@ description: Privé verbinden met een web-app met behulp van een persoonlijk Azu
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 06/26/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bc9cd134e4c83aea94ae0049158b3054c602cce8
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: b9cf0467829425003a33ef806d8e7028e7f27add
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374420"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413396"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -65,22 +65,52 @@ In de web-HTTP-logboeken van uw web-app vindt u het bron-IP-adres van de client.
 
 ## <a name="dns"></a>DNS
 
+Wanneer u een privé-eind punt voor web-app gebruikt, moet de aangevraagde URL overeenkomen met de naam van uw web-app. Standaard mywebappname.azurewebsites.net.
+
 Standaard is de open bare naam van uw web-app, zonder persoonlijk eind punt, een canonieke naam voor het cluster.
-De naam omzetting is bijvoorbeeld: mywebapp.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+De naam omzetting is bijvoorbeeld:
 
-Wanneer u een persoonlijk eind punt implementeert, wijzigen we de DNS-vermelding zodat deze verwijst naar de canonieke naam mywebapp.privatelink.azurewebsites.net.
-De naam omzetting is bijvoorbeeld: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net CNAME clustername.azurewebsites.windows.net clustername.azurewebsites.windows.net CNAME cloudservicename.cloudapp.net cloudservicename.cloudapp.net A 40.122.110.154 
+|Naam |Type |Waarde |
+|-----|-----|------|
+|mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154| 
 
-Als u een privé-DNS-server of een Azure DNS privé zone hebt, moet u een zone met de naam privatelink.azurewebsites.net instellen. Registreer de record voor uw web-app met een record en het IP-adres van het privé-eind punt.
-De naam omzetting is bijvoorbeeld: mywebapp.azurewebsites.net CNAME mywebapp.privatelink.azurewebsites.net mywebapp.privatelink.azurewebsites.net A 10.10.10.8 
+
+Wanneer u een persoonlijk eind punt implementeert, wordt de DNS-vermelding bijgewerkt zodat deze verwijst naar de canonieke naam mywebapp.privatelink.azurewebsites.net.
+De naam omzetting is bijvoorbeeld:
+
+|Naam |Type |Waarde |Opmerkingen |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
+|clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
+|cloudservicename.cloudapp.net|A|40.122.110.154|<--dit open bare IP-adres is niet uw persoonlijke eind punt, de fout 503 wordt weer gegeven|
+
+U moet een privé-DNS-server of een Azure DNS particuliere zone instellen, voor tests waarmee u de host-vermelding van de test machine kunt wijzigen.
+De DNS-zone die u moet maken, is: **privatelink.azurewebsites.net**. Registreer de record voor uw web-app met een record en het IP-adres van het privé-eind punt.
+De naam omzetting is bijvoorbeeld:
+
+|Naam |Type |Waarde |Opmerkingen |
+|-----|-----|------|-------|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<: u beheert deze vermelding in uw DNS-systeem om te verwijzen naar het IP-adres van uw particuliere eind punt|
+
+Na deze DNS-configuratie kunt u uw web-app privé bereiken met de standaard naam mywebappname.azurewebsites.net.
+
 
 Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. Tijdens de preview moet de aangepaste naam worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. Zie [Custom DNS Validation][dnsvalidation](Engelstalig) voor meer informatie.
 
-Als u de kudu-console wilt gebruiken, of kudu REST API (bijvoorbeeld implementatie met Azure DevOps self-hosted agenten), moet u twee records maken in uw Azure DNS persoonlijke zone of uw aangepaste DNS-server. 
-- PrivateEndpointIP yourwebappname.azurewebsites.net 
-- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+Voor de kudu-console, of kudu REST API (implementatie met Azure DevOps self-hosted agenten), moet u twee records maken in uw Azure DNS persoonlijke zone of uw aangepaste DNS-server. 
 
-Deze twee records worden automatisch ingevuld als u een privé zone met de naam privatelink.azurewebsites.net hebt gekoppeld aan het VNet waar u het persoonlijke eind punt maakt.
+| Naam | Type | Waarde |
+|-----|-----|-----|
+| mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+| mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
+
+> [!TIP]
+> Deze twee records worden automatisch ingevuld als u een privé-DNS-zone met de naam privatelink.azurewebsites.net hebt gekoppeld aan het VNet waar u het persoonlijke eind punt maakt.
+
 
 ## <a name="pricing"></a>Prijzen
 

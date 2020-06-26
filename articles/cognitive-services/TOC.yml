@@ -17,11 +17,11 @@
       href: cognitive-services-apis-create-account.md
     - name: Een nieuwe resource maken met de Azure CLI
       href: cognitive-services-apis-create-account-cli.md
-    - name: Diagnostische logboeken
-      href: diagnostic-logging.md
-    - name: ARM-sjabloon
+    - name: Een nieuwe resource maken met een ARM-sjabloon
       displayName: Resource Manager
       href: resource-manager-template.md
+    - name: Diagnostische logboeken
+      href: diagnostic-logging.md
 - name: Voorbeelden
   items:
     - name: Ingebouwde modules voor Azure Policy

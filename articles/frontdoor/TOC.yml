@@ -21,6 +21,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: Een regelengine instellen
       href: front-door-tutorial-rules-engine.md
+    - name: Beveiligingsheaders toevoegen met de engine voor regels
+      href: front-door-security-headers.md
     - name: Web Application Firewall en Front Door
       href: front-door-waf.md
 - name: Voorbeelden

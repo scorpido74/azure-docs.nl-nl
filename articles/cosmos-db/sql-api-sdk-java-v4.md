@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: bb2e6256a3272bea74ac1176c859fcbfefe46b10
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391992"
+ms.locfileid: "85412631"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -61,6 +61,16 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 | **Azure Cosmos DB workshops en Labs** |[Start pagina van Cosmos DB workshops](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Release geschiedenis
+
+### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
+#### <a name="new-features"></a>Nieuwe functies
+* Er is ondersteuning toegevoegd voor de `GROUP BY` query.
+* De standaard waarde van maxConnectionsPerEndpoint is verhoogd naar 130 in DirectConnectionConfig.
+* De standaard waarde van maxRequestsPerConnection is verhoogd naar 30 in DirectConnectionConfig.
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Opgeloste problemen met order by query waarbij dubbele resultaten worden geretourneerd tijdens het hervatten met behulp van vervolg token. 
+* Opgeloste problemen met een waarde-query die Null-waarden retourneert voor een genest object.
+* Uitzonde ring voor een vaste null-aanwijzer op Request manager in RntbdClientChannelPool.
 
 ### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
 #### <a name="new-features"></a>Nieuwe functies

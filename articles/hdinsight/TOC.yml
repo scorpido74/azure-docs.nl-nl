@@ -167,6 +167,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: Apache Pig optimaliseren
                   href: ./optimize-pig-ambari.md
+            - name: Clusterknooppunten opnieuw opstarten
+              href: ./cluster-reboot-vm.md
             - name: Apache Ambari REST API gebruiken
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: Een cluster verwijderen
@@ -410,7 +412,7 @@
               items:
                 - name: Gebruiken met Data Lake Storage
                   href: ./spark/apache-spark-use-with-data-lake-store.md
-                - name: Verbinding maken met Azure SQL-database
+                - name: Verbinding maken met Azure SQL Database
                   href: ./spark/apache-spark-connect-to-sql-database.md
                 - name: Een lambda-architectuur implementeren met Apache Spark en Cosmos DB
                   href: ../cosmos-db/lambda-architecture.md

@@ -1,88 +1,21 @@
 ---
-title: Beveiliging en verificatie Azure Event Grid
-description: In dit artikel worden verschillende manieren beschreven om toegang te verifiëren tot uw Event Grid-resources (webhook, abonnementen, aangepaste onderwerpen)
+title: Gebeurtenis levering verifiëren naar gebeurtenis-handlers (Azure Event Grid)
+description: In dit artikel worden verschillende methoden beschreven voor het verifiëren van de levering aan gebeurtenis-handlers in Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 06/25/2020
 ms.author: spelluru
-ms.openlocfilehash: d028367b82e8529d5260c086f2e4afa609582b00
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 46b1aa500f00046dd4d6e318b270982e8b747a79
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100227"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412818"
 ---
-# <a name="authenticating-access-to-azure-event-grid-resources"></a>Toegang tot Azure Event Grid-bronnen verifiëren
-In dit artikel vindt u informatie over de volgende scenario's:  
-
-- Verifieer clients die gebeurtenissen publiceren naar Azure Event Grid-onderwerpen met behulp van Shared Access Signature (SAS) of sleutel. 
-- Beveilig het webhook-eind punt dat wordt gebruikt voor het ontvangen van gebeurtenissen van Event Grid met behulp van Azure Active Directory (Azure AD) of een gedeeld geheim.
-
-## <a name="authenticate-publishing-clients-using-sas-or-key"></a>Publicerend clients verifiëren met SAS of sleutel
-Aangepaste onderwerpen gebruiken een Shared Access Signature (SAS) of sleutel verificatie. We raden SAS aan, maar sleutel verificatie biedt eenvoudige programmering en is compatibel met veel bestaande webhook-Publishers.
-
-U neemt de verificatie waarde op in de HTTP-header. Voor SAS gebruikt u **AEG-SAS-token** voor de waarde van de header. Gebruik voor sleutel verificatie **AEG-SAS-sleutel** voor de waarde van de header.
-
-### <a name="key-authentication"></a>Sleutel verificatie
-
-Sleutel verificatie is de eenvoudigste vorm van verificatie. Gebruik de indeling: `aeg-sas-key: <your key>` in de header van het bericht.
-
-U geeft bijvoorbeeld een sleutel door:
-
-```
-aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-U kunt ook `aeg-sas-key` een query parameter opgeven. 
-
-```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-### <a name="sas-tokens"></a>SAS-tokens
-
-SAS-tokens voor Event Grid bevatten de resource, een verloop tijd en een hand tekening. De indeling van de SAS-token is: `r={resource}&e={expiration}&s={signature}` .
-
-De resource is het pad naar het event grid-onderwerp waarnaar u gebeurtenissen verzendt. Een geldig bronpad is bijvoorbeeld: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01` . Zie [resource typen micro soft. EventGrid](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)voor een overzicht van alle ondersteunde API-versies. 
-
-U kunt de hand tekening genereren op basis van een sleutel.
-
-Een geldige waarde voor **AEG-SAS-token** is bijvoorbeeld:
-
-```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
-```
-
-In het volgende voor beeld wordt een SAS-token gemaakt voor gebruik met Event Grid:
-
-```cs
-static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
-{
-    const char Resource = 'r';
-    const char Expiration = 'e';
-    const char Signature = 's';
-
-    string encodedResource = HttpUtility.UrlEncode(resource);
-    var culture = CultureInfo.CreateSpecificCulture("en-US");
-    var encodedExpirationUtc = HttpUtility.UrlEncode(expirationUtc.ToString(culture));
-
-    string unsignedSas = $"{Resource}={encodedResource}&{Expiration}={encodedExpirationUtc}";
-    using (var hmac = new HMACSHA256(Convert.FromBase64String(key)))
-    {
-        string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(unsignedSas)));
-        string encodedSignature = HttpUtility.UrlEncode(signature);
-        string signedSas = $"{unsignedSas}&{Signature}={encodedSignature}";
-
-        return signedSas;
-    }
-}
-```
-
-### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
-
-Alle gebeurtenissen of gegevens die door de Event Grid-Service naar schijf worden geschreven, worden versleuteld met een door micro soft beheerde sleutel, zodat deze op rest wordt versleuteld. Bovendien is de maximale tijds duur dat gebeurtenissen of gegevens bewaard 24 uur in acht te komen in de [Event grid beleid voor opnieuw proberen](delivery-and-retry.md). Event Grid verwijdert automatisch alle gebeurtenissen of gegevens na 24 uur, of de TTL van de gebeurtenis, afhankelijk van wat kleiner is.
+# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Gebeurtenis levering verifiëren naar gebeurtenis-handlers (Azure Event Grid)
+Dit artikel bevat informatie over het verifiëren van gebeurtenis levering aan gebeurtenis-handlers. Ook wordt uitgelegd hoe u de webhook-eind punten die worden gebruikt voor het ontvangen van gebeurtenissen van Event Grid met behulp van Azure Active Directory (Azure AD) of een gedeeld geheim kunt beveiligen.
 
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>Door het systeem toegewezen identiteiten gebruiken voor gebeurtenis levering
 U kunt een door het systeem toegewezen beheerde identiteit voor een onderwerp of domein inschakelen en de identiteit gebruiken om gebeurtenissen door te sturen naar ondersteunde doelen, zoals Service Bus-wacht rijen en-onderwerpen, Event hubs en opslag accounts.
@@ -113,6 +46,6 @@ Zie [webhook Event Delivery](webhook-event-delivery.md) (Engelstalig) voor meer 
 > [!IMPORTANT]
 Azure Event Grid ondersteunt alleen **https** -webhook-eind punten. 
 
-## <a name="next-steps"></a>Volgende stappen
 
-- Zie [About Event grid](overview.md) voor een inleiding tot Event grid.
+## <a name="next-steps"></a>Volgende stappen
+Zie [publicerend clients verifiëren](security-authenticate-publishing-clients.md) voor meer informatie over het verifiëren van clients die gebeurtenissen publiceren naar onderwerpen of domeinen. 

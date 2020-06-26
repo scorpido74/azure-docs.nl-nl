@@ -4,14 +4,14 @@ description: Meer informatie over het controleren van de besturings vlak bewerki
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/25/2020
 ms.author: sngun
-ms.openlocfilehash: cb6a27c0f03b7c0c41d8f323609df612363cfd9e
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 4c9f02784507ee893b6396fef4ed34a87610166d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262647"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414169"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
 
@@ -29,7 +29,7 @@ Hier volgen enkele voor beelden van scenario's waarbij acties voor het beheren v
 
 Voordat u de bewerkingen van het besturings vlak controleert in Azure Cosmos DB, schakelt u de schrijf toegang op basis van de meta gegevens uit voor uw account. Wanneer op sleutels gebaseerde meta gegevens schrijf toegang is uitgeschakeld, kunnen clients die verbinding maken met het Azure Cosmos-account via account sleutels geen toegang krijgen tot het account. U kunt schrijf toegang uitschakelen door de `disableKeyBasedMetadataWriteAccess` eigenschap in te stellen op True. Nadat u deze eigenschap hebt ingesteld, kunnen wijzigingen aan resources worden aangebracht van een gebruiker met de juiste RBAC-rol (op rollen gebaseerd toegangs beheer) en referenties. Zie het artikel [wijzigingen van sdk's voor komen](role-based-access-control.md#preventing-changes-from-cosmos-sdk) voor meer informatie over het instellen van deze eigenschap. 
 
-Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure Power shell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` Onwaar wijzigt in plaats van waar.
+Als de `disableKeyBasedMetadataWriteAccess` is ingeschakeld en de op SDK gebaseerde clients Create-of update-bewerkingen uitvoeren, is een fout *' bewerking ' post ' op resource ' ContainerNameorDatabaseName ' niet toegestaan via Azure Cosmos DB-eind punt* wordt geretourneerd. U moet toegang tot dergelijke bewerkingen voor uw account inschakelen of de bewerkingen voor maken/bijwerken uitvoeren via Azure Resource Manager, Azure CLI of Azure PowerShell. Als u wilt overschakelen, stelt u de disableKeyBasedMetadataWriteAccess in op **False** door gebruik te maken van Azure CLI, zoals beschreven in het artikel [Wijzigingen verhinderen in Cosmos SDK](role-based-access-control.md#preventing-changes-from-cosmos-sdk) . Zorg ervoor dat u de waarde `disableKeyBasedMetadataWriteAccess` Onwaar wijzigt in plaats van waar.
 
 Houd rekening met de volgende punten wanneer u de schrijf toegang voor meta gegevens uitschakelt:
 
@@ -71,7 +71,7 @@ De volgende scherm afbeeldingen vastleggen Logboeken wanneer een consistentie ni
 
 :::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Besturings vlak Logboeken wanneer een VNet wordt toegevoegd":::
 
-De volgende scherm afbeeldingen vastleggen Logboeken wanneer de door Voer van een Cassandra-tabel wordt bijgewerkt:
+De volgende scherm afbeeldingen vastleggen Logboeken wanneer de spatie of een tabel van een Cassandra-account wordt gemaakt en wanneer de door Voer wordt bijgewerkt. De besturings vlak logboeken voor het maken en bijwerken van bewerkingen in de data base en de container worden afzonderlijk geregistreerd, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
 :::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Besturings vlak Logboeken wanneer de door Voer wordt bijgewerkt":::
 
@@ -101,30 +101,39 @@ Hier volgen de besturings vlak bewerkingen die beschikbaar zijn op account nivea
 
 Hieronder vindt u de besturings vlak bewerkingen die beschikbaar zijn op de data base en op het niveau van de container. Deze bewerkingen zijn beschikbaar als metrische gegevens in azure monitor:
 
+* SQL Database gemaakt
 * SQL Database bijgewerkt
-* SQL-container is bijgewerkt
 * SQL Database door Voer bijgewerkt
-* SQL-container doorvoer bijgewerkt
 * SQL Database verwijderd
+* SQL-container gemaakt
+* SQL-container is bijgewerkt
+* SQL-container doorvoer bijgewerkt
 * SQL-container verwijderd
+* Cassandra-opslag ruimte gemaakt
 * Cassandra-opslag ruimte bijgewerkt
-* Cassandra-tabel bijgewerkt
 * Cassandra voor de door Voer van de opslag ruimte bijgewerkt
-* Cassandra-tabel doorvoer bijgewerkt
 * Cassandra-opslag ruimte verwijderd
+* Cassandra-tabel gemaakt
+* Cassandra-tabel bijgewerkt
+* Cassandra-tabel doorvoer bijgewerkt
 * Cassandra-tabel verwijderd
+* Gremlin-data base gemaakt
 * Gremlin-data base bijgewerkt
-* Gremlin-grafiek bijgewerkt
 * Gremlin-data base-door Voer bijgewerkt
-* Gremlin-grafiek doorvoer bijgewerkt
 * Gremlin-data base verwijderd
+* Gremlin Graph gemaakt
+* Gremlin-grafiek bijgewerkt
+* Gremlin-grafiek doorvoer bijgewerkt
 * Gremlin-grafiek verwijderd
+* Mongo-data base gemaakt
 * Mongo-data base bijgewerkt
-* Mongo-verzameling bijgewerkt
 * Mongo-data base-door Voer bijgewerkt
-* Door Voer van Mongo-verzameling bijgewerkt
 * Mongo-data base verwijderd
+* Mongo-verzameling gemaakt
+* Mongo-verzameling bijgewerkt
+* Door Voer van Mongo-verzameling bijgewerkt
 * Mongo-verzameling verwijderd
+* AzureTable-tabel gemaakt
 * AzureTable-tabel bijgewerkt
 * AzureTable-tabel doorvoer bijgewerkt
 * AzureTable-tabel verwijderd
@@ -144,14 +153,15 @@ Hieronder vindt u de bewerkings namen in Diagnostische logboeken voor verschille
 
 Voor API-specifieke bewerkingen wordt de bewerking benoemd met de volgende indeling:
 
-* Soort + ApiKindResourceType + OperationType + start/volt ooien
-* Soort + ApiKindResourceType + "door Voer" + operationType + start/volt ooien
+* Soort + ApiKindResourceType + OperationType
+* Soort + ApiKindResourceType + "door Voer" + operationType
 
 **Hierbij** 
 
-* CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
-* CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
-* SqlContainersUpdateStart, SqlContainersUpdateComplete
+* CassandraKeyspacesCreate
+* CassandraKeyspacesUpdate
+* CassandraKeyspacesThroughputUpdate
+* SqlContainersUpdate
 
 De eigenschap *Resourcedetails* bevat de gehele resource hoofdtekst als een aanvraag lading en bevat alle eigenschappen die moeten worden bijgewerkt
 
@@ -161,14 +171,28 @@ Hier volgen enkele voor beelden van het ophalen van Diagnostische logboeken voor
 
 ```kusto
 AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdateStart"
+| where Category startswith "ControlPlane"
+| where OperationName contains "Update"
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
 AzureDiagnostics 
 | where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+| where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

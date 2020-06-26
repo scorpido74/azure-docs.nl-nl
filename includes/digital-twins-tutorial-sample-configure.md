@@ -5,20 +5,20 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737190"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262334"
 ---
 ## <a name="configure-the-sample-project"></a>Het voorbeeldproject configureren
 
-Stel vervolgens een voorbeeldclienttoepassing in die gaat communiceren met uw instantie van Azure Digital Twins. Als u het voorbeeldproject nog niet hebt gedownload, kunt u dat nu doen door [de voorbeeldopslagplaats van Azure Digital Twins als ZIP-bestand te downloaden](https://github.com/Azure-Samples/digital-twins-samples/archive/master.zip). 
+Stel vervolgens een voorbeeldclienttoepassing in die gaat communiceren met uw instantie van Azure Digital Twins. Als u het voorbeeldproject nog niet hebt gedownload, download u het nu van de landingspagina [Azure Digital Twins-voorbeelden](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) door de knop *ZIP downloaden* onderaan de titel te selecteren.
 
 Navigeer naar het gedownloade bestand op uw computer en pak het uit.
 
-In de uitgepakte map navigeert u naar _digital-twins-samples-master/AdtSampleApp/_ . Open _**AdtE2ESample.sln**_ in Visual Studio 2019. 
+Navigeer in de uitgepakte map naar _AdtSampleApp/_ . Open _**AdtE2ESample.sln**_ in Visual Studio 2019. 
 
 Gebruik in Visual Studio het deelvenster *Solution Explorer* om een kopie te maken van het bestand _SampleClientApp > **serviceConfig.json.TEMPLATE**_ (gebruik de menu's onder de rechtermuisknop om te kopiëren en plakken). Wijzig de naam van de kopie in *serviceConfig.json*. Dit bestand fungeert als een vooraf ingesteld JSON-bestand met de benodigde configuratievariabelen om het project uit te voeren.
 

@@ -3,12 +3,12 @@ title: 'Snelstart: een containerinstallatiekopie bouwen en uitvoeren'
 description: Voer snel taken uit met Azure Container Registry om op aanvraag een Docker-containerinstallatiekopie te maken en uit te voeren in de cloud.
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680595"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753706"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Een containerinstallatiekopie bouwen en uitvoeren met Azure Container Registry-taken
 
@@ -37,20 +37,21 @@ az group create --name myResourceGroup --location eastus
 Maak een containerregister met de opdracht [az acr create][az-acr-create]. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voorbeeld wordt *myContainerRegistry008* gebruikt. Werk deze waarde bij naar een unieke waarde.
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry008 --sku Basic
 ```
 
 In dit voorbeeld maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor Container Registry][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
 
-## <a name="build-an-image-from-a-dockerfile"></a>Een installatiekopie bouwen op basis van een Dockerfile
+## <a name="build-and-push-image-from-a-dockerfile"></a>Een installatiekopie bouwen en pushen vanaf een Dockerfile
 
-Gebruik nu Azure Container Registry om een installatiekopie te maken. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met de volgende inhoud. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie, maar u kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. De opdrachtvoorbeelden in dit artikel zijn geformatteerd voor de Bash-shell.
+Gebruik nu Azure Container Registry om een installatiekopie te maken en pushen. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met één regel: `FROM hello-world`. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie van de installatiekopie `hello-world` in Docker Hub. U kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. Als u met een bash-shell werkt, maakt u de Dockerfile met de volgende opdracht:
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Voer de opdracht [az acr build][az-acr-build] uit om de installatiekopie te bouwen. Wanneer de installatiekopie is gemaakt, wordt deze naar het register gepusht. In het volgende voorbeeld wordt de installatiekopie van `sample/hello-world:v1` gepusht. Met de `.` aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
+Voer de opdracht [az acr build][az-acr-build] uit, waarmee de installatiekopie wordt gemaakt. Nadat de installatiekopie is gemaakt, wordt deze naar uw register gepusht. In het volgende voorbeeld wordt de `sample/hello-world:v1`-installatiekopie gemaakt en gepusht. Met de `.` aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \

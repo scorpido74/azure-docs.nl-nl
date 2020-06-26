@@ -1,95 +1,95 @@
 ---
-title: Wat is Azure Firewall Manager preview?
+title: Wat is Azure Firewall-beheer (preview)?
 description: Meer informatie over Azure Firewall Manager-functies
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 03/13/2020
+ms.date: 06/11/2020
 ms.author: victorh
-ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79366271"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792151"
 ---
-# <a name="what-is-azure-firewall-manager-preview"></a>Wat is Azure Firewall Manager preview?
+# <a name="what-is-azure-firewall-manager-preview"></a>Wat is Azure Firewall-beheer (preview)?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Firewall Manager preview is een beveiligings beheer service die voorziet in een centraal beveiligings beleid en route beheer voor beveiligings verbindingen in de Cloud. 
+Azure Firewall Manager Preview is een service voor beveiligingsbeheer die het centrale beveiligingsbeleid en routebeheer biedt voor op cloud gebaseerde beveiligingsperimeters. 
 
-Firewall Manager kan beveiligings beheer bieden voor twee typen netwerk architectuur:
+Firewall Manager biedt beveiligingsbeheer voor twee soorten netwerkarchitectuur:
 
-- **beveiligde virtuele hub**
+- **Beveiligde virtuele hub**
 
-   Een [virtuele WAN-hub van Azure](../virtual-wan/virtual-wan-about.md#resources) is een door micro soft beheerde resource waarmee u eenvoudig hub-en spoke-architecturen kunt maken. Wanneer beveiligings-en routerings beleidsregels aan een dergelijke hub zijn gekoppeld, wordt deze een *[beveiligde virtuele hub](secured-virtual-hub.md)* genoemd. 
-- **hub-netwerk**
+   Een [Azure Virtual WAN-hub](../virtual-wan/virtual-wan-about.md#resources) is een door Microsoft beheerde resource waarmee u eenvoudig sterarchitecturen kunt maken. Wanneer aan zo'n hub beveiligings- en routeringsbeleid is gekoppeld, wordt dit een *[beveiligde virtuele hub](secured-virtual-hub.md)* genoemd. 
+- **Virtueel hubnetwerk**
 
-   Dit is een standaard virtuele netwerk van Azure dat u zelf maakt en beheert. Wanneer het beveiligings beleid is gekoppeld aan een dergelijke hub, wordt het een *hub virtueel netwerk*genoemd. Op dit moment wordt alleen Azure Firewall beleid ondersteund. U kunt virtuele spoke-netwerken met uw werkbelasting servers en-services. U kunt ook firewalls beheren in zelfstandige virtuele netwerken die niet zijn gekoppeld aan een spoke.
+   Dit is een standaard virtueel Azure-netwerk dat u zelf maakt en beheert. Wanneer beveiligingsbeleidsregels met een dergelijke hub worden gekoppeld, wordt dit een *virtueel hubnetwerk* genoemd. Op dit ogenblik wordt alleen Azure Firewall-beleid ondersteund. U kunt virtuele spaaknetwerken met uw workloadservers en services via peering verbinden. U kunt ook firewalls beheren in zelfstandige virtuele netwerken die niet aan een spaak zijn gekoppeld.
 
-Zie [Wat zijn de opties voor de Azure firewall Manager-architectuur?](vhubs-and-vnets.md)voor een gedetailleerde vergelijking van *beveiligde virtuele hub* -en *hub-netwerk* architecturen.
+Zie [Wat zijn de opties voor de Azure Firewall Manager-architectuur?](vhubs-and-vnets.md) voor een gedetailleerde vergelijking van architecturen voor *beveiligde virtuele hubs* en *virtuele hubnetwerken*.
 
-![Firewall-Manager](media/overview/firewallmanagerv5.png)
+![firewall-manager](media/overview/trusted-security-partners.png)
 
-## <a name="azure-firewall-manager-preview-features"></a>Preview-functies Azure Firewall Manager
+## <a name="azure-firewall-manager-preview-features"></a>Functies van Azure Firewall-beheer (preview)
 
-Azure Firewall Manager-preview biedt de volgende functies:
+De preview van Azure Firewall Manager biedt de volgende functies:
 
-### <a name="central-azure-firewall-deployment-and-configuration"></a>Implementatie en configuratie van centrale Azure Firewall
+### <a name="central-azure-firewall-deployment-and-configuration"></a>Centrale implementatie en configuratie van Azure Firewall
 
-U kunt meerdere Azure Firewall exemplaren die verschillende Azure-regio's en-abonnementen omvatten, centraal implementeren en configureren. 
+U kunt meerdere Azure Firewall-instanties die over verschillende Azure-regio's en abonnementen zijn verspreid, centraal implementeren en configureren. 
 
-### <a name="hierarchical-policies-global-and-local"></a>Hiërarchisch beleid (globaal en lokaal)
+### <a name="hierarchical-policies-global-and-local"></a>Hiërarchische beleidsregels (globaal en lokaal)
 
-U kunt Azure Firewall Manager-preview gebruiken om Azure Firewall beleid centraal te beheren op meerdere beveiligde virtuele hubs. Uw centrale IT-teams kunnen globale firewall beleidsregels maken voor het afdwingen van firewall beleid voor de hele organisatie. Lokaal ontworpen firewall beleid staat een DevOps self-service model toe voor een betere flexibiliteit.
+U kunt Azure Firewall Manager (preview) gebruiken om Azure Firewall-beleidsregels centraal te beheren via meerdere beveiligde virtuele hubs. Uw centrale IT-teams kunnen globale firewallbeleidsregels opstellen om organisatiebreed firewallbeleid af te dwingen voor alle teams. Met lokaal opgestelde firewallbeleidsregels kan een DevOps-selfservicemodel worden gebruikt voor betere flexibiliteit.
 
-### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Geïntegreerd met beveiliging-as-a-service van derden voor geavanceerde beveiliging
+### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Geïntegreerd met externe Security as a Service voor geavanceerde beveiliging
 
-Naast Azure Firewall kunt u SECaaS-providers (Security as a Service) van derden integreren om extra netwerk beveiliging te bieden voor uw VNet-en filiaal-Internet verbindingen.
+Naast Azure Firewall kunt u externe SECaaS-providers (Security as a Service) integreren voor aanvullende netwerkbeveiliging voor uw VNet en vertakte internetverbindingen.
 
-Deze functie is alleen beschikbaar voor implementaties met beveiligde virtuele hub.
+Deze functie is alleen beschikbaar voor implementaties van beveiligde virtuele hubs.
 
-- V2I-verkeer (VNet to Internet) filteren
+- Verkeer van VNet naar internet (V2I) filteren
 
-   - Het uitgaande virtuele netwerk verkeer filteren met uw favoriete beveiligings provider van derden.
-   - Maak gebruik van geavanceerde gebruikers bewuste Internet bescherming voor uw Cloud werkbelastingen die worden uitgevoerd op Azure.
+   - Filter uitgaand verkeer vanaf het virtuele netwerk met uw favoriete externe beveiligingsprovider.
+   - Maak gebruik van geavanceerde op de gebruiker gerichte internetbeveiliging voor uw cloudworkloads die in Azure worden uitgevoerd.
 
-- B2I-verkeer (branch to Internet) filteren
+- Verkeer van een vertakking naar internet (B2I) filteren
 
-   Maak gebruik van uw Azure-connectiviteit en wereld wijde distributie om eenvoudig filters van derden voor vertakking toe te voegen aan Internet scenario's.
+   Maak gebruik van uw Azure-connectiviteit en globale distributie om eenvoudig externe filters toe te voegen voor scenario's met verkeer van aftakkingen naar internet.
 
-Zie [Wat zijn vertrouwde beveiligings partners van Azure firewall Manager (preview)](trusted-security-partners.md) voor meer informatie over vertrouwde beveiligings providers?
+Zie [Wat zijn vertrouwde Azure Firewall Manager-beveiligingspartners (preview)?](trusted-security-partners.md) voor meer informatie over vertrouwde beveiligingsproviders.
 
-### <a name="centralized-route-management"></a>Gecentraliseerd route beheer
+### <a name="centralized-route-management"></a>Gecentraliseerd routebeheer
 
-Stuur eenvoudig verkeer naar uw beveiligde hub voor filteren en logboek registratie zonder dat u hand matig door de gebruiker gedefinieerde routes (UDR) op spoke Virtual Networks hoeft in te stellen. 
+Stuur verkeer eenvoudig door naar uw beveiligde hub om te worden gefilterd en in een logboek te worden vastgelegd zonder handmatig UDR's (door de gebruiker gedefinieerde routes) te hoeven instellen in virtuele spaaknetwerken. 
 
-Deze functie is alleen beschikbaar voor implementaties met beveiligde virtuele hub.
+Deze functie is alleen beschikbaar voor implementaties van beveiligde virtuele hubs.
 
-U kunt providers van derden gebruiken voor het filteren van B2I-verkeer (branch to Internet), naast elkaar met Azure Firewall voor Branch to VNet (B2V), VNet naar VNet (V2V) en VNet naar Internet (V2I). U kunt ook providers van derden gebruiken voor het filteren van V2I-verkeer zolang Azure Firewall niet vereist is voor B2V of V2V. 
+U kunt externe providers gebruiken voor het filteren van het verkeer van vertakkingen naar internet (B2I), tegelijk met Azure Firewall voor verkeer van aftakkingen naar VNet (B2V), verkeer van VNet naar VNet (V2V) en verkeer van VNet naar internet (V2I). U kunt ook externe providers voor het filteren van V2I-verkeer gebruiken, zolang Azure Firewall maar niet is vereist voor B2V of V2V. 
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Azure Firewall-beleid kan worden gebruikt in verschillende regio's. U kunt bijvoorbeeld een beleid in VS West maken en dit in VS-Oost gebruiken. 
+Azure Firewall-beleidsregels kunnen voor meerdere regio's worden gebruikt. U kunt bijvoorbeeld een beleid maken in US - west en dit vervolgens gebruiken in US - oost. 
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Azure Firewall Manager preview heeft de volgende bekende problemen:
+De preview van Azure Firewall Manager heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-|Beperkingen van de filtering van derden.|Het V2I van verkeers filters met externe providers wordt niet ondersteund met Azure Firewall B2V en V2V.|Er wordt een onderzoek uitgevoerd|
-|Het splitsen van verkeer wordt momenteel niet ondersteund.|Het splitsen van Office 365-en Azure open bare PaaS-verkeer wordt momenteel niet ondersteund. Als zodanig is het selecteren van een provider van een derde partij voor V2I of B2I ook alle Azure open bare PaaS-en Office 365-verkeer via de partner service verzonden.|Het splitsen van verkeer op de hub wordt onderzocht.
-|Eén beveiligde virtuele hub per regio.|U kunt niet meer dan één beveiligde virtuele hub per regio hebben.|Meerdere virtuele Wan's maken in een regio.|
-|Basis beleid moet zich in dezelfde regio bevinden als het lokale beleid.|Maak al uw lokale beleids regels in dezelfde regio als het basis beleid. U kunt nog steeds een beleid Toep assen dat is gemaakt in een van de regio's op een beveiligde hub vanuit een andere regio.|Er wordt een onderzoek uitgevoerd|
-|Communicatie tussen de hub werkt niet met een beveiligde virtuele hub|Beveiligde virtuele hub naar beveiligde virtuele hub-communicatie wordt nog niet ondersteund.|Er wordt een onderzoek uitgevoerd|
-|Alle beveiligde virtuele hubs die hetzelfde virtuele WAN delen, moeten zich in dezelfde resource groep bezitten.|Dit gedrag is vandaag afgestemd op virtuele WAN-hubs.|Maak meerdere virtuele Wan's zodat beveiligde virtuele hubs kunnen worden gemaakt in verschillende resource groepen.|
-|IP-groepen worden niet ondersteund in firewall-beleid.|IP-groepen bevinden zich in de open bare preview-versie en worden momenteel alleen ondersteund met traditionele firewall regels.|De oplossing wordt uitgevoerd.
-|Cloud Solution Provider (CSP)-abonnementen worden niet ondersteund.|CSP- [abonnementen](https://azure.microsoft.com/offers/ms-azr-0145p/) worden op dit moment niet ondersteund.|Er wordt een onderzoek uitgevoerd
+|Beperkingen voor filteren met externe providers.|V2I-verkeer filteren met externe providers wordt niet ondersteund voor Azure Firewall B2V en V2V.|Wordt onderzocht|
+|Het opsplitsen van verkeer wordt momenteel niet ondersteund.|Het opsplitsen van verkeer met Office 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een externe provider voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Office 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
+|Eén beveiligde virtuele hub per regio.|U mag niet meer dan één beveiligde virtuele hub per regio hebben.|Maak meerdere virtuele WAN's in een regio.|
+|Basisbeleidsregels moeten zich in dezelfde regio als het lokale beleid bevinden.|Maak al uw lokale beleidsregels in dezelfde regio als het basisbeleid. U kunt nog steeds een beleid toepassen dat in een regio is gemaakt op een beveiligde hub vanuit een andere regio.|Wordt onderzocht|
+|Onderlinge communicatie tussen hubs werkt niet met beveiligde virtuele hub|Communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund.|Wordt onderzocht|
+|Alle beveiligde virtuele hubs die dezelfde virtuele WAN delen, moeten zich in dezelfde resourcegroep bevinden.|Dit gedrag wordt vandaag afgestemd met andere virtuele WAN-hubs.|Maak meerdere virtuele WAN's om ervoor te zorgen dat beveiligde virtuele hubs kunnen worden gemaakt in andere resourcegroepen.|
+|IP-groepen worden niet ondersteund in het firewallbeleid.|IP-groepen zijn beschikbaar als openbare preview en worden momenteel alleen ondersteund met traditionele firewallregels.|Er wordt gewerkt aan een oplossing.
+|CSP-abonnementen (Cloud Solution Provider) worden niet ondersteund.|Momenteel worden [CSP-abonnementen](https://azure.microsoft.com/offers/ms-azr-0145p/) niet ondersteund.|Wordt onderzocht
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Overzicht van de [implementatie van Azure firewall Manager preview](deployment-overview.md) bekijken
+- Raadpleeg [het overzicht voor de implementatie van Azure Firewall Manager (preview)](deployment-overview.md)
 - Meer informatie over [beveiligde virtuele hubs](secured-virtual-hub.md).

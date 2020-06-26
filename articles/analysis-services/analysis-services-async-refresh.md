@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406290"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413379"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
@@ -30,7 +30,7 @@ De basis-URL heeft de volgende indeling:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Denk bijvoorbeeld aan een model met de naam AdventureWorks op een server `myserver`met de naam, die zich bevindt in de Azure-regio West vs. De server naam is:
+Denk bijvoorbeeld aan een model met de naam AdventureWorks op een server `myserver` met de naam, die zich bevindt in de Azure-regio West vs. De server naam is:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -61,7 +61,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token in de autorisatie-header en moeten voldoen aan de volgende vereisten:
 
 - Het token moet een gebruikers token of een service-principal voor de toepassing zijn.
-- Voor het token moet de juiste doel groep zijn `https://*.asazure.windows.net`ingesteld op.
+- Voor het token moet de juiste doel groep zijn ingesteld op `https://*.asazure.windows.net` .
 - De gebruiker of toepassing moet voldoende machtigingen hebben op de server of het model om de aangevraagde aanroep te kunnen uitvoeren. Het machtigings niveau wordt bepaald door rollen in het model of de groep Administrators op de server.
 
     > [!IMPORTANT]
@@ -121,7 +121,7 @@ CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van 
 |`failed`     |   De bewerking is mislukt.      |
 |`succeeded`      |   De bewerking is voltooid.      |
 
-## <a name="get-refreshesrefreshid"></a>/Refreshes/\<refreshId ophalen>
+## <a name="get-refreshesrefreshid"></a>/Refreshes/ophalen\<refreshId>
 
 Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, `inProgress` wordt de status geretourneerd.
 
@@ -158,20 +158,20 @@ Als u een lijst met historische vernieuwings bewerkingen voor een model wilt wee
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<refreshId verwijderen>
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/verwijderen\<refreshId>
 
 Als u een vernieuwings bewerking in voortgang wilt annuleren, gebruikt u de bewerking DELETE bij de ID vernieuwen.
 
@@ -194,7 +194,7 @@ Als u de status van een synchronisatie bewerking wilt controleren, gebruikt u de
 }
 ```
 
-Waarden voor `syncstate`:
+Waarden voor `syncstate` :
 
 - 0: repliceren. Database bestanden worden gerepliceerd naar een doelmap.
 - 1: reactiveren. De data base wordt opnieuw gehydrateerd op alleen-lezen Server exemplaar (en).
@@ -218,13 +218,13 @@ Het code voorbeeld maakt gebruik van [Service-Principal](#service-principal) -ve
 Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) en [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een Service-Principal en het toewijzen van de benodigde machtigingen in azure als. Nadat u de stappen hebt voltooid, voert u de volgende aanvullende stappen uit:
 
 1.    Zoek in het code voorbeeld naar **String Authority =...**, vervang **common** door de Tenant-id van uw organisatie.
-2.    Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor \<dat de app- \<ID> en de> waarden van de app-sleutel op een veilige manier toegankelijk zijn of gebruik verificatie op basis van certificaten voor service-principals.
+2.    Opmerking/Opmerking opheffen, zodat de klasse ClientCredential wordt gebruikt om het cred-object te instantiëren. Zorg ervoor dat de \<App ID> en- \<App Key> waarden op een veilige manier toegankelijk zijn of gebruik verificatie op basis van certificaten voor service-principals.
 3.    Voet het voorbeeld uit.
 
 
 ## <a name="see-also"></a>Zie ook
 
 [Voor beelden](analysis-services-samples.md)   
-[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

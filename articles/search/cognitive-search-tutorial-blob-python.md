@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/26/2020
+ms.date: 06/12/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 350bc92193a27b595158f65b6ae54edc1c934e35
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2f650681742b2d91396ad41aeb69505c703cd3ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608788"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753043"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelfstudie: Python en AI gebruiken voor het genereren van doorzoekbare inhoud van Azure-blobs
 
@@ -92,7 +92,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
    De verbindingsreeks is een URL die er ongeveer als volgt uitziet:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. Sla de verbindingsreeks op in Kladblok. U hebt deze later nodig bij het instellen van de gegevensbronverbinding.
@@ -101,7 +101,7 @@ Maak, indien mogelijk, beide in dezelfde regio en resourcegroep voor nabijheid e
 
 AI-verrijking wordt ondersteund door Cognitive Services, waaronder Text Analytics en Computer Vision voor de verwerking van natuurlijke taal en afbeeldingen. Als u een echt prototype of project wilt voltooien, moet u op dit punt Cognitive Services (in dezelfde regio als Azure Cognitive Search) inrichten, zodat u het kunt koppelen aan indexbewerkingen.
 
-Voor deze oefening kunt u echter het inrichten van resources overslaan omdat Azure Cognitive Search verbinding kan maken met Cognitive Services achter de schermen en u 20 gratis transacties per uitvoering van indexeerfunctie geeft. Omdat in deze zelfstudie 7 transacties worden gebruikt, is de gratis toewijzing voldoende. Voor grotere projecten plant u het inrichten van Cognitive Services op de S0-laag voor betalen per gebruik. Zie voor meer informatie [Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md).
+Aangezien deze zelfstudie slechts zeven transacties gebruikt, kunt u resource-inrichting overslaan, omdat Azure Cognitive Search verbinding kan maken met Cognitive Services voor 20 gratis transacties per uitvoering van de indexeerfunctie. De gratis toewijzing is voldoende. Voor grotere projecten plant u het inrichten van Cognitive Services op de S0-laag voor betalen per gebruik. Zie voor meer informatie [Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md).
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
@@ -220,12 +220,14 @@ skillset_payload = {
             "defaultLanguageCode": "en",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
                 {
-                    "name": "organizations", "targetName": "organizations"
+                    "name": "organizations", 
+                    "targetName": "organizations"
                 }
             ]
         },
@@ -233,7 +235,8 @@ skillset_payload = {
             "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
@@ -269,10 +272,12 @@ skillset_payload = {
             "context": "/document/pages/*",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/pages/*"
+                    "name": "text", 
+                    "source": "/document/pages/*"
                 },
                 {
-                    "name": "languageCode", "source": "/document/languageCode"
+                    "name": "languageCode", 
+                    "source": "/document/languageCode"
                 }
             ],
             "outputs": [
@@ -378,9 +383,9 @@ Een [Indexeerfunctie](https://docs.microsoft.com/rest/api/searchservice/create-i
 
 Als u deze objecten in een indexeerfunctie wilt combineren, moet u veldtoewijzingen definiëren.
 
-+ De fieldMappings worden vóór de vaardighedenset verwerkt, waarbij bronvelden van de gegevensbron worden toegewezen aan de doelvelden in een index. Als veldnamen en -typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
++ De `"fieldMappings"` worden vóór de vaardighedenset verwerkt, waarbij bronvelden van de gegevensbron worden toegewezen aan de doelvelden in een index. Als veldnamen en -typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
 
-+ De outputFieldMappings worden verwerkt na de vaardighedenset en verwijzen naar sourceFieldNames die niet bestaan totdat het document wordt gekraakt of verrijkt. De targetFieldName is een veld in een index.
++ De `"outputFieldMappings"` worden verwerkt na de vaardighedenset en verwijzen naar `"sourceFieldNames"` die niet bestaan totdat het document wordt gekraakt of verrijkt. De `"targetFieldName"` is een veld in een index.
 
 Naast het koppelen van invoer naar uitvoer, kunt u ook veldtoewijzingen gebruiken om gegevensstructuren samen te voegen. Zie [Verrijkte velden toewijzen aan een doorzoekbare index](cognitive-search-output-field-mapping.md) voor meer informatie.
 
@@ -465,7 +470,7 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-Controleer in het antwoord "lastResult " op de waarden "status" en "endTime". Voer periodiek het script uit om de status te controleren. Als de indexeerfunctie is voltooid, wordt de status ingesteld op "geslaagd", wordt "endTime" opgegeven en bevat het antwoord eventuele fouten en waarschuwingen die zijn opgetreden tijdens het verrijken.
+Controleer in het antwoord de `"lastResult"` op de waarden `"status"` en `"endTime"`. Voer periodiek het script uit om de status te controleren. Als de indexeerfunctie is voltooid, wordt de status ingesteld op "geslaagd", wordt "endTime" opgegeven en bevat het antwoord eventuele fouten en waarschuwingen die zijn opgetreden tijdens het verrijken.
 
 ![Indexeerfunctie is gemaakt](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexeerfunctie is gemaakt")
 
@@ -505,7 +510,7 @@ De resultaten moeten er ongeveer uitzien als in het volgende voorbeeld. In de sc
 
 ![Query-index voor de inhoud van organisaties](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Query's uitvoeren op de index om de inhoud van organisaties te retourneren")
 
-Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties in deze oefening. U kunt meerdere velden retourneren via `$select` met behulp van een door komma's gescheiden lijst.
+Herhaal dit voor aanvullende velden: `content`, `languageCode`, `keyPhrases` en `organizations` in deze oefening. U kunt meerdere velden retourneren via `$select` met behulp van een door komma's gescheiden lijst.
 
 U kunt GET of POST gebruiken, afhankelijk van de complexiteit en lengte van de queryreeks. Zie [Query using the REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Query's uitvoeren met de REST API) voor meer informatie.
 

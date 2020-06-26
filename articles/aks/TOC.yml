@@ -132,6 +132,8 @@
           href: upgrade-cluster.md
         - name: SLA voor uptime gebruiken
           href: uptime-sla.md
+        - name: Nabijheidsplaatsingsgroepen gebruiken (preview)
+          href: reduce-latency-ppg.md
         - name: De knooppuntkopie upgraden (preview)
           href: node-image-upgrade.md
         - name: OS-updates van knooppunt verwerken

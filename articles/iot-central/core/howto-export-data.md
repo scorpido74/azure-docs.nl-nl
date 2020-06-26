@@ -8,12 +8,12 @@ ms.date: 04/07/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: c83c97aab43b6978922202cc96ff92e1e046a7e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f23a91a278b81c1583d88db2ede265ba2ad2d415
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811621"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414216"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>IoT-gegevens exporteren naar bestemmingen in azure
 
@@ -62,7 +62,7 @@ Als u geen bestaand Azure Storage-account hebt om naar te exporteren, voert u de
 
 1. Maak een [Nieuw opslag account in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Meer informatie over het maken van nieuwe [Azure Blob Storage-accounts](https://aka.ms/blobdocscreatestorageaccount) of [Azure data Lake Storage v2-opslag accounts](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Gegevens export kan alleen gegevens schrijven naar opslag accounts die ondersteuning bieden voor blok-blobs. De volgende lijst bevat de bekende compatibele opslag account typen:
 
-    |Prestatie niveau|Account type|
+    |Prestatie niveau|Accounttype|
     |-|-|
     |Standard|Algemeen v2|
     |Standard|Algemeen v1|
@@ -88,21 +88,27 @@ Nu u een bestemming hebt voor het exporteren van gegevens, voert u de volgende s
 
 4. Selecteer in de vervolg keuzelijst uw **Event hubs naam ruimte**, **Service Bus naam**ruimte, **naam ruimte van het opslag account**of **Voer een Connection String**in.
 
-    - U ziet alleen opslag accounts, Event Hubs naam ruimten en Service Bus naam ruimten in hetzelfde abonnement als uw IoT Central-toepassing. Als u wilt exporteren naar een bestemming buiten dit abonnement, kiest u **een Connection String invoeren** en gaat u naar de volgende stap.
+    - U ziet alleen opslag accounts, Event Hubs naam ruimten en Service Bus naam ruimten in hetzelfde abonnement als uw IoT Central-toepassing. Als u wilt exporteren naar een bestemming buiten dit abonnement, kiest u **een Connection String invoeren** en gaat u naar stap 6.
     - Voor apps die zijn gemaakt met behulp van het prijs plan gratis, is de enige manier om de gegevens export te configureren via een connection string. Apps voor het gratis prijs plan hebben geen bijbehorend Azure-abonnement.
 
     ![Nieuwe event hub maken](media/howto-export-data/export-event-hub.png)
 
-5. Beschrijving Als u **een connection string invoert**, wordt er een nieuw vak weer gegeven waarin u uw Connection String kunt plakken. Ga als volgt te connection string:
-    - Event Hubs of Service Bus gaat u naar de naam ruimte in de Azure Portal:
-        - Onder **instellingen**selecteert u **beleid voor gedeelde toegang**
-        - De standaard **RootManageSharedAccessKey** kiezen of een nieuwe maken
-        - De primaire of secundaire connection string kopiëren
-    - Opslag account, gaat u naar het opslag account in de Azure Portal:
-        - Selecteer onder **instellingen** **toegangs sleutels**
-        - Kopieer de Key1-connection string of de Key2-connection string
+5. Kies een Event Hub, wachtrij, onderwerp of container in de vervolg keuzelijst.
 
-6. Kies een Event Hub, wachtrij, onderwerp of container in de vervolg keuzelijst.
+6. Beschrijving Als u **een connection string invoert**, wordt er een nieuw vak weer gegeven waarin u uw Connection String kunt plakken. Ga als volgt te connection string:
+
+    - Event Hubs of Service Bus gaat u naar de naam ruimte in de Azure Portal:
+        - Een connection string gebruiken voor de volledige naam ruimte:
+            1. Onder **instellingen**selecteert u **beleid voor gedeelde toegang**
+            2. Maak een nieuwe sleutel of kies een bestaande sleutel die machtigingen voor **verzenden** heeft.
+            3. De primaire of secundaire connection string kopiëren
+        - Als u connection string wilt gebruiken voor een specifiek Event Hub exemplaar of Service Bus-wachtrij of-onderwerp, gaat u naar **entiteiten > Event hubs** of **entiteiten** > **onderwerpen**>. Kies een specifiek exemplaar en volg de bovenstaande stappen om een connection string op te halen.
+    - Opslag account, gaat u naar het opslag account in de Azure Portal:
+        - Alleen verbindings reeksen voor het hele opslag account worden ondersteund. Verbindings reeksen die zijn beperkt tot één container, worden niet ondersteund.
+          1. Selecteer onder **instellingen** **toegangs sleutels**
+          2. Kopieer de Key1-connection string of de Key2-connection string
+
+    Plak de connection string. Typ de naam van het exemplaar of de container en houd er rekening mee dat dit hoofdletter gevoelig is.
 
 7. Kies onder te **exporteren gegevens**de typen gegevens die u wilt exporteren door het type in te stellen **op on**.
 
@@ -114,7 +120,7 @@ Nu u een bestemming hebt voor het exporteren van gegevens, voert u de volgende s
 
 Geëxporteerde telemetriegegevens bevatten het volledige bericht dat uw apparaten naar IoT Central zijn verzonden, niet alleen de telemetrie-waarden zelf. Gegevens van geëxporteerde apparaten bevatten wijzigingen in eigenschappen en meta gegevens van alle apparaten, en geëxporteerde Apparaatinstellingen bevatten wijzigingen in alle sjablonen voor apparaten.
 
-Voor Event Hubs en Service Bus worden gegevens in bijna realtime geëxporteerd. De gegevens bevindt `body` zich in de eigenschap en bevindt zich in JSON-indeling. Hieronder vindt u voor beelden.
+Voor Event Hubs en Service Bus worden gegevens in bijna realtime geëxporteerd. De gegevens bevindt zich in de `body` eigenschap en bevindt zich in JSON-indeling. Hieronder vindt u voor beelden.
 
 Bij Blob Storage worden gegevens eenmaal per minuut geëxporteerd, waarbij elk bestand met de batch wijzigingen sinds het laatste geëxporteerde bestand is. Geëxporteerde gegevens worden in drie mappen in JSON-indeling geplaatst. De standaard paden in uw opslag account zijn:
 
@@ -131,7 +137,7 @@ Voor Event Hubs en Service Bus, IoT Central een nieuw bericht snel exporteren na
 Voor Blob-opslag worden berichten per minuut in batch verzonden en geëxporteerd. De geëxporteerde bestanden gebruiken dezelfde indeling als de bericht bestanden die worden geëxporteerd door [IOT hub bericht routering](../../iot-hub/tutorial-routing.md) naar Blob Storage.
 
 > [!NOTE]
-> Zorg ervoor dat uw apparaten berichten verzenden `contentType: application/JSON` met en `contentEncoding:utf-8` (of `utf-16` `utf-32`) voor Blob Storage. Raadpleeg de [documentatie van IOT hub](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) voor een voor beeld.
+> Zorg ervoor dat uw apparaten berichten verzenden met `contentType: application/JSON` en `contentEncoding:utf-8` (of) voor Blob Storage `utf-16` `utf-32` . Raadpleeg de [documentatie van IOT hub](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) voor een voor beeld.
 
 Het apparaat dat de telemetrie heeft verzonden, wordt vertegenwoordigd door de apparaat-ID (Zie de volgende secties). Als u de namen van de apparaten wilt ophalen, gegevens van apparaten wilt exporteren en elk bericht wilt correleren met behulp van de **connectionDeviceId** die overeenkomt met de **deviceId** van het apparaat-bericht.
 
@@ -295,9 +301,9 @@ Deze moment opname is een voorbeeld bericht waarin de gegevens van apparaten en 
 
 Elk bericht of momentopname record vertegenwoordigt een of meer wijzigingen aan een sjabloon van een gepubliceerd apparaat sinds het laatste geëxporteerde bericht. De informatie die in elk bericht of record wordt verzonden, omvat:
 
-- `id`van de apparaatprofiel die overeenkomt met `instanceOf` de van de bovenstaande apparaten-stream
+- `id`van de apparaatprofiel die overeenkomt met de `instanceOf` van de bovenstaande apparaten-stream
 - `displayName`van de sjabloon voor het apparaat
-- Het apparaat `capabilityModel` met inbegrip `interfaces`van de definities van de telemetrie, eigenschappen en opdrachten
+- Het apparaat `capabilityModel` met inbegrip van de definities van de `interfaces` telemetrie, eigenschappen en opdrachten
 - `cloudProperties`definities
 - Onderdrukkingen en initiële waarden, inline met de`capabilityModel`
 
@@ -553,7 +559,7 @@ Als u een bestaande gegevens export in uw preview-toepassing hebt met de *appara
 Vanaf 3 februari 2020 heeft alle nieuwe exports in toepassingen met apparaten en apparaatinstellingen ingeschakeld de hierboven beschreven gegevens indeling. Alle exports die vóór deze datum zijn gemaakt, blijven op de oude gegevens indeling tot en met 30 juni 2020, op het moment dat deze exports automatisch worden gemigreerd naar de nieuwe gegevens indeling. De nieuwe gegevens indeling komt overeen met het [apparaat](https://docs.microsoft.com/rest/api/iotcentral/devices/get), de [apparaat-eigenschap](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), de eigenschap van de [apparaat-Cloud](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)en de object [sjabloon](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) objecten in de IOT Central open bare API.
 
 Voor **apparaten**zijn er belang rijke verschillen tussen de oude gegevens indeling en de nieuwe gegevens indeling:
-- `@id`voor het apparaat wordt verwijderd `deviceId` , wordt de naam gewijzigd in`id` 
+- `@id`voor het apparaat wordt verwijderd, `deviceId` wordt de naam gewijzigd in`id` 
 - `provisioned`markering is toegevoegd om de inrichtings status van het apparaat te beschrijven
 - `approved`markering is toegevoegd om de goedkeurings status van het apparaat te beschrijven
 - `properties`inclusief apparaat-en Cloud eigenschappen, komt overeen met entiteiten in de open bare API
@@ -561,7 +567,7 @@ Voor **apparaten**zijn er belang rijke verschillen tussen de oude gegevens indel
 Voor **apparaatprofielen**zijn de verschillen tussen de oude gegevens indeling en de nieuwe gegevens indeling als volgt:
 
 - `@id`de naam van de sjabloon voor het apparaat is gewijzigd in`id`
-- `@type`de naam van de apparaatprofiel wordt gewijzigd in `types`en is nu een matrix
+- `@type`de naam van de apparaatprofiel wordt gewijzigd in `types` en is nu een matrix
 
 ### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Apparaten (indeling afgeschaft op 3 februari 2020)
 

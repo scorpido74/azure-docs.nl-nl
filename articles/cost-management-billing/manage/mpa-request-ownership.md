@@ -5,18 +5,18 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 379f7a0ef60020566de9edfcafb0809d1955cac8
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437867"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752111"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Eigendom aanvragen van facturering van Azure-abonnementen voor uw MPA-account
 
-Als u één geconsolideerde factuur wilt bieden voor beheerde services en Azure-verbruik, kan de Cloud Solution Provider (CSP) het eigendom van de facturering van Azure-abonnementen overnemen van hun klanten met een Direct Enterprise Agreement (EA).
+Als u één gecombineerde factuur wilt bieden voor beheerde services en Azure-verbruik, kan een Cloud Solution Provider (CSP) het eigendom van de facturering van Azure-abonnementen overnemen van hun klanten met Direct Enterprise Agreements (EA).
 
 Deze functie is alleen beschikbaar voor CSP-partners voor directe facturering die zijn gecertificeerd als [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp). Het valt onder governance en beleid van Microsoft en voor bepaalde klanten is mogelijk een beoordeling en goedkeuring vereist.
 
@@ -26,57 +26,40 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Een [resellerrelatie ](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) met de klant tot stand brengen. Controleer in het [overzicht van geautoriseerde CSP's per regio](https://docs.microsoft.com/partner-center/regional-authorization-overview) of de tenant van de klant en de tenant van de partner zich in dezelfde regio bevinden.  
-
-2. [Controleer of de klant de Microsoft-klantovereenkomst heeft geaccepteerd](https://docs.microsoft.com/partner-center/confirm-customer-agreement).
-
-3. Stel het [Azure-plan](https://docs.microsoft.com/partner-center/purchase-azure-plan) in voor de klant. Als de klant aankopen doet via meerdere resellers, moet u een Azure-plan instellen voor elke combinatie van een klant en een wederverkoper.
+1. Een [resellerrelatie ](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer) met de klant tot stand brengen. Controleer in het [overzicht van geautoriseerde CSP's per regio](https://docs.microsoft.com/partner-center/regional-authorization-overview) of de tenant van de klant en de tenant van de partner zich in dezelfde regio bevinden.
+1. [Controleer of de klant de Microsoft-klantovereenkomst heeft geaccepteerd](https://docs.microsoft.com/partner-center/confirm-customer-agreement).
+1. Stel een [Azure-plan](https://docs.microsoft.com/partner-center/purchase-azure-plan) in voor de klant. Als de klant aankopen doet via meerdere resellers, moet u een Azure-plan instellen voor elke combinatie van een klant en een wederverkoper.
 
 ## <a name="request-billing-ownership"></a>Eigendom van facturering aanvragen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met behulp van de referenties van de CSP-beheeragent.
-
-2. Zoek naar **Kostenbeheer en facturering**.
-
-   ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mpa-request-ownership/search-cmb.png)
-
-3. Selecteer **Klanten** aan de linkerkant en selecteer vervolgens een klant in de lijst.
-
-   ![Schermopname van het selecteren van klanten](./media/mpa-request-ownership/mpa-select-customers.png)        
-
-4. Selecteer **Overdrachtsaanvragen** aan de linkerkant en selecteer vervolgens **Een nieuwe aanvraag toevoegen**.
-
-   ![Schermopname van de selectie van overdrachtsaanvragen](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
-
-5. Voer het e-mailadres in van de gebruiker in de klantorganisatie die de overdrachtsaanvraag moet accepteren. De gebruiker moet een accounteigenaar voor een Enterprise Agreement zijn. Selecteer **Overdrachtsaanvraag verzenden**.
-
-   ![Schermopname van de verzending van een overdrachtsaanvraag](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
-
-6. De gebruiker ontvangt een e-mail met instructies voor het beoordelen van uw overdrachtsaanvraag.
-
-   ![Schermopname van de e-mail over de beoordeling van een overdrachtsaanvraag](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
-
-7. De gebruiker kan de overdrachtsaanvraag goedkeuren door de koppeling in de e-mail te selecteren en de instructies te volgen.
-
-    ![Schermopname van de e-mail over de beoordeling van een overdrachtsaanvraag](./media/mpa-request-ownership/mpa-review-transfer-request.png)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) met de referenties van de CSP-beheeragent in de CSP-tenant.
+1. Zoek naar **Kostenbeheer en facturering**.  
+    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mpa-request-ownership/search-cmb.png)
+1. Selecteer **Klanten** aan de linkerkant en selecteer vervolgens een klant in de lijst.  
+    [![Schermopname van de selectie van klanten](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Selecteer **Overdrachtsaanvragen** aan de linkerkant en selecteer vervolgens **Een nieuwe aanvraag toevoegen**.  
+    [![Schermopname van de selectie van overdrachtsaanvragen](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
+1. Voer het e-mailadres in van de gebruiker in de klantorganisatie die de overdrachtsaanvraag moet accepteren. De gebruiker moet een accounteigenaar voor een Enterprise Agreement zijn. Selecteer **Overdrachtsaanvraag verzenden**.  
+    [![Schermopname van de verzending van een overdrachtsaanvraag](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
+1. De gebruiker ontvangt een e-mail met instructies voor het beoordelen van uw overdrachtsaanvraag.  
+    ![Schermopname van de e-mail over de beoordeling van een overdrachtsaanvraag](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
+1. De gebruiker kan de overdrachtsaanvraag goedkeuren door de koppeling in de e-mail te selecteren en de instructies te volgen.  
+    [![Schermopname waarin u de aanvraag voor het controleren van de overdracht ziet](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) De gebruiker kan het factureringsaccount selecteren van waaruit ze Azure-producten willen overdragen. Zodra producten die voor overdracht in aanmerking komen, zijn geselecteerd, worden ze weergegeven. **Opmerking:** Uitgeschakelde abonnementen kunnen niet worden overgedragen en worden weergegeven in de lijst Niet-overdraagbare Azure-producten, indien van toepassing. Zodra de Azure-producten die moeten worden overgedragen, zijn geselecteerd, selecteert u **Valideren**.
+1. In het gebied **Resultaat van validatie van overdracht** wordt de impact weergegeven van de Azure-producten die worden overgedragen. De mogelijke statussen zijn:
+    * **Geslaagd**: de validatie voor dit Azure-product is geslaagd en dit product kan worden overgedragen.
+    * **Waarschuwing**: voor het geselecteerde Azure-product geldt een waarschuwing. Het product kan nog wel worden overgedragen, maar dit heeft wel gevolgen waarvan de gebruiker zich bewust moet zijn in het geval deze stappen wil uitvoeren om dit probleem op te lossen. Het Azure-abonnement dat wordt overgedragen, profiteert bijvoorbeeld van een RI. Na de overdracht profiteert dat abonnement niet meer van dat voordeel. Voor maximale besparingen moet u ervoor zorgen dat de RI wordt gekoppeld aan een ander abonnement, die van de voordelen zou kunnen profiteren. In plaats daarvan kan de gebruiker er ook voor kiezen om terug te gaan naar de selectiepagina en de selectie van dit Azure-abonnement ongedaan maken.
+    * **Mislukt**: het geselecteerde Azure-product kan niet worden overgedragen vanwege een fout. De gebruiker moet teruggaan naar de selectiepagina en de selectie van dit product ongedaan maken om de andere geselecteerde Azure-producten over te dragen.  
+    ![Schermopname van de validatieprocedure](./media/mpa-request-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>De status van de overdrachtsaanvraag controleren
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-
-2. Zoek naar **Kostenbeheer en facturering**.
-
-   ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-
-3. Selecteer **Klanten** aan de linkerkant.
-
-   ![Schermopname van het selecteren van klanten](./media/mpa-request-ownership/mpa-select-customers.png)
-
-4. Selecteer de klant in de lijst waarvoor u de overdrachtsaanvraag hebt verzonden.
-
-5. Selecteer **Overdrachtsaanvragen** aan de linkerkant. Op de pagina Overdrachtsaanvragen wordt de volgende informatie weergegeven:
-
-    ![Schermopname van de lijst met overdrachtsaanvragen](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
+1. Zoek naar **Kostenbeheer en facturering**.  
+    ![Schermopname van zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+1. Selecteer **Klanten** aan de linkerkant.  
+    [![Schermopname van de selectie van klanten](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
+1. Selecteer de klant in de lijst waarvoor u de overdrachtsaanvraag hebt verzonden.
+1. Selecteer **Overdrachtsaanvragen** aan de linkerkant. Op de pagina Overdrachtsaanvragen wordt de volgende informatie weergegeven: [![Schermopname van de lijst met overdrachtsaanvragen](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |Kolom|Definitie|
    |---------|---------|
@@ -97,11 +80,11 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
    |Geannuleerd|Iemand met toegang tot de overdrachtsaanvraag heeft de aanvraag geannuleerd|
    |Geweigerd|De gebruiker heeft de overdrachtsaanvraag geweigerd|
 
-6. Selecteer een overdrachtsaanvraag om details weer te geven. Op de pagina met overdrachtsdetails wordt de volgende informatie weergegeven: ![Schermopname van de lijst van overgedragen abonnementen](./media/mpa-request-ownership/mpa-transfer-completed.png)
+1. Selecteer een overdrachtsaanvraag om details weer te geven. Op de pagina met overdrachtsdetails wordt de volgende informatie weergegeven: [![Schermopname van de lijst van overgedragen abonnementen](./media/mpa-request-ownership/mpa-transfer-completed.png)](./media/mpa-request-ownership/mpa-transfer-completed.png#lightbox)
 
    |Kolom  |Definitie|
    |---------|---------|
-   |Id van overdrachtsaanvraag|De unieke id voor uw overdrachtsaanvraag. Als u een ondersteuningsaanvraag indient, deelt u de id met de ondersteuning van Azure om uw ondersteuningsaanvraag te versnellen|
+   |Id van overdrachtsaanvraag|De unieke id voor uw overdrachtsaanvraag. Als u een ondersteuningsaanvraag indient, deelt u deze id met de Azure-ondersteuning om uw ondersteuningsaanvraag te versnellen|
    |Overdracht aangevraagd op|De datum waarop de overdrachtsaanvraag is verzonden|
    |Overdracht aangevraagd door|Het e-mailadres van de gebruiker die de overdrachtsaanvraag heeft verzonden|
    |Overdrachtsaanvraag verloopt op| De datum waarop de overdrachtsaanvraag verloopt|
@@ -112,10 +95,10 @@ Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-o
 
 U kunt het eigendom van facturering aanvragen van de hieronder vermelde typen abonnementen.
 
-- [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
-- [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
+* [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
+* [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Een Dev/Test-abonnement moet eerst worden omgezet naar een EA Enterprise-aanbieding via een ondersteuningsticket. Een Enterprise Dev/Test-abonnement wordt gefactureerd met een tarief op basis van betalen per gebruik nadat het is overgezet. Kortingen die via de Enterprise Dev/Test-aanbieding worden aangeboden met de EA van de klant, zijn niet beschikbaar voor de CSP-partner.
+\* U moet een Dev/Test-abonnement omzetten naar een EA Enterprise-aanbieding via een ondersteuningsticket. Een Enterprise Dev/Test-abonnement wordt gefactureerd met een tarief op basis van betalen per gebruik nadat het is overgezet. Kortingen die via de Enterprise Dev/Test-aanbieding worden aangeboden met de EA van de klant, zijn niet beschikbaar voor de CSP-partner.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
@@ -139,13 +122,13 @@ Azure Marketplace-producten die beschikbaar zijn voor abonnementen die worden be
 
 ### <a name="azure-reservations-transfer"></a>Overdracht van Azure-reserveringen
 
-Azure-reserveringen worden niet automatisch verplaatst met abonnementen. U kunt de reservering behouden in EA voor andere abonnementen, of u kunt [de reservering annuleren](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), waarna de partner deze opnieuw kan aanschaffen in CSP. 
+Azure-reserveringen worden niet automatisch verplaatst met abonnementen. U kunt de reservering behouden in EA voor andere abonnementen, of u kunt [de reservering annuleren](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations), waarna de partner deze opnieuw kan aanschaffen in CSP.
 
 ### <a name="access-to-azure-services"></a>Toegang tot Azure-services
 
-Toegang voor bestaande gebruikers, groepen of service-principals die is toegewezen met behulp van [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md) wordt niet beïnvloed tijdens de overgang. De partner krijgt geen nieuwe RBAC-toegang tot de abonnementen.  
+Toegang voor bestaande gebruikers, groepen of service-principals die is toegewezen met behulp van [Azure RBAC (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/overview.md) wordt niet beïnvloed tijdens de overgang. De partner krijgt geen nieuwe RBAC-toegang tot de abonnementen.
 
-De partners moeten samenwerken met de klant om toegang te krijgen tot abonnementen.  De partners moeten [Beheer namens - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) of [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-toegang krijgen om ondersteuningstickets te openen.
+De partners moeten samenwerken met de klant om toegang te krijgen tot abonnementen. De partners moeten [Beheer namens - AOBO (Admin On Behalf Of)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) of [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-toegang krijgen om ondersteuningstickets te openen.
 
 ### <a name="azure-support-plan"></a>Azure-ondersteuningsplan
 
@@ -168,12 +151,13 @@ SaaS-producten worden niet overgedragen met de abonnementen. Vraag de gebruiker 
 Voor bepaalde overdrachtsaanvragen kan een extra beoordelingsproces van Microsoft vereist zijn vanwege de aard van de huidige Enterprise Enrollment-structuur van de klant. De partner wordt op de hoogte gesteld van dergelijke vereisten wanneer zij proberen een uitnodiging te verzenden naar klanten. Partners dienen samen te werken met hun Partner Development Manager en het accountteam van de klant om dit beoordelingsproces te voltooien.
 
 ### <a name="azure-subscription-directory"></a>Map van Azure-abonnement
+
 De map van de Azure-abonnementen die worden overgedragen, moet overeenkomen met de map van de klant die is geselecteerd tijdens het tot stand brengen van de CSP-relatie.
 
 Als deze twee mappen niet overeenkomen, kunnen de abonnementen niet worden overgedragen. U moet een nieuwe CSP-resellerrelatie met de klant tot stand brengen door de map van de Azure-abonnementen te selecteren of de map van Azure-abonnementen zo te wijzigen dat deze overeenkomt met de map van de CSP-relatie van de klant. Zie [Een bestaand abonnement koppelen aan uw Azure AD Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory).
 
-
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Toegang tot een Microsoft Partner-overeenkomst controleren
+
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
@@ -182,6 +166,5 @@ Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Het eigendom van facturering van de Azure-abonnementen wordt overgezet naar u. Houd de kosten voor deze abonnementen bij in [Azure Portal.](https://portal.azure.com)
-
-- Werk samen met de klant om toegang te krijgen tot de overgedragen Azure-abonnementen. [Toegang tot Azure-resources beheren met behulp van RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Het eigendom van facturering van de Azure-abonnementen wordt overgezet naar u. Houd de kosten voor deze abonnementen bij in [Azure Portal.](https://portal.azure.com)
+* Werk samen met de klant om toegang te krijgen tot de overgedragen Azure-abonnementen. [Toegang tot Azure-resources beheren met behulp van RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

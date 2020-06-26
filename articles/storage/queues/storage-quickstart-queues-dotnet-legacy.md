@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Azure Storage V11 voor .NET gebruiken om een wachtrij te beheren'
+title: 'Quickstart: Azure Storage V11 voor .NET gebruiken om een wachtrij te beheren'
 description: In deze quickstart leert u hoe u de Azure Storage-clientbibliotheek voor .NET kunt gebruiken om een wachtrij te maken en er berichten aan toe te voegen. Vervolgens leert u hoe u berichten uit de wachtrij kunt lezen en verwerken.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,17 +7,17 @@ ms.date: 02/06/2018
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.reviewer: cbrooks
-ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.reviewer: dineshm
+ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79137336"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807564"
 ---
-# <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Snelstartgids: de Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren
+# <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Quickstart: De Azure Storage SDK V11 voor .NET gebruiken om een wachtrij te beheren
 
-In deze Quick Start leert u hoe u de Azure Storage-client bibliotheek versie 11 voor .NET kunt gebruiken om een wachtrij te maken en daar berichten aan toe te voegen. Vervolgens leert u hoe u berichten uit de wachtrij kunt lezen en verwerken. 
+In deze quickstart leert u hoe u de Azure Storage-clientbibliotheek versie 11 voor .NET kunt gebruiken om een wachtrij te maken en er berichten aan toe te voegen. Vervolgens leert u hoe u berichten uit de wachtrij kunt lezen en verwerken. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -186,9 +186,9 @@ Console.WriteLine();
 
 Vervolgens voegt het voorbeeld een bericht achteraan de wachtrij toe. 
 
-Een bericht moet in een formaat zijn dat kan worden opgenomen in een XML-aanvraag met UTF-8-codering, en mag maximaal 64 KB groot zijn. Als een bericht binaire gegevens bevat, is het raadzaam om het bericht met base64 te coderen.
+Een bericht moet in een formaat zijn dat kan worden opgenomen in een XML-aanvraag met UTF-8-codering, en mag maximaal 64 KB groot zijn. Als een bericht binaire gegevens bevat, wordt aanbevolen het bericht met Base64 te coderen.
 
-Standaard is de maximale time-to-live voor een bericht ingesteld op 7 dagen. U kunt elk wille keurig positief getal voor de time-to-Live-bericht opgeven.
+Standaard is de maximale time-to-live voor een bericht ingesteld op 7 dagen. U kunt elk willekeurig positief getal opgeven voor de time-to-live van het bericht.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -200,7 +200,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Gebruik `Timespan.FromSeconds(-1)` in de aanroep van [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)om een bericht toe te voegen dat niet verloopt.
+Als u een bericht wilt toevoegen dat niet verloopt, gebruikt u `Timespan.FromSeconds(-1)` in uw aanroep naar [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,7 +262,7 @@ Zie de volgende aanvullende bronnen voor .NET-ontwikkeling met Azure-wachtrijen:
 
 ### <a name="binaries-and-source-code"></a>Binaire bestanden en broncode
 
-- Down load de NuGet-pakketten voor de nieuwste versie van de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet)
+- Download de NuGet-pakketten voor de nieuwste versie van de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
     - [Algemeen](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Wachtrijen](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Bekijk de [broncode van de .NET-clientbibliotheek](https://github.com/Azure/azure-storage-net) op GitHub.
