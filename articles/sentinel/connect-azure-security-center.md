@@ -9,18 +9,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d4b22196598d971c49f0364038b74ba81c73805
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588532"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374794"
 ---
-# <a name="connect-data-from-azure-security-center"></a>Verbinding maken met gegevens van Azure Security Center
-
-
-
-
+# <a name="connect-data-from-azure-security-center-asc"></a>Verbinding maken met gegevens van Azure Security Center (ASC)
 
 Met Azure Sentinel kunt u waarschuwingen van [Azure Security Center](../security-center/security-center-intro.md) verbinden en deze streamen naar Azure Sentinel. 
 
@@ -30,21 +26,19 @@ Met Azure Sentinel kunt u waarschuwingen van [Azure Security Center](../security
 
 - U moet beschikken over de [Azure Security Center Standard-laag](../security-center/security-center-pricing.md) die op het abonnement wordt uitgevoerd. Als dat niet het geval is, [werkt u uw abonnement bij naar standaard](https://azure.microsoft.com/pricing/details/security-center/).
 
-
-
 ## <a name="connect-to-azure-security-center"></a>Verbinding maken met Azure Security Center
 
-1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Azure Security Center** .
+1. Selecteer in azure Sentinel **Data connectors** in het navigatie menu.
 
-1. Klik aan de rechter kant op **verbinding maken** naast elk abonnement waarvan u de waarschuwingen wilt streamen naar Azure Sentinel. Zorg ervoor dat u elk abonnement bijwerkt naar Azure Security Center Standard-laag om waarschuwingen naar Azure Sentinel te verzenden.
+1. Selecteer in de galerie met gegevens connectors de optie **Azure Security Center**en klik op de knop **pagina connector openen** .
 
-1. U kunt selecteren of u wilt dat de waarschuwingen van Azure Security Center automatisch incidenten in azure-Sentinel automatisch genereren. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
+1. Klik onder **configuratie**op **verbinden** naast elk abonnement waarvan u de waarschuwingen wilt streamen naar Azure Sentinel. De knop verbinding maken is alleen beschikbaar als u de vereiste machtigingen en het ASC-abonnement voor de Standard-laag hebt.
 
-3. Klik op **Verbinden**.
+1. U kunt selecteren of u wilt dat de waarschuwingen van Azure Security Center automatisch incidenten genereren in azure Sentinel. Schakel onder **incidenten maken**de optie **ingeschakeld** in om de standaard analyse regel in te scha kelen waarmee automatisch incidenten worden gemaakt op basis van waarschuwingen. U kunt deze regel vervolgens onder **analyse**bewerken op het tabblad **actieve regels** .
 
-4. Als u het relevante schema in Log Analytics voor de Azure Security Center waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
+1. Als u het relevante schema in Log Analytics voor de Azure Security Center waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Azure Security Center kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u Azure Security Center kunt verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+- Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).

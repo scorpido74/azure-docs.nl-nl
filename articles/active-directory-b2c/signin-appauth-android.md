@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 79219d7a7b59818d54acc6a2b0b4c8093ead3a6a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638378"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385226"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Meld u aan met een Android-toepassing in Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Registreer vervolgens een toepassing in uw Azure AD B2C-Tenant. Dit geeft Azure 
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
+Noteer de **Toepassings-id (client)** voor gebruik in een latere stap.
 
 Neem ook uw aangepaste omleidings-URI op voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
@@ -65,7 +65,7 @@ Het voor beeld is een wijziging van het voor beeld dat wordt verschaft door [App
 > AppAuth biedt ondersteuning voor Android API 16 (Jellybean) en hoger. U kunt het beste API 23 en hoger gebruiken.
 >
 
-### <a name="configuration"></a>Configuratie
+### <a name="configuration"></a>Configuration
 
 U kunt communicatie met Azure AD B2C configureren door ofwel de detectie-URI op te geven of door zowel het autorisatie-eind punt als het token-eind punt-Uri's op te geven. In beide gevallen hebt u de volgende informatie nodig:
 

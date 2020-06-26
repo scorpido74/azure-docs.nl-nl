@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183955"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385345"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Stel de telefoon registratie in en meld u aan met aangepast beleid in Azure AD B2C (preview-versie)
 
@@ -34,7 +34,7 @@ Eenmalige wacht woorden worden naar uw gebruikers verzonden met behulp van SMS-b
 
 U hebt de volgende resources nodig voordat u OTP kunt instellen.
 
-* [Azure AD B2C Tenant](tutorial-create-tenant.md)
+* [Azure AD B2C-tenant](tutorial-create-tenant.md)
 * [Webtoepassing geregistreerd](tutorial-register-applications.md) in uw Tenant
 * [Aangepast beleid](custom-policy-get-started.md) dat is geüpload naar uw Tenant
 
@@ -48,9 +48,9 @@ Bij de volgende stappen wordt ervan uitgegaan dat u de [vereiste onderdelen](#pr
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. Vervang in elk bestand de teken reeks `yourtenant` door de naam van uw Azure AD B2C-Tenant. Als de naam van uw B2C-Tenant bijvoorbeeld *contosob2c*is, worden `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com`alle exemplaren van.
+1. Vervang in elk bestand de teken reeks door `yourtenant` de naam van uw Azure AD B2C-Tenant. Als de naam van uw B2C-Tenant bijvoorbeeld *contosob2c*is, worden alle exemplaren van `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com` .
 
-1. Volg de stappen in de sectie [toepassings-Id's toevoegen aan het aangepaste beleid](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) van aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md). In dit geval moet u `/phone-number-passwordless/` **`Phone_Email_Base.xml`** bijwerken met de **toepassings-id's (client)** van de twee toepassingen die u hebt geregistreerd bij het volt ooien van de vereisten, *IdentityExperienceFramework* en *ProxyIdentityExperienceFramework*.
+1. Volg de stappen in de sectie [toepassings-Id's toevoegen aan het aangepaste beleid](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) van aan de [slag met aangepast beleid in azure Active Directory B2C](custom-policy-get-started.md). In dit geval moet `/phone-number-passwordless/` **`Phone_Email_Base.xml`** u bijwerken met de **toepassings-id's (client)** van de twee toepassingen die u hebt geregistreerd bij het volt ooien van de vereisten, *IdentityExperienceFramework* en *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>De beleids bestanden uploaden
 
@@ -58,21 +58,21 @@ Bij de volgende stappen wordt ervan uitgegaan dat u de [vereiste onderdelen](#pr
 1. Onder **beleids regels**selecteert u **identiteits ervaring-Framework**.
 1. Selecteer **aangepast beleid uploaden**.
 1. Upload de beleids bestanden in de volgende volg orde:
-    1. *Phone_Email_Base. XML*
-    1. *SignUpOrSignInWithPhone. XML*
-    1. *SignUpOrSignInWithPhoneOrEmail. XML*
-    1. *ProfileEditPhoneOnly. XML*
-    1. *ProfileEditPhoneEmail. XML*
-    1. *ChangePhoneNumber. XML*
-    1. *PasswordResetEmail. XML*
+    1. *Phone_Email_Base.xml*
+    1. *SignUpOrSignInWithPhone.xml*
+    1. *SignUpOrSignInWithPhoneOrEmail.xml*
+    1. *ProfileEditPhoneOnly.xml*
+    1. *ProfileEditPhoneEmail.xml*
+    1. *ChangePhoneNumber.xml*
+    1. *PasswordResetEmail.xml*
 
-Wanneer u elk bestand uploadt, voegt Azure het `B2C_1A_`voor voegsel toe.
+Wanneer u elk bestand uploadt, voegt Azure het voor voegsel toe `B2C_1A_` .
 
 ## <a name="test-the-custom-policy"></a>Het aangepaste beleid testen
 
 1. Selecteer **B2C_1A_SignUpOrSignInWithPhone**onder **aangepast beleid**.
 1. Onder **toepassing selecteren**selecteert u de *webapp1* -toepassing die u hebt geregistreerd bij het volt ooien van de vereisten.
-1. Kies `https://jwt.ms`bij **Selecteer antwoord-URL**.
+1. Kies bij **Selecteer antwoord**-URL `https://jwt.ms` .
 1. Selecteer **nu uitvoeren** en meld u aan met een e-mail adres of telefoon nummer.
 1. Selecteer **nu opnieuw uitvoeren** en meld u aan met hetzelfde account om te controleren of u de juiste configuratie hebt.
 

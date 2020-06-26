@@ -4,7 +4,7 @@ description: Code- en PowerShell-voorbeelden voor Azure Active Directory B2B-sam
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272953"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387347"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>SaaS-toepassingen configureren voor B2B-samenwerking
 
@@ -81,7 +81,7 @@ U kunt gebruikers in staat stellen gast gebruikers te verifiëren met hun Azure 
 
    ![Scherm opname met de configuratie-instellingen voor eenmalige aanmelding](media/configure-saas-apps/configure-box-sso.png)
 
-   a. Controleer in het vak **Sign on URL** of de AANMELDINGS-URL juist is ingesteld voor box in het Azure Portal. Deze URL is de URL van uw Box.com-Tenant. Deze moet de naamgevings Conventie *https://.box.com*volgen.  
+   a. Controleer in het vak **Sign on URL** of de AANMELDINGS-URL juist is ingesteld voor box in het Azure Portal. Deze URL is de URL van uw Box.com-Tenant. Deze moet de naamgevings Conventie volgen *https://.box.com* .  
    De **id** is niet van toepassing op deze app, maar wordt nog steeds weer gegeven als een verplicht veld.
 
    b. Voer in het vak **gebruikers** -id **gebruiker. mail** in (voor SSO voor gast-accounts).

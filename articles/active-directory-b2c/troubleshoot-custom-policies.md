@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f65e98cec04991fe9edef1b81bcb3ecc3d93d76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186354"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384954"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Problemen met Azure AD B2C aangepaste beleids regels en het Framework voor identiteits ervaring oplossen
 
@@ -58,7 +58,7 @@ Veelvoorkomende validatie fouten zijn onder andere:
 
 * Gebruik **nu uitvoeren** en `https://jwt.ms` om uw beleids regels onafhankelijk van uw web-of mobiele toepassing te testen. Deze website fungeert als een Relying Party-toepassing. De inhoud van het JSON-webtoken (JWT) dat wordt gegenereerd door uw Azure AD B2C-beleid wordt weer gegeven.
 
-    Een test toepassing maken die kan worden omgeleid `https://jwt.ms` naar voor token inspectie:
+    Een test toepassing maken die kan worden omgeleid naar `https://jwt.ms` voor token inspectie:
 
     [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

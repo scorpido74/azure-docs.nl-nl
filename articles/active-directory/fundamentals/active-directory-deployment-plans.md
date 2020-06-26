@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603351"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386331"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -63,15 +63,16 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 | -| -|
 | [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) is een Microsoft-oplossing voor verificatie in twee stappen. Met door de beheerder goedgekeurde verificatie methoden helpt Azure MFA u bij het beveiligen van de toegang tot uw gegevens en toepassingen terwijl de vraag naar een eenvoudig aanmeldings proces beantwoordt. |
 | [Voorwaardelijke toegang](../conditional-access/plan-conditional-access.md)| Met voorwaardelijke toegang kunt u geautomatiseerde beslissingen over toegangs beheer implementeren voor wie toegang heeft tot uw Cloud-apps, op basis van voor waarden. |
-| [Self-service voor wachtwoordherstel](../authentication/howto-sspr-deployment.md)| Met selfservice voor wachtwoord herstel kunnen uw gebruikers hun wacht woord opnieuw instellen zonder tussen komst van de beheerder, wanneer en wanneer dat nodig is. |
+| [Self-service voor wachtwoord opnieuw instellen](../authentication/howto-sspr-deployment.md)| Met selfservice voor wachtwoord herstel kunnen uw gebruikers hun wacht woord opnieuw instellen zonder tussen komst van de beheerder, wanneer en wanneer dat nodig is. |
 | [Zonder wachtwoord](../authentication/howto-authentication-passwordless-deployment.md) | Implementeer verificatie op basis van een wacht woord met behulp van de Microsoft Authenticator app-of FIDO2-beveiligings sleutels in uw organisatie |
 
-## <a name="deploy-application-management"></a>Toepassings beheer implementeren
+## <a name="deploy-application-and-device-management"></a>Toepassings-en Apparaatbeheer implementeren
 
 | Mogelijkheid | Beschrijving|
 | -| - |
 | [Eenmalige aanmelding](../manage-apps/plan-sso-deployment.md)| Met eenmalige aanmelding kunnen uw gebruikers toegang krijgen tot de apps en bronnen die ze nodig hebben om zaken te doen terwijl ze zich slechts één keer aanmelden. Nadat ze zich hebben aangemeld, kunnen ze van Microsoft Office naar Sales Force naar interne toepassingen gaan zonder dat ze een tweede keer referenties hoeven in te voeren. |
 | [Toegangs venster](../manage-apps/access-panel-deployment-plan.md)| Bied uw gebruikers een eenvoudige hub voor het detecteren en openen van al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
+| [Apparaten](../devices/plan-device-deployment.md) | Dit artikel helpt u bij het evalueren van de methoden om uw apparaat te integreren met Azure AD, het implementatie plan te kiezen en de belangrijkste koppelingen naar ondersteunde hulpprogram ma's voor Apparaatbeheer. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Hybride scenario's implementeren

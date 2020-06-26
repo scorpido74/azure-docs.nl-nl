@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e1b5d6787a41e59511267dd9e7f9048a0431e26a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204112"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385940"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Een Azure MFA-technische profiel definiëren in een Azure AD B2C aangepast beleid
 
@@ -59,10 +59,10 @@ Het **InputClaims** -element bevat een lijst met claims die naar Azure MFA moete
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| userPrincipalName | Yes | De id voor de gebruiker die eigenaar is van het telefoon nummer. |
-| phoneNumber | Yes | Het telefoon nummer waarnaar een SMS-code moet worden verzonden. |
-| companyName | No |De bedrijfs naam in het SMS. Als u dit niet opgeeft, wordt de naam van uw toepassing gebruikt. |
-| landinstelling | No | De land instelling van het SMS. Als dat niet is vermeld, wordt de land instelling van de gebruiker gebruikt. |
+| userPrincipalName | Ja | De id voor de gebruiker die eigenaar is van het telefoon nummer. |
+| phoneNumber | Ja | Het telefoon nummer waarnaar een SMS-code moet worden verzonden. |
+| companyName | Nee |De bedrijfs naam in het SMS. Als u dit niet opgeeft, wordt de naam van uw toepassing gebruikt. |
+| landinstelling | Nee | De land instelling van het SMS. Als dat niet is vermeld, wordt de land instelling van de gebruiker gebruikt. |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat deze naar de Azure MFA-service worden verzonden.
 
@@ -76,7 +76,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Yes | Moet **OneWaySMS**zijn.  |
+| Bewerking | Ja | Moet **OneWaySMS**zijn.  |
 
 #### <a name="ui-elements"></a>UI-elementen
 
@@ -84,10 +84,10 @@ De volgende meta gegevens kunnen worden gebruikt voor het configureren van de fo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | No | Fout bericht van gebruiker als het telefoon nummer geen SMS accepteert. |
-| UserMessageIfInvalidFormat | No | Fout bericht van gebruiker als het gegeven telefoon nummer geen geldig telefoon nummer is. |
-| UserMessageIfServerError | No | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
-| UserMessageIfThrottled| No | Gebruikers fout bericht als een aanvraag is beperkt.|
+| UserMessageIfCouldntSendSms | Nee | Fout bericht van gebruiker als het telefoon nummer geen SMS accepteert. |
+| UserMessageIfInvalidFormat | Nee | Fout bericht van gebruiker als het gegeven telefoon nummer geen geldig telefoon nummer is. |
+| UserMessageIfServerError | Nee | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
+| UserMessageIfThrottled| Nee | Gebruikers fout bericht als een aanvraag is beperkt.|
 
 ### <a name="example-send-an-sms"></a>Voor beeld: een SMS verzenden
 
@@ -121,8 +121,8 @@ Het **InputClaims** -element bevat een lijst met claims die naar Azure MFA moete
 
 | ClaimReferenceId | Vereist | Beschrijving |
 | --------- | -------- | ----------- | ----------- |
-| phoneNumber| Yes | Hetzelfde telefoon nummer als eerder gebruikt om een code te verzenden. Het wordt ook gebruikt om een sessie voor telefoon verificatie te vinden. |
-| verificationCode  | Yes | De verificatie code van de gebruiker die moet worden geverifieerd |
+| phoneNumber| Ja | Hetzelfde telefoon nummer als eerder gebruikt om een code te verzenden. Het wordt ook gebruikt om een sessie voor telefoon verificatie te vinden. |
+| verificationCode  | Ja | De verificatie code van de gebruiker die moet worden geverifieerd |
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat de Azure MFA-service wordt aangeroepen.
 
@@ -136,7 +136,7 @@ Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsT
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bewerking | Yes | Moet worden **gecontroleerd** |
+| Bewerking | Ja | Moet worden **gecontroleerd** |
 
 #### <a name="ui-elements"></a>UI-elementen
 
@@ -144,10 +144,10 @@ De volgende meta gegevens kunnen worden gebruikt voor het configureren van de fo
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| No | Fout bericht van gebruiker als de gebruiker te vaak een verificatie code heeft geprobeerd. |
-| UserMessageIfServerError | No | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
-| UserMessageIfThrottled| No | Fout bericht van gebruiker als de aanvraag wordt beperkt.|
-| UserMessageIfWrongCodeEntered| No| Fout bericht van gebruiker als de code die is ingevoerd voor verificatie, onjuist is.|
+| UserMessageIfMaxAllowedCodeRetryReached| Nee | Fout bericht van gebruiker als de gebruiker te vaak een verificatie code heeft geprobeerd. |
+| UserMessageIfServerError | Nee | Fout bericht van gebruiker als er een interne fout is opgetreden op de server. |
+| UserMessageIfThrottled| Nee | Fout bericht van gebruiker als de aanvraag wordt beperkt.|
+| UserMessageIfWrongCodeEntered| Nee| Fout bericht van gebruiker als de code die is ingevoerd voor verificatie, onjuist is.|
 
 ### <a name="example-verify-a-code"></a>Voor beeld: een code verifiëren
 

@@ -6,15 +6,15 @@ ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: networking
-ms.date: 07/17/2017
+ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 0f8075af53752da0e0abc2dec7ab49c28af2e3ec
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221301"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374726"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -44,7 +44,7 @@ Versneld netwerken in Azure verbetert de prestaties van het netwerk door het ins
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Virtuele-machine schaal sets van Azure met Azure Load Balancer
 
-Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moet u rekening houden met het volgende:
+Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moeten de volgende items worden overwogen:
 
 * **Meerdere virtuele-machine schaal sets kunnen niet dezelfde Load Balancer gebruiken**.
 * **Poort door sturen en binnenkomende NAT-regels**:
@@ -52,7 +52,7 @@ Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moet u 
   * Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
   * Wanneer u de schaalset voor virtuele machines gebruikt in de back-endadresgroep van de load balancer worden de standaard regels voor binnenkomend NAT automatisch gemaakt.
 * **Binnenkomende NAT-groep**:
-  * De binnenkomende NAT-pool is een verzameling van binnenkomende NAT-regels. 1 binnenkomende NAT-groep kan niet meerdere VM Scale Sets ondersteunen.
+  * De binnenkomende NAT-pool is een verzameling van binnenkomende NAT-regels. Eén binnenkomende NAT-pool kan geen meerdere virtuele-machine schaal sets ondersteunen.
 * Taakverdelings **regels**:
   * Wanneer u de schaalset voor virtuele machines in de back-endadresgroep van de load balancer gebruikt, wordt de standaard regel voor taak verdeling automatisch gemaakt.
 * **Uitgaande regels**:
@@ -146,7 +146,7 @@ De uitvoer voor de DNS-naam van een afzonderlijke virtuele machine heeft de volg
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>Openbare IPv4 per virtuele machine
-Virtuele machines in Azure-schaalsets hebben meestal geen eigen openbaar IP-adres nodig. Het is in de meeste gevallen voordeliger en veiliger om een openbaar IP-adres aan een load balancer of een afzonderlijke virtuele machine (ook wel een jumpbox) te koppelen. Deze stuurt vervolgens binnenkomende verbindingen indien nodig door naar virtuele machines van de schaalset (bijvoorbeeld via de binnenkomende NAT-regels).
+Virtuele machines in Azure-schaalsets hebben meestal geen eigen openbaar IP-adres nodig. Voor de meeste scenario's is het rendabeler en veilig om een openbaar IP-adres te koppelen aan een load balancer of aan een afzonderlijke virtuele machine (ook wel bekend als een JumpBox), die vervolgens binnenkomende verbindingen naar virtuele machines met schaal sets doorstuurt (bijvoorbeeld via binnenkomende NAT-regels).
 
 In sommige gevallen hebben virtuele machines van een schaalset echter hun eigen openbare IP-adressen nodig. Dit is bijvoorbeeld het geval bij games, waarbij een console rechtstreeks verbinding moet maken met een virtuele cloudmachine, die de physics van de game verwerkt. Een ander voorbeeld is de situatie waarbij virtuele machines externe verbindingen met elkaar moeten maken via regio's in een gedistribueerde database.
 

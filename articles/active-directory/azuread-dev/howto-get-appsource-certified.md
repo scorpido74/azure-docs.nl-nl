@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154879"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383849"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>AppSource-certificering verkrijgen voor Azure Active Directory
 
@@ -37,8 +37,8 @@ Als u meer wilt weten over het integreren van uw toepassing met Azure AD met ope
 Een *toepassing met meerdere tenants* is een toepassing die aanmeldingen accepteert van gebruikers van elk bedrijf of organisatie die Azure AD hebben zonder dat hiervoor een afzonderlijk exemplaar, configuratie of implementatie is vereist. AppSource beveelt aan dat toepassingen een multitenancy implementeren om de gratis proef versie met *één klik* in te scha kelen.
 
 Voer de volgende stappen uit om multitenancy voor uw toepassing in te scha kelen:
-1. Stel `Multi-Tenanted` de eigenschap `Yes` in op de gegevens van uw toepassings registratie in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Toepassingen die zijn gemaakt in de Azure Portal, worden standaard geconfigureerd als *[één Tenant](#single-tenant-applications)*.
-1. Werk uw code bij om aanvragen naar het `common` eind punt te verzenden. U doet dit door het eind punt bij `https://login.microsoftonline.com/{yourtenant}` te `https://login.microsoftonline.com/common*`werken van naar.
+1. Stel de `Multi-Tenanted` eigenschap `Yes` in op de gegevens van uw toepassings registratie in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Toepassingen die zijn gemaakt in de Azure Portal, worden standaard geconfigureerd als *[één Tenant](#single-tenant-applications)*.
+1. Werk uw code bij om aanvragen naar het `common` eind punt te verzenden. U doet dit door het eind punt bij `https://login.microsoftonline.com/{yourtenant}` te werken van naar `https://login.microsoftonline.com/common*` .
 1. Voor sommige platforms, zoals ASP .NET, moet u uw code ook bijwerken om meerdere verleners te accepteren.
 
 Zie voor meer informatie over multitenancy [een Azure Active Directory-gebruiker (Azure AD) aanmelden met het toepassings patroon voor meerdere tenants](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

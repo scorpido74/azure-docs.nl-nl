@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 235fd429707a418fa193e986b95c9b38fa6c8101
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116523"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385022"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Zelf studie: de interface van gebruikers ervaringen aanpassen in Azure Active Directory B2C
 
@@ -95,7 +95,7 @@ Als u de gebruikers interface van de registratie-ervaring wilt aanpassen, kunt u
 
     De pagina kan op elke gewenste manier worden ontworpen, maar het element **API** div is vereist voor een HTML-aanpassings bestand dat u maakt.
 
-3. Sla het bestand op als *Custom-UI. html*.
+3. Sla het bestand op als *custom-ui.html*.
 4. Maak de volgende eenvoudige CSS waarmee alle elementen op de registratie-of aanmeldings pagina worden gecentreerd, met inbegrip van de elementen die Azure AD B2C injecties.
 
     ```css
@@ -129,7 +129,7 @@ In deze zelf studie slaat u de bestanden op die u hebt gemaakt in het opslag acc
 
 1. Kies **alle services** in de linkerbovenhoek van het Azure Portal, zoek en selecteer **opslag accounts**.
 2. Selecteer het opslag account dat u hebt gemaakt, selecteer **blobs**en selecteer vervolgens de container die u hebt gemaakt.
-3. Selecteer **uploaden**, navigeer naar en selecteer het bestand *Custom-UI. html* en klik vervolgens op **uploaden**.
+3. Selecteer **uploaden**, navigeer naar en selecteer het bestand *custom-ui.html* en klik vervolgens op **uploaden**.
 
     ![De BLOB-pagina in de portal uploaden met de knop uploaden en gemarkeerde bestanden](./media/tutorial-customize-ui/upload-blob.png)
 
@@ -141,7 +141,7 @@ In deze zelf studie slaat u de bestanden op die u hebt gemaakt in het opslag acc
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 2. Selecteer **gebruikers stromen (beleid)** en selecteer vervolgens de *B2C_1_signupsignin1* gebruikers stroom.
 3. Selecteer **pagina-indelingen**en klik onder **Unified Sign-up of aanmeldings pagina**op **Ja** voor **aangepaste pagina-inhoud gebruiken**.
-4. Voer in de URI van de **aangepaste pagina**de URI in voor het *Custom-UI. html-* bestand dat u eerder hebt vastgelegd.
+4. Voer in de URI van de **aangepaste pagina**de URI in voor het *custom-ui.html* -bestand dat u eerder hebt vastgelegd.
 5. Selecteer boven aan de pagina **Opslaan**.
 
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen

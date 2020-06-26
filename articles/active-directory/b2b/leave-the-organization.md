@@ -4,19 +4,19 @@ description: Laat zien hoe een Azure AD B2B-gast gebruiker een organisatie kan v
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272500"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386977"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Een organisatie als gast gebruiker laten staan
 
@@ -51,8 +51,8 @@ Wanneer een gebruiker een organisatie verlaat, is de gebruikers account ' zacht 
 
 Indien gewenst kan een Tenant beheerder het account op elk gewenst moment gedurende de periode van 30 dagen permanent verwijderen. Om dit te doen:
 
-1. Selecteer **Azure Active Directory**In het [Azure Portal](https://portal.azure.com).
-2. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer **Azure Active Directory** in de [Azure-portal](https://portal.azure.com).
+2. Selecteer onder **Beheren** de optie **Gebruikers**.
 3. Selecteer **Verwijderde gebruikers**.
 4. Schakel het selectie vakje naast een verwijderde gebruiker in en selecteer **permanent verwijderen**.
 

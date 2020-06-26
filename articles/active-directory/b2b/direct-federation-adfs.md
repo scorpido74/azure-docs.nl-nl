@@ -4,7 +4,7 @@ description: Meer informatie over het instellen van AD FS als een id-provider vo
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fbf9b92b868e8707a0e20531f5738146d833c301
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272830"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387079"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Voor beeld: directe Federatie met Active Directory Federation Services (AD FS) (preview)
 |     |
@@ -33,7 +33,7 @@ In dit artikel wordt beschreven hoe u [directe Federatie](direct-federation.md) 
 ## <a name="configure-ad-fs-for-saml-20-direct-federation"></a>AD FS voor SAML 2,0 direct-Federatie configureren
 Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. In deze sectie wordt beschreven hoe u AD FS instelt voor SAML 2,0 voor informatie over de configuratie stappen van SAML. 
 
-Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het SAML 2,0-antwoord van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren. Stap 12 in [een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft hoe u de AD FS-eind punten kunt vinden of hoe u de meta gegevens- `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`URL kunt genereren, bijvoorbeeld. 
+Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het SAML 2,0-antwoord van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren. Stap 12 in [een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft hoe u de AD FS-eind punten kunt vinden of hoe u de meta gegevens-URL kunt genereren, bijvoorbeeld `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml` . 
 
 |Kenmerk  |Waarde  |
 |---------|---------|
@@ -58,8 +58,8 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 
 ### <a name="add-the-claim-description"></a>De claim beschrijving toevoegen
 
-1. Selecteer op uw AD FS-server **extra** > **AD FS beheer**.
-2. Selecteer **service** > **claim beschrijvingen**in het navigatie deel venster.
+1. Selecteer op uw AD FS-server **extra**  >  **AD FS beheer**.
+2. Selecteer **service**  >  **claim beschrijvingen**in het navigatie deel venster.
 3. Onder **acties**, selecteert u **claim beschrijving toevoegen**.
 4. Geef in het venster **een beschrijving van de claim toevoegen** de volgende waarden op:
 
@@ -72,10 +72,10 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>De regels voor de Relying Party-vertrouwens relatie en de claim toevoegen
 
-1. Ga op de AD FS-server naar **hulpprogram ma's** > **AD FS beheer**.
-2. Selecteer **vertrouwens relaties** > **Relying Party trusts**in het navigatie deel venster.
+1. Ga op de AD FS-server naar **hulpprogram ma's**  >  **AD FS beheer**.
+2. Selecteer **vertrouwens relaties**  >  **Relying Party trusts**in het navigatie deel venster.
 3. Onder **acties**, selecteert u **vertrouwens relatie van Relying Party toevoegen**. 
-4. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef deze URL voor federatieve meta https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xmlgegevens op. Andere standaard selecties behouden. Selecteer **Sluiten**.
+4. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef deze URL voor federatieve meta gegevens op https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Andere standaard selecties behouden. Selecteer **Sluiten**.
 5. De wizard **claim regels bewerken** wordt geopend.
 6. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer in **regel type kiezen**de optie **LDAP-kenmerken als claims verzenden**. Selecteer **Next**.
 7. Geef in **claim regel configureren**de volgende waarden op: 
@@ -106,7 +106,7 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 ## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>AD FS voor WS-inrichtings directe Federatie configureren 
 Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die gebruikmaken van het WS-invoer protocol met de hieronder vermelde specifieke vereisten. Op dit moment zijn de twee WS-insluitings providers getest op compatibiliteit met Azure AD AD FS en shibboleth. Hier gebruiken we Active Directory Federation Services (AD FS) als voor beeld van de ID-provider van de WS-vorm. Voor meer informatie over het tot stand brengen van een Relying Party-vertrouwens relatie tussen een WS-inform-compatibele provider met Azure AD, moet u de compatibiliteits documenten voor de Azure AD-ID-provider downloaden.
 
-Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het WS-instel bericht van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren. Stap 12 in [een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft hoe u de AD FS-eind punten kunt vinden of hoe u de meta gegevens- `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`URL kunt genereren, bijvoorbeeld.
+Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het WS-instel bericht van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren. Stap 12 in [een test AD FS-exemplaar maken](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschrijft hoe u de AD FS-eind punten kunt vinden of hoe u de meta gegevens-URL kunt genereren, bijvoorbeeld `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml` .
  
 |Kenmerk  |Waarde  |
 |---------|---------|
@@ -128,10 +128,10 @@ Voordat u met deze procedure begint, moet u al een AD FS-server instellen en erm
 
 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>De regels voor de Relying Party-vertrouwens relatie en de claim toevoegen 
-1. Ga op de AD FS-server naar **hulpprogram ma's** > **AD FS beheer**. 
-1. Selecteer **vertrouwens relaties** > **Relying Party trusts**in het navigatie deel venster. 
+1. Ga op de AD FS-server naar **hulpprogram ma's**  >  **AD FS beheer**. 
+1. Selecteer **vertrouwens relaties**  >  **Relying Party trusts**in het navigatie deel venster. 
 1. Onder **acties**, selecteert u **vertrouwens relatie van Relying Party toevoegen**.  
-1. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef de URL voor de federatieve `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`meta gegevens op:.  Andere standaard selecties behouden. Selecteer **Sluiten**.
+1. Gebruik in de wizard Relying Party vertrouwens relatie toevoegen voor **gegevens bron selecteren**de optie **gegevens importeren over de Relying Party die online of op een lokaal netwerk zijn gepubliceerd**. Geef de URL voor de federatieve meta gegevens op: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Andere standaard selecties behouden. Selecteer **Sluiten**.
 1. De wizard **claim regels bewerken** wordt geopend. 
 1. Selecteer in de wizard **claim regels bewerken** de optie **regel toevoegen**. Selecteer bij **regel type kiezen** **de optie claims verzenden met een aangepaste regel**. Selecteer *Next*. 
 1. Geef in **claim regel configureren**de volgende waarden op:

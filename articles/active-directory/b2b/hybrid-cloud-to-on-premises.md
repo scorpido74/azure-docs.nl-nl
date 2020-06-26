@@ -4,19 +4,19 @@ description: Laat zien hoe u via Cloud gebruikers toegang kunt bieden tot on-pre
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272802"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387011"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
@@ -52,7 +52,7 @@ Het volgende diagram bevat een globaal overzicht van hoe Azure AD-toepassingspro
 ![Diagram van MIM-en B2B-script oplossingen](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
 1.  Een gebruiker van een partner organisatie (de fabrikam-Tenant) wordt uitgenodigd voor de contoso-Tenant.
-2.  Er wordt een gast gebruikers object gemaakt in de contoso-Tenant (bijvoorbeeld een gebruikers object met een UPN van guest_fabrikam. com # EXT #@contoso.onmicrosoft.com).
+2.  Er wordt een gast gebruikers object gemaakt in de contoso-Tenant (bijvoorbeeld een gebruikers object met een UPN van guest_fabrikam. com # EXT # @contoso.onmicrosoft.com ).
 3.  Fabrikam Guest wordt geïmporteerd van Contoso via MIM of via het B2B Power shell-script.
 4.  Een weer gave of footprint van het object fabrikam gast gebruiker (Guest # EXT #) wordt gemaakt in de on-premises Directory, Contoso.com, via MIM of via het B2B Power shell-script.
 5.  De gast gebruiker heeft toegang tot de on-premises toepassing, app.contoso.com.
@@ -74,7 +74,7 @@ Voor informatie over het gebruik van MIM 2016 Service Pack 1 en de MIM-beheer ag
 
 Er is een Power shell-voorbeeld script beschikbaar dat u kunt gebruiken als uitgangs punt voor het maken van de gast gebruikers objecten in uw on-premises Active Directory.
 
-U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers te halen on-Prem. zip** -bestand.
+U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen** .
 
 Voordat u het script gebruikt, moet u de vereisten en belang rijke overwegingen in het bijbehorende Leesmij-bestand door nemen. Bovendien moet u weten dat het script alleen beschikbaar is gemaakt als voor beeld. Uw ontwikkel team of een partner moet het script aanpassen en controleren voordat u het uitvoert.
 

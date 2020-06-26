@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb572e9e22519491290e54417f5ca350d6c0b5c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154862"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383714"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Procedure: uitgeschakelde Access Control Service naam ruimten opnieuw activeren
 
@@ -67,7 +67,7 @@ U kunt ACS Power shell gebruiken om alle ACS-naam ruimten weer te geven en opnie
     Mogelijk moet u het uitvoerings beleid wijzigen door **Set-ExecutionPolicy** uit te voeren voordat u de opdracht kunt uitvoeren.
 1. Vermeld uw beschik bare Azure-abonnementen met de cmdlet **Get-AcsSubscription** .
 1. Vermeld uw ACS-naam ruimten met behulp van de cmdlet **Get-AcsNamespace** .
-1. Controleer of de naam ruimten zijn uitgeschakeld door te bevestigen dat `State` `Disabled`.
+1. Controleer of de naam ruimten zijn uitgeschakeld door te bevestigen dat `State` `Disabled` .
 
     [![Controleren of de naam ruimten zijn uitgeschakeld](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
@@ -94,7 +94,7 @@ Verdere extensies worden niet meer automatisch goedgekeurd. Als u meer tijd nodi
 
     | Ondersteuningsaanvraag veld | Waarde |
     |-----------------------|--------------------|
-    | **Type probleem** | `Technical` |
+    | **Probleem type** | `Technical` |
     | **Abonnement** | Ingesteld op uw abonnement |
     | **Service** | `All services` |
     | **Resource** | `General question/Resource not available` |
@@ -122,7 +122,7 @@ Verdere extensies worden niet meer automatisch goedgekeurd. Als u meer tijd nodi
 ## <a name="help-and-support"></a>Help en ondersteuning
 
 - Als u problemen ondervindt na het volgen van deze instructies, neemt u contact op met de [ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-- Neem contact met ons op acsfeedback@microsoft.comals u vragen of feedback hebt over het buiten gebruik stellen van ACS.
+- Neem contact met ons op als u vragen of feedback hebt over het buiten gebruik stellen van ACS acsfeedback@microsoft.com .
 
 ## <a name="next-steps"></a>Volgende stappen
 

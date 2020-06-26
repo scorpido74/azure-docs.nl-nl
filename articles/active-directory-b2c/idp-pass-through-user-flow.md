@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187777"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387827"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Geef een toegangs token door via een gebruikers stroom naar uw toepassing in Azure Active Directory B2C
 
@@ -44,10 +44,10 @@ Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het to
 
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
-Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te `https://jwt.ms` retour neren om de claims erin te controleren.
+Bij het testen van uw toepassingen in Azure AD B2C kan het nuttig zijn om het Azure AD B2C-token te retour neren om `https://jwt.ms` de claims erin te controleren.
 
 1. Selecteer op de pagina overzicht van de gebruikers stroom de optie **gebruikers stroom uitvoeren**.
-2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de antwoord `https://jwt.ms`- **URL** worden weer gegeven.
+2. Selecteer voor **toepassing**de toepassing die u eerder hebt geregistreerd. Voor een overzicht van het token in het onderstaande voor beeld moet de **antwoord-URL** worden weer gegeven `https://jwt.ms` .
 3. Klik op **gebruikers stroom uitvoeren**en meld u aan met uw account referenties. U ziet het toegangs token van de ID-provider in de **idp_access_token** claim.
 
     Het volgende voor beeld ziet er ongeveer uit:

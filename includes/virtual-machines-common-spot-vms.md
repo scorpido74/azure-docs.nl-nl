@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 64433f3233e249059c1c2d180a03e0a221924f15
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 76af1084626944d8399edd2c7ec5dec92e25f3ed
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84793661"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85378620"
 ---
 Met behulp van spot Vm's kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
@@ -51,11 +51,11 @@ Sommige abonnements kanalen worden niet ondersteund:
 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
-| Enterprise Agreement         | Yes                               |
-| Betalen naar gebruik                | Yes                               |
+| Enterprise Agreement         | Ja                               |
+| Betalen naar gebruik                | Ja                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Niet beschikbaar                     |
+| Gesponsorde                    | Ja                               |
 | Gratis proefversie                   | Niet beschikbaar                     |
 
 

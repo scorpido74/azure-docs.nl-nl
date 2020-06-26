@@ -3,12 +3,12 @@ title: Offline back-up voor Data Protection Manager (DPM) en Microsoft Azure Bac
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1deda1f0d2671e1316cf8f5c231207a5c32c10b4
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632057"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374828"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (vorige versies)
 
@@ -58,7 +58,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
     | Verenigde Staten | [Koppeling](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | China | [Koppeling](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Een Azure-opslag account met het Resource Manager-implementatie model is gemaakt in het abonnement van waaruit u het bestand met publicatie-instellingen hebt gedownload.
+* Een Azure-opslag account met het Resource Manager-implementatie model is gemaakt in het abonnement van waaruit u het bestand met publicatie-instellingen hebt gedownload. Maak in het opslag account een nieuwe BLOB-container die als doel wordt gebruikt.
 
   ![Een opslag account maken met Resource Manager-ontwikkeling](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
@@ -69,7 +69,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>De server voorbereiden voor het offline back-upproces
 
 >[!NOTE]
-> Als u de vermelde hulpprogram ma's, zoals *AzureOfflineBackupCertGen. exe*, niet kunt vinden in uw installatie van de Mars-agent, schrijft u naar AskAzureBackupTeam@microsoft.com om toegang te krijgen.
+> Als u de vermelde hulpprogram ma's, zoals *AzureOfflineBackupCertGen.exe*, niet kunt vinden in uw installatie van de Mars-agent, schrijft u AskAzureBackupTeam@microsoft.com deze naar om toegang te krijgen.
 
 * Open een opdracht prompt met verhoogde bevoegdheid op de server en voer de volgende opdracht uit:
 
@@ -81,13 +81,13 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
 
     Als een toepassing al bestaat, wordt u door dit uitvoer bare programma gevraagd het certificaat hand matig te uploaden naar de toepassing in de Tenant. Volg de stappen in [deze sectie](#manually-upload-an-offline-backup-certificate) om het certificaat hand matig te uploaden naar de toepassing.
 
-* Het hulp programma *AzureOfflineBackup. exe* genereert een *OfflineApplicationParams. XML-* bestand. Kopieer dit bestand naar de server met MABS of DPM.
+* Het hulp programma *AzureOfflineBackupCertGen.exe* genereert een *OfflineApplicationParams.xml* bestand. Kopieer dit bestand naar de server met MABS of DPM.
 * Installeer de [nieuwste Mars-agent](https://aka.ms/azurebackup_agent) op het DPM-exemplaar of de Azure backup-server.
 * Registreer de server bij Azure.
 * Voer de volgende opdracht uit:
 
     ```cmd
-    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
     ```
 
 * Met de vorige opdracht maakt u het bestand `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml` .
@@ -104,7 +104,7 @@ Volg deze stappen om het offline back-upcertificaat hand matig te uploaden naar 
 
 1. Selecteer de toepassing. Ga onder **beheren** in het linkerdeel venster naar **certificaten & geheimen**.
 1. Controleer op bestaande certificaten of open bare sleutels. Als er geen is, kunt u de toepassing veilig verwijderen door de knop **verwijderen** te selecteren op de **overzichts** pagina van de toepassing. Vervolgens kunt u de stappen opnieuw uitvoeren om [de server voor te bereiden voor het offline back-](#prepare-the-server-for-the-offline-backup-process) upproces en de volgende stappen over te slaan. Ga anders verder met de volgende stappen van het DPM-exemplaar of Azure Backup server waarvoor u offline back-ups wilt configureren.
-1. Selecteer het tabblad **computer certificaat toepassing beheren**  >  **Personal** . Zoek het certificaat met de naam `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
+1. Typ *Certlm. msc*uit het **Start** - **Run**. Selecteer in het venster **certificaten-lokale computer** het tabblad **certificaten-lokale computer**  >  **persoonlijk** . Zoek naar het certificaat met de naam `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 1. Selecteer het certificaat, klik met de rechter muisknop op **alle taken**en selecteer vervolgens **exporteren**, zonder een persoonlijke sleutel, in de. CER-indeling.
 1. Ga naar de Azure-toepassing voor offline back-ups in de Azure Portal.
 1. Selecteer **Manage**  >  **certificaten beheren & geheimen**  >  **Upload certificaat**. Upload het certificaat dat u in de vorige stap hebt geëxporteerd.

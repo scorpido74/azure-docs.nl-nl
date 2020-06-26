@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187896"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387878"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een Weibo-account met behulp van Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "78187896"
 
 ## <a name="create-a-weibo-application"></a>Een Weibo-toepassing maken
 
-Als u een Weibo-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Weibo-account hebt, kunt u zich aanmelden bij [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Als u een Weibo-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Weibo-account hebt, kunt u zich aanmelden bij [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) .
 
 1. Meld u aan bij de [Weibo-ontwikkelaars Portal](https://open.weibo.com/) met uw Weibo-account referenties.
 1. Nadat u zich hebt aangemeld, selecteert u uw weergave naam in de rechter bovenhoek.
@@ -44,13 +44,13 @@ Als u een Weibo-account wilt gebruiken als een id-provider in Azure Active Direc
 1. Selecteer**保存以上信息**(opslaan).
 1. Selecteer**高级信息**(geavanceerde informatie).
 1. Selecteer**编辑**(bewerken) naast het veld voor OAuth 2.0**授权设置**(omleidings-URL).
-1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in voor OAuth 2.0-**授权设置**(omleidings-URL). Als uw Tenant naam bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in voor OAuth 2.0-**授权设置**(omleidings-URL). Als uw Tenant naam bijvoorbeeld contoso is, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Selecteer**提交**(verzenden).
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Een Weibo-account configureren als een id-provider
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat door in het bovenste menu te klikken op het filter **Map en abonnement** en de map te kiezen waarin de tenant zich bevindt.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer **id-providers**en selecteer vervolgens **Weibo (preview)**.
 1. Voer een **naam**in. Bijvoorbeeld *Weibo*.

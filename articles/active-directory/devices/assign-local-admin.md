@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b21514e07b65b89d10b317da95ec7d92ecae78
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360330"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386365"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
 Als u een Windows-apparaat wilt beheren, moet u lid zijn van de lokale groep Administrators. Als onderdeel van het deelname proces van Azure Active Directory (Azure AD), wordt het lidmaatschap van deze groep door Azure AD bijgewerkt op een apparaat. U kunt de update van het lidmaatschap aanpassen om te voldoen aan uw bedrijfs vereisten. Een update van het lidmaatschap is bijvoorbeeld handig als u wilt dat uw helpdesk medewerkers taken kunnen uitvoeren waarvoor beheerders rechten op een apparaat zijn vereist.
 
-In dit artikel wordt uitgelegd hoe de update van het lidmaatschap werkt en hoe u deze kunt aanpassen tijdens een Azure AD-deelname. De inhoud van dit artikel is niet van toepassing op een **hybride** Azure AD-deelname.
+In dit artikel wordt uitgelegd hoe de update van het lokale beheerders lidmaatschap werkt en hoe u deze kunt aanpassen tijdens een Azure AD-deelname. De inhoud van dit artikel is niet van toepassing op een **hybride Azure AD gekoppelde** apparaten.
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
@@ -59,10 +59,13 @@ Als u de rol van Apparaatbeheer wilt wijzigen, configureert u **aanvullende loka
 >[!NOTE]
 > Voor deze optie is een Azure AD Premium-Tenant vereist. 
 
-Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten. U kunt geen apparaat beheerders bereiken aan een specifieke set apparaten. Het bijwerken van de rol van de beheerderrol heeft geen directe gevolgen voor de betrokken gebruikers. Op apparaten waarop al een gebruiker is aangemeld, vindt de bevoegdheids update plaats wanneer *beide* onderstaande acties optreden:
+Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten. U kunt geen apparaat beheerders bereiken aan een specifieke set apparaten. Het bijwerken van de rol van de beheerderrol heeft geen directe gevolgen voor de betrokken gebruikers. Op apparaten waarop al een gebruiker is aangemeld, vindt de uitbrei ding van bevoegdheden plaats wanneer *beide* onderstaande acties optreden:
 
 - Er zijn vier uur door gegeven voor Azure AD om een nieuw primair vernieuwings token met de juiste bevoegdheden uit te geven. 
 - Gebruiker meldt zich af en meldt zich weer aan, niet vergren delen/ontgrendelen, om het profiel te vernieuwen.
+
+>[!NOTE]
+> De bovenstaande acties zijn niet van toepassing op gebruikers die eerder niet zijn aangemeld bij het betreffende apparaat. In dit geval worden de beheerders bevoegdheden onmiddellijk toegepast na de eerste aanmelding bij het apparaat. 
 
 ## <a name="manage-regular-users"></a>Reguliere gebruikers beheren
 
@@ -88,7 +91,7 @@ U kunt geen groepen toewijzen aan de rol apparaat-beheerder, alleen afzonderlijk
 
 Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten. Ze kunnen niet worden toegewezen aan een specifieke set apparaten.
 
-Wanneer u gebruikers van de rol apparaat-beheerder verwijdert, hebben ze nog steeds de lokale beheerders bevoegdheden op een apparaat zolang ze hiervoor zijn aangemeld. De bevoegdheid wordt ingetrokken tijdens de volgende aanmelding na 4 uur wanneer er een nieuw primair vernieuwings token is uitgegeven.
+Wanneer u gebruikers van de rol apparaat-beheerder verwijdert, hebben ze nog steeds de lokale beheerders bevoegdheden op een apparaat zolang ze hiervoor zijn aangemeld. De bevoegdheid wordt ingetrokken tijdens de volgende aanmelding wanneer een nieuw primair vernieuwings token is uitgegeven. Deze intrekking, vergelijkbaar met de uitbrei ding van bevoegdheden, kan tot 4 uur duren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

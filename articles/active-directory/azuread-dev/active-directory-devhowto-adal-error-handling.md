@@ -8,16 +8,16 @@ ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981066"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383731"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Aanbevolen procedures voor het afhandelen van de Azure Active Directory Authentication Library (ADAL)-clients
 
@@ -365,9 +365,9 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Fout-en actie bare stappen: toepassingen met één pagina (adal. js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Fout-en actie bare stappen: toepassingen met één pagina (adal.js)
 
-Als u een toepassing met één pagina bouwt met behulp van adal. js met AcquireToken, is de code voor fout afhandeling vergelijkbaar met die van een typische Silent-oproep. Met name in adal. js, AcquireToken geen gebruikers interface weer gegeven. 
+Als u een toepassing met één pagina bouwt met behulp van adal.js met AcquireToken, is de code voor fout afhandeling vergelijkbaar met die van een typische Silent-oproep. Met name in adal.js, AcquireToken geen gebruikers interface weer gegeven. 
 
 Een mislukte AcquireToken heeft de volgende gevallen:
 
@@ -579,7 +579,7 @@ window.Logging = {
 
 ## <a name="related-content"></a>Gerelateerde inhoud
 
-* [Azure AD-verificatiebibliotheken][AAD-Auth-Libraries]
+* [Azure AD-verificatie bibliotheken][AAD-Auth-Libraries]
 * [Scenario's voor Azure AD-verificatie][AAD-Auth-Scenarios]
 * [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps]
 

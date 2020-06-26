@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a438363b054361420222804dffac7973470e82e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5184698cab1874f327173fb30cf527feee48cad
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183598"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384971"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Bedreigingen voor resources en gegevens in Azure Active Directory B2C beheren
 
@@ -38,9 +38,9 @@ De eerste 10 vergrendelings perioden zijn één minuut lang. De volgende 10 verg
 
 Instellingen voor wachtwoord beveiliging beheren, met inbegrip van de drempel waarde voor vergren deling:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Gebruik het filter voor **adres lijst en abonnementen** in het bovenste menu om de map te selecteren die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer onder **beveiliging** **verificatie methoden (preview)** en selecteer vervolgens **wachtwoord beveiliging**.
 1. Voer de gewenste instellingen voor wachtwoord beveiliging in en selecteer vervolgens **Opslaan**.
 
@@ -49,7 +49,7 @@ Instellingen voor wachtwoord beveiliging beheren, met inbegrip van de drempel wa
 
 ## <a name="view-locked-out-accounts"></a>Vergrendelde accounts weer geven
 
-Als u informatie wilt ophalen over vergrendelde accounts, kunt u het [rapport Active Directory-aanmeld activiteit](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)controleren. Selecteer onder **status**de optie **fout**. Mislukte aanmeldings pogingen met een **fout code** voor `50053` aanmelding die een vergrendeld account aangeven:
+Als u informatie wilt ophalen over vergrendelde accounts, kunt u het [rapport Active Directory-aanmeld activiteit](../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)controleren. Selecteer onder **status**de optie **fout**. Mislukte aanmeldings pogingen met een **fout code voor aanmelding** die `50053` een vergrendeld account aangeven:
 
 ![Sectie van het aanmeldings rapport van Azure AD met het account vergrendeld](./media/threat-management/portal-01-locked-account.png)
 

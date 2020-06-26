@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187216"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387521"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Gebruik de Azure Portal om consumenten gebruikers te maken en te verwijderen in Azure AD B2C
 
@@ -38,12 +38,12 @@ In dit artikel wordt aandacht besteed aan het werken met **consumenten accounts*
 ## <a name="create-a-consumer-user"></a>Een consument gebruiker maken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
-1. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
+1. Selecteer onder **Beheren** de optie **Gebruikers**.
 1. Selecteer **Nieuwe gebruiker**.
 1. Selecteer **Azure AD B2C gebruiker maken**.
-1. Kies een **aanmeldings methode** en geef een **e-mail** adres of een **gebruikers naam** op voor de nieuwe gebruiker. De aanmeldings methode die u hier selecteert, moet overeenkomen met de instelling die u hebt opgegeven voor de provider van de *lokale account* -id van uw Azure AD B2C-Tenant (Zie**id-providers** **beheren** > in uw Azure AD B2C-Tenant).
+1. Kies een **aanmeldings methode** en geef een **e-mail** adres of een **gebruikers naam** op voor de nieuwe gebruiker. De aanmeldings methode die u hier selecteert, moet overeenkomen met de instelling die u hebt opgegeven voor de provider van de *lokale account* -id van uw Azure AD B2C-Tenant (Zie **Manage**  >  **id-providers** beheren in uw Azure AD B2C-Tenant).
 1. Voer een **naam** in voor de gebruiker. Dit is normaal gesp roken de volledige naam (vermeldings-en achtername) van de gebruiker.
 1. Beschrijving U kunt **Aanmelden blok keren** als u de mogelijkheid wilt vertragen dat de gebruiker zich aanmeldt. U kunt aanmelden later inschakelen door het **profiel** van de gebruiker te bewerken in de Azure Portal.
 1. Kies **wacht woord automatisch genereren** of **laat mij wacht woord maken**.

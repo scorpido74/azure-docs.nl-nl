@@ -4,7 +4,7 @@ description: Met Facebook communiceren om externe gebruikers (gasten) in te scha
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 46e37365c73c603a8cd742e2f7943c2f5116ce22
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712267"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387047"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook toevoegen als een id-provider voor externe identiteiten
 
@@ -46,7 +46,7 @@ Als u een Facebook-account wilt gebruiken als een [ID-provider](identity-provide
 8. Selecteer onder aan de pagina **platform toevoegen**en selecteer vervolgens **website**.
 9. Voer in **site-URL**de juiste URL in (hierboven aangegeven).
 10. Voer in het **URL-privacybeleid**de URL in voor de pagina waar u privacy-informatie voor uw toepassing onderhoudt, bijvoorbeeld `http://www.contoso.com` .
-11. Selecteer **Save changes**.
+11. Selecteer **wijzigingen opslaan**.
 12. Kopieer de waarde van de **App-ID**aan de bovenkant van de pagina.
 13. Selecteer **weer geven** en kopieer de waarde van het **app-geheim**. U kunt beide gebruiken om Facebook te configureren als een id-provider in uw Tenant. **App-geheim** is een belang rijke beveiligings referentie.
 14. Selecteer het plus teken naast **producten**en selecteer vervolgens **instellen** onder **Facebook-aanmelding**.

@@ -4,7 +4,7 @@ description: Lokaal beheerde externe partners toegang geven tot zowel lokale als
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76b17391008160cfea9cbf029932d7081466cf3d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272602"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386926"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Lokaal beheerde partner accounts toegang verlenen tot cloud resources met behulp van Azure AD B2B-samen werking
 
@@ -32,7 +32,7 @@ Voordat u synchronisatie van het kenmerk User type inschakelt, moet u eerst bepa
 Er zijn twee veelvoorkomende benaderingen voor:
 
 - Geef een niet-gebruikt on-premises Active Directory kenmerk (bijvoorbeeld extensionAttribute1) op om te gebruiken als bron kenmerk. 
-- U kunt ook de waarde voor het kenmerk User type afleiden uit andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als gast als hun on-premises Active Directory userPrincipalName kenmerk eindigt met het domein * \@partners.contoso.com*.
+- U kunt ook de waarde voor het kenmerk User type afleiden uit andere eigenschappen. U wilt bijvoorbeeld alle gebruikers synchroniseren als gast als hun on-premises Active Directory UserPrincipalName kenmerk eindigt met het domein * \@ partners.contoso.com*.
  
 Zie [synchronisatie van User type inschakelen](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)voor gedetailleerde kenmerk vereisten. 
 

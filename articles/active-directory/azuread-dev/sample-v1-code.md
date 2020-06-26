@@ -7,19 +7,19 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: sample
 ms.workload: identity
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154828"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387606"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory code voorbeelden (v 1.0-eind punt)
 
@@ -100,13 +100,13 @@ ASP.NET-Web-app  | ![In deze afbeelding wordt het .NET-logo weer gegeven](media/
 
 ### <a name="web-api-protected-by-azure-active-directory"></a>Web-API beveiligd door Azure Active Directory
 
-In het volgende voor beeld ziet u hoe u een node. js-Web-API beveiligt met Azure AD.
+In het volgende voor beeld ziet u hoe u een node.js Web-API met Azure AD kunt beveiligen.
 
 In de vorige secties van dit artikel vindt u ook andere voor beelden van een client toepassing die een ASP.NET of ASP.NET Core web- **API** **aanroept** . Deze voor beelden worden niet opnieuw vermeld in deze sectie, maar u vindt ze in de laatste kolom van de bovenstaande tabellen of onder
 
 | Platform | Voorbeeld |
 |--------|-------------------|
-| ![Deze afbeelding toont het node. js-logo](media/sample-v2-code/logo-nodejs.png)  | [knoop punt-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
+| ![Deze afbeelding toont het Node.js logo](media/sample-v2-code/logo-nodejs.png)  | [knoop punt-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
 ### <a name="web-api-calling-microsoft-graph-or-another-web-api"></a>Web-API die Microsoft Graph of een andere web-API aanroept
 

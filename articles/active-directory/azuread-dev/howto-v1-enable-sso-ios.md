@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154777"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383696"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Procedure: cross-app SSO inschakelen op iOS met ADAL
 
@@ -214,7 +214,7 @@ De indeling van deze omleidings-Uri's wordt hieronder uitgelegd. U kunt een omle
 
 Het inschakelen van sleutel hanger delen valt buiten het bereik van dit document en wordt gedekt door Apple in hun document waarin de [mogelijkheden worden toegevoegd](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). Het is belang rijk dat u bepaalt wat u wilt dat uw sleutel keten wordt aangeroepen en voeg die mogelijkheid toe aan al uw toepassingen.
 
-Wanneer u de rechten hebt ingesteld op de juiste wijze, ziet u een bestand in de projectmap die `entitlements.plist` het recht bevat op het volgende:
+Wanneer u de rechten hebt ingesteld op de juiste wijze, ziet u een bestand in de projectmap `entitlements.plist` die het recht bevat op het volgende:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -230,7 +230,7 @@ Wanneer u de rechten hebt ingesteld op de juiste wijze, ziet u een bestand in de
 </plist>
 ```
 
-Zodra u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent om SSO te gebruiken, geeft u de identiteits-SDK over uw sleutel hanger door `ADAuthenticationSettings` de volgende instelling te gebruiken in uw met de volgende instelling:
+Zodra u de sleutel hanger hebt ingeschakeld in elk van uw toepassingen en u klaar bent om SSO te gebruiken, geeft u de identiteits-SDK over uw sleutel hanger door de volgende instelling te gebruiken in uw `ADAuthenticationSettings` met de volgende instelling:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -260,7 +260,7 @@ De mogelijkheid om uw toepassing te gebruiken voor het gebruik van de Broker is 
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-Met `AD_CREDENTIALS_AUTO` deze instelling kan de SDK de Broker proberen aan te roepen, `AD_CREDENTIALS_EMBEDDED` waardoor de SDK niet aan de broker kan worden aangeroepen.
+Met deze instelling kan de SDK de Broker proberen aan te `AD_CREDENTIALS_AUTO` roepen, `AD_CREDENTIALS_EMBEDDED` waardoor de SDK niet aan de broker kan worden aangeroepen.
 
 #### <a name="step-2-registering-a-url-scheme"></a>Stap 2: een URL-schema registreren
 
@@ -309,7 +309,7 @@ bijvoorbeeld: *msauth://code/x-msauth-mytestiosapp%3a%2F%2Fcom.MyApp.mytestapp*
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Stap 4: een configuratie parameter toevoegen aan uw app
 
-ADAL maakt gebruik van – canOpenURL: om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 op heeft Apple vergrendeld welke schema's een toepassing kan opvragen. U moet ' msauth ' toevoegen aan de sectie LSApplicationQueriesSchemes van uw `info.plist file`.
+ADAL maakt gebruik van – canOpenURL: om te controleren of de Broker op het apparaat is geïnstalleerd. In iOS 9 op heeft Apple vergrendeld welke schema's een toepassing kan opvragen. U moet ' msauth ' toevoegen aan de sectie LSApplicationQueriesSchemes van uw `info.plist file` .
 
 ```
     <key>LSApplicationQueriesSchemes</key>

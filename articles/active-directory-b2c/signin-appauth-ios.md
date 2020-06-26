@@ -7,23 +7,23 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186825"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384937"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: aanmelden met een iOS-toepassing
 
 Op het Microsoft Identity-platform wordt gebruikgemaakt van open standaarden, zoals OAuth2 en OpenID Connect. Het gebruik van een open standaard-protocol biedt meer keuze voor ontwikkel aars bij het selecteren van een bibliotheek om te integreren met onze services. We hebben deze walkthrough en andere gebruikers hiervan op de hulp om ontwikkel aars te helpen bij het schrijven van toepassingen die verbinding maken met het micro soft-identiteits platform. De meeste bibliotheken die [de RFC6749 OAuth2-spec](https://tools.ietf.org/html/rfc6749) implementeren, kunnen verbinding maken met het micro soft-identiteits platform.
 
 > [!WARNING]
-> Micro soft biedt geen oplossingen voor bibliotheken van derden en heeft geen beoordeling uitgevoerd van die bibliotheken. In dit voor beeld wordt een bibliotheek van derden gebruikt met de naam AppAuth die is getest op compatibiliteit in basis scenario's met de Azure AD B2C. Problemen en functie aanvragen moeten worden omgeleid naar het open-source project van de bibliotheek. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) voor meer informatie.
+> Micro soft biedt geen oplossingen voor bibliotheken van derden en heeft geen beoordeling uitgevoerd van die bibliotheken. In dit voor beeld wordt een bibliotheek van derden gebruikt met de naam AppAuth die is getest op compatibiliteit in basis scenario's met de Azure AD B2C. Problemen en functie aanvragen moeten worden omgeleid naar het open-source project van de bibliotheek. Zie [dit artikel](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)voor meer informatie.
 >
 >
 
@@ -38,7 +38,7 @@ Registreer vervolgens een toepassing in uw Azure AD B2C-Tenant. Dit geeft Azure 
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
+Noteer de **Toepassings-id (client)** voor gebruik in een latere stap.
 
 Neem ook uw aangepaste omleidings-URI op voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
@@ -47,7 +47,7 @@ In Azure AD B2C wordt elke gebruikers ervaring gedefinieerd door een [gebruikers
 
 * Selecteer de **weergave naam**van het kenmerk onder **aanmeldings kenmerken**.  U kunt ook andere kenmerken selecteren.
 * Selecteer onder **toepassings claims**de **weergave naam** van de claims en de **object-id van de gebruiker**. U kunt ook andere claims selecteren.
-* Kopieer de **naam** van elke gebruikers stroom nadat u deze hebt gemaakt. De naam van de gebruikers stroom wordt voorafgegaan `b2c_1_` door wanneer u de gebruikers stroom opslaat.  U hebt de naam van de gebruikers stroom later nodig.
+* Kopieer de **naam** van elke gebruikers stroom nadat u deze hebt gemaakt. De naam van de gebruikers stroom wordt voorafgegaan door `b2c_1_` Wanneer u de gebruikers stroom opslaat.  U hebt de naam van de gebruikers stroom later nodig.
 
 Nadat u de gebruikers stromen hebt gemaakt, bent u klaar om uw app te bouwen.
 
@@ -62,19 +62,19 @@ Dit voor beeld is gemaakt door de Leesmij-instructies te volgen van het [IOS App
 > AppAuth biedt ondersteuning voor iOS 7 en hoger.  Voor het ondersteunen van sociale aanmeldingen op Google is SFSafariViewController echter vereist, waarvoor iOS 9 of hoger vereist is.
 >
 
-### <a name="configuration"></a>Configuratie
+### <a name="configuration"></a>Configuration
 
 U kunt communicatie met Azure AD B2C configureren door zowel het autorisatie-eind punt als de token-eind punt-Uri's op te geven.  Als u deze Uri's wilt genereren, hebt u de volgende gegevens nodig:
 * Tenant-ID (bijvoorbeeld contoso.onmicrosoft.com)
-* Gebruikers stroom naam (bijvoorbeeld B2C\_1\_SignUpIn)
+* Gebruikers stroom naam (bijvoorbeeld B2C \_ 1 \_ SignUpIn)
 
-De URI van het token-eind punt kan worden gegenereerd\_door de Tenant-\_id en de naam van het beleid in de volgende URL te vervangen:
+De URI van het token-eind punt kan worden gegenereerd door de Tenant \_ -id en de \_ naam van het beleid in de volgende URL te vervangen:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-De URI van het autorisatie-eind punt kan worden gegenereerd\_door de Tenant-\_id en de naam van het beleid in de volgende URL te vervangen:
+De URI van het autorisatie-eind punt kan worden gegenereerd door de Tenant \_ -id en de \_ naam van het beleid in de volgende URL te vervangen:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";
@@ -123,7 +123,7 @@ appDelegate.currentAuthorizationFlow =
 
 Als u uw toepassing wilt instellen voor het afhandelen van de omleiding naar de URI met het aangepaste schema, moet u de lijst met URL-Schema's bijwerken in uw info. pList:
 * Open info. pList.
-* Beweeg de muis aanwijzer over een rij zoals ' bundel OS type code ' en \+ Klik op het symbool.
+* Beweeg de muis aanwijzer over een rij zoals ' bundel OS type code ' en klik op het \+ symbool.
 * Wijzig de naam van de nieuwe rij ' URL-typen '.
 * Klik op de pijl links van ' URL-typen ' om de structuur te openen.
 * Klik op de pijl links van ' item 0 ' om de structuur te openen.

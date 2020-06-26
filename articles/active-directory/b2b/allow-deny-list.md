@@ -4,7 +4,7 @@ description: Laat zien hoe een beheerder met behulp van de Azure Portal of Power
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/15/2018
 ms.author: mimart
 author: msmimart
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273422"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387283"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Uitnodigingen voor B2B-gebruikers van bepaalde organisaties toestaan of blokkeren
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Uitnodigingen aan B2B-gebruikers van specifieke organisaties toestaan of blokkeren
 
 U kunt een lijst met toegestane of een lijst weigeren gebruiken om uitnodigingen voor B2B-gebruikers van specifieke organisaties toe te staan of te blok keren. Als u bijvoorbeeld persoonlijke e-mailadres domeinen wilt blok keren, kunt u een Deny-lijst instellen die domeinen bevat, zoals Gmail.com en Outlook.com. Of als uw bedrijf een partnerschap heeft met andere bedrijven, zoals Contoso.com, Fabrikam.com en Litware.com, en u uitnodigingen wilt beperken tot alleen deze organisaties, kunt u Contoso.com, Fabrikam.com en Litware.com toevoegen aan de lijst met toegestane apps.
   
@@ -42,7 +42,7 @@ Dit is het meest typische scenario, waarbij uw organisatie bijna elke organisati
 Een weiger lijst toevoegen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **Azure Active Directory** >  > **gebruikers****instellingen**.
+2. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Onder **samenwerkings beperkingen**selecteert **u uitnodigingen voor de opgegeven domeinen weigeren**.
 5. Voer onder **doel domeinen**de naam in van een van de domeinen die u wilt blok keren. Voer voor meerdere domeinen elk domein in op een nieuwe regel. Bijvoorbeeld:
@@ -63,7 +63,7 @@ Als u een acceptatie lijst wilt gebruiken, moet u ervoor zorgen dat u de tijd he
 Een acceptatie lijst toevoegen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **Azure Active Directory** >  > **gebruikers****instellingen**.
+2. Selecteer **Azure Active Directory**  >  **gebruikers**  >  **instellingen**.
 3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
 4. Selecteer onder **samenwerkings beperkingen** **alleen uitnodigingen toestaan voor de opgegeven domeinen (het meest beperkend)**.
 5. Voer onder **doel domeinen**de naam in van een van de domeinen die u wilt toestaan. Voer voor meerdere domeinen elk domein in op een nieuwe regel. Bijvoorbeeld:

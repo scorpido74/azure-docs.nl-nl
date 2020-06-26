@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184091"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385736"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Een op OWIN gebaseerde web-API migreren naar b2clogin.com
 
@@ -27,7 +27,7 @@ Door ondersteuning toe te voegen aan uw API voor het accepteren van tokens die z
 De volgende secties bevatten een voor beeld van het inschakelen van meerdere verleners in een web-API die gebruikmaakt van de [micro soft OWIN][katana] middleware Components (Katana). Hoewel de code voorbeelden specifiek zijn voor de micro soft OWIN-middleware, moet de algemene techniek van toepassing zijn op andere OWIN-bibliotheken.
 
 > [!NOTE]
-> Dit artikel is bedoeld voor Azure AD B2C klanten met geïmplementeerde Api's en toepassingen die verwijzen `login.microsoftonline.com` naar en die naar het aanbevolen `b2clogin.com` eind punt willen migreren. Als u een nieuwe toepassing wilt instellen, gebruikt u [b2clogin.com](b2clogin.md) als gestuurde.
+> Dit artikel is bedoeld voor Azure AD B2C klanten met geïmplementeerde Api's en toepassingen die verwijzen naar `login.microsoftonline.com` en die naar het aanbevolen `b2clogin.com` eind punt willen migreren. Als u een nieuwe toepassing wilt instellen, gebruikt u [b2clogin.com](b2clogin.md) als gestuurde.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -48,11 +48,11 @@ Begin met het selecteren van een van uw bestaande gebruikers stromen:
 
     ![Bekende URI-Hyper link op de pagina nu uitvoeren van de Azure Portal](media/multi-token-endpoints/portal-01-policy-link.png)
 
-1. Noteer de `issuer` waarde op de pagina die in de browser wordt geopend, bijvoorbeeld:
+1. Noteer de waarde op de pagina die in de browser wordt geopend `issuer` , bijvoorbeeld:
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-1. Gebruik de vervolg keuzelijst **domein selecteren** om het andere domein te selecteren en voer de vorige twee stappen opnieuw uit en noteer de waarde `issuer` ervan.
+1. Gebruik de vervolg keuzelijst **domein selecteren** om het andere domein te selecteren en voer de vorige twee stappen opnieuw uit en noteer de `issuer` waarde ervan.
 
 Er zijn nu twee Uri's opgenomen die vergelijkbaar zijn met:
 
@@ -77,7 +77,7 @@ Als u aangepaste beleids regels hebt in plaats van gebruikers stromen, kunt u ee
 
 Nu u beide token eindpunt-Uri's hebt, moet u de code bijwerken om op te geven dat beide eind punten geldige verleners zijn. Als u een voor beeld wilt door lopen, kunt u de voorbeeld toepassing downloaden of klonen en vervolgens het voor beeld bijwerken zodat beide eind punten als geldige verleners worden ondersteund.
 
-Het archief downloaden: [Active-Directory-B2C-DotNet-webapp-and-webapi-Master. zip][sample-archive]
+Het archief downloaden: [active-directory-b2c-dotnet-webapp-and-webapi-master.zip][sample-archive]
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -88,11 +88,11 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 In deze sectie werkt u de code bij om aan te geven dat beide eind punten van de token Uitgever geldig zijn.
 
 1. Open de oplossing **B2C-WebAPI-dotnet. SLN** in Visual Studio
-1. Open in het project **TaskService** het bestand *TaskService\\App_Start\\* * startup.auth.cs** * in uw editor
+1. Open in het project **TaskService** het bestand *TaskService \\ App_Start \\ * * Startup.auth.cs** * in uw editor
 1. Voeg de volgende `using` instructie toe aan het begin van het bestand:
 
     `using System.Collections.Generic;`
-1. Voeg de [`ValidIssuers`][validissuers] eigenschap toe aan [`TokenValidationParameters`][tokenvalidationparameters] de definitie en geef beide uri's op die u in de vorige sectie hebt genoteerd:
+1. Voeg de [`ValidIssuers`][validissuers] eigenschap toe aan de [`TokenValidationParameters`][tokenvalidationparameters] definitie en geef beide uri's op die u in de vorige sectie hebt genoteerd:
 
     ```csharp
     TokenValidationParameters tvps = new TokenValidationParameters
@@ -123,9 +123,9 @@ Zoals eerder vermeld, bieden andere OWIN-bibliotheken doorgaans een vergelijk ba
 
 Wanneer beide Uri's nu door de Web-API worden ondersteund, moet u uw webtoepassing nu bijwerken zodat de tokens worden opgehaald uit het b2clogin.com-eind punt.
 
-U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt `ida:AadInstance` door de waarde in het bestand *project taskwebapp\\* * web. config** * van het **project taskwebapp** -project te wijzigen.
+U kunt bijvoorbeeld de voor beeld-webtoepassing zodanig configureren dat het nieuwe eind punt wordt gebruikt door de `ida:AadInstance` waarde in het bestand *project taskwebapp \\ * * Web.config** * van het **project taskwebapp** -project te wijzigen.
 
-Wijzig de `ida:AadInstance` waarde in *Web. config* of project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van `login.microsoftonline.com`.
+Wijzig de `ida:AadInstance` waarde in de *Web.config* van project taskwebapp zodat deze verwijst naar `{your-b2c-tenant-name}.b2clogin.com` in plaats van `login.microsoftonline.com` .
 
 Voor:
 
@@ -145,7 +145,7 @@ Wanneer de eindpunt teken reeksen zijn gemaakt tijdens de uitvoering van de web-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel vindt u een methode voor het configureren van een web-API die de micro soft OWIN middleware (Katana) implementeert voor het accepteren van tokens van meerdere issue-eind punten. Zoals u ziet, zijn er verschillende andere teken reeksen in de *Web. config* -bestanden van de TaskService-en project taskwebapp-projecten die moeten worden gewijzigd als u deze projecten wilt bouwen en uitvoeren met uw eigen Tenant. U kunt de projecten op de juiste manier aanpassen als u ze in actie wilt zien, maar een volledig overzicht van het uitvoeren van dit artikel.
+In dit artikel vindt u een methode voor het configureren van een web-API die de micro soft OWIN middleware (Katana) implementeert voor het accepteren van tokens van meerdere issue-eind punten. Zoals u ziet, zijn er verschillende andere teken reeksen in de *Web.Config* bestanden van zowel de TaskService-als project taskwebapp-projecten die moeten worden gewijzigd als u deze projecten wilt bouwen en uitvoeren met uw eigen Tenant. U kunt de projecten op de juiste manier aanpassen als u ze in actie wilt zien, maar een volledig overzicht van het uitvoeren van dit artikel.
 
 Zie [overzicht van tokens in azure Active Directory B2C](tokens-overview.md)voor meer informatie over de verschillende typen beveiligings tokens die worden gegenereerd door Azure AD B2C.
 

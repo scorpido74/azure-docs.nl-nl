@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ece49d0c1537e345b1ccb1f44f907252a5a7b4e1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85203891"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385379"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Geef claim transformaties voor het telefoon nummer op in Azure AD B2C
 
@@ -30,7 +30,7 @@ In dit artikel vindt u Naslag informatie en voor beelden voor het gebruik van de
 
 Hiermee wordt een `phoneNumber` gegevens type geconverteerd naar een `string` gegevens type.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | phoneNumber | phoneNumber |  Het claim type dat moet worden geconverteerd naar een teken reeks. |
 | Output claim | phoneNumberString | tekenreeks | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. |
@@ -60,7 +60,7 @@ In dit voor beeld wordt de claim cellPhoneNumber met het waardetype ' `phoneNumb
 
 Deze claim transformatie valideert de notatie van het telefoon nummer. Als het een geldige indeling heeft, wijzigt u deze in een standaard indeling die wordt gebruikt door Azure AD B2C. Als het opgegeven telefoon nummer geen geldige indeling heeft, wordt een fout bericht weer gegeven.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | phoneNumberString | tekenreeks |  De teken reeks claim voor het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land/regio-code. Als `country` er een invoer claim wordt opgegeven, is het telefoon nummer in de lokale indeling (zonder de land-/regiocode). |
 | Input claim | country | tekenreeks | Beschrijving De teken reeks claim voor de land-/regiocode van het telefoon nummer in de ISO3166-indeling (de twee letters ISO-3166 land/regio code). |
@@ -115,7 +115,7 @@ Het zelfondertekende technische profiel dat het validatie technische profiel aan
 
 Hiermee worden de land-/regiocode en het nationale nummer uit de invoer claim geëxtraheerd en wordt eventueel een uitzonde ring gegenereerd als het opgegeven telefoon nummer ongeldig is.
 
-| Item | TransformationClaimType | Gegevenstype | Notities |
+| Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
 | Input claim | phoneNumber | tekenreeks | De teken reeks claim van het telefoon nummer. Het telefoon nummer moet in de internationale indeling zijn, compleet met een toonaangevend "+" en land/regio-code. |
 | Parameter | throwExceptionOnFailure | booleaans | Beschrijving Een para meter die aangeeft of er een uitzonde ring wordt gegenereerd wanneer het telefoon nummer ongeldig is. De standaard waarde is False. |

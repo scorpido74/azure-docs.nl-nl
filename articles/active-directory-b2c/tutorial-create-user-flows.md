@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 63486d6ee627d3b321978fb9f0268d15a8a86f34
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 2d9fb98da40602837eee57914036742994b4eb9c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488185"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385056"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelf studie: gebruikers stromen maken in Azure Active Directory B2C
 
@@ -94,7 +94,7 @@ Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing,
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
 1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet worden weer gegeven `https://jwt.ms` .
 1. Klik op **gebruikers stroom uitvoeren**en meld u aan met het account dat u eerder hebt gemaakt.
-1. U hebt nu de mogelijkheid om de weergave naam en de taak titel voor de gebruiker te wijzigen. Klik op **Continue**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
+1. U hebt nu de mogelijkheid om de weergave naam en de taak titel voor de gebruiker te wijzigen. Klik op **Doorgaan**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
 
 ## <a name="create-a-password-reset-user-flow"></a>Een gebruikersstroom voor het opnieuw instellen van het wachtwoord maken
 

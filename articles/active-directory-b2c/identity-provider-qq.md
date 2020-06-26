@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b0f15124c64e5cca54112987d486ddadaca79452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d230bc8a1e9bf388e1cca4e3a3a691223146d734
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187984"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85387980"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Stel registratie in en meld u aan met een QQ-account met behulp van Azure Active Directory B2C
 
@@ -23,12 +23,12 @@ ms.locfileid: "78187984"
 
 ## <a name="create-a-qq-application"></a>Een QQ-toepassing maken
 
-Als u een QQ-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen QQ-account hebt, kunt u zich aanmelden bij [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033).
+Als u een QQ-account wilt gebruiken als een id-provider in Azure Active Directory B2C (Azure AD B2C), moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen QQ-account hebt, kunt u zich aanmelden bij [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) .
 
 ### <a name="register-for-the-qq-developer-program"></a>Registreren voor het QQ-ontwikkelaars programma
 
 1. Meld u aan bij de [QQ-ontwikkelaars Portal](http://open.qq.com) met uw QQ-account referenties.
-1. Nadat u zich hebt aangemeld, [https://open.qq.com/reg](https://open.qq.com/reg) gaat u naar om uzelf te registreren als ontwikkelaar.
+1. Nadat u zich hebt aangemeld, gaat u naar [https://open.qq.com/reg](https://open.qq.com/reg) om uzelf te registreren als ontwikkelaar.
 1. Selecteer**个人**(afzonderlijke ontwikkelaar).
 1. Voer de vereiste gegevens in en selecteer**下一步**(volgende stap).
 1. Voltooi het e-mail verificatie proces. Nadat u zich hebt geregistreerd als ontwikkelaar, moet u een paar dagen wachten.
@@ -38,7 +38,7 @@ Als u een QQ-account wilt gebruiken als een id-provider in Azure Active Director
 1. Ga naar [https://connect.qq.com/index.html](https://connect.qq.com/index.html).
 1. Selecteer**应用管理**(app Management).
 1. Selecteer**创建应用**(app maken) en voer de vereiste gegevens in.
-1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` in**授权回调域**(call back-URL) in. Als uw `tenant_name` is contoso bijvoorbeeld, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Voer `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` in**授权回调域**(call back-URL) in. Als uw `tenant_name` is contoso bijvoorbeeld, stelt u de URL in op `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Selecteer**创建应用**(app maken).
 1. Selecteer op de pagina Bevestiging**应用管理**(app Management) om terug te keren naar de pagina voor het beheren van apps.
 1. Selecteer**查看**(weer geven) naast de app die u hebt gemaakt.

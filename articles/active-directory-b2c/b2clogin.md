@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189987"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386161"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Omleidings-Url's instellen op b2clogin.com voor Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Er zijn verschillende wijzigingen die u mogelijk moet maken om uw toepassingen t
 
 ## <a name="change-identity-provider-redirect-urls"></a>Omleidings-Url's voor de ID-provider wijzigen
 
-Wijzig op elke website van de identiteits provider waar u een toepassing hebt gemaakt, alle vertrouwde Url's om om `your-tenant-name.b2clogin.com` te leiden in plaats van *login.microsoftonline.com*.
+Wijzig op elke website van de identiteits provider waar u een toepassing hebt gemaakt, alle vertrouwde Url's om om te leiden in `your-tenant-name.b2clogin.com` plaats van *login.microsoftonline.com*.
 
 Er zijn twee indelingen die u kunt gebruiken voor uw b2clogin.com-omleidings-Url's. De eerste biedt het voor deel dat ' micro soft ' nergens in de URL wordt weer gegeven met behulp van de Tenant-ID (een GUID) in plaats van de domein naam van de Tenant:
 
@@ -58,7 +58,7 @@ Er zijn twee indelingen die u kunt gebruiken voor uw b2clogin.com-omleidings-Url
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-De tweede optie maakt gebruik van de domein naam van uw Tenant `your-tenant-name.onmicrosoft.com`in de vorm van. Bijvoorbeeld:
+De tweede optie maakt gebruik van de domein naam van uw Tenant in de vorm van `your-tenant-name.onmicrosoft.com` . Bijvoorbeeld:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -66,12 +66,12 @@ https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth
 
 Voor beide indelingen:
 
-* Vervang `{your-tenant-name}` door de naam van uw Azure AD B2C-Tenant.
+* Vervang door `{your-tenant-name}` de naam van uw Azure AD B2C-Tenant.
 * Verwijderen `/te` als deze bestaat in de URL.
 
 ## <a name="update-your-applications-and-apis"></a>Uw toepassingen en Api's bijwerken
 
-De code in uw Azure AD B2C-toepassingen en Api's kunnen op verschillende locaties `login.microsoftonline.com` worden gebruikt. Uw code kan bijvoorbeeld verwijzingen bevatten naar gebruikers stromen en Token-eind punten. Werk het volgende bij in plaats `your-tenant-name.b2clogin.com`daarvan:
+De code in uw Azure AD B2C-toepassingen en Api's kunnen op `login.microsoftonline.com` verschillende locaties worden gebruikt. Uw code kan bijvoorbeeld verwijzingen bevatten naar gebruikers stromen en Token-eind punten. Werk het volgende bij in plaats daarvan `your-tenant-name.b2clogin.com` :
 
 * Autorisatie-eind punt
 * Token eindpunt

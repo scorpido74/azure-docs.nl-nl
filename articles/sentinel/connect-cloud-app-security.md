@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2a48b3990afc5fb4ecfb8d40738b18873846459
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422144"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374913"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verbinding maken met gegevens van Microsoft Cloud App Security 
-
-
 
 Met de [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) -connector (MCAS) kunt u waarschuwingen streamen en [Cloud Discovery logboeken](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it) van MCAS naar Azure Sentinel. Hiermee krijgt u inzicht in uw Cloud-apps, kunt u geavanceerde analyses verkrijgen om Cyber dreigingen te identificeren en te bestrijden en te bepalen hoe uw gegevens worden verplaatst.
 
@@ -36,7 +34,7 @@ Met de [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-secur
 > [!IMPORTANT]
 > Opname van Cloud Discovery Logboeken is momenteel beschikbaar als open bare preview.
 > Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
  
 ## <a name="connect-to-cloud-app-security"></a>Verbinding maken met Cloud App Security
 
@@ -50,7 +48,9 @@ Als Cloud App Security is geïmplementeerd en opnamet van uw gegevens, kunnen de
 
 1. Klik op **wijzigingen Toep assen**.
 
-1. Als u het relevante schema in Log Analytics voor Cloud App Security-waarschuwingen wilt `SecurityAlert` gebruiken, typt u in het query venster. Typ `McasShadowItReporting`voor het Cloud Discovery logboeken schema.
+1. U kunt selecteren of u wilt dat de waarschuwingen van Azure Security Center automatisch incidenten genereren in azure Sentinel. Schakel onder **incidenten maken**de optie **ingeschakeld** in om de standaard analyse regel in te scha kelen waarmee automatisch incidenten worden gemaakt op basis van waarschuwingen. U kunt deze regel vervolgens onder **analyse**bewerken op het tabblad **actieve regels** .
+
+1. Als u het relevante schema in Log Analytics voor Cloud App Security-waarschuwingen wilt gebruiken, typt u `SecurityAlert` in het query venster. Typ voor het Cloud Discovery logboeken schema `McasShadowItReporting` .
 
 > [!NOTE]
 > Cloud Discovery helpt trends te detecteren en te identificeren door de gegevens van de onderliggende gebruikers verbindingen met Cloud-apps samen te voegen.
@@ -58,6 +58,6 @@ Als Cloud App Security is geïmplementeerd en opnamet van uw gegevens, kunnen de
 > Omdat Cloud Discovery gegevens per dag worden geaggregeerd, moet u er rekening mee houden dat Maxi maal 24 uur aan de meest recente gegevens niet in azure Sentinel wordt weer gegeven. In het geval dat een onderzoek op laag niveau meer onmiddellijke gegevens vereist, moet dit rechtstreeks worden gedaan in het bron apparaat of de service waar de onbewerkte gegevens zich bevinden.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u Microsoft Cloud App Security kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
+In dit document hebt u geleerd hoe u Microsoft Cloud App Security kunt verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met het detecteren van bedreigingen met Azure Sentinel, met behulp [van ingebouwde](tutorial-detect-threats.md) of [aangepaste](tutorial-detect-threats-custom.md) regels.

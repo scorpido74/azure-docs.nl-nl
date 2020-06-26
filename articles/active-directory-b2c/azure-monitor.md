@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 2dc65c2e1b87c50ad2400b8ffb5d4c548e860c91
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85201290"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386212"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
 
@@ -211,7 +211,7 @@ Nadat u de sjabloon hebt geïmplementeerd en een paar minuten hebt gewacht totda
 
 Diagnostische instellingen bepalen waar logboeken en metrische gegevens voor een resource moeten worden verzonden. Mogelijke bestemmingen zijn:
 
-- [Azure-opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Azure Storage-account](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -oplossingen.
 - [Log Analytics werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md)
 

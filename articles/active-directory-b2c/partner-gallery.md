@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1f08005c5179add52863f5fa6260eec1fbae53e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 765deda747d46a9ee5b6913c192fa1a43c56d35d
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84810031"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85385893"
 ---
 # <a name="azure-active-directory-b2c-partners"></a>Azure Active Directory B2C partners
 
@@ -34,6 +34,7 @@ Ons partner netwerk breidt onze oplossings mogelijkheden uit om u te helpen bij 
 | ![logo](./media/partner-gallery/itsme-logo.png) | [Itsme](./partner-itsme.md) is een digitale id-oplossing voor identificatie, authenticatie en Trust Services (eiDAS) waarmee gebruikers veilig kunnen worden aangemeld zonder kaart lezers, wacht woorden, twee ledige verificatie en meerdere pincodes. |
 | ![logo](./media/partner-gallery/trusona-logo.png) | Met [Trusona](./partner-trusona.md) -integratie kunt u zich veilig aanmelden en wacht woordloze verificatie, multi-factor Authentication en digitale licentie controle inschakelen.|
 | ![logo](./media/partner-gallery/twilio-logo.png) | [Twilio verify app](./partner-twilio.md) biedt meerdere oplossingen om multi-factor Authentication (MFA) in te scha kelen via een SMS One-Time Password (OTP), op tijd gebaseerd wacht woord (mobiele totp) en push meldingen, en om te voldoen aan de voor waarden van de SCA voor betalings Services-instructie 2 (PSD2).|
+| ![logo](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) is een identiteits verificatie-en controle provider op basis van het door de gebruiker getypte patroon, en biedt id-verificatie oplossingen waarbij multi-factor Authentication wordt afgedwongen en waarmee wordt voldaan aan de algemene vereisten voor de betalings Services-instructie 2 (PSD2). |
 
 ## <a name="next-steps"></a>Volgende stappen
 

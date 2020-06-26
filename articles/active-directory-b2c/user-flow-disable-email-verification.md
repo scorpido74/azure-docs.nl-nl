@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 369b4e13baa344a71a51b358ef810d1a66b4b6ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10613bd2d6219272248f882e45ae1c33d2cc9d61
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126746"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85384206"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>E-mail verificatie uitschakelen tijdens het aanmelden van de klant in Azure Active Directory B2C
 
@@ -24,9 +24,9 @@ ms.locfileid: "79126746"
 
 Volg deze stappen om de e-mail verificatie uit te scha kelen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
 1. Gebruik het filter voor **adres lijst en abonnementen** in het bovenste menu om de map te selecteren die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **gebruikers stromen**.
 1. Selecteer de gebruikers stroom waarvoor u de e-mail verificatie wilt uitschakelen. Bijvoorbeeld *B2C_1_signinsignup*.
 1. Selecteer **pagina-indelingen**.

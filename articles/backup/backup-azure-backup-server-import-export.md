@@ -3,12 +3,12 @@ title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 1fb9910f2cdf8f000725fde697d971fc1c3d385b
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84631980"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374930"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (MABS)
 
@@ -83,9 +83,9 @@ De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor 
    De beschrijving van de invoer is als volgt:
 
    * **Faserings locatie**: de tijdelijke opslag locatie waarnaar de eerste back-up wordt geschreven. De faserings locatie Bekan zich op een netwerk share of een lokale computer. Als de Kopieer computer en de bron computer verschillend zijn, geeft u het volledige netwerkpad van de faserings locatie op.
-   * **Azure Storage account**: de naam van het opslag account in het Azure-abonnement dat is gekoppeld aan het Azure Publish settings-bestand.
-   * **Azure storage container**: de naam van de doel-Storage-Blob in het Azure-opslag account waarin de back-upgegevens worden geïmporteerd.
-   * **Azure-abonnements-id**: de id van het Azure-abonnement voor het abonnement waarvandaan u het Azure Publish settings-bestand hebt gedownload.
+   * **Azure Resource Manager Storage-account**: de naam van het Resource Manager-type opslag account (algemeen gebruik v1 of algemeen gebruik v2) in een Azure-abonnement.
+   * **Azure storage container**: de naam van de opslag container voor de doel-Blob in het Azure-opslag account waarin de back-upgegevens worden geïmporteerd.
+   * **Azure-abonnements-id**: de id voor het Azure-abonnement waarin het Azure-opslag account is gemaakt.
    * **Azure import-taak naam**: de unieke naam waarmee de Azure import-service en Azure backup de overdracht van gegevens die op schijven zijn verzonden, volgen naar Azure.
 
     Sla de **faserings locatie** en de gegevens van de **Azure import-taak naam** op die u hebt ingevoerd. Het is vereist om de schijven voor te bereiden.

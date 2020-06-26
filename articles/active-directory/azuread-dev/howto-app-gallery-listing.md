@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666929"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383866"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uw toepassing weergeven in de Azure Active Directory-toepassingsgalerie
 
@@ -51,7 +51,7 @@ U kunt een gratis test account krijgen met alle Premium Azure AD-functies-90 dag
 
 Nadat u hebt gecontroleerd of uw toepassings integratie werkt met Azure AD, moet u de aanvraag voor de toepassing indienen in de portal van het [micro soft-toepassings netwerk](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
-Als de volgende pagina wordt weer gegeven nadat u zich hebt aangemeld, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geef het e-mail account op dat u wilt gebruiken voor het verzenden van de aanvraag. Een zakelijk e-mail adres [name@yourbusiness.com](mailto:name@yourbusiness.com) , bijvoorbeeld de voor keur. Het team van Azure AD voegt het account toe aan de portal van het micro soft-toepassings netwerk.
+Als de volgende pagina wordt weer gegeven nadat u zich hebt aangemeld, neemt u contact op met het [Azure AD SSO-integratie team](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geef het e-mail account op dat u wilt gebruiken voor het verzenden van de aanvraag. Een zakelijk e-mail adres, bijvoorbeeld de [name@yourbusiness.com](mailto:name@yourbusiness.com) voor keur. Het team van Azure AD voegt het account toe aan de portal van het micro soft-toepassings netwerk.
 
 ![Bericht over toegangs aanvraag in share Point Portal](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -79,9 +79,9 @@ De gast gebruiker is federatief voor een thuis Tenant die ook een Azure AD is. D
  
 **Veilige oplossingen:**
 
-* Door MFA geregistreerde gast gebruikers herstellen hun eigen gebruikers risico. Dit kan door de gast gebruiker worden uitgevoerd om een beveiligd wacht woord te wijzigen ofhttps://aka.ms/sspr) opnieuw in te stellen (deze vereist MFA en SSPR bij de thuis Tenant). Het beveiligde wacht woord wijzigen of opnieuw instellen moet worden gestart op Azure AD en niet on-premises.
+* Door MFA geregistreerde gast gebruikers herstellen hun eigen gebruikers risico. Dit kan door de gast gebruiker worden uitgevoerd om een beveiligd wacht woord te wijzigen of opnieuw in te stellen ( https://aka.ms/sspr) deze vereist MFA en SSPR bij de thuis Tenant). Het beveiligde wacht woord wijzigen of opnieuw instellen moet worden gestart op Azure AD en niet on-premises.
 
-* Gast gebruikers hebben hun beheerders hun risico hersteld. In dit geval voert de beheerder een wachtwoord herstel uit (tijdelijke wacht woorden genereren). Dit vereist geen identiteits beveiliging. De beheerder van de gast gebruiker kan naar https://aka.ms/RiskyUsers gaan en op wacht woord opnieuw instellen klikken.
+* Gast gebruikers hebben hun beheerders hun risico hersteld. In dit geval voert de beheerder een wachtwoord herstel uit (tijdelijke wacht woorden genereren). Dit vereist geen identiteits beveiliging. De beheerder van de gast gebruiker kan naar gaan https://aka.ms/RiskyUsers en op wacht woord opnieuw instellen klikken.
 
 * Gast gebruikers hebben hun beheerders hun Risico's sluiten/verwijderen. Opnieuw, hiervoor is geen identiteits beveiliging vereist. De beheerder kan naar gaan https://aka.ms/RiskyUsers en klikken op risico van gebruikers negeren. De beheerder moet er echter rekening mee houden dat dit een onjuiste positieve risico analyse was voordat het gebruikers risico wordt gesloten. Anders zetten ze hun en micro soft-bronnen risico door een risico analyse zonder onderzoek te onderdrukken.
 
@@ -136,7 +136,7 @@ Als u een bestaande toepassing wilt bijwerken of verwijderen in de app-galerie v
 
 ## <a name="list-requests-by-customers"></a>Aanvragen van klanten weer geven
 
-Klanten kunnen een aanvraag indienen om een toepassing weer te geven door app-aanvragen te selecteren **door klanten** > **nieuwe aanvraag**in te dienen.
+Klanten kunnen een aanvraag indienen om een toepassing weer te geven door app-aanvragen te selecteren **door klanten**  >  **nieuwe aanvraag**in te dienen.
 
 ![Toont de tegel door de klant aangevraagde apps](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -156,4 +156,4 @@ De tijd lijn voor het proces van het weer geven van een OpenID Connect Connect-t
 
 ## <a name="escalations"></a>Escalaties
 
-Verzend voor eventuele escalaties e-mail naar het [Azure AD SSO-integratie team](mailto:SaaSApplicationIntegrations@service.microsoft.com) op SaaSApplicationIntegrations@service.microsoft.comen wij zullen zo snel mogelijk reageren.
+Verzend voor eventuele escalaties e-mail naar het [Azure AD SSO-integratie team](mailto:SaaSApplicationIntegrations@service.microsoft.com) op SaaSApplicationIntegrations@service.microsoft.com en wij zullen zo snel mogelijk reageren.

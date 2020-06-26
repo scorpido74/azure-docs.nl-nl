@@ -7,18 +7,18 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3168d36bf4c2d3c696173725f669b12dc168dcc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a7c6966c439bd69f809a26e0f3a7781d95619ad
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154998"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85383832"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Procedure: migreren vanuit Azure Access Control Service
 
@@ -55,9 +55,9 @@ Als u deze onderdelen wilt gebruiken, moet u een of meer Access Control-naam rui
 https://<mynamespace>.accesscontrol.windows.net
 ```
 
-Alle communicatie met de STS-en beheer bewerkingen wordt uitgevoerd op deze URL. U gebruikt verschillende paden voor verschillende doel einden. Als u wilt bepalen of uw toepassingen of services gebruikmaken van Access Control, controleert u op&lt;alle&gt;verkeer naar https://namespace. accesscontrol.Windows.net. Elk verkeer naar deze URL wordt verwerkt door Access Control en moet worden stopgezet. 
+Alle communicatie met de STS-en beheer bewerkingen wordt uitgevoerd op deze URL. U gebruikt verschillende paden voor verschillende doel einden. Als u wilt bepalen of uw toepassingen of services gebruikmaken van Access Control, controleert u op alle verkeer naar https:// &lt; namespace &gt; . accesscontrol.Windows.net. Elk verkeer naar deze URL wordt verwerkt door Access Control en moet worden stopgezet. 
 
-De uitzonde ring hierop is het verkeer `https://accounts.accesscontrol.windows.net`naar. Verkeer naar deze URL wordt al verwerkt door een andere service en **wordt niet** beïnvloed door de Access Control afschaffing. 
+De uitzonde ring hierop is het verkeer naar `https://accounts.accesscontrol.windows.net` . Verkeer naar deze URL wordt al verwerkt door een andere service en **wordt niet** beïnvloed door de Access Control afschaffing. 
 
 Zie [Access Control Service 2,0 (gearchiveerd)](https://msdn.microsoft.com/library/hh147631.aspx)voor meer informatie over Access Control.
 
@@ -112,9 +112,9 @@ Vanaf november 2017 worden alle Access Control onderdelen volledig ondersteund e
 
 Dit is de planning voor het afAccess Controlen van onderdelen:
 
-- **November 2017**: de Azure AD-beheer ervaring in de klassieke Azure-Portal [is buiten gebruik gesteld](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Op dit punt is naam ruimte beheer voor Access Control beschikbaar op een nieuwe, toegewezen URL: `https://manage.windowsazure.com?restoreClassic=true`. Gebruik deze URl om uw bestaande naam ruimten weer te geven, naam ruimten in te scha kelen en uit te scha kelen en om naam ruimten te verwijderen, indien gewenst.
-- **2 April 2018**: de klassieke Azure-Portal is volledig buiten gebruik gesteld, wat betekent dat Access Control naam ruimte beheer niet meer beschikbaar is via een URL. Op dit moment kunt u uw Access Control-naam ruimten niet in-of uitschakelen, verwijderen of opsommen. De Access Control Beheer Portal is echter volledig functioneel en bevindt zich `https://\<namespace\>.accesscontrol.windows.net`op. Alle andere onderdelen van Access Control blijven normaal functioneren.
-- **7 November 2018**: alle Access Control onderdelen worden permanent afgesloten. Dit omvat de Access Control Beheer Portal, de beheer service, STS en de token transformatie regel engine. Op dit punt mislukken alle aanvragen die worden verzonden naar Access Control ( \<bevindt zich op naam ruimte\>. accesscontrol.Windows.net). U moet alle bestaande apps en services voor deze periode goed hebben gemigreerd naar andere technologieën.
+- **November 2017**: de Azure AD-beheer ervaring in de klassieke Azure-Portal [is buiten gebruik gesteld](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). Op dit punt is naam ruimte beheer voor Access Control beschikbaar op een nieuwe, toegewezen URL: `https://manage.windowsazure.com?restoreClassic=true` . Gebruik deze URl om uw bestaande naam ruimten weer te geven, naam ruimten in te scha kelen en uit te scha kelen en om naam ruimten te verwijderen, indien gewenst.
+- **2 April 2018**: de klassieke Azure-Portal is volledig buiten gebruik gesteld, wat betekent dat Access Control naam ruimte beheer niet meer beschikbaar is via een URL. Op dit moment kunt u uw Access Control-naam ruimten niet in-of uitschakelen, verwijderen of opsommen. De Access Control Beheer Portal is echter volledig functioneel en bevindt zich op `https://\<namespace\>.accesscontrol.windows.net` . Alle andere onderdelen van Access Control blijven normaal functioneren.
+- **7 November 2018**: alle Access Control onderdelen worden permanent afgesloten. Dit omvat de Access Control Beheer Portal, de beheer service, STS en de token transformatie regel engine. Op dit moment mislukken alle aanvragen die worden verzonden naar Access Control (te vinden op \<namespace\> . accesscontrol.Windows.net). U moet alle bestaande apps en services voor deze periode goed hebben gemigreerd naar andere technologieën.
 
 > [!NOTE]
 > Een beleid schakelt naam ruimten uit die gedurende een bepaalde tijd geen token hebben aangevraagd. Vanaf begin september 2018 is deze periode op dit moment al 14 dagen inactief, maar dit wordt in de komende weken verkort tot 7 dagen van inactiviteit. Als u Access Control naam ruimten die momenteel zijn uitgeschakeld, kunt u [ACS Power shell downloaden en installeren](#download-and-install-acs-powershell) om de naam ruimte (n) weer in te scha kelen.
@@ -127,7 +127,7 @@ In de volgende secties worden de aanbevelingen op hoog niveau voor de migratie v
 
 Elke micro soft-Cloud service die tokens accepteert die zijn uitgegeven door Access Control, ondersteunt nu ten minste één alternatieve vorm van verificatie. Het juiste verificatie mechanisme varieert voor elke service. U wordt aangeraden om te verwijzen naar de specifieke documentatie voor elke service voor officiële richt lijnen. Voor het gemak wordt elke set van documentatie hier beschreven:
 
-| Service | Richtlijnen |
+| Service | Hulp |
 | ------- | -------- |
 | Azure Service Bus | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus relay | [Migreren naar hand tekeningen voor gedeelde toegang](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
@@ -148,7 +148,7 @@ Elke micro soft-Cloud service die tokens accepteert die zijn uitgegeven door Acc
 
 Share point 2013-, 2016-en share point online-klanten hebben in de Cloud, on-premises en hybride scenario's een langdurige ACS gebruikt voor verificatie doeleinden. Sommige share point-functies en-use-cases worden beïnvloed door ACS-uittreding, terwijl anderen dat niet doen. De onderstaande tabel bevat een overzicht van de migratie richtlijnen voor een aantal van de populairste share point-functies die gebruikmaken van ACS:
 
-| Functie | Richtlijnen |
+| Functie | Hulp |
 | ------- | -------- |
 | Gebruikers verifiëren vanuit Azure AD | Voorheen heeft Azure AD geen ondersteuning voor SAML 1,1-tokens die vereist zijn door share point voor verificatie, en ACS werd gebruikt als een tussen persoon die share point compatibel met Azure AD-token indelingen heeft gemaakt. Nu kunt u [rechtstreeks verbinding maken met share point met Azure AD met behulp van Azure AD-App galerie share point op de on-premises app](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [App-verificatie & server-naar-Server-verificatie in share point on-premises](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Niet beïnvloed door ACS-uittredingen; u hoeft niets te wijzigen. | 

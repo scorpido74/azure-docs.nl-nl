@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189970"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386128"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Leeftijds beperking inschakelen in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Met leeftijds beperking in Azure Active Directory B2C (Azure AD B2C) kunt u mind
 
 Nadat u leeftijds beperking in uw [gebruikers stroom](user-flow-overview.md)hebt ingeschakeld, worden gebruikers gevraagd wanneer ze geboren zijn en in welk land of welke regio ze wonen. Als een gebruiker zich aanmeldt dat de gegevens niet eerder zijn ingevoerd, moeten ze de volgende keer dat ze zich aanmelden invoeren. De regels worden toegepast telkens wanneer een gebruiker zich aanmeldt.
 
-Azure AD B2C gebruikt de informatie die de gebruiker invoert om te bepalen of ze een kleine zijn. Het veld **ageGroup** wordt vervolgens bijgewerkt in hun account. De `null`waarde kan, `Undefined` `Minor` `Adult`,, en. `NotAdult`  De velden **ageGroup** en **consentProvidedForMinor** worden vervolgens gebruikt om de waarde van **legalAgeGroupClassification**te berekenen.
+Azure AD B2C gebruikt de informatie die de gebruiker invoert om te bepalen of ze een kleine zijn. Het veld **ageGroup** wordt vervolgens bijgewerkt in hun account. De waarde kan,,, `null` `Undefined` `Minor` `Adult` en `NotAdult` .  De velden **ageGroup** en **consentProvidedForMinor** worden vervolgens gebruikt om de waarde van **legalAgeGroupClassification**te berekenen.
 
 De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer wordt beschouwd als een kleine, en de leeftijd waarbij een kleine persoon toestemming moet geven over ouders. De volgende tabel bevat de leeftijds regels die worden gebruikt voor het definiëren van een kleine en kleine, vereiste toestemming.
 
@@ -41,7 +41,7 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 | BH | Bahrein | Geen | 21 |
 | CM | Kameroen | Geen | 21 |
 | CY | Cyprus | 16 | 18 |
-| CZ | Tsjechië | 16 | 18 |
+| CZ | Tsjechische Republiek | 16 | 18 |
 | DE | Duitsland | 16 | 18 |
 | DK | Denemarken | 16 | 18 |
 | EE | Estland | 16 | 18 |
@@ -59,7 +59,7 @@ De leeftijds beperking omvat twee leeftijds waarden: de leeftijd die niet langer
 | LU | Luxemburg | 16 | 18 |
 | LV | Letland | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| N.v.t. | Namibië | Geen | 21 |
+| NA | Namibië | Geen | 21 |
 | NL | Nederland | 16 | 18 |
 | PL | Polen | 13 | 18 |
 | PT | Portugal | 16 | 18 |
@@ -103,7 +103,7 @@ Nadat uw Tenant is ingesteld voor het gebruik van leeftijd beperking, kunt u dez
 1. Maak een gebruikers stroom waarvoor leeftijds beperking is ingeschakeld.
 2. Nadat u de gebruikers stroom hebt gemaakt, selecteert u **Eigenschappen** in het menu.
 3. Selecteer in de sectie **leeftijds beperking** de optie **ingeschakeld**.
-4. Vervolgens bepaalt u hoe u gebruikers wilt beheren die als minder jarigen worden geïdentificeerd. Als u **zich wilt aanmelden of aanmelden**, selecteert `Allow minors to access your application` u of. `Block minors from accessing your application` Als blokkerende minder jarigen is geselecteerd `Send a JSON back to the application` , `Show an error message`selecteert u of.
+4. Vervolgens bepaalt u hoe u gebruikers wilt beheren die als minder jarigen worden geïdentificeerd. Als u **zich wilt aanmelden of aanmelden**, selecteert u `Allow minors to access your application` of `Block minors from accessing your application` . Als blokkerende minder jarigen is geselecteerd, selecteert u `Send a JSON back to the application` of `Show an error message` .
 
 
 

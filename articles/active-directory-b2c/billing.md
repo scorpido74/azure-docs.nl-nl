@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190004"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386059"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Facturerings model voor Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Ga als volgt te werk om de overschakeling naar MAU facturering voor een bestaand
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als eigenaar van het abonnement.
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de Azure AD B2C Directory die u wilt bijwerken naar Mau-facturering.<br/>
     ![Directory-en abonnements filter in Azure Portal](./media/billing/portal-mau-01-select-b2c-directory.png)
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer op de pagina **overzicht** van de Azure AD B2C Tenant de koppeling onder **resource naam**. U wordt omgeleid naar de Azure AD B2C-resource in uw Azure AD-Tenant.<br/>
     ![Azure AD B2C resource koppeling gemarkeerd in Azure Portal](./media/billing/portal-mau-02-b2c-resource-link.png)
 1. Selecteer op de pagina **overzicht** van de Azure AD B2C resource onder **factureer bare eenheden**de koppeling **per verificatie (wijzigen in Mau)** .<br/>
@@ -94,7 +94,7 @@ Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met het Azure-abonnement dat u wilt gebruiken (*niet* de map die de Azure AD B2C Tenant bevat).
 1. Selecteer **een resource maken**, Voer `Active Directory B2C` in het veld **Marketplace doorzoeken** in en selecteer vervolgens **Azure Active Directory B2C**.
-1. Selecteer **maken**
+1. Selecteer **Maken**
 1. Selecteer **een bestaande Azure AD B2C-Tenant koppelen aan mijn Azure-abonnement**.
 1. Selecteer een **Azure AD B2C Tenant** in de vervolg keuzelijst. Alleen tenants waarvoor u een globale beheerder bent en die nog niet aan een abonnement zijn gekoppeld, worden weer gegeven. Het veld **Azure AD B2C resource naam** wordt ingevuld met de domein naam van de Azure AD B2C-Tenant die u selecteert.
 1. Selecteer een actief Azure- **abonnement** waarvan u een beheerder bent.
