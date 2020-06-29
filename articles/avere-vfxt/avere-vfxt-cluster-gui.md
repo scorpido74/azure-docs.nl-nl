@@ -3,15 +3,15 @@ title: Toegang tot het avere vFXT configuratie scherm-Azure
 description: Verbinding maken met het vFXT-cluster en het avere-configuratie scherm op basis van de browser voor het configureren van de avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75416151"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505610"
 ---
 # <a name="access-the-vfxt-cluster"></a>Access the vFXT cluster (Toegang tot het vFXT-cluster)
 
@@ -35,7 +35,7 @@ U kunt een SSH-tunnel maken via de opdracht regel van een Linux-of Windows 10-cl
 
 Gebruik een SSH-tunnel opdracht met dit formulier:
 
-ssh-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
+ssh-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username* \@ *controller_public_IP*
 
 Met deze opdracht wordt verbinding gemaakt met het IP-adres van het cluster beheer via het IP-adres van de cluster controller.
 
@@ -51,7 +51,7 @@ Verificatie wordt automatisch uitgevoerd als u uw open bare SSH-sleutel hebt geb
 
 In deze stap maakt gebruik van een webbrowser om verbinding te maken met het configuratie hulpprogramma in het vFXT-cluster.
 
-* Open uw webbrowser voor een SSH-tunnel verbinding en ga naar `https://127.0.0.1:8443`.
+* Open uw webbrowser voor een SSH-tunnel verbinding en ga naar `https://127.0.0.1:8443` .
 
   U hebt verbinding gemaakt met het IP-adres van het cluster tijdens het maken van de tunnel. u hoeft alleen het localhost IP-adres te gebruiken in de browser. Als u een andere lokale poort dan 8443 gebruikt, gebruikt u in plaats daarvan het poort nummer.
 
@@ -59,7 +59,7 @@ In deze stap maakt gebruik van een webbrowser om verbinding te maken met het con
 
 Afhankelijk van uw browser moet u mogelijk op **Geavanceerd** klikken en controleren of het veilig is om door te gaan naar de pagina.
 
-Voer de gebruikers `admin` naam en het beheerders wachtwoord in die u hebt opgegeven bij het maken van het cluster.
+Voer de gebruikers naam `admin` en het beheerders wachtwoord in die u hebt opgegeven bij het maken van het cluster.
 
 ![Scherm afbeelding van de avere-aanmeldings pagina ingevuld met de gebruikers naam admin en een wacht woord](media/avere-vfxt-gui-login.png)
 

@@ -1,25 +1,14 @@
 ---
 title: Aangepaste afbeeldingen en formules vergelijken in DevTest Labs | Microsoft Docs
 description: Meer informatie over de verschillen tussen aangepaste installatie kopieën en formules als VM-basis, zodat u kunt bepalen welke methode het beste past bij uw omgeving.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: a3cb259a-7d80-40ec-8ee8-45105704d589
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
-ms.author: spelluru
-ms.openlocfilehash: ae7556eda817b9eb7be84f9d4a23ea91d3d5440d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: dac820d0600745906e4b1aeef95806ed5679488a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896324"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484023"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Aangepaste afbeeldingen en formules in DevTest Labs vergelijken
 Zowel [aangepaste installatie kopieën](devtest-lab-create-template.md) als [formules](devtest-lab-manage-formulas.md) kunnen worden gebruikt als basis voor het [maken van nieuwe vm's](devtest-lab-add-vm.md). Het belangrijkste onderscheid tussen aangepaste afbeeldingen en formules is echter dat een aangepaste installatie kopie een afbeelding is op basis van een VHD, terwijl een formule een afbeelding is op basis van een VHD *naast* vooraf geconfigureerde instellingen, zoals de VM-grootte, het virtuele netwerk, het subnet en de artefacten. Deze vooraf geconfigureerde instellingen worden ingesteld met standaard waarden die kunnen worden overschreven op het moment dat de VM wordt gemaakt. In dit artikel worden enkele voor delen (voor-en nadelen) beschreven voor het gebruik van aangepaste installatie kopieën en het gebruik van formules.

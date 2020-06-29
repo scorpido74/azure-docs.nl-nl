@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60397274"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504300"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Gegevensoverdracht voor kleine gegevenssets met weinig tot gemiddelde netwerkbandbreedte
  
@@ -54,10 +54,10 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 | Beschikbaarheid | Downloaden en installeren <br>Zelfstandig hulp programma | Webgebaseerde hulpprogram ma's voor onderzoek in Azure Portal | Opdracht regel programma |Programmeer bare interfaces in .NET, Java, Python, java script, C++, go, Ruby en PHP |
 | Grafische interface | Ja | Ja | Nee | Nee |
 | Ondersteunde platforms | Windows, Mac, Linux | Op internet gebaseerde |Windows, Mac, Linux |Alle platforms |
-| Toegestane bewerkingen voor Blob-opslag<br>voor blobs en mappen | Uploaden<br>Download<br>Beheren | Uploaden<br>Download<br>Beheren |Uploaden<br>Download<br>Beheren | Ja, aanpasbaar |
-| Data Lake gen1-opslag toegestaan<br>bewerkingen voor bestanden en mappen | Uploaden<br>Download<br>Beheren | Nee |Uploaden<br>Download<br>Beheren                   | Nee |
-| Toegestane bewerkingen voor bestands opslag<br>voor bestanden en mappen | Uploaden<br>Download<br>Beheren | Uploaden<br>Download<br>Beheren   |Uploaden<br>Download<br>Beheren | Ja, aanpasbaar |
-| Toegestane bewerkingen voor tabel opslag<br>voor tabellen |Beheren | Nee |Tabel ondersteuning in AzCopy V7 |Ja, aanpasbaar|
+| Toegestane bewerkingen voor Blob-opslag<br>voor blobs en mappen | Uploaden<br>Downloaden<br>Beheren | Uploaden<br>Downloaden<br>Beheren |Uploaden<br>Downloaden<br>Beheren | Ja, aanpasbaar |
+| Data Lake gen1-opslag toegestaan<br>bewerkingen voor bestanden en mappen | Uploaden<br>Downloaden<br>Beheren | No |Uploaden<br>Downloaden<br>Beheren                   | No |
+| Toegestane bewerkingen voor bestands opslag<br>voor bestanden en mappen | Uploaden<br>Downloaden<br>Beheren | Uploaden<br>Downloaden<br>Beheren   |Uploaden<br>Downloaden<br>Beheren | Ja, aanpasbaar |
+| Toegestane bewerkingen voor tabel opslag<br>voor tabellen |Beheren | No |Tabel ondersteuning in AzCopy V7 |Ja, aanpasbaar|
 | Toegestane wachtrij opslag | Beheren | Nee  |Nee | Ja, is aanpasbaar|
 
 

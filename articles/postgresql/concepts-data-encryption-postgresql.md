@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e4811b1b892fb04400b5a96450db14a260532003
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3eb429c4981cbc548c7d68c788008b841ff5d33e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488831"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484074"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -143,6 +143,15 @@ Voor Azure Database for PostgreSQL heeft de ondersteuning voor het versleutelen 
     > - Als u wilt valideren of uw ingerichte server Maxi maal 16TB ondersteunt, gaat u naar de Blade prijs categorie in de portal en ziet u de maximale opslag grootte die wordt ondersteund door uw ingerichte server. Als u de schuif regelaar omhoog kunt verplaatsen naar 4 TB, ondersteunt uw server mogelijk geen versleuteling met door de klant beheerde sleutels. De gegevens worden echter te allen tijde versleuteld met behulp van service beheerde sleutels. Neem contact op met AskAzureDBforPostgreSQL@service.microsoft.com Als u vragen hebt.
 
 * Versleuteling wordt alleen ondersteund met de cryptografische sleutel RSA 2048.
+
+## <a name="infrastructure-double-encryption"></a>Infra structuur dubbele versleuteling
+Azure Database for PostgreSQL maakt gebruik van opslag [versleuteling van gegevens op rest](concepts-security.md#at-rest) voor gegevens met behulp van de door micro soft beheerde sleutels. Gegevens, met inbegrip van back-ups, worden versleuteld op schijf en deze versleuteling is altijd ingeschakeld en kan niet worden uitgeschakeld. De versleuteling maakt gebruik van FIPS 140-2-gevalideerde cryptografische modules en een AES 256-bits code ring voor de versleuteling van Azure Storage. 
+
+Infra structuur met dubbele versleuteling wordt een tweede laag versleuteling toegevoegd met behulp van een door FIPS 140-2 gevalideerde cryptografische module en een ander versleutelings algoritme dat extra beveiligingslaag biedt voor uw gegevens in rust. De sleutel die in de infra structuur met dubbele versleuteling wordt gebruikt, wordt ook beheerd door de service. Dit is standaard niet *ingeschakeld* omdat deze invloed heeft op de prestaties vanwege de extra laag versleuteling. 
+
+   > [!NOTE]
+   > - Deze functionaliteit is nog steeds niet algemeen beschikbaar. 
+   > - Ondersteuning voor deze functionaliteit is beperkt tot de prijs categorie **Algemeen** en **geoptimaliseerd voor geheugen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

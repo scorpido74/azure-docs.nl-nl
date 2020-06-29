@@ -3,15 +3,15 @@ title: Het avere vFXT-cluster beheren-Azure
 description: 'AVERE-cluster beheren: knoop punten toevoegen of verwijderen, het vFXT-cluster opnieuw opstarten, stoppen of vernietigen'
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153476"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505491"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Het Avere vFXT-cluster beheren
 
@@ -77,7 +77,7 @@ Wanneer een cluster wordt afgesloten, worden status berichten naar het tabblad *
 
 vfxt.py is een opdracht regel programma voor het maken en beheren van clusters.
 
-vfxt.py is vooraf geïnstalleerd op de cluster controller-VM. Als u het op een ander systeem wilt installeren, raadpleegt u de documentatie <https://github.com/Azure/AvereSDK>op.
+vfxt.py is vooraf geïnstalleerd op de cluster controller-VM. Als u het op een ander systeem wilt installeren, raadpleegt u de documentatie op <https://github.com/Azure/AvereSDK> .
 
 Het vfxt.py-script kan worden gebruikt voor deze cluster beheer taken:
 
@@ -141,7 +141,7 @@ Omdat het cluster is gestopt, moet u exemplaar-id's door geven om de cluster kno
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-U kunt ``--quick-destroy`` de optie gebruiken als u geen gewijzigde gegevens van de cluster cache wilt opslaan.
+``--quick-destroy``U kunt de optie gebruiken als u geen gewijzigde gegevens van de cluster cache wilt opslaan.
 
 Lees de [hand leiding voor vfxt.py-gebruik](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) voor aanvullende informatie.
 

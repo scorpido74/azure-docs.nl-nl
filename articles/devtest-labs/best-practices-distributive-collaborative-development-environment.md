@@ -1,24 +1,14 @@
 ---
 title: Gedistribueerde samenwerkings ontwikkeling van Azure DevTest Labs resources
 description: Voorziet in Aanbevolen procedures voor het instellen van een gedistribueerde en samenwerkings omgeving voor het ontwikkelen van DevTest Labs-resources.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: 9469591b1945adaffca973828d619d5d06655262
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898729"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483802"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Aanbevolen procedures voor gedistribueerde en samen werkende ontwikkeling van Azure DevTest Labs bronnen
 Dankzij gedistribueerde samenwerkings ontwikkeling kunnen verschillende teams of mensen een code basis ontwikkelen en onderhouden. Om te slagen, is het ontwikkel proces afhankelijk van de mogelijkheid om informatie te maken, te delen en te integreren. Deze methode voor het ontwikkelen van sleutels kan worden gebruikt in Azure DevTest Labs. Er zijn verschillende soorten resources binnen een lab die vaak tussen verschillende Labs binnen een onderneming worden gedistribueerd. De verschillende typen resources zijn gericht op twee gebieden:

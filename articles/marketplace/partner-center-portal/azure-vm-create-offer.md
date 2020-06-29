@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d32e4100d00a4ecff9f8bd5017d8bc5ab74105e
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 38228e7080cb0bdead2f2b3490729702d923ae36
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752421"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504896"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt
 
 Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>De voor delen van publiceren naar Azure Marketplace
 
@@ -175,7 +175,7 @@ Op de **aanbiedings** pagina kunt u de details van het voor stel opgeven, zoals 
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt aangevuld met de naam die u hebt ingevoerd in het vak **aanbiedings alias** tijdens het maken van de aanbieding. U kunt deze naam later wijzigen. De naam:
 
@@ -221,7 +221,7 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Name
+- Naam
 - E-mail
 - Telefoon
 
@@ -229,7 +229,7 @@ Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wan
 
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Name
+- Naam
 - E-mail
 - Telefoon
 
@@ -400,10 +400,14 @@ U kunt elk plan ontwerpen dat zichtbaar is voor iedereen of alleen voor een voor
 
 **Persoonlijke doel groep**: Maak uw plan alleen zichtbaar voor een voorgeselecteerde doel groep. Nadat het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of wijzigen in openbaar. Nadat u een plan openbaar hebt gemaakt, moet het openbaar blijven. Het kan niet worden teruggezet naar een privé-abonnement.
 
-**Beperkte doel groep (Azure-abonnement-id's)**: wijs de doel groep toe die toegang heeft tot dit privé schema met behulp van Azure-abonnement-id's. Voeg eventueel een beschrijving toe van elk Azure-abonnements-ID dat u hebt toegewezen. U kunt Maxi maal 10 abonnements-Id's hand matig of Maxi maal 20.000 Id's toevoegen als u een CSV-werk blad importeert. Azure-abonnements-Id's worden weer gegeven als GUID'S en alle letters moeten kleine letters zijn.
-
 > [!NOTE]
 > Een persoonlijke of beperkte doel groep wijkt af van de preview-doel groep die u hebt gedefinieerd in het **voorbeeld** venster. Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze live naar Azure Marketplace wordt gepubliceerd. Hoewel de keuze van de privé doelgroep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle persoonlijke en open bare plannen voor validatie doeleinden bekijken.
+
+**Beperkte doel groep (Azure-abonnement-id's)**: wijs de doel groep toe die toegang heeft tot dit privé schema met behulp van Azure-abonnement-id's. Voeg eventueel een beschrijving toe van elk Azure-abonnements-ID dat u hebt toegewezen. U kunt Maxi maal 10 abonnements-Id's hand matig of Maxi maal 20.000 Id's toevoegen als u een CSV-werk blad importeert. Azure-abonnements-Id's worden weer gegeven als GUID'S en alle letters moeten kleine letters zijn.
+
+>[!Note]
+>Persoonlijke aanbiedingen worden niet ondersteund met Azure-abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider-programma (CSP).
+
 
 #### <a name="hide-a-plan"></a>Een abonnement verbergen
 

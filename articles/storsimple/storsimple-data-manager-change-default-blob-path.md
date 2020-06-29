@@ -3,15 +3,15 @@ title: Het BLOB-pad wijzigen van de standaard instelling
 description: Meer informatie over het instellen van een Azure-functie voor het wijzigen van de naam van een pad naar een blob-bestand
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270630"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504828"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Een pad naar een BLOB wijzigen vanuit het standaardpad
 
@@ -31,7 +31,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
     ![Typ ' functie-app ' in het zoekvak](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. Klik op **maken**.
+3. Klik op **Create**.
 
     ![De knop ' maken ' van het functie-app venster](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
         ![Nieuwe functie-app configuratie gegevens invoeren](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. Klik op **maken**. De functie-app is gemaakt.
+    7. Klik op **Create**. De functie-app is gemaakt.
      
         ![functie-app gemaakt](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,7 +64,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
         ![Een nieuwe C#-functie maken](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Klik op **maken**. De **functie** wordt gemaakt.
+    4. Klik op **Create**. De **functie** wordt gemaakt.
 
      
 10. Voer in het functie venster het bestand _. CSX_ uit.
@@ -193,7 +193,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
         
         ![De koppeling bestanden weer geven](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Typ **project. json**en druk op **Enter**. Plak de volgende code in het bestand **project. json** :
+    3. Typ **project.jsop**en druk op **Enter**. Plak de volgende code in de **project.jsin** het bestand:
 
         ```
         {

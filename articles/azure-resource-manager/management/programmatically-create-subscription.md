@@ -3,15 +3,15 @@ title: Programmatisch Azure-abonnementen maken
 description: Meer informatie over het programmatisch maken van extra Azure-abonnementen.
 author: amberbhargava
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 06/26/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 33f1d154f438b917b79cd299e81c9078e2f2e81d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f477def85db2d3def30f732dd5a7f8af49eda4b3
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460395"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483751"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmatisch Azure-abonnementen maken (preview)
 
@@ -73,7 +73,7 @@ De API-respons geeft een lijst van alle inschrijvings accounts waartoe u toegang
 }
 ```
 
-Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `name` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het inschrijvings account SignUpEngineering@contoso.com , kopieert ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```u dit. Deze id is de object-ID van het inschrijvings account. Plak deze waarde ergens anders zodat u deze in de volgende stap kunt gebruiken als `enrollmentAccountObjectId`.
+Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `name` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het SignUpEngineering@contoso.com inschrijvings account, kopieert u dit ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Deze id is de object-ID van het inschrijvings account. Plak deze waarde ergens anders zodat u deze in de volgende stap kunt gebruiken als `enrollmentAccountObjectId` .
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ ObjectId                               | PrincipalName
 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
-Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het inschrijvings account SignUpEngineering@contoso.com , kopieert ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```u dit. Plak deze object-ID ergens anders zodat u deze in de volgende stap als de `enrollmentAccountObjectId`kunt gebruiken.
+Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het SignUpEngineering@contoso.com inschrijvings account, kopieert u dit ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Plak deze object-ID ergens anders zodat u deze in de volgende stap als de kunt gebruiken `enrollmentAccountObjectId` .
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -121,7 +121,7 @@ Azure reageert met een lijst met inschrijvings accounts waartoe u toegang hebt:
 ]
 ```
 
-Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `name` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het inschrijvings account SignUpEngineering@contoso.com , kopieert ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```u dit. Deze id is de object-ID van het inschrijvings account. Plak deze waarde ergens anders zodat u deze in de volgende stap kunt gebruiken als `enrollmentAccountObjectId`.
+Gebruik de `principalName` eigenschap om het account te identificeren waarnaar u wilt dat abonnementen worden gefactureerd. Kopieer de `name` van dat account. Als u bijvoorbeeld abonnementen wilt maken onder het SignUpEngineering@contoso.com inschrijvings account, kopieert u dit ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Deze id is de object-ID van het inschrijvings account. Plak deze waarde ergens anders zodat u deze in de volgende stap kunt gebruiken als `enrollmentAccountObjectId` .
 
 ---
 
@@ -156,13 +156,13 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
 | `owners`      | Nee       | Tekenreeks | De object-ID van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
 
-In het antwoord krijgt u een `subscriptionOperation` object terug voor bewaking. Wanneer het maken van het abonnement is voltooid `subscriptionOperation` , retourneert het object `subscriptionLink` een object met de abonnements-id.
+In het antwoord krijgt u een object terug `subscriptionOperation` voor bewaking. Wanneer het maken van het abonnement is voltooid, `subscriptionOperation` retourneert het object een `subscriptionLink` object met de abonnements-id.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Installeer eerst deze preview-module door uit `Install-Module Az.Subscription -AllowPrerelease`te voeren. Om ervoor te `-AllowPrerelease` zorgen dat u werkt, installeert u een recente versie van PowerShellGet van de [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget).
+Installeer eerst deze preview-module door uit te voeren `Install-Module Az.Subscription -AllowPrerelease` . Om ervoor te zorgen dat u `-AllowPrerelease` werkt, installeert u een recente versie van PowerShellGet van de [PowerShellGet-module ophalen](/powershell/scripting/gallery/installing-psget).
 
-Voer de opdracht [New-AzSubscription](/powershell/module/az.subscription) hieronder uit, `<enrollmentAccountObjectId>` waarbij u `ObjectId` vervangt door de verzamelde in```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```de eerste stap (). Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
+Voer de opdracht [New-AzSubscription](/powershell/module/az.subscription) hieronder uit, waarbij u vervangt `<enrollmentAccountObjectId>` door de `ObjectId` verzamelde in de eerste stap ( ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurepowershell-interactive
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
@@ -172,18 +172,18 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Nee      | Tekenreeks | De weergave naam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, zoals "Microsoft Azure Enterprise".                                 |
 | `OfferType`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
-| `EnrollmentAccountObjectId`      | Ja       | Tekenreeks | De object-ID van het inschrijvings account dat voor het abonnement wordt gemaakt en wordt gefactureerd. Deze waarde is een GUID die u krijgt van `Get-AzEnrollmentAccount`. |
+| `EnrollmentAccountObjectId`      | Ja       | Tekenreeks | De object-ID van het inschrijvings account dat voor het abonnement wordt gemaakt en wordt gefactureerd. Deze waarde is een GUID die u krijgt van `Get-AzEnrollmentAccount` . |
 | `OwnerObjectId`      | Nee       | Tekenreeks | De object-ID van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
-| `OwnerSignInName`    | Nee       | Tekenreeks | Het e-mail adres van elke gebruiker die u wilt toevoegen als een RBAC-eigenaar van het abonnement wanneer het wordt gemaakt. U kunt deze para meter gebruiken in `OwnerObjectId`plaats van.|
-| `OwnerApplicationId` | Nee       | Tekenreeks | De toepassings-ID van elke service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze para meter gebruiken in `OwnerObjectId`plaats van. Wanneer u deze para meter gebruikt, moet de Service-Principal [Lees toegang hebben tot de map](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+| `OwnerSignInName`    | Nee       | Tekenreeks | Het e-mail adres van elke gebruiker die u wilt toevoegen als een RBAC-eigenaar van het abonnement wanneer het wordt gemaakt. U kunt deze para meter gebruiken in plaats van `OwnerObjectId` .|
+| `OwnerApplicationId` | Nee       | Tekenreeks | De toepassings-ID van elke service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze para meter gebruiken in plaats van `OwnerObjectId` . Wanneer u deze para meter gebruikt, moet de Service-Principal [Lees toegang hebben tot de map](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Zie [New-AzSubscription](/powershell/module/az.subscription)voor een volledige lijst met alle para meters.
 
 ### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Installeer eerst deze preview-extensie door uit `az extension add --name subscription`te voeren.
+Installeer eerst deze preview-extensie door uit te voeren `az extension add --name subscription` .
 
-Voer de opdracht [AZ account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) hieronder uit, `<enrollmentAccountObjectId>` waarbij u `name` vervangt door de kopie die u in```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```de eerste stap () hebt gekopieerd. Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
+Voer de opdracht [AZ account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) hieronder uit, waarbij `<enrollmentAccountObjectId>` u vervangt door de kopie die `name` u in de eerste stap () hebt gekopieerd ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` . Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -193,10 +193,10 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Nee      | Tekenreeks | De weergave naam van het abonnement. Als deze niet is opgegeven, wordt deze ingesteld op de naam van de aanbieding, zoals "Microsoft Azure Enterprise".                                 |
 | `offer-type`   | Ja      | Tekenreeks | De aanbieding van het abonnement. De twee opties voor EA zijn [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (productie gebruik) en [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) moeten worden [ingeschakeld met behulp van de EA-Portal](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
-| `enrollment-account-object-id`      | Ja       | Tekenreeks | De object-ID van het inschrijvings account dat voor het abonnement wordt gemaakt en wordt gefactureerd. Deze waarde is een GUID die u krijgt van `az billing enrollment-account list`. |
+| `enrollment-account-object-id`      | Ja       | Tekenreeks | De object-ID van het inschrijvings account dat voor het abonnement wordt gemaakt en wordt gefactureerd. Deze waarde is een GUID die u krijgt van `az billing enrollment-account list` . |
 | `owner-object-id`      | Nee       | Tekenreeks | De object-ID van een gebruiker die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt.  |
-| `owner-upn`    | Nee       | Tekenreeks | Het e-mail adres van elke gebruiker die u wilt toevoegen als een RBAC-eigenaar van het abonnement wanneer het wordt gemaakt. U kunt deze para meter gebruiken in `owner-object-id`plaats van.|
-| `owner-spn` | Nee       | Tekenreeks | De toepassings-ID van elke service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze para meter gebruiken in `owner-object-id`plaats van. Wanneer u deze para meter gebruikt, moet de Service-Principal [Lees toegang hebben tot de map](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+| `owner-upn`    | Nee       | Tekenreeks | Het e-mail adres van elke gebruiker die u wilt toevoegen als een RBAC-eigenaar van het abonnement wanneer het wordt gemaakt. U kunt deze para meter gebruiken in plaats van `owner-object-id` .|
+| `owner-spn` | Nee       | Tekenreeks | De toepassings-ID van elke service-principal die u wilt toevoegen als een RBAC-eigenaar voor het abonnement wanneer deze wordt gemaakt. U kunt deze para meter gebruiken in plaats van `owner-object-id` . Wanneer u deze para meter gebruikt, moet de Service-Principal [Lees toegang hebben tot de map](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Zie [AZ account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)voor een volledige lijst met alle para meters.
 
@@ -205,7 +205,7 @@ Zie [AZ account create](/cli/azure/ext/subscription/account?view=azure-cli-lates
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Beperkingen van de API voor het maken van Azure Enter prise-abonnementen
 
 - Alleen Azure Enter prise-abonnementen kunnen worden gemaakt met deze API.
-- Er is een limiet van 500 abonnementen per inschrijvings account. Daarna kunnen meer abonnementen voor het account alleen worden gemaakt in de Azure Portal. Als u meer abonnementen via de API wilt maken, maakt u een nieuw inschrijvings account.
+- Er is een limiet van 2000 abonnementen per inschrijvings account. Daarna kunnen meer abonnementen voor het account alleen worden gemaakt in de Azure Portal. Als u meer abonnementen via de API wilt maken, maakt u een nieuw inschrijvings account.
 - Gebruikers die geen eigenaar zijn van accounts, maar die zijn toegevoegd aan een inschrijvings account via RBAC, kunnen geen abonnementen maken in de Azure Portal.
 - U kunt de Tenant niet selecteren voor het abonnement dat u wilt maken in. Het abonnement wordt altijd gemaakt in de thuis Tenant van de eigenaar van het account. Zie de Tenant van een [abonnement wijzigen](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)als u het abonnement wilt verplaatsen naar een andere Tenant.
 
@@ -262,7 +262,7 @@ De API-respons bevat een lijst met de facturerings accounts waartoe u toegang he
 }
 
 ```
-Gebruik de `displayName` eigenschap om het facturerings account te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat de agreeementType van het account *MicrosoftCustomerAgreement*is. Kopieer de `name` account.  Als u bijvoorbeeld een abonnement voor het facturerings account wilt maken `Contoso` , kopieert `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`u dit. Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
+Gebruik de `displayName` eigenschap om het facturerings account te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat de agreeementType van het account *MicrosoftCustomerAgreement*is. Kopieer de `name` account.  Als u bijvoorbeeld een abonnement voor het `Contoso` facturerings account wilt maken, kopieert u dit `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` . Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
 
 ### <a name="find-invoice-sections-to-create-subscriptions"></a>Factuur secties zoeken om abonnementen te maken
 
@@ -310,13 +310,13 @@ In de API-respons worden alle gedeelten van de factuur en de facturerings profie
 
 ```
 
-Gebruik de `invoiceSectionDisplayName` eigenschap om de factuur sectie te identificeren waarvoor u abonnementen wilt maken. Kopieer de `invoiceSectionId` `billingProfileId` en een van de `skuId` voor de factuur sectie. Als u bijvoorbeeld een abonnement van het gedeelte `Microsoft Azure plan` type voor `Development` factuur wilt maken, kopieert `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX` `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` u, en. `0001` Plak deze waarden ergens anders, zodat u ze in de volgende stap kunt gebruiken.
+Gebruik de `invoiceSectionDisplayName` eigenschap om de factuur sectie te identificeren waarvoor u abonnementen wilt maken. Kopieer de `invoiceSectionId` en `billingProfileId` een van de `skuId` voor de factuur sectie. Als u bijvoorbeeld een abonnement van het `Microsoft Azure plan` gedeelte type voor factuur wilt maken `Development` , kopieert u, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX` `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` en `0001` . Plak deze waarden ergens anders, zodat u ze in de volgende stap kunt gebruiken.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Een abonnement voor een factuur sectie maken
 
 In het volgende voor beeld wordt een abonnement met de naam *dev team* van het type *Microsoft Azure plan* gemaakt voor de sectie *Development* invoice. Het abonnement wordt gefactureerd aan het facturerings profiel *van de contoso Finance* en wordt weer gegeven in de sectie *ontwikkeling* van de factuur.
 
-Voer de volgende aanvraag uit en `<invoiceSectionId>` Vervang deze `invoiceSectionId` door de gekopieerde uit de```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```tweede stap (). U moet de `billingProfileId` en `skuId` gekopieerde uit de tweede stap door geven in de aanvraag parameters van de API. Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
+Voer de volgende aanvraag uit en vervang deze door `<invoiceSectionId>` de `invoiceSectionId` gekopieerde uit de tweede stap ( ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX``` ). U moet de `billingProfileId` en `skuId` gekopieerde uit de tweede stap door geven in de aanvraag parameters van de API. Als u eigen aars wilt opgeven, leert u [hoe u gebruikers object-id's kunt ophalen](grant-access-to-create-subscription.md#userObjectId).
 
 ```json
 POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
@@ -349,7 +349,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 | `costCenter` | Nee      | Tekenreeks | Het kosten centrum dat aan het abonnement is gekoppeld. Het wordt weer gegeven in het CSV-bestand voor gebruik. |
 | `managementGroupId` | Nee      | Tekenreeks | De ID van de beheer groep waaraan het abonnement wordt toegevoegd. Zie [beheergroepen-List API](/rest/api/resources/managementgroups/list)als u de lijst met beheer groepen wilt ophalen. Gebruik de ID van een beheer groep van de API. |
 
-In het antwoord krijgt u een `subscriptionCreationResult` object terug voor bewaking. Wanneer het maken van het abonnement is voltooid `subscriptionCreationResult` , retourneert het object `subscriptionLink` een object met de abonnements-id.
+In het antwoord krijgt u een object terug `subscriptionCreationResult` voor bewaking. Wanneer het maken van het abonnement is voltooid, `subscriptionCreationResult` retourneert het object een `subscriptionLink` object met de abonnements-id.
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>Abonnementen maken voor een MPA-facturerings account
 
@@ -403,11 +403,11 @@ De API-antwoord lijst met de facturerings accounts.
 }
 
 ```
-Gebruik de `displayName` eigenschap om het facturerings account te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat de agreeementType van het account *MicrosoftPartnerAgreement*is. Kopieer de `name` voor het account. Als u bijvoorbeeld een abonnement voor het facturerings account wilt maken `Contoso` , kopieert `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`u dit. Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
+Gebruik de `displayName` eigenschap om het facturerings account te identificeren waarvoor u abonnementen wilt maken. Zorg ervoor dat de agreeementType van het account *MicrosoftPartnerAgreement*is. Kopieer de `name` voor het account. Als u bijvoorbeeld een abonnement voor het `Contoso` facturerings account wilt maken, kopieert u dit `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx` . Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
 
 ### <a name="find-customers-that-have-azure-plans"></a>Klanten zoeken die Azure-abonnementen hebben
 
-Maak de volgende aanvraag, vervangen `<billingAccountName>` door de `name` kopie van de eerste stap (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) om alle klanten in het facturerings account weer te geven voor wie u Azure-abonnementen kunt maken.
+Maak de volgende aanvraag, vervangen `<billingAccountName>` door de `name` kopie van de eerste stap ( ```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx``` ) om alle klanten in het facturerings account weer te geven voor wie u Azure-abonnementen kunt maken.
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/customers?api-version=2019-10-01-preview
@@ -441,13 +441,13 @@ De API-reactie vermeldt de klanten in het facturerings account met Azure-abonnem
 
 ```
 
-Gebruik de `displayName` eigenschap om de klant te identificeren waarvoor u abonnementen wilt maken. Kopieer de `id` voor de klant. Als u bijvoorbeeld een abonnement voor `Fabrikam toys`wilt maken, kopieert `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`u dit. Plak deze waarde ergens in de volgende stappen om deze te gebruiken.
+Gebruik de `displayName` eigenschap om de klant te identificeren waarvoor u abonnementen wilt maken. Kopieer de `id` voor de klant. Als u bijvoorbeeld een abonnement voor wilt maken `Fabrikam toys` , kopieert u dit `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Plak deze waarde ergens in de volgende stappen om deze te gebruiken.
 
 ### <a name="optional-for-indirect-providers-get-the-resellers-for-a-customer"></a>Optioneel voor indirecte providers: de wederverkopers voor een klant ophalen
 
 Als u een indirecte provider bent in het CSP-model met twee lagen, kunt u een wederverkoper opgeven tijdens het maken van abonnementen voor klanten.
 
-Maak de volgende aanvraag, vervangen `<customerId>` door de `id` kopie van de tweede stap (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) om alle wederverkopers weer te geven die beschikbaar zijn voor een klant.
+Maak de volgende aanvraag, vervangen `<customerId>` door de `id` kopie van de tweede stap ( ```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ) om alle wederverkopers weer te geven die beschikbaar zijn voor een klant.
 
 ```json
 GET https://management.azure.com<customerId>?$expand=resellers&api-version=2019-10-01-preview
@@ -486,13 +486,13 @@ In het API-antwoord worden de wederverkopers voor de klant vermeld:
 }]
 }
 ```
-Gebruik de `description` eigenschap om de wederverkoper te identificeren die wordt gekoppeld aan het abonnement. Kopieer het `resellerId` voor de reseller. Als u bijvoorbeeld wilt koppelen `Wingtip`, kopieert `3xxxxx`u deze. Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
+Gebruik de `description` eigenschap om de wederverkoper te identificeren die wordt gekoppeld aan het abonnement. Kopieer het `resellerId` voor de reseller. Als u bijvoorbeeld wilt koppelen `Wingtip` , kopieert u deze `3xxxxx` . Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
 
 ### <a name="create-a-subscription-for-a-customer"></a>Een abonnement voor een klant maken
 
 In het volgende voor beeld wordt een abonnement met de naam *ontwikkel team* voor *fabrikam Toys* gemaakt en wordt *Wingtip* Reseller aan het abonnement gekoppeld. T
 
-Voer de volgende aanvraag uit en `<customerId>` Vervang deze `id` door de gekopieerde uit de```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```tweede stap (). Geef de optionele *resellerId* gekopieerd van de tweede stap in de aanvraag parameters van de API.
+Voer de volgende aanvraag uit en vervang deze door `<customerId>` de `id` gekopieerde uit de tweede stap ( ```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ). Geef de optionele *resellerId* gekopieerd van de tweede stap in de aanvraag parameters van de API.
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
@@ -511,7 +511,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 | `skuId` | Ja      | Tekenreeks | De SKU-ID van het Azure-abonnement. *0001* gebruiken voor abonnementen van het type Microsoft Azure plan |
 | `resellerId`      | Nee       | Tekenreeks | De MPN-ID van de wederverkoper die wordt gekoppeld aan het abonnement.  |
 
-In het antwoord krijgt u een `subscriptionCreationResult` object terug voor bewaking. Wanneer het maken van het abonnement is voltooid `subscriptionCreationResult` , retourneert het object `subscriptionLink` een object met de abonnements-id.
+In het antwoord krijgt u een object terug `subscriptionCreationResult` voor bewaking. Wanneer het maken van het abonnement is voltooid, `subscriptionCreationResult` retourneert het object een `subscriptionLink` object met de abonnements-id.
 
 ## <a name="next-steps"></a>Volgende stappen
 

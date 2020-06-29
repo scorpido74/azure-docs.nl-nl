@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267428"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507633"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple-Apparaatbeheer gebruiken voor het beheren van waarschuwingen voor de virtuele StorSimple-matrix
 
@@ -39,7 +39,7 @@ U kunt kiezen of u per e-mail op de hoogte wilt worden gesteld van de waarschuwi
 > [!NOTE]
 > U kunt Maxi maal 20 e-mail adressen invoeren per virtuele matrix.
 
-Nadat u e-mail meldingen voor een virtuele matrix hebt ingeschakeld, ontvangen leden van de lijst met meldingen een e-mail bericht telkens wanneer een kritieke waarschuwing wordt weer gegeven. De berichten worden verzonden via *storsimple-Alerts\@-mail.windowsazure.com* en de waarschuwings voorwaarde wordt beschreven. Ontvangers kunnen klikken op **Afmelden** om zichzelf te verwijderen uit de lijst met e-mail meldingen.
+Nadat u e-mail meldingen voor een virtuele matrix hebt ingeschakeld, ontvangen leden van de lijst met meldingen een e-mail bericht telkens wanneer een kritieke waarschuwing wordt weer gegeven. De berichten worden verzonden via *storsimple-Alerts- \@ mail.windowsazure.com* en de waarschuwings voorwaarde wordt beschreven. Ontvangers kunnen klikken op **Afmelden** om zichzelf te verwijderen uit de lijst met e-mail meldingen.
 
 #### <a name="to-enable-email-notification-for-alerts"></a>E-mail meldingen inschakelen voor waarschuwingen
 
@@ -53,7 +53,7 @@ Nadat u e-mail meldingen voor een virtuele matrix hebt ingeschakeld, ontvangen l
    
    1. Selecteer in het veld **e-mail melding inschakelen** de optie **Ja**.
    2. Selecteer in het veld **e-mail Service Administrators** de optie **Ja** als u wilt dat de service beheerder en alle mede beheerders de waarschuwings meldingen ontvangen.
-   3. Voer in het veld **extra e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer de namen in de *indeling\@iemand somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per virtueel apparaat configureren.
+   3. Voer in het veld **extra e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer de namen in de indeling *iemand \@ somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per virtueel apparaat configureren.
       
        ![configuratie van waarschuwings meldingen](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. Als u een melding voor een test bericht wilt verzenden, klikt u op **test bericht verzenden**. In de StorSimple-Apparaatbeheer service worden status berichten weer gegeven wanneer de test melding wordt doorgestuurd.
@@ -137,13 +137,13 @@ De volgende tabellen geven een lijst van enkele van de StorSimple-waarschuwingen
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
 | Configuratie van on-premises virtuele apparaten wordt niet ondersteund. |Trage prestaties. |De huidige configuratie kan leiden tot verminderde prestaties. Zorg ervoor dat uw server voldoet aan de minimale configuratie vereisten. Ga voor meer informatie naar [StorSimple Virtual array-vereisten](storsimple-ova-system-requirements.md). |
-| Er is onvoldoende ingerichte schijf ruimte beschikbaar op <*apparaatnaam*\>. |Waarschuwing voor schijf ruimte. |Er is weinig ingerichte schijf ruimte beschikbaar. Om ruimte vrij te maken, kunt u werk belastingen verplaatsen naar een ander volume of gegevens delen of verwijderen. |
+| Er is onvoldoende ingerichte schijf ruimte beschikbaar op <*apparaatnaam* \> . |Waarschuwing voor schijf ruimte. |Er is weinig ingerichte schijf ruimte beschikbaar. Om ruimte vrij te maken, kunt u werk belastingen verplaatsen naar een ander volume of gegevens delen of verwijderen. |
 
 ### <a name="job-failure-alerts"></a>Taak fout meldingen
 
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Kan geen back-up van <apparaatnaam volt ooien. *device name* \> |De back-uptaak is mislukt. |Kan geen back-up maken. Overweeg een van de volgende:<ul><li>De back-upbewerking kan niet worden voltooid vanwege verbindings problemen. Zorg ervoor dat er geen verbindings problemen zijn. Voor meer informatie over het oplossen van verbindings problemen gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor uw virtuele apparaat.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul> Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
+| Kan geen back-up van <*apparaatnaam* \> volt ooien. |De back-uptaak is mislukt. |Kan geen back-up maken. Overweeg een van de volgende:<ul><li>De back-upbewerking kan niet worden voltooid vanwege verbindings problemen. Zorg ervoor dat er geen verbindings problemen zijn. Voor meer informatie over het oplossen van verbindings problemen gaat u naar de [lokale web-UI](storsimple-ova-web-ui-admin.md) voor uw virtuele apparaat.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul> Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
 | De kloon van <*apparaatnaam* \> kan niet worden voltooid. |Fout bij het klonen van de taak. |Kan geen kloon maken. Overweeg een van de volgende:<ul><li>De back-uplijst is mogelijk niet geldig. Vernieuw de lijst om te controleren of deze nog geldig is.</li><li>Connectiviteits problemen kunnen ertoe leiden dat de kloon bewerking niet kan worden voltooid. Zorg ervoor dat er geen verbindings problemen zijn.</li><li>U hebt de beschik bare opslag limiet bereikt. Om ruimte vrij te maken, kunt u overwegen om back-ups te verwijderen die niet meer nodig zijn.</li></ul>Los de problemen op, Wis de waarschuwing en voer de bewerking opnieuw uit. |
 
 ### <a name="networking-alerts"></a>Netwerk waarschuwingen
@@ -157,7 +157,7 @@ De volgende tabellen geven een lijst van enkele van de StorSimple-waarschuwingen
 | Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
 | U ondervindt onverwachte vertragingen bij de gegevens overdracht. |Trage gegevens overdracht. |Beperkings fouten treden op wanneer u de schaalbaarheids doelen van een opslag service overschrijdt. De opslag service doet dit om er zeker van te zijn dat er geen enkele client of Tenant is die de service bij de kosten van anderen kan gebruiken. Ga voor meer informatie over het oplossen van problemen met uw Azure-opslag account naar [Microsoft Azure Storage controleren, vaststellen en problemen oplossen](../storage/common/storage-monitoring-diagnosing-troubleshooting.md). |
-| U hebt onvoldoende lokale reserve ring schijf ruimte op <*apparaatnaam*\>. |Trage reactie tijd. |10% van de totale ingerichte grootte voor de <*apparaatnaam* \> is gereserveerd op het lokale apparaat en u hebt nu weinig ruimte vrij. De werk belasting op <*apparaatnaam* \> genereert een hogere frequentie van verloop of u hebt onlangs een grote hoeveelheid gegevens gemigreerd. Dit kan leiden tot verminderde prestaties. Overweeg een van de volgende acties om dit probleem op te lossen:<ul><li>Verhoog de Cloud bandbreedte naar dit apparaat.</li><li>Werk belastingen beperken of verplaatsen naar een ander volume of een andere share.</li></ul> |
+| U hebt onvoldoende lokale reserve ring schijf ruimte op <*apparaatnaam* \> . |Trage reactie tijd. |10% van de totale ingerichte grootte voor de <*apparaatnaam* \> is gereserveerd op het lokale apparaat en u hebt nu weinig ruimte vrij. De werk belasting op <*apparaatnaam* \> genereert een hogere frequentie van verloop of u hebt onlangs een grote hoeveelheid gegevens gemigreerd. Dit kan leiden tot verminderde prestaties. Overweeg een van de volgende acties om dit probleem op te lossen:<ul><li>Verhoog de Cloud bandbreedte naar dit apparaat.</li><li>Werk belastingen beperken of verplaatsen naar een ander volume of een andere share.</li></ul> |
 
 ### <a name="security-alerts"></a>Beveiligingswaarschuwingen
 

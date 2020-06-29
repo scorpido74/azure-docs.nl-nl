@@ -12,6 +12,12 @@
   items:
     - name: Azure-resource bewaken
       href: learn/quick-monitor-azure-resource.md
+    - name: Activiteitenlogboek naar een werkruimte verzenden
+      items:
+        - name: Azure Portal
+          href: learn/quick-collect-activity-log-portal.md
+        - name: ARM-sjabloon
+          href: learn/quick-collect-activity-log-arm.md
     - name: Virtuele machines bewaken
       items:
         - name: Azure-VM's
@@ -455,7 +461,7 @@
             - name: Webhookacties
               href: platform/alerts-log-webhook.md
             - name: Problemen met logboekwaarschuwingen oplossen
-              href: platform/alert-log-troubleshoot.md
+              href: platform/alerts-troubleshoot-log.md
         - name: Waarschuwingsregels voor activiteitenlogboek
           items:
             - name: Waarschuwingen voor gebeurtenissen van het activiteitenlogboek
@@ -506,6 +512,8 @@
           href: platform/api-alerts.md
         - name: Waarschuwingsproblemen oplossen
           href: platform/alerts-troubleshoot.md
+        - name: Waarschuwingen en regiowijzigingen
+          href: platform/alerts-resource-move.md
         - name: IT Service Management
           items:
             - name: IT Service Management Connector
@@ -555,12 +563,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
+            - name: ASP.NET-console
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: Niet-http-apps/-achtergrond-apps
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET Console
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Java
               items:
                 - name: Web-apps

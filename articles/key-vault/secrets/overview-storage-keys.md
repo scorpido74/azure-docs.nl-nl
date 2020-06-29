@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 1a39a8e4d09da1f9ec8721c2ea89672e7bfc096a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118539"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508500"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Key Vault en de Azure CLI
 
@@ -125,11 +125,11 @@ Nadat de bewerking is uitgevoerd, kopieert u de uitvoer.
 "se=2020-01-01&sp=***"
 ```
 
-Deze uitvoer wordt door gegeven aan de `--template-id` para meter in de volgende stap.
+Deze uitvoer wordt door gegeven aan de `--template-uri` para meter in de volgende stap.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Een definitie van een gedeelde Access-hand tekening genereren
 
-Gebruik de Azure CLI [AZ Storage SAS-definition-opslag](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) opdracht, waarbij de uitvoer van de vorige stap wordt door gegeven aan de `--template-id` para meter om een definitie voor een gedeelde toegangs handtekening te maken.  U kunt de naam van uw keuze opgeven voor de `-n` para meter.
+Gebruik de Azure CLI [AZ Storage SAS-definition-opslag](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) opdracht, waarbij de uitvoer van de vorige stap wordt door gegeven aan de `--template-uri` para meter om een definitie voor een gedeelde toegangs handtekening te maken.  U kunt de naam van uw keuze opgeven voor de `-n` para meter.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

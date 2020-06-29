@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34a02181632c301f443ce48ade0de2013e2ae86c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254883"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508279"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Een EBOD-controller op uw StorSimple-apparaat vervangen
 
@@ -42,7 +42,7 @@ Voordat u de defecte EBOD-controller module in uw StorSimple-apparaat vervangt, 
 
 #### <a name="to-remove-an-ebod-module"></a>Een EBOD-module verwijderen
 1. Open Azure Portal.
-2. Ga naar het apparaat en navigeer naar **instellingen** > **Hardware Health**en controleer of de status van de LED voor de actieve EBOD-controller module groen is en of de LED voor de defecte EBOD-controller module rood is.
+2. Ga naar het apparaat en navigeer naar **instellingen**  >  **Hardware Health**en controleer of de status van de LED voor de actieve EBOD-controller module groen is en of de LED voor de defecte EBOD-controller module rood is.
 3. Zoek de module mislukte EBOD-controller op de achterkant van het apparaat.
 4. Verwijder de kabels die de EBOD-controller module verbindt met de controller voordat u de EBOD-module uit het systeem neemt.
 5. Noteer de exacte SAS-poort van de EBOD-controller module die is verbonden met de controller. U moet het systeem naar deze configuratie herstellen nadat u de EBOD-module hebt vervangen.

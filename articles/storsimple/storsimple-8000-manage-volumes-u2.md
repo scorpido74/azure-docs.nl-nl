@@ -3,15 +3,15 @@ title: StorSimple-volumes beheren (update 3)
 description: Hierin wordt uitgelegd hoe u StorSimple-volumes toevoegt, wijzigt, bewaken en verwijderen, en hoe u deze indien nodig offline kunt brengen.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254766"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508245"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van volumes (update 3 of hoger)
 
@@ -88,7 +88,7 @@ U hebt [een volume gemaakt](storsimple-8000-deployment-walkthrough-u2.md#step-6-
 
 #### <a name="to-add-a-volume"></a>Een volume toevoegen
 
-1. Selecteer en klik op uw apparaat in de lijst in tabelvorm met apparaten op de blade **Apparaten**. Klik op **Volume toevoegen**.
+1. Selecteer en klik op uw apparaat in de lijst in tabelvorm met apparaten op de blade **Apparaten**. Klik op **+ Volume toevoegen**.
 
     ![Een nieuw volume toevoegen](./media/storsimple-8000-manage-volumes-u2/step5createvol1.png)
 
@@ -112,7 +112,7 @@ U hebt [een volume gemaakt](storsimple-8000-deployment-walkthrough-u2.md#step-6-
       
        Als u een lokaal vastgemaakt volume van 8,5 TB (maximaal toegestane grootte) op uw 8100-apparaat inricht, hebt u de lokale ruimte die beschikbaar is op het apparaat volledig gebruikt. Vanaf dat moment kunt u geen gelaagd volume maken, omdat er geen lokale ruimte op het apparaat is voor het hosten van de werkset van het gelaagde volume. Bestaande gelaagde volumes zijn ook van invloed op de beschikbare ruimte. Als u bijvoorbeeld een 8100-apparaat hebt met reeds gelaagde volumes van circa 106 TB, is er nog maar 4 TB ruimte beschikbaar voor lokaal vastgemaakte volumes.
 
-    6. Klik in het veld **Verbonden hosts** op de pijl. Kies op de Blade **verbonden hosts** een bestaand ACR of Voeg een nieuwe ACR toe. Als u een nieuwe ACR kiest, geeft u een **naam** op voor uw ACR. geef de **iSCSI qualified name** (IQN) van uw Windows-host op. Als u het IQN niet hebt, gaat u naar Het IQN van een Windows Server-host ophalen. Klik op **maken**. Er wordt een volume gemaakt met de opgegeven instellingen.
+    6. Klik in het veld **Verbonden hosts** op de pijl. Kies op de Blade **verbonden hosts** een bestaand ACR of Voeg een nieuwe ACR toe. Als u een nieuwe ACR kiest, geeft u een **naam** op voor uw ACR. geef de **iSCSI qualified name** (IQN) van uw Windows-host op. Als u het IQN niet hebt, gaat u naar Het IQN van een Windows Server-host ophalen. Klik op **Create**. Er wordt een volume gemaakt met de opgegeven instellingen.
 
         ![Klik op Maken](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -163,7 +163,7 @@ Wijzig een volume wanneer u het wilt uitbreiden of wijzig de hosts die toegang h
 
 7. Als u een volume uitbreidt, voert u de volgende stappen uit op de Windows-hostcomputer:
    
-   1. Ga naar**schijf beheer**van **computer beheer** ->.
+   1. Ga naar **Computer Management**  -> **schijf beheer**van computer beheer.
    2. Klik met de rechter muisknop op **schijf beheer** en selecteer **schijven opnieuw scannen**.
    3. Selecteer in de lijst met schijven het volume dat u hebt bijgewerkt, klik met de rechter muisknop en selecteer vervolgens **volume uitbreiden**. De wizard Volume uitbreiden wordt gestart. Klik op **Volgende**.
    4. Voltooi de wizard en accepteer de standaard waarden. Nadat de wizard is voltooid, moet het volume de verhoogde grootte weer geven.

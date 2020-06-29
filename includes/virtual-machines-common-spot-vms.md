@@ -4,15 +4,15 @@ description: bestand opnemen
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 76af1084626944d8399edd2c7ec5dec92e25f3ed
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378620"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506039"
 ---
 Met behulp van spot Vm's kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
@@ -21,9 +21,17 @@ De hoeveelheid beschik bare capaciteit kan variëren op basis van grootte, regio
 
 ## <a name="eviction-policy"></a>Verwijderings beleid
 
-Vm's kunnen worden verwijderd op basis van de capaciteit of de maximale prijs die u hebt ingesteld. Voor virtuele machines wordt het verwijderings beleid zo ingesteld dat de *toewijzing* ongedaan wordt gemaakt, waardoor de verwijderde vm's naar de status stopped-disallocated worden verplaatst, zodat u de verwijderde vm's op een later tijdstip opnieuw kunt implementeren. Het opnieuw toewijzen van spot-Vm's is echter afhankelijk van de beschik bare steun capaciteit. De toegewezen Vm's worden geteld voor uw vCPU-quotum en er worden kosten in rekening gebracht voor de onderliggende schijven. 
+Vm's kunnen worden verwijderd op basis van de capaciteit of de maximale prijs die u hebt ingesteld. Bij het maken van een spot-VM kunt u het verwijderings beleid zo instellen dat de *toewijzing wordt opheffen* (standaard) of *verwijderen*. 
 
-Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). Hiermee wordt u op de hoogte gesteld als uw Vm's worden verwijderd en u 30 seconden hebt om taken te volt ooien en afsluit taken uit te voeren vóór de verwijdering. 
+Het beleid voor het ongedaan maken van de *toewijzing* verplaatst de virtuele machine naar de status stopped-deallocated, zodat u deze later opnieuw kunt implementeren. Er is echter geen garantie dat de toewijzing slaagt. De toegewezen Vm's worden geteld bij uw quotum en er worden kosten in rekening gebracht voor de onderliggende schijven. 
+
+Als u wilt dat de virtuele machine wordt verwijderd wanneer deze wordt gewist, kunt u het verwijderings beleid instellen op *verwijderen*. De verwijderde Vm's worden samen met de onderliggende schijven verwijderd, zodat er geen kosten in rekening worden gebracht voor de opslag. 
+
+> [!NOTE]
+>
+> De portal biedt momenteel geen ondersteuning voor `Delete` verwijderings opties. u kunt alleen instellen `Delete` met behulp van Power shell, CLI en sjablonen.
+
+U kunt zich aanmelden om in-VM-meldingen te ontvangen via [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md). Hiermee wordt u op de hoogte gesteld als uw Vm's worden verwijderd en u 30 seconden hebt om taken te volt ooien en afsluit taken uit te voeren vóór de verwijdering. 
 
 
 | Optie | Resultaat |
@@ -36,6 +44,7 @@ Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Sche
 | Nadat de prijs voor de virtuele machine is verwijderd, wordt deze weer < de maximum prijs. | De virtuele machine wordt niet automatisch opnieuw gestart. U kunt de virtuele machine zelf opnieuw opstarten en er worden kosten in rekening gebracht voor de huidige prijs. |
 | Als de maximum prijs is ingesteld op`-1` | De virtuele machine wordt om prijs redenen niet verwijderd. De maximale prijs is de huidige prijs, tot de prijs voor standaard-Vm's. Er worden nooit kosten in rekening gebracht boven de standaard prijs.| 
 | De maximum prijs wijzigen | U moet de toewijzing van de virtuele machine ongedaan maken om de maximale prijs te wijzigen. U kunt de toewijzing van de virtuele machine ongedaan maken, een nieuwe maximum prijs instellen en vervolgens de virtuele machine bijwerken. |
+
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -51,11 +60,11 @@ Sommige abonnements kanalen worden niet ondersteund:
 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
-| Enterprise Agreement         | Ja                               |
-| Betalen naar gebruik                | Ja                               |
+| Enterprise Agreement         | Yes                               |
+| Betalen naar gebruik                | Yes                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Ja                               |
+| Gesponsorde                    | Yes                               |
 | Gratis proefversie                   | Niet beschikbaar                     |
 
 

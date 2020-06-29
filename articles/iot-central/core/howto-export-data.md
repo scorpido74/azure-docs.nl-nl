@@ -4,16 +4,16 @@ description: Gegevens exporteren uit uw Azure IoT Central-toepassing naar Azure 
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: f23a91a278b81c1583d88db2ede265ba2ad2d415
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414216"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483921"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>IoT-gegevens exporteren naar bestemmingen in azure
 
@@ -82,11 +82,9 @@ Nu u een bestemming hebt voor het exporteren van gegevens, voert u de volgende s
     > [!Tip]
     > Als het exporteren van **gegevens** niet in het linkerdeel venster wordt weer gegeven, bent u niet gemachtigd om de gegevens export in uw app te configureren. Neem contact op met een beheerder om het exporteren van gegevens in te stellen.
 
-3. Selecteer de knop **+ Nieuw** in de rechter bovenhoek. Kies een van de **Azure-Event hubs**, **Azure service bus**of **Azure Blob-opslag** als bestemming voor de export. Het maximum aantal uitvoer bewerkingen per toepassing is vijf.
+3. Selecteer de knop **+ Nieuw** . Kies een van de **azure Blob Storage**, **azure Event hubs**, **Azure service bus wachtrij**of het **Azure service bus onderwerp** als bestemming voor de export. Het maximum aantal uitvoer bewerkingen per toepassing is vijf.
 
-    ![Nieuwe gegevens export maken](media/howto-export-data/new-export-definition.png)
-
-4. Selecteer in de vervolg keuzelijst uw **Event hubs naam ruimte**, **Service Bus naam**ruimte, **naam ruimte van het opslag account**of **Voer een Connection String**in.
+4. Voer een naam in voor de export. Selecteer in de vervolg keuzelijst uw **naam ruimte**of **Voer een Connection String**in.
 
     - U ziet alleen opslag accounts, Event Hubs naam ruimten en Service Bus naam ruimten in hetzelfde abonnement als uw IoT Central-toepassing. Als u wilt exporteren naar een bestemming buiten dit abonnement, kiest u **een Connection String invoeren** en gaat u naar stap 6.
     - Voor apps die zijn gemaakt met behulp van het prijs plan gratis, is de enige manier om de gegevens export te configureren via een connection string. Apps voor het gratis prijs plan hebben geen bijbehorend Azure-abonnement.
@@ -108,7 +106,7 @@ Nu u een bestemming hebt voor het exporteren van gegevens, voert u de volgende s
           1. Selecteer onder **instellingen** **toegangs sleutels**
           2. Kopieer de Key1-connection string of de Key2-connection string
 
-    Plak de connection string. Typ de naam van het exemplaar of de container en houd er rekening mee dat dit hoofdletter gevoelig is.
+    Plak de connection string. Typ de naam van het exemplaar of de **container**en houd er rekening mee dat dit hoofdletter gevoelig is.
 
 7. Kies onder te **exporteren gegevens**de typen gegevens die u wilt exporteren door het type in te stellen **op on**.
 
@@ -754,4 +752,4 @@ Voor **apparaatprofielen**zijn de verschillen tussen de oude gegevens indeling e
 Nu u weet hoe u uw gegevens exporteert naar Azure Event Hubs, Azure Service Bus en Azure Blob-opslag, gaat u verder met de volgende stap:
 
 > [!div class="nextstepaction"]
-> [Webhooks maken](./howto-create-webhooks.md)
+> [Aangepaste analyses uitvoeren met Databricks](./howto-create-custom-analytics.md)

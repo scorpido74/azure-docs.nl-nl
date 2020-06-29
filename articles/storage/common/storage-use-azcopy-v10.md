@@ -3,16 +3,16 @@ title: Gegevens kopiëren of verplaatsen naar Azure Storage met behulp van AzCop
 description: AzCopy is een opdracht regel programma dat u kunt gebruiken om gegevens naar, van of tussen opslag accounts te kopiëren. Dit artikel helpt u bij het downloaden van AzCopy, het maken van een verbinding met uw opslag account en het overdragen van bestanden.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2cff9a427cf395414c5b0778f51f4587c8578478
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340923"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504471"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -65,7 +65,7 @@ Gebruik deze tabel als richt lijn:
 
 | Opslagtype | Momenteel ondersteunde autorisatie methode |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
+|**Blob-opslag** | Azure AD & SAS |
 |**Blob-opslag (hiërarchische naam ruimte)** | Azure AD & SAS |
 |**Bestands opslag** | Alleen SAS |
 

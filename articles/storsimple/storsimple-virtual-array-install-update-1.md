@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 41546a449165951cd7b462d1db2b1b58ae74e407
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712272"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508092"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Update 1,0 installeren op de virtuele StorSimple-matrix
 
@@ -30,6 +30,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om update 1,0 te inst
 U past de software-updates of hotfixes toe om uw virtuele StorSimple-matrix up-to-date te houden. Voordat u een update toepast, raden we u aan om eerst de volumes of shares op de host offline te zetten en vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Nadat de volumes of shares offline zijn, moet u ook een hand matige back-up van het apparaat maken.
 
 > [!IMPORTANT]
+>
 > - Update 1,0 komt overeen met de **10.0.10296.0** -software versie op het apparaat. Voor informatie over wat er nieuw is in deze update gaat u naar [release opmerkingen voor update 1,0](storsimple-virtual-array-update-1-release-notes.md).
 >
 > - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Gezien de StorSimple virtuele matrix is een apparaat met één knoop punt, worden alle I/O-bewerkingen onderbroken en wordt de uitval tijd van uw apparaat verstoord.

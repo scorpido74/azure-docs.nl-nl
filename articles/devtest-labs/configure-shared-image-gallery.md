@@ -1,25 +1,14 @@
 ---
 title: Een galerie met gedeelde installatie kopieën configureren in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het configureren van een galerie met gedeelde afbeeldingen in Azure DevTest Labs
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2020
-ms.author: spelluru
-ms.openlocfilehash: 12a7b678130a2c199dd94af540bacffe8d4685f1
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.date: 06/26/2020
+ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125720"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483785"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Een gedeelde galerie met installatiekopieën configureren in Azure DevTest Labs
 DevTest Labs ondersteunt nu de functie [gedeelde installatie kopie galerie](../virtual-machines/windows/shared-image-galleries.md) . Hiermee kunnen Lab-gebruikers toegang krijgen tot installatie kopieën vanaf een gedeelde locatie tijdens het maken van Lab-resources. Het helpt u ook om structuur en organisatie te bouwen rond uw door aangepaste beheerde VM-installatie kopieën. De functie Gedeelde afbeeldingen galerie ondersteunt:

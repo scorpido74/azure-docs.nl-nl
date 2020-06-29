@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: cb35021ad7e4d735a7dd521e39e4fe5fd102ae01
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888359"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506587"
 ---
 ### <a name="general-requirements"></a>Algemene vereisten
 
@@ -38,16 +38,14 @@ Aanvullende vereisten voor VNet verschillen, afhankelijk van of de Batch-pool zi
 
 **Subnet-ID**: bij het opgeven van het subnet met behulp van de Batch-API's moet u de *resource-id* van het subnet gebruiken. De subnet-id heeft de vorm van:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}`
 
 **Machtigingen**: controleer of uw beveiligingsbeleid of de vergrendelingen die voor het VNet-abonnement of de resourcegroep gelden, een gebruikersmachtiging beperkt om het VNet te beheren.
 
 **Aanvullende netwerkresources**: Batch kent automatisch extra netwerkresources toe aan de resourcegroep met het VNet.
 
 > [!IMPORTANT]
->Voor elke knoop punt met 100 toegewezen of lage prioriteit wordt de batch: één netwerk beveiligings groep (NSG), één openbaar IP-adres en één load balancer. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote Pools moet u mogelijk een quotum verhoging aanvragen voor een of meer van deze resources.
+> Voor elke knoop punt met 100 toegewezen of lage prioriteit wordt de batch: één netwerk beveiligings groep (NSG), één openbaar IP-adres en één load balancer. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote Pools moet u mogelijk een quotum verhoging aanvragen voor een of meer van deze resources.
 
 #### <a name="network-security-groups-batch-default"></a>Netwerk beveiligings groepen: batch-standaard
 
@@ -59,11 +57,11 @@ Het subnet moet inkomende communicatie van de batch-service toestaan om taken te
 * Uitgaand verkeer op een wille keurige poort naar Internet. Dit kan worden gewijzigd per NSG-regels op subnetniveau (zie hieronder).
 
 > [!IMPORTANT]
-> Wees voorzichtig als u binnenkomende of uitgaande regels toevoegt of wijzigt in netwerkbeveiligingsgroepen die door Batch zijn geconfigureerd. Als communicatie met de rekenknooppunten in het opgegeven subnet wordt geweigerd door een netwerkbeveiligingsgroep, zet de Batch-service de status van de rekenknooppunten op **Onbruikbaar**. Daarnaast moeten er geen resource vergrendelingen worden toegepast op resources die zijn gemaakt door batch, anders kan dit ertoe leiden dat het opschonen van resources als gevolg van door de gebruiker geïnitieerde acties, zoals het verwijderen van een groep, wordt voor komen.
+> Wees voorzichtig met het wijzigen of toevoegen van binnenkomende of uitgaande regels in batch-geconfigureerde Nsg's. Als communicatie met de compute-knoop punten in het opgegeven subnet wordt geweigerd door een NSG, wordt de status van de reken knooppunten door de batch-service ingesteld op **onbruikbaar**. Daarnaast moeten er geen resource vergrendelingen worden toegepast op resources die zijn gemaakt door batch, omdat dit kan leiden tot het opruimen van resources als gevolg van door de gebruiker geïnitieerde acties, zoals het verwijderen van een groep.
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Netwerk beveiligings groepen: regels op subnetniveau opgeven
 
-Het is niet vereist om Nsg's op het subnet van het virtuele netwerk op te geven, omdat met batch een eigen Nsg's wordt geconfigureerd (zie hierboven). Als er een NSG is gekoppeld aan het subnet waarin batch compute nodes zijn geïmplementeerd of als u aangepaste NSG regels wilt Toep assen om de standaard instellingen te overschrijven, moet u deze NSG configureren met ten minste de regels voor binnenkomende en uitgaande verbindingen, zoals wordt weer gegeven in de volgende tabellen.
+U hoeft geen Nsg's op te geven op het subnet van het virtuele netwerk, omdat met batch een eigen Nsg's wordt geconfigureerd (zie hierboven). Als er een NSG is gekoppeld aan het subnet waarin batch Compute-knoop punten zijn geïmplementeerd, of als u aangepaste NSG-regels wilt Toep assen om de standaard instellingen te overschrijven, moet u deze NSG configureren met ten minste de regels voor binnenkomende en uitgaande verbindingen die in de volgende tabellen worden weer gegeven.
 
 Configureer inkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u externe toegang tot de reken knooppunten van buiten bronnen wilt toestaan. Mogelijk moet u poort 22-regels inschakelen op Linux als u ondersteuning nodig hebt voor taken met meerdere instanties met bepaalde MPI-Runtimes. Het toestaan van verkeer op deze poorten is niet strikt vereist om de groeps berekenings knooppunten bruikbaar te maken.
 
@@ -75,7 +73,7 @@ Configureer inkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u 
 | IP-adressen van gebruikers bronnen voor het op afstand verkrijgen van toegang tot de reken knooppunten en/of het subnet van het reken knooppunt voor Linux-taken voor meerdere exemplaren, indien nodig. | N.v.t. | * | Alle | 3389 (Windows), 22 (Linux) | TCP | Toestaan |
 
 > [!WARNING]
-> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Daarom is het raadzaam om de servicetag `BatchNodeManagement` (of Regional variant) te gebruiken voor NSG-regels. Het is niet raadzaam om NSG regels rechtstreeks met batch service-IP-adressen in te vullen.
+> De IP-adressen van de batch-service kunnen na verloop van tijd worden gewijzigd. Daarom is het raadzaam om de servicetag `BatchNodeManagement` (of Regional variant) te gebruiken voor NSG-regels. Vermijd het vullen van NSG-regels met specifieke batch service-IP-adressen.
 
 **Uitgaande beveiligingsregels**
 
@@ -89,9 +87,7 @@ Configureer inkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u 
 
 **Subnet-ID**: bij het opgeven van het subnet met behulp van de Batch-API's moet u de *resource-id* van het subnet gebruiken. De subnet-id heeft de vorm van:
 
-  ```
-  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}
-  ```
+`/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
 **Machtigingen**: de `Microsoft Azure Batch`-service-principal moet de toegangsbeheerrol `Classic Virtual Machine Contributor` hebben voor het betreffende VNet.
 
@@ -99,9 +95,9 @@ Configureer inkomend verkeer op poort 3389 (Windows) of 22 (Linux) alleen als u 
 
 Het subnet moet toestaan dat met binnenkomende communicatie van de Batch-service taken op de rekenknooppunten kunnen worden gepland, en toestaan dat uitgaande communicatie mogelijk is met Azure Storage of andere resources.
 
-U hoeft geen netwerkbeveiligingsgroep op te geven omdat Batch binnenkomende communicatie alleen configureert van Batch IP-adressen naar de poolknooppunten. Als echter aan het opgegeven subnet netwerkbeveiligingsgroepen en/of een firewall zijn gekoppeld, configureert u de binnenkomende en uitgaande beveiligingsregels zoals wordt weergegeven in de volgende tabellen. Als communicatie met de rekenknooppunten in het opgegeven subnet wordt geweigerd door een netwerkbeveiligingsgroep, zet de Batch-service de status van de rekenknooppunten op **Onbruikbaar**.
+U hoeft geen netwerkbeveiligingsgroep op te geven omdat Batch binnenkomende communicatie alleen configureert van Batch IP-adressen naar de poolknooppunten. Als echter aan het opgegeven subnet netwerkbeveiligingsgroepen en/of een firewall zijn gekoppeld, configureert u de binnenkomende en uitgaande beveiligingsregels zoals wordt weergegeven in de volgende tabellen. Als communicatie met de compute-knoop punten in het opgegeven subnet wordt geweigerd door een NSG, stelt de batch-service de status van de reken knooppunten in op **onbruikbaar**.
 
-Configureer inkomend verkeer op poort 3389 voor Windows als u RDP-toegang tot de groeps knooppunten wilt toestaan. Het is niet vereist dat de poolknooppunten kunnen worden gebruikt.
+Configureer inkomend verkeer op poort 3389 voor Windows als u RDP-toegang tot de groeps knooppunten wilt toestaan. Dit is niet vereist om de groeps knooppunten bruikbaar te maken.
 
 **Inkomende beveiligingsregels**
 

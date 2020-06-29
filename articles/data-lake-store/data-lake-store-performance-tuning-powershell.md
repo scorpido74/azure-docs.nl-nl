@@ -3,15 +3,15 @@ title: Afstemming van Azure Data Lake Storage Gen1 prestaties-Power shell
 description: Tips voor het verbeteren van de prestaties bij het gebruik van Azure PowerShell met Azure Data Lake Storage Gen1.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904565"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504692"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van prestaties voor het gebruik van Power shell met Azure Data Lake Storage Gen1
 
@@ -26,7 +26,7 @@ In dit artikel worden de eigenschappen beschreven die u kunt afstemmen om betere
 | PerFileThreadCount  | 10      | Met deze parameter kunt u het aantal parallelle threads voor het uploaden of downloaden van elk bestand kiezen. Dit nummer vertegenwoordigt het maximum aantal threads dat per bestand kan worden toegewezen, maar u kunt echter wel minder threads ontvangen, afhankelijk van uw scenario (bijvoorbeeld als u een bestand van 1 KB uploadt, krijgt u één thread, zelfs als u voor 20 threads vraagt).  |
 | ConcurrentFileCount | 10      | Deze parameter is specifiek bedoeld voor het uploaden en downloaden van mappen. De parameter bepaalt het aantal bestanden dat tegelijk kan worden geüpload of gedownload. Dit nummer vertegenwoordigt het maximum aantal gelijktijdige bestanden dat tegelijkertijd kan worden geüpload of gedownload, maar u kunt een minder gelijktijdigheid krijgen, afhankelijk van uw scenario (bijvoorbeeld als u twee bestanden uploadt, kunt u twee gelijktijdige bestanden uploaden, zelfs als u om 15 vraagt). |
 
-**Hierbij**
+**Voorbeeld:**
 
 Met deze opdracht worden bestanden van Data Lake Storage Gen1 naar het lokale station van de gebruiker gedownload met 20 threads per bestand en 100 gelijktijdige bestanden.
 
@@ -48,7 +48,7 @@ De volgende vraag kunt u wellicht bepalen welke waarde moet worden geboden voor 
 
     `Total thread count = total physical cores * 6`
 
-    **Hierbij**
+    **Voorbeeld:**
 
     We nemen hier aan dat u de PowerShell-opdrachten uitvoert vanaf een D14-VM met 16 kernen
 
@@ -58,7 +58,7 @@ De volgende vraag kunt u wellicht bepalen welke waarde moet worden geboden voor 
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
-    **Hierbij**
+    **Voorbeeld:**
 
     Ervan uitgaande dat u 100 bestanden van 1 GB tot 10 GB hebt, gebruiken we de 10 GB als de grootste bestands grootte voor vergelijking, die er ongeveer als volgt uitziet.
 
@@ -68,7 +68,7 @@ De volgende vraag kunt u wellicht bepalen welke waarde moet worden geboden voor 
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
-    **Hierbij**
+    **Voorbeeld:**
 
     We gaan uit van de gebruikte voorbeeldwaarden
 

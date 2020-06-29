@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 3f341271c208cc56a704c836433c33af0129a4ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6560f11d26200bdd9f39c4cbae643022872d362
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758375"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506069"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Spot-Vm's implementeren met behulp van de Azure CLI
 
@@ -21,14 +21,14 @@ Met [Azure spot vm's](spot-vms.md) kunt u profiteren van onze ongebruikte capaci
 
 Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. 
 
-U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765`is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1`, wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
+U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765` is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1` , wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
 
-Het proces voor het maken van een virtuele machine met behulp van de Azure CLI is hetzelfde als in het Quick Start- [artikel](/azure/virtual-machines/linux/quick-create-cli). U hoeft alleen de para meter---Priority spot toe te voegen `-1`en een maximum prijs te bieden of.
+Het proces voor het maken van een virtuele machine met behulp van de Azure CLI is hetzelfde als in het Quick Start- [artikel](/azure/virtual-machines/linux/quick-create-cli). U hoeft alleen de para meter---Priority spot toe te voegen, de `--eviction-policy` toewijzing in te stellen op ofwel ongedaan maken (dit is de standaard instelling) of `Delete` , en een maximum prijs te geven of `-1` . 
 
 
 ## <a name="install-azure-cli"></a>Azure CLI installeren
 
-Als u een spot-Vm's wilt maken, moet u de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer **az --version** uit om de versie op te vragen. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
+Als u een spot-Vm's wilt maken, moet u de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer **AZ--version** uit om de versie te vinden. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
 
 Meld u aan bij Azure met [AZ login](/cli/azure/reference-index#az-login).
 
@@ -38,7 +38,7 @@ az login
 
 ## <a name="create-a-spot-vm"></a>Een spot-VM maken
 
-Dit voor beeld laat zien hoe u een Linux-spot-VM implementeert die niet wordt verwijderd op basis van de prijs. 
+Dit voor beeld laat zien hoe u een Linux-spot-VM implementeert die niet wordt verwijderd op basis van de prijs. Het verwijderings beleid is ingesteld om de toewijzing van de virtuele machine ongedaan te maken, zodat deze op een later tijdstip opnieuw kan worden opgestart. Als u de virtuele machine en de onderliggende schijf wilt verwijderen wanneer de virtuele machine wordt verwijderd, stelt u `--eviction-policy` in op `Delete` .
 
 ```azurecli
 az group create -n mySpotGroup -l eastus
@@ -49,8 +49,11 @@ az vm create \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
-    --max-price -1
+    --max-price -1 \
+    --eviction-policy Deallocate
 ```
+
+
 
 Nadat de VM is gemaakt, kunt u een query uitvoeren om de maximale facturerings prijs voor alle virtuele machines in de resource groep weer te geven.
 
@@ -63,6 +66,6 @@ az vm list \
 
 **Volgende stappen**
 
-U kunt ook een spot-VM maken met behulp van [Azure PowerShell](../windows/spot-powershell.md) of een [sjabloon](spot-template.md).
+U kunt ook een spot-VM maken met behulp van [Azure PowerShell](../windows/spot-powershell.md), [Portal](../windows/spot-portal.md)of een [sjabloon](spot-template.md).
 
 Als er een fout optreedt, raadpleegt u [fout codes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

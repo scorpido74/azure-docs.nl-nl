@@ -3,15 +3,15 @@ title: Power shell-HDInsight met Data Lake Storage Gen1-invoeg toepassings opsla
 description: Meer informatie over het gebruik van Azure PowerShell voor het configureren van een HDInsight-cluster met Azure Data Lake Storage Gen1 als extra opslag.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b1264475a9e5100e2b38079fe0540ada5d91cd55
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692051"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504709"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell gebruiken om een HDInsight-cluster te maken met Azure Data Lake Storage Gen1 (als extra opslag)
 
@@ -75,7 +75,7 @@ Volg deze stappen om een Data Lake Storage Gen1-account te maken.
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Als er een fout bericht wordt weer `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` gegeven die vergelijkbaar is met het registreren van de data Lake Storage gen1 resource provider, is het mogelijk dat uw abonnement niet white list is voor data Lake Storage gen1. Zorg ervoor dat u uw Azure-abonnement voor Data Lake Storage Gen1 inschakelt door deze [instructies](data-lake-store-get-started-portal.md)te volgen.
+   > Als er een fout bericht wordt weer gegeven `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` die vergelijkbaar is met het registreren van de data Lake Storage gen1 resource provider, is het mogelijk dat uw abonnement niet white list is voor data Lake Storage gen1. Zorg ervoor dat u uw Azure-abonnement voor Data Lake Storage Gen1 inschakelt door deze [instructies](data-lake-store-get-started-portal.md)te volgen.
    >
    >
 2. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resource groep. Maak daarom eerst een Azure-resourcegroep.
@@ -132,7 +132,7 @@ Als u Active Directory verificatie wilt instellen voor Data Lake Storage Gen1, m
 
 Zorg ervoor dat [Windows SDK](https://dev.windows.com/en-us/downloads) is geïnstalleerd voordat u verdergaat met de stappen in deze sectie. U moet ook een map hebben gemaakt, zoals **C:\mycertdir**, waar het certificaat wordt gemaakt.
 
-1. Ga in het Power shell-venster naar de locatie waar u Windows SDK hebt geïnstalleerd ( `C:\Program Files (x86)\Windows Kits\10\bin\x86` doorgaans en gebruik het hulp programma [makecert][makecert] om een zelfondertekend certificaat en een persoonlijke sleutel te maken. Gebruik de volgende opdrachten.
+1. Ga in het Power shell-venster naar de locatie waar u Windows SDK hebt geïnstalleerd (doorgaans `C:\Program Files (x86)\Windows Kits\10\bin\x86` en gebruik het hulp programma [makecert][makecert] om een zelfondertekend certificaat en een persoonlijke sleutel te maken. Gebruik de volgende opdrachten.
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir

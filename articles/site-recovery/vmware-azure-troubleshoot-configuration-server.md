@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84246880"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504317"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Problemen met de configuratieserver oplossen
 
@@ -67,7 +67,7 @@ Als u fouten in de vCenter-detectie wilt oplossen, voegt u de vCenter-Server toe
 - Open Internet Explorer in de inhoud van systeem gebruikers door de volgende opdracht regel PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe" uit te voeren.
 - Voeg proxy-instellingen in IE toe en start de tmanssvc-service opnieuw.
 - Als u DRA-proxy-instellingen wilt configureren, voert u cd C:\Program Files\Microsoft Azure Site Recovery provider uit.
-- Voer vervolgens DRCONFIGURATOR uit. EXE/configure/AddBypassUrls [IP-adres/FQDN van vCenter Server toevoegen tijdens [configuratie](vmware-azure-deploy-configuration-server.md#configure-settings)van **VCenter server/vSphere ESXi server**
+- Voer vervolgens het volgende uit DRCONFIGURATOR.EXE/configure/AddBypassUrls [Voeg IP-adres/FQDN toe van vCenter Server die worden meegeleverd tijdens de configuratie van **vCenter Server/VSphere ESXi server** stap van de [implementatie van Configuration Server](vmware-azure-deploy-configuration-server.md#configure-settings)]
 
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Het IP-adres van de configuratie server wijzigen
 
@@ -99,7 +99,7 @@ Voer de volgende opdracht uit op de bron computer:
 
 Instelling | Details
 --- | ---
-Gebruik | UnifiedAgentConfigurator. exe/CSEndPoint < configuratie server IP-adres \> /PassphraseFilePath < pad van de wachtwoordzin\>
+Gebruik | UnifiedAgentConfigurator.exe/CSEndPoint <IP-adres van de configuratie server \> /PassphraseFilePath <pad naar een wachtwoordzin bestand\>
 Agent configuratie logboeken | Bevindt zich onder%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Verplichte para meter. Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
 /PassphraseFilePath |  Verplicht. De locatie van de wachtwoordzin. Gebruik een geldig UNC-pad of een lokaal bestandspad.
@@ -173,7 +173,7 @@ Als u het probleem wilt identificeren, gaat u naar C:\ProgramData\ASRSetupLogs\ 
     2018-06-28 14:38:12.971   Rolling back the install changes.
     2018-06-28 14:38:12.971   Upgrade has failed.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 Stop de volgende services hand matig:
 
@@ -193,7 +193,7 @@ U hebt onvoldoende machtigingen voor het maken van een toepassing in Azure Activ
 Om het probleem op te lossen, meldt u zich aan bij de Azure Portal en voert u een van de volgende handelingen uit:
 
 - Vraag de ontwikkelaar van de toepassing aan bij AAD. Zie [Administrator role permissions in azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de ontwikkelaar van de toepassing.
-- Controleer of de **gebruiker kan een toepassings vlag maken** in Aad is ingesteld op *True* . Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)voor meer informatie.
+- Controleer of de **gebruiker kan een toepassings vlag maken** in Aad is ingesteld op *True* . Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)voor meer informatie.
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>Proces server/Master doel kunnen niet communiceren met de configuratie server 
 
@@ -216,7 +216,7 @@ Als u traceringen vindt die vergelijkbaar zijn met de volgende in de logboeken v
  
 Deze fout kan optreden als andere toepassingen ook poort 443 gebruiken of als gevolg van een firewall instelling die de poort blokkeert.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 - Controleer of poort 443 niet is geblokkeerd door uw firewall.
 - Als de poort niet bereikbaar is vanwege een andere toepassing die deze poort gebruikt, stopt en verwijdert u de app.
@@ -228,7 +228,7 @@ Om het probleem op te lossen:
 
 Deze fout kan optreden als er meerdere UUID-items van een configuratie server (CS) in de-Data Base zijn. Het probleem treedt vaak op wanneer u de VM van de configuratie server kloont.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 1. Verwijder de verouderde/oude CS-VM uit de vCenter. Zie [servers verwijderen en beveiliging uitschakelen](site-recovery-manage-registration-and-protection.md)voor meer informatie.
 2. Meld u aan bij de configuratie Server-VM en maak verbinding met de MySQL svsdb1-data base. 
@@ -251,7 +251,7 @@ Nadat u de juiste gebruikers naam en het wacht woord hebt ingevoerd op de config
 
 Dit probleem kan optreden wanneer de systeem tijd onjuist is.
 
-Om het probleem op te lossen:
+Het probleem oplossen:
 
 Stel de juiste tijd op de computer in en voer de aanmelding opnieuw uit. 
  

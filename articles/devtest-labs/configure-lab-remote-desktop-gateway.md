@@ -1,23 +1,14 @@
 ---
 title: Een lab configureren om Extern bureaublad-gateway te gebruiken in Azure DevTest Labs
 description: Informatie over het configureren van een lab in Azure DevTest Labs met een extern bureau blad-gateway om beveiligde toegang tot de Lab-Vm's te garanderen zonder dat de RDP-poort moet worden weer gegeven.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899303"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483836"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw Lab in Azure DevTest Labs configureren voor het gebruik van een extern bureau blad-gateway
 In Azure DevTest Labs kunt u een extern bureau blad-gateway voor uw lab configureren om te zorgen voor veilige toegang tot de virtuele lab-machines (Vm's) zonder dat de RDP-poort moet worden weer gegeven. Het Lab biedt een centrale locatie voor uw Lab-gebruikers om te zien en verbinding te maken met alle virtuele machines waartoe ze toegang hebben. De knop **verbinding maken** op de pagina **virtuele machine** maakt een apparaat-specifiek RDP-bestand dat u kunt openen om verbinding te maken met de computer. U kunt de RDP-verbinding verder aanpassen en beveiligen door uw Lab te koppelen aan een extern bureau blad-gateway. 

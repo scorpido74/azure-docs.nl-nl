@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 03/09/2020
-ms.openlocfilehash: 513e198f9184d5789d5b33de7f05cda0c5dc094d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/26/2020
+ms.openlocfilehash: fceac1a5852c0be767ffc375ad9ec5de033f17b7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046619"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506766"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database-en Azure Synapse Analytics-connectiviteits architectuur
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "84046619"
 In dit artikel wordt de architectuur van verschillende onderdelen beschreven die het netwerk verkeer naar een server in Azure SQL Database of Azure Synapse Analytics omleiden. Er wordt ook uitgelegd dat er verschillende verbindings beleidsregels zijn en hoe deze invloed heeft op clients die verbinding maken vanuit Azure en clients die verbinding maken van buiten Azure.
 
 > [!IMPORTANT]
-> Dit artikel is *niet* van toepassing op een door **Azure SQL beheerd exemplaar**. Raadpleeg [de verbindings architectuur voor een beheerd exemplaar](../managed-instance/connectivity-architecture-overview.md).
+> Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance**. Raadpleeg [de verbindings architectuur voor een beheerd exemplaar](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Connectiviteitsarchitectuur
 
@@ -109,6 +109,8 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Zuid-Afrika - west    | 102.133.24.0       |
 | VS - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32   |
 | Azië - zuidoost      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
+| Zwitserland - noord    | 51.107.56.0, 51.107.57.0 |
+| Zwitserland - west     | 51.107.152.0, 51.107.153.0 |
 | UAE - centraal          | 20.37.72.64        |
 | UAE - noord            | 65.52.248.0        |
 | Verenigd Koninkrijk Zuid             | 51.140.184.11      |

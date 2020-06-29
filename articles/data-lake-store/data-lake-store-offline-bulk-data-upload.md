@@ -3,15 +3,15 @@ title: Grote gegevensset uploaden naar Azure Data Lake Storage Gen1-offline meth
 description: De import/export-service gebruiken om gegevens van Azure Blob-opslag te kopiëren naar Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 9b99f7fa88dc933c32077d273221d8551270529c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839296"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508568"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>De Azure import/export-service gebruiken voor het offline kopiëren van gegevens naar Data Lake Storage Gen1
 

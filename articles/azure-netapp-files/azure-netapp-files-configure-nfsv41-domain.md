@@ -10,15 +10,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 77178a23206eadae941794c92b8dd99fe2ca1e05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dda911add42568e76160e4233502a1f4f550520d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73906284"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483717"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>NFSv4.1-standaarddomein configureren voor Azure NetApp Files
 
@@ -26,16 +26,16 @@ NFSv4 introduceert het concept van een verificatie domein. Azure NetApp Files on
 
 ## <a name="default-behavior-of-usergroup-mapping"></a>Standaard gedrag van de toewijzing van gebruikers/groepen
 
-Basis toewijzing wordt standaard ingesteld `nobody` op de gebruiker omdat het NFSv4-domein `localdomain`is. Wanneer u een Azure NetApp Files NFSv 4.1-volume als root koppelt, ziet u bestands machtigingen als volgt:  
+Basis toewijzing wordt standaard ingesteld op de `nobody` gebruiker omdat het NFSv4-domein is `localdomain` . Wanneer u een Azure NetApp Files NFSv 4.1-volume als root koppelt, ziet u bestands machtigingen als volgt:  
 
 ![Standaard gedrag van de toewijzing van gebruikers/groepen voor NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Zoals in het bovenstaande voor beeld wordt weer gegeven `file1` , is `root`de gebruiker voor de standaard `nobody` instelling, maar wordt het toegewezen.  In dit artikel wordt beschreven hoe u de `file1` gebruiker instelt `root`op.  
+Zoals in het bovenstaande voor beeld wordt weer gegeven, is de gebruiker voor de `file1` `root` standaard instelling, maar wordt het toegewezen `nobody` .  In dit artikel wordt beschreven hoe u de `file1` gebruiker instelt op `root` .  
 
 ## <a name="steps"></a>Stappen 
 
 1. Bewerk het `/etc/idmapd.conf` bestand op de NFS-client.   
-    Verwijder de opmerking bij `#Domain` de regel (dat wil zeggen `#` de van de regel verwijderen) en wijzig de `localdomain` waarde `defaultv4iddomain.com`in. 
+    Verwijder de opmerking bij de regel `#Domain` (dat wil zeggen de `#` van de regel verwijderen) en wijzig de waarde `localdomain` in `defaultv4iddomain.com` . 
 
     Initiële configuratie: 
     
@@ -47,7 +47,7 @@ Zoals in het bovenstaande voor beeld wordt weer gegeven `file1` , is `root`de ge
 
 2. Ontkoppel alle momenteel gekoppelde NFS-volumes.
 3. Werk het `/etc/idmapd.conf` bestand bij.
-4. Start de `rpcbind` service op uw host (`service rpcbind restart`) opnieuw op of start de host gewoon opnieuw op.
+4. Start de `rpcbind` service op uw host ( `service rpcbind restart` ) opnieuw op of start de host gewoon opnieuw op.
 5. Koppel de NFS-volumes waar nodig aan.   
 
     Zie [een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md). 
@@ -56,13 +56,13 @@ In het volgende voor beeld ziet u de resulterende gebruikers-/groeps wijziging:
 
 ![Resulterende configuratie voor NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-resulting-config.png)
 
-Zoals in het voor beeld wordt getoond, is de gebruiker/groep `nobody` nu `root`gewijzigd van in.
+Zoals in het voor beeld wordt getoond, is de gebruiker/groep nu gewijzigd van `nobody` in `root` .
 
 ## <a name="behavior-of-other-non-root-users-and-groups"></a>Gedrag van andere (niet-basis) gebruikers en-groepen
 
 Azure NetApp Files ondersteunt lokale gebruikers (gebruikers die lokaal op een host zijn gemaakt) die machtigingen hebben die zijn gekoppeld aan bestanden of mappen in NFSv 4.1-volumes. De service biedt momenteel echter geen ondersteuning voor het toewijzen van de gebruikers/groepen op meerdere knoop punten. Gebruikers die zijn gemaakt op een host, kunnen daarom niet standaard worden toegewezen aan gebruikers die zijn gemaakt op een andere host. 
 
-In het volgende voor beeld `Host1` heeft drie bestaande test gebruikers accounts (`testuser01`, `testuser02`, `testuser03`): 
+In het volgende voor beeld `Host1` heeft drie bestaande test gebruikers accounts ( `testuser01` , `testuser02` , `testuser03` ): 
 
 ![Resulterende configuratie voor NFSv 4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-host1-users.png)
 

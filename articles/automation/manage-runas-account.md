@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d854c8815ff6acd54036e023b35c3b3ac2c56cf
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 66fb5741a5ed1af9e7edf002485c959f9f2fc82f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85444519"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507259"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Een Azure Automation uitvoeren als-account beheren
 
@@ -63,14 +63,14 @@ Als u een uitvoeren als-account wilt maken of bijwerken, moet u specifieke bevoe
 
 |Taak|Cmdlet  |Minimale machtigingen  |Waar u de machtigingen instelt|
 |---|---------|---------|---|
-|Een Azure AD-toepassing maken|[New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Application Developer-rol<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Start > Azure AD > app-registraties |
-|Voeg een referentie toe aan de toepassing.|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Toepassings beheerder of globale beheerder<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Start > Azure AD > app-registraties|
-|Een Azure AD-service-principal maken en ophalen|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Toepassings beheerder of globale beheerder<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Start > Azure AD > app-registraties|
+|Een Azure AD-toepassing maken|[New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Application Developer-rol<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Start > Azure AD > app-registraties |
+|Voeg een referentie toe aan de toepassing.|[New-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Toepassings beheerder of globale beheerder<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Start > Azure AD > app-registraties|
+|Een Azure AD-service-principal maken en ophalen|[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Toepassings beheerder of globale beheerder<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Start > Azure AD > app-registraties|
 |De RBAC-rol voor de opgegeven Principal toewijzen of ophalen|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Beheerder of eigenaar van de gebruikers toegang of de volgende machtigingen hebben:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonnement](../role-based-access-control/role-assignments-portal.md)</br>Home >-abonnementen > \<subscription name\> -Access Control (IAM)|
 |Een Automation-certificaat maken of verwijderen|[New-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Inzender voor resource groep         |Resource groep voor Automation-account|
 |Een Automation-verbinding maken of verwijderen|[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Inzender voor resource groep |Resource groep voor Automation-account|
 
-<sup>1</sup> gebruikers die geen beheerder zijn in uw Azure AD-TENANT kunnen [ad-toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) als de optie gebruikers van de Azure AD-Tenant **kunnen toepassingen registreren** op de pagina gebruikers instellingen is ingesteld op **Ja**. Als de instelling voor de registratie van de toepassing **Nee**is, moet de gebruiker die deze actie uitvoert, worden gedefinieerd in deze tabel.
+<sup>1</sup> gebruikers die geen beheerder zijn in uw Azure AD-TENANT kunnen [ad-toepassingen registreren](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) als de optie gebruikers van de Azure AD-Tenant **kunnen toepassingen registreren** op de pagina gebruikers instellingen is ingesteld op **Ja**. Als de instelling voor de registratie van de toepassing **Nee**is, moet de gebruiker die deze actie uitvoert, worden gedefinieerd in deze tabel.
 
 Als u geen lid bent van het Active Directory exemplaar van het abonnement voordat u wordt toegevoegd aan de rol van globale beheerder van het abonnement, wordt u als gast toegevoegd. In dit geval ontvangt u een `You do not have permissions to create…` waarschuwing op de pagina **Automation-account toevoegen** .
 

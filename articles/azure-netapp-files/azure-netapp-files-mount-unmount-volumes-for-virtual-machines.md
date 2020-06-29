@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: b7586fcd0a262fa325e171480ec0becc297f65fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610850"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483581"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Een volume voor Windows- of Linux-VM's koppelen of ontkoppelen 
 
@@ -30,7 +30,7 @@ U kunt indien nodig een volume koppelen of ontkoppelen voor virtuele Windows-of 
     
     Als u NFSv 4.1 gebruikt, gebruikt u de volgende opdracht om het bestands systeem te koppelen:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. Als u een NFS-volume automatisch wilt koppelen wanneer een virtuele machine van Azure wordt gestart of opnieuw is opgestart, voegt u een vermelding `/etc/fstab` toe aan het bestand op de host. 
+3. Als u een NFS-volume automatisch wilt koppelen wanneer een virtuele machine van Azure wordt gestart of opnieuw is opgestart, voegt u een vermelding toe aan het `/etc/fstab` bestand op de host. 
 
     Bijvoorbeeld: `$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -41,7 +41,7 @@ U kunt indien nodig een volume koppelen of ontkoppelen voor virtuele Windows-of 
 4. Als u het volume aan Windows wilt koppelen met behulp van NFS:
 
     a. Koppel het volume eerst aan een UNIX-of Linux-VM.  
-    b. Voer een `chmod 777` of `chmod 775` -opdracht uit op het volume.  
+    b. Voer een `chmod 777` of- `chmod 775` opdracht uit op het volume.  
     c. Koppel het volume via de NFS-client in Windows.
 
 ## <a name="next-steps"></a>Volgende stappen

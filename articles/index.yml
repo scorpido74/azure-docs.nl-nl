@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 6edc39bc9923d53732775c68c9b7fe4f2d35b055
-  ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+  ms.openlocfilehash: 5f9dbc120b301100364da61f7d8c19fa58beb5c9
+  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 06/26/2020
-  ms.locfileid: "85414382"
+  ms.lasthandoff: 06/27/2020
+  ms.locfileid: "85482918"
 highlightedContent:
   items:
   - title: Introductiehandleiding voor Azure-ontwikkelaars
@@ -1042,12 +1042,12 @@ productDirectory:
     - media
     url: media-services/latest/index.yml
   - title: Data Box
-    summary: Apparaten en oplossingen voor gegevensoverdracht naar Azure en een Edge-rekenproces
+    summary: Apparaten en oplossingen voor gegevensoverdracht naar Azure
     imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
     azureCategories:
     - migration
     - storage
-    url: databox-family/index.md
+    url: databox/index.yml
   - title: Spatial Anchors (preview)
     summary: Maak mixed reality-ervaringen voor ruimtelijk inzicht voor meerdere gebruikers
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg

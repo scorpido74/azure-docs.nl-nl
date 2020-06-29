@@ -4,15 +4,15 @@ description: Overzicht van Data Lake Storage Gen1 (voorheen bekend als Azure Dat
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 99384374226fd89cfd672c6b4f851a1743db0764
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67118806"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508551"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>Wat is Azure Data Lake Storage Gen1?
 
@@ -78,7 +78,7 @@ Data Lake Storage Gen1 is compatibel met de meeste open source-onderdelen in het
 
 U kunt toegang krijgen tot Data Lake Storage Gen1 via het bestands systeem AzureDataLakeFilesystem (adl://) in Hadoop-omgevingen (beschikbaar met HDInsight-cluster). Toepassingen en services die gebruikmaken van adl://kunnen profiteren van verdere prestatie optimalisaties die momenteel niet beschikbaar zijn in WebHDFS. Als gevolg hiervan biedt Data Lake Storage Gen1 u de flexibiliteit om gebruik te maken van de beste prestaties met de aanbevolen optie voor het gebruik van adl://of het onderhouden van bestaande code door de WebHDFS-API direct te blijven gebruiken. Azure HDInsight maakt volledig gebruik van de AzureDataLakeFilesystem om de beste prestaties op Data Lake Storage Gen1 te bieden.
 
-U kunt toegang krijgen tot uw gegevens in `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net`data Lake Storage gen1 met behulp van. Zie [Eigenschappen van de opgeslagen gegevens weer geven](data-lake-store-get-started-portal.md#properties)voor meer informatie over het openen van de gegevens in data Lake Storage gen1.
+U kunt toegang krijgen tot uw gegevens in Data Lake Storage Gen1 met behulp van `adl://<data_lake_storage_gen1_name>.azuredatalakestore.net` . Zie [Eigenschappen van de opgeslagen gegevens weer geven](data-lake-store-get-started-portal.md#properties)voor meer informatie over het openen van de gegevens in data Lake Storage gen1.
 
 ## <a name="next-steps"></a>Volgende stappen
 

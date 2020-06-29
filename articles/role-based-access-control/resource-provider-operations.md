@@ -8,12 +8,12 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 06/18/2020
-ms.openlocfilehash: 2131912244b2f895ebb7d9bbc28f132ac2404ae7
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 3e79f0498aa14bed1cda29148a6b3c7e1e9e2a3d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414569"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508466"
 ---
 # <a name="azure-resource-providers-operations"></a>Bewerkingen voor Azure-resource providers
 
@@ -1358,8 +1358,7 @@ Azure-service: klassieke implementatie model opslag
 
 ### <a name="microsoftdatabox"></a>Micro soft. DataBox
 
-Azure-service: [Azure data Box](../databox-family/index.md)
-
+Azure-service: [Azure data Box](../databox/index.yml)
 > [!div class="mx-tableFixed"]
 > | Bewerking | Beschrijving |
 > | --- | --- |
@@ -6139,18 +6138,18 @@ Azure-service: [Key Vault](../key-vault/index.yml)
 > | Micro soft. de sleutel kluis/REGI ster/actie | Hiermee wordt een abonnement geregistreerd |
 > | Micro soft. sleutel kluis/registratie/actie | Registratie van een abonnement opheffen |
 > | Micro soft. checkNameAvailability/lezen | Hiermee wordt gecontroleerd of de naam van een sleutel kluis geldig is en niet wordt gebruikt |
-> | Micro soft. deletedVaults/lezen | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
+> | Microsoft.KeyVault/deletedVaults/read | De eigenschappen van voorlopig verwijderde sleutel kluizen weer geven |
 > | Micro soft. hsmPools/lezen | De eigenschappen van een HSM-groep weer geven |
 > | Micro soft. hsmPools/schrijven | Een nieuwe HSM-groep maken om de eigenschappen van een bestaande HSM-groep bij te werken |
 > | Micro soft. hsmPools/verwijderen | Een HSM-groep verwijderen |
 > | Micro soft. hsmPools/joinVault/actie | Een sleutel kluis toevoegen aan een HSM-groep |
 > | Micro soft. sleutel kluis/locaties/deleteVirtualNetworkOrSubnets/actie | Hiermee wordt aan micro soft.-sleutel kluis gemeld dat een virtueel netwerk of subnet wordt verwijderd |
 > | Micro soft. de sleutel kluis/locaties/deletedVaults/lezen | De eigenschappen van een voorlopig verwijderde sleutel kluis weer geven |
-> | Micro soft. sleutel kluis/locaties/deletedVaults/opschonen/actie | Een voorlopig verwijderde sleutel kluis leegmaken |
+> | Microsoft.KeyVault/locations/deletedVaults/purge/action | Een voorlopig verwijderde sleutel kluis leegmaken |
 > | Micro soft. de sleutel kluis/locaties/operationResults/lezen | Het resultaat van een langdurige bewerking controleren |
 > | Micro soft. sleutel kluis/bewerkingen/lezen | Hiermee worden bewerkingen weer gegeven die beschikbaar zijn op micro soft. |
 > | Micro soft.-sleutel kluis/-kluizen/lezen | De eigenschappen van een sleutel kluis weer geven |
-> | Micro soft. de sleutel kluis/kluizen/schrijven | Een nieuwe sleutel kluis maken of de eigenschappen van een bestaande sleutel kluis bijwerken |
+> | Microsoft.KeyVault/vaults/write | Een nieuwe sleutel kluis maken of de eigenschappen van een bestaande sleutel kluis bijwerken |
 > | Micro soft.-sleutel kluis/-kluizen/verwijderen | Een sleutelkluis verwijderen |
 > | Micro soft.-sleutel kluis/-kluizen/implementeren/actie | Hiermee wordt toegang tot geheimen in een sleutel kluis ingeschakeld bij het implementeren van Azure-resources |
 > | Micro soft. de sleutel kluis/kluizen/accessPolicies/schrijven | Een bestaand toegangs beleid bijwerken door samen te voegen of te vervangen of een nieuw toegangs beleid toe te voegen aan een kluis. |

@@ -3,15 +3,15 @@ title: Een Microsoft Azure FXT Edge-eenheid afsluiten
 description: Procedures voor opstarten en veilig afsluiten van een Azure FXT Edge-Bestandsr knoop punt
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 91445c4219abaa67385105f52515f52c87e2cf06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72255997"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506409"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>De hardware van Azure FXT edge-apparaat veilig uitzetten
 
@@ -29,7 +29,7 @@ Nadat een Azure FXT Edge-knoop punt wordt gebruikt als onderdeel van een cluster
 Volg deze instructies om een Azure FXT Edge-knoop punt veilig uit te scha kelen:
 
 1. Meld u aan bij het configuratie scherm van het cluster. (De instructies in [de pagina's met instellingen openen](fxt-cluster-create.md#open-the-settings-pages))
-1. Klik op het tabblad **instellingen** en laad vervolgens de pagina **cluster** > **FXT-knoop punten** .
+1. Klik op het tabblad **instellingen** en laad vervolgens de pagina **cluster**  >  **FXT-knoop punten** .
 1. Zoek in de lijst met cluster knooppunten het account dat u wilt afsluiten. Klik op de knop aan **/uit** in de kolom **acties** . 
 1. Wacht even. Het knoop punt wordt afgesloten en Power is uitgeschakeld.
 

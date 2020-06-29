@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299822"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506970"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
@@ -86,7 +86,7 @@ Bij het rapporteren van een metriek gegevens punt voor elke dimensie sleutel op 
 
 * De naam van de metriek zou **geheugen bytes in gebruik**zijn.
 * De dimensie sleutel wordt **verwerkt**.
-* De dimensie waarde is **ContosoApp. exe**.
+* De dimensie waarde wordt **ContosoApp.exe**.
 
 Wanneer u een metrische waarde publiceert, kunt u slechts één dimensie waarde per dimensie sleutel opgeven. Als u hetzelfde geheugen gebruik voor meerdere processen op de virtuele machine verzamelt, kunt u meerdere metrische waarden voor die tijds tempel rapporteren. Elke metrische waarde zou een andere dimensie waarde voor de **proces** dimensie sleutel opgeven.
 Dimensies zijn optioneel, niet alle metrische gegevens kunnen dimensies hebben. Als voor een metrische post dimensie sleutels worden gedefinieerd, zijn overeenkomstige dimensie waarden verplicht.
@@ -189,28 +189,28 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 |Azure-regio |Voor voegsel regionale eind punt|
 |---|---|
 | **VS en Canada** | |
-|VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com/ |
-|VS - west 2       | https: \/ /westus2.monitoring.Azure.com/ |
+|VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com |
+|VS - west 2       | https: \/ /westus2.monitoring.Azure.com |
 |VS - noord-centraal | https: \/ /northcentralus.monitoring.Azure.com
-|VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com/ |
+|VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com |
 |VS - centraal      | https: \/ /centralus.monitoring.Azure.com |
-|Canada - midden | https: \/ /canadacentral.monitoring.Azure.comc
-|VS - oost| https: \/ /eastus.monitoring.Azure.com/ |
-|VS - oost 2 | https: \/ /eastus2.monitoring.Azure.com/
+|Canada - midden | https: \/ /canadacentral.monitoring.Azure.com |
+|VS - oost| https: \/ /eastus.monitoring.Azure.com |
+|VS - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
 | **Europa** | |
-|Europa - noord    | https: \/ /northeurope.monitoring.Azure.com/ |
-|Europa -west     | https: \/ /westeurope.monitoring.Azure.com/ |
+|Europa - noord    | https: \/ /northeurope.monitoring.Azure.com |
+|Europa -west     | https: \/ /westeurope.monitoring.Azure.com |
 |Verenigd Koninkrijk Zuid | https: \/ /uksouth.monitoring.Azure.com
 |Frankrijk - centraal | https: \/ /francecentral.monitoring.Azure.com |
 | **Afrika** | |
-|Zuid-Afrika - noord | https: \/ /southafricanorth.monitoring.Azure.com
+|Zuid-Afrika - noord | https: \/ /southafricanorth.monitoring.Azure.com |
 | **Azië** | |
-|India - centraal | https: \/ /centralindia.monitoring.Azure.com
-|Australië - oost | https: \/ /australiaeast.monitoring.Azure.com
-|Japan - oost | https: \/ /japaneast.monitoring.Azure.com
+|India - centraal | https: \/ /centralindia.monitoring.Azure.com |
+|Australië - oost | https: \/ /australiaeast.monitoring.Azure.com |
+|Japan - oost | https: \/ /japaneast.monitoring.Azure.com |
 |Azië - zuidoost  | https: \/ /southeastasia.monitoring.Azure.com |
-|Azië - oost | https: \/ /EastAsia.monitoring.Azure.com
-|Korea - centraal   | https: \/ /koreacentral.monitoring.Azure.com
+|Azië - oost | https: \/ /EastAsia.monitoring.Azure.com |
+|Korea - centraal   | https: \/ /koreacentral.monitoring.Azure.com |
 
 ## <a name="latency-and-storage-retention"></a>Latentie en opslag bewaren
 
@@ -231,7 +231,7 @@ Een actieve tijd reeks wordt gedefinieerd als een unieke combi natie van metrisc
 
 ## <a name="next-steps"></a>Volgende stappen
 Aangepaste metrische gegevens van verschillende services gebruiken: 
- - [Virtual Machines](collect-custom-metrics-guestos-resource-manager-vm.md)
+ - [Virtuele machines](collect-custom-metrics-guestos-resource-manager-vm.md)
  - [Schaalset voor virtuele machines](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure Virtual Machines (klassiek)](collect-custom-metrics-guestos-vm-classic.md)
  - [Virtuele Linux-machine met behulp van de Telegraf-agent](collect-custom-metrics-linux-telegraf.md)

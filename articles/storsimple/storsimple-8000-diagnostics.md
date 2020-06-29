@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298748"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504454"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Het hulp programma StorSimple Diagnostics gebruiken om problemen met de 8000 Series-apparaten op te lossen
 
@@ -210,7 +210,7 @@ Deze test rapporteert de systeem gegevens, de beschik bare updates, de cluster g
 
 * De systeem informatie omvat het model, serie nummer van het apparaat, de tijd zone, de controller status en de gedetailleerde software versie die op het systeem wordt uitgevoerd. Om inzicht te krijgen in de verschillende systeem parameters die als uitvoer zijn gerapporteerd, gaat u naar [systeem informatie interpreteren](#appendix-interpreting-system-information).
 
-* De beschik baarheid van de Update meldt of de standaard-en onderhouds modus beschikbaar zijn en de bijbehorende pakket namen. Als `RegularUpdates` dat `MaintenanceModeUpdates` zo `false`is, geeft dit aan dat de updates niet beschikbaar zijn. Het apparaat is up-to-date.
+* De beschik baarheid van de Update meldt of de standaard-en onderhouds modus beschikbaar zijn en de bijbehorende pakket namen. Als dat zo `RegularUpdates` `MaintenanceModeUpdates` is `false` , geeft dit aan dat de updates niet beschikbaar zijn. Het apparaat is up-to-date.
 * De cluster informatie bevat de informatie over de verschillende logische onderdelen van alle HCS-cluster groepen en de bijbehorende statussen. Als u in deze sectie van het rapport een offline cluster groep ziet, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
 * De service-informatie bevat de namen en statussen van alle HCS-en CiS-services die op het apparaat worden uitgevoerd. Deze informatie is nuttig voor de Microsoft Ondersteuning bij het oplossen van problemen met het apparaat.
 
@@ -416,7 +416,7 @@ Hier volgt een tabel met een beschrijving van de verschillende Windows Power she
 
 | Power shell-para meter    | Beschrijving  |
 |-------------------------|------------------|
-| Exemplaar-id             | Elke controller heeft een unieke id of een GUID die eraan is gekoppeld.|
+| Instance ID             | Elke controller heeft een unieke id of een GUID die eraan is gekoppeld.|
 | Naam                    | De beschrijvende naam van het apparaat, zoals geconfigureerd via de Azure Portal tijdens de implementatie van het apparaat. De standaard beschrijvende naam is het serie nummer van het apparaat. |
 | Model                   | Het model van uw StorSimple 8000-serie apparaat. Het model kan 8100 of 8600 zijn.|
 | SerialNumber            | Het serie nummer van het apparaat wordt toegewezen aan de fabriek en is 15 tekens lang. 8600-SHX0991003G44HT geeft bijvoorbeeld het volgende aan:<br> 8600: is het model van het apparaat.<br>SHX: is de productie site.<br> 0991003-is een specifiek product. <br> G44HT: de laatste vijf cijfers worden verhoogd om unieke serie nummers te maken. Dit kan geen opeenvolgende set zijn.|

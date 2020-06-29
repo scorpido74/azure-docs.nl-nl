@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: Architectuur
       items:
+        - name: Azure voor netwerktechnici
+          href: azure-for-network-engineers.md
         - name: Virtuele datacenters
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: Asymmetrische routering met meerdere netwerkpaden

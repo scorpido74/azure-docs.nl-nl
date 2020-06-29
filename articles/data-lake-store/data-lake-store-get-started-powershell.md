@@ -3,15 +3,15 @@ title: Aan de slag met Azure Data Lake Storage Gen1-Power shell | Microsoft Docs
 description: Gebruik Azure PowerShell om een Azure Data Lake Storage Gen1 account te maken en basis bewerkingen uit te voeren.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8c97064af6fecf08af4608cfcd9874ff9bb1936
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73837899"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504779"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Aan de slag met Azure Data Lake Storage Gen1 met behulp van Azure PowerShell
 

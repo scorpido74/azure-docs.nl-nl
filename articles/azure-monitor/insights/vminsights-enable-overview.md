@@ -5,23 +5,29 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/29/2020
-ms.openlocfilehash: 87d8b26110eba647975de577e9d7b5b0ed138266
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/25/2020
+ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84423969"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507072"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
 
-Dit artikel bevat een overzicht van de beschik bare opties om Azure Monitor voor VM's op uw virtuele machines in te scha kelen om de status en prestaties te controleren. Detecteer toepassings afhankelijkheden die worden uitgevoerd op virtuele machines van Azure (Vm's) en virtuele-machine schaal sets, on-premises Vm's of Vm's die worden gehost in een andere cloud omgeving.  
+In dit artikel vindt u een overzicht van de beschik bare opties voor het inschakelen van Azure Monitor voor VM's om de status en prestaties van het volgende te controleren:
+
+- Virtuele machines van Azure 
+- Virtuele-machineschaalsets van Azure
+- Hybride virtuele machines die zijn verbonden met Azure Arc
+- On-premises virtuele machines
+- Virtuele machines die worden gehost in een andere cloud omgeving.  
 
 Azure Monitor voor VM's instellen:
 
-* Schakel een schaalset voor een virtuele Azure-machine in of virtual machines door **inzichten** rechtstreeks te selecteren in de VM of virtuele-machine schaalset.
-* Schakel twee of meer Azure-Vm's en virtuele-machine schaal sets in met behulp van Azure Policy. Deze methode zorgt ervoor dat de vereiste afhankelijkheden op bestaande en nieuwe virtuele machines en schaal sets worden geïnstalleerd en op de juiste wijze zijn geconfigureerd. Niet-compatibele Vm's en schaal sets worden gerapporteerd, zodat u kunt beslissen of u ze wilt inschakelen en deze wilt herstellen.
-* Schakel twee of meer virtuele Azure-machines of virtual machine Scale sets in voor een opgegeven abonnement of resource groep met behulp van Power shell.
+* Schakel één Azure VM, Azure VMSS of Azure Arc machine in door **inzichten** rechtstreeks te selecteren in het menu van het Azure Portal.
+* Meerdere virtuele machines van Azure, Azure VMSS of Azure Arc inschakelen met behulp van Azure Policy. Deze methode zorgt ervoor dat de vereiste afhankelijkheden op bestaande en nieuwe virtuele machines en schaal sets worden geïnstalleerd en op de juiste wijze zijn geconfigureerd. Niet-compatibele Vm's en schaal sets worden gerapporteerd, zodat u kunt beslissen of u ze wilt inschakelen en deze wilt herstellen.
+* Meerdere virtuele machines van Azure, Azure-Arc-Vm's, Azure VMSS of Azure Arc-machines in een opgegeven abonnement of resource groep inschakelen met behulp van Power shell.
 * Schakel Azure Monitor voor VM's in om Vm's of fysieke computers te bewaken die worden gehost in uw bedrijfs netwerk of een andere cloud omgeving.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -43,6 +49,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 - VS - oost 2
 - VS - centraal
 - VS - noord-centraal
+- US Gov AZ
 - US Gov VA
 - Canada - midden
 - Verenigd Koninkrijk Zuid
@@ -67,15 +74,13 @@ Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van ee
 
 U kunt ook een werk ruimte maken terwijl u controle inschakelt voor één virtuele machine in azure of voor de schaalset van VM'S in de Azure Portal.
 
-Als u een schaal scenario wilt instellen dat gebruikmaakt van Azure Policy-, Azure PowerShell-of Azure Resource Manager sjablonen, in uw Log Analytics-werk ruimte:
-
-* Installeer de *ServiceMap* -en *InfrastructureInsights* -oplossingen. U kunt deze installatie volt ooien met behulp van een meegeleverde Azure Resource Manager sjabloon. U kunt ook op het tabblad **aan de slag** in de Azure Portal **werk ruimte configureren**selecteren.
-* Configureer de Log Analytics-werk ruimte voor het verzamelen van prestatie meter items.
-
-Gebruik een van de volgende methoden om uw werk ruimte te configureren voor het schaal scenario:
+Als u een schaal scenario wilt instellen dat gebruikmaakt van Azure Policy-, Azure PowerShell-of Azure Resource Manager-sjablonen, moet u de *VMInsights* -oplossing installeren. U kunt dit op een van de volgende manieren doen:
 
 * Gebruik [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace).
 * Selecteer op de pagina dekking van Azure Monitor voor VM's [**beleid**](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) de optie **werk ruimte configureren**. 
+
+### <a name="azure-arc-machines"></a>Azure-Arc-machines
+Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld in regio's waar de Arc extension-service beschikbaar is. Gebruikers moeten versie 0,9 of hoger van de Arc-agent uitvoeren om Azure Monitor voor VM's in te scha kelen op hun Arc-servers.
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -168,13 +173,13 @@ De volgende tabel beschrijft de verbonden bronnen die de kaart functie ondersteu
 
 | Verbonden bron | Ondersteund | Beschrijving |
 |:--|:--|:--|
-| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Beheergroep System Center Operations Manager | Nee | |
+| Windows-agents | Yes | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Linux-agents | Yes | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Beheergroep System Center Operations Manager | No | |
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| File | OS | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
@@ -191,10 +196,10 @@ Schakel Azure Monitor voor VM's in met een van de methoden die in deze tabel wor
 
 | Implementatie status | Methode | Beschrijving |
 |------------------|--------|-------------|
-| Eén Azure VM of schaalset voor virtuele machines | [Inschakelen vanaf de VM](vminsights-enable-single-vm.md) | U kunt één virtuele Azure-machine inschakelen door **inzichten** rechtstreeks te selecteren in de VM of virtuele-machine schaalset. |
-| Meerdere Azure Vm's of virtuele-machine schaal sets | [Inschakelen via Azure Policy](vminsights-enable-at-scale-policy.md) | U kunt meerdere virtuele machines van Azure inschakelen met behulp van Azure Policy en beschik bare beleids definities. |
-| Meerdere Azure Vm's of virtuele-machine schaal sets | [Azure PowerShell-of Azure Resource Manager-sjablonen inschakelen](vminsights-enable-at-scale-powershell.md) | U kunt meerdere Azure Vm's of virtuele-machine schaal sets inschakelen voor een opgegeven abonnement of resource groep met behulp van Azure PowerShell-of Azure Resource Manager sjablonen. |
-| Hybride cloud | [Inschakelen voor de hybride omgeving](vminsights-enable-hybrid-cloud.md) | U kunt implementeren op Vm's of fysieke computers die worden gehost in uw Data Center of in andere Cloud omgevingen. |
+| Eén Azure VM, Azure VMSS of Azure Arc machine | [Inschakelen vanuit de portal](vminsights-enable-single-vm.md) | Selecteer **inzichten** direct in het menu van de Azure Portal. |
+| Meerdere virtuele machines van Azure, Azure VMSS of Azure Arc | [Inschakelen via Azure Policy](vminsights-enable-at-scale-policy.md) | Gebruik Azure Policy om automatisch in te scha kelen wanneer er een virtuele machine of VMSS wordt gemaakt. |
+| | [Azure PowerShell-of Azure Resource Manager-sjablonen inschakelen](vminsights-enable-at-scale-powershell.md) | Gebruik Azure PowerShell-of Azure Resource Manager sjablonen om meerdere virtuele Azure-machines, Azure-Arc-VM'S of Azure VMSS in te scha kelen voor een opgegeven abonnement of resource groep op. |
+| Hybride cloud | [Inschakelen voor de hybride omgeving](vminsights-enable-hybrid-cloud.md) | Implementeren op Vm's of fysieke computers die worden gehost in uw Data Center of in andere Cloud omgevingen. |
 
 ## <a name="management-packs"></a>Management packs
 

@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: c8ac14f11d7f2eeed050997de42da4f512b46bc5
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 64d83cc88f66eefad8980bead7fe37ad1782873f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60254743"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483547"
 ---
-# <a name="manage-volumes-by-using-azure-netapp-files"></a>Volumes beheren met Azure NetApp Files
+# <a name="manage-volumes-by-using-azure-netapp-files"></a>Volume beheren met behulp van Azure NetApp Files
 U kunt een volume beheren door het volume te bekijken, bij te werken of te verwijderen. 
 
 Als u een volume wilt verwijderen, moet u eerst alle subobjecten van een volume verwijderen. 

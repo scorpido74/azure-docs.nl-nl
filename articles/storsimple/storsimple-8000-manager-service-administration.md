@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60723303"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508041"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>De StorSimple Apparaatbeheer-service gebruiken voor het beheren van uw StorSimple-apparaat
 
@@ -37,7 +37,7 @@ Na het lezen van dit artikel leert u het volgende:
 De StorSimple-Apparaatbeheer-service wordt uitgevoerd in Microsoft Azure en er wordt verbinding gemaakt met meerdere StorSimple-apparaten. U gebruikt een centrale Microsoft Azure-portal die in een browser wordt uitgevoerd om deze apparaten te beheren. Ga als volgt te werk om verbinding te maken met de StorSimple-Apparaatbeheer service.
 
 #### <a name="to-connect-to-the-service"></a>Verbinding maken met de service
-1. Ga naar [https://portal.azure.com/](https://portal.azure.com/).
+1. Ga naar [https://portal.azure.com/](https://portal.azure.com/) .
 2. Meld u met uw Microsoft-account-referenties aan bij de Microsoft Azure-portal (in de rechter bovenhoek van het deel venster).
 3. Schuif omlaag in het navigatie deel venster aan de linkerkant om toegang te krijgen tot de StorSimple-Apparaatbeheer service.
 

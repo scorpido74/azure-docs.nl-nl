@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/19/2020
+ms.date: 6/26/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 8e6105a83aec9c2141c6b1083602c54d1fa545b0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 54a7f3f50de27747ab15f6895ebfb4f65faf5fdf
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464824"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85484057"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -130,7 +130,7 @@ De volgende items worden niet gesynchroniseerd, maar de rest van het systeem bli
 
 ### <a name="cloud-endpoint"></a>Cloud-eind punt
 - Azure File Sync ondersteunt het maken van wijzigingen aan de Azure-bestands share rechtstreeks. Wijzigingen die zijn aangebracht op de Azure-bestands share moeten echter eerst worden gedetecteerd door een Azure File Sync wijzigings detectie taak. Een wijzigings detectie taak wordt één keer per 24 uur geïnitieerd voor een Cloud eindpunt. Om bestanden direct te synchroniseren die in de Azure-bestands share zijn gewijzigd, kan de Power shell [-cmdlet invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) worden gebruikt om de detectie van wijzigingen in de Azure-bestands share hand matig te initiëren. Daarnaast worden wijzigingen die zijn aangebracht in een Azure-bestands share via het REST-protocol, de SMB-tijd voor het laatst gewijzigd niet bijgewerkt en wordt deze niet gezien als een wijziging door synchronisatie.
-- De opslag synchronisatie service en/of het opslag account kunnen worden verplaatst naar een andere resource groep of een ander abonnement binnen de bestaande Azure AD-Tenant. Als het opslag account is verplaatst, moet u de Hybrid File Sync-Service toegang tot het opslag account geven (Zie [controleren of Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+- De opslag synchronisatie service en/of het opslag account kunnen worden verplaatst naar een andere resource groep, een abonnement of een Azure AD-Tenant. Nadat de opslag synchronisatie service of het opslag account is verplaatst, moet u de micro soft. StorageSync-toepassing toegang geven tot het opslag account (Zie [controleren of Azure file sync toegang heeft tot het opslag account](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Bij het maken van het Cloud eindpunt moeten de opslag synchronisatie service en het opslag account zich in dezelfde Azure AD-Tenant bevinden. Zodra het Cloud eindpunt is gemaakt, kunnen de opslag synchronisatie service en het opslag account worden verplaatst naar verschillende Azure AD-tenants.
@@ -236,7 +236,7 @@ De volgende items worden niet gesynchroniseerd, maar de rest van het systeem bli
 ### <a name="cloud-tiering"></a>Cloudopslaglagen
 - Als een gelaagd bestand met behulp van Robocopy naar een andere locatie wordt gekopieerd, wordt het resulterende bestand niet in een laag geplaatst. Het kenmerk 'offline' kan zijn ingesteld omdat Robocopy dat kenmerk onterecht opneemt in kopieerbewerkingen.
 - Wanneer u bestanden met behulp van Robocopy kopieert, gebruikt u de optie/MIR om de tijds tempels van het bestand te behouden. Dit zorgt ervoor dat oudere bestanden eerder zijn gelaagd dan recent geopende bestanden.
-- Bestanden kunnen mogelijk niet worden gelaagd als het bestand Pagefile. sys zich op een volume bevindt waarvoor Cloud lagen zijn ingeschakeld. Het bestand Pagefile. sys moet zich bevinden op een volume waarvoor Cloud lagen zijn uitgeschakeld.
+- Bestanden kunnen mogelijk niet worden gelaagd als de pagefile.sys zich bevindt op een volume waarop Cloud Tiering is ingeschakeld. Het pagefile.sys moet zich bevinden op een volume waarvoor Cloud lagen zijn uitgeschakeld.
 
 ## <a name="agent-version-8000"></a>8.0.0.0 van agent versie
 De volgende release opmerkingen zijn voor versie 8.0.0.0 van de Azure File Sync-agent (uitgebracht op 8 oktober 2019).

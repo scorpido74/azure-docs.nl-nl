@@ -1,24 +1,14 @@
 ---
 title: Een opslag plaats voor artefacten toevoegen aan uw Lab in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het toevoegen van een artefact opslagplaats aan uw Lab in azure DevTest Labs.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
-ms.author: spelluru
-ms.openlocfilehash: 3b4d09e784cf7bfff359fe5ec7ae86243da15349
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898869"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483904"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Een opslag plaats voor artefacten toevoegen aan uw Lab in DevTest Labs
 Met DevTest Labs kunt u een artefact opgeven die moet worden toegevoegd aan een virtuele machine op het moment dat de virtuele machine wordt gemaakt of nadat de virtuele machine is aangemaakt. Dit artefact kan een hulp programma of een toepassing zijn die u wilt installeren op de VM. Artefacten worden gedefinieerd in een JSON-bestand dat is geladen vanuit een GitHub-of Azure DevOps Git-opslag plaats.
@@ -370,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>Power shell-opdrachten die in het script worden gebruikt
 
-| PowerShell-opdracht | Notities |
+| PowerShell-opdracht | Opmerkingen |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Deze opdracht wordt gebruikt om details over het lab, zoals de locatie ervan, op te halen. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Er is geen specifieke opdracht voor het toevoegen van artefact opslagplaatsen. De algemene cmdlet [New-AzResource](/powershell/module/az.resources/new-azresource) voert de taak uit. Voor deze cmdlet **moet de waarde** **ResourceID** of de combi natie resourcenaam en **resource** type zijn ingesteld om te weten welk soort bron moet worden gemaakt. Dit voorbeeld script maakt gebruik van de resource naam en het resource type paar. <br/><br/>U ziet dat u de opslag plaats voor artefacten op dezelfde locatie en onder dezelfde resource groep maakt als het lab.|

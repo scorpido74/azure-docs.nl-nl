@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 0a799c83-fde5-4f3f-af0e-67535d1882b6
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62116863"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507531"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Gebruik de StorSimple-apparaatbeheerfunctie om shares te beheren in de virtuele StorSimple-matrix
 
@@ -40,7 +40,7 @@ StorSimple-shares kunnen zijn:
 
 Raadpleeg de volgende tabel voor de maximale ingerichte capaciteit voor elk share type.
 
-| **Limiet-id** | **Limiet** |
+| **Limiet-id** | **Ondergrens** |
 | --- | --- |
 | Minimale grootte van een gelaagde share |500 GB |
 | Maximale grootte van een gelaagde share |20 TB |
@@ -88,7 +88,7 @@ Volg de instructies in deze zelf studie om de volgende taken uit te voeren:
 
    4. Geef in het veld **capaciteit** de grootte van de share op. Een gelaagde share moet tussen 500 GB en 20 TB liggen en een lokaal vastgemaakte share moet tussen 50 GB en 2 TB liggen.
 
-   5. Wijs in het veld **standaard volledige machtigingen instellen op** de machtigingen toe aan de gebruiker of de groep die toegang tot deze share heeft. Geef de naam op van de gebruiker of de gebruikers groep _john@contoso.com_ in de indeling. We raden u aan om een gebruikers groep (in plaats van één gebruiker) te gebruiken om beheerders bevoegdheden voor toegang tot deze shares toe te staan. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
+   5. Wijs in het veld **standaard volledige machtigingen instellen op** de machtigingen toe aan de gebruiker of de groep die toegang tot deze share heeft. Geef de naam op van de gebruiker of de gebruikers groep in de _john@contoso.com_ indeling. We raden u aan om een gebruikers groep (in plaats van één gebruiker) te gebruiken om beheerders bevoegdheden voor toegang tot deze shares toe te staan. Als u de bevoegdheden hier hebt toegewezen, kunt u Verkenner gebruiken om de bevoegdheden te wijzigen.
 3. Wanneer u klaar bent met het configureren van de share, klikt u op **maken**. Er wordt een share gemaakt met de opgegeven instellingen en er wordt een melding weer gegeven. Standaard wordt de back-up ingeschakeld voor de share.
 4. Ga naar de Blade **shares** om te controleren of de share is gemaakt. De lijst wordt weer gegeven.
    

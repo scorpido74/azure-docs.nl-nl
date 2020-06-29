@@ -11,17 +11,17 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed13c61646bd2a6672b613964507d291a69a6821
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267908"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483598"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Moment opnamen beheren met behulp van Azure NetApp Files
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Momentopnamen beheren met behulp van Azure NetApp Files
 
 U kunt Azure NetApp Files hand matig een moment opname op aanvraag maken voor een volume of herstellen van een moment opname naar een nieuw volume. Met de Azure NetApp Files service worden niet automatisch moment opnamen van volumes gemaakt.  
 
@@ -65,7 +65,7 @@ Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume.
         
         Het bestandspad mag alleen letters, cijfers en afbreekstreepjes ('-') bevatten. Het bestandspad moet tussen de 16 en 40 tekens lang zijn. 
 
-    * **Quotum**  
+    * **Quota**  
         Geef de hoeveelheid logische opslag op die u wilt toewijzen aan het volume.  
 
         Het veld **Beschikbare quotum** toont hoeveel ongebruikte ruimte er is in de gekozen capaciteitspool, die u kunt gebruiken om een nieuw volume te maken. De grootte van het nieuwe volume mag niet groter zijn dan het beschikbare quotum.
@@ -74,7 +74,7 @@ Op dit moment kunt u een moment opname alleen herstellen naar een nieuw volume.
         Geef het virtuele Azure-netwerk (Vnet) op dat u wilt gebruiken om het volume te benaderen.  
         Het opgegeven VNet moet een subnet bevatten dat is gedelegeerd aan Azure NetApp Files. U hebt alleen toegang tot Azure NetApp Files van hetzelfde Vnet of van een Vnet dat zich in dezelfde regio bevindt als het volume via Vnet-peering. U kunt het volume vanaf uw on-premises netwerk openen via een snelle route. 
 
-    * **Subnetrouter**  
+    * **Subnet**  
         Geef het subnet op dat u wilt gebruiken voor het volume.  
         Het subnet dat u opgeeft, moet aan de Azure NetApp Files-service worden gedelegeerd. U kunt een nieuw subnet maken door **Nieuw maken** te selecteren onder het veld subnet.  
    <!--

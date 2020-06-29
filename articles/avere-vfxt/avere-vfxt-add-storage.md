@@ -3,15 +3,15 @@ title: AVERE vFXT-opslag configureren-Azure
 description: Een back-end-opslag systeem toevoegen aan uw avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252608"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505746"
 ---
 # <a name="configure-storage"></a>Opslag configureren
 
@@ -47,9 +47,9 @@ Voer de volgende stappen uit om een NAS-kern bestand toe te voegen:
 
 1. Klik in het configuratie scherm van AVERE op het tabblad **instellingen** bovenaan.
 
-1. Klik op **core filer** > **kern bestanden beheren** aan de linkerkant.
+1. Klik op **core filer**  >  **kern bestanden beheren** aan de linkerkant.
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
    ![Scherm afbeelding van de pagina nieuwe kern bestand toevoegen met een cursor boven de knop maken](media/avere-vfxt-add-core-filer-start.png)
 
@@ -119,7 +119,7 @@ Voer de volgende stappen uit om Blob-opslag toe te voegen na het maken van het c
 
    ![Azure Portal GUI voor het kopiëren van de sleutel](media/avere-vfxt-copy-storage-key.png)
 
-1. Open het configuratie scherm van AVERE voor uw cluster. Klik op **instellingen**en open vervolgens de referenties van de **cluster** > -**Cloud** in het navigatie deel venster aan de linkerkant. Klik op de pagina Cloud referenties op **referentie toevoegen**.
+1. Open het configuratie scherm van AVERE voor uw cluster. Klik op **instellingen**en open **Cluster**vervolgens  >  de referenties van de cluster-**Cloud** in het navigatie deel venster aan de linkerkant. Klik op de pagina Cloud referenties op **referentie toevoegen**.
 
    ![Klik op de knop referentie toevoegen op de pagina configuratie van Cloud referenties](media/avere-vfxt-new-credential-button.png)
 
@@ -137,7 +137,7 @@ Voer de volgende stappen uit om Blob-opslag toe te voegen na het maken van het c
 
    ![Het formulier voor de Cloud referentie in het configuratie scherm van AVERE is voltooid](media/avere-vfxt-new-credential-submit.png)
 
-1. Maak vervolgens de kern bestand. Klik aan de linkerkant van het configuratie scherm van AVERE op **kern bestandiseren** >  **kern bestanden beheren**.
+1. Maak vervolgens de kern bestand. Klik aan de linkerkant van het configuratie scherm van AVERE op **kern bestandiseren**  >   **kern bestanden beheren**.
 
 1. Klik op de knop **maken** op de pagina instellingen voor **kern bestanden beheren** .
 
@@ -152,7 +152,7 @@ Voer de volgende stappen uit om Blob-opslag toe te voegen na het maken van het c
    * **Certificaat verificatie** wijzigen in **uitgeschakeld**
    * **Compressie modus** wijzigen in **geen**
    * Klik op **Volgende**.
-   * Voer op de vierde pagina de naam van de container in **Bucket naam** in als *storage_account_name*/*container_name*.
+   * Voer op de vierde pagina de naam van de container in **Bucket naam** in als *storage_account_name* / *container_name*.
    * U kunt ook het **versleutelings type** instellen op **geen**.  Azure Storage is standaard versleuteld.
    * Klik op **bestand toevoegen**.
 
@@ -166,14 +166,14 @@ Vervolgens moet u [een verbinding maken](#create-a-junction).
 
 Een verbinding is een pad dat u voor clients maakt. Clients koppelen het pad en ontvangen op de bestemming die u kiest.
 
-U kunt bijvoorbeeld maken `/vfxt/files` om toe te wijzen aan uw NetApp core filer `/vol0/data` export en de `/project/resources` submap.
+U kunt bijvoorbeeld maken om toe te `/vfxt/files` wijzen aan uw NetApp core filer `/vol0/data` export en de `/project/resources` submap.
 
 Meer informatie over koppelingen vindt u in de [sectie naam ruimte van de avere-cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 Volg deze stappen in de interface van het configuratie scherm van AVERE:
 
-* Klik in de linkerbovenhoek op **vserver** > -**naam ruimte** .
-* Geef een naam ruimte-pad op dat begint met/(slash ``/vfxt/data``), zoals.
+* Klik **VServer**  >  in de linkerbovenhoek op vserver-**naam ruimte** .
+* Geef een naam ruimte-pad op dat begint met/(slash), zoals ``/vfxt/data`` .
 * Kies uw kern bestand.
 * Kies de kern bestands export.
 * Klik op **Volgende**.

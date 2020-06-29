@@ -3,15 +3,15 @@ title: AVERE vFXT voor Azure implementeren
 description: Stappen voor het implementeren van het avere vFXT-cluster in azure
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252595"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505644"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Het vFXT-cluster implementeren
 
@@ -87,7 +87,7 @@ Op de tweede pagina van de implementatie sjabloon kunt u de cluster grootte, het
 
 * **Avere vFXT aantal cluster knooppunten** : Kies het aantal knoop punten in het cluster. Het minimum aantal is drie knoop punten en het maximum is twaalf.
 
-* **Wacht woord voor cluster beheer** : het wacht woord voor cluster beheer maken. Dit wacht woord wordt met de gebruikers ```admin``` naam gebruikt om u aan te melden bij het configuratie scherm van het cluster, waar u het cluster kunt bewaken en de cluster instellingen configureren.
+* **Wacht woord voor cluster beheer** : het wacht woord voor cluster beheer maken. Dit wacht woord wordt met de gebruikers naam gebruikt ```admin``` om u aan te melden bij het configuratie scherm van het cluster, waar u het cluster kunt bewaken en de cluster instellingen configureren.
 
 * **Avere vFXT-cluster naam** : Geef het cluster een unieke naam.
 

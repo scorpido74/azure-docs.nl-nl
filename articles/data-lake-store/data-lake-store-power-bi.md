@@ -3,15 +3,15 @@ title: Gegevens analyseren in Azure Data Lake Storage Gen1-Power BI
 description: Gebruik Power BI voor het analyseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: eb34199f6f1b304d56c691f56b78d9c035be8a5b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a692c5b23eaf23b33eef9bd2baf1e62b4bcca74e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744778"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504930"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen1 analyseren met behulp van Power BI
 In dit artikel leert u hoe u Power BI Desktop kunt gebruiken voor het analyseren en visualiseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
@@ -20,8 +20,8 @@ In dit artikel leert u hoe u Power BI Desktop kunt gebruiken voor het analyseren
 Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaan:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Een Data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md). In dit artikel wordt ervan uitgegaan dat u al een Data Lake Storage Gen1 account hebt gemaakt met de naam **myadlsg1**en dat er een voorbeeld gegevensbestand (**drivers. txt**) naar wordt verzonden. Dit voorbeeld bestand kan worden gedownload van [Azure data Lake Git-opslag plaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
-* **Power bi Desktop**. U kunt dit downloaden van het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
+* **Een Data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md). In dit artikel wordt ervan uitgegaan dat u al een Data Lake Storage Gen1 account hebt gemaakt met de naam **myadlsg1**en dat er een voorbeeld gegevensbestand (**Drivers.txt**) naar het bestand is geüpload. Dit voorbeeld bestand kan worden gedownload van [Azure data Lake Git-opslag plaats](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
+* **Power BI Desktop**. U kunt dit downloaden van het [micro soft Download centrum](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Een rapport maken in Power BI Desktop
 1. Start Power BI Desktop op de computer.
@@ -56,7 +56,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 10. Klik in de query-editor, onder de kolom **inhoud** , op **binair**.
     
     ![Query's bewerken](./media/data-lake-store-power-bi/convert-query1.png "Query's bewerken")
-11. Er wordt een pictogram weer geven dat het bestand **drivers. txt** vertegenwoordigt dat u hebt geüpload. Klik met de rechter muisknop op het bestand en klik op **CSV**.    
+11. U ziet een pictogram met een bestand dat het **Drivers.txt** bestand vertegenwoordigt dat u hebt geüpload. Klik met de rechter muisknop op het bestand en klik op **CSV**.    
     
     ![Query's bewerken](./media/data-lake-store-power-bi/convert-query2.png "Query's bewerken")
 12. U ziet een uitvoer zoals hieronder wordt weer gegeven. Uw gegevens zijn nu beschikbaar in een indeling die u kunt gebruiken om visualisaties te maken.
@@ -78,7 +78,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
         ![Visualisaties maken](./media/data-lake-store-power-bi/create-visualizations.png "Visualisaties maken")
     3. Het cirkel diagram moet er nu uitzien zoals hieronder wordt weer gegeven.
        
-        ![Cirkel diagram](./media/data-lake-store-power-bi/pie-chart.png "Visualisaties maken")
+        ![Cirkeldiagram](./media/data-lake-store-power-bi/pie-chart.png "Visualisaties maken")
 16. Als u een bepaald land/regio selecteert in de filters op pagina niveau, kunt u nu het aantal Stuur Programma's weer geven in elke plaats van het geselecteerde land/de regio. Selecteer bijvoorbeeld onder het tabblad **Visualisaties** de optie **Brazilië**onder **filters op pagina niveau**.
     
     ![Een land/regio selecteren](./media/data-lake-store-power-bi/select-country.png "Een land/regio selecteren")

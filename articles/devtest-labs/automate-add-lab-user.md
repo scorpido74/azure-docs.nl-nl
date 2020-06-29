@@ -1,23 +1,14 @@
 ---
 title: Het toevoegen van een Lab-gebruiker in Azure DevTest Labs automatiseren | Microsoft Docs
 description: Dit artikel laat u zien hoe u het toevoegen van een gebruiker aan een lab in Azure DevTest Labs kunt automatiseren met Azure Resource Manager sjablonen, Power shell en CLI.
-services: devtest-lab,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898743"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483819"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisch toevoegen van een Lab-gebruiker aan een lab in Azure DevTest Labs
 Met Azure DevTest Labs kunt u snel ontwikkel-en test omgevingen met self-service maken met behulp van de Azure Portal. Als u echter verschillende teams en verschillende DevTest Labs-instanties hebt, kan het maken van het aanmaak proces tijd besparen. Met [Azure Resource Manager sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) kunt u Labs, Lab-vm's, aangepaste installatie kopieën en formules maken en gebruikers op een geautomatiseerde manier toevoegen. Dit artikel is specifiek gericht op het toevoegen van gebruikers aan een DevTest Labs-exemplaar.

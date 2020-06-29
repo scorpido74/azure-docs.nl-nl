@@ -7,17 +7,17 @@ author: priestlg
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
-ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb2123bdb0e12571a58a32e414a610665935ebb6
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80658038"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508211"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Update 5,1 op uw StorSimple-apparaat installeren
 
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om uw apparaat bij te werken naar [update 5,1](stor
 
     ![Apparaat selecteren](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Navigeren > naar **Apparaatinstellingen apparaat-****updates**.
+2. Navigeren naar **Apparaatinstellingen apparaat-**  >  **updates**.
 
     ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update2.png)
 

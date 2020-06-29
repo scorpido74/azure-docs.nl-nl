@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 6/10/2020
-ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.date: 6/26/2020
+ms.openlocfilehash: 2b5da354e8e8b49e40e7d960e368aad8067de659
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667587"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506698"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -272,7 +272,7 @@ De resource groep van de gebruiker is de binnenste grenzen voor bron beheer voor
 
 De metrische gegevens voor het bewaken van het resource gebruik van het app-pakket en de gebruikers groep van een serverloze Data Base worden weer gegeven in de volgende tabel:
 
-|Entiteit|Metrisch|Beschrijving|Eenheden|
+|Entiteit|Gegevens|Beschrijving|Eenheden|
 |---|---|---|---|
 |App-pakket|app_cpu_percent|Het percentage vCores dat door de app wordt gebruikt ten opzichte van het maximale aantal vCores dat voor de app is toegestaan.|Percentage|
 |App-pakket|app_cpu_billed|De hoeveelheid reken kracht die tijdens de rapportage periode in rekening wordt gebracht voor de app. Het betaalde bedrag tijdens deze periode is het product van deze metrische waarde en de vCore eenheids prijs. <br><br>Waarden van deze metrische gegevens worden bepaald door het samen voegen van het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid kleiner is dan de minimum hoeveelheid die is ingericht zoals ingesteld door de min-vCores en het minimale geheugen, wordt de ingerichte minimum hoeveelheid gefactureerd.Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.|vCore seconden|
@@ -347,7 +347,7 @@ Azure Hybrid Benefit (AHB) en gereserveerde capaciteits kortingen zijn niet van 
 
 ## <a name="available-regions"></a>Beschikbare regio's
 
-De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van de volgende regio's: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, UK-noord, UK-zuid 2, West-Centraal VS en US Gov Central (Iowa).
+De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van de volgende regio's: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost en US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>Volgende stappen
 
