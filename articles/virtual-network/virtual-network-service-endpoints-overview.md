@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 3e17df2a3c92d24a7fa662fbf92f8c89b434eb0d
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338236"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444451"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
@@ -80,7 +80,7 @@ Service-eindpunten bieden de volgende voordelen:
 
 ![Azure-services aan virtuele netwerken koppelen](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
-### <a name="configuration"></a>Configuratie
+### <a name="configuration"></a>Configuration
 
 - Configureer service-eind punten in een subnet in een virtueel netwerk. Eindpunten werken met alle soorten rekenprocessen die worden uitgevoerd in dat subnet.
 - U kunt meerdere service-eind punten voor alle ondersteunde Azure-Services (bijvoorbeeld Azure Storage of Azure SQL Database) voor een subnet configureren.
@@ -90,7 +90,7 @@ Service-eindpunten bieden de volgende voordelen:
 
 ### <a name="considerations"></a>Overwegingen
 
-- Nadat een service-eind punt is ingeschakeld, worden de bron-IP-adressen van virtuele machines in de subnet-switch. De bron-IP-adressen scha kelen van het gebruik van open bare IPv4-adressen naar het gebruik van hun persoonlijke IPv4-adres bij het communiceren met de service vanuit dat subnet. Bestaande open TCP-verbindingen met de service worden hierbij gesloten. Zorg ervoor dat er geen kritieke taken worden uitgevoerd wanneer u een service-eindpunt voor een service voor een subnet in- of uitschakelt. Zorg er ook voor dat uw toepassingen automatisch verbinding kunnen maken met Azure-services nadat de wisseling van IP-adres heeft plaatsgevonden.
+- Nadat een service-eind punt is ingeschakeld, scha kelen de bron-IP-adressen van het gebruik van open bare IPv4-adressen met behulp van hun persoonlijke IPv4-adres bij het communiceren met de service vanuit dat subnet. Bestaande open TCP-verbindingen met de service worden hierbij gesloten. Zorg ervoor dat er geen kritieke taken worden uitgevoerd wanneer u een service-eindpunt voor een service voor een subnet in- of uitschakelt. Zorg er ook voor dat uw toepassingen automatisch verbinding kunnen maken met Azure-services nadat de wisseling van IP-adres heeft plaatsgevonden.
 
   Het wisselen van IP-adres heeft alleen gevolgen voor het serviceverkeer vanuit uw virtuele netwerk. Er is geen invloed op enig ander verkeer dat is geadresseerd aan of van de open bare IPv4-adressen die zijn toegewezen aan uw virtuele machines. Als u voor Azure-services bestaande firewallregels hebt waarin gebruik wordt gemaakt van openbare IP-adressen voor Azure, werken deze regels niet meer nadat is overgeschakeld op privéadressen van virtuele netwerken.
 - Met Service-eind punten blijven DNS-vermeldingen voor Azure-Services vandaag nog aanwezig en gaan we verder met het omzetten van open bare IP-adressen die zijn toegewezen aan de Azure-service.

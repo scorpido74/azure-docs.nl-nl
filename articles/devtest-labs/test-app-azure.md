@@ -1,23 +1,14 @@
 ---
 title: Uw app testen in azure | Microsoft Docs
 description: Meer informatie over het maken van een bestands share in een lab en het koppelen van het bestand op uw lokale computer en een virtuele machine in het lab, en het implementeren van bureau blad/webtoepassingen op de bestands share en het testen ervan.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
-ms.author: spelluru
-ms.openlocfilehash: 65d7ee23195e69c67d9235aeea9a7a166a3a22c1
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/26/2020
+ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211524"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476492"
 ---
 # <a name="test-your-app-in-azure"></a>Uw app in Azure testen 
 Dit artikel bevat stappen voor het testen van uw toepassing in azure met behulp van DevTest Labs. Eerst stelt u een bestands share in een lab in en koppelt u deze als een station op uw lokale ontwikkel computer en een virtuele machine in een lab. Vervolgens gebruikt u Visual Studio 2019 om uw app te implementeren op de bestands share, zodat u de app op de virtuele machine in het lab kunt uitvoeren.  

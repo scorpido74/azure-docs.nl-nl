@@ -1,6 +1,6 @@
 ---
-title: Een nood herstel analyse uitvoeren op Azure met Azure Site Recovery
-description: Meer informatie over het uitvoeren van een nood herstel analyse van on-premises naar Azure, met Azure Site Recovery.
+title: Noodherstelanalyse uitvoeren in Azure met Azure Site Recovery
+description: Ontdek hoe u een noodherstelanalyse uitvoert van on-premises naar Azure met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -9,36 +9,36 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238900"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84699614"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Noodherstelanalyse uitvoeren in Azure
 
-In dit artikel wordt beschreven hoe u een nood herstel analyse uitvoert voor een on-premises machine naar Azure met behulp van de [Azure site Recovery](site-recovery-overview.md) -service. Tijdens een dergelijke analyse wordt uw replicatiestrategie gevalideerd zonder dat er kans op gegevensverlies is.
+In dit artikel wordt beschreven hoe u een noodherstelanalyse uitvoert van een on-premises machine naar Azure met behulp van de [Azure Site Recovery](site-recovery-overview.md)-service. Tijdens een dergelijke analyse wordt uw replicatiestrategie gevalideerd zonder dat er kans op gegevensverlies is.
 
 
-Dit is de vierde zelf studie in een serie die laat zien hoe u herstel na nood gevallen naar Azure instelt voor on-premises machines.
+Dit is de vierde zelfstudie in een reeks waarin u ziet hoe u herstel naar Azure na een noodgeval kunt instellen voor on-premises machines.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een geïsoleerd netwerk instellen voor de failovertest
 > * Voorbereiden om verbinding te maken met de virtuele Azure-machine na de failover
-> * Voer een testfailover voor één computer uit.
+> * Een failovertest uitvoeren voor één machine.
 
 > [!NOTE]
-> Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. [Raadpleeg dit artikel](site-recovery-test-failover-to-azure.md)als u meer informatie wilt over de stappen voor herstel na nood gevallen.
+> In zelfstudies ziet u steeds het eenvoudigste implementatiepad voor een scenario. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. [Bekijk dit artikel](site-recovery-test-failover-to-azure.md) voor gedetailleerdere informatie over de stappen voor noodherstelanalyse.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Voltooi de vorige zelf studies:
+Voltooi de vorige zelfstudies:
 
-1. Zorg ervoor dat u [Azure hebt ingesteld](tutorial-prepare-azure.md) voor on-premises herstel na nood gevallen van virtuele VMware-machines, Hyper-V-vm's en fysieke machines naar Azure.
-2. Bereid uw on-premises [VMware](vmware-azure-tutorial-prepare-on-premises.md) [-of Hyper-V-](hyper-v-prepare-on-premises-tutorial.md) omgeving voor op herstel na nood geval. Als u herstel na nood gevallen instelt voor fysieke servers, raadpleegt u de [ondersteunings matrix](vmware-physical-secondary-support-matrix.md).
-3. Herstel na nood gevallen instellen voor [VMware-vm's](vmware-azure-tutorial.md), [Hyper-V-vm's](hyper-v-azure-tutorial.md)of [fysieke machines](physical-azure-disaster-recovery.md).
+1. Zorg ervoor dat u [Azure hebt ingesteld](tutorial-prepare-azure.md) voor on-premises noodherstel van VMware-VM’s, Hyper-V-VM’s en fysieke machines naar Azure.
+2. Bereid uw on-premises [VMware](vmware-azure-tutorial-prepare-on-premises.md)- of [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-omgeving voor op herstel na een noodgeval. Als u herstel na noodgevallen instelt voor fysieke servers, bekijkt u de [ondersteuningsmatrix](vmware-physical-secondary-support-matrix.md).
+3. Stel herstel na noodgevallen in voor [VMware-VM’s](vmware-azure-tutorial.md), [Hyper-V-VM’s](hyper-v-azure-tutorial.md) of [fysieke machines](physical-azure-disaster-recovery.md).
  
 
 ## <a name="verify-vm-properties"></a>VM-eigenschappen verifiëren
@@ -47,7 +47,7 @@ Voordat u een failovertest uitvoert, controleert u de eigenschappen van de virtu
 
 1. Klik in **Beveiligde items** op **Gerepliceerde items** > en de VM.
 2. In het deelvenster **Gerepliceerd item** bevindt zich een overzicht van VM-informatie, status, en de laatste beschikbare herstelpunten. Klik op **Eigenschappen** om meer details te bekijken.
-3. In **Compute en Network**kunt u de Azure-naam, de resource groep, de doel grootte, beschikbaarheidsset en de instellingen voor beheerde schijven wijzigen.
+3. In **Berekening en netwerk** kunt u de Azure-naam, resourcegroep, doelgrootte, beschikbaarheidsset, en instellingen van de beheerde schijf wijzigen.
 4. U kunt de netwerkinstellingen bekijken en wijzigen, inclusief het netwerk-/subnet waarin de Azure VM zich na failover bevindt en het IP-adres dat eraan wordt toegewezen.
 5. In **Schijven** ziet u informatie over het besturingssysteem en de gegevensschijven van de VM.
 
@@ -69,24 +69,24 @@ Wanneer u een testfailover uitvoert, gebeurt het volgende:
 
 Voer de failovertest als volgt uit:
 
-1. Klik in **instellingen** > **gerepliceerde items**op de VM **> en testfailover.**
+1. Klik in **Instellingen** > **Gerepliceerde items** op de VM **+Failover testen**.
 2. Selecteer voor deze zelfstudie het **meest recente verwerkte** herstelpunt. Hierdoor wordt de virtuele machine hersteld naar het laatst beschikbare tijdstip. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is.
 3. Selecteer in **Failover testen** het Azure-doelnetwerk waarmee de virtuele Azure-machines moeten worden verbonden nadat de failover heeft plaatsgevonden.
 4. Klik op **OK** om te beginnen met de failover. Als u de voortgang wilt volgen, klikt u op de virtuele machine en opent u de eigenschappen. U kunt ook op de taak **Failover testen** klikken in kluisnaam > **Instellingen** > **Taken** >
    **Site Recovery-taken**.
 5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de virtuele machine de juiste grootte heeft, of deze is verbonden met het juiste netwerk en of deze actief is.
 6. Nu moet u verbinding maken met de gerepliceerde virtuele machine in Azure.
-7. Als u VM's van Azure wilt verwijderen die tijdens de failovertest zijn gemaakt, klikt u in de VM op **Failovertest opschonen**. Leg in **notities**eventuele opmerkingen over de testfailover vast en sla deze op.
+7. Als u VM's van Azure wilt verwijderen die tijdens de failovertest zijn gemaakt, klikt u in de VM op **Failovertest opschonen**. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
 
 In sommige scenario's vereist de failover extra verwerking die circa acht tot tien minuten duurt. U zou langere failover-tijden kunnen waarnemen voor VMware Linux-computers, VMware-VM's waarop de DHCP-service niet is ingeschakeld, en VMware-VM's die niet de volgende opstartstuurprogramma’s hebben: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="connect-after-failover"></a>Verbinding maken na failover
+## <a name="connect-after-failover"></a>Verbinden na failover
 
-Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH, [moet u verbinding maken](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Als u na de failover problemen ondervindt met de verbinding, volgt u de hand leiding voor het [oplossen van problemen](site-recovery-failover-to-azure-troubleshoot.md) .
+[Bereid u voor op verbinding](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) als u na een failover met RDP/SSH verbinding wilt maken met Azure-VM's. Volg de handleiding voor het [oplossen van problemen](site-recovery-failover-to-azure-troubleshoot.md) als u na een failover connectiviteitsproblemen ondervindt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een failover en failback uitvoeren voor VMware](vmware-azure-tutorial-failover-failback.md)
-> [-vm's een failover en failback uitvoeren voor virtuele](hyper-v-azure-failover-failback-tutorial.md)
-> Hyper-V-machines[een failover en failback uitvoeren voor fysieke machines](physical-to-azure-failover-failback.md)
+> [Een failover en failback uitvoeren voor VMware-VM’s](vmware-azure-tutorial-failover-failback.md)
+> [Een failover en failback uitvoeren voor Hyper-V-VM’s](hyper-v-azure-failover-failback-tutorial.md)
+> [Een failover en failback uitvoeren voor fysieke machines](physical-to-azure-failover-failback.md)

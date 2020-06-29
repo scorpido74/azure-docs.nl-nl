@@ -1,25 +1,14 @@
 ---
 title: Artefact fouten in een Azure DevTest Labs virtuele machine diagnosticeren
 description: DevTest Labs biedt informatie die u kunt gebruiken om een artefact fout vast te stellen. In dit artikel leest u hoe u storingen in artefacten kunt oplossen.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 115e0086-3293-4adf-8738-9f639f31f918
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: 0b5a7f24cef01b4cd4cbdab898265e233525820e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898687"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480810"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Storingen in artefacten in het lab diagnosticeren 
 Nadat u een artefact hebt gemaakt, kunt u controleren of deze is geslaagd of mislukt. Artefact Logboeken in Azure DevTest Labs bevatten informatie die u kunt gebruiken om een artefact fout vast te stellen. U hebt een aantal opties voor het weer geven van de artefact logboek gegevens voor een Windows-VM:

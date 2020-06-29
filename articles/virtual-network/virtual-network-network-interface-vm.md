@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 68f8a7086dd164c102e42c99bb8d6ba22b71ad6f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710980"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480130"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Netwerkinterfaces toevoegen aan of verwijderen van netwerkinterfaces van virtuele machines
 
@@ -46,7 +46,7 @@ Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. 
 
 Wanneer u via de portal een virtuele machine maakt, maakt de portal een netwerk interface met de standaard instellingen en koppelt de netwerk interface voor u aan de VM. U kunt de portal niet gebruiken om bestaande netwerk interfaces toe te voegen aan een nieuwe virtuele machine of om een virtuele machine met meerdere netwerk interfaces te maken. U kunt beide doen met behulp van de CLI of Power shell. Zorg ervoor dat u vertrouwd bent met de [beperkingen](#constraints). Als u een virtuele machine met meerdere netwerk interfaces maakt, moet u ook het besturings systeem configureren om ze goed te gebruiken nadat u de virtuele machine hebt gemaakt. Meer informatie over het configureren van [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) voor meerdere netwerk interfaces.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 Voordat u de virtuele machine maakt, [maakt u een netwerk interface](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -76,7 +76,7 @@ Een netwerk interface toevoegen aan de virtuele machine:
 
 Nu kunt u het VM-besturings systeem configureren om meerdere netwerk interfaces op de juiste manier te gebruiken. Meer informatie over het configureren van [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) voor meerdere netwerk interfaces.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -98,7 +98,7 @@ U kunt de netwerk interfaces die momenteel zijn gekoppeld aan een virtuele machi
 
 Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer informatie over de instellingen van de netwerk interface en hoe u deze kunt wijzigen. Zie [IP-adressen van netwerk interfaces beheren](virtual-network-network-interface-addresses.md)voor meer informatie over het toevoegen, wijzigen of verwijderen van IP-adressen die zijn toegewezen aan een netwerk interface.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -122,7 +122,7 @@ Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer 
     >[!NOTE]
     >Als er slechts één netwerk interface wordt weer gegeven, kunt u deze niet loskoppelen omdat er altijd ten minste één netwerk interface aan een virtuele machine is gekoppeld.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -151,7 +151,7 @@ Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer 
 
 - Als u een virtuele machine verwijdert, worden de gekoppelde netwerk interfaces niet verwijderd. Wanneer u een virtuele machine verwijdert, worden de netwerk interfaces losgekoppeld van de virtuele machine. U kunt deze netwerk interfaces toevoegen aan verschillende Vm's of verwijderen.
 
-- Net als bij IPv6 kunt u een netwerk interface met versnelde netwerken niet koppelen aan een virtuele machine nadat u deze hebt gemaakt. Als u verder wilt profiteren van versneld netwerken, moet u ook de stappen binnen het VM-besturings systeem volt ooien. Meer informatie over versneld netwerken en andere beperkingen bij het gebruik van het netwerk voor virtuele [Windows](create-vm-accelerated-networking-powershell.md) -of [Linux](create-vm-accelerated-networking-cli.md) -machines.
+- Het bereiken van de optimale prestaties die worden gedocumenteerd, vereist versneld netwerken. In sommige gevallen moet u versneld netwerken expliciet inschakelen voor virtuele [Windows](create-vm-accelerated-networking-powershell.md) -of [Linux](create-vm-accelerated-networking-cli.md) -machines.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,24 +1,14 @@
 ---
 title: Lab-Maker toestaan locatie in Azure Lab Services te kiezen
 description: In dit artikel wordt beschreven hoe een Lab-account beheerder Lab-makers kan toestaan om locaties voor hun Labs te kiezen.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 8d11b0fcf57be35d5a47d720a07fa274acc05b35
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899135"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444196"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Lab Creator toestaan locatie voor het lab in Azure Lab Services te kiezen
 In Azure Lab Services kan de eigenaar van een Lab-account Lab-makers (docenten) toestaan een locatie te kiezen voor het lab dat ze maken. Deze locatie kan afwijken van de locatie van het lab-account. Een locatie is een groep Azure-regio's. Verenigde Staten locatie is bijvoorbeeld een groep regio's, zoals VS-Oost, VS-West, enzovoort. 

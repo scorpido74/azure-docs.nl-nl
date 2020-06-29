@@ -15,7 +15,7 @@ ms.locfileid: "67176234"
 
 Voer de volgende stappen uit om de software-update te downloaden uit de Microsoft Update-catalogus.
 
-1. Start Internet Explorer en ga naar [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Start Internet Explorer en ga naar [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 2. Als dit de eerste keer is dat u de Microsoft Update-catalogus op deze computer gebruikt, klikt u op **Installeren** wanneer u wordt gevraagd of u de invoegtoepassing voor de Microsoft Update-catalogus wilt installeren.
 
     ![Catalogus installeren](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -26,7 +26,7 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
    
     ![Catalogus doorzoeken](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Klik op **downloaden**. Typ of **blader naar** een lokale locatie waar u de downloads wilt weergeven. Klik op de bestanden die u wilt downloaden naar de opgegeven locatie en map. De map kan ook worden gekopieerd naar een netwerkshare die bereikbaar is vanaf het apparaat.
+4. Klik op **Downloaden**. Typ of **blader naar** een lokale locatie waar u de downloads wilt weergeven. Klik op de bestanden die u wilt downloaden naar de opgegeven locatie en map. De map kan ook worden gekopieerd naar een netwerkshare die bereikbaar is vanaf het apparaat.
 5. Zoek naar eventuele aanvullende hotfixes die worden vermeld in de bovenstaande tabel (**4011841**) en down load de bijbehorende bestanden naar de specifieke mappen zoals vermeld in de voor gaande tabel.
 
 > [!NOTE]
@@ -104,10 +104,10 @@ Voer de volgende stappen uit om hotfixes in de normale modus te installeren en t
      Als het versienummer niet is gewijzigd nadat de update is toegepast, kon de hotfix blijkbaar niet worden toegepast. Neem in dat geval contact op met [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) voor verdere hulp.
      
      > [!IMPORTANT]
-     > U moet de actieve controller opnieuw starten via `Restart-HcsController` de cmdlet voordat u de volgende update toepast.
+     > U moet de actieve controller opnieuw starten via de `Restart-HcsController` cmdlet voordat u de volgende update toepast.
      
 7. Herhaal de stappen 3-5 om de CIS/MDS-agent te installeren die is gedownload naar uw _FirstOrderUpdate_ -map. 
-8. Herhaal stap 3 t/m 5 om de tweede belangrijkste updates te installeren. **Voor de tweede update van de updates kunnen meerdere updates worden geïnstalleerd door gewoon `Start-HcsHotfix cmdlet` de map uit te voeren en aan te wijzen naar de locatie waar de tweede update van de updates zich bevindt. Met de cmdlet worden alle beschik bare updates in de map uitgevoerd.** Als een update al is geïnstalleerd, wordt dit door de updatelogica gedetecteerd en wordt die update niet toegepast. 
+8. Herhaal stap 3 t/m 5 om de tweede belangrijkste updates te installeren. **Voor de tweede update van de updates kunnen meerdere updates worden geïnstalleerd door gewoon de `Start-HcsHotfix cmdlet` map uit te voeren en aan te wijzen naar de locatie waar de tweede update van de updates zich bevindt. Met de cmdlet worden alle beschik bare updates in de map uitgevoerd.** Als een update al is geïnstalleerd, wordt dit door de updatelogica gedetecteerd en wordt die update niet toegepast. 
 
 Nadat alle hotfixes zijn geïnstalleerd, gebruikt u de cmdlet `Get-HcsSystem`. De versies moeten zijn:
 

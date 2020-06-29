@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10485a5467a63e0b3bb1aa0dbefc4d156c2a9565
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886089"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479025"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Fouten diagnosticeren met de Azure Active Directory Connected-service
 
@@ -52,7 +52,7 @@ Ten slotte probeert de verbonden service versies van verificatie code te detecte
 * Afzonderlijke gebruikers accounts
 * Organisatie-accounts
 
-Als u Windows-verificatie in een MVC-project wilt detecteren, zoekt `authentication` de verbonden het `web.config` element in uw bestand.
+Als u Windows-verificatie in een MVC-project wilt detecteren, zoekt de verbonden het `authentication` element in uw `web.config` bestand.
 
 ```xml
 <configuration>
@@ -62,7 +62,7 @@ Als u Windows-verificatie in een MVC-project wilt detecteren, zoekt `authenticat
 </configuration>
 ```
 
-Als u Windows-verificatie in een web-API-project wilt detecteren, zoekt `IISExpressWindowsAuthentication` de verbonden service naar het `.csproj` element in het bestand van het project:
+Als u Windows-verificatie in een web-API-project wilt detecteren, zoekt de verbonden service naar het `IISExpressWindowsAuthentication` element in het bestand van het project `.csproj` :
 
 ```xml
 <Project>
@@ -72,7 +72,7 @@ Als u Windows-verificatie in een web-API-project wilt detecteren, zoekt `IISExpr
 </Project>
 ```
 
-Voor het detecteren van verificatie van afzonderlijke gebruikers accounts zoekt de verbonden service naar het pakket element `packages.config` in uw bestand.
+Voor het detecteren van verificatie van afzonderlijke gebruikers accounts zoekt de verbonden service naar het pakket element in uw `packages.config` bestand.
 
 ```xml
 <packages>
@@ -80,7 +80,7 @@ Voor het detecteren van verificatie van afzonderlijke gebruikers accounts zoekt 
 </packages>
 ```
 
-Voor het detecteren van een oude vorm van verificatie van organisatie-accounts zoekt de verbonden service naar het volgende`web.config`-element in:
+Voor het detecteren van een oude vorm van verificatie van organisatie-accounts zoekt de verbonden service naar het volgende-element in `web.config` :
 
 ```xml
 <configuration>

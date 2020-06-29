@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154573"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478141"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Nieuwe trainingshandleiding voor app-registratie in de Azure-portal
 
@@ -56,7 +56,7 @@ De verouderde ervaring had een **Eigenschappen** pagina. **Eigenschappen** hebbe
 
 - **Naam**
 - **Object-id**
-- **Toepassings-ID**
+- **Toepassings-id**
 - **App-id-URI**
 - **Logo**
 - **URL van start pagina**
@@ -64,7 +64,7 @@ De verouderde ervaring had een **Eigenschappen** pagina. **Eigenschappen** hebbe
 - **URL voor de service voorwaarden**
 - **URL voor de privacyverklaring**
 - **Toepassingstype**
-- **Multi tenant**
+- **Multitenant**
 
 Deze pagina is niet in de nieuwe ervaring. Hier kunt u de equivalente functionaliteit vinden:
 
@@ -73,13 +73,13 @@ Deze pagina is niet in de nieuwe ervaring. Hier kunt u de equivalente functional
 - De functionaliteit die wordt beheerd door de **multi-tenant** wissel knop in de verouderde ervaring is vervangen door de **ondersteunde account typen** op de **verificatie** pagina. Zie [Quick Start: de accounts wijzigen die door een toepassing worden ondersteund](quickstart-modify-supported-accounts.md)voor meer informatie.
 - De **Afmeldings-URL** is nu op de **verificatie** pagina.
 - Het **toepassings type** is niet langer een geldig veld. In plaats daarvan omleidings-Uri's, die u op de pagina **verificatie** kunt vinden, bepaalt u welke typen apps worden ondersteund.
-- De URI van de **App-ID** heet nu URI voor de **toepassings-id** en u kunt deze vinden op **een API beschikbaar**maken. In de verouderde ervaring is deze eigenschap auto geregistreerd met de volgende indeling `https://{tenantdomain}/{appID}`:, bijvoorbeeld `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`. De nieuwe ervaring wordt automatisch gegenereerd als `api://{appID}`, maar moet expliciet worden opgeslagen. In Azure AD B2C tenants wordt de `https://{tenantdomain}/{appID}` indeling nog steeds gebruikt.
+- De URI van de **App-ID** heet nu URI voor de **toepassings-id** en u kunt deze vinden op **een API beschikbaar**maken. In de verouderde ervaring is deze eigenschap auto geregistreerd met de volgende indeling: `https://{tenantdomain}/{appID}` , bijvoorbeeld `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` . De nieuwe ervaring wordt automatisch gegenereerd als `api://{appID}` , maar moet expliciet worden opgeslagen. In Azure AD B2C tenants wordt de `https://{tenantdomain}/{appID}` indeling nog steeds gebruikt.
 
 ### <a name="reply-urlsredirect-urls"></a>Antwoord Url's/omleidings-Url's
 
 In de verouderde ervaring had een app een pagina **antwoord-url's** . In de nieuwe ervaring kunnen antwoord-Url's worden gevonden op de **verificatie** pagina van de app. Ze worden nu **omleidings-uri's**genoemd.
 
-De indeling voor omleidings-Uri's is gewijzigd. Ze moeten worden gekoppeld aan een app-type, hetzij web of openbaar. Uit veiligheids overwegingen worden joker tekens en `http://` schema's niet ondersteund, met uitzonde ring van *http://localhost*.
+De indeling voor omleidings-Uri's is gewijzigd. Ze moeten worden gekoppeld aan een app-type, hetzij web of openbaar. Uit veiligheids overwegingen worden joker tekens en `http://` schema's niet ondersteund, met uitzonde ring van *http://localhost* .
 
 ### <a name="keyscertificates--secrets"></a>Sleutels/certificaten & geheimen
 
@@ -118,8 +118,8 @@ De oude en nieuwe ervaringen gebruiken verschillende versies voor de indeling va
 
 De nieuwe ervaring voegt UI-besturings elementen toe voor de volgende eigenschappen:
 
-- De **verificatie** pagina heeft **impliciete granting flow** (`oauth2AllowImplicitFlow`). In tegens telling tot in de verouderde ervaring kunt u **toegangs tokens** of **id-tokens**inschakelen, of beide.
-- De pagina **een API beschikbaar** maken bevat **scopes die zijn gedefinieerd door deze API** (`oauth2Permissions`) en **geautoriseerde client toepassingen** (`preAuthorizedApplications`). Voor meer informatie over het configureren van een app voor een web-API en het beschikbaar maken van machtigingen/bereiken raadpleegt [u Quick Start: een toepassing configureren om Web-api's weer te](quickstart-configure-app-expose-web-apis.md)geven.
+- De **verificatie** pagina heeft **impliciete granting flow** ( `oauth2AllowImplicitFlow` ). In tegens telling tot in de verouderde ervaring kunt u **toegangs tokens** of **id-tokens**inschakelen, of beide.
+- De pagina **een API beschikbaar** maken bevat **scopes die zijn gedefinieerd door deze API** ( `oauth2Permissions` ) en **geautoriseerde client toepassingen** ( `preAuthorizedApplications` ). Voor meer informatie over het configureren van een app voor een web-API en het beschikbaar maken van machtigingen/bereiken raadpleegt [u Quick Start: een toepassing configureren om Web-api's weer te](quickstart-configure-app-expose-web-apis.md)geven.
 - De pagina **huisstijl** bevat het **domein**van de uitgever. Het domein van de uitgever wordt weer gegeven voor gebruikers op de [toestemming prompt van de toepassing](application-consent-experience.md). Zie [How to: configure a Application Publisher Domain](howto-configure-publisher-domain.md)(Engelstalig) voor meer informatie.
 
 ## <a name="limitations"></a>Beperkingen

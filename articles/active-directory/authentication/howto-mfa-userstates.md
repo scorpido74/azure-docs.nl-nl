@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ea97d7a2aa5fdc18d11e952eafe65b167b3397
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483927"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476832"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Microsoft Azure Multi-Factor Authentication per gebruiker inschakelen om aanmeldingsgebeurtenissen te beveiligen
 
@@ -39,7 +39,7 @@ Gebruikers accounts in azure Multi-Factor Authentication de volgende drie status
 | Status | Beschrijving | Betrokken niet-browser-apps | Browser-apps die worden beïnvloed | Betrokken moderne verificatie |
 |:---:| --- |:---:|:--:|:--:|
 | Uitgeschakeld | De standaard status voor een nieuwe gebruiker die niet is inge schreven in azure Multi-Factor Authentication. | Nee | Nee | Nee |
-| Ingeschakeld | De gebruiker is inge schreven bij Azure Multi-Factor Authentication, maar is niet geregistreerd. Er wordt een prompt weer gegeven om de volgende keer dat ze zich aanmelden te registreren. | Nee.  Ze blijven werken totdat het registratie proces is voltooid. | Ja. Nadat de sessie is verlopen, is de registratie van Azure Multi-Factor Authentication vereist.| Ja. Nadat het toegangs token is verlopen, is de registratie van Azure Multi-Factor Authentication vereist. |
+| Ingeschakeld | De gebruiker is inge schreven bij Azure Multi-Factor Authentication, maar heeft geen geregistreerde verificatie methoden. Er wordt een prompt weer gegeven om de volgende keer dat ze zich aanmelden te registreren. | Nee.  Ze blijven werken totdat het registratie proces is voltooid. | Ja. Nadat de sessie is verlopen, is de registratie van Azure Multi-Factor Authentication vereist.| Ja. Nadat het toegangs token is verlopen, is de registratie van Azure Multi-Factor Authentication vereist. |
 | Afgedwongen | De gebruiker is inge schreven en heeft het registratie proces voor Azure Multi-Factor Authentication voltooid. | Ja. Apps vereisen app-wacht woorden. | Ja. Azure Multi-Factor Authentication is vereist bij de aanmelding. | Ja. Azure Multi-Factor Authentication is vereist bij de aanmelding. |
 
 De status van een gebruiker geeft aan of een beheerder deze heeft inge schreven in azure Multi-Factor Authentication en of het registratie proces is voltooid.

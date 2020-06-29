@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 18e1ab1d01394d585cfb06ced8c5fbac04114177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431954"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476764"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -28,7 +28,7 @@ Zie [Wat is Key Vault](overview.md)) voor meer algemene informatie over Azure Ke
 
 ## <a name="public-previews"></a>Open bare voor beelden
 
-Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer deze uit en laat ons weten wat u ervan vindt azurekeyvault@microsoft.comvia het e-mail adres van feedback.
+Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer deze uit en laat ons weten wat u ervan vindt via het azurekeyvault@microsoft.com e-mail adres van feedback.
 
 ## <a name="creating-and-managing-key-vaults"></a>Sleutel kluizen maken en beheren
 
@@ -43,7 +43,7 @@ Voordat u aan de slag gaat met sleutels, geheimen of certificaten in uw sleutel 
 - [Sleutel kluizen maken en beheren met de Azure-poort](../secrets/quick-create-portal.md)
 - [Sleutel kluizen maken en beheren met python](../secrets/quick-create-python.md)
 - [Sleutel kluizen maken en beheren met Java](../secrets/quick-create-java.md)
-- [Sleutel kluizen maken en beheren met node. js](../secrets/quick-create-node.md)
+- [Sleutel kluizen maken en beheren met Node.js](../secrets/quick-create-node.md)
 - [Sleutel kluizen maken en beheren met .NET (v4-SDK)](../secrets/quick-create-net.md)
 - [Een sleutel kluis maken en een geheim toevoegen via een Azure Resource Manager sjabloon](../secrets/quick-create-template.md)
 - [Sleutel kluizen maken en beheren met REST](/rest/api/keyvault/)
@@ -73,9 +73,9 @@ Zie de [release opmerkingen](dotnet2api-release-notes.md)voor meer informatie ov
 
 #### <a name="nodejs"></a>Node.js
 
-In node. js worden de API voor Key Vault beheer en de Key Vault object-API gescheiden. In het volgende overzichts artikel vindt u toegang tot beide. 
+In Node.js zijn de API voor Key Vault beheer en de API voor Key Vault object gescheiden. In het volgende overzichts artikel vindt u toegang tot beide. 
 
-[Azure Key Vault-modules voor node. js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Azure Key Vault modules voor Node.js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
@@ -106,7 +106,6 @@ De volgende artikelen en scenario's bevatten toepassingsspecifieke richt lijnen 
 - [Veilige waarden (zoals wacht woorden) door geven tijdens de implementatie](../../azure-resource-manager/templates/key-vault-parameter.md) : wanneer u tijdens de implementatie een beveiligde waarde (zoals een wacht woord) moet door geven als een para meter, kunt u die waarde opslaan als een geheim in een Azure Key Vault en naar de waarde in andere Resource Manager-sjablonen verwijzen.
 - Het [gebruik van Key Vault voor Extensible Key Management met SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) -de SQL Server-connector voor Azure Key Vault stelt SQL Server en SQL-in-a-vm in staat om gebruik te maken van de Azure Key Vault-service als een EKM-provider (Extensible Key Management) om de versleutelings sleutels voor de koppeling van toepassingen te beveiligen; Transparent Data Encryption, versleuteling van back-ups en versleuteling op kolom niveau.
 - [Certificaten implementeren op vm's van Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) : een Cloud toepassing die wordt uitgevoerd in een VM in azure, heeft een certificaat nodig. Hoe krijgt u dit certificaat vandaag nog aan deze VM?
-- [Key Vault met end-to-end-draaiing en controle instellen](../secrets/key-rotation-log-monitoring.md) : in dit artikel wordt beschreven hoe u de sleutel wisseling en controle kunt instellen met Azure Key Vault.
 - Het implementeren van een [Azure web app-certificaat via Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) biedt stapsgewijze instructies voor het implementeren van certificaten die zijn opgeslagen in Key Vault als onderdeel van [app service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) aanbieding.
 - [Veel toepassingen toegang verlenen tot een sleutel kluis](group-permissions-for-apps.md) Key Vault Access Control-beleid ondersteunt Maxi maal 1024 vermeldingen. U kunt echter een Azure Active Directory beveiligings groep maken. Voeg alle bijbehorende service-principals toe aan deze beveiligings groep en ken vervolgens toegang toe aan deze beveiligings groep om Key Vault.
 - Zie voor meer informatie over de taak-specifieke richt lijnen voor het integreren en gebruiken van sleutel kluizen met Azure de [Azure Resource Manager sjabloon voorbeelden van Ryan Jones voor Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

@@ -1,24 +1,14 @@
 ---
 title: Het afsluiten van Vm's inschakelen bij het verbreken van Azure Lab Services | Microsoft Docs
 description: Meer informatie over het in-of uitschakelen van automatisch afsluiten van Vm's wanneer een verbinding met een extern bureau blad wordt verbroken.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: a617bdc8e6fcb4588b26f898f437dc7bba3c2f59
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0c5c22d5e4a9d66413e37cce095f5497915bd122
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895890"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445709"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Automatisch afsluiten van Vm's inschakelen bij het verbreken van de verbinding
 In dit artikel wordt beschreven hoe u automatisch afsluiten van **Windows 10** Lab-vm's (sjabloon of student) kunt in-of uitschakelen nadat een verbinding met een extern bureau blad is verbroken. U kunt ook opgeven hoe lang de Vm's moeten wachten totdat de gebruiker opnieuw verbinding maakt voordat deze automatisch wordt afgesloten.

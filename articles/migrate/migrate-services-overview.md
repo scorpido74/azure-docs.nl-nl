@@ -4,23 +4,21 @@ description: Meer informatie over de Azure Migrate-service.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193594"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771254"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
 In dit artikel vindt u een kort overzicht van de service Azure Migrate.
 
-Azure Migrate is een gecentraliseerde hub voor het beoordelen en migreren naar on-premises servers, infrastructuur, toepassingen en gegevens in Azure.
-
-Azure Migrate biedt de volgende functies:
+Azure Migrate is een gecentraliseerde hub voor het beoordelen en migreren naar on-premises servers, infrastructuur, toepassingen en gegevens in Azure. Deze biedt het volgende:
 
 - **Geïntegreerd migratieplatform**: Eén portal om uw migratie naar Azure te starten, uit te voeren en te volgen.
-- **Aantal hulpprogramma's**: Een reeks hulpprogramma's voor evaluatie en migratie. Voorbeelden zijn Azure Migrate: Server Assessment en Azure Migrate: Server Migration. Azure Migrate is geïntegreerd met andere Azure-services en met andere hulpprogramma's en aanbiedingen van onafhankelijke softwareleveranciers (ISV).
+- **Aantal hulpprogramma's**: Een reeks hulpprogramma's voor evaluatie en migratie. Azure Migrate-hulpprogramma’s omvatten Server Assessment en Azure Migrate: Server Migration. Azure Migrate integreert ook met andere Azure-services en -hulpprogramma's, en met aanbiedingen van onafhankelijke softwareleveranciers (ISV’s).
 - **Evaluatie en migratie**: In de Azure Migrate hub kunt u het volgende evalueren en migreren:
     - **Servers**: Evalueer on-premises servers en migreer deze naar virtuele Azure-machine.
     - **Databases**: Evalueer on-premises databases en migreer deze naar Azure SQL Database of SQL Managed Instance.
@@ -82,15 +80,12 @@ Server Assessment maakt gebruik van een lichtgewicht [Azure Migrate-apparaat](mi
 
 Het hulpprogramma Azure Migrate: Server Migration helpt bij het migreren van deze componenten naar Azure:
 
-- On-premises VMware VM's
-- Virtuele Hyper-V-machines
-- Fysieke servers
-- Andere gevirtualiseerde machines
-- VM's in een openbare cloud
+**Migreren** | **Details**
+--- | ---
+On-premises VMware VM's | Migreer VM's naar Azure via migratie met of zonder agent.<br/><br/> Voor migratie zonder agent maakt Server Migration gebruik van een Azure Migrate-apparaat dat u on-premises implementeert. Dit is hetzelfde soort apparaat dat u gebruikt voor Server Assessment.<br/><br/> Voor migratie met agent maakt Server Assessment gebruik van een replicatie-apparaat.
+On-premises Hyper-V-VM's | Migreer VM’s naar Azure.<br/><br/> Voor de migratie maakt Server Assessment gebruik van provideragents die op de Hyper-V-host zijn geïnstalleerd.
+On-premises fysieke servers | U kunt fysieke machines migreren naar Azure. U kunt ook andere gevirtualiseerde machines migreren, en VM’s uit andere openbare clouds, door ze als virtuele machines te behandelen voor het doel van migratie. | Voor de migratie maakt Server Assessment gebruik van een replicatie-apparaat.
 
-U kunt machines migreren nadat u ze hebt geëvalueerd of u kunt ze migreren zonder evaluatie.
-
-Voor de migratie van VMware-VM's zonder agent en de migratie van Hyper-V-VM's maakt Server Migration gebruik van een Azure Migrate-apparaat dat u on-premises implementeert. Het apparaat wordt ook gebruikt als u Server Assessment instelt. Dit wordt beschreven in de vorige sectie.
 
 ## <a name="selecting-assessment-and-migration-tools"></a>Hulpprogramma's voor evaluatie en migratie selecteren
 

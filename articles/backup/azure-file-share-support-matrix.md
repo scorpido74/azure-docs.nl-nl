@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 3d9c9e4518ea6cd53c1f1d5e4a50040e3cf025b4
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488457"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443312"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
@@ -32,6 +32,7 @@ West-Centraal VS, Australië-Zuid-Oost, Canada-centraal
 | Soort account            | Azure Backup biedt ondersteuning voor Azure-bestands shares die beschikbaar zijn in het algemeen gebruik van v1, algemeen gebruik v2 en opslag accounts voor bestands opslag. |
 | Prestaties              | Azure Backup ondersteunt bestands shares in zowel standaard-als Premium Storage-accounts |
 | Replicatie              | Azure-bestands shares in opslag accounts met elk replicatie type worden ondersteund |
+| Firewall ingeschakeld         | Azure-bestands shares in opslag accounts met firewall regels waarmee Microsoft Azure Services toegang kunnen krijgen tot het opslag account, worden ondersteund|
 
 ## <a name="supported-file-shares"></a>Ondersteunde bestands shares
 
@@ -46,8 +47,10 @@ West-Centraal VS, Australië-Zuid-Oost, Canada-centraal
 
 | Instelling                                                      | Limiet |
 | ------------------------------------------------------------ | ----- |
-| Maximum aantal bestands shares dat per dag per kluis kan worden beveiligd | 200   |
+| Maximum aantal bestands shares per dag dat per kluis kan worden beveiligd| 200   |
 | Maximum aantal opslag accounts dat per kluis per dag kan worden geregistreerd | 50    |
+| Maximum aantal bestands shares dat per kluis kan worden beveiligd | 2000   |
+| Maximum aantal opslag accounts dat per kluis kan worden geregistreerd | 200   |
 
 ## <a name="backup-limits"></a>Back-uplimieten
 

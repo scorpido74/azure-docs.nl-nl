@@ -1,30 +1,30 @@
 ---
-title: Vraag gedrag interactieve aanvraag (MSAL. js) | Azure
+title: Vraag gedrag interactieve aanvraag (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het aanpassen van prompt gedrag in interactieve aanroepen met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
+description: Meer informatie over het aanpassen van prompt gedrag in interactieve aanroepen met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL.js).
 services: active-directory
 author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/24/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 778e89655019a49a30904fbe8d8e6aedf1833e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85f5269c3c2616070b826ecc38735c31617db537
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76695973"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477546"
 ---
-# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Vraag gedrag in interactieve aanvragen van MSAL. js
+# <a name="prompt-behavior-in-msaljs-interactive-requests"></a>Vraag gedrag in MSAL.js interactieve aanvragen
 
 Wanneer een gebruiker een actieve Azure AD-sessie met meerdere gebruikers accounts heeft gemaakt, wordt de gebruiker door de aanmeldings pagina van Azure AD standaard gevraagd een account te selecteren voordat u zich aanmeldt. Gebruikers zien geen account selectie-ervaring als er slechts één geverifieerde sessie is met Azure AD.
 
-De MSAL. JS-bibliotheek (vanaf v 0.2.4) verzendt geen prompt parameter tijdens de interactieve aanvragen`loginRedirect`(, `loginPopup` `acquireTokenRedirect` en `acquireTokenPopup`) en dwingt daarom geen vraag gedrag af. Voor Silent token aanvragen met behulp van de methode stuurt MSAL. js de `acquireTokenSilent` prompt para `none`meter ingesteld op.
+De MSAL.js-bibliotheek (vanaf v 0.2.4) verzendt geen prompt parameter tijdens de interactieve aanvragen ( `loginRedirect` , `loginPopup` `acquireTokenRedirect` en `acquireTokenPopup` ) en dwingt daarom geen vraag gedrag af. `acquireTokenSilent`MSAL.js wordt een prompt para meter ingesteld op voor Silent token aanvragen met de-methode `none` .
 
 Op basis van uw toepassings scenario kunt u het prompt gedrag voor de interactieve aanvragen bepalen door de para meter prompt in te stellen in de aanvraag parameters die aan de methoden zijn door gegeven. Als u bijvoorbeeld de account selectie wilt aanroepen:
 
@@ -46,8 +46,8 @@ De volgende prompt waarden kunnen worden door gegeven bij de verificatie met Azu
 
 **toestemming:** Met deze waarde wordt het dialoog venster OAuth-toestemming aangeroepen waarmee gebruikers machtigingen voor de app kunnen verlenen.
 
-**geen:** Met deze waarde wordt ervoor gezorgd dat de gebruiker geen interactieve prompt ziet. U kunt deze waarde het beste niet door geven aan interactieve methoden in MSAL. js, omdat deze mogelijk onverwachte gedragingen heeft. Gebruik in plaats daarvan `acquireTokenSilent` de methode voor het bezorgen van Silent-aanroepen.
+**geen:** Met deze waarde wordt ervoor gezorgd dat de gebruiker geen interactieve prompt ziet. Het wordt aanbevolen deze waarde niet door te geven aan interactieve methoden in MSAL.js, omdat deze mogelijk onverwachte gedragingen kunnen ondergaan. Gebruik in plaats daarvan de methode voor het bezorgen van `acquireTokenSilent` Silent-aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees meer over de `prompt` para meter in het [OAuth 2,0 impliciet Grant](v2-oauth2-implicit-grant-flow.md) -protocol dat wordt gebruikt door de MSAL. JS-bibliotheek.
+Lees meer over de `prompt` para meter in het [OAuth 2,0 impliciet granting](v2-oauth2-implicit-grant-flow.md) -protocol dat MSAL.js-bibliotheek gebruikt.

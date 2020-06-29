@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/04/2020
 ms.author: mlearned
-ms.openlocfilehash: 1a5069259e631d1cc33aeebc56164d8407b9ca6c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 5854f512eb5a85430fbf95499274187a6d66016c
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413583"
+ms.locfileid: "85445267"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
@@ -66,7 +66,7 @@ az group create --name myResourceGroup --location westus2
 Maak vervolgens een AKS-cluster:
 
 ```azurecli-interactive
-az aks create -g myResourceGroup -n MyManagedCluster --enable-managed-identity
+az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
 Een succes volle cluster maken met behulp van beheerde identiteiten bevat deze service-principal-profiel informatie:
@@ -75,6 +75,22 @@ Een succes volle cluster maken met behulp van beheerde identiteiten bevat deze s
 "servicePrincipalProfile": {
     "clientId": "msi"
   }
+```
+
+Gebruik de volgende opdracht om een query op te vragen van het object objectid van de beheerde identiteit van het beheer vlak:
+
+```azurecli-interactive
+az aks show -g myResourceGroup -n MyManagedCluster --query "identity"
+```
+
+Het resultaat moet er als volgt uitzien:
+
+```json
+{
+  "principalId": "<object_id>",   
+  "tenantId": "<tenant_id>",      
+  "type": "SystemAssigned"                                 
+}
 ```
 
 > [!NOTE]

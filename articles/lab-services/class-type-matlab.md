@@ -1,18 +1,16 @@
 ---
 title: Stel een lab in om MATLAB te leren met Azure Lab Services | Microsoft Docs
 description: Meer informatie over het instellen van een lab om MATLAB te leren met Azure Lab Services.
-services: lab-services
 author: emaher
-ms.service: lab-services
 ms.topic: article
-ms.date: 05/27/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 81ee3e50d9e13fec45ca86c56aed7547315ac2a1
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899023"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444995"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>Een Lab instellen om MATLAB te leren
 

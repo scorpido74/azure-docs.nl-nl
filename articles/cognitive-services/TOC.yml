@@ -36,6 +36,8 @@
       href: ./encryption/cognitive-services-encryption-keys-portal.md
     - name: Aanvragen verifiëren bij Cognitive Services
       href: authentication.md
+    - name: Beveiligingsbasislijn
+      href: security-baseline.md
 - name: Ondersteuning voor containers
   items:
     - name: Ondersteuning voor containers

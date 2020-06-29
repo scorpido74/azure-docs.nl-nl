@@ -1,30 +1,21 @@
 ---
 title: Azure Lab Services gebruiken voor hackathon
 description: In dit artikel wordt beschreven hoe u Azure Lab Services gebruikt voor het maken van Labs die u kunt gebruiken voor het uitvoeren van hackathons trappen.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2020
-ms.author: spelluru
-ms.openlocfilehash: ba5559289f3d17f1a24a90a0daa466d4c8895c9c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 06/26/2020
+ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85120525"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445879"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Azure Lab Services gebruiken voor uw volgende hackathon
 Azure Lab Services is lichter ontworpen en eenvoudig te gebruiken, zodat u snel een nieuw Lab van virtuele machines (Vm's) kunt maken voor uw Hackathon.  Gebruik de volgende controle lijst om ervoor te zorgen dat uw hackathon zo soepel mogelijk verloopt. Deze controle lijst moet worden ingevuld door uw IT-afdeling of faculteit die verantwoordelijk is voor het maken en beheren van uw hackathon-Lab. 
 
 Als u Lab-Services voor uw hackathon wilt gebruiken, moet u ervoor zorgen dat zowel een Lab-account als uw Lab ten minste enkele dagen vóór het begin van uw hackathon worden gemaakt. Volg ook de onderstaande instructies:
 
-## <a name="guidance"></a>Hulp
+## <a name="guidance"></a>Richtlijnen
 
 - **Maak het lab in een regio of locatie die het dichtst bij de deel nemers**ligt. 
 

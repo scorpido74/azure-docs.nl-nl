@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b926491ef3fc672626317184fb7ed2760919866
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210504"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476271"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Aanbevolen procedures voor SQL on-demand (preview) in azure Synapse Analytics
 
@@ -52,7 +52,7 @@ Als dat mogelijk is, kunt u bestanden voorbereiden voor betere prestaties:
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Joker tekens pushen naar lagere niveaus in het pad
 
-U kunt joker tekens in het pad gebruiken om [meerdere bestanden en mappen](develop-storage-files-overview.md#query-multiple-files-or-folders)op te vragen. SQL on-demand-lijst bestanden in uw opslag account, beginnend bij de eerste * met behulp van Storage API. Hiermee worden bestanden geëlimineerd die niet overeenkomen met het opgegeven pad. Het verminderen van de eerste lijst met bestanden kan de prestaties verbeteren als er veel bestanden zijn die overeenkomen met het opgegeven pad tot het eerste Joker teken.
+U kunt joker tekens in het pad gebruiken om [meerdere bestanden en mappen](query-data-storage.md#query-multiple-files-or-folders)op te vragen. SQL on-demand-lijst bestanden in uw opslag account, beginnend bij de eerste * met behulp van Storage API. Hiermee worden bestanden geëlimineerd die niet overeenkomen met het opgegeven pad. Het verminderen van de eerste lijst met bestanden kan de prestaties verbeteren als er veel bestanden zijn die overeenkomen met het opgegeven pad tot het eerste Joker teken.
 
 ## <a name="use-appropriate-data-types"></a>De juiste gegevens typen gebruiken
 
@@ -113,7 +113,7 @@ FROM
 
 Gegevens zijn vaak ingedeeld in partities. U kunt SQL op aanvraag een instructie geven om specifieke mappen en bestanden op te vragen. Als u dit doet, vermindert het aantal bestanden en de hoeveelheid gegevens die de query moet lezen en verwerken. Een extra bonus is dat u betere prestaties krijgt.
 
-Meer informatie over de functies [filename](develop-storage-files-overview.md#filename-function) en [filepath](develop-storage-files-overview.md#filepath-function) vindt u in de voor beelden voor het [uitvoeren van query's op specifieke bestanden](query-specific-files.md).
+Meer informatie over de functies [filename](query-data-storage.md#filename-function) en [filepath](query-data-storage.md#filepath-function) vindt u in de voor beelden voor het [uitvoeren van query's op specifieke bestanden](query-specific-files.md).
 
 > [!TIP]
 > Converteer de resultaten van het bestandspad en de bestands namen altijd naar de juiste gegevens typen. Als u teken gegevens typen gebruikt, moet u ervoor zorgen dat u de juiste lengte gebruikt.

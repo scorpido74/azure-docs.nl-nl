@@ -147,7 +147,7 @@
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Verifiëren
       items:
-        - name: On-premises verificatie en autorisatie inschakelen
+        - name: On-premises AD DS-verificatie en -autorisatie inschakelen
           items:
             - name: Overzicht van AD DS
               href: storage-files-identity-auth-active-directory-enable.md

@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 6dfcd8d56232f893f881f310b33f3f849e2364a7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907377"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475948"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
+# <a name="immersive-reader-javascript-sdk-reference-v11"></a>Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)
 
 De insluitende lezer-SDK bevat een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw toepassing.
 
@@ -33,7 +33,7 @@ De SDK biedt de volgende functies beschikbaar:
 
 ## <a name="launchasync"></a>launchAsync
 
-Hiermee start u de insluitende lezer binnen een `iframe` in uw webtoepassing.
+Hiermee start u de insluitende lezer binnen een `iframe` in uw webtoepassing. Houd er rekening mee dat de grootte van uw inhoud beperkt is tot een maximum van 50 MB.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parameters
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opties voor het configureren van bepaald gedrag van de functie renderButtons. Optioneel. |
 
@@ -109,6 +109,70 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 }
 ```
 
+#### <a name="supported-mime-types"></a>Ondersteunde MIME-typen
+
+| MIME-type | Beschrijving |
+| --------- | ----------- |
+| tekst/zonder opmaak | Tekst zonder opmaak. |
+| text/html | HTML-inhoud. [Meer informatie](#html-support)|
+| Application/MathML + XML | MathML (wiskundige Markup Language). [Meer informatie](./how-to/display-math.md).
+| Application/vnd.openxmlformats-officedocument.wordprocessingml.document | Micro soft Word. docx-indelings document.
+
+### <a name="options"></a>Opties
+
+Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
+
+```typescript
+{
+    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
+    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
+    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000).
+    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
+    onExit?: () => any;        // Executes when the Immersive Reader exits.
+    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
+    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
+    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
+    disableFirstRun?: boolean; // Disable the first run experience.
+    readAloudOptions?: ReadAloudOptions; // Options to configure Read Aloud.
+    translationOptions?: TranslationOptions; // Options to configure translation.
+    displayOptions?: DisplayOptions; // Options to configure text size, font, etc.
+    preferences?: string; // String returned from onPreferencesChanged representing the user's preferences in the Immersive Reader.
+    onPreferencesChanged?: (value: string) => any; // Executes when the user's preferences have changed.
+}
+```
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
+```typescript
+type ReadAloudOptions = {
+    voice?: string;      // Voice, either 'male' or 'female'. Note that not all languages support both genders.
+    speed?: number;      // Playback speed, must be between 0.5 and 2.5, inclusive.
+    autoplay?: boolean;  // Automatically start Read Aloud when the Immersive Reader loads.
+};
+```
+
+> [!NOTE]
+> Vanwege beperkingen van de browser wordt AutoPlay niet ondersteund in Safari.
+
+```typescript
+type TranslationOptions = {
+    language: string;                         // Set the translation language, e.g. fr-FR, es-MX, zh-Hans-CN. Required to automatically enable word or document translation.
+    autoEnableDocumentTranslation?: boolean;  // Automatically translate the entire document.
+    autoEnableWordTranslation?: boolean;      // Automatically enable word translation.
+};
+```
+
+```typescript
+type DisplayOptions = {
+    textSize?: number;          // Valid values are 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96.
+    increaseSpacing?: boolean;  // Set whether increased spacing is enabled.
+    fontFamily?: string;        // Valid values are 'Calibri', 'ComicSans', and 'Sitka'.
+};
+```
+
 ### <a name="launchresponse"></a>LaunchResponse
 
 Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync` . Houd er rekening mee dat er een verwijzing naar de `iframe` met de insluitende lezer kan worden geopend via `container.firstChild` .
@@ -119,62 +183,7 @@ Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync` . Houd er reke
     sessionId: string;            // Globally unique identifier for this session, used for debugging
 }
 ```
-
-### <a name="cookiepolicy-enum"></a>CookiePolicy Enum
-
-Een opsomming die wordt gebruikt om het beleid voor het cookie gebruik van de insluitende lezer in te stellen. Zie [Opties](#options).
-
-```typescript
-enum CookiePolicy { Disable, Enable }
-```
-
-#### <a name="supported-mime-types"></a>Ondersteunde MIME-typen
-
-| MIME-type | Beschrijving |
-| --------- | ----------- |
-| tekst/zonder opmaak | Tekst zonder opmaak. |
-| text/html | HTML-inhoud. [Meer informatie](#html-support)|
-| Application/MathML + XML | MathML (wiskundige Markup Language). [Meer informatie](./how-to/display-math.md).
-| Application/vnd.openxmlformats-officedocument.wordprocessingml.document | Micro soft Word. docx-indelings document.
-
-### <a name="html-support"></a>HTML-ondersteuning
-
-| HTML | Ondersteunde inhoud |
-| --------- | ----------- |
-| Lettertype stijlen | Vet, cursief, onderstrepen, code, doorhaling, Super script |
-| Niet-geordende lijsten | Schijf, cirkel, vier kant |
-| Geordende lijsten | Decimaal, hoofd letter, kleine letter alfa, bovenste Romeins, kleine letter Romeins |
-
-Niet-ondersteunde labels worden weer gegeven comparably. Afbeeldingen en tabellen worden momenteel niet ondersteund.
-
-### <a name="options"></a>Opties
-
-Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
-
-```typescript
-{
-    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
-    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000)
-    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
-    onExit?: () => any;        // Executes when the Immersive Reader exits
-    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
-    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
-    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
-    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
-}
-```
-
-### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
-
-Opties voor het weer geven van de knoppen voor insluitende lezer.
-
-```typescript
-{
-    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
-}
-```
-
+ 
 ### <a name="error"></a>Fout
 
 Bevat informatie over de fout.
@@ -195,6 +204,16 @@ Bevat informatie over de fout.
 | TokenExpired | Het opgegeven token is verlopen. |
 | Beperkt | De limiet voor de aanroep frequentie is overschreden. |
 
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+
+Opties voor het weer geven van de knoppen voor insluitende lezer.
+
+```typescript
+{
+    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
+}
+```
+
 ## <a name="launching-the-immersive-reader"></a>De insluitende lezer starten
 
 De SDK biedt standaard stijlen voor de knop voor het starten van de insluitende lezer. Gebruik het `immersive-reader-button` kenmerk Class om deze stijl in te scha kelen. Raadpleeg [dit artikel](./how-to-customize-launch-button.md) voor meer informatie.
@@ -212,6 +231,16 @@ Gebruik de volgende kenmerken om het uiterlijk van de knop te configureren.
 | `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. De waarde kan `icon`, `text`of `iconAndText` zijn. Wordt standaard ingesteld op `icon` . |
 | `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. Wordt standaard ingesteld op Engels `en` . |
 | `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels. De standaard waarde is 20px. |
+
+## <a name="html-support"></a>HTML-ondersteuning
+
+| HTML | Ondersteunde inhoud |
+| --------- | ----------- |
+| Lettertype stijlen | Vet, cursief, onderstrepen, code, doorhaling, Super script |
+| Niet-geordende lijsten | Schijf, cirkel, vier kant |
+| Geordende lijsten | Decimaal, hoofd letter, kleine letter alfa, bovenste Romeins, kleine letter Romeins |
+
+Niet-ondersteunde labels worden weer gegeven comparably. Afbeeldingen en tabellen worden momenteel niet ondersteund.
 
 ## <a name="browser-support"></a>Browserondersteuning
 

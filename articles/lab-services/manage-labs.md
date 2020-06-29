@@ -1,24 +1,14 @@
 ---
 title: Labs in een Lab-account in Azure Lab Services weer geven en verwijderen
 description: Meer informatie over het weer geven van alle Labs in een Lab-account en het verwijderen van een Lab uit het lab-account.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 23da222ab43394793afec96c31000bdc8baa54e0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895743"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443482"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Labs beheren in een labaccount
 Dit artikel laat u zien hoe een eigenaar van een Lab-account of-beheerder alle Labs in een Lab-account kan weer geven en een lab in het lab-account kan verwijderen. 

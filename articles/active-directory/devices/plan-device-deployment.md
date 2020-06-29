@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97ddc91b5e49cafa87b90113f0160d8aec9c699a
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360313"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444247"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>De implementatie van uw Azure Active Directory-apparaat plannen
 
@@ -42,7 +42,7 @@ Voordat u begint, moet u ervoor zorgen dat u bekend bent met het [beheer van app
 
 De belangrijkste voor delen van het geven van uw apparaten een Azure AD-identiteit:
 
-* Verhoog de productiviteit – met Azure AD kunnen uw gebruikers [naadloos aanmelden (SSO)](/azuread-join-sso.md) uitvoeren op uw on-premises en cloud resources, waardoor ze productief kunnen zijn, waar ze ook zijn.
+* Verhoog de productiviteit – met Azure AD kunnen uw gebruikers [naadloos aanmelden (SSO)](./azuread-join-sso.md) uitvoeren op uw on-premises en cloud resources, waardoor ze productief kunnen zijn, waar ze ook zijn.
 
 * Beveiliging verhogen: met Azure AD-apparaten kunt u [beleid voor voorwaardelijke toegang (CA)](../conditional-access/require-managed-devices.md) Toep assen op resources op basis van de identiteit van het apparaat of de gebruiker. CA-beleid kan extra beveiliging bieden met behulp van [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md). Het toevoegen van een apparaat aan Azure AD is een vereiste om uw veiligheid te verbeteren met een verificatie strategie zonder [wacht woord](../authentication/concept-authentication-passwordless.md) .
 

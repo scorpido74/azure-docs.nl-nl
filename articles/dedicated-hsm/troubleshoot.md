@@ -13,19 +13,19 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310101"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209569"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
 De Azure Toegewezen HSM-service heeft twee afzonderlijke facetten. Ten eerste, de registratie en implementatie van de HSM-apparaten in Azure met hun onderliggende netwerkonderdelen. Ten tweede, de configuratie van de HSM-apparaten als voorbereiding op gebruik/integratie met een bepaalde workload of toepassing. Hoewel de Thales Luna Network HSM-apparaten hetzelfde zijn in Azure als wanneer u ze rechtstreeks bij Thales koopt, zorgt het feit dat ze een resource in Azure zijn voor een paar unieke overwegingen. Deze overwegingen en eventuele inzichten in probleemoplossing of aanbevolen procedures, zijn hier gedocumenteerd, voor hoge zichtbaarheid en toegang tot kritieke informatie. Zodra de service wordt gebruikt, is definitieve informatie beschikbaar via ondersteuningsaanvragen bij Microsoft of rechtstreeks bij Thales. 
 
 > [!NOTE]
-> Let op: voordat u een onlangs geïmplementeerd HSM-apparaat configureert, moet dit apparaat worden bijgewerkt met alle eventuele relevante patches. Een specifieke patch die is vereist, is [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) in de Thales-ondersteuningsportal. Hiermee wordt een probleem opgelost waarbij een apparaat vastloopt tijdens het opnieuw opstarten.
+> Let op: voordat u een onlangs geïmplementeerd HSM-apparaat configureert, moet dit apparaat worden bijgewerkt met alle eventuele relevante patches. Een specifieke patch die is vereist, is [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) in de Thales-ondersteuningsportal. Hiermee wordt een probleem opgelost waarbij het systeem niet reageert tijdens het opnieuw opstarten.
 
 ## <a name="hsm-registration"></a>HSM-registratie
 
@@ -120,7 +120,7 @@ Wees voorzichtig bij het configureren van het netwerk binnen de HSM.  De HSM hee
 
 ### <a name="hsm-device-reboot"></a>HSM-apparaat opnieuw opstarten
 
-Voor sommige configuratiewijzigingen moet de HSM worden uitgeschakeld en opnieuw ingeschakeld, of opnieuw worden opgestart. Tijdens Microsoft-tests voor de HSM in Azure is vastgesteld dat het apparaat in sommige gevallen vastloopt tijdens het opnieuw opstarten. De implicatie is dat er een ondersteuningsaanvraag moet worden gemaakt in de Azure-portal, waarin hard opstarten wordt aangevraagd. Het kan tot 48 uur duren voordat dit is voltooid, aangezien dit een handmatig proces in een Azure-datacentrum is.  Zorg ervoor dat u de patch voor opnieuw opstarten hebt geïmplementeerd om deze situatie te voorkomen. Deze patch is rechtstreeks beschikbaar bij Thales. Raadpleeg [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) in de Thales Luna Network HSM 7.2-downloads voor een aanbevolen patch voor een probleem waarbij een apparaat vastloopt tijdens het opnieuw opstarten. (Opmerking: u moet zijn geregistreerd in de Thales-ondersteuningsportal om te kunnen downloaden.)
+Voor sommige configuratiewijzigingen moet de HSM worden uitgeschakeld en opnieuw ingeschakeld, of opnieuw worden opgestart. Tijdens Microsoft-tests voor de HSM in Azure is vastgesteld dat het apparaat in sommige gevallen vastloopt tijdens het opnieuw opstarten. De implicatie is dat er een ondersteuningsaanvraag moet worden gemaakt in de Azure-portal, waarin hard opstarten wordt aangevraagd. Het kan tot 48 uur duren voordat dit is voltooid, aangezien dit een handmatig proces in een Azure-datacentrum is.  Zorg ervoor dat u de patch voor opnieuw opstarten hebt geïmplementeerd om deze situatie te voorkomen. Deze patch is rechtstreeks beschikbaar bij Thales. Raadpleeg [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) in de Thales Luna Network HSM 7.2-downloads voor een aanbevolen patch voor een probleem waarbij het systeem niet reageert tijdens het opnieuw opstarten. (Opmerking: u moet zijn geregistreerd in de Thales-ondersteuningsportal om te kunnen downloaden.)
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS-certificaten zijn niet gesynchroniseerd
 De verbinding tussen een client en een HSM kan worden verbroken wanneer een certificaat verloopt of is overschreven vanwege configuratie-updates. De configuratie van de uitwisselingsclient voor certificaten moet opnieuw worden toegepast voor elke HSM.

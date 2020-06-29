@@ -1,25 +1,14 @@
 ---
 title: Azure DevTest Labs voor ontwikkel aars gebruiken | Microsoft Docs
 description: Meer informatie over Azure DevTest Labs-functies die kunnen worden gebruikt om te voldoen aan de vereisten voor ontwikkel aars en gedetailleerde stappen die u kunt volgen om een lab in te stellen.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 22e070e5-3d1a-49fe-9d4c-5e07cb0b7fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: c6bb2c4d21ee6b6cb072c550c82c380b3a380f24
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896919"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481031"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Azure DevTest Labs voor ontwikkel aars gebruiken
 Azure DevTest Labs kan worden gebruikt voor het implementeren van allerlei scenario's. Eén van de belangrijkste scenario's is het inzetten van DevTest Labs voor het hosten van ontwikkelmachines voor ontwikkelaars. In dit scenario biedt DevTest Labs deze voordelen:

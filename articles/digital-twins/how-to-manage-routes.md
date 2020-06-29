@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5049e875c3b8047b99e3256c7bbac60d0af822bb
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: d6ecc2ddab7bc0fa739989e9cfdc2645cc1ccb27
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392264"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476900"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
 
@@ -25,7 +25,10 @@ Ondersteunde eindpunt typen zijn:
 
 Zie [kiezen tussen Azure Messa ging Services](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)voor meer informatie over de verschillende eind punten.
 
-Eind punten en routes worden beheerd met de [**EventRoutes-api's**](how-to-use-apis-sdks.md), de [.NET-SDK (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md).
+Eind punten en routes worden beheerd met de [**EventRoutes-api's**](how-to-use-apis-sdks.md), de [.NET-SDK (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Ze kunnen ook worden beheerd via de [Azure Portal](https://portal.azure.com).
+
+> [!NOTE]
+> Het beheren van gebeurtenis routes via de Azure Portal is momenteel alleen beschikbaar voor Azure-gebruikers op accounts in een bedrijfs domein. Als u gebruikmaakt van een persoonlijk [Microsoft-account (MSA)](https://account.microsoft.com/account/Account), gebruikt u de Azure Digital apparaatdubbels API'S of CLI om gebeurtenis routes te beheren, zoals beschreven in dit artikel.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Een eind punt maken voor Azure Digital Apparaatdubbels
 

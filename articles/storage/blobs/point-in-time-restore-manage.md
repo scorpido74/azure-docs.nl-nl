@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 747acc27a5eaf8551e44a3bf52f55b5a380b73ce
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6948d4d786e918e5f3e32e6bdf2f7e23940f6815
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752639"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445437"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Herstel naar een bepaald tijdstip voor blok-blobs inschakelen en beheren (preview-versie)
 
@@ -38,6 +38,10 @@ Met de volgende opdracht installeert AZ. Storage [2.0.1-Preview-](https://www.po
 Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
 ```
 
+Voor de bovenstaande opdracht is versie 2.2.4.1 of hoger van PowerShellGet vereist om te kunnen installeren. U kunt als volgt bepalen welke versie momenteel is geladen:
+```powershell
+Get-Module PowerShellGet
+```
 Zie [Install Azure PowerShell with PowerShellGet](/powershell/azure/install-az-ps)(Engelstalig) voor meer informatie over het installeren van Azure PowerShell.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Herstel naar een bepaald tijdstip inschakelen en configureren

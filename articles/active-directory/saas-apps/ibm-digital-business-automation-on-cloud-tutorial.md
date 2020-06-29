@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94dcd06e1b3c201a10e656b6752cfa60c0c7d39c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765245"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099673"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met IBM Digital Business Automation on Cloud
 
@@ -81,7 +81,21 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
+1. Voer in de sectie **Standaard SAML-configuratie** de volgende stappen uit als u beschikt over een **bestand met metagegevens van de serviceprovider**:
+    
+    a. Klik op **Metagegevensbestand uploaden**.
+
+    b. Klik op het **mappictogram** om het metagegevensbestand te selecteren en klik op **Uploaden**.
+
+    c. Zodra het bestand met metagegevens is geüpload, worden de waarde voor **Id** en **Antwoord-URL** automatisch ingevuld in de sectie Cloud voor IBM Digital Business Automation:
+
+    > [!Note]
+    > Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
+
+    > [!Note]
+    > Klanten kunnen het metagegevensbestand voor hun Cloud-abonnement opvragen bij het [DBAoC DevOps-team](mailto:supportbpmoncloud@us.ibm.com).
+
+1. Als u niet het **Metagegevensbestand van de serviceprovider** hebt, voert u in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.automationcloud.ibm.com/isam/sps/<TENANT>/saml20`
 

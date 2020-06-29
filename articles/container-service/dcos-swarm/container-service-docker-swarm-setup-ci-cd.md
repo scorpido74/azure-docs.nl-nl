@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded7d1b6a5f353c009b5c56bcaabe96baf424c51
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549050"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445403"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>KEUR Volledige CI/CD-pijp lijn voor het implementeren van een toepassing met meerdere containers op Azure Container Service met docker Swarm met Azure DevOps Services
 
@@ -80,7 +80,7 @@ Stel een verbinding in tussen uw Azure DevOps Services-project en uw GitHub-acco
 
     ![Azure DevOps Services-externe verbinding](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. Klik aan de linkerkant op **nieuw service-eind punt** > **github**.
+1. Klik aan de linkerkant op **nieuw service-eind punt**  >  **github**.
 
     ![Azure DevOps Services-GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -143,7 +143,7 @@ U moet voor elke installatie kopie twee stappen voor docker toevoegen, één om 
 
     ![Azure DevOps Services-build-stappen toevoegen](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Configureer voor elke installatie kopie één stap die gebruikmaakt van `docker build` de opdracht.
+1. Configureer voor elke installatie kopie één stap die gebruikmaakt van de `docker build` opdracht.
 
     ![Azure DevOps Services-docker-build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -151,7 +151,7 @@ U moet voor elke installatie kopie twee stappen voor docker toevoegen, één om 
     
     Zoals in het voor gaande scherm wordt weer gegeven, start u de naam van de installatie kopie met de URI van uw Azure container Registry. (U kunt ook een build-variabele gebruiken om de tag van de afbeelding te para meters, zoals de build-id in dit voor beeld).
 
-1. Configureer voor elke installatie kopie een tweede stap die gebruikmaakt van `docker push` de opdracht.
+1. Configureer voor elke installatie kopie een tweede stap die gebruikmaakt van de `docker push` opdracht.
 
     ![Azure DevOps Services-docker-push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
@@ -171,15 +171,15 @@ U moet voor elke installatie kopie twee stappen voor docker toevoegen, één om 
 
 ## <a name="step-3-create-the-release-pipeline"></a>Stap 3: de release pijplijn maken
 
-Met Azure DevOps Services kunt u [releases in meerdere omgevingen beheren](https://www.visualstudio.com/team-services/release-management/). U kunt continue implementatie inschakelen om ervoor te zorgen dat uw toepassing op een eenvoudige manier wordt geïmplementeerd in uw andere omgevingen (zoals dev, test, pre-productie en productie). U kunt een nieuwe omgeving maken die uw Azure Container Service docker Swarm-cluster vertegenwoordigt.
+Met Azure DevOps Services kunt u [releases in meerdere omgevingen beheren](https://azure.microsoft.com/services/devops/pipelines/). U kunt continue implementatie inschakelen om ervoor te zorgen dat uw toepassing op een eenvoudige manier wordt geïmplementeerd in uw andere omgevingen (zoals dev, test, pre-productie en productie). U kunt een nieuwe omgeving maken die uw Azure Container Service docker Swarm-cluster vertegenwoordigt.
 
 ![Azure DevOps Services: release naar ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
 ### <a name="initial-release-setup"></a>Installatie van de eerste release
 
-1. Als u een release pijplijn wilt maken, klikt u op **releases** > en**release**
+1. Als u een release pijplijn wilt maken, klikt u op **releases**en  >  **release**
 
-1. Als u de artefact bron wilt configureren, klikt u op **artefacten** > om**een artefact bron te koppelen**. Koppel deze nieuwe release pijplijn aan de build die u in de vorige stap hebt gedefinieerd. Op deze manier is het bestand docker-Compose. yml beschikbaar in het release proces.
+1. Als u de artefact bron wilt configureren, klikt u op **artefacten**om  >  **een artefact bron te koppelen**. Koppel deze nieuwe release pijplijn aan de build die u in de vorige stap hebt gedefinieerd. Op deze manier is het bestand docker-Compose. yml beschikbaar in het release proces.
 
     ![Azure DevOps Services-release artefacten](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -195,19 +195,19 @@ De release werk stroom bestaat uit twee taken die u toevoegt.
 
     ![Azure DevOps Services-release-SCP](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Configureer een tweede taak om een bash-opdracht uit te `docker` voeren `docker-compose` voor uitvoering en opdrachten op het hoofd knooppunt. Raadpleeg het volgende scherm voor meer informatie.
+1. Configureer een tweede taak om een bash-opdracht uit te voeren voor uitvoering `docker` en `docker-compose` opdrachten op het hoofd knooppunt. Raadpleeg het volgende scherm voor meer informatie.
 
     ![Azure DevOps Services-release bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
     De opdracht die wordt uitgevoerd op het hoofd gebruik van de docker-CLI en de docker-CLI om de volgende taken uit te voeren:
 
-   - Meld u aan bij het Azure container Registry (er worden drie build variab'les gebruikt die zijn gedefinieerd op het tabblad **variabelen** )
+   - Meld u aan bij het Azure container Registry (hiervoor worden drie build-variabelen gebruikt die zijn gedefinieerd op het tabblad **variabelen** )
    - Definieer de **DOCKER_HOST** variabele die moet worden gebruikt voor het Swarm-eind punt (: 2375)
    - Ga naar de *Deploy* -map die is gemaakt door de vorige beveiligde Kopieer taak en die het docker-Compose. yml-bestand bevat 
    - Voer `docker-compose` opdrachten uit die de nieuwe installatie kopieën ophalen, de services stoppen, de services verwijderen en de containers maken.
 
      >[!IMPORTANT]
-     > Zoals u in het voor gaande scherm ziet, schakelt u het selectie vakje **mislukken op stderr** uit. Dit is een belang rijke instelling, `docker-compose` omdat er verschillende diagnostische berichten worden afgedrukt, zoals containers die worden gestopt of verwijderd, op de standaard fout uitvoer. Als u het selectie vakje inschakelt, wordt in azure DevOps Services gerapporteerd dat er fouten zijn opgetreden tijdens de release, zelfs als alles goed gaat.
+     > Zoals u in het voor gaande scherm ziet, schakelt u het selectie vakje **mislukken op stderr** uit. Dit is een belang rijke instelling, omdat `docker-compose` er verschillende diagnostische berichten worden afgedrukt, zoals containers die worden gestopt of verwijderd, op de standaard fout uitvoer. Als u het selectie vakje inschakelt, wordt in azure DevOps Services gerapporteerd dat er fouten zijn opgetreden tijdens de release, zelfs als alles goed gaat.
      >
 1. Sla deze nieuwe release pijplijn op.
 

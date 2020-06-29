@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/22/2020
+ms.openlocfilehash: d7f6da930f797912ef0e91666082aa5654b7f1ab
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661067"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251726"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory in de Azure-portal
 
@@ -58,7 +58,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 **De Azure SQL Database-bron voorbereiden**:
 
-Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een Azure SQL-database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een Azure Synapse Analytics (voorheen SQL DW) gekopieerd.
+Maak een database in SQL Database met Adventure Works LT-testgegevens door het artikel [Create a database in Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) (Een database in Azure SQL Database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een Azure Synapse Analytics (voorheen SQL DW) gekopieerd.
 
 **Bereid de sink voor Azure Synapse Analytics (voorheen SQL DW) voor**:
 
@@ -106,7 +106,7 @@ U maakt gekoppelde services om uw gegevensarchieven en compute-services aan een 
 In deze zelfstudie koppelt u uw gegevensarchieven van Azure SQL Database, Azure Synapse Analytics (voorheen SQL DW) en Azure Blob Storage aan uw data factory. De Azure SQL-database fungeert als brongegevensarchief. Azure Synapse Analytics (voorheen SQL DW) dient als de sink/bestemming van het gegevensarchief. Azure Blob Storage is bedoeld voor het vasthouden van de gegevens voordat deze worden geladen in Azure Synapse Analytics (voorheen SQL DW)met behulp van PolyBase. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Maak de gekoppelde Azure SQL Database-bronservice
-In deze stap maakt u een gekoppelde service om uw Azure SQL-database aan de gegevensfactory te koppelen. 
+In deze stap maakt u een gekoppelde service om uw database in Azure SQL Database aan de data factory te koppelen. 
 
 1. Open het [tabblad Beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) vanuit het linker deelvenster.
 
@@ -120,13 +120,13 @@ In deze stap maakt u een gekoppelde service om uw Azure SQL-database aan de gege
 
     b. Selecteer uw server als **Servernaam**
     
-    c. Selecteer uw Azure SQL-database bij **Database name**. 
+    c. Selecteer uw database als **Databasenaam**. 
     
-    d. Voer **naam van de gebruiker** in om verbinding te maken met de Azure SQL-database. 
+    d. Voer **naam van de gebruiker** in om verbinding te maken met uw database. 
     
     e. Voer het **wachtwoord** voor de gebruiker in. 
 
-    f. Als u de verbinding met de Azure SQL-database wilt testen met de opgegeven informatie, klikt u op **Test connection**.
+    f. Als u de verbinding met uw database wilt testen met de opgegeven informatie, klikt u op **Test connection**.
   
     g. Klik op **Maken** om de gekoppelde service op te slaan.
 
@@ -141,13 +141,13 @@ In deze stap maakt u een gekoppelde service om uw Azure SQL-database aan de gege
      
     b. Selecteer uw server als **Servernaam**
      
-    c. Selecteer uw Azure SQL-database bij **Database name**. 
+    c. Selecteer uw database als **Databasenaam**. 
      
-    d. Voer de **Gebruikersnaam** in om verbinding te maken met de Azure SQL-database. 
+    d. Voer de **Gebruikersnaam** in om verbinding te maken met uw database. 
      
     e. Voer het **Wachtwoord** voor de gebruiker in. 
      
-    f. Als u de verbinding met de Azure SQL-database wilt testen met de opgegeven informatie, klikt u op **Test connection**.
+    f. Als u de verbinding met uw database wilt testen met de opgegeven informatie, klikt u op **Test connection**.
      
     g. Klik op **Create**.
 
@@ -181,7 +181,7 @@ In deze zelfstudie zijn de bron- en doel-SQL-tabellen niet vastgelegd in de defi
     
 1. Voer in het venster **Eigenschappen instellen** onder **Naam** **AzureSqlDatabaseDataset** in. Selecteer bij **Gekoppelde service** de optie **AzureSqlDatabaseLinkedService**. Klik vervolgens op **OK**.
 
-1. Ga naar het tabblad **Verbinding** en selecteer een tabel bij voor **Tabel**. Dit is een tijdelijke tabel. U geeft een query voor de brongegevensset op tijdens het maken van een pijplijn. De query wordt gebruikt om gegevens te extraheren uit de Azure SQL-database. U kunt ook het selectievakje **Bewerken** inschakelen en **dbo.dummyName** invoeren als tabelnaam. 
+1. Ga naar het tabblad **Verbinding** en selecteer een tabel bij voor **Tabel**. Dit is een tijdelijke tabel. U geeft een query voor de brongegevensset op tijdens het maken van een pijplijn. De query wordt gebruikt om gegevens te extraheren uit uw database. U kunt ook het selectievakje **Bewerken** inschakelen en **dbo.dummyName** invoeren als tabelnaam. 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>Een gegevensset maken voor de sink voor Azure Synapse Analytics (voorheen SQL DW)
@@ -189,17 +189,18 @@ In deze zelfstudie zijn de bron- en doel-SQL-tabellen niet vastgelegd in de defi
 1. Klik op **+ (plus)** in het linkervenster en klik op **Dataset**. 
 1. In het venster **Nieuwe gegevensset** selecteert u **Azure Synapse Analytics (voorheen SQL DW)** en klikt u op **Doorgaan**.
 1. Voer in het venster **Eigenschappen instellen** onder **Naam** **AzureSqlDWDataset** in. Selecteer bij **Gekoppelde service** de optie **AzureSqlDWLinkedService**. Klik vervolgens op **OK**.
-1. Ga naar het tabblad **Parameters**, klik op **+ Nieuw** en voer **DWTableName** in als de parameternaam. Als u deze naam kopieert/plakt vanaf de pagina, moet u ervoor zorgen dat er geen **spatie** volgt na **DWTableName**.
+1. Ga naar het tabblad **Parameters**, klik op **+ Nieuw** en voer **DWTableName** in als de parameternaam. Klik nogmaals op **+ Nieuw** en voer **DWSchema** in voor de parameternaam. Als u deze naam kopieert/plakt vanaf de pagina, moet u ervoor zorgen dat er geen **spatie** volgt na *DWTableName* en *DWSchema*. 
 1. Ga naar het tabblad **Verbinding**, 
 
-    a. Vink de optie **Bewerken** aan voor **Tabel**. Voer **dbo** in het invoervak voor de naam van de eerste tabel in. Selecteer vervolgens het tweede invoervak en klik op de link **Dynamische inhoud toevoegen** eronder. 
+    1. Vink de optie **Bewerken** aan voor **Tabel**. Selecteer het eerste invoervak en klik op de link **Dynamische inhoud toevoegen** eronder. Klik op de pagina **Dynamische inhoud toevoegen** op het **DWSchema** onder **Parameters**. Het expressietekstvak `@dataset().DWSchema` wordt nu automatisch ingevuld. Klik vervolgens op **Voltooien**.  
+    
+        ![Tabelnaam van gegevenssetverbinding](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![Tabelnaam van gegevenssetverbinding](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. Selecteer het tweede invoervak en klik op de link **Dynamische inhoud toevoegen** eronder. Klik op de pagina **Dynamische inhoud toevoegen** op de **DWTAbleName** onder **Parameters**. Het expressietekstvak `@dataset().DWTableName` wordt nu automatisch ingevuld. Klik vervolgens op **Voltooien**. 
+    
+    1. De **tableName**-eigenschap van de gegevensset is ingesteld op de waardes die worden doorgegeven als argumenten voor de **DWSchema** en **DWTableName**-parameters. De ForEach-activiteit doorloopt een lijst met tabellen en geeft deze één voor één door aan de Copy-activiteit. 
+    
 
-    b. Klik op de pagina **Dynamische inhoud toevoegen** op de **DWTAbleName** onder **Parameters**. Het expressietekstvak `@dataset().DWTableName` wordt nu automatisch ingevuld. Klik vervolgens op **Voltooien**. De **tableName**-eigenschap van de gegevensset is ingesteld op de waarde die wordt doorgegeven als argument voor de **DWTableName**-parameter. De ForEach-activiteit doorloopt een lijst met tabellen en geeft deze één voor één door aan de Copy-activiteit. 
-
-    ![Opbouwfunctie voor gegevenssetparameters](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>Pijplijnen maken
 In deze zelfstudie maakt u twee pijplijnen: **IterateAndCopySQLTables** en **GetTableListAndTriggerCopyData**. 
 
@@ -257,7 +258,8 @@ De pijplijn **IterateAndCopySQLTables** gebruikt een lijst met tabellen als para
 1. Open het tabblad **Sink** en voer de volgende stappen uit: 
 
     1. Selecteer **AzureSqlDWDataset** bij **Sink Dataset**.
-    1. Klik op het invoervak voor VALUE van de parameter DWTableName -> Selecteer **Dynamische inhoud toevoegen** hieronder, voer de expressie `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` als script in -> selecteer **Voltooien**.
+    1. Klik op het invoervak voor VALUE van de parameter DWTableName -> Selecteer **Dynamische inhoud toevoegen** hieronder, voer de expressie `@item().TABLE_NAME` als script in -> selecteer **Voltooien**.
+    1. Klik op het invoervak voor VALUE van de parameter DWSchema -> Selecteer **Dynamische inhoud toevoegen** hieronder, voer de expressie `@item().TABLE_SCHEMA` als script in -> selecteer **Voltooien**.
     1. Selecteer als kopieermethode **PolyBase**. 
     1. Schakel de optie **Standaardtype gebruiken** uit. 
     1. Klik op het invoervak **Prekopieerscript** -> Selecteer de koppeling **Dynamische inhoud toevoegen** hieronder -> voer de volgende expressie als script in -> selecteer **Voltooien**. 
@@ -282,12 +284,12 @@ Deze pijplijn voert twee acties uit:
 * Activeert de pijplijn 'IterateAndCopySQLTables' om het kopiëren van de gegevens daadwerkelijk uit te voeren.
 
 1. Klik op **+ (plus)** in het linkervenster en klik op **Pipeline**.
-1. In het tabblad **Algemeen** wijzigt u de naam van de pijplijn in **GetTableListAndTriggerCopyData**. 
+1. In het paneel onder **Eigenschappen** wijzigt u de naam van de pijplijn in **GetTableListAndTriggerCopyData**. 
 
 1. Vouw in de werkset **Activiteiten** de optie **Algemeen** uit, sleep de **Opzoeken**-activiteit naar het ontwerpoppervlak voor pijplijnen en voer de volgende stappen uit:
 
     1. Voer **LookupTableList** in als **Name**. 
-    1. Voer **De tabellijst ophalen uit de Azure SQL-database** in bij **Description**.
+    1. Voer **De tabellijst ophalen uit de mijn database** in bij **Description**.
 
 1. Ga naar het tabblad **Instellingen** en voer de volgende stappen uit:
 
@@ -310,10 +312,8 @@ Deze pijplijn voert twee acties uit:
 1. Ga naar het tabblad **Instellingen** in het tabblad van de activiteit **Pijplijn uitvoeren** en voer de volgende stappen uit: 
 
     1. Selecteer **IterateAndCopySQLTables** bij **Invoked pipeline**. 
-    1. Vouw de sectie **Geavanceerd** uit en schakel het selectievakje uit bij **Wachten op voltooiing**.
-    1. Klik op **+ New** in de sectie **Parameters**. 
-    1. Voer **tableList** in als parameter **Naam**.
-    1. Klik op het invoervak VALUE -> selecteer de koppeling **Dynamische inhoud toevoegen** hieronder - voer `@activity('LookupTableList').output.value` als waarde voor de tabelnaam -> selecteer **Voltooien**. U stelt de lijst met resultaten vanuit de activiteit Opzoeken in als invoer voor de tweede pijplijn. De lijst met resultaten bevat de lijst met tabellen waarvan de gegevens naar de bestemming moeten worden gekopieerd. 
+    1. Schakel het selectievakje **Wacht op voltooiing** uit.
+    1. Klik in de sectie **Parameters** op het invoervak onder VALUE -> selecteer de koppeling **Dynamische inhoud toevoegen** hieronder - voer `@activity('LookupTableList').output.value` als waarde voor de tabelnaam -> selecteer **Voltooien**. U stelt de lijst met resultaten vanuit de activiteit Opzoeken in als invoer voor de tweede pijplijn. De lijst met resultaten bevat de lijst met tabellen waarvan de gegevens naar de bestemming moeten worden gekopieerd. 
 
         ![Execute Pipeline-activiteit - pagina instellingen](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 

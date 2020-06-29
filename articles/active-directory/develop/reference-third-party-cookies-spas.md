@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cf385ef9af152308bcd96f25df49aebddd25b059
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1478ee1396390e26d333230b0254578ec748ef6c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691059"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477257"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>ITP in Safari en andere browsers waar cookies van derden worden geblokkeerd, afhandelen
 
@@ -36,7 +36,7 @@ De oplossing die in dit artikel wordt beschreven, werkt in al deze browsers, of 
 
 ## <a name="overview-of-the-solution"></a>Overzicht van de oplossing
 
-Om gebruikers in SPAs te blijven verifiëren, moeten app-ontwikkel aars de [autorisatie code stroom](v2-oauth2-auth-code-flow.md)gebruiken. In de auth-code stroom geeft de ID-provider een code uit en de beveiligd-wachtwoord verificatie wordt de code voor een toegangs token en een vernieuwings token ingewisseld. Wanneer de app aanvullende tokens vereist, kan deze de [token stroom vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) gebruiken om nieuwe tokens op te halen. MSAL. js 2,0, de micro soft Identity platform-bibliotheek voor SPAs, implementeert de autorisatie code stroom voor SPAs en een kleine update is een vervanging voor MSAL. js 1. x.
+Om gebruikers in SPAs te blijven verifiëren, moeten app-ontwikkel aars de [autorisatie code stroom](v2-oauth2-auth-code-flow.md)gebruiken. In de auth-code stroom geeft de ID-provider een code uit en de beveiligd-wachtwoord verificatie wordt de code voor een toegangs token en een vernieuwings token ingewisseld. Wanneer de app aanvullende tokens vereist, kan deze de [token stroom vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) gebruiken om nieuwe tokens op te halen. MSAL.js 2,0, de micro soft Identity platform-bibliotheek voor SPAs, implementeert de autorisatie code stroom voor SPAs en, met kleine updates, is een vervanging voor MSAL.js 1. x.
 
 Voor de micro soft Identity platform, SPAs en native-clients volgen vergelijk bare protocol richtlijnen:
 
@@ -63,7 +63,7 @@ Er zijn twee manieren om u aan te melden:
     * Overweeg het gebruik van een vooraf te laden reeks in de app die controleert op een aanmeldings sessie en omleidt naar de aanmeldings pagina voordat de app de volledige versie van de Java script-nettolading uitpakt en uitvoert.
 * **Pop**
     * Als de gebruikers ervaring (UX) van een volledige pagina omleiding niet werkt voor de toepassing, kunt u een pop-upvenster gebruiken om verificatie te verwerken.
-    * Wanneer de pop-up wordt omgeleid naar de toepassing na verificatie, worden in code in de handler voor omleiding de code en tokens in de lokale opslag opgeslagen zodat de toepassing deze kan gebruiken. MSAL. js ondersteunt pop-ups voor verificatie, zoals de meeste bibliotheken.
+    * Wanneer de pop-up wordt omgeleid naar de toepassing na verificatie, worden in code in de handler voor omleiding de code en tokens in de lokale opslag opgeslagen zodat de toepassing deze kan gebruiken. MSAL.js ondersteunt pop-ups voor verificatie, zoals de meeste bibliotheken.
     * Browsers verlaagt de ondersteuning voor pop-ups, zodat ze mogelijk niet de meest betrouw bare optie zijn. Gebruikers interactie met het beveiligd-wachtwoord verificatie alvorens het pop-upvenster te maken, kan nodig zijn om te voldoen aan de browser vereisten.
 
 >[!NOTE]
@@ -83,4 +83,4 @@ Dit vernieuwings token patroon voor beperkte levens duur is gekozen als een even
 
 Meer informatie over de [autorisatie code stroom](v2-oauth2-auth-code-flow.md).
 
-Probeer de autorisatie code stroom uit met de [Snelstartgids voor MSAL. js 2,0](quickstart-v2-javascript-auth-code.md).
+Probeer de autorisatie code stroom uit met de [Snelstartgids vanMSAL.js 2,0](quickstart-v2-javascript-auth-code.md).

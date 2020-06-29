@@ -6,18 +6,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517d6f7f06025b35dd27fa69d1de1b4139de6c8d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884236"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478005"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Procedure: Service voorwaarden en de privacyverklaring voor een app configureren
 
@@ -45,7 +45,7 @@ Zorg ervoor dat de Url's voldoen aan de volgende richt lijnen voordat u koppelin
 | Geldige schema's | HTTP en HTTPS<br/>U kunt het beste HTTPS |
 | Max. lengte    | 2048 tekens                       |
 
-Voor beelden `https://myapp.com/terms-of-service` : en`https://myapp.com/privacy-statement`
+Voor beelden: `https://myapp.com/terms-of-service` en`https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Koppelingen toevoegen aan de service voorwaarden en de privacyverklaring
 
@@ -96,5 +96,5 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 ```
 
 > [!NOTE]
-> * Zorg ervoor dat u geen vooraf bestaande waarden overschrijft die u hebt toegewezen aan een van deze velden `supportUrl`: `marketingUrl`, en`logoUrl`
+> * Zorg ervoor dat u geen vooraf bestaande waarden overschrijft die u hebt toegewezen aan een van deze velden: `supportUrl` , `marketingUrl` en`logoUrl`
 > * De Microsoft Graph-API werkt alleen wanneer u zich aanmeldt met een Azure AD-account. Persoonlijke micro soft-accounts worden niet ondersteund.

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 39bdd2d34260b9adb12b25adff9d661083d51fe4
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: fbb24ac1974c23bf5292a987fc64a84dff69bf7d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310050"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118352"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Quickstart: Een Cassandra-app bouwen met Node.js-SDK en Azure Cosmos DB
 
@@ -170,31 +170,31 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
 
-    Gebruik de ![knop Kopiëren](./media/create-cassandra-nodejs/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
+1. Gebruik de ![knop Kopiëren](./media/create-cassandra-nodejs/copy.png) aan de rechterkant van het scherm om de bovenste waarde (het CONTACT POINT) te kopiëren.
 
-    ![Kopieer de waarden voor CONTACT POINT, USERNAME en PASSWORD uit Azure Portal, op de pagina Verbindingsreeks](./media/create-cassandra-nodejs/keys.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/keys.png" alt-text="De waarden voor CONTACT POINT, USERNAME en PASSWORD in Azure Portal weergeven en kopiëren, pagina Verbindingsreeks":::
 
-2. Open het `config.js`-bestand. 
+1. Open het `config.js`-bestand. 
 
-3. Plak de waarde van CONTACT POINT uit de portal over `<FillMEIN>` op regel 4.
+1. Plak de waarde van CONTACT POINT uit de portal over `<FillMEIN>` op regel 4.
 
     Regel 4 moet er nu ongeveer als volgt uitzien: 
 
     `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
 
-4. Kopieer de waarde van USERNAME uit de portal en plak deze over `<FillMEIN>` op regel 2.
+1. Kopieer de waarde van USERNAME uit de portal en plak deze over `<FillMEIN>` op regel 2.
 
     Regel 2 moet er nu ongeveer als volgt uitzien: 
 
     `config.username = 'cosmos-db-quickstart';`
     
-5. Kopieer de waarde van PASSWORD uit de portal en plak deze over `<FillMEIN>` op regel 3.
+1. Kopieer de waarde van PASSWORD uit de portal en plak deze over `<FillMEIN>` op regel 3.
 
     Regel 3 moet nu ongeveer als volgt uitzien:
 
     `config.password = '2Ggkr662ifxz2Mg==';`
 
-6. Sla het bestand `config.js` op.
+1. Sla het bestand `config.js` op.
     
 ## <a name="use-the-x509-certificate"></a>Het X509-certificaat gebruiken
 
@@ -211,11 +211,11 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 > 
 > Dubbelklik op het CRT-bestand om het te openen in de certificaatweergave. 
 >
-> ![De uitvoer bekijken en controleren](./media/create-cassandra-nodejs/crtcer1.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="De uitvoer weergeven en controleren":::
 >
 > Klik in de wizard Certificaat op Volgende. Selecteer Base 64-gecodeerd X.509 (CER), en vervolgens Volgende.
 >
-> ![De uitvoer bekijken en controleren](./media/create-cassandra-nodejs/crtcer2.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="De uitvoer weergeven en controleren":::
 >
 > Selecteer Bladeren (om een doellocatie te zoeken) en typ een bestandsnaam.
 > Selecteer Volgende, en vervolgens Voltooid.
@@ -236,13 +236,13 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 4. Controleer of de resultaten op de opdrachtregel aan de verwachting voldoen.
 
-    ![De uitvoer bekijken en controleren](./media/create-cassandra-nodejs/output.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="De uitvoer weergeven en controleren":::
 
     Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
 
 5. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen. 
 
-    ![De gegevens bekijken in Data Explorer](./media/create-cassandra-nodejs/data-explorer.png) 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="De gegevens weergeven in Data Explorer"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

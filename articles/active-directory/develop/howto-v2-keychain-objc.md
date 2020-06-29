@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06e197a6e445c7dc1179be696318905f2132ee36
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085862"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477733"
 ---
 # <a name="configure-keychain"></a>Sleutelketen configureren
 
@@ -30,21 +30,21 @@ In dit artikel wordt beschreven hoe u de rechten van een app kunt configureren, 
 
 ### <a name="ios"></a>iOS
 
-MSAL op iOS maakt standaard `com.microsoft.adalcache` gebruik van de toegangs groep. Dit is de gedeelde toegangs groep die wordt gebruikt door zowel de MSAL-als de Azure AD Authentication Library (ADAL) Sdk's en zorgt voor de beste SSO-ervaring (eenmalige aanmelding) tussen meerdere apps van dezelfde uitgever.
+MSAL op iOS maakt standaard gebruik van de `com.microsoft.adalcache` toegangs groep. Dit is de gedeelde toegangs groep die wordt gebruikt door zowel de MSAL-als de Azure AD Authentication Library (ADAL) Sdk's en zorgt voor de beste SSO-ervaring (eenmalige aanmelding) tussen meerdere apps van dezelfde uitgever.
 
-`com.microsoft.adalcache` Voeg op Ios de sleutel keten groep toe aan het recht van uw app in Xcode onder **project instellingen** > **capaciteit** > van**sleutel hanger delen**
+Voeg op Ios de `com.microsoft.adalcache` sleutel keten groep toe aan het recht van uw app in Xcode onder **project instellingen**  >  **capaciteit**van  >  **sleutel hanger delen**
 
 ### <a name="macos"></a>macOS
 
 MSAL in macOS maakt `com.microsoft.identity.universalstorage` standaard gebruik van toegangs groep.
 
-Als gevolg van de beperkingen van `access group` macOS-sleutel hanger, wordt MSAL niet rechtstreeks vertaald naar het kenmerk voor de toegangs groep van de sleutel hanger (Zie [KSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) op macOS 10,14 en eerdere versies. Het werkt echter op dezelfde manier als een SSO-perspectief door ervoor te zorgen dat meerdere toepassingen die door dezelfde Apple-ontwikkelaar worden gedistribueerd, Silent SSO kunnen hebben.
+Als gevolg van de beperkingen van macOS-sleutel hanger, `access group` wordt MSAL niet rechtstreeks vertaald naar het kenmerk voor de toegangs groep van de sleutel hanger (Zie [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) op macOS 10,14 en eerdere versies. Het werkt echter op dezelfde manier als een SSO-perspectief door ervoor te zorgen dat meerdere toepassingen die door dezelfde Apple-ontwikkelaar worden gedistribueerd, Silent SSO kunnen hebben.
 
 Op macOS 10,15 en hoger (macOS Catalina) maakt MSAL gebruik van de toegangs groeps kenmerk sleutel hanger voor het verkrijgen van een stille SSO, op dezelfde wijze als iOS.
 
 ## <a name="custom-keychain-access-group"></a>Toegangs groep voor aangepaste sleutel hanger
 
-Als u een andere toegangs groep voor de sleutel hanger wilt gebruiken, kunt u de aangepaste groep tijdens `MSALPublicClientApplicationConfig` het maken `MSALPublicClientApplication`door geven voordat u deze maakt, bijvoorbeeld:
+Als u een andere toegangs groep voor de sleutel hanger wilt gebruiken, kunt u de aangepaste groep tijdens het maken door geven `MSALPublicClientApplicationConfig` voordat u `MSALPublicClientApplication` Deze maakt, bijvoorbeeld:
 
 # <a name="objective-c"></a>[Objective-C](#tab/objc)
 
@@ -104,7 +104,7 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 Fout-34018 betekent normaal gesp roken dat de sleutel hanger niet juist is geconfigureerd. Zorg ervoor dat de toegangs groep voor de sleutel hanger die is geconfigureerd in MSAL overeenkomt met de keten die is geconfigureerd in rechten.
 
-## <a name="ensure-your-application-is-properly-signed"></a>Zorg ervoor dat uw toepassing correct is ondertekend
+## <a name="ensure-your-application-is-properly-signed"></a>Zorg ervoor dat de toepassing juist is afgemeld
 
 In macOS kunnen toepassingen worden uitgevoerd zonder te worden ondertekend door de ontwikkelaar. Hoewel de meeste functionaliteit van MSAL blijft werken, moet de SSO via de toegang tot de sleutel hanger worden ondertekend. Als u meerdere sleutel Hangers vraagt, moet u ervoor zorgen dat de hand tekening van uw toepassing geldig is.
 

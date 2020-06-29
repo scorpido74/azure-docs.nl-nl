@@ -1,24 +1,14 @@
 ---
 title: Beheerde identiteiten inschakelen op uw Lab-Vm's in Azure DevTest Labs
 description: In dit artikel wordt beschreven hoe een Lab-eigenaar door de gebruiker toegewezen beheerde identiteiten kan inschakelen op uw virtuele lab-machines.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2020
-ms.author: spelluru
-ms.openlocfilehash: 5d70f83babcf53249f581230e72326d99a0533d6
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898435"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85475999"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Door de gebruiker toegewezen beheerde identiteiten inschakelen op virtuele lab-machines in Azure DevTest Labs
 Als eigenaar van een lab kunt u door de gebruiker toegewezen beheerde identiteiten inschakelen op uw virtuele lab-machines (Vm's) in Azure DevTest Labs.

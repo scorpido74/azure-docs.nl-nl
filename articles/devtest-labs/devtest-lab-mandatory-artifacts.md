@@ -1,24 +1,14 @@
 ---
 title: Verplichte artefacten opgeven voor uw Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het opgeven van verplichte artefacten die moeten worden geïnstalleerd voordat u een door de gebruiker geselecteerde artefacten op virtuele machines (Vm's) in het lab kunt installeren.
-services: devtest-lab,virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: spelluru
-ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897556"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480300"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Verplichte artefacten opgeven voor uw Lab in Azure DevTest Labs
 Als eigenaar van een lab kunt u verplichte artefacten opgeven die worden toegepast op elke machine die in het lab wordt gemaakt. Stel dat elke machine in uw lab moet worden verbonden met uw bedrijfs netwerk. In dit geval moet elke test gebruiker tijdens het maken van de virtuele machine een domein lidmaatschaps artefact toevoegen om er zeker van te zijn dat hun computer is verbonden met het bedrijfs domein. Met andere woorden: Lab-gebruikers moeten in wezen een machine opnieuw maken voor het geval ze verg eten verplichte artefacten op hun computer toe te passen. Als eigenaar van een Lab maakt u het lidmaatschap van het domein als verplicht artefact in uw Lab. Met deze stap zorgt u ervoor dat elke computer is verbonden met het bedrijfs netwerk en dat de tijd en inspanningen voor uw test gebruikers worden bespaard.

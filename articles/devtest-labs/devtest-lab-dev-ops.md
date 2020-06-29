@@ -1,24 +1,14 @@
 ---
 title: Integratie van Azure DevTest Labs en DevOps | Microsoft Docs
 description: Meer informatie over het gebruik van Labs van Azure DevTest Labs binnen een pijp lijn (continue Integration)/continue levering (CD) in een bedrijfs omgeving.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
-ms.author: spelluru
-ms.openlocfilehash: db9e338891a4e8bab9f9b36482815542ae348ec2
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896926"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481065"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integratie van Azure DevTest Labs en Azure DevOps
 DevOps is een methodologie voor software ontwikkeling waarmee software ontwikkeling (dev) wordt geïntegreerd met bewerkingen (OPS) voor een systeem. Dit systeem kan nieuwe functies, updates en oplossingen leveren op basis van de bedrijfs doelen. Deze methodologie omvat alles uit het ontwerpen van nieuwe functies op basis van doel stellingen, gebruiks patronen en feedback van klanten; om het systeem te corrigeren, te herstellen en te verhelpen wanneer er problemen optreden. Een eenvoudig geïdentificeerd onderdeel van deze methodologie is de pijp lijn doorlopende integratie (CI)/continue levering (CD). Een CI/CD-pijp lijn neemt informatie, code en resources van een door Voer via een reeks stappen die bouwen, testen en implementeren bevatten, om het systeem te maken. Dit artikel richt zich op verschillende manieren om Labs effectief te gebruiken in een pijp lijn in een bedrijfs omgeving. 

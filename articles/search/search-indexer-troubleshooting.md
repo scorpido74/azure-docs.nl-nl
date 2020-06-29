@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c35eefe50643dc65dcf84305a9b4b3ee64cadb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190935"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478634"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Veelvoorkomende problemen met Indexeer functies in azure Cognitive Search oplossen
 
@@ -28,18 +28,18 @@ Indexeer functies kunnen in een aantal problemen worden uitgevoerd bij het index
 > [!NOTE]
 > Indexeer functies hebben beperkte ondersteuning voor toegang tot gegevens bronnen en andere bronnen die worden beveiligd door Azure-netwerk beveiligings mechanismen. Op dit moment kunnen Indexeer functies alleen toegang krijgen tot gegevens bronnen via de bijbehorende beperkings mechanismen voor IP-adres bereik of NSG regels, indien van toepassing. Details voor toegang tot elke ondersteunde gegevens bron vindt u hieronder.
 >
-> U kunt het IP-adres van uw zoek service nagaan door de Fully Qualified Domain Name (bijvoorbeeld `<your-search-service-name>.search.windows.net`) te pingen.
+> U kunt het IP-adres van uw zoek service nagaan door de Fully Qualified Domain Name (bijvoorbeeld) te pingen `<your-search-service-name>.search.windows.net` .
 >
 > U kunt het IP-adres bereik van de `AzureCognitiveSearch` [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) van de service opvragen door [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
 
 ### <a name="configure-firewall-rules"></a>Firewallregels configureren
 
-Azure Storage, CosmosDB en Azure SQL bieden een Configureer bare firewall. Er is geen specifiek fout bericht wanneer de firewall is ingeschakeld. Normaal gesp roken zijn firewall fouten algemeen en zien `The remote server returned an error: (403) Forbidden` ze `Credentials provided in the connection string are invalid or have expired`eruit als of.
+Azure Storage, CosmosDB en Azure SQL bieden een Configureer bare firewall. Er is geen specifiek fout bericht wanneer de firewall is ingeschakeld. Normaal gesp roken zijn firewall fouten algemeen en zien ze eruit als `The remote server returned an error: (403) Forbidden` of `Credentials provided in the connection string are invalid or have expired` .
 
 Er zijn twee opties voor het toestaan van Indexeer functies voor toegang tot deze resources:
 
 * Schakel de firewall uit door toegang vanaf **alle netwerken** toe te staan (indien mogelijk).
-* U kunt ook toegang toestaan voor het IP-adres van uw zoek service en het IP-adres bereik van `AzureCognitiveSearch` de [service label](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) in de firewall regels van uw bron (beperking van het IP-adres bereik).
+* U kunt ook toegang toestaan voor het IP-adres van uw zoek service en het IP-adres bereik van de `AzureCognitiveSearch` [service label](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) in de firewall regels van uw bron (beperking van het IP-adres bereik).
 
 Details voor het configureren van IP-adres bereik beperkingen voor elk gegevens bron type vindt u op de volgende koppelingen:
 
@@ -51,7 +51,7 @@ Details voor het configureren van IP-adres bereik beperkingen voor elk gegevens 
 
 **Beperking**: zoals vermeld in de bovenstaande documentatie voor Azure Storage, werken IP-adres bereik beperkingen alleen als uw zoek service en uw opslag account zich in verschillende regio's bevinden.
 
-Azure functions (die kunnen worden gebruikt als [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md)) ondersteunen ook [IP-adres beperkingen](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). De lijst met IP-adressen die moeten worden geconfigureerd, is het IP-adres van de zoek service en het `AzureCognitiveSearch` IP-adres bereik van de service label.
+Azure functions (die kunnen worden gebruikt als [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md)) ondersteunen ook [IP-adres beperkingen](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions). De lijst met IP-adressen die moeten worden geconfigureerd, is het IP-adres van de zoek service en het IP-adres bereik van de `AzureCognitiveSearch` service label.
 
 Details voor het openen van gegevens in SQL Server op een virtuele machine van Azure worden [hier](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) beschreven
 
@@ -61,7 +61,7 @@ Bij het openen van gegevens in een SQL Managed instance of wanneer een virtuele 
 
 In dergelijke gevallen kan de virtuele machine van Azure of het beheerde exemplaar van SQL worden geconfigureerd zodat deze zich binnen een virtueel netwerk bevindt. Vervolgens kan een netwerk beveiligings groep worden geconfigureerd om het type netwerk verkeer te filteren dat in en uit de subnetten van het virtuele netwerk en netwerk interfaces kan stromen.
 
-De `AzureCognitiveSearch` servicetag kan rechtstreeks worden gebruikt in de regels voor inkomende [NSG](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) zonder dat het IP-adres bereik moet worden opgezocht.
+De servicetag `AzureCognitiveSearch` kan rechtstreeks worden gebruikt in de [regels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) voor inkomende NSG zonder dat het IP-adres bereik moet worden opgezocht.
 
 Meer informatie over het openen van gegevens in een SQL Managed instance wordt [hier](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) beschreven
 
@@ -111,6 +111,7 @@ api-key: [admin key]
 Indexeer functies vinden documenten van een [gegevens bron](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Soms lijkt een document uit de gegevens bron dat moest worden geïndexeerd, te ontbreken in een index. Er zijn enkele veelvoorkomende redenen waarom deze fouten zich kunnen voordoen:
 
 * Het document is niet geïndexeerd. Controleer de portal op de uitvoering van een geslaagde indexer.
+* Controleer de waarde voor het [bijhouden van wijzigingen](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) . Als uw hoge watermerk waarde een datum is die op een later tijdstip is ingesteld, worden alle documenten met een datum die kleiner is dan deze, overgeslagen door de Indexeer functie. Met de velden ' initialTrackingState ' en ' finalTrackingState ' in de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)kunt u de status van het bijhouden van wijzigingen van de Indexeer functie begrijpen.
 * Het document is bijgewerkt nadat de Indexeer functie is uitgevoerd. Als uw Indexeer functie volgens een [schema is gepland](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), wordt het document uiteindelijk opnieuw uitgevoerd en opgehaald.
 * De [query](/rest/api/searchservice/create-data-source) die is opgegeven in de gegevens bron, sluit het document uit. Indexeer functies kunnen geen documenten indexeren die geen deel uitmaken van de gegevens bron.
 * [Veld Toewijzingen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) of [AI-verrijking](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) hebben het document gewijzigd en het ziet er anders uit dan verwacht.

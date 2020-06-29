@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f66bb1c271418b02c2548de486793b4474f40c8b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337378"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85448713"
 ---
 Voor nu hebben Ultra disks de volgende beperkingen:
 
@@ -38,6 +38,7 @@ De volgende tabel geeft een overzicht van de regio's Ultra disks zijn beschikbaa
 |Europa -west     |Drie zones          |
 |Verenigd Koninkrijk Zuid     |Drie zones          |
 |Japan - oost     |Twee zones         |
+|Frankrijk - centraal    |Twee zones        |
 
 
 - Worden alleen ondersteund in de volgende VM-reeks:

@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6a364cbd29c3273466bee15b9a54e097497a8e5
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886106"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479110"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn MVC-project (Visual Studio Azure Active Directory Connected service)?
 
@@ -29,11 +29,11 @@ Zie [aan](vs-active-directory-dotnet-getting-started.md)de slag voor meer inform
 
 ## <a name="added-references"></a>Verwijzingen toegevoegd
 
-Is van invloed op het project bestand (*. NET `packages.config` references) en (NuGet references).
+Is van invloed op het project bestand (*. NET references) en `packages.config` (NuGet references).
 
 | Type | Naslaginformatie |
 | --- | --- |
-| NET NuGet | Micro soft. Identity model. Protocol. Extensions |
+| NET NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | NET NuGet | Micro soft. Owin |
 | NET NuGet | Microsoft.Owin.Host.SystemWeb |
 | NET NuGet | Micro soft. Owin. Security |
@@ -70,9 +70,9 @@ De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visu
 
 - Stel de eigenschap `IISExpressSSLPort` in op een specifiek getal.
 - Stel de eigenschap `WebProject_DirectoryAccessLevelKey` in op 0 of 1 als u de optie **Directory gegevens lezen** hebt geselecteerd.
-- Stel de eigenschap `IISUrl` in `https://localhost:<port>/` op `<port>` waar de `IISExpressSSLPort` waarde overeenkomt.
+- Stel de eigenschap `IISUrl` in op `https://localhost:<port>/` waar `<port>` de `IISExpressSSLPort` waarde overeenkomt.
 
-## <a name="webconfig-or-appconfig-changes"></a>wijzigingen in web. config of app. config
+## <a name="webconfig-or-appconfig-changes"></a>Wijzigingen web.config of app.config
 
 - De volgende configuratie vermeldingen zijn toegevoegd:
 
@@ -86,17 +86,17 @@ De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visu
     </appSettings>
     ```
 
-- Elementen `<dependentAssembly>` toegevoegd onder het `<runtime><assemblyBinding>` knoop punt `System.IdentityModel.Tokens.Jwt` voor `Microsoft.IdentityModel.Protocol.Extensions`en.
+- `<dependentAssembly>`Elementen toegevoegd onder het `<runtime><assemblyBinding>` knoop punt voor `System.IdentityModel.Tokens.Jwt` en `Microsoft.IdentityModel.Protocol.Extensions` .
 
 Aanvullende wijzigingen als u de optie **Directory gegevens lezen** hebt geselecteerd:
 
-- De volgende configuratie vermelding is toegevoegd `<appSettings>`onder:
+- De volgende configuratie vermelding is toegevoegd onder `<appSettings>` :
 
     ```xml
     <add key="ida:ClientSecret" value="<Azure AD app's new client secret>" />
     ```
 
-- De volgende elementen zijn toegevoegd `<configuration>`onder; de waarden voor het project-MDF-bestand en project-catalogus-ID variëren:
+- De volgende elementen zijn toegevoegd onder `<configuration>` ; waarden voor het project-MDF-bestand en project-catalogus-ID variëren:
 
     ```xml
     <configSections>
@@ -120,29 +120,29 @@ Aanvullende wijzigingen als u de optie **Directory gegevens lezen** hebt geselec
     </entityFramework>
     ```
 
-- Elementen `<dependentAssembly>` toegevoegd onder het `<runtime><assemblyBinding>` knoop punt `Microsoft.Data.Services.Client`voor `Microsoft.Data.Edm`, en `Microsoft.Data.OData`.
+- `<dependentAssembly>`Elementen toegevoegd onder het `<runtime><assemblyBinding>` knoop punt voor `Microsoft.Data.Services.Client` , `Microsoft.Data.Edm` en `Microsoft.Data.OData` .
 
 ## <a name="code-changes-and-additions"></a>Code wijzigingen en toevoegingen
 
-- Het `[Authorize]` kenmerk is toegevoegd `Controllers/HomeController.cs` aan en andere bestaande controllers.
+- Het kenmerk is toegevoegd `[Authorize]` aan `Controllers/HomeController.cs` en andere bestaande controllers.
 
-- Er is een opstart klasse voor `App_Start/Startup.Auth.cs`verificatie toegevoegd, met een opstart logica voor Azure AD-verificatie. Als u de optie **Directory gegevens lezen** hebt geselecteerd, bevat dit bestand ook code voor het ontvangen van een OAuth-code en het uitwisselen van een toegangs token.
+- Er is een opstart klasse voor verificatie toegevoegd, `App_Start/Startup.Auth.cs` met een opstart logica voor Azure AD-verificatie. Als u de optie **Directory gegevens lezen** hebt geselecteerd, bevat dit bestand ook code voor het ontvangen van een OAuth-code en het uitwisselen van een toegangs token.
 
-- Er is een controller klasse `Controllers/AccountController.cs`,, `SignIn` met `SignOut` en-methoden, toegevoegd.
+- Er is een controller klasse, `Controllers/AccountController.cs` , met en-methoden, toegevoegd `SignIn` `SignOut` .
 
-- Er is een gedeeltelijke weer `Views/Shared/_LoginPartial.cshtml`gave toegevoegd, die een actie `SignIn` koppeling `SignOut`voor en bevat.
+- Er is een gedeeltelijke weer gave toegevoegd, `Views/Shared/_LoginPartial.cshtml` die een actie koppeling voor `SignIn` en bevat `SignOut` .
 
-- Er is een gedeeltelijke weer `Views/Account/SignoutCallback.cshtml`gave toegevoegd, met HTML voor de gebruikers interface voor afmelden.
+- Er is een gedeeltelijke weer gave toegevoegd, `Views/Account/SignoutCallback.cshtml` met HTML voor de gebruikers interface voor afmelden.
 
-- De `Startup.Configuration` methode is bijgewerkt om een aanroep op `ConfigureAuth(app)` te nemen als de klasse al bestaat. anders voegt u `Startup` een klasse toe die de-methode aanroept.
+- De `Startup.Configuration` methode is bijgewerkt om een aanroep op te nemen `ConfigureAuth(app)` als de klasse al bestaat; anders is een `Startup` klasse toegevoegd die de methode aanroept.
 
-- Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (visual studio 2017) of `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service bij te houden.
+- Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (Visual studio 2017) of `Service References/Azure AD/ConnectedService.json` (visual studio 2015) met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service bij te houden.
 
-- Als u de optie **Directory gegevens lezen** hebt geselecteerd, `Models/ADALTokenCache.cs` toegevoegd `Models/ApplicationDbContext.cs` en voor het ondersteunen van het opslaan van tokens. Daarnaast hebt u een extra controller en weer gave toegevoegd om toegang te krijgen tot gebruikers profiel gegevens met `Controllers/UserProfileController.cs`behulp van Azure Graph api's:, `Views/UserProfile/Index.cshtml`en`Views/UserProfile/Relogin.cshtml`
+- Als u de optie **Directory gegevens lezen** hebt geselecteerd, toegevoegd `Models/ADALTokenCache.cs` en voor het ondersteunen van het opslaan van `Models/ApplicationDbContext.cs` tokens. Daarnaast hebt u een extra controller en weer gave toegevoegd om toegang te krijgen tot gebruikers profiel gegevens met behulp van Azure Graph Api's: `Controllers/UserProfileController.cs` , `Views/UserProfile/Index.cshtml` en`Views/UserProfile/Relogin.cshtml`
 
 ### <a name="file-backup-visual-studio-2015"></a>Back-up van bestanden (Visual Studio 2015)
 
-Wanneer u de verbonden service toevoegt, maakt Visual Studio 2015 een back-up van gewijzigde en verwijderde bestanden. Alle betrokken bestanden worden opgeslagen in de map `Backup/AzureAD`. Visual Studio 2017 en hoger maakt geen back-ups.
+Wanneer u de verbonden service toevoegt, maakt Visual Studio 2015 een back-up van gewijzigde en verwijderde bestanden. Alle betrokken bestanden worden opgeslagen in de map `Backup/AzureAD` . Visual Studio 2017 en hoger maakt geen back-ups.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

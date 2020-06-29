@@ -1,24 +1,14 @@
 ---
 title: Klassikale Labs beheren in Azure Lab Services | Microsoft Docs
 description: Meer informatie over het maken en configureren van een leslokaal Lab, het weer geven van alle klassikale Labs, het delen van de registratie koppeling met een test gebruiker of het verwijderen van een lab.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 04/10/2020
-ms.author: spelluru
-ms.openlocfilehash: 93084772852e289c1b35d889e1f4d4378c0298a8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ed5eb05fa586e19fdf684a4f88b56e7b0185baf4
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895862"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445386"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 

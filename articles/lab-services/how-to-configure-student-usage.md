@@ -1,24 +1,14 @@
 ---
 title: Gebruiks instellingen configureren in de klassikale Labs van Azure Lab Services
 description: Meer informatie over het configureren van het aantal studenten voor een lab, het ontvangen van ze met het lab, het aantal uren dat ze de virtuele machine mogen gebruiken en meer.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2020
-ms.author: spelluru
-ms.openlocfilehash: 4dfaaf750c80198000ef08af4dff90c41a46f094
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896023"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445947"
 ---
 # <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 
@@ -127,7 +117,7 @@ In deze sectie kunt u de registratie koppeling vanuit de portal ophalen en verze
     
 1. Plak de registratie koppeling in uw e-mail toepassing en verzend vervolgens het e-mail bericht naar een student zodat de student zich kan registreren voor de klasse. 
 
-## <a name="view-registered-users"></a>Geregistreerde gebruikers weer geven
+## <a name="view-registered-users"></a>Geregistreerde gebruikers weergeven
 
 1. Ga naar de website van [Azure Lab Services](https://labs.azure.com) . 
 1. Selecteer **Aanmelden**en voer uw referenties in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts.

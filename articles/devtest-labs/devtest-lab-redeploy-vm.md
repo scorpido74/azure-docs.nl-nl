@@ -1,25 +1,14 @@
 ---
 title: Een virtuele machine opnieuw implementeren in een lab in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over hoe u een virtuele machine opnieuw implementeert (van het ene naar het andere Azure-knoop punt naar het andere) in Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 8460f09e-482f-48ba-a57a-c95fe8afa001
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: da0edf13adaa0d7ecd84ee2c190f376c19b398db
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898722"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480232"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Een virtuele machine opnieuw implementeren in een lab in Azure DevTest Labs
 Als u geen verbinding kunt maken met een virtuele machine (VM) in een lab via een verbinding met een extern bureau blad, implementeert u de VM opnieuw en probeert u opnieuw verbinding te maken. Wanneer u een virtuele machine opnieuw implementeert, verplaatst DevTest Labs de VM van het knoop punt waarop deze wordt uitgevoerd naar een nieuw knoop punt in de Azure-infra structuur. Vervolgens wordt de virtuele machine gestart en blijven alle configuratie opties en bijbehorende resources behouden. Met deze functie bespaart u de tijd die wordt besteed aan het oplossen van problemen met verbinding met extern bureau blad of toepassing op Windows-Vm's in het lab. 

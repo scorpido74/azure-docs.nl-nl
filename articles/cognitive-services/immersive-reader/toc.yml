@@ -29,9 +29,15 @@
       href: how-to-customize-launch-button.md
     - name: Het verificatietoken cachen
       href: how-to-cache-token.md
+    - name: Hardop voorlezen configureren
+      href: how-to-configure-read-aloud.md
+    - name: Vertaling configureren
+      href: how-to-configure-translation.md
+    - name: Gebruikersvoorkeuren opslaan
+      href: how-to-store-user-preferences.md
 - name: Naslaginformatie
   items:
-    - name: SDK-naslaginformatie
+    - name: JavaScript SDK
       href: reference.md
 - name: Resources
   items:

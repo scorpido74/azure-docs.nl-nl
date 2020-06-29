@@ -12,8 +12,8 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: Een profiel en eindpunt maken
       href: cdn-create-new-endpoint.md
-    - name: Een profiel maken met behulp van een Azure Resource Manager-sjabloon
-      href: create-profile-resource-manager-template.md
+    - name: Profiel en eindpunt maken - Azure Resource Manager-sjabloon
+      href: create-profile-endpoint-template.md
 - name: Zelfstudies
   items:
     - name: Azure CDN toevoegen aan een web-app

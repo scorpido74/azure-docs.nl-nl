@@ -6,17 +6,17 @@ services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886463"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479509"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -55,6 +55,6 @@ Wanneer u de Snelstartgids hebt voltooid, hebt u een app die kan worden uitgevoe
 
 ## <a name="tools"></a>Hulpprogramma's
 
-Microsoft Graph Explorer is een webgebaseerd hulp programma dat u kunt gebruiken om aanvragen te bouwen en te testen met behulp van Microsoft Graph-Api's. U hebt toegang tot Microsoft Graph Explorer op `https://developer.microsoft.com/graph/graph-explorer`:.
+Microsoft Graph Explorer is een webgebaseerd hulp programma dat u kunt gebruiken om aanvragen te bouwen en te testen met behulp van Microsoft Graph-Api's. U hebt toegang tot Microsoft Graph Explorer op: `https://developer.microsoft.com/graph/graph-explorer` .
 
-Postman is een hulp programma dat u ook kunt gebruiken om aanvragen te maken en te testen met behulp van de Microsoft Graph-Api's. U kunt een bericht downloaden naar: `https://www.getpostman.com/`. Als u wilt werken met Microsoft Graph in Postman, gebruikt u de Microsoft Graph verzameling in postman. Zie voor meer informatie [postman gebruiken met de Microsoft Graph-API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).
+Postman is een hulp programma dat u ook kunt gebruiken om aanvragen te maken en te testen met behulp van de Microsoft Graph-Api's. U kunt een bericht downloaden naar: `https://www.getpostman.com/` . Als u wilt werken met Microsoft Graph in Postman, gebruikt u de Microsoft Graph verzameling in postman. Zie voor meer informatie [postman gebruiken met de Microsoft Graph-API](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta).

@@ -1,24 +1,14 @@
 ---
 title: Verbinding maken met een virtuele Linux-machine in Azure Lab Services | Microsoft Docs
 description: Meer informatie over het gebruik van extern bureau blad voor virtuele Linux-machines in een lab in Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
-ms.author: spelluru
-ms.openlocfilehash: e5ee85c1c5ad588d64dad1ef2cb3afcbcb622b49
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898484"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443414"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Verbinding maken met virtuele Linux-machines in een leslokaal Lab van Azure Lab Services
 In dit artikel wordt beschreven hoe studenten in een Lab verbinding kunnen maken met een virtuele Linux-machine (VM) met behulp van:

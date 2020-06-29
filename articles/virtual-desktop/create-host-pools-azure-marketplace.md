@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a01d8568c50cca181ec10f91b316715d64d2c37e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737832"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100861"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -41,7 +41,7 @@ Ook moet u het volgende weten:
 - Waar de bron van de installatiekopie die u wilt gebruiken zich bevindt. Komt deze uit de Azure-galerie of is het een aangepaste installatiekopie?
 - Uw referenties voor domeindeelname.
 
-Zorg er ook voor dat u de resourceprovider Microsoft.DesktopVirtualization hebt geregistreerd. Als u dat nog niet hebt gedaan, gaat u naar **Abonnementen**, selecteert u de naam van uw abonnement en selecteert u vervolgens **Azure-resourceproviders**.
+Zorg er ook voor dat u de resourceprovider Microsoft.DesktopVirtualization hebt geregistreerd. Ga naar **Abonnementen**, selecteer de naam van uw abonnement en vervolgens **Azure-resourceproviders** als u dit nog niet hebt gedaan.
 
 Wanneer u een Windows Virtual Desktop-hostgroep maakt met de Azure Resource Manager-sjabloon, kunt u een virtuele machine maken vanuit de Azure-galerie, namelijk een beheerde installatiekopie of een niet-beheerde installatiekopie. Zie [Een Windows-VHD of -VHDX voorbereiden om te uploaden naar Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) en [Een beheerde installatiekopie van een gegeneraliseerde VM maken in Azure](../virtual-machines/windows/capture-image-resource.md) voor meer informatie over het maken van VM-installatiekopieën.
 

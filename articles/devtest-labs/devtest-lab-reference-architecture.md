@@ -1,24 +1,15 @@
 ---
 title: Enter prise-referentie architectuur voor Azure DevTest Labs
 description: In dit artikel vindt u Naslag informatie voor architectuur voor Azure DevTest Labs in een onderneming.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897945"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480181"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs referentie architectuur voor ondernemingen
 Dit artikel bevat referentie architectuur om u te helpen bij het implementeren van een oplossing op basis van Azure DevTest Labs in een onderneming. Het bevat het volgende:

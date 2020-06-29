@@ -6,24 +6,24 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 0c1f279e49b938fb391223bec47d23326e34b2ea
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d25a3831897ff8ad2e7dfb0c69910fee246aec21
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598134"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477682"
 ---
-# <a name="mark-your-app-as-publisher-verified-preview"></a>Uw app markeren als uitgever gecontroleerd (preview-versie)
+# <a name="mark-your-app-as-publisher-verified-preview"></a>Uw app markeren als Uitgever geverifieerd (preview)
 
 Wanneer een toepassing is gemarkeerd als uitgever, betekent dit dat de uitgever zijn of haar identiteit heeft gecontroleerd met behulp van hun Microsoft Partner Network-account (MPN) en dat deze MPN-account is gekoppeld aan de registratie van de toepassing. In dit artikel wordt beschreven hoe u het proces voor de verificatie van de [Uitgever (preview-versie)](publisher-verification-overview.md) kunt volt ooien.
 
-## <a name="quickstart"></a>Snelstart
+## <a name="quickstart"></a>Snelstartgids
 Als u al bent Inge schreven in de Microsoft Partner Network (MPN) en u aan de [vereisten](publisher-verification-overview.md#requirements)hebt voldaan, kunt u meteen aan de slag gaan: 
 
 1. Ga naar de portal voor preview- [app-registratie](https://aka.ms/PublisherVerificationPreview).

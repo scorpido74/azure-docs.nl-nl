@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889982"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478158"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>De nieuwe app registratie-ervaring voor Azure Portal
 
@@ -77,7 +77,7 @@ In de nieuwe ervaring zijn de namen van de **toepassings geheimen** gewijzigd in
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformen/authenticatie: antwoord-Url's/omleidings-Uri's
 In de oude ervaring bevat een app platformen voor web, native en Web API voor het configureren van omleidings-Url's, afmeldings-URL en impliciete stroom.
 
-In de nieuwe ervaring zijn antwoord-Url's te vinden in de sectie\'app s-verificatie. Daarnaast worden ze omleidings-Uri's genoemd en is de indeling voor omleidings-Uri's gewijzigd. Ze moeten worden gekoppeld aan een app-type (Web of open bare client-mobiel en desktop). [Meer informatie](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+In de nieuwe ervaring zijn antwoord-Url's te vinden in de \' sectie app s-verificatie. Daarnaast worden ze omleidings-Uri's genoemd en is de indeling voor omleidings-Uri's gewijzigd. Ze moeten worden gekoppeld aan een app-type (Web of open bare client-mobiel en desktop). [Meer informatie](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 Web-Api's worden geconfigureerd in een API-pagina beschikbaar maken.
 
@@ -106,7 +106,7 @@ Er is een nieuwe gebruikers interface voor eigenschappen die voorheen alleen kun
 
 -   Bereiken die zijn gedefinieerd door deze API (oauth2Permissions) en geautoriseerde client toepassingen (preAuthorizedApplications) kunnen worden geconfigureerd via de pagina een API beschikbaar maken. Zie [deze Quick](quickstart-configure-app-expose-web-apis.md)start voor meer informatie over het configureren van een app om een web-API te zijn en machtigingen/bereiken beschikbaar te maken.
 
--   Het uitgevers domein (dat wordt weer gegeven voor gebruikers in de prompt voor toestemming van de [toepassing\'s](application-consent-experience.md)), vindt u op de pagina huis stijl. Zie voor meer informatie over het configureren van een uitgever domein [deze instructies](howto-configure-publisher-domain.md).
+-   Het uitgevers domein (dat wordt weer gegeven voor gebruikers in de prompt voor toestemming van de [toepassing \' s](application-consent-experience.md)), vindt u op de pagina huis stijl. Zie voor meer informatie over het configureren van een uitgever domein [deze instructies](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -116,7 +116,7 @@ De nieuwe ervaring heeft de volgende beperkingen:
 
 -   De nieuwe ervaring biedt nog geen ondersteuning voor Live SDK-apps die zijn gemaakt met persoonlijke micro soft-accounts.
 
--   Het wijzigen van de waarde voor ondersteunde accounts wordt niet ondersteund in de gebruikers interface. U moet het app-manifest gebruiken tenzij u\'overschakelt tussen Azure AD en multi tenant.
+-   Het wijzigen van de waarde voor ondersteunde accounts wordt niet ondersteund in de gebruikers interface. U moet het app-manifest gebruiken tenzij u \' overschakelt tussen Azure AD en multi tenant.
 
    > [!NOTE]
    > Als u een persoonlijke Microsoft-account gebruiker bent in de Azure AD-Tenant en de Tenant beheerder beperkte toegang heeft tot Azure Portal, wordt de toegang mogelijk geweigerd. Als u echter de snelkoppeling doorloopt door App-registraties op de zoek balk te typen of deze vast te maken, hebt u toegang tot de nieuwe ervaring.

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 90c2068021f1e9a173f37bdf1098edda10ab3d8d
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117515"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413464"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
@@ -52,7 +52,7 @@ U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele functies en k
 
 U kunt de Computer Vision [Lees](concept-recognizing-text.md#read-api) -API gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van de nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. Het werkt op dit moment voor zeven verschillende talen (Zie [taal ondersteuning](./language-support.md)).
 
-U kunt ook de [OCR-API (Optical Character Recognition)](concept-recognizing-text.md#ocr-optical-character-recognition-api) gebruiken om gedrukte tekst in verschillende talen te extra heren. Via OCR wordt zo nodig de draaiing van de herkende tekst gecorrigeerd en worden de framecoördinaten van elk woord weergegeven. OCR ondersteunt 25 talen en detecteert automatisch de taal van de herkende tekst.
+U kunt ook de [OCR-API (Optical Character Recognition)](concept-recognizing-text.md) gebruiken om gedrukte tekst in verschillende talen te extra heren. Via OCR wordt zo nodig de draaiing van de herkende tekst gecorrigeerd en worden de framecoördinaten van elk woord weergegeven. OCR ondersteunt 25 talen en detecteert automatisch de taal van de herkende tekst.
 
 ## <a name="moderate-content-in-images"></a>Beheren van inhoud in afbeeldingen
 

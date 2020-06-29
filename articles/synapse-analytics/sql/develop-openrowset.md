@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f70c14c424e8aaecbdc1138b52fdd6fb1e9fc265
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c5f65993909e142de6017b07591529cd7cb7b86
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051797"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200576"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -60,7 +60,7 @@ De opslagbeheerder moet een gebruiker ook in staat stellen om toegang te krijgen
 
 `OPENROWSET` gebruikt de volgende regels om te bepalen hoe verificatie voor toegang tot opslag moet worden uitgevoerd:
 - Het verificatiemechanisme `OPENROWSET` zonder `DATA_SOURCE` is afhankelijk van het type aanroeper.
-  - Elke gebruiker kan gebruiker `OPENROWSET` zonder `DATA_SOURCE` om openbaar beschikbare bestanden in Azure Storage te lezen.
+  - Elke gebruiker kan `OPENROWSET` gebruiken zonder `DATA_SOURCE` om openbaar beschikbare bestanden in Azure Storage te lezen.
   - Microsoft Azure AD-aanmeldingen hebben toegang tot beveiligde bestanden met hun eigen [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) als Azure Storage de Azure AD-gebruiker toegang geeft tot onderliggende bestanden (bijvoorbeeld als de oproepende functie `Storage Reader` toestemming heeft voor Azure-opslag).
   - SQL-aanmeldingen kunnen ook `OPENROWSET` gebruiken zonder `DATA_SOURCE` om toegang te krijgen tot openbaar beschikbare bestanden, bestanden die zijn beveiligd met een SAS-token of beheerde identiteit van een Synapse-werkruimte. U moet [referenties binnen serverbereik maken](develop-storage-files-storage-access-control.md#examples) om toegang tot opslagbestanden toe te staan. 
 - In `OPENROWSET` met `DATA_SOURCE` worden verificatiemechanismen gedefinieerd in de referentie binnen databasebereik die is toegewezen aan de gegevensbron waarnaar wordt verwezen. Met deze methode kunt u toegang krijgen tot openbaar beschikbare opslag, of toegang krijgen tot opslag met behulp van een SAS-token, een beheerde identiteit van de werkruimte of [Azure AD-identiteit van de aanroeper](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (als dat een Azure AD-principal is). Als `DATA_SOURCE` verwijst naar Azure-opslag die niet openbaar is, moet u [referenties binnen het databasebereik maken](develop-storage-files-storage-access-control.md#examples) en hiernaar verwijzen in `DATA SOURCE` om toegang tot opslagbestanden te geven.
@@ -178,7 +178,7 @@ ESCAPE_CHAR = 'teken'
 
 Het teken in het bestand dat wordt gebruikt om zichzelf te escapen evenals alle scheidingstekens in het bestand. Als het escape-teken wordt gevolgd door een andere waarde dan het teken zelf, of een van de scheidingstekens, wordt het escape-teken genegeerd bij het lezen van de waarde. 
 
-De parameter ESCAPE_CHAR wordt toegepast ongeacht of FIELDQUOTE al dan niet is ingeschakeld. De parameter wordt niet gebruikt om het aanhalingsteken te escapen. Escapen van het aanhalingsteken gebeurt met dubbele aanhalingstekens, net zoals in CSV-bestanden van Excel.
+De parameter ESCAPE_CHAR wordt toegepast ongeacht of FIELDQUOTE al dan niet is ingeschakeld. De parameter wordt niet gebruikt om het aanhalingsteken te escapen. Het aanhalingsteken moet worden a”gesloten door een ander aanhalingsteken. Een aanhalingsteken kan alleen in een kolomwaarde worden weer gegeven als de waarde tussen aanhalingstekens staat.
 
 FIRSTROW = 'eerste_rij' 
 

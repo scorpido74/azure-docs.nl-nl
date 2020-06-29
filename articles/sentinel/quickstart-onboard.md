@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488117"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771169"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Quickstart: Azure Sentinel onboarden
 
@@ -58,7 +58,7 @@ Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie 
    > - Azure Sentinel kan worden uitgevoerd op werkruimten in elke [GA-regio van Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor), behalve de regio's China en Duitsland (soevereine regio's). Door Azure Sentinel gegenereerde gegevens (zoals incidenten, bladwijzers en waarschuwingsregels die klantgegevens uit deze werkruimten kunnen bevatten) worden opgeslagen in Europa (voor werkruimten in Europa) of in US - oost (voor werkruimten in andere regio's).
 
    >[!IMPORTANT]
-   > - Nadat Azure Sentinel is ingeschakeld voor een werkruimte, wordt de verplaatsing van die werkruimte naar andere resourcegroepen of abonnementen niet ondersteund. Neem contact op met de ondersteuning voor advies als u de werkruimte moet verplaatsen.
+   > - Nadat Azure Sentinel is ingeschakeld voor een werkruimte, wordt de verplaatsing van die werkruimte naar andere resourcegroepen of abonnementen niet ondersteund. Neem contact op met [Azure Sentinel](mailto:AzureSentinel@microsoft.com) als u de werkruimte moet verplaatsen.
 
 1. Selecteer **Azure Sentinel toevoegen**.
   

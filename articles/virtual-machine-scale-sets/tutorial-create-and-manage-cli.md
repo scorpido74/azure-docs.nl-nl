@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198225"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736438"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Een virtuele-machineschaalset maken en beheren met Azure CLI
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. In deze zelfstudie leert u het volgende:
@@ -166,6 +166,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
 Als u een schaalset wilt implementeren met een specifieke installatiekopie, gebruikt u de waarde in de kolom *Urn*. Wanneer u de installatiekopie opgeeft, kunt u het versienummer van de installatiekopie vervangen door *latest* om de nieuwste versie van de distributie te selecteren. In het volgende voorbeeld wordt het argument `--image` gebruikt om de nieuwste versie van een installatiekopie van CentOS 7.3 op te geven.
+
+> [!IMPORTANT]
+> We raden u aan de *nieuwste* installatiekopieversie te gebruiken. Specificeer 'nieuwste' om de nieuwste versie van een installatiekopie te gebruiken die beschikbaar is op de implementatietijd. Zelfs als u 'nieuwste' gebruikt, wordt de VM-installatiekopie niet automatisch bijgewerkt na de implementatietijd, zelfs niet als er een nieuwe versie beschikbaar wordt.
 
 Aangezien het enkele minuten duurt om alle schaalsetresources en VM-exemplaren te maken en te configureren, hoeft u de volgende schaalset niet te implementeren:
 

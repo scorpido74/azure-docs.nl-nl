@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 3b4362e4c5e69efddfbc99ef0f98ad3c5966165c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8486ec87b5198231a33b1dab382ba457c8c8066
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450869"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478124"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Procedure: browsers en webweergaven voor iOS/macOS aanpassen
 
@@ -36,13 +36,13 @@ Voor iOS en macOS:
 - [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-MSAL voor macOS ondersteunt `WKWebView` alleen de oudere versies van het besturings systeem. `ASWebAuthenticationSession`wordt alleen ondersteund voor macOS 10,15 en hoger. 
+MSAL voor macOS ondersteunt alleen de `WKWebView` oudere versies van het besturings systeem. `ASWebAuthenticationSession`wordt alleen ondersteund voor macOS 10,15 en hoger. 
 
 ## <a name="system-browsers"></a>Systeem browsers
 
-Voor IOS, `ASWebAuthenticationSession`, `SFAuthenticationSession`, en `SFSafariViewController` worden beschouwd als systeem browsers. Voor macOS is alleen `ASWebAuthenticationSession` beschikbaar. Over het algemeen delen systeem browsers cookies en andere website gegevens met de Safari-browser toepassing.
+Voor iOS, `ASWebAuthenticationSession` , `SFAuthenticationSession` , en `SFSafariViewController` worden beschouwd als systeem browsers. Voor macOS is alleen `ASWebAuthenticationSession` beschikbaar. Over het algemeen delen systeem browsers cookies en andere website gegevens met de Safari-browser toepassing.
 
-Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen systeem browser die beschikbaar is op die versie. Op iOS 12 + is dit `ASWebAuthenticationSession`. 
+Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen systeem browser die beschikbaar is op die versie. Op iOS 12 + is dit `ASWebAuthenticationSession` . 
 
 ### <a name="default-configuration-for-ios"></a>Standaard configuratie voor iOS
 
@@ -61,7 +61,7 @@ Standaard detecteert MSAL de iOS-versie dynamisch en selecteert de aanbevolen sy
 
 Ontwikkel aars kunnen ook een andere systeem browser voor MSAL-apps selecteren:
 
-- `SFAuthenticationSession`is de iOS 11-versie `ASWebAuthenticationSession`van.
+- `SFAuthenticationSession`is de iOS 11-versie van `ASWebAuthenticationSession` .
 - `SFSafariViewController`is een meer algemeen doel en biedt een interface voor het surfen op internet en kan ook worden gebruikt voor aanmeldings doeleinden. In iOS 9 en 10 worden cookies en andere website gegevens gedeeld met Safari, maar niet in iOS 11 en hoger.
 
 ## <a name="in-app-browser"></a>Browser in-app
@@ -84,7 +84,7 @@ De browser die u gebruikt, is van invloed op de SSO-ervaring vanwege hoe ze cook
 
 ## <a name="change-the-default-browser-for-the-request"></a>De standaard browser voor de aanvraag wijzigen
 
-U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankelijk van uw UX-vereisten, door de volgende eigenschap te `MSALWebviewParameters`wijzigen in:
+U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankelijk van uw UX-vereisten, door de volgende eigenschap te wijzigen in `MSALWebviewParameters` :
 
 ```objc
 @property (nonatomic) MSALWebviewType webviewType;
@@ -92,9 +92,9 @@ U kunt een in-app-browser of een specifieke systeem browser gebruiken, afhankeli
 
 ## <a name="change-per-interactive-request"></a>Wijziging per interactieve aanvraag
 
-Elke aanvraag kan worden geconfigureerd voor het overschrijven van de standaard browser door `MSALInteractiveTokenParameters.webviewParameters.webviewType` de eigenschap te wijzigen voordat deze `acquireTokenWithParameters:completionBlock:` wordt door gegeven aan de API.
+Elke aanvraag kan worden geconfigureerd voor het overschrijven van de standaard browser door de `MSALInteractiveTokenParameters.webviewParameters.webviewType` eigenschap te wijzigen voordat deze wordt door gegeven aan de `acquireTokenWithParameters:completionBlock:` API.
 
-Daarnaast biedt MSAL ondersteuning voor het door geven `WKWebView` van een aangepast `MSALInteractiveTokenParameters.webviewParameters.customWebView` door de eigenschap in te stellen.
+Daarnaast biedt MSAL ondersteuning voor het door geven van een aangepast `WKWebView` door de eigenschap in te stellen `MSALInteractiveTokenParameters.webviewParameters.customWebView` .
 
 Bijvoorbeeld:
 

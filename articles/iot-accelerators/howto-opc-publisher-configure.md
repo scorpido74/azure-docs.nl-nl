@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198800"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445692"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher configureren
 
@@ -31,7 +31,7 @@ In deze sectie worden de opties beschreven voor het configureren van OPC UA-knoo
 
 ### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Een configuratie bestand gebruiken om wijzigingen in de publicatie gegevens te configureren
 
-De eenvoudigste manier om de OPC UA-knoop punten te configureren om te publiceren is met een configuratie bestand. De indeling van het configuratie bestand wordt beschreven in [publishednodes. json](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) in de opslag plaats.
+De eenvoudigste manier om de OPC UA-knoop punten te configureren om te publiceren is met een configuratie bestand. De indeling van het configuratie bestand wordt beschreven in [publishednodes.js](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) in de opslag plaats.
 
 De syntaxis van het configuratie bestand is gewijzigd na verloop van tijd. OPC Publisher leest nog steeds oude indelingen, maar zet ze om in de meest recente indeling wanneer de configuratie persistent wordt gemaakt.
 
@@ -58,7 +58,7 @@ In het volgende voor beeld ziet u de indeling van het configuratie bestand:
 
 Als u OPC UA-gebeurtenissen wilt publiceren, gebruikt u hetzelfde configuratie bestand als voor gegevens wijzigingen.
 
-In het volgende voor beeld ziet u hoe u een publicatie configureert voor gebeurtenissen die worden gegenereerd door de [SimpleEvents-server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). De SimpleEvents-server kan worden gevonden in de [OPC Foundation-opslag plaats](https://github.com/OPCFoundation/UA-.NETStandard) :
+In het volgende voor beeld ziet u hoe u een publicatie configureert voor gebeurtenissen die worden gegenereerd door de [SimpleEvents-server](https://github.com/OPCFoundation/UA-.NETStandard-Samples/tree/master/Workshop/SimpleEvents/Server). De SimpleEvents-server kan worden gevonden in de [OPC Foundation-opslag plaats](https://github.com/OPCFoundation/UA-.NETStandard-Samples) :
 
 ```json
 [
@@ -116,7 +116,7 @@ In deze sectie wordt beschreven hoe u de methode aanroepen kunt gebruiken om OPC
 
 ### <a name="configure-using-opc-ua-method-calls"></a>Configureren met behulp van OPC UA-methode aanroepen
 
-OPC Publisher bevat een OPC UA-server, die toegankelijk is via poort 62222. Als de hostnaam **Uitgever**is, is de URI van het eind `opc.tcp://publisher:62222/UA/Publisher`punt:.
+OPC Publisher bevat een OPC UA-server, die toegankelijk is via poort 62222. Als de hostnaam **Uitgever**is, is de URI van het eind punt: `opc.tcp://publisher:62222/UA/Publisher` .
 
 Met dit eind punt worden de volgende vier methoden getoond:
 
@@ -174,7 +174,7 @@ Als de eigenschap **OpcAuthenticationMode** niet is ingesteld in de payload, bli
 
 Als de OPC-uitgever een melding ontvangt van een waarde die in een gepubliceerd knoop punt wordt gewijzigd, wordt een bericht in JSON-indeling gegenereerd dat naar IoT Hub wordt verzonden.
 
-U kunt de inhoud van dit bericht in JSON-indeling configureren met behulp van een configuratie bestand. Als er geen configuratie bestand met de `--tc` optie is opgegeven, wordt er een standaard configuratie gebruikt die compatibel is met de [Connected Factory Solution Accelerator](https://github.com/Azure/azure-iot-connected-factory).
+U kunt de inhoud van dit bericht in JSON-indeling configureren met behulp van een configuratie bestand. Als er geen configuratie bestand met de optie is opgegeven `--tc` , wordt er een standaard configuratie gebruikt die compatibel is met de [Connected Factory Solution Accelerator](https://github.com/Azure/azure-iot-connected-factory).
 
 Als OPC Publisher is geconfigureerd voor batch berichten, worden ze verzonden als een geldige JSON-matrix.
 

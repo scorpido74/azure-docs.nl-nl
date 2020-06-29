@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a570dccad5f14cf9adf5ca2825d8a3b31ae60d3f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883093"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477189"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Procedure: aangepaste claims aanvragen met MSAL voor iOS en macOS
 
@@ -31,9 +31,9 @@ Er zijn meerdere scenario's waarin dit nodig is. Bijvoorbeeld:
 - Specifieke combi Naties van de standaard claims aanvragen die niet kunnen worden opgegeven met scopes voor uw toepassing. Als een toegangs token bijvoorbeeld wordt afgewezen als gevolg van ontbrekende claims, kan de toepassing de ontbrekende claims aanvragen met behulp van MSAL.
 
 > [!NOTE]
-> Met MSAL wordt de cache van het toegangs token omzeild wanneer een claim aanvraag wordt opgegeven. Het is belang rijk dat u `claimsRequest` alleen para meters opgeeft wanneer er aanvullende claims nodig zijn (in `claimsRequest` plaats van altijd dezelfde para meter te verstrekken in elke API-aanroep van MSAL).
+> Met MSAL wordt de cache van het toegangs token omzeild wanneer een claim aanvraag wordt opgegeven. Het is belang rijk dat u alleen `claimsRequest` para meters opgeeft wanneer er aanvullende claims nodig zijn (in plaats van altijd dezelfde `claimsRequest` para meter te verstrekken in elke API-AANROEP van MSAL).
 
-`claimsRequest`kan worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters`:
+`claimsRequest`kan worden opgegeven in `MSALSilentTokenParameters` en `MSALInteractiveTokenParameters` :
 
 ```objc
 /*!

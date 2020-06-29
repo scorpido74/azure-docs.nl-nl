@@ -9,21 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587677"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445539"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren voor Azure Cognitive Services
 
 Elke aanvraag voor een Azure cognitieve service moet een verificatie header bevatten. Deze header wordt door gegeven aan een abonnements sleutel of toegangs token, die wordt gebruikt om uw abonnement voor een service of groep services te valideren. In dit artikel vindt u meer informatie over drie manieren om een aanvraag te verifiëren en de vereisten voor elke.
 
-* [Verifiëren met een abonnements sleutel van één service](#authenticate-with-a-single-service-subscription-key)
-* [Verifiëren met een sleutel voor meerdere service abonnementen](#authenticate-with-a-multi-service-subscription-key)
-* [Verifiëren met een token](#authenticate-with-an-authentication-token)
-* [Verifiëren met Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
+* Verifiëren met een sleutel van [één service](#authenticate-with-a-single-service-subscription-key) of [meerdere](#authenticate-with-a-multi-service-subscription-key) abonnementen
+* Verifiëren met een [token](#authenticate-with-an-authentication-token)
+* Verifiëren met [Azure Active Directory (Aad)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Vereisten
 

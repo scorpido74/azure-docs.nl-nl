@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: b74874806585357fe2c7fa2603bfb50751c4d843
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355485"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445505"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2.0 met Azure Active Directory en API Management
 
@@ -224,12 +224,12 @@ Gebruik de [validatie JWT](https://docs.microsoft.com/azure/api-management/api-m
 
 ## <a name="build-an-application-to-call-the-api"></a>Een toepassing bouwen om de API aan te roepen
 
-In deze hand leiding hebt u de ontwikkelaars console in API Management gebruikt als de voor beeld-client toepassing om het `Echo API` beveiligde door OAuth 2,0 aan te roepen. Zie [Azure Active Directory code voorbeelden](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code.md)voor meer informatie over het bouwen van een toepassing en het implementeren van OAuth 2,0.
+In deze hand leiding hebt u de ontwikkelaars console in API Management gebruikt als de voor beeld-client toepassing om het `Echo API` beveiligde door OAuth 2,0 aan te roepen. Zie [Azure Active Directory code voorbeelden](../active-directory/develop/sample-v2-code.md)voor meer informatie over het bouwen van een toepassing en het implementeren van OAuth 2,0.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Active Directory en OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios.md).
+- Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
 - Bekijk meer [Video's](https://azure.microsoft.com/documentation/videos/index/?services=api-management) over API management.
-- Zie [wederzijdse verificatie van certificaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)voor andere manieren om uw back-end-service te beveiligen.
-- [Een API Management service-exemplaar maken](https://docs.microsoft.com/azure/api-management/get-started-create-service-instance).
-- [Uw eerste API beheren](https://docs.microsoft.com/azure/api-management/import-and-publish).
+- Zie [wederzijdse verificatie van certificaten](./api-management-howto-mutual-certificates.md)voor andere manieren om uw back-end-service te beveiligen.
+- [Een API Management service-exemplaar maken](./get-started-create-service-instance.md).
+- [Uw eerste API beheren](./import-and-publish.md).

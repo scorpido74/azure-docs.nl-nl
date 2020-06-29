@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143269"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412580"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migreren naar versie 3. x van de Text Analytics-API
 
@@ -44,7 +44,7 @@ Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar 
 ## <a name="feature-changes"></a>Functie wijzigingen
 
 > [!NOTE] 
-> Op dit moment worden [v3-entiteits categorieën](named-entity-types.md) alleen geretourneerd op Engelse tekst. De API retourneert versie 2,1-resultaten voor aanvragen in andere talen, op voor waarde dat deze worden ondersteund in versie 2,1.
+> Op dit moment worden [v3-entiteits categorieën](named-entity-types.md) alleen geretourneerd op Engelse en Spaanse tekst. De API retourneert versie 2,1-resultaten voor aanvragen in andere talen, op voor waarde dat deze worden ondersteund in versie 2,1.
 
 In versie 2,1 gebruikt de Text Analytics-API één eind punt voor benoemde entiteits herkenning (NER) en entiteits koppelingen. Versie 3 biedt uitgebreide detectie van benoemde entiteiten en maakt gebruik van afzonderlijke eind punten voor NER en aanvragen voor het koppelen van entiteiten. Vanaf v 3.1-Preview. 1 kan NER ook persoonlijke `pii` informatie en status gegevens detecteren `phi` . 
 
@@ -108,4 +108,4 @@ Als uw toepassing het REST API gebruikt, werkt u het aanvraag eindpunt bij naar 
 * [Naslag informatie over Text Analytics-API v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
 * [Wat is het Text Analytics-API](overview.md)
 * [Taalondersteuning](language-support.md)
-* [Model versie beheer](concepts/model-versioning.md)
+* [Versiebeheer model](concepts/model-versioning.md)

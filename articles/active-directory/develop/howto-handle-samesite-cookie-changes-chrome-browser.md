@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534598"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477801"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookiewijzigingen in Chrome-browser verwerken
 
@@ -33,17 +33,17 @@ De `SameSite` waarde is standaard niet ingesteld in browsers en daarom zijn er g
 
 ## <a name="samesite-changes-and-impact-on-authentication"></a>Wijzigingen in SameSite en invloed op verificatie
 
-Recente [updates van de standaarden op SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) stellen het beveiligen van apps voor, door het `SameSite` standaard gedrag van te maken wanneer er geen waarde is ingesteld op slordig. Deze beperking betekent dat cookies worden beperkt voor HTTP-aanvragen, behalve het ophalen van andere sites. Daarnaast wordt er geen waarde van **geen** geïntroduceerd om beperkingen te verwijderen voor het verzenden van cookies. Deze updates worden binnenkort uitgebracht in een toekomstige versie van de Chrome-browser.
+Recente [updates van de standaarden op SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) stellen het beveiligen van apps voor, door het standaard gedrag van `SameSite` te maken wanneer er geen waarde is ingesteld op slordig. Deze beperking betekent dat cookies worden beperkt voor HTTP-aanvragen, behalve het ophalen van andere sites. Daarnaast wordt er geen waarde van **geen** geïntroduceerd om beperkingen te verwijderen voor het verzenden van cookies. Deze updates worden binnenkort uitgebracht in een toekomstige versie van de Chrome-browser.
 
-Wanneer Web-apps met het micro soft-identiteits platform worden geverifieerd met de antwoord modus ' form_post ', reageert de aanmeldings server op de toepassing met behulp van een HTTP POST om de tokens of de verificatie code te verzenden. Omdat deze aanvraag een aanvraag voor meerdere domeinen is (van `login.microsoftonline.com` naar het exemplaar `https://contoso.com/auth`van uw domein), vallen cookies die door uw app zijn ingesteld nu onder de nieuwe regels in Chrome. De cookies die moeten worden gebruikt in scenario's met meerdere sites zijn cookies die de *status* en *nonce* -waarden bevatten, die ook in de aanmeldings aanvraag worden verzonden. Er zijn andere cookies verwijderd door Azure AD om de sessie te bewaren.
+Wanneer Web-apps met het micro soft-identiteits platform worden geverifieerd met de antwoord modus ' form_post ', reageert de aanmeldings server op de toepassing met behulp van een HTTP POST om de tokens of de verificatie code te verzenden. Omdat deze aanvraag een aanvraag voor meerdere domeinen is (van `login.microsoftonline.com` naar het exemplaar van uw domein `https://contoso.com/auth` ), vallen cookies die door uw app zijn ingesteld nu onder de nieuwe regels in Chrome. De cookies die moeten worden gebruikt in scenario's met meerdere sites zijn cookies die de *status* en *nonce* -waarden bevatten, die ook in de aanmeldings aanvraag worden verzonden. Er zijn andere cookies verwijderd door Azure AD om de sessie te bewaren.
 
 Als u uw web-apps niet bijwerkt, zal dit nieuwe gedrag leiden tot mislukte verificaties.
 
 ## <a name="mitigation-and-samples"></a>Risico beperking en voor beelden
 
-Om de verificatie fouten op te lossen, kunnen Web-apps die met het micro `SameSite` Soft Identity `None` -platform worden geverifieerd, de eigenschap instellen op cookies die worden gebruikt in scenario's met meerdere domeinen wanneer ze worden uitgevoerd in de Chrome-browser.
+Om de verificatie fouten op te lossen, kunnen Web-apps die met het micro soft Identity-platform worden geverifieerd, de `SameSite` eigenschap instellen op `None` cookies die worden gebruikt in scenario's met meerdere domeinen wanneer ze worden uitgevoerd in de Chrome-browser.
 Andere browsers (Zie [hier](https://www.chromium.org/updates/same-site/incompatible-clients) voor een volledige lijst) Volg het vorige gedrag van `SameSite` en bevat geen cookies als `SameSite=None` is ingesteld.
-Daarom moet de waarde `SameSite` `None` alleen op Chrome worden ingesteld voor het ondersteunen van authenticatie op meerdere web-apps, en laat de waarde leeg in andere browsers.
+Daarom moet de waarde alleen op Chrome worden ingesteld voor het ondersteunen van authenticatie op meerdere web-apps, `SameSite` `None` en laat de waarde leeg in andere browsers.
 
 Deze benadering wordt uitgelegd in onze code voorbeelden hieronder.
 

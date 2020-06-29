@@ -7,26 +7,26 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 90189a1d7fd6421b7a24940e8c6ed615fa0df6d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4e60e7e6a16b3e526d2f1581bfa145b74e5da01
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084832"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477495"
 ---
 # <a name="get-a-token-from-the-token-cache-using-msalnet"></a>Een Token ophalen uit de token cache met behulp van MSAL.NET
 
-Wanneer u een toegangs token aanschaft met behulp van micro soft Authentication Library voor .NET (MSAL.NET), wordt het token in de cache opgeslagen. Wanneer de toepassing een token vereist, moet het eerst de `AcquireTokenSilent` methode aanroepen om te controleren of een acceptabel token zich in de cache bevindt. In veel gevallen is het mogelijk om een andere token te verkrijgen met meer scopes op basis van een token in de cache. Het is ook mogelijk om een token te vernieuwen wanneer het bijna is verlopen (omdat de token cache ook een vernieuwings token bevat).
+Wanneer u een toegangs token aanschaft met behulp van micro soft Authentication Library voor .NET (MSAL.NET), wordt het token in de cache opgeslagen. Wanneer de toepassing een token vereist, moet het eerst de methode aanroepen `AcquireTokenSilent` om te controleren of een acceptabel token zich in de cache bevindt. In veel gevallen is het mogelijk om een andere token te verkrijgen met meer scopes op basis van een token in de cache. Het is ook mogelijk om een token te vernieuwen wanneer het bijna is verlopen (omdat de token cache ook een vernieuwings token bevat).
 
-Het aanbevolen patroon is om eerst de `AcquireTokenSilent` methode aan te roepen.  Als `AcquireTokenSilent` dit mislukt, verschaf dan een token met behulp van andere methoden.
+Het aanbevolen patroon is om eerst de methode aan te roepen `AcquireTokenSilent` .  Als dit `AcquireTokenSilent` mislukt, verschaf dan een token met behulp van andere methoden.
 
-In het volgende voor beeld probeert de toepassing eerst een token op te halen uit de token cache.  Als er `MsalUiRequiredException` een uitzonde ring wordt gegenereerd, verkrijgt de toepassing interactief een token. 
+In het volgende voor beeld probeert de toepassing eerst een token op te halen uit de token cache.  Als er een `MsalUiRequiredException` uitzonde ring wordt gegenereerd, verkrijgt de toepassing interactief een token. 
 
 ```csharp
 AuthenticationResult result = null;

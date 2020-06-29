@@ -12,23 +12,23 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a0ac6d86c1ef4fb8f2f5b75ac47f1a25e2cda0b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 81f33972f80075281b735ad69848631e81d2366e
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748170"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905075"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Zelfstudie: Integratie van eenmalige aanmelding bij Azure Active Directory met EasySSO voor Confluence
 
 In deze zelfstudie leert u hoe u EasySSO voor Confluence kunt integreren met Azure AD (Active Directory). Wanneer u EasySSO voor Confluence integreert met Azure AD, kunt u:
 
-* Bepalen in Azure AD wie toegang heeft tot EasySSO voor Confluence.
-* Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij EasySSO voor Confluence.
-* Uw accounts op één centrale locatie beheren: de Azure-portal.
+* Bepalen in Azure AD wie toegang heeft tot Confluence.
+* Ervoor zorgen dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij Confluence.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
 Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
@@ -58,6 +58,7 @@ Om de integratie van EasySSO voor Confluence in Azure AD te configureren, moet u
 1. Typ in de sectie **Toevoegen uit de galerie** **EasySSO voor Confluence** in het zoekvak.
 1. Selecteer **EasySSO voor Confluence** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
+
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-confluence"></a>Eenmalige aanmelding van Azure AD configureren en testen voor EasySSO voor Confluence
 
 Configureer en test eenmalige aanmelding van Azure AD met EasySSO voor Confluence met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in EasySSO voor Confluence.
@@ -65,7 +66,7 @@ Configureer en test eenmalige aanmelding van Azure AD met EasySSO voor Confluenc
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met EasySSO voor Confluence te configureren en te testen:
 
 1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
     1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[Eenmalige aanmelding bij EasySSO voor Confluence configureren](#configure-easysso-for-confluence-sso)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wilt configureren.
     1. **[Testgebruiker voor EasySSO voor Confluence maken](#create-easysso-for-confluence-test-user)** : als u een tegenhanger van B.Simon in EasySSO voor Confluence wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
@@ -89,35 +90,38 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<server-base-url>/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<server-base-url>/login.jsp`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [klantenondersteuningsteam van EasySSO voor Confluence](mailto:support@techtime.co.nz) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [klantenondersteuningsteam van EasySSO](mailto:support@techtime.co.nz) om deze waarden te verkrijgen als u twijfelt. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Uw EasySSO voor Confluence-toepassing verwacht de SAML-asserties in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan de configuratie van de SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![image](common/default-attributes.png)
 
 1. Bovendien verwacht de toepassing EasySSO voor Confluence nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
+    
+    | Naam |  |  Bronkenmerk|
+    | ---------------| --------------- | --------- |
+    | urn:oid:0.9.2342.19200300.100.1.1 | | user.userprincipalname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | | user.mail |
+    | urn:oid:2.16.840.1.113730.3.1.241 | | user.displayname |
+    | urn:oid:2.5.4.4 | | user.surname |
+    | urn:oid:2.5.4.42 | | user.givenname |
+    
+    Als uw Azure AD-gebruikers **sAMAccountName** hebben geconfigureerd, moet u **urn:oid:0.9.2342.19200300.100.1.1** aan het **sAMAccountName**-kenmerk toewijzen.
+    
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de koppeling **Downloaden** voor de optie **Certificaat (Base64)** of **Federation Metadata XML** en slaat u een optie of allebei op uw computer op. U hebt deze later nodig om Confluence EasySSO te configureren.
 
-    | Naam |  Bronkenmerk|
-    | --------------- | --------- |
-    | urn:oid:2.16.840.1.113730.3.1.241 | user.displayname |
-    | urn:oid:2.5.4.42 | user.givenname |
-    | urn:oid:2.5.4.4 | user.surname |
-    | urn:oid:0.9.2342.19200300.100.1.1 | user.userprincipalname|
-    | urn:oid:0.9.2342.19200300.100.1.3 | user.userprincipalname |
-    | | |
-
-1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
-
-    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
+    ![De link om het certificaat te downloaden](./media/easysso-for-confluence-tutorial/certificate.png)
+    
+    Als u van plan bent om EasySSO voor Confluence handmatig met het certificaat uit te voeren, moet u ook de **aanmeldings-URL** en de **Azure AD-id** uit de onderstaande sectie kopiëren en op uw computer opslaan.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
@@ -140,65 +144,85 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-easysso-for-confluence-sso"></a>EasySSO voor Confluence configureren
 
-1. Meld u aan bij uw EasySSO voor Confluence-exemplaar met beheerdersmachtigingen en navigeer naar de sectie **Apps beheren**.
+1. Meld u bij uw Atlassian Confluence-exemplaar aan met beheerdersmachtigingen en navigeer naar de sectie **Apps beheren**. 
 
-    ![Apps beheren](./media/easysso-for-confluence-tutorial/jira-admin-1.png)
+    ![Apps beheren](./media/easysso-for-confluence-tutorial/confluence-admin-1.png)
 
-1. Klik op **EasySSO**.
+2. Klik links in het scherm op **EasySSO**. Klik vervolgens op de knop **Configureren**.
 
-    ![EasySSO](./media/easysso-for-confluence-tutorial/jira-admin-2.png)
+    ![EasySSO](./media/easysso-for-confluence-tutorial/confluence-admin-2.png)
 
-1. Selecteer de optie **SAML**. U wordt dan naar de sectie SAML-configuratie geleid.
+3. Selecteer de optie **SAML**. U wordt dan naar de sectie SAML-configuratie geleid.
 
-    ![SAML](./media/easysso-for-confluence-tutorial/jira-admin-3.png)
+    ![SAML](./media/easysso-for-confluence-tutorial/confluence-admin-3.png)
 
-1. Selecteer het tabblad **Certificaten** bovenaan, waarna u het volgende scherm te zien krijgt. Zoek het **Certificaat (Base64)** of **Metagegevensbestand** dat u hebt opgeslagen in de vorige stappen van **Eenmalige aanmelding bij Azure AD configureren**. U hebt de volgende opties om verder te gaan:
+4. Selecteer het tabblad **Certificaten** tabblad bovenaan om het volgende scherm te openen: 
 
-    ![Metagegevens-URL](./media/easysso-for-confluence-tutorial/jira-admin-4.png)
+    ![Metagegevens-URL](./media/easysso-for-confluence-tutorial/confluence-admin-4.png)
+
+5. Zoek nu **Certificaat (base64)** of het **metagegevensbestand** dat u hebt opgeslagen in de eerdere stappen van de configuratie voor **Azure AD SSO**. U hebt de volgende opties om verder te gaan:
 
     a. Gebruik het **Metagegevensbestand** voor app-federatie dat u hebt gedownload naar het lokale bestand op uw computer. Selecteer het keuzerondje **Uploaden** en volg het specifieke dialoogvenster Bestand uploaden voor uw besturingssysteem
 
     **OF**
 
     b. Open het **Metagegevensbestand** voor app-federatie om de inhoud van het bestand (in een eenvoudige teksteditor) te bekijken en kopieer deze naar het klembord. Selecteer de optie **Invoer** en plak de klembordinhoud in het tekstveld.
-
+ 
     **OF**
 
     c. Volledig handmatige configuratie. Open het **Certificaat (Base64)** voor app-federatie om de inhoud van het bestand (in een eenvoudige teksteditor) te bekijken en kopieer deze naar het klembord. Plak de klembordinhoud in het tekstveld **Certificaten voor IdP-tokenondertekening**. Navigeer vervolgens naar het tabblad **Algemeen** en vul de velden **POST-binding-URL** en **Entiteits-id** met respectieve waarden voor **Aanmeldings-URL** en **Azure AD-id** die u eerder hebt opgeslagen.
+ 
+6. Klik op de knop **Opslaan** onderaan de pagina. U ziet dat de inhoud van het bestand Metagegevens of Certificaat wordt geparseerd in de configuratievelden. De configuratie van EasySSO voor Confluence is voltooid.
 
-1. Klik op de knop **Opslaan** onderaan de pagina. U ziet dat de inhoud van het bestand Metagegevens of Certificaat wordt geparseerd in de configuratievelden. De configuratie van EasySSO voor Confluence is voltooid.
+7. Voor de beste testervaring navigeert u naar het tabblad **Weergave** en schakelt u de optie **SAML-aanmelding** in. Er wordt dan een aparte knop op het Confluence-aanmeldingsscherm ingeschakeld die specifiek is bedoeld om uw Azure AD SAML-integratie end-to-end te testen. U kunt deze knop ingeschakeld laten en ook de positie, kleur en vertaling voor productiemodus configureren.
 
-1. Voor de beste testervaring navigeert u naar het tabblad **Weergave** en schakelt u de optie **SAML-aanmelding** in. Er wordt dan een aparte knop op het Jira-aanmeldingsscherm ingeschakeld die specifiek is bedoeld om uw Azure AD SAML-integratie end-to-end te testen. U kunt deze knop ingeschakeld laten en ook de positie, kleur en vertaling voor productiemodus configureren.
-
-    ![Weergave](./media/easysso-for-confluence-tutorial/jira-admin-5.png)
+    ![Weergave](./media/easysso-for-confluence-tutorial/confluence-admin-5.png)
 
     > [!NOTE]
     > Neem contact op met het [ondersteuningsteam van EasySSO](mailto:support@techtime.co.nz) als u problemen ondervindt.
 
 ### <a name="create-easysso-for-confluence-test-user"></a>Testgebruiker voor EasySSO voor Confluence maken
 
-In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in EasySSO voor Confluence. EasySSO voor Confluence ondersteunt het Just-In-Time inrichten van gebruikers, wat standaard is **uitgeschakeld**. Als u het inrichten van gebruikers wilt inschakelen, moet u de optie **Gebruiker maken na geslaagde aanmelding** expliciet inschakelen in de sectie Algemeen van de configuratie van de EasySSO-invoegtoepassing. Als er nog geen gebruiker in EasySSO voor Confluence bestaat, wordt er een nieuwe gemaakt na verificatie.
+In dit gedeelte wordt er een gebruiker met de naam Britta Simon gemaakt in Confluence. EasySSO voor Confluence ondersteunt het Just-In-Time inrichten van gebruikers, wat standaard is **uitgeschakeld**. Als u het inrichten van gebruikers wilt inschakelen, moet u de optie **Gebruiker maken na geslaagde aanmelding** expliciet inschakelen in de sectie Algemeen van de configuratie van de EasySSO-invoegtoepassing. Als er nog geen gebruiker in Confluence bestaat, wordt er een nieuwe gemaakt nadat deze is geverifieerd.
 
-Als u het automatisch inrichten van gebruikers na hun eerste aanmelding echter niet wilt inschakelen, moeten gebruikers bestaan in back-end gebruikerslijsten waarvan het EasySSO voor Confluence-exemplaar gebruikmaakt, zoals LDAP of Atlassian Crowd.
+Als u het automatisch inrichten van gebruikers na hun eerste aanmelding echter niet wilt inschakelen, moeten gebruikers bestaan in back-end gebruikerslijsten waarvan het Confluence-exemplaar gebruikmaakt, zoals LDAP of Atlassian Crowd.
 
-![Inrichten van gebruikers](./media/easysso-for-confluence-tutorial/jira-admin-6.png)
+![Inrichten van gebruikers](./media/easysso-for-confluence-tutorial/confluence-admin-6.png)
 
-## <a name="test-sso"></a>Eenmalige aanmelding testen
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
+
+### <a name="idp-initiated-workflow"></a>Door IdP geïnitieerde werkstroom
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het toegangsvenster op de tegel EasySSO voor Confluence klikt, wordt u automatisch aangemeld bij het exemplaar van EasySSO voor Confluence waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel EasySSO voor Confluence klikt, wordt u automatisch aangemeld bij het Confluence-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+
+### <a name="sp-initiated-workflow"></a>Door SP geïnitieerde werkstroom
+
+In deze sectie gaat u uw configuratie van de eenmalige aanmelding voor Azure AD testen met behulp van de knop **SAML-aanmelding** in Confluence.
+
+![SAML-aanmelding door gebruiker](./media/easysso-for-confluence-tutorial/confluence-admin-7.png)
+
+In dit scenario wordt ervan uitgegaan dat u op de knop **SAML-aanmelding** hebt geklikt op het tabblad **Uiterlijk** op de configuratiepagina van uw Confluence EasySSO (zie hierboven). Open uw aanmeldings-URL voor Confluence in de incognitomodus van de browser om interferentie met uw bestaande sessies te voorkomen. Klik op de knop **SAML-aanmelding** om te worden omgeleid naar de Azure AD-gebruikersverificatiestroom. Zodra dit is voltooid, wordt u via SAML teruggeleid naar uw Confluence-exemplaar als geverifieerde gebruiker.
+
+Mogelijk ziet u het volgende scherm nadat u bent omgeleid vanuit Azure AD
+
+![EasySSO-foutvenster](./media/easysso-for-confluence-tutorial/confluence-admin-8.png)
+
+In dit geval volgt u de [instructies op deze pagina]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) om toegang te krijgen tot het bestand **atlassian-confluence.log**. Details van de fout zijn beschikbaar via de verwijzings-id op de foutpagina van EasySSO.
+
+Neem contact op met het [ondersteuningsteam van EasySSO](mailto:support@techtime.co.nz) als u geen samenvatting van de logboekberichten kunt weergeven.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -207,4 +231,3 @@ Wanneer u in het toegangsvenster op de tegel EasySSO voor Confluence klikt, word
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [EasySSO voor Confluence beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

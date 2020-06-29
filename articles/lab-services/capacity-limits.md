@@ -1,24 +1,14 @@
 ---
 title: Capaciteits limieten in Azure Lab Services
 description: Meer informatie over capaciteits limieten (limieten voor virtuele machines) in Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.author: spelluru
-ms.openlocfilehash: 721dd664bb3a2d38d3e698a813a69ba9b61fb32d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 92bdc714d70b3d73ca2cbc76b1f5dc5366582cbd
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899114"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444094"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>Capaciteits limieten in Azure Lab Services
 Azure Lab Services heeft standaard capaciteits limieten voor Azure-abonnementen om te voldoen aan de limieten voor Azure Compute-quota en om fraude te verhelpen. Alle Azure-abonnementen hebben een aanvankelijke capaciteits limiet die kan variëren op basis van het abonnements type, het aantal standaard Compute-kernen en GPU-kernen die beschikbaar zijn in Azure Lab Services. Zo beperkt u het aantal virtuele machines dat u in uw Labs kunt maken voordat u een limiet voor het beperken van aanvragen nodig hebt.  

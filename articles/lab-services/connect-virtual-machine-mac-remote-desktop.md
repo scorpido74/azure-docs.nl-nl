@@ -1,24 +1,14 @@
 ---
 title: Verbinding maken met een Azure Lab Services-VM vanuit Mac | Microsoft Docs
 description: Meer informatie over het verbinden van een Mac met een virtuele machine in Azure Lab Services.
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2020
-ms.author: spelluru
-ms.openlocfilehash: 091acbab20723ec33d52085a717d23adf261254e
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 674bea13093e185ae991148c2cf96599a273d0bc
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897381"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444621"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-mac"></a>Verbinding maken met een virtuele machine met behulp van Remote Desktop Protocol op een Mac
 In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met een leslokaal-VM van een klas hoofd omgeving.

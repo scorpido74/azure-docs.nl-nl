@@ -1,24 +1,14 @@
 ---
 title: Aanvullende eigen aars toevoegen aan een lab in Azure Lab Services
 description: In dit artikel leest u hoe een beheerder een gebruiker kan toevoegen als eigenaar van een lab in Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 1438c9c4f33cca45b6c609e90cc2cbe7a762adb0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 6671a3070dae672769eecf59d614d3b75455ef5a
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897353"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445862"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Aanvullende eigen aars toevoegen aan een bestaand Lab in Azure Lab Services
 Dit artikel laat u zien hoe u, als beheerder, extra eigen aren kunt toevoegen aan een bestaand Lab.

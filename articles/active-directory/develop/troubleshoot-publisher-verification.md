@@ -6,20 +6,20 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: cf886b7b43280e542f1941e7c0edb570868525d9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dcdce6ee6683c5770f97f5f3dc20e1c9b409ead0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598176"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477036"
 ---
-# <a name="troubleshoot-publisher-verification-preview"></a>Problemen met de uitgever verificatie oplossen (preview-versie)
+# <a name="troubleshoot-publisher-verification-preview"></a>Problemen met verificatie van uitgever oplossen (preview)
 Als u het proces niet kunt volt ooien of onverwachte problemen ondervindt met de verificatie van de [Uitgever (preview)](publisher-verification-overview.md), moet u eerst het volgende doen als u fouten ontvangt of een onverwacht gedrag ziet: 
 
 1. Bekijk de [vereisten](publisher-verification-overview.md#requirements) en zorg ervoor dat aan hen is voldaan.

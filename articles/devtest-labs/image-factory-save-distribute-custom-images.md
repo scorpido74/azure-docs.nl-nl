@@ -1,23 +1,14 @@
 ---
 title: Afbeeldingen opslaan en distribueren in Azure DevTest Labs | Microsoft Docs
 description: In dit artikel vindt u de stappen voor het opslaan van aangepaste installatie kopieën van de al gemaakte virtuele machines (Vm's) in Azure DevTest Labs.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898330"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476237"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Aangepaste installatiekopieën opslaan en distribueren naar meerdere labs
 In dit artikel vindt u de stappen voor het opslaan van aangepaste installatie kopieën van de al gemaakte virtuele machines (Vm's). Ook wordt beschreven hoe u deze aangepaste installatie kopieën distribueert naar andere DevTest Labs in de organisatie.
