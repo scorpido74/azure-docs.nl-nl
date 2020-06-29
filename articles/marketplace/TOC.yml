@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Virtuele-machineaanbieding
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: API-naslaginformatie
-      items:
-        - name: Overzicht
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: Vereisten
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: Overwegingen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: Gelijktijdigheid beheren
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: Aanbiedingen ophalen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: Specifieke aanbieding ophalen
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: Aanbieding toevoegen of wijzigen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: Aanbiedingsstatus ophalen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: Een aanbieding publiceren
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: Bewerkingen ophalen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: Bewerkingen annuleren
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: Live gaan
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: Prijzen voor virtuele machine-aanbiedingen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: Problemen met verificatiefouten oplossen
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Ondersteuning zoeken
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: Commerciële marketplace in Partner Center
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: Voordelen activeren
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: Ondersteuningsopties
-      href: ./partner-center-portal/support.md
     - name: Analytische gegevens voor Partnercentrum
       items:
         - name: Analytische gegevens voor de commerciële marketplace
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: Belastinginformatie
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: Naslaginformatie over de CPP-API
+      items:
+        - name: Overzicht
+          href: ./cloud-partner-portal-api-overview.md
+        - name: Vereisten
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: Overwegingen
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: Gelijktijdigheid beheren
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: Aanbiedingen ophalen
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: Specifieke aanbieding ophalen
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: Aanbieding toevoegen of wijzigen
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: Aanbiedingsstatus ophalen
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: Een aanbieding publiceren
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: Bewerkingen ophalen
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: Bewerkingen annuleren
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: Live gaan
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: Prijzen voor virtuele machine-aanbiedingen
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: Problemen met verificatiefouten oplossen
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: Ondersteuningsopties
+      href: ./partner-center-portal/support.md

@@ -3,12 +3,12 @@ title: Fysieke servers beoordelen voor migratie naar Azure met Azure Migrate-ser
 description: 'Beschrijft hoe u met behulp van de service Azure Migrate: Serverevaluatie on-premises fysieke servers kunt detecteren en evalueren voor migratie naar Azure.'
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052205"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080771"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Fysieke servers evalueren met Azure Migrate: serverevaluatie
 
@@ -80,7 +80,7 @@ Azure Migrate: Serverevaluatie voert een lichtgewicht toepassing in.
     - Pak de inhoud uit het zip-bestand uit. Start PowerShell-console met beheerdersbevoegdheden.
     - Voer het PowerShell-script uit om de webtoepassing voor het apparaat te starten.
     - Configureer het apparaat voor het eerst en registreer het bij het Azure Migrate-project.
-- U kunt meerdere apparaten instellen voor één Azure Migrate-project. U kunt elk aantal fysieke servers detecteren op alle apparaten. Er kunnen maximaal 250 servers worden gedetecteerd per apparaat.
+- U kunt meerdere apparaten instellen voor één Azure Migrate-project. U kunt elk aantal fysieke servers detecteren op alle apparaten. Er kunnen maximaal 1000 servers worden gedetecteerd per apparaat.
 
 ### <a name="download-the-installer-script"></a>Download het installatiescript
 

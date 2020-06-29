@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 11/12/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167057"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517361"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Met Azure Machine Learning Designer kunt u [gegevens sets](#datasets) en [module
 
 De ontwerp functie maakt gebruik van uw Azure Machine Learning- [werk ruimte](concept-workspace.md) voor het organiseren van gedeelde resources zoals:
 
-+ [Pipelines](#pipeline)
++ [Pijplijnen](#pipeline)
 + [Gegevenssets](#datasets)
 + [Reken resources](#compute)
 + [Geregistreerde modellen](concept-azure-machine-learning-architecture.md#models)
@@ -65,7 +65,7 @@ Een geldige pijp lijn heeft de volgende kenmerken:
 
 Wanneer u klaar bent voor het uitvoeren van uw pijp lijn concept, verzendt u een pijplijn uitvoering.
 
-### <a name="pipeline-run"></a>Pijplijn uitvoering
+### <a name="pipeline-run"></a>Pijplijnuitvoering
 
 Telkens wanneer u een pijp lijn uitvoert, worden de configuratie van de pijp lijn en de resultaten ervan opgeslagen in uw werk ruimte als een **pijplijn uitvoering**. U kunt teruggaan naar elke pijplijn uitvoering om deze te controleren op probleem oplossing of controle doeleinden. Een pijplijn uitvoering **klonen** om een nieuw pijp lijn concept te maken dat u kunt bewerken.
 
@@ -81,7 +81,8 @@ Een module is een algoritme dat u met uw gegevens kunt uitvoeren. De designer he
 
 Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de parameters van de module weergegeven in het deelvenster Properties, rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen. U kunt de reken resources voor afzonderlijke modules in de ontwerp functie instellen. 
 
-![Eigenschappen van module](./media/concept-designer/properties.png)
+:::image type="content" source="./media/concept-designer/properties.png"alt-text="Eigenschappen van module":::
+
 
 Zie voor meer informatie over de beschik bare bibliotheek met machine learning algoritmen [overzicht van algoritme & module](algorithm-module-reference/module-reference.md). Zie het overzicht van [Azure machine learning Algorithm Cheat](algorithm-cheat-sheet.md)voor meer informatie over het kiezen van een algoritme.
 
@@ -136,5 +137,5 @@ U kunt bestaande visuele interface experimenten en webservices omzetten in pijp 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Leer de basis beginselen van predictive analytics en machine learning met [de zelf studie: prijs van auto Mobile met de ontwerper](tutorial-designer-automobile-price-train-score.md)
+* Leer de basisprincipes van predictive analytics en machine learning met [Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie](tutorial-designer-automobile-price-train-score.md)
 * Meer informatie over het wijzigen van bestaande [ontwerp voorbeelden](samples-designer.md) om ze aan te passen aan uw behoeften.

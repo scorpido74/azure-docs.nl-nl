@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 36d6e9ce2ab180c49737230de1f8b528f8da8b40
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 3a33065674f1acf43e276c5dc9d2a15cca52c9ef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905934"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208056"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Zelfstudie: Een app voor Node.js en MongoDB bouwen in Azure
 
@@ -371,7 +371,7 @@ Open _modules/articles/client/views/view-article.client.view.html_.
 
 Voeg vlak boven de afsluitende `</section>`-tag de volgende regel toe om `comment` samen met de rest van de artikelgegevens weer te geven:
 
-```HTML
+```html
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
@@ -379,7 +379,7 @@ Open _modules/articles/client/views/list-articles.client.view.html_.
 
 Voeg vlak boven de afsluitende `</a>`-tag de volgende regel toe om `comment` samen met de rest van de artikelgegevens weer te geven:
 
-```HTML
+```html
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
@@ -387,7 +387,7 @@ Open _modules/articles/client/views/admin/list-articles.client.view.html_.
 
 Voeg binnen het `<div class="list-group">`-element en vlak boven de afsluitende `</a>`-tag de volgende regel toe om `comment` samen met de rest van de artikelgegevens weer te geven:
 
-```HTML
+```html
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
@@ -395,7 +395,7 @@ Open _modules/articles/client/views/admin/form-article.client.view.html_.
 
 Zoek het `<div class="form-group">`-element met de verzendknop, dat er als volgt uitziet:
 
-```HTML
+```html
 <div class="form-group">
   <button type="submit" class="btn btn-default">{{vm.article._id ? 'Update' : 'Create'}}</button>
 </div>
@@ -403,7 +403,7 @@ Zoek het `<div class="form-group">`-element met de verzendknop, dat er als volgt
 
 Voeg vlak boven deze tag een ander `<div class="form-group">`-element toe waarmee een gebruiker het `comment`-veld kan bewerken. Het nieuwe element ziet er als volgt uit:
 
-```HTML
+```html
 <div class="form-group">
   <label class="control-label" for="comment">Comment</label>
   <textarea name="comment" data-ng-model="vm.article.comment" id="comment" class="form-control" cols="30" rows="10" placeholder="Comment"></textarea>

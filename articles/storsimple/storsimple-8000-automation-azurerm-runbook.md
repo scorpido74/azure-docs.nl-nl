@@ -3,15 +3,15 @@ title: Azure Automation Runbook gebruiken voor het beheren van StorSimple-appara
 description: Meer informatie over het gebruik van Azure Automation Runbook om StorSimple-taken te automatiseren
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 737533cd75ebec8d5d6c614f496e0c9b552217aa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276960"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514170"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation runbooks gebruiken voor het beheren van StorSimple-apparaten
 
@@ -41,7 +41,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
         cd C:\scripts\StorSimpleSDKTools
     ```
 
-2. [Down load NUGET cli](https://www.nuget.org/downloads) in de map die u in de vorige stap hebt gemaakt. Er zijn verschillende versies van _nuget. exe_. Kies de versie die overeenkomt met uw SDK. Elke download koppeling verwijst rechtstreeks naar een _exe_ -bestand. Zorg ervoor dat u met de rechter muisknop klikt en het bestand op uw computer opslaat in plaats van het uit te voeren vanuit de browser.
+2. [Down load NUGET cli](https://www.nuget.org/downloads) in de map die u in de vorige stap hebt gemaakt. Er zijn verschillende versies van _nuget.exe_. Kies de versie die overeenkomt met uw SDK. Elke download koppeling verwijst rechtstreeks naar een _exe_ -bestand. Zorg ervoor dat u met de rechter muisknop klikt en het bestand op uw computer opslaat in plaats van het uit te voeren vanuit de browser.
 
     U kunt ook de volgende opdracht uitvoeren om het script te downloaden en op te slaan in dezelfde map die u eerder hebt gemaakt.
 
@@ -83,7 +83,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
         compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
     ```
 
-6. Controleer of een zip-bestand van de Automation `C:\scripts\StorSimpleSDKTools`-module is gemaakt in.
+6. Controleer of een zip-bestand van de Automation-module is gemaakt in `C:\scripts\StorSimpleSDKTools` .
 
     ![controleren-Automation-module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
@@ -182,7 +182,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
    3. Maak een nieuwe resource groep of Selecteer deze uit een bestaande resource groep.
    4. Selecteer een **locatie** (indien mogelijk hetzelfde als waar uw service wordt uitgevoerd).
    5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
-   6. Controleer eventueel **vastmaken aan dash board**. Klik op **maken**.
+   6. Controleer eventueel **vastmaken aan dash board**. Klik op **Create**.
 
        ![Create-Automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -198,7 +198,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
 
     ![invoeg module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Ga naar **proces automatisering > Runbooks en klik op + een Runbook toevoegen**. Klik op **een bestaand Runbook importeren**op de Blade **runbook toevoegen** . Ga naar het Windows Power shell-script bestand voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **maken**.
+6. Ga naar **proces automatisering > Runbooks en klik op + een Runbook toevoegen**. Klik op **een bestaand Runbook importeren**op de Blade **runbook toevoegen** . Ga naar het Windows Power shell-script bestand voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Create**.
 
     ![invoeg module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

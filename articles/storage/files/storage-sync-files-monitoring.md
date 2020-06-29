@@ -3,16 +3,16 @@ title: Azure File Sync bewaken | Microsoft Docs
 description: Azure File Sync bewaken.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699294"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515200"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -34,7 +34,7 @@ Als u Azure File Sync metrische gegevens in Azure Monitor wilt weer geven, selec
 
 De volgende metrische gegevens voor Azure File Sync zijn beschikbaar in Azure Monitor:
 
-| Naam van meetwaarde | Beschrijving |
+| Naam van metrische gegevens | Beschrijving |
 |-|-|
 | Gesynchroniseerde bytes | Grootte van de overgedragen gegevens (uploaden en downloaden).<br><br>Eenheid: bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensies: naam server eindpunt, synchronisatie richting, naam synchronisatie groep |
 | Cloud lagen intrekken | De grootte van de gegevens die worden ingetrokken.<br><br>**Opmerking**: deze metrische gegevens worden in de toekomst verwijderd. Gebruik de grootte van de Cloud-laag voor het intrekken van de grootte van gegevens die zijn ingetrokken.<br><br>Eenheid: bytes<br>Aggregatie type: Sum<br>Toepasselijke dimensie: Server naam |
@@ -68,7 +68,7 @@ Als u de status van de geregistreerde server, de status van de server eindpunt e
 ### <a name="registered-server-health"></a>Status van geregistreerde server
 
 - Als de status van de **geregistreerde server** **online**is, communiceert de server met succes met de service.
-- Als de status van de **geregistreerde server** **offline wordt weer gegeven**, controleert u of het proces voor opslag synchronisatie (AzureStorageSyncMonitor. exe) op de server wordt uitgevoerd. Als de-server zich achter een firewall of proxy bevindt, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) voor het configureren van de firewall en proxy.
+- Als de status van de **geregistreerde server** **offline wordt weer gegeven**, controleert u of het AzureStorageSyncMonitor.exe-proces (Storage sync monitor) op de server wordt uitgevoerd. Als de-server zich achter een firewall of proxy bevindt, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) voor het configureren van de firewall en proxy.
 
 ### <a name="server-endpoint-health"></a>Status van server eindpunt
 
@@ -79,7 +79,7 @@ Als u de status van de geregistreerde server, de status van de server eindpunt e
 
 - De volgende metrische grafieken kunnen worden weer gegeven in de portal van de opslag synchronisatie service:
 
-  | Naam van meetwaarde | Beschrijving | Naam Blade |
+  | Naam van metrische gegevens | Beschrijving | Naam Blade |
   |-|-|-|
   | Gesynchroniseerde bytes | Grootte van overgedragen gegevens (uploaden en downloaden) | Synchronisatie groep, Server eindpunt |
   | Cloud lagen intrekken | Grootte van gegevens die zijn ingetrokken | Geregistreerde servers |
@@ -132,7 +132,7 @@ Status van Cloud lagen:
 
 Gebruik de prestatie meter items Azure File Sync op de server om de synchronisatie activiteit te controleren.
 
-Open prestatie meter (Perfmon. exe) om de prestatie meter items van Azure File Sync op de server weer te geven. U vindt de prestatie meter items onder de **overgebrachte AFS-bytes** en de objecten voor **AFS-synchronisatie bewerkingen** .
+Als u de prestatie meter items van Azure File Sync op de server wilt weer geven, opent u prestatie meter (Perfmon.exe). U vindt de prestatie meter items onder de **overgebrachte AFS-bytes** en de objecten voor **AFS-synchronisatie bewerkingen** .
 
 De volgende prestatie meter items voor Azure File Sync zijn beschikbaar in prestatie meter:
 
@@ -146,7 +146,7 @@ De volgende prestatie meter items voor Azure File Sync zijn beschikbaar in prest
 | Bewerking van Operations\Total voor AFS-synchronisatie bestanden per seconde | Totaal aantal gesynchroniseerde bestanden (uploaden en downloaden). |
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
 - [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
 - [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 - [Problemen met Azure Files Sync oplossen](storage-sync-files-troubleshoot.md)

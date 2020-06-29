@@ -3,19 +3,19 @@ title: Een HPC-cache van Azure koppelen
 description: Clients verbinden met een Azure HPC cache-service
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb3e4fd4935afc4869e50ccbc35c53333d43b1df
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458351"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515520"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>De Azure HPC-cache koppelen
+# <a name="mount-the-azure-hpc-cache"></a>De Azure HPC Cache koppelen
 
-Nadat de cache is gemaakt, hebben NFS-clients toegang tot de server `mount` met een eenvoudige opdracht. Met de opdracht wordt een specifiek doelpad voor opslag op de Azure HPC-cache verbonden met een lokale map op de client computer.
+Nadat de cache is gemaakt, hebben NFS-clients toegang tot de server met een eenvoudige `mount` opdracht. Met de opdracht wordt een specifiek doelpad voor opslag op de Azure HPC-cache verbonden met een lokale map op de client computer.
 
 De koppelings opdracht bestaat uit de volgende elementen:
 
@@ -57,7 +57,7 @@ Wanneer u de client computer verbindt met de cache, koppelt u dit pad aan een pa
 
 U kunt de **koppelings instructies** pagina in het Azure Portal gebruiken om een Kopieer bare koppelings opdracht te maken. Open de pagina in het gedeelte **configureren** van de cache weergave in de portal.
 
-Voordat u de opdracht op een client gebruikt, moet u ervoor zorgen dat de client voldoet aan de vereisten en beschikt over de software `mount` die nodig is voor het gebruik van de NFS-opdracht zoals hierboven beschreven in [clients voorbereiden](#prepare-clients).
+Voordat u de opdracht op een client gebruikt, moet u ervoor zorgen dat de client voldoet aan de vereisten en beschikt over de software die nodig is voor het gebruik van de NFS- `mount` opdracht zoals hierboven beschreven in [clients voorbereiden](#prepare-clients).
 
 ![scherm afbeelding van een Azure HPC-cache-exemplaar in de portal, met de pagina > koppelings instructies configureren geladen](media/mount-instructions.png)
 

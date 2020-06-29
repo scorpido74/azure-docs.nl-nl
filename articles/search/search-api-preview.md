@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3fa67f6961b146d1dc7f5a4d1780e4060f1fdedc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162273"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512694"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Preview-functies in azure Cognitive Search
 
@@ -21,11 +21,11 @@ Dit artikel bevat een lijst met functies die momenteel als preview-versie beschi
 
 Hoewel sommige preview-functies beschikbaar zijn in de portal en .NET SDK, bevat de REST API altijd preview-functies.
 
-+ Voor zoek bewerkingen is [**`2019-05-06-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) de huidige preview-versie.
-+ Voor beheer bewerkingen is [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) de huidige preview-versie.
++ Voor zoek bewerkingen [**`2019-05-06-Preview`**](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) is de huidige preview-versie.
++ Voor beheer bewerkingen [**`2019-10-01-Preview`**](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) is de huidige preview-versie.
 
 > [!IMPORTANT]
-> De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="ai-enrichment-features"></a>Functies voor AI-verrijking
 
@@ -33,10 +33,11 @@ Bekijk de nieuwste verbeteringen voor AI-verrijking met de [Preview-API voor zoe
 
 |||
 |-|-|
-| [Zoek vaardigheid aangepaste entiteit (preview-versie)](cognitive-search-skill-custom-entity-lookup.md ) | Een cognitieve vaardigheid die zoekt naar tekst van een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Met deze lijst worden alle documenten met alle overeenkomende entiteiten labeld. De vaardigheid ondersteunt ook een mate van fuzzy matching die kan worden toegepast om overeenkomsten te vinden die vergelijkbaar zijn, maar niet helemaal precies. | 
+| [Zoek vaardigheid aangepaste entiteit (preview-versie)](cognitive-search-skill-custom-entity-lookup.md ) | Een cognitieve vaardigheid die zoekt naar tekst van een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Aan de hand van deze lijst worden alle documenten met overeenkomende entiteiten gelabeld. De vaardigheid ondersteunt ook het zoeken naar fuzzy overeenkomsten, waarmee overeenkomsten worden gevonden die vergelijkbaar zijn, maar niet helemaal exact. | 
 | [PII-detectie vaardigheid (preview-versie)](cognitive-search-skill-pii-detection.md) | Een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoons gegevens ophaalt uit een invoer tekst en u de mogelijkheid biedt om deze op verschillende manieren te maskeren in de tekst.| 
 | [Incrementele verrijking (preview-versie)](cognitive-search-incremental-indexing-conceptual.md) | Voegt caching toe aan een verrijkings pijplijn, zodat u de bestaande uitvoer opnieuw kunt gebruiken als een gerichte wijziging, zoals een update van een vakkennisset of een ander object, de inhoud niet wijzigt. Caching is alleen van toepassing op verrijkte documenten die worden geproduceerd door een vaardig heden.| 
 | [Knowledge Store (preview)](knowledge-store-concept-intro.md) | Een nieuwe bestemming van een op AI gebaseerde verrijkings pijplijn. De fysieke gegevens structuur bevindt zich in Azure Blob Storage en Azure Table Storage, en wordt gemaakt en ingevuld wanneer u een Indexeer functie uitvoert met een bijgevoegde cognitieve vaardigheids. De definitie van een kennis archief zelf is opgegeven in een definitie van een vakkennisset. In de definitie van het kennis archief beheert u de fysieke structuur van uw gegevens door middel van *projectie* -elementen die bepalen hoe gegevens worden gevormd, of gegevens worden opgeslagen in tabel opslag of Blob-opslag en of er meerdere weer gaven zijn.| 
+| [AML-vaardigheid (preview-versie)](cognitive-search-aml-skill.md) | Een aangepaste vaardigheid die in Azure Machine Learning (AML) is ingebouwd voor het verrijken van documenten tijdens het indexeren. De vaardigheid van Azure ML maakt vaardigheids detectie, authenticatie en schema toewijzing eenvoudiger.|
 
 ## <a name="indexing-and-query-features"></a>Indexerings-en query functies
 
@@ -53,7 +54,7 @@ Preview-functies voor Indexeer functie zijn beschikbaar in de preview-API voor z
 |||
 |-|-|
 | [Ondersteuning voor privé-eind punten](service-create-private-endpoint.md) | U kunt een virtueel netwerk maken met een beveiligde client (zoals een virtuele machine) en vervolgens een zoek service maken die gebruikmaakt van een persoonlijk eind punt. |
-| Beperking van IP-toegang | Met [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) behulp van de beheer rest API kunt u een service maken met beperkingen voor de toegang tot IP-adressen. |
+| Beperking van IP-toegang | Met behulp [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) van de beheer rest API kunt u een service maken met beperkingen voor de toegang tot IP-adressen. |
 
 ## <a name="earlier-preview-features"></a>Eerdere preview-functies
 
@@ -61,7 +62,7 @@ Functies die zijn aangekondigd in eerdere voor beelden, als ze niet zijn overgeg
 
 ## <a name="how-to-call-a-preview-api"></a>Een preview-API aanroepen
 
-Oudere previews zijn nog operationeel, maar worden na verloop van tijd verouderd. Als uw code `api-version=2016-09-01-Preview` aanroept `api-version=2017-11-11-Preview`of, zijn deze aanroepen nog geldig. De nieuwste preview-versie wordt echter vernieuwd met verbeteringen. 
+Oudere previews zijn nog operationeel, maar worden na verloop van tijd verouderd. Als uw code aanroept `api-version=2016-09-01-Preview` of `api-version=2017-11-11-Preview` , zijn deze aanroepen nog geldig. De nieuwste preview-versie wordt echter vernieuwd met verbeteringen. 
 
 De volgende voorbeeld syntaxis illustreert een aanroep van de preview API-versie.
 

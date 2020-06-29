@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299480"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513531"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Snelstartgids: een Cognitive Services-resource maken met een ARM-sjabloon
 
-Gebruik dit artikel om een Cognitive Services resource te maken en te implementeren met behulp van een Azure Resource Manager-sjabloon (ARM). Met deze resource voor meerdere services kunt u:
+Gebruik dit artikel om een Cognitive Services resource te maken en te implementeren met behulp van een Azure Resource Manager sjabloon (ARM-sjabloon). Met deze resource voor meerdere services kunt u:
 * Toegang tot meerdere Azure-Cognitive Services met één sleutel en een eind punt.
 * Consolideer de facturering van de services die u gebruikt.
 
@@ -34,7 +34,7 @@ Als uw omgeving voldoet aan de vereisten en u vertrouwd bent met het gebruik van
 
 ## <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
+De sjabloon die in deze snelstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
 
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
 

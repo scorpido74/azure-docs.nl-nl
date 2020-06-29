@@ -3,15 +3,15 @@ title: Prestaties afstemmen-Storm met Azure Data Lake Storage Gen1
 description: Meer informatie over richt lijnen voor het afstemmen van de prestaties van een storm-cluster op Azure Data Lake Storage Gen1.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691647"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513798"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor Storm op HDInsight en Azure Data Lake Storage Gen1
 
@@ -126,8 +126,8 @@ Als u de limieten bereikt van de band breedte van Data Lake Storage Gen1, worden
 
 Als u wilt controleren of u een beperking krijgt, schakelt u de logboek registratie voor fout opsporing in aan de client zijde:
 
-1. In **Ambari** > **Storm** > **Config**config > **Advanced Storm-worker-log4j**, Wijzig ** &lt;root level = "info&gt; "** naar ** &lt;root level = "Debug&gt;"**. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
-2. Bewaak de Storm-topologie logboeken op worker&lt;-knoop&gt;/&lt;punten&gt;(onder/var/log/Storm/worker-Artifacts/-topologie poort/Worker.log) voor data Lake Storage gen1 beperkings uitzonderingen.
+1. In **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-worker-log4j**, Wijzig ** &lt; root level = "info &gt; "** naar ** &lt; root level = "Debug &gt; "**. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
+2. Bewaak de Storm-topologie logboeken op worker-knoop punten (onder/var/log/Storm/worker-Artifacts/ &lt; &gt; / &lt; -topologie poort &gt; /Worker.log) voor data Lake Storage gen1 beperkings uitzonderingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 In [deze blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)kunt u naar aanvullende prestaties afstemmen voor Storm.

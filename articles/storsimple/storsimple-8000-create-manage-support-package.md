@@ -3,15 +3,15 @@ title: Een ondersteunings pakket voor de StorSimple 8000-serie maken
 description: Meer informatie over het maken, ontsleutelen en bewerken van een ondersteunings pakket voor het StorSimple 8000-serie apparaat.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277077"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514050"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Een ondersteunings pakket voor de StorSimple 8000-serie maken en beheren
 
@@ -40,7 +40,7 @@ U kunt uw hand matig gegenereerde ondersteunings pakket delen met Microsoft Onde
    1. Voer in de opdrachtregel in:
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. Voer in het dialoog venster dat wordt geopend het beheerders wachtwoord voor uw apparaat in. Het standaard wachtwoord is _Wachtwoord1_.
+   2. Voer in het dialoog venster dat wordt geopend het beheerders wachtwoord voor uw apparaat in. Het standaardapparaatwachtwoord is _Wachtwoord1_.
      
       ![Het dialoog venster Power shell-referenties](./media/storsimple-8000-create-manage-support-package/IC740962.png)
    3. Selecteer **OK**.
@@ -54,7 +54,7 @@ U kunt uw hand matig gegenereerde ondersteunings pakket delen met Microsoft Onde
        `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
        U wordt gevraagd om een wacht woord en een wachtwoordzin voor versleuteling (omdat het ondersteunings pakket is versleuteld). Vervolgens wordt er een ondersteunings pakket gemaakt in de standaardmap (apparaatnaam toegevoegd met de huidige datum en tijd).
-   * Voor shares die niet met een wacht woord zijn beveiligd, hebt `-Credential` u de para meter niet nodig. Voer het volgende in:
+   * Voor shares die niet met een wacht woord zijn beveiligd, hebt u de `-Credential` para meter niet nodig. Voer het volgende in:
      
        `Export-HcsSupportPackage`
      

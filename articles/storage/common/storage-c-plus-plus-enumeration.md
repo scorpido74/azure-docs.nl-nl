@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591682"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514456"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-resources in C++ weergeven
 
@@ -115,7 +115,7 @@ Deze methoden zijn geïmplementeerd als wrappers van gesegmenteerde Api's. Voor 
 
 Deze benadering kan worden gebruikt als het opslag account of de tabel een klein aantal objecten bevat. Met een toename van het aantal objecten kan het vereiste geheugen echter zonder limiet worden verhoogd, omdat alle resultaten in het geheugen aanwezig zijn. Eén vermelding kan enige tijd in beslag nemen, waarbij de aanroeper geen informatie over de voortgang heeft.
 
-Deze Greedy-weer gegeven Api's in de SDK bestaan niet in C#, Java of de Java script-node. js-omgeving. We hebben deze in versie 0.6.0 Preview verwijderd om te voor komen dat er problemen zijn met het gebruik van deze Greedy-Api's.
+Deze Greedy-weer gegeven Api's in de SDK bestaan niet in C#, Java of de Java script-Node.js omgeving. We hebben deze in versie 0.6.0 Preview verwijderd om te voor komen dat er problemen zijn met het gebruik van deze Greedy-Api's.
 
 Als uw code deze Greedy-Api's aanroept:
 

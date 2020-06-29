@@ -4,16 +4,16 @@ description: Meer informatie over het maken van import-en export taken in Azure 
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 570c663861361a19190f6fb5d608b6aa029a0885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282491"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514209"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>De Azure import/export-service gebruiken om gegevens te importeren in Azure Blob Storage
 
@@ -33,11 +33,11 @@ U moet het volgende doen:
 * Schakel BitLocker in op het Windows-systeem. Zie [BitLocker inschakelen voor meer informatie](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 * [Down load de meest recente versie 1 van WAImportExport](https://www.microsoft.com/download/details.aspx?id=42659) op het Windows-systeem. De nieuwste versie van het hulp programma bevat beveiligings updates voor het toestaan van een externe Protector voor de BitLocker-sleutel en de bijgewerkte functie ontgrendelings modus.
 
-  * Unzip naar de standaardmap `waimportexportv1`. Bijvoorbeeld `C:\WaImportExportV1`.
-* Een FedEx/DHL-account hebben. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box `adbops@microsoft.com`Operations-team op.  
+  * Unzip naar de standaardmap `waimportexportv1` . Bijvoorbeeld `C:\WaImportExportV1`.
+* Een FedEx/DHL-account hebben. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box Operations-team op `adbops@microsoft.com` .  
   * Het account moet geldig zijn, moet een saldo hebben en moet de retour verzendings mogelijkheden hebben.
   * Genereer een tracking nummer voor de export taak.
-  * Elke taak moet een afzonderlijk tracking nummer hebben. Meerdere taken met hetzelfde tracking nummer worden niet ondersteund.
+  * Elke taak moet een afzonderlijk traceringsnummer hebben. Meerdere taken met hetzelfde traceringsnummer worden niet ondersteund.
   * Als u geen draaggolf account hebt, gaat u naar:
     * [Een FedEX-account maken](https://www.fedex.com/en-us/create-account.html)of
     * [Maak een DHL-account](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -73,7 +73,7 @@ Voer de volgende stappen uit om de stations voor te bereiden.
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    Er wordt een logboek bestand gemaakt in dezelfde map waarin u het hulp programma hebt uitgevoerd. Er zijn twee andere bestanden gemaakt: een *. XML* -bestand (de map waarin u het hulp programma uitvoert) en een *Drive-manifest. XML* -bestand (de map waarin de gegevens zich bevinden).
+    Er wordt een logboek bestand gemaakt in dezelfde map waarin u het hulp programma hebt uitgevoerd. Er worden ook twee andere bestanden gemaakt: een *. XML* -bestand (de map waarin u het hulp programma uitvoert) en een *drive-manifest.xml* bestand (de map waarin de gegevens zich bevinden).
 
     De gebruikte para meters worden in de volgende tabel beschreven:
 
@@ -81,23 +81,23 @@ Voer de volgende stappen uit om de stations voor te bereiden.
     |---------|---------|
     |/j     |De naam van het logboek bestand met de extensie. jrn. Er wordt een logboek bestand gegenereerd per station. Het is raadzaam om het serie nummer van de schijf als de naam van het logboek bestand te gebruiken.         |
     |/ID:     |De sessie-ID. Gebruik een uniek sessie nummer voor elk exemplaar van de opdracht.      |
-    |/t:     |De stationsletter van de schijf die moet worden verzonden. Bijvoorbeeld station `D`.         |
+    |/t:     |De stationsletter van de schijf die moet worden verzonden. Bijvoorbeeld station `D` .         |
     |/bk:     |De BitLocker-sleutel voor het station. Het numerieke wacht woord van de uitvoer van`manage-bde -protectors -get D:`      |
-    |/srcdir:     |De stationsletter van de schijf die moet worden verzonden, gevolgd `:\`door. Bijvoorbeeld `D:\`.         |
+    |/srcdir:     |De stationsletter van de schijf die moet worden verzonden, gevolgd door `:\` . Bijvoorbeeld `D:\`.         |
     |/dstdir:     |De naam van de doel container in Azure Storage.         |
-    |/blobtype:     |Met deze optie geeft u het type blobs op waarnaar u de gegevens wilt importeren. Voor blok-blobs is `BlockBlob` dit en voor pagina-blobs. `PageBlob`         |
+    |/blobtype:     |Met deze optie geeft u het type blobs op waarnaar u de gegevens wilt importeren. Voor blok-blobs is dit `BlockBlob` en voor pagina-blobs `PageBlob` .         |
     |/skipwrite:     |De optie waarmee wordt aangegeven dat er geen nieuwe gegevens moeten worden gekopieerd en dat bestaande gegevens op de schijf moeten worden voor bereid.          |
-    |/enablecontentmd5:     |Als u deze optie inschakelt, zorgt u ervoor dat MD5 wordt `Content-md5` berekend en is ingesteld als eigenschap op elke blob. Gebruik deze optie alleen als u het `Content-md5` veld wilt gebruiken nadat de gegevens zijn geüpload naar Azure. <br> Deze optie is niet van invloed op de gegevens integriteits controle (dit gebeurt standaard). De instelling neemt de benodigde tijd voor het uploaden van gegevens naar de Cloud toe.          |
+    |/enablecontentmd5:     |Als u deze optie inschakelt, zorgt u ervoor dat MD5 wordt berekend en is ingesteld als `Content-md5` eigenschap op elke blob. Gebruik deze optie alleen als u het veld wilt gebruiken `Content-md5` nadat de gegevens zijn geüpload naar Azure. <br> Deze optie is niet van invloed op de gegevens integriteits controle (dit gebeurt standaard). De instelling neemt de benodigde tijd voor het uploaden van gegevens naar de Cloud toe.          |
 8. Herhaal de vorige stap voor elke schijf die moet worden verzonden. Er wordt een logboek bestand met de gegeven naam gemaakt voor elke uitvoering van de opdracht regel.
 
     > [!IMPORTANT]
-    > * Samen met het logboek bestand wordt ook `<Journal file name>_DriveInfo_<Drive serial ID>.xml` een bestand gemaakt in de map waarin het hulp programma zich bevindt. Het. XML-bestand wordt gebruikt in plaats van het logboek bestand bij het maken van een taak als het logboek bestand te groot is.
+    > * Samen met het logboek bestand `<Journal file name>_DriveInfo_<Drive serial ID>.xml` wordt ook een bestand gemaakt in de map waarin het hulp programma zich bevindt. Het. XML-bestand wordt gebruikt in plaats van het logboek bestand bij het maken van een taak als het logboek bestand te groot is.
 
 ## <a name="step-2-create-an-import-job"></a>Stap 2: een import taak maken
 
 Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
-1. Meld u aan https://portal.azure.com/bij.
+1. Meld u aan bij https://portal.azure.com/ .
 2. Ga naar **alle services > opslag > import/export-taken**.
 
     ![Ga naar import/export-taken](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
 6. In **retour verzendings gegevens**:
 
-   * Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box `adbops@microsoft.com` Operations-team met de informatie over de provider die u wilt gebruiken.
+   * Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team `adbops@microsoft.com` met de informatie over de provider die u wilt gebruiken.
    * Voer een geldig account nummer van een transporteur in dat u hebt gemaakt met die transporteur. Micro soft gebruikt dit account om de schijven terug naar u te verzenden zodra uw import taak is voltooid. Als u geen account nummer hebt, maakt u een [FedEx](https://www.fedex.com/us/oadr/) -of [DHL](https://www.dhl.com/) -draaggolf account.
    * Geef een volledige en geldige naam op voor de contact persoon, telefoon, e-mail, adres, plaats, post code, provincie en land/regio.
 

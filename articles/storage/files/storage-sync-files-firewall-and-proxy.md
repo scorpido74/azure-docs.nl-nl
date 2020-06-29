@@ -3,23 +3,23 @@ title: Azure File Sync on-premises firewall en proxy-instellingen | Microsoft Do
 description: Azure File Sync on-premises netwerk configuratie
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 415dc4f5609b912163be42605277a33ebcfda589
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466184"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515283"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- en firewallinstellingen van Azure File Sync
 Azure File Sync maakt verbinding met uw on-premises servers met Azure Files, waarbij functies voor multi-site synchronisatie en Cloud lagen worden ingeschakeld. Als zodanig moet een on-premises server zijn verbonden met internet. Een IT-beheerder moet het beste pad bepalen dat de server kan bereiken in azure Cloud Services.
 
 In dit artikel vindt u inzicht in specifieke vereisten en opties die beschikbaar zijn voor een geslaagde en veilige verbinding van uw server met Azure File Sync.
 
-U wordt aangeraden [Azure file sync netwerk overwegingen](storage-sync-files-networking-overview.md) te lezen voordat u deze hand leiding leest.
+We raden u aan om [Aandachtspunten voor Azure File Sync-netwerken](storage-sync-files-networking-overview.md) te lezen voordat u dit artikel verder leest.
 
 ## <a name="overview"></a>Overzicht
 Azure File Sync fungeert als een Orchestration-service tussen uw Windows-Server, uw Azure-bestands share en verschillende andere Azure-Services om gegevens te synchroniseren zoals beschreven in de synchronisatie groep. Azure File Sync om goed te laten werken, moet u uw servers configureren om te communiceren met de volgende Azure-Services:
@@ -61,7 +61,7 @@ Volg de onderstaande stappen voor het configureren van proxy-instellingen voor a
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Voeg de sectie < System. net > in de machine. config-bestanden toe (onder het gedeelte < System. service model >).  Wijzig 127.0.01:8888 in het IP-adres en de poort voor de proxy server. 
+   - Voeg de sectie <system.net> toe aan de machine.config-bestanden (onder het gedeelte <System. service model>).  Wijzig 127.0.01:8888 in het IP-adres en de poort voor de proxy server. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -152,16 +152,16 @@ Voor bedrijfs continuïteit en herstel na nood gevallen (BCDR) kunt u uw Azure-b
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Acceptatie lijst voor Azure File Sync IP-adressen
 Azure File Sync ondersteunt het gebruik van [service Tags](../../virtual-network/service-tags-overview.md)die een groep IP-adres voorvoegsels voor een bepaalde Azure-service vertegenwoordigen. U kunt service tags gebruiken om firewall regels te maken waarmee communicatie met de Azure File Sync-Service mogelijk wordt gemaakt. Het servicetag voor Azure File Sync is `StorageSyncService` .
 
-Als u Azure File Sync binnen Azure gebruikt, kunt u de naam van het service label rechtstreeks in uw netwerk beveiligings groep gebruiken om verkeer toe te staan. Zie [netwerk beveiligings groepen](../../virtual-network/security-overview.md)voor meer informatie over hoe u dit doet.
+Als u Azure File Sync binnen Azure gebruikt, kunt u de naam van het service label rechtstreeks in uw netwerk beveiligings groep gebruiken om verkeer toe te staan. Zie [Netwerkbeveiligingsgroepen](../../virtual-network/security-overview.md) voor meer informatie over hoe u dit doet.
 
-Als u Azure File Sync on-premises gebruikt, kunt u de service tag API gebruiken om specifieke IP-adresbereiken op te halen voor de acceptatie lijst van uw firewall. Er zijn twee methoden om deze informatie te verkrijgen:
+Als u Azure File Sync on-premises gebruikt, kunt u de servicetag-API gebruiken om specifieke IP-adresbereiken op te halen voor de lijst met toegestane IP-adressen van uw firewall. Er zijn twee manieren om deze informatie op te halen:
 
-- De huidige lijst met IP-adresbereiken voor alle Azure-Services die service Tags ondersteunen, worden wekelijks gepubliceerd in het micro soft Download centrum in de vorm van een JSON-document. Elke Azure-Cloud heeft een eigen JSON-document met de IP-adresbereiken die relevant zijn voor die Cloud:
-    - [Open bare Azure](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure Amerikaanse overheid](https://www.microsoft.com/download/details.aspx?id=57063)
+- De huidige lijst met IP-adresbereiken voor alle Azure-services die servicetags ondersteunen, wordt wekelijks in het Microsoft Downloadcentrum gepubliceerd in de vorm van een JSON-document. Elke Azure-cloud heeft zijn eigen JSON-document met de IP-adresbereiken die relevant zijn voor die cloud:
+    - [Azure openbaar](https://www.microsoft.com/download/details.aspx?id=56519)
+    - [Azure van de Amerikaanse overheid](https://www.microsoft.com/download/details.aspx?id=57063)
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Duitsland](https://www.microsoft.com/download/details.aspx?id=57064)
-- Met de service tag discovery-API (preview) kunt u programmatisch de huidige lijst met Service Tags ophalen. In de preview-versie kan de service Tags detectie-API gegevens retour neren die minder actueel zijn dan de informatie die wordt geretourneerd door de JSON-documenten die zijn gepubliceerd in het micro soft Download centrum. U kunt het API-Opper vlak gebruiken op basis van uw automatiserings voorkeur:
+- Met de API voor servicetagdetectie (preview-versie) kunt u de huidige lijst met servicetags programmatisch ophalen. In de preview-versie kan de API voor servicetagdetectie informatie retourneren die minder actueel is dan informatie die wordt geretourneerd uit de JSON-documenten die in het Microsoft Downloadcentrum worden gepubliceerd. U kunt het API-gebied gebruiken op basis van uw automatiseringsvoorkeur:
     - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
     - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
     - [Azure-CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
@@ -266,7 +266,7 @@ if ($found) {
 Vervolgens kunt u de IP-adresbereiken gebruiken in `$ipAddressRanges` om uw firewall bij te werken. Raadpleeg de website van uw firewall/netwerk apparaat voor informatie over het bijwerken van uw firewall.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>De netwerk verbinding met Service-eind punten testen
-Zodra een server is geregistreerd bij de Azure File Sync-Service, kan de cmdlet test-StorageSyncNetworkConnectivity en ServerRegistration. exe worden gebruikt om de communicatie met alle eind punten (Url's) die voor deze server gelden, te testen. Met deze cmdlet kunt u problemen oplossen wanneer de server niet volledig met Azure File Sync werkt en kan worden gebruikt voor het afstemmen van proxy-en firewall configuraties.
+Zodra een server is geregistreerd bij de Azure File Sync-Service, kunnen de cmdlet test-StorageSyncNetworkConnectivity en ServerRegistration.exe worden gebruikt om de communicatie met alle eind punten (Url's) die voor deze server gelden, te testen. Met deze cmdlet kunt u problemen oplossen wanneer de server niet volledig met Azure File Sync werkt en kan worden gebruikt voor het afstemmen van proxy-en firewall configuraties.
 
 Als u de test voor de netwerk verbinding wilt uitvoeren, installeert u Azure File Sync agent versie 9,1 of hoger en voert u de volgende Power shell-opdrachten uit:
 ```powershell
@@ -280,6 +280,6 @@ De lijsten eerder in dit document bevatten de Url's Azure File Sync momenteel co
 Het instellen van domein beperking van firewall regels kan een maat eenheid zijn voor het verbeteren van de beveiliging. Als deze firewall configuraties worden gebruikt, moet er een of meer Url's worden toegevoegd. Dit kan zelfs na verloop van tijd worden gewijzigd. Controleer dit artikel regel matig.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
 - [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

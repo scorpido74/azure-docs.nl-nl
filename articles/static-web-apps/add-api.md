@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: e3cb45ee2cfa299a482391d59359b40baea0feb5
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476118"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517334"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -156,7 +156,7 @@ Visual Studio code integreert met [Azure functions core tools](https://docs.micr
 
 ### <a name="call-the-api-from-the-application"></a>De API aanroepen vanuit de toepassing
 
-Bij implementatie naar Azure worden aanvragen voor de API automatisch doorgestuurd naar de functie-app voor aanvragen die worden verzonden naar de `api` route. Als u lokaal werkt, kunt u de toepassings instellingen configureren voor proxy aanvragen voor de lokale API.
+Bij implementatie naar Azure worden aanvragen voor de API automatisch doorgestuurd naar de functie-app voor aanvragen die worden verzonden naar de `api` route. Als u lokaal werkt, moet u de toepassings instellingen configureren voor proxy aanvragen voor de lokale API.
 
 [!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
 

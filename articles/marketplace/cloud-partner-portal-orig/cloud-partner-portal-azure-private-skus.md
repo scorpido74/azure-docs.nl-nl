@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: dsindona
-ms.openlocfilehash: ee3ab7be4d15b13a3c0bb014a3ca4d4096299b4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4f21539979b54d9aba8dcc0e950b2d3f8bf2ea0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280385"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515427"
 ---
 <a name="private-skus-and-plans"></a>Persoonlijke Sku's en abonnementen
 ============
@@ -98,11 +98,11 @@ Als u de API gebruikt en geen CSV-bestand wilt behouden, kunt u het publiek via 
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Abonnementen beheren met de API
 
-U kunt de API gebruiken voor het uploaden van een CSV of het direct beheren van uw publiek (zonder een CSV-bestand). Over het algemeen hoeft u alleen maar uw aanbieding op te halen, `restrictedAudience` het object bij te werken en vervolgens deze wijzigingen te verzenden naar uw aanbieding om leden van een doel groep toe te voegen of te verwijderen.
+U kunt de API gebruiken voor het uploaden van een CSV of het direct beheren van uw publiek (zonder een CSV-bestand). Over het algemeen hoeft u alleen maar uw aanbieding op te halen, het object bij te werken `restrictedAudience` en vervolgens deze wijzigingen te verzenden naar uw aanbieding om leden van een doel groep toe te voegen of te verwijderen.
 
 U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werken:
 
-1. [Uw aanbiedings gegevens ophalen](cloud-partner-portal-api-retrieve-specific-offer.md) :
+1. [Uw aanbiedings gegevens ophalen](../cloud-partner-portal-api-retrieve-specific-offer.md) :
 
     ```
     GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
@@ -126,7 +126,7 @@ U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werk
 
     Voor elk beperkt doel object:
 
-    a. Down load de inhoud `restrictedAudience.uploadedCsvUri`van. De inhoud is gewoon een CSV-bestand met kopteksten. Bijvoorbeeld:
+    a. Down load de inhoud van `restrictedAudience.uploadedCsvUri` . De inhoud is gewoon een CSV-bestand met kopteksten. Bijvoorbeeld:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -156,9 +156,9 @@ U gaat als volgt te werk om de lijst met doel groepen programmatisch bij te werk
         ]}
     ```
 
-    a. Voeg voor elk beperkt doel object vermeldingen toe aan de lijst of `restrictedAudience.manualEntries` Verwijder deze indien nodig.
+    a. Voeg voor elk beperkt doel object vermeldingen toe aan de lijst of verwijder deze `restrictedAudience.manualEntries` indien nodig.
 
-4. Als u alle *restrictedAudience* -objecten voor elke SKU van uw persoonlijke aanbieding hebt bijgewerkt, [werkt u de aanbieding](cloud-partner-portal-api-creating-offer.md)bij:
+4. Als u alle *restrictedAudience* -objecten voor elke SKU van uw persoonlijke aanbieding hebt bijgewerkt, [werkt u de aanbieding](../cloud-partner-portal-api-creating-offer.md)bij:
 
     ```
     PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31

@@ -4,16 +4,16 @@ description: Meer informatie over het instellen van het hulp programma voor het 
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74979033"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514180"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren instellen
 
@@ -27,7 +27,7 @@ Het hulp programma Microsoft Azure Import/Export is het hulp programma voor het 
 
 Als u **stations voorbereidt** voor een import taak, moeten aan de volgende vereisten worden voldaan:
 
-* U moet een actief Azure-abonnement hebben.
+* U hebt een actief Azure-abonnement nodig.
 * Uw abonnement moet een opslag account bevatten met voldoende beschik bare ruimte voor het opslaan van de bestanden die u gaat importeren.
 * U hebt ten minste één van de toegangs sleutels voor het opslag account nodig.
 * U hebt een computer nodig (de ' machine kopiëren ') met Windows 7, Windows Server 2008 R2 of een nieuwere Windows-besturings systeem geïnstalleerd.
@@ -49,28 +49,28 @@ Als u probeert **een export te herstellen** die gedeeltelijk is mislukt, hebt u 
 
 ## <a name="installing-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren installeren
 
-[Down load eerst het Azure import/export-hulp programma](https://www.microsoft.com/download/details.aspx?id=55280) en pak het uit naar een map op uw computer `c:\WAImportExport`, bijvoorbeeld.
+[Down load eerst het Azure import/export-hulp programma](https://www.microsoft.com/download/details.aspx?id=55280) en pak het uit naar een map op uw computer, bijvoorbeeld `c:\WAImportExport` .
 
 Het Azure-hulp programma voor importeren/exporteren bestaat uit de volgende bestanden:
 
-* Dataset. CSV
-* stationset. CSV
-* hddid. dll
-* Micro soft. data. Services. client. dll
-* Micro soft. WindowsAzure. storage. dll
+* dataset.csv
+* driveset.csv
+* hddid.dll
+* Microsoft.Data.Services.Client.dll
+* Microsoft.WindowsAzure.Storage.dll
 * Micro soft. WindowsAzure. storage. pdb
-* Micro soft. WindowsAzure. storage. XML
-* WAImportExport. exe
-* WAImportExport. exe. config
+* Microsoft.WindowsAzure.Storage.xml
+* WAImportExport.exe
+* WAImportExport.exe.config
 * WAImportExport. pdb
-* WAImportExportCore. dll
+* WAImportExportCore.dll
 * WAImportExportCore. pdb
-* WAImportExportRepair. dll
+* WAImportExportRepair.dll
 * WAImportExportRepair. pdb
 
 Open vervolgens een opdracht prompt venster in de **beheerders modus**en wijzig in de map met de uitgepakte bestanden.
 
-Als u de Help voor de opdracht wilt uitvoeren, voert`WAImportExport.exe`u het hulp programma () zonder para meters uit:
+Als u de Help voor de opdracht wilt uitvoeren, voert u het hulp programma ( `WAImportExport.exe` ) zonder para meters uit:
 
 ```
 WAImportExport, a client tool for Windows Azure Import/Export Service. Microsoft (c) 2013

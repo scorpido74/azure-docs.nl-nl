@@ -3,15 +3,15 @@ title: Opslag toevoegen aan een Azure HPC-cache
 description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premises NFS-systeem of Azure Blob-containers voor lange termijn bestands opslag kan gebruiken
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: 442c9897c5f02e9ed9cbcda96b6a540b9201f428
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 4c3ef79806d29b188eb2738919bf912cfedc8ef1
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434118"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513881"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -153,9 +153,9 @@ Deze tabel bevat een overzicht van de verschillen in het gebruiks model:
 
 | Gebruiks model | Cache modus | Back-end-verificatie | Maximale vertraging voor terugschrijven |
 | ---- | ---- | ---- | ---- |
-| Zware, incidentele schrijf bewerkingen lezen | Lezen | Nooit | Geen |
+| Zware, incidentele schrijf bewerkingen lezen | Raadplegen | Nooit | Geen |
 | Meer dan 15% schrijf bewerkingen | Lezen/schrijven | Nooit | 1 uur |
-| Clients slaan de cache over | Lezen | 30 seconden | Geen |
+| Clients slaan de cache over | Raadplegen | 30 seconden | Geen |
 
 ## <a name="next-steps"></a>Volgende stappen
 

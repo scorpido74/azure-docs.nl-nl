@@ -3,16 +3,16 @@ title: Een site-naar-site-VPN (S2S) configureren voor gebruik met Azure Files | 
 description: Een site-naar-site-VPN (S2S) configureren voor gebruik met Azure Files
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061040"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515334"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Een site-naar-site-VPN configureren voor gebruik met Azure Files
 U kunt een S2S-VPN-verbinding (site-naar-site) gebruiken om uw Azure-bestands shares te koppelen via SMB vanaf uw on-premises netwerk, zonder poort 445 te openen. U kunt een site-naar-site-VPN instellen met behulp van [azure VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md), een Azure-resource die VPN-services aanbiedt en wordt geïmplementeerd in een resource groep naast opslag accounts of andere Azure-resources.
@@ -93,7 +93,7 @@ Selecteer **OK** om de verbinding te maken. U kunt controleren of de verbinding 
 Bij de laatste stap bij het configureren van een S2S-VPN wordt gecontroleerd of deze werkt voor Azure Files. U kunt dit doen door uw Azure-bestands share on-premises te koppelen met uw voorkeurs besturingssysteem. Zie de instructies voor het koppelen van het besturings systeem:
 
 - [Windows](storage-how-to-use-files-windows.md)
-- [macOS](storage-how-to-use-files-mac.md)
+- [MacOS](storage-how-to-use-files-mac.md)
 - [Linux](storage-how-to-use-files-linux.md)
 
 ## <a name="see-also"></a>Zie ook

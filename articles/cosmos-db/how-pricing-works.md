@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/26/2020
+ms.openlocfilehash: 3a2f7f8edfab635d1c59ce61b60b7c5b5311b283
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75977543"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513345"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Prijsmodel in Azure Cosmos DB 
 
@@ -28,16 +28,16 @@ Door de ingerichte door Voer, opgegeven als [aanvraag eenheden](request-units.md
 
 Zie voor meer informatie de [pagina met Azure Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en [informatie over uw Azure Cosmos DB factuur](understand-your-bill.md).
 
-Het prijs model in Azure Cosmos DB is consistent voor alle Api's. Zie [hoe Azure Cosmos DB prijs model rendabel is voor klanten voor](total-cost-ownership.md)meer informatie. Er is een minimale door Voer vereist voor een Data Base of container om de service overeenkomsten te controleren en u kunt de ingerichte door $6 Voer voor elke 100 RU/s verg Roten of verkleinen.
+Het prijs model in Azure Cosmos DB is consistent voor alle Api's. Zie [hoe Azure Cosmos DB prijs model rendabel is voor klanten voor](total-cost-ownership.md)meer informatie. Er is een minimale door Voer vereist voor een Data Base of container om de service overeenkomsten te controleren en u kunt de ingerichte door Voer verhogen of verlagen met ~ $6 voor elke 100 RU/s.
 
-Op dit moment is de minimum prijs voor zowel de Data Base als de door Voer op basis van een container $24/maand (Zie de [pagina met Azure Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente informatie. Als uw werk belasting meerdere containers gebruikt, kan deze worden geoptimaliseerd voor kosten met behulp van de door Voer van het data base-niveau, omdat door Voer via database niveau een wille keurig aantal containers in een Data Base met de door Voer tussen de containers kan worden gedeeld. De volgende tabel bevat een overzicht van de ingerichte door Voer en de kosten voor verschillende entiteiten:
+Op dit moment is de minimum prijs voor zowel de Data Base als de door Voer op basis van containers ongeveer $24 per maand (Zie de [pagina met Azure Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente informatie. Als uw werk belasting meerdere containers gebruikt, kan deze worden geoptimaliseerd voor kosten met behulp van de door Voer van het data base-niveau, omdat door Voer via database niveau een wille keurig aantal containers in een Data Base met de door Voer tussen de containers kan worden gedeeld. De volgende tabel bevat een overzicht van de ingerichte door Voer en de kosten voor verschillende entiteiten:
 
 |**Entiteit**  | **Minimale door Voer & kosten** |**Schaal verhogingen & kosten** |**Inrichtings bereik** |
 |---------|---------|---------|-------|
-|Database    | 400 RU/s ($ 24/maand)    | 100 RU/s ($ 6/maand)   |De door Voer is gereserveerd voor de data base en wordt gedeeld door containers in de data base |
-|Container     | 400 RU/s ($ 24/maand)    | 100 RU/s ($ 6/maand)  |De door Voer is gereserveerd voor een specifieke container |
+|Database    | 400 RU/s (~ $24/maand)    | 100 RU/s (~ $6/maand)   |De door Voer is gereserveerd voor de data base en wordt gedeeld door containers in de data base |
+|Container     | 400 RU/s (~ $24/maand)    | 100 RU/s (~ $6/maand)  |De door Voer is gereserveerd voor een specifieke container |
 
-Zoals u in de voor gaande tabel ziet, begint de minimale door Voer in Azure Cosmos DB met een prijs van $24/maand. Als u begint met de minimale door Voer en er meer tijd wordt geschaald om uw productie workloads te ondersteunen, stijgen uw kosten soepel, in de stappen van $6/maand. Het prijs model in Azure Cosmos DB is elastisch en er is een soepele of afname van de prijs bij het omhoog of omlaag schalen.
+Zoals u in de voor gaande tabel ziet, begint de minimale door Voer in Azure Cosmos DB met een prijs van ~ $24/maand. Als u begint met de minimale door Voer en omhoog schaalt om uw productie workloads te ondersteunen, stijgen uw kosten soepel, in de stappen van ~ $6/maand. Het prijs model in Azure Cosmos DB is elastisch en er is een soepele of afname van de prijs bij het omhoog of omlaag schalen.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Probeer Azure Cosmos DB gratis uit 
 

@@ -8,13 +8,13 @@ ms.author: mhopkins
 ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 0a8eca9e7b3e890b67daf915ffe733dd54ef5896
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137055"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515046"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Het type opslag account en de SKU-naam ophalen met .NET
 
@@ -24,9 +24,9 @@ Account gegevens zijn beschikbaar in service versies vanaf versie 2018-03-28.
 
 ## <a name="about-account-type-and-sku-name"></a>Over het account type en de SKU-naam
 
-**Account type**: geldige account typen zijn `BlobStorage`, `BlockBlobStorage`, `FileStorage` `Storage`, en `StorageV2`. [Overzicht van Azure Storage-account](storage-account-overview.md) bevat meer informatie, inclusief beschrijvingen van de verschillende opslag accounts.
+**Account type**: geldige account typen zijn `BlobStorage` , `BlockBlobStorage` ,, en `FileStorage` `Storage` `StorageV2` . [Overzicht van Azure Storage-account](storage-account-overview.md) bevat meer informatie, inclusief beschrijvingen van de verschillende opslag accounts.
 
-**SKU-naam**: geldige SKU- `Premium_LRS`namen `Premium_ZRS`zijn `Standard_GRS`onder `Standard_GZRS`andere `Standard_LRS`, `Standard_RAGRS`, `Standard_RAGZRS`,, `Standard_ZRS`,, en. SKU-namen zijn hoofdletter gevoelig en zijn teken reeks velden in de [SkuName-klasse](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
+**SKU-naam**: geldige SKU-namen zijn onder andere `Premium_LRS` , `Premium_ZRS` , `Standard_GRS` , `Standard_GZRS` , `Standard_LRS` , `Standard_RAGRS` , en `Standard_RAGZRS` `Standard_ZRS` . SKU-namen zijn hoofdletter gevoelig en zijn teken reeks velden in de [SkuName-klasse](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet).
 
 ## <a name="retrieve-account-information"></a>Account gegevens ophalen
 

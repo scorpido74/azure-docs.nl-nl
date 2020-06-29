@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212514"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513511"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Een Power BI-app maken voor Microsoft AppSource
 
@@ -160,10 +160,10 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 7. Privacybeleid
 8. Naam van aanbieding
 9. Samenvatting
-10. Description
+10. Beschrijving
 11. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -177,7 +177,7 @@ De naam:
 
 Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -270,4 +270,4 @@ Op de pagina controleren kunt u het volgende doen:
 
 Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
 
-We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek (of als een privé-aanbieding, naar een privé-publiek) wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
+We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.

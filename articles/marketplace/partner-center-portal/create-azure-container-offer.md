@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: cd0c8961cff15385249222986e5fb90ee75e3559
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f7f0a466f288031474b100f42c9ba41aafb9ff9a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887330"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515547"
 ---
 # <a name="create-an-azure-container-offer"></a>Een Azure-container aanbieding maken
 
@@ -126,7 +126,7 @@ Op deze pagina kunt u de details van het aanbod definiëren dat wordt weer gegev
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te staan als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -238,9 +238,6 @@ Geef uw preview-doel groep op met behulp van de Azure-abonnements-ID-GUID'S, sam
 > U kunt uw Azure-abonnements-ID vinden op de pagina Abonnementen in Azure Portal.
 
 Voeg ten minste één Azure-abonnements-ID afzonderlijk toe (Maxi maal 10) of door een CSV-bestand te uploaden (Maxi maal 100). Door deze abonnement-Id's toe te voegen, bepaalt u wie uw aanbieding kunnen bekijken voordat ze live worden gepubliceerd. Als uw aanbieding al Live is, kunt u een preview doel groep kiezen om wijzigingen of updates van uw aanbieding te testen.
-
-> [!NOTE]
-> De preview-doel groep wijkt af van een persoonlijke doel groep. Een **Preview** doel groep kan alle aanbiedingen plannen bekijken en bevestigen voordat ze in de Marketplace wonen, met inbegrip van degenen die alleen worden gepubliceerd voor een **persoonlijke** doel groep (ingesteld op het tabblad Beschik baarheid).
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -396,7 +393,7 @@ Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
 
 We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren.
 
-Als u uw aanbieding naar het publiek (of als een privé-aanbieding, naar een privé-publiek) wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
+Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
 
 ## <a name="next-step"></a>Volgende stap
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 872cab4575b143dea057fe7fd070b433f8d54eb9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4bf0acdc774bc41d0bc80c944560f41789584c03
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220321"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513912"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in azure Synapse Analytics (voorheen Azure SQL Data Warehouse) kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -129,7 +129,7 @@ Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor bee
 
 Voer de volgende stappen uit om verificatie van Azure AD-toepassings tokens op basis van de service-principal te gebruiken:
 
-1. **[Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)** vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden die de gekoppelde service definiëren:
+1. **[Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)** vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden die de gekoppelde service definiëren:
 
    - Toepassings-id
    - Toepassings sleutel
@@ -746,7 +746,7 @@ Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de vo
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binair                                | Byte []                         |
-| bit                                   | Boolean                        |
+| bit                                   | Booleaans                        |
 | char                                  | Teken reeks, char []                 |
 | date                                  | DateTime                       |
 | Datum/tijd                              | DateTime                       |
@@ -754,14 +754,14 @@ Wanneer u gegevens kopieert vanuit of naar Azure Synapse Analytics, worden de vo
 | Date time offset                        | Date time offset                 |
 | Decimal                               | Decimal                        |
 | FILESTREAM-kenmerk (varbinary (max)) | Byte []                         |
-| Float                                 | Double                         |
+| Float                                 | Dubbel                         |
 | image                                 | Byte []                         |
 | int                                   | Int32                          |
-| financieel                                 | Decimal                        |
+| money                                 | Decimal                        |
 | nchar                                 | Teken reeks, char []                 |
 | numeriek                               | Decimal                        |
 | nvarchar                              | Teken reeks, char []                 |
-| werkelijk                                  | Enkel                         |
+| werkelijk                                  | Enkelvoudig                         |
 | rowversion                            | Byte []                         |
 | smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |

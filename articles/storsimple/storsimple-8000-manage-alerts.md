@@ -3,15 +3,15 @@ title: Waarschuwingen voor StorSimple 8000 Series-apparaat weer geven en beheren
 description: Beschrijft StorSimple-waarschuwings voorwaarden en ernst, het configureren van waarschuwings meldingen en het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van waarschuwingen.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4956c511f67fc5929eef2e39797cbe93b5b1d73e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711932"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515515"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van StorSimple-waarschuwingen
 
@@ -219,7 +219,12 @@ Als de verbinding met de Cloud op uw StorSimple-productie apparaat mislukt, kunn
 |:--- |:--- |:--- |
 | Het maken van het ondersteunings pakket is mislukt. |StorSimple kan het pakket niet genereren. |Probeer deze bewerking opnieuw uit te voeren. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. Nadat u het probleem hebt opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
 
+### <a name="enclosure-environment-alerts"></a>Meldingen van behuizing-omgeving
+
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
+|:--- |:--- |:--- |
+| Status van omgevings temperatuur sensor van hardwareonderdeel wordt niet gerapporteerd als mislukt.  | Type behuizing: hoofd behuizing | Deze waarschuwing wordt geactiveerd wanneer de omgeving buiten de Tempe ratuur rond StorSimple ligt boven een acceptabel bereik. Controleer of de omgeving buiten de Tempe ratuur of de lucht stroom is van de AC-ventilator in het Data Center. Wanneer de Tempe ratuur op normaal wordt ingesteld, wordt de waarschuwing automatisch gewist nadat de tijd is verstreken. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning.   |
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [StorSimple-fouten en het oplossen van problemen met de implementatie van apparaten](storsimple-8000-troubleshoot-deployment.md).
-

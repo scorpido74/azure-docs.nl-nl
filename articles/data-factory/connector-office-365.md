@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416877"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513293"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens kopiëren van Office 365 naar Azure met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,10 +40,10 @@ U kunt nu binnen één Kopieer activiteit **gegevens alleen kopiëren van Office
 Als u gegevens wilt kopiëren van Office 365 naar Azure, moet u de volgende vereiste stappen uitvoeren:
 
 - Uw Office 365-Tenant beheerder moet on-board acties volt ooien, zoals [hier](https://docs.microsoft.com/graph/data-connect-get-started)wordt beschreven.
-- Een Azure AD-webtoepassing maken en configureren in Azure Active Directory.  Zie [een Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)voor instructies.
+- Een Azure AD-webtoepassing maken en configureren in Azure Active Directory.  Zie [een Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)voor instructies.
 - Noteer de volgende waarden, die u moet gebruiken om de gekoppelde service voor Office 365 te definiëren:
-    - Tenant-ID. Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
-    - Toepassings-ID en toepassings sleutel.  Zie [toepassings-id en verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
+    - Tenant-ID. Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)voor instructies.
+    - Toepassings-ID en toepassings sleutel.  Zie [toepassings-id en verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)voor instructies.
 - Voeg de gebruikers-id toe die de gegevens toegangs aanvraag maakt als de eigenaar van de Azure AD-webtoepassing (van de Azure AD Web Application > instellingen > eigen aren > een eigenaar toevoegen). 
     - De gebruikers-id moet zich bevinden in de Office 365-organisatie waarvan u de gegevens ophaalt en mag geen gast gebruiker zijn.
 
@@ -64,7 +64,7 @@ Als ADF is gemaakt als onderdeel van een beheerde app en Azure-beleids toewijzin
 
 U kunt met behulp van een van de volgende hulpprogram ma's of Sdk's een pijp lijn maken met de Kopieer activiteit. Selecteer een koppeling om naar een zelf studie te gaan met stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
-- [Azure Portal](quickstart-create-data-factory-portal.md)
+- [Azure-portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python-SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
@@ -79,19 +79,19 @@ De volgende eigenschappen worden ondersteund voor Office 365 gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Office365** | Ja |
-| office365TenantId | De Azure-Tenant-ID waartoe het Office 365-account behoort. | Ja |
-| servicePrincipalTenantId | Geef de Tenant gegevens op waaronder uw Azure AD-webtoepassing zich bevindt. | Ja |
-| servicePrincipalId | Geef de client-ID van de toepassing op. | Ja |
-| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. | Ja |
-| connectVia | Het Integration Runtime dat moet worden gebruikt om verbinding te maken met het gegevens archief.  Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee |
+| type | De eigenschap type moet worden ingesteld op: **Office365** | Yes |
+| office365TenantId | De Azure-Tenant-ID waartoe het Office 365-account behoort. | Yes |
+| servicePrincipalTenantId | Geef de Tenant gegevens op waaronder uw Azure AD-webtoepassing zich bevindt. | Yes |
+| servicePrincipalId | Geef de client-ID van de toepassing op. | Yes |
+| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. | Yes |
+| connectVia | Het Integration Runtime dat moet worden gebruikt om verbinding te maken met het gegevens archief.  Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | No |
 
 >[!NOTE]
 > Het verschil tussen **office365TenantId** en **servicePrincipalTenantId** en de bijbehorende waarde om het volgende te bieden:
 >- Als u een bedrijfs ontwikkelaar bent die een toepassing ontwikkelt op basis van Office 365-gegevens voor het gebruik van uw eigen organisatie, moet u dezelfde Tenant-ID voor beide eigenschappen opgeven. Dit is de AAD-Tenant-ID van uw organisatie.
 >- Als u een ISV-ontwikkelaar bent die een toepassing ontwikkelt voor uw klanten, zijn office365TenantId van uw klant (Application Installer) de AAD-Tenant-ID van uw bedrijf en servicePrincipalTenantId wordt de AAD-Tenant-ID van uw organisatie.
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -119,12 +119,12 @@ Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen o
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **Office365Table** | Ja |
-| tableName | De naam van de gegevensset die moet worden geëxtraheerd uit Office 365. [Hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) vindt u een lijst met Office 365-gegevens sets die beschikbaar zijn voor uitpakken. | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **Office365Table** | Yes |
+| tableName | De naam van de gegevensset die moet worden geëxtraheerd uit Office 365. [Hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) vindt u een lijst met Office 365-gegevens sets die beschikbaar zijn voor uitpakken. | Yes |
 
-Als u hebt ingesteld `dateFilterColumn`, `startTime` `endTime`, en `userScopeFilterUri` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in de activiteit bron wilt gebruiken.
+Als u hebt ingesteld `dateFilterColumn` , `startTime` , `endTime` en `userScopeFilterUri` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in de activiteit bron wilt gebruiken.
 
-**Voorbeeld**
+**Hierbij**
 
 ```json
 {
@@ -153,15 +153,15 @@ Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen o
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Office365Source** | Ja |
-| allowedGroups | Predikaat groep selecteren.  Gebruik deze eigenschap om Maxi maal 10 gebruikers groepen te selecteren voor wie de gegevens worden opgehaald.  Als er geen groepen zijn opgegeven, worden de gegevens voor de hele organisatie geretourneerd. | Nee |
-| userScopeFilterUri | Wanneer `allowedGroups` de eigenschap niet is opgegeven, kunt u een predicaat expressie gebruiken die wordt toegepast op de hele Tenant om de specifieke rijen te filteren die moeten worden geëxtraheerd uit Office 365. De predicaat indeling moet overeenkomen met de query-indeling van Microsoft Graph Api's, `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`bijvoorbeeld. | Nee |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Office365Source** | Yes |
+| allowedGroups | Predikaat groep selecteren.  Gebruik deze eigenschap om Maxi maal 10 gebruikers groepen te selecteren voor wie de gegevens worden opgehaald.  Als er geen groepen zijn opgegeven, worden de gegevens voor de hele organisatie geretourneerd. | No |
+| userScopeFilterUri | Wanneer `allowedGroups` de eigenschap niet is opgegeven, kunt u een predicaat expressie gebruiken die wordt toegepast op de hele Tenant om de specifieke rijen te filteren die moeten worden geëxtraheerd uit Office 365. De predicaat indeling moet overeenkomen met de query-indeling van Microsoft Graph Api's, bijvoorbeeld `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'` . | No |
 | dateFilterColumn | De naam van de datum filter kolom. Gebruik deze eigenschap om het tijds bereik te beperken waarvoor Office 365-gegevens worden geëxtraheerd. | Ja als DataSet een of meer DateTime-kolommen bevat. [Hier](https://docs.microsoft.com/graph/data-connect-filtering#filtering) vindt u een lijst met gegevens sets waarvoor dit datetime-filter nodig is. |
 | startTime | Start datum-waarde voor filteren op. | Ja als `dateFilterColumn` is opgegeven |
 | endTime | Eind datum/-waarde waarop moet worden gefilterd. | Ja als `dateFilterColumn` is opgegeven |
-| outputColumns | Matrix van de kolommen die naar Sink moeten worden gekopieerd. | Nee |
+| outputColumns | Matrix van de kolommen die naar Sink moeten worden gekopieerd. | No |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities": [

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66159157"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514644"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Access Control op basis van rollen voor StorSimple
 
@@ -60,7 +60,7 @@ In het volgende voor beeld beginnen we met de ingebouwde functie **lezer** waarm
 
 4. Open het JSON-bestand in Visual Studio. U ziet dat een typische RBAC-rol bestaat uit drie hoofd secties, **acties**, **intacte**en **AssignableScopes**.
 
-    In de sectie **actie** worden alle toegestane bewerkingen voor deze rol weer gegeven. Elke actie wordt toegewezen van een resource provider. Voor een StorSimple-infrastructuur beheerder gebruikt u `Microsoft.StorSimple` de resource provider.
+    In de sectie **actie** worden alle toegestane bewerkingen voor deze rol weer gegeven. Elke actie wordt toegewezen van een resource provider. Voor een StorSimple-infrastructuur beheerder gebruikt u de `Microsoft.StorSimple` resource provider.
 
     Gebruik Power shell om alle resource providers weer te geven die beschikbaar en geregistreerd zijn in uw abonnement.
 

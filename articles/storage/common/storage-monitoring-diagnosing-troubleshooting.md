@@ -3,18 +3,18 @@ title: Azure Storage controleren, diagnosticeren en problemen oplossen | Microso
 description: Gebruik functies zoals opslag analyse, logboek registratie aan client zijde en andere hulpprogram ma's van derden om problemen met Azure Storage te identificeren, vast te stellen en op te lossen.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684653"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513378"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -535,7 +535,7 @@ Logboek vermeldingen:
 | e2d06d78-... |StringToSign = HEAD.............. x-MS-Client-Request-id: e2d06d78-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer. restype: container. |
 | e2d06d78-... |Er wordt gewacht op reactie. |
 | de8b1c3c-... |Synchrone aanvraag wordt gestart naar `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
-| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-BLOB-type: BlockBlob. x-MS-Client-Request-id: de8b1c3c-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
+| de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-BLOB-type: BlockBlob. x-MS-Client-Request-id: de8b1c3c-.... x-MS-date: DIN, 03 jun 2014 10:33:12 GMT. x-MS-version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |Het schrijven van aanvraag gegevens wordt voor bereid. |
 | e2d06d78-... |Er is een uitzonde ring opgetreden tijdens het wachten op een reactie: de externe server heeft een fout geretourneerd: (404) niet gevonden. |
 | e2d06d78-... |Antwoord ontvangen. Status code = 404, aanvraag-ID = 353ae3bc-..., content-MD5 =, ETag =. |
@@ -563,7 +563,7 @@ Als de client toepassing een SAS-sleutel probeert te gebruiken die niet de benod
 
 In de volgende tabel ziet u een voor beeld van een logboek bericht aan de server zijde uit het logboek bestand van de opslag logboek registratie:
 
-| Name | Waarde |
+| Naam | Waarde |
 | --- | --- |
 | Begin tijd van aanvraag | 2014-05-30T06:17:48.4473697 Z |
 | Het type bewerking     | GetBlobProperties            |

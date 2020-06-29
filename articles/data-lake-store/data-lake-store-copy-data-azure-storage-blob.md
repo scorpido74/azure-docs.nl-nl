@@ -3,15 +3,15 @@ title: Gegevens kopiëren van Azure Storage-blobs naar Data Lake Storage Gen1
 description: Gebruik het hulp programma AdlCopy om gegevens te kopiëren van Azure Storage-blobs naar Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1a2ae153d1409fddbaf4939ab4295d7434abd80
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638864"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515691"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Gegevens kopiëren van Azure Storage-blobs naar Azure Data Lake Storage Gen1
 
@@ -60,7 +60,7 @@ De para meters in de syntaxis worden hieronder beschreven:
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>AdlCopy (als zelfstandig) gebruiken om gegevens van een Azure Storage BLOB te kopiëren
 
-1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy`.
+1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy` .
 1. Voer de volgende opdracht uit om een specifieke blob van de bron container naar een Data Lake Storage Gen1-map te kopiëren:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
@@ -96,7 +96,7 @@ Als u kopieert vanuit een Azure Blob Storage-account, wordt u mogelijk beperkt t
 
 U kunt AdlCopy ook gebruiken om gegevens tussen twee Data Lake Storage Gen1 accounts te kopiëren.
 
-1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy`.
+1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy` .
 1. Voer de volgende opdracht uit om een specifiek bestand te kopiëren van de ene Data Lake Storage Gen1-account naar een andere.
 
         AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
@@ -156,7 +156,7 @@ Bij het kopiëren van gegevens in het bereik van terabytes biedt het gebruik van
 
 In deze sectie leert u hoe u AdlCopy kunt gebruiken om gegevens uit een bron te kopiëren (in het onderstaande voor beeld gebruiken we Azure Storage Blob) naar een doel Data Lake Storage Gen1 account met behulp van joker tekens. U kunt bijvoorbeeld de volgende stappen gebruiken om alle bestanden met de extensie. CSV van de bron-BLOB naar de bestemming te kopiëren.
 
-1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy`.
+1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy` .
 1. Voer de volgende opdracht uit om alle bestanden met de extensie *. CSV van een specifieke blob van de bron container naar een Data Lake Storage Gen1 map te kopiëren:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv

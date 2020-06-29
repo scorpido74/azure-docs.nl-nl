@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5a500ef44170f23c8acdf752393389a4af06a798
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 0ae3bb87bfee681aa518a4dfef064677ffa97119
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214176"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513400"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Een beheer programma implementeren met Power shell
 
@@ -40,7 +40,7 @@ De volgende browsers zijn compatibel met het beheer programma:
 Voordat u het beheer programma implementeert, hebt u een Azure Active Directory-gebruiker (Azure AD) nodig voor het maken van een app-registratie en het implementeren van de beheer GEBRUIKERSINTERFACE. Deze gebruiker moet:
 
 - Machtiging voor het maken van resources in uw Azure-abonnement
-- Toestemming voor het maken van een Azure AD-toepassing. Volg deze stappen om te controleren of uw gebruiker over de vereiste machtigingen beschikt door de instructies in de [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)te volgen.
+- Toestemming voor het maken van een Azure AD-toepassing. Volg deze stappen om te controleren of uw gebruiker over de vereiste machtigingen beschikt door de instructies in de [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)te volgen.
 
 Nadat u het beheer programma hebt geïmplementeerd en geconfigureerd, raden we u aan een gebruiker te vragen de beheer GEBRUIKERSINTERFACE te starten om ervoor te zorgen dat alles werkt. De gebruiker die de beheer GEBRUIKERSINTERFACE start, moet beschikken over een roltoewijzing waarmee ze de Windows Virtual Desktop-Tenant kunnen weer geven of bewerken.
 

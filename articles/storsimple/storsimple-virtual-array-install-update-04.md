@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/07/2017
 ms.author: alkohli
-ms.openlocfilehash: b67fcb82bdcc94d7faeceedb7420a869e6578cad
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f68abf6315c1ca344f90dec55bf8cdc813e58823
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61436393"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513681"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>Update 0,4 installeren op de virtuele StorSimple-matrix
 
@@ -48,7 +48,7 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>De update of hotfix downloaden
 
-1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Als dit de eerste keer is dat u de Microsoft Update-catalogus op deze computer gebruikt, klikt u op **Installeren** wanneer u wordt gevraagd of u de invoegtoepassing voor de Microsoft Update-catalogus wilt installeren.
 
@@ -62,9 +62,9 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
 
 5. Klik op **Mandje weergeven**.
 
-6. Klik op **downloaden**. Typ of **blader naar** een lokale locatie waar u de downloads wilt weergeven. De updates worden naar de opgegeven locatie gedownload en in een submap met dezelfde naam als de update geplaatst. De map kan ook worden gekopieerd naar een netwerkshare die bereikbaar is vanaf het apparaat.
+6. Klik op **Downloaden**. Typ of **blader naar** een lokale locatie waar u de downloads wilt weergeven. De updates worden naar de opgegeven locatie gedownload en in een submap met dezelfde naam als de update geplaatst. De map kan ook worden gekopieerd naar een netwerkshare die bereikbaar is vanaf het apparaat.
 
-7. De gekopieerde map opent, ziet u een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64`. Dit bestand wordt gebruikt om de update of hotfix te installeren.
+7. De gekopieerde map opent, ziet u een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64` . Dit bestand wordt gebruikt om de update of hotfix te installeren.
 
 ### <a name="install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
@@ -74,7 +74,7 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
-1. Ga in de lokale web-UI naar **onderhouds** > **Software-update**.
+1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update/update1m.png)
 
@@ -90,7 +90,7 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update/update5m.png)
 
-5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds** > **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10289.0** zijn voor Update 0,4.
+5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10289.0** zijn voor Update 0,4.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10289** en de Azure Portal rapport **10.0.10289.0** voor dezelfde versie.

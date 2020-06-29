@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 64d987ff01e596eefa98e8086788546c465e2d83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195396"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515014"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Een Azure Storage-account naar een andere regio verplaatsen
 
@@ -113,9 +113,9 @@ De sjabloon implementeren met behulp van Azure Portal:
 
 5. Selecteer **Bouw uw eigen sjabloon in de editor**.
 
-6. Selecteer **bestand laden**en volg de instructies voor het laden van het **sjabloon. json** -bestand dat u hebt gedownload in de laatste sectie.
+6. Selecteer **bestand laden**en volg de instructies voor het laden van de **template.jsin** het bestand dat u in de laatste sectie hebt gedownload.
 
-7. Geef in het bestand **Template. json** de naam van het doel-opslag account op door de standaard waarde van de naam van het opslag account in te stellen. In dit voor beeld wordt de standaard waarde van de naam van het opslag account ingesteld op `mytargetaccount` .
+7. Geef in het **template.js** bestand de naam van het doel-opslag account op door de standaard waarde van de naam van het opslag account in te stellen. In dit voor beeld wordt de standaard waarde van de naam van het opslag account ingesteld op `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -143,7 +143,7 @@ De sjabloon implementeren met behulp van Azure Portal:
 
 De sjabloon implementeren met behulp van Power shell:
 
-1. Geef in het bestand **Template. json** de naam van het doel-opslag account op door de standaard waarde van de naam van het opslag account in te stellen. In dit voor beeld wordt de standaard waarde van de naam van het opslag account ingesteld op `mytargetaccount` .
+1. Geef in het **template.js** bestand de naam van het doel-opslag account op door de standaard waarde van de naam van het opslag account in te stellen. In dit voor beeld wordt de standaard waarde van de naam van het opslag account ingesteld op `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ De sjabloon implementeren met behulp van Power shell:
     },
     ``` 
 
-2. Bewerk de eigenschap **Location** in het bestand **Template. json** in de doel regio. In dit voor beeld wordt de doel regio ingesteld op `eastus` .
+2. Bewerk de eigenschap **Location** in de **template.jsop** bestand naar de doel regio. In dit voor beeld wordt de doel regio ingesteld op `eastus` .
 
     ```json
     "resources": [{
@@ -182,11 +182,11 @@ Implementeer de sjabloon om een nieuw opslag account te maken in de doel regio.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Sla het bestand **Template. json** op.
+1. Sla de **template.jsop in** het bestand.
 
 2. Voer de eigenschaps waarden in of Selecteer deze:
 
-- **Subscription**: selecteer een Azure-abonnement.
+- **Abonnement**: Selecteer een Azure-abonnement.
 
 - **Resourcegroep**: selecteer **Nieuwe maken** en geef de resourcegroep een naam.
 

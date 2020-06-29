@@ -3,16 +3,16 @@ title: Extern verbinding maken met uw StorSimple-apparaat
 description: Hierin wordt uitgelegd hoe u uw apparaat configureert voor extern beheer en hoe u verbinding maakt met Windows PowerShell voor StorSimple via HTTP of HTTPS.
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80299010"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514580"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Extern verbinding maken met uw StorSimple 8000 Series-apparaat
 
@@ -97,13 +97,13 @@ Voer de volgende stappen uit op de client om extern beheer in te scha kelen.
 4. In het dialoog venster dat wordt weer gegeven:
    
    1. Typ de gebruikers naam in deze indeling: *device_ip \ssadmin*.
-   2. Typ het beheerders wachtwoord van het apparaat dat is ingesteld toen het apparaat werd geconfigureerd met de installatie wizard. Het standaard wachtwoord is *Wachtwoord1*.
+   2. Typ het beheerders wachtwoord van het apparaat dat is ingesteld toen het apparaat werd geconfigureerd met de installatie wizard. Het standaardapparaatwachtwoord is *Wachtwoord1*.
 5. Start een Windows Power shell-sessie op het apparaat door de volgende opdracht te typen:
    
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
    
    > [!NOTE]
-   > Als u een Windows Power shell-sessie wilt maken voor gebruik met het virtuele StorSimple `–Port` -apparaat, voegt u de para meter toe en geeft u de open bare poort op die u hebt geconfigureerd in externe toegang voor StorSimple-virtueel apparaat.
+   > Als u een Windows Power shell-sessie wilt maken voor gebruik met het virtuele StorSimple-apparaat, voegt `–Port` u de para meter toe en geeft u de open bare poort op die u hebt geconfigureerd in externe toegang voor StorSimple-virtueel apparaat.
    
    
 Op dit moment moet u een actieve externe Windows Power shell-sessie op het apparaat hebben.
@@ -155,7 +155,7 @@ Voer de volgende stappen uit op de seriële console van het apparaat om extern b
     Zorg ervoor dat in het veld **RemoteManagementMode** de **HttpsEnabled**wordt weer gegeven. In de volgende afbeelding ziet u deze instellingen in PuTTy.
    
      ![Seriële HTTPS ingeschakeld](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Kopieer vanaf de uitvoer `Get-HcsSystem`van het serie nummer van het apparaat en sla het op voor later gebruik.
+4. Kopieer vanaf de uitvoer van het `Get-HcsSystem` serie nummer van het apparaat en sla het op voor later gebruik.
    
    > [!NOTE]
    > Het serie nummer wordt toegewezen aan de CN-naam in het certificaat.
@@ -170,7 +170,7 @@ Voer de volgende stappen uit op de seriële console van het apparaat om extern b
 6. Kopieer de informatie in het certificaat van **-----begin certificaat-----** naar **-----eind certificaat-----** in een tekst editor zoals Klad blok en sla het op als een CER-bestand. (Als u de host voorbereidt, kopieert u dit bestand naar de externe host.)
    
    > [!NOTE]
-   > Als u een nieuw certificaat wilt genereren, `Set-HcsRemoteManagementCert` gebruikt u de cmdlet.
+   > Als u een nieuw certificaat wilt genereren, gebruikt u de `Set-HcsRemoteManagementCert` cmdlet.
    
 ### <a name="prepare-the-host-for-remote-management"></a>De host voorbereiden voor extern beheer
 

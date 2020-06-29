@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 1755d6808183887ca428f227272c3923d4bae21f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 3195fd9e367caed352cb4f9881573740399851e4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213840"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513555"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -39,7 +39,7 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 * Quickstarts:
 
     * [Azure-quickstart-sjablonen](https://azure.microsoft.com/documentation/templates/)
-    * [GitHub Azure Quick Start-sjablonen](https://github.com/azure/azure-quickstart-templates)
+    * [Hand leiding voor best practices voor Azure-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     * [Toepassingsdefinitie publiceren](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Servicecatalogus-app implementeren](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
@@ -73,7 +73,7 @@ Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te be
 Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
 * [Azure Opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
-* [Visual Studio code](https://code.visualstudio.com/) met de volgende extensies:
+* [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
     * Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     * Extensie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
@@ -195,7 +195,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Handige koppelingen
 4. Schermopnamen
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -426,10 +426,14 @@ U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of allee
 
 Selecteer **Dit is een privé-abonnement** dat ervoor zorgt dat uw plan privé is en alleen zichtbaar is voor de beperkte doel groep van uw keuze. Zodra het is gepubliceerd als een persoonlijk abonnement, kunt u de doel groep bijwerken of ervoor kiezen om het plan voor iedereen beschikbaar te stellen. Zodra een plan wordt gepubliceerd als zichtbaar voor iedereen, moet het worden weer gegeven voor iedereen. het kan niet opnieuw worden geconfigureerd als een persoonlijk abonnement.
 
+>[!Note]
+>Een persoonlijke of beperkte doel groep wijkt af van de preview-doel groep die u hebt gedefinieerd op het tabblad **Preview** . Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze live op Marketplace wordt gepubliceerd. Hoewel de keuze van de privé doelgroep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) voor validatie doeleinden bekijken.
+
 Als u het abonnement privé maakt, voert u een **Azure-abonnement-id** en de beschrijving in. Elk is een doel groep die toegang heeft tot dit privé-abonnement. Toegang wordt toegewezen met Azure-abonnement-Id's met de optie om een beschrijving op te nemen van elk Azure-abonnements-ID toegewezen. Voeg Maxi maal 10 abonnements-Id's afzonderlijk toe, of 20.000 door een CSV-bestand te importeren. Azure-abonnements-Id's worden weer gegeven als GUID'S en letters moeten kleine letters zijn.
 
 >[!Note]
->Een persoonlijke of beperkte doel groep wijkt af van de preview-doel groep die u hebt gedefinieerd op het tabblad **Preview** . Een preview-doel groep heeft toegang tot uw aanbieding _voordat_ deze live op Marketplace wordt gepubliceerd. Hoewel de keuze van de privé doelgroep alleen van toepassing is op een specifiek abonnement, kan de preview-doel groep alle plannen (privé of niet) voor validatie doeleinden bekijken.
+>Persoonlijke aanbiedingen worden niet ondersteund met Azure-abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider-programma (CSP).
+
 
 ### <a name="technical-configuration"></a>Technische configuratie 
 

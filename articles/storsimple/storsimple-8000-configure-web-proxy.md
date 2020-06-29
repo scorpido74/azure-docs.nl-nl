@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65204255"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514277"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Webproxy configureren voor uw StorSimple-apparaat
 
@@ -86,8 +86,8 @@ Web proxy is nu ingeschakeld. U kunt de stap voor het inschakelen van de [webpro
 Een andere manier om webproxy-instellingen te configureren, is via de Windows PowerShell voor StorSimple-cmdlets. Voer de volgende stappen uit om de webproxy te configureren.
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>Webproxy configureren via cmdlets
-1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1`.
-2. Typ het volgende na de opdrachtprompt:
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1` .
+2. Typ in de opdrachtprompt:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
    
@@ -108,8 +108,8 @@ Webproxy is standaard uitgeschakeld. Nadat u de web proxy-instellingen op uw Sto
 Voer de volgende stappen uit in Windows PowerShell voor StorSimple om webproxy op uw apparaat in te scha kelen:
 
 #### <a name="to-enable-web-proxy"></a>Webproxy inschakelen
-1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1`.
-2. Typ het volgende na de opdrachtprompt:
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1` .
+2. Typ in de opdrachtprompt:
    
     `Enable-HcsWebProxy`
    

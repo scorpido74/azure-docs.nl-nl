@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f90f3ce6d6cd53fcf17f7c735dafe5411303c4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371270"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514509"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Een niet-interactieve verificatie-app voor .NET HDInsight maken
 
@@ -21,9 +21,9 @@ Voer uw Microsoft .NET Azure HDInsight-toepassing uit op basis van de eigen iden
 
 Vanuit uw niet-interactieve .NET-toepassing hebt u het volgende nodig:
 
-* De Tenant-ID van uw Azure-abonnement (ook wel een *Directory-id*genoemd). Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* De client-ID van de Azure Active Directory-toepassing (Azure AD). Zie [een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) en [een toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* De geheime sleutel van de Azure AD-toepassing. Zie [toepassings verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* De Tenant-ID van uw Azure-abonnement (ook wel een *Directory-id*genoemd). Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* De client-ID van de Azure Active Directory-toepassing (Azure AD). Zie [een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) en [een toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
+* De geheime sleutel van de Azure AD-toepassing. Zie [toepassings verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="prerequisites"></a>Vereisten
 

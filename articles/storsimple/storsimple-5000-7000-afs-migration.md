@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d656fd8757580b8ce96acf168e92fc847d400ca
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65150738"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514062"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Gegevens migreren van de StorSimple 5000-7000-serie naar Azure File Sync
 
@@ -74,7 +74,7 @@ Voer de volgende stappen uit om de Windows-bestands share die is geconfigureerd 
     - [Implementeer de opslag synchronisatie service](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
     - [Windows Server bij de opslag synchronisatie service registreren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
     - [Maak een synchronisatie groep en een eind punt in de Cloud](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint). Synchronisatie groepen moeten worden gemaakt voor elke Windows-bestands share die van de host moet worden gemigreerd.
-    - [Een server eindpunt maken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Geef het pad op naar het StorSimple-volume dat de bestands share gegevens bevat. Als het StorSimple-volume bijvoorbeeld station `J`is en uw gegevens zich in `J:/<myafsshare>`bevinden, voegt u dit pad toe als server eindpunt. Zorg ervoor **Tiering** dat de lagen **uitgeschakeld**blijven.
+    - [Een server eindpunt maken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Geef het pad op naar het StorSimple-volume dat de bestands share gegevens bevat. Als het StorSimple-volume bijvoorbeeld station is `J` en uw gegevens zich in bevinden `J:/<myafsshare>` , voegt u dit pad toe als server eindpunt. Zorg ervoor **Tiering** dat de lagen **uitgeschakeld**blijven.
 2.  Wacht tot de synchronisatie van de bestands server is voltooid. Voor elke server in een bepaalde synchronisatie groep moet u het volgende doen:
     - De tijds tempels voor de laatste synchronisatie poging voor zowel uploaden als downloaden zijn recent.
     - De status is groen voor uploaden en downloaden.

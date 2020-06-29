@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: be1f74dcccc654dbdd0a743d1da2da89071045f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cad76677464ba4895141e53ea45b98f55cc2f655
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253132"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515749"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Gegevensoverdracht voor grote gegevenssets met weinig of geen netwerkbandbreedte
  
@@ -23,7 +23,7 @@ Voor een overzicht van alle beschik bare opties voor gegevens overdracht gaat u 
 
 ## <a name="offline-transfer-or-network-transfer"></a>Offline overdracht of netwerk overdracht
 
-Grote gegevens sets impliceren dat u slechts enkele bewaarde gegevens van PBs hebt. U hebt een beperkt aantal netwerk bandbreedte, uw netwerk is traag of is onbetrouwbaar. Daarnaast:
+Grote gegevens sets impliceren dat u slechts enkele bewaarde gegevens van PBs hebt. U hebt een beperkt aantal netwerk bandbreedte, uw netwerk is traag of is onbetrouwbaar. Ook:
 
 - U wordt beperkt door de kosten van de netwerk overdracht van uw Internet serviceproviders (Isp's).
 - Beveiligings-of organisatie beleid staat geen uitgaande verbindingen toe bij het verwerken van gevoelige gegevens.
@@ -50,13 +50,13 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 |    Gegevens grootte                        |    Maxi maal 35 TBs                 |    Maxi maal 80 TBs per apparaat                       |    Tot 800 TB per apparaat               |    Variabele                            |
 |    Gegevenstype                        |    Azure-blobs                  |    Azure-blobs<br>Azure Files                    |    Azure-blobs<br>Azure Files            |    Azure-blobs<br>Azure Files          |
 |    Vorm factor                      |    5 Ssd's per bestelling             |    1 X 50 kg. apparaat op computer formaat per bestelling    |    1 X ~ 500 kg. groot apparaat per order    |    Maxi maal 10 Hdd's/Ssd's per bestelling        |
-|    Eerste instel tijd               |    Laag <br>(15 minuten)            |    Laag tot gemiddeld <br> (<30 minuten)               |    Gemiddeld<br>(1-2 uur)               |    Gemiddeld tot moeilijk<br>variabeletype |
+|    Eerste instel tijd               |    Laag <br>(15 minuten)            |    Laag tot gemiddeld <br> (<30 minuten)               |    Matig<br>(1-2 uur)               |    Gemiddeld tot moeilijk<br>variabeletype |
 |    Gegevens verzenden naar Azure               |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
-|    Gegevens vanuit Azure exporteren           |    Nee                           |    Nee                                            |    Nee                                    |    Ja                                 |
+|    Gegevens vanuit Azure exporteren           |    Nee                           |    Nee                                            |    Nee                                    |    Yes                                 |
 |    Versleuteling                       |    AES 128-bits                  |    AES 256-bits                                   |    AES 256-bits                           |    AES 128-bits                         |
 |    Hardware                         |     Geleverd door micro soft          |    Geleverd door micro soft                            |    Geleverd door micro soft                    |    Klant verstrekt                   |
 |    Netwerkinterface                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
-|    Partnerintegratie              |    Sommige                         |    [Hogesnelheidsnet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hogesnelheidsnet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Sommige                                |
+|    Partnerintegratie              |    Sommige                         |    [Hoog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Hoog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Sommige                                |
 |    Verzenden                         |    Door micro soft beheerd            |    Door micro soft beheerd                             |    Door micro soft beheerd                     |    Door de klant beheerd                    |
 | Gebruiken wanneer gegevens worden verplaatst         |Binnen een Commerce grens|Binnen een Commerce grens|Binnen een Commerce grens|Over geografische grenzen, bijvoorbeeld VS naar EU|
 |    Prijzen                          |    [Prijzen](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Prijzen](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |

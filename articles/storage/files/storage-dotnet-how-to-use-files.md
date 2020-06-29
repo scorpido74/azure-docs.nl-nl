@@ -4,16 +4,16 @@ description: Informatie over het ontwikkelen van .NET-toepassingen en -services 
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301434"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515371"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Ontwikkelen voor Azure Files met .NET
 
@@ -34,22 +34,22 @@ Zie [Wat is Azure files?](storage-files-introduction.md) voor meer informatie ov
 
 ## <a name="understanding-the-net-apis"></a>De .NET-API's
 
-Azure Files biedt twee veelzijdige methoden voor het maken van clienttoepassingen: Server Message Block (SMB) en REST. Binnen .NET hebben de `System.IO` - `WindowsAzure.Storage` en-api's deze methoden abstract.
+Azure Files biedt twee veelzijdige methoden voor het maken van clienttoepassingen: Server Message Block (SMB) en REST. Binnen .NET hebben de- `System.IO` en- `WindowsAzure.Storage` api's deze methoden abstract.
 
 API | Wanneer gebruikt u dit? | Opmerkingen
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Uw toepassing: <ul><li>Moet bestanden lezen/schrijven met behulp van SMB</li><li>Wordt uitgevoerd op een apparaat met toegang tot uw Azure Files-account via poort 445</li><li>Hoeft geen beheerinstellingen van de bestandsshare te beheren</li></ul> | Bestands-I/O dat is geïmplementeerd met Azure Files over SMB, is over het algemeen hetzelfde als I/O met een netwerk bestands share of een lokaal opslag apparaat. Raadpleeg de zelf studie over de [console toepassing](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter) voor een inleiding tot een aantal functies in .net, waaronder bestands-I/O.
-[Micro soft. Azure. storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Uw toepassing: <ul><li>Geen toegang tot Azure Files met behulp van SMB op poort 445 vanwege firewall-of ISP-beperkingen</li><li>Vereist beheerfunctionaliteit, zoals de mogelijkheid tot het instellen van een quotum voor een bestandsshare of het maken van een Shared Access Signature (gedeelde-toegangshandtekening)</li></ul> | In dit artikel wordt het gebruik beschreven `Microsoft.Azure.Storage.File` van voor bestands-I/O met behulp van rest in plaats van SMB en het beheer van de bestands share.
+[Micro soft. Azure. storage. File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | Uw toepassing: <ul><li>Geen toegang tot Azure Files met behulp van SMB op poort 445 vanwege firewall-of ISP-beperkingen</li><li>Vereist beheerfunctionaliteit, zoals de mogelijkheid tot het instellen van een quotum voor een bestandsshare of het maken van een Shared Access Signature (gedeelde-toegangshandtekening)</li></ul> | In dit artikel wordt het gebruik beschreven van `Microsoft.Azure.Storage.File` voor bestands-I/O met behulp van rest in plaats van SMB en het beheer van de bestands share.
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>De consoletoepassing maken en de assembly verkrijgen
 
 Maak in Visual Studio een nieuwe Windows-consoletoepassing. De volgende stappen laten zien hoe u een console toepassing maakt in Visual Studio 2019. De stappen zijn nagenoeg gelijk in andere versies van Visual Studio.
 
-1. Start Visual Studio en selecteer **een nieuw project maken**.
+1. Start Visual Studio en selecteer **Een nieuw project maken**.
 1. Kies in **een nieuw project maken de**optie **console-app (.NET Framework)** voor C# en selecteer vervolgens **volgende**.
 1. In **uw nieuwe project configureren**voert u een naam in voor de app en selecteert u **maken**.
 
-U kunt alle code voorbeelden in deze zelf studie toevoegen aan de `Main()` methode van het `Program.cs` bestand van de console toepassing.
+U kunt alle code voorbeelden in deze zelf studie toevoegen aan de `Main()` methode van het bestand van de console toepassing `Program.cs` .
 
 U kunt de Azure Storage-client bibliotheek in elk type .NET-toepassing gebruiken. Deze typen zijn onder andere een Azure-Cloud service of web-app, en desktop-en mobiele toepassingen. In deze gids gebruiken we een consoletoepassing voor de eenvoud.
 
@@ -80,11 +80,11 @@ Met NuGet kunt u beide pakketten verkrijgen. Volg deze stappen:
 
    * **Micro soft. Azure. storage. common**
    * **Micro soft. Azure. storage. File**
-   * **Micro soft. Azure. ConfigurationManager**
+   * **Microsoft.Azure.ConfigurationManager**
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Sla de referenties van uw opslag account op in het bestand app. config
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Sla de referenties van uw opslag account op in het App.config bestand
 
-Sla vervolgens uw referenties op in het bestand van `App.config` het project. In **Solution Explorer**dubbelklikt u op `App.config` het bestand en bewerkt u dit zoals in het volgende voor beeld. Vervang `myaccount` door de naam van uw opslag `mykey` account en met de sleutel van uw opslag account.
+Sla vervolgens uw referenties op in het bestand van het project `App.config` . In **Solution Explorer**dubbelklikt u op `App.config` het bestand en bewerkt u dit zoals in het volgende voor beeld. Vervang door `myaccount` de naam van uw opslag account en `mykey` met de sleutel van uw opslag account.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -428,14 +428,14 @@ U kunt de metrische gegevens voor Azure Files inschakelen vanuit de [Azure Porta
 
 In het volgende codevoorbeeld ziet u hoe u de Storage-clientbibliotheek voor .NET gebruikt om metrische gegevens in te schakelen voor Azure Files.
 
-Voeg eerst de volgende `using` -instructies toe aan `Program.cs` het bestand, samen met de aanwijzingen die u hierboven hebt toegevoegd:
+Voeg eerst de volgende- `using` instructies toe aan het `Program.cs` bestand, samen met de aanwijzingen die u hierboven hebt toegevoegd:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Hoewel Azure-blobs, Azure-tabellen en Azure-wacht rijen `ServiceProperties` gebruikmaken van het `Microsoft.Azure.Storage.Shared.Protocol` gedeelde type in de naam ruimte, Azure files gebruikt `FileServiceProperties` een eigen type `Microsoft.Azure.Storage.File.Protocol` , het type in de naam ruimte. U moet vanuit uw code naar beide naam ruimten verwijzen om de volgende code te kunnen compileren.
+Hoewel Azure-blobs, Azure-tabellen en Azure-wacht rijen gebruikmaken van het gedeelde `ServiceProperties` type in de `Microsoft.Azure.Storage.Shared.Protocol` naam ruimte, Azure files gebruikt een eigen type, het `FileServiceProperties` type in de `Microsoft.Azure.Storage.File.Protocol` naam ruimte. U moet vanuit uw code naar beide naam ruimten verwijzen om de volgende code te kunnen compileren.
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77471819"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514658"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Opties voor het migreren van gegevens uit de collectie StorSimple 5000-7000 
 
@@ -69,7 +69,7 @@ Nasuni heeft de ervaring om uw migratie eenvoudig te maken: vandaag kunt u aan d
 
 Talon maakt het eenvoudig voor StorSimple 5000-7000-klanten om de voor delen te blijven benutten die ze aanzienlijk hebben gewaardeerd in het StorSimple-platform (een kleine on-site footprint die wordt ondersteund door onbeperkte Cloud bronnen) met nog meer functies.  Met de Talon FAST-oplossing kunnen klanten hun gegevens in azure migreren en inperken, terwijl ze nu een zelfs kleinere op de werkloze manier bewerkte footprint hebben en voor delen zoals globale bestands vergrendeling, globale naam ruimte en samen werking op meerdere locaties toevoegen.  Talon is een toonaangevende Azure-ecosysteem oplossing, die samenwerkt met wereld wijde klanten om hun on-premises Bestands server werkbelastingen te migreren naar een geconsolideerd, op Azure gebaseerde footprint zonder in te leveren op de werk stroom of ervaring van de gebruiker.  
 
-Meer informatie over hoe u kunt samen werken met een onderneming in de https://www.talonstorage.com/alliances/microsoft-storsimpleCloud op.
+Meer informatie over hoe u kunt samen werken met een onderneming in de Cloud op https://www.talonstorage.com/alliances/microsoft-storsimple .
 
 
 ## <a name="migration---frequently-asked-questions"></a>Migratie: veelgestelde vragen

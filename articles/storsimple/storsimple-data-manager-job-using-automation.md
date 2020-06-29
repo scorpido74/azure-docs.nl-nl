@@ -3,15 +3,15 @@ title: Azure Automation gebruiken om een taak in StorSimple Data Manager te star
 description: Meer informatie over het gebruik van Azure Automation voor het activeren van StorSimple Data Manager taken
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273997"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514934"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation gebruiken om een taak te activeren
 
@@ -28,8 +28,8 @@ Voordat u begint, moet u ervoor zorgen dat:
 
 *   Azure PowerShell geïnstalleerd op de client computer. [Down load Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Een correct geconfigureerde taak definitie in een StorSimple Data Manager-service binnen een resource groep.
-*   Down [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) load het bestand uit de GitHub-opslag plaats. 
-*   Down [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) load script uit de GitHub-opslag plaats.
+*   Down load [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) het bestand uit de GitHub-opslag plaats. 
+*   Down load [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) script uit de GitHub-opslag plaats.
 
 ## <a name="step-by-step-procedure"></a>Stapsgewijze procedure
 
@@ -50,7 +50,7 @@ Voordat u begint, moet u ervoor zorgen dat:
    3. Maak een nieuwe resource groep of Selecteer deze uit een bestaande resource groep.
    4. Selecteer een **locatie**.
    5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
-   6. Als u een koppeling voor snelle toegang wilt krijgen op het dash board, controleert **u het vastmaken aan dash board**. Klik op **maken**.
+   6. Als u een koppeling voor snelle toegang wilt krijgen op het dash board, controleert **u het vastmaken aan dash board**. Klik op **Create**.
 
       ![Run as Automation-account maken](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -86,7 +86,7 @@ Voer de volgende stappen uit om het runbook te importeren, te publiceren en uit 
 
 2. Klik in **Runbook toevoegen**op **een bestaand runbook importeren**.
 
-3. Ga naar het Azure PowerShell script bestand `Trigger-DataTransformation-Job.ps1` voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **maken**.
+3. Ga naar het Azure PowerShell script bestand `Trigger-DataTransformation-Job.ps1` voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Create**.
 
     ![Runbook 2 toevoegen](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

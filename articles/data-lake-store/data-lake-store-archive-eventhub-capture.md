@@ -3,15 +3,15 @@ title: Gegevens vastleggen van Event Hubs naar Azure Data Lake Storage Gen1
 description: Gebruik Azure Data Lake Storage Gen1 om gegevens vast te leggen die worden ontvangen door Azure Event Hubs.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690673"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515770"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Azure Data Lake Storage Gen1 gebruiken om gegevens vast te leggen van Event Hubs
 
@@ -44,7 +44,7 @@ In deze sectie maakt u een map in het account waar u de gegevens van Event Hubs 
 
     ![Machtigingen toewijzen voor de Data Lake Storage Gen1 root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
 
-    b. Klik onder **toegang**op **toevoegen**, klik op **gebruiker of groep selecteren**en zoek vervolgens naar `Microsoft.EventHubs`. 
+    b. Klik onder **toegang**op **toevoegen**, klik op **gebruiker of groep selecteren**en zoek vervolgens naar `Microsoft.EventHubs` . 
 
     ![Machtigingen toewijzen voor de Data Lake Storage Gen1 root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
     
@@ -53,7 +53,7 @@ In deze sectie maakt u een map in het account waar u de gegevens van Event Hubs 
     c. Klik onder **machtigingen toewijzen**op **machtigingen selecteren**. Stel **machtigingen** in om uit te **voeren**. Stel **toevoegen in** op **deze map en alle onderliggende items**. Stel **toevoegen als** in op **een toegangs machtigings vermelding en een standaard machtigings vermelding**.
 
     > [!IMPORTANT]
-    > Bij het maken van een nieuwe maphiërarchie voor het vastleggen van gegevens die zijn ontvangen door Azure Event Hubs, is dit een eenvoudige manier om toegang tot de doelmap te garanderen.  Het toevoegen van machtigingen aan alle onderliggende mappen van een map op het hoogste niveau met veel onderliggende bestanden en mappen kan veel tijd in beslag nemen.  Als uw hoofdmap een groot aantal bestanden en mappen bevat, is het wellicht sneller om **uitvoerings** machtigingen toe te voegen `Microsoft.EventHubs` voor afzonderlijke mappen in het pad naar de uiteindelijke doelmap. 
+    > Bij het maken van een nieuwe maphiërarchie voor het vastleggen van gegevens die zijn ontvangen door Azure Event Hubs, is dit een eenvoudige manier om toegang tot de doelmap te garanderen.  Het toevoegen van machtigingen aan alle onderliggende mappen van een map op het hoogste niveau met veel onderliggende bestanden en mappen kan veel tijd in beslag nemen.  Als uw hoofdmap een groot aantal bestanden en mappen bevat, is het wellicht sneller om **uitvoerings** machtigingen toe te voegen voor afzonderlijke `Microsoft.EventHubs` mappen in het pad naar de uiteindelijke doelmap. 
 
     ![Machtigingen toewijzen voor de Data Lake Storage Gen1 root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
 
@@ -65,7 +65,7 @@ In deze sectie maakt u een map in het account waar u de gegevens van Event Hubs 
 
     ![Machtigingen toewijzen voor de map Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
 
-    b. Klik onder **toegang**op **toevoegen**, klik op **gebruiker of groep selecteren**en zoek vervolgens naar `Microsoft.EventHubs`. 
+    b. Klik onder **toegang**op **toevoegen**, klik op **gebruiker of groep selecteren**en zoek vervolgens naar `Microsoft.EventHubs` . 
 
     ![Machtigingen toewijzen voor de map Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
     
@@ -83,11 +83,11 @@ In deze sectie maakt u een event hub binnen een Event Hubs naam ruimte. U kunt o
 
 1. Klik in het deel venster **overzicht** van de naam ruimte Event hubs op **+ Event hub**.
 
-    ![Event Hub maken](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Event Hub maken")
+    ![Event hub maken](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Event Hub maken")
 
 1. Geef de volgende waarden op om Event Hubs te configureren voor het vastleggen van gegevens in Data Lake Storage Gen1.
 
-    ![Event Hub maken](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Event Hub maken")
+    ![Event hub maken](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Event Hub maken")
 
     a. Geef een naam op voor de Event hub.
     
@@ -99,7 +99,7 @@ In deze sectie maakt u een event hub binnen een Event Hubs naam ruimte. U kunt o
 
     e. Wijzig de voor **beelden van bestands namen** voor het vastleggen in de standaard waarde. Met deze optie bepaalt u de mapstructuur die wordt gemaakt in de map Capture.
 
-    f. Klik op **Maken**.
+    f. Klik op **Create**.
 
 ## <a name="test-the-setup"></a>De installatie testen
 
@@ -117,6 +117,6 @@ U kunt de oplossing nu testen door gegevens te verzenden naar de Azure Event hub
 Zodra de gegevens zich in Data Lake Storage Gen1 bevindt, kunt u analytische taken uitvoeren om de gegevens te verwerken en te beheersen. Zie [USQL Avro voor beeld](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) over hoe u dit doet met Azure data Lake Analytics.
   
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Gegevens beveiligen in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Gegevens kopiëren van Azure Storage-blobs naar Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

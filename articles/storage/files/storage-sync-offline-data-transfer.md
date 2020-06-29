@@ -3,16 +3,16 @@ title: Gegevens migreren naar Azure File Sync met Azure Data Box
 description: Migreer bulk gegevens op een manier die compatibel is met Azure File Sync.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656752"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514389"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Bulkgegevens migreren in Azure File Sync met Azure DataBox
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
@@ -51,7 +51,7 @@ Hier volgt een beschrijving van het instellen van Azure File Sync op een manier 
 
 | Stap | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw data Box](../../databox/data-box-deploy-ordered.md). De Data Box-serie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) die aan uw behoeften voldoen. Wanneer u uw data Box ontvangt, volgt u de bijbehorende [documentatie om uw gegevens te kopiëren](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad op de data Box: * \\<DeviceIPAddres\>\<StorageAccountName_AzFile\>\<share naam\>*. Hier is *sharename* de naam van de staging-share. Verzend de Data Box terug naar Azure. |
+| ![Stap 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestel uw data Box](../../databox/data-box-deploy-ordered.md). De Data Box-serie biedt [verschillende producten](https://azure.microsoft.com/services/storage/databox/data) die aan uw behoeften voldoen. Wanneer u uw Data Box ontvangt, volgt u de bijbehorende [documentatie om uw gegevens te kopiëren](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) naar dit UNC-pad op de Data Box: * \\ \> \<StorageAccountName_AzFile\> \<ShareName\><DeviceIPAddres*. Hier is *sharename* de naam van de staging-share. Verzend de Data Box terug naar Azure. |
 | ![Stap 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Wacht tot uw bestanden worden weer gegeven in de Azure-bestands shares die u hebt gekozen als tijdelijke share voor tijdelijke bestanden. *Schakel synchronisatie van deze shares niet in.* |
 | ![Stap 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Maak een nieuwe lege share voor elke bestands share die Data Box voor u hebt gemaakt. Deze nieuwe share moet zich in hetzelfde opslag account bezien als de Data Box share. [Een nieuwe Azure-bestands share maken](storage-how-to-create-file-share.md).</li><li>[Maak een synchronisatie groep](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) in een opslag synchronisatie service. Verwijs naar een lege share als een eind punt in de Cloud. Herhaal deze stap voor elke Data Box bestands share. [Azure file sync instellen](storage-sync-files-deployment-guide.md).</li></ul> |
 | ![Stap 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Voeg uw live server-map als een server eindpunt toe](storage-sync-files-deployment-guide.md#create-a-server-endpoint). Geef in het proces op dat u de bestanden naar Azure hebt verplaatst en Raadpleeg de tijdelijke shares. U kunt Cloud lagen in-of uitschakelen als dat nodig is. Tijdens het maken van een server eindpunt op uw live server, verwijst u naar de faserings share. Selecteer op de Blade **Server eindpunt toevoegen** onder **offline gegevensoverdracht**de optie **ingeschakeld**en selecteer vervolgens de faserings share die zich in hetzelfde opslag account als het Cloud eindpunt moet beslaan. Hier wordt de lijst met beschik bare shares gefilterd op basis van het opslag account en de shares die nog niet worden gesynchroniseerd. In de scherm opname die volgt op deze tabel ziet u hoe u kunt verwijzen naar de DataBox-share tijdens het maken van de server-eind punten in de Azure Portal |

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 02b85cb90948f35cb6f6c855cfbe81fd58301de0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62116888"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513595"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Update 0,6 installeren op de virtuele StorSimple-matrix
 
@@ -30,6 +30,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om update 0,6 te inst
 Voordat u een update toepast, raden we u aan om eerst de volumes of shares op de host offline te zetten en vervolgens op het apparaat. Dit minimaliseert de kans op beschadigde gegevens. Nadat de volumes of shares offline zijn, moet u ook een hand matige back-up van het apparaat maken.
 
 > [!IMPORTANT]
+>
 > - Update 0,6 komt overeen met de **10.0.10293.0** -software versie op het apparaat. Voor informatie over wat er nieuw is in deze update gaat u naar [release opmerkingen voor update 0,6](storsimple-virtual-array-update-06-release-notes.md).
 >
 > - Als u update 0,2 of hoger uitvoert, wordt u aangeraden de updates te installeren via de Azure Portal. Als u update 0,1 of GA software versies uitvoert, moet u de hotfix-methode gebruiken via de lokale web-UI om update 0,6 te installeren.
@@ -57,7 +58,7 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>De update of hotfix downloaden
 
-1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Als u de Microsoft Update catalogus voor de eerste keer op deze computer gebruikt, klikt u op **installeren** wanneer u wordt gevraagd de invoeg toepassing Microsoft Update catalogus te installeren.
 
@@ -67,7 +68,7 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
    
     ![Catalogus doorzoeken](./media/storsimple-virtual-array-install-update-06/download1.png)
 
-4. Klik op **downloaden**.
+4. Klik op **Downloaden**.
 
 5. Er moeten vijf bestanden worden gedownload. Down load elk van deze bestanden naar een map. De map kan ook worden gekopieerd naar een netwerkshare die bereikbaar is vanaf het apparaat.
 
@@ -75,15 +76,15 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
     ![Bestanden in het pakket](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
     U ziet:
-    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64`. Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
-    - Een Genève Monitoring Agent-pakket `GenevaMonitoringAgentPackageInstaller`bestand. Dit bestand wordt gebruikt voor het bijwerken van de MDS-agent (bewaking en diagnose service). Dubbel klik op het CAB-bestand. Er wordt een _. msi_ -bestand weer gegeven. Selecteer het bestand, klik met de rechter muisknop en **pak** het bestand uit. U gebruikt het _. msi_ -bestand om de agent bij te werken.
+    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64` . Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
+    - Een Genève Monitoring Agent-pakket bestand `GenevaMonitoringAgentPackageInstaller` . Dit bestand wordt gebruikt voor het bijwerken van de MDS-agent (bewaking en diagnose service). Dubbel klik op het CAB-bestand. Er wordt een _. msi_ -bestand weer gegeven. Selecteer het bestand, klik met de rechter muisknop en **pak** het bestand uit. U gebruikt het _. msi_ -bestand om de agent bij te werken.
 
         ![MDS-agent update bestand uitpakken](./media/storsimple-virtual-array-install-update-06/extract-geneva-monitoring-agent-installer.png)
 
         > [!IMPORTANT]
         > U hoeft de MDS-agent niet bij te werken als u StorSimple Update 0,5 (0.0.10293.0) uitvoert.
 
-    - Drie bestanden die essentiële Windows-beveiligings updates, `windows8.1-kb4012213-x64`,`windows8.1-kb3205400-x64`, en `windows8.1-kb4019213-x64`bevatten.
+    - Drie bestanden die essentiële Windows-beveiligings updates, `windows8.1-kb4012213-x64` , `windows8.1-kb3205400-x64` , en bevatten `windows8.1-kb4019213-x64` .
 
 
 ### <a name="install-the-update-or-the-hotfix"></a>De update of hotfix installeren
@@ -94,7 +95,7 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
-1. Ga in de lokale web-UI naar **onderhouds** > **Software-update**. Noteer de software versie die u uitvoert. Als u **10.0.10290.0**uitvoert, hoeft u de MDS-agent in stap 6 niet bij te werken.
+1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**. Noteer de software versie die u uitvoert. Als u **10.0.10290.0**uitvoert, hoeft u de MDS-agent in stap 6 niet bij te werken.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -110,7 +111,7 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds** > **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10293** zijn voor Update 0,6.
+5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10293** zijn voor Update 0,6.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10293** en de Azure Portal rapport **10.0.10293.0** voor dezelfde versie.
@@ -119,9 +120,9 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
 
 6. Sla deze stap over als u StorSimple Virtual array Update 0,5 (**10.0.10290.0**) uitvoert voordat u deze update hebt toegepast. U hebt een opmerking ontvangen over de software versie in stap 1 voordat u begon met het bijwerken. Als u update 0,5 hebt uitgevoerd, is de MDS-agent al up-to-date.
 
-    Als u een software versie uitvoert voordat u 0,5 bijwerkt, is de volgende stap voor u de MDS-agent bij te werken. Ga op de pagina **Software-update** naar het pad naar het **update bestand** en blader `GenevaMonitoringAgentPackageInstaller.msi` naar het bestand. Herhaal stap 2-4. Nadat de virtuele matrix opnieuw is opgestart, meldt u zich aan bij de lokale web-UI.
+    Als u een software versie uitvoert voordat u 0,5 bijwerkt, is de volgende stap voor u de MDS-agent bij te werken. Ga op de pagina **Software-update** naar het pad naar het **update bestand** en blader naar het `GenevaMonitoringAgentPackageInstaller.msi` bestand. Herhaal stap 2-4. Nadat de virtuele matrix opnieuw is opgestart, meldt u zich aan bij de lokale web-UI.
 
-7. Herhaal stap 2-4 voor het installeren van de Windows-beveiligings `windows8.1-kb4012213-x64`oplossingen`windows8.1-kb3205400-x64`met behulp van bestanden, en `windows8.1-kb4019213-x64`. De virtuele matrix wordt na elke installatie opnieuw opgestart en u moet zich aanmelden bij de lokale webgebruikersinterface.
+7. Herhaal stap 2-4 voor het installeren van de Windows-beveiligings oplossingen met behulp van bestanden `windows8.1-kb4012213-x64` , `windows8.1-kb3205400-x64` en `windows8.1-kb4019213-x64` . De virtuele matrix wordt na elke installatie opnieuw opgestart en u moet zich aanmelden bij de lokale webgebruikersinterface.
 
 ## <a name="next-steps"></a>Volgende stappen
 

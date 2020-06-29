@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69b6c4e81446cf6a922fe9a1d0da8452e5ec164d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60321735"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513197"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Een hardware-onderdeel in uw StorSimple 8000 Series-apparaat vervangen
 
@@ -51,12 +51,12 @@ Raadpleeg de veiligheids informatie over uw apparaat en veiligheids pictogrammen
 
 Houd rekening met de volgende informatie voordat u een onderdeel probeert te vervangen.
 
-![Waarschuwing pictogram](./media/storsimple-hardware-component-replacement/Warning.png) ![waarschuwing voor elektrisch](./media/storsimple-hardware-component-replacement/Electric.png) schokken **!**
+![Waarschuwing pictogram Waarschuwing voor ](./media/storsimple-hardware-component-replacement/Warning.png) ![ elektrisch schokken ](./media/storsimple-hardware-component-replacement/Electric.png) **!**
 
 * U werkt goed door middel van een elektrostatische afvoer of antistatice passe-out bij het afhandelen van modules en onderdelen van uw StorSimple-apparaat.
 * Geen circuits aanraken. Gebruik de opgegeven ingangen en hand leidingen bij het afhandelen van onderdelen die mogelijk een circuit hebben belicht.
 
-![Waarschuwings pictogram meldings pictogram **:** ](./media/storsimple-hardware-component-replacement/NoticeIcon.png) ](./media/storsimple-hardware-component-replacement/Warning.png) ![
+![Waarschuwings pictogram meldings ](./media/storsimple-hardware-component-replacement/Warning.png) ![ pictogram ](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **:**
 
 Wanneer u een module vervangt, **laat u nooit een lege Bay achter de behuizing**. Verkrijg een vervangings-of lege module voordat u het probleem onderdeel verwijdert.
 
@@ -67,11 +67,11 @@ De belangrijkste hardwareonderdelen op het apparaat worden in de volgende tabell
 
 | Onderdelen | # Aanwezig | Module voor invoeg toepassingen? | Vervangings procedure |
 |:--- |:--- |:--- |:--- |
-| Chassis |1 |Nee |[Het chassis op uw StorSimple-apparaat vervangen](storsimple-8000-chassis-replacement.md) |
-| Primaire controllers |2 |Ja |[Een controller module op uw StorSimple-apparaat vervangen](storsimple-8000-controller-replacement.md) |
-| 764We voeding en koeling modules (PCMs) |2 |Ja |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
-| Back-upbatterij |2 |Ja |[Noodaccumodule van StorSimple-apparaat vervangen](storsimple-8000-battery-replacement.md) |
-| Schijfstations |12 |Ja |[Een schijf station op uw StorSimple-apparaat vervangen](storsimple-8000-disk-drive-replacement.md) |
+| Chassis |1 |No |[Het chassis op uw StorSimple-apparaat vervangen](storsimple-8000-chassis-replacement.md) |
+| Primaire controllers |2 |Yes |[Een controller module op uw StorSimple-apparaat vervangen](storsimple-8000-controller-replacement.md) |
+| 764We voeding en koeling modules (PCMs) |2 |Yes |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
+| Back-upbatterij |2 |Yes |[Noodaccumodule van StorSimple-apparaat vervangen](storsimple-8000-battery-replacement.md) |
+| Schijfstations |12 |Yes |[Een schijf station op uw StorSimple-apparaat vervangen](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabel 1** Hardwareonderdelen in de primaire behuizing
 
@@ -79,10 +79,10 @@ De primaire behuizing en de EBOD-behuizing verschillen in hun I/O-modules. Daarn
 
 | Onderdelen | # Aanwezig | Module voor invoeg toepassingen? | Vervangings procedure |
 |:--- |:--- |:--- |:--- |
-| Chassis |1 |Nee |[Het chassis op uw StorSimple-apparaat vervangen](storsimple-8000-chassis-replacement.md) |
-| EBOD-controllers |2 |Ja |[Een EBOD-controller op uw StorSimple-apparaat vervangen](storsimple-8000-ebod-controller-replacement.md) |
-| 580We voeding en koeling modules (PCMs) |2 |Ja |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
-| Schijfstations |12 |Ja |[Een schijf station op uw StorSimple-apparaat vervangen](storsimple-8000-disk-drive-replacement.md) |
+| Chassis |1 |No |[Het chassis op uw StorSimple-apparaat vervangen](storsimple-8000-chassis-replacement.md) |
+| EBOD-controllers |2 |Yes |[Een EBOD-controller op uw StorSimple-apparaat vervangen](storsimple-8000-ebod-controller-replacement.md) |
+| 580We voeding en koeling modules (PCMs) |2 |Yes |[Stroom- en koelmodule van StorSimple-apparaat vervangen](storsimple-8000-power-cooling-module-replacement.md) |
+| Schijfstations |12 |Yes |[Een schijf station op uw StorSimple-apparaat vervangen](storsimple-8000-disk-drive-replacement.md) |
 
 **Tabel 2** Hardwareonderdelen in de EBOD-behuizing
 

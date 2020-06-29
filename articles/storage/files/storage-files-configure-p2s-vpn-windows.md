@@ -3,19 +3,19 @@ title: Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azu
 description: Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azure Files
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da49d1c94584393bfef066d61c1caf360b249c3b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81273474"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515325"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Een punt-naar-site-VPN (P2S) in Windows configureren voor gebruik met Azure Files
-U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een P2S VPN-verbinding met Azure Files wilt gebruiken, moet er een P2S VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
+U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een punt-naar-site-VPN-verbinding met Azure Files wilt gebruiken, moet er een punt-naar-site-VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
 
 We raden u ten zeerste aan om [netwerk overwegingen te lezen voor directe toegang tot de Azure-bestands share](storage-files-networking-overview.md) voordat u doorgaat met deze procedure voor een volledige bespreking van de beschik bare netwerk opties voor Azure files.
 
@@ -33,7 +33,7 @@ Als u toegang wilt krijgen tot uw Azure-bestands share en andere Azure-resources
 
 Met de volgende Power Shell maakt u een virtueel Azure-netwerk met drie subnetten: één voor het service-eind punt van uw opslag account, een voor het privé-eind punt van uw opslag account, dat is vereist voor toegang tot het opslag account op locatie zonder aangepaste route ring te maken voor het open bare IP-adres van het opslag account dat kan worden gewijzigd, en één voor de virtuele netwerk 
 
-Vergeet niet om `<region>`, `<resource-group>`en `<desired-vnet-name>` met de juiste waarden voor uw omgeving te vervangen.
+Vergeet niet om `<region>` , `<resource-group>` en `<desired-vnet-name>` met de juiste waarden voor uw omgeving te vervangen.
 
 ```PowerShell
 $region = "<region>"
@@ -131,7 +131,7 @@ De gateway van het virtuele Azure-netwerk is de service die door uw on-premises 
 Vergeet niet door `<desired-vpn-name-here>` de gewenste naam voor deze resources te vervangen.
 
 > [!Note]  
-> Het implementeren van de virtuele Azure-netwerk gateway kan Maxi maal 45 minuten duren. Terwijl deze resource wordt geïmplementeerd, wordt door dit Power shell-script geblokkeerd om de implementatie te volt ooien. Dit is normaal gedrag.
+> Het implementeren van de virtuele Azure-netwerk gateway kan Maxi maal 45 minuten duren. Terwijl deze resource wordt geïmplementeerd, wordt door dit Power shell-script geblokkeerd om de implementatie te volt ooien. Dit is normaal.
 
 ```PowerShell
 $vpnName = "<desired-vpn-name-here>" 
@@ -214,7 +214,7 @@ Export-PfxCertificate `
 ## <a name="configure-the-vpn-client"></a>De VPN-client configureren
 De gateway van het virtuele netwerk van Azure maakt een downloadbaar pakket met configuratie bestanden die nodig zijn om de VPN-verbinding op uw lokale Windows-computer te initialiseren. De VPN-verbinding wordt geconfigureerd met de functie [altijd op VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) van Windows 10/Windows Server 2016 +. Dit pakket bevat ook uitvoer bare pakketten die de verouderde Windows VPN-client configureren, als dat nodig is. In deze hand leiding wordt altijd op VPN gebruikt in plaats van de verouderde Windows VPN-client als de always on VPN-client toestaan dat eind gebruikers verbinding maken met of de verbinding verbreken met de Azure VPN zonder beheerders machtigingen voor hun computer. 
 
-Met het volgende script wordt het client certificaat geïnstalleerd dat vereist is voor verificatie van de virtuele netwerk gateway, het downloaden en installeren van het VPN-pakket. Vergeet niet om `<computer1>` de `<computer2>` gewenste computers te vervangen. U kunt dit script uitvoeren op net zoveel computers als gewenst door meer Power shell-sessies toe te `$sessions` voegen aan de matrix. Het account dat u gebruikt, moet een beheerder zijn op elk van deze machines. Als een van deze computers de lokale computer is waarop u het script uitvoert, moet u het script uitvoeren vanuit een Power shell-sessie met verhoogde bevoegdheden. 
+Met het volgende script wordt het client certificaat geïnstalleerd dat vereist is voor verificatie van de virtuele netwerk gateway, het downloaden en installeren van het VPN-pakket. Vergeet niet om `<computer1>` `<computer2>` de gewenste computers te vervangen. U kunt dit script uitvoeren op net zoveel computers als gewenst door meer Power shell-sessies toe te voegen aan de `$sessions` matrix. Het account dat u gebruikt, moet een beheerder zijn op elk van deze machines. Als een van deze computers de lokale computer is waarop u het script uitvoert, moet u het script uitvoeren vanuit een Power shell-sessie met verhoogde bevoegdheden. 
 
 ```PowerShell
 $sessions = [System.Management.Automation.Runspaces.PSSession[]]@()

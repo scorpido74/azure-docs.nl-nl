@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: caa6a26b-b7ba-4a05-b092-1a79450225cf
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633869"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513999"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Gebruik de StorSimple-apparaatbeheerfunctie om volumes te beheren in de virtuele StorSimple-matrix
 
@@ -39,7 +39,7 @@ StorSimple volumes kunnen zijn:
 ### <a name="provisioned-capacity"></a>Ingerichte capaciteit
 Raadpleeg de volgende tabel voor de maximale ingerichte capaciteit voor elk volume type.
 
-| **Limiet-id**                                       | **Limiet**     |
+| **Limiet-id**                                       | **Ondergrens**     |
 |------------------------------------------------------------|---------------|
 | Minimale grootte van een gelaagd volume                            | 500 GB        |
 | Maximale grootte van een gelaagd volume                            | 5 TB          |

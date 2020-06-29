@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60363247"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514333"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Multipath I/O voor uw StorSimple-apparaat configureren
 
@@ -66,7 +66,7 @@ Voer de volgende procedure uit om deze functie te installeren op uw Windows Serv
    5. Selecteer op de pagina **onderdelen selecteren** de optie **Multipath I/O**en klik op **volgende**.
    
        ![Wizard functies en onderdelen toevoegen 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. Bevestig de selectie op de pagina **installatie selecties bevestigen** en selecteer vervolgens **de doel server automatisch opnieuw opstarten indien nodig**, zoals hieronder wordt weer gegeven. Klik op **installeren**.
+   6. Bevestig de selectie op de pagina **installatie selecties bevestigen** en selecteer vervolgens **de doel server automatisch opnieuw opstarten indien nodig**, zoals hieronder wordt weer gegeven. Klik op **Installeren**.
    
        ![Wizard functies en onderdelen toevoegen 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. U ontvangt een melding wanneer de installatie is voltooid. Klik op **Sluiten** om de wizard te sluiten.

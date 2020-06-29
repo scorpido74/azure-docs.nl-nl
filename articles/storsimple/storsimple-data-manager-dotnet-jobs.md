@@ -3,15 +3,15 @@ title: .NET-SDK gebruiken voor Microsoft Azure StorSimple Data Manager taken
 description: Meer informatie over het gebruik van .NET SDK voor het starten van StorSimple Data Manager-taken
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270730"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514899"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>De .NET SDK gebruiken om de gegevens transformatie te initiëren
 
@@ -43,7 +43,7 @@ Voordat u begint, moet u ervoor zorgen dat:
 Voer de volgende stappen uit om .NET te gebruiken om een gegevens transformatie taak te starten.
 
 1. Voer de volgende stappen uit om de configuratie parameters op te halen:
-    1. Down load `Get-ConfigurationParams.ps1` de van het github-opslagplaats `C:\DataTransformation` script op locatie.
+    1. Down load de `Get-ConfigurationParams.ps1` van het github-opslagplaats script op `C:\DataTransformation` locatie.
     1. Voer het `Get-ConfigurationParams.ps1` script uit vanuit de GitHub-opslag plaats. Typ de volgende opdracht:
 
         ```
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om .NET te gebruiken om een gegevens transformatie 
     2. Selecteer **geïnstalleerde > sjablonen > Visual C# >-console toepassing**.
     3. Voer **DataTransformationApp** in als **naam**.
     4. Selecteer **C:\DataTransformation** voor de **locatie**.
-    6. Klik op **OK** om het project te maken.
+    6. Klik op **OK** om het project aan te maken.
 
         ![Een project maken 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 

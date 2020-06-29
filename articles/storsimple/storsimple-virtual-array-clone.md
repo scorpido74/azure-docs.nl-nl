@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580859"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513645"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen vanuit een back-up van uw virtuele StorSimple-matrix
 
@@ -96,7 +96,7 @@ Als u vanuit een back-up wilt klonen, moet u in het Azure Portal stappen uitvoer
    d. Klik voor de **verbonden hosts**op **selecteren**.
    
    ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. Selecteer op de Blade **verbonden hosts** een bestaande ACR of Voeg een nieuwe ACR toe. Als u een nieuwe ACR wilt toevoegen, moet u een ACR-naam en de IQN van de host opgeven. Klik op **selecteren**.
+4. Selecteer op de Blade **verbonden hosts** een bestaande ACR of Voeg een nieuwe ACR toe. Als u een nieuwe ACR wilt toevoegen, moet u een ACR-naam en de IQN van de host opgeven. Klik op **Selecteren**.
    
    ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Klik op **klon** om een kloon taak te starten.
@@ -124,7 +124,7 @@ Elke share heeft een map *. backups* die de meest recente back-ups bevat. U kunt
    
    De laatste vijf back-ups worden op deze manier weer gegeven en kunnen worden gebruikt om een herstel op item niveau uit te voeren. De vijf recente back-ups bevatten zowel de standaard geplande als de hand matige back-ups.
    
-   * **Geplande back-ups** met &lt;de naam&gt;apparaatnaam instelling DAILYSCHEDULE-jjjmmdd-hhmmss-UTC.
+   * **Geplande back-ups** met de naam &lt; apparaatnaam &gt; instelling DAILYSCHEDULE-JJJMMDD-hhmmss-UTC.
    * **Hand matige back-ups** met de naam ad-hoc-JJJMMDD-hhmmss-UTC.
      
      ![](./media/storsimple-virtual-array-clone/image14.png)

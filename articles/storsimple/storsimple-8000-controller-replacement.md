@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704332"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514072"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Een controller module op uw StorSimple-apparaat vervangen
 ## <a name="overview"></a>Overzicht
@@ -231,7 +231,7 @@ Als deze LED knippert, is de controller actief en de andere controller in de mod
 
 **Afbeelding 8** Terug van primaire behuizing met gegevens poorten en bewakings-Led's
 
-| Label | Description |
+| Label | Beschrijving |
 |:--- |:--- |
 | 1-6 |GEGEVENS 0 – 5 netwerk poorten |
 | 7 |Blauwe LED |

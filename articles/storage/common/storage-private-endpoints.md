@@ -5,17 +5,17 @@ description: Overzicht van persoonlijke eind punten voor beveiligde toegang tot 
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2f79e257eb61cebe000ed9ab831a4da4a5748132
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267831"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513284"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privé-eind punten voor Azure Storage gebruiken
 
@@ -107,7 +107,7 @@ De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 | :--------------------- | :----------------------------------- |
 | Blob-service           | `privatelink.blob.core.windows.net`  |
 | Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| Bestands service           | `privatelink.file.core.windows.net`  |
+| Bestandsservice           | `privatelink.file.core.windows.net`  |
 | Queue-service          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
 | Statische websites        | `privatelink.web.core.windows.net`   |
@@ -119,7 +119,7 @@ Raadpleeg de volgende artikelen voor meer informatie over het configureren van u
 
 ## <a name="pricing"></a>Prijzen
 
-Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link)voor prijs informatie.
+Zie [prijzen van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link) voor meer informatie over prijzen.
 
 ## <a name="known-issues"></a>Bekende problemen
 

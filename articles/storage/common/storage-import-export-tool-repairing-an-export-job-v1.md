@@ -4,16 +4,16 @@ description: Meer informatie over het herstellen van een export taak die is gema
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10e209228ad12b377b729bc251eb761b51ff5378
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74978012"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514373"
 ---
 # <a name="repairing-an-export-job"></a>Een exporttaak herstellen
 Nadat een export taak is voltooid, kunt u de Microsoft Azure Import/Export-hulp programma on-premises uitvoeren om:  
@@ -51,7 +51,7 @@ De oorzaken van het exporteren van fouten zijn de volgende mogelijkheden:
   
 -   De sleutel van het opslag account is gewijzigd tijdens het overdrachts proces  
   
-Als u het hulp programma wilt uitvoeren in de modus **RepairExport** , moet u eerst het station met de geëxporteerde bestanden op uw computer aansluiten. Voer vervolgens het Azure-hulp programma voor importeren/exporteren uit, waarbij u het pad naar `/d` dat station opgeeft met de para meter. U moet ook het pad opgeven naar het kopie logboek bestand dat u hebt gedownload. In het volgende voor beeld van de opdracht regel wordt het hulp programma uitgevoerd om bestanden te herstellen die niet konden worden geëxporteerd:  
+Als u het hulp programma wilt uitvoeren in de modus **RepairExport** , moet u eerst het station met de geëxporteerde bestanden op uw computer aansluiten. Voer vervolgens het Azure-hulp programma voor importeren/exporteren uit, waarbij u het pad naar dat station opgeeft met de `/d` para meter. U moet ook het pad opgeven naar het kopie logboek bestand dat u hebt gedownload. In het volgende voor beeld van de opdracht regel wordt het hulp programma uitgevoerd om bestanden te herstellen die niet konden worden geëxporteerd:  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  

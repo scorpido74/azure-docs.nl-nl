@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9129eb905bbdc7d9be24f403f3b3bf318d6d6a6f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 088639674a3f3a15d33f73fd6f602b3cf1313a65
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211359"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512652"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Een IoT Edge module-aanbod maken, configureren en publiceren in azure Marketplace
 
@@ -126,7 +126,7 @@ Hier definieert u de details van het aanbod dat op Marketplace wordt weer gegeve
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te zijn als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -144,7 +144,7 @@ Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang
 
 Geef een gedetailleerdere beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -224,9 +224,9 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Ondersteunings adres (koppeling)
 4. Voorwaarden
 5. Adres van privacybeleid (koppeling)
-6. Name
+6. Naam
 7. Samenvatting
-8. Description
+8. Beschrijving
 9. Handige koppelingen
 10. Scherm afbeeldingen/Video's
 
@@ -276,9 +276,6 @@ Geef uw preview-doel groep op met behulp van de Azure-abonnements-ID-GUID'S, sam
 > U kunt uw Azure-abonnements-ID vinden op de pagina Abonnementen in de Azure Portal.
 
 Voeg ten minste één Azure-abonnements-ID afzonderlijk toe (Maxi maal 10) of door een CSV-bestand te uploaden (Maxi maal 100). Door deze abonnement-Id's toe te voegen, definieert u wie een voor beeld van uw aanbieding kan bekijken voordat deze Live wordt gepubliceerd. Als uw aanbieding al Live is, kunt u een preview-doel groep definiëren om wijzigingen of updates van uw aanbieding te testen.
-
-> [!NOTE]
-> De preview-doel groep wijkt af van een persoonlijke doel groep. Een **Preview** doel groep kan alle aanbiedingen plannen bekijken en bevestigen voordat ze in de Marketplace wonen, met inbegrip van degenen die alleen worden gepubliceerd voor een **persoonlijke** doel groep (ingesteld op het tabblad Beschik baarheid).
 
 Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, plan overzicht.
 
@@ -479,7 +476,7 @@ Op de pagina controleren kunt u de publicatie status zien:
 
 Selecteer **publiceren**om de aanbieding voor publicatie in te dienen.
 
-We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek (of als een privé-aanbieding, naar een privé-publiek) wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
+We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Als u uw aanbieding naar het publiek wilt publiceren, gaat u naar partner centrum en selecteert u **Go-Live**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

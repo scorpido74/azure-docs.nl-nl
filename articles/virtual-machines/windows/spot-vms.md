@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c453e8a70a6cd4b9d33a6d40bebd2ac0a804e5e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e4e80048453b7d6e0804bbef670f0544efaca49
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100580"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514841"
 ---
 # <a name="use-spot-vms-in-azure"></a>Gebruik van een spot Vm's in azure
 
@@ -21,7 +21,7 @@ ms.locfileid: "82100580"
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Gebruik de [Portal](spot-portal.md), [cli](../linux/spot-cli.md) of [Power shell](spot-powershell.md) om spot-vm's te implementeren.
+Gebruik de [Portal](spot-portal.md), [cli](../linux/spot-cli.md), [arm-sjabloon](../linux/spot-template.md)of [Power shell](spot-powershell.md) om spot-vm's te implementeren.
 
 U kunt ook een [schaalset implementeren met steun-VM-exemplaren](../../virtual-machine-scale-sets/use-spot.md).
 

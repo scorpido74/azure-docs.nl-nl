@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed6f9d58c5c54c88acf8e3a0e7fda7d2d65b8637
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60860375"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514314"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Update 4 installeren op uw StorSimple-apparaat
 
@@ -81,7 +81,7 @@ U moet de volgende hotfixes downloaden en installeren in de voorgeschreven volg 
 | 2b. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Pakket met beveiligings updates voor besturings systeem <br> Windows Server 2012 R2 downloaden |Standaard <br></br>Niet-verstorend |- |SecondOrderUpdate|
 | 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Pakket met updates van besturings systemen <br> Windows Server 2012 R2 downloaden |Standaard <br></br>Niet-verstorend |- |SecondOrderUpdate|
 
-Mogelijk moet u ook updates voor de schijf firmware installeren boven op alle updates die in de voor gaande tabellen worden weer gegeven. U kunt controleren of u de firmware-updates van de schijf nodig `Get-HcsFirmwareVersion` hebt door de cmdlet uit te voeren. Als u deze `XMGJ`firmware versies uitvoert:, `XGEG`, `KZ50` `F6C2` `VR08` `N002`,,,, `0106`, hoeft u deze updates niet te installeren.
+Mogelijk moet u ook updates voor de schijf firmware installeren boven op alle updates die in de voor gaande tabellen worden weer gegeven. U kunt controleren of u de firmware-updates van de schijf nodig hebt door de cmdlet uit te voeren `Get-HcsFirmwareVersion` . Als u deze firmware versies uitvoert:,,,,,, `XMGJ` `XGEG` `KZ50` `F6C2` `VR08` `N002` `0106` , hoeft u deze updates niet te installeren.
 
 | Bestellen | KB | Beschrijving | Updatetype | Installatietijd | Installeren in map|
 | --- | --- | --- | --- | --- | --- |

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875397"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514912"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Geautomatiseerde oplossing voor herstel na nood gevallen met Azure Site Recovery voor bestands shares die worden gehost op StorSimple
 
@@ -61,7 +61,7 @@ Elk onderdeel van de on-premises omgeving moet worden beveiligd om volledige rep
 ### <a name="set-up-active-directory-and-dns-replication-optional"></a>Active Directory-en DNS-replicatie instellen (optioneel)
 Als u de machines met Active Directory en DNS wilt beveiligen zodat ze beschikbaar zijn op de DR-site, moet u deze expliciet beveiligen (zodat de bestands servers toegankelijk zijn na een failover met verificatie). Er zijn twee aanbevolen opties op basis van de complexiteit van de on-premises omgeving van de klant.
 
-#### <a name="option-1"></a>Mogelijkheid 1
+#### <a name="option-1"></a>Optie 1
 Als de klant een klein aantal toepassingen heeft, een enkele domein controller voor de hele on-premises site en failover voor de hele site, kunt u het beste Azure Site Recovery replicatie gebruiken om de domein controller machine te repliceren naar een secundaire site (dit geldt voor site-naar-site en site-naar-Azure).
 
 #### <a name="option-2"></a>Optie 2
@@ -84,7 +84,7 @@ Voor deze stap is het vereist dat u de on-premises Bestands server omgeving voor
 
 1. Installeer de VM-agent op elk van de bestands server-Vm's. Dit is vereist zodat u Azure Automation-scripts kunt uitvoeren op de virtuele machines waarvoor een failover is uitgevoerd.
    
-   1. [Down load de agent](https://aka.ms/vmagentwin) naar `C:\\Users\\<username>\\Downloads`.
+   1. [Down load de agent](https://aka.ms/vmagentwin) naar `C:\\Users\\<username>\\Downloads` .
    1. Open Windows Power shell in de Administrator-modus (als administrator uitvoeren) en voer de volgende opdracht in om naar de download locatie te gaan:  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -99,7 +99,7 @@ Voor deze stap is het vereist dat u de on-premises Bestands server omgeving voor
    1. Druk op uw on-premises Vm's op de Windows-toets + Q en zoek naar **iSCSI**.
    1. Selecteer **iSCSI-initiator**.
    1. Selecteer het tabblad **configuratie** en kopieer de naam van de initiator.
-   1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+   1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
    1. Selecteer het tabblad **StorSimple** en selecteer vervolgens de StorSimple Manager service die het fysieke apparaat bevat.
    1. Maak een of meer volume containers en maak vervolgens een of meer volumes. (Deze volumes zijn voor de bestands share (s) op de bestands server-Vm's). Kopieer de naam van de initiator en geef de juiste naam op voor de Access Control records wanneer u de volumes maakt.
    1. Selecteer het tabblad **configureren** en noteer het IP-adres van het apparaat.
@@ -142,7 +142,7 @@ U kunt de virtuele machine selecteren op het tabblad **gerepliceerde items** om 
 U kunt een herstel plan maken in ASR om het proces voor het uitvoeren van de failover van de bestands shares te automatiseren. Als er een onderbreking optreedt, kunt u de bestands shares in een paar minuten met slechts één klik meenemen. Als u deze automatisering wilt inschakelen, hebt u een Azure Automation-account nodig.
 
 #### <a name="to-create-an-automation-account"></a>Een Automation-account maken
-1. Ga naar de sectie &gt; Azure Portal **Automation** .
+1. Ga naar de sectie Azure Portal &gt; **Automation** .
 1. Klik op de knop **toevoegen** en wordt onder Blade geopend.
    
    ![Automation-account toevoegen](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
@@ -174,17 +174,17 @@ U kunt een herstel plan maken in ASR om het proces voor het uitvoeren van de fai
    - _RecoveryPlanName_**-ResourceGroupName**: de Resource Manager-groep die de StorSimple-resource heeft.
    - _RecoveryPlanName_**-managernaam**: de StorSimple-resource met het StorSimple-apparaat.
    - _RecoveryPlanName_**-DeviceName**: het StorSimple-apparaat waarvoor een failover moet worden uitgevoerd.
-   - _RecoveryPlanName_**-DeviceIpAddress**: het IP-adres van het apparaat (dit kunt u vinden op het tabblad **apparaten** onder StorSimple Apparaatbeheer &gt; sectie- **instellingen** &gt; groep **netwerk** &gt; **-DNS-instellingen** ).
+   - _RecoveryPlanName_**-DeviceIpAddress**: het IP-adres van het apparaat (dit kunt u vinden op het tabblad **apparaten** onder StorSimple Apparaatbeheer sectie &gt; **Settings** &gt; -instellingen groep **netwerk** &gt; **-DNS-instellingen** ).
    - _RecoveryPlanName_**-VolumeContainers**: een door komma's gescheiden teken reeks van volume containers die aanwezig moeten zijn op het apparaat waarvoor een failover moet worden uitgevoerd; bijvoorbeeld: volcon1, volcon2, volcon3.
    - _RecoveryPlanName_**-TargetDeviceName**: de StorSimple Cloud Appliance waarop de containers moeten worden gefailovert.
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**: het IP-adres van het doel apparaat (dit is te vinden op het tabblad **instellingen** van de &gt; **virtuele machine** &gt; in de groep **netwerk** ).
+   - _RecoveryPlanName_**-TargetDeviceIpAddress**: het IP-adres van het doel apparaat (dit is te vinden op het tabblad instellingen van de **virtuele machine** in de &gt; **Settings** groep &gt; **netwerk** ).
    - _RecoveryPlanName_**-StorageAccountName**: de naam van het opslag account waarin het script (dat moet worden uitgevoerd op de virtuele machine die is mislukt) wordt opgeslagen. Dit kan elk opslag account zijn met ruimte om het script tijdelijk op te slaan.
    - _RecoveryPlanName_**-StorageAccountKey**: de toegangs sleutel voor het bovenstaande opslag account.
-   - _RecoveryPlanName_**-VMGUIDS**: bij het beveiligen van een virtuele machine wijst Azure site Recovery elke virtuele machine een unieke id toe die de details van de virtuele machine waarvoor een failover is uitgevoerd. Als u de VMGUID wilt ophalen, selecteert u het tabblad **Recovery Services** en klikt u op **Eigenschappen**van **beveiligde item** &gt; **beveiligings groepen** &gt; **machines** &gt; . Als u meerdere Vm's hebt, voegt u de GUID'S toe als een door komma's gescheiden teken reeks.
+   - _RecoveryPlanName_**-VMGUIDS**: bij het beveiligen van een virtuele machine wijst Azure site Recovery elke virtuele machine een unieke id toe die de details van de virtuele machine waarvoor een failover is uitgevoerd. Als u de VMGUID wilt ophalen, selecteert u het tabblad **Recovery Services** en klikt u op Eigenschappen van **beveiligde item** &gt; **beveiligings groepen** &gt; **machines** &gt; **Properties**. Als u meerdere Vm's hebt, voegt u de GUID'S toe als een door komma's gescheiden teken reeks.
 
      Als de naam van het herstel plan bijvoorbeeld fileServerpredayRP is, moeten uw **variabelen**, het tabblad **verbindingen** en **certificaten** als volgt worden weer gegeven nadat u alle assets hebt toegevoegd.
 
-      ![Activa](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
+      ![Assets](./media/storsimple-disaster-recovery-using-azure-site-recovery/image5.png)
 
 1. De Runbook-module van de StorSimple 8000-serie uploaden in uw Automation-account. Gebruik de onderstaande stappen om een module toe te voegen:
    
@@ -195,7 +195,7 @@ U kunt een herstel plan maken in ASR om het proces voor het uitvoeren van de fai
             cd C:\scripts\StorSimpleSDKTools
       ```
    1. Down load nuget CLI onder dezelfde map in stap 1-4.
-      Verschillende versies van nuget. exe zijn beschikbaar op [nuget-down loads](https://www.nuget.org/downloads). Elke download koppeling verwijst rechtstreeks naar een exe-bestand. Zorg er dus voor dat u met de rechter muisknop klikt en het bestand op uw computer opslaat in plaats van het uit te voeren vanuit de browser.
+      Er zijn verschillende versies van nuget.exe beschikbaar op [nuget-down loads](https://www.nuget.org/downloads). Elke download koppeling verwijst rechtstreeks naar een exe-bestand. Zorg er dus voor dat u met de rechter muisknop klikt en het bestand op uw computer opslaat in plaats van het uit te voeren vanuit de browser.
       
       ```
             wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
@@ -230,7 +230,7 @@ U kunt een herstel plan maken in ASR om het proces voor het uitvoeren van de fai
             compress-Archive -Path "$moduleDir" -DestinationPath Microsoft.Azure.Management.StorSimple8000Series.zip
       ```
          
-   1. Importeer het zip-bestand van de Azure Automation-module (Microsoft. Azure. Management. StorSimple8000Series. zip) dat in de bovenstaande stap is gemaakt. U kunt dit doen door het Automation-account te selecteren, op **modules** onder gedeelde resources te klikken en vervolgens op **een module toevoegen**te klikken.
+   1. Importeer de Azure Automation module zip-bestand (Microsoft.Azure.Management.StorSimple8000Series.zip) die in de bovenstaande stap is gemaakt. U kunt dit doen door het Automation-account te selecteren, op **modules** onder gedeelde resources te klikken en vervolgens op **een module toevoegen**te klikken.
    
    Nadat u de module StorSimple 8000 Series hebt geïmporteerd, moet het tabblad **modules** er als volgt uitzien:
    
@@ -283,7 +283,7 @@ Raadpleeg de Active Directory hand leiding voor de [oplossing van Dr-oplossingen
    ![Failover starten](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
 1. Klik op **OK** om te beginnen met de failover. U kunt de voortgang volgen door op de virtuele machine te klikken om de eigenschappen ervan te openen of op de **taak testfailover** in kluis naam &gt; **taken** &gt; **site Recovery taken**.
-1. Nadat de failover is voltooid, kunt u ook zien dat de replica Azure-machine wordt weer gegeven in de &gt; Azure Portal **virtual machines**. U kunt uw validaties uitvoeren.
+1. Nadat de failover is voltooid, kunt u ook zien dat de replica Azure-machine wordt weer gegeven in de Azure Portal &gt; **virtual machines**. U kunt uw validaties uitvoeren.
 1. Nadat de validaties zijn uitgevoerd, klikt u op **validaties voltooid**. Hiermee worden de StorSimple-volumes verwijderd en worden de StorSimple Cloud Appliance afgesloten.
 1. Wanneer u klaar bent, klikt u op **testfailover opschonen** in het herstel plan. Leg in Notities eventuele opmerkingen over de testfailover vast en sla deze op. Hiermee wordt de virtuele machine verwijderd die tijdens de testfailover is gemaakt.
 

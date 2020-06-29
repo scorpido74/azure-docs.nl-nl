@@ -3,16 +3,16 @@ title: Aandachtspunten voor Azure File Sync-netwerken | Microsoft Docs
 description: Een overzicht van de netwerkopties voor Azure File Sync.
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95fb967fa33a581096df65c3ed77e575aa3f6268
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: HT
+ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466675"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512560"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Aandachtspunten voor Azure File Sync-netwerken
 U kunt op twee manieren verbinding maken met een Azure-bestandsshare:

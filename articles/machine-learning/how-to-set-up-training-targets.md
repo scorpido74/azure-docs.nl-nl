@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: aa11f7e964f66d0a345e25f307127d75838f872f
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718713"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515810"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure Machine Learning heeft verschillende ondersteuning voor verschillende Comp
 
 
 > [!NOTE]
-> Azure Machine Learning Compute kan worden gemaakt als een permanente resource of dynamisch worden gemaakt wanneer u een uitvoering aanvraagt. Bij het maken van de uitvoering wordt het reken doel verwijderd nadat de training is voltooid, zodat u de reken doelen die op deze manier zijn gemaakt, niet opnieuw kunt gebruiken.
+> Azure Machine Learning compute-clusters kunnen worden gemaakt als een permanente resource of dynamisch worden gemaakt wanneer u een uitvoering aanvraagt. Bij het maken van de uitvoering wordt het reken doel verwijderd nadat de training is voltooid, zodat u de reken doelen die op deze manier zijn gemaakt, niet opnieuw kunt gebruiken.
 
 ## <a name="whats-a-run-configuration"></a>Wat is een uitvoerings configuratie?
 
@@ -76,7 +76,8 @@ Hoewel ML-pijp lijnen modellen kunnen trainen, kunnen ze ook gegevens voorbereid
 Gebruik de volgende secties om deze reken doelen te configureren:
 
 * [Lokale computer](#local)
-* [Azure Machine Learning Compute](#amlcompute)
+* [Azure Machine Learning Compute-Cluster](#amlcompute)
+* [Reken instantie Azure Machine Learning](#instance)
 * [Externe virtuele machines](#vm)
 * [Azure HDInsight](#hdinsight)
 
@@ -91,9 +92,9 @@ Gebruik de volgende secties om deze reken doelen te configureren:
 
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit).
 
-### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure Machine Learning Compute
+### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning Compute-Cluster
 
-Azure Machine Learning Compute is een infra structuur voor beheerde berekeningen waarmee de gebruiker eenvoudig een reken proces met één of meerdere knoop punten kan maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
+Azure Machine Learning Compute-Cluster is een beheerde infra structuur voor beheer, waarmee u eenvoudig een berekening met één of meerdere knoop punten kunt maken. De berekening wordt binnen uw werkruimte regio gemaakt als een resource die kan worden gedeeld met andere gebruikers in uw werk ruimte. De berekening wordt automatisch omhoog geschaald wanneer een taak wordt verzonden en kan in een Azure-Virtual Network worden geplaatst. De berekening wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een [docker-container](https://www.docker.com/why-docker).
 
 U kunt Azure Machine Learning Compute gebruiken om het trainings proces te distribueren over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten. 
 
@@ -125,6 +126,41 @@ Azure Machine Learning Compute kan worden hergebruikt in uitvoeringen. De comput
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit).
+
+
+### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Reken instantie Azure Machine Learning
+
+[Azure machine learning Compute-instantie](concept-compute-instance.md) is een infra structuur voor beheerde berekeningen waarmee u eenvoudig één virtuele machine kunt maken. De berekening wordt gemaakt in uw werkruimte regio, maar in tegens telling tot een reken cluster kan een exemplaar niet worden gedeeld met andere gebruikers in uw werk ruimte. Het exemplaar wordt ook niet automatisch omlaag geschaald.  U moet de resource stoppen om lopende kosten te voor komen.
+
+Een reken instantie kan meerdere taken parallel uitvoeren en heeft een taak wachtrij. 
+
+Reken instanties kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving](how-to-enable-virtual-network.md#compute-instance), zonder dat ondernemingen de SSH-poorten hoeven te openen. De taak wordt uitgevoerd in een omgeving met containers en verpakt uw model afhankelijkheden in een docker-container. 
+
+1. **Maken en koppelen**: 
+    
+    [! notebook-python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb? name = create_instance)]
+
+1. **Configureren**: een uitvoerings configuratie maken.
+    
+    ```python
+    
+    from azureml.core import ScriptRunConfig
+    from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+    
+    src = ScriptRunConfig(source_directory='', script='train.py')
+    
+    # Set compute target to the one created in previous step
+    src.run_config.target = instance
+    
+    # Set environment
+    src.run_config.environment = myenv
+     
+    run = experiment.submit(config=src)
+    ```
+
+Voor meer opdrachten die nuttig zijn voor het reken proces, raadpleegt u het notebook [Train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Dit notitie blok is ook beschikbaar in de map Studio **samples** in *training/Train-on-computeinstance*.
+
+Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit) .
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>Externe virtuele machines

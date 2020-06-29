@@ -3,25 +3,25 @@ title: Azure HPC cache-gegevens opname-parallel kopiëren script
 description: Een script voor parallel kopiëren gebruiken om gegevens naar een Blob Storage-doel te verplaatsen in de Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 90e05ad3d42b1009b631630fe476669a9f418d33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5db04b3ee89ab5a0a4f85f3b833ea513310dce18
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74166897"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514801"
 ---
 # <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Script methode voor het opslaan van gegevens in de Azure HPC-cache-parallel kopiëren
 
-In dit artikel vindt u instructies voor ``parallelcp`` het maken van het script en het gebruik ervan om gegevens te verplaatsen naar een BLOB storage-container voor gebruik met de Azure HPC-cache.
+In dit artikel vindt u instructies voor het maken van het ``parallelcp`` script en het gebruik ervan om gegevens te verplaatsen naar een BLOB storage-container voor gebruik met de Azure HPC-cache.
 
 Lees [gegevens verplaatsen naar Azure Blob Storage](hpc-cache-ingest.md)voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache.
 
 ## <a name="create-the-parallelcp-script"></a>Het parallelcp-script maken
 
-In het onderstaande script wordt het uitvoer `parallelcp`bare bestand toegevoegd. (Dit script is ontworpen voor Ubuntu; als u een andere distributie gebruikt, moet ``parallel`` u dit afzonderlijk installeren.)
+In het onderstaande script wordt het uitvoer bare bestand toegevoegd `parallelcp` . (Dit script is ontworpen voor Ubuntu; als u een andere distributie gebruikt, moet u dit ``parallel`` afzonderlijk installeren.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Voor beeld van parallel kopiëren
 
-In dit voor beeld wordt het script voor parallelle ``glibc`` kopieën gebruikt om te compileren met behulp van bron bestanden in de Azure HPC-cache.
+In dit voor beeld wordt het script voor parallelle kopieën gebruikt om te compileren ``glibc`` met behulp van bron bestanden in de Azure HPC-cache.
 
 De bron bestanden worden in het cache geheugen van de Azure HPC-cache geplaatst en de object bestanden worden opgeslagen op de lokale vaste schijf.
 
-In dit voor beeld wordt het parallel kopiëren-script ``-j`` gebruikt ``make`` met de optie en om parallel Lise ring te krijgen.
+In dit voor beeld wordt het parallel kopiëren-script gebruikt met de optie ``-j`` en ``make`` om parallel Lise ring te krijgen.
 
 ```bash
 sudo apt-get update

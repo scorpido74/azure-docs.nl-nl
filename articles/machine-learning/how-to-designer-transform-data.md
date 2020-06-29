@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.date: 05/04/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 69e4583d03fbe013fd6629952e34dae039f3836d
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433208"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517516"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Gegevens transformeren in Azure Machine Learning Designer (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,13 +40,13 @@ In deze sectie vindt u informatie over het importeren van de voor beeld-gegevens
 
 Gebruik de volgende stappen om de voor beeld-gegevensset te importeren.
 
-1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waarmee u wilt werken.
+1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waar u mee wilt werken.
 
 1. Ga naar de ontwerp functie. Selecteer **eenvoudig te gebruiken-modules voor prebuild** om een nieuwe pijp lijn te maken.
 
 1. Selecteer een standaard Compute-doel om de pijp lijn uit te voeren.
 
-1. Links van het pijplijn canvas is een palet met gegevens sets en modules. Selecteer **gegevens sets**. Bekijk vervolgens de sectie voor **beelden** .
+1. Aan de linkerkant van het pijplijncanvas ziet u een palet met gegevenssets en modules. Selecteer **gegevens sets**. Bekijk vervolgens de sectie voor **beelden** .
 
 1. Sleep en zet de gegevensset voor de **binaire inkomsten van de volwassene** af op het canvas.
 
@@ -68,7 +68,7 @@ In deze sectie gebruikt u de [gesplitste gegevens module](algorithm-module-refer
 
 1. Verbind de module gegevensset met de module **Split data** .
 
-1. Selecteer de module **Split data** .
+1. Selecteer de module **Split Data**.
 
 1. Stel in het deel venster module details rechts van het canvas de **Splits modus** in op **reguliere expressie**.
 
@@ -76,9 +76,9 @@ In deze sectie gebruikt u de [gesplitste gegevens module](algorithm-module-refer
 
     In de **reguliere expressie** modus wordt één kolom voor een waarde getest. Meer informatie over de module Split data kunt u vinden op de [pagina verwante algoritme module Reference](algorithm-module-reference/split-data.md).
 
-Uw pijp lijn moet er als volgt uitzien:
+Uw pijplijn ziet er als volgt uit:
 
-![Scherm afbeelding die laat zien hoe u de pijp lijn en de module Split data configureert](media/how-to-designer-transform-data/split-data.png).
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="Scherm afbeelding die laat zien hoe u de pijp lijn en de module Split data configureert":::
 
 
 ## <a name="save-the-datasets"></a>De gegevens sets opslaan
@@ -138,7 +138,7 @@ Nu de pijp lijn is ingesteld voor het splitsen van de gegevens, moet u opgeven w
 
 Nu de pijp lijn is ingesteld voor het splitsen en exporteren van de gegevens, verzendt u een pijplijn uitvoering.
 
-1. Selecteer aan de bovenkant van het canvas de optie **verzenden**.
+1. Bovenaan het canvas selecteert u **Indienen**.
 
 1. Selecteer in het dialoog venster **pijplijn uitvoering instellen** de optie **nieuwe maken** om een experiment te maken.
 
@@ -146,13 +146,13 @@ Nu de pijp lijn is ingesteld voor het splitsen en exporteren van de gegevens, ve
 
 1. Geef een beschrijvende naam op voor het experiment, zoals ' Split-tellingen-gegevens '.
 
-1. Selecteer **Verzenden**.
+1. Selecteer **Indienen**.
 
 ## <a name="view-results"></a>Resultaten weergeven
 
 Nadat de pijp lijn is voltooid, kunt u uw resultaten weer geven door te navigeren naar de Blob-opslag in de Azure Portal. U kunt ook de intermediaire resultaten van de module **Split data** weer geven om te bevestigen dat uw gegevens correct zijn gesplitst.
 
-1. Selecteer de module **Split data** .
+1. Selecteer de module **Split Data**.
 
 1. In de deelvenster Details van de module, rechts van het canvas, selecteert u **Uitvoer en logboeken**. 
 

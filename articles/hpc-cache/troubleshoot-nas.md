@@ -3,15 +3,15 @@ title: Problemen met de NFS-opslag doelen van Azure HPC cache oplossen
 description: Tips voor het voor komen en oplossen van configuratie fouten en andere problemen die kunnen leiden tot fouten bij het maken van een NFS-opslag doel
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186614"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515453"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Problemen met de NAS-configuratie en NFS-opslag doelen oplossen
 
@@ -40,7 +40,7 @@ In het algemeen moet de cache toegang hebben tot deze poorten:
 | TCP/UDP  | 4046  | gekoppeld   |
 | TCP/UDP  | 4047  | status   |
 
-Gebruik de volgende ``rpcinfo`` opdracht voor meer informatie over de specifieke poorten die nodig zijn voor uw systeem. Met deze opdracht hieronder worden de poorten weer gegeven en worden de relevante resultaten in een tabel opgemaakt. (Gebruik het IP-adres van uw systeem in plaats van de *<storage_IP>* term.)
+Gebruik de volgende opdracht voor meer informatie over de specifieke poorten die nodig zijn voor uw systeem ``rpcinfo`` . Met deze opdracht hieronder worden de poorten weer gegeven en worden de relevante resultaten in een tabel opgemaakt. (Gebruik het IP-adres van uw systeem in plaats van de *<storage_IP>* term.)
 
 U kunt deze opdracht geven vanuit elke Linux-client waarop de NFS-infra structuur is geïnstalleerd. Als u een-client in het cluster-subnet gebruikt, kunt u hiermee ook de connectiviteit tussen het subnet en het opslag systeem controleren.
 
@@ -48,7 +48,7 @@ U kunt deze opdracht geven vanuit elke Linux-client waarop de NFS-infra structuu
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-Zorg ervoor dat alle poorten die door de ``rpcinfo`` query zijn geretourneerd, onbeperkt verkeer van het subnet van de Azure HPC-cache toestaan.
+Zorg ervoor dat alle poorten die door de query zijn geretourneerd, ``rpcinfo`` onbeperkt verkeer van het subnet van de Azure HPC-cache toestaan.
 
 Controleer deze instellingen zowel op de NAS zelf als op alle firewalls tussen het opslag systeem en het cache-subnet.
 
@@ -58,7 +58,7 @@ De Azure HPC-cache moet toegang hebben tot de export van uw opslag systeem om he
 
 Verschillende opslag systemen gebruiken verschillende methoden om deze toegang in te scha kelen:
 
-* Linux-servers voegen ``no_root_squash`` doorgaans toe aan het ``/etc/exports``geëxporteerde pad in.
+* Linux-servers voegen doorgaans ``no_root_squash`` toe aan het geëxporteerde pad in ``/etc/exports`` .
 * NetApp-en EMC-systemen bepalen doorgaans de toegang tot de export regels die zijn gekoppeld aan specifieke IP-adressen of netwerken.
 
 Als u regels voor exporteren gebruikt, moet u er rekening mee houden dat de cache meerdere verschillende IP-adressen van het cache-subnet kan gebruiken. Toegang vanaf het volledige bereik van mogelijke subnet-IP-adressen toestaan.
@@ -79,17 +79,17 @@ Een systeem kan bijvoorbeeld drie exports als volgt weer geven:
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-De export ``/ifs/accounting/payroll`` is een onderliggend ``/ifs/accounting``element ``/ifs/accounting`` van en is zelf een ``/ifs``onderliggend element van.
+De export ``/ifs/accounting/payroll`` is een onderliggend element van ``/ifs/accounting`` en ``/ifs/accounting`` is zelf een onderliggend element van ``/ifs`` .
 
-Als u het ``payroll`` exporteren als een HPC-cache-opslag doel toevoegt, koppelt ``/ifs/`` de cache de map voor de salaris administratie werkelijk. Azure HPC-cache heeft toegang tot de ``/ifs`` hoofdmap nodig om toegang te ``/ifs/accounting/payroll`` kunnen krijgen tot het exporteren.
+Als u het ``payroll`` exporteren als een HPC-cache-opslag doel toevoegt, koppelt de cache de map voor de ``/ifs/`` salaris administratie werkelijk. Azure HPC-cache heeft toegang tot de hoofdmap nodig om toegang te kunnen ``/ifs`` krijgen tot het ``/ifs/accounting/payroll`` exporteren.
 
 Deze vereiste houdt verband met de manier waarop de cache bestanden indexeert en conflicten met bestanden voor komt, met behulp van bestands ingangen die het opslag systeem biedt.
 
-Een NAS-systeem met hiërarchische uitvoer kan verschillende bestands ingangen geven voor hetzelfde bestand als het bestand wordt opgehaald uit verschillende exports. Een client kan bijvoorbeeld het bestand ``/ifs/accounting`` ``payroll/2011.txt``koppelen en openen. Een andere client koppelt ``/ifs/accounting/payroll`` en opent het bestand ``2011.txt``. Afhankelijk van hoe het opslag systeem bestands ingangen toewijst, kunnen deze twee clients hetzelfde bestand met verschillende bestands ingangen ontvangen (één voor ``<mount2>/payroll/2011.txt`` en een voor ``<mount3>/2011.txt``).
+Een NAS-systeem met hiërarchische uitvoer kan verschillende bestands ingangen geven voor hetzelfde bestand als het bestand wordt opgehaald uit verschillende exports. Een client kan bijvoorbeeld ``/ifs/accounting`` het bestand koppelen en openen ``payroll/2011.txt`` . Een andere client koppelt ``/ifs/accounting/payroll`` en opent het bestand ``2011.txt`` . Afhankelijk van hoe het opslag systeem bestands ingangen toewijst, kunnen deze twee clients hetzelfde bestand met verschillende bestands ingangen ontvangen (één voor ``<mount2>/payroll/2011.txt`` en een voor ``<mount3>/2011.txt`` ).
 
 Het back-end-opslag systeem houdt interne aliassen voor bestands ingangen bij, maar de Azure HPC-cache kan niet bepalen welke bestands ingangen in de index naar hetzelfde item verwijzen. Het is dus mogelijk dat de cache verschillende schrijf bewerkingen voor hetzelfde bestand kan hebben en dat de wijzigingen onjuist worden toegepast omdat deze niet overeenkomen met het bestand.
 
-Als u wilt voor komen dat er conflicten ontstaan met bestanden in meerdere uitvoer bewerkingen, koppelt Azure HPC cache automatisch de meest recente uitvoer in``/ifs`` het pad (in het voor beeld) en gebruikt de bestands ingang die van de export is opgegeven. Als meerdere exports hetzelfde basispad gebruiken, moet Azure HPC-cache toegang hebben tot het pad naar de hoofdmap.
+Als u wilt voor komen dat er conflicten ontstaan met bestanden in meerdere uitvoer bewerkingen, koppelt Azure HPC cache automatisch de meest recente uitvoer in het pad ( ``/ifs`` in het voor beeld) en gebruikt de bestands ingang die van de export is opgegeven. Als meerdere exports hetzelfde basispad gebruiken, moet Azure HPC-cache toegang hebben tot het pad naar de hoofdmap.
 
 ## <a name="enable-export-listing"></a>Export vermelding inschakelen
 <!-- link in prereqs article -->

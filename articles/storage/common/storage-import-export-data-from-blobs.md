@@ -4,16 +4,16 @@ description: Meer informatie over het maken van export taken in Azure Portal voo
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509471"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513501"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
 
@@ -216,8 +216,8 @@ De volgende tabel bevat voor beelden van geldige BLOB-paden:
    | Begint met |/book |Exporteert alle blobs in een container die begint met het voorvoegsel **boek** |
    | Begint met |audio |Exporteert alle blobs in container **muziek** |
    | Begint met |/music/love |Exporteert alle blobs in container **muziek** die beginnen met het **voor voegsel** |
-   | Gelijk aan |$root/logo.bmp |Exporteert BLOB **logo. bmp** in de hoofd container |
-   | Gelijk aan |Video's/verhaal. MP4 |Exporteert BLOB- **verhaal. MP4** in container **Video's** |
+   | Gelijk aan |$root/logo.bmp |Exporteert BLOB- **logo.bmp** in de hoofd container |
+   | Gelijk aan |Video's/story.mp4 |Exporteert BLOB- **story.mp4** in container **Video's** |
 
 ## <a name="next-steps"></a>Volgende stappen
 

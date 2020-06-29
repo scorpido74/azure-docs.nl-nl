@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60631580"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514600"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>De DATA 0-netwerk interface-instellingen op uw StorSimple 8000 Series-apparaat wijzigen
 
@@ -32,14 +32,14 @@ De DATA 0-interface wordt eerst geconfigureerd via de wizard Setup tijdens de ee
 Na het lezen van deze zelf studie kunt u het volgende doen:
 
 * DATA 0-netwerk instelling wijzigen via de installatie wizard
-* DATA 0-netwerk instellingen wijzigen via `Set-HcsNetInterface` de cmdlet
+* DATA 0-netwerk instellingen wijzigen via de `Set-HcsNetInterface` cmdlet
 
 ## <a name="modify-data-0-network-settings-through-setup-wizard"></a>DATA 0-netwerk instellingen wijzigen via de wizard Setup
 U kunt de gegevens van de netwerk instellingen van 0 opnieuw configureren door verbinding te maken met de Windows Power shell-interface van uw StorSimple-apparaat en een installatie wizard-sessie te starten. Voer de volgende stappen uit om de DATA 0-instellingen te wijzigen:
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>DATA 0 netwerk instellingen wijzigen via de wizard Setup
-1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1`.
-2. Typ het volgende na de opdrachtprompt:
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1` .
+2. Typ in de opdrachtprompt:
    
     `Invoke-HcsSetupWizard`
 3. De wizard Setup wordt weer gegeven om de DATA 0-interface van uw apparaat te configureren. Geef nieuwe waarden op voor het IP-adres, de gateway en het netmasker.
@@ -48,11 +48,11 @@ U kunt de gegevens van de netwerk instellingen van 0 opnieuw configureren door v
 > De IP-adressen van de vaste controllers moeten opnieuw worden geconfigureerd via de Blade **netwerk instellingen** van het StorSimple-apparaat in de Azure Portal. Ga naar [netwerk interfaces aanpassen](storsimple-8000-modify-device-config.md#modify-network-interfaces)voor meer informatie.
 
 ## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>DATA 0 Network Settings wijzigen via set-HcsNetInterface cmdlet
-Een alternatieve manier om de DATA 0-netwerk interface opnieuw te configureren, is door `Set-HcsNetInterface` het gebruik van de cmdlet. De cmdlet wordt uitgevoerd vanuit de Windows Power shell-interface van uw StorSimple-apparaat. Wanneer u deze procedure gebruikt, kunnen de vaste IP-adressen van de controller hier ook worden geconfigureerd. Voer de volgende stappen uit om de DATA 0-instellingen te wijzigen: 
+Een alternatieve manier om de DATA 0-netwerk interface opnieuw te configureren, is door het gebruik van de `Set-HcsNetInterface` cmdlet. De cmdlet wordt uitgevoerd vanuit de Windows Power shell-interface van uw StorSimple-apparaat. Wanneer u deze procedure gebruikt, kunnen de vaste IP-adressen van de controller hier ook worden geconfigureerd. Voer de volgende stappen uit om de DATA 0-instellingen te wijzigen: 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>DATA 0 Network Settings wijzigen via de cmdlet Set-HcsNetInterface
-1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het beheerders wachtwoord voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1`.
-2. Typ het volgende na de opdrachtprompt:
+1. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het beheerders wachtwoord voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is `Password1` .
+2. Typ in de opdrachtprompt:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
    

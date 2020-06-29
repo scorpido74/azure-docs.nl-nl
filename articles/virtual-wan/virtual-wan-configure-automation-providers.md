@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d282cec55d5534957478d6268c8bbd6d74245d8d
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190422"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514865"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Richt lijnen voor automatisering voor virtuele WAN-partners
 
@@ -54,7 +54,7 @@ Inzicht in de verwachte ervaring van de klant in combi natie met Azure Virtual W
 
 ###  <a name="access-control"></a><a name="access"></a>Toegangsbeheer
 
-Klanten moeten het juiste toegangs beheer voor virtuele WAN-verbindingen kunnen instellen in de gebruikers interface van het apparaat. U wordt aangeraden een Azure-Service-Principal te gebruiken. Toegang op basis van de Service-Principal zorgt voor de juiste verificatie voor het uploaden van vertakkings informatie. Zie [Create Service Principal](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)(Engelstalig) voor meer informatie. Hoewel deze functionaliteit buiten de Azure Virtual WAN-aanbieding valt, vermelden we de gebruikelijke stappen voor het instellen van de toegang in azure, waarna de relevante details worden gegenereerd in het dash board voor Apparaatbeheer
+Klanten moeten het juiste toegangs beheer voor virtuele WAN-verbindingen kunnen instellen in de gebruikers interface van het apparaat. U wordt aangeraden een Azure-Service-Principal te gebruiken. Toegang op basis van de Service-Principal zorgt voor de juiste verificatie voor het uploaden van vertakkings informatie. Zie [Create Service Principal](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)(Engelstalig) voor meer informatie. Hoewel deze functionaliteit buiten de Azure Virtual WAN-aanbieding valt, vermelden we de gebruikelijke stappen voor het instellen van de toegang in azure, waarna de relevante details worden gegenereerd in het dash board voor Apparaatbeheer
 
 * Maak een Azure Active Directory-toepassing voor uw on-premises apparaat controller.
 * Toepassings-ID en verificatie sleutel ophalen
@@ -97,7 +97,7 @@ Het apparaatconfiguratiebestand bevat de instellingen die u dient te gebruiken o
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * **Details van de Vpngateway-verbindings configuratie** , zoals BGP, vooraf gedeelde sleutel, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
+    * **Informatie over verbindingsconfiguratie van VPN-gateway**, zoals BGP, vooraf-gedeelde sleutels, enzovoort. De PSK is de vooraf gedeelde sleutel die automatisch voor u wordt gegenereerd. U kunt altijd de verbinding bewerken op de pagina Overzicht om een aangepaste PSK in te stellen.
   
 **Voorbeeld van een apparaatconfiguratiebestand**
 
@@ -227,4 +227,4 @@ Uw on-premises SDWAN/VPN-apparaat of de configuratie van de SD-WAN moeten overee
 
 Zie [informatie over Azure Virtual WAN](virtual-wan-about.md) en de [Veelgestelde vragen over Azure Virtual WAN](virtual-wan-faq.md)voor meer informatie over Virtual WAN.
 
-Voor aanvullende informatie kunt u een e-mail sturen naar <azurevirtualwan@microsoft.com>. Vermeld uw bedrijfsnaam tussen '[ ]' in de onderwerpregel.
+Voor aanvullende informatie kunt u een e-mail sturen naar <azurevirtualwan@microsoft.com> . Vermeld uw bedrijfsnaam tussen '[ ]' in de onderwerpregel.

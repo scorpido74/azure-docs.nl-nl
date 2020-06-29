@@ -8,17 +8,17 @@ manager: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 967c03f3c4201bdcf1529fdda93717b6eb74e771
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: c05b62b254320bd56a6f0591f1edbe32d5362e56
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60631652"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514721"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Gegevens migreren van de StorSimple 5000-7000-serie naar het 8000-serie apparaat
 
@@ -123,7 +123,7 @@ Voer de volgende stappen uit om het hulp programma StorSimple Migration op uw co
 
 1. Kopieer de map _StorSimple8000SeriesMigrationTool_ naar uw Windows-computer. Zorg ervoor dat er voldoende ruimte is op het station waar de software is gekopieerd.
 
-    Open het configuratie bestand van het hulp programma _StorSimple8000SeriesMigrationTool. exe. config_ in de map. Dit is het fragment van het bestand.
+    Open het configuratie bestand van het hulp programma _StorSimple8000SeriesMigrationTool.exe.config_ in de map. Dit is het fragment van het bestand.
     
     ```xml
         <add key="UserName" value="username@xyz.com" />
@@ -145,7 +145,7 @@ Voer de volgende stappen uit om het hulp programma StorSimple Migration op uw co
     ![Tenant-ID controleren voor Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Sla de wijzigingen in het configuratie bestand op.
-4.  Voer _StorSimple8000SeriesMigrationTool. exe_ uit om het hulp programma te starten. Wanneer u om referenties wordt gevraagd, geeft u de referenties op die zijn gekoppeld aan uw abonnement in Azure Portal. 
+4.  Voer de _StorSimple8000SeriesMigrationTool.exe_ uit om het hulp programma te starten. Wanneer u om referenties wordt gevraagd, geeft u de referenties op die zijn gekoppeld aan uw abonnement in Azure Portal. 
 5.  De gebruikers interface van het hulp programma voor migratie van StorSimple wordt weer gegeven.
   
 

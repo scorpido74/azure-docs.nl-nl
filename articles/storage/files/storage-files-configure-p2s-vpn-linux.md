@@ -3,19 +3,19 @@ title: Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure
 description: Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061054"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515296"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Een punt-naar-site-VPN (P2S) op Linux configureren voor gebruik met Azure Files
-U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een P2S VPN-verbinding met Azure Files wilt gebruiken, moet er een P2S VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
+U kunt een punt-naar-site-VPN-verbinding (P2S) gebruiken om uw Azure-bestands shares te koppelen via SMB van buiten Azure, zonder dat u poort 445 hoeft te openen. Een punt-naar-site-VPN-verbinding is een VPN-verbinding tussen Azure en een afzonderlijke client. Als u een punt-naar-site-VPN-verbinding met Azure Files wilt gebruiken, moet er een punt-naar-site-VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Als u veel clients hebt die verbinding moeten maken met uw Azure-bestands shares van uw on-premises netwerk, kunt u een S2S-VPN-verbinding (site-naar-site) gebruiken in plaats van een punt-naar-site-verbinding voor elke client. Zie [een site-naar-site-VPN configureren voor gebruik met Azure files voor](storage-files-configure-s2s-vpn.md)meer informatie.
 
 We raden u ten zeerste aan [Azure files netwerk overzicht](storage-files-networking-overview.md) te lezen voordat u verdergaat met dit artikel voor een volledige bespreking van de beschik bare netwerk opties voor Azure files.
 
@@ -44,7 +44,7 @@ Als u toegang wilt krijgen tot uw Azure-bestands share en andere Azure-resources
 
 Met het volgende script maakt u een virtueel Azure-netwerk met drie subnetten: één voor het service-eind punt van uw opslag account, een voor het privé-eind punt van uw opslag account, dat is vereist voor toegang tot het opslag account op locatie zonder aangepaste route ring te maken voor het open bare IP-adres van het opslag account dat kan worden gewijzigd, en één voor de virtuele netwerk gateway 
 
-Vergeet niet om `<region>`, `<resource-group>`en `<desired-vnet-name>` met de juiste waarden voor uw omgeving te vervangen.
+Vergeet niet om `<region>` , `<resource-group>` en `<desired-vnet-name>` met de juiste waarden voor uw omgeving te vervangen.
 
 ```bash
 region="<region>"
@@ -117,7 +117,9 @@ De gateway van het virtuele Azure-netwerk is de service waarmee uw on-premises L
 Vergeet niet door `<desired-vpn-name-here>` de gewenste naam voor deze resources te vervangen.
 
 > [!Note]  
-> Het implementeren van de virtuele Azure-netwerk gateway kan Maxi maal 45 minuten duren. Tijdens de implementatie van deze resource wordt door dit script script voor bash geblokkeerd, zodat deze kan worden voltooid. Dit is normaal gedrag.
+> Het implementeren van de virtuele Azure-netwerk gateway kan Maxi maal 45 minuten duren. Tijdens de implementatie van deze resource wordt door dit script script voor bash geblokkeerd, zodat deze kan worden voltooid.
+>
+> P2S IKEv2/OpenVPN-verbindingen worden niet ondersteund met de **basis** -SKU. Dit script maakt gebruik van de **VpnGw1** SKU voor de virtuele netwerk gateway.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -152,7 +154,7 @@ az network vnet-gateway root-cert create \
 ```
 
 ## <a name="configure-the-vpn-client"></a>De VPN-client configureren
-De gateway van het virtuele netwerk van Azure maakt een downloadbaar pakket met configuratie bestanden die nodig zijn om de VPN-verbinding op uw on-premises Linux-computer te initialiseren. Het volgende script plaatst de certificaten die u in de juiste plaats hebt gemaakt en configureert `ipsec.conf` het bestand met de juiste waarden uit het configuratie bestand in het Download bare pakket.
+De gateway van het virtuele netwerk van Azure maakt een downloadbaar pakket met configuratie bestanden die nodig zijn om de VPN-verbinding op uw on-premises Linux-computer te initialiseren. Het volgende script plaatst de certificaten die u in de juiste plaats hebt gemaakt en configureert het `ipsec.conf` bestand met de juiste waarden uit het configuratie bestand in het Download bare pakket.
 
 ```bash
 vpnClient=$(az network vnet-gateway vpn-client generate \

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648533"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515058"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
@@ -41,7 +41,7 @@ In plaats van een service-principal te maken, kunt u overwegen beheerde identite
 
 Als u een Azure AD-app en Service-Principal maakt, moet de app zich in een eigen Tenant bevindt. Nadat u de app hebt gemaakt, geeft u de rol app **Inzender** of **eigenaar** toegang tot het Media Services-account.
 
-Zie [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)als u niet zeker weet of u gemachtigd bent om een Azure AD-app te maken.
+Zie [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)als u niet zeker weet of u gemachtigd bent om een Azure AD-app te maken.
 
 In de volgende afbeelding vertegenwoordigen de cijfers de stroom van de aanvragen in chronologische volg orde:
 
@@ -118,7 +118,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Verwijzing|
+|SDK|Naslaginformatie|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java-SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
@@ -154,5 +154,5 @@ Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media S
 
 * [Verbinding maken met Media Services met Java](configure-connect-java-howto.md)
 * [Verbinding maken met Media Services met .NET](configure-connect-dotnet-howto.md)
-* [Verbinding maken met Media Services met behulp van node. js](configure-connect-nodejs-howto.md)
+* [Verbinding maken met Media Services met Node.js](configure-connect-nodejs-howto.md)
 * [Verbinding maken met Media Services met python](configure-connect-python-howto.md)

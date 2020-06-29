@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/10/2017
 ms.author: alkohli
-ms.openlocfilehash: e09ff4bcbc141b1a1f80bc278918a291639c1885
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 9b95593dd7ce7e10300ecef9b3636073a3096a7f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61445300"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513650"
 ---
 # <a name="install-update-05-on-your-storsimple-virtual-array"></a>Update 0,5 installeren op de virtuele StorSimple-matrix
 
@@ -57,7 +57,7 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>De update of hotfix downloaden
 
-1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Start Internet Explorer en ga naar [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Als dit de eerste keer is dat u de Microsoft Update-catalogus op deze computer gebruikt, klikt u op **Installeren** wanneer u wordt gevraagd of u de invoegtoepassing voor de Microsoft Update-catalogus wilt installeren.
 
@@ -67,7 +67,7 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
    
     ![Catalogus doorzoeken](./media/storsimple-virtual-array-install-update-05/download1.png)
 
-4. Klik op **downloaden**. 
+4. Klik op **Downloaden**. 
 
 5. Als het goed is, ziet u dat er twee bestanden moeten worden gedownload: een *. MSU* en een *cab* -bestand. Down load elk van deze bestanden naar een map. De map kan ook worden gekopieerd naar een netwerkshare die bereikbaar is vanaf het apparaat.
 
@@ -75,8 +75,8 @@ Voer de volgende stappen uit om de software-update te downloaden uit de Microsof
     ![Bestanden in het pakket](./media/storsimple-virtual-array-install-update-05/update05folder.png)
 
     U ziet:
-    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64`. Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
-    - Een Genève Monitoring Agent-pakket `GenevaMonitoringAgentPackageInstaller`bestand. Dit bestand wordt gebruikt voor het bijwerken van de MDS-agent (bewaking en diagnose service). Dubbel klik op het CAB-bestand. Er wordt een. msi-bestand weer gegeven. Selecteer het bestand, klik met de rechter muisknop en **pak** het bestand uit. Het _MSI_ -bestand wordt gebruikt om de agent bij te werken.
+    -  Een Microsoft Update zelfstandig pakket bestand `WindowsTH-KB3011067-x64` . Dit bestand wordt gebruikt om de software van het apparaat bij te werken.
+    - Een Genève Monitoring Agent-pakket bestand `GenevaMonitoringAgentPackageInstaller` . Dit bestand wordt gebruikt voor het bijwerken van de MDS-agent (bewaking en diagnose service). Dubbel klik op het CAB-bestand. Er wordt een. msi-bestand weer gegeven. Selecteer het bestand, klik met de rechter muisknop en **pak** het bestand uit. Het _MSI_ -bestand wordt gebruikt om de agent bij te werken.
 
         ![MDS-agent update bestand uitpakken](./media/storsimple-virtual-array-install-update-05/extract-geneva-monitoring-agent-installer.png)
         
@@ -90,7 +90,7 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>De update of hotfix installeren
 
-1. Ga in de lokale web-UI naar **onderhouds** > **Software-update**.
+1. Ga in de lokale web-UI naar **onderhouds**  >  **Software-update**.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -106,14 +106,14 @@ Gebruik deze methode om updates te installeren op een apparaat met GA of update 
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update5m.png)
 
-5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds** > **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10290.0** zijn voor Update 0,5.
+5. Wanneer het opnieuw opstarten is voltooid, wordt u naar de **aanmeldings** pagina geleid. Als u wilt controleren of de software van het apparaat is bijgewerkt, gaat u naar **onderhouds**  >  **Software-update**in de lokale web-UI. De weer gegeven software versie moet **10.0.0.0.0.10290.0** zijn voor Update 0,5.
    
    > [!NOTE]
    > De software versies worden op een iets andere manier gerapporteerd in de lokale web-UI en de Azure Portal. De lokale web-UI rapporteert bijvoorbeeld **10.0.0.0.0.10290** en de Azure Portal rapport **10.0.10290.0** voor dezelfde versie.
    
     ![apparaat bijwerken](./media/storsimple-virtual-array-install-update-05/update6m.png)
 
-6. De volgende stap is het bijwerken van de MDS-agent. Ga op de pagina **Software-update** naar het pad naar het **update bestand** en blader `GenevaMonitoringAgentPackageInstaller.msi` naar het bestand. Herhaal stap 2-4. Nadat de virtuele matrix opnieuw is opgestart, meldt u zich aan bij de lokale web-UI.
+6. De volgende stap is het bijwerken van de MDS-agent. Ga op de pagina **Software-update** naar het pad naar het **update bestand** en blader naar het `GenevaMonitoringAgentPackageInstaller.msi` bestand. Herhaal stap 2-4. Nadat de virtuele matrix opnieuw is opgestart, meldt u zich aan bij de lokale web-UI.
 
 De update is nu voltooid.
 

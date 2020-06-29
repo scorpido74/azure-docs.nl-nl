@@ -4,16 +4,16 @@ description: Meer informatie over het registreren van een ondersteunings aanvraa
 services: storsimple
 author: alkohli
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67621039"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514421"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Open een ondersteunings ticket voor een import/export-taak
 
@@ -39,7 +39,7 @@ Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
             ![Opslag account beheer kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
         - Als u **BLOB**kiest, selecteert u **resource**, **container namen** (optioneel) en **ondersteunings schema**.
             ![BLOB kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - Als u **bestand**kiest, selecteert u **resource**, **Bestands share namen** (optioneel) en **ondersteunings plan** ![bestand kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
+        - Als u **bestand**kiest, selecteert u **resource**, **Bestands share namen** (optioneel) en **ondersteunings plan** ![ bestand kiezen](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
     4. Klik op **Volgende**.
 
 3. Selecteer in **nieuwe ondersteunings aanvraag** **stap 2-probleem**. Voer de volgende stappen uit om het **probleem te verhelpen**:
@@ -59,7 +59,7 @@ Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
 
    1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
    2. Geef in de contact gegevens uw naam, e-mail adres, optionele contact persoon, land/regio. Selecteer het selectie vakje **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen** .
-   3. Klik op **maken**.
+   3. Klik op **Create**.
    
        ![Contactgegevens](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 

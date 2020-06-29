@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 307fe6cd287d7a58435f745cd066be8308293267
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362105"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514235"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Een beheer programma met een Azure Resource Manager-sjabloon implementeren
 
@@ -40,7 +40,7 @@ Voordat u het beheer programma implementeert, hebt u een Azure Active Directory-
 
 - Azure Multi-Factor Authentication (MFA) is uitgeschakeld
 - Machtiging voor het maken van resources in uw Azure-abonnement
-- Toestemming voor het maken van een Azure AD-toepassing. Volg deze stappen om te controleren of uw gebruiker over de vereiste machtigingen beschikt door de instructies in de [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)te volgen.
+- Toestemming voor het maken van een Azure AD-toepassing. Volg deze stappen om te controleren of uw gebruiker over de vereiste machtigingen beschikt door de instructies in de [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)te volgen.
 
 Nadat u het beheer programma hebt geïmplementeerd en geconfigureerd, raden we u aan een gebruiker te vragen de beheer GEBRUIKERSINTERFACE te starten om ervoor te zorgen dat alles werkt. De gebruiker die de beheer GEBRUIKERSINTERFACE start, moet beschikken over een roltoewijzing waarmee ze de Windows Virtual Desktop-Tenant kunnen weer geven of bewerken.
 

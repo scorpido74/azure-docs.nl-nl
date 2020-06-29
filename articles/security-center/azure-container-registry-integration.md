@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/19/2019
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: bb7ffb06bb0cffeefae87ada665e2c123213186a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4fb623a77fc97fea1584451b73eef930c725f8a1
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218651"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517419"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Integratie met Security Center Azure Container Registry
 
@@ -27,7 +27,7 @@ Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bund
 
 Wanneer een installatie kopie naar het REGI ster wordt gepusht, wordt de installatie kopie automatisch gescand door Security Center. U kunt de scan van een afbeelding activeren door deze naar uw opslag plaats te pushen.
 
-Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten, maar wel tot 48H), zijn bevindingen beschikbaar in Security Center aanbevelingen als volgt:
+Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten, maar Maxi maal 40 minuten kan zijn), zijn er conclusies beschikbaar als Security Center aanbevelingen als volgt:
 
 [![Voor beeld Azure Security Center aanbeveling over zwakke plekken die zijn gedetecteerd in een gehoste installatie kopie van Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

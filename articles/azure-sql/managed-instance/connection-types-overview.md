@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 153f338a49a24d1cb9eb71c068effcfd20bd2ffe
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6c6774fb462a21e721b19ae53d1d018d780b28ae
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706270"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517317"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Verbindings typen van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,11 @@ In het Proxy Verbindings type wordt de TCP-sessie tot stand gebracht met behulp 
 
 ![proxy.png](./media/connection-types-overview/proxy.png)
 
-## <a name="script-to-change-connection-type-settings-using-powershell"></a>Script voor het wijzigen van de instellingen van het verbindings type met Power shell
+## <a name="changing-connection-type"></a>Verbindings type wijzigen
+
+- **Via de portal:** Als u het verbindings type wilt wijzigen met behulp van de Azure Portal, opent u de Virtual Network pagina en gebruikt u de instelling voor het **verbindings type** om het verbindings type te wijzigen en de wijzigingen op te slaan.
+
+- **Script voor het wijzigen van instellingen voor het verbindings type met behulp van Power shell:**
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

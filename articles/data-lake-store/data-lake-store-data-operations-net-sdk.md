@@ -3,22 +3,22 @@ title: '.NET SDK: bestandssysteem bewerkingen op Data Lake Storage Gen1-Azure'
 description: Gebruik de Azure Data Lake Storage Gen1 .NET SDK voor bestandssysteem bewerkingen op Data Lake Storage Gen1 zoals mappen maken, enzovoort.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: eb950f6029511cf834791c161e6a730bcadcabcc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690967"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85515659"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Bestandssysteem bewerkingen op Data Lake Storage Gen1 met behulp van de .NET SDK
 
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java-SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST-API](data-lake-store-data-operations-rest-api.md)
+> * [REST API](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
 >
@@ -41,7 +41,7 @@ Dit codevoorbeeld beschikbaar [in GitHub](https://github.com/Azure-Samples/data-
 
 1. Selecteer in Visual Studio het menu **bestand** , **Nieuw**en vervolgens **project**.
 1. Kies **console-app (.NET Framework)** en selecteer **volgende**.
-1. Voer in **project naam**, `CreateADLApplication`ENTER en selecteer vervolgens **maken**.
+1. Voer in **project naam**, Enter `CreateADLApplication` en selecteer vervolgens **maken**.
 1. Voeg de NuGet-pakketten toe aan het project.
 
    1. Klik in Solution Explorer met de rechtermuisknop op de projectnaam en klik op **Manage NuGet Packages**.
