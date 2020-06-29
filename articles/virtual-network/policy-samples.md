@@ -1,24 +1,24 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Virtual Network
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Virtual Network. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 3835f740cae592b31273d5e4b1c5faa1f1862876
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f7ccab3d8aab9720de0abcdd5665d5f859c7c0c4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232516"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884031"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-network"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Virtual Network
+# <a name="azure-policy-built-in-definitions-for-azure-virtual-network"></a>Ingebouwde Azure Policy-definities voor Azure Virtual Network
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Virtual Network. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 

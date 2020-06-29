@@ -1,28 +1,28 @@
 ---
-title: 'Zelf studie: hulp programma voor database migratie voor Azure Cosmos DB'
-description: 'Zelf studie: informatie over het gebruik van de open source Azure Cosmos DB Data Migration Tools voor het importeren van Azure Cosmos DB gegevens uit verschillende bronnen, waaronder MongoDB-, SQL Server-, tabel opslag-, Amazon DynamoDB-, CSV-en JSON-bestanden. Conversie van CSV naar JSON.'
+title: 'Zelfstudie: Hulpprogramma voor databasemigratie voor Azure Cosmos DB'
+description: "Zelfstudie: Leer hoe u de open source Azure Cosmos DB-hulpprogramma's voor gegevensmigratie gebruikt om gegevens te importeren naar Azure Cosmos DB vanuit diverse bronnen, zoals MongoDB, SQL Server, Tabelopslag, Amazon DynamoDB, CSV- en JSON-bestanden. Conversie van CSV naar JSON."
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238690"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687579"
 ---
-# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Zelf studie: het hulp programma voor gegevens migratie gebruiken om uw gegevens te migreren naar Azure Cosmos DB
+# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Zelfstudie: Hulpprogramma voor gegevensmigratie gebruiken voor het migreren van uw gegevens naar Azure Cosmos DB
 
 Deze zelfstudie bevat instructies over het gebruik van het Azure Cosmos DB-hulpprogramma voor gegevensmigratie waarmee gegevens uit diverse bronnen kunnen worden geïmporteerd in Azure Cosmos-containers en -tabellen. U kunt importeren vanuit JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure Table Storage, Amazon DynamoDB en zelfs Azure Cosmos DB SQL-API-verzamelingen. U migreert deze gegevens naar verzamelingen en tabellen voor gebruik met Azure Cosmos DB. Het hulpprogramma voor gegevensmigratie kan ook worden gebruikt wanneer u vanaf een verzameling met één partitie migreert naar een verzameling met meerdere partities voor de SQL-API.
 
 Welke API gaat u gebruiken met Azure Cosmos DB?
 
-* **[SQL-API](documentdb-introduction.md)**: u kunt een van de bronopties in het hulpprogramma voor gegevensmigratie gebruiken om gegevens te importeren.
-* **[Tabel-API](table-introduction.md)**: u kunt het hulpprogramma voor gegevensmigratie of AzCopy gebruiken om gegevens te importeren. Zie [Gegevens importeren voor gebruik met de Azure Cosmos DB Table-API](table-import.md) voor meer informatie.
-* **[API's van Azure Cosmos DB voor MongoDB](mongodb-introduction.md)**: het hulpprogramma voor gegevensmigratie biedt momenteel geen ondersteuning voor API's van Azure Cosmos DB voor MongoDB, noch als bron noch als doel. Raadpleeg [MongoDB-gegevens migreren naar een Cosmos-database met de API voor Cosmos DB voor MongoDB](mongodb-migrate.md) voor instructies voor het migreren van de gegevens naar of uit verzamelingen in Azure Cosmos DB. U kunt het hulpprogramma voor gegevensmigratie nog wel gebruiken om gegevens vanaf MongoDB te exporteren naar Azure Cosmos DB SQL-API-verzamelingen voor gebruik met de SQL-API.
-* **[Gremlin-API](graph-introduction.md)**: het hulpprogramma voor gegevensmigratie is momenteel geen ondersteund importprogramma voor Gremlin API-accounts.
+* **[SQL-API](documentdb-introduction.md)** : u kunt een van de bronopties in het hulpprogramma voor gegevensmigratie gebruiken om gegevens te importeren.
+* **[Tabel-API](table-introduction.md)** : u kunt het hulpprogramma voor gegevensmigratie of AzCopy gebruiken om gegevens te importeren. Zie [Gegevens importeren voor gebruik met de Azure Cosmos DB Table-API](table-import.md) voor meer informatie.
+* **[API's van Azure Cosmos DB voor MongoDB](mongodb-introduction.md)** : het hulpprogramma voor gegevensmigratie biedt momenteel geen ondersteuning voor API's van Azure Cosmos DB voor MongoDB, noch als bron noch als doel. Raadpleeg [MongoDB-gegevens migreren naar een Cosmos-database met de API voor Cosmos DB voor MongoDB](mongodb-migrate.md) voor instructies voor het migreren van de gegevens naar of uit verzamelingen in Azure Cosmos DB. U kunt het hulpprogramma voor gegevensmigratie nog wel gebruiken om gegevens vanaf MongoDB te exporteren naar Azure Cosmos DB SQL-API-verzamelingen voor gebruik met de SQL-API.
+* **[Gremlin-API](graph-introduction.md)** : het hulpprogramma voor gegevensmigratie is momenteel geen ondersteund importprogramma voor Gremlin API-accounts.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -37,9 +37,9 @@ Voordat u de instructies in dit artikel volgt, moet u de volgende stappen uitvoe
 
 * **Installeer** [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) of hoger.
 
-* **Verhoog de doorvoer:** de duur van de gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u voor een afzonderlijke verzameling of een reeks verzamelingen instelt. Verhoog de doorvoer voor grotere gegevensmigraties. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Zie [prestatie niveaus](performance-levels.md) en [prijs categorieën](https://azure.microsoft.com/pricing/details/cosmos-db/) in azure Cosmos DB voor meer informatie over het verhogen van de door Voer in de Azure Portal.
+* **Doorvoer vergroten:** de duur van de gegevensmigratie is afhankelijk van de hoeveelheid doorvoer die u voor een afzonderlijke verzameling of een reeks verzamelingen instelt. Verhoog de doorvoer voor grotere gegevensmigraties. Nadat u de migratie hebt voltooid, verlaagt u de doorvoer om kosten te besparen. Zie [prestatieniveaus](performance-levels.md) en [prijscategorieën](https://azure.microsoft.com/pricing/details/cosmos-db/) in Azure Cosmos DB voor meer informatie over het verhogen van de doorvoer in de Azure-portal.
 
-* **Maak Azure Cosmos DB-resources**: voordat u gegevens gaat migreren, maakt u vooraf alle tabellen vanuit Azure Portal. Als u wilt migreren naar een Azure Cosmos DB-account dat door Voer op database niveau is, geeft u een partitie sleutel op wanneer u de Azure Cosmos-containers maakt.
+* **Azure Cosmos DB-resources maken:** voordat u gegevens gaat migreren, maakt u vooraf alle verzamelingen vanuit de Azure-portal. Als u wilt migreren naar een Azure Cosmos DB-account dat doorvoer op databaseniveau heeft, geeft u een partitiesleutel op wanneer u de Azure Cosmos-containers maakt.
 
 ## <a name="overview"></a><a id="Overviewl"></a>Overzicht
 
@@ -61,7 +61,7 @@ Het hulpprogramma voor importeren bevat een grafische gebruikersinterface (dtui.
 De broncode van het hulpprogramma voor migratie is beschikbaar op GitHub in [deze opslagplaats](https://github.com/azure/azure-documentdb-datamigrationtool). U kunt de oplossing lokaal downloaden en compileren, of u kunt [een vooraf gecompileerd binair bestand downloaden](https://aka.ms/csdmtool). Vervolgens voert u een van de volgende opdrachten uit:
 
 * **Dtui.exe**: grafische-interfaceversie van het hulpprogramma
-* **DT.exe**: opdrachtregelversie van het hulpprogramma
+* **Dt.exe**: opdrachtregelversie van het hulpprogramma
 
 ## <a name="select-data-source"></a>Gegevensbron selecteren
 
@@ -72,9 +72,9 @@ Nadat u het hulpprogramma hebt geïnstalleerd, is het tijd om uw gegevens te imp
 * [MongoDB-exportbestanden](#MongoDBExport)
 * [SQL Server](#SQL)
 * [CSV-bestanden](#CSV)
-* [Azure-tabel opslag](#AzureTableSource)
+* [Azure Table storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
-* [Blobcache](#BlobImport)
+* [Blob](#BlobImport)
 * [Azure Cosmos-containers](#SQLSource)
 * [HBase](#HBaseSource)
 * [Azure DB Cosmos-bulkimport](#SQLBulkTarget)
@@ -86,18 +86,18 @@ Met de importfunctie voor JSON-bronbestanden kunt u een of meer uit een enkel do
 
 ![Schermopname van opties voor JSON-bronbestanden - hulpprogramma's voor databasemigratie](./media/import-data/jsonsource.png)
 
-De connection string heeft de volgende indeling:
+De verbindingsreeks heeft de volgende indeling:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* De `<CosmosDB Endpoint>` is de URI van het eind punt. U kunt deze waarde ophalen uit de Azure Portal. Navigeer naar uw Azure Cosmos-account. Open het deel venster **overzicht** en kopieer de **URI** -waarde.
-* De `<AccountKey>` is het wacht woord of de **primaire sleutel**. U kunt deze waarde ophalen uit de Azure Portal. Navigeer naar uw Azure Cosmos-account. Open de **verbindings reeksen** of het deel venster **sleutels** en kopieer de waarde "wacht woord" of **primaire sleutel** .
-* De `<CosmosDB Database>` is de naam van de CosmosDB-data base.
+* De `<CosmosDB Endpoint>` is de URI van het eindpunt. U kunt deze waarde ophalen uit de Microsoft Azure-portal. Navigeer naar uw Azure Cosmos-account. Open het deelvenster **overzicht** en kopieer de waarde van de **URI**.
+* De `<AccountKey>` is het "wachtwoord" of de **PRIMAIRE SLEUTEL**. U kunt deze waarde ophalen uit de Microsoft Azure-portal. Navigeer naar uw Azure Cosmos-account. Open de deelvensters **verbindingsreeksen** of **sleutels** en kopieer de waarde "wachtwoord" of **PRIMAIRE SLEUTEL**.
+* De `<CosmosDB Database>` is de naam van de CosmosDB-database.
 
 Voorbeeld: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
 
 > [!NOTE]
-> Gebruik de controle opdracht om te controleren of het Cosmos DB-account dat is opgegeven in het veld connection string, toegankelijk is.
+> Gebruik de opdracht Verifiëren om te controleren of de Cosmos DB-account die in het verbindingsreeksveld is opgegeven, kan worden geopend.
 
 Hierna volgen enkele opdrachtregelvoorbeelden om JSON-bestanden te importeren:
 
@@ -149,7 +149,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB-exportbestanden
 
 > [!IMPORTANT]
-> Als u importeert naar een Azure Cosmos DB-account met ondersteuning voor MongoDB, volgt u deze [instructies](mongodb-migrate.md).
+> Volg deze [instructies](mongodb-migrate.md) als u importeert naar een Azure Cosmos DB-account met ondersteuning voor MongoDB.
 
 Met de importoptie voor MongoDB-export van JSON-bronbestanden kunt u een of meer JSON-bestanden importeren die zijn geproduceerd vanaf het hulpprogramma mongoexport.  
 
@@ -184,7 +184,7 @@ Deze retourneert de volgende (gedeeltelijke) waarden:
 
 Let op de aliassen zoals Address.AddressType en Address.Location.StateProvinceName. Door een scheidingsteken voor nesten '.' op te geven, maakt het importprogramma Address- en Address.Location-subdocumenten tijdens het importeren. Hier volgt een voorbeeld van een resulterend document in Azure Cosmos DB:
 
-*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
+*{ "id": "956", "Naam": "Finer Verkoop ed Service", "Adres": { "AddressType": "Hoofdkantoor", "AddressLine1": "Verbindingsweg 122", "Locatie": { "Stad": "Rotterdam", "StateProvinceName": "Zuid-Holland" }, "PostalCode": "3092 AX", "CountryRegionName": "Nederland" } }*
 
 Hierna volgen enkele opdrachtregelvoorbeelden om te importeren vanaf SQL Server:
 
@@ -208,7 +208,7 @@ Vergelijkbaar met de SQL-bron kan de eigenschap van het type geneste scheidingst
 
 Let op de aliassen zoals DomainInfo.Domain_Name en RedirectInfo.Redirecting. Door een scheidingsteken voor nesten '.' op te geven, maakt het importprogramma DomainInfo- en RedirectInfo-subdocumenten tijdens het importeren. Hier volgt een voorbeeld van een resulterend document in Azure Cosmos DB:
 
-*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.acus.gov"}, "Federal Agency": "administratieve conferentie van de Verenigde Staten", "RedirectInfo": {"omleiden": "0", Redirect_Destination "}": ""}, "ID": "9cc565c5-EBCD-1c03-ebd3-cc3e2ecd814d"}*
+*{ "DomainInfo": { "Domeinnaam": "ACUS.GOV", "Adres_domeinnaam": "https:\//www.ACUS.GOV" }, "Federaal Agentschap": "Administratieve Conferentie van de Verenigde Staten", "RedirectInfo": { "Omleiden": "0", "Doel_omleiding": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 Met het importprogramma wordt een poging gedaan informatie over het type af te leiden voor waarden zonder aanhalingstekens in CSV-bestanden (waarden tussen aanhalingstekens worden altijd behandeld als tekenreeksen).  Typen worden geïdentificeerd in de volgende volgorde: getal, datum/tijd, Booleaanse waarde.  
 
@@ -290,7 +290,7 @@ dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net
 
 ## <a name="import-from-a-sql-api-collection"></a><a id="SQLSource"></a>Importeren vanuit een SQL-API-verzameling
 
-Met de optie Azure Cosmos DB source importer kunt u gegevens importeren uit een of meer Azure Cosmos-containers en kunt u desgewenst documenten filteren met behulp van een query.  
+Met de importoptie voor Azure Cosmos DB-bronnen kunt u gegevens importeren vanuit een of meer Azure Cosmos-containers en optioneel documenten filteren met behulp van een query.  
 
 ![Schermopname van opties voor Azure Cosmos DB-bronnen](./media/import-data/documentdbsource.png)
 
@@ -305,7 +305,7 @@ U kunt de Azure Cosmos DB-verbindingsreeks ophalen op de pagina Sleutels in de A
 > [!NOTE]
 > Gebruik de opdracht Verifiëren om te controleren of de Azure Cosmos DB-instantie die is opgegeven in het verbindingsreeksveld, kan worden geopend.
 
-Als u wilt importeren uit één Azure Cosmos-container, voert u de naam in van de verzameling waaruit de gegevens moeten worden geïmporteerd. Als u wilt importeren uit meer dan één Azure Cosmos-container, geeft u een reguliere expressie op die overeenkomt met een of meer verzamelings namen (bijvoorbeeld Collection01 | collection02 | collection03). U kunt eventueel een query of een bestand opgeven om de gegevens die u wilt importeren, zowel te filteren als te vormen.
+Als u wilt importeren vanuit één Azure Cosmos-container, voert u de naam in van de verzameling waaruit gegevens moeten worden geïmporteerd. Als u uit meer dan één Azure Cosmos-container wilt importeren, geeft u een reguliere expressie op die overeenkomt met een of meer verzamelingsnamen (bijvoorbeeld collection01 | collection02 | collection03). U kunt eventueel een query of een bestand opgeven om de gegevens die u wilt importeren, zowel te filteren als te vormen.
 
 > [!NOTE]
 > Aangezien het verzamelingenveld reguliere expressies accepteert, moeten die tekens overeenkomstig een escape-teken krijgen als u importeert uit een enkele verzameling waarvan de naam tekens van de reguliere expressie heeft.
@@ -313,8 +313,8 @@ Als u wilt importeren uit één Azure Cosmos-container, voert u de naam in van d
 De importoptie voor Azure Cosmos DB-bronnen heeft de volgende geavanceerde opties:
 
 1. Interne velden opnemen: hiermee bepaalt u of Azure Cosmos DB-documentsysteemeigenschappen wel of niet moeten worden opgenomen in de export (bijvoorbeeld _rid, _ts).
-2. Aantal nieuwe pogingen bij fouten: hiermee bepaalt u het aantal keer dat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd in geval van een tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
-3. Interval voor nieuwe pogingen: hiermee bepaalt u hoe lang moet worden gewacht voordat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd in geval van een tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
+2. Aantal nieuwe pogingen bij fouten: hiermee bepaalt u het aantal malen dat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd in geval van een tijdelijke fout (bijvoorbeeld onderbreking van netwerkconnectiviteit).
+3. Interval tussen nieuwe pogingen: hiermee bepaalt u hoe lang moet worden gewacht voordat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd in geval van een tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
 4. Verbindingsmodus: hiermee bepaalt u de verbindingsmodus die moet worden gebruikt met Azure Cosmos DB. De beschikbare opties zijn DirectTcp, DirectHttps en Gateway. De rechtstreekse verbindingsmodi zijn sneller, terwijl de gatewaymodus minder problemen oplevert voor de firewall aangezien deze alleen poort 443 gebruikt.
 
 ![Schermopname van geavanceerde opties voor Azure Cosmos DB-bronnen](./media/import-data/documentdbsourceoptions.png)
@@ -361,7 +361,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 ## <a name="import-to-the-sql-api-bulk-import"></a><a id="SQLBulkTarget"></a>Importeren naar de SQL-API (bulkimport)
 
-Met de Azure Cosmos DB-bulkimportfunctie kunt u importeren vanuit alle beschikbare bronopties MET een opgeslagen Azure Cosmos DB-procedure voor efficiëntie. Het hulp programma ondersteunt importeren in één gepartitioneerde Azure Cosmos-container. Het biedt ook ondersteuning voor Shard-import waarbij gegevens zijn gepartitioneerd in meer dan één gepartitioneerde Azure Cosmos-container. Zie [Partitioneren en schalen in Azure Cosmos DB](partition-data.md) voor meer informatie over gegevenspartitionering. Het hulpprogramma maakt de opgeslagen procedure, voert deze uit en verwijdert deze uit de doelverzameling(en).  
+Met de Azure Cosmos DB-bulkimportfunctie kunt u importeren vanuit alle beschikbare bronopties MET een opgeslagen Azure Cosmos DB-procedure voor efficiëntie. Het hulpprogramma biedt ondersteuning voor het importeren van een Azure Cosmos-container met één partitie. Het biedt ook ondersteuning voor shard-imports, waarbij gegevens worden gepartitioneerd in meer dan één Azure Cosmos-container met één partitie. Zie [Partitioneren en schalen in Azure Cosmos DB](partition-data.md) voor meer informatie over gegevenspartitionering. Het hulpprogramma maakt de opgeslagen procedure, voert deze uit en verwijdert deze uit de doelverzameling(en).  
 
 ![Schermopname van Azure Cosmos DB-bulkopties](./media/import-data/documentdbbulk.png)
 
@@ -400,17 +400,17 @@ Verder kunt u, wanneer u datumtypen importeert (bijvoorbeeld van SQL Server of M
  ![Schermopname van Azure Cosmos DB-importopties voor datum/tijd](./media/import-data/datetimeoptions.png)
 
 * Tekenreeks: behouden als een tekenreekswaarde
-* Tijdvak: behouden als een Tijdvak-getalwaarde
-* Beide: zowel tekenreekswaarden als Tijdvak-getalwaarden behouden. Met deze optie maakt u een subdocument, bijvoorbeeld: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* Epoch: behouden als een Epoch-getalswaarde
+* Beide: zowel tekenreekswaarden als Epoch-getalswaarden behouden. Met deze optie maakt u een subdocument, bijvoorbeeld: "date_joined": { "Waarde": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 De optie Azure Cosmos DB-bulkimportfunctie heeft de volgende geavanceerde opties:
 
 1. Batchgrootte: het hulpprogramma wordt standaard ingesteld op een batchgrootte van 50.  Als de documenten die moeten worden geïmporteerd groot zijn, kunt u overwegen de batchgrootte te verlagen. Als de documenten die moeten worden geïmporteerd daarentegen klein zijn, kunt u overwegen de batchgrootte te verhogen.
 2. Maximale scriptgrootte (bytes): het hulpprogramma staat standaard ingesteld op een maximale scriptgrootte van 512 KB.
-3. Automatische id-generatie uitschakelen: als elk document dat moet worden geïmporteerd, een id-veld bevat, kunt u de prestatie verbeteren door deze optie in te schakelen. Documenten zonder een uniek id-veld worden niet geïmporteerd.
+3. Automatische id-generatie uitschakelen: als elk document dat moet worden geïmporteerd, een id-veld bevat, kunt u de prestatie verbeteren door deze optie te selecteren. Documenten zonder een uniek id-veld worden niet geïmporteerd.
 4. Bestaande documenten bijwerken: het hulpprogramma staat standaard ingesteld op het niet vervangen van bestaande documenten met id-conflicten. Als u deze optie selecteert, worden bestaande documenten met overeenkomende id overschreven. Deze functie is handig voor geplande gegevensmigraties waarmee bestaande documenten worden bijgewerkt.
 5. Aantal nieuwe pogingen bij fouten: geeft op hoe vaak de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd tijdens tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
-6. Interval voor nieuwe pogingen: hiermee bepaalt u hoe lang moet worden gewacht voordat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd in geval van een tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
+6. Interval tussen nieuwe pogingen: hiermee bepaalt u hoe lang moet worden gewacht voordat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd in geval van een tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
 7. Verbindingsmodus: hiermee bepaalt u de verbindingsmodus die moet worden gebruikt met Azure Cosmos DB. De beschikbare opties zijn DirectTcp, DirectHttps en Gateway. De rechtstreekse verbindingsmodi zijn sneller, terwijl de gatewaymodus minder problemen oplevert voor de firewall aangezien deze alleen poort 443 gebruikt.
 
 ![Schermopname van geavanceerde opties voor Azure Cosmos DB-bulkimport](./media/import-data/docdbbulkoptions.png)
@@ -420,7 +420,7 @@ De optie Azure Cosmos DB-bulkimportfunctie heeft de volgende geavanceerde opties
 
 ## <a name="import-to-the-sql-api-sequential-record-import"></a><a id="SQLSeqTarget"></a>Importeren naar de SQL-API (sequentiële recordimport)
 
-Met de Azure Cosmos DB-importfunctie voor sequentiële records kunt u importeren vanuit een beschikbare bronoptie op een record-voor-recordbasis. U kunt deze optie selecteren als u importeert naar een bestaande verzameling die het quotum van opgeslagen procedures heeft bereikt. Het hulp programma ondersteunt importeren naar een enkelvoudige Azure Cosmos-container (zowel één partitie als meerdere partities). Het biedt ook ondersteuning voor Shard-import, waarbij gegevens worden gepartitioneerd over meer dan één partitie, een Azure Cosmos-container met één of meerdere partities. Zie [Partitioneren en schalen in Azure Cosmos DB](partition-data.md) voor meer informatie over gegevenspartitionering.
+Met de Azure Cosmos DB-importfunctie voor sequentiële records kunt u importeren vanuit een beschikbare bronoptie op een record-voor-recordbasis. U kunt deze optie selecteren als u importeert naar een bestaande verzameling die het quotum van opgeslagen procedures heeft bereikt. Het hulpprogramma biedt ondersteuning voor het importeren naar een enkele Azure Cosmos-container (zowel met één als meerdere partities). Het biedt ook ondersteuning voor shard-imports, waarbij gegevens worden gepartitioneerd in meer dan één Azure Cosmos-container, met één partitie of met meerdere partities. Zie [Partitioneren en schalen in Azure Cosmos DB](partition-data.md) voor meer informatie over gegevenspartitionering.
 
 ![Schermopname van Azure DB Cosmos-importopties voor sequentiële records](./media/import-data/documentdbsequential.png)
 
@@ -455,16 +455,16 @@ Er zijn tijdens het importeren een aantal geavanceerde opties beschikbaar. Ten e
  ![Schermopname van Azure Cosmos DB-importopties voor datum/tijd](./media/import-data/datetimeoptions.png)
 
 * Tekenreeks: behouden als een tekenreekswaarde
-* Tijdvak: behouden als een Tijdvak-getalwaarde
-* Beide: zowel tekenreekswaarden als Tijdvak-getalwaarden behouden. Met deze optie maakt u een subdocument, bijvoorbeeld: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* Epoch: behouden als een Epoch-getalswaarde
+* Beide: zowel tekenreekswaarden als Epoch-getalswaarden behouden. Met deze optie maakt u een subdocument, bijvoorbeeld: "date_joined": { "Waarde": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 De Azure Cosmos DB-bulkimportoptie voor sequentiële records heeft de volgende geavanceerde opties:
 
 1. Aantal parallelle aanvragen: het hulpprogramma staat standaard ingesteld op twee parallelle aanvragen. Als de documenten die moeten worden geïmporteerd klein zijn, kunt u overwegen het aantal parallelle aanvragen te verhogen. Als dit nummer te veel wordt verhoogd, wordt de import mogelijk beperkt.
-2. Automatische id-generatie uitschakelen: als elk document dat moet worden geïmporteerd, een id-veld bevat, kunt u de prestatie verbeteren door deze optie in te schakelen. Documenten zonder een uniek id-veld worden niet geïmporteerd.
+2. Automatische id-generatie uitschakelen: als elk document dat moet worden geïmporteerd, een id-veld bevat, kunt u de prestatie verbeteren door deze optie te selecteren. Documenten zonder een uniek id-veld worden niet geïmporteerd.
 3. Bestaande documenten bijwerken: het hulpprogramma staat standaard ingesteld op het niet vervangen van bestaande documenten met id-conflicten. Als u deze optie selecteert, worden bestaande documenten met overeenkomende id overschreven. Deze functie is handig voor geplande gegevensmigraties waarmee bestaande documenten worden bijgewerkt.
 4. Aantal nieuwe pogingen bij fouten: geeft op hoe vaak de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd tijdens tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
-5. Interval voor nieuwe pogingen: hiermee bepaalt u hoe lang moet worden gewacht voordat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd tijdens tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
+5. Interval tussen nieuwe pogingen: hiermee bepaalt u hoe lang moet worden gewacht voordat de verbinding met Azure Cosmos DB opnieuw moet worden geprobeerd tijdens tijdelijke fouten (bijvoorbeeld onderbreking van netwerkconnectiviteit).
 6. Verbindingsmodus: hiermee bepaalt u de verbindingsmodus die moet worden gebruikt met Azure Cosmos DB. De beschikbare opties zijn DirectTcp, DirectHttps en Gateway. De rechtstreekse verbindingsmodi zijn sneller, terwijl de gatewaymodus minder problemen oplevert voor de firewall aangezien deze alleen poort 443 gebruikt.
 
 ![Schermopname van geavanceerde importopties voor sequentiële Azure DB Cosmos-records](./media/import-data/documentdbsequentialoptions.png)

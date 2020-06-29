@@ -7,19 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/19/2020
-ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/08/2020
+ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344200"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736081"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
 Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
 
 ## <a name="feature-announcements"></a>Aankondigingen van functies
+
+### <a name="june-2020"></a>Juni 2020
+
+De Azure Machine Learning-vaardigheid is een nieuw vaardigheidstype om een deductie-eindpunt van Azure Machine Learning te integreren. De portal-ervaring ondersteunt de detectie en integratie van uw Azure Machine Learning-eindpunt binnen een Cognitive Search-vaardighedenset. Voor de detectie moeten uw Cognitive Search- en Azure ML-services in hetzelfde abonnement zijn geïmplementeerd. Als u zich wilt registreren voor de preview-versie van de AML-vaardigheid, [vul dan het formulier in](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Mei 2020 (Microsoft Build)
 

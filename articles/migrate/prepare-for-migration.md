@@ -1,137 +1,184 @@
 ---
-title: Machines voorbereiden voor migratie met Azure Migrate
-description: Meer informatie over het voorbereiden van on-premises machines voor migratie met Azure Migrate.
+title: Machines voorbereiden op migratie met Azure Migrate
+description: Leer hoe u on-premises machines kunt voorbereiden voor migratie met Azure Migrate.
 ms.topic: tutorial
-ms.date: 02/17/2020
+ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: eba177a254606bb847e0866ae48281a889c53f9b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a5314e3f06c54921b12c242f884e02073edc773b
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78927474"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769639"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
-In dit artikel wordt beschreven hoe u on-premises computers voorbereidt voordat u deze naar Azure migreert met behulp van [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool).
+In dit artikel wordt beschreven hoe u on-premises machines kunt voorbereiden voordat u ze naar Azure migreert met het hulpprogramma [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool).
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
-> * Migratie beperkingen controleren.
-> * Controleer de vereisten van het besturings systeem en de ondersteunings beperkingen.
-> * Controleer de URL en poort toegang voor de machines die u wilt migreren.
-> * Bekijk wijzigingen die u mogelijk moet maken voordat u begint met de migratie.
-> * Instellingen configureren, zodat de stationsletters na de migratie behouden blijven.
-> * Bereid machines voor, zodat u na de migratie verbinding kunt maken met de virtuele Azure-machines.
+> * Migratiebeperkingen controleren.
+> * Een methode selecteren voor het migreren van VMware-VM's
+> * Hypervisor- en besturingssysteemvereisten controleren voor machines die u wilt migreren.
+> * URL- en poorttoegang controleren voor machines die u wilt migreren.
+> * Wijzigingen bekijken die u mogelijk moet aanbrengen voordat u begint met de migratie.
+> * Vereisten voor Azure-VM's voor gemigreerde machines controleren
+> * Machines voorbereiden zodat u na migratie verbinding kunt maken met de Azure-VM's.
 
-## <a name="verify-migration-limitations"></a>Migratie beperkingen controleren
 
-- U kunt Maxi maal 35.000 VMware-Vm's/Hyper-V-Vm's evalueren in één Azure Migrate project met behulp van Azure Migrate server migratie. Een project kan VMware-Vm's en virtuele Hyper-V-machines combi neren, tot aan de limieten voor elke.
-- U kunt Maxi maal tien Vm's tegelijk selecteren voor de migratie. Als u meer wilt repliceren, repliceert u in groepen van 10.
-- Voor VMware-agentloze migratie kunt u Maxi maal 100 replicaties tegelijk uitvoeren.
 
-## <a name="verify-operating-system-requirements"></a>Vereisten voor het besturings systeem controleren
+## <a name="verify-migration-limitations"></a>Migratiebeperkingen verifiëren
 
-- Controleer of uw [Windows-besturings systemen](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) worden ondersteund in Azure.
-- Controleer of uw [Linux-distributies](../virtual-machines/linux/endorsed-distros.md) worden ondersteund in Azure.
+De tabel geeft een overzicht van de limieten voor detectie, beoordeling en migratie van Azure Migrate. Wij raden u aan machines te beoordelen voorafgaand aan de migratie, maar u hoeft dit niet te doen.
 
-## <a name="see-whats-supported"></a>Bekijk wat wordt ondersteund
+**Scenario** | **Project** | **Detectie/Evaluatie** | **Migratie**
+--- | --- | --- | ---
+**VMware-VM's** | Detecteer en evalueer tot 35.000 VM's in één Azure Migrate-project. | Detecteer tot 10.000 VMware-VM's met één [Azure Migrate-apparaat](common-questions-appliance.md) voor VMware. | **Migratie zonder agents**: u kunt maximaal 300 VM's tegelijk repliceren. Voor de beste prestaties raden we u aan meerdere batches met VM's te maken als u er meer dan 50 hebt.<br/><br/> **Migratie met agents**: u kunt het [replicatieapparaat](migrate-replication-appliance.md) [uitschalen](/agent-based-migration-architecture.md#performance-and-scaling) om grote aantallen VM's te repliceren.<br/><br/> U kunt in de portal maximaal 10 machines tegelijk selecteren voor replicatie. Als u meer machines wilt repliceren, voegt u die toe in batches van 10.
+**Virtuele Hyper-V-machines** | Detecteer en evalueer tot 35.000 VM's in één Azure Migrate-project. | Detecteer tot 5.000 Hyper-V-VM's met één Azure Migrate-apparaat | Voor Hyper-V-migratie wordt geen apparaat gebruikt. In plaats daarvan wordt de Hyper-V Replication Provider uitgevoerd op elke Hyper-V-host.<br/><br/> De replicatiecapaciteit wordt beïnvloed door prestatiefactoren zoals VM-verloop en uploadbandbreedte voor de replicatiegegevens.<br/><br/> U kunt in de portal maximaal 10 machines tegelijk selecteren voor replicatie. Als u meer machines wilt repliceren, voegt u die toe in batches van 10.
+**Fysieke machines** | Detecteer en evalueer tot 35.000 virtuele machines in één Azure Migrate-project. | Detecteer tot 250 fysieke servers met één Azure Migrate-apparaat voor fysieke servers. | U kunt het [replicatieapparaat](migrate-replication-appliance.md) [uitschalen](/agent-based-migration-architecture.md#performance-and-scaling) om grote aantallen servers te repliceren.<br/><br/> U kunt in de portal maximaal 10 machines tegelijk selecteren voor replicatie. Als u meer machines wilt repliceren, voegt u die toe in batches van 10.
 
-Voor virtuele VMware-machines ondersteunt server migratie zonder [agents of migratie op basis van een agent](server-migrate-overview.md).
+## <a name="select-a-vmware-migration-method"></a>Een VMware-migratiemethode selecteren
 
-- **VMware-vm's**: Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-vmware-migration.md) voor VMware-vm's.
-- **Virtuele Hyper-v-machines**: Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-hyper-v-migration.md) voor virtuele Hyper-v-machines.
-- **Fysieke machines**: Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-physical-migration.md) voor on-premises fysieke machines en andere gevirtualiseerde servers. 
+Als u VMware-VM's naar Azure migreert, kunt u de migratiemethode met en zonder agents [vergelijken](server-migrate-overview.md#compare-migration-methods) om te beslissen wat voor u het beste werkt.
 
-## <a name="review-url-and-port-access"></a>De toegang tot de URL en poort controleren
+## <a name="verify-hypervisor-requirements"></a>Hypervisor-vereisten verifiëren
 
-Computers hebben mogelijk Internet toegang nodig tijdens de migratie.
+- Verifieer vereisten voor [VMware-migratie zonder agents](migrate-support-matrix-vmware-migration.md#vmware-requirements-agentless) of [VMware-migratie met agents](migrate-support-matrix-vmware-migration.md#vmware-requirements-agent-based).
+- Verifieer [Hyper-V-host](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements)-vereisten.
 
-- **Azure migrate apparaat**: Bekijk de [url's](migrate-appliance.md#url-access) en [poorten](migrate-support-matrix-vmware-migration.md#agentless-ports) die door het Azure migrate-apparaat moeten worden geopend tijdens de migratie zonder agent.
-- **Migratie op basis van VMware VM-agent**: [url's](migrate-replication-appliance.md#url-access) en [poorten](migrate-replication-appliance.md#port-access) controleren het replicatie apparaat wordt gebruikt tijdens de migratie van een VMware VM-agent. 
-- **Hyper-v-hosts**: Controleer [url's en poorten](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) die de hyper-v-hosts moeten openen tijdens de migratie. 
-- **Fysieke servers**: Bekijk [url's](migrate-replication-appliance.md#url-access) en [poorten](migrate-replication-appliance.md#port-access) die door het replicatie apparaat worden gebruikt tijdens de migratie van de fysieke server.
 
-## <a name="verify-required-changes-before-migrating"></a>Controleer de vereiste wijzigingen voordat u de migratie uitvoert
+## <a name="verify-operating-system-requirements"></a>Besturingssysteemvereisten verifiëren
 
-Sommige Vm's kunnen wijzigingen vereisen zodat ze kunnen worden uitgevoerd in Azure. Azure Migrate worden deze wijzigingen automatisch aangebracht voor virtuele machines waarop deze besturings systemen worden uitgevoerd:
+Ondersteunde besturingssystemen voor migratie verifiëren:
 
-- Red Hat Enterprise Linux 7.0 +, 6.5 +
-- CentOS 7.0 +, 6.5 +
-- SUSE Linux Enterprise Server 12 SP1 +
-- Ubuntu 18.04 LTS, 16.04 LTS, 14.04 LTS
+- Als u VMware-VM's of Hyper-V-VM's migreert, verifieer dan VMware-VM-vereisten voor migratie [zonder agents](migrate-support-matrix-vmware-migration.md#vm-requirements-agentless) en [met agents](migrate-support-matrix-vmware-migration.md#vm-requirements-agent-based), en vereisten voor [Hyper-V-VM's](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms).
+- Verifieer dat [Windows-besturingssystemen](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) worden ondersteund in Azure.
+- Verifieer in Azure ondersteunde [Linux-distributies](../virtual-machines/linux/endorsed-distros.md).
+
+## <a name="review-url-and-port-access"></a>URL- en poorttoegang controleren
+
+Controleer welke URL's en poorten worden gebruikt tijdens de migratie.
+
+**Scenario** | **Details** |  **URL's** | **Poorten**
+--- | --- | --- | ---
+**VMware-migratie zonder agents** | Gebruikt het [Azure Migrate-apparaat](migrate-appliance-architecture.md) voor migratie. Er wordt niets geïnstalleerd op VMware-VM's. | Controleer de openbare cloud- en overheids-[URL's](migrate-appliance.md#url-access) die nodig zijn voor de detectie, beoordeling en migratie met het apparaat. | [Controleer](migrate-support-matrix-vmware-migration.md#port-requirements-agentless) de poortvereisten voor migratie zonder agents.
+**VMware-migratie met agents** | Gebruikt het [replicatieapparaat](migrate-replication-appliance.md) voor migratie. De Mobility-serviceagent wordt geïnstalleerd op VM's. | Controleer de [openbare cloud](migrate-replication-appliance.md#url-access)- en [Azure Government](migrate-replication-appliance.md#azure-government-url-access)-URL's waartoe het replicatieapparaat toegang moet hebben. | [Controleer](migrate-replication-appliance.md#port-access) de poorten die worden gebruikt tijdens migratie met agents.
+**Hyper-V-migratie** | Gebruikt een op Hyper-V-hosts geïnstalleerde provider voor migratie. Er wordt niets geïnstalleerd op Hyper-V-VM's. | Controleer de [openbare cloud](migrate-support-matrix-hyper-v-migration.md#url-access-public-cloud)- en [Azure Government](migrate-support-matrix-hyper-v-migration.md#url-access-azure-government)-URL's waartoe de replicatieprovider die wordt uitgevoerd op de hosts toegang moet hebben. | De replicatieprovider op de Hyper-V-host gebruikt uitgaande verbindingen op HTTPS-poort 443 om VM-replicatiegegevens te verzenden.
+**Fysieke machines** | Gebruikt het [replicatieapparaat](migrate-replication-appliance.md) voor migratie. De Mobility-serviceagent wordt geïnstalleerd op de fysieke machines. | Controleer de [openbare cloud](migrate-replication-appliance.md#url-access)- en [Azure Government](migrate-replication-appliance.md#azure-government-url-access)-URL's waartoe het replicatieapparaat toegang moet hebben. | [Controleer](migrate-replication-appliance.md#port-access) de poorten die worden gebruikt tijdens fysieke migratie.
+
+## <a name="verify-required-changes-before-migrating"></a>Vereiste wijzigingen voor migratie verifiëren
+
+U moet enkele wijzigingen doorvoeren aan virtuele machines voordat u ze naar Azure migreert.
+
+- Bij sommige besturingssystemen brengt Azure Migrate automatisch wijzigingen aan tijdens het replicatie-/migratieproces.
+- Voor andere besturingssystemen moet u handmatig instellingen configureren.
+- Het is belangrijk om de instellingen handmatig te configureren voordat u begint met de migratie. Als u de VM migreert voordat u de wijzigingen doorvoert, start de VM mogelijk niet op in Azure.
+
+Bekijk de tabellen om te zien welke wijzigingen u moet aanbrengen.
+
+### <a name="windows-machines"></a>Windows-machines
+
+Vereiste wijzigingen worden samengevat in de tabel.
+
+**Actie** | **VMware (migratie zonder agents)** | **VMware (met agents)/fysieke machines** | **Windows op Hyper-V** 
+--- | --- | --- | ---
+**Het SAN-beleid configureren als Alles online**<br/><br/> Dit zorgt ervoor dat Windows-volumes in de Azure-VM dezelfde stationsletters krijgen toegewezen als de on-premises VM. | Wordt automatisch ingesteld voor machines met Windows Server 2008 R2 of later.<br/><br/> Moet handmatig worden geconfigureerd voor eerdere besturingssystemen. | Wordt in de meeste gevallen automatisch ingesteld. | Configureer handmatig.
+**Hyper-V Guest Integration installeren** | [Installeer handmatig](prepare-windows-server-2003-migration.md#install-on-vmware-vms) op machines met Windows Server 2003. | [Installeer handmatig](prepare-windows-server-2003-migration.md#install-on-vmware-vms) op machines met Windows Server 2003. | [Installeer handmatig](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) op machines met Windows Server 2003.
+**Schakel Azure Serial Console voor Linux in**.<br/><br/>[Schakel de console in](../virtual-machines/troubleshooting/serial-console-windows.md) op Azure VM's om te helpen bij het oplossen van problemen. U hoeft de VM niet opnieuw te starten. De Azure-VM wordt opgestart met behulp van de installatiekopie van de schijf. Het opstarten van de installatiekopie is equivalent aan het opnieuw opstarten van de nieuwe VM. | Handmatig inschakelen | Handmatig inschakelen | Handmatig inschakelen
+**Verbinding maken na de migratie**<br/><br/> Om verbinding te maken na de migratie moet u vóór de migratie enkele stappen uitvoeren. | Handmatig [instellen](#prepare-to-connect-to-azure-windows-vms). | Handmatig [instellen](#prepare-to-connect-to-azure-windows-vms). | Handmatig [instellen](#prepare-to-connect-to-azure-windows-vms).
+
+
+#### <a name="configure-san-policy"></a>SAN-beleid configureren
+
+Standaard krijgen Azure-VM's station D toegewezen om te gebruiken als tijdelijke opslag.
+
+- Door deze stationstoewijzing worden alle andere gekoppelde opslagstationstoewijzingen een letter opgeschoven.
+- Als uw on-premises installatie bijvoorbeeld een gegevensschijf gebruikt die is toegewezen aan station D voor applicatie-installaties, wordt de toewijzing voor dit station E nadat u de VM naar Azure migreert. 
+- Om deze automatische toewijzing te voorkomen en ervoor te zorgen dat Azure de volgende vrije stationsletter toewijst aan het tijdelijke volume, stelt u het SAN-beleid (Storage Area Network) in op **OnlineAll:
+
+Configureer deze instelling als volgt handmatig:
+
+1. Open op de on-premises machine (niet op de hostserver) een opdrachtprompt met verhoogde bevoegdheid.
+2. Voer **diskpart** in.
+3. Voer **SAN** in. Als de stationsletter van het gastbesturingssysteem niet wordt onderhouden, wordt **Alles offline** of **Offline gedeeld** geretourneerd.
+4. Voer achter de **DISKPART**-prompt **SAN Policy=OnlineAll** in. Deze instelling zorgt ervoor dat schijven online worden gezet, en dat u van en naar beide schijven kunt lezen en schrijven.
+5. Tijdens de testmigratie kunt u controleren of de stationsletters behouden blijven.
+
+
+### <a name="linux-machines"></a>Linux-machines
+
+Azure Migrate voert deze acties automatisch uit voor deze versies
+
+- Red Hat Enterprise Linux 7.0+, 6.5+
+- CentOS 7.0+, 6.5+
+- SUSE Linux Enterprise Server 12 SP1+
+- Ubuntu 18.04LTS, 16.04LTS, 14.04LTS
 - Debian 8, 7
 
-Voor andere besturings systemen moet u computers hand matig voorbereiden vóór de migratie. 
+Bereid voor andere versies de machines voor zoals samengevat in de tabel.  
 
-### <a name="prepare-windows-machines"></a>Windows-computers voorbereiden
 
-Als u een Windows-machine migreert, moet u vóór de migratie de volgende wijzigingen aanbrengen. Als u de virtuele machine migreert voordat u de wijzigingen aanbrengt, wordt de VM mogelijk niet opgestart in Azure.
+**Actie** | **Details** | **Linux-versie**
+--- | --- | ---
+**Hyper-V Linux Integration Services installeren** | Bouw de Linux-initialisatie-installatiekopie opnieuw op zodat deze de benodigde Hyper-V-stuurprogramma's bevat. Door de initialisatie-installatiekopie opnieuw op te bouwen, zorgt u ervoor dat de VM in Azure kan worden opgestart. | In meeste nieuwe versies van Linux-distributies is dit standaard opgenomen.<br/><br/> Als het niet is opgenomen, moet u het handmatig installeren voor alle versies behalve de hierboven genoemde.
+**Azure Serial Console-logboekregistratie inschakelen** | Het inschakelen van consolelogboekregistratie helpt u bij het oplossen van problemen. U hoeft de VM niet opnieuw te starten. De Azure-VM wordt opgestart met behulp van de installatiekopie van de schijf. Het opstarten van de installatiekopie is equivalent aan het opnieuw opstarten van de nieuwe VM.<br/><br/> Volg [deze instructies](../virtual-machines/troubleshooting/serial-console-linux.md) om het in te schakelen.
+**Apparaattoewijzingsbestand bijwerken** | Werk het apparaattoewijzingsbestand bij met de koppelingen van apparaatnaam en volume, zodat u persistente apparaat-id's gebruikt. | Installeer handmatig voor alle versies behalve de hierboven genoemde.
+**fstab-items bijwerken** |  Werk items bij om persistente volume-id's te gebruiken.    | Werk handmatig bij voor alle versies behalve de hierboven genoemde.
+**udev-regel verwijderen** | Verwijder alle udev-regels die interfacenamen reserveren op basis van MAC-adres enzovoort. | Verwijder handmatig voor alle versies behalve de hierboven genoemde.
+**Netwerkinterfaces bijwerken** | Werk netwerkinterfaces bij zodat ze IP-adressen ontvangen op basis van DHCP.nst | Werk handmatig bij voor alle versies behalve de hierboven genoemde.
+**SSH inschakelen** | Zorg ervoor dat SSH is ingeschakeld en dat de SSHD-service is ingesteld om automatisch te worden gestart bij opnieuw opstarten.<br/><br/> Zorg ervoor dat inkomende SSH-verbindingsaanvragen niet worden geblokkeerd door de firewall van het besturingssysteem of door scriptregels.| Schakel handmatig in voor alle versies behalve de hierboven genoemde.
 
-1. [Schakel Azure Serial console in](../virtual-machines/troubleshooting/serial-console-windows.md) voor de Azure-VM. Het inschakelen van de-console helpt u bij het oplossen van problemen. U hoeft de virtuele machine niet opnieuw op te starten. De virtuele machine van Azure wordt opgestart met behulp van de schijf installatie kopie. Het opstarten van de schijf installatie kopie is gelijk aan het opnieuw opstarten voor de nieuwe virtuele machine. 
-2. Als u computers met Windows Server 2003 wilt migreren, installeert u Hyper-V-gast integratie Services op het VM-besturings systeem. [Meer informatie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services).
+Lees meer over stappen voor het [uitvoeren van een Linux-VM op Azure](../virtual-machines/linux/create-upload-generic.md) en instructies voor enkele populaire Linux-distributies.
 
-### <a name="prepare-linux-machines"></a>Linux-machines voorbereiden
 
-1. Installeer de Hyper-V Linux-integratie Services. De meeste nieuwe versies van Linux-distributies zijn standaard Hyper-V Linux-integratie Services.
-2. Bouw de Linux init-installatie kopie opnieuw op zodat deze de benodigde Hyper-V-Stuur Programma's bevat. Als u de init-installatie kopie opnieuw bouwt, zorgt u ervoor dat de virtuele machine wordt opgestart in azure (alleen vereist voor bepaalde distributies).
-3. [Logboek registratie van de Azure-seriële console inschakelen](../virtual-machines/troubleshooting/serial-console-linux.md). Het inschakelen van console logboek registratie helpt u bij het oplossen van problemen. U hoeft de virtuele machine niet opnieuw op te starten. De virtuele machine van Azure wordt opgestart met behulp van de schijf installatie kopie. Het opstarten van de schijf installatie kopie is gelijk aan het opnieuw opstarten voor de nieuwe virtuele machine.
-4. Werk het apparaat toewijzings bestand bij met de apparaatnaam-naar-volume koppelingen, zodat u permanente apparaat-id's gebruikt.
-5. Update vermeldingen in het fstab-bestand om permanente volume-id's te gebruiken.
-6. Verwijder alle udev-regels waarmee interface namen worden gereserveerd op basis van een MAC-adres, enzovoort.
-7. Netwerk interfaces bijwerken om een IP-adres van DHCP te ontvangen.
+## <a name="check-azure-vm-requirements"></a>Vereisten voor Azure-VM's controleren
 
-Meer informatie over de [stappen voor het uitvoeren van een virtuele Linux-machine in azure](../virtual-machines/linux/create-upload-generic.md)en het verkrijgen van instructies voor een aantal populaire Linux-distributies.
+On-premises machines die u naar Azure repliceert moeten voldoen aan de Azure-VM-vereisten voor het besturingssysteem en de architectuur, de schijven, netwerkinstellingen en VM-namen.
 
-## <a name="preserve-drive-letters-after-migration"></a>Stationsletters na migratie behouden
+Controleer voordat u migreert de Azure-VM-vereisten voor migratie van [VMware](migrate-support-matrix-vmware-migration.md#azure-vm-requirements), [Hyper-V](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) en [fysieke servers](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
-Wanneer u een on-premises machine migreert naar Microsoft Azure, kunnen de stationsletters van de andere gegevens schijven van de oorspronkelijke waarden worden gewijzigd. 
 
-Standaard wordt aan Azure-Vm's station D toegewezen om te gebruiken als tijdelijke opslag. Deze schijf toewijzing zorgt ervoor dat alle andere gekoppelde opslag stationstoewijzingen met één letter worden verhoogd. Als uw on-premises installatie bijvoorbeeld gebruikmaakt van een gegevens schijf die is toegewezen aan station D voor het installeren van toepassingen, wordt de toewijzing voor dit station verhoogd naar station E nadat u de VM naar Azure hebt gemigreerd. Als u deze automatische toewijzing wilt voor komen en ervoor wilt zorgen dat Azure de volgende gratis stationsletter aan het tijdelijke volume toewijst, stelt u het Storage Area Network (SAN)-beleid in op **OnlineAll**:
 
-1. Open een opdracht prompt met verhoogde bevoegdheden op de on-premises machine (niet op de hostserver).
-2. Voer **Disk Part**in.
-3. Voer **San**in. Als de stationsletter van het gast besturingssysteem niet wordt onderhouden, wordt **offline alle** of **offline gedeelde** gegevens weer gegeven.
-4. Voer bij de **Disk Part** -prompt **San POLICY = OnlineAll**in. Met deze instelling zorgt u ervoor dat schijven online worden gebracht en zorgt u ervoor dat u op beide schijven kunt lezen en schrijven.
-5. Tijdens de test migratie kunt u controleren of de stationsletters behouden blijven.
+## <a name="prepare-to-connect-after-migration"></a>Verbinding maken na de migratie voorbereiden
 
-## <a name="check-azure-vm-requirements"></a>Azure VM-vereisten controleren
+Bij de migratie naar Azure worden Azure-VM's gemaakt. Na de migratie moet u verbinding kunnen maken met de nieuwe Azure-VM's. Er zijn meerdere stappen nodig om met succes verbinding te maken.
 
-On-premises machines die u naar Azure repliceert, moeten voldoen aan de vereisten van de Azure-VM voor het besturings systeem en de architectuur, de schijven, netwerk instellingen en de naam van de virtuele machine. Controleer de vereisten voor [VMware-vm's en fysieke servers](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)en [virtuele Hyper-V-machines](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) voordat u de migratie uitvoert.
+### <a name="prepare-to-connect-to-azure-windows-vms"></a>Voorbereiden op het verbinden met Azure Windows-VM's
 
-## <a name="prepare-to-connect-after-migration"></a>Voorbereiden om verbinding te maken na de migratie
+Op on-premises Windows-machines:
 
-Virtuele Azure-machines worden tijdens de migratie naar Azure gemaakt. Na de migratie moet u verbinding kunnen maken met de nieuwe virtuele machines van Azure. Er zijn meerdere stappen nodig om verbinding te kunnen maken.
+1. Configureer Windows-instellingen. De instellingen omvatten het verwijderen van statische persistente routes of WinHTTP-proxy's.
+2. Zorg ervoor dat [vereiste services](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) worden uitgevoerd.
+3. Schakel extern bureaublad (RDP) in om externe verbindingen met de on-premises machine mogelijk te maken. Leer [PowerShell gebruiken om RDP in te schakelen](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings).
+4. Om na de migratie via het internet toegang te krijgen tot een Azure-VM, moet u in Windows Firewall op de on-premises machine TCP en UDP toestaan in het Openbare profiel en RDP instellen als toegestane app voor alle profielen.
+5. Als u na de migratie toegang wilt krijgen tot een Azure-VM via een site-to-site VPN, staat u in Windows Firewall op de on-premises machine RDP toe voor de Domein- en Privé-profielen. Leer [RDP-verkeer toestaan](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules). 
+6. Zorg ervoor dat er geen Windows-updates in behandeling zijn op de on-premises VM wanneer u migreert. Als die er zijn, kunnen er na de migratie updates worden geïnstalleerd op de Azure VM en kunt u zich pas op de VM aanmelden als de updates zijn voltooid.
 
-### <a name="prepare-to-connect-to-azure-windows-vms"></a>Voorbereiden om verbinding te maken met Azure Windows-Vm's
 
-On-premises Windows-computers:
+### <a name="prepare-to-connect-with-linux-azure-vms"></a>Voorbereiden op het verbinden met Linux Azure-VM's
 
-1. Windows-instellingen configureren. Instellingen zijn onder andere het verwijderen van statische permanente routes of WinHTTP-proxy.
-2. Zorg ervoor dat de [vereiste services](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) worden uitgevoerd.
-3. Schakel extern bureau blad (RDP) in om externe verbindingen naar de on-premises machine toe te staan. Meer informatie over het [gebruik van Power shell om RDP in te scha kelen](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings).
-4. Als u na de migratie toegang wilt krijgen tot een Azure-VM via internet, kunt u in Windows Firewall op de on-premises computer TCP en UDP toestaan in het open bare profiel en RDP als een toegestane app instellen voor alle profielen.
-5. Als u na de migratie toegang wilt krijgen tot een Azure-VM via een site-naar-site-VPN, moet u in Windows Firewall op de on-premises computer RDP toestaan voor het domein en het persoonlijke profiel. Meer informatie over het [toestaan van RDP-verkeer](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules). 
-6. Zorg ervoor dat er geen Windows-updates in behandeling zijn op de on-premises VM wanneer u migreert. Als dat het geval is, kunnen updates na de migratie worden geïnstalleerd op de virtuele machine van Azure en kunt u zich pas aanmelden bij de VM nadat de updates zijn voltooid.
+Op on-premises Linux-machines:
 
-### <a name="prepare-to-connect-with-linux-azure-vms"></a>Voorbereiden om verbinding te maken met virtuele Linux-machines
-
-On-premises Linux-machines:
-
-1. Controleer of de Secure shell-service is ingesteld om automatisch te starten bij het opstarten van het systeem.
+1. Controleer of de Secure Shell-service zo is ingesteld dat deze automatisch wordt gestart bij het opstarten van het systeem.
 2. Controleer of SSH-verbindingen zijn toegestaan door de firewallregels.
 
-### <a name="configure-azure-vms-after-migration"></a>Virtuele Azure-machines configureren na migratie
+### <a name="configure-azure-vms-after-migration"></a>Azure-VM's configureren na migratie
 
-Na de migratie voert u de volgende stappen uit op de virtuele Azure-machines die zijn gemaakt:
+Voer na de migratie de volgende stappen uit op de gemaakte Azure-VM's:
 
-1. Wijs een openbaar IP-adres toe aan de virtuele machine om via Internet verbinding te maken met de virtuele machine. U moet een ander openbaar IP-adres voor de virtuele Azure-machine gebruiken dan u hebt gebruikt voor uw on-premises computer. [Meer informatie](../virtual-network/virtual-network-public-ip-address.md).
-2. Controleer of de NSG-regels (netwerk beveiligings groep) op de virtuele machine binnenkomende verbindingen met de RDP-of SSH-poort toestaan.
-3. Controleer de [Diagnostische gegevens over opstarten](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) om de virtuele machine weer te geven.
+1. Wijs een openbaar IP-adres toe aan de VM om verbinding te maken met de VM via internet. U moet een ander openbaar IP-adres voor de Azure-VM gebruiken dan het adres dat u gebruikte voor uw on-premises machine. [Meer informatie](../virtual-network/virtual-network-public-ip-address.md).
+2. Controleer of de regels van de netwerkbeveiligingsgroep (NSG) op de VM inkomende verbindingen naar de RDP- of SSH-poort toestaan.
+3. Controleer [diagnostische gegevens over opstarten](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) om de VM te bekijken.
 
-> [!NOTE]
-> De Azure Bastion-service biedt persoonlijke RDP-en SSH-toegang tot Azure-Vm's. Meer [informatie](../bastion/bastion-overview.md) over deze service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaal welke methode u wilt gebruiken voor het [migreren van virtuele VMware-machines](server-migrate-overview.md) naar Azure, of begin met het migreren van virtuele [Hyper-V-machines](tutorial-migrate-hyper-v.md) of [fysieke servers of gevirtualiseerde of Cloud-vm's](tutorial-migrate-physical-virtual-machines.md).
+Bepaal welke methode u wilt gebruiken voor het [migreren van VMware-VM's](server-migrate-overview.md) naar Azure, of begin met het migreren van [Hyper-V-VM's](tutorial-migrate-hyper-v.md) of [fysieke servers of gevirtualiseerde of cloud-VM's](tutorial-migrate-physical-virtual-machines.md).
+
+## <a name="see-whats-supported"></a>Wat er wordt ondersteund
+
+Voor VMware-VM's ondersteunt Server Migration [migratie met of zonder agents](server-migrate-overview.md).
+
+- **VMware-VM's**: verifieer [migratievereisten en ondersteuning](migrate-support-matrix-vmware-migration.md) voor VMware-VM's.
+- **Hyper-V-VM's**: verifieer [migratievereisten en ondersteuning](migrate-support-matrix-hyper-v-migration.md) voor Hyper-V-VM's.
+- **Fysieke machines**: verifieer [migratievereisten en ondersteuning](migrate-support-matrix-physical-migration.md) voor on-premises fysieke machines en andere gevirtualiseerde servers. 

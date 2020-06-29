@@ -1,5 +1,5 @@
 ---
-title: De oplossing voor controle op afstand gebruiken om problemen met apparaten op te sporen-Azure | Microsoft Docs
+title: Gebruik de externe bewakingsoplossing om apparaatproblemen op te sporen - Azure | Microsoft Docs
 description: In deze zelfstudie leert u hoe u regels en acties kunt gebruiken voor het automatisch detecteren van problemen met apparaten op basis van een drempelwaarde in de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239516"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712510"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: Problemen detecteren met apparaten die zijn verbonden met uw bewakingsoplossing
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: problemen detecteren met apparaten die zijn verbonden met uw bewakingsoplossing
 
 In deze zelfstudie configureert u de verbetering voor de externe bewakingsoplossing om problemen met verbonden IoT-apparaten te detecteren. Voor het detecteren van problemen met uw apparaten voegt u regels toe waarmee meldingen in het dashboard van de oplossing worden gegenereerd.
 
@@ -41,11 +41,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De pagina **Regels** in de oplossingsversneller geeft een lijst van de huidige regels weer:
 
-[![Pagina regels](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
+[![Pagina Regels](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactions_v2-expanded.png#lightbox)
 
 Als u alleen de regels wilt zien die betrekking hebben op chillers, moet u een filter toepassen. U kunt meer informatie over een regel bekijken en deze bewerken wanneer u de regel in de lijst selecteert:
 
-[![Regel details weer geven](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
+[![Regeldetails weergeven](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdetail_v2-expanded.png#lightbox)
 
 ## <a name="create-a-rule"></a>Een regel maken
 
@@ -62,17 +62,17 @@ Als u een regel wilt maken waarmee een waarschuwing wordt gegenereerd wanneer de
 | Waarde Voorwaarde 1    | 150                               |
 | Ernstniveau  | Waarschuwing                               |
 
-[![Waarschuwings regel maken](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
+[![Waarschuwingsregel maken](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
 
 Als u wilt de nieuwe regel wilt opslaan, klikt u op **Toepassen**.
 
 U kunt zien wanneer de regel wordt geactiveerd op de pagina **Regels** of op de pagina **Dashboard**:
 
-[![Waarschuwings regel geactiveerd](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
+[![De waarschuwingsregel geactiveerd](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
 ## <a name="create-an-advanced-rule"></a>Een geavanceerde regel maken
 
-Klik op **Nieuwe regel ** als u een regel met meerdere voorwaarden wilt maken die een kritieke melding genereert wanneer in de laatste vijf minuten voor een chiller de gemiddelde vochtigheid hoger is dan 80% en de gemiddelde temperatuur hoger dan 75 graden Fahrenheit. Gebruik de volgende waarden om de regel te maken:
+Klik op **Nieuwe regel**  als u een regel met meerdere voorwaarden wilt maken die een kritieke melding genereert wanneer in de laatste vijf minuten voor een chiller de gemiddelde vochtigheid hoger is dan 80% en de gemiddelde temperatuur hoger dan 75 graden Fahrenheit. Gebruik de volgende waarden om de regel te maken:
 
 | Instelling          | Waarde                                 |
 | ---------------- | ------------------------------------- |
@@ -86,7 +86,7 @@ Klik op **Nieuwe regel ** als u een regel met meerdere voorwaarden wilt maken di
 | Waarde Voorwaarde 1    | 80                                |
 | Ernstniveau  | Kritiek                              |
 
-[![Meerdere voorwaarde regel deel 1 maken](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
+[![Regel met meerdere voorwaarden maken - deel 1](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 Als u wilt de tweede voorwaarde wilt toevoegen, klikt u op '+ Voorwaarde toevoegen'. Gebruik de volgende waarden voor de nieuwe voorwaarde:
 
@@ -96,13 +96,13 @@ Als u wilt de tweede voorwaarde wilt toevoegen, klikt u op '+ Voorwaarde toevoeg
 | Operator Voorwaarde 2 | Groter dan                      |
 | Waarde Voorwaarde 2    | 75                                |
 
-[![Meerdere voor waarden regel deel twee maken](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
+[![Regel met meerdere voorwaarden maken - deel 2](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
 Als u wilt de nieuwe regel wilt opslaan, klikt u op **Toepassen**.
 
 U kunt zien wanneer de regel wordt geactiveerd op de pagina **Regels** of op de pagina **Dashboard**:
 
-[![Meerdere voor waarden regel geactiveerd](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
+[![Regel met meerdere voorwaarden geactiveerd](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Een bestaande rol bewerken
 

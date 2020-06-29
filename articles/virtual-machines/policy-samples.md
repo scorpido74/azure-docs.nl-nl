@@ -1,24 +1,24 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Virtual Machines
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Virtual Machines. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-samples
-ms.openlocfilehash: b7ea4dc36c5619d6012e4288b7bcdd165369d4b4
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: bf27e31e79e55e0a13b98d86ad0f655a2db691cf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234291"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84884051"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-machines"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Virtual Machines
+# <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>Ingebouwde Azure Policy-definities voor Azure Virtual Machines
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Virtual Machines. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 

@@ -1,69 +1,69 @@
 ---
-title: 'Zelf studie: blobs versleutelen en ontsleutelen met behulp van Azure Key Vault'
+title: 'Zelfstudie: blobs versleutelen en ontsleutelen met Azure Key Vault'
 titleSuffix: Azure Storage
-description: Meer informatie over het versleutelen en ontsleutelen van een blob met versleuteling aan client zijde met Azure Key Vault.
+description: Meer informatie over het versleutelen en ontsleutelen van een blob met versleuteling aan de clientzijde met Azure Key Vault.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81456886"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808397"
 ---
-# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Zelf studie: blobs versleutelen en ontsleutelen met behulp van Azure Key Vault
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Zelfstudie: blobs versleutelen en ontsleutelen met Azure Key Vault
 
-In deze zelf studie wordt beschreven hoe u gebruik kunt maken van opslag versleuteling aan de client zijde met Azure Key Vault. U wordt begeleid bij het versleutelen en ontsleutelen van een BLOB in een console toepassing met behulp van deze technologieën.
+In deze zelfstudie wordt beschreven hoe u gebruik kunt maken van opslagversleuteling aan de clientzijde met Azure Key Vault. U wordt begeleid bij het versleutelen en ontsleutelen van een blob in een consoletoepassing met behulp van deze technologieën.
 
-**Geschatte duur:** 20 minuten
+**Geschatte tijdsduur:** 20 minuten
 
-Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md)voor overzichts informatie over Azure Key Vault.
+Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md) voor algemene informatie over Azure Key Vault.
 
-Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor overzichts informatie over client-side Encryption voor Azure Storage.
+Zie [Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Versleuteling aan de clientzijde en Azure Key Vault voor Microsoft Azure Storage) voor algemene informatie over versleuteling aan de clientzijde voor Azure Storage.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 * Een Azure Storage-account
-* Visual Studio 2013 of hoger
+* Visual Studio 2013 of later
 * Azure PowerShell
 
-## <a name="overview-of-client-side-encryption"></a>Overzicht van versleuteling aan de client zijde
+## <a name="overview-of-client-side-encryption"></a>Overzicht van versleuteling aan de clientzijde
 
-Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor een overzicht van client-side Encryption voor Azure Storage.
+Zie [Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Versleuteling aan de clientzijde en Azure Key Vault voor Microsoft Azure Storage) voor een overzicht van versleuteling aan de clientzijde voor Azure Storage
 
-Hier volgt een korte beschrijving van de werking van versleuteling aan client zijde:
+Hier volgt een korte beschrijving van hoe versleuteling aan de clientzijde werkt:
 
-1. De Azure Storage client-SDK genereert een coderings sleutel voor inhoud (CEK). Dit is een eenmalige symmetrische sleutel.
-2. Klant gegevens worden versleuteld met behulp van deze CEK.
-3. De CEK wordt vervolgens gewrappt (versleuteld) met behulp van de sleutel versleutelings sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutel paar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in Azure Key Vault. De Storage-client zelf heeft nooit toegang tot de KEK. Hiermee wordt alleen het sleutel terugloop algoritme aangeroepen dat wordt verschaft door Key Vault. Klanten kunnen ervoor kiezen om aangepaste providers te gebruiken voor de sleutel terugloop/uitpakken als ze dat willen.
+1. De Azure Storage Client SDK genereert een versleutelingssleutel voor inhoud (CEK). Dit is een symmetrische sleutel voor eenmalig gebruik.
+2. Klantgegevens worden versleuteld met behulp van deze CEK.
+3. De CEK wordt vervolgens verpakt (versleuteld) met behulp van de versleutelingssleutel voor sleutel (KEK). De KEK wordt geïdentificeerd aan de hand van een sleutel-id en kan een asymmetrisch sleutelpaar of een symmetrische sleutel zijn en kan lokaal worden beheerd of opgeslagen in Azure Key Vault. De Storage-client zelf heeft nooit toegang tot de KEK. Deze roept alleen het algoritme voor sleutelverpakking op die wordt geleverd door Key Vault. Klanten kunnen ervoor kiezen om aangepaste providers te gebruiken voor de verpakken/uitpakken van sleutels.
 4. De versleutelde gegevens worden vervolgens geüpload naar de Azure Storage-service.
 
 ## <a name="set-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
 
-Als u wilt door gaan met deze zelf studie, moet u de volgende stappen uitvoeren, zoals beschreven in de [Snelstartgids: een geheim van Azure Key Vault instellen en ophalen met behulp van een .net-Web-app](../../key-vault/secrets/quick-create-net.md):
+Als u wilt doorgaan met deze zelfstudie, moet u de volgende stappen uitvoeren, zoals beschreven in de zelfstudie [Quickstart: een geheim uit Azure Key Vault instellen en ophalen met behulp van een .NET-web-app](../../key-vault/secrets/quick-create-net.md):
 
 * Een sleutelkluis maken.
-* Voeg een sleutel of geheim toe aan de sleutel kluis.
-* Een toepassing registreren bij Azure Active Directory.
-* De toepassing toestemming geven om de sleutel of het geheim te gebruiken.
+* Voeg een sleutel of geheim toe aan de sleutelkluis.
+* Registreer een toepassing met Azure Active Directory.
+* Geef de toepassing toestemming om de sleutel of het geheim te gebruiken.
 
-Noteer de ClientID-en ClientSecret die zijn gegenereerd bij het registreren van een toepassing met Azure Active Directory.
+Noteer de ClientID en ClientSecret die zijn gegenereerd bij het registreren van een toepassing met Azure Active Directory.
 
-Maak beide sleutels in de sleutel kluis. Voor de rest van de zelf studie wordt ervan uitgegaan dat u de volgende namen hebt gebruikt: ContosoKeyVault en TestRSAKey1.
+Maak beide sleutels in de sleutelkluis. Voor de rest van de zelfstudie wordt ervan uitgegaan dat u de volgende namen hebt gebruikt: ContosoKeyVault en TestRSAKey1.
 
-## <a name="create-a-console-application-with-packages-and-appsettings"></a>Een console toepassing maken met pakketten en AppSettings
+## <a name="create-a-console-application-with-packages-and-appsettings"></a>Een consoletoepassing maken met pakketten en AppSettings
 
-Maak in Visual Studio een nieuwe console toepassing.
+Maak in Visual Studio een nieuwe consoletoepassing.
 
-Voeg benodigde nuget-pakketten toe in de Package Manager-console.
+Voeg de benodigde nuget-pakketten toe in de Package Manager Console.
 
 ```powershell
 Install-Package Microsoft.Azure.ConfigurationManager
@@ -75,7 +75,7 @@ Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions
 ```
 
-Voeg AppSettings toe aan de app. config.
+Voeg AppSettings toe aan de App.Config.
 
 ```xml
 <appSettings>
@@ -87,7 +87,7 @@ Voeg AppSettings toe aan de app. config.
 </appSettings>
 ```
 
-Voeg de volgende `using` instructies toe en voeg een verwijzing naar System. Configuration toe aan het project.
+Voeg de volgende `using`-instructies toe en zorg ervoor dat u een verwijzing naar System.Configuration aan het project toevoegt.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -101,9 +101,9 @@ using System.Threading;
 using System.IO;
 ```
 
-## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Een methode voor het ophalen van een token aan uw console toepassing toevoegen
+## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>Een methode toevoegen voor het ophalen van een token in uw consoletoepassing
 
-De volgende methode wordt gebruikt door Key Vault klassen die moeten worden geverifieerd om toegang te krijgen tot uw sleutel kluis.
+De volgende methode wordt gebruikt door Key Vault-klassen die moeten worden geverifieerd om toegang te krijgen tot uw sleutelkluis.
 
 ```csharp
 private async static Task<string> GetToken(string authority, string resource, string scope)
@@ -123,7 +123,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 
 ## <a name="access-azure-storage-and-key-vault-in-your-program"></a>Toegang tot Azure Storage en Key Vault in uw programma
 
-Voeg de volgende code toe aan de methode Main ().
+Voeg de volgende code toe in de methode Main().
 
 ```csharp
 // This is standard code to interact with Blob storage.
@@ -142,19 +142,19 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 ```
 
 > [!NOTE]
-> Object modellen Key Vault
+> Objectmodellen voor Key Vault
 > 
-> Het is belang rijk om te begrijpen dat er eigenlijk twee Key Vault-object modellen zijn waarmee u rekening moet houden: een is gebaseerd op de REST API (naam ruimte van de sleutel) en de andere is een uitbrei ding voor versleuteling aan de client zijde.
+> Het is belangrijk om te weten dat er eigenlijk twee Key Vault-objectmodellen zijn waarmee u rekening moet houden: een is gebaseerd op de REST API (KeyVault-naamruimte) en de andere is een extensie voor versleuteling aan de clientzijde.
 > 
-> De Key Vault-client communiceert met de REST API en begrijpt JSON-websleutels en geheimen voor de twee soorten dingen die zijn opgenomen in Key Vault.
+> De Key Vault Client communiceert met de REST API en begrijpt JSON-websleutels en -geheimen voor de twee soorten zaken die zijn opgenomen in Key Vault.
 > 
-> De uitbrei dingen van de Key Vault zijn klassen die specifiek zijn gemaakt voor versleuteling aan client zijde in Azure Storage. Ze bevatten een interface voor sleutels (IKey) en klassen op basis van het concept van een Key resolver. Er zijn twee implementaties van IKey die u moet weten: RSAKey en SymmetricKey. Nu gaan ze samen vallen met de dingen die zijn opgenomen in een Key Vault, maar ze zijn op dit moment onafhankelijke klassen (dus de sleutel en het geheim dat door de Key Vault-client wordt opgehaald, implementeren IKey) niet.
+> De Key Vault-extensies zijn klassen die specifiek zijn gemaakt voor versleuteling aan de clientzijde in Azure Storage. Ze bevatten een interface voor sleutels (IKey) en klassen gebaseerd op het concept van een Key Resolver. Er zijn twee implementaties van IKey die u moet kennen: RSAKey en SymmetricKey. Nu vallen ze toevallig samen met de zaken die zijn opgenomen in een Key Vault, maar ze zijn op dit moment onafhankelijke klassen (de sleutel die en het geheim dat door Key Vault Client wordt opgehaald, implementeren IKey niet).
 > 
 > 
 
-## <a name="encrypt-blob-and-upload"></a>BLOB versleutelen en uploaden
+## <a name="encrypt-blob-and-upload"></a>Blob versleutelen en uploaden
 
-Voeg de volgende code toe om een BLOB te versleutelen en deze te uploaden naar uw Azure-opslag account. De **ResolveKeyAsync** -methode die wordt gebruikt, retourneert een IKey.
+Voeg de volgende code toe om een blob te versleutelen en deze te uploaden naar uw Azure-opslagaccount. De methode **ResolveKeyAsync** die wordt gebruikt, retourneert een IKey.
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -176,15 +176,15 @@ using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
 ```
 
 > [!NOTE]
-> Als u de BlobEncryptionPolicy-constructor bekijkt, ziet u dat er een sleutel en/of een resolver kan worden geaccepteerd. Houd er rekening mee dat u nu geen resolver kunt gebruiken voor versleuteling omdat deze momenteel geen standaard sleutel ondersteunt.
+> Als u de constructor BlobEncryptionPolicy bekijkt, ziet u dat deze een sleutel en/of een resolver kan accepteren. Houd er rekening mee dat u momenteel geen resolver kunt gebruiken voor versleuteling omdat deze momenteel geen standaardsleutel ondersteunt.
 
-## <a name="decrypt-blob-and-download"></a>BLOB ontsleutelen en downloaden
+## <a name="decrypt-blob-and-download"></a>Blob ontsleutelen en downloaden
 
-Ontsleuteling is echt wanneer het gebruik van de resolver-klassen zinvol is. De ID van de sleutel die wordt gebruikt voor versleuteling, is gekoppeld aan de BLOB in de meta gegevens, zodat u geen reden hebt om de sleutel op te halen en de koppeling tussen de sleutel en de BLOB te onthouden. U hoeft alleen maar te controleren of de sleutel in Key Vault blijft.   
+Bij ontsleuteling heeft het gebruik van de resolver-klassen echt zin. De id van de sleutel die wordt gebruikt voor versleuteling, is gekoppeld aan de blob in de metagegevens, zodat u de sleutel niet hoeft op te halen en de koppeling tussen de sleutel en de blob niet hoeft te onthouden. U hoeft alleen maar te controleren of de sleutel in Key Vault blijft.   
 
-De persoonlijke sleutel van een RSA-sleutel blijft in Key Vault. voor ontsleuteling vindt de versleutelde sleutel van de BLOB-meta gegevens die de CEK bevat, naar Key Vault voor ontsleuteling.
+De persoonlijke sleutel van een RSA-sleutel blijft in Key Vault. Voor ontsleuteling wordt de versleutelde sleutel uit de blob-metagegevens die de CEK bevat, naar Key Vault gestuurd voor ontsleuteling.
 
-Voeg het volgende toe om de blob die u zojuist hebt geüpload, te ontsleutelen.
+Voeg het volgende toe om de blob die u zojuist hebt geüpload te ontsleutelen.
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -197,18 +197,18 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> Er zijn een aantal andere soorten resolvers voor het eenvoudiger maken van sleutel beheer, waaronder: AggregateKeyResolver en CachingKeyResolver.
+> Er zijn een aantal andere soorten resolvers voor eenvoudiger sleutelbeheer, waaronder: AggregateKeyResolver en CachingKeyResolver.
 
-## <a name="use-key-vault-secrets"></a>Key Vault geheimen gebruiken
+## <a name="use-key-vault-secrets"></a>Key Vault-geheimen gebruiken
 
-De manier om een geheim te gebruiken met versleuteling aan de client zijde is via de SymmetricKey-klasse, omdat een geheim in feite een symmetrische sleutel is. Maar zoals hierboven vermeld, wordt een geheim in Key Vault niet precies aan een SymmetricKey toegewezen. Er zijn enkele dingen die u moet weten:
+De beste manier om een geheim te gebruiken met versleuteling aan de clientzijde is via de SymmetricKey-klasse, omdat een geheim in feite een symmetrische sleutel is. Maar zoals hierboven vermeld, komt een geheim in Key Vault niet precies overeen met een SymmetricKey. Er zijn enkele zaken die u moet weten:
 
 * De sleutel in een SymmetricKey moet een vaste lengte hebben: 128, 192, 256, 384 of 512 bits.
-* De sleutel in een SymmetricKey moet base64-gecodeerd zijn.
-* Een Key Vault geheim dat wordt gebruikt als een SymmetricKey moet het inhouds type ' application/octet-stream ' hebben in Key Vault.
+* De sleutel in een SymmetricKey moet Base64-gecodeerd zijn.
+* Een Key Vault-geheim dat wordt gebruikt als een SymmetricKey moet het inhoudstype 'application/octet-stream' hebben in Key Vault.
 
-Hier volgt een voor beeld in Power shell van het maken van een geheim in Key Vault dat kan worden gebruikt als een SymmetricKey.
-Houd er rekening mee dat de hardcoded waarde, $key, alleen bestemd is voor demonstratie doeleinden. In uw eigen code wilt u deze sleutel genereren.
+Hier volgt een voorbeeld in PowerShell van het maken van een geheim in Key Vault dat kan worden gebruikt als een SymmetricKey.
+Houd er rekening mee dat de in code vastgelegde waarde, $key, alleen bestemd is voor demonstratiedoeleinden. In uw eigen code kunt u deze sleutel het beste genereren.
 
 ```csharp
 // Here we are making a 128-bit key so we have 16 characters.
@@ -223,7 +223,7 @@ $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
-In uw console toepassing kunt u dezelfde aanroep gebruiken als voordat u dit geheim ophaalt als een SymmetricKey.
+In uw consoletoepassing kunt u dezelfde aanroep als eerder gebruiken om dit geheim op te halen als een SymmetricKey.
 
 ```csharp
 SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
@@ -235,8 +235,8 @@ Dat is alles. Veel plezier!
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx)voor meer informatie over het gebruik van Microsoft Azure Storage met C#.
+Zie [Microsoft Azure Storage-clientbibliotheek voor .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) voor meer informatie over het gebruik van Microsoft Azure Storage met C#.
 
-Zie [BLOB Service rest API](https://msdn.microsoft.com/library/azure/dd135733.aspx)voor meer informatie over de blob-rest API.
+Zie [Blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) voor meer informatie over de Blob REST API.
 
-Ga naar de blog van het [Microsoft Azure Storage-team](https://blogs.msdn.com/b/windowsazurestorage/)voor de meest recente informatie over Microsoft Azure Storage.
+Ga voor de meest recente informatie over Microsoft Azure Storage naar het [teamblog van Microsoft Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/).

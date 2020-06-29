@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: 0f7e210c0818bd317f8e69ebed28301fd9b06dc0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a29fb754da90a0b355571499b0b3a369e68c7f14
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263870"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686797"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Quickstart: Een Azure Cosmos-account, -database, -container en -items maken vanuit de Azure-portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "84263870"
 
 Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. Met Azure Cosmos DB kunt u snel databases maken van sleutel/waarde-paren, documenten en grafieken en hier query’s op uitvoeren. Deze databases hebben allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
 
-In deze quickstart ziet u hoe u met de Azure-portal een [SQL API](sql-api-introduction.md)-account van Azure Cosmos DB, een documentdatabase en een container kunt maken en gegevens kunt toevoegen aan de container. 
+In deze quickstart ziet u hoe u met de Microsoft Azure-portal een [SQL API](sql-api-introduction.md)-account van Azure Cosmos DB, een documentdatabase en een container kunt maken en gegevens kunt toevoegen aan de container. 
 
 ## <a name="prerequisites"></a>Vereisten
 

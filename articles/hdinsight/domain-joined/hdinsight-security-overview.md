@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996309"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771118"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van bedrijfsbeveiliging in Azure HDInsight
 
-Azure HDInsight biedt een aantal methoden om aan de vereisten van uw bedrijfsbeveiliging te voldoen. De meeste van deze oplossingen worden standaard niet geactiveerd. Met deze flexibiliteit kunt u de beveiligingsfuncties kiezen die voor u het belangrijkst zijn. En bovendien kunt u zo voorkomen dat u betaalt voor functies die u niet wilt. Deze flexibiliteit betekent ook dat het uw verantwoordelijkheid is om ervoor te zorgen dat de juiste oplossingen zijn ingeschakeld voor uw installatie en omgeving.
+Azure HDInsight biedt een aantal methoden om aan de vereisten van uw bedrijfsbeveiliging te voldoen. De meeste van deze oplossingen worden standaard niet geactiveerd. Dankzij deze flexibiliteit kunt u de beveiligingsfuncties kiezen die voor u het belangrijkst zijn en voorkomt u dat u betaalt voor functies die u niet nodig hebt. Deze flexibiliteit betekent ook dat het uw verantwoordelijkheid is om ervoor te zorgen dat de juiste oplossingen zijn ingeschakeld voor uw installatie en omgeving.
 
 In dit artikel wordt gekeken naar beveiligingsoplossingen door beveiligingsoplossingen te verdelen in vier traditionele beveiligingspijlers: perimeterbeveiliging, verificatie, autorisatie en versleuteling.
 
@@ -53,7 +53,7 @@ Het controleren van de toegang tot clusterresources is nodig voor het bijhouden 
 
 De beheerder kan alle toegang tot de HDInsight-clusterresources en -gegevens bekijken en rapporteren. De beheerder kan wijzigingen in het toegangsbeheerbeleid bekijken en rapporteren.
 
-U moet [Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) inschakelen om toegang te krijgen tot Apache Ranger- en Ambari-auditlogboeken en logboeken voor SSH-toegang. Tevens kunt u dan de tabellen met auditrecords bekijken.
+[Schakel Azure Monitor in](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) om toegang te krijgen tot Apache Ranger- en Ambari-auditlogboeken en logboeken voor SSH-toegang en bekijk de tabellen met controlerecords.
 
 ### <a name="encryption"></a>Versleuteling
 

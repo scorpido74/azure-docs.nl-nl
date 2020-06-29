@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119023"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790531"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelfstudie: Prijzen voor auto's voorspellen met de ontwerpfunctie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -77,7 +77,7 @@ U kunt een **standaardrekendoel** voor de gehele pijplijn instellen. Hierdoor ge
     Als u al een beschikbaar rekendoel hebt, kunt u dit selecteren om deze pijplijn uit te voeren.
 
     > [!NOTE]
-    > Met de ontwerpfunctie kunnen alleen trainingsexperimenten op doelen van Azure Machine Learning Compute en Azure Machine Learning-rekenexemplaren worden uitgevoerd. Andere rekendoelen worden niet weergegeven.
+    > Met de ontwerpfunctie kunnen alleen trainingsexperimenten worden uitgevoerd op rekenexemplaren van Azure Machine Learning Compute en Azure Machine Learning maar andere rekendoelen worden niet weergegeven.
 
 1. Voer een naam in voor de rekenresource.
 

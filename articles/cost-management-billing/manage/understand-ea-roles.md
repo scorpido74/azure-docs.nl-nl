@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295300"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678015"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure Enterprise-rollen beheren
 
@@ -27,6 +27,10 @@ Voor het beheren van het gebruik en de uitgaven van uw organisatie kunnen Azure-
 <sup>1</sup> Deze rol omvat de Factuurcontact van het EA-contract.
 
 <sup>2</sup> Factuurcontact kan niet worden toegevoegd of gewijzigd in de Azure EA-portal, en wordt toegevoegd aan de EA-inschrijving op basis van de gebruiker die op overeenkomstniveau is ingesteld als de Factuurcontact. Als u de Factuurcontact wilt wijzigen, moet u via een partner-/softwareadviseur een aanvraag indienen bij het ROC (Regional Operations Center).
+
+De eerste inschrijvingsbeheerder die wordt ingesteld tijdens het inrichten van de inschrijving, bepaalt het verificatietype van het de factuurcontactaccount. Wanneer de factuurcontact als alleen-lezen-beheerder wordt toegevoegd aan de EA Portal wordt Microsoft-accountverificatie verleend. 
+
+Als het initiële verificatietype bijvoorbeeld is ingesteld op Gemengd, wordt de EA als een Microsoft-account toegevoegd en krijgt de factuurcontact alleen-lezen EA-beheerdersbevoegdheden. Als de EA-beheerder de Microsoft-accountautorisatie voor een bestaand factuurcontact niet goedkeurt, kan de EA-beheerder de betreffende gebruiker verwijderen en de klant vragen de gebruiker weer toe te voegen als een alleen-lezen beheerder met een werk- of schoolaccount dat alleen is ingesteld op inschrijvingsniveau in de EA-portal.
 
 Deze rollen zijn specifiek voor het beheren van Azure Enterprise Agreements en zijn een aanvulling op de ingebouwde rollen waarover Azure beschikt om toegang tot resources te beheren. Zie [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md) voor meer informatie.
 

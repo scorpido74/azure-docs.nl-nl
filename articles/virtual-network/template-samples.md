@@ -4,7 +4,7 @@ description: Meer informatie over de verschillende Azure Resource Manager-sjablo
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e6e759fa75e1957e726dc9f6f3d0035869f35e3f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75975354"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707817"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>Voorbeeldsjablonen van Azure Resource Manager voor virtueel netwerk
 
@@ -36,4 +36,4 @@ Zie [Microsoft.Network resource types](/azure/templates/microsoft.network/allver
 |[Hiermee maakt u een service-eindpunt voor het virtuele netwerk voor Azure Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)|Hiermee maakt u een nieuw virtueel netwerk met twee subnetten en een netwerkinterface in elk subnet. Hiermee activeert u een service-eindpunt naar Azure Storage voor een van de subnetten en beveiligt u een nieuw opslagaccount op dat subnet.|
 |[Verbinden van twee virtuele netwerken](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-to-vnet-peering)| Hiermee maakt u twee virtuele netwerken en een virtueel peering-netwerk ertussen.|
 |[Een virtuele machine met meerdere IP-adressen maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| Hiermee maakt u een Windows- of Linux-VM met meerdere IP-adressen.|
-|[Virtueel netwerk met dubbele stack van IPv4 + IPv6 configureren](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|Hiermee wordt een virtueel netwerk met dubbele stack (IPv4 + IPv6) geïmplementeerd met twee virtuele machines en een Azure Basic-Load Balancer met open bare IPv4-en IPv6-adressen. |
+|[Virtueel netwerk met dubbele stack van IPv4 + IPv6 configureren](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|Implementeert een dual-stack (IPv4+IPv6) virtueel netwerk met twee virtuele machines en een Azure Basic Load Balancer met openbare IPv4- en IPv6-IP-adressen. |

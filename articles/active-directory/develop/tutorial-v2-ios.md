@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/30/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83640578"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904759"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Gebruikers aanmelden en Microsoft Graph aanroepen vanuit een iOS- of macOS-app
 
@@ -48,7 +48,7 @@ Deze zelfstudie is van toepassing op iOS- en macOS-apps. Houd er rekening mee da
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Xcode-versie 11.x of hoger is vereist om de app in deze handleiding te bouwen. U kunt Xcode downloaden op de [iTunes-website](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Download-URL voor Xcode").
+- Xcode-versie 11.x of hoger is vereist om de app in deze handleiding te bouwen. U kunt Xcode downloaden op de [Mac App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "Download-URL voor Xcode").
 - Microsoft Authentication Library ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)). U kunt afhankelijkheidsbeheer gebruiken of de bibliotheek handmatig toevoegen. In de onderstaande instructies ziet u hoe u dit doet.
 
 In deze zelfstudie maakt u een nieuw project. Als u in plaats hiervan de voltooide zelfstudie wilt downloaden, downloadt u de code:
@@ -626,7 +626,7 @@ Zodra u een token hebt, kan de app deze gebruiken in de HTTP-koptekst om een gea
 
 | sleutel voor koptekst    | waarde                 |
 | ------------- | --------------------- |
-| Autorisatie | Bearer-\<access-token> |
+| Autorisatie | Bearer \<access-token> |
 
 Voeg de volgende code toe aan de klasse `ViewController`:
 

@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558369"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667085"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML-model trainen
 
@@ -138,7 +138,7 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>Trainingsresultaten weergeven in studio
 
-Als u de **Koppeling naar Azure Machine Learning-studio** volgt, gaat u naar de hoofdpagina van het experiment. Hier ziet u alle afzonderlijke uitvoeringen in het experiment. Eventuele aangepaste waarden ( in dit geval `alpha_value` en `rmse`) worden velden voor elke uitvoering, en worden ook beschikbaar voor de grafieken en tegels boven aan de experimentpagina. Als u geregistreerde metrische gegevens wilt toevoegen aan een grafiek of tegel, plaatst u de muisaanwijzer erop, klikt u op de knop Bewerken en zoekt u de aangepaste geregistreerde metrische gegevens.
+Als u de **Koppeling naar Azure Machine Learning-studio** volgt, gaat u naar de hoofdpagina van het experiment. Hier ziet u alle afzonderlijke uitvoeringen in het experiment. Eventuele aangepaste waarden (in dit geval `alpha_value` en `rmse`) worden velden voor elke uitvoering en komen ook beschikbaar voor de grafieken. Om een ​​nieuwe grafiek met vastgelegde metrische gegevens uit te zetten, klikt u op 'Grafiek toevoegen' en selecteert u de metrische gegevens die u wilt plotten.
 
 Wanneer trainingsmodellen worden geschaald op honderden en duizenden afzonderlijke uitvoeringen, kunt u op deze pagina eenvoudig elk model zien dat u hebt getraind, in het bijzonder hoe ze zijn getraind en hoe uw unieke metrische gegevens in de loop van de tijd zijn veranderd.
 

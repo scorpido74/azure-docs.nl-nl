@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745838"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052162"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -100,7 +100,7 @@ Als u het eigendom van de facturering van een Azure-abonnement hebt geaccepteerd
 
 ## <a name="supported-subscription-types"></a>Ondersteunde abonnementstypen
 
-De onderstaande typen abonnementen kunnen in Azure Portal worden overgedragen. Momenteel kunnen er geen [gratis proefabonnementen](https://azure.microsoft.com/offers/ms-azr-0044p/) of [AIO-abonnementen (Azure in Open)](https://azure.microsoft.com/offers/ms-azr-0111p/) worden overgedragen. Zie [Resources naar een nieuwe groep of nieuw abonnement verplaatsen](../../azure-resource-manager/management/move-resource-group-and-subscription.md) voor een tijdelijke oplossing. Als u andere abonnementen, zoals [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) of ondersteuningsplannen wilt overdragen, [neemt u contact op met Azure Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+De onderstaande typen abonnementen kunnen in Azure Portal worden overgedragen. Momenteel kunnen er geen [gratis proefabonnementen](https://azure.microsoft.com/offers/ms-azr-0044p/) of [AIO-abonnementen (Azure in Open)](https://azure.microsoft.com/offers/ms-azr-0111p/) worden overgedragen. Zie [Resources naar een nieuwe groep of nieuw abonnement verplaatsen](../../azure-resource-manager/management/move-resource-group-and-subscription.md) voor een tijdelijke oplossing. Als u andere abonnementen, zoals ondersteuningsplannen wilt overdragen, [neemt u contact op met de ondersteuning voor Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 - [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  

@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f36a41a1151255e792281ae959d40ce183040cb5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611482"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737135"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Coderen met de Azure Digital Twins-API's
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Het is gebruikelijk dat ontwikkelaars die met Azure Digital Twins werken, een clienttoepassing schrijven voor interactie met hun exemplaar van de Azure Digital Twins-service. Deze zelfstudie voor ontwikkelaars biedt een inleiding op het programmeren van de Azure Digital Twins-service, met behulp van de [Azure IoT Digital Twins-clientbibliotheek voor .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). U wordt stap voor stap begeleid bij het schrijven van een C# console-client-app, vanaf het begin.
 
@@ -99,8 +102,8 @@ Het eerste wat uw app moet doen, is verifiëren op basis van de Azure Digital Tw
 
 Als u zich wilt verifiëren, hebt u soorten informatie nodig:
 * De *Map-id* voor uw abonnement
-* De *Toepassings-id (client)* gemaakt bij het eerder instellen van het service-exemplaar
-* De *hostnaam* van uw service-exemplaar
+* De *Toepassings-id (client)* die is gemaakt bij het eerder instellen van Azure Digital Twins
+* The *hostName* van uw exemplaar van Azure Digital Twins
 
 >[!TIP]
 > Als u uw *Map-id* niet weet, kunt u deze downloaden door deze opdracht uit te voeren in [Azure Cloud Shell](https://shell.azure.com):

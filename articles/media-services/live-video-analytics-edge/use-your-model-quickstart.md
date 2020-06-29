@@ -1,48 +1,47 @@
 ---
-title: Live video analyseren met uw eigen model - Azure
-description: In deze quickstart gebruikt u computer vision om de live videofeed van een (gesimuleerde) IP-camera te analyseren.
+title: Livevideo analyseren met uw eigen model - Azure
+description: In deze quickstart gebruikt u computer vision om de livevideofeed van een (gesimuleerde) IP-camera te analyseren.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0b502fb4bcfa3a11890167c5ef297463a3c51cdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261486"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816690"
 ---
-# <a name="quickstart-analyze-live-video-with-your-own-model"></a>Quickstart: Live video analyseren met uw eigen model
+# <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>Quickstart: Livevideo analyseren met uw eigen model
 
-In deze quickstart ziet u hoe u Live Video Analytics in IoT Edge kunt gebruiken om de live videofeed van een (gesimuleerde) IP-camera te analyseren door een computer vision-model toe te passen om objecten te detecteren. Een subset van de frames in de live videofeed wordt verzonden naar een deductieservice en de resultaten worden verzonden naar de IoT Edge-hub. Er wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde live-videostream. Dit artikel is gebaseerd op voorbeeldcode die is geschreven in C#.
+In deze quickstart leert u hoe u Live Video Analytics in IoT Edge kunt gebruiken om de live-videofeed van een (gesimuleerde) IP-camera te analyseren. U ziet hoe u een computer vision-model kunt toepassen om objecten te detecteren. Een subset van de frames in de livevideofeed wordt verzonden naar een deductieservice. De resultaten worden verzonden naar IoT Edge-hub. 
 
-Dit artikel bouwt voort op [deze](detect-motion-emit-events-quickstart.md) quickstart. 
+In deze quickstart wordt gebruikgemaakt van een Azure-VM als een IoT Edge-apparaat en van een gesimuleerde livevideostream. De quickstart is gebaseerd op de voorbeeldcode die is geschreven in C# en bouwt voort op de quickstart [Beweging detecteren en gebeurtenissen verzenden](detect-motion-emit-events-quickstart.md). 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Visual Studio Code](https://code.visualstudio.com/) op uw computer met de volgende extensies:
+* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) als u nog geen account hebt.
+* [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1) geïnstalleerd op uw systeem
-* Als u [deze](detect-motion-emit-events-quickstart.md) quickstart nog niet eerder hebt gedaan, voer dan de volgende stappen uit:
-     * [Azure-resources instellen](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
+* [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+* Als u niet de quickstart [Beweging detecteren en gebeurtenissen verzenden](detect-motion-emit-events-quickstart.md) hebt voltooid, moet u [Azure-resources instellen](detect-motion-emit-events-quickstart.md#set-up-azure-resources).
 
 > [!TIP]
-> Tijdens de installatie van de Azure IoT Tools wordt u mogelijk gevraagd om Docker te installeren. U kunt deze vraag negeren.
+> Tijdens de installatie van de Azure IoT Tools wordt u mogelijk gevraagd om Docker te installeren. U kunt de vraag negeren.
 
 ## <a name="review-the-sample-video"></a>De voorbeeldvideo bekijken
-Als onderdeel van de bovenstaande stappen voor het instellen van de Azure-resources, wordt een (korte) video van een snelweg gekopieerd naar de virtuele Linux-machine in Azure die wordt gebruikt als het IoT Edge-apparaat. Dit videobestand wordt gebruikt voor het simuleren van een livestream voor deze zelfstudie.
+Bij het instellen van de Azure-resources wordt een korte video van wegverkeer gekopieerd naar de virtuele Linux-machine in Azure die u als IoT Edge-apparaat gebruikt. In deze quickstart wordt het videobestand gebruikt voor het simuleren van een livestream.
 
-U kunt een toepassing als [VLC Player](https://www.videolan.org/vlc/) gebruiken, deze starten, op Control+N drukken en [deze](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) link naar de video van de snelweg plakken om met afspelen te beginnen. U ziet dat de beelden van het verkeer op een snelweg zijn en dat er veel voertuigen voorbij komen.
+Open een toepassing als [VLC Media Player](https://www.videolan.org/vlc/). Selecteer CTRL + N en plak vervolgens een link naar [de video](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) om het afspelen te starten. U ziet beelden van veel voertuigen die over de snelweg rijden.
 
-Wanneer u de onderstaande stappen hebt uitgevoerd, hebt u Live Video Analytics in IoT Edge gebruikt voor het detecteren van objecten zoals voertuigen, enzovoort, en het publiceren van deductiegebeurtenissen naar de IoT Edge-hub.
+In deze quickstart gebruikt u Live Video Analytics in IoT Edge om objecten, zoals auto's en personen, te detecteren. U publiceert gekoppelde deductiegebeurtenissen naar IoT Edge-hub.
 
 ## <a name="overview"></a>Overzicht
 
 ![Overzicht](./media/quickstarts/overview-qs5.png)
 
-Het bovenstaande diagram laat zien hoe de signalen in deze quickstart stromen. Een edge-module (details [hier](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)) simuleert een IP-camera die als host fungeert voor een RTSP-server. Een [RTSP-bron](media-graph-concept.md#rtsp-source)knooppunt haalt de video-feed van deze server, en verstuurt videoframes naar het [framefilterprocessor](media-graph-concept.md#frame-rate-filter-processor)-knooppunt. Deze processor beperkt de framesnelheid van de videostream die het [HTTP-extensieprocessor](media-graph-concept.md#http-extension-processor)-knooppunt bereikt. 
+Dit diagram laat zien hoe de signalen in deze quickstart stromen. Een [Edge-module](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuleert een IP-camera die als host fungeert voor een RTSP-server (Real-Time Streaming Protocol). Een [RTSP-bron](media-graph-concept.md#rtsp-source)-knooppunt haalt de videofeed van deze server, en verstuurt videoframes naar het [framefilterprocessor](media-graph-concept.md#frame-rate-filter-processor)-knooppunt. Deze processor beperkt de framesnelheid van de videostream die het knooppunt [HTTP-extensieprocessor](media-graph-concept.md#http-extension-processor) bereikt. 
 
-Het HTTP-extensie-knooppunt speelt de rol van een proxy, door de videoframes te converteren naar het opgegeven afbeeldingstype en de afbeelding via REST door te sturen naar een andere Edge-module die een AI-model achter een HTTP-eindpunt uitvoert. In dit voorbeeld is die Edge-module gebouwd met behulp van het [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx)-model, waarmee vele soorten objecten kunnen worden gedetecteerd. Het HTTP-extensieprocessor-knooppunt verzamelt de detectieresultaten en publiceert de gebeurtenissen naar het [IoT Hub Sink](media-graph-concept.md#iot-hub-message-sink )-knooppunt, dat deze gebeurtenis vervolgens naar de [IoT Edge-hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub) stuurt.
+Het knooppunt HTTP-extensie speelt de rol van een proxy. Het converteert videoframes naar het opgegeven afbeeldingstype. Vervolgens wordt de afbeelding via REST doorgestuurd naar een andere Edge-module die een AI-model achter een HTTP-eindpunt uitvoert. In dit voorbeeld wordt die Edge-module gebouwd met behulp van het [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx)-model, dat vele soorten objecten kan detecteren. Het HTTP-extensieprocessor-knooppunt verzamelt de detectieresultaten en publiceert de gebeurtenissen naar het [IoT Hub Sink](media-graph-concept.md#iot-hub-message-sink)-knooppunt. Het knooppunt verzendt die gebeurtenissen vervolgens naar [IoT Edge-hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 In deze quickstart gaat u het volgende doen:
 
@@ -56,59 +55,75 @@ In deze quickstart gaat u het volgende doen:
     
 ### <a name="examine-and-edit-the-sample-files"></a>De voorbeeld bestanden bekijken en bewerken
 
-Als onderdeel van de vereisten hebt u de voorbeeldcode naar een map gedownload. Start Visual Studio Code en open de map.
+Als onderdeel van de vereisten hebt u de voorbeeldcode naar een map gedownload. Volg deze stappen om de voorbeeldbestanden te bekijken en te bewerken.
 
-1. Blader in Visual Studio code naar src/edge. U ziet het. env-bestand dat u hebt gemaakt, samen met een paar sjabloonbestanden voor de implementatie.
+1. Ga in Visual Studio Code naar *src/edge*. U ziet het bestand *.env* en enkele implementatiesjabloonbestanden.
 
-    * De implementatiesjabloon verwijst naar het implementatiemanifest voor het edge-apparaat met enkele tijdelijke waarden. Het. env-bestand bevat de waarden voor die variabelen.
-1. Blader vervolgens naar de map 'src/cloud-to-device-console-app'. Hier ziet u het bestand appsettings.json dat u hebt gemaakt, samen met enkele andere bestanden:
+    De implementatiesjabloon verwijst naar het implementatiemanifest voor het edge-apparaat. Deze bevat enkele tijdelijke waarden. Het *.env*-bestand bevat de waarden voor die variabelen.
 
-    * c2d-console-app.csproj: dit is het projectbestand voor Visual Studio Code.
-    * operations.json: dit bestand bevat de verschillende bewerkingen die u het programma wilt laten uitvoeren.
-    * Program.cs: dit is de voorbeeldcode van het programma. Deze doet het volgende:
+1. Ga naar de map *src/cloud-to-device-console-app*. Hier ziet u het bestand *appsettings.json* en enkele andere bestanden:
+
+    * ***c2d-console-app.csproj***: het projectbestand voor Visual Studio Code.
+    * ***operations.json***: een lijst met de bewerkingen die u het programma wilt laten uitvoeren.
+    * ***Program.cs***: de voorbeeldcode van het programma. Deze code:
 
         * De app-instellingen laden.
-        *  Hiermee roept u directe methoden aan die worden weergegeven door de module Live Video Analytics in IoT Edge. U kunt de module gebruiken om live-videostreams te analyseren door [directe methoden](direct-methods.md) aan te roepen 
-        * Hiermee pauzeert u zodat u de uitvoer van het programma in het TERMINAL-venster en de gebeurtenissen die worden gegenereerd door de module in het uitvoervenster kunt controleren.
-        * Hiermee worden directe methoden voor het opschonen van resources opgeroepen   
+        * Roept directe methoden aan die worden weergegeven door de module Live Video Analytics in IoT Edge. U kunt de module gebruiken om livevideostreams te analyseren door de bijbehorende [directe methoden](direct-methods.md) aan te roepen.
+        * Pauzeert, zodat u de uitvoer van het programma kunt controleren in het **TERMINAL**-venster en de gebeurtenissen die zijn gegenereerd door de module kunt controleren in het **UITVOER**-venster.
+        * Roept directe methoden aan voor het opschonen van resources.
 
 
-1. Breng de volgende wijzigingen aan in het bestand operations.json
-    * Wijzig de koppeling naar de graaftopologie: `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
-    * Bewerk onder GraphInstanceSet de naam van de graaftopologie zodat deze overeenkomt met de waarde in de bovenstaande link `"topologyName" : "InferencingWithHttpExtension"`
-    * Bewerk de naam onder GraphTopologyDelete `"name": "InferencingWithHttpExtension"`
+1. Bewerk het bestand *operations.json*:
+    * Wijzig de link naar de graaftopologie:
 
-### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Het IoT Edge-distributiemanifest genereren en implementeren
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
 
-1. Klik met de rechtermuisknop op het bestand src/edge/deployment.yolov3.template.json en klik op IoT Edge-implementatiemanifest genereren.
+    * Bewerk onder `GraphInstanceSet` de naam van de graaftopologie zodat deze overeenkomt met de waarde in de voorgaande link:
+
+      `"topologyName" : "InferencingWithHttpExtension"`
+
+    * Bewerk de naam onder `GraphTopologyDelete`:
+
+      `"name": "InferencingWithHttpExtension"`
+
+### <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>Het IoT Edge-implementatiemanifest genereren en implementeren
+
+1. Klik met de rechtermuisknop op het bestand *src/edge/ deployment.yolov3.template.json* en klik op **IoT Edge-implementatiemanifest genereren**.
 
     ![IoT Edge-implementatiemanifest genereren](./media/quickstarts/generate-iot-edge-deployment-manifest-yolov3.png)  
-1. Hiermee maakt u een manifestbestand in de map src/edge/config met de naam deployment.yolov3.amd64.json.
-1. Als u de [quickstart](detect-motion-emit-events-quickstart.md)eerder hebt voltooid, kunt u deze stap overslaan. Anders stelt u de IoT Hub-verbindingsreeks in door naast het deelvenster AZURE IOT HUB in de linkerbenedenhoek te klikken op het pictogram Meer acties. U kunt de tekenreeks uit het bestand appsettings.json kopiëren. (Hier volgt een andere aanbevolen methode om ervoor te zorgen dat u de juiste IoT Hub hebt geconfigureerd in Visual Studio code via de opdracht [IOT hub selecteren](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)).
+
+    Het manifestbestand *deployment.yolov3.amd64.json* wordt gemaakt in de map *src/edge/config*.
+
+1. Als u de quickstart [Beweging detecteren en gebeurtenissen verzenden](detect-motion-emit-events-quickstart.md) hebt voltooid, kunt u deze stap overslaan. 
+
+    Als dat niet het geval is, selecteert u in het deelvenster **AZURE IOT HUB** in de linkerbenedenhoek het pictogram **Meer acties** en selecteert u vervolgens **IoT Hub-verbindingsreeks instellen**. U kunt de tekenreeks uit het bestand *appsettings.json* kopiëren. Als u er zeker van wilt zijn dat u de juiste IoT-hub in Visual Studio Code hebt geconfigureerd, gebruikt u de [opdracht IoT Hub selecteren](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
     
-    ![IoTHub-verbindingsreeks](./media/quickstarts/set-iotconnection-string.png)
-1. Klik vervolgens met de rechtermuisknop op src/edge/config/deployment.yolov3.amd64.json en klik op Implementatie voor één apparaat maken. 
+    ![IoT Hub-verbindingsreeks instellen](./media/quickstarts/set-iotconnection-string.png)
+
+1. Klik met de rechtermuisknop op *src/edge/config/ deployment.yolov3.amd64.json* en selecteer **Implementatie voor één apparaat maken**. 
 
     ![Implementatie voor één apparaat maken](./media/quickstarts/create-deployment-single-device.png)
-1. Vervolgens wordt u gevraagd om een IoT Hub-apparaat te selecteren. Selecteer lva-sample-device in de vervolgkeuzelijst.
-1. Vernieuw in ongeveer 30 seconden de Azure IOT-hub in het gedeelte linksonder en u moet het edge-apparaat hebben met de volgende modules geïmplementeerd:
 
-    1. De Live Video Analytics-module genaamd lvaEdge.
-    1. Een module genaamd rtspsim die een RTSP-server simuleert en fungeert als de bron van een live videofeed.
-    1. Een module genaamd yolov3, die zoals de naam al doet vermoeden, het YOLOv3-objectdetectiemodel is dat computer vision toepast op de afbeeldingen en meerdere klassen objecttypen retourneert.
+1. Wanneer u wordt gevraagd om een IoT Hub-apparaat te selecteren, selecteert u **lva-sample-device**.
+1. Vernieuw Azure IoT Hub na ongeveer 30 seconden in de linkerbenedenhoek van het venster. Op het edge-apparaat worden nu de volgende geïmplementeerde modules weergegeven:
+
+    * De Live Video Analytics-module met de naam **lvaEdge**
+    * De **rtspsim**-module, die een RTSP-server simuleert en fungeert als de bron van een livevideofeed
+    * De **yolov3**-module, het YOLOv3-objectdetectiemodel dat computer vision toepast op de afbeeldingen en meerdere klassen objecttypen retourneert
  
-        ![YOLOv3-objectdetectiemodel](./media/quickstarts/yolov3.png)
+      ![Modules die zijn geïmplementeerd op het edge-apparaat](./media/quickstarts/yolov3.png)
 
-### <a name="prepare-for-monitoring-events"></a>Bewakingsgebeurtenissen voorbereiden
+### <a name="prepare-to-monitor-events"></a>Het bewaken van gebeurtenissen voorbereiden
 
-Klik met de rechtermuisknop op het Live Video Analytics-apparaat en klik op "Bewaking van ingebouwd gebeurteniseindpunt starten". Deze stap is nodig om de IoT Hub-gebeurtenissen te controleren en te bekijken in het uitvoervenster van Visual Studio Code. 
+Klik met de rechtermuisknop op het Live Video Analytics-apparaat en selecteer **Bewaking van ingebouwd gebeurteniseindpunt starten**. Deze stap is nodig om de IoT Hub-gebeurtenissen te controleren in het venster **UITVOER** van Visual Studio Code. 
 
 ![Bewaking starten](./media/quickstarts/start-monitoring-iothub-events.png) 
 
 ### <a name="run-the-sample-program"></a>Het voorbeeldprogramma uitvoeren
 
-1. Start een foutopsporingssessie (druk op F5). In het TERMINAL-venster ziet u enkele berichten verschijnen.
-1. operations.json begint met het uitvoeren van aanroepen naar de directe methoden GraphTopologyList en GraphInstanceList. Als u resources hebt opgeschoond na vorige quickstarts, worden er lege lijsten geretourneerd, waarna wordt gepauzeerd zodat u op Enter kunt drukken
+1. Selecteer de toets F5 om een foutopsporingssessie te starten. U ziet de berichten die worden afgedrukt in het venster **TERMINAL**.
+1. De code *operations.json* wordt gestart met aanroepen naar de directe methoden `GraphTopologyList` en `GraphInstanceList`. Als u na het voltooien van vorige quickstarts resources hebt opgeschoond, worden er lege lijsten geretourneerd en wordt het proces gepauzeerd. Selecteer de Enter-toets om door te gaan.
+
    ```
    --------------------------------------------------------------------------
    Executing operation GraphTopologyList
@@ -125,55 +140,57 @@ Klik met de rechtermuisknop op het Live Video Analytics-apparaat en klik op "Bew
    Press Enter to continue
    ```
 
-1. Wanneer u op de Enter-toets drukt in het TERMINAL-venster, wordt de volgende set met aanroepen met de directe methode gemaakt
-     * Een aanroep van GraphTopologySet met behulp van topologyUrl hierboven
-     * Een aanroep van GraphInstanceSet met behulp van de volgende hoofdtekst
-     ```
-     {
-       "@apiVersion": "1.0",
-       "name": "Sample-Graph-1",
-       "properties": {
-         "topologyName": "InferencingWithHttpExtension",
-         "description": "Sample graph description",
-         "parameters": [
-           {
-             "name": "rtspUrl",
-             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-           },
-           {
-             "name": "rtspUserName",
-             "value": "testuser"
-           },
-           {
-             "name": "rtspPassword",
-             "value": "testpassword"
+    In het **TERMINAL**-venster wordt de volgende set aanroepen van directe methoden weergegeven:
+
+     * Een aanroep van `GraphTopologySet` waarin gebruik wordt gemaakt van de voorgaande `topologyUrl`
+     * Een aanroep van `GraphInstanceSet` waarin gebruik wordt gemaakt van de volgende hoofdtekst:
+
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph-1",
+           "properties": {
+             "topologyName": "InferencingWithHttpExtension",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
+               }
+             ]
            }
-         ]
-       }
-     }
-     ```
-     * Een aanroep van GraphInstanceActivate om het graafexemplaar te starten en de videostream te starten
-     * Een tweede aanroep van GraphInstanceList om aan te geven dat het graafexemplaar inderdaad actief is
-1. De uitvoer in het TERMINAL-venster wordt nu onderbroken met de prompt Druk op ENTER om door te gaan. Klik nog niet op Enter. U kunt omhoog schuiven om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen
-1. Als u nu overschakelt naar het uitvoervenster in Visual Studio Code, worden berichten die worden verzonden naar de IoT-hub, weergegeven door de module Live Video Analytics in IoT Edge.
-     * Deze berichten worden besproken in de sectie hieronder
-1. De mediagrafiek blijft actief en resultaten afdrukken: de RTSP-simulator blijft de bronvideo herhalen. Als u de mediagrafiek wilt stoppen, gaat u terug naar het TERMINAL-venster en klikt u op Enter. De volgende serie aanroepen worden gebruikt om resources op te schonen:
-     * Een aanroep van GraphInstanceDeactivate om het graafexemplaar te deactiveren
-     * Een aanroep van GraphInstanceDelete om het exemplaar te verwijderen
-     * Een aanroep van GraphTopologyDelete om de topologie te verwijderen
-     * Een laatste aanroep van GraphTopologyList om aan te geven dat de lijst nu leeg is
+         }
+         ```
+
+     * Een aanroep van `GraphInstanceActivate` waarmee het graafexemplaar en de videostroom worden gestart
+     * Een tweede aanroep van `GraphInstanceList` waarmee wordt weergegeven dat het graafexemplaar wordt uitgevoerd
+1. De uitvoer in het **TERMINAL**-venster wordt gepauzeerd bij een `Press Enter to continue`-prompt. Selecteer Enter nog niet. Schuif omhoog om de nettoladingen voor het JSON-antwoord te zien voor de directe methoden die u hebt aangeroepen.
+1. Schakel naar het **UITVOER**-venster in Visual Studio Code. Er zijn berichten te zien die door de module Live Video Analytics in IoT Edge worden verzonden naar de IoT-hub. In de volgende sectie van deze quickstart worden deze berichten besproken.
+1. Het uitvoeren van de mediagraaf wordt vervolgd en de resultaten worden afgedrukt. Via de RTSP-simulator wordt de bronvideo continu herhaald. Als u de mediagraaf wilt stoppen, keert u terug naar het **TERMINAL**-venster en selecteert u Enter. 
+
+    Met de volgende reeks aanroepen worden resources opgeschoond:
+      * Met een aanroep van `GraphInstanceDeactivate` wordt het graafexemplaar gedeactiveerd.
+      * Met een aanroep van `GraphInstanceDelete` wordt het exemplaar verwijderd.
+      * Met een aanroep van `GraphTopologyDelete` wordt de topologie verwijderd.
+      * Met een aanroep van `GraphTopologyList` wordt ten slotte aangegeven dat de lijst leeg is.
 
 ## <a name="interpret-results"></a>Resultaten interpreteren
 
-Wanneer u de mediagrafiek uitvoert, worden de resultaten van het knooppunt van de HTTP-extensieprocessor via het knooppunt van de IoT Hub-sink naar de IoT-hub verzonden. De berichten die u ziet in het UITVOER-venster van Visual Studio Code bevatten een sectie 'body' en een sectie 'applicationProperties'. Lees [dit](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) artikel als u wilt weten wat deze secties inhouden.
+Wanneer u de mediagraaf uitvoert, worden de resultaten van het HTTP-extensieprocessor-knooppunt via het IoT Hub-sink-knooppunt naar de IoT-hub doorgevoerd. De berichten in het **UITVOER**-venster bevatten een sectie `body` en een sectie `applicationProperties`. Zie [IoT Hub-berichten maken en lezen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) voor meer informatie.
 
-In de onderstaande berichten worden de eigenschappen van de toepassing en de inhoud van de bodytekst door de module Live Video Analytics bepaald. 
+In de volgende berichten worden de eigenschappen van de toepassing en de inhoud van de hoofdtekst bepaald door de module Live Video Analytics. 
 
+### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-gebeurtenis
 
-
-### <a name="mediasession-established-event"></a>MediaSession Established-gebeurtenis
-
-Wanneer een mediagrafiek wordt geïnstantieerd, probeert het RTSP-bronknooppunt verbinding te maken met de RTSP-server die wordt uitgevoerd op de rtspsim-live55-container. Als dit lukt, wordt deze gebeurtenis afgedrukt. Het gebeurtenistype is Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished.
+Wanneer een mediagraaf wordt geïnstantieerd, probeert het RTSP-bronknooppunt verbinding te maken met de RTSP-server die wordt uitgevoerd in de rtspsim-live55-container. Als het lukt om de verbinding tot stand te brengen, wordt de volgende gebeurtenis afgedrukt. Het gebeurtenistype is `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`.
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
@@ -191,16 +208,21 @@ Wanneer een mediagrafiek wordt geïnstantieerd, probeert het RTSP-bronknooppunt 
 }
 ```
 
-Let op het volgende in het bovenstaande bericht:
-* Het bericht is een diagnostische gebeurtenis, MediaSessionEstablished, die aangeeft dat het RTSP-bronknooppunt (het subject) verbinding kan maken met de RTSP-simulator en een (gesimuleerde) live-feed kan gaan ontvangen.
-* 'subject' in applicationProperties geeft aan dat het bericht is gegenereerd op basis van het knooppunt van de RTSP-bron in de mediagraaf.
-* 'eventType' in applicationProperties geeft aan dat dit een diagnostische gebeurtenis is.
-* 'eventTime' geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
-* 'body' bevat gegevens over de diagnostische gebeurtenis, in dit geval de [SDP](https://en.wikipedia.org/wiki/Session_Description_Protocol) -details.
+In dit bericht ziet u deze gegevens:
+
+* Het bericht is een diagnostische gebeurtenis. `MediaSessionEstablished` geeft aan dat het RTSP-bronknooppunt (het onderwerp) is verbonden met de RTSP-simulator en is begonnen met het ontvangen van een (gesimuleerde) livefeed.
+* In `applicationProperties` geeft `subject` aan dat het bericht is gegenereerd op basis van het knooppunt van de RTSP-bron in de mediagraaf.
+* In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis een diagnostische gebeurtenis is.
+* De `eventTime` geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
+* De `body` bevat gegevens over de diagnostische gebeurtenis. In dit geval bevatten de gegevens de details van [Session Description Protocol (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol).
 
 ### <a name="inference-event"></a>Deductiegebeurtenis
 
-Het HTTP-extensieprocessor-knooppunt ontvangt deductieresultaten van de yolov3-module en verzendt deze via het IoT Hub Sink-knooppunt als deductiegebeurtenissen. In deze gebeurtenissen wordt het type ingesteld op 'entiteit' om aan te geven dat het een entiteit is, zoals een auto of vrachtwagen, en de eventTime vertelt u op welk tijdstip (UTC) het object is gedetecteerd. Hieronder ziet u een voorbeeld waarin twee auto's zijn gedetecteerd met verschillende niveaus van betrouwbaarheid in hetzelfde videoframe.
+Het knooppunt voor de HTTP-extensieprocessor ontvangt de deductieresultaten van de yolov3-module. Vervolgens worden de resultaten door het knooppunt voor de IoT Hub-sink verzonden als deductiegebeurtenissen. 
+
+In deze gebeurtenissen wordt het type ingesteld op `entity` om aan te geven dat het een entiteit is, zoals een auto of vrachtwagen. De waarde `eventTime` is de UTC-tijd waarop het object is gedetecteerd. 
+
+In het volgende voorbeeld zijn twee auto's gedetecteerd in hetzelfde videoframe, met verschillende betrouwbaarheidsniveaus.
 
 ```
 [IoTHubMonitor] [11:37:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -248,22 +270,22 @@ Het HTTP-extensieprocessor-knooppunt ontvangt deductieresultaten van de yolov3-m
 }
 ```
 
-Let op het volgende in het bovenstaande bericht:
+Let in de berichten op de volgende details:
 
-* 'subject' in applicationProperties verwijst naar het knooppunt in de graaftopologie van waaruit het bericht is gegenereerd. 
-* 'eventType' in applicationProperties geeft aan dat dit een analytische gebeurtenis is.
-* 'eventTime' geeft de tijd aan waarop de gebeurtenis heeft plaatsgevonden.
-* 'body' bevat gegevens over de analytische gebeurtenis. In dit geval is de gebeurtenis een deductiegebeurtenis en daarom bevat de hoofdtekst 'inferences'.
-* De sectie 'inferences' geeft aan dat het 'type' 'entiteit' is en dat er aanvullende gegevens zijn over de 'entiteit'.
+* In `applicationProperties` verwijst `subject` naar het knooppunt in de graaftopologie vanwaaruit het bericht is gegenereerd. 
+* In `applicationProperties` geeft `eventType` aan dat deze gebeurtenis een analytische gebeurtenis is.
+* De waarde `eventTime` is het tijdstip waarop de gebeurtenis heeft plaatsgevonden.
+* De sectie `body` bevat gegevens over de analytische gebeurtenis. In dit geval is de gebeurtenis een deductiegebeurtenis en bevat de hoofdtekst daarom `inferences`-gegevens.
+* De sectie `inferences` geeft aan dat het `type` `entity` is. Deze sectie bevat aanvullende gegevens over de entiteit.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de andere quickstarts wilt proberen, moet u de gemaakte resources bewaren. Anders gaat u naar de Azure-portal, bladert u naar de resourcegroepen, selecteert u de resourcegroep waaronder u deze quickstart hebt uitgevoerd en verwijdert u alle resources.
+Als u andere quickstarts wilt proberen, moet u de resources die u hebt gemaakt, bewaren. Anders gaat u in de Azure-portal naar de resourcegroepen, selecteert u de resourcegroep waar u deze quickstart hebt uitgevoerd en verwijdert u vervolgens alle resources.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk extra uitdagingen voor ervaren gebruikers:
+Bekijk extra uitdagingen voor gevorderde gebruikers:
 
-* Gebruik een [IP-camera](https://en.wikipedia.org/wiki/IP_camera) met ondersteuning voor RTSP in plaats van de RTSP-simulator. U kunt zoeken naar IP-camera's met RTSP-ondersteuning op de pagina met [ONVIF-compatibele](https://www.onvif.org/conformant-products/) producten door te zoeken naar apparaten die voldoen aan de profielen G, S of T.
-* Gebruik een AMD64-of x64-Linux-apparaat (in plaats van een Azure Linux-VM). Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) en vervolgens die in [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) om het apparaat te registreren bij Azure IoT Hub.
+* Gebruik een [IP-camera](https://en.wikipedia.org/wiki/IP_camera) met ondersteuning voor RTSP in plaats van de RTSP-simulator. U kunt zoeken naar IP-camera's die RTSP ondersteunen op de pagina met [ONVIF-compatibele](https://www.onvif.org/conformant-products/) producten. Zoek naar apparaten die voldoen aan de profielen G, S of T.
+* Gebruik een AMD64-of x64-Linux-apparaat (in plaats van een Azure Linux-VM). Dit apparaat moet zich in hetzelfde netwerk als de IP-camera bevinden. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Registreer vervolgens het apparaat met IoT Hub door de instructies in [Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) te volgen.
 

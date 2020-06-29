@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3f124e94398e53e3ab8ff7eb4b054d252129128b
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015978"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987001"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -127,6 +127,7 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 - Meer informatie over reserveringen voor serviceplannen:
     - [Virtual Machines met Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB-resources met gereserveerde Azure Cosmos DB-capaciteit](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Rekenresources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md) Meer informatie over reserveringen voor software-abonnementen:
+    - [Berekeningsresources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
+    - [Resources van Azure Cache voor Redis met gereserveerde capaciteit voor Azure Cache voor Redis](../../azure-cache-for-redis/cache-reserved-pricing.md) Meer informatie over reserveringen voor software-abonnementen:
     - [Red Hat-softwareabonnementen vanuit Azure-reserveringen](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [SUSE-softwareabonnementen vanuit Azure-reserveringen](../../virtual-machines/linux/prepay-suse-software-charges.md)

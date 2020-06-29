@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758993"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659920"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Quickstart: Unity-voorbeeld implementeren in Desktop
 
@@ -46,7 +46,7 @@ Alleen platte bureaublad-apps worden momenteel op het bureaublad ondersteund, du
 ## <a name="build-the-sample-project"></a>Het voorbeeldproject bouwen
 
 1. Open *Bestand -> Build-instellingen*.
-1. Wijzig *Platform* in **Universeel Windows-platform** (**zelfstandige pc** wordt ook ondersteund, maar hier niet gebruikt).
+1. Wijzig *Platform* in **Universeel Windows-platform** (**zelfstandige pc** wordt ook ondersteund, maar hier niet gebruikt, zie [platformbeperkingen](../reference/limits.md#platform-limitations)).
 1. Stel *Doelapparaat* in op **Pc**.
 1. Stel *Architectuur* in op **x86**.
 1. Stel *Buildtype* in op **D3D-project**.
@@ -60,7 +60,7 @@ Alleen platte bureaublad-apps worden momenteel op het bureaublad ondersteund, du
 1. Bouw de oplossing (F7).
 
 > [!WARNING]
-> Zorg ervoor dat u **x86**selecteert. **x64** wordt momenteel niet ondersteund. Zie [platformbeperkingen](../reference/limits.md#platform-limitations).
+> Zorg ervoor dat u **x86**selecteert. **UWP/x64** wordt momenteel niet ondersteund, zie [platformbeperkingen](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Het voorbeeldproject openen
 

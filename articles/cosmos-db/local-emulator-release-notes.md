@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747009"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687171"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator - opmerkingen bij de release en downloadgegevens
 
@@ -25,6 +25,10 @@ Dit artikel bevat de opmerkingen bij de release voor Azure Cosmos-emulator met e
 |**Aan de slag**|[Lokaal ontwikkelen met Azure Cosmos DB-emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="2111"></a>2.11.1
+
+- Deze versie corrigeert een aantal bugs die zijn gerelateerd aan de emulator Data Explorer. In bepaalde gevallen bij het gebruik van de emulator Data Explorer via een webbrowser, kan het voorkomen dat deze geen verbinding kan maken met het Cosmos-emulatoreindpunt en alle gerelateerde acties, zoals het maken van een database of een container, veroorzaken dan een fout. Het tweede probleem dat is opgelost heeft betrekking op het maken van een item vanuit een JSON-bestand met behulp van de uploadactie van Data Explorer.
 
 ### <a name="2110"></a>2.11.0
 

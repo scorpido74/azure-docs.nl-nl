@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: banders
-ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5b0d30d31fbe65360c246282eb2dc2109a541a3f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194152"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888328"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Zelfstudie: Inzicht in uw Azure-factuur
 
@@ -100,7 +100,7 @@ In het gedeelte **Gebruikskosten** van uw factuur ziet u de totale waarde (koste
 
 ![Factuur gebruikskosten](./media/review-individual-bill/invoice-usage-charges.png)
 
-Filter in uw CSV-gebruiksbestand op *MeterName* voor de bijbehorende resource die op uw factuur wordt weergegeven. Tel vervolgens de waarde van *Cost* op voor items in die kolom. Hier volgt een voorbeeld.
+Filter in uw CSV-gebruiksbestand op *MeterName* voor de bijbehorende resource die op uw factuur wordt weergegeven. Tel vervolgens de waarde van *Cost* op voor items in die kolom. Hier volgt een voorbeeld dat zich richt op de meternaam (P10-schijven) die overeenkomt met hetzelfde regelitem op de factuur.
 
 ![Gebruiksbestand met opgetelde waarde voor MeterName](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 

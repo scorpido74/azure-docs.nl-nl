@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837264"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945287"
 ---
 # <a name="azure-monitor-cli-samples"></a>CLI-voorbeelden van Azure Monitor
 In dit artikel vindt u voorbeelden van CLI-opdrachten (Command-Line Interface), om vanaf de opdrachtregel toegang te krijgen tot Azure Monitor-functies. Met Azure Monitor kunt u cloudservices, virtuele machines en web-apps automatisch schalen en waarschuwingen verzenden of web-URL's aanroepen op basis van waarden van geconfigureerde telemetriegegevens.
@@ -29,51 +29,51 @@ az login
 
 Nadat u deze opdracht hebt uitgevoerd, moet u zich aanmelden via de instructies op het scherm. Alle opdrachten werken in de context van uw standaardabonnement.
 
-Gebruik de volgende opdracht om de details van uw huidige abonnement weer te geven.
+Maak een lijst van de details van uw huidige abonnement.
 
 ```azurecli
 az account show
 ```
 
-Als u de werkcontext wilt wijzigen in een ander abonnement, gebruikt u de volgende opdracht:
+Wijzig de werkcontext naar een ander abonnement.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Voer de volgende opdracht uit om een lijst met alle ondersteunde Azure Monitor-opdrachten weer te geven.
+Geef een lijst weer met alle ondersteunde Azure Monitor-opdrachten.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Activiteitenlogboek weergeven voor een abonnement
+## <a name="view-activity-log"></a>Activiteitenlogboek weergeven
 
-Voer de volgende opdracht uit om een lijst met gebeurtenissen uit het activiteitenlogboek weer te geven.
+Geef een lijst met gebeurtenissen uit het activiteitenlogboek weer.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Probeer het volgende om alle beschikbare opties weer te geven.
+Geef alle beschikbare opties weer.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Hier volgt een voorbeeld om logboeken weer te geven voor een bepaalde resourcegroep:
+Maak een lijst van logboeken op resourceGroup.
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Voorbeeld om logboeken weer te geven op beller:
+Maak een lijst met logboeken op oproepende functie.
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Voorbeeld om logboeken weer te geven op beller voor een resourcetype, binnen een bepaald datumbereik
+Maak een lijst van logboeken op oproepende functie voor een resourcetype, binnen een bepaald datumbereik.
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

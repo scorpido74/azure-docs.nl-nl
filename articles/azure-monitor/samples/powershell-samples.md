@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 6c00556bfbcd2108b3cb5bd2cfdf88a741f85a99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837242"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945253"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell-voorbeelden
 In dit artikel wordt beschreven hoe u PowerShell-opdrachten kunt gebruiken om toegang te krijgen tot Azure Monitor-functies.
@@ -52,7 +52,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 ```
 
 
-## <a name="retrieve-activity-log-for-a-subscription"></a>Activiteitenlogboek ophalen voor een abonnement
+## <a name="retrieve-activity-log"></a>Het activiteitenlogboek ophalen
 Gebruik de cmdlet [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog).  Hier volgen enkele algemene voorbeelden. Het activiteitenlogboek bevat de laatste 90 dagen aan bewerkingen. Het gebruik van datums vóór deze tijd resulteert in een foutbericht.  
 
 Bekijk wat de huidige datum/tijd is om te controleren welke tijden moeten worden gebruikt in de onderstaande opdrachten:

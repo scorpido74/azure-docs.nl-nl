@@ -1,16 +1,16 @@
 ---
 title: 'Zelfstudie: ASP.NET Core met SQL Database'
-description: Informatie over het verkrijgen van een .NET Core-app die in Azure App Service werkt, met verbinding met SQL Database.
+description: Informatie over het verkrijgen van een .NET Core-app die in Azure App Service werkt, met verbinding aan een SQL-database.
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/23/2020
+ms.date: 05/27/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 4b5c78313eddd50441dbd47f556d2dbef03feefc
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c020e49b12784e628661bff61fe344df0ac6049a
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310373"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905983"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelfstudie: Een ASP.NET Core- en SQL Database-app maken in Azure App Service
 
@@ -18,15 +18,14 @@ ms.locfileid: "84310373"
 > In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een .NET Core- en SQL Database-app maken in Azure App Service op Linux](./containers/tutorial-dotnetcore-sqldb-app.md) als u naar App Service wilt implementeren op _Linux_.
 >
 
-[App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met SQL Database. Als u klaar bent, hebt u een .NET Core MVC-app die in App Service wordt uitgevoerd.
+[App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met een SQL-database. Als u klaar bent, hebt u een .NET Core MVC-app die in App Service wordt uitgevoerd.
 
 ![app die in App Service wordt uitgevoerd](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
->
-> * Een database maken in Azure SQL Database
+> * Een SQL-database in Azure maken
 > * Een .NET Core-app verbinden met SQL Database
 > * De app implementeren in Azure
 > * Het gegevensmodel bijwerken en de app opnieuw implementeren
@@ -77,25 +76,28 @@ Als u .NET Core wilt stoppen, drukt u in de terminal op `Ctrl+C`.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-database-in-azure-sql-database"></a>Een database maken in Azure SQL Database
+## <a name="create-production-sql-database"></a>SQL-productiedatabase maken
 
-In deze stap maakt u een database in [Azure SQL Database](/azure/sql-database/). Als de app is geïmplementeerd in Azure, wordt deze database gebruikt.
+In deze stap maakt u een SQL-database in Azure. Als de app is geïmplementeerd in Azure, wordt deze cloud-database gebruikt.
+
+Voor SQL Database wordt in deze zelfstudie gebruikgemaakt van [Azure SQL Database](/azure/sql-database/).
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
-### <a name="create-a-server-in-azure-sql-database"></a>Een server maken in Azure SQL Database
+### <a name="create-a-sql-database-logical-server"></a>Een logische SQL Database-server maken
 
-Maak vanuit Cloud Shell een [server](../azure-sql/database/logical-servers.md) in Azure SQL Database met behulp van de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create). Een server is een logische omgeving met een groep met databases die worden beheerd als groep.
+Maak een logische Azure SQL Database-server in Cloud Shell met de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Vervang de tijdelijke aanduiding *\<server-name>* door een *unieke* naam. Deze naam wordt gebruikt als onderdeel van het globaal unieke SQL Database eindpunt `<server-name>.database.windows.net`. Geldige tekens zijn `a`-`z`, `0`-`9`, `-`. Vervang tevens *\<db-username>* en *\<db-password>* door een zelfgekozen gebruikersnaam en wachtwoord.
+Vervang de tijdelijke aanduiding *\<server-name>* door een *unieke* SQL Database-naam. Deze naam wordt gebruikt als onderdeel van het globaal unieke SQL Database eindpunt `<server-name>.database.windows.net`. Geldige tekens zijn `a`-`z`, `0`-`9`, `-`. Vervang tevens *\<db-username>* en *\<db-password>* door een zelfgekozen gebruikersnaam en wachtwoord. 
+
 
 ```azurecli-interactive
 az sql server create --name <server-name> --resource-group myResourceGroup --location "West Europe" --admin-user <db-username> --admin-password <db-password>
 ```
 
-Wanneer de server is gemaakt, toont de Azure CLI informatie die lijkt op de informatie in het volgende voorbeeld:
+Wanneer de logische SQL Database-server wordt gemaakt, toont de Azure CLI informatie die lijkt op het volgende voorbeeld:
 
 <pre>
 {
@@ -117,24 +119,25 @@ Wanneer de server is gemaakt, toont de Azure CLI informatie die lijkt op de info
 
 ### <a name="configure-a-server-firewall-rule"></a>Een serverfirewallregel configureren
 
-Een [firewallregel op serverniveau](../azure-sql/database/firewall-configure.md) maken met behulp van de opdracht [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Als zowel het IP-beginadres als het IP-eindadres zijn ingesteld op 0.0.0.0, wordt de firewall alleen geopend voor andere Azure-resources.
+Maak een [firewallregel op Azure SQL Database-serverniveau](../sql-database/sql-database-firewall-configure.md) met de opdracht [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). Als zowel het IP-beginadres als het IP-eindadres zijn ingesteld op 0.0.0.0, wordt de firewall alleen geopend voor andere Azure-resources. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
-> [!TIP]
+> [!TIP] 
 > U kunt uw firewallregel nog beperkender maken door [alleen de uitgaande IP-adressen te gebruiken die in uw app worden gebruikt](overview-inbound-outbound-ips.md#find-outbound-ips).
+>
 
 Voer in Cloud Shell de opdracht opnieuw uit om toegang vanaf uw lokale computer mogelijk te maken door *\<your-ip-address>* te vervangen door [uw lokale IPv4 IP-adres](https://www.whatsmyip.org/).
 
 ```azurecli-interactive
-az sql server firewall-rule create --name AllowLocalClient --server <server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
 ```
 
-### <a name="create-a-database-in-azure-sql-database"></a>Een database maken in Azure SQL Database
+### <a name="create-a-database"></a>Een database maken
 
-Maak een database met een [prestatieniveau van S0](../azure-sql/database/service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
+Maak een database met een [prestatieniveau van S0](../sql-database/sql-database-service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -145,14 +148,14 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 Haal de verbindingsreeks op met behulp van de opdracht [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string).
 
 ```azurecli-interactive
-az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
+az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
 ```
 
 Vervang in de uitvoer van de opdracht *\<username>* en *\<password>* door de databasebeheerdersreferenties die u eerder hebt gebruikt.
 
 Dit is de verbindingsreeks voor uw app .NET Core-app. Kopieer deze voor later gebruik.
 
-### <a name="configure-app-to-connect-to-the-database-in-azure"></a>De app configureren om verbinding te maken met de database in Azure
+### <a name="configure-app-to-connect-to-production-database"></a>De app configureren om verbinding te maken met de productiedatabase
 
 Open Startup.cs in de lokale opslagplaats en zoek de volgende code:
 
@@ -170,10 +173,11 @@ services.AddDbContext<MyDatabaseContext>(options =>
 
 > [!IMPORTANT]
 > Voor productie-apps die u wilt uitbreiden, volgt u de best practices in [toepassen van migraties in productie](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
+> 
 
-### <a name="run-database-migrations-to-the-database-in-azure"></a>Databasemigraties naar de database in Azure uitvoeren
+### <a name="run-database-migrations-to-the-production-database"></a>Databasemigraties naar de productiedatabase uitvoeren
 
-Uw app maakt momenteel verbinding met een lokale Sqlite-database. Nu u een Azure SQL Database hebt geconfigureerd, maakt u de eerste migratie opnieuw om deze als doel te gebruiken.
+Uw app maakt momenteel verbinding met een lokale Sqlite-database. Nu u een Azure SQL Database hebt geconfigureerd, maakt u de eerste migratie opnieuw om deze als doel te gebruiken. 
 
 Voer vanuit de hoofdmap van de opslagplaats de volgende opdrachten uit. Vervang *\<connection-string>* met de verbindingsreeks die u eerder hebt gemaakt.
 
@@ -205,7 +209,7 @@ dotnet run
 
 Ga naar `http://localhost:5000` in een browser. Selecteer de koppeling **Nieuwe maken** en maak enkele _taakitems_. Uw app leest en schrijft nu gegevens van en naar de productiedatabase.
 
-Voer uw lokale wijzigingen door en voer de app door naar de Git-opslagplaats.
+Voer uw lokale wijzigingen door en voer de app door naar de Git-opslagplaats. 
 
 ```bash
 git add .
@@ -228,7 +232,7 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 ### <a name="create-a-web-app"></a>Een webtoepassing maken
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)]
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
 ### <a name="configure-connection-string"></a>Verbindingsreeks configureren
 
@@ -240,7 +244,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 In ASP.NET Core kunt u deze benoemde verbindingsreeks (`MyDbConnection`) gebruiken met het standaardpatroon, zoals elke verbindingsreeks die wordt opgegeven in *appsettings.json*. In dit geval wordt `MyDbConnection` ook gedefinieerd in uw *appsettings.json*. Bij het uitvoeren in App Service heeft de in App Service gedefinieerde verbindingsreeks voorrang op de verbindingsreeks die wordt gedefinieerd in uw *appsettings.json*. De code gebruikt de waarde uit *appsettings.json* tijdens de lokale ontwikkeling, en dezelfde code gebruikt de waarde van App Service wanneer deze is geïmplementeerd.
 
-Zie [De app configureren om verbinding te maken met de productiedatabase](#configure-app-to-connect-to-the-database-in-azure) als u wilt zien hoe in uw code naar de verbindingsreeks wordt verwezen.
+Zie [De app configureren om verbinding te maken met de productiedatabase](#configure-app-to-connect-to-production-database) als u wilt zien hoe in uw code naar de verbindingsreeks wordt verwezen.
 
 ### <a name="push-to-azure-from-git"></a>Pushen naar Azure vanaf Git
 
@@ -384,8 +388,8 @@ Terwijl uw ASP.NET Core-app wordt uitgevoerd in Azure App Service, kunt u de con
 
 Het voorbeeldproject volgt al de instructies in [ASP.NET Core-logboekregistratie in Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) met twee configuratiewijzigingen:
 
-* Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
-* Roept `loggerFactory.AddAzureWebAppDiagnostics()` in *Program.cs* aan.
+- Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
+- Roept `loggerFactory.AddAzureWebAppDiagnostics()` in *Program.cs* aan.
 
 Om het [logboekniveau](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Error` in `Information`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
 
@@ -395,6 +399,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 
 > [!NOTE]
 > Het logboekniveau van het project is al ingesteld op `Information` in *appsettings.json*.
+> 
 
 Gebruik voor het starten van logboekstreaming de opdracht [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.
 
@@ -425,14 +430,12 @@ In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Dez
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Wat u hebt geleerd:
 
 > [!div class="checklist"]
->
-> * Een database maken in Azure SQL Database
+> * Een SQL-database in Azure maken
 > * Een .NET Core-app verbinden met SQL Database
 > * De app implementeren in Azure
 > * Het gegevensmodel bijwerken en de app opnieuw implementeren
@@ -443,3 +446,8 @@ Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aa
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Een aangepaste DNS-naam aan uw app toewijzen](app-service-web-tutorial-custom-domain.md)
+
+Meer resources:
+
+> [!div class="nextstepaction"]
+> [ASP.NET Core-app configureren](configure-language-dotnetcore.md)

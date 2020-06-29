@@ -3,12 +3,12 @@ title: 'Zelfstudie: back-ups maken van SAP HANA-databases in virtuele Azure-mach
 description: In deze zelfstudie ontdekt u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 52ffc6bf83ff2a2dcc22fd7c5ad8ab1480f9ce50
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417290"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770727"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelfstudie: Een back-up maken van SAP HANA-databases in een Azure-VM
 
@@ -29,7 +29,9 @@ In deze zelfstudie ziet u hoe u een back-up naar een Azure Backup Recovery Servi
 
 Doe het volgende voordat u back-ups gaat configureren:
 
+* Identificeer of maak een [Recovery Services-kluis](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault) in dezelfde regio en hetzelfde abonnement als de VM waarop SAP HANA wordt uitgevoerd.
 * Sta connectiviteit van de virtuele machine naar internet toe, zodat de virtuele machine Azure kan bereiken. Dit wordt beschreven in de onderstaande procedure [De netwerkverbinding instellen](#set-up-network-connectivity).
+* Zorg ervoor dat de gecombineerde lengte van de SAP HANA Server VM-naam en de Resource Group-naam niet langer is dan 84 tekens voor Azure Resoure Manager (ARM_ VM's (en 77 tekens voor klassieke VM's). Deze beperking geldt omdat sommige tekens zijn gereserveerd door de service.
 * Er moet een sleutel in de **hdbuserstore** bestaan waarmee aan de volgende criteria wordt voldaan:
   * De sleutel moet aanwezig zijn in de standaard-**hdbuserstore**. De standaardwaarde is het `<sid>adm`-account waaronder SAP HANA is geïnstalleerd.
   * Voor MDC moet de sleutel verwijzen naar de SQL-poort van **NAMESERVER**. In het geval van SDC moet worden verwezen naar de SQL-poort van **INDEXSERVER**

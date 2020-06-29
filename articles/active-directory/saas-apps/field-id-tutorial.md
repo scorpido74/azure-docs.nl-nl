@@ -15,45 +15,45 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfaf82cd1c37de4f507f9db235bcd9f898d3cd27
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c90674ccbbbece59efe34986f320d0a18080399b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316238"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Field iD
 
 In deze zelfstudie leert u hoe u Field iD integreert met Azure Active Directory (Azure AD). Wanneer u Field iD integreert met Azure AD, kunt u het volgende:
 
 * In Azure AD beheren wie toegang heeft tot Field iD.
-* Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Field iD.
-* uw accounts op één centrale locatie beheren: Azure Portal.
+* Zorg ervoor dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Field iD.
+* Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+Als u meer wilt weten over de integratie van SaaS-apps (Software as a Service) met Azure AD, gaat u naar [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om aan de slag te gaan:
+Om aan de slag te gaan, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
-* Field iD-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een Field iD-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Field iD ondersteunt door **IDP** geïnitieerde eenmalige aanmelding
-* Zodra u Field iD hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Field iD ondersteunt door IDP geïnitieerde eenmalige aanmelding
+* Nadat u Field iD hebt geconfigureerd, kunt u sessiebeheer afdwingen. Dat biedt bescherming in real-time tegen de exfiltratie en infiltratie van gevoelige bedrijfsgegevens. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-field-id-from-the-gallery"></a>Field iD toevoegen uit de galerie
+## <a name="add-field-id-from-the-gallery"></a>Field iD toevoegen uit de galerie
 
 Voor het configureren van de integratie van Field iD in Azure AD moet u Field iD vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Selecteer **Nieuwe toepassing** om de nieuwe app toe te voegen.
 1. Typ in de sectie **Toevoegen uit de galerie** **Field iD** in het zoekvak.
 1. Selecteer **Field iD** in het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
@@ -61,85 +61,85 @@ Voor het configureren van de integratie van Field iD in Azure AD moet u Field iD
 
 Configureer en test eenmalige aanmelding van Azure AD met Field iD met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Field iD.
 
-Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Field iD te configureren en te testen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Field iD te configureren en testen:
 
-1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
-    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Eenmalige aanmelding bij Field iD configureren](#configure-field-id-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
-    1. **[Een Field iD-testgebruiker maken](#create-field-id-test-user)** : als u een equivalent van B.Simon in Field iD wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
-1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. [Configureer eenmalige aanmelding van Azure AD](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
+    1. [Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user) om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. [De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user) zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. [Eenmalige aanmelding bij Field iD configureren](#configure-field-id-sso) als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. [Een Field iD-testgebruiker maken](#create-a-field-id-test-user) als u een equivalent van B.Simon in Field iD wilt hebben die gekoppeld is aan de Azure AD-weergave van de gebruiker.
+1. [Test de eenmalige aanmelding](#test-sso) om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Field iD** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Field iD** de sectie **Beheren**. Selecteer vervolgens **Eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
-1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
+1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
-   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
+   ![Schermopname van Eenmalige aanmelding instellen met SAML, met het potloodpictogram gemarkeerd](common/edit-urls.png)
 
 1. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<tenantname>.fieldid.com/fieldid`
 
-   b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/tmna`
+   b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteuningsteam van Field iD](mailto:support@ecompliance.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
+1. Selecteer op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** het kopieerpictogram om **App-URL voor federatieve metagegevens** te kopiëren. Sla deze op uw computer op.
 
-    ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
+    ![Schermopname van het SAML-handtekeningcertificaat, met het kopieerpictogram gemarkeerd](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van de Azure-portal **Azure Active Directory** > **Gebruikers** > **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
-   1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer `B.Simon` in bij **Naam**.  
+   1. Voer voor **Gebruikersnaam** de username@companydomain.extension in (bijvoorbeeld `B.Simon@contoso.com`).
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
 In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Field iD.
 
-1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** > **Alle toepassingen**.
 1. Selecteer **Field iD** in de lijst met toepassingen.
-1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app het gedeelte **Beheren** en selecteer **Gebruikers en groepen**.
 
-   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+   ![Het gedeelte Beheren, met Gebruikers en groepen gemarkeerd](common/users-groups-blade.png)
 
 1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
+    ![Schermopname van Add user](common/add-assign-user.png)
 
-1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer in de lijst met gebruikers in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst **Gebruikers** en kies **Selecteren** onderaan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens **Selecteren** onderaan het scherm.
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
 ## <a name="configure-field-id-sso"></a>Eenmalige aanmelding voor Field iD configureren
 
-Als u eenmalige aanmelding wilt configureren in **Field iD**, moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Field iD](mailto:support@ecompliance.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de zijde van Field iD, moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Field iD](mailto:support@ecompliance.com). Zij zorgen ervoor dat de SAML SSO-verbinding aan beide kanten juist wordt ingesteld.
 
-### <a name="create-field-id-test-user"></a>Testgebruiker maken voor Field iD
+### <a name="create-a-field-id-test-user"></a>Een testgebruiker maken voor Field iD
 
-In dit gedeelte gaat u in Field iD een gebruiker maken met de naam Britta Simon. Neem contact op met het  [ondersteuningsteam van Field iD](mailto:support@ecompliance.com) om de gebruikers toe te voegen in het Field iD-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In dit gedeelte gaat u in Field iD een gebruiker maken met de naam Britta Simon. Neem contact op met het [ondersteuningsteam van Field iD](mailto:support@ecompliance.com) om de gebruikers toe te voegen in het Field iD-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen
 
-In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
+In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u op de tegel Field iD in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Field iD waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Field iD in het toegangsvenster selecteert, zou u automatisch moeten worden aangemeld bij de instantie van Field iD waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Aanmelden bij en het starten van apps vanuit de Mijn apps-portal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 

@@ -2,23 +2,22 @@
 title: On-premises apps publiceren met Azure AD-toegangsproxy
 description: Begrijp waarom u een toegangsproxy moet gebruiken voor het extern publiceren van on-premises webtoepassingen aan externe gebruikers. Meer informatie over de architectuur van een toegangsproxy, connectors, verificatiemethoden en beveiligingsvoordelen.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: d38cf25bb3b7622a0d444e4a71a4d62aafc053b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196448"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976503"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Een toegangsproxy van Azure AD gebruiken om on-premises apps te publiceren voor externe gebruikers
 
@@ -89,7 +88,7 @@ Er zijn verschillende manieren om een toepassing te configureren voor eenmalige 
 * Webtoepassingen
 * Web-API's die u beschikbaar wilt maken voor uitgebreide toepassingen op verschillende apparaten
 * Toepassingen die worden gehost achter een extern bureaublad-gateway
-* Uitgebreide client-apps die zijn geïntegreerd met de Active Directory Authentication Library (ADAL)
+* Uitgebreide client-apps die zijn geïntegreerd met de[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 
 App-proxy werkt met apps die gebruikmaken van het volgende systeemeigen verificatieprotocol:
 

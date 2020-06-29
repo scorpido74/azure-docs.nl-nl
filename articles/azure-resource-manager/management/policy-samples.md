@@ -1,21 +1,21 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Resource Manager
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Resource Manager. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 6f355b972e347526180810521a1c188c40144325
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 36e35c32f648642d904cb9b28cbe09244e2601ed
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236103"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886598"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-resource-manager"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Resource Manager
+# <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>Ingebouwde Azure Policy-definities voor Azure Resource Manager
 
 Deze pagina is een index van ingebouwde [Azure Policy](../../governance/policy/overview.md)-beleidsdefinities voor Azure Resource Manager. Zie [Ingebouwde Azure Policy-definities](../../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefinitie in Azure Portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

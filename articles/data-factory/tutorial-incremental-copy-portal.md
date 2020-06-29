@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.date: 06/10/2020
+ms.openlocfilehash: 71fca8f7dd808058e88d5a5ffe9a64e1136ceefc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249090"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736499"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Incrementeel gegevens uit een Azure SQL-database laden in Azure Blob Storage met de Azure-portal
 
@@ -277,7 +277,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Tekenreeks | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klik in de werkbalk op **Valideren** om de instellingen voor de pijplijn te valideren. Controleer of er geen validatiefouten zijn. Klik om >> om het venster **Pijplijnvalidatierapport** te sluiten.   
 
 28. Publiceer entiteiten (gekoppelde services, gegevenssets en pijplijnen) naar de Azure Data Factory-service door op de knop **Alles publiceren** te klikken. Wacht tot u een bericht ziet waarin staat dat het publiceren is voltooid.
@@ -290,9 +290,9 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
 
 ## <a name="monitor-the-pipeline-run"></a>De pijplijnuitvoering controleren.
 
-1. Ga naar het tabblad **Controleren** aan de linkerkant. U kunt de status van de pijplijnuitvoering zien die is geactiveerd met de handmatige trigger. Klik op de knop **Vernieuwen** om de lijst te vernieuwen.
+1. Ga naar het tabblad **Controleren** aan de linkerkant. U ziet de status van de pijplijnuitvoering die is geactiveerd met een handmatige trigger. U kunt via koppelingen in de kolom **NAAM PIJPLIJN** uitvoeringsdetails bekijken en de pijplijn opnieuw uitvoeren.
 
-2. Klik op de eerste koppeling (**Uitvoeringen van activiteit weergeven**) in de kolom **Acties** om de uitvoeringen van activiteit weer te geven die zijn gekoppeld aan deze pijplijnuitvoering. Als u wilt terugkeren naar de vorige weergave, klikt u bovenaan op **Pijplijnen**. Klik op de knop **Vernieuwen** om de lijst te vernieuwen.
+2. Selecteer de koppeling in de kolom **NAAM PIJPLIJN** om de uitvoering van activiteiten te zien die zijn gekoppeld aan de pijplijnuitvoering. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **NAAM ACTIVITEIT** om details van de uitvoeringen van een activiteit te zien. Selecteer **Alle pijplijnuitvoeringen** bovenaan om terug te gaan naar de weergave Pijplijnuitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
 
 
 ## <a name="review-the-results"></a>De resultaten bekijken
@@ -355,9 +355,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>Controleer de tweede pijplijnuitvoering.
 
-1. Ga naar het tabblad **Controleren** aan de linkerkant. U kunt de status van de pijplijnuitvoering zien die is geactiveerd met de handmatige trigger. Klik op de knop **Vernieuwen** om de lijst te vernieuwen.
+1. Ga naar het tabblad **Controleren** aan de linkerkant. U ziet de status van de pijplijnuitvoering die is geactiveerd met een handmatige trigger. U kunt via koppelingen in de kolom **NAAM PIJPLIJN** details van activiteiten bekijken en de pijplijn opnieuw uitvoeren.
 
-2. Klik op de eerste koppeling (**Uitvoeringen van activiteit weergeven**) in de kolom **Acties** om de uitvoeringen van activiteit weer te geven die zijn gekoppeld aan deze pijplijnuitvoering. Als u wilt terugkeren naar de vorige weergave, klikt u bovenaan op **Pijplijnen**. Klik op de knop **Vernieuwen** om de lijst te vernieuwen.
+2. Selecteer de koppeling in de kolom **NAAM PIJPLIJN** om de uitvoering van activiteiten te zien die zijn gekoppeld aan de pijplijnuitvoering. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **NAAM ACTIVITEIT** om details van de uitvoeringen van een activiteit te zien. Selecteer **Alle pijplijnuitvoeringen** bovenaan om terug te gaan naar de weergave Pijplijnuitvoeringen. Selecteer **Vernieuwen** om de weergave te vernieuwen.
 
 
 ## <a name="verify-the-second-output"></a>De tweede uitvoer controleren

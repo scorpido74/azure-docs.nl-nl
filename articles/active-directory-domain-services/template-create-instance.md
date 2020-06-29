@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Domain Services inschakelen met behulp van een sjabloon | Microsoft Docs
-description: Meer informatie over het configureren en inschakelen van Azure Active Directory Domain Services met behulp van een Azure Resource Manager sjabloon
+title: Azure DS Domain Services inschakelen met behulp van een sjabloon | Microsoft Docs
+description: Leer hoe u Azure Active Directory Domain Services configureert en inschakelt met behulp van een Azure Resource Manager-sjabloon
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -10,74 +10,74 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: b44547998b7ed7159e43bcbbfb4b4456d2a232e9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654554"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734212"
 ---
-# <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Een door Azure Active Directory Domain Services beheerd domein maken met behulp van een Azure Resource Manager sjabloon
+# <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Een beheerd domein maken in Azure Active Directory Domain Services met behulp van een Azure Resource Manager-sjabloon
 
-Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP, Kerberos/NTLM-verificatie die volledig compatibel is met Windows Server Active Directory. U gebruikt deze domein Services zonder zelf domein controllers te implementeren, beheren en repareren. Azure AD DS integreert met uw bestaande Azure AD-Tenant. Met deze integratie kunnen gebruikers zich aanmelden met hun bedrijfs referenties, en kunt u bestaande groepen en gebruikers accounts gebruiken om de toegang tot bronnen te beveiligen.
+Azure AD DS (Active Directory Domain Services) biedt beheerde domeinservices - zoals domeindeelname, groepsbeleid, LDAP, Kerberos/NTLM-verificatie - die volledig compatibel zijn met Windows Server Active Directory. U gebruikt deze domeinservices zonder zelf domeincontrollers te implementeren, te beheren en er patches op toe te passen. Azure AD DS kan met uw bestaande Azure AD-tenant worden geïntegreerd. Met deze integratie kunnen gebruikers zich aanmelden met behulp van hun bedrijfsreferenties, en u kunt bestaande groepen en gebruikersaccounts gebruiken om de toegang tot resources te beveiligen.
 
-In dit artikel wordt beschreven hoe u Azure AD DS kunt inschakelen met behulp van een Azure Resource Manager sjabloon. Ondersteunende bronnen worden gemaakt met behulp van Azure PowerShell.
+Dit artikel laat zien hoe u Azure AD DS kunt inschakelen met behulp van een Azure Resource Manager-sjabloon. Ondersteunende resources worden gemaakt met Azure PowerShell.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources nodig om dit artikel te volt ooien:
+U hebt de volgende resources nodig om dit artikel te voltooien:
 
 * Installeer en configureer Azure PowerShell.
-    * Als dat nodig is, volgt u de instructies om [de Azure PowerShell-module te installeren en verbinding te maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
-    * Zorg ervoor dat u zich aanmeldt bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount][Connect-AzAccount] .
-* Azure AD Power Shell installeren en configureren.
-    * Als dat nodig is, volgt u de instructies voor [het installeren van de Azure AD Power shell-module en verbinding maken met Azure AD](/powershell/azure/active-directory/install-adv2).
-    * Zorg ervoor dat u zich aanmeldt bij uw Azure AD-Tenant met de cmdlet [Connect-AzureAD][Connect-AzureAD] .
-* U hebt *globale beheerders* bevoegdheden nodig in uw Azure AD-Tenant om Azure AD DS in te scha kelen.
-* U hebt *Inzender* bevoegdheden nodig in uw Azure-abonnement om de vereiste Azure AD DS-resources te maken.
+    * Indien nodig, volgt u de instructies voor [installeren van de Azure PowerShell-module en verbinding maken met uw Azure-abonnement](/powershell/azure/install-az-ps).
+    * Zorg ervoor dat u zich bij uw Azure-abonnement aanmeldt met behulp van de [Connect-AzAccount][Connect-AzAccount]-cmdlet.
+* Installeer en configureer Azure AD PowerShell.
+    * Indien nodig, volgt u de instructies voor het [installeren van de Azure AD PowerShell-module en verbinding maken met Azure AD](/powershell/azure/active-directory/install-adv2).
+    * Zorg ervoor dat u zich bij de Azure-tenant aanmeldt met behulp van de [Connect-AzureAD][Connect-AzureAD]-cmdlet.
+* U hebt *bevoegdheden van een globale beheerder* voor de Azure AD-tenant nodig om Azure AD DS in te schakelen.
+* U hebt bevoegdheden van een *Inzender* voor uw Azure-abonnement nodig om de vereiste Azure AD DS-resources te maken.
 
-## <a name="dns-naming-requirements"></a>Vereisten voor DNS-naamgeving
+## <a name="dns-naming-requirements"></a>DNS-naamgevingsvereisten
 
-Wanneer u een exemplaar van Azure AD DS maakt, geeft u een DNS-naam op. Er zijn enkele aandachtspunten bij het kiezen van deze DNS-naam:
+Wanneer u een beheerd Azure AD DS-domein wilt maken, geeft u een DNS-naam op. Er is een aantal factoren waar u rekening mee moet houden wanneer u deze DNS-naam kiest:
 
-* **Ingebouwde domein naam:** De ingebouwde domein naam van de Directory wordt standaard gebruikt (een *. onmicrosoft.com* -achtervoegsel). Als u beveiligde LDAP-toegang tot het beheerde domein via internet wilt inschakelen, kunt u geen digitaal certificaat maken om de verbinding met dit standaard domein te beveiligen. Micro soft is eigenaar van het *onmicrosoft.com* -domein, waardoor een certificerings instantie (CA) geen certificaat kan uitgeven.
-* **Aangepaste domein namen:** De meest voorkomende benadering is het opgeven van een aangepaste domein naam, meestal een die u al bezit en routeerbaar is. Wanneer u een routeerbaar, aangepast domein gebruikt, kan het verkeer op de juiste wijze worden uitgevoerd om uw toepassingen te ondersteunen.
-* **Niet-routeerbaar domein achtervoegsels:** U wordt geadviseerd om een niet-routeerbaar domein naam achtervoegsel, zoals *contoso. local*, te voor komen. Het achtervoegsel *. local* is niet routeerbaar en kan problemen met de DNS-omzetting veroorzaken.
+* **Ingebouwde domeinnaam:** Standaard wordt de ingebouwde domeinnaam van de directory gebruikt (met het achtervoegsel *.onmicrosoft.com*). Als u beveiligde LDAP-toegang tot het beheerde domein wilt krijgen via een internetverbinding, kunt u geen digitaal certificaat maken om de verbinding met dit standaarddomein te beveiligen. Microsoft is de eigenaar van het domein *.onmicrosoft.com*, dus een Certificate Authority (CA) zal geen certificaat uitgeven.
+* **Aangepaste domeinnamen:** De meestgebruikte methode is een aangepaste domeinnaam opgeven, vaak een domein waarvan u al de eigenaar bent en waarnaar kan worden doorgestuurd. Wanneer u een routeerbaar, aangepast domein gebruikt, kan verkeer om de juiste manier stromen om uw toepassingen te ondersteunen.
+* **Niet-routeerbare domeinachtervoegsels:** Over het algemeen wordt aangeraden een niet-routeerbaar domeinnaamachtervoegsel, zoals *contoso.local*, te vermijden. Het achtervoegsel *.local* is niet routeerbaar en kan problemen veroorzaken met de DNS-resolutie.
 
 > [!TIP]
-> Als u een aangepaste domein naam maakt, moet u rekening houden met bestaande DNS-naam ruimten. Het is raadzaam een domein naam te gebruiken die losstaat van een bestaande Azure-of on-premises DNS-naam ruimte.
+> Als u een aangepaste domeinnaam maakt, wees dan voorzichtig met bestaande DNS-naamruimten. U wordt aangeraden een domeinnaam te gebruiken die losstaat van een bestaande Azure- of on-premises DNS-naamruimte.
 >
-> Als u bijvoorbeeld een bestaande DNS-naam ruimte van *contoso.com*hebt, maakt u een door Azure AD DS beheerd domein met de aangepaste domein naam *aaddscontoso.com*. Als u beveiligde LDAP wilt gebruiken, moet u deze aangepaste domein naam registreren en de vereiste certificaten genereren.
+> Als u bijvoorbeeld *contoso.com* als bestaande DNS-naamruimte hebt, maakt u een beheerd domein met de aangepaste domeinnaam *aaddscontoso.com*. Als u beveiligde LDAP moet gebruiken, moet u dit aangepaste domeinnaam registreren en hier eigenaar van zijn om de vereiste certificaten te genereren.
 >
-> Mogelijk moet u enkele extra DNS-records maken voor andere services in uw omgeving, of voorwaardelijke DNS-doorstuur servers tussen bestaande DNS-naam ruimten in uw omgeving. Als u bijvoorbeeld een webserver uitvoert die als host fungeert voor een-site met behulp van de DNS-naam van de basis, kan er sprake zijn van naam conflicten waarvoor extra DNS-vermeldingen zijn vereist.
+> Mogelijk moet u een aantal aanvullende DNS-records maken voor andere services in uw omgeving, of voorwaardelijke DNS-forwarders maken tussen bestaande DNS-naamruimten in uw omgeving. Als u bijvoorbeeld een webserver hebt waar een site wordt gehost met de root DNS-naam, kunnen er naamconflicten ontstaan die extra DNS-vermeldingen vereisen.
 >
-> In deze zelf studies en artikelen met procedures wordt het aangepaste domein *aaddscontoso.com* als een kort voor beeld gebruikt. Geef in alle opdrachten uw eigen domein naam op.
+> In deze zelfstudies en instructie-artikelen wordt het aangepaste domein *aaddscontoso.com* gebruikt als een kort voorbeeld. Geef in alle opdrachten uw eigen domeinnaam op.
 
-De volgende DNS-naam beperkingen zijn ook van toepassing:
+De volgende DNS-naambeperkingen zijn ook van toepassing:
 
-* **Beperkingen voor domein voorvoegsels:** U kunt geen beheerd domein met een voor voegsel maken dat langer is dan 15 tekens. Het voor voegsel van uw opgegeven domein naam (zoals *aaddscontoso* in de domein naam *aaddscontoso.com* ) mag Maxi maal 15 tekens bevatten.
-* **Conflicten met netwerk naam:** De DNS-domein naam voor uw beheerde domein mag niet al bestaan in het virtuele netwerk. Controleer met name op de volgende scenario's die leiden tot een naam conflict:
-    * Als u al een Active Directory domein met dezelfde DNS-domein naam hebt in het virtuele Azure-netwerk.
-    * Als het virtuele netwerk waar u het beheerde domein wilt inschakelen, een VPN-verbinding heeft met uw on-premises netwerk. In dit scenario zorgt u ervoor dat u geen domein hebt met dezelfde DNS-domein naam in uw on-premises netwerk.
-    * Als u een bestaande Azure-Cloud service hebt met die naam in het virtuele Azure-netwerk.
+* **Beperkingen voor voorvoegsels voor domeinen:** U kunt geen beheerd domein maken met een voorvoegsel van meer dan 15 tekens. Het voorvoegsel van uw opgegeven domeinnaam (zoals *aaddscontoso* in de domeinnaam *aaddscontoso.com*) mag maximaal 15 tekens bevatten.
+* **Conflicten met de netwerknaam:** De DNS-domeinnaam voor uw beheerde domein mag niet al bestaan in het virtuele netwerk. Controleer met name op de volgende scenario's die kunnen leiden tot een naamconflict:
+    * Als u al een Active Directory-domein met deze DNS-domeinnaam in het virtuele Azure-netwerk hebt.
+    * Als het virtuele netwerk waarin u het beheerde domein wilt inschakelen, over een VPN-verbinding met uw on-premises netwerk beschikt. In dit scenario moet u ervoor zorgen dat u geen domein met dezelfde DNS-domeinnaam in uw on-premises netwerk hebt.
+    * Als u het virtuele Azure-netwerk een bestaande Azure-cloudservice met deze naam bevat.
 
 ## <a name="create-required-azure-ad-resources"></a>Vereiste Azure AD-resources maken
 
-Voor Azure AD DS is een Service-Principal en een Azure AD-groep vereist. Met deze resources kunnen de Azure AD DS beheerde domein gegevens synchroniseren en definiëren welke gebruikers beheerders machtigingen hebben in het beheerde domein.
+Voor Azure AD DS is een service-principal en een Azure AD-groep vereist. Met deze resources kunnen via het beheerde domein gegevens worden gesynchroniseerd, en worden gedefinieerd welke gebruikers beheerdersbevoegdheden hebben in het beheerde domein.
 
-Registreer eerst de Azure AD Domain Services resource provider met behulp [van de cmdlet REGI ster-AzResourceProvider][Register-AzResourceProvider] :
+Registreer eerst de Azure AD Domain Services-resourceprovider met behulp van de [Register-AzResourceProvider][Register-AzResourceProvider]-cmdlet:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-Maak een Azure AD-Service-Principal met behulp van de [New-azureadserviceprincipal namelijk niet-][New-AzureADServicePrincipal] cmdlet voor Azure AD DS om zichzelf te communiceren en te verifiëren. Een specifieke toepassings-ID wordt gebruikt met de naam *Domain Controller Services* met de id *2565bd9d-DA50-47d4-8b85-4c97f669dc36*. Wijzig deze toepassings-ID niet.
+Maak met behulp van de cmdlet [New-AzureADServicePrincipal][New-AzureADServicePrincipal] een service-principal in Azure AD voor Azure AD DS voor communicatie en zelf-verificatie. Er wordt een specifieke toepassings-id gebruikt met de naam *Domeincontrollerservices* met de id *2565bd9d-da50-47d4-8b85-4c97f669dc36*. Wijzig deze toepassings-id niet.
 
 ```powershell
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-Maak nu een Azure AD-groep met de naam *Aad DC-Administrators* met behulp van de cmdlet [New-AzureADGroup][New-AzureADGroup] . Aan gebruikers die zijn toegevoegd aan deze groep worden machtigingen verleend voor het uitvoeren van beheer taken op het door Azure AD DS beheerde domein.
+Maak nu met de cmdlet [New-AzureADGroup][New-AzureADGroup] een Azure AD-groep met de naam *AAD DC Administrators*. Aan gebruikers die zijn toegevoegd aan deze groep, worden vervolgens machtigingen verleend voor het uitvoeren van beheertaken in het beheerde domein.
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -86,9 +86,9 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -MailNickName "AADDCAdministrators"
 ```
 
-Wanneer de groep *Aad DC-Administrators* is gemaakt, voegt u een gebruiker aan de groep toe met behulp van de cmdlet [add-AzureADGroupMember][Add-AzureADGroupMember] . U krijgt eerst de groeps object-ID voor *Aad DC-Administrators* met behulp van de cmdlet [Get-AzureADGroup][Get-AzureADGroup] en vervolgens de object-id van de gewenste gebruiker met de cmdlet [Get-AzureADUser][Get-AzureADUser] .
+Nu de groep *AAD DC-beheerders* is gemaakt, voegt u een gebruiker toe aan de groep met behulp van de cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember]. U haalt eerst de object-id voor de groep *AAD DC Administrators* op met behulp van de [Get-AzureADGroup][Get-AzureADGroup]-cmdlet. Vervolgens haalt u de object-id van de gewenste gebruiker op met behulp van de [Get-AzureADUser][Get-AzureADUser]-cmdlet.
 
-In het volgende voor beeld is dit de gebruikers object-ID voor het account met `admin@aaddscontoso.onmicrosoft.com`een UPN van. Vervang dit gebruikers account door de UPN van de gebruiker die u wilt toevoegen aan de groep *Aad DC-Administrators* :
+In het volgende voorbeeld ziet u de gebruikersobject-id voor het account met een UPN van `admin@aaddscontoso.onmicrosoft.com`. Vervang dit gebruikersaccount door de UPN van de gebruiker die u wilt toevoegen aan de groep *AAD DC Administrators*:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -105,7 +105,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-Maak ten slotte een resource groep met behulp van de cmdlet [New-AzResourceGroup][New-AzResourceGroup] . In het volgende voor beeld heeft de resource groep de naam *myResourceGroup* en wordt deze gemaakt in de regio *westus* . Gebruik uw eigen naam en gewenste regio:
+Maak ten slotte een resourcegroep met behulp van de cdmlet [New-AzResourceGroup][New-AzResourceGroup]. De resourcegroep in het volgende voorbeeld heet *myResourceGroup* en is gemaakt in de regio *westus*. Gebruik uw eigen naam en gewenste regio:
 
 ```powershell
 New-AzResourceGroup `
@@ -113,22 +113,22 @@ New-AzResourceGroup `
   -Location "WestUS"
 ```
 
-Als u een regio kiest die Beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources verdeeld over zones voor extra redundantie. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's.
+Als u een regio kiest die beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources gedistribueerd over zones voor extra redundantie. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's.
 
-Er is niets waarmee u kunt configureren voor Azure AD DS worden gedistribueerd over meerdere zones. Het Azure-platform verwerkt automatisch de zone distributie van resources. Zie [Wat zijn Beschikbaarheidszones in azure?][availability-zones]voor meer informatie en om de beschik baarheid van regio's te bekijken.
+U hoeft niets te configureren voor Azure AD DS om te worden gedistribueerd over zones. De distributie van resources over zones wordt automatisch afgehandeld op het Azure-platform. Zie [Wat zijn beschikbaarheidszones in Azure?][availability-zones] voor meer informatie en om de beschikbaarheid van regio’s te zien.
 
-## <a name="resource-definition-for-azure-ad-ds"></a>Resource definitie voor Azure AD DS
+## <a name="resource-definition-for-azure-ad-ds"></a>Resourcedefinitie voor Azure AD DS
 
-Als onderdeel van de Resource Manager-resource definitie zijn de volgende configuratie parameters vereist:
+Als onderdeel van de Resource Manager-resourcedefinitie zijn de volgende configuratieparameters vereist:
 
 | Parameter               | Waarde |
 |-------------------------|---------|
-| Naam              | De DNS-domein naam voor uw beheerde domein, waarbij rekening wordt gehouden met de vorige punten voor het benoemen van voor voegsels en conflicten. |
-| filteredSync            | Met Azure AD DS kunt u *alle* gebruikers en groepen synchroniseren die beschikbaar zijn in azure AD of een synchronisatie met een *bereik* van alleen specifieke groepen. Als u ervoor kiest om alle gebruikers en groepen te synchroniseren, kunt u er later niet voor kiezen om alleen een synchronisatie met een bereik uit te voeren.<br /> Zie [Azure AD Domain Services scoped Synchronization][scoped-sync](Engelstalig) voor meer informatie over het bereik van synchronisatie.|
-| notificationSettings    | Als er waarschuwingen worden gegenereerd in het beheerde domein van Azure AD DS, kunnen e-mail meldingen worden verzonden. <br />*Globale beheerders* van de Azure-Tenant en leden van de groep *Aad DC-Administrators* kunnen voor deze meldingen worden *ingeschakeld* .<br /> Desgewenst kunt u extra ontvangers voor meldingen toevoegen wanneer er waarschuwingen zijn die aandacht vereisen.|
-| domainConfigurationType | Standaard wordt een door Azure AD DS beheerd domein gemaakt als een *gebruikers* forest. Dit type forest synchroniseert alle objecten van Azure AD, met inbegrip van gebruikers accounts die zijn gemaakt in een on-premises AD DS omgeving. U hoeft geen *domainConfiguration* -waarde op te geven om een gebruikers forest te maken.<br /> Een *resource* -forest synchroniseert alleen gebruikers en groepen die rechtstreeks in azure AD zijn gemaakt. Bron-forests zijn momenteel beschikbaar als preview-versie. Stel de waarde in op *ResourceTrusting* om een resource-forest te maken.<br />Zie [overzicht van Azure AD DS-resource forests][resource-forests]voor meer informatie over *bron* -forests, waaronder waarom u er één kunt gebruiken en hoe u forest-vertrouwens relaties maakt met on-premises AD DS domeinen.|
+| domainName              | De DNS-domeinnaam voor uw beheerde domein, waarbij u rekening houdt met de vorige punten over de namen van prefixen en conflicten. |
+| filteredSync            | Met Azure AD DS kunt u *alle* gebruikers en groepen die beschikbaar zijn in Azure AD synchroniseren, of een *bereik*synchronisatie van alleen specifieke groepen. Als u ervoor kiest om alle gebruikers en groepen te synchroniseren, kunt u er later niet voor kiezen om alleen een synchronisatie met een bereik uit te voeren.<br /> Zie [Bereik voor synchronisatie van Azure AD][scoped-sync]voor meer informatie over bereiksynchronisatie.|
+| notificationSettings    | Als er waarschuwingen worden gegenereerd in het beheerde domein, kunnen e-mailmeldingen worden verzonden. <br />*Globale beheerders* van de Azure-tenant en leden van de groep *AAD DC Administrators* kunnen worden *Ingeschakeld* voor deze meldingen.<br /> Indien gewenst kunt u aanvullende ontvangers voor meldingen toevoegen wanneer er meldingen zijn die aandacht vereisen.|
+| domainConfigurationType | Standaard wordt een beheerd domein gemaakt als een *gebruiker*sforest. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. U hoeft geen *domainConfiguration*-waarde op te geven om een gebruikersforest te maken.<br /> Met een *resource*forest worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Resourceforests zijn momenteel beschikbaar als preview-versie. Stel de waarde in op *ResourceTrusting* om een resourceforest te maken.<br />Voor meer informatie over *resource*forests, zoals redenen om deze te gebruiken en hoe u foresttrusts maakt met on-premises AD DS-domeinen, raadpleegt u [Overzicht van Azure AD DS-resourceforests][resource-forests].|
 
-De definitie van de volgende verkorte para meter laat zien hoe deze waarden worden gedeclareerd. Een gebruikers forest met de naam *aaddscontoso.com* wordt gemaakt met alle gebruikers van Azure AD gesynchroniseerd met het door Azure AD DS beheerde domein:
+De volgende verkorte parameterdefinitie laat zien hoe deze waarden worden gedeclareerd. Er wordt een gebruikersforest met de naam *aaddscontoso.com* gemaakt met alle gebruikers van Azure AD die worden gesynchroniseerd met het beheerde domein:
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ De definitie van de volgende verkorte para meter laat zien hoe deze waarden word
 }
 ```
 
-Het volgende gesmalle Resource Manager-sjabloon resource type wordt vervolgens gebruikt voor het definiëren en maken van het door Azure AD DS beheerde domein. Er moet al een virtueel netwerk van Azure en een subnet bestaan of als onderdeel van de Resource Manager-sjabloon zijn gemaakt. Het beheerde domein van Azure AD DS is verbonden met dit subnet.
+Vervolgens wordt het volgende verkorte Resource Manager-sjabloonbrontype gebruikt om het beheerde domein te definiëren en te maken. Er moeten al een virtueel netwerk van Azure en een subnet bestaan, of als onderdeel van de Resource Manager-sjabloon worden gemaakt. Het beheerde domein wordt verbonden met dit subnet.
 
 ```json
 "resources": [
@@ -172,11 +172,11 @@ Het volgende gesmalle Resource Manager-sjabloon resource type wordt vervolgens g
 ]
 ```
 
-Deze para meters en dit resource type kunnen worden gebruikt als onderdeel van een bredere Resource Manager-sjabloon voor het implementeren van een beheerd domein, zoals wordt weer gegeven in de volgende sectie.
+Deze parameters en dit resourcetype kunnen worden gebruikt als onderdeel van een bredere Resource Manager-sjabloon voor het implementeren van een beheerd domein, zoals wordt weergegeven in de volgende sectie.
 
-## <a name="create-a-managed-domain-using-sample-template"></a>Een beheerd domein maken met voorbeeld sjabloon
+## <a name="create-a-managed-domain-using-sample-template"></a>Een beheerd domein maken met behulp van een voorbeeldsjabloon
 
-Met de volgende voorbeeld sjabloon voor Resource Manager maakt u een Azure AD DS beheerd domein en de ondersteunende regels voor het virtuele netwerk, het subnet en de netwerk beveiligings groep. De regels voor de netwerk beveiligings groep zijn vereist om het beheerde domein te beveiligen en ervoor te zorgen dat verkeer correct kan stromen. Er wordt een gebruikers forest met de DNS-naam *aaddscontoso.com* gemaakt, waarbij alle gebruikers zijn gesynchroniseerd vanuit Azure AD:
+Met de volgende volledige Resource Manager-voorbeeldsjabloon worden een beheerd domein en de ondersteunende virtuele netwerk-, subnet- en netwerkbeveiligingsgroepregels gemaakt. De netwerkbeveiligingsgroepregels zijn nodig om het beheerde domein te beveiligen en ervoor te zorgen dat het verkeer correct kan verlopen. Er wordt een gebruikersforest met de DNS-naam *aaddscontoso.com* gemaakt, met alle vanuit Azure AD gesynchroniseerde gebruikers:
 
 ```json
 {
@@ -319,23 +319,23 @@ Met de volgende voorbeeld sjabloon voor Resource Manager maakt u een Azure AD DS
 }
 ```
 
-Deze sjabloon kan worden geïmplementeerd met uw voorkeurs implementatie methode, zoals de [Azure Portal][portal-deploy], [Azure POWERSHELL][powershell-deploy]of een CI/cd-pijp lijn. In het volgende voor beeld wordt de cmdlet [New-AzResourceGroupDeployment][New-AzResourceGroupDeployment] gebruikt. Geef de naam van uw eigen resource groep en de bestands naam van de sjabloon op:
+Deze sjabloon kan worden geïmplementeerd met uw favoriete implementatiemethode, zoals de [Azure-portal][portal-deploy], [Azure PowerShell][powershell-deploy]of een CI/CD-pijplijn. In het volgende voorbeeld wordt de [New-AzResourceGroupDeployment][New-AzResourceGroupDeployment]-cmdlet gebruikt. Geef de naam van uw eigen resourcegroep en de bestandsnaam van de sjabloon op:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-Het duurt enkele minuten om de resource te maken en het besturings element terug te sturen naar de Power shell-prompt. Het beheerde domein van Azure AD DS blijft op de achtergrond worden ingericht en kan tot een uur duren voordat de implementatie is voltooid. In de Azure Portal wordt op de pagina **overzicht** voor uw door Azure AD DS beheerde domein de huidige status weer gegeven in de gehele implementatie fase.
+Het duurt enkele minuten om de resource te maken en het beheer terug te geven aan de PowerShell-prompt. Het inrichten van het beheerde domein wordt op de achtergrond voortgezet. Het kan een uur duren voordat de implementatie is voltooid. Op de **Overzichtspagina** voor uw beheerde domein in de Azure-portal wordt de huidige status weergegeven tijdens deze implementatiefase.
 
-Wanneer de Azure Portal laat zien dat de inrichting van het beheerde Azure AD DS-domein is voltooid, moeten de volgende taken worden uitgevoerd:
+Wanneer in de Azure-portal wordt weergegeven dat inrichten van het beheerde domein gereed is, moeten de volgende taken worden voltooid:
 
-* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
-    * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
-* [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
+* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat virtuele machines het beheerde domein kunnen vinden voor domeindeelname of verificatie.
+    * Selecteer het beheerde domein in de portal om DNS te configureren. In het **Overzichtsvenster** wordt u gevraagd om deze DNS-instellingen automatisch te configureren.
+* U moet [Wachtwoordsynchronisatie in Azure AD Domain Services inschakelen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich bij het beheerde domein kunnen aanmelden met hun bedrijfsreferenties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u de Azure AD DS beheerde domein in actie wilt zien, kunt u [een domein toevoegen aan een Windows-VM, een][windows-join] [beveiligd LDAP configureren][tutorial-ldaps]en een [wachtwoord-hash-synchronisatie configureren][tutorial-phs].
+Als u het beheerde domein in actie wilt zien, kunt u [een Windows-VM koppelen][windows-join], [beveiligde LDAP configureren][tutorial-ldaps] en [wachtwoordhashsynchronisatie configureren][tutorial-phs].
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

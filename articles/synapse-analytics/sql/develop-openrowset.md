@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f70c14c424e8aaecbdc1138b52fdd6fb1e9fc265
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560875"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051797"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -49,7 +49,7 @@ Dit is een snelle en eenvoudige manier om de inhoud van de bestanden te lezen zo
     Met deze optie kunt u de locatie van het opslagaccount in de gegevensbron configureren en de verificatiemethode opgeven die moet worden gebruikt voor toegang tot de opslag. 
     
     > [!IMPORTANT]
-    > `OPENROWSET` zonder `DATA_SOURCE` biedt een snelle en eenvoudige manier om toegang te krijgen tot de opslagbestanden, maar met beperkte verificatieopties. Zo kunnen Azure AD-principals alleen toegang krijgen tot bestanden met behulp van hun [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) en hebben ze geen toegang tot openbaar beschikbare bestanden. Als u krachtigere verificatieopties nodig hebt, gebruikt u `DATA_SOURCE` optie en definieert u de referenties die u wilt gebruiken voor toegang tot de opslag.
+    > `OPENROWSET` zonder `DATA_SOURCE` biedt een snelle en eenvoudige manier om toegang te krijgen tot de opslagbestanden, maar met beperkte verificatieopties. Zo kunnen Microsoft Azure AD-principals alleen toegang krijgen tot bestanden met behulp van hun [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity) of tot openbaar beschikbare bestanden. Als u krachtigere verificatieopties nodig hebt, gebruikt u `DATA_SOURCE` optie en definieert u de referenties die u wilt gebruiken voor toegang tot de opslag.
 
 
 ## <a name="security"></a>Beveiliging
@@ -60,7 +60,8 @@ De opslagbeheerder moet een gebruiker ook in staat stellen om toegang te krijgen
 
 `OPENROWSET` gebruikt de volgende regels om te bepalen hoe verificatie voor toegang tot opslag moet worden uitgevoerd:
 - Het verificatiemechanisme `OPENROWSET` zonder `DATA_SOURCE` is afhankelijk van het type aanroeper.
-  - Azure AD-aanmeldingen hebben alleen toegang tot bestanden via hun eigen [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) als Azure Storage de Azure AD-gebruiker toegang geeft tot de onderliggende bestanden (als de aanroeper bijvoorbeeld de machtiging Opslaglezer heeft voor opslag) en als u [verificatie via Azure AD Pass-Through inschakelt](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) in de Synapse SQL-service.
+  - Elke gebruiker kan gebruiker `OPENROWSET` zonder `DATA_SOURCE` om openbaar beschikbare bestanden in Azure Storage te lezen.
+  - Microsoft Azure AD-aanmeldingen hebben toegang tot beveiligde bestanden met hun eigen [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) als Azure Storage de Azure AD-gebruiker toegang geeft tot onderliggende bestanden (bijvoorbeeld als de oproepende functie `Storage Reader` toestemming heeft voor Azure-opslag).
   - SQL-aanmeldingen kunnen ook `OPENROWSET` gebruiken zonder `DATA_SOURCE` om toegang te krijgen tot openbaar beschikbare bestanden, bestanden die zijn beveiligd met een SAS-token of beheerde identiteit van een Synapse-werkruimte. U moet [referenties binnen serverbereik maken](develop-storage-files-storage-access-control.md#examples) om toegang tot opslagbestanden toe te staan. 
 - In `OPENROWSET` met `DATA_SOURCE` worden verificatiemechanismen gedefinieerd in de referentie binnen databasebereik die is toegewezen aan de gegevensbron waarnaar wordt verwezen. Met deze methode kunt u toegang krijgen tot openbaar beschikbare opslag, of toegang krijgen tot opslag met behulp van een SAS-token, een beheerde identiteit van de werkruimte of [Azure AD-identiteit van de aanroeper](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (als dat een Azure AD-principal is). Als `DATA_SOURCE` verwijst naar Azure-opslag die niet openbaar is, moet u [referenties binnen het databasebereik maken](develop-storage-files-storage-access-control.md#examples) en hiernaar verwijzen in `DATA SOURCE` om toegang tot opslagbestanden te geven.
 
@@ -238,10 +239,6 @@ FROM
     ) AS [r]
 ```
 
-Als u een fout ziet dat de bestanden niet kunnen worden vermeld, moet u toegang tot openbare opslag in Synapse SQL on-demand inschakelen:
-- Als u een SQL-aanmelding gebruikt, moet u [referenties binnen serverbereik maken die toegang bieden tot openbare opslag](develop-storage-files-storage-access-control.md#examples).
-- Als u een principal van Azure AD gebruikt voor toegang tot openbare opslag, moet u [referenties binnen serverbereik maken die toegang bieden tot openbare opslag](develop-storage-files-storage-access-control.md#examples) en [verificatie via Azure AD Pass-Through](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through) uitschakelen.
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de quickstart [Query data in storage](query-data-storage.md) (Query uitvoeren op gegevens in opslag) voor voorbeelden van OPENROWSET voor het lezen van de bestandsindelingen [CSV](query-single-csv-file.md), [PARQUET](query-parquet-files.md) en [JSON](query-json-files.md). U kunt ook lezen hoe u de resultaten van een query kunt opslaan in Azure Storage met behulp van [CETAS](develop-tables-cetas.md).
+Ga voor meer voorbeelden naar de [quickstart voor querygegevensopslag ](query-data-storage.md) om te leren hoe u `OPENROWSET` gebruikt en hoe u [CSV-](query-single-csv-file.md), [PARQUET-](query-parquet-files.md) en [JSON](query-json-files.md)-bestandsindelingen leest. U kunt ook lezen hoe u de resultaten van een query kunt opslaan in Azure Storage met behulp van [CETAS](develop-tables-cetas.md).

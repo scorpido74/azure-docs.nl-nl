@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Akamai | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Akamai.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met Akamai | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Akamai.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,167 +11,268 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042dd242285081001ca48c9f17e4d42c2294c0ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74979593"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675051"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Akamai
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Akamai
 
-In deze zelf studie leert u hoe u Akamai integreert met Azure Active Directory (Azure AD). Wanneer u Akamai integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Akamai kunt integreren met Azure Active Directory (Azure AD). Wanneer u Akamai integreert met Azure AD, kunt u het volgende:
 
-* Controle in azure AD die toegang heeft tot Akamai.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Akamai met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot Akamai.
+* Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Akamai.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
+
+Integratie van Azure Active Directory met Akamai Enterprise Application Access biedt naadloze toegang tot verouderde toepassingen die in de cloud of on-premises worden gehost. De geïntegreerde oplossing profiteert van alle moderne functies van Azure Active Directory zoals [voorwaardelijke toegang van Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) en [Azure AD Identity Governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview) voor toegang tot verouderde toepassingen zonder dat de toepassing moet worden aangepast of er agents moeten worden geïnstalleerd.
+
+In de onderstaande afbeelding wordt beschreven waar Akamai EAA past in het bredere scenario voor hybride beveiligde toegang
+
+![Akamai EAA past in het bredere scenario voor hybride beveiligde toegang](./media/header-akamai-tutorial/introduction01.png)
+
+### <a name="key-authentication-scenarios"></a>Belangrijkste verificatiescenario's
+
+Naast dat het systeemeigen integratie van Azure Active Directory voor moderne verificatieprotocollen zoals Open ID Connect, SAML en WS-Fed ondersteunt, breidt Akamai EAA beveiligde toegang uit voor op verouderde verificatietoepassingen voor zowel interne als externe toegang met Azure AD, waardoor moderne scenario's (zoals toegang zonder wachtwoord) mogelijk worden voor deze toepassingen. Dit omvat:
+
+* Op headers gebaseerde verificatietoepassingen
+* Extern bureaublad
+* SSH (Secure Shell)
+* Kerberos-verificatietoepassingen
+* VNC (Virtual Network Computing)
+* Anonieme verificatie of geen ingebouwde verificatietoepassingen
+* NTLM-verificatietoepassingen (beveiliging met dubbele prompts voor de gebruiker)
+* Op formulieren gebaseerde toepassing (beveiliging met dubbele prompts voor de gebruiker)
+
+### <a name="integration-scenarios"></a>Integratiescenario's
+
+Samen bieden Microsoft en Akamai EAA de flexibiliteit om aan uw bedrijfsvereisten te voldoen door meerdere integratiescenario's op basis van uw bedrijfsbehoeften te ondersteunen. Deze kunnen worden gebruikt om een zero-day dekking voor alle toepassingen te bieden en om de juiste beleidsclassificaties geleidelijk te classificeren en te configureren.
+
+#### <a name="integration-scenario-1"></a>Integratiescenario 1
+
+Akamai EAA is geconfigureerd als één toepassing in Azure AD. De beheerder kan het CA-beleid voor de toepassing configureren en wanneer aan de voorwaarden wordt voldaan, kunnen gebruikers toegang krijgen tot de Akamai EAA-portal.
+
+**Voordelen**:
+
+• U hoeft slechts één keer IDP te configureren
+
+**Nadelen**:
+
+• Gebruikers krijgen twee toepassingsportals
+
+• Eén gemeenschappelijke CA-beleidsdekking voor alle toepassingen.
+
+![Integratiescenario 1](./media/header-akamai-tutorial/scenario1.png)
+
+#### <a name="integration-scenario-2"></a>Integratiescenario 2
+
+De Akamai EAA-toepassing wordt afzonderlijk ingesteld in de Azure AD-portal. De beheerder kan afzonderlijke instanties van het CA-beleid configureren voor de toepassing(en) en zodra aan de voorwaarden wordt voldaan, kunnen gebruikers rechtstreeks worden omgeleid naar de specifieke toepassing.
+
+**Voordelen**:
+
+• U kunt afzonderlijke CA-beleidsregels definiëren
+
+• Alle apps worden weergegeven in het 0365-wafelmenu en het deelvenster op myApps.microsoft.com.
+
+**Nadelen**:
+
+• U moet meerdere IDP configureren.
+
+![Integratiescenario 2](./media/header-akamai-tutorial/scenario2.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Akamai-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Akamai waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-- Toegestane vertraging biedt ondersteuning voor door IDP geïnitieerde SSO
+- Akamai biedt ondersteuning voor door IDP geïnitieerde eenmalige aanmelding
 
-## <a name="adding-akamai-from-the-gallery"></a>Akamai toevoegen uit de galerie
+#### <a name="important"></a>Belangrijk
 
-Als u de integratie van Akamai in azure AD wilt configureren, moet u Akamai uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Alle hieronder genoemde instellingen zijn hetzelfde voor **Integratiescenario 1** en **Integratiescenario 2**. Voor **Integratiescenario 2** hebt u afzonderlijke IDP in de Akamai EAA ingesteld en moet de URL-eigenschap worden gewijzigd om naar de URL van de toepassing te verwijzen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Akamai** in het zoekvak.
-1. Selecteer **Akamai** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+![Belangrijk](./media/header-akamai-tutorial/important.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Akamai
+## <a name="adding-akamai-from-the-gallery"></a>Akamai toevoegen vanuit de galerie
 
-Azure AD SSO met Akamai configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Akamai.
+Als u de integratie van Akamai in Azure AD wilt configureren, moet u Akamai vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-Als u Azure AD SSO wilt configureren en testen met Akamai, voltooit u de volgende bouw stenen:
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ **Akamai** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **Akamai** in het deelvenster met resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[AKAMAI SSO configureren](#configure-akamai-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een Akamai-test gebruiker](#create-akamai-test-user)** -om een equivalent van B. Simon in Akamai te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Akamai
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+Configureer en test eenmalige aanmelding van Azure AD met Akamai met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Akamai.
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Akamai te configureren en te testen:
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Akamai** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij Akamai configureren](#configure-akamai-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    * **[IDP instellen](#setting-up-idp)**
+    * **[Verificatie op basis van headers](#header-based-authentication)**
+    * **[Extern bureaublad](#remote-desktop)**
+    * **[SSH](#ssh)**
+    * **[Kerberos-verificatie](#kerberos-authentication)**
+    * **[Testgebruiker voor Akamai maken](#create-akamai-test-user)** : als u een tegenhanger van B.Simon in Akamai wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
+
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
+
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
+
+1. Zoek in [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Akamai** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://<Yourapp>.login.go.akamai-access.com/sp/response`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https:// <Yourapp>.login.go.akamai-access.com/sp/response`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteunings team van Akamai-clients](https://www.akamai.com/us/en/contact-us/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [Ondersteuningsteam voor Akamai](https://www.akamai.com/us/en/contact-us/) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Op de sectie **Akamai instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **Akamai instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Akamai.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Akamai.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Akamai**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Akamai** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-akamai-sso"></a>Akamai SSO configureren
+## <a name="configure-akamai-sso"></a>Eenmalige aanmelding bij Akamai configureren
 
 ### <a name="setting-up-idp"></a>IDP instellen
 
-1. Aanmelden bij **Akamai Enter prise Application Access** -console.
-1. Selecteer op de **Akamai EAA**-console **identiteits** > -**id-providers**.
+**IDP-configuratie voor AKAMAI EAA**
+
+1. Meld u aan bij de **Akamai Enterprise Application Access**-console.
+1. Selecteer in de **Akamai EAA-console** de optie **Identity** > **Identity Providers** en klik op **Add Identity Provider**.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure01.png)
 
-1. Klik op **ID-provider toevoegen**.
+1. Voer de volgende stappen uit bij **Create New Identity Provider**:
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure02.png)
 
-    a. Geef de **unieke naam**op.
-    
-    b. Kies **SAML** van derden en klik op **ID-provider maken en configureren**.
+    a. Geef de **Unique Name** op.
+
+    b. Kies **Third Party SAML** en klik op **Create Identity Provider and Configure**.
 
 ### <a name="general-settings"></a>Algemene instellingen
 
-1. **Identity-interceptie** : Geef de naam op van de (SP Base-URL) die wordt gebruikt voor de configuratie van Azure AD.
+1. **Identity Intercept**: geef de naam op van de SP-basis-URL die wordt gebruikt voor de configuratie van Azure AD
 
     > [!NOTE]
-    > U kunt ervoor kiezen om uw eigen aangepaste domein te hebben (er is een DNS-vermelding en een certificaat vereist). In dit voor beeld gaan we het Akamai-domein gebruiken.
+    > U kunt ervoor kiezen om uw eigen aangepaste domein te gebruiken (een DNS-vermelding en een certificaat zijn vereist). In dit voorbeeld gaan we het Akamai-domein gebruiken.
 
-1. **Akamai-Cloud zone** : Selecteer de juiste Cloud zone.
-1. **Certificaat validatie** : Raadpleeg de documentatie van Akamai (optioneel)
+1. **Akamai Cloud Zone**: selecteer de juiste cloudzone.
+1. **Certificate Validation**: raadpleeg de documentatie van Akamai (optioneel)
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure03.png)
 
 ### <a name="authentication-configuration"></a>Verificatie configuratie
 
-1. URL: Geef de URL op zoals het onderscheppen van uw identiteit (dit is de locatie waar gebruikers worden omgeleid na verificatie).
-2. Afmeldings-URL: werk de afmeldings-URL bij.
-3. SAML-aanvraag ondertekenen: standaard uitgeschakeld.
-4. Voeg voor het meta gegevensbestand IDP de toepassing toe aan de Azure AD-console.
+1. URL: geef dezelfde URL op als voor Identity Intercept (dit is de locatie waarnaar gebruikers worden omgeleid na verificatie).
+2. Logout URL: werk de afmeldings-URL bij.
+3. Sign SAML Request: standaard uitgeschakeld.
+4. Voeg voor het IDP-metagegevensbestand de toepassing toe aan de Azure AD-console.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure04.png)
 
-### <a name="header-based-authentication"></a>Verificatie op basis van koptekst
+### <a name="session-settings"></a>Sessie-instellingen
 
-Verificatie op basis van Akamai-header
+Laat de instellingen op standaard staan.
 
-1. Kies **aangepaste HTTP-** formulier de wizard toepassingen toevoegen.
+![Akamai configureren](./media/header-akamai-tutorial/sessionsettings.png)
+
+### <a name="directories"></a>Mappen
+
+Sla de mappenconfiguratie over.
+
+![Akamai configureren](./media/header-akamai-tutorial/directories.png)
+
+### <a name="customization-ui"></a>UI voor aanpassing
+
+U kunt aanpassingen toevoegen aan IDP.
+
+![Akamai configureren](./media/header-akamai-tutorial/customizationui.png)
+
+### <a name="advanced-settings"></a>Geavanceerde instellingen
+
+Sla de geavanceerde instellingen over/raadpleeg de Akamai-documentatie voor meer informatie.
+
+![Akamai configureren](./media/header-akamai-tutorial/advancesettings.png)
+
+### <a name="deployment"></a>Implementatie
+
+1. Klik op Deploy Identity Provider.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/deployment.png)
+
+2. Controleren of de implementatie is gelukt
+
+### <a name="header-based-authentication"></a>Verificatie op basis van headers
+
+Verificatie op basis van Akamai-headers
+
+1. Kies **Custom HTTP** in de wizard Add Applications.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure05.png)
+
+2. Voer de **Application Name** en **Description** in.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure06.png)
 
@@ -181,29 +282,33 @@ Verificatie op basis van Akamai-header
 
 #### <a name="authentication"></a>Verificatie
 
-![Akamai configureren](./media/header-akamai-tutorial/configure09.png)
+1. Selecteer het tabblad **Authentication**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure10.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure09.png)
+
+2. De **Identity provider** toewijzen
+
+    ![Akamai configureren](./media/header-akamai-tutorial/configure10.png)
 
 #### <a name="services"></a>Services
 
-1. Klik op opslaan en ga naar verificatie.
+Klik op Save and Go to Authentication.
 
 ![Akamai configureren](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
-1. Geef onder **HTTP-headers van klant**het kenmerk **CustomerHeader** en **SAML**op.
+1. Geef onder de **Customer HTTP Headers** de **CustomerHeader** en het **SAML Attribute** op.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure12.png)
 
-1. Klik op **opslaan en ga naar de implementatie** knop.
+1. Klik op de knop **Save and go to Deployment**.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure13.png)
 
 #### <a name="deploy-the-application"></a>De toepassing implementeren
 
-1. Klik op de knop **toepassing implementeren** .
+1. Klik op de knop **Deploy Application**.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure14.png)
 
@@ -211,13 +316,25 @@ Verificatie op basis van Akamai-header
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure15.png)
 
-### <a name="kerberos-authentication"></a>Kerberos-authenticatie
+1. De ervaring voor de eindgebruiker.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser01.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser02.png)
+
+1. Voorwaardelijke toegang.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess01.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess02.png)
 
 #### <a name="remote-desktop"></a>Extern bureaublad
 
-1. Kies **RDP** in de wizard toepassingen toevoegen.
+1. Kies **RDP** in de wizard Add Applications.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure16.png)
+
+1. Voer de **Application Name** en **Description** in.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure17.png)
 
@@ -229,33 +346,49 @@ Verificatie op basis van Akamai-header
 
 #### <a name="authentication"></a>Verificatie
 
-Klik op **opslaan en ga naar Services**.
+Klik op **Save and go to Services**.
 
 ![Akamai configureren](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>Services
 
-Klik op **opslaan en ga naar geavanceerde instellingen**.
+Klik op **Save and go to Advanced Settings**.
 
 ![Akamai configureren](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
-Klik op **opslaan en ga naar implementatie**.
+1. Klik op **Save and go to Deployment**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure22.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure22.png)
 
-![Akamai configureren](./media/header-akamai-tutorial/configure23.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure23.png)
 
-![Akamai configureren](./media/header-akamai-tutorial/configure24.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure24.png)
 
-### <a name="deployment"></a>Implementatie
+1. De ervaring voor de eindgebruiker
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser03.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser02.png)
+
+1. Voorwaardelijke toegang
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess04.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess05.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess06.png)
+
+1. U kunt ook rechtstreeks de URL van de RDP-toepassing intypen.
 
 #### <a name="ssh"></a>SSH
 
-1. Ga naar toepassingen toevoegen en kies **SSH**.
+1. Ga naar Add Applications en kies **SSH**.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure25.png)
+
+1. Voer de **Application Name** en **Description** in.
 
     ![Akamai configureren](./media/header-akamai-tutorial/configure26.png)
 
@@ -265,9 +398,9 @@ Klik op **opslaan en ga naar implementatie**.
 
     a. Geef een naam/beschrijving op.
 
-    b. Geef het IP-adres/de FQDN en poort van de toepassings server op voor SSH.
+    b. Geef het IP/de FQDN en de poort van de toepassingsserver op voor SSH.
 
-    c. SSH-gebruikers naam/wachtwoordzin opgeven * Controleer Akamai EAA.
+    c. Geef de gebruikersnaam/toegangscode voor SSH op * Controleer Akamai EAA.
 
     d. Geef de naam van de externe host op.
 
@@ -275,19 +408,19 @@ Klik op **opslaan en ga naar implementatie**.
 
 #### <a name="authentication"></a>Verificatie
 
-Klik op **opslaan en ga naar Services**.
+Klik op **Save and go to Services**.
 
 ![Akamai configureren](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>Services
 
-Klik op **opslaan en ga naar geavanceerde instellingen**.
+Klik op **Save and go to Advanced Settings**.
 
 ![Akamai configureren](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
-Klik op opslaan en to go-implementatie
+Klik op Save and go to Deployment
 
 ![Akamai configureren](./media/header-akamai-tutorial/configure30.png)
 
@@ -295,38 +428,178 @@ Klik op opslaan en to go-implementatie
 
 #### <a name="deployment"></a>Implementatie
 
-Klik op **toepassing implementeren**.
+1. Klik op **Deploy application**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure32.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure32.png)
 
-### <a name="kerberos-applications"></a>Kerberos-toepassingen
+1. De ervaring voor de eindgebruiker
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser03.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser04.png)
+
+1. Voorwaardelijke toegang
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess04.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess07.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess08.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess09.png)
+
+### <a name="kerberos-authentication"></a>Kerberos-verificatie
+
+In het onderstaande voorbeeld publiceren we een interne webserver [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/) en schakelen we eenmalige aanmelding met KCD in
+
+#### <a name="general-tab"></a>Tabblad General
+
+![Akamai configureren](./media/header-akamai-tutorial/generaltab.png)
+
+#### <a name="authentication-tab"></a>Tabblad Verificatie
+
+De id-provider toewijzen
+
+![Akamai configureren](./media/header-akamai-tutorial/authenticationtab.png)
+
+#### <a name="services-tab"></a>Tabblad Services
+
+![Akamai configureren](./media/header-akamai-tutorial/servicestab.png)
+
+#### <a name="advanced-settings"></a>Geavanceerde instellingen
+
+![Akamai configureren](./media/header-akamai-tutorial/advancesettings02.png)
+
+> [!NOTE]
+> De SPN voor de webserver heeft de notatie SPN@Domain ex: `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE` voor deze demo. Laat de overige instellingen op de standaardwaarde staan.
+
+#### <a name="deployment-tab"></a>Tabblad Deployment
+
+![Akamai configureren](./media/header-akamai-tutorial/deploymenttab.png)
 
 #### <a name="adding-directory"></a>Map toevoegen
 
-![Akamai configureren](./media/header-akamai-tutorial/configure33.png)
+1. Selecteer **AD** in de vervolgkeuzelijst.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure34.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure33.png)
 
-![Akamai configureren](./media/header-akamai-tutorial/configure35.png)
+1. Geef de benodigde gegevens op.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure36.png)
+    ![Akamai configureren](./media/header-akamai-tutorial/configure34.png)
 
-### <a name="create-akamai-test-user"></a>Akamai-test gebruiker maken
+1. Controleer of de map is gemaakt.
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in Akamai. Werk samen met het [Akamai-client ondersteunings team](https://www.akamai.com/us/en/contact-us/) om de gebruikers toe te voegen in het Akamai-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+    ![Akamai configureren](./media/header-akamai-tutorial/directorydomain.png)
 
-## <a name="test-sso"></a>SSO testen
+1. Voeg de groepen/organisatie-eenheden toe waarvoor toegang is vereist.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/addgroup.png)
+
+1. Hieronder wordt de groep EAAGroup genoemd, en deze heeft één lid.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/eaagroup.png)
+
+1. Voeg de map toe aan uw id-provider door te klikken op **Identity** > **Identity Providers** en klik op het tabblad **Directories** en vervolgens op **Assign directory**.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/assigndirectory.png)
+
+### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>KCD-overdracht configureren voor kennismaking met EAA
+
+#### <a name="step-1-create-an-account"></a>Stap 1: Een account maken 
+
+1. In het voorbeeld wordt een account gebruikt met de naam **EAADelegation**. U kunt dit uitvoeren met behulp van de Snappin **Active Directory: gebruikers en computers**.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/assigndirectory.png)
+
+    > [!NOTE]
+    > De gebruikersnaam moet een specifieke indeling hebben op basis van de **Identity Intercept Name**. In afbeelding 1 ziet u dat deze **corpapps.login.go.akamai-access.com** is
+
+1. De aanmeldingsnaam van de gebruiker is:`HTTP/corpapps.login.go.akamai-access.com`
+
+    ![Akamai configureren](./media/header-akamai-tutorial/eaadelegation.png)
+
+#### <a name="step-2-configure-the-spn-for-this-account"></a>Stap 2: De SPN voor dit account configureren
+
+1. Op basis van dit voorbeeld wordt de SPN als volgt weergegeven.
+
+2. setspn -s **Http/corpapps.login.go.akamai-access.com eaadelegation**
+
+    ![Akamai configureren](./media/header-akamai-tutorial/spn.png)
+
+#### <a name="step-3-configure-delegation"></a>Stap 3: Delegering configureren
+
+1. Klik voor het EAADelegation-account op het tabblad Delegation.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/spn.png)
+
+    * Elk verificatieprotocol voor gebruik opgeven
+    * Klik op Add en voeg het app-pool-account voor de Kerberos-website toe. Het moet automatisch worden omgezet naar de juiste SPN als deze correct is geconfigureerd.
+
+#### <a name="step-4-create-a-keytab-file-for-akamai-eaa"></a>Stap 4: Een Keytab-bestand maken voor AKAMAI EAA
+
+1. Hier volgt de algemene syntaxis.
+
+1. ktpass /out ActiveDirectorydomain.keytab  /princ `HTTP/yourloginportalurl@ADDomain.com`  /mapuser serviceaccount@ADdomain.com /pass +rdnPass  /crypto All /ptype KRB5_NT_PRINCIPAL
+
+1. Uitleg van het voorbeeld
+
+    | Codefragment | Uitleg |
+    | - | - |
+    | Ktpass /out EAADemo.keytab | // De naam van het Keytab-uitvoerbestand |
+    | /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
+    | /mapuser eaadelegation@superdemo.live | // Account voor EAA delegering |
+    | /pass RANDOMPASS | // Wachtwoord voor EAA-delegeringsaccount |
+    | /crypto All ptype KRB5_NT_PRINCIPAL | // Raadpleeg de documentatie van Akamai EAA |
+    | | |
+
+1. Ktpass /out EAADemo.keytab  /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live /mapuser eaadelegation@superdemo.live /pass RANDOMPASS /crypto All ptype KRB5_NT_PRINCIPAL
+
+    ![Akamai configureren](./media/header-akamai-tutorial/administrator.png)
+
+#### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>Stap 5: Keytab importeren in de AKAMAI EAA-console
+
+1. Klik op **System** > **Keytabs**.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/keytabs.png)
+
+1. Kies voor het type Keytab **Kerberos Delegation**.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/keytabdelegation.png)
+
+1. Zorg ervoor dat de Keytab wordt weer gegeven als geïmplementeerd en geverifieerd.
+
+    ![Akamai configureren](./media/header-akamai-tutorial/keytabs02.png)
+
+1. Gebruikerservaring
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser03.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/enduser04.png)
+
+1. Voorwaardelijke toegang
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess04.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess10.png)
+
+    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess11.png)
+
+### <a name="create-akamai-test-user"></a>Akamai-testgebruiker maken
+
+In dit gedeelte maakt u in Akamai een gebruiker met de naam B.Simon. Werk samen met het [ondersteuningsteam van Akamai](https://www.akamai.com/us/en/contact-us/) om de gebruikers toe te voegen in het Akamai-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Akamai in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Akamai waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Akamai in het toegangsvenster klikt, wordt u automatisch aangemeld bij het Akamai-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Akamai met Azure AD](https://aad.portal.azure.com/)
+- [Akamai met Azure AD proberen](https://aad.portal.azure.com/)

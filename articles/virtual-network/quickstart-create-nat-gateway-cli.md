@@ -1,11 +1,11 @@
 ---
-title: 'Quickstart: Een NAT-gateway maken - Azure CLI'
+title: 'Zelfstudie: Een NAT-gateway maken - Azure CLI'
 titlesuffix: Azure Virtual Network NAT
 description: In deze quickstart leert u hoe u een NAT-gateway kunt maken met Azure CLI
 services: virtual-network
 documentationcenter: na
 author: asudbring
-manager: KumundD
+manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
 ms.subservice: nat
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: dcc3eda4c19e8d15040feb31d2a45922035c6cb0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 016e187c2ae41958b9527b88b06517b5f5544c7b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341521"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707902"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Quickstart: Een NAT-gateway maken met Azure CLI
+# <a name="tutorial-create-a-nat-gateway-using-azure-cli"></a>Zelfstudie: Een NAT-gateway maken met Azure CLI
 
-In deze quickstart wordt uitgelegd hoe u de Azure Virtual Network NAT-service gebruikt. U maakt een NAT-gateway om uitgaande connectiviteit te bieden voor virtuele machines in Azure. 
+In deze zelfstudie wordt uitgelegd hoe u de Azure Virtual Network NAT-service gebruikt. U maakt een NAT-gateway om uitgaande connectiviteit te bieden voor virtuele machines in Azure. 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -71,7 +71,7 @@ U kunt een of meer openbare IP-resources, openbare IP-voorvoegsels of beide met 
 ### <a name="create-a-nat-gateway-resource"></a>Een NAT-gatewayresource maken
 
 In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service met de NAT-gatewayresource kunt maken en configureren:
-  - Een openbare IP-adresgroep en een openbaar IP-voorvoegsel die moeten worden gebruikt voor uitgaande stromen die worden vertaald door de NAT-gatewayresource.
+  - Een openbare IP-adresgroep en een openbaar IP-voorvoegsel die moeten worden gebruikt voor uitgaande stromen die worden omgezet door de NAT-gatewayresource.
   - Wijzig de time-out voor inactiviteit van de standaardwaarde van 4 minuten naar 10 minuten.
 
 Maak met [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) een globaal Azure NAT-gateway met de naam **myNATgateway**. De opdracht gebruikt zowel het openbare IP-adres **myPublicIP** als het openbare IP-voorvoegsel **myPublicIPprefix**. De opdracht verandert de time-out voor inactiviteit in **10** minuten.
@@ -119,7 +119,7 @@ Al het uitgaande verkeer naar Internetdoelen maakt nu gebruik van de NAT-gateway
 
 ## <a name="create-a-vm-to-use-the-nat-service"></a>Een VM maken voor het gebruik van de NAT-service
 
-Nu gaat u een VM maken voor het gebruik van de NAT-service.  Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaarniveau om toegang te krijgen tot de virtuele machine.  De NAT-service neemt stroomrichting waar en vervangt de standaard Internetdoel in uw subnet. Het openbare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
+Nu gaat u een VM maken voor het gebruik van de NAT-service.  Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaarniveau om toegang te krijgen tot de virtuele machine.  De NAT-service neemt stroomrichting waar en vervangt de standaard internetbestemming in uw subnet. Het openbare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
 
 ### <a name="create-public-ip-for-source-vm"></a>Een openbare IP voor de bron-VM maken
 
@@ -205,7 +205,7 @@ Eerst moet het IP-adres van de VM die u hebt gemaakt, worden gedetecteerd. Gebru
 
 ### <a name="sign-in-to-vm"></a>Aanmelden bij VM
 
-De SSH-aanmeldingsgegevens moeten worden opgeslagen in uw Cloud Shell van de vorige bewerking.  Open een [Azure Cloud Shell](https://shell.azure.com) in uw browser. Gebruik het IP-adres dat in de vorige stap is opgehaald om SSH naar de virtuele machine uit te voeren.
+De SSH-aanmeldingsgegevens moeten worden opgeslagen in uw Cloud Shell van de vorige bewerking.  Open een [Azure Cloud Shell](https://shell.azure.com) in uw browser. Gebruik het IP-adres dat in de vorige stap is opgehaald om SSH op de virtuele machine uit te voeren.
 
 ```bash
 ssh <ip-address-destination>
@@ -226,13 +226,13 @@ U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken
 
 In deze zelfstudie hebt u een NAT-gateway gemaakt en een VM om de gateway te gebruiken. 
 
-Controleer de metrische gegevens in Azure Monitor om uw NAT-service weer te geven. Problemen vaststellen, zoals de resource-uitputting van de beschikbare SNAT-poorten.  Resource-uitputting van de SNAT-poorten kan worden verholpen door extra openbare IP-adresresources of openbare IP-voorvoegselresources of beide toe te voegen.
+Controleer de metrische gegevens in Azure Monitor om uw NAT-service weer te geven. Stel problemen vast, zoals de resource-uitputting van de beschikbare SNAT-poorten.  Resource-uitputting van de SNAT-poorten kan worden verholpen door extra openbare IP-adresresources of openbare IP-voorvoegselresources of beide toe te voegen.
 
 
 - Meer informatie over [Azure Virtual Network NAT](./nat-overview.md)
-- Meer informatie over [NAT-gatewayresource](./nat-gateway-resource.md).
-- Quickstart voor het implementeren van [NAT-gatewayresource met Azure CLI](./quickstart-create-nat-gateway-cli.md).
-- Quickstart voor het implementeren van [NAT-gatewayresource met behulp van Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
-- Quickstart voor het implementeren van [NAT-gatewayresource met Azure Portal](./quickstart-create-nat-gateway-portal.md).
+- Meer informatie over [NAT-gatewayresource](./nat-gateway-resource.md)
+- Quickstart voor het implementeren van [NAT-gatewayresource met Azure CLI](./quickstart-create-nat-gateway-cli.md)
+- Quickstart voor het implementeren van [NAT-gatewayresource met behulp van Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
+- Quickstart voor het implementeren van [NAT-gatewayresource met de Azure-portal](./quickstart-create-nat-gateway-portal.md)
 > [!div class="nextstepaction"]
 

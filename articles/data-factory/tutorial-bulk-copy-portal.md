@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561156"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661067"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory in de Azure-portal
 
@@ -58,7 +58,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 **De Azure SQL Database-bron voorbereiden**:
 
-Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een Azure SQL-database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar Azure Synapse Analytics (voorheen SQL DW) gekopieerd.
+Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een Azure SQL-database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een Azure Synapse Analytics (voorheen SQL DW) gekopieerd.
 
 **Bereid de sink voor Azure Synapse Analytics (voorheen SQL DW) voor**:
 
@@ -108,13 +108,16 @@ In deze zelfstudie koppelt u uw gegevensarchieven van Azure SQL Database, Azure 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Maak de gekoppelde Azure SQL Database-bronservice
 In deze stap maakt u een gekoppelde service om uw Azure SQL-database aan de gegevensfactory te koppelen. 
 
-1. Klik op **Verbindingen** onder aan het venster en klik op **+Nieuwe** op de werkbalk (de knop **Verbindingen** bevindt zich aan de onderkant van de linkerkolom onder **Factory-resources**). 
+1. Open het [tabblad Beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) vanuit het linker deelvenster.
 
+1. Selecteer op de pagina Gekoppelde services **+Nieuw** om een nieuwe gekoppelde service te maken.
+
+   ![Nieuwe gekoppelde service](./media/doc-common-process/new-linked-service.png)
 1. In het venster **New Linked Service** selecteert u **Azure SQL Database** en klikt u op **Doorgaan**. 
 1. Voer in het venster **Nieuwe gekoppelde service (Azure SQL Database)** de volgende stappen uit: 
 
     a. Voer **AzureSqlDatabaseLinkedService** in als **Naam**.
-    
+
     b. Selecteer uw server als **Servernaam**
     
     c. Selecteer uw Azure SQL-database bij **Database name**. 
@@ -159,7 +162,6 @@ In deze zelfstudie gebruikt u Azure Blob-opslag als een tussentijds faseringsgeb
     b. Selecteer uw **Azure Storage-account** bij **Storage account name**.
     
     c. Klik op **Create**.
-
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt opgegeven waar de gegevens zijn opgeslagen. 
@@ -321,7 +323,7 @@ Deze pijplijn voert twee acties uit:
 
 ## <a name="trigger-a-pipeline-run"></a>Een pijplijnuitvoering activeren
 
-1. Ga naar pijplijn **GetTableListAndTriggerCopyData**, klik op **Trigger toevoegen** op de bovenste werkbalk van de pijplijn en klik vervolgens op **Nu activeren**. 
+1. Ga naar pijplijn **GetTableListAndTriggerCopyData**, klik in de bovenste werkbalk van de pijplijn op **Trigger toevoegen** vervolgens op **Nu activeren**. 
 
 1. Bevestig de uitvoering op de pagina **Pijplijn uitvoeren** en selecteer **Voltooien**.
 

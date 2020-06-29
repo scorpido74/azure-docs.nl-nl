@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-onderwerpen gebruiken met het Azure/service-bus node. js-pakket
-description: Meer informatie over het gebruik van Service Bus-onderwerpen en-abonnementen in azure vanuit een node. js-app met behulp van het Azure/service-bus-pakket.
+title: Azure Service Bus-onderwerpen gebruiken met het Node.js-pakket azure/service-bus
+description: Leer hoe u Service Bus-onderwerpen en -abonnementen in Azure kunt gebruiken vanuit een Node.js app met behulp van het pakket azure/service-bus.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -14,48 +14,48 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: c85b63b4a56e74b0fef9a122ec995b4106496cbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 91fae982f53af8da359baaff685996c0d1cb57c2
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78330443"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976554"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het pakket Azure-SB
-In deze zelf studie leert u hoe u node. js-toepassingen kunt maken om berichten te verzenden naar een Service Bus onderwerp en berichten van een Service Bus-abonnement te ontvangen met behulp van het pakket [Azure-SB](https://www.npmjs.com/package/azure-sb) . De voor beelden zijn geschreven in Java script en gebruiken de node. js [Azure-module](https://www.npmjs.com/package/azure) die `azure-sb` intern gebruikmaakt van het pakket.
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Quickstart: Service Bus-onderwerpen en-abonnementen gebruiken met Node. js en het pakket azure-sb
+In deze zelfstudie leert u hoe u Node.js toepassingen kunt maken om berichten te versturen naar een Service Bus-onderwerp en berichten te ontvangen van een Service Bus-abonnement met behulp van het [azure-sb](https://www.npmjs.com/package/azure-sb)-pakket. De voorbeelden zijn geschreven in JavaScript en maken gebruik van de [Azure-module](https://www.npmjs.com/package/azure) Node.js, die intern het `azure-sb`-pakket gebruikt.
 
 > [!IMPORTANT]
-> Het [Azure-SB-](https://www.npmjs.com/package/azure-sb) pakket maakt gebruik van [Service Bus rest runtime-api's](/rest/api/servicebus/service-bus-runtime-rest). U kunt een snellere ervaring krijgen met het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) pakket dat gebruikmaakt van het snellere [AMQP 1,0-protocol](service-bus-amqp-overview.md). 
+> Het [azure-sb](https://www.npmjs.com/package/azure-sb)-pakket maakt gebruik van [Service Bus REST runtime-API's](/rest/api/servicebus/service-bus-runtime-rest). U kunt een snellere ervaring verkrijgen met het nieuwe [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-pakket, dat gebruikmaakt van het snellere [AMQP 1.0-protocol](service-bus-amqp-overview.md). 
 > 
-> Zie [Service Bus-onderwerpen en-abonnementen @azure/service-bus gebruiken met node. js en package](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)voor meer informatie over het nieuwe pakket. anders gaat u verder met lezen om te zien hoe u het [Azure](https://www.npmjs.com/package/azure) -pakket kunt gebruiken.
+> Zie [Service Bus-onderwerpen en-abonnementen gebruiken met Node.js en @azure/service-bus-pakket](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)als u meer wilt weten over het nieuwe pakket, of blijf lezen om te zien hoe u het [azure](https://www.npmjs.com/package/azure)-pakket kunt gebruiken.
 
-De volgende scenario's zijn van toepassing:
+De hier behandelde scenario's zijn:
 
 - Onderwerpen en abonnementen maken 
-- Abonnements filters maken 
+- Abonnementsfilters maken 
 - Berichten verzenden naar een onderwerp 
-- Berichten ontvangen van een abonnement
+- Berichten van een abonnement ontvangen
 - Onderwerpen en abonnementen verwijderen 
 
-Zie de sectie [volgende stappen](#next-steps) voor meer informatie over onderwerpen en abonnementen.
+Zie de sectie [Volgende stappen](#next-steps) voor meer informatie over onderwerpen en abonnementen.
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt de [voor delen van uw Visual Studio-of MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om een service bus **naam ruimte** te maken en de **Connection String**op te halen.
+- Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als Visual Studio- of MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Volg de stappen in de [Quickstart: De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp](service-bus-quickstart-topics-subscriptions-portal.md) om een Service Bus-**naamruimte** te maken en de **verbindingsreeks** op te halen.
 
     > [!NOTE]
-    > In deze Quick Start maakt u een **onderwerp** en een **abonnement** op het onderwerp met behulp van **node. js** . 
+    > In deze Quick Start maakt u een **onderwerp** en een **abonnement** op het onderwerp door **Node.js** te gebruiken. 
 
 ## <a name="create-a-nodejs-application"></a>Een Node.js-toepassing maken
-Maak een lege node. js-toepassing. Zie [een node. js-toepassing maken en implementeren op een Azure-website], [node. js-Cloud service][Node.js Cloud Service] met Windows Power shell of een website met webmatrix voor instructies over het maken van een node. js-toepassing.
+Maak een lege Node.js-toepassing. Zie voor instructies over het maken van een Node.js-toepassing [Een Node.js-toepassing maken en implementeren op een Azure-website], [Node.js-cloudservice][Node.js Cloud Service] met Windows PowerShell of website met WebMatrix.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
-Down load het node. js Azure-pakket om Service Bus te gebruiken. Dit pakket bevat een set bibliotheken die communiceren met de Service Bus REST-services.
+Download het Node.js Azure-pakket om Service Bus te gebruiken. Dit pakket bevat een set bibliotheken die communiceren met de Service Bus REST-services.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Gebruik node Package Manager (NPM) om het pakket te verkrijgen
-1. Open een opdracht regel interface, zoals **Power shell** (Windows), **Terminal** (Mac) of **bash** (UNIX).
-2. Navigeer naar de map waarin u de voorbeeld toepassing hebt gemaakt.
-3. Typ **NPM Azure installeren** in het opdracht venster, wat kan leiden tot de volgende uitvoer:
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Node Package Manager (NPM) gebruiken om het pakket te verkrijgen
+1. Open een opdrachtregelinterface zoals **PowerShell** (Windows), **Terminal** (Mac) of **Bash** (Unix).
+2. Navigeer naar de map waar u de voorbeeldtoepassing hebt gemaakt.
+3. Typ **npm install azure** in het opdrachtvenster. Dit zou moeten resulteren in de volgende uitvoer:
 
    ```
        azure@0.7.5 node_modules\azure
@@ -70,30 +70,30 @@ Down load het node. js Azure-pakket om Service Bus te gebruiken. Dit pakket beva
    ├── xml2js@0.2.7 (sax@0.5.2)
    └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
    ```
-3. U kunt de **ls** -opdracht hand matig uitvoeren om te controleren of er een map met **knooppunt\_modules** is gemaakt. Zoek in die map naar het **Azure** -pakket, dat de bibliotheken bevat die u nodig hebt om toegang te krijgen tot Service Bus onderwerpen.
+3. U kunt handmatig de opdracht **ls** uitvoeren om te controleren of de map **node\_modules** is gemaakt. In deze map vindt u het **azure**-pakket, dat de bibliotheken bevat die u nodig hebt om toegang te krijgen tot Service Bus-onderwerpen.
 
 ### <a name="import-the-module"></a>De module importeren
-Als u Klad blok of een andere tekst editor gebruikt, voegt u het volgende toe aan de bovenkant van het **server. js** -bestand van de toepassing:
+Gebruik Kladblok of een andere teksteditor om het volgende toe te voegen bovenaan het bestand **server.js** van de toepassing:
 
 ```javascript
 var azure = require('azure');
 ```
 
-### <a name="set-up-a-service-bus-connection"></a>Een Service Bus verbinding instellen
-De Azure-module leest de omgevings variabele `AZURE_SERVICEBUS_CONNECTION_STRING` voor de Connection String die u hebt verkregen uit de vorige stap, de referenties verkrijgen. Als deze omgevings variabele niet is ingesteld, moet u de account gegevens opgeven wanneer `createServiceBusService`u aanroept.
+### <a name="set-up-a-service-bus-connection"></a>Een Service Bus-verbinding instellen
+De Azure-module leest de omgevingsvariabele `AZURE_SERVICEBUS_CONNECTION_STRING` voor de verbindingsreeks die u hebt verkregen als onderdeel van de [vereisten](#prerequisites). Als u instructies nodig hebt voor het opnieuw ophalen van de verbindingsreeks, raadpleegt u [De verbindingsreeks](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string) ophalen. Als deze omgevingsvariabele niet is ingesteld, moet u de accountgegevens opgeven bij het aanroepen van `createServiceBusService`.
 
-Zie [omgevings variabelen instellen](../container-instances/container-instances-environment-variables.md#azure-cli-example)voor een voor beeld van het instellen van omgevings variabelen voor een Azure-Cloud service.
+Zie [Omgevingsvariabelen instellen](../container-instances/container-instances-environment-variables.md#azure-cli-example) voor een voorbeeld van het instellen van de omgevingsvariabelen voor een Azure-cloudservice.
 
 
 
 ## <a name="create-a-topic"></a>Een onderwerp maken
-Met het **ServiceBusService** -object kunt u werken met onderwerpen. Met de volgende code wordt een **ServiceBusService** -object gemaakt. Voeg het toe aan de bovenkant van het bestand **server. js** , na de instructie voor het importeren van de Azure-module:
+Met het **ServiceBusService**-object kunt u werken met onderwerpen. Met de volgende code wordt een **ServiceBusClient**-object gemaakt. Voeg deze toe bovenaan het **server.js**-bestand, na de instructie voor het importeren van de Azure-module:
 
 ```javascript
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Als u het `createTopicIfNotExists` object **ServiceBusService** aanroept, wordt het opgegeven onderwerp geretourneerd (indien aanwezig), of wordt er een nieuw onderwerp met de opgegeven naam gemaakt. De volgende code gebruikt `createTopicIfNotExists` voor het maken of maken van een verbinding `MyTopic`met het onderwerp met de naam:
+Als u `createTopicIfNotExists` aanroept op het **ServiceBusService**-object, wordt het opgegeven onderwerp geretourneerd (als het bestaat), of wordt er een nieuw onderwerp gemaakt met de opgegeven naam. De volgende code maakt gebruik van `createTopicIfNotExists` om het onderwerp met de naam `MyTopic` te maken of er verbinding mee te maken:
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -104,9 +104,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-De `createTopicIfNotExists` -methode biedt ook ondersteuning voor aanvullende opties, waarmee u standaard instellingen voor het onderwerp, zoals de bericht tijd, een live of maximale onderwerps grootte kunt overschrijven. 
+De methode `createTopicIfNotExists` ondersteunt ook extra opties waarmee u standaardinstellingen voor het onderwerp kunt overschrijven, zoals de 'time to live' van het bericht of de maximale grootte van het onderwerp. 
 
-In het volgende voor beeld wordt de maximum grootte van het onderwerp ingesteld op 5 GB met een time-to-Live van één minuut:
+In het volgende voorbeeld wordt de maximumgrootte van het onderwerp ingesteld op 5 GB met een time to live van één minuut:
 
 ```javascript
 var topicOptions = {
@@ -122,21 +122,21 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 ```
 
 ### <a name="filters"></a>Filters
-Optionele filter bewerkingen kunnen worden toegepast op bewerkingen die worden uitgevoerd met behulp van **ServiceBusService**. Filter bewerkingen kunnen logboek registratie, automatisch opnieuw proberen, enzovoort zijn. Filters zijn objecten die een methode implementeren met de hand tekening:
+Er kunnen optionele filterbewerkingen worden toegepast op bewerkingen die worden uitgevoerd met behulp van **ServiceBusService**. Filterbewerkingen kunnen logboekregistratie, automatische nieuwe pogingen, enzovoort bevatten. Filters zijn objecten die een methode implementeren met de handtekening:
 
 ```javascript
 function handle (requestOptions, next)
 ```
 
-Nadat de voor bereiding is uitgevoerd op de aanvraag opties, wordt `next`de methode aangeroepen en wordt een retour aanroep door gegeven met de volgende hand tekening:
+Na het uitvoeren van de voorbewerkingen voor de aanvraagopties, roept de methode `next` aan en geeft een callback door met de volgende handtekening:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-In deze call back en na het `returnObject` verwerken van (de reactie van de aanvraag naar de server), moet de retour aanroep volgende aanroepen (indien aanwezig) om door te gaan met het verwerken `finalCallback` van andere filters, of aanroepen om de aanroepen van de service te beëindigen.
+In deze callback, en na verwerking van het `returnObject` (de reactie van de aanvraag op de server), moet de callback 'next' aanroepen (als dit bestaat) om door te gaan met het verwerken van andere filters, of `finalCallback` aanroepen om te stoppen met service-aanroepen.
 
-Twee filters die logica implementeren voor nieuwe pogingen zijn opgenomen in de Azure SDK voor Node.js: **ExponentialRetryPolicyFilter** en **LinearRetryPolicyFilter**. Met de volgende code wordt een **ServiceBusService** -object gemaakt dat gebruikmaakt van de **ExponentialRetryPolicyFilter**:
+Twee filters die logica implementeren voor nieuwe pogingen zijn opgenomen in de Azure SDK voor Node.js: **ExponentialRetryPolicyFilter** en **LinearRetryPolicyFilter**. Met de volgende code wordt een **ServiceBusService**-object gemaakt dat gebruikmaakt van de **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -144,15 +144,15 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="create-subscriptions"></a>Abonnementen maken
-Er worden ook abonnementen van het onderwerp gemaakt met het **ServiceBusService** -object. Abonnementen krijgen een naam en kunnen een optioneel filter hebben waarmee de set berichten wordt beperkt die aan de virtuele wachtrij van het abonnement wordt geleverd.
+Er worden ook onderwerpabonnementen gemaakt met het object **ServiceBusService**. Abonnementen hebben een naam en kunnen een optioneel filter hebben waarmee de verzameling berichten wordt beperkt die worden bezorgd in de virtuele wachtrij van het abonnement.
 
 > [!NOTE]
-> Standaard zijn abonnementen permanent totdat ze zijn, of het onderwerp waaraan ze zijn gekoppeld, worden verwijderd. Als uw toepassing logica bevat om een abonnement te maken, moet u eerst controleren of het abonnement bestaat door de `getSubscription` methode te gebruiken.
+> Standaard zijn abonnementen persistent totdat zij, of het onderwerp waaraan ze zijn gekoppeld, worden verwijderd. Als uw toepassing logica bevat om een abonnement te maken, moet deze eerst de `getSubscription`-methode gebruiken om te controleren of het abonnement bestaat.
 >
 > U kunt de abonnementen automatisch laten verwijderen door de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)in te stellen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Een abonnement maken met het standaardfilter (MatchAll)
-Het **MatchAll** -filter is het standaard filter dat wordt gebruikt wanneer een abonnement wordt gemaakt. Bij gebruik van het **MatchAll**-filter worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. In het volgende voor beeld wordt een abonnement met de naam AllMessages gemaakt en wordt het standaard **MatchAll** -filter gebruikt.
+Het **MatchAll**-filter is het standaardfilter dat wordt gebruikt wanneer een abonnement wordt gemaakt. Bij gebruik van het **MatchAll**-filter worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. Met het volgende voorbeeld maakt u een abonnement met de naam AllMessages en wordt het standaardfilter **MatchAll** gebruikt.
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -163,18 +163,18 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Abonnementen met filters maken
-U kunt ook filters maken waarmee u kunt bepalen welke berichten die naar een onderwerp worden verzonden, moeten worden weer gegeven in een specifiek onderwerp-abonnement.
+U kunt ook filters maken waarmee u kunt opgeven welke bereik met berichten die naar een onderwerp worden verzonden, moet worden weergegeven in een bepaald onderwerpabonnement.
 
-Het meest flexibele type filter dat wordt ondersteund door abonnementen is de **SqlFilter**, waarmee een SUBSET van SQL92 wordt geïmplementeerd. SQL-filters worden uitgevoerd voor de eigenschappen van de berichten die worden gepubliceerd naar het onderwerp. Raadpleeg de syntaxis van [SqlFilter. SqlExpression][SqlFilter.SqlExpression] voor meer informatie over de expressies die kunnen worden gebruikt met een SQL-filter.
+Het meest flexibele type filter dat wordt ondersteund door abonnementen is **SqlFilter**, waarmee een subset van SQL92 wordt geïmplementeerd. SQL-filters worden uitgevoerd voor de eigenschappen van de berichten die worden gepubliceerd naar het onderwerp. Zie de [SqlFilter.SqlExpression][SqlFilter.SqlExpression]-syntaxis voor meer informatie over de expressies die kunnen worden gebruikt met een SQL-filter.
 
-Filters kunnen worden toegevoegd aan een abonnement met behulp `createRule` van de methode van het **ServiceBusService** -object. Met deze methode kunt u nieuwe filters toevoegen aan een bestaand abonnement.
+Filters kunnen worden toegevoegd aan een abonnement met behulp van de methode `createRule` van het **ServiceBusService**-object. Met deze methode kunt u nieuwe filters toevoegen aan een bestaand abonnement.
 
 > [!NOTE]
-> Omdat het standaard filter automatisch wordt toegepast op alle nieuwe abonnementen, moet u eerst het standaard filter verwijderen of de **MatchAll** alle andere filters overschrijven die u kunt opgeven. U kunt de standaard regel verwijderen met de `deleteRule` methode van het object **ServiceBusService** .
+> Omdat het standaardfilter automatisch wordt toegepast op alle nieuwe abonnementen, moet u eerst het standaardfilter verwijderen, anders overschrijft **MatchAll** alle andere filters die u eventueel opgeeft. U kunt de standaardregel verwijderen met de methode `deleteRule` van het **ServiceBusService**-object.
 >
 >
 
-In het volgende voor beeld wordt een `HighMessages` abonnement gemaakt met de naam met een **SqlFilter** die alleen berichten `messagenumber` selecteert die een aangepaste eigenschap hebben die groter is dan 3:
+In het volgende voorbeeld wordt een abonnement met de naam `HighMessages` gemaakt met een **SqlFilter** waarmee alleen berichten worden geselecteerd die een aangepaste `messagenumber`-eigenschap groter dan 3 hebben:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'HighMessages', function (error){
@@ -209,7 +209,7 @@ var rule={
 }
 ```
 
-Op dezelfde manier maakt het volgende voor beeld een `LowMessages` abonnement met de naam met een **SqlFilter** die alleen berichten `messagenumber` selecteert die een eigenschap hebben die kleiner is dan of gelijk is aan 3:
+Op dezelfde manier wordt in het volgende voorbeeld een abonnement met de naam `LowMessages` gemaakt met een **SqlFilter** waarmee alleen berichten worden geselecteerd die een `messagenumber`-eigenschap kleiner dan of gelijk aan 3 hebben:
 
 ```javascript
 serviceBusService.createSubscription('MyTopic', 'LowMessages', function (error){
@@ -244,14 +244,14 @@ var rule={
 }
 ```
 
-Wanneer een bericht nu wordt verzonden naar `MyTopic`, wordt het bezorgd bij ontvangers die zich abonneren op het `AllMessages` onderwerp en worden ze selectief geleverd aan ontvangers die zijn geabonneerd op `HighMessages` het `LowMessages` onderwerp en de abonnementen van het-abonnement (afhankelijk van de inhoud van het bericht).
+Wanneer er nu een bericht naar `MyTopic` wordt verzonden, wordt het bezorgd bij ontvangers die zijn geabonneerd op het `AllMessages`-onderwerpabonnement, en selectief bezorgd bij ontvangers die zijn geabonneerd op de onderwerpabonnementen `HighMessages` en `LowMessages` (afhankelijk van de inhoud van het bericht).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Berichten verzenden naar een onderwerp
-Voor het verzenden van een bericht naar een Service Bus onderwerp moet uw toepassing gebruikmaken `sendTopicMessage` van de methode van het object **ServiceBusService** .
-Berichten die worden verzonden naar Service Bus-onderwerpen zijn **BrokeredMessage** -objecten.
-**BrokeredMessage** -objecten hebben een aantal standaard eigenschappen (zoals `Label` en `TimeToLive`), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen en een hoofd tekst van teken reeks gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door een teken reeks waarde door `sendTopicMessage` te geven aan de en de vereiste standaard eigenschappen worden gevuld met standaard waarden.
+Om een bericht naar een Service Bus-onderwerp te verzenden, moet uw toepassing de methode `sendTopicMessage` van het **ServiceBusService**-object aanroepen.
+Berichten die worden verzonden naar Service Bus-onderwerpen, zijn **BrokeredMessage**-objecten.
+**BrokeredMessage**-objecten hebben een aantal standaardeigenschappen (zoals `Label` en `TimeToLive`), een woordenlijst die wordt gebruikt om aangepaste toepassingsspecifieke eigenschappen te bewaren en de hoofdtekst met tekenreeksgegevens. Een toepassing kan de hoofdtekst van het bericht instellen door een tekenreekswaarde door te geven aan `sendTopicMessage`, en alle vereiste standaardeigenschappen worden gevuld met standaardwaarden.
 
-In het volgende voor beeld ziet u hoe u vijf test berichten `MyTopic`verzendt naar. De `messagenumber` waarde van de eigenschap van elk bericht varieert afhankelijk van de herhaling van de lus (deze eigenschap bepaalt welke abonnementen het heeft ontvangen):
+In het volgende voorbeeld ziet u hoe u vijf testberichten naar `MyTopic` verzendt. De waarde van de eigenschap `messagenumber` van elk bericht varieert afhankelijk van de herhaling van de lus (deze eigenschap bepaalt welke abonnementen het bericht ontvangen):
 
 ```javascript
 var message = {
@@ -274,15 +274,15 @@ for (i = 0;i < 5;i++) {
 
 Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een onderwerp, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB.
 
-## <a name="receive-messages-from-a-subscription"></a>Berichten ontvangen van een abonnement
-Er worden berichten ontvangen van een abonnement met `receiveSubscriptionMessage` behulp van de methode voor het **ServiceBusService** -object. Standaard worden berichten uit het abonnement verwijderd wanneer ze worden gelezen. U kunt echter de optionele para meter `isPeekLock` instellen op **True** om te lezen (Peek) en het bericht te vergren delen zonder het te verwijderen uit het abonnement.
+## <a name="receive-messages-from-a-subscription"></a>Berichten van een abonnement ontvangen
+Berichten worden van een abonnement ontvangen met behulp van de methode `receiveSubscriptionMessage` van het **ServiceBusService**-object. Standaard worden berichten uit het abonnement verwijderd wanneer ze worden gelezen. U kunt echter de optionele parameter `isPeekLock` instellen op **true** om het bericht te lezen (peek) en te vergrendelen zonder het uit het abonnement te verwijderen.
 
-Het standaard gedrag van het lezen en verwijderen van het bericht als onderdeel van de receive-bewerking is het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht kan verdragen als er een fout optreedt. Om dit gedrag te begrijpen, moet u rekening houden met een scenario waarin de consumer de ontvangst aanvraag uitgeeft en vervolgens vastloopt voordat het proces wordt verwerkt. Omdat Service Bus het bericht heeft gemarkeerd als verbruikt, wordt het bericht dat voor het vastlopen is verbruikt, gemist wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
+Het standaardgedrag van het lezen en verwijderen van het bericht als onderdeel van de ontvangstbewerking is het eenvoudigste model, en werkt het beste voor scenario's waarin een toepassing kan tolereren dat een bericht niet wordt verwerkt als er een fout optreedt. Neem bijvoorbeeld een scenario waarin de verwerkende app de ontvangstaanvraag indient en vervolgens vastloopt voordat deze wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, ontbreekt het bericht dat voor het vastlopen is verbruikt wanneer de toepassing opnieuw wordt gestart en het verbruik van berichten opnieuw begint.
 
-Als de `isPeekLock` para meter is ingesteld op **True**, wordt de ontvangst een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen gemiste berichten kunnen verdragen. Wanneer Service Bus een aanvraag ontvangt, wordt het volgende te gebruiken bericht gevonden, vergrendeld om te voor komen dat andere gebruikers het ontvangen, en wordt het naar de toepassing geretourneerd.
-Nadat de toepassing het bericht heeft verwerkt (of als het op een betrouw bare manier is opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangst proces voltooid door de methode **deleteMessage** aan te roepen en wordt het bericht door gegeven als een para meter. De methode **deleteMessage** markeert het bericht als verbruikt en verwijdert het uit het abonnement.
+Als de parameter `isPeekLock` wordt ingesteld op **true**, wordt de ontvangst een bewerking met twee fasen, waardoor er toepassingen kunnen worden ondersteund die geen gemiste berichten kunnen tolereren. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd.
+Nadat de toepassing het bericht heeft verwerkt (of het veilig heeft opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangstproces voltooid door de methode **deleteMessage** aan te roepen en het te verwijderen bericht door te geven als een parameter. Met de methode **deleteMessage** wordt het bericht gemarkeerd als verwerkt en wordt het uit het abonnement verwijderd.
 
-In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en `receiveSubscriptionMessage`verwerkt met. In het voor beeld wordt eerst een bericht ontvangen en uit het ' Lowmessages gemaakt-abonnement verwijderd. vervolgens wordt er een bericht van het ' HighMessages `isPeekLock` ' ontvangen met de instelling ingesteld op ' True '. Vervolgens wordt het bericht verwijderd met `deleteMessage`:
+Het volgende voorbeeld laat zien hoe berichten kunnen worden ontvangen en verwerkt met behulp van `receiveSubscriptionMessage`. In het voorbeeld wordt eerst een bericht ontvangen verwijderd uit het abonnement 'LowMessages', en wordt vervolgens een bericht ontvangen uit het abonnement 'HighMessages' met `isPeekLock` ingesteld op 'true'. Vervolgens wordt het bericht verwijderd met `deleteMessage`:
 
 ```javascript
 serviceBusService.receiveSubscriptionMessage('MyTopic', 'LowMessages', function(error, receivedMessage){
@@ -306,15 +306,15 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvanger toepassing het bericht om de een of andere reden niet kan verwerken, kan de `unlockMessage` methode worden aangeroepen voor het **ServiceBusService** -object. Deze methode zorgt ervoor Service Bus om het bericht in het abonnement te ontgrendelen en het beschikbaar te maken zodat het opnieuw kan worden ontvangen. In dit geval, op basis van dezelfde verbruiks toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan deze de methode `unlockMessage` aanroepen op het **ServiceBusService**-object. Deze methode zorgt ervoor dat Service Bus het bericht in het abonnement ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen. In dit geval door dezelfde of door een andere consumerende toepassing.
 
-Er is ook een time-out gekoppeld aan een bericht dat in het abonnement is vergrendeld. Als de toepassing het bericht niet kan verwerken voordat de time-out voor de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt Service Bus het bericht automatisch ontgrendeld en wordt het beschikbaar gemaakt om opnieuw te worden ontvangen.
+Er is ook een time-out gekoppeld aan een bericht dat in het abonnement is vergrendeld. Als de toepassing het bericht niet kan verwerken voordat de time-out voor vergrendeling verloopt (bijvoorbeeld als de app vastloopt), dan ontgrendelt Service Bus automatisch het bericht en maakt het beschikbaar zodat het weer kan worden ontvangen.
 
-In de gebeurtenis die de toepassing vastloopt na het verwerken van het `deleteMessage` bericht, maar voordat de methode wordt aangeroepen, wordt het bericht opnieuw aan de toepassing verzonden wanneer het opnieuw wordt gestart. Dit gedrag wordt vaak *ten minste eenmaal in de verwerking*genoemd. Dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, moet u logica aan uw toepassing toevoegen om de dubbele bericht bezorging af te handelen. U kunt de **MessageId** -eigenschap van het bericht gebruiken, dat constant blijft tijdens bezorgings pogingen.
+Als de toepassing vastloopt na het verwerken van het bericht, maar voordat de methode `deleteMessage` wordt aangeroepen, wordt het bericht opnieuw bij de app bezorgd wanneer deze opnieuw wordt gestart. Dit gedrag wordt wel *Ten minste één keer verwerken* genoemd. Dat wil zeggen, elk bericht wordt minstens één keer verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, moet u logica toevoegen aan uw toepassing om dubbele berichtbezorging af te handelen. U kunt gebruikmaken van de **MessageId**-eigenschap van het bericht, die gelijk blijft bij alle bezorgingspogingen.
 
 ## <a name="delete-topics-and-subscriptions"></a>Onderwerpen en abonnementen verwijderen
-Onderwerpen en abonnementen zijn permanent, tenzij de [eigenschap autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) is ingesteld, en moet expliciet worden verwijderd via de [Azure Portal][Azure portal] of via een programma.
-In het volgende voor beeld ziet u hoe u het onderwerp `MyTopic`met de naam verwijdert:
+Onderwerpen en abonnementen zijn persistent, tenzij de [eigenschap autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) is ingesteld, en moeten expliciet via de [Azure-portal][Azure portal] of programmatisch worden verwijderd.
+In het volgende voorbeeld ziet u hoe u het onderwerp met de naam `MyTopic` kunt verwijderen:
 
 ```javascript
 serviceBusService.deleteTopic('MyTopic', function (error) {
@@ -324,7 +324,7 @@ serviceBusService.deleteTopic('MyTopic', function (error) {
 });
 ```
 
-Als een onderwerp wordt verwijderd, worden ook alle abonnementen verwijderd die zijn geregistreerd bij het onderwerp. Abonnementen kunnen ook afzonderlijk worden verwijderd. In het volgende voor beeld ziet u hoe u een `HighMessages` abonnement kunt `MyTopic` verwijderen met de naam uit het onderwerp:
+Als een onderwerp wordt verwijderd, worden ook alle abonnementen verwijderd die zijn geregistreerd bij het onderwerp. Abonnementen kunnen ook afzonderlijk worden verwijderd. In het volgende voorbeeld ziet u hoe u een abonnement met de naam `HighMessages` kunt verwijderen uit het onderwerp `MyTopic`:
 
 ```javascript
 serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
@@ -335,14 +335,14 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basis principes van Service Bus onderwerpen hebt geleerd, volgt u deze koppelingen voor meer informatie.
+Nu u de basisprincipes van Service Bus-onderwerpen hebt geleerd, kunt u deze koppelingen volgen voor meer informatie.
 
-* Zie [wacht rijen, onderwerpen en abonnementen][Queues, topics, and subscriptions].
+* Zie [Wachtrijen, onderwerpen en abonnementen][Queues, topics, and subscriptions].
 * API-naslaginformatie voor [SqlFilter][SqlFilter].
-* Ga naar de [Azure SDK voor knooppunt][Azure SDK for Node] opslagplaats op github.
+* Ga naar de opslagplaats [Azure SDK voor Node.js][Azure SDK for Node] op GitHub.
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com
@@ -350,6 +350,6 @@ Nu u de basis principes van Service Bus onderwerpen hebt geleerd, volgt u deze k
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Een node. js-toepassing maken en implementeren op een Azure-website]: ../app-service/app-service-web-get-started-nodejs.md
+[Een Node.js-toepassing maken en implementeren op een Azure-website]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 
