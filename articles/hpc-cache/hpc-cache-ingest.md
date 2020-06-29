@@ -3,15 +3,15 @@ title: Gegevens verplaatsen naar een Cloud container van een Azure HPC-cache
 description: Azure Blob-opslag vullen voor gebruik met de Azure HPC-cache
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac963fd01016506193aae0fab5582224b3957de8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537930"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508959"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Gegevens verplaatsen naar Azure Blob-opslag
 
@@ -58,7 +58,7 @@ Als u het hulp programma avere CLFSLoad niet wilt gebruiken of als u een grote h
 
 ![Diagram van het proces van het verplaatsen van meerdere clients en gegevens verplaatsing met meerdere threads: linksboven, een pictogram voor on-premises hardwarematige opslag bevat meerdere pijlen. De pijlen verwijzen naar vier client machines. Vanaf elke client computer worden drie pijlen naar de Azure HPC-cache gericht. Vanuit de Azure HPC-cache verwijzen meerdere pijlen naar Blob Storage.](media/hpc-cache-parallel-ingest.png)
 
-De ``cp`` opdrachten ``copy`` of die u doorgaans gebruikt voor het overdragen van gegevens van het ene opslag systeem naar het andere, zijn processen met één thread waarmee slechts één bestand tegelijk wordt gekopieerd. Dit betekent dat de bestands server slechts één bestand tegelijkertijd bijwerkt. Dit is een afval van de bronnen in de cache.
+De ``cp`` ``copy`` opdrachten of die u doorgaans gebruikt voor het overdragen van gegevens van het ene opslag systeem naar het andere, zijn processen met één thread waarmee slechts één bestand tegelijk wordt gekopieerd. Dit betekent dat de bestands server slechts één bestand tegelijkertijd bijwerkt. Dit is een afval van de bronnen in de cache.
 
 In deze sectie worden strategieën uitgelegd voor het maken van een multi-client, multi-threaded bestand voor het kopiëren van gegevens naar Blob Storage met Azure HPC-cache. Hierin worden de concepten van bestands overdracht en beslissings punten uitgelegd die kunnen worden gebruikt voor het efficiënt kopiëren van gegevens met meerdere clients en eenvoudige Kopieer opdrachten.
 
@@ -77,7 +77,7 @@ Strategieën voor het opnemen van parallelle gegevens opname met Azure HPC cache
 
 * Hand matig kopiëren: u kunt hand matig een kopie met meerdere threads maken op een client door meer dan één Kopieer opdracht tegelijk op de achtergrond uit te voeren op basis van vooraf gedefinieerde sets van bestanden of paden. Lees de [Azure HPC cache-gegevens opname-hand matige Kopieer methode](hpc-cache-ingest-manual.md) voor meer informatie.
 
-* Gedeeltelijk geautomatiseerd ``msrsync``  -  ``msrsync`` kopiëren met is een wrapper-hulp ``rsync`` programma dat meerdere parallelle processen uitvoert. Lees voor meer informatie de [methode Azure HPC cache data opname-msrsync](hpc-cache-ingest-msrsync.md).
+* Gedeeltelijk geautomatiseerd kopiëren met ``msrsync``  -  ``msrsync`` is een wrapper-hulp programma dat meerdere parallelle ``rsync`` processen uitvoert. Lees voor meer informatie de [methode Azure HPC cache data opname-msrsync](hpc-cache-ingest-msrsync.md).
 
 * Scripts kopiëren met ``parallelcp`` -informatie over het maken en uitvoeren van een script voor parallelle kopie in [Azure HPC-cache gegevens opname-parallelle kopie script methode](hpc-cache-ingest-parallelcp.md).
 

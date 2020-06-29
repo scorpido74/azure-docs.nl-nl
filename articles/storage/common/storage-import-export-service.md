@@ -4,16 +4,16 @@ description: Meer informatie over het maken van import-en export taken in de Azu
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872434"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512436"
 ---
 # <a name="what-is-azure-importexport-service"></a>Wat is Azure import/export-service?
 
@@ -135,9 +135,9 @@ De gegevens op het station worden versleuteld met AES 256-bits BitLocker-station
 
 Voor import taken worden stations op twee manieren versleuteld.  
 
-* Geef de optie op wanneer u het bestand *DataSet. CSV* gebruikt tijdens het uitvoeren van het hulp programma WAImportExport tijdens de voor bereiding van het station.
+* Geef de optie op wanneer u *dataset.csv* -bestand gebruikt tijdens het uitvoeren van het hulp programma WAImportExport tijdens de voor bereiding van het station.
 
-* BitLocker-versleuteling hand matig inschakelen op het station. Geef de versleutelings sleutel op in *stationset. CSV* tijdens het uitvoeren van de opdracht regel van het WAImportExport-hulp programma tijdens het voorbereiden van het station. De BitLocker-versleutelings sleutel kan verder worden beveiligd met behulp van een externe-sleutel beveiliging (ook wel bekend als de door micro soft beheerde sleutel) of een door de klant beheerde sleutel. Zie [een door de klant beheerde sleutel gebruiken voor het beveiligen van uw BitLocker-sleutel](storage-import-export-encryption-key-portal.md)voor meer informatie.
+* BitLocker-versleuteling hand matig inschakelen op het station. Geef de versleutelings sleutel op in de *driveset.csv* tijdens het uitvoeren van de opdracht regel van het WAImportExport-programma tijdens het voorbereiden van het station De BitLocker-versleutelings sleutel kan verder worden beveiligd met behulp van een externe-sleutel beveiliging (ook wel bekend als de door micro soft beheerde sleutel) of een door de klant beheerde sleutel. Zie [een door de klant beheerde sleutel gebruiken voor het beveiligen van uw BitLocker-sleutel](storage-import-export-encryption-key-portal.md)voor meer informatie.
 
 Wanneer de gegevens zijn gekopieerd naar de stations, wordt het station door de service met BitLocker versleuteld voordat het naar u wordt verzonden. De versleutelings sleutel wordt u via de Azure Portal verschaft. Het station moet worden ontgrendeld met het hulp programma WAImporExport met behulp van de-sleutel.
 

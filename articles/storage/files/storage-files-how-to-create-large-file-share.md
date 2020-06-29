@@ -3,16 +3,16 @@ title: Grote bestands shares inschakelen en maken-Azure Files
 description: In dit artikel leert u hoe u grote bestands shares inschakelt en maakt.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 16a183776bebad2fd365c3182ae64ea54befe41d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219097"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510732"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Grote bestands shares inschakelen en maken
 
@@ -21,8 +21,8 @@ Wanneer u grote bestands shares inschakelt voor uw opslag account, kunnen uw bes
 ## <a name="prerequisites"></a>Vereisten
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
 ## <a name="restrictions"></a>Beperkingen
 
@@ -35,8 +35,8 @@ Het inschakelen van grote bestands shares voor een account is een onomkeerbaar p
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer in het Azure Portal **alle services**. 
-1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, worden de lijst filters op basis van uw invoer. Selecteer **Opslagaccounts**.
+1. Selecteer in de Azure-portal de optie **Alle services**. 
+1. Voer **opslag accounts**in de lijst met resources in. Terwijl u typt, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Opslagaccounts**.
 1. Selecteer **toevoegen**in het venster **opslag accounts** dat wordt weer gegeven.
 1. Selecteer het abonnement dat u gaat gebruiken om het opslag account te maken.
 1. Selecteer **Nieuwe maken** onder het veld **Resourcegroep**. Voer een naam in voor de nieuwe resource groep.
@@ -132,7 +132,7 @@ Het maken van een grote bestands share is bijna identiek aan het maken van een s
 
 1. Selecteer in uw opslag account **Bestands shares**.
 1. Selecteer ** + bestandsshare**.
-1. Voer een naam in voor de bestands share. U kunt ook de gewenste quota grootte instellen, tot 100 TiB. Selecteer vervolgens **maken**. 
+1. Voer een naam in voor de bestands share. U kunt ook de gewenste quota grootte instellen, tot 100 TiB. Selecteer vervolgens **Maken**. 
 
 ![De Azure Portal gebruikers interface waarin de naam en quotum vakken worden weer gegeven](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 

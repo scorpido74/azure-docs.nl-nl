@@ -3,16 +3,16 @@ title: Een Azure File Sync server-eind punt toevoegen/verwijderen | Microsoft Do
 description: Meer informatie over hoe u rekening moet houden bij het plannen van een Azure Files-implementatie.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255104"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509469"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Een Azure File Sync server-eind punt toevoegen/verwijderen
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Dit doet u door uw Windows-servers te transformeren naar een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als waar ook ter wereld u nodig hebt.
@@ -54,14 +54,14 @@ Om ervoor te zorgen dat alle gelaagde bestanden worden ingetrokken voordat u het
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-Als `-Order CloudTieringPolicy` u opgeeft, worden de meest recent gewijzigde bestanden eerst ingetrokken.
+Als u opgeeft `-Order CloudTieringPolicy` , worden de meest recent gewijzigde bestanden eerst ingetrokken.
 Andere optionele, maar nuttige para meters die u kunt overwegen:
 * `-ThreadCount`Hiermee wordt bepaald hoeveel bestanden parallel kunnen worden ingetrokken.
 * `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
 * `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
 
 > [!Note]  
-> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde `Invoke-StorageSyncFileRecall` gegevens in te trekken, mislukt de cmdlet.  
+> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, `Invoke-StorageSyncFileRecall` mislukt de cmdlet.  
 
 Het server eindpunt verwijderen:
 
@@ -73,5 +73,5 @@ Het server eindpunt verwijderen:
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een server met Azure File Sync registreren of de registratie ervan opheffen](storage-sync-files-server-registration.md)
-- [Planning voor de implementatie van Azure Files Sync](storage-sync-files-planning.md)
+- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
 - [Azure File Sync bewaken](storage-sync-files-monitoring.md)

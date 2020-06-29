@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bc6659904530bfa40ee54cd55eab5eaca689069
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495756"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509214"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Meerdere HDInsight-clusters gebruiken met een Azure Data Lake Storage-account
 
@@ -44,7 +44,7 @@ In de tabel,
 - De **Service-Principal** is de service-principal van de Azure Active Directory (Aad) die aan het account is gekoppeld.
 - **FINGRP** is een gebruikers groep die in Aad is gemaakt en die gebruikers van de organisatie Financiën bevat.
 
-Zie [een Aad-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)voor instructies over het maken van een Aad-toepassing (die ook een Service-Principal maakt). Zie [groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van een gebruikers groep in Aad.
+Zie [een Aad-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)voor instructies over het maken van een Aad-toepassing (die ook een Service-Principal maakt). Zie [groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van een gebruikers groep in Aad.
 
 Enkele belang rijke punten om rekening mee te houden.
 

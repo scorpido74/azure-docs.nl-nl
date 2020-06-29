@@ -3,16 +3,16 @@ title: Problemen met Azure Files oplossen in Linux | Microsoft Docs
 description: Problemen met Azure Files oplossen in Linux
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159486"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512010"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files in Linux oplossen
 
@@ -80,7 +80,7 @@ Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfi
 
 In Linux wordt een fout bericht van de volgende strekking weer gegeven:
 
-**\<bestands naam> [machtiging geweigerd] schijf quotum overschreden**
+**\<filename>[machtiging geweigerd] Schijf quotum overschreden**
 
 ### <a name="cause"></a>Oorzaak
 
@@ -106,14 +106,14 @@ Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsof
 - Gebruik de juiste Kopieer methode:
     - Gebruik [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor elke overdracht tussen twee bestands shares.
     - Als u CP of DD met parallel gebruikt, kan de Kopieer snelheid worden verbeterd. het aantal threads is afhankelijk van de use-case en de werk belasting. De volgende voor beelden gebruiken zes: 
-    - CP-voor beeld (CP gebruikt de standaard blok grootte van het bestands systeem als segment grootte): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
+    - CP-voor beeld (CP gebruikt de standaard blok grootte van het bestands systeem als segment grootte): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - DD voor beeld (met deze opdracht wordt de segment grootte expliciet ingesteld op 1 MiB):`find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`
     - Open source-hulpprogram ma's van derden, zoals:
         - [GNU parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) : Hiermee worden bestanden gesorteerd en verpakt in partities.
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) : maakt gebruik van Fpart en een kopieer programma om meerdere instanties te starten voor het migreren van gegevens van src_dir naar dst_url.
         - [Meerdere](https://github.com/pkolano/mutil) multi-threaded CP en md5sum op basis van GNU coreutils.
-- Door de bestands grootte vooraf in te stellen, in plaats van elke schrijf bewerking uit te voeren, helpt u de Kopieer snelheid te verbeteren in scenario's waarin de bestands grootte bekend is. Als uitbrei ding van schrijf bewerkingen moet worden vermeden, kunt u een `truncate - size <size><file>` doel bestands grootte instellen met behulp van de opdracht. `dd if=<source> of=<target> bs=1M conv=notrunc`Daarna wordt een bron bestand gekopieerd zonder dat de grootte van het doel bestand herhaaldelijk moet worden bijgewerkt. U kunt bijvoorbeeld de grootte van het doel bestand instellen voor elk bestand dat u wilt kopiëren (ervan uitgaande dat er een share is gekoppeld onder/mnt/share):
+- Door de bestands grootte vooraf in te stellen, in plaats van elke schrijf bewerking uit te voeren, helpt u de Kopieer snelheid te verbeteren in scenario's waarin de bestands grootte bekend is. Als uitbrei ding van schrijf bewerkingen moet worden vermeden, kunt u een doel bestands grootte instellen met behulp van de `truncate - size <size><file>` opdracht. Daarna `dd if=<source> of=<target> bs=1M conv=notrunc` wordt een bron bestand gekopieerd zonder dat de grootte van het doel bestand herhaaldelijk moet worden bijgewerkt. U kunt bijvoorbeeld de grootte van het doel bestand instellen voor elk bestand dat u wilt kopiëren (ervan uitgaande dat er een share is gekoppeld onder/mnt/share):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
     - en vervolgens bestanden kopiëren zonder parallelle schrijf bewerkingen uit te breiden:`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
@@ -217,11 +217,11 @@ De gebruiker van het opslag account gebruiken voor het kopiëren van de bestande
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: geen toegang tot&lt;'&gt;Path ': invoer/uitvoer fout
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: geen toegang tot ' &lt; Path &gt; ': invoer/uitvoer fout
 
 Wanneer u bestanden in een Azure-bestands share probeert weer te geven met behulp van de opdracht ls, loopt de opdracht vast wanneer er bestanden worden weer gegeven. U krijgt de volgende fout:
 
-**ls: geen toegang tot&lt;'&gt;Path ': invoer/uitvoer fout**
+**ls: geen toegang tot ' &lt; Path &gt; ': invoer/uitvoer fout**
 
 
 ### <a name="solution"></a>Oplossing

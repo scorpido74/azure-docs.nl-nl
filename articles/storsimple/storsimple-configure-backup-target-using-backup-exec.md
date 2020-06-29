@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561640"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509656"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als back-updoel met Backup Exec
 
@@ -55,8 +55,8 @@ Net als bij elke opslag oplossing is een zorgvuldige evaluatie van de opslag pre
 
 StorSimple is ontworpen om opslag te bieden aan toepassingen die worden uitgevoerd op een goed gedefinieerde werkset gegevens (warme gegevens). In dit model wordt de werkset gegevens opgeslagen op de lokale lagen en wordt de resterende vrije/gekoelde/gearchiveerde set gegevens gelaagd voor de Cloud. Dit model wordt weer gegeven in de volgende afbeelding. De bijna vlakke groene lijn staat voor de gegevens die zijn opgeslagen in de lokale lagen van het StorSimple-apparaat. De rode lijn staat voor de totale hoeveelheid gegevens die is opgeslagen in de StorSimple-oplossing in alle lagen. De ruimte tussen de platte groene lijn en de exponentiële rode curve vertegenwoordigt de totale hoeveelheid gegevens die in de Cloud is opgeslagen.
 
-**Diagram van StorSimple lagen**
-![StorSimple lagen](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**StorSimple lagen** 
+ ![ Diagram van StorSimple-lagen](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 Met deze architectuur zult u merken dat StorSimple ideaal is voor gebruik als back-updoel. U kunt StorSimple gebruiken voor het volgende:
 -   Voer de meest frequente herstel bewerkingen uit vanuit de lokale werkset gegevens.
@@ -159,7 +159,7 @@ Voor het implementeren van de oplossing zijn drie stappen vereist:
 
 Elke stap wordt gedetailleerd beschreven in de volgende secties.
 
-### <a name="set-up-the-network"></a>Netwerk instellen
+### <a name="set-up-the-network"></a>Het netwerk instellen
 
 Omdat StorSimple een oplossing is die is geïntegreerd met de Azure-Cloud, is voor StorSimple een actieve en werkende verbinding met de Azure-Cloud vereist. Deze verbinding wordt gebruikt voor bewerkingen als Cloud momentopnamen, beheer en meta gegevens overdracht, en om oudere, minder toegankelijke gegevens te laag te maken naar Azure-Cloud opslag.
 
@@ -185,7 +185,7 @@ In deze sectie ziet u enkele configuratie voorbeelden. De volgende voor beelden 
 | StorSimple-implementatie taken  | Aanvullende opmerkingen |
 |---|---|
 | Implementeer uw on-premises StorSimple-apparaat. | Ondersteunde versies: update 3 en hoger. |
-| Schakel het doel van de back-up in. | Gebruik deze opdrachten om de doel modus voor back-up in of uit te scha kelen en de status op te halen. Zie [extern verbinding maken met een StorSimple-apparaat](storsimple-remote-connect.md)voor meer informatie.</br> De back-upmodus inschakelen `Set-HCSBackupApplianceMode -enable`:. </br> De back-upmodus uitschakelen `Set-HCSBackupApplianceMode -disable`:. </br> De huidige status van de instellingen van de back- `Get-HCSBackupApplianceMode`upmodus ophalen:. |
+| Schakel het doel van de back-up in. | Gebruik deze opdrachten om de doel modus voor back-up in of uit te scha kelen en de status op te halen. Zie [extern verbinding maken met een StorSimple-apparaat](storsimple-remote-connect.md)voor meer informatie.</br> De back-upmodus inschakelen: `Set-HCSBackupApplianceMode -enable` . </br> De back-upmodus uitschakelen: `Set-HCSBackupApplianceMode -disable` . </br> De huidige status van de instellingen van de back-upmodus ophalen: `Get-HCSBackupApplianceMode` . |
 | Maak een algemene volume container voor uw volume waarin de back-upgegevens worden opgeslagen. Alle gegevens in een volume container worden ontdubbeld. | StorSimple volume containers definiëren ontdubbeling domeinen.  |
 | Maak StorSimple-volumes. | Maak volumes met grootten zo dicht mogelijk bij het verwachte gebruik, omdat de volume grootte van invloed is op de duur van de Cloud momentopname. Meer informatie over het aanpassen van de grootte van een volume vindt u in het [Bewaar beleid](#retention-policies).</br> </br> Gebruik StorSimple gelaagde volumes en schakel het selectie vakje **dit volume gebruiken voor minder vaak gebruikte gegevens archivering** in. </br> Het gebruik van alleen lokaal vastgemaakte volumes wordt niet ondersteund. |
 | Maak een uniek StorSimple-back-upbeleid voor alle back-updoel volumes. | Een StorSimple-back-upbeleid definieert de volume consistentie groep. |
@@ -233,7 +233,7 @@ Stel uw oplossing in aan de hand van de richt lijnen in de volgende secties.
 -   StorSimple biedt ondersteuning voor de volledige en incrementele back-ups van Backup Exec. U wordt aangeraden geen synthetische en differentiële back-ups te gebruiken.
 -   Back-upgegevens bestanden moeten alleen gegevens voor een specifieke taak bevatten. U kunt bijvoorbeeld geen media toevoegen tussen verschillende taken.
 -   Taak verificatie uitschakelen. Indien nodig moet de verificatie worden gepland na de meest recente back-uptaak. Het is belang rijk om te begrijpen dat deze taak van invloed is op uw back-upvenster.
--   Selecteer **opslag** >  > **Details**van**de schijf** > **Eigenschappen**. Schakel **het vooraf toewijzen van schijf ruimte**uit.
+-   Selecteer **opslag**  >  Details van**de schijf**  >  **Details**  >  **Eigenschappen**. Schakel **het vooraf toewijzen van schijf ruimte**uit.
 
 Zie [de website van Veritas](https://www.veritas.com)voor de meest recente instellingen voor Backup Exec en aanbevolen procedures voor het implementeren van deze vereisten.
 
@@ -255,7 +255,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 | Bewaar periode van het back-uptype | Grootte (TiB) | GFS vermenigvuldiger\* | Totale capaciteit (TiB)  |
 |---|---|---|---|
 | Wekelijks volledig | 1 | 4  | 4 |
-| Dagelijks incrementeel | 0.5 | 20 (cyclussen van gelijk aantal weken per maand) | 12 (2 voor het extra quotum) |
+| Dagelijks incrementeel | 0,5 | 20 (cyclussen van gelijk aantal weken per maand) | 12 (2 voor het extra quotum) |
 | Volledig maandelijks | 1 | 12 | 12 |
 | Jaarlijks volledig | 1  | 10 | 10 |
 | GFS-vereiste |   | 38 |   |
@@ -267,7 +267,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
 ### <a name="to-set-up-backup-exec-storage"></a>Opslag voor Backup Exec instellen
 
-1.  **Selecteer** > in de beheer console Backup Exec opslag op**opslag** > **schijven gebaseerde opslag** > **Next**configureren.
+1.  Selecteer in de beheer console backup **exec opslag**  >  **Configure Storage**  >  **op opslag schijven gebaseerde opslag**configureren  >  **Next**.
 
     ![Backup Exec-beheer console, opslag pagina configureren](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -323,7 +323,7 @@ In de volgende procedure wordt ervan uitgegaan dat Backup Exec en de doelhost zi
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple-volumes toewijzen aan een Backup Exec-back-uptaak
 
-1.   > Selecteer > back **-up**van back **-up****naar schijf**in de beheer console van Backup Exec.
+1.  Selecteer back-up van back **-up**  >  **Backup**  >  **naar schijf**in de beheer console van Backup Exec.
 
     ![Backup Exec-beheer console, host, back-up en back-up naar schijf selecteren](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
@@ -368,7 +368,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>Back-upconfiguratie en capaciteits vereisten
 
-| Type back-up en retentie | Geconfigureerde opslag | Grootte (TiB) | GFS vermenigvuldiger | Totale capaciteit\* (Tib) |
+| Type back-up en retentie | Geconfigureerde opslag | Grootte (TiB) | GFS vermenigvuldiger | Totale capaciteit \* (Tib) |
 |---|---|---|---|---|
 | Week 1 (volledig en incrementeel) |Lokale schijf (korte termijn)| 1 | 1 | 1 |
 | StorSimple weken 2-4 |StorSimple-schijf (lange termijn) | 1 | 4 | 4 |
@@ -381,7 +381,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Voorbeeld schema voor GFS: GFS draai hoek per week, maandelijks en jaarlijks schema
 
-| Wekelijks | Volledig | Incrementele dag 1 | Incrementele dag 2 | Incrementele dag 3 | Incrementele dag 4 | Incrementele dag 5 |
+| Week | Volledig | Incrementele dag 1 | Incrementele dag 2 | Incrementele dag 3 | Incrementele dag 4 | Incrementele dag 5 |
 |---|---|---|---|---|---|---|
 | Week 1 | Lokaal RAID-volume  | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume |
 | Week 2 | StorSimple weken 2-4 |   |   |   |   |   |
@@ -395,11 +395,11 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>StorSimple-volumes toewijzen aan een Backup Exec-archief en een duplicatie taak
 
-1.  Klik in de beheer console van Backup Exec met de rechter muisknop op de taak die u wilt archiveren naar een StorSimple-volume en selecteer vervolgens **back-up van definitie-eigenschappen** > **bewerken**.
+1.  Klik in de beheer console van Backup Exec met de rechter muisknop op de taak die u wilt archiveren naar een StorSimple-volume en selecteer vervolgens **back-up van definitie-eigenschappen**  >  **bewerken**.
 
     ![Backup Exec-beheer console, tabblad Back-updefinitie eigenschappen](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  Selecteer **fase** > **duplicaat toevoegen voor schijf** > **bewerking**.
+2.  Selecteer **fase**  >  **duplicaat toevoegen voor schijf**  >  **bewerking**.
 
     ![Backup Exec-beheer console, fase toevoegen](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -449,8 +449,8 @@ In de volgende sectie wordt beschreven hoe u een kort script maakt voor het star
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Een Cloud momentopname starten of verwijderen
 
 1. [Installeer Azure PowerShell](/powershell/azure/overview).
-2. Down load en stel het Power shell-script [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) .
-3. Op de server waarop het script wordt uitgevoerd, voert u Power shell uit als beheerder. Zorg ervoor dat u het script uitvoert `-WhatIf $true` om te zien welke wijzigingen door het script worden aangebracht. Zodra de validatie is voltooid, geeft `-WhatIf $false`u door. Voer de onderstaande opdracht uit:
+2. Down load en Setup [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) Power shell-script.
+3. Op de server waarop het script wordt uitgevoerd, voert u Power shell uit als beheerder. Zorg ervoor dat u het script uitvoert `-WhatIf $true` om te zien welke wijzigingen door het script worden aangebracht. Zodra de validatie is voltooid, geeft u door `-WhatIf $false` . Voer de onderstaande opdracht uit:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
@@ -472,13 +472,13 @@ Herstellen vanaf een StorSimple-apparaat werkt zoals herstellen vanuit elk appar
 
 Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
 
-| Scenario | Impact | Herstellen | Opmerkingen |
+| Scenario | Impact | Herstellen | Notities |
 |---|---|---|---|
 | StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexeren en catalogiseren kan ertoe leiden dat alle back-upsets worden gescand en worden opgehaald uit de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
 | Backup Exec-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit, zoals beschreven in [een hand matige back-up en herstel van de data base Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | U moet de Backup Exec-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde data base van Backup Exec niet synchroon is met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

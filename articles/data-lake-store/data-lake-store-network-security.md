@@ -8,17 +8,17 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471633414603ede123382b46b549acb2fd4fd98e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60612537"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85508704"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integratie van virtuele netwerken voor Azure Data Lake Storage Gen1
 
@@ -81,7 +81,7 @@ Een aantal beschikbare opties zijn:
   
 - Bestands- en mapgegevens in uw Data Lake Storage Gen1-account met virtuele-netwerkfunctionaliteit zijn niet toegankelijk vanuit de portal. Deze beperking omvat toegang vanuit een VM in het virtuele netwerk en activiteiten zoals het gebruik van Data Explorer. Accountbeheeractiviteiten blijven werken. Bestands- en mapgegevens in uw Data Lake Storage-account met virtuele-netwerkfunctionaliteit zijn toegankelijk via alle niet-portalresources. Deze resources omvatten bijvoorbeeld SDK-toegang, PowerShell-scripts en andere Azure-services als deze niet afkomstig zijn uit de portal. 
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>Stap 1: uw virtuele netwerk configureren voor het gebruik van een Azure AD-service-eindpunt
 

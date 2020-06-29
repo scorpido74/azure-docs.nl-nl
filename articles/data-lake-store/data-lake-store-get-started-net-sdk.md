@@ -3,20 +3,20 @@ title: Een Azure Data Lake Storage Gen1-account beheren met .NET
 description: Meer informatie over het gebruik van de .NET SDK voor Azure Data Lake Storage Gen1-account beheer bewerkingen.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7ea2b7fffc4edff6cae895e08b955d2e21ff5f2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: c163629f4c74a812ee7dc3da7391148a92ae6435
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692123"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511169"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van .NET SDK
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [REST-API](data-lake-store-get-started-rest-api.md)
+> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
@@ -33,7 +33,7 @@ Zie [bestandssysteem bewerkingen op Data Lake Storage gen1 met behulp van .NET S
 ## <a name="create-a-net-application"></a>Een .NET-toepassing maken
 1. Selecteer in Visual Studio het menu **bestand** , **Nieuw**en vervolgens **project**.
 2. Kies **console-app (.NET Framework)** en selecteer **volgende**.
-3. Voer in **project naam**, `CreateADLApplication`ENTER en selecteer vervolgens **maken**.
+3. Voer in **project naam**, Enter `CreateADLApplication` en selecteer vervolgens **maken**.
 
 4. Voeg de NuGet-pakketten toe aan het project.
 

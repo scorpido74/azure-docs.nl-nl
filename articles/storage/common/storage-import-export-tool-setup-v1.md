@@ -4,16 +4,16 @@ description: Meer informatie over het instellen van het hulp programma voor het 
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd74caf391fcf1538bf920f41638b23672b47015
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978422"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512219"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren instellen
 Het hulp programma Microsoft Azure Import/Export is het hulp programma voor het voorbereiden en repareren van stations dat u kunt gebruiken met de Microsoft Azure Import/Export-service. U kunt het hulp programma gebruiken voor de volgende functies:  
@@ -27,7 +27,7 @@ Het hulp programma Microsoft Azure Import/Export is het hulp programma voor het 
 ## <a name="prerequisites"></a>Vereisten  
 Als u stations voor een import taak voorbereidt, moet aan de volgende vereisten worden voldaan:  
 
--   U moet een actief Azure-abonnement hebben.  
+-   U hebt een actief Azure-abonnement nodig.  
 
 -   Uw abonnement moet een opslag account bevatten met voldoende beschik bare ruimte voor het opslaan van de bestanden die u gaat importeren.  
 
@@ -60,19 +60,19 @@ Als u probeert een import bewerking te herstellen die gedeeltelijk is mislukt, h
 ## <a name="installing-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren installeren  
  Het Azure-hulp programma voor importeren/exporteren bestaat uit de volgende bestanden:  
 
-- WAImportExport. exe  
+- WAImportExport.exe  
 
-- WAImportExport. exe. config  
+- WAImportExport.exe.config  
 
-- WAImportExportCore. dll  
+- WAImportExportCore.dll  
 
-- WAImportExportRepair. dll  
+- WAImportExportRepair.dll  
 
-- Micro soft. WindowsAzure. storage. dll  
+- Microsoft.WindowsAzure.Storage.dll  
 
-- Hddid. dll  
+- Hddid.dll  
 
-  Kopieer deze bestanden naar een werkmap, bijvoorbeeld `c:\WAImportExport`. Open vervolgens een opdracht regel venster in de beheerders modus en stel de bovenstaande map in als huidige map.  
+  Kopieer deze bestanden naar een werkmap, bijvoorbeeld `c:\WAImportExport` . Open vervolgens een opdracht regel venster in de beheerders modus en stel de bovenstaande map in als huidige map.  
 
   Als u de Help-informatie voor de opdracht wilt uitvoeren, voert u het hulp programma zonder para meters uit:  
 

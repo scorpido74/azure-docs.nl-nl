@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693172"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118913"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met de Azure Cosmos DB Table-API en Azure Table Storage met behulp van de .NET-SDK
 
@@ -67,7 +67,7 @@ Volg deze stappen voor het verkrijgen van het NuGet-pakket:
 
 1. Open het deelvenster **Verbindingsreeks** of **Toegangssleutels**. Gebruik de kopieerknop aan de rechterkant van het venster om de **PRIMARY CONNECTION STRING** te kopiëren.
 
-   ![De PRIMARY CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="De PRIMARY CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren":::
    
 1. Om uw verbindingsreeks te configureren, klikt u in Visual Studio met de rechtermuisknop op uw project **CosmosTableSamples**.
 
@@ -422,7 +422,7 @@ namespace CosmosTableSamples
 
 Bouw nu de oplossing en druk op F5 om het project uit te voeren. Wanneer het project wordt uitgevoerd, ziet u de volgende uitvoer in de opdrachtprompt:
 
-![Uitvoer van opdrachtprompt](./media/tutorial-develop-table-standard/output-from-sample.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Uitvoer van opdrachtprompt":::
 
 Als er een foutbericht wordt weergegeven met de tekst dat het Settings.json-bestand niet gevonden is bij het uitvoeren van het project, kunt u dit oplossen door de volgende XML-vermelding toe te voegen aan de projectinstellingen. Klik met de rechtermuisknop op CosmosTableSamples, selecteer Bewerken CosmosTableSamples.csproj en voeg de volgende itemGroup toe: 
 
@@ -435,7 +435,7 @@ Als er een foutbericht wordt weergegeven met de tekst dat het Settings.json-best
 ```
 U kunt zich nu aanmelden bij de Azure-portal en verifiëren dat de gegevens bestaan in de tabel. 
 
-![Resultaten in de portal](./media/tutorial-develop-table-standard/results-in-portal.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Resultaten in de portal":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

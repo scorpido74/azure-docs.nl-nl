@@ -3,16 +3,16 @@ title: Gids voor het oplossen van problemen met Azure Files
 description: Bekende prestatie problemen met Azure-bestands shares en bijbehorende tijdelijke oplossingen.
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598082"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511959"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -113,7 +113,7 @@ Geen ondersteuning voor Directory-leases.
 ### <a name="workaround"></a>Tijdelijke oplossing
 
 - Vermijd zo min mogelijk overmatige opening/afsluit ingang in dezelfde map binnen een korte periode.
-- Voor Linux Vm's verhoogt u de time-out voor de cachemap door **actimeo\<= SEC>** op te geven als een koppelings optie. Het is standaard één seconde, zodat u een grotere waarde als drie of vijf kunt helpen.
+- Voor Linux Vm's verhoogt u de time-out voor de cachemap door **actimeo \<sec> =** als een koppelings optie op te geven. Het is standaard één seconde, zodat u een grotere waarde als drie of vijf kunt helpen.
 - Voor virtuele Linux-machines moet u de kernel upgraden naar 4,20 of hoger.
 
 ## <a name="low-iops-on-centosrhel"></a>Lage IOPS op CentOS/RHEL
@@ -187,7 +187,7 @@ Hoger dan de verwachte latentie die toegang heeft tot Azure Files voor intensiev
 6. Ga op de Blade **signaal logica configureren** naar de dimensie **antwoord type** , klik op de vervolg keuzelijst **dimensie waarden** en selecteer **SuccessWithThrottling** (voor SMB) of **ClientThrottlingError** (voor rest). 
 
   > [!NOTE]
-  > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt.  Als u de dimensie waarde wilt toevoegen, **+** klikt u op de naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError**, klikt u op **OK** en herhaalt u stap #6.
+  > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt.  Als u de dimensie waarde wilt toevoegen, klikt u op de **+** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError**, klikt u op **OK** en herhaalt u stap #6.
 
 7. Ga naar de dimensie voor de **Bestands share** , klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands shares waarop u een waarschuwing wilt ontvangen. 
 

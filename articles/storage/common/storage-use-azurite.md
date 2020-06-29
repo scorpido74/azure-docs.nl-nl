@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.topic: how-to
+ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195944"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85512140"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>De Azurite-emulator gebruiken voor het ontwikkelen en testen van lokale Azure Storage (preview-versie)
 
@@ -70,7 +70,7 @@ De volgende instellingen worden ondersteund:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
 
-Deze installatie methode vereist dat [node. js versie 8,0 of hoger](https://nodejs.org) is geïnstalleerd. Node Package Manager (NPM) is het hulp programma pakket beheer dat bij elke node. js-installatie is opgenomen. Na de installatie van node. js voert u de volgende `npm` opdracht uit om Azurite te installeren.
+Voor deze installatie methode moet [Node.js versie 8,0 of hoger](https://nodejs.org) zijn geïnstalleerd. Node Package Manager (NPM) is het hulp programma pakket beheer dat bij elke Node.js-installatie is opgenomen. Nadat u Node.js hebt geïnstalleerd, voert `npm` u de volgende opdracht uit om Azurite te installeren.
 
 ```console
 npm install -g azurite
@@ -355,7 +355,7 @@ Met Azurite worden aangepaste account namen en sleutels standaard elke minuut ve
 
 ### <a name="connection-strings"></a>Verbindingsreeksen
 
-De eenvoudigste manier om verbinding te maken met Azurite vanuit uw toepassing is het configureren van een connection string in het configuratie bestand van uw toepassing dat verwijst naar de snelkoppeling *UseDevelopmentStorage = True*. Hier volgt een voor beeld van een connection string in een *app. config* -bestand:
+De eenvoudigste manier om verbinding te maken met Azurite vanuit uw toepassing is het configureren van een connection string in het configuratie bestand van uw toepassing dat verwijst naar de snelkoppeling *UseDevelopmentStorage = True*. Hier volgt een voor beeld van een connection string in een *app.config* -bestand:
 
 ```xml
 <appSettings>
@@ -464,7 +464,7 @@ Maak in Storage Explorer verbinding met Azurite door de volgende stappen uit te 
  1. Selecteer het pictogram **accounts beheren**
  1. Selecteer **een account toevoegen**
  1. Selecteer **koppelen aan een lokale emulator**
- 1. Selecteer **volgende**
+ 1. Selecteer **Volgende**
  1. Bewerk het veld **weergave naam** op een naam van uw keuze
  1. Selecteer **volgende** opnieuw
  1. **Verbinding maken** selecteren
@@ -490,10 +490,10 @@ Voer de volgende stappen uit om Azurite HTTPS toe te voegen aan Storage Explorer
 1. **Lokale & gekoppeld** selecteren
 1. Klik met de rechter muisknop op **opslag accounts** en selecteer **verbinding maken met Azure Storage**.
 1. Selecteer **een Connection String gebruiken**
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer een waarde in het veld **weergave naam** in.
 1. Voer de [https-connection string](#https-connection-strings) in uit de vorige sectie van dit document
-1. Selecteer **volgende**
+1. Selecteer **Volgende**
 1. **Verbinding maken** selecteren
 
 ## <a name="workspace-structure"></a>Werkruimte structuur

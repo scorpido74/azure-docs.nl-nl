@@ -3,12 +3,12 @@ title: Fysieke servers beoordelen voor migratie naar Azure met Azure Migrate-ser
 description: 'Beschrijft hoe u met behulp van de service Azure Migrate: Serverevaluatie on-premises fysieke servers kunt detecteren en evalueren voor migratie naar Azure.'
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331794"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052205"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Fysieke servers evalueren met Azure Migrate: serverevaluatie
 
@@ -101,7 +101,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 2. Gebruik de volgende opdracht om de hash voor het zip-bestand te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Voorbeeld van gebruik voor openbare cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - Voorbeeld van gebruik voor overheidscloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+    - Voorbeeld van gebruik voor overheidscloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
 3.  Controleer de meest recente versie van het apparaat en de hashwaarden:
     - Voor de openbare cloud:
 
@@ -180,7 +180,7 @@ Maak nu verbinding vanaf het apparaat met de fysieke servers die moeten worden g
 
 1. Klik op **Referenties toevoegen** om de accountreferenties op te geven die door het apparaat worden gebruikt om servers te detecteren.  
 2. Geef het **besturingssysteem**, een beschrijvende naam voor de referenties en de gebruikersnaam en het wachtwoord op. Klik vervolgens op **Toevoegen**.
-U kunt voor Windows-en Linux-servers één set referenties toevoegen.
+U kunt voor Windows-en Linux-servers meerdere referenties toevoegen.
 4. Klik op **Server toevoegen** en geef serverdetails-FQDN/IP-adres en beschrijvende naam van referenties (één vermelding per rij) op om verbinding te maken met de server.
 3. Klik op **Valideren**. Na validatie wordt de lijst met servers weergegeven die kunnen worden gedetecteerd.
     - Als de validatie mislukt voor een server, raadpleegt u de fout door te klikken op het pictogram in de kolom **Status**. Los problemen op en valideer opnieuw.

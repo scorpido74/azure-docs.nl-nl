@@ -3,20 +3,20 @@ title: Een Azure Data Lake Storage Gen1-account beheren met REST
 description: Gebruik de REST API WebHDFS om account beheer bewerkingen uit te voeren op een Azure Data Lake Storage Gen1-account.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cc3f848dc0718e1d721cecbfeb53ca034580ae81
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692077"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509250"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [REST-API](data-lake-store-get-started-rest-api.md)
+> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
 >
@@ -38,7 +38,7 @@ Er zijn twee benaderingen voor verificatie met Azure Active Directory.
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1-account maken
 Deze bewerking is gebaseerd op de REST-API-aanroep die [hier](https://docs.microsoft.com/rest/api/datalakestore/accounts/create) wordt gedefinieerd.
 
-Gebruik de volgende cURL-opdracht: Vervang ** \<yourstoragegen1name>** door de naam van uw data Lake Storage gen1.
+Gebruik de volgende cURL-opdracht: Vervang door **\<yourstoragegen1name>** de naam van uw data Lake Storage gen1.
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
@@ -55,7 +55,7 @@ Vervang \<`REDACTED`\> in de bovenstaande opdracht door het verificatietoken dat
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1 account verwijderen
 Deze bewerking is gebaseerd op de REST-API-aanroep die [hier](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete) wordt gedefinieerd.
 
-Gebruik de volgende krul opdracht om een Data Lake Storage Gen1 account te verwijderen. Vervang ** \<yourstoragegen1name>** door de naam van uw data Lake Storage gen1-account.
+Gebruik de volgende krul opdracht om een Data Lake Storage Gen1 account te verwijderen. Vervang door **\<yourstoragegen1name>** de naam van uw data Lake Storage gen1-account.
 
     curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
 

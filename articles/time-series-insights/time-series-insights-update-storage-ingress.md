@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca5ba8d7b2d78440401e29344361538c3650ba48
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d3bfb589ec4c152b136e8e1f432864b719c97d58
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779167"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509316"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevens opslag en inkomend verkeer in Azure Time Series Insights preview
 
@@ -60,8 +60,13 @@ De ondersteunde gegevens typen zijn:
 |---|---|
 | **booleaans** | Een gegevens type met een van de twee statussen: `true` of `false` . |
 | **dateTime** | Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. Uitgedrukt in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) -indeling. |
+| **long** | Een ondertekend 64-bits geheel getal  |
 | **double** | Een Double-Precision 64-bits [IEEE 754](https://ieeexplore.ieee.org/document/8766229) drijvende komma. |
-| **tekenreeks** | Tekst waarden, bestaande uit Unicode-tekens.          |
+| **tekenreeksexpressie** | Tekst waarden, bestaande uit Unicode-tekens.          |
+
+> [!IMPORTANT]
+>
+> * De omgeving van de TSI is sterk getypeerd. Als apparaten of Tags zowel integrale als niet-integrale gegevens verzenden, worden de waarden van de apparaatinstellingen opgeslagen in twee gescheiden en lange kolommen en moet de [functie Coalesce ()](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) worden gebruikt bij het maken van API-aanroepen en het definiëren van variabele expressies van uw tijd reeks model.
 
 #### <a name="objects-and-arrays"></a>Objecten en matrices
 
@@ -232,9 +237,11 @@ In Time Series Insights preview worden kopieën van uw gegevens als volgt opgesl
 
 * De tweede, opnieuw gepartitioneerde kopie wordt gegroepeerd op Time Series-Id's en bevindt zich in de `PT=TsId` map:
 
-  `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=TsId/<TSI_INTERNAL_STRUCTURE>/<TSI_INTERNAL_NAME>.parquet`
 
-In beide gevallen komt de eigenschap time van het Parquet-bestand overeen met de aanmaak tijd van de blob. De gegevens in de `PT=Time` map blijven behouden zonder wijzigingen zodra ze naar het bestand zijn geschreven. Gegevens in de `PT=TsId` map worden gedurende een bepaalde periode geoptimaliseerd en zijn niet statisch.
+Tijds tempel in de blobs namen in de `PT=Time` map komt overeen met de aankomst tijd van de gegevens naar de TSI (niet de tijds tempel van de gebeurtenissen).
+
+Gegevens in de `PT=TsId` map worden gedurende een bepaalde periode geoptimaliseerd en zijn niet statisch. Tijdens het opnieuw partitioneren zijn er mogelijk dezelfde gebeurtenissen aanwezig in meerdere blobs. De naam van de blobs kan ook in de toekomst worden gewijzigd.
 
 > [!NOTE]
 >

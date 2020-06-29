@@ -3,15 +3,15 @@ title: Prestaties afstemmen-Hive op Azure Data Lake Storage Gen1
 description: Richt lijnen voor het afstemmen van prestaties voor Hive op HdInsight en Azure Data Lake Storage Gen1.
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 819e158ce2613441efdf2177d50fc8e7989bf68f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690526"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510931"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties van Hive op HDInsight en Azure Data Lake Storage Gen1
 
@@ -35,7 +35,7 @@ Dit zijn de belangrijkste instellingen die u kunt afstemmen voor betere Data Lak
 
 * **TEZ. grouping. max-size** : maximum grootte van elke Mapper
 
-* **Hive. exec. reminderr. bytes. per. smallere** -grootte van elke verminderr
+* **hive.exec. reducr. bytes. per. versmaller** : grootte van elke verminderr
 
 **component. TEZ. container. size** : de grootte van de container bepaalt hoeveel geheugen beschikbaar is voor elke taak.  Dit is de belangrijkste invoer voor het beheren van de gelijktijdigheid in Hive.  
 
@@ -43,11 +43,11 @@ Dit zijn de belangrijkste instellingen die u kunt afstemmen voor betere Data Lak
 
 **TEZ. grouping. max-size** – met de para meter kunt u de maximale grootte van elke Mapper instellen.  Als het aantal mappers dat TEZ kiest groter is dan de waarde van deze para meter, gebruikt TEZ de hier ingestelde waarde.
 
-**Hive. exec. resmaller. bytes. per. versmaller** : met deze para meter wordt de grootte van elke verminderr ingesteld.  Standaard is elke reducer 256 MB.  
+**hive.exec. reducr. bytes. per. versmaller** : met deze para meter wordt de grootte van elke verminderr ingesteld.  Standaard is elke reducer 256 MB.  
 
-## <a name="guidance"></a>Richtlijnen
+## <a name="guidance"></a>Hulp
 
-**Hive. exec. reminderr. bytes. per. versmaller instellen** : de standaard waarde werkt goed als de gegevens niet zijn gecomprimeerd.  Voor gegevens die zijn gecomprimeerd, moet u de grootte van de reducer verkleinen.  
+**Stel hive.exec. reducr. bytes. per. versmaller** : de standaard waarde werkt goed als de gegevens niet zijn gecomprimeerd.  Voor gegevens die zijn gecomprimeerd, moet u de grootte van de reducer verkleinen.  
 
 **Component. TEZ. container. size instellen** : in elk knoop punt wordt het geheugen opgegeven door garen. nodemanager. resource. Memory-MB en moet standaard correct worden ingesteld op het HDI-cluster.  Zie dit [bericht](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom)voor meer informatie over het instellen van het juiste geheugen in garens.
 
@@ -77,7 +77,7 @@ Als u wilt controleren of u een beperking krijgt, moet u de logboek registratie 
 
 1. Plaats de volgende eigenschap in de log4j-eigenschappen in Hive-configuratie. U kunt dit doen vanuit de weer gave Ambari: log4j. logger. com. Microsoft. Azure. datalake. Store = DEBUG start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
 
-2. Als u een beperking krijgt, ziet u de HTTP 429-fout code in het Hive-logboek bestand. Het Hive-logboek bestand bevindt zich in/tmp/&lt;User&gt;/Hive.log
+2. Als u een beperking krijgt, ziet u de HTTP 429-fout code in het Hive-logboek bestand. Het Hive-logboek bestand bevindt zich in/tmp/ &lt; User &gt; /Hive.log
 
 ## <a name="further-information-on-hive-tuning"></a>Meer informatie over Hive-afstemming
 

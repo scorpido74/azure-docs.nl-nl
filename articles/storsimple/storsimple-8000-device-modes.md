@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: e55964beff48df6ce24d99c01975d39b662f1612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b0ea489c1d70ab86d677aad666ea6728fa76b4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60576086"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511620"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>De modus apparaat op uw StorSimple-apparaat wijzigen
 
@@ -78,7 +78,7 @@ U kunt het StorSimple-apparaat in de onderhouds modus plaatsen (van de normale m
 #### <a name="to-enter-maintenance-mode"></a>Onderhouds modus activeren
 
 1. Meld u aan bij de seriële console van het apparaat door de stappen in [putty gebruiken te volgen om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is: `Password1`.
+2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**. Geef het **beheerders wachtwoord**voor het apparaat op wanneer u hierom wordt gevraagd. Het standaard wachtwoord is: `Password1` .
 3. Typ bij de opdracht prompt 
    
     `Enter-HcsMaintenanceMode`
@@ -122,7 +122,7 @@ U kunt het StorSimple-apparaat in de onderhouds modus plaatsen (van de normale m
 #### <a name="to-exit-maintenance-mode"></a>Onderhouds modus afsluiten
 
 1. Meld u aan bij de seriële console van het apparaat. Controleer in het banner bericht dat het apparaat zich in de onderhouds modus bevindt.
-2. Typ het volgende na de opdrachtprompt:
+2. Typ in de opdrachtprompt:
    
     `Exit-HcsMaintenanceMode`
 3. Er verschijnt een waarschuwings bericht en er wordt een bevestigings bericht weer gegeven. Typ **Y** om de onderhouds modus af te sluiten.

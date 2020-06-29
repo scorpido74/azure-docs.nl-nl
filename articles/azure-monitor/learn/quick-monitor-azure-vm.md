@@ -1,62 +1,62 @@
 ---
 title: Een Azure-resource bewaken met Azure Monitor
-description: Meer informatie over het verzamelen en analyseren van gegevens voor een Azure-resource in Azure Monitor.
+description: Krijg meer informatie over het verzamelen en analyseren van gegevens voor een Azure-resource in Azure Monitor.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 12616fbc80468d35ebb8b0bc5cd12bfd5871e788
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79503655"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805102"
 ---
-# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Snelstartgids: een virtuele machine van Azure bewaken met Azure Monitor
-[Azure monitor](../overview.md) begint met het verzamelen van gegevens van virtuele machines van Azure op het moment dat ze worden gemaakt. In deze Quick Start maakt u een beknopt overzicht van de gegevens die automatisch worden verzameld voor een virtuele Azure-machine en hoe u deze kunt weer geven in de Azure Portal. Vervolgens schakelt u [Azure monitor voor VM's](../insights/vminsights-overview.md) in voor uw VM, waarmee agents op de VM gegevens van het gast besturingssysteem kunnen verzamelen en analyseren, inclusief processen en hun afhankelijkheden.
+# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Quickstart: Een virtuele Azure-machine bewaken met Azure Monitor
+[Azure Monitor](../overview.md) begint met het verzamelen van gegevens van virtuele Azure-machines op het moment dat ze worden gemaakt. In deze quickstart krijgt u een beknopt overzicht van de gegevens die automatisch worden verzameld voor een Azure-VM, en ziet u hoe u deze kunt weergeven in de Azure-portal. Vervolgens schakelt u [Azure Monitor voor VM's](../insights/vminsights-overview.md) in voor de VM. Hierdoor worden agents op de VM in staat gesteld gegevens van het gastbesturingssysteem te verzamelen en te analyseren, waaronder processen en de bijbehorende afhankelijkheden.
 
-In deze Quick Start wordt ervan uitgegaan dat u een bestaande Azure-VM hebt. Als dat niet het geval is, kunt u een [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) maken of een virtuele [Linux-machine](../../virtual-machines/linux/quick-create-cli.md) maken op basis van onze VM-Quick starts.
+In deze Quick Start wordt ervan uitgegaan dat u een bestaande Azure-VM hebt. Als dit niet het geval is, kunt u een [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) of [Linux-VM](../../virtual-machines/linux/quick-create-cli.md) maken door de stappen te volgen in de VM-quickstarts.
 
-Zie [virtuele machines van Azure bewaken met Azure monitor](../insights/monitor-vm-azure.md)voor meer gedetailleerde beschrijvingen van de bewakings gegevens die worden verzameld van Azure-resources.
+Raadpleeg [Virtuele Azure-machines bewaken met Azure Monitor](../insights/monitor-vm-azure.md) voor meer gedetailleerde beschrijvingen van het bewaken van gegevens die zijn verzameld uit Azure-resources.
 
 
-## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Voltooi de bewaken van een Azure resource Quick Start.
-Voltooi de [controle van een Azure-resource met Azure monitor](quick-monitor-azure-resource.md) om de overzichts pagina, het activiteiten logboek en de metrische gegevens voor een virtuele machine in uw abonnement weer te geven. Azure-Vm's verzamelen dezelfde bewakings gegevens als elke andere Azure-resource, maar dit is alleen voor de host-VM. De rest van deze Snelstartgids is gericht op het bewaken van het gast besturingssysteem en de werk belastingen.
+## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Voltooi de quickstart Een Azure-resource bewaken.
+Voltooi [Een Azure-resource bewaken met Azure Monitor](quick-monitor-azure-resource.md) om de overzichtspagina, het activiteitenlogboek, en de metrische gegevens voor een VM in uw abonnement te bekijken. Azure-VM's verzamelen dezelfde bewakingsgegevens als elke andere Azure-resource, maar dit geldt alleen voor de host-VM. In de rest van deze quickstart ligt de focus op het bewaken van het gastbesturingssysteem en de bijbehorende workloads.
 
 
 ## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor voor VM's inschakelen
-Terwijl metrische gegevens en activiteiten logboeken voor de host-VM worden verzameld, hebt u een agent en een configuratie nodig voor het verzamelen en analyseren van bewakings gegevens van het gast besturingssysteem en de werk belastingen. Azure Monitor voor VM's installeert deze agents en biedt extra krachtige functies voor het bewaken van uw virtuele machines.
+De metrische gegevens en activiteitenlogboeken worden verzameld voor de host-VM, maar u hebt een agent en een configuratie nodig om bewakingsgegevens van het gastbesturingssysteem en de bijbehorende workloads te verzamelen en te analyseren. Met Azure Monitor voor VM's worden deze agents geïnstalleerd, en krijgt u de beschikking over krachtige extra functies voor het bewaken van uw virtuele machines.
 
 1. Ga naar het menu voor de virtuele machine.
-2. Klik op **Ga naar inzichten** in de tegel op de pagina **overzicht** of klik op **inzichten** in het menu **bewaking** .
+2. Klik in de tegel op de **Overzichtspagina** op **Ga naar Insights**, of klik in het menu **Bewaking** op **Insights**.
 
-    ![Overzichts pagina](media/quick-monitor-azure-vm/overview-insights.png)
+    ![Overzichtspagina](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. Als Azure Monitor voor VM's nog niet is ingeschakeld voor de virtuele machine, klikt u op **inschakelen**. 
+3. Als Azure Monitor voor VM's nog niet is ingeschakeld voor de virtuele machine, klikt u op **Inschakelen**. 
 
-    ![Inzichten inschakelen](media/quick-monitor-azure-vm/enable-insights.png)
+    ![Insights inschakelen](media/quick-monitor-azure-vm/enable-insights.png)
 
-4. Als de virtuele machine niet al aan een Log Analytics-werk ruimte is gekoppeld, wordt u gevraagd een bestaande werk ruimte te selecteren of een nieuwe te maken. Selecteer de standaard waarde. Dit is een werk ruimte met een unieke naam in dezelfde regio als de virtuele machine.
+4. Als de virtuele machine nog niet is gekoppeld aan een Log Analytics-werkruimte, wordt u gevraagd om een bestaande werkruimte te selecteren of een nieuwe werkruimte te maken. Selecteer de standaardwaarde. Dit is een werkruimte met een unieke naam in dezelfde regio als de virtuele machine.
 
     ![Werkruimte selecteren](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. Het duurt enkele minuten voordat uitbrei dingen zijn ingeschakeld en de agents op uw virtuele machine zijn geïnstalleerd. Wanneer het is voltooid, krijgt u een bericht dat inzichten zijn geïmplementeerd. Klik op **Azure monitor** om Azure monitor voor VM's te openen.
+5. Onboarding duurt enkele minuten, omdat extensies moeten worden ingeschakeld en agents moeten worden geïnstalleerd op de virtuele machine. Wanneer dit is voltooid, ontvangt u een bericht dat de implementatie van Insights is geslaagd. Klik op **Azure Monitor** om Azure Monitor voor VM's te openen.
 
     ![Azure Monitor openen](media/quick-monitor-azure-vm/azure-monitor.png)
 
-6. U ziet uw VM met andere virtuele machines in uw abonnement die onboarded zijn. Selecteer het tabblad **niet bewaakt** als u virtuele machines in uw abonnement wilt weer geven waarvoor geen onboarding is uitgevoerd.
+6. U ziet de VM met eventuele andere VM’s in uw abonnement waarvoor onboarding is uitgevoerd. Selecteer het tabblad **Niet bewaakt** als u virtuele machines in uw abonnement wilt weergeven waarvoor onboarding niet is uitgevoerd.
 
     ![Aan de slag](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Werkruimte configureren
-Wanneer u een nieuwe Log Analytics-werk ruimte maakt, moet deze worden geconfigureerd voor het verzamelen van Logboeken. Deze configuratie hoeft slechts eenmaal te worden uitgevoerd, omdat de configuratie wordt verzonden naar virtuele machines waarmee verbinding wordt gemaakt.
+Wanneer u een nieuwe Log Analytics-werkruimte maakt, moet deze worden geconfigureerd om logboeken te verzamelen. Deze configuratie hoeft slechts eenmaal te worden uitgevoerd, omdat de configuratie wordt verzonden naar alle virtuele machines waarmee verbinding wordt gemaakt.
 
-1. Selecteer **werkruimte configuratie** en selecteer vervolgens uw werk ruimte.
+1. Selecteer **Werkruimteconfiguratie** en selecteer vervolgens uw werkruimte.
 
-2. **Geavanceerde instellingen** selecteren
+2. Selecteer **Geavanceerde instellingen**
 
     ![Geavanceerde instellingen van Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
@@ -65,7 +65,7 @@ Wanneer u een nieuwe Log Analytics-werk ruimte maakt, moet deze worden geconfigu
 
 2. Selecteer **Gegevens** en selecteer vervolgens **Windows-gebeurtenislogboeken**.
 
-3. Voeg een gebeurtenis logboek toe door de naam van het logboek op te geven.  Type **systeem** en selecteer vervolgens het plus teken **+**.
+3. Voeg een gebeurtenislogboek toe door de naam van het logboek te typen.  Typ **System** en selecteer vervolgens het plusteken **+** .
 
 4. Schakel in de tabel de ernstcategorieën **Fout** en **Waarschuwing** in.
 
@@ -75,36 +75,36 @@ Wanneer u een nieuwe Log Analytics-werk ruimte maakt, moet deze worden geconfigu
 
 1. Selecteer **Syslog**.  
 
-2. Voeg een gebeurtenis logboek toe door de naam van het logboek op te geven.  Typ **syslog** en selecteer vervolgens het plus teken **+**.  
+2. Voeg een gebeurtenislogboek toe door de naam van het logboek te typen.  Typ **Syslog** en selecteer vervolgens het plusteken **+** .  
 
-3. In de tabel deselecteert u de ernst **info**, de **kennisgeving** en de **fout opsporing**. 
+3. Schakel in de tabel de ernstcategorieën **Info**, **Kennisgeving** en **Fouten opsporen** uit. 
 
 4. Selecteer boven aan de pagina **Opslaan** om de configuratie op te slaan.
 
 ## <a name="view-data-collected"></a>Verzamelde gegevens weergeven
 
-7. Klik op uw virtuele machine en selecteer vervolgens het tabblad **prestaties** . Hier ziet u een groep prestatie meter items die worden verzameld uit het gast besturingssysteem van de virtuele machine. Schuif omlaag om meer tellers weer te geven en beweeg de muis over een grafiek om het gemiddelde en percentiel op verschillende tijdstippen weer te geven.
+7. Klik op de virtuele machine, en selecteer vervolgens het tabblad **Prestaties** onder de tegel **Insights** in het menu **Bewaking**. U ziet nu een groep geselecteerde prestatiemeters die zijn verzameld uit het gastbesturingssysteem van de VM. Schuif omlaag om meer meters te bekijken, en beweeg de muis over een grafiek om het gemiddelde en de percentielen te zien op verschillende tijdstippen.
 
     ![Prestaties](media/quick-monitor-azure-vm/performance.png)
 
-9. Selecteer **toewijzing** om de functie Maps te openen, waarin de processen worden weer gegeven die worden uitgevoerd op de virtuele machine en de bijbehorende afhankelijkheden. Selecteer **Eigenschappen** om het eigenschappen venster te openen als dit nog niet is geopend.
+9. Selecteer **Kaart** om de kaartfunctie te openen. Hiermee worden de processen weergegeven die worden uitgevoerd op de virtuele machine, en de bijbehorende afhankelijkheden. Selecteer **Eigenschappen** om het eigenschappendeelvenster te openen als dit nog niet is geopend.
 
     ![Kaart](media/quick-monitor-azure-vm/map.png)
 
-11. Vouw de processen voor uw virtuele machine uit. Selecteer een van de processen om de details ervan weer te geven en om de bijbehorende afhankelijkheden te markeren.
+11. Vouw de processen voor uw virtuele machine uit. Selecteer een van de processen om de details te bekijken en de bijbehorende afhankelijkheden te markeren.
 
     ![Processen](media/quick-monitor-azure-vm/processes.png)
 
-12. Selecteer de virtuele machine opnieuw en selecteer vervolgens **logboek gebeurtenissen**. 
+12. Selecteer de virtuele machine opnieuw, en selecteer vervolgens **Gebeurtenissen vastleggen in logboek**. 
 
-    ![Logboek gebeurtenissen](media/quick-monitor-azure-vm/log-events.png)
+    ![Gebeurtenissen vastleggen in logboek](media/quick-monitor-azure-vm/log-events.png)
 
-13. U ziet een lijst met tabellen die zijn opgeslagen in de werk ruimte Log Analytics voor de virtuele machine. Deze lijst is anders, afhankelijk van of u een virtuele Windows-of Linux-machine gebruikt. Klik op de **gebeurtenis** tabel. Dit omvat alle gebeurtenissen uit het Windows-gebeurtenis logboek. Log Analytics wordt geopend met een eenvoudige query om logboek vermeldingen op te halen.
+13. U ziet een lijst met tabellen die zijn opgeslagen in de Log Analytics-werkruimte voor de virtuele machine. Deze lijst verschilt afhankelijk van of u een virtuele Windows- of Linux-machine gebruikt. Klik op de tabel **Gebeurtenis**. Dit omvat alle gebeurtenissen uit het Windows-gebeurtenislogboek. Log Analytics wordt geopend met een eenvoudige query om logboekvermeldingen op te halen.
 
     ![Logboekanalyses](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u Azure Monitor voor VM's voor een virtuele machine ingeschakeld en de Log Analytics-werk ruimte geconfigureerd voor het verzamelen van gebeurtenissen voor het gast besturingssysteem. Voor informatie over het weergeven en analyseren van de gegevens gaat u verder met de zelfstudie.
+In deze quickstart hebt u Azure Monitor voor VM’s ingeschakeld voor een virtuele machine, en de Log Analytics-werkruimte geconfigureerd om gebeurtenissen te verzamelen voor het gastbesturingssysteem. Voor informatie over het weergeven en analyseren van de gegevens gaat u verder met de zelfstudie.
 
 > [!div class="nextstepaction"]
 > [Gegevens weergeven of analyseren in Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)

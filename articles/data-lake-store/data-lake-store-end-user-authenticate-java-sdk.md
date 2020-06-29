@@ -3,22 +3,22 @@ title: Verificatie van de eind gebruiker-Java met Data Lake Storage Gen1-Azure
 description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met Java
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1e03ad657fd40dce22a17f2fff5b67a65eb3eb52
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9186922803c287f2aa17c151590a0c1b590619d3
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691763"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511319"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Java
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK gebruiken](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-end-user-authenticate-python.md)
-> * [REST-API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
+> * [REST API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >   
 
@@ -36,7 +36,7 @@ In dit artikel leert u hoe u de Java SDK kunt gebruiken om verificatie door eind
 ## <a name="end-user-authentication"></a>Verificatie van de eindgebruiker
 1. Maak een Maven-project met behulp van [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) vanaf de opdrachtregel of met behulp van een IDE. [Hier](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html) vindt u instructies over het maken van een Java-project met behulp van IntelliJ. [Hier](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm) vindt u instructies over het maken van een Java-project met behulp van Eclipse.
 
-2. Voeg de volgende afhankelijkheden toe aan het **pom.xml**-bestand in Maven. Voeg het volgende fragment toe vóór de ** \</project** -label>:
+2. Voeg de volgende afhankelijkheden toe aan het **pom.xml**-bestand in Maven. Voeg het volgende fragment toe vóór de **\</project>** Tag:
    
         <dependencies>
           <dependency>
@@ -51,7 +51,7 @@ In dit artikel leert u hoe u de Java SDK kunt gebruiken om verificatie door eind
           </dependency>
         </dependencies>
    
-    De eerste afhankelijkheid is het gebruik van de Data Lake Storage Gen1`azure-data-lake-store-sdk`SDK () in de Maven-opslag plaats. De tweede afhankelijkheid dient om op te geven welk framework voor logboekregistratie (`slf4j-nop`) voor deze toepassing moet worden gebruikt. De Data Lake Storage Gen1 SDK gebruikt [SLF4J](https://www.slf4j.org/) logging gevel, waarmee u kunt kiezen uit een aantal populaire logging-frameworks, zoals Log4j, Java-logboek registratie, logback, enzovoort, of geen logboek registratie. In dit voorbeeld wordt logboekregistratie uitgeschakeld. Daarom wordt de binding **slf4j-nop** gebruikt. [Hier](https://www.slf4j.org/manual.html#projectDep) vindt u andere opties voor logboekregistratie voor uw toepassing.
+    De eerste afhankelijkheid is het gebruik van de Data Lake Storage Gen1 SDK ( `azure-data-lake-store-sdk` ) in de Maven-opslag plaats. De tweede afhankelijkheid dient om op te geven welk framework voor logboekregistratie (`slf4j-nop`) voor deze toepassing moet worden gebruikt. De Data Lake Storage Gen1 SDK gebruikt [SLF4J](https://www.slf4j.org/) logging gevel, waarmee u kunt kiezen uit een aantal populaire logging-frameworks, zoals Log4j, Java-logboek registratie, logback, enzovoort, of geen logboek registratie. In dit voorbeeld wordt logboekregistratie uitgeschakeld. Daarom wordt de binding **slf4j-nop** gebruikt. [Hier](https://www.slf4j.org/manual.html#projectDep) vindt u andere opties voor logboekregistratie voor uw toepassing.
 
 3. Voeg de volgende importinstructies toe aan uw toepassing.
 
@@ -62,7 +62,7 @@ In dit artikel leert u hoe u de Java SDK kunt gebruiken om verificatie door eind
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
 
-4. Gebruik het volgende code fragment in uw Java-toepassing om het token te verkrijgen voor de Active Directory systeem eigen toepassing `DeviceCodeTokenProvider`die u eerder hebt gemaakt met behulp van de. Vervang **Fill-in-hier** door de werkelijke waarden voor de Azure Active Directory systeem eigen toepassing.
+4. Gebruik het volgende code fragment in uw Java-toepassing om het token te verkrijgen voor de Active Directory systeem eigen toepassing die u eerder hebt gemaakt met behulp van de `DeviceCodeTokenProvider` . Vervang **Fill-in-hier** door de werkelijke waarden voor de Azure Active Directory systeem eigen toepassing.
 
         private static String nativeAppId = "FILL-IN-HERE";
             

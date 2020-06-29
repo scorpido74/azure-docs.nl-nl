@@ -3,22 +3,22 @@ title: Verificatie van de eind gebruiker-REST met Data Lake Storage Gen1-Azure
 description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met behulp van REST API
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: f0b79ec08883c81aee535a6eff1176e3e10027d9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688068"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511205"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van REST API
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK gebruiken](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-end-user-authenticate-python.md)
-> * [REST-API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
+> * [REST API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
@@ -44,7 +44,7 @@ In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden 
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
    > [!NOTE]
-   > \<REDIRECT-URI> moet zijn gecodeerd om te worden gebruikt in een URL. Voor https://localhost, gebruiken `https%3A%2F%2Flocalhost`)
+   > \<REDIRECT-URI>moet worden gecodeerd voor gebruik in een URL. Voor https://localhost , gebruiken `https%3A%2F%2Flocalhost` )
 
     Voor deze zelfstudie kunt u de waarden van de tijdelijke aanduiding in bovenstaande URL vervangen en deze in de adresbalk van de webbrowser plakken. U wordt omgeleid om u te verifiëren met uw Azure-aanmelding. Wanneer u bent aangemeld, wordt het antwoord weergegeven in de adresbalk van de browser. Het antwoord heeft de volgende indeling:
 
@@ -60,11 +60,11 @@ In dit scenario wordt de gebruiker via de toepassing gevraagd om zich te melden 
         -F code=<AUTHORIZATION-CODE>
 
    > [!NOTE]
-   > In dit geval hoeft de \<REDIRECT-URI> niet te worden gecodeerd.
+   > In dit geval is de \<REDIRECT-URI> nood zaak niet gecodeerd.
    > 
    > 
 
-3. Het antwoord is een JSON-object dat een toegangs token bevat (bijvoorbeeld `"access_token": "<ACCESS_TOKEN>"`) en een vernieuwings token (bijvoorbeeld `"refresh_token": "<REFRESH_TOKEN>"`). Uw toepassing gebruikt het toegangs token bij het openen van Azure Data Lake Storage Gen1 en het vernieuwings token om een ander toegangs token op te halen wanneer een toegangs token verloopt.
+3. Het antwoord is een JSON-object dat een toegangs token bevat (bijvoorbeeld `"access_token": "<ACCESS_TOKEN>"` ) en een vernieuwings token (bijvoorbeeld `"refresh_token": "<REFRESH_TOKEN>"` ). Uw toepassing gebruikt het toegangs token bij het openen van Azure Data Lake Storage Gen1 en het vernieuwings token om een ander toegangs token op te halen wanneer een toegangs token verloopt.
 
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 

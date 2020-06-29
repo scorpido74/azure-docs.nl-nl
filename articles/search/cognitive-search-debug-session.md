@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: d325b65b01ea13cfcb141d28343d94866d9e05e2
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 6c658053afcaff99249e5d20ca2dc5a14037470b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751539"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510843"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Sessies voor fout opsporing in azure Cognitive Search
 
 Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen naar een productie vaardighedenset pushen in de AI-verrijkings pijplijn.
 
 > [!Important]
-> Ondersteuning van foutopsporing voor Azure Cognitive Search is beschikbaar [op aanvraag](https://aka.ms/DebugSessions) als preview-versie met beperkte toegang. Preview-functies zijn beschikbaar zonder service level agreement en worden niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Debug-sessies is een preview-functie die zonder service level agreement wordt gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
-> Zodra u toegang tot de preview hebt gekregen, kunt u foutopsporingssessie voor de service openen en gebruiken met behulp van de Azure Portal.
 
 ## <a name="using-debug-sessions"></a>Foutopsporingssessie gebruiken
 
@@ -86,6 +85,10 @@ De **expressie-evaluator** geeft een kort overzicht van de waarde van een pad. H
 ## <a name="errorswarnings"></a>Fouten/waarschuwingen
 
 In dit venster worden alle fouten en waarschuwingen weer gegeven die door de vaardigy worden gegenereerd, zoals deze worden uitgevoerd op basis van het document in de foutopsporingssessie.
+
+## <a name="limitations"></a>Beperkingen
+
+Debug sesisons werkt met alle algemeen beschik bare gegevens bronnen AMD de meeste preview-gegevens bronnen. De MongoDB-API (preview) en Cassandra-API (preview) van Cosmos DB worden momenteel niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

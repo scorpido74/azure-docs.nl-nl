@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 479b227a9144604d3bd0116a60de751189376b5f
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878684"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511465"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnostische logboeken openen voor Azure Data Lake Storage Gen1
 Meer informatie over het inschakelen van diagnostische logboek registratie voor uw Azure Data Lake Storage Gen1-account en het weer geven van de logboeken die voor uw account zijn verzameld.
@@ -63,7 +63,7 @@ Er zijn twee manieren om de logboek gegevens voor uw Data Lake Storage Gen1-acco
 ### <a name="using-the-data-lake-storage-gen1-settings-view"></a>De weer gave Data Lake Storage Gen1 instellingen gebruiken
 1. Klik op de Blade **instellingen** van data Lake Storage gen1 account op **Diagnostische logboeken**.
    
-    ![Diagnostische logboeken weer geven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Diagnostische logboeken weergeven") 
+    ![Diagnostische logboeken weergeven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "Diagnostische logboeken weergeven") 
 2. Op de Blade **Diagnostische logboeken** ziet u de logboeken die zijn gecategoriseerd door **audit logboeken** en **Logboeken aanvragen**.
    
    * De aanvraag logboeken vastleggen elke API-aanvraag die is gemaakt voor het Data Lake Storage Gen1-account.
@@ -117,7 +117,7 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
-| category |Tekenreeks |De logboek categorie. Bijvoorbeeld **aanvragen**. |
+| category |Tekenreeks |De logboek categorie. Bijvoorbeeld **Aanvragen**. |
 | operationName |Tekenreeks |De naam van de bewerking die is geregistreerd. Bijvoorbeeld getfilestatus. |
 | resultType |Tekenreeks |De status van de bewerking, bijvoorbeeld 200. |
 | callerIpAddress |Tekenreeks |Het IP-adres van de client die de aanvraag doet |
@@ -187,7 +187,7 @@ search *
 ```
 
 
-Azure Data Lake Storage Gen1 biedt een voor beeld van hoe u de logboek gegevens kunt verwerken en analyseren. U kunt het voor beeld vinden [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)op. 
+Azure Data Lake Storage Gen1 biedt een voor beeld van hoe u de logboek gegevens kunt verwerken en analyseren. U kunt het voor beeld vinden op [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) . 
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)

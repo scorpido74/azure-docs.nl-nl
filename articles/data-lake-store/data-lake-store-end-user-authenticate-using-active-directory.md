@@ -3,16 +3,16 @@ title: Verificatie van de eind gebruiker-Data Lake Storage Gen1 met Azure AD
 description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688244"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511307"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ In dit artikel wordt uitgelegd hoe u een **systeem eigen Azure AD-toepassing maa
 
     ![AAD-domein ophalen](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* De ID van uw Azure-Tenant. Voor instructies over het ophalen van de Tenant-ID raadpleegt u [de Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* De ID van uw Azure-Tenant. Voor instructies over het ophalen van de Tenant-ID raadpleegt u [de Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
 
 ## <a name="end-user-authentication"></a>Verificatie van de eindgebruiker
 Dit verificatie mechanisme is de aanbevolen benadering als u wilt dat een eind gebruiker zich bij uw toepassing aanmeldt via Azure AD. Uw toepassing kan vervolgens toegang krijgen tot Azure-resources met hetzelfde toegangs niveau als de eind gebruiker die zich heeft aangemeld. Uw eind gebruiker moet uw referenties regel matig opgeven om de toegang tot de toepassing te behouden.
@@ -57,7 +57,7 @@ Uw toepassing kan een OAuth 2,0-autorisatie pop-up activeren, waarbij de eind ge
 >
 
 ### <a name="directly-passing-in-user-credentials"></a>Rechtstreeks door geven in gebruikers referenties
-Uw toepassing kan rechtstreeks gebruikers referenties opgeven voor Azure AD. Deze methode werkt alleen met gebruikers accounts voor organisatie-id's; het is niet compatibel met gebruikers accounts voor persoonlijk/' Live ID ', met inbegrip van @outlook.com de @live.comaccounts die eindigen op of. Bovendien is deze methode niet compatibel met gebruikers accounts waarvoor Azure AD Two-Factor Authentication (twee ledige) is vereist.
+Uw toepassing kan rechtstreeks gebruikers referenties opgeven voor Azure AD. Deze methode werkt alleen met gebruikers accounts voor organisatie-id's; het is niet compatibel met gebruikers accounts voor persoonlijk/' Live ID ', met inbegrip van de accounts die eindigen op @outlook.com of @live.com . Bovendien is deze methode niet compatibel met gebruikers accounts waarvoor Azure AD Two-Factor Authentication (twee ledige) is vereist.
 
 ### <a name="what-do-i-need-for-this-approach"></a>Wat heb ik nodig voor deze aanpak?
 * Azure AD-domein naam. Deze vereiste is al opgenomen in de vereisten van dit artikel.
@@ -74,11 +74,11 @@ Maak en configureer een systeem eigen Azure AD-toepassing voor verificatie door 
 
 Zorg dat u bij het volgen van de instructies in de koppeling **systeem eigen** voor toepassings type selecteert, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Web-app maken](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Systeem eigen app maken")
+![Een web-app maken](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Systeem eigen app maken")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Stap 2: toepassings-ID en omleidings-URI ophalen
 
-Zie [de toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) om de toepassings-id op te halen.
+Zie [de toepassings-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) om de toepassings-id op te halen.
 
 Voer de volgende stappen uit om de omleidings-URI op te halen.
 

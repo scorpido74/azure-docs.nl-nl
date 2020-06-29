@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84508617"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510867"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips voor AI-verrijking in azure Cognitive Search
 
@@ -49,7 +49,16 @@ In dat geval kunt u de Indexeer functie de fouten laten negeren. Doe dat door *m
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tip 4: verrijkte documenten op de schermen bekijken 
+> [!NOTE]
+> Stel als best practice de maxFailedItems, maxFailedItemsPerBatch in op 0 voor werk belastingen voor productie
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tip 4: gebruik debug-sessies om problemen met uw vaardig heden te identificeren en op te lossen 
+
+Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen door voeren in een productie vaardighedenset in de AI-verrijkings pijplijn. Dit is een preview-functie en [Lees de documentatie](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Zie [Debug Session](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)(Engelstalig) voor meer informatie over concepten en aan de slag.
+
+Het oplossen van problemen met sessies met één document is een uitstekende manier om meer complexe verrijkings pijplijnen te bouwen.
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>Tip 5: verrijkte documenten op de schermen bekijken 
 Verrijkte documenten zijn tijdelijke structuren die tijdens de verrijking zijn gemaakt en vervolgens worden verwijderd wanneer de verwerking is voltooid.
 
 Als u een momentopname van het verrijkte document wilt vastleggen tijdens het indexeren, voegt u een veld met de naam ```enriched``` toe aan uw index. De indexeerfunctie dumpt automatisch een tekenreeksrepresentatie van de verrijkingen voor het document in het veld.
@@ -77,11 +86,7 @@ Voeg een ```enriched``` veld toe als onderdeel van de index definitie voor fout 
 }
 ```
 
-### <a name="debug-sessions"></a>Foutopsporingssessies
-
-Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen naar een productie vaardighedenset pushen in de AI-verrijkings pijplijn. Dit is een preview-functie en de toegang wordt per case verleend. [Raadpleeg de documentatie](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) voor meer informatie over het Toep assen voor toegang.
-
-## <a name="tip-5-expected-content-fails-to-appear"></a>Tip 5: verwachte inhoud kan niet worden weer gegeven
+## <a name="tip-6-expected-content-fails-to-appear"></a>Tip 6: verwachte inhoud kan niet worden weer gegeven
 
 Ontbrekende inhoud kan het gevolg zijn van het weghalen van documenten tijdens het indexeren. Voor de lagen gratis en basis is de document grootte beperkt. Bestanden die de limiet overschrijden, worden verwijderd tijdens het indexeren. U kunt controleren op verwijderde documenten in de Azure Portal. Dubbel klik op de tegel Indexeer functies in het dash board van de zoek service. Bekijk de verhouding van geslaagde documenten die zijn geïndexeerd. Als dit niet 100% is, kunt u op de verhouding klikken om meer details te krijgen. 
 
@@ -89,7 +94,7 @@ Als het probleem betrekking heeft op de bestands grootte, ziet u mogelijk een fo
 
 Een tweede reden waarom inhoud niet wordt weer gegeven, kan betrekking hebben op fouten in de i/o-toewijzing. De naam van een uitvoer doel is bijvoorbeeld ' personen ', maar de naam van het index veld is kleine letters ' personen '. Het systeem kan 201 succes berichten retour neren voor de volledige pijp lijn, zodat u kunt zien dat indexeren is geslaagd, wanneer een veld leeg is. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tip 6: de verwerking uitbreiden na een maximale uitvoerings tijd (24-uurs venster)
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Tip 7: de verwerking uitbreiden na een maximale uitvoerings tijd (24-uurs venster)
 
 Het berekenen van de afbeeldings analyse is voor eenvoudige cases evenredig, dus wanneer de installatie kopieën bijzonder groot of complex zijn, kan de maximale toegestane tijd worden overschreden. 
 
@@ -102,7 +107,7 @@ Voor geplande Indexeer functies worden de indexeringen hervat op schema in het l
 
 Voor indexering op basis van een portal (zoals beschreven in de Quick Start) kiest u de optie voor het uitvoeren van de Indexeer functie beperkt de verwerking tot 1 uur ( `"maxRunTime": "PT1H"` ). Mogelijk wilt u het verwerkings venster uitbreiden naar iets langer.
 
-## <a name="tip-7-increase-indexing-throughput"></a>Tip 7: door Voer van indexering verg Roten
+## <a name="tip-8-increase-indexing-throughput"></a>Tip 8: door Voer van indexering verg Roten
 
 Voor [parallelle indexering](search-howto-large-index.md)plaatst u uw gegevens in meerdere containers of meerdere virtuele mappen binnen dezelfde container. Maak vervolgens meerdere data source-en Indexeer functie paren. Alle Indexeer functies kunnen dezelfde vaardig heden gebruiken en naar dezelfde doel zoek index schrijven, zodat uw zoek-app niet op de hoogte hoeft te zijn van deze partities.
 Zie [indexeren van grote gegevens sets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)voor meer informatie.

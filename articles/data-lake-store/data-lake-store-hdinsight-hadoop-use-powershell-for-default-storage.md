@@ -3,15 +3,15 @@ title: Power shell-HDInsight-cluster met Data Lake Storage Gen1-Azure
 description: Gebruik Azure PowerShell om Azure HDInsight-clusters te maken en te gebruiken met Azure Data Lake Storage Gen1.
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 2b4e5fad65d2ad358bca6b5a2b87d4aa36b77e73
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: cd4faec2d57b15dd23fe01dfc49063f06d70639e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692060"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510963"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-clusters met Azure Data Lake Storage Gen1 als standaard opslag maken met behulp van Power shell
 
@@ -65,7 +65,7 @@ Ga als volgt te werk om een Data Lake Storage Gen1-account te maken:
         Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Als u de Data Lake Storage Gen1 resource provider registreert en er een fout melding `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`ziet die vergelijkbaar is met, is uw abonnement mogelijk niet white list voor data Lake Storage gen1. Als u uw Azure-abonnement voor Data Lake Storage Gen1 wilt inschakelen, volgt u de instructies in [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md).
+    > Als u de Data Lake Storage Gen1 resource provider registreert en er een fout melding ziet die vergelijkbaar is met `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , is uw abonnement mogelijk niet white list voor data Lake Storage gen1. Als u uw Azure-abonnement voor Data Lake Storage Gen1 wilt inschakelen, volgt u de instructies in [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md).
     >
 
 2. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resource groep. Begin met het maken van een resource groep.
@@ -209,7 +209,7 @@ In deze sectie maakt u een HDInsight Hadoop Linux-cluster met Data Lake Storage 
     Nadat de cmdlet is voltooid, ziet u een uitvoer waarin de cluster Details worden weer gegeven.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Test taken uitvoeren op het HDInsight-cluster om Data Lake Storage Gen1 te gebruiken
-Nadat u een HDInsight-cluster hebt geconfigureerd, kunt u test taken hierop uitvoeren om ervoor te zorgen dat het toegang tot Data Lake Storage Gen1 kan krijgen. Hiervoor voert u een voor beeld van een Hive-taak uit om een tabel te maken die gebruikmaakt van de voorbeeld gegevens die al beschikbaar zijn in data Lake Storage gen1 op * \<het cluster root>/example/data/sample.log*.
+Nadat u een HDInsight-cluster hebt geconfigureerd, kunt u test taken hierop uitvoeren om ervoor te zorgen dat het toegang tot Data Lake Storage Gen1 kan krijgen. Hiervoor voert u een voor beeld van een Hive-taak uit om een tabel te maken die gebruikmaakt van de voorbeeld gegevens die al beschikbaar zijn in Data Lake Storage Gen1 op * \<cluster root> /example/data/sample.log*.
 
 In deze sectie maakt u een SSH-verbinding (Secure Shell) in het HDInsight Linux-cluster dat u hebt gemaakt en voert u vervolgens een Hive-query uit.
 
@@ -230,7 +230,7 @@ In deze sectie maakt u een SSH-verbinding (Secure Shell) in het HDInsight Linux-
     U ziet de uitvoer van de query op de SSH-console.
 
     >[!NOTE]
-    >Het pad naar de voorbeeld gegevens in de voor gaande CREATE TABLE opdracht `adl:///example/data/`is, `adl:///` waarbij de hoofdmap van het cluster is. Na het voor beeld van de cluster basis die in deze zelf studie is opgegeven, is `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`de opdracht. U kunt het kortere alternatief gebruiken of het volledige pad naar de hoofdmap van het cluster opgeven.
+    >Het pad naar de voorbeeld gegevens in de voor gaande CREATE TABLE opdracht is `adl:///example/data/` , waarbij `adl:///` de hoofdmap van het cluster is. Na het voor beeld van de cluster basis die in deze zelf studie is opgegeven, is de opdracht `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster` . U kunt het kortere alternatief gebruiken of het volledige pad naar de hoofdmap van het cluster opgeven.
     >
 
 ## <a name="access-data-lake-storage-gen1-by-using-hdfs-commands"></a>Toegang tot Data Lake Storage Gen1 met behulp van HDFS-opdrachten

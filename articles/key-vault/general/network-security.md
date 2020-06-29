@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 78ae393c47de7a9d03d7b3de9b3dcd315d228f05
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605422"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792180"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault-firewalls en virtuele netwerken configureren
 
@@ -22,6 +22,13 @@ In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure 
 
 > [!IMPORTANT]
 > Als de firewallregels van kracht zijn, kunnen gebruikers alleen Key Vault-[gegevenslaagbewerkingen](secure-your-key-vault.md#data-plane-access-control) uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit is tevens van toepassing voor toegang tot Key Vault vanuit Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutelkluis van Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weergeven als hun clientcomputer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault-kiezer door andere Azure-Services. Gebruikers zien mogelijk een lijst met sleutelkluizen, maar geen lijst met sleutels als firewallregels hun clientcomputer weigeren.
+
+> [!NOTE]
+> Houd rekening met de volgende configuratielimieten:
+> * Er zijn maximaal 127 regels voor virtuele netwerken en 127 IPv4-regels toegestaan. 
+> * Kleine adresbereiken die de voorvoegselgrootten /31 of /32 gebruiken, worden niet ondersteund. Configureer deze bereiken in plaats hiervan door afzonderlijke IP-adresregels te gebruiken.
+> * IP-netwerkregels zijn alleen toegestaan voor openbare IP-adressen. IP-adresbereiken die zijn gereserveerd voor privénetwerken (zoals gedefinieerd in RFC 1918) zijn niet toegestaan in IP-regels. Privénetwerken omvatten adressen die beginnen met **10.** , **172.16-31**, en **192.168.** . 
+> * Momenteel worden alleen IPv4-adressen ondersteund.
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
@@ -115,7 +122,7 @@ U kunt als volgt Key Vault-firewalls en virtuele netwerken configureren met behu
    ```
 
 ## <a name="references"></a>Verwijzingen
-
+* ARM-sjabloonreferentie: [ARM-sjabloonreferentie voor Azure Key Vault](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/vaults)
 * Azure CLI-opdrachten: [az keyvault network-rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Azure PowerShell-cmdlets: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 

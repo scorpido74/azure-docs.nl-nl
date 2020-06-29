@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: victorh
-ms.openlocfilehash: e06f8e3adaedbc8847aacba0ca4ad9c6a172c9b7
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 91cf453247bfe4fa689df34bdf6b585ac72686aa
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791687"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509051"
 ---
 # <a name="deploy-a-security-partner-provider-preview"></a>Een beveiligings partner provider (preview-versie) implementeren
 
@@ -81,9 +81,9 @@ Om tunnels in te stellen voor de VPN Gateway van de virtuele hub, hebben externe
 
 1. Create Azure Active Directory (AD) Service-Principal: u kunt de omleidings-URL overs Laan. 
 
-   [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 2. Voeg toegangs rechten en bereik voor de Service-Principal toe.
-   [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 
    > [!NOTE]
    > U kunt de toegang tot de resource groep beperken voor meer gedetailleerde besturings elementen.

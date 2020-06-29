@@ -3,15 +3,15 @@ title: Overzicht van Durable Functions - Azure
 description: Inleiding tot de extensie Durable Functions voor Azure Functions.
 author: cgillum
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bfbab26e47befbd84ed7b060992d6c0b239ae4db
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697875"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193427"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
@@ -23,6 +23,7 @@ Durable Functions ondersteunt momenteel de volgende talen:
 
 * **C#** : zowel [vooraf gecompileerde klassebibliotheken](../functions-dotnet-class-library.md) als [C#-script](../functions-reference-csharp.md).
 * **JavaScript**: alleen ondersteund voor versie 2.x van de Azure Functions-runtime. Versie 1.7.0 of hoger van de Durable Functions-extensie vereist. 
+* **Python**: versie 1.8.5 of hoger van de Durable Functions-extensie vereist. 
 * **F#** : vooraf gecompileerde klassebibliotheken en F#-script. F#-script wordt alleen ondersteund voor versie 1.x van de Azure Functions-runtime.
 
 Durable Functions heeft als doel alle [Azure Functions-talen](../supported-languages.md) te ondersteunen. Zie [Durable Functions issues list](https://github.com/Azure/azure-functions-durable-extension/issues) voor de laatste voortgangsstatus van de ondersteuning voor meer talen.
@@ -95,6 +96,29 @@ U kunt het `context.df`-object gebruiken om andere functies aan te roepen op naa
 > [!NOTE]
 > Het `context`-object in Javascript vertegenwoordigt de volledige [functiecontext](../functions-reference-node.md#context-object). Open de Durable Functions-context met behulp van de eigenschap `df` in de hoofdcontext.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    x = yield context.call_activity("F1", None)
+    y = yield context.call_activity("F2", x)
+    z = yield context.call_activity("F3", y)
+    result = yield context.call_activity("F4", z)
+    return result
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+U kunt het `context`-object gebruiken om andere functies aan te roepen op naam, parameters door te geven en functie-uitvoer te retourneren. Telkens de code `yield` aanroept controleert het Durable Functions-framework de voortgang van de huidige functie-instantie. Als het proces of de virtuele machine halverwege tijdens de uitvoering recycleert, dan begint de functie-instantie opnieuw vanaf de voorgaande `yield`-aanroep. Zie de volgende sectie, Patroon #2, voor meer informatie: Uitwaaieren/inwaaieren.
+
+> [!NOTE]
+> Het `context`-object in Python vertegenwoordigt de indelingscontext. Open de Azure Functions-context met behulp van de eigenschap `function_context` in de indelingscontext.
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Patroon #2: Uitwaaieren/inwaaieren
@@ -161,6 +185,36 @@ module.exports = df.orchestrator(function*(context) {
 Het uitwaaierwerk wordt verdeeld over meerdere instanties van de `F2`-functie. Het werk wordt opgevolgd met een dynamische takenlijst. `context.df.Task.all`-API wordt aangeroepen om te wachten tot alle aangeroepen functies voltooid zijn. Vervolgens wordt de `F2`-functie-uitvoer samengevoegd uit de dynamische takenlijst en doorgegeven naar de `F3`-functie.
 
 Het automatisch plaatsen van controlepunten bij de `yield`-aanroep op `context.df.Task.all` zorgt ervoor dat een reeds voltooide taak niet opnieuw moet worden opgestart bij een potentiële crash of reboot halverwege.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    parallel_tasks = []
+
+    # Get a list of N work items to process in parallel.
+    work_batch = yield context.call_activity("F1", None)
+
+    for i in range(0, len(work_batch)):
+        parallel_tasks.append(context.call_activity("F2", work_batch[i]))
+    
+    outputs = yield context.task_all(parallel_tasks)
+
+    # Aggregate all N outputs and send the result to F3.
+    total = sum(outputs)
+    yield context.call_activity("F3", total)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Het uitwaaierwerk wordt verdeeld over meerdere instanties van de `F2`-functie. Het werk wordt opgevolgd met een dynamische takenlijst. `context.task_all`-API wordt aangeroepen om te wachten tot alle aangeroepen functies voltooid zijn. Vervolgens wordt de `F2`-functie-uitvoer samengevoegd uit de dynamische takenlijst en doorgegeven naar de `F3`-functie.
+
+Het automatisch plaatsen van controlepunten bij de `yield`-aanroep op `context.task_all` zorgt ervoor dat een reeds voltooide taak niet opnieuw moet worden opgestart bij een potentiële crash of reboot halverwege.
 
 ---
 
@@ -276,6 +330,38 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    job = json.loads(context.get_input())
+    job_id = job["jobId"]
+    polling_interval = job["pollingInterval"]
+    expiry_time = job["expiryTime"]
+
+    while context.current_utc_datetime < expiry_time:
+        job_status = yield context.call_activity("GetJobStatus", job_id)
+        if job_status == "Completed":
+            # Perform an action when a condition is met.
+            yield context.call_activity("SendAlert", job_id)
+            break
+
+        # Orchestration sleeps until this time.
+        next_check = context.current_utc_datetime + timedelta(seconds=polling_interval)
+        yield context.create_timer(next_check)
+
+    # Perform more work here, or let the orchestration end.
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Wanneer een verzoek ontvangen is, wordt er een nieuwe indelingsinstantie gemaakt voor die taak-id. De instantie controleert een status tot er aan een voorwaarde is voldaan en de lus wordt afgesloten. Een duurzame timer controleert het polling-interval. Vervolgens kan er meer werk worden uitgevoerd of kan de indeling beëindigd worden. Wanneer `nextCheck` `expiryTime` overschrijdt eindigt de bewaking.
@@ -345,6 +431,36 @@ module.exports = df.orchestrator(function*(context) {
 
 Roep `context.df.createTimer` aan om de duurzame timer te maken. De melding wordt ontvangen door `context.df.waitForExternalEvent`. Vervolgens wordt `context.df.Task.any` aangeroepen om te bepalen of er geëscaleerd wordt (time-out vindt eerst plaats) of dat de goedkeuring verwerkt wordt (de goedkeuring wordt ontvangen voor de time-out).
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("RequestApproval", None)
+
+    due_time = context.current_utc_datetime + timedelta(hours=72)
+    durable_timeout_task = context.create_timer(due_time)
+    approval_event_task = context.wait_for_external_event("ApprovalEvent")
+
+    winning_task = yield context.task_any([approval_event_task, durable_timeout_task])
+
+    if approval_event_task == winning_task:
+        durable_timeout_task.cancel()
+        yield context.call_activity("ProcessApproval", approval_event_task.result)
+    else:
+        yield context.call_activity("Escalate", None)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+Roep `context.create_timer` aan om de duurzame timer te maken. De melding wordt ontvangen door `context.wait_for_external_event`. Vervolgens wordt `context.task_any` aangeroepen om te bepalen of er geëscaleerd wordt (time-out vindt eerst plaats) of dat de goedkeuring verwerkt wordt (de goedkeuring wordt ontvangen voor de time-out).
+
 ---
 
 Een externe client kan de gebeurtenismelding afleveren aan een wachtende orchestrator-functie met behulp van de [ingebouwde HTTP API's](durable-functions-http-api.md#raise-event):
@@ -378,6 +494,18 @@ module.exports = async function (context) {
     const isApproved = true;
     await client.raiseEvent(instanceId, "ApprovalEvent", isApproved);
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+
+async def main(client: str):
+    durable_client = df.DurableOrchestrationClient(client)
+    is_approved = True
+    await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
 
 ---
@@ -457,6 +585,10 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Duurzame entiteiten worden momenteel niet ondersteund in Python.
+
 ---
 
 Clients kunnen *bewerkingen* in de wachtrij plaatsen (ook bekend als 'signalering') voor een entiteitsfunctie met behulp van de [entiteitsclientbinding](durable-functions-bindings.md#entity-client).
@@ -493,9 +625,13 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Duurzame entiteiten worden momenteel niet ondersteund in Python.
+
 ---
 
-Entiteitsfuncties zijn beschikbaar in [Durable Functions 2.0](durable-functions-versions.md) en hoger.
+Entiteitsfuncties zijn beschikbaar in [Durable Functions 2.0](durable-functions-versions.md) en hoger voor C# en JavaScript.
 
 ## <a name="the-technology"></a>De technologie
 
@@ -515,6 +651,7 @@ U kunt in minder dan 10 minuten aan de slag gaan met Durable Functions door een 
 
 * [C# met Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript met Visual Studio Code](quickstart-js-vscode.md)
+* [Python met Visual Studio Code](quickstart-python-vscode.md)
 
 In beide quickstarts maakt en test u een lokale ‘hallo wereld’-duurzame functie. Vervolgens publiceert u de functiecode op Azure. De functie die u maakt, organiseert en koppelt aanroepen naar andere functies.
 

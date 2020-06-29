@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67876210"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509384"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als back-updoel met NetBackup
 
@@ -55,8 +55,8 @@ Net als bij elke opslag oplossing is een zorgvuldige evaluatie van de opslag pre
 
 StorSimple is ontworpen om opslag te bieden aan toepassingen die worden uitgevoerd op een goed gedefinieerde werkset gegevens (warme gegevens). In dit model wordt de werkset gegevens opgeslagen op de lokale lagen en wordt de resterende vrije/gekoelde/gearchiveerde set gegevens gelaagd voor de Cloud. Dit model wordt weer gegeven in de volgende afbeelding. De bijna vlakke groene lijn staat voor de gegevens die zijn opgeslagen in de lokale lagen van het StorSimple-apparaat. De rode lijn staat voor de totale hoeveelheid gegevens die is opgeslagen in de StorSimple-oplossing in alle lagen. De ruimte tussen de platte groene lijn en de exponentiële rode curve vertegenwoordigt de totale hoeveelheid gegevens die in de Cloud is opgeslagen.
 
-**Diagram van StorSimple lagen**
-![StorSimple lagen](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+**StorSimple lagen** 
+ ![ Diagram van StorSimple-lagen](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
 Met deze architectuur zult u merken dat StorSimple ideaal is voor gebruik als back-updoel. U kunt StorSimple gebruiken voor het volgende:
 -   Voer de meest frequente herstel bewerkingen uit vanuit de lokale werkset gegevens.
@@ -158,7 +158,7 @@ Voor het implementeren van deze oplossing zijn drie stappen vereist:
 
 Elke stap wordt gedetailleerd beschreven in de volgende secties.
 
-### <a name="set-up-the-network"></a>Netwerk instellen
+### <a name="set-up-the-network"></a>Het netwerk instellen
 
 Omdat StorSimple een oplossing is die is geïntegreerd met de Azure-Cloud, is voor StorSimple een actieve en werkende verbinding met de Azure-Cloud vereist. Deze verbinding wordt gebruikt voor bewerkingen als Cloud momentopnamen, gegevens beheer en meta gegevens overdracht, en om oudere, minder toegankelijke gegevens te verlaagen naar Azure-Cloud opslag.
 
@@ -185,7 +185,7 @@ In deze sectie ziet u enkele configuratie voorbeelden. De volgende voor beelden 
 | StorSimple-implementatie taken  | Aanvullende opmerkingen |
 |---|---|
 | Implementeer uw on-premises StorSimple-apparaat. | Ondersteunde versies: update 3 en hoger. |
-| Schakel het doel van de back-up in. | Gebruik deze opdrachten om de doel modus voor back-up in of uit te scha kelen en de status op te halen. Zie [extern verbinding maken met een StorSimple-apparaat](storsimple-remote-connect.md)voor meer informatie.</br> De back-upmodus inschakelen `Set-HCSBackupApplianceMode -enable`:. </br> De back-upmodus uitschakelen `Set-HCSBackupApplianceMode -disable`:. </br> De huidige status van de instellingen van de back- `Get-HCSBackupApplianceMode`upmodus ophalen:. |
+| Schakel het doel van de back-up in. | Gebruik deze opdrachten om de doel modus voor back-up in of uit te scha kelen en de status op te halen. Zie [extern verbinding maken met een StorSimple-apparaat](storsimple-remote-connect.md)voor meer informatie.</br> De back-upmodus inschakelen: `Set-HCSBackupApplianceMode -enable` . </br> De back-upmodus uitschakelen: `Set-HCSBackupApplianceMode -disable` . </br> De huidige status van de instellingen van de back-upmodus ophalen: `Get-HCSBackupApplianceMode` . |
 | Maak een algemene volume container voor uw volume waarin de back-upgegevens worden opgeslagen. Alle gegevens in een volume container worden ontdubbeld. | StorSimple volume containers definiëren ontdubbeling domeinen.  |
 | Maak StorSimple-volumes. | Maak volumes met grootten zo dicht mogelijk bij het verwachte gebruik, omdat de volume grootte van invloed is op de duur van de Cloud momentopname. Meer informatie over het aanpassen van de grootte van een volume vindt u in het [Bewaar beleid](#retention-policies).</br> </br> Gebruik StorSimple gelaagde volumes en schakel het selectie vakje **dit volume gebruiken voor minder vaak gebruikte gegevens archivering** in. </br> Het gebruik van alleen lokaal vastgemaakte volumes wordt niet ondersteund. |
 | Maak een uniek StorSimple-back-upbeleid voor alle back-updoel volumes. | Een StorSimple-back-upbeleid definieert de volume consistentie groep. |
@@ -253,7 +253,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 | Bewaar periode van het back-uptype | Grootte (TiB) | GFS vermenigvuldiger\* | Totale capaciteit (TiB)  |
 |---|---|---|---|
 | Wekelijks volledig | 1 | 4  | 4 |
-| Dagelijks incrementeel | 0.5 | 20 (cyclussen van gelijk aantal weken per maand) | 12 (2 voor het extra quotum) |
+| Dagelijks incrementeel | 0,5 | 20 (cyclussen van gelijk aantal weken per maand) | 12 (2 voor het extra quotum) |
 | Volledig maandelijks | 1 | 12 | 12 |
 | Jaarlijks volledig | 1  | 10 | 10 |
 | GFS-vereiste |   | 38 |   |
@@ -265,7 +265,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
 ### <a name="to-set-up-netbackup-storage"></a>Opslag voor netback-ups instellen
 
-1.  Selecteer in de beheer console voor netback-ups **media-en Apparaatbeheer** > **apparaten** > **schijf groepen**. Selecteer in de wizard schijf groep configureren het opslag server type **AdvancedDisk**en selecteer vervolgens **volgende**.
+1.  Selecteer in de beheer console voor netback-ups **media-en Apparaatbeheer**  >  **apparaten**  >  **schijf groepen**. Selecteer in de wizard schijf groep configureren het opslag server type **AdvancedDisk**en selecteer vervolgens **volgende**.
 
     ![Beheer console voor netback-ups, wizard Configuratie van schijf groep](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -277,7 +277,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
     ![Beheer console voor netback-ups, selecteer de StorSimple volume schijf](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  Voer een naam in voor het doel van de back-up en selecteer **volgende** > **volgende** om de wizard te volt ooien.
+4.  Voer een naam in voor het doel van de back-up en selecteer **volgende**  >  **volgende** om de wizard te volt ooien.
 
 5.  Controleer de instellingen en selecteer vervolgens **volt ooien**.
 
@@ -340,7 +340,7 @@ In de volgende procedure wordt ervan uitgegaan dat NetBackup en de doelhost zijn
 
    ![Beheer console voor netback-ups, back-upfrequentie en rotatie voor een nieuw beleid](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. Selecteer **volgende** > **volgende** > **volt ooien**.  U kunt het schema wijzigen nadat het beleid is gemaakt.
+8. Selecteer **volgende**  >  **volgende**  >  **volt ooien**.  U kunt het schema wijzigen nadat het beleid is gemaakt.
 
 9. Selecteer om het beleid dat u zojuist hebt gemaakt uit te vouwen en selecteer vervolgens **planningen**.
 
@@ -395,7 +395,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 
 ### <a name="backup-configuration-and-capacity-requirements"></a>Back-upconfiguratie en capaciteits vereisten
 
-| Type back-up en retentie | Geconfigureerde opslag | Grootte (TiB) | GFS vermenigvuldiger | Totale capaciteit\* (Tib) |
+| Type back-up en retentie | Geconfigureerde opslag | Grootte (TiB) | GFS vermenigvuldiger | Totale capaciteit \* (Tib) |
 |---|---|---|---|---|
 | Week 1 (volledig en incrementeel) |Lokale schijf (korte termijn)| 1 | 1 | 1 |
 | StorSimple weken 2-4 |StorSimple-schijf (lange termijn) | 1 | 4 | 4 |
@@ -408,7 +408,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Voorbeeld schema voor GFS: GFS draai hoek per week, maandelijks en jaarlijks schema
 
-| Wekelijks | Volledig | Incrementele dag 1 | Incrementele dag 2 | Incrementele dag 3 | Incrementele dag 4 | Incrementele dag 5 |
+| Week | Volledig | Incrementele dag 1 | Incrementele dag 2 | Incrementele dag 3 | Incrementele dag 4 | Incrementele dag 5 |
 |---|---|---|---|---|---|---|
 | Week 1 | Lokaal RAID-volume  | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume | Lokaal RAID-volume |
 | Week 2 | StorSimple weken 2-4 |   |   |   |   |   |
@@ -430,7 +430,7 @@ Nadat u de eerste schijf groepen hebt gedefinieerd, moet u drie extra opslag lev
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple-volumes toewijzen aan een NetBackup-archief en een duplicatie taak
 
-1. Selecteer in de beheer console voor netback-ups **opslag** > ruimte voor het**levenscyclus** > beleid voor**nieuwe opslag**.
+1. Selecteer in de beheer console voor netback-ups **opslag**ruimte voor het levenscyclus beleid voor  >  **Storage Lifecycle Policies**  >  **nieuwe opslag**.
 
    ![Beheer console voor netback-ups, nieuw beleid voor opslag levenscyclus](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
@@ -472,7 +472,7 @@ Nadat u de eerste schijf groepen hebt gedefinieerd, moet u drie extra opslag lev
 | Bewaar periode van het back-uptype | Grootte (TiB) | GFS vermenigvuldiger\* | Totale capaciteit (TiB)  |
 |---|---|---|---|
 | Wekelijks volledig |  1  |  4 | 4  |
-| Dagelijks incrementeel  | 0.5  | 20 (cycli zijn gelijk aan het aantal weken per maand) | 12 (2 voor het extra quotum) |
+| Dagelijks incrementeel  | 0,5  | 20 (cycli zijn gelijk aan het aantal weken per maand) | 12 (2 voor het extra quotum) |
 | Volledig maandelijks  | 1 | 12 | 12 |
 | Jaarlijks volledig | 1  | 10 | 10 |
 | GFS-vereiste  |     |     | 38 |
@@ -508,8 +508,8 @@ In de volgende sectie wordt beschreven hoe u een kort script maakt voor het star
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Een Cloud momentopname starten of verwijderen
 
 1. [Installeer Azure PowerShell](/powershell/azure/overview).
-2. Down load en stel het Power shell-script [Manage-CloudSnapshots. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) .
-3. Op de server waarop het script wordt uitgevoerd, voert u Power shell uit als beheerder. Zorg ervoor dat u het script uitvoert `-WhatIf $true` om te zien welke wijzigingen door het script worden aangebracht. Zodra de validatie is voltooid, geeft `-WhatIf $false`u door. Voer de onderstaande opdracht uit:
+2. Down load en Setup [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) Power shell-script.
+3. Op de server waarop het script wordt uitgevoerd, voert u Power shell uit als beheerder. Zorg ervoor dat u het script uitvoert `-WhatIf $true` om te zien welke wijzigingen door het script worden aangebracht. Zodra de validatie is voltooid, geeft u door `-WhatIf $false` . Voer de onderstaande opdracht uit:
    ```powershell
    .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
    ```
@@ -529,13 +529,13 @@ Herstellen vanaf een StorSimple-apparaat werkt zoals herstellen vanuit elk appar
 
 Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
 
-| Scenario | Impact | Herstellen | Opmerkingen |
+| Scenario | Impact | Herstellen | Notities |
 |---|---|---|---|
 | StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexen en catalogussen kan ertoe leiden dat alle back-upsets worden gescand en opgehaald van de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
 | NetBackup-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Maak de back-upserver opnieuw en herstel de data base. | U moet de NetBackup-server opnieuw bouwen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde NetBackup-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens NetBackup. | Herstel StorSimple eerst en herstel vervolgens NetBackup. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

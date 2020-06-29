@@ -4,16 +4,16 @@ titleSuffix: Azure Files
 description: Een Azure-bestands share maken met behulp van de Azure Portal, Power shell of de Azure CLI.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596878"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510013"
 ---
 # <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
 Als u een Azure-bestands share wilt maken, moet u drie vragen beantwoorden over hoe u deze gaat gebruiken:
@@ -33,8 +33,8 @@ Zie [planning voor een Azure files-implementatie](storage-files-planning.md)voor
 
 ## <a name="prerequisites"></a>Vereisten
 - In dit artikel wordt ervan uitgegaan dat u al een Azure-abonnement hebt gemaakt. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 Azure-bestands shares worden geïmplementeerd in *opslag accounts*. Dit zijn objecten op het hoogste niveau die een gedeelde opslag groep vertegenwoordigen. Deze opslag groep kan worden gebruikt voor het implementeren van meerdere bestands shares. 
@@ -83,11 +83,11 @@ De overige instellingen die beschikbaar zijn op het tabblad Geavanceerd (veroude
 #### <a name="tags"></a>Tags
 Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en een geconsolideerde factuur kunt weer geven door hetzelfde label op meerdere resources en resource groepen toe te passen. Deze zijn optioneel en kunnen worden toegepast nadat het maken van een opslag account is gemaakt.
 
-#### <a name="review--create"></a>Controleren en maken
+#### <a name="review--create"></a>Beoordelen en maken
 De laatste stap voor het maken van het opslag account is door de knop **maken** te selecteren op het tabblad **controleren + maken** . Deze knop is niet beschikbaar als alle vereiste velden voor een opslag account niet zijn gevuld.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Als u een opslag account wilt maken met behulp van Power `New-AzStorageAccount` shell, zullen we de cmdlet gebruiken. Deze cmdlet heeft veel opties. alleen de vereiste opties worden weer gegeven. Raadpleeg de [ `New-AzStorageAccount` cmdlet-documentatie](/powershell/module/az.storage/new-azstorageaccount)voor meer informatie over geavanceerde opties.
+Als u een opslag account wilt maken met behulp van Power shell, zullen we de `New-AzStorageAccount` cmdlet gebruiken. Deze cmdlet heeft veel opties. alleen de vereiste opties worden weer gegeven. Raadpleeg de [ `New-AzStorageAccount` cmdlet-documentatie](/powershell/module/az.storage/new-azstorageaccount)voor meer informatie over geavanceerde opties.
 
 Om het maken van het opslag account en de volgende bestands share te vereenvoudigen, worden in variabelen verschillende para meters opgeslagen. U kunt de variabele inhoud vervangen door de waarden die u wilt, maar houd er rekening mee dat de naam van het opslag account globaal uniek moet zijn.
 
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-Als u een opslag account wilt maken dat standaard Azure-bestands shares kan opslaan, wordt de volgende opdracht gebruikt. De `-SkuName` para meter is gekoppeld aan het type redundantie gewenst; Als u een geografisch redundant of geo-zone-redundant opslag account wilt, moet u ook de `-EnableLargeFileShare` para meter verwijderen.
+Als u een opslag account wilt maken dat standaard Azure-bestands shares kan opslaan, wordt de volgende opdracht gebruikt. De `-SkuName` para meter is gekoppeld aan het type redundantie gewenst. Als u een geografisch redundant of geo-zone-redundant opslag account wilt, moet u ook de `-EnableLargeFileShare` para meter verwijderen.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -109,7 +109,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-Als u een opslag account wilt maken waarmee Premium Azure-bestands shares kunnen worden opgeslagen, wordt de volgende opdracht gebruikt. Houd er rekening `-SkuName` mee dat de para meter is `Premium` gewijzigd om zowel het gewenste redundantie niveau van lokaal`LRS`redundante () op te geven. De `-Kind` para meter `FileStorage` is in `StorageV2` plaats van omdat Premium-bestands shares moeten worden gemaakt in een FileStorage-opslag account in plaats van een GPv2-opslag account.
+Als u een opslag account wilt maken waarmee Premium Azure-bestands shares kunnen worden opgeslagen, wordt de volgende opdracht gebruikt. Houd er rekening mee dat de `-SkuName` para meter is gewijzigd om zowel `Premium` het gewenste redundantie niveau van lokaal redundante () op te geven `LRS` . De `-Kind` para meter is `FileStorage` in plaats van `StorageV2` omdat Premium-bestands shares moeten worden gemaakt in een FileStorage-opslag account in plaats van een GPv2-opslag account.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -131,7 +131,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-Als u een opslag account wilt maken dat standaard Azure-bestands shares kan opslaan, wordt de volgende opdracht gebruikt. De `--sku` para meter is gekoppeld aan het type redundantie gewenst; Als u een geografisch redundant of geo-zone-redundant opslag account wilt, moet u ook de `--enable-large-file-share` para meter verwijderen.
+Als u een opslag account wilt maken dat standaard Azure-bestands shares kan opslaan, wordt de volgende opdracht gebruikt. De `--sku` para meter is gekoppeld aan het type redundantie gewenst. Als u een geografisch redundant of geo-zone-redundant opslag account wilt, moet u ook de `--enable-large-file-share` para meter verwijderen.
 
 ```azurecli-interactive
 az storage account create \
@@ -143,7 +143,7 @@ az storage account create \
     --output none
 ```
 
-Als u een opslag account wilt maken waarmee Premium Azure-bestands shares kunnen worden opgeslagen, wordt de volgende opdracht gebruikt. Houd er rekening `--sku` mee dat de para meter is `Premium` gewijzigd om zowel het gewenste redundantie niveau van lokaal`LRS`redundante () op te geven. De `--kind` para meter `FileStorage` is in `StorageV2` plaats van omdat Premium-bestands shares moeten worden gemaakt in een FileStorage-opslag account in plaats van een GPv2-opslag account.
+Als u een opslag account wilt maken waarmee Premium Azure-bestands shares kunnen worden opgeslagen, wordt de volgende opdracht gebruikt. Houd er rekening mee dat de `--sku` para meter is gewijzigd om zowel `Premium` het gewenste redundantie niveau van lokaal redundante () op te geven `LRS` . De `--kind` para meter is `FileStorage` in plaats van `StorageV2` omdat Premium-bestands shares moeten worden gemaakt in een FileStorage-opslag account in plaats van een GPv2-opslag account.
 
 ```azurecli-interactive
 az storage account create \
@@ -178,7 +178,7 @@ De Blade nieuwe bestands share moet op het scherm worden weer gegeven. Vul de ve
 Selecteer **maken** om de nieuwe share te volt ooien. Als uw opslag account zich in een virtueel netwerk bevindt, kunt u geen Azure-bestands share maken, tenzij uw client zich ook in het virtuele netwerk bevindt. U kunt dit tijdgebonden beperkings punt ook omzeilen met behulp van de `New-AzRmStorageShare` cmdlet Azure PowerShell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-U kunt de Azure-bestands share maken met [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) de cmdlet. Bij de volgende Power shell-opdrachten wordt ervan uitgegaan dat u de variabelen `$resourceGroupName` en `$storageAccountName` zoals hierboven gedefinieerd hebt ingesteld in het gedeelte een opslag account maken met Azure PowerShell. 
+U kunt de Azure-bestands share maken met de [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) cmdlet. Bij de volgende Power shell-opdrachten wordt ervan uitgegaan dat u de variabelen `$resourceGroupName` en `$storageAccountName` zoals hierboven gedefinieerd hebt ingesteld in het gedeelte een opslag account maken met Azure PowerShell. 
 
 > [!Important]  
 > Voor Premium-bestands shares `-QuotaGiB` verwijst de para meter naar de ingerichte grootte van de bestands share. De ingerichte grootte van de bestands share is de hoeveelheid die wordt gefactureerd, ongeacht het gebruik. Standaard bestands shares worden gefactureerd op basis van het gebruik in plaats van de ingerichte grootte.
@@ -206,7 +206,7 @@ storageAccountKey=$(az storage account keys list \
     --query "[0].value" | tr -d '"')
 ```
 
-Zodra u de sleutel voor het opslag account hebt, kunt u de Azure-bestands share [`az storage share create`](/cli/azure/storage/share) maken met de opdracht. 
+Zodra u de sleutel voor het opslag account hebt, kunt u de Azure-bestands share maken met de [`az storage share create`](/cli/azure/storage/share) opdracht. 
 
 > [!Important]  
 > Voor Premium-bestands shares `--quota` verwijst de para meter naar de ingerichte grootte van de bestands share. De ingerichte grootte van de bestands share is de hoeveelheid die wordt gefactureerd, ongeacht het gebruik. Standaard bestands shares worden gefactureerd op basis van het gebruik in plaats van de ingerichte grootte.
@@ -222,7 +222,7 @@ az storage share create \
     --output none
 ```
 
-Deze opdracht mislukt als het opslag account zich in een virtueel netwerk bevindt en de computer waarop u deze opdracht aanroept, geen deel uitmaakt van het virtuele netwerk. U kunt dit tijdstip beperken met behulp van de cmdlet Azure PowerShell `New-AzRmStorageShare` zoals hierboven wordt beschreven, of door de Azure CLI uit te voeren vanaf een computer die deel uitmaakt van het virtuele netwerk, inclusief via een VPN-verbinding.
+Deze opdracht mislukt als het opslag account zich in een virtueel netwerk bevindt en de computer waarop u deze opdracht aanroept, geen deel uitmaakt van het virtuele netwerk. U kunt dit tijdstip beperken met behulp van de `New-AzRmStorageShare` cmdlet Azure PowerShell zoals hierboven wordt beschreven, of door de Azure CLI uit te voeren vanaf een computer die deel uitmaakt van het virtuele netwerk, inclusief via een VPN-verbinding.
 
 ---
 

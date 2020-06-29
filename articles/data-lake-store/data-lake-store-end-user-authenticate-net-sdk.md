@@ -3,22 +3,22 @@ title: Verificatie van de eind gebruiker-.NET met Data Lake Storage Gen1-Azure
 description: Meer informatie over het bezorgen van de verificatie van eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory met .NET SDK
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 12f6e0fd34de96677693b7f0d159c7cf9032ca1b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688160"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511292"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van .NET SDK
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK gebruiken](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-end-user-authenticate-python.md)
-> * [REST-API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
+> * [REST API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
 > 
 >  
 
@@ -34,7 +34,7 @@ In dit artikel leert u hoe u de .NET SDK kunt gebruiken om verificatie door eind
 ## <a name="create-a-net-application"></a>Een .NET-toepassing maken
 1. Selecteer in Visual Studio het menu **bestand** , **Nieuw**en vervolgens **project**.
 2. Kies **console-app (.NET Framework)** en selecteer **volgende**.
-3. Voer in **project naam**, `CreateADLApplication`ENTER en selecteer vervolgens **maken**.
+3. Voer in **project naam**, Enter `CreateADLApplication` en selecteer vervolgens **maken**.
 
 4. Voeg de NuGet-pakketten toe aan het project.
 
@@ -69,7 +69,7 @@ In dit artikel leert u hoe u de .NET SDK kunt gebruiken om verificatie door eind
 ## <a name="end-user-authentication"></a>Verificatie van de eindgebruiker
 Voeg dit fragment toe aan uw .NET-client toepassing. Vervang de waarden van de tijdelijke aanduiding door de waarden die zijn opgehaald uit een systeem eigen Azure AD-toepassing (vermeld als vereiste). Met dit code fragment kunt u uw toepassing **interactief** verifiëren met data Lake Storage gen1, wat betekent dat u wordt gevraagd uw Azure-referenties in te voeren.
 
-Voor gebruiks gemak gebruikt het volgende fragment standaard waarden voor client-ID en omleidings-URI die geldig zijn voor een Azure-abonnement. In het volgende code fragment hoeft u alleen de waarde voor uw Tenant-ID op te geven. U kunt de Tenant-ID ophalen met behulp van de instructies in [de Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+Voor gebruiks gemak gebruikt het volgende fragment standaard waarden voor client-ID en omleidings-URI die geldig zijn voor een Azure-abonnement. In het volgende code fragment hoeft u alleen de waarde voor uw Tenant-ID op te geven. U kunt de Tenant-ID ophalen met behulp van de instructies in [de Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in).
     
 - Vervang de functie main () door de volgende code:
 
@@ -91,7 +91,7 @@ Voor gebruiks gemak gebruikt het volgende fragment standaard waarden voor client
 
 Een aantal dingen die u moet weten over het voor gaande fragment:
 
-* Het voor gaande fragment maakt gebruik van `GetTokenCache` een `GetCreds_User_Popup`hulp functie en. De code voor deze Help-functies is [hier beschikbaar op github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* Het voor gaande fragment maakt gebruik van een hulp functie `GetTokenCache` en `GetCreds_User_Popup` . De code voor deze Help-functies is [hier beschikbaar op github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
 * Om u te helpen de zelf studie sneller te volt ooien, gebruikt het fragment een systeem eigen toepassings-client-ID die standaard beschikbaar is voor alle Azure-abonnementen. U kunt **dit fragment dus in zijn huidige vorm in uw toepassing gebruiken**.
 * Als u echter uw eigen Azure AD-domein- en toepassingsclient-id wilt gebruiken, moet u een systeemeigen Azure AD-toepassing maken en vervolgens het Azure AD-tenant-ID, de client-ID en omleidings-URI gebruiken voor de toepassing die u hebt gemaakt. Zie [een Active Directory-toepassing maken voor verificatie door eind gebruikers met data Lake Storage gen1](data-lake-store-end-user-authenticate-using-active-directory.md) voor instructies.
 

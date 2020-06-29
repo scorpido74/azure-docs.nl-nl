@@ -3,16 +3,16 @@ title: Linux-migratie naar Azure File Sync
 description: Meer informatie over het migreren van bestanden van een locatie van een Linux-server naar een hybride Cloud implementatie met Azure File Sync en Azure-bestands shares.
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3131d6a7e3675027968eadd5f3e3ca8a7f2449c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143547"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510377"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migreren van Linux naar een hybride Cloud implementatie met Azure File Sync
 
@@ -118,7 +118,7 @@ Achtergrondbitmap
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG:\<bestands naam\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       Hiermee wordt de status van de uitvoer naar een logboek bestand geschreven als Unicode (het bestaande logboek wordt overschreven).

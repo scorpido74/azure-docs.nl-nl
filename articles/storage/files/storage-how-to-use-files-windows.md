@@ -3,16 +3,16 @@ title: Een Azure-bestandsshare gebruiken met Windows | Microsoft Docs
 description: Informatie over hoe u een Azure-bestandsshare gebruikt met Windows en Windows Server.
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 014b980470ee8d0a25df2d6c10f9aa37270d83ab
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214307"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85509775"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Een Azure-bestandsshare gebruiken met Windows
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen probleemloos worden gebruikt in Windows en Windows Server. In dit artikel worden de overwegingen besproken voor het gebruik van een Azure-bestandsshare met Windows en Windows Server.
@@ -23,13 +23,13 @@ U kunt Azure-bestandsshares gebruiken in een Windows-installatie die wordt uitge
 
 | Windows-versie        | SMB-versie | Koppelbaar in Azure-VM | Koppelbaar on-premises |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Ja | Ja |
-| Windows 10<sup>1</sup> | SMB 3.0 | Ja | Ja |
-| Windows Server Semi-Annual-kanaal<sup>2</sup> | SMB 3.0 | Ja | Ja |
-| Windows Server 2016 | SMB 3.0 | Ja | Ja |
-| Windows 8.1 | SMB 3.0 | Ja | Ja |
-| Windows Server 2012 R2 | SMB 3.0 | Ja | Ja |
-| Windows Server 2012 | SMB 3.0 | Ja | Ja |
+| Windows Server 2019 | SMB 3.0 | Yes | Ja |
+| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Ja |
+| Windows Server Semi-Annual-kanaal<sup>2</sup> | SMB 3.0 | Yes | Ja |
+| Windows Server 2016 | SMB 3.0 | Yes | Ja |
+| Windows 8.1 | SMB 3.0 | Yes | Ja |
+| Windows Server 2012 R2 | SMB 3.0 | Yes | Ja |
+| Windows Server 2012 | SMB 3.0 | Yes | Ja |
 | Windows 7<sup>3</sup> | SMB 2.1 | Yes | Nee |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Nee |
 

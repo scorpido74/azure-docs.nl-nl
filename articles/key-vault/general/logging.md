@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b6589d2045d9bb7bdfb38f9872acd8366481106
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790480"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211388"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -95,7 +95,7 @@ In de [zelfstudie Aan de slag](../secrets/quick-create-cli.md) was de naam van d
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging"></a><a id="enable"></a>Logboekregistratie inschakelen
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Logboekregistratie inschakelen met Azure Powershell
 
 Als u logboekregistratie wilt inschakelen voor Key Vault, gebruikt u de cmdlet **Set-AzDiagnosticSetting**, samen met de variabelen die we voor het nieuwe opslagaccount en de sleutelkluis hebben gemaakt. We moeten de markering **-Ingeschakeld** instellen op **$true** en de categorie instellen op **AuditEvent** (de enige categorie voor logboekregistratie van Key Vault):
 
@@ -131,6 +131,25 @@ Wat wordt in het logboek vastgelegd?
   * Het maken, wijzigen of verwijderen van die sleutels of geheimen.
   * Het ondertekenen, verifiëren, versleutelen, ontsleutelen, verpakken en uitpakken van sleutels, het ophalen van geheimen en het vermelden van sleutels en geheimen (en hun versies).
 * Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voorbeelden daarvan zijn aanvragen die geen Bearer-token hebben, die ongeldig of verlopen zijn, of die een ongeldig token hebben.  
+
+## <a name="enable-logging-using-azure-cli"></a>Logboekregistratie inschakelen met CLI
+
+```azurecli
+az login
+
+az account set --subscription {AZURE SUBSCRIPTION ID}
+
+az provider register -n Microsoft.KeyVault
+
+az monitor diagnostic-settings create  \
+--name KeyVault-Diagnostics \
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault \
+--logs    '[{"category": "AuditEvent","enabled": true}]' \
+--metrics '[{"category": "AllMetrics","enabled": true}]' \
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
 
 ## <a name="access-your-logs"></a><a id="access"></a>Toegang tot uw logboeken
 
@@ -213,6 +232,7 @@ We gaan zo kijken wat er precies in de logboeken staat. Maar eerst moet u nog tw
 
 * De status van diagnostische instellingen voor uw sleutelkluisresource opvragen: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Logboekregistratie voor uw sleutelkluisresource uitschakelen: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
+
 
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>De Key Vault-logboeken interpreteren
 

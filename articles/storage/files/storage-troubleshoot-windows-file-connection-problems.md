@@ -3,16 +3,16 @@ title: Problemen met Azure Files oplossen in Windows | Microsoft Docs
 description: Problemen met Azure Files oplossen in Windows
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 62b3a5ca772e21515fadf0397b294e93d77f96a6
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711830"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511982"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 

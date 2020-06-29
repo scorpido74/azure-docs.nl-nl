@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267304"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253610"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Verbinding maken met en query uitvoeren in Azure SQL Database of Azure SQL Managed Instance met behulp van SSMS
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,9 +47,9 @@ Om deze quickstart te voltooien, hebt u de volgende items nodig:
   > [!IMPORTANT]
   > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database in een exemplaardatabase importeren of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
 
-Als u alleen enkele ad-hoc query's wilt uitvoeren zonder SSMS te installeren, raadpleegt u de [Quickstart: De query-editor van de Azure Portal gebruiken om een query uit te voeren op de SQL Database](connect-query-portal.md).
+Als u alleen enkele ad-hoc query's wilt uitvoeren zonder SSMS te installeren, raadpleegt u de [Quickstart: De Query-editor van de Azure Portal gebruiken om een query uit te voeren op een database in Azure SQL Database](connect-query-portal.md).
 
-## <a name="get-server-connection-information"></a>Server-verbindingsgegevens ophalen
+## <a name="get-server-connection-information"></a>Serververbindingsgegevens ophalen
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met uw database. U hebt de volledig gekwalificeerde [server](logical-servers.md)naam of hostnaam, databasenaam en aanmeldingsgegevens nodig om de quickstart te voltooien.
 

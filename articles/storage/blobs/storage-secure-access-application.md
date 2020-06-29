@@ -1,5 +1,5 @@
 ---
-title: Toegang tot toepassings gegevens beveiligen
+title: Toegang tot toepassingsgegevens beveiligen
 titleSuffix: Azure Storage
 description: Gebruik SAS-tokens, versleuteling en HTTPS om de gegevens van een toepassing in de cloud te beveiligen.
 services: storage
@@ -7,18 +7,18 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061325"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945644"
 ---
-# <a name="secure-access-to-application-data"></a>Toegang tot toepassings gegevens beveiligen
+# <a name="secure-access-to-application-data"></a>Toegang tot toepassingsgegevens beveiligen
 
 Deze zelfstudie is deel drie van een serie. U leert hoe u informatie over toegang tot het opslagaccount kunt beveiligen. 
 
@@ -29,11 +29,11 @@ In deel drie van de serie leert u het volgende:
 > * Versleuteling aan de serverzijde inschakelen
 > * Alleen-HTTPS-transport inschakelen
 
-[Azure Blob Storage](../common/storage-introduction.md#blob-storage) biedt een robuuste service voor het opslaan van bestanden voor toepassingen. Deze zelfstudie gaat nog een stapje verder dan [het vorige onderwerp][previous-tutorial] om te tonen hoe u toegang tot uw opslagaccount vanuit een webtoepassing kunt beveiligen. Wanneer u klaar bent, zijn de afbeeldingen versleuteld en gebruikt de web-app beveiligde SAS-tokens voor toegang tot de miniatuurafbeeldingen.
+[Azure Blob Storage](../common/storage-introduction.md#blob-storage) biedt een robuuste service voor het opslaan van bestanden voor toepassingen. Deze zelfstudie gaat nog een stapje verder dan [het vorige onderwerp][previous-tutorial] om te laten zien hoe u de toegang tot uw opslagaccount vanuit een webtoepassing kunt beveiligen. Wanneer u klaar bent, zijn de afbeeldingen versleuteld en gebruikt de web-app beveiligde SAS-tokens voor toegang tot de miniatuurafbeeldingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie moet u eerst de vorige zelfstudie over opslag hebben voltooid: [Het wijzigen van het formaat van geüploade afbeeldingen automatiseren met behulp van Event Grid][previous-tutorial].
+U moet de vorige zelfstudie over opslag hebben voltooid: [Formaat van geüploade afbeeldingen automatisch wijzigen met Event Grid][previous-tutorial].
 
 ## <a name="set-container-public-access"></a>Openbare toegang tot de container instellen
 
@@ -43,7 +43,7 @@ In dit deel van de serie zelfstudies worden SAS-tokens gebruikt voor toegang tot
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -54,7 +54,7 @@ az storage container set-permission \
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>SAS-tokens voor miniaturen configureren
 
-In deel één van deze serie zelfstudies, werden door de webtoepassing afbeeldingen van een openbare container weergegeven. In dit deel van de reeks gebruikt u SAS-tokens (Shared Access signatures) om de miniatuur afbeeldingen op te halen. Met SAS-tokens kunt u beperkte toegang verlenen tot een container of blob op basis van IP, protocol, tijdsinterval of toegestane rechten. Zie voor meer informatie over SA'S [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
+In deel één van deze serie zelfstudies, werden door de webtoepassing afbeeldingen van een openbare container weergegeven. In dit deel van de serie gebruikt u Shared Access Signature-tokens (SAS) om de miniatuurafbeeldingen op te halen. Met SAS-tokens kunt u beperkte toegang verlenen tot een container of blob op basis van IP, protocol, tijdsinterval of toegestane rechten. Zie [Beperkte toegang verlenen tot Azure Storage-resources via SAS (Shared Access Signatures)](../common/storage-sas-overview.md) voor meer informatie over SAS.
 
 In dit voorbeeld maakt de opslagplaats van de broncode gebruik van de vertakking `sasTokens` die een bijgewerkt codevoorbeeld bevat. Verwijder de bestaande GitHub-implementatie met [az webapp deployment source delete](/cli/azure/webapp/deployment/source). Configureer vervolgens GitHub-implementatie naar de webtoepassing met de opdracht [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
@@ -68,7 +68,7 @@ az webapp deployment source config --name <web_app> \
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-De vertakking `sasTokens` van de opslagplaats werkt het bestand `StorageHelper.cs` bij. Dit vervangt de taak `GetThumbNailUrls` met het onderstaande codevoorbeeld. De bijgewerkte taak haalt de Url's van de miniaturen op met behulp van een [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) om de start tijd, verloop tijd en machtigingen voor het SAS-token op te geven. Zodra de web-app is geïmplementeerd, haalt deze met behulp van een SAS-token de miniaturen met een URL op. De bijgewerkte taak wordt in het volgende voorbeeld weergegeven:
+De vertakking `sasTokens` van de opslagplaats werkt het bestand `StorageHelper.cs` bij. Dit vervangt de taak `GetThumbNailUrls` met het onderstaande codevoorbeeld. Met de bijgewerkte taak worden de miniatuur-URL's opgehaald door met een [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) de begintijd, verlooptijd en machtigingen voor het SAS-token op te geven. Zodra de web-app is geïmplementeerd, haalt deze met behulp van een SAS-token de miniaturen met een URL op. De bijgewerkte taak wordt in het volgende voorbeeld weergegeven:
 
 ```csharp
 public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _storageConfig)
@@ -129,17 +129,19 @@ In de vorige taak zijn de volgende klassen, eigenschappen en methoden gebruikt:
 |-------|------------|---------|
 |[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) |  |  |
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
-|[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Bestaat](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
-|[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [Recht](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
+|[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Uri](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Exists](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
+|[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
 |[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Naam](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
-|[UriBuilder](/dotnet/api/system.uribuilder) | [Query’s uitvoeren](/dotnet/api/system.uribuilder.query) |  |
-|[Orderverzamellijst](/dotnet/api/system.collections.generic.list-1) | | [Toevoegen](/dotnet/api/system.collections.generic.list-1.add) |
+|[UriBuilder](/dotnet/api/system.uribuilder) | [Query](/dotnet/api/system.uribuilder.query) |  |
+|[List](/dotnet/api/system.collections.generic.list-1) | | [Add](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
+## <a name="azure-storage-encryption"></a>Azure-opslagversleuteling
 
-[Azure Storage Service Encryption (SSE)](../common/storage-service-encryption.md) helpt u bij het beschermen en beveiligen van uw gegevens. SSE-versleutelt data-at-rest, handelt de versleuteling, ontsleuteling en het sleutelbeheer af. Alle gegevens worden versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krachtigste blokversleutelingsmethoden die er bestaan.
+[Azure Storage-versleuteling](../common/storage-service-encryption.md) helpt u bij het beveiligen en beschermen van uw gegevens door data-at-rest te versleutelen en versleuteling en ontsleuteling te verwerken. Alle gegevens worden versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krachtigste blokversleutelingsmethoden die er bestaan.
 
-SSE versleutelt automatisch gegevens in alle prestatielagen (Standaard en Premium), alle implementatiemodellen (Azure Resource Manager en het klassieke model) en alle services van Azure Storage (Blob, Queue, Table en File). 
+U kunt ervoor kiezen om versleutelingssleutels te laten beheren door Microsoft of u kunt uw eigen sleutels met door de klant beheerde sleutels gebruiken met Azure Key Vault. Zie [Door de klant beheerde sleutels gebruiken met Azure Key Vault om Azure Storage-versleuteling te beheren](../common/encryption-customer-managed-keys.md) voor meer informatie.
+
+Met Azure Storage-versleuteling worden automatisch gegevens versleuteld in alle prestatielagen (Standard en Premium), alle implementatiemodellen (Azure Resource Manager en het klassieke model) en alle services van Azure Storage (Blob, Queue, Table en File).
 
 ## <a name="enable-https-only"></a>Alleen-HTTPS inschakelen
 

@@ -12,19 +12,19 @@ ms.custom:
 - mvc
 - mqtt
 - tracking-python
-ms.date: 10/17/2019
-ms.openlocfilehash: 53acb49e5e2be5b8ccf0c131a9219fdcf2baca47
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.date: 06/16/2020
+ms.openlocfilehash: f49f2156a6d0e1b5563145c00007746ef4a1bf51
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607480"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904915"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Quickstart: Telemetrie vanaf een apparaat verzenden naar een IoT-hub en lezen met een back-endtoepassing (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-In deze quickstart verzendt u telemetrie vanuit een toepassing voor een gesimuleerd apparaat via Azure IoT Hub naar een back-endtoepassing voor verwerking. IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. In deze quickstart wordt een vooraf geschreven Python-toepassing gebruikt om de telemetrie te verzenden en een CLI-hulpprogramma om de telemetrie uit IoT Hub te lezen. Voordat u deze twee toepassingen kunt uitvoeren, moet u een IoT-hub maken en een apparaat registreren bij de hub.
+In deze quickstart verzendt u telemetrie vanuit een toepassing voor een gesimuleerd apparaat via Azure IoT Hub naar een back-endtoepassing voor verwerking. IoT Hub is een Azure-service waarmee grote hoeveelheden telemetrie van uw IoT-apparaten naar de cloud kunt opnemen voor opslag of verwerking. In deze quickstart worden twee vooraf geschreven Python-toepassingen gebruikt, één voor het verzenden van de telemetrie en één voor het lezen van de telemetrie van de hub. Voordat u deze twee toepassingen kunt uitvoeren, moet u een IoT-hub maken en een apparaat registreren bij de hub.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -78,7 +78,21 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    U gebruikt deze waarde verderop in de snelstart.
+    U gebruikt deze waarde verderop in de quickstart.
+
+1. U hebt ook het _Event Hubs-compatibele eindpunt_, het _Event Hubs-compatibele pad_ en de _primaire sleutel service_ van uw IoT-hub nodig om de back-endtoepassing in staat te stellen verbinding te maken met uw IoT-hub en de berichten op te halen. Met de volgende opdrachten worden deze waarden opgehaald voor uw IoT-hub:
+
+   **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
+
+    ```azurecli-interactive
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
+    ```
+
+    Noteer deze drie waarden die u later in deze quickstart gaat gebruiken.
 
 ## <a name="send-simulated-telemetry"></a>Gesimuleerde telemetrie verzenden
 
@@ -104,22 +118,40 @@ De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatsp
 
     In de volgende schermafbeelding ziet u de uitvoer op het moment dat de toepassing voor het gesimuleerde apparaat telemetriegegevens naar uw IoT-hub verzendt:
 
-    ![Het gesimuleerde apparaat uitvoeren](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-
+    ![Het gesimuleerde apparaat uitvoeren](media/quickstart-send-telemetry-python/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>De telemetrie van uw hub lezen
 
-De IoT Hub CLI-extensie kan verbinding maken met het **Gebeurtenissen**-eindpunt aan de servicezijde van uw IoT Hub. De extensie ontvangt de berichten die van het gesimuleerde apparaat naar de cloud worden verzonden. Een back-endtoepassing van IoT Hub wordt meestal uitgevoerd in de cloud om berichten van apparaat naar cloud te ontvangen en verwerken.
+De back-endtoepassing maakt verbinding met het eindpunt **Events** aan de servicezijde van uw IoT-hub. De toepassing ontvangt de berichten die van het gesimuleerde apparaat naar de cloud worden verzonden. Een back-endtoepassing van IoT Hub wordt meestal uitgevoerd in de cloud om berichten van apparaat naar cloud te ontvangen en verwerken.
 
-Voer de volgende opdrachten uit in Azure Cloud Shell. Vervang daarbij `YourIoTHubName` door de naam van uw IoT-hub:
+> [!NOTE]
+> In de volgende stappen wordt gebruikgemaakt van het synchrone voorbeeld **read_device_to_cloud_messages_sync.py**. U kunt dezelfde stappen uitvoeren met het asynchrone voorbeeld **read_device_to_cloud_messages_sync.py**.
 
-```azurecli-interactive
-az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice 
-```
+1. Navigeer in een ander lokaal terminalvenster naar de hoofdmap van het voorbeeldproject in Python. Navigeer vervolgens naar de map **iot-hub\Quickstarts\read-d2c-messages**.
 
-In de volgende schermafbeelding ziet u de uitvoer op het moment dat de extensie telemetriegegevens ontvangt die door het gesimuleerde apparaat naar de hub zijn verzonden:
+2. Open het bestand **read_device_to_cloud_messages_sync. py** in de gewenste teksteditor. Werk de volgende variabelen bij en sla de wijzigingen in het bestand op.
 
-![De back-endtoepassing uitvoeren](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
+    | Variabele | Waarde |
+    | -------- | ----------- |
+    | `EVENTHUB_COMPATIBLE_ENDPOINT` | Vervang de waarde van de variabele door het met Event Hubs compatibele eindpunt dat u eerder hebt genoteerd. |
+    | `EVENTHUB_COMPATIBLE_PATH`     | Vervang de waarde van de variabele door het met Event Hubs compatibele pad dat u eerder hebt genoteerd. |
+    | `IOTHUB_SAS_KEY`                | Vervang de waarde van de variabele door de primaire sleutel service die u eerder hebt genoteerd. |
+
+3. Voer in het lokale terminalvenster de volgende opdrachten uit om de vereiste bibliotheken voor de back-endtoepassing te installeren:
+
+    ```cmd/sh
+    pip install azure-eventhub
+    ```
+
+4. Voer in het lokale terminalvenster de volgende opdrachten uit om de back-endtoepassing te bouwen en uit te voeren:
+
+    ```cmd/sh
+    python read_device_to_cloud_messages_sync.py
+    ```
+
+    In de volgende schermafbeelding ziet u de uitvoer op het moment dat de back-endtoepassing telemetriegegevens ontvangt die door het gesimuleerde apparaat naar de hub zijn verzonden:
+
+    ![De back-endtoepassing uitvoeren](media/quickstart-send-telemetry-python/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

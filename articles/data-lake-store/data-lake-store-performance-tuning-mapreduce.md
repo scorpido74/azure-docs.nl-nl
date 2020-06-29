@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1 prestaties afstemmen-MapReduce
 description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen1 MapReduce
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904592"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510917"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Richt lijnen voor het afstemmen van de prestaties voor MapReduce in HDInsight en Azure Data Lake Storage Gen1
 
@@ -42,7 +42,7 @@ Pas dit aantal aan op basis van de hoeveelheid geheugen die nodig is voor de kaa
 
 Hiermee bepaalt u het maximum aantal mappers of verminderers dat moet worden gemaakt. Het aantal splitsingen bepaalt hoeveel toewijzingen voor de MapReduce-taak worden gemaakt. Daarom kunt u minder mappers aanvragen dan u hebt aangevraagd als er minder splitsingen zijn dan het aangevraagde aantal mappers.
 
-## <a name="guidance"></a>Richtlijnen
+## <a name="guidance"></a>Hulp
 
 ### <a name="step-1-determine-number-of-jobs-running"></a>Stap 1: het aantal uitgevoerde taken bepalen
 
@@ -110,7 +110,7 @@ Als u wilt controleren of u een beperking krijgt, moet u de logboek registratie 
 
 2. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
 
-3. Als u een beperking krijgt, ziet u de fout code HTTP 429 in het garen logboek bestand. Het garen logboek bestand bevindt&lt;zich&gt;in/tmp/User/Yarn.log
+3. Als u een beperking krijgt, ziet u de fout code HTTP 429 in het garen logboek bestand. Het garen logboek bestand bevindt zich in/tmp/ &lt; User &gt; /Yarn.log
 
 ## <a name="examples-to-run"></a>Voor beelden om uit te voeren
 

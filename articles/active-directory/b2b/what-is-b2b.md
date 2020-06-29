@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585815"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905133"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Wat is gastgebruikerstoegang in Azure Active Directory B2B?
 
@@ -44,7 +44,7 @@ Met Azure AD B2B gebruikt de partner hun eigen oplossing voor identiteitsbeheer,
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Uitnodigen van gastgebruikers met een eenvoudige uitnodiging en inwisselproces
 
-Gastgebruikers melden zich met hun eigen werk-, school- of sociale identiteiten aan bij uw apps en services. Als de gastgebruiker geen Microsoft-account of een Azure AD-account heeft, wordt er een gemaakt voor hen wanneer ze hun uitnodiging inwisselen. 
+Gastgebruikers melden zich met hun eigen werk-, school- of sociale identiteiten aan bij uw apps en services. Als de gastgebruiker geen Microsoft-account of Azure AD-account heeft, wordt er een gemaakt wanneer hij of zij de uitnodiging inwisselt. 
 
 - Nodig gastgebruikers uit met behulp van de identiteit van de e-mail van hun keuze.
 - Stuur een directe koppeling naar een app of een uitnodiging naar het toegangsvenster van de gastgebruiker.
@@ -98,9 +98,12 @@ Azure AD biedt ondersteuning voor externe ID-providers, zoals Facebook, Microsof
 
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Een selfservice voor registreren van gasten via gebruikersstromen maken (preview)
 
-Met een selfservice voor het registreren van gebruikers kunt u een aanmeldingservaring maken voor externe gebruikers die toegang willen ontvangen tot uw apps. Als onderdeel van de registratiestroom kunt u opties bieden voor verschillende sociale of zakelijke id-providers, en informatie over de gebruiker verzamelen. Meer informatie over de selfservice-aanmelding en hoe u deze kunt instellen.
+Met een selfservice voor het registreren van gebruikers kunt u een aanmeldingservaring maken voor externe gebruikers die toegang willen ontvangen tot uw apps. Als onderdeel van de registratiestroom kunt u opties bieden voor verschillende sociale of zakelijke id-providers, en informatie over de gebruiker verzamelen. Meer informatie over [selfserviceregistratie en hoe u deze kunt instellen](self-service-sign-up-overview.md).
+
+U kunt ook [API-connectors](api-connectors-overview.md) gebruiken om uw gebruikersstromen voor selfserviceregistratie te integreren met externe cloudsystemen. U kunt onder andere verbinding maken met aangepaste goedkeuringswerkstromen, identiteitsverificatie uitvoeren, door de gebruiker verstrekte informatie valideren.
 
 ![Schermopname van de pagina Gebruikersstromen](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
 ## <a name="next-steps"></a>Volgende stappen
 

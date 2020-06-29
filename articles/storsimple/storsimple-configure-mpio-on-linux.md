@@ -4,15 +4,15 @@ description: MPIO configureren op StorSimple die zijn verbonden met een Linux-ho
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278364"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85511597"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>MPIO configureren op een StorSimple-host met CentOS
 In dit artikel worden de stappen beschreven die nodig zijn voor het configureren van MPIO (multipath-i/o) op de CentOS 6,6-hostserver. De hostserver is verbonden met uw Microsoft Azure StorSimple-apparaat voor hoge Beschik baarheid via iSCSI-initia tors. Hierin wordt de automatische detectie van multipath-apparaten en de specifieke installatie van alleen voor StorSimple-volumes beschreven.
@@ -45,7 +45,7 @@ Meerdere paden in Linux bestaat uit kernel-onderdelen en onderdelen van de gebru
    * **Multipath. conf**: configuratie bestand voor multipath daemon dat wordt gebruikt om de ingebouwde configuratie tabel te overschrijven.
 
 ### <a name="about-the-multipathconf-configuration-file"></a>Over het configuratie bestand voor meerdere paden. conf
-Het configuratie bestand `/etc/multipath.conf` maakt veel van de multipath-functies die door de gebruiker kunnen worden geconfigureerd. De `multipath` opdracht en de kernel- `multipathd` daemon gebruiken informatie die in dit bestand is gevonden. Het bestand wordt alleen geraadpleegd tijdens de configuratie van de multipath-apparaten. Zorg ervoor dat alle wijzigingen zijn aangebracht voordat u de `multipath` opdracht uitvoert. Als u het bestand later wijzigt, moet u de meerdere paden stoppen en opnieuw starten om de wijzigingen van kracht te laten worden.
+Het configuratie bestand `/etc/multipath.conf` maakt veel van de multipath-functies die door de gebruiker kunnen worden geconfigureerd. De `multipath` opdracht en de kernel-daemon `multipathd` gebruiken informatie die in dit bestand is gevonden. Het bestand wordt alleen geraadpleegd tijdens de configuratie van de multipath-apparaten. Zorg ervoor dat alle wijzigingen zijn aangebracht voordat u de `multipath` opdracht uitvoert. Als u het bestand later wijzigt, moet u de meerdere paden stoppen en opnieuw starten om de wijzigingen van kracht te laten worden.
 
 Het multipath. conf heeft vijf secties:
 
@@ -68,7 +68,7 @@ In deze sectie vindt u meer informatie over de configuratie vereisten voor CentO
    
     `ifconfig`
    
-    In het volgende voor beeld ziet u de uitvoer wanneer twee`eth0` netwerk `eth1`interfaces (en) aanwezig zijn op de host.
+    In het volgende voor beeld ziet u de uitvoer wanneer twee netwerk interfaces ( `eth0` en `eth1` ) aanwezig zijn op de host.
    
         [root@centosSS ~]# ifconfig
         eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
@@ -101,7 +101,7 @@ In deze sectie vindt u meer informatie over de configuratie vereisten voor CentO
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
 1. Installeer *iSCSI-initiator-hulppr* . op uw CentOS-server. Voer de volgende stappen uit om *iSCSI-initiator-hulppr*. te installeren.
    
-   1. `root` Meld u aan bij uw CentOS-host.
+   1. Meld u aan bij `root` uw CentOS-host.
    1. Installeer de *iSCSI-initiator-hulppr*. Type:
       
        `yum install iscsi-initiator-utils`
@@ -109,7 +109,7 @@ In deze sectie vindt u meer informatie over de configuratie vereisten voor CentO
       
        `service iscsid start`
       
-       In de praktijk `iscsid` wordt mogelijk niet daad werkelijk gestart `--force` en is de optie mogelijk vereist
+       In `iscsid` de praktijk wordt mogelijk niet daad werkelijk gestart en is de `--force` optie mogelijk vereist
    1. Gebruik de `chkconfig` opdracht om de service in te scha kelen om ervoor te zorgen dat uw iSCSI-initiator tijdens de opstart tijd is ingeschakeld.
       
        `chkconfig iscsi on`
@@ -179,7 +179,7 @@ Bij de configuratie stappen voor meerdere paden moet u de beschik bare paden con
 ### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Stap 1: meerdere paden configureren voor automatische detectie
 De apparaten die door meerdere paden worden ondersteund, kunnen automatisch worden gedetecteerd en geconfigureerd.
 
-1. `/etc/multipath.conf` Bestand initialiseren. Type:
+1. Bestand initialiseren `/etc/multipath.conf` . Type:
    
      `mpathconf --enable`
    
@@ -195,7 +195,7 @@ De apparaten die door meerdere paden worden ondersteund, kunnen automatisch word
    
     `mpathconf --find_multipaths y`
    
-    Hiermee wijzigt u `multipath.conf` de standaard instellingen in de sectie zoals hieronder wordt weer gegeven:
+    Hiermee wijzigt u de standaard instellingen in de sectie `multipath.conf` zoals hieronder wordt weer gegeven:
    
         defaults {
         find_multipaths yes
@@ -228,7 +228,7 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
 1. Bewerk het `/etc/multipath.conf` bestand. Type:
    
     `vi /etc/multipath.conf`
-1. Stel in `defaults` de sectie in `path_grouping_policy` op `multibus`. `path_grouping_policy` Hiermee geeft u het groeps beleid voor standaard paden op dat moet worden toegepast op niet-opgegeven meerdere paden. De sectie standaard waarden ziet er ongeveer uit zoals hieronder wordt weer gegeven.
+1. Stel in de `defaults` sectie in `path_grouping_policy` op `multibus` . `path_grouping_policy`Hiermee geeft u het groeps beleid voor standaard paden op dat moet worden toegepast op niet-opgegeven meerdere paden. De sectie standaard waarden ziet er ongeveer uit zoals hieronder wordt weer gegeven.
    
         defaults {
                 user_friendly_names yes
@@ -268,7 +268,7 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
 
-    Kopieer de IQN van uw StorSimple-apparaat `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`, van de voor gaande uitvoer.
+    Kopieer de IQN van uw StorSimple-apparaat, `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` van de voor gaande uitvoer.
 
    b. Maak verbinding met het apparaat via de doel-IQN. Het StorSimple-apparaat is hier het iSCSI-doel. Type:
 
@@ -276,7 +276,7 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
     iscsiadm -m node --login -T <IQN of iSCSI target>
     ```
 
-    In het volgende voor beeld ziet u de uitvoer met `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target`een IQN van het doel van. De uitvoer geeft aan dat u verbinding hebt gemaakt met de twee iSCSI-netwerk interfaces op het apparaat.
+    In het volgende voor beeld ziet u de uitvoer met een IQN van het doel van `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` . De uitvoer geeft aan dat u verbinding hebt gemaakt met de twee iSCSI-netwerk interfaces op het apparaat.
 
     ```
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
@@ -326,7 +326,7 @@ Deze taakverdelings algoritme gebruikt alle beschik bare meerdere paden naar de 
 ## <a name="troubleshoot-multipathing"></a>Problemen met meerdere paden oplossen
 In deze sectie vindt u nuttige tips als u problemen ondervindt tijdens het configureren van meerdere paden.
 
-V. Ik zie de wijzigingen in `multipath.conf` het bestand worden niet doorgevoerd.
+V. Ik zie de wijzigingen in het bestand worden niet `multipath.conf` doorgevoerd.
 
 A. Als u wijzigingen hebt aangebracht in het `multipath.conf` bestand, moet u de multipath-service opnieuw starten. Typ de volgende opdracht:
 
@@ -338,7 +338,7 @@ A. Zorg ervoor dat de twee paden zich in hetzelfde subnet bevinden en routeerbaa
 
 V. Wanneer ik beschik bare paden vermeld, zie ik geen uitvoer.
 
-A. Als er geen paden met meerdere paden worden weer gegeven, wordt er meestal een probleem met de multipath daemon voorgesteld. het is waarschijnlijk dat er een probleem is `multipath.conf` in het bestand.
+A. Als er geen paden met meerdere paden worden weer gegeven, wordt er meestal een probleem met de multipath daemon voorgesteld. het is waarschijnlijk dat er een probleem is in het `multipath.conf` bestand.
 
 Het is ook een goed idee om te controleren of u bepaalde schijven daad werkelijk kunt zien nadat u verbinding hebt gemaakt met het doel, omdat er ook geen enkele schijf hoeft te worden beantwoord.
 
