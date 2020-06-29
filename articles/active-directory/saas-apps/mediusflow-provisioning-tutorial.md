@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3b194755e96e8b8dec2bd0325417950ffe96241c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339314"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482408"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Zelf studie: Medius flow configureren voor automatische gebruikers inrichting
 
@@ -56,11 +56,11 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 Begin met het inschakelen van de toegang tot de Azure AD-aanmelding en de Azure AD-configuratie functie in Medius Flow door de volgende stappen uit te voeren:
 
 #### <a name="user-login"></a>Gebruikers aanmelding
-Als u de aanmeldings stroom voor Microsoft 365/Azure AD wilt inschakelen, raadpleegt u [dit] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) artikel.
+Als u de aanmeldings stroom naar Microsoft 365/Azure AD wilt inschakelen, raadpleegt u [dit] ( https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) artikel.
 
 #### <a name="user-transfer-configuration"></a>Configuratie van gebruikers overdracht
 Raadpleeg [Dit](
-https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) artikel om de configuratie portal van de gebruikers in te scha kelen voor de inrichting van Azure AD.
+https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) artikel voor het inschakelen van de configuratie portal van de gebruikers die u wilt inrichten vanuit Azure AD.
 
 #### <a name="configure-user-provisioning"></a>Gebruikersinrichting configureren
 
@@ -164,7 +164,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |userName|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |naam. displayName|Tekenreeks|
-   |actief|Booleaans|
+   |actief|Boolean-waarde|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |naam. opgemaakt|Tekenreeks|

@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864331"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481830"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionering in Azure Cosmos DB
 
@@ -35,6 +35,14 @@ Meer informatie over [het beheren van partities](partition-data.md)vindt u in az
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Een partitiesleutel kiezen
 
+Een partitie sleutel bestaat uit twee onderdelen: het pad van de **partitie sleutel** en de waarde van de **partitie sleutel**. U kunt bijvoorbeeld een item {"userId": "Andrew", "worksFor": "micro soft"} als u "userId" als de partitie sleutel kiest, de volgende twee partitie sleutel onderdelen zijn:
+
+* Het pad van de partitie sleutel (bijvoorbeeld: "/userId"). Het pad naar de partitie sleutel accepteert alfanumerieke tekens en een onderstrepings teken (_). U kunt geneste objecten ook gebruiken met behulp van de standaard notatie voor paden (/).
+
+* De partitie sleutel waarde (bijvoorbeeld: ' Andrew '). De waarde van de partitie sleutel kan van teken reeks-of numerieke typen zijn.
+
+Zie het artikel [Azure Cosmos DB Service quota's](concepts-limits.md) voor meer informatie over de limieten voor door Voer, opslag en de lengte van de partitie sleutel.
+
 Het selecteren van de partitie sleutel is een eenvoudige maar belang rijke ontwerp keuze in Azure Cosmos DB. Wanneer u de partitie sleutel selecteert, is het niet mogelijk om deze in-place te wijzigen. Als u de partitie sleutel moet wijzigen, moet u uw gegevens naar een nieuwe container verplaatsen met de nieuwe gewenste partitie sleutel.
 
 Voor **alle** containers moet uw partitie sleutel:
@@ -49,7 +57,7 @@ Als u [Meervoudige zuren-trans acties](database-transactions-optimistic-concurre
 
 Voor de meeste containers gelden de bovenstaande criteria alleen wanneer u een partitie sleutel moet kiezen. Voor grote alleen-lezen containers is het echter mogelijk dat u een partitie sleutel wilt kiezen die regel matig wordt weer gegeven als een filter in uw query's. Query's kunnen [efficiënt worden gerouteerd naar de relevante fysieke partities](how-to-query-container.md#in-partition-query) door de partitie sleutel op te nemen in het filter predicaat.
 
-Als het meren deel van de aanvragen van uw werk belasting query's is en de meeste query's een gelijkheids filter hebben op dezelfde eigenschap, kan deze eigenschap een goede partitie sleutel zijn. Als u bijvoorbeeld regel matig een query uitvoert waarmee op wordt gefilterd en `UserID` vervolgens de partitie sleutel selecteert, wordt het `UserID`aantal [query's voor meerdere partities](how-to-query-container.md#avoiding-cross-partition-queries)verminderd.
+Als het meren deel van de aanvragen van uw werk belasting query's is en de meeste query's een gelijkheids filter hebben op dezelfde eigenschap, kan deze eigenschap een goede partitie sleutel zijn. Als u bijvoorbeeld regel matig een query uitvoert waarmee op wordt gefilterd `UserID` en vervolgens de partitie sleutel selecteert, wordt `UserID` het aantal [query's voor meerdere partities](how-to-query-container.md#avoiding-cross-partition-queries)verminderd.
 
 Als uw container echter klein is, hebt u waarschijnlijk niet genoeg fysieke partities om u zorgen te maken over de invloed van de prestaties van kruis partitie query's. Voor de meeste kleine containers in Azure Cosmos DB zijn slechts één of twee fysieke partities vereist.
 

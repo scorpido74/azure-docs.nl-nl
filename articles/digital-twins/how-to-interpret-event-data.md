@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1af98e6ecbe9b5951d94dd22be8a47c1b13691d3
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 55264f1fe0526773db5af299c37e4ea077e6d63f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390615"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483326"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
 
@@ -194,7 +194,7 @@ Dit zijn de velden in de hoofd tekst van een melding voor een wijziging van de r
 | `specversion` | 1.0 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
-| `subject` | ID van de relatie, zoals`<twinID>/relationships/<relationshipName>` |
+| `subject` | ID van de relatie, zoals`<twinID>/relationships/<relationshipID>` |
 | `time` | Tijds tempel voor wanneer de bewerking is opgetreden op de relatie |
 | `traceparent` | Een W3C-tracerings context voor de gebeurtenis |
 
@@ -225,15 +225,14 @@ Hier volgt een voor beeld van een melding voor het maken of verwijderen van een 
 
 ```json
 {
-    "$relationshipName": "RelationshipName1",
-    "$sourceId": "building11",
+    "$relationshipId": "building_to_floor",
+    "$etag": "W/\"72479873-0083-41a8-83e2-caedb932d881\"",
     "$relationshipName": "Contains",
     "$targetId": "floor11",
     "ownershipUser": "user1",
     "ownershipDepartment": "Operations"
 }
 ```
-
 
 ### <a name="digital-twin-change-notifications"></a>Digitale dubbele wijzigings meldingen
 

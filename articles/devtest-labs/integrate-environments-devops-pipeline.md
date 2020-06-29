@@ -1,23 +1,14 @@
 ---
 title: Omgevingen integreren in azure-pijp lijnen in Azure DevTest Labs
 description: Meer informatie over het integreren van Azure DevTest Labs omgevingen in uw Azure DevOps Continuous Integration-(CI) en continue Delivery-pijp lijnen.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: bafc4cd08d7b4ee2124c46984121b53cd4651baf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898106"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483020"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Omgevingen integreren in uw Azure DevOps CI/CD-pijp lijnen
 U kunt de uitbrei ding Azure DevTest Labs taken die is geïnstalleerd in azure DevOps Services (voorheen bekend als Visual Studio Team Services) gebruiken om eenvoudig uw build-en release-pijp lijn voor continue integratie (CI)/continue levering (CD) te integreren met Azure DevTest Labs. Deze uitbrei dingen maken het eenvoudig om snel een [omgeving](devtest-lab-test-env.md) voor een specifieke test taak te implementeren en deze vervolgens te verwijderen wanneer de test is voltooid. 

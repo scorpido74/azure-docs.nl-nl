@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2019
+ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791983"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481728"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over virtuele Azure-netwerken (FAQ)
 
@@ -44,7 +44,7 @@ Ja. U kunt een VNet gebruiken zonder het aan uw locatie te koppelen. U kunt bijv
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Kan ik WAN-optimalisatie uitvoeren tussen VNets of een VNet en mijn on-premises Data Center?
 Ja. U kunt een [WAN-optimalisatie netwerk virtueel apparaat](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) van verschillende leveranciers implementeren via Azure Marketplace.
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Welke hulpprogram ma's kan ik gebruiken om een VNet te maken?
 U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configureren:
@@ -55,7 +55,14 @@ U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configurer
 * Een netwerk configuratie bestand (netcfg-alleen voor klassieke VNets). Zie het artikel [een VNet configureren met behulp van een netwerk configuratie bestand](virtual-networks-using-network-configuration-file.md) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welke adresbereiken kan ik gebruiken in mijn VNets?
-Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/html/rfc1918). Bijvoorbeeld 10.0.0.0/16. U kunt de volgende adresbereiken niet toevoegen:
+We raden u aan de adresbereiken te gebruiken die zijn geïnventariseerd in [RFC 1918](https://tools.ietf.org/html/rfc1918), die zijn gereserveerd door de IETF voor persoonlijke, niet-Routeer bare adres ruimten:
+* 10.0.0.0-10.255.255.255 (10/8-voor voegsel)
+* 172.16.0.0-172.31.255.255 (172.16/12-voor voegsel)
+* 192.168.0.0-192.168.255.255 (192.168/16-voor voegsel)
+
+Andere adres ruimten werken mogelijk wel, maar kunnen ongewenste neven effecten hebben.
+
+Daarnaast kunt u de volgende adresbereiken niet toevoegen:
 * 224.0.0.0/4 (multi cast)
 * 255.255.255.255/32 (broadcast)
 * 127.0.0.0/8 (loop back)
@@ -131,7 +138,7 @@ Ja. U kunt IP-adressen van de DNS-server opgeven in de VNet-instellingen. De ins
 Referentie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Kan ik mijn DNS-servers wijzigen nadat ik het netwerk heb gemaakt?
-Ja. U kunt de DNS-server lijst voor uw VNet op elk gewenst moment wijzigen. Als u de lijst met DNS-servers wijzigt, moet u een DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het VNet, zodat de nieuwe DNS-instellingen van kracht worden. Voor Vm's met Windows OS kunt u dit doen door rechtstreeks `ipconfig /renew` op de virtuele machine te typen. Raadpleeg de documentatie over het verlengen van DHCP-leases voor het specifieke type besturings systeem voor andere typen besturings systemen. 
+Ja. U kunt de DNS-server lijst voor uw VNet op elk gewenst moment wijzigen. Als u de lijst met DNS-servers wijzigt, moet u een DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het VNet, zodat de nieuwe DNS-instellingen van kracht worden. Voor Vm's met Windows OS kunt u dit doen door `ipconfig /renew` rechtstreeks op de virtuele machine te typen. Raadpleeg de documentatie over het verlengen van DHCP-leases voor het specifieke type besturings systeem voor andere typen besturings systemen. 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Wat is Azure DNS en werkt samen met VNets?
 Door Azure geleverde DNS is een DNS-service voor meerdere tenants die door micro soft wordt aangeboden. Azure registreert al uw Vm's en Cloud service-rolinstanties in deze service. Deze service biedt naam omzetting per hostnaam voor Vm's en rolinstanties die zich in dezelfde Cloud service bevinden, en op FQDN voor Vm's en rolinstanties in hetzelfde VNet. Zie [naam omzetting voor vm's en Cloud Services rolinstanties voor](virtual-networks-name-resolution-for-vms-and-role-instances.md)meer informatie over DNS.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738096"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482680"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde functionaliteit voor het controleren van web apps, mobiele apps en api's in de [Azure Portal](https://portal.azure.com).
@@ -58,7 +58,7 @@ U kunt quota's verhogen of verwijderen uit uw app door uw App Service-abonnement
 ## <a name="understand-metrics"></a>Metrische gegevens begrijpen
 
 > [!NOTE]
-> Het gebruik van het **Bestands systeem** is een nieuwe waarde die wereld wijd wordt getotaliseerd, er worden geen gegevens verwacht, tenzij u White List hebt voor een persoonlijke preview.
+> Het gebruik van het **Bestands systeem** is een nieuwe waarde die wereld wijd wordt geïmplementeerd, er worden geen gegevens verwacht, tenzij u toegang hebt gekregen voor een persoonlijke preview.
 > 
 
 > [!IMPORTANT]
@@ -73,7 +73,7 @@ De beschik bare metrische gegevens voor een app zijn:
 | **Reactie tijd** | De tijd die nodig is voor het uitvoeren van aanvragen voor de app, in seconden. |
 | **Gemiddelde reactie tijd (afgeschaft)** | De gemiddelde tijd die nodig is voor het verwerken van aanvragen in de app. |
 | **Gemiddelde werkset geheugen** | De gemiddelde hoeveelheid geheugen die wordt gebruikt door de app, in mega bytes (MiB). |
-| **Verbindingen** | Het aantal gekoppelde sockets dat in de sandbox aanwezig is (W3wp. exe en de onderliggende processen).  Een gebonden socket wordt gemaakt door binding-Api's ()/Connect () aan te roepen en blijft totdat de andere socket is gesloten met CloseHandle ()/closesocket (). |
+| **Verbindingen** | Het aantal gekoppelde sockets dat in de sandbox is bestaande (w3wp.exe en de onderliggende processen).  Een gebonden socket wordt gemaakt door binding-Api's ()/Connect () aan te roepen en blijft totdat de andere socket is gesloten met CloseHandle ()/closesocket (). |
 | **CPU-tijd** | De hoeveelheid CPU die wordt verbruikt door de app, in seconden. Zie [CPU-tijd versus CPU-percentage](#cpu-time-vs-cpu-percentage)voor meer informatie over deze metrische gegevens. |
 | **Huidige Assembly's** | Het huidige aantal Assembly's dat is geladen in alle AppDomains in deze toepassing. |
 | **Gegevens in** | De hoeveelheid inkomende band breedte die door de app wordt gebruikt in MiB. |
@@ -138,13 +138,13 @@ Als u de status van de verschillende quota's en metrische gegevens wilt bekijken
 
 ![De grafiek quota's in het Azure Portal][quotas]
 
-Selecteer **instellingen** > **quota's**om quota's te vinden. In de grafiek kunt u het volgende controleren: 
+Selecteer **instellingen**quota's om quota's te vinden  >  **Quotas**. In de grafiek kunt u het volgende controleren: 
 1. De naam van het quotum.
 1. Het interval voor opnieuw instellen.
 1. De huidige limiet.
 1. De huidige waarde.
 
-![Grafiek met metrische gegevens in][metrics] de Azure Portal hebt u rechtstreeks toegang tot metrische gegevens via de pagina resource **overzicht** . Hier ziet u grafieken die enkele van de metrische gegevens van de app vertegenwoordigen.
+![Grafiek met metrische gegevens in de Azure Portal ][metrics] hebt u rechtstreeks toegang tot metrische gegevens via de pagina resource **overzicht** . Hier ziet u grafieken die enkele van de metrische gegevens van de app vertegenwoordigen.
 
 Wanneer u op een van deze grafieken klikt, wordt u naar de weer gave metrische gegevens geleid, waar u aangepaste grafieken kunt maken, verschillende metrische gegevens en nog veel meer wilt opvragen. 
 

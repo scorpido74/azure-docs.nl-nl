@@ -1,25 +1,14 @@
 ---
 title: Bewaar geheimen in een sleutel kluis in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het opslaan van geheimen in een Azure Key Vault en het gebruik ervan tijdens het maken van een VM, formule of omgeving.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
-ms.author: spelluru
-ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896779"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481643"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Bewaar geheimen in een sleutel kluis in Azure DevTest Labs
 Mogelijk moet u een complex geheim invoeren wanneer u Azure DevTest Labs: wacht woord voor uw Windows-VM, een open bare SSH-sleutel voor uw Linux-VM of uw persoonlijke toegangs token gebruikt om uw Git-opslag plaats via een artefact te klonen. Geheimen zijn meestal lang en bevatten wille keurige tekens. Het invoeren van deze kan daarom lastig en onhandig zijn, met name als u hetzelfde geheim meerdere keren gebruikt.

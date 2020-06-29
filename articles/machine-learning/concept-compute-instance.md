@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 8c03df8fb0cd8f5f092450ebe4c66266d2ff4293
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 8713e7538ae65fc8e750d5b3244482a5503b0e37
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816349"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483258"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -33,7 +33,7 @@ Een reken instantie is een volledig beheerd werk station in de cloud dat is geop
 
 |Belangrijkste voordelen||
 |----|----|
-|Productiviteit|Gegevens wetenschappers kunnen modellen bouwen en implementeren met behulp van geïntegreerde notebooks en de volgende hulpprogram ma's in hun webbrowser:<br/>-Jupyter<br/>-Jjupyterlab<br/>-RStudio|
+|Productiviteit|Gegevens wetenschappers kunnen modellen bouwen en implementeren met behulp van geïntegreerde notebooks en de volgende hulpprogram ma's in hun webbrowser:<br/>-Jupyter<br/>-Jjupyterlab<br/>-RStudio (preview-versie)|
 |Beheerde & beveiligd|Verminder uw beveiligings footprint en voeg naleving toe met beveiligings vereisten voor ondernemingen. Reken instanties bieden robuust beheer beleid en beveiligde netwerk configuraties zoals:<br/><br/>-Automatisch inrichten vanuit Resource Manager-sjablonen of Azure Machine Learning SDK<br/>- [Op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview)<br/>- [Ondersteuning voor virtuele netwerken](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH-beleid voor het inschakelen/uitschakelen van SSH-toegang|
 |Vooraf geconfigureerd &nbsp; of &nbsp; ml|Bespaar tijd bij het instellen van taken met vooraf geconfigureerde en up-to-date ML-pakketten, diepe leer frameworks, GPU-Stuur Programma's.|
 |Volledig aanpasbaar|Uitgebreide ondersteuning voor Azure VM-typen, waaronder Gpu's en persistente aanpassing op laag niveau, zoals het installeren van pakketten en stuur Programma's, maakt een koud probleem van geavanceerde scenario's. |
@@ -58,7 +58,7 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 
 |**R** -hulpprogram ma's & omgevingen|Details|
 |----|:----:|
-|Open source-editie van RStudio-server||
+|RStudio server open source Edition (preview-versie)||
 |R-kernel||
 |Azure Machine Learning SDK voor R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-voorbeelden|
 

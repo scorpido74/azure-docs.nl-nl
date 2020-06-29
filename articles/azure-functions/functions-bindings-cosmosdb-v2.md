@@ -1,24 +1,24 @@
 ---
-title: Azure Cosmos DB bindingen voor de functies 2. x
+title: Azure Cosmos DB bindingen voor de functies 2. xD en hoger
 description: Meer informatie over het gebruik van Azure Cosmos DB triggers en bindingen in Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
-ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77605769"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482170"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>Azure Cosmos DB trigger en bindingen voor Azure Functions 2. x-overzicht
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB trigger en bindingen voor Azure Functions 2. x-en hoger-overzicht
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1](functions-bindings-cosmosdb.md)
-> * [Versie 2](functions-bindings-cosmosdb-v2.md)
+> * [Versie 1:](functions-bindings-cosmosdb.md)
+> * [Versie 2 en hoger](functions-bindings-cosmosdb-v2.md)
 
-In deze reeks artikelen wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bindingen kunt gebruiken in azure functions 2. x. Azure Functions ondersteunt trigger-, invoer-en uitvoer bindingen voor Azure Cosmos DB.
+In deze reeks artikelen wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bindingen in azure functions 2. x en hoger kunt gebruiken. Azure Functions ondersteunt trigger-, invoer-en uitvoer bindingen voor Azure Cosmos DB.
 
 | Bewerking | Type |
 |---------|---------|
@@ -27,9 +27,9 @@ In deze reeks artikelen wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/ser
 | Wijzigingen in een Azure Cosmos DB document opslaan  |[Uitvoer binding](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> Deze verwijzing is voor [Azure functions versie 2. x](functions-versions.md).  Zie [Azure Cosmos DB bindingen voor Azure functions 1. x](functions-bindings-cosmosdb.md)voor informatie over het gebruik van deze bindingen in functions 1. x.
+> Deze verwijzing is voor [Azure functions versie 2. x of hoger](functions-versions.md).  Zie [Azure Cosmos DB bindingen voor Azure functions 1. x](functions-bindings-cosmosdb.md)voor informatie over het gebruik van deze bindingen in functions 1. x.
 >
-> Deze binding heeft oorspronkelijk de naam DocumentDB. In functies versie 2. x zijn de trigger, bindingen en pakket alle benoemde Cosmos DB.
+> Deze binding heeft oorspronkelijk de naam DocumentDB. In functies versie 2. x en hoger zijn de trigger, bindingen en pakket de naam Cosmos DB.
 
 ## <a name="supported-apis"></a>Ondersteunde Api's
 

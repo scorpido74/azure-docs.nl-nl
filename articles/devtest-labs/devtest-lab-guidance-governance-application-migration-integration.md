@@ -1,24 +1,15 @@
 ---
 title: Toepassings migratie en integratie in Azure DevTest Labs
 description: Dit artikel bevat richt lijnen voor de governance van Azure DevTest Labs-infra structuur in de context van toepassings migratie en-integratie.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2019
-ms.author: spelluru
+ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898267"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481575"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance van Azure DevTest Labs-infra structuur-toepassings migratie en-integratie
 Als uw ontwikkel-en test omgeving eenmaal tot stand is gebracht, moet u rekening houden met de volgende vragen:

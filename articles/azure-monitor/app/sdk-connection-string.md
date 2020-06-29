@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125703"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482119"
 ---
 # <a name="connection-strings"></a>Verbindingsreeksen
 
@@ -31,7 +31,7 @@ Klanten scenario's waarin we dit hebben gevisualiseerd, hebben de meeste impact:
 
 - Firewall-uitzonde ringen of proxy omleidingen 
 
-    In gevallen waarin de bewaking voor intranet webserver is vereist, hebben onze oudere oplossingen klanten de mogelijkheid verleend om afzonderlijke service-eind punten toe te voegen aan uw configuratie. Zie [hier](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)voor meer informatie. 
+    In gevallen waarin de bewaking voor intranet webserver is vereist, hebben onze oudere oplossingen klanten de mogelijkheid verleend om afzonderlijke service-eind punten toe te voegen aan uw configuratie. Klik [hier](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server) voor meer informatie. 
     Verbindings reeksen bieden een beter alternatief door deze moeite te beperken tot één instelling. Een eenvoudig voor voegsel, achtervoegsel wijziging maakt automatische populatie en omleiding van alle eind punten naar de juiste services mogelijk. 
 
 - Soevereine of hybride Cloud omgevingen
@@ -57,7 +57,7 @@ De verbinding heeft een maximale ondersteunde lengte van 4096 tekens.
 
 De verbindings reeks bestaat uit een lijst met instellingen die worden weer gegeven als sleutel-waardeparen, gescheiden door punt komma's:`key1=value1;key2=value2;key3=value3`
 
-#### <a name="syntax"></a>Syntaxis
+#### <a name="syntax"></a>Syntax
 
 - `InstrumentationKey`(bijvoorbeeld: 00000000-0000-0000-0000-000000000000)  Het connection string is een **verplicht** veld.
 - `Authorization`(bijvoorbeeld: Ikey) (Deze instelling is optioneel, omdat we alleen iKey-autorisatie ondersteunen.)
@@ -165,7 +165,7 @@ Een connection string kan worden ingesteld met behulp van code, omgevings variab
 
 TelemetryConfiguration. Connections Tring:https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
-.Net expliciet ingesteld:
+.NET expliciet ingesteld:
 ```csharp
 var configuration = new TelemetryConfiguration
 {
@@ -182,8 +182,16 @@ var configuration = new TelemetryConfiguration
 </ApplicationInsights>
 ```
 
+NetCore expliciet ingesteld:
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    var options = new ApplicationInsightsServiceOptions { ConnectionString = "InstrumentationKey=00000000-0000-0000-0000-000000000000;" };
+    services.AddApplicationInsightsTelemetry(options: options);
+}
+```
 
-NetCore config. json: 
+NetCore-config.jsop: 
 
 ```json
 {
@@ -202,7 +210,7 @@ Java (v 2.5. x) expliciet ingesteld:
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
 
-ApplicationInsights. XML
+ApplicationInsights.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
@@ -210,7 +218,7 @@ ApplicationInsights. XML
 </ApplicationInsights>
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/js)
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 Belang rijk: Java script biedt geen ondersteuning voor het gebruik van omgevings variabelen.
 
@@ -266,7 +274,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 Gebruik tijdens runtime:
 
-* [Door IIS gehoste apps voor Azure VM en Azure virtual machine Scale set](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Met IIS gehoste apps in Azure-VM en virtuele-machineschaalset van Azure](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS-server](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 

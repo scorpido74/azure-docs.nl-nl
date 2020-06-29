@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6141440cdb5b232145417c6051cb340e806f9352
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: b98a5a25ed0aa97a8fa187a9bb1a8075f550d7ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85338007"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482391"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -187,16 +187,16 @@ Import-Module .\HybridRegistration.psd1
 Voer nu de `Add-HybridRunbookWorker` cmdlet uit met de volgende syntaxis.
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-U kunt de informatie ophalen die vereist is voor de para meters `EndPoint` en `Token` van de pagina **sleutels** in uw Automation-account. Selecteer **sleutels** onder de sectie **account instellingen** aan de linkerkant van de pagina.
+U kunt de informatie ophalen die vereist is voor de para meters `Url` en `Key` van de pagina **sleutels** in uw Automation-account. Selecteer **sleutels** onder de sectie **account instellingen** aan de linkerkant van de pagina.
 
 ![Pagina sleutels beheren](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* `EndPoint`Kopieer de waarde voor **URL**voor de para meter.
+* `Url`Kopieer de waarde voor **URL**voor de para meter.
 
-* Kopieer voor de `Token` para meter de waarde voor de **primaire toegangs sleutel**.
+* Kopieer voor de `Key` para meter de waarde voor de **primaire toegangs sleutel**.
 
 * Gebruik de `GroupName` naam van de Hybrid Runbook worker groep voor de para meter. Als deze groep al bestaat in het Automation-account, wordt de huidige machine hieraan toegevoegd. Als deze groep niet bestaat, wordt deze toegevoegd.
 
@@ -219,7 +219,7 @@ Modules die zijn geïnstalleerd, moeten zich bevinden in een locatie waarnaar wo
 3. Open een Power shell-sessie in de beheerders modus en voer de volgende opdracht uit met uw URL en primaire toegangs sleutel waarden. Gebruik de `Verbose` para meter voor een gedetailleerd logboek van het verwijderings proces. Als u verouderde machines uit uw Hybrid Worker groep wilt verwijderen, gebruikt u de optionele `machineName` para meter.
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <primaryAccessKey> -machineName <computerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>Een Hybrid Worker-groep verwijderen

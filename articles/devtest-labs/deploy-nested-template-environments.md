@@ -1,23 +1,14 @@
 ---
 title: Geneste sjabloon omgevingen implementeren in Azure DevTest Labs
 description: Meer informatie over het implementeren van geneste Azure Resource Manager sjablonen om omgevingen te voorzien van Azure DevTest Labs.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
-ms.author: spelluru
-ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897031"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481337"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Geneste Azure Resource Manager sjablonen implementeren voor test omgevingen
 Met een geneste implementatie kunt u andere Azure Resource Manager sjablonen uitvoeren vanuit een belang rijke Resource Manager-sjabloon. Hiermee kunt u uw implementatie afbreken in een set doel gerichte en specifieke sjablonen. Dit biedt voor delen op het gebied van testen, hergebruik en lees baarheid. Het artikel [met gekoppelde sjablonen bij het implementeren van Azure-resources](../azure-resource-manager/templates/linked-templates.md) biedt een goed overzicht van deze oplossing met verschillende code voorbeelden. In dit artikel vindt u een voor beeld dat specifiek is voor Azure DevTest Labs. 

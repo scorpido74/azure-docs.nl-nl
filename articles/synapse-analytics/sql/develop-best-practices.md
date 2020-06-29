@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834948"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482510"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Aanbevolen procedures voor het ontwikkelen van Synapse-SQL
 In dit artikel worden richt lijnen en aanbevolen procedures beschreven voor het ontwikkelen van uw data warehouse-oplossing. 
@@ -106,7 +106,7 @@ Omdat column Store-segmenten van hoge kwaliteit belang rijk zijn, is het een goe
 Aangezien column Store-tabellen doorgaans geen gegevens naar een gecomprimeerd column Store-segment pushen totdat er meer dan 1.000.000 rijen per tabel zijn en elke tabel in de SQL-groep is gepartitioneerd in 60 tabellen, profiteren column Store-tabellen niet voor een query tenzij de tabel meer dan 60.000.000 rijen heeft.  
 
 > [!TIP]
-> Voor tabellen met minder dan 60.000.000 rijen kan een columstore-index niet de optimale oplossing zijn.  
+> Voor tabellen met minder dan 60.000.000 rijen is het mogelijk dat een column store-index niet de optimale oplossing is.  
 
 Als u uw gegevens partitioneert, houd er dan ook rekening mee dat elke partitie 1 miljoen rijen nodig heeft om voordeel te halen uit een geclusterde columnstore-index.  Als een tabel 100 partities heeft, moet deze ten minste 6.000.000.000 rijen hebben om te profiteren van een geclusterde column Store (60 distributies *100 partities* 1.000.000 rijen).  
 
@@ -150,7 +150,7 @@ Als dat mogelijk is, kunt u bestanden voorbereiden voor betere prestaties:
 
 Gegevens zijn vaak ingedeeld in partities. U kunt SQL op aanvraag een instructie geven om specifieke mappen en bestanden op te vragen. Hiermee beperkt u het aantal bestanden en de hoeveelheid gegevens die de query moet lezen en verwerken. 
 
-Hierdoor krijgt u betere prestaties. Controleer voor meer informatie de functies [filename](develop-storage-files-overview.md#filename-function) en [filepath](develop-storage-files-overview.md#filepath-function) en voor beelden voor het [uitvoeren van query's op specifieke bestanden](query-specific-files.md).
+Hierdoor krijgt u betere prestaties. Controleer voor meer informatie de functies [filename](query-data-storage.md#filename-function) en [filepath](query-data-storage.md#filepath-function) en voor beelden voor het [uitvoeren van query's op specifieke bestanden](query-specific-files.md).
 
 Als uw gegevens in de opslag niet zijn gepartitioneerd, kunt u overwegen deze te partitioneren zodat u de query's met betrekking tot die bestanden optimaliseert.
 

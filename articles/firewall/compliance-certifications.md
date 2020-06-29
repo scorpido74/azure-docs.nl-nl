@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3de9ef12619ed27eb48af64c4bf4bd1a79229d04
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482174"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483156"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall-certificeringen
 
@@ -26,7 +26,7 @@ De volgende Azure Firewall-certificeringen zijn voor wereld wijd Azure:
 
 - 23 NYCRR 500
 - AFM en DNB (Nederland)
-- AMF en ACPR (Frank rijk)
+- AMF en ACPR (Frankrijk)
 - APRA (Australië)
 - Argentinië BESCHERMINGSWET
 - Australië-IRAP
@@ -35,19 +35,21 @@ De volgende Azure Firewall-certificeringen zijn voor wereld wijd Azure:
 - CSA STAR-Attestation
 - CSA ster certificering
 - Zelf evaluatie van CSA ster
-- Wetten voor Canadese privacy
+- Canadese privacywetgeving
 - DPP (UK)
 - ALGORITHMS IAF EU
-- EU-model clausules
+- EU-modelclausules
 - Europese Bank instantie
-- FCA en PRA (UK)
+- FCA en PRA (VK)
 - FERPA (VS)
 - FFIEC (VS)
-- FINMA (Zwitser land)
+- FINMA (Zwitserland)
 - FSA (Denemarken)
 - GLBA (VS)
 - Duitsland C5
 - GxP (FDA 21 CFR Part 11)
+- HIPPA
+- HITECH Act (VS)
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -62,7 +64,7 @@ De volgende Azure Firewall-certificeringen zijn voor wereld wijd Azure:
 - MPAA (VS)
 - NBB en FSMA (België)
 - NEN 7510:2011 (Nederland)
-- NHS IG Toolkit (UK)
+- NHS IG Toolkit (VK)
 - Nederland BIR 2012
 - OSFI (Canada)
 - PCI DSS-niveau 1
@@ -87,14 +89,16 @@ De volgende Azure Firewall-certificeringen zijn voor Azure Government:
 - CSA STAR-Attestation
 - DFARS
 - DoD DISA SRG Level 2
-- Splinter 10 CFR-deel 810
-- OORMERKEN
+- DoE 10 CFR Part 810
+- EAR
 - FIPS 140-2
 - FedRAMP High
+- HIPPA
+- HITECH Act (VS)
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E (VERENIGDE STATEN)
+- MARS-E (VS)
 - NERC
 - NIST Cyber beveiliging Framework
 - NIST SP 800-171
@@ -102,7 +106,7 @@ De volgende Azure Firewall-certificeringen zijn voor Azure Government:
 - Sofi 2-type 2
 - SOC 3
 - SOX (VS)
-- Sectie 508 Vpat's
+- Section 508 VPATs
 
 ## <a name="icsa-labs-corporate-firewall-certification"></a>Certificering van ICSA Labs Corporate firewall
 

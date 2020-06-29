@@ -9,13 +9,13 @@ ms.author: sgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 507b03266e70ae082872890c9d5cddb50fdeb703
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719988"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481881"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Gegevens verwerking optimaliseren met Azure Machine Learning
 
@@ -61,9 +61,10 @@ Indexeren | Een index Toep assen en gebruiken, een samen vatting waarin wordt ui
 
 Als de vorige aanbevelingen niet genoeg zijn en u geen virtuele machine kunt ophalen die aan uw gegevens voldoet, 
 
-* Gebruik een framework zoals `Spark` of `Dask` om de gegevens uit het geheugen te verwerken. Bij deze optie wordt de data frame geladen in de RAM-partitie per partitie en verwerkt, waarbij het uiteindelijke resultaat aan het eind wordt verzameld. 
+* Gebruik een framework zoals `Spark` of `Dask` om de gegevens uit het geheugen te verwerken. Bij deze optie wordt de data frame geladen in de RAM-partitie per partitie en verwerkt, waarbij het uiteindelijke resultaat aan het eind wordt verzameld.  
 
 * Uitschalen naar een cluster met behulp van een gedistribueerd Framework. Bij deze optie worden de belasting van gegevens verwerking opgesplitst en verwerkt op meerdere Cpu's die parallel werken, met het uiteindelijke resultaat dat aan het einde is verzameld.
+
 
 ### <a name="recommended-distributed-frameworks"></a>Aanbevolen gedistribueerde Frameworks
 
@@ -75,6 +76,8 @@ Als u bekend bent met`Pandas`| `Modin`of `Dask` Data frame
 Als u wilt`Spark` | `PySpark`
 Voor gegevens die kleiner zijn dan 1 GB | `Pandas`lokaal **of** een externe Azure machine learning reken instantie
 Voor gegevens die groter zijn dan 10 GB| Verplaatsen naar een cluster met `Ray` , `Dask` of`Spark`
+
+U kunt `Dask` clusters maken in azure ml Compute Cluster met het [dask-cloudprovider-](https://cloudprovider.dask.org/en/latest/#azure) pakket. U kunt ook `Dask` lokaal uitvoeren op een reken instantie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

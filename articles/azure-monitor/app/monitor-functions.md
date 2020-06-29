@@ -4,13 +4,13 @@ description: Azure Monitor naadloos kan worden geïntegreerd met uw toepassing d
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/20/2020
-ms.openlocfilehash: a936c77abb9aed5886fae8b2ec4a10bb076b7cb5
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.date: 06/26/2020
+ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776739"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482102"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Functions met Azure Monitor bewaken Application Insights
 
@@ -20,11 +20,10 @@ Application Insights verzamelt logboek-, prestatie-en fout gegevens en detecteer
 
 De vereiste Application Insights instrumentatie is ingebouwd in Azure Functions. Het enige wat u nodig hebt, is een geldige instrumentatie sleutel om uw functie-app te verbinden met een Application Insights bron. De instrumentatie sleutel moet worden toegevoegd aan de toepassings instellingen wanneer de resource van de functie-app wordt gemaakt in Azure. Als uw functie-app deze sleutel nog niet heeft, kunt u deze hand matig instellen. Lees voor meer informatie over het [bewaken van Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd).
 
-## <a name="distributed-tracing-for-java-applications-public-preview"></a>Gedistribueerde tracering voor Java-toepassingen (open bare preview)
-
+## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>Gedistribueerde tracering voor Java-toepassingen in Windows (open bare preview)
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als open bare Preview voor Java-Azure Functions. Voor het verbruiks plan geldt een koude start implicatie van 8-9 seconden.
+> Deze functie is momenteel beschikbaar als open bare Preview voor Java-Azure Functions in Windows, gedistribueerde tracering voor Java Azure Functions op Linux wordt niet ondersteund. Voor het verbruiks abonnement is een koude start van 8-9 seconden.
 
 Als uw toepassingen in Java zijn geschreven, kunt u rijkere gegevens bekijken uit uw functions-toepassingen, waaronder, aanvragen, afhankelijkheden, logboeken en metrieken. Met de aanvullende gegevens kunt u ook end-to-end-trans acties bekijken en diagnosticeren en de toepassings toewijzing bekijken, waarmee veel trans acties worden weer gegeven met een topologische weer gave van de manier waarop de systemen communiceren, en wat de gemiddelde prestatie-en fout tarieven zijn.
 

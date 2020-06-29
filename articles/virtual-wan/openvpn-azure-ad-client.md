@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/27/2020
+ms.date: 06/26/2020
 ms.author: alzam
-ms.openlocfilehash: b717e4f5f91e22ea3aef818e15be1c93ca06b4f4
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: bf507ff75d88ac4c549233e50a44ea60ab212886
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750464"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482986"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Een VPN-client configureren voor P2S OpenVPN-protocolverbindingen: Azure Active Directory-verificatie
 
@@ -206,6 +206,26 @@ U kunt het gedownloade XML-profiel bestand wijzigen ** \<includeroutes> \<route>
     <includeroutes>
         <route>
             <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>Hoe kan ik alle verkeer naar de VPN-tunnel (geforceerde tunnel) door sturen?
+
+U kunt het gedownloade XML-profiel bestand wijzigen ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** en de Tags toevoegen
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>0.0.0.0</destination><mask>1</mask>
+        </route>
+        <route>
+            <destination>128.0.0.0</destination><mask>1</mask>
         </route>
     </includeroutes>
     

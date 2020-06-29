@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 911fa7d509e756f482b2deefad11e35f9cb5ec01
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117944"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483309"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "85117944"
 Meer informatie over het wijzigen van de toegangs sleutels voor Azure Storage accounts die worden gebruikt door Azure Machine Learning. Azure Machine Learning kunt opslag accounts gebruiken om gegevens of getrainde modellen op te slaan.
 
 Uit veiligheids overwegingen moet u de toegangs sleutels voor een Azure Storage-account mogelijk wijzigen. Wanneer u de toegangs sleutel opnieuw genereert, moet Azure Machine Learning worden bijgewerkt om de nieuwe sleutel te gebruiken. Azure Machine Learning maakt mogelijk gebruik van het opslag account voor zowel model opslag als een gegevens opslag.
+
+> [!IMPORTANT]
+> Referenties registred met gegevens opslag worden opgeslagen in uw Azure Key Vault die zijn gekoppeld aan de werk ruimte. Als u voor uw Key Vault [voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete) hebt ingeschakeld, moet u dit artikel volgen voor het bijwerken van referenties. Het ongedaan maken van de registratie van het gegevens archief en het opnieuw registreren onder dezelfde naam zal mislukken.
 
 ## <a name="prerequisites"></a>Vereisten
 

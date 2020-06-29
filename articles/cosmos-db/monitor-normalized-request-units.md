@@ -5,19 +5,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 05/10/2020
-ms.openlocfilehash: 7a7428d3445d1d5846618bfd84c47121dc9a4bc1
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/25/2020
+ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262749"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482901"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Genormaliseerde RU/s voor een Azure Cosmos-container of-account bewaken
 
 Azure Monitor voor Azure Cosmos DB biedt een weer gave van metrische gegevens voor het bewaken van uw account en het maken van Dash boards. De Azure Cosmos DB metrische gegevens worden standaard verzameld. voor deze functie hoeft u niets expliciet in te scha kelen of te configureren.
 
-De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien hoe goed verzadigde replica's zijn met betrekking tot het verbruik van aanvraag eenheden in de partitie sleutel bereik. Azure Cosmos DB distribueert de door Voer gelijkmatig over alle fysieke partities. Deze metrische gegevens bieden een per seconde weer gave van het maximale doorvoer gebruik binnen een replicaset. Als u deze metrische gegevens ziet, moet u de door Voer verhogen om te voldoen aan de behoeften van uw werk belasting.
+De **genormaliseerde** metrische gegevens over het gebruik van ru worden gebruikt om te zien hoe goed verzadigde replica's zijn met betrekking tot het verbruik van aanvraag eenheden in de partitie sleutel bereik. Azure Cosmos DB distribueert de door Voer gelijkmatig over alle fysieke partities. Deze metrische gegevens bieden een per seconde weer gave van het maximale doorvoer gebruik binnen een replicaset. Gebruik deze metrische gegevens voor het berekenen van het gebruik van de RU/s in partities voor de opgegeven container. Als u deze metrische gegevens ziet, moet u de door Voer verhogen om te voldoen aan de behoeften van uw werk belasting.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Wat u kunt verwachten en wanneer genormaliseerde RU/s hoger is
 

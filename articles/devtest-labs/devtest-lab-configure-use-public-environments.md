@@ -1,25 +1,14 @@
 ---
 title: Open bare omgevingen configureren en gebruiken in Azure DevTest Labs | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u open bare omgevingen (Azure Resource Manager sjablonen in een Git-opslag plaats) in Azure DevTest Labs kunt configureren en gebruiken.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 127a6986e04cf90f69b2a8ec70b90b877e534708
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896282"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482663"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Open bare omgevingen configureren en gebruiken in Azure DevTest Labs
 Azure DevTest Labs heeft een [open bare opslag plaats van Azure Resource Manager sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) die u kunt gebruiken om omgevingen te maken zonder dat u zelf verbinding hoeft te maken met een externe github-bron. Deze opslag plaats bevat veelgebruikte sjablonen, zoals Azure Web Apps, Service Fabric cluster en ontwikkel share point-farm omgeving. Deze functie is vergelijkbaar met de open bare opslag plaats van artefacten die zijn opgenomen voor elk lab dat u maakt. Met de opslag plaats omgeving kunt u snel aan de slag met vooraf gemaakte omgevings sjablonen met minimale invoer parameters om u te voorzien van een soepele aan de slag-ervaring voor PaaS-resources binnen Labs. 

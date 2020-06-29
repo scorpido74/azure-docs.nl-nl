@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/30/2020
+ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530985"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481779"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>De virtuele-machine-extensie Log Analytics voor Windows
 
@@ -36,6 +36,7 @@ De volgende tabel bevat een overzicht van de versie van de Windows Log Analytics
 
 | Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Releaseopmerkingen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Hiermee schakelt u connectiviteit via een persoonlijke koppeling met behulp van Azure Monitor Beveiligingsbereiken</li><li>Voegt opname beperking toe om een onverwachte, onbedoelde instroom te voor komen bij opname naar een werk ruimte</li><li>Voegt ondersteuning toe voor aanvullende Azure Government Clouds en regio's</li><li>Hiermee wordt een bug opgelost waarbij HealthService.exe vastgelopen</li></ul> |
 | 10.20.18029 | 1.0.18029 | Maart 2020   | <ul><li>Hiermee wordt ondersteuning voor het ondertekenen van SHA-2-code toegevoegd</li><li>Verbetert de installatie en het beheer van de VM-extensie</li><li>Hiermee wordt een fout in azure Arc voor servers-integratie opgelost</li><li>Voegt een ingebouwd hulp programma voor probleem oplossing toe voor klant ondersteuning</li><li>Voegt ondersteuning toe voor aanvullende Azure Government regio's</li> |
 | 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li></ul> |
 | 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li><li> Verhoogde MaxExpressionDepth tot 10000 </li></ul> |
@@ -88,7 +89,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 | Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| uitgever | Micro soft. EnterpriseCloud. monitoring |
+| publisher | Micro soft. EnterpriseCloud. monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
 | workspaceId (bijvoorbeeld) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |

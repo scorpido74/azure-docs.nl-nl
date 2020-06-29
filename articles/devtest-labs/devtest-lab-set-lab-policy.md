@@ -1,24 +1,14 @@
 ---
 title: Testlab-beleids regels beheren in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het definiëren van Lab-beleid, zoals VM-grootten, maximum aantal Vm's per gebruiker en het afsluiten van de automatisering.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 7756aa64-49ca-45a0-9f90-0fd101c7be85
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
-ms.author: spelluru
-ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896800"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483394"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Alle beleids regels voor een lab in Azure DevTest Labs beheren
 

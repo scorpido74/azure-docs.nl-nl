@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4bbc3510cc273504d7c97287d3aeb1948db2eb2
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: c4cdfc35d39be827109c56a16d68f6e51b56ef43
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390666"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483343"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
 
@@ -124,7 +124,6 @@ Hier volgt een voor beeld van een digitale dubbele indeling als een JSON-object:
   "component": {
     "TableOccupancy": 1,
     "$metadata": {
-      "$model": "dtmi:com:contoso:Table;1",
       "TableOccupancy": {
         "desiredValue": 1,
         "desiredVersion": 3,
@@ -163,7 +162,7 @@ Wanneer wordt weer gegeven als een JSON-object, worden de volgende velden weer g
 
 | Veldnaam | Beschrijving |
 | --- | --- |
-| `$edgeId` | Een door de gebruiker gegeven teken reeks die de ID van deze relatie rand vertegenwoordigt. Deze teken reeks is uniek in de context van de bron digitale dubbele, wat betekent dat deze `sourceId`  +  `edgeId` uniek is in de context van het Azure Digital apparaatdubbels-exemplaar. |
+| `$relationshipId` | Een door de gebruiker gegeven teken reeks voor de ID van deze relatie. Deze teken reeks is uniek in de context van de bron digitale dubbele, wat betekent dat deze `sourceId`  +  `relationshipId` uniek is in de context van het Azure Digital apparaatdubbels-exemplaar. |
 | `$sourceId` | De ID van de bron digitale dubbele |
 | `$targetId` | De ID van de doel-digitale-dubbele |
 | `$relationshipName` | De naam van de relatie |
@@ -173,9 +172,10 @@ Hier volgt een voor beeld van een relatie die is opgemaakt als een JSON-object:
 
 ```json
 {
-  "$edgeId": "Edge-01",
+  "$relationshipId": "relationship-01",
+  "$etag": "W/\"506e8391-2b21-4ac9-bca3-53e6620f6a90\"",
   "$sourceId": "GroundFloor",
-  "$relationship": "contains",
+  "$relationshipName": "contains",
   "$targetId": "Cafe",
   "startDate": "2020-02-04"
 }

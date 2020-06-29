@@ -1,25 +1,14 @@
 ---
 title: Een virtueel netwerk configureren in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het configureren van een bestaand virtueel netwerk en subnet, en het gebruik ervan in een VM met Azure DevTest Labs
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 6cda99c2-b87e-4047-90a0-5df10d8e9e14
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
-ms.author: spelluru
-ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 0819527cfc2a9dfd4e93226542acb7cb0c6d7273
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84896275"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482646"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Een virtueel netwerk configureren in Azure DevTest Labs
 Zoals beschreven in het artikel [een VM toevoegen aan een Lab](devtest-lab-add-vm.md)wanneer u een virtuele machine in een Lab maakt, kunt u een geconfigureerd virtueel netwerk opgeven. U moet bijvoorbeeld toegang hebben tot uw Corpnet-resources van uw virtuele machines met behulp van het virtuele netwerk dat is geconfigureerd met ExpressRoute of site-naar-site-VPN.

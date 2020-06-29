@@ -1,25 +1,14 @@
 ---
 title: Het formaat van een virtuele machine in een lab in Azure DevTest Labs wijzigen
 description: Meer informatie over het wijzigen van de grootte van een virtuele machine (VM) in Azure DevTest Labs op basis van uw behoeften voor CPU-, netwerk-of schijf prestaties.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-editor: ''
-ms.assetid: 8460f09e-482f-48ba-a57a-c95fe8afa001
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898239"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482017"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Het formaat van een virtuele machine in een lab in Azure DevTest Labs wijzigen
 Een van de belang rijke functies van virtuele Azure-machines is dat hiermee de grootte van een virtuele machine (VM) kan worden gewijzigd op basis van uw behoeften voor CPU-, netwerk-of schijf prestaties. Azure DevTest Labs ondersteunt deze functie nu voor Vm's in een lab. De functie voor het wijzigen van het formaat voldoet aan het lab-beleid voor toegestane VM-grootten in het lab. Dat wil zeggen dat u de grootte van een virtuele machine kunt wijzigen in alleen toegestane grootten in het lab. 

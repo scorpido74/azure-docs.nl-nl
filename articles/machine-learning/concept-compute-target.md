@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/30/2020
-ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 06/26/2020
+ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780110"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483275"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -52,21 +52,23 @@ U kunt Azure Machine Learning Compute instances (preview) of reken clusters make
 * Azure Machine Learning Studio
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) -en [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) -klassen
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (preview-versie)
 * Resource Manager-sjabloon
-
-U kunt ook reken clusters maken met behulp [van de extensie machine learning voor de Azure cli](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training).
+* Machine learning- [extensie voor de Azure cli](reference-azure-machine-learning-cli.md#resource-management).  
 
 Wanneer u deze reken resources maakt, maakt u automatisch deel uit van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
 
-### <a name="compute-clusters"></a>Reken clusters
 
-U kunt Azure Machine Learning compute-clusters gebruiken voor training en voor het afleiden van batches (preview-versie).  Met deze reken resource hebt u het volgende:
+|Mogelijkheid  |Reken cluster  |Rekenproces  |
+|---------|---------|---------|
+|Cluster met één of meerdere knoop punten     |    **&check;**       |         |
+|Automatisch schalen elke keer dat u een uitvoering verzendt     |     **&check;**      |         |
+|Automatische Cluster beheer en taak planning     |   **&check;**        |     **&check;**      |
+|Ondersteuning voor zowel CPU-als GPU-resources     |  **&check;**         |    **&check;**       |
 
-* Cluster met één of meerdere knoop punten
-* Automatisch schalen telkens wanneer u een uitvoering verzendt 
-* Automatische Cluster beheer en taak planning 
-* Ondersteuning voor zowel CPU-als GPU-resources
+
+> [!NOTE]
+> Wanneer een berekenings cluster niet actief is, wordt het automatisch geschaald naar 0 knoop punten, zodat u niet betaalt wanneer het niet in gebruik is.  Een reken *instantie*is echter altijd ingeschakeld en wordt niet automatisch geschaald.  U moet [het reken exemplaar stoppen](tutorial-1st-experiment-sdk-train.md#stop-the-compute-instance) wanneer u het niet gebruikt om extra kosten te voor komen.
 
 ### <a name="supported-vm-series-and-sizes"></a>Ondersteunde VM-reeksen en-groottes
 

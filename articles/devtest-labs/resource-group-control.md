@@ -1,23 +1,14 @@
 ---
 title: Geef een resource groep voor Vm's op in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het opgeven van een resource groep voor Vm's in een lab in Azure DevTest Labs.
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/03/2019
-ms.author: spelluru
-ms.openlocfilehash: 20f5f754000425af9e532e94709de1be6a5a65b5
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897847"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483360"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Geef een resource groep op voor Lab-virtuele machines in Azure DevTest Labs
 

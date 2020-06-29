@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2020
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3fcf19ffdce57051e86d6e4bab37d719c91a8a1f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206625"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482850"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL-aanbevelingen
 
@@ -70,3 +70,7 @@ Wanneer u een grote werkset hebt, kunt u een lage cache treffer percentage en ee
 ## <a name="tempdb-contention"></a>TempDB-conflicten
 
 De prestaties van query's kunnen afnemen wanneer er hoge TempDB-conflicten zijn.  TempDB-conflicten kunnen optreden via door de gebruiker gedefinieerde tijdelijke tabellen of wanneer er sprake is van een grote hoeveelheid gegevens verplaatsing. Voor dit scenario kunt u schalen voor meer TempDB-toewijzing en [resource klassen en werkbelasting beheer configureren](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) om meer geheugen te bieden voor uw query's. 
+
+## <a name="data-loading-misconfiguration"></a>Onjuiste configuratie van gegevens laden
+
+U moet altijd gegevens laden van een opslag account in dezelfde regio als uw SQL-groep om latentie te minimaliseren. Gebruik de [instructie Copy voor gegevens opname met hoge door Voer](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) en Splits uw gefaseerde bestanden in uw opslag account om de door voer te maximaliseren. Als u de instructie COPY niet kunt gebruiken, gebruikt u de SqlBulkCopy-API of BCP met een hoge Batch grootte voor een betere door voer. Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)voor meer informatie over het laden van gegevens. 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: df26a6815a3dde27559f2f55038bdccadd78ea0b
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195517"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482136"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
@@ -36,11 +36,8 @@ Als u services wilt registreren, maakt u een methode om onderdelen te configurer
 Als u de methode wilt registreren, voegt `FunctionsStartup` u het kenmerk assembly toe dat de type naam specificeert die wordt gebruikt tijdens het opstarten.
 
 ```csharp
-using System;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -52,7 +49,7 @@ namespace MyNamespace
         {
             builder.Services.AddHttpClient();
 
-            builder.Services.AddSingleton((s) => {
+            builder.Services.AddSingleton<IMyService>((s) => {
                 return new MyService();
             });
 
@@ -61,6 +58,8 @@ namespace MyNamespace
     }
 }
 ```
+
+In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt om een bij het opstarten te registreren `HttpClient` .
 
 ### <a name="caveats"></a>Waarschuwingen
 
@@ -72,48 +71,47 @@ Een reeks registratie stappen die vóór en na de uitvoering van de runtime word
 
 ## <a name="use-injected-dependencies"></a>Geïnjecteerde afhankelijkheden gebruiken
 
-Injectie van constructor wordt gebruikt om uw afhankelijkheden beschikbaar te maken in een functie. Voor het gebruik van een constructor-injectie moet u geen statische klassen gebruiken.
+Injectie van constructor wordt gebruikt om uw afhankelijkheden beschikbaar te maken in een functie. Voor het gebruik van de constructor-injectie moet u geen statische klassen gebruiken voor geïnjecteerde Services of voor uw functie klassen.
 
-In het volgende voor beeld ziet u hoe de `IMyService` en- `HttpClient` afhankelijkheden worden geïnjecteerd in een functie die door http wordt geactiveerd. In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt om een bij het opstarten te registreren `HttpClient` .
+In het volgende voor beeld ziet u hoe de `IMyService` en- `HttpClient` afhankelijkheden worden geïnjecteerd in een functie die door http wordt geactiveerd.
 
 ```csharp
-using System;
-using System.IO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace MyNamespace
 {
-    public class HttpTrigger
+    public class MyHttpTrigger
     {
-        private readonly IMyService _service;
         private readonly HttpClient _client;
+        private readonly IMyService _service;
 
-        public HttpTrigger(IMyService service, HttpClient httpClient)
+        public MyHttpTrigger(HttpClient httpClient, MyService service)
         {
-            _service = service;
-            _client = httpClient;
+            this._client = httpClient;
+            this._service = service;
         }
 
-        [FunctionName("GetPosts")]
-        public async Task<IActionResult> Get(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "posts")] HttpRequest req,
+        [FunctionName("MyHttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            var res = await _client.GetAsync("https://microsoft.com");
-            await _service.AddResponse(res);
+            var response = await _client.GetAsync("https://microsoft.com");
+            var message = _service.GetMessage();
 
-            return new OkResult();
+            return new OkObjectResult("Response from function with injected dependencies.");
         }
     }
 }
 ```
+
+In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt om een bij het opstarten te registreren `HttpClient` .
 
 ## <a name="service-lifetimes"></a>Levens duur van service
 
@@ -127,7 +125,9 @@ Bekijk of down load een voor [beeld van de verschillende levens duur](https://ak
 
 ## <a name="logging-services"></a>Logboek registratie Services
 
-Als u uw eigen registratie provider nodig hebt, moet u een aangepast type registreren als een `ILoggerProvider` exemplaar. Application Insights wordt automatisch toegevoegd door Azure Functions.
+Als u uw eigen registratie provider nodig hebt, moet u een aangepast type registreren als een exemplaar van [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) , dat beschikbaar is via het [micro soft. Extensions. logges. abstracties](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet-pakket.
+
+Application Insights wordt automatisch toegevoegd door Azure Functions.
 
 > [!WARNING]
 > - Voeg niets toe `AddApplicationInsightsTelemetry()` aan de services-verzameling omdat hiermee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
@@ -135,7 +135,9 @@ Als u uw eigen registratie provider nodig hebt, moet u een aangepast type regist
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> en ILoggerFactory
 
-De host gaat injecteren `ILogger<T>` en `ILoggerFactory` Services in constructors.  Deze nieuwe logboek registratie filters worden echter standaard uit de functie Logboeken gefilterd.  U moet het `host.json` bestand wijzigen om extra filters en categorieën te kunnen kiezen.  In het volgende voor beeld ziet u hoe u een `ILogger<HttpTrigger>` with-logboeken toevoegt die door de host wordt weer gegeven.
+De host injecteert `ILogger<T>` en `ILoggerFactory` Services in constructors.  Deze nieuwe logboek registratie filters zijn echter standaard gefilterd op de functie Logboeken.  U moet het bestand wijzigen `host.json` om u aan te melden voor aanvullende filters en categorieën.
+
+In het volgende voor beeld ziet u hoe u een `ILogger<HttpTrigger>` with-Logboeken kunt toevoegen die aan de host worden blootgesteld.
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +162,7 @@ namespace MyNamespace
 }
 ```
 
-En een `host.json` bestand waarmee het logboek filter wordt toegevoegd.
+Het volgende voorbeeld `host.json` bestand voegt het logboek filter toe.
 
 ```json
 {
@@ -251,7 +253,7 @@ public class HttpTrigger
 Raadpleeg het [Opties patroon in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) voor meer informatie over het werken met opties.
 
 > [!WARNING]
-> Vermijd het lezen van waarden van bestanden zoals *lokaal. settings. json* of *appSettings. { Environment}. json* op het verbruiks plan. Waarden die zijn gelezen van deze bestanden met betrekking tot trigger verbindingen zijn niet beschikbaar als de app wordt geschaald omdat de hosting-infra structuur geen toegang heeft tot de configuratie gegevens omdat de schaal controller nieuwe exemplaren van de app maakt.
+> Vermijd het lezen van waarden uit bestanden zoals *local.settings.jsop* of *appSettings. { Environment}. json* op het verbruiks plan. Waarden die zijn gelezen van deze bestanden met betrekking tot trigger verbindingen zijn niet beschikbaar als de app wordt geschaald omdat de hosting-infra structuur geen toegang heeft tot de configuratie gegevens omdat de schaal controller nieuwe exemplaren van de app maakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

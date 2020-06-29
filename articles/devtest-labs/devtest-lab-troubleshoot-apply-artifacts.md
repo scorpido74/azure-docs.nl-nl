@@ -1,23 +1,14 @@
 ---
 title: Problemen met artefacten in Azure DevTest Labs oplossen | Microsoft Docs
 description: Informatie over het oplossen van problemen die zich voordoen bij het Toep assen van artefacten in een Azure DevTest Labs virtuele machine.
-services: devtest-lab
-documentationcenter: na
-author: spelluru
-editor: ''
-ms.service: devtest-lab
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: spelluru
-ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898694"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483190"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Problemen oplossen bij het Toep assen van artefacten in een Azure DevTest Labs virtuele machine
 Het Toep assen van artefacten op een virtuele machine kan om verschillende redenen mislukken. In dit artikel wordt stapsgewijs beschreven hoe u mogelijke oorzaken kunt identificeren.
