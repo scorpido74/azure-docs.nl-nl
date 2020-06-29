@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084733"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477461"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>Een vertrouwelijke client toepassing instantiëren met configuratie opties met behulp van MSAL.NET
 
@@ -33,9 +33,9 @@ Voordat u een toepassing initialiseert, moet u deze eerst [registreren](quicksta
 - Voor web-apps en soms voor open bare client-apps (met name wanneer uw app een Broker moet gebruiken), moet u ook de redirectUri instellen waar de ID-provider verbinding maakt met uw toepassing met de beveiligings tokens.
 
 ## <a name="configure-the-application-from-the-config-file"></a>De toepassing configureren vanuit het configuratie bestand
-De naam van de eigenschappen van de opties in MSAL.NET overeenkomt met de naam van de eigenschappen `AzureADOptions` van de in ASP.net core, dus u hoeft geen lijm code te schrijven.
+De naam van de eigenschappen van de opties in MSAL.NET overeenkomt met de naam van de eigenschappen van de `AzureADOptions` in ASP.net core, dus u hoeft geen lijm code te schrijven.
 
-Een ASP.NET Core toepassings configuratie wordt beschreven in een bestand *appSettings. json* :
+Een ASP.NET Core toepassings configuratie wordt beschreven in een *appsettings.jsin* het bestand:
 
 ```json
 {
@@ -60,7 +60,7 @@ Een ASP.NET Core toepassings configuratie wordt beschreven in een bestand *appSe
 
 Vanaf MSAL.NET v3. x kunt u uw vertrouwelijke client toepassing configureren vanuit het configuratie bestand.
 
-In de klasse waar u uw toepassing wilt configureren en instantiëren, moet u een `ConfidentialClientApplicationOptions` object declareren.  Bind de configuratie gelezen van de bron (inclusief het bestand appconfig. json) aan het exemplaar van de toepassings opties met behulp `IConfigurationRoot.Bind()` van de methode vanuit het [pakket micro soft. Extensions. Configuration. Binder nuget](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
+In de klasse waar u uw toepassing wilt configureren en instantiëren, moet u een object declareren `ConfidentialClientApplicationOptions` .  Koppel de configuratie gelezen van de bron (inclusief de appconfig.jsin het bestand) aan het exemplaar van de toepassings opties, met behulp `IConfigurationRoot.Bind()` van de methode van de [Microsoft.Extensions.Configuratie. Binder nuget-pakket](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder):
 
 ```csharp
 using Microsoft.Identity.Client;
@@ -70,7 +70,7 @@ _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-Hiermee wordt de inhoud van de sectie ' AzureAD ' van het bestand *appSettings. json* gekoppeld aan de bijbehorende eigenschappen van het `ConfidentialClientApplicationOptions` object.  Bouw vervolgens een `ConfidentialClientApplication` object:
+Hiermee wordt de inhoud van de sectie ' AzureAD ' van de *appsettings.jsin* het bestand gekoppeld aan de bijbehorende eigenschappen van het `ConfidentialClientApplicationOptions` object.  Bouw vervolgens een `ConfidentialClientApplication` object:
 
 ```csharp
 IConfidentialClientApplication app;

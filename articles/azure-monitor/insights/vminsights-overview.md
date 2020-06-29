@@ -1,21 +1,21 @@
 ---
-title: Wat is Azure Monitor voor VM's?
+title: " Wat is Azure Monitor voor VM's?"
 description: Overzicht van Azure Monitor voor VM's waarmee de status en prestaties van de virtuele Azure-machines worden gecontroleerd naast het automatisch detecteren en toewijzen van toepassings onderdelen en hun afhankelijkheden.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/11/2020
-ms.openlocfilehash: 6f65ba96f768a4b88aa13c073cc66920b8c5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480484"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506987"
 ---
-# <a name="what-is-azure-monitor-for-vms"></a>Wat is Azure Monitor voor VM's?
+# <a name="what-is-azure-monitor-for-vms"></a> Wat is Azure Monitor voor VM's?
 
-Azure Monitor voor VM's bewaakt uw Azure virtual machines (VM) en virtuele-machine schaal sets op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. Het bevat ondersteuning voor het bewaken van de prestaties en toepassings afhankelijkheden voor Vm's die lokaal worden gehost of in een andere Cloud provider. De volgende belang rijke functies leveren uitgebreid inzicht:
+Azure Monitor voor VM's bewaakt uw virtuele machines, virtuele-machine schaal sets en Azure-Arc-machines op schaal. De service analyseert de prestaties en status van uw Windows- en Linux-VM's en bewaakt hun processen en afhankelijkheden van andere resources en externe processen. Er is ondersteuning voor het controleren van prestatie- en toepassingsafhankelijkheden voor VM's die on-premises of door een andere cloudprovider worden gehost. De volgende belang rijke functies leveren uitgebreid inzicht:
 
 - **Vooraf gedefinieerde diagrammen voor trend prestaties**: de metrische prestatie gegevens weer geven van het gast-VM-besturings systeem.
 

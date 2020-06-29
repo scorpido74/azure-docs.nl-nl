@@ -1,24 +1,24 @@
 ---
 title: App-rollen toevoegen en ophalen uit een token | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het toevoegen van app-rollen in een toepassing die is geregistreerd in Azure Active Directory, gebruikers en groepen toewijzen aan deze rollen `roles` en ze ontvangen in de claim in het token.
+description: Meer informatie over het toevoegen van app-rollen in een toepassing die is geregistreerd in Azure Active Directory, gebruikers en groepen toewijzen aan deze rollen en ze ontvangen in de `roles` claim in het token.
 services: active-directory
 author: kkrishna
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aedf5d710b82185cb634fcd92e6981a2c358ad52
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884253"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477886"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -30,14 +30,14 @@ Een andere benadering is het gebruik van Azure AD-groepen en-groepclaims, zoals 
 
 ## <a name="declare-roles-for-an-application"></a>Rollen voor een toepassing declareren
 
-Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.azure.com) in het registratie manifest van de toepassing.  Wanneer een gebruiker zich aanmeldt bij de toepassing, verzendt `roles` Azure AD een claim voor elke rol die de gebruiker afzonderlijk heeft verleend aan de gebruiker en aan het groepslid maatschap.  De toewijzing van gebruikers en groepen aan rollen kan worden uitgevoerd via de gebruikers interface van de portal of via een programma met behulp van [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview).
+Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.azure.com) in het registratie manifest van de toepassing.  Wanneer een gebruiker zich aanmeldt bij de toepassing, verzendt Azure AD een `roles` claim voor elke rol die de gebruiker afzonderlijk heeft verleend aan de gebruiker en aan het groepslid maatschap.  De toewijzing van gebruikers en groepen aan rollen kan worden uitgevoerd via de gebruikers interface van de portal of via een programma met behulp van [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview).
 
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de **map en het abonnement** op de werk balk van de portal.
 1. Kies in de lijst **Favorieten** of **alle directory's** de Active Directory Tenant waar u de toepassing wilt registreren.
-1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
 1. Selecteer in **Azure Active Directory** het deel venster Azure Active Directory **app-registraties** om een lijst met al uw toepassingen weer te geven.
 1. Selecteer de toepassing waarvoor u de app-rollen wilt definiëren. Selecteer vervolgens **manifest**.
 1. Bewerk het app-manifest door de `appRoles` instelling te zoeken en alle toepassings rollen toe te voegen.
@@ -51,7 +51,7 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 
 ### <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld `appRoles` ziet u hoe u kunt `users`toewijzen aan.
+In het volgende voor beeld ziet `appRoles` u hoe u kunt toewijzen aan `users` .
 
 > [!NOTE]
 >De `id` moet een unieke GUID zijn.
@@ -76,7 +76,7 @@ In het volgende voor beeld `appRoles` ziet u hoe u kunt `users`toewijzen aan.
 > [!NOTE]
 >De `displayName` mag geen spaties bevatten.
 
-U kunt app-rollen definiëren voor `users`het `applications`doel, of beide. Indien beschikbaar voor `applications`, worden app-rollen weer gegeven als toepassings machtigingen op de Blade **vereiste machtigingen** . In het volgende voor beeld ziet u een app- `Application`rol die is gericht op een.
+U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. Indien beschikbaar voor `applications` , worden app-rollen weer gegeven als toepassings machtigingen op de Blade **vereiste machtigingen** . In het volgende voor beeld ziet u een app-rol die is gericht op een `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",

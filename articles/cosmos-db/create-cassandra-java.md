@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 6c56dc32ff733aa9dbbba8102ff8d79a592ea957
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0136dce793fea1672b68062480420e5a05c75253
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309744"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118369"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Quickstart: Een Java-app bouwen om Azure Cosmos DB Cassandra-API-gegevens te beheren (v3-stuurprogramma)
 
@@ -32,8 +32,8 @@ In deze quickstart maakt u een Azure Cosmos DB Cassandra-API-account, en gebruik
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement.
-- [Java Development Kit (JDK) 8+](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Verwijs uw `JAVA_HOME` omgevingsvariabele JAVA_HOME naar de map waarin de JDK is geïnstalleerd.
-- Een [binair Maven-archief](https://maven.apache.org/download.cgi). Voer op Ubuntu `apt-get install maven` uit om de Maven te installeren.
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Verwijs uw omgevingsvariabele `JAVA_HOME` naar de map waarin de JDK is geïnstalleerd.
+- Een [binair Maven-archief](https://maven.apache.org/download.cgi). Voer op Ubuntu `apt-get install maven` uit om Maven te installeren.
 - [Git](https://www.git-scm.com/downloads). Voer op Ubuntu `sudo apt-get install git` uit om Git te installeren.
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
@@ -146,7 +146,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
 
-    ![Een gebruikersnaam bekijken en kopiëren via de pagina Verbindingsreeks in Azure Portal](./media/create-cassandra-java/copy-username-connection-string-azure-portal.png)
+    :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Een gebruikersnaam bekijken en kopiëren via Azure Portal, pagina Verbindingsreeks":::
 
 2. Gebruik de ![knop Kopiëren](./media/create-cassandra-java/copy-button-azure-portal.png) aan de rechterkant van het scherm om de CONTACT POINT-waarde te kopiëren.
 
@@ -202,7 +202,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 4. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen. 
 
-    ![De gegevens bekijken in Data Explorer - Azure Cosmos DB](./media/create-cassandra-java/view-data-explorer-java-app.png)
+    :::image type="content" source="./media/create-cassandra-java/view-data-explorer-java-app.png" alt-text="De gegevens bekijken in Data Explorer - Azure Cosmos DB":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

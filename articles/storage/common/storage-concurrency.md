@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 45eb227d5e2608f4fbe6a75f3d95e46dbc3bdee4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655943"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504284"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Gelijktijdigheid beheren in Microsoft Azure Storage
 
@@ -90,13 +90,13 @@ De volgende tabel bevat een overzicht van de container bewerkingen die voorwaard
 
 | Bewerking | Retourneert container ETag-waarde | Accepteert voorwaardelijke kopteksten |
 |:--- |:--- |:--- |
-| Container maken |Ja |Nee |
-| Container eigenschappen ophalen |Ja |Nee |
-| Meta gegevens van container ophalen |Ja |Nee |
+| Container maken |Yes |No |
+| Container eigenschappen ophalen |Yes |No |
+| Meta gegevens van container ophalen |Yes |No |
 | Meta gegevens van container instellen |Ja |Ja |
-| Container-ACL ophalen |Ja |Nee |
-| Container-ACL instellen |Ja |Ja (*) |
-| Container verwijderen |Nee |Ja |
+| Container-ACL ophalen |Yes |No |
+| Container-ACL instellen |Yes |Ja (*) |
+| Container verwijderen |No |Yes |
 | Lease-container |Ja |Ja |
 | Blobs weer geven |Nee |Nee |
 
@@ -108,18 +108,18 @@ De volgende tabel bevat een overzicht van de BLOB-bewerkingen die voorwaardelijk
 |:--- |:--- |:--- |
 | BLOB plaatsen |Ja |Ja |
 | BLOB ophalen |Ja |Ja |
-| Get Blob Properties (Blob-eigenschappen ophalen) |Ja |Ja |
+| BLOB-eigenschappen ophalen |Ja |Ja |
 | BLOB-eigenschappen instellen |Ja |Ja |
 | BLOB-meta gegevens ophalen |Ja |Ja |
 | BLOB-meta gegevens instellen |Ja |Ja |
 | Lease-BLOB (*) |Ja |Ja |
 | Moment opname-BLOB |Ja |Ja |
-| BLOB kopiëren |Ja |Ja (voor de bron-en doel-blob) |
+| BLOB kopiëren |Yes |Ja (voor de bron-en doel-blob) |
 | Kopiëren van BLOB afbreken |Nee |Nee |
-| Blob verwijderen |Nee |Ja |
+| BLOB verwijderen |No |Yes |
 | Blok keren |Nee |Nee |
 | Blokkerings lijst plaatsen |Ja |Ja |
-| Blokkerings lijst ophalen |Ja |Nee |
+| Blokkerings lijst ophalen |Yes |No |
 | Pagina plaatsen |Ja |Ja |
 | Paginabereiken ophalen |Ja |Ja |
 
@@ -166,11 +166,11 @@ De volgende BLOB-bewerkingen kunnen leases gebruiken voor het beheren van pessim
 
 * BLOB plaatsen
 * BLOB ophalen
-* Get Blob Properties (Blob-eigenschappen ophalen)
+* BLOB-eigenschappen ophalen
 * BLOB-eigenschappen instellen
 * BLOB-meta gegevens ophalen
 * BLOB-meta gegevens instellen
-* Blob verwijderen
+* BLOB verwijderen
 * Blok keren
 * Blokkerings lijst plaatsen
 * Blokkerings lijst ophalen
@@ -244,13 +244,13 @@ De volgende tabel bevat een overzicht van hoe de tabel entiteit bewerkingen ETag
 
 | Bewerking | Retourneert ETag-waarde | Vereist if-match-aanvraag header |
 |:--- |:--- |:--- |
-| Entiteiten opvragen |Ja |Nee |
-| Entiteit invoegen |Ja |Nee |
+| Entiteiten opvragen |Yes |Nee |
+| Entiteit invoegen |Yes |Nee |
 | Entiteit bijwerken |Ja |Ja |
 | Entiteit samen voegen |Ja |Ja |
-| Entiteit verwijderen |Nee |Ja |
-| Entiteit invoegen of vervangen |Ja |Nee |
-| Entiteit invoegen of samen voegen |Ja |Nee |
+| Entiteit verwijderen |Nee |Yes |
+| Entiteit invoegen of vervangen |Yes |Nee |
+| Entiteit invoegen of samen voegen |Yes |Nee |
 
 Houd er rekening mee dat de bewerkingen **entiteit invoegen of vervangen** en **entiteit invoegen of samen voegen** *geen* Gelijktijdigheids controles uitvoeren omdat ze geen ETag-waarde naar de Table-service verzenden.  
 

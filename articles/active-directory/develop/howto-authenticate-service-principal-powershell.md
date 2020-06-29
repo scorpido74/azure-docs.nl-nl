@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
-ms.date: 10/10/2019
+ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: 7bd8c3b25c23ba8586e38ec8eb7d1baefaa21633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6204fcefa60d1a627e6e3d4e6b799efd3ee9298b
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884177"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505865"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Procedure: Azure PowerShell gebruiken om een service-principal te maken met een certificaat
 
@@ -40,7 +40,7 @@ Voor dit artikel hebt u de [meest recente versie](/powershell/azure/install-az-p
 
 U kunt dit artikel alleen volt ooien als u over voldoende machtigingen beschikt voor uw Azure AD-en Azure-abonnement. U moet in het bijzonder een app kunnen maken in azure AD en de Service-Principal toewijzen aan een rol.
 
-De eenvoudigste manier om te controleren of uw account over de juiste machtigingen beschikt, verloopt via de portal. Zie [Check required permission](howto-create-service-principal-portal.md#required-permissions) (Vereiste machtiging controleren).
+De eenvoudigste manier om te controleren of uw account over de juiste machtigingen beschikt, verloopt via de portal. Zie [Check required permission](howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) (Vereiste machtiging controleren).
 
 ## <a name="assign-the-application-to-a-role"></a>De toepassing aan een rol toewijzen
 Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing toewijzen aan een rol. Bepaal welke rol de juiste machtigingen voor de toepassing biedt. Zie [RBAC: ingebouwde rollen](/azure/role-based-access-control/built-in-roles)voor meer informatie over de beschik bare rollen.

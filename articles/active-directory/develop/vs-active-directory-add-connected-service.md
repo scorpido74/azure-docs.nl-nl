@@ -7,15 +7,15 @@ ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535822"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477121"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Een Azure Active Directory toevoegen met behulp van verbonden services in Visual Studio
 
@@ -44,7 +44,7 @@ Op dit moment biedt de Active Directory verbonden service geen ondersteuning voo
 
     ![Introductie pagina](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Selecteer op de pagina **eenmalige aanmelding** een domein in de vervolg keuzelijst **domein** . De lijst bevat alle domeinen die toegankelijk zijn voor de accounts die worden vermeld in het dialoog venster account instellingen van Visual Studio (**instellingen voor bestands > account...**). Als alternatief kunt u een domein naam invoeren als u deze niet hebt gevonden, zoals `mydomain.onmicrosoft.com`. U kunt de optie kiezen om een Azure Active Directory-app te maken of de instellingen van een bestaande Azure Active Directory-app te gebruiken. Selecteer **volgende** als u klaar bent.
+1. Selecteer op de pagina **eenmalige aanmelding** een domein in de vervolg keuzelijst **domein** . De lijst bevat alle domeinen die toegankelijk zijn voor de accounts die worden vermeld in het dialoog venster account instellingen van Visual Studio (**instellingen voor bestands > account...**). Als alternatief kunt u een domein naam invoeren als u deze niet hebt gevonden, zoals `mydomain.onmicrosoft.com` . U kunt de optie kiezen om een Azure Active Directory-app te maken of de instellingen van een bestaande Azure Active Directory-app te gebruiken. Selecteer **volgende** als u klaar bent.
 
     ![Pagina met eenmalige aanmelding](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 

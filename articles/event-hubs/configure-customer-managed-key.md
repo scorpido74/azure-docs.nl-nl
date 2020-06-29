@@ -3,12 +3,12 @@ title: Configureer uw eigen sleutel voor het versleutelen van Azure Event Hubs g
 description: Dit artikel bevat informatie over het configureren van uw eigen sleutel voor het versleutelen van Azure Event Hubs gegevens rest.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b92437f69dd5ff01d57d12e8e8e7fdce73cfddc0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2d82fc8c962496246196331c7d191c0fc057694f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314723"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479824"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -66,7 +66,7 @@ Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de kla
 
 
 ## <a name="rotate-your-encryption-keys"></a>Uw versleutelings sleutels draaien
-U kunt de sleutel in de sleutel kluis draaien met behulp van het rotatie mechanisme voor Azure-sleutel kluizen. Zie voor meer informatie [sleutel rotatie en controle instellen](../key-vault/secrets/key-rotation-log-monitoring.md). Activerings-en verloop datums kunnen ook worden ingesteld op het automatiseren van sleutel rotatie. Met de Event Hubs-service worden nieuwe sleutel versies gedetecteerd en worden ze automatisch gestart.
+U kunt de sleutel in de sleutel kluis draaien met behulp van het rotatie mechanisme voor Azure-sleutel kluizen. Activerings-en verloop datums kunnen ook worden ingesteld op het automatiseren van sleutel rotatie. Met de Event Hubs-service worden nieuwe sleutel versies gedetecteerd en worden ze automatisch gestart.
 
 ## <a name="revoke-access-to-keys"></a>Toegang tot sleutels intrekken
 Als u de toegang tot de versleutelings sleutels intrekt, worden de gegevens niet verwijderd uit Event Hubs. De gegevens kunnen echter niet worden geopend vanuit de naam ruimte Event Hubs. U kunt de versleutelings sleutel intrekken via toegangs beleid of door de sleutel te verwijderen. Meer informatie over toegangs beleid en het beveiligen van uw sleutel kluis van [beveiligde toegang tot een sleutel kluis](../key-vault/general/secure-your-key-vault.md).

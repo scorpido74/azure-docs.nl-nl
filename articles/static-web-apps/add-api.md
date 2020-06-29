@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 1720ea31c8f0b15485df194e62e463671d092b26
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 7101d23d4611f4eea9b5a9e2a7f3ba417c9fcb1a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310849"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476118"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -25,7 +25,7 @@ U kunt serverloze Api's toevoegen aan statische Azure-Web Apps via integratie me
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio code
 - [Live server Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) -extensie.
-- [Node. js](https://nodejs.org/download/) voor het lokaal uitvoeren van de API-app
+- [Node.js](https://nodejs.org/download/) de API-app lokaal uit te voeren
 
 ## <a name="create-a-git-repository"></a>Een Git-opslag plaats maken
 
@@ -89,7 +89,7 @@ Uw app heeft nu een project structuur die vergelijkbaar is met het volgende voor
 
 Vervolgens wijzigt u de `GetMessage` functie om een bericht naar de front-end te retour neren.
 
-1. Werk de `GetMessage` functie onder _API/GetMessage/index. js_ bij met de volgende code.
+1. Werk de `GetMessage` functie onder _API/GetMessage/index.js_ met de volgende code bij.
 
     ```javascript
     module.exports = async function (context, req) {
@@ -162,7 +162,7 @@ Bij implementatie naar Azure worden aanvragen voor de API automatisch doorgestuu
 
 #### <a name="update-html-files-to-access-the-api"></a>HTML-bestanden bijwerken voor toegang tot de API
 
-1. Werk vervolgens de inhoud van het bestand _index. html_ bij met de volgende code om de tekst van de API-functie op te halen en weer te geven op het scherm:
+1. Werk vervolgens de inhoud van het bestand _index.html_ bij met de volgende code om de tekst op te halen uit de API-functie en weer te geven op het scherm:
 
    ```html
    <!DOCTYPE html>
@@ -178,7 +178,7 @@ Bij implementatie naar Azure worden aanvragen voor de API automatisch doorgestuu
    <body>
      <main>
        <h1>Vanilla JavaScript App</h1>
-       <p>Loading message from the API: <b id="name">...</b></p>
+       <p>Loading content from the API: <b id="name">...</b></p>
      </main>
 
      <script>
@@ -267,7 +267,7 @@ Als u deze toepassing niet wilt blijven gebruiken voor verder gebruik, kunt u de
 1. Controleer op de pagina _myResourceGroup_ of de weergegeven resources de resources zijn die u wilt verwijderen.
 1. Selecteer **verwijderen**
 1. Typ **myResourceGroup** in het tekstvak
-1. Selecteer **verwijderen**.
+1. Selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

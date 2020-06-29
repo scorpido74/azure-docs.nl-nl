@@ -65,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure-voorbeelden
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -112,11 +112,11 @@
       items:
         - name: Ondersteunde talen
           href: supported-languages.md
-        - name: 'C# (klassebibliotheek)'
+        - name: C# (klassebibliotheek)
           href: functions-dotnet-class-library.md
-        - name: 'C#-script (.csx)'
+        - name: C#-script (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: Javascript
           href: functions-reference-node.md
@@ -127,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: Beveiliging
       items:
         - name: Beveiligingsoverzicht
@@ -377,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x en hoger
               displayName: Azure Cosmos DB
               items:
                 - name: Overzicht
@@ -507,7 +507,7 @@
     - name: Prijscalculator
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Quotumgegevens
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: Regionale beschikbaarheid
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Video's

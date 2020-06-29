@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 91a70395bc359f0c5e199f91a739a7cef9205605
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673272"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478396"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -319,9 +319,9 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | extensionattribute14 | Uitbreidings kenmerk 14 |
 | Gebruiker | extensionattribute15 | Uitbreidings kenmerk 15 |
 | Gebruiker | othermail | Andere E-mail |
-| Gebruiker | land | Land/regio |
+| Gebruiker | country | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Staat |
+| Gebruiker | state | Status |
 | Gebruiker | JobTitle | Functie |
 | Gebruiker | employeeid | Werknemer-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |

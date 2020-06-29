@@ -1,31 +1,31 @@
 ---
-title: Pagina opnieuw laden (MSAL. js) voor komen | Azure
+title: Pagina opnieuw laden (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het voor komen van het opnieuw laden van pagina's bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL. js).
+description: Meer informatie over het voor komen van het opnieuw laden van pagina's bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van de micro soft-verificatie bibliotheek voor Java script (MSAL.js).
 services: active-directory
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084952"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477648"
 ---
-# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Pagina opnieuw laden voor komen bij het op de achtergrond ophalen en vernieuwen van tokens met behulp van MSAL. js
-Micro soft Authentication Library voor Java script (MSAL. js) `iframe` gebruikt verborgen elementen voor het op de achtergrond verkrijgen en vernieuwen van tokens. Azure AD retourneert het token terug naar de geregistreerde redirect_uri die in de token aanvraag is opgegeven (standaard is dit de hoofd pagina van de app). Omdat het antwoord een 302 is, resulteert dit in de HTML-code die `redirect_uri` overeenkomt met de `iframe`geladen in de. Normaal gesp roken `redirect_uri` is de app de hoofd pagina, waardoor deze opnieuw wordt geladen.
+# <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>Voor komen dat pagina's opnieuw worden geladen bij het terughalen en vernieuwen van tokens op de achtergrond met behulp van MSAL.js
+Micro soft Authentication Library voor Java script (MSAL.js) gebruikt verborgen `iframe` elementen voor het op de achtergrond verkrijgen en vernieuwen van tokens. Azure AD retourneert het token terug naar de geregistreerde redirect_uri die in de token aanvraag is opgegeven (standaard is dit de hoofd pagina van de app). Omdat het antwoord een 302 is, resulteert dit in de HTML-code die overeenkomt met de `redirect_uri` geladen in de `iframe` . Normaal gesp roken is de app `redirect_uri` de hoofd pagina, waardoor deze opnieuw wordt geladen.
 
-Als er in andere gevallen verificatie is vereist voor het navigeren naar de hoofd pagina van de app, kan dit `iframe` leiden tot `X-Frame-Options: deny` geneste elementen of fouten.
+Als er in andere gevallen verificatie is vereist voor het navigeren naar de hoofd pagina van de app, kan dit leiden tot geneste `iframe` elementen of `X-Frame-Options: deny` fouten.
 
-Omdat MSAL. js de 302 die is uitgegeven door Azure AD niet kan negeren en is vereist voor het verwerken van het geretourneerde `redirect_uri` token, kan niet worden `iframe`voor komen dat het wordt geladen in de.
+Omdat MSAL.js de 302 die is uitgegeven door Azure AD niet kan negeren en is vereist voor het verwerken van het geretourneerde token, kan niet worden voor komen dat het wordt `redirect_uri` geladen in de `iframe` .
 
 Volg deze tijdelijke oplossingen om te voor komen dat de volledige app opnieuw wordt geladen of andere fouten die zijn veroorzaakt door dit probleem.
 
@@ -35,9 +35,9 @@ Stel de `redirect_uri` eigenschap in op de configuratie van een eenvoudige pagin
 
 ## <a name="initialization-in-your-main-app-file"></a>Initialisatie in het hoofd bestand van de app
 
-Als uw app zodanig is gestructureerd dat er één centraal Java script-bestand is dat de initialisatie, route ring en andere zaken van de app definieert, kunt u uw app-modules voorwaardelijk laden op basis van het feit of `iframe` de app in een of niet wordt geladen. Bijvoorbeeld:
+Als uw app zodanig is gestructureerd dat er één centraal Java script-bestand is dat de initialisatie, route ring en andere zaken van de app definieert, kunt u uw app-modules voorwaardelijk laden op basis van het feit of de app in een `iframe` of niet wordt geladen. Bijvoorbeeld:
 
-In AngularJS: app. js
+In AngularJS: app.js
 
 ```javascript
 // Check that the window is an iframe and not popup
@@ -146,4 +146,4 @@ export class MsalComponent {
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [het bouwen van een single-page-toepassing (Spa)](scenario-spa-overview.md) met behulp van MSAL. js.
+Meer informatie over [het bouwen van een toepassing met één pagina](scenario-spa-overview.md) met behulp van MSAL.js.

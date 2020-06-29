@@ -1,21 +1,21 @@
 ---
-title: Azure Monitor voor VM's inschakelen met behulp van Azure Policy
+title: Azure Monitor voor VM's inschakelen met Azure Policy
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor VM's voor meerdere virtuele machines van Azure of virtuele-machine schaal sets inschakelt met behulp van Azure Policy.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767254"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507174"
 ---
-# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Monitor voor VM's inschakelen met behulp van Azure Policy
+# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Monitor voor VM's inschakelen met Azure Policy
 
-In dit artikel wordt uitgelegd hoe u Azure Monitor voor VM's voor virtuele machines van Azure of virtuele-machine schaal sets inschakelt met behulp van Azure Policy. Aan het einde van dit proces hebt u de configuratie ingeschakeld van de Log Analytics-en Dependency-agents en de geïdentificeerde virtuele machines die niet voldoen aan het beleid.
+In dit artikel wordt uitgelegd hoe u Azure Monitor voor VM's voor virtuele Azure-machines, virtuele-machine schaal sets en Azure-Arc-machines inschakelt met behulp van Azure Policy. Aan het einde van dit proces hebt u de configuratie ingeschakeld van de Log Analytics-en Dependency-agents en de geïdentificeerde virtuele machines die niet voldoen aan het beleid.
 
 Als u Azure Monitor voor VM's wilt detecteren, beheren en inschakelen voor alle virtuele machines of virtuele-machine schaal sets van Azure, kunt u Azure Policy of Azure PowerShell gebruiken. Azure Policy is de methode die wordt aanbevolen omdat u beleids definities kunt beheren om uw abonnementen effectief te regelen, zodat er consistente naleving en automatische inrichtingen kunnen worden ingeschakeld. Deze beleids definities:
 
@@ -46,10 +46,7 @@ Hier kunt u de dekking voor het initiatief in uw beheer groepen en abonnementen 
 
 Deze informatie is nuttig om u te helpen bij het plannen en uitvoeren van uw governance scenario voor Azure Monitor voor VM's vanaf één centrale locatie. Hoewel Azure Policy een weer gave voor naleving biedt wanneer een beleid of initiatief wordt toegewezen aan een bereik, kunt u met deze nieuwe pagina ontdekken waar het beleid of initiatief niet is toegewezen en dit op locatie toewijzen. Alle acties, zoals toewijzen, bekijken en bewerken, worden rechtstreeks omgeleid naar Azure Policy. De pagina **dekking van Azure monitor voor VM's beleid** is een uitgebreide en geïntegreerde ervaring voor het **inschakelen van Azure monitor voor VM's**.
 
-Op deze pagina kunt u ook uw Log Analytics-werk ruimte configureren voor Azure Monitor voor VM's, dat:
-
-- Hiermee wordt de Servicetoewijzing oplossing geïnstalleerd.
-- Hiermee schakelt u de prestatie meter items van het besturings systeem in die worden gebruikt door de prestatie grafieken, werkmappen en uw aangepaste logboek query's en waarschuwingen.
+Op deze pagina kunt u ook uw Log Analytics-werk ruimte configureren voor Azure Monitor voor VM's, waarmee de *VMInsights* -oplossing wordt geïnstalleerd.
 
 ![Werk ruimte Azure Monitor voor VM's configureren](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
@@ -62,7 +59,7 @@ De volgende tabel bevat een overzicht van de informatie die wordt weer gegeven o
 | Functie | Beschrijving | 
 |----------|-------------| 
 | **Bereik** | Beheer groep en abonnementen waarvoor u toegang hebt of die u hebt overgenomen, met de mogelijkheid om in te zoomen op de hiërarchie van de beheer groep.|
-| **Rol** | Uw rol aan het bereik, dat lezers, eigenaar of Inzender kan zijn. In sommige gevallen kan het lijken leeg te zijn om aan te geven dat u toegang tot het abonnement hebt, maar niet tot de beheer groep waarvan het deel uitmaakt. De gegevens in andere kolommen variëren, afhankelijk van uw rol. De rol is belang rijk om te bepalen welke gegevens u kunt zien en welke acties u kunt uitvoeren met betrekking tot het toewijzen van beleid of initiatieven (eigenaar), het bewerken ervan of het weer geven van naleving. |
+| **Role** | Uw rol aan het bereik, dat lezers, eigenaar of Inzender kan zijn. In sommige gevallen kan het lijken leeg te zijn om aan te geven dat u toegang tot het abonnement hebt, maar niet tot de beheer groep waarvan het deel uitmaakt. De gegevens in andere kolommen variëren, afhankelijk van uw rol. De rol is belang rijk om te bepalen welke gegevens u kunt zien en welke acties u kunt uitvoeren met betrekking tot het toewijzen van beleid of initiatieven (eigenaar), het bewerken ervan of het weer geven van naleving. |
 | **Totaal aantal Vm's** | Aantal Vm's onder dat bereik. Voor een beheer groep is dit een som van Vm's die zijn genest onder de abonnementen of de onderliggende beheer groep. |
 | **Toewijzings dekking** | Percentage Vm's die worden gedekt door het beleid of initiatief. |
 | **Toewijzings status** | Informatie over de status van uw beleid of initiatief toewijzing. |
@@ -90,10 +87,25 @@ De beleids definities voor een virtuele machine van Azure worden weer gegeven in
 |Azure Monitor voor VM's inschakelen |Schakel Azure Monitor in voor de virtuele machines in het opgegeven bereik (beheer groep, abonnement of resource groep). Hiermee wordt Log Analytics werk ruimte als para meter gebruikt. |Initiatieven |
 |Implementatie van afhankelijkheids agent controleren – VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
 |Implementatie van Log Analytics agent controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert Vm's als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
-|Afhankelijkheids agent voor Linux-Vm's implementeren |De afhankelijkheids agent voor Linux Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|Afhankelijkheids agent voor Windows-Vm's implementeren |Een afhankelijkheids agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|Log Analytics-agent voor Linux-Vm's implementeren |Implementeer Log Analytics-agent voor Linux-Vm's als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|Log Analytics-agent voor Windows-Vm's implementeren |Log Analytics-agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Afhankelijkheidsagent implementeren voor Linux-VM's |De afhankelijkheids agent voor Linux Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Afhankelijkheidsagent implementeren voor Windows-VM's |Een afhankelijkheids agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Log Analytics-agent voor Linux-VM’s implementeren |Implementeer Log Analytics-agent voor Linux-Vm's als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Log Analytics-agent voor Windows-VM's implementeren |Log Analytics-agent voor Windows-Vm's implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+
+
+### <a name="policies-for-hybrid-azure-arc-machines"></a>Beleid voor hybride Azure Arc-machines
+
+De beleids definities voor Hybrid Azure Arc-computers worden weer gegeven in de volgende tabel.
+
+|Naam |Beschrijving |Type |
+|-----|------------|-----|
+| [Preview-versie]: Log Analytics-agent moet worden geïnstalleerd op uw Linux Azure Arc-machines |Rapporteert hybride Azure Arc-machines als niet-compatibel voor Linux-Vm's als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+| [Preview-versie]: Log Analytics-agent moet worden geïnstalleerd op uw Windows Azure-Arc-machines |Rapporteert hybride Azure Arc-machines als niet-compatibel voor Windows-Vm's als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+| [Preview-versie]: afhankelijkheids agent implementeren op hybride Linux Azure Arc-machines |Een afhankelijkheids agent voor Linux Hybrid Azure Arc-machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+| [Preview-versie]: afhankelijkheids agent implementeren op hybride Windows Azure Arc-machines |Een afhankelijkheids agent voor Windows Hybrid Azure Arc-machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+| [Preview-versie]: Log Analytics-agent implementeren op Linux Azure Arc-machines |Implementeer Log Analytics agent voor Linux Hybrid Azure Arc machines als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+| [Preview-versie]: Log Analytics agent implementeren op Windows Azure Arc-machines |Log Analytics-agent voor Windows Hybrid Azure Arc-machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Beleid voor virtuele-machine schaal sets van Azure
 
@@ -101,13 +113,13 @@ De beleids definities voor een schaalset voor virtuele Azure-machines worden in 
 
 |Naam |Beschrijving |Type |
 |-----|------------|-----|
-|Azure Monitor inschakelen voor schaal sets voor virtuele machines |Schakel Azure Monitor in voor de virtuele-machine schaal sets in het opgegeven bereik (beheer groep, abonnement of resource groep). Hiermee wordt Log Analytics werk ruimte als para meter gebruikt. Opmerking: als het upgrade beleid van uw schaalset is ingesteld op hand matig, past u de extensie toe op alle virtuele machines in de set door de upgrade op de Vm's aan te roepen. In de CLI is `az vmss update-instances`dit. |Initiatieven |
+|Azure Monitor inschakelen voor schaal sets voor virtuele machines |Schakel Azure Monitor in voor de virtuele-machine schaal sets in het opgegeven bereik (beheer groep, abonnement of resource groep). Hiermee wordt Log Analytics werk ruimte als para meter gebruikt. Opmerking: als het upgrade beleid van uw schaalset is ingesteld op hand matig, past u de extensie toe op alle virtuele machines in de set door de upgrade op de Vm's aan te roepen. In de CLI is dit `az vmss update-instances` . |Initiatieven |
 |Implementatie van afhankelijkheids agent in virtuele-machine schaal sets controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
 |Implementatie van Log Analytics agent in virtuele-machine schaal sets controleren-VM-installatie kopie (OS) niet vermeld |Rapporteert de schaalset voor virtuele machines als niet-compatibel als de VM-installatie kopie (OS) niet is gedefinieerd in de lijst en de agent niet is geïnstalleerd. |Beleid |
-|Afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren |De afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|Afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren |Een afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|Log Analytics agent voor virtuele Linux-machine schaal sets implementeren |Implementeer Log Analytics agent voor virtuele Linux-machine schaal sets als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
-|Log Analytics-agent voor schaal sets voor virtuele Windows-machines implementeren |Implementeer Log Analytics agent voor virtuele-machine schaal sets van Windows als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Afhankelijkheidsagent implementeren voor virtuele-machineschaalsets van Linux |De afhankelijkheids agent voor virtuele Linux-machine schaal sets implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Afhankelijkheidsagent implementeren voor virtuele-machineschaalsets van Windows |Een afhankelijkheids agent voor Windows-schaal sets voor virtuele machines implementeren als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Log Analytics-agent implementeren voor virtuele-machineschaalsets van Linux |Implementeer Log Analytics agent voor virtuele Linux-machine schaal sets als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
+|Log Analytics-agent implementeren voor virtuele-machineschaalsets van Windows |Implementeer Log Analytics agent voor virtuele-machine schaal sets van Windows als de VM-installatie kopie (OS) in de lijst is gedefinieerd en de agent niet is geïnstalleerd. |Beleid |
 
 Zelfstandig beleid (niet inbegrepen bij het initiatief) wordt hier beschreven:
 
@@ -153,7 +165,7 @@ De volgende matrix wijst elke mogelijke compatibiliteits status voor het initiat
 
 | Nalevings status | Beschrijving | 
 |------------------|-------------|
-| **Compatibel** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
+| **Compliant** | Voor alle Vm's in het bereik zijn de Log Analytics-en Dependency agents geïmplementeerd.|
 | **Niet compatibel** | Niet alle virtuele machines in het bereik hebben de Log Analytics-en Dependency-agents geïmplementeerd en vereisen mogelijk herstel.|
 | **Niet gestart** | Er is een nieuwe toewijzing toegevoegd. |
 | **Vergrendelen** | U hebt onvoldoende bevoegdheden voor de beheer groep. <sup>1</sup> | 
@@ -184,10 +196,10 @@ Op basis van de resultaten van de beleids regels die zijn opgenomen in het initi
 
 * Log Analytics agent of afhankelijkheids agent is niet geïmplementeerd.  
     Dit scenario is gebruikelijk voor een bereik met bestaande Vm's. Om het te beperken, implementeert u de vereiste agents door [herstel taken te maken](../../governance/policy/how-to/remediate-resources.md) op basis van een niet-compatibel beleid.  
-    - Afhankelijkheids agent voor Linux-Vm's implementeren
-    - Afhankelijkheids agent voor Windows-Vm's implementeren
-    - Log Analytics-agent voor Linux-Vm's implementeren
-    - Log Analytics-agent voor Windows-Vm's implementeren
+    - Afhankelijkheidsagent implementeren voor Linux-VM's
+    - Afhankelijkheidsagent implementeren voor Windows-VM's
+    - Log Analytics-agent voor Linux-VM’s implementeren
+    - Log Analytics-agent voor Windows-VM's implementeren
 
 * VM-installatie kopie (OS) wordt niet geïdentificeerd in de beleids definitie.  
     De criteria van het implementatie beleid bevatten alleen de Vm's die zijn geïmplementeerd op basis van bekende VM-installatie kopieën van Azure. Raadpleeg de documentatie om te controleren of het VM-besturings systeem wordt ondersteund. Als dit niet wordt ondersteund, dupliceert u het implementatie beleid en werkt u het bij of wijzigt u het om de installatie kopie compatibel te maken.  

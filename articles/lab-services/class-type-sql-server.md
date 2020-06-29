@@ -1,18 +1,16 @@
 ---
 title: Stel een lab in om te beheren en te ontwikkelen met Azure SQL Database | Azure Lab Services
 description: Meer informatie over het instellen van een lab om te beheren en te ontwikkelen met Azure SQL Database.
-services: lab-services
 author: emaher
-ms.service: lab-services
 ms.topic: article
-ms.date: 06/05/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: cd27264e91220c7f68aaae35650234bd9c1e4cac
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322275"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444876"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Een Lab instellen om te beheren en te ontwikkelen met SQL Server
 

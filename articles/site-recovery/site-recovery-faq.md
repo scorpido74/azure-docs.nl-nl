@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: b16301bb092395ac71a5bfd6f53f392ab708b10c
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: dd3b9b8eca4f1eab66f8982b22be5941d082b229
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345169"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506171"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -128,7 +128,7 @@ Ja. Wanneer u Site Recovery gebruikt om replicatie en failover in uw filialen te
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Wordt nood herstel ondersteund voor virtuele Azure-machines?
 
-Ja, Site Recovery ondersteunt nood gevallen voor Azure-Vm's tussen Azure-regio's. [Bekijk veelgestelde vragen](azure-to-azure-common-questions.md) over nood herstel voor Azure VM.
+Ja, Site Recovery ondersteunt nood gevallen voor Azure-Vm's tussen Azure-regio's. [Bekijk veelgestelde vragen](azure-to-azure-common-questions.md) over nood herstel voor Azure VM. Als u tussen twee Azure-regio's op hetzelfde continent wilt repliceren, gebruikt u onze Azure naar Azure DR-aanbieding. U hoeft geen configuratie server-of proces server-en ExpressRoute-verbindingen in te stellen.
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Wordt nood herstel ondersteund voor virtuele VMware-machines?
 

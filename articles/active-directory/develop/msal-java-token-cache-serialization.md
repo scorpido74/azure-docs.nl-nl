@@ -7,25 +7,25 @@ author: sangonzal
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/07/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: bcb34d83365112b97769186ad74dfd762b05c2e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31b908eacd5f9f8610ad2c0a985fa7e0be8d1505
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76696160"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479331"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>Aangepaste serialisatie van token cache in MSAL voor Java
 
 Als u de token cache tussen exemplaren van uw toepassing wilt behouden, moet u de serialisatie aanpassen. De Java-klassen en interfaces die betrokken zijn bij de serialisatie van de token cache zijn de volgende:
 
 - [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): interface die de cache van het beveiligings token vertegenwoordigt.
-- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): een interface die de werking van code voor en na Access weergeeft. U zou @Override *beforeCacheAccess* en *afterCacheAccess* met de logica die verantwoordelijk is voor het serialiseren en deserialiseren van de cache.
+- [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): een interface die de werking van code voor en na Access weergeeft. U zou @Override *BeforeCacheAccess* en *afterCacheAccess* met de logica die verantwoordelijk is voor het serialiseren en deserialiseren van de cache.
 - [ITokenCacheContext](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessContext.html): de interface die de context vertegenwoordigt waarin de token cache wordt geopend. 
 
 Hieronder vindt u een Naïve-implementatie van aangepaste serialisatie van de serialisatie/deserialisatie van de token cache. Kopieer en plak dit niet in een productie omgeving.

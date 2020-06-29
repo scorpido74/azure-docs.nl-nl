@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871535"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477240"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie?
 
@@ -47,9 +47,9 @@ Geen gepland op dit moment.  Hieronder vindt u een overzicht van de wijzigingen 
 
 **Beïnvloede protocollen**: alle stromen
 
-Op 1 juni 2018 is de certificerings instantie van officiële Azure Active Directory (AAD) voor `https://login-us.microsoftonline.com` Azure Government `https://login.microsoftonline.us`gewijzigd van naar. Deze wijziging is ook van toepassing op Microsoft 365 GCC High en DoD, die ook services van AAD Azure Government. Als u eigenaar bent van een toepassing in een Amerikaanse Government-Tenant, moet u uw toepassing bijwerken om gebruikers in `.us` te schrijven op het eind punt.  
+Op 1 juni 2018 is de certificerings instantie van officiële Azure Active Directory (AAD) voor Azure Government gewijzigd van `https://login-us.microsoftonline.com` naar `https://login.microsoftonline.us` . Deze wijziging is ook van toepassing op Microsoft 365 GCC High en DoD, die ook services van AAD Azure Government. Als u eigenaar bent van een toepassing in een Amerikaanse Government-Tenant, moet u uw toepassing bijwerken om gebruikers in te schrijven op het `.us` eind punt.  
 
-Vanaf 5 mei is Azure AD bezig met het afdwingen van de wijziging van het eind punt, waardoor overheids gebruikers zich niet kunnen aanmelden bij apps die worden gehost in`microsoftonline.com`Amerikaanse overheids tenants met behulp van het open bare eind punt ().  Er wordt een fout `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`weer gegeven wanneer er betrokken apps worden weer gegeven. Deze fout geeft aan dat de app probeert zich aan te melden bij een Amerikaanse overheids gebruiker op het eind punt van de open bare Cloud. Als uw app zich in een open bare Cloud Tenant bevindt en bedoeld is voor de ondersteuning van Amerikaanse overheids gebruikers, moet u [uw app bijwerken zodat deze expliciet worden ondersteund](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Hiervoor moet u mogelijk een nieuwe app-registratie in de Amerikaanse overheids Cloud maken. 
+Vanaf 5 mei is Azure AD bezig met het afdwingen van de wijziging van het eind punt, waardoor overheids gebruikers zich niet kunnen aanmelden bij apps die worden gehost in Amerikaanse overheids tenants met behulp van het open bare eind punt ( `microsoftonline.com` ).  Er wordt een fout weer gegeven wanneer er betrokken apps worden weer gegeven `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` . Deze fout geeft aan dat de app probeert zich aan te melden bij een Amerikaanse overheids gebruiker op het eind punt van de open bare Cloud. Als uw app zich in een open bare Cloud Tenant bevindt en bedoeld is voor de ondersteuning van Amerikaanse overheids gebruikers, moet u [uw app bijwerken zodat deze expliciet worden ondersteund](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Hiervoor moet u mogelijk een nieuwe app-registratie in de Amerikaanse overheids Cloud maken. 
 
 Het afdwingen van deze wijziging wordt uitgevoerd met behulp van een geleidelijke implementatie op basis van hoe vaak gebruikers van de Amerikaanse overheids Cloud zich aanmelden bij de toepassing-apps die door Amerikaanse overheids gebruikers worden gebruikt, en apps die regel matig door de gebruikers van de Amerikaanse overheid worden gehanteerd, zullen afdwinging hebben toegepast. We verwachten dat afdwinging voor alle apps in juni 2020 is voltooid. 
 
@@ -104,7 +104,7 @@ Met ingang van de week van 9/2 worden verificatie aanvragen die gebruikmaken van
 
 Voorbeeld:
 
-De huidige `?e=    "f"&g=h` datum wordt `?e=f&g=h` identiek `e`  ==  `f`geparseerd.  Met deze wijziging zou het nu worden geparseerd, zodat `e`  ==  `    "f"` dit niet waarschijnlijk een geldig argument is en de aanvraag nu mislukt.
+De huidige datum `?e=    "f"&g=h` wordt identiek geparseerd `?e=f&g=h` `e`  ==  `f` .  Met deze wijziging zou het nu worden geparseerd, zodat `e`  ==  `    "f"` dit niet waarschijnlijk een geldig argument is en de aanvraag nu mislukt.
 
 
 ## <a name="july-2019"></a>Juli 2019
@@ -117,7 +117,7 @@ De huidige `?e=    "f"&g=h` datum wordt `?e=f&g=h` identiek `e`  ==  `f`geparsee
 
 **Beïnvloede protocol**: [client referenties (tokens van app-only)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-Een beveiligings wijziging heeft Live juli 26 die de manier waarop alleen app-tokens (via de client referenties verlenen) wordt uitgegeven, gewijzigd. Voorheen konden toepassingen tokens ophalen voor het aanroepen van andere apps, ongeacht de aanwezigheid van de Tenant of rollen die zijn gemachtigd voor die toepassing.  Dit gedrag is bijgewerkt, zodat voor resources (ook wel web-Api's genoemd) zijn ingesteld op één Tenant (de standaard instelling), de client toepassing moet bestaan in de resource Tenant.  Houd er rekening mee dat bestaande toestemming tussen de client en de API nog steeds niet is vereist en dat apps nog steeds hun eigen autorisatie controles moeten uitvoeren `roles` om ervoor te zorgen dat er een claim aanwezig is en de verwachte waarde voor de API bevat.
+Een beveiligings wijziging heeft Live juli 26 die de manier waarop alleen app-tokens (via de client referenties verlenen) wordt uitgegeven, gewijzigd. Voorheen konden toepassingen tokens ophalen voor het aanroepen van andere apps, ongeacht de aanwezigheid van de Tenant of rollen die zijn gemachtigd voor die toepassing.  Dit gedrag is bijgewerkt, zodat voor resources (ook wel web-Api's genoemd) zijn ingesteld op één Tenant (de standaard instelling), de client toepassing moet bestaan in de resource Tenant.  Houd er rekening mee dat bestaande toestemming tussen de client en de API nog steeds niet is vereist en dat apps nog steeds hun eigen autorisatie controles moeten uitvoeren om ervoor te zorgen dat er een `roles` claim aanwezig is en de verwachte waarde voor de API bevat.
 
 In het fout bericht voor dit scenario staat momenteel het volgende:
 
@@ -127,7 +127,7 @@ U kunt dit probleem oplossen door de beheerder toestemming te geven om de servic
 
 #### <a name="example-request"></a>Voorbeeldaanvraag
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`In dit voor beeld is de resource Tenant (instantie) contoso.com, de resource-app is een app met één Tenant `gateway.contoso.com/api` die is aangeroepen voor de contoso-Tenant en de `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`client-app.  Als de client-app een Service-Principal in Contoso.com heeft, kan deze aanvraag door gaan.  Als dit echter niet het geval is, mislukt de aanvraag met de bovenstaande fout.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`In dit voor beeld is de resource Tenant (instantie) contoso.com, de resource-app is een app met één Tenant die is aangeroepen `gateway.contoso.com/api` voor de contoso-Tenant en de client-app `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Als de client-app een Service-Principal in Contoso.com heeft, kan deze aanvraag door gaan.  Als dit echter niet het geval is, mislukt de aanvraag met de bovenstaande fout.
 
 Als de contoso gateway-app echter een multi tenant toepassing is, wordt de aanvraag wel door gaan, ongeacht de client-app met een Service-Principal in Contoso.com.
 
@@ -139,7 +139,7 @@ Als de contoso gateway-app echter een multi tenant toepassing is, wordt de aanvr
 
 **Beïnvloede protocollen**: alle stromen
 
-Per [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)kunnen Azure AD-toepassingen nu uri's voor omleiden (beantwoorden) registreren en gebruiken met statische query parameters ( `https://contoso.com/oauth2?idp=microsoft`zoals) voor OAuth 2,0-aanvragen.  Dynamische omleidings-Uri's zijn nog niet toegestaan omdat ze een beveiligings risico vormen. Dit kan niet worden gebruikt om status informatie over een verificatie aanvraag te bewaren. `state` gebruik hiervoor de para meter.
+Per [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)kunnen Azure AD-toepassingen nu uri's voor omleiden (beantwoorden) registreren en gebruiken met statische query parameters (zoals `https://contoso.com/oauth2?idp=microsoft` ) voor OAuth 2,0-aanvragen.  Dynamische omleidings-Uri's zijn nog niet toegestaan omdat ze een beveiligings risico vormen. Dit kan niet worden gebruikt om status informatie over een verificatie aanvraag te bewaren. Gebruik hiervoor de `state` para meter.
 
 De para meter static query is onderhevig aan teken reeksen die overeenkomen met omleidings-Uri's zoals andere delen van de omleidings-URI. als er geen teken reeks is geregistreerd die overeenkomt met de door de URI gedecodeerde redirect_uri, wordt de aanvraag geweigerd.  Als de URI wordt gevonden in de app-registratie, wordt de hele teken reeks gebruikt om de gebruiker om te leiden, met inbegrip van de statische query parameter.
 
@@ -158,7 +158,7 @@ Houd er rekening mee dat op dit moment (einde van 2019 juli) de app registratie 
 
 Client toepassingen kunnen zich soms niet gedraagt, maar het uitgeven van honderden dezelfde aanmeldings aanvraag duurt een korte periode.  Deze aanvragen kunnen al dan niet slagen, maar ze dragen bij aan een slechte gebruikers ervaring en verhoogde werk belastingen voor de IDP, verg root de latentie voor alle gebruikers en de beschik baarheid van de IDP te verminderen.  Deze toepassingen bevinden zich buiten de grenzen van het normale gebruik en moeten worden bijgewerkt om correct te werken.
 
-Clients die dubbele aanvragen verzenden, krijgen meerdere keren een `invalid_grant` fout:. `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`
+Clients die dubbele aanvragen verzenden, krijgen meerdere keren een `invalid_grant` fout: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request` .
 
 De meeste clients hoeven het gedrag niet te wijzigen om deze fout te voor komen.  Deze fout heeft alleen invloed op onjuist geconfigureerde clients (die geen token caching hebben of de prompt lussen al).  Clients worden op basis van de volgende factoren getraceerd per exemplaar (via cookie):
 
@@ -174,7 +174,7 @@ De meeste clients hoeven het gedrag niet te wijzigen om deze fout te voor komen.
 
 Apps die in korte tijd (5 minuten) meerdere aanvragen maken, krijgen een `invalid_grant` fout melding waarin wordt uitgelegd dat ze worden herhaald.  De tokens die worden aangevraagd, hebben voldoende levens duur (10 minuten mini maal, 60 minuten standaard), zodat herhaalde aanvragen gedurende deze periode onnodig zijn.
 
-Alle apps moeten worden `invalid_grant` afgehandeld door een interactieve prompt weer te geven in plaats van een token op de achtergrond te aanvragen.  Om deze fout te voor komen, moeten clients ervoor zorgen dat de tokens die ze ontvangen op de juiste wijze in de cache worden geplaatst.
+Alle apps moeten worden afgehandeld `invalid_grant` door een interactieve prompt weer te geven in plaats van een token op de achtergrond te aanvragen.  Om deze fout te voor komen, moeten clients ervoor zorgen dat de tokens die ze ontvangen op de juiste wijze in de cache worden geplaatst.
 
 
 ## <a name="october-2018"></a>Oktober 2018
@@ -209,5 +209,5 @@ Als u deze wijziging wilt omzeilen, kunt u het volgende doen:
 
 1. Een web-API maken voor uw toepassing, met een of meer scopes. Dit expliciete ingangs punt staat nauw keurig gekorrelig beheer en beveiliging toe.
 1. Controleer in het manifest van uw app, in de [Azure Portal](https://portal.azure.com) of de [app registratie Portal](https://apps.dev.microsoft.com), of de app toegangs tokens mag uitgeven via de impliciete stroom. Dit wordt bepaald door de `oauth2AllowImplicitFlow` sleutel.
-1. Als uw client toepassing een id_token aanvraagt via `response_type=id_token`, moet u ook een`response_type=token`toegangs token () aanvragen voor de Web-API die hierboven is gemaakt. Wanneer u het v 2.0-eind punt gebruikt `scope` , moet de para meter `api://GUID/SCOPE`er ongeveer als volgt uitzien. Op het eind punt v 1.0 moet `resource` de para meter de app-URI van de Web-API zijn.
+1. Als uw client toepassing een id_token aanvraagt via `response_type=id_token` , moet u ook een toegangs token ( `response_type=token` ) aanvragen voor de Web-API die hierboven is gemaakt. Wanneer u het v 2.0-eind punt gebruikt, `scope` moet de para meter er ongeveer als volgt uitzien `api://GUID/SCOPE` . Op het eind punt v 1.0 `resource` moet de para meter de app-URI van de Web-API zijn.
 1. Geef dit toegangs token door aan de middelste laag in plaats van de id_token.

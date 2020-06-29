@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307557"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414280"
 ---
-# <a name="set-up-web-endpoints"></a>Web-eind punten instellen
+# <a name="set-up-web-endpoints"></a>Webeindpunten instellen
 
 In dit artikel leert u hoe u Web-eind punten kunt instellen in een toepassing met aangepaste opdrachten waarmee u HTTP-aanvragen van een client toepassing kunt maken. U voert de volgende taken uit:
 
@@ -46,7 +46,7 @@ In dit artikel leert u hoe u Web-eind punten kunt instellen in een toepassing me
    | Naam | UpdateDeviceState | Naam voor het eind punt van de website. |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | De URL van het eind punt waarop u wilt communiceren met uw aangepaste opdracht-app. |
    | Methode | POST | De toegestane interacties (zoals GET, POST) met uw eind punt.|
-   | Kopteksten | Sleutel: app, waarde: een unieke naam voor uw app | De header-para meters die moeten worden meegenomen in de aanvraag header.|
+   | Headers | Sleutel: app, waarde: een unieke naam voor uw app | De header-para meters die moeten worden meegenomen in de aanvraag header.|
 
     > [!NOTE]
     > - Het voor beeld-webeindpunt dat is gemaakt met behulp van [Azure function](https://docs.microsoft.com/azure/azure-functions/), waarmee de status van de apparaat-en ventilator wordt opgeslagen in de data base

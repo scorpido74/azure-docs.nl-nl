@@ -3,15 +3,15 @@ title: Instellingen voor de Azure HPC-cache configureren
 description: In dit artikel wordt uitgelegd hoe u aanvullende instellingen voor de cache configureert, zoals MTU en no-root-Squash, en hoe u toegang krijgt tot de Express-moment opnamen van Azure Blob-opslag doelen.
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: e9eebc9e977c6065f08b996f5ab3f3e46bc1a134
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344268"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505304"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Aanvullende instellingen voor de Azure HPC-cache configureren
 

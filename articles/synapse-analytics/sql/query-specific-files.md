@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 9c573e6ea3f80369f9b5cced66302caf12d727a4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206357"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478413"
 ---
 # <a name="using-file-metadata-in-queries"></a>Meta gegevens van bestanden in query's gebruiken
 
@@ -22,13 +22,13 @@ De SQL on-demand-query service kan worden uitgebreid naar meerdere bestanden en 
 
 Het kan voor komen dat u moet weten welk bestands-of bronmap-bron overeenkomt met een specifieke rij in de resultatenset.
 
-U kunt de functie gebruiken `filepath` en `filename` bestands namen en/of het pad in de resultatenset retour neren. U kunt ze ook gebruiken om gegevens te filteren op basis van de bestands naam en/of het pad van de map. Deze functies worden beschreven in de syntaxis sectie [Bestands naam functie](develop-storage-files-overview.md#filename-function) en [filepath-functie](develop-storage-files-overview.md#filepath-function). Hieronder vindt u een korte beschrijving van de voor beelden.
+U kunt de functie gebruiken `filepath` en `filename` bestands namen en/of het pad in de resultatenset retour neren. U kunt ze ook gebruiken om gegevens te filteren op basis van de bestands naam en/of het pad van de map. Deze functies worden beschreven in de syntaxis sectie [Bestands naam functie](query-data-storage.md#filename-function) en [filepath-functie](query-data-storage.md#filepath-function). Hieronder vindt u een korte beschrijving van de voor beelden.
 
 ## <a name="prerequisites"></a>Vereisten
 
 De eerste stap bestaat uit het **maken van een Data Base** met een gegevens bron die verwijst naar het opslag account. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 ### <a name="filename"></a>Bestands
 

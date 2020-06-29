@@ -1,24 +1,16 @@
 ---
 title: Stel een lab in om data Science te leren met python-en Jupyter-notebooks | Microsoft Docs
 description: Meer informatie over het instellen van een lab om data Science te leren werken met python-en Jupyter-notebooks.
-services: lab-services
-documentationcenter: na
 author: emaher
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 587a982e98789c2c1004d6aedb066b615744db99
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899051"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445012"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
 In dit artikel wordt beschreven hoe u een virtuele machine (VM) in Lab-Services instelt met de hulpprogram ma's die nodig zijn om studenten te leren hoe ze [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io/)gebruiken en hoe studenten verbinding kunnen maken met hun notebooks op hun virtuele machines (vm's).

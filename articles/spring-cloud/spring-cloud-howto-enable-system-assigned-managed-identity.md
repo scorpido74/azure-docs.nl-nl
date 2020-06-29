@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: c9b9eaf7447d30dfbec6b04ff00010e0e2992c8e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d113d20e87d58bad007a35fce47d597a67849a6e
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254528"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445199"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Door het systeem toegewezen beheerde identiteit inschakelen voor Azure lente-Cloud toepassing
 Beheerde identiteiten voor Azure-resources bieden een automatisch beheerde identiteit in Azure Active Directory aan een Azure-resource, zoals uw Azure lente-Cloud toepassing. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code.
@@ -82,4 +82,5 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>Volgende stappen
 * [Beheerde identiteiten gebruiken met Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Toegang tot Azure Key Vault met beheerde identiteiten in Spring boot starter](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
-* [Gebruik Key Vault van App Service met Managed Service Identity](https://docs.microsoft.com/samples/azure-samples/app-service-msi-keyvault-dotnet/keyvault-msi-appservice-sample/)
+* [Meer informatie over beheerde identiteiten voor Azure-resources](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
+

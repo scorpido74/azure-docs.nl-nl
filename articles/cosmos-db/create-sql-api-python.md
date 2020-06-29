@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - tracking-python
-ms.openlocfilehash: b140371c42fffd55b271fa0215db89ea9d07da0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1b3a97a11c8d5782b8b7577d6afccbbdaadea0e7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559838"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85116567"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Quickstart: Een Python-app maken met behulp van een SQL API-account van Azure Cosmos DB
 
@@ -52,13 +52,13 @@ U kunt nu het hulpprogramma Data Explorer in de Azure-portal gebruiken om een da
     
     Uiterst rechts wordt het gedeelte **Container toevoegen** weergegeven. Mogelijk moet u naar rechts scrollen om het te kunnen zien.
 
-    ![Data Explorer in de Azure-portal, het deelvenster Container toevoegen](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
+    :::image type="content" source="./media/create-sql-api-python/azure-cosmosdb-data-explorer.png" alt-text="Data Explorer in Azure Portal, het deelvenster Container toevoegen":::
 
 2. Geef op de pagina **Container toevoegen** de instellingen voor de nieuwe container op.
 
     |Instelling|Voorgestelde waarde|Beschrijving
     |---|---|---|
-    |**Database-id**|Taken|Voer *Taken* in als de naam voor de nieuwe database. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Controleer de optie **Doorvoer voor databases inrichten**, zodat u de doorvoer die is ingericht voor de database, kunt delen in alle containers in de database. Met deze optie bespaart u bovendien op de kosten. |
+    |**Database-id**|Taken|Voer *Taken* in als de naam voor de nieuwe database. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Schakel de optie **Doorvoer voor databases inrichten** in, zodat u de doorvoer die is ingericht voor de database, kunt delen in alle containers in de database. Met deze optie bespaart u bovendien op de kosten. |
     |**Doorvoer**|400|Wijzig de doorvoer in 400 aanvraageenheden per seconde (RU/s). U kunt de doorvoer later opschalen als u de latentie wilt beperken.| 
     |**Container-id**|Items|Voer *Items* in als de naam voor de nieuwe container. Voor id's van containers gelden dezelfde tekenvereisten als voor databasenamen.|
     |**Partitiesleutel**| /category| In het voorbeeld dat in dit artikel wordt beschreven, wordt */category* als de partitiesleutel gebruikt.|
@@ -108,7 +108,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Sleutels** in het linkernavigatiegedeelte. Gebruik in de volgende stap de kopieerknoppen aan de rechterkant van het scherm om de **URI** en **Primaire sleutel** in het bestand *cosmos_get_started.py* te kopiëren.
 
-    ![Een toegangssleutel en URI in de sleutelinstellingen in de Azure-portal ophalen](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
+    :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Een toegangssleutel en URI in de sleutelinstellingen in Azure Portal ophalen":::
 
 2. Open het bestand *cosmos_get_started.py* in *\git-samples\azure-cosmos-db-python-getting-started* in Visual Studio Code.
 

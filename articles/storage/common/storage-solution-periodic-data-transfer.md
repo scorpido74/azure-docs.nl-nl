@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67357041"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85504334"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Oplossingen voor periodieke gegevensoverdracht
  
@@ -55,12 +55,12 @@ De volgende tabel bevat een overzicht van de verschillen in de belangrijkste mog
 | Functie                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Vorm factor                                   | Virtueel apparaat             | Fysiek apparaat          | Service in Azure Portal, on-premises agent                                                            |
-| Hardware                                      | Uw Hyper Visor            | Geleverd door micro soft    | N.v.t.                                                            |
+| Hardware                                      | Uw Hyper Visor            | Geleverd door micro soft    | NA                                                            |
 | Initiële installatie-inspanning                          | Laag (<30 minuten)            | Gemiddeld (~ paar uur) | Groot (~ dagen)                                                 |
 | Gegevensindeling                                   | Azure-blobs, Azure Files   | Azure-blobs, Azure Files | [Ondersteunt 70 en data connectors voor gegevens archieven en-indelingen](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Vooraf verwerkte gegevens                           | Nee                         | Ja, via Edge compute    | Ja                                                           |
-| Lokale cache<br>(voor het opslaan van on-premises gegevens)    | Ja                        | Ja                      | Nee                                                            |
-| Overdracht van andere Clouds                    | Nee                         | Nee                       | Ja                                                           |
+| Vooraf verwerkte gegevens                           | No                         | Ja, via Edge compute    | Yes                                                           |
+| Lokale cache<br>(voor het opslaan van on-premises gegevens)    | Ja                        | Ja                      | No                                                            |
+| Overdracht van andere Clouds                    | Nee                         | Nee                       | Yes                                                           |
 | Prijzen                                       | [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Prijzen](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Prijzen](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Volgende stappen

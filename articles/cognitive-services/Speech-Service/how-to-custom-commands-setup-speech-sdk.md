@@ -1,5 +1,5 @@
 ---
-title: Integreren met een client-app met behulp van Speech SDK
+title: Integreren met een client-app met de Speech-SDK
 titleSuffix: Azure Cognitive Services
 description: In dit artikel leert u hoe u aanvragen maakt voor een gepubliceerde aangepaste opdrachten toepassing vanuit de Speech SDK die in een UWP-toepassing wordt uitgevoerd.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: d87301f09665062a1b56fa33443f1178b42fb42f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307530"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414353"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integreren met een client toepassing met behulp van Speech SDK
 
@@ -38,7 +38,7 @@ U hebt ook het volgende nodig:
 
 ## <a name="step-1-publish-custom-commands-application"></a>Stap 1: de toepassing voor het publiceren van aangepaste opdrachten
 
-1. Open de eerder gemaakte toepassing voor aangepaste opdrachten (preview) en selecteer **publiceren**
+1. Open uw eerder gemaakte toepassing voor aangepaste opdrachten en selecteer **publiceren**
 
    > [!div class="mx-imgBorder"]
    > ![Uw toepassing publiceren](media/custom-commands/setup-speech-sdk-publish-application.png)

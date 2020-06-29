@@ -9,14 +9,14 @@ ms.date: 06/04/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: aff731b310010a23d4e1e514493cd32398dd3cfd
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 90e14408f697f113990a478e2d06256e2efb8c74
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465844"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444587"
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage firewalls en virtuele netwerken configureren
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Firewalls en virtuele netwerken voor Azure Storage configureren
 
 Azure Storage biedt een gelaagd beveiligingsmodel. Met dit model kunt u het toegangs niveau voor uw opslag accounts beveiligen en beheren die uw toepassingen en bedrijfs omgevingen vereisen, op basis van het type en de subset van netwerken die worden gebruikt. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot een opslag account. U kunt de toegang tot uw opslag account beperken tot aanvragen die afkomstig zijn van opgegeven IP-adressen, IP-adresbereiken of uit een lijst met subnetten in een Azure Virtual Network (VNet).
 
@@ -179,7 +179,7 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
     Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
-1. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
+1. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
 
     ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
@@ -215,7 +215,7 @@ U kunt regels voor virtuele netwerken voor opslag accounts beheren via de Azure 
     az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.Storage"
     ```
 
-1. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
+1. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
 
     ```azurecli
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
@@ -374,7 +374,7 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 |:------------------------ |:-------------------------- |:---------------------------------- |
 | Azure Backup             | Microsoft.RecoveryServices | Voer back-ups en herstel bewerkingen uit van niet-beheerde schijven in virtuele IAAS-machines. (niet vereist voor beheerde schijven). [Meer informatie](/azure/backup/backup-introduction-to-azure-backup). |
 | Azure Data Box           | Micro soft. DataBox          | Hiermee kunt u gegevens importeren naar Azure met behulp van Data Box. [Meer informatie](/azure/databox/data-box-overview). |
-| Azure DevTest Labs       | Microsoft.DevTestLab       | Het maken van aangepaste installatie kopieën en artefact installatie. [Meer informatie](/azure/devtest-lab/devtest-lab-overview). |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | Het maken van aangepaste installatie kopieën en artefact installatie. [Meer informatie](../../devtest-labs/devtest-lab-overview.md). |
 | Azure Event Grid         | Micro soft. EventGrid        | Schakel Blob Storage gebeurtenis publicatie in en sta Event Grid toe om naar opslag wachtrijen te publiceren. Meer informatie over [Blob Storage-gebeurtenissen](/azure/event-grid/event-sources) en [het publiceren naar wacht rijen](/azure/event-grid/event-handlers). |
 | Azure Event Hubs         | Microsoft.EventHub         | Gegevens archiveren met Event Hubs Capture. [Meer informatie](/azure/event-hubs/event-hubs-capture-overview). |
 | Azure File Sync          | Micro soft. StorageSync      | Hiermee kunt u uw on-premises Bestands server transformeren naar een cache voor Azure-bestands shares. Het toestaan van synchronisatie op meerdere locaties, snelle herstel na nood gevallen en back-ups aan de Cloud zijde. [Meer informatie](../files/storage-sync-files-planning.md) |
@@ -386,7 +386,7 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bepaald exemplaar van de onderstaande services toegang krijgen tot het opslag account, als u expliciet [een RBAC-rol toewijst](storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat bron exemplaar. In dit geval komt de reik wijdte van toegang voor het exemplaar overeen met de RBAC-rol die is toegewezen aan de beheerde identiteit.
 
-| Service                        | Naam van resource provider                 | Functie            |
+| Service                        | Naam van resource provider                 | Doel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure Cognitive Search         | Micro soft. Search/searchServices        | Hiermee kunnen Cognitive Search Services toegang krijgen tot opslag accounts voor indexering, verwerking en query's. |
 | Azure Container Registry Tasks | Micro soft. ContainerRegistry/registers | ACR-taken hebben toegang tot opslag accounts tijdens het maken van container installatie kopieën. |

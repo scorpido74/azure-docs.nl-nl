@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a94a533dbc31e2f2d4ddb5d1985c77da8b29032
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933979"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476968"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>StorSimple Snapshot Manager gebruikers interface gebruiken voor het beheren van back-uptaken en een back-upcatalogus
 
@@ -112,8 +112,8 @@ De volgende tabel bevat een alfabetische lijst met StorSimple-Snapshot Manager a
 | Verifiëren |Klik op het knoop punt **apparaten** en klik met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **verifiëren** om het wacht woord in te voeren dat u voor het apparaat hebt geconfigureerd. |
 | Klonen |Vouw **back-upcatalogus**uit, vouw **Cloud momentopnamen**uit, klik op een gedateerde back-up en selecteer vervolgens een volume in het **resultaten** venster. |Klik op **klonen** om een kopie van een Cloud momentopname te maken en op te slaan op een locatie die u opgeeft. |
 | Een apparaat configureren |Klik met de rechter muisknop op het knoop punt **apparaten** . |Klik op **een apparaat configureren** om één apparaat of meerdere apparaten te configureren om verbinding te maken met de Windows-host. |
-| Back-upbeleid maken |Voer een van de volgende handelingen uit:<ul><li>Klik met de rechter muisknop op **back-upbeleid**.</li><li>Klik of vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Klik of vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-upbeleid maken** om een geplande back-up voor een volume groep te configureren. |
-| Een volume groep maken |Voer een van de volgende handelingen uit:<ul><li>Klik op het knoop punt **volumes** en klik vervolgens met de rechter muisknop op een volume in het **resultaten** venster.</li><li>Klik met de rechter muisknop op het knoop punt **volume groepen** .</li></ul> |Klik op **volume groep maken** om volumes aan een volume groep toe te wijzen. |
+| Back-upbeleid maken |Doe een van de volgende dingen:<ul><li>Klik met de rechter muisknop op **back-upbeleid**.</li><li>Klik of vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Klik of vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-upbeleid maken** om een geplande back-up voor een volume groep te configureren. |
+| Een volume groep maken |Doe een van de volgende dingen:<ul><li>Klik op het knoop punt **volumes** en klik vervolgens met de rechter muisknop op een volume in het **resultaten** venster.</li><li>Klik met de rechter muisknop op het knoop punt **volume groepen** .</li></ul> |Klik op **volume groep maken** om volumes aan een volume groep toe te wijzen. |
 | Verwijderen |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in veel **actie** menu's en in deel Vensters met **acties** ). |Klik op **verwijderen** om het knoop punt of resultaat dat u hebt geselecteerd, te verwijderen. Wanneer het bevestigings venster wordt weer gegeven, bevestigt of annuleert u het verwijderen. |
 | Details |Klik op het knoop punt **apparaten** en klik vervolgens met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **Details** om de configuratie gegevens voor een apparaat weer te geven. |
 | Bewerken |Klik op **back-upbeleid**en klik vervolgens met de rechter muisknop op een beleid in het **resultaten** venster. |Klik op **bewerken** om het back-upschema voor een volume groep te wijzigen. |
@@ -125,7 +125,7 @@ De volgende tabel bevat een alfabetische lijst met StorSimple-Snapshot Manager a
 | Apparaten vernieuwen |Klik met de rechter muisknop op het knoop punt **apparaten** . |Klik op **apparaten vernieuwen** om de lijst met verbonden apparaten te synchroniseren met StorSimple Snapshot Manager. |
 | Volumes opnieuw scannen |Klik met de rechter muisknop op het knoop punt **volumes** . |Klik op **volumes opnieuw scannen** om de lijst met volumes die wordt weer gegeven in het **resultaat** venster bij te werken. |
 | Herstellen |Vouw **back-upcatalogus**uit, vouw een volume groep uit, vouw **lokale moment opnamen** of **Cloud momentopnamen**uit en klik met de rechter muisknop op een back-up. |Klik op **herstellen** om de huidige volume groeps gegevens te vervangen door de gegevens van de geselecteerde back-up. |
-| Back-up maken |Voer een van de volgende handelingen uit:<ul><li>Vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-up maken** om onmiddellijk een back-uptaak te starten. |
+| Back-up maken |Doe een van de volgende dingen:<ul><li>Vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-up maken** om onmiddellijk een back-uptaak te starten. |
 | Invoer weer geven in-/uitschakelen |Klik met de rechter muisknop op het bovenste knoop punt in het deel venster **bereik** (het knoop punt **StorSimple Snapshot Manager** in de voor beelden). |Klik op **in-/uitschakelen wordt weer gegeven** om de volume groepen en de bijbehorende back-ups weer te geven of te verbergen die zijn geïmporteerd uit het StorSimple Apparaatbeheer service-dash board. |
 
 ### <a name="view-menu"></a>Menu Beeld
@@ -428,7 +428,7 @@ In de volgende tabellen worden de sneltoetsen voor elk knoop punt in het deel ve
 | V |Hiermee opent u het menu **weer gave** . |
 | W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **volume groepen** . |
 | F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| L |De * *-pagina export lijst exporteren wordt geopend. |
+| L |Hiermee opent u de pagina **lijst exporteren** . |
 | H |Hiermee opent u online-Help. |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>Sneltoetsen voor back-upcatalogus knooppunt

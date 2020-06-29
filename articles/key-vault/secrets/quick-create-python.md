@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 783e89d3e1802ae8788a933f493e2a865c03a3ef
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c8546d159d920fc728f0bf6413d84d7b19bbe09c
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561546"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125239"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Quickstart: Azure Key Vault-clientbibliotheek voor Python
 
@@ -27,7 +27,7 @@ Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen
 - Taken voor TLS/SSL-certificaten vereenvoudigen en automatiseren.
 - FIPS 140-2 level 2-gevalideerde HSM's gebruiken.
 
-[API-referentiedocumentatie](/python/api/overview/azure/key-vault?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault/)
+[API-referentiedocumentatie](/python/api/overview/azure/keyvault-secrets-readme?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -70,12 +70,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 De eenvoudigste manier om een Python-cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Een door App Service beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault](../general/managed-identity.md) voor meer informatie. 
 
-In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie "http://&lt;my-unique-service-principle-name&gt;".
+In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie http://&lt;mijn-unieke-service-principal-naam&gt;.
 
-Een service-principal maken met behulp van de AzureCLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac):
+Maak een service-principal met behulp van de Azure CLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac):
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 5cedde1e7daa49aaa7a2786c9ad8a65fb8e452f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297575"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85507497"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple Apparaatbeheer gebruiken voor het beheren van de referenties van het opslag account voor de virtuele StorSimple-matrix
 
@@ -110,7 +110,7 @@ U kunt een opslag account bewerken die wordt gebruikt door uw apparaat. Als u ee
 4. Ga als volgt te werk op de Blade **Eigenschappen** van referenties voor opslag account:
    
    1. Indien nodig kunt u de selectie SSL-modus **inschakelen** wijzigen.
-   2. U kunt ervoor kiezen om de toegangs sleutels voor de referenties van uw opslag account opnieuw te genereren. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)voor meer informatie. Geef de referentie sleutel voor het nieuwe opslag account op. Dit is de primaire toegangs sleutel voor een Azure Storage-account.
+   2. U kunt ervoor kiezen om de toegangs sleutels voor de referenties van uw opslag account opnieuw te genereren. Zie [Toegangssleutels voor een opslagaccount beheren](../storage/common/storage-account-keys-manage.md) voor meer informatie. Geef de referentie sleutel voor het nieuwe opslag account op. Dit is de primaire toegangs sleutel voor een Azure Storage-account.
    3. Klik boven aan de Blade **Eigenschappen** op **Opslaan** om de instellingen op te slaan. De instellingen worden bijgewerkt op de Blade referenties van het **opslag account** .
       
       ![Een opslag account referentie bewerken](./media/storsimple-virtual-array-manage-storage-accounts/ova-edit-storageacct.png)

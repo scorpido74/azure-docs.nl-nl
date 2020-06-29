@@ -1,96 +1,98 @@
 ---
-title: Gedrukt, handgeschreven tekst herkenning-Computer Vision
+title: Tekst lezen uit afbeeldingen en documenten-Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Concepten met betrekking tot het herkennen van gedrukte en handgeschreven tekst in afbeeldingen met behulp van de Computer Vision-API.
+description: Concepten met betrekking tot optische teken herkenning (OCR) en tekst van afbeeldingen en documenten voor gedrukte en handgeschreven tekst met behulp van de Computer Vision-API.
 services: cognitive-services
-author: PatrickFarley
-manager: nitinme
+author: msbbonsu
+manager: netahw
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: pafarley
+ms.date: 06/23/2020
+ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 65e1613eb8fda934899afe692f45a38fca04bff2
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589853"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414015"
 ---
-# <a name="recognize-printed-and-handwritten-text"></a>Afgedrukte en handgeschreven tekst herkennen
+# <a name="read-text-from-images-and-documents"></a>Tekst uit afbeeldingen en documenten lezen
 
-Computer Vision biedt een aantal services voor het detecteren en uitpakken van gedrukte of handgeschreven tekst die in afbeeldingen wordt weer gegeven. Dit is handig in verschillende scenario's, zoals het nemen van notities, medische records, beveiliging en bankieren. In de volgende drie secties worden drie verschillende tekstherkennings-Api's beschreven, die elk zijn geoptimaliseerd voor verschillende use cases.
+Computer Vision bevat nieuwe, op diep Learning gebaseerde mogelijkheden voor optische teken herkenning (OCR) waarmee gedrukte en handgeschreven tekst uit afbeeldingen en PDF-documenten worden geëxtraheerd. Computer Vision extraheert tekst uit zowel analoge documenten (afbeeldingen, gescande documenten) als gedigitaliseerde documenten. U kunt tekst uit afbeeldingen in het wild extra heren, zoals foto's van een licentie plaat of containers met serie nummers, en van documenten, facturen, facturen, financiële rapporten, artikelen en meer. Deze OCR-functionaliteit is beschikbaar als onderdeel van de beheerde service in de Cloud of on-premises (containers). Het ondersteunt ook virtuele netwerken en persoonlijke eind punten om te voldoen aan de vereisten voor naleving en privacy van uw onderneming.
 
-## <a name="read-api"></a>API lezen
+## <a name="read-api"></a>API lezen 
 
-De Lees-API detecteert tekst inhoud in een afbeelding met onze meest recente herkennings modellen en zet de geïdentificeerde tekst om in een door een machine Lees bare teken stroom. Het is geoptimaliseerd voor tekst-zware afbeeldingen (zoals documenten die digitaal zijn gescand) en voor afbeeldingen met veel visuele ruis. Hiermee wordt bepaald welk herkennings model moet worden gebruikt voor elke tekst regel, met ondersteuning voor afbeeldingen met zowel gedrukte als handgeschreven tekst. De Lees-API wordt asynchroon uitgevoerd omdat grotere documenten enkele minuten kunnen duren om een resultaat te retour neren.
+De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) van computer vision is de nieuwste OCR-technologie van micro soft waarmee gedrukte tekst, handgeschreven tekst (alleen Engels), cijfers en valuta symbolen uit afbeeldingen en PDF-documenten worden geëxtraheerd. Het is geoptimaliseerd voor het extra heren van tekst uit afbeeldingen in-the-wild, afbeeldingen met visuele ruis, PDF-documenten die digitaal of gescand zijn en tekst zware afbeeldingen. Het ondersteunt gedrukte en handgeschreven tekst (Engels) en gemengde talen in dezelfde afbeelding of hetzelfde document. U kunt de volledige lijst met ondersteunde talen vinden op de pagina [taal ondersteuning voor computer vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) .
 
-Met de Lees bewerking worden de oorspronkelijke regel groepen van herkende woorden in de uitvoer bijgehouden. Elke regel wordt geleverd met coördinaten van het selectie kader en elk woord in de regel heeft ook een eigen coördinaten. Als een woord is herkend met een lage betrouw baarheid, wordt die informatie ook overgebracht. Raadpleeg de naslag documentatie over [API v 2.0 lezen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) of Raadpleeg [API v 3.0 referentie documenten](https://aka.ms/computer-vision-v3-ref) voor meer informatie.
 
-De Lees bewerking kan tekst herkennen in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlands.
+### <a name="how-it-works"></a>Hoe werkt het?
 
-### <a name="image-requirements"></a>Vereisten voor installatiekopieën
+De [Lees-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) is asynchroon. De eerste stap is het aanroepen van de Lees bewerking. De Lees bewerking neemt een afbeeldings-of PDF-document als invoer en retourneert een bewerkings-ID. 
 
-De Lees-API werkt met installatie kopieën die voldoen aan de volgende vereisten:
+De tweede stap is het aanroepen van de bewerking [resultaten ophalen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) . Deze bewerking neemt de bewerkings-ID die is gemaakt door de Lees bewerking. Vervolgens wordt de uitgepakte tekst inhoud uit de afbeelding of het document geretourneerd in de vorm van JSON. De JSON-respons houdt de oorspronkelijke regel groeperingen van herkende woorden bij. Het bevat de geëxtraheerde tekst regels en de coördinaten van het begrenzingsvak. Elke tekst regel bevat alle geëxtraheerde woorden met hun coördinaten en een betrouwbaarheids Score.
 
-- De afbeelding moet worden weer gegeven in de indeling JPEG, PNG, BMP, PDF of TIFF.
-- De afmetingen van de afbeelding moeten tussen 50 x 50 en 10000 x 10000 pixels liggen. PDF-pagina's moeten 17 x 17 inch of kleiner zijn.
-- De bestands grootte van de afbeelding moet kleiner zijn dan 20 MB (Mega byte).
+Als dat nodig is, wordt de rotatie van de herkende pagina gecorrigeerd door de rotatie verschuiving in graden over de horizontale afbeeldings te retour neren, zoals in de volgende afbeelding wordt weer gegeven.
 
-### <a name="limitations"></a>Beperkingen
+![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/vision-overview-ocr-read.png)
 
-Als u een abonnement met een gratis laag gebruikt, worden alleen de eerste twee pagina's van een PDF-of TIFF-document verwerkt met de Lees-API. Met een betaald abonnement worden er Maxi maal 200 pagina's verwerkt. Houd er ook rekening mee dat de API Maxi maal 300 regels per pagina detecteert.
+Volg de Snelstartgids [gedrukte en handgeschreven tekst uitpakken](./QuickStarts/CSharp-hand-text.md) om OCR te implementeren met C# en de rest API.
 
-## <a name="ocr-optical-character-recognition-api"></a>OCR (optische teken herkenning)-API
+### <a name="input-requirements"></a>Invoer vereisten
 
-De API van de optische teken herkenning (OCR) van Computer Vision is vergelijkbaar met de Lees-API, maar wordt synchroon uitgevoerd en is niet geoptimaliseerd voor grote documenten. Er wordt een eerder herkennings model gebruikt, maar werkt met meer talen. Zie [taal ondersteuning](language-support.md#text-recognition) voor een volledige lijst met ondersteunde talen.
+De Lees-API heeft de volgende invoer:
+* Ondersteunde bestands indelingen: JPEG, PNG, BMP, PDF en TIFF
+* Voor PDF en TIFF worden Maxi maal 2000 pagina's verwerkt. Voor abonnees met een gratis laag worden alleen de eerste twee pagina's verwerkt.
+* De bestands grootte moet kleiner zijn dan 50 MB en de afmetingen zijn ten minste 50 x 50 pixels en Maxi maal 10000 x 10000 pixels.
+* De PDF-dimensies mogen Maxi maal 17 x 17 inch zijn, overeenkomen met de papier formaten Legal of a3 en kleiner.
 
-Als dat nodig is, corrigeert OCR de rotatie van de herkende tekst door de rotatie verschuiving in graden over de horizontale afbeeldings te retour neren. OCR levert ook de frame coördinaten van elk woord, zoals in de volgende afbeelding wordt weer gegeven.
 
-![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/vision-overview-ocr.png)
+### <a name="text-from-images"></a>Tekst van afbeeldingen
 
-Raadpleeg de [documenten voor OCR-referentie](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) voor meer informatie.
+De volgende Lees-API-uitvoer toont de geëxtraheerde tekst regels en woorden uit een afbeelding met tekst op verschillende hoeken, kleuren en letter typen
 
-### <a name="image-requirements"></a>Vereisten voor installatiekopieën
+![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/text-from-images-example.png)
 
-De OCR-API werkt op installatie kopieën die voldoen aan de volgende vereisten:
+### <a name="text-from-documents"></a>Tekst uit documenten
 
-* De afbeelding moet worden weer gegeven in de indeling JPEG, PNG, GIF of BMP.
-* De grootte van de invoer afbeelding moet tussen 50 x 50 en 4200 x 4200 pixels liggen.
-* De tekst in de afbeelding kan worden gedraaid met een veelvoud van 90 graden plus een kleine hoek van Maxi maal 40 graden.
+Naast installatie kopieën gebruikt de Lees-API een PDF-document als invoer.
 
-### <a name="limitations"></a>Beperkingen
+![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/text-from-documents-example.png)
 
-Op Foto's waarbij de tekst dominant is, kunnen fout-positieven afkomstig zijn van gedeeltelijk herkende woorden. Op sommige Foto's, met name Foto's zonder tekst, kan de precisie variëren, afhankelijk van het type afbeelding.
 
-## <a name="recognize-text-api"></a>Tekst herkennen-API
+### <a name="handwritten-text-in-english"></a>Handgeschreven tekst in het Engels
 
-> [!NOTE]
-> De Tekst herkennen-API wordt vervangen door de Lees-API. De Lees-API heeft vergelijk bare mogelijkheden en is bijgewerkt voor het verwerken van PDF-, TIFF-en bestanden met meerdere pagina's.
+De Lees bewerking biedt nu alleen ondersteuning voor het extra heren van handgeschreven tekst in het Engels.
 
-De Tekst herkennen-API is vergelijkbaar met OCR, maar wordt asynchroon uitgevoerd en maakt gebruik van bijgewerkte herkennings modellen. Raadpleeg de [documentatie](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) van de tekst herkennen-API voor meer informatie.
+![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/handwritten-example.png)
 
-### <a name="image-requirements"></a>Vereisten voor installatiekopieën
+### <a name="printed-text-in-supported-languages"></a>Gedrukte tekst in ondersteunde talen
 
-De Tekst herkennen-API werkt met installatie kopieën die voldoen aan de volgende vereisten:
+De Lees-API biedt ondersteuning voor het extra heren van gedrukte tekst in het Engels, Spaans, Duits, Frans, Italiaans, Portugees en Nederlandstalige talen. Als uw scenario ondersteuning vereist voor meer talen, raadpleegt u het overzicht van de OCR API in dit document. Raadpleeg de lijst met alle [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)
 
-- De afbeelding moet worden weer gegeven in de indeling JPEG, PNG of BMP.
-- De afmetingen van de afbeelding moeten tussen 50 x 50 en 4200 x 4200 pixels liggen.
-- De bestands grootte van de afbeelding moet kleiner zijn dan 4 MB.
+![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/supported-languages-example.png)
 
-## <a name="limitations"></a>Beperkingen
+### <a name="mixed-languages-support"></a>Ondersteuning voor gemengde talen
 
-De nauw keurigheid van tekst herkennings bewerkingen is afhankelijk van de kwaliteit van de afbeeldingen. De volgende factoren kunnen een onnauwkeurige Lees bewerking veroorzaken:
+De Lees-API ondersteunt afbeeldingen en documenten met meerdere talen, die vaak worden aangeduid als gemengde taal documenten. Dit doet u door elke tekst regel in het document in de gedetecteerde taal te classificeren voordat u de tekst inhoud uitpakt.
 
-* Wazige afbeeldingen.
-* Handgeschreven of cursieve tekst.
-* Artistieke lettertypestijlen.
-* Kleine lettergrootte.
-* Complexe achtergronden, schaduwen of schittering op de tekst of vervorming van het perspectief.
-* Grote of ontbrekende hoofd letters aan het begin van woorden.
-* Subscript, superscript of doorgehaalde tekst.
+![Een afbeelding die wordt gedraaid en de bijbehorende tekst wordt gelezen en afgebakend](./Images/mixed-language-example.png)
+
+### <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging
+
+Net als bij alle cognitieve services moeten ontwikkel aars die de Lees service gebruiken op de hoogte zijn van het micro soft-beleid voor klant gegevens. Zie de pagina Cognitive Services in het [micro soft vertrouwens centrum](https://www.microsoft.com/en-us/trust-center/product-overview) voor meer informatie.
+
+### <a name="deploy-on-premises"></a>On-premises implementeren
+
+Lezen is ook beschikbaar als docker-container (preview), zodat u de nieuwe OCR-mogelijkheden kunt implementeren in uw eigen omgeving. Containers zijn geweldig voor specifieke vereisten voor beveiliging en gegevens beheer. Zie [Lees containers installeren en uitvoeren.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
+
+
+## <a name="ocr-api"></a>OCR-API
+
+De [OCR-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) maakt gebruik van een ouder herkennings model. Het ondersteunt slechts één installatie kopie, geen Pdf's en retourneert een onmiddellijke reactie. Het ondersteunt [meer talen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition) dan een lees-API.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de Snelstartgids voor het [uitpakken van tekst (lezen)](./QuickStarts/CSharp-hand-text.md) om tekst herkenning in een eenvoudige C#-app te implementeren.
+- Meer informatie over de [lees 3,0-rest API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005).
+- Volg de Snelstartgids voor het [uitpakken van tekst](./QuickStarts/CSharp-hand-text.md) voor het implementeren van OCR met C#, Java, java script of python samen met rest API.

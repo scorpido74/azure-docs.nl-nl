@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609280"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414352"
 ---
 Als u een Visual Studio project for Universeel Windows-platform-ontwikkeling (UWP) wilt maken, moet u Visual Studio-ontwikkel opties instellen, het project maken, de doel architectuur selecteren, audio-opname instellen en de spraak-SDK installeren.
 
@@ -70,7 +70,7 @@ Selecteer nu de architectuur van het doel platform. Zoek in de werk balk van Vis
 
 ### <a name="set-up-audio-capture"></a>Audio-opname instellen
 
-Vervolgens kunt u met het project audio-invoer vastleggen:
+Hiermee staat u toe dat het project audio-invoer vastlegt:
 
 1. Dubbel klik in **Solution Explorer**op **package. appxmanifest** om het manifest van het pakket toepassing te openen.
 

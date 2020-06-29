@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 8893ebf1288e592131938f39b10e204f98471fa8
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 61402a851ddac1cc279c51a59e48bed7949da273
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208141"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412852"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: tekst-en indelings informatie extra heren met behulp van de formulier Recognizer REST API met python
 
@@ -90,7 +90,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 
 ## <a name="get-the-layout-results"></a>De resultaten van de indeling ophalen
 
-Nadat u de **indelings** -API analyseren hebt aangeroepen, roept u de API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg de volgende code toe onder aan het python-script. Deze code maakt gebruik van de bewerkings-ID-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regel matige tussen pozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van één seconde of meer aan.
+Nadat u de **indelings** -API analyseren hebt aangeroepen, roept u de API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg de volgende code toe onder aan het python-script. Deze code maakt gebruik van de bewerkings-ID-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regel matige tussen pozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van één seconde of meer aan.
 
 ```python
 n_tries = 10

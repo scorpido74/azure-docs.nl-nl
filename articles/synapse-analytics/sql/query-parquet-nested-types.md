@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f1bb24b840da9b28584b6b2d265dcdc43824a5a3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf2dbf501b5cd3b6cd0ab6b0e9bbbc2208c98a58
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207529"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478447"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Parquet geneste typen doorzoeken met behulp van SQL on-demand (preview) in azure Synapse Analytics
 
@@ -99,6 +99,39 @@ FROM
         DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT='PARQUET'
     ) AS [r];
+```
+
+U kunt ook expliciet verwijzen naar de kolommen die u wilt retour neren in de `WITH` component:
+
+```sql
+SELECT DocId,
+    MapOfPersons,
+    JSON_QUERY(MapOfPersons, '$."John Doe"') AS [John]
+FROM
+    OPENROWSET(
+        BULK 'parquet/nested/mapExample.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) 
+    WITH (DocId bigint, MapOfPersons VARCHAR(max)) AS [r];
+```
+
+De structuur `MakOfPersons` wordt geretourneerd als `VARCHAR` kolom en OPGEMAAKT als JSON-teken reeks.
+
+## <a name="projecting-values-from-repeated-columns"></a>Waarden van herhaalde kolommen projecteren
+
+Als u een matrix met scalaire waarden (bijvoorbeeld `[1,2,3]` ) in sommige kolommen hebt, kunt u deze eenvoudig uitbreiden en aan de rij toevoegen met behulp van het volgende script:
+
+```sql
+SELECT
+    SimpleArray, Element
+FROM
+    OPENROWSET(
+        BULK 'parquet/nested/justSimpleArray.parquet',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT='PARQUET'
+    ) AS arrays
+    CROSS APPLY OPENJSON (SimpleArray) WITH (Element int '$') as array_values
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

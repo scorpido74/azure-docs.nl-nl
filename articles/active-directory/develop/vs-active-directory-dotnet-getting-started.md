@@ -6,16 +6,16 @@ manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: fe408e965c528db1d82b73ee7b20bbe3b3933657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36479acca56aa97a5453a9ab99691ed1993daaf3
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886123"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477002"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Aan de slag met Azure Active Directory (ASP.NET MVC-projecten)
 
@@ -33,7 +33,7 @@ Alle controllers in uw project zijn voorzien van het `[Authorize]` kenmerk. Voor
 
 ## <a name="adding-signin--signout-controls"></a>Besturings elementen voor aanmelden/afmelden toevoegen
 
-Als u de besturings elementen voor aanmelden/afmelden wilt toevoegen aan uw weer `_LoginPartial.cshtml` gave, kunt u de gedeeltelijke weer gave gebruiken om de functionaliteit toe te voegen aan een van uw weer gaven. Hier volgt een voor beeld van de functionaliteit die is toegevoegd `_Layout.cshtml` aan de standaard weergave. (Let op het laatste element in de div met Class-navigatie balk-samen vouwen):
+Als u de besturings elementen voor aanmelden/afmelden wilt toevoegen aan uw weer gave, kunt u de `_LoginPartial.cshtml` gedeeltelijke weer gave gebruiken om de functionaliteit toe te voegen aan een van uw weer gaven. Hier volgt een voor beeld van de functionaliteit die is toegevoegd aan de standaard `_Layout.cshtml` weergave. (Let op het laatste element in de div met Class-navigatie balk-samen vouwen):
 
 ```html
 <!DOCTYPE html>

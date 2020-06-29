@@ -1,24 +1,14 @@
 ---
 title: Azure Lab Services-beheerders handleiding | Microsoft Docs
 description: Deze hand leiding helpt beheerders die Lab-accounts maken en beheren met behulp van Azure Lab Services.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
-ms.author: spelluru
-ms.openlocfilehash: b286fd9e718769a501b1876d093c549bbe1b0e58
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ad3bc110d93efb5b735f77fb8a0b2af9e4f9a7cd
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899142"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444145"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services-beheerders handleiding
 IT-beheerders die de cloud resources van een universiteit beheren, zijn doorgaans verantwoordelijk voor het instellen van het lab-account voor hun school. Zodra een Lab-account is ingesteld, maken beheerders of docenten klassikale Labs in het lab-account. Dit artikel bevat een overzicht op hoog niveau van de betrokken Azure-resources en de richt lijnen voor het maken van deze.

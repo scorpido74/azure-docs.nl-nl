@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 830866880c1fc86bbc7510290a50df7fc86b9d1e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5335d629ef6778cbab7273200652c19998c9c19d
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555967"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125173"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Quickstart: Azure Key Vault-clientbibliotheek voor Python
 
-Ga aan de slag met de Azure Key Vault-clientbibliotheek voor Python. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
+Aan de slag met de Azure Key Vault-clientbibliotheek voor Python. Volg de onderstaande stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen.
 
 Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-clientbibliotheek voor Python voor het volgende:
 
@@ -27,12 +27,12 @@ Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen
 - Taken voor TLS/SSL-certificaten vereenvoudigen en automatiseren.
 - FIPS 140-2 level 2-gevalideerde HSM's gebruiken.
 
-[API-referentiedocumentatie](/python/api/overview/azure/key-vault?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault/)
+[API-referentiedocumentatie](/python/api/overview/azure/keyvault-keys-readme?view=azure-python) | [Broncode van de bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Pakket (Python Package Index)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement (u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
-- Python 2.7, 3.5.3 of later
+- Python 2.7, 3.5.3 of hoger
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
 
 In deze quickstart wordt ervan uitgegaan dat u [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) uitvoert in een Linux-terminalvenster.
@@ -70,12 +70,12 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 De eenvoudigste manier om een .NET-cloudtoepassing te verifiëren, is met een beheerde identiteit. Zie [Use an App Service managed identity to access Azure Key Vault](../general/managed-identity.md) (Een door App Service beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault) voor meer informatie. 
 
-In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie "http://&lt;my-unique-service-principle-name&gt;".
+In deze quickstart wordt echter een desktoptoepassing gemaakt, omdat dit eenvoudiger is. Voor deze toepassing is het gebruik van een service-principal en een toegangsbeheerbeleid vereist. Voor uw service-principal is een unieke naam vereist met de notatie http://&lt;mijn-unieke-service-principal-naam&gt;.
 
-Een service-principal maken met behulp van de AzureCLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac):
+Maak een service-principal met behulp van de Azure CLI-opdracht [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac):
 
 ```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principle-name&gt;" --sdk-auth
+az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
 ```
 
 Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 
@@ -94,7 +94,7 @@ Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd.
 }
 ```
 
-Noteer de clientId en het clientSecret, we zullen deze gebruiken in de onderstaande stap [Omgevingsvariabele instellen](#set-environmental-variables).
+Noteer de clientId en het clientSecret. Deze worden in de onderstaande stap [Omgevingsvariabele instellen](#set-environmental-variables) gebruikt.
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>De service-principal toegang verlenen tot uw sleutelkluis
 
@@ -106,7 +106,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Omgevingsvariabelen instellen
 
-De methode DefaultAzureCredential in de toepassing is afhankelijk van drie omgevingsvariabelen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` en `AZURE_TENANT_ID`. Stel deze variabelen in op de clientId-, clientSecret- en tenantId-waarden die u hebt genoteerd in de stap [Een service-principal maken](#create-a-service-principal) met de indeling `export VARNAME=VALUE`. (Met deze methode worden alleen de variabelen ingesteld voor uw huidige shell en processen gecreëerd vanuit de shell; als u deze variabelen permanent wilt toevoegen aan uw omgeving, bewerk dan het bestand `/etc/environment `.) 
+De methode DefaultAzureCredential in de toepassing is afhankelijk van drie omgevingsvariabelen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` en `AZURE_TENANT_ID`. Stel deze variabelen in op de clientId-, clientSecret- en tenantId-waarden die u hebt genoteerd in de stap [Een service-principal maken](#create-a-service-principal) met de indeling `export VARNAME=VALUE`. (Met deze methode worden alleen de variabelen ingesteld voor uw huidige shell en processen gemaakt vanuit de shell. Als u deze variabelen permanent wilt toevoegen aan uw omgeving, moet u het bestand `/etc/environment ` bewerken.) 
 
 U moet de naam van de sleutelkluis ook opslaan als een omgevingsvariabele met de naam `KEY_VAULT_NAME`.
 

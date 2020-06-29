@@ -1,23 +1,14 @@
 ---
 title: Een installatie kopie-Factory uitvoeren vanuit Azure DevOps in Azure DevTest Labs
 description: In dit artikel worden alle voor bereidingen behandeld die nodig zijn om de installatie kopie-Factory uit te voeren vanuit Azure DevOps (voorheen Visual Studio Team Services).
-services: devtest-lab, lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897528"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476135"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Een fabrieksinstallatiekopie uitvoeren vanuit Azure DevOps
 In dit artikel worden alle voor bereidingen behandeld die nodig zijn om de installatie kopie-Factory uit te voeren vanuit Azure DevOps (voorheen Visual Studio Team Services).
@@ -78,7 +69,7 @@ Op dit moment hebt u de bron bestanden opgeslagen in een Git-opslag plaats in az
 Als u de opdracht regel parameters wilt vereenvoudigen, moet u de sleutel waarden die de installatie kopie-Factory naar een set bouwen variabelen, inkapselen. Selecteer het tabblad **variabelen** en u ziet een lijst met verschillende standaard variabelen. Hier ziet u de lijst met variabelen die u kunt invoeren in azure DevOps:
 
 
-| Naam variabele | Waarde | Notities |
+| Naam variabele | Waarde | Opmerkingen |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | Dit is het volledige pad naar de map **Configuration** van de opslag plaats. Als u de hele opslag plaats hierboven hebt geïmporteerd, is de waarde links correct. Anders bijwerken om naar de configuratie locatie te verwijzen. |
 | DevTestLabName | MyImageFactory | De naam van het lab in Azure DevTest Labs gebruikt als de fabriek voor het produceren van installatie kopieën. Als u er nog geen hebt, maakt u er een. Zorg ervoor dat het lab zich in hetzelfde abonnement bevindt waartoe het service-eind punt toegang heeft. |

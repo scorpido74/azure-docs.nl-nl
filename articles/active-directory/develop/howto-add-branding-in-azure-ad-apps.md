@@ -7,24 +7,24 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884423"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478192"
 ---
 # <a name="branding-guidelines-for-applications"></a>Huisstijlrichtlijnen voor apps
 
 Wanneer u toepassingen ontwikkelt met Azure Active Directory (Azure AD), moet u uw klanten wanneer ze hun werk- of schoolaccount (dat in Azure AD wordt beheerd) of hun persoonlijke account willen gebruiken, aangeven dat ze zich moeten registreren voor en aanmelden bij uw app.
 
-In dit artikel leert u het volgende:
+In dit artikel gaat u het volgende doen:
 
 - Meer informatie over de twee soorten gebruikersaccounts die worden beheerd door Microsoft en hoe u in uw toepassing naar Azure AD-accounts kunt verwijzen
 - Wat u moet doen om het Microsoft-logo toe te voegen voor gebruik in uw app
@@ -63,7 +63,7 @@ Uw app heeft misschien aparte paden voor registratie en aanmelding, en de volgen
 
 Uw koppeling ‘Download de app’ moet de gebruiker naar de Azure AD-pagina voor toegangsverlening (autorisatie) leiden, zodat de beheerder van een organisatie kan autoriseren dat uw app toegang heeft tot de gegevens van die organisatie, die worden gehost door Microsoft. In het artikel [Toepassingen integreren met Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) staat meer informatie over hoe u toegang kunt aanvragen.
 
-Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze deze toevoegen aan hun Office 365 App Launcher-ervaring voor gebruikers (toegankelijk via wafel en van [https://portal.office.com/myapps](https://portal.office.com/myapps)). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
+Nadat beheerders toestemming hebben gegeven voor uw app, kunnen ze deze toevoegen aan hun Office 365 App Launcher-ervaring voor gebruikers (toegankelijk via wafel en van [https://portal.office.com/myapps](https://portal.office.com/myapps) ). Als u deze mogelijkheid wilt adverteren, kunt u termen zoals ‘Voeg deze app aan uw organisatie toe’ gebruiken en een knop tonen zoals in het volgende voorbeeld:
 
 ![Knop met het logo van micro soft en de tekst toevoegen aan mijn organisatie](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 

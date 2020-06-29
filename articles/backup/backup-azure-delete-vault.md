@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 986b3c3ef5bd3903a764726281b6bd0a25ba76a4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84751869"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506821"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -118,6 +118,9 @@ Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwi
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Back-upitems verwijderen uit de MARS-beheer console
 
+>[!NOTE]
+>Als u de bron machine verwijdert of kwijtraakt zonder dat de back-up wordt gestopt, mislukt de volgende geplande back-up. Het oude herstel punt verloopt volgens het beleid, maar het laatste enkele herstel punt wordt altijd bewaard totdat u de back-up stopt en de gegevens verwijdert. U kunt dit doen door de stappen in [deze sectie](#delete-protected-items-on-premises)te volgen.
+
 1. Open de MARS-beheer console, ga naar het deel venster **acties** en selecteer **back-up plannen**.
 2. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema en alle opgeslagen back-ups verwijderen**. Selecteer vervolgens **Volgende**.
 
@@ -140,6 +143,9 @@ Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwi
 Nadat u de on-premises back-upitems hebt verwijderd, voert u de volgende stappen uit in de portal.
 
 ### <a name="delete-backup-items-from-the-mabs-management-console"></a>Back-upitems verwijderen uit de MABS-beheer console
+
+>[!NOTE]
+>Als u de bron machine verwijdert of kwijtraakt zonder dat de back-up wordt gestopt, mislukt de volgende geplande back-up. Het oude herstel punt verloopt volgens het beleid, maar het laatste enkele herstel punt wordt altijd bewaard totdat u de back-up stopt en de gegevens verwijdert. U kunt dit doen door de stappen in [deze sectie](#delete-protected-items-on-premises)te volgen.
 
 Er zijn twee methoden die u kunt gebruiken om back-upitems te verwijderen uit de MABS-beheer console.
 

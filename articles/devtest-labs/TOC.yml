@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: Zelfstudies
   items:
-    - name: 1. Een lab instellen
-      href: tutorial-create-custom-lab.md
-    - name: 2. Toegang tot een lab
+    - name: Een lab instellen
+      items:
+        - name: Azure Portal gebruiken
+          href: tutorial-create-custom-lab.md
+        - name: Resource Manager-sjabloon gebruiken
+          href: create-lab-windows-vm-template.md
+    - name: Toegang tot een lab
       href: tutorial-use-custom-lab.md
 - name: Voorbeelden
   items:

@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41389bc5ed8580cd80dbc40e771c7f15241f5ae7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084977"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479399"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>Verschillen tussen de Microsoft-verificatiebibliotheek voor iOS en macOS
 
@@ -33,7 +33,7 @@ MSAL voor macOS is een subset van de functionaliteit die beschikbaar is voor iOS
 
 MSAL voor macOS biedt geen ondersteuning voor:
 
-- verschillende browser typen `ASWebAuthenticationSession`, zoals, `SFAuthenticationSession`, `SFSafariViewController`,.
+- verschillende browser typen, zoals `ASWebAuthenticationSession` , `SFAuthenticationSession` ,, `SFSafariViewController` .
 - brokered authenticatie via Microsoft Authenticator-app wordt niet ondersteund voor macOS.
 
 Het delen van sleutel Hangers tussen apps van dezelfde uitgever is beperkter dan macOS 10,14 en eerder. Gebruik [toegangs beheer lijsten](https://developer.apple.com/documentation/security/keychain_services/access_control_lists?language=objc) om de paden op te geven naar de apps die de sleutel hanger moeten delen. De gebruiker kan extra aanvragen voor sleutel hanger bekijken.
@@ -46,7 +46,7 @@ Voor scenario's voor voorwaardelijke toegang worden er minder gebruikers prompts
 
 ### <a name="project-setup-differences"></a>Verschillen in de project instellingen
 
-**macOS**
+**MacOS**
 
 - Wanneer u uw project instelt op macOS, moet u ervoor zorgen dat uw toepassing is ondertekend met een geldig ontwikkelings-of productie certificaat. MSAL werkt nog steeds in de niet-ondertekende modus, maar werkt anders met betrekking tot cache persistentie. De app mag alleen worden uitgevoerd als niet-ondertekend voor fout opsporing. Als u de app niet-ondertekend distribueert, geldt het volgende:
 1. Op 10,14 en eerder wordt de gebruiker door MSAL gevraagd om een sleutel hanger wachtwoord telkens wanneer de app opnieuw wordt gestart.

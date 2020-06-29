@@ -1,24 +1,14 @@
 ---
 title: Een gebruiker toevoegen als een Lab-Maker in Azure Lab Services
 description: In dit artikel wordt beschreven hoe u een gebruiker toevoegt aan de rol Lab Creator voor een Lab-account in Azure Lab Services. De Lab-makers kunnen Labs maken binnen dit lab-account.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
-ms.author: spelluru
-ms.openlocfilehash: 3b46255fa4cb9cbeafab84be9102a1a3a2d9d7a9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899177"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444281"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Lab-makers toevoegen aan een Lab-account in Azure Lab Services
 In dit artikel wordt beschreven hoe u gebruikers toevoegt als Lab-makers aan een Lab-account in Azure Lab Services. Deze gebruiken vervolgens kunnen klassikale Labs maken in het lab-account. 

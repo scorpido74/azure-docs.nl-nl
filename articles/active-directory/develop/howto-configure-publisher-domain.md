@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76697129"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85477988"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Procedure: het domein van de uitgever van een toepassing configureren
 
@@ -48,7 +48,7 @@ Als uw app is geregistreerd vóór 21 mei 2019, wordt de vraag van de toestemmin
 
 Voer de volgende stappen uit om het Uitgever domein van uw app in te stellen.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 
 1. Als uw account in meer dan één Azure AD-Tenant aanwezig is:
    1. Selecteer uw profiel in het menu in de rechter bovenhoek van de pagina en **Schakel vervolgens over naar de map**.
@@ -71,7 +71,7 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>Een nieuw domein voor uw app verifiëren
 
-1. Maak een bestand met `microsoft-identity-association.json` de naam en plak het volgende JSON-code fragment.
+1. Maak een bestand `microsoft-identity-association.json` met de naam en plak het volgende JSON-code fragment.
 
    ```json
    {
@@ -85,7 +85,7 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
 
 1. Vervang de tijdelijke aanduiding *{your-app-id-hier}* door de client-id van de toepassing die overeenkomt met uw app.
 
-1. Host het bestand op: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json`. Vervang de tijdelijke aanduiding *{uw domein-hier}* zodat deze overeenkomt met het geverifieerde domein.
+1. Host het bestand op: `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` . Vervang de tijdelijke aanduiding *{uw domein-hier}* zodat deze overeenkomt met het geverifieerde domein.
 
 1. Klik op de knop **domein controleren en opslaan** .
 
@@ -94,7 +94,7 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
 - Als uw Tenant domeinen heeft geverifieerd, selecteert u een van de domeinen in de vervolg keuzelijst **Selecteer een geverifieerd domein** .
 
 >[!Note]
-> De verwachte header content-type die moet worden geretourneerd, is `application/json`. Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt`application/json; charset=utf-8` 
+> De verwachte header content-type die moet worden geretourneerd, is `application/json` . Er wordt mogelijk een fout melding weer gegeven die hieronder wordt vermeld als u iets anders als gebruikt`application/json; charset=utf-8` 
 > 
 >``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
 >

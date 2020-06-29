@@ -1,24 +1,14 @@
 ---
 title: Klassikale Labs gebruiken voor trainingen-Azure Lab Services
 description: In dit artikel wordt beschreven hoe u Azure DevTest Labs gebruikt voor het maken van Labs op Azure voor trainings scenario's.
-services: devtest-lab,virtual-machines,lab-services
-documentationcenter: na
-author: spelluru
-manager: femila
-ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
-ms.author: spelluru
-ms.openlocfilehash: cd5a2fb55e1c2ec360d1585155f53b9213a72179
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: 582508968609ba53de14b95b71ee75b5fec9ba93
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84897388"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445250"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Klassikale Labs gebruiken voor trainingen
 Met Azure Labs-Services kunt u snel en eenvoudig een online Lab maken voor het inrichten van vooraf geconfigureerde leer omgevingen voor de trainees (docenten, docent, trainers of onderwijs assistenten, enzovoort). Elke getrainde moet gebruik kunnen maken van identieke en geïsoleerde omgevingen voor de training. Beleids regels kunnen worden toegepast om ervoor te zorgen dat de trainings omgevingen alleen beschikbaar zijn voor elke trainer wanneer ze ze nodig hebben en voldoende resources bevatten, zoals virtuele machines, die vereist zijn voor de training. 

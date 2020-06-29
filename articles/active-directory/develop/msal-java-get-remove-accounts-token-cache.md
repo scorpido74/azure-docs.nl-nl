@@ -7,18 +7,18 @@ author: sangonzal
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/07/2019
 ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
-ms.openlocfilehash: 2b138678b186cc41b76254658ad604c2da2d76c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 150708e7d54e456e1a4e35cfe381e5de5d0f1e8c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76696194"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479348"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Accounts uit de token cache ophalen en verwijderen met MSAL voor Java
 
@@ -26,7 +26,7 @@ MSAL voor Java biedt standaard een token cache in het geheugen. De token cache i
 
 ## <a name="see-which-accounts-are-in-the-cache"></a>Bekijken welke accounts zich in de cache bevinden
 
-U kunt controleren welke accounts zich in de cache bevinden `PublicClientApplication.getAccounts()` door aan te roepen zoals wordt weer gegeven in het volgende voor beeld:
+U kunt controleren welke accounts zich in de cache bevinden door aan te roepen `PublicClientApplication.getAccounts()` zoals wordt weer gegeven in het volgende voor beeld:
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -39,7 +39,7 @@ Set<IAccount> accounts = pca.getAccounts().join();
 
 ## <a name="remove-accounts-from-the-cache"></a>Accounts uit de cache verwijderen
 
-Als u een account uit de cache wilt verwijderen, gaat u naar het account dat moet worden verwijderd `PublicClientApplicatoin.removeAccount()` en roept u vervolgens de volgende opdracht aan, zoals wordt weer gegeven in het onderstaande voor beeld:
+Als u een account uit de cache wilt verwijderen, gaat u naar het account dat moet worden verwijderd en roept u vervolgens de volgende opdracht aan, `PublicClientApplicatoin.removeAccount()` zoals wordt weer gegeven in het onderstaande voor beeld:
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();

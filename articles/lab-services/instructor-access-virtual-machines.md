@@ -1,24 +1,14 @@
 ---
 title: Docenten die toegang hebben tot Vm's in Azure Lab Services
 description: In dit artikel wordt uitgelegd hoe docenten toegang hebben tot de Vm's van studenten vanuit de weer gave voor docenten. Een onderwijs assistent kan bijvoorbeeld een docent zijn voor één klasse, maar een student voor andere klassen.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: ac17f6853d8531a5854d161f41300f1bbec41552
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84895764"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445097"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Toegang tot virtuele machines als student vanuit de weer gave docenten
 In dit artikel wordt uitgelegd hoe docenten toegang kunnen krijgen tot hun Vm's voor klassen die ze als studenten bijwonen. 

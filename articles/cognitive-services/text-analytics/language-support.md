@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465589"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413328"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Ondersteuning voor Text Analytics-API v3-taal 
 
@@ -57,7 +57,7 @@ ms.locfileid: "84465589"
 #### <a name="named-entity-recognition-ner"></a>[Herkenning van benoemde entiteiten (NER)](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER v3 ondersteunt momenteel alleen de Engelse taal. Als u NER v3 aanroept met een andere taal, retourneert de API v 2.1-resultaten, op voor waarde dat de taal wordt ondersteund in versie 2,1.
+> * NER v3 ondersteunt momenteel alleen Engelse en Spaanse talen. Als u NER v3 aanroept met een andere taal, retourneert de API v 2.1-resultaten, op voor waarde dat de taal wordt ondersteund in versie 2,1.
 > * v 2.1 retourneert alleen de volledige set beschik bare entiteiten voor het Engels, vereenvoudigd Chinees, Frans, Duits en Spaans.  De entiteiten ' persoon ', ' locatie ' en ' organisatie ' worden geretourneerd voor de andere ondersteunde talen.
 
 | Taal               | Taalcode | v 2.1-ondersteuning | v3-ondersteuning | Starten met versie van v3-model: |       Opmerkingen        |
@@ -82,7 +82,7 @@ ms.locfileid: "84465589"
 | Portugees (Portugal) |    `pt-PT`    |     ✓      |            |                                 | `pt`ook geaccepteerd |
 | Portugees (Brazilië)   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | Russisch              |     `ru`      |     ✓      |            |                                 |                    |
-| Spaans               |     `es`      |     ✓      |            |                                 |                    |
+| Spaans               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | Zweeds               |     `sv`      |     ✓      |            |                                 |                    |
 | Turks               |     `tr`      |     ✓      |            |                                 |                    |
 

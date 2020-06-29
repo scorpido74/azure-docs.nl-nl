@@ -11,21 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b78526ea1409f22b000aed8b20db90dfc9d143
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 324737611d2d05411012050fcf7140bee48d35b0
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253559"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85505831"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph
 
 Microsoft Graph is het micro soft Unified API-eind punt en de start van [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) -api's. Er zijn vier Api's die informatie over Risk ante gebruikers en aanmeldingen beschikbaar maken. Met de eerste API, **riskDetection**, kunt u een query uitvoeren op Microsoft Graph voor een lijst van zowel de gebruiker als de aanmelding en de bijbehorende informatie over de detectie. De tweede API, **riskyUsers**, stelt u in staat om Microsoft Graph te zoeken naar informatie over gebruikers identiteits beveiliging die als risico is gedetecteerd. De derde API, **signIn**, stelt u in staat om Microsoft Graph te zoeken naar informatie over Azure AD-aanmeldingen met specifieke eigenschappen die betrekking hebben op risico status, Details en niveau. Met de vierde API, **identityRiskEvents**, kunt u een query uitvoeren op Microsoft Graph voor een lijst met [risico detecties](../reports-monitoring/concept-risk-events.md) en gerelateerde informatie. De API identityRiskEvents wordt afgeschaft op 10 januari 2020; u wordt aangeraden om in plaats daarvan de **riskDetections** API te gebruiken. In dit artikel wordt u aan de slag met het maken van verbinding met de Microsoft Graph en het uitvoeren van query's op deze Api's. Zie de [Microsoft Graph-site](https://graph.microsoft.io/) of de specifieke referentie documentatie voor deze api's voor een uitgebreide inleiding, volledige documentatie en toegang tot de Graph Explorer:
 
-* [riskDetection-API](/graph/api/resources/riskdetection?view=graph-rest-beta)
-* [riskyUsers-API](/graph/api/resources/riskyuser?view=graph-rest-beta)
-* [Aanmeldings-API](/graph/api/resources/signin?view=graph-rest-beta)
-* [IDENTITYRISKEVENTS API](/graph/api/resources/identityriskevent?view=graph-rest-beta) *wordt afgeschaft op 10 januari 2020*
+* [riskDetection-API](/graph/api/resources/riskdetection?view=graph-rest-v1.0)
+* [riskyUsers-API](/graph/api/resources/riskyuser?view=graph-rest-v1.0)
+* [Aanmeldings-API](/graph/api/resources/signin?view=graph-rest-v1.0)
 
 ## <a name="connect-to-microsoft-graph"></a>Verbinding maken met micro soft Graph
 
@@ -201,7 +200,7 @@ Deze drie Api's bieden een groot aantal mogelijkheden om informatie op te halen 
 Met het beleid voor aanmeldings Risico's voor identiteits beveiliging kunt u voor waarden Toep assen wanneer er in realtime een risico wordt gedetecteerd. Maar hoe zit het met detecties die offline zijn gedetecteerd? Als u wilt weten welke detecties offline zijn, en dus het beleid voor aanmeldings Risico's niet hebben geactiveerd, kunt u een query uitvoeren op de riskDetection-API.
 
 ```
-GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskDetections?$filter=detectionTimingType eq 'offline'
 ```
 
 ### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>Alle gebruikers ophalen die een MFA-Challenge hebben door gegeven die zijn geactiveerd door het beleid voor Risk ante aanmeldingen (riskyUsers-API)
@@ -209,16 +208,9 @@ GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType 
 Om inzicht te krijgen in het op risico gebaseerd beleid voor identiteits beveiliging van uw organisatie, kunt u een query uitvoeren voor alle gebruikers die een MFA-Challenge hebben door gegeven die is geactiveerd door een beleid voor Risk ante aanmeldingen. Aan de hand van deze informatie kunt u begrijpen welke gebruikers identiteits beveiliging mogelijk onterecht is gedetecteerd op als risico en welke van uw rechtmatige gebruikers acties uitvoeren die het AI-risico in beslag brengt.
 
 ```
-GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
+GET https://graph.microsoft.com/v1.0/identityProtection/riskyUsers?$filter=riskDetail eq 'userPassedMFADrivenByRiskBasedPolicy'
 ```
 
-### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>Alle Risk ante aanmeldingen ophalen voor een specifieke gebruiker (aanmeldings-API)
-
-Wanneer u denkt dat een gebruiker mogelijk is aangetast, kunt u beter inzicht krijgen in de status van het risico door al hun Risk ante aanmeldingen op te halen. 
-
-```
-https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
-```
 ## <a name="next-steps"></a>Volgende stappen
 
 Gefeliciteerd, u hebt uw eerste oproep doorgevoerd naar Microsoft Graph!  
@@ -232,4 +224,4 @@ Zie voor verwante informatie:
 - [Typen risico detecties gedetecteerd door Azure Active Directory Identity Protection](../reports-monitoring/concept-risk-events.md)
 - [Microsoft Graph](https://developer.microsoft.com/graph/)
 - [Overzicht van Microsoft Graph](https://developer.microsoft.com/graph/docs)
-- [Hoofdmap van Azure AD Identity Protection-Service](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
+- [Hoofdmap van Azure AD Identity Protection-Service](https://docs.microsoft.com/graph/api/resources/identityprotectionroot?view=graph-rest-1.0)

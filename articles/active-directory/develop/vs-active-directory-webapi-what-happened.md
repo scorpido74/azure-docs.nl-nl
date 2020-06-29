@@ -6,16 +6,16 @@ manager: jillfra
 ms.workload: azure-vs
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 46fb0ad37b872a1d7ca72114f2f263df776aabf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886055"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478855"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Wat is er gebeurd met mijn WebAPI-project (Visual Studio Azure Active Directory Connected service)
 
@@ -36,7 +36,7 @@ Van invloed op het project bestand *. NET references) en `packages.config` (NuGe
 | NET NuGet | Micro soft. Owin |
 | NET NuGet | Microsoft.Owin.Host.SystemWeb |
 | NET NuGet | Micro soft. Owin. Security |
-| NET NuGet | Micro soft. Owin. Security. ActiveDirectory |
+| NET NuGet | Microsoft.Owin.Security.ActiveDirectory |
 | NET NuGet | Micro soft. Owin. Security. JWT |
 | NET NuGet | Micro soft. Owin. Security. OAuth |
 | NET NuGet | Owin |
@@ -68,9 +68,9 @@ De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visu
 
 - Stel de eigenschap `IISExpressSSLPort` in op een specifiek getal.
 - Stel de eigenschap `WebProject_DirectoryAccessLevelKey` in op 0 of 1 als u de optie **Directory gegevens lezen** hebt geselecteerd.
-- Stel de eigenschap `IISUrl` in `https://localhost:<port>/` op `<port>` waar de `IISExpressSSLPort` waarde overeenkomt.
+- Stel de eigenschap `IISUrl` in op `https://localhost:<port>/` waar `<port>` de `IISExpressSSLPort` waarde overeenkomt.
 
-## <a name="webconfig-or-appconfig-changes"></a>wijzigingen in web. config of app. config
+## <a name="webconfig-or-appconfig-changes"></a>Wijzigingen web.config of app.config
 
 - De volgende configuratie vermeldingen zijn toegevoegd:
 
@@ -82,15 +82,15 @@ De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visu
     </appSettings>
     ```
 
-- Alleen Visual Studio 2017: u hebt ook het volgende item `<appSettings>`toegevoegd onder
+- Alleen Visual Studio 2017: u hebt ook het volgende item `<appSettings>` toegevoegd onder
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- Er `<dependentAssembly>` zijn elementen toegevoegd `<runtime><assemblyBinding>` onder het `System.IdentityModel.Tokens.Jwt`knoop punt voor.
+- Er zijn `<dependentAssembly>` elementen toegevoegd onder het `<runtime><assemblyBinding>` knoop punt voor `System.IdentityModel.Tokens.Jwt` .
 
-- Als u de optie **Directory gegevens lezen** hebt geselecteerd, hebt u de volgende configuratie `<appSettings>`vermelding toegevoegd onder:
+- Als u de optie **Directory gegevens lezen** hebt geselecteerd, hebt u de volgende configuratie vermelding toegevoegd onder `<appSettings>` :
 
     ```xml
     <add key="ida:Password" value="<Your Azure AD app's new password>" />
@@ -98,17 +98,17 @@ De volgende verwijzingen worden verwijderd (ASP.NET 4 projecten, net als in Visu
 
 ## <a name="code-changes-and-additions"></a>Code wijzigingen en toevoegingen
 
-- Het `[Authorize]` kenmerk is toegevoegd `Controllers/ValueController.cs` aan en andere bestaande controllers.
+- Het kenmerk is toegevoegd `[Authorize]` aan `Controllers/ValueController.cs` en andere bestaande controllers.
 
-- Er is een opstart klasse voor `App_Start/Startup.Auth.cs`verificatie toegevoegd, die opstart logica bevat voor Azure AD-verificatie, of deze dienovereenkomstig heeft gewijzigd. Als u de optie **Directory gegevens lezen** hebt geselecteerd, bevat dit bestand ook code voor het ontvangen van een OAuth-code en het uitwisselen van een toegangs token.
+- Er is een opstart klasse voor verificatie toegevoegd, `App_Start/Startup.Auth.cs` die opstart logica bevat voor Azure AD-verificatie, of deze dienovereenkomstig heeft gewijzigd. Als u de optie **Directory gegevens lezen** hebt geselecteerd, bevat dit bestand ook code voor het ontvangen van een OAuth-code en het uitwisselen van een toegangs token.
 
-- (Visual Studio 2015 met alleen ASP.NET 4-app) Verwijderd `App_Start/IdentityConfig.cs` en toegevoegd `Controllers/AccountController.cs`, `Models/IdentityModel.cs`en `Providers/ApplicationAuthProvider.cs`.
+- (Visual Studio 2015 met alleen ASP.NET 4-app) Verwijderd `App_Start/IdentityConfig.cs` en toegevoegd `Controllers/AccountController.cs` , `Models/IdentityModel.cs` en `Providers/ApplicationAuthProvider.cs` .
 
-- Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (visual studio 2017) of `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service bij te houden.
+- Toegevoegd `Connected Services/AzureAD/ConnectedService.json` (Visual studio 2017) of `Service References/Azure AD/ConnectedService.json` (visual studio 2015) met informatie die Visual Studio gebruikt om de toevoeging van de verbonden service bij te houden.
 
 ### <a name="file-backup-visual-studio-2015"></a>Back-up van bestanden (Visual Studio 2015)
 
-Wanneer u de verbonden service toevoegt, maakt Visual Studio 2015 een back-up van gewijzigde en verwijderde bestanden. Alle betrokken bestanden worden opgeslagen in de map `Backup/AzureAD`. Visual Studio 2017 maakt geen back-ups.
+Wanneer u de verbonden service toevoegt, maakt Visual Studio 2015 een back-up van gewijzigde en verwijderde bestanden. Alle betrokken bestanden worden opgeslagen in de map `Backup/AzureAD` . Visual Studio 2017 maakt geen back-ups.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

@@ -3,12 +3,12 @@ title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: d4dea1dc5ee46d9be7bbc92166535aa93db46275
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462852"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506800"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers voor Azure-Services
 
@@ -55,7 +55,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. ClassicSubscription<sup>1</sup> | Klassiek implementatiemodel |
 | Microsoft.CognitiveServices | [Cognitive Services](/azure/cognitive-services/) |
 | Micro soft. commerce<sup>1</sup> | baan |
-| Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Virtuele machines](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
 | Micro soft. verbruik<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Micro soft. ContainerInstance | [Container Instances](/azure/container-instances/) |
 | Microsoft.ContainerRegistry | [Container Registry](/azure/container-registry/) |
@@ -64,7 +64,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. CostManagementExports | [Cost Management](/azure/cost-management/) |
 | Micro soft. CustomerLockbox | [Klanten-lockbox voor Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Micro soft. CustomProviders | [Aangepaste Azure-providers](../custom-providers/overview.md) |
-| Micro soft. DataBox | [Azure Data Box](/azure/databox-family/) |
+| Micro soft. DataBox | [Azure Data Box](/azure/databox/) |
 | Micro soft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Micro soft. Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft.DataCatalog | [Data Catalog](/azure/data-catalog/) |
@@ -72,7 +72,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.DataLakeAnalytics | [Data Lake Analytics](/azure/data-lake-analytics/) |
 | Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) |
 | Micro soft. DataMigration | [Azure Database Migration Service](/azure/dms/) |
-| Micro soft. DataProtection | Gegevensbescherming |
+| Micro soft. DataProtection | Gegevensbeveiliging |
 | Micro soft. DataShare | [Azure Data Share](/azure/data-share/) |
 | Micro soft. DBforMariaDB | [Azure Database for MariaDB](/azure/mariadb/) |
 | Micro soft. DBforMySQL | [Azure Database for MySQL](/azure/mysql/) |

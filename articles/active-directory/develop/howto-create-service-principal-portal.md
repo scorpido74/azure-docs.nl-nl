@@ -7,19 +7,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91abfc395c84ad49079fcaa55c20d641ee4e7b49
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546139"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85478107"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: Gebruik de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources
 
 In dit artikel wordt beschreven hoe u een nieuwe Azure Active Directory (Azure AD)-toepassing en Service-Principal maakt die kunnen worden gebruikt met het toegangs beheer op basis van rollen. Wanneer u code hebt die resources moet openen of wijzigen, kunt u een identiteit voor de app maken. Deze identiteit staat bekend als een service-principal. U kunt vervolgens de vereiste machtigingen toewijzen aan de Service-Principal. In dit artikel leest u hoe u de-portal kunt gebruiken om de service-principal te maken. Het is gericht op een toepassing met één Tenant waarbij de toepassing alleen binnen één organisatie kan worden uitgevoerd. Normaal gesp roken gebruikt u toepassingen met één Tenant voor line-of-business-toepassingen die binnen uw organisatie worden uitgevoerd.
 
@@ -32,8 +32,8 @@ Laten we meteen beginnen met het maken van de identiteit. Als u een probleem ond
 
 1. Meld u aan bij uw Azure-account via de [Azure Portal](https://portal.azure.com).
 1. Selecteer **Azure Active Directory**.
-1. Selecteer **app-registraties**.
-1. Selecteer **nieuwe registratie**.
+1. Selecteer **App-registraties**.
+1. Selecteer **Nieuwe registratie**.
 1. Geef de toepassing een naam. Selecteer een ondersteund account type, dat bepaalt wie de toepassing kan gebruiken. Onder **omleidings-URI**selecteert u **Web** voor het type toepassing dat u wilt maken. Voer de URI in waarnaar het toegangs token wordt verzonden. U kunt geen referenties maken voor een [systeem eigen toepassing](../manage-apps/application-proxy-configure-native-client-application.md). U kunt dit type niet gebruiken voor een geautomatiseerde toepassing. Nadat u de waarden hebt ingesteld, selecteert u **registreren**.
 
    ![Typ een naam voor uw toepassing](./media/howto-create-service-principal-portal/create-app.png)
@@ -56,7 +56,7 @@ U kunt het bereik instellen op het niveau van het abonnement, de resource groep 
 
    Als u het gewenste abonnement niet ziet, selecteert u **globaal abonnementen filter**. Zorg ervoor dat het gewenste abonnement is geselecteerd voor de portal.
 
-1. Selecteer **toegangs beheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 1. Selecteer **Roltoewijzing toevoegen**.
 1. Selecteer de rol die u aan de toepassing wilt toewijzen. Als u bijvoorbeeld wilt toestaan dat de toepassing acties uitvoert zoals **opnieuw opstarten**, exemplaren **starten** en **stoppen** , selecteert u de rol **Inzender** .  Meer informatie over de [beschik bare rollen](../../role-based-access-control/built-in-roles.md) : Azure AD-toepassingen worden standaard niet weer gegeven in de beschik bare opties. Zoek de naam en selecteer deze om uw toepassing te vinden.
 
@@ -152,7 +152,7 @@ Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebrui
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-abonnements machtigingen controleren
 
-In uw Azure-abonnement moet uw account toegang `Microsoft.Authorization/*/Write` hebben om een rol toe te wijzen aan een AD-app. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account de rol **Inzender** heeft toegewezen, beschikt u niet over voldoende machtigingen. Er wordt een fout bericht weer gegeven wanneer u probeert om de service-principal een rol toe te wijzen.
+In uw Azure-abonnement moet uw account `Microsoft.Authorization/*/Write` toegang hebben om een rol toe te wijzen aan een AD-app. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account de rol **Inzender** heeft toegewezen, beschikt u niet over voldoende machtigingen. Er wordt een fout bericht weer gegeven wanneer u probeert om de service-principal een rol toe te wijzen.
 
 Uw abonnements machtigingen controleren:
 

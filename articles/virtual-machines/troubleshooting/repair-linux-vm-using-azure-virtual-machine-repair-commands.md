@@ -14,19 +14,24 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 9029082a275905bbdb9efe0cefa05337c9969a2f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a7357ef3b0151096746e37bddd235f0db53baed7
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219912"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444808"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Linux-VM herstellen met de reparatieopdrachten van Azure Virtual Machine
 
 Als op de virtuele Linux-machine (VM) in azure een opstart-of schijf fout optreedt, moet u mogelijk de schijf zelf beperken. Een veelvoorkomend voor beeld hiervan is een mislukte toepassings update waarmee wordt voor komen dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de herstel opdrachten van de virtuele machine van Azure kunt gebruiken om de schijf te verbinden met een andere virtuele Linux-machine om eventuele fouten op te lossen en vervolgens uw oorspronkelijke VM opnieuw op te bouwen.
 
 > [!IMPORTANT]
-> De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> * De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+> * De uitgaande verbinding van de virtuele machine (poort 443) is vereist om het script uit te voeren.
+> * Er kan slechts één script tegelijk worden uitgevoerd.
+> * Een actief script kan niet worden geannuleerd.
+> * De maximale tijd dat een script kan worden uitgevoerd, is 90 minuten, waarna er een time-out optreedt.
+> * Voor Vm's met Azure Disk Encryption worden alleen beheerde schijven ondersteund die zijn versleuteld met eenmalige versleuteling (met of zonder KEK).
 
 ## <a name="repair-process-overview"></a>Overzicht van het reparatie proces
 
@@ -53,6 +58,8 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
    Selecteer **kopiëren** om de blokken code te kopiëren en plak de code in het Cloud shell en selecteer **Enter** om het programma uit te voeren.
 
    Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0.30 of hoger van Azure CLI nodig. Voer ``az --version`` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   
+   Als u zich moet aanmelden bij Cloud Shell met een ander account dan u momenteel bent aangemeld bij de Azure-Portal, kunt u de ``az login`` [referenties van AZ login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)gebruiken.  Als u wilt scha kelen tussen de abonnementen die zijn gekoppeld aan uw account, kunt u ``az account set --subscription`` [AZ account set reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)gebruiken.
 
 2. Als dit de eerste keer is dat u de `az vm repair` opdrachten gebruikt, voegt u de extensie VM-herstel cli toe.
 
@@ -66,7 +73,7 @@ Zie [AZ VM Repair](https://docs.microsoft.com/cli/azure/ext/vm-repair/vm/repair)
    az extension update -n vm-repair
    ```
 
-3. Voer `az vm repair create` uit. Met deze opdracht maakt u een kopie van de besturingssysteem schijf voor de niet-functionele VM, maakt u een herstel-VM in een nieuwe resource groep en koppelt u de kopie van de besturingssysteem schijf.  De herstel-VM heeft dezelfde grootte en regio als de niet-functionele VM die is opgegeven. De resource groep en de VM-naam die in alle stappen worden gebruikt, zijn voor de niet-functionele VM.
+3. Voer `az vm repair create` uit. Met deze opdracht maakt u een kopie van de besturingssysteem schijf voor de niet-functionele VM, maakt u een herstel-VM in een nieuwe resource groep en koppelt u de kopie van de besturingssysteem schijf.  De herstel-VM heeft dezelfde grootte en regio als de niet-functionele VM die is opgegeven. De resource groep en de VM-naam die in alle stappen worden gebruikt, zijn voor de niet-functionele VM. Als uw virtuele machine wordt gebruikt Azure Disk Encryption wordt met de opdracht geprobeerd de versleutelde schijf te ontgrendelen, zodat deze toegankelijk is wanneer deze wordt gekoppeld aan de reparatie-VM.
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
