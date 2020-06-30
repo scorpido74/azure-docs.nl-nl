@@ -4,15 +4,16 @@ description: Een artikel waarin beheerde privé-eindpunten in Azure Synapse Anal
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc748260c6e71eaaa469defb227d5cc2748a1345
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac62b1706749c4708d804dd2102ad3f2a7132a16
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83645311"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193648"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Beheerde privé-eindpunten in Synapse (preview)
 
@@ -48,7 +49,7 @@ Wanneer een werkruimte wordt gemaakt, maakt Azure Synapse twee beheerde privé-e
 
 Deze twee beheerde privé-eindpunten worden weergegeven in Azure Synapse Studio. Selecteer **Beheren** in het linkernavigatievenster en selecteer vervolgens **Beheerde virtuele netwerken** om deze weer te geven in de Studio.
 
-Het beheerde privé-eindpunt dat gericht is op de SQL-pool, heet *synapse-ws-sql--\<werkruimtenaam\>* en het eindpunt dat gericht is op SQL op aanvraag heet *synapse-ws-sqlOnDemand--\<werkruimtenaam\>* .
+Het beheerde privé-eindpunt dat gericht is op de SQL-pool, heet *synapse-ws-sql--\<workspacename\>* en het eindpunt dat gericht is op SQL op aanvraag heet *synapse-ws-sqlOnDemand--\<workspacename\>* .
 ![Beheerde privé-eindpunten voor SQL-pool en SQL op aanvraag](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 Deze twee beheerde privé-eindpunten worden automatisch voor u gemaakt wanneer u de Azure Synapse-werkruimte maakt. Er worden geen kosten in rekening gebracht voor deze twee beheerde privé-eindpunten.

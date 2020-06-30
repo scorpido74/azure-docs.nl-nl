@@ -1,26 +1,26 @@
 ---
-title: De compute in Synapse SQL pool onderbreken en hervatten via de Azure Portal
-description: Gebruik de Azure Portal voor het onderbreken van de reken kracht voor de SQL-groep om kosten op te slaan. Hervat de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
+title: Berekening onderbreken en hervatten in Synapse SQL-pool via de Azure Portal
+description: Gebruik de Azure Portal om de berekening voor de SQL-groep te onderbreken om kosten te besparen. Hervat de rekenbewerking wanneer u klaar bent om het datawarehouse te gebruiken.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 55e3d5bf4fb63c35d484e4a764c7eeb2e2484fcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80350958"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214465"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Snelstartgids: de compute en resume in de Synapse SQL-groep via de Azure Portal onderbreken en hervatten
+# <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Quickstart: Berekening onderbreken en hervatten in Synapse SQL-pool via de Azure Portal
 
-U kunt de Azure Portal gebruiken om de reken resources van de Synapse SQL-pool (Data Warehouse) te onderbreken en te hervatten. Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+U kunt de Azure Portal gebruiken om de rekenresources van Synapse SQL-pool (datawarehouse) te onderbreken en weer te hervatten. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -28,74 +28,74 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Gebruik [Create en Connect-Portal](create-data-warehouse-portal.md) om een SQL-groep met de naam **mySampleDataWarehouse**te maken. 
+Gebruik [Maken en koppelen - portal](create-data-warehouse-portal.md) om een SQL-pool met de naam **mySampleDataWarehouse** te maken. 
 
-## <a name="pause-compute"></a>Compute onderbreken
+## <a name="pause-compute"></a>Berekening onderbreken
 
-Als u de kosten wilt verlagen, kunt u de reken resources op aanvraag onderbreken en hervatten. Als u bijvoorbeeld de data base niet meer gebruikt in de nacht en in het weekend, kunt u deze onderbreken tijdens deze tijden en deze op de dag hervatten. 
+Als u kosten wilt besparen, kunt u de rekenresources op aanvraag onderbreken en hervatten. Als u de database bijvoorbeeld ‘s nachts en in het weekend niet gebruikt, kunt u deze dan onderbreken en gedurende de dag hervatten. 
 >[!NOTE]
->Er worden geen kosten in rekening gebracht voor reken resources wanneer de data base wordt onderbroken. Er worden echter nog steeds kosten in rekening gebracht voor opslag. 
+>Er worden geen kosten in rekening gebracht voor rekenresources terwijl de database is onderbroken. Er worden echter nog wel steeds kosten in rekening gebracht voor opslag. 
 
-Volg deze stappen om een SQL-groep te onderbreken:
+Volg deze stappen om een SQL-pool te onderbreken:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linker navigatie pagina van het Azure Portal.
-2. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** om de SQL-groep te openen. 
-3. Op de pagina **mySampleDataWarehouse** is de **status** van de melding **online**.
+2. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linkernavigatiepagina van de Azure Portal.
+2. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** om de SQL-pool te openen. 
+3. U ziet op de pagina **mySampleDataWarehouse** dat de **Status** **Online** is.
 
     ![Online berekenen](././media/pause-and-resume-compute-portal/compute-online.png)
 
-4. Klik op de knop **pause** om de SQL-groep te onderbreken. 
-5. Er wordt een bevestigings vraag weer gegeven waarin u wordt gevraagd of u wilt door gaan. Klik op **Ja**.
-6. Wacht even en u ziet dan dat de **status** is **onderbroken**.
+4. Klik op de knop **Onderbreken** als u het berekenen wilt onderbreken. 
+5. Er wordt een bevestigingsvraag weergegeven waarin u wordt gevraagd of u wilt doorgaan. Klik op **Ja**.
+6. Wacht even en u ziet dat de **Status** verandert in **Wordt onderbroken**.
 
-    ![Onderbreken](./media/pause-and-resume-compute-portal/pausing.png)
+    ![Wordt onderbroken](./media/pause-and-resume-compute-portal/pausing.png)
 
-7. Wanneer de pauze bewerking is voltooid, wordt de status **onderbroken** en wordt het keuze rondje **hervat**.
-8. De reken resources voor de SQL-groep zijn nu offline. Er worden geen kosten in rekening gebracht voor de reken kracht tot u de service hervat.
-
-    ![Offline berekenen](././media/pause-and-resume-compute-portal/compute-offline.png)
-
-
-## <a name="resume-compute"></a>Compute hervatten
-
-Volg deze stappen om de SQL-groep te hervatten.
-
-1. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linker pagina van de Azure Portal.
-2. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** om de pagina SQL-groep te openen. 
-3. Op de pagina **mySampleDataWarehouse** wordt de **status** van de melding **onderbroken**.
+7. Wanneer de onderbreking is voltooid, verandert de status in **Onderbroken** en verandert de optieknop in **Hervatten**.
+8. De rekenresources voor de SQL-pool zijn nu offline. Er worden geen kosten in rekening gebracht voor de rekenkracht totdat u de service hervat.
 
     ![Offline berekenen](././media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. Klik op **hervatten**om de SQL-groep te hervatten. 
-5. Er wordt een bevestigings vraag weer gegeven waarin u wordt gevraagd of u wilt beginnen. Klik op **Ja**.
-6. U ziet dat de **status** wordt **hervat**.
+
+## <a name="resume-compute"></a>Berekening hervatten
+
+Volg deze stappen om een SQL-pool te hervatten.
+
+1. Klik op **Azure Synapse Analytics (voorheen SQL DW)** op de linkerpagina van de Azure Portal.
+2. Selecteer **mySampleDataWarehouse** op de pagina **Azure Synapse Analytics (voorheen SQL DW)** om de pagina van de SQL-pool te openen. 
+3. U ziet op de pagina **mySampleDataWarehouse** dat de **Status** **Onderbroken** is.
+
+    ![Offline berekenen](././media/pause-and-resume-compute-portal/compute-offline.png)
+
+4. Klik op **Hervatten**om de SQL-pool te hervatten. 
+5. Er wordt een bevestigingsvraag weergegeven waarin u wordt gevraagd of u wilt starten. Klik op **Ja**.
+6. U ziet dat de **Status** **Hervatten** weergeeft.
 
     ![Hervatten](./media/pause-and-resume-compute-portal/resuming.png)
 
-7. Wanneer de SQL-groep weer online is, is de status **online** en is het keuze rondje **pauzeren**.
-8. De reken resources voor de SQL-groep zijn nu online en u kunt de service gebruiken. De kosten voor de reken kracht zijn hervat.
+7. Wanneer de SQL-pool weer online is, is de status **Online** en verandert de keuzeknop in **Onderbreken**.
+8. De rekenresources voor de SQL-pool zijn nu online en u kunt de service gebruiken. De kosten voor de rekenkracht zijn hervat.
 
     ![Online berekenen](././media/pause-and-resume-compute-portal/compute-online.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en de gegevens die zijn opgeslagen in de SQL-groep. Deze compute- en opslagresources worden apart in rekening gebracht. 
+Er worden kosten in rekening gebracht voor datawarehouse-eenheden en de gegevens die zijn opgeslagen in uw SQL-pool. Deze compute- en opslagresources worden apart in rekening gebracht. 
 
-- Als u de gegevens in de opslag ruimte wilt bewaren, moet u de compute onderbreken.
-- Als u toekomstige kosten wilt verwijderen, kunt u de SQL-groep verwijderen. 
+- Als u de gegevens in de opslag wilt houden, moet u het berekenen onderbreken.
+- Als u in de toekomst geen kosten meer wilt hebben, kunt u de SQL-pool verwijderen. 
 
 Volg deze stappen om de resources op te schonen zoals gewenst.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en klik op uw SQL-groep.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op uw SQL-pool.
 
     ![Resources opschonen](./media/pause-and-resume-compute-portal/clean-up-resources.png)
 
 1. Als u het berekenen wilt onderbreken, klikt u op de knop **Onderbreken**. 
 
-2. Als u de SQL-groep wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, klikt u op **verwijderen**.
+2. Als u de SQL-pool wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, klikt u op **Verwijderen**.
 
-3. Als u de door u gemaakte SQL-Server wilt verwijderen, klikt u op **sqlpoolservername.database.Windows.net**en vervolgens op **verwijderen**.  
+3. Als u de door u gemaakte SQL-server wilt verwijderen, klikt u op **sqlpoolservername.database.windows.net** en vervolgens op **Verwijderen**.  
 
    > [!CAUTION]
    > Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
@@ -105,5 +105,5 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu de reken kracht voor uw SQL-groep gepauzeerd en hervat. Ga door naar het volgende artikel voor meer informatie over het [laden van gegevens in een SQL-groep](load-data-from-azure-blob-storage-using-polybase.md). Zie het artikel [Compute-overzicht beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het beheren van reken mogelijkheden. 
+U hebt nu de berekening voor uw SQL-pool gepauzeerd en hervat. Ga naar het volgende artikel voor meer informatie over [Gegevens in een SQL-pool laden](load-data-from-azure-blob-storage-using-polybase.md). Zie het artikel [Overzicht rekencapaciteit beheren](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over het beheren van rekencapaciteit. 
 

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f3890b2c2c9434c7970bd969f6f4620e5d235d96
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e3553515e2cbae007883ad75960aa1c6991926df
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017695"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254545"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Meer informatie over het gebruik van Azure-reserveringen voor uw afzonderlijke abonnement met tarieven op basis van betalen-naar-gebruik
 
@@ -71,7 +71,7 @@ Stel dat u een SQL Database Gen 4 in de regio VS-Oost gebruikt en dat uw reserve
 
 ### <a name="statement-section-of-csv-file"></a>Overzichtssectie van het CSV-bestand
 
-Filter op meternaam **Gebruik gereserveerde instanties** en kies de vereiste **Metercategorie** - Azure SQL database of Azure Cosmos DB. Er verschijnt uitvoer die er ongeveer als volgt uitziet:
+Filter op meternaam **Gebruik gereserveerde instanties** en kies de vereiste **Metercategorie** - Azure SQL Database of Azure Cosmos DB. Er verschijnt uitvoer die er ongeveer als volgt uitziet:
 
 ![CSV-bestand voor gereserveerde SQL Database-capaciteit](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -87,7 +87,7 @@ Filter op **Extra gegevens** en typ uw **Reserverings-id**. De volgende schermop
 2. **ConsumptionMeter** is de meter-id voor de SQL Database-resource.
 3. **Meter-id** is de meter-id voor de reservering. De kosten van deze meter zijn $ 0. Voor alle SQL Database-resources die in aanmerking komen voor de reserveringskorting, wordt deze meter-id in het CSV-bestand weergegeven.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

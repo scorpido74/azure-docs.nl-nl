@@ -3,19 +3,20 @@ title: Wat is Azure Event Hubs? - een service voor de opname van Big Data | Micr
 description: Meer informatie over Azure Event Hubs, een big data-streamingservice die miljoenen gebeurtenissen per seconde opneemt.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: overview
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 9f23bef37f6c858670de076b7a6a9ce5d8e2d046
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80398112"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297304"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — Een streamingplatform en service voor het opnemen van big data
 Azure Event Hubs is een streamingplatform en service voor het opnemen van big data. Het kan miljoenen gebeurtenissen per seconde ontvangen en verwerken. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen door gebruik te maken van een provider voor realtime analytische gegevens of batchverwerking/opslagadapters.
@@ -61,14 +62,14 @@ Met Event Hubs kunt u beginnen met gegevensstromen van megabytes en uitgroeien t
 
 Met [Event Hubs voor Apache Kafka-ecosystemen](event-hubs-for-kafka-ecosystem-overview.md) kunnen [Apache Kafka](https://kafka.apache.org/)-clients (1.0 en later) en -toepassingen communiceren met Event Hubs. U hoeft niet uw eigen Apache Kafka-clusters in te stellen, te configureren of te beheren.
 
-Met een breed ecosysteem dat beschikbaar is in verschillende talen [.net](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [python](https://github.com/Azure/azure-sdk-for-python/), [Java script](https://github.com/Azure/azure-sdk-for-js/), kunt u eenvoudig uw stromen van Event hubs verwerken. Alle ondersteunde clienttalen bieden integratie op laag niveau. Het ecosysteem biedt u ook naadloze integratie met Azure-services zoals Azure Stream Analytics en Azure Functions, zodat u dus serverloze architecturen kunt bouwen.
+Met een breed ecosysteem dat beschikbaar is in verschillende talen, zoals [.NET](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/) en [JavaScript](https://github.com/Azure/azure-sdk-for-js/) kunt u eenvoudig uw streams van Event Hubs. Alle ondersteunde clienttalen bieden integratie op laag niveau. Het ecosysteem biedt u ook naadloze integratie met Azure-services zoals Azure Stream Analytics en Azure Functions, zodat u dus serverloze architecturen kunt bouwen.
 
 ## <a name="key-architecture-components"></a>Belangrijkste onderdelen van de architectuur
 Event Hubs bevat de volgende [belangrijke onderdelen](event-hubs-features.md):
 
 - **Gebeurtenisproducenten**: elke entiteit die gegevens naar een Event Hub verzendt. Gebeurtenisuitgevers kunnen gebeurtenissen publiceren met HTTPS, AMQP 1.0 of Apache Kafka (1.0 of hoger)
 - **Partities**: elke consument leest slechts een specifieke subset, of partitie, van de berichtenstroom.
-- **Consumergroepen**: een weergave (status, positie of offset) van een volledige Event Hub. Met consumentengroepen kunnen gebruikstoepassingen elk een afzonderlijke weergave van de gebeurtenisstroom hebben. De stroom wordt onafhankelijk in hun eigen tempo en met eigen verschuivingen afgelezen.
+- **Consumentengroepen**: een weergave (status, positie of offset) van een volledige Event Hub. Met consumentengroepen kunnen gebruikstoepassingen elk een afzonderlijke weergave van de gebeurtenisstroom hebben. De stroom wordt onafhankelijk in hun eigen tempo en met eigen verschuivingen afgelezen.
 - **Doorvoereenheden**: vooraf gekochte eenheden van capaciteit die de doorvoercapaciteit van Event Hubs regelen.
 - **Gebeurtenisontvangers**: elke entiteit die gebeurtenisgegevens van een Event Hub leest. Alle consumenten van Event Hubs maken verbinding via de AMQP 1.0-sessie. De Event Hubs-service biedt gebeurtenissen via een sessie zodra ze beschikbaar komen. Alle Kafka-consumers maken verbinding via het protocol Kafka 1.0 of hoger.
 
@@ -76,23 +77,23 @@ In de volgende afbeelding ziet u de architectuur voor de verwerking van stromen 
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
-## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs op Azure Stack hub
-Met Event Hubs op Azure Stack hub kunt u hybride Cloud scenario's realiseren. Streaming en oplossingen op basis van gebeurtenissen worden ondersteund voor zowel on-premises als Azure-Cloud verwerking. Of uw scenario hybride (verbonden) is, of dat de verbinding is verbroken, uw oplossing kan de verwerking van gebeurtenissen/stromen op grote schaal ondersteunen. Uw scenario is alleen gebonden aan de Event Hubs cluster grootte, die u op basis van uw behoeften kunt inrichten. 
+## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs in Azure Stack Hub
+Met Event Hubs in Azure Stack Hub kunt u hybride cloudscenario's verwezenlijken. Streamen en op gebeurtenissen gebaseerde oplossingen worden ondersteund, zowel on-premises als voor Azure-cloudverwerking. Of uw scenario nu hybride (verbonden) is of op zichzelf staat, uw oplossing biedt ondersteuning voor de verwerking van gebeurtenissen/streams op grote schaal. Uw scenario is enkel afhankelijk van de grootte van de Event Hubs-cluster, die u kunt inrichten volgens uw behoeften. 
 
-De Event Hubs-edities (op Azure Stack hub en op Azure) bieden een hoge mate van functie pariteit. Deze pariteit betekent dat Sdk's, voor beelden, Power shell, CLI en portals een vergelijk bare ervaring bieden, met enkele verschillen. 
+De Event Hubs-versies (op Azure Stack Hub en op Azure) bieden een hoge functiepariteit. Deze pariteit betekent dat SDK's, voorbeelden, PowerShell, CLI en portalen dezelfde ervaring bieden met weinig verschillen. 
 
-Event Hubs op stack is gratis tijdens de open bare preview. Zie [Event hubs op Azure stack hub Overview](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)(Engelstalig) voor meer informatie.
+Event Hubs in Stack is beschikbaar tijdens de openbare preview. Zie het [overzicht voor Event Hubs in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan met Event Hubs, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** :
+Zie de zelfstudies **Gebeurtenissen verzenden en ontvangen** om aan de slag te gaan met Event Hubs:
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
-- [OK](event-hubs-go-get-started-send.md)
+- [JavaScript](get-started-node-send-v2.md)
+- [Go](event-hubs-go-get-started-send.md)
 - [C (alleen verzenden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (alleen ontvangen)](event-hubs-storm-getstarted-receive.md)
 

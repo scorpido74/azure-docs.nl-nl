@@ -5,16 +5,20 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: bf1acd8bce53801c7c241121db2079e9b8a01851
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383172"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253703"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Overzicht van rapportage-API's voor Enterprise-klanten
+
+> [!Note]
+> Microsoft werkt de Azure Billing - Enterprise Reporting-API’s niet langer bij. Gebruik in plaats daarvan de [Azure Consumption](/rest/api/consumption)-API’s.
+
 Met de rapportage-API's kunnen klanten van Azure Enterprise programmatisch verbruiks-en factureringsgegevens ophalen en gebruiken in de tools voor gegevensanalyse van hun voorkeur. Enterprise-klanten hebben een [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ondertekend met Azure om overeengekomen monetaire toezeggingen te doen en toegang te krijgen tot aangepaste prijzen voor Azure-resources.
 
 Alle parameters voor datum en tijd die zijn vereist voor API’s, moeten worden weergegeven in UTC-waarden (Coordinated Universal Time). Waarden die worden geretourneerd via API’s, hebben de UTC-indeling.
@@ -27,7 +31,7 @@ Alle parameters voor datum en tijd die zijn vereist voor API’s, moeten worden 
 |-|-|
 |Autorisatie| Geef de waarde in deze indeling op: **bearer {API_SLEUTEL}** <br/> Voorbeeld: bearer eyr....09|
 
-## <a name="consumption-apis"></a>Verbruiks-API's
+## <a name="consumption-based-apis"></a>API's op basis van verbruik
 U vindt [hier](https://consumption.azure.com/swagger/ui/index) een Swagger-eindpunt voor de hieronder beschreven API's waarmee eenvoudig introspectie van de API mogelijk is, naast de mogelijkheid om client-SDK's te genereren met behulp van [AutoRest](https://github.com/Azure/AutoRest) of [Swagger CodeGen](https://swagger.io/swagger-codegen/). Gegevens vanaf 1 mei 2014 zijn beschikbaar via deze API.
 
 * **Saldo en overzicht**: de [API voor saldo en overzicht](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) biedt een maandelijks overzicht van de informatie over saldi, nieuwe aankopen, Azure Marketplace-servicekosten, correcties en overschrijdingskosten.

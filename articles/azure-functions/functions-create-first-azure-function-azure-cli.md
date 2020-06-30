@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 890dc2f7560faa6df302212aebb2fbe006894d3f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559879"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100022"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quickstart: Een functie in Azure maken die reageert op HTTP-aanvragen
 
@@ -385,7 +385,7 @@ Kopieer de volledige **Aanroep-URL** die wordt weergegeven in de uitvoer van de 
 
 # <a name="curl"></a>[curl](#tab/curl)
 
-Voer [`curl`](https://curl.haxx.se/) uit met **URL aanroepen** en voeg de parameter `&name=Functions` toe. De uitvoer van de opdracht moet de tekst ‘Hallo Functions’ zijn.
+Voer [`curl`](https://curl.haxx.se/) uit met de **aanroep-URL** en voeg de parameter `&name=Functions` toe. De uitvoer van de opdracht moet de tekst ‘Hallo Functions’ zijn.
 
 ![De uitvoer van de functie die wordt uitgevoerd op Azure met behulp van curl](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 
@@ -393,6 +393,11 @@ Voer [`curl`](https://curl.haxx.se/) uit met **URL aanroepen** en voeg de parame
 
 > [!TIP]
 > Als u bijna realtime logboeken voor een gepubliceerde functie-app wilt weergeven, gebruikt u de [Application Insights Live Metrics Stream](functions-monitoring.md#streaming-logs).
+>
+> Voer de volgende opdracht uit om de live gegevensstroom in een browser te openen.
+>   ```
+>   func azure functionapp logstream <APP_NAME> --browser
+>   ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

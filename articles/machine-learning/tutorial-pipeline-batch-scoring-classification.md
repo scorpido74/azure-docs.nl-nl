@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 6abfeb1601c85f9202611b914f9dfd47ac50ea1a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: de1d548be7f426f42b369ae7607bd6f798b42317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560963"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296165"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Zelfstudie: Een Azure Machine Learning-pijplijn bouwen voor batchgewijs scoren
 
@@ -45,23 +45,25 @@ Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. P
 * Doorloop [deel 1 van de installatiezelfstudie](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure Machine Learning-werkruimte of virtuele notebook-machine hebt.
 * Wanneer u de installatiezelfstudie hebt voltooid, gebruikt u dezelfde notebook-server om de notebook *tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* te openen.
 
-Als u de installatiehandleiding wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local), kunt u de zelfstudie op [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) openen. Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` uit om de vereiste pakketten te downloaden.
+Als u de installatiehandleiding wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local), kunt u de zelfstudie op [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) openen. Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` uit om de vereiste pakketten te downloaden.
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>Een werkruimte configureren en een gegevensopslag maken
 
 Maak een werkruimteobject op basis van de bestaande Azure Machine Learning-werkruimte.
-
-- Een [werkruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resourcegegevens accepteert. De werkruimte maakt ook een cloudresource die u kunt gebruiken om uw modeluitvoeringen te bewaken en bij te houden. 
-- `Workspace.from_config()` leest het bestand `config.json` en laadt vervolgens de verificatiegegevens in een object met de naam `ws`. Het object `ws` wordt in de code in deze zelfstudie gebruikt.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
+> [!IMPORTANT]
+> Dit codefragment verwacht dat de werkruimteconfiguratie wordt opgeslagen in de huidige of de bovenliggende map. Zie [Azure Machine Learning-werkruimten maken en beheren](how-to-manage-workspace.md) voor meer informatie over het maken van een werkruimte. Zie [Een configuratiebestand voor een werkruimte maken](how-to-configure-environment.md#workspace) voor meer informatie over de configuratie als bestand opslaan.
+
 ## <a name="create-a-datastore-for-sample-images"></a>Een gegevensarchief maken voor voorbeeldafbeeldingen
 
 Haal op het `pipelinedata`-account het voorbeeld van de openbare gegevens van de ImageNet-evaluatie op uit de openbare blob-container van `sampledata`. Roep `register_azure_blob_container()` aan om de gegevens beschikbaar te maken voor de werkruimte onder de naam `images_datastore`. Stel vervolgens het standaard gegevensarchief voor de werkruimte in als het gegevensarchief voor uitvoer. Gebruik het gegevensarchief voor uitvoer om uitvoer in de pijplijn te scoren.
+
+Zie [Toegang krijgen tot gegevens](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk) voor meer informatie over toegang tot gegevens.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -93,7 +95,7 @@ from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
-label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
@@ -168,7 +170,7 @@ Als u wilt scoren, maakt u een script voor batchgewijs scoren met de naam `batch
 Het script `batch_scoring.py` gebruikt de volgende parameters, die worden doorgegeven aan de `ParallelRunStep` die u later maakt:
 
 - `--model_name`: De naam van het model dat wordt gebruikt.
-- `--labels_name`: De naam van de `Dataset` die het bestand `labels.txt` bevat.
+- `--labels_dir`: De locatie van het bestand `labels.txt`.
 
 De pijplijninfrastructuur gebruikt de klasse `ArgumentParser` om parameters door te geven aan pijplijnstappen. In de volgende code krijgt het eerste argument `--model_name` bijvoorbeeld de eigenschaps-id `model_name`. In de functie `init()` wordt `Model.get_model_path(args.model_name)` gebruikt om toegang te krijgen tot deze eigenschap.
 
@@ -196,9 +198,10 @@ image_size = 299
 num_channel = 3
 
 
-def get_class_label_dict():
+def get_class_label_dict(labels_dir):
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
+    labels_path = os.path.join(labels_dir, 'labels.txt')
+    proto_as_ascii_lines = tf.gfile.GFile(labels_path).readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
@@ -209,14 +212,10 @@ def init():
 
     parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
     parser.add_argument('--model_name', dest="model_name", required=True)
-    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    parser.add_argument('--labels_dir', dest="labels_dir", required=True)
     args, _ = parser.parse_known_args()
 
-    workspace = Run.get_context(allow_offline=False).experiment.workspace
-    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
-    label_ds.download(target_path='.', overwrite=True)
-
-    label_dict = get_class_label_dict()
+    label_dict = get_class_label_dict(args.labels_dir)
     classes_num = len(label_dict)
 
     with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
@@ -263,14 +262,15 @@ def run(mini_batch):
 
 ## <a name="build-the-pipeline"></a>De pijplijn bouwen
 
-Voordat u de pijplijn uitvoert, maakt u een object dat de Python-omgeving definieert en maakt u de afhankelijkheden die uw `batch_scoring.py`-script nodig heeft. De belangrijkste vereiste afhankelijkheid is Tensorflow, maar u installeert ook `azureml-defaults` voor achtergrondprocessen. Maak een `RunConfiguration`-object met behulp van de afhankelijkheden. Geef ook Docker- en Docker-GPU-ondersteuning op.
+Voordat u de pijplijn uitvoert, maakt u een object dat de Python-omgeving definieert en maakt u de afhankelijkheden die uw `batch_scoring.py`-script nodig heeft. De belangrijkste vereiste afhankelijkheid is Tensorflow, maar u installeert ook `azureml-core` en `azureml-dataprep[fuse]` die vereist zijn voor ParallelRunStep. Geef ook Docker- en Docker-GPU-ondersteuning op.
 
 ```python
 from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
+cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.15.2",
+                                            "azureml-core", "azureml-dataprep[fuse]"])
 env = Environment(name="parallelenv")
 env.python.conda_dependencies = cd
 env.docker.base_image = DEFAULT_GPU_IMAGE
@@ -281,12 +281,12 @@ env.docker.base_image = DEFAULT_GPU_IMAGE
 Maak de pijplijnstap met het script, de omgevingsconfiguratie en de parameters. Geef het rekendoel op dat u al aan uw werkruimte hebt gekoppeld.
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     environment=env,
     entry_script="batch_scoring.py",
-    source_directory=".",
+    source_directory="scripts",
     output_action="append_row",
     mini_batch_size="20",
     error_threshold=1,
@@ -310,15 +310,20 @@ Meerdere klassen worden overgenomen van de bovenliggende klasse [`PipelineStep`]
 In scenario's waarin er meer dan één stap is, wordt een objectverwijzing in de matrix `outputs` beschikbaar als *invoer* voor een volgende pijplijnstap.
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
+from datetime import datetime
+
+parallel_step_name = "batchscoring-" + datetime.now().strftime("%Y%m%d%H%M")
+
+label_config = label_ds.as_named_input("labels_input")
 
 batch_score_step = ParallelRunStep(
-    name="parallel-step-test",
+    name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],
     output=output_dir,
-    models=[model],
     arguments=["--model_name", "inception",
-               "--labels_name", "label_ds"],
+               "--labels_dir", label_config],
+    side_inputs=[label_config],
     parallel_run_config=parallel_run_config,
     allow_reuse=False
 )
@@ -330,7 +335,7 @@ Voor een lijst met alle klassen die u voor verschillende typen stappen kunt gebr
 
 Voer nu de pijplijn uit. Maak eerst een `Pipeline`-object met behulp van uw werkruimtereferentie en de pijplijnstap die u hebt gemaakt. De `steps`-parameter is een matrix van stappen. In dit geval is er slechts één stap voor batchgewijs scoren. Als u pijplijnen met meerdere stappen wilt bouwen, plaatst u de stappen in volgorde in deze matrix.
 
-Gebruik vervolgens de functie `Experiment.submit()` om de pijplijn te verzenden voor uitvoering. U geeft ook de aangepaste parameter `param_batch_size` op. De functie `wait_for_completion` voert logboeken uit tijdens het bouwen van de pijplijn. U kunt de logboeken gebruiken om de huidige voortgang te bekijken.
+Gebruik vervolgens de functie `Experiment.submit()` om de pijplijn te verzenden voor uitvoering. De functie `wait_for_completion` voert logboeken uit tijdens het bouwen van de pijplijn. U kunt de logboeken gebruiken om de huidige voortgang te bekijken.
 
 > [!IMPORTANT]
 > De eerste pijplijnuitvoering duurt ongeveer *15 minuten*. Alle afhankelijkheden moeten worden gedownload, een Docker-kopie wordt gemaakt en de Python-omgeving wordt ingericht en gemaakt. Het opnieuw uitvoeren van de pijplijn vergt aanzienlijk minder tijd, omdat deze resources opnieuw worden gebruikt in plaats van worden gemaakt. De totale runtime voor de pijplijn is echter afhankelijk van de werkbelasting van uw scripts en de processen die in elke pijplijnstap worden uitgevoerd.
@@ -394,7 +399,7 @@ auth_header = interactive_auth.get_authentication_header()
 
 Haal de REST-URL op uit de eigenschap `endpoint` van het gepubliceerde pijplijnobject. U kunt de REST-URL ook vinden in uw werkruimte in Azure Machine Learning Studio. 
 
-Bouw een HTTP POST-aanvraag voor het eindpunt. Geef uw verificatieheader op in de aanvraag. Voeg een JSON-payload-object toe met de naam van het experiment en de parameter voor batchgrootte. Zoals eerder in de zelfstudie is vermeld, wordt `param_batch_size` doorgegeven aan uw `batch_scoring.py`-script omdat u deze hebt gedefinieerd als een `PipelineParameter`-object in de configuratiestap.
+Bouw een HTTP POST-aanvraag voor het eindpunt. Geef uw verificatieheader op in de aanvraag. Voeg een JSON-payload-object toe met de naam van het experiment.
 
 Maak de aanvraag om de uitvoering te activeren. Neem code op om toegang te krijgen tot de `Id`-sleutel vanuit de antwoordbibliotheek om de waarde van de uitvoer-id op te halen.
 
@@ -405,7 +410,7 @@ rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
                          json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
+                               "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
 

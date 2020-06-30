@@ -8,12 +8,12 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 0f9ddf2f4fba9e216ef0b5a5747fc32f4288cf67
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737271"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296981"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Een end-to-end-oplossing bouwen
 
@@ -136,6 +136,8 @@ Controleer in het deelvenster *Publish* dat wordt geopend in het hoofdvenster va
 > [!NOTE]
 > Mogelijk ziet u een pop-up als deze: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Publish Azure function in Visual Studio: publish credentials" border="false"::: (Azure-functie in Visual Studio publiceren: referenties publiceren)
 > Als dat het geval is, selecteert u **Attempt to retrieve credentials from Azure** (probeer referenties op te halen uit Azure) en **Save** (opslaan).
+>
+> Als er een waarschuwing wordt weergegeven dat *uw versie van de Functions-runtime niet overeenkomt met de versie die wordt uitgevoerd in Azure*, volgt u de aanwijzingen om een upgrade uit te voeren naar de recentste versie van de Azure Functions-runtime. Dit probleem kan optreden als u werkt met een oudere versie van Visual Studio dan de versie die wordt vermeld in de sectie *Vereisten* aan het begin van deze zelfstudie.
 
 ### <a name="assign-permissions-to-the-function-app"></a>Machtigingen toewijzen aan de functie-app
 

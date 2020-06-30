@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657372"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118446"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ingebouwde ondersteuning voor Jupyter-notebooks in Azure Cosmos DB (preview)
 
@@ -19,11 +19,11 @@ Jupyter notebook is een opensource-webtoepassing waarmee u documenten kunt maken
 
 Ingebouwde Jupyter-notebooks van Azure Cosmos DB worden direct in de Azure-portal en uw Azure Cosmos DB-accounts geïntegreerd, waardoor ze handig en gebruiksvriendelijk zijn. Ontwikkelaars, gegevenswetenschappers, ingenieurs en analisten kunnen de vertrouwde Jupyter-notebookervaring gebruiken voor gegevensverkenning, gegevensopschoning, gegevenstransformaties, numerieke simulaties, statische modellering, gegevensvisualisatie en machine learning.
 
-![Visualisaties van Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png" alt-text="Visualisaties van Jupyter-notebooks in Azure Cosmos DB":::
 
 Azure Cosmos DB ondersteunt zowel C# -als Python-notebooks voor alle API's, waaronder Core (SQL), Cassandra, Gremlin, Table en API voor MongoDB. De notebook bevat ingebouwde opdrachten en functies waarmee u eenvoudig Azure Cosmos DB-resources maakt, gegevens kunt uploaden en uw gegevens in Azure Cosmos DB kunt opvragen en visualiseren. 
 
-![Ondersteuning voor Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Ondersteuning voor Jupyter-notebooks in Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Voordelen van Jupyter-notebooks
 

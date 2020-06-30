@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669899"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297938"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een Hugo-site publiceren in Azure Static Web Apps Preview
 
-In dit artikel ziet u hoe u een [Hugo](https://gohugo.io/)-webtoepassing maakt en implementeert in [Azure Static Web Apps](overview.md). Het uiteindelijke resultaat is een nieuwe Azure Static Web Apps-resource met de bijbehorende GitHub-acties, waarmee u beheert hoe de app wordt gebouwd en gepubliceerd.
+In dit artikel ziet u hoe u een [Hugo](https://gohugo.io/)-webtoepassing maakt en implementeert in [Azure Static Web Apps](overview.md). Het uiteindelijke resultaat is een nieuwe Azure Static Web Apps-resource met bijbehorende GitHub-acties, waarmee u beheert hoe de app wordt gebouwd en gepubliceerd.
 
 In deze zelfstudie leert u het volgende:
 
@@ -144,42 +144,6 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 1. Klik op de knop **Beoordelen en maken** om te controleren of de details kloppen.
 
 1. Klik op **Maken** om te beginnen met het maken van de Azure Static Web Apps-resource, en richt een GitHub-actie in voor de implementatie.
-
-1. Zodra de implementatie is voltooid, gaat u naar de terminal en haalt u de doorvoer op met de GitHub-actie op de computer.
-
-   ```bash
-   git pull
-   ```
-
-1. Open de Hugo-app in een teksteditor en open het bestand _.github/workflows/azure-pages-<NAAM_VAN-WERKSTROOM>.yml_.
-
-1. Vervang de regel `- uses: actions/checkout@v2` (regel 18) door het volgende, om de Hugo-toepassing te bouwen. Als u Hugo Extended vereist, verwijdert u het commentaar van `extended: true`.
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true  # Fetch Hugo themes (true OR recursive)
-       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.11
-     with:
-       hugo-version: "latest"  # Hugo version: latest OR x.y.z
-       # extended: true
-
-   - name: Build
-     run: hugo
-   ```
-   
-   Zie [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo) voor meer informatie over het installeren van Hugo op GitHub Actions Runner.
-
-1. Voer de bijgewerkte werkstroom door en push deze naar GitHub.
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. Wacht totdat de GitHub-actie is voltooid.
 
